@@ -1,4 +1,6 @@
 Cursame30Lb::Application.routes.draw do
+  resources :networks
+
   get "home/index"
 
   get "home/contact"
@@ -18,6 +20,8 @@ Cursame30Lb::Application.routes.draw do
   get "user/profile"
 
   devise_for :users
+  
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
