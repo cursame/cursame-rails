@@ -1,4 +1,20 @@
 Cursame30Lb::Application.routes.draw do
+  get "home/index"
+
+  get "home/contact"
+
+  get "home/terms"
+
+  get "home/conditions"
+
+  get "home/team"
+
+  get "home/develop"
+
+  get "home/blog"
+
+  get "home/news"
+
   get "user/profile"
 
   devise_for :users
