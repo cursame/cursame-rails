@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121115221944) do
 
   create_table "comments", :force => true do |t|
@@ -27,6 +28,16 @@ ActiveRecord::Schema.define(:version => 20121115221944) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+=======
+ActiveRecord::Schema.define(:version => 20121115224441) do
+
+  create_table "network_templates", :force => true do |t|
+    t.integer  "network_id"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+>>>>>>> 9c9b368cdcd8a02144832f9b0a2b6a3705822b8f
 
   create_table "networks", :force => true do |t|
     t.string   "name"
@@ -52,5 +63,12 @@ ActiveRecord::Schema.define(:version => 20121115221944) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_networks_networks_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "network_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

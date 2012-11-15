@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Network:</b>
+  <%= @network_template.network_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @network_template.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_network_template_path(@network_template) %> |
+<%= link_to 'Back', network_templates_path %>
