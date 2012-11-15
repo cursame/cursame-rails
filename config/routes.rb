@@ -1,6 +1,6 @@
 Cursame30Lb::Application.routes.draw do
   resources :networks
-
+  match '/' => 'networks#show', :constraints => { :subdomain => /.+/ }
   get "home/index"
 
   get "home/contact"

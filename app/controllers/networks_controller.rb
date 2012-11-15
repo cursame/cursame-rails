@@ -13,8 +13,7 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
-    @network = Network.find(params[:id])
-
+    @network = Network.find_by_subdomain!(request.subdomain)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @network }
@@ -44,7 +43,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-        format.html { redirect_to @network, notice: 'Network was successfully created.' }
+        format.html { redirect_to :back, notice: 'Network was successfully created.' }
         format.json { render json: @network, status: :created, location: @network }
       else
         format.html { render action: "new" }
