@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
   def index
+    commentable = current_user
+    commentable.comments.create(:title => "First comment.", :comment => "This is the first comment.")
+
+    @comments =  current_user.comments
+
+    puts @comments
   end
 
   def contact
