@@ -1,4 +1,6 @@
 Cursame30Lb::Application.routes.draw do
+  get "user/profile"
+
   devise_for :users
 
   # The priority is based upon order of creation:
