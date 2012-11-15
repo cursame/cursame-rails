@@ -1,0 +1,25 @@
+<h1>Listing network_templates</h1>
+
+<table>
+  <tr>
+    <th>Network</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @network_templates.each do |network_template| %>
+  <tr>
+    <td><%= network_template.network_id %></td>
+    <td><%= network_template.description %></td>
+    <td><%= link_to 'Show', network_template %></td>
+    <td><%= link_to 'Edit', edit_network_template_path(network_template) %></td>
+    <td><%= link_to 'Destroy', network_template, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Network template', new_network_template_path %>
