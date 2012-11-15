@@ -6,7 +6,9 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+#gema para el manejo de las sesiones
 gem 'devise'
+
 gem 'json'
 
 # Gems used only for assets and not required
@@ -23,8 +25,8 @@ end
 
 gem 'jquery-rails'
 
-
-
+#Gem for the comments		
+gem 'acts_as_commentable'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
