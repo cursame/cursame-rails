@@ -1,6 +1,4 @@
 Cursame30Lb::Application.routes.draw do
-  resources :users_networks_networks_users
-
   resources :network_templates
 
   resources :networks
