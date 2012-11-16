@@ -26,6 +26,9 @@ Cursame30Lb::Application.routes.draw do
   
   root :to => 'home#index'
 
+  #comentarios
+  match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

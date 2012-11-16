@@ -1,11 +1,8 @@
 class HomeController < ApplicationController
   def index
-    commentable = current_user
-    commentable.comments.create(:title => "First comment.", :comment => "This is the first comment.")
-
-    @comments =  current_user.comments
-
-    puts @comments
+    if user_signed_in?
+      @comments =  current_user.comments
+    end
   end
 
   def contact
@@ -27,5 +24,15 @@ class HomeController < ApplicationController
   end
 
   def news
+  end
+
+  def add_new_comment
+    if user_signed_in?
+      commentable = current_user
+      @comment = commentable.comments.create(:title => current_user.email, :comment => params[:comment])
+      respond_to do |format|
+        format.js
+      end
+    end     
   end
 end
