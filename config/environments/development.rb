@@ -35,4 +35,16 @@ Cursame30Lb::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   HOST = 'lvh.me'
+
+  # Action Mailer configure
+  ActionMailer::Base.smtp_settings = {
+    :address        => '50.116.21.144',
+    :port           => '25',
+    :authentication => 'plain',
+    :user_name      => 'wichobabas',
+    :password       => 'qor43e95',
+    :domain         => 'mail.cursame.me'
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
 end
