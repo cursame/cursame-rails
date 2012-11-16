@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   has_many :networks
-  
-  
+
+  #comentarios para usuarios
+  acts_as_commentable
 end
