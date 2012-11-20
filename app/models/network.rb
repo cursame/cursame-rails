@@ -1,5 +1,4 @@
 class Network < ActiveRecord::Base
   has_one :network_template
-  has_many :users
-  
+  has_and_belongs_to_many :users  
 end

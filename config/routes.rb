@@ -1,4 +1,17 @@
 Cursame30Lb::Application.routes.draw do
+  
+ resources :networks_users do 
+   collection do
+    post :crete_data
+   end
+  end
+  
+  get "networks_users/create"
+
+  get "networks_users/new"
+  
+  match "networks_users/index", :to => "networks#register", :at => :networks_user
+
   resources :network_templates
 
   resources :networks
