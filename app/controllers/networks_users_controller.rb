@@ -1,15 +1,15 @@
 class NetworksUsersController < ApplicationController
-  def crete_data
+  def create_data
     @NetworksUsers = NetworksUsers.new(params[:networks_users])
          
       respond_to do |format|
     if @NetworksUsers.save
-       format.hmtl{ redirect_to current_network, :notice => "te has suscrito correctamente"}
-        format.json { render json: @NetworksUsers }
-       formar.js
+       format.html{ redirect_to current_network, :notice => "te has suscrito correctamente"}
+       format.json { render json: @NetworksUsers, status: :created, location: @NetworksUsers }       
+       format.js
     else
-       format.hmtl{ redirect_to current_network, :notice => "te has suscrito incorrectamente"}
-        format.json { render json: @NetworksUsers }
+       format.html{ redirect_to current_network, :notice => "te has suscrito incorrectamente"}
+       format.json { render json: @NetworksUsers.errors, status: :unprocessable_entity }
        format.js
     end
      end

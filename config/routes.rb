@@ -2,7 +2,7 @@ Cursame30Lb::Application.routes.draw do
   
  resources :networks_users do 
    collection do
-    post :crete_data
+    post :create_data
    end
   end
   

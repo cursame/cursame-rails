@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
        return subdomain
      end
   end
+  
+  def member
+    
+  end
 end
