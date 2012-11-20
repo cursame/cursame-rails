@@ -1,0 +1,7 @@
+<h1>NetworksUsers#new</h1>
+<p>Find me in app/views/networks_users/new.html.erb</p>
+<%= form_for @NetworksUsers, :url => crete_data_networks_users_path, remote: true do |form| %>
+   <%= form.hidden_field :user_id, :value => current_user.id %>
+   <%= form.hidden_field :network_id, :value => current_network.id %>   
+   <%= form.submit "suscribirme a la red", :class => "btn"%>
+<%end%>
