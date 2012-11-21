@@ -41,13 +41,6 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
-    coffee-rails (3.2.2)
-      coffee-script (>= 2.2.0)
-      railties (~> 3.2.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.4.0)
     commonjs (0.2.6)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -133,7 +126,6 @@ PLATFORMS
 DEPENDENCIES
   acts_as_commentable
   bcrypt-ruby (~> 3.0.0)
-  coffee-rails (~> 3.2.1)
   devise
   jquery-rails
   json
