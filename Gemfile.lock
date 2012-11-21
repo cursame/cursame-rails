@@ -41,6 +41,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+<<<<<<< HEAD
     carrierwave (0.7.1)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -51,6 +52,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+=======
+>>>>>>> 3c5e82ba2cb83199daf4e738b1db79ba45c21c6b
     commonjs (0.2.6)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -136,8 +139,11 @@ PLATFORMS
 DEPENDENCIES
   acts_as_commentable
   bcrypt-ruby (~> 3.0.0)
+<<<<<<< HEAD
   carrierwave
   coffee-rails (~> 3.2.1)
+=======
+>>>>>>> 3c5e82ba2cb83199daf4e738b1db79ba45c21c6b
   devise
   jquery-rails
   json
