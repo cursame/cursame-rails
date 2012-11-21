@@ -29,7 +29,7 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
-      commentable = current_user
+      commentable = current_network
       @comment = commentable.comments.create(:title => current_user.email, :comment => params[:comment])
       respond_to do |format|
         format.js
