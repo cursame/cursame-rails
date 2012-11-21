@@ -1,10 +1,18 @@
 Cursame30Lb::Application.routes.draw do
   
- resources :networks_users do 
-   collection do
-    post :create_data
-   end
+  
+  
+  #manejo de users
+  
+  devise_for :users do 
+      match '/users/sign_out', :to => "devise/sessions#destroy"      
   end
+  get  '/users/:id', :to => "users#show", :at => :user_profile
+  
+
+  
+  
+  #manejo de networks
   
   get "networks_users/create"
 
@@ -16,6 +24,16 @@ Cursame30Lb::Application.routes.draw do
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ }
+  
+  
+  #manejo de usuarios en las networks
+  resources :networks_users do 
+   collection do
+    post :create_data
+   end
+  end
+  
+  # manejo de la landing page
   
   get "home/index"
 
@@ -32,11 +50,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/blog"
 
   get "home/news"
-
-  get "user/profile"
-
-  devise_for :users
-  
+ 
   root :to => 'home#index'
 
   #comentarios
