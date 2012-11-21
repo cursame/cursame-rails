@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_personal_url(params[:personal_url])
   end
-  def edit
-     @user = User.find(params[:id]) 
-  end
+  
 end

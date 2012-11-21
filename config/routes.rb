@@ -4,10 +4,9 @@ Cursame30Lb::Application.routes.draw do
   
   #manejo de users
   
-  devise_for :users do 
-      match '/users/sign_out', :to => "devise/sessions#destroy"      
-  end
-  get  '/users/:id', :to => "users#show", :at => :user_profile
+  devise_for :users
+  
+   match  '/:personal_url', :to => "users#show"
   
 
   

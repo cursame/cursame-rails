@@ -11,6 +11,8 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
+  
+  <%= f.text_field :personal_url, :value => random_string_for_user_url %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
