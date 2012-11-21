@@ -8,9 +8,11 @@ gem 'rails', '3.2.1'
 gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise'
-
 gem 'json'
 
+#gemas para uso de gestion de archivos
+gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
+gem 'mime-types'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

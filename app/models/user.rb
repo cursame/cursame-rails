@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   has_many :networks_users, :dependent => :destroy
   #comentarios para usuarios
   acts_as_commentable
-  
+  #avatar
+  mount_uploader :avatar, AvatarUploader
   def name
      "#{first_name} #{last_name}".strip
   end
