@@ -9,8 +9,10 @@
      <%= f.text_field :first_name %></div>
   <div><%= f.label :last_name %><br />
      <%= f.text_field :last_name %></div></br>
-     <div><%= f.label :personal_url %><br />
-        <%= f.text_field :personal_url %></div></br>
+  <div><%= f.label :personal_url %><br />
+       <%= f.text_field :personal_url %></div></br>
+  <div><%= f.label :avatar %><br />
+       <%= f.file_field :avatar %></div></br>
 
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
