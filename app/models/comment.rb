@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
 
+  #attr_accessible :commentable_type
+
   belongs_to :commentable, :polymorphic => true
 
   default_scope -> { order('created_at ASC') }
@@ -12,4 +14,12 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+
+  #comentarios para las redes
+  acts_as_commentable
+
+  def self.get_commentable(commentable_id)
+    self.where(:commentable_id => commentable_id).limit(1)    
+  end
+
 end

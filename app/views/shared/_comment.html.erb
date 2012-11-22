@@ -5,5 +5,26 @@
     <div class="media-body">
        	<h4 class="media-heading">Armando González</h4>
         <%= comment.comment %>
+        <!-- los comentarios del comentario -->
+        <% comment.comments.each do |commentt| %>
+        	<div class="media">
+        		<a class="pull-left" href="#">
+            	<img class="media-object" src="http://placehold.it/64x64">
+            	</a>        
+        		<div class="media-body">
+            		<h4 class="media-heading">Media heading</h4>
+                	<%= commentt.comment %>
+        		</div>
+        	</div>
+        <%end%>   
+        <!-- area para comentar -->
+        <div class="media">
+        	<a class="pull-left" href="#">
+            	<img class="media-object" src="http://placehold.it/64x64">
+            </a>        
+        	<div class="media-body">
+            	<%= render :partial => '/shared/comment_form',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
+        	</div>
+        </div>
     </div>
-</div>	
+</div>
