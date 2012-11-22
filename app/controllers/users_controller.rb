@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by_personal_url(params[:personal_url])
+    #helper methods in aplication controller
     pertenence!
-    links
-    
-         
+    links     
   end
 
  def pertenence!

@@ -1,6 +1,7 @@
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
+  before_filter :validates_user
   def index
     @networks = Network.all
 
@@ -80,4 +81,9 @@ class NetworksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def validates_user
+     register_member
+  end
+  
 end

@@ -2,7 +2,9 @@ class HomeController < ApplicationController
   skip_before_filter :authenticate_user!
   def index
     if user_signed_in?
-      redirect_to "/#{current_user.personal_url}"
+      #redirect_to "/users/#{current_user.personal_url}"
+      redirect_to show_user_path(user_url)
+      
     end
   end
 
