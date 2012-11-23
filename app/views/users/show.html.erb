@@ -1,2 +1,5 @@
 <h1><%= @user.name %></h1>
-<%= link_to image_tag(@user.avatar.profile)%>
+<%= link_to image_tag(@user.avatar.profile)%></br>
+<%= link_to "#{@n.name}", "http://#{@n.subdomain}.#{links}/"%>
+<%= link_to "#{@user.name}", show_user_path(@user.personal_url)%>
+

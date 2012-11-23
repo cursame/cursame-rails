@@ -1,6 +1,7 @@
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
+  before_filter :validates_user
   def index
     @networks = Network.all
 
@@ -44,7 +45,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-        format.html { redirect_to :back, notice: 'Network was successfully created.' }
+        format.html { redirect_to :back , notice: 'Network was successfully created.' }
         format.json { render json: @network, status: :created, location: @network }
       else
         format.html { render action: "new" }
@@ -80,4 +81,9 @@ class NetworksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def validates_user
+     register_member
+  end
+  
 end
