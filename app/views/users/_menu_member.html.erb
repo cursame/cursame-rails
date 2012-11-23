@@ -1,4 +1,11 @@
-<li>
-    
-    
-</li>
+    <b><%= 'mis redes'%></b></br>
+    <% if @n == "nil"%>
+    <%= link_to "#{@n.name}", "http://#{@n.subdomain}.#{links}/"%></br>
+    <%else%>
+    <%= @notice %> <%= link_to "inscribirse a una red", networks_path %></br>
+    <%end%>
+    <% if @user == "nil" %>
+    <%else%>
+    <b><%= 'mis amigos'%></b></br>
+    <%= link_to "#{@user.name}", show_user_path(@user.personal_url)%></br>
+    <%end%>

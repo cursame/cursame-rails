@@ -9,7 +9,10 @@ Cursame30Lb::Application.routes.draw do
   end
   
    match  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
-  
+   match  "/users/", :to => "users#index",  :as =>  :users_path
+      #friends
+  resources :user_friends
+  match  "users/:personal_url/friends", :to => "users#friend", :as => :create_user_friends
 
   
   

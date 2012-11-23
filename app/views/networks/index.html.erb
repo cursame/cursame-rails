@@ -1,25 +1,7 @@
-<h1>Listing networks</h1>
+<h1>Listing networks</h1><%= link_to 'Nueva red', new_network_path, :class => "btn pull-right" %></br></br>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Subdomain</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @networks.each do |network| %>
-  <tr>
-    <td><%= network.name %></td>
-    <td><%= network.subdomain %></td>
-    <td><%= link_to 'Show', network %></td>
-    <td><%= link_to 'Edit', edit_network_path(network) %></td>
-    <td><%= link_to 'Destroy', network, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% @networks.each do |n| %>
+    <%= link_to "#{n.name}", "http://#{n.subdomain}.#{links}/"%></br>
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Network', new_network_path %>

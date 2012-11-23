@@ -1,5 +1,37 @@
 <h1><%= @user.name %></h1>
+
+<% if @user.id != current_user.id %>
+  <%= form_for @friend, :url => create_user_friends_path, :remote => true do |friend| %>
+       <%= friend.hidden_field :status_friendship, :value => "1" %>
+       <%= friend.submit "+ Solicitud de amistad", :class => "btn"%>
+    <%end%>
+
+    <%case%>
+        <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_two == @user.id  %>
+                <div class ="btn disabled"> Ya le has hecho solicitud de amistad </div>
+        <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_one == @user.id  %>
+                <div class ="btn"> Este usuario ha solicitado ser tu amigo </div>
+        <%when @friend_a != nil && @friend_a.friend_two == @user.id  %>
+                <div class ="btn disabled"> Ya le has hecho solicitud de amistad </div>
+        <%when @friend_a != nil && @friend_a.friend_one == @user.id  %>
+                <div class ="btn"> Este usuario ha solicitado ser tu amigo </div>
+    <%end%>
+<%else%>
+  <div class ="btn"> solicitudes de amistad pendientes </div>
+
+<%end%>
+
+
+</br>
+friend a
+<%= debug @friend_a  %>
+friend b
+<%= debug @friend_b%>
+friend user two
+<%= debug @pending_relarionships_user_two %>
+friend friend one
+<%= debug @pending_relarionships_friend_one %>
 <%= link_to image_tag(@user.avatar.profile)%></br>
-<%= link_to "#{@n.name}", "http://#{@n.subdomain}.#{links}/"%>
-<%= link_to "#{@user.name}", show_user_path(@user.personal_url)%>
+<%= render :partial => "users/menu_member"%>
+
 

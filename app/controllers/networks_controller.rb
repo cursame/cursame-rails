@@ -1,14 +1,18 @@
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
-  before_filter :validates_user
+  before_filter :register_member
+  skip_before_filter :register_member, :only => [:index, :new]
+  
   def index
     @networks = Network.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @networks }
-    end
+    def network_each
+     @networks.each do |network|
+        network.name
+        network.subdomain
+     end
+   end
+   
   end
 
   # GET /networks/1
@@ -82,8 +86,7 @@ class NetworksController < ApplicationController
     end
   end
   
-  def validates_user
-     register_member
+  def register_member
+    register_member
   end
-  
 end

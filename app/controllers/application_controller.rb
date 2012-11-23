@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   helper_method :links
   helper_method :user_url
   helper_method :register_member
+  helper_method :current_friend
+  
   #data of the networks you are
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
@@ -56,6 +58,10 @@ class ApplicationController < ActionController::Base
         else
            redirect_to new_networks_user_path
         end
+  end
+  #help to find friend
+  def current_friend
+      @user = User.find_by_personal_url(params[:personal_url])
   end
 
 end
