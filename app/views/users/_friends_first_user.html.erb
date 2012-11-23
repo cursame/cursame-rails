@@ -1,0 +1,32 @@
+<% # formulario de petición de amistad %>
+<% if @user.id != @pending_relarionships.friend_one %>
+<% if  @user.id != current_user.id  %>
+      <%= form_for @friend, :url => create_user_friends_path, :remote => true do |friend| %>
+         <%= friend.hidden_field :status_friendship, :value => "1" %>
+         <%= friend.submit "+ Solicitud de amistad", :class => "btn"%>
+    <%end%>        
+<%end%>
+<%end%>
+
+
+<% if @user.id == @pending_relarionships.friend_two %>
+
+<% # funciona para el usuario al que se le envio la notificación de amistad%>
+<% case %> 
+  <% when @pending_relarionships.status_friendship == 1 && @pending_relarionships.friend_two == current_user.id%>
+      <div class="btn"> Solicitudes pendientes </div></br>   
+  <% when @pending_relarionships.status_friendship == 2 && @pending_relarionships.friend_two == current_user.id %>
+     <div class="btn"> Amigos </div></br>
+<%end%>
+<%end%>
+
+<% if @user.id == @pending_relarionships.friend_one %>
+<% #funciona para el usuario que envio la notificaicón de amistad %>
+<% case %>
+  <% when  @pending_relarionships.status_friendship == 1 &&  @pending_relarionships.friend_one == @user.id %>
+     <div class="btn disabled"> Solicitud de amistad enviada </div></br>
+  <% when  @pending_relarionships.status_friendship == 2 &&  @pending_relarionships.friend_one == @user.id %>
+     <div class="btn disabled"> Amigos </div></br>
+  <% end%>
+  
+<%end%>
