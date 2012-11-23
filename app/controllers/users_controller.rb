@@ -6,15 +6,11 @@ class UsersController < ApplicationController
     links     
   end
 
- def pertenence!
-   
+ def pertenence!   
      @user_id = @user.id
      @user_pertenence = NetworksUsers.find_by_user_id(@user_id)
      @networks_petenence_user = @user_pertenence.network_id
      @network = Network.find_by_id(@networks_petenence_user)
-     @n = @network
-     
- end
- 
-  
+     @n = @network     
+ end  
 end

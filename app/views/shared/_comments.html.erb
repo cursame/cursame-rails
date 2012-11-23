@@ -1,0 +1,22 @@
+<div class="media">
+    <a class="pull-left" href="#">
+     	<img class="media-object" src="<%= comment.user.avatar%>" width ="48px">
+    </a>
+    <div class="media-body" id = "comment_<%= comment.id %>">
+       	<h4 class="media-heading"><%= comment.user.name %></h4>
+        <%= comment.comment %>
+        <!-- los comentarios del comentario -->
+        <% comment.comments.each do |commentt| %>
+            <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+        <%end%>   
+        <!-- area para comentar -->
+        <div class="media">
+        	<a class="pull-left" href="#">
+            	<img class="media-object" src="<%= current_user.avatar%>" width ="32px">
+            </a>        
+        	<div class="media-body">
+            	<%= render :partial => '/shared/comment_form',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
+        	</div>
+        </div>
+    </div>
+</div>

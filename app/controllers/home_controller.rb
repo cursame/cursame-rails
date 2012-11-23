@@ -32,23 +32,12 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
-      commentable = get_commentable(params[:commentable_id],params[:commentable_type])
-      @comment = commentable.comments.create(:title => current_user.email, :comment => params[:comment])
+      commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
+      @comment = commentable.comments.create(:title=>'mando',:comment => params[:comment],:user_id =>current_user.id)
+      puts @comment.to_yaml
       respond_to do |format|
         format.js
       end
     end     
-  end 
-
-  def get_commentable(commentable_id,commentable_type)
-    case commentable_type   
-      when "User"        
-      when "Comment"
-       Comment.find(commentable_id)       
-      when "Discussion"        
-      when "Network"
-        Network.find(commentable_id)
-    end
   end
-
 end

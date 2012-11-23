@@ -18,8 +18,10 @@ class Comment < ActiveRecord::Base
   #comentarios para las redes
   acts_as_commentable
 
-  def self.get_commentable(commentable_id)
-    self.where(:commentable_id => commentable_id).limit(1)    
+  #para elegir el elemento que recibir a/o el comentario
+  def self.get_commentable(commentable_id,commentable_type)
+    #comment = self.find_by_commentable_id(commentable_id)
+    commentable_type.camelize.constantize.find(commentable_id)
   end
 
 end
