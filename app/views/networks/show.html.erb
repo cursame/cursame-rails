@@ -1,10 +1,7 @@
 <h1><%= current_user.email %></h1>
-<%= form_tag "/home/add_new_comment", :remote =>true do %>
-    <%= text_area_tag "comment"%>
-    <%= submit_tag "Comentar",:class=>"btn btn-primary" %>
-  <% end %>	
-<div id="comments">	
-<% @comments.each do |comment| %>			
-	<%= render :partial => '/shared/comment', :locals => {:comment => comment} %>
-<% end %>
+<%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+<div id="comentable_<%= current_network.id %>">	
+	<% @comments.reverse.each do |comment| %>			
+		<%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+	<% end %>
 </div>

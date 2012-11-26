@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   skip_before_filter :authenticate_user!
+  helper_method :get_commentable
   def index
     if user_signed_in?
       #redirect_to "/users/#{current_user.personal_url}"
@@ -31,8 +32,9 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
-      commentable = current_network
-      @comment = commentable.comments.create(:title => current_user.email, :comment => params[:comment])
+      commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
+      @comment = commentable.comments.create(:title=>'mando',:comment => params[:comment],:user_id =>current_user.id)
+      puts @comment.to_yaml
       respond_to do |format|
         format.js
       end
