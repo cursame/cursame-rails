@@ -8,7 +8,13 @@ class UsersController < ApplicationController
     validate_friend
     @friend = UserFriends.new     
   end
-
+  
+  def waiting_friends
+    @user = current_user
+    @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 1)
+    
+    
+  end
  def pertenence!
    
      @user_id = @user.id
@@ -55,17 +61,6 @@ class UsersController < ApplicationController
     @pending_relarionships_user_two = UserFriends.find_by_friend_two_and_status_friendship( current_user.id, 1)
     @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 1)
     
-    if @friend_a == nil
-       @friend_ab == 0
-    else
-        @friend_ab == @friend_a
-    end
-    
-    if @friend_b == nil
-       @friend_abc == nil
-    else
-       @friend_abc == @friend_b
-    end
    
  end
  

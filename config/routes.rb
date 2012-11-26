@@ -13,7 +13,7 @@ Cursame30Lb::Application.routes.draw do
       #friends
   resources :user_friends
   match  "users/:personal_url/friends", :to => "users#friend", :as => :create_user_friends
-
+  match  "users/:personal_url/waiting_friends", :to => "users#waiting_friends", :as => :create_user_waiting_friends
   
   
   #manejo de networks
