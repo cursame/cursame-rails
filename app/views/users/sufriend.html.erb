@@ -1,4 +1,4 @@
-<% if @friend.status_friendship = "2"%>
+<% if @friend.status_friendship == "2"%>
 <%else%>
 <%= image_tag(@user.avatar.mini)%> Nombre:<%= @user.name %> Email:<%= @user.email %>
 
