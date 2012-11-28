@@ -6,15 +6,45 @@ class UsersController < ApplicationController
     links
     current_friend
     validate_friend
+    current_user_friends
     @friend = UserFriends.new     
   end
   
+  def current_user_friends
+    @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 2)
+    @pending_relarionships_user_two = UserFriends.find_by_friend_two_and_status_friendship( @user.id, 2)
+     if  @pending_relarionships_user_one != nil
+        @relation_one = @pending_relarionships_user_one
+        @user_one = User.find(@pending_relarionships_user_one.friend_one)
+        @user_two = User.find(@pending_relarionships_user_one.friend_two)
+      end
+      if @pending_relarionships_user_two != nil
+        @relation_two = @pending_relarionships_user_two
+        @user_one_two = User.find(@pending_relarionships_user_two.friend_one)
+        @user_two_two = User.find(@pending_relarionships_user_two.friend_two)      
+      end
+      
+      
+  end
+  
   def waiting_friends
+    
     @user = current_user
     @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 1)
+    @pending_relarionships_user_two = UserFriends.find_by_friend_two_and_status_friendship( @user.id, 1)   
     
-    
+    if  @pending_relarionships_user_one != nil
+      @relation_one = @pending_relarionships_user_one
+      @user_one = User.find(@pending_relarionships_user_one.friend_one)
+      @user_two = User.find(@pending_relarionships_user_one.friend_two)
+    end
+    if @pending_relarionships_user_two != nil
+      @relation_two = @pending_relarionships_user_two
+      @user_one_two = User.find(@pending_relarionships_user_two.friend_one)
+      @user_two_two = User.find(@pending_relarionships_user_two.friend_two)      
+    end
   end
+  
  def pertenence!
    
      @user_id = @user.id
@@ -46,6 +76,29 @@ class UsersController < ApplicationController
         format.js
     end
   end            
+ end
+ 
+ def ufriend
+   @friend  = UserFriends.find(params[:id])  
+   @friend.status_friendship = 2
+   @friend.save
+   respond_to do |format|
+     if @friend.save
+       format.html{ redirect_to :back, :notice => "amigo agregado correctamente esperando que te acepte"}
+       format.json { render json: @friend, status: :created, location: @friend }       
+       format.js
+    else
+       format.html{ redirect_to :back, :notice => "tu amigo no ha sido agregado"}
+       format.json { render json: @friend.errors, status: :unprocessable_entity }
+       format.js
+   end
+ end
+   
+ end
+ 
+ def sufriend
+   @friend  = UserFriends.find(params[:id])
+   @user = User.find(@friend.friend_one)
  end
  
  def validate_friend

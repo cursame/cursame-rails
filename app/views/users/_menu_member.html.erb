@@ -7,5 +7,11 @@
     <% if @user == "nil" %>
     <%else%>
     <b><%= 'mis amigos'%></b></br>
-    <%= link_to "#{@user.name}", show_user_path(@user.personal_url)%></br>
+    <%case%>
+           <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_two  == @user.id  %>
+                 <%= link_to "#{@user_one_two.name} #{@user_one_two.email}", show_user_path(@user_one_two.personal_url)%></br>
+            <%when @pending_relarionships_user_one != nil && @pending_relarionships_user_one.friend_one  == @user.id   %>
+                  <%= link_to "#{@user_two.name} #{@user_two.email}", show_user_path(@user_two.personal_url)%></br>
+       <%end%>
+   
     <%end%>
