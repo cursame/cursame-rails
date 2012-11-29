@@ -1,3 +1,4 @@
+
 <h1>Amigos en espera</h1>
 <% if @user_two != nil %>
 <p>Esperando aceptación de:<%= image_tag(@user_two.avatar.mini)%> <b><%= link_to "#{@user_two.name} #{@user_two.email}", show_user_path(@user_two.personal_url) %></b></p>

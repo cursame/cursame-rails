@@ -47,8 +47,7 @@ class ApplicationController < ActionController::Base
      current_user.personal_url
   end
   #register_member is a method to determinate if the member is register
-  def register_member
-        
+  def register_member        
      member.each do |member|
        @memberid = member.user_id 
        @user = User.find_by_id(@memberid)

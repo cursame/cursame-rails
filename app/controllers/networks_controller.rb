@@ -87,6 +87,14 @@ class NetworksController < ApplicationController
   end
   
   def register_member
-    register_member
+    member.each do |member|
+       @memberid = member.user_id 
+       @user = User.find_by_id(@memberid)
+     end
+        if @memberid == current_user.id
+           return false
+        else
+           redirect_to new_networks_user_path
+        end
   end
 end

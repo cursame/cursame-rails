@@ -1,11 +1,13 @@
 <h1><%= @user.name %></h1>
-
+<div id="notice-waiting-friend"></div>
 <% if @user.id != current_user.id  %>
 <% if @friend_a == nil && @pending_relarionships_user_one == nil %>
+<div id="form-add-user">
   <%= form_for @friend, :url => create_user_friends_path, :remote => true do |friend| %>
        <%= friend.hidden_field :status_friendship, :value => "1" %>
        <%= friend.submit "+ Solicitud de amistad", :class => "btn"%>
     <%end%>
+</div>
 <%end%>
 
     <%case%>
