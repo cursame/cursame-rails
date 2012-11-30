@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122211500) do
+ActiveRecord::Schema.define(:version => 20121129181139) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -49,12 +49,38 @@ ActiveRecord::Schema.define(:version => 20121122211500) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "permissions", :force => true do |t|
+    t.string   "name"
+    t.string   "description_use"
+    t.integer  "value"
+    t.boolean  "avtive"
+    t.integer  "role_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "created"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "user_friends", :force => true do |t|
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "friend_one"
     t.integer  "friend_two"
     t.integer  "status_friendship", :default => 0
+  end
+
+  create_table "user_roles", :force => true do |t|
+    t.integer  "network_id"
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

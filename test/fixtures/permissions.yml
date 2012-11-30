@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description_use: MyString
+  value: 1
+  avtive: false
+  role_id: 1
+
+two:
+  name: MyString
+  description_use: MyString
+  value: 1
+  avtive: false
+  role_id: 1

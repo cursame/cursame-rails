@@ -2,6 +2,10 @@ Cursame30Lb::Application.routes.draw do
   
   
   
+  resources :permissions
+
+  resources :roles
+
   #manejo de users
   
   devise_for :users  do
