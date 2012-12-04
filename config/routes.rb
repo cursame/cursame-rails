@@ -1,10 +1,15 @@
 Cursame30Lb::Application.routes.draw do
   
   
+
+    
+  resources :role_id_and_permission_ids
+
+  #manejo de roles
+  resources :roles 
   
   resources :permissions
-
-  resources :roles
+  
 
   #manejo de users
   
