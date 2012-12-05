@@ -46,16 +46,18 @@ class UsersController < ApplicationController
   end
   
  def pertenence!
-   
+     if current_network
      @user_id = @user.id
-     @user_pertenence = NetworksUsers.find_by_user_id(@user_id)
+     @user_pertenence = NetworksUser.find_by_user_id(@user_id)
      if @user_pertenence != nil
      @networks_petenence_user = @user_pertenence.network_id
      @network = Network.find_by_id(@networks_petenence_user)
      @n = @network
-     end
+     else
      
      @notice = "no estas inscrito en ninguna red"
+     end
+     end
      
  end
  

@@ -23,7 +23,11 @@ class ApplicationController < ActionController::Base
   end
   # this metod determinate if the user exist by in the member network
   def member
-    @member = NetworksUsers.where(:network_id => current_network.id )
+    if current_network
+    @member = NetworksUser.where(:network_id => current_network.id )
+   # @network_members = Network.all
+    end
+    
   end
   
   #this code generate the random_personal_url in the register user
@@ -47,7 +51,8 @@ class ApplicationController < ActionController::Base
      current_user.personal_url
   end
   #register_member is a method to determinate if the member is register
-  def register_member        
+  def register_member    
+  if member != nil
      member.each do |member|
        @memberid = member.user_id 
        @user = User.find_by_id(@memberid)
@@ -57,10 +62,13 @@ class ApplicationController < ActionController::Base
         else
            redirect_to new_networks_user_path
         end
+    end
   end
   #help to find friend
   def current_friend
       @user = User.find_by_personal_url(params[:personal_url])
   end
+  
+ 
 
 end

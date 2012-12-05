@@ -1,29 +1,27 @@
 class NetworksUsersController < ApplicationController
+  
   def create_data
-    @NetworksUsers = NetworksUsers.new(params[:networks_users])         
+    @NetworksUsers = NetworksUser.new(params[:networks_user])         
       respond_to do |format|
         if @NetworksUsers.save
-       format.html{ redirect_to current_network, :notice => "te has suscrito correctamente"}
-       format.json { render json: @NetworksUsers, status: :created, location: @NetworksUsers }       
+       format.json     
        format.js
         else
-       format.html{ redirect_to current_network, :notice => "te has suscrito incorrectamente"}
-       format.json { render json: @NetworksUsers.errors, status: :unprocessable_entity }
+       format.json
        format.js
         end
       end
   end
 
   def new
-    @NetworksUsers = NetworksUsers.new  
+    @NetworksUsers = NetworksUser.new  
   end
   
   def index
-    member.each do |member|
-    @memberid = member.user_id 
-    @user = User.find(@memberid)
-    end
+   @usersid = current_network.networks_users  
   end
+
+
   
   
 end

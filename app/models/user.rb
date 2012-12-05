@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users
   
   has_many :networks_users, :dependent => :destroy
-  has_many :user_friends
+  has_many :users_friends
   #comentarios para usuarios
   acts_as_commentable
   #avatar

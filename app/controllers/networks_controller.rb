@@ -51,9 +51,11 @@ class NetworksController < ApplicationController
       if @network.save
         format.html { redirect_to :back , notice: 'Network was successfully created.' }
         format.json { render json: @network, status: :created, location: @network }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @network.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -65,7 +67,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.update_attributes(params[:network])
-        format.html { redirect_to @network, notice: 'Network was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Network was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -87,6 +89,7 @@ class NetworksController < ApplicationController
   end
   
   def register_member
+    if member
     member.each do |member|
        @memberid = member.user_id 
        @user = User.find_by_id(@memberid)
@@ -96,5 +99,8 @@ class NetworksController < ApplicationController
         else
            redirect_to new_networks_user_path
         end
+    end
   end
+  
+  
 end
