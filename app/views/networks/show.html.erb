@@ -1,11 +1,3 @@
-<h1><%= current_user.email %></h1>
-<%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-<div id="comentable_<%= current_network.id %>">	
-	<% @comments.reverse.each do |comment| %>			
-		<%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-	<% end %>
-</div>
-
 <!-- Post -->
 <div id="box-post-form">
   <div class="thumbnail" style="" >
@@ -18,7 +10,8 @@
   <div class="box-6">
     <div id="post">
       <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
-        <img src="http://placehold.it/640x300/4D99E0/ffffff&text=formulario" alt="">
+        <h1><%= current_user.email %></h1>
+        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
         <div style="float: right; width: 220px">
           <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
           <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
@@ -57,7 +50,6 @@
       <div id="course-list" >
         <strong>Cursos</strong>
         <img id="new-course" src="http://placehold.it/45x45/4D99E0/ffffff&text=new" style="float: right;" alt="">
-
         <br>
         Elemento<br>
         Elemento<br>
@@ -65,7 +57,6 @@
         Elemento<br>
         Elemento
       </div>
-
     </div>
 
     <h4>Usuarios</h4>
@@ -73,8 +64,16 @@
     <h4>Cursos</h4>
     <img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">
   </div>
+
   <!-- Content -->
   <div class="box-stream-post" style="background: #DCEAF4;margin-left: 0px; width: 685px;float: left;">
+
+    <div id="comentable_<%= current_network.id %>">
+      <% @comments.reverse.each do |comment| %>
+          <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+      <% end %>
+    </div>
+
     <div id="comment1" style="width: 660px; height: 100%;background: #FFF; ">
       <h4>Comment</h4>
       <img src="http://placehold.it/45x45" alt="">
