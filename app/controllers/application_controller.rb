@@ -49,6 +49,7 @@ class ApplicationController < ActionController::Base
   
   ####### difininiendo variables de miembros de una red de forma global ########
   
+  ######## definiendo miembro de la red #########
   
   def network_member
           
@@ -65,7 +66,33 @@ class ApplicationController < ActionController::Base
             end
     
   end
+  
+  ######## definiendo role del usuario ########
  
+  def user_permissions_in_network
+     
+            current_network.networks_users.each do |cut|
+               @user_id = cut.user_id
+               @role_id = cut.role_id
+                  @user_member = User.find_by_id(@user_id)
+                  @role_member = User.find_by_id(@role_id)
+                  return false
+            end
+    
+             
+                if @user_member == current_user
+                   
+                     @role_member.role_id_and_permission_ids.each do |rm|
+                     end
+                     
+                else @user_member != current_user
+                  
+                     @role_member.role_id_and_permission_ids.each do |rm|
+                     end
+                end
+      
+    
+  end
  
 
 end

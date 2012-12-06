@@ -1,7 +1,118 @@
-<h1><%= current_user.email %></h1>
-<%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-<div id="comentable_<%= current_network.id %>">	
-	<% @comments.reverse.each do |comment| %>			
-		<%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-	<% end %>
+
+<!-- Post -->
+<div id="box-post-form">
+  <div class="thumbnail" style="" >
+    <a href="#" class="" style="background: #FFF;">
+      <img src="http://placehold.it/140x140/E49800/333333" alt="">
+    </a>
+    Nombre de Usuario
+  </div>
+  <div class="box-3">&nbsp;</div>
+  <div class="box-6">
+    <div id="post">
+      <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
+        <h1><%= current_user.email %></h1>
+        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+        <div style="float: right; width: 220px">
+          <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
+          <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pre-post-form">
+      <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+      <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+      <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+      <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+      <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+      <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Content Post Box -->
+<div id="box-post-content">
+  <!-- SideBar -->
+  <div class="box-3" style="padding: 70px 0px 0px 0px;">
+
+    <div id="box-course" >
+      <div id="form-new-course">
+        <strong>Cursos form</strong>
+        <ul>
+          Elemento<br>
+          Elemento<br>
+          Elemento<br>
+          <div id="accept-course-form" style="float:left;"><img src="http://placehold.it/80x30/4D9900/ffffff&text=aceptar" alt=""></div>
+          <div id="cancel-course-form" style="float:right;"><img src="http://placehold.it/80x30/ff0000/ffffff&text=cancelar" alt=""></div>
+        </ul>
+      </div>
+      <div id="course-list" >
+        <strong>Cursos</strong>
+        <img id="new-course" src="http://placehold.it/45x45/4D99E0/ffffff&text=new" style="float: right;" alt="">
+        <br>
+        Elemento<br>
+        Elemento<br>
+        Elemento<br>
+        Elemento<br>
+        Elemento
+      </div>
+    </div>
+
+    <h4>Usuarios</h4>
+    <img src="http://placehold.it/260x350/4D99E0/ffffff&text=usuarios" alt="">
+    <h4>Cursos</h4>
+    <img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">
+  </div>
+
+  <!-- Content -->
+  <div class="box-stream-post" style="background: #DCEAF4;margin-left: 0px; width: 685px;float: left;">
+
+    <div id="comentable_<%= current_network.id %>">
+      <% @comments.reverse.each do |comment| %>
+          <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+      <% end %>
+    </div>
+
+    <div id="comment1" style="width: 660px; height: 100%;background: #FFF; ">
+      <h4>Comment</h4>
+      <img src="http://placehold.it/45x45" alt="">
+      <b>Nombre de Usuario</b>
+      <span>fecha</span>
+      <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido
+      </p>
+      <div style="background: #eee;width: 100%;height: 28px;">
+        <div style="float:left;">Numero de comentarios</div>
+        <div style="float:right;">Likes</div>
+      </div>
+    </div>
+    <div id="comment2" style="width: 660px; height: 100%;background: #FFF;">
+      <h4>Comment</h4>
+      <img src="http://placehold.it/45x45" alt="">
+      <b>Nombre de Usuario</b>
+      <span>fecha</span>
+      <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido</p>
+      <div style="background: #eee;width: 100%;height: 28px;"></div>
+    </div>
+
+
+    <div id="comment" style="width: 660px; height: 100%;background: #FFF;">
+      <h4>Comment</h4>
+      <img src="http://placehold.it/45x45" alt="">
+      <b>Nombre de Usuario</b>
+      <span>fecha</span>
+      <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+        Contenido Contenido Contenido Contenido</p>
+      <div style="background: #eee;width: 100%;height: 28px;"></div>
+    </div>
+  </div>
 </div>

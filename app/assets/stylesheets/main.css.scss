@@ -1,0 +1,136 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$widht-content: 920px;
+
+body {
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* /\/\/\/\ Template Generic /\/\/\/\ */
+.center-div{
+  width: $widht-content;
+  margin: 0px auto;
+}
+
+.topbar{
+  position: fixed; background: #f7f7f7;
+  height: 40px;
+  z-index: 999;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  margin:0px auto;
+}
+
+.container{
+  position: absolute;
+  margin-top: 40px;
+}
+
+
+/* /\/\/\/\ Boxes /\/\/\/\ */
+#box-post-form{
+  border-bottom: 1px solid #ccc;
+}
+#box-content{
+  background: #FFF;
+}
+
+#pre-post-form {
+  background: #FFFFFF;
+  width: 640px;
+  height: 100px;
+}
+#box-stream-post{
+  background: #DCEAF4;
+  margin-left: 0px;
+  width: 685px;
+  float: left;
+}
+
+#box-course{
+  width: 220px;
+  height: 250px;
+  background: #FFF;
+}
+
+/*-- generic boxes --*/
+
+.box-3{
+  background: #DCEAF4;
+  width: 235px;
+
+  float: left;
+}
+.box-6{
+  background: #DCEAF4;
+  margin-left: 0px;
+  width: 685px;
+  float: left;
+}
+
+
+
+/* /\/\/\/\ Forms /\/\/\/\ */
+#form-new-course{
+  display: none;
+  width: 220px;
+  height: 250px;
+  position: absolute;
+  background: #ccc;
+}
+
+
+/* /\/\/\/\ Courses /\/\/\/\ */
+.course-id{
+  height: 250px;
+  width: 220px;
+  background: #ccc;
+
+}
+
+
+/* /\/\/\/\ Post and Forms Post /\/\/\/\ */
+.pre-post-element{
+  width:105px;
+  height: 100%;
+  background: #ccc;
+  float: left;
+  border-left: #999 solid 1px;
+}
+
+
+/* /\/\/\/\ User & Friends /\/\/\/\ */
+#banner-profile{
+  height:140px;
+  width:100%;
+  overflow: hidden;
+}
+#box-titles{
+  width: 500px;
+  height:30px;
+  float:right;
+  margin-top: 100px;
+  color:#FFF;
+  font-size: 12pt;
+}
+#box-titles-content{
+  clear: both;
+
+}
+
+.thumbnail{
+  width: 170px;
+  position: absolute;
+}
+.friend-thumb-mini{
+  float:left;
+}
+.container-fluid{
+  padding-right: 0px;
+  padding-left: 0px;
+}
