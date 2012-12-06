@@ -1,6 +1,8 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 $widht-content: 920px;
 
 body {
@@ -8,33 +10,6 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
 }
-
-/*
-.new_user {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-.new_user .form-signin-heading,
-.new_user .checkbox {
-  margin-bottom: 10px;
-}
-.new_user input[type="text"],
-.new_user input[type="password"] {
-  font-size: 16px;
-  height: auto;
-  margin-bottom: 15px;
-  padding: 7px 9px;
-}  */
-
 
 /* /\/\/\/\ Template Generic /\/\/\/\ */
 .center-div{
@@ -57,13 +32,12 @@ body {
 }
 
 
-
-/* Boxes */
+/* /\/\/\/\ Boxes /\/\/\/\ */
 #box-post-form{
   border-bottom: 1px solid #ccc;
 }
 #box-content{
-
+  background: #FFF;
 }
 
 #pre-post-form {
@@ -120,11 +94,7 @@ body {
 }
 
 
-
-
-
 /* /\/\/\/\ Post and Forms Post /\/\/\/\ */
-
 .pre-post-element{
   width:105px;
   height: 100%;
@@ -134,7 +104,24 @@ body {
 }
 
 
-/* /\/\/\/\ User & Friends/\/\/\/\ */
+/* /\/\/\/\ User & Friends /\/\/\/\ */
+#banner-profile{
+  height:140px;
+  width:100%;
+  overflow: hidden;
+}
+#box-titles{
+  width: 500px;
+  height:30px;
+  float:right;
+  margin-top: 100px;
+  color:#FFF;
+  font-size: 12pt;
+}
+#box-titles-content{
+  clear: both;
+
+}
 
 .thumbnail{
   width: 170px;

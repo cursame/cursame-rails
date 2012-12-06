@@ -2,8 +2,23 @@ $(document).ready(function() {
 
     var prePostHeight = $('#pre-post-form').height();
     var time = 500;
-    var timeSlide = time+100;
+    var timeSlide = time-100;
 
+    var control_height = false;
+    var tmp_height = 140;
+
+    $('#box-titles').click(function() {
+        if (control_height){
+            tmp_height = 140;
+            control_height=false;
+        }else{
+            tmp_height = 275;
+            control_height=true;
+        }
+        $('#banner-profile').animate({
+            height: tmp_height+'px'
+        }, time);
+    });
 
     $('#pre-post-form').click(function() {
 
