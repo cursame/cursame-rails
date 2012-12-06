@@ -2,7 +2,7 @@
 <p>Acepto las normas y condiciones de esta plataforma</p></br></br>
 
 <center>
-<%= form_for @NetworksUsers, :url => create_data_networks_users_path, remote: true do |form| %>
+<%= form_for (@NetworksUsers = NetworksUser.new), :url => create_data_networks_users_path, remote: true do |form| %>
    <%= form.hidden_field :user_id, :value => current_user.id %>
    <%= form.hidden_field :network_id, :value => current_network.id %> 
 <div style="background-color:#eee; border-radius:15px; width:300px; height:150px;">
