@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   version :profile do
-     process :resize_to_fit => [90, 90]
+     process :resize_to_fit => [150, 150]
    end
 
    version :modern do

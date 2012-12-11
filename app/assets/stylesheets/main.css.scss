@@ -2,13 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+  font-family: HelvLight;
+  src: url('/assets/fonts/HelveticaLTSLight.otf'),
+  url('/assets/fonts/HelveticaLTSLight.otf'); /* IE9+ */
+}
+@font-face {
+  font-family: HelvBoldCond;
+  src: url('/assets/fonts/HelveticaLTSBoldCond.otf'),
+  url('/assets/fonts/HelveticaLTSBoldCond.otf'); /* IE9+ */
+}
+@font-face {
+  font-family: HelvBold;
+  src: url('/assets/fonts/HelveticaLTStdBold.otf'),
+  url('/assets/fonts/HelveticaLTStdBold.otf'); /* IE9+ */
+}
 
+
+
+// Sizes
 $widht-content: 920px;
+$height-post-box: 100px;
+$width-left-bar: 250px;
+$width-right-bar: 685px;
+$border-box: 1px solid #c9d1da;
+$border-radius-box: 5px;
+
+//Backgrounds
+$bg-page: #FFF;
+$bg-general: #f6f7f9;
+
 
 body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
+  background: $bg-page;
+}
+
+ul{
+  list-style-type: none;
 }
 
 /* /\/\/\/\ Template Generic /\/\/\/\ */
@@ -29,6 +62,8 @@ body {
 .container{
   position: absolute;
   margin-top: 40px;
+  border: 1px solid #d5d5d5;
+  background: $bg-general;
 }
 
 
@@ -37,55 +72,131 @@ body {
   border-bottom: 1px solid #ccc;
 }
 #box-content{
-  background: #FFF;
+  background: $bg-general;
 }
 
 #pre-post-form {
-  background: #FFFFFF;
-  width: 640px;
-  height: 100px;
+  width: 100%;
+  height: $height-post-box;
+  background: $bg-general url('/assets/post_user_bg.png') no-repeat 20px 0px;
+}
+.pre-post-lateral {
+  background: $bg-general;
+  width: $width-left-bar;
+  float: left;
+  height: $height-post-box;
 }
 #box-stream-post{
-  background: #DCEAF4;
-  margin-left: 0px;
-  width: 685px;
+  width: $width-right-bar;
   float: left;
 }
 
 #box-course{
-  width: 220px;
+  width: 230px;
   height: 250px;
   background: #FFF;
+  margin-left: 10px;
+
+  & .element-left{
+    float: left;
+    border-top-left-radius: $border-radius-box;
+  }
+  & .element-right{
+    float: left;
+    border-left: 1px solid #c9d1da;
+    margin-left: -1px;
+    border-top-right-radius: $border-radius-box;
+  }
+
+  & #tabs{
+    & .plus-courses{
+      position: absolute;
+      float: right;
+      width: 37px;
+      height: 38px;
+      text-align: right;
+      border-top-right-radius: $border-radius-box;
+      background: url('/assets/plus-box-icon.png') no-repeat;
+      margin-left: 79px;
+      cursor:pointer;
+    }
+
+    & #ul-tabs{
+      & .title{
+        color: #969696;
+        font-family: HelvLight;
+        font-size: 9pt;
+        margin-left: 6px;
+      }
+      & .title-num{
+        color: #444444;
+        font-family: HelvBold;
+        font-size: 20pt;
+      }
+      & li{
+        width: 50%;
+        float: left;
+      }
+      & li a {
+        height: 33px;
+        float: left;
+        width: 100%;
+        padding: 7px 0px 0px 7px;
+      }
+      & li.ui-state-default{
+        background: #fafafa;
+        border-bottom: 1px solid #c9d1da;
+        margin-bottom: -1px;
+        -moz-box-shadow:inset 0px -1px 2px #dee2e6;
+        -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
+        box-shadow:inset 0px -1px 2px #dee2e6;
+      }
+      & li.ui-tabs-selected{
+        background: #ffffff;
+        border-bottom: 1px solid #FFF;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
 }
+
+.basic-lateral-box {
+  border: $border-box;
+  border-radius: $border-radius-box;
+}
+
 
 /*-- generic boxes --*/
 
 .box-3{
-  background: #DCEAF4;
-  width: 235px;
-
+  width: 250px;
   float: left;
 }
 .box-6{
   background: #DCEAF4;
   margin-left: 0px;
-  width: 685px;
+  width: $width-right-bar;
   float: left;
 }
 
 
 
-/* /\/\/\/\ Forms /\/\/\/\ */
+.ui-tabs-hide{
+ display:none;
+}
+
+/* /\/\/\/\/\/\/\/\ Forms /\/\/\/\ */
 #form-new-course{
   display: none;
-  width: 220px;
+  width: 230px;
   height: 250px;
   position: absolute;
-  background: #ccc;
 }
 
 
-/* /\/\/\/\ Courses /\/\/\/\ */
+/* /\/\/\/\/\/\/\/\/\/\/\/\ Courses /\/\/\/\ */
 .course-id{
   height: 250px;
   width: 220px;
@@ -94,7 +205,7 @@ body {
 }
 
 
-/* /\/\/\/\ Post and Forms Post /\/\/\/\ */
+/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ Post and Forms Post /\/\/\/\ */
 .pre-post-element{
   width:105px;
   height: 100%;
@@ -104,29 +215,50 @@ body {
 }
 
 
-/* /\/\/\/\ User & Friends /\/\/\/\ */
+/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ User & Friends /\/\/\/\ */
 #banner-profile{
   height:140px;
   width:100%;
   overflow: hidden;
+  color: white;
 }
 #box-titles{
   width: 500px;
   height:30px;
   float:right;
-  margin-top: 100px;
+  margin-top: 110px;
   color:#FFF;
   font-size: 12pt;
 }
 #box-titles-content{
   clear: both;
-
+  border-top: 1px solid rgba(255,255,255,0.2);
+  outline: 1px solid #000;
 }
 
-.thumbnail{
-  width: 170px;
+#box-user-credential{
+  margin-left: 55px;
+  width: 155px;
+  text-align: center;
   position: absolute;
+  margin-top: -25px;
+  & .thumbnail{
+    width: 150px;
+    height: 150px;
+    background: #DCEAF4;
+    border: 3px solid white;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow:    0px 1px 4px rgba(0, 0, 0, 0.75);
+    box-shadow:         0px 1px 4px rgba(0, 0, 0, 0.75);
+    text-align: center;
+  }
+  & .tagname{
+    font-size: 11pt;
+    line-height: 25pt;
+  }
 }
+
 .friend-thumb-mini{
   float:left;
 }

@@ -22,25 +22,19 @@
                 <div class ="btn disabled"> Ya le has hecho solicitud de amistad </div></br>
         <%when @friend_a != nil && @friend_a.friend_one == @user.id  %>
                 <div class ="btn"> Este usuario ha solicitado ser tu amigo </div></br>
-         
     <%end%>
 <%else%>
   <%= link_to "solicitudes de amistad pendientes", user_waiting_friends_path, :class=>'btn'%>
     </br>
-<%end%>
--->
+<%end%>-->
 
-
-
-<div id="banner-profile" >
-  <div id="box-titles">
-    <div>3 Escuelas</div>
-    <img src="/assets/bannerprofile.png" alt="">
-
-  </div>
-  <div id="box-titles-content">
-    <%= render :partial => "users/menu_member"%>
-  </div>
+<div id="banner-profile" style="background:url('/assets/bannerprofile.png')">
+    <div id="box-titles">
+        <div>3 Escuelas</div>
+    </div>
+    <div id="box-titles-content">
+        <%= render :partial => "users/menu_member"%>
+    </div>
 </div>
 
 <div id="box-content">
@@ -48,114 +42,122 @@
     <!-- Post -->
     <div id="box-post-form">
 
-      <div class="thumbnail" style="margin-top: -50px;" >
-        <%= link_to image_tag(@user.avatar.profile)%>
-        <%= @user.name %>
-      </div>
-
-      <div class="box-3">&nbsp;</div>
-      <div class="box-6">
-        <div id="post">
-          <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
-            <h1><%= current_user.email %></h1>
-            <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-            <div style="float: right; width: 220px">
-              <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
-              <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
+        <!-- User Avatar -->
+        <div id="box-user-credential">
+            <div class="thumbnail"  >
+                <%= link_to image_tag(@user.avatar.profile)%>
             </div>
-          </div>
+            <div class="tagname">
+                <%= @user.name %>
+            </div>
         </div>
 
-        <div id="pre-post-form">
-          <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
-          <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
-          <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
-          <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
-          <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
-          <div class="pre-post-element"><img src="http://placehold.it/75x75/4D99E0/ffffff" alt=""></div>
+        <div class="pre-post-lateral">&nbsp;</div>
+        <div class="box-6">
+            <div id="post">
+                <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
+                    <h1><%= current_user.email %></h1>
+                    <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+                    <div style="float: right; width: 220px">
+                      <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
+                      <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <div id="pre-post-form"></div>
         </div>
-
-      </div>
-
-
     </div>
 
     <!-- Content Post Box -->
     <div id="box-post-content">
 
         <!-- SideBar -->
-        <div class="box-3">
-          <div id="box-course" >
-            <div id="form-new-course">
-              <strong>Cursos form</strong>
-              <ul>
-                Elemento<br>
-                Elemento<br>
-                Elemento<br>
-                <div id="accept-course-form" style="float:left;"><img src="http://placehold.it/80x30/4D9900/ffffff&text=aceptar" alt=""></div>
-                <div id="cancel-course-form" style="float:right;"><img src="http://placehold.it/80x30/ff0000/ffffff&text=cancelar" alt=""></div>
-              </ul>
-            </div>
-            <div id="course-list" >
-              <strong>Cursos</strong>
-              <img id="new-course" src="http://placehold.it/45x45/4D99E0/ffffff&text=new" style="float: right;" alt="">
-              <br>
-              Elemento<br>
-              Elemento<br>
-              Elemento<br>
-              Elemento<br>
-              Elemento
-            </div>
-          </div>
+        <div class="box-3" style="margin-top: 60px" >
+            <%= current_user.email %>
+            <div id="box-course" class="basic-lateral-box" >
+                <div id="form-new-course">
+                    <strong>Cursos form</strong>
+                    <ul>
+                      Elemento<br>
+                      Elemento<br>
+                      Elemento<br>
+                      <div id="accept-course-form" style="float:left;"><img src="http://placehold.it/80x30/4D9900/ffffff&text=aceptar" alt=""></div>
+                      <div id="cancel-course-form" style="float:right;"><img src="http://placehold.it/80x30/ff0000/ffffff&text=cancelar" alt=""></div>
+                    </ul>
+                </div>
 
-          <h4>Usuarios</h4>
-          <img src="http://placehold.it/260x350/4D99E0/ffffff&text=usuarios" alt="">
-          <h4>Cursos</h4>
-          <img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">
+                <div id="tabs">
+                    <ul id="ul-tabs">
+                        <li class="element-left"><a href="#tabs-1"><span class="title-num">13</span><span class="title">CURSOS</span></a></li>
+                        <li class="element-right"><div id="new-course" class="plus-courses"></div><a href="#tabs-2"><span class="title-num">5</span><span class="title">CREADOS</span></a></li>
+                    </ul>
+
+                    <div id="tabs-1">
+
+                        <ul id="course-list" >
+                            <li>Elemento</li>
+                            <li>Elemento</li>
+                            <li>Elemento</li>
+                            <li>Elemento</li>
+                            <li>Elemento</li>
+                        </ul>
+                    </div>
+                    <div id="tabs-2">
+                      <p>Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <h4>Usuarios</h4>
+            <img src="http://placehold.it/260x350/4D99E0/ffffff&text=usuarios" alt="">
+            <h4>Cursos</h4>
+            <img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">
         </div>
 
         <!-- Content -->
-        <div class="box-stream-post" style="background: #DCEAF4;margin-left: 0px; width: 685px;float: left;">
+        <div id="box-stream-post">
 
-          <div id="comment1" style="width: 660px; height: 100%;background: #FFF; ">
-            <h4>Comment</h4>
-            <img src="http://placehold.it/45x45" alt="">
-            <b>Nombre de Usuario</b>
-            <span>fecha</span>
-            <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido
-            </p>
-            <div style="background: #eee;width: 100%;height: 28px;">
-              <div style="float:left;">Numero de comentarios</div>
-              <div style="float:right;">Likes</div>
+            <div id="comment1" style="width: 660px; height: 100%;background: #FFF; ">
+                <h4>Comment</h4>
+                <img src="http://placehold.it/45x45" alt="">
+                <b>Nombre de Usuario</b>
+                <span>fecha</span>
+                <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido
+                </p>
+                <div style="background: #eee;width: 100%;height: 28px;">
+                  <div style="float:left;">Numero de comentarios</div>
+                  <div style="float:right;">Likes</div>
+                </div>
             </div>
-          </div>
-          <div id="comment2" style="width: 660px; height: 100%;background: #FFF;">
-            <h4>Comment</h4>
-            <img src="http://placehold.it/45x45" alt="">
-            <b>Nombre de Usuario</b>
-            <span>fecha</span>
-            <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido</p>
-            <div style="background: #eee;width: 100%;height: 28px;"></div>
-          </div>
+            <div id="comment2" style="width: 660px; height: 100%;background: #FFF;">
+                <h4>Comment</h4>
+                <img src="http://placehold.it/45x45" alt="">
+                <b>Nombre de Usuario</b>
+                <span>fecha</span>
+                <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido</p>
+                <div style="background: #eee;width: 100%;height: 28px;"></div>
+            </div>
 
 
-          <div id="comment" style="width: 660px; height: 100%;background: #FFF;">
-            <h4>Comment</h4>
-            <img src="http://placehold.it/45x45" alt="">
-            <b>Nombre de Usuario</b>
-            <span>fecha</span>
-            <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido</p>
-            <div style="background: #eee;width: 100%;height: 28px;"></div>
-          </div>
+            <div id="comment" style="width: 660px; height: 100%;background: #FFF;">
+                <h4>Comment</h4>
+                <img src="http://placehold.it/45x45" alt="">
+                <b>Nombre de Usuario</b>
+                <span>fecha</span>
+                <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                  Contenido Contenido Contenido Contenido</p>
+                <div style="background: #eee;width: 100%;height: 28px;"></div>
+            </div>
         </div>
     </div>
 

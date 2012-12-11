@@ -68,7 +68,7 @@ $(document).ready(function() {
     });
 
     function moveOutSlide(){
-        $('#course-list').hide(
+        $('#tabs').hide(
             "slide", { direction: "left" }, 1000
         );
         $('#form-new-course').show(
@@ -79,7 +79,7 @@ $(document).ready(function() {
     }
 
     function moveOutSlide(){
-        $('#course-list').hide(
+        $('#tabs').hide(
             "slide", { direction: "left" }, timeSlide
         );
         $('#form-new-course').show(
@@ -95,8 +95,11 @@ $(document).ready(function() {
             {
                 direction: "right"
             },timeSlide);
-        $('#course-list').show(
+        $('#tabs').show(
             "slide", { direction: "left" }, timeSlide
         );
     }
+    $(function() {
+        $( "#tabs" ).tabs();
+    });
 })
