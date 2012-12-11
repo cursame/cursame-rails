@@ -1,5 +1,9 @@
 <h1> Usuarios registrados en el sistema </h1>
-<% @usersid.each do |sid|%>
-   <% @user = User.find(sid.user_id) %>
-   |<%= @user.name %> <%= @user.email%>|</br>
+<% if @usersid %>
+    <% @usersid.each do |sid|%>
+        <% @user = User.find(sid.user_id) %>
+        |<%= @user.name %> <%= @user.email%>|</br>
+    <%end%>
+  <%else%>
+    <%= 'no hay miembros en esta red'%>
 <%end%>

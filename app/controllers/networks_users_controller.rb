@@ -18,7 +18,11 @@ class NetworksUsersController < ApplicationController
   end
   
   def index
+  if current_network
    @usersid = current_network.networks_users  
+  else
+   
+  end
   end
 
 

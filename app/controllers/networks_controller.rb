@@ -1,8 +1,8 @@
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
-  before_filter :register_member
-  skip_before_filter :register_member, :only => [:index, :new]
+  before_filter :filter_user_network_wed
+  skip_before_filter :filter_user_network_wed, :only => [:index, :new]
   
   def index
     @networks = Network.all
@@ -88,19 +88,8 @@ class NetworksController < ApplicationController
     end
   end
   
-  def register_member
-    if member
-    member.each do |member|
-       @memberid = member.user_id 
-       @user = User.find_by_id(@memberid)
-     end
-        if @memberid == current_user.id
-           return false
-        else
-           redirect_to new_networks_user_path
-        end
-    end
+  def filter_user_network_wed
+    network_member
   end
-  
   
 end
