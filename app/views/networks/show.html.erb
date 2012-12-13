@@ -1,17 +1,19 @@
-
 <!-- Post -->
 <div id="box-post-form">
+
+
   <div class="thumbnail" style="" >
     <a href="#" class="" style="background: #FFF;">
       <img src="http://placehold.it/140x140/E49800/333333" alt="">
     </a>
-    Nombre de Usuario
+    Nombre de Usuario <br>
   </div>
+
+
   <div class="box-3">&nbsp;</div>
   <div class="box-6">
     <div id="post">
       <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
-        <h1><%= current_user.email %></h1>
         <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
         <div style="float: right; width: 220px">
           <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>

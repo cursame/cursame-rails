@@ -4,11 +4,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   version :profile do
-     process :resize_to_fit => [90, 90]
+     process :resize_to_fit => [150, 150]
    end
 
    version :modern do
-     process :resize_to_fill => [40, 40]
+     process :resize_to_fill => [45, 45]
    end
    
    version :head do

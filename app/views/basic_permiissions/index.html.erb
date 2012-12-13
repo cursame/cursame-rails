@@ -1,0 +1,23 @@
+<h1>Listing basic_permiissions</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @basic_permiissions.each do |basic_permiission| %>
+  <tr>
+    <td><%= basic_permiission.title %></td>
+    <td><%= link_to 'Show', basic_permiission %></td>
+    <td><%= link_to 'Edit', edit_basic_permiission_path(basic_permiission) %></td>
+    <td><%= link_to 'Destroy', basic_permiission, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Basic permiission', new_basic_permiission_path %>
