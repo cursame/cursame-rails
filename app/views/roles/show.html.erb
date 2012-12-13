@@ -18,6 +18,24 @@
 
 <%= link_to 'Edit', edit_role_path(@role) %> |
 <%= link_to 'Back', roles_path %>
+</br></br>
+<% @role.moduls.each do |modules|%>
+ <b><%= modules.name %></b></br>
+   <% modules.permissions.each do |p|%></br>
+   <table>
+     <tr>
+       <th> Permiso&nbsp;&nbsp; </th>&nbsp;
+       <th> Status&nbsp;&nbsp; </th>&nbsp;
+     </tr>
+    <tr>
+    <% @permission = Permission.find(p.id)%>
+       <%= form_for @permission, :id => "active#{p.id}", :remote => true do |f|%>
+     <td><%= p.name %> &nbsp;</td>
+     <td><%= f.check_box :active, :onclick => 'submit()'  %></td>
+       
+       <%end%>
+     </tr>
+    </table>
+   <%end%></br></br>
+<%end%>
 
-<%= render :partial => "role_id_and_permission_ids/form"%>
-<%= render :partial => "role_id_and_permission_ids/roles_frad"%>

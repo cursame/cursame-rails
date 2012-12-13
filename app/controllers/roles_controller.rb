@@ -43,9 +43,33 @@ class RolesController < ApplicationController
   # POST /roles.json
   def create
     @role = Role.new(params[:role])
-
+ 
     respond_to do |format|
       if @role.save
+        
+        ActiveRecord::Base.connection.tables.map do |model|
+          @bp = BasicPermiission.all
+          @modul = Modul.new
+          @modul.name =  model.capitalize.singularize.camelize
+          @modul.role_id = @role.id
+          @modul.save
+                  @bp.each do |p|
+                    
+                     @permission = Permission.new
+                     @permission.name = p.title
+                     @permission.modul_id = @modul.id
+                     @permission.active = true
+                     @permission.save
+                      
+                   end
+        end
+        
+        
+        
+       
+        
+        
+          
         #format.html {notice: 'Role was successfully created.' }
         format.json
         format.js

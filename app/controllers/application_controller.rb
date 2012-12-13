@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :links
   helper_method :user_url
   helper_method :current_friend  
+  helper_method :models
   
   #data of the networks you are
   def current_network
@@ -66,6 +67,15 @@ class ApplicationController < ActionController::Base
             end
     
   end
+  
+  #extrae todos los modelos
+  
+  def models
+    ActiveRecord::Base.connection.tables.map do |model|
+      model.capitalize.singularize.camelize
+    end
+  end
+  
   
   ######## definiendo role del usuario ########
  

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205201010) do
+ActiveRecord::Schema.define(:version => 20121213181921) do
+
+  create_table "basic_permiissions", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -27,6 +33,13 @@ ActiveRecord::Schema.define(:version => 20121205201010) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "moduls", :force => true do |t|
+    t.string   "name"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "network_templates", :force => true do |t|
     t.integer  "network_id"
@@ -56,6 +69,9 @@ ActiveRecord::Schema.define(:version => 20121205201010) do
     t.boolean  "avtive"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "module_id"
+    t.integer  "modul_id"
+    t.boolean  "active"
   end
 
   create_table "role_id_and_permission_ids", :force => true do |t|
