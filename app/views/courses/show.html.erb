@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tile:</b>
+  <%= @course.tile %>
+</p>
+
+<p>
+  <b>Silabus:</b>
+  <%= @course.silabus %>
+</p>
+
+<p>
+  <b>Init date:</b>
+  <%= @course.init_date %>
+</p>
+
+<p>
+  <b>Finish date:</b>
+  <%= @course.finish_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
