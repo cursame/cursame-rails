@@ -77,13 +77,13 @@
                 </ul>
                 <div id="tabs-courses-1">
                     <ul id="course-list" >
-                        <li><a href ="#">Algebra I</a></li>
-                        <li><a href ="#" class="active">Computacion</a></li>
-                        <li><a href ="#">Trigonometria</a></li>
-                        <li><a href ="#">Lenguas Hispanas</a></li>
-                        <li><a href ="#">Ingles</a></li>
-                        <li><a href ="#">Calculo Integral</a></li>
-                        <li><a href ="#">Programación</a></li>
+                    <% if @course_count == 0%>
+                        <li><a href="#">No hay cursos</a></li>
+                    <%else%>
+                        <% @courses.each do |c|%>
+                        <li><%= link_to "#{c.title}", course_path(c.id) %></li>
+                        <%end%>
+                    <%end%>
                     </ul>
                     <div class="view-all"><a href="">Ver Todo</a></div>
                 </div>

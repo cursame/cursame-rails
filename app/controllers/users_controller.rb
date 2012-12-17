@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     validate_friend
     current_user_friends
     @friend = UserFriends.new   
-    @course = Course.new  
+    @course = Course.new
+    @courses = Course.order(:by => :finish_date).limit(7).reverse
+    @course_count = Course.count
   end
   
   def current_user_friends
