@@ -131,13 +131,9 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable
-<<<<<<< HEAD
-  coffee-rails (~> 3.2.1)
-=======
   bcrypt-ruby (~> 3.0.0)
   carrierwave
   devise
->>>>>>> origin/development
   jquery-rails
   json
   less-rails
