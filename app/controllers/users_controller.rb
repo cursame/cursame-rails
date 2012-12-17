@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     current_friend
     validate_friend
     current_user_friends
-    @friend = UserFriends.new     
+    @friend = UserFriends.new   
+    @course = Course.new  
   end
   
   def current_user_friends

@@ -1,0 +1,21 @@
+<%= form_for(@course) do |f| %>
+  <div class="field">
+    <%= f.label :tile %><br />
+    <%= f.text_field :tile %>
+  </div>
+  <div class="field">
+    <%= f.label :silabus %><br />
+    <%= f.text_area :silabus, :rows => 3, :cols => 29 %>
+  </div>
+  <div class="field">
+    <%= f.label :init_date %><br />
+    <%= f.date_select :init_date %>
+  </div>
+  <div class="field">
+    <%= f.label :finish_date %><br />
+    <%= f.date_select :finish_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
