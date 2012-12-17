@@ -163,36 +163,47 @@
             <div id="comment1" class="comment" >
                 <div class="arrow-left"></div>
 
-                <div class="header"><h4>Comment</h4></div>
-                <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                <b>Nombre de Usuario</b>
-                <span>fecha</span>
-                <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-                  Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-                  Contenido Contenido Contenido Contenido
-                </p>
-                <div style="background: #eee;width: 100%;height: 28px;">
-                  <div style="float:left;">Numero de comentarios</div>
+                <div class="header">
+                    <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+                    <b>Nombre Usuario</b>  <span>fecha</span>
+                </div>
+                <div>
+                  <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                    Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                    Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+                    Contenido Contenido Contenido Contenido </p>
+                </div>
+
+                <div class="footer">
+                  <img src="/assets/icons/grey-mini-comment.png" alt="" style="float: left;">
+                  <img src="/assets/icons/grey-mini-like.png" alt="" style="float: left;">
+                  <div style="float:right;">Numero de comentarios</div>
                   <div style="float:right;">Likes</div>
                 </div>
             </div>
         </div>
-
       <div id="box-comments">
         <div class="general-cir"></div>
+
+
         <div id="comment1" class="comment" >
-          <h4>Comment</h4>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-          <b>Nombre de Usuario</b>
-          <span>fecha</span>
-          <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-            Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-            Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-            Contenido Contenido Contenido Contenido
-          </p>
-          <div style="background: #eee;width: 100%;height: 28px;">
-            <div style="float:left;">Numero de comentarios</div>
+          <div class="arrow-left"></div>
+
+          <div class="header">
+            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+            <b>Nombre Usuario</b>  <span>fecha</span>
+          </div>
+          <div>
+            <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
+              Contenido Contenido Contenido Contenido </p>
+          </div>
+
+          <div class="footer">
+            <img src="/assets/icons/grey-mini-comment.png" alt="" style="float: left;">
+            <img src="/assets/icons/grey-mini-like.png" alt="" style="float: left;">
+            <div style="float:right;">Numero de comentarios</div>
             <div style="float:right;">Likes</div>
           </div>
         </div>
