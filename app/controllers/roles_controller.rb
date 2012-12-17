@@ -14,9 +14,7 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     @role = Role.find(params[:id])
-    @role_id_and_permission_id = RoleIdAndPermissionId.new
-    @permissions = Permission.all
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @role }
@@ -46,13 +44,11 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        #format.html {notice: 'Role was successfully created.' }
-        format.json
-        format.js
+        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        format.json { render json: @role, status: :created, location: @role }
       else
-        #format.html
-        format.json
-        format.js
+        format.html { render action: "new" }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
   end
