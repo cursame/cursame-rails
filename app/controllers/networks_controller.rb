@@ -1,8 +1,8 @@
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
-  before_filter :filter_user_network_wed
-  skip_before_filter :filter_user_network_wed, :only => [:index, :new]
+ # before_filter :filter_user_network_wed
+  #skip_before_filter :filter_user_network_wed, :only => [:index, :new]
   
   def index
     @networks = Network.all
