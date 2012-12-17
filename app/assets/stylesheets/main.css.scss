@@ -98,7 +98,7 @@ ul{
 #box-content{
   float: left;
   &.profile-line{
-    background: url('/assets/line-tl.png') $bg-general repeat-y 285px 0px;
+    background: url('/assets/line-tl.png') $bg-general repeat-y 276px 0px;
   }
 
 }
@@ -116,8 +116,6 @@ ul{
 
 #box-comments{
   clear: both;
-  float: left;
-  margin-left: 9px;
   & .comment{
     width: 600px;
     height: 100%;
@@ -239,7 +237,6 @@ ul{
   color: #666666;
   background: #f6f7f9;
   margin: 170px 0px 10px 10px;
-  margin-left: $margin-sidebar-left;
   -moz-box-shadow:    0px 1px 0px #fff, inset 0px 1px 0px #fff;
   -webkit-box-shadow: 0px 1px 0px #fff, inset 0px 1px 0px #fff;
   box-shadow:         0px 1px 0px #fff, inset 0px 1px 0px #fff;
