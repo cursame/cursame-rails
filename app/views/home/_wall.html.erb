@@ -1,0 +1,10 @@
+<h1><%= current_user.email %></h1>
+<%= form_tag "/home/add_new_comment", :remote =>true do %>
+    <%= text_area_tag "comment"%>
+    <%= submit_tag "Comentar",:class=>"btn btn-primary" %>
+  <% end %>	
+<div id="comments">	
+<% @comments.each do |comment| %>			
+	<%= render :partial => '/shared/comment', :locals => {:comment => comment} %>
+<% end %>
+</div>

@@ -64,4 +64,16 @@ Cursame30Lb::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Action Mailer
+  ActionMailer::Base.smtp_settings = {
+    :address        => '50.116.21.144',
+    :port           => '25',
+    :authentication => 'plain',
+    :user_name      => 'wichobabas',
+    :password       => 'qor43e95',
+    :domain         => 'mail.cursame.me'
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
 end

@@ -1,0 +1,17 @@
+    <b><%= 'mis redes'%></b></br>
+    <% if @n == "nil"%>
+    <%= link_to "#{@n.name}", "http://#{@n.subdomain}.#{links}/"%></br>
+    <%else%>
+    <%= @notice %> <%= link_to "inscribirse a una red", networks_path %></br>
+    <%end%>
+    <% if @user == "nil" %>
+    <%else%>
+    <b><%= 'mis amigos'%></b></br>
+    <%case%>
+           <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_two  == @user.id  %>
+                 <%= link_to "#{@user_one_two.name} #{@user_one_two.email}", show_user_path(@user_one_two.personal_url)%></br>
+            <%when @pending_relarionships_user_one != nil && @pending_relarionships_user_one.friend_one  == @user.id   %>
+                  <%= link_to "#{@user_two.name} #{@user_two.email}", show_user_path(@user_two.personal_url)%></br>
+       <%end%>
+   
+    <%end%>

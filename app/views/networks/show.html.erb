@@ -1,0 +1,7 @@
+<h1><%= current_user.email %></h1>
+<%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+<div id="comentable_<%= current_network.id %>">	
+	<% @comments.reverse.each do |comment| %>			
+		<%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+	<% end %>
+</div>

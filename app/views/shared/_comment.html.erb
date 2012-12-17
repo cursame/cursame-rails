@@ -1,0 +1,9 @@
+<div class="media" id = "comment_<%= comment.id %>">
+    <a class="pull-left" href="#">
+    	<img class="media-object" src="<%= comment.user.avatar%>" width ="32px">
+    </a>        
+    <div class="media-body">
+        <h4 class="media-heading"><%= comment.user.name %></h4>
+        <%= comment.comment %>
+    </div>
+</div>
