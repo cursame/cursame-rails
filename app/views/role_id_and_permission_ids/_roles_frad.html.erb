@@ -1,0 +1,10 @@
+<table>
+
+<% if @role.role_id_and_permission_ids %>
+<% @role.role_id_and_permission_ids.reverse.each do |rp| %>     
+                    <%= rp.permission_id %>
+                    <% @permission = Permission.find(rp.permission_id) %>
+                    <%= @permission.name %> <%= link_to 'Destroy', rp, confirm: 'Are you sure?', method: :delete %></br>
+                    <div id="permission_ad"></div>
+<%end%>
+<%end%>
