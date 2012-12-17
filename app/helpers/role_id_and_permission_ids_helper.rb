@@ -1,2 +1,0 @@
-module RoleIdAndPermissionIdsHelper
-end

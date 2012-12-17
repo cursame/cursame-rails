@@ -1,15 +1,19 @@
 Cursame30Lb::Application.routes.draw do
   
   
+<<<<<<< HEAD
+=======
 
     
   resources :role_id_and_permission_ids
 
   #manejo de roles
   resources :roles 
+>>>>>>> parent of 3d4efe8... subiendo modificaciones iniciales a tabla de roles
   
   resources :permissions
-  
+
+  resources :roles
 
   #manejo de users
   
