@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20121217204516) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "courses", :force => true do |t|
-    t.string   "tile"
+    t.string   "title"
     t.text     "silabus"
     t.datetime "init_date"
     t.datetime "finish_date"

@@ -1,7 +1,7 @@
 class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
-      t.string :tile
+      t.string :title
       t.text :silabus
       t.datetime :init_date
       t.datetime :finish_date

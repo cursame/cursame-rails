@@ -1,7 +1,9 @@
-<%= form_for(@course) do |f| %>
+<div id = "course_create">
+<div class="ui-widget-overlay">Cargando ...</div>
+<%= form_for(@course, :remote => true) do |f| %>
   <div class="field">
-    <%= f.label :tile %><br />
-    <%= f.text_field :tile %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :silabus %><br />
@@ -15,7 +17,13 @@
     <%= f.label :finish_date %><br />
     <%= f.date_select :finish_date %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions", id="create_course_form">
+    <%= f.submit%>
   </div>
 <% end %>
+</div>
+<script>
+    $("#create_course_form").on('click',function(){
+       $(".ui-widget-overlay").css('display','block');
+    });    
+</script>
