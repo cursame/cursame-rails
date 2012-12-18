@@ -122,8 +122,9 @@ ul{
   margin-left: 9px;
   & .avatar{
     margin-left: 3px;
-    position: relative;
+    position: absolute;
     margin-top: 4px;
+    margin-right: 8px;
     float: left;
   }
   & .comment{
@@ -159,14 +160,43 @@ ul{
     -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
     box-shadow:         inset 0px 1px 0px #f7f7f8;
     border-bottom: $border-box;
+    & .null-image{
+      width: 60px;
+      height: 15px;
+      float: left;
+    }
+  }
+  & .content{
+    color: #333;
+    font-size: 13px;
+    padding: 6px 15px 5px 25px;
+    & .null-image{
+      width: 35px;
+      height: 22px;
+      float: left;
+    }
+  }
+  & .content-image{
+    & .single-image{
+      width: 600px;
+      float: left;
+    }
   }
   & .footer{
     border-top:1px solid $border-general;
     height: 25px;
     color: #777777;
+    & .icon{
+      float: left;
+      margin: 4px 0px 0px 5px;
+    }
+    & .labels{
+      float: right;
+      margin: 4px 5px 0px 10px;
+    }
   }
-
 }
+
 
 .tabs-style{
   & .plus-courses{

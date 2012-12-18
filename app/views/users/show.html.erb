@@ -28,6 +28,8 @@
     </br>
 <%end%>-->
 
+
+
 <div id="banner-profile" style="background:url('/assets/bannerprofile.png')">
     <div id="box-titles">
         <div>3 Escuelas</div>
@@ -108,33 +110,33 @@
                 </ul>
                 <div id="tabs-friends-1">
                   <div class="content-avtr">
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                      <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                      <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
                   </div>
                   <div class="view-all"><a href="">Ver Todo</a></div>
                 </div>
                 <div id="tabs-friends-2">
                   <div class="content-avtr">
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar_mini"})%>
+                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
                   </div>
                 </div>
             </div>
@@ -159,74 +161,67 @@
 
         <div id="box-comments">
             <div class="general-cir"></div>
-
-
             <div id="comment1" class="comment" >
                 <div class="arrow-left"></div>
-
                 <div class="header">
+                    <div class="null-image"></div>
                     <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
                     <b>Nombre Usuario</b>  <span>fecha</span>
                 </div>
-                <div>
-                  <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-                    Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-                    Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-                    Contenido Contenido Contenido Contenido </p>
+                <div class="content">
+                  <div class="null-image"></div>
+                  <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
                 </div>
 
                 <div class="footer">
-                  <img src="/assets/icons/grey-mini-comment.png" alt="" style="float: left;">
-                  <img src="/assets/icons/grey-mini-like.png" alt="" style="float: left;">
-                  <div style="float:right;">Numero de comentarios</div>
-                  <div style="float:right;">Likes</div>
+                  <img src="/assets/icons/grey-mini-comment.png" class="icon">
+                  <img src="/assets/icons/grey-mini-like.png" class="icon">
+                  <div class="labels">20 Comentarios</div>
+                  <div class="labels">12 Likes</div>
                 </div>
+            </div>
+        </div>
+        <div id="box-comments">
+            <div class="general-cir"></div>
+                <div id="comment1" class="comment" >
+                    <div class="arrow-left"></div>
+                        <div class="header">
+                            <div class="null-image"></div>
+                            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+                            <b>Nombre Usuario</b>  <span>fecha</span>
+                        </div>
+                      <div class="content-image" ><img src="/assets/comment_image.jpg" class="single-image"></div>
+
+                  <div class="footer">
+                <img src="/assets/icons/grey-mini-comment.png" class="icon">
+                <img src="/assets/icons/grey-mini-like.png" class="icon">
+                <div class="labels">20 Comentarios</div>
+                <div class="labels">12 Likes</div>
+              </div>
             </div>
         </div>
       <div id="box-comments">
         <div class="general-cir"></div>
 
-
         <div id="comment1" class="comment" >
           <div class="arrow-left"></div>
-
           <div class="header">
             <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
             <b>Nombre Usuario</b>  <span>fecha</span>
           </div>
-          <div>
-            <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-              Contenido Contenido Contenido Contenido </p>
+          <div class="content">
+            <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
           </div>
 
           <div class="footer">
-            <img src="/assets/icons/grey-mini-comment.png" alt="" style="float: left;">
-            <img src="/assets/icons/grey-mini-like.png" alt="" style="float: left;">
-            <div style="float:right;">Numero de comentarios</div>
-            <div style="float:right;">Likes</div>
+            <img src="/assets/icons/grey-mini-comment.png" class="icon">
+            <img src="/assets/icons/grey-mini-like.png" class="icon">
+            <div class="labels">20 Comentarios</div>
+            <div class="labels">12 Likes</div>
           </div>
         </div>
       </div>
-      <div id="box-comments">
-        <div class="general-cir"></div>
-        <div id="comment1" class="comment" >
-          <h4>Comment</h4>
-          <img src="http://placehold.it/45x45" alt="">
-          <b>Nombre de Usuario</b>
-          <span>fecha</span>
-          <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-            Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-            Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-            Contenido Contenido Contenido Contenido
-          </p>
-          <div style="background: #eee;width: 100%;height: 28px;">
-            <div style="float:left;">Numero de comentarios</div>
-            <div style="float:right;">Likes</div>
-          </div>
-        </div>
-      </div>
+
     </div>
 
 </div>
