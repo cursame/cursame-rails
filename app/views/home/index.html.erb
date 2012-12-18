@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
 	<%= render :partial => 'wall' %>	
 <% else %>
-	<%= render :partial => 'login-form'%>
-<% end %>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,30 +18,29 @@
 
 </head>
 <body>
-<div class="topbar">
+<div class="topbar2">
       <div class="fill">
-        <div class="container">
-          <a class="brand" href="http://cursa.me/index.html"><img src="img/logo.png"></a>
+        <div class="container2">
+       <!--   <a class="brand" href="http://cursa.me/index.html"><img src="img/logo.png"></a>-->
           
-        </div>
+        </div>      	
       </div>
     </div>
+
+<div style="overflow: hidden; width: 100%; height: 100%; z-index: -1; position: fixed; top: 0px; left: 0px; "><img src="assets/background-login.png" id="expando" style="left: 0px; "></div>
 
 	<div class="login"><center>
 		<p><b>Clases, Actividades, Red Social.</b><br>
 C&uacute;rsame conecta a directivos, profesores y alumnos <br>
 permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>	<br>
 
-<a class="btn large primary" href="licencias.html"><i>&iquest;Eres nuevo en C&uacute;rsame?</i> </a>
+<a class="btn large primary" href="licencias.html"><i><%= link_to "¿Eres nuevo en Cúrsame?", new_user_registration_path ,:class=>"btn large primary"%>
+</i> </a>
 
 <div class="login-form">
 	Iniciar Sesi&oacute;n
-	
 		<form action="demo_form.asp" autocomplete="on">
-			<input type="email" name="email" placeholder="Email" class="email"><br>
-			<input type="password" name="password" placeholder="Contrase&ntilde;a" class="pswd"><br>
-<button class="log-in" type="submit">Iniciar Sesi&oacute;n</button>
-<div class="forgot"><a href="">Olvid&eacute; mi contrase&ntilde;a</a></div>
+			<%= render :partial => 'login-form'%>
 </form>
 	
 </div>
@@ -52,7 +51,8 @@ permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>	<br>
 	
 	<footer>Sobre nosotros &nbsp;&nbsp;Ayuda &nbsp;&nbsp;Blog  &nbsp;&nbsp;Empleos &nbsp;&nbsp;T&eacute;rminos &nbsp;&nbsp;Privacidad &nbsp;&nbsp;Publicidad  &nbsp;&nbsp;Desarrolladores   &nbsp;&nbsp;&nbsp;&copy; 2012 C&uacute;rsame </footer>
 
-	<div style="overflow: hidden; width: 100%; height: 100%; z-index: -1; position: fixed; top: 0px; left: 0px; "><img src="img/background-login.png" id="expando" style="left: 0px; "></div>
+
 	
 </body>
 </html>
+<% end %>
