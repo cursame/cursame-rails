@@ -35,9 +35,10 @@ $width-lateral-box: 230px;
 
 //Colors
 $gray-e: #eeeeee;
+$border-general: #c9d1da;
 
 //Borders
-$border-box: 1px solid #c9d1da;
+$border-box: 1px solid $border-general;
 $border-gray: 1px solid $gray-e;
 $border-radius-box: 5px;
 $border-radius-avatar-mini: 3px;
@@ -45,6 +46,7 @@ $border-radius-avatar-mini: 3px;
 //Backgrounds
 $bg-page: #FFF;
 $bg-general: #fafafb; //#fbfcfd; //#fcfcfc;// #FFF;//#f6f7f9;
+$bg-bars: #F6F7F9;
 
 //Margin
 $margin-sidebar-left: 17px;
@@ -118,6 +120,13 @@ ul{
   clear: both;
   float: left;
   margin-left: 9px;
+  & .avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
   & .comment{
     width: 600px;
     height: 100%;
@@ -142,13 +151,52 @@ ul{
     margin:5px 0px 0px -9px;
   }
   & .header{
-    background: #e9e9e9;
+    background: #e9e9e9;//#ebebef;
     height: 25px;
     border-top-right-radius: $border-radius-box;
     border-top-left-radius: $border-radius-box;
-  }
 
+    -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
+    -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
+    box-shadow:         inset 0px 1px 0px #f7f7f8;
+    border-bottom: $border-box;
+    & .null-image{
+      width: 60px;
+      height: 15px;
+      float: left;
+    }
+  }
+  & .content{
+    color: #333;
+    font-size: 13px;
+    padding: 6px 15px 5px 25px;
+    & .null-image{
+      width: 35px;
+      height: 22px;
+      float: left;
+    }
+  }
+  & .content-image{
+    & .single-image{
+      width: 600px;
+      float: left;
+    }
+  }
+  & .footer{
+    border-top:1px solid $border-general;
+    height: 25px;
+    color: #777777;
+    & .icon{
+      float: left;
+      margin: 4px 0px 0px 5px;
+    }
+    & .labels{
+      float: right;
+      margin: 4px 5px 0px 10px;
+    }
+  }
 }
+
 
 .tabs-style{
   & .plus-courses{
@@ -237,7 +285,7 @@ ul{
 #box-profile-info{
   min-height: 70px;
   color: #666666;
-  background: #f6f7f9;
+  background: $bg-bars;
   margin: 170px 0px 10px 10px;
   margin-left: $margin-sidebar-left;
   -moz-box-shadow:    0px 1px 0px #fff, inset 0px 1px 0px #fff;
@@ -296,7 +344,7 @@ ul{
     padding: 8px 0px 0px 0px;
     clear: both;
   }
-  & .avatar_mini{
+  & .avatar-mini{
     margin: 2px 0px 2px 4px;
   }
 }
@@ -431,12 +479,11 @@ ul{
     font-family: helvbold;
   }
 }
-.avatar_mini{
+.avatar-mini{
   border: #FFF 2px solid;
   border-radius: $border-radius-avatar-mini;
 
   -moz-box-shadow:  0px 1px 2px #666;
   -webkit-box-shadow: 0px 1px 2px #666;
   box-shadow: 0px 1px 2px #666;
-
 }
