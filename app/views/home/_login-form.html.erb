@@ -1,12 +1,16 @@
 <form action="<%= user_session_path %>"  class="form-signin" method="post">
-  <h2 class="form-signin-heading">Please sign in</h2>
-  <input type="text" name="user[email]"  class="email" placeholder="Email address">
-  <input type="password" name="user[password]" placeholder="Password" placeholder="Contrase&ntilde;a" class="pswd">
-  <label class="checkbox">
+
+  <input type="text" name="user[email]"  placeholder="Email" class="email" >
+  <input type="password" name="user[password]"placeholder="Contrase&ntilde;a" class="pswd">
+  
+
+    <label class="checkbox remember">
     <input type="checkbox" name="user[remember_me]" value="remember-me"> Recordarme    
   </label></br>
-  <%=link_to "Olvide mi contraseña", new_user_password_path%>
+
+  
   <button class="log-in" type="submit">Iniciar Sesi&oacute;n</button>
+
   
-  
+    <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
 </form>

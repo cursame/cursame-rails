@@ -45,7 +45,7 @@ line-height: 1;
 
 .login{
 margin: auto;
-padding-top: 70px;
+padding-top: 50px;
 width: 500px;
 font-family: "Helvetica Neue", sans-serif;
 color: white;
@@ -125,6 +125,8 @@ color: #00b0ca;
 font-family: "HelveticaNeue", sans-serif;
 }
 
+
+
 .email{
 margin-top: 15px;
 width: 245px;
@@ -135,6 +137,7 @@ color: #c9c9c9;
 font-size: 12px;
 line-height: 15px;
 font-family: "HelveticaNeue-Light", sans-serif;
+margin-left: -5px;
 }
 
 .pswd{
@@ -147,6 +150,7 @@ color: #c9c9c9;
 font-size: 12px;
 line-height: 15px;
 font-family: "HelveticaNeue-Light", sans-serif;
+
 }
 
 .login-form input:focus{
@@ -179,13 +183,24 @@ color: #00b0ca;
 font-size: 12px; 
 margin-top: 15px;
 float: left;
-margin-left: 7px;
+
 }
 
 .forgot a:hover{ 
 	text-decoration: underline;
 	text-shadow: 0;
 }
+
+
+.remember {
+color: #00b0ca;
+font-size: 12px; 
+margin-top: 15px;
+float: left;
+margin-left: 
+
+}
+
 
 footer{
 width: 800px;

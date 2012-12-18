@@ -77,7 +77,7 @@ ul{
 
 .topbar{
   position: fixed; background: #f7f7f7;
-  height: 40px;
+  height: 35px;
   z-index: 999;
   border-bottom: 1px solid #ccc;
   width: 100%;
@@ -89,6 +89,7 @@ ul{
   margin-top: 40px;
   border: 1px solid #d5d5d5;
   background: $bg-general;
+  z-index: -2;
 }
 
 
