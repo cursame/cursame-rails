@@ -1,0 +1,199 @@
+#expando {
+width: 100%;
+height: 100%;}
+
+.topbar {
+height: 35px;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 10000;
+overflow: visible;
+display: block;}
+
+.topbar-inner, .topbar .fill {
+height: 35px;
+background-color: #f7f7f7;
+background-color: #f7f7f7;
+background-repeat: repeat-x;
+-webkit-box-shadow: 0 1px 20px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 1px 20px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+box-shadow: 0 1px 20px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid #cecece;
+}
+
+.container {
+height: 35px;
+width: 940px;
+margin-left: auto;
+margin-right: auto;
+zoom: 1;
+}
+
+.topbar h3 a, .topbar .brand {
+float: left;
+display: block;
+padding: 6px 20px 0px 20px;
+margin-left: -20px;
+color: white;
+font-size: 20px;
+font-weight: 200;
+line-height: 1;
+}
+
+
+.login{
+margin: auto;
+padding-top: 70px;
+width: 500px;
+font-family: "Helvetica Neue", sans-serif;
+color: white;
+font-size: 18px;
+font-weight: normal;
+}
+
+.login p{
+	text-align: center;	
+	text-shadow: 1px 1px 7px #86624c;
+	}
+
+.login b {
+	font-size: 30px;
+	font-weight: normal;
+	line-height: 18px;
+}
+
+.login i {
+	font-weight: lighter;
+	font-style: normal;
+}
+
+.btn.large {
+font-size: 17px;
+font-family: "HelveticaNeue-Light", sans-serif;
+line-height: normal;
+padding: 20px 30px ;
+
+}
+
+.btn.primary {
+color: white;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#f86049), to(#d6432d));
+background-image: -moz-linear-gradient(top, #f86049, #d6432d);
+background-image: -ms-linear-gradient(top, #f86049, #d6432d);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f86049), color-stop(100%, #0064CD));
+background-image: -webkit-linear-gradient(top, #f86049, #d6432d);
+background-image: -o-linear-gradient(top, #f86049, #d6432d);
+background-image: linear-gradient(top, #f86049, #d6432d);
+text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+border-color: #f46d59 #f46d59 #f46d59;
+border-color: #f46d59;
+}
+
+
+a {
+color: #00B1C5;
+text-decoration: none;
+}
+
+.btn:hover{
+color: white;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#e35843), to(#c03c28));
+background-image: -moz-linear-gradient(top, #e35843, #c03c28);
+background-image: -ms-linear-gradient(top, #e35843, #c03c28);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e35843), color-stop(100%, #c03c28));
+background-image: -webkit-linear-gradient(top, #e35843, #c03c28);
+background-image: -o-linear-gradient(top, #e35843, #c03c28);
+background-image: linear-gradient(top, #e35843, #c03c28);
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border-color: #f46d59 #f46d59 #f46d59;
+border-color: #f46d59;
+}
+
+.login-form{
+margin-top: 35px;
+width: 300px;
+height: 195px;
+display: block;
+background-color: #fcfcfc;	
+-webkit-box-shadow: 0 1px 20px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 1px 20px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+box-shadow: 0 1px 20px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+padding:20px;
+color: #00b0ca;
+font-family: "HelveticaNeue", sans-serif;
+}
+
+.email{
+margin-top: 15px;
+width: 245px;
+height: 10px;
+border: 1px solid #c9c9c9;
+padding: 20px;
+color: #c9c9c9;
+font-size: 12px;
+line-height: 15px;
+font-family: "HelveticaNeue-Light", sans-serif;
+}
+
+.pswd{
+width: 245px;
+height: 10px;
+border: 1px solid #c9c9c9;
+border-top: 0px;
+padding: 20px;
+color: #c9c9c9;
+font-size: 12px;
+line-height: 15px;
+font-family: "HelveticaNeue-Light", sans-serif;
+}
+
+.login-form input:focus{
+color: black;
+}
+
+.log-in{
+margin-top: 10px;
+border: 1px solid #c9c9c9;
+background-color: #fcfcfc;	
+padding: 15px;
+color: #a8a4a4;
+font-size: 12px;
+font-family: "HelveticaNeue-Light", sans-serif;
+float: right;
+margin-right: 7px;
+}
+
+button.log-in:hover {
+    cursor: pointer; 
+    background: white;
+}
+button.log-in:active {
+  cursor: pointer; 
+    background: #f9f9f9;
+}
+
+.forgot {
+color: #00b0ca;
+font-size: 12px; 
+margin-top: 15px;
+float: left;
+margin-left: 7px;
+}
+
+.forgot a:hover{ 
+	text-decoration: underline;
+	text-shadow: 0;
+}
+
+footer{
+width: 800px;
+margin: auto;
+margin-top: 100px;
+font-size: 12px;
+font-family: "HelveticaNeue-Light", sans-serif;
+text-align: center;
+color: white;
+opacity: 0.7;
+}
