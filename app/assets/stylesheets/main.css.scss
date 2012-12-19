@@ -192,6 +192,9 @@ ul{
       width: $comment-box;
       bottom:0;
       background: url('/assets/comment-img-bar.png');
+
+      border-bottom-left-radius: $border-radius-box;
+      border-bottom-right-radius: $border-radius-box;
       & .content-footer{
         margin-top: 12px;
         border-top: 1px solid rgba(255,255,255,0.3);
