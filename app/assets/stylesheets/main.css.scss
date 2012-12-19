@@ -135,6 +135,7 @@ ul{
     border: $border-box;
     border-radius: $border-radius-box;
     margin: 5px 0px 10px 11px;
+    float: left;
   }
   & .general-cir{
     background: url('/assets/comment-cir-mini.png') no-repeat;
@@ -155,7 +156,7 @@ ul{
     height: 25px;
     border-top-right-radius: $border-radius-box;
     border-top-left-radius: $border-radius-box;
-
+    width: 100%;
     -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
     -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
     box-shadow:         inset 0px 1px 0px #f7f7f8;
@@ -177,6 +178,7 @@ ul{
     }
   }
   & .content-image{
+    float:left;
     & .single-image{
       width: 600px;
       float: left;
@@ -186,6 +188,8 @@ ul{
     border-top:1px solid $border-general;
     height: 25px;
     color: #777777;
+    float: left;
+    width: 100%;
     & .icon{
       float: left;
       margin: 4px 0px 0px 5px;
