@@ -2,7 +2,7 @@
 <div class="ui-widget-overlay">Cargando ...</div>
 <%= form_for(@course, :remote => true) do |f| %>
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :Título %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -10,12 +10,15 @@
     <%= f.text_area :silabus, :rows => 3, :cols => 29 %>
   </div>
   <div class="field">
-    <%= f.label :init_date %><br />
+    <%= f.label :Fecha_de_inicio %><br />
     <%= f.date_select :init_date %>
   </div>
   <div class="field">
-    <%= f.label :finish_date %><br />
+    <%= f.label :Fecha_de_término %><br />
     <%= f.date_select :finish_date %>
+  </div>
+  <div class="field">
+      Tipo de curso: <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
   </div>
   <div class="actions", id="create_course_form">
     <%= f.submit%>

@@ -3,11 +3,14 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
-
+    ##### creamos el registro de los usuarios de un curso ######
+    @member = MembersInCourse.new
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
     end
+    
   end
 
   # GET /courses/1
@@ -81,4 +84,7 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+     
 end

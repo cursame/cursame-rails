@@ -3,6 +3,8 @@ Cursame30Lb::Application.routes.draw do
   
 
     
+  resources :members_in_courses
+
   resources :courses
 
   resources :role_id_and_permission_ids

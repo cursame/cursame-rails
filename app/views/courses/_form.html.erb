@@ -21,12 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :init_date %><br />
-    <%= f.datetime_select :init_date %>
+    <%= f.datetime_select :init_date %><br />
   </div>
   <div class="field">
     <%= f.label :finish_date %><br />
-    <%= f.text_field :finish_date %>
+    <%= f.datetime_select :finish_date %><br />
   </div>
+  <div class="field">
+        Tipo de curso: <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%><br />
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

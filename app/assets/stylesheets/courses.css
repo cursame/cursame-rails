@@ -1,0 +1,28 @@
+.course{
+    background:#A4C27B ;
+    width :600px;
+    height :100px;
+}
+h2{
+    font-size:30px;
+}
+
+.hidden-text{  
+    	white-space: nowrap;
+    	width: 79%;
+    	overflow: hidden;
+        text-overflow: ellipsis;
+}
+h4{
+  font-size:14px;
+}
+h3{
+  font-size:18px;  
+}
+.al{
+   font-size:18px;  
+   background:none;
+   border:none;
+ 
+}
+
