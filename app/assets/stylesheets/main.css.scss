@@ -226,6 +226,10 @@ ul{
       height: 15px;
       float: left;
     }
+    & .name{
+      color: #333;
+
+    }
   }
   & .general-cir{
     background: url('/assets/comment-cir-mini.png') no-repeat;
