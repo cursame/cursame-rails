@@ -489,3 +489,18 @@ ul{
   -webkit-box-shadow: 0px 1px 2px #666;
   box-shadow: 0px 1px 2px #666;
 }
+
+.list-header{
+	list-style:none; 
+	display: inline;
+}
+.list-header li{
+	display: inherit; 
+	float: left;
+	margin-right: 35px;
+	background: url('/assets/schools.png') no-repeat;
+	background-position-x: 0;
+	padding-left: 25px;
+	cursor: hand !important;
+	
+}
