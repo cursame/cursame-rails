@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121219211945) do
 
   create_table "answers", :force => true do |t|
@@ -21,9 +20,6 @@ ActiveRecord::Schema.define(:version => 20121219211945) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
-=======
-ActiveRecord::Schema.define(:version => 20121219212344) do
->>>>>>> 4aa1fa9f587dabb743778180a3a49a0c932e7542
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
