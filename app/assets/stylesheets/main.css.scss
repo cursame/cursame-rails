@@ -573,8 +573,7 @@ ul{
 	list-style: none; 
 	display: inline;
 }
-.create li{
-	list-style: none;
+.create a{
 	display: block; 
 	width: 100px;
 	height: 25px;
@@ -585,27 +584,36 @@ ul{
 	color: #969696;
 	font-size: 10px;
 }
-.create li.comment{	
+
+.create a:hover{
+	margin-top: -2px;
+	padding-top: 62px;
+
+}
+
+.create .comment{	
 	background: url('/assets/create/comment.png') no-repeat;
 	background-position: center top;
 }
-.create li.homework{	
+.create .homework{	
 	background: url('/assets/create/tarea.png') no-repeat;
 	background-position: center top;
 }
-.create li.discussion{	
+.create .discussion{	
 	background: url('/assets/create/discus.png') no-repeat;
 	background-position: center top;
 }
-.create li.test{	
+.create .test{	
 	background: url('/assets/create/test.png') no-repeat;
 	background-position: center top;
 }
-.create li.poll{	
+.create .poll{	
 	background: url('/assets/create/poll.png') no-repeat;
 	background-position: center top;
 }
-.create li.event{	
+.create .event{	
 	background: url('/assets/create/event.png') no-repeat;
 	background-position: center top;
 }
+
+
