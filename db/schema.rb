@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219182922) do
+ActiveRecord::Schema.define(:version => 20121219212344) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20121219182922) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "public_status"
+    t.string   "avatar"
   end
 
   create_table "members_in_courses", :force => true do |t|
