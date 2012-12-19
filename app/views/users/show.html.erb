@@ -32,7 +32,11 @@
 
 <div id="banner-profile" style="background:url('/assets/bannerprofile.png')">
     <div id="box-titles">
-        <div>3 Escuelas</div>
+        <div>
+       		 <ul class="list-header">
+       		 	<li class="schools">Escuelas</li> <li class="gallery">Galería</li> <li class="gallery">Galería</li>
+       		 </ul>
+        </div>
     </div>
     <div id="box-titles-content">
         <%= render :partial => "users/menu_member"%>
@@ -149,7 +153,7 @@
     <div id="box-stream-post">
         <div class="box-6">
             <div id="post">
-                <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
+                <div id="comment-form" style="height: 350px; width: 600px; margin-left:55px; background: #ccc; position: relative; display: none;">
                     <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
                     <div style="float: right; width: 220px">
                         <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
