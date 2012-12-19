@@ -39,6 +39,9 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+#nifty scaffolding
+gem "nifty-generators", :group => :development
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
@@ -50,3 +53,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem "mocha", :group => :test
