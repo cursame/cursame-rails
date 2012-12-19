@@ -491,15 +491,17 @@ ul{
   width:100%;
   overflow: hidden;
   color: white;
+  margin-top: -5px;
 }
 
 .banner-shadow{
-  height:140px;
+  height:275px;
   width:100%;
   overflow: hidden;
   color: white;
   background: url('/assets/shadow.png') no-repeat;
-  
+  top: 0px;
+ 
 }
 
 #box-titles{
@@ -509,6 +511,7 @@ ul{
   margin-top: 110px;
   color:#FFF;
   font-size: 12pt;
+  z-index: 2;
 }
 #box-titles-content{
   clear: both;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217204516) do
+ActiveRecord::Schema.define(:version => 20121219182922) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -33,8 +33,18 @@ ActiveRecord::Schema.define(:version => 20121217204516) do
     t.text     "silabus"
     t.datetime "init_date"
     t.datetime "finish_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "public_status"
+  end
+
+  create_table "members_in_courses", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.boolean  "accepted"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "owner"
   end
 
   create_table "network_templates", :force => true do |t|

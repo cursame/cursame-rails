@@ -1,28 +1,29 @@
 <h1>Listing courses</h1>
 
-<table>
-  <tr>
-    <th>Tile</th>
-    <th>Silabus</th>
-    <th>Init date</th>
-    <th>Finish date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @courses.each do |course| %>
-  <tr>
-    <td><%= course.title %></td>
-    <td><%= course.silabus %></td>
-    <td><%= course.init_date %></td>
-    <td><%= course.finish_date %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<div class="course">
+ <h2><%= course.title %></h2>
+    <div class="hidden-text">
+      <%= course.silabus %>
+    </div>
+      <%#= course.init_date %>
+    <h4> Término: <%= course.finish_date %></h4>
+     <h3> 
+            |<%= link_to 'Show', course %>|
+            <%= link_to 'Edit', edit_course_path(course) %>|
+            <%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %>|
+         <% ##### importante no mover esta varialbe ######%>  
+            <% @course_id = course.id%>
+      <% if course.public_status == "Private" %>
+         <%= render partial: "courses/members_in_courses/private_course"%>|
+        <%else%>   
+            <%= render partial: "courses/members_in_courses/public_course"%>|  
+      <%end%>
+      
+     </h3>
+</div></br>
+ 
 <% end %>
-</table>
 
 <br />
 
