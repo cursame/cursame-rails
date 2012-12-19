@@ -112,6 +112,7 @@ ul{
   height: $height-post-box;
   background: url('/assets/post_user_bg.png') no-repeat 20px 0px;
   margin: 10px 0 0 25px;
+  padding: 10px 0 0 30px;
 }
 
 #box-stream-post{
@@ -565,6 +566,46 @@ ul{
 	background: url('/assets/schools.png') no-repeat;
 	background-position-x: 0;
 	padding-left: 25px;
-	cursor: hand !important;
-	
+	cursor: hand !important;	
+}
+
+.create {
+	list-style: none; 
+	display: inline;
+}
+.create li{
+	list-style: none;
+	display: block; 
+	width: 100px;
+	height: 25px;
+	width: 100px;
+	float: left;
+	text-align: center;
+	padding-top: 60px;
+	color: #969696;
+	font-size: 10px;
+}
+.create li.comment{	
+	background: url('/assets/create/comment.png') no-repeat;
+	background-position: center top;
+}
+.create li.homework{	
+	background: url('/assets/create/tarea.png') no-repeat;
+	background-position: center top;
+}
+.create li.discussion{	
+	background: url('/assets/create/discus.png') no-repeat;
+	background-position: center top;
+}
+.create li.test{	
+	background: url('/assets/create/test.png') no-repeat;
+	background-position: center top;
+}
+.create li.poll{	
+	background: url('/assets/create/poll.png') no-repeat;
+	background-position: center top;
+}
+.create li.event{	
+	background: url('/assets/create/event.png') no-repeat;
+	background-position: center top;
 }
