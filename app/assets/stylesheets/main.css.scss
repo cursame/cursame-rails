@@ -314,13 +314,13 @@ ul{
       }
       & a:hover{
         color: #666;
-        font-family: HelvRegular;
         line-height: 33px;
         width: 100%;
         height: 100%;
-        padding: 3px 0px 0px 19px;
+        padding: 3px 0px 0px 16px;
         border-left: 4px #e6e6e6 solid;
-        font-size:10pt;
+        color: black;
+      
       }
       & .active{
         color: #666;
