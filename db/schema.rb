@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219211945) do
+ActiveRecord::Schema.define(:version => 20121220002534) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20121219211945) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "value"
   end
 
   create_table "role_id_and_permission_ids", :force => true do |t|
@@ -127,6 +128,22 @@ ActiveRecord::Schema.define(:version => 20121219211945) do
     t.integer  "network_id"
     t.integer  "user_id"
     t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_survey_responses", :force => true do |t|
+    t.integer  "user_survey_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "user_surveys", :force => true do |t|
+    t.integer  "survey_id"
+    t.integer  "user_id"
+    t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

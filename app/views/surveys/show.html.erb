@@ -7,10 +7,10 @@
 <ol>
 <% for question in @survey.questions %>
   <li>
-    <%=h question.content %>
+    <%=h question.content %> valor: <%=h question.value %>
     <ul>
     <% for answer in question.answers %>
-      <li><%=h answer.content %></li>
+      <li><%=h answer.content %> <%=h answer.correct %></li>
     <% end %>
     </ul>
   </li>
