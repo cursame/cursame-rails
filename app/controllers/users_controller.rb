@@ -30,6 +30,13 @@ class UsersController < ApplicationController
       
   end
   
+  def coverphoto
+      @user = User.find_by_first_name(current_user.first_name)
+      
+     
+  end
+   
+     
   def waiting_friends
     
     @user = current_user
@@ -126,5 +133,7 @@ class UsersController < ApplicationController
   @user = User.all
  end
  
-  
+ 
+   
+ 
 end

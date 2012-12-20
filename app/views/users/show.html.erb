@@ -28,7 +28,8 @@
     </br>
 <%end%>-->
 
-<div id="banner-profile" style="background:url('/assets/bannerprofile-clean.png'); background-position-y: -90px;">    
+<div id="banner-profile" style="background:url('<%= @user.coverphoto.expanded %>'); background-position-y: -90px;">    
+    
 <div class="banner-shadow">
     <div id="box-titles">
         <div>
@@ -154,7 +155,16 @@
                     </div>
                 </div>
             </div>
-            <div id="pre-post-form"></div>
+            <div id="pre-post-form">
+	            <div class="create">
+		          <a href ="#" class="comment">Comentario</a>
+		          <a href ="#" class="homework">Tarea</a>
+		           <a href ="#" class="discussion">Discusión</a>
+		           <a href ="#" class="test">Cuestionario</a>
+		              <a href ="#" class="poll">Encuesta</a>
+		            <a href ="#" class="event">Evento</a>
+	            </div>     
+            </div>
         </div>
 
         <div id="box-comments">

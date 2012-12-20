@@ -28,9 +28,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
       %w(jpg jpeg gif png)
    end  
    
-   def default_url 
-      "/assets/#{model.name}_#{version_name}.png"
-   end
    
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

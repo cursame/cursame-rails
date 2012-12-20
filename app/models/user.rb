@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto
   
   has_many :networks_users, :dependent => :destroy
   has_many :users_friends
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   acts_as_commentable
   #avatar
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :coverphoto, CoverphotoUploader
   def name
      "#{first_name} #{last_name}".strip
   end
