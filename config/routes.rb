@@ -3,6 +3,8 @@ Cursame30Lb::Application.routes.draw do
   
 
     
+  resources :surveys
+
   resources :members_in_courses
 
   resources :courses

@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(:version => 20121219232444) do
 
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.boolean  "correct"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -79,6 +88,13 @@ ActiveRecord::Schema.define(:version => 20121219232444) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "role_id_and_permission_ids", :force => true do |t|
     t.integer  "role_id"
     t.integer  "permission_id"
@@ -92,6 +108,13 @@ ActiveRecord::Schema.define(:version => 20121219232444) do
     t.date     "created"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "surveys", :force => true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_friends", :force => true do |t|
