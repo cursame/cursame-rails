@@ -260,6 +260,7 @@ ul{
     background: url('/assets/plus-box-icon.png') no-repeat;
     margin-left: 79px;
     cursor:pointer;
+    margin-top: -1px;
   }
   & .element-left{
     float: left;
@@ -370,7 +371,6 @@ ul{
         padding: 3px 0px 0px 16px;
         border-left: 4px #e6e6e6 solid;
         color: black;
-      
       }
       & .active{
         color: #666;
@@ -467,23 +467,34 @@ ul{
   background:#FFF;
   & .return-courses{
     position: absolute;
-    float: right;
+    float: left;
     width: 37px;
     height: 38px;
-    text-align: right;
-    border-top-right-radius: $border-radius-box;
+    border-top-left-radius: $border-radius-box;
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
   }
-  & input{
-    width: 210px;
-    height: 28px;
-    border: $border-box;
-    border-radius: $border-radius-box;
-    -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
-    -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
-    box-shadow:         inset 0px 1px 2px #e8e8e8;
+  & .new_course{
+    margin: 2px 0px 4px 6px;
+    & .field{
+      margin: 4px 0px 4px 0px;
+    }
+    & input[type=text]{
+      width: 214px;
+      height: 28px;
+      border: $border-box;
+      border-radius: $border-radius-box;
+      -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
+      -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+      box-shadow:         inset 0px 1px 2px #e8e8e8;
+    }
+    & textarea{
+      border: $border-box;
+      border-radius: $border-radius-box;
+      margin: 0px;
+    }
   }
+
   & .title{
     height: 35px;
     background: #fafafa;
