@@ -458,13 +458,44 @@ ul{
 }
 
 /* /\/\/\/\ Forms /\/\/\/\ */
-#form-new-course{
+.form-new-course-lateral{
   display: none;
   width: 230px;
   height: 250px;
   position: absolute;
+  background:#FFF;
+  & .return-courses{
+    position: absolute;
+    float: right;
+    width: 37px;
+    height: 38px;
+    text-align: right;
+    border-top-right-radius: $border-radius-box;
+    background: url('/assets/return-box-icon.png') no-repeat;
+    cursor:pointer;
+  }
+  & input{
+    width: 210px;
+    height: 28px;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
+    -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+    box-shadow:         inset 0px 1px 2px #e8e8e8;
+  }
+  & .title{
+    height: 35px;
+    background: #fafafa;
+    border-bottom: $border-box;
+    -moz-box-shadow:inset 0px -1px 2px #dee2e6;
+    -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
+    box-shadow:inset 0px -1px 2px #dee2e6;
+    text-align: center;
+    font-size: 12pt;
+    color: #333;
+    line-height: 2.4em;
+  }
 }
-
 
 /* /\/\/\/\ Courses /\/\/\/\ */
 .course-id{

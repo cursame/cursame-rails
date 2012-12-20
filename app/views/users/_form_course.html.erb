@@ -1,4 +1,5 @@
-<div id = "course_create">
+<div id="return-course" class="return-courses"></div>
+<div class="title">Crear nuevo curso</div>
 <div class="ui-widget-overlay">Cargando ...</div>
 <%= form_for(@course, :remote => true) do |f| %>
   <div class="field">
@@ -24,8 +25,11 @@
     <%= f.submit%>
   </div>
 <% end %>
-</div>
-<script>
+
+<div id="accept-course-form" style="float:left;"><img src="http://placehold.it/80x30/4D9900/ffffff&text=aceptar" alt=""></div>
+<div id="cancel-course-form" style="float:right;"><img src="http://placehold.it/80x30/ff0000/ffffff&text=cancelar" alt=""></div>
+
+    <script>
     $("#create_course_form").on('click',function(){
        $(".ui-widget-overlay").css('display','block');
     });    
