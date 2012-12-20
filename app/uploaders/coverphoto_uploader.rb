@@ -5,11 +5,11 @@ class CoverphotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
    version :expanded do
-      process :resize_to_fit => [937, 270]
+      process :resize_to_fill => [937, 270]
     end
 
    version :mosaic do
-      process :resize_to_fill => [62, 62]
+      process :resize_to_fill => [352, 272]
   end
 
 
@@ -19,6 +19,6 @@ class CoverphotoUploader < CarrierWave::Uploader::Base
 
 
    def store_dir
-     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}.png"
    end
 end
