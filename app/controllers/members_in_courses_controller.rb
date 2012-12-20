@@ -60,7 +60,7 @@ class MembersInCoursesController < ApplicationController
 
     respond_to do |format|
       if @members_in_course.update_attributes(params[:members_in_course])
-        format.html { redirect_to @members_in_course, notice: 'Members in course was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Members in course was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

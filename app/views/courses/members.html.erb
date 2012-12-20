@@ -1,0 +1,15 @@
+<h2>Miembros del curso</h2>
+<%@course.members_in_course.each do |member|  %>
+        <% @members = User.find_by_id(member.user_id) %>
+       <%= image_tag(@members.avatar.modern)%><h3><%= @members.name %></h3>
+       
+        <%if member.accepted != true%>
+          
+          <%= form_for member, :remote => true do |fcm| %>
+            <div style = "color:#F31E25;"><%= "El usuario no ha sido aceptado aún"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %></div>
+           <%end%>
+        <%else%>
+            <%= form_for member, :remote => true do |fcm| %>
+            <div style = "color:#2EB3AD;"><%= "Miembro"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %></div>    <%end%>
+        <%end%></br>
+<%end%>

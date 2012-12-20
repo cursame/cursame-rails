@@ -5,11 +5,14 @@ Cursame30Lb::Application.routes.draw do
     
   resources :surveys
 
+  # colocando miembros en cursos
   resources :members_in_courses
 
   resources :courses
+  
+  match "courses/:id/members", :to => "courses#members", :as => :course_members
 
-  resources :role_id_and_permission_ids
+  #resources :role_id_and_permission_ids
 
   #manejo de roles
   resources :roles 
@@ -32,7 +35,7 @@ Cursame30Lb::Application.routes.draw do
   match  "users/:personal_url/waiting_friends/:id", :to => "users#sufriend", :as => :show_user_friends
   match  "users/:personal_url/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:personal_url/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
-  
+
   
   #manejo de networks
   
