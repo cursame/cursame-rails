@@ -63,7 +63,7 @@ $(document).ready(function() {
         moveOutSlide('');
     });
 
-    $('#cancel-course-form') .click(function(){
+    $('#cancel-course-form, #return-course') .click(function(){
         moveInSlide();
     });
 

@@ -41,8 +41,30 @@ $border-general: #c9d1da;
 //Borders
 $border-box: 1px solid $border-general;
 $border-gray: 1px solid $gray-e;
+
+//Radius
 $border-radius-box: 5px;
 $border-radius-avatar-mini: 3px;
+@mixin border-t-right-radius{
+  -webkit-border-top-right-radius: $border-radius-box;
+  -moz-border-top-right-radius: $border-radius-box;
+  border-top-right-radius: $border-radius-box;
+}
+@mixin border-t-left-radius{
+  -webkit-border-top-left-radius: $border-radius-box;
+  -moz-border-top-left-radius: $border-radius-box;
+  border-top-left-radius: $border-radius-box;
+}
+@mixin border-b-right-radius{
+  -webkit-border-bottom-right-radius: $border-radius-box;
+  -moz-border-bottom-right-radius: $border-radius-box;
+  border-bottom-right-radius: $border-radius-box;
+}
+@mixin border-b-left-radius{
+  -webkit-border-bottom-left-radius: $border-radius-box;
+  -moz-border-bottom-left-radius: $border-radius-box;
+  border-bottom-left-radius: $border-radius-box;
+}
 
 //Backgrounds
 $bg-page: #FFF;
@@ -51,6 +73,20 @@ $bg-bars: #F6F7F9;
 
 //Margin
 $margin-sidebar-left: 17px;
+
+//Shadows
+@mixin shadow-input{
+  -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow:         inset 0px 1px 2px #e8e8e8;
+}
+@mixin shadow-title-tab{
+  -moz-box-shadow:inset 0px -1px 2px #dee2e6;
+  -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
+  box-shadow:inset 0px -1px 2px #dee2e6;
+}
+
+
 
 body {
   color: #333;
@@ -189,8 +225,8 @@ ul{
       & .single-image{
         width: $comment-box;
         float: left;
-        border-bottom-left-radius: $border-radius-box;
-        border-bottom-right-radius: $border-radius-box;
+        @include border-b-right-radius;
+        @include border-b-left-radius;
       }
     }
     & .footer{
@@ -201,9 +237,8 @@ ul{
       width: $comment-box;
       bottom:0;
       background: url('/assets/comment-img-bar.png');
-
-      border-bottom-left-radius: $border-radius-box;
-      border-bottom-right-radius: $border-radius-box;
+      @include border-b-right-radius;
+      @include border-b-left-radius;
       & .content-footer{
         margin-top: 12px;
         border-top: 1px solid rgba(255,255,255,0.3);
@@ -222,9 +257,9 @@ ul{
 
   & .header{
     background: #e9e9e9;//#ebebef;
-      height: 25px;
-    border-top-right-radius: $border-radius-box;
-    border-top-left-radius: $border-radius-box;
+    height: 25px;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
     width: 100%;
     -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
     -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
@@ -237,7 +272,6 @@ ul{
     }
     & .name{
       color: #333;
-
     }
   }
   & .general-cir{
@@ -264,7 +298,7 @@ ul{
     width: 37px;
     height: 38px;
     text-align: right;
-    border-top-right-radius: $border-radius-box;
+    @include border-t-right-radius;
     background: url('/assets/plus-box-icon.png') no-repeat;
     margin-left: 79px;
     cursor:pointer;
@@ -272,13 +306,13 @@ ul{
   }
   & .element-left{
     float: left;
-    border-top-left-radius: $border-radius-box;
+    @include border-t-left-radius;
   }
   & .element-right{
     float: left;
     border-left: $border-box;
     margin-left: -1px;
-    border-top-right-radius: $border-radius-box;
+    @include border-t-right-radius;
   }
 
   & #ul-tabs{
@@ -308,9 +342,7 @@ ul{
       background: #fafafa;
       border-bottom: $border-box;
       margin-bottom: -1px;
-      -moz-box-shadow:inset 0px -1px 2px #dee2e6;
-      -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
-      box-shadow:inset 0px -1px 2px #dee2e6;
+      @include shadow-title-tab;
     }
     & li.ui-tabs-selected{
       background: #ffffff;
@@ -385,6 +417,7 @@ ul{
       vertical-align: middle;
       font-size: 13px;
       overflow: hidden;
+      text-transform: capitalize;
       border-bottom: $border-gray;
       & a{
         color: #888888;
@@ -433,8 +466,8 @@ ul{
 
 .view-all{
   clear: both;
-  border-bottom-right-radius: $border-radius-box;
-  border-bottom-left-radius: $border-radius-box;
+  @include border-b-right-radius;
+  @include border-b-left-radius;
   height: 24px;
   margin-top: -1px;
   font-size: 12px;
@@ -449,16 +482,8 @@ ul{
     border-top: $border-box;
     border-bottom: $border-box;
     border-right: $border-box;
-
-
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-bottom-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-
+    @include border-b-right-radius;
+    @include border-b-left-radius;
     -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
     -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
     box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
@@ -493,50 +518,54 @@ ul{
 .form-new-course-lateral{
   display: none;
   width: 230px;
-  height: 250px;
+  min-height: 250px;
   position: absolute;
   background:#FFF;
-  & .return-courses{
+  @include border-t-right-radius;
+  @include border-t-left-radius;
+  & .return-course-icon{
     position: absolute;
-    float: left;
     width: 37px;
+    left: -1px;
+    top: -1px;
     height: 38px;
     border-top-left-radius: $border-radius-box;
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
   }
-  & .new_course{
-    margin: 2px 0px 4px 6px;
+  & .new_course{  //(class form difined by Rails)
+    margin: 5px 0px 4px 6px;
     & .field{
-      margin: 4px 0px 4px 0px;
+      margin: 4px 0px 0px 0px;
     }
     & input[type=text]{
       width: 214px;
       height: 28px;
       border: $border-box;
       border-radius: $border-radius-box;
-      -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
-      -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
-      box-shadow:         inset 0px 1px 2px #e8e8e8;
+      @include shadow-input;
     }
     & textarea{
       border: $border-box;
       border-radius: $border-radius-box;
       margin: 0px;
+      height: 70px;
+      @include shadow-input;
     }
   }
 
   & .title{
-    height: 35px;
+    font-family: helvlight;
+    height: 40px;
     background: #fafafa;
     border-bottom: $border-box;
-    -moz-box-shadow:inset 0px -1px 2px #dee2e6;
-    -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
-    box-shadow:inset 0px -1px 2px #dee2e6;
+    @include shadow-title-tab;
     text-align: center;
     font-size: 12pt;
     color: #333;
-    line-height: 2.4em;
+    line-height: 2.9em;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
   }
 }
 

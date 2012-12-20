@@ -1,4 +1,4 @@
-<div id="return-course" class="return-courses"></div>
+<div id="return-course" class="return-course-icon"></div>
 <div class="title">Crear nuevo curso</div>
 <div class="ui-widget-overlay">Cargando ...</div>
 
@@ -10,10 +10,12 @@
     <%= f.text_area :silabus, :rows => 3, :cols => 28 , :placeholder=>'Descripción' %>
   </div>
   <div class="field">
-    <%= f.date_select :init_date %>
+    <%= f.text_field :init_date, :placeholder=>'Fecha Inicio', :class=>"date-input" %>
+    <%# f.date_select :init_date %>
   </div>
   <div class="field">
-    <%= f.date_select :finish_date %>
+    <%= f.text_field :finish_date, :placeholder=>'Fecha Final', :class=>"date-input" %>
+    <%# f.date_select :finish_date %>
   </div>
   <div class="field">
       Tipo de curso: <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
