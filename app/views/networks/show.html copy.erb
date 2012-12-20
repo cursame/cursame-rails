@@ -47,13 +47,13 @@
   <!-- SideBar -->
   <div class="box-3" style="padding: 70px 0px 0px 0px;">
 
-      <div id="box-course" class="basic-lateral-box-principal" >
+      <div id="box-course" class="basic-lateral-box" >
             <h2>cursos</h2>
             <div id="form-new-course">
                 <strong>Cursos form</strong>
                 <ul>
                     <div class="content">
-                           <!-- aqui quite algo -->
+                           <!--  <%= render partial: "users/form_course.html.erb"%> -->
                     
                      </div>
                  
@@ -70,7 +70,14 @@
                 <div id="tabs-courses-1">
                     <ul id="course-list" >
                    <!--
- aqui quite algo-->
+ <% if @course_count == 0%>
+                        <li><a href="#">No hay cursos</a></li>
+                    <%else%>
+                        <% @courses.each do |c|%>
+                        <li><%= link_to "#{c.title}", course_path(c.id) %></li>
+                        <%end%>
+                    <%end%>
+-->
                     </ul>
                     <div class="view-all"><a href="">Ver Todo</a></div>
                 </div>
@@ -86,32 +93,8 @@
             </div>
         </div>
 
-  <div id="box-friends" class="basic-lateral-box" >
-            <h2>AMIGOS</h2>
-            <div id="tabs-friends" class="tabs-style">
-                <ul id="ul-tabs">
-                    <li class="element-left" style="width:43%!important;"><a href="#tabs-friends-1"><span class="title-num">39</span><span class="title">amigos</span></a></li>
-                    <li class="element-right" style="width:57%!important;"><a href="#tabs-friends-2"><span class="title-num">20</span><span class="title">sugerencias</span></a></li>
-                </ul>
-                <div id="tabs-friends-1">
-                  <div class="content-avtr">
-                     <!--
- <aqui quite algo-->
-                  </div>
-                  <div class="view-all"><a href="">Ver Todo</a></div>
-                </div>
-                <div id="tabs-friends-2">
-                  <div class="content-avtr">
-                  <!--
-  aqui quite algo-->
-                  </div>
-                </div>
-            </div>
-     
-        <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
-    </div>
-
-
+    <h4>Usuarios</h4>
+    <img src="http://placehold.it/260x350/4D99E0/ffffff&text=usuarios" alt="">
     <h4>Cursos</h4>
     <img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">
   </div>
