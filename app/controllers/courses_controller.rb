@@ -53,6 +53,14 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
+        
+           @member = MembersInCourse.new
+             @member.user_id = current_user.id
+             @member.course_id =  @course.id
+             @member.accepted = true
+             @member.owner = true
+             @member.save
+             
         format.json { render json: @course, status: :created, location: @course }
         format.js
       else
@@ -99,16 +107,14 @@ class CoursesController < ApplicationController
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-      if @member   
-        case
-          when @member.accepted == true
-          when @member.accepted == false
-        end
-      else
-        
+     if @member.accepted
+        respond_to do |format|
+           format.html # show.html.erb
+           format.json { render json: @course }
+         end
+     else
         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-        
-      end
+     end
   end
   
      

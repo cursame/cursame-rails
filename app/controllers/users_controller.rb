@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     current_user_friends
     @friend = UserFriends.new   
     @course = Course.new
-    @courses = Course.order(:by => :finish_date).limit(7).reverse
+   # @courses = Course.order(:by => :finish_date).limit(7).reverse
+    @courses = @user.members_in_course
+    
     @course_count = Course.count
   end
   

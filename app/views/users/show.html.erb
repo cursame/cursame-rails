@@ -82,8 +82,14 @@
                     <% if @course_count == 0%>
                         <li><a href="#">No hay cursos</a></li>
                     <%else%>
-                        <% @courses.each do |c|%>
-                        <li><%= link_to "#{c.title}", course_path(c.id) %></li>
+                        <% @courses.each do |cu|%>
+                           <% @cort = Course.find(cu.course_id)%>
+                           <% if cu.accepted != true%>
+                      <div style="background-color:#F6EF24;"><li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li></div>
+                           <%else%>
+                       <div style="background-color:#2AA5CA;"><li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li></div>
+                           
+                           <%end%>
                         <%end%>
                     <%end%>
                     </ul>
