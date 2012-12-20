@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var prePostHeight = $('#pre-post-form').height();
+    var prePostHeight = $('.pre-post-form').height();
     var time = 500;
     var timeSlide = time-100;
 
@@ -20,9 +20,9 @@ $(document).ready(function() {
         }, time);
     });
 
-    $('#pre-post-form').click(function() {
+    $('.pre-post-form').click(function() {
 
-        $('#pre-post-form').animate({
+        $('.pre-post-form').animate({
             opacity: 0.0,
             height: '0'
         }, time, function() {
@@ -52,8 +52,8 @@ $(document).ready(function() {
             $(this).css('display','none');
         });
 
-        $('#pre-post-form').css('display','block');
-        $('#pre-post-form').animate({
+        $('.pre-post-form').css('display','block');
+        $('.pre-post-form').animate({
             opacity: 1,
             height: prePostHeight
         }, time);

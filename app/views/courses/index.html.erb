@@ -1,8 +1,8 @@
 <h1>Listing courses</h1>
-
+ <h2>  <%= notice %> </h2>
 <% @courses.each do |course| %>
 <div class="course">
-   
+
  <h2><div><%= link_to image_tag(course.avatar.modern), course %></div><div><%= course.title %></div></h2>
     <div class="hidden-text">
       <%= course.silabus %>

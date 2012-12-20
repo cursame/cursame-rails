@@ -28,7 +28,8 @@
     </br>
 <%end%>-->
 
-<div id="banner-profile" style="background:url('<%= @user.coverphoto.expanded %>'); background-position-y: -10px;">
+
+<div id="banner-profile" style="background:url('<%= @user.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
     
 <div class="banner-shadow">
     <div id="box-titles">
@@ -86,7 +87,7 @@
                         <%end%>
                     <%end%>
                     </ul>
-                    <div class="view-all"><a href="">Ver Todo</a></div>
+                    <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
                 </div>
                 <div id="tabs-courses-2">
                     <ul id="course-list" >
@@ -155,7 +156,7 @@
                     </div>
                 </div>
             </div>
-            <div id="pre-post-form">
+            <div id="pre-post-form" class="pre-post-form">
 	            <div class="create">
 		          <a href ="#" class="comment">Comentario</a>
 		          <a href ="#" class="homework">Tarea</a>
