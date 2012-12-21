@@ -1,0 +1,83 @@
+//When I wrote this, only God and I understood what I was doing
+//Now, God only knows - RodrigoAyala.me
+
+@font-face {
+  font-family: HelvRegular;
+  src: url('/assets/fonts/HelveticaLTStdRoman.otf'),
+  url('/assets/fonts/HelveticaLTStdRoman.otf'); /* IE9+ */
+}
+@font-face {
+  font-family: HelvBold;
+  src: url('/assets/fonts/HelveticaLTStdBold.otf'),
+  url('/assets/fonts/HelveticaLTStdBold.otf'); /* IE9+ */
+}
+@font-face {
+  font-family: HelvLight;
+  src: url('/assets/fonts/HelveticaLTSLight.otf'),
+  url('/assets/fonts/HelveticaLTSLight.otf'); /* IE9+ */
+}
+@font-face {
+  font-family: HelvBoldCond;
+  src: url('/assets/fonts/HelveticaLTSBoldCond.otf'),
+  url('/assets/fonts/HelveticaLTSBoldCond.otf'); /* IE9+ */
+}
+
+// Sizes
+$widht-content: 920px;
+$height-post-box: 100px;
+$width-left-bar: 260px;
+$width-right-bar: 675px;
+$width-lateral-box: 230px;
+$comment-box: 600px;
+
+//Colors
+$gray-e: #eeeeee;
+$border-general: #c9d1da;
+
+//Borders
+$border-box: 1px solid $border-general;
+$border-gray: 1px solid $gray-e;
+
+//Radius
+$border-radius-box: 5px;
+$border-radius-avatar-mini: 3px;
+@mixin border-t-right-radius{
+  -webkit-border-top-right-radius: $border-radius-box;
+  -moz-border-top-right-radius: $border-radius-box;
+  border-top-right-radius: $border-radius-box;
+}
+@mixin border-t-left-radius{
+  -webkit-border-top-left-radius: $border-radius-box;
+  -moz-border-top-left-radius: $border-radius-box;
+  border-top-left-radius: $border-radius-box;
+}
+@mixin border-b-right-radius{
+  -webkit-border-bottom-right-radius: $border-radius-box;
+  -moz-border-bottom-right-radius: $border-radius-box;
+  border-bottom-right-radius: $border-radius-box;
+}
+@mixin border-b-left-radius{
+  -webkit-border-bottom-left-radius: $border-radius-box;
+  -moz-border-bottom-left-radius: $border-radius-box;
+  border-bottom-left-radius: $border-radius-box;
+}
+
+//Backgrounds
+$bg-page: #FFF;
+$bg-general: #fcfcfc; //#fbfcfd; //#fcfcfc;// #FFF;//#f6f7f9;
+$bg-bars: #F6F7F9;
+
+//Margin
+$margin-sidebar-left: 17px;
+
+//Shadows
+@mixin shadow-input{
+  -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow:         inset 0px 1px 2px #e8e8e8;
+}
+@mixin shadow-title-tab{
+  -moz-box-shadow:inset 0px -1px 2px #dee2e6;
+  -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
+  box-shadow:inset 0px -1px 2px #dee2e6;
+}

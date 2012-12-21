@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     var prePostHeight = $('.pre-post-form').height();
     var time = 500;
     var timeSlide = time-100;
