@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<%if @member.owner == true %>
+    <%= link_to 'Edit', edit_course_path(@course) %> |
+    <%= link_to 'Back', courses_path %>
+<%end%>
 <p>
   <b>Tile:</b>
   <%= @course.title %>
@@ -21,5 +24,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+
