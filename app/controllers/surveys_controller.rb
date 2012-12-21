@@ -1,6 +1,8 @@
 class SurveysController < ApplicationController
   def index
+    @course = Course.find(1)
     @surveys = Survey.all
+    # @surveys = @course.surveys
   end
 
   def show
@@ -30,6 +32,14 @@ class SurveysController < ApplicationController
       redirect_to @survey, :notice  => "Successfully updated survey."
     else
       render :action => 'edit'
+    end
+  end
+
+  def survey_reply
+    if user_signed_in?      
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

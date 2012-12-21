@@ -7,7 +7,7 @@
     <%= f.text_field :value%>
     <b>archivo</b>
   </p>
-  <% f.fields_for :answers do |builder| %>
+  <%= f.fields_for :answers do |builder| %>
     <%= render 'answer_fields', :f => builder %>
   <% end %>
   <p><%= link_to_add_fields "Add Answer", f, :answers %></p>

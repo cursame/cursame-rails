@@ -2,6 +2,8 @@
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+    <%= f.label :course_id %><br />
+    <%= f.collection_select :course_id, Course.find(:all), :id, :title,  {:prompt => 'Selecciona un curso'} %>
   </p>
   <%= f.fields_for :questions do |builder| %>
     <%= render "question_fields", :f => builder %>
