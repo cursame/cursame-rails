@@ -17,7 +17,7 @@
     <img src="/assets/logo.png" alt="" class="brand">
     <div style="float: right;">
       <% if user_signed_in? %>
-          <img src="http://placehold.it/32x32/4D9900/ffffff&text=usr" alt=""> Nombre de Usuario
+          <%= image_tag(current_user.avatar.head)%> <%= current_user.name %>
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
       <% else %>
           <%= link_to "Sign up", new_user_session_path %> or <%= link_to "sign in", new_user_session_path %>
