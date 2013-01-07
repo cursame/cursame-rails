@@ -116,5 +116,9 @@ class CoursesController < ApplicationController
     end
   end
   
+  def deliveries
+    @course = Course.find(params[:id])
+  end
+  
      
 end
