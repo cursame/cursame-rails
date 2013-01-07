@@ -1,26 +1,39 @@
 <h1>Listing courses</h1>
+<img src="/cgi-bin/mathtex.cgi?f(x)=\int_{-\infty}^xe^{-t^2}dt"
+   alt="" border=0 align="middle">
  <h2>  <%= notice %> </h2>
 <% @courses.each do |course| %>
 <div class="course">
 
  <h2><div><%= link_to image_tag(course.avatar.modern), course %></div><div><%= course.title %></div></h2>
     <div class="hidden-text">
-      <%= course.silabus %>
+       
+       <div id="silabus">
+           <%= course.silabus.html_safe %>
+       </div>
     </div>
       <%#= course.init_date %>
     <h4> Término: <%= course.finish_date %></h4>
      <h3> 
-            |<%= link_to 'Show', course %>|
-            <%= link_to 'Edit', edit_course_path(course) %>|
-            <%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %>|
-         <% ##### importante no mover esta varialbe ######%>  
+            <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>            
+          
+               <% ##### importante no mover esta varialbe ######%>  
             <% @course_id = course.id%>
-      <% if course.public_status == "Private" %>
-         <%= render partial: "courses/members_in_courses/private_course"%>|
-        <%else%>   
-            <%= render partial: "courses/members_in_courses/public_course"%>|  
-      <%end%>
-      
+            <% if @correspond %> 
+                 <% if @correspond.accepted == true %>
+                   |<%= link_to 'Show', course %>|
+                   <%= link_to 'Edit', edit_course_path(course) %>|
+                   <%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %>|
+                   <%else%>
+                    <b>Aún no has sido aceptado en el curso</b>
+                   <%end%>
+            <%else%>
+               <% if course.public_status == "Private" %>
+                  <%= render partial: "courses/members_in_courses/private_course"%>|
+              <%else%>   
+                  <%= render partial: "courses/members_in_courses/public_course"%>|  
+              <%end%>
+           <%end%>
      </h3>
 </div></br>
  

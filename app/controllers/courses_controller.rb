@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
-  before_filter :filter_protection, :only => [:show, :edit, :crate, :update, :destoy, :members]
+  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   def index
     @courses = Course.all
     ##### creamos el registro de los usuarios de un curso ######
@@ -73,11 +73,11 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
-        format.html { render action: "edit" }
         format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -102,6 +102,7 @@ class CoursesController < ApplicationController
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    if @member
      if @member.accepted
         respond_to do |format|
            format.html # show.html.erb
@@ -110,6 +111,9 @@ class CoursesController < ApplicationController
      else
         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
      end
+    else
+        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+    end
   end
   
      
