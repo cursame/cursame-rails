@@ -7,15 +7,13 @@
     <%= f.text_field :title, :placeholder=>'Nombre' %>
   </div>
   <div class="field">
-    <%= f.text_area :silabus, :rows => 3, :cols => 28 , :placeholder=>'Descripción' %>
+    <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción' %>
   </div>
   <div class="field">
     <%= f.text_field :init_date, :placeholder=>'Fecha Inicio', :class=>"date-input" %>
-    <%# f.date_select :init_date %>
   </div>
   <div class="field">
     <%= f.text_field :finish_date, :placeholder=>'Fecha Final', :class=>"date-input" %>
-    <%# f.date_select :finish_date %>
   </div>
   <div class="field">
       Tipo de curso: <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
@@ -23,13 +21,12 @@
   <div class="actions", id="create_course_form">
     <%= f.submit%>
   </div>
+  <div id="cancel-course-form" class="actions", id="create_course_form">
+    <%= button_tag "Cancel", :type => 'button' %>
+  </div>
 <% end %>
-
-<div id="accept-course-form" style="float:left;"><img src="http://placehold.it/80x30/4D9900/ffffff&text=aceptar" alt=""></div>
-<div id="cancel-course-form" style="float:right;"><img src="http://placehold.it/80x30/ff0000/ffffff&text=cancelar" alt=""></div>
-
-    <script>
+<script>
     $("#create_course_form").on('click',function(){
        $(".ui-widget-overlay").css('display','block');
-    });    
+    });
 </script>

@@ -452,6 +452,7 @@ ul{
     cursor:pointer;
   }
   & .new_course{  //(class form difined by Rails)
+    color: #333;
     margin: 5px 0px 4px 6px;
     & .field{
       margin: 4px 0px 0px 0px;
@@ -461,18 +462,25 @@ ul{
       background-position: right;
     }
     & input[type=text]{
-      width: 214px;
+      width: 207px;
       height: 28px;
       border: $border-box;
       border-radius: $border-radius-box;
       @include shadow-input;
+      padding-left: 7px;
+    }
+    & input[type=submit], button{
+      background: white;
+      border: solid 1px #CCC;
     }
     & textarea{
       border: $border-box;
       border-radius: $border-radius-box;
       margin: 0px;
       height: 70px;
+      padding-left: 7px;
       @include shadow-input;
+      width: 207px;
     }
   }
 
