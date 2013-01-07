@@ -5,6 +5,12 @@
 //When I wrote this, only God and I understood what I was doing
 //Now, God only knows - RodrigoAyala.me
 @import "vars";
+
+// - - - - Date picker - - - -
 .ui-datepicker{
   background: $bg-general;
+  width: 200px;
+  border: $border-box;
+  @include border-t-right-radius;
+  @include border-radius;
 }

@@ -1,6 +1,7 @@
 //When I wrote this, only God and I understood what I was doing
 //Now, God only knows - RodrigoAyala.me
 
+// Fonts
 @font-face {
   font-family: HelvRegular;
   src: url('/assets/fonts/HelveticaLTStdRoman.otf'),
@@ -41,6 +42,9 @@ $border-gray: 1px solid $gray-e;
 //Radius
 $border-radius-box: 5px;
 $border-radius-avatar-mini: 3px;
+@mixin border-radius{
+  border-radius: $border-radius-box;
+}
 @mixin border-t-right-radius{
   -webkit-border-top-right-radius: $border-radius-box;
   -moz-border-top-right-radius: $border-radius-box;
