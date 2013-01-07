@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
+<% if @course.coverphoto = nil %>
+<div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>   
+<%else%>
+<div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"> </div> 
+<%end%>
 <%if @member.owner == true %>
     <%= link_to 'Edit', edit_course_path(@course) %> |
     <%= link_to 'Back', courses_path %>

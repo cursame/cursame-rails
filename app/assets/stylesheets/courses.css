@@ -25,4 +25,7 @@ h3{
    border:none;
  
 }
+.course-banner-profile{
+     background-image: url("/assets/bannerprofile.png");
+}
 

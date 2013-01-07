@@ -1,6 +1,4 @@
 <h1>Listing courses</h1>
-<img src="/cgi-bin/mathtex.cgi?f(x)=\int_{-\infty}^xe^{-t^2}dt"
-   alt="" border=0 align="middle">
  <h2>  <%= notice %> </h2>
 <% @courses.each do |course| %>
 <div class="course">
@@ -21,9 +19,11 @@
             <% @course_id = course.id%>
             <% if @correspond %> 
                  <% if @correspond.accepted == true %>
-                   |<%= link_to 'Show', course %>|
-                   <%= link_to 'Edit', edit_course_path(course) %>|
-                   <%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %>|
+                        |<%= link_to 'Show', course %>|
+                    <% if @correspond.owner == true %>
+                        <%= link_to 'Edit', edit_course_path(course) %>|
+                        <%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %>|
+                    <%end%>
                    <%else%>
                     <b>Aún no has sido aceptado en el curso</b>
                    <%end%>

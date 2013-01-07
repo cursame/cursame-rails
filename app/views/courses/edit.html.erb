@@ -1,6 +1,13 @@
+<% if @member.owner == true%>
 <h1>Editing course</h1>
-
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+	
+</script>
 <%= render 'form' %>
 
 <%= link_to 'Show', @course %> |
 <%= link_to 'Back', courses_path %>
+<%else%>
+   <h1>Usted no esta autorizado para editar este curso<h1>
+<%end%>
