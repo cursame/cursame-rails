@@ -1,0 +1,43 @@
+<%= form_for(@delivery) do |f| %>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+	
+</script>
+  <% if @delivery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
+
+      <ul>
+      <% @delivery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :publish_date %><br />
+    <%= f.datetime_select :publish_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :porcent_of_evaluation %><br />
+    <%= f.number_field :porcent_of_evaluation %>
+  </div>
+     <%= condocourse %>
+    <%= hidden_field :course_id, :value => condocourse %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

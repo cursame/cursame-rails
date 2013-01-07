@@ -1,0 +1,36 @@
+<%= form_for(@delivery) do |f| %>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+	
+</script>
+ 
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :publish_date %><br />
+    <%= f.datetime_select :publish_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :porcent_of_evaluation %><br />
+    <%= f.number_field :porcent_of_evaluation %>
+  </div>
+
+    <div class="control-group">
+                <%= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>
+    </div>
+         
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

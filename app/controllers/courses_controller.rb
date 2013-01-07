@@ -54,6 +54,7 @@ class CoursesController < ApplicationController
              @member.course_id =  @course.id
              @member.accepted = true
              @member.owner = true
+             @member.title = @course.title
              @member.save
              
         format.json { render json: @course, status: :created, location: @course }
