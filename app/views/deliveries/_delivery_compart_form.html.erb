@@ -1,3 +1,4 @@
+<% if @count_course_iam_member_and_owner < 0%>
 <%= form_for(@delivery) do |f| %>
 <script type="text/javascript">
 	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
@@ -34,3 +35,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+<%end%>
