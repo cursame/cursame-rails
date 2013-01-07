@@ -85,3 +85,8 @@ $margin-sidebar-left: 17px;
   -webkit-box-shadow:inset 0px -1px 2px #dee2e6;
   box-shadow:inset 0px -1px 2px #dee2e6;
 }
+@mixin shadow-float-box{
+  -moz-box-shadow:  0px 1px 5px #999;
+  -webkit-box-shadow: 0px 1px 5px #999;
+  box-shadow: 0px 1px 5px #999;
+}
