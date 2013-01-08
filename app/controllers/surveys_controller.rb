@@ -27,6 +27,7 @@ class SurveysController < ApplicationController
   end
 
   def update
+    params[:survey][:course_ids] ||= []
     @survey = Survey.find(params[:id])
     if @survey.update_attributes(params[:survey])
       redirect_to @survey, :notice  => "Successfully updated survey."
@@ -37,9 +38,26 @@ class SurveysController < ApplicationController
 
   def survey_reply
     if user_signed_in?    
-      @survey = UserSurveyResponse.new(params[:survey])  
+      @user_survey = UserSurvey.new
+      @user_survey.survey_id = params[:survey_id]
+      @user_survey.user = current_user
+      @user_survey.result = 0;
+      
+      if @user_survey.save
+        params[:questions].each do |question|
+          question[1].each do |answer|
+            @user_response = UserSurveyResponse.new
+            @user_response.user_survey_id = @user_survey.id
+            @user_response.question_id = question[0]
+            @user_response.answer_id = answer
+            @user_response.save
+          end        
+        end
+      else
+        #logica por que no se guardo
+      end
       respond_to do |format|
-        format.js
+          format.js
       end
     end
   end

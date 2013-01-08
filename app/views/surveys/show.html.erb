@@ -2,17 +2,19 @@
   <p>
     <%= @survey.name %><br />
     <%= hidden_field_tag 'survey_id', @survey.id%>
-    <%= "Course: " + Course.find(@survey.course_id).title %>
+    <br />
+     <% for course in @survey.courses %>
+        <%= course.title %><br />
+     <% end %>
   </p>
   <% for question in @survey.questions %>
   <p>
     <%= question.content%><br />
-    <%= hidden_field_tag 'question_id', question.id%>
     <b>archivo</b>
   </p>
     <% for answer in question.answers %>
       <%= answer.content %>
-      <%= check_box_tag :question_ids, question.id, false, :name => 'answer[question_ids][]' %><br />
+      <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id %><br />
     <% end %>  
   <% end %>
   <%= submit_tag "Contestar",:class=>"btn btn-primary" %>

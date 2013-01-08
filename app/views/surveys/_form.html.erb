@@ -3,7 +3,13 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
     <%= f.label :course_id %><br />
-    <%= f.collection_select :course_id, Course.find(:all), :id, :title,  {:prompt => 'Selecciona un curso'} %>
+
+  <% for course in Course.find(:all) %>
+    <div>
+      <%= check_box_tag "survey[course_ids][]", course.id, @survey.courses.include?(course) %>
+      <%= course.title %>
+    </div>
+  <% end %>
   </p>
   <%= f.fields_for :questions do |builder| %>
     <%= render "question_fields", :f => builder %>
