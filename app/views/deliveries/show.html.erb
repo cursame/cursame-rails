@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @delivery.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @delivery.description %>
+</p>
+
+<p>
+  <b>Publish date:</b>
+  <%= @delivery.publish_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @delivery.end_date %>
+</p>
+
+<p>
+  <b>Porcent of evaluation:</b>
+  <%= @delivery.porcent_of_evaluation %>
+</p>
+
+
+<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
+<%= link_to 'Back', deliveries_path %>

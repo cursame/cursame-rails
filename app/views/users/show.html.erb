@@ -32,7 +32,6 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "components.js" %>
 <% end %>
-
 <div id="banner-profile" style="background:url('<%= @user.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
     
 <div class="banner-shadow">
@@ -74,6 +73,7 @@
             <div id="form-new-course" class="form-new-course-lateral">
 
                 <%= render partial: "users/form_course.html.erb"%>
+                
             </div>
 
             <div id="tabs-courses" class="tabs-style">
@@ -179,12 +179,15 @@
             <div id="post">
                 <div id="comment-form" style="height: 350px; width: 600px; margin-left:55px; background: #ccc; position: relative; display: none;">
                     <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+                    
+                    
                     <div style="float: right; width: 220px">
                         <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
                         <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
                     </div>
                 </div>
             </div>
+            <%= render :partial => '/deliveries/delivery_compart_form'%>
             <div id="pre-post-form" class="pre-post-form">
 	            <div class="create">
 		          <a href ="#" class="comment">Comentario</a>

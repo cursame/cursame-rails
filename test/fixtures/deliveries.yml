@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  publish_date: 2013-01-07 11:59:20
+  end_date: 2013-01-07 11:59:20
+  porcent_of_evaluation: 1
+
+two:
+  title: MyString
+  description: MyText
+  publish_date: 2013-01-07 11:59:20
+  end_date: 2013-01-07 11:59:20
+  porcent_of_evaluation: 1
