@@ -36,7 +36,8 @@ class SurveysController < ApplicationController
   end
 
   def survey_reply
-    if user_signed_in?      
+    if user_signed_in?    
+      @survey = UserSurveyResponse.new(params[:survey])  
       respond_to do |format|
         format.js
       end

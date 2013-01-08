@@ -12,7 +12,7 @@
   </p>
     <% for answer in question.answers %>
       <%= answer.content %>
-      <%= check_box_tag question.id, answer.id %><br/>
+      <%= check_box_tag :question_ids, question.id, false, :name => 'answer[question_ids][]' %><br />
     <% end %>  
   <% end %>
   <%= submit_tag "Contestar",:class=>"btn btn-primary" %>
