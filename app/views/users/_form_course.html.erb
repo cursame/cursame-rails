@@ -1,8 +1,7 @@
 <div id="return-course" class="return-course-icon"></div>
 <div class="title">Crear nuevo curso</div>
 <div class="ui-widget-overlay">Cargando ...</div>
-
-<%= form_for(@course, :remote => true) do |f|  %>
+<%= form_for(@course, :remote => true, :class=>'form-basic-styles') do |f|  %>
   <div class="field">
     <%= f.text_field :title, :placeholder=>'Nombre' %>
   </div>
@@ -15,18 +14,17 @@
   <div class="field">
     <%= f.text_field :finish_date, :placeholder=>'Fecha Final', :class=>"date-input" %>
   </div>
-  <div class="field">
-      Tipo de curso: <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+  <div class="field select-style">
+    <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
+
   </div>
-  <div class="actions", id="create_course_form">
-    <%= f.submit%>
-  </div>
-  <div id="cancel-course-form" class="actions", id="create_course_form">
-    <%= button_tag "Cancel", :type => 'button' %>
+  <div class="actions" id="create_course_form">
+    <%= f.submit "Crear" , :class=>'input-button active'%>
+    <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-course-form' %>
   </div>
 <% end %>
 <script>
     $("#create_course_form").on('click',function(){
-       $(".ui-widget-overlay").css('display','block');
+       //$(".ui-widget-overlay").css('display','block');
     });
 </script>

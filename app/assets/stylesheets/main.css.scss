@@ -238,7 +238,6 @@ ul{
       color: #969696;
       font-family: HelvLight;
       font-size: 9pt;
-      margin-left: 6px;
       text-transform: uppercase;
     }
     & .title-num{
@@ -251,10 +250,12 @@ ul{
       float: left;
     }
     & li a {
-      height: 33px;
+      height: 40px;
       float: left;
       width: 100%;
-      padding: 7px 0px 0px 7px;
+      & .content-tab{
+        margin: 7px 0px 0px 5px;
+      }
     }
     & li.ui-state-default{
       background: #fafafa;
@@ -433,6 +434,65 @@ ul{
 }
 
 /* /\/\/\/\ Forms /\/\/\/\ */
+
+.input-button{
+  background: #FFF;
+  text-align: center;
+  color: #999;
+  width: 100px;
+  height: 100%;
+  float:left;
+  line-height: 25px;
+  border: $border-box;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 2px #c9d1da;
+  -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 2px #c9d1da;
+  box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 2px #c9d1da;
+  cursor: pointer;
+  margin: 4px 4px 2px 4px;
+  font-weight: bold;
+
+  font-size: 14px;
+  &.active{
+    -moz-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 1px #888;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 1px #888;
+    box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 1px #888;
+
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca) );
+    background:-moz-linear-gradient( center top, #2fcce3 5%, #00b0ca 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
+    background-color:#2fcce3;
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+    border:1px solid #449eae;
+    display:inline-block;
+    color:#FFF;//#197d91;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #197d91;//#c3edf3;
+  }
+  &.active:hover{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3) );
+    background:-moz-linear-gradient( center top, #00b0ca 5%, #2fcce3 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b0ca', endColorstr='#2fcce3');
+    background-color:#00b0ca;
+    color:#FFF;//#197d91;
+  }
+}
+.input-button:hover{
+      color: #555;
+      background: #f8f8f8;
+      -webkit-box-shadow: inset 0px 1px 2px #999, inset 0px 1px 1px #666;
+      -moz-box-shadow:    inset 0px 1px 2px #999, inset 0px 1px 1px #666;
+      box-shadow:         inset 0px 1px 2px #999, inset 0px 1px 1px #666;
+}
+
 .form-new-course-lateral{
   display: none;
   width: 230px;
@@ -441,6 +501,7 @@ ul{
   background:#FFF;
   @include border-t-right-radius;
   @include border-t-left-radius;
+
   & .return-course-icon{
     position: absolute;
     width: 37px;
@@ -469,10 +530,28 @@ ul{
       @include shadow-input;
       padding-left: 7px;
     }
-    & input[type=submit], button{
-      background: white;
-      border: solid 1px #CCC;
+
+    & .select-style{
+      background: transparent;
+      width: 214px;
+      font-size: 13px;
+      border: 0;
+      border-radius: 0;
+      height: 34px;
+      & select{
+        width: 217px;
+        height: 31px;
+        overflow: hidden;
+        padding-left: 5px;
+        background: url('/assets/icons/select-mini.png') no-repeat right #fff;
+        border: 1px solid #ccc;
+        -webkit-appearance: none;
+        appearance: none;
+        @include shadow-input;
+
+      }
     }
+
     & textarea{
       border: $border-box;
       border-radius: $border-radius-box;
@@ -480,7 +559,7 @@ ul{
       height: 70px;
       padding-left: 7px;
       @include shadow-input;
-      width: 207px;
+      width: 206px;
     }
   }
 
