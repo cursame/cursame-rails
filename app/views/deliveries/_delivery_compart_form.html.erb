@@ -1,38 +1,29 @@
 <% if @count_course_iam_member_and_owner > 0%>
-<%= form_for(@delivery) do |f| %>
-<script type="text/javascript">
-	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-	
-</script>
- 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :publish_date %><br />
-    <%= f.datetime_select :publish_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br />
-    <%= f.datetime_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :porcent_of_evaluation %><br />
-    <%= f.number_field :porcent_of_evaluation %>
-  </div>
 
-    <div class="control-group">
-                <%= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>
-    </div>
-         
-
-  <div class="actions">
+<%= form_for(@delivery, :html => { :class => "default-form delivery-form"}) do |f| %>
+    <%= f.text_field :title , :placeholder=>'Titulo' %>
+    <%= f.number_field :porcent_of_evaluation, :placeholder=>'%de evaluación', :class=>"percent-input" %>
+    <%= f.text_area :description , :rows => 4, :cols => 80 , :placeholder=>'Descripción' %>
+    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
+    <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
+    <%= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>
     <%= f.submit %>
-  </div>
+    <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $(function() {
+            $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
+                inline: false,
+                minDate: 0,
+                showOtherMonths: true,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+            });
+        });
+    });
+  </script>
 <% end %>
+
 <%end%>
+

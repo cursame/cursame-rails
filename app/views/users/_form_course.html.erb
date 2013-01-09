@@ -1,30 +1,30 @@
 <div id="return-course" class="return-course-icon"></div>
 <div class="title">Crear nuevo curso</div>
 <div class="ui-widget-overlay">Cargando ...</div>
-<%= form_for(@course, :remote => true, :class=>'form-basic-styles') do |f|  %>
-  <div class="field">
-    <%= f.text_field :title, :placeholder=>'Nombre' %>
-  </div>
-  <div class="field">
-    <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción' %>
-  </div>
-  <div class="field">
-    <%= f.text_field :init_date, :placeholder=>'Fecha Inicio', :class=>"date-input" %>
-  </div>
-  <div class="field">
-    <%= f.text_field :finish_date, :placeholder=>'Fecha Final', :class=>"date-input" %>
-  </div>
-  <div class="field select-style">
-    <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
 
-  </div>
-  <div class="actions" id="create_course_form">
+<%= form_for(@course, :remote => true, :html => { :class => "default-form course-form"}) do |f|  %>
+    <%= f.text_field :title, :placeholder=>'Nombre' %>
+    <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción' %>
+    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>
+    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
+    <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
     <%= f.submit "Crear" , :class=>'input-button active'%>
-    <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-course-form' %>
-  </div>
+    <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
 <% end %>
-<script>
+<script type="text/javascript">
     $("#create_course_form").on('click',function(){
        //$(".ui-widget-overlay").css('display','block');
+    });
+
+    $(document).ready(function() {
+        $(function() {
+            $( "#course_init_date, #course_finish_date" ).datepicker({
+                inline: true,
+                minDate: 0,
+                showOtherMonths: true,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+            });
+        });
     });
 </script>

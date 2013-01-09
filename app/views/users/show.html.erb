@@ -175,26 +175,25 @@
 
     <!-- Content -->
     <div id="box-stream-post">
-        <div class="box-6">
-            <div id="post">
-                <div id="comment-form" style="height: 350px; width: 600px; margin-left:55px; background: #ccc; position: relative; display: none;">
+        <div class="profile-post-box">
+            <div id="post-forms">
+
+                <div id="comment-profile-form" class="profile-delivery-form-style" >
                     <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-                    
-                    
-                    <div style="float: right; width: 220px">
-                        <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
-                        <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
-                    </div>
                 </div>
+
+                <div id="delivery-profile-form" class="profile-delivery-form-style">
+                    <%= render :partial => '/deliveries/delivery_compart_form'%>
+                </div>
+
             </div>
-            <%= render :partial => '/deliveries/delivery_compart_form'%>
-            <div id="pre-post-form" class="pre-post-form">
-	            <div class="create">
-		          <a href ="#" class="comment">Comentario</a>
-		          <a href ="#" class="homework">Tarea</a>
-		           <a href ="#" class="discussion">Discusión</a>
-		           <a href ="#" class="test">Cuestionario</a>
-		              <a href ="#" class="poll">Encuesta</a>
+            <div id="profile-form-options" class="profile-form-options-styles">
+	            <div id="post-btns" class="create">
+		            <a href ="#comment-profile-form" class="comment">Comentario</a>
+		            <a href ="#delivery-profile-form" class="homework">Tarea</a>
+		            <a href ="#" class="discussion">Discusión</a>
+		            <a href ="#" class="test">Cuestionario</a>
+		            <a href ="#" class="poll">Encuesta</a>
 		            <a href ="#" class="event">Evento</a>
 	            </div>     
             </div>

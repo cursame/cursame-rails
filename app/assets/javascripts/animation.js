@@ -1,8 +1,12 @@
 $(document).ready(function() {
-    var prePostHeight = $('.pre-post-form').height();
+    var prePostHeight = $('.profile-form-options').height();
     var time = 500;
     var timeSlide = time-100;
 
+
+
+
+    //-----Titles Cover Photo -----
     var control_height = false;
     var tmp_height = 140;
 
@@ -19,45 +23,47 @@ $(document).ready(function() {
         }, time);
     });
 
-    $('.pre-post-form').click(function() {
 
-        $('.pre-post-form').animate({
+    //----- Post Form Animations------
+    $('#post-btns > a').click(function() {
+        var hrefClean = $(this).attr('href');
+        $(this).parent().parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
             height: '0'
         }, time, function() {
             $(this).css('display','none');
         });
-
-        $('#post').animate({
-            height: $('#comment-form').height()
+        $('#post-forms').animate({
+            height: $( hrefClean ).height()
         }, time);
-
-        console.log('test');
-
-        $('#comment-form').css('display','block');
-
-        $('#comment-form').animate({
+        $( hrefClean ).css('display','block');
+        $(hrefClean ).animate({
             opacity: 1
         }, time);
+        return false;
     });
-    $('#cancel-post-form').click(function() {
-
-        $('#post').animate({
-            height: '0'
-        }, time);
-        $('#comment-form').animate({
-            opacity: 0
-        }, time, function() {
-            $(this).css('display','none');
+    //Cancel btns
+    $('#post-forms>div').each(function( index, value ) {
+        $(value).find('#cancel-post-form').click(function() {
+            $('#post').animate({
+                height: '0'
+            }, time);
+            $('#comment-profile-form').animate({
+                opacity: 0
+            }, time, function() {
+                $(this).css('display','none');
+            });
+            $('#profile-form-options').css('display','block');
+            $('#profile-form-options').animate({
+                opacity: 1,
+                height: prePostHeight
+            }, time);
         });
-
-        $('.pre-post-form').css('display','block');
-        $('.pre-post-form').animate({
-            opacity: 1,
-            height: prePostHeight
-        }, time);
     });
 
+
+
+    //-------Courses animation------
     $('#new-course').click(function(){
         moveOutSlide('');
     });
@@ -98,6 +104,7 @@ $(document).ready(function() {
             "slide", { direction: "left" }, timeSlide
         );
     }
+
     $(function() {
         $( "#tabs-courses" ).tabs();
         $( "#tabs-friends" ).tabs();

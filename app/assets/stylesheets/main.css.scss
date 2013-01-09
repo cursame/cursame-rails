@@ -50,6 +50,7 @@ ul{
 
 
 /* /\/\/\/\ Boxes /\/\/\/\ */
+
 #box-post-form{
   border-bottom: 1px solid #ccc;
 }
@@ -60,13 +61,23 @@ ul{
   }
 
 }
-
-#pre-post-form {
+.profile-post-box{
+  border: $border-box;
+  @include border-radius;
+  background: #FFF;
+  margin: 5px 0 0 55px;
+  padding: 10px 0 0 0px;
+  width: 600px;
+}
+.profile-form-options-styles{
   width: 100%;
   height: $height-post-box;
-  background: url('/assets/post_user_bg.png') no-repeat 20px 0px;
-  margin: 10px 0 0 25px;
-  padding: 10px 0 0 30px;
+}
+.profile-delivery-form-style{
+  height: 200px;
+  background: #FFF;
+  position: relative;
+  display: none;
 }
 
 #pre-post-form-princpal{
@@ -424,7 +435,6 @@ ul{
   float: left;
 }
 .box-6{
-  margin-left: 0px;
   width: $width-right-bar;
   float: left;
 }
@@ -433,65 +443,7 @@ ul{
   display:none;
 }
 
-/* /\/\/\/\ Forms /\/\/\/\ */
 
-.input-button{
-  background: #FFF;
-  text-align: center;
-  color: #999;
-  width: 100px;
-  height: 100%;
-  float:left;
-  line-height: 25px;
-  border: $border-box;
-
-  -moz-border-radius:3px;
-  -webkit-border-radius:3px;
-  border-radius:3px;
-
-  -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 2px #c9d1da;
-  -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 2px #c9d1da;
-  box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 2px #c9d1da;
-  cursor: pointer;
-  margin: 4px 4px 2px 4px;
-  font-weight: bold;
-
-  font-size: 14px;
-  &.active{
-    -moz-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 1px #888;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 1px #888;
-    box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 1px #888;
-
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca) );
-    background:-moz-linear-gradient( center top, #2fcce3 5%, #00b0ca 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
-    background-color:#2fcce3;
-
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    border-radius:3px;
-
-    border:1px solid #449eae;
-    display:inline-block;
-    color:#FFF;//#197d91;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #197d91;//#c3edf3;
-  }
-  &.active:hover{
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3) );
-    background:-moz-linear-gradient( center top, #00b0ca 5%, #2fcce3 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b0ca', endColorstr='#2fcce3');
-    background-color:#00b0ca;
-    color:#FFF;//#197d91;
-  }
-}
-.input-button:hover{
-      color: #555;
-      background: #f8f8f8;
-      -webkit-box-shadow: inset 0px 1px 2px #999, inset 0px 1px 1px #666;
-      -moz-box-shadow:    inset 0px 1px 2px #999, inset 0px 1px 1px #666;
-      box-shadow:         inset 0px 1px 2px #999, inset 0px 1px 1px #666;
-}
 
 .form-new-course-lateral{
   display: none;
@@ -512,57 +464,6 @@ ul{
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
   }
-  & .new_course{  //(class form difined by Rails)
-    color: #333;
-    margin: 5px 0px 4px 6px;
-    & .field{
-      margin: 4px 0px 0px 0px;
-    }
-    & .date-input{
-      background: url('/assets/icons/calendar-mini.png') no-repeat;
-      background-position: right;
-    }
-    & input[type=text]{
-      width: 207px;
-      height: 28px;
-      border: $border-box;
-      border-radius: $border-radius-box;
-      @include shadow-input;
-      padding-left: 7px;
-    }
-
-    & .select-style{
-      background: transparent;
-      width: 214px;
-      font-size: 13px;
-      border: 0;
-      border-radius: 0;
-      height: 34px;
-      & select{
-        width: 217px;
-        height: 31px;
-        overflow: hidden;
-        padding-left: 5px;
-        background: url('/assets/icons/select-mini.png') no-repeat right #fff;
-        border: 1px solid #ccc;
-        -webkit-appearance: none;
-        appearance: none;
-        @include shadow-input;
-
-      }
-    }
-
-    & textarea{
-      border: $border-box;
-      border-radius: $border-radius-box;
-      margin: 0px;
-      height: 70px;
-      padding-left: 7px;
-      @include shadow-input;
-      width: 206px;
-    }
-  }
-
   & .title{
     font-family: helvlight;
     height: 40px;
