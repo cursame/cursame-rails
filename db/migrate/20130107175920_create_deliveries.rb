@@ -6,6 +6,7 @@ class CreateDeliveries < ActiveRecord::Migration
       t.datetime :publish_date
       t.datetime :end_date
       t.integer :porcent_of_evaluation
+      t.integer :course_id
 
       t.timestamps
     end
