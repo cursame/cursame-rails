@@ -27,9 +27,9 @@ $(document).ready(function() {
     //----- Post Form Animations------
     var prePostHeight = $('#profile-form-options').height();
 
-    $('#post-btns > a').click(function() {
+    $('#profile-form-options > a').click(function() {
         var hrefClean = $(this).attr('href');
-        $(this).parent().parent().animate({  // Se va por $('#profile-form-options')
+        $(this).parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
             height: '0'
         }, time, function() {
