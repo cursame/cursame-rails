@@ -344,6 +344,35 @@ ul{
   -moz-box-shadow:    0px 1px 0px #fff, inset 0px 1px 0px #fff;
   -webkit-box-shadow: 0px 1px 0px #fff, inset 0px 1px 0px #fff;
   box-shadow:         0px 1px 0px #fff, inset 0px 1px 0px #fff;
+  padding: 5px;
+}
+
+#box-profile-info li{
+ list-style: none;
+ padding: 5px 0px 5px 20px;
+ font-size: 10px;
+ margin-left: 10px;
+ width: 180px;
+}
+
+.aboutme{
+background: url("/assets/icons/aboutme.png") no-repeat;
+background-position: left center;
+}
+
+.mail{
+background: url("/assets/icons/mail.png") no-repeat;
+background-position: left center;
+}
+
+.twitter{
+background: url("/assets/icons/twitter.png") no-repeat;
+background-position: left center;
+}
+
+.facebook{
+background: url("/assets/icons/facebook.png") no-repeat;
+background-position: left center;
 }
 
 #box-course{
@@ -600,6 +629,7 @@ ul{
 .list-header{
 	list-style:none; 
 	display: inline;
+	
 }
 .list-header li{
 	display: inherit; 
@@ -610,6 +640,22 @@ ul{
 	padding-left: 25px;
 	cursor: hand !important;	
 }
+
+.menu-user{
+width: 180px;
+}
+
+.menu-user p{
+	margin-top: 12px; 
+	float: right;
+	text-align: center;
+	color: #666;
+}
+.menu-user img{
+	margin-top: 3px;
+}
+
+.menu-user a{margin-left: 10px;}
 
 .create {
   list-style: none;
