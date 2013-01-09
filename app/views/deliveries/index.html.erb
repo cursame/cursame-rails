@@ -1,17 +1,7 @@
 <h1>Listing deliveries </h1>
 <%= render 'form'%>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Publish date</th>
-    <th>End date</th>
-    <th>Porcent of evaluation</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
   <% current_course.deliveries.each do |ds| %>
    <b><%= ds.title %></b>
    <p><%= ds.description %></p>
