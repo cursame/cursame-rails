@@ -45,6 +45,7 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms>div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
+
             $('#post').animate({
                 height: '0'
             }, time);
@@ -58,6 +59,7 @@ $(document).ready(function() {
                 opacity: 1,
                 height: prePostHeight
             }, time);
+
         });
     });
 
