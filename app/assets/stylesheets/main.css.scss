@@ -66,8 +66,8 @@ ul{
   @include border-radius;
   background: #FFF;
   margin: 5px 0 0 55px;
-  padding: 10px 0 0 0px;
   width: 600px;
+  float: left;
 }
 .profile-form-options-styles{     //styles box elements forms post
   width: 100%;
@@ -612,8 +612,9 @@ ul{
 }
 
 .create {
-	list-style: none; 
-	display: inline;
+  list-style: none;
+  display: inline;
+  float: left;
 }
 .create a{
 	display: block; 
