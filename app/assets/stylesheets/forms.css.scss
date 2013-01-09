@@ -131,26 +131,69 @@
 
 
 
-.delivery-form{
+#profile-delivery-form{
+  height: 200px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  & .delivery-form{
+    & .percent-input{
+      width: 85px;
+      float: right;
+    }
 
-  & .percent-input{
-    width: 85px;
-    float: right;
+    & select{
+      width: 217px;
+      height: 31px;
+      overflow: hidden;
+      padding-left: 5px;
+      background: url('/assets/icons/select-mini.png') no-repeat right #fff;
+      border: $border-forms;
+      -webkit-appearance: none;
+      appearance: none;
+      @include shadow-input;
+      margin: 4px 0px 0px 0px;
+    }
   }
-
-  & select{
-    width: 217px;
-    height: 31px;
-    overflow: hidden;
-    padding-left: 5px;
-    background: url('/assets/icons/select-mini.png') no-repeat right #fff;
-    border: $border-forms;
-    -webkit-appearance: none;
-    appearance: none;
-    @include shadow-input;
-    margin: 4px 0px 0px 0px;
+  & form{
+    margin: 7px 10px 0px 10px;
+  }
+  & textarea{
+    width: 569px;
+  }
+  & button{
+    float: right !important;
+    margin-right: 9px;
+  }
+  & input[type=submit]{
+    float: right !important;
   }
 }
+
+
+
+#profile-message-form{
+  height: 120px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  width: $width-form-post;
+  & textarea{
+    margin: 10px 0px 0px 10px;
+    width: 570px;
+  }
+  & button{
+    float: right !important;
+    margin-right: 9px;
+  }
+  & input[type=submit]{
+    float: right !important;
+  }
+}
+
+
 .course-form{  //(class form difined by Rails)
   color: #333;
   margin: 5px 0px 4px 6px;

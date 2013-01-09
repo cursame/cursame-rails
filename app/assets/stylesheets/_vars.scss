@@ -28,8 +28,9 @@ $widht-content: 920px;
 $width-left-bar: 260px;
 $width-right-bar: 675px;
 $width-lateral-box: 230px;
+$width-form-post: 600px;
 
-$height-post-box: 85px;
+$height-post-box: 80px;
 $comment-box: 600px;
 
 //Colors
@@ -44,6 +45,7 @@ $border-gray: 1px solid $gray-e;
 //Radius
 $border-radius-box: 5px;
 $border-radius-avatar-mini: 3px;
+
 @mixin border-radius{
   border-radius: $border-radius-box;
 }
