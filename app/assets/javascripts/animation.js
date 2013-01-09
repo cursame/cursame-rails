@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var prePostHeight = $('.profile-form-options').height();
+
     var time = 500;
     var timeSlide = time-100;
 
@@ -25,6 +25,8 @@ $(document).ready(function() {
 
 
     //----- Post Form Animations------
+    var prePostHeight = $('#profile-form-options').height();
+
     $('#post-btns > a').click(function() {
         var hrefClean = $(this).attr('href');
         $(this).parent().parent().animate({  // Se va por $('#profile-form-options')
@@ -45,11 +47,11 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms>div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
-
-            $('#post').animate({
+            console.log($(this).parent().parent().attr('id'));
+            $('#post-forms').animate({
                 height: '0'
             }, time);
-            $('#comment-profile-form').animate({
+            $(this).parent().parent().animate({
                 opacity: 0
             }, time, function() {
                 $(this).css('display','none');

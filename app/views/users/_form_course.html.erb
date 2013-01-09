@@ -9,7 +9,7 @@
     <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
     <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
     <%= f.submit "Crear" , :class=>'input-button active'%>
-    <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+    <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
 <% end %>
 <script type="text/javascript">
     $("#create_course_form").on('click',function(){

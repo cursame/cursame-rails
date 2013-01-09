@@ -69,9 +69,17 @@ ul{
   padding: 10px 0 0 0px;
   width: 600px;
 }
-.profile-form-options-styles{
+.profile-form-options-styles{     //styles box elements forms post
   width: 100%;
   height: $height-post-box;
+}
+
+
+.profile-message-form-style{
+  height: 100px;
+  background: #FFF;
+  position: relative;
+  display: none;
 }
 .profile-delivery-form-style{
   height: 200px;
