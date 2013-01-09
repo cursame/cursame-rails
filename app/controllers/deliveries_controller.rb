@@ -5,6 +5,7 @@ class DeliveriesController < ApplicationController
   def index
     @deliveries = Delivery.all
      @delivery = Delivery.new
+    @course_accces = current_course
        condocourse
     respond_to do |format|
       format.html # index.html.erb

@@ -12,19 +12,13 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @deliveries.each do | course_delivery| %>
-  <tr>
-    <td><%= course_delivery.title %></td>
-    <td><%= course_delivery.description %></td>
-    <td><%= course_delivery.publish_date %></td>
-    <td><%= course_delivery.end_date %></td>
-    <td><%= course_delivery.porcent_of_evaluation %></td>
-    <td><%= link_to 'Show',  course_delivery %></td>
-    <td><%= link_to 'Edit', edit_delivery_path(course_delivery) %></td>
-    <td><%= link_to 'Destroy', course_delivery, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% current_course.deliveries.each do |ds| %>
+   <b><%= ds.title %></b>
+   <p><%= ds.description %></p>
+  <%end%>
+  
+ 
+   
 </table>
 
 <br />
