@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
-  has_many :members_in_course 
+  has_many :members_in_courses 
+  has_many :deliveries_courses
+  has_many :deliveries, :through => :deliveries_courses
 end

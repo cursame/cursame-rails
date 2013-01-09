@@ -14,7 +14,7 @@ Cursame30Lb::Application.routes.draw do
   resources :deliveries
   match "courses/:id/members", :to => "courses#members", :as => :course_members
   match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
-  match "courses/:id/deliveries", :to => "deliveries#new", :as => :new_course_delivery
+  match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   
   #resources :role_id_and_permission_ids
 

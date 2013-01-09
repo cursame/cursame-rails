@@ -21,7 +21,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries/1.json
   def show
     @delivery = Delivery.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @delivery }
@@ -48,7 +48,6 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.json
   def create
     @delivery = Delivery.new(params[:delivery])
-    @delivery.save
     respond_to do |format|
       if @delivery.save
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
@@ -87,4 +86,5 @@ class DeliveriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end
