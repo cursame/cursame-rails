@@ -25,10 +25,11 @@
 
 // Sizes
 $widht-content: 920px;
-$height-post-box: 100px;
 $width-left-bar: 260px;
 $width-right-bar: 675px;
 $width-lateral-box: 230px;
+
+$height-post-box: 85px;
 $comment-box: 600px;
 
 //Colors
@@ -37,6 +38,7 @@ $border-general: #c9d1da;
 
 //Borders
 $border-box: 1px solid $border-general;
+$border-forms: $border-box;
 $border-gray: 1px solid $gray-e;
 
 //Radius

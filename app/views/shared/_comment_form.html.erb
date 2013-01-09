@@ -3,4 +3,5 @@
     <%=hidden_field_tag 'commentable_id', commentable_id %>
     <%=hidden_field_tag 'commentable_type', commentable_type %>
     <%= submit_tag "Comentar",:class=>"btn btn-primary" %>
+    <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
 <% end %>

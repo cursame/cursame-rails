@@ -50,6 +50,7 @@ ul{
 
 
 /* /\/\/\/\ Boxes /\/\/\/\ */
+
 #box-post-form{
   border-bottom: 1px solid #ccc;
 }
@@ -60,13 +61,23 @@ ul{
   }
 
 }
-
-#pre-post-form {
+.profile-post-box{
+  border: $border-box;
+  @include border-radius;
+  background: #FFF;
+  margin: 5px 0 0 55px;
+  padding: 10px 0 0 0px;
+  width: 600px;
+}
+.profile-form-options-styles{
   width: 100%;
   height: $height-post-box;
-  background: url('/assets/post_user_bg.png') no-repeat 20px 0px;
-  margin: 10px 0 0 25px;
-  padding: 10px 0 0 30px;
+}
+.profile-delivery-form-style{
+  height: 200px;
+  background: #FFF;
+  position: relative;
+  display: none;
 }
 
 #pre-post-form-princpal{
@@ -238,7 +249,6 @@ ul{
       color: #969696;
       font-family: HelvLight;
       font-size: 9pt;
-      margin-left: 6px;
       text-transform: uppercase;
     }
     & .title-num{
@@ -251,10 +261,12 @@ ul{
       float: left;
     }
     & li a {
-      height: 33px;
+      height: 40px;
       float: left;
       width: 100%;
-      padding: 7px 0px 0px 7px;
+      & .content-tab{
+        margin: 7px 0px 0px 5px;
+      }
     }
     & li.ui-state-default{
       background: #fafafa;
@@ -423,7 +435,6 @@ ul{
   float: left;
 }
 .box-6{
-  margin-left: 0px;
   width: $width-right-bar;
   float: left;
 }
@@ -432,7 +443,8 @@ ul{
   display:none;
 }
 
-/* /\/\/\/\ Forms /\/\/\/\ */
+
+
 .form-new-course-lateral{
   display: none;
   width: 230px;
@@ -441,6 +453,7 @@ ul{
   background:#FFF;
   @include border-t-right-radius;
   @include border-t-left-radius;
+
   & .return-course-icon{
     position: absolute;
     width: 37px;
@@ -451,39 +464,6 @@ ul{
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
   }
-  & .new_course{  //(class form difined by Rails)
-    color: #333;
-    margin: 5px 0px 4px 6px;
-    & .field{
-      margin: 4px 0px 0px 0px;
-    }
-    & .date-input{
-      background: url('/assets/icons/calendar-mini.png') no-repeat;
-      background-position: right;
-    }
-    & input[type=text]{
-      width: 207px;
-      height: 28px;
-      border: $border-box;
-      border-radius: $border-radius-box;
-      @include shadow-input;
-      padding-left: 7px;
-    }
-    & input[type=submit], button{
-      background: white;
-      border: solid 1px #CCC;
-    }
-    & textarea{
-      border: $border-box;
-      border-radius: $border-radius-box;
-      margin: 0px;
-      height: 70px;
-      padding-left: 7px;
-      @include shadow-input;
-      width: 207px;
-    }
-  }
-
   & .title{
     font-family: helvlight;
     height: 40px;

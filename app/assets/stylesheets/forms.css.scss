@@ -1,0 +1,174 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//When I wrote this, only God and I understood what I was doing
+//Now, God only knows - RodrigoAyala.me
+@import "vars";
+
+/* /\/\/\/\ Forms /\/\/\/\ */
+
+.default-form{
+  & select{
+    height: 31px;
+    overflow: hidden;
+    padding-left: 5px;
+    background: url('/assets/icons/select-mini.png') no-repeat right #fff;
+    border: $border-forms;
+    -webkit-appearance: none;
+    appearance: none;
+    @include shadow-input;
+    margin: 4px 0px 0px 0px;
+    float: left;
+  }
+  & textarea{
+    border: $border-forms;
+    border-radius: $border-radius-box;
+    margin: 0px;
+    padding-left: 7px;
+    @include shadow-input;
+    margin: 4px 0px 0px 0px;
+  }
+
+  & input[type=text]{
+    background: #FFF;
+    height: 28px;
+    border: $border-forms;
+    border-radius: $border-radius-box;
+    @include shadow-input;
+    padding-left: 7px;
+    margin: 4px 0px 0px 0px;
+  }
+  & input[type=number]{
+    background: #FFF;
+    height: 28px;
+    border: $border-forms;
+    border-radius: $border-radius-box;
+    @include shadow-input;
+    padding-left: 7px;
+    margin: 4px 0px 0px 0px;
+    &::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  & input[type=submit]{
+    font-size: 14px;
+    margin: 4px 4px 2px 4px;
+    min-width: 100px;
+    height: 100%;
+    line-height: 23px;
+    float:left;
+    -moz-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+    box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca) );
+    background:-moz-linear-gradient( center top, #2fcce3 5%, #00b0ca 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
+    background-color:#2fcce3;
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    border: 1px solid #449eae;
+    display:inline-block;
+    color:#FFF;//#197d91;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #197d91;//#c3edf3;
+    &:hover{
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3) );
+      background:-moz-linear-gradient( center top, #00b0ca 5%, #2fcce3 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b0ca', endColorstr='#2fcce3');
+      background-color:#00b0ca;
+      color:#FFF;//#197d91;
+      -webkit-box-shadow: inset 0px 1px 1px #2f8999;
+      -moz-box-shadow:    inset 0px 1px 1px #2f8999;
+      box-shadow:         inset 0px 1px 1px #2f8999;
+    }
+  }
+  button{
+    //background: #FFF;
+    text-align: center;
+    color: #999;
+    min-width: 100px;
+    height: 100%;
+    float:left;
+    line-height: 23px;
+    border: $border-forms;
+    cursor: pointer;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+    -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
+    -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
+    box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
+
+    margin: 4px 4px 2px 4px;
+    font-size: 14px;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
+    background:-moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+    background-color:#f8f8f8;
+    &:hover{
+      color: #555;
+      background: #f8f8f8;
+      -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+      -moz-box-shadow:    inset 0px 1px 1px #91a5bb;
+      box-shadow:         inset 0px 1px 1px #91a5bb;
+    }
+  }
+  & .date-input{
+    background: url('/assets/icons/calendar-mini.png') no-repeat #FFF right !important;
+  }
+  & .percent-input{
+    background: url('/assets/icons/percent-mini.png') no-repeat #FFF right !important;
+  }
+}
+
+
+
+
+.delivery-form{
+
+  & .percent-input{
+    width: 115px;
+    float: right;
+  }
+
+  & select{
+    width: 217px;
+    height: 31px;
+    overflow: hidden;
+    padding-left: 5px;
+    background: url('/assets/icons/select-mini.png') no-repeat right #fff;
+    border: $border-forms;
+    -webkit-appearance: none;
+    appearance: none;
+    @include shadow-input;
+    margin: 4px 0px 0px 0px;
+  }
+}
+.course-form{  //(class form difined by Rails)
+  color: #333;
+  margin: 5px 0px 4px 6px;
+  & input[type=text]{
+    width: 207px;
+    height: 28px;
+  }
+  & textarea{
+    height: 70px;
+    width: 206px;
+  }
+  & select{
+    width: 217px;
+  }
+  & button {
+    margin-top: 10px !important;
+  }
+  & input[type=submit]{
+    margin-top: 10px !important;
+  }
+}
