@@ -1,12 +1,21 @@
 <% if @count_course_iam_member_and_owner > 0%>
-
+  <div class="actions">
 <%= form_for(@delivery, :html => { :class => "default-form delivery-form"}) do |f| %>
     <%= f.text_field :title , :placeholder=>'Titulo' %>
     <%= f.number_field :porcent_of_evaluation, :placeholder=>'%de evaluación', :class=>"percent-input" %>
     <%= f.text_area :description , :rows => 4, :cols => 80 , :placeholder=>'Descripción' %>
     <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
     <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
-    <%= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>
+               <!--    <%#= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>-->
+               <% for course in Course.find(:all) %>
+                      <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
+                      <% if @course_member.owner == true && course.id == @course_member.course_id %>
+                      <div>
+                      <%= check_box_tag "delivery[course_ids][]", course.id, false %>
+                      <%= course.title %>
+                      </div>
+                      <%end%>
+                <% end %>       
     <%= f.submit %>
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
 
@@ -26,4 +35,4 @@
 <% end %>
 
 <%end%>
-
+</div>

@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
     @courses = Course.all
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
