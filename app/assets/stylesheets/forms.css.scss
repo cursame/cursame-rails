@@ -120,11 +120,170 @@
       box-shadow:         inset 0px 1px 1px #91a5bb;
     }
   }
+  & .wrapper-dropdown-4 {
+    /* Size and position */
+    position: relative;
+    width: 270px;
+    margin: 0 auto;
+    padding: 10px 10px 10px 30px;
+
+    /* Styles */
+    background: #fff;
+    border: 1px solid silver;
+    cursor: pointer;
+    outline: none;
+  }
+  & .wrapper-dropdown-4:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #ffaa9f transparent;
+  }
+  & .wrapper-dropdown-4 .dropdown {
+    /* Size & position */
+    position: absolute;
+    top: 100%;
+    margin-top: 1px; /* border of wrapper */
+    left: -1px;
+    right: -1px;
+
+    /* Styles */
+    background: white;
+    border: 1px solid silver;
+    border-top: none;
+    list-style: none;
+    transition: all 0.3s ease-out;
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+  }
+  .wrapper-dropdown-4 .dropdown li {
+    position: relative; /* Enable absolute positioning for checkboxes */
+  }
+
+  .wrapper-dropdown-4 .dropdown li label {
+    display: block;
+    padding: 10px 10px 10px 30px; /* Same padding as the button */
+    border-bottom: 1px dotted #1ccfcf;
+    transition: all 0.3s ease-out;
+  }
+
+  .wrapper-dropdown-4 .dropdown li:last-of-type label {
+    border: none;
+  }
+
+  .wrapper-dropdown-4 .dropdown li input /* Checkboxes */ {
+    position: absolute;
+    display: block;
+    right: 10px;
+    top: 50%;
+    margin-top: -8px;
+  }
+
+  /* Hover state */
+
+  .wrapper-dropdown-4 .dropdown li:hover label {
+    background: #f0f0f0;
+  }
+
+  /* Checked state */
+
+  .wrapper-dropdown-4 .dropdown li input:checked ~ label {
+    color: grey;
+    text-decoration: line-through;
+  }
+
+
+  /* Red lines: the pseudo-elements way */
+  .wrapper-dropdown-4 .dropdown:before,
+  .wrapper-dropdown-4:before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    border: 1px solid #ffaa9f;
+    border-top: none;
+    border-bottom: none;
+    z-index: 2;
+  }
+
+  /* OR: */
+  /* Red lines: the gradients way */
+
+  .wrapper-dropdown-4 .dropdown,
+  .wrapper-dropdown-4 {
+    background: linear-gradient(left, white 5%, #ffaa9f 5%, #ffaa9f 5.3%, white 5.3%, white 6.5%, #ffaa9f 6.5%, #ffaa9f 6.8%, white 6.8%);
+  }
+
+  .wrapper-dropdown-4 .dropdown li:hover label {
+    background: linear-gradient(left, #f0F0F0 5%, #ffaa9f 5%, #ffaa9f 5.3%, #f0F0F0 5.3%, #f0F0F0 6.5%, #ffaa9f 6.5%, #ffaa9f 6.8%, #f0F0F0 6.8%);
+  }
+
+  /* Active state */
+
+  .wrapper-dropdown-4.active:after {
+    border-width: 0 6px 6px 6px;
+  }
+
+  .wrapper-dropdown-4.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+
   & .date-input{
     background: url('/assets/icons/calendar-mini.png') no-repeat #FFF right !important;
   }
   & .percent-input{
     background: url('/assets/icons/percent-mini.png') no-repeat #FFF right !important;
+  }
+}
+
+.a-button{
+  font-size: 14px;
+  margin: 4px 4px 2px 4px;
+  min-width: 100px;
+  height: 100%;
+  line-height: 23px;
+  float:left;
+  -moz-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca) );
+  background:-moz-linear-gradient( center top, #2fcce3 5%, #00b0ca 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
+  background-color:#2fcce3;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  border: 1px solid #449eae;
+  display:inline-block;
+  color:#FFF;//#197d91;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #197d91;//#c3edf3;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3) );
+    background:-moz-linear-gradient( center top, #00b0ca 5%, #2fcce3 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b0ca', endColorstr='#2fcce3');
+    background-color:#00b0ca;
+    color:#FFF;//#197d91;
+    -webkit-box-shadow: inset 0px 1px 1px #2f8999;
+    -moz-box-shadow:    inset 0px 1px 1px #2f8999;
+    box-shadow:         inset 0px 1px 1px #2f8999;
   }
 }
 

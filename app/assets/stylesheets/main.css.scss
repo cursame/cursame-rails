@@ -4,6 +4,7 @@
 
 //When I wrote this, only God and I understood what I was doing
 //Now, God only knows - RodrigoAyala.me
+
 @import "vars";
 
 body {
@@ -23,6 +24,9 @@ ul{
 .hidden_elem {
   display: none !important;
 }
+
+
+
 /* /\/\/\/\ Template Generic /\/\/\/\ */
 .center-div{
   width: $widht-content;
@@ -691,4 +695,9 @@ width: 180px;
     background: url('/assets/create/event.png') no-repeat;
     background-position: center top;
   }
+}
+
+
+.box-test{
+
 }

@@ -1,0 +1,49 @@
+@import "vars";
+
+.course{
+  width: 250px;
+  border: $border-box;
+  @include border-radius;
+  margin: 10px 10px 10px 20px;
+  float: left;
+  //@include shadow-float-box;
+  & h2{
+    font-size:20px;
+    float: left;
+  }
+  & .thumbnail{
+    width: 48px;
+    height: 47px;
+    background: #DCEAF4;
+    border: 3px solid white;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow:    0px 2px 5px rgba(0, 0, 0, 0.75);
+    box-shadow:         0px 2px 5px rgba(0, 0, 0, 0.75);
+    text-align: center;
+    float: left;
+    margin: 6px 10px 5px 10px;
+  }
+}
+
+.hidden-text{  
+    	white-space: nowrap;
+    	width: 79%;
+    	overflow: hidden;
+        text-overflow: ellipsis;
+}
+h4{
+  font-size:14px;
+}
+h3{
+  font-size:18px;  
+}
+.al{
+   font-size:18px;  
+   background:none;
+   border:none;
+ 
+}
+.course-banner-profile{
+     background-image: url("/assets/bannerprofile.png");
+}
