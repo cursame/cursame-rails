@@ -635,11 +635,17 @@ background-position: left center;
 	cursor: hand !important;	
 }
 
+
+
 .menu-user{
-width: 180px;
+  width: 180px;
+  float: right;
 }
 
-.menu-user p{
+.menu-user a{
+  float: right;
+}
+.menu-user span{
 	margin-top: 12px; 
 	float: right;
 	text-align: center;
@@ -647,6 +653,7 @@ width: 180px;
 }
 .menu-user img{
 	margin-top: 3px;
+    float: right;
 }
 
 .menu-user a{margin-left: 10px;}

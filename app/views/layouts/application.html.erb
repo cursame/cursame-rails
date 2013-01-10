@@ -17,12 +17,13 @@
     <img src="/assets/logo.png" alt="" class="brand">
     <div style="float: right;" class="menu-user">
       <% if user_signed_in? %>
+
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <span> <%= current_user.name %> </span>
           <%= image_tag(current_user.avatar.head)%>
-            <p> <%= current_user.name %> 
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
       <% else %>
           <%= link_to "Sign up", new_user_session_path %> or <%= link_to "sign in", new_user_session_path %>
-      <% end %></p>
+      <% end %>
     </div>
   </div>
 </header>
