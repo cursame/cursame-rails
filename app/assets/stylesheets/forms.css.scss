@@ -57,7 +57,7 @@
     font-size: 14px;
     margin: 4px 4px 2px 4px;
     min-width: 100px;
-    height: 100%;
+    height: $height-btn;
     line-height: 23px;
     float:left;
     -moz-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
@@ -69,9 +69,7 @@
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
     background-color:#2fcce3;
 
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    border-radius:3px;
+    @include border-radius-btn;
     border: 1px solid #449eae;
     display:inline-block;
     color:#FFF;//#197d91;
@@ -93,25 +91,16 @@
     text-align: center;
     color: #999;
     min-width: 100px;
-    height: 100%;
+    height: $height-btn;
     float:left;
-    line-height: 23px;
     border: $border-forms;
     cursor: pointer;
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    border-radius:3px;
-
-    -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
-    -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
-    box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
-
+    @include border-radius-btn;
+    @include bg-normal-btn;
+    @include shadow-normal-btn;
     margin: 4px 4px 2px 4px;
     font-size: 14px;
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
-    background:-moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
-    background-color:#f8f8f8;
+
     &:hover{
       color: #555;
       background: #f8f8f8;
@@ -120,90 +109,99 @@
       box-shadow:         inset 0px 1px 1px #91a5bb;
     }
   }
-  & .wrapper-dropdown-4 {
+
+  & .wrapper-dropdown {
     /* Size and position */
     position: relative;
-    width: 270px;
-    margin: 0 auto;
-    padding: 10px 10px 10px 30px;
-
+    width: 120px;
+    padding: 6px 0px 0px 30px;
+    border: $border-forms;
+    color: #999;
     /* Styles */
     background: #fff;
-    border: 1px solid silver;
+
     cursor: pointer;
     outline: none;
+    float: left;
+    margin-top: 4px;
+    @include border-radius-btn;
+    height: 22px;
+    font-size: 14px;
+
+    & input[type=checkbox] {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      border-width: 6px 6px 0 6px;
+      border-style: solid;
+      border-color: #c0c0c0 transparent;
+    }
+    & .dropdown {
+      /* Size&position */
+      position: absolute;
+      top: 100%;
+      margin-top: 1px; /* border of wrapper */
+      left: -1px;
+      right: -1px;
+
+      /* Styles */
+      background: white;
+      border: $border-forms;
+
+      list-style: none;
+      transition: all 0.3s ease-out;
+
+      /* Hiding */
+      opacity: 0;
+      pointer-events: none;
+
+      & li {
+        position: relative; /* Enable absolute positioning for checkboxes */
+        &:last-of-type label {
+          border: none;
+        }
+        // Hover state
+        &:hover label {
+          background: #fcfcfd;
+        }
+        & label {
+          display: block;
+          padding: 10px 10px 10px 30px; /* Same padding as the button */
+          border-bottom: $border-forms;
+          transition: all 0.3s ease-out;
+        }
+        // Checkboxes
+        & input {
+          position: absolute;
+          display: block;
+          right: 10px;
+          top: 50%;
+          margin-top: -8px;
+          // Checked state
+          &:checked ~ label {
+            color: grey;
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
   }
-  & .wrapper-dropdown-4:after {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    margin-top: -3px;
-    border-width: 6px 6px 0 6px;
-    border-style: solid;
-    border-color: #ffaa9f transparent;
-  }
-  & .wrapper-dropdown-4 .dropdown {
-    /* Size & position */
-    position: absolute;
-    top: 100%;
-    margin-top: 1px; /* border of wrapper */
-    left: -1px;
-    right: -1px;
-
-    /* Styles */
-    background: white;
-    border: 1px solid silver;
-    border-top: none;
-    list-style: none;
-    transition: all 0.3s ease-out;
-
-    /* Hiding */
-    opacity: 0;
-    pointer-events: none;
-  }
-  .wrapper-dropdown-4 .dropdown li {
-    position: relative; /* Enable absolute positioning for checkboxes */
-  }
-
-  .wrapper-dropdown-4 .dropdown li label {
-    display: block;
-    padding: 10px 10px 10px 30px; /* Same padding as the button */
-    border-bottom: 1px dotted #1ccfcf;
-    transition: all 0.3s ease-out;
-  }
-
-  .wrapper-dropdown-4 .dropdown li:last-of-type label {
-    border: none;
-  }
-
-  .wrapper-dropdown-4 .dropdown li input /* Checkboxes */ {
-    position: absolute;
-    display: block;
-    right: 10px;
-    top: 50%;
-    margin-top: -8px;
-  }
-
-  /* Hover state */
-
-  .wrapper-dropdown-4 .dropdown li:hover label {
-    background: #f0f0f0;
-  }
-
-  /* Checked state */
-
-  .wrapper-dropdown-4 .dropdown li input:checked ~ label {
-    color: grey;
-    text-decoration: line-through;
-  }
 
 
-  /* Red lines: the pseudo-elements way */
-  .wrapper-dropdown-4 .dropdown:before,
-  .wrapper-dropdown-4:before {
+
+  /* Red lines: the pseudo-elements way
+  .wrapper-dropdown .dropdown:before,
+  .wrapper-dropdown:before {
     content: "";
     width: 4px;
     height: 100%;
@@ -216,33 +214,42 @@
     z-index: 2;
   }
 
-  /* OR: */
+  /* OR:
   /* Red lines: the gradients way */
 
-  .wrapper-dropdown-4 .dropdown,
-  .wrapper-dropdown-4 {
-    background: linear-gradient(left, white 5%, #ffaa9f 5%, #ffaa9f 5.3%, white 5.3%, white 6.5%, #ffaa9f 6.5%, #ffaa9f 6.8%, white 6.8%);
+  //.wrapper-dropdown .dropdown,
+  .wrapper-dropdown {
+    @include bg-normal-btn;
+    @include shadow-normal-btn;
   }
 
-  .wrapper-dropdown-4 .dropdown li:hover label {
+  /*  */
+  .wrapper-dropdown .dropdown li:hover label {
     background: linear-gradient(left, #f0F0F0 5%, #ffaa9f 5%, #ffaa9f 5.3%, #f0F0F0 5.3%, #f0F0F0 6.5%, #ffaa9f 6.5%, #ffaa9f 6.8%, #f0F0F0 6.8%);
   }
 
+
   /* Active state */
 
-  .wrapper-dropdown-4.active:after {
+  .wrapper-dropdown.active:after {
     border-width: 0 6px 6px 6px;
   }
 
-  .wrapper-dropdown-4.active .dropdown {
+  .wrapper-dropdown.active .dropdown{
     opacity: 1;
     pointer-events: auto;
+    margin-top: 8px;
+    background: #f7f8fa;
+    z-index: 99;
+    width: 200px;
+    @include border-radius-btn;
+    font-size: 13px;
   }
-
 
   & .date-input{
     background: url('/assets/icons/calendar-mini.png') no-repeat #FFF right !important;
   }
+
   & .percent-input{
     background: url('/assets/icons/percent-mini.png') no-repeat #FFF right !important;
   }

@@ -139,13 +139,12 @@ $(document).ready(function() {
                     chbox = opt.children('input'),
                     val = chbox.val(),
                     idx = opt.index();
-                console.log(val);
+                console.log($.inArray(val, obj.val));
                 //console.log($(opt).attr('name'));
 
 
-                //($.inArray(val, obj.val) !== -1) ? obj.val.splice( $.inArray(val, obj.val), 1 ) : obj.val.push( val );
-                //($.inArray(idx, obj.index) !== -1) ? obj.index.splice( $.inArray(idx, obj.index), 1 ) : obj.index.push( idx );
-
+                ($.inArray(val, obj.val) !== -1) ? obj.val.splice( $.inArray(val, obj.val), 1 ) : obj.val.push( val );
+                ($.inArray(idx, obj.index) !== -1) ? obj.index.splice( $.inArray(idx, obj.index), 1 ) : obj.index.push( idx );
 
             });
         },
@@ -162,7 +161,7 @@ $(document).ready(function() {
 
     $(document).click(function() {
         // all dropdowns
-        $('.wrapper-dropdown-4').removeClass('active');
+        $('.wrapper-dropdown').removeClass('active');
     });
 
 })
