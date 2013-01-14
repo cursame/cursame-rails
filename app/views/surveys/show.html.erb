@@ -1,24 +1,21 @@
-<%="Survey" %>
-<p>
-  <strong>Name:</strong>
-  <%=h @survey.name %>
-</p>
-
-<ol>
-<% for question in @survey.questions %>
-  <li>
-    <%=h question.content %>
-    <ul>
+<%= form_tag "/surveys/survey_reply", :remote =>true do %>
+  <p>
+    <%= @survey.name %><br />
+    <%= hidden_field_tag 'survey_id', @survey.id%>
+    <br />
+     <% for course in @survey.courses %>
+        <%= course.title %><br />
+     <% end %>
+  </p>
+  <% for question in @survey.questions %>
+  <p>
+    <%= question.content%><br />
+    <b>archivo</b>
+  </p>
     <% for answer in question.answers %>
-      <li><%=h answer.content %></li>
-    <% end %>
-    </ul>
-  </li>
+      <%= answer.content %>
+      <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id %><br />
+    <% end %>  
+  <% end %>
+  <%= submit_tag "Contestar",:class=>"btn btn-primary" %>
 <% end %>
-</ol>
-
-<p>
-  <%= link_to "Edit", edit_survey_path(@survey) %> |
-  <%= link_to "Destroy", @survey, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", surveys_path %>
-</p>
