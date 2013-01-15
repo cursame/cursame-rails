@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115204526) do
+ActiveRecord::Schema.define(:version => 20130115185232) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -19,6 +19,37 @@ ActiveRecord::Schema.define(:version => 20130115204526) do
     t.boolean  "correct"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "areas_of_evaluations", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "assignment_id"
+    t.integer  "evaluation_percentage"
+    t.boolean  "active"
+    t.datetime "date_of_item"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "delivery_id"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "file"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "encryption_code_to_access"
+  end
+
+  create_table "assignments", :force => true do |t|
+    t.string   "title"
+    t.text     "brief_description"
+    t.integer  "delivery_id"
+    t.integer  "accomplishment"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "comments", :force => true do |t|

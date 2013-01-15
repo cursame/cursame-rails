@@ -1,0 +1,2 @@
+module AreasOfEvaluationsHelper
+end
