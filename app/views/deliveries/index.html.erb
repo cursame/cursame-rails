@@ -1,5 +1,5 @@
 <h1>Listing deliveries </h1>
-<%= render 'deliveries/delivery_compart_form',  :f => build  %>%>
+<%= render 'deliveries/delivery_compart_form'%>%>
 
   
   <% current_course.deliveries.each do |ds| %>
@@ -13,7 +13,6 @@
          
          
         
-       <%= render partial: 'areas_of_evaluations/form'%>
       <% ds.areas_of_evaluations.each do |ds_areas_eva|%>
          <%=  ds_areas_eva.name %> <%= ds_areas_eva.evaluation_percentage %>%</br>
            <% @editing_areas = ds_areas_eva %>

@@ -9,7 +9,8 @@ class DeliveriesController < ApplicationController
      @areas_of_evaluation = AreasOfEvaluation.new
        condocourse
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
-
+      areas_of_evaluations = @delivery.areas_of_evaluations.build
+      
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @deliveries }
@@ -52,6 +53,8 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.json
   def create
     @delivery = Delivery.new(params[:delivery])
+    @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
+    
     respond_to do |format|
       if @delivery.save
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
