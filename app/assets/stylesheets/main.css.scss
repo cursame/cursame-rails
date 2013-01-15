@@ -369,6 +369,21 @@ background: url("/assets/icons/facebook.png") no-repeat;
 background-position: left center;
 }
 
+.silabus{
+background: url("/assets/icons/silabus.png") no-repeat;
+background-position: left center;
+}
+
+.initdate{
+background: url("/assets/icons/initdate.png") no-repeat;
+background-position: left center;
+}
+
+.finishdate{
+background: url("/assets/icons/finishdate.png") no-repeat;
+background-position: left center;
+}
+
 #box-course{
   min-height: 320px;
   & #course-list{
