@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
+<div class="menu-course">
+	<ul>
+		<li><b>3 Tareas</b> <br>25 totales</li>
+		<li> <b> 2 Discusiones</b><br>25 totales</li>
+		<li><b> 1 Cuestionario</b><br>25 totales</li>
+		<li><b> 9.1 Promedio </b><br>8.5 general</li>
+	</ul>
+</div> 
 <% if @course.coverphoto = nil %>
-<div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
+<div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>   
 <%else%>
-<div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">     
+<div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
     
 <div class="banner-shadow">
     <div id="box-titles">
         <div>
        		 <ul class="list-header">
-       		 	<li class="schools">Escuelas</li> <li class="gallery">Galer&iacute;a</li> <li class="gallery">Galer&iacute;a</li>
+       		 	<li class="schools">Configuracion</li>
        		 </ul>
         </div>
     </div> 
@@ -25,7 +33,7 @@
 <div id="box-content" class="profile-line">
 
 
-    <!-- SideBar -->
+     <!-- SideBar -->
     <div class="box-3" >
         <!-- User Avatar -->
         <div id="box-user-credential">
@@ -38,59 +46,20 @@
         </div>
         <div id="box-profile-info" class="basic-lateral-box">
         <li class="silabus"> <%= @course.silabus.html_safe %> </li>
+         <li class="files"> No hay archivos adjuntos</li>
         <li class="initdate"> <%= @course.init_date %></li>
         <li class="finishdate"><%= @course.finish_date %></li> <br>
         
         <%if @member.owner == true %>
-    <%= link_to 'Edit', edit_course_path(@course) %> |
-    <%= link_to 'Back', courses_path %>
+    <%= link_to 'Editar', edit_course_path(@course) %> |
+    <%= link_to 'Ver todos', courses_path %>
 <%end%>
 
         </div>
 
-        <!--
-<div id="box-course" class="basic-lateral-box" >
-            <h2>cursos</h2>
-            <div id="form-new-course" class="form-new-course-lateral">
+       
+           
 
-                <%= render partial: "users/form_course.html.erb"%>
-                
-                
-            </div>
-
-<div id="tabs-courses" class="tabs-style">
-                <ul id="ul-tabs">
-
-                    <li class="element-left">
-                      <a href="#tabs-courses-1">
-                        <div class="content-tab">
-                          <span class="title-num"><%= @count_course_iam_member%></span>
-                          <span class="title">CURSOS</span>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="element-right">
-                      <div id="new-course" class="plus-courses"></div>
-                      <a href="#tabs-courses-2">
-                        <div class="content-tab">
-                          <span class="title-num"><%= @count_course_iam_member_and_owner %></span>
-                          <span class="title">CREADOS</span>
-                        </div>
-                      </a>
-                    </li>
-                </ul>
-                <div id="tabs-courses-1">
-                    <ul id="course-list" >
-                        No hay cursos                    </ul>
-                    <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
-                </div>
-                <div id="tabs-courses-2">
-                    <ul id="course-list" >
-                        No hay cursos                    </ul>
-                </div>
-            </div>
-        </div>
--->
 
 <div id="box-friends" class="basic-lateral-box" >
             <h2>MIEMBROS</h2>

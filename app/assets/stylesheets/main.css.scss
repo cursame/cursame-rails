@@ -374,6 +374,11 @@ background: url("/assets/icons/silabus.png") no-repeat;
 background-position: left center;
 }
 
+.files{
+background: url("/assets/icons/files.png") no-repeat;
+background-position: left center;
+}
+
 .initdate{
 background: url("/assets/icons/initdate.png") no-repeat;
 background-position: left center;
@@ -584,6 +589,7 @@ background-position: left center;
   text-align: center;
   position: absolute;
   margin-top: -25px;
+  
   & .thumbnail{
     width: 150px;
     height: 150px;
@@ -638,6 +644,8 @@ background-position: left center;
 .list-header{
 	list-style:none; 
 	display: inline;
+	float: right;
+	
 	
 }
 .list-header li{
@@ -651,10 +659,40 @@ background-position: left center;
 }
 
 
+.menu-course{
+	width: 100%;
+	height: 95px;
+	display: block;
+	z-index: 0;
+	list-style:none; 
+	display: inline;
+	
+}
+
+.menu-course li{
+	display: inherit; 
+	float: left;
+	width: 205px;
+	height: 60px;
+	display: block;
+	background-color: white;
+	cursor: hand !important;	
+	border-right: 1px solid gray;
+	opacity: .5;
+	cursor: hand !important;
+	padding: 15px;
+	text-align: center;
+}
+
+.menu-course li b{
+	font-size: 25px;
+	text-align: center;
+}
 
 .menu-user{
   width: 180px;
   float: right;
+
 }
 
 .menu-user a{
