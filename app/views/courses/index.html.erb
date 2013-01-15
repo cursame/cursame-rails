@@ -1,34 +1,21 @@
-<h2>Lista de cursos</h2>
+<h2>Lista de cursos </h2> <%= link_to 'New Course', new_course_path, :class=>"a-button" %>
+
  <h2>  <%= notice %> </h2>
+<br>
 
 <% @courses.each do |course| %>
 <div class="course">
-
-
-   <div class="thumbnail">
-    <%= link_to image_tag(course.avatar.modern), course %>
-   </div>
-    <h2><%= course.title %> </h2>
-
-    <div class="hidden-text">
-       
-       <div id="silabus">
-           <%= course.silabus.html_safe %>
-       </div>
-    </div>
-      <%#= course.init_date %>
-    <h4> Término: <%= course.finish_date %></h4>
-     <h3> 
+ <div id="crud"> 
             <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>            
           
                <% ##### importante no mover esta varialbe ######%>  
             <% @course_id = course.id%>
             <% if @correspond %> 
                  <% if @correspond.accepted == true %>
-                        |<%= link_to 'Show', course %>|
+<!--                         <%= link_to image_tag('/assets/icons/files.png'), course %> -->
                     <% if @correspond.owner == true %>
-                        <%= link_to 'Edit', edit_course_path(course) %>|
-                        <%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %>|
+                        <%= link_to image_tag('/assets/icons/edit.png'), edit_course_path(course) %>
+                        <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: 'Are you sure?', method: :delete %>
                     <%end%>
                    <%else%>
                     <b>Aún no has sido aceptado en el curso</b>
@@ -40,9 +27,23 @@
                   <%= render partial: "courses/members_in_courses/public_course"%>|  
               <%end%>
            <%end%>
-     </h3>
-</div>
- 
-<% end %>
+     </div>
 
-<%= link_to 'New Course', new_course_path, :class=>"a-button" %>
+
+   <div class="thumbnail">
+    <%= link_to image_tag(course.avatar.modern), course %>
+   </div>
+    <div id="course-title"><%= course.title %> </div>
+
+    <div class="hidden-text">
+       <li id="silabus" class="silabus">
+           <%= course.silabus.html_safe %>
+       </li> 
+    </div>
+       
+      <%#= course.init_date %>
+    <li class="finishdate"> <%= course.finish_date %></li>
+    </div>
+   
+<% end %> 
+
