@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  brief_description: MyText
+  delivery_id: 1
+  accomplishment: 1
+
+two:
+  title: MyString
+  brief_description: MyText
+  delivery_id: 1
+  accomplishment: 1
