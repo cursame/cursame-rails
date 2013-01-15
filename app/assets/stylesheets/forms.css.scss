@@ -374,3 +374,25 @@
     margin-top: 10px !important;
   }
 }
+.edit-course {// edit for course
+  & input{
+    clear:both;
+    float: left;
+  }
+  & label{
+  clear: both;
+  float: left;
+  
+  }
+  & select {
+  clear: both;
+  float: left;
+  
+  }
+  & submit {
+   clear: both;
+   float: left;
+  }
+
+} 
+

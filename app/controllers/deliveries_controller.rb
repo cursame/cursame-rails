@@ -6,6 +6,7 @@ class DeliveriesController < ApplicationController
     @deliveries = Delivery.all
      @delivery = Delivery.new
     @course_accces = current_course
+     @areas_of_evaluation = AreasOfEvaluation.new
        condocourse
     respond_to do |format|
       format.html # index.html.erb
