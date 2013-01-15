@@ -1,9 +1,13 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//=================================================================
+//= When I wrote this, only God and I understood what I was doing =
+//= Now, God only knows                      - RodrigoAyala.me    =
+//=================================================================
 
-//When I wrote this, only God and I understood what I was doing
-//Now, God only knows - RodrigoAyala.me
+//
+// -
 @import "vars";
 
 /* /\/\/\/\ Forms /\/\/\/\ */
@@ -110,30 +114,45 @@
     }
   }
 
+  //===============================================================
+  //====================  Dropdown (Checkbox) =====================
+  //===============================================================
+
   & .wrapper-dropdown {
     /* Size and position */
     position: relative;
     width: 120px;
-    padding: 6px 0px 0px 30px;
+    //padding: 6px 0px 0px 30px;
     border: $border-forms;
     color: #999;
-    /* Styles */
     background: #fff;
-
+    @include bg-normal-btn;
+    @include shadow-normal-btn;
     cursor: pointer;
     outline: none;
-    float: left;
     margin-top: 4px;
     @include border-radius-btn;
-    height: 22px;
+    height: 30px;
     font-size: 14px;
+    padding: 0px 0px 0px 30px;
+    & span{
+      line-height: 30px;
+    }
+    & .box-arrow{
+      float: right;
+      width: 32px;
+      height: 29px;
+      border-left: $border-forms;
+    }
 
+
+    //Por este medio se hace constar que el C. Diego Orlando Correa ha trabajando con nosotros, y en los distintos negocios familiares desempeñado distintas labores, tenemos una es una persona en quien confiar es muy responsable y elementos que en nuestras empresas hemos valorado mucho, el trabajo con nosotros en distintas etapas de su vida y tenemos una relación laboral muy cercana, y dedicado, los
+    // nivel de confianza y responsabilidad.
     & input[type=checkbox] {
       position: absolute;
       top: -9999px;
       left: -9999px;
     }
-
     &:after {
       content: "";
       width: 0;
@@ -153,24 +172,18 @@
       margin-top: 1px; /* border of wrapper */
       left: -1px;
       right: -1px;
-
-      /* Styles */
       background: white;
       border: $border-forms;
-
       list-style: none;
       transition: all 0.3s ease-out;
-
       /* Hiding */
       opacity: 0;
       pointer-events: none;
-
       & li {
         position: relative; /* Enable absolute positioning for checkboxes */
         &:last-of-type label {
           border: none;
         }
-        // Hover state
         &:hover label {
           background: #fcfcfd url('/assets/icons/check-mini-low.png') no-repeat 5px 7px;
           @include border-radius-btn;
@@ -198,57 +211,27 @@
         }
       }
     }
+    &.active{
+      & .dropdown{
+        opacity: 1;
+        pointer-events: auto;
+        margin-top: 8px;
+        background: #f7f8fa;
+        z-index: 99;
+        width: 200px;
+        @include border-radius-btn;
+        font-size: 13px;
+      }
+      /* Active state */
+      &:after {
+        border-width: 0 6px 6px 6px;
+      }
+    }
   }
 
-
-
-  /* Red lines: the pseudo-elements way
-  .wrapper-dropdown .dropdown:before,
-  .wrapper-dropdown:before {
-    content: "";
-    width: 4px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 15px;
-    border: 1px solid #ffaa9f;
-    border-top: none;
-    border-bottom: none;
-    z-index: 2;
-  }
-
-  /* OR:
-  /* Red lines: the gradients way */
-
-  //.wrapper-dropdown .dropdown,
-  .wrapper-dropdown {
-    @include bg-normal-btn;
-    @include shadow-normal-btn;
-  }
-
-  /*  */
-  .wrapper-dropdown .dropdown li:hover label {
-    background: linear-gradient(left, #f0F0F0 5%, #ffaa9f 5%, #ffaa9f 5.3%, #f0F0F0 5.3%, #f0F0F0 6.5%, #ffaa9f 6.5%, #ffaa9f 6.8%, #f0F0F0 6.8%);
-  }
-
-
-  /* Active state */
-
-  .wrapper-dropdown.active:after {
-    border-width: 0 6px 6px 6px;
-  }
-
-  .wrapper-dropdown.active .dropdown{
-    opacity: 1;
-    pointer-events: auto;
-    margin-top: 8px;
-    background: #f7f8fa;
-    z-index: 99;
-    width: 200px;
-    @include border-radius-btn;
-    font-size: 13px;
-  }
-
+  //===============================================================
+  //========================  Date fields =========================
+  //===============================================================
   & .date-input{
     background: url('/assets/icons/calendar-mini.png') no-repeat #FFF right !important;
   }

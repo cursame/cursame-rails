@@ -6,15 +6,13 @@
         <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
         <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
                    <!--    <%#= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>-->
-        <div id="CourseDropDown" class="wrapper-dropdown">Curso ...
+
+        <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
           <ul class="dropdown">
             <% for course in Course.find(:all) %>
                 <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
                 <% if @course_member.owner == true && course.id == @course_member.course_id %>
-
                     <li><%= check_box_tag 'delivery[course_ids][]', course.id, false %><label for="delivery[course_ids][]"><%= course.title %></label></li>
-
-
                 <%end%>
             <% end %>
           </ul>
