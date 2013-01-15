@@ -12,13 +12,19 @@
     </div>
   <% end %>
   
-    <%= f.file_field :avatar%>
-    <%= f.file_field :coverphoto%> 
-    <%= f.label :title %>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar%></br>
+  <%= f.label :imagen_de_cabecera %>
+  <%= f.file_field :coverphoto%> 
+  <div class="field">
+    <%= f.label :title %><br />
     <%= f.text_field :title %>
     <%= f.label :silabus %>
     <%= f.text_area :silabus %>
+    <%= f.label :fecha_de_inicio %>   
     <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>
+    <%= f.label :imagen_de_finalización %>    
     <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
     <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
     <%= f.submit "Actualizar Curso" %>

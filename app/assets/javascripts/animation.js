@@ -1,3 +1,4 @@
+var checkBox = null;
 $(document).ready(function() {
 
     var time = 500;
@@ -135,17 +136,22 @@ $(document).ready(function() {
             });
 
             obj.opts.children('label').on('click',function(event){
+
                 var opt = $(this).parent(),
                     chbox = opt.children('input'),
                     val = chbox.val(),
                     idx = opt.index();
-                console.log(val);
+                //checked manual (se puede manejar automatico por ID pero tiene que se igual el Id del input con el for del label
+                if ($(chbox).is(':checked')) {
+                    $(chbox).prop('checked', false);
+                } else {
+                    $(chbox).prop('checked', true);
+                }
+
                 //console.log($(opt).attr('name'));
-
-
                 //($.inArray(val, obj.val) !== -1) ? obj.val.splice( $.inArray(val, obj.val), 1 ) : obj.val.push( val );
                 //($.inArray(idx, obj.index) !== -1) ? obj.index.splice( $.inArray(idx, obj.index), 1 ) : obj.index.push( idx );
-
+                event.stopPropagation();
 
             });
         },
@@ -162,7 +168,8 @@ $(document).ready(function() {
 
     $(document).click(function() {
         // all dropdowns
-        $('.wrapper-dropdown-4').removeClass('active');
+        $('.wrapper-dropdown').removeClass('active');
+        console.log('entro')
     });
 
 })

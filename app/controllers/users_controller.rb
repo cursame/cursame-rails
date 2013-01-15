@@ -106,13 +106,12 @@ class UsersController < ApplicationController
        format.html{ redirect_to :back, :notice => "amigo agregado correctamente esperando que te acepte"}
        format.json { render json: @friend, status: :created, location: @friend }       
        format.js
-    else
+      else
        format.html{ redirect_to :back, :notice => "tu amigo no ha sido agregado"}
        format.json { render json: @friend.errors, status: :unprocessable_entity }
        format.js
-   end
- end
-   
+      end
+    end   
  end
  
  def sufriend
@@ -122,7 +121,7 @@ class UsersController < ApplicationController
  
  def validate_friend
    #cuando al usuario  le solicitaron ser amigos
-   @second_friend_id = current_friend.id 
+   @second_friend_id = current_friend.id
    @friend_a = UserFriends.find_by_friend_two(@second_friend_id)
    #cuando el usuario solicita ser amigo de alguien
    @first_friend_if = current_user.id

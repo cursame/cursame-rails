@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :networks_users, :dependent => :destroy
   has_many :users_friends
   has_many :members_in_courses
+  has_many :users_surveys
+
   #comentarios para usuarios
   acts_as_commentable
   #avatar
@@ -19,5 +21,4 @@ class User < ActiveRecord::Base
   def name
      "#{first_name} #{last_name}".strip
   end
-  
 end

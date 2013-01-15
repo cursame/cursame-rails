@@ -1,5 +1,7 @@
 <p class="fields">
   <%= f.label :content, "Answer" %>
   <%= f.text_field :content %>
+  <%= f.label :correct, "Correcta?" %>
+  <%= f.check_box :correct %>
   <%= link_to_remove_fields "remove", f %>
 </p>

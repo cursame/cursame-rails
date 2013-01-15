@@ -83,11 +83,16 @@ Cursame30Lb::Application.routes.draw do
   get "home/blog"
 
   get "home/news"
+
+ 
  
   root :to => 'home#index'
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
+
+  #surveys
+  match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
