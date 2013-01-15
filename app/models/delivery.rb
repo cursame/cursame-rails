@@ -4,4 +4,6 @@ class Delivery < ActiveRecord::Base
   has_many :areas_of_evaluation
   has_many :assignments
   has_many :areas_of_evaluations
+
+  accepts_nested_attributes_for :areas_of_evaluation
 end

@@ -17,7 +17,12 @@ class UsersController < ApplicationController
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
     @course_count = Course.count
     @member =  current_user.members_in_courses.where(:owner => true)
-    
+
+   #### agregando a reas de evaluación
+
+     @areas_of_evaluation = AreasOfEvaluation.new
+
+
   end
   
   def current_user_friends

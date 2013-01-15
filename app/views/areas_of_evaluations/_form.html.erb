@@ -1,15 +1,4 @@
-<%= form_for(@areas_of_evaluation) do |f| %>
-  <% if @areas_of_evaluation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@areas_of_evaluation.errors.count, "error") %> prohibited this areas_of_evaluation from being saved:</h2>
-
-      <ul>
-      <% @areas_of_evaluation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= f.fields_for (:areas_of_evaluations) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br />
@@ -32,9 +21,6 @@
   </div>
   <div class="field">
     <%= f.label :date_of_item %><br />
-    <%= f.datetime_select :date_of_item %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.text_field :date_of_item, :placeholder=>'Dia de update del rubro', :class=>"date-input" %>
   </div>
 <% end %>

@@ -8,6 +8,8 @@ class DeliveriesController < ApplicationController
     @course_accces = current_course
      @areas_of_evaluation = AreasOfEvaluation.new
        condocourse
+    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @deliveries }
