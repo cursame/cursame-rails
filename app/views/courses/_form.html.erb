@@ -1,4 +1,5 @@
-<%= form_for(@course, :html => { :class => "default-form"}, :remote => true) do |f| %>
+<div style="margin-left:70px;">
+<%= form_for(@course, :html => { :class => "default-form edit-course"}, :remote => true) do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -10,28 +11,39 @@
       </ul>
     </div>
   <% end %>
-  Avatar:<%= f.file_field :avatar%></br>
-  Imagen Principal: <%= f.file_field :coverphoto%> 
+  
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar%></br>
+  <%= f.label :imagen_de_cabecera %>
+  <%= f.file_field :coverphoto%> 
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :silabus %><br />
+    <%= f.label :silabus %>
     <%= f.text_area :silabus %>
-  </div>
-  <div class="field">
-    <%= f.label :init_date %><br />
-    <%= f.datetime_select :init_date %><br />
-  </div>
-  <div class="field">
-    <%= f.label :finish_date %><br />
-    <%= f.datetime_select :finish_date %><br />
-  </div>
-  <div class="field">
-        Tipo de curso: <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%><br />
-    </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.label :fecha_de_inicio %>   
+    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>
+    <%= f.label :imagen_de_finalización %>    
+    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
+    <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+    <%= f.submit "Actualizar Curso" %>
 <% end %>
+<script type="text/javascript">
+    $("#create_course_form").on('click',function(){
+       //$(".ui-widget-overlay").css('display','block');
+    });
+
+    $(document).ready(function() {
+        $(function() {
+            $( "#course_init_date, #course_finish_date" ).datepicker({
+                inline: true,
+                minDate: 0,
+                showOtherMonths: true,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+            });
+        });
+    });
+</script>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114020657) do
+ActiveRecord::Schema.define(:version => 20130110204736) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -19,6 +19,27 @@ ActiveRecord::Schema.define(:version => 20130114020657) do
     t.boolean  "correct"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "areas_of_evaluations", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "assignment_id"
+    t.integer  "evaluation_percentage"
+    t.boolean  "active"
+    t.datetime "date_of_item"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "delivery_id"
+  end
+
+  create_table "assignments", :force => true do |t|
+    t.string   "title"
+    t.text     "brief_description"
+    t.integer  "delivery_id"
+    t.integer  "accomplishment"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -46,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20130114020657) do
     t.string   "public_status"
     t.string   "avatar"
     t.string   "coverphoto"
-
     t.integer  "delivery_id"
   end
 
@@ -56,9 +76,9 @@ ActiveRecord::Schema.define(:version => 20130114020657) do
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "porcent_of_evaluation"
-    t.integer  "course_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "course_id"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|
@@ -114,12 +134,6 @@ ActiveRecord::Schema.define(:version => 20130114020657) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
-  end
-
-  create_table "recipes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "role_id_and_permission_ids", :force => true do |t|

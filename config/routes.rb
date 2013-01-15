@@ -4,6 +4,10 @@ Cursame30Lb::Application.routes.draw do
 
     
 
+  resources :areas_of_evaluations
+
+  resources :assignments
+
   resources :surveys
 
   # colocando miembros en cursos

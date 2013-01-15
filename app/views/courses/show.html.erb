@@ -1,29 +1,174 @@
 <p id="notice"><%= notice %></p>
+
 <% if @course.coverphoto = nil %>
 <div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>   
 <%else%>
-<div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"> </div> 
+<div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
+    
+<div class="banner-shadow"> 
+    <div id="box-titles">
+        <div>
+       		 <ul class="list-header">
+       		 <li class="stats" id="stats">Estadisticas</li>
+       		 	<li class="settings" id="settings">Configuracion</li>
+       		 	
+       		 	         		 </ul>
+        </div>
+    </div> 
+    <div id="box-titles-content">
+          <div class="menu-course">
+	<ul>
+		<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> 15</b> ACTIVIDADES <br><i>Muro principal</i></li>
+		<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i>25 totales</i><//li>
+		<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i>25 totales</i></li>
+		<li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i>25 totales</i></li>
+		<li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
+	</ul>
+</div> 
+      <%# render :partial => "users/menu_member"%>
+    </div>
+</div>
+</div>
 <%end%>
-<%if @member.owner == true %>
-    <%= link_to 'Edit', edit_course_path(@course) %> |
-    <%= link_to 'Back', courses_path %>
+
+
+<!-- Content Post Box -->
+<div id="box-content" class="profile-line ">
+
+
+     <!-- SideBar -->
+    <div class="box-3" >
+        <!-- User Avatar -->
+        <div id="box-user-credential">
+            <div class="thumbnail"  >
+                <%= link_to image_tag(@course.avatar.profile)%>
+            </div>
+            <div class="tagname">
+              <%= @course.title %>
+            </div>
+        </div>
+        <div id="box-profile-info" class="basic-lateral-box">
+        <li class="silabus"> <%= @course.silabus.html_safe %> </li>
+         <li class="files"> No hay archivos adjuntos</li>
+        <li class="initdate"> <%= @course.init_date %></li>
+        <li class="finishdate"><%= @course.finish_date %></li> <br>
+        
+        <%if @member.owner == true %>
+    <%= link_to 'Editar', edit_course_path(@course) %> 
 <%end%>
-<p>
-  <b>Tile:</b>
-  <%= @course.title %>
-</p>
 
-<p>
-  <b>Silabus:</b>
-  <%= @course.silabus.html_safe %>
-</p>
+        </div>
 
-<p>
-  <b>Init date:</b>
-  <%= @course.init_date %>
-</p>
+       
+           
 
-<p>
-  <b>Finish date:</b>
-  <%= @course.finish_date %>
-</p>
+
+<div id="box-friends" class="basic-lateral-box" >
+            <h2>MIEMBROS</h2>
+            <div id="tabs-friends" class="tabs-style">
+                <ul id="ul-tabs">
+                    <li class="element-left" style="width:43%!important;"><a href="#tabs-friends-1"><span class="title-num">39</span><span class="title">miembros</span></a></li>
+                    <li class="element-right" style="width:57%!important;"><a href="#tabs-friends-2"><span class="title-num">20</span><span class="title">solicitudes</span></a></li>
+                </ul>
+                <div id="tabs-friends-1">
+                  <div class="content-avtr">
+                                      </div>
+                  <div class="view-all"><a href="">Ver Todo</a></div>
+                </div>
+                <div id="tabs-friends-2">
+                  <div class="content-avtr">
+                                     </div>
+                </div>
+            </div>
+        </div>
+        <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
+    </div>
+
+<!-- Content -->
+    <div id="box-stream-post">
+        <div class="profile-post-box">
+            <div id="post-forms">
+                <div id="profile-message-form">
+                                   </div>
+                <div id="profile-delivery-form">
+                                   </div>
+            </div>
+            <div id="profile-form-options" class="profile-form-options-styles create">
+                    <!-- <a href ="#ID del formulario que se abrira" class="">NAME_CATEGORY</a> -->
+		            <a href ="#profile-message-form" class="comment">Comentario</a>
+		            <a href ="#profile-delivery-form" class="homework">Tarea</a>
+		            <a href ="" class="discussion">Discusion</a>
+		            <a href ="" class="test">Cuestionario</a>
+		            <a href ="" class="poll">Encuesta</a>
+		            <a href ="" class="event">Evento</a>
+            </div>
+        </div>
+
+        <div id="box-comments">
+            <div class="general-cir"></div>
+            <div id="comment1" class="comment" >
+                <div class="arrow-left"></div>
+                <div class="header">
+                    <div class="null-image"></div>
+                    <div class="avatar"></div>
+                    <div class="name">Nombre Usuario</div>  <span>fecha</span>
+                </div>
+                <div class="content">
+                  <div class="null-image"></div>
+                  <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                </div>
+
+                <div class="footer">
+                  <img src="/assets/icons/grey-mini-comment.png" class="icon">
+                  <img src="/assets/icons/grey-mini-like.png" class="icon">
+                  <div class="labels">20 Comentarios</div>
+                  <div class="labels">12 Likes</div>
+                </div>
+            </div>
+        </div>
+
+<div id="box-comments">
+            <div class="general-cir"></div>
+                <div id="" class="comment-image" >
+                    <div class="arrow-left"></div>
+                        <div class="header">
+                            <div class="null-image"></div>
+                            <div class="avatar"></div>
+                            <b>Nombre Usuario</b>  <span>fecha</span>
+                        </div>
+                    <div class="footer">
+                        <div class="content-footer">
+                            <img src="/assets/icons/white-mini-comment.png" class="icon">
+                            <img src="/assets/icons/white-mini-like.png" class="icon">
+                            <div class="labels">20 Comentarios</div>
+                            <div class="labels">12 Likes</div>
+                        </div>
+                    </div>
+                    <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
+            </div>
+        </div>
+      <div id="box-comments">
+        <div class="general-cir"></div>
+
+        <div id="" class="comment" >
+          <div class="arrow-left"></div>
+          <div class="header">
+            <div class="avatar"></div>
+            <b>Nombre Usuario</b>  <span>fecha</span>
+          </div>
+          <div class="content">
+            <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          </div>
+
+          <div class="footer">
+            <img src="/assets/icons/grey-mini-comment.png" class="icon">
+            <img src="/assets/icons/grey-mini-like.png" class="icon">
+            <div class="labels">20 Comentarios</div>
+            <div class="labels">12 Likes</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</div>
