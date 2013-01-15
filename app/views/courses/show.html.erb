@@ -1,22 +1,15 @@
 <p id="notice"><%= notice %></p>
-<div class="menu-course">
-	<ul>
-		<li><b>3 Tareas</b> <br>25 totales</li>
-		<li> <b> 2 Discusiones</b><br>25 totales</li>
-		<li><b> 1 Cuestionario</b><br>25 totales</li>
-		<li><b> 9.1 Promedio </b><br>8.5 general</li>
-	</ul>
-</div> 
+
 <% if @course.coverphoto = nil %>
 <div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>   
 <%else%>
 <div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
     
-<div class="banner-shadow">
+<div class="banner-shadow"> 
     <div id="box-titles">
         <div>
        		 <ul class="list-header">
-       		 	<li class="schools">Configuracion</li>
+       		 	<li class="settings">Configuracion</li>
        		 </ul>
         </div>
     </div> 
@@ -27,10 +20,18 @@
 </div>
 <%end%>
 
-
+<div class="menu-course">
+	<ul>
+		<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> 15</b> ACTIVIDADES <br><i>Muro principal</i></li>
+		<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i>25 totales</i><//li>
+		<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i>25 totales</i></li>
+		<li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i>25 totales</i></li>
+		<li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
+	</ul>
+</div> 
 
 <!-- Content Post Box -->
-<div id="box-content" class="profile-line">
+<div id="box-content" class="profile-line course-line">
 
 
      <!-- SideBar -->
@@ -51,8 +52,7 @@
         <li class="finishdate"><%= @course.finish_date %></li> <br>
         
         <%if @member.owner == true %>
-    <%= link_to 'Editar', edit_course_path(@course) %> |
-    <%= link_to 'Ver todos', courses_path %>
+    <%= link_to 'Editar', edit_course_path(@course) %> 
 <%end%>
 
         </div>
@@ -84,7 +84,7 @@
 
 <!-- Content -->
     <div id="box-stream-post">
-        <div class="profile-post-box">
+        <div class="profile-post-box course-create">
             <div id="post-forms">
                 <div id="profile-message-form">
                                    </div>
