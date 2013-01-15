@@ -39,7 +39,7 @@
         <!-- User Avatar -->
         <div id="box-user-credential">
             <div class="thumbnail"  >
-             <img alt="Profile_photo" src="/assets/cursos.png">
+                <%= link_to image_tag(@course.avatar.profile)%>
             </div>
             <div class="tagname">
               <%= @course.title %>
