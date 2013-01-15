@@ -11,7 +11,7 @@ $(document).ready(function() {
     var control_height = false;
     var tmp_height = 140;
 
-    $('#box-titles').click(function() {
+    $('#settings').click(function() {
         if (control_height){
             tmp_height = 140;
             control_height=false;
@@ -24,6 +24,30 @@ $(document).ready(function() {
         }, time);
     });
 
+
+  //-----STATS -----
+
+    //-----Titles Cover Photo -----
+    var control_height_2 = false;
+    var tmp_height_2 = 140;
+
+    $('#stats').click(function() {
+        if (control_height_2){
+            tmp_height_2 = 140;
+            control_height_2=false;
+        }else{
+            tmp_height_2 = 240;
+            control_height_2=true;
+        }
+        $('#banner-profile').animate({
+            height: tmp_height_2+'px'
+        }, time);
+    });
+
+
+  
+  
+  
 
     //----- Post Form Animations------
     var prePostHeight = $('#profile-form-options').height();
@@ -169,7 +193,6 @@ $(document).ready(function() {
     $(document).click(function() {
         // all dropdowns
         $('.wrapper-dropdown').removeClass('active');
-        console.log('entro')
     });
 
 })

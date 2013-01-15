@@ -9,18 +9,14 @@
     <div id="box-titles">
         <div>
        		 <ul class="list-header">
-       		 	<li class="settings">Configuracion</li>
-       		 </ul>
+       		 <li class="stats" id="stats">Estadisticas</li>
+       		 	<li class="settings" id="settings">Configuracion</li>
+       		 	
+       		 	         		 </ul>
         </div>
     </div> 
     <div id="box-titles-content">
-        <%= render :partial => "users/menu_member"%>
-    </div>
-</div>
-</div>
-<%end%>
-
-<div class="menu-course">
+          <div class="menu-course">
 	<ul>
 		<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> 15</b> ACTIVIDADES <br><i>Muro principal</i></li>
 		<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i>25 totales</i><//li>
@@ -29,9 +25,15 @@
 		<li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
 	</ul>
 </div> 
+      <%# render :partial => "users/menu_member"%>
+    </div>
+</div>
+</div>
+<%end%>
+
 
 <!-- Content Post Box -->
-<div id="box-content" class="profile-line course-line">
+<div id="box-content" class="profile-line ">
 
 
      <!-- SideBar -->
@@ -84,7 +86,7 @@
 
 <!-- Content -->
     <div id="box-stream-post">
-        <div class="profile-post-box course-create">
+        <div class="profile-post-box">
             <div id="post-forms">
                 <div id="profile-message-form">
                                    </div>
