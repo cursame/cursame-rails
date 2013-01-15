@@ -172,13 +172,16 @@
         }
         // Hover state
         &:hover label {
-          background: #fcfcfd;
+          background: #fcfcfd url('/assets/icons/check-mini-low.png') no-repeat 5px 7px;
+          @include border-radius-btn;
         }
         & label {
           display: block;
           padding: 10px 10px 10px 30px; /* Same padding as the button */
           border-bottom: $border-forms;
           transition: all 0.3s ease-out;
+          cursor: pointer;
+          text-transform: capitalize;
         }
         // Checkboxes
         & input {
@@ -189,8 +192,8 @@
           margin-top: -8px;
           // Checked state
           &:checked ~ label {
-            color: grey;
-            text-decoration: line-through;
+            color: #999a9b;
+            background: url('/assets/icons/check-mini.png') no-repeat 5px 7px;
           }
         }
       }
