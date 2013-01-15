@@ -7,31 +7,10 @@
         <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
                    <!--    <%#= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>-->
 
-        <%= f.fields_for :areas_of_evaluation do |fo| %>
-
-            <div class="field">
-              <%= fo.label :name %><br />
-              <%= fo.text_field :name %>
-            </div>
-            <div class="field">
-              <%= fo.label :description %><br />
-              <%= fo.text_field :description %>
-            </div>
-            <div class="field">
-              <%= fo.hidden_field :delivery_id, :value => @delivery_id %>
-            </div>
-            <div class="field">
-              <%= fo.label :evaluation_percentage %><br />
-              <%= fo.number_field :evaluation_percentage %>
-            </div>
-            <div class="field">
-              <%= fo.label :active %>
-              <%= fo.check_box :active, :value =>  true %>
-            </div>
-            <div class="field">
-              <%= fo.label :date_of_item %><br />
-              <%= fo.text_field :date_of_item, :placeholder=>'Dia de update del rubro', :class=>"date-input" %>
-            </div>
+        <%= f.fields_for :areas_of_evaluations do |builder| %>
+              
+              <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
+          
         <% end %>
 
 
