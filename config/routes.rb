@@ -4,6 +4,8 @@ Cursame30Lb::Application.routes.draw do
 
     
 
+  resources :compart_assets
+
   resources :assets
 
   resources :areas_of_evaluations

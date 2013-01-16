@@ -1,4 +1,18 @@
-<h2>Lista de cursos </h2> <%= link_to 'New Course', new_course_path, :class=>"a-button" %>
+<h2>Lista de cursos </h2>
+
+<div class="search">
+<center>
+<%= form_tag courses_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Buscar Curso", :title => nil %>
+  </p>
+<% end %> 
+</center>
+</div>
+
+
+ <%= link_to 'New Course', new_course_path, :class=>"a-button" %>
 
  <h2>  <%= notice %> </h2>
 <br>

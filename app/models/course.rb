@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+  
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
   has_many :members_in_courses 
@@ -8,4 +9,12 @@ class Course < ActiveRecord::Base
 
   has_many :surveyings
   has_many :surveys, :through => :surveyings
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+    else
+      find(:all, :order => :title)
+    end
+  end
+  
 end

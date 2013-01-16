@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
-
+  has_many :compart_assets
   #comentarios para las redes
   acts_as_commentable
 
@@ -24,4 +24,7 @@ class Comment < ActiveRecord::Base
     commentable_type.camelize.constantize.find(commentable_id)
   end
 
+  #agregar un asset al comentario
+  accepts_nested_attributes_for :compart_assets
+  
 end

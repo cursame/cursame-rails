@@ -1,30 +1,19 @@
-<h1>Listing deliveries </h1>
-<%= render 'deliveries/delivery_compart_form'%>%>
+<h2><%= t("tareas")%> </h2>
 
   
   <% current_course.deliveries.each do |ds| %>
-   <b><%= ds.title %></b>
+   <h2><%= link_to "#{ds.title}", ds %></h2>
    <p><%= ds.description %></p>
-   
+      
         <% @delivery_id = ds.id%> 
           
-         <b>Restante a asignar <% @porcent =  ds.areas_of_evaluations.sum(:evaluation_percentage) %>
-          <%= @puntos_de_porcentaje_a_asignar = 100 - @porcent%>%</b>
+         <b> <%# @porcent =  ds.areas_of_evaluations.sum(:evaluation_percentage) %>
+          <%#= @puntos_de_porcentaje_a_asignar = 100 - @porcent%></b>
          
-         
-        
-      <% ds.areas_of_evaluations.each do |ds_areas_eva|%>
-         <%=  ds_areas_eva.name %> <%= ds_areas_eva.evaluation_percentage %>%</br>
-           <% @editing_areas = ds_areas_eva %>
-           <%= render partial: 'deliveries/edit_rubre'%>
-           
-         
-      <%end%>
+             
   <%end%>
   
  
-   
-</table>
 
 <br />
 
