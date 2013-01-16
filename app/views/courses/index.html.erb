@@ -1,15 +1,15 @@
 <h2>Lista de cursos </h2>
 
-<div class="search">
-<center>
+<div class="search default-form delivery-form">
 <%= form_tag courses_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Buscar Curso", :title => nil %>
   </p>
 <% end %> 
-</center>
 </div>
+
+
 
 
  <%= link_to 'New Course', new_course_path, :class=>"a-button" %>
