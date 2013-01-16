@@ -1,0 +1,3 @@
+  <% @asset_select = Asset.where(:user_id => current_user.id ) %>
+  <%= f.collection_select :asset_id,  @asset_select,  :id, :title %>
+  <%= f.hidden_field :comment_id %>

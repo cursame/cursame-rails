@@ -11,7 +11,7 @@ class Course < ActiveRecord::Base
   has_many :surveys, :through => :surveyings
   def self.search(search)
     if search
-      find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+      @searcher = find(:all, :conditions => ['title LIKE ?', "%#{search}%"])        
     else
       find(:all, :order => :title)
     end

@@ -16,7 +16,10 @@
 
  <h2>  <%= notice %> </h2>
 <br>
-
+<% @cc = @courses.count %>
+<% if @cc == 0%>
+  <b> <%= t('No hay resultados en la busqueda')%> </b>
+<%end%>
 <% @courses.each do |course| %>
 <div class="course">
  <div id="crud"> 
