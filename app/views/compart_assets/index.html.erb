@@ -1,0 +1,33 @@
+<h1>Listing compart_assets</h1>
+
+<table>
+  <tr>
+    <th>Asset</th>
+    <th>Asset</th>
+    <th>Delivery</th>
+    <th>Assignment</th>
+    <th>Comment</th>
+    <th>Question</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @compart_assets.each do |compart_asset| %>
+  <tr>
+    <td><%= compart_asset.asset %></td>
+    <td><%= compart_asset.asset_id %></td>
+    <td><%= compart_asset.delivery_id %></td>
+    <td><%= compart_asset.assignment_id %></td>
+    <td><%= compart_asset.comment_id %></td>
+    <td><%= compart_asset.question_id %></td>
+    <td><%= link_to 'Show', compart_asset %></td>
+    <td><%= link_to 'Edit', edit_compart_asset_path(compart_asset) %></td>
+    <td><%= link_to 'Destroy', compart_asset, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Compart asset', new_compart_asset_path %>

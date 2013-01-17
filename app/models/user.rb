@@ -12,7 +12,13 @@ class User < ActiveRecord::Base
   has_many :users_friends
   has_many :members_in_courses
   has_many :users_surveys
-
+  has_many :assets
+  has_many :assignments
+  
+  #nested atributes for forms asets
+  
+  accepts_nested_attributes_for :assets
+  
   #comentarios para usuarios
   acts_as_commentable
 

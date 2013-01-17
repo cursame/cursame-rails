@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @assignment.title %>
+</p>
+
+<p>
+  <b>Brief description:</b>
+  <%= @assignment.brief_description %>
+</p>
+
+<p>
+  <b>Delivery:</b>
+  <%= @assignment.delivery_id %>
+</p>
+
+<p>
+  <b>Accomplishment:</b>
+  <%= @assignment.accomplishment %>
+</p>
+<% @assignment.compart_assets.each do |cpa| %>
+  <% @asset = Asset.find(cpa.asset_id) %>
+  <%= link_to "#{@asset.title}", "#{@asset.file}" %>
+<%end%>
+</br>
+
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

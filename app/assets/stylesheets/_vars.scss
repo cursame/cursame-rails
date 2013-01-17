@@ -32,6 +32,7 @@ $width-form-post: 600px;
 
 $height-post-box: 80px;
 $comment-box: 600px;
+$height-btn: 30px;
 
 //Colors
 $gray-e: #eeeeee;
@@ -69,11 +70,23 @@ $border-radius-avatar-mini: 3px;
   -moz-border-bottom-left-radius: $border-radius-box;
   border-bottom-left-radius: $border-radius-box;
 }
+@mixin border-radius-btn{
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+}
 
 //Backgrounds
 $bg-page: #FFF;
 $bg-general: #fcfcfc; //#fbfcfd; //#fcfcfc;// #FFF;//#f6f7f9;
 $bg-bars: #F6F7F9;
+
+@mixin bg-normal-btn{
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
+  background:-moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color:#f8f8f8;
+}
 
 //Margin
 $margin-sidebar-left: 17px;
@@ -93,4 +106,9 @@ $margin-sidebar-left: 17px;
   -moz-box-shadow:  0px 1px 5px #999;
   -webkit-box-shadow: 0px 1px 5px #999;
   box-shadow: 0px 1px 5px #999;
+}
+@mixin shadow-normal-btn{
+  -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
+  -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
+  box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
 }

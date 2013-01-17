@@ -1,3 +1,4 @@
+var checkBox = null;
 $(document).ready(function() {
 
     var time = 500;
@@ -10,7 +11,7 @@ $(document).ready(function() {
     var control_height = false;
     var tmp_height = 140;
 
-    $('#box-titles').click(function() {
+    $('#settings').click(function() {
         if (control_height){
             tmp_height = 140;
             control_height=false;
@@ -23,6 +24,30 @@ $(document).ready(function() {
         }, time);
     });
 
+
+  //-----STATS -----
+
+    //-----Titles Cover Photo -----
+    var control_height_2 = false;
+    var tmp_height_2 = 140;
+
+    $('#stats').click(function() {
+        if (control_height_2){
+            tmp_height_2 = 140;
+            control_height_2=false;
+        }else{
+            tmp_height_2 = 240;
+            control_height_2=true;
+        }
+        $('#banner-profile').animate({
+            height: tmp_height_2+'px'
+        }, time);
+    });
+
+
+  
+  
+  
 
     //----- Post Form Animations------
     var prePostHeight = $('#profile-form-options').height();
@@ -135,17 +160,22 @@ $(document).ready(function() {
             });
 
             obj.opts.children('label').on('click',function(event){
+
                 var opt = $(this).parent(),
                     chbox = opt.children('input'),
                     val = chbox.val(),
                     idx = opt.index();
-                console.log(val);
+                //checked manual (se puede manejar automatico por ID pero tiene que se igual el Id del input con el for del label
+                if ($(chbox).is(':checked')) {
+                    $(chbox).prop('checked', false);
+                } else {
+                    $(chbox).prop('checked', true);
+                }
+
                 //console.log($(opt).attr('name'));
-
-
                 //($.inArray(val, obj.val) !== -1) ? obj.val.splice( $.inArray(val, obj.val), 1 ) : obj.val.push( val );
                 //($.inArray(idx, obj.index) !== -1) ? obj.index.splice( $.inArray(idx, obj.index), 1 ) : obj.index.push( idx );
-
+                event.stopPropagation();
 
             });
         },
@@ -162,7 +192,7 @@ $(document).ready(function() {
 
     $(document).click(function() {
         // all dropdowns
-        $('.wrapper-dropdown-4').removeClass('active');
+        $('.wrapper-dropdown').removeClass('active');
     });
 
 })

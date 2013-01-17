@@ -11,14 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115190146) do
-
+ActiveRecord::Schema.define(:version => 20130116195213) do
+  
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.string   "content"
     t.boolean  "correct"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "areas_of_evaluations", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "assignment_id"
+    t.integer  "evaluation_percentage"
+    t.boolean  "active"
+    t.datetime "date_of_item"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "delivery_id"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "file"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "encryption_code_to_access"
+  end
+
+  create_table "assignments", :force => true do |t|
+    t.string   "title"
+    t.text     "brief_description"
+    t.integer  "delivery_id"
+    t.integer  "accomplishment"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -35,6 +66,16 @@ ActiveRecord::Schema.define(:version => 20130115190146) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "compart_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "delivery_id"
+    t.integer  "assignment_id"
+    t.integer  "comment_id"
+    t.integer  "question_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "title"
@@ -55,9 +96,9 @@ ActiveRecord::Schema.define(:version => 20130115190146) do
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "porcent_of_evaluation"
-    t.integer  "course_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "course_id"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|

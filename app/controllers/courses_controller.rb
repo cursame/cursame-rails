@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   def index
-    @courses = Course.all
+    @courses = Course.search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|

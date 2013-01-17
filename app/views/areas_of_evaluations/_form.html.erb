@@ -1,0 +1,24 @@
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluation_percentage %><br />
+    <%= f.number_field :evaluation_percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active, :value =>  true %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_item %><br />
+    <%= f.text_field :date_of_item, :placeholder=>'Dia de update del rubro', :class=>"date-input" %>
+  </div>

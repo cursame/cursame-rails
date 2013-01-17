@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   def index
-    @course = Course.find(1)
+  #  @course = Course.find()
     @surveys = Survey.all
     # @surveys = @course.surveys
   end

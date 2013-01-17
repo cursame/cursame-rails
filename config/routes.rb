@@ -1,10 +1,14 @@
 Cursame30Lb::Application.routes.draw do
   
-  
-
-    
-
   resources :notifications
+
+  resources :compart_assets
+
+  resources :assets
+
+  resources :areas_of_evaluations
+
+  resources :assignments
 
   resources :surveys
 
