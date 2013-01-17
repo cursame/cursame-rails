@@ -8,4 +8,10 @@ class Course < ActiveRecord::Base
 
   has_many :surveyings
   has_many :surveys, :through => :surveyings
+
+  after_create do
+      User.all.each do |u|
+          Notification.create :user => u, :notificator => self, :kind => 'new_course_on_network'
+      end   
+  end
 end

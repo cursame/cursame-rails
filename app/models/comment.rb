@@ -24,4 +24,14 @@ class Comment < ActiveRecord::Base
     commentable_type.camelize.constantize.find(commentable_id)
   end
 
+  after_create do
+    case commentable_type
+      when "Network"
+        # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+      User.all.reject { |us| us.id == self.user.id }.each do |u|
+          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
+      end          
+    end
+  end
+
 end

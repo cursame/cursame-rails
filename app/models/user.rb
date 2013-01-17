@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
 
   #comentarios para usuarios
   acts_as_commentable
+
+  #notificaciones usuarios
+  has_many :notifications
+
+
   #avatar
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader

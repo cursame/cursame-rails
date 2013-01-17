@@ -33,7 +33,7 @@ class HomeController < ApplicationController
   def add_new_comment
     if user_signed_in?
       commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
-      @comment = commentable.comments.create(:title=>'mando',:comment => params[:comment],:user_id =>current_user.id)
+      @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
       puts @comment.to_yaml
       respond_to do |format|
         format.js

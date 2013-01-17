@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find_by_personal_url(params[:personal_url])
     #helper methods in aplication controller
@@ -38,9 +39,7 @@ class UsersController < ApplicationController
   end
   
   def coverphoto
-      @user = User.find_by_first_name(current_user.first_name)
-      
-     
+      @user = User.find_by_first_name(current_user.first_name)    
   end
    
      

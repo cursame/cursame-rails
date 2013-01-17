@@ -1,0 +1,11 @@
+one:
+  notificator_id: 1
+  notificator_type: MyString
+  user_id: 1
+  kind: MyString
+
+two:
+  notificator_id: 1
+  notificator_type: MyString
+  user_id: 1
+  kind: MyString

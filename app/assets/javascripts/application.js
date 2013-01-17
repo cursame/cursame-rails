@@ -13,16 +13,26 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree
+//= require private_pub
 
 
 // Adding and removing questions answers
 function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").hide();
+	$(link).prev("input[type=hidden]").val("1");
+	$(link).closest(".fields").hide();
 }
 
 function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g");
-  $(link).parent().before(content.replace(regexp, new_id));
+	var new_id = new Date().getTime();
+	var regexp = new RegExp("new_" + association, "g");
+	$(link).parent().before(content.replace(regexp, new_id));
 }
+// notificaciones push usando private_pub
+$(function() {
+	PrivatePub.subscribe ("/notifications/"+Cursame.userId, function(data, channel){
+		$('#notifications_count').html(data.num*1);
+		$('#notifications_list').prepend('<li><a href="#">'+data.notification.kind+'</a></li>');
+	});
+});
+
+

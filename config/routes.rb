@@ -4,6 +4,8 @@ Cursame30Lb::Application.routes.draw do
 
     
 
+  resources :notifications
+
   resources :surveys
 
   # colocando miembros en cursos
