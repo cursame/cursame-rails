@@ -14,9 +14,12 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
-
+  has_many :compart_assets
   #comentarios para las redes
   acts_as_commentable
+
+  #agregar un asset al comentario
+  accepts_nested_attributes_for :compart_assets
 
   #para elegir el elemento que recibir a/o el comentario
   def self.get_commentable(commentable_id,commentable_type)
@@ -24,4 +27,13 @@ class Comment < ActiveRecord::Base
     commentable_type.camelize.constantize.find(commentable_id)
   end
 
+  after_create do
+    case commentable_type
+      when "Network"
+        # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+      User.all.reject { |us| us.id == self.user.id }.each do |u|
+          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
+      end          
+    end
+  end  
 end

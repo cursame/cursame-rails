@@ -2,14 +2,20 @@
 
 .course{
   width: 250px;
+  height: 140px;
   border: $border-box;
   @include border-radius;
   margin: 10px 10px 10px 20px;
+  padding: 12px;
   float: left;
+  background: #f3f3f3;
   //@include shadow-float-box;
   & h2{
-    font-size:20px;
+    font-size:24px;
     float: left;
+    margin: 10px 0 5px 0px;
+    color: #444444;
+    font-family: HelvLight;
   }
   & .thumbnail{
     width: 48px;
@@ -46,4 +52,30 @@ h3{
 }
 .course-banner-profile{
      background-image: url("/assets/bannerprofile.png");
+}
+
+.course li {
+	padding-left: 20px;
+	list-style: none;
+	margin: 5px;
+	color: #444444;
+}
+
+#crud{
+	position: relative;
+	top: 0px;
+	float: right;
+	opacity: 0.5;
+	width: 240px;
+	text-align: right;
+}
+
+#course-title{
+	width: 160px;
+    font-size:18px;
+    float: left;
+    margin: 10px 0 5px 0px;
+    color: #444444;
+    font-family: HelvLight;
+
 }

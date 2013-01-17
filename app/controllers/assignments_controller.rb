@@ -25,11 +25,16 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new.json
   def new
     @assignment = Assignment.new
-
+    
+     1.times do
+         compart_assets = @assignment.compart_assets.build
+     end
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @assignment }
     end
+    
   end
 
   # GET /assignments/1/edit

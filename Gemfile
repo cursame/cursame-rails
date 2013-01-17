@@ -31,6 +31,10 @@ gem 'jquery-rails'
 #Gem for the comments		
 gem 'acts_as_commentable'
 
+# para notifications push
+gem 'thin'
+gem 'private_pub'
+
 # Gem for twitter bootstrap.
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS

@@ -1,0 +1,17 @@
+<% if current_user%>
+<script>
+	var Cursame ={
+		userId: <%= current_user.id%>
+	};
+</script>
+<ul id="nav" class="drop">
+	<li><a href='#'><span id="notifications_count"><%= current_user.notifications.count %></span></a>
+		<ul id="notifications_list">
+			<% current_user.notifications.order("created_at DESC").each do |notification|%>
+			<li><a href="#"><%= notification.kind %></a></li>
+			<%end%>
+		</ul>
+	</li>
+</ul>
+<%= subscribe_to "/notifications/"+current_user.id.to_s %>
+<%end%>

@@ -19,6 +19,11 @@
   <b>Accomplishment:</b>
   <%= @assignment.accomplishment %>
 </p>
+<% @assignment.compart_assets.each do |cpa| %>
+  <% @asset = Asset.find(cpa.asset_id) %>
+  <%= link_to "#{@asset.title}", "#{@asset.file}" %>
+<%end%>
+</br>
 
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |

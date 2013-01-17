@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  asset: MyString
+  asset_id: 1
+  delivery_id: 1
+  assignment_id: 1
+  comment_id: 1
+  question_id: 1
+
+two:
+  asset: MyString
+  asset_id: 1
+  delivery_id: 1
+  assignment_id: 1
+  comment_id: 1
+  question_id: 1

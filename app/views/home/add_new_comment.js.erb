@@ -6,4 +6,3 @@
 	// si se tiene que agregar al layout principal
 	$('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
 <% end %>
-
