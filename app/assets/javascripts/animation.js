@@ -160,7 +160,6 @@ $(document).ready(function() {
             });
 
             obj.opts.children('label').on('click',function(event){
-
                 var opt = $(this).parent(),
                     chbox = opt.children('input'),
                     val = chbox.val(),
@@ -171,12 +170,7 @@ $(document).ready(function() {
                 } else {
                     $(chbox).prop('checked', true);
                 }
-
-                //console.log($(opt).attr('name'));
-                //($.inArray(val, obj.val) !== -1) ? obj.val.splice( $.inArray(val, obj.val), 1 ) : obj.val.push( val );
-                //($.inArray(idx, obj.index) !== -1) ? obj.index.splice( $.inArray(idx, obj.index), 1 ) : obj.index.push( idx );
                 event.stopPropagation();
-
             });
         },
         getValue : function() {
