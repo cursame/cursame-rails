@@ -1,19 +1,19 @@
 <h2><%= t("tareas")%> </h2>
 
-  
-  <% current_course.deliveries.each do |ds| %>
-   <h2><%= link_to "#{ds.title}", ds %></h2>
-   <p><%= ds.description %></p>
-      
-        <% @delivery_id = ds.id%> 
-          
-         <b> <%# @porcent =  ds.areas_of_evaluations.sum(:evaluation_percentage) %>
-          <%#= @puntos_de_porcentaje_a_asignar = 100 - @porcent%></b>
-         
-             
-  <%end%>
-  
- 
+
+<% current_course.deliveries.each do |ds| %>
+    <h2><%= link_to "#{ds.title}", ds %></h2>
+    <p><%= ds.description %></p>
+
+    <% @delivery_id = ds.id%>
+
+    <b> <%# @porcent =  ds.areas_of_evaluations.sum(:evaluation_percentage) %>
+      <%#= @puntos_de_porcentaje_a_asignar = 100 - @porcent%></b>
+
+
+<%end%>
+
+
 
 <br />
 

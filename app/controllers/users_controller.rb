@@ -22,7 +22,8 @@ class UsersController < ApplicationController
    #### agregando a reas de evaluación
 
      @areas_of_evaluation = AreasOfEvaluation.new
-     
+
+
      1.times do
          areas_of_evaluations = @delivery.areas_of_evaluations.build
      end

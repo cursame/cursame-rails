@@ -1,24 +1,200 @@
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
+<% @time_now = Time.now %>
+<br>Que se va evaluar?
+<div id="nested_evaluation_form">
+    <%= f.text_field :name, :class => 'subject' %>
+    <div id="content-slider-0" class="slider-content"><div id="slider-0" class="slider"></div></div>
+    <%= f.text_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input" %>
     <%= f.hidden_field :delivery_id, :value => @delivery_id %>
-  </div>
-  <div class="field">
-    <%= f.label :evaluation_percentage %><br />
-    <%= f.number_field :evaluation_percentage %>
-  </div>
-  <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active, :value =>  true %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_item %><br />
-    <%= f.text_field :date_of_item, :placeholder=>'Dia de update del rubro', :class=>"date-input" %>
-  </div>
+    <%= f.hidden_field :active, :value =>  true %>
+    <%= f.hidden_field :date_of_item, :value =>@time_now %>
+</div>
+
+<div id="more_nested_evaluation_btn" style="clear: both;">+++More+++</div>
+
+
+<script type="text/javascript">
+
+    var maxPercent=100;
+
+    var currentAvailablePercent=100;
+    var currentIncrementation = 0;
+    var nextLimit = 100;
+    var totalPercent=100;
+
+    var controlNestedHomework=0;
+
+    var objValues=[];
+
+    var nestedInputs = $('#nested_evaluation_form').html();
+    $('#nested_evaluation_form').empty();
+
+    $(document).ready(function() {
+        $('#more_nested_evaluation_btn').click(function(){
+            var str=null;
+            $(nestedInputs).each(function( index, value ) {
+                changeAttr($(value).clone(),'id','name');
+            });
+            initSlider( controlNestedHomework );
+            controlNestedHomework++;
+        });
+
+        // Properties value change ID and Name properties from elements
+        function changeAttr(value, id_value, id_name){
+
+            //Si contiene un objeto hijo entra   (para el caso del slider)
+            if ( $(value).children().length > 0 ) {
+                console.log($(value).children().attr('id'));
+                //changeAttr($(value).children(),'id','name');
+                var child_id = $(value).children().attr(id_value);
+                child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
+                $(value).children().attr(id_value, child_id);
+            }
+            var str_id = $(value).attr(id_value);
+            str_id = (str_id!=undefined)? str_id.replace('0',controlNestedHomework) : undefined;
+            $(value).attr(id_value,str_id);
+
+            var str_name = $(value).attr(id_name);
+            str_name = (str_name!=undefined)?str_name.replace('0',controlNestedHomework):undefined;
+            $(value).attr(id_name,str_name);
+            $('#nested_evaluation_form').append($(value));
+        }
+
+        function initSlider( numControl ){
+            var slider  = $('#slider-'+numControl),
+                input_id = $('#delivery_areas_of_evaluations_attributes_'+numControl+'_evaluation_percentage');
+
+            //currentAvailablePercent = maxPercent - currentAvailablePercent
+            // ;
+            var storedSliderValue=0;
+            var tmpLimit=0;
+
+            slider.slider({
+                range: "min",
+                min: 0,
+                //value: currentAvailablePercent,
+                create: function(event,result) {
+
+                },
+                slide: function(event, result) { //When the slider is sliding
+
+                    tmpLimit = storedSliderValue + currentAvailablePercent;
+                    console.log('cliked:'+parseInt(result.value));
+                    console.log('tmpLimit'+tmpLimit);
+
+                    if(parseInt(result.value)<tmpLimit) {
+                        console.log('----tmpLimit ----');
+                        console.log( tmpLimit );
+                        console.log('----------------------------------------');
+
+
+                        currentIncrementation = currentIncrementation - storedSliderValue;
+                        currentIncrementation = currentIncrementation + parseInt(result.value);
+                        currentAvailablePercent = 100 - currentIncrementation;
+                        storedSliderValue = parseInt(result.value);
+
+                         /*
+                        console.log('========================================');
+                        console.log('----currentIncrementation----');
+                        console.log( currentIncrementation);
+                        console.log('----------------------------------------');
+
+                        console.log('----currentAvailablePercent----');
+                        console.log( currentAvailablePercent);
+                        console.log('----------------------------------------');
+
+
+                        console.log('----storedSliderValue + currentAvailablePercent----');
+                        console.log( storedSliderValue + currentAvailablePercent );
+                        console.log('----------------------------------------');
+
+                        console.log('----storedSliderValue ----');
+                        console.log( storedSliderValue );
+                        console.log('----------------------------------------');
+                        console.log('========================================');   */
+
+                    }else{
+                        /*
+                        console.log('----currentIncrementation----');
+                        console.log( currentIncrementation);
+                        console.log('----------------------------------------');
+
+                        console.log('----currentAvailablePercent----');
+                        console.log( currentAvailablePercent);
+                        console.log('----------------------------------------');
+
+                        console.log('----storedSliderValue + currentAvailablePercent----');
+                        console.log( storedSliderValue + currentAvailablePercent );
+                        console.log('----------------------------------------');
+
+                        console.log('----storedSliderValue ----');
+                        console.log( storedSliderValue );
+                        console.log('----------------------------------------');
+                        console.log('----------------------------------------');
+                        console.log('----------------------------------------');
+                        console.log('----------------------------------------'); */
+
+                        if(currentAvailablePercent>0){
+
+
+                            //storedSliderValue = currentAvailablePercent + storedSliderValue;
+
+                            currentIncrementation = currentAvailablePercent + currentIncrementation;
+                            storedSliderValue = currentAvailablePercent + storedSliderValue;
+
+                            $(this).slider('value', storedSliderValue);
+                        }else{
+                            storedSliderValue = storedSliderValue;
+                        }
+                        storedSliderValue = $(this).slider("values", 0);
+
+                        currentAvailablePercent = totalPercent - currentIncrementation;
+
+                        /*
+                        console.log('----storedSliderValue----');
+                        console.log( $(this).slider("values", 0) );
+                        console.log('----------------------------------------');
+
+                        console.log('----currentIncrementation----');
+                        console.log( currentIncrementation);
+                        console.log('----------------------------------------');
+
+                        console.log('----currentAvailablePercent----');
+                        console.log( currentAvailablePercent);
+                        console.log('----------------------------------------');
+
+                        console.log('----storedSliderValue + currentAvailablePercent----');
+                        console.log( storedSliderValue + currentAvailablePercent );
+                        console.log('----------------------------------------');
+
+                        console.log('----storedSliderValue ----');
+                        console.log( storedSliderValue );
+                        console.log('----------------------------------------'); */
+
+                    }
+
+
+
+                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
+                        input_id.val(storedSliderValue);
+                        return false;
+                    }else{
+                        input_id.val(result.value);
+                    }
+
+
+                },
+                stop: function(event,ui) {
+                }
+            });
+            input_id.val( slider.slider("values", 0) );
+            input_id.keyup(function() {
+                slider.slider('value', $(this).val());
+            });
+        }
+
+
+
+
+    });
+
+</script>
