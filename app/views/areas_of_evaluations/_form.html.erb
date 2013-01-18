@@ -68,32 +68,11 @@
             var storedSliderValue=0;
             var tmpLimit=0;
 
-            var tmpAvailablePercent=0;
-            var isFirstBucle=true;
             slider.slider({
                 range: "min",
                 min: 0,
                 //value: currentAvailablePercent,
                 create: function(event,result) {
-
-                    /*
-                    tmpLimit = storedSliderValue + currentAvailablePercent;
-
-
-                    currentAvailablePercent = currentAvailablePercent + currentIncrementation;
-
-                    $(this).slider('value', $(this).val())
-
-                    currentIncrementation = currentIncrementation-storedSliderValue;
-                    currentIncrementation = currentIncrementation + $(this).slider("values", 0);
-
-
-
-
-
-                    storedSliderValue = $(this).slider("values", 0);
-
-                    */
 
                 },
                 slide: function(event, result) { //When the slider is sliding
@@ -113,8 +92,8 @@
                         currentAvailablePercent = 100 - currentIncrementation;
                         storedSliderValue = parseInt(result.value);
 
-                        /*
-
+                         /*
+                        console.log('========================================');
                         console.log('----currentIncrementation----');
                         console.log( currentIncrementation);
                         console.log('----------------------------------------');
@@ -131,10 +110,10 @@
                         console.log('----storedSliderValue ----');
                         console.log( storedSliderValue );
                         console.log('----------------------------------------');
+                        console.log('========================================');   */
 
-                        */
-                        //isFirstBucle=false;
                     }else{
+                        /*
                         console.log('----currentIncrementation----');
                         console.log( currentIncrementation);
                         console.log('----------------------------------------');
@@ -150,23 +129,27 @@
                         console.log('----storedSliderValue ----');
                         console.log( storedSliderValue );
                         console.log('----------------------------------------');
+                        console.log('----------------------------------------');
+                        console.log('----------------------------------------');
+                        console.log('----------------------------------------'); */
 
-                        //storedSliderValue = currentAvailablePercent;
-
-                        //storedSliderValue = parseInt(result.value);
-
-                        currentIncrementation = currentIncrementation - storedSliderValue;
-                        currentIncrementation = currentIncrementation + currentAvailablePercent;
+                        if(currentAvailablePercent>0){
 
 
-                        $(this).slider('value', currentAvailablePercent);
+                            //storedSliderValue = currentAvailablePercent + storedSliderValue;
+
+                            currentIncrementation = currentAvailablePercent + currentIncrementation;
+                            storedSliderValue = currentAvailablePercent + storedSliderValue;
+
+                            $(this).slider('value', storedSliderValue);
+                        }else{
+                            storedSliderValue = storedSliderValue;
+                        }
                         storedSliderValue = $(this).slider("values", 0);
-
-
 
                         currentAvailablePercent = totalPercent - currentIncrementation;
 
-
+                        /*
                         console.log('----storedSliderValue----');
                         console.log( $(this).slider("values", 0) );
                         console.log('----------------------------------------');
@@ -185,20 +168,14 @@
 
                         console.log('----storedSliderValue ----');
                         console.log( storedSliderValue );
-                        console.log('----------------------------------------');
+                        console.log('----------------------------------------'); */
 
-
-                        /*
-                        currentIncrementation = currentIncrementation - storedSliderValue;
-                        currentIncrementation = currentIncrementation + parseInt(result.value);
-                        currentAvailablePercent = 100 - currentIncrementation;
-                        storedSliderValue = parseInt(result.value);
-                        */
                     }
 
 
 
-                    if( parseInt(result.value) > (storedSliderValue + currentAvailablePercent) ){
+                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
+                        input_id.val(storedSliderValue);
                         return false;
                     }else{
                         input_id.val(result.value);
@@ -211,7 +188,7 @@
             });
             input_id.val( slider.slider("values", 0) );
             input_id.keyup(function() {
-                $("#slider").slider('value', $(this).val());
+                slider.slider('value', $(this).val());
             });
         }
 
