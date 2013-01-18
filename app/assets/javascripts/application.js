@@ -31,7 +31,7 @@ function add_fields(link, association, content) {
 $(function() {
 	PrivatePub.subscribe ("/notifications/"+Cursame.userId, function(data, channel){
 		$('#notifications_count').html(data.num*1);
-		$('#notifications_list').prepend('<li><a href="#">'+data.notification.kind+'</a></li>');
+		$('#notifications_list').prepend('<li><a href="#">'+data.notification.kind+'   '+data.notification.notificator_id+'</a></li>');
 	});
 });
 
