@@ -14,21 +14,18 @@
 
 <script type="text/javascript">
 
-    var maxPercent=100;
 
-    var currentAvailablePercent=100;
-    var currentIncrementation = 0;
-    var nextLimit = 100;
-    var totalPercent=100;
-
-    var controlNestedHomework=0;
-
-    var objValues=[];
 
     var nestedInputs = $('#nested_evaluation_form').html();
     $('#nested_evaluation_form').empty();
 
     $(document).ready(function() {
+        var currentAvailablePercent=100;
+        var currentIncrementationPercent = 0;
+        var totalPercent=100;
+
+        var controlNestedHomework=0;
+
         $('#more_nested_evaluation_btn').click(function(){
             var str=null;
             $(nestedInputs).each(function( index, value ) {
@@ -43,7 +40,7 @@
 
             //Si contiene un objeto hijo entra   (para el caso del slider)
             if ( $(value).children().length > 0 ) {
-                console.log($(value).children().attr('id'));
+                //console.log($(value).children().attr('id'));
                 //changeAttr($(value).children(),'id','name');
                 var child_id = $(value).children().attr(id_value);
                 child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
@@ -63,116 +60,40 @@
             var slider  = $('#slider-'+numControl),
                 input_id = $('#delivery_areas_of_evaluations_attributes_'+numControl+'_evaluation_percentage');
 
-            //currentAvailablePercent = maxPercent - currentAvailablePercent
-            // ;
             var storedSliderValue=0;
             var tmpLimit=0;
 
             slider.slider({
                 range: "min",
                 min: 0,
-                //value: currentAvailablePercent,
                 create: function(event,result) {
-
+                    if(currentAvailablePercent>0){
+                        currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
+                        storedSliderValue = currentAvailablePercent + storedSliderValue;
+                        $(this).slider('value', storedSliderValue);
+                    }
+                    storedSliderValue = $(this).slider("values", 0);
+                    currentAvailablePercent = totalPercent - currentIncrementationPercent;
                 },
                 slide: function(event, result) { //When the slider is sliding
 
                     tmpLimit = storedSliderValue + currentAvailablePercent;
-                    console.log('cliked:'+parseInt(result.value));
-                    console.log('tmpLimit'+tmpLimit);
 
+                    console.log('slide');
                     if(parseInt(result.value)<tmpLimit) {
-                        console.log('----tmpLimit ----');
-                        console.log( tmpLimit );
-                        console.log('----------------------------------------');
-
-
-                        currentIncrementation = currentIncrementation - storedSliderValue;
-                        currentIncrementation = currentIncrementation + parseInt(result.value);
-                        currentAvailablePercent = 100 - currentIncrementation;
+                        currentIncrementationPercent = currentIncrementationPercent - storedSliderValue;
+                        currentIncrementationPercent = currentIncrementationPercent + parseInt(result.value);
+                        currentAvailablePercent = 100 - currentIncrementationPercent;
                         storedSliderValue = parseInt(result.value);
-
-                         /*
-                        console.log('========================================');
-                        console.log('----currentIncrementation----');
-                        console.log( currentIncrementation);
-                        console.log('----------------------------------------');
-
-                        console.log('----currentAvailablePercent----');
-                        console.log( currentAvailablePercent);
-                        console.log('----------------------------------------');
-
-
-                        console.log('----storedSliderValue + currentAvailablePercent----');
-                        console.log( storedSliderValue + currentAvailablePercent );
-                        console.log('----------------------------------------');
-
-                        console.log('----storedSliderValue ----');
-                        console.log( storedSliderValue );
-                        console.log('----------------------------------------');
-                        console.log('========================================');   */
-
                     }else{
-                        /*
-                        console.log('----currentIncrementation----');
-                        console.log( currentIncrementation);
-                        console.log('----------------------------------------');
-
-                        console.log('----currentAvailablePercent----');
-                        console.log( currentAvailablePercent);
-                        console.log('----------------------------------------');
-
-                        console.log('----storedSliderValue + currentAvailablePercent----');
-                        console.log( storedSliderValue + currentAvailablePercent );
-                        console.log('----------------------------------------');
-
-                        console.log('----storedSliderValue ----');
-                        console.log( storedSliderValue );
-                        console.log('----------------------------------------');
-                        console.log('----------------------------------------');
-                        console.log('----------------------------------------');
-                        console.log('----------------------------------------'); */
-
                         if(currentAvailablePercent>0){
-
-
-                            //storedSliderValue = currentAvailablePercent + storedSliderValue;
-
-                            currentIncrementation = currentAvailablePercent + currentIncrementation;
+                            currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
                             storedSliderValue = currentAvailablePercent + storedSliderValue;
-
                             $(this).slider('value', storedSliderValue);
-                        }else{
-                            storedSliderValue = storedSliderValue;
                         }
                         storedSliderValue = $(this).slider("values", 0);
-
-                        currentAvailablePercent = totalPercent - currentIncrementation;
-
-                        /*
-                        console.log('----storedSliderValue----');
-                        console.log( $(this).slider("values", 0) );
-                        console.log('----------------------------------------');
-
-                        console.log('----currentIncrementation----');
-                        console.log( currentIncrementation);
-                        console.log('----------------------------------------');
-
-                        console.log('----currentAvailablePercent----');
-                        console.log( currentAvailablePercent);
-                        console.log('----------------------------------------');
-
-                        console.log('----storedSliderValue + currentAvailablePercent----');
-                        console.log( storedSliderValue + currentAvailablePercent );
-                        console.log('----------------------------------------');
-
-                        console.log('----storedSliderValue ----');
-                        console.log( storedSliderValue );
-                        console.log('----------------------------------------'); */
-
+                        currentAvailablePercent = totalPercent - currentIncrementationPercent;
                     }
-
-
 
                     if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
                         input_id.val(storedSliderValue);
@@ -183,7 +104,34 @@
 
 
                 },
-                stop: function(event,ui) {
+                change: function(event, result) { //When the slider is sliding
+
+                    tmpLimit = storedSliderValue + currentAvailablePercent;
+
+                    console.log('slide');
+                    if(parseInt(result.value)<tmpLimit) {
+                        currentIncrementationPercent = currentIncrementationPercent - storedSliderValue;
+                        currentIncrementationPercent = currentIncrementationPercent + parseInt(result.value);
+                        currentAvailablePercent = 100 - currentIncrementationPercent;
+                        storedSliderValue = parseInt(result.value);
+                    }else{
+                        if(currentAvailablePercent>0){
+                            currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
+                            storedSliderValue = currentAvailablePercent + storedSliderValue;
+                            $(this).slider('value', storedSliderValue);
+                        }
+                        storedSliderValue = $(this).slider("values", 0);
+                        currentAvailablePercent = totalPercent - currentIncrementationPercent;
+                    }
+
+                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
+                        input_id.val(storedSliderValue);
+                        return false;
+                    }else{
+                        input_id.val(result.value);
+                    }
+
+
                 }
             });
             input_id.val( slider.slider("values", 0) );
