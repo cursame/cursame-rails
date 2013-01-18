@@ -18,6 +18,9 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+   
+         
+    
        respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @course }
