@@ -9,7 +9,7 @@
 
         <%= f.fields_for :areas_of_evaluations do |build| %>
               
-              <%= render :partial => "areas_of_evaluations/form", :locals => { :f => build} %>
+              <%= render :partial => "areas_of_evaluations/form_course", :locals => { :f => build} %>
           
         <% end %>
 

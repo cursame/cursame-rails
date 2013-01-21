@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_personal_url(params[:personal_url])
+    @accesible_id = @user.id
     #helper methods in aplication controller
     pertenence!
     links
@@ -22,7 +23,11 @@ class UsersController < ApplicationController
    #### agregando a reas de evaluación
 
      @areas_of_evaluation = AreasOfEvaluation.new
-
+   ### publicando comentarios en el show de users
+     @network_comments = current_network.comments
+     @comments = @network_comments.where(:user_id => @accesible_id)
+    
+   ### print times
 
      1.times do
          areas_of_evaluations = @delivery.areas_of_evaluations.build
