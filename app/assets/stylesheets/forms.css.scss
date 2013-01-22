@@ -375,7 +375,7 @@
 
 
 #profile-delivery-form{
-  height: 200px;
+  height: 190px;
   background: #FFF;
   position: relative;
   display: none;
@@ -491,6 +491,9 @@
   }
   & input[type=submit]{
     margin-top: 10px !important;
+  }
+  & .date-input{
+    width: 96px !important;
   }
 }
 
