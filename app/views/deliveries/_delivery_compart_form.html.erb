@@ -14,6 +14,16 @@
         <% end %>
 
 
+
+
+
+
+        <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
+
+
+
+        <%= f.submit "Publicar"%>
+
         <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
           <ul class="dropdown">
             <% for course in Course.find(:all) %>
@@ -25,13 +35,6 @@
           </ul>
         </div>
 
-
-
-        <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
-
-
-
-        <%= f.submit "Publicar"%>
 
       <script type="text/javascript">
         $(document).ready(function() {

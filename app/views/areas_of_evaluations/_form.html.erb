@@ -1,33 +1,34 @@
 <% @time_now = Time.now %>
-<br>Que se va evaluar?
-<div id="nested_evaluation_form">
-    <%= f.text_field :name, :class => 'subject' %>
+<div id="nested_evaluation_form" class="evaluation-area">
+    <%= f.text_field :name, :class => 'subject', :placeholder=>'¿Que criterio se evaluará?' %>
     <div id="content-slider-0" class="slider-content"><div id="slider-0" class="slider"></div></div>
-    <%= f.text_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input" %>
+    <%= f.text_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input", :disabled => true  %>
     <%= f.hidden_field :delivery_id, :value => @delivery_id %>
     <%= f.hidden_field :active, :value =>  true %>
     <%= f.hidden_field :date_of_item, :value =>@time_now %>
 </div>
-
-<div id="more_nested_evaluation_btn" style="clear: both;">+++More+++</div>
+<div id="total_nested_evaluation" class="total"></div>
+<div id="more_nested_evaluation_btn" class="a-btn" style="float: left;">Agregar Criterio</div>
 
 
 <script type="text/javascript">
 
+    var currentAvailablePercent = 100;
+    var currentIncrementationPercent = 0;
+    var totalPercent = 100;
 
 
     var nestedInputs = $('#nested_evaluation_form').html();
     $('#nested_evaluation_form').empty();
+    $('#nested_evaluation_form, #total_nested_evaluation').hide();   //hide show area
+
 
     $(document).ready(function() {
-        var currentAvailablePercent=100;
-        var currentIncrementationPercent = 0;
-        var totalPercent=100;
-
         var controlNestedHomework=0;
-
         $('#more_nested_evaluation_btn').click(function(){
             var str=null;
+            $('#nested_evaluation_form, #total_nested_evaluation').show();  //show area
+
             $(nestedInputs).each(function( index, value ) {
                 changeAttr($(value).clone(),'id','name');
             });
@@ -37,7 +38,6 @@
 
         // Properties value change ID and Name properties from elements
         function changeAttr(value, id_value, id_name){
-
             //Si contiene un objeto hijo entra   (para el caso del slider)
             if ( $(value).children().length > 0 ) {
                 //console.log($(value).children().attr('id'));
@@ -104,37 +104,14 @@
 
 
                 },
-                change: function(event, result) { //When the slider is sliding
-
-                    tmpLimit = storedSliderValue + currentAvailablePercent;
-
-                    console.log('slide');
-                    if(parseInt(result.value)<tmpLimit) {
-                        currentIncrementationPercent = currentIncrementationPercent - storedSliderValue;
-                        currentIncrementationPercent = currentIncrementationPercent + parseInt(result.value);
-                        currentAvailablePercent = 100 - currentIncrementationPercent;
-                        storedSliderValue = parseInt(result.value);
-                    }else{
-                        if(currentAvailablePercent>0){
-                            currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
-                            storedSliderValue = currentAvailablePercent + storedSliderValue;
-                            $(this).slider('value', storedSliderValue);
-                        }
-                        storedSliderValue = $(this).slider("values", 0);
-                        currentAvailablePercent = totalPercent - currentIncrementationPercent;
-                    }
-
-                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
-                        input_id.val(storedSliderValue);
-                        return false;
-                    }else{
-                        input_id.val(result.value);
-                    }
-
+                change: function(event, result) {
+                    $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
 
                 }
             });
             input_id.val( slider.slider("values", 0) );
+            $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
+
             input_id.keyup(function() {
                 slider.slider('value', $(this).val());
             });
