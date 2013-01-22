@@ -27,6 +27,13 @@
     <%= f.label :imagen_de_finalización %>    
     <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
     <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+    
+    
+    <%= f.label :porcentaje_de_valor_que_tienen_los_examenes%>
+    <%= f.number_field :survey_param_evaluation %>
+    <%= f.label :porcentaje_de_valor_que_tienen_las_tareas_o_evidencias_de_la_clase %>
+    <%= f.number_field :delivery_param_evaluation %>
+    
     <%= f.submit "Actualizar Curso" %>
 <% end %>
 <script type="text/javascript">

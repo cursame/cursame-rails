@@ -88,10 +88,12 @@
     <div id="box-stream-post">
         <div class="profile-post-box">
             <div id="post-forms">
-                <div id="profile-message-form">
-                                   </div>
-                <div id="profile-delivery-form">
-                                   </div>
+                  <div id="profile-message-form">
+                        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+                    </div>
+                    <div id="profile-delivery-form">
+                        <%= render :partial => '/deliveries/form'%>
+                    </div>
             </div>
             <div id="profile-form-options" class="profile-form-options-styles create">
                     <!-- <a href ="#ID del formulario que se abrira" class="">NAME_CATEGORY</a> -->

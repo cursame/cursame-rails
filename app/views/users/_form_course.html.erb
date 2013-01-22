@@ -7,8 +7,12 @@
     <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción' %>
     <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>
     <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
+    <%= f.label :porcentaje_de_valor_que_tienen_los_examenes%>
+       <%= f.number_field :survey_param_evaluation %>
+       <%= f.label :porcentaje_de_valor_que_tienen_las_tareas_o_evidencias_de_la_clase %>
+       <%= f.number_field :delivery_param_evaluation %>
     <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-    <%= f.submit "Crear" , :class=>'input-button active'%>
+    <%= f.submit "Crear" , :class=>'input-button active'%>    
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
 <% end %>
 <script type="text/javascript">

@@ -199,29 +199,35 @@
 		            <a href ="" class="event">Evento</a>
             </div>
         </div>
-
-        <div id="box-comments">
+        
+        <% @comments.reverse.each do |comment| %>
+         
+        <!--<div id="box-comments">
             <div class="general-cir"></div>
             <div id="comment1" class="comment" >
                 <div class="arrow-left"></div>
                 <div class="header">
                     <div class="null-image"></div>
-                    <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-                    <div class="name">Nombre Usuario</div>  <span>fecha</span>
+                    <div class="avatar"><%= image_tag(comment.user.avatar.modern,{:class => "avatar-mini"})%></div>
+                    <div class="name"> <%=  comment.user.name %></div>  <span>fecha</span>
                 </div>
                 <div class="content">
                   <div class="null-image"></div>
-                  <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                  <%=  comment.comment %>
+                  
                 </div>
 
                 <div class="footer">
                   <img src="/assets/icons/grey-mini-comment.png" class="icon">
                   <img src="/assets/icons/grey-mini-like.png" class="icon">
-                  <div class="labels">20 Comentarios</div>
+                  <div class="labels"><%= comment.comments.count %> Comentarios</div>
                   <div class="labels">12 Likes</div>
                 </div>
             </div>
-        </div>
+        </div>-->
+        
+         <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+        <%end%>
         <div id="box-comments">
             <div class="general-cir"></div>
                 <div id="" class="comment-image" >
