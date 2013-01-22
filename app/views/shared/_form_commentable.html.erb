@@ -1,0 +1,6 @@
+<%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 60, :placeholder=>'Comentario'  %>
+    <%=hidden_field_tag 'commentable_id', commentable_id %>
+    <%=hidden_field_tag 'commentable_type', commentable_type %>
+    <%= submit_tag "Comentar",:class=>"btn btn-primary" %>
+<% end %>

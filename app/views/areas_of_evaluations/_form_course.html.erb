@@ -1,0 +1,148 @@
+<% @time_now = Time.now %>
+<br>Que se va evaluar?
+<div id="nested_evaluation_form">
+    <%= f.text_field :name, :class => 'subject' %>
+    <div id="content-slider-0" class="slider-content"><div id="slider-0" class="slider"></div></div>
+    <%= f.text_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input" %>
+    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
+    <%= f.hidden_field :active, :value =>  true %>
+    <%= f.hidden_field :date_of_item, :value =>@time_now %>
+</div>
+
+<div id="more_nested_evaluation_btn" style="clear: both;">+++More+++</div>
+
+
+<script type="text/javascript">
+
+
+
+    var nestedInputs = $('#nested_evaluation_form').html();
+    $('#nested_evaluation_form').empty();
+
+    $(document).ready(function() {
+        var currentAvailablePercent=100;
+        var currentIncrementationPercent = 0;
+        var totalPercent=100;
+
+        var controlNestedHomework=0;
+
+        $('#more_nested_evaluation_btn').click(function(){
+            var str=null;
+            $(nestedInputs).each(function( index, value ) {
+                changeAttr($(value).clone(),'id','name');
+            });
+            initSlider( controlNestedHomework );
+            controlNestedHomework++;
+        });
+
+        // Properties value change ID and Name properties from elements
+        function changeAttr(value, id_value, id_name){
+
+            //Si contiene un objeto hijo entra   (para el caso del slider)
+            if ( $(value).children().length > 0 ) {
+                //console.log($(value).children().attr('id'));
+                //changeAttr($(value).children(),'id','name');
+                var child_id = $(value).children().attr(id_value);
+                child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
+                $(value).children().attr(id_value, child_id);
+            }
+            var str_id = $(value).attr(id_value);
+            str_id = (str_id!=undefined)? str_id.replace('0',controlNestedHomework) : undefined;
+            $(value).attr(id_value,str_id);
+
+            var str_name = $(value).attr(id_name);
+            str_name = (str_name!=undefined)?str_name.replace('0',controlNestedHomework):undefined;
+            $(value).attr(id_name,str_name);
+            $('#nested_evaluation_form').append($(value));
+        }
+
+        function initSlider( numControl ){
+            var slider  = $('#slider-'+numControl),
+                input_id = $('#delivery_areas_of_evaluations_attributes_'+numControl+'_evaluation_percentage');
+
+            var storedSliderValue=0;
+            var tmpLimit=0;
+
+            slider.slider({
+                range: "min",
+                min: 0,
+                create: function(event,result) {
+                    if(currentAvailablePercent>0){
+                        currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
+                        storedSliderValue = currentAvailablePercent + storedSliderValue;
+                        $(this).slider('value', storedSliderValue);
+                    }
+                    storedSliderValue = $(this).slider("values", 0);
+                    currentAvailablePercent = totalPercent - currentIncrementationPercent;
+                },
+                slide: function(event, result) { //When the slider is sliding
+
+                    tmpLimit = storedSliderValue + currentAvailablePercent;
+
+                    console.log('slide');
+                    if(parseInt(result.value)<tmpLimit) {
+                        currentIncrementationPercent = currentIncrementationPercent - storedSliderValue;
+                        currentIncrementationPercent = currentIncrementationPercent + parseInt(result.value);
+                        currentAvailablePercent = 100 - currentIncrementationPercent;
+                        storedSliderValue = parseInt(result.value);
+                    }else{
+                        if(currentAvailablePercent>0){
+                            currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
+                            storedSliderValue = currentAvailablePercent + storedSliderValue;
+                            $(this).slider('value', storedSliderValue);
+                        }
+                        storedSliderValue = $(this).slider("values", 0);
+                        currentAvailablePercent = totalPercent - currentIncrementationPercent;
+                    }
+
+                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
+                        input_id.val(storedSliderValue);
+                        return false;
+                    }else{
+                        input_id.val(result.value);
+                    }
+
+
+                },
+                change: function(event, result) { //When the slider is sliding
+
+                    tmpLimit = storedSliderValue + currentAvailablePercent;
+
+                    console.log('slide');
+                    if(parseInt(result.value)<tmpLimit) {
+                        currentIncrementationPercent = currentIncrementationPercent - storedSliderValue;
+                        currentIncrementationPercent = currentIncrementationPercent + parseInt(result.value);
+                        currentAvailablePercent = 100 - currentIncrementationPercent;
+                        storedSliderValue = parseInt(result.value);
+                    }else{
+                        if(currentAvailablePercent>0){
+                            currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
+                            storedSliderValue = currentAvailablePercent + storedSliderValue;
+                            $(this).slider('value', storedSliderValue);
+                        }
+                        storedSliderValue = $(this).slider("values", 0);
+                        currentAvailablePercent = totalPercent - currentIncrementationPercent;
+                    }
+
+                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
+                        input_id.val(storedSliderValue);
+                        return false;
+                    }else{
+                        input_id.val(result.value);
+                    }
+
+
+                }
+            });
+            input_id.val( slider.slider("values", 0) );
+            input_id.keyup(function() {
+                slider.slider('value', $(this).val());
+            });
+        }
+
+
+
+
+    });
+
+</script>

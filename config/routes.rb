@@ -1,4 +1,7 @@
 Cursame30Lb::Application.routes.draw do
+  resources :events
+
+  get "calendar/index"
   
   resources :notifications
 
