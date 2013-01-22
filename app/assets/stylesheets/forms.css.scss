@@ -242,7 +242,7 @@
         margin-top: 8px;
         background: #f7f8fa;
         z-index: 99;
-        width: 200px;
+        min-width: 150px;
         @include border-radius-btn;
         font-size: 13px;
       }
@@ -419,7 +419,6 @@
   }
   & button{
     float: right !important;
-    margin-right: 9px;
   }
   & .date-input{
     margin-bottom: 5px !important;
