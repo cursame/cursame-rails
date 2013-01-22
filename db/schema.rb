@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130121224445) do
+
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -82,14 +84,12 @@ ActiveRecord::Schema.define(:version => 20130121224445) do
     t.text     "silabus"
     t.datetime "init_date"
     t.datetime "finish_date"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "public_status"
     t.string   "avatar"
     t.string   "coverphoto"
     t.integer  "delivery_id"
-    t.integer  "survey_param_evaluation"
-    t.integer  "delivery_param_evaluation"
   end
 
   create_table "deliveries", :force => true do |t|
