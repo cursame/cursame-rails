@@ -94,7 +94,11 @@ $(document).ready(function() {
 
     //-------Courses animation------
     $('#new-course').click(function(){
-        moveOutSlide('');
+        moveOutSlide();
+
+        var nestedNewCourseSlider = new NestedSlider(false);
+        nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation') );
+        nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation') );
     });
 
     $('#cancel-course-form, #return-course') .click(function(){

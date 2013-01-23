@@ -10,9 +10,9 @@
         <%= f.fields_for :areas_of_evaluations do |builder| %>
               
               <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
-          
         <% end %>
-
+        <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
+        <%= f.submit "Publicar"%>
 
         <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
           <ul class="dropdown">
@@ -25,13 +25,6 @@
           </ul>
         </div>
 
-
-
-        <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
-
-
-
-        <%= f.submit "Publicar"%>
 
       <script type="text/javascript">
         $(document).ready(function() {
