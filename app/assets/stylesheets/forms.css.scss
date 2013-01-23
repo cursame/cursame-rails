@@ -57,6 +57,8 @@
     }
   }
 
+
+
   & input[type=submit]{
     font-size: 14px;
     margin: 4px 4px 2px 4px;
@@ -271,7 +273,6 @@
     width: 210px;
     position: relative;
     height: 18px;
-    margin: 13px 0px 0px 14px;
   }
   & .slider{
     border-radius: 25px;
@@ -399,6 +400,7 @@
   }
   & .slider-content{
     float: left;
+    margin: 13px 0px 0px 14px;
   }
   & select{
     width: 217px;
@@ -484,6 +486,11 @@
   & select{
     width: 217px;
   }
+  & label{
+    clear: both;
+    float: left;
+    color: #999;
+  }
   & button {
     margin-top: 10px !important;
   }
@@ -492,6 +499,22 @@
   }
   & .date-input{
     width: 96px !important;
+    margin-bottom: 10px !important;
+  }
+  & .slider-content{
+    float: left;
+    width: 130px !important;
+    clear: both;
+    margin: 8px 0px 0px 8px;
+  }
+  & .slider{
+    width: 130px !important;
+    clear: both;
+  }
+  & .percent-input{
+    width: 48px!important;
+    float: left;
+    margin: 0px 0px 0px 14px !important;
   }
 }
 
@@ -501,19 +524,30 @@
     float: left;
   }
   & label{
-  clear: both;
-  float: left;
-  
+    clear: both;
+    float: left;
   }
   & select {
-  clear: both;
-  float: left;
-  
+    clear: both;
+    float: left;
+    width: 135px;
   }
   & submit {
    clear: both;
    float: left;
   }
-
-} 
-
+  & textarea{
+    clear: both;
+    float: left;
+  }
+  & .slider-content{
+    float: left;
+    width: 130px !important;
+    clear: both;
+    margin: 8px 0px 0px 8px;
+  }
+  & .slider{
+   // width: 130px !important;
+    clear: both;
+  }
+}

@@ -13,26 +13,21 @@
 
 <script type="text/javascript">
 
-    var currentAvailablePercent = 100;
-    var currentIncrementationPercent = 0;
-    var totalPercent = 100;
-
-
     var nestedInputs = $('#nested_evaluation_form').html();
     $('#nested_evaluation_form').empty();
     $('#nested_evaluation_form, #total_nested_evaluation').hide();   //hide show area
-
-
     $(document).ready(function() {
         var controlNestedHomework=0;
+        var nestedNewHomeworkSlider = new NestedSlider();      //
         $('#more_nested_evaluation_btn').click(function(){
             var str=null;
             $('#nested_evaluation_form, #total_nested_evaluation').show();  //show area
-
             $(nestedInputs).each(function( index, value ) {
                 changeAttr($(value).clone(),'id','name');
             });
-            initSlider( controlNestedHomework );
+            var slider  = $('#slider-'+controlNestedHomework),
+                input_id = $('#delivery_areas_of_evaluations_attributes_'+controlNestedHomework+'_evaluation_percentage');
+            nestedNewHomeworkSlider.initSlider( slider, input_id );
             controlNestedHomework++;
         });
 
@@ -40,8 +35,6 @@
         function changeAttr(value, id_value, id_name){
             //Si contiene un objeto hijo entra   (para el caso del slider)
             if ( $(value).children().length > 0 ) {
-                //console.log($(value).children().attr('id'));
-                //changeAttr($(value).children(),'id','name');
                 var child_id = $(value).children().attr(id_value);
                 child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
                 $(value).children().attr(id_value, child_id);
@@ -49,76 +42,11 @@
             var str_id = $(value).attr(id_value);
             str_id = (str_id!=undefined)? str_id.replace('0',controlNestedHomework) : undefined;
             $(value).attr(id_value,str_id);
-
             var str_name = $(value).attr(id_name);
             str_name = (str_name!=undefined)?str_name.replace('0',controlNestedHomework):undefined;
             $(value).attr(id_name,str_name);
             $('#nested_evaluation_form').append($(value));
         }
-
-        function initSlider( numControl ){
-            var slider  = $('#slider-'+numControl),
-                input_id = $('#delivery_areas_of_evaluations_attributes_'+numControl+'_evaluation_percentage');
-
-            var storedSliderValue=0;
-            var tmpLimit=0;
-
-            slider.slider({
-                range: "min",
-                min: 0,
-                create: function(event,result) {
-                    if(currentAvailablePercent>0){
-                        currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
-                        storedSliderValue = currentAvailablePercent + storedSliderValue;
-                        $(this).slider('value', storedSliderValue);
-                    }
-                    storedSliderValue = $(this).slider("values", 0);
-                    currentAvailablePercent = totalPercent - currentIncrementationPercent;
-                },
-                slide: function(event, result) { //When the slider is sliding
-
-                    tmpLimit = storedSliderValue + currentAvailablePercent;
-
-                    if(parseInt(result.value)<tmpLimit) {
-                        currentIncrementationPercent = currentIncrementationPercent - storedSliderValue;
-                        currentIncrementationPercent = currentIncrementationPercent + parseInt(result.value);
-                        currentAvailablePercent = 100 - currentIncrementationPercent;
-                        storedSliderValue = parseInt(result.value);
-                    }else{
-                        if(currentAvailablePercent>0){
-                            currentIncrementationPercent = currentAvailablePercent + currentIncrementationPercent;
-                            storedSliderValue = currentAvailablePercent + storedSliderValue;
-                            $(this).slider('value', storedSliderValue);
-                        }
-                        storedSliderValue = $(this).slider("values", 0);
-                        currentAvailablePercent = totalPercent - currentIncrementationPercent;
-                    }
-
-                    if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
-                        input_id.val(storedSliderValue);
-                        return false;
-                    }else{
-                        input_id.val(result.value);
-                    }
-
-
-                },
-                change: function(event, result) {
-                    $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
-
-                }
-            });
-            input_id.val( slider.slider("values", 0) );
-            $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
-
-            input_id.keyup(function() {
-                slider.slider('value', $(this).val());
-            });
-        }
-
-
-
-
     });
 
 </script>

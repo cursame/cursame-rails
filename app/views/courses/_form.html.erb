@@ -18,21 +18,23 @@
   <%= f.label :imagen_de_cabecera %>
   <%= f.file_field :coverphoto%> 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, 'Titulo' %><br />
     <%= f.text_field :title %>
-    <%= f.label :silabus %>
-    <%= f.text_area :silabus %>
+    <%= f.label :silabus, 'Descripción' %>
+    <%= f.text_area :silabus, :rows => 7, :cols => 76, :placeholder=>'Descripción' %>
     <%= f.label :fecha_de_inicio %>   
-    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>
+    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date.strftime('%m/%d/%Y')) %>
     <%= f.label :imagen_de_finalización %>    
-    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input" %>
+    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date.strftime('%m/%d/%Y'))  %>
+    <%= f.label :public_status, 'Privacidad' %>
     <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-    
-    
-    <%= f.label :porcentaje_de_valor_que_tienen_los_examenes%>
-    <%= f.number_field :survey_param_evaluation %>
-    <%= f.label :porcentaje_de_valor_que_tienen_las_tareas_o_evidencias_de_la_clase %>
-    <%= f.number_field :delivery_param_evaluation %>
+    <%= f.label :Valor_de_examenes%>
+    <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div>
+    <%= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
+
+    <%= f.label :Valor_de_tareas_o_entregas %>
+    <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div>
+    <%= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     
     <%= f.submit "Actualizar Curso" %>
 <% end %>
@@ -41,7 +43,6 @@
        //$(".ui-widget-overlay").css('display','block');
     });
 
-    $(document).ready(function() {
         $(function() {
             $( "#course_init_date, #course_finish_date" ).datepicker({
                 inline: true,
@@ -50,7 +51,10 @@
                 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
             });
+
+            var nestedNewCourseSlider = new NestedSlider(false);
+            nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation') );
+            nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation') );
         });
-    });
 </script>
 </div>
