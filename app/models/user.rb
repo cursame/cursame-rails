@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :assets
   has_many :assignments
   has_many :comments
+  has_many :authentications 
   #nested atributes for forms asets
   
   accepts_nested_attributes_for :assets

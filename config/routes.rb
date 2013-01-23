@@ -1,7 +1,18 @@
 Cursame30Lb::Application.routes.draw do
+  
+  resources :authentications
+
+  #recursos necesarios para el calendario
   resources :events
 
   get "calendar/index"
+  
+  match "/auth/:provider/callback" => "authentications#create"
+  
+  
+  #recursos naturales de la aplicación
+  
+  
   
   resources :notifications
 

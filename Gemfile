@@ -16,6 +16,13 @@ gem 'mime-types'
 gem 'mini_magick'
 # Gems used only for assets and not required
 # in production environments by default.
+
+#gemas para conección con otros servicios
+ gem 'omniauth'
+ gem 'google-api-client', :require => 'google/api_client'
+ gem 'omniauth-google-oauth2'
+
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   #gem 'coffee-rails', '~> 3.2.1'

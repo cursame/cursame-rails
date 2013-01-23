@@ -5,5 +5,8 @@ class CalendarController < ApplicationController
   layout 'calendarlayout'
   def index
   end
+  
+  def connection
+  end
 
 end
