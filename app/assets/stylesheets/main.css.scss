@@ -267,11 +267,13 @@ ul{
     & li{
       width: 50%;
       float: left;
+      outline-width: 0;
     }
     & li a {
       height: 40px;
       float: left;
       width: 100%;
+      outline-width: 0;
       & .content-tab{
         margin: 7px 0px 0px 5px;
       }
@@ -282,12 +284,13 @@ ul{
       margin-bottom: -1px;
       @include shadow-title-tab;
     }
-    & li.ui-tabs-selected{
+    & li.ui-tabs-active{
       background: #ffffff;
       border-bottom: 1px solid #FFF;
       -moz-box-shadow: none;
       -webkit-box-shadow: none;
       box-shadow: none;
+      outline-width: 0;
     }
   }
 }
