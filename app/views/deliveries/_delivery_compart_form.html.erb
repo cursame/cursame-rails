@@ -8,10 +8,12 @@
                    <!--    <%#= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>-->
 
         <%= f.fields_for :areas_of_evaluations do |builder| %>
-              
               <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
-        <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
+
+        <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
+        <!-- onClick go to /app/app/views/areas_of_evaluations/_form.html.erb -->
+
         <%= f.submit "Publicar"%>
 
         <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>

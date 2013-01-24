@@ -23,9 +23,9 @@
     <%= f.label :silabus, 'Descripción' %>
     <%= f.text_area :silabus, :rows => 7, :cols => 76, :placeholder=>'Descripción' %>
     <%= f.label :fecha_de_inicio %>   
-    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date.strftime('%m/%d/%Y')) %>
+    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
     <%= f.label :imagen_de_finalización %>    
-    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date.strftime('%m/%d/%Y'))  %>
+    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
     <%= f.label :public_status, 'Privacidad' %>
     <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
     <%= f.label :Valor_de_examenes%>

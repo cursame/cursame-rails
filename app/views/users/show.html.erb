@@ -28,10 +28,6 @@
     </br>
 <%end%>-->
 
-
-<% content_for :javascript_includes do %>
-    <%= javascript_include_tag "components.js" %>
-<% end %>
 <div id="banner-profile" style="background:url('<%= @user.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
     
 <div class="banner-shadow">
@@ -77,7 +73,6 @@
 
             <div id="tabs-courses" class="tabs-style">
                 <ul id="ul-tabs">
-
                     <li class="element-left">
                       <a href="#tabs-courses-1">
                         <div class="content-tab">
@@ -87,7 +82,7 @@
                       </a>
                     </li>
                     <li class="element-right">
-                      <div id="new-course" class="plus-courses"></div>
+                      <div id="new-course-btn" class="plus-courses"></div>
                       <a href="#tabs-courses-2">
                         <div class="content-tab">
                           <span class="title-num"><%= @count_course_iam_member_and_owner %></span>

@@ -72,7 +72,7 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms>div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
-            console.log($(this).parent().parent().attr('id'));
+            resetForm($(value).find('form'));
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -93,7 +93,7 @@ $(document).ready(function() {
 
 
     //-------Courses animation------
-    $('#new-course').click(function(){
+    $('#new-course-btn').click(function(){
         moveOutSlide();
 
         var nestedNewCourseSlider = new NestedSlider(false);
@@ -103,6 +103,7 @@ $(document).ready(function() {
 
     $('#cancel-course-form, #return-course') .click(function(){
         moveInSlide();
+        resetForm($('#new_course'));
     });
 
     function moveOutSlide(){
