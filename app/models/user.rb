@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   has_many :users_surveys
   has_many :assets
   has_many :assignments
+
+  # roles
+  has_many :permissionings
+  has_many :roles, :through => :permissionings
   
   #nested atributes for forms asets
   

@@ -35,6 +35,8 @@ gem 'acts_as_commentable'
 gem 'thin'
 gem 'private_pub'
 
+#roles
+
 # Gem for twitter bootstrap.
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
