@@ -517,12 +517,8 @@ background-position: left center;
 .form-new-course-lateral{
   display: none;
   width: 230px;
-  //min-height: 250px;
-  position: absolute;
-  background:#FFF;
-  @include border-t-right-radius;
-  @include border-t-left-radius;
 
+  position: absolute;
   & .return-course-icon{
     position: absolute;
     width: 37px;

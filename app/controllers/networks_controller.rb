@@ -22,6 +22,12 @@ class NetworksController < ApplicationController
     @course = Course.new
     @delivery = Delivery.new
 
+    #==== Areas de evaluación ====
+    @areas_of_evaluation = AreasOfEvaluation.new
+    1.times do
+        areas_of_evaluations = @delivery.areas_of_evaluations.build
+    end
+
     @courses = current_user.members_in_courses.limit(7)
 
     @count_course_iam_member =  current_user.members_in_courses.count
