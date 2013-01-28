@@ -24,7 +24,7 @@ ul{
 .hidden_elem {
   display: none !important;
 }
-
+.clear {clear:both;}
 
 
 /* /\/\/\/\ Template Generic /\/\/\/\ */
@@ -306,12 +306,12 @@ ul{
   z-index: 10;
   & h2{
     position: absolute;
-    top:-19px;
+    top:-21px;
     color:#dfdfdf;
     font-family: helvbold;
     font-size: 19pt;
     z-index: -1;
-    right: 2px;
+    right: 122px;//2px;
     text-transform: uppercase;
   }
 }
@@ -342,13 +342,18 @@ ul{
   min-height: 70px;
   color: #666666;
   background: $bg-bars;
-  margin: 170px 0px 10px 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
   margin-left: $margin-sidebar-left;
   -moz-box-shadow:    0px 1px 0px #fff, inset 0px 1px 0px #fff;
   -webkit-box-shadow: 0px 1px 0px #fff, inset 0px 1px 0px #fff;
   box-shadow:         0px 1px 0px #fff, inset 0px 1px 0px #fff;
   padding: 5px;
+  &.margin-top {
+    margin-top: 170px;
+  }
 }
+
 
 #box-profile-info li{
  list-style: none;
@@ -399,7 +404,10 @@ background-position: left center;
 }
 
 #box-course{
-  min-height: 390px;//320px;
+  //min-height: 390px;//320px;
+  &.margin-top {
+    margin-top: 120px;
+  }
   & #course-list{
     clear: both;
     & li{
@@ -442,6 +450,7 @@ background-position: left center;
 }
 #box-friends{
   min-height: 200px;
+  float: left;
   & .content-avtr{
     margin-bottom: 8px;
   }
@@ -508,7 +517,7 @@ background-position: left center;
 .form-new-course-lateral{
   display: none;
   width: 230px;
-  min-height: 250px;
+  //min-height: 250px;
   position: absolute;
   background:#FFF;
   @include border-t-right-radius;
@@ -603,7 +612,12 @@ background-position: left center;
   width: 155px;
   text-align: center;
   position: absolute;
-  margin-top: -25px;
+  &.user-layout{
+    margin-top: -25px;
+  }
+  &.network-layout{
+    margin-top: -95px;
+  }
   
   & .thumbnail{
     width: 150px;

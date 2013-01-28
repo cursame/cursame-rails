@@ -4,9 +4,6 @@ $(document).ready(function() {
     var time = 500;
     var timeSlide = time-100;
 
-
-
-
     //-----Titles Cover Photo -----
     var control_height = false;
     var tmp_height = 140;
@@ -25,7 +22,7 @@ $(document).ready(function() {
     });
 
 
-  //-----STATS -----
+    //-----STATS -----
 
     //-----Titles Cover Photo -----
     var control_height_2 = false;
@@ -43,11 +40,6 @@ $(document).ready(function() {
             height: tmp_height_2+'px'
         }, time);
     });
-
-
-  
-  
-  
 
     //----- Post Form Animations------
     var prePostHeight = $('#profile-form-options').height();
@@ -90,10 +82,16 @@ $(document).ready(function() {
         });
     });
 
-
-
     //-------Courses animation------
+    var tmp_height_new_course = $('#form-new-course').height();
+    var tmp_height_new_course_box = null;
+    console.log(tmp_height_new_course_box);
     $('#new-course-btn').click(function(){
+        tmp_height_new_course_box = $('#box-course').height();
+        $('#box-course').animate({
+            height: tmp_height_new_course+'px'
+        }, 300);
+
         moveOutSlide();
 
         var nestedNewCourseSlider = new NestedSlider(false);
@@ -102,7 +100,17 @@ $(document).ready(function() {
     });
 
     $('#cancel-course-form, #return-course') .click(function(){
+
+        console.log(tmp_height_new_course_box);
+        $('#box-course').animate({
+            height: '137px'
+        }, 300, function() {
+            //$(this).css('display','none');
+            //$(this).css('height','');
+        });
         moveInSlide();
+
+
         resetForm($('#new_course'));
     });
 

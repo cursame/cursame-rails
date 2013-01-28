@@ -18,6 +18,15 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
+    @user = current_user;
+    @course = Course.new
+    @delivery = Delivery.new
+
+    @courses = current_user.members_in_courses.limit(7)
+
+    @count_course_iam_member =  current_user.members_in_courses.count
+    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
+
     @network = Network.find_by_subdomain!(request.subdomain)
     @comments = @network.comments 
     respond_to do |format|
