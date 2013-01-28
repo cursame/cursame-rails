@@ -82,15 +82,14 @@ $(document).ready(function() {
         });
     });
 
-    //-------Courses animation------
+    //-------Courses Slide & Height animation------
     var tmp_height_new_course = $('#form-new-course').height();
     var tmp_height_new_course_box = null;
-    console.log(tmp_height_new_course_box);
     $('#new-course-btn').click(function(){
         tmp_height_new_course_box = $('#box-course').height();
         $('#box-course').animate({
             height: tmp_height_new_course+'px'
-        }, 300);
+        }, 400);
 
         moveOutSlide();
 
@@ -100,11 +99,9 @@ $(document).ready(function() {
     });
 
     $('#cancel-course-form, #return-course') .click(function(){
-
-        console.log(tmp_height_new_course_box);
         $('#box-course').animate({
-            height: '137px'
-        }, 300, function() {
+            height: tmp_height_new_course_box+'px'
+        }, 400, function() {
             //$(this).css('display','none');
             //$(this).css('height','');
         });
