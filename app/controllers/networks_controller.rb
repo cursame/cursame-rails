@@ -28,6 +28,9 @@ class NetworksController < ApplicationController
         areas_of_evaluations = @delivery.areas_of_evaluations.build
     end
 
+    @survey = Survey.new
+
+
     @courses = current_user.members_in_courses.limit(7)
 
     @count_course_iam_member =  current_user.members_in_courses.count

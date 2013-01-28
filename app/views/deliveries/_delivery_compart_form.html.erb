@@ -7,7 +7,7 @@
         <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
 
         <%= f.fields_for :areas_of_evaluations do |builder| %>
-              <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
+            <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
 
         <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
