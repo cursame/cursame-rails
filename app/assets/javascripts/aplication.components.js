@@ -5,13 +5,12 @@
  *==================================================
 */
 function NestedSlider(defaultInitValue) {
-
-    var currentAvailablePercent = 100;
+    this.currentAvailablePercent = 100
+    var currentAvailablePercent = this.currentAvailablePercent;
     var currentIncrementationPercent = 0;
     var totalPercent = 100;
     var defaultInitValue=defaultInitValue==false?false:true;
 
-    console.log(defaultInitValue);
     this.initSlider = function ( slider_id, input_id ){
         var storedSliderValue=0;
         var tmpLimit=0;

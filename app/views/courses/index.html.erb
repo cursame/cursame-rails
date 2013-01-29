@@ -1,28 +1,32 @@
-<h2>Lista de cursos </h2>
-
-<div class="search default-form delivery-form">
+<div id="header-courses">
+<h2 class="courses-title-h2">Lista de cursos </h2>
+<div class="search default-form delivery-form serch-courses">
 <%= form_tag courses_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Buscar Curso", :title => nil %>
+    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Cursos' %>
+   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
   </p>
 <% end %> 
 </div>
+<div class="new-course"><%= link_to 'New Course', new_course_path, :class=>"a-button" %></div>
+</div>
 
-
-
-
- <%= link_to 'New Course', new_course_path, :class=>"a-button" %>
-
- <h2>  <%= notice %> </h2>
-<br>
+ <h2>  <%= notice %> </h2><br><br><br>
+ 
 <% @cc = @courses.count %>
 <% if @cc == 0%>
   <b> <%= t('No hay resultados en la busqueda')%> </b>
 <%end%>
+<div id="courses-list">
 <% @courses.each do |course| %>
+
 <div class="course">
- <div id="crud"> 
+
+   <div class="thumbnail">
+    <%= link_to image_tag('/assets/courses.png'), course %>
+   </div>
+   
+   <div id="crud"> 
             <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>            
           
                <% ##### importante no mover esta varialbe ######%>  
@@ -45,13 +49,9 @@
               <%end%>
            <%end%>
      </div>
-
-
-   <div class="thumbnail">
-    <%= link_to image_tag(course.avatar.modern), course %>
-   </div>
+     
     <div id="course-title"><%= course.title %> </div>
-
+    <div id="course-info">
     <div class="hidden-text">
        <li id="silabus" class="silabus">
            <%= course.silabus.html_safe %>
@@ -60,7 +60,11 @@
        
       <%#= course.init_date %>
     <li class="finishdate"> <%= course.finish_date %></li>
-    </div>
+    </div></div>
+   
+   
    
 <% end %> 
+</div>
+
 

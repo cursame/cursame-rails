@@ -373,7 +373,7 @@
   }
 }
 
-#profile-delivery-form{
+#delivery-form-area{
   height: 190px;
   background: #FFF;
   position: relative;
@@ -382,7 +382,6 @@
   & form{
     margin: 7px 10px 0px 10px;
   }
-
 }
 .delivery-form{
   & .percent-input{
@@ -451,7 +450,7 @@
 
 
 
-#profile-message-form{
+#message-form-area{
   height: 120px;
   background: #FFF;
   position: relative;
@@ -471,6 +470,16 @@
   }
 }
 
+#survey-form-area{
+  height: 190px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  & form{
+    margin: 7px 10px 0px 10px;
+  }
+}
 
 .course-form{  //(class form difined by Rails)
   color: #333;

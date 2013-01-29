@@ -1,168 +1,253 @@
-<!-- Post -->
-<div id="banner-profile" style="background:url('/assets/bannerprofile-clean.png'); background-position-y: -90px;">    
-    
-<div class="banner-shadow">
-    
-<div id="box-post-form">
 
- <div id="box-user-credential-principal">
-<div class="thumbnail-principal" style="" >
-    <a href="#" class="" style="background: #FFF;">
-      <img src="http://placehold.it/140x140/E49800/333333" alt="">
-    </a></div>
-    Nombre de Usuario <br>
-  </div>  
+<div id="banner-profile" style="background:url('assets/bannerprofile-clean.png'); background-position-y: -110px; background-repeat: no-repeat;">
 
-
-  <div class="box-3">&nbsp;</div>
-  <div class="box-6">
-    <div id="post">
-      <div id="comment-form" style="height: 350px; width: 640px; background: #ccc; position: relative; display: none;">
-        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-        <div style="float: right; width: 220px">
-          <div id="accept-post-form" style="float: left;"><img src="http://placehold.it/100x30/4D9900/ffffff&text=aceptar" alt=""></div>
-          <div id="cancel-post-form" style="float: right;"><img src="http://placehold.it/100x30/ff0000/ffffff&text=cancelar" alt=""></div>
-        </div>
+  <div class="banner-shadow">
+    <div id="box-titles">
+      <div>
+        <ul class="list-header">
+          <li class="schools" id="settings">Escuelas</li> <li class="gallery">Galería</li> <li class="gallery">Galería</li>
+        </ul>
       </div>
     </div>
-
-    <div id="pre-post-form-princpal"class="pre-post-form" >
-      <div class="create">
-		          <a href ="#" class="comment">Comentario</a>
-		          <a href ="#" class="homework">Tarea</a>
-		           <a href ="#" class="discussion">Discusion</a>
-		           <a href ="#" class="test">Cuestionario</a>
-		              <a href ="#" class="poll">Encuesta</a>
-		            <a href ="#" class="event">Evento</a>
-	            </div>   
+    <div id="box-titles-content">
+      <%= render :partial => "users/menu_member"%>
     </div>
-
   </div>
-</div></div>
 </div>
 
 
 <!-- Content Post Box -->
-<div id="box-post-content">
-  <!-- SideBar -->
-  <div class="box-3" style="padding: 70px 0px 0px 0px;">
+<div id="box-content" class="profile-line">
+<!-- SideBar -->
+<div class="box-3" >
+  <!-- User Avatar -->
+  <div id="box-user-credential" class="network-layout">
+    <div class="thumbnail"  >
+      <%= image_tag(@user.avatar.profile)%>
 
-      <div id="box-course" class="basic-lateral-box-principal" >
-            <h2>cursos</h2>
-            <div id="form-new-course">
-                <strong>Cursos form</strong>
-                <ul>
-                    <div class="content">
-                           <!-- aqui quite algo -->
-                    
-                     </div>
-                 
-                  <div id="accept-course-form" style="float:left;"><img src="http://placehold.it/80x30/4D9900/ffffff&text=aceptar" alt=""></div>
-                  <div id="cancel-course-form" style="float:right;"><img src="http://placehold.it/80x30/ff0000/ffffff&text=cancelar" alt=""></div>
-                </ul>
-            </div>
-
-            <div id="tabs-courses" class="tabs-style">
-                <ul id="ul-tabs">
-                    <li class="element-left"><a href="#tabs-courses-1"><span class="title-num">13</span><span class="title">CURSOS</span></a></li>
-                    <li class="element-right"><div id="new-course" class="plus-courses"></div><a href="#tabs-courses-2"><span class="title-num">5</span><span class="title">CREADOS</span></a></li>
-                </ul>
-                <div id="tabs-courses-1">
-                    <ul id="course-list" >
-                   <!--
- aqui quite algo-->
-                    </ul>
-                    <div class="view-all"><a href="">Ver Todo</a></div>
-                </div>
-                <div id="tabs-courses-2">
-                    <ul id="course-list" >
-                        <li><a href ="#">Trigonometria</a></li>
-                        <li><a href ="#">Lenguas Hispanas</a></li>
-                        <li><a href ="#">Ingles</a></li>
-                        <li><a href ="#">Calculo Integral</a></li>
-                        <li><a href ="#">Programacion</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-  <div id="box-friends" class="basic-lateral-box" >
-            <h2>AMIGOS</h2>
-            <div id="tabs-friends" class="tabs-style">
-                <ul id="ul-tabs">
-                    <li class="element-left" style="width:43%!important;"><a href="#tabs-friends-1"><span class="title-num">39</span><span class="title">amigos</span></a></li>
-                    <li class="element-right" style="width:57%!important;"><a href="#tabs-friends-2"><span class="title-num">20</span><span class="title">sugerencias</span></a></li>
-                </ul>
-                <div id="tabs-friends-1">
-                  <div class="content-avtr">
-                     <!--
- <aqui quite algo-->
-                  </div>
-                  <div class="view-all"><a href="">Ver Todo</a></div>
-                </div>
-                <div id="tabs-friends-2">
-                  <div class="content-avtr">
-                  <!--
-  aqui quite algo-->
-                  </div>
-                </div>
-            </div>
-     
-        <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
     </div>
-
-
-    <h4>Cursos</h4>
-    <img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">
+    <div class="tagname">
+      <%= @user.name %>
+    </div>
   </div>
 
-  <!-- Content -->
-  <div class="box-stream-post" style="background: #DCEAF4;margin-left: 0px; width: 685px;float: left;">
-
-    <div id="comentable_<%= current_network.id %>">
-      <% @comments.reverse.each do |comment| %>
-          <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-      <% end %>
+  <div id="box-course" class="basic-lateral-box margin-top" >
+    <h2>cursos</h2>
+    <div id="form-new-course" class="form-new-course-lateral">
+      <%= render partial: "users/form_course.html.erb"%>
     </div>
-
-    <div id="comment1" style="width: 660px; height: 100%;background: #FFF; ">
-      <h4>Comment</h4>
-      <img src="http://placehold.it/45x45" alt="">
-      <b>Nombre de Usuario</b>
-      <span>fecha</span>
-      <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido
-      </p>
-      <div style="background: #eee;width: 100%;height: 28px;">
-        <div style="float:left;">Numero de comentarios</div>
-        <div style="float:right;">Likes</div>
+    <div id="tabs-courses" class="tabs-style">
+      <ul id="ul-tabs">
+        <li class="element-left">
+          <a href="#tabs-courses-1">
+            <div class="content-tab">
+              <span class="title-num"><%= @count_course_iam_member%></span>
+              <span class="title">CURSOS</span>
+            </div>
+          </a>
+        </li>
+        <li class="element-right">
+          <div id="new-course-btn" class="plus-courses"></div>
+          <a href="#tabs-courses-2">
+            <div class="content-tab">
+              <span class="title-num"><%= @count_course_iam_member_and_owner %></span>
+              <span class="title">CREADOS</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div id="tabs-courses-1">
+        <ul id="course-list" >
+          <% if @course_count == 0%>
+              <li><a href="#">No hay cursos</a></li>
+          <%else%>
+              <% @courses.each do |cu|%>
+                  <% @cort = Course.find(cu.course_id)%>
+                  <% if cu.accepted == true %>
+                      <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                  <%end%>
+              <%end%>
+          <%end%>
+        </ul>
+        <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
+      </div>
+      <div id="tabs-courses-2">
+        <ul id="course-list" >
+          <% if @course_count == 0%>
+              <li><a href="#">No hay cursos</a></li>
+          <%else%>
+              <% @courses.each do |cu|%>
+                  <% @cort = Course.find(cu.course_id)%>
+                  <% if cu.owner == true%>
+                      <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                  <%else%>
+                  <%end%>
+              <%end%>
+          <%end%>
+        </ul>
       </div>
     </div>
-    <div id="comment2" style="width: 660px; height: 100%;background: #FFF;">
-      <h4>Comment</h4>
-      <img src="http://placehold.it/45x45" alt="">
-      <b>Nombre de Usuario</b>
-      <span>fecha</span>
-      <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido</p>
-      <div style="background: #eee;width: 100%;height: 28px;"></div>
-    </div>
+  </div>
 
-
-    <div id="comment" style="width: 660px; height: 100%;background: #FFF;">
-      <h4>Comment</h4>
-      <img src="http://placehold.it/45x45" alt="">
-      <b>Nombre de Usuario</b>
-      <span>fecha</span>
-      <p>Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido Contenido
-        Contenido Contenido Contenido Contenido</p>
-      <div style="background: #eee;width: 100%;height: 28px;"></div>
+  <div class="clear"></div>
+  <div id="box-friends" class="basic-lateral-box" >
+    <h2>AMIGOS</h2>
+    <div id="tabs-friends" class="tabs-style">
+      <ul id="ul-tabs">
+        <li class="element-left" style="width:100px!important;">
+          <a href="#tabs-friends-1">
+            <div class="content-tab">
+              <span class="title-num">39</span>
+              <span class="title">amigos</span>
+            </div>
+          </a>
+        </li>
+        <li class="element-right" style="width:130px!important;">
+          <a href="#tabs-friends-2">
+            <div class="content-tab">
+              <span class="title-num">20</span>
+              <span class="title">sugerencias</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div id="tabs-friends-1">
+        <div class="content-avtr">
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+        </div>
+        <div class="view-all"><a href="">Ver Todo</a></div>
+      </div>
+      <div id="tabs-friends-2">
+        <div class="content-avtr">
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+        </div>
+      </div>
     </div>
   </div>
+  <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
+</div>
+
+<!-- Content -->
+<div id="box-stream-post">
+  <div class="profile-post-box">
+    <div id="post-forms">
+      <div id="message-form-area">
+        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+      </div>
+      <div id="delivery-form-area">
+        <%= render :partial => '/deliveries/delivery_compart_form'%>
+      </div>
+      <div id="survey-form-area">
+        <%= render :partial => '/surveys/form'%>
+      </div>
+
+    </div>
+
+    <div id="profile-form-options" class="profile-form-options-styles create">
+      <!-- <a href ="#ID del formulario que se abrirá" class="">NAME_CATEGORY</a> -->
+      <a id="message-form-btn" href="#message-form-area"><div class="border" ><div class="icon"></div></div>Comentario</a>
+      <a href="#delivery-form-area" class="homework">Tarea</a>
+      <a href="" class="discussion">Discusión</a>
+      <a href="#survey-form-area" class="test">Cuestionario</a>
+      <a href="" class="poll">Encuesta</a>
+      <a href="" class="event">Evento</a>
+    </div>
+  </div>
+
+  <% @comments.reverse.each do |comment| %>
+
+
+
+      <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+  <%end%>
+
+  <div id="box-comments">
+    <div class="general-cir"></div>
+    <div id="comment1" class="comment" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="null-image"></div>
+        <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <div class="name"> <%#  comment.user.name %></div>  <span>fecha</span>
+      </div>
+      <div class="content">
+        <div class="null-image"></div>
+        <%#  comment.comment %>
+
+      </div>
+
+      <div class="footer">
+        <img src="/assets/icons/grey-mini-comment.png" class="icon">
+        <img src="/assets/icons/grey-mini-like.png" class="icon">
+        <div class="labels"><%# comment.comments.count %> Comentarios</div>
+        <div class="labels">12 Likes</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="box-comments">
+    <div class="general-cir"></div>
+    <div id="" class="comment-image" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="null-image"></div>
+        <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <b>Nombre Usuario</b>  <span>fecha</span>
+      </div>
+      <div class="footer">
+        <div class="content-footer">
+          <img src="/assets/icons/white-mini-comment.png" class="icon">
+          <img src="/assets/icons/white-mini-like.png" class="icon">
+          <div class="labels">20 Comentarios</div>
+          <div class="labels">12 Likes</div>
+        </div>
+      </div>
+      <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
+    </div>
+  </div>
+  <div id="box-comments">
+    <div class="general-cir"></div>
+
+    <div id="" class="comment" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <b>Nombre Usuario</b>  <span>fecha</span>
+      </div>
+      <div class="content">
+        <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+      </div>
+
+      <div class="footer">
+        <img src="/assets/icons/grey-mini-comment.png" class="icon">
+        <img src="/assets/icons/grey-mini-like.png" class="icon">
+        <div class="labels">20 Comentarios</div>
+        <div class="labels">12 Likes</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 </div>
