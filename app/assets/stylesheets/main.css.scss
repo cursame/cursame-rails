@@ -82,7 +82,7 @@ ul{
 .profile-form-options-styles{     //styles box elements forms post
   width: 100%;
   height: $height-post-box;
-  margin: 7px 0 0 0;
+  margin: 7px 0 6px 0;
 }
 
 
@@ -774,21 +774,32 @@ background-position: left center;
   & a{
     display: block;
     width: 100px;
-    height: 25px;
+    height: 100%;
     width: 100px;
     float: left;
     text-align: center;
-    padding-top: 60px;
+    //padding-top: 60px;
     color: #969696;
     font-size: 10px;
   }
 
   & a:hover{
-    margin-top: -2px;
-    padding-top: 62px;
+    //margin-top: -2px;
+    //padding-top: 62px;
   }
-  & .comment{
-    background: url('/assets/create/comment.png') no-repeat;
+  & #message-form-btn{
+    & .icon{
+      @include circle-obj;
+      @include border-circle-obj;
+      @include circle-inset-shadow;
+      background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
+      margin: -2px 0px 0px -2px;
+    }
+    & .border{
+      @include circle-obj;
+      @include border-circle-obj;
+      margin: 0px 0px 4px 18px;
+    }
     background-position: center top;
   }
   & .homework{

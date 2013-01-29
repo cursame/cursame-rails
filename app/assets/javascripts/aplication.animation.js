@@ -1,4 +1,4 @@
-var checkBox = null;
+//var checkBox = null;
 $(document).ready(function() {
 
     var time = 500;
@@ -199,4 +199,81 @@ $(document).ready(function() {
         $('.wrapper-dropdown').removeClass('active');
     });
 
-})
+
+    //Menu post buttons
+    var borderShadow = undefined;
+    var borderMargin = undefined;
+    var iconShadow = undefined;
+    var iconMargin = undefined;
+    var iconBackgroundColor = undefined;
+    var iconBorderColor = undefined;
+    /*function hoverBtn(){
+        borderShadow = $(this).css('box-shadow');
+        borderMargin = $(this).css('margin');
+        iconShadow = $(".create .comment .icon").css('box-shadow');
+        iconMargin = $(".create .comment .icon").css('margin');
+        iconBorderColor = $(".create .comment .icon").css('border-color');
+        iconBackgroundColor = $(".create .comment .icon").css('background-color');
+        $(this).animate({
+            boxShadow: '0px 1px 0px #FFF',
+            margin:     '1px 0px 3px 18px'
+        });
+
+        $(".create .comment .icon").animate({
+            boxShadow: '0px 2px 5px #555',
+            margin:     '-1px 0px 0px -2px',
+            backgroundColor: '#1d7ece',
+            borderColor:'#045497'
+        }, 400);
+    }*/
+
+    $("#message-form-btn").hover(function() {
+        hoverBtn( '#'+$(this).attr('id') );
+        console.log($(this).attr('id'))
+    }, function() {
+        hoverOutBtn( '#message-form-btn' );
+    });
+
+
+});
+
+//Menu post buttons
+var borderShadow;
+var borderMargin;
+var iconShadow;
+var iconMargin;
+var iconBackgroundColor;
+var iconBorderColor;
+
+function hoverBtn( obj ){
+    borderShadow = $(obj +' .border').css('box-shadow');
+    borderMargin = $(obj +' .border').css('margin');
+    iconShadow = $(".create "+ obj +" .icon").css('box-shadow');
+    iconMargin = $(".create "+ obj +" .icon").css('margin');
+    iconBorderColor = $(".create "+ obj +" .icon").css('border-color');
+    iconBackgroundColor = $(".create "+ obj +" .icon").css('background-color');
+
+    $(obj +' .border').animate({
+        boxShadow: '0px 0px 0px #FFF',
+        margin:     '3px 0px 3px 18px'
+    });
+
+    $(".create "+obj+" .icon").animate({
+        boxShadow: '0px 2px 5px #555',
+        margin:     '-2px 0px 0px -2px',
+        backgroundColor: '#1d7ece',
+        borderColor:'#045497'
+    }, 400);
+}
+function hoverOutBtn(obj){
+    $(obj+' .border').animate({
+        boxShadow: borderShadow ,
+        margin:     borderMargin
+    });
+    $(".create "+obj+" .icon").animate({
+        boxShadow: iconShadow,
+        margin:     iconMargin,
+        backgroundColor: '#4fa3e9' ,
+        borderColor: iconBorderColor
+    });
+}
