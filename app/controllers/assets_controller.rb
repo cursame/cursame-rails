@@ -39,9 +39,10 @@ class AssetsController < ApplicationController
 
   # POST /assets
   # POST /assets.json
+  public
   def create
     @asset = Asset.new(params[:asset])
-
+    @asset.save!
     respond_to do |format|
       if @asset.save
         format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
