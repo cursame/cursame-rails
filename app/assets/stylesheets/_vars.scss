@@ -87,6 +87,21 @@ $bg-bars: #F6F7F9;
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
   background-color:#f8f8f8;
 }
+@mixin bg-upload-btn{
+  background:url('/assets/icons/attach-mini.png'), -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
+  background:url('/assets/icons/attach-mini.png'), -moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/attach-mini.png',sizingMethod='scale');
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color:#f8f8f8;
+}
+@mixin bg-evaluate-btn{
+  background:url('/assets/icons/evaluate-mini.png'), -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
+  background:url('/assets/icons/evaluate-mini.png'), -moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
+  //filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/evaluate-mini.png',sizingMethod='scale');
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color:#f8f8f8;
+  background-repeat: no-repeat;
+}
 
 //Margin
 $margin-sidebar-left: 17px;

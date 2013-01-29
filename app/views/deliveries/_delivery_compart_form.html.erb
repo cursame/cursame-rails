@@ -1,23 +1,23 @@
 <% if @count_course_iam_member_and_owner > 0%>
     <%= form_for(@delivery, :html => { :class => "default-form delivery-form"}) do |f| %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación', :class=>"percent-input" %>
+
+        <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
+        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
-        <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
-        <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
 
         <%= f.fields_for :areas_of_evaluations do |builder| %>
             <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
 
         <%= f.fields_for :assets do |asset| %>
-        
-        <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
-        
+            <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
         <%end%>
 
-        <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
+        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación', :class=>"percent-input" %>
 
+        <div class="submit-area"></div>
+        <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
         <%= f.submit "Publicar"%>
         <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
           <ul class="dropdown">
@@ -31,7 +31,8 @@
         </div>
 
 
-      <script type="text/javascript">
+
+        <script type="text/javascript">
         $(document).ready(function() {
                 $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
                     inline: false,

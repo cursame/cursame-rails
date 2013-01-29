@@ -1,16 +1,18 @@
+<div class="file-input-box">
+  <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button' %>
+  <%= f.file_field :file, :class=>'upload-input' %>
+  <% f.password_field :encryption_code_to_access %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+</div>
+    <%# f.label :title %>
+    <%# f.hidden_field :title %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%# f.label :description %>
+    <%# f.text_field :description %>
 
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%# f.label :file %>
 
-    <%= f.label :file %>
-    <%= f.file_field :file %>
-     
-    <%= f.password_field :encryption_code_to_access %>
-    
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%# f.submit %>
 
-    <%= f.submit %>
+
 
