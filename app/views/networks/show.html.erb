@@ -160,30 +160,25 @@
       <div id="survey-form-area">
         <%= render :partial => '/surveys/form'%>
       </div>
-
     </div>
 
     <div id="profile-form-options" class="profile-form-options-styles create">
-      <!-- <a href ="#ID del formulario que se abrirá" class="">NAME_CATEGORY</a> -->
       <a id="message-form-btn" href="#message-form-area"><div class="border" ><div class="icon"></div></div>Comentario</a>
-      <a href="#delivery-form-area" class="homework">Tarea</a>
-      <a href="" class="discussion">Discusión</a>
-      <a href="#survey-form-area" class="test">Cuestionario</a>
-      <a href="" class="poll">Encuesta</a>
-      <a href="" class="event">Evento</a>
+      <a href="#delivery-form-area" class="homework"><div class="border" ><div class="icon"></div></div>Tarea</a>
+      <a href="" class="discussion"><div class="border" ><div class="icon"></div></div>Discusión</a>
+      <a href="#survey-form-area" class="test"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
+      <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
+      <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
     </div>
   </div>
 
   <% @comments.reverse.each do |comment| %>
-
-
-
-      <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+        <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
   <%end%>
 
   <div id="box-comments">
     <div class="general-cir"></div>
-    <div id="comment1" class="comment" >
+    <div id="comment1" class="comment-text" >
       <div class="arrow-left"></div>
       <div class="header">
         <div class="null-image"></div>
@@ -193,13 +188,11 @@
       <div class="content">
         <div class="null-image"></div>
         <%#  comment.comment %>
-
       </div>
-
       <div class="footer">
         <img src="/assets/icons/grey-mini-comment.png" class="icon">
         <img src="/assets/icons/grey-mini-like.png" class="icon">
-        <div class="labels"><%# comment.comments.count %> Comentarios</div>
+        <div class="labels"><%# comment.comments.count %>Comentarios</div>
         <div class="labels">12 Likes</div>
       </div>
     </div>
@@ -213,7 +206,7 @@
       <div class="header">
         <div class="null-image"></div>
         <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <b>Nombre Usuario</b>  <span>fecha</span>
+        <b>Nombre Usuario</b>  <span>29/ENE/2012</span>
       </div>
       <div class="footer">
         <div class="content-footer">
@@ -229,13 +222,14 @@
   <div id="box-comments">
     <div class="general-cir"></div>
 
-    <div id="" class="comment" >
+    <div id="" class="comment-text" >
       <div class="arrow-left"></div>
       <div class="header">
         <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <b>Nombre Usuario</b>  <span>fecha</span>
+        <div class="top-null-image"></div><b>Rodrigo Ayala</b>  <span class="date">29/Ene/2012</span>
       </div>
       <div class="content">
+        <div class="null-image"></div>
         <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
       </div>
 

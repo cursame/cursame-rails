@@ -112,7 +112,7 @@ ul{
     margin-right: 8px;
     float: left;
   }
-  & .comment{
+  & .comment-text{
     width: $comment-box;
     height: 100%;
     background: #FFF;
@@ -120,13 +120,26 @@ ul{
     border: $border-box;
     border-radius: $border-radius-box;
     margin: 5px 0px 10px 11px;
+    & .header{
+      line-height: 23pt;
+      & .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    }
     & .content{
       color: #333;
       font-size: 13px;
-      padding: 6px 15px 5px 25px;
+      padding: 6px 10px 5px 10px;
       & .null-image{
-        width: 35px;
-        height: 22px;
+        width: 50px;
+        height: 23px;
         float: left;
       }
     }
@@ -787,18 +800,23 @@ background-position: left center;
     //margin-top: -2px;
     //padding-top: 62px;
   }
+  & .icon{
+    @include circle-obj;
+    @include border-circle-obj;
+    @include circle-inset-shadow;
+    background: #ccc url('/assets/create/comment.png') repeat-y 3px 3px;
+    margin: -2px 0px 0px -2px;
+  }
+  & .border{
+    @include circle-obj;
+    @include border-circle-obj;
+    margin: 0px 0px 4px 18px;
+  }
   & #message-form-btn{
     & .icon{
-      @include circle-obj;
-      @include border-circle-obj;
-      @include circle-inset-shadow;
       background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
-      margin: -2px 0px 0px -2px;
     }
     & .border{
-      @include circle-obj;
-      @include border-circle-obj;
-      margin: 0px 0px 4px 18px;
     }
     background-position: center top;
   }
