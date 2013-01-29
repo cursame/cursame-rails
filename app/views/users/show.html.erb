@@ -184,22 +184,23 @@
     <div id="box-stream-post">
         <div class="profile-post-box">
             <div id="post-forms">
-                <div id="profile-message-form">
-                    <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+                <div id="message-form-area">
+                  <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
                 </div>
-                <div id="profile-delivery-form">
-                    <%= render :partial => '/deliveries/delivery_compart_form'%>
-
+                <div id="delivery-form-area">
+                  <%= render :partial => '/deliveries/delivery_compart_form'%>
+                </div>
+                <div id="survey-form-area">
+                  <%# render :partial => '/surveys/form'%>
                 </div>
             </div>
             <div id="profile-form-options" class="profile-form-options-styles create">
-                    <!-- <a href ="#ID del formulario que se abrirá" class="">NAME_CATEGORY</a> -->
-		            <a href="#profile-message-form" class="comment">Comentario</a>
-		            <a href="#profile-delivery-form" class="homework">Tarea</a>
-		            <a href="" class="discussion">Discusión</a>
-		            <a href="" class="test">Cuestionario</a>
-		            <a href="" class="poll">Encuesta</a>
-		            <a href="" class="event">Evento</a>
+                <a id="message-form-btn" href="#message-form-area"><div class="border" ><div class="icon"></div></div>Comentario</a>
+                <a href="#delivery-form-area"><div class="border" ><div class="icon"></div></div>Tarea</a>
+                <a href=""><div class="border" ><div class="icon"></div></div>Discusión</a>
+                <a href="#survey-form-area"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
+                <a href=""><div class="border" ><div class="icon"></div></div>Encuesta</a>
+                <a href=""><div class="border" ><div class="icon"></div></div>Evento</a>
             </div>
         </div>
         
