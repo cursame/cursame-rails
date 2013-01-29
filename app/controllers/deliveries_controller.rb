@@ -55,6 +55,9 @@ class DeliveriesController < ApplicationController
   def create
     @delivery = Delivery.new(params[:delivery])
     @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
+    @compart_assets = CompartAsset.new(params[:compart_assets])
+    @asset = Asset.new(params[:asset])
+    @asset.save!
     
     respond_to do |format|
       if @delivery.save

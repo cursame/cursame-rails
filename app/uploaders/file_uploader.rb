@@ -8,7 +8,7 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-     %w(jpg jpeg gif ico png pdf exe ppt pptx dmg dwg dwf rar zip tar iso swf flv doc docx ade adp odt rtf sxw sao csv xls)
+     %w(jpg jpeg gif ico png pdf exe ppt txt pptx dmg dwg dwf rar zip tar iso swf flv doc docx ade adp odt rtf sxw sao csv xls)
   end
   
 
