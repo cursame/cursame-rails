@@ -11,6 +11,12 @@
               
               <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
+        <%= f.fields_for :assets do |asset| %>
+        
+        <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
+        
+        <%end%>
+        
         <%= button_tag "Cancel", :type => 'button', :class=>'input-button',:id => 'cancel-post-form' %>
         <%= f.submit "Publicar"%>
 

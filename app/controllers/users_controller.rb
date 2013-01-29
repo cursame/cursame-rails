@@ -33,7 +33,11 @@ class UsersController < ApplicationController
          areas_of_evaluations = @delivery.areas_of_evaluations.build
      end
 
-
+   ##### print assets
+        1.times do
+            assets = @delivery.assets.build
+        end
+     
   end
   
   def current_user_friends

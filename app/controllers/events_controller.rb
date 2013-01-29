@@ -73,6 +73,7 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
+        @event.ends_at = @event.starts_at + 1
         format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
         format.xml  { head :ok }
         format.js { head :ok}
