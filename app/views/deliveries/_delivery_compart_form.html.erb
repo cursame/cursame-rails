@@ -1,9 +1,8 @@
 <% if @count_course_iam_member_and_owner > 0%>
     <%= form_for(@delivery, :html => { :class => "default-form delivery-form"}) do |f| %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
-
-        <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>
+        <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
 
         <%= f.fields_for :areas_of_evaluations do |builder| %>
