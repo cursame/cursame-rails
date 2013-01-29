@@ -2,55 +2,53 @@
 <head>
   <title>Calendar</title>  
   <%= stylesheet_link_tag "fullcalendar.css" %>
+  <%= stylesheet_link_tag "fullcalendario.css" %>
   <%= stylesheet_link_tag "application.css" %>
-   <%= javascript_include_tag('app.js') %>  
+  
+   <%#= javascript_include_tag('app.js') %>  
    <%= javascript_include_tag('jquery.js') %>
    <%= javascript_include_tag('calendar.js') %>
    <%= javascript_include_tag('jquery-ui-1.8.11.custom.min.js') %>   
    <%= javascript_include_tag('fullcalendar.js') %>
    <%= javascript_include_tag('jquery.rest.js') %> 
-   <%= javascript_include_tag('nicEdit.js') %> 
    <%= javascript_include_tag('rails.js') %>
-   <%= debug current_user.authentications%>
-  
+   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+   
   <%= csrf_meta_tag %> 
-  <% @cko = current_user.authentications.count %>
-  <% if  @cko == 0 %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2" %> </br>
-  <%else%>
-      
-  <% current_user.authentications.each do |authenticate_google|%>
-     <% @provider = authenticate_google.provider %>
-         
-     <% case %>
-        <% when @provider == "google_oauth2" %>
-        <%= link_to "Deslinkear mi cuenta de google",authenticate_google,  confirm: '¿Estas seguro de querer deslinquear tu cuenta de google de la aplicación', method: :delete  %>   </br>     
-        <% when @provider == "facebook" %>
-     <%end%>              
-      
-  <%end%> 
-    
-  <%end%>
+ 
  
   
-=======
-  <%= javascript_include_tag "jquery-1.8.3.js" %>
-  <%# javascript_include_tag "jquery.rest.js" %>
-  <%# javascript_include_tag "rails.js" %>
-  <%# javascript_include_tag "application.js" %>
   
-  <!-- these are needed for the calendar.-->
-  <%= javascript_include_tag "jquery-ui-1.9.2.custom.js" %>
-  <%= javascript_include_tag "fullcalendar.js" %>
-  <%= javascript_include_tag "calendar.js" %>
->>>>>>> 0f1813d17b6d3fc0d7c1448551eaf3b835c93675
-  
-  
-  <%#= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+ 
   
 </head>
 <body>
+    <% @cko = current_user.authentications.count %>
+     <% if  @cko == 0 %>
+           <%= link_to "Sign in with Google", "/auth/google_oauth2" %> </br>
+     <%else%>
 
+     <% current_user.authentications.each do |authenticate_google|%>
+        <% @provider = authenticate_google.provider %>
+
+        <% case %>
+           <% when @provider == "google_oauth2" %>
+               
+               <%=  @userid = authenticate_google.uid %>
+               
+                  <%=  @magicCookie = 'cookie' %>
+                  
+        
+
+                   
+                 
+           <%= link_to "Deslinkear mi cuenta de google",authenticate_google,  confirm: '¿Estas seguro de querer deslinquear tu cuenta de google de la aplicación', method: :delete  %>   </br>     
+           <% when @provider == "facebook" %>
+        <%end%>              
+
+     <%end%> 
+
+     <%end%>
 <%= yield %>
 
 </body>

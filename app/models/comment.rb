@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   #assets
   has_many :compart_assets
+  has_many :assets, :through => :compart_assets, :source => :comment
+  
   #comentarios para las redes
   acts_as_commentable
 
