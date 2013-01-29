@@ -121,16 +121,18 @@ ul{
     border-radius: $border-radius-box;
     margin: 5px 0px 10px 11px;
     & .header{
-      //padding-top: 10px;
       line-height: 23pt;
       & .top-null-image{
         width: 60px;
         height: 10px;
         float: left;
       }
-
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
     }
-
     & .content{
       color: #333;
       font-size: 13px;
