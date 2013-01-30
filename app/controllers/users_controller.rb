@@ -35,11 +35,7 @@ class UsersController < ApplicationController
 
 
    ##### print assets
-   #@asset = Asset.new
-       ## 1.times do
-            assets = @delivery.assets.build
-        ##end
-     
+    assets = @delivery.assets.build
   end
   
   def current_user_friends

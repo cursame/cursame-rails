@@ -627,6 +627,9 @@ background-position: left center;
   &.network-layout{
     margin-top: -95px;
   }
+  &.course-layout {
+    margin-top: -115px;
+  }
   
   & .thumbnail{
     width: 150px;
@@ -818,7 +821,13 @@ background-position: left center;
     }
     & .border{
     }
-    background-position: center top;
+  }
+  & #delivery-form-btn{
+    & .icon{
+      background: #83b81f url('/assets/create/comment.png') repeat-y 3px 3px;
+
+    }
+
   }
   & .homework{
     background: url('/assets/create/tarea.png') no-repeat;

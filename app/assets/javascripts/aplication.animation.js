@@ -200,38 +200,17 @@ $(document).ready(function() {
     });
 
 
-    //Menu post buttons
-    var borderShadow = undefined;
-    var borderMargin = undefined;
-    var iconShadow = undefined;
-    var iconMargin = undefined;
-    var iconBackgroundColor = undefined;
-    var iconBorderColor = undefined;
-    /*function hoverBtn(){
-        borderShadow = $(this).css('box-shadow');
-        borderMargin = $(this).css('margin');
-        iconShadow = $(".create .comment .icon").css('box-shadow');
-        iconMargin = $(".create .comment .icon").css('margin');
-        iconBorderColor = $(".create .comment .icon").css('border-color');
-        iconBackgroundColor = $(".create .comment .icon").css('background-color');
-        $(this).animate({
-            boxShadow: '0px 1px 0px #FFF',
-            margin:     '1px 0px 3px 18px'
-        });
-
-        $(".create .comment .icon").animate({
-            boxShadow: '0px 2px 5px #555',
-            margin:     '-1px 0px 0px -2px',
-            backgroundColor: '#1d7ece',
-            borderColor:'#045497'
-        }, 400);
-    }*/
-
-    $("#message-form-btn").hover(function() {
-        hoverBtn( '#'+$(this).attr('id') );
-        console.log($(this).attr('id'))
+    $('#message-form-btn, #delivery-form-btn').hover(function() {
+        switch ($(this).attr('id')) {
+            case "message-form-btn":
+                hoverBtn( '#message-form-btn','#045497', '#1d7ece');
+                break;
+            case "delivery-form-btn":
+                hoverBtn( '#delivery-form-btn','#4a6e06', '#70a50c');
+                break;
+        }
     }, function() {
-        hoverOutBtn( '#message-form-btn' );
+        hoverOutBtn( '#'+$(this).attr('id') );
     });
 
 
@@ -245,7 +224,7 @@ var iconMargin;
 var iconBackgroundColor;
 var iconBorderColor;
 
-function hoverBtn( obj ){
+function hoverBtn( obj , borderColor, backgroundColor){
     borderShadow = $(obj +' .border').css('box-shadow');
     borderMargin = $(obj +' .border').css('margin');
     iconShadow = $(".create "+ obj +" .icon").css('box-shadow');
@@ -256,24 +235,24 @@ function hoverBtn( obj ){
     $(obj +' .border').animate({
         boxShadow: '0px 0px 0px #FFF',
         margin:     '3px 0px 3px 18px'
-    });
+    }, 200);
 
     $(".create "+obj+" .icon").animate({
         boxShadow: '0px 2px 5px #555',
         margin:     '-2px 0px 0px -2px',
-        backgroundColor: '#1d7ece',
-        borderColor:'#045497'
-    }, 400);
+        backgroundColor: backgroundColor,
+        borderColor:borderColor
+    }, 200);
 }
 function hoverOutBtn(obj){
     $(obj+' .border').animate({
         boxShadow: borderShadow ,
         margin:     borderMargin
-    });
+    }, 200);
     $(".create "+obj+" .icon").animate({
         boxShadow: iconShadow,
         margin:     iconMargin,
-        backgroundColor: '#4fa3e9' ,
+        backgroundColor: iconBackgroundColor ,
         borderColor: iconBorderColor
-    });
+    }, 200);
 }

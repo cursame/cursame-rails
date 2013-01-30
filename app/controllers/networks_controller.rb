@@ -1,7 +1,7 @@
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
- # before_filter :filter_user_network_wed
+  # before_filter :filter_user_network_wed
   #skip_before_filter :filter_user_network_wed, :only => [:index, :new]
   
   def index
@@ -22,15 +22,17 @@ class NetworksController < ApplicationController
     @course = Course.new
     @delivery = Delivery.new
 
-    #==== Areas de evaluación ====
+    #==== Areas de evaluación ====#
     @areas_of_evaluation = AreasOfEvaluation.new
-    1.times do
-        areas_of_evaluations = @delivery.areas_of_evaluations.build
-    end
+    areas_of_evaluations = @delivery.areas_of_evaluations.build
+
+    #==== Assets ====#
+    @asset = Asset.new
+    assets = @delivery.assets.build
 
     @survey = Survey.new
 
-
+    @course_count = Course.count
     @courses = current_user.members_in_courses.limit(7)
 
     @count_course_iam_member =  current_user.members_in_courses.count
