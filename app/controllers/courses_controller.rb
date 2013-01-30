@@ -127,6 +127,11 @@ class CoursesController < ApplicationController
     @assignment = Assignment.new(params[:assignment])
     @asset = Asset.new(params[:asset])
     @assignment.save!
+    if @assignment.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end  
   end
      
 end
