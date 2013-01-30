@@ -7,10 +7,11 @@ class Course < ActiveRecord::Base
   has_many :deliveries_courses
   has_many :deliveries, :through => :deliveries_courses
   has_many :surveys
-  
+  has_many :assignments
   has_many :surveyings
   has_many :surveys, :through => :surveyings
 
+   
   after_create do
       User.all.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'new_course_on_network'

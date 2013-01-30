@@ -57,8 +57,64 @@
     }
   }
 
+  //===============================================================
+  //========================== Uploader ============================
+  //===============================================================
+  & .file-input-box{
+    position: relative;
+    float: left;
+    & .browse-button{
+      padding: 0px 9px 0px 24px;
+      color: #999;
+      @include border-radius-btn;
+      @include bg-upload-btn;
+      @include shadow-normal-btn;
+      background-repeat: no-repeat;
+      background-position: left;
+    }
+    & input.upload-input{
+      position:absolute;
+      top:0px;
+      left: 0px;
+      opacity:0;
+      -moz-opacity:0;
+      filter: alpha(opacity=0);
+      z-index:2;
+      width: 145px;
+      font-size: 1em;
+      height: 35px;
+      cursor: pointer;
+    }
+  }
+  & #upload-labels{
+    float: left;
+    background: #f2f7fd;
+    border: $border-high;
+    @include border-radius-btn;
+    width: 568px;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0px 5px 4px 5px;
+    margin-top: 4px;
+    display: none;
+    & .file-mini-upload{
+      //clear:both;
+      float: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 158px;
+      background: url('/assets/icons/file-basic-mini.png') no-repeat left;
+      height: 28px;
+      padding: 0px 0px 0px 30px;
+      line-height: 23pt;
+      margin: 4px 0px 0px 0px;
+    }
+  }
 
-
+  //===============================================================
+  //========================== Buttons ============================
+  //===============================================================
   & input[type=submit]{
     font-size: 14px;
     margin: 4px 4px 2px 4px;
@@ -128,7 +184,6 @@
     font-size: 14px;
     line-height: 30px;
     padding: 0px 10px;
-
     &:hover{
       color: #555;
       background: #f8f8f8;
@@ -138,6 +193,37 @@
     }
   }
 
+  //===============================================================
+  //======================  Special Buttons =======================
+  //===============================================================
+  & .evaluate-btn{
+    padding: 0px 9px 0px 24px;
+    color: #999;
+    @include border-radius-btn;
+    @include bg-evaluate-btn;
+    @include shadow-normal-btn;
+    margin: 4px 0px 0px 0px;
+    background-position: left;
+    height: 28px;
+    float:left;
+    border: $border-forms;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 30px;
+    &:hover{
+      color: #555;
+      -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+      -moz-box-shadow:    inset 0px 1px 1px #91a5bb;
+      box-shadow:         inset 0px 1px 1px #91a5bb;
+    }
+  }
+  & .submit-area{
+    clear: both;
+    border-top: 1px dotted #ccc;
+    margin-top: 5px;
+    float: right;
+    width: 100%;
+  }
 
 
   //===============================================================
@@ -260,6 +346,11 @@
   //===============================================================
   & .date-input{
     background: url('/assets/icons/calendar-mini.png') no-repeat #FFF right !important;
+    &.delivery{
+      width: 130px;
+      float: right;
+      margin-left: 3px;
+    }
   }
 
   & .percent-input{
@@ -373,8 +464,8 @@
   }
 }
 
-#profile-delivery-form{
-  height: 190px;
+#delivery-form-area{
+  height: 195px;
   background: #FFF;
   position: relative;
   display: none;
@@ -382,11 +473,10 @@
   & form{
     margin: 7px 10px 0px 10px;
   }
-
 }
 .delivery-form{
   & .percent-input{
-    width: 85px;
+    width: 60px;
     float: right;
   }
   & .a-btn{
@@ -427,6 +517,7 @@
   }
   & .subject{
     float: left;
+    clear: both;
   }
   & input[type=submit]{
     float: right !important;
@@ -446,12 +537,14 @@
     border-top: 1px dotted #ccc;
     margin-top: 4px;
     padding-top: 5px;
+    float: left;
+    width: 100%;
   }
 }
 
 
 
-#profile-message-form{
+#message-form-area{
   height: 120px;
   background: #FFF;
   position: relative;
@@ -471,6 +564,16 @@
   }
 }
 
+#survey-form-area{
+  height: 190px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  & form{
+    margin: 7px 10px 0px 10px;
+  }
+}
 
 .course-form{  //(class form difined by Rails)
   color: #333;

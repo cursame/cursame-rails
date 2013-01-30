@@ -2,7 +2,9 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
    helper_method :condocourse
-   before_filter :filter_protection, :only => [:show, :index, :edit]
+   before_filter :filter_protection, :only => [:show, :edit]
+   before_filter :protection_to_index, :only => [:index]
+   helper_method :assigment
   def index
     @deliveries = Delivery.all
      @delivery = Delivery.new
@@ -27,7 +29,14 @@ class DeliveriesController < ApplicationController
   # GET /deliveries/1.json
   def show
     @delivery = Delivery.find(params[:id])
-    
+     @assignment = Assignment.new(params[:assignment])
+     @assignment.save
+     @asset = Asset.new
+        
+      1.times do
+          assets = @assignment.assets.build
+      end
+    @validation_member = @delivery.courses
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @delivery }
@@ -55,6 +64,10 @@ class DeliveriesController < ApplicationController
   def create
     @delivery = Delivery.new(params[:delivery])
     @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
+    @compart_assets = CompartAsset.new(params[:compart_assets])
+    @assignment = Assignment.new(params[:assignment])
+    @asset = Asset.new(params[:asset])
+    @asset.save!
     
     respond_to do |format|
       if @delivery.save
@@ -95,9 +108,35 @@ class DeliveriesController < ApplicationController
     end
   end
   
+  def protection_to_index
+       @course = Course.find(params[:id])
+       @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)       
+      if @member
+       if @member.accepted
+          respond_to do |format|
+             format.html # show.html.erb
+             format.json { render json: @course }
+           end
+       else
+          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+       end
+      else
+          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+      end
+    
+  end
+  
   def filter_protection
-     @course = Course.find(params[:id])
-     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+      @delivery = Delivery.find(params[:id])
+       @validation_member = @delivery.courses
+        @delivery.courses.each do |dc|
+            @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
+             if @member 
+                break 
+             else
+             #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+             end       
+        end
     if @member
      if @member.accepted
         respond_to do |format|
@@ -110,5 +149,11 @@ class DeliveriesController < ApplicationController
     else
         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
     end
+  end
+  
+  def assigment
+    @assignment = Assignment.new(params[:assignment])
+    @asset = Asset.new(params[:asset])
+    @assignment.save!
   end
 end

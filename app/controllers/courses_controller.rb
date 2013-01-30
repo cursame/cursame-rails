@@ -18,10 +18,35 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-   
-         
+    @deliveries = @course.deliveries
+    @asset = Asset.new
     
-       respond_to do |format|
+
+    #@user = current_user
+    #@course_new = Course.new
+    @delivery = Delivery.new
+
+    #==== Areas de evaluación ====#
+    #@areas_of_evaluation = AreasOfEvaluation.new
+    #areas_of_evaluations = @delivery.areas_of_evaluations.build
+
+    #==== Assets ====#
+    #@asset = Asset.new
+    #assets = @delivery.assets.build
+
+    #@survey = Survey.new
+
+    #@course_count = Course.count
+    #@courses = current_user.members_in_courses.limit(7)
+    
+
+    #@network = Network.find_by_subdomain!(request.subdomain)
+    #@comments = @network.comments
+
+
+
+
+    respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @course }
         end
@@ -123,5 +148,15 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
   
+  def assigment
+    @assignment = Assignment.new(params[:assignment])
+    @asset = Asset.new(params[:asset])
+    @assignment.save!
+    if @assignment.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end  
+  end
      
 end

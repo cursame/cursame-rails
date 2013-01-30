@@ -1,4 +1,78 @@
+
 <%= link_to "new event", new_event_path %>
+
+<script type='text/javascript'>
+    var events = [];
+</script>
+<% if  @event == nil %>
+    <script type="text/javascript">
+ 
+    window.location = "/auth/google_oauth2"
+    
+    </script>
+<%else%>
+<% @event.each do |eventssss| %>
+<% @init = eventssss.start
+%>
+    <% if @init %>
+    <script type='text/javascript'>
+       events.push(   
+        {
+        title : '<%=eventssss.summary%>',
+        location: '<%=eventssss.location%>',
+        start :  '<%=eventssss.start.dateTime%>',
+        end :  '<%=eventssss.end.dateTime%>',
+            //recurrence : <%=eventssss.recurrence%>
+
+        })
+    </script>
+
+    <%end%>
+<%end%>
+<%end%>
+
+
+
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		var calendar = $('#calendar_g').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			editable: true,
+			events: events
+		});
+		
+	});
+
+</script>
+
+
 
 
 <style type='text/css'>
@@ -10,11 +84,13 @@
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 		}
 
-	#calendar {
+	#calendar_g {
 		width: 900px;
 		margin: 0 auto;
 		}
 
 </style>
-<div id='calendar'></div>
+<div id='calendar_g'></div>
+
+
 

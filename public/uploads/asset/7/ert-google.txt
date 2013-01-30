@@ -1,0 +1,86 @@
+        
+=begin
+       
+          ##### este codígo generaba que el usuario pudiera guardar en la base de datos los comentarios que traian de google
+       page_token = nil
+       result = client.execute(:api_method => service.calendar_list.list)
+       while true
+         entries = result.data.items
+         
+         @compartido = entries
+         
+         
+         entries.each do |e|
+           
+           print "===============\n"+e.summary + "\n" +e.id+ "====================="
+           
+           #result_cal = client.execute(:api_method => service.events.get,
+           #                       :parameters => {'calendarId' => e.id})
+           #print "*****" + result_cal.data.summary+"*****"
+           page_token_event = nil
+           result_event = result_event = client.execute(:api_method => service.events.list,
+                                            :parameters => {'calendarId' => e.id})
+           while true
+            
+             events = result_event.data.items
+             events.each do |ev|
+               
+             @event = Event.find_by_title(ev.etag)
+             if @event == nil
+              puts "evento no encontrado"
+                @event_title =  output_txt=(ev.summary)? ev.summary : ''
+                @event_decription =  output_txt=(ev.description)? ev.description : ''
+                  if (start = ev.start) 
+                     if !(@startDate = start.date)
+                        @startDate = start.dateTime
+                        @endDate  = ev.end.dateTime
+                     else 
+                         @endDate  = ev.end.date             
+                      end
+                  else #esto sucede cuando el evento esta cancelado
+                    puts "El evento no tiene start"
+                    puts ev.to_yaml
+                  end                 
+                  print "*********inicio**************************"
+                  puts @startDate
+                  print "************fin***********************"
+                  puts @endDate
+                  print "*************etag**********************"
+                  puts ev.etag 
+                  print "**** proceso de creado de evento *******" 
+                          print "************************************"
+                          puts "registro preparandose para ser creado"
+                          print "************************************"
+                          @evento = Event.new
+                          @evento.title = ev.summary
+                          @evento.description = ev.description
+                          @evento.starts_at =  @startDate
+                          @evento.ends_at = @endDate
+                          @evento.ends_at = @endDate 
+                          "******* etag es la parte del software que guarda la variable para lectura *****"
+                           @evento.etag =  ev.etag
+                           @evento.save                    
+                      
+              print "*****" + output_txt + "*****\n"
+             else
+               puts "el evento ya existe"
+             end
+             
+           end
+             
+             if !(page_token = result_event.data.next_page_token)
+               break
+             end
+             result_event = result_event = client.execute(:api_method => service.events.list,
+                                              :parameters => {'calendarId' => e.id, 'pageToken' => page_token_event})
+           end
+           
+           
+         end
+         if !(page_token = result.data.next_page_token)
+           break
+         end
+         result = client.execute(:api_method => service.calendar_list.list,
+                                 :parameters => {'pageToken' => page_token})
+       end 
+=end

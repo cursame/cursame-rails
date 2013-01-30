@@ -6,7 +6,11 @@ class Authentication < ActiveRecord::Base
        create! do |authentication|
          authentication.provider = auth["provider"]
          authentication.uid = auth["uid"]
+         ##### for facebook
          authentication.name = auth["info"]["name"]
+         #### for google
+         authentication.client_secret = auth["client_secret"]
+         
        end
      end
 end

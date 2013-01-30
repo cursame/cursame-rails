@@ -1,11 +1,8 @@
-var checkBox = null;
+//var checkBox = null;
 $(document).ready(function() {
 
     var time = 500;
     var timeSlide = time-100;
-
-
-
 
     //-----Titles Cover Photo -----
     var control_height = false;
@@ -25,7 +22,7 @@ $(document).ready(function() {
     });
 
 
-  //-----STATS -----
+    //-----STATS -----
 
     //-----Titles Cover Photo -----
     var control_height_2 = false;
@@ -43,11 +40,6 @@ $(document).ready(function() {
             height: tmp_height_2+'px'
         }, time);
     });
-
-
-  
-  
-  
 
     //----- Post Form Animations------
     var prePostHeight = $('#profile-form-options').height();
@@ -90,10 +82,15 @@ $(document).ready(function() {
         });
     });
 
-
-
-    //-------Courses animation------
+    //-------Courses Slide & Height animation------
+    var tmp_height_new_course = $('#form-new-course').height();
+    var tmp_height_new_course_box = null;
     $('#new-course-btn').click(function(){
+        tmp_height_new_course_box = $('#box-course').height();
+        $('#box-course').animate({
+            height: tmp_height_new_course+'px'
+        }, 400);
+
         moveOutSlide();
 
         var nestedNewCourseSlider = new NestedSlider(false);
@@ -102,7 +99,15 @@ $(document).ready(function() {
     });
 
     $('#cancel-course-form, #return-course') .click(function(){
+        $('#box-course').animate({
+            height: tmp_height_new_course_box+'px'
+        }, 400, function() {
+            //$(this).css('display','none');
+            //$(this).css('height','');
+        });
         moveInSlide();
+
+
         resetForm($('#new_course'));
     });
 
@@ -194,4 +199,60 @@ $(document).ready(function() {
         $('.wrapper-dropdown').removeClass('active');
     });
 
-})
+
+    $('#message-form-btn, #delivery-form-btn').hover(function() {
+        switch ($(this).attr('id')) {
+            case "message-form-btn":
+                hoverBtn( '#message-form-btn','#045497', '#1d7ece');
+                break;
+            case "delivery-form-btn":
+                hoverBtn( '#delivery-form-btn','#4a6e06', '#70a50c');
+                break;
+        }
+    }, function() {
+        hoverOutBtn( '#'+$(this).attr('id') );
+    });
+
+
+});
+
+//Menu post buttons
+var borderShadow;
+var borderMargin;
+var iconShadow;
+var iconMargin;
+var iconBackgroundColor;
+var iconBorderColor;
+
+function hoverBtn( obj , borderColor, backgroundColor){
+    borderShadow = $(obj +' .border').css('box-shadow');
+    borderMargin = $(obj +' .border').css('margin');
+    iconShadow = $(".create "+ obj +" .icon").css('box-shadow');
+    iconMargin = $(".create "+ obj +" .icon").css('margin');
+    iconBorderColor = $(".create "+ obj +" .icon").css('border-color');
+    iconBackgroundColor = $(".create "+ obj +" .icon").css('background-color');
+
+    $(obj +' .border').animate({
+        boxShadow: '0px 0px 0px #FFF',
+        margin:     '3px 0px 3px 18px'
+    }, 200);
+
+    $(".create "+obj+" .icon").animate({
+        boxShadow: '0px 2px 5px #555',
+        margin:     '-2px 0px 0px -2px',
+        backgroundColor: backgroundColor,
+        borderColor:borderColor
+    }, 200);
+}
+function hoverOutBtn(obj){
+    $(obj+' .border').animate({
+        boxShadow: borderShadow ,
+        margin:     borderMargin
+    }, 200);
+    $(".create "+obj+" .icon").animate({
+        boxShadow: iconShadow,
+        margin:     iconMargin,
+        backgroundColor: iconBackgroundColor ,
+        borderColor: iconBorderColor
+    }, 200);
+}

@@ -20,20 +20,23 @@ class UsersController < ApplicationController
     @course_count = Course.count
     @member =  current_user.members_in_courses.where(:owner => true)
 
-   #### agregando a reas de evaluación
+    #==== Areas de evaluación ====
+    @areas_of_evaluation = AreasOfEvaluation.new
+    1.times do
+        areas_of_evaluations = @delivery.areas_of_evaluations.build
+    end
 
-     @areas_of_evaluation = AreasOfEvaluation.new
    ### publicando comentarios en el show de users
      @network_comments = current_network.comments
      @comments = @network_comments.where(:user_id => @accesible_id)
     
    ### print times
 
-     1.times do
-         areas_of_evaluations = @delivery.areas_of_evaluations.build
-     end
 
 
+   ##### print assets
+     @asset = Asset.new
+     assets = @delivery.assets.build
   end
   
   def current_user_friends

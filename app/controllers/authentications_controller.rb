@@ -8,28 +8,35 @@ class AuthenticationsController < ApplicationController
           omniauth = request.env["omniauth.auth"]
           @authentication = Authentication.find_by_provider_and_uid(omniauth["provider"], omniauth["uid"]) || Authentication.create_with_omniauth(omniauth)
           if @authentication.save
+             puts @authentication.to_yaml
              @colgomorov = Authentication.find(@authentication.id)
              @colgomorov.user_id = current_user.id
              
              
               client = Google::APIClient.new
               @token = omniauth["credentials"]["token"]
+              puts omniauth["credentials"].to_yaml
+               #####se crea el toquen de seción
+              session[:token_calendar] = @token
+              session[:refresh_token] = omniauth["credentials"]["refresh_token"]
               client.authorization.access_token = @token
-                 service = client.discovered_api('calendar', 'v3')
-                 @result = client.execute(
-                   :api_method => service.calendar_list.list,
-                   :parameters => {'calendarId' => 'primary'},
-                   :headers => {'Content-Type' => 'application/json'})
-                     
-                       @calendar = @result.request.api_method.api.discovery_document
+                 service = client.discovered_api('calendar', 'v3')      
+                  @result = client.execute(
+                     :api_method => service.calendar_list.list,
+                     :parameters => {'calendarId' => 'calendarId'},
+                     :headers => {'Content-Type' => 'application/json'})
+
+
+                       @calendar = @result.data
                        puts @calendar
+                   #    print @result.data.id
+                       @colgomorov.save 
+              #  raise  @calendar.to_yaml
                        
-                raise  @calendar.to_yaml
-                       
-             @colgomorov.save 
-             #redirect_to calendar_index_path, :notice => "Authentication Successfully created!!"
+             
+             redirect_to calendar_index_path, :notice => "Authentication Successfully created!!"
           else
-            # redirect_to calendar_index_path, :notice => "Authentication not created!!"
+             redirect_to calendar_index_path, :notice => "Authentication not created!!"
              
           end
           
