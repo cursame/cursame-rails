@@ -1,16 +1,25 @@
-<%# if @count_course_iam_member_and_owner > 0%>
-    <%= form_for(@delivery, :html => { :class => "default-form delivery-form"}) do |f| %>
+<%if @count_course_iam_member_and_owner != 0%>
+    <%= form_for(@delivery = Delivery.new, :html => { :class => "default-form delivery-form"}) do |f| %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>
         <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
-
+              <% 1.times do
+                 areas_of_evaluations = @delivery.areas_of_evaluations.build
+             end%>
 
         <%= f.fields_for :areas_of_evaluations do |builder| %>
             <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
 
         <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
+             
+              <% 1.times do
+              
+              assets = @delivery.assets.build
+                 @asset = Asset.new
+                 end   %>
+              
         <%= f.fields_for :assets do |asset| %>
             <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
         <%end%>
@@ -42,4 +51,4 @@
         });
       </script>
     <% end %>
-<%#end%>
+<%end%>

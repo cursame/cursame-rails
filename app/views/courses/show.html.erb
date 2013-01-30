@@ -148,8 +148,9 @@
       </div>
       <% if @member.owner != nil%>
           <div id="profile-delivery-form">
+              <% @count_course_iam_member_and_owner = MembersInCourse.find_by_user_id_and_course_id(current_user.id , @course.id) %>
             <%# render :partial => '/deliveries/form'%>
-            <%# render :partial => '/deliveries/delivery_compart_form'%>
+            <%= render :partial => '/deliveries/delivery_compart_form'%>
           </div>
       <%end%>
       <div id="survey-form-area">

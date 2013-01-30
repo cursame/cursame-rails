@@ -19,12 +19,12 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
     @deliveries = @course.deliveries
-
-
+    @asset = Asset.new
+    
 
     #@user = current_user
     #@course_new = Course.new
-    #@delivery = Delivery.new
+    @delivery = Delivery.new
 
     #==== Areas de evaluación ====#
     #@areas_of_evaluation = AreasOfEvaluation.new
@@ -38,9 +38,7 @@ class CoursesController < ApplicationController
 
     #@course_count = Course.count
     #@courses = current_user.members_in_courses.limit(7)
-
-    @count_course_iam_member =  current_course.members_in_courses.count
-    @count_course_iam_member_and_owner = current_course.members_in_courses.where(:owner => true).count
+    
 
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
