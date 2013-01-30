@@ -1,4 +1,7 @@
 class RolesController < ApplicationController
+
+  filter_access_to :all
+  
   # GET /roles
   # GET /roles.json
   def index
@@ -14,8 +17,6 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     @role = Role.find(params[:id])
-    @role_id_and_permission_id = RoleIdAndPermissionId.new
-    @permissions = Permission.all
     
     respond_to do |format|
       format.html # show.html.erb
@@ -83,5 +84,10 @@ class RolesController < ApplicationController
       format.html { redirect_to roles_url }
       format.json { head :no_content }
     end
+  end
+
+  #show users roles
+  def users
+    @users = User.all
   end
 end
