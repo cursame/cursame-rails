@@ -13,7 +13,7 @@
             <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
         <%end%>
 
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación', :class=>"percent-input" %>
+        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
 
         <div class="submit-area"></div>
         <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>

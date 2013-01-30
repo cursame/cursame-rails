@@ -86,6 +86,31 @@
       cursor: pointer;
     }
   }
+  & #upload-labels{
+    float: left;
+    background: #f2f7fd;
+    border: $border-high;
+    @include border-radius-btn;
+    width: 570px;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0px 5px 4px 5px;
+    margin-top: 4px;
+    & .file-mini-upload{
+      //clear:both;
+      float: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 160px;
+      background: url('/assets/icons/file-basic-mini.png') no-repeat left;
+      height: 28px;
+      padding: 0px 0px 0px 30px;
+      line-height: 23pt;
+      margin: 4px 0px 0px 0px;
+    }
+  }
+
   & input[type=submit]{
     font-size: 14px;
     margin: 4px 4px 2px 4px;
@@ -447,7 +472,7 @@
 }
 .delivery-form{
   & .percent-input{
-    width: 85px;
+    width: 60px;
     float: right;
   }
   & .a-btn{
@@ -488,6 +513,7 @@
   }
   & .subject{
     float: left;
+    clear: both;
   }
   & input[type=submit]{
     float: right !important;
