@@ -11,6 +11,13 @@ class FileUploader < CarrierWave::Uploader::Base
      %w(jpg jpeg gif ico png pdf exe ppt txt pptx dmg dwg dwf rar zip tar iso swf flv doc docx ade adp odt rtf sxw sao csv xls)
   end
   
+  def move_to_cache
+      true
+  end
+  
+  def move_to_store
+      true
+  end
 
  
 end

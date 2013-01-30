@@ -1,6 +1,6 @@
 <%= form_for(@assignment = Assignment.new, :url => {:action => :assigment}, :html => { :class => "default-form delivery-form"}) do |f| %>
    <%= f.hidden_field :course_id, :value => @course_id %>
-   <%= f.hidden_field :delivery_id, :value => @delivery.id %>
+   <%= f.hidden_field :delivery_id, :value => @delivery_id %>
    
   <div class="field">
     <%= f.label :title %><br />

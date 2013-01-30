@@ -6,6 +6,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :profile do
      process :resize_to_fit => [150, 150]
    end
+   
+   version :course_index do 
+        process :resize_to_fit => [240, 135]
+    end
 
    version :modern do
      process :resize_to_fill => [45, 45]
@@ -22,7 +26,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
    version :compress do
      process :resize_to_fit => [10, 10]
    end
-
+   
+ 
 
    def extension_white_list
       %w(jpg jpeg gif png)
