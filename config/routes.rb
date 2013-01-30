@@ -46,7 +46,10 @@ Cursame30Lb::Application.routes.draw do
   match  "users/:personal_url/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:personal_url/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
 
-  
+  #roles
+  match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
+
+
   #manejo de networks
   
   get "networks_users/create"

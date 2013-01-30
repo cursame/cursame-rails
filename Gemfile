@@ -36,6 +36,10 @@ gem 'thin'
 gem 'private_pub'
 
 #roles
+gem 'declarative_authorization'
+# gem 'gemcutter'
+# gem 'tumble'
+
 
 # Gem for twitter bootstrap.
 gem "therubyracer"

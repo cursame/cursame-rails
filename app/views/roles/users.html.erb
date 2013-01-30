@@ -1,0 +1,9 @@
+<% for user in @users %>
+    <%= user.email%></br>
+    <% for role in Role.find(:all) %>
+    <div>
+      <%= check_box_tag "user[role_ids][]", role.id, user.roles.include?(role) %>
+      <%= role.title %>
+    </div>
+  <% end %>
+<% end %>

@@ -36,6 +36,9 @@ Cursame30Lb::Application.configure do
   config.assets.debug = true
   HOST = 'lvh.me'
 
+  #roles
+  config.gem "declarative_authorization", :source => "http://gemcutter.org"
+
   # Action Mailer configure
   ActionMailer::Base.smtp_settings = {
     :address        => '50.116.21.144',

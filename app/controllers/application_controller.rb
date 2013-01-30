@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :user_url
   helper_method :current_friend  
   helper_method :current_course
+
+  #roles
+  before_filter :set_current_user
+
   #data of the networks you are
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
@@ -96,5 +100,16 @@ class ApplicationController < ActionController::Base
                 end
       
     
+  end
+  
+  protected
+  #roles
+  def permission_denied
+    flash[:error] = "Sorry, you are not allowed to access that page."
+    redirect_to root_url
+  end
+
+  def set_current_user
+    Authorization.current_user = current_user
   end
 end

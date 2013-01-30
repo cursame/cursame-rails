@@ -36,4 +36,11 @@ class User < ActiveRecord::Base
   def name
      "#{first_name} #{last_name}".strip
   end
+
+  #roles
+  def role_symbols
+    roles.map do |role|
+      role.title.underscore.to_sym
+    end
+  end
 end
