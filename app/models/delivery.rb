@@ -1,4 +1,5 @@
 class Delivery < ActiveRecord::Base
+  scope :courses
   has_many :deliveries_courses
   has_many :courses, :through => :deliveries_courses, :dependent => :destroy
   has_many :areas_of_evaluation
@@ -12,5 +13,7 @@ class Delivery < ActiveRecord::Base
   
   accepts_nested_attributes_for :areas_of_evaluations
   accepts_nested_attributes_for :assets
+  accepts_nested_attributes_for :assignments
+  accepts_nested_attributes_for :assignments, :assets
   
 end

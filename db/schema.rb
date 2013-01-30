@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129202639) do
+ActiveRecord::Schema.define(:version => 20130130004146) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20130129202639) do
     t.string   "encryption_code_to_access"
   end
 
+  create_table "assignment_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "assignments", :force => true do |t|
     t.string   "title"
     t.text     "brief_description"
@@ -50,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130129202639) do
     t.integer  "accomplishment"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "course_id"
   end
 
   create_table "authentications", :force => true do |t|
@@ -187,6 +195,13 @@ ActiveRecord::Schema.define(:version => 20130129202639) do
     t.boolean  "avtive"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "question_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "questions", :force => true do |t|
