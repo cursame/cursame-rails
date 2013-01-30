@@ -1,0 +1,28 @@
+<%= form_for(@assignment = Assignment.new, :url => {:action => :assigment}, :html => { :class => "default-form delivery-form"}) do |f| %>
+   <%= f.hidden_field :course_id, :value => @course_id %>
+   <%= f.hidden_field :delivery_id, :value => @delivery.id %>
+   
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :brief_description %><br />
+    <%= f.text_area :brief_description %>
+  </div>
+  <div class="field">
+  </div>
+  <div class="field">
+    <%#= f.label :accomplishment %><br />
+    <%#= f.number_field :accomplishment %>
+  </div>
+    <%1.times do
+  assets = @assignment.assets.build
+     end%>
+    <%= f.fields_for (:assets) do |assets| %>
+          <%= render :partial => "shared/assets_form", :locals => { :f => assets }%>
+    <%end%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

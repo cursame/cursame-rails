@@ -53,8 +53,10 @@
         <li class="finishdate"><%= @course.finish_date %></li> <br>
         
         <%if @member.owner == true %>
-    <%= link_to 'Editar', edit_course_path(@course) %> 
-<%end%>
+          <%= link_to 'Editar', edit_course_path(@course) %> 
+        <%else%>
+           "n"
+        <%end%>
 
         </div>
 
@@ -90,18 +92,22 @@
                   <div id="profile-message-form">
                         <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
                     </div>
+                <% if @member.owner != nil%>
                     <div id="profile-delivery-form">
                         <%= render :partial => '/deliveries/form'%>
                     </div>
+                <%end%>
             </div>
             <div id="profile-form-options" class="profile-form-options-styles create">
                     <!-- <a href ="#ID del formulario que se abrira" class="">NAME_CATEGORY</a> -->
 		            <a href ="#profile-message-form" class="comment">Comentario</a>
+		             <% if @member.owner != nil%>
 		            <a href ="#profile-delivery-form" class="homework">Tarea</a>
 		            <a href ="" class="discussion">Discusion</a>
 		            <a href ="" class="test">Cuestionario</a>
 		            <a href ="" class="poll">Encuesta</a>
 		            <a href ="" class="event">Evento</a>
+		            <%end%>
             </div>
         </div>
 

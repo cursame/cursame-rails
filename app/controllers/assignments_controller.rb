@@ -25,9 +25,9 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new.json
   def new
     @assignment = Assignment.new
-    
+    @asset = Asset.new
      1.times do
-         compart_assets = @assignment.compart_assets.build
+         assets = @assignment.assets.build
      end
     
     respond_to do |format|
@@ -46,7 +46,8 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(params[:assignment])
-
+    @asset = Asset.new(params[:asset])
+    
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
