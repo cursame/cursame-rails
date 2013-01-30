@@ -16,11 +16,10 @@
     <%#= f.label :accomplishment %><br />
     <%#= f.number_field :accomplishment %>
   </div>
-    <%1.times do
-  assets = @assignment.assets.build
-     end%>
-    <%= f.fields_for (:assets) do |assets| %>
-          <%= render :partial => "shared/assets_form", :locals => { :f => assets }%>
+     <% @killer = @assignment.assets %>
+    <% super_asset = @killer.build %>
+    <%= f.fields_for (:super_asset),:html => { :id => "assignments" } do |super_asset|  %>
+          <%= render :partial => "shared/assets_form", :locals => { :f => super_asset }%>
     <%end%>
   <div class="actions">
     <%= f.submit %>

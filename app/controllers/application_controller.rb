@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_friend  
   helper_method :current_course
   helper_method :refresh_token_for_google
-  
+  helper_method :random
   #data of the networks you are
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
   
   #this code generate the random_personal_url in the register user
   def random_string_for_user_url
-    o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
-    string  =  (0...150).map{ o[rand(o.length)] }.join
+   user_random = "#{user_url_random} #{numeric_random}"
   end
   #links to redirect the user to the networks
   def links
@@ -101,6 +100,21 @@ class ApplicationController < ActionController::Base
     
   end
   
-
+  def random
+    general_random = "#{string_random}-#{numeric_random}"
+  end
+  
+  def string_random
+     o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+      string  =  (0...30).map{ o[rand(o.length)] }.join
+  end
+  def numeric_random
+     numeric = rand(0..777567890654321)
+  end
+  
+  def user_url_random
+     o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+      string  =  (0...260).map{ o[rand(o.length)] }.join
+  end
   
 end

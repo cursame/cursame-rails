@@ -1,4 +1,5 @@
-<div id="upload-delivery-form" >
+<% @string_unique= "#{random}"%>
+<div id="upload-delivery-form-<%= @string_unique %>" >
   <div id="upload-delivery-element-0" class="file-input-box">
       <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
       <%= f.file_field :file, :class=>'upload-input' %>
@@ -11,7 +12,7 @@
 
 <script type="text/javascript">
 
-    var nestedUploadDelivery = $('#upload-delivery-form').html();
+    var nestedUploadDelivery = $('#upload-delivery-form-<%= @string_unique %>').html();
     var controlNestedUpload=0;
 
     $('#upload-delivery-form').empty();
