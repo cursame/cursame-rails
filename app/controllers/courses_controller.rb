@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-   
+    @deliveries = @course.deliveries
          
     
        respond_to do |format|
@@ -123,5 +123,15 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
   
+  def assigment
+    @assignment = Assignment.new(params[:assignment])
+    @asset = Asset.new(params[:asset])
+    @assignment.save!
+    if @assignment.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end  
+  end
      
 end
