@@ -15,13 +15,20 @@
     <td><%= role.title %></td>
     <td><%= role.description %></td>
     <td><%= role.created %></td>
-    <td><%= link_to 'Show', role %></td>
+    <% if permitted_to? :show, role %>
+      <td><%= link_to 'Show', role %></td>
+    <% end %>
+    <% if permitted_to? :edit, role %>
     <td><%= link_to 'Edit', edit_role_path(role) %></td>
+    <% end %>
+    <% if permitted_to? :destroy, role %>
     <td><%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Role', new_role_path %>
+<% if permitted_to? :create, Role.new %>
+  <%= link_to 'New Role', new_role_path %>
+<% end %>

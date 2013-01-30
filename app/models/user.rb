@@ -15,8 +15,15 @@ class User < ActiveRecord::Base
   has_many :users_surveys
   has_many :assets
   has_many :assignments
+
   has_many :comments
   has_many :authentications 
+
+
+  # roles
+  has_many :permissionings
+  has_many :roles, :through => :permissionings
+  
   #nested atributes for forms asets
   
   accepts_nested_attributes_for :assets
@@ -33,5 +40,12 @@ class User < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
   def name
      "#{first_name} #{last_name}".strip
+  end
+
+  #roles
+  def role_symbols
+    roles.map do |role|
+      role.title.underscore.to_sym
+    end
   end
 end
