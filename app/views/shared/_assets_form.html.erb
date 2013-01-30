@@ -22,7 +22,6 @@
         $( nestedUploadDelivery ).each(function( index, value ) {
             changeAttrUpload($(value).clone(),'#upload-delivery-form');
         });
-
         initChangeLabel(controlNestedUpload);
         controlNestedUpload++;
 
@@ -66,7 +65,7 @@
             initChangeLabel(controlNestedUpload);
 
             controlNestedUpload++;
-
+            $('#upload-labels').show();
         });
     }
 

@@ -5,15 +5,17 @@
         <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
 
+
         <%= f.fields_for :areas_of_evaluations do |builder| %>
             <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
+
+        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
 
         <%= f.fields_for :assets do |asset| %>
             <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
         <%end%>
 
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
 
         <div class="submit-area"></div>
         <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>

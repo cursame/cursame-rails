@@ -91,18 +91,19 @@
     background: #f2f7fd;
     border: $border-high;
     @include border-radius-btn;
-    width: 570px;
+    width: 568px;
     font-size: 12px;
     font-weight: 300;
     padding: 0px 5px 4px 5px;
     margin-top: 4px;
+    display: none;
     & .file-mini-upload{
       //clear:both;
       float: left;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      width: 160px;
+      width: 158px;
       background: url('/assets/icons/file-basic-mini.png') no-repeat left;
       height: 28px;
       padding: 0px 0px 0px 30px;
