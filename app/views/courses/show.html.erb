@@ -112,6 +112,7 @@
         </div>
 
          <%  @course.deliveries.each do |delivery| %>
+             <% @delivery_id = delivery.id%>
             <%= delivery.publish_date%>
             <%= delivery.title %>
             <%= delivery.description %>
