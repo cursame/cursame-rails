@@ -29,7 +29,11 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
 
-  resources :courses
+  resources :courses do
+    collection do
+      post :assigment
+     end
+  end
   
   resources :deliveries do
     collection do

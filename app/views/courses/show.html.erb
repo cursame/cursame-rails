@@ -111,6 +111,12 @@
             </div>
         </div>
 
+         <%  @course.deliveries.each do |delivery| %>
+            <%= delivery.publish_date%>
+            <%= delivery.title %>
+            <%= delivery.description %>
+            <%= render partial: "assignments/form_for_delivery"%>
+         <%end%>
         <div id="box-comments">
             <div class="general-cir"></div>
             <div id="comment1" class="comment" >
