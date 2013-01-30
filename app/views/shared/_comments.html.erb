@@ -1,16 +1,34 @@
+<%
+  #=========================================
+  #============ Comments Logic =============
+  #=========================================
+
+
+  if(text_comment)
+    object = text_comment
+    id_comment = (object.id) ? object.id : ''
+    name_comment = (object.user.name) ? object.user.name : ''
+    content_comment = (object.comment) ? object.comment : ''
+    avatar_comment = (object.user.avatar.modern) ? object.user.avatar.modern : ''
+    date_comment = (object.created_at)? object.created_at : ''
+  elsif(delivery_comment)
+
+  end
+
+%>
 
 <div id="box-comments" >
   <div class="general-cir"></div>
 
-  <div id = "comment_<%= comment.id %>" class="comment-text" >
+  <div id = "comment_<%= id_comment %>" class="comment-text" >
     <div class="arrow-left"></div>
     <div class="header">
-      <div class="avatar"><%= image_tag(comment.user.avatar.modern,{:class => "avatar-mini"})%></div>
-      <div class="top-null-image"></div><b><%= comment.user.name %></b>  <span class="date">29/Ene/2012</span>
+      <div class="avatar"><%= image_tag(avatar_comment,{:class => "avatar-mini"})%></div>
+      <div class="top-null-image"></div><b><%= name_comment %></b>  <span class="date"><%= date_comment %></span>
     </div>
     <div class="content">
       <div class="null-image"></div>
-      <p><%= comment.comment %></p>
+      <p><%= content_comment %></p>
     </div>
 
     <div class="footer">
@@ -19,9 +37,9 @@
       <div class="labels">20 Comentarios</div>
       <div class="labels">12 Likes</div>
       <!-- los comentarios del comentario
-      <% comment.comments.each do |commentt| %>
-          <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
-      <%end%>
+      <%# comment.comments.each do |commentt| %>
+          <%#= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+      <%# end%>
       -->
       <!-- area para comentar -->
       <div class="media" style="display: none;">
@@ -29,7 +47,7 @@
           <img class="media-object" src="<%= current_user.avatar%>" width ="32px">
         </a>
         <div class="media-body">
-          <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
+          <%#= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
         </div>
       </div>
     </div>

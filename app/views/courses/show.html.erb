@@ -44,7 +44,6 @@
     </div>
   </div>
 
-  <%= debug current_user %>
 
   <div id="box-course" class="basic-lateral-box margin-top" >
     <h2>cursos</h2>
@@ -147,7 +146,7 @@
         <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
       </div>
       <% if @member.owner != nil%>
-          <div id="profile-delivery-form">
+          <div id="delivery-form-area">
               <% @count_course_iam_member_and_owner = MembersInCourse.find_by_user_id_and_course_id(current_user.id , @course.id) %>
             <%# render :partial => '/deliveries/form'%>
             <%= render :partial => '/deliveries/delivery_compart_form'%>
@@ -177,7 +176,9 @@
       <%= delivery.title %>
       <%= delivery.description %>
       <%= render partial: "assignments/form_for_delivery"%>
-  <%end%>
+      <%# render :partial => '/shared/comments', :locals => { :text_comment=>delivery } %>
+
+<%end%>
 
   <div id="box-comments">
     <div class="general-cir"></div>
