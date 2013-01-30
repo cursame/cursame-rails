@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
 
 
 
-    @user = current_user
+    #@user = current_user
     #@course_new = Course.new
     #@delivery = Delivery.new
 
@@ -39,8 +39,8 @@ class CoursesController < ApplicationController
     #@course_count = Course.count
     #@courses = current_user.members_in_courses.limit(7)
 
-    #@count_course_iam_member =  current_user.members_in_courses.count
-    #@count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
+    @count_course_iam_member =  current_course.members_in_courses.count
+    @count_course_iam_member_and_owner = current_course.members_in_courses.where(:owner => true).count
 
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments

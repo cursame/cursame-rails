@@ -1,188 +1,249 @@
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
 <% if @course.coverphoto = nil %>
-<div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>   
+    <div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>
 <%else%>
-<div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">    
-    
-<div class="banner-shadow"> 
-    <div id="box-titles">
-        <div>
-       		 <ul class="list-header">
-       		 <li class="stats" id="stats">Estadisticas</li>
-       		 	<li class="settings" id="settings">Configuracion</li>
-       		 </ul>
+    <div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">
+      <div class="banner-shadow">
+        <div id="box-titles">
+          <div>
+            <ul class="list-header">
+              <li class="stats" id="stats">Estadisticas</li>
+              <li class="settings" id="settings">Configuracion</li>
+            </ul>
+          </div>
         </div>
-    </div> 
-    <div id="box-titles-content">
+        <div id="box-titles-content">
           <div class="menu-course">
-	<ul>
-		<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> 15</b> ACTIVIDADES <br><i>Muro principal</i></li>
-		<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i>25 totales</i><//li>
-		<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i>25 totales</i></li>
-		<li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i>25 totales</i></li>
-		<li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
-	</ul>
-</div> 
-      <%# render :partial => "users/menu_member"%>
+            <ul>
+              <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> 15</b> ACTIVIDADES <br><i>Muro principal</i></li>
+              <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i>25 totales</i><//li>
+              <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i>25 totales</i></li>
+              <li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i>25 totales</i></li>
+              <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
+            </ul>
+          </div>
+          <%# render :partial => "users/menu_member"%>
+        </div>
+      </div>
     </div>
-</div>
-</div>
 <%end%>
 
 
 <!-- Content Post Box -->
-<div id="box-content" class="profile-line ">
-
-
-     <!-- SideBar -->
-    <div class="box-3" >
-        <!-- User Avatar -->
-        <div id="box-user-credential">
-            <div class="thumbnail"  >
-                <%= link_to image_tag(@course.avatar.profile)%>
-            </div>
-            <div class="tagname">
-              <%= @course.title %>
-            </div>
-        </div>
-        <div id="box-profile-info" class="basic-lateral-box">
-        <li class="silabus"> <%= @course.silabus.html_safe %> </li>
-         <li class="files"> No hay archivos adjuntos</li>
-        <li class="initdate"> <%= @course.init_date %></li>
-        <li class="finishdate"><%= @course.finish_date %></li> <br>
-        
-        <%if @member.owner == true %>
-          <%= link_to 'Editar', edit_course_path(@course) %> 
-        <%else%>
-           "n"
-        <%end%>
-
-        </div>
-
-       
-           
-
-
-<div id="box-friends" class="basic-lateral-box" >
-            <h2>MIEMBROS</h2>
-            <div id="tabs-friends" class="tabs-style">
-                <ul id="ul-tabs">
-                    <li class="element-left" style="width:43%!important;"><a href="#tabs-friends-1"><span class="title-num">39</span><span class="title">miembros</span></a></li>
-                    <li class="element-right" style="width:57%!important;"><a href="#tabs-friends-2"><span class="title-num">20</span><span class="title">solicitudes</span></a></li>
-                </ul>
-                <div id="tabs-friends-1">
-                  <div class="content-avtr">
-                                      </div>
-                  <div class="view-all"><a href="">Ver Todo</a></div>
-                </div>
-                <div id="tabs-friends-2">
-                  <div class="content-avtr">
-                                     </div>
-                </div>
-            </div>
-        </div>
-        <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
+<div id="box-content" class="profile-line">
+<!-- SideBar -->
+<div class="box-3" >
+  <!-- User Avatar -->
+  <div id="box-user-credential" class="network-layout">
+    <div class="thumbnail"  >
+      <%= link_to image_tag(@course.avatar.profile)%>
     </div>
+    <div class="tagname">
+      <%= @course.title %>
+    </div>
+  </div>
 
-<!-- Content -->
-    <div id="box-stream-post">
-        <div class="profile-post-box">
-            <div id="post-forms">
-                  <div id="profile-message-form">
-                        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-                    </div>
-                <% if @member.owner != nil%>
-                    <div id="profile-delivery-form">
-                        <%= render :partial => '/deliveries/form'%>
-                    </div>
-                <%end%>
+  <%= debug current_user %>
+
+  <div id="box-course" class="basic-lateral-box margin-top" >
+    <h2>cursos</h2>
+    <div id="form-new-course" class="form-new-course-lateral">
+      <%= render partial: "users/form_course.html.erb"%>
+    </div>
+    <div id="tabs-courses" class="tabs-style">
+      <ul id="ul-tabs">
+        <li class="element-left">
+          <a href="#tabs-courses-1">
+            <div class="content-tab">
+              <span class="title-num"><%= @count_course_iam_member%></span>
+              <span class="title">CURSOS</span>
             </div>
-            <div id="profile-form-options" class="profile-form-options-styles create">
-                    <!-- <a href ="#ID del formulario que se abrira" class="">NAME_CATEGORY</a> -->
-		            <a href ="#profile-message-form" class="comment">Comentario</a>
-		             <% if @member.owner != nil%>
-		            <a href ="#profile-delivery-form" class="homework">Tarea</a>
-		            <a href ="" class="discussion">Discusion</a>
-		            <a href ="" class="test">Cuestionario</a>
-		            <a href ="" class="poll">Encuesta</a>
-		            <a href ="" class="event">Evento</a>
-		            <%end%>
+          </a>
+        </li>
+        <li class="element-right">
+          <div id="new-course-btn" class="plus-courses"></div>
+          <a href="#tabs-courses-2">
+            <div class="content-tab">
+              <span class="title-num"><%= @count_course_iam_member_and_owner %></span>
+              <span class="title">CREADOS</span>
             </div>
+          </a>
+        </li>
+      </ul>
+      <div id="tabs-courses-1">
+        <ul id="course-list" >
+          <%# if @course_count == 0%>
+          <li><a href="#">No hay cursos</a></li>
+          <%# else%>
+          <%# @courses.each do |cu|%>
+          <%# @cort = Course.find(cu.course_id)%>
+          <%# if cu.accepted == true %>
+          <li><%#= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+          <%#end%>
+          <%#end%>
+          <%#end%>
+        </ul>
+        <div class="view-all"><%#= link_to "Ver todos", courses_path%></div>
+      </div>
+      <div id="tabs-courses-2">
+        <ul id="course-list" >
+          <%# if @course_count == 0%>
+          <li><a href="#">No hay cursos</a></li>
+          <%#else%>
+          <%# @courses.each do |cu|%>
+          <%# @cort = Course.find(cu.course_id)%>
+          <%# if cu.owner == true%>
+          <li><%#= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+          <%#else%>
+          <%#end%>
+          <%#end%>
+          <%#end%>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <div id="box-friends" class="basic-lateral-box" >
+    <h2>AMIGOS</h2>
+    <div id="tabs-friends" class="tabs-style">
+      <ul id="ul-tabs">
+        <li class="element-left" style="width:100px!important;">
+          <a href="#tabs-friends-1">
+            <div class="content-tab">
+              <span class="title-num">39</span>
+              <span class="title">amigos</span>
+            </div>
+          </a>
+        </li>
+        <li class="element-right" style="width:130px!important;">
+          <a href="#tabs-friends-2">
+            <div class="content-tab">
+              <span class="title-num">20</span>
+              <span class="title">sugerencias</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div id="tabs-friends-1">
+        <div class="content-avtr">
         </div>
-
-         <%  @course.deliveries.each do |delivery| %>
-             <% @delivery_id = delivery.id%>
-            <%= delivery.publish_date%>
-            <%= delivery.title %>
-            <%= delivery.description %>
-            <%= render partial: "assignments/form_for_delivery"%>
-         <%end%>
-        <div id="box-comments">
-            <div class="general-cir"></div>
-            <div id="comment1" class="comment" >
-                <div class="arrow-left"></div>
-                <div class="header">
-                    <div class="null-image"></div>
-                    <div class="avatar"></div>
-                    <div class="name">Nombre Usuario</div>  <span>fecha</span>
-                </div>
-                <div class="content">
-                  <div class="null-image"></div>
-                  <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                </div>
-
-                <div class="footer">
-                  <img src="/assets/icons/grey-mini-comment.png" class="icon">
-                  <img src="/assets/icons/grey-mini-like.png" class="icon">
-                  <div class="labels">20 Comentarios</div>
-                  <div class="labels">12 Likes</div>
-                </div>
-            </div>
-        </div>
-
-<div id="box-comments">
-            <div class="general-cir"></div>
-                <div id="" class="comment-image" >
-                    <div class="arrow-left"></div>
-                        <div class="header">
-                            <div class="null-image"></div>
-                            <div class="avatar"></div>
-                            <b>Nombre Usuario</b>  <span>fecha</span>
-                        </div>
-                    <div class="footer">
-                        <div class="content-footer">
-                            <img src="/assets/icons/white-mini-comment.png" class="icon">
-                            <img src="/assets/icons/white-mini-like.png" class="icon">
-                            <div class="labels">20 Comentarios</div>
-                            <div class="labels">12 Likes</div>
-                        </div>
-                    </div>
-                    <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
-            </div>
-        </div>
-      <div id="box-comments">
-        <div class="general-cir"></div>
-
-        <div id="" class="comment" >
-          <div class="arrow-left"></div>
-          <div class="header">
-            <div class="avatar"></div>
-            <b>Nombre Usuario</b>  <span>fecha</span>
-          </div>
-          <div class="content">
-            <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-          </div>
-
-          <div class="footer">
-            <img src="/assets/icons/grey-mini-comment.png" class="icon">
-            <img src="/assets/icons/grey-mini-like.png" class="icon">
-            <div class="labels">20 Comentarios</div>
-            <div class="labels">12 Likes</div>
-          </div>
+        <div class="view-all"><a href="">Ver Todo</a></div>
+      </div>
+      <div id="tabs-friends-2">
+        <div class="content-avtr">
         </div>
       </div>
-
     </div>
+  </div>
+</div>
+
+<!-- Content -->
+<div id="box-stream-post">
+  <div class="profile-post-box">
+    <div id="post-forms">
+      <div id="message-form-area">
+        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+      </div>
+      <% if @member.owner != nil%>
+          <div id="profile-delivery-form">
+            <%# render :partial => '/deliveries/form'%>
+            <%# render :partial => '/deliveries/delivery_compart_form'%>
+          </div>
+      <%end%>
+      <div id="survey-form-area">
+        <%#= render :partial => '/surveys/form'%>
+      </div>
+    </div>
+
+    <div id="profile-form-options" class="profile-form-options-styles create">
+      <a id="message-form-btn" href="#message-form-area"><div class="border" ><div class="icon"></div></div>Comentario</a>
+      <a id="delivery-form-btn" href="#delivery-form-area"><div class="border" ><div class="icon"></div></div>Tarea</a>
+      <a href="" class="discussion"><div class="border" ><div class="icon"></div></div>Discusión</a>
+      <a href="#survey-form-area" class="test"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
+      <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
+      <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
+    </div>
+  </div>
+
+  <%# @comments.reverse.each do |comment| %>
+  <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+  <%#end%>
+
+  <%  @course.deliveries.each do |delivery| %>
+      <%= delivery.publish_date%>
+      <%= delivery.title %>
+      <%= delivery.description %>
+      <%= render partial: "assignments/form_for_delivery"%>
+  <%end%>
+
+  <div id="box-comments">
+    <div class="general-cir"></div>
+    <div id="comment1" class="comment-text" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="null-image"></div>
+        <div class="avatar"><%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <div class="name"> <%#  comment.user.name %></div>  <span>fecha</span>
+      </div>
+      <div class="content">
+        <div class="null-image"></div>
+        <%#  comment.comment %>
+      </div>
+      <div class="footer">
+        <img src="/assets/icons/grey-mini-comment.png" class="icon">
+        <img src="/assets/icons/grey-mini-like.png" class="icon">
+        <div class="labels"><%# comment.comments.count %>Comentarios</div>
+        <div class="labels">12 Likes</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="box-comments">
+    <div class="general-cir"></div>
+    <div id="" class="comment-image" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="null-image"></div>
+        <div class="avatar"><%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <b>Nombre Usuario</b>  <span>29/ENE/2012</span>
+      </div>
+      <div class="footer">
+        <div class="content-footer">
+          <img src="/assets/icons/white-mini-comment.png" class="icon">
+          <img src="/assets/icons/white-mini-like.png" class="icon">
+          <div class="labels">20 Comentarios</div>
+          <div class="labels">12 Likes</div>
+        </div>
+      </div>
+      <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
+    </div>
+  </div>
+  <div id="box-comments">
+    <div class="general-cir"></div>
+
+    <div id="" class="comment-text" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="avatar"><%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <div class="top-null-image"></div><b>Rodrigo Ayala</b>  <span class="date">29/Ene/2012</span>
+      </div>
+      <div class="content">
+        <div class="null-image"></div>
+        <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+      </div>
+
+      <div class="footer">
+        <img src="/assets/icons/grey-mini-comment.png" class="icon">
+        <img src="/assets/icons/grey-mini-like.png" class="icon">
+        <div class="labels">20 Comentarios</div>
+        <div class="labels">12 Likes</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 </div>

@@ -1,4 +1,4 @@
-<% if @count_course_iam_member_and_owner > 0%>
+<%# if @count_course_iam_member_and_owner > 0%>
     <%= form_for(@delivery, :html => { :class => "default-form delivery-form"}) do |f| %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>
@@ -42,4 +42,4 @@
         });
       </script>
     <% end %>
-<%end%>
+<%#end%>

@@ -18,7 +18,7 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
-    @user = current_user;
+    @user = current_user
     @course = Course.new
     @delivery = Delivery.new
 
