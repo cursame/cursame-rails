@@ -43,9 +43,6 @@
       <%= @course.title %>
     </div>
   </div>
-
-  <%= debug current_user %>
-
   <div id="box-course" class="basic-lateral-box margin-top" >
     <h2>cursos</h2>
     <div id="form-new-course" class="form-new-course-lateral">
@@ -172,11 +169,38 @@
   <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
   <%#end%>
 
-  <%  @course.deliveries.each do |delivery| %>
-      <%= delivery.publish_date%>
-      <%= delivery.title %>
-      <%= delivery.description %>
-      <%= render partial: "assignments/form_for_delivery"%>
+  <%  @course.deliveries.reverse.each do |delivery| %>
+  <div id="box-comments">
+      <div class="general-cir"></div>
+         <div id="comment1" class="comment-text" >
+             <div class="arrow-left"></div>
+               <div class="header">
+                 <div class="null-image"></div>
+                 <div class="avatar"> <%= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
+                   <div class="name"> <%= delivery.title %></div><span><%= delivery.publish_date%></span>
+                 </div>
+                  <div class="content">
+                     <div class="null-image"></div>
+                     <%= delivery.description %>
+                  </div> 
+                    <div class="footer">
+                      <img src="/assets/icons/grey-mini-comment.png" class="icon">
+                      <img src="/assets/icons/grey-mini-like.png" class="icon">
+                      <div class="labels"><%# comment.comments.count %>Comentarios</div>
+                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder</a></div></div>
+                    </div>
+                
+        <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-<%= delivery.id %>">    
+              <%= render partial: "assignments/form_for_delivery"%>
+       </div>
+         <script>
+             $("#open-close-<%= delivery.id %>").click(function () {
+                 $('#entrega-<%= delivery.id %>').toggle("slow");
+
+             });        
+          </script>
+      </div>
+  </div>
   <%end%>
 
   <div id="box-comments">
