@@ -1,5 +1,13 @@
 Cursame30Lb::Application.routes.draw do
   
+  resources :response_to_the_evaluations do
+    collection do
+      post :create
+      post :new
+     end
+  end
+  
+
   resources :authentications
 
   #recursos necesarios para el calendario
