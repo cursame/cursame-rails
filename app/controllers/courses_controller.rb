@@ -84,11 +84,13 @@ class CoursesController < ApplicationController
              @member.title = @course.title
              @member.save
              
-        format.json { render json: @course, status: :created, location: @course }
-        format.js
+        #format.json { render json: @course, status: :created, location: @course }
+        format.html { redirect_to courses_url }
+        #format.js
       else
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-        format.js
+        #format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.html { redirect_to courses_url }
+        #format.js
         
       end
     end

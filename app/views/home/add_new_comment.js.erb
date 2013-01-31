@@ -1,8 +1,8 @@
 <% if @comment.commentable_type == 'Comment' %>
 // si se tiene que agregar a nivel de los coments
-	var node = $('#comment_<%= @comment.commentable.id %>').closest('.media-body').children(':last-child')
-		.before('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
+	// var node = $('#comment_<%= @comment.commentable.id %>').closest('.media-body').children(':last-child')
+	// 	.before('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
 <% else %>
 	// si se tiene que agregar al layout principal
-	$('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
+	// $('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
 <% end %>

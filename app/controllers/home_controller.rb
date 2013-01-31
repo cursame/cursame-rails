@@ -36,7 +36,8 @@ class HomeController < ApplicationController
       @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
       puts @comment.to_yaml
       respond_to do |format|
-        format.js
+        #format.js
+        format.html {redirect_to root_url}
       end
     end     
   end
