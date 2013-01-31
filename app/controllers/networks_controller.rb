@@ -111,5 +111,5 @@ class NetworksController < ApplicationController
   def filter_user_network_wed
     network_member
   end
-  
+    
 end

@@ -118,7 +118,7 @@ Cursame30Lb::Application.routes.draw do
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
-
+  
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
 

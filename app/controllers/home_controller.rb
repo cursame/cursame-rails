@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
+
   skip_before_filter :authenticate_user!
   helper_method :get_commentable
+  
+
   def index
     if user_signed_in?
       #redirect_to "/users/#{current_user.personal_url}"
@@ -34,10 +37,12 @@ class HomeController < ApplicationController
     if user_signed_in?
       commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
       @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
+      
       puts @comment.to_yaml
+
       respond_to do |format|
-        #format.js
-        format.html {redirect_to root_url}
+        #format.html
+        format.js
       end
     end     
   end

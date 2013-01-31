@@ -172,9 +172,14 @@
     </div>
   </div>
 
-  <% @comments.reverse.each do |comment| %>
+  <!-- timeline -->
+  <div id="timeline">
+    <% @comments.reverse.each do |comment| %>
         <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-  <%end%>
+    <%end%>
+  </div>
+  <!-- fin timeline -->
+  
 
   <div id="box-comments">
     <div class="general-cir"></div>
