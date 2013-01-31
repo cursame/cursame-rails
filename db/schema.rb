@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20130131024908) do
     t.datetime "updated_at",            :null => false
     t.integer  "course_id"
     t.integer  "user_id"
+
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|
