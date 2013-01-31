@@ -67,3 +67,27 @@ function NestedSlider(defaultInitValue) {
  *==================== DropDown ====================
  *==================================================
  */
+
+
+
+function changeAttrUpload(value, parentId){
+    var id_value = 'id';
+    var id_name ='name';
+    var str_id = $(value).attr(id_value);
+    str_id = (str_id!=undefined)? str_id.replace('0',controlNestedUpload) : undefined;
+    $(value).attr(id_value,str_id);
+    var str_name = $(value).attr(id_name);
+    str_name = (str_name!=undefined)?str_name.replace('0',controlNestedUpload):undefined;
+    $(value).attr(id_name,str_name);
+
+    $( $(value).children() ).each(function( index, value_local ) {
+        var str_id = $(value_local).attr(id_value);
+        str_id = (str_id!=undefined)? str_id.replace('0',controlNestedUpload) : undefined;
+        $(value_local).attr(id_value,str_id);
+        var str_name = $(value_local).attr(id_name);
+        str_name = (str_name!=undefined)?str_name.replace('0',controlNestedUpload):undefined;
+        $(value_local).attr(id_name,str_name);
+    });
+    $(parentId).append($(value));
+    console.log('inicializa')
+}

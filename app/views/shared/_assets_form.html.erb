@@ -1,5 +1,10 @@
-<% @string_unique= "#{random}"%>
-<div id="upload-delivery-form-<%= @string_unique %>" >
+<%
+   random_id = "#{random}"
+   @asset_unique = "upload-delivery-form-#{random_id}"
+   @label_unique = "upload-labels-#{random_id}"
+%>
+
+<div id="<%= @asset_unique %>">
   <div id="upload-delivery-element-0" class="file-input-box">
       <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
       <%= f.file_field :file, :class=>'upload-input' %>
@@ -7,64 +12,37 @@
       <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
 </div>
-<div id="upload-labels"></div>
+<div id="<%= @label_unique %>" class="upload-label"></div>
 
 
 <script type="text/javascript">
 
-    var nestedUploadDelivery = $('#upload-delivery-form-<%= @string_unique %>').html();
+    var nestedUploadDelivery = $('#<%= @asset_unique %>').html();
     var controlNestedUpload=0;
-
-    $('#upload-delivery-form').empty();
+    $('#<%= @asset_unique %>').empty();
 
     $(document).ready(function() {
         $( nestedUploadDelivery ).each(function( index, value ) {
-            changeAttrUpload($(value).clone(),'#upload-delivery-form');
+            changeAttrUpload($(value).clone(),'#<%= @asset_unique %>');
         });
         initChangeLabel(controlNestedUpload);
         controlNestedUpload++;
-
     });
 
-
-    function changeAttrUpload(value, parentId){
-        var id_value = 'id';
-        var id_name ='name';
-        var str_id = $(value).attr(id_value);
-        str_id = (str_id!=undefined)? str_id.replace('0',controlNestedUpload) : undefined;
-        $(value).attr(id_value,str_id);
-        var str_name = $(value).attr(id_name);
-        str_name = (str_name!=undefined)?str_name.replace('0',controlNestedUpload):undefined;
-        $(value).attr(id_name,str_name);
-
-        $( $(value).children() ).each(function( index, value_local ) {
-            var str_id = $(value_local).attr(id_value);
-            str_id = (str_id!=undefined)? str_id.replace('0',controlNestedUpload) : undefined;
-            $(value_local).attr(id_value,str_id);
-            var str_name = $(value_local).attr(id_name);
-            str_name = (str_name!=undefined)?str_name.replace('0',controlNestedUpload):undefined;
-            $(value_local).attr(id_name,str_name);
-        });
-        $(parentId).append($(value));
-
-
-    }
     function initChangeLabel(value){
         var tmp_value = value;
         $('#delivery_assets_attributes_'+tmp_value+'_file').change(function(){
             var fileName = $('#upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
             console.log(fileName);
-            $('#upload-labels').append('<div class="file-mini-upload">'+ fileName + '</div>');
+            $('#<%= @label_unique %>').append('<div class="file-mini-upload">'+ fileName + '</div>');
             $('#upload-delivery-element-'+tmp_value).hide();
 
             $( nestedUploadDelivery ).each(function( index, value ) {
-                changeAttrUpload($(value).clone(),'#upload-delivery-form');
+                changeAttrUpload($(value).clone(),'#<%= @asset_unique %>');
             });
-
             initChangeLabel(controlNestedUpload);
-
             controlNestedUpload++;
-            $('#upload-labels').show();
+            $('#<%= @label_unique %>').show();
         });
     }
 
