@@ -1393,9 +1393,9 @@ background-position: left center;
     border: $border-box;
     border-radius: $border-radius-box;
     margin: 5px 0px 10px 11px;
-   -moz-box-shadow: 1px 1px 7px #5d5c5c;
--webkit-box-shadow: 1px 1px 7px #5d5c5c;
-box-shadow: 1px 1px 7px #5d5c5c;
+	   -moz-box-shadow: 1px 3px 7px #757575;
+-webkit-box-shadow: 1px 3px 7px #757575;
+box-shadow: 1px 3px 7px #757575;
     & .header{
       line-height: 23pt;
       padding-bottom: 6px;
