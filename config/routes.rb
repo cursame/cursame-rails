@@ -1,5 +1,7 @@
 Cursame30Lb::Application.routes.draw do
   
+  resources :discussions
+
   resources :response_to_the_evaluations do
     collection do
       post :create
