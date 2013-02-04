@@ -48,7 +48,7 @@ notifications_last = notifications.pop
 <!-- Esto son los posibles tipos de notificaciones -->
 
 <!-- <li class="first">
-	<%= image_tag(@user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b> 
+	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b> 
 	<br/>
 	<span class="time">Hace 3 horas</span>
 </li>
@@ -57,7 +57,7 @@ notifications_last = notifications.pop
 	<span class="time">Hace 5 horas</span>
 </li>
 <li>
-	<%= image_tag(@user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>A <b>Padilla</b> le gustó <b>tu comentario</b> <br/>
+	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>A <b>Padilla</b> le gustó <b>tu comentario</b> <br/>
 	<span class="time">Hace 10 horas</span>
 </li>
 <li class="last">
