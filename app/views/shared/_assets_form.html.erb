@@ -3,47 +3,17 @@
    @asset_unique = "upload-delivery-form-#{random_id}"
    @label_unique = "upload-labels-#{random_id}"
 %>
-
 <div id="<%= @asset_unique %>">
   <div id="upload-delivery-element-0" class="file-input-box">
       <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
-      <%= f.file_field :file, :class=>'upload-input' %>
+      <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0' %>
       <% f.password_field :encryption_code_to_access %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
 </div>
 <div id="<%= @label_unique %>" class="upload-label"></div>
-
-
 <script type="text/javascript">
-
-    var nestedUploadDelivery = $('#<%= @asset_unique %>').html();
-    var controlNestedUpload=0;
-    $('#<%= @asset_unique %>').empty();
-
-    $(document).ready(function() {
-        $( nestedUploadDelivery ).each(function( index, value ) {
-            changeAttrUpload($(value).clone(),'#<%= @asset_unique %>');
-        });
-        initChangeLabel(controlNestedUpload);
-        controlNestedUpload++;
+    $(document).ready(function(){
+        var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>');
     });
-
-    function initChangeLabel(value){
-        var tmp_value = value;
-        $('#delivery_assets_attributes_'+tmp_value+'_file').change(function(){
-            var fileName = $('#upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-            console.log(fileName);
-            $('#<%= @label_unique %>').append('<div class="file-mini-upload">'+ fileName + '</div>');
-            $('#upload-delivery-element-'+tmp_value).hide();
-
-            $( nestedUploadDelivery ).each(function( index, value ) {
-                changeAttrUpload($(value).clone(),'#<%= @asset_unique %>');
-            });
-            initChangeLabel(controlNestedUpload);
-            controlNestedUpload++;
-            $('#<%= @label_unique %>').show();
-        });
-    }
-
 </script>

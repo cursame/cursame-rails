@@ -18,9 +18,11 @@
   </div>
      <% @killer = @assignment.assets %>
     <% super_asset = @killer.build %>
-    <%= f.fields_for (:super_asset),:html => { :id => "assignments" } do |super_asset|  %>
-          <%= render :partial => "shared/assets_form", :locals => { :f => super_asset }%>
+
+    <%= f.fields_for (:super_asset),:html => { :id => "assignments" } do |asset|  %>
+          <%= render :partial => "shared/assets_form", :locals => { :f => asset }%>
     <%end%>
+
   <div class="actions">
     <%= f.submit %>
   </div>
