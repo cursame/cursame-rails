@@ -1,5 +1,5 @@
 <%= form_for(@assignment = Assignment.new, :url => {:action => :assigment}, :html => { :class => "default-form delivery-form"}) do |f| %>
-   <%= f.hidden_field :course_id, :value => @course_id %>
+   <%= f.hidden_field :course_id, :value => @course.id %>
    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
    
   <div class="field">
@@ -22,6 +22,7 @@
           <%= render :partial => "shared/assets_form", :locals => { :f => super_asset }%>
     <%end%>
   <div class="actions">
+      
     <%= f.submit %>
   </div>
 <% end %>

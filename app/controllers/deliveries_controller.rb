@@ -156,6 +156,26 @@ class DeliveriesController < ApplicationController
   def assigment
     @assignment = Assignment.new(params[:assignment])
     @asset = Asset.new(params[:asset])
+    
     @assignment.save!
+      puts "**************"
+      puts "assignment save "
+      puts "**************"
+      
+     if @assignment.save!
+       @response_to_the_evaluation = ResponseToTheEvaluation.new
+            puts "**************"
+           @delivery_from_assignment = Delivery.find(@assignment.delivery)
+            puts  @delivery_from_assignment
+           
+                @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
+                  @response_to_the_evaluation.name = generate_rubres.name
+                  @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+                  @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
+                  @response_to_the_evaluation.assignment_id = @assignment.id
+                  @response_to_the_evaluation.create              
+                end
+      else
+      end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131024908) do
+ActiveRecord::Schema.define(:version => 20130131181329) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -229,10 +229,15 @@ ActiveRecord::Schema.define(:version => 20130131024908) do
     t.integer  "value"
   end
 
-  create_table "recipes", :force => true do |t|
+  create_table "response_to_the_evaluations", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "comment_for_rubre"
+    t.integer  "assignment_id"
+    t.integer  "course_id"
+    t.integer  "evaluation_porcentage"
+    t.integer  "rub_calification"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "role_id_and_permission_ids", :force => true do |t|
