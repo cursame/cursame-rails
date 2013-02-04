@@ -43,6 +43,7 @@
       <%= @course.title %>
     </div>
   </div>
+
   <div id="box-course" class="basic-lateral-box margin-top" >
     <h2>cursos</h2>
     <div id="form-new-course" class="form-new-course-lateral">
@@ -144,7 +145,7 @@
         <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
       </div>
       <% if @member.owner != nil%>
-          <div id="profile-delivery-form">
+          <div id="delivery-form-area">
               <% @count_course_iam_member_and_owner = MembersInCourse.find_by_user_id_and_course_id(current_user.id , @course.id) %>
             <%# render :partial => '/deliveries/form'%>
             <%= render :partial => '/deliveries/delivery_compart_form'%>
@@ -169,6 +170,13 @@
   <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
   <%#end%>
 
+  <%#  @course.deliveries.each do |delivery| %>
+      <%#= delivery.publish_date%>
+      <%#= delivery.title %>
+      <%#= delivery.description %>
+      <%#= render partial: "assignments/form_for_delivery"%>
+<%#end%>
+
   <%  @course.deliveries.reverse.each do |delivery| %>
   <div id="box-comments">
       <div class="general-cir"></div>
@@ -176,7 +184,7 @@
              <div class="arrow-left"></div>
                <div class="header">
                  <div class="null-image"></div>
-                 <div class="avatar"><%= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
+                 <div class="avatar"><%#= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
                    <div class="name"> <%= delivery.title %></div><span><%= delivery.publish_date%></span>
                  </div>
                   <div class="content">
@@ -248,7 +256,7 @@
       </div>
   </div>
   <%end%>
-
+  <!--
   <div id="box-comments">
     <div class="general-cir"></div>
     <div id="comment1" class="comment-text" >
@@ -314,7 +322,7 @@
       </div>
     </div>
   </div>
-
+  -->
 </div>
 
 </div>

@@ -1,5 +1,13 @@
 Cursame30Lb::Application.routes.draw do
   
+  get "managers/wall"
+
+  get "managers/members"
+
+  get "managers/network_configuration"
+
+  resources :discussions
+
   resources :response_to_the_evaluations do
     collection do
       post :create
