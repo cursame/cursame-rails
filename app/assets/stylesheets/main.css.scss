@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//When I wrote this, only God and I understood what I was doing
-//Now, God only knows - RodrigoAyala.me
+//=================================================================
+//= When I wrote this, only God and I understood what I was doing =
+//= Now, God only knows - RodrigoAyala.me                         =
+//=================================================================
 
 @import "vars";
 
@@ -71,19 +73,7 @@ ul{
 	padding-top: 40px;
 }
 
-.profile-post-box{
-  border: $border-box;
-  @include border-radius;
-  background: #FFF;
-  margin: 5px 0 10px 55px;
-  width: $width-form-post;
-  float: left;
-}
-.profile-form-options-styles{     //styles box elements forms post
-  width: 100%;
-  height: $height-post-box;
-  margin: 7px 0 6px 0;
-}
+
 
 
 
@@ -1269,74 +1259,6 @@ background-position: left center;
 }
 
 .menu-user a{margin-left: 10px;}
-
-.create {
-  list-style: none;
-  display: inline;
-  float: left;
-  & a{
-    display: block;
-    width: 100px;
-    height: 100%;
-    width: 100px;
-    float: left;
-    text-align: center;
-    //padding-top: 60px;
-    color: #969696;
-    font-size: 10px;
-  }
-
-  & a:hover{
-    //margin-top: -2px;
-    //padding-top: 62px;
-  }
-  & .icon{
-    @include circle-obj;
-    @include border-circle-obj;
-    @include circle-inset-shadow;
-    background: #ccc url('/assets/create/comment.png') repeat-y 3px 3px;
-    margin: -2px 0px 0px -2px;
-  }
-  & .border{
-    @include circle-obj;
-    @include border-circle-obj;
-    margin: 0px 0px 4px 18px;
-  }
-  & #message-form-btn{
-    & .icon{
-      background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
-    }
-    & .border{
-    }
-  }
-  & #delivery-form-btn{
-    & .icon{
-      background: #83b81f url('/assets/create/comment.png') repeat-y 3px 3px;
-
-    }
-
-  }
-  & .homework{
-    background: url('/assets/create/tarea.png') no-repeat;
-    background-position: center top;
-  }
-  & .discussion{
-    background: url('/assets/create/discus.png') no-repeat;
-    background-position: center top;
-  }
-  & .test{
-    background: url('/assets/create/test.png') no-repeat;
-    background-position: center top;
-  }
-  & .poll{
-    background: url('/assets/create/poll.png') no-repeat;
-    background-position: center top;
-  }
-  & .event{
-    background: url('/assets/create/event.png') no-repeat;
-    background-position: center top;
-  }
-}
 
 .course-create{
 	margin-top: -25px;
