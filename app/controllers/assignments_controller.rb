@@ -47,9 +47,20 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(params[:assignment])
     @asset = Asset.new(params[:asset])
+    @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+    
     
     respond_to do |format|
       if @assignment.save
+           @delivery_from_assignment = Delivery.find(@assignment.delivery_id)
+                @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
+                  @response_to_the_evaluation.name = generate_rubres.name
+                  @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+                  @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
+                  @response_to_the_evaluation.assignment_id = @assignment.id
+                  @response_to_the_evaluation.save
+                  
+                end
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
         format.json { render json: @assignment, status: :created, location: @assignment }
       else
@@ -66,7 +77,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.update_attributes(params[:assignment])
-        format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Assignment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

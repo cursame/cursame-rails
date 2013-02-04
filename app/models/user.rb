@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :users_surveys
   has_many :assets
   has_many :assignments
-
+  has_many :deliveries
   has_many :comments
   has_many :authentications 
 

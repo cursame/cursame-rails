@@ -1,6 +1,19 @@
+<!-- imagen avatar del usuario -->
+<a style:"float:left;" href="#">
+	<img src="<%= current_user.avatar%>" width ="32px">
+</a>
+
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 60, :placeholder=>'Comentario'  %>
-    <%=hidden_field_tag 'commentable_id', commentable_id %>
-    <%=hidden_field_tag 'commentable_type', commentable_type %>
-    <%= submit_tag "Comentar",:class=>"btn btn-primary" %>
+<%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s%>
+<%=hidden_field_tag 'commentable_id', commentable_id %>
+<%=hidden_field_tag 'commentable_type', commentable_type %>
+<%= submit_tag "Comentar",:style=>"display:none;" %>
 <% end %>
+
+<script type="text/javascript">
+$('#comment_for_<%=commentable_type+commentable_id.to_s%>').keyup(function(e){
+	if(e.keyCode == 13) {
+		$(this).parents("form").submit();
+	}		
+});
+</script>

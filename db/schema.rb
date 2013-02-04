@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130004146) do
+ActiveRecord::Schema.define(:version => 20130131235423) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20130130004146) do
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.integer  "course_id"
+    t.integer  "user_id"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|
@@ -133,6 +134,21 @@ ActiveRecord::Schema.define(:version => 20130130004146) do
     t.integer  "delivery_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "discussions", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "network_id"
+  end
+
+  create_table "discussions_courses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "course_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -180,6 +196,15 @@ ActiveRecord::Schema.define(:version => 20130130004146) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notificacions", :force => true do |t|
+    t.integer  "notificator_id"
+    t.string   "notificator_type"
+    t.integer  "user_id"
+    t.string   "kind"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
@@ -217,6 +242,17 @@ ActiveRecord::Schema.define(:version => 20130130004146) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
+  end
+
+  create_table "response_to_the_evaluations", :force => true do |t|
+    t.string   "name"
+    t.text     "comment_for_rubre"
+    t.integer  "assignment_id"
+    t.integer  "course_id"
+    t.integer  "evaluation_porcentage"
+    t.integer  "rub_calification"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "role_id_and_permission_ids", :force => true do |t|

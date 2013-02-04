@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  comment_for_rubre: MyText
+  assignment_id: 1
+  course_id: 1
+  evaluation_porcentage: 1
+
+two:
+  name: MyString
+  comment_for_rubre: MyText
+  assignment_id: 1
+  course_id: 1
+  evaluation_porcentage: 1

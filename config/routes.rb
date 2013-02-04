@@ -1,5 +1,21 @@
 Cursame30Lb::Application.routes.draw do
   
+  get "managers/wall"
+
+  get "managers/members"
+
+  get "managers/network_configuration"
+
+  resources :discussions
+
+  resources :response_to_the_evaluations do
+    collection do
+      post :create
+      post :new
+     end
+  end
+  
+
   resources :authentications
 
   #recursos necesarios para el calendario
@@ -118,7 +134,7 @@ Cursame30Lb::Application.routes.draw do
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
-
+  
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
 

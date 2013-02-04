@@ -230,6 +230,12 @@ ul{
     height: 35px;
     float: left;
   }
+   & .general-cir-surveys{
+    background: url('/assets/comment-cir-mini-surveys.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
   & .arrow-left {
     background: url('/assets/arrow_comment.png') no-repeat;
     width: 9px;
@@ -239,6 +245,487 @@ ul{
     margin:5px 0px 0px -9px;
   }
 }
+
+/* homework */
+#box-homework{
+  clear: both;
+  float: left;
+  margin-left: 9px;
+  & .avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
+  & .comment-text{
+    width: $comment-box;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    & .header{
+      line-height: 23pt;
+      & .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    }
+    & .content{
+      color: #333;
+      font-size: 13px;
+      padding: 6px 10px 5px 10px;
+      & .null-image{
+        width: 50px;
+        height: 23px;
+        float: left;
+      }
+    }
+    
+    & .video{
+	     padding: 10px;
+    }
+    
+    & .attatchments{
+	    
+    }
+    
+    & .title-homework{
+	    font-size: 18px; 
+	    font-weight: bold;
+	    margin-bottom: 10px;
+    }
+    
+    & .text-homework{
+	    padding-left: 10px;
+    }
+    & .footer{
+      border-top:1px solid $border-general;
+      height: 25px;
+      color: #777777;
+      float: left;
+      width: 100%;
+      & .icon{
+        float: left;
+        margin: 4px 0px 0px 5px;
+      }
+      & .labels{
+        float: right;
+        margin: 4px 5px 0px 10px;
+      }
+    }
+  }
+
+  & .comment-image{
+    width: $comment-box;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    position: relative;
+
+    & .content{
+      float:left;
+      & .single-image{
+        width: $comment-box;
+        float: left;
+        @include border-b-right-radius;
+        @include border-b-left-radius;
+      }
+    }
+    & .footer{
+      position: absolute;
+      height: 40px;
+      color: #FFF;
+      float: left;
+      width: $comment-box;
+      bottom:0;
+      background: url('/assets/comment-img-bar.png');
+      @include border-b-right-radius;
+      @include border-b-left-radius;
+      & .content-footer{
+        margin-top: 12px;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        & .icon{
+          float: left;
+          margin: 5px 0px 0px 5px;
+        }
+        & .labels{
+          float: right;
+          margin: 5px 5px 0px 10px;
+        }
+      }
+
+    }
+  }
+
+  & .header{
+    background: #e9e9e9;//#ebebef;
+    height: 25px;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
+    width: 100%;
+    -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
+    -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
+    box-shadow:         inset 0px 1px 0px #f7f7f8;
+    border-bottom: $border-box;
+    & .null-image{
+      width: 60px;
+      height: 15px;
+      float: left;
+    }
+    & .name{
+      color: #333;
+    }
+  }
+  & .general-cir{
+    background: url('/assets/comment-cir-mini.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+   & .general-cir-homework{
+    background: url('/assets/comment-cir-mini-homework.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+  & .arrow-left {
+    background: url('/assets/arrow_comment.png') no-repeat;
+    width: 9px;
+    height: 14px;
+    float:left;
+    position: absolute;
+    margin:5px 0px 0px -9px;
+  }
+}
+
+/* discusion */
+#box-discusion{
+  clear: both;
+  float: left;
+  margin-left: 9px;
+  & .avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
+  & .comment-text{
+    width: $comment-box;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    & .header{
+      line-height: 23pt;
+      & .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    }
+    & .content{
+      color: #333;
+      font-size: 13px;
+      padding: 6px 10px 5px 10px;
+      & .null-image{
+        width: 50px;
+        height: 23px;
+        float: left;
+      }
+    }
+    
+    & .video{
+	     padding: 10px;
+    }
+    
+    & .attatchments{
+	    
+    }
+    & .title-discusion{
+	    font-size: 18px; 
+	    font-weight: bold;
+	    margin-bottom: 10px;
+    }
+    
+    & .text-discusion{
+	    padding-left: 10px;
+    }
+    
+    & .footer{
+      border-top:1px solid $border-general;
+      height: 25px;
+      color: #777777;
+      float: left;
+      width: 100%;
+      & .icon{
+        float: left;
+        margin: 4px 0px 0px 5px;
+      }
+      & .labels{
+        float: right;
+        margin: 4px 5px 0px 10px;
+      }
+    }
+  }
+
+  & .comment-image{
+    width: $comment-box;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    position: relative;
+
+    & .content{
+      float:left;
+      & .single-image{
+        width: $comment-box;
+        float: left;
+        @include border-b-right-radius;
+        @include border-b-left-radius;
+      }
+    }
+    & .footer{
+      position: absolute;
+      height: 40px;
+      color: #FFF;
+      float: left;
+      width: $comment-box;
+      bottom:0;
+      background: url('/assets/comment-img-bar.png');
+      @include border-b-right-radius;
+      @include border-b-left-radius;
+      & .content-footer{
+        margin-top: 12px;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        & .icon{
+          float: left;
+          margin: 5px 0px 0px 5px;
+        }
+        & .labels{
+          float: right;
+          margin: 5px 5px 0px 10px;
+        }
+      }
+
+    }
+  }
+
+  & .header{
+    background: #e9e9e9;//#ebebef;
+    height: 25px;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
+    width: 100%;
+    -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
+    -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
+    box-shadow:         inset 0px 1px 0px #f7f7f8;
+    border-bottom: $border-box;
+    & .null-image{
+      width: 60px;
+      height: 15px;
+      float: left;
+    }
+    & .name{
+      color: #333;
+    }
+  }
+     & .general-cir-discusion{
+    background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+  & .arrow-left {
+    background: url('/assets/arrow_comment.png') no-repeat;
+    width: 9px;
+    height: 14px;
+    float:left;
+    position: absolute;
+    margin:5px 0px 0px -9px;
+  }
+}
+
+/* surveys */
+#box-survey{
+  clear: both;
+  float: left;
+  margin-left: 9px;
+  & .avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
+  & .comment-text{
+    width: $comment-box;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    & .header{
+      line-height: 23pt;
+      & .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    }
+    & .content{
+      color: #333;
+      font-size: 13px;
+      padding: 6px 10px 5px 10px;
+      & .null-image{
+        width: 50px;
+        height: 23px;
+        float: left;
+      }
+    }
+    
+    & .video{
+	     padding: 10px;
+    }
+    
+    & .attatchments{
+	    
+    }
+    & .title-discusion{
+	    font-size: 18px; 
+	    margin-bottom: 10px;
+    }
+    
+    & .text-discusion{
+	    padding-left: 10px;
+    }
+    
+    & .footer{
+      border-top:1px solid $border-general;
+      height: 25px;
+      color: #777777;
+      float: left;
+      width: 100%;
+      & .icon{
+        float: left;
+        margin: 4px 0px 0px 5px;
+      }
+      & .labels{
+        float: right;
+        margin: 4px 5px 0px 10px;
+      }
+    }
+  }
+
+  & .comment-image{
+    width: $comment-box;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    position: relative;
+
+    & .content{
+      float:left;
+      & .single-image{
+        width: $comment-box;
+        float: left;
+        @include border-b-right-radius;
+        @include border-b-left-radius;
+      }
+    }
+    & .footer{
+      position: absolute;
+      height: 40px;
+      color: #FFF;
+      float: left;
+      width: $comment-box;
+      bottom:0;
+      background: url('/assets/comment-img-bar.png');
+      @include border-b-right-radius;
+      @include border-b-left-radius;
+      & .content-footer{
+        margin-top: 12px;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        font-size: 18px;
+        text-align: right;
+        padding: 2px 30px 0 0;
+        
+        & .icon{
+          float: left;
+          margin: 5px 0px 0px 5px;
+        }
+        & .labels{
+          float: right;
+          margin: 5px 5px 0px 10px;
+        }
+      }
+
+    }
+  }
+
+  & .header{
+      line-height: 23pt;
+      & .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    & .name{
+      color: #333;
+    }
+  }
+     & .general-cir-survey{
+    background: url('/assets/comment-cir-mini-surveys.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+  & .arrow-left {
+    background: url('/assets/arrow_comment.png') no-repeat;
+    width: 9px;
+    height: 14px;
+    float:left;
+    position: absolute;
+    margin:5px 0px 0px -9px;
+  }
+}
+
 
 
 .tabs-style{
@@ -857,4 +1344,178 @@ background-position: left center;
 
 .box-test{
 
+}
+
+ .upload-labels{
+ 	width: 550px;
+    float: left;
+    background: #f2f7fd;
+    border: $border-high;
+    @include border-radius-btn;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0px 5px 4px 5px;
+    margin: 0 10px 10px 10px;
+    display: none;
+    & .file-mini-upload{
+      //clear:both;
+      float: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 158px;
+      background: url('/assets/icons/file-basic-mini.png') no-repeat left;
+      height: 28px;
+      padding: 0px 0px 0px 30px;
+      line-height: 23pt;
+      margin: 4px 0px 0px 0px;
+    }
+  }
+
+/* notification */
+#box-notifications{
+  clear: both;
+  float: left;
+  margin: 5px 0 0 -20px;
+    
+  & .avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
+  & .comment-text{
+    width: 300px;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+	   -moz-box-shadow: 1px 3px 7px #757575;
+-webkit-box-shadow: 1px 3px 7px #757575;
+box-shadow: 1px 3px 7px #757575;
+    & .header{
+      line-height: 23pt;
+      padding-bottom: 6px;
+      & .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+      & .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    }
+    & .content{
+      color: #333;
+      font-size: 13px;
+      padding: 6px 10px 5px 10px;
+     & li{
+	  padding: 10px 0 10px 0;   
+	  border-bottom: $border-box;
+	  min-height: 50px;
+	  line-height: 18px;
+	  font-size: 12px;
+	  }  
+	  & li:hover{
+		  background-color: #f8f8f8;
+	  } 
+	  & .avatar-notifications{
+	     	float: left;
+	     	margin-right: 10px;
+	     	}
+	  & .time{
+		  font-size: 10px;
+		  color: #777;
+	  }
+	  & .first{
+		  margin-top: -5px;
+	  }
+	  & .last{
+		  border: none;
+	  }
+    }
+     	     
+    & .video{
+	     padding: 10px;
+    }
+    
+    & .attatchments{
+	    
+    }
+    & .title-discusion{
+	    font-size: 18px; 
+	    font-weight: bold;
+	    margin-bottom: 10px;
+    }
+    
+    & .text-discusion{
+	    padding-left: 10px;
+    }
+    
+    & .footer{
+      border-top:1px solid $border-general;
+      height: 25px;
+      color: #777777;
+      float: left;
+      width: 100%;
+      text-align: center;
+      padding-top: 6px;
+       -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
+    -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
+    box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
+
+      & .icon{
+        float: left;
+        margin: 4px 0px 0px 5px;
+      }
+      & .labels{
+        float: right;
+        margin: 4px 5px 0px 10px;
+      }
+     
+    }
+     & .footer:hover{
+	      -webkit-box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+    -moz-box-shadow:    inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+    box-shadow:         inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+    background-color: #f8f8f8;
+      }
+  }
+
+ 
+  & .header{
+    background: #fff;//#ebebef;
+    height: 25px;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
+    width: 100%;
+    -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
+    -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
+    box-shadow:         inset 0px 1px 0px #f7f7f8;
+    border-bottom: $border-box;
+    
+    & b {margin-left: 10px;}
+        & .name{
+      color: #333;
+    }
+  }
+     & .general-cir-discusion{
+    background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+  & .arrow-top {
+    background: url('/assets/arrow_notification.png') no-repeat;
+    width: 14px;
+    height: 9px;
+    position: absolute;
+    margin:-9px 0px 0px 145px;
+    z-index: 20;
+  }
 }

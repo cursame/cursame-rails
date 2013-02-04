@@ -1,8 +1,6 @@
 <% if user_signed_in? %>
-	<%= render :partial => 'wall' %>	
+<%= render :partial => 'wall' %>	
 <% else %>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,48 +9,42 @@
 	<title>C&uacute;rsame, Sistema de Aprendizaje + Red Social</title>
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen">
 	<link rel="shortcut icon" href="http://cursa.me/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="http://cursa.me/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="http://cursa.me/images/apple-touch-icon.png">
 
 	<script src="js/jquery-1.8.0.js"></script>
 	<script src="js/fexibg.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body>
-<div class="topbar2">
-      <div class="fill">
-        <div class="container2">
-       <!--   <a class="brand" href="http://cursa.me/index.html"><img src="img/logo.png"></a>-->
-          
-        </div>      	
-      </div>
-    </div>
+	<div class="topbar2">
+		<div class="fill">
+			<div class="container2">
+				<!--   <a class="brand" href="http://cursa.me/index.html"><img src="img/logo.png"></a>-->
 
-<div style="overflow: hidden; width: 100%; height: 100%; z-index: -1; position: fixed; top: 0px; left: 0px; "><img src="assets/background-login.png" id="expando" style="left: 0px; "></div>
+			</div>      	
+		</div>
+	</div>
+
+	<div style="overflow: hidden; width: 100%; height: 100%; z-index: -1; position: fixed; top: 0px; left: 0px; "><img src="assets/background-login.png" id="expando" style="left: 0px; "></div>
 
 	<div class="login"><center>
 		<p><b>Clases, Actividades, Red Social.</b><br>
-C&uacute;rsame conecta a directivos, profesores y alumnos <br>
-permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>	<br><br>
+			C&uacute;rsame conecta a directivos, profesores y alumnos <br>
+			permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>	<br><br>
 
-<a href="licencias.html"><i><%= link_to "¿Eres nuevo en Cúrsame?", new_user_registration_path ,:class=>"btn large primary"%>
-</i> </a>
+			<a href="licencias.html"><i><%= link_to "¿Eres nuevo en Cúrsame?", new_user_registration_path ,:class=>"btn large primary"%>
+			</i> </a>
 
-<div class="login-form">
-	Iniciar Sesi&oacute;n
-		<form action="demo_form.asp" autocomplete="on">
-			<%= render :partial => 'login-form'%>
-</form>
-	
-</div>
+			<div class="login-form">
+				Iniciar Sesi&oacute;n
+				<form action="demo_form.asp" autocomplete="on">
+					<%= render :partial => 'login-form'%>
+				</form>				
+			</div>
+		</center></div>
 
-
-
-	</center></div>
-	
-	<footer>Sobre nosotros &nbsp;&nbsp;Ayuda &nbsp;&nbsp;Blog  &nbsp;&nbsp;Empleos &nbsp;&nbsp;T&eacute;rminos &nbsp;&nbsp;Privacidad &nbsp;&nbsp;Publicidad  &nbsp;&nbsp;Desarrolladores   &nbsp;&nbsp;&nbsp;&copy; 2012 C&uacute;rsame </footer>
-
-
-	
-</body>
-</html>
-<% end %>
+		<footer>Sobre nosotros &nbsp;&nbsp;Ayuda &nbsp;&nbsp;Blog  &nbsp;&nbsp;Empleos &nbsp;&nbsp;T&eacute;rminos &nbsp;&nbsp;Privacidad &nbsp;&nbsp;Publicidad  &nbsp;&nbsp;Desarrolladores   &nbsp;&nbsp;&nbsp;&copy; 2012 C&uacute;rsame </footer>
+		
+	</body>
+	</html>
+	<% end %>

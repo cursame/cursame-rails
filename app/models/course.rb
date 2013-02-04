@@ -10,6 +10,10 @@ class Course < ActiveRecord::Base
   has_many :assignments
   has_many :surveyings
   has_many :surveys, :through => :surveyings
+  has_many :response_to_the_evaluations
+  has_many :discussions_courses
+  has_many :discussions, :through => :discussions_courses
+  
 
    
   after_create do

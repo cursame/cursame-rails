@@ -15,6 +15,7 @@
   end
 %>
 
+<!-- <div id="box-comments" > -->
 <div id="box-comments" >
   <div class="general-cir"></div>
 
@@ -29,9 +30,9 @@
       <p><%= content_comment %></p>
     </div>
 
-    <div class="footer">
-      <img src="/assets/icons/grey-mini-comment.png" class="icon">
-      <img src="/assets/icons/grey-mini-like.png" class="icon">
+    <div class="footer" id="footer-comment-<%= comment.id %>">
+      <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
+      <img src="/assets/icons/grey-mini-like.png" class="icon like">
       <div class="labels">20 Comentarios</div>
       <div class="labels">12 Likes</div>
       <!-- los comentarios del comentario
@@ -50,17 +51,31 @@
       </div>
     </div>
   </div>
+
+  <!-- area para comentar -->
+  <div class="make-comments" style="display:none;" id="commentable-area-<%= comment.id %>">
+    <div id="comments-comment-<%= comment.id %>">
+     <% comment.comments.each do |commentt| %>
+     <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+     <%end%>    
+   </div>
+   <div style:"float:left;">
+    <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
+    </div>
+  </div>
+
 </div>
 
+<script type="text/javascript">
 
-<!--
-<div class="media">
-    <a class="pull-left" href="#">
+$('#footer-comment-<%= comment.id %>').on('click',function(e){
+  e.preventDefault();
+  if(e.target.className === 'icon comments'){ //si quiere ver los comentarios
+    $('#commentable-area-<%= comment.id %>').fadeToggle();
+  }
+  if(e.target.className === 'icon like'){ //si quiere daler like ;)
+    alert('like!!');
+  }  
+});
 
-     </a>
-    <div class="media-body" >
-       	<h4 class="media-heading"></h4>
-
-
-    </div>
-</div>         -->
+</script>
