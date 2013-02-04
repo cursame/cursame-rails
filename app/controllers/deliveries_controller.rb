@@ -71,11 +71,13 @@ class DeliveriesController < ApplicationController
     
     respond_to do |format|
       if @delivery.save
+        format.js 
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
       else
         format.html { render action: "new" }
         format.json { render json: @delivery.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

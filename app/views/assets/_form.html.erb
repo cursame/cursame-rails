@@ -1,0 +1,30 @@
+<%= form_for(@asset, :remote => true) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :file %><br />
+    <%= f.file_field :file, :id => "image_dinamic" %>
+    <div id="preview">
+    </div>
+    <script>
+       $("#preview").append("<%= image_tag('image_dinamic')%>")
+    </script>
+    
+  </div>
+  <div class="field">
+  
+    <%= f.password_field :encryption_code_to_access %>
+    
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

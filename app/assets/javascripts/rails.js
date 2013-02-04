@@ -1,5 +1,4 @@
 (function($, undefined) {
-
 /**
  * Unobtrusive scripting adapter for jQuery
  * https://github.com/rails/jquery-ujs

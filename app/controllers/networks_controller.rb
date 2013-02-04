@@ -40,6 +40,9 @@ class NetworksController < ApplicationController
 
     @network = Network.find_by_subdomain!(request.subdomain)
     @comments = @network.comments 
+
+    # TODO aqui hay que hacer una especie de merge para que se pueda paginar el timeline de alguna manera
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @network }
