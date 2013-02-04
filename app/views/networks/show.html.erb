@@ -172,7 +172,6 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   <% @comments.reverse.each do |comment| %>
         <%= render :partial => '/shared/comments', :locals => { :text_comment=>comment } %>
   <%end%>
@@ -197,13 +196,11 @@
         <div class="labels">12 Likes</div>
       </div>
     </div>
-=======
   <!-- timeline -->
   <div id="timeline">
-    <% @comments.reverse.each do |comment| %>
-        <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-    <%end%>
->>>>>>> 2e62c65f00fd45ca4cf5ad992338268c736ea51f
+    <%# @comments.reverse.each do |comment| %>
+        <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+    <%#end%>
   </div>
   <!-- fin timeline -->
   
