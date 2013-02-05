@@ -19,22 +19,23 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments, :assets
   
     
-  def published_active
+  def self.published_active
       self.update_attributes(:published => true)
       #Delivery.published!
   end
   
-  def published_inactive
+  def self.published_inactive
       self.update_attributes(:published => false)
       #Delivery.published!
       
   end
   
-  def time_now
+  def self.time_now
     @time = DateTime.now
   end
   
-  def active_inactive
+  def self.active_inactive
+      puts "correindo deliveries"
       case
         when Delivery.publish_date == time_now
             published_active
