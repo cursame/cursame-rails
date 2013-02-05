@@ -63,11 +63,6 @@ function NestedSlider(defaultInitValue) {
 }
 
 
-/*
- *==================================================
- *==================== DropDown ====================
- *==================================================
- */
 
 
 
@@ -91,7 +86,8 @@ function Uploader( id_asset_box , id_label_box ) {
 
     /*
      *
-     * Value:Object     = Contiene el objeto Asset este es clonado y guardado en memoria, se envia para ser agregado al DOM
+     * changeAttrUpload(value, parentId); Void
+     * value:Object     = Contiene el objeto Asset este es clonado y guardado en memoria, se envia para ser agregado al DOM
      * parentId:String  = Es el ID de la caja que contiene los assets
      *
      */
@@ -118,10 +114,8 @@ function Uploader( id_asset_box , id_label_box ) {
 
     function initChangeLabel( value ){
         var tmp_value = value;
-        console.log( id_asset_box + ' #asset-file-'+ tmp_value );
         $(id_asset_box+' #asset-file-'+ tmp_value +'' ).change(function(){
             var fileName = $( id_asset_box + ' #upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-            console.log(id_label_box);
             $(id_label_box).append('<div class="file-mini-upload">'+ fileName + '</div>');
             $( id_asset_box + ' #upload-delivery-element-'+tmp_value).hide();
 
@@ -134,3 +128,53 @@ function Uploader( id_asset_box , id_label_box ) {
         });
     }
 }
+
+
+/*
+ *==================================================
+ *==================== DropDown ====================
+ *==================================================
+ */
+function DropDown(el) {
+    this.dd = el;
+    console.log(el);
+    this.opts = this.dd.find('ul.dropdown > div > li');
+    this.val = [];
+    this.index = [];
+    this.initEvents();
+    this.clearDropDown = function ( ){
+       // objForm[0].reset();
+    }
+}
+DropDown.prototype = {
+    initEvents : function() {
+        var obj = this;
+        obj.dd.on('click', function(event){
+            $(this).toggleClass('active');
+            event.stopPropagation();
+        });
+        obj.opts.children('label').on('click',function(event){
+            var opt = $(this).parent(),
+                chbox = opt.children('input'),
+                val = chbox.val(),
+                idx = opt.index();
+            //checked manual (se puede manejar automatico por ID pero tiene que se igual el Id del input con el for del label
+            if ($(chbox).is(':checked')) {
+                $(chbox).prop('checked', false);
+            } else {
+                $(chbox).prop('checked', true);
+            }
+            event.stopPropagation();
+        });
+    },
+    getValue : function() {
+        return this.val;
+    },
+    getIndex : function() {
+        return this.index;
+    }
+}
+$(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+});
+

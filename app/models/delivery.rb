@@ -1,4 +1,5 @@
 class Delivery < ActiveRecord::Base
+  scope :active_inactive
   scope :courses
   has_many :deliveries_courses
   has_many :courses, :through => :deliveries_courses, :dependent => :destroy
@@ -17,5 +18,37 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :assignments, :assets
   
+
+
+      state_machine :state, :initial => :unpublish do
+         state :unpublish
+         state :published
+         
+         event :publish do
+           transition :to => :published, :from => :unpublish
+         end
+         
+      end
+      
+      before_create do
+         self.publish_date ||= DateTime.now
+      end
+      
+      after_create do
+         if self.publish_date <= DateTime.now
+            self.publish!
+         end
+       end
+       
+       after_update do
+         #### crear notificaciones
+         puts "se ha creado una nueva tarea"
+       end
+       
+       def expired?
+         end_date < DateTime.now
+       end
+        
   
+
 end

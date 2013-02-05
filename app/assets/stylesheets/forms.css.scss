@@ -246,8 +246,21 @@
     height: 28px;
     font-size: 14px;
     padding: 0px 0px 0px 30px;
+    &.public-dd{
+      background-position: 5px 3px;
+      @include bg-public-dropdown-btn;
+      background-repeat: no-repeat;
+    }
+    &.course-dd{
+      background-position: 5px 3px;
+      @include bg-course-dropdown-btn;
+      background-repeat: no-repeat;
+    }
     & span{
       line-height: 30px;
+      &.title-label-dd{
+
+      }
     }
     & .box-arrow{
       float: right;
@@ -291,14 +304,11 @@
       /* Hiding */
       opacity: 0;
       pointer-events: none;
+
       & li {
         position: relative; /* Enable absolute positioning for checkboxes */
         &:last-of-type label {
           border: none;
-        }
-        &:hover label {
-          background: #fcfcfd url('/assets/icons/check-mini-low.png') no-repeat 5px 7px;
-          @include border-radius-btn;
         }
         & label {
           display: block;
@@ -307,6 +317,29 @@
           transition: all 0.3s ease-out;
           cursor: pointer;
           text-transform: capitalize;
+          &.world-dd{
+            background: url('/assets/icons/world-mini-low.png') no-repeat 5px 7px;
+          }
+          &.course-dd{
+            background: url('/assets/icons/course-mini-low.png') no-repeat 5px 7px;
+          }
+          &.return-dd{
+            background: url('/assets/icons/return-mini-low.png') no-repeat 35px 7px;
+            padding: 10px 10px 10px 60px!important;
+          }
+          &:hover {
+            background: #fcfcfd url('/assets/icons/check-mini-low.png') no-repeat 5px 7px;
+            @include border-radius-btn;
+            &.world-dd{
+              background: #fcfcfd url('/assets/icons/world-mini-high.png') no-repeat 5px 7px;
+            }
+            &.course-dd{
+              background: #fcfcfd url('/assets/icons/course-mini-high.png') no-repeat 5px 7px;
+            }
+            &.return-dd{
+              background: url('/assets/icons/return-mini-high.png') no-repeat 35px 7px;
+            }
+          }
         }
         // Checkboxes
         & input {
@@ -424,7 +457,7 @@
 
 
 
-
+// Boton para link <a></a>
 .a-button{
   font-size: 14px;
   margin: 4px 4px 2px 4px;
@@ -463,6 +496,77 @@
     box-shadow:         inset 0px 1px 1px #2f8999;
   }
 }
+
+
+//===
+
+//===
+
+.profile-post-box{
+  border: $border-box;
+  @include border-radius;
+  background: #FFF;
+  margin: 5px 0 10px 55px;
+  width: $width-form-post;
+  float: left;
+
+
+  & .post-btns-box {
+    list-style: none;
+    display: inline;
+    float: left;
+    width: 100%;
+    height: $height-post-box;
+    margin: 7px 0 6px 0;
+    & a{
+      display: block;
+      width: 100px;
+      height: 100%;
+      width: 100px;
+      float: left;
+      text-align: center;
+      //padding-top: 60px;
+      color: #969696;
+      font-size: 10px;
+    }
+
+    & a:hover{
+      //margin-top: -2px;
+      //padding-top: 62px;
+    }
+    & .icon{
+      @include circle-obj;
+      @include border-circle-obj;
+      @include circle-inset-shadow;
+      background: #ccc url('/assets/create/comment.png') repeat-y 3px 3px;
+      margin: -2px 0px 0px -2px;
+    }
+    & .border{
+      @include circle-obj;
+      @include border-circle-obj;
+      margin: 0px 0px 4px 18px;
+    }
+    & .message-form-btn{
+      & .icon{
+        background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
+      }
+      & .border{
+      }
+    }
+    & .delivery-form-btn{
+      & .icon{
+        background: #83b81f url('/assets/create/comment.png') repeat-y 3px 3px;
+      }
+    }
+    & .discussion-form-btn{
+      & .icon{
+        background: #d5d30e url('/assets/create/comment.png') repeat-y 3px 3px;
+      }
+    }
+  }
+}
+
+
 
 #delivery-form-area{
   height: 195px;
@@ -563,6 +667,27 @@
     float: right !important;
   }
 }
+
+.discussion-form-area-style{
+  height: 120px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  width: $width-form-post;
+  & textarea{
+    margin: 10px 0px 0px 10px;
+    width: 570px;
+  }
+  & button{
+    float: right !important;
+    margin-right: 9px;
+  }
+  & input[type=submit]{
+    float: right !important;
+  }
+}
+
 
 #survey-form-area{
   height: 190px;

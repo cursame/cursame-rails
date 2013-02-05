@@ -156,10 +156,10 @@
       </div>
     </div>
 
-    <div id="profile-form-options" class="profile-form-options-styles create">
-      <a id="message-form-btn" href="#message-form-area"><div class="border" ><div class="icon"></div></div>Comentario</a>
-      <a id="delivery-form-btn" href="#delivery-form-area"><div class="border" ><div class="icon"></div></div>Tarea</a>
-      <a href="" class="discussion"><div class="border" ><div class="icon"></div></div>Discusión</a>
+    <div id="profile-form-options" class="post-btns-box">
+      <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
+      <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
+      <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
       <a href="#survey-form-area" class="test"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
       <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
       <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
@@ -184,7 +184,8 @@
              <div class="arrow-left"></div>
                <div class="header">
                  <div class="null-image"></div>
-                 <div class="avatar"><%#= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
+                 <div class="avatar">
+                 <%= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
                    <div class="name"> <%= delivery.title %></div><span><%= delivery.publish_date%></span>
                  </div>
                   <div class="content">
@@ -256,73 +257,6 @@
       </div>
   </div>
   <%end%>
-  <!--
-  <div id="box-comments">
-    <div class="general-cir"></div>
-    <div id="comment1" class="comment-text" >
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="null-image"></div>
-        <div class="avatar"><%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <div class="name"> <%#  comment.user.name %></div>  <span>fecha</span>
-      </div>
-      <div class="content">
-        <div class="null-image"></div>
-        <%#  comment.comment %>
-      </div>
-      <div class="footer">
-        <img src="/assets/icons/grey-mini-comment.png" class="icon">
-        <img src="/assets/icons/grey-mini-like.png" class="icon">
-        <div class="labels"><%# comment.comments.count %>Comentarios</div>
-        <div class="labels">12 Likes</div>
-      </div>
-    </div>
-  </div>
-
-
-  <div id="box-comments">
-    <div class="general-cir"></div>
-    <div id="" class="comment-image" >
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="null-image"></div>
-        <div class="avatar"><%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <b>Nombre Usuario</b>  <span>29/ENE/2012</span>
-      </div>
-      <div class="footer">
-        <div class="content-footer">
-          <img src="/assets/icons/white-mini-comment.png" class="icon">
-          <img src="/assets/icons/white-mini-like.png" class="icon">
-          <div class="labels">20 Comentarios</div>
-          <div class="labels">12 Likes</div>
-        </div>
-      </div>
-      <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
-    </div>
-  </div>
-  <div id="box-comments">
-    <div class="general-cir"></div>
-
-    <div id="" class="comment-text" >
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="avatar"><%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <div class="top-null-image"></div><b>Rodrigo Ayala</b>  <span class="date">29/Ene/2012</span>
-      </div>
-      <div class="content">
-        <div class="null-image"></div>
-        <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-      </div>
-
-      <div class="footer">
-        <img src="/assets/icons/grey-mini-comment.png" class="icon">
-        <img src="/assets/icons/grey-mini-like.png" class="icon">
-        <div class="labels">20 Comentarios</div>
-        <div class="labels">12 Likes</div>
-      </div>
-    </div>
-  </div>
-  -->
 </div>
 
 </div>
