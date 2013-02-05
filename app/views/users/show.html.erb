@@ -193,26 +193,23 @@
                 <div id="survey-form-area">
                   <%# render :partial => '/surveys/form'%>
                 </div>
-                <div id="discussion-form-area">
+                <div id="discussion-form-area" class="discussion-form-area-style">
                     <%= render :partial => "/discussions/form_for_discussion"%>
                 </div>
             </div>
-            <div id="profile-form-options" class="profile-form-options-styles create">
-                <a id="message-form-btn" href="#message-form-area"><div class="border" ><div class="icon"></div></div>Comentario</a>
-                <a href="#delivery-form-area"><div class="border" ><div class="icon"></div></div>Tarea</a>
-                <a href="#discussion-form-area"><div class="border" ><div class="icon"></div></div>Discusión</a>
+            <div id="profile-form-options" class="post-btns-box">
+                <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
+                <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
+                <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
                 <a href="#survey-form-area"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
                 <a href=""><div class="border" ><div class="icon"></div></div>Encuesta</a>
                 <a href=""><div class="border" ><div class="icon"></div></div>Evento</a>
             </div>
         </div>
-        
-        <% @comments.reverse.each do |comment| %>
-         
 
-        
-         <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-        <%end%>
+      <% @comments.reverse.each do |comment| %>
+          <%= render :partial => '/shared/comments', :locals => { :text_comment=>comment } %>
+      <%end%>
 
       <div id="box-comments">
         <div class="general-cir"></div>

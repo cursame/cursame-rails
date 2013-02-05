@@ -3,6 +3,7 @@
  *==================================================
  *===================== Slider =====================
  *==================================================
+ * defaultInitValue:Boolean si contiene un false o nulo entonces inicializa 100% el slider
 */
 function NestedSlider(defaultInitValue) {
     this.currentAvailablePercent = 100
@@ -67,3 +68,69 @@ function NestedSlider(defaultInitValue) {
  *==================== DropDown ====================
  *==================================================
  */
+
+
+
+/*
+ *==================================================
+ *==================== Uploader ====================
+ *==================================================
+ */
+
+function Uploader( id_asset_box , id_label_box ) {
+
+    var nestedUploadDelivery    = $(id_asset_box).html();  //se extrae el elemento con ID 0 y se guarda en memoria
+    var controlNestedUpload     = 0;
+    $( id_asset_box ).empty();
+
+    $( nestedUploadDelivery ).each(function( index, value ) {
+        changeAttrUpload( $(value).clone() , id_asset_box );
+    });
+    initChangeLabel(controlNestedUpload);
+    controlNestedUpload++;
+
+    /*
+     *
+     * Value:Object     = Contiene el objeto Asset este es clonado y guardado en memoria, se envia para ser agregado al DOM
+     * parentId:String  = Es el ID de la caja que contiene los assets
+     *
+     */
+
+    function changeAttrUpload(value, parentId){
+        var id_value = 'id';
+        var id_name ='name';
+        var str_id = $(value).attr(id_value);
+        str_id = (str_id!=undefined)? str_id.replace('0',controlNestedUpload) : undefined;
+        $(value).attr(id_value,str_id);
+        var str_name = $(value).attr(id_name);
+        str_name = (str_name!=undefined)?str_name.replace('0',controlNestedUpload):undefined;
+        $(value).attr(id_name,str_name);
+        $( $(value).children() ).each(function( index, value_local ) {
+            var str_id = $(value_local).attr(id_value);
+            str_id = (str_id!=undefined)? str_id.replace('0',controlNestedUpload) : undefined;
+            $(value_local).attr(id_value,str_id);
+            var str_name = $(value_local).attr(id_name);
+            str_name = (str_name!=undefined)?str_name.replace('0',controlNestedUpload):undefined;
+            $(value_local).attr(id_name,str_name);
+        });
+        $(parentId).append($(value));
+    }
+
+    function initChangeLabel( value ){
+        var tmp_value = value;
+        console.log( id_asset_box + ' #asset-file-'+ tmp_value );
+        $(id_asset_box+' #asset-file-'+ tmp_value +'' ).change(function(){
+            var fileName = $( id_asset_box + ' #upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
+            console.log(id_label_box);
+            $(id_label_box).append('<div class="file-mini-upload">'+ fileName + '</div>');
+            $( id_asset_box + ' #upload-delivery-element-'+tmp_value).hide();
+
+            $( nestedUploadDelivery ).each(function( index, value ) {
+                changeAttrUpload( $(value).clone(), id_asset_box);
+            });
+            initChangeLabel(controlNestedUpload);
+            controlNestedUpload++;
+            $(id_label_box).show();
+        });
+    }
+}

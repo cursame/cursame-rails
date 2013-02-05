@@ -22,9 +22,7 @@ class UsersController < ApplicationController
 
     #==== Areas de evaluación ====
     @areas_of_evaluation = AreasOfEvaluation.new
-    1.times do
-        areas_of_evaluations = @delivery.areas_of_evaluations.build
-    end
+    areas_of_evaluations = @delivery.areas_of_evaluations.build
 
    ### publicando comentarios en el show de users
      @network_comments = current_network.comments

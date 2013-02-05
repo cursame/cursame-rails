@@ -1,0 +1,26 @@
+<!-- este partial controla la logica para mostrar notificaciones -->
+<li class="<%= cls %>">
+	<% case notification.kind%>
+	<% when 'user_comment_on_network'%>
+	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en la red <b><%= current_network.name %></b> 
+	<br/>
+	<span class="time">Hace 3 horas</span>
+
+	<% when 'user_comment_on_discussion'%>
+	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b> 
+	<br/>
+	<span class="time">Hace 3 horas</span>
+
+	<% when 'new_public_course_on_network'%>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsma</b>
+	<br/>
+	<span class="time">Hace 5 horas</span>
+
+	<% when 'new_survey_on_course'%>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b>Ecuasiones de 2o Grado</b> en tu curso <b>Matemáticas VI</b><br/>
+	<span class="time">Hace 5 horas</span>
+	<%else%>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b>Leer de la página 10 a la 100</b> en tu curso <b>Historia</b><br/>
+	<span class="time">Hace 5 horas</span>
+	<%end%>
+</li>

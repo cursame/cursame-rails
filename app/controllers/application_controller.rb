@@ -106,7 +106,7 @@ class ApplicationController < ActionController::Base
   end
   
   def random
-    general_random = "#{string_random}-#{numeric_random}"
+    general_random = "#{string_random}#{numeric_random}"
   end
   
   def string_random

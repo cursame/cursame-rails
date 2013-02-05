@@ -18,7 +18,7 @@ class Course < ActiveRecord::Base
    
   after_create do
       User.all.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'new_course_on_network'
+          Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
       end   
   end
 

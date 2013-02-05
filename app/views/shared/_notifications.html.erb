@@ -1,43 +1,46 @@
 <% if current_user%>
 <script>
-	var Cursame ={
-		userId: <%= current_user.id%>
-	};
+var Cursame ={
+	userId: <%= current_user.id%>
+};
 </script>
 <ul id="nav" class="drop">
 	<li><a href='#'><span id="notifications_count"><%= current_user.notifications.count %></span></a>
-		<ul id="notifications_list">
-			<% current_user.notifications.order("created_at DESC").each do |notification|%>
-			<li><a href="#"><%= notification.kind %>  <%= notification.notificator_id %></a></li>
-			<%end%>
-		</ul>
 	</li>
 </ul>
+<!-- tratamos las notificaciones para agregarles el css first y last-->
+<%
+notifications = current_user.notifications.order("created_at DESC")
+notifications_first = notifications.shift
+notifications_last = notifications.pop
+%>
+<!-- notification -->
+<div id="box-notifications" style="display:none;">
+	<div id="" class="comment-text" >
+		<div class="arrow-top"></div>
+		<div class="header">
+			<b>Notificaciones</b>  
+		</div>
+		<div class="content">
+			<ul id="notifications_list">
+				<%if notifications_first%>
+				<%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>				
+				<%end%>
+
+				<% notifications.each do |notification|%>
+				<%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+				<%end%>
+
+				<%if notifications_last%>
+				<%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %>	
+				<%end%>
+			</ul>
+		</div>
+
+		<div class="footer">
+			<b>Ver todas</b>
+		</div>
+	</div>
+</div>
 <%= subscribe_to "/notifications/"+current_user.id.to_s %>
 <%end%>
-
-
-<!-- notification -->
-<div id="box-notifications">
-      <div id="" class="comment-text" >
-      <div class="arrow-top"></div>
-      <div class="header">
-       <!--  <div class="avatar"><%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div> -->
-        <b>Notificaciones</b>  
-      </div>
-      <div class="content">
-	      <ul>
-		      <li class="first"><%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b> <br/><span class="time">Hace 3 horas</span></li>
-		     <li><img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b>Leer de la página 10 a la 100</b> en tu curso <b>Historia</b><br/><span class="time">Hace 5 horas</span></li>
-		     <li><%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>A <b>Padilla</b> le gustó <b>tu comentario</b> <br/><span class="time">Hace 10 horas</span></li>
-		     <li class="last"><img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b>Ecuasiones de 2o Grado</b> en tu curso <b>Matemáticas VI</b><br/><span class="time">Hace 5 horas</span></li>
-	      </ul>
-                    <!-- <p class="text-discusion">Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.  </p> -->
-      </div>
-
-      <div class="footer">
-       <b>Ver todas</b>
-      </div>
-    </div>
-  </div>
-<!--   discusion -->

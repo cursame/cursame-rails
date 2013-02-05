@@ -86,7 +86,7 @@
       cursor: pointer;
     }
   }
-  & #upload-labels{
+  & .upload-label{
     float: left;
     background: #f2f7fd;
     border: $border-high;
@@ -424,7 +424,7 @@
 
 
 
-
+// Boton para link <a></a>
 .a-button{
   font-size: 14px;
   margin: 4px 4px 2px 4px;
@@ -463,6 +463,77 @@
     box-shadow:         inset 0px 1px 1px #2f8999;
   }
 }
+
+
+//===
+
+//===
+
+.profile-post-box{
+  border: $border-box;
+  @include border-radius;
+  background: #FFF;
+  margin: 5px 0 10px 55px;
+  width: $width-form-post;
+  float: left;
+
+
+  & .post-btns-box {
+    list-style: none;
+    display: inline;
+    float: left;
+    width: 100%;
+    height: $height-post-box;
+    margin: 7px 0 6px 0;
+    & a{
+      display: block;
+      width: 100px;
+      height: 100%;
+      width: 100px;
+      float: left;
+      text-align: center;
+      //padding-top: 60px;
+      color: #969696;
+      font-size: 10px;
+    }
+
+    & a:hover{
+      //margin-top: -2px;
+      //padding-top: 62px;
+    }
+    & .icon{
+      @include circle-obj;
+      @include border-circle-obj;
+      @include circle-inset-shadow;
+      background: #ccc url('/assets/create/comment.png') repeat-y 3px 3px;
+      margin: -2px 0px 0px -2px;
+    }
+    & .border{
+      @include circle-obj;
+      @include border-circle-obj;
+      margin: 0px 0px 4px 18px;
+    }
+    & .message-form-btn{
+      & .icon{
+        background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
+      }
+      & .border{
+      }
+    }
+    & .delivery-form-btn{
+      & .icon{
+        background: #83b81f url('/assets/create/comment.png') repeat-y 3px 3px;
+      }
+    }
+    & .discussion-form-btn{
+      & .icon{
+        background: #d5d30e url('/assets/create/comment.png') repeat-y 3px 3px;
+      }
+    }
+  }
+}
+
+
 
 #delivery-form-area{
   height: 195px;
@@ -563,6 +634,27 @@
     float: right !important;
   }
 }
+
+.discussion-form-area-style{
+  height: 120px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  width: $width-form-post;
+  & textarea{
+    margin: 10px 0px 0px 10px;
+    width: 570px;
+  }
+  & button{
+    float: right !important;
+    margin-right: 9px;
+  }
+  & input[type=submit]{
+    float: right !important;
+  }
+}
+
 
 #survey-form-area{
   height: 190px;

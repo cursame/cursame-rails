@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//When I wrote this, only God and I understood what I was doing
-//Now, God only knows - RodrigoAyala.me
+//=================================================================
+//= When I wrote this, only God and I understood what I was doing =
+//= Now, God only knows - RodrigoAyala.me                         =
+//=================================================================
 
 @import "vars";
 
@@ -71,19 +73,7 @@ ul{
 	padding-top: 40px;
 }
 
-.profile-post-box{
-  border: $border-box;
-  @include border-radius;
-  background: #FFF;
-  margin: 5px 0 10px 55px;
-  width: $width-form-post;
-  float: left;
-}
-.profile-form-options-styles{     //styles box elements forms post
-  width: 100%;
-  height: $height-post-box;
-  margin: 7px 0 6px 0;
-}
+
 
 
 
@@ -1270,74 +1260,6 @@ background-position: left center;
 
 .menu-user a{margin-left: 10px;}
 
-.create {
-  list-style: none;
-  display: inline;
-  float: left;
-  & a{
-    display: block;
-    width: 100px;
-    height: 100%;
-    width: 100px;
-    float: left;
-    text-align: center;
-    //padding-top: 60px;
-    color: #969696;
-    font-size: 10px;
-  }
-
-  & a:hover{
-    //margin-top: -2px;
-    //padding-top: 62px;
-  }
-  & .icon{
-    @include circle-obj;
-    @include border-circle-obj;
-    @include circle-inset-shadow;
-    background: #ccc url('/assets/create/comment.png') repeat-y 3px 3px;
-    margin: -2px 0px 0px -2px;
-  }
-  & .border{
-    @include circle-obj;
-    @include border-circle-obj;
-    margin: 0px 0px 4px 18px;
-  }
-  & #message-form-btn{
-    & .icon{
-      background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
-    }
-    & .border{
-    }
-  }
-  & #delivery-form-btn{
-    & .icon{
-      background: #83b81f url('/assets/create/comment.png') repeat-y 3px 3px;
-
-    }
-
-  }
-  & .homework{
-    background: url('/assets/create/tarea.png') no-repeat;
-    background-position: center top;
-  }
-  & .discussion{
-    background: url('/assets/create/discus.png') no-repeat;
-    background-position: center top;
-  }
-  & .test{
-    background: url('/assets/create/test.png') no-repeat;
-    background-position: center top;
-  }
-  & .poll{
-    background: url('/assets/create/poll.png') no-repeat;
-    background-position: center top;
-  }
-  & .event{
-    background: url('/assets/create/event.png') no-repeat;
-    background-position: center top;
-  }
-}
-
 .course-create{
 	margin-top: -25px;
 }
@@ -1372,150 +1294,3 @@ background-position: left center;
     }
   }
 
-/* notification */
-#box-notifications{
-  clear: both;
-  float: left;
-  margin: 5px 0 0 -20px;
-    
-  & .avatar{
-    margin-left: 3px;
-    position: absolute;
-    margin-top: 4px;
-    margin-right: 8px;
-    float: left;
-  }
-  & .comment-text{
-    width: 300px;
-    height: 100%;
-    background: #FFF;
-    float: left;
-    border: $border-box;
-    border-radius: $border-radius-box;
-    margin: 5px 0px 10px 11px;
-	   -moz-box-shadow: 1px 3px 7px #757575;
--webkit-box-shadow: 1px 3px 7px #757575;
-box-shadow: 1px 3px 7px #757575;
-    & .header{
-      line-height: 23pt;
-      padding-bottom: 6px;
-      & .top-null-image{
-        width: 60px;
-        height: 10px;
-        float: left;
-      }
-      & .date{
-        color: #999;
-        float: right;
-        margin-right: 6px;
-      }
-    }
-    & .content{
-      color: #333;
-      font-size: 13px;
-      padding: 6px 10px 5px 10px;
-     & li{
-	  padding: 10px 0 10px 0;   
-	  border-bottom: $border-box;
-	  min-height: 50px;
-	  line-height: 18px;
-	  font-size: 12px;
-	  }  
-	  & li:hover{
-		  background-color: #f8f8f8;
-	  } 
-	  & .avatar-notifications{
-	     	float: left;
-	     	margin-right: 10px;
-	     	}
-	  & .time{
-		  font-size: 10px;
-		  color: #777;
-	  }
-	  & .first{
-		  margin-top: -5px;
-	  }
-	  & .last{
-		  border: none;
-	  }
-    }
-     	     
-    & .video{
-	     padding: 10px;
-    }
-    
-    & .attatchments{
-	    
-    }
-    & .title-discusion{
-	    font-size: 18px; 
-	    font-weight: bold;
-	    margin-bottom: 10px;
-    }
-    
-    & .text-discusion{
-	    padding-left: 10px;
-    }
-    
-    & .footer{
-      border-top:1px solid $border-general;
-      height: 25px;
-      color: #777777;
-      float: left;
-      width: 100%;
-      text-align: center;
-      padding-top: 6px;
-       -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
-    -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
-    box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
-
-      & .icon{
-        float: left;
-        margin: 4px 0px 0px 5px;
-      }
-      & .labels{
-        float: right;
-        margin: 4px 5px 0px 10px;
-      }
-     
-    }
-     & .footer:hover{
-	      -webkit-box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
-    -moz-box-shadow:    inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
-    box-shadow:         inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
-    background-color: #f8f8f8;
-      }
-  }
-
- 
-  & .header{
-    background: #fff;//#ebebef;
-    height: 25px;
-    @include border-t-right-radius;
-    @include border-t-left-radius;
-    width: 100%;
-    -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
-    -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
-    box-shadow:         inset 0px 1px 0px #f7f7f8;
-    border-bottom: $border-box;
-    
-    & b {margin-left: 10px;}
-        & .name{
-      color: #333;
-    }
-  }
-     & .general-cir-discusion{
-    background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
-    width: 35px;
-    height: 35px;
-    float: left;
-  }
-  & .arrow-top {
-    background: url('/assets/arrow_notification.png') no-repeat;
-    width: 14px;
-    height: 9px;
-    position: absolute;
-    margin:-9px 0px 0px 145px;
-    z-index: 20;
-  }
-}

@@ -26,6 +26,10 @@ class CoursesController < ApplicationController
     #@course_new = Course.new
     @delivery = Delivery.new
 
+    #==== Assets ====#
+    @asset = Asset.new
+    assets = @delivery.assets.build
+
     #==== Areas de evaluación ====#
     #@areas_of_evaluation = AreasOfEvaluation.new
     #areas_of_evaluations = @delivery.areas_of_evaluations.build
