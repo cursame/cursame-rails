@@ -118,10 +118,8 @@ function Uploader( id_asset_box , id_label_box ) {
 
     function initChangeLabel( value ){
         var tmp_value = value;
-        console.log( id_asset_box + ' #asset-file-'+ tmp_value );
         $(id_asset_box+' #asset-file-'+ tmp_value +'' ).change(function(){
             var fileName = $( id_asset_box + ' #upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-            console.log(id_label_box);
             $(id_label_box).append('<div class="file-mini-upload">'+ fileName + '</div>');
             $( id_asset_box + ' #upload-delivery-element-'+tmp_value).hide();
 
