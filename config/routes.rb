@@ -79,6 +79,7 @@ Cursame30Lb::Application.routes.draw do
   
    match  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
    match  "/users/", :to => "users#index",  :as =>  :users_path
+   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
       #friends
   resources :user_friends
   match  "users/:personal_url/friends", :to => "users#friend", :as => :create_user_friends

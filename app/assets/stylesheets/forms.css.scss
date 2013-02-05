@@ -137,6 +137,7 @@
     color:#FFF;//#197d91;
     text-decoration:none;
     text-shadow:0px 1px 0px #197d91;//#c3edf3;
+    cursor: pointer;
     &:hover{
       background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3) );
       background:-moz-linear-gradient( center top, #00b0ca 5%, #2fcce3 100% );
@@ -389,7 +390,16 @@
   & .percent-input{
     background: url('/assets/icons/percent-mini.png') no-repeat #FFF right !important;
   }
-
+  & .percent-label{
+    background: url('/assets/icons/percent-mini-high.png') no-repeat #FFF right !important;
+    color: #999;
+    font-size: 12pt;
+    text-align: right;
+    padding: 0px 23px 0px 0px;
+    margin: 10px 0px 0px 0px;
+    width: 60px;
+    float: right;
+  }
   //===============================================================
   //==========================  Sliders ===========================
   //===============================================================
@@ -628,7 +638,7 @@
   }
   & .total{
     float: right;
-    border-top: 1px solid #ccc;
+    border-top: 1px dotted #ccc;
     font-size: 14px;
     margin-top: 7px;
     color: #666;
@@ -636,6 +646,7 @@
     text-align: right;
     clear: both;
     margin-bottom: 5px;
+    font-size: 12pt;
   }
   & .evaluation-area{
     border-top: 1px dotted #ccc;

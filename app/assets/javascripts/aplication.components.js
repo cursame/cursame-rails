@@ -12,7 +12,7 @@ function NestedSlider(defaultInitValue) {
     var totalPercent = 100;
     var defaultInitValue=defaultInitValue==false?false:true;
 
-    this.initSlider = function ( slider_id, input_id ){
+    this.initSlider = function ( slider_id, input_id, label_id ){
         var storedSliderValue=0;
         var tmpLimit=0;
         slider_id.slider({
@@ -45,9 +45,13 @@ function NestedSlider(defaultInitValue) {
                 }
                 if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
                     input_id.val(storedSliderValue);
+                    if(label_id)
+                        label_id.html(storedSliderValue);
                     return false;
                 }else{
                     input_id.val(result.value);
+                    if(label_id)
+                        label_id.html(result.value);
                 }
             },
             change: function(event, result) {
@@ -55,10 +59,12 @@ function NestedSlider(defaultInitValue) {
             }
         });
         input_id.val( slider_id.slider("values", 0) );
+        if(label_id)
+            label_id.html(slider_id.slider("values", 0));
         $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
-        input_id.keyup(function() {
+        /*input_id.keyup(function() {
             slider_id.slider('value', $(this).val());
-        });
+        });*/
     };
 }
 
@@ -137,8 +143,8 @@ function Uploader( id_asset_box , id_label_box ) {
  */
 function DropDown(el) {
     this.dd = el;
-    console.log(el);
     this.opts = this.dd.find('ul.dropdown > div > li');
+
     this.val = [];
     this.index = [];
     this.initEvents();

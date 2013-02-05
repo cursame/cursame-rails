@@ -13,6 +13,8 @@
 // require jquery
 // require jquery_ujs
 //= require_tree
+//= require_raphael
+//= requere_morris
 //= require private_pub
 
 
