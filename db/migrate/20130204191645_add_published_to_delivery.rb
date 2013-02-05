@@ -1,5 +1,5 @@
 class AddPublishedToDelivery < ActiveRecord::Migration
   def change
-    add_column :deliveries, :published, :boolean
+    add_column :deliveries, :state, :string
   end
 end
