@@ -46,6 +46,8 @@ Cursame30Lb::Application.routes.draw do
   resources :members_in_courses
 
   resources :courses do
+     resources :assignments
+     
     collection do
       post :assigment
      end

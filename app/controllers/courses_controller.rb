@@ -165,23 +165,26 @@ class CoursesController < ApplicationController
       
      if @assignment.save!
             puts "**************"
+            @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+            
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
            
                 @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
-                  @response_to_the_evaluation = ResponseToTheEvaluation.new
                   @response_to_the_evaluation.name = generate_rubres.name
                   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
                   @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
                   @response_to_the_evaluation.assignment_id = @assignment.id
-                  @response_to_the_evaluation.save
-                  
+                  @response_to_the_evaluation.save!
+                            
+                            
                 end
-                
-                if  @response_to_the_evaluation.save         
-                 redirect_to :back
-                else
-                end   
+             puts "******** se han generado las areas de evaluacion ************"
+             
+             if   @response_to_the_evaluation.save
+             redirect_to :back
+             else
+             end
                 
       else
       end

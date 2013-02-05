@@ -37,6 +37,8 @@ gem 'jquery-rails'
 #Gem for the comments		
 gem 'acts_as_commentable'
 
+#gems for preoces time in background
+gem 'whenever', :require => false
 # para notifications push
 gem 'thin'
 gem 'private_pub'
