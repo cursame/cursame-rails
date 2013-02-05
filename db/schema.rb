@@ -198,6 +198,15 @@ ActiveRecord::Schema.define(:version => 20130204191645) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notificacions", :force => true do |t|
+    t.integer  "notificator_id"
+    t.string   "notificator_type"
+    t.integer  "user_id"
+    t.string   "kind"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"

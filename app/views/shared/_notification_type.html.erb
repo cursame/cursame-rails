@@ -2,7 +2,7 @@
 <li class="<%= cls %>">
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b><%=notification.notificator.user.name%></b> comentó en la red <b><%= current_network.name %></b> 	
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b><%=notification.notificator.user.name%></b> comentó en la red <b><%= notification.notificator.commentable.name %></b> 	
 
 	<% when 'user_comment_on_discussion'%>
 	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b> 
@@ -17,5 +17,5 @@
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b>Leer de la página 10 a la 100</b> en tu curso <b>Historia</b>
 	<%end%>
 	<br/>
-	<span class="time">Hace 3 horas</span>
+	<span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
