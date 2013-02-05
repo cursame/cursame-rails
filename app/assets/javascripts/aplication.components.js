@@ -45,11 +45,13 @@ function NestedSlider(defaultInitValue) {
                 }
                 if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
                     input_id.val(storedSliderValue);
-                    label_id.html(storedSliderValue);
+                    if(label_id)
+                        label_id.html(storedSliderValue);
                     return false;
                 }else{
                     input_id.val(result.value);
-                    label_id.html(result.value);
+                    if(label_id)
+                        label_id.html(result.value);
                 }
             },
             change: function(event, result) {
@@ -57,7 +59,8 @@ function NestedSlider(defaultInitValue) {
             }
         });
         input_id.val( slider_id.slider("values", 0) );
-        label_id.html(slider_id.slider("values", 0));
+        if(label_id)
+            label_id.html(slider_id.slider("values", 0));
         $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
         /*input_id.keyup(function() {
             slider_id.slider('value', $(this).val());
@@ -141,6 +144,7 @@ function Uploader( id_asset_box , id_label_box ) {
 function DropDown(el) {
     this.dd = el;
     this.opts = this.dd.find('ul.dropdown > div > li');
+
     this.val = [];
     this.index = [];
     this.initEvents();

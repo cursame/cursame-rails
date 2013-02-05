@@ -19,22 +19,12 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-  
-  <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
-    <ul class="dropdown">
-      <% for course in Course.find(:all) %>
-          <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
-          <% if !@course_member.nil?%>
-              <% if @course_member.owner == true && course.id == @course_member.course_id %>
-                  <li><%= check_box_tag 'discussion[course_ids][]', course.id, false %><label for="discussion[course_ids][]"><%= course.title %></label></li>
-              <%end%>
-          <%end%>
-      <% end %>
-    </ul>
-  </div>
-  
-  
-  <div class="actions">
+
+  <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
+
+
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
