@@ -149,56 +149,6 @@ $(document).ready(function() {
         $( "#tabs-friends" ).tabs();
     });
 
-
-
-
-
-    function DropDown(el) {
-        this.dd = el;
-        this.opts = this.dd.find('ul.dropdown > li');
-        this.val = [];
-        this.index = [];
-        this.initEvents();
-    }
-    DropDown.prototype = {
-        initEvents : function() {
-            var obj = this;
-            obj.dd.on('click', function(event){
-                $(this).toggleClass('active');
-                event.stopPropagation();
-            });
-
-            obj.opts.children('label').on('click',function(event){
-                var opt = $(this).parent(),
-                    chbox = opt.children('input'),
-                    val = chbox.val(),
-                    idx = opt.index();
-                //checked manual (se puede manejar automatico por ID pero tiene que se igual el Id del input con el for del label
-                if ($(chbox).is(':checked')) {
-                    $(chbox).prop('checked', false);
-                } else {
-                    $(chbox).prop('checked', true);
-                }
-                event.stopPropagation();
-            });
-        },
-        getValue : function() {
-            return this.val;
-        },
-        getIndex : function() {
-            return this.index;
-        }
-    }
-
-
-    var dd = new DropDown( $('#CourseDropDown') );
-
-    $(document).click(function() {
-        // all dropdowns
-        $('.wrapper-dropdown').removeClass('active');
-    });
-
-
     $('.message-form-btn, .delivery-form-btn, .discussion-form-btn').hover(function() {
         switch ($(this).attr('class')) {
             case "message-form-btn":
@@ -217,6 +167,47 @@ $(document).ready(function() {
 
 
 });
+
+function DropDown(el) {
+    this.dd = el;
+    this.opts = this.dd.find('ul.dropdown > div > li');
+    this.val = [];
+    this.index = [];
+    this.initEvents();
+}
+DropDown.prototype = {
+    initEvents : function() {
+        var obj = this;
+        obj.dd.on('click', function(event){
+            $(this).toggleClass('active');
+            event.stopPropagation();
+        });
+        obj.opts.children('label').on('click',function(event){
+            var opt = $(this).parent(),
+                chbox = opt.children('input'),
+                val = chbox.val(),
+                idx = opt.index();
+            //checked manual (se puede manejar automatico por ID pero tiene que se igual el Id del input con el for del label
+            if ($(chbox).is(':checked')) {
+                $(chbox).prop('checked', false);
+            } else {
+                $(chbox).prop('checked', true);
+            }
+            event.stopPropagation();
+        });
+    },
+    getValue : function() {
+        return this.val;
+    },
+    getIndex : function() {
+        return this.index;
+    }
+}
+$(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+});
+
+
 
 //Menu post buttons
 var borderShadow;

@@ -27,8 +27,14 @@
         <div class="submit-area"></div>
         <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
         <%= f.submit "Publicar"%>
-        <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
+
+        <div id="CourseDropDown" class="wrapper-dropdown"><span>Publicar...</span><div class="box-arrow"></div>
           <ul class="dropdown">
+            <div id="box-selector-dd" style="display: block;">
+                <li><label id="icon-dd-world" class="world-dd">Publico</label></li>
+                <li><label id="icon-dd-course" class="course-dd">Cursos</label></li>
+            </div>
+            <div id="box-course-dd" style="display: none;">
             <% for course in Course.find(:all) %>
                 <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
                 <% if !@course_member.nil?%>
@@ -37,6 +43,8 @@
                     <%end%>
                 <%end%>
             <% end %>
+              <li><label id="box-return-dd" class="return-dd">Volver</label></li>
+            </div>
           </ul>
         </div>
 
@@ -44,13 +52,25 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
-                $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
-                    inline: false,
-                    minDate: 0,
-                    showOtherMonths: true,
-                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-                });
+            $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
+                inline: false,
+                minDate: 0,
+                showOtherMonths: true,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+            });
+            var dd = new DropDown( $('#CourseDropDown') );
+
+            $('#icon-dd-course').click(function() {
+                $('#box-selector-dd').hide();
+                $('#box-course-dd').show();
+            });
+
+            $('#box-return-dd').click(function() {
+                //console.log('entro');
+                $('#box-selector-dd').show();
+                $('#box-course-dd').hide();
+            });
         });
       </script>
     <% end %>
