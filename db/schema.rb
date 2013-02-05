@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(:version => 20130204191645) do
     t.datetime "updated_at",            :null => false
     t.integer  "course_id"
     t.integer  "user_id"
-    t.boolean  "published"
+    t.string   "state"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|

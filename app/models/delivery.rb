@@ -18,31 +18,37 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :assignments, :assets
   
-    
-  def self.published_active
-      self.update_attributes(:published => true)
-      #Delivery.published!
-  end
-  
-  def self.published_inactive
-      self.update_attributes(:published => false)
-      #Delivery.published!
-      
-  end
-  
-  def self.time_now
-    @time = DateTime.now
-  end
-  
-  def self.active_inactive
-      puts "correindo deliveries"
-      case
-        when Delivery.publish_date == time_now
-            published_active
-        when Delivery.end_date ==  time_now
-            published_inactive
+
+
+      state_machine :state, :initial => :unpublish do
+         state :unpublish
+         state :published
+         
+         event :publish do
+           transition :to => :published, :from => :unpublish
+         end
+         
       end
-   end
+      
+      before_create do
+         self.publish_date ||= DateTime.now
+      end
+      
+      after_create do
+         if self.publish_date <= DateTime.now
+            self.publish!
+         end
+       end
+       
+       after_update do
+         #### crear notificaciones
+         puts "se ha creado una nueva tarea"
+       end
+       
+       def expired?
+         end_date < DateTime.now
+       end
+        
   
 
 end

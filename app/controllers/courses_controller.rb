@@ -157,7 +157,7 @@ class CoursesController < ApplicationController
   def assigment
     @assignment = Assignment.new(params[:assignment])
     @asset = Asset.new(params[:asset])
-    
+    @asset.save!
     @assignment.save!
       puts "**************"
       puts "assignment save "

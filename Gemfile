@@ -39,6 +39,8 @@ gem 'acts_as_commentable'
 
 #gems for preoces time in background
 gem 'whenever', :require => false
+gem 'state_machine'
+
 # para notifications push
 gem 'thin'
 gem 'private_pub'
