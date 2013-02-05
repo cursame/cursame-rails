@@ -18,7 +18,8 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    @deliveries = @course.deliveries
+    @deliveries = @course.deliveries.where(:status => "publish")
+    @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
     
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204191645) do
+ActiveRecord::Schema.define(:version => 20130205201432) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130204191645) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
+    t.integer  "netwok_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -122,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20130204191645) do
     t.integer  "course_id"
     t.integer  "user_id"
     t.string   "state"
+    t.integer  "network_id"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|

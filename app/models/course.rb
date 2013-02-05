@@ -13,6 +13,8 @@ class Course < ActiveRecord::Base
   has_many :response_to_the_evaluations
   has_many :discussions_courses
   has_many :discussions, :through => :discussions_courses
+  belongs_to :network
+  
   
 
    

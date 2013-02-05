@@ -3,6 +3,7 @@
 <div class="ui-widget-overlay">Cargando ...</div>
 
 <%= form_for(@course, :remote => true, :html => { :class => "default-form course-form"}) do |f|  %>
+    <%= f.hidden_field :network_id, :value => current_network.id%>
     <%= f.text_field :title, :placeholder=>'Nombre' %>
     <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción' %>
     <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>

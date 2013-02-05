@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout 'dashboardlayout', :only => [:dashboard]
 
   def show
     @user = User.find_by_personal_url(params[:personal_url])
@@ -154,6 +155,8 @@ class UsersController < ApplicationController
   @user = User.all
  end
  
+ def dashboard
+ end
  
    
  

@@ -1,5 +1,6 @@
 <%if @count_course_iam_member_and_owner != 0%>
     <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form"}) do |f| %>
+        <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>

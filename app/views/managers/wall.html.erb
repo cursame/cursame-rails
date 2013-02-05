@@ -8,7 +8,11 @@
 </div>
 <div id="admin-content">
 	<div class="users-chart">
-		<img src="/assets/charts/users-chart.png">
+          <%= render :partial => "managers/charts/users"%>
+          <div class="meter orange nostripes">
+      		<span style="width: 33.3%"></span>
+      	</div>
+      <%= debug @member%>
 	</div>
 	
 	<div class="admin-chart">
@@ -18,13 +22,40 @@
 	
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cursos</div>
-		<img src="/assets/charts/chart1.png">
+		<div id="courses_graph" style="height:227px; weight:279px;" ></div>
+		
+		<script>
+        Morris.Donut({
+          element: 'courses_graph',
+          data: [
+            {label: "Cursos", value: <%=@courses.count %> },
+            {label: "Públicos", value:<%= @publico %>},
+            {label: "Privados", value:<%= @privado%> }
+          ]
+        });
+       
+       
+         </script>
 	</div>
 	
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Tareas</div>
-		<img src="/assets/charts/chart1.png">
-	</div>
+       	<div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
+	
+       	<script>
+           Morris.Donut({
+             element: 'deliveries_graph',
+             data: [
+               {label: "Tareas", value: <%=@total_deliveries %> },
+               {label: "En curso", value:<%= @published_deliveries_count  %>},
+               {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
+             ]
+           });
+
+
+        </script>
+       
+ 	</div>
 	
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cuestionarios</div>
