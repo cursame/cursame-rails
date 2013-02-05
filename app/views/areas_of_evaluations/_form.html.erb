@@ -2,7 +2,8 @@
 <div id="nested_evaluation_form" class="evaluation-area">
     <%= f.text_field :name, :class => 'subject', :placeholder=>'¿Que criterio se evaluará?' %>
     <div id="content-slider-0" class="slider-content"><div id="slider-0" class="slider"></div></div>
-    <%= f.text_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input", :disabled => true  %>
+    <%= f.hidden_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input"  %>
+    <label id="label-nested-form-0" class="percent-label"></label>
     <%= f.hidden_field :delivery_id, :value => @delivery_id %>
     <%= f.hidden_field :active, :value =>  true %>
     <%= f.hidden_field :date_of_item, :value =>@time_now %>
@@ -32,8 +33,9 @@
                 changeAttr($(value).clone(),'id','name');
             });
             var slider  = $('#slider-'+controlNestedHomework),
-                input_id = $('#delivery_areas_of_evaluations_attributes_'+controlNestedHomework+'_evaluation_percentage');
-            nestedNewHomeworkSlider.initSlider( slider, input_id );
+                input_id = $('#delivery_areas_of_evaluations_attributes_'+controlNestedHomework+'_evaluation_percentage'),
+                label_id = $('#label-nested-form-'+controlNestedHomework);
+            nestedNewHomeworkSlider.initSlider( slider, input_id, label_id );
             controlNestedHomework++;
         });
     });

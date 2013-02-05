@@ -12,7 +12,7 @@ function NestedSlider(defaultInitValue) {
     var totalPercent = 100;
     var defaultInitValue=defaultInitValue==false?false:true;
 
-    this.initSlider = function ( slider_id, input_id ){
+    this.initSlider = function ( slider_id, input_id, label_id ){
         var storedSliderValue=0;
         var tmpLimit=0;
         slider_id.slider({
@@ -45,9 +45,13 @@ function NestedSlider(defaultInitValue) {
                 }
                 if( parseInt(result.value) > ( storedSliderValue+currentAvailablePercent ) ){
                     input_id.val(storedSliderValue);
+                    if(label_id)
+                        label_id.html(storedSliderValue);
                     return false;
                 }else{
                     input_id.val(result.value);
+                    if(label_id)
+                        label_id.html(result.value);
                 }
             },
             change: function(event, result) {
@@ -55,19 +59,16 @@ function NestedSlider(defaultInitValue) {
             }
         });
         input_id.val( slider_id.slider("values", 0) );
+        if(label_id)
+            label_id.html(slider_id.slider("values", 0));
         $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
-        input_id.keyup(function() {
+        /*input_id.keyup(function() {
             slider_id.slider('value', $(this).val());
-        });
+        });*/
     };
 }
 
 
-/*
- *==================================================
- *==================== DropDown ====================
- *==================================================
- */
 
 
 
@@ -91,7 +92,8 @@ function Uploader( id_asset_box , id_label_box ) {
 
     /*
      *
-     * Value:Object     = Contiene el objeto Asset este es clonado y guardado en memoria, se envia para ser agregado al DOM
+     * changeAttrUpload(value, parentId); Void
+     * value:Object     = Contiene el objeto Asset este es clonado y guardado en memoria, se envia para ser agregado al DOM
      * parentId:String  = Es el ID de la caja que contiene los assets
      *
      */
@@ -132,3 +134,53 @@ function Uploader( id_asset_box , id_label_box ) {
         });
     }
 }
+
+
+/*
+ *==================================================
+ *==================== DropDown ====================
+ *==================================================
+ */
+function DropDown(el) {
+    this.dd = el;
+    this.opts = this.dd.find('ul.dropdown > div > li');
+
+    this.val = [];
+    this.index = [];
+    this.initEvents();
+    this.clearDropDown = function ( ){
+       // objForm[0].reset();
+    }
+}
+DropDown.prototype = {
+    initEvents : function() {
+        var obj = this;
+        obj.dd.on('click', function(event){
+            $(this).toggleClass('active');
+            event.stopPropagation();
+        });
+        obj.opts.children('label').on('click',function(event){
+            var opt = $(this).parent(),
+                chbox = opt.children('input'),
+                val = chbox.val(),
+                idx = opt.index();
+            //checked manual (se puede manejar automatico por ID pero tiene que se igual el Id del input con el for del label
+            if ($(chbox).is(':checked')) {
+                $(chbox).prop('checked', false);
+            } else {
+                $(chbox).prop('checked', true);
+            }
+            event.stopPropagation();
+        });
+    },
+    getValue : function() {
+        return this.val;
+    },
+    getIndex : function() {
+        return this.index;
+    }
+}
+$(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+});
+

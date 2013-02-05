@@ -1,0 +1,71 @@
+<%
+   #
+   # hasPublic:Boolean .- Indica si será publico o si contiene propiedad publico
+   # hasCourses:Boolean .- Indica si contendra cursos
+   # *defaultText:String .- Texto por default del componente
+   # *defaultClass:String .- Clase que contiene el icono del texto por default
+   #
+   random_id = "#{random}"
+   hasSomeLocals = ( hasPublic && hasCourses ) ? true : false
+%>
+
+
+<div id="drop-down-<%= random_id %>" class="wrapper-dropdown <%= defaultClass %>">
+  <span id="title-dd"><%= defaultText %></span><div class="box-arrow"></div>
+  <ul class="dropdown">
+
+    <% if hasPublic  %>
+      <div id="box-selector-dd" style="display: block;">
+          <li><label id="icon-dd-public" class="world-dd">Público</label></li>
+          <li><label id="icon-dd-course" class="course-dd">Cursos</label></li>
+      </div>
+    <% end %>
+
+    <% if hasCourses  %>
+      <div id="box-course-dd" style="<% if hasSomeLocals  %> display: none; <% end %>">
+          <% for course in Course.find(:all) %>
+              <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
+              <% if !@course_member.nil?%>
+                  <% if @course_member.owner == true && course.id == @course_member.course_id %>
+                      <li><%= check_box_tag 'delivery[course_ids][]', course.id, false %><label for="delivery[course_ids][]"><%= course.title %></label></li>
+                  <% end%>
+              <%end%>
+          <% end %>
+        <% if hasSomeLocals  %>
+            <li>
+              <label id="box-return-dd" class="return-dd">Volver</label>
+            </li>
+        <% end %>
+      </div>
+    <% end %>
+  </ul>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var idDD = '#drop-down-<%= random_id %>';
+        new DropDown( $(idDD) );
+
+        $(idDD + ' #icon-dd-public').click(function() {
+            $(idDD + ' input:checkbox').removeAttr('checked');
+            $(idDD).removeClass('course-dd').addClass('public-dd');
+            $(idDD + ' #title-dd').html($(idDD + '#icon-dd-public').html());
+
+            $(idDD + '.wrapper-dropdown').removeClass('active');
+        });
+        $(idDD + ' #icon-dd-course').click(function() {
+            //console.log('test ' + idDD );
+            $(idDD).removeClass('public-dd').addClass('course-dd');
+            $(idDD+' #title-dd').html($(idDD + ' #icon-dd-course').html());
+            $(idDD + ' #box-selector-dd').hide();
+            $(idDD + ' #box-course-dd').show();
+        });
+
+        $(idDD + ' #box-return-dd').click(function() {
+            //console.log('entro');
+            console.log('test3');
+            $(idDD + ' #box-selector-dd').show();
+            $(idDD + ' #box-course-dd').hide();
+        });
+    });
+</script>
