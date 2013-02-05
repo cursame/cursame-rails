@@ -89,6 +89,20 @@ $bg-bars: #F6F7F9;
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
   background-color:#f8f8f8;
 }
+@mixin bg-public-dropdown-btn{
+  background:url('/assets/icons/world-mini-high.png') 5px 3px, -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
+  background:url('/assets/icons/world-mini-high.png') 5px 3px, -moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/world-mini-high.png',sizingMethod='scale');
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color:#f8f8f8;
+}
+@mixin bg-course-dropdown-btn{
+  background:url('/assets/icons/course-mini-high.png') 5px 3px, -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
+  background:url('/assets/icons/course-mini-high.png') 5px 3px, -moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/course-mini-high.png',sizingMethod='scale');
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color:#f8f8f8;
+}
 @mixin bg-upload-btn{
   background:url('/assets/icons/attach-mini.png'), -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f8f8f8) );
   background:url('/assets/icons/attach-mini.png'), -moz-linear-gradient( center top, #ffffff 5%, #f8f8f8 100% );

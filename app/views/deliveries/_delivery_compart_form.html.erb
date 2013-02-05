@@ -28,10 +28,10 @@
         <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
         <%= f.submit "Publicar"%>
 
-        <div id="CourseDropDown" class="wrapper-dropdown"><span>Publicar...</span><div class="box-arrow"></div>
+        <div id="CourseDropDown" class="wrapper-dropdown public-dd"><span id="title-dd">Público</span><div class="box-arrow"></div>
           <ul class="dropdown">
             <div id="box-selector-dd" style="display: block;">
-                <li><label id="icon-dd-world" class="world-dd">Publico</label></li>
+                <li><label id="icon-dd-public" class="world-dd">Público</label></li>
                 <li><label id="icon-dd-course" class="course-dd">Cursos</label></li>
             </div>
             <div id="box-course-dd" style="display: none;">
@@ -59,9 +59,20 @@
                 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
             });
+
             var dd = new DropDown( $('#CourseDropDown') );
 
+            $('#icon-dd-public').click(function() {
+                $('#CourseDropDown input:checkbox').removeAttr('checked');
+
+                $('#CourseDropDown').removeClass('course-dd').addClass('public-dd');
+                $('#CourseDropDown #title-dd').html($('#icon-dd-public').html());
+
+                $('.wrapper-dropdown').removeClass('active');
+            });
             $('#icon-dd-course').click(function() {
+                $('#CourseDropDown').removeClass('public-dd').addClass('course-dd');
+                $('#CourseDropDown #title-dd').html($('#icon-dd-course').html());
                 $('#box-selector-dd').hide();
                 $('#box-course-dd').show();
             });

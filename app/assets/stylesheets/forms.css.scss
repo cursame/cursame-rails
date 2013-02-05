@@ -246,8 +246,21 @@
     height: 28px;
     font-size: 14px;
     padding: 0px 0px 0px 30px;
+    &.public-dd{
+      background-position: 5px 3px;
+      @include bg-public-dropdown-btn;
+      background-repeat: no-repeat;
+    }
+    &.course-dd{
+      background-position: 5px 3px;
+      @include bg-course-dropdown-btn;
+      background-repeat: no-repeat;
+    }
     & span{
       line-height: 30px;
+      &.title-label-dd{
+
+      }
     }
     & .box-arrow{
       float: right;
