@@ -1230,43 +1230,42 @@ background-position: left center;
 		background: url('/assets/icons/stats.png') no-repeat;
 }
 
-
 .sandwich{
 	border-right: 1px solid #d5d5d5;
 }
 
-.active{
-}
-
 .menu-user{
-  width: 180px;
+  width: 280px;
   float: right;
-
-}
-
-.menu-user a{
-  float: right;
-}
-.menu-user span{
-	margin-top: 12px; 
-	float: right;
-	text-align: center;
-	color: #666;
-}
-.menu-user img{
-	margin-top: 3px;
+  & .logout{
+    margin-top: 5px;
     float: right;
+    border-left: #CCC solid 1px;
+    padding-left: 6px;
+  }
+  & .avatar{
+    float: right;
+    text-align: center;
+    color: #666;
+    width: 27px;
+    margin-top: 1px;
+    font-size: 13px;
+  }
+  & span{
+    margin-top: 11px;
+    float: right;
+    text-align: center;
+    color: #666;
+    padding: 0px 10px 0px 3px;
+    font-family: HelvLight;
+  }
 }
 
-.menu-user a{margin-left: 10px;}
 
 .course-create{
 	margin-top: -25px;
 }
 
-.box-test{
-
-}
 
  .upload-labels{
  	width: 550px;

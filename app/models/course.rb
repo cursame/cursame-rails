@@ -14,14 +14,19 @@ class Course < ActiveRecord::Base
   has_many :discussions_courses
   has_many :discussions, :through => :discussions_courses
   belongs_to :network
+  has_many :comments
   
   
+  #comentarios para las redes
+  acts_as_commentable 
 
    
   after_create do
-      User.all.each do |u|
+    if self.public_status == 'public'
+      self.users.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
-      end   
+      end
+    end  
   end
 
   def self.search(search)
@@ -30,6 +35,10 @@ class Course < ActiveRecord::Base
     else
       find(:all, :order => :title)
     end
+  end
+
+  def user
+    self.members_in_courses.where(:owner => true)
   end
   
 end

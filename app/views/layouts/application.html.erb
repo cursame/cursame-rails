@@ -17,19 +17,20 @@
   <div class="center-div">
     <img src="/assets/logo.png" alt="" class="brand">
 
-    <div id="notifications">    
-      <%= render :partial => '/shared/notifications' %>
-    </div>
-
-    <div style="float: right;" class="menu-user">
+    <div class="menu-user">
       <% if user_signed_in? %>
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           <span> <%= current_user.name %> </span>
-          <%= image_tag(current_user.avatar.head)%>
+          <%= image_tag(current_user.avatar.head, :class => "avatar-mini avatar")%>
       <% else %>
           <%= link_to "Sign up", new_user_session_path %> or <%= link_to "sign in", new_user_session_path %>
       <% end %>
     </div>
+    <div id="notifications">    
+      <%= render :partial => '/shared/notifications' %>
+    </div>
+
+
   </div>
 </header>
 
