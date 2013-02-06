@@ -16,7 +16,6 @@
 <header id="user_nav" class="topbar" >
   <div class="center-div">
     <img src="/assets/logo.png" alt="" class="brand">
-
     <div class="menu-user">
       <% if user_signed_in? %>
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>

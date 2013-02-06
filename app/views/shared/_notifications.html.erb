@@ -4,10 +4,11 @@ var Cursame ={
 	userId: <%= current_user.id%>
 };
 </script>
-<ul id="nav" class="drop">
-	<li><a href='#'><span id="notifications_count"><%= current_user.notifications.count %></span></a>
-	</li>
-</ul>
+
+<div class="notification-icon">
+    <a id="notifications_count" href='#'><span><%= current_user.notifications.count %></span></a>
+</div>
+
 <!-- tratamos las notificaciones para agregarles el css first y last-->
 <%
 notifications = current_user.notifications.order("created_at DESC")
