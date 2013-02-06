@@ -49,7 +49,7 @@
         $(idDD + ' #icon-dd-public').click(function() {
             $(idDD + ' input:checkbox').removeAttr('checked');
             $(idDD).removeClass('course-dd').addClass('public-dd');
-            $(idDD + ' #title-dd').html($(idDD + '#icon-dd-public').html());
+            $(idDD + ' #title-dd').html($(idDD + ' #icon-dd-public').html());
 
             $(idDD + '.wrapper-dropdown').removeClass('active');
         });

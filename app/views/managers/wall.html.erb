@@ -12,10 +12,10 @@
           <div class="meter orange nostripes">
               <% if @member_count == 0%>
                 <span style="width:<%= @quiq_start %>%;"></span>
-                </br> <b>Población esperada: <%= @network_population %> / actual: <%= @quiq_start %></b>
+                <p  class="hope">Usuarios registrados: <b><%= @quiq_start %></b></p> <p class="hope-right">Población esperada: <b><%= @network_population %></b></p>  
               <%else%>
       	    	<span style="width:<%= @member_count %>%;"></span>
-      	    	</br> <b>Población esperada: <%= @network_population %> / actual: <%= @member_count %></b>
+      	    	 <p class="hope">Población esperada: <%= @network_population %> / actual: <%= @member_count %></p>
       	      <%end%>
       	</div>
     
