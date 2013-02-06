@@ -10,9 +10,15 @@
 	<div class="users-chart">
           <%= render :partial => "managers/charts/users"%>
           <div class="meter orange nostripes">
-      		<span style="width: 33.3%"></span>
+              <% if @member_count == 0%>
+                <span style="width:<%= @quiq_start %>%;"></span>
+                </br> <b>Población esperada: <%= @network_population %> / actual: <%= @quiq_start %></b>
+              <%else%>
+      	    	<span style="width:<%= @member_count %>%;"></span>
+      	    	</br> <b>Población esperada: <%= @network_population %> / actual: <%= @member_count %></b>
+      	      <%end%>
       	</div>
-      <%= debug @member%>
+    
 	</div>
 	
 	<div class="admin-chart">

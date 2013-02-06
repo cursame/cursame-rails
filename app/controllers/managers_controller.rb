@@ -1,6 +1,21 @@
 class ManagersController < ApplicationController
   def wall
+  ##### for users bar
   @member = current_network.users
+  @member_count = @member.count
+  @network_population = current_network.population
+  @quiq_start = 1
+  if  @member_count > 0
+     @porcent_of_students =  (@member_count/@network_population)*100
+  
+     if @porcent_of_students < 100
+     
+          @porcent_users = @quiq_start +  @porcent_of_students
+     else
+          @porcent_users = @porcent_of_students
+     end
+  end
+  
   
     #### for courses counters
   @courses = current_network.courses  
@@ -25,5 +40,6 @@ class ManagersController < ApplicationController
   end
 
   def network_configuration
+    @network= current_network
   end
 end
