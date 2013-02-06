@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
 
-  filter_access_to :all
+ # filter_access_to :all
   
   # GET /roles
   # GET /roles.json

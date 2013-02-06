@@ -1,4 +1,4 @@
 class AreasOfEvaluation < ActiveRecord::Base
-  belongs_to :delivery, :dependent => :destroy
+  belongs_to :delivery
   
 end
