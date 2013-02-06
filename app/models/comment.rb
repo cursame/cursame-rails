@@ -17,7 +17,10 @@ class Comment < ActiveRecord::Base
   #assets
   has_many :compart_assets
   has_many :assets, :through => :compart_assets, :source => :comment
+
+  #course belongnings
   belongs_to :network
+  belongs_to :course
   
   #comentarios para las redes
   acts_as_commentable
