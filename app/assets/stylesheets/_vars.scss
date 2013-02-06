@@ -24,7 +24,7 @@
 }
 
 // Sizes
-$widht-content: 920px;
+$widht-content: 940px;
 $width-left-bar: 260px;
 $width-right-bar: 675px;
 $width-lateral-box: 230px;
@@ -143,7 +143,6 @@ $margin-sidebar-left: 17px;
   -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
   box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 1px $border-general;
 }
-
 @mixin circle-obj{
   -webkit-border-radius: 32px;
   -moz-border-radius: 32px;
@@ -152,11 +151,10 @@ $margin-sidebar-left: 17px;
   height: 60px;
 }
 @mixin circle-inset-shadow{
-  -webkit-box-shadow: inset 0px 0px 5px #666;
-  -moz-box-shadow:    inset 0px 0px 5px #666;
-  box-shadow:         inset 0px 0px 5px #666;
+  -webkit-box-shadow: inset 0px 0px 12px #666;
+  -moz-box-shadow:    inset 0px 0px 12px #666;
+  box-shadow:         inset 0px 0px 12px #666;
 }
-
 @mixin border-circle-obj{
   border: #FFF solid 2px;
   -webkit-box-shadow: 0px 1px 4px #666;
