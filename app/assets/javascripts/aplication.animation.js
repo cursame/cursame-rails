@@ -41,14 +41,24 @@ $(document).ready(function() {
         }, time);
     });
 
-    //----- Post Form Animations------
+
+    /*
+     *===============================================================
+     *==================== Animation - Menu Post ====================
+     *===============================================================
+     */
+
     var prePostHeight = $('#profile-form-options').height();
+    var prePostMargin = $('#profile-form-options').css('margin');
+
 
     $('#profile-form-options > a').click(function() {
         var hrefClean = $(this).attr('href');
+        console.log($( hrefClean ).height());
         $(this).parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
-            height: '0'
+            height: '0',
+            margin: '0'
         }, time, function() {
             $(this).css('display','none');
         });
@@ -76,13 +86,37 @@ $(document).ready(function() {
             $('#profile-form-options').css('display','block');
             $('#profile-form-options').animate({
                 opacity: 1,
-                height: prePostHeight
+                height: prePostHeight,
+                margin: prePostMargin
             }, time);
 
         });
     });
+    //hoverBtn(idBtn, border, colorBg)
+    $('.message-form-btn, .delivery-form-btn, .discussion-form-btn, .survey-form-btn').hover(function() {
+        switch ($(this).attr('class')) {
+            case "message-form-btn":
+                hoverBtn( '.message-form-btn','#045497', '#1d7ece');
+                break;
+            case "delivery-form-btn":
+                hoverBtn( '.delivery-form-btn','#4a6e06', '#70a50c');
+                break;
+            case "discussion-form-btn":
+                hoverBtn( '.discussion-form-btn','#949300', '#bcba00');
+                break;
+            case "survey-form-btn":
+                hoverBtn( '.survey-form-btn','#b26900', '#ec8e09');
+                break;
+        }
+    }, function() {
+        hoverOutBtn( '.'+$(this).attr('class') );
+    });
 
-    //-------Courses Slide & Height animation------
+    /*
+     *=====================================================================================
+     *==================== Courses Animation (Create) - slide & resize ====================
+     *=====================================================================================
+     */
     var tmp_height_new_course = $('#form-new-course').height();
     var tmp_height_new_course_box = null;
     $('#new-course-btn').click(function(){
@@ -144,26 +178,9 @@ $(document).ready(function() {
         );
     }
 
-    $(function() {
-        $( "#tabs-courses" ).tabs();
-        $( "#tabs-friends" ).tabs();
-    });
 
-    $('.message-form-btn, .delivery-form-btn, .discussion-form-btn').hover(function() {
-        switch ($(this).attr('class')) {
-            case "message-form-btn":
-                hoverBtn( '.message-form-btn','#045497', '#1d7ece');
-                break;
-            case "delivery-form-btn":
-                hoverBtn( '.delivery-form-btn','#4a6e06', '#70a50c');
-                break;
-            case "discussion-form-btn":
-                hoverBtn( '.discussion-form-btn','#949300', '#bcba00');
-                break;
-        }
-    }, function() {
-        hoverOutBtn( '.'+$(this).attr('class') );
-    });
+    $( "#tabs-courses" ).tabs();
+    $( "#tabs-friends" ).tabs();
 
 
 });

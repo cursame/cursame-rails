@@ -55,13 +55,13 @@ function NestedSlider(defaultInitValue) {
                 }
             },
             change: function(event, result) {
-                $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
+                $('#total_nested_evaluation').html(''+currentIncrementationPercent+'%');
             }
         });
         input_id.val( slider_id.slider("values", 0) );
         if(label_id)
             label_id.html(slider_id.slider("values", 0));
-        $('#total_nested_evaluation').html('Total: '+currentIncrementationPercent+'%');
+        $('#total_nested_evaluation').html(''+currentIncrementationPercent+'%');
         /*input_id.keyup(function() {
             slider_id.slider('value', $(this).val());
         });*/
