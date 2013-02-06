@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :comments, :networks, :assets
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :update, :comments, :networks, :assets
   
   has_many :networks_users, :dependent => :destroy
   has_many :networks, :through => :networks_users
@@ -19,8 +19,9 @@ class User < ActiveRecord::Base
   has_many :deliveries
   has_many :comments
   has_many :authentications 
-
-
+  
+  validates :password,:presence=>true,:on=>:create
+  
   # roles
   has_many :permissionings
   has_many :roles, :through => :permissionings
