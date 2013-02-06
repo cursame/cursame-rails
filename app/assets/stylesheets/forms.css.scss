@@ -33,8 +33,7 @@
     @include shadow-input;
     margin: 4px 0px 0px 0px;
   }
-
-  & input[type=text]{
+  & input[type=text], input[type=email], input[type=password]{
     background: #FFF;
     height: 28px;
     border: $border-forms;
@@ -57,9 +56,9 @@
     }
   }
 
-  //===============================================================
+  //================================================================
   //========================== Uploader ============================
-  //===============================================================
+  //================================================================
   & .file-input-box{
     position: relative;
     float: left;
@@ -575,6 +574,54 @@
       & .icon{
         background: #f39c20 url('/assets/create/comment.png') repeat-y 3px 3px;
       }
+    }
+  }
+}
+
+
+
+.edit-user-form{
+  & label{
+    clear: both;
+    float: left;
+  }
+  & input[type=text], input[type=email], input[type=password] {
+      float: left;
+      clear: both;
+  }
+  & .box-fields{
+    float: left;
+    width: 400px;
+  }
+  & .box-cancel{
+    clear: both;
+    float: left;
+  }
+  & .box-avatar{
+    float: right;
+    width: 400px;
+    & .box-image{
+      margin: 0px 0px 18px 0px;
+      float: left;
+    }
+    & .avatar{
+      height: 50px;
+      float: left;
+    }
+    & .avatar-label{
+      clear: both !important;
+      margin: 7px 0px 0px 6px;
+      width: 230px;
+    }
+    & .coverphoto-label{
+      clear: both !important;
+      width: 230px;
+      margin: 7px 0px 0px 6px;
+    }
+    & .cover{
+      height: 80px;
+      clear: both;
+      float: left;
     }
   }
 }

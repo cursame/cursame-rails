@@ -1,35 +1,54 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h3>Editar Usuario</h3>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "default-form edit-user-form"}) do |f| %>
+
+    <div class="box-avatar">
+
+      <div class="box-image">
+          <%= image_tag(current_user.avatar.profile, :class => "avatar-mini avatar")%>
+          <%#= f.file_field :avatar %>
+          <%= f.label :Imagen_de_perfil, :class=> 'avatar-label' %>
+          <div style="clear: both;">
+              <%= f.fields_for :avatar do |asset| %>
+                  <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
+              <%end%>
+          </div>
+      </div>
+      <div class="box-image">
+          <%= image_tag(current_user.coverphoto, :class => "avatar-mini cover")%>
+          <%= f.label :imagen_de_portada, :class=> 'coverphoto-label' %>
+          <%#= f.file_field :coverphoto %>
+        <div style="clear: both;">
+          <%= f.fields_for :coverphoto do |asset| %>
+              <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
+          <%end%>
+        </div>
+      </div>
+      <div class="box-cancel">
+        <p>¿Quieres darte de baja? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+      </div>
+    </div>
+
   <%= devise_error_messages! %>
+  <div class="box-fields">
+      <%= f.label :Correo_electronico %>
+      <%= f.email_field :email %>
+      <%= f.label :Nombre %>
+      <%= f.text_field :first_name %>
+      <%= f.label :Apellido %>
+      <%= f.text_field :last_name %>
+      <%= f.label :Direccion %>
+      http://cursa.me/users/<%= f.text_field :personal_url %>
+      <%= f.label :Contraseña %>
+      <%= f.password_field :password, :autocomplete => "on" %>
+  </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-  <div><%= f.label :first_name %><br />
-     <%= f.text_field :first_name %></div>
-  <div><%= f.label :last_name %><br />
-     <%= f.text_field :last_name %></div></br>
-  <div><%= f.label :personal_url %><br />
-       <%= f.text_field :personal_url %></div></br>
-  <div><%= f.label :avatar %><br />
-       <%= f.file_field :avatar %></div></br>
-  <div><%= f.label :imagen_de_inicio %><br />
-        <%= f.file_field :coverphoto %></div></br>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%#= f.label :password_confirmation %><br />
-  <%#= f.password_field :password_confirmation %></div>
-
-  <div><%#= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%#= f.password_field :current_password %></div>
-
+    <div class="submit-area"></div>
   <div><%= f.submit "Update" %></div>
+    <%= link_to "Back", :back, :class => "a-btn" %>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
