@@ -176,60 +176,13 @@
     </div>
   </div>
 
-  <% @comments.reverse.each do |comment| %>
-        <%= render :partial => '/shared/comments', :locals => { :text_comment=>comment } %>
-  <%end%>
-
-  <div id="box-comments">
-    <div class="general-cir"></div>
-    <div id="comment1" class="comment-text" >
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="null-image"></div>
-        <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <div class="name"> <%#  comment.user.name %></div>  <span>fecha</span>
-      </div>
-      <div class="content">
-        <div class="null-image"></div>
-        <%#  comment.comment %>
-      </div>
-      <div class="footer">
-        <img src="/assets/icons/grey-mini-comment.png" class="icon">
-        <img src="/assets/icons/grey-mini-like.png" class="icon">
-        <div class="labels"><%#= comment.comments.count %>Comentarios</div>
-        <div class="labels">12 Likes</div>
-      </div>
-    </div>
   <!-- timeline -->
   <div id="timeline">
-    <%# @comments.reverse.each do |comment| %>
-        <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-    <%#end%>
+    <% @comments.reverse.each do |comment| %>
+        <%= render :partial => '/shared/comments', :locals => {:comment => comment} %>
+    <%end%>
   </div>
   <!-- fin timeline -->
-  
-  <div id="box-comments">
-    <div class="general-cir"></div>
-    <div id="" class="comment-image" >
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="null-image"></div>
-        <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-        <b>Nombre Usuario</b>  <span>29/ENE/2012</span>
-      </div>
-      <div class="footer">
-        <div class="content-footer">
-          <img src="/assets/icons/white-mini-comment.png" class="icon">
-          <img src="/assets/icons/white-mini-like.png" class="icon">
-          <div class="labels">20 Comentarios</div>
-          <div class="labels">12 Likes</div>
-        </div>
-      </div>
-      <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
-    </div>
-  </div>
- 
-
    
 <!-- tareas -->
 
@@ -295,9 +248,6 @@
         <div class="labels">12 Likes</div>
       </div>
     </div>
-
-    
-
   </div>
 <!--   discusion -->
 

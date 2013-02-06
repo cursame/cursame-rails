@@ -208,7 +208,7 @@
         </div>
 
       <% @comments.reverse.each do |comment| %>
-          <%= render :partial => '/shared/comments', :locals => { :text_comment=>comment } %>
+          <%= render :partial => '/shared/comments', :locals => { :comment=>comment } %>
       <%end%>
 
       <div id="box-comments">

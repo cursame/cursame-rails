@@ -4,9 +4,8 @@
   #=========================================
 
 
-  if(text_comment)
-    comment = text_comment
-    object = text_comment
+  if(comment)
+    object = comment
     id_comment = (object.id) ? object.id : ''
     name_comment = (object.user.name) ? object.user.name : ''
     content_comment = (object.comment) ? object.comment : ''
