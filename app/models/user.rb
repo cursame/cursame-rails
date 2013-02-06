@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
   
   has_many :networks_users, :dependent => :destroy
   has_many :networks, :through => :networks_users
-  has_many :users_friends
-  has_many :members_in_courses
+  has_many :users_friends, :dependent => :destroy
+  has_many :members_in_courses, :dependent => :destroy
   has_many :courses, :through => :members_in_courses
-  has_many :users_surveys
+  has_many :users_surveys, :dependent => :destroy
   has_many :assets
   has_many :assignments
   has_many :deliveries
