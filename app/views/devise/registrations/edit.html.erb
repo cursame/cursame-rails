@@ -4,22 +4,22 @@
     <div class="box-avatar">
       <div class="box-image">
           <%= image_tag(current_user.avatar.profile, :class => "avatar-mini avatar")%>
-          <%#= f.file_field :avatar %>
+          <%= f.file_field :avatar %>
           <%= f.label :Imagen_de_perfil, :class=> 'avatar-label' %>
           <div style="clear: both;">
-              <%= f.fields_for :avatar do |asset| %>
-                  <%= render :partial => "shared/assets_form", :locals => { :f => asset, :isSingle => true } %>
-              <%end%>
+              <%#= f.fields_for :avatar do |asset| %>
+                  <%#= render :partial => "shared/assets_form", :locals => { :f => asset, :isSingle => true } %>
+              <%#end%>
           </div>
       </div>
       <div class="box-image">
           <%= image_tag(current_user.coverphoto, :class => "avatar-mini cover")%>
           <%= f.label :imagen_de_portada, :class=> 'coverphoto-label' %>
-          <%#= f.file_field :coverphoto %>
+          <%= f.file_field :coverphoto %>
         <div style="clear: both;">
-          <%= f.fields_for :coverphoto do |asset| %>
-              <%= render :partial => "shared/assets_form", :locals => { :f => asset, :isSingle => true } %>
-          <%end%>
+          <%#= f.fields_for :coverphoto do |asset| %>
+              <%#= render :partial => "shared/assets_form", :locals => { :f => asset, :isSingle => true } %>
+          <%#end%>
         </div>
       </div>
       <div class="box-cancel">
@@ -40,7 +40,7 @@
       <div style="float:left; clear: both;"><div class="personal-url-label">http://cursa.me/users/</div><%= f.text_field :personal_url, :class => 'personal-url' %></div>
        <div><%= f.label :password %> <i>(deja el campo en blanco si no quieres cambiar tu contraseña)</i><br />
         <%= f.password_field :password, :autocomplete => "off" %></div></br>
-<div><i>(para realizar tus cambios necesitamos que confirmes con tu ocntraseña)</i></div></br>
+<div>-<i>(para realizar tus cambios necesitamos que confirmes con tu ocntraseña)</i></div></br>
         <div><%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation %></div>
          
