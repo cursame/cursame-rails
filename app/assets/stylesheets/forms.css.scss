@@ -173,7 +173,7 @@
   & .a-btn{
     text-align: center;
     color: #999;
-    min-width: 100px;
+    min-width: 80px;
     height: 28px;
     float:left;
     border: $border-forms;
@@ -580,10 +580,18 @@
 
 
 
-.edit-user-form{
+.user-edit-form{
+  margin: 22px 25px 20px 25px;
+  position: relative;
+  float: left;
+  width: 890px;
   & label{
     clear: both;
     float: left;
+    margin-top: 11px;
+  }
+  & .upload-label{
+    width: 200px!important;
   }
   & input[type=text], input[type=email], input[type=password] {
       float: left;
@@ -597,9 +605,28 @@
     clear: both;
     float: left;
   }
+  & .personal-url-label{
+    float: left;
+    color: #666;
+    font-size: 11pt;
+    padding: 0px 3px 0px 0px;
+  }
+  & .personal-url{
+    clear: none !important;
+    width: 90px !important;
+    margin: -7px 0px 0px 0px !important;
+  }
+  & .submit-btns{
+    margin-top: 17px;
+    float: left;
+  }
+  & .a-btn{
+    margin-top: 4px;
+  }
   & .box-avatar{
     float: right;
     width: 400px;
+
     & .box-image{
       margin: 0px 0px 18px 0px;
       float: left;
@@ -619,7 +646,7 @@
       margin: 7px 0px 0px 6px;
     }
     & .cover{
-      height: 80px;
+      height: 45px;
       clear: both;
       float: left;
     }

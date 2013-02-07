@@ -2,6 +2,7 @@
    random_id = "#{random}"
    @asset_unique = "upload-delivery-form-#{random_id}"
    @label_unique = "upload-labels-#{random_id}"
+   isSingle ||= false
 %>
 <div id="<%= @asset_unique %>">
   <div id="upload-delivery-element-0" class="file-input-box">
@@ -14,6 +15,6 @@
 <div id="<%= @label_unique %>" class="upload-label"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>');
+        var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
     });
 </script>
