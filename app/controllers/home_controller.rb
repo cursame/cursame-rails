@@ -35,15 +35,27 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
-      commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
-      @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
-      
-      puts @comment.to_yaml
-
+      # esto es para clonar los comentarios de el grupo
+      if params[:delivery] 
+        params[:commentable_type]
+        params[:delivery][:course_ids].each do |group_id|
+          params[:commentable_id] = group_id
+          save_comment
+        end
+      #esto es para comentarios normales
+      else
+        save_comment
+      end
       respond_to do |format|
         #format.html
         format.js
       end
     end     
+  end
+
+  protected
+  def save_comment
+    commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
+    @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
   end
 end

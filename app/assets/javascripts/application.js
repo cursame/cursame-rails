@@ -54,6 +54,13 @@ $(function() {
 			case 'new_public_course_on_network':
 				notification = ['<li>',
 									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
+									'Nuevo curso <b>'+data.notificator.title+'</b> en tu red <b>Cúrsame</b><br/>',
+										'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
+								'</li>'];
+			break;
+			case 'new_survey_on_course':
+				notification = ['<li>',
+									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
 									'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
 										'<span class="time">Hace 3 horas</span>',
 								'</li>'];
