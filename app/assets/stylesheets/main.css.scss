@@ -1063,7 +1063,7 @@ background-position: left center;
 }
 
 .banner-shadow{
-  height:275px;
+  height:440px;
   width:100%;
   overflow: hidden;
   color: white;
@@ -1163,18 +1163,33 @@ background-position: left center;
 	list-style:none; 
 	display: inline;
 	float: right;
-	
-	
-}
-.list-header li{
-	display: inherit; 
-	float: left;
-	margin-right: 35px;
-	background-position-x: 0;
-	padding-left: 25px;
-	cursor: hand !important;	
-}
 
+  & li{
+    display: inherit;
+    float: left;
+    margin-right: 35px;
+    background-position-x: 0;
+    padding-left: 25px;
+    cursor: pointer;
+
+    line-height: 26px;
+  }
+  & .calendar{
+    background: url('/assets/icons/calendar-mini-white.png') no-repeat;
+  }
+  & .schools{
+    background: url('/assets/schools.png') no-repeat;
+  }
+
+  & .settings{
+    background: url('/assets/icons/settings.png') no-repeat;
+  }
+
+  & .stats{
+    background: url('/assets/icons/stats.png') no-repeat;
+  }
+	
+}
 
 
 .menu-course{
@@ -1218,17 +1233,7 @@ background-position: left center;
 	font-style: normal;
 }
 
-.schools{
-		background: url('/assets/schools.png') no-repeat;
-}
 
-.settings{
-		background: url('/assets/icons/settings.png') no-repeat;
-}
-
-.stats{
-		background: url('/assets/icons/stats.png') no-repeat;
-}
 
 .sandwich{
 	border-right: 1px solid #d5d5d5;
