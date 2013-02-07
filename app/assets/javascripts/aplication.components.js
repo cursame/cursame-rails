@@ -78,7 +78,9 @@ function NestedSlider(defaultInitValue) {
  *==================================================
  */
 
-function Uploader( id_asset_box , id_label_box ) {
+function Uploader( id_asset_box , id_label_box, is_single ) {
+
+    var isSingle = is_single;
 
     var nestedUploadDelivery    = $(id_asset_box).html();  //se extrae el elemento con ID 0 y se guarda en memoria
     var controlNestedUpload     = 0;
@@ -122,13 +124,20 @@ function Uploader( id_asset_box , id_label_box ) {
         var tmp_value = value;
         $(id_asset_box+' #asset-file-'+ tmp_value +'' ).change(function(){
             var fileName = $( id_asset_box + ' #upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-            $(id_label_box).append('<div class="file-mini-upload">'+ fileName + '</div>');
-            $( id_asset_box + ' #upload-delivery-element-'+tmp_value).hide();
+            if ( isSingle ){
+                $(id_label_box).html('<div class="file-mini-upload">'+ fileName + '</div>');
+            }else{
+                $(id_label_box).append('<div class="file-mini-upload">'+ fileName + '</div>');
 
-            $( nestedUploadDelivery ).each(function( index, value ) {
-                changeAttrUpload( $(value).clone(), id_asset_box);
-            });
-            initChangeLabel(controlNestedUpload);
+                //Clone Button
+                $( id_asset_box + ' #upload-delivery-element-'+tmp_value).hide();
+                $( nestedUploadDelivery ).each(function( index, value ) {
+                    changeAttrUpload( $(value).clone(), id_asset_box);
+                });
+                initChangeLabel(controlNestedUpload);
+            }
+
+
             controlNestedUpload++;
             $(id_label_box).show();
         });

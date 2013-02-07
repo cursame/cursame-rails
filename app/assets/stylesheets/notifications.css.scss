@@ -1,16 +1,25 @@
 @import "vars";
 
 .notification-icon {
-  margin: 0 0 0 20px;
-  background: url('/assets/icons/notification-mini-high.png') no-repeat 0px 2px;
+
+  //border-left: transparent solid 1px;
+  //border-right: transparent solid 1px;
+
+  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
   position: relative;
   z-index: 597;
   float: left;
-  width: 25px;
-  height: 25px;
-  margin-top: 2px;
-  padding: 0;
+  width: 35px;
+  height: 35px;
+  //margin-top: 2px;
+  padding: 0px 0px 0px 8px;
   color: #fff;
+  &:hover{
+    //background: #f7f7f7;
+    background: #eeeeee url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+    //border-left: #ccc solid 1px;
+    //border-right: #ccc solid 1px;
+  }
   & a {
     width: 100%;
     height: 100%;
@@ -182,4 +191,8 @@
     margin:-9px 0px 0px 145px;
     z-index: 20;
   }
+}
+
+.unread{
+	background-color: #FFFBE3;
 }
