@@ -37,12 +37,12 @@ class HomeController < ApplicationController
     if user_signed_in?
       # esto es para clonar los comentarios de el grupo
       if params[:delivery] 
-        params[:commentable_type]
+        params[:commentable_type] = 'Course'
         params[:delivery][:course_ids].each do |group_id|
           params[:commentable_id] = group_id
           save_comment
         end
-      #esto es para comentarios normales
+      #esto es para comentarios que son publicos de la red
       else
         save_comment
       end

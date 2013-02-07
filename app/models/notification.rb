@@ -8,7 +8,7 @@ class Notification < ActiveRecord::Base
 
     owner = nil
 
-    if self.kind == "user_comment_on_network"
+    if self.kind == "user_comment_on_network" || self.kind == "user_comment_on_course"
       owner = self.notificator.commentable
     end
 

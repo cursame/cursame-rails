@@ -44,6 +44,13 @@ $(function() {
 										'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 								'</li>'];
 			break;
+			case 'user_comment_on_course':
+				notification = ['<li>',
+									'<img src="'+data.creator.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
+									'<b>'+data.creator.first_name+' '+data.creator.last_name+'</b> comentó en el curso <b>'+data.owner.title+'</b><br/>',
+										'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
+								'</li>'];
+			break;
 			case 'user_comment_on_discussion':
 				notification = ['<li>',
 									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
