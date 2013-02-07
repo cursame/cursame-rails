@@ -14,12 +14,14 @@
   <span id="title-dd"><%= defaultText %></span><div class="box-arrow"></div>
   <ul class="dropdown">
 
-    <% if hasPublic  %>
+  <% if hasPublic  %>
       <div id="box-selector-dd" style="display: block;">
           <li><input id="is_public" name="is_public" type="checkbox" value="1"><label id="icon-dd-public" class="world-dd">Público</label></li>
           <li><label id="icon-dd-course" class="course-dd">Cursos</label></li>
       </div>
-    <% end %>
+  <% end %>
+
+
 
     <% if hasCourses  %>
       <div id="box-course-dd" style="<% if hasSomeLocals  %> display: none; <% end %>">
@@ -38,7 +40,7 @@
             <li>
               <label id="box-return-dd" class="return-dd">Volver</label>
             </li>
-        <% end %>
+          <% end %>
       </div>
     <% end %>
   </ul>
