@@ -40,7 +40,11 @@ class Comment < ActiveRecord::Base
         # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
       User.all.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
-      end          
+      end      
+      when "Course"
+      commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
+      end
     end
   end  
 end
