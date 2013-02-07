@@ -157,16 +157,7 @@ class UsersController < ApplicationController
  def dashboard
  end
  
-=begin 
- def update
-   find_user and edit_user_pemmission
-    @user.update_attributes(params[:user])
- end
- 
- def edit_user_pemmission
-   raise ActiveRecord::RecordNotFound unless current_user
- end
-=end
+
  
 
    
