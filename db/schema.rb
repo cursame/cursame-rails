@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205231409) do
+ActiveRecord::Schema.define(:version => 20130207211932) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(:version => 20130205231409) do
     t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "network_id"
   end
 
   create_table "permissions", :force => true do |t|

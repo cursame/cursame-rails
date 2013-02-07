@@ -6,10 +6,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :update, :comments, :networks, :assets
+  attr_accessible :email, :password, :password_confirmation,:network, :networks, :permissioning, :permissionings, :permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :update, :comments, :networks, :assets
   
-  has_many :networks_users, :dependent => :destroy
-  has_many :networks, :through => :networks_users
+  has_many :permissionings, :dependent => :destroy
+  has_many :networks, :through => :permissionings
   has_many :users_friends, :dependent => :destroy
   has_many :members_in_courses, :dependent => :destroy
   has_many :courses, :through => :members_in_courses
@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
   #nested atributes for forms asets
   
   accepts_nested_attributes_for :assets
+  accepts_nested_attributes_for :permissionings
+  accepts_nested_attributes_for :networks
+  
+  
   
   #comentarios para usuarios
   acts_as_commentable
@@ -50,4 +54,6 @@ class User < ActiveRecord::Base
       role.title.underscore.to_sym
     end
   end
+  
+
 end

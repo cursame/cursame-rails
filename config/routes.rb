@@ -101,7 +101,7 @@ Cursame30Lb::Application.routes.draw do
 
 
   #manejo de networks
-  
+  match 'networks/networkregistration/protocol-iscander', :to => 'networks#network_mask', :as => :registration_mask
   get "networks_users/create"
 
   get "networks_users/new"
