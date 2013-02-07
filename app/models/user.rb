@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :authentications 
   
-  validates :password,:presence=>true,:on=>:create
+  #validates :password,:presence=>true,:on=>:create
   
   # roles
   has_many :permissionings
