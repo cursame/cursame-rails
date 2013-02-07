@@ -16,7 +16,6 @@
 <header id="user_nav" class="topbar" >
   <div class="center-div">
     <img src="/assets/logo.png" alt="" class="brand">
-
     <div class="menu-user">
       <% if user_signed_in? %>
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
@@ -41,7 +40,7 @@
     <!-- content -->
     <%= yield %>
     <br>
-    <img src="http://placehold.it/920x100/" alt="">
+    <!--<img src="http://placehold.it/920x100/" alt="">  -->
   </div>
 </div>
 </div>

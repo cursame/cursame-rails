@@ -1,15 +1,38 @@
-ul#nav {margin: 0 0 0 20px;}
-ul.drop a { display:block; color: #fff; font-family: Verdana; font-size: 14px; text-decoration: none;}
-ul.drop, ul.drop li, ul.drop ul { list-style: none; margin: 0; padding: 0; border: 1px solid #fff; background: #555; color: #fff;}
-ul.drop { position: relative; z-index: 597; float: left; }
-ul.drop li { float: left; line-height: 1.3em; vertical-align: middle; zoom: 1; padding: 5px 10px; }
-ul.drop li.hover, ul.drop li:hover { position: relative; z-index: 599; cursor: default; background: #1e7c9a; }
-ul.drop ul { visibility: hidden; position: absolute; top: 100%; left: 0; z-index: 598; width: 295px; background: #555; border: 1px solid #fff; }
-ul.drop ul li { float: none; }
-ul.drop ul ul { top: -2px; left: 100%; }
-ul.drop li:hover > ul { visibility: visible }
-
 @import "vars";
+
+.notification-icon {
+  margin: 0 0 0 20px;
+  background: url('/assets/icons/notification-mini-high.png') no-repeat 0px 2px;
+  position: relative;
+  z-index: 597;
+  float: left;
+  width: 25px;
+  height: 25px;
+  margin-top: 2px;
+  padding: 0;
+  color: #fff;
+  & a {
+    width: 100%;
+    height: 100%;
+    display:block; color: #fff;
+    text-decoration: none;
+  }
+  & span {
+    float: left;
+    vertical-align: middle;
+    padding-top: 2px;
+    font-family: helvbold;
+    font-size: 10px;
+    //padding: 5px 10px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    min-width: 13px;
+    background: #ff0000;
+    margin: 16px 0px 0px 13px;
+    text-align: center;
+  }
+}
 
 /* notification */
 #box-notifications{
@@ -32,9 +55,11 @@ ul.drop li:hover > ul { visibility: visible }
     border: $border-box;
     border-radius: $border-radius-box;
     margin: 5px 0px 10px 11px;
-	   -moz-box-shadow: 1px 3px 7px #757575;
--webkit-box-shadow: 1px 3px 7px #757575;
-box-shadow: 1px 3px 7px #757575;
+
+	-moz-box-shadow: 1px 3px 7px #757575;
+    -webkit-box-shadow: 1px 3px 7px #757575;
+    box-shadow: 1px 3px 7px #757575;
+
     & .header{
       line-height: 23pt;
       padding-bottom: 6px;

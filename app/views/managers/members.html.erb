@@ -1,14 +1,13 @@
 <div id="admin-sidebar">
 	<h5>Administracion</h5>
 	<ul>
-		<li class=""> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Dsashboard</li>
-		<li class="active"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Usuarios</li>
-		<li> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Settings</li>
+		<%= render :partial => "managers/menu"%>
+	
 	</ul>
 </div>
 <div id="admin-content">
 
-<div id="header-users">
+<div id="header-users"> Maestros | Estudiantes | Adminsitradores _______ Nuevo Usuario <br /><br />
 <h2 class="courses-title-h2">Lista de usuarios </h2>
 <div class="search default-form delivery-form serch-courses">
 <form accept-charset="UTF-8" action="/courses" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="?"></div>

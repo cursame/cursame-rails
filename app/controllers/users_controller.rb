@@ -142,13 +142,12 @@ class UsersController < ApplicationController
    #cuando el usuario solicita ser amigo de alguien
    @first_friend_if = current_user.id
    @friend_b = UserFriends.find_by_friend_one(@first_friend_if)   
-   #cuando el suaurio y el usuario ya solicito ser amigo
+    #cuando el suaurio y el usuario ya solicito ser amigo
     @realtionship_users = UserFriends.find_by_friend_one_and_friend_two( @first_friend_if , @second_friend_id )
     
     @pending_relarionships_user_two = UserFriends.find_by_friend_two_and_status_friendship( current_user.id, 1)
     @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 1)
-    
-   
+      
  end
  
  def index
@@ -158,6 +157,9 @@ class UsersController < ApplicationController
  def dashboard
  end
  
+
+ 
+
    
  
 end
