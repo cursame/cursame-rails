@@ -1,5 +1,13 @@
 Cursame30Lb::Application.routes.draw do
   
+  get "registrations/new"
+
+  get "registrations/edit"
+
+  get "registrations/update"
+
+  get "registrations/create"
+
   get "managers/wall"
 
   get "managers/members"
@@ -76,9 +84,9 @@ Cursame30Lb::Application.routes.draw do
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
-  
    match  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
-   match  "/users/", :to => "users#index",  :as =>  :users_path
+   
+   match  "/users/", :to => "users#index",  :as =>  :users
    match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
       #friends
   resources :user_friends
@@ -93,7 +101,7 @@ Cursame30Lb::Application.routes.draw do
 
 
   #manejo de networks
-  
+  match 'networks/networkregistration/protocol-iscander', :to => 'networks#network_mask', :as => :registration_mask
   get "networks_users/create"
 
   get "networks_users/new"

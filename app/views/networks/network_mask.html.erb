@@ -1,0 +1,31 @@
+<%= form_for ( @user = User.new ) do |f|%>
+
+    <div><%= f.label :email %><br />
+     <%= f.email_field :email %></div>
+
+     <div><%= f.label :password %><br />
+     <%= f.password_field :password %></div>
+
+     <div><%= f.label :password_confirmation %><br />
+     <%= f.password_field :password_confirmation %></div>
+     
+     <%= f.text_field :personal_url, :value => random_string_for_user_url %>
+     <% if current_network %>
+     <div>
+         <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
+         <% 1.times do networks = @user.permissionings.build end %>
+            
+         <%= f.fields_for :permissionings do |permissioning|%>
+
+             <%= permissioning.number_field :network_id, :value => current_network.id %>
+             <%= permissioning.number_field :role_id %>
+                   
+         <%end%>
+         
+     <%end%> 
+     </div>
+     
+     <%= f.submit "Registrar usuario" %>
+     
+     
+<%end%>

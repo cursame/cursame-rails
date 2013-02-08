@@ -4,4 +4,7 @@ class Role < ActiveRecord::Base
   #roles
   has_many :permissionings
   has_many :roles, :through => :permissionings
+  
+  accepts_nested_attributes_for :permissionings
+  
 end

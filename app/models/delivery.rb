@@ -37,6 +37,11 @@ class Delivery < ActiveRecord::Base
          if self.publish_date <= DateTime.now
             self.publish!
          end
+
+        self.courses[0].users.reject { |us| us.id == self.user.id }.each do |u|
+          Notification.create :user => u, :notificator => self, :kind => 'new_delivery_on_course'
+        end
+
        end
        
        after_update do
