@@ -9,7 +9,7 @@ $(document).ready(function() {
     var tmp_height = undefined;
 
     var padding_value = undefined;
-    $('#settings').click(function() {
+    $('#calendar-top-btn').click(function() {
         if (control_height){
             tmp_height = 140;
             padding_value = '0px 0px 0px 0px';
@@ -38,13 +38,19 @@ $(document).ready(function() {
     $('#stats').click(function() {
         if (control_height_2){
             tmp_height_2 = 140;
+            padding_value = '0px 0px 0px 0px';
             control_height_2=false;
+
         }else{
             tmp_height_2 = 240;
+            padding_value = '106px 0px 0px 0px';
             control_height_2=true;
         }
         $('#banner-profile').animate({
             height: tmp_height_2+'px'
+        }, time);
+        $('.box-3').animate({
+            padding: padding_value
         }, time);
     });
 

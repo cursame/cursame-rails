@@ -1160,9 +1160,9 @@ background-position: left center;
 
 
 .list-header{
-	list-style:none; 
-	display: inline;
-	float: right;
+  list-style:none;
+  display: inline;
+  float: right;
 
   & li{
     display: inherit;
@@ -1171,7 +1171,6 @@ background-position: left center;
     background-position-x: 0;
     padding-left: 25px;
     cursor: pointer;
-
     line-height: 26px;
   }
   & .calendar{
