@@ -49,6 +49,7 @@ class NetworksController < ApplicationController
     end
   end
 
+
   # GET /networks/new
   # GET /networks/new.json
   def new

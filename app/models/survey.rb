@@ -1,6 +1,7 @@
 class Survey < ActiveRecord::Base
-  has_many :questions, :dependent => :destroy
+  attr_accessible  :title, :description, :starts_at, :ends_at, :schedule_id, :schedule_type, :user_id, :network_id, :course_id, :show
   
+  has_many :questions, :dependent => :destroy
   has_many :surveyings
   has_many :courses, :through => :surveyings
   has_many :compart_assets

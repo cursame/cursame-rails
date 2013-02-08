@@ -25,6 +25,7 @@ Cursame30Lb::Application.routes.draw do
   resources :events
 
   get "calendar/index"
+  get "calendar/test_calendar"
   
   match "/auth/:provider/callback" => "authentications#create"
   
