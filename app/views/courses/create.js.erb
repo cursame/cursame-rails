@@ -1,4 +1,7 @@
-setTimeout(function(){
-    $(".ui-widget-overlay").css('display','none');
-    $(window.location.reload());
-},1000);
+$(function(){
+	resetForm($('#new_course'));
+	mask('#new_course','Cargando ...');	
+	setTimeout(function(){
+		unmask('#new_course');
+	},2000)
+});

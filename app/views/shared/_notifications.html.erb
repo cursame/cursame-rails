@@ -5,8 +5,8 @@ var Cursame ={
 };
 </script>
 
-<div class="notification-icon">
-    <a href='#'><span id="notifications_count"><%= current_user.notifications.count %></span></a>
+<div class="notification-icon" id="notifications_count">
+    <span ><%= current_user.notifications.count %></span>
 </div>
 
 <!-- tratamos las notificaciones para agregarles el css first y last-->

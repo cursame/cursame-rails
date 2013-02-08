@@ -91,11 +91,11 @@ class CoursesController < ApplicationController
              
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
-        #format.js
+        format.js
       else
         #format.json { render json: @course.errors, status: :unprocessable_entity }
         format.html { redirect_to courses_url }
-        #format.js
+        format.js
         
       end
     end
