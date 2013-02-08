@@ -4,20 +4,40 @@ $(document).ready(function() {
     var time = 500;
     var timeSlide = time-100;
 
+    /*
+     *
+     *=================================================================
+     *==================== Animation - Cover Photo ====================
+     *=================================================================
+     *
+     */
+
+
+
     //-----Titles Cover Photo -----
     var control_height = false;
-    var tmp_height = 140;
+    var tmp_height = undefined;
 
-    $('#settings').click(function() {
+    var padding_value = undefined;
+
+
+
+    $('#calendar-top-btn').click(function() {
         if (control_height){
             tmp_height = 140;
+            padding_value = '0px 0px 0px 0px';
             control_height=false;
         }else{
-            tmp_height = 275;
+            tmp_height = 440;
+            padding_value = '36px 0px 0px 0px';
             control_height=true;
         }
+
         $('#banner-profile').animate({
             height: tmp_height+'px'
+        }, time);
+        $('.box-3').animate({
+            padding: padding_value
         }, time);
     });
 
@@ -31,13 +51,19 @@ $(document).ready(function() {
     $('#stats').click(function() {
         if (control_height_2){
             tmp_height_2 = 140;
+            padding_value = '0px 0px 0px 0px';
             control_height_2=false;
+
         }else{
             tmp_height_2 = 240;
+            padding_value = '106px 0px 0px 0px';
             control_height_2=true;
         }
         $('#banner-profile').animate({
             height: tmp_height_2+'px'
+        }, time);
+        $('.box-3').animate({
+            padding: padding_value
         }, time);
     });
 
