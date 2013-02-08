@@ -1,12 +1,6 @@
 Cursame30Lb::Application.routes.draw do
-  
-  get "registrations/new"
-
-  get "registrations/edit"
-
-  get "registrations/update"
-
-  get "registrations/create"
+   
+###### configuración de managers de la red
 
   get "managers/wall"
 
@@ -15,6 +9,7 @@ Cursame30Lb::Application.routes.draw do
   get "managers/network_configuration"
 
   resources :discussions
+###### respuestas a la evaluaciones
 
   resources :response_to_the_evaluations do
     collection do
@@ -148,61 +143,15 @@ Cursame30Lb::Application.routes.draw do
   
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  
+  #machando las relaciones de creación de eventos para delivery, survey 
+  
+  resources :surveys do 
+    resources :events
+  end
+  
+  resources :deliveries do 
+    resources :events
+  end
+  
 end

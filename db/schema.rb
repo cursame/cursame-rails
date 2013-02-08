@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207211932) do
+ActiveRecord::Schema.define(:version => 20130208193718) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -163,10 +163,15 @@ ActiveRecord::Schema.define(:version => 20130207211932) do
     t.text     "description"
     t.integer  "user_id"
     t.integer  "network_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "etag"
+    t.integer  "schedule_id"
+    t.string   "schedule_type"
+    t.integer  "course_id"
   end
+
+  add_index "events", ["schedule_id", "schedule_type"], :name => "index_events_on_schedule_id_and_schedule_type"
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
