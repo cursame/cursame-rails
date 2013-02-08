@@ -15,7 +15,7 @@
     <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div>
     <%= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-    <%= f.submit "Crear" , :class=>'input-button active'%>    
+    <%= f.submit "Crear" , :class=>'input-button active', :id => 'create_course_form'%>    
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
     <div style="clear: both"></div>
 <% end %>
@@ -23,7 +23,7 @@
 
 <script type="text/javascript">
     $("#create_course_form").on('click',function(){
-       //$(".ui-widget-overlay").css('display','block');
+       mask('#new_course','Cargando ...');
     });
 
 
