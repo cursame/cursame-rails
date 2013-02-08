@@ -21,7 +21,8 @@ class NetworksController < ApplicationController
     @user = current_user
     @course = Course.new
     @delivery = Delivery.new
-
+    @survey = Survey.new
+    
     #==== Areas de evaluación ====#
     @areas_of_evaluation = AreasOfEvaluation.new
     areas_of_evaluations = @delivery.areas_of_evaluations.build
@@ -30,7 +31,6 @@ class NetworksController < ApplicationController
     @asset = Asset.new
     assets = @delivery.assets.build
 
-    @survey = Survey.new
 
     @course_count = Course.count
     @courses = current_user.members_in_courses.limit(7)
