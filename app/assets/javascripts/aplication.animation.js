@@ -4,11 +4,24 @@ $(document).ready(function() {
     var time = 500;
     var timeSlide = time-100;
 
+    /*
+     *
+     *=================================================================
+     *==================== Animation - Cover Photo ====================
+     *=================================================================
+     *
+     */
+
+
+
     //-----Titles Cover Photo -----
     var control_height = false;
     var tmp_height = undefined;
 
     var padding_value = undefined;
+
+
+
     $('#calendar-top-btn').click(function() {
         if (control_height){
             tmp_height = 140;
