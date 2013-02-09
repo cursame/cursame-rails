@@ -53,6 +53,10 @@ ul{
   z-index: -2;
   width: 939px;
 }
+.side-left-bar{
+  width: $width-left-bar;
+  float: left;
+}
 
 
 
@@ -988,11 +992,6 @@ background-position: left center;
 }
 
 /*-- generic boxes --*/
-
-.box-3{
-  width: $width-left-bar;
-  float: left;
-}
 .box-6{
   width: $width-right-bar;
   float: left;
@@ -1063,7 +1062,7 @@ background-position: left center;
 }
 
 .banner-shadow{
-  height:440px;
+  height: 640px;
   width:100%;
   overflow: hidden;
   color: white;
@@ -1087,10 +1086,13 @@ background-position: left center;
   font-size: 12pt;
   z-index: 2;
 }
-#box-titles-content{
+.box-titles-content-style{
   clear: both;
   border-top: 1px solid rgba(255,255,255,0.2);
   outline: 1px solid #000;
+  & div{
+    display: none;
+  }
 }
 
 #box-user-credential{
@@ -1193,7 +1195,7 @@ background-position: left center;
 
 .menu-course{
 	width: 100%;
-	height: 110px;
+	height: 100px;
 	display: block;
 	z-index: 0;
 	list-style:none; 
