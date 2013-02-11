@@ -21,8 +21,7 @@ class CoursesController < ApplicationController
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
-    
-
+     @ll = @course.users
     #@user = current_user
     #@course_new = Course.new
     @delivery = Delivery.new
