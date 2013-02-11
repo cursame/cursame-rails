@@ -118,9 +118,9 @@ ActiveRecord::Schema.define(:version => 20130211174157) do
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "porcent_of_evaluation"
+    t.integer  "course_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
-    t.integer  "course_id"
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
@@ -218,8 +218,9 @@ ActiveRecord::Schema.define(:version => 20130211174157) do
     t.string   "notificator_type"
     t.integer  "user_id"
     t.string   "kind"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "active",           :default => true
   end
 
   create_table "permissionings", :force => true do |t|

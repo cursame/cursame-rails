@@ -33,7 +33,7 @@ function add_fields(link, association, content) {
 //notificaciones push usando private_pub
 $(function() {
 	PrivatePub.subscribe ("/notifications/"+Cursame.userId, function(data, channel){
-		$('#notifications_count').html(data.num*1);
+		$('#notifications_count span').html(data.num*1);
 		console.log(data);
 		var notification = "";
 		switch(data.notification.kind){
@@ -51,17 +51,17 @@ $(function() {
 										'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 								'</li>'];
 			break;
-			case 'user_comment_on_discussion':
-				notification = ['<li class="unread">',
-									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-									'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-										'<span class="time">Hace 3 horas</span>',
-								'</li>'];
-			break;
 			case 'new_public_course_on_network':
 				notification = ['<li class="unread">',
 									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-									'Nuevo curso <b>'+data.notificator.title+'</b> en tu red <b>Cúrsame</b><br/>',
+									'Nuevo curso <b>'+data.notificator.title+'</b> en tu red <b>'+data.owner.name+'</b><br/>',
+										'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
+								'</li>'];
+			break;
+			case 'new_delivery_on_course':
+				notification = ['<li class="unread">',
+									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
+									'Nueva tarea <b>'+data.notificator.title+'</b> en tu curso <b>'+data.owner.title+'</b><br/>',
 										'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 								'</li>'];
 			break;
@@ -79,10 +79,10 @@ $(function() {
 										'<span class="time">Hace 3 horas</span>',
 								'</li>'];
 			break;
-			case 'new_delivery_on_course':
+			case 'user_comment_on_discussion':
 				notification = ['<li class="unread">',
 									'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-									'Nueva tarea <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
+									'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
 										'<span class="time">Hace 3 horas</span>',
 								'</li>'];
 			break;

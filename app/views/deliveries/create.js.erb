@@ -1,1 +1,2 @@
+unmask('#new_delivery_form');
 $('#timeline').prepend('<%= escape_javascript(render(:partial => 'deliveries/delivery_tpl', :locals => {:delivery => @delivery}))%>');
