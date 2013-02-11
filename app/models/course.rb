@@ -39,7 +39,7 @@ class Course < ActiveRecord::Base
   end
 
   def user
-    self.members_in_courses.where(:owner => true)
+    self.users.where(:owner => true)
   end
   
 end

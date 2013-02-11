@@ -134,5 +134,8 @@ class CalendarController < ApplicationController
   def connection
     
   end
+  
+  def test_calendar
+  end
 
 end

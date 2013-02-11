@@ -1,0 +1,97 @@
+<script type='text/javascript'>
+    var events = [];
+</script>
+<!-- creamos un arreglo directo a survey y a delivery y asi jalamos los eventos propios de este -->
+<% @user = current_user %>
+<% @user.courses.each do |courses|%>
+    
+      <% courses.deliveries.each do |delivery| %>
+        <% delivery.events.each do |event|%>            
+          <div> 
+              <%= event.title%>
+              <%= event.description%>
+              <%= event.starts_at%>
+              <%= event.ends_at%>
+              </div></br> 
+              <script type='text/javascript'>
+                    events.push(   
+                     {
+                     title : '<%= event.title%>',
+                     description: '<%= event.description%>',
+                     start :  '<%= event.starts_at%>',
+                     end :  '<%= event.ends_at%>'
+
+                     })
+              </script>
+                     
+        <%end%>
+      <%end%>
+      <% courses.surveyings.each do |survey|%>
+         <% survey.events.each do |event|%>    
+            <div> 
+              <%= event.title%>
+              <%= event.description%>
+              </div></br>         
+         <%end%>
+      <%end%>
+<%end%>
+
+<!--script que hace un call al calendar.js -->
+
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		var calendar = $('#calendar_g').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: ''
+			},
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			editable: true,
+			events: events
+		});
+		
+	});
+
+</script>
+
+<style type='text/css'>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar_g {
+		width: 400px;
+		margin: 0 auto;
+		}
+
+</style>
+<div id='calendar_g'></div>
+
+

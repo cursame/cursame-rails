@@ -74,6 +74,9 @@ class DeliveriesController < ApplicationController
         format.js 
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
+        
+        alfredot_rifa_free_pro_forever
+         
       else
         format.html { render action: "new" }
         format.json { render json: @delivery.errors, status: :unprocessable_entity }
