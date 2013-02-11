@@ -1,5 +1,5 @@
 <%if @count_course_iam_member_and_owner != 0%>
-    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form"}) do |f| %>
+    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :id => "new_delivery_form"}) do |f| %>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
@@ -26,8 +26,8 @@
             <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
         <%end%>
         <div class="submit-area"></div>
-        <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
-        <%= f.submit "Publicar"%>
+        <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' %>
+        <%= f.submit "Publicar", :id => 'create_delivery_form'%>
 
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
 
@@ -43,6 +43,10 @@
                 dateFormat: 'dd/mm/yy',
                 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+            });
+
+            $("#create_delivery_form").on('click',function(){
+              mask('#new_delivery_form','Cargando ...');
             });
         });
       </script>

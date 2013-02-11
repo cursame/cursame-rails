@@ -12,7 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130208210650) do
-
+  
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.string   "content"
@@ -218,8 +218,9 @@ ActiveRecord::Schema.define(:version => 20130208210650) do
     t.string   "notificator_type"
     t.integer  "user_id"
     t.string   "kind"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "active",           :default => true
   end
 
   create_table "permissionings", :force => true do |t|
