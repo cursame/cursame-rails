@@ -1,20 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>
 <head>
   <title>Calendar</title>  
-  <%= stylesheet_link_tag "fullcalendar.css" %>
-  <%= stylesheet_link_tag "fullcalendario.css" %>
-  <%= stylesheet_link_tag "application.css" %>
+  <%#= stylesheet_link_tag "fullcalendar.css" %>
+  <%#= stylesheet_link_tag "fullcalendario.css" %>
+  <%#= stylesheet_link_tag "application.css" %>
   
    <%#= javascript_include_tag('app.js') %>  
-   <%= javascript_include_tag('jquery.js') %>
-   <%= javascript_include_tag('calendar.js') %>
-   <%= javascript_include_tag('jquery-ui-1.8.11.custom.min.js') %>   
+   <%#= javascript_include_tag('jquery.js') %>
+   <%#= javascript_include_tag('calendar.js') %>
+
+  <%#= javascript_include_tag('jquery-ui-1.8.11.custom.min.js') %>
+
+   <%= javascript_include_tag('jquery-1.8.3.js') %>
    <%= javascript_include_tag('fullcalendar.js') %>
-   <%= javascript_include_tag('jquery.rest.js') %> 
-   <%= javascript_include_tag('rails.js') %>
-   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+
+   <%#= javascript_include_tag('jquery.rest.js') %>
+   <%#= javascript_include_tag('rails.js') %>
+   <%#= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
    
-  <%= csrf_meta_tag %> 
+  <%#= csrf_meta_tag %>
  
  
   
@@ -23,7 +27,7 @@
   
 </head>
 <body>
-    <% @cko = current_user.authentications.count %>
+    <!--<% @cko = current_user.authentications.count %>
      <% if  @cko == 0 %>
            <%= link_to "Sign in with Google", "/auth/google_oauth2" %> </br>
      <%else%>
@@ -48,7 +52,7 @@
 
      <%end%> 
 
-     <%end%>
+     <%end%> -->
 <%= yield %>
 
 </body>

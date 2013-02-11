@@ -41,6 +41,9 @@ $(document).ready(function() {
     var isOpen = undefined;
     $('#banner-btns > li').click(function() {
         getElementId = $(this).attr('get-to');
+
+        onLoadElement = $(this).attr('on-load');
+
         if(tmpGetElementId==getElementId){
             if(isOpen){
                 closeBannerAnimation(tmpGetElementId);
@@ -81,7 +84,10 @@ $(document).ready(function() {
         $(elementHide).show();
         $('#banner-profile').animate({
             height: bannerProfileHeight+'px'
-        }, time);
+        }, time, function(){
+            if(onLoadElement=="calendar")
+                initCalendar();
+        });
         $('#side-bar').animate({
             padding: slideBarPaddValue + ' 0px 0px 0px'
         }, time);
@@ -102,6 +108,47 @@ $(document).ready(function() {
         $('#side-bar').animate({
             padding: '0px 0px 0px 0px'
         }, time);
+        if(onLoadElement=="calendar")
+            initCalendar();
+    }
+
+    var initBool = true;
+
+    function initCalendar(){
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        if(initBool){
+            var calendar = $('#calendar_g').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                },
+                selectable: true,
+                selectHelper: true,
+                select: function(start, end, allDay) {
+                    var title = prompt('Event Title:');
+                    if (title) {
+                        calendar.fullCalendar('renderEvent',
+                            {
+                                title: title,
+                                start: start,
+                                end: end,
+                                allDay: allDay
+                            },
+                            true // make the event "stick"
+                        );
+                    }
+                    calendar.fullCalendar('unselect');
+                },
+                editable: true,
+                events: events
+            });
+            initBool = false;
+        }
+
     }
 
 

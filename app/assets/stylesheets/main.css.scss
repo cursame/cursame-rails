@@ -1090,7 +1090,7 @@ background-position: left center;
   clear: both;
   border-top: 1px solid rgba(255,255,255,0.2);
   outline: 1px solid #000;
-  & div{
+  &>div{
     display: none;
   }
 }
