@@ -29,8 +29,16 @@
       <% courses.surveyings.each do |survey|%>
          <% survey.events.each do |event|%>    
             <div> 
-              <%= event.title%>
-              <%= event.description%>
+                 <script type='text/javascript'>
+                        events.push(   
+                         {
+                         title : '<%= event.title%>',
+                         description: '<%= event.description%>',
+                         start :  '<%= event.starts_at%>',
+                         end :  '<%= event.ends_at%>'
+
+                         })
+                  </script>
               </div></br>         
          <%end%>
       <%end%>

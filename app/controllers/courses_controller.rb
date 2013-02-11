@@ -48,8 +48,7 @@ class CoursesController < ApplicationController
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
 
-
-
+  
 
     respond_to do |format|
           format.html # show.html.erb
