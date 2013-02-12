@@ -25,21 +25,7 @@
 		 <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
 		 <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
 		 <% @counter_admins = current_network.permissionings.where(:role_id => 1).count %>
-		 <% if @counter_students == 0 %>
-		 <% @bacoy_students = 1 %>
-		 <%else%>
-		 <% @bacoy_students = @counter_students %>	 
-		 <%end%>
-		 <% if @counter_students == 0 %>
- 		 <% @bacoy_teachers = 1 %>
- 		 <%else%>
- 		 <% @bacoy_teachers = @counter_teachers %>	 
- 		 <%end%>
-     	 <% if @counter_students == 0 %>
- 		 <% @bacoy_admins = 1 %>
- 		 <%else%>
- 		 <% @bacoy_admins = @counter_admins %>	 
- 		 <%end%>
+		 
 
 	<div id="profiles_graph" style="height:227px; weight:279px;" ></div>
  		
@@ -47,9 +33,9 @@
 	  Morris.Donut({
               element: 'profiles_graph',
               data: [
-                {label: "Estudiantes", value:<%= @bacoy_students %> },
-                {label: "Profesores", value:<%= @bacoy_teachers %>},
-                {label: "Administradores", value:<%= @bacoy_admins %> }
+                {label: "Estudiantes", value:<%= @counter_students %> },
+                {label: "Profesores", value:<%= @counter_teachers %>},
+                {label: "Administradores", value:<%= @counter_admins %> }
               ]
             });
     </script>
