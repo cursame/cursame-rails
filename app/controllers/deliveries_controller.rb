@@ -94,9 +94,11 @@ class DeliveriesController < ApplicationController
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @delivery.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

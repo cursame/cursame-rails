@@ -21,8 +21,7 @@ class CoursesController < ApplicationController
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
-    
-
+     @ll = @course.users
     #@user = current_user
     #@course_new = Course.new
     @delivery = Delivery.new
@@ -48,8 +47,7 @@ class CoursesController < ApplicationController
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
 
-
-
+  
 
     respond_to do |format|
           format.html # show.html.erb

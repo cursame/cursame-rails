@@ -1,0 +1,1025 @@
+@font-face {
+  font-family: HelvRegular;
+  src: url("/assets/fonts/HelveticaLTStdRoman.otf"), url("/assets/fonts/HelveticaLTStdRoman.otf");
+  /* IE9+ */
+}
+
+@font-face {
+  font-family: HelvBold;
+  src: url("/assets/fonts/HelveticaLTStdBold.otf"), url("/assets/fonts/HelveticaLTStdBold.otf");
+  /* IE9+ */
+}
+
+@font-face {
+  font-family: HelvLight;
+  src: url("/assets/fonts/HelveticaLTSLight.otf"), url("/assets/fonts/HelveticaLTSLight.otf");
+  /* IE9+ */
+}
+
+@font-face {
+  font-family: HelvBoldCond;
+  src: url("/assets/fonts/HelveticaLTSBoldCond.otf"), url("/assets/fonts/HelveticaLTSBoldCond.otf");
+  /* IE9+ */
+}
+
+/* /\/\/\/\ Forms /\/\/\/\ */
+/* line 16, ../../app/assets/stylesheets/forms.css.scss */
+.default-form select {
+  height: 31px;
+  overflow: hidden;
+  padding-left: 5px;
+  background: url("/assets/icons/select-mini.png") no-repeat right white;
+  border: 1px solid #c9d1da;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-box-shadow: inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow: inset 0px 1px 2px #e8e8e8;
+  margin: 4px 0px 0px 0px;
+  float: left;
+}
+/* line 28, ../../app/assets/stylesheets/forms.css.scss */
+.default-form textarea {
+  border: 1px solid #c9d1da;
+  border-radius: 5px;
+  margin: 0px;
+  padding-left: 7px;
+  -moz-box-shadow: inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow: inset 0px 1px 2px #e8e8e8;
+  margin: 4px 0px 0px 0px;
+}
+/* line 36, ../../app/assets/stylesheets/forms.css.scss */
+.default-form input[type=text], .default-form input[type=email], .default-form input[type=password] {
+  background: #FFF;
+  height: 28px;
+  border: 1px solid #c9d1da;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow: inset 0px 1px 2px #e8e8e8;
+  padding-left: 7px;
+  margin: 4px 0px 0px 0px;
+}
+/* line 45, ../../app/assets/stylesheets/forms.css.scss */
+.default-form input[type=number] {
+  background: #FFF;
+  height: 28px;
+  border: 1px solid #c9d1da;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow: inset 0px 1px 2px #e8e8e8;
+  padding-left: 7px;
+  margin: 4px 0px 0px 0px;
+}
+/* line 53, ../../app/assets/stylesheets/forms.css.scss */
+.default-form input[type=number]::-webkit-inner-spin-button, .default-form input[type=number] ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* line 62, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .file-input-box {
+  position: relative;
+  float: left;
+}
+/* line 65, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .file-input-box .browse-button {
+  padding: 0px 9px 0px 24px;
+  color: #999;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: url("/assets/icons/attach-mini.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: url("/assets/icons/attach-mini.png"), -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/attach-mini.png',sizingMethod='scale');
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  -webkit-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+/* line 74, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .file-input-box input.upload-input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+  z-index: 2;
+  width: 145px;
+  font-size: 1em;
+  height: 35px;
+  cursor: pointer;
+}
+/* line 88, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .upload-label {
+  float: left;
+  background: #f2f7fd;
+  border: 1px solid #b9c3d3;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  width: 568px;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 0px 5px 4px 5px;
+  margin-top: 4px;
+  display: none;
+}
+/* line 99, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .upload-label .file-mini-upload {
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 158px;
+  background: url("/assets/icons/file-basic-mini.png") no-repeat left;
+  height: 28px;
+  padding: 0px 0px 0px 30px;
+  line-height: 23pt;
+  margin: 4px 0px 0px 0px;
+}
+/* line 117, ../../app/assets/stylesheets/forms.css.scss */
+.default-form input[type=submit] {
+  font-size: 14px;
+  margin: 4px 4px 2px 4px;
+  min-width: 100px;
+  height: 30px;
+  line-height: 23px;
+  float: left;
+  -moz-box-shadow: inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  box-shadow: inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca));
+  background: -moz-linear-gradient(center top, #2fcce3 5%, #00b0ca 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
+  background-color: #2fcce3;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #449eae;
+  display: inline-block;
+  color: #FFF;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #197d91;
+  cursor: pointer;
+}
+/* line 140, ../../app/assets/stylesheets/forms.css.scss */
+.default-form input[type=submit]:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3));
+  background: -moz-linear-gradient(center top, #00b0ca 5%, #2fcce3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b0ca', endColorstr='#2fcce3');
+  background-color: #00b0ca;
+  color: #FFF;
+  -webkit-box-shadow: inset 0px 1px 1px #2f8999;
+  -moz-box-shadow: inset 0px 1px 1px #2f8999;
+  box-shadow: inset 0px 1px 1px #2f8999;
+}
+/* line 151, ../../app/assets/stylesheets/forms.css.scss */
+.default-form button {
+  text-align: center;
+  color: #999;
+  min-width: 100px;
+  height: 30px;
+  float: left;
+  border: 1px solid #c9d1da;
+  cursor: pointer;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  -webkit-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  margin: 4px 4px 2px 4px;
+  font-size: 14px;
+}
+/* line 165, ../../app/assets/stylesheets/forms.css.scss */
+.default-form button:hover {
+  color: #555;
+  background: #f8f8f8;
+  -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+  -moz-box-shadow: inset 0px 1px 1px #91a5bb;
+  box-shadow: inset 0px 1px 1px #91a5bb;
+}
+/* line 173, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .a-btn {
+  text-align: center;
+  color: #999;
+  min-width: 80px;
+  height: 28px;
+  float: left;
+  border: 1px solid #c9d1da;
+  cursor: pointer;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  -webkit-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  font-size: 14px;
+  line-height: 30px;
+  padding: 0px 10px;
+}
+/* line 187, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .a-btn:hover {
+  color: #555;
+  background: #f8f8f8;
+  -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+  -moz-box-shadow: inset 0px 1px 1px #91a5bb;
+  box-shadow: inset 0px 1px 1px #91a5bb;
+}
+/* line 199, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .evaluate-btn {
+  padding: 0px 9px 0px 24px;
+  color: #999;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: url("/assets/icons/evaluate-mini.png"), -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: url("/assets/icons/evaluate-mini.png"), -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  margin: 4px 0px 0px 0px;
+  background-position: left;
+  height: 28px;
+  float: left;
+  border: 1px solid #c9d1da;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 30px;
+}
+/* line 213, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .evaluate-btn:hover {
+  color: #555;
+  -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+  -moz-box-shadow: inset 0px 1px 1px #91a5bb;
+  box-shadow: inset 0px 1px 1px #91a5bb;
+}
+/* line 220, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .submit-area {
+  clear: both;
+  border-top: 1px dotted #cccccc;
+  margin-top: 5px;
+  float: right;
+  width: 100%;
+}
+/* line 233, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown {
+  /* Size and position */
+  position: relative;
+  width: 120px;
+  border: 1px solid #c9d1da;
+  color: #999;
+  background: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  -webkit-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  box-shadow: inset 0px 1px 3px white, inset 0px -1px 1px #c9d1da;
+  cursor: pointer;
+  outline: none;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  height: 28px;
+  font-size: 14px;
+  padding: 0px 0px 0px 30px;
+  float: right;
+}
+/* line 250, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown.public-dd {
+  background-position: 5px 3px;
+  background: url("/assets/icons/world-mini-high.png") 5px 3px, -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: url("/assets/icons/world-mini-high.png") 5px 3px, -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/world-mini-high.png',sizingMethod='scale');
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  background-repeat: no-repeat;
+}
+/* line 255, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown.course-dd {
+  background-position: 5px 3px;
+  background: url("/assets/icons/course-mini-high.png") 5px 3px, -webkit-gradient(linear, left top, left bottom, color-stop(0.05, white), color-stop(1, #f8f8f8));
+  background: url("/assets/icons/course-mini-high.png") 5px 3px, -moz-linear-gradient(center top, white 5%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/icons/course-mini-high.png',sizingMethod='scale');
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8');
+  background-color: #f8f8f8;
+  background-repeat: no-repeat;
+}
+/* line 260, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown span {
+  line-height: 30px;
+}
+/* line 266, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .box-arrow {
+  float: right;
+  width: 32px;
+  height: 29px;
+  border-left: 1px solid #c9d1da;
+}
+/* line 277, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+/* line 282, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -3px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: silver transparent;
+}
+/* line 294, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown {
+  /* Size&position */
+  position: absolute;
+  top: 100%;
+  margin-top: 1px;
+  /* border of wrapper */
+  left: -1px;
+  right: -1px;
+  background: white;
+  border: 1px solid #c9d1da;
+  list-style: none;
+  transition: all 0.3s ease-out;
+  /* Hiding */
+  opacity: 0;
+  pointer-events: none;
+}
+/* line 309, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li {
+  position: relative;
+  /* Enable absolute positioning for checkboxes */
+}
+/* line 311, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li:last-of-type label {
+  border: none;
+}
+/* line 314, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label {
+  display: block;
+  padding: 10px 10px 10px 30px;
+  /* Same padding as the button */
+  border-bottom: 1px solid #c9d1da;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+/* line 321, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label.world-dd {
+  background: url("/assets/icons/world-mini-low.png") no-repeat 5px 7px;
+}
+/* line 324, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label.course-dd {
+  background: url("/assets/icons/course-mini-low.png") no-repeat 5px 7px;
+}
+/* line 327, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label.return-dd {
+  background: url("/assets/icons/return-mini-low.png") no-repeat 35px 7px;
+  padding: 10px 10px 10px 60px !important;
+}
+/* line 331, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label:hover {
+  background: #fcfcfd url("/assets/icons/check-mini-low.png") no-repeat 5px 7px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 334, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label:hover.world-dd {
+  background: #fcfcfd url("/assets/icons/world-mini-high.png") no-repeat 5px 7px;
+}
+/* line 337, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label:hover.course-dd {
+  background: #fcfcfd url("/assets/icons/course-mini-high.png") no-repeat 5px 7px;
+}
+/* line 340, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li label:hover.return-dd {
+  background: url("/assets/icons/return-mini-high.png") no-repeat 35px 7px;
+}
+/* line 346, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li input {
+  position: absolute;
+  display: block;
+  right: 10px;
+  top: 50%;
+  margin-top: -8px;
+}
+/* line 353, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown .dropdown li input:checked ~ label {
+  color: #999a9b;
+  background: url("/assets/icons/check-mini.png") no-repeat 5px 7px;
+}
+/* line 360, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown.active {
+  /* Active state */
+}
+/* line 361, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown.active .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: 8px;
+  background: #f7f8fa;
+  z-index: 99;
+  min-width: 150px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 13px;
+}
+/* line 372, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .wrapper-dropdown.active:after {
+  border-width: 0 6px 6px 6px;
+}
+/* line 381, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .date-input {
+  background: url("/assets/icons/calendar-mini.png") no-repeat white right !important;
+}
+/* line 383, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .date-input.delivery {
+  width: 130px;
+  float: right;
+  margin-left: 3px;
+}
+/* line 390, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .percent-input {
+  background: url("/assets/icons/percent-mini.png") no-repeat white right !important;
+}
+/* line 393, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .percent-label {
+  background: url("/assets/icons/percent-mini-high.png") no-repeat white right !important;
+  color: #999;
+  font-size: 12pt;
+  text-align: right;
+  padding: 0px 23px 0px 0px;
+  margin: 10px 0px 0px 0px;
+  width: 30px;
+  float: right;
+}
+/* line 406, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .slider-content {
+  width: 245px;
+  position: relative;
+  height: 18px;
+}
+/* line 411, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .slider {
+  border-radius: 25px;
+  width: 240px;
+  position: absolute;
+  height: 13px;
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, white 0%, #f9f9f9 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #f9f9f9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 0%, #f9f9f9 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 0%, #f9f9f9 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, white 0%, #f9f9f9 100%);
+  /* IE10+ */
+  background: linear-gradient(top, white 0%, #f9f9f9 100%);
+  /* W3C */
+  -webkit-box-shadow: inset 0px 1px 5px #c3c3c3;
+  -moz-box-shadow: inset 0px 1px 5px #c3c3c3;
+  box-shadow: inset 0px 1px 5px #c3c3c3;
+  border: 1px solid #64c2d2;
+}
+/* line 432, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: url("/assets/icons/handle.png") no-repeat 50% 50%;
+  font-weight: bold;
+  color: #1C94C4;
+  outline: none;
+  top: -6px;
+  margin-left: -12px;
+}
+/* line 445, ../../app/assets/stylesheets/forms.css.scss */
+.default-form .ui-slider-range {
+  background: #72d2e6;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #72d2e6 0%, #6abfd5 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #72d2e6), color-stop(100%, #6abfd5));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #72d2e6 0%, #6abfd5 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #72d2e6 0%, #6abfd5 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #72d2e6 0%, #6abfd5 100%);
+  /* IE10+ */
+  background: linear-gradient(top, #72d2e6 0%, #6abfd5 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#72d2e6', endColorstr='#6abfd5',GradientType=0 );
+  /* IE6-9 */
+  position: absolute;
+  border: 1px solid #3c98a8;
+  top: -1px;
+  left: -1px;
+  height: 100%;
+  border-radius: 25px;
+  -webkit-box-shadow: inset 0px -2px 5px #5facbf;
+  -moz-box-shadow: inset 0px -2px 5px #5facbf;
+  box-shadow: inset 0px -2px 5px #5facbf;
+}
+
+/* line 471, ../../app/assets/stylesheets/forms.css.scss */
+.a-button {
+  font-size: 14px;
+  margin: 4px 4px 2px 4px;
+  min-width: 100px;
+  height: 100%;
+  line-height: 23px;
+  float: left;
+  -moz-box-shadow: inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  box-shadow: inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca));
+  background: -moz-linear-gradient(center top, #2fcce3 5%, #00b0ca 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fcce3', endColorstr='#00b0ca');
+  background-color: #2fcce3;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #449eae;
+  display: inline-block;
+  color: #FFF;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #197d91;
+  cursor: pointer;
+  text-align: center;
+}
+/* line 498, ../../app/assets/stylesheets/forms.css.scss */
+.a-button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #00b0ca), color-stop(1, #2fcce3));
+  background: -moz-linear-gradient(center top, #00b0ca 5%, #2fcce3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b0ca', endColorstr='#2fcce3');
+  background-color: #00b0ca;
+  color: #FFF;
+  -webkit-box-shadow: inset 0px 1px 1px #2f8999;
+  -moz-box-shadow: inset 0px 1px 1px #2f8999;
+  box-shadow: inset 0px 1px 1px #2f8999;
+}
+
+/* line 515, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box {
+  border: 1px solid #c9d1da;
+  border-radius: 5px;
+  background: #FFF;
+  margin: 5px 0 10px 55px;
+  width: 600px;
+  float: left;
+}
+/* line 523, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box {
+  list-style: none;
+  display: inline;
+  float: left;
+  width: 100%;
+  height: 80px;
+  margin: 7px 0 6px 0;
+}
+/* line 530, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box a {
+  display: block;
+  width: 100px;
+  height: 100%;
+  width: 100px;
+  float: left;
+  text-align: center;
+  color: #969696;
+  font-size: 10px;
+}
+/* line 546, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box .icon {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+  width: 60px;
+  height: 60px;
+  border: white solid 2px;
+  -webkit-box-shadow: 0px 1px 4px #666666;
+  -moz-box-shadow: 0px 1px 4px #666666;
+  box-shadow: 0px 1px 4px #666666;
+  -webkit-box-shadow: inset 0px 0px 12px #666666;
+  -moz-box-shadow: inset 0px 0px 12px #666666;
+  box-shadow: inset 0px 0px 12px #666666;
+  background: #cccccc url("/assets/create/comment.png") repeat-y 3px 3px;
+  margin: -2px 0px 0px -2px;
+}
+/* line 553, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box .border {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+  width: 60px;
+  height: 60px;
+  border: white solid 2px;
+  -webkit-box-shadow: 0px 1px 4px #666666;
+  -moz-box-shadow: 0px 1px 4px #666666;
+  box-shadow: 0px 1px 4px #666666;
+  margin: 0px 0px 4px 18px;
+}
+/* line 559, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box .message-form-btn .icon {
+  background: #4fa3e9 url("/assets/create/comment.png") repeat-y 3px 3px;
+}
+/* line 564, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box .delivery-form-btn .icon {
+  background: #83b81f url("/assets/create/comment.png") repeat-y 3px 3px;
+}
+/* line 569, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box .discussion-form-btn .icon {
+  background: #d5d30e url("/assets/create/comment.png") repeat-y 3px 3px;
+}
+/* line 574, ../../app/assets/stylesheets/forms.css.scss */
+.profile-post-box .post-btns-box .survey-form-btn .icon {
+  background: #f39c20 url("/assets/create/comment.png") repeat-y 3px 3px;
+}
+
+/* line 583, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form {
+  margin: 22px 25px 20px 25px;
+  position: relative;
+  float: left;
+  width: 890px;
+}
+/* line 588, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form label {
+  clear: both;
+  float: left;
+  margin-top: 11px;
+}
+/* line 593, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .upload-label {
+  width: 200px!important;
+}
+/* line 596, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form input[type=text], .user-edit-form input[type=email], .user-edit-form input[type=password] {
+  float: left;
+  clear: both;
+}
+/* line 600, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-fields {
+  float: left;
+  width: 400px;
+}
+/* line 604, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-cancel {
+  clear: both;
+  float: left;
+}
+/* line 608, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .personal-url-label {
+  float: left;
+  color: #666;
+  font-size: 11pt;
+  padding: 0px 3px 0px 0px;
+}
+/* line 614, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .personal-url {
+  clear: none !important;
+  width: 90px !important;
+  margin: -7px 0px 0px 0px !important;
+}
+/* line 619, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .submit-btns {
+  margin-top: 17px;
+  float: left;
+}
+/* line 623, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .a-btn {
+  margin-top: 4px;
+}
+/* line 626, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-avatar {
+  float: right;
+  width: 400px;
+}
+/* line 630, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-avatar .box-image {
+  margin: 0px 0px 18px 0px;
+  float: left;
+}
+/* line 634, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-avatar .avatar {
+  height: 50px;
+  float: left;
+}
+/* line 638, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-avatar .avatar-label {
+  clear: both !important;
+  margin: 7px 0px 0px 6px;
+  width: 230px;
+}
+/* line 643, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-avatar .coverphoto-label {
+  clear: both !important;
+  width: 230px;
+  margin: 7px 0px 0px 6px;
+}
+/* line 648, ../../app/assets/stylesheets/forms.css.scss */
+.user-edit-form .box-avatar .cover {
+  height: 45px;
+  clear: both;
+  float: left;
+}
+
+/* line 657, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form-area-style {
+  height: 195px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  border-radius: 5px;
+}
+
+/* line 664, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form {
+  margin: 7px 10px 0px 10px;
+}
+/* line 666, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .percent-input {
+  width: 60px;
+  float: right;
+}
+/* line 670, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .a-btn {
+  clear: both;
+  margin: 4px 4px 10px 0px;
+}
+/* line 674, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .wrapper-dropdown {
+  margin: 4px 5px 0px 0px;
+  float: right;
+}
+/* line 679, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .slider-content {
+  float: left;
+  margin: 13px 0px 0px 14px;
+}
+/* line 683, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form select {
+  width: 217px;
+  height: 31px;
+  overflow: hidden;
+  padding-left: 5px;
+  background: url("/assets/icons/select-mini.png") no-repeat right white;
+  border: 1px solid #c9d1da;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-box-shadow: inset 0px 1px 2px #e8e8e8;
+  -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
+  box-shadow: inset 0px 1px 2px #e8e8e8;
+  margin: 4px 0px 0px 0px;
+}
+/* line 695, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form textarea {
+  width: 569px;
+}
+/* line 698, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form button {
+  float: right !important;
+}
+/* line 701, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .date-input {
+  margin-bottom: 5px !important;
+}
+/* line 706, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .subject {
+  float: left;
+  clear: both;
+}
+/* line 710, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form input[type=submit] {
+  float: right !important;
+}
+/* line 713, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .total {
+  float: right;
+  border-top: 1px dotted #cccccc;
+  font-size: 14px;
+  margin-top: 7px;
+  color: #666;
+  padding: 5px 0px 5px 20px;
+  text-align: right;
+  clear: both;
+  margin-bottom: 5px;
+  font-size: 12pt;
+}
+/* line 725, ../../app/assets/stylesheets/forms.css.scss */
+.delivery-form .evaluation-area {
+  border-top: 1px dotted #cccccc;
+  margin-top: 4px;
+  padding-top: 5px;
+  float: left;
+  width: 100%;
+}
+
+/* line 736, ../../app/assets/stylesheets/forms.css.scss */
+.message-form-area-style {
+  height: 125px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  border-radius: 5px;
+  width: 600px;
+}
+/* line 743, ../../app/assets/stylesheets/forms.css.scss */
+.message-form-area-style .comment-form {
+  float: left;
+  margin: 0px 10px 0px 10px;
+}
+/* line 746, ../../app/assets/stylesheets/forms.css.scss */
+.message-form-area-style .comment-form textarea {
+  margin: 10px 0px 0px 0px;
+  width: 570px;
+}
+/* line 750, ../../app/assets/stylesheets/forms.css.scss */
+.message-form-area-style .comment-form button {
+  float: right !important;
+  margin-right: 9px;
+}
+/* line 754, ../../app/assets/stylesheets/forms.css.scss */
+.message-form-area-style .comment-form input[type=submit] {
+  float: right !important;
+}
+/* line 757, ../../app/assets/stylesheets/forms.css.scss */
+.message-form-area-style .comment-form .wrapper-dropdown {
+  margin: 4px 5px 0px 0px;
+  float: right;
+}
+
+/* line 765, ../../app/assets/stylesheets/forms.css.scss */
+.discussion-form-area-style {
+  height: 158px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  border-radius: 5px;
+  width: 600px;
+}
+/* line 773, ../../app/assets/stylesheets/forms.css.scss */
+.discussion-form-area-style .discussion-form {
+  margin: 7px 10px 0px 10px;
+}
+/* line 775, ../../app/assets/stylesheets/forms.css.scss */
+.discussion-form-area-style .discussion-form button {
+  float: right;
+}
+/* line 778, ../../app/assets/stylesheets/forms.css.scss */
+.discussion-form-area-style .discussion-form input[type=submit] {
+  float: right;
+}
+/* line 781, ../../app/assets/stylesheets/forms.css.scss */
+.discussion-form-area-style .discussion-form .wrapper-dropdown {
+  margin: 4px 5px 0px 0px;
+  float: right;
+}
+/* line 785, ../../app/assets/stylesheets/forms.css.scss */
+.discussion-form-area-style .discussion-form textarea {
+  margin: 10px 0px 0px 0px;
+  width: 570px;
+  clear: both;
+  float: left;
+}
+
+/* line 796, ../../app/assets/stylesheets/forms.css.scss */
+.survey-form-area-style {
+  height: 190px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  border-radius: 5px;
+}
+/* line 802, ../../app/assets/stylesheets/forms.css.scss */
+.survey-form-area-style form {
+  margin: 7px 10px 0px 10px;
+}
+
+/* line 807, ../../app/assets/stylesheets/forms.css.scss */
+.course-form {
+  color: #333;
+  margin: 5px 0px 4px 6px;
+}
+/* line 810, ../../app/assets/stylesheets/forms.css.scss */
+.course-form input[type=text] {
+  width: 207px;
+  height: 28px;
+}
+/* line 814, ../../app/assets/stylesheets/forms.css.scss */
+.course-form textarea {
+  height: 70px;
+  width: 206px;
+}
+/* line 818, ../../app/assets/stylesheets/forms.css.scss */
+.course-form select {
+  width: 217px;
+}
+/* line 821, ../../app/assets/stylesheets/forms.css.scss */
+.course-form label {
+  clear: both;
+  float: left;
+  color: #999;
+}
+/* line 826, ../../app/assets/stylesheets/forms.css.scss */
+.course-form button {
+  margin-top: 10px !important;
+}
+/* line 829, ../../app/assets/stylesheets/forms.css.scss */
+.course-form input[type=submit] {
+  margin-top: 10px !important;
+}
+/* line 832, ../../app/assets/stylesheets/forms.css.scss */
+.course-form .date-input {
+  width: 96px !important;
+  margin-bottom: 10px !important;
+}
+/* line 836, ../../app/assets/stylesheets/forms.css.scss */
+.course-form .slider-content {
+  float: left;
+  width: 130px !important;
+  clear: both;
+  margin: 8px 0px 0px 8px;
+}
+/* line 842, ../../app/assets/stylesheets/forms.css.scss */
+.course-form .slider {
+  width: 130px !important;
+  clear: both;
+}
+/* line 846, ../../app/assets/stylesheets/forms.css.scss */
+.course-form .percent-input {
+  width: 48px!important;
+  float: left;
+  margin: 0px 0px 0px 14px !important;
+}
+
+/* line 854, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course input {
+  clear: both;
+  float: left;
+}
+/* line 858, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course label {
+  clear: both;
+  float: left;
+}
+/* line 862, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course select {
+  clear: both;
+  float: left;
+  width: 135px;
+}
+/* line 867, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course submit {
+  clear: both;
+  float: left;
+}
+/* line 871, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course textarea {
+  clear: both;
+  float: left;
+}
+/* line 875, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course .slider-content {
+  float: left;
+  width: 130px !important;
+  clear: both;
+  margin: 8px 0px 0px 8px;
+}
+/* line 881, ../../app/assets/stylesheets/forms.css.scss */
+.edit-course .slider {
+  clear: both;
+}
