@@ -121,6 +121,7 @@ $(document).ready(function() {
         var y = date.getFullYear();
         if(initBool){
             var calendar = $('#calendar_g').fullCalendar({
+                weekMode: 'variable',
                 header: {
                     left: 'prev,next today',
                     center: 'title',

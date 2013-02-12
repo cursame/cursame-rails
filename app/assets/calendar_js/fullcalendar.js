@@ -2213,7 +2213,7 @@ function BasicView(element, calendar, viewName) {
 		var contentClass = tm + "-widget-content";
 		var i, j;
 		var table;
-		
+
 		s =
 			"<table class='fc-border-separate' style='width:100%' cellspacing='0'>" +
 			"<thead>" +

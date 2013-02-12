@@ -280,29 +280,62 @@ html .fc,
   & thead{
 
     & tr{
-      //
       &.fc-first{
-
         background: rgba(0, 0, 0, 0.4);
         height: 30px;
         line-height: 29px;
         font-family: HelvLight;
-        -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
-        -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;
-        box-shadow:         inset 0px 1px 2px #e8e8e8;
-
       }
-
       & th {
         border-bottom: 1px solid #000;
       }
     }
   }
+
   & tbody{
-    & .fc-widget-content{
-      height: 45px;
-      font-family: helvlight;
+    & td.fc-other-month .fc-day-number {
+      //display: none;
     }
+    & tr{
+      &.fc-last{
+        & td{
+          background: none !important;
+        }
+        &.fc-first{
+          background: none !important;
+        }
+        &.fc-last{
+          background: none !important;
+
+        }
+      }
+      & td{
+        background: url('/assets/calendar/line.png');
+        background-repeat: repeat-x;
+        background-position: bottom ;
+        &.fc-first{
+          background: url('/assets/calendar/line-lateral.png');
+          background-repeat: no-repeat;
+          background-position: bottom right;
+        }
+        &.fc-last{
+          background: url('/assets/calendar/line-lateral.png');
+          background-repeat: no-repeat;
+          background-position: bottom left;
+
+        }
+      }
+
+      //&.fc-first{
+      //background: url('/assets/calendar/line.png');
+      //background-repeat: no-repeat;
+      //}
+    }
+  }
+
+  & .fc-widget-content{
+    height: 45px;
+    font-family: helvlight;
   }
 }
 
@@ -635,6 +668,7 @@ table.fc-border-separate {
   //float: right;
   padding: 0 2px;
   text-align: center;
+  padding-top: 10px;
 }
 
 .fc-grid .fc-other-month .fc-day-number {
