@@ -25,7 +25,8 @@ class Course < ActiveRecord::Base
     if self.public_status == 'public'
       #self.network.networks_users.each do |u|
       User.all.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
+        #Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
+        Wall.create :user => u, :publication => self
       end
     end  
   end

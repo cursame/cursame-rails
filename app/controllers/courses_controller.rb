@@ -77,7 +77,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
-
+    @course.network = current_network
     respond_to do |format|
       if @course.save
         
@@ -88,7 +88,7 @@ class CoursesController < ApplicationController
              @member.owner = true
              @member.title = @course.title
              @member.save
-             
+
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
         format.js

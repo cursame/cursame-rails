@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  publication_id: 1
+  publication_type: MyString
+
+two:
+  publication_id: 1
+  publication_type: MyString

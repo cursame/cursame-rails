@@ -38,13 +38,19 @@ class Comment < ActiveRecord::Base
     case commentable_type
       when "Network"
         # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-      User.all.reject { |us| us.id == self.user.id }.each do |u|
+        User.all.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
-      end      
+        end 
+        #con esto se guarda en wall
+        Wall.create :user => self.user, :publication => self
       when "Course"
-      commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+        commentable.users.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
-      end
+        end
+        #con esto se guarda en wall
+        Wall.create :user => self.user, :publication => self
+      when "Comment"
+        Wall.create :user => self.user, :publication => self
     end
   end  
 end

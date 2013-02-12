@@ -19,7 +19,8 @@ class Notification < ActiveRecord::Base
     end
 
    	PrivatePub.publish_to("/notifications/"+self.user.id.to_s,
-   		 notification: self, num: self.user.notifications.count,
+   		 notification: self, 
+       num: self.user.notifications.count,
    		 notificator: self.notificator,
    		 creator: self.notificator.user,
    		 reciever: self.user,

@@ -45,6 +45,7 @@ class Delivery < ActiveRecord::Base
         
         self.courses[0].users.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'new_delivery_on_course'
+          Wall.create :user => u, :publication => self
         end
 
        end
