@@ -7,126 +7,54 @@
 </div>
 <div id="admin-content">
 
+<!--
 <div id="header-users"> Maestros | Estudiantes | Adminsitradores _______ Nuevo Usuario <br /><br />
+-->
 <h2 class="courses-title-h2">Lista de usuarios </h2>
-<div class="search default-form delivery-form serch-courses">
-<form accept-charset="UTF-8" action="/courses" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="?"></div>
+<%= form_tag managers_members_path, :method => 'get' do %>
   <p>
-    <input id="search" name="search" placeholder="Buscar Usuario" type="text" autocomplete="OfF" class="ui-autocomplete-input" role="textbox" aria-autocomplete="list" aria-haspopup="true">
-   <!--  <input name="commit" type="submit" value="Buscar Curso" /> -->
+    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuarios' %>
+   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
   </p>
-</form></div>
-
+<% end %>
+<% @users = current_network.users.search(params[:search])%>
+<% @users.each do |user|%>
 
 	<div class="the-list">
 		<ul class="list">
 			<li class="user-list">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
+				<div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"})%></div>
+				 <div class="info"> <%= user.name %><br/>
+				 <a href=""><%= user.email %> </a>
 				 </div>
+				 <% @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
+				 <div style="color:#F6C103;">
+                 <% @role = Role.find(@permisos.role_id)%>
+                 <%= @role.title %>
+                 </div>
 				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list par">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list par">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-<li class="user-list  par">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list par">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
-				 </div>
-				 <div class="clear"></div>
-			</li>
-			<li class="user-list">
-				<div class="avatar"> <%= image_tag(current_user.avatar.modern,{:class => "avatar-mini"})%></div>
-				 <div class="info"> Leon Rangel <br/>
-				 <a href="">leon@cursa.me </a>
-				 </div>
-				 <div class="actions">
-				 	<img src="/assets/icons/config.png" class="">
-					 <img src="/assets/icons/suspsend.png" class="">
-					 <img src="/assets/icons/config.png" class="">
+				     
+				 	 <img src="/assets/icons/config.png" class="" id="edit_role-<%= @permisos.id%>">
+				 	 <div id="edit_role_open-<%= @permisos.id%>" style="display: none">
+				 	     <b> Cambiar el rol del usuario </b>
+				 	      <%= form_for @permisos, remote: true do |permisos| %>
+				 	      <%= permisos.select :role_id, options_for_select([['alumno', '2'], ['profesor', '3'], ['admin', '1'] ])%>
+				 	      
+                           <%= permisos.submit "Actualizar role" %>
+				 	      <%end%>
+				 	 </div>
+				 	 <script>
+                       $('#edit_role-<%= @permisos.id%>').click(function() {
+                         $('#edit_role_open-<%= @permisos.id%>').toggle('slow', function() {
+                           // Animation complete.
+                         });
+                       });
+                     </script>
+					 <%#= link_to image_tag('/assets/icons/suspsend.png'), user, :confirm => '¿Estas seguro de querer eliminar este usuario?', :method => :delete  %>
 				 </div>
 				 <div class="clear"></div>
 			</li>
 		</ul> </div>
+<%end%>
+
 </div> 

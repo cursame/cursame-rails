@@ -20,6 +20,7 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :assignments, :assets
   
+  acts_as_commentable
 
 
       state_machine :state, :initial => :unpublish do

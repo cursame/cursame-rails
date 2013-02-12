@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation,:network, :networks, :permissioning, :permissionings, :permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :update, :comments, :networks, :assets
+  attr_accessible :email, :password, :password_confirmation,:network, :networks, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :update, :comments, :networks, :assets
   
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
@@ -55,5 +55,13 @@ class User < ActiveRecord::Base
     end
   end
   
+  #search por nombre en usuario
+  def self.search(search) 
+    if search
+      @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])        
+    else
+      find(:all, :order => :first_name)
+    end
+  end
 
 end
