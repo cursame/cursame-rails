@@ -42,4 +42,16 @@ class ManagersController < ApplicationController
   def network_configuration
     @network= current_network
   end
+  
+  def permissioning
+  end
+  
+  def permissioning_update
+    @permissioning = Permissioning.find(params[:id])
+   if @permissioning.save
+      redirect_to :back
+   else
+   end
+    
+  end
 end

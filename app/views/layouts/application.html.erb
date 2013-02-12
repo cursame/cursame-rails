@@ -22,7 +22,7 @@
           <span> <%= current_user.name %> </span>
           <%= image_tag(current_user.avatar.head, :class => "avatar-mini avatar")%>
       <% else %>
-          <%= link_to "Sign up", new_user_session_path %> or <%= link_to "sign in", new_user_session_path %>
+          <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>
       <% end %>
     </div>
     <div id="notifications">    
