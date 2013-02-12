@@ -26,7 +26,7 @@
             <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
         <%end%>
         <div class="submit-area"></div>
-        <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' %>
+        <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'create_delivery_form'%>
 
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
