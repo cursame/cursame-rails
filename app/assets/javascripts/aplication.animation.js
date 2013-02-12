@@ -182,6 +182,7 @@ $(document).ready(function() {
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
             resetForm($(value).find('form'));
+            console.log('cancelado');
             $('#post-forms').animate({
                 height: '0'
             }, time);
