@@ -118,9 +118,9 @@ ActiveRecord::Schema.define(:version => 20130212005424) do
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "porcent_of_evaluation"
+    t.integer  "course_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
-    t.integer  "course_id"
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
