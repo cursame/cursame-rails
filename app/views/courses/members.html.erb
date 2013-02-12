@@ -1,8 +1,11 @@
 <h2>Miembros del curso</h2>
-<% if  @course.users.count > 0 %>
-<%@course.users.each do |member|  %>
-        <% @members = User.find_by_id(member.id) %>
-        <% @member = MembersInCourse.find_by_user_id_and_course_id(member.id, current_course.id)%>
+
+<!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
+<% if  @course.members_in_courses.count > 0 %>
+<%@course.members_in_courses.each do |member|  %>
+        <% @members = User.find_by_id(member.user_id) %>
+
+        <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
        <!--coloca la imagen y el nombre-->
        <%= image_tag(@members.avatar.modern)%><h3><%= @members.name %></h3>
        
@@ -17,10 +20,16 @@
             <%= form_for @member, :remote => true do |owner|%>
                <div style = "color:#2EB3AD;"> <%= "Permisos de administrador"%> <%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer quitar los permisos de administrador de curso a este usuario, el ya no podrá editar nada de este curso?'  %></div>
             <%end%>
+             
+            <%else%>
+            <%= form_for @member, :remote => true do |owner|%>
+               <div style = "color:#F31E25;"> <%= "El usuario no tiene permisos de administrador"%> <%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %></div>
+            <%end%>
           <%end%>
             <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
             <%= form_for @member, :remote => true do |fcm| %>
-            <div style = "color:#2EB3AD;"><%= "Miembro"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %></div> <%= link_to 'Destroy', @member, confirm: 'Are you sure?', method: :delete %>    <%end%>
+            <div style = "color:#2EB3AD;"><%= "Miembro"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %></div><b> <%= link_to 'Destroy', @member, confirm: 'Are you sure?', method: :delete %></b>    <%end%>
         <%end%></br>
 <%end%>
 <%end%>
+ 

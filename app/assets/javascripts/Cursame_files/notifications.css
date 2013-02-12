@@ -1,0 +1,233 @@
+@font-face {
+  font-family: HelvRegular;
+  src: url("/assets/fonts/HelveticaLTStdRoman.otf"), url("/assets/fonts/HelveticaLTStdRoman.otf");
+  /* IE9+ */
+}
+
+@font-face {
+  font-family: HelvBold;
+  src: url("/assets/fonts/HelveticaLTStdBold.otf"), url("/assets/fonts/HelveticaLTStdBold.otf");
+  /* IE9+ */
+}
+
+@font-face {
+  font-family: HelvLight;
+  src: url("/assets/fonts/HelveticaLTSLight.otf"), url("/assets/fonts/HelveticaLTSLight.otf");
+  /* IE9+ */
+}
+
+@font-face {
+  font-family: HelvBoldCond;
+  src: url("/assets/fonts/HelveticaLTSBoldCond.otf"), url("/assets/fonts/HelveticaLTSBoldCond.otf");
+  /* IE9+ */
+}
+
+/* line 3, ../../app/assets/stylesheets/notifications.css.scss */
+.notification-icon {
+  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+  position: relative;
+  z-index: 597;
+  float: left;
+  width: 35px;
+  height: 35px;
+  padding: 0px 0px 0px 8px;
+  color: #fff;
+}
+/* line 17, ../../app/assets/stylesheets/notifications.css.scss */
+.notification-icon:hover {
+  background: #eeeeee url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+}
+/* line 23, ../../app/assets/stylesheets/notifications.css.scss */
+.notification-icon a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+/* line 29, ../../app/assets/stylesheets/notifications.css.scss */
+.notification-icon span {
+  float: left;
+  vertical-align: middle;
+  padding-top: 2px;
+  font-family: helvbold;
+  font-size: 10px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  min-width: 13px;
+  background: #ff0000;
+  margin: 16px 0px 0px 13px;
+  text-align: center;
+}
+
+/* notification */
+/* line 47, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications {
+  clear: both;
+  float: left;
+  margin: 5px 0 0 -20px;
+}
+/* line 52, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .avatar {
+  margin-left: 3px;
+  position: absolute;
+  margin-top: 4px;
+  margin-right: 8px;
+  float: left;
+}
+/* line 59, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text {
+  width: 300px;
+  height: 100%;
+  background: #FFF;
+  float: left;
+  border: 1px solid #c9d1da;
+  border-radius: 5px;
+  margin: 5px 0px 10px 11px;
+  -moz-box-shadow: 1px 3px 7px #757575;
+  -webkit-box-shadow: 1px 3px 7px #757575;
+  box-shadow: 1px 3px 7px #757575;
+}
+/* line 72, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .header {
+  line-height: 23pt;
+  padding-bottom: 6px;
+}
+/* line 75, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .header .top-null-image {
+  width: 60px;
+  height: 10px;
+  float: left;
+}
+/* line 80, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .header .date {
+  color: #999;
+  float: right;
+  margin-right: 6px;
+}
+/* line 86, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content {
+  color: #333;
+  font-size: 13px;
+  padding: 6px 10px 5px 10px;
+}
+/* line 90, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content li {
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid #c9d1da;
+  min-height: 50px;
+  line-height: 18px;
+  font-size: 12px;
+}
+/* line 97, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content li:hover {
+  background-color: #f8f8f8;
+}
+/* line 100, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content .avatar-notifications {
+  float: left;
+  margin-right: 10px;
+}
+/* line 104, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content .time {
+  font-size: 10px;
+  color: #777;
+}
+/* line 108, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content .first {
+  margin-top: -5px;
+}
+/* line 111, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .content .last {
+  border: none;
+}
+/* line 116, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .video {
+  padding: 10px;
+}
+/* line 123, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .title-discusion {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* line 129, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .text-discusion {
+  padding-left: 10px;
+}
+/* line 133, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .footer {
+  border-top: 1px solid #c9d1da;
+  height: 25px;
+  color: #777777;
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding-top: 6px;
+  -webkit-box-shadow: inset 0px 1px 3px white, inset 0px -1px 4px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 3px white, inset 0px -1px 4px #c9d1da;
+  box-shadow: inset 0px 1px 3px white, inset 0px -1px 4px #c9d1da;
+}
+/* line 145, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .footer .icon {
+  float: left;
+  margin: 4px 0px 0px 5px;
+}
+/* line 149, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .footer .labels {
+  float: right;
+  margin: 4px 5px 0px 10px;
+}
+/* line 155, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .comment-text .footer:hover {
+  -webkit-box-shadow: inset 0px 1px 2px #999999, inset 0px 3px 6px #c9d1da;
+  -moz-box-shadow: inset 0px 1px 2px #999999, inset 0px 3px 6px #c9d1da;
+  box-shadow: inset 0px 1px 2px #999999, inset 0px 3px 6px #c9d1da;
+  background-color: #f8f8f8;
+}
+/* line 164, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .header {
+  background: #fff;
+  height: 25px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 100%;
+  -moz-box-shadow: inset 0px 1px 0px #f7f7f8;
+  -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
+  box-shadow: inset 0px 1px 0px #f7f7f8;
+  border-bottom: 1px solid #c9d1da;
+}
+/* line 175, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .header b {
+  margin-left: 10px;
+}
+/* line 176, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .header .name {
+  color: #333;
+}
+/* line 180, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .general-cir-discusion {
+  background: url("/assets/comment-cir-mini-discusion.png") no-repeat;
+  width: 35px;
+  height: 35px;
+  float: left;
+}
+/* line 186, ../../app/assets/stylesheets/notifications.css.scss */
+#box-notifications .arrow-top {
+  background: url("/assets/arrow_notification.png") no-repeat;
+  width: 14px;
+  height: 9px;
+  position: absolute;
+  margin: -9px 0px 0px 145px;
+  z-index: 20;
+}
+
+/* line 196, ../../app/assets/stylesheets/notifications.css.scss */
+.unread {
+  background-color: #f2f7fd;
+}

@@ -12,7 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130208210650) do
-  
+
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.string   "content"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20130208210650) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "network_id"
+    t.integer  "user_id"
   end
 
   create_table "discussions_courses", :force => true do |t|
@@ -213,6 +214,15 @@ ActiveRecord::Schema.define(:version => 20130208210650) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notificacions", :force => true do |t|
+    t.integer  "notificator_id"
+    t.string   "notificator_type"
+    t.integer  "user_id"
+    t.string   "kind"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
@@ -254,6 +264,12 @@ ActiveRecord::Schema.define(:version => 20130208210650) do
     t.integer  "value"
   end
 
+  create_table "recipes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "response_to_the_evaluations", :force => true do |t|
     t.string   "name"
     t.text     "comment_for_rubre"
@@ -290,8 +306,12 @@ ActiveRecord::Schema.define(:version => 20130208210650) do
   create_table "surveys", :force => true do |t|
     t.string   "name"
     t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.datetime "publish_date"
+    t.datetime "end_date"
+    t.integer  "network_id"
+    t.integer  "user_id"
   end
 
   create_table "user_friends", :force => true do |t|
@@ -349,5 +369,13 @@ ActiveRecord::Schema.define(:version => 20130208210650) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "walls", :force => true do |t|
+    t.integer  "publication_id"
+    t.string   "publication_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
+  end
 
 end

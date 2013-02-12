@@ -562,17 +562,27 @@
     }
     & .delivery-form-btn{
       & .icon{
-        background: #83b81f url('/assets/create/comment.png') repeat-y 3px 3px;
+        background: #83b81f url('/assets/create/delivery.png') repeat-y 3px 3px;
       }
     }
     & .discussion-form-btn{
       & .icon{
-        background: #d5d30e url('/assets/create/comment.png') repeat-y 3px 3px;
+        background: #d5d30e url('/assets/create/discussion.png') repeat-y 3px 3px;
       }
     }
     & .survey-form-btn{
       & .icon{
-        background: #f39c20 url('/assets/create/comment.png') repeat-y 3px 3px;
+        background: #f39c20 url('/assets/create/survey.png') repeat-y 3px 3px;
+      }
+    }
+    & .poll{
+      & .icon{
+        background:  #9e1111 url('/assets/create/poll.png') repeat-y 3px 3px;
+      }
+    }
+    & .event{
+      & .icon{
+        background: #7b33a9 url('/assets/create/event.png') repeat-y 3px 3px;
       }
     }
   }

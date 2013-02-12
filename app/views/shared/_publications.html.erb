@@ -1,0 +1,57 @@
+
+<%=publication.publication_type%>
+
+<% case publication.publication_type%>
+<% when 'Discussion'%>
+<!--   discusion -->
+<div id="box-discusion">
+  <div class="general-cir-discusion"></div>
+  <div id="" class="comment-text" >
+    <div class="arrow-left"></div>
+    <div class="header">
+      <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
+      <div class="top-null-image"></div><b>León Rangel</b>  <span class="date">29/Ene/2012</span>
+    </div>
+    <div class="content">
+      <div class="null-image"></div>
+      <p class="title-discusion">¿Qué opinan del socialismo?</p>
+      <!-- <p class="text-discusion">Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.  </p> -->
+    </div>
+
+    <div class="footer">
+      <img src="/assets/icons/grey-mini-comment.png" class="icon">
+      <img src="/assets/icons/grey-mini-like.png" class="icon">
+      <div class="labels">20 Comentarios</div>
+      <div class="labels">12 Likes</div>
+    </div>
+  </div>
+</div>
+<!--   discusion -->
+<% when 'Course'%>
+<!--   survey -->
+
+<div id="box-survey">
+  <div class="general-cir-survey"></div>
+  <div id="" class="comment-image">
+    <div class="arrow-left"></div>
+    <div class="header">
+      <div class="avatar"> <img src="/assets/group-avatar-mini.png" class="avatar-mini"></div>
+      <div class="top-null-image"></div><b>Matemáticas VI</b>  <span class="date"><img src="/assets/icons/finishdate.png"> 29/Ene/2012 12:35 PM</span>   </div>
+      <div class="footer">
+        <div class="content-footer">
+          <b>Cuestionario:</b> Ecuaciones de 2o Grado 
+          <!--
+<img src="/assets/icons/white-mini-comment.png" class="icon">
+          <img src="/assets/icons/white-mini-like.png" class="icon">
+          <div class="labels">20 Comentarios</div>
+          <div class="labels">12 Likes</div>
+        -->
+      </div>
+    </div>
+    <div class="content" ><img src="/assets/survey.jpg" class="single-image"></div>
+  </div>
+</div>
+<!--   survey -->
+<% when 'Comment'%>
+<%= render :partial => '/shared/comments', :locals => {:comment => publication.publication} %>
+<%end%>

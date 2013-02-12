@@ -39,7 +39,8 @@ class NetworksController < ApplicationController
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
 
     @network = Network.find_by_subdomain!(request.subdomain)
-    @comments = @network.comments 
+    #@comments = @network.comments
+    @wall = Wall.all
 
     # TODO aqui hay que hacer una especie de merge para que se pueda paginar el timeline de alguna manera
     

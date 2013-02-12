@@ -21,8 +21,7 @@ class CoursesController < ApplicationController
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
-    
-
+     @ll = @course.users
     #@user = current_user
     #@course_new = Course.new
     @delivery = Delivery.new
@@ -48,8 +47,7 @@ class CoursesController < ApplicationController
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
 
-
-
+  
 
     respond_to do |format|
           format.html # show.html.erb
@@ -77,7 +75,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
-
+    @course.network = current_network
     respond_to do |format|
       if @course.save
         
@@ -88,7 +86,7 @@ class CoursesController < ApplicationController
              @member.owner = true
              @member.title = @course.title
              @member.save
-             
+
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
         format.js
