@@ -3,15 +3,26 @@
 
   <div class="banner-shadow">
     <div id="box-titles">
-      <div>
-        <ul class="list-header">
-          <li class="calendar" id="calendar-top-btn">Calendario</li> <li class="gallery">Galería</li> <li class="gallery">Galería</li>
-        </ul>
-      </div>
+      <ul id="banner-btns" class="list-header">
+        <li class="calendar" get-to="#calendar-area" move-sidebar-height="105px" >Calendario</li>
+        <li class="gallery" get-to="#calendar-area2" move-sidebar-height="105px">Galería</li>
+        <li class="gallery" get-to="#calendar-area3" move-sidebar-height="105px">Galería</li>
+        <li class="gallery" get-to="#calendar-area4" move-sidebar-height="105px">new</li>
+      </ul>
     </div>
-    <div id="box-titles-content">
-      <img src="/assets/calendar/calendar2.png" >
-      <%#= render :partial => "users/menu_member"%>
+    <div id="box-titles-content" class="box-titles-content-style">
+      <div id="calendar-area">
+        <img src="/assets/calendar/calendar.png" >
+      </div>
+      <div id="calendar-area2">
+        <img src="/assets/cursos.png" >
+      </div>
+      <div id="calendar-area3">
+        <img src="/assets/survey.jpg" >
+      </div>
+      <div id="calendar-area4">
+        <%= render :partial => "users/menu_member"%>
+      </div>
     </div>
   </div>
 </div>
@@ -20,7 +31,7 @@
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
 <!-- SideBar -->
-<div class="box-3" >
+<div id="side-bar" class="side-left-bar" >
   <!-- User Avatar -->
   <div id="box-user-credential" class="network-layout">
     <div class="thumbnail"  >
