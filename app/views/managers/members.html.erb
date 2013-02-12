@@ -7,17 +7,18 @@
 </div>
 <div id="admin-content">
 
+<!--
 <div id="header-users"> Maestros | Estudiantes | Adminsitradores _______ Nuevo Usuario <br /><br />
+-->
 <h2 class="courses-title-h2">Lista de usuarios </h2>
-<div class="search default-form delivery-form serch-courses">
-<form accept-charset="UTF-8" action="/courses" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="?"></div>
+<%= form_tag managers_members_path, :method => 'get' do %>
   <p>
-    <input id="search" name="search" placeholder="Buscar Usuario" type="text" autocomplete="OfF" class="ui-autocomplete-input" role="textbox" aria-autocomplete="list" aria-haspopup="true">
-   <!--  <input name="commit" type="submit" value="Buscar Curso" /> -->
+    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuarios' %>
+   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
   </p>
-</form></div>
-
-<% current_network.users.each do |user|%>
+<% end %>
+<% @users = current_network.users.search(params[:search])%>
+<% @users.each do |user|%>
 
 	<div class="the-list">
 		<ul class="list">
@@ -42,6 +43,13 @@
                            <%= permisos.submit "Actualizar role" %>
 				 	      <%end%>
 				 	 </div>
+				 	 <script>
+                       $('#edit_role-<%= @permisos.id%>').click(function() {
+                         $('#edit_role_open-<%= @permisos.id%>').toggle('slow', function() {
+                           // Animation complete.
+                         });
+                       });
+                     </script>
 					 <%#= link_to image_tag('/assets/icons/suspsend.png'), user, :confirm => '¿Estas seguro de querer eliminar este usuario?', :method => :delete  %>
 				 </div>
 				 <div class="clear"></div>
@@ -50,10 +58,3 @@
 <%end%>
 
 </div> 
-<script>
-  $('#edit_role-<%= @permisos.id%>').click(function() {
-    $('#edit_role_open-<%= @permisos.id%>').toggle('slow', function() {
-      // Animation complete.
-    });
-  });
-</script>

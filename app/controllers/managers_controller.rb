@@ -6,6 +6,7 @@ class ManagersController < ApplicationController
   @network_population = current_network.population
   @diision =  @member.count 
   @porcent_of_students =   (@diision* 100)/ @network_population
+ # @network_users = User.where(:network => current_network)
   
   
   
