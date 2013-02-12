@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130212005424) do
+=======
+ActiveRecord::Schema.define(:version => 20130208210650) do
+>>>>>>> iconos en menu de creación
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
