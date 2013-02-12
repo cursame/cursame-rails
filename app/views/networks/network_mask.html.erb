@@ -18,7 +18,7 @@
          <%= f.fields_for :permissionings do |permissioning|%>
 
              <%= permissioning.number_field :network_id, :value => current_network.id %>
-             <%= permissioning.number_field :role_id %>
+             <%= permissioning.select :role_id, %>
                    
          <%end%>
          
