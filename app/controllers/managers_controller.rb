@@ -5,7 +5,7 @@ class ManagersController < ApplicationController
   @member_count = @member.count
   @network_population = current_network.population
   @diision =  @member.count 
-  @porcent_of_students =   (@diision* 100)/ @network_population
+  @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
  # @network_users = User.where(:network => current_network)
   
   
@@ -42,7 +42,8 @@ class ManagersController < ApplicationController
   
   def permissioning_update
     @permissioning = Permissioning.find(params[:id])
-    @permissioning.save!
+    @permissioning.update
+    @permissioning.save
    if @permissioning.save
       redirect_to :back
    else
