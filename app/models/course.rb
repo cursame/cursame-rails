@@ -24,12 +24,9 @@ class Course < ActiveRecord::Base
   
   after_create do
     if self.public_status == 'public'
-      self.members_in_courses.each do |u|
-        user = User.find_by_id(u.user_id)
-        if u.owner != true
-          Notification.create :user => user, :notificator => self, :kind => 'new_public_course_on_network'          
-        end
-        Wall.create :user => user, :publication => self
+      User.all.each do |u|
+        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'          
+        Wall.create :user => u, :publication => self
       end
     end  
   end
@@ -41,7 +38,7 @@ class Course < ActiveRecord::Base
       find(:all, :order => :title)
     end
   end
-  
+
   ####es necesario sustituir el tipo de lectura de la relación manualmente #####
   ########## se crea el campo users en el modelo para poder generar la lectura correcta dentro de las relaciones ######
   def razon_users
