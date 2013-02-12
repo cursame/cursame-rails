@@ -43,8 +43,11 @@ class Delivery < ActiveRecord::Base
 
         Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
         
-        self.courses[0].users.reject { |us| us.id == self.user.id }.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'new_delivery_on_course'
+        self.courses[0].users { |us| us.id == self.user.id }.each do |u|
+          Notification.create :user => u, :notificator => self, :kind => 'new_delivery_on_course'          
+        end
+        
+        User.all.each do |u|
           Wall.create :user => u, :publication => self
         end
 
