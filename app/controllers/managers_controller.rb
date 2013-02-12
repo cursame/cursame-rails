@@ -42,6 +42,7 @@ class ManagersController < ApplicationController
   
   def permissioning_update
     @permissioning = Permissioning.find(params[:id])
+    @permissioning.save!
    if @permissioning.save
       redirect_to :back
    else
