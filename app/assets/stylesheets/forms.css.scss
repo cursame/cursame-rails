@@ -739,6 +739,44 @@
 
 
 
+.child-comment-box{
+  clear: both;
+  float: left;
+  border-bottom: $border-forms;
+  width: 553px;
+  margin-left: 14px;
+  position: relative;
+  & .heart-icon{
+    background: url("/assets/icons/heart-icon-child-comment.png") no-repeat;
+    position: absolute;
+    right: 1px;
+    height: 17px;
+    width: 17px;
+    top: 6px;
+    cursor: pointer;
+    &:hover{
+      background: url("/assets/icons/heart-icon-child-comment-hover.png") no-repeat;
+    }
+  }
+  & .info-comment{
+    float: left;
+    margin: 6px 0px 0px 0px;
+    & .username{
+      color: #7498ce;
+      font-weight: bold;
+      font-size: 11px;
+    }
+    & .comment{
+      font-size: 12px;
+      color: #333;
+      line-height: 1.28;
+    }
+  }
+  & .avatar-child-comment{
+    float: left;
+    margin: 6px 8px 5px 0px;
+  }
+}
 .post-child-comment-box{
   background-color: #f7f7f9;
   float: left;
