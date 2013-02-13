@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="//cdn.oesmith.co.uk/morris-0.4.1.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <div id="admin-sidebar">
 	<h5>Administracion</h5>
 	<ul>
@@ -8,27 +12,42 @@
 	<div class="users-chart">
           <%= render :partial => "managers/charts/users"%>
           <div class="meter orange nostripes">
-              <% if @member_count == 0%>
-                <span style="width:<%= @quiq_start %>%;"></span>
-                <p  class="hope">Usuarios registrados: <b><%= @quiq_start %></b></p> <p class="hope-right">Población esperada: <b><%= @network_population %></b></p>  
-              <%else%>
-      	    	<span style="width:<%= @member_count %>%;"></span>
+      	    	<span style="width:<%=  @porcent_of_students %>%;"></span>
       	    	 <p class="hope">Población esperada: <%= @network_population %> / actual: <%= @member_count %></p>
-      	      <%end%>
+
       	</div>
     
 	</div>
 	
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Usuarios</div>
-		<img src="/assets/charts/chart1.png">
+		
+		 <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
+		 <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
+		 <% @counter_admins = current_network.permissionings.where(:role_id => 1).count %>
+		 
+
+	<div id="profiles_graph" style="height:227px; weight:279px;" ></div>
+ 		
+    <script class="text/javascript">
+	  Morris.Donut({
+              element: 'profiles_graph',
+              data: [
+                {label: "Estudiantes", value:<%= @counter_students %> },
+                {label: "Profesores", value:<%= @counter_teachers %>},
+                {label: "Administradores", value:<%= @counter_admins %> }
+              ]
+            });
+    </script>
+    
+
 	</div>
 	
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cursos</div>
 		<div id="courses_graph" style="height:227px; weight:279px;" ></div>
 		
-		<script>
+       	<script class="text/javascript">
         Morris.Donut({
           element: 'courses_graph',
           data: [
@@ -46,7 +65,7 @@
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Tareas</div>
        	<div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
 	
-       	<script>
+       	<script class="text/javascript">
            Morris.Donut({
              element: 'deliveries_graph',
              data: [
@@ -60,7 +79,40 @@
         </script>
        
  	</div>
+ 	<div class="admin-chart">
+		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
+		<div id="comments_graph" style="height:227px; weight:279px;" ></div>
+       	
+          <% @comment = current_network.comments.count %>
+          <% @courses_l = current_network.courses%>
+          <% @courses_l.each do |el|%>
+            <% @co_el = el.comments.count %>
+            <% el.deliveries.each do |dl|%>
+              <% @co_dl = dl.comments.count%>
+            <%end%>
+          <%end%>
+          <% current_network.users.each do |cu| %>
+           <% @co_cu = cu.comments.count %>
+          <%end%>
+          
+           	<script class="text/javascript">
+              Morris.Donut({
+                 element: 'comments_graph',
+                 data: [
+                   {label: "Comentarios", value: <%=@comment %> },
+                   {label: "Comentarios en tareas", value: <%=@co_dl %> },
+                   {label: "Comentarios en cursos", value: <%= @co_el %> },
+                   {label: "Comentarios entre usuarios", value: <%= @co_cu %> }
+                   
+                   
+                 ]
+               });
+
+
+            </script>
+	</div>
 	
+<!--
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cuestionarios</div>
 		<img src="/assets/charts/chart1.png">
@@ -71,9 +123,6 @@
 		<img src="/assets/charts/chart1.png">
 	</div>
 	
-	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
-		<img src="/assets/charts/chart1.png">
-	</div>
 	
+-->	
 </div>

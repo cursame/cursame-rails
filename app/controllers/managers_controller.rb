@@ -1,20 +1,14 @@
 class ManagersController < ApplicationController
   def wall
   ##### for users bar
-  @member = current_network.users
+  @member = current_network.permissionings
   @member_count = @member.count
   @network_population = current_network.population
-  @quiq_start = 1
-  if  @member_count > 0
-     @porcent_of_students =  (@member_count/@network_population)*100
+  @diision =  @member.count 
+  @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
+ # @network_users = User.where(:network => current_network)
   
-     if @porcent_of_students < 100
-     
-          @porcent_users = @quiq_start +  @porcent_of_students
-     else
-          @porcent_users = @porcent_of_students
-     end
-  end
+  
   
   
     #### for courses counters
@@ -41,5 +35,19 @@ class ManagersController < ApplicationController
 
   def network_configuration
     @network= current_network
+  end
+  
+  def permissioning
+  end
+  
+  def permissioning_update
+    @permissioning = Permissioning.find(params[:id])
+    @permissioning.update
+    @permissioning.save
+   if @permissioning.save
+      redirect_to :back
+   else
+   end
+    
   end
 end

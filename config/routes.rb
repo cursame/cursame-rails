@@ -80,6 +80,7 @@ Cursame30Lb::Application.routes.draw do
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
+  
    match  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
    
    match  "/users/", :to => "users#index",  :as =>  :users
@@ -154,5 +155,9 @@ Cursame30Lb::Application.routes.draw do
   resources :deliveries do 
     resources :events
   end
+  
+  # subiendo permisos en manager
+  match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
+  match 'managers/permissioning_update/',:to => "managers#permissioning_update", :as => :permissioning_update
   
 end
