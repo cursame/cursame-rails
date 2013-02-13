@@ -1,9 +1,10 @@
-<div class="media" id = "comment_<%= comment.id %>">
-    <a class="pull-left" href="#">
-    	<img class="media-object" src="<%= comment.user.avatar%>" width ="32px">
+<div id="comment_<%= comment.id %>" class="child-comment-box">
+    <div class="heart-icon"></div>
+    <a class="avatar-child-comment" href="#">
+    	<img class="media-object" src="<%= comment.user.avatar%>" width ="30px">
     </a>        
-    <div class="media-body">
-        <h4 class="media-heading"><%= comment.user.name %></h4>
-        <%= comment.comment %>
+    <div class="info-comment">
+        <div class="username"><%= comment.user.name %></div>
+        <div class="comment"><%= comment.comment %></div>
     </div>
 </div>
