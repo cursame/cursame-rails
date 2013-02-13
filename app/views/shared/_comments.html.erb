@@ -8,7 +8,7 @@
     object = comment
     id_comment = (object.id) ? object.id : ''
     name_comment = (object.user.name) ? object.user.name : ''
-    content_comment = (object.comment) ? object.comment : ''
+    content_comment = (object.comment) ? object.comment_html : ''
     avatar_comment = (object.user.avatar.modern) ? object.user.avatar.modern : ''
     date_comment = (object.created_at)? object.created_at : ''
   elsif(delivery_comment)

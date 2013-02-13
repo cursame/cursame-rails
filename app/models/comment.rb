@@ -22,8 +22,27 @@ class Comment < ActiveRecord::Base
   belongs_to :network
   belongs_to :course
   
-  #comentarios para las redes
+  #comentarios para los comentarios
   acts_as_commentable
+
+  #autoconversion de links, links inteligentes
+  auto_html_for :comment do
+    html_escape
+    image
+    youtube(:width => "100%", :height => 250)
+    link :target => "_blank", :rel => "nofollow"
+    vimeo        :width => "100%", :height => 250
+    google_video :width => "100%", :height => 250
+    metacafe     :width => "100%", :height => 250
+
+    #dailymotion_with_wmode :width => 400, :height => 250
+    #slideshare_support :width => 400
+    #ustream_support :width => 400
+    #prezi_with_wmode :width => 400, :height => 360
+    #livestrem_support :width => 400, :height => 360
+    #image_with_link
+    simple_format
+  end
 
   #agregar un asset al comentario
   accepts_nested_attributes_for :compart_assets
