@@ -37,10 +37,10 @@
 				 	 <img src="/assets/icons/config.png" class="" id="edit_role-<%= @permisos.id%>">
 				 	 <div id="edit_role_open-<%= @permisos.id%>" style="display: none">
 				 	     <b> Cambiar el rol del usuario </b>
-				 	      <%= form_for @permisos, remote: true do |permisos| %>
-				 	      <%= permisos.select :role_id, options_for_select([['alumno', '2'], ['profesor', '3'], ['admin', '1'] ])%>
-				 	      
-                           <%= permisos.submit "Actualizar role" %>
+				 	      <%= form_tag "/permissionings/update", remote: true do  %>
+				 	      <%= select_tag 'role_id', options_for_select([['alumno', '2'], ['profesor', '3'], ['admin', '1'] ])%>
+				 	      <%= hidden_field_tag 'user_id',user.id %>
+                           <%= submit_tag "Actualizar role" %>
 				 	      <%end%>
 				 	 </div>
 				 	 <script>

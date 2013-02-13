@@ -10,7 +10,9 @@
 // -
 @import "vars";
 
-/* /\/\/\/\ Forms /\/\/\/\ */
+//====================================================================
+//========================== Generic Form ============================
+//====================================================================
 
 .default-form{
   & select{
@@ -463,10 +465,6 @@
   }
 }
 
-
-
-
-
 // Boton para link <a></a>
 .a-button{
   font-size: 14px;
@@ -508,9 +506,9 @@
 }
 
 
-//===
-
-//===
+//====================================================================
+//============================ Post Form =============================
+//====================================================================
 
 .profile-post-box{
   border: $border-box;
@@ -589,6 +587,236 @@
 }
 
 
+//=======================================================================
+//========================== Post Form Areas ============================
+//=======================================================================
+.delivery-form-area-style{
+  height: 195px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+
+  & .delivery-form{
+    margin: 0px 10px 0px 10px;
+    & .percent-input{
+      width: 60px;
+      float: right;
+    }
+    & .a-btn{
+      clear: both;
+      margin: 4px 4px 10px 0px;
+    }
+    & .wrapper-dropdown{
+      //clear: both;
+      margin: 4px 5px 0px 0px;
+      float: right;
+    }
+    & .slider-content{
+      float: left;
+      margin: 13px 0px 0px 14px;
+    }
+    & select{
+      width: 217px;
+      height: 31px;
+      overflow: hidden;
+      padding-left: 5px;
+      background: url('/assets/icons/select-mini.png') no-repeat right #fff;
+      border: $border-forms;
+      -webkit-appearance: none;
+      appearance: none;
+      @include shadow-input;
+      margin: 4px 0px 0px 0px;
+    }
+    & textarea{
+      width: 569px;
+    }
+    & button{
+      float: right !important;
+    }
+    & .date-input{
+      margin-bottom: 5px !important;
+      //width: 160px;
+      //float: right;
+    }
+    & .subject{
+      float: left;
+      clear: both;
+    }
+    & input[type=submit]{
+      float: right !important;
+    }
+    & .total{
+      float: right;
+      border-top: 1px dotted #ccc;
+      font-size: 14px;
+      margin-top: 7px;
+      color: #666;
+      padding: 5px 0px 5px 20px;
+      text-align: right;
+      clear: both;
+      margin-bottom: 5px;
+      font-size: 12pt;
+    }
+    & .evaluation-area{
+      border-top: 1px dotted #ccc;
+      margin-top: 4px;
+      padding-top: 5px;
+      float: left;
+      width: 100%;
+    }
+  }
+}
+
+.message-form-area-style{
+  height: 125px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  width: $width-form-post;
+  & .comment-form{
+    float: left;
+    margin: 0px 10px 0px 10px;
+    & textarea{
+      margin: 10px 0px 0px 0px;
+      width: 570px;
+    }
+    & button{
+      float: right !important;
+      margin-right: 9px;
+    }
+    & input[type=submit]{
+      float: right !important;
+    }
+    & .wrapper-dropdown{
+      margin: 4px 5px 0px 0px;
+      float: right;
+    }
+  }
+
+}
+
+.discussion-form-area-style{
+  height: 158px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  width: $width-form-post;
+
+  & .discussion-form {// edit for course
+    margin: 0px 10px 0px 10px;
+    & button {
+      float: right;
+    }
+    & input[type=submit]{
+      float: right;
+    }
+    & .wrapper-dropdown{
+      margin: 4px 5px 0px 0px;
+      float: right;
+    }
+    & textarea{
+      margin: 10px 0px 0px 0px;
+      width: 570px;
+      clear: both;
+      float: left;
+    }
+  }
+}
+
+.survey-form-area-style{
+  height: 190px;
+  background: #FFF;
+  position: relative;
+  display: none;
+  @include border-radius;
+  & form{
+    margin: 7px 10px 0px 10px;
+  }
+}
+
+
+
+.child-comment-box{
+  clear: both;
+  float: left;
+  border-bottom: $border-forms;
+  width: 553px;
+  margin-left: 14px;
+  position: relative;
+  & .heart-icon{
+    background: url("/assets/icons/heart-icon-child-comment.png") no-repeat;
+    position: absolute;
+    right: 1px;
+    height: 17px;
+    width: 17px;
+    top: 6px;
+    cursor: pointer;
+    &:hover{
+      background: url("/assets/icons/heart-icon-child-comment-hover.png") no-repeat;
+    }
+  }
+  & .info-comment{
+    float: left;
+    margin: 6px 0px 0px 0px;
+    & .username{
+      color: #7498ce;
+      font-weight: bold;
+      font-size: 11px;
+    }
+    & .comment{
+      font-size: 12px;
+      color: #333;
+      line-height: 1.28;
+    }
+  }
+  & .avatar-child-comment{
+    float: left;
+    margin: 6px 8px 5px 0px;
+  }
+}
+.post-child-comment-box{
+  background-color: #f7f7f9;
+  float: left;
+  border: 1px solid #d7dbe1;
+  border-top: 1px solid #d7dbe1;
+
+  -moz-box-shadow:    inset 0px 1px 0px #eeeef1;
+  -webkit-box-shadow: inset 0px 1px 0px #eeeef1;
+  box-shadow:         inset 0px 1px 0px #eeeef1;
+
+  margin-left: 56px;
+  width: 580px;
+  @include border-b-right-radius;
+  @include border-b-left-radius;
+  & .user-post-child-comment{
+    float: left;
+    padding: 0px 14px;
+    width: 560px;
+    & .avatar-child-comment{
+      float: left;
+      margin: 6px 8px 5px 0px;
+    }
+    & form{
+      float: left;
+      & textarea{
+        font-size: 12px;
+        border: $border-forms;
+        border-radius: $border-radius-child-comment-box;
+        padding-left: 7px;
+        @include shadow-none;
+        width: 543px;
+        height: 24px;
+        line-height: 24px;
+        margin: 7px 0px 4px 0px;
+      }
+    }
+  }
+
+}
+
 
 .user-edit-form{
   margin: 22px 25px 20px 25px;
@@ -663,156 +891,6 @@
   }
 }
 
-
-.delivery-form-area-style{
-  height: 195px;
-  background: #FFF;
-  position: relative;
-  display: none;
-  @include border-radius;
-}
-.delivery-form{
-  margin: 7px 10px 0px 10px;
-  & .percent-input{
-    width: 60px;
-    float: right;
-  }
-  & .a-btn{
-    clear: both;
-    margin: 4px 4px 10px 0px;
-  }
-  & .wrapper-dropdown{
-    //clear: both;
-    margin: 4px 5px 0px 0px;
-    float: right;
-  }
-  & .slider-content{
-    float: left;
-    margin: 13px 0px 0px 14px;
-  }
-  & select{
-    width: 217px;
-    height: 31px;
-    overflow: hidden;
-    padding-left: 5px;
-    background: url('/assets/icons/select-mini.png') no-repeat right #fff;
-    border: $border-forms;
-    -webkit-appearance: none;
-    appearance: none;
-    @include shadow-input;
-    margin: 4px 0px 0px 0px;
-  }
-  & textarea{
-    width: 569px;
-  }
-  & button{
-    float: right !important;
-  }
-  & .date-input{
-    margin-bottom: 5px !important;
-    //width: 160px;
-    //float: right;
-  }
-  & .subject{
-    float: left;
-    clear: both;
-  }
-  & input[type=submit]{
-    float: right !important;
-  }
-  & .total{
-    float: right;
-    border-top: 1px dotted #ccc;
-    font-size: 14px;
-    margin-top: 7px;
-    color: #666;
-    padding: 5px 0px 5px 20px;
-    text-align: right;
-    clear: both;
-    margin-bottom: 5px;
-    font-size: 12pt;
-  }
-  & .evaluation-area{
-    border-top: 1px dotted #ccc;
-    margin-top: 4px;
-    padding-top: 5px;
-    float: left;
-    width: 100%;
-  }
-}
-
-
-
-.message-form-area-style{
-  height: 125px;
-  background: #FFF;
-  position: relative;
-  display: none;
-  @include border-radius;
-  width: $width-form-post;
-  & .comment-form{
-    float: left;
-    margin: 0px 10px 0px 10px;
-    & textarea{
-      margin: 10px 0px 0px 0px;
-      width: 570px;
-    }
-    & button{
-      float: right !important;
-      margin-right: 9px;
-    }
-    & input[type=submit]{
-      float: right !important;
-    }
-    & .wrapper-dropdown{
-      margin: 4px 5px 0px 0px;
-      float: right;
-    }
-  }
-
-}
-
-.discussion-form-area-style{
-  height: 158px;
-  background: #FFF;
-  position: relative;
-  display: none;
-  @include border-radius;
-  width: $width-form-post;
-
-  & .discussion-form {// edit for course
-    margin: 7px 10px 0px 10px;
-    & button {
-      float: right;
-    }
-    & input[type=submit]{
-      float: right;
-    }
-    & .wrapper-dropdown{
-      margin: 4px 5px 0px 0px;
-      float: right;
-    }
-    & textarea{
-      margin: 10px 0px 0px 0px;
-      width: 570px;
-      clear: both;
-      float: left;
-    }
-  }
-}
-
-
-
-.survey-form-area-style{
-  height: 190px;
-  background: #FFF;
-  position: relative;
-  display: none;
-  @include border-radius;
-  & form{
-    margin: 7px 10px 0px 10px;
-  }
-}
 
 .course-form{  //(class form difined by Rails)
   color: #333;

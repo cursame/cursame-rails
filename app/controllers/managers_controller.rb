@@ -1,4 +1,6 @@
 class ManagersController < ApplicationController
+  filter_access_to :all
+  
   def wall
   ##### for users bar
   @member = current_network.permissionings
@@ -36,18 +38,7 @@ class ManagersController < ApplicationController
   def network_configuration
     @network= current_network
   end
+
   
-  def permissioning
-  end
   
-  def permissioning_update
-    @permissioning = Permissioning.find(params[:id])
-    @permissioning.update
-    @permissioning.save
-   if @permissioning.save
-      redirect_to :back
-   else
-   end
-    
-  end
 end

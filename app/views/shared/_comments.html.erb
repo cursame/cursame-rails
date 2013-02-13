@@ -2,19 +2,18 @@
   #=========================================
   #============ Comments Logic =============
   #=========================================
-
-
   if(comment)
     object = comment
     id_comment = (object.id) ? object.id : ''
     name_comment = (object.user.name) ? object.user.name : ''
-    content_comment = (object.comment) ? object.comment_html : ''
+    content_comment = (object.comment) ? object.comment : ''
     avatar_comment = (object.user.avatar.modern) ? object.user.avatar.modern : ''
     date_comment = (object.created_at)? object.created_at : ''
   elsif(delivery_comment)
   end
 %>
 
+<%#= debug object %>
 <!-- <div id="box-comments" > -->
 <div id="box-comments" >
   <div class="general-cir"></div>
@@ -53,16 +52,16 @@
   </div>
 
   <!-- area para comentar -->
-  <div class="make-comments" style="display:none;" id="commentable-area-<%= comment.id %>">
-    <div id="comments-comment-<%= comment.id %>">
-     <% comment.comments.each do |commentt| %>
-     <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
-     <%end%>    
-   </div>
-   <div style:"float:left;">
-    <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
-    </div>
-  </div>
+      <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= comment.id %>">
+          <div id="comments-comment-<%= comment.id %>" style="display: block;">
+            <% comment.comments.each do |commentt| %>
+            <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+            <%end%>
+          </div>
+          <div class="user-post-child-comment">
+            <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
+          </div>
+      </div>
 
 </div>
 
@@ -71,7 +70,7 @@
 $('#footer-comment-<%= comment.id %>').on('click',function(e){
   e.preventDefault();
   if(e.target.className === 'icon comments'){ //si quiere ver los comentarios
-    $('#commentable-area-<%= comment.id %>').fadeToggle();
+    //$('#commentable-area-<%= comment.id %>').fadeToggle();
   }
   if(e.target.className === 'icon like'){ //si quiere daler like ;)
     alert('like!!');

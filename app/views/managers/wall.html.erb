@@ -25,7 +25,6 @@
 		 <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
 		 <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
 		 <% @counter_admins = current_network.permissionings.where(:role_id => 1).count %>
-		 
 
 	<div id="profiles_graph" style="height:227px; weight:279px;" ></div>
  		
@@ -82,7 +81,7 @@
  	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
 		<div id="comments_graph" style="height:227px; weight:279px;" ></div>
-       	
+       	<% current_network.comments.count%>
           <% @comment = current_network.comments.count %>
           <% @courses_l = current_network.courses%>
           <% @courses_l.each do |el|%>
@@ -96,6 +95,7 @@
           <%end%>
           
            	<script class="text/javascript">
+             
               Morris.Donut({
                  element: 'comments_graph',
                  data: [

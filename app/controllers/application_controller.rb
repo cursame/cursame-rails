@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_friend  
   helper_method :current_course
   helper_method :alfredot_rifa_free_pro_forever
-
+  helper_method :current_role
   #roles
   before_filter :set_current_user
 
@@ -154,6 +154,13 @@ class ApplicationController < ActionController::Base
    def fail_in_save
      puts "fallo al guardar en el sistema"
    end
+  
+  def current_role
+    #@permissioning = current_user.permissionings.where(:network_id => current_network.id, :user_id => current_user.id)
+    @permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
+    @role = Role.find_by_id(@permisos.role_id)
+    @role.title
+  end
   
   protected
   #roles
