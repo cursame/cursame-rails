@@ -146,6 +146,9 @@ Cursame30Lb::Application.routes.draw do
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
   
+  #permisioning
+  match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
+  
   #machando las relaciones de creación de eventos para delivery, survey 
   
   resources :surveys do 
@@ -157,7 +160,14 @@ Cursame30Lb::Application.routes.draw do
   end
   
   # subiendo permisos en manager
-  match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
-  match 'managers/permissioning_update/',:to => "managers#permissioning_update", :as => :permissioning_update
+  #match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
+  #match 'managers/permissioning_for_manager/roles/:id',:to => "managers#permissioning_for_manager", :as => :permissioning_for_manager
+ 
+  #resources :permissionings
+  
+  resources :managers do 
+     #resources :permissionings 
+     resources :roles   
+  end
   
 end

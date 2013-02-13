@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212005424) do
+ActiveRecord::Schema.define(:version => 20130212223930) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130212005424) do
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
     t.integer  "netwok_id"
+    t.text     "comment_html"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -214,6 +215,15 @@ ActiveRecord::Schema.define(:version => 20130212005424) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notificacions", :force => true do |t|
+    t.integer  "notificator_id"
+    t.string   "notificator_type"
+    t.integer  "user_id"
+    t.string   "kind"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
@@ -253,6 +263,12 @@ ActiveRecord::Schema.define(:version => 20130212005424) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
+  end
+
+  create_table "recipes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
