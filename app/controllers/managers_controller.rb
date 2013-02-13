@@ -1,4 +1,6 @@
 class ManagersController < ApplicationController
+  filter_access_to :all
+  
   def wall
   ##### for users bar
   @member = current_network.permissionings
