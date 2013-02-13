@@ -765,11 +765,19 @@
       color: #7498ce;
       font-weight: bold;
       font-size: 11px;
+      float: left;
+    }
+    & .date{
+      float: left;
+      font-size: 10px;
+      color: #9c9c9c;
+      margin-left: 13px;
     }
     & .comment{
       font-size: 12px;
       color: #333;
       line-height: 1.28;
+      clear: both;
     }
   }
   & .avatar-child-comment{
@@ -783,6 +791,7 @@
   border: 1px solid #d7dbe1;
   border-top: 1px solid #d7dbe1;
 
+  margin-bottom: 12px;
   -moz-box-shadow:    inset 0px 1px 0px #eeeef1;
   -webkit-box-shadow: inset 0px 1px 0px #eeeef1;
   box-shadow:         inset 0px 1px 0px #eeeef1;

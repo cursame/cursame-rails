@@ -5,6 +5,7 @@
     </a>        
     <div class="info-comment">
         <div class="username"><%= comment.user.name %></div>
+        <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
         <div class="comment"><%= comment.comment %></div>
     </div>
 </div>
