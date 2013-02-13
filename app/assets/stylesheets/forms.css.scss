@@ -672,7 +672,7 @@
   @include border-radius;
 }
 .delivery-form{
-  margin: 7px 10px 0px 10px;
+  margin: 0px 10px 0px 10px;
   & .percent-input{
     width: 60px;
     float: right;
@@ -781,7 +781,7 @@
   width: $width-form-post;
 
   & .discussion-form {// edit for course
-    margin: 7px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
     & button {
       float: right;
     }
