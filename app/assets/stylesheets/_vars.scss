@@ -48,6 +48,7 @@ $border-high: 1px solid $color-border-high;
 //Radius
 $border-radius-box: 5px;
 $border-radius-avatar-mini: 3px;
+$border-radius-child-comment-box: 3px;
 
 @mixin border-radius{
   border-radius: $border-radius-box;
@@ -123,6 +124,11 @@ $bg-bars: #F6F7F9;
 $margin-sidebar-left: 17px;
 
 //Shadows
+@mixin shadow-none{
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+}
 @mixin shadow-input{
   -moz-box-shadow:    inset 0px 1px 2px #e8e8e8;
   -webkit-box-shadow: inset 0px 1px 2px #e8e8e8;

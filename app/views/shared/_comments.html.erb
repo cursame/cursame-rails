@@ -53,16 +53,16 @@
   </div>
 
   <!-- area para comentar -->
-  <div class="make-comments" style="display:none;" id="commentable-area-<%= comment.id %>">
-    <div id="comments-comment-<%= comment.id %>">
-     <% comment.comments.each do |commentt| %>
-     <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
-     <%end%>    
-   </div>
-   <div style:"float:left;">
-    <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
-    </div>
-  </div>
+      <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= comment.id %>">
+          <div id="comments-comment-<%= comment.id %>" style="display: none;">
+            <% comment.comments.each do |commentt| %>
+            <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+            <%end%>
+          </div>
+          <div class="user-post-child-comment">
+            <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
+          </div>
+      </div>
 
 </div>
 
