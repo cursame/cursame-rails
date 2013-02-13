@@ -155,6 +155,10 @@ class ApplicationController < ActionController::Base
      puts "fallo al guardar en el sistema"
    end
   
+  def role_from_user
+    current_user.role
+  end
+  
   protected
   #roles
   def permission_denied
