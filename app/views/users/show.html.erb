@@ -117,9 +117,11 @@ Salir ileso en procesos de transicion
                         <%else%>
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
+                                   <% if @cort.network_id == current_network.id %>
                                     <% if cu.accepted == true %>
                                         <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
                                     <%end%>
+                                   <%end%>
                                 <%end%>
                         <%end%>
                     </ul>
@@ -132,9 +134,10 @@ Salir ileso en procesos de transicion
                         <%else%>
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
+                                <% if @cort.network_id == current_network.id %>
                                 <% if cu.owner == true%>
                                     <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
-                                <%else%>
+                                <%end%>
                                 <%end%>
                             <%end%>
                         <%end%>
