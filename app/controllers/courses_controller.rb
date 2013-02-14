@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
-  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
+  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members] 
   filter_access_to :show
   
   def index
@@ -74,7 +74,7 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-      if @member.owner = true
+      if @member.owner = true || current_role = "admin"
       else
         redirect_to :back
       end
@@ -141,7 +141,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-    if @member.owner = true
+    if @member.owner = true || current_role = "admin"
     else
       redirect_to :back
     end
@@ -150,7 +150,7 @@ class CoursesController < ApplicationController
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    if @member
+    if @member 
      if @member.accepted
         respond_to do |format|
            format.html # show.html.erb

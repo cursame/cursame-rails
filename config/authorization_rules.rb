@@ -29,7 +29,7 @@ authorization do
   end
   
   
-  role :profesor do
+  role :teacher do
       has_permission_on [:roles], :to => [:users,:create,:destroy,:index,:show,:edit]
       has_permission_on [:courses], :to => [:users,:create,:destroy,:index,:show,:edit,:members]
       has_permission_on [:deliveries], :to => [:users,:create,:destroy,:index,:show,:edit]

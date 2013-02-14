@@ -47,7 +47,7 @@
          <p><b>Silabus</b><i>(descripcción)</i><b>:</b> 
          <%= @course.silabus %> </p>
      </div>
-     <% if @member.owner == true %>
+     <% if @member.owner == true  %>
          <%= link_to "editar curso", edit_course_path%>
      <%end%>
      <div id="tabs-friends" class="tabs-style">
@@ -58,10 +58,10 @@
                 <% if @member.accepted == true %>
                     <%= image_tag(@members.avatar.modern,{:class => "avatar-mini"})%>
                 <%end%>
-                <% if @member.owner == true %>
+            <%end%>
+             <% if @member.owner == true %>
                     <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
                <%end%>
-            <%end%>
          </div>
 
   </div>
