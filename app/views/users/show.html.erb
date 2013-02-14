@@ -191,52 +191,7 @@ Salir ileso en procesos de transicion
 
     <!-- Content -->
     <div id="box-stream-post">
-        <div class="profile-post-box">
-            <div id="post-forms">
-                <div id="message-form-area" class="message-form-area-style">
-                <% permitted_to? :create, :comments do %>
-                  <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-                 <%end%>
-                </div>
-                <div id="delivery-form-area" class="delivery-form-area-style">
-                <% permitted_to? :create, :deliveries do %>
-                
-                  <%= render :partial => '/deliveries/delivery_compart_form'%>
-                <%end%>
-                </div>
-                <div id="survey-form-area" class="survey-form-area-style">
-                <% permitted_to? :create, :surveys do %>
-                    <%#= render :partial => '/surveys/form'%>
-                <%end%>
-                </div>
-                <div id="discussion-form-area" class="discussion-form-area-style">
-                <% permitted_to? :create, :surveys do %>         
-                    <%= render :partial => "/discussions/form_for_discussion"%>
-                <%end%>
-                </div>
-            </div>
-            <div id="profile-form-options" class="post-btns-box">
-            <% permitted_to? :create, :comments do %>      
-                <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
-            <%end%>
-            <% permitted_to? :create, :deliveries do %>
-            
-                <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
-            <%end%>
-            <% permitted_to? :create, :discussions do %>          
-                <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
-             <%end%>
-             <% permitted_to? :create, :surveys do %>                       
-                <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
-             <%end%>
-            <% permitted_to? :create, :surveys do %>
-                <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
-            <%end%>
-            <% permitted_to? :create, :events do %>
-               <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
-            <%end%>
-            </div>
-        </div>
+      <%=render :partial => 'shared/post_menu' %>
 
       <% @comments.reverse.each do |comment| %>
           <%= render :partial => '/shared/comments', :locals => { :comment=>comment } %>

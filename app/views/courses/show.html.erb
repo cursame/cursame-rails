@@ -63,76 +63,14 @@
                <%end%>
             <%end%>
          </div>
-                
-    <!-- se ha commentado toda la clase de amigos pra colocar la clase de miembros -->
-<!--<div class="clear"></div>
-  <div id="box-friends" class="basic-lateral-box" >
-    <h2>AMIGOS</h2>
-      <ul id="ul-tabs">
-        <li class="element-left" style="width:100px!important;">
-          <a href="#tabs-friends-1">
-            <div class="content-tab">
-              <span class="title-num">39</span>
-              <span class="title">amigos</span>
-            </div>
-          </a>
-        </li>
-        <li class="element-right" style="width:130px!important;">
-          <a href="#tabs-friends-2">
-            <div class="content-tab">
-              <span class="title-num">20</span>
-              <span class="title">sugerencias</span>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <div id="tabs-friends-1">
-        <div class="content-avtr">
-        </div>
-        <div class="view-all"><a href="">Ver Todo</a></div>
-      </div>
-      <div id="tabs-friends-2">
-        <div class="content-avtr">
-        </div>
-      </div>
-    </div>-->
+
   </div>
 </div>
 
 <!-- Content -->
 
 <div id="box-stream-post">
-  <div class="profile-post-box">
-    <div id="post-forms">
-      <div id="message-form-area" class="message-form-area-style">
-        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-      </div>
-      <% if @member.owner != nil%>
-          <div id="delivery-form-area" class="delivery-form-area-style">
-              <% @count_course_iam_member_and_owner = MembersInCourse.find_by_user_id_and_course_id(current_user.id , @course.id) %>
-            <%# render :partial => '/deliveries/form'%>
-            <%= render :partial => '/deliveries/delivery_compart_form'%>
-          </div>
-      <%end%>
-
-      <div id="discussion-form-area" class="discussion-form-area-style">
-        <%= render :partial => "/discussions/form_for_discussion"%>
-      </div>
-      <div id="survey-form-area">
-        <%#= render :partial => '/surveys/form'%>
-      </div>
-
-    </div>
-
-    <div id="profile-form-options" class="post-btns-box">
-      <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
-      <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
-      <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
-      <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
-      <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
-      <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
-    </div>
-  </div>
+  <%=render :partial => 'shared/post_menu' %>
 
   <%# @comments.reverse.each do |comment| %>
   <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
