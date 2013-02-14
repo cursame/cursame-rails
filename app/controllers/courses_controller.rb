@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    @course_member = MembersInCourse.find_by_course_id(@course.id)
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
@@ -72,6 +73,11 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
+     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+      if @member.owner = true
+      else
+        redirect_to :back
+      end
   end
 
   # POST /courses
@@ -134,6 +140,11 @@ class CoursesController < ApplicationController
   def members
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    if @member.owner = true
+    else
+      redirect_to :back
+    end
   end
   
   def filter_protection

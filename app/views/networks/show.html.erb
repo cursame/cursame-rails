@@ -60,7 +60,7 @@
             </div>
           </a>
         </li>
-        <%# permitted_to? :create, :courses, :role => current_role do %>
+        <% permitted_to? :create, :courses do %>
         
         <li class="element-right">
           <div id="new-course-btn" class="plus-courses"></div>
@@ -71,7 +71,7 @@
             </div>
           </a>
         </li>
-        <%# end%>
+        <%end%>
       </ul>
       <div id="tabs-courses-1">
         <ul id="course-list" >
@@ -80,8 +80,10 @@
           <%else%>
               <% @courses.each do |cu|%>
                   <% @cort = Course.find(cu.course_id)%>
+                  <% if @cort.network_id == current_network.id %>
                   <% if cu.accepted == true %>
                       <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                  <%end%>
                   <%end%>
               <%end%>
           <%end%>
@@ -95,9 +97,11 @@
           <%else%>
               <% @courses.each do |cu|%>
                   <% @cort = Course.find(cu.course_id)%>
+                  <% if @cort.network_id == current_network.id %>
                   <% if cu.owner == true%>
                       <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
                   <%else%>
+                  <%end%>
                   <%end%>
               <%end%>
           <%end%>
@@ -105,9 +109,10 @@
       </div>
     </div>
   </div>
-
+  <div class= "box-comments"></div>
   <div class="clear"></div>
-  <div id="box-friends" class="basic-lateral-box" >
+  <div id="tabs-friends" class="tabs-style">
+   <!--<div id="box-friends" class="basic-lateral-box" >
     <h2>AMIGOS</h2>
     <div id="tabs-friends" class="tabs-style">
       <ul id="ul-tabs">
@@ -130,47 +135,75 @@
       </ul>
       <div id="tabs-friends-1">
         <div class="content-avtr">
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          
         </div>
         <div class="view-all"><a href="">Ver Todo</a></div>
       </div>
       <div id="tabs-friends-2">
         <div class="content-avtr">
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+         
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
   <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
 </div>
-<%#= Authorization.default_role =  current_role %>
 <!-- Content -->
 <div id="box-stream-post">
-  <%= render :partial => 'shared/post_menu' %>
+  <div class="profile-post-box">
+    <div id="post-forms">
+      <div id="message-form-area"  class="message-form-area-style">
+          <% permitted_to? :create, :comments do %>
+              <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+          <%end%>
+      </div>
+      <div id="delivery-form-area" class="delivery-form-area-style">
+        <% permitted_to? :create, :deliveries do %>  
+            <%= render :partial => '/deliveries/delivery_compart_form'%>
+        <%end%>
+      </div>
+      <div id="survey-form-area" class="survey-form-area-style">
+        <% permitted_to? :create, :surveys do %>
+        <%= render :partial => '/surveys/form'%>
+        <%end%>
+      </div>
+
+      <div id="discussion-form-area" class="discussion-form-area-style">
+        <% permitted_to? :create, :discussions  do %>    
+        <%= render :partial => "/discussions/form_for_discussion"%>
+        <%end%>
+      </div>
+    </div>
+
+    <div id="profile-form-options" class="post-btns-box">
+        <% permitted_to? :create, :comments do %>
+            <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
+        <%end%>
+        <% permitted_to? :create, :deliveries do %>  
+            <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
+        <%end%>
+        <% permitted_to? :create, :discussions do %>    
+            <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
+         <%end%>
+         <% permitted_to? :create, :surveys do %>
+            <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
+         <%end%>
+         <% permitted_to? :create, :surveys do %>
+      <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
+         <%end%>
+         <% permitted_to? :create, :events do %>
+     <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
+         <%end%>
+    </div>
+  </div>
+
   <!-- timeline -->
   <div id="timeline">
     <% @wall.reverse.each do |publication| %>
         <%= render :partial => '/shared/publications', :locals => {:publication => publication} %>
+
     <%end%>
   </div>
   <!-- fin timeline -->
