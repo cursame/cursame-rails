@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   filter_access_to :show
   
   def index
-    @courses = Course.search(params[:search])
+    @courses = Course.where(:network_id => current_network.id).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|
@@ -86,6 +86,7 @@ class CoursesController < ApplicationController
              @member.course_id =  @course.id
              @member.accepted = true
              @member.owner = true
+             @member.network_id = current_network.id
              @member.title = @course.title
              @member.save
 

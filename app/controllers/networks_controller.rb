@@ -74,6 +74,12 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
+         @permissioning = Permissioning.new
+         @permissioning.user_id = current_user.id
+         @permissioning.role_id = 1
+         @permissioning.network_id = @network.id
+         @permissioning.save
+         
         format.html { redirect_to :back , notice: 'Network was successfully created.' }
         format.json { render json: @network, status: :created, location: @network }
         format.js

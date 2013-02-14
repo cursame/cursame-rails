@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212223930) do
+ActiveRecord::Schema.define(:version => 20130214010808) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(:version => 20130212223930) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "owner"
     t.string   "title",      :default => "curso"
+    t.integer  "network_id"
   end
 
   create_table "network_templates", :force => true do |t|

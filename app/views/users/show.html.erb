@@ -117,14 +117,17 @@ Salir ileso en procesos de transicion
                         <%else%>
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
+                                   <% if @cort.network_id == current_network.id %>
                                     <% if cu.accepted == true %>
                                         <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
                                     <%end%>
+                                   <%end%>
                                 <%end%>
                         <%end%>
                     </ul>
                     <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
                 </div>
+                <%= @ccur %>
                 <div id="tabs-courses-2">
                     <ul id="course-list" >
                         <% if @course_count == 0%>
@@ -132,9 +135,10 @@ Salir ileso en procesos de transicion
                         <%else%>
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
+                                <% if @cort.network_id == current_network.id %>
                                 <% if cu.owner == true%>
                                     <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
-                                <%else%>
+                                <%end%>
                                 <%end%>
                             <%end%>
                         <%end%>
