@@ -109,9 +109,10 @@
       </div>
     </div>
   </div>
-
+  <div class= "box-comments"></div>
   <div class="clear"></div>
-  <div id="box-friends" class="basic-lateral-box" >
+  <div id="tabs-friends" class="tabs-style">
+   <!--<div id="box-friends" class="basic-lateral-box" >
     <h2>AMIGOS</h2>
     <div id="tabs-friends" class="tabs-style">
       <ul id="ul-tabs">
@@ -134,36 +135,18 @@
       </ul>
       <div id="tabs-friends-1">
         <div class="content-avtr">
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          
         </div>
         <div class="view-all"><a href="">Ver Todo</a></div>
       </div>
       <div id="tabs-friends-2">
         <div class="content-avtr">
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+          <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
+         
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
   <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
 </div>
@@ -207,8 +190,12 @@
          <% permitted_to? :create, :surveys do %>
             <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
          <%end%>
+         <% permitted_to? :create, :surveys do %>
       <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
-      <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
+         <%end%>
+         <% permitted_to? :create, :events do %>
+     <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
+         <%end%>
     </div>
   </div>
 
@@ -216,6 +203,7 @@
   <div id="timeline">
     <% @wall.reverse.each do |publication| %>
         <%= render :partial => '/shared/publications', :locals => {:publication => publication} %>
+
     <%end%>
   </div>
   <!-- fin timeline -->
