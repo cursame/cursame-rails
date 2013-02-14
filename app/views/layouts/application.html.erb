@@ -22,12 +22,10 @@
       <% if user_signed_in? %>
       	
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
-          <span> <%= current_user.name %> </span>
-          <%= image_tag(current_user.avatar.head, :class => "avatar-mini avatar")%>
+          <span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
+          <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
            <% if current_role == "admin"%>
-             <%= link_to "modulo de administración", managers_wall_path%>
-             <%else%>
-             <%= "Role: #{current_role}" %>
+             <%= link_to "administración", managers_wall_path%>
            <%end%>
       <% else %>
           <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>
