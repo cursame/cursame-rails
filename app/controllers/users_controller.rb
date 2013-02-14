@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     @friend = UserFriends.new   
     @course = Course.new
     @delivery = Delivery.new
+    @survey = Survey.new
+
+
    # @courses = Course.order(:by => :finish_date).limit(7).reverse
     @courses = current_user.members_in_courses.limit(7)
     @count_course_iam_member =  current_user.members_in_courses.count

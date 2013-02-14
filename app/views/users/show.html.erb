@@ -202,30 +202,7 @@ Salir ileso en procesos de transicion
 
     <!-- Content -->
     <div id="box-stream-post">
-        <div class="profile-post-box">
-            <div id="post-forms">
-                <div id="message-form-area" class="message-form-area-style">
-                  <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-                </div>
-                <div id="delivery-form-area" class="delivery-form-area-style">
-                  <%= render :partial => '/deliveries/delivery_compart_form'%>
-                </div>
-                <div id="survey-form-area" class="survey-form-area-style">
-                    <%#= render :partial => '/surveys/form'%>
-                </div>
-                <div id="discussion-form-area" class="discussion-form-area-style">
-                    <%= render :partial => "/discussions/form_for_discussion"%>
-                </div>
-            </div>
-            <div id="profile-form-options" class="post-btns-box">
-                <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
-                <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
-                <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
-                <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
-                <a href=""><div class="border" ><div class="icon"></div></div>Encuesta</a>
-                <a href=""><div class="border" ><div class="icon"></div></div>Evento</a>
-            </div>
-        </div>
+      <%=render :partial => 'shared/post_menu' %>
 
       <% @comments.reverse.each do |comment| %>
           <%= render :partial => '/shared/comments', :locals => { :comment=>comment } %>

@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
     #@user = current_user
     #@course_new = Course.new
     @delivery = Delivery.new
+    @survey = Survey.new
 
     #==== Assets ====#
     @asset = Asset.new

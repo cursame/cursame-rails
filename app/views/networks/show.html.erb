@@ -60,7 +60,7 @@
             </div>
           </a>
         </li>
-        <% permitted_to? :create, :courses, :role => current_role do %>
+        <%# permitted_to? :create, :courses, :role => current_role do %>
         
         <li class="element-right">
           <div id="new-course-btn" class="plus-courses"></div>
@@ -71,7 +71,7 @@
             </div>
           </a>
         </li>
-        <%end%>
+        <%# end%>
       </ul>
       <div id="tabs-courses-1">
         <ul id="course-list" >
@@ -166,49 +166,7 @@
 <%#= Authorization.default_role =  current_role %>
 <!-- Content -->
 <div id="box-stream-post">
-  <div class="profile-post-box">
-    <div id="post-forms">
-      <div id="message-form-area"  class="message-form-area-style">
-          <% permitted_to? :create, :comments,  Authorization.default_role = :role => current_role do %>
-              <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-          <%end%>
-      </div>
-      <div id="delivery-form-area" class="delivery-form-area-style">
-        <% permitted_to? :create, :deliveries,  Authorization.default_role = :role => current_role do %>  
-            <%= render :partial => '/deliveries/delivery_compart_form'%>
-        <%end%>
-      </div>
-      <div id="survey-form-area" class="survey-form-area-style">
-        <% permitted_to? :create, :surveys,  Authorization.default_role = :role => current_role do %>
-        <%= render :partial => '/surveys/form'%>
-        <%end%>
-      </div>
-
-      <div id="discussion-form-area" class="discussion-form-area-style">
-        <% permitted_to? :create, :discussions, Authorization.default_role = :role => current_role do %>    
-        <%= render :partial => "/discussions/form_for_discussion"%>
-        <%end%>
-      </div>
-    </div>
-
-    <div id="profile-form-options" class="post-btns-box">
-        <% permitted_to? :create, :comments,  Authorization.default_role = :role => current_role do %>
-            <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
-        <%end%>
-        <% permitted_to? :create, :deliveries,  Authorization.default_role = :role => current_role do %>  
-            <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
-        <%end%>
-        <% permitted_to? :create, :discussions,  Authorization.default_role = :role => current_role do %>    
-            <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
-         <%end%>
-         <% permitted_to? :create, :surveys,  Authorization.default_role = :role => current_role do %>
-            <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
-         <%end%>
-      <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
-      <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
-    </div>
-  </div>
-
+  <%= render :partial => 'shared/post_menu' %>
   <!-- timeline -->
   <div id="timeline">
     <% @wall.reverse.each do |publication| %>

@@ -24,11 +24,12 @@
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           <span> <%= current_user.name %> </span>
           <%= image_tag(current_user.avatar.head, :class => "avatar-mini avatar")%>
-           <% if current_role == "admin"%>
+           <%# if current_role == "admin"%>
              <%= link_to "modulo de administración", managers_wall_path%>
-             <%else%>
-             <%= "Role: #{current_role}" %>
-           <%end%>
+             <%#else%>
+             <%#= "Role: #{current_role}" %>
+             <%#= debug current_role %>
+           <%# end%>
       <% else %>
           <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>
       <% end %>
