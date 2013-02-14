@@ -17,7 +17,7 @@
 <!-- header -->
 <header id="user_nav" class="topbar" >
   <div class="center-div">
-    <img src="/assets/logo.png" alt="" class="brand">
+    <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
     <div class="menu-user">
       <% if user_signed_in? %>
       	
