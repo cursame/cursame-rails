@@ -34,9 +34,10 @@ class NetworksController < ApplicationController
 
     @course_count = Course.count
     @courses = current_user.members_in_courses.limit(7)
+    @ccc = current_user.courses.where(:network_id => current_network.id)  
+    @count_course_iam_member =  @ccc.count
 
-    @count_course_iam_member =  current_user.members_in_courses.count
-    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
+    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id).count
 
     @network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
