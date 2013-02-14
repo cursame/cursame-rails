@@ -77,12 +77,13 @@ Salir ileso en procesos de transicion
             <div class="tagname">
               <%= @user.name %>
             </div>
+            
         </div>
         <div id="box-profile-info" class="basic-lateral-box margin-top">
-            <li class="aboutme">Rockstar.  Startups, Politics, Soccer & Apple.</li>
-            <li class="mail"> <%= current_user.email %></li>
-            <li class="twitter"> @leonrangel </li>
-            <li class="facebook">León Rangel</li>
+            <li class="aboutme"><%= @user.bios %></li>
+            <li class="mail"> <%= @user.email %></li>
+            <li class="twitter"><%= @user.facebook_link %> </li>
+            <li class="facebook"><%= @user.twitter_link%></li>
         </div>
 
         <div id="box-course" class="basic-lateral-box" >

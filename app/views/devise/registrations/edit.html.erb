@@ -36,15 +36,23 @@
       <%= f.password_field :password, :autocomplete => "on" %>
       <%= f.label :Correo_electronico %>
       <%= f.email_field :email %>
+      <%= f.label :facebook_link %>
+      <%= f.text_field :facebook_link %>
+      <%= f.label :twitter_link %>
+      <%= f.text_field :twitter_link %>
+      <%= f.label :bios %>
+      <%= f.text_field :bios %>
+      
+      
       <%= f.label :Direccion %>
       <div style="float:left; clear: both;"><div class="personal-url-label">http://cursa.me/users/</div><%= f.text_field :personal_url, :class => 'personal-url' %></div>
-       <div><%= f.label :password %> <i>(deja el campo en blanco si no quieres cambiar tu contraseña)</i><br />
+       <div><%= f.label :nuevo_password %> <i>(deja el campo en blanco si no quieres cambiar tu contraseña)</i><br />
         <%= f.password_field :password, :autocomplete => "off" %></div></br>
 <div>-<i>(para realizar tus cambios necesitamos que confirmes con tu ocntraseña)</i></div></br>
-        <div><%= f.label :password_confirmation %><br />
+        <div><%= f.label :confirma_el_passwor %><br />
         <%= f.password_field :password_confirmation %></div>
          
-        <div><%= f.label :current_password %> <br />
+        <div><%= f.label :confirma_tus_cambios_colocando_tu_contraseña %> <br />
              <%= f.password_field :current_password %></div>
 
   </div>
