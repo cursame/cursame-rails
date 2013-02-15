@@ -4,6 +4,9 @@
   <%= f.fields_for :questions do |builder| %>
     <%= render "/surveys/question_fields", :f => builder %>
   <% end %>
-  <p><%= link_to_add_fields "Agregar pregunta", f, :questions, :class=>'a-btn' %></p>
-  <p><%= f.submit %></p>
+  <%= link_to_add_fields "Agregar pregunta", f, :questions, {:class=>'a-btn'} %>
+
+  <div class="submit-area"></div>
+  <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+  <%= f.submit %>
 <% end %>
