@@ -8,7 +8,11 @@
   </p>
 <% end %> 
 </div>
-<div class="new-course"><%= link_to 'New Course', new_course_path, :class=>"a-button" %></div>
+<% permitted_to? :create, :courses do %>
+
+    <div class="new-course"><%= link_to 'New Course', new_course_path, :class=>"a-button" %></div>
+
+<%end%>
 </div>
 
  <h2>  <%= notice %> </h2><br><br><br>

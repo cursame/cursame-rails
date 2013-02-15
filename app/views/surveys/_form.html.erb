@@ -1,4 +1,4 @@
-<%= form_for (@survey), :html => { :class => "default-form delivery-form"} do |f| %>
+<%= form_for (@survey = Survey.new), :html => { :class => "default-form delivery-form"} do |f| %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212223930) do
+ActiveRecord::Schema.define(:version => 20130214044016) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(:version => 20130212223930) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "owner"
     t.string   "title",      :default => "curso"
+    t.integer  "network_id"
   end
 
   create_table "network_templates", :force => true do |t|
@@ -366,6 +367,9 @@ ActiveRecord::Schema.define(:version => 20130212223930) do
     t.string   "personal_url"
     t.string   "avatar"
     t.string   "coverphoto"
+    t.string   "facebook_link"
+    t.string   "twitter_link"
+    t.text     "bios"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

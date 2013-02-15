@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
-  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
+  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members] 
   filter_access_to :show
   
   def index
-    @courses = Course.search(params[:search])
+    @courses = Course.where(:network_id => current_network.id).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|
@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    @course_member = MembersInCourse.find_by_course_id(@course.id)
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
@@ -27,6 +28,7 @@ class CoursesController < ApplicationController
     #@user = current_user
     #@course_new = Course.new
     @delivery = Delivery.new
+    @survey = Survey.new
 
     #==== Assets ====#
     @asset = Asset.new
@@ -71,6 +73,11 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
+     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+      if @member.owner = true || current_role = "admin"
+      else
+        redirect_to :back
+      end
   end
 
   # POST /courses
@@ -86,6 +93,7 @@ class CoursesController < ApplicationController
              @member.course_id =  @course.id
              @member.accepted = true
              @member.owner = true
+             @member.network_id = current_network.id
              @member.title = @course.title
              @member.save
 
@@ -132,12 +140,17 @@ class CoursesController < ApplicationController
   def members
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    if @member.owner = true || current_role = "admin"
+    else
+      redirect_to :back
+    end
   end
   
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    if @member
+    if @member 
      if @member.accepted
         respond_to do |format|
            format.html # show.html.erb

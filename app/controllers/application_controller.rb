@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
   end
   
   def random
-    general_random = "#{string_random}#{numeric_random}"
+    general_random = "#{string_random}_#{numeric_random}"
   end
   
   def string_random
@@ -150,7 +150,7 @@ class ApplicationController < ActionController::Base
      ________+++++0008888888_______...
      ________...............8888888... "
    end
-   
+
    def fail_in_save
      puts "fallo al guardar en el sistema"
    end
