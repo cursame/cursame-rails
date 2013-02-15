@@ -6,7 +6,7 @@
     object = comment
     id_comment = (object.id) ? object.id : ''
     name_comment = (object.user.name) ? object.user.name : ''
-    content_comment = (object.comment) ? object.comment : ''
+    content_comment = (object.comment) ? object.comment_html : ''
     avatar_comment = (object.user.avatar.modern) ? object.user.avatar.modern : ''
     date_comment = (object.created_at)? object.created_at : ''
   elsif(delivery_comment)
@@ -33,28 +33,15 @@
       <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
       <img src="/assets/icons/grey-mini-like.png" class="icon like">
       <div class="labels">20 Comentarios</div>
+        <div id="more-comments-<%= id_comment %>">cargas mas comentarios</div>
       <div class="labels">12 Likes</div>
-      <!-- los comentarios del comentario
-      <%# comment.comments.each do |commentt| %>
-          <%#= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
-      <%# end%>
-      -->
-      <!-- area para comentar -->
-      <div class="media" style="display: none;">
-        <a class="pull-left" href="#">
-          <img class="media-object" src="<%= current_user.avatar%>" width ="32px">
-        </a>
-        <div class="media-body">
-          <%#= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
-        </div>
-      </div>
     </div>
   </div>
 
   <!-- area para comentar -->
       <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= comment.id %>">
           <div id="comments-comment-<%= comment.id %>" style="display: block;">
-            <% comment.comments.each do |commentt| %>
+            <% comment.comments.last(3).each do |commentt| %>
             <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
             <%end%>
           </div>
@@ -75,6 +62,13 @@ $('#footer-comment-<%= comment.id %>').on('click',function(e){
   if(e.target.className === 'icon like'){ //si quiere daler like ;)
     alert('like!!');
   }  
+});
+
+$('#more-comments-<%= comment.id %>').live('click',function(e){
+  // $("#comments-comment-<%= comment.id %>").html('asdsadsdf');
+    $.getScript("home/load_more_comments/<%= comment.id %>");
+    
+    return false;
 });
 
 </script>

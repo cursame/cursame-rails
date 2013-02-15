@@ -1,0 +1,5 @@
+$('#comments-comment-<%= @object.id %>').html('');
+
+<% @comments.each do |comment| %>
+	$('#comments-comment-<%= @object.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => comment}))%>');
+<%end%>
