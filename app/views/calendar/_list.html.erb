@@ -1,0 +1,47 @@
+<script>
+  var event_list = []
+</script>
+<div style="width: 400px;float: left; margin-left:15px;">
+<% @user.courses.each do |courses|%>
+    
+      <% courses.deliveries.each do |delivery| %>
+        <% delivery.events.each do |event|%> 
+                   
+         <script type='text/javascript'>
+                event_list.push(   
+                 {
+                 title : '<%= event.title%>',
+                 description: '<%= event.description%>',
+                 start :  '<%= event.starts_at%>',
+                 end :  '<%= event.ends_at%>'
+
+                 })
+          </script>      
+                     
+        <%end%>
+      <%end%>
+
+      <% courses.surveyings.each do |survey|%>
+           <% survey.events.each do |event|%>
+              <div> 
+                   <script type='text/javascript'>
+                          event_list.push(   
+                           {
+                           title : '<%= event.title%>',
+                           description: '<%= event.description%>',
+                           start :  '<%= event.starts_at%>',
+                           end :  '<%= event.ends_at%>'
+
+                           })
+                    </script>
+           <%end%>
+        <%end%>
+<%end%>
+
+<script>
+
+  
+</script>
+
+<div id="event_list" style="color:#fff"></div>
+</div>

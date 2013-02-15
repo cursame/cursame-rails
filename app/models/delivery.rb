@@ -1,5 +1,5 @@
 class Delivery < ActiveRecord::Base
-  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation, :assets_attributes, :course_ids, :network_id
+  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation, :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses
   
   scope :active_inactive
   scope :courses
@@ -55,6 +55,7 @@ class Delivery < ActiveRecord::Base
           end
         end
        end
+
        
        after_update do
          #### crear notificaciones

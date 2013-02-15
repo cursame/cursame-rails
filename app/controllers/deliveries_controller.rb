@@ -71,9 +71,9 @@ class DeliveriesController < ApplicationController
     
     respond_to do |format|
       if @delivery.save
-        format.js 
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
+        format.js 
         
         alfredot_rifa_free_pro_forever
          

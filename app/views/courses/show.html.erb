@@ -85,6 +85,8 @@
 <%#end%>
 
   <%  @course.deliveries.reverse.each do |delivery| %>
+  
+
   <div id="box-comments">
       <div class="general-cir"></div>
          <div id="comment1" class="comment-text" >
@@ -129,11 +131,11 @@
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
                        <%= assignment.brief_description %></br>
-        
+                           
                           <%= form_for assignment do |assignment_form|%>                        
                                         
                                <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
-                                         <b>rubro</b></br>
+                                     <b>rubro</b></br>
                     
                                       <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>   
                                        
