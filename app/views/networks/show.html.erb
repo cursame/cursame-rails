@@ -45,11 +45,9 @@
 
   <div id="box-course" class="basic-lateral-box margin-top" >
     <h2>cursos</h2>
-    <% permitted_to? :create, :courses do %>
     <div id="form-new-course" class="form-new-course-lateral">
       <%= render partial: "users/form_course.html.erb"%>
     </div>
-    <%end%>
     <div id="tabs-courses" class="tabs-style">
       <ul id="ul-tabs">
         <li class="element-left">
@@ -60,8 +58,6 @@
             </div>
           </a>
         </li>
-        <% permitted_to? :create, :courses, :role => current_role do %>
-        
         <li class="element-right">
           <div id="new-course-btn" class="plus-courses"></div>
           <a href="#tabs-courses-2">
@@ -71,7 +67,6 @@
             </div>
           </a>
         </li>
-        <%end%>
       </ul>
       <div id="tabs-courses-1">
         <ul id="course-list" >
@@ -163,47 +158,31 @@
   </div>
   <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
 </div>
-<%#= Authorization.default_role =  current_role %>
+
 <!-- Content -->
 <div id="box-stream-post">
   <div class="profile-post-box">
     <div id="post-forms">
       <div id="message-form-area"  class="message-form-area-style">
-          <% permitted_to? :create, :comments,  Authorization.default_role = :role => current_role do %>
-              <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
-          <%end%>
+        <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
       </div>
       <div id="delivery-form-area" class="delivery-form-area-style">
-        <% permitted_to? :create, :deliveries,  Authorization.default_role = :role => current_role do %>  
-            <%= render :partial => '/deliveries/delivery_compart_form'%>
-        <%end%>
+        <%= render :partial => '/deliveries/delivery_compart_form'%>
       </div>
       <div id="survey-form-area" class="survey-form-area-style">
-        <% permitted_to? :create, :surveys,  Authorization.default_role = :role => current_role do %>
         <%= render :partial => '/surveys/form'%>
-        <%end%>
       </div>
 
       <div id="discussion-form-area" class="discussion-form-area-style">
-        <% permitted_to? :create, :discussions, Authorization.default_role = :role => current_role do %>    
         <%= render :partial => "/discussions/form_for_discussion"%>
-        <%end%>
       </div>
     </div>
 
     <div id="profile-form-options" class="post-btns-box">
-        <% permitted_to? :create, :comments,  Authorization.default_role = :role => current_role do %>
-            <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
-        <%end%>
-        <% permitted_to? :create, :deliveries,  Authorization.default_role = :role => current_role do %>  
-            <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
-        <%end%>
-        <% permitted_to? :create, :discussions,  Authorization.default_role = :role => current_role do %>    
-            <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
-         <%end%>
-         <% permitted_to? :create, :surveys,  Authorization.default_role = :role => current_role do %>
-            <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
-         <%end%>
+      <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
+      <a href="#delivery-form-area"class="delivery-form-btn"><div class="border" ><div class="icon"></div></div>Tarea</a>
+      <a href="#discussion-form-area" class="discussion-form-btn"><div class="border" ><div class="icon"></div></div>Discusión</a>
+      <a href="#survey-form-area" class="survey-form-btn"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
       <a href="" class="poll"><div class="border" ><div class="icon"></div></div>Encuesta</a>
       <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a>
     </div>

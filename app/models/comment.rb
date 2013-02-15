@@ -75,7 +75,7 @@ class Comment < ActiveRecord::Base
         #con esto se guarda en wall
         Wall.create :user => self.user, :publication => self
       when "Comment"
-        Wall.create :user => self.user, :publication => self
+        #Wall.create :user => self.user, :publication => self
     end
   end  
 end

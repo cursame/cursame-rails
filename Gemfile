@@ -39,6 +39,8 @@ gem 'acts_as_commentable'
 
 #para los links inteligentes en los comentarios
 gem "auto_html"
+#paginacion
+gem 'will_paginate'
 
 #gems for preoces time in background
 gem 'whenever', :require => false

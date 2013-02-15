@@ -119,8 +119,8 @@ class ApplicationController < ActionController::Base
   end
   
   def user_url_random
-     o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
-      string  =  (0...260).map{ o[rand(o.length)] }.join
+    o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+    string  =  (0...260).map{ o[rand(o.length)] }.join
   end
   
   def alfredot_rifa_free_pro_forever
@@ -172,7 +172,4 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Authorization.current_user = current_user
   end
-  
- 
-  
 end

@@ -135,13 +135,14 @@ Cursame30Lb::Application.routes.draw do
   get "home/blog"
 
   get "home/news"
-
- 
  
   root :to => 'home#index'
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
+  
+  #cargas mas comentarios
+  match  "home/load_more_comments/:id", :to => "home#load_more_comments", :as => :load_more_comments
   
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
