@@ -1,26 +1,11 @@
-<%= form_for (@survey = Survey.new), :html => { :class => "default-form delivery-form"} do |f| %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-    <%= f.label :course_id %><br />
-
- 
-     <div id="CourseDropDown" class="wrapper-dropdown"><span>Curso ...</span><div class="box-arrow"></div>
-          <ul class="dropdown">
-            <% for course in Course.find(:all) %>
-                <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
-                <% if !@course_member.nil?%>
-                    <% if @course_member.owner == true && course.id == @course_member.course_id %>
-                        <li><%= check_box_tag 'survey[course_ids][]', course.id, false %><label for="survey[course_ids][]"><%= course.title %></label></li>
-                    <%end%>
-                <%end%>
-            <% end %>
-          </ul>
-        </div>
-  </p>
+<%= form_for (@survey = Survey.new), :html => { :class => "default-form survey-form"} do |f| %>
+  <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
   <%= f.fields_for :questions do |builder| %>
     <%= render "/surveys/question_fields", :f => builder %>
   <% end %>
-  <p><%= link_to_add_fields "Add Question", f, :questions %></p>
-  <p><%= f.submit %></p>
+
+  <%= link_to_add_fields "Add Question" , f, :questions %>
+
+    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+  <p><%= f.submit "Crear"%></p>
 <% end %>
