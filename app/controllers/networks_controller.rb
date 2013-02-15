@@ -22,13 +22,6 @@ class NetworksController < ApplicationController
     @course = Course.new
     @delivery = Delivery.new
 
-    #inicializamos el cuestionario
-    @survey = Survey.new
-    # 3.times do 
-    #   question = @survey.questions.build
-    #   4.times { question.answers.build}
-    # end
-
     #==== Areas de evaluación ====#
     @areas_of_evaluation = AreasOfEvaluation.new
     areas_of_evaluations = @delivery.areas_of_evaluations.build

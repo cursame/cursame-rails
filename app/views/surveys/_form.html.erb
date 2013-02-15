@@ -1,4 +1,12 @@
-<%= form_for (@survey = Survey.new), :html => { :class => "default-form survey-form"} do |f| %>
+<%
+#inicializamos el cuestionario
+    @survey = Survey.new
+    1.times do 
+      question = @survey.questions.build
+      1.times { question.answers.build}
+    end
+%>
+<%= form_for (@survey), :html => { :class => "default-form survey-form"} do |f| %>
     <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
 
   <%= f.fields_for :questions do |builder| %>
