@@ -29,18 +29,24 @@ class Comment < ActiveRecord::Base
   auto_html_for :comment do
     html_escape
     image
-    youtube(:width => "100%", :height => 250)
-    link :target => "_blank", :rel => "nofollow"
-    vimeo        :width => "100%", :height => 250
-    google_video :width => "100%", :height => 250
-    metacafe     :width => "100%", :height => 250
 
-    #dailymotion_with_wmode :width => 400, :height => 250
-    #slideshare_support :width => 400
-    #ustream_support :width => 400
-    #prezi_with_wmode :width => 400, :height => 360
-    #livestrem_support :width => 400, :height => 360
-    #image_with_link
+    # This is defined in config/initializers/auto_html.rb
+    dailymotion :width => "100%", :height => 250
+    #flickr :width => 400, :height => 250
+    google_map :width => "100%", :height => 250
+    google_video :width => "100%", :height => 250    
+    metacafe :width => "100%", :height => 250
+    soundcloud :width => "100%", :height => 250
+    twitter :width => "100%", :height => 250
+    vimeo :width => "100%", :height => 250
+    youtube_js_api :width => "100%", :height => 250
+    slideshare_support :width => "100%"
+    ustream_support :width => "100%"
+    prezi_with_wmode :width => "100%", :height => 360
+    livestrem_support :width => "100%", :height => 360
+    link :target => "_blank", :rel => "nofollow" 
+    redcarpet
+    #sanitize
     simple_format
   end
 
@@ -69,7 +75,7 @@ class Comment < ActiveRecord::Base
         #con esto se guarda en wall
         Wall.create :user => self.user, :publication => self
       when "Comment"
-        Wall.create :user => self.user, :publication => self
+        #Wall.create :user => self.user, :publication => self
     end
   end  
 end

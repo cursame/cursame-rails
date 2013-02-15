@@ -53,6 +53,15 @@ class HomeController < ApplicationController
     end     
   end
 
+  def load_more_comments
+    @object = Comment.find(params[:id])
+    @comments = Comment.find(params[:id]).comments
+    respond_to do |format|
+          format.html
+          format.js
+    end
+  end
+
   protected
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])

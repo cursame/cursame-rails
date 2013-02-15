@@ -21,8 +21,7 @@ class NetworksController < ApplicationController
     @user = current_user
     @course = Course.new
     @delivery = Delivery.new
-    @survey = Survey.new
-    
+
     #==== Areas de evaluación ====#
     @areas_of_evaluation = AreasOfEvaluation.new
     areas_of_evaluations = @delivery.areas_of_evaluations.build

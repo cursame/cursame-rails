@@ -732,8 +732,17 @@
   position: relative;
   display: none;
   @include border-radius;
-  & form{
+  & .survey-form {
     margin: 7px 10px 0px 10px;
+    & .title-txt-input{
+      width: 300px;
+    }
+    & .remove-icon{
+      width: 27px;
+      height: 27px;
+      float: left;
+      background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
+    }
   }
 }
 
