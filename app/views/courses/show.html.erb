@@ -109,8 +109,12 @@
                       <img src="/assets/icons/grey-mini-comment.png" class="icon">
                       <img src="/assets/icons/grey-mini-like.png" class="icon">
                       <div class="labels"><%# comment.comments.count %>Comentarios</div>
-                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>
-                     <div class="labels"><div id="open-close-lo<%= delivery.id %>"><a>Respuestas</a></div></div>
+                      <% if @member.owner == true %>
+                        <div class="labels"><div id="open-close-lo<%= delivery.id %>"><a>Respuestas</a></div></div>
+                      <%else%>
+                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>  
+                      <%end%>
+                   
                       
                        </div>              
         <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-<%= delivery.id %>">
