@@ -1,14 +1,12 @@
 <div class="fields">
-  <p>
     <%= f.label :content, "Question" %>
     <%= link_to_remove_fields "remove", f %><br />
     <%= f.text_area :content, :rows => 3 %><br />
     <%= f.label :value, "Valor" %>
     <%= f.text_field :value%>
     <b>archivo</b>
-  </p>
   <%= f.fields_for :answers do |builder| %>
     <%= render 'answer_fields', :f => builder %>
   <% end %>
-  <p><%= link_to_add_fields "Add Answer", f, :answers %></p>
+  <%= link_to_add_fields "Agregar respuesta", f, :answers, {:class=>'a-btn'} %>
 </div>
