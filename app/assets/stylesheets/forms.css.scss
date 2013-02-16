@@ -733,19 +733,96 @@
   display: none;
   @include border-radius;
   & .survey-form {
-    margin: 7px 10px 0px 10px;
+    margin: 7px 0px 0px 0px;
+    & .box-question{
+      background: #000;
+      float: left;
+      width: 100%;
+    }
+    & .question-field{
+      border-bottom: 1px dashed #c9d1da;
+      background: #f9fafc;
+      float: left;
+      clear: both;
+      width: 100%;
+      & .num{
+        float: left;
+        color:  #919fb5;
+        font-weight: bold;
+        font-size: 13pt;
+        height: 41px;
+        line-height: 40px;
+        margin: 0px 5px 0px 23px;
+      }
+      & input[type=text]{
+        float: left;
+        width: 310px;
+      }
+      & .add-request{
+        background: url('/assets/icons/add-mini-active.png') no-repeat;
+        float: right;
+        width: 138px;
+        background-position: right;
+        height: 25px;
+        line-height: 25px;
+        margin: 6px;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+    & .request-field {
+      border-top: 1px dotted #c9d1da;
+      & .num{
+        float:left;
+        margin-left: 50px;
+        font-weight: none;
+        font-size: 11pt;
+        font-weight: normal;
+      }
+      & input[type=text]{
+        float: left;
+        width: 210px;
+      }
+      & .is-correct-label{
+        float: right;
+        width: 60px;
+      }
+      & .is-correct-chk{
+        float: right;
+        width: 10px;
+      }
+    }
     & .title-txt-input{
       width: 300px;
+      margin-left: 20px;
     }
     & .remove-icon{
       width: 27px;
       height: 27px;
       float: left;
+      margin-top: 6px;
       background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
     }
     & textarea{
       float: left;
     }
+
+    & .add-response{
+      float: right;
+      color: #919fb5;
+    }
+    & .question-field{
+      float: left;
+    }
+    & .request-field{
+      background: #f1f3f6;
+      float: left;
+      width: 100%;
+    }
+  }
+  & .submit-area{
+    border: none;
   }
 }
 

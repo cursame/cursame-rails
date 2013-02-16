@@ -19,17 +19,50 @@
 
 
 // Adding and removing questions answers
-function remove_fields(link) {
-	$(link).prev("input[type=hidden]").val("1");
-	$(link).closest(".fields").hide();
+function remove_fields(link, toId) {
+    if(toId =='#box-question'){
+        $(link).parent().remove();
+        changeNumbers('#box-question', '#question-num');
+    }else if( toId =='#box-request' ){
+        var grandfather = $(link).parent().parent();
+        $(link).parent().remove();
+        console.log('abue: '+ grandfather.attr('id'));
+        changeNumbers(grandfather, '#request-num');
+    }
 }
 
-function add_fields(link, association, content) {
+function add_fields(link, association, content, toId) {
+    //toId catch:
+    //  #box-request
+    //  #box-question
 	var new_id = new Date().getTime();
 	var regexp = new RegExp("new_" + association, "g");
-	$(link).parent().before(content.replace(regexp, new_id));
+    if(toId =='#box-question'){
+        $(toId).append(content.replace(regexp, new_id));
+        changeNumbers('#box-question', '#question-num');
+    }else if( toId =='#box-request' ){
+        $(link).parent().find('#box-request').append(content.replace(regexp, new_id));
+        changeNumbers($(link).parent().find('#box-request'), '#request-num');
+    }
 }
 
+function changeNumbers(idParent, idFind){
+    var count = 0 ;
+    var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+    if(idFind == '#question-num'){
+        $.each($(idParent).children(), function(index, value) {
+            $(value).find('#question-num').html(count+1+'. ');
+            count ++;
+        });
+    }else if( idFind =='#request-num' ){
+        $.each(idParent.children(), function(index, value) {
+            $(value).find('#request-num').html(alphabet[count]+') ');
+            //console.log($(value).attr('id'));
+            count ++;
+        });
+    }
+    var count = 0 ;
+}
 //notificaciones push usando private_pub
 $(function() {
 	PrivatePub.subscribe ("/notifications/"+Cursame.userId, function(data, channel){
