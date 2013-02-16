@@ -85,6 +85,8 @@
 <%#end%>
 
   <%  @course.deliveries.reverse.each do |delivery| %>
+  
+
   <div id="box-comments">
       <div class="general-cir"></div>
          <div id="comment1" class="comment-text" >
@@ -107,8 +109,12 @@
                       <img src="/assets/icons/grey-mini-comment.png" class="icon">
                       <img src="/assets/icons/grey-mini-like.png" class="icon">
                       <div class="labels"><%# comment.comments.count %>Comentarios</div>
-                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>
-                     <div class="labels"><div id="open-close-lo<%= delivery.id %>"><a>Respuestas</a></div></div>
+                      <% if @member.owner == true %>
+                        <div class="labels"><div id="open-close-lo<%= delivery.id %>"><a>Respuestas</a></div></div>
+                      <%else%>
+                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>  
+                      <%end%>
+                   
                       
                        </div>              
         <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-<%= delivery.id %>">
@@ -129,11 +135,11 @@
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
                        <%= assignment.brief_description %></br>
-        
+                           
                           <%= form_for assignment do |assignment_form|%>                        
                                         
                                <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
-                                         <b>rubro</b></br>
+                                     <b>rubro</b></br>
                     
                                       <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>   
                                        

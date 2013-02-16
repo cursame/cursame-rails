@@ -7,6 +7,13 @@ class Network < ActiveRecord::Base
   has_many :courses
   has_many :comments
   
+  #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
+  
+  validates_presence_of   :name, :subdomain, :population
+  validates_uniqueness_of :subdomain
+  validates_format_of     :subdomain, :with => /^[\-a-z0-9]+$/i  
+  
+  
   
   #comentarios para las redes
   acts_as_commentable

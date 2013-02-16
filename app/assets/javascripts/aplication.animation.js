@@ -149,6 +149,11 @@ $(document).ready(function() {
             });
             initBool = false;
         }
+        /* this function execute the calendar list */
+        $.each(event_list, function(index, value) {
+          $('#event_list').append(value.title + ' - '+ value.end + '<br>');
+        });
+        
 
     }
 
