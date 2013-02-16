@@ -20,8 +20,9 @@
 
 // Adding and removing questions answers
 function remove_fields(link, toId) {
+    console.log(toId);
     if(toId =='#box-question'){
-        $(link).parent().remove();
+        $(link).parent().parent().remove();
         changeNumbers('#box-question', '#question-num');
     }else if( toId =='#box-request' ){
         var grandfather = $(link).parent().parent();
@@ -41,8 +42,8 @@ function add_fields(link, association, content, toId) {
         $(toId).append(content.replace(regexp, new_id));
         changeNumbers('#box-question', '#question-num');
     }else if( toId =='#box-request' ){
-        $(link).parent().find('#box-request').append(content.replace(regexp, new_id));
-        changeNumbers($(link).parent().find('#box-request'), '#request-num');
+        $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
+        changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
     }
 }
 

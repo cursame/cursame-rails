@@ -745,6 +745,29 @@
       float: left;
       clear: both;
       width: 100%;
+      & .element{
+        float: left;
+        height: 40px;
+        width: 100%;
+        & .remove-icon{
+          display: none !important;
+        }
+        &:hover{
+          & .remove-icon{
+            display: block !important;
+            height: 27px;
+            float: left;
+            margin-top: 6px;
+            cursor: pointer;
+            background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
+            width: 45px;
+            padding-left: 27px;
+            line-height: 27px;
+            font-size: 11px;
+          }
+        }
+      }
+
       & .num{
         float: left;
         color:  #919fb5;
@@ -756,7 +779,8 @@
       }
       & input[type=text]{
         float: left;
-        width: 310px;
+        width: 250px;
+        background: url('/assets/icons/question-mini-low.png') no-repeat #FFF right !important;
       }
       & .add-request{
         background: url('/assets/icons/add-mini-active.png') no-repeat;
@@ -773,6 +797,28 @@
     }
     & .request-field {
       border-top: 1px dotted #c9d1da;
+      & .remove-icon{
+        display: none !important;
+      }
+      & .element{
+        float: left;
+        height: 40px;
+        width: 100%;
+      }
+      &:hover{
+        & .remove-icon{
+          display: block !important;
+          height: 27px;
+          float: left;
+          margin-top: 6px;
+          cursor: pointer;
+          background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
+          width: 45px;
+          padding-left: 27px;
+          line-height: 27px;
+          font-size: 11px;
+        }
+      }
       & .num{
         float:left;
         margin-left: 50px;
@@ -783,6 +829,9 @@
       & input[type=text]{
         float: left;
         width: 210px;
+        //
+        background: url('/assets/icons/pencil-mini-low.png') no-repeat #FFF right !important;
+
       }
       & .is-correct-label{
         float: right;
@@ -797,13 +846,7 @@
       width: 300px;
       margin-left: 20px;
     }
-    & .remove-icon{
-      width: 27px;
-      height: 27px;
-      float: left;
-      margin-top: 6px;
-      background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
-    }
+
     & textarea{
       float: left;
     }

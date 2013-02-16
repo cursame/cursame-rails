@@ -1,14 +1,15 @@
 <div id="box-question-child" class="question-field">
-  <div id="question-num" class="num">1.</div>
-  <%= link_to_add_fields "Agregar respuesta", f, :answers, {:class=>'add-request'}, '#box-request' %>
-  <%= f.text_field :content, :rows => 3 %>
-
-    <%#= f.label :value, "Valor" %>
-    <%#= f.text_field :value%>
-  <%= link_to_remove_fields "", f, {:class=>'remove-icon', :clear => 'both'}, '#box-question'  %>
+  <div class="element">
+      <div id="question-num" class="num">1.</div>
+      <%= link_to_add_fields "Agregar respuesta", f, :answers, {:class=>'add-request'}, '#box-request' %>
+      <%= f.text_field :content, :rows => 3, :placeholder=>'Ingresar pregunta' %>
+      <%#= f.text_field :value%>
+      <%= link_to_remove_fields "Eliminar", f, {:class=>'remove-icon', :clear => 'both'}, '#box-question'  %>
+  </div>
   <div id="box-request">
       <%= f.fields_for :answers do |builder| %>
         <%= render '/surveys/answer_fields', :f => builder %>
       <% end %>
   </div>
+
 </div>
