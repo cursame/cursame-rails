@@ -124,7 +124,7 @@ Cursame30Lb::Application.routes.draw do
   resources :network_templates
 
   resources :networks
-  match '/' => 'networks#show', :constraints => { :subdomain => /.+/ }
+  match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
   
   
   #manejo de usuarios en las networks
