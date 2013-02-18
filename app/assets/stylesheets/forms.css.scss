@@ -751,6 +751,9 @@
         float: left;
         padding: 12px 0px 0px 37px;
         margin: 5px 0px 0px 22px;
+        &:hover{
+          text-decoration: underline;
+        }
       }
       & .element{
         float: left;
