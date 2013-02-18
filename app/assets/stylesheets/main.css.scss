@@ -108,8 +108,8 @@ input:-moz-placeholder {
   width: $width-right-bar;
   float: left;
 }
-
-#box-comments{
+/*===== Estilos genericos para todo tipo de pulicaciones =========*/
+.publication-box{
   clear: both;
   float: left;
   margin-left: 9px;
@@ -141,6 +141,33 @@ input:-moz-placeholder {
         margin-right: 6px;
       }
     }
+     & .title-discusion{
+      font-size: 18px; 
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    & .text-discusion{
+      padding-left: 10px;
+    }
+    & .video{
+       padding: 10px;
+    }
+    
+    & .attatchments{
+      
+    }
+    
+    & .title-homework{
+      font-size: 18px; 
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    & .text-homework{
+      padding-left: 10px;
+    }
+
     & .content{
       color: #333;
       font-size: 13px;
@@ -418,8 +445,8 @@ input:-moz-placeholder {
   }
 }
 
-/* discusion */
-#box-discusion{
+/* discusion*/
+#box-publication{
   clear: both;
   float: left;
   margin-left: 9px;

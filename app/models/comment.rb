@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   #course belongnings
   belongs_to :network
   belongs_to :course
-  
+
   #comentarios para los comentarios
   acts_as_commentable
 
@@ -73,7 +73,7 @@ class Comment < ActiveRecord::Base
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
         end
         #con esto se guarda en wall
-        Wall.create :user => self.user, :publication => self
+        #Wall.create :user => self.user, :publication => self
       when "Comment"
         #Wall.create :user => self.user, :publication => self
     end
