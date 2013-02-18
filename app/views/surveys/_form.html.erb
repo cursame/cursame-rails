@@ -6,12 +6,21 @@
       1.times { question.answers.build}
     end
 %>
-<%= form_for (@survey), :html => { :class => "default-form survey-form"} do |f| %>
-    <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
 
-  <%= f.fields_for :questions do |builder| %>
-    <%= render "/surveys/question_fields", :f => builder %>
-  <% end %>
-  <p><%= link_to_add_fields "Agregar pregunta", f, :questions, :class=>'a-btn' %></p>
-  <p><%= f.submit %></p>
+<%= form_for (@survey), :html => { :class => "default-form survey-form"} do |f| %>
+
+  <div style="border-bottom: 1px solid #ccc; height: 45px;">
+    <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
+  </div>
+
+  <div id="box-question" class="box-question">
+      <%= f.fields_for :questions do |builder| %>
+        <%= render "/surveys/question_fields", :f => builder %>
+      <% end %>
+  </div>
+  <div class="submit-area"></div>
+    <%= link_to_add_fields "Agregar pregunta", f, :questions, {:class=>'a-btn'}, '#box-question' %>
+
+    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+  <%= f.submit %>
 <% end %>
