@@ -39,6 +39,7 @@ gem 'acts_as_commentable'
 
 #para los links inteligentes en los comentarios
 gem "auto_html"
+
 #paginacion
 gem 'will_paginate'
 

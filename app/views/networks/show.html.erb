@@ -30,88 +30,88 @@
 
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
-<!-- SideBar -->
-<div id="side-bar" class="side-left-bar" >
-  <!-- User Avatar -->
-  <div id="box-user-credential" class="network-layout">
-    <div class="thumbnail"  >
-      <%= image_tag(@user.avatar.profile)%>
+  <!-- SideBar -->
+  <div id="side-bar" class="side-left-bar" >
+    <!-- User Avatar -->
+    <div id="box-user-credential" class="network-layout">
+      <div class="thumbnail"  >
+        <%= image_tag(@user.avatar.profile)%>
 
-    </div>
-    <div class="tagname">
-      <%= @user.name %>
-    </div>
-  </div>
-
-  <div id="box-course" class="basic-lateral-box margin-top" >
-    <h2>cursos</h2>
-    <% permitted_to? :create, :courses do %>
-    <div id="form-new-course" class="form-new-course-lateral">
-      <%= render partial: "users/form_course.html.erb"%>
-    </div>
-    <%end%>
-    <div id="tabs-courses" class="tabs-style">
-      <ul id="ul-tabs">
-        <li class="element-left">
-          <a href="#tabs-courses-1">
-            <div class="content-tab">
-              <span class="title-num"><%= @count_course_iam_member%></span>
-              <span class="title">CURSOS</span>
-            </div>
-          </a>
-        </li>
-        <% permitted_to? :create, :courses do %>
-        
-        <li class="element-right">
-          <div id="new-course-btn" class="plus-courses"></div>
-          <a href="#tabs-courses-2">
-            <div class="content-tab">
-              <span class="title-num"><%= @count_course_iam_member_and_owner %></span>
-              <span class="title">CREADOS</span>
-            </div>
-          </a>
-        </li>
-        <%end%>
-      </ul>
-      <div id="tabs-courses-1">
-        <ul id="course-list" >
-          <% if @course_count == 0%>
-              <li><a href="#">No hay cursos</a></li>
-          <%else%>
-              <% @courses.each do |cu|%>
-                  <% @cort = Course.find(cu.course_id)%>
-                  <% if @cort.network_id == current_network.id %>
-                  <% if cu.accepted == true %>
-                      <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
-                  <%end%>
-                  <%end%>
-              <%end%>
-          <%end%>
-        </ul>
-        <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
       </div>
-      <div id="tabs-courses-2">
-        <ul id="course-list" >
-          <% if @course_count == 0%>
-              <li><a href="#">No hay cursos</a></li>
-          <%else%>
-              <% @courses.each do |cu|%>
-                  <% @cort = Course.find(cu.course_id)%>
-                  <% if @cort.network_id == current_network.id %>
-                  <% if cu.owner == true%>
-                      <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
-                  <%else%>
-                  <%end%>
-                  <%end%>
-              <%end%>
-          <%end%>
-        </ul>
+      <div class="tagname">
+        <%= @user.name %>
       </div>
     </div>
-  </div>
-  <div class= "box-comments"></div>
-  <div class="clear"></div>
-  <div id="tabs-friends" class="tabs-style">
+
+    <div id="box-course" class="basic-lateral-box margin-top" >
+      <h2>cursos</h2>
+      <% permitted_to? :create, :courses do %>
+      <div id="form-new-course" class="form-new-course-lateral">
+        <%= render partial: "users/form_course.html.erb"%>
+      </div>
+      <%end%>
+      <div id="tabs-courses" class="tabs-style">
+        <ul id="ul-tabs">
+          <li class="element-left">
+            <a href="#tabs-courses-1">
+              <div class="content-tab">
+                <span class="title-num"><%= @count_course_iam_member%></span>
+                <span class="title">CURSOS</span>
+              </div>
+            </a>
+          </li>
+          <% permitted_to? :create, :courses do %>
+
+          <li class="element-right">
+            <div id="new-course-btn" class="plus-courses"></div>
+            <a href="#tabs-courses-2">
+              <div class="content-tab">
+                <span class="title-num"><%= @count_course_iam_member_and_owner %></span>
+                <span class="title">CREADOS</span>
+              </div>
+            </a>
+          </li>
+          <%end%>
+        </ul>
+        <div id="tabs-courses-1">
+          <ul id="course-list" >
+            <% if @course_count == 0%>
+            <li><a href="#">No hay cursos</a></li>
+            <%else%>
+            <% @courses.each do |cu|%>
+            <% @cort = Course.find(cu.course_id)%>
+            <% if @cort.network_id == current_network.id %>
+            <% if cu.accepted == true %>
+            <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+            <%end%>
+            <%end%>
+            <%end%>
+            <%end%>
+          </ul>
+          <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
+        </div>
+        <div id="tabs-courses-2">
+          <ul id="course-list" >
+            <% if @course_count == 0%>
+            <li><a href="#">No hay cursos</a></li>
+            <%else%>
+            <% @courses.each do |cu|%>
+            <% @cort = Course.find(cu.course_id)%>
+            <% if @cort.network_id == current_network.id %>
+            <% if cu.owner == true%>
+            <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+            <%else%>
+            <%end%>
+            <%end%>
+            <%end%>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class= "box-comments"></div>
+    <div class="clear"></div>
+    <div id="tabs-friends" class="tabs-style">
    <!--<div id="box-friends" class="basic-lateral-box" >
     <h2>AMIGOS</h2>
     <div id="tabs-friends" class="tabs-style">
@@ -153,81 +153,19 @@
 <!-- Content -->
 <div id="box-stream-post">
   <%=render :partial => 'shared/post_menu' %>
-  <!-- timeline -->
-  <div id="timeline">
-    <% @wall.reverse.each do |publication| %>
-        <%= render :partial => '/shared/publications', :locals => {:publication => publication} %>
 
-    <%end%>
+  <!-- timeline -->
+  <div id="timeline">    
+    <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
   </div>
   <!-- fin timeline -->
-  <!-- tareas -->
-
-  <div id="box-homework">
-    <div class="general-cir-homework"></div>
-
-    <div id="" class="comment-text" >
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="avatar"> <img src="/assets/group-avatar-mini.png" class="avatar-mini"></div>
-        <div class="top-null-image"></div><b>Matemáticas VI</b>  <span class="date"><img src="/assets/icons/finishdate.png"> 29/Ene/2012 12:35 PM</span>
-      </div>
-      <div class="content">
-          <div class="null-image"></div>
-         <p class="title-homework">Generar resumen de la siguiente lectura y video:</p>
-          <p class="text-homework">Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.<br /><br />
-            
-            Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-          </p>
-          
-         <div class="video"> 
-
-          <!-- <object width="560" height="315"><param name="movie" value="http://www.youtube.com/v/Gng3sPiJdzA?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="fase"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Gng3sPiJdzA?version=3&amp;hl=es_ES" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object> -->
-
-         </div>
-         
-        <div class="upload-labels" style="display: block;"><div class="file-mini-upload">Captura de pantalla 2013-01-31 a la(s) 12.48.05.JPG</div></div>
-
-          
-      </div>
-
-      <div class="footer">
-        <img src="/assets/icons/grey-mini-comment.png" class="icon">
-        <img src="/assets/icons/grey-mini-like.png" class="icon">
-        <div class="labels">20 Comentarios</div>
-        <div class="labels">12 Likes</div>
-      </div>
-    </div>
-  </div>
-<!-- tareas -->
-
-
-<!--   survey -->
-
-  <div id="box-survey">
-    <div class="general-cir-survey"></div>
-    <div id="" class="comment-image">
-      <div class="arrow-left"></div>
-      <div class="header">
-        <div class="avatar"> <img src="/assets/group-avatar-mini.png" class="avatar-mini"></div>
-        <div class="top-null-image"></div><b>Matemáticas VI</b>  <span class="date"><img src="/assets/icons/finishdate.png"> 29/Ene/2012 12:35 PM</span>   </div>
-      <div class="footer">
-        <div class="content-footer">
-        <b>Cuestionario:</b> Ecuaciones de 2o Grado 
-          <!--
-<img src="/assets/icons/white-mini-comment.png" class="icon">
-          <img src="/assets/icons/white-mini-like.png" class="icon">
-          <div class="labels">20 Comentarios</div>
-          <div class="labels">12 Likes</div>
--->
-        </div>
-      </div>
-      <div class="content" ><img src="/assets/survey.jpg" class="single-image"></div>
-    </div>
-  </div>
-
-<!--   survey -->
-
+<%= will_paginate(@wall) %>
 </div>
-
 </div>
+<script type="text/javascript">
+$('#timeline').pageless({ totalPages: <%= @wall.total_pages %>,
+    url: '<%= wall_path %>',
+    loaderMsg: '...',
+    loaderImage: '<%= image_path("load.gif")%>'
+});
+</script>

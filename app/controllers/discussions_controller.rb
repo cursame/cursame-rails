@@ -41,9 +41,11 @@ class DiscussionsController < ApplicationController
   # POST /discussions.json
   def create
     @discussion = Discussion.new(params[:discussion])
-    @discussion.user = current_user
+    @discussion.user = current_user    
     respond_to do |format|
       if @discussion.save
+        @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
+        format.js
         format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
         format.json { render json: @discussion, status: :created, location: @discussion }
       else

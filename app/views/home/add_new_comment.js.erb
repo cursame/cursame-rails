@@ -5,6 +5,6 @@
 <% else %>
 	// si se tiene que agregar al layout principal
 	// $('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
-	$('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:publication => @publication}))%>');
+	$('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
 	$('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);;
 <% end %>

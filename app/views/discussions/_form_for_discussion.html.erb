@@ -1,4 +1,4 @@
-<%= form_for(@discussion=Discussion.new, :html => { :class => "default-form discussion-form" }) do |f| %>
+<%= form_for(@discussion=Discussion.new, :remote => true,:html => { :class => "default-form discussion-form" }) do |f| %>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
@@ -19,5 +19,4 @@
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
     <%= f.submit "Crear Discusión" %>
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
-
 <% end %>
