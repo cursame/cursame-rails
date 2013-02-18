@@ -16,7 +16,8 @@ gem 'mime-types'
 gem 'mini_magick'
 # Gems used only for assets and not required
 # in production environments by default.
-
+# gems for authenticate location
+ gem "geocoder"
 #gemas para conección con otros servicios
  gem 'omniauth'
  gem 'google-api-client', :require => 'google/api_client'

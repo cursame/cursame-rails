@@ -2,7 +2,7 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   # before_filter :filter_user_network_wed
-  skip_before_filter :authenticate_user!, :only => [:network_mask]
+  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create]
   
   def index
     @networks = Network.all
