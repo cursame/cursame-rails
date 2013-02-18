@@ -58,6 +58,16 @@ class User < ActiveRecord::Base
     end
   end
   
+  #mailer for subdominea_save 
+  
+  def devise_mailer_subdomain
+     @permissionings = self.permissionings.last
+     @network = Network.find(@permissionings.network_id)
+     @network.subdomain
+    
+  end
+
+  
   #search por nombre en usuario
   def self.search(search) 
     if search
