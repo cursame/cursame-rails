@@ -4,7 +4,10 @@ class CreateActivities < ActiveRecord::Migration
       t.string :title
       t.string :activity_type
       t.integer :activable
-      t.tring :place
+      t.string :place
+      t.string :address
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

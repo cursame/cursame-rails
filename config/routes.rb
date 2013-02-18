@@ -1,5 +1,21 @@
 Cursame30Lb::Application.routes.draw do
    
+  get "superadmnin/statistics"
+
+  get "superadmnin/networks"
+
+  get "superadmnin/users"
+
+  get "superadmnin/activities"
+
+  get "superadmnin/roles"
+
+  get "superadmnin/create_super_admin"
+
+  get "superadmnin/courses_sintetic_view_and_edit"
+
+  get "superadmnin/publicity_modul_controller"
+
 ###### configuración de managers de la red
 
   get "managers/wall"
