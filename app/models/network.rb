@@ -6,7 +6,6 @@ class Network < ActiveRecord::Base
   has_many :deliveries
   has_many :courses
   has_many :comments
-  
   #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
   
   validates_presence_of   :name, :subdomain, :population
@@ -20,7 +19,9 @@ class Network < ActiveRecord::Base
   
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
+
   
+ 
   
   
   

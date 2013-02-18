@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  activity_type: MyString
+  activable: 1
+  place: 
+
+two:
+  title: MyString
+  activity_type: MyString
+  activable: 1
+  place: 
