@@ -745,6 +745,16 @@
       float: left;
       clear: both;
       width: 100%;
+      & .add-question{
+        background: url('/assets/icons/add-question.png') no-repeat;
+        height: 35px;
+        float: left;
+        padding: 8px 0px 0px 37px;
+        margin: 5px 0px 0px 22px;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
       & .element{
         float: left;
         height: 40px;
@@ -759,11 +769,14 @@
             float: left;
             margin-top: 6px;
             cursor: pointer;
-            background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
+            background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
             width: 45px;
             padding-left: 27px;
             line-height: 27px;
             font-size: 11px;
+            &:hover{
+              background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
+            }
           }
         }
       }
@@ -779,17 +792,18 @@
       }
       & input[type=text]{
         float: left;
-        width: 250px;
-        background: url('/assets/icons/question-mini-low.png') no-repeat #FFF right !important;
+        width: 330px;
+        //background: url('/assets/icons/question-mini-low.png') no-repeat #FFF right !important;
       }
       & .add-request{
-        background: url('/assets/icons/add-mini-active.png') no-repeat;
-        float: right;
+        //background: url('/assets/icons/add-answer.png') no-repeat;
+        float: left;
         width: 138px;
-        background-position: right;
+        background-position: left;
         height: 25px;
         line-height: 25px;
-        margin: 6px;
+        margin: 0px 0px 0px 69px;
+        padding: 6px 0px 0px 5px;
         &:hover{
           text-decoration: underline;
         }
@@ -798,7 +812,10 @@
     & .request-field {
       border-top: 1px dotted #c9d1da;
       & .remove-icon{
-        display: none !important;
+        display: none!important;
+        height: 27px;
+        width: 77px;
+        float: left;
       }
       & .element{
         float: left;
@@ -808,15 +825,18 @@
       &:hover{
         & .remove-icon{
           display: block !important;
-          height: 27px;
+          //height: 27px;
           float: left;
           margin-top: 6px;
           cursor: pointer;
-          background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
-          width: 45px;
+          background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
+          //width: 10px;
           padding-left: 27px;
           line-height: 27px;
           font-size: 11px;
+          &:hover{
+            background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
+          }
         }
       }
       & .num{
@@ -835,11 +855,29 @@
       }
       & .is-correct-label{
         float: right;
-        width: 60px;
+        width: 160px;
+        cursor: pointer;
+        color: #00B1C5;
+        font-size: 12px;
+        background: url('/assets/icons/question-icon-true.png') no-repeat right;
+        height: 23px;
+        padding: 12px 29px 0px 0px;
+        text-align: right;
+        margin-right: 13px;
+        &:hover{
+          background: url('/assets/icons/question-icon-true-hover.png') no-repeat right;
+        }
       }
       & .is-correct-chk{
         float: right;
         width: 10px;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        /* Toggled State */
+        &:checked ~ .is-correct-label {
+          background: url('/assets/icons/question-icon-false.png') no-repeat right;
+        }
       }
     }
     & .title-txt-input{
@@ -863,9 +901,12 @@
       float: left;
       width: 100%;
     }
-  }
-  & .submit-area{
-    border: none;
+    & .input-button{
+      float: right;
+    }
+    & input[type=submit]{
+      float: right;
+    }
   }
 }
 

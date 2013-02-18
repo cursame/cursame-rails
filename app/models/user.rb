@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+   devise :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :trackable, :validatable,
+          :token_authenticatable, :confirmable, :lockable, :timeoutable
+   
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks, :assets
@@ -55,6 +57,16 @@ class User < ActiveRecord::Base
       role.title.underscore.to_sym
     end
   end
+  
+  #mailer for subdominea_save 
+  
+  def devise_mailer_subdomain
+     @permissionings = self.permissionings.last
+     @network = Network.find(@permissionings.network_id)
+     @network.subdomain
+    
+  end
+
   
   #search por nombre en usuario
   def self.search(search) 

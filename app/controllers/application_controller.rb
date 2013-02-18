@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
+  
   #this method filtered the subdomail
   def filter_subdomain(subdomain)
      if subdomain.match(/\Awww\..+/)

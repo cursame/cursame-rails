@@ -2,6 +2,6 @@
   <div id="request-num" class="num">a)</div>
   <%= f.text_field :content, :placeholder=>'Ingresar respuesta' %>
   <%= f.check_box :correct, :class=> 'is-correct-chk' %>
-  <%= f.label :correct, "Correcta?", :class=>'is-correct-label' %>
+  <%= f.label :correct, "¿Es la respuesta correcta?", :class=>'is-correct-label' %>
   <%= link_to_remove_fields "Eliminar", f, {:class=>'remove-icon'}, '#box-request'%>
 </div>
