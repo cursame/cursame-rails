@@ -7,7 +7,9 @@ class Survey < ActiveRecord::Base
   has_many :compart_assets
   has_many :assets, :through => :compart_assets
   has_many :events, as: :schedule
+
   belongs_to :user
+  has_many :activities, as: :activitye
   
   #comentarios para las surveys
   has_many :comments

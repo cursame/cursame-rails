@@ -5,6 +5,7 @@ class Assignment < ActiveRecord::Base
   has_many :assignment_assets
   has_many :assets, :through => :assignment_assets
   has_many :response_to_the_evaluations, :dependent => :destroy
+  has_many :activities, as: :activitye
   
   
   accepts_nested_attributes_for :assets

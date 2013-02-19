@@ -21,7 +21,8 @@ class Comment < ActiveRecord::Base
   #course belongnings
   belongs_to :network
   belongs_to :course
-
+  has_many :activities, as: :activitye
+  
   #comentarios para los comentarios
   acts_as_commentable
 

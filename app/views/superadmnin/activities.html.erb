@@ -1,2 +1,22 @@
-<h1>Superadmnin#activities</h1>
-<p>Find me in app/views/superadmnin/activities.html.erb</p>
+<h1>Actividades del sistema</h1>
+<p> Las actividades del sistema están geo localizadas</p>
+<% @activities.each do |activity|%>
+ Título:<%= activity.title %></br>
+ Tipo de Actividad: <%= activity.activitye_type %></br>
+ Ip: <%= activity.ip_address%></br>
+ Lugar: <%= activity.address%></br>
+ Longitud: <%= activity.latitude %></br>
+ Latitud: <%= activity.longitude %></br>
+ geocode: <%= activity.geocode %></br>
+ Brwoser: <%= activity.browser %></br>
+ Versión: <%= activity.version_browser %></br>
+ Sistema operativo: <%= activity.computer_plataform %></br>
+ <% @user = User.find(activity.user_id)%>
+ Hecho por el usuario: <%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
+ <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x200&sensor=true&zoom=16&markers=#{activity.latitude}%2C#{activity.longitude}" %>
+ 
+ 
+
+ 
+ 
+<%end%>
