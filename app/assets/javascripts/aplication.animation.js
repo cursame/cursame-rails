@@ -160,7 +160,7 @@ $(document).ready(function() {
 
     /*
      *===============================================================
-     *==================== Animation - Menu Post ====================
+     *==================== Animation - MenuPost ====================
      *===============================================================
      */
     var prePostHeight = $('#profile-form-options').height();
@@ -209,9 +209,9 @@ $(document).ready(function() {
 
 
     /*
-     *===============================================================================
-     *==================== Animation - Items Menu Post (Circles) ====================
-     *===============================================================================
+     *=======================================================================================
+     *==================== Animation - Items Menu Post (Circles) (Hover) ====================
+     *=======================================================================================
      */
     $('.message-form-btn, .delivery-form-btn, .discussion-form-btn, .survey-form-btn').hover(function() {
         switch ($(this).attr('class')) {
@@ -248,7 +248,7 @@ $(document).ready(function() {
 
         $(obj +' .border').animate({
             boxShadow: '0px 0px 0px #FFF',
-            margin:     '3px 0px 3px 18px'
+            margin:     '3px 0px 3px 28px'
         }, 200);
 
         $(obj+" .icon").animate({

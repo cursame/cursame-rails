@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :networks
   
-  
+  #surveys
+  has_many :assets
   
   #comentarios para usuarios
   acts_as_commentable

@@ -65,7 +65,6 @@ class CoursesController < ApplicationController
     @course = Course.new
 
     respond_to do |format|
-      format.js
       format.html # new.html.erb
       format.json { render json: @course }
     end
@@ -88,7 +87,7 @@ class CoursesController < ApplicationController
     @course.network = current_network
     respond_to do |format|
       if @course.save
-        
+          @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
            @member = MembersInCourse.new
              @member.user_id = current_user.id
              @member.course_id =  @course.id
@@ -118,6 +117,7 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.json { head :no_content }
+        format.html { redirect_to courses_url }
         format.js
       else
         format.json { render json: @course.errors, status: :unprocessable_entity }

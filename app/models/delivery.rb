@@ -42,8 +42,6 @@ class Delivery < ActiveRecord::Base
          if self.publish_date <= DateTime.now
             self.publish!
          end
-        ##### se genera la actividad en la base de datos 
-        
         #### se genera  el evento en el calendario
         Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
         

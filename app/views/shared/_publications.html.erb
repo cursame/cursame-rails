@@ -21,6 +21,9 @@
     avatar = post.user.avatar.modern
     name = post.title
     content = post.description
+  when 'Survey'
+    avatar = post.user.avatar.modern
+    name = post.name
   end
   created_at = post.created_at
   
@@ -46,6 +49,8 @@
         <p><%= content %></p>
         <% when 'Comment'%>
         <p><%= content %></p>
+        <% when 'Survey'%>
+          <img src="/assets/survey.jpg" class="single-image">
         <% when 'Delivery'%>
         <p class="title-homework"><%= name %></p>
         <p class="text-homework"><%= content %></p>
