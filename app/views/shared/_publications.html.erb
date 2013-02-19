@@ -1,56 +1,97 @@
+<% wall.each do |publication| %>
 
-<%#=publication.publication_type%>
+<%
+  # aqui es inicializan las variables para todos los tipos de publicaciones
+  post = publication.publication
+  id = publication.id 
+  case publication.publication_type
+  when 'Comment'
+    avatar = post.user.avatar.modern
+    name = post.user.name
+    content = post.comment_html
+  when 'Course'
+    avatar = post.avatar.modern
+    name = post.title
+    content = post.silabus
+  when 'Discussion'
+    avatar = post.user.avatar.modern
+    name = post.title
+    content = post.description
+  when 'Delivery'
+    avatar = post.user.avatar.modern
+    name = post.title
+    content = post.description
+  end
+  created_at = post.created_at
+  
+  type = publication.publication_type
+  %>
+  <div class="publication-box" >
+    <div class="general-cir"></div>
 
-<% case publication.publication_type %>
-<% when 'Discussion'%>
-<!--   discusion -->
-<div id="box-discusion">
-  <div class="general-cir-discusion"></div>
-  <div id="" class="comment-text" >
-    <div class="arrow-left"></div>
-    <div class="header">
-      <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-      <div class="top-null-image"></div><b>León Rangel</b>  <span class="date">29/Ene/2012</span>
-    </div>
-    <div class="content">
-      <div class="null-image"></div>
-      <p class="title-discusion">¿Qué opinan del socialismo?</p>
-      <!-- <p class="text-discusion">Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.  </p> -->
-    </div>
+    <div id = "publication-<%= id %>" class="comment-text" >
+      <div class="arrow-left"></div>
+      <div class="header">
+        <div class="avatar"><%= image_tag(avatar,{:class => "avatar-mini"})%></div>
+        <div class="top-null-image"></div><b><%= name %></b>  <span class="date"><%= created_at %></span>
+      </div>
+      <div class="content">
+        <div class="null-image"></div>
+        <% case type%>
+        <% when 'Discussion'%>
+        <p class="title-discusion"><%= name %></p>
+        <p><%= content %></p>
+        <% when 'Course'%>      
+        <p class="title-discusion"><%= name %></p>
+        <p><%= content %></p>
+        <% when 'Comment'%>
+        <p><%= content %></p>
+        <% when 'Delivery'%>
+        <p class="title-homework"><%= name %></p>
+        <p class="text-homework"><%= content %></p>
+        <div class="upload-labels" style="display: block;">
+          <div class="file-mini-upload">Captura de pantalla 2013-01-31 a la(s) 12.48.05.JPG</div>
+        </div>
+        <%end%>
 
-    <div class="footer">
-      <img src="/assets/icons/grey-mini-comment.png" class="icon">
-      <img src="/assets/icons/grey-mini-like.png" class="icon">
-      <div class="labels">20 Comentarios</div>
-      <div class="labels">12 Likes</div>
-    </div>
-  </div>
-</div>
-<!--   discusion -->
-<% when 'Course'%>
-<!--   survey -->
-<div id="box-survey">
-  <div class="general-cir-survey"></div>
-  <div id="" class="comment-image">
-    <div class="arrow-left"></div>
-    <div class="header">
-      <div class="avatar"> <img src="/assets/group-avatar-mini.png" class="avatar-mini"></div>
-      <div class="top-null-image"></div><b>Matemáticas VI</b>  <span class="date"><img src="/assets/icons/finishdate.png"> 29/Ene/2012 12:35 PM</span>   </div>
-      <div class="footer">
-        <div class="content-footer">
-          <b>Cuestionario:</b> Ecuaciones de 2o Grado 
-          <!--
-<img src="/assets/icons/white-mini-comment.png" class="icon">
-          <img src="/assets/icons/white-mini-like.png" class="icon">
-          <div class="labels">20 Comentarios</div>
-          <div class="labels">12 Likes</div>
-        -->
+      </div>
+      <!-- footer -->
+      <div class="footer" id="footer-publication-<%= id %>">
+        <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
+        <img src="/assets/icons/grey-mini-like.png" class="icon like">
+        <div class="labels">20 Comentarios</div>
+        <div id="more-comments-<%= id  %>">cargas mas comentarios</div>
+        <div class="labels">12 Likes</div>
       </div>
     </div>
-    <div class="content" ><img src="/assets/survey.jpg" class="single-image"></div>
+
+    <!-- area para comentar -->
+    <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= publication.id %>">
+      <div id="comments-publication-<%= publication.id %>" style="display: block;">
+        <% post.comments.last(3).each do |commentt| %>
+        <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+        <%end%>
+      </div>
+      <div class="user-post-child-comment">
+        <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => post.id,:commentable_type => type} %>
+      </div>
+    </div>
   </div>
-</div>
-<!--   survey -->
-<% when 'Comment'%>
-<%= render :partial => '/shared/comments', :locals => {:comment => publication.publication} %>
+
+  <script type="text/javascript">
+  $('#footer-publication-<%= id %>').on('click',function(e){
+    e.preventDefault();
+  if(e.target.className === 'icon comments'){ //si quiere ver los comentarios
+    alert('comments!!');
+  }
+  if(e.target.className === 'icon like'){ //si quiere daler like ;)
+    alert('like!!');
+  }  
+});
+
+  $('#more-comments-<%= id %>').live('click',function(e){
+    $.getScript("home/load_more_comments/<%= publication.id %>");    
+    return false;
+  });
+  </script>
 <%end%>

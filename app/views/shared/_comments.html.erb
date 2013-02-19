@@ -15,7 +15,7 @@
 
 <%#= debug object %>
 <!-- <div id="box-comments" > -->
-<div id="box-comments" >
+<div class="publication-box" >
   <div class="general-cir"></div>
 
   <div id = "comment_<%= id_comment %>" class="comment-text" >
@@ -49,7 +49,6 @@
             <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => comment.id,:commentable_type => 'Comment'} %>
           </div>
       </div>
-
 </div>
 
 <script type="text/javascript">

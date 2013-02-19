@@ -46,6 +46,23 @@ class HomeController < ApplicationController
       else
         save_comment
       end
+
+      if @comment.commentable_type == 'Comment'
+        #aqui obtenemos el tipo de publicación para poder agregarla via ajax
+        @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
+      else
+        @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
+      end
+
+      puts '---------------------'
+      puts @comment.commentable_type
+      puts '---------------------'
+      puts @publication.to_yaml
+      puts '---------------------'
+      puts @comment.commentable_id
+      puts '---------------------'
+
+
       respond_to do |format|
         #format.html
         format.js
@@ -54,8 +71,8 @@ class HomeController < ApplicationController
   end
 
   def load_more_comments
-    @object = Comment.find(params[:id])
-    @comments = Comment.find(params[:id]).comments
+    @publication = Wall.find(params[:id])
+    @comments = @publication.publication.comments
     respond_to do |format|
           format.html
           format.js

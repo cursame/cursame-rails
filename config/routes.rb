@@ -124,7 +124,7 @@ Cursame30Lb::Application.routes.draw do
   resources :network_templates
 
   resources :networks
-  match '/' => 'networks#show', :constraints => { :subdomain => /.+/ }
+  match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
   
   
   #manejo de usuarios en las networks
@@ -187,4 +187,22 @@ Cursame30Lb::Application.routes.draw do
      resources :roles   
   end
   
+  ####### subiendo validables with geocoder activities #########
+  
+  resources :surveys do 
+     resources :events
+   end
+
+   resources :deliveries do 
+     resources :events
+   end
+   
+   resources :surveys do 
+      resources :events
+   end
+
+   resources :events do 
+      resources :events
+   end
+   
 end

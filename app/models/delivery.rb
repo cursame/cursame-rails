@@ -12,6 +12,7 @@ class Delivery < ActiveRecord::Base
   has_many :delivery_assets, :dependent => :destroy
   has_many :assets, :through => :delivery_assets
   has_many :events, as: :schedule
+  has_many :activities, as: :activitye
   
  # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
   
@@ -41,7 +42,9 @@ class Delivery < ActiveRecord::Base
          if self.publish_date <= DateTime.now
             self.publish!
          end
-
+        ##### se genera la actividad en la base de datos 
+        Activity.create :title => self.title, :activitye_type => "delivery", :activitye => self.id
+        #### se genera  el evento en el calendario
         Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
         
         #Aqui se crean las notificaciones y los posts del wall :)

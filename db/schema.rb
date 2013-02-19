@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20130218172833) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
-    t.string   "activity_type"
-    t.integer  "activable"
+    t.string   "activitye_type"
+    t.integer  "activitye"
     t.string   "place"
     t.string   "address"
     t.float    "latitude"

@@ -2,7 +2,7 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   # before_filter :filter_user_network_wed
-  skip_before_filter :authenticate_user!, :only => [:network_mask]
+  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create]
   
   def index
     @networks = Network.all
@@ -40,14 +40,17 @@ class NetworksController < ApplicationController
 
     @network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
-    @wall = Wall.all
+    @wall = Wall.order(' created_at DESC').paginate(:per_page => 2, :page => params[:page])
 
-    # TODO aqui hay que hacer una especie de merge para que se pueda paginar el timeline de alguna manera
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @network }
-    end
+    if request.xhr?
+      sleep(2) # make request a little bit slower to see loader :-)
+      render :partial => '/shared/publications', :locals => {:wall => @wall}
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @network }
+      end
+    end    
   end
 
 
