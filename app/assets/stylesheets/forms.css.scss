@@ -101,18 +101,44 @@
     & .file-mini-upload{
       //clear:both;
       float: left;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 158px;
-      background: url('/assets/icons/file-basic-mini.png') no-repeat left;
-      height: 28px;
+
+      width: 157px;
+      background: url('/assets/icons/file-basic-mini.png') no-repeat 1px 1px;
+      height: 32px;
       padding: 0px 0px 0px 30px;
       line-height: 23pt;
       margin: 4px 0px 0px 0px;
       cursor: pointer;
+      border: solid 1px transparent;
+
+      & span{
+        float: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 125px;
+      }
+      & .trash{
+        display: none;
+        float: right;
+        background: url('/assets/icons/trash-mini-active.png') no-repeat left;
+        width: 24px;
+        height: 23px;
+        margin: 5px 5px 0px 0px;
+      }
       &:hover{
         background-color: #e5edf6;
+        border: solid 1px #b9c3d3;
+        @include border-radius-btn;
+        & .trash{
+          display: block;
+          &:hover{
+            background: #d5dde9 url('/assets/icons/trash-mini-hover.png') no-repeat left;
+            border: 1px solid #95a4be;
+            font-weight: bold;
+            margin: 4px 4px 0px 0px;
+          }
+        }
       }
     }
   }
