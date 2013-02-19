@@ -31,7 +31,7 @@ class Course < ActiveRecord::Base
   
   
   
-  #comentarios para las redes
+  #comentarios para los cursos
   acts_as_commentable 
 
   
