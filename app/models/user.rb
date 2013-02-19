@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :authentications 
   
+  
   #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
 

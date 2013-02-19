@@ -71,6 +71,10 @@ class DeliveriesController < ApplicationController
     
     respond_to do |format|
       if @delivery.save
+            @typed = "Delivery"
+        ####### despues de guardar se crea la notificación de actividad con geo localización 
+          activation_activity
+        
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
         format.js 

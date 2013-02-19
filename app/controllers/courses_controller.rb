@@ -195,8 +195,10 @@ class CoursesController < ApplicationController
                    puts "******** se han generado las areas de evaluacion ************"
                 end
                 
-            
-             
+                    @typed = "Assignmet"
+                  ####### despues de guardar se crea la notificación de actividad con geo localización 
+                    activation_activity
+              
              if @response_to_the_evaluation.save
              redirect_to :back
              else

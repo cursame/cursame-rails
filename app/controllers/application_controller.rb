@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_course
   helper_method :alfredot_rifa_free_pro_forever
   helper_method :current_role
+  helper_method :activation_activity
+  helper_method :computer_plataform
+  helper_method :version_browser
+  helper_method :browser
+  
   #roles
   before_filter :set_current_user
 
@@ -161,6 +166,49 @@ class ApplicationController < ActionController::Base
     @permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
     @role = Role.find_by_id(@permisos.role_id)
     @role.title
+  end
+  ###### comandos de generación de actividades
+  def activation_activity
+      @activity = Activity.new
+        @activity.title =  @delivery.title
+        @activity.activitye_id= @delivery.id
+        @activity.activitye_type =   @typed
+        @activity.ip_address = request.ip
+        
+        city = request.location.city
+        country = request.location.country_code
+        ip = request.ip
+        puts '***************************'
+        
+        puts city
+        puts country
+        puts ip
+        
+        puts '***************************'
+        @activity.address = "#{city} #{country}"
+        @activity.browser = "#{browser_active}"
+        @activity.version_browser ="#{browser_version}"
+        @activity.computer_plataform = "#{computer_platform}"
+        @activity.user_id = current_user.id
+        @activity.save
+  end
+  
+  def browser_active
+    @data_integrate = request.env['HTTP_USER_AGENT']
+    @user_agent = UserAgent.parse(@data_integrate)
+    @browser = @user_agent.browser    
+  end
+
+  def browser_version
+    @data_integrate = request.env['HTTP_USER_AGENT']
+    @user_agent = UserAgent.parse(@data_integrate)
+    @browser = @user_agent.version
+  end
+  
+  def computer_platform
+    @data_integrate = request.env['HTTP_USER_AGENT']
+    @user_agent = UserAgent.parse(@data_integrate)
+    @computer_plataform = @user_agent.platform
   end
   
   protected

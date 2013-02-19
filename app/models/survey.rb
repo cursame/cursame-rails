@@ -7,6 +7,7 @@ class Survey < ActiveRecord::Base
   has_many :compart_assets
   has_many :assets, :through => :compart_assets
   has_many :events, as: :schedule
+  has_many :activities, as: :activitye
   
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
