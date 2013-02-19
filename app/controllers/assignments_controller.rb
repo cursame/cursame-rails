@@ -61,6 +61,9 @@ class AssignmentsController < ApplicationController
                   @response_to_the_evaluation.save
                   
                 end
+                
+               
+                  
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
         format.json { render json: @assignment, status: :created, location: @assignment }
       else

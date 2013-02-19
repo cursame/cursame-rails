@@ -15,10 +15,18 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(params[:survey])
-    if @survey.save
-      redirect_to @survey, :notice => "Successfully created survey."
-    else
-      render :action => 'new'
+    @survey.courses.push(Course.last) #aqui deben de ir los cursos que se envien del front
+    @survey.user = current_user
+    respond_to do |format|
+      if @survey.save
+        @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
+        format.js
+        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+        format.json { render json: @survey, status: :created, location: @survey }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @survey.errors, status: :unprocessable_entity }
+      end
     end
   end
 

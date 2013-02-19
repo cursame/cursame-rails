@@ -188,21 +188,23 @@ Cursame30Lb::Application.routes.draw do
   end
   
   ####### subiendo validables with geocoder activities #########
+  resources :activities
   
   resources :surveys do 
-     resources :events
+     resources :activities
    end
 
    resources :deliveries do 
-     resources :events
+     resources :activities
    end
    
-   resources :surveys do 
-      resources :events
+   resources :assignments do 
+      resources :activities
    end
 
-   resources :events do 
-      resources :events
+   resources :comments do 
+      resources :activities
    end
+   
    
 end

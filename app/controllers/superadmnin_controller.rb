@@ -9,6 +9,7 @@ class SuperadmninController < ApplicationController
   end
 
   def activities
+    @activities = Activity.all
   end
 
   def roles
