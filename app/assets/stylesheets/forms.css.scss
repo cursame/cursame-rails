@@ -110,6 +110,10 @@
       padding: 0px 0px 0px 30px;
       line-height: 23pt;
       margin: 4px 0px 0px 0px;
+      cursor: pointer;
+      &:hover{
+        background-color: #e5edf6;
+      }
     }
   }
 
@@ -524,15 +528,13 @@
     float: left;
     width: 100%;
     height: $height-post-box;
-    margin: 7px 0 6px 0;
+    margin: 7px 0 6px 10px;
     & a{
       display: block;
-      width: 100px;
       height: 100%;
-      width: 100px;
+      width: 120px;
       float: left;
       text-align: center;
-      //padding-top: 60px;
       color: #969696;
       font-size: 10px;
     }
@@ -551,7 +553,7 @@
     & .border{
       @include circle-obj;
       @include border-circle-obj;
-      margin: 0px 0px 4px 18px;
+      margin: 0px 0px 4px 28px;
     }
     & .message-form-btn{
       & .icon{
