@@ -1,5 +1,5 @@
 <div style="margin-left:70px;">
-<%= form_for(@course, :html => { :class => "default-form edit-course"}, :remote => true) do |f| %>
+<%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
