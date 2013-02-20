@@ -130,11 +130,10 @@ function Uploader( id_asset_box , id_label_box, is_single ) {
                 $(id_label_box).html('<div class="file-mini-upload"><span>'+ fileName + '</span><div class="trash"></div></div>');
             }else{
                 $(id_label_box).append('<div class="file-mini-upload"><span>'+ fileName + '</span><div class="trash"></div></div>');
-                //remove icon
+                //remove icon/input
                 last_file_mini = $(id_label_box).children(':last');
                 $(last_file_mini).find('.trash').click(function() {
                     $(this).parent().remove(); //se remueve la etiqueta
-                    console.log( obj_parent.parent().attr('id') ); //
                     obj_parent.parent().remove();//se remueve el input[type=file]
                     if($(id_label_box).children().length == 0)
                         $(id_label_box).hide();
