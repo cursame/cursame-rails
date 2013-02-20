@@ -10,6 +10,7 @@ class SuperadmninController < ApplicationController
 
   def activities
     @activities = Activity.all
+    @ac = @activities.count
   end
 
   def roles

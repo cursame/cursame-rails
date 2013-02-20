@@ -101,15 +101,45 @@
     & .file-mini-upload{
       //clear:both;
       float: left;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 158px;
-      background: url('/assets/icons/file-basic-mini.png') no-repeat left;
-      height: 28px;
+
+      width: 157px;
+      background: url('/assets/icons/file-basic-mini.png') no-repeat 1px 1px;
+      height: 32px;
       padding: 0px 0px 0px 30px;
       line-height: 23pt;
       margin: 4px 0px 0px 0px;
+      cursor: pointer;
+      border: solid 1px transparent;
+
+      & span{
+        float: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 125px;
+      }
+      & .trash{
+        display: none;
+        float: right;
+        background: url('/assets/icons/trash-mini-active.png') no-repeat left;
+        width: 24px;
+        height: 23px;
+        margin: 5px 5px 0px 0px;
+      }
+      &:hover{
+        background-color: #e5edf6;
+        border: solid 1px #b9c3d3;
+        @include border-radius-btn;
+        & .trash{
+          display: block;
+          &:hover{
+            background: #d5dde9 url('/assets/icons/trash-mini-hover.png') no-repeat left;
+            border: 1px solid #95a4be;
+            font-weight: bold;
+            margin: 4px 4px 0px 0px;
+          }
+        }
+      }
     }
   }
 
@@ -524,15 +554,13 @@
     float: left;
     width: 100%;
     height: $height-post-box;
-    margin: 7px 0 6px 0;
+    margin: 7px 0 6px 10px;
     & a{
       display: block;
-      width: 100px;
       height: 100%;
-      width: 100px;
+      width: 120px;
       float: left;
       text-align: center;
-      //padding-top: 60px;
       color: #969696;
       font-size: 10px;
     }
@@ -551,7 +579,7 @@
     & .border{
       @include circle-obj;
       @include border-circle-obj;
-      margin: 0px 0px 4px 18px;
+      margin: 0px 0px 4px 28px;
     }
     & .message-form-btn{
       & .icon{

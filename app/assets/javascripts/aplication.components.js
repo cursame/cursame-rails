@@ -123,12 +123,21 @@ function Uploader( id_asset_box , id_label_box, is_single ) {
     function initChangeLabel( value ){
         var tmp_value = value;
         $(id_asset_box+' #asset-file-'+ tmp_value +'' ).change(function(){
+            var obj_parent = $(this);
+            console.log(obj_parent);
             var fileName = $( id_asset_box + ' #upload-delivery-element-'+tmp_value+' > input[type=file]').val().replace(/C:\\fakepath\\/i, '');
             if ( isSingle ){
-                $(id_label_box).html('<div class="file-mini-upload">'+ fileName + '</div>');
+                $(id_label_box).html('<div class="file-mini-upload"><span>'+ fileName + '</span><div class="trash"></div></div>');
             }else{
-                $(id_label_box).append('<div class="file-mini-upload">'+ fileName + '</div>');
-
+                $(id_label_box).append('<div class="file-mini-upload"><span>'+ fileName + '</span><div class="trash"></div></div>');
+                //remove icon/input
+                last_file_mini = $(id_label_box).children(':last');
+                $(last_file_mini).find('.trash').click(function() {
+                    $(this).parent().remove(); //se remueve la etiqueta
+                    obj_parent.parent().remove();//se remueve el input[type=file]
+                    if($(id_label_box).children().length == 0)
+                        $(id_label_box).hide();
+                });
                 //Clone Button
                 $( id_asset_box + ' #upload-delivery-element-'+tmp_value).hide();
                 $( nestedUploadDelivery ).each(function( index, value ) {
@@ -136,8 +145,6 @@ function Uploader( id_asset_box , id_label_box, is_single ) {
                 });
                 initChangeLabel(controlNestedUpload);
             }
-
-
             controlNestedUpload++;
             $(id_label_box).show();
         });

@@ -67,7 +67,7 @@
         <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
         <img src="/assets/icons/grey-mini-like.png" class="icon like">
         <div class="labels">20 Comentarios</div>
-        <div id="more-comments-<%= id  %>">cargas mas comentarios</div>
+
         <div class="labels">12 Likes</div>
       </div>
     </div>
@@ -75,6 +75,7 @@
     <!-- area para comentar -->
     <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= publication.id %>">
       <div id="comments-publication-<%= publication.id %>" style="display: block;">
+        <div id="more-comments-<%= id  %>">cargas mas comentarios</div>
         <% post.comments.last(3).each do |commentt| %>
         <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
         <%end%>
