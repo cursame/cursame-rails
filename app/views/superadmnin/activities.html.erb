@@ -13,6 +13,8 @@
  Brwoser: <%= activity.browser %></br>
  Versión: <%= activity.version_browser %></br>
  Sistema operativo: <%= activity.computer_plataform %></br>
+ Red: <%= activity.network_id %></br>
+ 
  <% @user = User.find(activity.user_id)%>
 <%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
  </div>
