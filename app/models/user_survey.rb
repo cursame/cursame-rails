@@ -14,6 +14,4 @@ class UserSurvey < ActiveRecord::Base
     end
     self.update_attributes(:result => (correct_answers/responses.size)*100)
   end
-
-
 end
