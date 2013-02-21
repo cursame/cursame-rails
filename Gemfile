@@ -35,13 +35,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 ####### gems for debug erros
-=beging
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
-end
-=end
+
+#group :development do
+ # gem 'better_errors'
+  #gem 'binding_of_caller'
+  #gem 'meta_request'
+#end
+
 
 
 gem 'jquery-rails'
