@@ -47,11 +47,11 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Comment'
-        #aqui obtenemos el tipo de publicación para poder agregarla via ajax
-        @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
+      if @comment.commentable_type == 'Network'  || @comment.commentable_type == 'Course'        
+        @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)      
       else
-        @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
+          #aqui obtenemos el tipo de publicación para poder agregarla via ajax
+        @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
       end
 
       puts '---------------------'
@@ -82,6 +82,6 @@ class HomeController < ApplicationController
   protected
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
-    @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
+    @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
   end
 end

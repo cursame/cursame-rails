@@ -119,7 +119,7 @@ class CoursesController < ApplicationController
       if @course.update_attributes(params[:course])
         format.json { head :no_content }
         format.html { redirect_to courses_url }
-        format.js
+        # format.js
       else
         format.json { render json: @course.errors, status: :unprocessable_entity }
         format.js
@@ -172,6 +172,7 @@ class CoursesController < ApplicationController
 
   def assigment
     @assignment = Assignment.new(params[:assignment])
+    @assignment.user_id = current_user.id
     @asset = Asset.new(params[:asset])
     @asset.save!
     @assignment.save!

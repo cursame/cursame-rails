@@ -939,7 +939,30 @@
 }
 
 
+.more-comment-box{
+  clear: both;
+  float: left;
+  border-bottom: $border-forms;
+  width: 553px;
+  margin-left: 14px;
+  position: relative;
+  cursor: pointer;
+  color: #7498ce;
+  font-size: 11px;
+  height: 28px;
+  line-height: 27px;
+  background: url("/assets/icons/more-comments-icon.png") no-repeat;
+  background-position: 0px 3px;
+  & span{
+    background: url("/assets/icons/dots-comment-mini.png") no-repeat;
+    width: 528px;
+    height: 100%;
+    padding: 0px 0px 0px 25px;
+    float: left;
+    background-position: 263px 3px;
+  }
 
+}
 .child-comment-box{
   clear: both;
   float: left;
@@ -951,8 +974,8 @@
     background: url("/assets/icons/heart-icon-child-comment.png") no-repeat;
     position: absolute;
     right: 1px;
-    height: 17px;
-    width: 17px;
+    height: 23px;
+    width: 20px;
     top: 6px;
     cursor: pointer;
     &:hover{

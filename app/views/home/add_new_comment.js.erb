@@ -1,10 +1,14 @@
-<% if @comment.commentable_type == 'Comment' %>
-// si se tiene que agregar a nivel de los coments
-	$('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
-	$('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('');
-<% else %>
+<% if @comment.commentable_type == 'Network' || @comment.commentable_type == 'Course' %>
+
 	// si se tiene que agregar al layout principal
 	// $('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
 	$('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
-	$('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);;
+	$('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
+
+<% else %>
+
+	// si se tiene que agregar a nivel de los coments
+	$('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
+	$('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('');
+
 <% end %>

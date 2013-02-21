@@ -1,4 +1,4 @@
 class DiscussionsCourses < ActiveRecord::Base
    belongs_to :course
-   belongs_to :disscussion
+   belongs_to :discussion
 end

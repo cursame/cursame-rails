@@ -9,6 +9,7 @@
 
 function resetForm(objForm){
     objForm[0].reset();
+
     //removing assets
     $.each($(objForm).find('.file-master-input-box').children(), function(index, value) {
         console.log();

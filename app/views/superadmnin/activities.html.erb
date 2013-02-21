@@ -1,6 +1,8 @@
 <h1>Actividades del sistema</h1>
 <p> Las actividades del sistema están geo localizadas</p>
+<div style="color:#001; font-size:15px;"> Total de actividades <%= @ac %></div>
 <% @activities.each do |activity|%>
+ <div style="float:left; color:#fff; height:190px; margin-left:10px; margin-top:25px; padding:5px; background-color:#000;">
  Título:<%= activity.title %></br>
  Tipo de Actividad: <%= activity.activitye_type %></br>
  Ip: <%= activity.ip_address%></br>
@@ -11,9 +13,14 @@
  Brwoser: <%= activity.browser %></br>
  Versión: <%= activity.version_browser %></br>
  Sistema operativo: <%= activity.computer_plataform %></br>
+ Red: <%= activity.network_id %></br>
+ 
  <% @user = User.find(activity.user_id)%>
- Hecho por el usuario: <%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
- <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x200&sensor=true&zoom=16&markers=#{activity.latitude}%2C#{activity.longitude}" %>
+<%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
+ </div>
+ <div style="float:left; height:230px; margin-left:5px; margin-top:25px;">
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x200&sensor=true&zoom=16&markers=#{activity.latitude}%2C#{activity.longitude}" %>
+</div>
  
  
 

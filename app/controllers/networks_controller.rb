@@ -74,14 +74,22 @@ class NetworksController < ApplicationController
   # POST /networks.json
   def create
     @network = Network.new(params[:network])
-
+    @user = User.new(params[:user])
+    @call_user = @network.users.last
     respond_to do |format|
       if @network.save
-         @permissioning = Permissioning.new
-         @permissioning.user_id = current_user.id
-         @permissioning.role_id = 1
-         @permissioning.network_id = @network.id
+         @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
+         puts "----------------------"
+         puts @permissioning
+         puts "----------------------"
+         @permissioning.role_id = "1"
          @permissioning.save
+         
+         if  @permissioning.save
+           puts "permisos guardados correctamente"
+         else
+           puts "permisos no guardados correctamente"
+         end
          
         format.html { redirect_to :back , notice: 'Network was successfully created.' }
         format.json { render json: @network, status: :created, location: @network }

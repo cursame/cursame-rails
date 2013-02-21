@@ -1,2 +1,34 @@
-<h1>Superadmnin#networks</h1>
-<p>Find me in app/views/superadmnin/networks.html.erb</p>
+<h1>Crear y administrar networks</h1>
+<p>Creando networks</p>
+<%= form_for(@network = Network.new(params[:network]), remote: true) do |f|%>
+
+<div class="field">
+   <%= f.label :name %><br />
+   <%= f.text_field :name %>
+ </div>
+ <div class="field">
+   <%= f.label :subdomain %><br />
+   <%= f.text_field :subdomain %>
+ </div>
+ <div class="field">
+    <%= f.label :population %><br />
+    <%= f.text_field :population %>
+  </div>
+  <% 1.times do networks = @network.users.build end %>
+  
+   <%= f.fields_for :users do |user|%>
+     <%= f.label :email %><br />
+     <%= user.email_field :email %><br />
+     <%= f.label :password %><br />
+     <%= user.password_field :password %><br />
+     <%= f.label :password_confirmation %><br />
+     <%= user.password_field :password_confirmation %><br />
+     <%= user.hidden_field :personal_url, :value => random_string_for_user_url %>
+     
+   <%end%>
+   
+
+       
+ <div class="actions">
+   <%= f.submit %>
+<%end%>
