@@ -5,7 +5,6 @@ class UserSurvey < ActiveRecord::Base
   accepts_nested_attributes_for :user_survey_responses, :reject_if => lambda { |a| a[:answer_id].blank? }, :allow_destroy => true
 
   def evaluation
-
     responses = UserSurveyResponse.where(:user_survey_id => self.id)
     correct_answers = 0.0
     responses.each do |response|
