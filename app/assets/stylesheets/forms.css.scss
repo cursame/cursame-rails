@@ -334,6 +334,10 @@
       border: $border-forms;
       list-style: none;
       transition: all 0.3s ease-out;
+      -moz-transition: all 0.3s ease-out; /* Firefox 4 */
+      -webkit-transition: all 0.3s ease-out; /* Safari and Chrome */
+      -o-transition: all 0.3s ease-out; /* Opera */
+
       /* Hiding */
       opacity: 0;
       pointer-events: none;
@@ -347,7 +351,7 @@
           display: block;
           padding: 10px 10px 10px 30px; /* Same padding as the button */
           border-bottom: $border-forms;
-          transition: all 0.3s ease-out;
+          //transition: all 0.3s ease-out;
           cursor: pointer;
           text-transform: capitalize;
           &.world-dd{

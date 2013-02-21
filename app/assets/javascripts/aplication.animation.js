@@ -197,8 +197,9 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
+
             resetForm($(value).find('form'));
-            console.log('cancelado');
+
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -267,12 +268,10 @@ $(document).ready(function() {
         iconBackgroundColor = $(obj +" .icon").css('background-color');
         iconMarginTop = $(obj +" .icon").css('marginTop');
         iconMarginLeft = $(obj +" .icon").css('marginLeft');
-        console.log( 'init-margin:'+$(obj+" .icon").css('marginRight'));
         $(obj +' .border').animate({
             boxShadow: '0px 0px 0px #FFF',
             marginTop:     '3px'
         }, 200);
-
         $(obj+" .icon").animate({
             boxShadow: '0px 2px 5px #555',
             margin:     '-2px 0px 0px -2px',
