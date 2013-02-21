@@ -83,11 +83,32 @@
       <%#= delivery.description %>
       <%#= render partial: "assignments/form_for_delivery"%>
 <%#end%>
+<div class="publication-box">
+  <div class="general-cir"></div>
+  <div id="comment_8" class="comment-text">
+    <div class="arrow-left"></div>
+    <div class="header">
+      <div class="avatar"><img alt="Modern_4ae2e15e125b11e290ea1231380f301e_7" class="avatar-mini" src="/uploads/user/avatar/1/modern_4ae2e15e125b11e290ea1231380f301e_7.jpg"></div>
+      <div class="top-null-image"></div><b>Rodrigo Ayalaa</b>  <span class="date">2013-01-29 18:07:48 UTC</span>
+    </div>
+    <div class="content">
+      <div class="null-image"></div>
+      <p></p>
+    </div>
 
+    <div class="footer" id="footer-comment-8">
+      <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
+      <img src="/assets/icons/grey-mini-like.png" class="icon like">
+      <div class="labels">20 Comentarios</div>
+      <div id="more-comments-8">cargas mas comentarios</div>
+      <div class="labels">12 Likes</div>
+    </div>
+  </div>
   <%  @course.deliveries.reverse.each do |delivery| %>
-  
-
+  <b>##</b>
   <div id="box-comments">
+
+
       <div class="general-cir"></div>
          <div id="comment1" class="comment-text" >
              <div class="arrow-left"></div>
@@ -127,7 +148,8 @@
               <%= render partial: "assignments/form_for_delivery"%>
 
        </div>
-       <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">    
+
+       <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
                 <% @count_deliveries_assignments = delivery.assignments.count %>
                 <%= @count_deliveries_areas_of_evaluation = delivery.areas_of_evaluation.count %>
                     <% if @count_deliveries_areas_of_evaluation > 0%>
@@ -135,6 +157,7 @@
                     <%else%>
                       <b>A esta tarea no se le han asignado áreas de evaluación </b></br>
                     <%end%>
+
                 <% if @count_deliveries_assignments > 0%>
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
@@ -160,6 +183,7 @@
                   <% else %>
                     <b>No se han encontrado respuestas a esta tarea</b>
                 <% end %>
+
       </div>
          <script>
              $("#open-close-<%= delivery.id %>").click(function () {
@@ -173,7 +197,11 @@
           </script>
       </div>
   </div>
+
+      ###
   <%end%>
+</div>
+
 </div>
 
 </div>
