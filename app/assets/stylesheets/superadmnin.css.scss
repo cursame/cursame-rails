@@ -1,3 +1,71 @@
 // Place all the styles related to the superadmnin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.super-admin-menu{
+    background-image: linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
+    background-image: -o-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
+    background-image: -moz-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
+    background-image: -webkit-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
+    background-image: -ms-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
+
+    background-image: -webkit-gradient(
+    	linear,
+    	left bottom,
+    	left top,
+    	color-stop(0.1, rgb(62,66,52)),
+    	color-stop(0.55, rgb(97,117,117))
+    ); 
+    position:absolute;
+      top:0;
+      left:0;
+      width:150px;
+      height:100%;
+      margin-right:10px;
+}
+.lateral-content{
+   margin-left:160px;
+    
+}
+.super-admin-header{
+    color:#2D6477;
+    font-size:20px;
+}
+.super-admin-descriptions{
+    color:#2D6477;
+     font-size:15px;
+}
+.counter-marquer{
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    color:#E28A1E;
+    font-size:25px;
+    float:right;
+    padding:15px;
+    margin: 5px;
+    width:30px;
+    height:30px;
+    background-image: linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -o-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -moz-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -webkit-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -ms-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+
+    background-image: -webkit-gradient(
+    	linear,
+    	left bottom,
+    	left top,
+    	color-stop(0.1, rgb(45,46,41)),
+    	color-stop(0.55, rgb(33,38,38))
+    );
+    
+    
+}
+
+.super-admin-list{
+     background-color:#CECDCC;
+     border-bottom:#fff solid 2px;
+     font-size:15px;
+     padding:5px;
+    
+}

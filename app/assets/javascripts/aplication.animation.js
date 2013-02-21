@@ -159,18 +159,29 @@ $(document).ready(function() {
 
 
     /*
-     *===============================================================
-     *==================== Animation - MenuPost ====================
-     *===============================================================
+     *================================================================================
+     *==================== Animation - MenuPost (Click Post Item) ====================
+     *================================================================================
      */
-    var prePostHeight = $('#profile-form-options').height();
-    var prePostMargin = $('#profile-form-options').css('margin');
+    var prePostHeight;
+    var prePostMarginTop;
+    var prePostMarginRight;
+    var prePostMarginBottom;
+    var prePostMarginLeft;
+
     $('#profile-form-options > a').click(function() {
+        prePostHeight = $('#profile-form-options').height();
+        prePostMarginTop = $('#profile-form-options').css('marginTop');
+        prePostMarginRight = $('#profile-form-options').css('marginRight');
+        prePostMarginBottom = $('#profile-form-options').css('marginBottom');
+        prePostMarginLeft = $('#profile-form-options').css('marginLeft');
+
         var hrefClean = $(this).attr('href');
         $(this).parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
             height: '0',
-            margin: '0'
+            marginTop: '0',
+            marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
         });
@@ -186,8 +197,9 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
+
             resetForm($(value).find('form'));
-            console.log('cancelado');
+
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -200,7 +212,10 @@ $(document).ready(function() {
             $('#profile-form-options').animate({
                 opacity: 1,
                 height: prePostHeight,
-                margin: prePostMargin
+                marginTop: prePostMarginTop,
+                marginLeft: prePostMarginLeft,
+                marginRight: prePostMarginRight,
+                marginBottom: prePostMarginBottom
             }, time);
 
         });
@@ -232,25 +247,31 @@ $(document).ready(function() {
         hoverOutBtn( '.'+$(this).attr('class') );
     });
 
-    var borderShadow;
-    var borderMargin;
-    var iconShadow;
-    var iconMargin;
-    var iconBackgroundColor;
-    var iconBorderColor;
+    var borderShadow,
+        borderMargin,
+        borderMarginTop,
+        borderMarginLeft;
+
+    var iconShadow,
+        iconMargin,
+        iconBackgroundColor,
+        iconBorderColor,
+        iconMarginTop,
+        iconMarginLeft;
+
     function hoverBtn( obj , borderColor, backgroundColor){
         borderShadow = $(obj +' .border').css('box-shadow');
-        borderMargin = $(obj +' .border').css('margin');
+        borderMarginTop = $(obj +' .border').css('marginTop');
+        borderMarginLeft = $(obj +' .border').css('marginLeft');
         iconShadow = $(obj +" .icon").css('box-shadow');
-        iconMargin = $(obj +" .icon").css('margin');
         iconBorderColor = $(obj +" .icon").css('border-color');
         iconBackgroundColor = $(obj +" .icon").css('background-color');
-
+        iconMarginTop = $(obj +" .icon").css('marginTop');
+        iconMarginLeft = $(obj +" .icon").css('marginLeft');
         $(obj +' .border').animate({
             boxShadow: '0px 0px 0px #FFF',
-            margin:     '3px 0px 3px 28px'
+            marginTop:     '3px'
         }, 200);
-
         $(obj+" .icon").animate({
             boxShadow: '0px 2px 5px #555',
             margin:     '-2px 0px 0px -2px',
@@ -261,11 +282,13 @@ $(document).ready(function() {
     function hoverOutBtn(obj){
         $(obj+' .border').animate({
             boxShadow: borderShadow ,
-            margin:     borderMargin
+            marginTop: borderMarginTop,
+            marginLeft: borderMarginLeft
         }, 200);
         $(obj+" .icon").animate({
             boxShadow: iconShadow,
-            margin:     iconMargin,
+            marginTop: iconMarginTop,
+            marginLeft: iconMarginLeft,
             backgroundColor: iconBackgroundColor ,
             borderColor: iconBorderColor
         }, 200);

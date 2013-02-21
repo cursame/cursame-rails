@@ -1169,7 +1169,7 @@ background-position: left center;
   }
 }
 .avatar-mini{
-  border: #FFF 2px solid;
+  border: #FFF 2px solid !important;
   border-radius: $border-radius-avatar-mini;
 
   -moz-box-shadow:  0px 1px 2px #666;
