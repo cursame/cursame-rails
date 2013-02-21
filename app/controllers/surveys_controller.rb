@@ -45,15 +45,15 @@ class SurveysController < ApplicationController
   end
 
   def survey_reply
-    if user_signed_in?    
+    if user_signed_in?
       @user_survey = UserSurvey.new
       @user_survey.survey_id = params[:survey_id]
       @user_survey.user = current_user
       @user_survey.result = 0;
-      
+
       if @user_survey.save
         params[:questions].each do |question|
-          
+
           #
           # question[1] es el id de la respuesta
           # question[0] es la id de la pregunta
@@ -64,42 +64,24 @@ class SurveysController < ApplicationController
             @user_response.question_id = question[0]
             @user_response.answer_id = answer
             @user_response.save
-            
-          end        
+
+          end
         end
       else
         #logica por que no se guardo
       end
-      calificar(current_user,@user_survey.survey_id)
+      # Ejemplo de como usar la evaluation de un examen
+      # evaluation(current_user,@user_survey.survey_id)
       respond_to do |format|
           format.js
       end
     end
-    
+
   end
 
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy
     redirect_to surveys_url, :notice => "Successfully destroyed survey."
-  end
-  
-  def calificar(user_id,survey_id)
-    user_survey = UserSurvey.where(:user_id => user_id, :survey_id => survey_id)
-    if (user_survey.size == 0) then
-      # Logica de cuando no encontro ningun UserSurvey
-      #
-      raise
-    else
-      user_survey = user_survey.first_or_create
-    end
-    responses = UserSurveyResponse.where(:user_survey_id => user_survey.id)
-    correct_answers = 0.0
-    responses.each do |response|
-
-      answer = Answer.find(response.answer_id)
-      correct_answers += 1 if answer.correct 
-    end
-    user_survey.update_attributes(:result => (correct_answers/responses.size)*10)
   end
 end
