@@ -238,6 +238,13 @@ $(document).ready(function() {
     var iconMargin;
     var iconBackgroundColor;
     var iconBorderColor;
+
+    var borderMarginTop;
+    var borderMarginLeft;
+
+    var iconMarginTop;
+    var iconMarginLeft;
+
     function hoverBtn( obj , borderColor, backgroundColor){
         borderShadow = $(obj +' .border').css('box-shadow');
         borderMargin = $(obj +' .border').css('margin');
@@ -246,6 +253,12 @@ $(document).ready(function() {
         iconBorderColor = $(obj +" .icon").css('border-color');
         iconBackgroundColor = $(obj +" .icon").css('background-color');
 
+        borderMarginTop = $(obj +' .border').css('marginTop');
+        borderMarginLeft = $(obj +' .border').css('marginLeft');
+
+        iconMarginTop = $(obj +" .icon").css('marginTop');
+        iconMarginLeft = $(obj +" .icon").css('marginLeft');
+        console.log( 'init-margin:'+$(obj+" .icon").css('marginRight'));
         $(obj +' .border').animate({
             boxShadow: '0px 0px 0px #FFF',
             margin:     '3px 0px 3px 28px'
@@ -261,11 +274,15 @@ $(document).ready(function() {
     function hoverOutBtn(obj){
         $(obj+' .border').animate({
             boxShadow: borderShadow ,
-            margin:     borderMargin
+            marginTop: borderMarginTop,
+            marginLeft: borderMarginLeft
+            //margin:     borderMargin
         }, 200);
         $(obj+" .icon").animate({
             boxShadow: iconShadow,
-            margin:     iconMargin,
+            marginTop: iconMarginTop,
+            marginLeft: iconMarginLeft,
+            //margin:     iconMargin,
             backgroundColor: iconBackgroundColor ,
             borderColor: iconBorderColor
         }, 200);
