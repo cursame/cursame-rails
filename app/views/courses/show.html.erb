@@ -110,16 +110,20 @@
 
 
       <div class="general-cir"></div>
-         <div id="comment1" class="comment-text" >
+         <div id="comment1" class="comment-text delivery" >
              <div class="arrow-left"></div>
                <div class="header">
                  <div class="null-image"></div>
                  <div class="avatar">
                  <%= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
-                   <div class="name"> <%= delivery.title %></div><span><%= delivery.publish_date%></span>
+                   <div class="name"> </div><span><%= delivery.publish_date%></span>
                  </div>
                   <div class="content">
                      <div class="null-image"></div>
+
+                    <div class="end-date"><%= delivery.end_date %></div>
+                    <b>Titulo:</b> <%= delivery.title %>
+
                      <%= delivery.description %></br>
                      <% delivery.areas_of_evaluations.each do |areas|%>
                         <%= areas.name %>
