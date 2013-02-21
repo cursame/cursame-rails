@@ -41,17 +41,7 @@ class AssetsController < ApplicationController
   # POST /assets.json
   public
   def create
-    @asset = Asset.new(params[:asset])
-    @asset.save!
-    # respond_to do |format|
-    #   if @asset.save
-    #     format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
-    #     format.json { render json: @asset, status: :created, location: @asset }
-    #   else
-    #     format.html { render action: "new" }
-    #     format.json { render json: @asset.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    @asset = Asset.create(params[:asset])
   end
 
   # PUT /assets/1

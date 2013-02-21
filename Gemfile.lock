@@ -94,6 +94,9 @@ GEM
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
     jquery-rails (2.2.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -223,6 +226,7 @@ DEPENDENCIES
   devise
   geocoder
   google-api-client
+  jquery-fileupload-rails
   jquery-rails
   json
   less-rails

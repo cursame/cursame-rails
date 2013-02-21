@@ -33,13 +33,16 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-fileupload-rails'
 end
 ####### gems for debug erros
-group :development do
-  #gem 'better_errors'
+
+#group :development do
+ # gem 'better_errors'
   #gem 'binding_of_caller'
   #gem 'meta_request'
-end
+#end
+
 
 
 gem 'jquery-rails'

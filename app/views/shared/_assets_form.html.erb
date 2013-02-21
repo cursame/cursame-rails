@@ -1,3 +1,4 @@
+
 <%
    random_id = "#{random}"
    @asset_unique = "upload-delivery-form-#{random_id}"
@@ -19,3 +20,4 @@
         var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
     });
 </script>
+
