@@ -1,4 +1,6 @@
 class SuperadmninController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:create_super_admin, :instructions]
+  
   def statistics
   end
 
@@ -23,5 +25,8 @@ class SuperadmninController < ApplicationController
   end
 
   def publicity_modul_controller
+  end
+  
+  def instructions
   end
 end

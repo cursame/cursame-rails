@@ -206,5 +206,9 @@ Cursame30Lb::Application.routes.draw do
       resources :activities
    end
    
+   ###### ruta para crear super admins
+   
+   match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
+   match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
    
 end

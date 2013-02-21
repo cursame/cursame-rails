@@ -14,10 +14,10 @@
         <div id="box-titles-content" class="box-titles-content-style">
           <div id="stats-area" class="menu-course">
             <ul>
-              <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> 15</b> ACTIVIDADES <br><i>Muro principal</i></li>
-              <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i>25 totales</i></li>
-              <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i>25 totales</i></li>
-              <li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i>25 totales</i></li>
+              <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= current_course.discussions.count %> </b> ACTIVIDADES <br><i>Muro principal</i></li>
+              <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i><%= current_course.deliveries.count %> totales</i></li>
+              <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i><%= current_course.discussions.count %> totales</i></li>
+              <li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
               <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
             </ul>
           </div>
@@ -100,6 +100,10 @@
                   <div class="content">
                      <div class="null-image"></div>
                      <%= delivery.description %></br>
+                     <% delivery.areas_of_evaluations.each do |areas|%>
+                        <%= areas.name %>
+                        <%= areas.evaluation_percentage%>
+                     <%end%>
                      <% delivery.assets.each do|files|%>
                        <% debug files.file %>
                          <%= link_to "#{files.file}", "#{files.file}" %>

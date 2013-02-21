@@ -1,2 +1,54 @@
-<h1>Superadmnin#create_super_admin</h1>
-<p>Find me in app/views/superadmnin/create_super_admin.html.erb</p>
+<h1>Super administrador Cúrsame</h1>
+<p>Puedes ver las instrucciones de creación de super admin accediendo al código qr</p>
+<div style="float:left; padding:5px; margin:10px;">
+<% if Rails.env == "development"%>
+<%= image_tag('ins_s.png')%>
+<%else%>
+<%= image_tag('cme_ins_s.png')%>
+<%end%>
+</div>
+<div style="float:left; padding:3px; margin:5px;">
+<%= form_for ( @user = User.new ) do |f|%>
+
+    <div><%= f.label :email %><br />
+     <%= f.email_field :email %></div>
+
+     <div><%= f.label :password %><br />
+     <%= f.password_field :password %></div>
+
+     <div><%= f.label :password_confirmation %><br />
+     <%= f.password_field :password_confirmation %></div>
+      <div><%= f.label :nombre %><br />
+      <%= f.password_field :first_name %></div>
+       <div><%= f.label :apellidos %><br />
+       <%= f.password_field :last_name %></div></br>
+       
+     <%= f.hidden_field :personal_url, :value => random_string_for_user_url %>
+     <% if current_network %>
+     <div>
+         <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
+         <% 1.times do networks = @user.permissionings.build end %>
+            
+         <%= f.fields_for :permissionings do |permissioning|%>
+
+             <%= permissioning.hidden_field :network_id, :value => current_network.id %>
+             <%= permissioning.hidden_field :role_id, :value => "4"%>
+             
+         <%end%>
+    <%else%>
+         <% 1.times do networks = @user.permissionings.build end %>
+
+          <%= f.fields_for :permissionings do |permissioning|%>
+
+              <%= permissioning.hidden_field :role_id, :value => "1"%>
+
+          <%end%>
+         
+     <%end%> 
+     </div>
+     
+     <%= f.submit "Registrar usuario" %>
+     
+     
+<%end%>
+</div>

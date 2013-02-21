@@ -171,6 +171,7 @@ class CoursesController < ApplicationController
   
   def assigment
     @assignment = Assignment.new(params[:assignment])
+    @assignment.user_id = current_user.id
     @asset = Asset.new(params[:asset])
     @asset.save!
     @assignment.save!
