@@ -1,0 +1,19 @@
+var _=_||{};(function(_){
+try{
+_.El=function(a,b,c){a.timeOfStartCall=(new window.Date).getTime();var d=c||_.Ka,e=a.serverUri||"//www.google.com/tools/feedback",f=d.GOOGLE_FEEDBACK_START;/iphone|ipad|ipod|android|blackberry|mini|windows\sce|windows\sphone|palm/i.test(window.navigator.userAgent)&&(a.mobileWindow=window.open(""));d.GOOGLE_FEEDBACK_START_ARGUMENTS=arguments;f?f.apply(d,arguments):(d=d.document,f=d.createElement("script"),f.src=e+"/load.js",d.body.appendChild(f))};(0,_.Yc)(_.G.H(),"sy15");
+
+(0,_.Uc)(_.G.H(),"sy15");(0,_.Zc)(_.G.H(),"sy15");
+}catch(e){_._DumpException(e)}
+try{
+_.Fl=function(a,b){var c=(0,_.Rf)(a,b);return c&&(0,window.decodeURIComponent)(c.replace(/\+/g," "))};
+_.Gl=function(a,b,c){a=b.ved;b=b.bucket;a?window.google.log("gf","&ved="+(0,window.encodeURIComponent)(a)):window.google.log("gf","");a={productId:_.Hl,locale:window.google.kHL,authuser:window.google.authuser,https:window.google.https(),enableAnonymousFeedback:_.l};var d={ei:window.google.kEI,expi:window.google.kEXPI,si:_.Il};b&&(a.bucket=b);c?(d.q=(0,_.Fl)("q"),d.tier=1,a.enableRating=_.l):d.query=(0,_.Fl)("q");(0,_.El)(a,d)};_.Jl=function(a,b){(0,_.Gl)(a,b,_.n)}; _.lba=function(a,b){(0,_.Jl)(a,b);return _.l};_.mba=function(a,b){(0,_.Gl)(a,b,_.l)};(0,_.Yc)(_.G.H(),"gf");
+_.Hl=196;_.Il=_.n;(0,_.sh)("gf",{init:function(a){_.Hl=a.pid;_.Il=!!a.si;(0,_.ch)("gf",{sf:_.Jl,sfd:_.lba,smf:_.mba})},dispose:function(){var a=window.GOOGLE_FEEDBACK_DESTROY_FUNCTION;a&&a()}});
+(0,_.Uc)(_.G.H(),"gf");(0,_.Zc)(_.G.H(),"gf");
+}catch(e){_._DumpException(e)}
+try{
+(0,_.Yc)(_.G.H(),"wta");
+(0,_.Uc)(_.G.H(),"wta");(0,_.Zc)(_.G.H(),"wta");
+}catch(e){_._DumpException(e)}
+})(_);
+
+// Copyright 2002-2013 Google Inc.
