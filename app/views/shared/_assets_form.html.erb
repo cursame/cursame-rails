@@ -1,21 +1,9 @@
-<%
-   random_id = "#{random}"
-   @asset_unique = "upload-delivery-form-#{random_id}"
-   @label_unique = "upload-labels-#{random_id}"
-   isSingle ||= false
-%>
-
-<div id="<%= @asset_unique %>" class="file-master-input-box">
-  <div id="upload-delivery-element-0" class="file-input-box">
-      <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
-      <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0' %>
-      <% f.password_field :encryption_code_to_access %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
+<%= form_for @asset = Asset.new,:html => { :id => "new_asset"} do |f| %>
+  <div id="new_asset">
+  <%= f.label :image, "Upload paintings:" %>
+  <%= f.file_field :image, multiple: true, name: "painting[image]" %>
   </div>
-</div>
-<div id="<%= @label_unique %>" class="upload-label"></div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
-    });
+<% end %>
+<script>
+  alert('<%= @asset.id%>')
 </script>

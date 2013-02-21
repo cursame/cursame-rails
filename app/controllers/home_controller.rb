@@ -54,15 +54,6 @@ class HomeController < ApplicationController
         @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
       end
 
-      puts '---------------------'
-      puts @comment.commentable_type
-      puts '---------------------'
-      puts @publication.to_yaml
-      puts '---------------------'
-      puts @comment.commentable_id
-      puts '---------------------'
-
-
       respond_to do |format|
         #format.html
         format.js
