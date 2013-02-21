@@ -159,18 +159,29 @@ $(document).ready(function() {
 
 
     /*
-     *===============================================================
-     *==================== Animation - MenuPost ====================
-     *===============================================================
+     *================================================================================
+     *==================== Animation - MenuPost (Click Post Item) ====================
+     *================================================================================
      */
-    var prePostHeight = $('#profile-form-options').height();
-    var prePostMargin = $('#profile-form-options').css('margin');
+    var prePostHeight;
+    var prePostMarginTop;
+    var prePostMarginRight;
+    var prePostMarginBottom;
+    var prePostMarginLeft;
+
     $('#profile-form-options > a').click(function() {
+        prePostHeight = $('#profile-form-options').height();
+        prePostMarginTop = $('#profile-form-options').css('marginTop');
+        prePostMarginRight = $('#profile-form-options').css('marginRight');
+        prePostMarginBottom = $('#profile-form-options').css('marginBottom');
+        prePostMarginLeft = $('#profile-form-options').css('marginLeft');
+
         var hrefClean = $(this).attr('href');
         $(this).parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
             height: '0',
-            margin: '0'
+            marginTop: '0',
+            marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
         });
@@ -200,7 +211,10 @@ $(document).ready(function() {
             $('#profile-form-options').animate({
                 opacity: 1,
                 height: prePostHeight,
-                margin: prePostMargin
+                marginTop: prePostMarginTop,
+                marginLeft: prePostMarginLeft,
+                marginRight: prePostMarginRight,
+                marginBottom: prePostMarginBottom
             }, time);
 
         });
@@ -232,36 +246,31 @@ $(document).ready(function() {
         hoverOutBtn( '.'+$(this).attr('class') );
     });
 
-    var borderShadow;
-    var borderMargin;
-    var iconShadow;
-    var iconMargin;
-    var iconBackgroundColor;
-    var iconBorderColor;
+    var borderShadow,
+        borderMargin,
+        borderMarginTop,
+        borderMarginLeft;
 
-    var borderMarginTop;
-    var borderMarginLeft;
-
-    var iconMarginTop;
-    var iconMarginLeft;
+    var iconShadow,
+        iconMargin,
+        iconBackgroundColor,
+        iconBorderColor,
+        iconMarginTop,
+        iconMarginLeft;
 
     function hoverBtn( obj , borderColor, backgroundColor){
         borderShadow = $(obj +' .border').css('box-shadow');
-        borderMargin = $(obj +' .border').css('margin');
-        iconShadow = $(obj +" .icon").css('box-shadow');
-        iconMargin = $(obj +" .icon").css('margin');
-        iconBorderColor = $(obj +" .icon").css('border-color');
-        iconBackgroundColor = $(obj +" .icon").css('background-color');
-
         borderMarginTop = $(obj +' .border').css('marginTop');
         borderMarginLeft = $(obj +' .border').css('marginLeft');
-
+        iconShadow = $(obj +" .icon").css('box-shadow');
+        iconBorderColor = $(obj +" .icon").css('border-color');
+        iconBackgroundColor = $(obj +" .icon").css('background-color');
         iconMarginTop = $(obj +" .icon").css('marginTop');
         iconMarginLeft = $(obj +" .icon").css('marginLeft');
         console.log( 'init-margin:'+$(obj+" .icon").css('marginRight'));
         $(obj +' .border').animate({
             boxShadow: '0px 0px 0px #FFF',
-            margin:     '3px 0px 3px 28px'
+            marginTop:     '3px'
         }, 200);
 
         $(obj+" .icon").animate({
@@ -276,13 +285,11 @@ $(document).ready(function() {
             boxShadow: borderShadow ,
             marginTop: borderMarginTop,
             marginLeft: borderMarginLeft
-            //margin:     borderMargin
         }, 200);
         $(obj+" .icon").animate({
             boxShadow: iconShadow,
             marginTop: iconMarginTop,
             marginLeft: iconMarginLeft,
-            //margin:     iconMargin,
             backgroundColor: iconBackgroundColor ,
             borderColor: iconBorderColor
         }, 200);

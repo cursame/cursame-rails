@@ -544,7 +544,7 @@
   border: $border-box;
   @include border-radius;
   background: #FFF;
-  margin: 5px 0 10px 55px;
+  margin: 6px 0 0px 55px;
   width: $width-form-post;
   float: left;
 
@@ -558,7 +558,7 @@
     & a{
       display: block;
       height: 100%;
-      width: 120px;
+      width: 145px;
       float: left;
       text-align: center;
       color: #969696;
@@ -579,7 +579,7 @@
     & .border{
       @include circle-obj;
       @include border-circle-obj;
-      margin: 0px 0px 4px 28px;
+      margin: 0px 0px 4px 40px;
     }
     & .message-form-btn{
       & .icon{
@@ -697,7 +697,7 @@
 }
 
 .message-form-area-style{
-  height: 125px;
+  height: 130px;
   background: #FFF;
   position: relative;
   display: none;
