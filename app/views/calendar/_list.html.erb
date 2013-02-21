@@ -21,14 +21,14 @@
         <%end%>
       <%end%>
 
-      <% courses.surveyings.each do |survey|%>
+      <% courses.surveys.each do |survey|%>
            <% survey.events.each do |event|%>
               <div> 
                    <script type='text/javascript'>
                           event_list.push(   
                            {
                            title : '<%= event.title%>',
-                           description: '<%= event.description%>',
+                           description: '<%= event.title%>',
                            start :  '<%= event.starts_at%>',
                            end :  '<%= event.ends_at%>'
 

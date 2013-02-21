@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cursame</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag('jquery-1.8.3.js') %>
+  <%= javascript_include_tag('jquery-ui-1.9.2.custom.js') %>
+  <%= javascript_include_tag('application.js') %>
+  <%= javascript_include_tag('fullcalendar.js') %>
+
+  <%# yield :javascript_includes %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    
+<!-- header -->
+<header id="user_nav" class="topbar" >
+  <div class="center-div">
+     <% if current_network == nil%> 
+       <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
+     <%else%>
+       <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
+     <%end%>
+    <div class="menu-user">
+      <% if user_signed_in? %>
+      	
+          <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
+          <span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
+          <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+                 <%#=  debug current_role %>
+          <% if current_role == "admin"%>
+             <%= link_to "administración", managers_wall_path%>
+           <%end%>
+      <% else %>
+          <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>
+      <% end %>
+    </div>
+    <div id="notifications">    
+      <%= render :partial => '/shared/notifications' %>
+    </div>
+
+
+  </div>
+</header>
+
+
+<div class="center-div">
+  <!-- content -->
+  <div class="container">
+      <div class="super-admin-menu">
+          <ul>
+             <li class="super-admin-list"> <%= link_to "Actividades", superadmnin_activities_path %></li>
+             <li class="super-admin-list"> <%= link_to "Administrar reders", superadmnin_networks_path%></li>
+             <li class="super-admin-list"> <%= link_to "Super admins", super_admin_create_path%></li>
+             <li class="super-admin-list"> <%= link_to "Administrador de cursos", superadmnin_courses_sintetic_view_and_edit_path%></li>
+             <li class="super-admin-list"> <%= link_to "Estadísticas", superadmnin_statistics_path%></li>
+             
+          </ul>
+      </div>
+      <div class="lateral-content">
+    <!-- content -->
+    <%= yield %>
+      </div>
+    <br>
+    <!--<img src="http://placehold.it/920x100/" alt="">  -->
+  </div>
+</div>
+</div>
+</body>
+</html>

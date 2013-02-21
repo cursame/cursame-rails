@@ -1,8 +1,8 @@
 class Discussion < ActiveRecord::Base 
-   has_many :discussions_courses
-   has_many :courses, :through => :discussions_courses
+   has_many :discussions_coursess
+   has_many :courses, :through => :discussions_coursess
+   
    belongs_to :network
-   has_many :comments
    belongs_to :user
   
   

@@ -1,6 +1,7 @@
-<h1>Actividades del sistema</h1>
-<p> Las actividades del sistema están geo localizadas</p>
-<div style="color:#001; font-size:15px;"> Total de actividades <%= @ac %></div>
+<div class="super-admin-header">Actividades del sistema
+    <div class="counter-marquer"><center><%= @ac %></center></div>
+</div>
+<div class="super-admin-descriptions"> Las actividades del sistema están geo localizadas</div></br></br></br>
 <% @activities.each do |activity|%>
  <div style="float:left; color:#fff; height:190px; margin-left:10px; margin-top:25px; padding:5px; background-color:#000;">
  Título:<%= activity.title %></br>
@@ -13,6 +14,8 @@
  Brwoser: <%= activity.browser %></br>
  Versión: <%= activity.version_browser %></br>
  Sistema operativo: <%= activity.computer_plataform %></br>
+ Red: <%= activity.network_id %></br>
+ 
  <% @user = User.find(activity.user_id)%>
 <%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
  </div>
