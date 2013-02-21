@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20130221004321) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
-    t.integer  "netwok_id"
     t.text     "comment_html"
+    t.integer  "network_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -135,7 +135,6 @@ ActiveRecord::Schema.define(:version => 20130221004321) do
     t.integer  "porcent_of_evaluation"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
-    t.integer  "course_id"
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
