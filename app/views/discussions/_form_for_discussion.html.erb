@@ -14,17 +14,7 @@
     <%= f.text_field :title, :placeholder=>'Titulo de la Discusión' %>
     <%= f.text_area :description , :placeholder=>'Descripción', :rows => 4, :cols => 76 %>
 <!--inserte las cajas de texto de manera natural para lograr hacer les pruebas pertinenetes al crear el dropdown es necesario que se cree la validación para este tipo ya que requiere otro tipo de acción en el componente-->
-     <% for course in Course.find(:all) %>
-          <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
-          <% if !@course_member.nil?%>
-              <% if @course_member.owner == true && course.id == @course_member.course_id %>
-                  <li>
-                    <%= check_box_tag 'discussion[course_ids][]', course.id, false %>
-                    <label for="discussion[course_ids][]"><%= course.title %></label>
-                  </li>
-              <% end%>
-          <%end%>
-      <% end %>
+
 
     <div class="submit-area"></div>
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
