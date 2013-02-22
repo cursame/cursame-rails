@@ -67,5 +67,87 @@
      border-bottom:#fff solid 2px;
      font-size:15px;
      padding:5px;
+     
+}
+.oppening_parts{
+    width:600px;
+    height:200px;
+    border-bottom:solid #eee 2px;
+    float:left;
+    overflow:auto;
     
+}
+.course_container{
+   width:170px;
+   height:200px;
+   background-color:#eee; 
+   float:left;
+    
+}
+.heder_courses{
+    color:#2D6477;
+    font-size:18px;
+}
+.body_course{
+    color:#2D6477;
+    font-size:12px;
+    width:100px;
+}
+.holder_admin{
+    
+}
+
+.tareas_super_admin{
+    display:none;
+    
+}
+.survey_super_admin{
+    display:none;
+    
+}
+
+.delivery_course_admin{
+    color:#2D6477;
+    font-size:13px;
+     width:90%;
+     background-color:#eee;
+     padding:7px;
+     margin:10px;
+     
+     
+}
+.secon_title_super_admin{
+    color:#2D6477;
+    font-size:15px;
+    margin:10px;
+}
+.title_delivery_admin{
+       color:#2D6477;
+       font-weight:bold;
+}
+
+.float_right{
+    float:right;
+    background-color:#eee;
+    
+}
+.surveys_super_admin{
+    border:solid #eee 2px;
+    margin-left:10px;
+    margin-top:3px;
+    padding:3px;
+    width:90%;
+    display:none;
+    
+}
+
+.red_line_container{
+   border-bottom:solid #FF8000 2px;
+   width:100%;
+   margin-top:5px;
+}
+
+.body_assignment{
+    color:#2D6477;
+    font-size:12px;
 }

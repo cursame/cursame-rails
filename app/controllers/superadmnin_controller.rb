@@ -41,6 +41,7 @@ class SuperadmninController < ApplicationController
   end
 
   def courses_sintetic_view_and_edit
+    @courses = Course.all
   end
 
   def publicity_modul_controller
