@@ -119,20 +119,37 @@
                    <div class="name"> </div><span><%= delivery.publish_date%></span>
                  </div>
                   <div class="content">
-                     <div class="null-image"></div>
+                    <div class="null-image"></div>
+                    <h1><%= delivery.title %></h1>
 
-                    <div class="end-date"><%= delivery.end_date %></div>
-                    <b>Titulo:</b> <%= delivery.title %>
+                    <div class="end-date-box">
+                      <div class="end-date-label">Entregar antes de:</div>
+                      <div class="end-date">
+                        <%= delivery.end_date.strftime('%d-%h-%Y %l:%M%P') %>
+                      </div>
+                    </div>
 
-                     <%= delivery.description %></br>
-                     <% delivery.areas_of_evaluations.each do |areas|%>
-                        <%= areas.name %>
-                        <%= areas.evaluation_percentage%>
-                     <%end%>
-                     <% delivery.assets.each do|files|%>
-                       <% debug files.file %>
-                         <%= link_to "#{files.file}", "#{files.file}" %>
-                     <%end%>
+                    <div class="description">
+                      <%= delivery.description %>
+                    </div>
+                    <div class="extra-label">Entregar antes de:</div>
+                    <div class="asset-box upload-label">
+                      <% delivery.assets.each do|files|%>
+                          <div class="file-mini-upload">
+                              <% debug files.file %>
+                              <span><%= link_to "#{files.file}", "#{files.file}" %> </span>
+                          </div>
+                      <%end%>
+                    </div>
+                    <div class="extra-label">Entregar antes de:</div>
+                    <div class="evaluation-box">
+                      <% delivery.areas_of_evaluations.each do |areas|%>
+                          <%= areas.name %>
+                          <%= areas.evaluation_percentage%>
+                      <%end%>
+                    </div>
+
+
                   </div> 
                     <div class="footer">
                       <img src="/assets/icons/grey-mini-comment.png" class="icon">
