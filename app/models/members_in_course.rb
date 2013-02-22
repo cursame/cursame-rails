@@ -1,19 +1,27 @@
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
-
+  
+  def assignment
+    
+    
+  end
+  
   def evaluation
-    surveys = Survey.where(:course_id => self.course_id)
+    course = Course.find(self.course_id)
     evaluationSurveys = 0.0
-    surveys.each do |response|
-      user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
+    course.surveys.each do |response|
+      user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id, self.user_id)
+      if (user_survey.nil?) then
+        return 0.0
+      end
       if user_survey.result.nil? then
         user_survey.evaluation
         user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
       end
       evaluationSurveys += user_survey.result
     end
-    evaluationSurveys = evaluationSurveys/surveys.size 
+    evaluationSurveys = evaluationSurveys/course.surveys.size 
     
     assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id) 
     evaluationDeliverys = 0.0
@@ -21,8 +29,6 @@ class MembersInCourse < ActiveRecord::Base
     assignments.each do |response|
       evaluationDeliverys += response.accomplishment.to_f
     end
-
-    course = Course.where(:id => self.course_id).first_or_create
     
     survey_param_evaluation = (course.survey_param_evaluation.to_f)/100.0
     

@@ -139,6 +139,16 @@ class CoursesController < ApplicationController
     end
   end
 
+  def evaluation
+    @course = Course.find(params[:id])
+    @course_member = MembersInCourse.find_by_course_id(@course.id)
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    if @member.owner = true || current_role = "admin"
+    else
+      redirect_to :back
+    end
+  end
+  
   def members
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
