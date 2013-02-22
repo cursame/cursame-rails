@@ -14,7 +14,6 @@
 //= require_raphael
 //= require_morris
 //= require private_pub
-//= require jquery-fileupload/basic
 
 
 // Adding and removing questions answers
