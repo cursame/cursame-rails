@@ -499,6 +499,7 @@
   }
 }
 
+
 // Boton para link <a></a>
 .a-button{
   font-size: 14px;
@@ -537,6 +538,47 @@
     -moz-box-shadow:    inset 0px 1px 1px #2f8999;
     box-shadow:         inset 0px 1px 1px #2f8999;
   }
+}
+
+.green-btn{
+  font-size: 14px;
+  margin: 4px 4px 2px 4px;
+  min-width: 100px;
+  height: 100%;
+  line-height: 23px;
+  float:left;
+  -moz-box-shadow:inset 0px 1px 0px 0px #bde19c, inset 0px -1px 0px #4f9e19;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #bde19c, inset 0px -1px 0px #4f9e19;
+  box-shadow:inset 0px 1px 0px 0px #bde19c, inset 0px -1px 0px #4f9e19;
+
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7bc43b), color-stop(1, #55a71f) );
+  background:-moz-linear-gradient( center top, #7bc43b 5%, #55a71f 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7bc43b', endColorstr='#55a71f');
+  background-color:#55a71f;
+
+  @include border-radius-btn;
+
+  border: 1px solid #68a313;
+  display:inline-block;
+  color:#FFF;//#197d91;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #197d91;//#c3edf3;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #55a71f), color-stop(1, #7bc43b) );
+    background:-moz-linear-gradient( center top, #55a71f 5%, #7bc43b 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#55a71f', endColorstr='#7bc43b');
+    background-color:#7bc43b;
+    color:#FFF;//#197d91;
+    -webkit-box-shadow: inset 0px 1px 1px #2f8999;
+    -moz-box-shadow:    inset 0px 1px 1px #2f8999;
+    box-shadow:         inset 0px 1px 1px #2f8999;
+  }
+
+
+
 }
 
 
