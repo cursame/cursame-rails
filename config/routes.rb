@@ -57,8 +57,13 @@ Cursame30Lb::Application.routes.draw do
   resources :assets
 
   resources :areas_of_evaluations
+  
+  #### manejo de assignments
 
   resources :assignments
+  
+  
+  #### surveys
 
   resources :surveys
 
