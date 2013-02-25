@@ -1,2 +1,186 @@
 <div class="super-admin-header">Estadísticas del sistema</div>
- <div class="super-admin-descriptions">Estadísticas del sistema</div>
+ <div class="super-admin-descriptions">Estadísticas del sistema</div></br>
+ 
+ <div class="super-admin-header">Actividades <%= @activities.count %></div>
+ <div id="activity_chart" style="height: 250px;"></div>
+ 
+<script>var data_activity = []; </script>
+ 
+<% @agroup_activities_by_date.each do |activities|  %>
+ <script>
+    data_activity.push({
+        date: '<%=  activities[0]%>',
+        suma:'<%=  activities[1] %>'
+    }) ;
+ </script>
+<%end%>
+ <script>
+ new Morris.Line({
+   // ID of the element in which to draw the chart.
+   element: 'activity_chart',
+   // Chart data records -- each entry in this array corresponds to a point on
+   // the chart.
+   
+   data: data_activity,
+   // The name of the data record attribute that contains x-values.
+   xkey: 'date',
+   // A list of names of data record attributes that contain y-values.
+   ykeys: ['suma'],
+   // Labels for the ykeys -- will be displayed when you hover over the
+   // chart.
+   labels: ["date",'suma']
+ });
+ </script>
+ <div class="super-admin-header">Tareas <%= @deliverys.count %></div>
+ <div id="delivery_chart" style="height: 250px;"></div>
+ 
+ <script>var data_deliveries = []; </script>
+
+ <% @agroup_deliveries_by_date.each do |deliveries|  %>
+  <script>
+     data_deliveries.push({
+         date: '<%=  deliveries[0]%>',
+         suma:'<%=  deliveries[1] %>'
+     }) ;
+  </script>
+ <%end%>
+  <script>
+  new Morris.Line({
+    // ID of the element in which to draw the chart.
+    element: 'delivery_chart',
+    // Chart data records -- each entry in this array corresponds to a point on
+    // the chart.
+
+    data: data_deliveries,
+    // The name of the data record attribute that contains x-values.
+    xkey: 'date',
+    // A list of names of data record attributes that contain y-values.
+    ykeys: ['suma'],
+    // Labels for the ykeys -- will be displayed when you hover over the
+    // chart.
+    labels: ["date",'suma']
+  });
+  </script>
+  
+  <div class="super-admin-header">Entrega de tareas <%= @assignments.count %></div>
+   <div id="assignmet_chart" style="height: 250px;"></div>
+
+   <script>var data_assignment = []; </script>
+
+   <% @agroup_assignments_by_date.each do |assignment|  %>
+    <script>
+       data_assignment.push({
+           date: '<%=  assignment[0]%>',
+           suma:'<%=  assignment[1] %>'
+       }) ;
+    </script>
+   <%end%>
+    <script>
+    new Morris.Line({
+      // ID of the element in which to draw the chart.
+      element: 'assignmet_chart',
+      // Chart data records -- each entry in this array corresponds to a point on
+      // the chart.
+
+      data: data_assignment,
+      // The name of the data record attribute that contains x-values.
+      xkey: 'date',
+      // A list of names of data record attributes that contain y-values.
+      ykeys: ['suma'],
+      // Labels for the ykeys -- will be displayed when you hover over the
+      // chart.
+      labels: ["date",'suma']
+    });
+    </script>
+    
+    <div class="super-admin-header">Examenes <%= @survey.count %></div>
+       <div id="survey_chart" style="height: 250px;"></div>
+
+       <script>var data_survey = []; </script>
+
+       <% @agroup_survey_by_date.each do |survey|  %>
+        <script>
+           data_survey.push({
+               date: '<%=  survey[0]%>',
+               suma:'<%=  survey[1] %>'
+           }) ;
+        </script>
+       <%end%>
+        <script>
+        new Morris.Line({
+          // ID of the element in which to draw the chart.
+          element: 'survey_chart',
+          // Chart data records -- each entry in this array corresponds to a point on
+          // the chart.
+
+          data: data_survey,
+          // The name of the data record attribute that contains x-values.
+          xkey: 'date',
+          // A list of names of data record attributes that contain y-values.
+          ykeys: ['suma'],
+          // Labels for the ykeys -- will be displayed when you hover over the
+          // chart.
+          labels: ["date",'suma']
+        });
+        </script>
+        
+        <div class="super-admin-header">Entrega de examenes <%= @user_survey_response.count %></div>
+           <div id="survey_charts" style="height: 250px;"></div>
+
+           <script>var data_surveys = []; </script>
+
+           <% @agroup_user_survey_response_by_date.each do |surveys|  %>
+            <script>
+               data_surveys.push({
+                   date: '<%=  surveys[0]%>',
+                   suma:'<%=  surveys[1] %>'
+               }) ;
+            </script>
+           <%end%>
+            <script>
+            new Morris.Line({
+              // ID of the element in which to draw the chart.
+              element: 'survey_charts',
+              // Chart data records -- each entry in this array corresponds to a point on
+              // the chart.
+
+              data: data_surveys,
+              // The name of the data record attribute that contains x-values.
+              xkey: 'date',
+              // A list of names of data record attributes that contain y-values.
+              ykeys: ['suma'],
+              // Labels for the ykeys -- will be displayed when you hover over the
+              // chart.
+              labels: ["date",'suma']
+            });
+            </script>
+        <div class="super-admin-header">Eventos <%= @events.count %></div>
+            <div id="events_charts" style="height: 250px;"></div>
+
+                   <script>var data_events = []; </script>
+
+                   <% @agroup_event_by_date.each do |events|  %>
+                    <script>
+                       data_events.push({
+                           date: '<%=  events[0]%>',
+                           suma:'<%=  events[1] %>'
+                       }) ;
+                    </script>
+                   <%end%>
+                    <script>
+                    new Morris.Line({
+                      // ID of the element in which to draw the chart.
+                      element: 'events_charts',
+                      // Chart data records -- each entry in this array corresponds to a point on
+                      // the chart.
+
+                      data: data_events,
+                      // The name of the data record attribute that contains x-values.
+                      xkey: 'date',
+                      // A list of names of data record attributes that contain y-values.
+                      ykeys: ['suma'],
+                      // Labels for the ykeys -- will be displayed when you hover over the
+                      // chart.
+                      labels: ["date",'suma']
+                    });
+                    </script>

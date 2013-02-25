@@ -17,7 +17,6 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 
-
 // Adding and removing questions answers
 function remove_fields(link, toId) {
     console.log(toId);
