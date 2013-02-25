@@ -1,2 +1,5 @@
-unmask('#new_delivery_form');
-$('#timeline').prepend('<%= escape_javascript(render(:partial => 'deliveries/delivery_tpl', :locals => {:delivery => @delivery}))%>');
+<%if @asset %> 
+	console.log('asset');
+<% else %> //si se trata de un delivery
+	console.log('delivery');
+<% end %> 
