@@ -295,21 +295,6 @@
                        <b><%= assignment.title %></b></br>
                        <%= assignment.brief_description %></br>
                        <%= link_to "Ver entrega de tarea", "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}"%>   
-                          <%= form_for assignment do |assignment_form|%>                        
-                                        
-                               <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
-                                     <b>rubro</b></br>
-                    
-                                      <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>   
-                                       
-                               <%end%>
-                                    <b>Evaluación final</b>
-                                   <%= assignment_form.text_field :accomplishment %></br>
-                                   
-                              
-                               <%= assignment_form.submit%></br>
-                             
-                          <%end%>             
                     <%end%>
                     
                   <% else %>
