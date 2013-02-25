@@ -39,9 +39,14 @@ class AssetsController < ApplicationController
 
   # POST /assets
   # POST /assets.json
-  public
+  #public
   def create
-    @asset = Asset.create(params[:asset])
+    @asset = Asset.new(params[:asset])
+    respond_to do |format|
+      if @asset.save
+        format.js 
+      end
+    end
   end
 
   # PUT /assets/1

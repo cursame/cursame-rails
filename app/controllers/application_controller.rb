@@ -190,7 +190,7 @@ class ApplicationController < ActionController::Base
         @activity.version_browser ="#{browser_version}"
         @activity.computer_plataform = "#{computer_platform}"
         @activity.user_id = current_user.id
-        @activity.network_id = current_network.id
+        #@activity.network_id = 1 #current_network.id
         @activity.save
   end
   

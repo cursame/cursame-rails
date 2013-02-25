@@ -110,16 +110,81 @@ input:-moz-placeholder {
 }
 /*===== Estilos genericos para todo tipo de pulicaciones =========*/
 .publication-box{
+  //line-dashed-mini.png
   clear: both;
   float: left;
   margin-left: 9px;
+  & .upload-label{
+    float: left;
+    background: #f2f7fd;
+    border: $border-high;
+    @include border-radius-btn;
+    width: 568px;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0px 5px 4px 5px;
+    margin-top: 4px;
+    display: block;
+    & .file-mini-upload{
+      //clear:both;
+      float: left;
+      width: 157px;
+      background: url('/assets/icons/file-basic-mini.png') no-repeat 1px 1px;
+      height: 32px;
+      padding: 0px 0px 0px 30px;
+      line-height: 23pt;
+      margin: 4px 0px 0px 0px;
+      cursor: pointer;
+      border: solid 1px transparent;
+      position: relative;
+      & span{
+        float: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 125px;
+      }
+    }
+  }
   & .avatar{
-    margin-left: 3px;
+    margin-left: 4px;
     position: absolute;
     margin-top: 4px;
     margin-right: 8px;
     float: left;
   }
+
+  & .end-date-box{
+    width: 157px;
+    height: 34px;
+    border: #b9c3d4 solid 1px;
+    color: #9696ac;
+    @include border-radius-btn;
+    background: #f7f7f9 url('/assets/icons/end-date-icon.png') no-repeat 0px 6px;
+    font-size: 11px;
+    position: absolute;
+    right: 10px;
+    & .end-date-label {
+      padding: 5px 0px 0px 23px;
+    }
+    & .end-date {
+      padding: 0px 0px 0px 23px;
+      font-weight: bold;
+    }
+  }
+  & .extra-label{
+    float: left;
+    clear: both;
+    color: #9696ac;
+    font-size: 11px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+
+
+
   & .comment-text{
     width: $comment-box;
     height: 100%;
@@ -128,6 +193,43 @@ input:-moz-placeholder {
     border: $border-box;
     border-radius: $border-radius-box;
     margin: 5px 0px 0px 11px;
+
+    &.delivery{
+
+      & h1{
+        float: left;
+        clear: both;
+        font-weight: bold;
+        padding: 8px 0px 0px 0px;
+        margin: 0px 10px;
+      }
+      & .description{
+        float: left;
+        clear: both;
+        margin-top: 3px;
+        margin: 0px 10px;
+      }
+      & .asset-box{
+        float: left;
+        margin: 0px 10px;
+      }
+      & .evaluation-box{
+        float: left;
+        margin: 0px 10px;
+      }
+      & .delivery-box{
+
+        background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
+        width: 100%;
+        float: left;
+        text-align: right;
+      }
+      & .green-btn{
+        float: right;
+        margin-right: 10px;
+      }
+    }
+    //
     & .header{
       line-height: 23pt;
       & .top-null-image{
@@ -141,37 +243,33 @@ input:-moz-placeholder {
         margin-right: 6px;
       }
     }
-     & .title-discusion{
+    & .title-discusion{
       font-size: 18px; 
       font-weight: bold;
       margin-bottom: 10px;
     }
-    
     & .text-discusion{
       padding-left: 10px;
     }
     & .video{
        padding: 10px;
     }
-    
     & .attatchments{
-      
     }
-    
     & .title-homework{
       font-size: 18px; 
       font-weight: bold;
       margin-bottom: 10px;
     }
-    
     & .text-homework{
       padding-left: 10px;
     }
-
+    //
     & .content{
       color: #333;
       font-size: 13px;
-      padding: 6px 10px 5px 10px;
+      padding: 6px 0px 5px 0px;
+      position: relative;
       & .null-image{
         width: 50px;
         height: 23px;
@@ -993,7 +1091,7 @@ background-position: left center;
     padding: 8px 0px 0px 0px;
     clear: both;
   }
-  & .avatar-mini{
+  & .avatar-mini {
     margin: 2px 0px 2px 4px;
   }
 }
@@ -1169,9 +1267,9 @@ background-position: left center;
   }
 }
 .avatar-mini{
-  border: #FFF 2px solid !important;
+  border: #FFF solid 2px;
   border-radius: $border-radius-avatar-mini;
-
+  color: #fff !important;
   -moz-box-shadow:  0px 1px 2px #666;
   -webkit-box-shadow: 0px 1px 2px #666;
   box-shadow: 0px 1px 2px #666;
@@ -1314,6 +1412,8 @@ background-position: left center;
 }
 
 
+/* deprecado by azul.
+
  .upload-labels{
  	width: 550px;
     float: left;
@@ -1339,4 +1439,5 @@ background-position: left center;
       margin: 4px 0px 0px 0px;
     }
   }
+ */
 
