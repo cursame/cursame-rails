@@ -991,6 +991,8 @@
   display:none;
   float: left;
   background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
+  padding: 0px 10px;
+
   & .assignment-delevery-form{
    //background: #000000;
     & input[type=submit]{

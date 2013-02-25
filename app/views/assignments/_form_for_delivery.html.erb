@@ -2,7 +2,7 @@
    <%= f.hidden_field :course_id, :value => @course_id %>
    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
    <%= f.text_field :title, :placeholder=>'Título' %>
-   <%= f.text_area :brief_description, :rows => 6, :cols => 78, :placeholder=>'Escribe un comentario' %>
+   <%= f.text_area :brief_description, :rows => 6, :cols => 78, :placeholder=>'Entrega' %>
    <% @killer = @assignment.assets %>
    <% super_asset = @killer.build %>
    <%= f.submit "Entregar" %>
