@@ -132,9 +132,8 @@
                     <div class="description">
                       <%= delivery.description %>
                     </div>
-                    <div class="extra-label">Entregar antes de:</div>
+                    <div class="extra-label">Archivos:</div>
                     <div class="asset-box upload-label">
-
                       <% delivery.assets.each do|files|%>
                           <div class="file-mini-upload">
                               <% debug files.file %>
@@ -142,7 +141,7 @@
                           </div>
                       <%end%>
                     </div>
-                    <div class="extra-label">Entregar antes de:</div>
+                    <div class="extra-label">Se evalua:</div>
                     <div class="evaluation-box">
                       <div id="chart-delivery-<%= delivery.id %>" style="min-width: 580px; height: 60px; margin: 0 auto"></div>
                       <script type="text/javascript">
@@ -253,37 +252,31 @@
                     <div class="delivery-box">
                       <div class="green-btn">  <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder</a></div></div>   </div>
                     </div>
-
-
-                  </div> 
-                    <div class="footer">
+                  </div>
+                 <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
+                   <% @delivery_id = delivery.id%>
+                   <%= render partial: "assignments/form_for_delivery"%>
+                 </div>
+                  <div class="footer">
                       <img src="/assets/icons/grey-mini-comment.png" class="icon">
                       <img src="/assets/icons/grey-mini-like.png" class="icon">
                       <div class="labels"><%# comment.comments.count %>Comentarios</div>
                       <% if @member.owner == true %>
                         <div class="labels"><div id="open-close-lo<%= delivery.id %>"><a>Respuestas</a></div></div>
                       <%else%>
-                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>  
+                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>
                       <%end%>
-                   
-                      
-                       </div>              
-        <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-<%= delivery.id %>">
-            <% @delivery_id = delivery.id%>
-                
-              <%= render partial: "assignments/form_for_delivery"%>
+                  </div>
 
-       </div>
 
        <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
                 <% @count_deliveries_assignments = delivery.assignments.count %>
                 <%= @count_deliveries_areas_of_evaluation = delivery.areas_of_evaluation.count %>
-                    <% if @count_deliveries_areas_of_evaluation > 0%>
-                       
-                    <%else%>
-                      <b>A esta tarea no se le han asignado áreas de evaluación </b></br>
-                    <%end%>
 
+                <% if @count_deliveries_areas_of_evaluation > 0%>
+                <%else%>
+                  <b>A esta tarea no se le han asignado áreas de evaluación </b></br>
+                <%end%>
                 <% if @count_deliveries_assignments > 0%>
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
@@ -293,33 +286,37 @@
                                         
                                <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
                                      <b>rubro</b></br>
-                    
-                                      <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>   
-                                       
+                                      <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
                                <%end%>
                                     <b>Evaluación final</b>
                                    <%= assignment_form.text_field :accomplishment %></br>
-                                   
-                              
                                <%= assignment_form.submit%></br>
                              
                           <%end%>             
                     <%end%>
-                    
                   <% else %>
                     <b>No se han encontrado respuestas a esta tarea</b>
                 <% end %>
 
       </div>
          <script>
+
+
              $("#open-close-<%= delivery.id %>").click(function () {
-                 $('#entrega-<%= delivery.id %>').toggle("slow");
+                $('#entrega-<%= delivery.id %>').toggle( "slow" );
+                 $(this).toggle("slow");
+                 $(this).parent().parent().toggle("slow");
+                 $('#entrega-<%= delivery.id %>>form>#cancel-post-form').click(function(){
+                     $("#open-close-<%= delivery.id %>").show();
+                     $("#open-close-<%= delivery.id %>").parent().parent().show();
+                     $('#entrega-<%= delivery.id %>').hide();
+                 });
+             });
 
-             });  
-              $("#open-close-lo<%= delivery.id %>").click(function () {
-                  $('#entrega-lo<%= delivery.id %>').toggle("slow");
+             $("#open-close-lo<%= delivery.id %>").click(function () {
+                $('#entrega-lo<%= delivery.id %>').toggle("slow");
 
-              });      
+             });
           </script>
       </div>
   </div>
