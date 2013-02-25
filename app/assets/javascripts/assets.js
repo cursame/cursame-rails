@@ -4,6 +4,7 @@ $(function(){
 	$('#new_assets').fileupload({
 		dataType: "script",
 		add:function(e,data){
+			console.log(data);
 			data.context = $(tmpl("template-upload",data.files[0]));
 			$('#new_assets').append(data.context);
 			data.submit();

@@ -1,1 +1,2 @@
-alert(3423);
+alert('<%= @asset.id%>');
+$('#new_delivery_form').append('<input type="hidden" name="files[]" value="<%= @asset.id%>">');
