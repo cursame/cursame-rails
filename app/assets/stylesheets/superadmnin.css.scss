@@ -2,19 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .super-admin-menu{
-    background-image: linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
-    background-image: -o-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
-    background-image: -moz-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
-    background-image: -webkit-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
-    background-image: -ms-linear-gradient(bottom, rgb(62,66,52) 10%, rgb(97,117,117) 55%);
+    background-image: linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -o-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -moz-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -webkit-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -ms-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
 
     background-image: -webkit-gradient(
     	linear,
     	left bottom,
     	left top,
-    	color-stop(0.1, rgb(62,66,52)),
-    	color-stop(0.55, rgb(97,117,117))
-    ); 
+    	color-stop(0.1, rgb(192,182,207)),
+    	color-stop(0.55, rgb(217,216,230))
+    );
     position:absolute;
       top:0;
       left:0;
