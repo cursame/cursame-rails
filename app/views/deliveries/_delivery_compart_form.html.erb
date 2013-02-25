@@ -14,8 +14,7 @@
             <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
 
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
-              
+        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>              
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
@@ -39,8 +38,8 @@ $(document).ready(function() {
     dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
   });
 
-  $("#create_delivery_form").on('click',function(){
-    mask('#new_delivery_form','Cargando ...');
-  });
+  // $("#create_delivery_form").on('click',function(){
+  //   mask('#new_delivery_form','Cargando ...');
+  // });
 });
 </script>
