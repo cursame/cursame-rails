@@ -73,6 +73,6 @@ class HomeController < ApplicationController
   protected
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
-    @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id)
+    @comment = commentable.comments.create(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
   end
 end

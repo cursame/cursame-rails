@@ -15,6 +15,7 @@
 //= require_morris
 //= require private_pub
 //= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 
 
 // Adding and removing questions answers
