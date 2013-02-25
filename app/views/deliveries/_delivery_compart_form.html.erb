@@ -14,41 +14,32 @@
             <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
         <% end %>
 
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
-             
-              <% 1.times do
-              
-              assets = @delivery.assets.build
-                 @asset = Asset.new
-                 end   %>
-              
-        <%= f.fields_for :assets do |asset| %>
-            <%= render :partial => "shared/assets_form", :locals => { :f => asset } %>
-        <%end%>
+        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>              
+        <%#= f.fields_for :assets do |asset| %>
+            <%#= render :partial => "shared/assets_form" %>
+        <%#end%>
         <div class="submit-area"></div>
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'create_delivery_form'%>
 
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
 
-
-
-
-        <script type="text/javascript">
-        $(document).ready(function() {
-            $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
-                inline: false,
-                minDate: 0,
-                showOtherMonths: true,
-                dateFormat: 'dd/mm/yy',
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-            });
-
-            $("#create_delivery_form").on('click',function(){
-              mask('#new_delivery_form','Cargando ...');
-            });
-        });
-      </script>
     <% end %>
 <%#end%>
+<%= render :partial => "shared/assets_form" %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
+    inline: false,
+    minDate: 0,
+    showOtherMonths: true,
+    dateFormat: 'dd/mm/yy',
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+  });
+
+  // $("#create_delivery_form").on('click',function(){
+  //   mask('#new_delivery_form','Cargando ...');
+  // });
+});
+</script>

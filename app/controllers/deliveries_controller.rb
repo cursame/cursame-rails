@@ -1,19 +1,19 @@
 class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
-   helper_method :condocourse
-   before_filter :filter_protection, :only => [:show, :edit]
-   before_filter :protection_to_index, :only => [:index]
-   helper_method :assigment
+  helper_method :condocourse
+  before_filter :filter_protection, :only => [:show, :edit]
+  before_filter :protection_to_index, :only => [:index]
+  helper_method :assigment
   def index
     @deliveries = Delivery.all
-     @delivery = Delivery.new
+    @delivery = Delivery.new
     @course_accces = current_course
-     @areas_of_evaluation = AreasOfEvaluation.new
-       condocourse
+    @areas_of_evaluation = AreasOfEvaluation.new
+    condocourse
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
-      areas_of_evaluations = @delivery.areas_of_evaluations.build
-      
+    areas_of_evaluations = @delivery.areas_of_evaluations.build
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @deliveries }
@@ -22,20 +22,20 @@ class DeliveriesController < ApplicationController
   
   def condocourse
    @course = current_course.id    
-  end
-  
+ end
+
 
   # GET /deliveries/1
   # GET /deliveries/1.json
   def show
     @delivery = Delivery.find(params[:id])
-     @assignment = Assignment.new(params[:assignment])
-     @assignment.save
-     @asset = Asset.new
-        
-      1.times do
-          assets = @assignment.assets.build
-      end
+    @assignment = Assignment.new(params[:assignment])
+    @assignment.save
+    @asset = Asset.new
+
+    1.times do
+      assets = @assignment.assets.build
+    end
     @validation_member = @delivery.courses
     respond_to do |format|
       format.html # show.html.erb
@@ -65,22 +65,27 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.new(params[:delivery])
     @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
     @compart_assets = CompartAsset.new(params[:compart_assets])
-    @assignment = Assignment.new(params[:assignment])
-    @asset = Asset.new(params[:asset])
-    @asset.save!
+    @assignment = Assignment.new(params[:assignment])   
     
     respond_to do |format|
       if @delivery.save
-            @typed = "Delivery"
+        @typed = "Delivery"
         ####### despues de guardar se crea la notificación de actividad con geo localización 
-          activation_activity
+        activation_activity
+         #actualizamos los assets del delivery
+        if(params[:files])
+          params[:files].each do |asset_id|
+            @asset = Asset.find(asset_id)
+            @delivery.assets.push(@asset)
+          end
+        end
         
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
         format.js 
         
         alfredot_rifa_free_pro_forever
-         
+
       else
         format.html { render action: "new" }
         format.json { render json: @delivery.errors, status: :unprocessable_entity }
@@ -120,45 +125,45 @@ class DeliveriesController < ApplicationController
   end
   
   def protection_to_index
-       @course = Course.find(params[:id])
-       @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)       
-      if @member
-       if @member.accepted
-          respond_to do |format|
+   @course = Course.find(params[:id])
+   @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)       
+   if @member
+     if @member.accepted
+      respond_to do |format|
              format.html # show.html.erb
              format.json { render json: @course }
            end
-       else
+         else
           redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-       end
-      else
-          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-      end
-    
-  end
-  
-  def filter_protection
-      @delivery = Delivery.find(params[:id])
-       @validation_member = @delivery.courses
-        @delivery.courses.each do |dc|
-            @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
-             if @member 
-                break 
-             else
-             #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-             end       
         end
-    if @member
-     if @member.accepted
-        respond_to do |format|
+      else
+        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+      end
+
+    end
+
+    def filter_protection
+      @delivery = Delivery.find(params[:id])
+      @validation_member = @delivery.courses
+      @delivery.courses.each do |dc|
+        @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
+        if @member 
+          break 
+        else
+             #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+           end       
+         end
+         if @member
+           if @member.accepted
+            respond_to do |format|
            format.html # show.html.erb
            format.json { render json: @course }
          end
-     else
+       else
         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-     end
+      end
     else
-        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+      redirect_to courses_path, :notice => "no has sido aceptado en este curso"
     end
   end
   
@@ -167,24 +172,24 @@ class DeliveriesController < ApplicationController
     @asset = Asset.new(params[:asset])
     
     @assignment.save!
-      puts "**************"
-      puts "assignment save "
-      puts "**************"
-      
-     if @assignment.save!
-       @response_to_the_evaluation = ResponseToTheEvaluation.new
-            puts "**************"
-           @delivery_from_assignment = Delivery.find(@assignment.delivery)
-            puts  @delivery_from_assignment
-           
-                @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
-                  @response_to_the_evaluation.name = generate_rubres.name
-                  @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-                  @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
-                  @response_to_the_evaluation.assignment_id = @assignment.id
-                  @response_to_the_evaluation.create              
-                end
-      else
-      end
+    puts "**************"
+    puts "assignment save "
+    puts "**************"
+
+    if @assignment.save!
+     @response_to_the_evaluation = ResponseToTheEvaluation.new
+     puts "**************"
+     @delivery_from_assignment = Delivery.find(@assignment.delivery)
+     puts  @delivery_from_assignment
+
+     @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
+      @response_to_the_evaluation.name = generate_rubres.name
+      @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+      @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
+      @response_to_the_evaluation.assignment_id = @assignment.id
+      @response_to_the_evaluation.create              
+    end
+  else
   end
+end
 end

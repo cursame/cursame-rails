@@ -57,7 +57,9 @@
         <p class="title-homework"><%= name %></p>
         <p class="text-homework"><%= content %></p>
         <div class="upload-labels" style="display: block;">
-          <div class="file-mini-upload">Captura de pantalla 2013-01-31 a la(s) 12.48.05.JPG</div>
+          <% post.assets.each do |commentt| %>
+            <div class="file-mini-upload">Captura de pantalla 2013-01-31 a la(s) 12.48.05.JPG</div>
+          <%end%>
         </div>
         <%end%>
 

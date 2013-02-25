@@ -6,6 +6,9 @@ class Network < ActiveRecord::Base
   has_many :deliveries
   has_many :courses
   has_many :comments
+  #walls
+  has_many :walls
+  
   #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
   
   validates_presence_of   :name, :subdomain, :population
