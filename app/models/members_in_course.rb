@@ -36,9 +36,10 @@ class MembersInCourse < ActiveRecord::Base
     
     assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id) 
     evaluationDeliverys = 0.0
-    
-    assignments.each do |response|
-      evaluationDeliverys += response.accomplishment.to_f
+    if !assignments.nil? then
+      assignments.each do |response|
+        evaluationDeliverys += response.accomplishment.to_f
+      end
     end
     return evaluationDeliverys.to_i
   end

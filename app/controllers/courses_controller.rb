@@ -138,17 +138,6 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  
-  def evaluation
-    @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-    if @member.owner = true || current_role = "admin"
-    else
-      redirect_to :back
-    end
-    
-  end
   
   def members
     @course = Course.find(params[:id])
@@ -157,6 +146,18 @@ class CoursesController < ApplicationController
     if @member.owner = true || current_role = "admin"
     else
       redirect_to :back
+    end
+  end
+
+  
+  def evaluation
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    if !@member.nil? then
+      if @member.owner = true || current_role = "admin"
+      else
+        redirect_to :back
+      end
     end
   end
 

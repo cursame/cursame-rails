@@ -1,19 +1,23 @@
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
-<%if @member.owner then%>
-<h3>Calificaciones del Curso:</h3>
-	<%@course.members_in_courses.each do |member| %>
-		<%user = User.find_by_id(member.user_id)%>
-		<% if !member.owner then%>
-			<%table = member.doTableCourse%>
-			<h4><%=user.email%></h4>
-			</br>
-			<table border="1" width="500" cellpadding="3" cellspacing="3">
-			<tr>
-				<td>Tarea</td>
-				<td>Entrega</td>
-				<td>Rubros</td>
+	<%if @member.nil?%>
+		<h3>No eres parte del grupo!</h3>
+	<%elsif !@member.accepted%>
+		<h3>No has sido aceptado en el grupo!</h3>
+	<%elsif @member.owner%> 
+	<h3>Calificaciones del Curso:</h3>
+		<%@course.members_in_courses.each do |member| %>
+			<%user = User.find_by_id(member.user_id)%>
+			<% if !member.owner then%>
+				<%table = member.doTableCourse%>
+				<h4><%=user.email%></h4>
+				</br>
+				<table border="1" width="500" cellpadding="3" cellspacing="3">
+					<tr>
+						<td>Tarea</td>
+						<td>Entrega</td>
+						<td>Rubros</td>
 				<td>Calificacion</td>
-			</tr>
+				</tr>
 				<%for i in 0...table[0][0].size%>
 				<%delivery = table[0][0][i]%>
 				<%assignment = table[0][1][i]%>
@@ -160,4 +164,4 @@
 			</tr>
 		</table>
 		</br>
-<%end%>
+		<%end%>
