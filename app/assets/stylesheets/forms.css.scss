@@ -97,7 +97,7 @@
     font-weight: 300;
     padding: 0px 5px 4px 5px;
     margin-top: 4px;
-    display: none;
+    display: block;
     & .file-mini-upload{
       //clear:both;
       float: left;
@@ -741,6 +741,13 @@
       padding-top: 5px;
       float: left;
       width: 100%;
+    }
+  }
+  & .uploader-form{
+
+    & .file-input-box{
+      position: absolute;
+      left: 155px;
     }
   }
 }

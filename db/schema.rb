@@ -15,18 +15,14 @@ ActiveRecord::Schema.define(:version => 20130225221319) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
-    t.string   "activitye_type"
-    t.integer  "activitye_id"
+    t.string   "activity_type"
+    t.integer  "activable"
+    t.string   "place"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "ip_address"
-    t.string   "browser"
-    t.string   "version_browser"
-    t.string   "computer_plataform"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "network_id"
   end
 
@@ -233,15 +229,6 @@ ActiveRecord::Schema.define(:version => 20130225221319) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "notificacions", :force => true do |t|
-    t.integer  "notificator_id"
-    t.string   "notificator_type"
-    t.integer  "user_id"
-    t.string   "kind"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
@@ -281,12 +268,6 @@ ActiveRecord::Schema.define(:version => 20130225221319) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
-  end
-
-  create_table "recipes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
