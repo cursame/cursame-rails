@@ -20,6 +20,11 @@ ul{
   list-style-type: none;
 }
 
+a {
+  color: #00B1C5;
+  text-decoration: none;
+}
+
 .clear{
   clear:both;
 }
@@ -218,7 +223,6 @@ input:-moz-placeholder {
         margin: 0px 10px;
       }
       & .delivery-box{
-
         background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
         width: 100%;
         float: left;
@@ -271,7 +275,7 @@ input:-moz-placeholder {
       padding: 6px 0px 5px 0px;
       position: relative;
       & .null-image{
-        width: 50px;
+        width: 60px;
         height: 23px;
         float: left;
       }
@@ -417,7 +421,7 @@ input:-moz-placeholder {
       font-size: 13px;
       padding: 6px 10px 5px 10px;
       & .null-image{
-        width: 50px;
+        width: 60px;
         height: 23px;
         float: left;
       }

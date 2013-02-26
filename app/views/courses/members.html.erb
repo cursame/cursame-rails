@@ -2,12 +2,15 @@
 
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <% if  @course.members_in_courses.count > 0 %>
+</br>
+<h3>Pendientes de Aprobacion: <%= @course.pendings%></h3>
+
 <%@course.members_in_courses.each do |member|  %>
         <% @members = User.find_by_id(member.user_id) %>
 
         <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
        <!--coloca la imagen y el nombre-->
-       <%= image_tag(@members.avatar.modern)%><h3><%= @members.name %></h3>
+       <%= image_tag(@members.avatar.modern)%><h3><%= @members.email %></h3>
        
         <%if @member.accepted != true%>
            <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->

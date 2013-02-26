@@ -14,7 +14,7 @@ class MembersInCoursesController < ApplicationController
   # GET /members_in_courses/1.json
   def show
     @members_in_course = MembersInCourse.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @members_in_course }
