@@ -6,6 +6,7 @@ class Network < ActiveRecord::Base
   has_many :deliveries
   has_many :courses
   has_many :comments
+  has_many :surveys
   #walls
   has_many :walls
   

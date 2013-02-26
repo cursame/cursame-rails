@@ -39,7 +39,7 @@ class Course < ActiveRecord::Base
     if self.public_status == 'public'
       User.all.each do |u|
         Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'          
-        Wall.create :user => u, :publication => self
+        Wall.create :user => u, :publication => self, :network => self.network
       end
     end  
   end
