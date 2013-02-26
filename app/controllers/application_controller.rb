@@ -170,9 +170,9 @@ class ApplicationController < ActionController::Base
   ###### comandos de generación de actividades
   def activation_activity
       @activity = Activity.new
-        @activity.title =  @delivery.title
-        @activity.activitye_id= @delivery.id
-        @activity.activitye_type =   @typed
+        @activity.title =  @az.title
+        @activity.activitye_id= @az.id
+        @activity.activitye_type =  @typed
         @activity.ip_address = request.ip
         
         city = request.location.city

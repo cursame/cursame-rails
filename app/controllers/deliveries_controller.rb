@@ -70,6 +70,7 @@ class DeliveriesController < ApplicationController
     respond_to do |format|
       if @delivery.save
         @typed = "Delivery"
+        @az =  @delivery
         ####### despues de guardar se crea la notificación de actividad con geo localización 
         activation_activity
          #actualizamos los assets del delivery
