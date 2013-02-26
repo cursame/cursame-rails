@@ -51,7 +51,7 @@ hgroup, nav, section {
 }
 
 a, ins, del {
-    text-decoration: none
+    text-decoration: none ;
 }
 
 q, blockquote {

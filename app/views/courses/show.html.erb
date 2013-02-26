@@ -119,20 +119,148 @@
                    <div class="name"> </div><span><%= delivery.publish_date%></span>
                  </div>
                   <div class="content">
-                     <div class="null-image"></div>
+                    <div class="null-image"></div>
+                    <h1><%= delivery.title %></h1>
 
-                    <div class="end-date"><%= delivery.end_date %></div>
-                    <b>Titulo:</b> <%= delivery.title %>
+                    <div class="end-date-box">
+                      <div class="end-date-label">Entregar antes de:</div>
+                      <div class="end-date">
+                        <%= delivery.end_date.strftime('%d-%h-%Y %l:%M%P') %>
+                      </div>
+                    </div>
 
-                     <%= delivery.description %></br>
-                     <% delivery.areas_of_evaluations.each do |areas|%>
-                        <%= areas.name %>
-                        <%= areas.evaluation_percentage%>
-                     <%end%>
-                     <% delivery.assets.each do|files|%>
-                       <% debug files.file %>
-                         <%= link_to "#{files.file}", "#{files.file}" %>
-                     <%end%>
+                    <div class="description">
+                      <%= delivery.description %>
+                    </div>
+                    <div class="extra-label">Entregar antes de:</div>
+                    <div class="asset-box upload-label">
+
+                      <% delivery.assets.each do|files|%>
+                          <div class="file-mini-upload">
+                              <% debug files.file %>
+                              <span><%= link_to "#{files.file}", "#{files.file}" %> </span>
+                          </div>
+                      <%end%>
+                    </div>
+                    <div class="extra-label">Entregar antes de:</div>
+                    <div class="evaluation-box">
+                      <div id="chart-delivery-<%= delivery.id %>" style="min-width: 580px; height: 60px; margin: 0 auto"></div>
+                      <script type="text/javascript">
+                          $(function () {
+                              var chart;
+                              $(document).ready(function() {
+                                  chart = new Highcharts.Chart({
+                                      chart: {
+                                          renderTo: 'chart-delivery-<%= delivery.id %>',
+                                          type: 'bar',
+                                          //spacingTop: -10,
+                                          marginBottom: 25,
+                                          //lineHeight: 20,
+                                          //height: 60,
+                                          //ignoreHiddenSeries: false,
+                                          //spacingBottom: 0,
+                                          spacingTop: -5
+
+                                      },
+                                      credits : {
+                                          enabled : false
+                                      },
+                                      title: {
+                                          text: ''
+                                      },
+                                      xAxis: {
+                                          //categories: ['ortografia', 'desarrollo'],
+                                          lineWidth: 0,
+                                          minorGridLineWidth: 0,
+                                          lineColor: 'transparent',
+                                          labels: {
+                                              enabled: false
+                                          },
+                                          minorTickLength: 0,
+                                          tickLength: 0
+                                      },
+                                      yAxis: {
+                                          min: 0,
+                                          labels: {
+                                              enabled: false
+                                          },
+                                          gridLineWidth: 0,
+                                          reversed: true,
+                                          title: {
+                                              text: ''
+                                          }
+                                      },
+                                      tooltip: {
+                                          formatter: function() {
+                                              return ''+
+                                                      this.series.name +': '+ this.y +' ('+ Math.round(this.percentage) +'%)';
+                                          }
+                                      },
+                                      plotOptions: {
+                                          series: {
+                                              stacking: 'percent'
+                                          }
+                                      },
+                                      legend: {
+                                          reversed: false,
+                                          style: {
+                                              fontFamily: 'monospace',
+                                              color: "#fff"
+                                          },
+                                          backgroundColor: '#f7f7f9',
+                                          layout: 'horizontal',
+                                          floating: true,
+                                          align: 'center',
+                                          verticalAlign: 'bottom',
+                                          y: 10,
+                                          shadow: false,
+                                          border: 1,
+                                          borderRadius: 3,
+                                          borderWidth: 1,
+                                          lineHeight: 10,
+                                          borderColor: '#bbbbd4' ,
+                                          itemStyle: {
+                                              fontSize: '10px',
+                                              color: '#9696ac'
+                                          },
+                                          itemHoverStyle: {
+                                              color: '#72728e',
+                                              fontSize: '10px'
+                                          }
+                                      },
+                                      series: [
+                                      <% @i=1 %>
+                                      <% delivery.areas_of_evaluations.each do |areas| %>
+                                          {
+                                              name: '<%= areas.name %>',
+                                              data: [<%= areas.evaluation_percentage%>],
+                                              index : <%= @i %>
+                                          },
+                                          <% @i=@i+1%>
+                                      <% end %>
+                                      ],
+                                      exporting: {
+                                          buttons: {
+                                              printButton:{
+                                                  enabled:false
+                                              },
+                                              exportButton: {
+                                                  enabled:false
+                                              }
+                                          }
+                                      }
+
+                                  });
+                              });
+
+                          });
+                      </script>
+                    </div>
+                    <div class="delivery-box">
+                      <div class="green-btn">  <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder</a></div></div>   </div>
+                    </div>
+
+
                   </div> 
                     <div class="footer">
                       <img src="/assets/icons/grey-mini-comment.png" class="icon">
@@ -166,22 +294,7 @@
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
                        <%= assignment.brief_description %></br>
-                           
-                          <%= form_for assignment do |assignment_form|%>                        
-                                        
-                               <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
-                                     <b>rubro</b></br>
-                    
-                                      <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>   
-                                       
-                               <%end%>
-                                    <b>Evaluación final</b>
-                                   <%= assignment_form.text_field :accomplishment %></br>
-                                   
-                              
-                               <%= assignment_form.submit%></br>
-                             
-                          <%end%>             
+                       <%= link_to "Ver entrega de tarea", "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}"%>   
                     <%end%>
                     
                   <% else %>
