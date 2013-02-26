@@ -6,6 +6,9 @@ class MembersInCourse < ActiveRecord::Base
     #return Delivery.where()
   end
   
+  #
+  #
+  #
   def evaluationSurveys
     course = Course.find(self.course_id)
     evaluationSurveys = 0.0
@@ -24,6 +27,9 @@ class MembersInCourse < ActiveRecord::Base
     return evaluationSurveys.to_i 
   end
   
+  #
+  # 
+  #
   def evaluationDeliverys
     course = Course.find(self.course_id)
     evaluationSurveys = evaluationSurveys 
@@ -100,6 +106,9 @@ class MembersInCourse < ActiveRecord::Base
     return table_member
   end
   
+  #
+  # Manda a llamar los dos metodos anteriores para unirlos en un arreglo
+  #
   def doTableCourse
     table_course = Array.new
     table_course[0] = doTableDeliveries

@@ -2,6 +2,9 @@
 
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <% if  @course.members_in_courses.count > 0 %>
+</br>
+<h3>Pendientes de Aprobacion: <%= @course.pendings%></h3>
+
 <%@course.members_in_courses.each do |member|  %>
         <% @members = User.find_by_id(member.user_id) %>
 
