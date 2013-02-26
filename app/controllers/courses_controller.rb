@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
-  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members] 
+  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   filter_access_to :show
-  
+
   def index
     @courses = Course.where(:network_id => current_network.id).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
@@ -12,7 +13,7 @@ class CoursesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @courses }
     end
-    
+
   end
 
   # GET /courses/1
@@ -46,12 +47,12 @@ class CoursesController < ApplicationController
 
     #@course_count = Course.count
     #@courses = current_user.members_in_courses.limit(7)
-    
+
 
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
 
-  
+
 
     respond_to do |format|
           format.html # show.html.erb
@@ -104,7 +105,7 @@ class CoursesController < ApplicationController
         #format.json { render json: @course.errors, status: :unprocessable_entity }
         format.html { redirect_to courses_url }
         format.js
-        
+
       end
     end
   end
@@ -147,11 +148,23 @@ class CoursesController < ApplicationController
       redirect_to :back
     end
   end
+
   
+  def evaluation
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    if !@member.nil? then
+      if @member.owner = true || current_role = "admin"
+      else
+        redirect_to :back
+      end
+    end
+  end
+
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    if @member 
+    if @member
      if @member.accepted
         respond_to do |format|
            format.html # show.html.erb
@@ -164,11 +177,11 @@ class CoursesController < ApplicationController
         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
     end
   end
-  
+
   def deliveries
     @course = Course.find(params[:id])
   end
-  
+
   def assigment
     @assignment = Assignment.new(params[:assignment])
     @assignment.user_id = current_user.id
@@ -178,13 +191,13 @@ class CoursesController < ApplicationController
       puts "**************"
       puts "assignment save "
       puts "**************"
-      
+
      if @assignment.save!
             puts "************************************************************************"
-            
+
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
-           
+
                 @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
                   @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
                   @response_to_the_evaluation.name = generate_rubres.name
@@ -192,21 +205,21 @@ class CoursesController < ApplicationController
                   @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
                   @response_to_the_evaluation.assignment_id = @assignment.id
                   @response_to_the_evaluation.save!
-                  
+
                    puts "******** se han generado las areas de evaluacion ************"
                 end
-                
+
                     @typed = "Assignmet"
-                  ####### despues de guardar se crea la notificación de actividad con geo localización 
+                  ####### despues de guardar se crea la notificación de actividad con geo localización
                     activation_activity
-              
+
              if @response_to_the_evaluation.save
              redirect_to :back
              else
              end
-                
+
       else
       end
   end
-     
+
 end

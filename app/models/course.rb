@@ -70,7 +70,15 @@ class Course < ActiveRecord::Base
       @users = User.find(@ids)
   end
   
-  
+  def pendings
+    count = 0
+    self.members_in_courses.each do |member|
+      if !member.accepted then
+        count += 1
+      end
+    end
+    return count
+  end
 
   def user
     self.users 

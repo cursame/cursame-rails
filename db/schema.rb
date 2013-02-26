@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20130225221319) do
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "porcent_of_evaluation"
+    t.integer  "course_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.integer  "user_id"
