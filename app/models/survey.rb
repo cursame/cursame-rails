@@ -7,6 +7,7 @@ class Survey < ActiveRecord::Base
   has_many :compart_assets
   has_many :assets, :through => :compart_assets
   has_many :events, as: :schedule
+  belongs_to :network
 
   belongs_to :user
   has_many :activities, as: :activitye
@@ -21,7 +22,7 @@ class Survey < ActiveRecord::Base
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
     User.all.each do |u|
       Notification.create :user => u, :notificator => self, :kind => 'new_survey_on_course'          
-      Wall.create :user => u, :publication => self
+      Wall.create :user => u, :publication => self, :network => self.network
     end      
   end
   

@@ -52,7 +52,7 @@ class Delivery < ActiveRecord::Base
             if u.owner != true
               Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'          
             end
-            Wall.create :user => user, :publication => self
+            Wall.create :user => user, :publication => self, :network => course.network
           end
         end
        end      
