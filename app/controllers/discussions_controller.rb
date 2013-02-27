@@ -41,7 +41,8 @@ class DiscussionsController < ApplicationController
   # POST /discussions.json
   def create
     @discussion = Discussion.new(params[:discussion])
-    @discussion.user = current_user    
+    @discussion.user = current_user 
+    @discussion.network = current_network    
     respond_to do |format|
       if @discussion.save
         @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)

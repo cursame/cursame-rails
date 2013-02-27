@@ -20,6 +20,7 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
+
     //     var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
     //
 
@@ -27,11 +28,32 @@
             $('#new_assets').fileupload({
                 dataType: "script",
                 add:function(e,data){
-                    console.log(data);
+                    $('<%= labelIdBox%>').show();
                     data.context = $(tmpl("template-upload",data.files[0]));
+
+                    data.context.find('.trash').click(function() {
+                        $(this).parent().remove(); //se remueve la etiqueta
+
+                        if($('<%= labelIdBox%>').children().length == 0)
+                            $('<%= labelIdBox%>').hide();
+                    });
+
                     //console.log($('#unica').attr('id'));//.html('hola');//data.context);
                     $('<%= labelIdBox%>').append(data.context);
-                    data.submit();
+                    data.submit()
+                        .success(function (result, textStatus, jqXHR) {
+                            data.context.find('.progress-bar').hide();
+                        })
+                        .error(function (jqXHR, textStatus, errorThrown) {
+                            data.context.find('.trash').remove();
+                            data.context.find('span').css("width", "155px")
+                                    .css('line-height','27pt')
+                                    .css('font-size','11px')
+                                    .css('font-weight','bold')
+                                    .html('Error: Archivo no soportado');
+                            data.context.find('.progress-bar').hide();
+
+                        });
                 },
                 progress:function(e,data){
                     if(data.context){
@@ -47,7 +69,8 @@
 
 <script id="template-upload" type="text/x-tmpl">
   <div class="file-mini-upload">
-    {%=o.name%}
-    <div class="progress"><div class="bar" style="width: 0%"></div></div>
+    <span>{%=o.name%}</span>
+    <div class="trash"></div>
+    <div class="progress-bar"><div class="bar" style="width: 0%"></div></div>
   </div>
 </script>

@@ -40,11 +40,25 @@ class NetworksController < ApplicationController
 
     @network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
-    @wall = Wall.order(' created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    #@wall = Wall.where(:network_id => current_network.id).order(' created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    @search = params[:search]
+    @wall = current_network.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
 
-    if request.xhr?
-      sleep(2) # make request a little bit slower to see loader :-)
-      render :partial => '/shared/publications', :locals => {:wall => @wall}
+    puts '*************************************************'
+    print @wall.total_pages
+    puts '*************************************************'
+    
+    if request.xhr?      
+      # sleep(2) # make request a little bit slower to see loader :-)
+      if params[:page].to_i <= 1
+        puts '******************** A JS *****************************'
+        respond_to do |format|
+          format.js
+        end
+      else
+        puts '***************** Render ********************************'
+        render :partial => '/shared/publications', :locals => {:wall => @wall}
+      end            
     else
       respond_to do |format|
         format.html # show.html.erb

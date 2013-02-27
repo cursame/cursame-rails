@@ -68,7 +68,7 @@ class Comment < ActiveRecord::Base
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
         end 
         #con esto se guarda en wall
-        Wall.create :user => self.user, :publication => self
+        Wall.create :user => self.user, :publication => self, :network => self.network
       when "Course"
         commentable.users.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'

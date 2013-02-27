@@ -11,7 +11,6 @@ class Discussion < ActiveRecord::Base
 
   after_create do
   	#con esto se guarda en wall
-    Wall.create :user => self.user, :publication => self
+    Wall.create :user => self.user, :publication => self, :network => self.network
   end
-
 end
