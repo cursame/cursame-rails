@@ -1,4 +1,4 @@
-<%= form_for(@assignment = Assignment.new, :url => {:action => :assigment}, :html => { :class => "default-form delivery-form"}) do |f| %>
+<%= form_for(@assignment = Assignment.new, :url => {:action => :assigment}, :html => { :class => "default-form assignment-delevery-form"}) do |f| %>
    <%= f.hidden_field :course_id, :value => @course_id %>
    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
    
@@ -26,4 +26,15 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+   <%= f.text_field :title, :placeholder=>'Título' %>
+   <%= f.text_area :brief_description, :rows => 6, :cols => 78, :placeholder=>'Entrega' %>
+   <% @killer = @assignment.assets %>
+   <% super_asset = @killer.build %>
+   <%= f.submit "Entregar" %>
+    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+   <%= f.fields_for (:assets),:html => { :id => "assignments" } do |asset|  %>
+    <%= render :partial => "shared/assets_form", :locals => { :f => asset }%>
+   <%end%>
+
 <% end %>

@@ -45,29 +45,38 @@ class SurveysController < ApplicationController
   end
 
   def survey_reply
-    if user_signed_in?    
+    if user_signed_in?
       @user_survey = UserSurvey.new
       @user_survey.survey_id = params[:survey_id]
       @user_survey.user = current_user
       @user_survey.result = 0;
-      
+
       if @user_survey.save
         params[:questions].each do |question|
+
+          #
+          # question[1] es el id de la respuesta
+          # question[0] es la id de la pregunta
+          #
           question[1].each do |answer|
             @user_response = UserSurveyResponse.new
             @user_response.user_survey_id = @user_survey.id
             @user_response.question_id = question[0]
             @user_response.answer_id = answer
             @user_response.save
-          end        
+
+          end
         end
       else
         #logica por que no se guardo
       end
+      # Ejemplo de como usar la evaluation de un examen
+      # evaluation(current_user,@user_survey.survey_id)
       respond_to do |format|
           format.js
       end
     end
+
   end
 
   def destroy

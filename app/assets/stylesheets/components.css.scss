@@ -505,11 +505,6 @@ a.fc-event {
   text-align: right;
 }
 
-.fc-event-skin {
-  border-color: #36c;     /* default BORDER color */
-  background-color: #36c; /* default BACKGROUND color */
-  color: #fff;            /* default TEXT color */
-}
 
 .fc-event-inner {
   position: relative;
@@ -518,11 +513,18 @@ a.fc-event {
   border-style: solid;
   border-width: 0;
   overflow: hidden;
+  &.fc-event-skin{
+    background: #ffffff !important;
+    @include circle-obj-calendar;
+    float: left;
+  }
 }
 
-.fc-event-time,
-.fc-event-title {
+
+.fc-event-time, .fc-event-title {
   padding: 0 1px;
+  position:absolute;
+  text-indent:-9999px;
 }
 
 .fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/

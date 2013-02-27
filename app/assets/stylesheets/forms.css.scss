@@ -97,7 +97,7 @@
     font-weight: 300;
     padding: 0px 5px 4px 5px;
     margin-top: 4px;
-    display: none;
+    display: block;
     & .file-mini-upload{
       //clear:both;
       float: left;
@@ -560,7 +560,7 @@
 
   border: 1px solid #68a313;
   display:inline-block;
-  color:#FFF;//#197d91;
+  color:#FFF !important;//#197d91;
   text-decoration:none;
   text-shadow:0px 1px 0px #197d91;//#c3edf3;
   cursor: pointer;
@@ -577,6 +577,9 @@
     box-shadow:         inset 0px 1px 1px #2f8999;
   }
 
+  & a{
+      color: #fff;
+  }
 
 
 }
@@ -738,6 +741,13 @@
       padding-top: 5px;
       float: left;
       width: 100%;
+    }
+  }
+  & .uploader-form{
+
+    & .file-input-box{
+      position: absolute;
+      left: 155px;
     }
   }
 }
@@ -984,6 +994,22 @@
   }
 }
 
+.delivery-assignment-box{
+  display:none;
+  float: left;
+  background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
+  padding: 0px 10px;
+
+  & .assignment-delevery-form{
+   //background: #000000;
+    & input[type=submit]{
+      float: right;
+    }
+    & .input-button{
+      float: right;
+    }
+  }
+}
 
 .more-comment-box{
   clear: both;
