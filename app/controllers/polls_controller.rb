@@ -25,11 +25,14 @@ class PollsController < ApplicationController
   # GET /polls/new.json
   def new
     @poll = Poll.new
+    
+    3.times { @poll.surveys.build }
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @poll }
-    end
+
+    #respond_to do |format|
+    #  format.html # new.html.erb
+    #  format.json { render json: @poll }
+    #end
   end
 
   # GET /polls/1/edit

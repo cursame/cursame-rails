@@ -152,11 +152,10 @@ class CoursesController < ApplicationController
   
   def evaluation
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
     if !@member.nil? then
-      if @member.owner = true || current_role = "admin"
-      else
-        redirect_to :back
+      if @member.owner.nil? then
+        @member.update_attributes(:owner => false)
       end
     end
   end
