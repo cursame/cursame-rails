@@ -68,7 +68,7 @@
       <div class="footer" id="footer-publication-<%= id %>">
         <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
         <img src="/assets/icons/grey-mini-like.png" class="icon like">
-        <div class="labels">20 Comentarios</div>
+        <div class="labels"><%= post.comments.count %> Comentarios</div>
 
         <div class="labels">12 Likes</div>
       </div>
@@ -77,9 +77,13 @@
     <!-- area para comentar -->
     <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= publication.id %>">
       <div id="comments-publication-<%= publication.id %>" style="display: block;">
-        <div id="more-comments-<%= id  %>" class="more-comment-box"><span >Ver comentarios anteriores</span> </div>
+        <!-- si el post tiene mas de 3 comentarios -->
+        <% if post.comments.count > 3 %>
+          <div id="more-comments-<%= id  %>" class="more-comment-box"><span >Ver comentarios anteriores</span> </div>
+        <%end%>
+
         <% post.comments.last(3).each do |commentt| %>
-        <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+          <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
         <%end%>
       </div>
       <div class="user-post-child-comment">
