@@ -5,7 +5,7 @@ class Wall < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			where('publication_type LIKE ?', "#{search}")
+			where('publication_type LIKE ?', "%#{search}%")
 		else
 			scoped
 		end

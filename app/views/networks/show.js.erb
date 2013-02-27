@@ -1,1 +1,7 @@
+console.log(this.opts);
+this.pageless.opts.currentPage = 1;
+this.pageless.opts.totalPages = <%= @wall.total_pages %>;
+this.pageless.opts.params = {
+	search:'<%=@search%>'
+};
 $('#timeline').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall}))%>');

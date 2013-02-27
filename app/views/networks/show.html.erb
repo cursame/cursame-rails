@@ -173,19 +173,24 @@
 </div>
 <script type="text/javascript">
 $(function() {
-
   var p = $('#timeline').pageless({ 
     totalPages: <%= @wall.total_pages %>,
     url: '<%= wall_path %>',
     loaderMsg: '...',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
     loaderImage: '<%= image_path("load.gif")%>'
   });
-  console.log(p);
+
   $("#wall_search").submit(function(e) {
-    console.log(p);
     $.get(this.action,$(this).serialize(),null,"script");
     return false;
   });
-
 });
 </script>
