@@ -97,20 +97,17 @@
     font-weight: 300;
     padding: 0px 5px 4px 5px;
     margin-top: 4px;
-    display: block;
+    display: none;
     & .file-mini-upload{
-      //clear:both;
       float: left;
-
       width: 157px;
       background: url('/assets/icons/file-basic-mini.png') no-repeat 1px 1px;
       height: 32px;
       padding: 0px 0px 0px 30px;
-      line-height: 23pt;
+      line-height: 24pt;
       margin: 4px 0px 0px 0px;
       cursor: pointer;
       border: solid 1px transparent;
-
       & span{
         float: left;
         white-space: nowrap;
@@ -118,6 +115,22 @@
         overflow: hidden;
         width: 125px;
       }
+      & .progress-bar {
+        height: 5px;
+        width: 120px;
+        margin-top: 23px;
+        border: solid 1px #8696ae;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        & .bar {
+          height: 5px;
+          background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e5edf8), color-stop(1, #c8d5e7) );
+          background:-moz-linear-gradient( center top, #e5edf8 5%, #c8d5e7 100% );
+          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5edf8', endColorstr='#c8d5e7');
+          background-color:#c8d5e7;
+        }
+      }
+
       & .trash{
         display: none;
         float: right;
