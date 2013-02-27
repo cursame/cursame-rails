@@ -62,6 +62,8 @@ class AssignmentsController < ApplicationController
                   
                 end
                 
+            @az =  @assignment
+            
                
                   
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }

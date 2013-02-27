@@ -1,1 +1,17 @@
 <h2>Seleccionador de networks</h2>
+
+<% if current_role == "superadmin"%>
+<%= link_to "Ir al super administrador >>", superadmnin_activities_path%></br>
+<% @network = Network.all%>
+<% @network.each do |network|%>
+ <center>
+  <%= link_to "#{network.name}", "http://#{network.subdomain}.#{links}"%></br>
+</center>  
+<%end%>
+<%else%>
+<% current_user.networks.each do |network| %>
+  <%= link_to "#{network.name}", "http://#{network.subdomain}.#{links}"%>
+<%end%>
+
+
+<%end%>

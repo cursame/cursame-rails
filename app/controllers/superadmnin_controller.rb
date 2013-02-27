@@ -1,5 +1,6 @@
 class SuperadmninController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:instructions]
+  filter_access_to :all
   
   layout 'super_admin'
   def statistics
