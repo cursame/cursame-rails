@@ -122,6 +122,12 @@
         border: solid 1px #8696ae;
         border-radius: 3px;
         -moz-border-radius: 3px;
+        box-shadow: 0px 1px 0px #FFF;
+
+        -moz-box-shadow:    0px 1px 0px #f7f9fb;
+        -webkit-box-shadow: 0px 1px 0px #f7f9fb;
+        box-shadow:         0px 1px 0px #f7f9fb;
+
         & .bar {
           height: 5px;
           background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e5edf8), color-stop(1, #c8d5e7) );
