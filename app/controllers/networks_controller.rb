@@ -3,7 +3,7 @@ class NetworksController < ApplicationController
   # GET /networks.json
   # before_filter :filter_user_network_wed
   skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create]
-  
+  before_filter :filter_user_network_wed
   def index
     @networks = Network.all
     def network_each
@@ -64,7 +64,8 @@ class NetworksController < ApplicationController
         format.html # show.html.erb
         format.json { render json: @network }
       end
-    end    
+    end
+        
   end
 
 
@@ -145,7 +146,7 @@ class NetworksController < ApplicationController
   end
   
   def filter_user_network_wed
-    network_member
+    filtrati
   end
   
   def network_mask

@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :computer_plataform
   helper_method :version_browser
   helper_method :browser
+  helper_method :filtrati
   
   #roles
   before_filter :set_current_user
@@ -70,46 +71,17 @@ class ApplicationController < ActionController::Base
   ######## definiendo miembro de la red #########
   
   def network_member
-          
-             current_network.networks_users.each do |cu|
-               @user_id = cu.user_id
-                   @user_member = User.find_by_id(@user_id)
-               return false
-             end
-             
-             if @user_member == current_user.id
-                @notice = "Bienvenido a #{current_network.name} "
-              else
-               render new_networks_user_path
-            end
-    
+      @permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
   end
   
-  ######## definiendo role del usuario ########
- 
-  def user_permissions_in_network
-     
-            current_network.networks_users.each do |cut|
-               @user_id = cut.user_id
-               @role_id = cut.role_id
-                  @user_member = User.find_by_id(@user_id)
-                  @role_member = User.find_by_id(@role_id)
-                  return false
-            end
-    
-             
-                if @user_member == current_user
-                   
-                     @role_member.role_id_and_permission_ids.each do |rm|
-                     end
-                     
-                else @user_member != current_user
-                  
-                     @role_member.role_id_and_permission_ids.each do |rm|
-                     end
-                end
-      
-    
+  def filtrati
+    if current_role == "superadmin"
+    else
+     if network_member != nil
+     else
+       redirect_to "/users/sign_out"
+     end
+    end
   end
   
   def random
@@ -160,10 +132,12 @@ class ApplicationController < ActionController::Base
    def fail_in_save
      puts "fallo al guardar en el sistema"
    end
+
   
   def current_role
     #@permissioning = current_user.permissionings.where(:network_id => current_network.id, :user_id => current_user.id)
-    @permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
+    #@permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
+    @permisos = current_user.permissionings.last
     @role = Role.find_by_id(@permisos.role_id)
     @role.title
   end
