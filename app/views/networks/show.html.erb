@@ -154,16 +154,9 @@
 <!-- Content -->
 <div id="box-stream-post">
   <%=render :partial => 'shared/post_menu' %>
-  <%= form_tag wall_path, :method => 'get', :id => "wall_search" do %>
-  <p>
-    <%= hidden_field_tag :page, 1 %>
-    <%= radio_button_tag 'search', 'Discussion' %>Discusiones
-    <%= radio_button_tag 'search', 'Course' %>Cursos
-    <%= radio_button_tag 'search', 'Comment' %>Comentarios
-    <%= radio_button_tag 'search', 'Delivery' %>Entregas
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-  <% end %>
+  
+  <%=render :partial => 'shared/wall_filters' %>
+
   <!-- timeline -->
   <div id="timeline">    
     <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
@@ -187,11 +180,6 @@ $(function() {
       search:''
     },
     loaderImage: '<%= image_path("load.gif")%>'
-  });
-
-  $("#wall_search").submit(function(e) {
-    $.get(this.action,$(this).serialize(),null,"script");
-    return false;
   });
 });
 </script>

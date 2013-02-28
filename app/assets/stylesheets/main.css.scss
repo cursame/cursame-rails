@@ -294,6 +294,15 @@ input:-moz-placeholder {
         float: right;
         margin: 4px 5px 0px 10px;
       }
+      & .like{
+        width: 23px;
+        margin-left: 14px;
+        margin-top: 6px;
+        background: url("/assets/icons/heart-icon-child-comment.png") no-repeat;
+        &:hover{
+          background: url("/assets/icons/heart-icon-child-comment-hover.png") no-repeat;
+        }
+      }
     }
   }
 
