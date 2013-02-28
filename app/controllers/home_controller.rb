@@ -7,8 +7,8 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       #redirect_to "/users/#{current_user.personal_url}"
-       redirect_to "/users/#{user_url}/dashboard" 
-      
+        redirect_to "/users/#{user_url}/dashboard"  
+       
     end
   end
 

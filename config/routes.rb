@@ -1,5 +1,7 @@
 Cursame30Lb::Application.routes.draw do
    
+  resources :polls
+
   get "superadmnin/statistics"
 
   get "superadmnin/networks"

@@ -152,11 +152,10 @@ class CoursesController < ApplicationController
   
   def evaluation
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
     if !@member.nil? then
-      if @member.owner = true || current_role = "admin"
-      else
-        redirect_to :back
+      if @member.owner.nil? then
+        @member.update_attributes(:owner => false)
       end
     end
   end
@@ -208,18 +207,23 @@ class CoursesController < ApplicationController
 
                    puts "******** se han generado las areas de evaluacion ************"
                 end
-
-                    @typed = "Assignmet"
-                  ####### despues de guardar se crea la notificación de actividad con geo localización
+                
+                    @typed = "Assignment"
+                    @az =  @assignment
+                    
+                  ####### despues de guardar se crea la notificación de actividad con geo localización 
                     activation_activity
-
-             if @response_to_the_evaluation.save
-             redirect_to :back
+                    
+              
+             if @activity.save
+               if @response_to_the_evaluation.save
+                 redirect_to :back
+               else
+             end
+  
              else
              end
-
-      else
-      end
+        end
   end
 
 end

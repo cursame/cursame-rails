@@ -7,7 +7,7 @@
   </div>
   <div id="box-request">
       <%= f.fields_for :answers do |builder| %>
-        <%= render '/surveys/answer_fields', :f => builder %>
+        <%= render '/polls/answer_fields', :f => builder %>
       <% end %>
   </div>
   <div class="request-field" style="height: 40px;">

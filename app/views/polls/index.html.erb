@@ -1,0 +1,27 @@
+<h1>Lista de Encuestas</h1>
+<% @polls.each do |poll| %>
+	<p>
+	  <b>Id:</b>
+	  <%= poll.id %>
+	</p>
+	<p>
+	  <b>Title:</b>
+	  <%= poll.title %>
+	</p>
+	<p>
+	  <b>Description:</b>
+	  <%= poll.description %>
+	</p>
+	<p>
+	  <b>Created at:</b>
+	  <%= poll.created_at %>
+	</p>
+	<p>
+	  <b>Updated at:</b>
+	  <%= poll.updated_at %>
+	</p>
+	<br />
+    <p><%= link_to 'Show', poll %> &nbsp;<%= link_to 'Edit', edit_poll_path(poll) %>&nbsp;<%= link_to 'Destroy', poll, confirm: 'Are you sure?', method: :delete %></p>
+	<br>
+<% end %>
+<%= link_to 'New Poll', new_poll_path %>

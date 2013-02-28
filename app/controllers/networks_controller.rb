@@ -3,7 +3,7 @@ class NetworksController < ApplicationController
   # GET /networks.json
   # before_filter :filter_user_network_wed
   skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create]
-  
+  before_filter :filter_user_network_wed
   def index
     @networks = Network.all
     def network_each
@@ -39,26 +39,21 @@ class NetworksController < ApplicationController
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id).count
 
     @network = Network.find_by_subdomain!(request.subdomain)
-    #@comments = @network.comments
-    #@wall = Wall.where(:network_id => current_network.id).order(' created_at DESC').paginate(:per_page => 2, :page => params[:page])
-    @wall = current_network.walls.search(params[:search]).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
-
+    @search = params[:search]
+    @page = params[:page].to_i
+    @wall = current_network.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
     if request.xhr?      
-      # sleep(2) # make request a little bit slower to see loader :-)
-      if params[:search]
-        respond_to do |format|
-          format.js
-        end
-      else
-        render :partial => '/shared/publications', :locals => {:wall => @wall}
-      end            
-    else
+      #sleep(2) # make request a little bit slower to see loader :-)
       respond_to do |format|
         format.js
+      end           
+    else
+      respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @network }
       end
-    end    
+    end
+        
   end
 
 
@@ -139,7 +134,7 @@ class NetworksController < ApplicationController
   end
   
   def filter_user_network_wed
-    network_member
+    filtrati
   end
   
   def network_mask
