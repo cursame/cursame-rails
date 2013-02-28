@@ -42,7 +42,7 @@ $(document).ready(function() {
     $('#banner-btns > li').click(function() {
         getElementId = $(this).attr('get-to');
 
-        onLoadElement = $(this).attr('on-load');
+        onLoadElement = $(this).attr('on-load-function');
 
         if(tmpGetElementId==getElementId){
             if(isOpen){

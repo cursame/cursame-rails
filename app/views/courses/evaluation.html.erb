@@ -82,14 +82,16 @@
 					<td><%=table[1][2][2]%></td>
 				</tr>
 			</table>
+			</br>
+			<h3 align="center">Calificacion: <%=table[2]%></h3>
 			<%end%>
 			</br>
 		<%end%>
 		
 <%else%>
 	<h3>Calificacion del Curso:</h3>
-	<%user = User.find_by_id(member.user_id)%>
-		<%table = member.doTableCourse%>
+	<%user = current_user%>
+		<%table = @member.doTableCourse%>
 		<h4><%=user.email%></h4>
 		</br>
 		<table border="1" width="500" cellpadding="3" cellspacing="3">
@@ -163,5 +165,7 @@
 				<td><%=table[1][2][2]%></td>
 			</tr>
 		</table>
+		</br>
+		<h3 align="center">Calificacion: <%=table[2]%></h3>
 		</br>
 		<%end%>

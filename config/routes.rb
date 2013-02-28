@@ -1,6 +1,7 @@
 Cursame30Lb::Application.routes.draw do
    
   resources :friendships
+  resources :polls
 
   get "superadmnin/statistics"
 

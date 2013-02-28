@@ -1,0 +1,41 @@
+<%= form_for @poll do |f| %>
+  <% if @poll.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+
+      <ul>
+      <% @poll.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br />
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br />
+    <%= f.datetime_select :updated_at %>
+  </div>
+  
+  <% f.fields_for :surveys do |builder| %>
+    <p>
+      <%= builder.label :name, "Surveys" %><br />
+      <%= builder.text_area :name, :rows => 3 %>
+    </p>
+    <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
