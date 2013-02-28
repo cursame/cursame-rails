@@ -9,7 +9,8 @@ class Survey < ActiveRecord::Base
   has_many :events, as: :schedule
   belongs_to :network
   belongs_to :poll
-
+  has_many :user_surveys
+  
   belongs_to :user
   has_many :activities, as: :activitye
   
