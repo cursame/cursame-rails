@@ -1,5 +1,7 @@
 Cursame30Lb::Application.routes.draw do
    
+  resources :friendships
+
   get "superadmnin/statistics"
 
   get "superadmnin/networks"
@@ -86,7 +88,7 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/members", :to => "courses#members", :as => :course_members
   match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
-  
+  match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
   

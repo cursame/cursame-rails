@@ -217,14 +217,14 @@ class CoursesController < ApplicationController
                     
               
              if @activity.save
-               if @response_to_the_evaluation.save
-                 redirect_to :back
-               else
-             end
-  
+                 redirect_to :back  
              else
              end
         end
   end
+  
+  def dashboard_deliver
+  end
+  
 
 end

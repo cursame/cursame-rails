@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :deliveries
   has_many :comments
   has_many :authentications 
+  has_many :friendships, :dependent => :destroy
+  
   
   
   #validates :password,:presence=>true,:on=>:create

@@ -1,0 +1,16 @@
+<%= @assignment.title%>
+<%= @assignment.brief_description %>
+
+<% if  @assignment.response_to_the_evaluations == "nil"%>
+<% else%>
+<% if current_role = "teacher"%>
+        <%= form_for  @assignment do |responces|%>
+            <%= fields_for :response_to_the_evaluations do |response|%>
+            <b>Rubros</b></br>
+              <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
+            <%end%>
+             <b>Evaluación final</b>
+            <%= responces.text_field :accomplishment %></br>
+        <%end%>
+<%end%>
+<%end%>
