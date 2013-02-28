@@ -114,6 +114,7 @@ class MembersInCourse < ActiveRecord::Base
     table_course = Array.new
     table_course[0] = doTableDeliveries
     table_course[1] = doTableSurveys
+    table_course[2] = evaluation
     return table_course
   end
   

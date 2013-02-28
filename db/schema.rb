@@ -259,6 +259,13 @@ ActiveRecord::Schema.define(:version => 20130227183957) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "polls", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "question_assets", :force => true do |t|
     t.integer  "asset_id"
     t.integer  "question_id"
@@ -316,6 +323,7 @@ ActiveRecord::Schema.define(:version => 20130227183957) do
     t.datetime "end_date"
     t.integer  "network_id"
     t.integer  "user_id"
+    t.integer  "poll_id"
   end
 
   create_table "user_friends", :force => true do |t|

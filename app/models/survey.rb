@@ -8,6 +8,7 @@ class Survey < ActiveRecord::Base
   has_many :assets, :through => :compart_assets
   has_many :events, as: :schedule
   belongs_to :network
+  belongs_to :poll
 
   belongs_to :user
   has_many :activities, as: :activitye
