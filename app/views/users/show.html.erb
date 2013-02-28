@@ -1,33 +1,3 @@
-<!-- Soliciude de amistad pendientes mover a la seccion de amigos -->
-<!--
-Salir ileso en procesos de transicion
-<div id="notice-waiting-friend"></div>
-<% if @user.id != current_user.id  %>
-    <% if @friend_a == nil && @pending_relarionships_user_one == nil %>
-        <div id="form-add-user">
-          <%= form_for @friend, :url => create_user_friends_path, :remote => true do |friend| %>
-               <%= friend.hidden_field :status_friendship, :value => "1" %>
-               <%= friend.submit "+ Solicitud de amistad", :class => "btn"%>
-            <%end%>
-          </br>
-        </div>
-    <%end%>
-
-    <%case%>
-        <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_two  == @user.id &&  @pending_relarionships_user_two.status_friendship == 1 %>
-                <div class ="btn disabled"> Ya le has hecho solicitud de amistad </div></br>
-        <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_one == @user.id  %>
-                <div class ="btn"> Este usuario ha solicitado ser tu amigo </div></br>
-                
-        <%when @friend_a != nil && @friend_a.friend_two == @user.id && @friend_a.status_friendship == 1 %>
-                <div class ="btn disabled"> Ya le has hecho solicitud de amistad </div></br>
-        <%when @friend_a != nil && @friend_a.friend_one == @user.id  %>
-                <div class ="btn"> Este usuario ha solicitado ser tu amigo </div></br>
-    <%end%>
-<%else%>
-  <%= link_to "solicitudes de amistad pendientes", user_waiting_friends_path, :class=>'btn'%>
-    </br>
-<%end%>-->
 
 
 
@@ -64,6 +34,7 @@ Salir ileso en procesos de transicion
             <div class="tagname">
               <%= @user.name %>
             </div>
+           
             
         </div>
         <div id="box-profile-info" class="basic-lateral-box margin-top">
@@ -137,6 +108,17 @@ Salir ileso en procesos de transicion
                 </div>
             </div>
         </div>
+         <% if @user.id == current_user.id %>
+            <%= link_to "Solicitudes de amistad", friendships_path%>
+            <%else%>
+            <%= form_for (@friendship = Frienship.new) do |friendship|%>
+
+             <%= friendship.hidden_field :user_id, :value => current_user.id %>
+             <%= friendship.hidden_field :user_id, :value => @user.id %>
+             <%= friendship.submit "Agregar a mis amigos"%>
+
+            <%end%>
+            <%end%>
       <!-- se comenta amigos para la beta que saldrá el día 15 de febrero -->
          <!--<div id="box-friends" class="basic-lateral-box" >
             <h2>AMIGOS</h2>

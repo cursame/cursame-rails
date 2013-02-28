@@ -1,0 +1,31 @@
+<div id="list_of_delivery">
+     <% current_course.deliveries.each do |delivery|%>
+     <div id="title_from_delivery<%=delivery.id%>">
+      <% @delivery_id = delivery.id %>
+      <% @course_id = current_course.id %>
+      <b><%= delivery.title %></b>
+     </div>
+          <%#= render partial: "assignments/form_for_delivery"%>
+          <% delivery.assignments.each do |assignment|%>
+              <%= @user_id = assignment.user_id %>
+              <% @user = User.find_by_id(@user_id)%>
+              <%= image_tag(@user.avatar.mini) %><%= @user.name %>
+              <%= assignment.title%></br>
+              <%= assignment.brief_description %></br>
+¡                   <b> criterios </b></br> 
+
+                        <%= form_for assignment do |assignment|%>
+                            <%= assignment.fields_for :response_to_the_evaluations do |response|%>
+                               <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>                            <%end%>
+                                <b>Calificación</b></br>
+                               <%= assignment.number_field :accomplishment %>
+                             <%= assignment.submit %>
+                        <% end %>
+                     
+          <%end%>
+          
+     <%end%>
+</div>
+
+<div class=" list_of_survey">
+</div>

@@ -196,17 +196,20 @@ class CoursesController < ApplicationController
 
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
-
-                @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
-                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+                
+                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |    
+                  
+                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])                 
                   @response_to_the_evaluation.name = generate_rubres.name
                   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
                   @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
                   @response_to_the_evaluation.assignment_id = @assignment.id
-                  @response_to_the_evaluation.save!
-
+                  @response_to_the_evaluation.save
+                       
                    puts "******** se han generado las areas de evaluacion ************"
+                   
                 end
+                
                 
                     @typed = "Assignment"
                     @az =  @assignment
@@ -216,14 +219,14 @@ class CoursesController < ApplicationController
                     
               
              if @activity.save
-               if @response_to_the_evaluation.save
-                 redirect_to :back
-               else
-             end
-  
+                 redirect_to :back  
              else
              end
         end
   end
+  
+  def dashboard_deliver
+  end
+  
 
 end

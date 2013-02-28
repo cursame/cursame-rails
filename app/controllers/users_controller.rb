@@ -7,10 +7,10 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
-    current_friend
-    validate_friend
-    current_user_friends
-    @friend = UserFriends.new   
+    #current_friend
+    #validate_friend
+    #current_user_friends
+    #@friend = UserFriends.new   
     @course = Course.new
     @delivery = Delivery.new
     @survey = Survey.new
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
      @asset = Asset.new
      assets = @delivery.assets.build
   end
-  
+=begin  
   def current_user_friends
     @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 2)
     @pending_relarionships_user_two = UserFriends.find_by_friend_two_and_status_friendship( @user.id, 2)
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
       @user_two_two = User.find(@pending_relarionships_user_two.friend_two)      
     end
   end
-  
+=end  
  def pertenence!
      if current_network
      @user_id = @user.id
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
      end
      
  end
- 
+=begin
  def friend
     @friend = UserFriends.new(params[:user_friend])
     @friend.friend_one = current_user.id
@@ -154,7 +154,7 @@ class UsersController < ApplicationController
     @pending_relarionships_user_one = UserFriends.find_by_friend_one_and_status_friendship( @user.id, 1)
       
  end
- 
+=end 
  def index
   @user = User.all
  end
