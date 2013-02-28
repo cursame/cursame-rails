@@ -9,15 +9,17 @@
                 <li class="calendar" get-to="#full-deliveries-area" move-sidebar-height="36px">Entregas</li>
             </ul>
         </div>
+
+
+
         <div id="box-titles-content" class="box-titles-content-style">
+
             <div id="calendar-area" style="height: 300px">
               <%= render partial: "calendar/calendar_mini"%>
               <%= render partial: "calendar/list"%>
             </div>
             <div id="full-deliveries-area" style="height: 450px">
-             <div>
-               eliveries area
-            </div>
+              <%= render partial: "courses/dashboard_deliver"%>
             </div>
         </div>
     </div>
