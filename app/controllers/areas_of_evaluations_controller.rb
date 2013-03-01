@@ -39,6 +39,7 @@ class AreasOfEvaluationsController < ApplicationController
 
   # POST /areas_of_evaluations
   # POST /areas_of_evaluations.json
+
   def create
     @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
 
@@ -52,6 +53,7 @@ class AreasOfEvaluationsController < ApplicationController
       end
     end
   end
+
 
   # PUT /areas_of_evaluations/1
   # PUT /areas_of_evaluations/1.json
