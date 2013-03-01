@@ -6,12 +6,14 @@
       </ul>
     </div>
     <div class="black-delivery-box">
+<% current_user.courses.each do |course|%>
 
       <div class="header">
-        Titulo
+        <%= course.title %>
       </div>
+<% if  course.deliveries.count != 0 %>
+
       <div class="content">
-        <% current_user.courses.each do |course|%>
              <% course.deliveries.each do |delivery|%>
                   <div id="title_from_delivery<%=delivery.id%>" class="">
                       <% @delivery_id = delivery.id %>
@@ -44,6 +46,8 @@
                   <%end%>
                   -->
              <%end%>
+<%end%>
+<% if  course.surveys.count != 0 %>
 
              <div class=" list_of_survey">
                 <% course.surveys.each do |survey|%>
@@ -57,6 +61,7 @@
                    </div>
                 <%end%>
              </div>
+<%end%>
         <%end%>
       </div>
     </div>
