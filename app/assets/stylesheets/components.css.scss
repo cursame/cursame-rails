@@ -514,8 +514,8 @@ a.fc-event {
   border-width: 0;
   overflow: hidden;
   &.fc-event-skin{
-    background: #ffffff !important;
-    @include circle-obj-calendar;
+    background: $color-circle-white !important;
+    @include circle-mini;
     float: left;
   }
 }

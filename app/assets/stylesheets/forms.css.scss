@@ -651,22 +651,22 @@
     }
     & .message-form-btn{
       & .icon{
-        background: #4fa3e9 url('/assets/create/comment.png') repeat-y 3px 3px;
+        background: $color-circle-blue url('/assets/create/comment.png') repeat-y 3px 3px;
       }
     }
     & .delivery-form-btn{
       & .icon{
-        background: #83b81f url('/assets/create/delivery.png') repeat-y 3px 3px;
+        background: $color-circle-green url('/assets/create/delivery.png') repeat-y 3px 3px;
       }
     }
     & .discussion-form-btn{
       & .icon{
-        background: #d5d30e url('/assets/create/discussion.png') repeat-y 3px 3px;
+        background: $color-circle-yellow url('/assets/create/discussion.png') repeat-y 3px 3px;
       }
     }
     & .survey-form-btn{
       & .icon{
-        background: #f39c20 url('/assets/create/survey.png') repeat-y 3px 3px;
+        background: $color-circle-orange url('/assets/create/survey.png') repeat-y 3px 3px;
       }
     }
     & .poll{
