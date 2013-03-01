@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
   
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
-  has_many :members_in_courses
+  has_many :members_in_courses, :dependent => :destroy
 #has_many :definer_users
  # has_many :users, :through => :definer_users  
   has_many :deliveries_courses
