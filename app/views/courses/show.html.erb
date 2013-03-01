@@ -252,11 +252,12 @@
                     <div class="delivery-box">
                       <div class="green-btn">  <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder</a></div></div>   </div>
                     </div>
+                    <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
+                     <% @delivery_id = delivery.id%>
+                     <%= render partial: "assignments/form_for_delivery"%>
+                   </div>
                   </div>
-                 <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
-                   <% @delivery_id = delivery.id%>
-                   <%= render partial: "assignments/form_for_delivery"%>
-                 </div>
+                
                   <div class="footer">
                       <img src="/assets/icons/grey-mini-comment.png" class="icon">
                       <img src="/assets/icons/grey-mini-like.png" class="icon">

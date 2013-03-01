@@ -118,4 +118,15 @@ class MembersInCourse < ActiveRecord::Base
     return table_course
   end
   
+  # obtiene si es owner del grupo mediante un delivery
+  def self.is_owner_by_delivery_and_user_id(delivery,user)
+    delivery.courses.each do |course|
+      owner = self.find_by_course_id_and_user_id_and_owner(course.id,user.id,true)
+      if owner
+        return true
+      end
+    end
+    return false
+  end
+
 end
