@@ -1,4 +1,4 @@
-<%= form_for(@assignment = Assignment.new, :url => {:action => :assigment}, :html => { :class => "default-form assignment-delevery-form"}) do |f| %>
+<%= form_for(@assignment = Assignment.new, :html => { :class => "default-form assignment-delevery-form"}) do |f| %>
    <%= f.hidden_field :course_id, :value => @course_id %>
    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
    
