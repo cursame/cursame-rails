@@ -22,7 +22,14 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-
+    ###### se generan los casos segun los tipos de eventos que se planean mostrar
+     case
+      when @event.schedule_type == "Delivery"
+        @eventable = Delivery.find_by_id(@event.schedule_id)
+      when @event.schedule_type == "Survey"
+        @eventable = Survey.find_by_id(@event.schedule_id) 
+     end
+     
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }

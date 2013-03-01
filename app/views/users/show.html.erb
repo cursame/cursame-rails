@@ -37,8 +37,7 @@
             </div>
             <div class="tagname">
               <%= @user.name %>
-            </div>
-           
+            </div>        
             
         </div>
         <div id="box-profile-info" class="basic-lateral-box margin-top">
@@ -46,6 +45,8 @@
             <li class="mail"> <%= @user.email %></li>
             <li class="twitter"><%= @user.facebook_link %> </li>
             <li class="facebook"><%= @user.twitter_link%></li>
+            <li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li>
+            
         </div>
         <%#= current_user.devise_mailer_subdomain%>
 

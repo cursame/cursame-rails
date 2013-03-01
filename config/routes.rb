@@ -216,6 +216,10 @@ Cursame30Lb::Application.routes.draw do
       resources :activities
    end
    
+   ####### rutas de estandarizacion de eventos
+   
+   match 'focus/:id', :to => 'events#show', :as => :eventuable
+   
    ###### ruta para crear super admins
    
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
