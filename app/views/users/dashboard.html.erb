@@ -1,17 +1,39 @@
-<h2>Seleccionador de networks</h2>
+<div class="user_dashboard_background">
+<center>
+<h1><b>Seleccionador de redes</b></h1></br>
+<div class="cursame_network_select">
+  <p><div class="first_part">Cursa</div><div class="secont_part">me</div></p>
+</div>
 
+</center>
+<div class="user_networks_show">
 <% if current_role == "superadmin"%>
 <%= link_to "Ir al super administrador >>", superadmnin_activities_path%></br>
 <% @network = Network.all%>
 <% @network.each do |network|%>
  <center>
+<div class="strip_network">
   <%= link_to "#{network.name}", "http://#{network.subdomain}.#{links}"%></br>
+</div>
 </center>  
 <%end%>
 <%else%>
 <% current_user.networks.each do |network| %>
+<center>
+<div class="strip_network">
   <%= link_to "#{network.name}", "http://#{network.subdomain}.#{links}"%>
-<%end%>
+</div>
 
+</center>
 
 <%end%>
+<%end%>
+</div>
+<div class="note_network">
+    <p> <i>Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema </i> </p>
+
+</div>
+<div class="avandonar_session">
+<%= link_to "Salir de mi sesión", "http://#{links}/users/sign_out" %>
+</div>
+</div>

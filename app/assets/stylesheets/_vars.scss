@@ -23,6 +23,12 @@
   url('/assets/fonts/HelveticaLTSBoldCond.otf'); /* IE9+ */
 }
 
+@font-face {
+  font-family: EraserFont;
+  src: url('/assets/fonts/erasdust.ttf'),
+  url('/assets/fonts/erasdust.ttf'); /* IE9+ */
+}
+
 // Sizes
 $widht-content: 940px;
 $width-left-bar: 260px;

@@ -16,12 +16,14 @@ class User < ActiveRecord::Base
   has_many :members_in_courses, :dependent => :destroy
   has_many :courses, :through => :members_in_courses
   has_many :users_surveys, :dependent => :destroy
-  has_many :assets
-  has_many :assignments
-  has_many :deliveries
-  has_many :comments
-  has_many :authentications 
+  has_many :assets, :dependent => :destroy
+  has_many :assignments, :dependent => :destroy
+  has_many :deliveries, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :authentications, :dependent => :destroy
   has_many :friendships, :dependent => :destroy
+  has_many :survey, :dependent => :destroy
+
   
   
   

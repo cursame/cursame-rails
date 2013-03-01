@@ -1,3 +1,124 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user_networks_show{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    color:#B135DF;
+    float: center;
+    & a{
+        color:#fff;
+        font-size:60px;
+        font-family: EraserFont;
+        &:hover{
+            color:#7ed1f3;
+        }
+        
+    }   
+    
+    width:200px;
+    height:100px;
+    padding:50px;
+    margin:auto auto auto auto;
+    overflow: auto;
+    position: center absolute;
+    margin-top:5%;
+    
+    
+    
+}
+.user_dashboard_background{
+    background: url('/assets/texture_first.jpeg');
+    color:#080C0C;
+    width:100%;
+    height:100%;
+    position:absolute;
+    margin-top:-100px;   
+    & h1{
+        font-size:70px;
+        color:#4ef4c4;
+        margin:10px;
+        font-family: EraserFont;
+        
+    } 
+}
+
+.strip_network{
+    width:100%;
+    padding:3px;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+       border-radius: 10px;
+}
+
+.note_network{
+    font-size:12px;
+    width:400px;
+    height:60px;
+    padding:50px;
+    margin:auto auto auto auto;
+    overflow: auto;
+    position: center absolute;
+    margin-top:2%;
+    color:#fff;
+    font-size:15px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    
+}
+.cursame_network_select{
+    font-family: EraserFont;
+    font-size:60;
+    color:#fff;
+    margin:auto auto auto auto;
+    overflow: auto;
+    position: center absolute;
+    width:240;
+    height:80px;
+}
+.first_part{
+    float:left;
+       padding-top:-5px;
+       padding-bottom:6px;
+       -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+       border-radius: 20px;
+       height:60px;
+       line-height: 45px;
+       padding:5px;
+       
+}
+.secont_part{
+    float:left;
+    background-color:#1AECCD;
+    padding-top:-5px;
+    padding-bottom:6px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    height:60px;
+    line-height: 45px;
+    padding:5px;
+    
+}
+
+.avandonar_session{
+    
+    & a{
+        color:#fff;
+        font-size:30px;
+        font-family: EraserFont;
+        &:hover{
+            color:#7ed1f3;
+        }
+        
+    }
+    
+    padding:10px;
+    margin-top:-10px;
+}
+    
+
+
