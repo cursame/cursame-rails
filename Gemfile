@@ -93,4 +93,7 @@ gem "nifty-generators", :group => :development
 # To use debugger
 # gem 'ruby-debug'
 
+gem "pdfkit"
+gem "unicorn"
+
 gem "mocha", :group => :test

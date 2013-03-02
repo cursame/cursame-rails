@@ -169,3 +169,4 @@
 		<h3 align="center">Calificacion: <%=table[2]%></h3>
 		</br>
 		<%end%>
+		<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
