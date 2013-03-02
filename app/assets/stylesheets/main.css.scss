@@ -187,9 +187,6 @@ input:-moz-placeholder {
     margin-right: 10px;
   }
 
-
-
-
   & .comment-text{
     width: $comment-box;
     height: 100%;
@@ -293,6 +290,15 @@ input:-moz-placeholder {
       & .labels{
         float: right;
         margin: 4px 5px 0px 10px;
+      }
+      & .like{
+        width: 23px;
+        margin-left: 14px;
+        margin-top: 6px;
+        background: url("/assets/icons/heart-icon-child-comment.png") no-repeat;
+        &:hover{
+          background: url("/assets/icons/heart-icon-child-comment-hover.png") no-repeat;
+        }
       }
     }
   }
@@ -1445,3 +1451,96 @@ background-position: left center;
   }
  */
 
+
+/*
+
+*/
+.top-header-delivery-box{
+  & ul{
+    & li{
+      width: 180px;
+      float: left;
+      cursor: pointer;
+      height: 22px;
+      margin: auto;
+      text-align: center;
+      margin: 5px 0px 5px 10px;
+      line-height: 21px;
+      & .green-circle-mini{
+        margin: 6px 0px 0px 65px;
+      }
+      & .orange-circle-mini{
+        margin: 6px 0px 0px 50px;
+      }
+      & span{
+        float: left;
+        margin-left: 4px;
+        line-height: 23px;
+      }
+      &:hover{
+        background: rgba(0, 0, 0, 0.6);
+        -webkit-border-radius: $border-radius-box-black;
+        -moz-border-radius: $border-radius-box-black;
+        border-radius: $border-radius-box-black;
+      }
+    }
+  }
+}
+.black-delivery-box{
+  clear: both;
+  border: 1px solid #000;
+  @include border-radius;
+  @include shadow-dark-box;
+
+  margin: 35px 10px 10px 10px;
+
+  -moz-box-shadow:    inset 0px 1px 0px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.4);
+  box-shadow:         inset 0px 1px 0px rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.01);
+
+  & .header{
+
+    background: rgba(0, 0, 0, 0.5);
+    height: 30px;
+    line-height: 29px;
+    font-family: HelvLight;
+
+    -moz-box-shadow:     0px 1px 0px #000;
+    -webkit-box-shadow:  0px 1px 0px #000;
+    box-shadow:          0px 1px 0px #000;
+
+  }
+  & .content{
+
+  }
+}
+
+/*
+*/
+.white-circle-mini{
+  background: $color-circle-white;
+  @include circle-mini;
+  float: left;
+}
+
+.blue-circle-mini{
+  background: $color-circle-blue !important;
+  @include circle-mini;
+  float: left;
+}
+.green-circle-mini{
+  background: $color-circle-green !important;
+  @include circle-mini;
+  float: left;
+}
+.yellow-circle-mini{
+  background: $color-circle-yellow !important;
+  @include circle-mini;
+  float: left;
+}
+.orange-circle-mini{
+  background: $color-circle-orange !important;
+  @include circle-mini;
+  float: left;
+}

@@ -3,7 +3,9 @@
 <%
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
-  id = publication.id 
+  id = publication.id
+  publication_cls = 'delivery'
+
   case publication.publication_type
   when 'Comment'
     avatar = post.user.avatar.modern
@@ -21,6 +23,7 @@
     avatar = post.user.avatar.modern
     name = post.title
     content = post.description
+    publication_cls = 'delivery'
   when 'Survey'
     avatar = post.user.avatar.modern
     name = post.name
@@ -32,21 +35,23 @@
   <div class="publication-box" >
     <div class="general-cir"></div>
 
-    <div id = "publication-<%= id %>" class="comment-text" >
+    <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
       <div class="arrow-left"></div>
       <div class="header">
         <div class="avatar"><%= image_tag(avatar,{:class => "avatar-mini"})%></div>
         <div class="top-null-image"></div><b><%= name %></b>  <span class="date"><%= created_at %></span>
       </div>
+
       <div class="content">
+
         <div class="null-image"></div>
         <% case type%>
         <% when 'Discussion'%>
         <p class="title-discusion"><%= name %></p>
-        <p><%= content %></p>
+        <div class="description"><%= content %></div>
         <% when 'Course'%>      
         <p class="title-discusion"><%= name %></p>
-        <p><%= content %></p>
+        <div class="description"><%= content %></div>
         <% when 'Comment'%>
         <p><%= content %></p>
         <% when 'Survey'%>
@@ -54,23 +59,25 @@
           <img src="/assets/survey.jpg" class="single-image">
         </p>          
         <% when 'Delivery'%>
-        <p class="title-homework"><%= name %></p>
-        <p class="text-homework"><%= content %></p>
-        <div class="upload-labels" style="display: block;">
-          <% post.assets.each do |commentt| %>
-            <div class="file-mini-upload">Captura de pantalla 2013-01-31 a la(s) 12.48.05.JPG</div>
-          <%end%>
-        </div>
+          <%= render :partial => '/shared/delivery_publication_tpl', :locals => {:delivery => post} %>
         <%end%>
 
       </div>
+
+
       <!-- footer -->
       <div class="footer" id="footer-publication-<%= id %>">
-        <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
-        <img src="/assets/icons/grey-mini-like.png" class="icon like">
+        <div class="icon like">&nbsp;&nbsp;</div>
         <div class="labels"><%= post.comments.count %> Comentarios</div>
-
-        <div class="labels">12 Likes</div>
+        <% if publication.publication_type == 'Delivery'%>
+          <% if MembersInCourse.is_owner_by_delivery_and_user_id(post,current_user) %>
+            <div class="labels"><div id="open-close-lo<%= post.id %>"><a>Respuestas</a></div></div>
+          <%else%>
+            <div class="labels"><div id="open-close-<%= post.id %>"><a>Responder tarea</a></div></div>
+          <%end%>
+        <%else%>
+          <div class="labels">12 Likes</div>
+        <%end%>        
       </div>
     </div>
 

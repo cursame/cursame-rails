@@ -1,0 +1,19 @@
+<%= form_tag wall_path, :method => 'get', :id => "wall_search" do %>
+<p>
+	<%= hidden_field_tag :page, 1 %>
+	<%= radio_button_tag 'search', 'Discussion' %>Discusiones
+	<%= radio_button_tag 'search', 'Course' %>Cursos
+	<%= radio_button_tag 'search', 'Comment' %>Comentarios
+	<%= radio_button_tag 'search', 'Delivery' %>Entregas
+</p>
+<% end %>
+
+<script>
+$(function(){
+	$("#wall_search input:radio").live('click',function(){
+		var form = $('#wall_search'); 
+		$.get(form.action,form.serialize(),null,"script");
+		//return false;
+	});
+});
+</script>
