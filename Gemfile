@@ -41,6 +41,7 @@ group :development do
   # gem 'better_errors'
   # gem 'binding_of_caller'
   # gem 'meta_request'
+  #gem 'hooves', require: 'hooves/default'
 end
 
 
@@ -62,6 +63,7 @@ gem 'state_machine'
 
 # para notifications push
 gem 'thin'
+gem 'hooves', require: 'hooves/default'
 gem 'private_pub'
 
 #roles
@@ -94,6 +96,5 @@ gem "nifty-generators", :group => :development
 # gem 'ruby-debug'
 
 gem "pdfkit"
-gem "unicorn"
 
 gem "mocha", :group => :test

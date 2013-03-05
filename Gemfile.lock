@@ -90,6 +90,8 @@ GEM
       uuidtools (>= 2.1.0)
     hashie (1.2.0)
     hike (1.2.1)
+    hooves (0.7)
+      unicorn (> 0)
     http_parser.rb (0.5.3)
     httpauth (0.2.0)
     i18n (0.6.1)
@@ -233,6 +235,7 @@ DEPENDENCIES
   devise
   geocoder
   google-api-client
+  hooves
   jquery-fileupload-rails
   jquery-rails
   json
@@ -252,7 +255,6 @@ DEPENDENCIES
   therubyracer
   thin
   uglifier (>= 1.0.3)
-  unicorn
   useragent
   whenever
   will_paginate

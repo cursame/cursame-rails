@@ -158,6 +158,7 @@ class CoursesController < ApplicationController
         @member.update_attributes(:owner => false)
       end
     end
+    @role = current_role
   end
 
   def filter_protection
