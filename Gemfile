@@ -41,7 +41,6 @@ group :development do
   # gem 'better_errors'
   # gem 'binding_of_caller'
   # gem 'meta_request'
-  #gem 'hooves', require: 'hooves/default'
 end
 
 
@@ -63,8 +62,9 @@ gem 'state_machine'
 
 # para notifications push
 gem 'thin'
-gem 'hooves', require: 'hooves/default'
+#gem 'hooves', require: 'hooves/default'
 gem 'private_pub'
+#gem 'unicorn'
 
 #roles
 gem 'declarative_authorization'
@@ -85,9 +85,6 @@ gem "nifty-generators", :group => :development
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
