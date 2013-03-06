@@ -4,6 +4,7 @@ class NetworksController < ApplicationController
   # before_filter :filter_user_network_wed
   skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create]
   before_filter :filter_user_network_wed
+  skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create]
   def index
     @networks = Network.all
     def network_each
