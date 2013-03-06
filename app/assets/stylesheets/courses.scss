@@ -116,3 +116,27 @@ h3{
 	margin: auto;
 	padding: 15px;
 }
+
+.list_alt_box{
+    width:380px;
+    float: left;
+    height:100%;
+    margin:10px;
+    padding:5px;
+    margin-right:15px;
+    border-right: solid #eee 2px;
+    border-left: solid #eee 2px;
+    margin-bottom:20px;
+   
+}
+.survey_list{
+}
+.deliveries_list{
+}
+.title_dxv{
+    margin-left:40px;
+    weight:760px;
+    & h1 {
+           font-size:20px;
+         }
+}
