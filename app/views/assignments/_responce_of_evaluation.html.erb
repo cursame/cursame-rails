@@ -1,4 +1,7 @@
+ <%= f.label :nombre_del_criterio%></br>
  <%= f.text_field  :name %></br>
- <%= f.text_field :comment_for_rubre %></br>
- <%= f.text_field :evaluation_porcentage%></br>
+ <%= f.label :commentarios_de_evaluación_por_rubro%></br>
+ <%= f.text_area :comment_for_rubre, :rows => 3 %></br>
+ <%= f.label :porcentaje_asignado%></br>
+ <%= f.hidden_field :evaluation_porcentage%></br>
  <%= f.text_field :rub_calification%></br>

@@ -229,5 +229,17 @@ class CoursesController < ApplicationController
   def dashboard_deliver
   end
   
+  ######  formato para responder la jamada de ajax con js 
+  
+  def call_assignments_response
+    @assignment = Assignment.find(params[:id])
+    @data = params[:data]
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
+  end
+  
 
 end

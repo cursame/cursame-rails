@@ -1,0 +1,2 @@
+$('#locomotion_<%=@data%>').effect("highlight", {}, 1000);
+$("#locomotion_<%=@data%>").html('<%= escape_javascript(render(partial: "courses/light_box_dashboard_delivery", :locals => {:assignment => @assignment})) %>');
