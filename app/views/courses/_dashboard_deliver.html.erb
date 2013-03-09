@@ -1,61 +1,105 @@
 <% permitted_to? :create, :courses do %>
 
-    
+<!--manejo de cursos rapido-->    
 <div class="title_dxv">
     <h1> Acceso rápido de administración de cursos </h1>
     
     
-<div class="black-delivery-box">
+    <div class="black-delivery-box">
 <% current_user.courses.each do |course|%>
-
-
- <!-- estamos creando un container especial para que no se descomponga el layout -->
+    </div>
+    <!-- estamos creando un container especial para que no se descomponga el layout -->
  
- <div class="list_alt_box">
-      <div class="header">
-        <%= course.title %>
-      </div>
+    <div class="list_alt_box">
+        <div class="header">
+            <%= course.title %>
+        </div>
       
-      <div class="top-header-delivery-box">
-        <ul>
-          <li id="tareas_list_<%= course.id %>" ><div class="green-circle-mini" ></div><span>Tareas</span></li>
-          <li id="cuestrionario_list_<%= course.id %>"><div class="orange-circle-mini"></div><span>Cuestionario</span></li>
-        </ul>
-      </div>
+        <div class="top-header-delivery-box">
+            <ul>
+                <li id="tareas_list_<%= course.id %>" ><div class="green-circle-mini" ></div><span>Tareas</span></li>
+                <li id="cuestrionario_list_<%= course.id %>"><div class="orange-circle-mini"></div><span>Cuestionario</span></li>
+            </ul>
+        </div>
+ 
+      
       <script>
-          $("#tareas_list_<%= course.id %>").click(function(){
-
-                 $('#delivery_list_<%= course.id %>').toggle('slow', function() {
-
+          $('#tareas_list_<%= course.id %>').click(function(e) {
+              $('#delivery_list_<%= course.id %>').lightbox_me({
+                  centered: true, 
+                  onLoad: function() { 
+                      $('#delivery_list_<%= course.id %>').find('input:first').focus()
+                      }
                   });
-             });
-            $("#cuestrionario_list_<%= course.id %>").click(function(){
-
-                   $('#survey_list_<%= course.id %>').toggle('slow', function() {
-
+              e.preventDefault();
+          });
+          $('#cuestrionario_list_<%= course.id %>').click(function(e) {
+                $('#survey_list_<%= course.id %>').lightbox_me({
+                    centered: true, 
+                    onLoad: function() { 
+                        $('#survey_list_<%= course.id %>').find('input:first').focus()
+                        }
                     });
-            });
-
-      </script>
-<% if  course.deliveries.count != 0 %>
+                e.preventDefault();
+           });
           
-           <div class="deliveries_list" id="delivery_list_<%= course.id %>" >
-                                    
-             <% course.deliveries.each do |delivery|%>
-                  <div id="title_from_delivery<%=delivery.id%>" class="">
-                      <% @delivery_id = delivery.id %>
-                      <% @course_id = course.id %>
-                      <%= delivery.title %> - (<%= delivery.assignments.count%>)
-                  </div>
-                <!-- aqui va el codigo recortado-->
-             <%end%>
-             
-         
-          </div>
+      </script>
+
+
+
 <%end%>
+</div>  
+</div>
+<!--termina manejo de cursos rapido-->
+<!-- comienza deliveries courses -->
+  
+<% current_user.courses.each do |course|%>     
+<% if  course.deliveries.count != 0 %>
+<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >
+             <a id="close_x" class="close close_l" href="#"><center>x</center></a>
+                <div class="high_tent">
+                    <div class="deliveries_list"> 
+                        <h1> Tareas en el curso </h1>                     
+                        <% course.deliveries.each do |delivery|%>
+                            <div id="title_from_delivery<%=delivery.id%>">
+                                <% @delivery_id = delivery.id %>
+                                <% @course_id = course.id %>
+                                <a></b>  <%= delivery.title %> - (<%= delivery.assignments.count%>) </b> </a>
+                    </div>
+                    <!-- se prepara formualrio de deliveries -->
+                            <% delivery.assignments.each do |assignment|%>
+                                <% @user_id = assignment.user_id %>
+                                <% @user = User.find_by_id(@user_id)%>
+                        
+                         <div id="assignment_id_al_<%= assignment.id %>_user_id_<%= @user.id %>" >
+                                <%= link_to image_tag(@user.avatar.mini), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true %>
+                                 <%= link_to "#{@user.name}", call_assignments_response_path(assignment.id, :data=> course.id) , :remote =>  true %></a>
+                        </div>     
+                                                                    
+                            <%end%>
+                    <!--se cierra el formulario de deliveries -->
+                        <%end%>
+                    <!-- se cierra el ciclo de courses deliveries-->
+             
+                </div>
+          
+                <div class="locklok"  id="locomotion_<%=course.id%>">
+                 <h1>Formularios</h1>
+                    
+                </div>
+</div>
+        
+</div>    
+      
+
+<%end%>
+<%end%>
+<!-- termina deliveries courses -->
+
+<% current_user.courses.each do |course|%>     
 <% if  course.surveys.count != 0 %>
 
-             <div class="survey_list" id="survey_list_<%= course.id %>" >
+             <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
                 <% course.surveys.each do |survey|%>
                    contador de examens respindidos   <%= survey.user_surveys.count%>
 
@@ -68,11 +112,14 @@
                 <%end%>
              </div>
 <%end%>
-</div>
-<!--finaliza div de integracion como container-->
-        <%end%>
-
-      </div>
 <%end%>
-</div>
+
+
+<!--finaliza div de integracion como container-->
+
+
+ 
+<%end%>
+
+
 

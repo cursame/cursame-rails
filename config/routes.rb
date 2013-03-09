@@ -81,6 +81,8 @@ Cursame30Lb::Application.routes.draw do
      end
   end
   
+  get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
+  
   resources :deliveries do
     collection do
       post :assigment
