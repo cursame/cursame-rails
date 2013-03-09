@@ -79,9 +79,12 @@ class AssignmentsController < ApplicationController
   # PUT /assignments/1.json
   def update
     @assignment = Assignment.find(params[:id])
-
+    
     respond_to do |format|
       if @assignment.update_attributes(params[:assignment])
+        @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
+          @assignment.accomplishment =  @sum_value_to_accomplishment
+          @assignment.save
         format.html { redirect_to :back, notice: 'Assignment was successfully updated.' }
         format.json { head :no_content }
       else

@@ -80,8 +80,9 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
      end
   end
-  
+  ##### llamadas por ayax rapidas en rails 
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
+  get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
   
   resources :deliveries do
     collection do
