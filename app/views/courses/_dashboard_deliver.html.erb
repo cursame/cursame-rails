@@ -61,20 +61,25 @@
                     <div class="deliveries_list"> 
                         <h1> Tareas en el curso </h1>                     
                         <% course.deliveries.each do |delivery|%>
-                            <div id="title_from_delivery<%=delivery.id%>">
+                            <div class="title_from_delivery_<%=delivery.id%>">
                                 <% @delivery_id = delivery.id %>
                                 <% @course_id = course.id %>
                                 <a></b>  <%= delivery.title %> - (<%= delivery.assignments.count%>) </b> </a>
                     </div>
+                    
+                         <!--falta script para ocultar y deplegar las entregas de una tarea-->
+                                
                     <!-- se prepara formualrio de deliveries -->
                             <% delivery.assignments.each do |assignment|%>
                                 <% @user_id = assignment.user_id %>
                                 <% @user = User.find_by_id(@user_id)%>
-                        
-                         <div id="assignment_id_al_<%= assignment.id %>_user_id_<%= @user.id %>" >
-                                <%= link_to image_tag(@user.avatar.mini), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true %>
-                                 <%= link_to "#{@user.name}", call_assignments_response_path(assignment.id, :data=> course.id) , :remote =>  true %></a>
-                        </div>     
+                 
+                         <!--este es un menu que se utiliza para traer las llamadas ajax de el curso-->
+                         <div id="assignment_id_al_<%= delivery.id %>" >
+                             <div>
+                             <%= render :partial => "courses/delivery_menu", :locals => {:assignment => assignment, :course => course}%>
+                             </div>
+                         </div>     
                                                                     
                             <%end%>
                     <!--se cierra el formulario de deliveries -->
@@ -94,12 +99,18 @@
 
 <%end%>
 <%end%>
+
+
 <!-- termina deliveries courses -->
 
 <% current_user.courses.each do |course|%>     
 <% if  course.surveys.count != 0 %>
 
              <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
+                 <a id="close_x" class="close close_l" href="#"><center>x</center></a>
+                 <div class="high_tent">
+                  
+                 
                 <% course.surveys.each do |survey|%>
                    contador de examens respindidos   <%= survey.user_surveys.count%>
 
@@ -110,6 +121,7 @@
                        <%end%>
                    </div>
                 <%end%>
+                </div>
              </div>
 <%end%>
 <%end%>

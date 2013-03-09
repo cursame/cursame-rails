@@ -9,19 +9,19 @@
      
 
      <%if assignment.accomplishment == nil %>
-     <%= "0" %></br>
+      <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></br>
      <%else%>
      <%= assignment.accomplishment %></br>
      <%end%>
       <b> criterios </b></br>
-
-         <%= form_for assignment do |assignment|%>
-             <%= assignment.fields_for :response_to_the_evaluations do |response|%>
-                 <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
-             <%end%>
-                 <b>Calificación</b></br>
-                 <%= assignment.number_field :accomplishment %>
-                 <%= assignment.submit "Enviar tarea", :class => 'btn_l' %>
-         <% end %>
+        <%= form_for assignment, remote: true   do |assigments_l |%>
+          <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
+              
+                <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
+              
+          <%end%>
+          <%= assigments_l.submit "Actualizar Rubros"%>
+       <%end%>
+    
    </div>
 </div>

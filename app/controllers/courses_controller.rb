@@ -241,5 +241,13 @@ class CoursesController < ApplicationController
     end
   end
   
+  def delivery_menu
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
+  end
+  
 
 end
