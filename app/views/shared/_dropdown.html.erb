@@ -7,10 +7,11 @@
    #
    random_id = "#{random}"
    hasSomeLocals = ( hasPublic && hasCourses ) ? true : false
+   extra_style = extra_style || ''
 %>
 
 
-<div id="drop-down-<%= random_id %>" class="wrapper-dropdown <%= defaultClass %>">
+<div id="drop-down-<%= random_id %>" class="wrapper-dropdown <%= defaultClass %>" style="<%= extra_style %>">
   <span id="title-dd"><%= defaultText %></span><div class="box-arrow"></div>
   <ul class="dropdown">
 

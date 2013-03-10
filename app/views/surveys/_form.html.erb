@@ -8,7 +8,6 @@
 %>
 
 <%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
-
   <div style="border-bottom: 1px solid #ccc; height: 45px;">
     <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
   </div>
@@ -24,5 +23,7 @@
     </div>
   </div>
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
-    <%= f.submit %>
+    <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary" %>
+    <br>
+    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
 <% end %>

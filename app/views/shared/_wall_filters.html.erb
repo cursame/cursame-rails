@@ -11,7 +11,7 @@
 <script>
 $(function(){
 	$("#wall_search input:radio").live('click',function(){
-		var form = $('#wall_search'); 
+		var form = $('#wall_search');
 		$.get(form.action,form.serialize(),null,"script");
 		//return false;
 	});
