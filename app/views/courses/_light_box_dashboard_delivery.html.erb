@@ -5,7 +5,7 @@
         <%= assignment.brief_description %>
         </div>
     </div>
-    <div class="body_l">
+    <div class="body_l" id="accomplishment">
      <%if assignment.accomplishment == nil %>
       <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></br>
      <%else%>

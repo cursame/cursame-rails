@@ -84,7 +84,7 @@ class AssignmentsController < ApplicationController
       if @assignment.update_attributes(params[:assignment])
          @assignment.response_to_the_evaluations.each do |docificate|
            ###### se actualiza el valor del rubro con respecto a la califiación
-               alfredot_rifa_free_pro_forever
+              #### alfredot_rifa_free_pro_forever
                puts docificate.rub_calification
                @valor_total = docificate.evaluation_porcentage
                puts   @valor_total

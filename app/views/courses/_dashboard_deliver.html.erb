@@ -13,6 +13,13 @@
     <div class="list_alt_box">
         <div class="header">
             <%= course.title %>
+            <div class="status">
+                <%if  course.active_status == true%>
+                  Activo <%= link_to "desactivar curso", active_status_path(course.id), :remote => true %>
+                <%else%>
+                  Inactivo <%= link_to "activar curso", active_status_path(course.id), :remote => true %>
+                <%end%>
+            </div>
         </div>
       
         <div class="top-header-delivery-box">

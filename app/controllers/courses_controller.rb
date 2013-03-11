@@ -249,5 +249,29 @@ class CoursesController < ApplicationController
     end
   end
   
+  def active_status
+      @course = Course.find(params[:id])
+      
+        if @course.active_status == true
+             @course.active_status = 2
+             @course.save
+             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
+             
+        else
+             @course.active_status = 1
+             @course.save
+             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
+             
+        end
+        
+     if @course.save
+      respond_to do |format|
+        #format.html
+        format.json
+        format.js
+      end
+     end
+  end
+  
 
 end
