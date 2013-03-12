@@ -67,7 +67,7 @@ class MembersInCoursesController < ApplicationController
         format.json { render json: @members_in_course.errors, status: :unprocessable_entity }
       end
     end
-  end
+ end
 
   # DELETE /members_in_courses/1
   # DELETE /members_in_courses/1.json

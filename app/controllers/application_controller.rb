@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
@@ -6,16 +7,16 @@ class ApplicationController < ActionController::Base
   helper_method :random_string_for_user_url
   helper_method :links
   helper_method :user_url
-  helper_method :current_friend  
-  helper_method :current_course
+  helper_method :current_friend
   helper_method :alfredot_rifa_free_pro_forever
   helper_method :current_role
+  helper_method :current_course
   helper_method :activation_activity
   helper_method :computer_plataform
   helper_method :version_browser
   helper_method :browser
   helper_method :filtrati
-  
+
   #roles
   before_filter :set_current_user
 
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
-  
+
   #this method filtered the subdomail
   def filter_subdomain(subdomain)
      if subdomain.match(/\Awww\..+/)
@@ -35,8 +36,8 @@ class ApplicationController < ActionController::Base
        return subdomain
      end
   end
-  
-  
+
+
   #this code generate the random_personal_url in the register user
   def random_string_for_user_url
    user_random = "#{user_url_random} #{numeric_random}"
@@ -56,24 +57,24 @@ class ApplicationController < ActionController::Base
   def user_url
      current_user.personal_url
   end
- 
+
   #help to find friend
   def current_friend
       @user = User.find_by_personal_url(params[:personal_url])
   end
-  
+
   def current_course
       @course = Course.find(params[:id])
   end
-  
+
   ####### difininiendo variables de miembros de una red de forma global ########
-  
+
   ######## definiendo miembro de la red #########
-  
+
   def network_member
-      @permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
+     @permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
   end
-  
+
   def filtrati
     if current_role == "superadmin"
     else
@@ -83,11 +84,11 @@ class ApplicationController < ActionController::Base
      end
     end
   end
-  
+
   def random
     general_random = "#{string_random}_#{numeric_random}"
   end
-  
+
   def string_random
      o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
       string  =  (0...30).map{ o[rand(o.length)] }.join
@@ -95,12 +96,12 @@ class ApplicationController < ActionController::Base
   def numeric_random
      numeric = rand(0..777567890654321)
   end
-  
+
   def user_url_random
     o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
     string  =  (0...260).map{ o[rand(o.length)] }.join
   end
-  
+
   def alfredot_rifa_free_pro_forever
      puts "alfredot rifa free pro forever 2013"
      puts "
@@ -133,10 +134,11 @@ class ApplicationController < ActionController::Base
      puts "fallo al guardar en el sistema"
    end
 
-  
+
   def current_role
     #@permissioning = current_user.permissionings.where(:network_id => current_network.id, :user_id => current_user.id)
     #@permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
+
     @permisos = current_user.permissionings.last
     @role = Role.find_by_id(@permisos.role_id)
     @role.title
@@ -148,16 +150,16 @@ class ApplicationController < ActionController::Base
         @activity.activitye_id= @az.id
         @activity.activitye_type =  @typed
         @activity.ip_address = request.ip
-        
+
         city = request.location.city
         country = request.location.country_code
         ip = request.ip
         puts '***************************'
-        
+
         puts city
         puts country
         puts ip
-        
+
         puts '***************************'
         @activity.address = "#{city} #{country}"
         @activity.browser = "#{browser_active}"
@@ -167,11 +169,11 @@ class ApplicationController < ActionController::Base
         #@activity.network_id = 1 #current_network.id
         @activity.save
   end
-  
+
   def browser_active
     @data_integrate = request.env['HTTP_USER_AGENT']
     @user_agent = UserAgent.parse(@data_integrate)
-    @browser = @user_agent.browser    
+    @browser = @user_agent.browser
   end
 
   def browser_version
@@ -179,13 +181,13 @@ class ApplicationController < ActionController::Base
     @user_agent = UserAgent.parse(@data_integrate)
     @browser = @user_agent.version
   end
-  
+
   def computer_platform
     @data_integrate = request.env['HTTP_USER_AGENT']
     @user_agent = UserAgent.parse(@data_integrate)
     @computer_plataform = @user_agent.platform
   end
-  
+
   protected
   #roles
   def permission_denied
