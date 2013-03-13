@@ -1,0 +1,25 @@
+    <div class="header_l">
+        
+       <h1>  <%= assignment.title%> </h1>
+        <div class="description">
+        <%= assignment.brief_description %>
+        </div>
+    </div>
+    <div class="body_l" id="accomplishment">
+     <%if assignment.accomplishment == nil %>
+      <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></br>
+     <%else%>
+     <%= assignment.accomplishment %></br>
+     <%end%>
+      <b> criterios </b></br>
+        <%= form_for assignment, remote: true   do |assigments_l |%>
+          <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
+              
+                <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
+              
+          <%end%>
+          <%= assigments_l.submit "Actualizar Rubros"%>
+       <%end%>
+    
+   </div>
+</div>

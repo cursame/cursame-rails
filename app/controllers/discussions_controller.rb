@@ -42,7 +42,13 @@ class DiscussionsController < ApplicationController
   def create
     @discussion = Discussion.new(params[:discussion])
     @discussion.user = current_user 
-    @discussion.network = current_network    
+    @discussion.network = current_network  
+
+    if params[:delivery]
+      courses = Course.find(params[:delivery][:course_ids])
+      @discussion.courses.push(courses)
+    end
+    
     respond_to do |format|
       if @discussion.save
         @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)

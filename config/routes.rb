@@ -88,6 +88,12 @@ Cursame30Lb::Application.routes.draw do
      end
   end
 
+  ##### cambiando el status de un curso
+  get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
+  ##### llamadas por ayax rapidas en rails 
+  get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
+  get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
+  
   resources :deliveries do
     collection do
       post :assigment

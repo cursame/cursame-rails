@@ -15,8 +15,13 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(params[:survey])
-    @survey.courses.push(Course.last) #aqui deben de ir los cursos que se envien del front
     @survey.user = current_user
+    
+    if params[:delivery]
+      courses = Course.find(params[:delivery][:course_ids])
+      @survey.courses.push(courses)
+    end
+
     respond_to do |format|
       if @survey.save
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)

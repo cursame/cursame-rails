@@ -79,9 +79,28 @@ class AssignmentsController < ApplicationController
   # PUT /assignments/1.json
   def update
     @assignment = Assignment.find(params[:id])
-
+    
     respond_to do |format|
       if @assignment.update_attributes(params[:assignment])
+         @assignment.response_to_the_evaluations.each do |docificate|
+           ###### se actualiza el valor del rubro con respecto a la califiación
+              #### alfredot_rifa_free_pro_forever
+               puts docificate.rub_calification
+               @valor_total = docificate.evaluation_porcentage
+               puts   @valor_total
+               @valor_recibido = docificate.figure  
+               puts    @valor_recibido
+               @division = (@valor_recibido)/100.0000
+               puts @division.to_f
+               @resultado =   @division.to_f * @valor_total.to_f
+               puts  @resultado.to_f
+               docificate.rub_calification = @resultado
+               docificate.save
+               puts (docificate.rub_calification).to_f
+         end
+        @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
+          @assignment.accomplishment =  @sum_value_to_accomplishment
+          @assignment.save
         format.html { redirect_to :back, notice: 'Assignment was successfully updated.' }
         format.json { head :no_content }
       else

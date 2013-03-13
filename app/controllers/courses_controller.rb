@@ -228,5 +228,49 @@ class CoursesController < ApplicationController
 
   def dashboard_deliver
   end
+  
+  ######  formato para responder la jamada de ajax con js 
+  
+  def call_assignments_response
+    @assignment = Assignment.find(params[:id])
+    @data = params[:data]
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
+  end
+  
+  def delivery_menu
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
+  end
+  
+  def active_status
+      @course = Course.find(params[:id])
+      
+        if @course.active_status == true
+             @course.active_status = 2
+             @course.save
+             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
+             
+        else
+             @course.active_status = 1
+             @course.save
+             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
+             
+        end
+        
+     if @course.save
+      respond_to do |format|
+        #format.html
+        format.json
+        format.js
+      end
+     end
+  end
 
 end

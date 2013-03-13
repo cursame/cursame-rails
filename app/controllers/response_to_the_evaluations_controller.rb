@@ -10,4 +10,17 @@ class ResponseToTheEvaluationsController < ApplicationController
   def new
     @response_to_the_evaluation = ResponseToTheEvaluation.new
   end
+  
+  def update
+      @response_to_the_evaluation = ResponseToTheEvaluation.find(params[:id])
+      @response_to_the_evaluation.save
+    respond_to do |format|    
+     if @response_to_the_evaluation.save
+       
+        format.json
+        format.js
+     else
+     end
+    end
+  end
 end
