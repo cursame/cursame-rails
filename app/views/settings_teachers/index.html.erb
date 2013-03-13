@@ -1,0 +1,29 @@
+<h1>Listing settings_teachers</h1>
+
+<table>
+  <tr>
+    <th>Limit deliveries</th>
+    <th>Count deliveries</th>
+    <th>Limit surveys</th>
+    <th>Count surveys</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @settings_teachers.each do |settings_teacher| %>
+  <tr>
+    <td><%= settings_teacher.limit_deliveries %></td>
+    <td><%= settings_teacher.count_deliveries %></td>
+    <td><%= settings_teacher.limit_surveys %></td>
+    <td><%= settings_teacher.count_surveys %></td>
+    <td><%= link_to 'Show', settings_teacher %></td>
+    <td><%= link_to 'Edit', edit_settings_teacher_path(settings_teacher) %></td>
+    <td><%= link_to 'Destroy', settings_teacher, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Settings teacher', new_settings_teacher_path %>

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
+  resources :settings_teachers
+
   resources :friendships
   resources :polls
   resources :messages
