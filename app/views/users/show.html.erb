@@ -1,6 +1,5 @@
 
 
-
 <div id="banner-profile" style="background:url('<%= @user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
     <div class="banner-shadow">
         <div id="box-titles">
@@ -11,21 +10,26 @@
             </ul>
         </div>
 
-
-
         <div id="box-titles-content" class="box-titles-content-style">
-
-            <div id="calendar-area" style="height: 300px">
-              <%= render partial: "calendar/calendar_mini"%>
-              <%= render partial: "calendar/list"%>
+            <div id="calendar-area" style="height:500px">
+                 <div class="black-delivery-box", style="padding:5px; margin-top:4px;width: 837px;">
+                        <div class="header">
+                            <h1 style="margin-left:10px; padding:2px;"> Calendario
+                            </h1>
+                        </div>
+                    </div>
+                    <%= render partial: "calendar/calendar_mini"%>
+                    <%= render partial: "calendar/list"%>
             </div>
+           
             <div id="full-deliveries-area" >
-              <%= link_to "Atualizar información", user_acces_courses_path, :remote => true %>
+              <%= link_to "Atualizar información", user_acces_courses_path, :remote => true%>
               <div id="actual_resources">
               <% @course_for_user = current_user.courses.where(:active_status => true)%>
               <%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user }%>
               </div>
             </div>
+            
             <div id="my_old_courses">
                 <%= link_to "Actualizar información", user_old_courses_path, :remote => true  %>
                 <div id="old_resources" >
@@ -33,12 +37,11 @@
                     %>
                     <%= render partial: "courses/old_course",:locals => {:old_course_for_user => @old_course_for_user}%>
                 </div>
-            </div>            
+            </div>  
+                      
         </div>
     </div>
 </div>
-
-
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
     <!-- SideBar -->

@@ -1,7 +1,6 @@
 <script>
   var event_list = []
 </script>
-<div style="width: 400px;float: left; margin-left:15px;">
 <% @user.courses.each do |courses|%>
     
       <% courses.deliveries.each do |delivery| %>
@@ -23,7 +22,6 @@
 
       <% courses.surveys.each do |survey|%>
            <% survey.events.each do |event|%>
-              <div> 
                    <script type='text/javascript'>
                           event_list.push(   
                            {
@@ -42,6 +40,4 @@
 
   
 </script>
-
-<div id="event_list" style="color:#fff"></div>
-</div>
+<div id="event_list" style="width: 400px;float: left; margin-left:15px; color:#fff;"></div>

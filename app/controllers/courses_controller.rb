@@ -196,7 +196,8 @@ class CoursesController < ApplicationController
 
      if @assignment.save!
             puts "************************************************************************"
-
+           @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+           
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
 
