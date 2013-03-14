@@ -9,10 +9,8 @@ class User < ActiveRecord::Base
 
 
   # Setup accessible (or protected) attributes for your model
-<<<<<<< HEAD
   attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks,:assignments, :assets
   
-=======
   attr_accessible :email, :password, :password_confirmation,:network,
   :networks, :bios, :permissioning, :permissionings, :search,
   :permissionings_attributes, :network_id, :role_id, :user_id,
@@ -21,7 +19,6 @@ class User < ActiveRecord::Base
   :twitter_link, :update, :comments, :networks, :assets,
   :settings_teachero
 
->>>>>>> e5c9cb108e921d391f8d90efb2f504426035e44b
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
   has_many :users_friends, :dependent => :destroy
