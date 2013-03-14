@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -8,7 +9,7 @@ class User < ActiveRecord::Base
    
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks, :assets
+  attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks,:assignments, :assets
   
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
@@ -23,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :friendships, :dependent => :destroy
   has_many :survey, :dependent => :destroy
+  has_many :walls, :dependent => :destroy
 
   
   

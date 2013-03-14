@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311165544) do
+ActiveRecord::Schema.define(:version => 20130314014401) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -213,11 +213,12 @@ ActiveRecord::Schema.define(:version => 20130311165544) do
     t.integer  "user_id"
     t.integer  "course_id"
     t.boolean  "accepted"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.boolean  "owner"
-    t.string   "title",      :default => "curso"
+    t.string   "title",         :default => "curso"
     t.integer  "network_id"
+    t.boolean  "active_status", :default => true
   end
 
   create_table "network_templates", :force => true do |t|
@@ -411,6 +412,7 @@ ActiveRecord::Schema.define(:version => 20130311165544) do
     t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.integer  "network_id"
+    t.integer  "course_id"
   end
 
 end

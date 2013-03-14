@@ -1,2 +1,2 @@
-   <%= link_to image_tag(@user.avatar.mini), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true %>
-     <%= link_to "#{@user.name}", call_assignments_response_path(assignment.id, :data=> course.id) , :remote =>  true %></a>
+   <%= link_to image_tag(assignment.user.avatar.mini), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true %>
+     <%= link_to "#{assignment.user.name}", call_assignments_response_path(assignment.id, :data=> course.id) , :remote =>  true %></a>

@@ -7,6 +7,7 @@
             <ul id="banner-btns" class="list-header">
                 <li class="calendar" get-to="#calendar-area" move-sidebar-height="36px" on-load-function="calendar">Calendario</li>
                 <li class="calendar" get-to="#full-deliveries-area" move-sidebar-height="36px">Entregas</li>
+                <li class="calendar" get-to="#my_old_courses" move-sidebar-height="36px">Cursos antiguos</li>
             </ul>
         </div>
 
@@ -19,8 +20,20 @@
               <%= render partial: "calendar/list"%>
             </div>
             <div id="full-deliveries-area" >
-              <%= render partial: "courses/dashboard_deliver"%>
+              <%= link_to "Atualizar información", user_acces_courses_path, :remote => true %>
+              <div id="actual_resources">
+              <% @course_for_user = current_user.courses.where(:active_status => true)%>
+              <%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user }%>
+              </div>
             </div>
+            <div id="my_old_courses">
+                <%= link_to "Actualizar información", user_old_courses_path, :remote => true  %>
+                <div id="old_resources" >
+                    <% @old_course_for_user = current_user.courses.where(:active_status => false)
+                    %>
+                    <%= render partial: "courses/old_course",:locals => {:old_course_for_user => @old_course_for_user}%>
+                </div>
+            </div>            
         </div>
     </div>
 </div>
@@ -86,8 +99,10 @@
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
                                    <% if @cort.network_id == current_network.id %>
+                                    <% if @cort.active_status == true%>
                                     <% if cu.accepted == true %>
                                         <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                                    <%end%>
                                     <%end%>
                                    <%end%>
                                 <%end%>
@@ -103,8 +118,10 @@
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
                                 <% if @cort.network_id == current_network.id %>
+                                <% if @cort.active_status == true%>
                                 <% if cu.owner == true%>
                                     <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                                <%end%>
                                 <%end%>
                                 <%end%>
                             <%end%>
@@ -166,79 +183,33 @@
 
     <!-- Content -->
     <div id="box-stream-post">
-      <%=render :partial => 'shared/post_menu' %>
+        <%=render :partial => 'shared/post_menu' %>
 
-      <% @comments.reverse.each do |comment| %>
-          <%= render :partial => '/shared/comments', :locals => { :comment=>comment } %>
-      <%end%>
-
-      <div id="box-comments">
-        <div class="general-cir"></div>
-        <div id="comment1" class="comment" >
-          <div class="arrow-left"></div>
-          <div class="header">
-            <div class="null-image"></div>
-            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-            <div class="name"> <%#  comment.user.name %></div>  <span>fecha</span>
-          </div>
-          <div class="content">
-            <div class="null-image"></div>
-            <%#  comment.comment %>
-
-          </div>
-
-          <div class="footer">
-            <img src="/assets/icons/grey-mini-comment.png" class="icon">
-            <img src="/assets/icons/grey-mini-like.png" class="icon">
-            <div class="labels"><%# comment.comments.count %> Comentarios</div>
-            <div class="labels">12 Likes</div>
-          </div>
+        <%=render :partial => 'shared/wall_filters' %>
+        <div id="timeline">    
+          <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
         </div>
-      </div>
-
-
-        <div id="box-comments">
-            <div class="general-cir"></div>
-                <div id="" class="comment-image" >
-                    <div class="arrow-left"></div>
-                        <div class="header">
-                            <div class="null-image"></div>
-                            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-                            <b>Nombre Usuario</b>  <span>fecha</span>
-                        </div>
-                    <div class="footer">
-                        <div class="content-footer">
-                            <img src="/assets/icons/white-mini-comment.png" class="icon">
-                            <img src="/assets/icons/white-mini-like.png" class="icon">
-                            <div class="labels">20 Comentarios</div>
-                            <div class="labels">12 Likes</div>
-                        </div>
-                    </div>
-                    <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
-            </div>
-        </div>
-      <div id="box-comments">
-        <div class="general-cir"></div>
-
-        <div id="" class="comment" >
-          <div class="arrow-left"></div>
-          <div class="header">
-            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-            <b>Nombre Usuario</b>  <span>fecha</span>
-          </div>
-          <div class="content">
-            <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-          </div>
-
-          <div class="footer">
-            <img src="/assets/icons/grey-mini-comment.png" class="icon">
-            <img src="/assets/icons/grey-mini-like.png" class="icon">
-            <div class="labels">20 Comentarios</div>
-            <div class="labels">12 Likes</div>
-          </div>
-        </div>
-      </div>
-
+        <!-- fin timeline -->
+        <%= will_paginate(@wall) %>
+        
     </div>
 
 </div>
+<script type="text/javascript">
+$(function() {
+  var p = $('#timeline').pageless({ 
+    totalPages: <%= @wall.total_pages %>,
+    url: '<%= wall_path %>',
+    loaderMsg: '...',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+});
+</script>

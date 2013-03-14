@@ -2,15 +2,17 @@
 
 <!--manejo de cursos rapido-->    
 <div class="title_dxv">
-    <h1> Acceso rápido de administración de cursos </h1>
-    
-    
-    <div class="black-delivery-box">
-<% current_user.courses.each do |course|%>
+    <div class="black-delivery-box", style="padding:5px; margin-top:4px;width: 837px;">
+        <div class="header">
+     <h1 style="margin-left:10px; padding:2px;"> Acceso rápido de administración de cursos </h1>
+        </div>
+    </div>    
+
+<% course_for_user.each do |course|%>
     </div>
     <!-- estamos creando un container especial para que no se descomponga el layout -->
  
-    <div class="list_alt_box">
+    <div class="list_alt_box" id="propyety_course_<%= course.id %>">
         <div class="header">
             <%= course.title %>
             <div class="status">
@@ -56,7 +58,6 @@
 
 <%end%>
 </div>  
-</div>
 <!--termina manejo de cursos rapido-->
 <!-- comienza deliveries courses -->
   
@@ -78,8 +79,6 @@
                                 
                     <!-- se prepara formualrio de deliveries -->
                             <% delivery.assignments.each do |assignment|%>
-                                <% @user_id = assignment.user_id %>
-                                <% @user = User.find_by_id(@user_id)%>
                  
                          <!--este es un menu que se utiliza para traer las llamadas ajax de el curso-->
                          <div id="assignment_id_al_<%= delivery.id %>" >

@@ -119,6 +119,12 @@ input:-moz-placeholder {
   clear: both;
   float: left;
   margin-left: 9px;
+  & .general-cir-homework{
+     background: url('/assets/comment-cir-mini-homework.png') no-repeat;
+     width: 35px;
+     height: 35px;
+     float: left;
+   }
   & .upload-label{
     float: left;
     background: #f2f7fd;
