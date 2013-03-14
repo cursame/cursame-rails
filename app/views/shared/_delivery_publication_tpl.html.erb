@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <div class="null-image"></div>
  <h1><%= delivery.title %></h1>
 
@@ -147,8 +148,8 @@
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
                        <%= assignment.brief_description %></br>
-                          <%= form_for assignment do |assignment_form|%>                        
-                                        
+                          <%= form_for assignment do |assignment_form|%>
+
                                <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
                                      <b>rubro</b></br>
                                       <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
@@ -156,8 +157,8 @@
                                     <b>Evaluación final</b>
                                    <%= assignment_form.text_field :accomplishment %></br>
                                <%= assignment_form.submit%></br>
-                             
-                          <%end%>             
+
+                          <%end%>
                        <%= link_to "Ver entrega de tarea", "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}"%>
                     <%end%>
                   <% else %>
