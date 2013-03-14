@@ -14,19 +14,19 @@
      <div>
          <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
          <% 1.times do networks = @user.permissionings.build end %>
-            
+
          <%= f.fields_for :permissionings do |permissioning|%>
 
              <%= permissioning.hidden_field :network_id, :value => current_network.id %>
              <%= permissioning.select :role_id, options_for_select([['alumno', '2'], ['profesor', '3'] ])%>
-             
-                   
+
+
          <%end%>
-         
-     <%end%> 
+
+     <%end%>
      </div>
-     
+
      <%= f.submit "Registrar usuario" %>
-     
-     
+
+
 <%end%>

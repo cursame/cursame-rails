@@ -140,7 +140,7 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def members
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
@@ -151,7 +151,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  
+
   def evaluation
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
@@ -199,35 +199,35 @@ class CoursesController < ApplicationController
 
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
-                
-                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |    
-                  
-                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])                 
+
+                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
+
+                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
                   @response_to_the_evaluation.name = generate_rubres.name
                   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
                   @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
                   @response_to_the_evaluation.assignment_id = @assignment.id
                   @response_to_the_evaluation.save
-                       
+
                    puts "******** se han generado las areas de evaluacion ************"
-                   
+
                 end
-                
-                
+
+
                     @typed = "Assignment"
                     @az =  @assignment
-                    
-                  ####### despues de guardar se crea la notificación de actividad con geo localización 
+
+                  ####### despues de guardar se crea la notificación de actividad con geo localización
                     activation_activity
-                    
-              
+
+
              if @activity.save
-                 redirect_to :back  
+                 redirect_to :back
              else
              end
         end
   end
-  
+
   def dashboard_deliver
   end
   
@@ -281,6 +281,5 @@ class CoursesController < ApplicationController
       end
      end
   end
-  
 
 end

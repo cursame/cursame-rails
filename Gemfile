@@ -92,6 +92,10 @@ gem "nifty-generators", :group => :development
 # To use debugger
 # gem 'ruby-debug'
 
+# Render pdf from html
 gem "pdfkit"
+
+# Gem to create non-persistance objects 
+gem "active_attr"
 
 gem "mocha", :group => :test

@@ -1,11 +1,27 @@
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
-  
+
+  after_update do
+    accepted = self.changes[:accepted]
+    if (!accepted.nil?)
+      if (!accepted[0] and accepted[1])
+        mail = Notifier.accepted_message(self,self.course)
+        mail.deliver
+      end
+    end
+  end
+
+  after_create do
+    mail = Notifier.new_member_in_course(self,self.course)
+    mail.deliver
+  end
+
+
   def deliveries
     #return Delivery.where()
   end
-  
+
   #
   #
   #
@@ -24,17 +40,17 @@ class MembersInCourse < ActiveRecord::Base
       evaluationSurveys += user_survey.result
     end
     evaluationSurveys = evaluationSurveys/course.surveys.size
-    return evaluationSurveys.to_i 
+    return evaluationSurveys.to_i
   end
-  
+
   #
-  # 
+  #
   #
   def evaluationDeliverys
     course = Course.find(self.course_id)
-    evaluationSurveys = evaluationSurveys 
-    
-    assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id) 
+    evaluationSurveys = evaluationSurveys
+
+    assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id)
     evaluationDeliverys = 0.0
     if !assignments.nil? then
       assignments.each do |response|
@@ -43,19 +59,19 @@ class MembersInCourse < ActiveRecord::Base
     end
     return evaluationDeliverys.to_i
   end
-  
+
   def evaluation
-    
+
     survey_param_evaluation = (course.survey_param_evaluation.to_f)/100.0
-    
+
     delivery_param_evaluation = (course.delivery_param_evaluation.to_f)/100.0
-    
-    evaluation = evaluationSurveys * survey_param_evaluation + 
+
+    evaluation = evaluationSurveys * survey_param_evaluation +
       evaluationDeliverys * delivery_param_evaluation
-    
+
     return evaluation
   end
-  
+
   #
   # table_member[0] => Tareas ordenadas de acerudo a la fecha de creacion en la base de datos
   # table_member[1] => Calificaciones de cada tarea.
@@ -79,8 +95,8 @@ class MembersInCourse < ActiveRecord::Base
     table_member[2] = evaluation_total_array
     return table_member
   end
-  
-  
+
+
   #
   # table_member[0] => Lista de Surveys
   # table_member[1] => Lista de User_Surveys
@@ -106,7 +122,7 @@ class MembersInCourse < ActiveRecord::Base
     table_member[2] = evaluation_total_array
     return table_member
   end
-  
+
   #
   # Manda a llamar los dos metodos anteriores para unirlos en un arreglo
   #
@@ -117,7 +133,7 @@ class MembersInCourse < ActiveRecord::Base
     table_course[2] = evaluation
     return table_course
   end
-  
+
   # obtiene si es owner del grupo mediante un delivery
   def self.is_owner_by_delivery_and_user_id(delivery,user)
     delivery.courses.each do |course|

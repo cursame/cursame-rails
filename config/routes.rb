@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
-   
+
+  resources :settings_teachers
+
   resources :friendships
   resources :polls
+  resources :messages
 
   get "superadmnin/statistics"
 
@@ -36,7 +40,7 @@ Cursame30Lb::Application.routes.draw do
       post :new
      end
   end
-  
+
 
   resources :authentications
 
@@ -45,14 +49,14 @@ Cursame30Lb::Application.routes.draw do
 
   get "calendar/index"
   get "calendar/test_calendar"
-  
+
   match "/auth/:provider/callback" => "authentications#create"
-  
-  
+
+
   #recursos naturales de la aplicación
-  
-  
-  
+
+
+
   resources :notifications
 
   resources :compart_assets
@@ -60,12 +64,12 @@ Cursame30Lb::Application.routes.draw do
   resources :assets
 
   resources :areas_of_evaluations
-  
+
   #### manejo de assignments
 
   resources :assignments
-  
-  
+
+
   #### surveys
 
   resources :surveys
@@ -75,11 +79,17 @@ Cursame30Lb::Application.routes.draw do
 
   resources :courses do
      resources :assignments
-     
+     resources :messages do
+       collection do
+         post :active_create
+       end 
+     end
+
     collection do
       post :assigment
      end
   end
+
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
   ##### listar estatus de los cursos viejos
@@ -100,24 +110,25 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
+  match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
-  
+
   #resources :role_id_and_permission_ids
 
   #manejo de roles
-  resources :roles 
-  
+  resources :roles
+
   resources :permissions
-  
+
 
   #manejo de users
-  
+
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
-  
+
    match  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
-   
+
    match  "/users/", :to => "users#index",  :as =>  :users
    match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
       #friends
@@ -137,24 +148,24 @@ Cursame30Lb::Application.routes.draw do
   get "networks_users/create"
 
   get "networks_users/new"
-  
+
   match "networks_users/index", :to => "networks#register", :at => :networks_user
 
   resources :network_templates
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
-  
-  
+
+
   #manejo de usuarios en las networks
-  resources :networks_users do 
+  resources :networks_users do
    collection do
     post :create_data
    end
   end
-  
+
   # manejo de la landing page
-  
+
   get "home/index"
 
   get "home/contact"
@@ -170,68 +181,68 @@ Cursame30Lb::Application.routes.draw do
   get "home/blog"
 
   get "home/news"
- 
+
   root :to => 'home#index'
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
-  
+
   #cargas mas comentarios
   match  "home/load_more_comments/:id", :to => "home#load_more_comments", :as => :load_more_comments
-  
+
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
-  
+
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
-  
-  #machando las relaciones de creación de eventos para delivery, survey 
-  
-  resources :surveys do 
+
+  #machando las relaciones de creación de eventos para delivery, survey
+
+  resources :surveys do
     resources :events
   end
-  
-  resources :deliveries do 
+
+  resources :deliveries do
     resources :events
   end
-  
+
   # subiendo permisos en manager
   #match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
   #match 'managers/permissioning_for_manager/roles/:id',:to => "managers#permissioning_for_manager", :as => :permissioning_for_manager
- 
+
   #resources :permissionings
-  
-  resources :managers do 
-     #resources :permissionings 
-     resources :roles   
+
+  resources :managers do
+     #resources :permissionings
+     resources :roles
   end
-  
+
   ####### subiendo validables with geocoder activities #########
   resources :activities
-  
-  resources :surveys do 
+
+  resources :surveys do
      resources :activities
    end
 
-   resources :deliveries do 
+   resources :deliveries do
      resources :activities
    end
-   
-   resources :assignments do 
+
+   resources :assignments do
       resources :activities
    end
 
-   resources :comments do 
+   resources :comments do
       resources :activities
    end
-   
+
    ####### rutas de estandarizacion de eventos
-   
+
    match 'focus/:id', :to => 'events#show', :as => :eventuable
-   
+
    ###### ruta para crear super admins
-   
+
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
    match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
-   
+
 end
