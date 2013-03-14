@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 <div class="null-image"></div>
  <h1><%= delivery.title %></h1>
 
@@ -135,7 +135,6 @@
         <%=render :partial => "/assignments/form_for_delivery"%>
 </div>
 
-<!-- algo que se puede descifrar de alguna manera -->
  <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
                 <% @count_deliveries_assignments = delivery.assignments.count %>
                 <%= @count_deliveries_areas_of_evaluation = delivery.areas_of_evaluation.count %>
@@ -165,6 +164,8 @@
                     <b>No se han encontrado respuestas a esta tarea</b>
                 <% end %>
 </div>
+<!-- algo que se puede descifrar de alguna manera -->
+
 <script>
     $("#open-close-<%= delivery.id %>").click(function () {
         $('#entrega-<%= delivery.id %>').toggle("slow");

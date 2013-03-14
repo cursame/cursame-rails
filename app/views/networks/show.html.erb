@@ -82,8 +82,10 @@
             <% @courses.each do |cu|%>
             <% @cort = Course.find(cu.course_id)%>
             <% if @cort.network_id == current_network.id %>
+            <% if @cort.active_status == true%>
             <% if cu.accepted == true %>
             <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+            <%end%>
             <%end%>
             <%end%>
             <%end%>
@@ -99,9 +101,11 @@
             <% @courses.each do |cu|%>
             <% @cort = Course.find(cu.course_id)%>
             <% if @cort.network_id == current_network.id %>
+            <% if @cort.active_status == true%>
             <% if cu.owner == true%>
             <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
             <%else%>
+            <%end%>
             <%end%>
             <%end%>
             <%end%>

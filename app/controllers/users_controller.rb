@@ -20,9 +20,10 @@ class UsersController < ApplicationController
   
     @courses = current_user.members_in_courses.limit(7)  
     @ccc = current_user.courses.where(:network_id => current_network.id)  
-    @count_course_iam_member =  @ccc.count
+    @count_course_iam_member =  @ccc.where(:active_status => true).count
     
-    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id).count
+    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
+    
     @course_count = Course.count
     @member =  current_user.members_in_courses.where(:owner => true)
 
@@ -34,13 +35,18 @@ class UsersController < ApplicationController
      @network_comments = current_network.comments
      @comments = @network_comments.where(:user_id => @accesible_id)
     
-   ### print times
+   ### wall
 
-
+        @search = params[:search]
+        @page = params[:page].to_i
+        @wall = current_user.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
 
    ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
+     
+   #### manager courses
+   
   end
 =begin  
   def current_user_friends
@@ -161,5 +167,23 @@ class UsersController < ApplicationController
  
  def dashboard
  end
+ 
+ def old_courses
+   @old_course_for_user = current_user.courses.where(:active_status => false)
+   respond_to do |format|
+     #format.html
+     format.json
+     format.js
+   end
+ end
+ 
+ def acces_courses
+    @course_for_user = current_user.courses.where(:active_status => true)
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
+  end
  
 end

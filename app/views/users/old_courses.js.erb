@@ -1,0 +1,3 @@
+$('#old_resources').effect("highlight", {}, 1000);
+$("#old_resources").html('<%= escape_javascript(render(partial: "courses/old_course", :locals => {:old_course_for_user => @old_course_for_user})) %>');
+

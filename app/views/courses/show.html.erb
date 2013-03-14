@@ -9,6 +9,7 @@
           <ul id="banner-btns" class="list-header">
             <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
             <li class="settings">Configuracion</li>
+            <li get-to="#c_area" >Calificaciones</li>
           </ul>
         </div>
         <div id="box-titles-content" class="box-titles-content-style">
@@ -20,6 +21,9 @@
               <li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
               <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
             </ul>
+          </div>
+          <div id="c_area">
+          <%= render partial: "courses/evaluation"%>
           </div>
 
         </div>
@@ -70,261 +74,46 @@
 <!-- Content -->
 
 <div id="box-stream-post">
-    
-  <%=render :partial => 'shared/post_menu' %>
+       <% 
+        @user = current_user
+        @desert =  @course.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+        @filter = @desert
+        @wall = @filter
+        @search = params[:search]
+        @page = params[:page].to_i
+       
+       %>
+       
+     
+       <%=render :partial => 'shared/post_menu' %>
 
-  <%# @comments.reverse.each do |comment| %>
-  <%#= render :partial => '/shared/comments', :locals => {:comment => comment} %>
-  <%#end%>
-
-  <%#  @course.deliveries.each do |delivery| %>
-      <%#= delivery.publish_date%>
-      <%#= delivery.title %>
-      <%#= delivery.description %>
-      <%#= render partial: "assignments/form_for_delivery"%>
-<%#end%>
-<div class="publication-box">
-  <div class="general-cir"></div>
-  <div id="comment_8" class="comment-text">
-    <div class="arrow-left"></div>
-    <div class="header">
-      <div class="avatar"><img alt="Modern_4ae2e15e125b11e290ea1231380f301e_7" class="avatar-mini" src="/uploads/user/avatar/1/modern_4ae2e15e125b11e290ea1231380f301e_7.jpg"></div>
-      <div class="top-null-image"></div><b>Rodrigo Ayalaa</b>  <span class="date">2013-01-29 18:07:48 UTC</span>
-    </div>
-    <div class="content">
-      <div class="null-image"></div>
-      <p></p>
-    </div>
-
-    <div class="footer" id="footer-comment-8">
-      <img src="/assets/icons/grey-mini-comment.png" class="icon comments">
-      <img src="/assets/icons/grey-mini-like.png" class="icon like">
-      <div class="labels">20 Comentarios</div>
-      <div id="more-comments-8">cargas mas comentarios</div>
-      <div class="labels">12 Likes</div>
-    </div>
-  </div>
-  <%  @course.deliveries.reverse.each do |delivery| %>
-  <b>##</b>
-  <div id="box-comments">
-
-
-      <div class="general-cir"></div>
-         <div id="comment1" class="comment-text delivery" >
-             <div class="arrow-left"></div>
-               <div class="header">
-                 <div class="null-image"></div>
-                 <div class="avatar">
-                 <%= link_to image_tag(delivery.user.avatar.modern,{:class => "avatar-mini"}), show_user_path(delivery.user.personal_url) %></div>
-                   <div class="name"> </div><span><%= delivery.publish_date%></span>
-                 </div>
-                  <div class="content">
-                    <div class="null-image"></div>
-                    <h1><%= delivery.title %></h1>
-
-                    <div class="end-date-box">
-                      <div class="end-date-label">Entregar antes de:</div>
-                      <div class="end-date">
-                        <%= delivery.end_date.strftime('%d-%h-%Y %l:%M%P') %>
-                      </div>
-                    </div>
-
-                    <div class="description">
-                      <%= delivery.description %>
-                    </div>
-                    <div class="extra-label">Archivos:</div>
-                    <div class="asset-box upload-label">
-                      <% delivery.assets.each do|files|%>
-                          <div class="file-mini-upload">
-                              <% debug files.file %>
-                              <span><%= link_to "#{files.file}", "#{files.file}" %> </span>
-                          </div>
-                      <%end%>
-                    </div>
-                    <div class="extra-label">Se evalua:</div>
-                    <div class="evaluation-box">
-                      <div id="chart-delivery-<%= delivery.id %>" style="min-width: 580px; height: 60px; margin: 0 auto"></div>
-                      <script type="text/javascript">
-                          $(function () {
-                              var chart;
-                              $(document).ready(function() {
-                                  chart = new Highcharts.Chart({
-                                      chart: {
-                                          renderTo: 'chart-delivery-<%= delivery.id %>',
-                                          type: 'bar',
-                                          marginBottom: 25,
-                                          spacingTop: -5
-                                      },
-                                      credits : {
-                                          enabled : false
-                                      },
-                                      title: {
-                                          text: ''
-                                      },
-                                      xAxis: {
-                                          //categories: ['ortografia', 'desarrollo'],
-                                          lineWidth: 0,
-                                          minorGridLineWidth: 0,
-                                          lineColor: 'transparent',
-                                          labels: {
-                                              enabled: false
-                                          },
-                                          minorTickLength: 0,
-                                          tickLength: 0
-                                      },
-                                      yAxis: {
-                                          min: 0,
-                                          labels: {
-                                              enabled: false
-                                          },
-                                          gridLineWidth: 0,
-                                          reversed: true,
-                                          title: {
-                                              text: ''
-                                          }
-                                      },
-                                      tooltip: {
-                                          formatter: function() {
-                                              return ''+
-                                                      this.series.name +': '+ this.y +' ('+ Math.round(this.percentage) +'%)';
-                                          }
-                                      },
-                                      plotOptions: {
-                                          series: {
-                                              stacking: 'percent'
-                                          }
-                                      },
-                                      legend: {
-                                          reversed: false,
-                                          style: {
-                                              fontFamily: 'monospace',
-                                              color: "#fff"
-                                          },
-                                          backgroundColor: '#f7f7f9',
-                                          layout: 'horizontal',
-                                          floating: true,
-                                          align: 'center',
-                                          verticalAlign: 'bottom',
-                                          y: 10,
-                                          shadow: false,
-                                          border: 1,
-                                          borderRadius: 3,
-                                          borderWidth: 1,
-                                          lineHeight: 10,
-                                          borderColor: '#bbbbd4' ,
-                                          itemStyle: {
-                                              fontSize: '10px',
-                                              color: '#9696ac'
-                                          },
-                                          itemHoverStyle: {
-                                              color: '#72728e',
-                                              fontSize: '10px'
-                                          }
-                                      },
-                                      series: [
-                                      <% @i=1 %>
-                                      <% delivery.areas_of_evaluations.each do |areas| %>
-                                          {
-                                              name: '<%= areas.name %>',
-                                              data: [<%= areas.evaluation_percentage%>],
-                                              index : <%= @i %>
-                                          },
-                                          <% @i=@i+1%>
-                                      <% end %>
-                                      ],
-                                      exporting: {
-                                          buttons: {
-                                              printButton:{
-                                                  enabled:false
-                                              },
-                                              exportButton: {
-                                                  enabled:false
-                                              }
-                                          }
-                                      }
-
-                                  });
-                              });
-
-                          });
-                      </script>
-                    </div>
-                    <div class="delivery-box">
-                      <div class="green-btn">  <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder</a></div></div>   </div>
-                    </div>
-                    <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
-                     <% @delivery_id = delivery.id%>
-                     <%= render partial: "assignments/form_for_delivery"%>
-                   </div>
-                  </div>
-                
-                  <div class="footer">
-                      <img src="/assets/icons/grey-mini-comment.png" class="icon">
-                      <img src="/assets/icons/grey-mini-like.png" class="icon">
-                      <div class="labels"><%# comment.comments.count %>Comentarios</div>
-                      <% if @member.owner == true %>
-                        <div class="labels"><div id="open-close-lo<%= delivery.id %>"><a>Respuestas</a></div></div>
-                      <%else%>
-                      <div class="labels"><div id="open-close-<%= delivery.id %>"><a>Responder tarea</a></div></div>
-                      <%end%>
-                  </div>
-
-       <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
-                <% @count_deliveries_assignments = delivery.assignments.count %>
-                <%= @count_deliveries_areas_of_evaluation = delivery.areas_of_evaluation.count %>
-
-                <% if @count_deliveries_areas_of_evaluation > 0%>
-                <%else%>
-                  <b>A esta tarea no se le han asignado áreas de evaluación </b></br>
-                <%end%>
-                <% if @count_deliveries_assignments > 0%>
-                    <% delivery.assignments.each do |assignment| %>
-                       <b><%= assignment.title %></b></br>
-                       <%= assignment.brief_description %></br>
-                          <%= form_for assignment do |assignment_form|%>                        
-                                        
-                               <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
-                                     <b>rubro</b></br>
-                                      <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
-                               <%end%>
-                                    <b>Evaluación final</b>
-                                   <%= assignment_form.text_field :accomplishment %></br>
-                               <%= assignment_form.submit%></br>
-                             
-                          <%end%>             
-                       <%= link_to "Ver entrega de tarea", "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}"%>
-                    <%end%>
-                  <% else %>
-                    <b>No se han encontrado respuestas a esta tarea</b>
-                <% end %>
-
-      </div>
-         <script>
-
-
-             $("#open-close-<%= delivery.id %>").click(function () {
-                $('#entrega-<%= delivery.id %>').toggle( "slow" );
-                 $(this).toggle("slow");
-                 $(this).parent().parent().toggle("slow");
-                 $('#entrega-<%= delivery.id %>>form>#cancel-post-form').click(function(){
-                     $("#open-close-<%= delivery.id %>").show();
-                     $("#open-close-<%= delivery.id %>").parent().parent().show();
-                     $('#entrega-<%= delivery.id %>').hide();
-                 });
-             });
-
-             $("#open-close-lo<%= delivery.id %>").click(function () {
-                $('#entrega-lo<%= delivery.id %>').toggle("slow");
-
-             });
-          </script>
-      </div>
-  </div>
-
-      ###
-  <%end%>
+       <%=render :partial => 'shared/wall_filters' %>
+       <div id="timeline">    
+            <%#= debug  @lik%>
+            <%#= debug  @filter%>
+         <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
+       </div>
+       <!-- fin timeline -->
+       <%= will_paginate(@wall) %>
 </div>
 
 </div>
 
-</div>
+<script type="text/javascript">
+$(function() {
+  var p = $('#timeline').pageless({ 
+    totalPages: <%= @wall.total_pages %>,
+    url: '<%= wall_path %>',
+    loaderMsg: '...',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+});
+</script>

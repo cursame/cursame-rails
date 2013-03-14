@@ -6,6 +6,10 @@
     <h3>No has sido aceptado en el grupo!</h3>
   <%elsif @member.owner%>
   <h3>Calificaciones del Curso:</h3>
+     <!--para poder hacer el render partial-->
+       <%  @course = Course.find(params[:id])%>
+       <%  @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id) %>
+
     <%@course.members_in_courses.each do |member| %>
       <%user = User.find_by_id(member.user_id)%>
       <% if !member.owner then%>
@@ -17,7 +21,7 @@
             <td>Tarea</td>
             <td>Entrega</td>
             <td>Rubros</td>
-        <td>Calificacion</td>
+                <td>Calificacion</td>
         </tr>
         <%for i in 0...table[0][0].size%>
         <%delivery = table[0][0][i]%>
@@ -27,7 +31,6 @@
             <%if !assignment.nil? then%>
               <td><%=assignment.title%></td>
               <td>
-
                 <% for j in 0...assignment.response_to_the_evaluations.size%>
                 <!-- El rubro del assignment -->
                   <%= assignment.response_to_the_evaluations[j].name%>
@@ -89,7 +92,6 @@
       <%end%>
       </br>
     <%end%>
-
 <%else%>
   <h3>Calificacion del Curso:</h3>
   <%user = current_user%>

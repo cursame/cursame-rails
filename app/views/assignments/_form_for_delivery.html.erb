@@ -10,6 +10,7 @@
     <%= f.label :brief_description %><br />
     <%= f.text_area :brief_description %>
   </div>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
   <div class="field">
   </div>
   <div class="field">

@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   filter_access_to :show
 
   def index
-    @courses = Course.where(:network_id => current_network.id).search(params[:search])
+    @courses = Course.where(:network_id => current_network.id, :active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|
@@ -52,8 +52,10 @@ class CoursesController < ApplicationController
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
 
-
-
+    @search = params[:search]
+    @page = params[:page].to_i
+    @wall = @course.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    
     respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @course }
@@ -256,10 +258,17 @@ class CoursesController < ApplicationController
              @course.active_status = 2
              @course.save
              puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
-             
+             @course.members_in_courses.each do |co| 
+               co.active_status = 2
+               co.save
+             end
         else
              @course.active_status = 1
              @course.save
+             @course.members_in_courses.each do |co| 
+                co.active_status = 1
+                co.save
+              end
              puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
              
         end

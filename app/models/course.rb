@@ -16,7 +16,7 @@ class Course < ActiveRecord::Base
   has_many :discussions, :through => :discussions_coursess
   belongs_to :network
   has_many :comments
-  
+  has_many :walls
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
   
   validates_presence_of :title

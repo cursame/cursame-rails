@@ -61,8 +61,53 @@ class Delivery < ActiveRecord::Base
         mail = Notifier.new_delivery_notification(member,self)
         mail.deliver
       end
+<<<<<<< HEAD
+      
+      after_create do
+         if self.publish_date <= DateTime.now
+            self.publish!
+         end
+        #### se genera  el evento en el calendario
+        Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
+        
+        #Aqui se crean las notificaciones y los posts del wall :)
+        self.courses.each do |course|
+          course.members_in_courses.each do |u|
+            user = User.find_by_id(u.user_id)
+            if u.owner != true
+              Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course', :course_id => course.id          
+            end
+            #validar que no exista doble publicacion para un usuario
+            if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Delivery',self.id))
+              Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id  
+            end
+            
+          end
+        end
+       end      
+       
+       after_update do
+         #### crear notificaciones
+         puts "se ha creado una nueva tarea"
+       end
+       
+       def expired?
+         end_date < DateTime.now
+       end
+       
+       def self.publish_new_deliveries
+          Assignment.created.each do |assignment|
+            if delivery.publish_date <= DateTime.now
+              delivery.publish!
+            end
+          end
+        end
+        
+  
+=======
     end
   end
+>>>>>>> e5c9cb108e921d391f8d90efb2f504426035e44b
 
   after_update do
     #### crear notificaciones
