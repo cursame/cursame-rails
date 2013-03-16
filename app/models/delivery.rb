@@ -41,32 +41,6 @@ class Delivery < ActiveRecord::Base
     if self.publish_date <= DateTime.now
       self.publish!
     end
-    #### se genera  el evento en el calendario
-    Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
-    #Aqui se crean las notificaciones y los posts del wall :)
-    self.courses.each do |course|
-      course.members_in_courses.each do |u|
-        user = User.find_by_id(u.user_id)
-        if u.owner != true
-          Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
-        end
-        Wall.create :user => user, :publication => self, :network => course.network
-      end
-    end
-    #
-    #Cuando una tarea se crea, tambien manda notificaciones a cada
-    # miembro del curso al cual pertenece la tarea.
-    self.courses.each do |course|
-      course.members_in_courses.each do |member|
-        mail = Notifier.new_delivery_notification(member,self)
-        mail.deliver
-      end
-<<<<<<< HEAD
-      
-      after_create do
-         if self.publish_date <= DateTime.now
-            self.publish!
-         end
         #### se genera  el evento en el calendario
         Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
         
@@ -83,32 +57,18 @@ class Delivery < ActiveRecord::Base
             end
             
           end
-        end
-       end      
-       
-       after_update do
-         #### crear notificaciones
-         puts "se ha creado una nueva tarea"
-       end
-       
-       def expired?
-         end_date < DateTime.now
-       end
-       
-       def self.publish_new_deliveries
-          Assignment.created.each do |assignment|
-            if delivery.publish_date <= DateTime.now
-              delivery.publish!
+          #Cuando una tarea se crea, tambien manda notificaciones a cada
+          # miembro del curso al cual pertenece la tarea.
+          self.courses.each do |course|
+            course.members_in_courses.each do |member|
+              mail = Notifier.new_delivery_notification(member,self)
+              mail.deliver
             end
           end
-        end
-        
+       end    
+  end  
+       
   
-=======
-    end
-  end
->>>>>>> e5c9cb108e921d391f8d90efb2f504426035e44b
-
   after_update do
     #### crear notificaciones
     puts "se ha creado una nueva tarea"

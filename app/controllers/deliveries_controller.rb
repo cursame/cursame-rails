@@ -72,7 +72,7 @@ class DeliveriesController < ApplicationController
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
-        #publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+        @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
 
         activation_activity
          #actualizamos los assets del delivery

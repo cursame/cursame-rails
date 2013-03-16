@@ -66,8 +66,6 @@ class User < ActiveRecord::Base
 
 
   after_create do
-
-
     #
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
     #
