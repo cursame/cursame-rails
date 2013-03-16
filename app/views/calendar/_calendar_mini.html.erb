@@ -6,31 +6,37 @@
 <% @user.courses.each do |courses|%>
     
       <% courses.deliveries.each do |delivery| %>
-        <% delivery.events.each do |event|%>            
+        <% delivery.events.each do |event|%> 
+                   
+         <script type='text/javascript'>
+                
+                events.push(   
+                 {
+                 title : '<%= event.title %>',
+                 description: '<%= event.description%>',
+                 start :  '<%= event.starts_at%>',
+                 end :  '<%= event.ends_at%>'
 
-
-              <script type='text/javascript'>
-                    events.push(   
-                     {
-                     title : '<%= event.title%>',
-                     description: '<%= event.description%>',
-                     start :  '<%= event.starts_at%>',
-                     end :  '<%= event.ends_at%>'
-
-                     })
-              </script>
-          
+                 })
+          </script>      
                      
         <%end%>
       <%end%>
-      <% courses.surveyings.each do |survey|%>
-         <%# survey.events.each do |event|%>
-            <div> 
-              <%#= event.title%>
-              <%#= event.description%>
-              </div></br>         
-         <%#end%>
-      <%end%>
+
+      <% courses.surveys.each do |survey|%>
+           <% survey.events.each do |event|%>
+                   <script type='text/javascript'>
+                          events.push(   
+                           {
+                           title : '<%= event.title%>',
+                           description: '<%= event.title%>',
+                           start :  '<%= event.starts_at%>',
+                           end :  '<%= event.ends_at%>'
+
+                           })
+                    </script>
+           <%end%>
+        <%end%>
 <%end%>
 
 

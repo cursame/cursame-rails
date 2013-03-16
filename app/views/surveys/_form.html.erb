@@ -8,9 +8,16 @@
 %>
 
 <%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
-  <div style="border-bottom: 1px solid #ccc; height: 45px;">
+  
+  <div style="border-bottom: 1px solid #ccc; height: 85px;">
+      
     <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
-  </div>
+    <div style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
+    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input survey" %>
+    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input survey" %>
+    
+    </div>
+  </div></br>
 
   <div id="box-question" class="box-question">
       <%= f.fields_for :questions do |builder| %>
@@ -27,3 +34,20 @@
     <br>
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $( "#survey_publish_date, #survey_end_date" ).datepicker({
+    inline: false,
+    minDate: 0,
+    showOtherMonths: true,
+    dateFormat: 'dd/mm/yy',
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+  });
+
+  // $("#create_delivery_form").on('click',function(){
+  //   mask('#new_delivery_form','Cargando ...');
+  // });
+});
+</script>

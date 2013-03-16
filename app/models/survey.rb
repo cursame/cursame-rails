@@ -18,9 +18,27 @@ class Survey < ActiveRecord::Base
   has_many :comments
   acts_as_commentable
 
+  
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
-
+  
+  state_machine :state, :initial => :unpublish do
+    state :unpublish
+    state :published
+    event :publish do
+      transition :to => :published, :from => :unpublish      
+    end
+  end
+  
+  before_create do
+    self.publish_date ||= DateTime.now
+  end
+  
   after_create do
+    
+     if self.publish_date <= DateTime.now
+        self.publish!
+      end
+      
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
     User.all.each do |u|
       Notification.create :user => u, :notificator => self, :kind => 'new_survey_on_course'
@@ -37,7 +55,19 @@ class Survey < ActiveRecord::Base
       end
     end
   end
-
+  
+  def expired?
+     end_date < DateTime.now
+   end
+   
+   def self.publish_new_surveys
+     Survey.unpublished.each do |survey|
+       if survey.start_at <= DateTime.now
+         survey.publish!
+       end
+     end
+   end
+  
   def self.user
     User.last
   end

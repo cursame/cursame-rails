@@ -11,13 +11,20 @@
      <%else%>
      <%= assignment.accomplishment %></br>
      <%end%>
+     <%= assignment.assets%>
       <b> criterios </b></br>
         <%= form_for assignment, remote: true   do |assigments_l |%>
-          <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
+            <% if assignment.response_to_the_evaluations.count != 0%>
+                <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
               
                 <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
               
-          <%end%>
+                <%end%>
+            <%else%>
+                 <%=assigments_l.label :calificación%>
+                <%= assigments_l.number_field :accomplishment%>
+            <%end%>
+          
           <%= assigments_l.submit "Actualizar Rubros"%>
        <%end%>
     

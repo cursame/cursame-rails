@@ -46,33 +46,47 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(params[:assignment])
+    @assignment.user_id = current_user.id
     @asset = Asset.new(params[:asset])
-    @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
-    
-    
-    respond_to do |format|
-      if @assignment.save
-           @delivery_from_assignment = Delivery.find(@assignment.delivery_id)
-                @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
+    @asset.save!
+    @assignment.save!
+      puts "**************"
+      puts "assignment save "
+      puts "**************"
+
+     if @assignment.save!
+            puts "************************************************************************"
+           @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+           
+           @delivery_from_assignment = Delivery.find(@assignment.delivery)
+            puts  @delivery_from_assignment
+
+                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
+
+                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
                   @response_to_the_evaluation.name = generate_rubres.name
                   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
                   @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
                   @response_to_the_evaluation.assignment_id = @assignment.id
                   @response_to_the_evaluation.save
-                  
+
+                   puts "******** se han generado las areas de evaluacion ************"
+
                 end
-                
-            @az =  @assignment
-            
-               
-                  
-        format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
-        format.json { render json: @assignment, status: :created, location: @assignment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
-      end
-    end
+
+
+                    @typed = "Assignment"
+                    @az =  @assignment
+
+                  ####### despues de guardar se crea la notificación de actividad con geo localización
+                    activation_activity
+
+
+             if @activity.save
+                 redirect_to :back
+             else
+             end
+        end
   end
 
   # PUT /assignments/1

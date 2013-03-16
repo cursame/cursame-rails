@@ -1,0 +1,3 @@
+$('#locomotion_<%=@data%>assignment').html('');
+$('#locomotion_<%=@data%><%= @typeo %>').effect("highlight", {}, 1000);
+$("#locomotion_<%=@data%><%= @typeo %>").html('<%= escape_javascript(render(partial: "courses/edit_delivery_access", :locals => {:delivery => @delivery})) %>');

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_personal_url(params[:personal_url])
-    @accesible_id = @user.id
+    #@accesible_id = @user.id
     #helper methods in aplication controller
     pertenence!
     links
@@ -90,8 +90,11 @@ class UsersController < ApplicationController
   end
 =end  
  def pertenence!
+     
      if current_network
-     @user_id = @user.id
+     @user = User.find_by_personal_url(params[:personal_url])
+     
+     @user_id =  @user.id
      @user_pertenence = NetworksUser.find_by_user_id(@user_id)
      if @user_pertenence != nil
      @networks_petenence_user = @user_pertenence.network_id
