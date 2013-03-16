@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130314014401) do
-=======
-ActiveRecord::Schema.define(:version => 20130313015230) do
->>>>>>> e5c9cb108e921d391f8d90efb2f504426035e44b
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -80,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130313015230) do
     t.datetime "updated_at",        :null => false
     t.integer  "course_id"
     t.integer  "user_id"
+    t.float    "rub_calification"
   end
 
   create_table "authentications", :force => true do |t|
@@ -124,8 +121,8 @@ ActiveRecord::Schema.define(:version => 20130313015230) do
     t.text     "silabus"
     t.datetime "init_date"
     t.datetime "finish_date"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "public_status"
     t.string   "avatar"
     t.string   "coverphoto"
@@ -133,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20130313015230) do
     t.integer  "survey_param_evaluation"
     t.integer  "delivery_param_evaluation"
     t.integer  "network_id"
+    t.boolean  "active_status",             :default => true
   end
 
   create_table "deliveries", :force => true do |t|
