@@ -1,7 +1,7 @@
 <% permitted_to? :create, :courses do %>
 
 <!--manejo de cursos rapido-->    
-<div class="title_dxv">
+<div class="title_dxv" style="margin-bottom:80px;">
         <div class="black-delivery-box", style="padding:5px; margin-top:4px;width: 837px;">
             <div class="header">
                 <h1 style="margin-left:10px; padding:2px;"> Acceso rápido de administración de cursos    
@@ -75,7 +75,7 @@
             <div class="title_from_delivery_<%=delivery.id%>">
                 <% @delivery_id = delivery.id %>
                 <% @course_id = course.id %>
-                <a><b>  <%= delivery.title %> - (<%= delivery.assignments.count%>) </b> </a>
+                <a><b>  <%= link_to "#{delivery.title}", edit_delivery_access_path(delivery.id, :data => course.id) , :remote =>  true  %> - (<%= delivery.assignments.count%>) </b> </a>
             </div>
             <% delivery.assignments.each do |assignment|%>
             
@@ -89,9 +89,13 @@
          <%end%>
         
     </div>
-    <div class="locklok"  id="locomotion_<%=course.id%>">
-     <h1>Formularios</h1>      
-    </div>               
+        <div class="locklok"  id="locomotion_<%=course.id%>">
+            <h1>Formularios</h1>  
+            <div id="locomotion_<%=course.id%>delivery">   
+            </div> 
+            <div id="locomotion_<%=course.id%>assignment">
+            </div>
+        </div>
 </div>   
 
 <%end%>

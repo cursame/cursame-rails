@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :response_to_the_evaluations
 
-
+=begin
   after_create do
     self.delivery.courses.each do
       |course|
@@ -26,4 +26,5 @@ class Assignment < ActiveRecord::Base
       end
     end
   end
+=end
 end

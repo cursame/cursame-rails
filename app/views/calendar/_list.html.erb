@@ -1,15 +1,18 @@
 <script>
-  var event_list = []
+  var event_list = [];
 </script>
+<div>
+  
 <% @user.courses.each do |courses|%>
     
       <% courses.deliveries.each do |delivery| %>
         <% delivery.events.each do |event|%> 
                    
          <script type='text/javascript'>
+                
                 event_list.push(   
                  {
-                 title : '<%= event.title%>',
+                 title : '<%= event.title %>',
                  description: '<%= event.description%>',
                  start :  '<%= event.starts_at%>',
                  end :  '<%= event.ends_at%>'
@@ -35,9 +38,8 @@
            <%end%>
         <%end%>
 <%end%>
-
-<script>
-
-  
-</script>
-<div id="event_list" style="width: 400px;float: left; margin-left:15px; color:#fff;"></div>
+    <div id="event_list" style="width: 400px;float: left; margin-left:15px; color:#fff;">
+        <h1> Lita de eventos </h1>
+        
+    </div>
+</div>

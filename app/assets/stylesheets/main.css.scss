@@ -125,6 +125,18 @@ input:-moz-placeholder {
      height: 35px;
      float: left;
    }
+  & .general-cir-survey {
+     background: url('/assets/comment-cir-mini-surveys.png') no-repeat;
+     width: 35px;
+     height: 35px;
+     float: left; 
+  }
+  & .general-cir-discussion {
+       background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
+       width: 35px;
+       height: 35px;
+       float: left; 
+    }
   & .upload-label{
     float: left;
     background: #f2f7fd;

@@ -78,5 +78,9 @@ class Comment < ActiveRecord::Base
       when "Comment"
         #Wall.create :user => self.user, :publication => self
     end
-  end  
+  end 
+  
+  def state
+    @state = "published"
+  end   
 end

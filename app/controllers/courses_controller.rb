@@ -120,10 +120,11 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.json { head :no_content }
-        format.html { redirect_to courses_url }
-        # format.js
+        #format.html { redirect_to courses_url }
+        format.js
       else
         format.json { render json: @course.errors, status: :unprocessable_entity }
+        #format.html { redirect_to @course }
         format.js
       end
     end
@@ -196,7 +197,7 @@ class CoursesController < ApplicationController
 
      if @assignment.save!
             puts "************************************************************************"
-           @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+          # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
            
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
@@ -237,6 +238,8 @@ class CoursesController < ApplicationController
   def call_assignments_response
     @assignment = Assignment.find(params[:id])
     @data = params[:data]
+    @typeo = "assignment"
+    
     respond_to do |format|
       #format.html
       format.json
@@ -281,6 +284,17 @@ class CoursesController < ApplicationController
         format.js
       end
      end
+  end
+  
+  def edit_delivery_access
+    @delivery = Delivery.find(params[:id])
+    @data = params[:data]
+    @typeo = "delivery"
+     respond_to do |format|
+        #format.html
+        format.json
+        format.js
+      end
   end
 
 end

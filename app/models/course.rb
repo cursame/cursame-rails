@@ -17,14 +17,15 @@ class Course < ActiveRecord::Base
   belongs_to :network
   has_many :comments
   has_many :walls
+  
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
   
   validates_presence_of :title
   validates_presence_of :silabus
-  validates_presence_of :init_date
-  validates_presence_of :finish_date
-  validates_presence_of :survey_param_evaluation
-  validates_presence_of :delivery_param_evaluation
+  #validates_presence_of :init_date
+  #validates_presence_of :finish_date
+  #validates_presence_of :survey_param_evaluation
+  #validates_presence_of :delivery_param_evaluation
   validates_presence_of :network_id
   
   
@@ -34,6 +35,9 @@ class Course < ActiveRecord::Base
   #comentarios para los cursos
   acts_as_commentable 
 
+  #avatar
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :coverphoto, CoverphotoUploader
   
   after_create do
     if self.public_status == 'public'

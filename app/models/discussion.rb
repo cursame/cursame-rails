@@ -13,4 +13,8 @@ class Discussion < ActiveRecord::Base
   	#con esto se guarda en wall
     Wall.create :user => self.user, :publication => self, :network => self.network
   end
+  
+  def state
+    @state = "published"
+  end
 end

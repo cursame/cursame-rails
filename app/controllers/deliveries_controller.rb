@@ -72,6 +72,7 @@ class DeliveriesController < ApplicationController
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
+        
         @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
 
         activation_activity
@@ -101,7 +102,7 @@ class DeliveriesController < ApplicationController
   # PUT /deliveries/1.json
   def update
     @delivery = Delivery.find(params[:id])
-
+    @publication_m = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
