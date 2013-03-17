@@ -13,8 +13,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1
   # GET /friendships/1.json
   def show
-    @friendship = Friendship.find(params[:id])
-
+    @user = User.find(params[:user_id])
+    @friendship = @user.inverse_friends.last.friendships.last
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @friendship }
@@ -24,6 +24,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships/new
   # GET /friendships/new.json
   def new
+
     @friendship = Friendship.new
 
     respond_to do |format|
@@ -40,7 +41,8 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
-    @friendship = Friendship.new(params[:friendship])
+    alfredot_rifa_free_pro_forever
+    @friendship = current_user.friendships.build(:friend_id => params[:friendship][:friend_id])
 
     respond_to do |format|
       if @friendship.save

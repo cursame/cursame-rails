@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-   
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -10,14 +10,21 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks,:assignments, :assets
-  
+
   attr_accessible :email, :password, :password_confirmation,:network,
   :networks, :bios, :permissioning, :permissionings, :search,
   :permissionings_attributes, :network_id, :role_id, :user_id,
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teachero
+  :settings_teacher, :friendships, :friends
+
+  # Agredas las relaciones de frienship
+  has_many :friendships
+  has_many :friends, :through => :friendships
+
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings

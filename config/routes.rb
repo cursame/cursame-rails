@@ -3,7 +3,6 @@ Cursame30Lb::Application.routes.draw do
 
   resources :settings_teachers
 
-  resources :friendships
   resources :polls
   resources :messages
 
@@ -82,7 +81,7 @@ Cursame30Lb::Application.routes.draw do
      resources :messages do
        collection do
          post :active_create
-       end 
+       end
      end
 
     collection do
@@ -95,11 +94,11 @@ Cursame30Lb::Application.routes.draw do
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
-  
-  ##### llamadas por ayax rapidas en rails 
+
+  ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
-  
+
   resources :deliveries do
     collection do
       post :assigment
@@ -131,13 +130,13 @@ Cursame30Lb::Application.routes.draw do
 
    match  "/users/", :to => "users#index",  :as =>  :users
    match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
-      #friends
-  resources :user_friends
-  match  "users/:personal_url/friends", :to => "users#friend", :as => :create_user_friends
-  match  "users/:personal_url/waiting_friends/:id/update", :to => "users#ufriend", :as => :update_user_friends
-  match  "users/:personal_url/waiting_friends/:id", :to => "users#sufriend", :as => :show_user_friends
-  match  "users/:personal_url/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
-  get "users/:personal_url/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
+  #friends
+  #resources :user_friends
+  match  "users/:user_id/friends" => "friendships#show"
+  #match  "users/:user_id/waiting_friends/:id/update", :to => "users#ufriend", :as => :update_user_friends
+  #match  "users/:user_id/waiting_friends/:id", :to => "users#sufriend", :as => :show_user_friends
+  #match  "users/:user_id/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
+  get "users/:user_id/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
 
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
