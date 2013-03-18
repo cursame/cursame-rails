@@ -8,8 +8,8 @@
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
             <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
-            <li class="settings">Configuracion</li>
-            <li get-to="#c_area" >Calificaciones</li>
+            <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
+            <li get-to="#c_area" move-sidebar-height="105px" >Calificaciones</li>
           </ul>
         </div>
         <div id="box-titles-content" class="box-titles-content-style">
@@ -19,11 +19,15 @@
               <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b>3 </b> TAREAS<br><i><%= current_course.deliveries.count %> totales</i></li>
               <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> 2 </b>DISCUSIONES<br><i><%= current_course.discussions.count %> totales</i></li>
               <li class="sandwich"><img src="/assets/icons/test.png"> <br> <b> 1 </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
-              <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>
+            <!--  <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>-->
             </ul>
           </div>
-          <div id="c_area">
-          <%= render partial: "courses/evaluation"%>
+          <div id="c_area" class="menu-course  active">
+              <%= render partial: "courses/evaluation"%>
+          </div>
+          <div id="configuration" class="menu-course  active" style="height:500px; color:#fff;">
+              <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de curso</h1>
+              <%= render :partial => "courses/form"%>
           </div>
 
         </div>

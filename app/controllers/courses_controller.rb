@@ -120,11 +120,11 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.json { head :no_content }
-        #format.html { redirect_to courses_url }
+        format.html { redirect_to :back }
         format.js
       else
         format.json { render json: @course.errors, status: :unprocessable_entity }
-        #format.html { redirect_to @course }
+        format.html { redirect_to :back }
         format.js
       end
     end
