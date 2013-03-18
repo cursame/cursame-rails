@@ -77,14 +77,15 @@ class User < ActiveRecord::Base
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
     #
     teacher_roles = self.permissionings.keep_if{
-      |permissioning| permissioning.role_id == 3
+      |permissioning|
+      permissioning.role_id == 3
     }
     if (teacher_roles.length != 0) then
       self.settings_teacher = SettingsTeacher.create(:user_id => self.id,
                                               :limit_deliveries => 15,
                                               :count_deliveries => 0,
                                               :limit_surveys => 15,
-                                              :count_surveys =>0)
+                                              :count_surveys => 0)
     end
   end
 
