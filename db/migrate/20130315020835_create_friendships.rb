@@ -1,11 +1,19 @@
 class CreateFriendships < ActiveRecord::Migration
-  def change
-    create_table :friendships do |t|
+
+  def up
+    if !(ActiveRecord::Base.connection.table_exists?("friendships")) then
+      create_table :friendships do |t|
       t.integer :user_id
       t.integer :friend_id
       t.boolean :accepted
-
       t.timestamps
+      end
+    end
+  end
+
+  def down
+    if (ActiveRecord::Base.connection.table_exists?("friendships")) then
+      drop_table :friendships
     end
   end
 end
