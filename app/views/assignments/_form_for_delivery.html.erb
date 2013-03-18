@@ -1,6 +1,6 @@
 <%
    random_id = "#{random}"
-   @labelIdBox = "upload-labels-#{random_id}"
+   @labelIdBoxx = "upload-labels-assignments-#{random_id}"
 %>
 
 <%= form_for(@assignment = Assignment.new, :url => assigment_courses_path, :method => :post, :html => { :class => "default-form assignment-delevery-form"}) do |f| %>
@@ -13,9 +13,9 @@
     <%= f.label :brief_description %><br />
     <%= f.text_area :brief_description %><br />
     <%= f.hidden_field :user_id, :value => current_user.id %>
-     <div id="<%=@labelIdBox%>" class="upload-label"></div></br>
+     <div id="<%=@labelIdBoxx%>" class="upload-label"></div></br>
     <%= f.submit %>
    
 <% end %>
-<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox} %>
+<%= render :partial => "shared/assets_for_assignments", :locals =>{:labelIdBox=>'#'+@labelIdBoxx} %>
 
