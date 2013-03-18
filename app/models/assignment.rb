@@ -12,16 +12,19 @@ class Assignment < ActiveRecord::Base
   accepts_nested_attributes_for :response_to_the_evaluations
 
   after_create do
+    # Envia correo a todos los maestros de los cursos a los cuales pertenece
+    # el delivery asociado al assignment.
     self.delivery.courses.each do
       |course|
       teachers = course.members_in_courses.keep_if {
         |member|
         member.owner == true
       }
-
       teachers.each do
         |teacher|
-        teacher.user.settings_teacher.increment_deliveries
+        if (teacher.user.settings_teacher != nil) then
+          teacher.user.settings_teacher.increment_deliveries
+        end
       end
     end
   end

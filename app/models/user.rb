@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-   
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -9,15 +9,21 @@ class User < ActiveRecord::Base
 
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks,:assignments, :assets
-  
-  attr_accessible :email, :password, :password_confirmation,:network,
+
+  attr_accessible :email, :password, :password_confirmation,:network,:authentication_token,
   :networks, :bios, :permissioning, :permissionings, :search,
   :permissionings_attributes, :network_id, :role_id, :user_id,
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teachero
+  :settings_teacher, :friendships, :friends
+
+  # Agredas las relaciones de frienship
+  has_many :friendships
+  has_many :friends, :through => :friendships
+
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
@@ -68,19 +74,15 @@ class User < ActiveRecord::Base
   after_create do
     #
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
-    #
-=begin    
+    # Solamente el estudiante no tiene asociado ese modelo.
     teacher_roles = self.permissionings.keep_if{
-      |permissioning| permissioning.role_id == 3
+      |permissioning|
+      permissioning.role_id != 2
     }
     if (teacher_roles.length != 0) then
-      self.settings_teacher = SettingsTeacher.create(:user_id => self.id,
-                                              :limit_deliveries => 15,
-                                              :count_deliveries => 0,
-                                              :limit_surveys => 15,
-                                              :count_surveys =>0)
+      SettingsTeacher.create(:user_id => self.id, :limit_deliveries => 15, :count_deliveries => 0,
+                      :limit_surveys => 15,:count_surveys => 0)
     end
-=end
   end
 
   def name
