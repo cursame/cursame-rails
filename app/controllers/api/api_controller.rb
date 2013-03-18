@@ -13,6 +13,10 @@ class Api::ApiController < ApplicationController
   def comments
     @comments = @network.comments.order('created_at DESC')   
     render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]      
+  end
+  def courses
+    @courses = @network.courses.order('created_at DESC')   
+    render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]      
 	end
 
   private 
