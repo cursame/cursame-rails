@@ -4,11 +4,14 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
    devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
-          :token_authenticatable, :confirmable, :lockable, :timeoutable
+          :token_authenticatable, :confirmable, :lockable, :timeoutable, :token_authenticatable
    
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation,:network, :networks, :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id, :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url, :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks, :assets
+  attr_accessible :email, :password, :password_confirmation,:network, :networks, :authentication_token,
+  :bios, :permissioning, :permissionings, :search,:permissionings_attributes, :network_id,
+  :role_id, :user_id ,:remember_me, :first_name, :last_name, :name, :id, :personal_url,
+  :avatar, :networks_users, :coverphoto, :facebook_link, :twitter_link, :update, :comments, :networks, :assets
   
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings

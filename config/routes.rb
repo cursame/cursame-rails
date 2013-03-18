@@ -228,4 +228,12 @@ Cursame30Lb::Application.routes.draw do
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
    match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
    
+   # api para la mobile
+   #this is for api for the mobile app
+  namespace :api do
+    resources :tokens,:only => [:create, :destroy]
+  end 
+  match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
+  match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
+  match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
 end
