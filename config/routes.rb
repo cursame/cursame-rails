@@ -256,5 +256,6 @@ Cursame30Lb::Application.routes.draw do
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
+  match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
 
 end
