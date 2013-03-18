@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
     #
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
     #
+=begin    
     teacher_roles = self.permissionings.keep_if{
       |permissioning|
       permissioning.role_id == 3
@@ -87,6 +88,7 @@ class User < ActiveRecord::Base
                                               :limit_surveys => 15,
                                               :count_surveys => 0)
     end
+=end
   end
 
   def name
