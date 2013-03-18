@@ -14,6 +14,7 @@ Cursame30Lb::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
+  config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
@@ -36,18 +37,21 @@ Cursame30Lb::Application.configure do
   config.assets.debug = true
   HOST = 'lvh.me:3000'
   config.action_mailer.default_url_options = { :host => 'lvh.me:3000' }
+  #config.action_mailer.delivery_method = :smtp
+  
   #roles
   config.gem "declarative_authorization", :source => "http://gemcutter.org"
-
-  # Action Mailer configure
+  
+  ### mailer ###
   ActionMailer::Base.smtp_settings = {
-    :address        => '50.116.21.144',
-    :port           => '25',
-    :authentication => 'plain',
-    :user_name      => 'wichobabas',
-    :password       => 'qor43e95',
-    :domain         => 'mail.cursame.me'
-  }
-  ActionMailer::Base.delivery_method = :smtp
+     :address        => '50.116.21.144',
+     :port           => '25',
+     :authentication => 'plain',
+     :user_name      => 'wichobabas',
+     :password       => 'qor43e95',
+     :domain         => 'mail.cursame.me'
+   }
+   ActionMailer::Base.delivery_method = :smtp
+  
 
 end

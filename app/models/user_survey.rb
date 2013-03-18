@@ -4,6 +4,26 @@ class UserSurvey < ActiveRecord::Base
   has_many :user_survey_responses
   accepts_nested_attributes_for :user_survey_responses, :reject_if => lambda { |a| a[:answer_id].blank? }, :allow_destroy => true
 
+
+
+  after_create do
+    self.survey.courses.each do
+      |course|
+      teachers = course.members_in_courses.keep_if {
+        |member|
+        member.owner == true
+      }
+
+      teachers.each do
+        |teacher|
+        teacher.user.settings_teacher.increment_surveys
+      end
+    end
+  end
+
+  #
+  # Calcula la calificacion de la evaluacion
+  #
   def evaluation
     responses = self.user_survey_responses
     correct_answers = 0.0

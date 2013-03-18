@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227231205) do
+ActiveRecord::Schema.define(:version => 20130316011330) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.datetime "updated_at",        :null => false
     t.integer  "course_id"
     t.integer  "user_id"
+    t.float    "rub_calification"
   end
 
   create_table "authentications", :force => true do |t|
@@ -120,8 +121,8 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.text     "silabus"
     t.datetime "init_date"
     t.datetime "finish_date"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "public_status"
     t.string   "avatar"
     t.string   "coverphoto"
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.integer  "survey_param_evaluation"
     t.integer  "delivery_param_evaluation"
     t.integer  "network_id"
+    t.boolean  "active_status",             :default => true
   end
 
   create_table "deliveries", :force => true do |t|
@@ -211,11 +213,12 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.integer  "user_id"
     t.integer  "course_id"
     t.boolean  "accepted"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.boolean  "owner"
-    t.string   "title",      :default => "curso"
+    t.string   "title",         :default => "curso"
     t.integer  "network_id"
+    t.boolean  "active_status", :default => true
   end
 
   create_table "network_templates", :force => true do |t|
@@ -310,9 +313,10 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.integer  "assignment_id"
     t.integer  "course_id"
     t.integer  "evaluation_porcentage"
-    t.integer  "rub_calification"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "figure"
+    t.float    "rub_calification"
   end
 
   create_table "role_id_and_permission_ids", :force => true do |t|
@@ -328,6 +332,16 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.date     "created"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "settings_teachers", :force => true do |t|
+    t.integer  "limit_deliveries"
+    t.integer  "count_deliveries"
+    t.integer  "limit_surveys"
+    t.integer  "count_surveys"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
   end
 
   create_table "surveyings", :force => true do |t|
@@ -347,6 +361,7 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.integer  "network_id"
     t.integer  "user_id"
     t.integer  "poll_id"
+    t.string   "state"
   end
 
   create_table "user_friends", :force => true do |t|
@@ -423,6 +438,7 @@ ActiveRecord::Schema.define(:version => 20130227231205) do
     t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.integer  "network_id"
+    t.integer  "course_id"
   end
 
 end

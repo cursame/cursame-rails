@@ -1,20 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @friendship.user_id %>
+  <b> <h3><%=@user.email%> Friendship List: </h3></b>
 </p>
 
 <p>
-  <b>Friend:</b>
-  <%= @friendship.friend_id %>
+  <b>Friends:</b>
+  <%= @friendship.friend_id%>
 </p>
 
-<p>
-  <b>Accepted:</b>
-  <%= @friendship.accepted %>
-</p>
-
-
-<%= link_to 'Edit', edit_friendship_path(@friendship) %> |
+<%= link_to 'Edit', user_friends_path(@user) %> |
 <%= link_to 'Back', friendships_path %>

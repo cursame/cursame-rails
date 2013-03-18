@@ -1,42 +1,31 @@
 <div style="margin-left:70px;">
-<%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-      <% @course.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
- 
+<div style="width:400px; float:left;">
+<%= form_for(@course, :html => { :class => "default-form edit-course"}, :remote => true) do |f| %>
   <%= f.label :avatar %>
   <%= f.file_field :avatar%></br>
   <%= f.label :imagen_de_cabecera %>
   <%= f.file_field :coverphoto%> 
-  <div class="field">
-    <%= f.label :title, 'Titulo' %><br />
     <%= f.text_field :title %>
-    <%= f.label :silabus, 'Descripción' %>
-    <%= f.text_area :silabus, :rows => 7, :cols => 76, :placeholder=>'Descripción' %>
+    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción' %>
     <%= f.label :fecha_de_inicio %>   
     <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
     <%= f.label :imagen_de_finalización %>    
     <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
     <%= f.label :public_status, 'Privacidad' %>
     <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-    <%= f.label :Valor_de_examenes%>
-    <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div>
-    <%= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
+</div>   
+<div class="default-form edit-course" style="width:400px; float:left;">
 
+ <!-- <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div> -->
+    <%#= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
+    <%= f.label :Valor_de_examenes%>
+    <%= f.text_field :survey_param_evaluation%>
     <%= f.label :Valor_de_tareas_o_entregas %>
-    <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div>
-    <%= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
+    <%= f.text_field :delivery_param_evaluation %>
+ <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
+    <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     
-    <%= f.submit "Actualizar Cursosss" %>
+    <%= f.submit "Actualizar Cursos" %>
 <% end %>
 <script type="text/javascript">
     $("#create_course_form").on('click',function(){
@@ -53,9 +42,10 @@
                 dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
             });
 
-            var nestedNewCourseSlider = new NestedSlider(false);
+        /*    var nestedNewCourseSlider = new NestedSlider(false);
             nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation'), $('#course_survey_param_evaluation') );
-            nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation'), $('#course_delivery_param_evaluation') );
+            nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation'), $('#course_delivery_param_evaluation') ); */
         });
 </script>
+</div>
 </div>

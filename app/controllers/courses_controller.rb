@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   filter_access_to :show
 
   def index
-    @courses = Course.where(:network_id => current_network.id).search(params[:search])
+    @courses = Course.where(:network_id => current_network.id, :active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|
@@ -52,8 +52,10 @@ class CoursesController < ApplicationController
     #@network = Network.find_by_subdomain!(request.subdomain)
     #@comments = @network.comments
 
-
-
+    @search = params[:search]
+    @page = params[:page].to_i
+    @wall = @course.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    
     respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @course }
@@ -118,10 +120,11 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.json { head :no_content }
-        format.html { redirect_to courses_url }
-        # format.js
+        format.html { redirect_to :back }
+        format.js
       else
         format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back }
         format.js
       end
     end
@@ -138,7 +141,7 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def members
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
@@ -149,7 +152,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  
+
   def evaluation
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
@@ -194,38 +197,39 @@ class CoursesController < ApplicationController
 
      if @assignment.save!
             puts "************************************************************************"
-
+          # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+           
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
-                
-                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |    
-                  
-                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])                 
+
+                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
+
+                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
                   @response_to_the_evaluation.name = generate_rubres.name
                   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
                   @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
                   @response_to_the_evaluation.assignment_id = @assignment.id
                   @response_to_the_evaluation.save
-                       
+
                    puts "******** se han generado las areas de evaluacion ************"
-                   
+
                 end
-                
-                
+
+
                     @typed = "Assignment"
                     @az =  @assignment
-                    
-                  ####### despues de guardar se crea la notificación de actividad con geo localización 
+
+                  ####### despues de guardar se crea la notificación de actividad con geo localización
                     activation_activity
-                    
-              
+
+
              if @activity.save
-                 redirect_to :back  
+                 redirect_to :back
              else
              end
         end
   end
-  
+
   def dashboard_deliver
   end
   
@@ -234,6 +238,8 @@ class CoursesController < ApplicationController
   def call_assignments_response
     @assignment = Assignment.find(params[:id])
     @data = params[:data]
+    @typeo = "assignment"
+    
     respond_to do |format|
       #format.html
       format.json
@@ -249,5 +255,46 @@ class CoursesController < ApplicationController
     end
   end
   
+  def active_status
+      @course = Course.find(params[:id])
+      
+        if @course.active_status == true
+             @course.active_status = 2
+             @course.save
+             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
+             @course.members_in_courses.each do |co| 
+               co.active_status = 2
+               co.save
+             end
+        else
+             @course.active_status = 1
+             @course.save
+             @course.members_in_courses.each do |co| 
+                co.active_status = 1
+                co.save
+              end
+             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
+             
+        end
+        
+     if @course.save
+      respond_to do |format|
+        #format.html
+        format.json
+        format.js
+      end
+     end
+  end
+  
+  def edit_delivery_access
+    @delivery = Delivery.find(params[:id])
+    @data = params[:data]
+    @typeo = "delivery"
+     respond_to do |format|
+        #format.html
+        format.json
+        format.js
+      end
+  end
 
 end

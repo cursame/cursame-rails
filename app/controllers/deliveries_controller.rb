@@ -66,13 +66,15 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.new(params[:delivery])
     @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
     @compart_assets = CompartAsset.new(params[:compart_assets])
-    @assignment = Assignment.new(params[:assignment])   
-    
+    @assignment = Assignment.new(params[:assignment])
+
     respond_to do |format|
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
-        ####### despues de guardar se crea la notificación de actividad con geo localización 
+        
+        @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+
         activation_activity
          #actualizamos los assets del delivery
         if(params[:files])
@@ -81,12 +83,12 @@ class DeliveriesController < ApplicationController
             @delivery.assets.push(@asset)
           end
         end
-        
+
+
+
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
         format.js
-
-        alfredot_rifa_free_pro_forever
 
       else
         format.html { render action: "new" }
@@ -100,7 +102,7 @@ class DeliveriesController < ApplicationController
   # PUT /deliveries/1.json
   def update
     @delivery = Delivery.find(params[:id])
-
+    @publication_m = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
@@ -148,11 +150,11 @@ class DeliveriesController < ApplicationController
       @validation_member = @delivery.courses
       @delivery.courses.each do |dc|
         @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
-        if @member 
-          break 
+        if @member
+          break
         else
              #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-           end       
+           end
          end
          if @member
            if @member.accepted
@@ -188,7 +190,7 @@ class DeliveriesController < ApplicationController
       @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
       @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
       @response_to_the_evaluation.assignment_id = @assignment.id
-      @response_to_the_evaluation.create              
+      @response_to_the_evaluation.create
     end
   else
   end

@@ -150,6 +150,9 @@ $(document).ready(function() {
             initBool = false;
         }
         /* this function execute the calendar list */
+        /* this function clear the event list */
+        $('#event_list').html('');
+        /* this function puts event list*/
         $.each(event_list, function(index, value) {
           $('#event_list').append(value.title + ' - '+ value.end + '<br>');
         });

@@ -39,7 +39,7 @@ class HomeController < ApplicationController
       if params[:delivery] 
         params[:commentable_type] = 'Course'
         params[:delivery][:course_ids].each do |group_id|
-          params[:commentable_id] = group_id
+        params[:commentable_id] = group_id
           save_comment
         end
       #esto es para comentarios que son publicos de la red

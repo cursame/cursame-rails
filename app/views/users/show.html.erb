@@ -1,37 +1,12 @@
-
-
-
 <div id="banner-profile" style="background:url('<%= @user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-    <div class="banner-shadow">
-        <div id="box-titles">
-            <ul id="banner-btns" class="list-header">
-                <li class="calendar" get-to="#calendar-area" move-sidebar-height="36px" on-load-function="calendar">Calendario</li>
-                <li class="calendar" get-to="#full-deliveries-area" move-sidebar-height="36px">Entregas</li>
-            </ul>
-        </div>
-
-
-
-        <div id="box-titles-content" class="box-titles-content-style">
-
-            <div id="calendar-area" style="height: 300px">
-              <%= render partial: "calendar/calendar_mini"%>
-              <%= render partial: "calendar/list"%>
-            </div>
-            <div id="full-deliveries-area" >
-              <%= render partial: "courses/dashboard_deliver"%>
-            </div>
-        </div>
-    </div>
+   <%= render :partial => 'shared/head_menu'%>
 </div>
-
-
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
     <!-- SideBar -->
     <div id="side-bar" class="side-left-bar" >
         <!-- User Avatar -->
-        <div id="box-user-credential" class="user-layout">
+        <div id="box-user-credential" class="network-layout">
             <div class="thumbnail"  >
               <%= image_tag(@user.avatar.profile)%>
             </div>
@@ -86,8 +61,10 @@
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
                                    <% if @cort.network_id == current_network.id %>
+                                    <% if @cort.active_status == true%>
                                     <% if cu.accepted == true %>
                                         <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                                    <%end%>
                                     <%end%>
                                    <%end%>
                                 <%end%>
@@ -103,8 +80,10 @@
                             <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
                                 <% if @cort.network_id == current_network.id %>
+                                <% if @cort.active_status == true%>
                                 <% if cu.owner == true%>
                                     <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                                <%end%>
                                 <%end%>
                                 <%end%>
                             <%end%>
@@ -113,17 +92,17 @@
                 </div>
             </div>
         </div>
-         <% if @user.id == current_user.id %>
-            <%= link_to "Solicitudes de amistad", friendships_path%>
-            <%else%>
-            <%= form_for (@friendship = Frienship.new) do |friendship|%>
+         <%# if @user.id == current_user.id %>
+            <%#= link_to "Solicitudes de amistad", friendships_path%>
+            <%#else%>
+            <%#= form_for (@friendship = Frienship.new) do |friendship|%>
 
-             <%= friendship.hidden_field :user_id, :value => current_user.id %>
-             <%= friendship.hidden_field :user_id, :value => @user.id %>
-             <%= friendship.submit "Agregar a mis amigos"%>
+             <%#= friendship.hidden_field :user_id, :value => current_user.id %>
+             <%#= friendship.hidden_field :user_id, :value => @user.id %>
+             <%#= friendship.submit "Agregar a mis amigos"%>
 
-            <%end%>
-            <%end%>
+            <%#end%>
+            <%#end%>
       <!-- se comenta amigos para la beta que saldrá el día 15 de febrero -->
          <!--<div id="box-friends" class="basic-lateral-box" >
             <h2>AMIGOS</h2>
@@ -166,79 +145,33 @@
 
     <!-- Content -->
     <div id="box-stream-post">
-      <%=render :partial => 'shared/post_menu' %>
+        <%=render :partial => 'shared/post_menu' %>
 
-      <% @comments.reverse.each do |comment| %>
-          <%= render :partial => '/shared/comments', :locals => { :comment=>comment } %>
-      <%end%>
-
-      <div id="box-comments">
-        <div class="general-cir"></div>
-        <div id="comment1" class="comment" >
-          <div class="arrow-left"></div>
-          <div class="header">
-            <div class="null-image"></div>
-            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-            <div class="name"> <%#  comment.user.name %></div>  <span>fecha</span>
-          </div>
-          <div class="content">
-            <div class="null-image"></div>
-            <%#  comment.comment %>
-
-          </div>
-
-          <div class="footer">
-            <img src="/assets/icons/grey-mini-comment.png" class="icon">
-            <img src="/assets/icons/grey-mini-like.png" class="icon">
-            <div class="labels"><%# comment.comments.count %> Comentarios</div>
-            <div class="labels">12 Likes</div>
-          </div>
+        <%=render :partial => 'shared/wall_filters' %>
+        <div id="timeline">    
+          <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
         </div>
-      </div>
-
-
-        <div id="box-comments">
-            <div class="general-cir"></div>
-                <div id="" class="comment-image" >
-                    <div class="arrow-left"></div>
-                        <div class="header">
-                            <div class="null-image"></div>
-                            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-                            <b>Nombre Usuario</b>  <span>fecha</span>
-                        </div>
-                    <div class="footer">
-                        <div class="content-footer">
-                            <img src="/assets/icons/white-mini-comment.png" class="icon">
-                            <img src="/assets/icons/white-mini-like.png" class="icon">
-                            <div class="labels">20 Comentarios</div>
-                            <div class="labels">12 Likes</div>
-                        </div>
-                    </div>
-                    <div class="content" ><img src="/assets/comment_image.jpg" class="single-image"></div>
-            </div>
-        </div>
-      <div id="box-comments">
-        <div class="general-cir"></div>
-
-        <div id="" class="comment" >
-          <div class="arrow-left"></div>
-          <div class="header">
-            <div class="avatar"><%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%></div>
-            <b>Nombre Usuario</b>  <span>fecha</span>
-          </div>
-          <div class="content">
-            <p>Isum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-          </div>
-
-          <div class="footer">
-            <img src="/assets/icons/grey-mini-comment.png" class="icon">
-            <img src="/assets/icons/grey-mini-like.png" class="icon">
-            <div class="labels">20 Comentarios</div>
-            <div class="labels">12 Likes</div>
-          </div>
-        </div>
-      </div>
-
+        <!-- fin timeline -->
+        <%= will_paginate(@wall) %>
+        
     </div>
 
 </div>
+<script type="text/javascript">
+$(function() {
+  var p = $('#timeline').pageless({ 
+    totalPages: <%= @wall.total_pages %>,
+    url: '<%= wall_path %>',
+    loaderMsg: '...',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+});
+</script>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  limit_deliveries: 1
+  count_deliveries: 1
+  limit_surveys: 1
+  count_surveys: 1
+
+two:
+  limit_deliveries: 1
+  count_deliveries: 1
+  limit_surveys: 1
+  count_surveys: 1

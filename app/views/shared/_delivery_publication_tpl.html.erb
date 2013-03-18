@@ -1,3 +1,4 @@
+
 <div class="null-image"></div>
  <h1><%= delivery.title %></h1>
 
@@ -14,7 +15,7 @@
 <div class="asset-box upload-label">
     <% delivery.assets.each do|files|%>
         <div class="file-mini-upload">
-            <% debug files.file %> <span><%= link_to "#{files.file}", "#{files.file}" %> </span>
+            <%= debug files.file %> <span><%= link_to "#{files.file}", "#{files.file}" %> </span>
 
         </div>
     <%end%>
@@ -134,7 +135,6 @@
         <%=render :partial => "/assignments/form_for_delivery"%>
 </div>
 
-<!-- algo que se puede descifrar de alguna manera -->
  <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
                 <% @count_deliveries_assignments = delivery.assignments.count %>
                 <%= @count_deliveries_areas_of_evaluation = delivery.areas_of_evaluation.count %>
@@ -147,8 +147,8 @@
                     <% delivery.assignments.each do |assignment| %>
                        <b><%= assignment.title %></b></br>
                        <%= assignment.brief_description %></br>
-                          <%= form_for assignment do |assignment_form|%>                        
-                                        
+                          <%= form_for assignment do |assignment_form|%>
+
                                <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
                                      <b>rubro</b></br>
                                       <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
@@ -156,14 +156,16 @@
                                     <b>Evaluación final</b>
                                    <%= assignment_form.text_field :accomplishment %></br>
                                <%= assignment_form.submit%></br>
-                             
-                          <%end%>             
+
+                          <%end%>
                        <%= link_to "Ver entrega de tarea", "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}"%>
                     <%end%>
                   <% else %>
                     <b>No se han encontrado respuestas a esta tarea</b>
                 <% end %>
 </div>
+<!-- algo que se puede descifrar de alguna manera -->
+
 <script>
     $("#open-close-<%= delivery.id %>").click(function () {
         $('#entrega-<%= delivery.id %>').toggle("slow");

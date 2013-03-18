@@ -1,33 +1,6 @@
-
-<div id="banner-profile" style="background:url('assets/bannerprofile-clean.png'); background-size: 100% 440px; background-position-y: 0px; background-repeat: no-repeat;">
-
-  <div class="banner-shadow">
-    <div id="box-titles">
-      <ul id="banner-btns" class="list-header">
-        <li class="calendar" get-to="#calendar-area" move-sidebar-height="105px" >Calendario</li>
-        <li class="gallery" get-to="#calendar-area2" move-sidebar-height="105px">Galería</li>
-        <li class="gallery" get-to="#calendar-area3" move-sidebar-height="105px">Galería</li>
-        <li class="gallery" get-to="#calendar-area4" move-sidebar-height="105px">new</li>
-      </ul>
-    </div>
-    <div id="box-titles-content" class="box-titles-content-style">
-      <div id="calendar-area">
-        <img src="/assets/calendar/calendar.png" >
-      </div>
-      <div id="calendar-area2">
-        <img src="/assets/cursos.png" >
-      </div>
-      <div id="calendar-area3">
-        <img src="/assets/survey.jpg" >
-      </div>
-      <div id="calendar-area4">
-        <%= render :partial => "users/menu_member"%>
-      </div>
-    </div>
-  </div>
+<div id="banner-profile" style="background:url('<%= @user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+   <%= render :partial => 'shared/head_menu'%>
 </div>
-
-
 <!-- Content Post Box -->
 <%#= debug network_member%>
 <div id="box-content" class="profile-line">
@@ -82,8 +55,10 @@
             <% @courses.each do |cu|%>
             <% @cort = Course.find(cu.course_id)%>
             <% if @cort.network_id == current_network.id %>
+            <% if @cort.active_status == true%>
             <% if cu.accepted == true %>
             <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+            <%end%>
             <%end%>
             <%end%>
             <%end%>
@@ -99,9 +74,11 @@
             <% @courses.each do |cu|%>
             <% @cort = Course.find(cu.course_id)%>
             <% if @cort.network_id == current_network.id %>
+            <% if @cort.active_status == true%>
             <% if cu.owner == true%>
             <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
             <%else%>
+            <%end%>
             <%end%>
             <%end%>
             <%end%>

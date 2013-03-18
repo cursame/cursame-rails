@@ -5,49 +5,62 @@
   post = publication.publication
   id = publication.id
   publication_cls = 'delivery'
-
+  cargo = publication
   case publication.publication_type
   when 'Comment'
     avatar = post.user.avatar.modern
     name = post.user.name
     content = post.comment_html
+    ico =''
   when 'Course'
     avatar = post.avatar.modern
     name = post.title
     content = post.silabus
+    ico = ''
   when 'Discussion'
     avatar = post.user.avatar.modern
     name = post.title
     content = post.description
+    ico = '-discussion'
   when 'Delivery'
     avatar = post.user.avatar.modern
     name = post.title
     content = post.description
     publication_cls = 'delivery'
+    ico = '-homework'
   when 'Survey'
     avatar = post.user.avatar.modern
     name = post.name
+    ico = '-survey'
   end
   created_at = post.created_at
   
   type = publication.publication_type
   %>
+
+<% if post.state == "published" %>
+
   <div class="publication-box" >
-    <div class="general-cir"></div>
+      
+      <%#= debug cargo.publication.comments %>
+      
+    <div class="general-cir<%=ico%>"></div>
 
     <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
       <div class="arrow-left"></div>
       <div class="header">
         <div class="avatar"><%= image_tag(avatar,{:class => "avatar-mini"})%></div>
-        <div class="top-null-image"></div><b><%= name %></b>  <span class="date"><%= created_at %></span>
+      
+        <div class="top-null-image"></div><b><%= name %></b>  <span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
+        
 
       <div class="content">
 
         <div class="null-image"></div>
         <% case type%>
         <% when 'Discussion'%>
-        <p class="title-discusion"><%= name %></p>
+        <p class="title-discusion"><%= name %> </p>
         <div class="description"><%= content %></div>
         <% when 'Course'%>      
         <p class="title-discusion"><%= name %></p>
@@ -70,11 +83,11 @@
         <div class="icon like">&nbsp;&nbsp;</div>
         <div class="labels"><%= post.comments.count %> Comentarios</div>
         <% if publication.publication_type == 'Delivery'%>
-          <% if MembersInCourse.is_owner_by_delivery_and_user_id(post,current_user) %>
-            <div class="labels"><div id="open-close-lo<%= post.id %>"><a>Respuestas</a></div></div>
+         <!--  <% if MembersInCourse.is_owner_by_delivery_and_user_id(post,current_user) %>
+           <div class="labels"><div id="open-close-lo<%= post.id %>"><a>Respuestas</a></div></div>
           <%else%>
             <div class="labels"><div id="open-close-<%= post.id %>"><a>Responder tarea</a></div></div>
-          <%end%>
+          <%end%>-->
         <%else%>
           <div class="labels">12 Likes</div>
         <%end%>        
@@ -98,7 +111,7 @@
       </div>
     </div>
   </div>
-
+<%end%>
   <script type="text/javascript">
   $('#footer-publication-<%= id %>').on('click',function(e){
     e.preventDefault();
