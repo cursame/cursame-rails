@@ -30,7 +30,6 @@ class Comment < ActiveRecord::Base
   auto_html_for :comment do
     html_escape
     image
-
     # This is defined in config/initializers/auto_html.rb
     dailymotion :width => "100%", :height => 250
     #flickr :width => 400, :height => 250

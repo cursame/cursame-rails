@@ -13,6 +13,7 @@ class Delivery < ActiveRecord::Base
   has_many :assets, :through => :delivery_assets
   has_many :events, as: :schedule
   has_many :activities, as: :activitye
+  belongs_to :network
 
   # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
 

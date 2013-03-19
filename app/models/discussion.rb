@@ -11,7 +11,12 @@ class Discussion < ActiveRecord::Base
 
   after_create do
   	#con esto se guarda en wall
-    Wall.create :user => self.user, :publication => self, :network => self.network
+    self.courses.each do |course|
+      Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => course.id
+    end
+    if !self.courses # si es publica
+      Wall.create :user => self.user, :publication => self, :network => self.network
+    end   
   end
   
   def state
