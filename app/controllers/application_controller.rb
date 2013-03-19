@@ -45,11 +45,11 @@ class ApplicationController < ActionController::Base
   #links to redirect the user to the networks
   def links
      case
-       when Rails.env = 'development'
+       when Rails.env == 'development'
          @link = 'lvh.me:3000'
-       when Rails.env = 'production'
-         @link = 'cursa.me'
-       when Rails.env = 'test'
+       when Rails.env == 'production'
+         @link = 'cursatest.com'
+       when Rails.env == 'test'
          @link = 'cursatest.com'
      end
   end

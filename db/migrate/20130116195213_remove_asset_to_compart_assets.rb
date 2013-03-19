@@ -1,6 +1,6 @@
 class RemoveAssetToCompartAssets < ActiveRecord::Migration
   def up
-    remove_column :compart_assets ,:asset, :string 
+   # remove_column :compart_assets ,:asset, :string 
   end
 
   def down

@@ -19,9 +19,9 @@
      <div><%= f.label :password_confirmation %><br />
      <%= f.password_field :password_confirmation %></div>
       <div><%= f.label :nombre %><br />
-      <%= f.password_field :first_name %></div>
+      <%= f.text_field :first_name %></div>
        <div><%= f.label :apellidos %><br />
-       <%= f.password_field :last_name %></div></br>
+       <%= f.text_field :last_name %></div></br>
        
      <%= f.hidden_field :personal_url, :value => random_string_for_user_url %>
      <% if current_network %>

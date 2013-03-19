@@ -1,0 +1,77 @@
+<%
+   random_id = "#{random}"
+   @asset_unique = "upload-assignment-delevery-form-#{random_id}"
+   isSingle ||= false
+   labelIdBox ||= "none"
+%>
+<%= form_for @asset = Asset.new, :html => { :class => "default-form uploader-form"} do |f| %>
+<div id="new_assets">
+	<div id="<%= @asset_unique %>" class="file-input-box">
+	      <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
+	      <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0', multiple: true, name: "asset[file]" %>
+	      <% f.password_field :encryption_code_to_access %>
+	      <%= f.hidden_field :user_id, :value => current_user.id %>
+	</div>
+</div>
+
+
+
+<% end %>
+<script src="/assets/jquery-fileupload/jquery.fileupload.js?body=1" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+    //     var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
+    //
+
+        $('#new_assets #<%= @asset_unique %>').click(function(){
+            $('#new_assets').fileupload({
+                dataType: "script",
+                add:function(e,data){
+                    $('<%= labelIdBox%>').show();
+                    data.context = $(tmpl("template-upload",data.files[0]));
+
+                    data.context.find('.trash').click(function() {
+                        $(this).parent().remove(); //se remueve la etiqueta
+
+                        if($('<%= labelIdBox%>').children().length == 0)
+                            $('<%= labelIdBox%>').hide();
+                    });
+
+                    //console.log($('#unica').attr('id'));//.html('hola');//data.context);
+                    $('<%= labelIdBox%>').append(data.context);
+                    data.submit()
+                        .success(function (result, textStatus, jqXHR) {
+                            data.context.find('.progress-bar').hide();
+                        })
+                        .error(function (jqXHR, textStatus, errorThrown) {
+                            data.context.find('.trash').remove();
+                            data.context.find('span').css("width", "155px")
+                                    .css('line-height','27pt')
+                                    .css('font-size','11px')
+                                    .css('font-weight','bold')
+                                    .html('Error: Archivo no soportado');
+                            data.context.find('.progress-bar').hide();
+
+                        });
+                },
+                progress:function(e,data){
+                    if(data.context){
+                        progress = parseInt(data.loaded / data.total * 100,0);
+                        data.context.find('.bar').css('width',progress+ "%");
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div class="file-mini-upload">
+    <span>{%=o.name%}</span>
+    <div class="trash"></div>
+    <div class="progress-bar"><div class="bar" style="width: 0%"></div></div>
+  </div>
+</script>

@@ -87,5 +87,8 @@ class Course < ActiveRecord::Base
   def user
     self.users 
   end
+  def state
+    @state = "published"
+  end
   
 end
