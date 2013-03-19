@@ -38,11 +38,19 @@ class Survey < ActiveRecord::Base
      if self.publish_date <= DateTime.now
         self.publish!
       end
-      
+    
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
+    self.courses.each do |course|
+    
     User.all.each do |u|
-      Notification.create :user => u, :notificator => self, :kind => 'new_survey_on_course'
-      Wall.create :user => u, :publication => self, :network => self.network
+      Notification.create :user => u, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
+      if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
+      
+        Wall.create :user => u, :publication => self, :network => self.network, :course_id => course.id
+      
+      end
+    end
+    
     end
 
     #
