@@ -22,11 +22,5 @@ class Network < ActiveRecord::Base
   acts_as_commentable
   
   accepts_nested_attributes_for :users
-  accepts_nested_attributes_for :permissionings
-
-  
- 
-  
-  
-  
+  accepts_nested_attributes_for :permissionings  
 end
