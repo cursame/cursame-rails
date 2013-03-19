@@ -42,8 +42,10 @@ class Course < ActiveRecord::Base
   after_create do
     if self.public_status == 'public'
       User.all.each do |u|
-        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'          
-        Wall.create :user => u, :publication => self, :network => self.network
+        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'  
+        if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Course',self.id))       
+              Wall.create :user => u, :publication => self, :network => self.network
+        end
       end
     end  
   end
@@ -86,6 +88,9 @@ class Course < ActiveRecord::Base
 
   def user
     self.users 
+  end
+  def state
+    @state = "published"
   end
   
 end

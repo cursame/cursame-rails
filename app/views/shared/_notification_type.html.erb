@@ -1,11 +1,16 @@
 <!-- este partial controla la logica para mostrar notificaciones -->
+<% if current_role == "superadmin"%>
+<%else%>
 <li class="<%= cls %>">
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b><%=notification.notificator.user.name%></b> comentó en la red <b><%= notification.notificator.commentable.name %></b> 	
+	<% if user.avatar != nil %>
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><% end%>
+	<b><%=notification.notificator.user.name%></b> comentó en la red <b><%= notification.notificator.commentable.name %></b> 	
 
 	<% when 'user_comment_on_course'%>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
+	<% if user.avatar != nil %>
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
 
 	<% when 'new_public_course_on_network'%>
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>
@@ -17,7 +22,9 @@
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b>Ecuasiones de 2o Grado</b> en tu curso <b>Matemáticas VI</b>
 
 	<% when 'user_comment_on_discussion'%>
-	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b>
+	<% if user.avatar != nil %>
+	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>
+	<%end%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b>
 	
 	<%else%>
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b>Leer de la página 10 a la 100</b> en tu curso <b>Historia</b>
@@ -25,3 +32,4 @@
 	<br/>
 	<span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
+<%end%>

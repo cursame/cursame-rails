@@ -6,7 +6,7 @@ class AddPublishDateToSurvey < ActiveRecord::Migration
 
     add_column :surveys, :network_id, :integer
 
-    add_column :surveys, :user_id, :intege
+    add_column :surveys, :user_id, :integer
 
   end
 end

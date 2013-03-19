@@ -55,6 +55,13 @@ class AssignmentsController < ApplicationController
       puts "**************"
 
      if @assignment.save!
+       
+           if(params[:files])
+             params[:files].each do |asset_id|
+               @asset = Asset.find(asset_id)
+               @delivery.assets.push(@asset)
+             end
+           end
             puts "************************************************************************"
            @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
            
