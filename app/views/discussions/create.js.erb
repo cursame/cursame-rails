@@ -1,2 +1,3 @@
+$('#new_discussion')[0].reset();
 $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
 $('#timeline').effect("highlight", {}, 1000);
