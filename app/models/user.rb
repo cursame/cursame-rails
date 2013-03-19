@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends
+  :settings_teacher, :friendships, :friends, :registerable
 
   # Agredas las relaciones de frienship
   has_many :friendships
