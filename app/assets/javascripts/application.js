@@ -14,8 +14,8 @@
 //= require_raphael
 //= require_morris
 //= require private_pub
-//= require /assets/jquery-fileupload/basic
-//= require /assets/jquery-fileupload/vendor/tmpl
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require_tree
 
 // Adding and removing questions answers
