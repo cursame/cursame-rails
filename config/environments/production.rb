@@ -65,6 +65,7 @@ Cursame30Lb::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   HOST = "cursatest.com"
+  config.action_mailer.default_url_options = { :host => 'cursatest.com' }
   # Action Mailer
   ActionMailer::Base.smtp_settings = {
     :address        => '50.116.21.144',
