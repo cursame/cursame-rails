@@ -7,7 +7,7 @@ class Api::ApiController < ApplicationController
   
   def publications
     @publications = @network.walls.order('created_at DESC')   
-    render :json => {:publications => @publications.as_json(:include => [:publication]), :count => @publications.count()}, :callback => params[:callback]      
+    render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course]), :count => @publications.count()}, :callback => params[:callback]      
   end
 
   def comments
