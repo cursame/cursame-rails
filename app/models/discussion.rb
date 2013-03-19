@@ -14,7 +14,7 @@ class Discussion < ActiveRecord::Base
     self.courses.each do |course|
       Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => course.id
     end
-    if !self.courses # si es publica
+    if self.courses.count == 0 # si es publica
       Wall.create :user => self.user, :publication => self, :network => self.network
     end   
   end

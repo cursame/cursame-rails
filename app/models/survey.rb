@@ -53,11 +53,14 @@ class Survey < ActiveRecord::Base
     
     end
 
+
     #
     # Cuando se crea el survey, se le notifica a caca miembro de los cursos que tiene el survey
     #
     self.courses.each do |course|
       course.members_in_courses.each do |member|
+        Notification.create :user => member.user, :notificator => self, :kind => 'new_survey_on_course'
+        Wall.create :user => member.user, :publication => self, :network => self.network, :course_id => course.id
         mail = Notifier.new_survey_notification(member,self)
         mail.deliver
       end
