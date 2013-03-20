@@ -70,10 +70,7 @@
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
                 <% if @member.accepted == true %>
-                
-                    <%= image_tag(@members.avatar.mini,{:class => "avatar-mini"}),  if ( !@members.avatar.blank?) %>
-                    <%= image_tag(@members.image_avatarxx,{:class => "avatar-mini"}),  if (@members.avatar.blank?) %>
-                    
+                    <%= image_tag(@members.avatar.modern,{:class => "avatar-mini"})%>
                 <%end%>
             <%end%>
              <% if @member.owner == true %>
