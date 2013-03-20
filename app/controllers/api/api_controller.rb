@@ -11,9 +11,16 @@ class Api::ApiController < ApplicationController
   end
 
   def comments
-    @comments = @network.comments.order('created_at DESC')   
+    if(params[:publicacionId])
+      @wall = Wall.find(params[:publicacionId])
+      @comments = @wall.publication.comments.order('created_at DESC')
+    if(params[:comment])
+    else
+      @comments = @user.comments
+    end
     render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]      
   end
+
   def courses
     @courses = @network.courses.order('created_at DESC')   
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]      
@@ -22,7 +29,7 @@ class Api::ApiController < ApplicationController
   def create_comment
     @comment = Comment.new
     @comment.commentable_type = params[:commentable_type]
-    @comment.commentable_id = params[:commentable_id]
+    @comment.commentable_id = params[:commentable_id] || @user.id
     @comment.comment = params[:comment]
     @comment.user = @user
     @comment.network = @network
