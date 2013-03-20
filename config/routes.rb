@@ -98,9 +98,9 @@ Cursame30Lb::Application.routes.draw do
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
-  
+
   #### llada de ajax de editar tarea
-  
+
   get "edit_delivery_access/:id", :to => "courses#edit_delivery_access", :as => :edit_delivery_access
 
   resources :deliveries do
@@ -247,12 +247,12 @@ Cursame30Lb::Application.routes.draw do
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
    match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
-   
+
    # api para la mobile
    #this is for api for the mobile app
   namespace :api do
     resources :tokens,:only => [:create, :destroy]
-  end 
+  end
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson

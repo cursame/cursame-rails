@@ -5,9 +5,31 @@
 </p>
 
 <p>
-  <b>Friends:</b>
-  <%= @friendship.friend_id%>
-</p>
+  <b>Accepted Friends:</b>
+  <p>
 
-<%= link_to 'Edit', user_friends_path(@user) %> |
-<%= link_to 'Back', friendships_path %>
+  <%@all_friends.each do |user|%>
+    <%if (user[:accepted]) then%>
+      <tr>
+        <td>
+            <%= link_to user[:user].email, show_user_path(user[:user].personal_url)%>
+        </td>
+      </tr>
+      <p>
+    <%end%>
+  <%end%>
+   <p>
+   <b>Non Accepted Friends:</b>
+   <p>
+
+   <%@all_friends.each do |user|%>
+    <%if !(user[:accepted]) then%>
+      <tr>
+        <td>
+            <%= link_to user[:user].email, show_user_path(user[:user].personal_url)%>
+        </td>
+      </tr>
+      <p>
+   <%end%>
+   <%end%>
+</p>

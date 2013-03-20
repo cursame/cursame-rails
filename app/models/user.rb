@@ -20,10 +20,8 @@ class User < ActiveRecord::Base
 
   # Agredas las relaciones de frienship
   has_many :friendships
-  has_many :friends, :through => :friendships
-
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
@@ -120,4 +118,66 @@ class User < ActiveRecord::Base
     end
   end
 
+  # search all friends accepted or not accepted
+  def friends(accepted)
+    friendships = self.friendships.keep_if {
+      |friendship|
+      friendship.accepted == accepted
+    }
+
+    friends = friendships.map {
+      |friendship|
+      friendship.friend
+    }
+
+    another_friendships = self.inverse_friendships.keep_if {
+      |inverse_friendship|
+      inverse_friendship.accepted == accepted
+    }
+
+    inverse_friends = another_friendships.map {
+      |friendship|
+      friendship.user
+    }
+
+    ordered_friends = (friends + inverse_friends).sort {
+      |x,y|
+      x.email <=> y.email
+    }
+    return ordered_friends
+  end
+
+  def all_friends
+    friendships = self.friendships
+    friendships_inverse = self.inverse_friendships
+
+    friends = friendships.map {
+      |friendship|
+      hash = Hash.new
+      hash[:user] = friendship.friend
+      hash[:accepted] = friendship.accepted
+      hash
+    }
+
+    inverse_friends = friendships_inverse.map {
+      |friendship|
+      hash = Hash.new
+      hash[:user] = friendship.user
+      hash[:accepted] = friendship.accepted
+      hash
+    }
+
+    ordered_friends = (friends + inverse_friends).sort {
+      |x,y|
+      x[:user].email <=> y[:user].email
+    }
+
+    return ordered_friends
+  end
+
+  def mutual_friends(other_user)
+    friends = self.friends(true)
+    other_friends = other_user.friends(true)
+    return friends | other_friends
+  end
 end

@@ -14,11 +14,14 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1.json
   def show
     @user = User.find(params[:user_id])
-    @friendship = @user.inverse_friends.last.friendships.last
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @friendship }
-    end
+    @all_friends = @user.all_friends
+    # @non_accepted_friends = @user.non_accepted_friends
+    # @accepted_friends = @user.accepted_friends
+
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.json { render json: @friendship }
+    #end
   end
 
   # GET /friendships/new

@@ -1,3 +1,4 @@
+
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
@@ -28,6 +29,9 @@ class MembersInCourse < ActiveRecord::Base
   def evaluationSurveys
     course = Course.find(self.course_id)
     evaluationSurveys = 0.0
+    if (course.surveys.size == 0) then
+      return 0
+    end
     course.surveys.each do |response|
       user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id, self.user_id)
       if (user_survey.nil?) then
