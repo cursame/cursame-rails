@@ -14,8 +14,10 @@ class MembersInCourse < ActiveRecord::Base
   end
 
   after_create do
+=begin
     mail = Notifier.new_member_in_course(self,self.course)
     mail.deliver
+=end
   end
 
 

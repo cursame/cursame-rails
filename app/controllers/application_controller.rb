@@ -59,9 +59,9 @@ class ApplicationController < ActionController::Base
   end
 
   #help to find friend
-  def current_friend
-      @user = User.find_by_personal_url(params[:personal_url])
-  end
+  #def current_friend
+   #   @user_friend = User.find_by_personal_url(params[:personal_url])
+  #end
 
   def current_course
       @course = Course.find(params[:id])
@@ -99,7 +99,7 @@ class ApplicationController < ActionController::Base
 
   def user_url_random
     o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
-    string  =  (0...260).map{ o[rand(o.length)] }.join
+    string  =  (0...220).map{ o[rand(o.length)] }.join
   end
 
   def alfredot_rifa_free_pro_forever

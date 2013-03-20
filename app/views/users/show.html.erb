@@ -1,4 +1,8 @@
-<div id="banner-profile" style="background:url('<%= @user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<% if  @user_l.coverphoto.blank? %>
+<div id="banner-profile" style="background:url(/assets/<%= @user_l.cover_photox %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<%else%>
+<div id="banner-profile" style="background:url('<%= @user_l.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<%end%>
    <%= render :partial => 'shared/head_menu'%>
 </div>
 <!-- Content Post Box -->
@@ -8,21 +12,26 @@
         <!-- User Avatar -->
         <div id="box-user-credential" class="network-layout">
             <div class="thumbnail"  >
-              <%= image_tag(@user.avatar.profile)%>
+             <%= image_tag(@user_l.avatar.profile) if ( !@user_l.avatar.blank?   ) %>
+             <%= image_tag(@user_l.image_avatarx) if (@user_l.avatar.blank?  )  %>  
             </div>
+            
             <div class="tagname">
-              <%= @user.name %>
+              <%= @user_l.name %>
             </div>        
+            <%#= debug  @user_l.avatar.profile   %>
             
         </div>
         <div id="box-profile-info" class="basic-lateral-box margin-top">
-            <li class="aboutme"><%= @user.bios %></li>
-            <li class="mail"> <%= @user.email %></li>
-            <li class="twitter"><%= @user.facebook_link %> </li>
-            <li class="facebook"><%= @user.twitter_link%></li>
+            <li class="aboutme"><%= @user_l.bios %></li>
+            <li class="mail"> <%= @user_l.email %></li>
+            <li class="twitter"><%= @user_l.facebook_link %> </li>
+            <li class="facebook"><%= @user_l.twitter_link%></li>
             <li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li>
             
         </div>
+        <%#= debug @user %>
+        
         <%#= current_user.devise_mailer_subdomain%>
 
         <div id="box-course" class="basic-lateral-box" >

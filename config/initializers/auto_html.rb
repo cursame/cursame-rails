@@ -176,7 +176,7 @@ AutoHtml.add_filter(:vimeo).with(:width => 440, :height => 248, :show_title => f
   end
 end
 
-AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder => 0, :wmode => nil) do |text, options|
+AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder => 0, :wmode => 'transparent') do |text, options|
   regex = /https?:\/\/(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\S)*/
   text.gsub(regex) do
     youtube_id = $3

@@ -4,12 +4,12 @@
 <li class="<%= cls %>">
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
-	<% if user.avatar != nil %>
+	<% if current_user.avatar != nil %>
 	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><% end%>
 	<b><%=notification.notificator.user.name%></b> comentó en la red <b><%= notification.notificator.commentable.name %></b> 	
 
 	<% when 'user_comment_on_course'%>
-	<% if user.avatar != nil %>
+	<% if current_user.avatar != nil %>
 	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
 
 	<% when 'new_public_course_on_network'%>
@@ -22,7 +22,7 @@
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b>Ecuasiones de 2o Grado</b> en tu curso <b>Matemáticas VI</b>
 
 	<% when 'user_comment_on_discussion'%>
-	<% if user.avatar != nil %>
+	<% if current_user.avatar != nil %>
 	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>
 	<%end%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b>
 	
