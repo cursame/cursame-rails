@@ -1,7 +1,7 @@
-<% if  current_user.coverphoto != nil %>
-<div id="banner-profile" style="background:url('<%= @user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%else%>
+<% if  current_user.coverphoto == nil %>
 <div id="banner-profile" style="background:url('<%= @user.cover_photox %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<%else%>
+<div id="banner-profile" style="background:url('<%= @user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%end%>
    <%= render :partial => 'shared/head_menu'%>
 </div>
@@ -12,11 +12,10 @@
         <!-- User Avatar -->
         <div id="box-user-credential" class="network-layout">
             <div class="thumbnail"  >
-             <% if  @user.avatar != nil %>
-              <%= image_tag(@user.avatar.profile)%>
-             <%else%>
-             <%= image_tag(@user.image_avatarx)%>
-             
+             <% if  @user.avatar == nil %>
+                 <%= image_tag(@user.image_avatarx)%>
+              <%else%>
+                <%= image_tag(@user.avatar.profile)%>
              <%end%>
              
             </div>
