@@ -19,18 +19,18 @@
              end%>
 
         <%= f.fields_for :areas_of_evaluations do |builder| %>
-            <%= render :partial => "areas_of_evaluations/form", :locals => { :f => builder } %>
+            <%= render :partial => "areas_of_evaluations/form", :id => 'areas_of_evaluations', :locals => { :f => builder } %>
         <% end %>
 
         <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>              
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
-        <div id="<%=@labelIdBox%>" class="upload-label"></div>
+        <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
 
         <div class="submit-area"></div>
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
-        <%= f.submit "Publicar", :id => 'create_delivery_form'%>
+        <%= f.submit "Publicar", :id => 'comment-post-form'%>
 
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
 
