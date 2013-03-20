@@ -38,18 +38,32 @@ class Survey < ActiveRecord::Base
      if self.publish_date <= DateTime.now
         self.publish!
       end
-      
+    
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
-    User.all.each do |u|
-      Notification.create :user => u, :notificator => self, :kind => 'new_survey_on_course'
-      Wall.create :user => u, :publication => self, :network => self.network
+    self.courses.each do |course|
+    course.members_in_courses.each do |u|
+      user = User.find_by_id(u.user_id)
+      if u.owner != true
+        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id          
+      end
+      #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id 
+      if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
+      
+        Wall.create :user => user, :publication => self, :network => self.network, :course => course
+      
+      end
     end
+    
+end
+
 
     #
     # Cuando se crea el survey, se le notifica a caca miembro de los cursos que tiene el survey
     #
     self.courses.each do |course|
       course.members_in_courses.each do |member|
+        Notification.create :user => member.user, :notificator => self, :kind => 'new_survey_on_course'
+        Wall.create :user => member.user, :publication => self, :network => self.network, :course_id => course.id
         mail = Notifier.new_survey_notification(member,self)
         mail.deliver
       end
