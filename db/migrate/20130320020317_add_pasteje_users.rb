@@ -57,16 +57,16 @@ class AddPastejeUsers < ActiveRecord::Migration
     course_sexto_a = Course.create(:title => "Sexto A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private")
     course_sexto_b = Course.create(:title => "Sexto B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private")
 
+    maestros.each do |maestro|
+       user = User.create :first_name => maestro[:first_name], :last_name => maestro[:last_name], :email => maestro[:email], :password => maestro[:password]
+       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '1'
+       MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '1'
+    end
+
     alumnos.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password]
       Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '1'
       MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '1'
-    end
-     
-     maestros.each do |maestro|
-      user = User.create :first_name => maestro[:first_name] :last_name => maestro[:last_name], :email => maestro[:email], :password => maestro[:password]
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '1'
-      MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '1'
     end
   
    end
