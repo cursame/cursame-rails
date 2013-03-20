@@ -1,26 +1,5 @@
 class AddPastejeUsers < ActiveRecord::Migration
   def up
-<<<<<<< HEAD
-    puts "se crea el primer curso"
-    Course.create(:title => "Sexto A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private")
-    User.create(:first_name => "", :last_name => "", :email => "", :password => "")
-    @user = User.last
-    @course = Course.last
-    puts "creando estudiantes primer curso"
-    Permissioning.create(:user_id => @user.id, :role_id => "2", :network_id => "1"  )
-    puts "creando maestros primer curso"
-    Permissioning.create(:user_id => @user.id, :role_id => "3", :network_id => "1"  )
-
-    MembersInCourse.create(:user_id => @user.id, :course_id => @course.id, :accepted => true, :owner => false, :network_id => "1" )
-    puts "se crea el segundo curso"
-    Course.create(:title => "Sexto B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private")
-    User.create(:first_name => "", :last_name => "", :email => "", :password => "")
-    MembersInCourse.create(:user_id => @user.id, :course_id => @course.id, :accepted => true, :owner => false, :network_id => "1" )
-    puts "creando estudiantes segundo curso"
-    Permissioning.create(:user_id => @user.id, :role_id => "2", :network_id => "1"  )
-    puts "creando maestros segundo curso"
-    Permissioning.create(:user_id => @user.id, :role_id => "3", :network_id => "1"  )
-=======
 
      alumnos = [ { :first_name => 'Alan', :last_name => 'luciano Cirilo', :email => 'alan.luciano.cirilo@gmail.com', :password => '09lN7nQ0Kf', :group => 'A' },
                  { :first_name => 'Carlos', :last_name => 'Alvarez Salvador', :email => 'carlosalvarez.salvador@gmail.com', :password => 'fJFVo4bocV', :group => 'A' },
@@ -86,16 +65,7 @@ class AddPastejeUsers < ActiveRecord::Migration
      maestros.each do |maestro|
       user = User.create :first_name => maestro[:first_name] :last_name => maestro[:last_name], :email => maestro[:email], :password => maestro[:password]
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '1'
-      MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '1'
+      MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '1'
     end
               
->>>>>>> Migracion que agrega los usuarios de 6to año
-  end
-
-  def down
-  end
-<<<<<<< HEAD
-=======
-  
->>>>>>> Migracion que agrega los usuarios de 6to año
 end
