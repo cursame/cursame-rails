@@ -130,7 +130,7 @@ Cursame30Lb::Application.routes.draw do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
 
-   match  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
+   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
    match  "/users/", :to => "users#index",  :as =>  :users
    match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector

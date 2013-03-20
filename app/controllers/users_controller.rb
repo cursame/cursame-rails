@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
 
   def show
-    @user = User.find_by_personal_url(params[:personal_url])
+    @user_l= User.find_by_personal_url(params[:personal_url])
     #@accesible_id = @user.id
     #helper methods in aplication controller
     pertenence!

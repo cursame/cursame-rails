@@ -59,9 +59,9 @@ class ApplicationController < ActionController::Base
   end
 
   #help to find friend
-  def current_friend
-      @user = User.find_by_personal_url(params[:personal_url])
-  end
+  #def current_friend
+   #   @user_friend = User.find_by_personal_url(params[:personal_url])
+  #end
 
   def current_course
       @course = Course.find(params[:id])
