@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox
 
   # Agredas las relaciones de frienship
   has_many :friendships
@@ -119,5 +119,18 @@ class User < ActiveRecord::Base
       find(:all, :order => :first_name)
     end
   end
+  
+  def image_avatarx
+     'imagex.png'
+  end
+  
+  def image_avatarxx
+    'imagexx.png'
+  end
+  
+  def cover_photox
+    'portada.png'
+  end
+  
 
 end

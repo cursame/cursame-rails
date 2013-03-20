@@ -38,12 +38,13 @@ Cursame30Lb::Application.configure do
   config.assets.debug = true
   HOST = 'lvh.me:3000'
   config.action_mailer.default_url_options = { :host => 'lvh.me:3000' }
-  #config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
   
   #roles
   config.gem "declarative_authorization", :source => "http://gemcutter.org"
   
   ### mailer ###
+=begin
   ActionMailer::Base.smtp_settings = {
      :address        => '50.116.21.144',
      :port           => '25',
@@ -53,6 +54,7 @@ Cursame30Lb::Application.configure do
      :domain         => 'mail.cursame.me'
    }
    ActionMailer::Base.delivery_method = :smtp
+=end
   
 
 end

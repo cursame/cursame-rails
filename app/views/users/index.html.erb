@@ -1,5 +1,5 @@
 <h1>All users</h1>
 
 <% @user.each do |u|%>
-  <%= link_to "#{u.name} #{u.email}", show_user_path(u.personal_url)%></br>
+     <%= link_to "#{u.name} #{u.email}", show_user_path(u.personal_url)%></br>
 <%end%>
