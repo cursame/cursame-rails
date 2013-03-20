@@ -1,4 +1,5 @@
-unmask('#new_delivery_form');
+resetForm($('#new_delivery_form'));
+$('#nested_evaluation_form').remove();
+$('#total_nested_evaluation').remove();
+$('#new_delivery_form').find('.upload-form').remove();
 $('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>");
-alert("se ha creado tu publicación")
-
