@@ -14,7 +14,9 @@ class Api::ApiController < ApplicationController
     if(params[:publicacionId])
       @wall = Wall.find(params[:publicacionId])
       @comments = @wall.publication.comments.order('created_at DESC')
-    if(params[:comment])
+    elsif(params[:comment])
+      @comment = Comment.find(params[:comment])
+      @comments = @comment.comments.order('created_at DESC')
     else
       @comments = @user.comments
     end
