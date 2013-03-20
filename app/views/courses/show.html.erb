@@ -70,9 +70,11 @@
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
                 <% if @member.accepted == true %>
-                <%= link_to image_tag(@member.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url) if (@member.avatar.blank?  )  %>
-                <%= link_to image_tag(@member.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url) if ( !@member.avatar.blank?   )%>               
-                 <%end%>
+                
+                    <%= image_tag(@members.avatar.mini,{:class => "avatar-mini"}),  if ( !@members.avatar.blank?) %>
+                    <%= image_tag(@members.image_avatarxx,{:class => "avatar-mini"}),  if (@members.avatar.blank?) %>
+                    
+                <%end%>
             <%end%>
              <% if @member.owner == true %>
                     <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
