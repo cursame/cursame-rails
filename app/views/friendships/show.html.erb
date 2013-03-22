@@ -8,28 +8,39 @@
   <b>Accepted Friends:</b>
   <p>
 
-  <%@all_friends.each do |user|%>
-    <%if (user[:accepted]) then%>
+  <%@all_friends.each do |hash|%>
+    <%if (hash[:accepted]) then%>
       <tr>
         <td>
-            <%= link_to user[:user].email, show_user_path(user[:user].personal_url)%>
-        </td>
+            <%= link_to hash[:user].to_s, show_user_path(hash[:user].personal_url)%>
+            <%if @owner then%>
+            <%= link_to "Remove", {:controller => "friendships", :action => "destroy", :friend_id => hash[:user].id}, :method => :delete%>
+            <%end%>
+            </td>
       </tr>
       <p>
     <%end%>
   <%end%>
    <p>
+   <%if @owner then%>
    <b>Non Accepted Friends:</b>
    <p>
 
-   <%@all_friends.each do |user|%>
-    <%if !(user[:accepted]) then%>
+   <%@all_friends.each do |hash|%>
+    <%if !(hash[:accepted]) then%>
       <tr>
         <td>
-            <%= link_to user[:user].email, show_user_path(user[:user].personal_url)%>
-        </td>
+            <%= link_to hash[:user].to_s, show_user_path(hash[:user].personal_url)%>
+            <%= link_to "Accept Request", {:controller => "friendships", :action => "update", :friend_id => hash[:user].id}, :method => :update%>
+            </td>
       </tr>
       <p>
    <%end%>
    <%end%>
+   <%end%>
 </p>
+
+<p> <%= link_to "Profile", show_user_path%>
+<%if @owner then%>
+<p> <%= link_to "New Friends", new_friends_path%>
+<%end%>

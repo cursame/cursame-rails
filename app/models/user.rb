@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox
 
   # Agredas las relaciones de frienship
-  has_many :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :friendships, :uniq => true
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
 
 
   has_many :permissionings, :dependent => :destroy
@@ -155,7 +155,7 @@ class User < ActiveRecord::Base
 
     ordered_friends = (friends + inverse_friends).sort {
       |x,y|
-      x.email <=> y.email
+      x.to_s <=> y.to_s
     }
     return ordered_friends
   end
@@ -182,9 +182,8 @@ class User < ActiveRecord::Base
 
     ordered_friends = (friends + inverse_friends).sort {
       |x,y|
-      x[:user].email <=> y[:user].email
+      x[:user].to_s <=> y[:user].to_s
     }
-
     return ordered_friends
   end
 
@@ -192,5 +191,54 @@ class User < ActiveRecord::Base
     friends = self.friends(true)
     other_friends = other_user.friends(true)
     return friends | other_friends
+  end
+
+  def friends?(another_user)
+    if self.id == another_user.id then
+      return true
+    end
+    friendship = Friendship.find_by_user_id_and_friend_id(self.id, another_user.id)
+    inverse_friendship = Friendship.find_by_user_id_and_friend_id(another_user.id, self.id)
+
+    if friendship.nil? && inverse_friendship.nil? then
+      return false
+    end
+
+    if !friendship.nil? then
+      return friendship.accepted
+    end
+
+    if !inverse_friendship.nil? then
+      return inverse_friendship.accepted
+    end
+  end
+
+  def friends_request?(another_user)
+    if self.id == another_user.id then
+      return true
+    end
+
+    friendship = Friendship.find_by_user_id_and_friend_id(self.id, another_user.id)
+    inverse_friendship = Friendship.find_by_user_id_and_friend_id(another_user.id,self.id)
+
+    return !friendship.nil? || !inverse_friendship.nil?
+  end
+
+  def to_s
+    return self.name + " (" + self.email + ")"
+  end
+
+  def possible_friends
+    users = Array.new
+    self.networks.each do
+      |network|
+        network.users.each do
+        |user|
+        if !self.friends_request?(user) then
+          users.push(user)
+        end
+      end
+    end
+    return users
   end
 end
