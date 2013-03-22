@@ -136,8 +136,11 @@ Cursame30Lb::Application.routes.draw do
    match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
-  match  "users/:user_id/friends" => "friendships#show"
-  #match  "users/:user_id/waiting_friends/:id/update", :to => "users#ufriend", :as => :update_user_friends
+  get  "users/:personal_url/friends" => "friendships#show", :as => :show_friends
+  get  "users/:personal_url/friends/new" =>  "friendships#new", :as => :new_friends
+  post "user/:personal_url/friends/new" => "friendships#create"
+  post "user/:personal_url/friends" => "friendships#update"
+  delete "user/:personal_url/friends" => "friendships#destroy"
   #match  "users/:user_id/waiting_friends/:id", :to => "users#sufriend", :as => :show_user_friends
   #match  "users/:user_id/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:user_id/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
