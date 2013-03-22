@@ -3,6 +3,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1.json
   def show
     @user = User.find_by_personal_url(params[:personal_url])
+    @owner = current_user.id == @user.id
     if @user.nil? then
       redirect_to root_path
     else
@@ -14,6 +15,9 @@ class FriendshipsController < ApplicationController
   # GET /friendships/new.json
   def new
     @user = User.find_by_personal_url(params[:personal_url])
+    if current_user.id != @user.id then
+      redirect_to root_path
+    end
     if @user.nil? then
       redirect root_path
     else
