@@ -1,0 +1,27 @@
+<div id="box-question-child" class="question-field">
+  <div class="element">
+    <div id="question-num" class="num">1.</div>
+    <% @survey.questions.each do |question| %>
+        <%= f.label question.content %>
+        <div id="box-request">
+          <% @answers = question.answers %>
+          <%= f.fields_for @answers do |builder| %>
+              <% @answers.each do |answer| %>
+                  <% @answer = answer %>
+                  <%= render '/surveys/response_answers_tpl', :f => builder %>
+              <% end %>
+          <% end %>
+        </div>
+        <!--< question.answers.each do |answer| %>
+            <div id="box-request">
+              <div id="box-request-child" class="request-field">
+                <div id="request-num" class="num">a)</div>
+                <= label_tag answer.content %>
+                <= check_box :correct, :class => 'is-correct-chk' %>
+                <= label :correct, "¿Es la respuesta correcta?", :class => 'is-correct-label' %>
+              </div>
+            </div>
+        < end %> -->
+    <% end %>
+  </div>
+</div>
