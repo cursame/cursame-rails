@@ -6,8 +6,15 @@ class Api::ApiController < ApplicationController
   respond_to :json
   
   def publications
-    @publications = @network.walls.order('created_at DESC')   
-    render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course]), :count => @publications.count()}, :callback => params[:callback]      
+
+    case params[:type]
+      when 'Course'
+        @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC')
+      else 
+        @publications = @network.walls.order('created_at DESC')   
+    end
+    
+    render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course,:network]), :count => @publications.count()}, :callback => params[:callback]      
   end
 
   def comments
