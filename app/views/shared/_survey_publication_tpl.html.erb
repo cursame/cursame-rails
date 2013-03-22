@@ -1,0 +1,35 @@
+<p>
+  <img src="/assets/survey.jpg" class="single-image">
+</p>
+<div class="delivery-box">
+  <div class="green-btn">
+    <div class="labels">
+      <div id="open-close-<%= survey.id %>">
+        <a>Responder</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="survey-form-area-style" id="respuesta-<%= survey.id %>">
+  <% @survey = survey %>
+  <%=render :partial => '/surveys/survey_response_tpl'%>
+</div>
+<script>
+    $("#open-close-<%= survey.id %>").click(function () {
+        $('#respuesta-<%= survey.id %>').toggle("slow");
+        //$(this).toggle("slow");
+        //$(this).parent().parent().toggle("slow");
+        //$('#entrega-<= survey.id %>>form>#cancel-post-form').click(function () {
+          //  $("#open-close-<= survey.id %>").show();
+            //$("#open-close-<= survey.id %>").parent().parent().show();
+            //$('#entrega-<= survey.id %>').hide();
+        //});
+    });
+
+    //$("#open-close-lo<= survey.id %>").click(function () {
+      //  $('#entrega-lo<= survey.id %>').toggle("slow");
+
+    //});
+</script>
+
+
