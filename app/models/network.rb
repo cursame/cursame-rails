@@ -9,7 +9,8 @@ class Network < ActiveRecord::Base
   has_many :surveys
   #walls
   has_many :walls
-  
+  #library
+  has_many :libraries
   #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
   
   validates_presence_of   :name, :subdomain, :population

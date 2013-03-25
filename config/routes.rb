@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
+  resources :libraries
+
   resources :settings_teachers
 
   resources :polls
@@ -29,6 +31,9 @@ Cursame30Lb::Application.routes.draw do
   get "managers/members"
 
   get "managers/network_configuration"
+  
+  get "managers/library"
+  
 
   resources :discussions
 ###### respuestas a la evaluaciones
