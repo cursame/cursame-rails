@@ -15,3 +15,8 @@
 /tmp
 
 .DS_Store
+
+#No subir
+.idea/workspace.xml
+.idea/dataSources.xml
+.idea/dataSources.ids
