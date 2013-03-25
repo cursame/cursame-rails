@@ -117,19 +117,19 @@ class User < ActiveRecord::Base
       find(:all, :order => :first_name)
     end
   end
-  
+
   def image_avatarx
      'imagex.png'
   end
-  
+
   def image_avatarxx
     'imagexx.png'
   end
-  
+
   def cover_photox
     'portada.png'
   end
-  
+
 
   # search all friends accepted or not accepted
   def friends(accepted)
@@ -180,6 +180,10 @@ class User < ActiveRecord::Base
       hash
     }
 
+    friends = friends.keep_if {
+      |friendship|
+      friendship[:accepted]
+    }
     ordered_friends = (friends + inverse_friends).sort {
       |x,y|
       x[:user].to_s <=> y[:user].to_s
@@ -239,6 +243,6 @@ class User < ActiveRecord::Base
         end
       end
     end
-    return users
+    return users.uniq
   end
 end
