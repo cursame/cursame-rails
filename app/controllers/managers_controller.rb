@@ -39,6 +39,11 @@ class ManagersController < ApplicationController
     @network= current_network
   end
 
-  
+  def library
+    
+    @libraries = current_network.libraries
+    @library = Library.new(params[:id])
+    
+  end
   
 end
