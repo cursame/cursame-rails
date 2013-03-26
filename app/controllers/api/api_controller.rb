@@ -6,14 +6,12 @@ class Api::ApiController < ApplicationController
   respond_to :json
   
   def publications
-
     case params[:type]
       when 'Course'
         @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC')
       else 
         @publications = @network.walls.order('created_at DESC')   
-    end
-    
+    end    
     render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course,:network]), :count => @publications.count()}, :callback => params[:callback]      
   end
 
@@ -34,6 +32,11 @@ class Api::ApiController < ApplicationController
     @courses = @network.courses.order('created_at DESC')   
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]      
 	end
+
+  def notifications
+    @notifications = @user.notifications
+    render :json => {:courses => @notifications.as_json, :count => @notifications.count()}, :callback => params[:callback]
+  end
 
   def create_comment
     @comment = Comment.new
@@ -72,7 +75,6 @@ class Api::ApiController < ApplicationController
     @discussion.save
     render :json => {:success => true}, :callback => params[:callback]        
   end
-
 
   private 
   def authorize
