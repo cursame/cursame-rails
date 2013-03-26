@@ -76,17 +76,21 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
 
+  get "courses/import", :to => "courses#import", :as => :import
+
   resources :courses do
-     resources :assignments
-     resources :messages do
-       collection do
-         post :active_create
-       end
-     end
+    collection { post :import}
+
+    resources :assignments
+    resources :messages do
+      collection do
+        post :active_create
+      end
+    end
 
     collection do
       post :assigment
-     end
+    end
   end
 
   ##### cambiando el status de un curso
