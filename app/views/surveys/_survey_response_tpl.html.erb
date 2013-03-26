@@ -1,11 +1,10 @@
-<%= form_for (@survey), :remote => true, :html => {:class => "default-form survey-form"} do |f| %>
+<%= form_for(survey, :url => "/surveys/survey_reply", :remote => true, :method => :post, :html => {:class => "default-form assignment-survey-form"}) do |f| %>
+    <%= hidden_field_tag 'course_id', @course_id %>
+    <%= hidden_field_tag 'survey_id', survey.id %>
     <div id="box-response" class="box-question">
-      <%= f.fields_for :questions do |builder| %>
-          <%= render "/surveys/response_fields_tpl", :f => builder %>
-      <% end %>
+      <%# @questions = @survey.questions %>
+      <%= render :partial => "/surveys/response_fields_tpl", :locals => { :questions =>  survey.questions} %>
     </div>
-    <div style="position: relative; top: 90px;">
-      <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form' %>
-      <%= f.submit "Contestar", :class => "btn btn-primary" %>
-    </div>
+    <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form' %>
+    <%= f.submit "Contestar", :class => "btn btn-primary", :id => 'survey' %>
 <% end %>
