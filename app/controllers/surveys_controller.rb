@@ -7,6 +7,7 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
+    puts @survey
   end
 
   def new
@@ -56,6 +57,7 @@ class SurveysController < ApplicationController
       @user_survey.survey_id = params[:survey_id]
       @user_survey.user = current_user
       @user_survey.result = 0;
+      @survey_id = params[:survey_id]
 
       if @user_survey.save
         params[:questions].each do |question|
@@ -68,7 +70,7 @@ class SurveysController < ApplicationController
             @user_response = UserSurveyResponse.new
             @user_response.user_survey_id = @user_survey.id
             @user_response.question_id = question[0]
-            @user_response.answer_id = answer
+            @user_response.answer_id = answer[1]
             @user_response.save
 
           end

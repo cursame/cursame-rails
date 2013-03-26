@@ -11,8 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321220707) do
->>>>>>> friendships
+
+ActiveRecord::Schema.define(:version => 20130325164128) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -211,7 +211,20 @@ ActiveRecord::Schema.define(:version => 20130321220707) do
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+=======
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+>>>>>>> alfredotbranch
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"

@@ -1,5 +1,4 @@
 <% wall.each do |publication| %>
-
 <%
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
@@ -68,9 +67,7 @@
         <% when 'Comment'%>
         <p><%= content %></p>
         <% when 'Survey'%>
-        <p>
-          <img src="/assets/survey.jpg" class="single-image">
-        </p>          
+          <%= render :partial => '/shared/survey_publication_tpl', :locals => {:survey => post} %>
         <% when 'Delivery'%>
           <%= render :partial => '/shared/delivery_publication_tpl', :locals => {:delivery => post} %>
         <%end%>

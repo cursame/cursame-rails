@@ -1,0 +1,27 @@
+<div id="box-question-child" class="question-field">
+  <div class="element">
+    <ol>
+      <% questions.each do |question| %>
+          <div id="question-num" class="num">
+            <li>
+              <%= label_tag question.content %>
+            </li>
+          </div>
+          <ul>
+            <div id="box-request">
+              <% question.answers.each do |answer| %>
+                  <div id="box-request-child" class="request-field">
+                    <div id="request-num" class="num">
+                      <li type="a" class="num">
+                        <%= label_tag answer.content %>
+                        <%= check_box_tag "questions["+question.id.to_s+"]["+answer.id.to_s+"]", answer.id, false, :class => 'is-correct-chk' %>
+                        <%= label_tag "questions["+question.id.to_s+"]["+answer.id.to_s+"]", "", :class => 'is-correct-label' %></li>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </ul>
+      <% end %>
+    </ol>
+  </div>
+</div>
