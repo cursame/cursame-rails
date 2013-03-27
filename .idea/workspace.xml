@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
     </list>
     <ignored path="cursame-3.0-LB.iws" />
@@ -30,19 +31,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="api_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="api_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="128" selection-start="1246" selection-end="1246" vertical-scroll-proportion="-1.2146189">
+            <state line="22" column="60" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tokens_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tokens_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="43" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
+            <state line="64" column="62" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.4525661">
               <folding />
             </state>
           </provider>
@@ -939,16 +940,16 @@
         <state line="8" column="59" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="43" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
+        <state line="22" column="60" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="128" selection-start="1246" selection-end="1246" vertical-scroll-proportion="-1.2146189">
+        <state line="64" column="62" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.4525661">
           <folding />
         </state>
       </provider>
