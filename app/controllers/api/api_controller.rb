@@ -16,15 +16,16 @@ class Api::ApiController < ApplicationController
   end
 
   def comments
-    if(params[:publicacionId])
-      @wall = Wall.find(params[:publicacionId])
-      @comments = @wall.publication.comments.order('created_at DESC')
-    elsif(params[:comment])
-      @comment = Comment.find(params[:comment])
-      @comments = @comment.comments.order('created_at DESC')
-    else
-      @comments = @user.comments
-    end
+    # if(params[:publicacionId])
+    #   @wall = Wall.find(params[:publicacionId])
+    #   @comments = @wall.publication.comments.order('created_at DESC')
+    # elsif(params[:comment])
+    #   @comment = Comment.find(params[:comment])
+    #   @comments = @comment.comments.order('created_at DESC')
+    # else
+    #   @comments = @user.comments
+    # end
+      @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]);
     render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]      
   end
 
@@ -35,7 +36,7 @@ class Api::ApiController < ApplicationController
 
   def notifications
     @notifications = @user.notifications
-    render :json => {:courses => @notifications.as_json, :count => @notifications.count()}, :callback => params[:callback]
+    render :json => {:notifications => @notifications.as_json(:include => [:user, :notificator]), :count => @notifications.count()}, :callback => params[:callback]
   end
 
   def create_comment

@@ -51,7 +51,7 @@ class Delivery < ActiveRecord::Base
           course.members_in_courses.each do |u|
             user = User.find_by_id(u.user_id)
             if u.owner != true
-              Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course', :course_id => course.id          
+              Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'         
             end
             #validar que no exista doble publicacion para un usuario
            if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Delivery',self.id))
