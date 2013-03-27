@@ -131,7 +131,7 @@
 </div>
 <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
     <% @delivery_id=delivery.id%>
-        <%=render :partial => "/assignments/form_for_delivery"%>
+        <%=render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => cargo}%>
 </div>
 
  <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">

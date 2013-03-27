@@ -69,7 +69,7 @@
         <% when 'Survey'%>
           <%= render :partial => '/shared/survey_publication_tpl', :locals => {:survey => post} %>
         <% when 'Delivery'%>
-          <%= render :partial => '/shared/delivery_publication_tpl', :locals => {:delivery => post} %>
+          <%= render :partial => '/shared/delivery_publication_tpl', :locals => {:delivery => post, :cargo => cargo} %>
         <%end%>
 
       </div>
