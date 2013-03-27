@@ -245,4 +245,19 @@ class User < ActiveRecord::Base
     end
     return users.uniq
   end
+
+  def self.import(file)
+    arrayErrores = Array.new
+    count = 0
+    CSV.foreach(file.path, headers: true) do |row|
+      count += 1
+      if !row["id"].nil? then
+        user = find_by_id(row["id"]) || new
+      else
+        user = new
+      end
+
+      user.attributes = row.to_hash.slice(*accessible_attributes)
+    end
+  end
 end

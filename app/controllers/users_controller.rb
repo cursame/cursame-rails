@@ -91,10 +91,10 @@ class UsersController < ApplicationController
   end
 =end
  def pertenence!
-     
+
      if current_network
      @user = User.find_by_personal_url(params[:personal_url])
-     
+
      @user_id =  @user.id
      @user_pertenence = NetworksUser.find_by_user_id(@user_id)
      if @user_pertenence != nil
@@ -189,5 +189,14 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+ def import
+   @users = User.all
+ end
+
+ def upload_csv
+   errores = User.import(params[:file])
+   redirect_to import_users_path
+ end
 
 end

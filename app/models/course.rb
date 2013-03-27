@@ -29,7 +29,11 @@ class Course < ActiveRecord::Base
   #validates_presence_of :delivery_param_evaluation
   validates_presence_of :network_id
 
-
+  attr_accessible :id, :title, :silabus, :init_date, :finish_date,
+                  :created_at, :updated_at, :public_status,
+                  :avatar, :coverphoto, :delivery_id,
+                  :survey_param_evaluation, :delivery_param_evaluation,
+                  :network_id, :active_status
 
 
 
@@ -43,21 +47,40 @@ class Course < ActiveRecord::Base
   after_create do
     if self.public_status == 'public'
       User.all.each do |u|
-        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'  
-        if (!Wall.find_by_user_id_and_publication_type_and_publication_id(u.id,'Course',self.id))       
+        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
+        if (!Wall.find_by_user_id_and_publication_type_and_publication_id(u.id,'Course',self.id))
               Wall.create :user => u, :publication => self, :network => self.network, :course => self
         end
       end
     end
   end
 
-  def import(file)
-    puts "ACA PASO"
+  def self.import(file)
+    arrayErrores = Array.new
+    count = 0
     CSV.foreach(file.path, headers: true) do |row|
-      course = find_by_id(row["id"]) || new
+      count += 1
+      if !row["id"].nil? then
+        course = find_by_id(row["id"]) || new
+      else
+        course = new
+      end
       course.attributes = row.to_hash.slice(*accessible_attributes)
-      course.save!
+
+      errors = false
+      if course.survey_param_evaluation.to_i +
+          course.delivery_param_evaluation.to_i != 100 then
+        arrayErrores.push({:line => count, :message => "El porcentaje de examenes o tareas es incorrecto"})
+        errores = true
+      end
+
+      if !errores then
+        if !course.save! then
+          arrayErrores.push({:line => count, :message => "Error al guardar"})
+        end
+      end
     end
+    return arrayErrores
   end
 
   def self.search(search)

@@ -67,6 +67,12 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+  #POST /courses/upload_csv
+  def upload_csv
+    errores = Course.import(params[:file])
+    redirect_to import_courses_path
+  end
+
   # GET /courses/new
   # GET /courses/new.json
   def new

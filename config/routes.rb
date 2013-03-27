@@ -31,9 +31,9 @@ Cursame30Lb::Application.routes.draw do
   get "managers/members"
 
   get "managers/network_configuration"
-  
+
   get "managers/library"
-  
+
 
   resources :discussions
 ###### respuestas a la evaluaciones
@@ -84,8 +84,9 @@ Cursame30Lb::Application.routes.draw do
   get "courses/import", :to => "courses#import", :as => :import
 
   resources :courses do
-    collection { post :import}
-
+    collection do
+      post :upload_csv
+    end
     resources :assignments
     resources :messages do
       collection do
@@ -141,7 +142,10 @@ Cursame30Lb::Application.routes.draw do
 
    get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
-   match  "/users/", :to => "users#index",  :as =>  :users
+   # import csv de usuarios
+   get "users/" => "users#import", :as => :import_users
+   post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
+   #match  "/users/", :to => "users#index",  :as =>  :users
    match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
