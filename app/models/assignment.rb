@@ -22,9 +22,7 @@ class Assignment < ActiveRecord::Base
       }
       teachers.each do
         |teacher|
-        if (teacher.user.settings_teacher != nil) then
-          teacher.user.settings_teacher.increment_deliveries
-        end
+        teacher.user.settings_teacher.increment_deliveries if !teacher.user.settings_teacher.nil?
       end
     end
   end
