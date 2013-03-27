@@ -8,20 +8,20 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC')
+        @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @network.walls.order('created_at DESC')
+        @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
     render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course,:network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
-    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]);
+    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
-    @courses = @network.courses.order('created_at DESC')
+    @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
 
