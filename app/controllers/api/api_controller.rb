@@ -16,7 +16,7 @@ class Api::ApiController < ApplicationController
   end
 
   def comments
-      @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]);
+      @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id])
     render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]      
   end
 
