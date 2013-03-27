@@ -16,15 +16,6 @@ class Api::ApiController < ApplicationController
   end
 
   def comments
-    # if(params[:publicacionId])
-    #   @wall = Wall.find(params[:publicacionId])
-    #   @comments = @wall.publication.comments.order('created_at DESC')
-    # elsif(params[:comment])
-    #   @comment = Comment.find(params[:comment])
-    #   @comments = @comment.comments.order('created_at DESC')
-    # else
-    #   @comments = @user.comments
-    # end
       @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]);
     render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]      
   end
@@ -35,8 +26,35 @@ class Api::ApiController < ApplicationController
 	end
 
   def notifications
-    @notifications = @user.notifications
-    render :json => {:notifications => @notifications.as_json(:include => [:user, :notificator]), :count => @notifications.count()}, :callback => params[:callback]
+    notifications = @user.notifications
+    @user_notifications = Array.new
+    notifications.each do |notification|
+      user = notification.user
+      notificator = notification.notificator
+       case notification.kind
+          when 'user_comment_on_network'
+            cretator = notification.notificator.user
+          when 'user_comment_on_course'
+            cretator = notification.notificator.user
+          when 'new_delivery_on_course'
+            cretator = notification.notificator.user
+            course = Course.last #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
+          when 'new_public_course_on_network'
+            cretator = notification.notificator.user
+          when 'new_survey_on_course'
+       end
+       notification.notificator_type = {
+          :creator => cretator,
+          :course => course,
+          :notificator => notificator,
+          :user => user
+       }
+      @user_notifications.push(notification)
+    end
+    # 
+    # @notifications = @user.notifications.includes(:notificator)
+
+    render :json => {:notifications => @user_notifications.as_json, :count => @user_notifications .count()}, :callback => params[:callback]
   end
 
   def create_comment
