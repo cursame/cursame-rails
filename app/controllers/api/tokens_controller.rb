@@ -63,7 +63,7 @@ class Api::TokensController < ApplicationController
     	logger.info("User #{email} failed signin, password \"#{password}\" is invalid.")
     	render :status => 200, :json => {:response =>{:message => "Invalid email or password.", :success => false}}, :callback => params[:callback]
     else
-    	render :status => 200, :json => {:response =>{:user => @user.as_json(:include => [:roles]), :token => @user.authentication_token,:success => true}}, :callback => params[:callback]
+    	render :status => 200, :json => {:response =>{:user => @user.as_json(:include => [:roles, :notifications]), :token => @user.authentication_token,:success => true}}, :callback => params[:callback]
     end
 end
 
