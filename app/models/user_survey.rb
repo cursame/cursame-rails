@@ -16,7 +16,7 @@ class UserSurvey < ActiveRecord::Base
 
       teachers.each do
         |teacher|
-        teacher.user.settings_teacher.increment_surveys
+        teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil?
       end
     end
   end
