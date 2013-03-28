@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130325164128) do
+ActiveRecord::Schema.define(:version => 20130328004428) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130325164128) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+    t.integer  "course_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(:version => 20130325164128) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -211,9 +210,8 @@ ActiveRecord::Schema.define(:version => 20130325164128) do
     t.datetime "updated_at", :null => false
   end
 
-<<<<<<< HEAD
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
-=======
+
   create_table "libraries", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -224,7 +222,6 @@ ActiveRecord::Schema.define(:version => 20130325164128) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
->>>>>>> alfredotbranch
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
