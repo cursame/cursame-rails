@@ -93,4 +93,22 @@ class Course < ActiveRecord::Base
     @state = "published"
   end
   
+  def course_avatarx
+    'course-avatarx.png'
+  end
+  def course_avatarxx
+    'course-avatarxx.png'
+  end
+  def course_avatarxxx
+    'course-avatarxxx.png'
+  end
+  def course_avatarxxxx
+    'course-avatarxxxx.png'
+  end
+  def image_coursex
+    'imagecoursex.png'
+  end
+  
+  
+  
 end
