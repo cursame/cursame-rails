@@ -191,10 +191,24 @@ class UsersController < ApplicationController
   end
 
  def import
+   superadmin = current_user.roles.keep_if {
+     |role|
+     role.id == 4
+   }
+   if superadmin.size < 1 then
+     redirect_to root_path
+   end
    @users = User.all
  end
 
  def upload_csv
+   superadmin = current_user.roles.keep_if {
+     |role|
+     role.id ==4
+   }
+   if superadmin.size < 1 then
+     redirect_to root_path
+   end
    @errores = User.import(params[:file])
    @users = User.all
    respond_to do |format|

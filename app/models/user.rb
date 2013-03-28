@@ -270,13 +270,7 @@ class User < ActiveRecord::Base
 
       # Checa que el correo sea valido y que no se repita
       if user.email["@"].nil? || !User.find_by_email(user.email).nil?
-        arrayErrores.push({:line => count, :message => "El correo no es valido" })
-        errors = true
-      end
-
-      # Checa que personal_url no sea nil y que no se repita
-      if user.personal_url.nil? || !User.find_by_personal_url(user.personal_url).nil? then
-        arrayErrores.push({:line => count, :message => "No existe :personal_url"})
+        arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
         errors = true
       end
 
