@@ -4,7 +4,7 @@
 %>
 
 <%= form_for(@assignment = Assignment.new, :url => assigment_courses_path, :method => :post, :html => { :class => "default-form assignment-delevery-form"}) do |f| %>
-   <%= f.hidden_field :course_id, :value => @course_id %>
+   <%= f.hidden_field :course_id, :value => cargo.course_id %>
    <%= f.hidden_field :delivery_id, :value => @delivery_id %>
    
     <%= f.label :title %><br />

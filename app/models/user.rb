@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox
-
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
+  :confirmation_token
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
@@ -117,19 +117,23 @@ class User < ActiveRecord::Base
       find(:all, :order => :first_name)
     end
   end
-  
+
   def image_avatarx
      'imagex.png'
   end
-  
+
   def image_avatarxx
     'imagexx.png'
   end
   
+  def image_avatarxxx
+     'imagexxx.png'
+   end
+
   def cover_photox
     'portada.png'
   end
-  
+
 
   # search all friends accepted or not accepted
   def friends(accepted)
@@ -180,6 +184,10 @@ class User < ActiveRecord::Base
       hash
     }
 
+    friends = friends.keep_if {
+      |friendship|
+      friendship[:accepted]
+    }
     ordered_friends = (friends + inverse_friends).sort {
       |x,y|
       x[:user].to_s <=> y[:user].to_s
@@ -239,6 +247,74 @@ class User < ActiveRecord::Base
         end
       end
     end
-    return users
+    return users.uniq
+  end
+
+  def self.import(file)
+    arrayErrores = Array.new
+    count = 0
+    begin
+      file.path
+    rescue NoMethodError
+      return arrayErrores.push({:line => 0,:message => "No selecciono un archivo"})
+    end
+    CSV.foreach(file.path, headers: true) do |row|
+      count += 1
+      if !row["id"].nil? then
+        user = find_by_id(row["id"]) || new
+      else
+        user = new
+      end
+      hash = row.to_hash.slice(*accessible_attributes)
+      network_id = hash.delete("network_id")
+      role_id = hash.delete("role_id")
+      user.attributes = hash
+
+      errors = false
+
+      # Checa que el correo sea valido y que no se repita
+      if user.email["@"].nil? || !User.find_by_email(user.email).nil?
+        arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
+        errors = true
+      end
+
+      # Nombre y apellido en mayusculas
+      user.first_name = user.first_name.capitalize if !user.first_name.nil?
+      user.last_name = user.last_name.capitalize if !user.last_name.nil?
+
+      # Checa que exista el role_id
+      if role_id.nil? then
+        if Role.find_by_id(role_id).nil? then
+          arrayErrores.push({:line => count, :message => "No existe el rol dado"})
+          errors = true
+        end
+      end
+
+      # Checa que exista el network_id
+      if network_id.nil? then
+        if Network.find_by_id(network_id).nil? then
+          arrayErrores.push({:line => count, :message => "No existe la network"})
+          errors = true
+        end
+      end
+
+      if !errors then
+        begin
+          user.save!
+        rescue ActiveRecord::RecordInvalid => invalid
+          invalid.record.errors.each do |error|
+            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+          end
+        end
+        if !user.save then
+          arrayErrores.push({:line => count, :message => "Error al guardar"})
+        else
+          user.skip_confirmation!
+          user.save!
+          Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+        end
+      end
+    end
+    return arrayErrores
   end
 end

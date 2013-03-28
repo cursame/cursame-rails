@@ -1,0 +1,52 @@
+<h2>Import Courses</h2>
+<%= form_tag upload_csv_courses_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <p>
+  <%= submit_tag "Import" %>
+<% end %>
+<% if !@errores.nil?%>
+  <h2>List of Errors</h2>
+  </p>
+  </p>
+  <table id ="errores">
+  <tr>
+    <th>Linea</th>
+    <th>Error</th>
+  </tr>
+  <%@errores.each do |hash|%>
+    <tr>
+    <th><%=hash[:line].to_s%></th>
+    <th><%=hash[:message]%></th>
+    <tr>
+  <%end%>
+  </table>
+<%end%>
+</p>
+</p>
+<h2>List Of Courses<h2>
+<table id="courses">
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Silabus</th>
+    <th>Init date</th>
+    <th>Finish date</th>
+    <th>Public status</th>
+    <th>Survey param evaluation</th>
+    <th>Delivery param evaluation</th>
+    <th>Network id</th>
+    <th>Active status</th>
+  </tr>
+<% @courses.each do |course|%>
+  <tr>
+    <th><%= course.id %></th>
+    <th><%= course.title %></th>
+    <th><%= course.silabus %></th>
+    <th><%= course.init_date %></th>
+    <th><%= course.finish_date %></th>
+    <th><%= course.public_status %></th>
+    <th><%= course.survey_param_evaluation %></th>
+    <th><%= course.delivery_param_evaluation %></th>
+    <th><%= course.network_id %></th>
+    <th><%= course.active_status %></th>
+<%end%>

@@ -4,7 +4,9 @@ class FriendshipsController < ApplicationController
   def show
     @user = User.find_by_personal_url(params[:personal_url])
     @owner = current_user.id == @user.id
-    if @user.nil? then
+    if @user.nil?
+      redirect_to root_path
+    elsif !@user.friends?(current_user)
       redirect_to root_path
     else
       @all_friends = @user.all_friends

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
+  resources :libraries
+
   resources :settings_teachers
 
   resources :polls
@@ -29,6 +31,9 @@ Cursame30Lb::Application.routes.draw do
   get "managers/members"
 
   get "managers/network_configuration"
+
+  get "managers/library"
+
 
   resources :discussions
 ###### respuestas a la evaluaciones
@@ -76,17 +81,22 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
 
+  get "courses/import", :to => "courses#import", :as => :import
+
   resources :courses do
-     resources :assignments
-     resources :messages do
-       collection do
-         post :active_create
-       end
-     end
+    collection do
+      post :upload_csv
+    end
+    resources :assignments
+    resources :messages do
+      collection do
+        post :active_create
+      end
+    end
 
     collection do
       post :assigment
-     end
+    end
   end
 
   ##### cambiando el status de un curso
@@ -129,11 +139,13 @@ Cursame30Lb::Application.routes.draw do
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
+  # import csv de usuarios
+  get "users/import" => "users#import", :as => :import_users
+  get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
-   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
-
-   match  "/users/", :to => "users#index",  :as =>  :users
-   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
+  post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
+  #match  "/users/", :to => "users#index",  :as =>  :users
+  match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
   get  "users/:personal_url/friends" => "friendships#show", :as => :show_friends
@@ -260,8 +272,9 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
+  match '/api/api/notifications', :to => 'api/api#notifications', :as => :notificationsjson
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
+  match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
   match '/api/api/create_delivery', :to => 'api/api#create_delivery', :as => :create_delivery
   match '/api/api/create_discussion', :to => 'api/api#create_discussion', :as => :create_discussion
-
 end

@@ -1,5 +1,4 @@
 <% wall.each do |publication| %>
-
 <%
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
@@ -9,27 +8,32 @@
   case publication.publication_type
   when 'Comment'
     avatar = post.user.avatar.modern
+    personal_url = post.user.personal_url
     name = post.user.name
     content = post.comment_html
     ico =''
   when 'Course'
     avatar = post.avatar.modern
+    personal_url = post.user.personal_url
     name = post.title
     content = post.silabus
     ico = ''
   when 'Discussion'
     avatar = post.user.avatar.modern
+    personal_url = post.user.personal_url
     name = post.title
     content = post.description
     ico = '-discussion'
   when 'Delivery'
     avatar = post.user.avatar.modern
+    personal_url = post.user.personal_url
     name = post.title
     content = post.description
     publication_cls = 'delivery'
     ico = '-homework'
   when 'Survey'
     avatar = post.user.avatar.modern
+    personal_url = post.user.personal_url
     name = post.name
     ico = '-survey'
   end
@@ -49,7 +53,7 @@
     <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
       <div class="arrow-left"></div>
       <div class="header">
-        <div class="avatar"><%= image_tag(avatar,{:class => "avatar-mini"})%></div>
+        <div class="avatar"><%= link_to image_tag(avatar,{:class => "avatar-mini"}), show_user_path(personal_url)%></div>
       
         <div class="top-null-image"></div><b><%= name %></b>  <span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
@@ -68,12 +72,9 @@
         <% when 'Comment'%>
         <p><%= content %></p>
         <% when 'Survey'%>
-        <!--<p>
-          <img src="/assets/survey.jpg" class="single-image">
-        </p>-->
           <%= render :partial => '/shared/survey_publication_tpl', :locals => {:survey => post} %>
         <% when 'Delivery'%>
-          <%= render :partial => '/shared/delivery_publication_tpl', :locals => {:delivery => post} %>
+          <%= render :partial => '/shared/delivery_publication_tpl', :locals => {:delivery => post, :cargo => cargo} %>
         <%end%>
 
       </div>

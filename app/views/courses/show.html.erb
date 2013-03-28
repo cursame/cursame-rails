@@ -1,9 +1,10 @@
 
-<p id="notice"><%= notice %></p>
-<% if @course.coverphoto = nil %>
-    <div id="banner-profile" style="background:url('/assets/bannerprofile.png');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;"></div>
+<% if  @course.coverphoto.blank? %>
+<div id="banner-profile" style="background:url('/assets/<%= @course.image_coursex %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%else%>
-    <div id="banner-profile" style="background:url('<%= @course.coverphoto.expanded %>');background-size: 970px 315px ; background-position-y: -40px; background-repeat: no-repeat;">
+<div id="banner-profile" style="background:url('<%= @course.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<%end%>
+
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
@@ -39,7 +40,6 @@
         </div>
       </div>
     </div>
-<%end%>
 
 
 <!-- Content Post Box -->
@@ -51,26 +51,32 @@
   
   <div id="box-user-credential" class="network-layout">
     <div class="thumbnail"  >
-      <%= link_to image_tag(@course.avatar.profile)%>
+      <%= link_to image_tag(@course.avatar.profile) if ( !@course.avatar.blank? ) %>
+      <%= link_to image_tag(@course.course_avatarx) if ( @course.avatar.blank? ) %>
+      
+      
     </div>
     <div class="tagname">
       <%= @course.title %>
     </div>
   </div>
-     <div id="box-course" class="basic-lateral-box margin-top" >
-         <p><b>Silabus</b><i>(descripcción)</i><b>:</b> 
+     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">
+         <p><b>Sylabus</b><b>:</b> 
          <%= @course.silabus %> </p>
-     </div>
-     <% if @member.owner == true  %>
-         <%= link_to "editar curso", edit_course_path%>
+          <% if @member.owner == true  %>
+         <br><%= link_to "editar curso", edit_course_path%>
      <%end%>
+     </div>
+    
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
             <% @course.members_in_courses.each do |member|  %>   
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
                 <% if @member.accepted == true %>
-                    <%= image_tag(@members.avatar.modern,{:class => "avatar-mini"})%>
+                    <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? )%>
+                    <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank?)  %>  
+                    
                 <%end%>
             <%end%>
              <% if @member.owner == true %>
