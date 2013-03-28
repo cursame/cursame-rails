@@ -139,14 +139,13 @@ Cursame30Lb::Application.routes.draw do
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
+  # import csv de usuarios
+  get "users/import" => "users#import", :as => :import_users
+  get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
-   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
-
-   # import csv de usuarios
-   get "users/" => "users#import", :as => :import_users
-   post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
-   #match  "/users/", :to => "users#index",  :as =>  :users
-   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
+  post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
+  #match  "/users/", :to => "users#index",  :as =>  :users
+  match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
   get  "users/:personal_url/friends" => "friendships#show", :as => :show_friends

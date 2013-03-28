@@ -4,8 +4,8 @@ class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
   has_many :members_in_courses, :dependent => :destroy
-#has_many :definer_users
- # has_many :users, :through => :definer_users
+  #has_many :definer_users
+  # has_many :users, :through => :definer_users
   has_many :deliveries_courses
   has_many :deliveries, :through => :deliveries_courses
   has_many :surveys
@@ -23,10 +23,10 @@ class Course < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :silabus
-  #validates_presence_of :init_date
-  #validates_presence_of :finish_date
-  #validates_presence_of :survey_param_evaluation
-  #validates_presence_of :delivery_param_evaluation
+  validates_presence_of :init_date
+  validates_presence_of :finish_date
+  validates_presence_of :survey_param_evaluation
+  validates_presence_of :delivery_param_evaluation
   validates_presence_of :network_id
 
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
@@ -57,7 +57,12 @@ class Course < ActiveRecord::Base
 
   def self.import(file)
     arrayErrores = Array.new
-    count = 0
+    count = 1
+    begin
+      file.path
+    rescue NoMethodError
+      return arrayErrores.push({:line => 0, :message => "No selecciono un archivo" })
+    end
     CSV.foreach(file.path, headers: true) do |row|
       count += 1
       if !row["id"].nil? then
@@ -71,12 +76,16 @@ class Course < ActiveRecord::Base
       if course.survey_param_evaluation.to_i +
           course.delivery_param_evaluation.to_i != 100 then
         arrayErrores.push({:line => count, :message => "El porcentaje de examenes o tareas es incorrecto"})
-        errores = true
+        errors = true
       end
 
-      if !errores then
-        if !course.save! then
-          arrayErrores.push({:line => count, :message => "Error al guardar"})
+      if !errors then
+        begin
+          course.save!
+        rescue ActiveRecord::RecordInvalid => invalid
+          invalid.record.errors.each do |error|
+            arrayErrores.push({ :line => count, :message => "Falta especificar: " + error.to_s})
+          end
         end
       end
     end

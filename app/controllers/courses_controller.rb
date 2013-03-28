@@ -69,8 +69,12 @@ class CoursesController < ApplicationController
 
   #POST /courses/upload_csv
   def upload_csv
-    errores = Course.import(params[:file])
-    redirect_to import_courses_path
+    @errores = Course.import(params[:file])
+    @courses = Course.all
+    respond_to do |format|
+      format.html { render "courses/import"}
+      format.json { render json: @courses }
+    end
   end
 
   # GET /courses/new

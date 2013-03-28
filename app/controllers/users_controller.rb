@@ -195,8 +195,12 @@ class UsersController < ApplicationController
  end
 
  def upload_csv
-   errores = User.import(params[:file])
-   redirect_to import_users_path
+   @errores = User.import(params[:file])
+   @users = User.all
+   respond_to do |format|
+      format.html { render "users/import"}
+      format.json { render json: @courses }
+    end
  end
 
 end
