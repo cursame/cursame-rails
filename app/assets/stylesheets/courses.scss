@@ -121,13 +121,24 @@ h3{
     width:400px;
     float: left;
     margin:10px;
-    padding:2px;
+   /* padding:2px;*/ padding: 7px 2px 2px 7px;
     margin-right:15px;
-    border-right: solid #eee 2px;
-    border-left: solid #eee 2px;
+    border-right: solid #ddd 1px;
+    /*border-left: solid #eee 2px;*/ border-left: 0!important;
     margin-bottom:20px;
     overflow:auto;
+    transition: all linear 0.3s;
 }
+
+.list_alt_box:hover { background: rgba(0, 0, 0, 0.2); transition: all linear 0.3s; }
+
+#full-deliveries-area > a { position: absolute; float: right; display: none; margin-top: 16px; }
+
+.list_alt_box .header { font-family: Arial; font-weight: lighter; margin-left: 7px; color: #ddd; }
+.list_alt_box .header .status > a:hover { color: #39D4E2; }
+.top-header-delivery-box ul li .green-circle-mini, .top-header-delivery-box ul li .orange-circle-mini { margin: 6px 0px 0px 6px!important; }
+.top-header-delivery-box ul li { margin: 5px 0px 5px 0px!important; width: 123px!important; }
+
 .survey_list{
     margin-top:10px;
     float:left;

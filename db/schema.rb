@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130328030805) do
-=======
-ActiveRecord::Schema.define(:version => 20130328004428) do
->>>>>>> eab6c31cd0ef94488823c8b9164f15a4618bb1b0
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -104,7 +100,6 @@ ActiveRecord::Schema.define(:version => 20130328004428) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
-    t.integer  "course_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -215,20 +210,6 @@ ActiveRecord::Schema.define(:version => 20130328004428) do
   end
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
-<<<<<<< HEAD
-=======
-
-  create_table "libraries", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "gade_e"
-    t.boolean  "active"
-    t.string   "file"
-    t.integer  "network_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
->>>>>>> eab6c31cd0ef94488823c8b9164f15a4618bb1b0
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
@@ -263,15 +244,6 @@ ActiveRecord::Schema.define(:version => 20130328004428) do
     t.integer  "network_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "notificacions", :force => true do |t|
-    t.integer  "notificator_id"
-    t.string   "notificator_type"
-    t.integer  "user_id"
-    t.string   "kind"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
   end
 
   create_table "notifications", :force => true do |t|
@@ -320,12 +292,6 @@ ActiveRecord::Schema.define(:version => 20130328004428) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
-  end
-
-  create_table "recipes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|

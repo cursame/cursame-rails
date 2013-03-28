@@ -91,10 +91,10 @@ class UsersController < ApplicationController
   end
 =end
  def pertenence!
-     
+
      if current_network
      @user = User.find_by_personal_url(params[:personal_url])
-     
+
      @user_id =  @user.id
      @user_pertenence = NetworksUser.find_by_user_id(@user_id)
      if @user_pertenence != nil
@@ -189,5 +189,32 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+ def import
+   superadmin = current_user.roles.keep_if {
+     |role|
+     role.id == 4
+   }
+   if superadmin.size < 1 then
+     redirect_to root_path
+   end
+   @users = User.all
+ end
+
+ def upload_csv
+   superadmin = current_user.roles.keep_if {
+     |role|
+     role.id ==4
+   }
+   if superadmin.size < 1 then
+     redirect_to root_path
+   end
+   @errores = User.import(params[:file])
+   @users = User.all
+   respond_to do |format|
+      format.html { render "users/import"}
+      format.json { render json: @courses }
+    end
+ end
 
 end

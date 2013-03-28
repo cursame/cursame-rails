@@ -29,8 +29,14 @@
 	border-bottom-style: dotted !important;
 	border-bottom-color: #000 !important;
 	padding: 1px 0 0 0 !important;
+	width: 14px!important;
+	float: left!important;
 	}
-	
+
+.fc-event-title {
+	width: 14px!important;
+}
+
 .fc-event-hori .fc-event-inner {
 	border-width: 0 !important;
 	padding: 0 1px !important;
@@ -57,5 +63,11 @@
 .fc-event .ui-resizable-handle {
 	display: none !important;
 	}
-	
-	
+
+/*--------------------------------*/
+/*---------	new styles -----------*/
+/*--------------------------------*/
+
+.black-delivery-box .header {
+	font-size: 20px!important;
+}
