@@ -1064,11 +1064,29 @@ background: url("/assets/icons/finishdate.png") no-repeat;
 background-position: left center;
 }
 
-#box-course{
+#box-course{ 
   //min-height: 390px;//320px;
-  &.margin-top {
-    margin-top: 120px;
+  &.boxinfocourse{
+	   min-height: 70px;
+  width: 210px;
+  color: #666666;
+  background: $bg-bars;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-left: $margin-sidebar-left;
+  -moz-box-shadow:    0px 1px 0px #fff, inset 0px 1px 0px #fff;
+  -webkit-box-shadow: 0px 1px 0px #fff, inset 0px 1px 0px #fff;
+  box-shadow:         0px 1px 0px #fff, inset 0px 1px 0px #fff;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 15px;
   }
+
+  &.margin-top {
+    margin-top: 100px;
+  }
+  
+  
   & #course-list{
     clear: both;
     & li{
@@ -1371,8 +1389,7 @@ background-position: left center;
 	color: #444444;
 	font-family: HelvLight;
 	font-size: 12px;
-	background: #ffffff /*  url('/assets/active.png') repeat */;
-
+	
 }
 
 .menu-course li{
