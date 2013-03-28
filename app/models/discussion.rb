@@ -8,6 +8,8 @@ class Discussion < ActiveRecord::Base
   
   #comentarios para las discusiones
   acts_as_commentable
+  #para los likes
+  acts_as_votable
 
   after_create do
   	#con esto se guarda en wall

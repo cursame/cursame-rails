@@ -16,7 +16,10 @@ class Survey < ActiveRecord::Base
 
   #comentarios para las surveys
   has_many :comments
+
   acts_as_commentable
+  #para los likes
+  acts_as_votable
 
   
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true

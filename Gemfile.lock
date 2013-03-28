@@ -32,6 +32,8 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     acts_as_commentable (4.0.0)
+    acts_as_votable (0.5.0)
+      rails (>= 3.0.0)
     addressable (2.3.2)
     arel (3.0.2)
     auto_html (1.6.0)
@@ -225,6 +227,7 @@ PLATFORMS
 DEPENDENCIES
   active_attr
   acts_as_commentable
+  acts_as_votable (~> 0.5.0)
   auto_html
   bcrypt-ruby (~> 3.0.0)
   carrierwave
