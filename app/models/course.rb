@@ -29,6 +29,7 @@ class Course < ActiveRecord::Base
   validates_presence_of :delivery_param_evaluation
   validates_presence_of :network_id
 
+
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
                   :created_at, :updated_at, :public_status,
                   :avatar, :coverphoto, :delivery_id,
@@ -36,6 +37,8 @@ class Course < ActiveRecord::Base
                   :network_id, :active_status
 
 
+  #para los likes
+  acts_as_votable
 
   #comentarios para los cursos
   acts_as_commentable
@@ -46,10 +49,10 @@ class Course < ActiveRecord::Base
 
   after_create do
     if self.public_status == 'public'
-      User.all.each do |u|
+      self.network.users.each do |u|
         Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
         if (!Wall.find_by_user_id_and_publication_type_and_publication_id(u.id,'Course',self.id))
-              Wall.create :user => u, :publication => self, :network => self.network, :course => self
+          Wall.create :user => u, :publication => self, :network => self.network, :course => self
         end
       end
     end
@@ -135,4 +138,19 @@ class Course < ActiveRecord::Base
     @state = "published"
   end
 
+  def course_avatarx
+    'course-avatarx.png'
+  end
+  def course_avatarxx
+    'course-avatarxx.png'
+  end
+  def course_avatarxxx
+    'course-avatarxxx.png'
+  end
+  def course_avatarxxxx
+    'course-avatarxxxx.png'
+  end
+  def image_coursex
+    'imagecoursex.png'
+  end
 end

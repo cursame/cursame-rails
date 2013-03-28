@@ -125,6 +125,10 @@ class User < ActiveRecord::Base
   def image_avatarxx
     'imagexx.png'
   end
+  
+  def image_avatarxxx
+     'imagexxx.png'
+   end
 
   def cover_photox
     'portada.png'

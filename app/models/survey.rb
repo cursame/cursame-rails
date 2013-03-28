@@ -16,7 +16,10 @@ class Survey < ActiveRecord::Base
 
   #comentarios para las surveys
   has_many :comments
+
   acts_as_commentable
+  #para los likes
+  acts_as_votable
 
   
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
@@ -49,7 +52,7 @@ class Survey < ActiveRecord::Base
       #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id 
       if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
       
-        Wall.create :user => user, :publication => self, :network => self.network, :course => course
+        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
       
       end
     end

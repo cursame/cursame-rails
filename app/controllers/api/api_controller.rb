@@ -10,14 +10,14 @@ class Api::ApiController < ApplicationController
       when 'Course'
         @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course,:network]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course,:network,:comments]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
     @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:comments => @comments.as_json(:include => [:user]), :count => @comments.count()}, :callback => params[:callback]
+    render :json => {:comments => @comments.as_json(:include => [:user,:comments]), :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
@@ -65,6 +65,23 @@ class Api::ApiController < ApplicationController
     @comment.user = @user
     @comment.network = @network
     @comment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def create_like
+    case params[:type]
+      when 'Course'
+        @object = Course.find(params[:id])
+      when 'Comment'
+        @object = Comment.find(params[:id])
+      when 'Delivery'
+        @object = Delivery.find(params[:id])
+      when 'User'
+        @object = User.find(params[:id])
+      when 'Discussion'
+        @object = Discussion.find(params[:id])
+    end
+    @object.liked_by @user
     render :json => {:success => true}, :callback => params[:callback]
   end
 

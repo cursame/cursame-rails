@@ -23,6 +23,8 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments, :assets
 
   acts_as_commentable
+  #para los likes
+  acts_as_votable
 
   state_machine :state, :initial => :unpublish do
     state :unpublish

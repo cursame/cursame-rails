@@ -121,8 +121,8 @@ class CoursesController < ApplicationController
     @course.network = current_network
     respond_to do |format|
       if @course.save
-          @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-           @member = MembersInCourse.new
+      
+            @member = MembersInCourse.new
              @member.user_id = current_user.id
              @member.course_id =  @course.id
              @member.accepted = true
@@ -130,7 +130,8 @@ class CoursesController < ApplicationController
              @member.network_id = current_network.id
              @member.title = @course.title
              @member.save
-
+             @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
+             
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
         format.js
