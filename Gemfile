@@ -50,6 +50,8 @@ gem 'jquery-rails'
 
 #Gem for the comments		
 gem 'acts_as_commentable'
+#Gem para likes
+gem 'acts_as_votable', '~> 0.5.0'
 
 #para los links inteligentes en los comentarios
 gem "auto_html"

@@ -28,7 +28,8 @@ class Course < ActiveRecord::Base
   #validates_presence_of :delivery_param_evaluation
   validates_presence_of :network_id
   
-  
+  #para los likes
+  acts_as_votable
   
   
   
