@@ -73,7 +73,7 @@ class Comment < ActiveRecord::Base
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
         end
         #con esto se guarda en wall
-        #Wall.create :user => self.user, :publication => self
+        Wall.create :user => self.user, :publication => self, :network => self.network, :course => self.course
       when "Comment"
         #Wall.create :user => self.user, :publication => self
     end
