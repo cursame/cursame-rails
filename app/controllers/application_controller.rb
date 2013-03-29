@@ -191,6 +191,7 @@ class ApplicationController < ActionController::Base
   def mobile?
    request.user_agent =~ /Mobile|webOS/ 
     # request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android)/]
   end
   helper_method :mobile?
 
