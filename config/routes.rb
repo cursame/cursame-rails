@@ -160,6 +160,9 @@ Cursame30Lb::Application.routes.draw do
   #match  "users/:user_id/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:user_id/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
 
+  get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
+  get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
+  
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
 
@@ -176,6 +179,7 @@ Cursame30Lb::Application.routes.draw do
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
+  match '/comunity', :to =>  "networks#network_comunity", :as => :network_comunity
 
 
   #manejo de usuarios en las networks
@@ -275,6 +279,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
+  match '/api/api/users', :to => 'api/api#users', :as => :usersjson
   match '/api/api/notifications', :to => 'api/api#notifications', :as => :notificationsjson
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
   match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like

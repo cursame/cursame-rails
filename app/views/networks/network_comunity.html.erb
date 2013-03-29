@@ -1,0 +1,28 @@
+<% current_network.users.each do |user| %>
+     <% @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
+     <% @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
+     
+     <div class="box_comunity">
+         <div class="image_acces_comunity">
+             <%= image_tag(user.avatar.profile) if (!user.avatar.blank?)%>
+             <%= image_tag(user.image_avatarx) if  (user.avatar.blank?)%>
+         </div>
+         <div class="add_friend_comunity">
+             <%case%>  
+                <%when  @friend %>
+                    <%= "solicitud enviada"%>
+                <%when  @add_me_friend%>  
+                    <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
+        
+                <% else %>
+                <div id="add_friend<%=user.id%>">
+                    <%= link_to "amigos", friendships_create_friend_path(user.id), :remote => true%>
+                </div>
+            <%end%>    
+        </div>
+       <div class="name">
+           <%= user.name %>
+       </div>
+    </div>
+    
+<% end %>
