@@ -1,11 +1,33 @@
 <%= form_tag wall_path, :method => 'get',:class => "filter-form", :id => "wall_search" do %>
-<p>
-	<%= hidden_field_tag :page, 1 %>
-	<%= radio_button_tag 'search', 'Discussion' %>Discusiones
-	<%= radio_button_tag 'search', 'Course' %>Cursos
-	<%= radio_button_tag 'search', 'Comment' %>Comentarios
-	<%= radio_button_tag 'search', 'Delivery' %>Entregas
-</p>
+
+<ul id="trans-nav">
+    <li><img src="/assets/filtrar.png" style="margin-left: 13px;">
+        <ul>
+	        <img src="/assets/line-up.png" style="width:11px;height:10px;position:absolute;display:block;margin:-8px 0 0 25px;">
+			<%= hidden_field_tag :page, 1 %>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Discussion' %>Discusiones</label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Course' %>Cursos</label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Comment' %>Comentarios</label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Delivery' %>Entregas</label></li>
+        </ul>
+    </li>
+</ul>
+	
+	<!--
+		<ul>
+			<li><div class="filter-span"></div>
+				<ul class="dropdown-filter-list">
+					<li class="first"><%= radio_button_tag 'search', 'All', 'default' %><p>Todo</p></li>
+					<li><%= radio_button_tag 'search', 'Discussion' %><p>Discusiones</p></li>
+					<li><%= radio_button_tag 'search', 'Course' %><p>Cursos</p></li>
+					<li><%= radio_button_tag 'search', 'Comment' %><p>Comentarios</p></li>
+					<li class="last"><%= radio_button_tag 'search', 'Delivery' %><p>Entregas</p></li>
+				</ul>
+			</li>
+		</ul>
+	-->
+	</nav>
+
 <% end %>
 
 <script>
