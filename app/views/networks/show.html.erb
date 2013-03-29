@@ -96,41 +96,44 @@
     <div class= "box-comments"></div>
     <div class="clear"></div>
     <div id="tabs-friends" class="tabs-style">
-   <!--<div id="box-friends" class="basic-lateral-box" >
+   <div id="box-friends" class="basic-lateral-box" >
     <h2>AMIGOS</h2>
     <div id="tabs-friends" class="tabs-style">
       <ul id="ul-tabs">
         <li class="element-left" style="width:100px!important;">
           <a href="#tabs-friends-1">
             <div class="content-tab">
-              <span class="title-num">39</span>
+              <span class="title-num"><%= current_user.friendships.count %></span>
               <span class="title">amigos</span>
             </div>
           </a>
         </li>
-        <li class="element-right" style="width:130px!important;">
+       <!--  <li class="element-right" style="width:130px!important;">
           <a href="#tabs-friends-2">
             <div class="content-tab">
               <span class="title-num">20</span>
-              <span class="title">sugerencias</span>
+              <span class="title">sugerencias</span> -->
             </div>
           </a>
         </li>
       </ul>
       <div id="tabs-friends-1">
         <div class="content-avtr">
-          <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-          
+            <% current_user.friendships.each do |friend|%>
+            <%  @friend = friend.friend%>
+                 <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
+                 <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
+            <%end %>          
         </div>
-        <div class="view-all"><a href="">Ver Todo</a></div>
+        <div class="view-all"><%= link_to "Ver todos", network_comunity_path %></div>
       </div>
-      <div id="tabs-friends-2">
+     <!-- <div id="tabs-friends-2">
         <div class="content-avtr">
           <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
          
         </div>
-      </div>
-    </div>-->
+      </div>-->
+    </div>
   </div>
   <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
 </div>
