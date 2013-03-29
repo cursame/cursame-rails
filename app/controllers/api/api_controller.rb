@@ -82,7 +82,11 @@ class Api::ApiController < ApplicationController
         @object = User.find(params[:id])
       when 'Discussion'
         @object = Discussion.find(params[:id])
+      when 'Survey'
+        @object = Survey.find(params[:id])
     end
+    puts 'likeeeeee'
+    puts @object
     @object.liked_by @user
     render :json => {:success => true}, :callback => params[:callback]
   end
