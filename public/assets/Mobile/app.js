@@ -67824,7 +67824,7 @@ Ext.define('Cursame.view.Main', {
             baseCls: 'empty',
             cls: 'empty',
             handler: function (btn) {
-                alert('recuperar contraseña');
+                // alert('recuperar contraseña');
             }
         }]
     }
