@@ -12,8 +12,6 @@ class Api::ApiController < ApplicationController
       else
         @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    puts 'publicacioness....'
-    puts @publications.as_json(:include => [:publication => {:include => :votes}])
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => :votes}}, :user, :course, :network, :comments]), :count => @publications.count()}, :callback => params[:callback]
   end
 
@@ -24,16 +22,13 @@ class Api::ApiController < ApplicationController
 
   def courses
     @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
-  end 
-
-  def users
-    @users = @network.users.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
+    render :json => {:courses => @courses.as_json(), :count => @courses.count()}, :callback => params[:callback]
   end
 
   def notifications
-    notifications = @user.notifications
+    notifications = @user.notifications.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @num_notifications = notifications.count()
+
     @user_notifications = Array.new
     notifications.each do |notification|
       user = notification.user
@@ -54,14 +49,13 @@ class Api::ApiController < ApplicationController
           :creator => cretator,
           :course => course,
           :notificator => notificator,
-          :user => user
+          :user => user,
       }
       @user_notifications.push(notification)
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
-
-    render :json => {:notifications => @user_notifications.as_json, :count => @user_notifications .count()}, :callback => params[:callback]
+    render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
   end
 
   def create_comment

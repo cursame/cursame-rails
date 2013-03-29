@@ -6,7 +6,7 @@
 <br>
 <br>
 <div class="content">
-<h2>Sign up</h2>
+<h2>Crear usuario</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -20,8 +20,21 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
   
-  <%= f.text_field :personal_url, :value => random_string_for_user_url %></div>
+   <%= f.hidden_field :personal_url, :value => random_string_for_user_url %>
+   <% if current_network %>
+   <div>
+       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
+       <% 1.times do networks = @user.permissionings.build end %>
 
+       <%= f.fields_for :permissionings do |permissioning|%>
+
+           <%= permissioning.hidden_field :network_id, :value => current_network.id %>
+           <%= permissioning.select :role_id, options_for_select([['alumno', '2'], ['profesor', '3'] ])%>
+
+
+       <%end%>
+
+   <%end%>
   <%= f.submit "Sign up" %>
 <% end %>
 

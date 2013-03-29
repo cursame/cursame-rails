@@ -150,7 +150,7 @@ Cursame30Lb::Application.routes.draw do
   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
   post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
-  #match  "/users/", :to => "users#index",  :as =>  :users
+  match  "/users/", :to => "users#index",  :as =>  :users
   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
