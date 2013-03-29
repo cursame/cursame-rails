@@ -3,6 +3,7 @@
 </script>
 <!-- creamos un arreglo directo a survey y a delivery y asi jalamos los eventos propios de este -->
 <% @user = current_user %>
+<% if @user.courses != nil %>
 <% @user.courses.each do |courses|%>
     
       <% courses.deliveries.each do |delivery| %>
@@ -37,6 +38,7 @@
                     </script>
            <%end%>
         <%end%>
+<%end%>
 <%end%>
 
 
