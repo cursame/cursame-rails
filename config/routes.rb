@@ -118,6 +118,8 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
      end
   end
+  get "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
+  post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
   match "courses/:id/members", :to => "courses#members", :as => :course_members
   match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery

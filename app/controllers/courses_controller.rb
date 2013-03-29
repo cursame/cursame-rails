@@ -93,6 +93,23 @@ class CoursesController < ApplicationController
     end
   end
 
+  def send_mails
+    @user = current_user
+    member = MemberInCourse.find_by_user_id_and_course_id(@user.id,params[:id])
+    if !member.owner then
+      redirect_to root_path
+    end
+  end
+
+  def send(subject,message)
+    @course = Course.find(params[:id])
+    @subject = subject
+    @message = message
+    puts @subject
+    puts @message
+    puts "XXXXXXXXXXXX"
+  end
+
   # GET /courses/new
   # GET /courses/new.json
   def new
@@ -121,7 +138,7 @@ class CoursesController < ApplicationController
     @course.network = current_network
     respond_to do |format|
       if @course.save
-      
+
             @member = MembersInCourse.new
              @member.user_id = current_user.id
              @member.course_id =  @course.id
@@ -131,7 +148,7 @@ class CoursesController < ApplicationController
              @member.title = @course.title
              @member.save
              @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-             
+
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
         format.js
