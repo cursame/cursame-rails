@@ -217,4 +217,25 @@ class UsersController < ApplicationController
     end
  end
 
+ def send_mails
+   @user = current_user
+   superadmin = @user.roles.keep_if {
+     |role|
+     role.id == 4
+   }
+
+   if superadmin.size < 1 then
+     redirect_to root_path
+   end
+ end
+
+ def sending
+   users = User.all
+   users.each do |user|
+     mail = Notifier.send_email(user,params[:subject],params[:message])
+     mail.deliver
+   end
+   redirect_to root_path
+ end
+
 end

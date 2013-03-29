@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :libraries
@@ -144,6 +145,8 @@ Cursame30Lb::Application.routes.draw do
   end
   # import csv de usuarios
   get "users/import" => "users#import", :as => :import_users
+  get "/send_mails" => "users#send_mails", :as => :massive_mails
+  match "/sending" => "users#sending", :as => "massive_sending", :via => [:post]
   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
   post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
@@ -162,7 +165,7 @@ Cursame30Lb::Application.routes.draw do
 
   get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
   get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
-  
+
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
 
