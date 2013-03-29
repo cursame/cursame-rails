@@ -95,19 +95,23 @@ class CoursesController < ApplicationController
 
   def send_mails
     @user = current_user
-    member = MemberInCourse.find_by_user_id_and_course_id(@user.id,params[:id])
+    @course = Course.find(params[:id])
+    member = MembersInCourse.find_by_user_id_and_course_id(@user.id,params[:id])
+
     if !member.owner then
-      redirect_to root_path
+      redirect_to course_path(@course)
     end
   end
 
-  def send(subject,message)
-    @course = Course.find(params[:id])
-    @subject = subject
-    @message = message
-    puts @subject
-    puts @message
-    puts "XXXXXXXXXXXX"
+  def sending
+    @course = Course.find(params[:course_id])
+    @course.members_in_courses.each do |member|
+      mail = Notifier.send_email_members_in_course(member,params[:subject],params[:message])
+      mail.deliver
+    end
+    respond_to do |format|
+        format.html{redirect_to course_path(@course)}
+    end
   end
 
   # GET /courses/new

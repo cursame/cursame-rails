@@ -119,13 +119,14 @@ Cursame30Lb::Application.routes.draw do
      end
   end
   get "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
-  post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
+  match "/courses/sending" => "courses#sending", :as => "sending", :via => [:post]
+  #post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
   match "courses/:id/members", :to => "courses#members", :as => :course_members
   match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
-  match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
+  #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
 
   #resources :role_id_and_permission_ids

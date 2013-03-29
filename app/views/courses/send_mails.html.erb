@@ -1,0 +1,7 @@
+<%= form_tag "/courses/sending" do %>
+  Subject:<%= text_field_tag(:subject) %>
+  <p>
+  Message:<%= text_area_tag(:message) %>
+  <%=hidden_field_tag 'course_id', @course.id %>
+  <%= submit_tag("Send") %>
+<% end %>
