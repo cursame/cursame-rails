@@ -157,6 +157,9 @@ Cursame30Lb::Application.routes.draw do
   #match  "users/:user_id/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:user_id/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
 
+  get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
+  get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
+  
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
 
@@ -173,6 +176,7 @@ Cursame30Lb::Application.routes.draw do
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
+  match '/comunity', :to =>  "networks#network_comunity", :as => :network_comunity
 
 
   #manejo de usuarios en las networks
