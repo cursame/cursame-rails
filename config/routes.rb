@@ -31,9 +31,9 @@ Cursame30Lb::Application.routes.draw do
   get "managers/members"
 
   get "managers/network_configuration"
-  
+
   get "managers/library"
-  
+
 
   resources :discussions
 ###### respuestas a la evaluaciones
@@ -81,17 +81,22 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
 
+  get "courses/import", :to => "courses#import", :as => :import
+
   resources :courses do
-     resources :assignments
-     resources :messages do
-       collection do
-         post :active_create
-       end
-     end
+    collection do
+      post :upload_csv
+    end
+    resources :assignments
+    resources :messages do
+      collection do
+        post :active_create
+      end
+    end
 
     collection do
       post :assigment
-     end
+    end
   end
 
   ##### cambiando el status de un curso
@@ -134,11 +139,13 @@ Cursame30Lb::Application.routes.draw do
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
+  # import csv de usuarios
+  get "users/import" => "users#import", :as => :import_users
+  get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
-   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
-
-   match  "/users/", :to => "users#index",  :as =>  :users
-   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
+  post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
+  #match  "/users/", :to => "users#index",  :as =>  :users
+  match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
   get  "users/:personal_url/friends" => "friendships#show", :as => :show_friends

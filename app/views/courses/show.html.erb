@@ -60,13 +60,14 @@
       <%= @course.title %>
     </div>
   </div>
-     <div id="box-course" class="basic-lateral-box margin-top" >
-         <p><b>Silabus</b><i>(descripcción)</i><b>:</b> 
+     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">
+         <p><b>Sylabus</b><b>:</b> 
          <%= @course.silabus %> </p>
-     </div>
-     <% if @member.owner == true  %>
-         <%= link_to "editar curso", edit_course_path%>
+          <% if @member.owner == true  %>
+         <br><%= link_to "editar curso", edit_course_path%>
      <%end%>
+     </div>
+    
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
             <% @course.members_in_courses.each do |member|  %>   

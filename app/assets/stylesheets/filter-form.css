@@ -1,0 +1,20 @@
+input[type="radio"] {display:none;}
+
+#trans-nav li > a { color: #A3A9B5!important; }
+#trans-nav { list-style-type: none; height: 40px; padding: 0; margin: 0; position: absolute; margin: 6px 0 0 -5px; z-index: 99; }
+.lblclass { margin-left: 11px; color: #A3A9B5!important; cursor: pointer; }
+#trans-nav li { float: left; position: relative; padding: 0; line-height: 40px; background: transparent; }
+#trans-nav li:hover { background-position: 0 -40px; }
+#trans-nav li a { display: block; padding: 0 15px; color: #fff; text-decoration: none; }
+#trans-nav li a:hover { color: #a3f1d7; }
+#trans-nav li ul { opacity: 0; position: absolute; left: 0; width: 8em; background: #ffffff; list-style-type: none; padding: 0; margin: 0; border: 1px solid #ccc; }
+#trans-nav li:hover ul { opacity: 1; }
+#trans-nav li ul li { float: none; position: static; height: 0; line-height: 0; background: none; }
+#trans-nav li ul li:hover { background: #eee; cursor: pointer; }
+#trans-nav li:hover ul li { height: 30px; line-height: 30px; }
+#trans-nav li ul li a { background: #ffffff; }
+#trans-nav li ul li a:hover { background: #ddd; }
+#trans-nav li { -webkit-transition: all 0.2s; }
+#trans-nav li a { -webkit-transition: all 0.2s; }
+#trans-nav li ul { -webkit-transition: all 0.2s; }
+#trans-nav li ul li { -webkit-transition: height 0.7s; }

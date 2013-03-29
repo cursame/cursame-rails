@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(:version => 20130328030805) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
-    t.integer  "course_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -222,6 +221,7 @@ ActiveRecord::Schema.define(:version => 20130328030805) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"

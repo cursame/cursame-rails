@@ -55,11 +55,42 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     @wall = @course.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
-    
+
     respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @course }
         end
+  end
+
+  #GET /courses/import
+  def import
+    superadmin = current_user.roles.keep_if {
+      |role|
+      role.id == 4
+    }
+    if superadmin.size < 1 then
+      redirect_to root_path
+    end
+
+    @courses = Course.all
+  end
+
+  #POST /courses/upload_csv
+  def upload_csv
+    superadmin = current_user.roles.keep_if {
+      |role|
+      role.id ==4
+    }
+    if superadmin.size < 1 then
+      redirect_to root_path
+    end
+
+    @errores = Course.import(params[:file])
+    @courses = Course.all
+    respond_to do |format|
+      format.html { render "courses/import"}
+      format.json { render json: @courses }
+    end
   end
 
   # GET /courses/new
@@ -198,8 +229,8 @@ class CoursesController < ApplicationController
 
      if @assignment.save!
             puts "************************************************************************"
-          # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
-           
+          # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
             puts  @delivery_from_assignment
 
@@ -233,21 +264,21 @@ class CoursesController < ApplicationController
 
   def dashboard_deliver
   end
-  
-  ######  formato para responder la jamada de ajax con js 
-  
+
+  ######  formato para responder la jamada de ajax con js
+
   def call_assignments_response
     @assignment = Assignment.find(params[:id])
     @data = params[:data]
     @typeo = "assignment"
-    
+
     respond_to do |format|
       #format.html
       format.json
       format.js
     end
   end
-  
+
   def delivery_menu
     respond_to do |format|
       #format.html
@@ -255,29 +286,29 @@ class CoursesController < ApplicationController
       format.js
     end
   end
-  
+
   def active_status
       @course = Course.find(params[:id])
-      
+
         if @course.active_status == true
              @course.active_status = 2
              @course.save
              puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
-             @course.members_in_courses.each do |co| 
+             @course.members_in_courses.each do |co|
                co.active_status = 2
                co.save
              end
         else
              @course.active_status = 1
              @course.save
-             @course.members_in_courses.each do |co| 
+             @course.members_in_courses.each do |co|
                 co.active_status = 1
                 co.save
               end
              puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
-             
+
         end
-        
+
      if @course.save
       respond_to do |format|
         #format.html
@@ -286,7 +317,7 @@ class CoursesController < ApplicationController
       end
      end
   end
-  
+
   def edit_delivery_access
     @delivery = Delivery.find(params[:id])
     @data = params[:data]
