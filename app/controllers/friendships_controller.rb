@@ -26,6 +26,32 @@ class FriendshipsController < ApplicationController
       @users = @user.possible_friends
     end
   end
+  # GET /friendships/create_friend
+  # GET /friendships/create_friend.json
+  def create_friend
+    @user = User.find_by_id(params[:id])
+    @friendship = Friendship.new
+      @friendship.user_id = current_user.id
+      @friendship.friend_id = @user.id
+      @friendship.accepted = false
+    @friendship.save
+    
+    respond_to do |format|
+      format.js
+      format.json
+    end
+    
+  end
+  
+  def update_friend
+    @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
+    @friendship.accepted = true
+    @friendship.save
+     respond_to do |format|
+        format.js
+        format.json
+      end    
+  end
 
   # PUT /friendships
   # PUT /friendships.json

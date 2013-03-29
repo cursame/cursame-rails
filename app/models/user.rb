@@ -236,15 +236,12 @@ class User < ActiveRecord::Base
     return self.name + " (" + self.email + ")"
   end
 
-  def possible_friends
+  def possible_friends(network)
     users = Array.new
-    self.networks.each do
-      |network|
-        network.users.each do
-        |user|
-        if !self.friends_request?(user) then
-          users.push(user)
-        end
+      network.users.each do
+      |user|
+      if !self.friends_request?(user) then
+        users.push(user)
       end
     end
     return users.uniq
