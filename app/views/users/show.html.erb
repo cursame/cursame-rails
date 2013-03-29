@@ -67,7 +67,7 @@
                         <% if @course_count == 0%>
                             <li><a href="#">No hay cursos</a></li>
                         <%else%>
-                            <% @course.each do |cu|%>
+                            <% @courses.each do |cu|%>
                                 <% @cort = Course.find(cu.course_id)%>
                                    <% if @cort.network_id == current_network.id %>
                                     <% if @cort.active_status == true%>
