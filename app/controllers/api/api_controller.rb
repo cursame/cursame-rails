@@ -22,7 +22,12 @@ class Api::ApiController < ApplicationController
 
   def courses
     @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:courses => @courses.as_json(), :count => @courses.count()}, :callback => params[:callback]
+    render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
+  end
+
+  def users
+    @users = @network.users.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
   end
 
   def notifications
