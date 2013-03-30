@@ -60,13 +60,13 @@ class AddPastejeUsers < ActiveRecord::Migration
     maestros.each do |maestro|
        user = User.create :first_name => maestro[:first_name], :last_name => maestro[:last_name], :email => maestro[:email], :password => maestro[:password], :personal_url => "#{maestro[:first_name]}#{maestro[:last_name]}".split.join
        Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '1'
-       MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '1'
+       MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '1', :active_status => true
     end
 
     alumnos.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '1'
-      MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '1'
+      MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '1', :active_status => true
     end
   
    end
