@@ -67661,14 +67661,14 @@ Ext.define('Cursame.view.Main', {
                 name: 'email',
                 placeHolder: lang.email,
                 //value: 'info+pasteje@cursa.me',
-                value: 'iam@armando.mx',
+                //value: 'iam@armando.mx',
                 clearIcon: true
                 }, {
                     xtype: 'passwordfield',
                     name: 'password',
                     placeHolder: lang.password,
                     //value: 'cursamepasteje7',
-                    value: 'mmmmmm',
+                    //value: 'mmmmmm',
                     clearIcon: true
                     }]
         }, {
@@ -69362,7 +69362,9 @@ Ext.define('Cursame.controller.tablet.Main', {
             me = this,
             type, id, store;
 
-        if (comment) {
+        if (data && comment) {
+            console.log(data);
+            console.log(comment);
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
                 id = data.publication_id;
@@ -69373,7 +69375,7 @@ Ext.define('Cursame.controller.tablet.Main', {
                 store = Ext.getStore('CommentsComments');
             }
 
-            me.saveComment(comment, type, id, store);
+            //me.saveComment(comment, type, id, store);
         }
     },
     /**
@@ -71007,6 +71009,39 @@ Ext.define('Cursame.store.Users', {
 });
 
 /**
+ * @class Lang
+ * @extends --
+ * This is the definition class for the languages of the application
+ */
+ Ext.define('Core.Lang', {
+    es:{
+        appName: 'Cursame',
+        sorryMsg:'¡Lo sentimos, algo salio mal! :(',
+        erase:'Eliminar',
+        accept:'Aceptar',
+        decline:'Rechazar',
+        members:'Comunidad',
+        name:'Nombre',
+        description:'Descripción',
+        save:'Guardar',
+        saving:'Guardando ...',
+        email:'Email',
+        password:'Contraseña',
+        login:'Iniciar Sesión',
+        starting :'Iniciando ...',
+        passwordRecover:'Recuperar Contraseña',
+        passwordRecoverEmail:'Escribe tu Email',
+        send:'Enviar',
+        courses:'Cursos',
+        loading:'Cargando ...'
+    }
+});
+
+ // var Lang = Ext.create('Core.Lang'),
+ // lang = Lang.es;
+
+
+/**
  * @class Core
  * @extends --
  * This is the definition class utils of the application
@@ -71067,45 +71102,13 @@ Ext.define('Cursame.store.Users', {
 var Core = Ext.create('Core.Utils');
 
 
-/**
- * @class Lang
- * @extends --
- * This is the definition class for the languages of the application
- */
- Ext.define('Core.Lang', {
-    es:{
-        appName: 'Cursame',
-        sorryMsg:'¡Lo sentimos, algo salio mal! :(',
-        erase:'Eliminar',
-        accept:'Aceptar',
-        decline:'Rechazar',
-        members:'Comunidad',
-        name:'Nombre',
-        description:'Descripción',
-        save:'Guardar',
-        saving:'Guardando ...',
-        email:'Email',
-        password:'Contraseña',
-        login:'Iniciar Sesión',
-        starting :'Iniciando ...',
-        passwordRecover:'Recuperar Contraseña',
-        passwordRecoverEmail:'Escribe tu Email',
-        send:'Enviar',
-        courses:'Cursos',
-        loading:'Cargando ...'
-    }
-});
-
- // var Lang = Ext.create('Core.Lang'),
- // lang = Lang.es;
-
-
 
 Ext.application({
     name: 'Cursame',
 
     requires: [
         'Core.Lang',
+        'Core.Utils',
         'Cursame.view.publications.PublicationTpl',
         'Cursame.view.comments.CommentTpl',
         'Cursame.view.comments.CommentCommentTpl',
