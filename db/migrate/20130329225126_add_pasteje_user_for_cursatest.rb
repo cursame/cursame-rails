@@ -68,8 +68,8 @@ class AddPastejeUserForCursatest < ActiveRecord::Migration
       MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
     end
      
-     MembersInCourse.create :user_id => "4", :course_id => "3", :accepted => true, :owner => true, :network_id => '2', :active_status => true
-     MembersInCourse.create :user_id => "4", :course_id => "4", :accepted => true, :owner => true, :network_id => '2', :active_status => true
+     MembersInCourse.create :user_id => 4, :course_id => 3, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+     MembersInCourse.create :user_id => 4, :course_id => 4, :accepted => true, :owner => true, :network_id => '2', :active_status => true
      
        
    end
