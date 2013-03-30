@@ -67968,9 +67968,8 @@ Ext.define('Cursame.view.comments.CommentsPanel', {
     extend: 'Ext.Panel',
     alias: 'widget.commentspanel',
     requires: ['Cursame.view.comments.CommentsList', 'Cursame.view.comments.CommentCommentTpl'],
-    objectData:undefined,
     config: {
-        dummy:undefined,
+        objectData:undefined,
         padding: 10,
         modal: true,
         centered: true,
@@ -69123,7 +69122,6 @@ Ext.define('Cursame.controller.tablet.Main', {
         if (e.getTarget('div.comment')) {
             var commentsPanel = Ext.create('Cursame.view.comments.CommentsPanel', {
                 objectData: record.getData(),
-                dummy:'no sirve para nada',
                 listeners:{
                     hide:function(t){
                         t.destroy();
@@ -69340,12 +69338,13 @@ Ext.define('Cursame.controller.tablet.Main', {
     onAddCommentComment: function (btn) {
         var comment = this.getCommentField().getValue(),
             form = btn.up('commentspanel'),
-            data = form.objectData,
+            data = form.getObjectData(),
             me = this,
             type, id, store;
 console.log('tablet');
         console.log(form);
         console.log(this.getCommentsPanel());
+        console.log(data);
         if (comment) {
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
@@ -69916,7 +69915,6 @@ Ext.define('Cursame.controller.phone.Main', {
         if (e.getTarget('div.comment')) {
             var commentsPanel = Ext.create('Cursame.view.comments.CommentsPanel', {
                 objectData: record.getData(),
-                dummy:'no sirve para nada',
                 listeners:{
                     hide:function(t){
                         t.destroy();
@@ -70133,12 +70131,13 @@ Ext.define('Cursame.controller.phone.Main', {
     onAddCommentComment: function (btn) {
         var comment = this.getCommentField().getValue(),
             form = btn.up('commentspanel'),
-            data = form.objectData,
+            data = form.getObjectData(),
             me = this,
             type, id, store;
         console.log('phone');
         console.log(form);
         console.log(this.getCommentsPanel());
+        console.log(data);
         if (comment) {
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
