@@ -67439,7 +67439,11 @@ Ext.define('Cursame.view.courses.CourseTpl', {
                 '<div class="tipe-line-course"></div>',
                 '<div class="header">',
                     '<div class="avatar">',
-                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        '<tpl if="this.validateAvatar(avatar) == true">',
+                            '<img src="'+Cursame.URL+'{avatar}">',
+                        '<tpl else>',
+                            '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        '</tpl>',
                     '</div> ',
                     '<div class="info-user">',
                         '{title}',
@@ -67452,7 +67456,15 @@ Ext.define('Cursame.view.courses.CourseTpl', {
                 '</div>',
                 '<div style="clear:both"></div>',
             '</div>',
-        '</div>'];
+        '</div>', {
+                validateAvatar: function (avatar) {
+                    if (avatar !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }];
         this.callParent(html);
     }
 });
@@ -67473,7 +67485,13 @@ Ext.define('Cursame.view.courses.CourseTpl', {
                 '<img src="'+Cursame.URL+'/assets/imagecoursex.png">',
             '</div>',
             '<div class="profile-info">',
-                '<div class="profile-avatar"><img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png"></div>',
+                '<div class="profile-avatar">',
+                    '<tpl if="this.validateAvatar(avatar) == true">',
+                        '<img src="'+Cursame.URL+'{avatar}">',
+                    '<tpl else>',
+                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                    '</tpl>',
+                '</div>',
                 '<div class="aboutme-course"><b>{title}</b>',
                     '<p>{public_status}</p>',
                 '</div>',
@@ -67487,6 +67505,15 @@ Ext.define('Cursame.view.courses.CourseTpl', {
             '</div>',
         '</tpl>',
         '<div class="clear:both"></div>',
+        {
+            validateAvatar: function (avatar) {
+                if (avatar !== null) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
         {
             hasPermissions: function () {
                 var user = Ext.decode(localStorage.getItem("User"));
@@ -67517,12 +67544,26 @@ Ext.define('Cursame.view.courses.CourseTpl', {
                 '<img src="'+Cursame.URL+'{wall}">',
             '</div>',
             '<div class="profile-info">',
-                '<div class="profile-avatar"><img src="'+Cursame.URL+'{avatar}"></div>',
+                '<div class="profile-avatar">',
+                    '<tpl if="this.validateAvatar(avatar) == true">',
+                        '<img src="'+Cursame.URL+'{avatar}">',
+                    '<tpl else>',
+                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                    '</tpl>',
+                '</div>',
                 '<div class="aboutme"><b>{title}</b>',
                     '<p>{description}</p>',
                 '</div>',
             '</div>',
-        '</div>'
+        '</div>', {
+                validateAvatar: function (avatar) {
+                    if (avatar !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
         ];
         this.callParent(html);
     }
@@ -68214,6 +68255,7 @@ Ext.define('Cursame.view.comments.CommentForm', {
     alias: 'widget.commentform',
 
     config: {
+        objectId:undefined,
         padding: 10,
         modal: true,
         centered: true,
@@ -68267,6 +68309,7 @@ Ext.define('Cursame.view.deliveries.DeliveryForm',{
     alias: 'widget.deliveryform',
 
     config: {
+        objectId:undefined,
         padding: 10,
         modal: true,
         centered: true,
@@ -68349,6 +68392,7 @@ Ext.define('Cursame.view.discussions.DiscussionForm', {
     requires:['Ext.field.TextArea'],
 
     config: {
+        objectId:undefined,
 		padding: 10,
         modal: true,
         centered: true,
@@ -69129,11 +69173,6 @@ Ext.define('Cursame.controller.tablet.Main', {
                 }
             });
 
-            console.log('onCommentUserTap');
-            console.log(record.getData());
-            console.log(commentsPanel);
-            console.log(this.getCommentsPanel());
-
             commentsPanel.down('commentslist').setStore(cComments);
 
             cComments.setParams({
@@ -69330,7 +69369,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             comment = form.down('textareafield').getValue(),
             me = this,
             list = btn.up('list');
-        me.saveComment(comment, 'Course', form.objectId, Ext.getStore('Publications'), form);
+        me.saveComment(comment, 'Course', form.getObjectId(), Ext.getStore('Publications'), form);
     },
     /**
      *
@@ -69341,10 +69380,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             data = form.getObjectData(),
             me = this,
             type, id, store;
-console.log('tablet');
-        console.log(form);
-        console.log(this.getCommentsPanel());
-        console.log(data);
+
         if (comment) {
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
@@ -69444,7 +69480,7 @@ console.log('tablet');
         var form = btn.up('formpanel'),
             values = form.getValues(),
             me = this;
-        values.courseId = form.objectId;
+        values.courseId = form.getObjectId();
 
         form.setMasked({
             xtype: 'loadmask',
@@ -69922,11 +69958,6 @@ Ext.define('Cursame.controller.phone.Main', {
                 }
             });
 
-            console.log('onCommentUserTap');
-            console.log(record.getData());
-            console.log(commentsPanel);
-            console.log(this.getCommentsPanel());
-
             commentsPanel.down('commentslist').setStore(cComments);
 
             cComments.setParams({
@@ -70123,7 +70154,7 @@ Ext.define('Cursame.controller.phone.Main', {
             comment = form.down('textareafield').getValue(),
             me = this,
             list = btn.up('list');
-        me.saveComment(comment, 'Course', form.objectId, Ext.getStore('Publications'), form);
+        me.saveComment(comment, 'Course', form.getObjectId(), Ext.getStore('Publications'), form);
     },
     /**
      *
@@ -70134,10 +70165,7 @@ Ext.define('Cursame.controller.phone.Main', {
             data = form.getObjectData(),
             me = this,
             type, id, store;
-        console.log('phone');
-        console.log(form);
-        console.log(this.getCommentsPanel());
-        console.log(data);
+
         if (comment) {
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
@@ -70237,7 +70265,7 @@ Ext.define('Cursame.controller.phone.Main', {
         var form = btn.up('formpanel'),
             values = form.getValues(),
             me = this;
-        values.courseId = form.objectId;
+        values.courseId = form.getObjectId();
 
         form.setMasked({
             xtype: 'loadmask',
