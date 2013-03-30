@@ -67439,7 +67439,7 @@ Ext.define('Cursame.view.courses.CourseTpl', {
                 '<div class="tipe-line-course"></div>',
                 '<div class="header">',
                     '<div class="avatar">',
-                        '<img src="'+Cursame.URL+'{avatar}">',
+                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
                     '</div> ',
                     '<div class="info-user">',
                         '{title}',
@@ -67470,10 +67470,10 @@ Ext.define('Cursame.view.courses.CourseTpl', {
         html = [
         '<div class="profile-header">',
             '<div class="img-header">',
-                '<img src="'+Cursame.URL+'{coverphoto}">',
+                '<img src="'+Cursame.URL+'/assets/imagecoursex.png">',
             '</div>',
             '<div class="profile-info">',
-                '<div class="profile-avatar"><img src="'+Cursame.URL+'{avatar}"></div>',
+                '<div class="profile-avatar"><img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png"></div>',
                 '<div class="aboutme-course"><b>{title}</b>',
                     '<p>{public_status}</p>',
                 '</div>',
@@ -68950,8 +68950,9 @@ Ext.define('Cursame.controller.tablet.Main', {
         switch (index) {
             case 0:
                  var user = Ext.decode(localStorage.getItem("User")),
-                    data = {
-                        wall: user.coverphoto.url,
+                     wall = user.coverphoto.url = null ? user.coverphoto.url : '/assets/portada.png',
+                     data = {
+                         wall: wall,
                         avatar: user.avatar.url,
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
@@ -69736,8 +69737,9 @@ Ext.define('Cursame.controller.phone.Main', {
         switch (index) {
             case 0:
                  var user = Ext.decode(localStorage.getItem("User")),
+                    wall = user.coverphoto.url = null ? user.coverphoto.url : '/assets/portada.png',
                     data = {
-                        wall: user.coverphoto.url,
+                        wall: wall,
                         avatar: user.avatar.url,
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
@@ -69912,6 +69914,11 @@ Ext.define('Cursame.controller.phone.Main', {
                     }
                 }
             });
+
+            console.log('onCommentUserTap');
+            console.log(record);
+            console.log(commentsPanel);
+            console.log(this.getCommentsPanel());
 
             commentsPanel.down('commentslist').setStore(cComments);
 
