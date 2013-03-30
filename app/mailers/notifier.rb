@@ -46,6 +46,12 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "You have " + count.to_s + " User_Surveys"
   end
 
+  def send_email(user,subject,message)
+    @user = user
+    @content = message
+    mail to: @user.email, subject: subject
+  end
+
   def send_limit_deliveries(user)
     @user = user
     count = user.settings_teacher.limit_deliveries
