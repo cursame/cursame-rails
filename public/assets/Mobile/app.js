@@ -67968,6 +67968,7 @@ Ext.define('Cursame.view.comments.CommentsPanel', {
     extend: 'Ext.Panel',
     alias: 'widget.commentspanel',
     requires: ['Cursame.view.comments.CommentsList', 'Cursame.view.comments.CommentCommentTpl'],
+    objectData:undefined,
     config: {
         padding: 10,
         modal: true,
@@ -69035,7 +69036,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             commentsStore.load();
 
             var panel = Ext.create('Cursame.view.comments.CommentsPanel', {
-                objectData: record.data,
+                objectData: record.getData(),
                 listeners:{
                     hide:function(t){
                         t.destroy();
@@ -69120,7 +69121,7 @@ Ext.define('Cursame.controller.tablet.Main', {
         }
         if (e.getTarget('div.comment')) {
             var commentsPanel = Ext.create('Cursame.view.comments.CommentsPanel', {
-                objectData: record.data,
+                objectData: record.getData(),
                 listeners:{
                     hide:function(t){
                         t.destroy();
@@ -69827,7 +69828,7 @@ Ext.define('Cursame.controller.phone.Main', {
             commentsStore.load();
 
             var panel = Ext.create('Cursame.view.comments.CommentsPanel', {
-                objectData: record.data,
+                objectData: record.getData(),
                 listeners:{
                     hide:function(t){
                         t.destroy();
@@ -69912,7 +69913,7 @@ Ext.define('Cursame.controller.phone.Main', {
         }
         if (e.getTarget('div.comment')) {
             var commentsPanel = Ext.create('Cursame.view.comments.CommentsPanel', {
-                objectData: record.data,
+                objectData: record.getData(),
                 listeners:{
                     hide:function(t){
                         t.destroy();
