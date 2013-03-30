@@ -68815,7 +68815,8 @@ Ext.define('Cursame.controller.tablet.Main', {
             commentContainer: 'commentcontainer',
             courseContainer: 'coursecontainer',
             notificationNavigationView: 'notificationnavigationview',
-            userNavigationView: 'usernavigationview'
+            userNavigationView: 'usernavigationview',
+            commentsPanel: 'commentspanel'
         },
         control: {
             'loginform': {
@@ -69333,9 +69334,10 @@ Ext.define('Cursame.controller.tablet.Main', {
             data = form.objectData,
             me = this,
             type, id, store;
-
+console.log('tablet');
+        console.log(form);
+        console.log(this.getCommentsPanel());
         if (comment) {
-            console.info(data);
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
                 id = data.publication_id;
@@ -69599,7 +69601,8 @@ Ext.define('Cursame.controller.phone.Main', {
             commentContainer: 'commentcontainer',
             courseContainer: 'coursecontainer',
             notificationNavigationView: 'notificationnavigationview',
-            userNavigationView: 'usernavigationview'
+            userNavigationView: 'usernavigationview',
+            commentsPanel: 'commentspanel'
         },
         control: {
             'loginform': {
@@ -70117,9 +70120,10 @@ Ext.define('Cursame.controller.phone.Main', {
             data = form.objectData,
             me = this,
             type, id, store;
-
+        console.log('phone');
+        console.log(form);
+        console.log(this.getCommentsPanel());
         if (comment) {
-            console.info(data);
             if(data.publication_type && data.publication_id){
                 type = data.publication_type;
                 id = data.publication_id;
