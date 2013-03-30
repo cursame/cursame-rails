@@ -57,12 +57,12 @@ class AddFunkAlCourses < ActiveRecord::Migration
      course_sexto_b = Course.find_by_id(4)
 
      maestros.each do |maestro|
-        user = User.find_by_email maestros[:email]
+        user = User.find_by_email maestro[:email]
         MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '2', :active_status => true
      end
 
      alumnos.each do |alumno|
-       user = User.find_by_email alumnos[:email]
+       user = User.find_by_email alumno[:email]
        MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
      end
      
