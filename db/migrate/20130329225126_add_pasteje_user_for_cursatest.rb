@@ -53,24 +53,23 @@ class AddPastejeUserForCursatest < ActiveRecord::Migration
     maestros = [ { :first_name => 'Mabel', :last_name => 'Cruz Sotelo', :email => 'info+mabel09@cursa.me', :password => 'ytWrwi9t4A', :group => 'A' },
                  { :first_name => 'Norma', :last_name => 'Nava Gonzalez', :email => 'info+norma10@cursa.me', :password => '1ZNuMNqqDn', :group => 'B' } ]
 
-    course_sexto_a = Course.find_by_id(3)
-    course_sexto_b = Course.find_by_id(4)
+    course_sexto_a = Course.create(:title => "Sexto A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    course_sexto_b = Course.create(:title => "Sexto B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
 
     maestros.each do |maestro|
-       user = User.find_by_email maestros[:email]
+       user = User.create :first_name => maestro[:first_name], :last_name => maestro[:last_name], :email => maestro[:email], :password => maestro[:password], :personal_url => "#{maestro[:first_name]}#{maestro[:last_name]}".split.join
+       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
        MembersInCourse.create :user_id => user.id, :course_id => ( maestro[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => true, :network_id => '2', :active_status => true
     end
 
     alumnos.each do |alumno|
-      user = User.find_by_email alumnos[:email]
+      user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
     end
      
-     MembersInCourse.create :user_id => "4", :course_id => "3", :accepted => true, :owner => true, :network_id => '2', :active_status => true
-     MembersInCourse.create :user_id => "4", :course_id => "4", :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => "2", :course_id => "1", :accepted => true, :owner => true, :network_id => '1', :active_status => true
-      MembersInCourse.create :user_id => "2", :course_id => "2", :accepted => true, :owner => true, :network_id => '1', :active_status => true
-     
+     MembersInCourse.create :user_id => 4, :course_id => 3, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+     MembersInCourse.create :user_id => 4, :course_id => 4, :accepted => true, :owner => true, :network_id => '2', :active_status => true
      
        
    end

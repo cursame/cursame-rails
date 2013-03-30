@@ -68,4 +68,8 @@ class AddFunkAlCourses < ActiveRecord::Migration
      
      MembersInCourse.create :user_id => "4", :course_id => "3", :accepted => true, :owner => true, :network_id => '2', :active_status => true
      MembersInCourse.create :user_id => "4", :course_id => "4", :accepted => true, :owner => true, :network_id => '2', :active_status => true
+     MembersInCourse.create :user_id => "2", :course_id => "1", :accepted => true, :owner => true, :network_id => '1', :active_status => true
+     MembersInCourse.create :user_id => "2", :course_id => "2", :accepted => true, :owner => true, :network_id => '1', :active_status => true
+    
+  end
 end
