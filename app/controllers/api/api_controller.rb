@@ -8,7 +8,7 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
         @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
@@ -17,7 +17,7 @@ class Api::ApiController < ApplicationController
 
   def comments
     @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:comments => @comments.as_json(:include => [:user,:comments, :votes]), :count => @comments.count()}, :callback => params[:callback]
+    render :json => {:comments => @comments.as_json(:include => [:user, :comments, :votes]), :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
@@ -26,7 +26,7 @@ class Api::ApiController < ApplicationController
   end
 
   def users
-    @users = @network.users.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
   end
 
