@@ -67970,6 +67970,7 @@ Ext.define('Cursame.view.comments.CommentsPanel', {
     requires: ['Cursame.view.comments.CommentsList', 'Cursame.view.comments.CommentCommentTpl'],
     objectData:undefined,
     config: {
+        dummy:undefined,
         padding: 10,
         modal: true,
         centered: true,
