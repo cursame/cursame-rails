@@ -68165,6 +68165,8 @@ Ext.define('Cursame.view.users.UserWall', {
     requires: ['Cursame.view.comments.CommentTpl', 'Cursame.view.comments.CommentBar','Cursame.view.users.UserContainer'],
 
     config: {
+        commentableType:undefined,
+        commentableId:undefined,
         store: 'Comments',
         pressedCls:'pressedCls',
         selectedCls :'pressedCls',
@@ -68531,7 +68533,6 @@ Ext.define('Cursame.view.discussions.DiscussionWall', {
     config: {
         commentableType:undefined,
         commentableId:undefined,
-        publicacionId:undefined,
         store: 'Comments',
         pressedCls:'pressedCls',
         selectedCls :'pressedCls',
@@ -68589,7 +68590,6 @@ Ext.define('Cursame.view.deliveries.DeliveryWall', {
     config: {
         commentableType:undefined,
         commentableId:undefined,
-        publicacionId:undefined,
         store: 'Comments',
         pressedCls:'pressedCls',
         selectedCls :'pressedCls',
@@ -68673,7 +68673,6 @@ Ext.define('Cursame.view.comments.CommentWall', {
     config: {
         commentableType:undefined,
         commentableId:undefined,
-        publicacionId:undefined,
         store: 'Comments',
         pressedCls:'pressedCls',
         selectedCls :'pressedCls',
@@ -69079,8 +69078,8 @@ Ext.define('Cursame.controller.tablet.Main', {
                     type: 'slide',
                     direction: 'left'
                 });
-                me.getUserContainer().up('list').commentable_type = 'User';
-                me.getUserContainer().up('list').commentable_id = user.id;
+                me.getUserContainer().up('list').commentableType = 'User';
+                me.getUserContainer().up('list').commentableId = user.id;
                 me.loadCommentsByType('User',user.id);
                 me.getUserContainer().setData(data);
                 break;
@@ -69228,7 +69227,7 @@ Ext.define('Cursame.controller.tablet.Main', {
     onCommentUserTap: function (dataview, index, target, record, e, opt) {
         var me = this,
             cComments = Ext.getStore('CommentsComments');
-        Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación.
+        Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación
         if (e.getTarget('div.like')) {
             me.onLike(record, 'comment');
             return;
@@ -69378,8 +69377,8 @@ Ext.define('Cursame.controller.tablet.Main', {
             xtype: 'userwall',
             title: data.name
         });
-        me.getUserNavigationView().down('userwall').commentable_type = 'User';
-        me.getUserNavigationView().down('userwall').commentable_id = user.id;
+        me.getUserNavigationView().down('userwall').commentableType = 'User';
+        me.getUserNavigationView().down('userwall').commentableId = user.id;
 
         Ext.getStore('Comments').resetCurrentPage();
         me.loadCommentsByType('User',user.id);
@@ -69863,8 +69862,8 @@ Ext.define('Cursame.controller.phone.Main', {
                     type: 'slide',
                     direction: 'left'
                 });
-                me.getUserContainer().up('list').commentable_type = 'User';
-                me.getUserContainer().up('list').commentable_id = user.id;
+                me.getUserContainer().up('list').commentableType = 'User';
+                me.getUserContainer().up('list').commentableId = user.id;
                 me.loadCommentsByType('User',user.id);
                 me.getUserContainer().setData(data);
                 break;
@@ -70012,7 +70011,7 @@ Ext.define('Cursame.controller.phone.Main', {
     onCommentUserTap: function (dataview, index, target, record, e, opt) {
         var me = this,
             cComments = Ext.getStore('CommentsComments');
-        Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación
+        Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación.
         if (e.getTarget('div.like')) {
             me.onLike(record, 'comment');
             return;
@@ -70162,8 +70161,8 @@ Ext.define('Cursame.controller.phone.Main', {
             xtype: 'userwall',
             title: data.name
         });
-        me.getUserNavigationView().down('userwall').commentable_type = 'User';
-        me.getUserNavigationView().down('userwall').commentable_id = user.id;
+        me.getUserNavigationView().down('userwall').commentableType = 'User';
+        me.getUserNavigationView().down('userwall').commentableId = user.id;
 
         Ext.getStore('Comments').resetCurrentPage();
         me.loadCommentsByType('User',user.id);
@@ -70262,7 +70261,7 @@ Ext.define('Cursame.controller.phone.Main', {
             comment = list.down('textfield').getValue();
 
         if (comment && list.getCommentableType() && list.getCommentableId()) {
-            me.saveComment(comment, list.getCommentableType(), list.getCommentableType(), Ext.getStore('Comments'));
+            me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'));
         }
     },
     saveComment: function (comment, commentableType, commentableId, store, form) {
