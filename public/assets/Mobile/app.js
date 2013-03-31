@@ -69040,8 +69040,6 @@ Ext.define('Cursame.controller.tablet.Main', {
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
                     };
-                console.info(wall);
-                console.info(avatar);
                 me.getCardContainer().animateActiveItem(0, {
                     type: 'slide',
                     direction: 'left'
@@ -69143,6 +69141,7 @@ Ext.define('Cursame.controller.tablet.Main', {
         publicationId = record.get('id');
         course = record.get('course');
         user = record.get('user');
+        console.info(publication);
         if (course) {
             publication.wall = course.coverphoto.url;
             publication.coverphoto = course.coverphoto.url;
@@ -69827,8 +69826,6 @@ Ext.define('Cursame.controller.phone.Main', {
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
                     };
-                console.info(wall);
-                console.info(avatar);
                 me.getCardContainer().animateActiveItem(0, {
                     type: 'slide',
                     direction: 'left'
@@ -69930,6 +69927,7 @@ Ext.define('Cursame.controller.phone.Main', {
         publicationId = record.get('id');
         course = record.get('course');
         user = record.get('user');
+        console.info(publication);
         if (course) {
             publication.wall = course.coverphoto.url;
             publication.coverphoto = course.coverphoto.url;
