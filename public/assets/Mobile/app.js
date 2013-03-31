@@ -67582,7 +67582,7 @@ Ext.define('Cursame.view.courses.CourseTpl', {
         html = [
         '<div class="profile-header">',
             '<div class="img-header">',
-                '<img src="'+Cursame.URL+'{wall}">',
+                '<img src="'+Cursame.URL+'/assets/imagecoursex.png">',
             '</div>',
             '<div class="profile-info">',
                 '<div class="menu-homework">',
@@ -67753,7 +67753,7 @@ Ext.define('Cursame.view.Main', {
                     });
                 }
             }]
-        }, {
+        }/*, {
             xtype: 'button',
             text: '<div class = "movi-color" style = "color:white;">' + lang.passwordRecover + '</div>',
             baseCls: 'empty',
@@ -67761,7 +67761,7 @@ Ext.define('Cursame.view.Main', {
             handler: function (btn) {
                 alert('recuperar contraseña');
             }
-        }]
+        }*/]
     }
 });
 
@@ -68602,7 +68602,11 @@ Ext.define('Cursame.view.comments.CommentContainer', {
                 '<div class="tipe-line-comment"></div>',
                 '<div class="header">',
                     '<div class="avatar">',
-                        '<img src="'+Cursame.URL+'{avatar}">',
+                        //'<tpl if="this.validateUserAvatar(avatar) == true">',
+                          //  '<img src="'+Cursame.URL+'{avatar}">',
+                        //'<tpl else>',
+                            '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        //'</tpl>',
                     '</div> ',
                     '<div class="info-user">',
                         '{user_name}',
@@ -69774,7 +69778,6 @@ Ext.define('Cursame.controller.phone.Main', {
         user = Ext.decode(localStorage.getItem("User"));
         userName = user.first_name + ' ' + user.last_name;
         avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'resources/images/curso.jpg';
-
         return [{
             name: userName,
             icon: avatar,
@@ -69815,11 +69818,11 @@ Ext.define('Cursame.controller.phone.Main', {
         switch (index) {
             case 0:
                  var user = Ext.decode(localStorage.getItem("User")),
-                    wall = user.coverphoto.url = null ? user.coverphoto.url : Cursame.URL+'/assets/portada.png',
-                    avatar = user.avatar.url = null ? user.avatar.url : Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png',
-                    data = {
-                        wall: wall,
-                        avatar: avatar,
+                    wall = user.coverphoto.url == null ? '/assets/portada.png' : user.coverphoto.url,
+                    avatar = user.avatar.url == null ? '/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png' : user.avatar.url,
+                data = {
+                        wall: Cursame.URL+wall,
+                        avatar: Cursame.URL+avatar,
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
                     };
