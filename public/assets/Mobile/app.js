@@ -67409,15 +67409,41 @@ Ext.define('Ext.viewport.Viewport', {
         html = [
         '<div class="profile-header">',
             '<div class="img-header">',
-                '<img src="{wall}">',
+                 '<tpl if="this.validateWall(wall) == true">',
+                     '<img src="'+Cursame.URL+'{wall}">',
+                 '<tpl else>',
+                    '<img src="'+Cursame.URL+'/assets/portada.png">',
+                 '</tpl>',
             '</div>',
             '<div class="profile-info">',
-                '<div class="profile-avatar"><img src="{avatar}"></div>',
+                '<div class="profile-avatar">',
+                    '<tpl if="this.validateAvatar(avatar) == true">',
+                        '<img src="'+Cursame.URL+'{avatar}">',
+                    '<tpl else>',
+                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                    '</tpl>',
+                '</div>',
                 '<div class="aboutme"><b>{name}</b>',
                     '<p>{bios}</p>',
                 '</div>',
             '</div>',
-        '</div>'
+        '</div>', {
+                validateWall: function (wall) {
+                    if (wall !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },{
+                validateAvatar: function (avatar) {
+                    if (avatar !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
         ];
         this.callParent(html);
     }
