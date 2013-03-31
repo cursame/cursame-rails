@@ -8,20 +8,21 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @user.walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => :votes}}, :user, :course, :network, :comments]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
-    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id])
+    @comments = @comments.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:comments => @comments.as_json(:include => [:user, :comments, :votes]), :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
-    @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @courses = @network.courses.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
 
@@ -31,7 +32,7 @@ class Api::ApiController < ApplicationController
   end
 
   def notifications
-    notifications = @user.notifications.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    notifications = @user.notifications.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     @num_notifications = notifications.count()
 
     @user_notifications = Array.new

@@ -67409,10 +67409,10 @@ Ext.define('Ext.viewport.Viewport', {
         html = [
         '<div class="profile-header">',
             '<div class="img-header">',
-                '<img src="'+Cursame.URL+'{wall}">',
+                '<img src="{wall}">',
             '</div>',
             '<div class="profile-info">',
-                '<div class="profile-avatar"><img src="'+Cursame.URL+'{avatar}"></div>',
+                '<div class="profile-avatar"><img src="{avatar}"></div>',
                 '<div class="aboutme"><b>{name}</b>',
                     '<p>{bios}</p>',
                 '</div>',
@@ -67629,13 +67629,24 @@ Ext.define('Cursame.view.notifications.NotificationTpl', {
         html = [
             '<div class="users">',
                 '<div class="avatar">',
-                    '<img src="'+Cursame.URL+'{avatar}">',
+                    '<tpl if="this.validateAvatar(avatar) == true">',
+                        '<img src="'+Cursame.URL+'{avatar}">',
+                    '<tpl else>',
+                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                    '</tpl>',
                 '</div>',
                 '<div class="name">',
                     '{first_name} {last_name}',
                 '</div>',
-            '</div>'
-        ];
+            '</div>', {
+                validateAvatar: function (avatar) {
+                    if (avatar !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }];
         this.callParent(html);
     }
 });
@@ -67873,7 +67884,11 @@ Ext.define('Cursame.view.comments.CommentTpl', {
                 '<div class="tipe-line-comment"></div>',
                 '<div class="header">',
                     '<div class="avatar">',
-                        '<img src="'+Cursame.URL+'{user_avatar}">',
+                        '<tpl if="this.validateUserAvatar(user_avatar) == true">',
+                            '<img src="'+Cursame.URL+'{user_avatar}">',
+                        '<tpl else>',
+                            '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        '</tpl>',
                     '</div> ',
                     '<div class="info-user">',
                         '{user_name}',
@@ -67893,7 +67908,15 @@ Ext.define('Cursame.view.comments.CommentTpl', {
                     '<div class="comment">Commentar</div>',
                 '</div>',
             '</div>',
-        '</div>'];
+        '</div>', {
+                validateUserAvatar: function (user_avatar) {
+                    if (user_avatar !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }];
         this.callParent(html);
     }
 });
@@ -67982,7 +68005,11 @@ Ext.define('Cursame.view.comments.CommentCommentTpl', {
         html = [
             '<div class="comments">',
                 '<div class="avatar-comment">',
-                    '<img src="'+Cursame.URL+'{user_avatar}">',
+                    '<tpl if="this.validateUserAvatar(user_avatar) == true">',
+                        '<img src="'+Cursame.URL+'{user_avatar}">',
+                    '<tpl else>',
+                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                    '</tpl>',
                 '</div>',
                 '<div class="comment-name">',
                     '{user_name}',
@@ -67993,8 +68020,15 @@ Ext.define('Cursame.view.comments.CommentCommentTpl', {
                 '<div class="comment-like">Me gusta</div>',
                 '<div class="comment-time">hace 1 hora</div>',
                 '<div style="clear:both"></div>',
-            '</div>'
-            ];
+            '</div>', {
+                validateUserAvatar: function (user_avatar) {
+                    if (user_avatar !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }];
         this.callParent(html);
     }
 });
@@ -68995,10 +69029,11 @@ Ext.define('Cursame.controller.tablet.Main', {
         switch (index) {
             case 0:
                  var user = Ext.decode(localStorage.getItem("User")),
-                     wall = user.coverphoto.url = null ? user.coverphoto.url : '/assets/portada.png',
-                     data = {
-                         wall: wall,
-                        avatar: user.avatar.url,
+                    wall = user.coverphoto.url = null ? user.coverphoto.url : Cursame.URL+'/assets/portada.png',
+                    avatar = user.avatar.url = null ? user.avatar.url : Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png',
+                    data = {
+                        wall: wall,
+                        avatar: avatar,
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
                     };
@@ -69239,10 +69274,10 @@ Ext.define('Cursame.controller.tablet.Main', {
         }
     },
     /**
-     * 
+     *
      * @param  {string} commentableType
      * @param  {int} commentableId
-     * @return 
+     * @return
      */
     loadCommentsByType: function (commentableType,commentableId) {
         var me = this,
@@ -69780,10 +69815,11 @@ Ext.define('Cursame.controller.phone.Main', {
         switch (index) {
             case 0:
                  var user = Ext.decode(localStorage.getItem("User")),
-                    wall = user.coverphoto.url = null ? user.coverphoto.url : '/assets/portada.png',
+                    wall = user.coverphoto.url = null ? user.coverphoto.url : Cursame.URL+'/assets/portada.png',
+                    avatar = user.avatar.url = null ? user.avatar.url : Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png',
                     data = {
                         wall: wall,
-                        avatar: user.avatar.url,
+                        avatar: avatar,
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
                     };
@@ -69854,7 +69890,7 @@ Ext.define('Cursame.controller.phone.Main', {
         publicationsStore = Ext.getStore('Publications');
         commentsStore.resetCurrentPage();//Se resetean los filtros de paginado para el store de Comentarios.
         if (e.getTarget('div.like')) {
-            me.onLike(record, 'publication');//, Ext.getStore('Publications'));
+            me.onLike(record, 'publication');
             return;
         }
         if (e.getTarget('div.comment')) {
