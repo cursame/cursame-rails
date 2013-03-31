@@ -69040,6 +69040,8 @@ Ext.define('Cursame.controller.tablet.Main', {
                         bios: user.bios,
                         name: user.first_name + ' ' + user.last_name
                     };
+                console.info(wall);
+                console.info(avatar);
                 me.getCardContainer().animateActiveItem(0, {
                     type: 'slide',
                     direction: 'left'
