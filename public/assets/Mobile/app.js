@@ -69078,8 +69078,8 @@ Ext.define('Cursame.controller.tablet.Main', {
                     type: 'slide',
                     direction: 'left'
                 });
-                me.getUserContainer().up('list').commentableType = 'User';
-                me.getUserContainer().up('list').commentableId = user.id;
+                me.getUserContainer().up('list').setCommentableType('User');
+                me.getUserContainer().up('list').setCommentableId(user.id);
                 me.loadCommentsByType('User',user.id);
                 me.getUserContainer().setData(data);
                 break;
@@ -69377,8 +69377,8 @@ Ext.define('Cursame.controller.tablet.Main', {
             xtype: 'userwall',
             title: data.name
         });
-        me.getUserNavigationView().down('userwall').commentableType = 'User';
-        me.getUserNavigationView().down('userwall').commentableId = user.id;
+        me.getUserNavigationView().down('userwall').setCommentableType('User');
+        me.getUserNavigationView().down('userwall').setCommentableId(user.id);
 
         Ext.getStore('Comments').resetCurrentPage();
         me.loadCommentsByType('User',user.id);
@@ -69476,7 +69476,8 @@ Ext.define('Cursame.controller.tablet.Main', {
             list = btn.up('list'),
             comment = list.down('textfield').getValue();
 
-        if (comment && list.getCommentableType() && list.getCommentableId()) {
+        if (comment && list.getCommentableType && list.getCommentableId
+                && list.getCommentableType() && list.getCommentableId()) {
             me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'));
         }
     },
@@ -69862,8 +69863,8 @@ Ext.define('Cursame.controller.phone.Main', {
                     type: 'slide',
                     direction: 'left'
                 });
-                me.getUserContainer().up('list').commentableType = 'User';
-                me.getUserContainer().up('list').commentableId = user.id;
+                me.getUserContainer().up('list').setCommentableType('User');
+                me.getUserContainer().up('list').setCommentableId(user.id);
                 me.loadCommentsByType('User',user.id);
                 me.getUserContainer().setData(data);
                 break;
@@ -70011,7 +70012,7 @@ Ext.define('Cursame.controller.phone.Main', {
     onCommentUserTap: function (dataview, index, target, record, e, opt) {
         var me = this,
             cComments = Ext.getStore('CommentsComments');
-        Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación.
+        Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación
         if (e.getTarget('div.like')) {
             me.onLike(record, 'comment');
             return;
@@ -70161,8 +70162,8 @@ Ext.define('Cursame.controller.phone.Main', {
             xtype: 'userwall',
             title: data.name
         });
-        me.getUserNavigationView().down('userwall').commentableType = 'User';
-        me.getUserNavigationView().down('userwall').commentableId = user.id;
+        me.getUserNavigationView().down('userwall').setCommentableType('User');
+        me.getUserNavigationView().down('userwall').setCommentableId(user.id);
 
         Ext.getStore('Comments').resetCurrentPage();
         me.loadCommentsByType('User',user.id);
@@ -70260,7 +70261,8 @@ Ext.define('Cursame.controller.phone.Main', {
             list = btn.up('list'),
             comment = list.down('textfield').getValue();
 
-        if (comment && list.getCommentableType() && list.getCommentableId()) {
+        if (comment && list.getCommentableType && list.getCommentableId
+            && list.getCommentableType() && list.getCommentableId()) {
             me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'));
         }
     },
