@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   has_many :networks, :through => :permissionings
   has_many :users_friends, :dependent => :destroy
   has_many :members_in_courses, :dependent => :destroy
+  # Miembros de grupos
+  has_many :members_in_groups, :dependent => :destroy
+  has_many :groups, :dependent => :destroy
+
   has_many :courses, :through => :members_in_courses
   has_many :users_surveys, :dependent => :destroy
   has_many :assets, :dependent => :destroy
@@ -125,7 +129,7 @@ class User < ActiveRecord::Base
   def image_avatarxx
     'imagexx.png'
   end
-  
+
   def image_avatarxxx
      'imagexxx.png'
    end
