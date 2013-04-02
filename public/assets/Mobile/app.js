@@ -67728,7 +67728,8 @@ Ext.define('Cursame.view.Main', {
         items: [{
             xtype: 'image',
             margin: '30 0 0 0',
-            height: 80
+            height: 80//,
+            //src: '/resources/images/cursame.png'
         }, {
             xtype: 'fieldset',
             defaults: {
@@ -67926,7 +67927,7 @@ Ext.define('Cursame.view.publications.PublicationNavigationView', {
         defaultBackButtonText: lang.back,
 		items: {
 			xtype: 'publicationslist',
-			titlle: lang.courses
+			title: lang.start
 		}
 	},
 	applyLayout: function(config) {
@@ -68358,7 +68359,7 @@ Ext.define('Cursame.view.courses.CourseNavigationView', {
         defaultBackButtonText: lang.back,
 		items: {
 			xtype: 'courseslist',
-			titlle: lang.courses
+			title: lang.courses
 		}
 	},
 	applyLayout: function(config) {
@@ -68810,7 +68811,7 @@ Ext.define('Cursame.view.notifications.NotificationNavigationView', {
         defaultBackButtonText: lang.back,
 		items: {
 			xtype: 'notificationslist',
-			titlle: lang.notifications
+			title: lang.notifications
 		}
 	},
 	applyLayout: function(config) {
@@ -68874,7 +68875,7 @@ Ext.define('Cursame.view.users.UserNavigationView', {
         defaultBackButtonText: lang.back,
 		items: {
 			xtype: 'userslist',
-			titlle: 'Comunidad'
+			title: 'Comunidad'
 		}
 	},
 	applyLayout: function(config) {
@@ -69268,6 +69269,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'discussion':
                 me.getActiveNavigationView().push({
                     xtype: 'discussionwall',
+                    title: lang.discussion,
                     commentableType: 'Discussion',
                     commentableId: publication.id
                 });
@@ -69277,6 +69279,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'delivery':
                 me.getActiveNavigationView().push({
                     xtype: 'deliverywall',
+                    title: lang.delivery,
                     commentableType: 'Delivery',
                     commentableId: publication.id
                 });
@@ -69287,6 +69290,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'comment':
                 me.getActiveNavigationView().push({
                     xtype: 'commentwall',
+                    title:lang.comment,
                     commentableType: 'Comment',
                     commentableId: publication.id
                 });
@@ -69349,6 +69353,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'user_comment_on_network':
                 navigationView.push({
                     xtype: 'commentwall',
+                    title:lang.comment,
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
@@ -69365,6 +69370,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'new_delivery_on_course':
                 navigationView.push({
                     xtype: 'deliverywall',
+                    title:lang.delivery,
                     commentableType: 'Delivery',
                     commentableId: data.id
                 });
