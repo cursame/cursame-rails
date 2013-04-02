@@ -69090,7 +69090,7 @@ Ext.define('Cursame.controller.tablet.Main', {
 
         user = Ext.decode(localStorage.getItem("User"));
         userName = user.first_name + ' ' + user.last_name;
-        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         return [{
             name: userName,
             icon: avatar,
@@ -69914,7 +69914,7 @@ Ext.define('Cursame.controller.phone.Main', {
 
         user = Ext.decode(localStorage.getItem("User"));
         userName = user.first_name + ' ' + user.last_name;
-        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         return [{
             name: userName,
             icon: avatar,
@@ -70598,7 +70598,7 @@ Ext.define('Cursame.model.Publication', {
                 type: 'string',
                 mapping: 'publication',
                 convert: function (v, r) {
-                    return Cursame.ASSETSURL + 'resources/images/curso.jpg';
+                    return Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
                 }
             },
             {
