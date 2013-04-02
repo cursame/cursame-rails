@@ -1,31 +1,57 @@
-<div style="margin-left:70px;">
+<!-- estilo eliminado style="margin-left:70px;" -->
+<div class="form-course"><!-- estilo en courses.scss -->
 <div style="width:400px; float:left;">
 <%= form_for(@course, :html => { :class => "default-form edit-course"}, :remote => true) do |f| %>
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar%></br>
-  <%= f.label :imagen_de_cabecera %>
-  <%= f.file_field :coverphoto%> 
-    <%= f.text_field :title %>
-    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción' %>
-    <%= f.label :fecha_de_inicio %>   
-    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
-    <%= f.label :imagen_de_finalización %>    
-    <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
-    <%= f.label :public_status, 'Privacidad' %>
+	<p>Nombre del curso</p>
+    <%= f.text_field :title, :class=>"input-style" %>
+    <p>Nombre del curso</p>
+    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
+
+    <p><%= f.label :public_status, 'Privacidad' %></p>
     <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
 </div>   
-<div class="default-form edit-course" style="width:400px; float:left;">
+<div class="default-form edit-course" style="width:380px; float:left;">
 
  <!-- <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div> -->
     <%#= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
-    <%= f.label :Valor_de_examenes%>
-    <%= f.text_field :survey_param_evaluation%>
-    <%= f.label :Valor_de_tareas_o_entregas %>
-    <%= f.text_field :delivery_param_evaluation %>
+    <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+    <td><p><%= f.label :avatar%></p></td>
+
+    <td><p><%= f.label :imagen_de_cabecera %></p></td>
+	    </tr>
+	    <tr>
+	<td width="180px"><div id="uploadthingie"><%= f.file_field :avatar, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>
+
+	<td height="52px"><div id="uploadthingie"><%= f.file_field :coverphoto, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>
+		</tr>
+		<tr>
+	<td width="180px"><p><%= f.label :Valor_de_examenes%></p></td>
+	<td width="190px"><p><%= f.label :Valor_de_tareas_o_entregas %></p></td>
+		</tr>
+		<tr>
+	<td width="180px"><%= f.text_field :survey_param_evaluation, :class=>"custom-size-form" %></td>
+	<td width="180px"><%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form" %></td>
+		</tr>
+		<tr>
+	<td width="180px"><p><%= f.label :fecha_de_inicio %></p></td>
+	<td width="180px"><p><%= f.label :fecha_de_finalización %></p></td>
+		</tr>
+		<tr>
+	<td width="180px">
+ <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
+	</td>
+	<td width="180px">
+<%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
+	</td>
+		</tr>
+		</table>
  <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
     <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     
-    <%= f.submit "Actualizar Cursos" %>
+    <script type="text/javascript"> $('#dummy').bind('click', function() { $('input.upload').trigger('click'); }); </script>
+    
+    <%= f.submit "Actualizar Cursos", :class=>"act-crs" %>
 <% end %>
 <script type="text/javascript">
     $("#create_course_form").on('click',function(){

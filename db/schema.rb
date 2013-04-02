@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20130328030805) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"

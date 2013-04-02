@@ -1,29 +1,42 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="content">
-<h2>Sign up</h2>
+<div class="signup-layout"></div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="content login">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		<p>
+		<b>Registate en cúrsame</b><br /><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
+		</p>
+		<br/>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<!-- <h2>Sign up</h2> -->
+	<div class="form-signin form-signup">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		<%= devise_error_messages! %>
+		<div><!-- <%= f.label :email %><br /> --> <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %></div>
+		<div><!-- <%= f.label :password %><br /> --> <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña" %></div>		
+		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd",:placeholder =>"Confirmacion de contraseña" %>
+		<div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div>
+		<%= f.text_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %></div>
+		<%= f.submit "Registrarme", :class =>"signup-btn" %>
+		<% end %>
+	</div><!-- ends form-signup -->
+</div><!-- ends content login -->
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-  
-  <%= f.text_field :personal_url, :value => random_string_for_user_url %></div>
+<div class="confirmation-links">
+<%- if controller_name != 'sessions' %>
+  <%= link_to "¿Ya eres usuario? Ingresa", new_session_path(resource_name) %><br />
+<% end -%>
 
-  <%= f.submit "Sign up" %>
-<% end %>
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
+<% end -%>
 
-<%= render "devise/shared/links" %>
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "¿No recibiste las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
+<% end -%>
+</div>
+
+<!-- <%= render "devise/shared/links" %> -->
+
+<div style="margin-bottom:20px;"><%= render "devise/shared/footer-links" %></div>
+
 </div>

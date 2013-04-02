@@ -1,5 +1,5 @@
 <div id="header-courses">
-<h2 class="courses-title-h2">Lista de cursos </h2>
+<h2 class="courses-title-h2">Lista de cursos</h2>
 <div class="search default-form delivery-form serch-courses">
 <%= form_tag courses_path, :method => 'get' do %>
   <p>
@@ -9,17 +9,18 @@
 <% end %> 
 </div>
 <% permitted_to? :create, :courses do %>
-
     <div class="new-course"><%= link_to 'New Course', new_course_path, :class=>"a-button" %></div>
-
 <%end%>
 </div>
 
- <h2>  <%= notice %> </h2><br><br><br>
+<span style="position: relative!important; text-transform: uppercase; display: block!important; clear: both!important; margin: 35px auto 0 auto!important;
+width: 700px!important; text-align: center!important; padding-top: 30px!important;"><%= notice %></span>
+
+<br />
  
 <% @cc = @courses.count %>
 <% if @cc == 0%>
-  <b> <%= t('No hay resultados en la busqueda')%> </b>
+  <b><%= t('No hay resultados en la busqueda')%> </b>
 <%end%>
 <div id="courses-list">
 <% @courses.each do |course| %>
@@ -27,7 +28,7 @@
 <div class="course">
 
    <div class="thumbnail">
-    <%= link_to image_tag('/assets/courses.png'), course %>
+	   <%= link_to image_tag('/assets/courses.png'), course %>
    </div>
    
    <div id="crud"> 
@@ -43,7 +44,7 @@
                         <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: 'Are you sure?', method: :delete %>
                     <%end%>
                    <%else%>
-                    <b>Aún no has sido aceptado en el curso</b>
+                    <span style="color:#fff;font-weight:lighter;font-size:12px;">Aún no has sido aceptado en este curso</span>
                    <%end%>
             <%else%>
                <% if course.public_status == "Private" %>
