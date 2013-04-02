@@ -71,6 +71,7 @@ class Api::ApiController < ApplicationController
     @comment.comment = params[:comment]
     @comment.user = @user
     @comment.network = @network
+    puts 'se salva.....'
     @comment.save
     render :json => {:success => true}, :callback => params[:callback]
   end

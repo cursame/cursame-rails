@@ -67420,7 +67420,7 @@ Ext.define('Ext.viewport.Viewport', {
                     '<tpl if="this.validateAvatar(avatar) == true">',
                         '<img src="{avatar}">',
                     '<tpl else>',
-                        '<img src="{avatar}'+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        '<img src="{avatar}'+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png">',
                     '</tpl>',
                 '</div>',
                 '<div class="aboutme"><b>{name}</b>',
@@ -67658,7 +67658,7 @@ Ext.define('Cursame.view.notifications.NotificationTpl', {
                     '<tpl if="this.validateAvatar(avatar) == true">',
                         '<img src="'+Cursame.URL+'{avatar}">',
                     '<tpl else>',
-                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        '<img src="'+Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png">',
                     '</tpl>',
                 '</div>',
                 '<div class="name">',
@@ -67974,7 +67974,7 @@ Ext.define('Cursame.view.comments.CommentTpl', {
                         '<tpl if="this.validateUserAvatar(user_avatar) == true">',
                             '<img src="'+Cursame.URL+'{user_avatar}">',
                         '<tpl else>',
-                            '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                            '<img src="'+Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png">',
                         '</tpl>',
                     '</div> ',
                     '<div class="info-user">',
@@ -69090,7 +69090,7 @@ Ext.define('Cursame.controller.tablet.Main', {
 
         user = Ext.decode(localStorage.getItem("User"));
         userName = user.first_name + ' ' + user.last_name;
-        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'resources/images/curso.jpg';
+        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         return [{
             name: userName,
             icon: avatar,
@@ -69914,7 +69914,7 @@ Ext.define('Cursame.controller.phone.Main', {
 
         user = Ext.decode(localStorage.getItem("User"));
         userName = user.first_name + ' ' + user.last_name;
-        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'resources/images/curso.jpg';
+        avatar = user.avatar.url ? Cursame.URL+user.avatar.url : Cursame.ASSETSURL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         return [{
             name: userName,
             icon: avatar,
@@ -70093,6 +70093,7 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'discussion':
                 me.getActiveNavigationView().push({
                     xtype: 'discussionwall',
+                    title: lang.discussion,
                     commentableType: 'Discussion',
                     commentableId: publication.id
                 });
@@ -70102,6 +70103,7 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'delivery':
                 me.getActiveNavigationView().push({
                     xtype: 'deliverywall',
+                    title: lang.delivery,
                     commentableType: 'Delivery',
                     commentableId: publication.id
                 });
@@ -70112,6 +70114,7 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'comment':
                 me.getActiveNavigationView().push({
                     xtype: 'commentwall',
+                    title:lang.comment,
                     commentableType: 'Comment',
                     commentableId: publication.id
                 });
@@ -70174,6 +70177,7 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'user_comment_on_network':
                 navigationView.push({
                     xtype: 'commentwall',
+                    title:lang.comment,
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
@@ -70190,6 +70194,7 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'new_delivery_on_course':
                 navigationView.push({
                     xtype: 'deliverywall',
+                    title:lang.delivery,
                     commentableType: 'Delivery',
                     commentableId: data.id
                 });
@@ -70726,7 +70731,7 @@ Ext.define('Cursame.model.Publication', {
                 name: 'headerAvatar',
                 type: 'string',
                 convert: function (headerAvatar, r) {
-                    var url = Cursame.URL + '/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png';
+                    var url = Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
                     if (headerAvatar) {
                         url = Cursame.URL + headerAvatar
                     }
@@ -70920,7 +70925,7 @@ Ext.define('Cursame.model.Comment', {
             name:'headerAvatar',
             type:'string',
             convert:function(headerAvatar, r){
-                var url = Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png';
+                var url = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
                 if(headerAvatar){
                     url = Cursame.URL+headerAvatar
                 }
