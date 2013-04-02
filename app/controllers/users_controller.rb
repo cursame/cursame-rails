@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
         @search = params[:search]
         @page = params[:page].to_i
-        @wall = current_user.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+        @wall = @user_l.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
 
    ##### print assets
      @asset = Asset.new
@@ -215,6 +215,27 @@ class UsersController < ApplicationController
       format.html { render "users/import"}
       format.json { render json: @courses }
     end
+ end
+
+ def send_mails
+   @user = current_user
+   superadmin = @user.roles.keep_if {
+     |role|
+     role.id == 4
+   }
+
+   if superadmin.size < 1 then
+     redirect_to root_path
+   end
+ end
+
+ def sending
+   users = User.all
+   users.each do |user|
+     mail = Notifier.send_email(user,params[:subject],params[:message])
+     mail.deliver
+   end
+   redirect_to root_path
  end
 
 end

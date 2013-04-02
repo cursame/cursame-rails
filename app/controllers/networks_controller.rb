@@ -140,5 +140,10 @@ class NetworksController < ApplicationController
   
   def network_mask
   end
+  
+  def network_comunity
+      @network_users = current_network.users
+      
+  end
     
 end

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :libraries
@@ -118,12 +119,15 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
      end
   end
+  get "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
+  match "/courses/sending" => "courses#sending", :as => "sending", :via => [:post]
+  #post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
   match "courses/:id/members", :to => "courses#members", :as => :course_members
   match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
-  match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
+  #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
 
   #resources :role_id_and_permission_ids
@@ -141,10 +145,12 @@ Cursame30Lb::Application.routes.draw do
   end
   # import csv de usuarios
   get "users/import" => "users#import", :as => :import_users
+  get "/send_mails" => "users#send_mails", :as => :massive_mails
+  match "/sending" => "users#sending", :as => "massive_sending", :via => [:post]
   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
 
   post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
-  #match  "/users/", :to => "users#index",  :as =>  :users
+  match  "/users/", :to => "users#index",  :as =>  :users
   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
   #friends
   #resources :user_friends
@@ -156,6 +162,9 @@ Cursame30Lb::Application.routes.draw do
   #match  "users/:user_id/waiting_friends/:id", :to => "users#sufriend", :as => :show_user_friends
   #match  "users/:user_id/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:user_id/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
+
+  get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
+  get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
 
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
@@ -173,6 +182,7 @@ Cursame30Lb::Application.routes.draw do
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
+  match '/comunity', :to =>  "networks#network_comunity", :as => :network_comunity
 
 
   #manejo de usuarios en las networks
@@ -272,6 +282,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
+  match '/api/api/users', :to => 'api/api#users', :as => :usersjson
   match '/api/api/notifications', :to => 'api/api#notifications', :as => :notificationsjson
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
   match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like

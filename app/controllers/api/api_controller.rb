@@ -8,25 +8,33 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications  = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @user.walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    render :json => {:publications => @publications.as_json(:include => [:publication,:user,:course,:network,:comments]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => :votes}}, :user, :course, :network, :comments]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
-    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:comments => @comments.as_json(:include => [:user,:comments]), :count => @comments.count()}, :callback => params[:callback]
+    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id])
+    @comments = @comments.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:comments => @comments.as_json(:include => [:user, :comments, :votes]), :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
-    @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @courses = @network.courses.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
 
+  def users
+    @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
+  end
+
   def notifications
-    notifications = @user.notifications
+    notifications = @user.notifications.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @num_notifications = notifications.count()
+
     @user_notifications = Array.new
     notifications.each do |notification|
       user = notification.user
@@ -47,14 +55,13 @@ class Api::ApiController < ApplicationController
           :creator => cretator,
           :course => course,
           :notificator => notificator,
-          :user => user
+          :user => user,
       }
       @user_notifications.push(notification)
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
-
-    render :json => {:notifications => @user_notifications.as_json, :count => @user_notifications .count()}, :callback => params[:callback]
+    render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
   end
 
   def create_comment
@@ -80,7 +87,11 @@ class Api::ApiController < ApplicationController
         @object = User.find(params[:id])
       when 'Discussion'
         @object = Discussion.find(params[:id])
+      when 'Survey'
+        @object = Survey.find(params[:id])
     end
+    puts 'likeeeeee'
+    puts @object
     @object.liked_by @user
     render :json => {:success => true}, :callback => params[:callback]
   end
