@@ -69366,6 +69366,19 @@ Ext.define('Cursame.controller.tablet.Main', {
                 me.loadCommentsByType('Comment',data.id);
             break;
             case 'user_comment_on_course':
+                navigationView.push({
+                    xtype: 'commentwall',
+                    title:lang.comment,
+                    commentableType: 'Comment',
+                    commentableId: data.id
+                });
+                creator = record.get('creator');
+                data.user_name = creator.first_name +' '+ creator.last_name;
+                data.timeAgo = Core.timeAgo(data.created_at);
+                data.avatar = creator.avatar.url;
+
+                me.getCommentContainer().setData(data);
+                me.loadCommentsByType('Comment',data.id);
             break;
             case 'new_delivery_on_course':
                 navigationView.push({
@@ -70190,6 +70203,19 @@ Ext.define('Cursame.controller.phone.Main', {
                 me.loadCommentsByType('Comment',data.id);
             break;
             case 'user_comment_on_course':
+                navigationView.push({
+                    xtype: 'commentwall',
+                    title:lang.comment,
+                    commentableType: 'Comment',
+                    commentableId: data.id
+                });
+                creator = record.get('creator');
+                data.user_name = creator.first_name +' '+ creator.last_name;
+                data.timeAgo = Core.timeAgo(data.created_at);
+                data.avatar = creator.avatar.url;
+
+                me.getCommentContainer().setData(data);
+                me.loadCommentsByType('Comment',data.id);
             break;
             case 'new_delivery_on_course':
                 navigationView.push({
