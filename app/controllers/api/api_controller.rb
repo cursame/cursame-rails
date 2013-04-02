@@ -10,7 +10,7 @@ class Api::ApiController < ApplicationController
       when 'Course'
         @publications = Course.find(params[:publicacionId]).walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @user.walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => :votes}}, :user, :course, :network, :comments]), :count => @publications.count()}, :callback => params[:callback]
   end
