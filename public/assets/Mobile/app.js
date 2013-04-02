@@ -70731,7 +70731,7 @@ Ext.define('Cursame.model.Publication', {
                 name: 'headerAvatar',
                 type: 'string',
                 convert: function (headerAvatar, r) {
-                    var url = Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+                    var url = Cursame.URL + '/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png';
                     if (headerAvatar) {
                         url = Cursame.URL + headerAvatar
                     }
