@@ -67729,7 +67729,7 @@ Ext.define('Cursame.view.Main', {
             xtype: 'image',
             margin: '0 0 10 0',
             height: 80,
-            src: './resources/images/cursame.png'
+            src: Cursame.ASSETSURL+'resources/images/cursame.png'
         }, {
             xtype: 'fieldset',
             defaults: {
