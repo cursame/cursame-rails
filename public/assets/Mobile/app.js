@@ -71174,7 +71174,7 @@ Ext.define('Cursame.model.Notification', {
             mapping:'kind',
             type: 'string',
             convert:function  (value,r) {
-                var text,avatar = Cursame.ASSETSURL+'resources/images/curso.jpg',
+                var text,avatar = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png',
                     obj = r.get('notificator_type'),
                     notificator = obj.notificator,
                     creator = obj.creator,
@@ -71182,11 +71182,12 @@ Ext.define('Cursame.model.Notification', {
 
                 switch(value){
                     case 'user_comment_on_network':
-                        avatar = Cursame.URL+creator.avatar.url;
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = '<a href="">'+creator.first_name+' '+ creator.last_name+'</a> ha comentado en al red';
                     break;
                     case 'user_comment_on_course':
-                        text = 'Armando ha comentado en el curso';
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
+                        text = '<a href="">'+creator.first_name+' '+ creator.last_name+'</a> ha comentado en el curso';
                     break;
                     case 'new_delivery_on_course':
                         text = 'Se cre&oacute; la tarea <a href="">"'+notificator.title+'"</a> en el curso <a href="">'+course.title+'</a>';
