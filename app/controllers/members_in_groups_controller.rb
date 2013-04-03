@@ -40,44 +40,15 @@ class MembersInGroupsController < ApplicationController
   # POST /members_in_groups
   # POST /members_in_groups.json
   def create
-    @members_in_group = MembersInGroup.new(params[:members_in_group])
-
-    respond_to do |format|
-      if @members_in_group.save
-        format.html { redirect_to @members_in_group, notice: 'Members in group was successfully created.' }
-        format.json { render json: @members_in_group, status: :created, location: @members_in_group }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @members_in_group.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /members_in_groups/1
-  # PUT /members_in_groups/1.json
-  def update
-    @members_in_group = MembersInGroup.find(params[:id])
-
-    respond_to do |format|
-      if @members_in_group.update_attributes(params[:members_in_group])
-        format.html { redirect_to @members_in_group, notice: 'Members in group was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @members_in_group.errors, status: :unprocessable_entity }
-      end
-    end
+    MembersInGroup.create(:user_id => params[:user_id],:group_id => params[:group_id])
+    redirect_to :show_groups
   end
 
   # DELETE /members_in_groups/1
   # DELETE /members_in_groups/1.json
   def destroy
-    @members_in_group = MembersInGroup.find(params[:id])
-    @members_in_group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to members_in_groups_url }
-      format.json { head :no_content }
-    end
+    member_in_group = MembersInGroup.find_by_user_id_and_group_id(params[:user_id],params[:group_id])
+    member_in_group.delete
+    redirect_to :show_groups
   end
 end

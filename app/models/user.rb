@@ -318,4 +318,9 @@ class User < ActiveRecord::Base
     end
     return arrayErrores
   end
+
+  def member_of?(group,another_user)
+    member_in_group = MembersInGroup.find_by_user_id_and_group_id(another_user.id,group.id)
+    return !member_in_group.nil?
+  end
 end

@@ -1,83 +1,55 @@
 class GroupsController < ApplicationController
-  # GET /groups
-  # GET /groups.json
-  def index
-    @groups = Group.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @groups }
-    end
-  end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @group }
+    @user = User.find_by_personal_url(params[:personal_url])
+    @groups = @user.groups
+    @owner = current_user.id == @user.id
+    if @owner then
+      @friends = @user.friends(true)
     end
   end
 
   # GET /groups/new
   # GET /groups/new.json
   def new
-    @group = Group.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @group }
+    @user = User.find_by_personal_url(params[:personal_url])
+    if current_user.id != @user.id then
+      redirect_to root_path
     end
-  end
-
-  # GET /groups/1/edit
-  def edit
-    @group = Group.find(params[:id])
+    if @user.nil? then
+      redirect_to root_path
+    end
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(params[:group])
-
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render json: @group, status: :created, location: @group }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    @group = Group.create(:user_id => current_user.id, :name => params[:name],
+                   :description => params[:description])
+    if @group.save then
+      redirect_to :show_groups
+    else
+      redirect_to :show_groups
     end
   end
 
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group = Group.find(params[:id])
-
-    respond_to do |format|
-      if @group.update_attributes(params[:group])
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
+    MembersInGroup.create(:user_id => params[:user_id],:group_id => params[:group_id])
+    redirect_to :new_group
   end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to groups_url }
-      format.json { head :no_content }
+    group = Group.find_by_id(params[:group_id])
+    group.members_in_group.each do |member|
+      member.destroy
     end
+    group.delete
+    redirect_to :new_group
   end
 end

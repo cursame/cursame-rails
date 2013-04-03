@@ -1,20 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>User:</b>
-  <%= @group.user_id %>
+  <b>User: <%= @user.personal_url%></b>
 </p>
+<% @groups.each do |group| %>
+   <p>
+   <b>Group name: </b> <%=group.name%>
+    <% group.members.each do |user| %>
+    </p>
+    <%= link_to user.to_s, show_user_path(user)%>
+    <%= link_to 'Remove', {:controller => "members_in_groups",:action => "destroy", :user_id => user.id, :group_id => group.id}, :method => :delete%>
+    </p>
+   <%end%>
+   </p>
+<%end%>
 
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @group.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%@friends.each do |friend| %>
+  <%= friend.to_s%>
+  <%@groups.each do |group|%>
+  <%if !@user.member_of?(group,friend)%>
+  <%= link_to group.name, { :controller => "members_in_groups", :action => "create", :user_id => friend.id, :group_id => group.id},  :method => :create%>
+  <%end%>
+  <%end%>
+  <p>
+<%end%>
