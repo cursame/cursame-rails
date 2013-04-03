@@ -67707,6 +67707,47 @@ Ext.define('Cursame.view.Main', {
 });
 
 /**
+ * @class Lang
+ * @extends --
+ * This is the definition class for the languages of the application
+ */
+ Ext.define('Core.Lang', {
+    singleton:true,
+    es:{
+        appName: 'Cursame',
+        sorryMsg:'¡Lo sentimos, algo salio mal! :(',
+        erase:'Eliminar',
+        accept:'Aceptar',
+        decline:'Rechazar',
+        members:'Comunidad',
+        name:'Nombre',
+        description:'Descripción',
+        save:'Guardar',
+        saving:'Guardando ...',
+        email:'Email',
+        password:'Contraseña',
+        login:'Iniciar Sesión',
+        starting :'Iniciando ...',
+        passwordRecover:'Recuperar Contraseña',
+        passwordRecoverEmail:'Escribe tu Email',
+        send:'Enviar',
+        courses:'Cursos',
+        loading:'Cargando ...',
+        back:'Atrás',
+        loadMoreText:'ver más...',
+        discussion:'Discusion',
+        delivery:'Tarea',
+        comment:'Comentario',
+        start:'Inicio',
+        notifications:'Notificaciones'
+    }
+});
+
+ // var Lang = Ext.create('Core.Lang'),
+ // lang = Lang.es;
+
+
+/**
  * @class Cursame.view.LoginForm
  * @extends Ext.form.Panel
  * This is the login panel for the Cursame app
@@ -67738,14 +67779,14 @@ Ext.define('Cursame.view.Main', {
             items: [{
                 xtype: 'emailfield',
                 name: 'email',
-                placeHolder: lang.email,
+                placeHolder: Core.Lang.es.email,
                 //value: 'info+pasteje@cursa.me',
                 //value: 'iam@armando.mx',
                 clearIcon: true
                 }, {
                     xtype: 'passwordfield',
                     name: 'password',
-                    placeHolder: lang.password,
+                    placeHolder: Core.Lang.es.password,
                     //value: 'cursamepasteje7',
                     //value: 'mmmmmm',
                     clearIcon: true
@@ -67754,7 +67795,7 @@ Ext.define('Cursame.view.Main', {
             xtype: 'fieldset',
             items: [{
                 xtype: 'button',
-                text: '<div class = "movi-color">' + lang.login + '</div>',
+                text: '<div class = "movi-color">' + Core.Lang.es.login + '</div>',
                 ui: 'accept',
                 scope: this,
                 handler: function (btn) {
@@ -67762,9 +67803,9 @@ Ext.define('Cursame.view.Main', {
                     obj = form.getValues();
                     form.setMasked({
                         xtype: 'loadmask',
-                        message: lang.starting
+                        message: Core.Lang.es.starting
                     });
-                    Core.ajax({
+                    Core.Utils.ajax({
                         url: 'tokens/create.json',
                         params: {
                             email: obj.email ,
@@ -67782,7 +67823,7 @@ Ext.define('Cursame.view.Main', {
             }]
         }/*, {
             xtype: 'button',
-            text: '<div class = "movi-color" style = "color:white;">' + lang.passwordRecover + '</div>',
+            text: '<div class = "movi-color" style = "color:white;">' + Core.Lang.es.passwordRecover + '</div>',
             baseCls: 'empty',
             cls: 'empty',
             handler: function (btn) {
@@ -67894,7 +67935,7 @@ Ext.define('Cursame.view.Main', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         emptyText: 'No hay publicaciones ...',
         scrollable: {
@@ -67904,7 +67945,7 @@ Ext.define('Cursame.view.Main', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.publications.PublicationTpl')
     }
@@ -67924,10 +67965,10 @@ Ext.define('Cursame.view.publications.PublicationNavigationView', {
 		'Cursame.view.publications.PublicationsList'
 	],
 	config: {
-        defaultBackButtonText: lang.back,
+        defaultBackButtonText: Core.Lang.es.back,
 		items: {
 			xtype: 'publicationslist',
-			title: lang.start
+			title: Core.Lang.es.start
 		}
 	},
 	applyLayout: function(config) {
@@ -68031,12 +68072,12 @@ Ext.define('Cursame.view.comments.CommentBar', {
         layout: 'hbox',
         items: [{
             xtype: 'textfield',
-            placeHolder: lang.sendComment,
+            placeHolder: Core.Lang.es.sendComment,
             itemId:'commentfield',
             flex: 5
         }, {
             xtype: 'button',
-            text: lang.send,
+            text: Core.Lang.es.send,
             //disabled: true,
             ui: 'accept',
             itemId:'submit',
@@ -68068,7 +68109,7 @@ Ext.define('Cursame.view.comments.CommentsList', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         emptyText: 'No hay comentarios ...',
         scrollable: {
@@ -68081,7 +68122,7 @@ Ext.define('Cursame.view.comments.CommentsList', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.comments.CommentTpl')
     }
@@ -68241,7 +68282,7 @@ Ext.define('Cursame.view.users.UserWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         scrollable: {
             direction: 'vertical',
@@ -68253,7 +68294,7 @@ Ext.define('Cursame.view.users.UserWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.comments.CommentTpl')
     }
@@ -68275,7 +68316,7 @@ Ext.define('Cursame.view.users.UserWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         emptyText: 'No hay cursos ...',
         scrollable: {
@@ -68285,7 +68326,7 @@ Ext.define('Cursame.view.users.UserWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.courses.CourseTpl')
     }
@@ -68326,7 +68367,7 @@ Ext.define('Cursame.view.courses.CourseWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         scrollable: {
             direction: 'vertical',
@@ -68335,7 +68376,7 @@ Ext.define('Cursame.view.courses.CourseWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.publications.PublicationTpl')
     }
@@ -68356,10 +68397,10 @@ Ext.define('Cursame.view.courses.CourseNavigationView', {
 		'Cursame.view.courses.CourseWall'
 	],
 	config: {
-        defaultBackButtonText: lang.back,
+        defaultBackButtonText: Core.Lang.es.back,
 		items: {
 			xtype: 'courseslist',
-			title: lang.courses
+			title: Core.Lang.es.courses
 		}
 	},
 	applyLayout: function(config) {
@@ -68602,7 +68643,7 @@ Ext.define('Cursame.view.discussions.DiscussionWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         scrollable: {
             direction: 'vertical',
@@ -68616,7 +68657,7 @@ Ext.define('Cursame.view.discussions.DiscussionWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.comments.CommentCommentTpl')
     }
@@ -68659,7 +68700,7 @@ Ext.define('Cursame.view.deliveries.DeliveryWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         scrollable: {
             direction: 'vertical',
@@ -68673,7 +68714,7 @@ Ext.define('Cursame.view.deliveries.DeliveryWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.comments.CommentCommentTpl')
     }
@@ -68742,7 +68783,7 @@ Ext.define('Cursame.view.comments.CommentWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         scrollable: {
             direction: 'vertical',
@@ -68756,7 +68797,7 @@ Ext.define('Cursame.view.comments.CommentWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.comments.CommentCommentTpl')
     }
@@ -68778,7 +68819,7 @@ Ext.define('Cursame.view.comments.CommentWall', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         emptyText: 'No hay notificaciones ...',
         scrollable: {
@@ -68788,7 +68829,7 @@ Ext.define('Cursame.view.comments.CommentWall', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.notifications.NotificationTpl')
     }
@@ -68808,10 +68849,10 @@ Ext.define('Cursame.view.notifications.NotificationNavigationView', {
 		'Cursame.view.notifications.NotificationsList'
 	],
 	config: {
-        defaultBackButtonText: lang.back,
+        defaultBackButtonText: Core.Lang.es.back,
 		items: {
 			xtype: 'notificationslist',
-			title: lang.notifications
+			title: Core.Lang.es.notifications
 		}
 	},
 	applyLayout: function(config) {
@@ -68839,7 +68880,7 @@ Ext.define('Cursame.view.notifications.NotificationNavigationView', {
         selectedCls :'pressedCls',
         masked: {
             xtype: 'loadmask',
-            message: lang.loading
+            message: Core.Lang.es.loading
         },
         emptyText: 'No hay usuarios ...',
         disclosure: true,
@@ -68852,7 +68893,7 @@ Ext.define('Cursame.view.notifications.NotificationNavigationView', {
         plugins: [{
             type: 'listpaging',
             autoPaging: true,
-            loadMoreText: lang.loadMoreText
+            loadMoreText: Core.Lang.es.loadMoreText
         }],
         itemTpl: Ext.create('Cursame.view.users.UserTpl')
     }
@@ -68872,7 +68913,7 @@ Ext.define('Cursame.view.users.UserNavigationView', {
 		'Cursame.view.users.UsersList'
 	],
 	config: {
-        defaultBackButtonText: lang.back,
+        defaultBackButtonText: Core.Lang.es.back,
 		items: {
 			xtype: 'userslist',
 			title: 'Comunidad'
@@ -69208,7 +69249,7 @@ Ext.define('Cursame.controller.tablet.Main', {
         }
         if (e.getTarget('div.comment')) {
             commentsStore.setParams({
-                commentable_type: Core.toFirstUpperCase(record.data.publication_type),
+                commentable_type: Core.Utils.toFirstUpperCase(record.data.publication_type),
                 commentable_id: record.data.publication_id
             });
             commentsStore.load();
@@ -69263,13 +69304,13 @@ Ext.define('Cursame.controller.tablet.Main', {
             publication.avatar = user.avatar.url;
         }
         publication.user_name = user.first_name +' '+ user.last_name;
-        publication.timeAgo = Core.timeAgo(publication.created_at);
+        publication.timeAgo = Core.Utils.timeAgo(publication.created_at);
 
         switch (record.get('publication_type')) {
             case 'discussion':
                 me.getActiveNavigationView().push({
                     xtype: 'discussionwall',
-                    title: lang.discussion,
+                    title: Core.Lang.es.discussion,
                     commentableType: 'Discussion',
                     commentableId: publication.id
                 });
@@ -69279,18 +69320,18 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'delivery':
                 me.getActiveNavigationView().push({
                     xtype: 'deliverywall',
-                    title: lang.delivery,
+                    title: Core.Lang.es.delivery,
                     commentableType: 'Delivery',
                     commentableId: publication.id
                 });
-                publication.end_date = Core.timeAgo(publication.end_date);
+                publication.end_date = Core.Utils.timeAgo(publication.end_date);
                 me.getDeliveryContainer().setData(publication);
                 me.loadCommentsByType('Delivery',publication.id);
                 break;
             case 'comment':
                 me.getActiveNavigationView().push({
                     xtype: 'commentwall',
-                    title:lang.comment,
+                    title:Core.Lang.es.comment,
                     commentableType: 'Comment',
                     commentableId: publication.id
                 });
@@ -69353,13 +69394,13 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'user_comment_on_network':
                 navigationView.push({
                     xtype: 'commentwall',
-                    title:lang.comment,
+                    title:Core.Lang.es.comment,
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
                 creator = record.get('creator');
                 data.user_name = creator.first_name +' '+ creator.last_name;
-                data.timeAgo = Core.timeAgo(data.created_at);
+                data.timeAgo = Core.Utils.timeAgo(data.created_at);
                 data.avatar = creator.avatar.url;
 
                 me.getCommentContainer().setData(data);
@@ -69368,13 +69409,13 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'user_comment_on_course':
                 navigationView.push({
                     xtype: 'commentwall',
-                    title:lang.comment,
+                    title:Core.Lang.es.comment,
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
                 creator = record.get('creator');
                 data.user_name = creator.first_name +' '+ creator.last_name;
-                data.timeAgo = Core.timeAgo(data.created_at);
+                data.timeAgo = Core.Utils.timeAgo(data.created_at);
                 data.avatar = creator.avatar.url;
 
                 me.getCommentContainer().setData(data);
@@ -69383,7 +69424,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'new_delivery_on_course':
                 navigationView.push({
                     xtype: 'deliverywall',
-                    title:lang.delivery,
+                    title:Core.Lang.es.delivery,
                     commentableType: 'Delivery',
                     commentableId: data.id
                 });
@@ -69535,7 +69576,7 @@ Ext.define('Cursame.controller.tablet.Main', {
                 store = Ext.getStore('CommentsComments');
             }
 
-            me.saveComment(comment, type, id, store);
+            me.saveComment(comment, Core.Utils.toFirstUpperCase(type), id, store);
         }
     },
     /**
@@ -69554,12 +69595,12 @@ Ext.define('Cursame.controller.tablet.Main', {
         }
     },
     saveComment: function (comment, commentableType, commentableId, store, form) {
-        var me = this;
+        var me = this, record, num_comments;
         me.getMain().setMasked({
             xtype: 'loadmask',
-            message: lang.saving
+            message: Core.Lang.es.saving
         });
-        Core.ajax({
+        Core.Utils.ajax({
             url: 'api/create_comment',
             params: {
                 comment: comment,
@@ -69567,17 +69608,26 @@ Ext.define('Cursame.controller.tablet.Main', {
                 commentable_id: commentableId
             },
             success: function (response) {
+                me.getMain().setMasked(false);
                 if (form){
                     form.hide();
                     form.destroy();
+                } else {
+                    record = me.getUserWall().getSelection()[0];
+                    if (!record){
+                        record = me.getPublicationsList().getSelection()[0];
+                    }
+                    num_comments = record.get('num_comments') + 1;//Cuando se guarda un comentario se le suma al numero de comentarios.
+                    record.set('num_comments',num_comments)
+                    record.commit();
                 }
-                me.getMain().setMasked(false);
                 store.resetCurrentPage();
                 store.setParams({
                     commentable_type: commentableType,
                     commentable_id: commentableId
                 });
                 store.load();
+
             }
         });
     },
@@ -69592,9 +69642,9 @@ Ext.define('Cursame.controller.tablet.Main', {
         var me = this;
         me.getMain().setMasked({
             xtype: 'loadmask',
-            message: lang.saving
+            message: Core.Lang.es.saving
         });
-        Core.ajax({
+        Core.Utils.ajax({
             url: 'api/create_like',
             params: {
                 type: type,
@@ -69602,6 +69652,9 @@ Ext.define('Cursame.controller.tablet.Main', {
             },
             success: function (response) {
                 me.getMain().setMasked(false);
+                //var likes = record.get('likes') + 1;//Cuando se guarda un comentario se le suma al numero de comentarios.
+                //record.set('likes',likes)
+                //record.commit();
                 record.set('likes','1');
                 record.commit();
             }
@@ -69628,10 +69681,10 @@ Ext.define('Cursame.controller.tablet.Main', {
 
         form.setMasked({
             xtype: 'loadmask',
-            message: lang.saving
+            message: Core.Lang.es.saving
         });
 
-        Core.ajax({
+        Core.Utils.ajax({
             url: url,
             params: values,
             success: function (response) {
@@ -69672,7 +69725,7 @@ Ext.define('Cursame.controller.tablet.Main', {
                 id = record.data.publication_id;
                 break;
         }
-       me.saveLike(Core.toFirstUpperCase(type),id,record);
+       me.saveLike(Core.Utils.toFirstUpperCase(type),id,record);
     },
 
     addHeaderToComments:function(params){
@@ -70045,7 +70098,7 @@ Ext.define('Cursame.controller.phone.Main', {
         }
         if (e.getTarget('div.comment')) {
             commentsStore.setParams({
-                commentable_type: Core.toFirstUpperCase(record.data.publication_type),
+                commentable_type: Core.Utils.toFirstUpperCase(record.data.publication_type),
                 commentable_id: record.data.publication_id
             });
             commentsStore.load();
@@ -70100,13 +70153,13 @@ Ext.define('Cursame.controller.phone.Main', {
             publication.avatar = user.avatar.url;
         }
         publication.user_name = user.first_name +' '+ user.last_name;
-        publication.timeAgo = Core.timeAgo(publication.created_at);
+        publication.timeAgo = Core.Utils.timeAgo(publication.created_at);
 
         switch (record.get('publication_type')) {
             case 'discussion':
                 me.getActiveNavigationView().push({
                     xtype: 'discussionwall',
-                    title: lang.discussion,
+                    title: Core.Lang.es.discussion,
                     commentableType: 'Discussion',
                     commentableId: publication.id
                 });
@@ -70116,18 +70169,18 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'delivery':
                 me.getActiveNavigationView().push({
                     xtype: 'deliverywall',
-                    title: lang.delivery,
+                    title: Core.Lang.es.delivery,
                     commentableType: 'Delivery',
                     commentableId: publication.id
                 });
-                publication.end_date = Core.timeAgo(publication.end_date);
+                publication.end_date = Core.Utils.timeAgo(publication.end_date);
                 me.getDeliveryContainer().setData(publication);
                 me.loadCommentsByType('Delivery',publication.id);
                 break;
             case 'comment':
                 me.getActiveNavigationView().push({
                     xtype: 'commentwall',
-                    title:lang.comment,
+                    title:Core.Lang.es.comment,
                     commentableType: 'Comment',
                     commentableId: publication.id
                 });
@@ -70190,13 +70243,13 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'user_comment_on_network':
                 navigationView.push({
                     xtype: 'commentwall',
-                    title:lang.comment,
+                    title:Core.Lang.es.comment,
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
                 creator = record.get('creator');
                 data.user_name = creator.first_name +' '+ creator.last_name;
-                data.timeAgo = Core.timeAgo(data.created_at);
+                data.timeAgo = Core.Utils.timeAgo(data.created_at);
                 data.avatar = creator.avatar.url;
 
                 me.getCommentContainer().setData(data);
@@ -70205,13 +70258,13 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'user_comment_on_course':
                 navigationView.push({
                     xtype: 'commentwall',
-                    title:lang.comment,
+                    title:Core.Lang.es.comment,
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
                 creator = record.get('creator');
                 data.user_name = creator.first_name +' '+ creator.last_name;
-                data.timeAgo = Core.timeAgo(data.created_at);
+                data.timeAgo = Core.Utils.timeAgo(data.created_at);
                 data.avatar = creator.avatar.url;
 
                 me.getCommentContainer().setData(data);
@@ -70220,7 +70273,7 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'new_delivery_on_course':
                 navigationView.push({
                     xtype: 'deliverywall',
-                    title:lang.delivery,
+                    title:Core.Lang.es.delivery,
                     commentableType: 'Delivery',
                     commentableId: data.id
                 });
@@ -70372,7 +70425,7 @@ Ext.define('Cursame.controller.phone.Main', {
                 store = Ext.getStore('CommentsComments');
             }
 
-            me.saveComment(comment, type, id, store);
+            me.saveComment(comment, Core.Utils.toFirstUpperCase(type), id, store);
         }
     },
     /**
@@ -70391,12 +70444,12 @@ Ext.define('Cursame.controller.phone.Main', {
         }
     },
     saveComment: function (comment, commentableType, commentableId, store, form) {
-        var me = this;
+        var me = this, record, num_comments;
         me.getMain().setMasked({
             xtype: 'loadmask',
-            message: lang.saving
+            message: Core.Lang.es.saving
         });
-        Core.ajax({
+        Core.Utils.ajax({
             url: 'api/create_comment',
             params: {
                 comment: comment,
@@ -70404,17 +70457,26 @@ Ext.define('Cursame.controller.phone.Main', {
                 commentable_id: commentableId
             },
             success: function (response) {
+                me.getMain().setMasked(false);
                 if (form){
                     form.hide();
                     form.destroy();
+                } else {
+                    record = me.getUserWall().getSelection()[0];
+                    if (!record){
+                        record = me.getPublicationsList().getSelection()[0];
+                    }
+                    num_comments = record.get('num_comments') + 1;//Cuando se guarda un comentario se le suma al numero de comentarios.
+                    record.set('num_comments',num_comments)
+                    record.commit();
                 }
-                me.getMain().setMasked(false);
                 store.resetCurrentPage();
                 store.setParams({
                     commentable_type: commentableType,
                     commentable_id: commentableId
                 });
                 store.load();
+
             }
         });
     },
@@ -70429,9 +70491,9 @@ Ext.define('Cursame.controller.phone.Main', {
         var me = this;
         me.getMain().setMasked({
             xtype: 'loadmask',
-            message: lang.saving
+            message: Core.Lang.es.saving
         });
-        Core.ajax({
+        Core.Utils.ajax({
             url: 'api/create_like',
             params: {
                 type: type,
@@ -70465,10 +70527,10 @@ Ext.define('Cursame.controller.phone.Main', {
 
         form.setMasked({
             xtype: 'loadmask',
-            message: lang.saving
+            message: Core.Lang.es.saving
         });
 
-        Core.ajax({
+        Core.Utils.ajax({
             url: url,
             params: values,
             success: function (response) {
@@ -70509,7 +70571,7 @@ Ext.define('Cursame.controller.phone.Main', {
                 id = record.data.publication_id;
                 break;
         }
-       me.saveLike(Core.toFirstUpperCase(type),id,record);
+       me.saveLike(Core.Utils.toFirstUpperCase(type),id,record);
     },
 
     addHeaderToComments:function(params){
@@ -70732,9 +70794,17 @@ Ext.define('Cursame.model.Publication', {
             {
                 name: 'num_comments',
                 type: 'int',
-                mapping: 'comments',
-                convert: function (comments, r) {
-                    return comments ? comments.length : 0;
+                mapping: 'publication',
+                convert: function (publication, r) {
+                    var comments = 0;
+                    if (publication) {
+                        if (publication.comments) {
+                            comments = publication.comments.length
+                        } else {
+                            comments = publication;
+                        }
+                    }
+                    return comments;
                 }
             },
             {
@@ -70924,16 +70994,27 @@ Ext.define('Cursame.model.Comment', {
             type: 'int',
             mapping: 'comments',
             convert: function (comments, r){
-                var length = comments? comments.length: 0;
-                return length;
+                console.info(comments);
+                var num_comments = 0;
+                    if (comments && comments.length) {
+                        num_comments = comments.length;
+                    } else if(comments && comments != '') {
+                        num_comments = comments;
+                    }
+                return num_comments;
             }
         },{
             name: 'likes',
             type: 'int',
             mapping: 'votes',
             convert: function (votes, r){
-                var length = votes? votes.length: 0;
-                return length;
+                var likes = 0;
+                    if (votes) {
+                        likes = votes.length
+                    } else {
+                        likes;
+                    }
+                return likes;
             }
         },
         {
@@ -71368,44 +71449,12 @@ Ext.define('Cursame.store.Users', {
 });
 
 /**
- * @class Lang
- * @extends --
- * This is the definition class for the languages of the application
- */
- Ext.define('Core.Lang', {
-    es:{
-        appName: 'Cursame',
-        sorryMsg:'¡Lo sentimos, algo salio mal! :(',
-        erase:'Eliminar',
-        accept:'Aceptar',
-        decline:'Rechazar',
-        members:'Comunidad',
-        name:'Nombre',
-        description:'Descripción',
-        save:'Guardar',
-        saving:'Guardando ...',
-        email:'Email',
-        password:'Contraseña',
-        login:'Iniciar Sesión',
-        starting :'Iniciando ...',
-        passwordRecover:'Recuperar Contraseña',
-        passwordRecoverEmail:'Escribe tu Email',
-        send:'Enviar',
-        courses:'Cursos',
-        loading:'Cargando ...'
-    }
-});
-
- // var Lang = Ext.create('Core.Lang'),
- // lang = Lang.es;
-
-
-/**
  * @class Core
  * @extends --
  * This is the definition class utils of the application
  */
  Ext.define('Core.Utils', {
+    singleton:true,
     user:undefined,
     url:Cursame.APIURL,
     src:'/assets/Cursame/',
@@ -71458,8 +71507,6 @@ Ext.define('Cursame.store.Users', {
     }
 });
 
-var Core = Ext.create('Core.Utils');
-
 
 
 Ext.application({
@@ -71500,11 +71547,7 @@ Ext.application({
         '1536x2008': 'resources/startup/1536x2008.png',
         '1496x2048': 'resources/startup/1496x2048.png'
     },
-    init:function  () {
-      var Lang = Ext.create('Core.Lang');
-        lang = Lang.es;
-        Core = Ext.create('Core.Utils');
-    },
+
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();

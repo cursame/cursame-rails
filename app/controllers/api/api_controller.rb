@@ -8,11 +8,11 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications = Course.find(params[:publicacionId]).walls.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
         @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => :votes}}, :user, :course, :network, :comments]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:votes, :comments]}}, :user, :course, :network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
@@ -32,7 +32,7 @@ class Api::ApiController < ApplicationController
   end
 
   def notifications
-    notifications = @user.notifications.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    notifications = @user.notifications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     @num_notifications = notifications.count()
 
     @user_notifications = Array.new
@@ -71,7 +71,6 @@ class Api::ApiController < ApplicationController
     @comment.comment = params[:comment]
     @comment.user = @user
     @comment.network = @network
-    puts 'se salva.....'
     @comment.save
     render :json => {:success => true}, :callback => params[:callback]
   end
@@ -91,7 +90,6 @@ class Api::ApiController < ApplicationController
       when 'Survey'
         @object = Survey.find(params[:id])
     end
-    puts 'likeeeeee'
     puts @object
     @object.liked_by @user
     render :json => {:success => true}, :callback => params[:callback]
