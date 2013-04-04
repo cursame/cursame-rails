@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
     t.datetime "updated_at",  :null => false
   end
 
+<<<<<<< HEAD
   create_table "libraries", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -231,6 +232,8 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
     t.datetime "updated_at",  :null => false
   end
 
+=======
+>>>>>>> 1f9918f91768aab51f6f68258d863a8463d608d8
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
@@ -376,6 +379,7 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
     t.integer  "user_id"
     t.integer  "poll_id"
     t.string   "state"
+    t.boolean  "publish"
   end
 
   create_table "user_friends", :force => true do |t|
