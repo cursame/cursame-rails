@@ -53,6 +53,7 @@ class AddFunkAlCourses < ActiveRecord::Migration
      maestros = [ { :first_name => 'Mabel', :last_name => 'Cruz Sotelo', :email => 'info+mabel09@cursa.me', :password => 'ytWrwi9t4A', :group => 'A' },
                   { :first_name => 'Norma', :last_name => 'Nava Gonzalez', :email => 'info+norma10@cursa.me', :password => '1ZNuMNqqDn', :group => 'B' } ]
 
+=begin
      course_sexto_a = Course.find_by_id(3)
      course_sexto_b = Course.find_by_id(4)
 
@@ -65,11 +66,11 @@ class AddFunkAlCourses < ActiveRecord::Migration
        user = User.find_by_email alumno[:email]
        MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? course_sexto_a.id : course_sexto_b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
      end
-     
+
      MembersInCourse.create :user_id => "4", :course_id => "3", :accepted => true, :owner => true, :network_id => '2', :active_status => true
      MembersInCourse.create :user_id => "4", :course_id => "4", :accepted => true, :owner => true, :network_id => '2', :active_status => true
      MembersInCourse.create :user_id => "2", :course_id => "1", :accepted => true, :owner => true, :network_id => '1', :active_status => true
      MembersInCourse.create :user_id => "2", :course_id => "2", :accepted => true, :owner => true, :network_id => '1', :active_status => true
-    
+=end
   end
 end

@@ -26,7 +26,7 @@ production:
 production:
   adapter: postgresql
   host: ip-10-151-14-176.ec2.internal
-  database: cursame
+  database: cursame-pruebas
   username: cursame
   password: r8o54q58
   encoding: unicode
