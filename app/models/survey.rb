@@ -21,42 +21,44 @@ class Survey < ActiveRecord::Base
   #para los likes
   acts_as_votable
 
-  
+
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
-  
+
   state_machine :state, :initial => :unpublish do
     state :unpublish
     state :published
     event :publish do
-      transition :to => :published, :from => :unpublish      
+      transition :to => :published, :from => :unpublish
     end
   end
-  
+
   before_create do
     self.publish_date ||= DateTime.now
   end
-  
+
   after_create do
-    
-     if self.publish_date <= DateTime.now
-        self.publish!
-      end
-    
+     if self.publish_date <= DateTime.now then
+       self.update_attributes(:active => true)
+       self.publish!
+     else
+       self.update_attributes(:active => false)
+     end
+
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
     self.courses.each do |course|
     course.members_in_courses.each do |u|
       user = User.find_by_id(u.user_id)
       if u.owner != true
-        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id          
+        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       end
-      #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id 
+      #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
-      
+
         Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
-      
+
       end
     end
-    
+
 end
 
 
@@ -72,11 +74,11 @@ end
       end
     end
   end
-  
+
   def expired?
      end_date < DateTime.now
    end
-   
+
    def self.publish_new_surveys
      Survey.unpublished.each do |survey|
        if survey.start_at <= DateTime.now
@@ -84,7 +86,7 @@ end
        end
      end
    end
-  
+
   def self.user
     User.last
   end
