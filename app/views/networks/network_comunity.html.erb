@@ -6,23 +6,30 @@
          <div class="image_acces_comunity">
              <%= image_tag(user.avatar.profile) if (!user.avatar.blank?)%>
              <%= image_tag(user.image_avatarx) if  (user.avatar.blank?)%>
+         </div><!-- ends image_access -->
+         
+     <div class="place-hldr">
+
+         <div class="name">
+           <%= user.name %>
          </div>
+   
          <div class="add_friend_comunity">
              <%case%>  
                 <%when  @friend %>
-                    <%= "solicitud enviada"%>
+                    <%= "Solicitud enviada" %>
                 <%when  @add_me_friend%>  
                     <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
         
                 <% else %>
                 <div id="add_friend<%=user.id%>">
-                    <%= link_to "amigos", friendships_create_friend_path(user.id), :remote => true%>
+                    <%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%>
                 </div>
             <%end%>    
-        </div>
-       <div class="name">
-           <%= user.name %>
-       </div>
-    </div>
+        </div><!-- ends add friend -->
+       
+      </div><!-- ends dscription-comm -->
+
+    </div><!-- ends box_comunity -->
     
 <% end %>

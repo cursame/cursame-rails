@@ -118,11 +118,12 @@ h3{
 }
 
 .list_alt_box{
-    width:400px;
+	width: 282px!important;
+   /* width:400px; */
     float: left;
-    margin:10px;
+   /* margin:10px; */
    /* padding:2px;*/ padding: 7px 2px 2px 7px;
-    margin-right:15px;
+   	margin-right:0px!important;
     border-right: solid #ddd 1px;
     /*border-left: solid #eee 2px;*/ border-left: 0!important;
     margin-bottom:20px;
@@ -131,6 +132,11 @@ h3{
 }
 
 .list_alt_box:hover { background: rgba(0, 0, 0, 0.2); transition: all linear 0.3s; }
+
+.course_status { background: #83B81F; color: #fff!important; cursor: pointer; padding: 2px 8px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.course_status:hover { background: #F39C20; }
+.course_status > a { color: #fff!important; }
+.status { margin-top: 5px; float: right; }
 
 #full-deliveries-area > a { position: absolute; float: right; display: none; margin-top: 16px; }
 
@@ -175,3 +181,46 @@ h3{
      width:800px;
      height:450px;
 }
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ course form ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+
+#configuration h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 20px 10px 10px 17px; background: rgba(252,252,252,0.2) url(../assets/tool.png) no-repeat center right; }
+.form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 1); }
+.form-course input:focus { border: 1px solid #6AB2BF!important; }
+.form-course p { clear: both; color: #969696; font-family: HelvLight; font-size: 14px; margin-top: 10px; position: relative; display: block; line-height: 14pt!important; }
+.form-course input[type="file"] { background: transparent; }
+.form-course .upload { display: none; }
+#uploadthingie { position: relative; }
+#uploadthingie input { position: absolute; }
+div#dummy { position: relative; width: 116px; padding: 9px 20px 3px 17px; height: 18px; /*background: #08B5CE;*/ background: rgba(252,252,252,1); font-family: arial; cursor: pointer; color: #969696; text-align: center; display: block; margin-top: 3px; border: 1px solid #c9d1da; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+div#dummy:hover { background: #08B5CE; color: #fff; }
+.input-style { margin-bottom: 17px!important; width: 367px; }
+.date-input { width: 145px }
+.custom-size-form { margin-bottom: 17px!important; width: 145px; }
+.slct-style input { background: #00B1C7; color: #fff; padding: 10px 20px; margin-bottom: 17px!important; }
+.act-crs { margin-top: 26px!important; }
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ edit course ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+#nsdmenu { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 790px; padding: 20px 10px 10px 17px; }
+#nsdmenu h1 { color: #969696!important; font-size: 16px; }
+#nsdmenu .reload { float: right; display: inline; position: relative; margin-top: -17px; }
+.reload li { display: inline-table; height: 17px; vertical-align: middle; }
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ edit members ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+
+.cmembers { width: 800px; margin: 0 auto; }
+.pndts { margin-top: -25px; float: right; }
+.everymbrm { background: #fff; width: 170px; border: 1px solid #eee; box-shadow: 1px 2px 1px #ccc; padding: 10px 10px 0px 10px; transition: linear all 0.2s; }
+.everymbrm:hover { box-shadow: 0px 0px 5px #28C8DF; transition: linear all 0.2s; }
+.everymbrm h3 { text-align: center; font-size: 14px; }
+.everymbrm img { width: 100%; }
+.everymbrm .helptext { color: #ccc; font-weight: lighter; font-size: 12px; }
+.everymbrm .dstroytxt { width: 190px; background: #ccc; color: #fff!important; margin-left: -10px; padding: 10px 0; text-align: center; margin-top: 20px; transition: linear all 0.2s; }
+.everymbrm .dstroytxt:hover { background: red; transition: linear all 0.2s; }
+.everymbrm .dstroytxt > a { color: #fff; }
