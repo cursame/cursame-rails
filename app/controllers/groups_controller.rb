@@ -70,7 +70,7 @@ class GroupsController < ApplicationController
   def edit
     @user = User.find_by_personal_url(params[:personal_url])
     if @user.id != current_user.id then
-      redirect_to :root_path
+      redirect_to root_path
       return
     else
       @group = Group.find_by_id(params[:id])

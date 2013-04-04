@@ -323,4 +323,13 @@ class User < ActiveRecord::Base
     member_in_group = MembersInGroup.find_by_user_id_and_group_id(another_user.id,group.id)
     return !member_in_group.nil?
   end
+
+  def member_of_all_groups?(user)
+    self.groups.each do |group|
+      if !self.member_of?(group,user)
+        return false
+      end
+    end
+    return true
+  end
 end
