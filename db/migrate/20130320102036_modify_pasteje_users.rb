@@ -51,12 +51,13 @@ class ModifyPastejeUsers < ActiveRecord::Migration
                 { :first_name => 'Mabel', :last_name => 'Cruz Sotelo', :email => 'mabelcruzsotelo82@gmail.com', :password => 'ytWrwi9t4A', :group => 'A' },
                 { :first_name => 'Norma', :last_name => 'Nava Gonzalez', :email => 'nava.normis.77@gmail.com', :password => '1ZNuMNqqDn', :group => 'B' }]
 
+=begin
     alumnos.each do |alumno|
       user = User.find_by_email alumno[:email]
       user.course_ids = (alumno[:group] == 'A') ? 3 : 4
       user.save
     end
-
+=end
   end
 
   def down
