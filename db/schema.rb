@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130402004654) do
 
-
   create_table "activities", :force => true do |t|
     t.string   "title"
     t.string   "activitye_type"
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+    t.integer  "course_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -213,7 +212,6 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
 
-<<<<<<< HEAD
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -222,8 +220,17 @@ ActiveRecord::Schema.define(:version => 20130402004654) do
     t.datetime "updated_at",  :null => false
   end
 
-=======
->>>>>>> b94b1bb721b5ad6fba81c7680ab1a5755e35f3dd
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
