@@ -7,7 +7,7 @@
 <% @user.courses.each do |courses|%>
     
       <% courses.deliveries.each do |delivery| %>
-        <% delivery.events.each do |event|%> 
+      <% delivery.events.each do |event|%> 
                    
          <script type='text/javascript'>
                 
@@ -23,7 +23,6 @@
                      
         <%end%>
       <%end%>
-
       <% courses.surveys.each do |survey|%>
            <% survey.events.each do |event|%>
                    <script type='text/javascript'>
