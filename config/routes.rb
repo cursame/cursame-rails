@@ -150,7 +150,8 @@ Cursame30Lb::Application.routes.draw do
   get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
   post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
   get "users/:personal_url/groups/new" => "groups#new", :as => :new_group
-  #post "user/:personal_url/groups/update" => "groups#update", :as => :update_group
+  get "users/:personal_url/groups/:id/edit" => "groups#edit", :as => :edit_group
+  post "user/:personal_url/groups/:id/update" => "groups#update", :as => :update_group
   delete "user/:personal_url/groups/destroy" => "groups#destroy", :as => :delete_group
 
   #Member_in_groups

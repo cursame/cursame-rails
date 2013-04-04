@@ -4,9 +4,11 @@
 <% @groups.each do |group| %>
    <p>
    <b>Group name: </b> <%=group.name%>
+    <%= link_to 'Edit', edit_group_path(@user.personal_url,group)%>
+    <%= link_to 'Remove', {:controller => "groups", :action => "destroy", :group_id => group.id}, :method => :delete %>
     <% group.members.each do |user| %>
     </p>
-    <%= link_to user.to_s, show_user_path(user)%>
+    <%= link_to user.to_s, show_user_path(user.personal_url)%>
     <%= link_to 'Remove', {:controller => "members_in_groups",:action => "destroy", :user_id => user.id, :group_id => group.id}, :method => :delete%>
     </p>
    <%end%>
