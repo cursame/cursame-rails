@@ -45,13 +45,18 @@
 <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
 	</td>
 		</tr>
+		<tr>
+		<td></td>
+		<td>
+    <script type="text/javascript"> $('#dummy').bind('click', function() { $('input.upload').trigger('click'); }); </script>
+    <%= f.submit "Actualizar Curso", :class=>"act-crs" %>
+		</td>
+		</tr>
 		</table>
  <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
     <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     
-    <script type="text/javascript"> $('#dummy').bind('click', function() { $('input.upload').trigger('click'); }); </script>
-    
-    <%= f.submit "Actualizar Cursos", :class=>"act-crs" %>
+
 <% end %>
 <script type="text/javascript">
     $("#create_course_form").on('click',function(){
