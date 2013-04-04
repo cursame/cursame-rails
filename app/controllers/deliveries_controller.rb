@@ -83,9 +83,6 @@ class DeliveriesController < ApplicationController
             @delivery.assets.push(@asset)
           end
         end
-
-
-
         format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
         format.js
