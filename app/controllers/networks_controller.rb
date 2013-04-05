@@ -42,7 +42,7 @@ class NetworksController < ApplicationController
     @network = Network.find_by_subdomain!(request.subdomain)
     @search = params[:search]
     @page = params[:page].to_i
-    @wall = current_network.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    @wall = current_network.walls.search(@search).order('created_at DESC').paginate(:per_page => 8, :page => params[:page])
     if request.xhr?      
       #sleep(2) # make request a little bit slower to see loader :-)
       respond_to do |format|
