@@ -10,6 +10,7 @@ class Notification < ActiveRecord::Base
 
     case self.kind
     when "user_comment_on_network"
+      owner = self.notificator.user
     when "user_comment_on_course"#---
       owner = self.notificator.commentable
     when "new_delivery_on_course"
