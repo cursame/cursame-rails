@@ -12,23 +12,30 @@ class Api::ApiController < ApplicationController
       else
         @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:votes, :comments]}}, :user, :course, :network]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:votes, :comments]}}, :user, :course, :network]),
+          :count => @publications.count(), :@notifications_chanel => @notifications_chanel },
+          :callback => params[:callback]
   end
 
   def comments
     @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id])
     @comments = @comments.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:comments => @comments.as_json(:include => [:user, :comments, :votes]), :count => @comments.count()}, :callback => params[:callback]
+    render :json => {:comments => @comments.as_json(:include => [:user, :comments, :votes]),
+          :count => @comments.count(), :@notifications_chanel => @notifications_chanel },
+          :callback => params[:callback]
   end
 
   def courses
     @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
+    render :json => {:courses => @courses.as_json, :count => @courses.count(), :@notifications_chanel => @notifications_chanel},
+          :callback => params[:callback]
   end
 
   def users
     @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
+    render :json => {:users => @users.as_json, 
+        :count => @users.count(), :@notifications_chanel => @notifications_chanel}, 
+        :callback => params[:callback]
   end
 
   def notifications
@@ -61,7 +68,9 @@ class Api::ApiController < ApplicationController
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
-    render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
+    render :json => {:notifications => @user_notifications.as_json,
+        :num_notifications => @num_notifications, :@notifications_chanel => @notifications_chanel},
+        :callback => params[:callback]
   end
 
   def create_comment
@@ -72,7 +81,8 @@ class Api::ApiController < ApplicationController
     @comment.user = @user
     @comment.network = @network
     @comment.save
-    render :json => {:success => true}, :callback => params[:callback]
+    render :json => {:success => true, :@notifications_chanel => @notifications_chanel}, 
+        :callback => params[:callback]
   end
 
   def create_like
@@ -92,7 +102,8 @@ class Api::ApiController < ApplicationController
     end
     puts @object
     @object.liked_by @user
-    render :json => {:success => true}, :callback => params[:callback]
+    render :json => {:success => true, :@notifications_chanel => @notifications_chanel},
+      :callback => params[:callback]
   end
 
   def create_delivery
@@ -107,7 +118,8 @@ class Api::ApiController < ApplicationController
     @delivery.courses.push(Course.find(params[:courseId]))
 
     @delivery.save
-    render :json => {:success => true}, :callback => params[:callback]
+    render :json => {:success => true, :@notifications_chanel => @notifications_chanel},
+        :callback => params[:callback]
   end
 
   def create_discussion
@@ -119,12 +131,18 @@ class Api::ApiController < ApplicationController
     @discussion.courses.push(Course.find(params[:courseId]))
 
     @discussion.save
-    render :json => {:success => true}, :callback => params[:callback]
+    render :json => {:success => true, :@notifications_chanel => @notifications_chanel},
+      :callback => params[:callback]
   end
 
   private
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
+    # @notifications_chanel = nil
+    # if PrivatePub.signature_expired?
+    #   @notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
+    # end
+
     @network = @user.networks[0]
     if @user.nil?
       logger.info("Token not found.")
