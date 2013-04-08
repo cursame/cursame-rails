@@ -52,6 +52,8 @@ class DiscussionsController < ApplicationController
     respond_to do |format|
       if @discussion.save
         @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
+          @typed = "Discussion"
+          activation_activity
         format.js
         format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
         format.json { render json: @discussion, status: :created, location: @discussion }
