@@ -22,10 +22,10 @@ class Comment < ActiveRecord::Base
   belongs_to :network
   belongs_to :course
   has_many :activities, as: :activitye
-  
+
   #comentarios para los comentarios
   acts_as_commentable
-  
+
   #para los likes
   acts_as_votable
 
@@ -37,7 +37,7 @@ class Comment < ActiveRecord::Base
     dailymotion :width => "100%", :height => 250
     #flickr :width => 400, :height => 250
     google_map :width => "100%", :height => 250
-    google_video :width => "100%", :height => 250    
+    google_video :width => "100%", :height => 250
     metacafe :width => "100%", :height => 250
     soundcloud :width => "100%", :height => 250
     twitter :width => "100%", :height => 250
@@ -47,7 +47,7 @@ class Comment < ActiveRecord::Base
     ustream_support :width => "100%"
     prezi_with_wmode :width => "100%", :height => 360
     livestrem_support :width => "100%", :height => 360
-    link :target => "_blank", :rel => "nofollow" 
+    link :target => "_blank", :rel => "nofollow"
     redcarpet
     #sanitize
     simple_format
@@ -63,30 +63,62 @@ class Comment < ActiveRecord::Base
   end
 
   after_create do
-    case commentable_type
-      when "Network"
-        # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-        commentable.users.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
-        end 
-        #con esto se guarda en wall
-        commentable.users.each do |u|
-          Wall.create :user => u, :publication => self, :network => self.network, :course_id => nil
-        end
-      when "Course"
-        commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
-        end
-        #commentable.users.each do |u|
-         #Wall.create :user => u, :publication => self, :network => self.network, :course_id => commentable.id
-        #end
-        Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
-      when "Comment"
-        #Wall.create :user => self.user, :publication => self
+    hash = group_of_users(commentable_type)
+    users = hash[:users]
+    notification_kind = hash[:kind]
+
+    users = users.reject{|user| user.id == self.user.id}
+
+    course_id = commentable.id if notification_kind["course"]
+    course_id = nil if !notification_kind["course"]
+
+    users.each do |user|
+      wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
+      if !wall.nil?
+        Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+        Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
+      end
     end
-  end 
-  
+  end
+  #=begin
+  #   case commentable_type
+  #   when "Network"
+  #     # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+  #     commentable.users.each do |u|
+  #      Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
+  #    end
+  #     #con esto se guarda en wall
+  #     commentable.users.each do |u|
+  #      Wall.create :user => u, :publication => self, :network => self.network, :course_id => nil
+  #    end
+  #   when "Course"
+  #     commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+  #      Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
+  #    end
+  #     #commentable.users.each do |u|
+  #     #Wall.create :user => u, :publication => self, :network => self.network, :course_id => commentable.id
+  #     #end
+  #     Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
+  #   when "Comment"
+  #     #Wall.create :user => self.user, :publication => self
+  #   end
+  #    =end
+
+
+
+  def group_of_users(comment_type)
+    case comment_type
+    when "Network", "Course", "Group"
+      users = commentable.users
+      hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
+      return hash
+    else
+      hash = {:users => nil,:kind => nil}
+      return hash
+    end
+  end
+
   def state
     @state = "published"
-  end   
+  end
 end

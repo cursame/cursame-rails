@@ -9,6 +9,9 @@ class Group < ActiveRecord::Base
 
   attr_accessible :id, :user_id, :name, :description
 
+  #comentarios para los grupos de amigos
+  acts_as_commentable
+
   def members
     members = self.members_in_group
     users = members.map {
@@ -16,6 +19,10 @@ class Group < ActiveRecord::Base
       member.user
     }
     return users
+  end
+
+  def users
+    return self.members
   end
 
 end
