@@ -11,6 +11,7 @@
 	      <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0', multiple: true, name: "asset[file]" %>
 	      <% f.password_field :encryption_code_to_access %>
 	      <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :form_id, :value => formId %>
 	</div>
 </div>
 
