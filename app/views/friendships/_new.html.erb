@@ -1,0 +1,15 @@
+<h1>Users:</h1>
+<% for user in @users %>
+  <div class="user">
+    <p>
+      <strong><%=h user.to_s %></strong>
+  <%= link_to "Add Friend", {:controller => "friendships", :action => "create", :friend_id => user.id}, :method => :create %>
+
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+
+<%= link_to 'Profile', show_user_path %>
+<p>
+<%= link_to "Friends", show_friends_path%>
