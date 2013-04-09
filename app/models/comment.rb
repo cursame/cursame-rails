@@ -88,5 +88,5 @@ class Comment < ActiveRecord::Base
   
   def state
     @state = "published"
-  end   
+  end
 end
