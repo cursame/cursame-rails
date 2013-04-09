@@ -23,7 +23,8 @@
         
                 <% else %>
                 <div id="add_friend<%=user.id%>">
-                    <%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%>
+                    <% if user != current_user%>
+                    <%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%>             <%end%>
                 </div>
             <%end%>    
         </div><!-- ends add friend -->
