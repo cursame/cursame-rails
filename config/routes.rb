@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
+
+  resources :members_in_groups
+  resources :groups
 
   resources :libraries
 
@@ -143,6 +145,19 @@ Cursame30Lb::Application.routes.draw do
   devise_for :users  do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
+
+  # Groups
+  get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
+  post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
+  get "users/:personal_url/groups/new" => "groups#new", :as => :new_group
+  get "users/:personal_url/groups/:id/edit" => "groups#edit", :as => :edit_group
+  post "user/:personal_url/groups/:id/update" => "groups#update", :as => :update_group
+  delete "user/:personal_url/groups/destroy" => "groups#destroy", :as => :delete_group
+
+  #Member_in_groups
+  post "user/:personal_url/groups/add_member" => "members_in_groups#create", :as => :add_member_in_group
+  delete "user/:personal_url/groups/delete_member" => "members_in_groups#destroy", :as => :delete_member_in_group
+
   # import csv de usuarios
   get "users/import" => "users#import", :as => :import_users
   get "/send_mails" => "users#send_mails", :as => :massive_mails
@@ -248,7 +263,7 @@ Cursame30Lb::Application.routes.draw do
   ####### subiendo validables with geocoder activities #########
   resources :activities
 
-  resources :surveys do
+   resources :surveys do
      resources :activities
    end
 
@@ -263,6 +278,18 @@ Cursame30Lb::Application.routes.draw do
    resources :comments do
       resources :activities
    end
+   
+   resources :discussions do
+       resources :activities
+   end
+  
+   resources :courses do
+       resources :activities
+   end
+   
+    resources :user_surveys do
+        resources :activities
+    end
 
    ####### rutas de estandarizacion de eventos
 

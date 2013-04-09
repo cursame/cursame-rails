@@ -65,8 +65,8 @@ class Comment < ActiveRecord::Base
   after_create do
     case commentable_type
       when "Network"
-        # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
         commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+        # commentable.users.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
         end 
         #con esto se guarda en wall
@@ -82,7 +82,9 @@ class Comment < ActiveRecord::Base
         #end
         Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
       when "Comment"
-        #Wall.create :user => self.user, :publication => self
+        Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
+      when "User"
+        Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
     end
   end 
   

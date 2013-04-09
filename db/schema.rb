@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130409002148) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+    t.integer  "course_id"
     t.integer  "likes"
   end
 
@@ -108,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20130409002148) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -213,6 +213,25 @@ ActiveRecord::Schema.define(:version => 20130409002148) do
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
 
+  create_table "groups", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
@@ -223,6 +242,13 @@ ActiveRecord::Schema.define(:version => 20130409002148) do
     t.string   "title",         :default => "curso"
     t.integer  "network_id"
     t.boolean  "active_status", :default => true
+  end
+
+  create_table "members_in_groups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "network_templates", :force => true do |t|
@@ -351,6 +377,7 @@ ActiveRecord::Schema.define(:version => 20130409002148) do
     t.integer  "user_id"
     t.integer  "poll_id"
     t.string   "state"
+    t.boolean  "publish"
   end
 
   create_table "user_friends", :force => true do |t|

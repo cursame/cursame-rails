@@ -21,9 +21,9 @@ class FriendshipsController < ApplicationController
       redirect_to root_path
     end
     if @user.nil? then
-      redirect root_path
+      redirect_to root_path
     else
-      @users = @user.possible_friends
+      @users = @user.possible_friends(current_network)
     end
   end
   # GET /friendships/create_friend
@@ -35,22 +35,23 @@ class FriendshipsController < ApplicationController
       @friendship.friend_id = @user.id
       @friendship.accepted = false
     @friendship.save
-    
+
     respond_to do |format|
       format.js
       format.json
     end
-    
+
   end
-  
+
   def update_friend
     @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
     @friendship.accepted = true
     @friendship.save
+    @user = User.find(:id)
      respond_to do |format|
         format.js
         format.json
-      end    
+      end
   end
 
   # PUT /friendships
