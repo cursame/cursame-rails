@@ -261,15 +261,6 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "notificacions", :force => true do |t|
-    t.integer  "notificator_id"
-    t.string   "notificator_type"
-    t.integer  "user_id"
-    t.string   "kind"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
@@ -316,12 +307,6 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
-  end
-
-  create_table "recipes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
