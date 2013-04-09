@@ -18,6 +18,8 @@ class Course < ActiveRecord::Base
   belongs_to :network
   has_many :comments
   has_many :walls
+  has_many :activities, as: :activitye
+  
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
