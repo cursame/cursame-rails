@@ -44,7 +44,7 @@ class AssetsController < ApplicationController
     @asset = Asset.new(params[:asset])
     respond_to do |format|
       if @asset.save
-        format.js 
+        format.js
       end
     end
   end
