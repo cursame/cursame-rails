@@ -2,8 +2,218 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/235a238bb10248b0336d5bb70e0aa10e3ea5e6b3/api.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/235a238bb10248b0336d5bb70e0aa10e3ea5e6b3/tokens.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/3da31b2b6553d6e640af827b50bb48067509071d/api.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/3da31b2b6553d6e640af827b50bb48067509071d/tokens.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/_vars.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/activities.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/admin.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/areas_of_evaluations.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/assets.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/assignments.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/compart_assets.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/components.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/courses.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/deliveries.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/discussions.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/focurs.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/forms.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/friendships.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/home.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/light_box.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/main.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/managers.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/members_in_courses.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/network_templates.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/networks.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/networks_users.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/notifications.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/permissionings.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/permissions.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/polls.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/response_to_the_evaluations.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/role_id_and_permission_ids.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/scaffolds.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/settings_teachers.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/superadmnin.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/user.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/users.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/users_networks_networks_users.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/wall_fiters.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/_vars.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/activities.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/admin.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/areas_of_evaluations.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/assets.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/assignments.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/compart_assets.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/components.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/courses.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/deliveries.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/discussions.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/focurs.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/forms.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/friendships.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/home.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/light_box.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/main.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/managers.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/members_in_courses.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/network_templates.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/networks.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/networks_users.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/notifications.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/permissionings.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/permissions.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/polls.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/response_to_the_evaluations.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/role_id_and_permission_ids.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/scaffolds.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/settings_teachers.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/superadmnin.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/user.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/users.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/users_networks_networks_users.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/wall_fiters.css.scssc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/Utiles.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/background-login.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/eback.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/grdnt-cover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/lens-scholl.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/reload.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/tool.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/tmp/20130401-2003-733-5971/expanded_utiles_escolares.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/tmp/20130401-2003-733-5971/mosaic_utiles_escolares.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/tmp/20130401-2003-733-5971/utiles_escolares.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/compress_487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/course_index_487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/head_487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/mini_487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/modern_487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/profile_487842_10151363960742945_986958623_a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/compress_ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/compress_photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/course_index_ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/course_index_photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/head_ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/head_photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/mini_ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/mini_photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/modern_ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/modern_photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/profile_ejecutivo2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/profile_photo.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/compress_business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/course_index_business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/head_business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/mini_business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/modern_business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/profile_business.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/coverphoto/52.png/expanded_utiles_escolares.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/coverphoto/52.png/mosaic_utiles_escolares.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/coverphoto/52.png/utiles_escolares.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/groups.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/members_in_groups.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/groups.css.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/members_in_groups.css.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/members_in_groups_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/groups_helper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/members_in_groups_helper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/group.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/members_in_group.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/shared/_footer-links.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/_form.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/edit.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/index.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/show.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/_form.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/edit.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/index.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/show.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130402004523_create_groups.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130402004654_create_members_in_groups.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130404224040_add_active_column_to_survey.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130404224937_remove_active_column_from_survey.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130404225033_add_publish_column_to_survey.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/groups.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/members_in_groups.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/groups_controller_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/members_in_groups_controller_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/group_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/groups_helper_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/members_in_groups_helper_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/members_in_group_test.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130329224353_add_super_admin_2.rb" afterPath="$PROJECT_DIR$/db/20130329224353_add_super_admin_2.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130329225126_add_pasteje_user_for_cursatest.rb" afterPath="$PROJECT_DIR$/db/20130329225126_add_pasteje_user_for_cursatest.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130330010536_add_funk_al_courses.rb" afterPath="$PROJECT_DIR$/db/20130330010536_add_funk_al_courses.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/compress_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/compress_3217a5344f289b5ef54df5dc68aac16c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/course_index_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/course_index_3217a5344f289b5ef54df5dc68aac16c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/head_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/head_3217a5344f289b5ef54df5dc68aac16c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/mini_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/mini_3217a5344f289b5ef54df5dc68aac16c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/modern_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/modern_3217a5344f289b5ef54df5dc68aac16c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/profile_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/profile_3217a5344f289b5ef54df5dc68aac16c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/courses.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/courses.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/networks.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/networks.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/courses_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/discussions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/discussions_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/friendships_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/friendships_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/messages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/networks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/networks_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/surveys_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/surveys_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/course.rb" afterPath="$PROJECT_DIR$/app/models/course.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/delivery.rb" afterPath="$PROJECT_DIR$/app/models/delivery.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/discussion.rb" afterPath="$PROJECT_DIR$/app/models/discussion.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/notification.rb" afterPath="$PROJECT_DIR$/app/models/notification.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/survey.rb" afterPath="$PROJECT_DIR$/app/models/survey.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user_survey.rb" afterPath="$PROJECT_DIR$/app/models/user_survey.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendar/_calendar_mini.html.erb" afterPath="$PROJECT_DIR$/app/views/calendar/_calendar_mini.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendar/_list.html.erb" afterPath="$PROJECT_DIR$/app/views/calendar/_list.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/index.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/members.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/members.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/new.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/friendships/create_friend.js.erb" afterPath="$PROJECT_DIR$/app/views/friendships/create_friend.js.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/networks/network_comunity.html.erb" afterPath="$PROJECT_DIR$/app/views/networks/network_comunity.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_publications.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_wall_filters.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_wall_filters.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/devise.rb" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/devise.es.yml" afterPath="$PROJECT_DIR$/config/locales/devise.es.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/private_pub.yml" afterPath="$PROJECT_DIR$/config/private_pub.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20130320102036_modify_pasteje_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20130320102036_modify_pasteje_users.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
+    </list>
+    <list id="fb38c6e8-35c2-4621-bb6f-d32e84105341" name="subir" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/cursame-3.0-LB.iml" afterPath="$PROJECT_DIR$/.idea/cursame-3.0-LB.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cursame-3.0-LB.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,32 +244,28 @@
       <file leaf-file-name="api_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="60" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="21" column="14" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1365539052000" expanded="true" signature="898:1017" placeholder="do ... end" />
+                <marker date="1365539052000" expanded="true" signature="3864:4002" placeholder="if ... end" />
+                <marker date="1365539052000" expanded="true" signature="4335:4479" placeholder="if ... end" />
+                <marker date="1365539052000" expanded="true" signature="4651:4744" placeholder="if ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tokens_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
+      <file leaf-file-name="_mobile.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="62" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.4525661">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="53.96">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="courses_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="32" selection-start="1738" selection-end="1744" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
+      <file leaf-file-name="20130328030805_acts_as_votable_migration.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130328030805_acts_as_votable_migration.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -67,55 +273,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="discussions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/discussions_controller.rb">
+      <file leaf-file-name="comment.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="30" column="2" selection-start="664" selection-end="697" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="abstract_store.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p286/gems/actionpack-3.2.1/lib/action_dispatch/middleware/session/abstract_store.rb">
+      <file leaf-file-name="schema.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="765" selection-end="765" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1365539270000" expanded="true" signature="3114:3561" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="3899:4176" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="4265:4760" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="4866:5184" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="5279:5393" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="5488:5601" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="5692:5875" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="5954:6072" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="6160:6531" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="6721:7231" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="7795:8125" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="8430:8545" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="8633:8783" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="8860:8995" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="9087:9349" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="9450:9601" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="9675:9816" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="9905:10015" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="10110:10223" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="10312:10465" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="10550:10851" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="10946:11062" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11149:11284" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11381:11624" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11694:11805" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11891:12179" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11103:11214" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11323:11462" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11574:11707" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11802:11904" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="11987:12906" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="13096:13351" placeholder="do ... end" />
+                <marker date="1365539270000" expanded="true" signature="13696:14013" placeholder="do ... end" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20130409005150_add_likes_to_publications.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="12" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_notifications.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_notifications.html.erb">
+      <file leaf-file-name="wall.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/wall.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="27" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
+            <state line="2" column="34" selection-start="120" selection-end="120" vertical-scroll-proportion="0.34042552">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notification.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/notification.rb">
+      <file leaf-file-name="delivery.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="11" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="78" selection-start="2747" selection-end="2747" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notifications_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/notifications_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="59" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+            <state line="79" column="31" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -131,25 +362,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/surveys/_response_answers_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/user_survey.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/forms.css.scss" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.utilities.js" />
-        <option value="$PROJECT_DIR$/app/views/surveys/survey_reply.js.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.animation.js" />
-        <option value="$PROJECT_DIR$/app/controllers/surveys_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/surveys/create.js.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/surveys/_survey_response_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/surveys/_response_fields_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/views/courses/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/public/assets/Mobile/index.html" />
+        <option value="$PROJECT_DIR$/app/views/shared/_mobile.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130404223903_add_likes_to_comments.rb" />
+        <option value="$PROJECT_DIR$/app/models/comment.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130408235533_add_likes_to_publications.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130409002148_add_likes_to_walls.rb" />
+        <option value="/Rails cursame-3.0-LB: development" />
+        <option value="$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/wall.rb" />
       </list>
     </option>
   </component>
@@ -191,6 +425,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,106 +442,6 @@
               <option name="myItemId" value="cursame-3.0-LB" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="middleware" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="middleware" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="session" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -319,7 +463,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -381,7 +543,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notifier" />
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,49 +619,61 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="90" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="99" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="96" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="103" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="897" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="895" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="101" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="97" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets" />
+    </key>
+  </component>
   <component name="RunManager" selected="Rails.Development: cursame-3.0-LB">
+    <configuration default="false" name="Default" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console" temporary="true">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <RunnerSettings RunnerId="Basic" />
+      <ConfigurationWrapper RunnerId="Basic" />
+      <method />
+    </configuration>
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -643,6 +817,14 @@
         <option name="RakeTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method>
+        <option name="RakeTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="cursame-3.0-LB" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -737,11 +919,12 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Rake.test" />
       <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="2" class="java.lang.String" itemvalue="Rails.Production: cursame-3.0-LB" />
       <item index="3" class="java.lang.String" itemvalue="Rails.Development: cursame-3.0-LB" />
+      <item index="4" class="java.lang.String" itemvalue="Query Language Console.Default" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -765,12 +948,200 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0c052d2e-7530-49c7-b27e-df5134d1bafe" name="No subir" comment="" />
       <changelist id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="" />
+      <changelist id="fb38c6e8-35c2-4621-bb6f-d32e84105341" name="subir" comment="" />
       <created>1363719180581</created>
       <updated>1363719180581</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00004" summary="Se suben notificaciones para menu.">
+      <created>1364446935073</created>
+      <updated>1364446935073</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Se obtienen likes para comentarios y publicaicones.">
+      <created>1364518709448</created>
+      <updated>1364518709448</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Se agregan likes para Survey.">
+      <created>1364521632466</created>
+      <updated>1364521632466</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Se agrega paginacion para notificaciones.">
+      <created>1364525047025</created>
+      <updated>1364525047025</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Se modifica url para probar en produccion.">
+      <created>1364584687952</created>
+      <updated>1364584687952</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Se modifica url para probar en produccion.">
+      <created>1364585630786</created>
+      <updated>1364585630786</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Se sube Mobile Compresa.">
+      <created>1364600241896</created>
+      <updated>1364600241896</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Se sube Mobile Compresa.">
+      <created>1364602444405</created>
+      <updated>1364602444405</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Se sube Mobile Compresa.">
+      <created>1364603343949</created>
+      <updated>1364603343949</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Se sube Mobile Compresa.">
+      <created>1364605146472</created>
+      <updated>1364605146472</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Se sube Mobile Compresa.">
+      <created>1364605923223</created>
+      <updated>1364605923223</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Se sube Mobile Compresa.">
+      <created>1364618543361</created>
+      <updated>1364618543361</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Se sube Mobile Compresa.">
+      <created>1364620725522</created>
+      <updated>1364620725522</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Se sube Mobile Compresa.">
+      <created>1364621488081</created>
+      <updated>1364621488081</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Se sube Mobile Compresa.">
+      <created>1364622336700</created>
+      <updated>1364622336700</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Se sube Mobile Compresa.">
+      <created>1364622995398</created>
+      <updated>1364622995399</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Se sube Mobile Compresa.">
+      <created>1364624221683</created>
+      <updated>1364624221683</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Se sube Mobile Compresa.">
+      <created>1364628072286</created>
+      <updated>1364628072286</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Se sube Mobile Compresa.">
+      <created>1364629936608</created>
+      <updated>1364629936608</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Se sube Mobile Compresa.">
+      <created>1364715042146</created>
+      <updated>1364715042146</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Se sube Mobile Compresa.">
+      <created>1364718974766</created>
+      <updated>1364718974766</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Se sube Mobile Compresa.">
+      <created>1364719642297</created>
+      <updated>1364719642297</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Se sube Mobile Compresa.">
+      <created>1364720214326</created>
+      <updated>1364720214326</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Se sube Mobile Compresa.">
+      <created>1364721125635</created>
+      <updated>1364721125635</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Se sube Mobile Compresa.">
+      <created>1364721811280</created>
+      <updated>1364721811280</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Se sube Mobile Compresa.">
+      <created>1364722872596</created>
+      <updated>1364722872597</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Se sube Mobile Compresa.">
+      <created>1364723288295</created>
+      <updated>1364723288295</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Se sube Mobile Compresa.">
+      <created>1364766802710</created>
+      <updated>1364766802710</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Se sube Mobile Compresa.">
+      <created>1364768960757</created>
+      <updated>1364768960757</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Se sube Mobile Compresa.">
+      <created>1364775053728</created>
+      <updated>1364775053728</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Se sube Mobile Compresa.">
+      <created>1364873051059</created>
+      <updated>1364873051059</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Se sube Mobile Compresa.">
+      <created>1364874962578</created>
+      <updated>1364874962578</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Se sube Mobile Compresa.">
+      <created>1364875783468</created>
+      <updated>1364875783468</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Se sube Mobile Compresa.">
+      <created>1364886284498</created>
+      <updated>1364886284498</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Se sube Mobile Compresa.">
+      <created>1364890722084</created>
+      <updated>1364890722084</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Se sube Mobile Compresa.">
+      <created>1364893766266</created>
+      <updated>1364893766266</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Se sube Mobile Compresa.">
+      <created>1364897064197</created>
+      <updated>1364897064197</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Se sube Mobile Compresa.">
+      <created>1364899977205</created>
+      <updated>1364899977205</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Se sube Mobile Compresa.">
+      <created>1364901555508</created>
+      <updated>1364901555508</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Se sube Mobile Compresa.">
+      <created>1364903062050</created>
+      <updated>1364903062050</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364938227023</created>
+      <updated>1364938227023</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364938391144</created>
+      <updated>1364938391144</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364940997238</created>
+      <updated>1364940997238</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364941494029</created>
+      <updated>1364941494029</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364955718116</created>
+      <updated>1364955718116</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Se sube modificacion para l que valide si es dispositivo mobile.">
+      <created>1365016050092</created>
+      <updated>1365016050092</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Se suben modelos para likes en comentarios y publicaciones.">
+      <created>1365538821442</created>
+      <updated>1365538821442</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -795,26 +1166,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1280" y="0" width="1280" height="800" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6701031" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3858156" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25892857" sideWeight="0.69661266" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7971631" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5213549" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28246754" sideWeight="0.6141844" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32711038" sideWeight="0.20283689" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47801417" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4609929" sideWeight="0.5008117" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5531915" sideWeight="0.4935065" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40141845" sideWeight="0.9135618" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842416" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -852,7 +1224,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se suben modelos para likes en comentarios y publicaciones." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -865,91 +1237,134 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Se suben notificaciones para menu." />
+    <MESSAGE value="Se obtienen likes para comentarios y publicaicones." />
+    <MESSAGE value="Se agregan likes para Survey." />
+    <MESSAGE value="Se agrega paginacion para notificaciones." />
+    <MESSAGE value="Se modifica url para probar en produccion." />
+    <MESSAGE value="Se sube Mobile Compresa." />
+    <MESSAGE value="Se sube modificacion para los dispositivos moviles." />
+    <MESSAGE value="Se sube modificacion para l que valide si es dispositivo mobile." />
+    <MESSAGE value="Se suben modelos para likes en comentarios y publicaciones." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="28" selection-start="4285" selection-end="4291" vertical-scroll-proportion="-13.84" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="8" selection-start="6767" selection-end="7037" vertical-scroll-proportion="1.7564934" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/discussion.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/deliveries_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121115223832_create_comments.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="89" selection-start="479" selection-end="479" vertical-scroll-proportion="-6.4" />
+        <state line="20" column="17" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="56" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/network.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130320020317_add_pasteje_users.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130211211847_add_user_to_wall.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="32" selection-start="1738" selection-end="1744" vertical-scroll-proportion="0.0" />
+        <state line="2" column="4" selection-start="63" selection-end="100" vertical-scroll-proportion="0.09411765" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/db/20130115204526_eliminado_tabla.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/discussions_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130328030805_acts_as_votable_migration.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p286/gems/actionpack-3.2.1/lib/action_dispatch/middleware/session/abstract_store.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="765" selection-end="765" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_notifications.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="27" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/notification.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="11" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="78" selection-start="2747" selection-end="2747" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/notifications_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="59" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="60" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
+        <state line="79" column="31" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="62" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.4525661">
+        <state line="21" column="14" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365539052000" expanded="true" signature="898:1017" placeholder="do ... end" />
+            <marker date="1365539052000" expanded="true" signature="3864:4002" placeholder="if ... end" />
+            <marker date="1365539052000" expanded="true" signature="4335:4479" placeholder="if ... end" />
+            <marker date="1365539052000" expanded="true" signature="4651:4744" placeholder="if ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="53.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="2" selection-start="664" selection-end="697" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365539270000" expanded="true" signature="3114:3561" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="3899:4176" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="4265:4760" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="4866:5184" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="5279:5393" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="5488:5601" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="5692:5875" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="5954:6072" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="6160:6531" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="6721:7231" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="7795:8125" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="8430:8545" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="8633:8783" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="8860:8995" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="9087:9349" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="9450:9601" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="9675:9816" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="9905:10015" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="10110:10223" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="10312:10465" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="10550:10851" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="10946:11062" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11149:11284" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11381:11624" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11694:11805" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11891:12179" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11103:11214" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11323:11462" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11574:11707" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11802:11904" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="11987:12906" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="13096:13351" placeholder="do ... end" />
+            <marker date="1365539270000" expanded="true" signature="13696:14013" placeholder="do ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="12" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/wall.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="34" selection-start="120" selection-end="120" vertical-scroll-proportion="0.34042552">
           <folding />
         </state>
       </provider>

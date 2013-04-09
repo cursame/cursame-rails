@@ -56,9 +56,9 @@ class Delivery < ActiveRecord::Base
               Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'         
             end
             #validar que no exista doble publicacion para un usuario
-           if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Delivery',self.id))
+          if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Delivery',self.id))
               Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id 
-            end
+          end
 
           end
           #Cuando una tarea se crea, tambien manda notificaciones a cada

@@ -78,6 +78,7 @@ class Comment < ActiveRecord::Base
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
         Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
       end
+
     end
   end
   #=begin

@@ -53,9 +53,7 @@ class Survey < ActiveRecord::Base
       end
       #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
-
-        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
-
+        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id 
       end
     end
 

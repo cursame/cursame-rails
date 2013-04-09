@@ -1,13 +1,22 @@
 <% if @member.owner == true%>
-<h1>Editar curso</h1>
+	<div id="nsdmenu">
+		<h1>Editar curso</h1>
+		<div class="reload">
+			<ul>
+				<li style="width: 10px;"><img src="/assets/reload.png"></li>
+				<li style="width: 20px;"><%= link_to 'Show', @course %></li>
+				<li style="width: 10px;"><img src="/assets/eback.png"></li>
+				<li style="width: 20px;"><%= link_to 'Back', courses_path %></li>
+			</ul>
+		</div>
+	</div>
+
 <script type="text/javascript">
 	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 	
 </script>
 <%= render 'form' %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
 <%else%>
    <h1>Usted no esta autorizado para editar este curso<h1>
 <%end%>

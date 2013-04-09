@@ -196,7 +196,6 @@ class ApplicationController < ActionController::Base
 
   end
   helper_method :mobile?
-
   protected
   #roles
   def permission_denied

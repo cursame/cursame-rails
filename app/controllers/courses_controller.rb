@@ -152,7 +152,9 @@ class CoursesController < ApplicationController
              @member.title = @course.title
              @member.save
              @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-
+         
+             @typed = "Course"
+             activation_activity
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
         format.js

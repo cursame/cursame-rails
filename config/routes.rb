@@ -263,7 +263,7 @@ Cursame30Lb::Application.routes.draw do
   ####### subiendo validables with geocoder activities #########
   resources :activities
 
-  resources :surveys do
+   resources :surveys do
      resources :activities
    end
 
@@ -278,6 +278,18 @@ Cursame30Lb::Application.routes.draw do
    resources :comments do
       resources :activities
    end
+   
+   resources :discussions do
+       resources :activities
+   end
+  
+   resources :courses do
+       resources :activities
+   end
+   
+    resources :user_surveys do
+        resources :activities
+    end
 
    ####### rutas de estandarizacion de eventos
 

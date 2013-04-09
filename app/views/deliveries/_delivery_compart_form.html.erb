@@ -2,10 +2,11 @@
 <%
    random_id = "#{random}"
    @labelIdBox = "upload-labels-#{random_id}"
+   formId= "form-upload-delivery-#{random_id}"
 %>
 
 <%#if @count_course_iam_member_and_owner != 0%>
-    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
+    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
@@ -37,7 +38,7 @@
 
     <% end %>
 <%#end%>
-<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox} %>
+<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
 <script type="text/javascript">
 $(document).ready(function() {
   $( "#delivery_publish_date, #delivery_end_date" ).datepicker({

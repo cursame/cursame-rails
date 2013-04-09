@@ -1,6 +1,7 @@
 class Discussion < ActiveRecord::Base 
    has_many :discussions_coursess
    has_many :courses, :through => :discussions_coursess
+   has_many :activities, as: :activitye
    
    belongs_to :network
    belongs_to :user
