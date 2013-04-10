@@ -152,7 +152,7 @@ class CoursesController < ApplicationController
              @member.title = @course.title
              @member.save
              @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-         
+
              @typed = "Course"
              activation_activity
         #format.json { render json: @course, status: :created, location: @course }
@@ -245,39 +245,44 @@ class CoursesController < ApplicationController
     @assignment.user_id = current_user.id
     @assignment.save!
 
-     if @assignment.save!
+    if @assignment.save!
 
-          # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+      # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
 
-           @delivery_from_assignment = Delivery.find(@assignment.delivery)
-
-
-                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
-
-                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
-                  @response_to_the_evaluation.name = generate_rubres.name
-                  @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-                  @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
-                  @response_to_the_evaluation.assignment_id = @assignment.id
-                  @response_to_the_evaluation.save
+      @delivery_from_assignment = Delivery.find(@assignment.delivery)
 
 
+      @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
 
-                end
+        @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+        @response_to_the_evaluation.name = generate_rubres.name
+        @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
+        @response_to_the_evaluation.assignment_id = @assignment.id
+        @response_to_the_evaluation.save
 
-
-                    @typed = "Assignment"
-                    @az =  @assignment
-
-                  ####### despues de guardar se crea la notificación de actividad con geo localización
-                    activation_activity
-
-
-             if @activity.save
-                 redirect_to :back
-             else
-             end
+      end
+      #actualizamos los assets del assignment
+      if(params[:files])
+        params[:files].each do |asset_id|
+          @asset = Asset.find(asset_id)
+          @assignment.assets.push(@asset)
         end
+      end
+
+
+      @typed = "Assignment"
+      @az =  @assignment
+
+      ####### despues de guardar se crea la notificación de actividad con geo localización
+      activation_activity
+
+
+      if @activity.save
+        redirect_to :back
+      else
+      end
+    end
   end
 
   def dashboard_deliver
