@@ -100,7 +100,11 @@ ActiveRecord::Schema.define(:version => 20130410231806) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+<<<<<<< HEAD
     t.integer  "likes"
+=======
+    t.integer  "course_id"
+>>>>>>> origin/development
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -220,6 +224,17 @@ ActiveRecord::Schema.define(:version => 20130410231806) do
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

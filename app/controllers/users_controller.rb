@@ -47,7 +47,16 @@ class UsersController < ApplicationController
      assets = @delivery.assets.build
 
    #### manager courses
-
+    if request.xhr?      
+      respond_to do |format|
+        format.js
+      end           
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user_l }
+      end
+    end
   end
 =begin
   def current_user_friends

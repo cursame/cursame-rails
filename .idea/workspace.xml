@@ -2,217 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/235a238bb10248b0336d5bb70e0aa10e3ea5e6b3/api.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/235a238bb10248b0336d5bb70e0aa10e3ea5e6b3/tokens.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/3da31b2b6553d6e640af827b50bb48067509071d/api.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/3da31b2b6553d6e640af827b50bb48067509071d/tokens.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/_vars.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/activities.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/admin.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/areas_of_evaluations.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/assets.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/assignments.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/compart_assets.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/components.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/courses.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/deliveries.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/discussions.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/focurs.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/forms.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/friendships.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/home.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/light_box.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/main.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/managers.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/members_in_courses.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/network_templates.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/networks.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/networks_users.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/notifications.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/permissionings.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/permissions.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/polls.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/response_to_the_evaluations.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/role_id_and_permission_ids.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/scaffolds.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/settings_teachers.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/superadmnin.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/user.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/users.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/users_networks_networks_users.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/42972d3a54f1a96b692f347e012a1a311eb982e9/wall_fiters.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/_vars.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/activities.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/admin.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/areas_of_evaluations.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/assets.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/assignments.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/compart_assets.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/components.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/courses.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/deliveries.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/discussions.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/focurs.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/forms.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/friendships.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/home.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/light_box.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/main.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/managers.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/members_in_courses.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/network_templates.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/networks.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/networks_users.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/notifications.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/permissionings.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/permissions.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/polls.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/response_to_the_evaluations.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/role_id_and_permission_ids.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/scaffolds.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/settings_teachers.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/superadmnin.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/user.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/users.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/users_networks_networks_users.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sass-cache/a7710d46a1159416b206b963682f484bd9f1123c/wall_fiters.css.scssc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/Utiles.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/background-login.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/eback.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/grdnt-cover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/lens-scholl.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/reload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/tool.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/tmp/20130401-2003-733-5971/expanded_utiles_escolares.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/tmp/20130401-2003-733-5971/mosaic_utiles_escolares.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/tmp/20130401-2003-733-5971/utiles_escolares.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/compress_487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/course_index_487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/head_487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/mini_487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/modern_487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/2/profile_487842_10151363960742945_986958623_a.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/compress_ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/compress_photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/course_index_ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/course_index_photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/head_ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/head_photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/mini_ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/mini_photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/modern_ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/modern_photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/profile_ejecutivo2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/6/profile_photo.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/compress_business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/course_index_business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/head_business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/mini_business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/modern_business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/65/profile_business.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/coverphoto/52.png/expanded_utiles_escolares.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/coverphoto/52.png/mosaic_utiles_escolares.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/uploads/user/coverphoto/52.png/utiles_escolares.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/groups.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/members_in_groups.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/groups.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/members_in_groups.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/members_in_groups_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/groups_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/members_in_groups_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/group.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/members_in_group.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/shared/_footer-links.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/_form.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/edit.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/_form.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/edit.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/members_in_groups/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130402004523_create_groups.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130402004654_create_members_in_groups.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130404224040_add_active_column_to_survey.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130404224937_remove_active_column_from_survey.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130404225033_add_publish_column_to_survey.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/groups.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/members_in_groups.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/groups_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/members_in_groups_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/group_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/groups_helper_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/members_in_groups_helper_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/members_in_group_test.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130329224353_add_super_admin_2.rb" afterPath="$PROJECT_DIR$/db/20130329224353_add_super_admin_2.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130329225126_add_pasteje_user_for_cursatest.rb" afterPath="$PROJECT_DIR$/db/20130329225126_add_pasteje_user_for_cursatest.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130330010536_add_funk_al_courses.rb" afterPath="$PROJECT_DIR$/db/20130330010536_add_funk_al_courses.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/compress_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/compress_3217a5344f289b5ef54df5dc68aac16c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/course_index_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/course_index_3217a5344f289b5ef54df5dc68aac16c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/head_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/head_3217a5344f289b5ef54df5dc68aac16c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/mini_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/mini_3217a5344f289b5ef54df5dc68aac16c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/modern_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/modern_3217a5344f289b5ef54df5dc68aac16c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/uploads/user/avatar/52/profile_3217a5344f289b5ef54df5dc68aac16c.png" afterPath="$PROJECT_DIR$/public/uploads/user/avatar/52/profile_3217a5344f289b5ef54df5dc68aac16c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/courses.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/courses.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/networks.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/networks.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/courses_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/discussions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/discussions_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/friendships_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/friendships_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/messages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/networks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/networks_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/superadmnin_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/superadmnin_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/surveys_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/surveys_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/activity.rb" afterPath="$PROJECT_DIR$/app/models/activity.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/course.rb" afterPath="$PROJECT_DIR$/app/models/course.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/delivery.rb" afterPath="$PROJECT_DIR$/app/models/delivery.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/discussion.rb" afterPath="$PROJECT_DIR$/app/models/discussion.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/notification.rb" afterPath="$PROJECT_DIR$/app/models/notification.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/survey.rb" afterPath="$PROJECT_DIR$/app/models/survey.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user_survey.rb" afterPath="$PROJECT_DIR$/app/models/user_survey.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendar/_calendar_mini.html.erb" afterPath="$PROJECT_DIR$/app/views/calendar/_calendar_mini.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/calendar/_list.html.erb" afterPath="$PROJECT_DIR$/app/views/calendar/_list.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/index.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/members.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/members.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/new.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/assignments/_form_for_delivery.html.erb" afterPath="$PROJECT_DIR$/app/views/assignments/_form_for_delivery.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/deliveries/_delivery_compart_form.html.erb" afterPath="$PROJECT_DIR$/app/views/deliveries/_delivery_compart_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/deliveries/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/deliveries/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/deliveries/create.js.erb" afterPath="$PROJECT_DIR$/app/views/deliveries/create.js.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/friendships/create_friend.js.erb" afterPath="$PROJECT_DIR$/app/views/friendships/create_friend.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/networks/network_comunity.html.erb" afterPath="$PROJECT_DIR$/app/views/networks/network_comunity.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_publications.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_wall_filters.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_wall_filters.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/devise.rb" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/devise.es.yml" afterPath="$PROJECT_DIR$/config/locales/devise.es.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/private_pub.yml" afterPath="$PROJECT_DIR$/config/private_pub.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20130320102036_modify_pasteje_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20130320102036_modify_pasteje_users.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/discussions/_form_for_discussion.html.erb" afterPath="$PROJECT_DIR$/app/views/discussions/_form_for_discussion.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_comment_form.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_comment_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_dropdown.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_dropdown.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/superadmnin/activities.html.erb" afterPath="$PROJECT_DIR$/app/views/superadmnin/activities.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/surveys/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/surveys/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <list id="fb38c6e8-35c2-4621-bb6f-d32e84105341" name="subir" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/cursame-3.0-LB.iml" afterPath="$PROJECT_DIR$/.idea/cursame-3.0-LB.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cursame-3.0-LB.iws" />
@@ -244,83 +60,22 @@
       <file leaf-file-name="api_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="14" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
+            <state line="123" column="103" selection-start="4740" selection-end="4740" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1365539052000" expanded="true" signature="898:1017" placeholder="do ... end" />
-                <marker date="1365539052000" expanded="true" signature="3864:4002" placeholder="if ... end" />
-                <marker date="1365539052000" expanded="true" signature="4335:4479" placeholder="if ... end" />
-                <marker date="1365539052000" expanded="true" signature="4651:4744" placeholder="if ... end" />
+                <marker date="1365632740000" expanded="true" signature="898:1017" placeholder="do ... end" />
+                <marker date="1365632740000" expanded="true" signature="3864:4002" placeholder="if ... end" />
+                <marker date="1365632740000" expanded="true" signature="4335:4479" placeholder="if ... end" />
+                <marker date="1365632740000" expanded="true" signature="4651:4744" placeholder="if ... end" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_mobile.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
+      <file leaf-file-name="Rails cursame-3.0-LB: development" pinned="true" current="false" current-in-tab="false">
+        <entry file="mock:///Rails cursame-3.0-LB: development">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="53.96">
+            <state line="0" column="19" selection-start="0" selection-end="19" vertical-scroll-proportion="-0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="20130328030805_acts_as_votable_migration.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20130328030805_acts_as_votable_migration.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comment.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="2" selection-start="664" selection-end="697" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/schema.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1365539270000" expanded="true" signature="3114:3561" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="3899:4176" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="4265:4760" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="4866:5184" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="5279:5393" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="5488:5601" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="5692:5875" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="5954:6072" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="6160:6531" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="6721:7231" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="7795:8125" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="8430:8545" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="8633:8783" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="8860:8995" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="9087:9349" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="9450:9601" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="9675:9816" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="9905:10015" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="10110:10223" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="10312:10465" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="10550:10851" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="10946:11062" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11149:11284" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11381:11624" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11694:11805" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11891:12179" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11103:11214" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11323:11462" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11574:11707" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11802:11904" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="11987:12906" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="13096:13351" placeholder="do ... end" />
-                <marker date="1365539270000" expanded="true" signature="13696:14013" placeholder="do ... end" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -328,25 +83,25 @@
       <file leaf-file-name="20130409005150_add_likes_to_publications.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="12" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+            <state line="2" column="4" selection-start="72" selection-end="110" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wall.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/wall.rb">
+      <file leaf-file-name="20130410231806_add_likes_to_courses.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130410231806_add_likes_to_courses.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="34" selection-start="120" selection-end="120" vertical-scroll-proportion="0.34042552">
+            <state line="2" column="23" selection-start="86" selection-end="86" vertical-scroll-proportion="0.15609756">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delivery.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
+      <file leaf-file-name="20130404224040_add_active_column_to_survey.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130404224040_add_active_column_to_survey.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="31" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -359,6 +114,9 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Push.Settings">
+    <option name="myUpdateMethod" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -368,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb" />
         <option value="$PROJECT_DIR$/app/views/courses/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" />
@@ -380,10 +137,11 @@
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130408235533_add_likes_to_publications.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130409002148_add_likes_to_walls.rb" />
-        <option value="/Rails cursame-3.0-LB: development" />
         <option value="$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/wall.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
+        <option value="/Rails cursame-3.0-LB: development" />
+        <option value="$PROJECT_DIR$/db/migrate/20130410231806_add_likes_to_courses.rb" />
       </list>
     </option>
   </component>
@@ -498,86 +256,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -637,16 +315,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="90" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="99" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="96" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="103" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="897" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="895" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="897" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="101" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="97" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
@@ -1141,7 +819,23 @@
       <created>1365538821442</created>
       <updated>1365538821442</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;db/schema.rb&#10;">
+      <created>1365539434114</created>
+      <updated>1365539434114</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Se sube migrate para likes en comments, discussions, surveys y deliveries.">
+      <created>1365576134640</created>
+      <updated>1365576134640</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Se sube migrate para likes en courses.">
+      <created>1365636060786</created>
+      <updated>1365636060786</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Se sube migrate para likes en courses.">
+      <created>1365636099322</created>
+      <updated>1365636099322</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1168,18 +862,18 @@
     <frame x="-1280" y="0" width="1280" height="800" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.73758864" sideWeight="0.9135618" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25892857" sideWeight="0.69661266" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7971631" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25892857" sideWeight="0.42269504" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.57730496" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5213549" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32711038" sideWeight="0.20283689" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33522728" sideWeight="0.42269504" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4609929" sideWeight="0.5008117" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5531915" sideWeight="0.4935065" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40141845" sideWeight="0.9135618" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.65531915" sideWeight="0.4935065" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3319149" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1224,7 +918,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se suben modelos para likes en comentarios y publicaciones." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se sube migrate para likes en courses." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1246,6 +940,9 @@
     <MESSAGE value="Se sube modificacion para los dispositivos moviles." />
     <MESSAGE value="Se sube modificacion para l que valide si es dispositivo mobile." />
     <MESSAGE value="Se suben modelos para likes en comentarios y publicaciones." />
+    <MESSAGE value="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;db/schema.rb&#10;" />
+    <MESSAGE value="Se sube migrate para likes en comments, discussions, surveys y deliveries." />
+    <MESSAGE value="Se sube migrate para likes en courses." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1276,95 +973,76 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130328030805_acts_as_votable_migration.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="31" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="14" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1365539052000" expanded="true" signature="898:1017" placeholder="do ... end" />
-            <marker date="1365539052000" expanded="true" signature="3864:4002" placeholder="if ... end" />
-            <marker date="1365539052000" expanded="true" signature="4335:4479" placeholder="if ... end" />
-            <marker date="1365539052000" expanded="true" signature="4651:4744" placeholder="if ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="53.96">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="2" selection-start="664" selection-end="697" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="55" column="2" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="#..." />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="do ... end" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="case ... end" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="{ ... }" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="do ... end" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="{ ... }" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/wall.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="38" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="31" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="103" selection-start="4740" selection-end="4740" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1365539270000" expanded="true" signature="3114:3561" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="3899:4176" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="4265:4760" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="4866:5184" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="5279:5393" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="5488:5601" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="5692:5875" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="5954:6072" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="6160:6531" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="6721:7231" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="7795:8125" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="8430:8545" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="8633:8783" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="8860:8995" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="9087:9349" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="9450:9601" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="9675:9816" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="9905:10015" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="10110:10223" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="10312:10465" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="10550:10851" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="10946:11062" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11149:11284" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11381:11624" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11694:11805" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11891:12179" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11103:11214" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11323:11462" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11574:11707" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11802:11904" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="11987:12906" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="13096:13351" placeholder="do ... end" />
-            <marker date="1365539270000" expanded="true" signature="13696:14013" placeholder="do ... end" />
+            <marker date="1365632740000" expanded="true" signature="898:1017" placeholder="do ... end" />
+            <marker date="1365632740000" expanded="true" signature="3864:4002" placeholder="if ... end" />
+            <marker date="1365632740000" expanded="true" signature="4335:4479" placeholder="if ... end" />
+            <marker date="1365632740000" expanded="true" signature="4651:4744" placeholder="if ... end" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130404224040_add_active_column_to_survey.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="12" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+        <state line="2" column="4" selection-start="72" selection-end="110" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/wall.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130410231806_add_likes_to_courses.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="34" selection-start="120" selection-end="120" vertical-scroll-proportion="0.34042552">
+        <state line="2" column="23" selection-start="86" selection-end="86" vertical-scroll-proportion="0.15609756">
           <folding />
         </state>
       </provider>

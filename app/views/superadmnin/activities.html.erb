@@ -1,6 +1,12 @@
 <div class="super-admin-header">Actividades del sistema
     <div class="counter-marquer"><center><%= @ac %></center></div>
 </div>
+<%= form_tag superadmnin_activities_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Actividades por usuario o titulo' %>
+   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
+  </p>
+<% end %>
 <div class="super-admin-descriptions"> Las actividades del sistema están geo localizadas</div></br></br></br>
 <% @activities.each do |activity|%>
  <div style="float:left; color:#fff; height:190px; margin-left:10px; margin-top:25px; padding:5px; background-color:#000;">
