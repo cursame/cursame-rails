@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <%
    #
    # hasPublic:Boolean .- Indica si será publico o si contiene propiedad publico
@@ -6,7 +7,7 @@
    # *defaultClass:String .- Clase que contiene el icono del texto por default
    #
    random_id = "#{random}"
-   hasSomeLocals = ( hasPublic && hasCourses ) ? true : false
+   hasSomeLocals = ( hasPublic && hasCourses && hasGroups) ? true : false
    extra_style = extra_style || ''
 %>
 
@@ -22,7 +23,10 @@
       </div>
   <% end %>
 
+  <!--# Agregar el checkbox para los grupos del current_user -->
+  <%if hasGroups %>
 
+  <%end%>
 
     <% if hasCourses  %>
       <div id="box-course-dd" style="<% if hasSomeLocals  %> display: none; <% end %>">
@@ -46,6 +50,8 @@
     <% end %>
   </ul>
 </div>
+
+
 
 <script type="text/javascript">
     $(document).ready(function() {

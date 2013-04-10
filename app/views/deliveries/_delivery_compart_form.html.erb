@@ -1,16 +1,18 @@
+# -*- coding: utf-8 -*-
 <%
    random_id = "#{random}"
    @labelIdBox = "upload-labels-#{random_id}"
+   formId= "form-upload-delivery-#{random_id}"
 %>
 
 <%#if @count_course_iam_member_and_owner != 0%>
-    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
+    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
         <%#= f.datetime_select :publish_date%>
         <%#= f.datetime_select :end_date%>
-        
+
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>
         <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
@@ -22,7 +24,7 @@
             <%= render :partial => "areas_of_evaluations/form", :id => 'areas_of_evaluations', :locals => { :f => builder } %>
         <% end %>
 
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>              
+        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input" %>
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
@@ -32,11 +34,11 @@
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
 
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
 
     <% end %>
 <%#end%>
-<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox} %>
+<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
 <script type="text/javascript">
 $(document).ready(function() {
   $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
