@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404225033) do
+ActiveRecord::Schema.define(:version => 20130409005150) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
-    t.integer  "course_id"
+    t.integer  "likes"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
+    t.integer  "likes"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "updated_at",  :null => false
     t.integer  "network_id"
     t.integer  "user_id"
+    t.integer  "likes"
   end
 
   create_table "discussions_courses", :force => true do |t|
@@ -220,17 +222,6 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "libraries", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "gade_e"
-    t.boolean  "active"
-    t.string   "file"
-    t.integer  "network_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
@@ -271,6 +262,15 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "network_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "notificacions", :force => true do |t|
+    t.integer  "notificator_id"
+    t.string   "notificator_type"
+    t.integer  "user_id"
+    t.string   "kind"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "notifications", :force => true do |t|
@@ -319,6 +319,12 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
+  end
+
+  create_table "recipes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
@@ -377,6 +383,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "poll_id"
     t.string   "state"
     t.boolean  "publish"
+    t.integer  "likes"
   end
 
   create_table "user_friends", :force => true do |t|
