@@ -1,21 +1,22 @@
+# -*- coding: utf-8 -*-
 <%
 #inicializamos el cuestionario
     @survey = Survey.new
-    1.times do 
+    1.times do
       question = @survey.questions.build
       1.times { question.answers.build}
     end
 %>
 
 <%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
-  
+
   <div style="border-bottom: 1px solid #ccc; height: 85px;">
-      
+
     <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
     <div style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
     <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input survey" %>
     <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input survey" %>
-    
+
     </div>
   </div></br>
 
@@ -32,7 +33,7 @@
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
     <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary", :id => 'comment-post-form'%>
     <br>
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
+    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
 <% end %>
 
 <script type="text/javascript">

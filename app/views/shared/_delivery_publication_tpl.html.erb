@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 <div class="null-image"></div>
  <h1><%= delivery.title %></h1>
@@ -167,9 +168,9 @@
 
 <script>
     $("#open-close-<%= delivery.id %>").click(function () {
-        $('#entrega-<%= delivery.id %>').toggle("slow");
-        $(this).toggle("slow");
-        $(this).parent().parent().toggle("slow");
+        $('#entrega-<%= delivery.id %>').show("slow");
+       // $(this).toggle("slow");
+       //  $(this).parent().parent().toggle("slow");
         $('#entrega-<%= delivery.id %>>form>#cancel-post-form').click(function () {
             $("#open-close-<%= delivery.id %>").show();
             $("#open-close-<%= delivery.id %>").parent().parent().show();
