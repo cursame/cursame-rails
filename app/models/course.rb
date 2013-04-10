@@ -53,7 +53,8 @@ class Course < ActiveRecord::Base
     if self.public_status == 'public'
       self.network.users.each do |u|
         Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
-        if (!Wall.find_by_user_id_and_publication_type_and_publication_id(u.id,'Course',self.id))
+        # if (!Wall.find_by_user_id_and_publication_type_and_publication_id(u.id,'Course',self.id))
+        if (Wall.where('user_id' => u.id,'publication_type'=>'Course','publication_id'=>self.id).empty?)
           Wall.create :user => u, :publication => self, :network => self.network, :course => self
         end
       end
