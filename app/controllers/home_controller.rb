@@ -56,9 +56,6 @@ class HomeController < ApplicationController
         @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
       end
 
-      if @comment.commentable_ty
-      end
-
       respond_to do |format|
         #format.html
         format.js
