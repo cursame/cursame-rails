@@ -34,7 +34,7 @@ class SuperadmninController < ApplicationController
   end
 
   def activities
-    @activities = Activity.all
+    @activities = Activity.search(params[:search])
     @ac = @activities.count
   end
 

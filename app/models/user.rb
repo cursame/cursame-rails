@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_many :survey, :dependent => :destroy
   has_many :walls, :dependent => :destroy
-
+  has_many :activities
 
   has_one :settings_teacher, :dependent => :destroy
 
