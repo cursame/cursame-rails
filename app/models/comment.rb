@@ -78,9 +78,35 @@ class Comment < ActiveRecord::Base
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
         Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
       end
-
     end
   end
+  
+  # after_create do
+  #   case commentable_type
+  #     when "Network"
+  #       commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+  #       # commentable.users.each do |u|
+  #         Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
+  #       end 
+  #       #con esto se guarda en wall
+  #       commentable.users.each do |u|
+  #         Wall.create :user => u, :publication => self, :network => self.network, :course_id => nil
+  #       end
+  #     when "Course"
+  #       commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+  #         Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
+  #       end
+  #       #commentable.users.each do |u|
+  #        #Wall.create :user => u, :publication => self, :network => self.network, :course_id => commentable.id
+  #       #end
+  #       Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
+  #     when "Comment"
+  #       # Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
+  #     when "User"
+  #       # Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
+  #   end
+  # end 
+
   #=begin
   #   case commentable_type
   #   when "Network"
