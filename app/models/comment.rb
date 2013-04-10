@@ -62,32 +62,39 @@ class Comment < ActiveRecord::Base
     commentable_type.camelize.constantize.find(commentable_id)
   end
 
-  # after_create do
-  #   hash = group_of_users(commentable_type)
-  #   users = hash[:users]
-  #   notification_kind = hash[:kind]
+  after_create do
+    hash = group_of_users(commentable_type)
+    users = hash[:users]
 
-  #   users = users.reject{|user| user.id == self.user.id}
+    if !users.nil? then
 
-  #   course_id = commentable.id if notification_kind["course"]
-  #   course_id = nil if !notification_kind["course"]
+      notification_kind = hash[:kind]
+      users = users.reject{|user| user.id == self.user.id}
+      course_id = commentable.id if notification_kind["course"]
+      course_id = nil if !notification_kind["course"]
 
-  #   users.each do |user|
-  #     wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
-  #     if !wall.nil?
-  #       Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-  #       Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
-  #     end
-  #   end
-  # end
-  
+      users.each do |user|
+        wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
+        if !wall.nil?
+          Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+          Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
+        end
+
+        if notification_kind == "user_comment_on_comment"
+          Notification.create(:user => user, notificator => self, :kind => notification_kind)
+        end
+      end
+    end
+  end
+
+=begin
   after_create do
     case commentable_type
       when "Network"
         commentable.users.reject { |us| us.id == self.user.id }.each do |u|
         # commentable.users.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
-        end 
+        end
         #con esto se guarda en wall
         commentable.users.each do |u|
           Wall.create :user => u, :publication => self, :network => self.network, :course_id => nil
@@ -105,33 +112,8 @@ class Comment < ActiveRecord::Base
       when "User"
         # Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
     end
-  end 
-
-  #=begin
-  #   case commentable_type
-  #   when "Network"
-  #     # commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-  #     commentable.users.each do |u|
-  #      Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
-  #    end
-  #     #con esto se guarda en wall
-  #     commentable.users.each do |u|
-  #      Wall.create :user => u, :publication => self, :network => self.network, :course_id => nil
-  #    end
-  #   when "Course"
-  #     commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-  #      Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
-  #    end
-  #     #commentable.users.each do |u|
-  #     #Wall.create :user => u, :publication => self, :network => self.network, :course_id => commentable.id
-  #     #end
-  #     Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
-  #   when "Comment"
-  #     #Wall.create :user => self.user, :publication => self
-  #   end
-  #    =end
-
-
+  end
+=end
 
   def group_of_users(comment_type)
     case comment_type
@@ -139,6 +121,13 @@ class Comment < ActiveRecord::Base
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
+    when "Comment"
+      if commentable.commebtable.type == "User"
+        users = [commentable.commentable]
+      else
+      users = commentable.commentable.users
+      end
+      hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
     else
       hash = {:users => nil,:kind => nil}
       return hash
