@@ -82,9 +82,9 @@ class Comment < ActiveRecord::Base
         #end
         Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
       when "Comment"
-        Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
+        # Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
       when "User"
-        Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
+        # Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
     end
   end 
   
