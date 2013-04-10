@@ -37,11 +37,12 @@ class Survey < ActiveRecord::Base
   end
 
   after_create do
+    
      if self.publish_date <= DateTime.now then
-       self.update_attributes(:active => true)
+       #self.update_attributes(:publish => true)
        self.publish!
      else
-       self.update_attributes(:active => false)
+       #self.update_attributes(:publish => false)
      end
 
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
@@ -87,6 +88,10 @@ end
 
   def self.user
     User.last
+  end
+  
+  def title 
+     self.name
   end
 
 end

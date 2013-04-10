@@ -3,8 +3,15 @@ class Activity < ActiveRecord::Base
   geocoded_by :ip_address,
     :latitude => :latitude, :longitude => :longitude
   after_validation :geocode
- 
+  belongs_to :user
   
   belongs_to :activitye, polymorphic: :true
 
+  def self.search(search)
+     if search
+       @searcher = find(:all, :conditions => ['(title ||  user_id) LIKE ?', "%#{search}%"])
+     else
+       find(:all, :order => :title)
+     end
+   end
 end

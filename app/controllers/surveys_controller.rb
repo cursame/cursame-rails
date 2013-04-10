@@ -26,6 +26,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
+        @az = @survey
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"
         activation_activity
@@ -76,7 +77,7 @@ class SurveysController < ApplicationController
             @user_response.save
 
           end
-          
+            @az = @user_survey
             @typed = "User_survey"
             activation_activity
         end

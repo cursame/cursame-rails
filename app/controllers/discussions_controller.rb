@@ -52,6 +52,7 @@ class DiscussionsController < ApplicationController
     respond_to do |format|
       if @discussion.save
         @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
+          @az = @discussion
           @typed = "Discussion"
           activation_activity
         format.js
