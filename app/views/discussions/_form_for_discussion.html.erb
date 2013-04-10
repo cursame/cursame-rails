@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <%= form_for(@discussion=Discussion.new, :remote => true,:html => { :class => "default-form discussion-form" }) do |f| %>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
@@ -17,5 +18,5 @@
     <div class="submit-area"></div>
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
     <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => 'Pública', :defaultClass => 'public-dd' } %>
+    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :defaultText => 'Pública', :defaultClass => 'public-dd' } %>
 <% end %>

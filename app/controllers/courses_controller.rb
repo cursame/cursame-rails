@@ -243,19 +243,14 @@ class CoursesController < ApplicationController
   def assigment
     @assignment = Assignment.new(params[:assignment])
     @assignment.user_id = current_user.id
-    @asset = Asset.new(params[:asset])
-    @asset.save!
     @assignment.save!
-      puts "**************"
-      puts "assignment save "
-      puts "**************"
 
      if @assignment.save!
-            puts "************************************************************************"
+
           # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
 
            @delivery_from_assignment = Delivery.find(@assignment.delivery)
-            puts  @delivery_from_assignment
+
 
                 @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
 
@@ -266,7 +261,7 @@ class CoursesController < ApplicationController
                   @response_to_the_evaluation.assignment_id = @assignment.id
                   @response_to_the_evaluation.save
 
-                   puts "******** se han generado las areas de evaluacion ************"
+
 
                 end
 
