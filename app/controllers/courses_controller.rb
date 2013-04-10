@@ -54,7 +54,7 @@ class CoursesController < ApplicationController
 
     @search = params[:search]
     @page = params[:page].to_i
-    @wall = @course.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    @wall = @course.walls.search(@search).order('created_at DESC').group('publication_id,publication_type').paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
           format.html # show.html.erb
@@ -153,7 +153,7 @@ class CoursesController < ApplicationController
             @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
             @az =  @course
             @typed = "Course"
-            activation_activity
+        activation_activity
         #format.json { render json: @course, status: :created, location: @course }
         format.html { redirect_to courses_url }
         format.js

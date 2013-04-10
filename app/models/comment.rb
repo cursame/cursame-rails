@@ -102,11 +102,8 @@ class Comment < ActiveRecord::Base
       when "Course"
         commentable.users.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
-        end
-        #commentable.users.each do |u|
-         #Wall.create :user => u, :publication => self, :network => self.network, :course_id => commentable.id
-        #end
-        Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
+          Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
+        end       
       when "Comment"
         # Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
       when "User"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404225033) do
+ActiveRecord::Schema.define(:version => 20130409005150) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -100,6 +100,15 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+<<<<<<< HEAD
+    t.integer  "likes"
+=======
+<<<<<<< HEAD
+    t.integer  "likes"
+=======
+    t.integer  "course_id"
+>>>>>>> origin/development
+>>>>>>> bedf8dee820a525ae03745b6d82712676df78302
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -107,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -131,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "delivery_param_evaluation"
     t.integer  "network_id"
     t.boolean  "active_status",             :default => true
+    t.integer  "likes"
   end
 
   create_table "deliveries", :force => true do |t|
@@ -144,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
+    t.integer  "likes"
   end
 
   create_table "deliveries_courses", :id => false, :force => true do |t|
@@ -167,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.datetime "updated_at",  :null => false
     t.integer  "network_id"
     t.integer  "user_id"
+    t.integer  "likes"
   end
 
   create_table "discussions_courses", :force => true do |t|
@@ -379,7 +392,9 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "user_id"
     t.integer  "poll_id"
     t.string   "state"
+    t.integer  "likes"
     t.boolean  "publish"
+    t.integer  "likes"
   end
 
   create_table "user_friends", :force => true do |t|
@@ -473,6 +488,7 @@ ActiveRecord::Schema.define(:version => 20130404225033) do
     t.integer  "user_id"
     t.integer  "network_id"
     t.integer  "course_id"
+    t.integer  "likes"
   end
 
 end

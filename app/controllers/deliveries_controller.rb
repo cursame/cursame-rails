@@ -72,9 +72,7 @@ class DeliveriesController < ApplicationController
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
-
         @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
-
         activation_activity
          #actualizamos los assets del delivery
         if(params[:files])
@@ -83,12 +81,10 @@ class DeliveriesController < ApplicationController
             @delivery.assets.push(@asset)
           end
         end
-        format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
         format.js
 
       else
-        format.html { render action: "new" }
         format.json { render json: @delivery.errors, status: :unprocessable_entity }
         format.js
       end

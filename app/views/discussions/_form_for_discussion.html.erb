@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 <%= form_for(@discussion=Discussion.new, :remote => true,:html => { :class => "default-form discussion-form" }) do |f| %>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">

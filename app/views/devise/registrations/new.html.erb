@@ -15,7 +15,7 @@
 		<div><!-- <%= f.label :password %><br /> --> <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña" %></div>		
 		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd",:placeholder =>"Confirmacion de contraseña" %>
 		<div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div>
-		<%= f.text_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %></div>
+		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %></div>
 		<%= f.submit "Registrarme", :class =>"signup-btn" %>
 		<% end %>
 	</div><!-- ends form-signup -->
