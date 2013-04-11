@@ -90,13 +90,15 @@
 <!-- Content -->
 
 <div id="box-stream-post">
-       <% 
+       <%
+        @page = params[:page].to_i
+        @search = params[:search]
+        @id = params[:id].to_i
         @user = current_user
-        @desert =  @course.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+        @desert =  @course.walls.search(@search, @id).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
         @filter = @desert
         @wall = @filter
-        @search = params[:search]
-        @page = params[:page].to_i
+
        
        %>
        
@@ -113,7 +115,7 @@
        <%= will_paginate(@wall) %>
 </div>
 
-</div>
+
 
 <script type="text/javascript">
 $(function() {
