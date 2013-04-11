@@ -66,25 +66,28 @@ class Comment < ActiveRecord::Base
     hash = group_of_users(commentable_type)
     users = hash[:users]
 
-    if !users.nil? then
+    notification_kind = hash[:kind]
+    users = users.reject{|user| user.id == self.user.id}
+    print self.attributes
+    puts ""
+    course_id = commentable.id if notification_kind["course"]
+    course_id = nil if !notification_kind["course"]
 
-      notification_kind = hash[:kind]
-      users = users.reject{|user| user.id == self.user.id}
-      course_id = commentable.id if notification_kind["course"]
-      course_id = nil if !notification_kind["course"]
+    users.each do |user|
 
-      users.each do |user|
-        wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
-        if !wall.nil?
-          Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-          Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
-        end
+      wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
 
-        if notification_kind == "user_comment_on_comment"
-          Notification.create(:user => user, notificator => self, :kind => notification_kind)
-        end
+      if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user" then
+
+        Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+        Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
+      end
+
+      if notification_kind == "user_comment_on_comment" || notification_kind == "user_comment_on_user"
+        Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
     end
+
   end
 
 =begin
@@ -103,7 +106,7 @@ class Comment < ActiveRecord::Base
         commentable.users.reject { |us| us.id == self.user.id }.each do |u|
           Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
           Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
-        end       
+        end
       when "Comment"
         # Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
       when "User"
@@ -119,10 +122,10 @@ class Comment < ActiveRecord::Base
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
     when "Comment"
-      if commentable.commebtable.type == "User"
+      if commentable.commentable_type == "User"
         users = [commentable.commentable]
       else
-      users = commentable.commentable.users
+        users = commentable.commentable.users
       end
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
     else
