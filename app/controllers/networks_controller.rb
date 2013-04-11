@@ -41,8 +41,9 @@ class NetworksController < ApplicationController
 
     @network = Network.find_by_subdomain!(request.subdomain)
     @search = params[:search]
+    @id = params[:id]
     @page = params[:page].to_i
-    @wall = current_network.walls.search(@search).order('created_at DESC').group('publication_id,publication_type').paginate(:per_page => 10, :page => params[:page])
+    @wall = current_network.walls.search(@search,@id).order('created_at DESC').group('publication_id,publication_type').paginate(:per_page => 10, :page => params[:page])
     if request.xhr?      
       respond_to do |format|
         format.js
