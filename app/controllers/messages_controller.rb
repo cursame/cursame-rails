@@ -27,6 +27,6 @@ class MessagesController < ApplicationController
     redirect_to :back
   end
     @typed = "Comment"
-    activation_activity
+#    activation_activity
     
 end
