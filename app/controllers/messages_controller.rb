@@ -28,5 +28,4 @@ class MessagesController < ApplicationController
   end
     @typed = "Comment"
 #    activation_activity
-    
 end

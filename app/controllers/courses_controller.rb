@@ -54,7 +54,7 @@ class CoursesController < ApplicationController
 
     @search = params[:search]
     @page = params[:page].to_i
-    @wall = @course.walls.search(@search).order('created_at DESC').group('publication_id,publication_type').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.search(@search).order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
           format.html # show.html.erb
