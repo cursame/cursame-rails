@@ -8,9 +8,9 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications = Course.find(params[:publicacionId]).walls.select("walls.*").order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.select("walls.*").order('created_at DESC').group('publication_id,publication_type').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @network.walls.select("walls.*").order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @network.walls.select("walls.*").order('created_at DESC').group('publication_id,publication_type').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
 
     @publications.each do |publication|
