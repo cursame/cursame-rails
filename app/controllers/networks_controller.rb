@@ -141,8 +141,7 @@ class NetworksController < ApplicationController
   end
   
   def network_comunity
-      @network_users = current_network.users
-      
+      @network_users = current_network.users      
   end
     
 end
