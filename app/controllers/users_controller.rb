@@ -37,17 +37,26 @@ class UsersController < ApplicationController
      @comments = @network_comments.where(:user_id => @accesible_id)
 
    ### wall
-
-        @search = params[:search]
-        @page = params[:page].to_i
-        @wall = @user_l.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+      @id = params[:id]
+      @search = params[:search]
+      @page = params[:page].to_i
+      @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
 
    ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
 
    #### manager courses
-
+    if request.xhr?      
+      respond_to do |format|
+        format.js
+      end           
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user_l }
+      end
+    end
   end
 =begin
   def current_user_friends

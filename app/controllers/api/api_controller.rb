@@ -8,9 +8,9 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @user.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @network.walls.order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
 
     @publications.each do |publication|
@@ -140,7 +140,7 @@ class Api::ApiController < ApplicationController
     @user=User.find_by_authentication_token(params[:auth_token])
     # @notifications_chanel = nil
     # if PrivatePub.signature_expired?
-      @notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
+      #@notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
     # end
 
     @network = @user.networks[0]

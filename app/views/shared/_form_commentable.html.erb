@@ -15,8 +15,9 @@
 <% end %>
 
 <script type="text/javascript">
-$('#comment_for_<%=commentable_type+commentable_id.to_s%>').keypress(function(e){
+$('#comment_for_<%=commentable_type+commentable_id.to_s%>').keypress(function(e){    
     if(e.keyCode == 13) {
+        e.preventDefault();
         $(this).parents("form").submit();
     }
     }).click(function(){

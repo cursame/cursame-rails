@@ -85,13 +85,84 @@
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script>
         var Cursame = {
-                APIURL :'http://cursatest.com/api/',
-                URL:'http://cursatest.com',
+                APIURL :'http://prueba.cursatest.com:8080/api/',
+                URL:'http://prueba.cursatest.com:8080',
                 //APIURL :'http://localhost:3000/api/',
                 //URL:'http://localhost:3000',
                 ASSETSURL:'/assets/Mobile/',
                 pageSize: 4
              };
+        function buildPrivatePub(doc) {
+            var self = {
+                connecting: false,
+                fayeClient: null,
+                fayeCallbacks: [],
+                subscriptions: {},
+                subscriptionCallbacks: {},
+
+                faye: function(callback) {
+                    if (self.fayeClient) {
+                        callback(self.fayeClient);
+                    } else {
+                        self.fayeCallbacks.push(callback);
+                        if (self.subscriptions.server && !self.connecting) {
+                            self.connecting = true;
+                            var script = doc.createElement("script");
+                            script.type = "text/javascript";
+                            script.src = self.subscriptions.server + ".js";
+                            script.onload = self.connectToFaye;
+                            doc.documentElement.appendChild(script);
+                        }
+                    }
+                },
+
+                connectToFaye: function() {
+                    self.fayeClient = new Faye.Client(self.subscriptions.server);
+                    self.fayeClient.addExtension(self.fayeExtension);
+                    for (var i=0; i < self.fayeCallbacks.length; i++) {
+                        self.fayeCallbacks[i](self.fayeClient);
+                    };
+                },
+
+                fayeExtension: {
+                    outgoing: function(message, callback) {
+                        if (message.channel == "/meta/subscribe") {
+                            // Attach the signature and timestamp to subscription messages
+                            var subscription = self.subscriptions[message.subscription];
+                            if (!message.ext) message.ext = {};
+                            message.ext.private_pub_signature = subscription.signature;
+                            message.ext.private_pub_timestamp = subscription.timestamp;
+                        }
+                        callback(message);
+                    }
+                },
+
+                sign: function(options) {
+                    if (!self.subscriptions.server) {
+                        self.subscriptions.server = options.server;
+                    }
+                    self.subscriptions[options.channel] = options;
+                    self.faye(function(faye) {
+                        faye.subscribe(options.channel, self.handleResponse);
+                    });
+                },
+
+                handleResponse: function(message) {
+                    if (message.eval) {
+                        eval(message.eval);
+                    }
+                    if (callback = self.subscriptionCallbacks[message.channel]) {
+                        callback(message.data, message.channel);
+                    }
+                },
+
+                subscribe: function(channel, callback) {
+                    self.subscriptionCallbacks[channel] = callback;
+                }
+            };
+            return self;
+        }
+        var PrivatePub = buildPrivatePub(document);
     </script>
     <script type="text/javascript">(function(h){function f(c,d){document.write('<meta name="'+c+'" content="'+d+'">')}if("undefined"===typeof g)var g=h.Ext={};g.blink=function(c){var d=c.js||[],c=c.css||[],b,e,a;f("viewport","width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no");f("apple-mobile-web-app-capable","yes");f("apple-touch-fullscreen","yes");b=0;for(e=c.length;b<e;b++)a=c[b],"string"!=typeof a&&(a=a.path),document.write('<link rel="stylesheet" href="'+a+'">');b=0;for(e=d.length;b<
 e;b++)a=d[b],"string"!=typeof a&&(a=a.path),document.write('<script src="'+a+'"><\/script>')}})(this);;Ext.blink({"id":"f1c328da-fdea-4483-91c7-2375dc0568e2","js":[{"path":"/assets/Mobile/app.js","bundle":true,"update":"delta","type":"js"}],"css":[{"path":"/assets/Mobile/resources/css/app.css","update":"delta","type":"css"}]})</script>
