@@ -3,6 +3,8 @@
 <%else%>
 <div id="banner-profile" style="background:url('<%= current_user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%end%>
+   <div id="notice" class="notice"></div>
+       
    <%= render :partial => 'shared/head_menu'%>
 </div>
 <!-- Content Post Box -->
@@ -22,8 +24,9 @@
         <%= @user.name %>
       </div>
     </div>
-
     <div id="box-course" class="basic-lateral-box margin-top" >
+        
+        
       <h2>cursos</h2>
       <% permitted_to? :create, :courses do %>
       <div id="form-new-course" class="form-new-course-lateral">
@@ -128,7 +131,7 @@
                  <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
             <%end %>          
         </div>
-        <div class="view-all"><%= link_to "Ver todos", network_comunity_path %></div>
+        <div class="view-all"><%= link_to "Comunidad", network_comunity_path %></div>
       </div>
      <!-- <div id="tabs-friends-2">
         <div class="content-avtr">
