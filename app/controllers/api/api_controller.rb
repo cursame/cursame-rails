@@ -140,7 +140,7 @@ class Api::ApiController < ApplicationController
     @user=User.find_by_authentication_token(params[:auth_token])
     # @notifications_chanel = nil
     # if PrivatePub.signature_expired?
-      @notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
+      #@notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
     # end
 
     @network = @user.networks[0]

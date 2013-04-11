@@ -129,7 +129,7 @@ class Comment < ActiveRecord::Base
       end
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
     else
-      hash = {:users => nil,:kind => nil}
+      hash = {:users => [commentable],:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
     end
   end
