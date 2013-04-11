@@ -10,7 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
-=
+
 ActiveRecord::Schema.define(:version => 20130410232910) do
 
   create_table "activities", :force => true do |t|
@@ -265,15 +265,6 @@ ActiveRecord::Schema.define(:version => 20130410232910) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "notificacions", :force => true do |t|
-    t.integer  "notificator_id"
-    t.string   "notificator_type"
-    t.integer  "user_id"
-    t.string   "kind"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
@@ -320,12 +311,6 @@ ActiveRecord::Schema.define(:version => 20130410232910) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "value"
-  end
-
-  create_table "recipes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
@@ -480,6 +465,5 @@ ActiveRecord::Schema.define(:version => 20130410232910) do
     t.integer  "course_id"
     t.integer  "likes"
   end
->>>>>>> 65df81555f49377c7ed8204ad7539a6c9b4037da
 
 end
