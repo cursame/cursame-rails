@@ -70434,8 +70434,8 @@ Ext.define('Cursame.controller.tablet.Main', {
 
         if (list.getCommentableType && list.getCommentableId
             && list.getCommentableType() && list.getCommentableId()) {
-            record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
-            me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'), null, record);
+            //record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
+            me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'), null);
         }
     },
     saveComment: function (comment, commentableType, commentableId, store, form, record) {
@@ -71418,8 +71418,8 @@ Ext.define('Cursame.controller.phone.Main', {
 
         if (list.getCommentableType && list.getCommentableId
             && list.getCommentableType() && list.getCommentableId()) {
-            record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
-            me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'), null, record);
+            //record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
+            me.saveComment(comment, list.getCommentableType(), list.getCommentableId(), Ext.getStore('Comments'), null);
         }
     },
     saveComment: function (comment, commentableType, commentableId, store, form, record) {
