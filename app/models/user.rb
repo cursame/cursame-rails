@@ -105,6 +105,7 @@ class User < ActiveRecord::Base
      @network = Network.find(@permissionings.network_id)
      @network.subdomain
   end
+  
 
 
 

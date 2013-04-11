@@ -27,6 +27,14 @@ class ApplicationController < ActionController::Base
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
+  
+  def current_network?
+      if current_network != nil
+           u_u = "#{current_network.subdomain}.#{links}"
+        else
+           u_u = "#{current_network.subdomain}.#{links}"
+      end
+  end
 
   #this method filtered the subdomail
   def filter_subdomain(subdomain)
