@@ -68,8 +68,7 @@ class Comment < ActiveRecord::Base
 
     notification_kind = hash[:kind]
     users = users.reject{|user| user.id == self.user.id}
-    print self.attributes
-    puts ""
+
     course_id = commentable.id if notification_kind["course"]
     course_id = nil if !notification_kind["course"]
 
@@ -77,13 +76,15 @@ class Comment < ActiveRecord::Base
 
       wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
 
-      if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user" then
+      if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user"  &&
+          notification_kind != "user_comment_on_delivery" then
 
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
         Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
       end
 
-      if notification_kind == "user_comment_on_comment" || notification_kind == "user_comment_on_user"
+      if notification_kind == "user_comment_on_comment" || notification_kind == "user_comment_on_user" ||
+          notification_kind == "user_comment_on_delivery" then
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
     end
@@ -117,10 +118,13 @@ class Comment < ActiveRecord::Base
 
   def group_of_users(comment_type)
     case comment_type
+
     when "Network", "Course", "Group"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
+
+      # Falta agregar cuando el commentable_type, es un usuario
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
@@ -128,6 +132,22 @@ class Comment < ActiveRecord::Base
         users = commentable.commentable.users
       end
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+      return hash
+
+    when "Delivery"
+      delivery = commentable
+      courses = delivery.courses
+
+      users = []
+
+      courses.each do |course|
+        users = users.concat(course.users)
+      end
+
+      hash = {:users => users, :kind => "user_comment_on_" + comment_type.downcase}
+
+      return hash
+
     else
       hash = {:users => [commentable],:kind => 'user_comment_on_' + comment_type.downcase}
       return hash

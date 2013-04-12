@@ -1,4 +1,10 @@
 resetForm($('#new_course'));
 unmask('#new_course');
+<% if @publication != nil %>
 $('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>");
 $('#timeline').effect("highlight", {}, 1000);
+<%end%>
+$('#notice').append('Se ha creado un curso')
+setTimeout(function() {
+    $('#notice').html('')
+}, 2500);
