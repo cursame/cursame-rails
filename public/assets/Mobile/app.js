@@ -72062,6 +72062,9 @@ Ext.define('Cursame.model.Publication', {
                             diff = now - dateTime,
                             str;
 
+                        if (diff < 0){
+                            diff = diff * -1;
+                        }
                         if (diff < 60) {
                             return String(diff) + ' s';
                         } else if (diff < 3600) {
@@ -72358,6 +72361,9 @@ Ext.define('Cursame.model.Comment', {
                             diff = now - dateTime,
                             str;
 
+                        if (diff < 0){
+                            diff = diff * -1;
+                        }
                         if (diff < 60) {
                             return String(diff) + ' s';
                         } else if (diff < 3600) {
@@ -72491,6 +72497,9 @@ Ext.define('Cursame.model.CommentComment', {
                         diff = now - dateTime,
                         str;
 
+                    if (diff < 0){
+                        diff = diff * -1;
+                    }
                     if (diff < 60) {
                         return String(diff) + ' s';
                     } else if (diff < 3600) {
