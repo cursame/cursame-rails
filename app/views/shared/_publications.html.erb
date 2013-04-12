@@ -1,9 +1,9 @@
-<%puts wall.class%>
-<%puts "XXXXXXXXXXXXXXXXX"%>
-<%print wall.each %>
-<% puts ""%>
 <% wall.each do |publication| %>
 <%
+
+print publication.attributes
+puts ""
+
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
   id = publication.id
