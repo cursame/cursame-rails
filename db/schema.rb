@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411215402) do
+ActiveRecord::Schema.define(:version => 20130410232910) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -458,13 +458,12 @@ ActiveRecord::Schema.define(:version => 20130411215402) do
   create_table "walls", :force => true do |t|
     t.integer  "publication_id"
     t.string   "publication_type"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.integer  "network_id"
     t.integer  "course_id"
     t.integer  "likes"
-    t.boolean  "public",           :default => false
   end
 
 end

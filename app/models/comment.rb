@@ -91,35 +91,10 @@ class Comment < ActiveRecord::Base
 
   end
 
-=begin
-  after_create do
-    case commentable_type
-      when "Network"
-        commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-        # commentable.users.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_network'
-        end
-        #con esto se guarda en wall
-        commentable.users.each do |u|
-          Wall.create :user => u, :publication => self, :network => self.network, :course_id => nil
-        end
-      when "Course"
-        commentable.users.reject { |us| us.id == self.user.id }.each do |u|
-          Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
-          Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => commentable.id
-        end
-      when "Comment"
-        # Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
-      when "User"
-        # Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
-    end
-  end
-=end
-
   def group_of_users(comment_type)
     case comment_type
 
-    when "Network", "Course", "Group"
+    when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
@@ -132,20 +107,6 @@ class Comment < ActiveRecord::Base
         users = commentable.commentable.users
       end
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
-      return hash
-
-    when "Delivery"
-      delivery = commentable
-      courses = delivery.courses
-
-      users = []
-
-      courses.each do |course|
-        users = users.concat(course.users)
-      end
-
-      hash = {:users => users, :kind => "user_comment_on_" + comment_type.downcase}
-
       return hash
 
     else
