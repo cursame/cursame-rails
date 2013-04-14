@@ -72,23 +72,24 @@ class Comment < ActiveRecord::Base
     course_id = commentable.id if notification_kind["course"]
     course_id = nil if !notification_kind["course"]
 
-    users.each do |user|
+    if notification_kind == "user_comment_on_network"
+      Wall.create(:user => nil, :publication => self, :network => self.network, :course_id => course_id, :public => true)
+    else
+      users.each do |user|
+        wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
+        if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user"  &&
+            notification_kind != "user_comment_on_delivery" then
 
-      wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
+          Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+          Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
+        end
 
-      if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user"  &&
-          notification_kind != "user_comment_on_delivery" then
-
-        Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-        Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
-      end
-
-      if notification_kind == "user_comment_on_comment" || notification_kind == "user_comment_on_user" ||
-          notification_kind == "user_comment_on_delivery" then
-        Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+        if notification_kind == "user_comment_on_comment" || notification_kind == "user_comment_on_user" ||
+            notification_kind == "user_comment_on_delivery" then
+          Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+        end
       end
     end
-
   end
 
   def group_of_users(comment_type)
