@@ -18,7 +18,7 @@ class Discussion < ActiveRecord::Base
       Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => course.id
     end
     if self.courses.count == 0 # si es publica @todo aqui hay volverla publica
-      Wall.create :user => self.user, :publication => self, :network => self.network
+      Wall.create(:user => nil, :publication => self, :network => self.network, :course_id => nil, :public => true)
     end   
   end
   
