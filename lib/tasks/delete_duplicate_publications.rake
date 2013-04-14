@@ -1,15 +1,23 @@
 task :delete_duplicates => :environment do
 	publications = Wall.where(:publication_type => "Comment")
 	publications = publications + Wall.where(:publication_type => "Discussion")
+	publications = publications + Wall.where(:publication_type => "Course")
 	muros = []
 	publications.each do |p|
 		wall = Wall.find_by_publication_id_and_publication_type(p.publication_id, p.publication_type)
+		
 		if wall.publication_type == "Comment"
-			if wall.publication.commentable_type == "Network"
+			if wall.publication.commentable_type == "Network"				
+				wall.update_attributes(:user_id => nil, :course_id =>nil, :public => true)
 				muros.push(wall)
 			end
 		end
 		if wall.publication_type == "Discussion"
+			wall.update_attributes(:user_id => nil, :course_id =>nil, :public => true)
+			muros.push(wall)
+		end
+		if wall.publication_type == "Course"
+			wall.update_attributes(:user_id => nil, :public => true)
 			muros.push(wall)
 		end
 	end
