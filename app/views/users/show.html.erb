@@ -3,6 +3,8 @@
 <%else%>
 <div id="banner-profile" style="background:url('<%= @user_l.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%end%>
+   <div id="notice" class="notice"></div>
+
    <%= render :partial => 'shared/head_menu'%>
 </div>
 <!-- Content Post Box -->
@@ -117,10 +119,13 @@
             <h2>AMIGOS</h2>
             <div id="tabs-friends" class="tabs-style">
                 <ul id="ul-tabs">
-                    <li class="element-left" style="width:100px!important;">
+                    <div class="element-left" style="width:100px!important;">
+                        <a class="plus-courses" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
+                        <% @friends = @user_l.friendships.where(:accepted => true)%>
+                        
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
-                                <span class="title-num"><%= current_user.friendships.count %></span>
+                                <span class="title-num"><%= @friends.count %></span>
                                 <span class="title">amigos</span>
                             </div>
                         </a>
@@ -137,13 +142,13 @@
                
                 <div id="tabs-friends-1">
                   <div class="content-avtr">
-                      <% @user_l.friendships.each do |friend|%>
+                      <% @friends.each do |friend|%>
                       <%  @friend = friend.friend%>
                            <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
                            <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
                       <%end %>
                   </div>
-                  <div class="view-all"><%= link_to "Ver todos", network_comunity_path %></div>
+                  <div class="view-all"><%= link_to "Comunidad", network_comunity_path %></div>
                 </div>
                 <!-- <div id="tabs-friends-2">
                   <div class="content-avtr">

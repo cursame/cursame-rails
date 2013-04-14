@@ -2,8 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/courses_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/discussions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/discussions_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/networks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/networks_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/superadmnin_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/superadmnin_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/surveys_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/surveys_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/activity.rb" afterPath="$PROJECT_DIR$/app/models/activity.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/course.rb" afterPath="$PROJECT_DIR$/app/models/course.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/survey.rb" afterPath="$PROJECT_DIR$/app/models/survey.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/assignments/_form_for_delivery.html.erb" afterPath="$PROJECT_DIR$/app/views/assignments/_form_for_delivery.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/deliveries/_delivery_compart_form.html.erb" afterPath="$PROJECT_DIR$/app/views/deliveries/_delivery_compart_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/deliveries/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/deliveries/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/deliveries/create.js.erb" afterPath="$PROJECT_DIR$/app/views/deliveries/create.js.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/discussions/_form_for_discussion.html.erb" afterPath="$PROJECT_DIR$/app/views/discussions/_form_for_discussion.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_comment_form.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_comment_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_dropdown.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_dropdown.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/superadmnin/activities.html.erb" afterPath="$PROJECT_DIR$/app/views/superadmnin/activities.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/surveys/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/surveys/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+    </list>
+    <list id="fb38c6e8-35c2-4621-bb6f-d32e84105341" name="subir" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
     </list>
     <ignored path="cursame-3.0-LB.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,88 +60,48 @@
       <file leaf-file-name="api_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="60" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="123" column="103" selection-start="4740" selection-end="4740" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1365632740000" expanded="true" signature="898:1017" placeholder="do ... end" />
+                <marker date="1365632740000" expanded="true" signature="3864:4002" placeholder="if ... end" />
+                <marker date="1365632740000" expanded="true" signature="4335:4479" placeholder="if ... end" />
+                <marker date="1365632740000" expanded="true" signature="4651:4744" placeholder="if ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tokens_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
+      <file leaf-file-name="Rails cursame-3.0-LB: development" pinned="true" current="false" current-in-tab="false">
+        <entry file="mock:///Rails cursame-3.0-LB: development">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="62" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.4525661">
+            <state line="0" column="19" selection-start="0" selection-end="19" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="courses_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
+      <file leaf-file-name="20130409005150_add_likes_to_publications.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="32" selection-start="1738" selection-end="1744" vertical-scroll-proportion="0.0">
+            <state line="2" column="4" selection-start="72" selection-end="110" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
+      <file leaf-file-name="20130410231806_add_likes_to_courses.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130410231806_add_likes_to_courses.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="23" selection-start="86" selection-end="86" vertical-scroll-proportion="0.15609756">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20130404224040_add_active_column_to_survey.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130404224040_add_active_column_to_survey.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="discussions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/discussions_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="abstract_store.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p286/gems/actionpack-3.2.1/lib/action_dispatch/middleware/session/abstract_store.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="765" selection-end="765" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_notifications.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_notifications.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="27" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notification.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/notification.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="11" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="78" selection-start="2747" selection-end="2747" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notifications_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/notifications_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="59" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -128,28 +114,34 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Push.Settings">
+    <option name="myUpdateMethod" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/surveys/_response_answers_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/user_survey.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/forms.css.scss" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.utilities.js" />
-        <option value="$PROJECT_DIR$/app/views/surveys/survey_reply.js.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.animation.js" />
-        <option value="$PROJECT_DIR$/app/controllers/surveys_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/surveys/create.js.erb" />
         <option value="$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/surveys/_survey_response_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/surveys/_response_fields_tpl.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/views/courses/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/api/tokens_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/public/assets/Mobile/index.html" />
+        <option value="$PROJECT_DIR$/app/views/shared/_mobile.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130404223903_add_likes_to_comments.rb" />
+        <option value="$PROJECT_DIR$/app/models/comment.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130408235533_add_likes_to_publications.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130409002148_add_likes_to_walls.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb" />
+        <option value="$PROJECT_DIR$/app/models/wall.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
+        <option value="/Rails cursame-3.0-LB: development" />
+        <option value="$PROJECT_DIR$/db/migrate/20130410231806_add_likes_to_courses.rb" />
       </list>
     </option>
   </component>
@@ -191,6 +183,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,106 +200,6 @@
               <option name="myItemId" value="cursame-3.0-LB" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="middleware" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionpack (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="middleware" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="session" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -319,7 +221,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -334,86 +254,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notifier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,49 +297,61 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="90" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="99" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="96" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="103" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="895" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="897" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="101" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="97" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets" />
+    </key>
+  </component>
   <component name="RunManager" selected="Rails.Development: cursame-3.0-LB">
+    <configuration default="false" name="Default" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console" temporary="true">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <RunnerSettings RunnerId="Basic" />
+      <ConfigurationWrapper RunnerId="Basic" />
+      <method />
+    </configuration>
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -643,6 +495,14 @@
         <option name="RakeTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method>
+        <option name="RakeTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="cursame-3.0-LB" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -737,11 +597,12 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Rake.test" />
       <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="2" class="java.lang.String" itemvalue="Rails.Production: cursame-3.0-LB" />
       <item index="3" class="java.lang.String" itemvalue="Rails.Development: cursame-3.0-LB" />
+      <item index="4" class="java.lang.String" itemvalue="Query Language Console.Default" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -765,12 +626,216 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0c052d2e-7530-49c7-b27e-df5134d1bafe" name="No subir" comment="" />
       <changelist id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="" />
+      <changelist id="fb38c6e8-35c2-4621-bb6f-d32e84105341" name="subir" comment="" />
       <created>1363719180581</created>
       <updated>1363719180581</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00004" summary="Se suben notificaciones para menu.">
+      <created>1364446935073</created>
+      <updated>1364446935073</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Se obtienen likes para comentarios y publicaicones.">
+      <created>1364518709448</created>
+      <updated>1364518709448</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Se agregan likes para Survey.">
+      <created>1364521632466</created>
+      <updated>1364521632466</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Se agrega paginacion para notificaciones.">
+      <created>1364525047025</created>
+      <updated>1364525047025</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Se modifica url para probar en produccion.">
+      <created>1364584687952</created>
+      <updated>1364584687952</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Se modifica url para probar en produccion.">
+      <created>1364585630786</created>
+      <updated>1364585630786</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Se sube Mobile Compresa.">
+      <created>1364600241896</created>
+      <updated>1364600241896</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Se sube Mobile Compresa.">
+      <created>1364602444405</created>
+      <updated>1364602444405</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Se sube Mobile Compresa.">
+      <created>1364603343949</created>
+      <updated>1364603343949</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Se sube Mobile Compresa.">
+      <created>1364605146472</created>
+      <updated>1364605146472</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Se sube Mobile Compresa.">
+      <created>1364605923223</created>
+      <updated>1364605923223</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Se sube Mobile Compresa.">
+      <created>1364618543361</created>
+      <updated>1364618543361</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Se sube Mobile Compresa.">
+      <created>1364620725522</created>
+      <updated>1364620725522</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Se sube Mobile Compresa.">
+      <created>1364621488081</created>
+      <updated>1364621488081</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Se sube Mobile Compresa.">
+      <created>1364622336700</created>
+      <updated>1364622336700</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Se sube Mobile Compresa.">
+      <created>1364622995398</created>
+      <updated>1364622995399</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Se sube Mobile Compresa.">
+      <created>1364624221683</created>
+      <updated>1364624221683</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Se sube Mobile Compresa.">
+      <created>1364628072286</created>
+      <updated>1364628072286</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Se sube Mobile Compresa.">
+      <created>1364629936608</created>
+      <updated>1364629936608</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Se sube Mobile Compresa.">
+      <created>1364715042146</created>
+      <updated>1364715042146</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Se sube Mobile Compresa.">
+      <created>1364718974766</created>
+      <updated>1364718974766</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Se sube Mobile Compresa.">
+      <created>1364719642297</created>
+      <updated>1364719642297</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Se sube Mobile Compresa.">
+      <created>1364720214326</created>
+      <updated>1364720214326</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Se sube Mobile Compresa.">
+      <created>1364721125635</created>
+      <updated>1364721125635</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Se sube Mobile Compresa.">
+      <created>1364721811280</created>
+      <updated>1364721811280</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Se sube Mobile Compresa.">
+      <created>1364722872596</created>
+      <updated>1364722872597</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Se sube Mobile Compresa.">
+      <created>1364723288295</created>
+      <updated>1364723288295</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Se sube Mobile Compresa.">
+      <created>1364766802710</created>
+      <updated>1364766802710</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Se sube Mobile Compresa.">
+      <created>1364768960757</created>
+      <updated>1364768960757</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Se sube Mobile Compresa.">
+      <created>1364775053728</created>
+      <updated>1364775053728</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Se sube Mobile Compresa.">
+      <created>1364873051059</created>
+      <updated>1364873051059</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Se sube Mobile Compresa.">
+      <created>1364874962578</created>
+      <updated>1364874962578</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Se sube Mobile Compresa.">
+      <created>1364875783468</created>
+      <updated>1364875783468</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Se sube Mobile Compresa.">
+      <created>1364886284498</created>
+      <updated>1364886284498</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Se sube Mobile Compresa.">
+      <created>1364890722084</created>
+      <updated>1364890722084</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Se sube Mobile Compresa.">
+      <created>1364893766266</created>
+      <updated>1364893766266</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Se sube Mobile Compresa.">
+      <created>1364897064197</created>
+      <updated>1364897064197</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Se sube Mobile Compresa.">
+      <created>1364899977205</created>
+      <updated>1364899977205</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Se sube Mobile Compresa.">
+      <created>1364901555508</created>
+      <updated>1364901555508</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Se sube Mobile Compresa.">
+      <created>1364903062050</created>
+      <updated>1364903062050</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364938227023</created>
+      <updated>1364938227023</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364938391144</created>
+      <updated>1364938391144</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364940997238</created>
+      <updated>1364940997238</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364941494029</created>
+      <updated>1364941494029</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Se sube modificacion para los dispositivos moviles.">
+      <created>1364955718116</created>
+      <updated>1364955718116</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Se sube modificacion para l que valide si es dispositivo mobile.">
+      <created>1365016050092</created>
+      <updated>1365016050092</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Se suben modelos para likes en comentarios y publicaciones.">
+      <created>1365538821442</created>
+      <updated>1365538821442</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;db/schema.rb&#10;">
+      <created>1365539434114</created>
+      <updated>1365539434114</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Se sube migrate para likes en comments, discussions, surveys y deliveries.">
+      <created>1365576134640</created>
+      <updated>1365576134640</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Se sube migrate para likes en courses.">
+      <created>1365636060786</created>
+      <updated>1365636060786</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Se sube migrate para likes en courses.">
+      <created>1365636099322</created>
+      <updated>1365636099322</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -795,26 +860,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1280" y="0" width="1280" height="800" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6701031" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3858156" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.73758864" sideWeight="0.9135618" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25892857" sideWeight="0.42269504" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.57730496" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5213549" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28246754" sideWeight="0.6141844" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33522728" sideWeight="0.42269504" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47801417" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4609929" sideWeight="0.5008117" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.65531915" sideWeight="0.4935065" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3319149" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842416" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -852,7 +918,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se sube migrate para likes en courses." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -865,91 +931,118 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Se suben notificaciones para menu." />
+    <MESSAGE value="Se obtienen likes para comentarios y publicaicones." />
+    <MESSAGE value="Se agregan likes para Survey." />
+    <MESSAGE value="Se agrega paginacion para notificaciones." />
+    <MESSAGE value="Se modifica url para probar en produccion." />
+    <MESSAGE value="Se sube Mobile Compresa." />
+    <MESSAGE value="Se sube modificacion para los dispositivos moviles." />
+    <MESSAGE value="Se sube modificacion para l que valide si es dispositivo mobile." />
+    <MESSAGE value="Se suben modelos para likes en comentarios y publicaciones." />
+    <MESSAGE value="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;db/schema.rb&#10;" />
+    <MESSAGE value="Se sube migrate para likes en comments, discussions, surveys y deliveries." />
+    <MESSAGE value="Se sube migrate para likes en courses." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/courses/_dashboard_deliver.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="28" selection-start="4285" selection-end="4291" vertical-scroll-proportion="-13.84" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="8" selection-start="6767" selection-end="7037" vertical-scroll-proportion="1.7564934" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/discussion.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/deliveries_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121115223832_create_comments.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="89" selection-start="479" selection-end="479" vertical-scroll-proportion="-6.4" />
+        <state line="20" column="17" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="56" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/network.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130320020317_add_pasteje_users.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130211211847_add_user_to_wall.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="32" selection-start="1738" selection-end="1744" vertical-scroll-proportion="0.0" />
+        <state line="2" column="4" selection-start="63" selection-end="100" vertical-scroll-proportion="0.09411765" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/db/20130115204526_eliminado_tabla.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/discussions_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p286/gems/actionpack-3.2.1/lib/action_dispatch/middleware/session/abstract_store.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="765" selection-end="765" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_notifications.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="27" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/notification.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="11" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="78" selection-start="2747" selection-end="2747" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/notifications_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="59" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="60" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130328030805_acts_as_votable_migration.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="62" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.4525661">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="2" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="#..." />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="do ... end" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="case ... end" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="{ ... }" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="do ... end" />
+            <marker date="1365636118000" expanded="true" signature="-1:-1" placeholder="{ ... }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/wall.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="38" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="31" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="103" selection-start="4740" selection-end="4740" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365632740000" expanded="true" signature="898:1017" placeholder="do ... end" />
+            <marker date="1365632740000" expanded="true" signature="3864:4002" placeholder="if ... end" />
+            <marker date="1365632740000" expanded="true" signature="4335:4479" placeholder="if ... end" />
+            <marker date="1365632740000" expanded="true" signature="4651:4744" placeholder="if ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130404224040_add_active_column_to_survey.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130409005150_add_likes_to_publications.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="4" selection-start="72" selection-end="110" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130410231806_add_likes_to_courses.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="23" selection-start="86" selection-end="86" vertical-scroll-proportion="0.15609756">
           <folding />
         </state>
       </provider>

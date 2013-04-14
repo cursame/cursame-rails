@@ -45,3 +45,14 @@ notifications_last = notifications.pop
 </div>
 <%= subscribe_to "/notifications/"+current_user.id.to_s %>
 <%end%>
+<script>
+me = function (type,id) {
+	var form = $('#wall_search'),
+		filter={
+			search:type,
+			id:id,
+			page:1
+		};
+	$.get(form.action,$.param(filter),null,"script");
+}
+</script>

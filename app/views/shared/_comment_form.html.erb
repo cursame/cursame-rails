@@ -5,5 +5,5 @@
     <div class="submit-area"></div>
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
     <%= submit_tag "Comentar",:class=>"btn btn-primary", :id => 'comment-post-form' %>
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
+    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
 <% end %>

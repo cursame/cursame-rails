@@ -18,6 +18,8 @@ class Course < ActiveRecord::Base
   belongs_to :network
   has_many :comments
   has_many :walls
+  has_many :activities, as: :activitye
+  
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
@@ -49,11 +51,11 @@ class Course < ActiveRecord::Base
 
   after_create do
     if self.public_status == 'public'
+      if (Wall.where('user_id' => u.id,'publication_type'=>'Course','publication_id'=>self.id).empty?)
+          Wall.create :user => nil, :publication => self, :network => self.network, :course => self, :public =>true
+      end
       self.network.users.each do |u|
-        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
-        if (!Wall.find_by_user_id_and_publication_type_and_publication_id(u.id,'Course',self.id))
-          Wall.create :user => u, :publication => self, :network => self.network, :course => self
-        end
+        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'        
       end
     end
   end

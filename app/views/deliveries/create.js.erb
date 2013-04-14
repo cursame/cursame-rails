@@ -1,5 +1,11 @@
-resetForm($('#new_delivery_form'));
-$('#nested_evaluation_form').remove();
+resetForm($('.delivery-form'));
+$('#nested_evaluation_form').empty();
 $('#total_nested_evaluation').remove();
 $('#new_delivery_form').find('.upload-form').remove();
 $('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>");
+$('#timeline').effect("highlight", {}, 1000);
+$('#notice').append('Se ha creado una tarea')
+setTimeout(function() {
+    $('#notice').html('')
+}, 2500);
+

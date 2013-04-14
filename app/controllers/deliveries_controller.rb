@@ -64,17 +64,15 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.json
   def create
     @delivery = Delivery.new(params[:delivery])
-    @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
-    @compart_assets = CompartAsset.new(params[:compart_assets])
-    @assignment = Assignment.new(params[:assignment])
+   # @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
+   # @compart_assets = CompartAsset.new(params[:compart_assets])
+   # @assignment = Assignment.new(params[:assignment])
 
     respond_to do |format|
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
-        
-        @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
-
+        @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
         activation_activity
          #actualizamos los assets del delivery
         if(params[:files])
@@ -83,12 +81,10 @@ class DeliveriesController < ApplicationController
             @delivery.assets.push(@asset)
           end
         end
-        format.html { redirect_to  :back, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
         format.js
 
       else
-        format.html { render action: "new" }
         format.json { render json: @delivery.errors, status: :unprocessable_entity }
         format.js
       end
@@ -99,7 +95,7 @@ class DeliveriesController < ApplicationController
   # PUT /deliveries/1.json
   def update
     @delivery = Delivery.find(params[:id])
-    @publication_m = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
+    @publication_m = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }

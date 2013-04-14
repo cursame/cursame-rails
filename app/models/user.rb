@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_many :survey, :dependent => :destroy
   has_many :walls, :dependent => :destroy
-
+  has_many :activities
 
   has_one :settings_teacher, :dependent => :destroy
 
@@ -101,15 +101,11 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
-     if @permissionings != nil
      @permissionings = self.permissionings.last
      @network = Network.find(@permissionings.network_id)
-     else
-       @network = Network.last
-
-     end
      @network.subdomain
   end
+  
 
 
 

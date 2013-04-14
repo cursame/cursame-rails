@@ -1,6 +1,8 @@
 <%
    random_id = "#{random}"
    @labelIdBox = "upload-labels-#{random_id}"
+   formId= "form-upload-assignments-#{random_id}"
+   
 %>
 
 <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
@@ -13,18 +15,18 @@
                  <!--    <%#= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>-->
 
       <%= f.fields_for :areas_of_evaluations do |build| %>
-            
+
             <%= render :partial => "areas_of_evaluations/form_course", :locals => { :f => build} %>
-        
+
       <% end %>
 
 
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
 
       <%= f.submit "Publicar"%>
 <% end %>
 
-      <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox} %>
+      <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId =>formId } %>
       <script type="text/javascript">
       $(document).ready(function() {
         $( "#delivery_publish_date, #delivery_end_date" ).datepicker({

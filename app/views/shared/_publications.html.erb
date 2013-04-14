@@ -42,7 +42,7 @@
     ico = '-survey'
   end
   created_at = post.created_at
-  
+
   type = publication.publication_type
   %>
   <%#= debug personal_url %>
@@ -50,9 +50,9 @@
 <% if post.state == "published" %>
 
   <div class="publication-box" >
-      
+
       <%#= debug cargo.publication.comments %>
-      
+
     <div class="general-cir<%=ico%>"></div>
 
     <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
@@ -68,10 +68,10 @@
         <%= link_to image_tag(image_avatarxx,{:class => "avatar-mini"}), show_user_path(personal_url)if (avatar.blank?)%>
         <%end%>
         </div>
-      
+
         <div class="top-null-image"></div><b><%= name %></b>  <span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
-        
+
 
       <div class="content">
 
@@ -80,7 +80,7 @@
         <% when 'Discussion'%>
         <p class="title-discusion"><%= name %> </p>
         <div class="description"><%= content %></div>
-        <% when 'Course'%>      
+        <% when 'Course'%>
         <p class="title-discusion"><%= name %></p>
         <div class="description"><%= content %></div>
         <% when 'Comment'%>
@@ -106,7 +106,7 @@
           <%end%>-->
         <%else%>
           <div class="labels">12 Likes</div>
-        <%end%>        
+        <%end%>
       </div>
     </div>
 
@@ -136,11 +136,11 @@
   }
   if(e.target.className === 'icon like'){ //si quiere daler like ;)
     alert('like!!');
-  }  
+  }
 });
 
   $('#more-comments-<%= id %>').live('click',function(e){
-    $.getScript("home/load_more_comments/<%= publication.id %>");    
+    $.getScript("home/load_more_comments/<%= publication.id %>");
     return false;
   });
   </script>

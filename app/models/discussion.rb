@@ -1,6 +1,7 @@
 class Discussion < ActiveRecord::Base 
    has_many :discussions_coursess
    has_many :courses, :through => :discussions_coursess
+   has_many :activities, as: :activitye
    
    belongs_to :network
    belongs_to :user
@@ -16,8 +17,8 @@ class Discussion < ActiveRecord::Base
     self.courses.each do |course|
       Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => course.id
     end
-    if self.courses.count == 0 # si es publica
-      Wall.create :user => self.user, :publication => self, :network => self.network
+    if self.courses.count == 0 # si es publica @todo aqui hay volverla publica
+      Wall.create(:user => nil, :publication => self, :network => self.network, :course_id => nil, :public => true)
     end   
   end
   
