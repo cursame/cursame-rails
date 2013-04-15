@@ -73,7 +73,7 @@ class Comment < ActiveRecord::Base
     course_id = nil if !notification_kind["course"]
 
     if notification_kind == "user_comment_on_network"
-      Wall.create(:user => nil, :publication => self, :network => self.network, :course_id => course_id, :public => true)
+      Wall.create( :publication => self, :network => self.network, :public => true)
     else
       users.each do |user|
         wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")

@@ -1,3 +1,5 @@
+#hay que eliminar todos los duplicados posibles
+
 task :delete_duplicates => :environment do
 	publications = Wall.where(:publication_type => "Comment")
 	publications = publications + Wall.where(:publication_type => "Discussion")
