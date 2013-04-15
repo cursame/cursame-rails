@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415185345) do
-
+ActiveRecord::Schema.define(:version => 20130410231806) do
   create_table "activities", :force => true do |t|
     t.string   "title"
     t.string   "activitye_type"
@@ -98,9 +97,9 @@ ActiveRecord::Schema.define(:version => 20130415185345) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
-    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
+    t.integer  "course_id"
     t.integer  "likes"
   end
 
@@ -109,7 +108,6 @@ ActiveRecord::Schema.define(:version => 20130415185345) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -222,10 +220,23 @@ ActiveRecord::Schema.define(:version => 20130415185345) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -375,8 +386,8 @@ ActiveRecord::Schema.define(:version => 20130415185345) do
     t.integer  "user_id"
     t.integer  "poll_id"
     t.string   "state"
-    t.boolean  "publish"
     t.integer  "likes"
+    t.boolean  "publish"
   end
 
   create_table "user_friends", :force => true do |t|
@@ -472,11 +483,10 @@ ActiveRecord::Schema.define(:version => 20130415185345) do
   create_table "walls", :force => true do |t|
     t.integer  "publication_id"
     t.string   "publication_type"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "network_id"
     t.integer  "likes"
-    t.boolean  "public",           :default => false
   end
 
 end
