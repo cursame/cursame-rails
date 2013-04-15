@@ -68545,6 +68545,70 @@ Ext.define('Cursame.view.Main', {
 });
 
 /**
+ * @class Core
+ * @extends --
+ * This is the definition class utils of the application
+ */
+ Ext.define('Core.Utils', {
+    singleton:true,
+    user:undefined,
+    url:Cursame.APIURL,
+    src:'/assets/Cursame/',
+    requires: ['Ext.data.JsonP'],
+    pageSize: 4,
+    hideMenu:false,
+
+    ajax :function(obj){
+        var token = localStorage.getItem("Token");
+        obj.url = this.url + obj.url;
+        if (token) {
+            obj.params = Ext.applyIf({
+                auth_token: token
+            },obj.params);
+        }
+        var o = Ext.applyIf({
+            disableCaching:false,
+            method :'GET'//,
+            // callbackKey: 'callback'
+        },obj);
+        Ext.data.JsonP.request(o);
+        // Ext.data.JsonP.request(o);
+    },
+    toFirstUpperCase:function  (txt) {
+        return txt.charAt(0).toUpperCase()+txt.slice(1);
+    },
+    timeAgo: function (date) {
+        try {
+            var now = Math.ceil(Number(new Date()) / 1000),
+            dateTime = Math.ceil(Number(new Date(date)) / 1000),
+            diff = now - dateTime,
+            str;
+
+            if (diff < 0){
+                diff = diff * -1;
+            }
+            if (diff < 60) {
+                return String(diff) + ' segundos';
+            } else if (diff < 3600) {
+                str = String(Math.ceil(diff / (60)));
+                return str + (str == "1" ? ' minutos' : ' minutos');
+            } else if (diff < 86400) {
+                str = String(Math.ceil(diff / (3600)));
+                return str + (str == "1" ? ' horas' : ' horas');
+            } else if (diff < 60 * 60 * 24 * 365) {
+                str = String(Math.ceil(diff / (60 * 60 * 24)));
+                return str + (str == "1" ? ' días' : ' días');
+            } else {
+                return Ext.Date.format(new Date(date), 'jS M \'y');
+            }
+        } catch (e) {
+            return '';
+        }
+    }
+});
+
+
+/**
  * @class Cursame.view.courses.CourseNavigationView.js
  * @extends Ext.navigation.View
  * The navigation view of the cursame courses, this is to navigate between the  courses
@@ -68565,6 +68629,7 @@ Ext.define('Cursame.view.navigation.View', {
                     ui:'action',
                     iconAlign:'center',
                     align: 'left',
+                    hidden:Ext.os.is('Android') || !Core.Utils.hideMenu,
                     hideAnimation: Ext.os.is.Android ? false : {
                         type: 'fadeOut',
                         duration: 200
@@ -69750,54 +69815,72 @@ Ext.define('Cursame.view.users.UserNavigationView', {
      config:{
          menu:{
              minWidth:190,
-             duration:200
+             duration: Ext.os.is('Android') ? 0 : 200
          }
      },
 
      initialize:function(){
-         var me = this;
+         var me = this,
+             cardContainerItems = [{
+                 xtype:'profilenavigationview'
+             },{
+                 xtype:'publicationsnavigationview'
+             },{
+                 xtype:'notificationnavigationview'
+             },{
+                 xtype:'coursenavigationview'
+             },{
+                 xtype:'usernavigationview'
+             }],
+             navigationMenu = {
+                 xtype:'navigationmenu',
+                 flex:1
+             },
+             cardContainer = {
+                 xtype:'container',
+                 itemId:'cardcontainer',
+                 layout:'card',
+                 flex:4,
+                 activeItem:0,
+                 items:cardContainerItems
+             };
+
+         if(!Ext.os.is('Android') && Core.Utils.hideMenu){
+             navigationMenu = {
+                 xtype:'navigationmenu',
+                 docked: 'left',
+                 cls: 'x-slidenavigation-list',
+                 style: 'position: absolute; top: 0; left: 0; height: 100%; z-index: 2',
+                 width: me.getMenu().minWidth
+             };
+             cardContainer = {
+                 xtype:'container',
+                 itemId:'cardcontainer',
+                 layout:'card',
+                 cls: 'x-slidenavigation-container',
+                 style: 'width: 100%; height: 100%; position: absolute; opacity: 1; z-index: 5',
+                 draggable: {
+                     direction: 'horizontal',
+                     constraint: {
+                         min: { x: 0, y: 0 },
+                         max: { x: Math.max(screen.width, screen.height), y: 0 }
+                     },
+                     listeners: {
+                         dragend: function(draggable, e, eOpts){me.down('#cardcontainer').fireEvent('dragend', draggable, e)},
+                         scope:   me
+                     }
+                 },
+                 activeItem:0,
+                 items:cardContainerItems
+             };
+         }
+
          me.setItems([{
              xtype: 'loginform'
          }, {
              xtype:'container',
              layout:'hbox',
-             items:[
-                 {
-                     xtype:'navigationmenu',
-                     docked: 'left',
-                     cls: 'x-slidenavigation-list',
-                     style: 'position: absolute; top: 0; left: 0; height: 100%; z-index: 2',
-                     width: me.getMenu().minWidth
-                 },{
-                     xtype:'container',
-                     itemId:'cardcontainer',
-                     layout:'card',
-                     cls: 'x-slidenavigation-container',
-                     style: 'width: 100%; height: 100%; position: absolute; opacity: 1; z-index: 5',
-                     draggable: {
-                         direction: 'horizontal',
-                         constraint: {
-                             min: { x: 0, y: 0 },
-                             max: { x: Math.max(screen.width, screen.height), y: 0 }
-                         },
-                         listeners: {
-                             dragend: function(draggable, e, eOpts){me.down('#cardcontainer').fireEvent('dragend', draggable, e)},
-                             scope:   me
-                         }
-                     },
-                     activeItem:0,
-                     items:[{
-                         xtype:'profilenavigationview'
-                     },{
-                         xtype:'publicationsnavigationview'
-                     },{
-                         xtype:'notificationnavigationview'
-                     },{
-                         xtype:'coursenavigationview'
-                     },{
-                         xtype:'usernavigationview'
-                     }]
-                 }]
+             items:[navigationMenu,cardContainer]
          }]);
 
          me.callParent();
@@ -70739,14 +70822,16 @@ Ext.define('Cursame.controller.tablet.Main', {
         }
     },
     closeMenu: function(duration) {
-        var me       = this,
-            duration = duration ? duration : 200;
+        var me = this,
+            duration = duration || me.getMain().getMenu().duration;
 
-        me.moveMainContainer(me, 0, duration);
+        if(!Ext.os.is('Android') && Core.Utils.hideMenu){
+            me.moveMainContainer(me, 0, duration);
+        }
     },
     moveMainContainer: function(nav, offsetX, duration) {
         var me = this,
-            duration  = duration ? duration : 200,
+            duration  = duration || me.getMain().getMenu().duration,
             container = me.getCardContainer(),
             draggable = container.draggableBehavior.draggable;
 
@@ -70776,7 +70861,7 @@ Ext.define('Cursame.controller.tablet.Main', {
     },
     openMenu: function(duration) {
         var me       = this,
-            duration = duration ? duration : 200,
+            duration =  duration || me.getMain().getMenu().duration,
             offsetX  = this.getMain().getMenu().minWidth;
 
         me.moveMainContainer(me, offsetX, duration);
@@ -70871,54 +70956,72 @@ Ext.define('Cursame.profile.Tablet', {
      config:{
          menu:{
              minWidth:190,
-             duration:200
+             duration: Ext.os.is('Android') ? 0 : 200
          }
      },
 
      initialize:function(){
-         var me = this;
+         var me = this,
+             cardContainerItems = [{
+                 xtype:'profilenavigationview'
+             },{
+                 xtype:'publicationsnavigationview'
+             },{
+                 xtype:'notificationnavigationview'
+             },{
+                 xtype:'coursenavigationview'
+             },{
+                 xtype:'usernavigationview'
+             }],
+             navigationMenu = {
+                 xtype:'navigationmenu',
+                 flex:1
+             },
+             cardContainer = {
+                 xtype:'container',
+                 itemId:'cardcontainer',
+                 layout:'card',
+                 flex:4,
+                 activeItem:0,
+                 items:cardContainerItems
+             };
+
+         if(!Ext.os.is('Android') && Core.Utils.hideMenu){
+             navigationMenu = {
+                 xtype:'navigationmenu',
+                 docked: 'left',
+                 cls: 'x-slidenavigation-list',
+                 style: 'position: absolute; top: 0; left: 0; height: 100%; z-index: 2',
+                 width: me.getMenu().minWidth
+             };
+             cardContainer = {
+                 xtype:'container',
+                 itemId:'cardcontainer',
+                 layout:'card',
+                 cls: 'x-slidenavigation-container',
+                 style: 'width: 100%; height: 100%; position: absolute; opacity: 1; z-index: 5',
+                 draggable: {
+                     direction: 'horizontal',
+                     constraint: {
+                         min: { x: 0, y: 0 },
+                         max: { x: Math.max(screen.width, screen.height), y: 0 }
+                     },
+                     listeners: {
+                         dragend: function(draggable, e, eOpts){me.down('#cardcontainer').fireEvent('dragend', draggable, e)},
+                         scope:   me
+                     }
+                 },
+                 activeItem:0,
+                 items:cardContainerItems
+             };
+         }
+
          me.setItems([{
              xtype: 'loginform'
          }, {
              xtype:'container',
              layout:'hbox',
-             items:[
-                 {
-                     xtype:'navigationmenu',
-                     docked: 'left',
-                     cls: 'x-slidenavigation-list',
-                     style: 'position: absolute; top: 0; left: 0; height: 100%; z-index: 2',
-                     width: me.getMenu().minWidth
-                 },{
-                     xtype:'container',
-                     itemId:'cardcontainer',
-                     layout:'card',
-                     cls: 'x-slidenavigation-container',
-                     style: 'width: 100%; height: 100%; position: absolute; opacity: 1; z-index: 5',
-                     draggable: {
-                         direction: 'horizontal',
-                         constraint: {
-                             min: { x: 0, y: 0 },
-                             max: { x: Math.max(screen.width, screen.height), y: 0 }
-                         },
-                         listeners: {
-                             dragend: function(draggable, e, eOpts){me.down('#cardcontainer').fireEvent('dragend', draggable, e)},
-                             scope:   me
-                         }
-                     },
-                     activeItem:0,
-                     items:[{
-                         xtype:'profilenavigationview'
-                     },{
-                         xtype:'publicationsnavigationview'
-                     },{
-                         xtype:'notificationnavigationview'
-                     },{
-                         xtype:'coursenavigationview'
-                     },{
-                         xtype:'usernavigationview'
-                     }]
-                 }]
+             items:[navigationMenu,cardContainer]
          }]);
 
          me.callParent();
@@ -71837,14 +71940,16 @@ Ext.define('Cursame.controller.phone.Main', {
         }
     },
     closeMenu: function(duration) {
-        var me       = this,
-            duration = duration ? duration : 200;
+        var me = this,
+            duration = duration || me.getMain().getMenu().duration;
 
-        me.moveMainContainer(me, 0, duration);
+        if(!Ext.os.is('Android') && Core.Utils.hideMenu){
+            me.moveMainContainer(me, 0, duration);
+        }
     },
     moveMainContainer: function(nav, offsetX, duration) {
         var me = this,
-            duration  = duration ? duration : 200,
+            duration  = duration || me.getMain().getMenu().duration,
             container = me.getCardContainer(),
             draggable = container.draggableBehavior.draggable;
 
@@ -71874,7 +71979,7 @@ Ext.define('Cursame.controller.phone.Main', {
     },
     openMenu: function(duration) {
         var me       = this,
-            duration = duration ? duration : 200,
+            duration =  duration || me.getMain().getMenu().duration,
             offsetX  = this.getMain().getMenu().minWidth;
 
         me.moveMainContainer(me, offsetX, duration);
@@ -72685,6 +72790,9 @@ Ext.define('Cursame.model.Notification', {
                     case 'new_survey_on_course':
                         text = 'Se ha creado un cuestionario en el curso';
                     break;
+                    case 'user_comment_on_comment':
+                        text = '<a href="#">'+name+'</a> ha comentado en '+'<a href="#">'+notificator.comment+'</a>';
+                    break;
                 }
 
                 return [
@@ -72827,69 +72935,6 @@ Ext.define('Cursame.store.Users', {
         sorters: 'last_name'
     }
 });
-
-/**
- * @class Core
- * @extends --
- * This is the definition class utils of the application
- */
- Ext.define('Core.Utils', {
-    singleton:true,
-    user:undefined,
-    url:Cursame.APIURL,
-    src:'/assets/Cursame/',
-    requires: ['Ext.data.JsonP'],
-    pageSize: 4,
-
-    ajax :function(obj){
-        var token = localStorage.getItem("Token");
-        obj.url = this.url + obj.url;
-        if (token) {
-            obj.params = Ext.applyIf({
-                auth_token: token
-            },obj.params);
-        }
-        var o = Ext.applyIf({
-            disableCaching:false,
-            method :'GET'//,
-            // callbackKey: 'callback'
-        },obj);
-        Ext.data.JsonP.request(o);
-        // Ext.data.JsonP.request(o);
-    },
-    toFirstUpperCase:function  (txt) {
-        return txt.charAt(0).toUpperCase()+txt.slice(1);
-    },
-    timeAgo: function (date) {
-        try {
-            var now = Math.ceil(Number(new Date()) / 1000),
-            dateTime = Math.ceil(Number(new Date(date)) / 1000),
-            diff = now - dateTime,
-            str;
-
-            if (diff < 0){
-                diff = diff * -1;
-            }
-            if (diff < 60) {
-                return String(diff) + ' segundos';
-            } else if (diff < 3600) {
-                str = String(Math.ceil(diff / (60)));
-                return str + (str == "1" ? ' minutos' : ' minutos');
-            } else if (diff < 86400) {
-                str = String(Math.ceil(diff / (3600)));
-                return str + (str == "1" ? ' horas' : ' horas');
-            } else if (diff < 60 * 60 * 24 * 365) {
-                str = String(Math.ceil(diff / (60 * 60 * 24)));
-                return str + (str == "1" ? ' días' : ' días');
-            } else {
-                return Ext.Date.format(new Date(date), 'jS M \'y');
-            }
-        } catch (e) {
-            return '';
-        }
-    }
-});
-
 
 
 Ext.application({
