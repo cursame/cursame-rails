@@ -10,7 +10,7 @@ task :delete_duplicates => :environment do
 		
 		if wall.publication_type == "Comment"
 			if wall.publication.commentable_type == "Network"				
-				wall.update_attributes(:user_id => nil, :course_id =>nil, :public => true)
+				wall.update_attributes(:users => nil, :courses =>nil, :public => true)
 				muros.push(wall)
 			end
 		end

@@ -14,12 +14,15 @@ class Discussion < ActiveRecord::Base
 
   after_create do
   	#con esto se guarda en wall
-    self.courses.each do |course|
-      Wall.create :user => self.user, :publication => self, :network => self.network, :course_id => course.id
-    end
     if self.courses.count == 0 # si es publica @todo aqui hay volverla publica
-      Wall.create(:user => nil, :publication => self, :network => self.network, :course_id => nil, :public => true)
-    end   
+      Wall.create( :publication => self, :network => self.network, :public => true)
+    else
+      users =[]
+      self.courses.each do |c|
+        users+= c.users
+      end
+      Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
+    end
   end
   
   def state
