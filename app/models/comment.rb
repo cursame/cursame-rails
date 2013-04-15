@@ -67,14 +67,18 @@ class Comment < ActiveRecord::Base
     users = hash[:users]
 
     notification_kind = hash[:kind]
-    users = users.reject{|user| user.id == self.user.id}
+    #users = users.reject{|user| user.id == self.user.id}
 
     course_id = commentable.id if notification_kind["course"]
     course_id = nil if !notification_kind["course"]
 
-    if notification_kind == "user_comment_on_network"
+    if notification_kind["network"]
       Wall.create( :publication => self, :network => self.network, :public => true)
-    else
+    elsif notification_kind["course"]
+      wall = Wall.create(:publication => self, :network => self.network, :public => true)
+      course = commentable
+      course.
+    elsif
       users.each do |user|
         wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
         if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user"  &&
