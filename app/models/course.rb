@@ -51,7 +51,7 @@ class Course < ActiveRecord::Base
 
   after_create do
     if self.public_status == 'public'
-      if (Wall.where('user_id' => u.id,'publication_type'=>'Course','publication_id'=>self.id).empty?)
+      if (Wall.where('user_id' => self.id,'publication_type'=>'Course','publication_id'=>self.id).empty?)
           Wall.create :user => nil, :publication => self, :network => self.network, :course => self, :public =>true
       end
       self.network.users.each do |u|
