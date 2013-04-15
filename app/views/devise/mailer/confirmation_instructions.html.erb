@@ -3,12 +3,12 @@
 <p>Puedes confirmar tu correo y cuenta dando click en el siguiente enlace:</p>
 
 <p>
-<% if (defined? current_network) && (current_networks != "")%>
+<%# if (defined? current_network)%>
 
 <h1><%= link_to 'Confirmar tu Cuenta >>', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.devise_mailer_subdomain) %></h1></p>
 
-<%else%>
+<%#else%>
 
-<%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+<%#= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
 
-<%end%>
+<%#end%>
