@@ -15,11 +15,23 @@ task :delete_duplicates => :environment do
 			end
 		end
 		if wall.publication_type == "Discussion"
-			wall.update_attributes(:user_id => nil, :course_id =>nil, :public => true)
+			users =[]
+		    wall.publication.courses.each do |c|
+		    	users+= c.users
+		    end
+			wall.update_attributes(:users => users, :courses =>wall.publication.courses, :public => true)
 			muros.push(wall)
 		end
 		if wall.publication_type == "Course"
-			wall.update_attributes(:user_id => nil, :public => true)
+			wall.update_attributes(:users => wall.publication.users,:courses => wall.publication.courses, :public => true)
+			muros.push(wall)
+		end
+		if wall.publication_type == "Delivery"
+			users =[]
+		    wall.publication.courses.each do |c|
+		    	users+= c.users
+		    end
+			wall.update_attributes(:users => users,:courses => wall.publication.courses, :public => true)
 			muros.push(wall)
 		end
 	end
@@ -31,6 +43,4 @@ task :delete_duplicates => :environment do
 		puts walls.count.to_s
 		Wall.destroy walls.map { |w| w.id }
 	end
-
-
 end
