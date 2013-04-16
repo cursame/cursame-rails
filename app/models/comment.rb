@@ -78,14 +78,9 @@ class Comment < ActiveRecord::Base
       end
 
     elsif notification_kind["course"] || notification_kind["group"]
-
-      if notification_kind["course"] then
-        public = 'public' == commentable.public_status
-      else
-        public = false
-      end
-      course = notification_kind["course"] ? [self] : nil
-      wall = Wall.create(:publication => self, :network => self.network, :users => self.users,:public => public, :courses=>course)
+      
+      course = notification_kind["course"] ? [commentable] : nil
+      wall = Wall.create(:publication => self, :network => self.network, :users => commentable.users,:public => false, :courses=>course)
       course_or_group = commentable
       course_or_group.walls << wall
 
