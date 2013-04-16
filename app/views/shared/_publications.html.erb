@@ -3,8 +3,7 @@
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
   id = publication.id
-  publication_cls = 'delivery'
-  cargo = publication
+  publication_cls = 'delivery'  
   case publication.publication_type
   when 'Comment'
     avatar = post.user.avatar.modern
@@ -30,6 +29,7 @@
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
+    cargo = post.courses[0]
     name = post.title
     content = post.description
     publication_cls = 'delivery'
