@@ -64,13 +64,9 @@ class Comment < ActiveRecord::Base
 
   after_create do
     hash = group_of_users(commentable_type)
+
     users = hash[:users]
-
     notification_kind = hash[:kind]
-    #users = users.reject{|user| user.id == self.user.id}
-
-    course_id = commentable.id if notification_kind["course"]
-    course_id = nil if !notification_kind["course"]
 
     if notification_kind["network"]
 
@@ -83,7 +79,13 @@ class Comment < ActiveRecord::Base
 
     elsif notification_kind["course"] || notification_kind["group"]
 
-      wall = Wall.create(:publication => self, :network => self.network, :public => true)
+      if notification_kind["course"] then
+        public = 'public' == commentable.public_status
+      else
+        public = false
+      end
+
+      wall = Wall.create(:publication => self, :network => self.network, :public => public)
       course_or_group = commentable
       course_or_group.walls << wall
 
@@ -92,6 +94,13 @@ class Comment < ActiveRecord::Base
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
+
+    elsif notification_kind["discussion"]
+
+      users.each do |user|
+        Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+      end
+
     elsif notification_kind["delivery"] || notification_kind["comment"] || notification_kind["user"]
 
       users.reject { |user| user.id == self.user.id }
@@ -99,25 +108,9 @@ class Comment < ActiveRecord::Base
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
-      elsif notification_kind["discussion"]
+    else
 
     end
-
-    #  users.each do |user|
-    #    wall = Wall.find_by_user_id_and_publication_id_and_publication_type(user.id,self.id,"Comment")
-    #    if wall.nil? && notification_kind != "user_comment_on_comment" && notification_kind  != "user_comment_on_user"  &&
-    #        notification_kind != "user_comment_on_delivery" then
-    #
-    #      Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-    #      Wall.create(:user => user, :publication => self, :network => self.network, :course_id => course_id)
-    #    end
-
-    #    if notification_kind == "user_comment_on_comment" || notification_kind == "user_comment_on_user" ||
-    #        notification_kind == "user_comment_on_delivery" then
-    #      Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-    #    end
-    #  end
-    #end
 
   end
 
@@ -141,10 +134,22 @@ class Comment < ActiveRecord::Base
 
       when "Discussion"
 
+      if commentable.courses.size == 0 then
+        hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
+      else
+        courses = commentable.courses
+        users = []
+        courses.each do |course|
+          users = users.concat(course.users)
+        end
+        users.uniq!
+        hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+      end
+
       return hash
     else
-      hash = {:users => [commentable],:kind => 'user_comment_on_' + comment_type.downcase}
-      return hash
+
+      raise "Grupo de usuarios no definido para " + comment_type
     end
   end
 
