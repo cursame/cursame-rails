@@ -68266,29 +68266,17 @@ Ext.define('Cursame.view.courses.CourseTpl', {
         html = [
         '<div class="profile-header">',
             '<div class="img-header">',
-                '<img src="'+Cursame.URL+'/assets/imagecoursex.png">',
+                '<img src="{wall}">',
             '</div>',
             '<div class="profile-info">',
                 '<div class="profile-avatar">',
-                    '<tpl if="this.validateAvatar(avatar) == true">',
-                        '<img src="'+Cursame.URL+'{avatar}">',
-                    '<tpl else>',
-                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
-                    '</tpl>',
+                    '<img src="{avatar}">',
                 '</div>',
                 '<div class="aboutme"><b>{title}</b>',
                     '<p>{description}</p>',
                 '</div>',
             '</div>',
-        '</div>', {
-                validateAvatar: function (avatar) {
-                    if (avatar !== null) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            }
+        '</div>'
         ];
         this.callParent(html);
     }
@@ -68361,7 +68349,11 @@ Ext.define('Cursame.view.notifications.NotificationTpl', {
                     '</tpl>',
                 '</div>',
                 '<div class="name">',
+                '<tpl if="this.validateName(first_name,last_name) == true">',
                     '{first_name} {last_name}',
+                '<tpl else>',
+                    'Usuario',
+                '</tpl>',
                 '</div>',
             '</div>', {
                 validateAvatar: function (avatar) {
@@ -68370,6 +68362,14 @@ Ext.define('Cursame.view.notifications.NotificationTpl', {
                     } else {
                         return false;
                     }
+                },
+                validateName: function (first_name,last_name) {
+                    if (first_name !== null && last_name !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
                 }
             }];
         this.callParent(html);
@@ -69061,7 +69061,7 @@ Ext.define('Cursame.view.comments.CommentCommentTpl', {
                     '<tpl if="this.validateUserAvatar(user_avatar) == true">',
                         '<img src="'+Cursame.URL+'{user_avatar}">',
                     '<tpl else>',
-                        '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
+                        '<img src="'+Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png">',
                     '</tpl>',
                 '</div>',
                 '<div class="comment-name">',
@@ -69609,11 +69609,7 @@ Ext.define('Cursame.view.comments.CommentContainer', {
                 '<div class="tipe-line-comment"></div>',
                 '<div class="header">',
                     '<div class="avatar">',
-                        //'<tpl if="this.validateUserAvatar(avatar) == true">',
-                         // '<img src="'+Cursame.URL+'{avatar}">',
-                        //'<tpl else>',
-                            '<img src="'+Cursame.URL+'/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png">',
-                        //'</tpl>',
+                            '<img src="{avatar}">',
                     '</div> ',
                     '<div class="info-user">',
                         '{user_name}',
@@ -70272,21 +70268,23 @@ Ext.define('Cursame.controller.tablet.Main', {
      */
     pushPublicationContainer: function (record) {
         var me = this,
-            course, user, publication;
+            course, user, publication, userName,avatar;
         publication = record.get('publication');
         course = record.get('course');
         user = record.get('user');
+        userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
         if (course) {
-            publication.wall = course.coverphoto.url;
+            publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
             publication.coverphoto = course.coverphoto.url;
-            publication.avatar = course.avatar.url;
+            publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
             publication.courseName = 'Programación'; //@todo poner bien el titulo ...
+            publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
             publication.coverphoto = user.coverphoto.url;
-            publication.avatar = user.avatar.url;
+            publication.avatar = user.avatar.url ? Cursame.URL + user.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+            publication.user_name = userName;
         }
-        publication.user_name = user.first_name + ' ' + user.last_name;
         publication.timeAgo = Core.Utils.timeAgo(publication.created_at);
 
         switch (record.get('publication_type')) {
@@ -70371,9 +70369,12 @@ Ext.define('Cursame.controller.tablet.Main', {
      * se ejecuta cuando se le da click a una notificación
      */
     onNotificationTap: function (dataview, index, target, record, e, opt) {
-        var me = this, creator, course,
+        var me = this, course,
             data = record.get('notificator'),
-            navigationView = me.getNotificationNavigationView();
+            navigationView = me.getNotificationNavigationView(),
+            creator = record.get('creator'),
+            userName = creator.first_name && creator.last_name ? creator.first_name + ' ' + creator.last_name : 'Usuario',
+            avatar = creator.avatar.url ? Cursame.URL + creator.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         switch (record.get('kind')) {
             case 'user_comment_on_network':
                 navigationView.push({
@@ -70382,11 +70383,9 @@ Ext.define('Cursame.controller.tablet.Main', {
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
-                creator = record.get('creator');
-                data.user_name = creator.first_name + ' ' + creator.last_name;
+                data.user_name = userName;
                 data.timeAgo = Core.Utils.timeAgo(data.created_at);
-                data.avatar = creator.avatar.url;
-
+                data.avatar = avatar;
                 me.getCommentContainer().setData(data);
                 me.loadCommentsByType('Comment', data.id);
                 break;
@@ -70397,10 +70396,9 @@ Ext.define('Cursame.controller.tablet.Main', {
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
-                creator = record.get('creator');
-                data.user_name = creator.first_name + ' ' + creator.last_name;
+                data.user_name = userName;
                 data.timeAgo = Core.Utils.timeAgo(data.created_at);
-                data.avatar = creator.avatar.url;
+                data.avatar = avatar
 
                 me.getCommentContainer().setData(data);
                 me.loadCommentsByType('Comment', data.id);
@@ -70412,7 +70410,6 @@ Ext.define('Cursame.controller.tablet.Main', {
                     commentableType: 'Delivery',
                     commentableId: data.id
                 });
-
                 course = record.get('creator');
                 data.wall = course.coverphoto.url;
                 data.avatar = course.avatar.url;
@@ -70889,10 +70886,17 @@ Ext.define('Cursame.controller.tablet.Main', {
     },
 
     onClickButtonBack: function(t,e){
-        var record = Ext.getStore('Publications').getAt(0);
-        if (record){
-            record.set('showHeader',null);
-            record.commit();
+        var me = this,
+            publicationsStore = Ext.getStore('Publications');
+
+        if (t == me.getPublicationNavigationView() && me.currentStore == 'Publications') {
+            publicationsStore.setParams({}, true); //Se resetean los parametros
+            publicationsStore.load(function(){
+                var record = publicationsStore.getAt(0);
+
+                record.set('showHeader', null);
+                record.commit();
+            });
         }
     }
 
@@ -71390,21 +71394,23 @@ Ext.define('Cursame.controller.phone.Main', {
      */
     pushPublicationContainer: function (record) {
         var me = this,
-            course, user, publication;
+            course, user, publication, userName,avatar;
         publication = record.get('publication');
         course = record.get('course');
         user = record.get('user');
+        userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
         if (course) {
-            publication.wall = course.coverphoto.url;
+            publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
             publication.coverphoto = course.coverphoto.url;
-            publication.avatar = course.avatar.url;
+            publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
             publication.courseName = 'Programación'; //@todo poner bien el titulo ...
+            publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
             publication.coverphoto = user.coverphoto.url;
-            publication.avatar = user.avatar.url;
+            publication.avatar = user.avatar.url ? Cursame.URL + user.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+            publication.user_name = userName;
         }
-        publication.user_name = user.first_name + ' ' + user.last_name;
         publication.timeAgo = Core.Utils.timeAgo(publication.created_at);
 
         switch (record.get('publication_type')) {
@@ -71489,9 +71495,12 @@ Ext.define('Cursame.controller.phone.Main', {
      * se ejecuta cuando se le da click a una notificación
      */
     onNotificationTap: function (dataview, index, target, record, e, opt) {
-        var me = this, creator, course,
+        var me = this, course,
             data = record.get('notificator'),
-            navigationView = me.getNotificationNavigationView();
+            navigationView = me.getNotificationNavigationView(),
+            creator = record.get('creator'),
+            userName = creator.first_name && creator.last_name ? creator.first_name + ' ' + creator.last_name : 'Usuario',
+            avatar = creator.avatar.url ? Cursame.URL + creator.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         switch (record.get('kind')) {
             case 'user_comment_on_network':
                 navigationView.push({
@@ -71500,11 +71509,9 @@ Ext.define('Cursame.controller.phone.Main', {
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
-                creator = record.get('creator');
-                data.user_name = creator.first_name + ' ' + creator.last_name;
+                data.user_name = userName;
                 data.timeAgo = Core.Utils.timeAgo(data.created_at);
-                data.avatar = creator.avatar.url;
-
+                data.avatar = avatar;
                 me.getCommentContainer().setData(data);
                 me.loadCommentsByType('Comment', data.id);
                 break;
@@ -71515,10 +71522,9 @@ Ext.define('Cursame.controller.phone.Main', {
                     commentableType: 'Comment',
                     commentableId: data.id
                 });
-                creator = record.get('creator');
-                data.user_name = creator.first_name + ' ' + creator.last_name;
+                data.user_name = userName;
                 data.timeAgo = Core.Utils.timeAgo(data.created_at);
-                data.avatar = creator.avatar.url;
+                data.avatar = avatar
 
                 me.getCommentContainer().setData(data);
                 me.loadCommentsByType('Comment', data.id);
@@ -71530,7 +71536,6 @@ Ext.define('Cursame.controller.phone.Main', {
                     commentableType: 'Delivery',
                     commentableId: data.id
                 });
-
                 course = record.get('creator');
                 data.wall = course.coverphoto.url;
                 data.avatar = course.avatar.url;
@@ -72007,10 +72012,17 @@ Ext.define('Cursame.controller.phone.Main', {
     },
 
     onClickButtonBack: function(t,e){
-        var record = Ext.getStore('Publications').getAt(0);
-        if (record){
-            record.set('showHeader',null);
-            record.commit();
+        var me = this,
+            publicationsStore = Ext.getStore('Publications');
+
+        if (t == me.getPublicationNavigationView() && me.currentStore == 'Publications') {
+            publicationsStore.setParams({}, true); //Se resetean los parametros
+            publicationsStore.load(function(){
+                var record = publicationsStore.getAt(0);
+
+                record.set('showHeader', null);
+                record.commit();
+            });
         }
     }
 
@@ -72793,6 +72805,8 @@ Ext.define('Cursame.model.Notification', {
                     case 'user_comment_on_comment':
                         text = '<a href="#">'+name+'</a> ha comentado en '+'<a href="#">'+notificator.comment+'</a>';
                     break;
+                    case 'user_comment_on_user':
+                        text = '<a href="#">'+name+'</a> ha comentado en tu Perfil '+'<a href="#">'+notificator.comment+'</a>';
                 }
 
                 return [

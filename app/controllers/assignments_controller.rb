@@ -84,7 +84,6 @@ class AssignmentsController < ApplicationController
 
                     @typed = "Assignment"
                     @az =  @assignment
-
                   ####### despues de guardar se crea la notificación de actividad con geo localización
                     activation_activity
 

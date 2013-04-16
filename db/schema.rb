@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(:version => 20130411215402) do
+=======
 ActiveRecord::Schema.define(:version => 20130415185345) do
+>>>>>>> origin/development
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -474,6 +478,10 @@ ActiveRecord::Schema.define(:version => 20130415185345) do
     t.string   "publication_type"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+<<<<<<< HEAD
+    t.integer  "user_id"
+=======
+>>>>>>> origin/development
     t.integer  "network_id"
     t.integer  "likes"
     t.boolean  "public",           :default => false
