@@ -1,3 +1,5 @@
+#hay que eliminar todos los duplicados posibles
+
 task :delete_duplicates => :environment do
 	publications = Wall.where(:publication_type => "Comment")
 	publications = publications + Wall.where(:publication_type => "Discussion")
@@ -8,16 +10,28 @@ task :delete_duplicates => :environment do
 		
 		if wall.publication_type == "Comment"
 			if wall.publication.commentable_type == "Network"				
-				wall.update_attributes(:user_id => nil, :course_id =>nil, :public => true)
+				wall.update_attributes(:users => nil, :courses =>nil, :public => true)
 				muros.push(wall)
 			end
 		end
 		if wall.publication_type == "Discussion"
-			wall.update_attributes(:user_id => nil, :course_id =>nil, :public => true)
+			users =[]
+		    wall.publication.courses.each do |c|
+		    	users+= c.users
+		    end
+			wall.update_attributes(:users => users, :courses =>wall.publication.courses, :public => true)
 			muros.push(wall)
 		end
 		if wall.publication_type == "Course"
-			wall.update_attributes(:user_id => nil, :public => true)
+			wall.update_attributes(:users => wall.publication.users,:courses => wall.publication.courses, :public => true)
+			muros.push(wall)
+		end
+		if wall.publication_type == "Delivery"
+			users =[]
+		    wall.publication.courses.each do |c|
+		    	users+= c.users
+		    end
+			wall.update_attributes(:users => users,:courses => wall.publication.courses, :public => true)
 			muros.push(wall)
 		end
 	end
@@ -29,6 +43,4 @@ task :delete_duplicates => :environment do
 		puts walls.count.to_s
 		Wall.destroy walls.map { |w| w.id }
 	end
-
-
 end

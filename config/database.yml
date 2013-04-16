@@ -19,14 +19,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
-production:
   adapter: postgresql
   host: ip-10-151-14-176.ec2.internal
-  database: cursame-pruebas
+  database: cursame
   username: cursame
   password: r8o54q58
   encoding: unicode
