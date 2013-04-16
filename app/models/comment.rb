@@ -84,8 +84,8 @@ class Comment < ActiveRecord::Base
       else
         public = false
       end
-
-      wall = Wall.create(:publication => self, :network => self.network, :users => self.users,:public => public)
+      course = notification_kind["course"] ? [self] : nil
+      wall = Wall.create(:publication => self, :network => self.network, :users => self.users,:public => public, :courses=>course)
       course_or_group = commentable
       course_or_group.walls << wall
 
