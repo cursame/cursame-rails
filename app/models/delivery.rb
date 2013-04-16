@@ -25,11 +25,6 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :assignments, :assets
 
-  validate :validate_unique_course
-
-  def validate_tags
-    errors.add(:courses, "too much") if courses.length > 1
-  end
 
   acts_as_commentable
   #para los likes
