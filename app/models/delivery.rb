@@ -15,6 +15,9 @@ class Delivery < ActiveRecord::Base
   has_many :activities, as: :activitye
   belongs_to :network
 
+
+  validate :max_courses
+
   # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
 
   accepts_nested_attributes_for :areas_of_evaluations
@@ -100,6 +103,10 @@ class Delivery < ActiveRecord::Base
     end
   end
 
+
+  def max_courses
+    errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
+  end
 
 
 end
