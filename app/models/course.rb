@@ -8,7 +8,6 @@ class Course < ActiveRecord::Base
   # has_many :users, :through => :definer_users
   has_many :deliveries_courses
   has_many :deliveries, :through => :deliveries_courses
-  has_many :surveys
   has_many :assignments
   has_many :surveyings
   has_many :surveys, :through => :surveyings
@@ -17,9 +16,12 @@ class Course < ActiveRecord::Base
   has_many :discussions, :through => :discussions_coursess
   belongs_to :network
   has_many :comments
-  has_many :walls
+ 
   has_many :activities, as: :activitye
-  
+ 
+ #publications/walls
+  has_many :coursepublicationings
+  has_many :walls, :through => :coursepublicationings 
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
@@ -50,11 +52,9 @@ class Course < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
 
   after_create do
-    if self.public_status == 'public'
-      if (Wall.where('user_id' => self.id,'publication_type'=>'Course','publication_id'=>self.id).empty?)
-          Wall.create :user => nil, :publication => self, :network => self.network, :course => self, :public =>true
-      end
-      self.network.users.each do |u|
+    if self.public_status == 'public'      
+      Wall.create :users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true
+      self.users.each do |u|
         Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'        
       end
     end

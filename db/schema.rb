@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130411215402) do
+=======
+ActiveRecord::Schema.define(:version => 20130415185345) do
+>>>>>>> origin/development
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -108,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20130411215402) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -116,6 +119,13 @@ ActiveRecord::Schema.define(:version => 20130411215402) do
     t.integer  "question_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "coursepublicationings", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "wall_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -369,8 +379,8 @@ ActiveRecord::Schema.define(:version => 20130411215402) do
     t.integer  "user_id"
     t.integer  "poll_id"
     t.string   "state"
-    t.integer  "likes"
     t.boolean  "publish"
+    t.integer  "likes"
   end
 
   create_table "user_friends", :force => true do |t|
@@ -401,6 +411,13 @@ ActiveRecord::Schema.define(:version => 20130411215402) do
     t.integer  "survey_id"
     t.integer  "user_id"
     t.float    "result"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "userpublicationings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "wall_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -461,9 +478,11 @@ ActiveRecord::Schema.define(:version => 20130411215402) do
     t.string   "publication_type"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+<<<<<<< HEAD
     t.integer  "user_id"
+=======
+>>>>>>> origin/development
     t.integer  "network_id"
-    t.integer  "course_id"
     t.integer  "likes"
     t.boolean  "public",           :default => false
   end
