@@ -29,7 +29,7 @@ class Api::ApiController < ApplicationController
       publication.likes = publication.likes.size
       end
     end
-    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments]}}, :user, :course, :network]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments

@@ -85,7 +85,7 @@ class Comment < ActiveRecord::Base
         public = false
       end
 
-      wall = Wall.create(:publication => self, :network => self.network, :public => public)
+      wall = Wall.create(:publication => self, :network => self.network, :users => self.users,:public => public)
       course_or_group = commentable
       course_or_group.walls << wall
 
