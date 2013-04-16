@@ -52,22 +52,21 @@ class Delivery < ActiveRecord::Base
         # Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
 
         #Aqui se crean las notificaciones y los posts del wall :)
+        users =[]
         self.courses.each do |course|
+          users+= course.users
           course.members_in_courses.each do |u|
             user = User.find_by_id(u.user_id)
             if u.owner != true
               Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
               #se envia mail a cada uno de los miembros de curso
-              mail = Notifier.new_delivery_notification(member,self)
+              mail = Notifier.new_delivery_notification(user,self)
               mail.deliver
-            end
-              #validar que no exista doble publicacion para un usuario
-            if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Delivery',self.id))
-                Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
-            end
+            end              
           end
         end
-
+        #validar que no exista doble publicacion para un usuario
+        Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
   end
 
 
