@@ -2,6 +2,9 @@ class Group < ActiveRecord::Base
 
   has_many :members_in_group, :dependent => :destroy
 
+  has_many :grouppublicationings
+  has_many :wall, :through => :grouppublicationings
+
   belongs_to :user
 
   validates_presence_of :name
