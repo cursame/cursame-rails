@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
+    @user_show = true
     #current_friend
     #validate_friend
     #current_user_friends
@@ -47,10 +48,10 @@ class UsersController < ApplicationController
      assets = @delivery.assets.build
 
    #### manager courses
-    if request.xhr?      
+    if request.xhr?
       respond_to do |format|
         format.js
-      end           
+      end
     else
       respond_to do |format|
         format.html # show.html.erb
