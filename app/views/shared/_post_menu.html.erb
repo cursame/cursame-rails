@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 <div class="profile-post-box">
+<%if !@user_show %>
   <div id="post-forms">
     <div id="message-form-area"  class="message-form-area-style">
       <% permitted_to? :create, :comments do %>
@@ -43,4 +45,20 @@
     <!-- <a href="" class="event"><div class="border" ><div class="icon"></div></div>Evento</a> -->
     <%end%>
   </div>
+<%else%>
+   <div id="post-forms">
+     <div id="message-form-area"  class="message-form-area-style">
+       <% permitted_to? :create, :comments do %>
+       <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User'} %>
+       <%end%>
+     </div>
+   </div>
+
+   <div id="profile-form-options" class="post-btns-box">
+    <% permitted_to? :create, :comments do %>
+    <a href="#message-form-area" class="message-form-btn"><div class="border" ><div class="icon"></div></div>Comentario</a>
+    <%end%>
+
+   </div>
+<%end%>
 </div>
