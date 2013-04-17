@@ -15,12 +15,16 @@ class Delivery < ActiveRecord::Base
   has_many :activities, as: :activitye
   belongs_to :network
 
+
+  validate :max_courses
+
   # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
 
   accepts_nested_attributes_for :areas_of_evaluations
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :assignments, :assets
+
 
   acts_as_commentable
   #para los likes
@@ -48,7 +52,7 @@ class Delivery < ActiveRecord::Base
        #### se genera  el evento en el calendario
         Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
 
-        
+
         # Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
 
         #Aqui se crean las notificaciones y los posts del wall :)
@@ -60,9 +64,9 @@ class Delivery < ActiveRecord::Base
             if u.owner != true
               Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
               #se envia mail a cada uno de los miembros de curso
-              mail = Notifier.new_delivery_notification(user,self)
+              mail = Notifier.new_delivery_notification(u,self)
               mail.deliver
-            end              
+            end
           end
         end
         #validar que no exista doble publicacion para un usuario
@@ -94,6 +98,10 @@ class Delivery < ActiveRecord::Base
     end
   end
 
+
+  def max_courses
+    errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
+  end
 
 
 end

@@ -290,6 +290,12 @@ Cursame30Lb::Application.routes.draw do
     resources :user_surveys do
         resources :activities
     end
+    
+   ####### rutas para like en web
+   
+   get "/upvote/:id", :to => 'home#upvote', :as => :upvote
+   get "/downvote/:id", :to => 'home#downvote', :as => :downvote
+   
 
    ####### rutas de estandarizacion de eventos
 
