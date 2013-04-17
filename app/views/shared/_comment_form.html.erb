@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
     <%= text_area_tag "comment", nil, :rows => 4, :cols => 76, :placeholder=>'Comentario'  %>
     <%= hidden_field_tag 'commentable_id', commentable_id %>
@@ -5,5 +6,7 @@
     <div class="submit-area"></div>
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
     <%= submit_tag "Comentar",:class=>"btn btn-primary", :id => 'comment-post-form' %>
+    <%if !@user_show%>
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
+    <%end%>
 <% end %>
