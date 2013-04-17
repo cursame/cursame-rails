@@ -177,7 +177,10 @@ class ApplicationController < ActionController::Base
         #@activity.network_id = 1 #current_network.id
         @activity.save
   end
-
+  #### like_compare
+  
+  def compare_like
+  end
   def browser_active
     @data_integrate = request.env['HTTP_USER_AGENT']
     @user_agent = UserAgent.parse(@data_integrate)

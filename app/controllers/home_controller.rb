@@ -71,6 +71,24 @@ class HomeController < ApplicationController
           format.js
     end
   end
+  
+  def upvote
+      @publication = Wall.find(params[:id])
+      @publication.publication.liked_by current_user
+      respond_to do |format|
+       #format.html
+       format.js
+     end
+   end
+
+   def downvote
+     @publication = Wall.find(params[:id])
+     @publication.publication.downvote_from current_user
+     respond_to do |format|
+       #format.html
+       format.js
+     end
+   end
 
   protected
   def save_comment
