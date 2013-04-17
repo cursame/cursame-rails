@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       @search = params[:search]
       @page = params[:page].to_i
       @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+      
 
    ##### print assets
      @asset = Asset.new

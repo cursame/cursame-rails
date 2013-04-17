@@ -1,0 +1,4 @@
+$('#liked-<%= @publication.id%>').html('');
+$('#liked-<%= @publication.id%>').prepend("<div class='icon like'><%= escape_javascript(link_to image_tag('icons/heart-icon-child-comment.png'), upvote_path(@publication.id), :remote => true) %></div>");
+$('#counter-like-<%= @publication.id%>').html('');
+$('#counter-like-<%= @publication.id%>').html("<%= @publication.publication.votes.up.size %>");
