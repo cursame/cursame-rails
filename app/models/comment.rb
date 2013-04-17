@@ -78,11 +78,10 @@ class Comment < ActiveRecord::Base
       end
 
     elsif notification_kind["course"] || notification_kind["group"]
-      
+
       course = notification_kind["course"] ? [commentable] : nil
-      wall = Wall.create(:publication => self, :network => self.network, :users => commentable.users,:public => false, :courses=>course)
-      course_or_group = commentable
-      course_or_group.walls << wall
+
+      wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
 
       users.reject{ |user| user.id == self.user.id }
 
@@ -111,7 +110,6 @@ class Comment < ActiveRecord::Base
 
   def group_of_users(comment_type)
     case comment_type
-
     when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}

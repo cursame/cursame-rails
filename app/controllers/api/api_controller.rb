@@ -15,6 +15,8 @@ class Api::ApiController < ApplicationController
         @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
       @publications.each do |publication|
+        puts 'array de publicaciones'
+        puts publication.courses.to_yaml
         type = publication.publication_type
         id = publication.publication_id
         case type
@@ -26,8 +28,9 @@ class Api::ApiController < ApplicationController
             publication = Course.find(id)
           when 'Delivery'
             publication = Delivery.find(id)
-            publication.likes = publication.likes.size
         end
+        publication.likes = publication.likes.size
+        #publication.likes = publication.courses
       end
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end

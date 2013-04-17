@@ -40,28 +40,51 @@ class DiscussionsController < ApplicationController
   # POST /discussions
   # POST /discussions.json
   def create
-    @discussion = Discussion.new(params[:discussion])
-    @discussion.user = current_user 
-    @discussion.network = current_network  
+
+    @publication = []
 
     if params[:delivery]
-      courses = Course.find(params[:delivery][:course_ids])
-      @discussion.courses.push(courses)
-    end
-    
-    respond_to do |format|
-      if @discussion.save
-        @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
+      courses = params[:delivery]["course_ids"]
+
+      courses.each do |course|
+        @discussion = Discussion.new(params[:discussion])
+        @discussion.user = current_user
+        @discussion.network = current_network
+        @discussion.courses = [Course.find_by_id(course)]
+        @discussion.save
+
+        if @discussion.save then
+
+          @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
           @az = @discussion
           @typed = "Discussion"
           activation_activity
-        format.js
-        format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
-        format.json { render json: @discussion, status: :created, location: @discussion }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @discussion.errors, status: :unprocessable_entity }
+        end
       end
+
+
+    else
+      @discussion = Discussion.new(params[:discussion])
+      @discussion.user = current_user
+      @discussion.network = current_network
+
+      if @discussion.save then
+        @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+        @az = @discussion
+        @typed = "Discussion"
+        activation_activity
+      end
+    end
+
+    respond_to do |format|
+
+      format.js
+      #    format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
+      #    format.json { render json: @discussion, status: :created, location: @discussion }
+      # else
+      # format.html { render action: "new" }
+      #   format.json { render json: @discussion.errors, status: :unprocessable_entity }
+
     end
   end
 
