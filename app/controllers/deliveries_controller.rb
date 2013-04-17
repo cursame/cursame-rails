@@ -64,6 +64,7 @@ class DeliveriesController < ApplicationController
   # POST /deliveries.json
   def create
     courses = params[:delivery]["course_ids"]
+    @publication = []
 
     courses.each do |course|
 
@@ -73,7 +74,7 @@ class DeliveriesController < ApplicationController
       # @compart_assets = CompartAsset.new(params[:compart_assets])
       # @assignment = Assignment.new(params[:assignment])
 
-      @publication = []
+
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
