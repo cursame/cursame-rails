@@ -67,6 +67,7 @@ class DeliveriesController < ApplicationController
    # @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
    # @compart_assets = CompartAsset.new(params[:compart_assets])
    # @assignment = Assignment.new(params[:assignment])
+   
 
     respond_to do |format|
       if @delivery.save
@@ -81,11 +82,11 @@ class DeliveriesController < ApplicationController
             @delivery.assets.push(@asset)
           end
         end
-        format.json { render json: @delivery, status: :created, location: @delivery }
+        # format.json { render json: @delivery, status: :created, location: @delivery }
         format.js
 
       else
-        format.json { render json: @delivery.errors, status: :unprocessable_entity }
+        # format.json { render json: @delivery.errors, status: :unprocessable_entity }
         format.js
       end
     end
