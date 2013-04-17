@@ -51,7 +51,7 @@ class DiscussionsController < ApplicationController
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find_by_id(course)]
-        @discussion.save
+
 
         if @discussion.save then
 
