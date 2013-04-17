@@ -332,4 +332,18 @@ class User < ActiveRecord::Base
     end
     return true
   end
+
+  def publications
+    ids = []    
+    self.courses.each do |c|
+      ids.push(c.id)
+    end
+    
+    Wall.scoped(:include => {
+          :courses => :coursepublicationings,
+          :users => :userpublicationings,
+        }, 
+      # :conditions => ['userpublicationings.user_id = ? OR public = ?',self.id,true])
+      :conditions => ['userpublicationings.user_id = ? OR coursepublicationings.course_id in (?)',self.id,ids]).order('walls.created_at DESC')
+  end
 end

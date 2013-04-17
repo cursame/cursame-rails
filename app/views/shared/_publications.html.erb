@@ -96,19 +96,23 @@
 
       <!-- footer -->
       <div class="footer" id="footer-publication-<%= id %>">
-        <div class="icon like">&nbsp;&nbsp;</div>
-        <div class="labels"><%= post.comments.count %> Comentarios</div>
-        <% if publication.publication_type == 'Delivery'%>
-         <!--  <% if MembersInCourse.is_owner_by_delivery_and_user_id(post,current_user) %>
-           <div class="labels"><div id="open-close-lo<%= post.id %>"><a>Respuestas</a></div></div>
-          <%else%>
-            <div class="labels"><div id="open-close-<%= post.id %>"><a>Responder tarea</a></div></div>
-          <%end%>-->
-        <%else%>
-          <div class="labels">12 Likes</div>
-        <%end%>
+          <% @vote = publication.publication.votes.up.by_type(User).where(:voter_id => current_user.id)%>
+          <% @condition =  @vote[0]%>
+          <%if @condition == nil %>
+         <div id="liked-<%= publication.id%>">
+         <div class="icon like"><%= link_to image_tag('icons/heart-icon-child-comment.png'), upvote_path(publication.id), :remote => true%></div>
+         </div>
+         <%else%>
+         <div id="liked-<%= publication.id%>">
+         <div class="icon like"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_path(publication.id), :remote => true%></div>
+         </div>
+         <%end%>     
+          <div class="labels"><%= post.comments.count %> Comentarios</div>
+          <div class="labels"><p><div style="float:left" id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></div> <div style="float:left">Likes</div></div>
+        </div>
+        
       </div>
-    </div>
+
 
     <!-- area para comentar -->
     <div class="post-child-comment-box" style="display:block;" id="commentable-area-<%= publication.id %>">
