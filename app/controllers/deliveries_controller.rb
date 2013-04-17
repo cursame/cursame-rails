@@ -63,31 +63,36 @@ class DeliveriesController < ApplicationController
   # POST /deliveries
   # POST /deliveries.json
   def create
-    @delivery = Delivery.new(params[:delivery])
-   # @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
-   # @compart_assets = CompartAsset.new(params[:compart_assets])
-   # @assignment = Assignment.new(params[:assignment])
+    courses = params[:delivery]["course_ids"]
+    @publication = []
 
-    respond_to do |format|
+    courses.each do |course|
+
+      @delivery = Delivery.new(params[:delivery])
+      @delivery.courses = [Course.find_by_id(course)]
+      # @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
+      # @compart_assets = CompartAsset.new(params[:compart_assets])
+      # @assignment = Assignment.new(params[:assignment])
+
+
       if @delivery.save
         @typed = "Delivery"
         @az =  @delivery
-        @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+        @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))
         activation_activity
-         #actualizamos los assets del delivery
+        #actualizamos los assets del delivery
         if(params[:files])
           params[:files].each do |asset_id|
             @asset = Asset.find(asset_id)
             @delivery.assets.push(@asset)
           end
         end
-        format.json { render json: @delivery, status: :created, location: @delivery }
-        format.js
-
-      else
-        format.json { render json: @delivery.errors, status: :unprocessable_entity }
-        format.js
       end
+    end
+
+    respond_to do |format|
+      # format.json { render json: @delivery, status: :created, location: @delivery }
+      format.js
     end
   end
 
