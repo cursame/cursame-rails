@@ -8,9 +8,9 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        # @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-        @course = Course.find(params[:publicacionId])
-        @publications = Wall.where("course_id = ? AND publication_type != ?", @course, 'Course').order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        # @course = Course.find(params[:publicacionId])
+        # @publications = Wall.where("course_id = ? AND publication_type != ?", @course, 'Course').order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
         @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
@@ -29,7 +29,7 @@ class Api::ApiController < ApplicationController
       publication.likes = publication.likes.size
       end
     end
-    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments,:user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
