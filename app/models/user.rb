@@ -106,13 +106,15 @@ class User < ActiveRecord::Base
 
   def devise_mailer_subdomain
     @permissionings = self.permissionings.last
-     if @permissionings  == nil
-        @network=Network.last
-        @network.subdomain
-     else
-     @network = Network.find(@permissionings.network_id)
+     # if @permissionings  == nil
+     #    @network=Network.last
+     #    @network.subdomain
+     # else
+     # @network = Network.find(@permissionings.network_id)
+     # @network.subdomain
+     # end
+     @network = Network.find(6)
      @network.subdomain
-     end
   
   end
   
