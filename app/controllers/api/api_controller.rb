@@ -10,7 +10,8 @@ class Api::ApiController < ApplicationController
       when 'Course'
         #@publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
         @course = Course.find(params[:publicacionId])
-        @publications = @course.walls.where("publication_type != ?", 'Course').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @course.walls.where("publication_type != ?", 'Course')
+        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
         @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
