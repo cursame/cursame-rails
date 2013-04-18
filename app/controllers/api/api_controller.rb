@@ -58,24 +58,35 @@ class Api::ApiController < ApplicationController
     @user_notifications = Array.new
     notifications.each do |notification|
       user = notification.user
+      owner = nil
       notificator = notification.notificator
       case notification.kind
         when 'user_comment_on_network'
           cretator = notification.notificator.user
+          owner = notification.notificator.commentable
         when 'user_comment_on_course'
           cretator = notification.notificator.user
+          owner = notification.notificator.commentable
         when 'new_delivery_on_course'
           cretator = notification.notificator.user
+          owner = notification.notificator.course[0]
           course = Course.last #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
         when 'new_public_course_on_network'
           cretator = notification.notificator.user
-        when 'new_survey_on_course'
+        # when 'new_survey_on_course'
+        when 'user_comment_on_comment'
+          cretator = notification.notificator.user
+          owner = notification.notificator.commentable
+        when 'user_comment_on_user'
+          cretator = notification.notificator.user
+          owner = notification.notificator.commentable
       end
       notification.notificator_type = {
           :creator => cretator,
           :course => course,
           :notificator => notificator,
           :user => user,
+          :owner => owner
       }
       @user_notifications.push(notification)
     end
