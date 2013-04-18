@@ -113,6 +113,7 @@ class User < ActiveRecord::Base
      # @network = Network.find(@permissionings.network_id)
      # @network.subdomain
      # end
+     puts Network.last.to_yaml
      @network = Network.find(6)
      @network.subdomain
   
