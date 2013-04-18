@@ -315,7 +315,7 @@ task :add_pasteje_sec => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => esp3a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end 
   #dar de alta usuarios 3b
-    alumnos3a.each do |alumno|
+    alumnos3b.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
       MembersInCourse.create :user_id => user.id, :course_id => hmb.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
