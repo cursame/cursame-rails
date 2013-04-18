@@ -81,15 +81,17 @@ class NetworksController < ApplicationController
     @network = Network.new(params[:network])
     @user = User.new(params[:user])
     @call_user = @network.users.last
+     
     respond_to do |format|
       if @network.save
-         @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
-         puts "----------------------"
-         puts @permissioning
-         puts "----------------------"
-         @permissioning.role_id = "1"
-         @permissioning.save
+        
          
+            @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
+            puts "----------------------"
+            puts @permissioning
+            puts "----------------------"
+             @permissioning.role_id = "1"
+             @permissioning.save
          if  @permissioning.save
            puts "permisos guardados correctamente"
          else
