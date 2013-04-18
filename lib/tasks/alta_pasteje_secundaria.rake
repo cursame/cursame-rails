@@ -141,182 +141,188 @@ task :add_pasteje_sec => :environment do
         { :first_name => 'CUITLAHUAC MOCTEZUMA', :last_name => 'SAMANO PERFECTO', :email => 'info+213b@cursa.me',:password => 'q5NrZ6NmH0', :group => 'Tercero B' },
         { :first_name => 'GUSTAVO ', :last_name => 'VENTURA REYES', :email => 'info+223b@cursa.me',:password => 'eys8w5vyQ8', :group => 'Tercero B' },
     ]
+    #network_id
+    network_id = 1
 
+    puts '-----------Cursos-------------'
 
     #cursos primeros
-    geoa = Course.create(:title => "Geografia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    geob = Course.create(:title => "Geografia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    geoa = Course.create(:title => "Geografia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    geob = Course.create(:title => "Geografia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    mat1a = Course.create(:title => "Matematicas 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    mat1b = Course.create(:title => "Matematicas 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    mat1a = Course.create(:title => "Matematicas 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    mat1b = Course.create(:title => "Matematicas 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    bioa = Course.create(:title => "Biologia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    biob = Course.create(:title => "Biologia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    bioa = Course.create(:title => "Biologia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    biob = Course.create(:title => "Biologia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    esp1a = Course.create(:title => "Espanol 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    esp1b = Course.create(:title => "Espanol 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    esp1a = Course.create(:title => "Espanol 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    esp1b = Course.create(:title => "Espanol 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
     #cursos segundo
-    hua = Course.create(:title => "Historia Universal A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    hub = Course.create(:title => "Historia Universal B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    hua = Course.create(:title => "Historia Universal A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    hub = Course.create(:title => "Historia Universal B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    mat2a = Course.create(:title => "Matematicas 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    mat2b = Course.create(:title => "Matematicas 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    mat2a = Course.create(:title => "Matematicas 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    mat2b = Course.create(:title => "Matematicas 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
  
-    fisa = Course.create(:title => "Fisica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    fisb = Course.create(:title => "Fisica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    fisa = Course.create(:title => "Fisica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    fisb = Course.create(:title => "Fisica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    fce2a = Course.create(:title => "Formacion Civica y Etica 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    fce2b = Course.create(:title => "Formacion Civica y Etica 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    fce2a = Course.create(:title => "Formacion Civica y Etica 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    fce2b = Course.create(:title => "Formacion Civica y Etica 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    esp2a = Course.create(:title => "Espanol 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    esp2b = Course.create(:title => "Espanol 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    esp2a = Course.create(:title => "Espanol 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    esp2b = Course.create(:title => "Espanol 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
     #cursos tercero
-    hma = Course.create(:title => "Historia de Mexico A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    hmb = Course.create(:title => "Historia de Mexico B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    hma = Course.create(:title => "Historia de Mexico A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    hmb = Course.create(:title => "Historia de Mexico B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    mat3a = Course.create(:title => "Matematicas 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    mat3b = Course.create(:title => "Matematicas 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    mat3a = Course.create(:title => "Matematicas 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    mat3b = Course.create(:title => "Matematicas 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    quima = Course.create(:title => "Quimica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    quimb = Course.create(:title => "Quimica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    quima = Course.create(:title => "Quimica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    quimb = Course.create(:title => "Quimica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
-    fce3a = Course.create(:title => "Formacion Civica y Etica 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    fce3b = Course.create(:title => "Formacion Civica y Etica 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    fce3a = Course.create(:title => "Formacion Civica y Etica 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    fce3b = Course.create(:title => "Formacion Civica y Etica 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
 
-    esp3a = Course.create(:title => "Espanol 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
-    esp3b = Course.create(:title => "Espanol 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => "2")
+    esp3a = Course.create(:title => "Espanol 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    esp3b = Course.create(:title => "Espanol 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
     
+    puts '-----------Maestros-------------'
   #maestro geografia
       mageo = { :first_name => 'Benito', :last_name => 'Acosta Guerrero', :email => 'benoacosta@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => geoa.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => geob.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => geoa.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => geob.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
   #maestro mat
       mamat =  { :first_name => 'Ismael', :last_name => 'Bernal Matoas', :email => 'ismael.bernal.1963@gmail.com', :password => 'ytWrwi9t4A' } 
       user = User.create :first_name => mamat[:first_name], :last_name => mamat[:last_name], :email => mamat[:email], :password => mamat[:password], :personal_url => "#{mamat[:first_name]}#{mamat[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => mat1a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat1b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat2a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat2b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat3a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat3b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => mat1a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat1b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat2a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat2b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat3a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat3b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
  
  #maestro biologia
       mabio = { :first_name => 'Lucero', :last_name => 'Cuevas Gomez', :email => 'lucero.cuevas.666@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mabio[:first_name], :last_name => mabio[:last_name], :email => mabio[:email], :password => mabio[:password], :personal_url => "#{mabio[:first_name]}#{mabio[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => bioa.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => biob.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => bioa.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => biob.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
  #maestro esp
       maesp = { :first_name => 'Yuniz G', :last_name => 'Gil Nava', :email => 'yuguniz@hotmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => maesp[:first_name], :last_name => maesp[:last_name], :email => maesp[:email], :password => maesp[:password], :personal_url => "#{maesp[:first_name]}#{maesp[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => esp1a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp1b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp2a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp2b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp3a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp3b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => esp1a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp1b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp2a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp2b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp3a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp3b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
   
   #maestro historia U
       mahu = { :first_name => 'Graciela', :last_name => 'Rodriguez', :email => 'america_aleicarg@hotmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mahu[:first_name], :last_name => mahu[:last_name], :email => mahu[:email], :password => mahu[:password], :personal_url => "#{mahu[:first_name]}#{mahu[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => hua.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => hub.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => hua.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => hub.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
  
  #maestro fisica
       mafis = { :first_name => 'Miguel Angel', :last_name => 'Rodriguez', :email => 'miguelangelpasteje@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mafis[:first_name], :last_name => mafis[:last_name], :email => mafis[:email], :password => mafis[:password], :personal_url => "#{mafis[:first_name]}#{mafis[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => fisa.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fisb.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => fisa.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fisb.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
  #maestro Formacion Civica y Etica
       mafce = { :first_name => 'Minerva', :last_name => 'Amado Hernandez', :email => 'miniamahe@yahoo.com', :password => 'miniamahe@yahoo.com' }
       user = User.create :first_name => mafce[:first_name], :last_name => mafce[:last_name], :email => mafce[:email], :password => mafce[:password], :personal_url => "#{mafce[:first_name]}#{mafce[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => fce2a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce2b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce3a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce3b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => fce2a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce2b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce3a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce3b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
   
   #maestro Historia de mexico
       mahm = { :first_name => 'Benito', :last_name => 'Acosta Guerrero', :email => 'benoacosta@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mahm[:first_name], :last_name => mahm[:last_name], :email => mahm[:email], :password => mahm[:password], :personal_url => "#{mahm[:first_name]}#{mahm[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => hma.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => hmb.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => hma.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => hmb.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
  #maestro quimica
       maq = { :first_name => 'Lucero', :last_name => 'Cuevas Gomez', :email => 'lucero.cuevas.666@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => maq[:first_name], :last_name => maq[:last_name], :email => maq[:email], :password => maq[:password], :personal_url => "#{maq[:first_name]}#{maq[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => quima.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => quimb.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => quima.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => quimb.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
   
+  puts '-----------Maestros-------------'
+
   #dar de alta usuarios 1a
     alumnos1a.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => geoa.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat1a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => bioa.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp1a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => geoa.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat1a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => bioa.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp1a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end 
 
   #dar de alta usuarios 1b
     alumnos1b.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => geob.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat1b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => biob.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp1b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => geob.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => biob.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end
 
   #dar de alta usuarios 2a
     alumnos2a.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => hua.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat2a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fisa.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce2a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp2a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => hua.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat2a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fisa.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce2a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp2a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end 
 
   #dar de alta usuarios 2b
     alumnos2a.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => hub.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat2b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fisb.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce2b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp2b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => hub.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat2b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fisb.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce2b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp2b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end 
 
   #dar de alta usuarios 3a
     alumnos3a.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => hma.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat3a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => quima.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce3a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp3a.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => hma.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat3a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => quima.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce3a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp3a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end 
   #dar de alta usuarios 3b
     alumnos3a.each do |alumno|
       user = User.create :first_name => alumno[:first_name], :last_name => alumno[:last_name], :email => alumno[:email], :password => alumno[:password], :personal_url => "#{alumno[:first_name]}#{alumno[:last_name]}".split.join
-      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => '2'
-      MembersInCourse.create :user_id => user.id, :course_id => hmb.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => mat3b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => quimb.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => fce3b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
-      MembersInCourse.create :user_id => user.id, :course_id => esp3b.id, :accepted => true, :owner => false, :network_id => '2', :active_status => true
+      Permissioning.create :user_id => user.id, :role_id => '2', :network_id => network_id
+      MembersInCourse.create :user_id => user.id, :course_id => hmb.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => mat3b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => quimb.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => fce3b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => esp3b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end     
 end

@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
 
   def devise_mailer_subdomain
      @permissionings = self.permissionings.last
-     @network = Network.find(@permissionings.network_id)
+     @network = Network.find(1)
      @network.subdomain
   end
   
