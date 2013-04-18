@@ -76,7 +76,7 @@ class Comment < ActiveRecord::Base
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
-
+      return
     elsif notification_kind["course"] || notification_kind["group"]
 
       course = notification_kind["course"] ? [commentable] : nil
@@ -88,35 +88,46 @@ class Comment < ActiveRecord::Base
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
-
+      return
     elsif notification_kind["discussion"]
 
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
-
-    elsif notification_kind["delivery"] || notification_kind["comment"] || notification_kind["user"]
+      return
+    elsif notification_kind["delivery"] || notification_kind["on_comment"]
 
       users.reject { |user| user.id == self.user.id }
 
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
-    else
+      return
+    elsif notification_kind["on_user"]
 
+      Wall.create(:publication => self, :network => self.network, :users => users, :public => false)
+      Notification.create(:user => users.first, :notificator => self, :kind => notification_kind)
+
+      return
+
+    else
     end
 
   end
 
   def group_of_users(comment_type)
     case comment_type
-
     when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
 
       # Falta agregar cuando el commentable_type, es un usuario
+
+    when "User"
+      users = [commentable]
+      hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+      return hash
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]

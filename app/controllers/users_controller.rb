@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
 
@@ -8,6 +7,7 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
+    @user_show = true
     #current_friend
     #validate_friend
     #current_user_friends
@@ -40,18 +40,18 @@ class UsersController < ApplicationController
       @id = params[:id]
       @search = params[:search]
       @page = params[:page].to_i
-      @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      
-
-   ##### print assets
+      # @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+      # @wall = Wall.where(:users => [@user_l.id],:public => true).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+        @wall = @user_l.publications.paginate(:per_page => 10, :page => params[:page])  
+     ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
 
    #### manager courses
-    if request.xhr?      
+    if request.xhr?
       respond_to do |format|
         format.js
-      end           
+      end
     else
       respond_to do |format|
         format.html # show.html.erb

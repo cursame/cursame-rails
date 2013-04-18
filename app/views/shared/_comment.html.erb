@@ -2,7 +2,20 @@
 <div id="more-comments-<%= comment.id  %>">cargas mas comentarios</div>
 -->
 <div id="comment_<%= comment.id %>" class="child-comment-box">
-    <div class="heart-icon"></div>
+      <% @vote_comment = comment.votes.up.by_type(User).where(:voter_id => current_user.id)%>
+      <% @condition_comment =  @vote_comment[0]%>
+     <%if @condition_comment == nil %>
+       <div id="liked-c-<%= comment.id%>">
+       <div class="heart-icon"><%= link_to image_tag('icons/heart-icon-child-comment.png'), upvote_comment_path(comment.id), :remote => true%></div>
+       </div>
+      
+       <%else%>
+       <div id="liked-c-<%= comment.id%>">
+       <div class="heart-icon"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_comment_path(comment.id), :remote => true%></div>
+       </div>
+       
+       <%end%>
+     <div class="labels">  <p><div style="float:left" id="counter-like-c<%= comment.id%>"><%= comment.votes.up.size %></div></div>
     <a class="avatar-child-comment" href="#">
     	<img class="media-object" src="<%= comment.user.avatar%>" width ="30px">
     </a>        
@@ -11,4 +24,5 @@
         <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
         <div class="comment"><%= comment.comment_html %></div>
     </div>
+   
 </div>
