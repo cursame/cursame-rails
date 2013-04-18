@@ -13,10 +13,10 @@
     content = post.comment_html
     ico =''
   when 'Course'
-    avatar = post.avatar.modern
-    course_avatarxx = post.course_avatarxx
+    avatar = post.avatar.modern 
+    course_avatarxx = post.course_avatarxx 
     name = post.title
-    content = post.silabus
+    content = post.silabus 
     ico = ''
   when 'Discussion'
     avatar = post.user.avatar.modern
@@ -61,11 +61,11 @@
         <div class="avatar">
         <% case type %>
         <% when 'Course'%>
-          <%= link_to image_tag(avatar,{:class => "avatar-mini"}), course_path(post.id) if ( !avatar.blank?)%>
-         <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank?)%>
+          <%= link_to image_tag(avatar,{:class => "avatar-mini"}), course_path(post.id) if ( !avatar.blank? && !nil)%>
+         <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank? || nil)%>
         <%else%>
-        <%= link_to image_tag(avatar,{:class => "avatar-mini"}), show_user_path(personal_url) if ( !avatar.blank?)%>
-        <%= link_to image_tag(image_avatarxx,{:class => "avatar-mini"}), show_user_path(personal_url)if (avatar.blank?)%>
+        <%= link_to image_tag(avatar,{:class => "avatar-mini"}), show_user_path(personal_url) if ( !avatar.blank?  && !nil)%>
+        <%= link_to image_tag(image_avatarxx,{:class => "avatar-mini"}), show_user_path(personal_url)if (avatar.blank? || nil)%>
         <%end%>
         </div>
 
