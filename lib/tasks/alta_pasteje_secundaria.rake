@@ -142,7 +142,7 @@ task :add_pasteje_sec => :environment do
         { :first_name => 'GUSTAVO ', :last_name => 'VENTURA REYES', :email => 'info+223b@cursa.me',:password => 'eys8w5vyQ8', :group => 'Tercero B' },
     ]
     #network_id
-    network_id = 1
+    network_id = 6
 
     puts '-----------Cursos-------------'
 
