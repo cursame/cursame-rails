@@ -147,49 +147,49 @@ task :add_pasteje_sec => :environment do
     puts '-----------Cursos-------------'
 
     #cursos primeros
-    geoa = Course.create(:title => "Geografia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    geob = Course.create(:title => "Geografia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    geoa = Course.create(:title => "Geografia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    geob = Course.create(:title => "Geografia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    mat1a = Course.create(:title => "Matematicas 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    mat1b = Course.create(:title => "Matematicas 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    mat1a = Course.create(:title => "Matematicas 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    mat1b = Course.create(:title => "Matematicas 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    bioa = Course.create(:title => "Biologia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    biob = Course.create(:title => "Biologia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    bioa = Course.create(:title => "Biologia A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    biob = Course.create(:title => "Biologia B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    esp1a = Course.create(:title => "Espanol 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    esp1b = Course.create(:title => "Espanol 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    esp1a = Course.create(:title => "Espanol 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    esp1b = Course.create(:title => "Espanol 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
     #cursos segundo
-    hua = Course.create(:title => "Historia Universal A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    hub = Course.create(:title => "Historia Universal B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    hua = Course.create(:title => "Historia Universal A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    hub = Course.create(:title => "Historia Universal B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    mat2a = Course.create(:title => "Matematicas 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    mat2b = Course.create(:title => "Matematicas 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    mat2a = Course.create(:title => "Matematicas 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    mat2b = Course.create(:title => "Matematicas 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
  
-    fisa = Course.create(:title => "Fisica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    fisb = Course.create(:title => "Fisica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    fisa = Course.create(:title => "Fisica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    fisb = Course.create(:title => "Fisica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    fce2a = Course.create(:title => "Formacion Civica y Etica 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    fce2b = Course.create(:title => "Formacion Civica y Etica 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    fce2a = Course.create(:title => "Formacion Civica y Etica 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    fce2b = Course.create(:title => "Formacion Civica y Etica 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    esp2a = Course.create(:title => "Espanol 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    esp2b = Course.create(:title => "Espanol 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    esp2a = Course.create(:title => "Espanol 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    esp2b = Course.create(:title => "Espanol 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
     #cursos tercero
-    hma = Course.create(:title => "Historia de Mexico A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    hmb = Course.create(:title => "Historia de Mexico B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    hma = Course.create(:title => "Historia de Mexico A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    hmb = Course.create(:title => "Historia de Mexico B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    mat3a = Course.create(:title => "Matematicas 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    mat3b = Course.create(:title => "Matematicas 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    mat3a = Course.create(:title => "Matematicas 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    mat3b = Course.create(:title => "Matematicas 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    quima = Course.create(:title => "Quimica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    quimb = Course.create(:title => "Quimica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    quima = Course.create(:title => "Quimica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    quimb = Course.create(:title => "Quimica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
-    fce3a = Course.create(:title => "Formacion Civica y Etica 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    fce3b = Course.create(:title => "Formacion Civica y Etica 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    fce3a = Course.create(:title => "Formacion Civica y Etica 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    fce3b = Course.create(:title => "Formacion Civica y Etica 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
 
-    esp3a = Course.create(:title => "Espanol 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
-    esp3b = Course.create(:title => "Espanol 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "public", :network_id => network_id)
+    esp3a = Course.create(:title => "Espanol 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
+    esp3b = Course.create(:title => "Espanol 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     
     puts '-----------Maestros-------------'
   #maestro geografia
@@ -260,7 +260,6 @@ task :add_pasteje_sec => :environment do
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
       MembersInCourse.create :user_id => user.id, :course_id => quima.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
       MembersInCourse.create :user_id => user.id, :course_id => quimb.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
-  
   puts '-----------Maestros-------------'
 
   #dar de alta usuarios 1a
