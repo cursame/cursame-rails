@@ -31,7 +31,6 @@ class Api::ApiController < ApplicationController
             publication = Delivery.find(id)
         end
         publication.likes = publication.likes.size
-        #publication.likes = publication.courses
       end
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end

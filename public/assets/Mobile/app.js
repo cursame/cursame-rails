@@ -70249,14 +70249,14 @@ Ext.define('Cursame.controller.tablet.Main', {
         var me = this,
             course, user, publication, userName,avatar;
         publication = record.get('publication');
-        course = record.get('courses');
+        course = record.get('course');
         user = record.get('publication').user;
         userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
         if (course) {
-            publication.wall = course[0].coverphoto.url ? Cursame.URL + course[0].avatar.url : Cursame.URL + '/assets/imagecoursex.png';
-            publication.coverphoto = course[0].coverphoto.url;
-            publication.avatar = course[0].avatar.url ? Cursame.URL + course[0].avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-            publication.courseName = course[0].title;
+            publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
+            publication.coverphoto = course.coverphoto.url;
+            publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+            publication.courseName = course.title; //@todo poner bien el titulo ...
             publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
@@ -71363,14 +71363,14 @@ Ext.define('Cursame.controller.phone.Main', {
         var me = this,
             course, user, publication, userName,avatar;
         publication = record.get('publication');
-        course = record.get('courses');
+        course = record.get('course');
         user = record.get('publication').user;
         userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
         if (course) {
-            publication.wall = course[0].coverphoto.url ? Cursame.URL + course[0].avatar.url : Cursame.URL + '/assets/imagecoursex.png';
-            publication.coverphoto = course[0].coverphoto.url;
-            publication.avatar = course[0].avatar.url ? Cursame.URL + course[0].avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-            publication.courseName = course[0].title; //@todo poner bien el titulo ...
+            publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
+            publication.coverphoto = course.coverphoto.url;
+            publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+            publication.courseName = course.title; //@todo poner bien el titulo ...
             publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
@@ -72134,20 +72134,20 @@ Ext.define('Cursame.model.Publication', {
                     switch (r.get('publication_type')) {
                         case 'discussion':
                             title = 'Discusión nueva ';
-                            title += courses ? 'en el curso de <b>' + courses.title + '</b>' : '<b>en la red' + '</b>';
+                            title += courses ? 'en el curso de <b>' + course.title + '</b>' : '<b>en la red' + '</b>';
                             break;
                         case 'delivery':
-                            title = 'Se ha creado una tarea en el curso <b>' + courses.title + '</b>';
+                            title = 'Se ha creado una tarea en el curso <b>' + course.title + '</b>';
                             break;
                         case 'comment':
                             title = 'Comentario  ';
-                            title += courses ? 'en el curso de <b>' + courses.title + '</b>' : '<b>en la red' + '</b>';
+                            title += courses ? 'en el curso de <b>' + course.title + '</b>' : '<b>en la red' + '</b>';
                             break;
                         case 'course':
-                            title = 'Curso nuevo en la red <b>' + courses.title + '</b>';
+                            title = 'Curso nuevo en la red <b>' + course.title + '</b>';
                             break;
                         case 'survey':
-                            title = 'Se ha creado un cuestionario en el curso <b>' + courses.title + '</b>';
+                            title = 'Se ha creado un cuestionario en el curso <b>' + course.title + '</b>';
                             break;
                     }
                     return title;
