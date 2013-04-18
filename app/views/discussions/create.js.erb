@@ -1,5 +1,5 @@
 resetForm($('#new_discussion'));
-$('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
+$('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication}))%>');
 $('#timeline').effect("highlight", {}, 1000);
 $('#notice').append('Se ha creado una discusión')
 setTimeout(function() {

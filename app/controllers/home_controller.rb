@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!
@@ -49,7 +48,7 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'  || @comment.commentable_type == 'Course'
+      if @comment.commentable_type == 'Network'  || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
@@ -71,6 +70,42 @@ class HomeController < ApplicationController
           format.js
     end
   end
+  
+  def upvote
+      @publication = Wall.find(params[:id])
+      @publication.publication.liked_by current_user
+      respond_to do |format|
+       #format.html
+       format.js
+     end
+   end
+
+   def downvote
+     @publication = Wall.find(params[:id])
+     @publication.publication.downvote_from current_user
+     respond_to do |format|
+       #format.html
+       format.js
+     end
+   end
+   
+   def upvote_comment
+        @publication = Comment.find(params[:id])
+        @publication.liked_by current_user
+        respond_to do |format|
+         #format.html
+         format.js
+       end
+     end
+
+     def downvote_comment
+       @publication = Comment.find(params[:id])
+       @publication.downvote_from current_user
+       respond_to do |format|
+         #format.html
+         format.js
+       end
+     end
 
   protected
   def save_comment

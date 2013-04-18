@@ -40,8 +40,12 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :friendships, :dependent => :destroy
   has_many :survey, :dependent => :destroy
-  has_many :walls, :dependent => :destroy
   has_many :activities
+
+  #publications/walls
+  has_many :userpublicationings
+  has_many :walls, :through => :userpublicationings
+  
 
   has_one :settings_teacher, :dependent => :destroy
 
@@ -327,5 +331,19 @@ class User < ActiveRecord::Base
       end
     end
     return true
+  end
+
+  def publications
+    ids = []    
+    self.courses.each do |c|
+      ids.push(c.id)
+    end
+    
+    Wall.scoped(:include => {
+          :courses => :coursepublicationings,
+          :users => :userpublicationings,
+        }, 
+      # :conditions => ['userpublicationings.user_id = ? OR public = ?',self.id,true])
+      :conditions => ['userpublicationings.user_id = ? OR coursepublicationings.course_id in (?)',self.id,ids]).order('walls.created_at DESC')
   end
 end

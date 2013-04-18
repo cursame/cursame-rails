@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class GroupsController < ApplicationController
 
   # GET /groups/1

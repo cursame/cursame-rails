@@ -4,8 +4,8 @@
      
      <div class="box_comunity">
          <div class="image_acces_comunity">
-             <%= image_tag(user.avatar.profile) if (!user.avatar.blank?)%>
-             <%= image_tag(user.image_avatarx) if  (user.avatar.blank?)%>
+             <%= link_to image_tag(user.avatar.profile), show_user_path(user.personal_url) if (!user.avatar.blank?)%>
+             <%= link_to image_tag(user.image_avatarx), show_user_path(user.personal_url) if  (user.avatar.blank?)%>
          </div><!-- ends image_access -->
          
      <div class="place-hldr">

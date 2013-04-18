@@ -8,15 +8,31 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        @publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        #@publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @course = Course.find(params[:publicacionId])
+        @publications = @course.walls.where("publication_type != ?", 'Course')
+        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @network.walls.order('created_at DESC').group('publication_id,publication_type,id').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-
-    @publications.each do |publication|
-      publication.likes = publication.likes.size
-    end
-    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments]}}, :user, :course, :network]), :count => @publications.count()}, :callback => params[:callback]
+      @publications.each do |publication|
+        puts 'array de publicaciones'
+        puts publication.courses.to_yaml
+        type = publication.publication_type
+        id = publication.publication_id
+        case type
+          when 'Comment'
+            publication = Comment.find(id)
+          when 'Discussion'
+            publication = Discussion.find(id)
+          when 'Course'
+            publication = Course.find(id)
+          when 'Delivery'
+            publication = Delivery.find(id)
+        end
+        publication.likes = publication.likes.size
+      end
+    render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def comments
@@ -45,24 +61,36 @@ class Api::ApiController < ApplicationController
     @user_notifications = Array.new
     notifications.each do |notification|
       user = notification.user
+      owner = nil
       notificator = notification.notificator
       case notification.kind
         when 'user_comment_on_network'
           cretator = notification.notificator.user
+          owner = notification.notificator.commentable
         when 'user_comment_on_course'
           cretator = notification.notificator.user
+          owner = notification.notificator.commentable
+          course = Course.find(notification.notificator.commentable_id)
         when 'new_delivery_on_course'
           cretator = notification.notificator.user
-          course = Course.last #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
+          owner = notification.notificator.course[0]
+          course = Course.find(notification.notificator.commentable_id) #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
         when 'new_public_course_on_network'
           cretator = notification.notificator.user
-        when 'new_survey_on_course'
+        # when 'new_survey_on_course'
+        when 'user_comment_on_comment'
+          cretator = notification.notificator.user
+          owner = notification.notificator.commentable
+        when 'user_comment_on_user'
+          cretator = notification.notificator.user
+          owner = notification.notificator.commentable
       end
       notification.notificator_type = {
           :creator => cretator,
           :course => course,
           :notificator => notificator,
           :user => user,
+          :owner => owner
       }
       @user_notifications.push(notification)
     end

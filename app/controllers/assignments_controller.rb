@@ -84,7 +84,6 @@ class AssignmentsController < ApplicationController
 
                     @typed = "Assignment"
                     @az =  @assignment
-
                   ####### despues de guardar se crea la notificación de actividad con geo localización
                     activation_activity
 
@@ -101,7 +100,10 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find(params[:id])
     
-    respond_to do |format|
+    
+    if @assignment.response_to_the_evaluations.count != 0
+      puts "con rubros"
+      
       if @assignment.update_attributes(params[:assignment])
          @assignment.response_to_the_evaluations.each do |docificate|
            ###### se actualiza el valor del rubro con respecto a la califiación
@@ -119,9 +121,22 @@ class AssignmentsController < ApplicationController
                docificate.save
                puts (docificate.rub_calification).to_f
          end
-        @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
+          @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
           @assignment.accomplishment =  @sum_value_to_accomplishment
           @assignment.save
+       end
+     else 
+       puts "sin rubros"
+       puts (params[:assignment])[:rub_calification].to_f
+       @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
+       @assignment.accomplishment = @assignment.rub_calification
+       @assignment.save
+     end
+     
+       
+       
+      respond_to do |format|
+      if @assignment.save
         format.html { redirect_to :back, notice: 'Assignment was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,6 +1,20 @@
 <div class="super-admin-header">Actividades del sistema
     <div class="counter-marquer"><center><%= @ac %></center></div>
 </div>
+<p><%= "Tareas #{@ac_delivery}"%> <%= "Entregas de tareas #{@ac_assignment}"%></p>
+
+<p><%= "Exámenes #{@ac_survey}"%> <%= "Entregas de examenes #{@ac_user_survey}"%></p>
+
+<p><%= "Cursos #{@ac_courses}"%> <%= "Comentarios #{@ac_comment}"%></p>
+
+<p><%= "Promedio de calificación por tareas #{@acomplishment_sum} / #{@ac_delivery} =  #{ number_with_precision(@prompt_calification_by_delivery, :pression => 2 )}"%></p>
+
+<p><%= "Promedio de calificación por survey #{@result_sum} / #{@ac_survey} =   #{ number_with_precision(@prompt_calification_by_survey, :pression => 2 )}"%></p>
+
+<p><%= "Promedio de calificación por usuario #{@sum_promts} / #{@users_count} =   #{number_with_precision( @user_promt, :pression => 2 )}"%></p>
+
+
+
 <%= form_tag superadmnin_activities_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Actividades por usuario o titulo' %>
@@ -10,8 +24,27 @@
 <div class="super-admin-descriptions"> Las actividades del sistema están geo localizadas</div></br></br></br>
 <% @activities.each do |activity|%>
  <div style="float:left; color:#fff; height:190px; margin-left:10px; margin-top:25px; padding:5px; background-color:#000;">
- Título:<%= activity.title %></br>
- Tipo de Actividad: <%= activity.activitye_type %></br>
+ Título:<p><%= activity.title %></p></br>
+ Tipo de Actividad: <%=  activity.activitye_type %></br>
+ <% if activity.activitye_type =="Delivery" %>
+ Promedio:<% @actividad = activity.activitye %>
+             <% if @actividad != nil  %>
+                 <% @assignments =  @actividad.assignments %>
+                 <%= ((@assignments.sum(:accomplishment)).to_f/(@assignments.count).to_f).to_f %> <%"(#{@assignments.count})"%></br>
+            <%else%>
+                 <%= "sin actividades"%></br>
+            <%end%>
+ <%end%>
+ 
+ <% if activity.activitye_type == "Survey" %>
+  Promedio:<% @actividad = activity.activitye %>
+              <% if @actividad != nil %>
+                  <% @surveys =  @actividad.user_surveys %>
+                  <%= ((@surveys.sum(:result)).to_f/(@surveys.count).to_f).to_f %><%"(#{@surveys.count})"%></br>
+             <%else%>
+                  <%= "sin actividades"%></br>
+             <%end%>
+  <%end%>
  Ip: <%= activity.ip_address%></br>
  Lugar: <%= activity.address%></br>
  Longitud: <%= activity.latitude %></br>
@@ -24,6 +57,7 @@
  
  <% @user = User.find(activity.user_id)%>
 <%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
+<%= link_to "Ir a la actividad", activity_path(activity.id)%>
  </div>
  <div style="float:left; height:230px; margin-left:5px; margin-top:25px;">
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x200&sensor=true&zoom=16&markers=#{activity.latitude}%2C#{activity.longitude}" %>

@@ -16,8 +16,8 @@
     <div id="box-user-credential" class="network-layout">
       <div class="thumbnail"  >
           
-           <%= image_tag(current_user.avatar.profile) if ( !current_user.avatar.blank? ) %>
-           <%= image_tag(current_user.image_avatarx) if (current_user.avatar.blank?  )  %>
+           <%= link_to image_tag(current_user.avatar.profile), show_user_path(current_user.personal_url) if ( !current_user.avatar.blank? ) %>
+           <%= link_to image_tag(current_user.image_avatarx), show_user_path(current_user.personal_url) if (current_user.avatar.blank?  )  %>
 
       </div>
       <div class="tagname">
