@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader

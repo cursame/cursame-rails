@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
     <%= text_area_tag "comment", nil, :rows => 4, :cols => 76, :placeholder=>'Comentario'  %>
     <%= hidden_field_tag 'commentable_id', commentable_id %>

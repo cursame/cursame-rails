@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Network < ActiveRecord::Base
   has_one :network_template
   has_many :permissionings, :dependent => :destroy
