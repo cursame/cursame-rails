@@ -195,7 +195,7 @@ task :add_pasteje_sec => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => geoa.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
       MembersInCourse.create :user_id => user.id, :course_id => geob.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
   #maestro mat
-      mamat = [ { :first_name => 'Ismael', :last_name => 'Bernal Matoas', :email => 'ismael.bernal.1963@gmail.com', :password => 'ytWrwi9t4A' } ]
+      mamat =  { :first_name => 'Ismael', :last_name => 'Bernal Matoas', :email => 'ismael.bernal.1963@gmail.com', :password => 'ytWrwi9t4A' } 
       user = User.create :first_name => mamat[:first_name], :last_name => mamat[:last_name], :email => mamat[:email], :password => mamat[:password], :personal_url => "#{mamat[:first_name]}#{mamat[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => mat1a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
@@ -206,13 +206,13 @@ task :add_pasteje_sec => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => mat3b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
  
  #maestro biologia
-      mabio = [ { :first_name => 'Lucero', :last_name => 'Cuevas Gomez', :email => 'lucero.cuevas.666@gmail.com', :password => 'ytWrwi9t4A' } ]
+      mabio = { :first_name => 'Lucero', :last_name => 'Cuevas Gomez', :email => 'lucero.cuevas.666@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mabio[:first_name], :last_name => mabio[:last_name], :email => mabio[:email], :password => mabio[:password], :personal_url => "#{mabio[:first_name]}#{mabio[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => bioa.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
       MembersInCourse.create :user_id => user.id, :course_id => biob.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
  #maestro esp
-      maesp = [ { :first_name => 'Yuniz G', :last_name => 'Gil Nava', :email => 'yuguniz@hotmail.com', :password => 'ytWrwi9t4A' } ]
+      maesp = { :first_name => 'Yuniz G', :last_name => 'Gil Nava', :email => 'yuguniz@hotmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => maesp[:first_name], :last_name => maesp[:last_name], :email => maesp[:email], :password => maesp[:password], :personal_url => "#{maesp[:first_name]}#{maesp[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => esp1a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
@@ -223,20 +223,20 @@ task :add_pasteje_sec => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => esp3b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
   
   #maestro historia U
-      mahu = [ { :first_name => 'Graciela', :last_name => 'Rodriguez', :email => 'america_aleicarg@hotmail.com', :password => 'ytWrwi9t4A' } ]
+      mahu = { :first_name => 'Graciela', :last_name => 'Rodriguez', :email => 'america_aleicarg@hotmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mahu[:first_name], :last_name => mahu[:last_name], :email => mahu[:email], :password => mahu[:password], :personal_url => "#{mahu[:first_name]}#{mahu[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => hua.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
       MembersInCourse.create :user_id => user.id, :course_id => hub.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
  
  #maestro fisica
-      mafis = [ { :first_name => 'Miguel Angel', :last_name => 'Rodriguez', :email => 'miguelangelpasteje@gmail.com', :password => 'ytWrwi9t4A' } ]
+      mafis = { :first_name => 'Miguel Angel', :last_name => 'Rodriguez', :email => 'miguelangelpasteje@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mafis[:first_name], :last_name => mafis[:last_name], :email => mafis[:email], :password => mafis[:password], :personal_url => "#{mafis[:first_name]}#{mafis[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => fisa.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
       MembersInCourse.create :user_id => user.id, :course_id => fisb.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
  #maestro Formacion Civica y Etica
-      mafce = [ { :first_name => 'Minerva', :last_name => 'Amado Hernandez', :email => 'miniamahe@yahoo.com', :password => 'miniamahe@yahoo.com' } ]
+      mafce = { :first_name => 'Minerva', :last_name => 'Amado Hernandez', :email => 'miniamahe@yahoo.com', :password => 'miniamahe@yahoo.com' }
       user = User.create :first_name => mafce[:first_name], :last_name => mafce[:last_name], :email => mafce[:email], :password => mafce[:password], :personal_url => "#{mafce[:first_name]}#{mafce[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => fce2a.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
@@ -245,13 +245,13 @@ task :add_pasteje_sec => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => fce3b.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
   
   #maestro Historia de mexico
-      mahm = [ { :first_name => 'Benito', :last_name => 'Acosta Guerrero', :email => 'benoacosta@gmail.com', :password => 'ytWrwi9t4A' } ]
+      mahm = { :first_name => 'Benito', :last_name => 'Acosta Guerrero', :email => 'benoacosta@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => mahm[:first_name], :last_name => mahm[:last_name], :email => mahm[:email], :password => mahm[:password], :personal_url => "#{mahm[:first_name]}#{mahm[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => hma.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
       MembersInCourse.create :user_id => user.id, :course_id => hmb.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
  #maestro quimica
-      maq = [ { :first_name => 'Lucero', :last_name => 'Cuevas Gomez', :email => 'lucero.cuevas.666@gmail.com', :password => 'ytWrwi9t4A' } ]
+      maq = { :first_name => 'Lucero', :last_name => 'Cuevas Gomez', :email => 'lucero.cuevas.666@gmail.com', :password => 'ytWrwi9t4A' }
       user = User.create :first_name => maq[:first_name], :last_name => maq[:last_name], :email => maq[:email], :password => maq[:password], :personal_url => "#{maq[:first_name]}#{maq[:last_name]}".split.join
       Permissioning.create :user_id => user.id, :role_id => '3', :network_id => '2'
       MembersInCourse.create :user_id => user.id, :course_id => quima.id, :accepted => true, :owner => true, :network_id => '2', :active_status => true
