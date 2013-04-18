@@ -8,18 +8,22 @@
 	
 	<div class="pndts"><h1>Pendientes de Aprobacion: <%= @course.pendings%></h1></div>
 
-	<div class="everymbrm">
 <%@course.members_in_courses.each do |member|  %>
+<div class="everymbrm" style="float:left;">
+
         <% @members = User.find_by_id(member.user_id) %>
 
         <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
        <!--coloca la imagen y el nombre-->
-       <%= image_tag(@members.avatar.profile)%><h3><%= @members.email %></h3>
+       <%= link_to image_tag(@members.avatar.profile), show_user_path(@members.personal_url) if (!@members.avatar.blank?  )%>
+        <%= link_to image_tag(@members.image_avatarx), show_user_path(@members.personal_url) if (@members.avatar.blank?  )  %> 
+       
+       <h3><%= @members.email %></h3>
        
         <%if @member.accepted != true%>
            <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
           <%= form_for @member, :remote => true do |fcm| %>
-            <div style = "color:#F31E25;"><%= "El usuario no ha sido aceptado aún"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></div>
+            <div style = "color:#F31E25;"><%= "No es miembro aún"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %><div class="dstroytxt" style="margin-top:53px;"><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></div>
            <%end%>
         <%else%>
         <br />
@@ -31,7 +35,7 @@
              
             <%else%>
             <%= form_for @member, :remote => true do |owner|%>
-               <div style = "color:#F31E25;"><%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %><%= "El usuario no tiene permisos de administrador"%></div>
+               <div style = "color:#F31E25;"><%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %><%= "No es administrador"%></div>
             <%end%>
           <%end%>
             <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
