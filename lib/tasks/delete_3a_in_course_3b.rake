@@ -25,10 +25,10 @@ task :remove_3a_from_bs => :environment do
     ]
      alumnos3a.each do |alumno|
       user = User.find_by_email(alumno[:email])
-      MembersInCourse.where( :user_id => user.id, :course_id => 25).destroy_all
-      MembersInCourse.where( :user_id => user.id, :course_id => 27).destroy_all
-      MembersInCourse.where( :user_id => user.id, :course_id => 29).destroy_all
-      MembersInCourse.where( :user_id => user.id, :course_id => 31).destroy_all
-      MembersInCourse.where( :user_id => user.id, :course_id => 33).destroy_all
+      MembersInCourse.where( :user_id => user.id, :course_id => 26).destroy_all
+      MembersInCourse.where( :user_id => user.id, :course_id => 28).destroy_all
+      MembersInCourse.where( :user_id => user.id, :course_id => 30).destroy_all
+      MembersInCourse.where( :user_id => user.id, :course_id => 32).destroy_all
+      MembersInCourse.where( :user_id => user.id, :course_id => 34).destroy_all
     end 
 end
