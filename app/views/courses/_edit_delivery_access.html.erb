@@ -2,7 +2,7 @@
    random_id = "#{random}"
    @labelIdBox = "upload-labels-#{random_id}"
    formId= "form-upload-assignments-#{random_id}"
-   
+
 %>
 
 <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
@@ -21,7 +21,7 @@
       <% end %>
 
 
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => true, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
 
       <%= f.submit "Publicar"%>
 <% end %>

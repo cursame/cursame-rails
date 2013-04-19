@@ -17,5 +17,5 @@
     <div class="submit-area"></div>
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
     <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :defaultText => 'Pública', :defaultClass => 'public-dd' } %>
+    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Pública', :defaultClass => 'public-dd' } %>
 <% end %>
