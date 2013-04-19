@@ -166,6 +166,10 @@ Cursame30Lb::Application.routes.draw do
   post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
   match  "/users/", :to => "users#index",  :as =>  :users
   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
+
+  # confirme user
+  post "users/confirm" => "users#confirm", :as => :user_confirm
+
   #friends
   #resources :user_friends
   get  "users/:personal_url/friends" => "friendships#show", :as => :show_friends
@@ -277,27 +281,27 @@ Cursame30Lb::Application.routes.draw do
    resources :comments do
       resources :activities
    end
-   
+
    resources :discussions do
        resources :activities
    end
-  
+
    resources :courses do
        resources :activities
    end
-   
+
     resources :user_surveys do
         resources :activities
     end
-    
+
    ####### rutas para like en web
-   
+
    get "/upvote/:id", :to => 'home#upvote', :as => :upvote
    get "/downvote/:id", :to => 'home#downvote', :as => :downvote
    get "/upvote_comment/:id", :to => 'home#upvote_comment', :as => :upvote_comment
    get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
-   
-   
+
+
 
    ####### rutas de estandarizacion de eventos
 

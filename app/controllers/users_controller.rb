@@ -248,4 +248,14 @@ class UsersController < ApplicationController
    redirect_to root_path
  end
 
+ def confirm
+   user = User.find_by_id(params[:user_id])
+   user.confirm!
+   user.save!
+   respond_to do |format|
+     format.json
+     format.js
+   end
+ end
+
 end
