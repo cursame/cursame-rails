@@ -47,6 +47,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
     @friendship.accepted = true
     @friendship.save
+    @user = User.find(:id)
      respond_to do |format|
         format.js
         format.json

@@ -3,6 +3,8 @@
 <%else%>
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url('<%= @user_l.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%end%>
+   <div id="notice" class="notice"></div>
+
    <%= render :partial => 'shared/head_menu'%>
 </div>
 <!-- Content Post Box -->
@@ -12,15 +14,18 @@
         <!-- User Avatar -->
         <div id="box-user-credential" class="network-layout">
             <div class="thumbnail"  >
-             <%= image_tag(@user_l.avatar.profile) if ( !@user_l.avatar.blank?   ) %>
-             <%= image_tag(@user_l.image_avatarx) if (@user_l.avatar.blank?  )  %>  
+
+             <%= link_to image_tag(@user_l.avatar.profile), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank? && !nil   ) %>
+             <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?  )  %>
+
+
             </div>
-            
+
             <div class="tagname">
               <%= @user_l.name %>
-            </div>        
+            </div>
             <%#= debug  @user_l.avatar.profile   %>
-            
+
         </div>
         <div id="box-profile-info" class="basic-lateral-box margin-top">
             <li class="aboutme"><%= @user_l.bios %></li>
@@ -28,10 +33,10 @@
             <li class="twitter"><%= @user_l.facebook_link %> </li>
             <li class="facebook"><%= @user_l.twitter_link%></li>
             <li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li>
-            
+
         </div>
         <%#= debug @user %>
-        
+
         <%#= current_user.devise_mailer_subdomain%>
 
         <div id="box-course" class="basic-lateral-box" >
@@ -50,7 +55,7 @@
                       </a>
                     </li>
                     <% permitted_to? :create, :courses do %>
-                
+
                     <li class="element-right">
                       <div id="new-course-btn" class="plus-courses"></div>
                       <a href="#tabs-courses-2">
@@ -68,9 +73,11 @@
                             <li><a href="#">No hay cursos</a></li>
                         <%else%>
                             <% @courses.each do |cu|%>
+
                                 <% @cort = Course.find(cu.course_id)%>
                                    <% if @cort.network_id == current_network.id %>
                                     <% if @cort.active_status == true%>
+
                                     <% if cu.accepted == true %>
                                         <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
                                     <%end%>
@@ -79,7 +86,7 @@
                                 <%end%>
                         <%end%>
                     </ul>
-                    <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
+        <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
                 </div>
                 <div id="tabs-courses-2">
                     <ul id="course-list" >
@@ -117,10 +124,14 @@
             <h2>AMIGOS</h2>
             <div id="tabs-friends" class="tabs-style">
                 <ul id="ul-tabs">
-                    <li class="element-left" style="width:100px!important;">
+                    <div class="element-left" style="width:100px!important;">
+                        <a class="plus-courses" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
+                        <% @friends = @user_l.friendships.where(:accepted => true)%>
+                        <% @friends += @user_l.inverse_friendships.where(:accepted => true)%>
+                        <% @friends.uniq!%>
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
-                                <span class="title-num"><%= current_user.friendships.count %></span>
+                                <span class="title-num"><%= @friends.count %></span>
                                 <span class="title">amigos</span>
                             </div>
                         </a>
@@ -129,26 +140,26 @@
                       <a href="#tabs-friends-2">
                         <div class="content-tab">
                           <span class="title-num">20</span>
-                          <span class="title">sugerencias</span> 
+                          <span class="title">sugerencias</span>
                         </div>
                       </a>
                     </li> -->
                 </ul>
-               
+
                 <div id="tabs-friends-1">
                   <div class="content-avtr">
-                      <% @user_l.friendships.each do |friend|%>
+                      <% @friends.each do |friend|%>
                       <%  @friend = friend.friend%>
                            <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
                            <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
                       <%end %>
                   </div>
-                  <div class="view-all"><%= link_to "Ver todos", network_comunity_path %></div>
+                  <div class="view-all"><%= link_to "Comunidad", network_comunity_path %></div>
                 </div>
                 <!-- <div id="tabs-friends-2">
                   <div class="content-avtr">
                     <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-                  
+
                   </div>
                 </div>-->
             </div>
@@ -158,21 +169,21 @@
 
     <!-- Content -->
     <div id="box-stream-post">
-        <%=render :partial => 'shared/post_menu' %>
 
+      <%=render :partial => 'shared/post_menu' %>
         <%=render :partial => 'shared/wall_filters' %>
-        <div id="timeline">    
+        <div id="timeline">
           <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
         </div>
         <!-- fin timeline -->
         <%= will_paginate(@wall) %>
-        
+
     </div>
 
 </div>
 <script type="text/javascript">
 $(function() {
-  var p = $('#timeline').pageless({ 
+  var p = $('#timeline').pageless({
     totalPages: <%= @wall.total_pages %>,
     url: '<%= wall_path %>',
     loaderMsg: '...',

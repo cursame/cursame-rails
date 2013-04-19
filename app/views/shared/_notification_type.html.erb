@@ -1,7 +1,7 @@
 <!-- este partial controla la logica para mostrar notificaciones -->
 <% if current_role == "superadmin"%>
 <%else%>
-<li class="<%= cls %>">
+<li class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
 	<% if current_user.avatar != nil %>

@@ -34,8 +34,34 @@ class SuperadmninController < ApplicationController
   end
 
   def activities
-    @activities = Activity.all
+    @activities = Activity.search(params[:search])
     @ac = @activities.count
+    
+    @ac_delivery = Activity.where(:activitye_type => 'Delivery').count
+    @ac_survey =  Activity.where(:activitye_type => 'Survey').count
+    @ac_assignment = Activity.where(:activitye_type => 'Assignment').count
+    @ac_comment =  Activity.where(:activitye_type => 'Comment').count
+    @ac_courses =  Activity.where(:activitye_type => 'Course').count
+    @ac_user_survey =  Activity.where(:activitye_type => 'User_survey').count
+    
+    ### promedio de calificación por usuario
+    
+        #### promedios de calificación por tarea
+        @acomplishment_sum = Assignment.sum(:accomplishment)
+        @prompt_calification_by_delivery = ( @acomplishment_sum.to_f / @ac_delivery.to_f ).to_f
+       
+        #### promedio de calificación por examen
+        
+        @result_sum = UserSurvey.sum(:result)
+        @prompt_calification_by_survey = ( @result_sum.to_f / @ac_survey.to_f ).to_f
+        
+        ### promedio por alumnos 
+        
+        @sum_promts =  @prompt_calification_by_delivery +   @prompt_calification_by_survey
+        @users= User.all 
+        @users_count = @users.count 
+        @user_promt = (@sum_promts.to_f/ @users_count.to_f).to_f    
+    
   end
 
   def roles

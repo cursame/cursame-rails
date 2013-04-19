@@ -41,14 +41,15 @@ class MembersInCoursesController < ApplicationController
   # POST /members_in_courses.json
   def create
     @members_in_course = MembersInCourse.new(params[:members_in_course])
-
+    @course = @members_in_course.course_id
+    @course_find = Course.find(@course)
     respond_to do |format|
       if @members_in_course.save
-        format.html { redirect_to :back, notice: 'Members in course was successfully created.' }
-        format.json { render json: @members_in_course, status: :created, location: @members_in_course }
+       format.js
+       format.json
       else
-        format.html { render action: "new" }
-        format.json { render json: @members_in_course.errors, status: :unprocessable_entity }
+       format.js
+       format.json
       end
     end
   end

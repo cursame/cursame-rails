@@ -15,12 +15,16 @@ class Delivery < ActiveRecord::Base
   has_many :activities, as: :activitye
   belongs_to :network
 
+
+  validate :max_courses
+
   # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
 
   accepts_nested_attributes_for :areas_of_evaluations
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :assignments, :assets
+
 
   acts_as_commentable
   #para los likes
@@ -30,10 +34,10 @@ class Delivery < ActiveRecord::Base
     state :unpublish
     state :published
     event :publish do
-      transition :to => :published, :from => :unpublish      
+      transition :to => :published, :from => :unpublish
     end
   end
-  
+
   before_create do
     self.publish_date ||= DateTime.now
   end
@@ -42,40 +46,44 @@ class Delivery < ActiveRecord::Base
     if self.publish_date <= DateTime.now
       self.publish!
     end
-    
+
       #### crear notificaciones
        puts "se ha creado una nueva tarea"
        #### se genera  el evento en el calendario
-        Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id      
+        Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
+
+
+        # Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
 
         #Aqui se crean las notificaciones y los posts del wall :)
+        users =[]
         self.courses.each do |course|
+          users+= course.users
           course.members_in_courses.each do |u|
             user = User.find_by_id(u.user_id)
             if u.owner != true
-              Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'         
-            end
-            #validar que no exista doble publicacion para un usuario
-           if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Delivery',self.id))
-              Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id 
-            end
-
-          end
-          #Cuando una tarea se crea, tambien manda notificaciones a cada
-          # miembro del curso al cual pertenece la tarea.
-          self.courses.each do |course|
-            course.members_in_courses.each do |member|
-              mail = Notifier.new_delivery_notification(member,self)
+              Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
+              #se envia mail a cada uno de los miembros de curso
+              mail = Notifier.new_delivery_notification(u,self)
               mail.deliver
             end
           end
         end
-    
-  end  
-       
-  
+        #validar que no exista doble publicacion para un usuario
+        Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
+  end
+
+
   after_update do
-    
+
+  end
+
+  def users
+    users = []
+    courses.each do |course|
+      users = users.concat(course.users)
+    end
+    return users
   end
 
   def expired?
@@ -89,7 +97,11 @@ class Delivery < ActiveRecord::Base
       end
     end
   end
-  
-  
-  
+
+
+  def max_courses
+    errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
+  end
+
+
 end

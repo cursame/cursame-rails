@@ -41,10 +41,11 @@ class NetworksController < ApplicationController
 
     @network = Network.find_by_subdomain!(request.subdomain)
     @search = params[:search]
+    @id = params[:id]
     @page = params[:page].to_i
-    @wall = current_user.walls.search(@search).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+    # @wall = current_network.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = current_network.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     if request.xhr?      
-      #sleep(2) # make request a little bit slower to see loader :-)
       respond_to do |format|
         format.js
       end           
@@ -80,15 +81,17 @@ class NetworksController < ApplicationController
     @network = Network.new(params[:network])
     @user = User.new(params[:user])
     @call_user = @network.users.last
+     
     respond_to do |format|
       if @network.save
-         @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
-         puts "----------------------"
-         puts @permissioning
-         puts "----------------------"
-         @permissioning.role_id = "1"
-         @permissioning.save
+        
          
+            @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
+            puts "----------------------"
+            puts @permissioning
+            puts "----------------------"
+             @permissioning.role_id = "1"
+             @permissioning.save
          if  @permissioning.save
            puts "permisos guardados correctamente"
          else
@@ -142,8 +145,7 @@ class NetworksController < ApplicationController
   end
   
   def network_comunity
-      @network_users = current_network.users
-      
+      @network_users = current_network.users      
   end
     
 end

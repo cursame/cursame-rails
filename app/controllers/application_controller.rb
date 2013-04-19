@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
@@ -23,9 +22,21 @@ class ApplicationController < ActionController::Base
   helper_method :refresh_token_for_google
   helper_method :random
 
+  # errores
+   # Se declaran los errores personalizados
+
+
   #data of the networks you are
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
+  end
+  
+  def current_network?
+      if current_network != nil
+           u_u = "#{current_network.subdomain}.#{links}"
+        else
+           u_u = "#{current_network.subdomain}.#{links}"
+      end
   end
 
   #this method filtered the subdomail
@@ -51,6 +62,9 @@ class ApplicationController < ActionController::Base
          @link = 'cursatest.com'
        when Rails.env == 'test'
          @link = 'cursatest.com'
+       when Rails.env == 'subtest'
+         @link = 'cursamelab.com'
+         
      end
   end
   #determinate the first redirection url before loggin
@@ -169,7 +183,10 @@ class ApplicationController < ActionController::Base
         #@activity.network_id = 1 #current_network.id
         @activity.save
   end
-
+  #### like_compare
+  
+  def compare_like
+  end
   def browser_active
     @data_integrate = request.env['HTTP_USER_AGENT']
     @user_agent = UserAgent.parse(@data_integrate)
@@ -196,7 +213,6 @@ class ApplicationController < ActionController::Base
 
   end
   helper_method :mobile?
-
   protected
   #roles
   def permission_denied

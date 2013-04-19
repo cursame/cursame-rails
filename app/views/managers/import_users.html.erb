@@ -1,0 +1,91 @@
+<h2>Import Users</h2>
+<%= form_tag upload_users_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <p>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<% if !@errores.nil? %>
+  <h2>List of Errors</h2>
+  <table id = "errores">
+  <tr>
+    <th> Linea </th>
+    <th> Error </th>
+  </tr>
+  <% @errores.each do |hash| %>
+    <tr>
+      <th><%= hash[:line].to_s %></th>
+      <th><%= hash[:message] %></th>
+    <tr>
+  <%end%>
+</table>
+<% end %>
+
+<h2>List Of Users<h2>
+<table id="users">
+  <tr>
+    <th>Id</th>
+    <th>Email</th>
+    <th>Encrypted_password</th>
+    <th>Reset_password_token</th>
+    <th>Reset_password_sent_at</th>
+    <th>Remember_created_at</th>
+    <th>Sign_in_count</th>
+    <th>Current_sign_in_at</th>
+    <th>Last_sign_in_at</th>
+    <th>Current_sign_in_ip</th>
+    <th>Last_sign_in_ip</th>
+    <th>Created_at</th>
+    <th>Updated_at</th>
+    <th>First_name</th>
+    <th>Last_name</th>
+    <th>Description</th>
+    <th>Personal_url</th>
+    <th>Avatar</th>
+    <th>Coverphoto</th>
+    <th>Facebook_link</th>
+    <th>Twitter_link</th>
+    <th>Bios</th>
+    <th>Confirmation_token</th>
+    <th>Confirmed_at</th>
+    <th>Confirmation_sent_at</th>
+    <th>Unconfirmed_email</th>
+    <th>Failed_attempts</th>
+    <th>Unlock_token</th>
+    <th>Locked_at</th>
+    <th>Authentication_token</th>
+  </tr>
+<% @users.each do |user|%>
+  <tr>
+    <th><%= user.id %></th>
+    <th><%= user.email %></th>
+    <th><%= user.encrypted_password %></th>
+    <th><%= user.reset_password_token %></th>
+    <th><%= user.reset_password_sent_at %></th>
+    <th><%= user.remember_created_at %></th>
+    <th><%= user.sign_in_count %></th>
+    <th><%= user.current_sign_in_at %></th>
+    <th><%= user.last_sign_in_at %></th>
+    <th><%= user.current_sign_in_ip %></th>
+    <th><%= user.last_sign_in_ip %></th>
+    <th><%= user.created_at %></th>
+    <th><%= user.updated_at %></th>
+    <th><%= user.first_name %></th>
+    <th><%= user.last_name %></th>
+    <th><%= user.description %></th>
+    <th><%= user.personal_url %></th>
+    <th><%= user.avatar %></th>
+    <th><%= user.coverphoto %></th>
+    <th><%= user.facebook_link %>
+    <th><%= user.twitter_link %>
+    <th><%= user.bios %>
+    <th><%= user.confirmation_token %>
+    <th><%= user.confirmed_at %>
+    <th><%= user.confirmation_sent_at %>
+    <th><%= user.unconfirmed_email %>
+    <th><%= user.failed_attempts %>
+    <th><%= user.unlock_token %>
+    <th><%= user.locked_at %>
+    <th><%= user.authentication_token %>
+  </tr>
+<%end%>
