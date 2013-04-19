@@ -8,7 +8,6 @@ class Api::ApiController < ApplicationController
   def publications
     case params[:type]
       when 'Course'
-        #@publications = Course.find(params[:publicacionId]).walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
         @course = Course.find(params[:publicacionId])
         @publications = @course.walls.where("publication_type != ?", 'Course')
         @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
@@ -16,8 +15,6 @@ class Api::ApiController < ApplicationController
         @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
       @publications.each do |publication|
-        puts 'array de publicaciones'
-        puts publication.courses.to_yaml
         type = publication.publication_type
         id = publication.publication_id
         case type
@@ -45,7 +42,11 @@ class Api::ApiController < ApplicationController
   end
 
   def courses
-    @courses = @network.courses.order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @ids = []
+    @user.members_in_courses.each do |course|
+      @ids.push(course.course_id)
+    end
+    @courses = @network.courses.where("public_status == ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
 
@@ -127,10 +128,8 @@ class Api::ApiController < ApplicationController
     end
 
     if is_liked_by_current_user(@object)
-      puts 'existe'
       @object.disliked_by @user
     else
-      puts 'no existe'
       @object.liked_by @user
     end
     render :json => {:success => true}, :callback => params[:callback]
