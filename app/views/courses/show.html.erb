@@ -52,8 +52,8 @@
 
   <div id="box-user-credential" class="network-layout">
     <div class="thumbnail"  >
-      <%= link_to image_tag(@course.avatar.profile) if ( !@course.avatar.blank? ) %>
-      <%= link_to image_tag(@course.course_avatarx) if ( @course.avatar.blank? ) %>
+      <%= link_to image_tag(@course.avatar.profile) if ( !@course.avatar.blank? && !nil ) %>
+      <%= link_to image_tag(@course.course_avatarx) if ( @course.avatar.blank? || nil) %>
 
 
     </div>
@@ -75,8 +75,8 @@
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
                 <% if @member.accepted == true %>
-                    <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? )%>
-                    <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank?)  %>
+                    <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>
+                    <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>
 
                 <%end%>
             <%end%>

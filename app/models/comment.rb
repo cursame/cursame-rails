@@ -117,7 +117,6 @@ class Comment < ActiveRecord::Base
 
   def group_of_users(comment_type)
     case comment_type
-
     when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
