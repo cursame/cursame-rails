@@ -21,9 +21,10 @@
     <td><p><%= f.label :imagen_de_cabecera %></p></td>
 	    </tr>
 	    <tr>
-	<td width="180px"><div id="uploadthingie"><%= f.file_field :avatar, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>
-
-	<td height="52px"><div id="uploadthingie"><%= f.file_field :coverphoto, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>
+	    <td width="180px"><%= f.file_field :avatar, :class=>"stylizeForm" %></td>
+	    <td height="52px"><%= f.file_field :coverphoto, :class=>"stylizeForm" %></td>
+	<!-- <td width="180px"><div id="uploadthingie"><%= f.file_field :avatar, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>  -->
+	<!-- <td height="52px"><div id="uploadthingie"><%= f.file_field :coverphoto, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td> -->
 		</tr>
 		<tr>
 	<td width="180px"><p><%= f.label :Valor_de_examenes%></p></td>
@@ -48,7 +49,7 @@
 		<tr>
 		<td></td>
 		<td>
-    <script type="text/javascript"> $('#dummy').bind('click', function() { $('input.upload').trigger('click'); }); </script>
+
     <%= f.submit "Actualizar Curso", :class=>"act-crs" %>
 		</td>
 		</tr>

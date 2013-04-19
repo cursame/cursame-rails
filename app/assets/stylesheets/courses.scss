@@ -118,32 +118,39 @@ h3{
 }
 
 .list_alt_box{
-	width: 282px!important;
-   /* width:400px; */
+	width: 226px!important;
+	background: #fff;
     float: left;
-   /* margin:10px; */
-   /* padding:2px;*/ padding: 7px 2px 2px 7px;
-   	margin-right:0px!important;
-    border-right: solid #ddd 1px;
+    padding: 7px 15px 8px 7px;
+   	margin-right: 7px!important;
+   	margin-left: 0px!important;
+    border-right: solid #4FA3E9 4px;
     /*border-left: solid #eee 2px;*/ border-left: 0!important;
-    margin-bottom:20px;
+    margin-bottom: -3px;
     overflow:auto;
     transition: all linear 0.3s;
 }
 
-.list_alt_box:hover { background: rgba(0, 0, 0, 0.2); transition: all linear 0.3s; }
+.list_alt_box:hover { transition: all linear 0.3s; }
 
 .course_status { background: #83B81F; color: #fff!important; cursor: pointer; padding: 2px 8px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 .course_status:hover { background: #F39C20; }
 .course_status > a { color: #fff!important; }
-.status { margin-top: 5px; float: right; }
+.status { margin-top: 18px; float: right; }
+
+.top-header-delivery-box ul li span { color: #B3B3B3; }
+.top-header-delivery-box ul li span:hover { color: #4FA3E9; }
 
 #full-deliveries-area > a { position: absolute; float: right; display: none; margin-top: 16px; }
 
-.list_alt_box .header { font-family: Arial; font-weight: lighter; margin-left: 7px; color: #ddd; }
+.list_alt_box .header { font-family: Arial; font-weight: lighter; margin-left: 7px; color: #ddd;  }
 .list_alt_box .header .status > a:hover { color: #39D4E2; }
-.top-header-delivery-box ul li .green-circle-mini, .top-header-delivery-box ul li .orange-circle-mini { margin: 6px 0px 0px 6px!important; }
-.top-header-delivery-box ul li { margin: 5px 0px 5px 0px!important; width: 123px!important; }
+
+.list_alt_box .headerOne { font-family: Arial; font-weight: lighter; margin-left: 3px; color: #000; }
+.list_alt_box .headerOne .status > a:headerOne { color: #39D4E2; }
+
+.top-header-delivery-box ul li .green-circle-mini, .top-header-delivery-box ul li .orange-circle-mini { margin: 6px 0px 0px 6px!important; color: #1a1a1a!important; display: block; width: 130px!important; }
+.top-header-delivery-box ul li { margin: 2px 0px 5px 0px !important; width: 130px!important; }
 
 .survey_list{
     margin-top:10px;
@@ -187,7 +194,9 @@ h3{
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 
 #configuration h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 20px 10px 10px 17px; background: rgba(252,252,252,0.2) url(../assets/tool.png) no-repeat center right; }
-.form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 1); }
+#configurationing h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 16px 10px 13px 17px!important; background: rgba(252,252,252,0.2) url(../assets/) no-repeat center right; font-size: 20px; }
+.fixform { margin-bottom: 20px!important; }
+.form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 0.9); }
 .form-course input:focus { border: 1px solid #6AB2BF!important; }
 .form-course p { clear: both; color: #969696; font-family: HelvLight; font-size: 14px; margin-top: 10px; position: relative; display: block; line-height: 14pt!important; }
 .form-course input[type="file"] { background: transparent; }
@@ -216,11 +225,31 @@ div#dummy:hover { background: #08B5CE; color: #fff; }
 
 .cmembers { width: 800px; margin: 0 auto; }
 .pndts { margin-top: -25px; float: right; }
-.everymbrm { background: #fff; width: 170px; border: 1px solid #eee; box-shadow: 1px 2px 1px #ccc; padding: 10px 10px 0px 10px; transition: linear all 0.2s; }
+.everymbrm { background: #fff; width: 170px; border: 1px solid #eee; box-shadow: 1px 2px 1px #ccc; padding: 10px 10px 0px 10px; transition: linear all 0.2s; float: left; margin-right: 10px; margin-bottom: 20px; }
+.everymbrm .everymbrm { margin-top: -10px; }
 .everymbrm:hover { box-shadow: 0px 0px 5px #28C8DF; transition: linear all 0.2s; }
-.everymbrm h3 { text-align: center; font-size: 14px; }
+.everymbrm h3 { text-align: center; font-size: 14px; display: block; height: 20px; position: relative; margin-top: 17px; }
 .everymbrm img { width: 100%; }
-.everymbrm .helptext { color: #ccc; font-weight: lighter; font-size: 12px; }
-.everymbrm .dstroytxt { width: 190px; background: #ccc; color: #fff!important; margin-left: -10px; padding: 10px 0; text-align: center; margin-top: 20px; transition: linear all 0.2s; }
+.everymbrm .nameUser { height: 10px; }
+.everymbrm .helptext { color: #ccc; font-weight: lighter; font-size: 12px; position: relative; display: block; }
+.helptext { color: #ccc; font-weight: lighter; font-size: 12px; position: relative; display: block; }
+.everymbrm .dstroytxt { width: 190px; background: #ccc; color: #fff!important; margin-left: -10px; padding: 0; text-align: center; margin-top: 20px; transition: linear all 0.2s; }
 .everymbrm .dstroytxt:hover { background: red; transition: linear all 0.2s; }
-.everymbrm .dstroytxt > a { color: #fff; }
+.everymbrm .dstroytxt > a { color: #fff; display: block; height: 30px; position: relative; padding-top: 14px; }
+
+.dstroytxt { width: 190px; background: #ccc; color: #fff!important; margin-left: -10px; padding: 10px 0; text-align: center; margin-top: 20px; transition: linear all 0.2s; }
+.dstroytxt:hover { background: red; transition: linear all 0.2s; }
+.dstroytxt > a { color: #fff; }
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ get Day Calendar ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+
+#getDay { height: 35px; width: 100px; position: absolute; float: left; text-align: center;
+float: right; display: inline-block; z-index: 1; margin-left: 754px; margin-top: 16px;
+-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+#getDay .month { width: 75px; color: #4FA3E9; font-weight: lighter; }
+#getDay .day { color: #4FA3E9!important; font-size: 20px; }
+
+.calendarHome { background: #fff; padding: 12px 10px 1px 10px; width: 300px; border-right: 4px solid #83B81F; }
+.calendarEvnt { background: #fff; padding: 12px 10px 1px 10px; width: 300px; border-right: 4px solid #F39C20; }

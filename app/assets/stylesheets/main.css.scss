@@ -68,7 +68,8 @@ input:-moz-placeholder {
   position: absolute;
   margin-top: 35px;
   border: 1px solid #d5d5d5;
-  background: $bg-general;
+  background: linear-gradient(to bottom, rgba(252,252,252,1), rgba(255,255,255,0));
+  /*background: $bg-general; */
   z-index: -2;
   width: 939px;
 }
@@ -119,6 +120,7 @@ input:-moz-placeholder {
   clear: both;
   float: left;
   margin-left: 9px;
+  margin-top: 10px;
   & .general-cir-homework{
      background: url('/assets/comment-cir-mini-homework.png') no-repeat;
      width: 35px;
@@ -903,6 +905,9 @@ input:-moz-placeholder {
     cursor:pointer;
     margin-top: -1px;
   }
+  & .plus-courses:hover{
+    background: url('/assets/plus-box-icon-hover.png') no-repeat;
+  }
   & .element-left{
     float: left;
     @include border-t-left-radius;
@@ -1028,6 +1033,7 @@ input:-moz-placeholder {
 .aboutme{
 background: url("/assets/icons/aboutme.png") no-repeat;
 background-position: left center;
+margin-top: 6px;
 }
 
 .mail{
@@ -1043,6 +1049,7 @@ background-position: left center;
 .facebook{
 background: url("/assets/icons/facebook.png") no-repeat;
 background-position: left center;
+margin-top: 5px;
 }
 
 .silabus{
@@ -1084,7 +1091,7 @@ background-position: left center;
   }
 
   &.margin-top {
-    margin-top: 100px;
+    margin-top: 141px;
   }
   
   
@@ -1204,6 +1211,9 @@ background-position: left center;
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
   }
+   & .return-course-icon:hover{
+	background: url('/assets/return-box-icon-hover.png') no-repeat;
+	}
   & .title{
     font-family: helvlight;
     height: 40px;
@@ -1222,7 +1232,7 @@ background-position: left center;
 /* /\/\/\/\ Courses /\/\/\/\ */
 .course-id{
   height: 250px;
-  width: 220px;
+  width: 181px;
   background: #ccc;
 }
 
@@ -1372,6 +1382,10 @@ background-position: left center;
   & .settings{
     background: url('/assets/icons/settings.png') no-repeat;
   }
+  
+  & .calif{
+    background: url('/assets/icons/a.png') no-repeat;
+  }
 
   & .stats{
     background: url('/assets/icons/stats.png') no-repeat;
@@ -1397,14 +1411,18 @@ background-position: left center;
 .menu-course li{
 	float: left;
 	width: 203px;
-	height: 80px;
+	height: 76px;
 	display: block;
 	cursor: hand !important;
-	padding: 10px 15px 8px 15px;
+	padding: 22px 15px 0px 15px;
 	text-align: center;
 	border-bottom: 1px solid #d5d5d5;
 	background: #ffffff /*  url('/assets/active.png') repeat */;
 
+}
+
+.last {
+	width: 206px!important;
 }
 
 .menu-course li b{
@@ -1497,16 +1515,18 @@ background-position: left center;
 
 */
 .top-header-delivery-box{
+	margin-top: 10px;
+	
   & ul{
     & li{
       width: 180px;
       float: left;
       cursor: pointer;
-      height: 22px;
+      height: 17px;
       margin: auto;
       text-align: center;
       margin: 5px 0px 5px 10px;
-      line-height: 21px;
+      line-height: 18px;
       & .green-circle-mini{
         margin: 6px 0px 0px 65px;
       }
@@ -1519,7 +1539,7 @@ background-position: left center;
         line-height: 23px;
       }
       &:hover{
-        background: rgba(0, 0, 0, 0.6);
+        background: transparent;
         -webkit-border-radius: $border-radius-box-black;
         -moz-border-radius: $border-radius-box-black;
         border-radius: $border-radius-box-black;
@@ -1589,3 +1609,8 @@ background-position: left center;
 .new-regs {
 	margin: 0 auto;
 }
+
+.solistyle { color: #fff; background: #B3B3B3 /*url('../assets/icons/checked.png') no-repeat left center*/; padding-left: 24px; padding: 2px 7px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.addfriend { background: #00B1C7; padding: 2px 7px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.addfriend > a:link { color: #fff; }
+.addfriend:hover { background: #0B6AAD; }

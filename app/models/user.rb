@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   #publications/walls
   has_many :userpublicationings
   has_many :walls, :through => :userpublicationings
-  
+
 
   has_one :settings_teacher, :dependent => :destroy
 
@@ -105,6 +105,10 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
     @permissionings = self.permissionings.last
      if @permissionings  == nil
         @network=Network.last
@@ -113,9 +117,9 @@ class User < ActiveRecord::Base
      @network = Network.find(@permissionings.network_id)
      @network.subdomain
      end
-  
+
   end
-  
+
 
 
 
@@ -316,7 +320,7 @@ class User < ActiveRecord::Base
         if !user.save then
           arrayErrores.push({:line => count, :message => "Error al guardar"})
         else
-          user.skip_confirmation!
+          user.confirm!
           user.save!
           Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
         end
@@ -340,15 +344,15 @@ class User < ActiveRecord::Base
   end
 
   def publications
-    ids = []    
+    ids = []
     self.courses.each do |c|
       ids.push(c.id)
     end
-    
+
     Wall.scoped(:include => {
           :courses => :coursepublicationings,
           :users => :userpublicationings,
-        }, 
+        },
       # :conditions => ['userpublicationings.user_id = ? OR public = ?',self.id,true])
       :conditions => ['userpublicationings.user_id = ? OR coursepublicationings.course_id in (?)',self.id,ids]).order('walls.created_at DESC')
   end
