@@ -109,8 +109,8 @@ class Comment < ActiveRecord::Base
       Notification.create(:user => users.first, :notificator => self, :kind => notification_kind)
 
       return
-
     else
+      return
     end
 
   end

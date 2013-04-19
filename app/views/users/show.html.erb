@@ -15,7 +15,7 @@
         <div id="box-user-credential" class="network-layout">
             <div class="thumbnail"  >
              <%= link_to image_tag(@user_l.avatar.profile), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank?   ) %>
-             <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?  )  %>  
+             <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?  )  %>
 
             </div>
 
@@ -123,7 +123,8 @@
                     <div class="element-left" style="width:100px!important;">
                         <a class="plus-courses" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
                         <% @friends = @user_l.friendships.where(:accepted => true)%>
-
+                        <% @friends += @user_l.inverse_friendships.where(:accepted => true)%>
+                        <% @friends.uniq!%>
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
                                 <span class="title-num"><%= @friends.count %></span>
