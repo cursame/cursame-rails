@@ -1,15 +1,15 @@
 <div id="header-courses">
-<h2 class="courses-title-h2">Lista de cursos</h2>
+<h2 class="courses-title-h2" style="margin-top:6px;">Lista de cursos</h2>
 <div class="search default-form delivery-form serch-courses">
 <%= form_tag courses_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Cursos' %>
+   <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Cursos' %>
    <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
   </p>
 <% end %> 
 </div>
 <% permitted_to? :create, :courses do %>
-    <div class="new-course"><%= link_to 'New Course', new_course_path, :class=>"a-button" %></div>
+    <div class="new-course"><%= link_to 'Crear curso nuevo', new_course_path, :class=>"a-button" %></div>
 <%end%>
 </div>
 
@@ -24,6 +24,7 @@ width: 700px!important; text-align: center!important; padding-top: 30px!importan
 <%end%>
 <div id="courses-list">
 <% @courses.each do |course| %>
+
 
 <div class="course">
 
@@ -65,7 +66,9 @@ width: 700px!important; text-align: center!important; padding-top: 30px!importan
        
       <%#= course.init_date %>
     <li class="finishdate"> <%= course.finish_date %></li>
-    </div></div>
+    </div>
+    
+</div>
    
    
    

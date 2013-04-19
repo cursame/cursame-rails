@@ -2,45 +2,85 @@
 		<h1>Miembros del curso</h1>
 </div>
 
+<!-- se agrego un nuevo jquery para los estilos -->
+<script src="../assets/javascripts/jquery.icheck.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('input').each(function(){
+    var self = $(this),
+      label = self.next(),
+      label_text = label.text();
+
+    label.remove();
+    self.iCheck({
+      checkboxClass: 'icheck_line',
+      radioClass: 'icheck_line',
+      insert: '<div class="icheck_line-icon"></div>' + label_text
+    });
+  });
+});
+</script>
+
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <div class="cmembers">
 	<% if  @course.members_in_courses.count > 0 %>
 	
 	<div class="pndts"><h1>Pendientes de Aprobacion: <%= @course.pendings%></h1></div>
 
-	<div class="everymbrm">
-<%@course.members_in_courses.each do |member|  %>
-        <% @members = User.find_by_id(member.user_id) %>
 
+		<%@course.members_in_courses.each do |member|  %>
+
+	<div class="everymbrm">
+        <% @members = User.find_by_id(member.user_id) %>
         <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
+
        <!--coloca la imagen y el nombre-->
-       <%= image_tag(@members.avatar.profile)%><h3><%= @members.email %></h3>
+       
+       <div id="imgge" style="width:170px;height:170px;background:#ddd;">
+       <% if  @members.avatar.profile.blank? %>
+       		<%= image_tag(@members.image_avatarx)%>
+       <%else%>
+	       <%= image_tag(@members.avatar.profile)%>
+	   <%end%>
+
+       </div><!-- ends imgge -->
+       	   <h3><%= @members.email %></h3>
        
         <%if @member.accepted != true%>
            <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
-          <%= form_for @member, :remote => true do |fcm| %>
-            <div style = "color:#F31E25;"><%= "El usuario no ha sido aceptado aún"%><%=fcm.check_box :accepted, :onclick => 'submit()'  %><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></div>
+           	<div class="nameUser"><%= form_for @member, :remote => true do |fcm| %></div>
+            <div class="nonAce">
+	            <div class="helptext" style="height:16px!important;height:35px!important;"><%= "El usuario no ha sido aceptado aún"%></div>
+	            <div class="dstroytxt">
+	            <%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete %>
+	            <!-- <%=fcm.check_box :accepted, :onclick => 'submit()'  %><%= link_to 'Eliminar', member, confirm: 'Are you sure?', method: :delete %> -->
+	            </div>
+            </div><!-- ends nonAce -->
            <%end%>
         <%else%>
-        <br />
+        
         <!--cuando un usuario es owner se le muestra la caja de permisos de adminitrador el permiso de administrador lo adquiere el usuario que crea el curso-->
           <% if @member.owner == true %>
-            <%= form_for @member, :remote => true do |owner|%>
-               <div class="helptext"><%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer quitar los permisos de administrador de curso a este usuario, el ya no podrá editar nada de este curso?'  %><%= "Permisos de administrador" %></div>
+             <div class="nameUser"><%= form_for @member, :remote => true do |owner|%></div>
+             <div class="helptext"><%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer quitar los permisos de administrador de curso a este usuario, el ya no podrá editar nada de este curso?'  %>
+             <%= "Permisos de administrador" %></div>
             <%end%>
              
             <%else%>
-            <%= form_for @member, :remote => true do |owner|%>
-               <div style = "color:#F31E25;"><%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %><%= "El usuario no tiene permisos de administrador"%></div>
+             <div class="nameUser"><%= form_for @member, :remote => true do |owner|%></div>
+             <div style = "color:#F31E25;"><%=owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %>
+             <%= "El usuario no tiene permisos de administrador"%></div>
             <%end%>
           <%end%>
             <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
-            <%= form_for @member, :remote => true do |fcm| %>
-            <div class="helptext"><%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%></div>
-            <div class="dstroytxt"><%= link_to 'Destroy', @member, confirm: 'Are you sure?', method: :delete %></div>
+             <%= form_for @member, :remote => true do |fcm| %>
+             <div class="helptext"><%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%></div>
+             <div class="dstroytxt"><%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete %></div>
           <%end%>
         <%end%>
-     </div>
+     </div><!-- ends everymbrm -->
+     
 <%end%>
 <%end%>
 </div>

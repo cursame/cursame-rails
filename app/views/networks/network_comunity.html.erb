@@ -10,23 +10,23 @@
          
      <div class="place-hldr">
 
-         <div class="name">
-           <%= user.name %>
-         </div>
+     <div class="name">
+       <%= user.name %>
+     </div>
    
-         <div class="add_friend_comunity">
-             <%case%>  
-                <%when  @friend %>
-                    <%= "Solicitud enviada" %>
-                <%when  @add_me_friend%>  
-                    <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
-        
-                <% else %>
-                <div id="add_friend<%=user.id%>">
-                    <%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%>
-                </div>
-            <%end%>    
-        </div><!-- ends add friend -->
+     <div class="add_friend_comunity">
+         <%case%>  
+            <%when  @friend %>
+                <span class="solistyle"><%= "Solicitud enviada" %></span>
+            <%when  @add_me_friend%>  
+                <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
+    
+            <% else %>
+            <div id="add_friend<%=user.id%>">
+                <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%></span>
+            </div>
+        <%end%>    
+    </div><!-- ends add friend -->
        
       </div><!-- ends dscription-comm -->
 
