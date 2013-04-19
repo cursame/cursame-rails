@@ -1,6 +1,6 @@
 <div class="signup-layout"></div>
 
-<div class="content login">
+<div class="content login" id="titlheader">
 
 		<p>
 		<b>Registate en cúrsame</b><br /><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
@@ -13,9 +13,20 @@
 		<%= devise_error_messages! %>
 		<div><!-- <%= f.label :email %><br /> --> <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %></div>
 		<div><!-- <%= f.label :password %><br /> --> <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña" %></div>		
-		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd",:placeholder =>"Confirmacion de contraseña" %>
-		<div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div>
-		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %></div>
+
+		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd", :placeholder =>"Confirmacion de contraseña" %></div>
+		<!-- <div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div> -->
+		<!-- <%= f.text_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %> -->
+		<div class="dropperDwn">
+	       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
+	       <% 1.times do networks = @user.permissionings.build end %>
+		       <%= f.fields_for :permissionings do |permissioning|%>
+	           <%= permissioning.hidden_field :network_id, :value => current_network.id %>
+	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form" %>
+	       <%end%>
+	   </div>
+		
+
 		<%= f.submit "Registrarme", :class =>"signup-btn" %>
 		<% end %>
 	</div><!-- ends form-signup -->
@@ -38,47 +49,3 @@
 <!-- <%= render "devise/shared/links" %> -->
 
 <div style="margin-bottom:20px;"><%= render "devise/shared/footer-links" %></div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="content">
-<h2>Crear usuario</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-  
-   <%= f.hidden_field :personal_url, :value => random_string_for_user_url %>
-   <% if current_network %>
-   <div>
-       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
-       <% 1.times do networks = @user.permissionings.build end %>
-
-       <%= f.fields_for :permissionings do |permissioning|%>
-
-           <%= permissioning.hidden_field :network_id, :value => current_network.id %>
-           <%= permissioning.select :role_id, options_for_select([['alumno', '2'], ['profesor', '3'] ])%>
-
-
-       <%end%>
-
-   <%end%>
-  <%= f.submit "Sign up" %>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
