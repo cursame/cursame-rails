@@ -44,8 +44,17 @@ group :development do
   # gem 'meta_request'
 end
 
+group :subtest do
+   gem 'le'
+end
 
+group :test do
+   gem 'le' 
+end
 
+group :production do 
+   gem 'le'
+end
 gem 'jquery-rails'
 
 #Gem for the comments		
