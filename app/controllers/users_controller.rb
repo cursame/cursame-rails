@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
-    @user_show = true
+    @user_show = !(current_user.id == @user_l.id)
     #current_friend
     #validate_friend
     #current_user_friends
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       @page = params[:page].to_i
       # @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
       # @wall = Wall.where(:users => [@user_l.id],:public => true).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @wall = @user_l.publications.paginate(:per_page => 10, :page => params[:page])  
+        @wall = @user_l.publications.paginate(:per_page => 10, :page => params[:page])
      ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
