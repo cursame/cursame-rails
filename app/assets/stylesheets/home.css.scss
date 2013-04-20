@@ -58,7 +58,9 @@ input.log-in:hover { background: #00AEC5; color: #fff; cursor: pointer; transiti
 .menu-user span { margin-top: 2px!important; }
 .menu-user .avatar { margin-top: -8px!important; }
 
-.form-signup { height: 298px; margin: 21px auto 20px!important; }
+.form-signup { height: 263px; margin: 21px auto 20px!important; }
+input:-webkit-autofill,input:-moz-autofill, input:autofill { background-color: #ddd!important; }
+
 .signup-btn { color: white; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 /*border-color: #f46d59; border-color: #f46d59;*/ border: 0; width: 290px; height: 45px; font-size: 17px; font-family: "HelveticaNeue-Light", sans-serif; margin-top: 10px; cursor: pointer;
 background-image: -khtml-gradient(linear, left top, left bottom, from(#f86049), to(#d6432d));

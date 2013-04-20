@@ -20,8 +20,8 @@
     height: 31px;
     overflow: hidden;
     padding-left: 5px;
-    background: url('/assets/icons/select-mini.png') no-repeat right #fff;
-    border: $border-forms;
+    background: url('/assets/icons/select-mini.png') no-repeat right #fff!important;
+    border: $border-forms!important;
     -webkit-appearance: none;
     appearance: none;
     @include shadow-input;
@@ -51,7 +51,8 @@
     border: $border-forms;
     border-radius: $border-radius-box;
     @include shadow-input;
-    padding-left: 7px;
+    padding-left: 13px;
+    padding-top: 5px;
     margin: 4px 0px 0px 0px;
     &::-webkit-inner-spin-button,::-webkit-outer-spin-button {
       -webkit-appearance: none;
@@ -187,6 +188,7 @@
     display:inline-block;
     color:#FFF;//#197d91;
     text-decoration:none;
+    padding: 4px 7px;
     text-shadow:0px 1px 0px #197d91;//#c3edf3;
     cursor: pointer;
     &:hover{
@@ -531,6 +533,7 @@
   -moz-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
   -webkit-box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
   box-shadow:inset 0px 1px 0px 0px #95e5f1, inset 0px -1px 0px #449eae;
+  padding: 4px 7px;
 
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2fcce3), color-stop(1, #00b0ca) );
   background:-moz-linear-gradient( center top, #2fcce3 5%, #00b0ca 100% );
@@ -1217,7 +1220,7 @@
 }
 
 
-.user-edit-form{
+.user-edit-form {
   margin: 22px 25px 20px 25px;
   position: relative;
   float: left;
@@ -1241,6 +1244,9 @@
   & .box-cancel{
     clear: both;
     float: left;
+    position: absolute;
+    margin-top: 207px;
+    display: block;
   }
   & .personal-url-label{
     float: left;
@@ -1251,7 +1257,7 @@
   & .personal-url{
     clear: none !important;
     width: 90px !important;
-    margin: -7px 0px 0px 0px !important;
+    margin: 4px 0px 0px 0px !important;
   }
   & .submit-btns{
     margin-top: 17px;
@@ -1262,11 +1268,18 @@
   }
   & .box-avatar{
     float: right;
-    width: 400px;
+    /*width: 400px;*/
+    width: 275px;
+    padding: 20px;
+    background: #eee;
+    box-shadow: 0px 2px 7px #bbb;
+    margin-top: 31px;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 
     & .box-image{
       margin: 0px 0px 18px 0px;
       float: left;
+      width: 240px;
     }
     & .avatar{
       height: 50px;
@@ -1286,10 +1299,55 @@
       height: 45px;
       clear: both;
       float: left;
+      width: 50px;
     }
   }
 }
 
+#edituserdmenu { 
+
+	& h3{
+	color: #969696!important;
+	font-size: 16px!important;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	}
+}
+
+.clip { background: url("../assets/clip.png") no-repeat; width: 35px; height: 91px; position: relative; float: right; margin-top: -47px; }
+
+.stylize { background: #fff url('/assets/seleccionar.png') no-repeat center center;
+	width: 120px; content: "copyright 2006"; border: 1px solid #ddd; padding: 7px 20px; margin-left: 10px;
+	color: #fff!important;
+	-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+.stylize:hover { background: #08B5CE url('/assets/seleccionar_hover.png') no-repeat center center; color: #08B5CE!important; cursor: pointer; }
+.stylize::-webkit-file-upload-button { visibility: hidden; }
+
+.stylizeForm { background: #fff url('/assets/seleccionar.png') no-repeat center center!important;
+	width: 110px; content: "copyright 2006"; border: 1px solid #ddd; padding: 7px 20px; color: #fff!important;
+	-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+.stylizeForm:hover { background: #08B5CE url('/assets/seleccionar_hover.png') no-repeat center center!important; color: #08B5CE!important; cursor: pointer; }
+.stylizeForm::-webkit-file-upload-button { visibility: hidden; }
+
+.fixelement { margin-left: 6px; position: relative; margin-top: -17px; display: block; }
+
+.fixelementpass { background: #ddd; }
+.fixelementpass span {  }
+
+#edituserdmenu .box-fields label, .avatar-label, .coverphoto-label {
+	clear: both!important;
+	color: #969696!important;
+	font-family: HelvLight!important;
+	font-size: 14px!important;
+	margin-top: 10px!important;
+	position: relative!important;
+	display: block!important;
+	line-height: 14pt!important;
+}
+
+.edituser { width: 526px!important; }
+.leftlabel { float: left; }
+.rightlabel { float: right; }
 
 .course-form{  //(class form difined by Rails)
   color: #333;
@@ -1376,4 +1434,17 @@
    left: 45%;
    top: 50%;
    cursor: pointer;
+}
+
+.default-select {
+	background: #000;
+}
+
+.dropperDwn #user_permissionings_attributes_0_role_id {
+	-webkit-appearance: none;
+	border: 1px solid #ccc; background: url(../assets/icons/select-mini.png) no-repeat center right;
+	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
+	padding: 13px; color: #B3B3B3; font-weight: lighter;
+	width: 302px; padding-left: 20px; font-size: 14px;
+	margin-top: -1px; margin-left: -5px;
 }

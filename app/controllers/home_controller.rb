@@ -36,14 +36,18 @@ class HomeController < ApplicationController
   def add_new_comment
     if user_signed_in?
       # esto es para clonar los comentarios de el grupo
-      if params[:delivery]
+      if params[:delivery] then
+
         params[:commentable_type] = 'Course'
         params[:delivery][:course_ids].each do |group_id|
           params[:commentable_id] = group_id
           save_comment
         end
         #esto es para comentarios que son publicos de la red
-
+      elsif params[:is_user] then
+        params[:commentable_type] = 'User'
+        params[:commentable_id] = params[:is_user]
+        save_comment
       else
         save_comment
       end
@@ -70,7 +74,7 @@ class HomeController < ApplicationController
           format.js
     end
   end
-  
+
   def upvote
       @publication = Wall.find(params[:id])
       @publication.publication.liked_by current_user
@@ -88,7 +92,7 @@ class HomeController < ApplicationController
        format.js
      end
    end
-   
+
    def upvote_comment
         @publication = Comment.find(params[:id])
         @publication.liked_by current_user

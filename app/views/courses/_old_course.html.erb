@@ -1,12 +1,11 @@
 <% permitted_to? :create, :courses do %>
-
 <div class="title_dxv" style="margin-bottom:80px;">
-    <div class="black-delivery-box", style="padding:5px; margin-top:4px;width: 837px;">
-        <div class="header">
-        
-    <h1 style="margin-left:10px; padding:2px;">Cursos antiguos</h1>
+
+        <div id="configurationing">
+            <h1 style="margin-left:10px; padding:2px;">Cursos antiguos</h1>
         </div>
-    </div>
+        
+        <div class="form-course fixform">
         <% old_course_for_user.each do |course|%>
 
             <!-- estamos creando un container especial para que no se descomponga el layout -->
@@ -22,9 +21,8 @@
                         <%end%>
                     </div>
                 </div>
-             </div>
-             
-       <%end%>
-       
+             </div>             
+       <%end%>       
+       </div>       
 </div>
 <%end%>

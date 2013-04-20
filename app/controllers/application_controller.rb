@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
   helper_method :refresh_token_for_google
   helper_method :random
 
+  # errores
+   # Se declaran los errores personalizados
+
+
   #data of the networks you are
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
@@ -58,6 +62,9 @@ class ApplicationController < ActionController::Base
          @link = 'cursatest.com'
        when Rails.env == 'test'
          @link = 'cursatest.com'
+       when Rails.env == 'subtest'
+         @link = 'cursamelab.com'
+         
      end
   end
   #determinate the first redirection url before loggin

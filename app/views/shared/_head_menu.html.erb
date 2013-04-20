@@ -11,14 +11,21 @@
 
     <div id="box-titles-content" class="box-titles-content-style">
         <div id="calendar-area" style="height:500px">
-             <div class="black-delivery-box" style="padding:5px; margin-top:4px;width: px;">
+	        	<div id="configurationing">
                     <div class="header">
-                        <h1 style="margin-left:10px; padding:2px;"> Calendario
-                        </h1>
+                        <h1 style="margin-left:10px;padding:2px;width:823px;">Calendario</h1>
                     </div>
+                    <!--
+                    <div id="getDay">
+						<span class="month">April</span>
+						<span class="day">19</span>
+					</div>
+					-->
                 </div>
+                <div class="form-course" style="width:811px!important;">
                 <%= render partial: "calendar/calendar_mini"%>
                 <%= render partial: "calendar/list"%>
+                </div><!-- ends configurationing -->
         </div>
        
         <div id="full-deliveries-area" >
