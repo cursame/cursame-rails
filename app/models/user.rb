@@ -105,6 +105,10 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
     @permissionings = self.permissionings.last
      if @permissionings  == nil
         @network=Network.last
