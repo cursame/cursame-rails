@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
 
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
-    @user_show = true
+    @user_show = !(current_user.id == @user_l.id)
     #current_friend
     #validate_friend
     #current_user_friends
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
       @page = params[:page].to_i
       # @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
       # @wall = Wall.where(:users => [@user_l.id],:public => true).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @wall = @user_l.publications.paginate(:per_page => 10, :page => params[:page])  
+        @wall = @user_l.publications.paginate(:per_page => 10, :page => params[:page])
      ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
@@ -200,52 +201,16 @@ class UsersController < ApplicationController
     end
   end
 
- def import
-   superadmin = current_user.roles.keep_if {
-     |role|
-     role.id == 4
-   }
-   if superadmin.size < 1 then
-     redirect_to root_path
-   end
-   @users = User.all
- end
 
- def upload_csv
-   superadmin = current_user.roles.keep_if {
-     |role|
-     role.id ==4
-   }
-   if superadmin.size < 1 then
-     redirect_to root_path
-   end
-   @errores = User.import(params[:file])
-   @users = User.all
+
+ def confirm
+   user = User.find_by_id(params[:user_id])
+   user.confirm!
+   user.save!
    respond_to do |format|
-      format.html { render "users/import"}
-      format.json { render json: @courses }
-    end
- end
-
- def send_mails
-   @user = current_user
-   superadmin = @user.roles.keep_if {
-     |role|
-     role.id == 4
-   }
-
-   if superadmin.size < 1 then
-     redirect_to root_path
+     format.json
+     format.js
    end
- end
-
- def sending
-   users = User.all
-   users.each do |user|
-     mail = Notifier.send_email(user,params[:subject],params[:message])
-     mail.deliver
-   end
-   redirect_to root_path
  end
 
 end

@@ -2,23 +2,23 @@
   var event_list = [];
 </script>
 <div>
-  
+
+<div style="background:#fff;">
 <% @user.courses.each do |courses|%>
-    
+  
       <% courses.deliveries.each do |delivery| %>
         <% delivery.events.each do |event|%> 
-                   
+         
          <script type='text/javascript'>
-                
                 event_list.push(
                  {
-                 title : '<%= event.title %>',
-                 description: '<%= event.description%>',
-                 start :  '<%= event.starts_at%>',
-                 end :  '<%= event.ends_at%>'
-
+                 title : '<div class="calendarHome"><span style="font-size:16px;display:block;text-transform:capitalize;"><%= event.title %></span>',
+                 description: '<span style="color:#fff;"><%= event.description%></span>',
+                 start :  '<span style="color:#fff;"><%= event.starts_at%></span>',
+                 end :  '<span style="color:#bbb;display:table;margin-bottom:10px;font-weight:lighter;"><%= event.ends_at%></span></div>'
                  })
-          </script>      
+          </script>
+            
                      
         <%end%>
       <%end%>
@@ -28,17 +28,18 @@
                    <script type='text/javascript'>
                           event_list.push(   
                            {
-                           title : '<%= event.title%>',
-                           description: '<%= event.title%>',
-                           start :  '<%= event.starts_at%>',
-                           end :  '<%= event.ends_at%>'
+	                         title : '<div class="calendarEvnt"><span style="font-size:16px;display:block;text-transform:capitalize;"><%= event.title %></span>',
+			                 description: '<span style="color:#fff;"><%= event.description%></span>',
+			                 start :  '<span style="color:#fff;"><%= event.starts_at%></span>',
+			                 end :  '<span style="color:#bbb;display:table;margin-bottom:10px;font-weight:lighter;"><%= event.ends_at%></span></div>'
 
                            })
                     </script>
            <%end%>
         <%end%>
 <%end%>
-    <div id="event_list" style="width: 400px;float: left; margin-left:15px; color:#fff;">
+</div>
+    <div id="event_list" style="width: 350px;float: left; color:#000;">
         <h1> Lista de eventos </h1>
         
     </div>

@@ -1,7 +1,7 @@
 <% if  @user_l.coverphoto.blank? %>
-<div id="banner-profile" style="background:url(/assets/<%= @user_l.cover_photox %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url(/assets/<%= @user_l.cover_photox %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%else%>
-<div id="banner-profile" style="background:url('<%= @user_l.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url('<%= @user_l.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 <%end%>
    <div id="notice" class="notice"></div>
 
@@ -14,8 +14,10 @@
         <!-- User Avatar -->
         <div id="box-user-credential" class="network-layout">
             <div class="thumbnail"  >
+
              <%= link_to image_tag(@user_l.avatar.profile), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank? && !nil   ) %>
-             <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?  )  %>  
+             <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?  )  %>
+
 
             </div>
 
@@ -71,11 +73,11 @@
                             <li><a href="#">No hay cursos</a></li>
                         <%else%>
                             <% @courses.each do |cu|%>
-                            
+
                                 <% @cort = Course.find(cu.course_id)%>
                                    <% if @cort.network_id == current_network.id %>
                                     <% if @cort.active_status == true%>
-                                    
+
                                     <% if cu.accepted == true %>
                                         <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
                                     <%end%>
@@ -125,7 +127,8 @@
                     <div class="element-left" style="width:100px!important;">
                         <a class="plus-courses" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
                         <% @friends = @user_l.friendships.where(:accepted => true)%>
-
+                        <% @friends += @user_l.inverse_friendships.where(:accepted => true)%>
+                        <% @friends.uniq!%>
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
                                 <span class="title-num"><%= @friends.count %></span>

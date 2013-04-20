@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :members_in_groups
@@ -83,12 +84,10 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
 
-  get "courses/import", :to => "courses#import", :as => :import
+  get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
+  post "managers/upload_courses", :to => "managers#upload_courses", :as => :upload_courses
 
   resources :courses do
-    collection do
-      post :upload_csv
-    end
     resources :assignments
     resources :messages do
       collection do
@@ -158,14 +157,18 @@ Cursame30Lb::Application.routes.draw do
   delete "user/:personal_url/groups/delete_member" => "members_in_groups#destroy", :as => :delete_member_in_group
 
   # import csv de usuarios
-  get "users/import" => "users#import", :as => :import_users
-  get "/send_mails" => "users#send_mails", :as => :massive_mails
-  match "/sending" => "users#sending", :as => "massive_sending", :via => [:post]
-  get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
+  get "managers/import_users" => "managers#import_users", :as => :managers_import_users
+  get "managers/send_mails" => "managers#send_mails", :as => :massive_mails
+  match "managers/sending" => "managers#sending", :as => "massive_sending", :via => [:post]
+  post "/managers/upload_users" => "managers#upload_users", :as => :upload_users
 
-  post "users/upload_csv" => "users#upload_csv", :as => :upload_csv_users
+  get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
   match  "/users/", :to => "users#index",  :as =>  :users
   match  "/users/:personal_url/dashboard", :to => "users#dashboard", :as => :network_selector
+
+  # confirme user
+  post "users/confirm" => "users#confirm", :as => :user_confirm
+
   #friends
   #resources :user_friends
   get  "users/:personal_url/friends" => "friendships#show", :as => :show_friends
@@ -277,27 +280,27 @@ Cursame30Lb::Application.routes.draw do
    resources :comments do
       resources :activities
    end
-   
+
    resources :discussions do
        resources :activities
    end
-  
+
    resources :courses do
        resources :activities
    end
-   
+
     resources :user_surveys do
         resources :activities
     end
-    
+
    ####### rutas para like en web
-   
+
    get "/upvote/:id", :to => 'home#upvote', :as => :upvote
    get "/downvote/:id", :to => 'home#downvote', :as => :downvote
    get "/upvote_comment/:id", :to => 'home#upvote_comment', :as => :upvote_comment
    get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
-   
-   
+
+
 
    ####### rutas de estandarizacion de eventos
 

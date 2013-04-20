@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
@@ -62,36 +63,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  #GET /courses/import
-  def import
-    superadmin = current_user.roles.keep_if {
-      |role|
-      role.id == 4
-    }
-    if superadmin.size < 1 then
-      redirect_to root_path
-    end
 
-    @courses = Course.all
-  end
-
-  #POST /courses/upload_csv
-  def upload_csv
-    superadmin = current_user.roles.keep_if {
-      |role|
-      role.id ==4
-    }
-    if superadmin.size < 1 then
-      redirect_to root_path
-    end
-
-    @errores = Course.import(params[:file])
-    @courses = Course.all
-    respond_to do |format|
-      format.html { render "courses/import"}
-      format.json { render json: @courses }
-    end
-  end
 
   def send_mails
     @user = current_user
