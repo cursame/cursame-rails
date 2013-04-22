@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415193823) do
+ActiveRecord::Schema.define(:version => 20130419210005) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+    t.integer  "course_id"
     t.integer  "likes"
   end
 
@@ -108,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -188,6 +188,17 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "errors", :force => true do |t|
+    t.integer  "number"
+    t.text     "message"
+    t.string   "os"
+    t.string   "browser"
+    t.datetime "create_at"
+    t.integer  "importance"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "starts_at"
@@ -227,6 +238,17 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
