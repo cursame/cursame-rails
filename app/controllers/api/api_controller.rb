@@ -46,7 +46,7 @@ class Api::ApiController < ApplicationController
     @user.members_in_courses.each do |course|
       @ids.push(course.course_id)
     end
-    @courses = @network.courses.where("public_status == ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
 
