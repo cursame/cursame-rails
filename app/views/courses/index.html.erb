@@ -62,7 +62,7 @@ width: 700px!important; text-align: center!important; padding-top: 30px!importan
     <div id="course-info">
     <div class="hidden-text">
        <li id="silabus" class="silabus">
-           <%= course.silabus.html_safe %>
+           <%= course.silabus.html_safe if course.silabus %>
        </li> 
     </div>
        
