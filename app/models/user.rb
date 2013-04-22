@@ -19,9 +19,8 @@ class User < ActiveRecord::Base
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
   :confirmation_token
   # Agredas las relaciones de frienship
-  has_many :friendships, :uniq => true
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
-
+  has_many :friendships, :uniq => true, :dependent => :destroy
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
@@ -38,12 +37,11 @@ class User < ActiveRecord::Base
   has_many :deliveries, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
-  has_many :friendships, :dependent => :destroy
   has_many :survey, :dependent => :destroy
-  has_many :activities
+  has_many :activities; :dependent => :destroy
 
   #publications/walls
-  has_many :userpublicationings
+  has_many :userpublicationings, :dependent => :destroy
   has_many :walls, :through => :userpublicationings
 
 
@@ -53,7 +51,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :personal_url
 
   # roles
-  has_many :permissionings
+  has_many :permissionings, :dependent => :destroy
   has_many :roles, :through => :permissionings
 
   #nested atributes for forms asets
@@ -63,13 +61,13 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :networks
 
   #surveys
-  has_many :assets
+  has_many :assets, :dependent => :destroy
 
   #comentarios para usuarios
   acts_as_commentable
 
   #notificaciones usuarios
-  has_many :notifications
+  has_many :notifications, :dependent => :destroy
 
 
   #avatar

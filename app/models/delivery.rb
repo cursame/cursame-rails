@@ -3,16 +3,15 @@ class Delivery < ActiveRecord::Base
 
   scope :active_inactive
   scope :courses
-  has_many :deliveries_courses
-  has_many :courses, :through => :deliveries_courses, :dependent => :destroy
-  has_many :areas_of_evaluation
-  has_many :assignments
-  has_many :areas_of_evaluations, :dependent => :destroy
+  has_many :deliveries_courses, :dependent => :destroy
+  has_many :courses, :through => :deliveries_courses
+  has_many :areas_of_evaluation, :dependent => :destroy
+  has_many :assignments, :dependent => :destroy
   belongs_to :user
   has_many :delivery_assets, :dependent => :destroy
   has_many :assets, :through => :delivery_assets
-  has_many :events, as: :schedule
-  has_many :activities, as: :activitye
+  has_many :events, as: :schedule, :dependent => :destroy
+  has_many :activities, as: :activitye, :dependent => :destroy
   belongs_to :network
 
 

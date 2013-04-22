@@ -2,20 +2,20 @@ class Survey < ActiveRecord::Base
  # attr_accessible  :title, :description, :starts_at, :ends_at, :schedule_id, :schedule_type, :user_id, :network_id, :course_id, :show
 
   has_many :questions, :dependent => :destroy
-  has_many :surveyings
+  has_many :surveyings, :dependent => :destroy
   has_many :courses, :through => :surveyings
-  has_many :compart_assets
+  has_many :compart_assets, :depedent => :destroy
   has_many :assets, :through => :compart_assets
-  has_many :events, as: :schedule
+  has_many :events, as: :schedule, :dependent => :destroy
   belongs_to :network
   belongs_to :poll
-  has_many :user_surveys
+  has_many :user_surveys, :dependent => :destroy
 
   belongs_to :user
-  has_many :activities, as: :activitye
+  has_many :activities, as: :activitye, :dependent => :destroy
 
   #comentarios para las surveys
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   acts_as_commentable
   #para los likes
@@ -37,7 +37,7 @@ class Survey < ActiveRecord::Base
   end
 
   after_create do
-    
+
      if self.publish_date <= DateTime.now then
        #self.update_attributes(:publish => true)
        self.publish!
@@ -54,7 +54,7 @@ class Survey < ActiveRecord::Base
       end
       #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
-        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id 
+        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
       end
     end
 
@@ -89,8 +89,8 @@ end
   def self.user
     User.last
   end
-  
-  def title 
+
+  def title
      self.name
   end
 

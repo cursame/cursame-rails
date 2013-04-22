@@ -15,13 +15,13 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   #assets
-  has_many :compart_assets
+  has_many :compart_assets, :dependent => :destroy
   has_many :assets, :through => :compart_assets, :source => :comment
 
   #course belongnings
   belongs_to :network
   belongs_to :course
-  has_many :activities, as: :activitye
+  has_many :activities, as: :activitye, :dependent => :destroy
 
   #comentarios para los comentarios
   acts_as_commentable

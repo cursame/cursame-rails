@@ -1,5 +1,5 @@
 class Asset < ActiveRecord::Base
-  
+
   belongs_to :user
 
   has_many :delivery_assets
@@ -8,11 +8,10 @@ class Asset < ActiveRecord::Base
   has_many :questions, :through => :question_assets
   has_many :assignment_assets
   has_many :assignments, :through => :assignment_assets
-  
-  
+
+
   #uploader to upadate files
    mount_uploader :file, FileUploader
-  
-   
-    
+
+
 end
