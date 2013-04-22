@@ -1,3 +1,11 @@
+<div id="admin-sidebar">
+  <h5>Administracion</h5>
+  <ul>
+    <%= render :partial => "managers/menu"%>
+
+  </ul>
+</div>
+<div id="admin-content">
 <h2>Import Users</h2>
 <%= form_tag upload_users_path, multipart: true do %>
   <%= file_field_tag :file %>
@@ -22,10 +30,13 @@
 <% end %>
 
 <h2>List Of Users<h2>
-<table id="users">
+<table class="striped">
   <tr>
     <th>Id</th>
     <th>Email</th>
+    <th>Nombre</th>
+    
+<!--
     <th>Encrypted_password</th>
     <th>Reset_password_token</th>
     <th>Reset_password_sent_at</th>
@@ -53,39 +64,41 @@
     <th>Failed_attempts</th>
     <th>Unlock_token</th>
     <th>Locked_at</th>
-    <th>Authentication_token</th>
+    <th>Authentication_token</th>-->
   </tr>
 <% @users.each do |user|%>
   <tr>
-    <th><%= user.id %></th>
-    <th><%= user.email %></th>
-    <th><%= user.encrypted_password %></th>
-    <th><%= user.reset_password_token %></th>
-    <th><%= user.reset_password_sent_at %></th>
-    <th><%= user.remember_created_at %></th>
-    <th><%= user.sign_in_count %></th>
-    <th><%= user.current_sign_in_at %></th>
-    <th><%= user.last_sign_in_at %></th>
-    <th><%= user.current_sign_in_ip %></th>
-    <th><%= user.last_sign_in_ip %></th>
-    <th><%= user.created_at %></th>
-    <th><%= user.updated_at %></th>
-    <th><%= user.first_name %></th>
-    <th><%= user.last_name %></th>
-    <th><%= user.description %></th>
-    <th><%= user.personal_url %></th>
-    <th><%= user.avatar %></th>
-    <th><%= user.coverphoto %></th>
-    <th><%= user.facebook_link %>
-    <th><%= user.twitter_link %>
-    <th><%= user.bios %>
-    <th><%= user.confirmation_token %>
-    <th><%= user.confirmed_at %>
-    <th><%= user.confirmation_sent_at %>
-    <th><%= user.unconfirmed_email %>
-    <th><%= user.failed_attempts %>
-    <th><%= user.unlock_token %>
-    <th><%= user.locked_at %>
-    <th><%= user.authentication_token %>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%= user.name%></td>
+<!--<td><%= user.encrypted_password %></td>
+    <td><%= user.reset_password_token %></td>
+    <td><%= user.reset_password_sent_at %></td>
+    <td><%= user.remember_created_at %></td>
+    <td><%= user.sign_in_count %></td>
+    <td><%= user.current_sign_in_at %></td>
+    <td><%= user.last_sign_in_at %></td>
+    <td><%= user.current_sign_in_ip %></td>
+    <td><%= user.last_sign_in_ip %></td>
+    <td><%= user.created_at %></td>
+    <td><%= user.updated_at %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.description %></td>
+    <td><%= user.personal_url %></td>
+    <td><%= user.avatar %></td>
+    <td><%= user.coverphoto %></td>
+    <td><%= user.facebook_link %></td>
+    <td><%= user.twitter_link %></td>
+    <td><%= user.bios %></td>
+    <td><%= user.confirmation_token %></td>
+    <td><%= user.confirmed_at %></td>
+    <td><%= user.confirmation_sent_at %></td>
+    <td><%= user.unconfirmed_email %></td>
+    <td><%= user.failed_attempts %></td>
+    <td><%= user.unlock_token %></td>
+    <td><%= user.locked_at %></td>
+    <td><%= user.authentication_token %></td>-->
   </tr>
 <%end%>
+</div>

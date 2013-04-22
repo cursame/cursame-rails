@@ -1,6 +1,15 @@
+<div id="admin-sidebar">
+  <h5>Administracion</h5>
+  <ul>
+    <%= render :partial => "managers/menu"%>
+
+  </ul>
+</div>
+<div  class="form-mailer" id="admin-content">
 <%= form_tag "/managers/sending" do%>
 Subject: <%= text_field_tag(:subject) %>
 <p>
 Message: <%=text_area_tag(:message)%>
 <%=submit_tag("Send")%>
 <%end%>
+</div>
