@@ -4,7 +4,7 @@ class Survey < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :surveyings, :dependent => :destroy
   has_many :courses, :through => :surveyings
-  has_many :compart_assets, :depedent => :destroy
+  has_many :compart_assets, :dependent => :destroy
   has_many :assets, :through => :compart_assets
   has_many :events, as: :schedule, :dependent => :destroy
   belongs_to :network

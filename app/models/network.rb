@@ -1,5 +1,5 @@
 class Network < ActiveRecord::Base
-  has_one :network_template, :depdendet => :destroy
+  has_one :network_template, :dependent => :destroy
   has_many :permissionings, :dependent => :destroy
   has_many :users, :through => :permissionings
   has_many :discussions, :dependent => :destroy

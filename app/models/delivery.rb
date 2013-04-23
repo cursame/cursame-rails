@@ -8,6 +8,7 @@ class Delivery < ActiveRecord::Base
   has_many :areas_of_evaluation, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
   belongs_to :user
+  has_many :areas_of_evaluations, :dependent => :destroy
   has_many :delivery_assets, :dependent => :destroy
   has_many :assets, :through => :delivery_assets
   has_many :events, as: :schedule, :dependent => :destroy

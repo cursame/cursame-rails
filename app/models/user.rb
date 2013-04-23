@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   has_many :survey, :dependent => :destroy
-  has_many :activities; :dependent => :destroy
+  has_many :activities, :dependent => :destroy
 
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy
@@ -350,5 +350,13 @@ class User < ActiveRecord::Base
         },
       # :conditions => ['userpublicationings.user_id = ? OR public = ?',self.id,true])
       :conditions => ['userpublicationings.user_id = ? OR coursepublicationings.course_id in (?)',self.id,ids]).order('walls.created_at DESC')
+  end
+
+  def self.active!
+    self.lock_access!
+  end
+
+  def self.inactive!
+    self.unlock_access!
   end
 end

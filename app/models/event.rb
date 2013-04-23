@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   ####### termino en ingles utilizado para agendar
 
   belongs_to :schedule, polymorphic: :true
-  has_many :activities, as: :activitye, :depedent => :destroy
+  has_many :activities, as: :activitye, :dependent => :destroy
 
   # need to override the json view to return what full_calendar is expecting.
   # http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
