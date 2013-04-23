@@ -2,7 +2,7 @@
     <div id="box-titles">
         <ul id="banner-btns" class="list-header">
             <li class="calendar" get-to="#calendar-area" move-sidebar-height="105px" on-load-function="calendar">Calendario</li>
-            <% permitted_to? :create, :courses do %>
+          <% permitted_to? :create, :courses do %>
             <li class="calendar" get-to="#full-deliveries-area" move-sidebar-height="105px">Entregas</li>
             <li class="calendar" get-to="#my_old_courses" move-sidebar-height="105px">Cursos antiguos</li>
             <%end%>
@@ -27,9 +27,10 @@
                 <%= render partial: "calendar/list"%>
                 </div><!-- ends configurationing -->
         </div>
-       
-        <div id="full-deliveries-area" >
-          <%= link_to "Atualizar información", user_acces_courses_path, :remote => true%>
+        <div id="full-deliveries-area" >          
+            <div>
+                <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %>
+            </div> 
           <div id="actual_resources">
           <% @course_for_user = current_user.courses.where(:active_status => true)%>
           <%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user }%>
@@ -37,7 +38,7 @@
         </div>
         
         <div id="my_old_courses">
-            <%= link_to "Actualizar información", user_old_courses_path, :remote => true  %>
+            <%= link_to "Actualizar información", user_old_courses_path, :remote => true ,:id =>"update_old_courses_information"%>
             <div id="old_resources" >
                 <% @old_course_for_user = current_user.courses.where(:active_status => false)
                 %>
@@ -47,3 +48,11 @@
                   
     </div>
 </div>
+<script>
+    $("#full-deliveries-area").on('show',function (argument) {
+        $("#update_courses_information").trigger("click",$("#update_courses_information"));
+    });
+    $("#my_old_courses").on('show',function (argument) {
+        $("#update_old_courses_information").trigger("click",$("#update_old_courses_information"));
+    });
+</script>

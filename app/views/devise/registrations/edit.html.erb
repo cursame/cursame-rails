@@ -61,25 +61,22 @@
 	      <%= f.email_field :email %>
       </div>
   	  <div class="rightlabel">
-	      <%= f.label :biografía %>
-	      <%= f.text_field :bios %>
+	      <%= f.label :bio %> <br>
+	      <%= f.text_area :bios, :rows => 6, :style=>"width:230px" %>
       </div>
   	  <div class="leftlabel">
 	      <%= f.label :twitter_link %>
 	      <%= f.text_field :twitter_link %>
   	  </div>
-  	  <div class="rightlabel">
-	      <%= f.label :biografía %>
-	      <%= f.text_field :bios %>
-	  </div>
+
   	  <div class="leftlabel">    
 	      <%= f.label :Direccion %>
 	      <div style="float:left; clear: both;">
 	      <div class="personal-url-label" style="padding-top:10px;">http://cursa.me/users/</div><%= f.text_field :personal_url, :class => 'personal-url' %></div>
       </div>
   	  <div class="rightlabel">
-	      <%= f.label :Contraseña %>
-	      <%= f.password_field :password, :autocomplete => "on" %>
+	      <%= f.label :confirma_tus_cambios %>
+	      <%= f.password_field :current_password, :placeholder => 'Contraseña' %>
       </div>
       <div class="passsctn" style="clear: both;background: #eee;width: 526px;height: 80px; padding: 0px 10px; margin-left: -10px; top: 13px; margin-bottom:20px; position: relative; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">
 	  	  <div class="leftlabel">
@@ -91,15 +88,14 @@
 		        <div><%= f.label :confirma_el_password %><br />
 		        <%= f.password_field :password_confirmation %></div>
 		  </div>
-	  </div><!-- ends passsctn -->
+	  </div><!-- ends   -->
 
   </div><!-- ends box-fields -->
 
   <div class="submit-area"></div>
-      <div><%= f.label :confirma_tus_cambios_colocando_tu_contraseña %>
+      <!-- <div><%= f.label :confirma_tus_cambios_colocando_tu_contraseña %>
         <%= f.password_field :current_password %>
-      	<!-- (Para realizar tus cambios necesitamos que confirmes con tu contraseña) -->
-      </div>
+      </div> -->
   <div class="submit-btns" style="margin-top:0px!important;float:right!important;"><%= f.submit "Actualizar" %><%= link_to "Regresar", :back, :class => "a-btn" %></div>
 
   </div><!-- ends edituserdmenu -->
