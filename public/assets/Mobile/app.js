@@ -70443,7 +70443,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
             publication.coverphoto = course.coverphoto.url;
             publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-            publication.courseName = course.title; //@todo poner bien el titulo ...
+            publication.courseName = course.title;
             publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
@@ -70965,10 +70965,10 @@ Ext.define('Cursame.controller.tablet.Main', {
             params = me.getHeaderCommentsData(),
             data = {};
         if (params) {
-            data.headerWall = params.coverphoto;
-            data.headerAvatar = params.avatar;
+            data.headerWall = params.headerWall;
+            data.headerAvatar = params.headerAvatar ? params.headerAvatar : params.avatar;
             data.headerName = params.headerName ? params.headerName : params.headerName = {first_name:params.first_name,last_name:params.last_name};
-            data.headerBios = params.bios;
+            data.headerBios = params.headerBios;
             if (firstCommentRecord) {
                 firstCommentRecord.set('headerWall', data.headerWall);
                 firstCommentRecord.set('headerAvatar', data.headerAvatar);
@@ -71586,7 +71586,7 @@ Ext.define('Cursame.controller.phone.Main', {
             publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
             publication.coverphoto = course.coverphoto.url;
             publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-            publication.courseName = course.title; //@todo poner bien el titulo ...
+            publication.courseName = course.title;
             publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
@@ -72108,10 +72108,10 @@ Ext.define('Cursame.controller.phone.Main', {
             params = me.getHeaderCommentsData(),
             data = {};
         if (params) {
-            data.headerWall = params.coverphoto;
-            data.headerAvatar = params.avatar;
+            data.headerWall = params.headerWall;
+            data.headerAvatar = params.headerAvatar ? params.headerAvatar : params.avatar;
             data.headerName = params.headerName ? params.headerName : params.headerName = {first_name:params.first_name,last_name:params.last_name};
-            data.headerBios = params.bios;
+            data.headerBios = params.headerBios;
             if (firstCommentRecord) {
                 firstCommentRecord.set('headerWall', data.headerWall);
                 firstCommentRecord.set('headerAvatar', data.headerAvatar);
@@ -72686,7 +72686,7 @@ Ext.define('Cursame.model.Comment', {
             type:'string',
             convert:function(headerAvatar, r){
                 var url = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-                if(headerAvatar){
+                if(headerAvatar && !Ext.isEmpty(headerAvatar)){
                     url = Cursame.URL+headerAvatar
                 }
                 return url;
@@ -73034,7 +73034,7 @@ Ext.define('Cursame.model.Notification', {
             mapping:'kind',
             type: 'string',
             convert:function  (value,r) {
-                var text,avatar = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png',
+                var text, avatar = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png',
                     obj = r.get('notificator_type'),
                     notificator = obj.notificator,
                     owner = obj.owner,
@@ -73051,10 +73051,9 @@ Ext.define('Cursame.model.Notification', {
                 if (Ext.isEmpty(userName)){
                     userName = 'Usuario';
                 }
-
                 switch(value){
                     case 'user_comment_on_network':
-                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
+                        avatar = creator.avatar && creator.avatar.url? Cursame.URL+creator.avatar.url: avatar;
                         text = '<a href="#">'+userName+'</a> ha comentado en al red';
                     break;
                     case 'user_comment_on_course':
@@ -73062,18 +73061,22 @@ Ext.define('Cursame.model.Notification', {
                         text = '<a href="#">'+userName+'</a> ha comentado en el curso <a href="#">'+course.title+'</a>';
                     break;
                     case 'new_delivery_on_course':
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = 'Se cre&oacute; la tarea <a href="#">"'+notificator.title+'"</a> en el curso <a href="#">'+course.title+'</a>';
                     break;
                     case 'new_public_course_on_network':
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = 'Se cre&oacute; el curso <a href="#">'+notificator.title+'</a>';
                     break;
                     case 'new_survey_on_course':
                         text = 'Se ha creado un cuestionario en el curso';
                     break;
                     case 'user_comment_on_comment':
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = '<a href="#">'+userName+'</a> ha comentado en el comentario '+'<a href="#">'+owner.comment+'</a>';
                     break;
                     case 'user_comment_on_user':
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = '<a href="#">'+userName+'</a> ha comentado en tu perfil '+'<a href="#">'+notificator.comment+'</a>';
                     break;
                     case 'user_comment_on_discussion':
