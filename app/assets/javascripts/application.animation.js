@@ -82,6 +82,7 @@ $(document).ready(function() {
     }
     function openBannerAnimation( elementHide, bannerProfileHeight , slideBarPaddValue ){
         $(elementHide).show();
+        $(elementHide).trigger('show');
         $('#banner-profile').animate({
             height: bannerProfileHeight+'px'
         }, time, function(){
@@ -98,6 +99,7 @@ $(document).ready(function() {
         }, time, function() {
             $(elementHide).hide();
             $(elementShow).show();
+            $(elementShow).trigger('show');
             $('#banner-profile').animate({
                 height: bannerProfileHeight+'px'
             }, time);

@@ -79,31 +79,19 @@
        
  	</div>
  	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
+	<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
 		<div id="comments_graph" style="height:227px; weight:279px;" ></div>
-       	<% current_network.comments.count%>
           <% @comment = current_network.comments.count %>
-          <% @courses_l = current_network.courses%>
-          <% @courses_l.each do |el|%>
-            <% @co_el = el.comments.count %>
-            <% el.deliveries.each do |dl|%>
-              <% @co_dl = dl.comments.count%>
-            <%end%>
-          <%end%>
-          <% current_network.users.each do |cu| %>
-           <% @co_cu = cu.comments.count %>
-          <%end%>
+        
+          
+          
           
            	<script class="text/javascript">
              
               Morris.Donut({
                  element: 'comments_graph',
                  data: [
-                   {label: "Comentarios", value: <%=@comment %> },
-                   {label: "Comentarios en tareas", value: <%=@co_dl %> },
-                   {label: "Comentarios en cursos", value: <%= @co_el %> },
-                   {label: "Comentarios entre usuarios", value: <%= @co_cu %> }
-                   
+                   {label: "Comentarios", value: <%=@comment %> }
                    
                  ]
                });
@@ -114,13 +102,53 @@
 	
 
 	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cuestionarios</div>
-		<img src="/assets/charts/chart1.png">
+        <% @surveys = current_network.surveys.count %>     
+        <% @surveys_publish = current_network.surveys.where(:state => 'published').count%>
+        <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%> 
+        <%# @user_surveys = current_network.surveys.user_surveys.count %>    
+        	<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Examenes</div>
+        	<div id="surveys_graph" style="height:227px; weight:279px;" ></div>
+           	
+        <script class="text/javascript">
+         
+          Morris.Donut({
+             element: 'surveys_graph',
+             data: [
+               {label: "Examenes", value: <%=@surveys %> },
+               {label: "Examenes en curso", value: <%=@surveys_publish %> },
+               {label: "Examenes sin publicar", value: <%=@surveys_unpublished %> },
+               
+               
+               
+             ]
+           });
+
+
+        </script>    
+          
 	</div>
 	
 	<div class="admin-chart">
 		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Discusiones</div>
-		<img src="/assets/charts/chart1.png">
+         <% @discussions = current_network.discussions.count %>      
+            <%# @user_surveys = current_network.surveys.user_surveys.count %>    
+          
+               	<div id="discussion_graph" style="height:227px; weight:279px;" ></div>
+        	
+            <script class="text/javascript">
+
+              Morris.Donut({
+                 element: 'discussion_graph',
+                 data: [
+                   {label: "Discusiones", value: <%=@discussions %> }
+
+
+                 ]
+               });
+
+
+            </script>
+            
 	</div>
 	
 	

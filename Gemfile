@@ -84,6 +84,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #nifty scaffolding
 gem "nifty-generators", :group => :development
 
+#group :production, :subtest do
+  #gem 'le' 
+  
+#end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
