@@ -61,9 +61,9 @@
      <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">
          <p><b>Sylabus</b><b>:</b>
          <%= @course.silabus %> </p>
-          <% if @member.owner == true  %>
+         <% permitted_to? :create, :courses do %>
          <br><%= link_to "editar curso", edit_course_path%>
-     <%end%>
+        <%end%>
      </div>
 
      <div id="tabs-friends" class="tabs-style">
@@ -71,15 +71,26 @@
             <% @course.members_in_courses.each do |member|  %>
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
+                <% if current_role == 'admin' || 'superadmin'%>
+                    <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>
+                    <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>
+
+                <%else%>
                 <% if @member.accepted == true %>
                     <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>
                     <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>
 
                 <%end%>
+                <%end%>
             <%end%>
+            <% if current_role == 'admin' || 'superadmin'%>
+            <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
+            
+              <%else%>
              <% if @member.owner == true %>
                     <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
                <%end%>
+             <%end%>
          </div>
 
   </div>

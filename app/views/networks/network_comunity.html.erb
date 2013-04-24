@@ -1,6 +1,7 @@
 <% current_network.users.each do |user| %>
      <% @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
      <% @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
+     <% if user.personal_url != nil%>
      
      <div class="box_comunity">
          <div class="image_acces_comunity">
@@ -32,5 +33,6 @@
       </div><!-- ends dscription-comm -->
 
     </div><!-- ends box_comunity -->
+    <%end%>
     
 <% end %>
