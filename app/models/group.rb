@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   has_many :members_in_group, :dependent => :destroy
 
   has_many :grouppublicationings, :dependent => :destroy
-  has_many :wall, :through => :grouppublicationings, :despendent => :destroy
+  has_many :wall, :through => :grouppublicationings
 
   belongs_to :user
 

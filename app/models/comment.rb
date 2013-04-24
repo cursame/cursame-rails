@@ -15,8 +15,8 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   #assets
-  has_many :compart_assets, :dependent => :destroy
-  has_many :assets, :through => :compart_assets, :source => :comment
+  #has_many :compart_assets, :dependent => :destroy
+  #has_many :assets, :through => :compart_assets, :source => :comment
 
   #course belongnings
   belongs_to :network
@@ -54,7 +54,7 @@ class Comment < ActiveRecord::Base
   end
 
   #agregar un asset al comentario
-  accepts_nested_attributes_for :compart_assets
+  # accepts_nested_attributes_for :compart_assets
 
   #para elegir el elemento que recibir a/o el comentario
   def self.get_commentable(commentable_id,commentable_type)

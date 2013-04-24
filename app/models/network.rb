@@ -1,16 +1,17 @@
 class Network < ActiveRecord::Base
-  has_one :network_template, :dependent => :destroy
+  has_one :network_template#, :dependent => :destroy
   has_many :permissionings, :dependent => :destroy
   has_many :users, :through => :permissionings
   has_many :discussions, :dependent => :destroy
-  has_many :deliveries, :dependent => :destroy
+  has_many :deliveries#, :dependent => :destroy
   has_many :courses, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :surveys, :dependent => :destroy
+  has_many :surveys#, :dependent => :destroy
   #walls
   has_many :walls, :dependent => :destroy
   #library
-  has_many :libraries, :dependent => :destroy
+  # Error por que la variable no fue inicializada al usar destroy
+  has_many :libraries#, :dependent => :destroy
   #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
 
   validates_presence_of   :name, :subdomain, :population

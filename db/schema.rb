@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415193823) do
+ActiveRecord::Schema.define(:version => 20130424222304) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
     t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
-    t.integer  "course_id"
     t.integer  "likes"
   end
 
@@ -159,11 +158,9 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
     t.integer  "likes"
   end
 
-  create_table "deliveries_courses", :id => false, :force => true do |t|
-    t.integer  "course_id"
-    t.integer  "delivery_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "deliveries_courses", :force => true do |t|
+    t.integer "course_id"
+    t.integer "delivery_id"
   end
 
   create_table "delivery_assets", :force => true do |t|
@@ -227,17 +224,6 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "libraries", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "gade_e"
-    t.boolean  "active"
-    t.string   "file"
-    t.integer  "network_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -464,22 +450,6 @@ ActiveRecord::Schema.define(:version => 20130415193823) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "votes", :force => true do |t|
-    t.integer  "votable_id"
-    t.string   "votable_type"
-    t.integer  "voter_id"
-    t.string   "voter_type"
-    t.boolean  "vote_flag"
-    t.string   "vote_scope"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], :name => "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
   create_table "walls", :force => true do |t|
     t.integer  "publication_id"

@@ -1,4 +1,4 @@
 class DeliveriesCourse < ActiveRecord::Base
   belongs_to :course
-  belongs_to :delivery, :dependent => :destroy
+  belongs_to :delivery#, :dependent => :destroy
 end

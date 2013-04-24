@@ -3,20 +3,20 @@ class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
   has_many :members_in_courses, :dependent => :destroy
-  #has_many :definer_users
-  # has_many :users, :through => :definer_users
-  has_many :deliveries_courses, :dependent => :destroy
-  has_many :deliveries, :through => :deliveries_courses
-  has_many :assignments, :dependent => :destroy
+  has_many :definer_users, :dependent => :destroy
+  has_many :users, :through => :definer_users
+  has_many :deliveries_courses#, :dependent => :destroy
+  has_many :deliveries, :through => :deliveries_courses, :dependent => :destroy
+  has_many :assignments#, :dependent => :destroy
   has_many :surveyings, :dependent => :destroy
-  has_many :surveys, :through => :surveyings
+  has_many :surveys, :through => :surveyings, :dependent => :destroy
   has_many :response_to_the_evaluations, :dependent => :destroy
   has_many :discussions_coursess, :dependent => :destroy
-  has_many :discussions, :through => :discussions_courses
+  has_many :discussions, :through => :discussions_coursess, :dependent => :destroy
   belongs_to :network
   has_many :comments, :dependent => :destroy
 
-  has_many :activities, as: :activitye, :dependent => :destroy
+  has_many :activities, as: :activitye#, :dependent => :destroy
 
  #publications/walls
   has_many :coursepublicationings, :dependent => :destroy
@@ -59,7 +59,7 @@ class Course < ActiveRecord::Base
     end
   end
 
-  def self.import(file)
+  def self.import(file,network)
     arrayErrores = Array.new
     count = 1
     begin

@@ -17,28 +17,28 @@ class User < ActiveRecord::Base
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token
+  :confirmation_token, :locked_at
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
-  has_many :users_friends, :dependent => :destroy
+  #has_many :users_friends, :dependent => :destroy
   has_many :members_in_courses, :dependent => :destroy
   # Miembros de grupos
   has_many :members_in_groups, :dependent => :destroy
   has_many :groups, :dependent => :destroy
 
   has_many :courses, :through => :members_in_courses
-  has_many :users_surveys, :dependent => :destroy
+  has_many :users_surveys#, :dependent => :destroy
   has_many :assets, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
-  has_many :deliveries, :dependent => :destroy
+  has_many :deliveries#, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   has_many :survey, :dependent => :destroy
-  has_many :activities, :dependent => :destroy
+  has_many :activities#, :dependent => :destroy
 
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :personal_url
 
   # roles
-  has_many :permissionings, :dependent => :destroy
+  #has_many :permissionings, :dependent => :destroy
   has_many :roles, :through => :permissionings
 
   #nested atributes for forms asets
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :networks
 
   #surveys
-  has_many :assets, :dependent => :destroy
+  #has_many :assets, :dependent => :destroy
 
   #comentarios para usuarios
   acts_as_commentable
@@ -256,7 +256,7 @@ class User < ActiveRecord::Base
     return users.uniq
   end
 
-  def self.import(file)
+  def self.import(file,network)
     arrayErrores = Array.new
     count = 0
     begin
@@ -272,7 +272,8 @@ class User < ActiveRecord::Base
         user = new
       end
       hash = row.to_hash.slice(*accessible_attributes)
-      network_id = hash.delete("network_id")
+      network_id = network.id
+      hash.delete("network_id")
       role_id = hash.delete("role_id")
       user.attributes = hash
 
@@ -292,14 +293,6 @@ class User < ActiveRecord::Base
       if role_id.nil? then
         if Role.find_by_id(role_id).nil? then
           arrayErrores.push({:line => count, :message => "No existe el rol dado"})
-          errors = true
-        end
-      end
-
-      # Checa que exista el network_id
-      if network_id.nil? then
-        if Network.find_by_id(network_id).nil? then
-          arrayErrores.push({:line => count, :message => "No existe la network"})
           errors = true
         end
       end
@@ -352,11 +345,11 @@ class User < ActiveRecord::Base
       :conditions => ['userpublicationings.user_id = ? OR coursepublicationings.course_id in (?)',self.id,ids]).order('walls.created_at DESC')
   end
 
-  def self.active!
-    self.lock_access!
+  def active!
+    self.update_attributes(:locked_at => nil)
   end
 
-  def self.inactive!
-    self.unlock_access!
+  def inactive!
+    self.update_attributes(:locked_at => Time.now)
   end
 end
