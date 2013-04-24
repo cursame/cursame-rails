@@ -1,5 +1,26 @@
 task :remove_3a_from_bs => :environment do
- alumnos3a = [      
+ alumnos2a = [      
+        { :first_name => 'BRANDON ', :last_name => 'ANTONIO CIRILO', :email => 'info+012a@cursa.me',:password => 'QVS4q0ZQwj', :group => 'Segundo A' },
+        { :first_name => 'MARIA DE LOS ANGELES', :last_name => 'BARRIOS JASSO', :email => 'info+022a@cursa.me',:password => 'csEcLJ1jr2', :group => 'Segundo A' },
+        { :first_name => 'MARIA FERNANDA', :last_name => 'CADENA FLORES', :email => 'info+032a@cursa.me',:password => 'zQROo1DZHA', :group => 'Segundo A' },
+        { :first_name => 'MONCERATH ', :last_name => 'DE JESUS LAZARO', :email => 'info+042a@cursa.me',:password => 'cbGc0PyEWH', :group => 'Segundo A' },
+        { :first_name => 'BRENDA JAQUELINE', :last_name => 'DE JESUS LOPEZ', :email => 'info+052a@cursa.me',:password => 'oH1d68SsXw', :group => 'Segundo A' },
+        { :first_name => 'JOSE DE JESUS ', :last_name => 'ENRIQUEZ BARRIOS', :email => 'info+062a@cursa.me',:password => 'fnE1LJARMU', :group => 'Segundo A' },
+        { :first_name => 'REBECA ', :last_name => 'GENARO APOLINAR', :email => 'info+072a@cursa.me',:password => 'RLSvR7Z59C', :group => 'Segundo A' },
+        { :first_name => 'YARET ', :last_name => 'GONZALEZ RIVERA', :email => 'info+082a@cursa.me',:password => 'BZX78lwwKO', :group => 'Segundo A' },
+        { :first_name => 'MARIA FERNANDA', :last_name => 'GUZMAN BLAS', :email => 'info+092a@cursa.me',:password => 'u1KX0c6ngq', :group => 'Segundo A' },
+        { :first_name => 'JASMIN ', :last_name => 'HUERTA LARA', :email => 'info+102a@cursa.me',:password => 'mq8C9XlMJy', :group => 'Segundo A' },
+        { :first_name => 'FELIPE JESUS', :last_name => 'JERONIMO FLORES', :email => 'info+112a@cursa.me',:password => 'svoFQ9fvMo', :group => 'Segundo A' },
+        { :first_name => 'XEARI MILTHON', :last_name => 'LAZARO GONZALEZ', :email => 'info+122a@cursa.me',:password => '4FIDecMhGC', :group => 'Segundo A' },
+        { :first_name => 'MIREYA ', :last_name => 'LOPEZ GONZALEZ', :email => 'info+132a@cursa.me',:password => '2Q7hudzNBQ', :group => 'Segundo A' },
+        { :first_name => 'LESLIE ', :last_name => 'LUCIANO CIRILO', :email => 'info+142a@cursa.me',:password => 'Ofq1zrc31m', :group => 'Segundo A' },
+        { :first_name => 'ARELI ', :last_name => 'MARTINEZ HERNANDEZ', :email => 'info+152a@cursa.me',:password => 'Qysa8mbhro', :group => 'Segundo A' },
+        { :first_name => 'PAOLA ', :last_name => 'MARINEZ ONOFRE', :email => 'info+162a@cursa.me',:password => '0YgNxZ4KzK', :group => 'Segundo A' },
+        { :first_name => 'SAMUEL ', :last_name => 'RAMIREZ DOMINGUEZ', :email => 'info+172a@cursa.me',:password => '9pdV4UHM00', :group => 'Segundo A' },
+        { :first_name => 'SHARON ', :last_name => 'RAMIREZ MENDOZA', :email => 'info+182a@cursa.me',:password => 'bne3g2iIhp', :group => 'Segundo A' },
+        { :first_name => 'ERICA ', :last_name => 'VICTORIANO PATRICIO', :email => 'info+192a@cursa.me',:password => 'mkrz7B9AcT', :group => 'Segundo A' }
+    ]
+    alumnos2b = [      
         { :first_name => 'MARIA DE LA LUZ', :last_name => 'ALBERTO SERRANO',:email => 'info+012b@cursa.me', :password => 'PRgM0xgKa1', :group => 'Segundo B' },
         { :first_name => 'JAQUELINE ', :last_name => 'BARRIOS DOMINGUEZ',:email => 'info+022b@cursa.me', :password => 'WOi8VpvmVX', :group => 'Segundo B' },
         { :first_name => 'ANA CRISTAL', :last_name => 'CRUZ MENDOZA',:email => 'info+032b@cursa.me', :password => 'Zgr2qow6sR', :group => 'Segundo B' },
@@ -22,12 +43,24 @@ task :remove_3a_from_bs => :environment do
         { :first_name => 'HEIDY ', :last_name => 'SALINAS MARTINEZ',:email => 'info+202b@cursa.me', :password => 'qEkY5tbnHn', :group => 'Segundo B' },
         { :first_name => 'ANDREA BRYTANI', :last_name => 'VELASCO MORALES',:email => 'info+212b@cursa.me', :password => 'a6pUKQELC4', :group => 'Segundo B' }
     ]
-     alumnos3a.each do |alumno|
+    
+     alumnos2a.each do |alumno|
       user = User.find_by_email(alumno[:email])
       MembersInCourse.where( :user_id => user.id, :course_id => 16).destroy_all
       MembersInCourse.where( :user_id => user.id, :course_id => 18).destroy_all
       MembersInCourse.where( :user_id => user.id, :course_id => 20).destroy_all
       MembersInCourse.where( :user_id => user.id, :course_id => 22).destroy_all
       MembersInCourse.where( :user_id => user.id, :course_id => 24).destroy_all
+    end 
+
+    alumnos2b.each do |alumno|
+      user = User.find_by_email(alumno[:email])
+
+      MembersInCourse.create :user_id => user.id, :course_id => 16, :accepted => true, :owner => false, :network_id => 6, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => 18, :accepted => true, :owner => false, :network_id => 6, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => 20, :accepted => true, :owner => false, :network_id => 6, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => 22, :accepted => true, :owner => false, :network_id => 6, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => 24, :accepted => true, :owner => false, :network_id => 6, :active_status => true
+
     end 
 end
