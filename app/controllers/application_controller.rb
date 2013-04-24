@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   helper_method :version_browser
   helper_method :browser
   helper_method :filtrati
-
+  helper_method :parse
   #roles
   before_filter :set_current_user
 
@@ -183,6 +183,7 @@ class ApplicationController < ActionController::Base
         #@activity.network_id = 1 #current_network.id
         @activity.save
   end
+  
   #### like_compare
   
   def compare_like

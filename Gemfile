@@ -44,17 +44,6 @@ group :development do
   # gem 'meta_request'
 end
 
-group :subtest do
-   gem 'le'
-end
-
-group :test do
-   gem 'le' 
-end
-
-group :production do 
-   gem 'le'
-end
 gem 'jquery-rails'
 
 #Gem for the comments		
@@ -95,6 +84,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #nifty scaffolding
 gem "nifty-generators", :group => :development
 
+#group :production, :subtest do
+  #gem 'le' 
+  
+#end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

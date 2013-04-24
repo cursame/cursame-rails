@@ -2,124 +2,129 @@
 
 <!--manejo de cursos rapido-->    
 <div class="title_dxv" style="margin-bottom:80px;">
-        <div class="black-delivery-box", style="padding:5px; margin-top:4px;width: 837px;">
+          <div id="configurationing">
             <div class="header">
                 <h1 style="margin-left:10px; padding:2px;"> Acceso rápido de administración de cursos    
                 </h1>
             </div>
-        </div>    
-<% course_for_user.each do |course|%>
-<!-- estamos creando un container especial para que no se descomponga el layout -->
-<div class="list_alt_box" id="propyety_course_<%= course.id %>">
-    <div class="header">
-        <h1><%= course.title %></h1>
-        <div class="status">
-            <%if  course.active_status == true%>
-             <span class="course_status">
-             	<%= link_to "Activo", active_status_path(course.id), :remote => true %>
-             </span>
-            <%else%>
-              Inactivo <%= link_to "activar curso", active_status_path(course.id), :remote => true %>
-            <%end%>
-        </div>
-    </div>
+          </div>
 
-  
-    <div class="top-header-delivery-box">
-        <ul>
-            <li id="tareas_list_<%= course.id %>" >
-                <div class="green-circle-mini" ></div>
-                <span>Tareas</span>
-            </li>
-            <li id="cuestrionario_list_<%= course.id %>">
-                <div class="orange-circle-mini"></div>
-                <span>Cuestionario</span>
-            </li>
-        </ul>
-    </div>
-  
-  <script>
-      $('#tareas_list_<%= course.id %>').click(function(e) {
-          $('#delivery_list_<%= course.id %>').lightbox_me({
-              centered: true, 
-              onLoad: function() { 
-                  $('#delivery_list_<%= course.id %>').find('input:first').focus()
-                  }
-              });
-          e.preventDefault();
-      });
-      $('#cuestrionario_list_<%= course.id %>').click(function(e) {
-            $('#survey_list_<%= course.id %>').lightbox_me({
-                centered: true, 
-                onLoad: function() { 
-                    $('#survey_list_<%= course.id %>').find('input:first').focus()
-                    }
-                });
-            e.preventDefault();
-       });
-      
-  </script>
+<div class="form-course fixform">
+	<% course_for_user.each do |course|%>
+	<!-- estamos creando un container especial para que no se descomponga el layout -->
+	<div class="list_alt_box" id="propyety_course_<%= course.id %>">
+	    <div class="headerOne">
+	        <h1><%= course.title %></h1>
+	        <div class="status">
+	            <%if  course.active_status == true%>
+	             <span class="course_status">
+	             	<%= link_to "Activo", active_status_path(course.id), :remote => true %>
+	             </span>
+	            <%else%>
+	              Inactivo <%= link_to "activar curso", active_status_path(course.id), :remote => true %>
+	            <%end%>
+	        </div>
+	    </div>
+	
+	  
+	    <div class="top-header-delivery-box">
+	        <ul>
+	            <li id="tareas_list_<%= course.id %>" >
+	                <!-- <div class="green-circle-mini" ></div> -->
+	                <span>Tareas</span>
+	            </li>
+	            <li id="cuestrionario_list_<%= course.id %>">
+	                <!-- <div class="orange-circle-mini"></div> -->
+	                <span>Cuestionario</span>
+	            </li>
+	        </ul>
+	    </div>
+	  
+	  <script>
+	      $('#tareas_list_<%= course.id %>').click(function(e) {
+	          $('#delivery_list_<%= course.id %>').lightbox_me({
+	              centered: true, 
+	              onLoad: function() { 
+	                  $('#delivery_list_<%= course.id %>').find('input:first').focus()
+	                  }
+	              });
+	          e.preventDefault();
+	      });
+	      $('#cuestrionario_list_<%= course.id %>').click(function(e) {
+	            $('#survey_list_<%= course.id %>').lightbox_me({
+	                centered: true, 
+	                onLoad: function() { 
+	                    $('#survey_list_<%= course.id %>').find('input:first').focus()
+	                    }
+	                });
+	            e.preventDefault();
+	       });
+	      
+	  </script>
+	</div>
+
+
+	
+	 <%end%>
 </div>
+	
+	<!--termina el container-->
+	<!-- comienza deliveries courses -->
+	<% current_user.courses.each do |course|%>     
+	<% if  course.deliveries.count != 0 %>
+	<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >
+	    <div><a id="close_x" class="close close_l" href="#"><center>x</center></a></div>
+	    <div class="deliveries_list"> 
+	        <h1> Tareas en el curso </h1>                     
 
 
- <%end%>
-</div>
-
-<!--termina el container-->
-<!-- comienza deliveries courses -->
-<% current_user.courses.each do |course|%>     
-<% if  course.deliveries.count != 0 %>
-<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >
-    <div><a id="close_x" class="close close_l" href="#"><center>x</center></a></div>
-    <div class="deliveries_list"> 
-        <h1> Tareas en el curso </h1>                     
-        <% course.deliveries.each do |delivery|%>
-            <div class="title_from_delivery_<%=delivery.id%>">
-                <% @delivery_id = delivery.id %>
-                <% @course_id = course.id %>
-                <a><b>  <%= link_to "#{delivery.title}", edit_delivery_access_path(delivery.id, :data => course.id) , :remote =>  true  %> - (<%= delivery.assignments.count%>) </b> </a>
-            </div>
-            <% delivery.assignments.each do |assignment|%>
-            
-            <div id="assignment_id_al_<%= delivery.id %>" >
-                 <div>
-                 <%= render :partial => "courses/delivery_menu", :locals => {:assignment => assignment, :course => course}%>
-                 </div>
-            </div>
-            
-            <%end%>
-         <%end%>
-        
-    </div>
-        <div class="locklok"  id="locomotion_<%=course.id%>">
-            <h1>Formularios</h1>  
-            <div id="locomotion_<%=course.id%>delivery">   
-            </div> 
-            <div id="locomotion_<%=course.id%>assignment">
-            </div>
-        </div>
-</div>   
-
-<%end%>
-<%end%>
-<!--termina deliveries-->
-<!--comienza surveys -->
-<% current_user.courses.each do |course|%>     
-<% if  course.surveys.count != 0 %>
-       <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
-            <a id="close_x" class="close close_l" href="#"><center>x</center></a>
-            <% course.surveys.each do |survey|%>
-               contador de examens respindidos   <%= survey.user_surveys.count%>
-
-               <div id="title_from_delivery<%=survey.id%>">
-                   <b><%= survey.name %></b>
-                   <% survey.user_surveys.each do |user_survey|%>
-                       <%= user_survey.evaluation %>
-                   <%end%>
-               </div>
-            <%end%>
-         </div>
-<%end%>
-<%end%>
-
+	        <% course.deliveries.each do |delivery|%>
+	            <div class="title_from_delivery_<%=delivery.id%>">
+	                <% @delivery_id = delivery.id %>
+	                <% @course_id = course.id %>
+	                <a><b><%= link_to "#{delivery.title}", edit_delivery_access_path(delivery.id, :data => course.id) , :remote =>  true  %> - (<%= delivery.assignments.count%>) </b> </a>
+	            </div>
+	            <% delivery.assignments.each do |assignment|%>
+	            
+	            <div id="assignment_id_al_<%= delivery.id %>" >
+	                 <div>
+	                 <%= render :partial => "courses/delivery_menu", :locals => {:assignment => assignment, :course => course}%>
+	                 </div>
+	            </div>
+	            
+	            <%end%>
+	         <%end%>
+	        
+	    </div>
+	        <div class="locklok"  id="locomotion_<%=course.id%>">
+	            <h1>Formularios</h1>  
+	            <div id="locomotion_<%=course.id%>delivery"></div> 
+	            <div id="locomotion_<%=course.id%>assignment"></div>
+	        </div>
+	</div>   
+	
+	<%end%>
+	<%end%>
+	<!--termina deliveries-->
+	<!--comienza surveys -->
+	<% current_user.courses.each do |course|%>     
+	<% if  course.surveys.count != 0 %>
+	       <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
+	            <a id="close_x" class="close close_l" href="#"><center>x</center></a>
+	            <% course.surveys.each do |survey|%>
+	               contador de examens respindidos   <%= survey.user_surveys.count%>
+	
+	               <div id="title_from_delivery<%=survey.id%>">
+	                   <b><%= survey.name %></b>
+	                   <% survey.user_surveys.each do |user_survey|%>
+	                       <%= user_survey.evaluation %>
+	                   <%end%>
+	               </div>
+	            <%end%>
+	         </div>
+	         
+	         
+	<%end%>
+	<%end%>
+	</div>
 <%end%>

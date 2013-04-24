@@ -215,6 +215,9 @@ html .fc,
 .fc-header-title {
   display: inline-block;
   vertical-align: top;
+  color: #1a1a1a;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 .fc-header-title h2 {
@@ -268,7 +271,7 @@ html .fc,
 
 .fc-content {
   clear: both;
-  border: 1px solid #000;
+  border: 1px solid #ccc;
   @include border-radius;
   @include shadow-dark-box;
   background: rgba(255, 255, 255, 0.04);
@@ -398,7 +401,10 @@ html .fc,
   line-height: 1.9em;
   padding: 0 .6em;
   white-space: nowrap;
+  background: transparent; color: #ccc;
 }
+
+.fc-widget-header { background: #ccc; color: #1a1a1a; }
 
 /* icon (for jquery ui) */
 

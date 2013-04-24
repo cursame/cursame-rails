@@ -331,6 +331,19 @@
         },
 
         /**
+         * Returns 'true' if the passed value is a String that matches the MS Date JSON encoding format
+         * @param value {String} The string to test
+         * @return {Boolean}
+         */
+        isMSDate: function(value) {
+            if (!Ext.isString(value)) {
+                return false;
+            } else {
+                return value.match("\\\\?/Date\\(([-+])?(\\d+)(?:[+-]\\d{4})?\\)\\\\?/") !== null;
+            }
+        },
+
+        /**
          * Returns `true` if the passed value is a JavaScript Object, `false` otherwise.
          * @param {Object} value The value to test.
          * @return {Boolean}
@@ -1857,40 +1870,37 @@ Ext.urlAppend = Ext.String.urlAppend;
         intersect: function() {
             var intersect = [],
                 arrays = slice.call(arguments),
-                i, j, k, minArray, array, x, y, ln, arraysLn, arrayLn;
+                item, minArray, itemIndex, arrayIndex;
 
             if (!arrays.length) {
                 return intersect;
             }
 
-            // Find the smallest array
-            for (i = x = 0,ln = arrays.length; i < ln,array = arrays[i]; i++) {
-                if (!minArray || array.length < minArray.length) {
-                    minArray = array;
-                    x = i;
+            //Find the Smallest Array
+            arrays = arrays.sort(function(a, b) {
+                if (a.length > b.length) {
+                    return 1;
+                } else if (a.length < b.length) {
+                    return -1;
+                } else {
+                    return 0;
                 }
-            }
+            });
 
-            minArray = ExtArray.unique(minArray);
-            erase(arrays, x, 1);
+            //Remove duplicates from smallest array
+            minArray = ExtArray.unique(arrays[0]);
 
-            // Use the smallest unique'd array as the anchor loop. If the other array(s) do contain
-            // an item in the small array, we're likely to find it before reaching the end
-            // of the inner loop and can terminate the search early.
-            for (i = 0,ln = minArray.length; i < ln,x = minArray[i]; i++) {
-                var count = 0;
-
-                for (j = 0,arraysLn = arrays.length; j < arraysLn,array = arrays[j]; j++) {
-                    for (k = 0,arrayLn = array.length; k < arrayLn,y = array[k]; k++) {
-                        if (x === y) {
-                            count++;
-                            break;
-                        }
+            //Populate intersecting values
+            for (itemIndex = 0; itemIndex < minArray.length; itemIndex++) {
+                item = minArray[itemIndex];
+                for (arrayIndex = 1; arrayIndex < arrays.length; arrayIndex++) {
+                    if (arrays[arrayIndex].indexOf(item) === -1) {
+                        break;
                     }
-                }
 
-                if (count === arraysLn) {
-                    intersect.push(x);
+                    if (arrayIndex == (arrays.length - 1)) {
+                        intersect.push(item);
+                    }
                 }
             }
 
@@ -3458,7 +3468,11 @@ Ext.JSON = new(function() {
         } else if (Ext.isDate(o)) {
             return Ext.JSON.encodeDate(o);
         } else if (Ext.isString(o)) {
-            return encodeString(o);
+            if (Ext.isMSDate(o)) {
+               return encodeMSDate(o);
+            } else {
+                return encodeString(o);
+            }
         } else if (typeof o == "number") {
             //don't use isNumber here, since finite checks happen inside isNumber
             return isFinite(o) ? String(o) : "null";
@@ -3512,6 +3526,9 @@ Ext.JSON = new(function() {
         // Overwrite trailing comma (or empty string)
         a[a.length - 1] = '}';
         return a.join("");
+    },
+    encodeMSDate = function(o) {
+        return '"' + o + '"';
     };
 
     /**
@@ -8320,7 +8337,7 @@ var noArgs = [],
  *
  * [getting_started]: #!/guide/getting_started
  */
-Ext.setVersion('touch', '2.1.0');
+Ext.setVersion('touch', '2.1.1');
 
 Ext.apply(Ext, {
     /**
@@ -9935,7 +9952,7 @@ Ext.define('Ext.env.OS', {
             ios: 'i(?:Pad|Phone|Pod)(?:.*)CPU(?: iPhone)? OS ',
             android: '(Android |HTC_|Silk/)', // Some HTC devices ship with an OSX userAgent by default,
                                         // so we need to add a direct check for HTC_
-            blackberry: 'BlackBerry(?:.*)Version\/',
+            blackberry: '(?:BlackBerry|BB)(?:.*)Version\/',
             rimTablet: 'RIM Tablet OS ',
             webos: '(?:webOS|hpwOS)\/',
             bada: 'Bada\/'
@@ -10145,7 +10162,7 @@ Ext.define('Ext.env.OS', {
             // always set it to false when you are on a desktop
             Ext.browser.is.WebView = false;
         }
-        else if (osEnv.is.iPad || osEnv.is.Android3 || (osEnv.is.Android4 && userAgent.search(/mobile/i) == -1)) {
+        else if (osEnv.is.iPad || osEnv.is.RIMTablet || osEnv.is.Android3 || (osEnv.is.Android4 && userAgent.search(/mobile/i) == -1)) {
             deviceType = 'Tablet';
         }
         else {
@@ -14555,15 +14572,17 @@ Ext.define('Ext.event.Dispatcher', {
     addListener: function(targetType, target, eventName) {
         var publishers = this.getActivePublishers(targetType, eventName),
             ln = publishers.length,
-            i;
+            i, result;
 
-        if (ln > 0) {
+        result = this.doAddListener.apply(this, arguments);
+
+        if (result && ln > 0) {
             for (i = 0; i < ln; i++) {
                 publishers[i].subscribe(target, eventName);
             }
         }
 
-        return this.doAddListener.apply(this, arguments);
+        return result;
     },
 
     doAddListener: function(targetType, target, eventName, fn, scope, options, order) {
@@ -14575,15 +14594,17 @@ Ext.define('Ext.event.Dispatcher', {
     removeListener: function(targetType, target, eventName) {
         var publishers = this.getActivePublishers(targetType, eventName),
             ln = publishers.length,
-            i;
+            i, result;
 
-        if (ln > 0) {
+        result = this.doRemoveListener.apply(this, arguments);
+
+        if (result && ln > 0) {
             for (i = 0; i < ln; i++) {
                 publishers[i].unsubscribe(target, eventName);
             }
         }
 
-        return this.doRemoveListener.apply(this, arguments);
+        return result;
     },
 
     doRemoveListener: function(targetType, target, eventName, fn, scope, order) {
@@ -15224,7 +15245,7 @@ Ext.define('Ext.mixin.Observable', {
      *
      * @param {String/String[]/Object} eventName The name of the event to listen for. May also be an object who's property names are
      * event names.
-     * @param {Function} fn The method the event invokes.  Will be called with arguments given to
+     * @param {Function/String} fn The method the event invokes.  Will be called with arguments given to
      * {@link #fireEvent} plus the `options` parameter described below.
      * @param {Object} [scope] The scope (`this` reference) in which the handler function is executed. **If
      * omitted, defaults to the object which fired the event.**
@@ -15301,7 +15322,7 @@ Ext.define('Ext.mixin.Observable', {
      * Same as {@link #addListener} with `order` set to `'before'`.
      *
      * @param {String/String[]/Object} eventName The name of the event to listen for.
-     * @param {Function} fn The method the event invokes.
+     * @param {Function/String} fn The method the event invokes.
      * @param {Object} [scope] The scope for `fn`.
      * @param {Object} [options] An object containing handler configuration.
      */
@@ -15315,7 +15336,7 @@ Ext.define('Ext.mixin.Observable', {
      * Same as {@link #addListener} with `order` set to `'after'`.
      *
      * @param {String/String[]/Object} eventName The name of the event to listen for.
-     * @param {Function} fn The method the event invokes.
+     * @param {Function/String} fn The method the event invokes.
      * @param {Object} [scope] The scope for `fn`.
      * @param {Object} [options] An object containing handler configuration.
      */
@@ -15327,7 +15348,7 @@ Ext.define('Ext.mixin.Observable', {
      * Removes an event handler.
      *
      * @param {String/String[]/Object} eventName The type of event the handler was associated with.
-     * @param {Function} fn The handler to remove. **This must be a reference to the function passed into the
+     * @param {Function/String} fn The handler to remove. **This must be a reference to the function passed into the
      * {@link #addListener} call.**
      * @param {Object} [scope] The scope originally specified for the handler. It must be the same as the
      * scope argument specified in the original call to {@link #addListener} or the listener will not be removed.
@@ -15345,7 +15366,7 @@ Ext.define('Ext.mixin.Observable', {
      * Same as {@link #removeListener} with `order` set to `'before'`.
      *
      * @param {String/String[]/Object} eventName The name of the event the handler was associated with.
-     * @param {Function} fn The handler to remove.
+     * @param {Function/String} fn The handler to remove.
      * @param {Object} [scope] The scope originally specified for `fn`.
      * @param {Object} [options] Extra options object.
      */
@@ -15359,7 +15380,7 @@ Ext.define('Ext.mixin.Observable', {
      * Same as {@link #removeListener} with `order` set to `'after'`.
      *
      * @param {String/String[]/Object} eventName The name of the event the handler was associated with.
-     * @param {Function} fn The handler to remove.
+     * @param {Function/String} fn The handler to remove.
      * @param {Object} [scope] The scope originally specified for `fn`.
      * @param {Object} [options] Extra options object.
      */
@@ -15395,18 +15416,14 @@ Ext.define('Ext.mixin.Observable', {
     /**
      * Suspends the firing of all events. (see {@link #resumeEvents})
      *
-     * @param {Boolean} queueSuspended Pass as true to queue up suspended events to be fired
-     * after the {@link #resumeEvents} call instead of discarding all suspended events.
      */
-    suspendEvents: function(queueSuspended) {
+    suspendEvents: function() {
         this.eventFiringSuspended = true;
     },
 
     /**
      * Resumes firing events (see {@link #suspendEvents}).
      *
-     * If events were suspended using the `queueSuspended` parameter, then all events fired
-     * during event suspension will be sent to any listeners now.
      */
     resumeEvents: function() {
         this.eventFiringSuspended = false;
@@ -16694,7 +16711,7 @@ Ext.DateExtras = {
         "MS": function(input, strict) {
             // note: the timezone offset is ignored since the MS Ajax server sends
             // a UTC milliseconds-since-Unix-epoch value (negative values are allowed)
-            var re = new RegExp('\\/Date\\(([-+])?(\\d+)(?:[+-]\\d{4})?\\)\\/');
+            var re = new RegExp('\\\\?/Date\\(([-+])?(\\d+)(?:[+-]\\d{4})?\\)\\\\?/');
             var r = (input || '').match(re);
             return r? new Date(((r[1] || '') + r[2]) * 1) : null;
         }
@@ -20070,7 +20087,7 @@ Ext.define('Ext.util.Translatable', {
         }
 
         if (!classReference) {
-            if (Ext.os.is.Android2 || Ext.browser.is.ChromeMobile) {
+            if (Ext.os.is.Android2) {
                 classReference = ScrollPosition;
             }
             else {
@@ -20404,7 +20421,6 @@ Ext.define('Ext.util.Draggable', {
         if (this.getDisabled()) {
             return false;
         }
-
         var offset = this.offset;
 
         this.fireAction('dragstart', [this, e, offset.x, offset.y], this.initDragStart);
@@ -22003,8 +22019,9 @@ Ext.define('Ext.Component', {
      * @private
      * All cls methods directly report to the {@link #cls} configuration, so anytime it changes, {@link #updateCls} will be called
      */
-    updateCls: function(newCls, oldCls) {
-        if (oldCls != newCls && this.element) {
+    updateCls: function (newCls, oldCls) {
+        if (this.element && ((newCls && !oldCls) || (!newCls && oldCls) || newCls.length != oldCls.length || Ext.Array.difference(newCls,
+            oldCls).length > 0)) {
             this.element.replaceCls(oldCls, newCls);
         }
     },
@@ -22353,7 +22370,8 @@ Ext.define('Ext.Component', {
         return docked;
     },
 
-    doSetDocked: function(docked) {
+    doSetDocked: function(docked, oldDocked) {
+        this.fireEvent('afterdockedchange', this, docked, oldDocked);
         if (!docked) {
             this.refreshInnerState();
         }
@@ -22393,7 +22411,6 @@ Ext.define('Ext.Component', {
 
         if (floating !== this.floating) {
             this.floating = floating;
-            this.element.toggleCls(floatingCls, floating);
 
             if (floating) {
                 this.refreshInnerState = Ext.emptyFn;
@@ -22410,6 +22427,8 @@ Ext.define('Ext.Component', {
 
                 delete this.refreshInnerState;
             }
+
+            this.element.toggleCls(floatingCls, floating);
 
             if (this.initialized) {
                 this.fireEvent('floatingchange', this, floating);
@@ -23648,9 +23667,9 @@ Ext.define('Ext.layout.Default', {
         this.callSuper(arguments);
 
         container.on('centeredchange', 'onItemCenteredChange', this, options, 'before')
-                 .on('floatingchange', 'onItemFloatingChange', this, options, 'before')
-                 .on('dockedchange', 'onBeforeItemDockedChange', this, options, 'before')
-                 .on('dockedchange', 'onAfterItemDockedChange', this, options);
+            .on('floatingchange', 'onItemFloatingChange', this, options, 'before')
+            .on('dockedchange', 'onBeforeItemDockedChange', this, options, 'before')
+            .on('afterdockedchange', 'onAfterItemDockedChange', this, options);
     },
 
     monitorSizeStateChange: function() {
@@ -23792,6 +23811,13 @@ Ext.define('Ext.layout.Default', {
     onAfterItemDockedChange: function(item, docked, oldDocked) {
         if (docked) {
             this.dockItem(item);
+        }
+    },
+
+    onAfterDockedChange:function(item, docked, oldDocked) {
+        var parent = item.getParent();
+        if(parent && docked) {
+            parent.getLayout().onAfterItemDockedChange(item, docked, oldDocked);
         }
     },
 
@@ -24546,6 +24572,14 @@ Ext.define('Ext.fx.layout.card.Abstract', {
             layout.unBefore('activeitemchange', 'onActiveItemChange', this);
         }
         this.setLayout(null);
+
+        if (this.observableId) {
+            this.fireEvent('destroy', this);
+            this.clearListeners();
+            this.clearManagedListeners();
+        }
+
+//        this.callSuper(arguments);
     }
 });
 
@@ -26000,9 +26034,6 @@ Ext.define('Ext.fx.layout.Card', {
                 if (type != 'fade') {
                     type = 'scroll';
                 }
-            }
-            else if (type === 'slide' && Ext.browser.is.ChromeMobile) {
-                type = 'scroll';
             }
 
             defaultClass = Ext.ClassManager.getByAlias('fx.layout.card.' + type);
@@ -28689,6 +28720,10 @@ Ext.define('Ext.scroll.Scroller', {
      * @chainable
      */
     scrollTo: function(x, y, animation) {
+        if (this.isDestroyed) {
+            return this;
+        }
+
 
         var translatable = this.getTranslatable(),
             position = this.position,
@@ -28724,7 +28759,7 @@ Ext.define('Ext.scroll.Scroller', {
         }
 
         if (positionChanged) {
-            if (animation !== undefined) {
+            if (animation !== undefined && animation !== false) {
                 translatable.translateAnimated(translationX, translationY, animation);
             }
             else {
@@ -29086,13 +29121,9 @@ Ext.define('Ext.scroll.Scroller', {
 
             mod = (position - snapOffset) % snapSize;
 
-            if (mod !== 0) {
+            if ((mod !== 0) && (position !== maxPosition)) {
                 if (Math.abs(mod) > snapSize / 2) {
-                    snapPosition = position + ((mod > 0) ? snapSize - mod : mod - snapSize);
-
-                    if (snapPosition > maxPosition) {
-                        snapPosition = position - mod;
-                    }
+                    snapPosition = Math.min(maxPosition, position + ((mod > 0) ? snapSize - mod : mod - snapSize));
                 }
                 else {
                     snapPosition = position - mod;
@@ -29590,10 +29621,10 @@ Ext.define('Ext.scroll.Indicator', {
     alternateClassName: 'Ext.util.Indicator',
 
     constructor: function(config) {
-        if (Ext.os.is.Android2 || Ext.os.is.Android3 || Ext.browser.is.ChromeMobile) {
+        if (Ext.os.is.Android2 || Ext.os.is.Android3) {
             return new Ext.scroll.indicator.ScrollPosition(config);
         }
-        else if (Ext.os.is.iOS) {
+        else if (Ext.os.is.iOS || Ext.browser.is.ChromeMobile) {
             return new Ext.scroll.indicator.CssTransform(config);
         }
         else if (Ext.os.is.Android4) {
@@ -30483,15 +30514,16 @@ Ext.define('Ext.Container', {
      * @param currentMask
      * @return {Object}
      */
-    applyMasked: function(masked, currentMask) {
-        var isVisible = true;
+    applyMasked: function(masked) {
+        var isVisible = true,
+            currentMask;
 
         if (masked === false) {
             masked = true;
             isVisible = false;
         }
 
-        currentMask = Ext.factory(masked, Ext.Mask, currentMask);
+        currentMask = Ext.factory(masked, Ext.Mask, this.getMasked());
 
         if (currentMask) {
             this.add(currentMask);
@@ -31092,11 +31124,12 @@ Ext.define('Ext.Container', {
 
             items.removeAt(currentIndex);
         }
-        else {
-            item.setParent(me);
-        }
 
         items.insert(index, item);
+
+        if (currentIndex === -1) {
+            item.setParent(me);
+        }
 
         if (isInnerItem) {
             me.insertInner(item, index);
@@ -31387,7 +31420,9 @@ Ext.define('Ext.Container', {
      * @private
      */
     applyScrollable: function(config) {
-        if (config && !config.isObservable) {
+        if (typeof config === 'boolean') {
+            this.getScrollableBehavior().setConfig({disabled: !config});
+        } else if (config && !config.isObservable) {
             this.getScrollableBehavior().setConfig(config);
         }
         return config;
@@ -32267,6 +32302,12 @@ Ext.define('Ext.Sheet', {
  * - **decline** - shaded using the {@link Global_CSS#$alert-color $alert-color} (red by default)
  * - **confirm** - shaded using the {@link Global_CSS#$confirm-color $confirm-color} (green by default)
  *
+ * You can also append `-round` to each of the last three UI's to give it a round shape:
+ *
+ * - **action-round**
+ * - **decline-round**
+ * - **confirm-round**
+ *
  * And setting them is very simple:
  *
  *     var uiButton = Ext.create('Ext.Button', {
@@ -32535,10 +32576,16 @@ Ext.define('Ext.Button', {
          * - `'back'` - a back button.
          * - `'forward'` - a forward button.
          * - `'round'` - a round button.
+         * - `'plain'`
          * - `'action'` - shaded using the {@link Global_CSS#$active-color $active-color} (dark blue by default).
          * - `'decline'` - shaded using the {@link Global_CSS#$alert-color $alert-color} (red by default).
          * - `'confirm'` - shaded using the {@link Global_CSS#$confirm-color $confirm-color} (green by default).
-         * - `'plain'`
+         *
+         * You can also append `-round` to each of the last three UI's to give it a round shape:
+         *
+         * - **action-round**
+         * - **decline-round**
+         * - **confirm-round**
          *
          * @accessor
          */
@@ -32681,11 +32728,12 @@ Ext.define('Ext.Button', {
 
         if (icon) {
             me.showIconElement();
-            element.setStyle('background-image', icon ? 'url(' + icon + ')' : '');
+            element.setStyle('background-image', 'url(' + icon + ')');
             me.refreshIconAlign();
             me.refreshIconMask();
         }
         else {
+        	element.setStyle('background-image', '');
             me.hideIconElement();
             me.setIconAlign(false);
         }
@@ -32705,6 +32753,7 @@ Ext.define('Ext.Button', {
             me.refreshIconMask();
         }
         else {
+			element.removeCls(oldIconCls);
             me.hideIconElement();
             me.setIconAlign(false);
         }
@@ -35443,9 +35492,9 @@ Ext.define('Ext.field.Input', {
         useMask: 'auto',
 
         /**
-         * @cfg {String} type The type attribute for input fields -- e.g. radio, text, password, file (defaults
-         * to 'text'). The types 'file' and 'password' must be used to render those field types currently -- there are
-         * no separate Ext components for those.
+         * @cfg {String} type The type attribute for input fields -- e.g. radio, text, password.
+         *
+         * If you want to use a `file` input, please use the {@link Ext.field.File} component instead.
          * @accessor
          */
         type: 'text',
@@ -36626,7 +36675,8 @@ Ext.define('Ext.field.Text', {
         readOnly: null,
 
         /**
-         * @cfg {Object} component The inner component for this field, which defaults to an input text.
+         * @cfg {Object} component The inner component for this field, which defaults to an input text. You are also
+         * able to use the {@link Ext.field.File} component by using the `file` xtype.
          * @accessor
          */
         component: {
@@ -37069,7 +37119,7 @@ Ext.define('Ext.MessageBox', {
          * @cfg
          * @inheritdoc
          */
-        ui: 'dark',
+        ui: (Ext.os.is.BlackBerry && Ext.os.version.getMajor() === 10) ? 'plain' : 'dark',
 
         /**
          * @cfg
@@ -37249,7 +37299,7 @@ Ext.define('Ext.MessageBox', {
 
         Ext.applyIf(config, {
             docked: 'top',
-            minHeight: '1.3em',
+            minHeight: (Ext.os.is.BlackBerry && Ext.os.version.getMajor() === 10) ? '2.1em' : '1.3em',
             cls   : this.getBaseCls() + '-title'
         });
 
@@ -37273,8 +37323,13 @@ Ext.define('Ext.MessageBox', {
     updateButtons: function(newButtons) {
         var me = this;
 
+        // If there are no new buttons or it is an empty array, set newButtons
+        // to false
+        newButtons = (!newButtons || newButtons.length === 0) ? false : newButtons;
+
         if (newButtons) {
             if (me.buttonsToolbar) {
+                me.buttonsToolbar.show();
                 me.buttonsToolbar.removeAll();
                 me.buttonsToolbar.setItems(newButtons);
             } else {
@@ -37292,6 +37347,8 @@ Ext.define('Ext.MessageBox', {
 
                 me.add(me.buttonsToolbar);
             }
+        } else if (me.buttonsToolbar) {
+            me.buttonsToolbar.hide();
         }
     },
 
@@ -38130,6 +38187,10 @@ Ext.define('Ext.TitleBar', {
     },
 
     refreshTitlePosition: function() {
+        if (this.isDestroyed) {
+            return;
+        }
+
         var titleElement = this.titleComponent.renderElement;
 
         titleElement.setWidth(null);
@@ -38997,11 +39058,13 @@ Ext.define('Ext.app.History', {
             window.addEventListener('hashchange', Ext.bind(this.detectStateChange, this));
         }
         else {
-            this.setToken(window.location.hash.substr(1));
             setInterval(Ext.bind(this.detectStateChange, this), 100);
         }
 
         this.initConfig(config);
+        if (config && Ext.isEmpty(config.token)) { 
+            this.setToken(window.location.hash.substr(1)); 
+        }
     },
 
     /**
@@ -39033,12 +39096,16 @@ Ext.define('Ext.app.History', {
      */
     back: function() {
         var actions = this.getActions(),
-            previousAction = actions[actions.length - 2],
-            app = previousAction.getController().getApplication();
+            previousAction = actions[actions.length - 2];
 
-        actions.pop();
+        if (previousAction) {
+            actions.pop();
 
-        app.redirectTo(previousAction.getUrl());
+            previousAction.getController().getApplication().redirectTo(previousAction.getUrl());
+        }
+        else {
+            actions[actions.length - 1].getController().getApplication().redirectTo('');
+        }
     },
 
     /**
@@ -53695,7 +53762,7 @@ Ext.define('Ext.dataview.component.DataItem', {
             component = this[componentName]();
             if (component) {
                 for (setterName in setterMap) {
-                    if (data && component[setterName] && data[setterMap[setterName]]) {
+                    if (data && component[setterName] && data[setterMap[setterName]] !== undefined && data[setterMap[setterName]] !== null) {
                         component[setterName](data[setterMap[setterName]]);
                     }
                 }
@@ -54487,7 +54554,9 @@ Ext.define('Ext.mixin.Selectable', {
             }
             else {
                 oldStore.un(bindEvents);
-                newStore.un('clear', 'onSelectionStoreClear', this);
+                if(newStore) {
+                    newStore.un('clear', 'onSelectionStoreClear', this);
+                }
             }
         }
 
@@ -55179,6 +55248,12 @@ Ext.define('Ext.dataview.DataView', {
         store: null,
 
         /**
+         * @cfg {Object[]} data
+         * @inheritdoc
+         */
+        data: null,
+
+        /**
          * @cfg baseCls
          * @inheritdoc
          */
@@ -55611,7 +55686,8 @@ Ext.define('Ext.dataview.DataView', {
         var store = this.getStore();
         if (!store) {
             this.setStore(Ext.create('Ext.data.Store', {
-                data: data
+                data: data,
+                autoDestroy: true
             }));
         } else {
             store.add(data);
@@ -55824,10 +55900,20 @@ Ext.define('Ext.dataview.DataView', {
             item = items[i];
             container.updateListItem(records[i], item);
         }
+
+        if (this.hasSelection()) {
+            var selection = this.getSelection(),
+                selectionLn = this.getSelectionCount(),
+                record;
+            for (i = 0; i < selectionLn; i++) {
+                record = selection[i];
+                this.doItemSelect(this, record);
+            }
+        }
     },
 
     showEmptyText: function() {
-        if (this.getEmptyText() && (this.hasLoadedStore || !this.getDeferEmptyText()) ) {
+        if (this.getEmptyText() && (this.hasLoadedStore || !this.getDeferEmptyText())) {
             this.emptyTextCmp.show();
         }
     },
@@ -56270,6 +56356,11 @@ Ext.define('Ext.dataview.component.ListItem', {
          * @param {Object} newData The new data.
          */
         me.fireEvent('updatedata', me, data);
+    },
+
+    destroy: function() {
+        Ext.destroy(this.getHeader());
+        this.callParent(arguments);
     }
 });
 
@@ -56451,7 +56542,7 @@ Ext.define('Ext.util.PositionMap', {
  *         ]
  *     });
  *
- * A more advanced example showing a list of people groped by last name:
+ * A more advanced example showing a list of people grouped by last name:
  *
  *     @example miniphone preview
  *     Ext.define('Contact', {
@@ -56493,6 +56584,55 @@ Ext.define('Ext.util.PositionMap', {
  *        itemTpl: '<div class="contact">{firstName} <strong>{lastName}</strong></div>',
  *        store: store,
  *        grouped: true
+ *     });
+ *
+ * If you want to dock items to the bottom or top of a List, you can use the scrollDock configuration on child items in this List. The following example adds a button to the bottom of the List.
+ *
+ *     @example phone preview
+ *     Ext.define('Contact', {
+ *         extend: 'Ext.data.Model',
+ *         config: {
+ *             fields: ['firstName', 'lastName']
+ *         }
+ *     });
+ *
+ *     var store = Ext.create('Ext.data.Store', {
+ *        model: 'Contact',
+ *        sorters: 'lastName',
+ *
+ *        grouper: {
+ *            groupFn: function(record) {
+ *                return record.get('lastName')[0];
+ *            }
+ *        },
+ *
+ *        data: [
+ *            { firstName: 'Tommy',   lastName: 'Maintz'  },
+ *            { firstName: 'Rob',     lastName: 'Dougan'  },
+ *            { firstName: 'Ed',      lastName: 'Spencer' },
+ *            { firstName: 'Jamie',   lastName: 'Avins'   },
+ *            { firstName: 'Aaron',   lastName: 'Conran'  },
+ *            { firstName: 'Dave',    lastName: 'Kaneda'  },
+ *            { firstName: 'Jacky',   lastName: 'Nguyen'  },
+ *            { firstName: 'Abraham', lastName: 'Elias'   },
+ *            { firstName: 'Jay',     lastName: 'Robinson'},
+ *            { firstName: 'Nigel',   lastName: 'White'   },
+ *            { firstName: 'Don',     lastName: 'Griffin' },
+ *            { firstName: 'Nico',    lastName: 'Ferrero' },
+ *            { firstName: 'Jason',   lastName: 'Johnston'}
+ *        ]
+ *     });
+ *
+ *     Ext.create('Ext.List', {
+ *         fullscreen: true,
+ *         itemTpl: '<div class="contact">{firstName} <strong>{lastName}</strong></div>',
+ *         store: store,
+ *         items: [{
+ *             xtype: 'button',
+ *             scrollDock: 'bottom',
+ *             docked: 'bottom',
+ *             text: 'Load More...'
+ *         }]
  *     });
  */
 Ext.define('Ext.dataview.List', {
@@ -56670,9 +56810,7 @@ Ext.define('Ext.dataview.List', {
          * Note that if you have {@link #variableHeights} set to false, this configuration option has
          * no effect.
          */
-        refreshHeightOnUpdate: true,
-
-        scrollable: false
+        refreshHeightOnUpdate: true
     },
 
     constructor: function(config) {
@@ -56853,6 +56991,22 @@ Ext.define('Ext.dataview.List', {
         }
     },
 
+    updateItemTpl: function(newTpl, oldTpl) {
+        var listItems = this.listItems,
+            ln = listItems.length || 0,
+            store = this.getStore(),
+            i, listItem;
+
+        for (i = 0; i < ln; i++) {
+            listItem = listItems[i];
+            listItem.setTpl(newTpl);
+        }
+
+        if (store && store.getCount()) {
+            this.doRefresh();
+        }
+    },
+
     updateScrollerSize: function() {
         var me = this,
             totalHeight = me.getItemMap().getTotalHeight(),
@@ -56911,7 +57065,7 @@ Ext.define('Ext.dataview.List', {
             currentTopIndex = me.topItemIndex,
             itemMap = me.getItemMap(),
             store = me.getStore(),
-            storeCount = store.getCount(),
+            storeCount = store && store.getCount(),
             info = me.getListItemInfo(),
             grouped = me.getGrouped(),
             storeGroups = me.groups,
@@ -57021,6 +57175,11 @@ Ext.define('Ext.dataview.List', {
             item.dataIndex = null;
             if (info.store) {
                 me.updateListItem(item, i + me.topItemIndex, info);
+            }
+            else {
+                item.setRecord(null);
+                item.translate(0, -10000);
+                item._list_hidden = true;
             }
         }
 
@@ -57259,11 +57418,9 @@ Ext.define('Ext.dataview.List', {
     },
 
     updateItemHeights: function() {
-        if (!this.isPainted()) {
+        if (!this.isPainted() && !this.pendingHeightUpdate) {
             this.pendingHeightUpdate = true;
-            if (!this.pendingHeightUpdate) {
-                this.on('painted', this.updateItemHeights, this, {single: true});
-            }
+            this.on('painted', this.updateItemHeights, this, {single: true});
             return;
         }
 
@@ -57321,7 +57478,6 @@ Ext.define('Ext.dataview.List', {
         }
 
         this.updatedItems.length = 0;
-
     },
 
     /**
@@ -57345,11 +57501,10 @@ Ext.define('Ext.dataview.List', {
     /**
      * Returns an index for the specified item.
      * @param {Number} item The item to locate.
-     * @return {Number} Index for the specified item.
+     * @return {Number} Index of the record bound to the specified item.
      */
     getItemIndex: function(item) {
-        var index = item.dataIndex;
-        return (index === -1) ? index : this.indexOffset + index;
+        return item.dataIndex;
     },
 
     /**
@@ -57383,14 +57538,21 @@ Ext.define('Ext.dataview.List', {
 
         // This will refresh the items on the screen with the new data
         if (me.listItems.length) {
+            if (me.getScrollToTopOnRefresh()) {
+                me.topItemIndex = 0;
+                me.topItemPosition = 0;
+                scroller.position.y = 0;
+            }
             me.setItemsCount(me.listItems.length);
             if (painted) {
                 me.refreshScroller(scroller);
+            } else if (!me.pendingRefreshScroller) {
+                me.pendingRefreshScroller = true;
+                me.on('painted', function() {
+                    me.pendingRefreshScroller = false;
+                    me.refreshScroller(scroller);
+                }, this, {single: true});
             }
-        }
-
-        if (painted && this.getScrollToTopOnRefresh() && scroller && list) {
-            scroller.scrollToTop();
         }
 
         // No items, hide all the items from the collection.
@@ -57453,14 +57615,16 @@ Ext.define('Ext.dataview.List', {
         else {
             if (newIndex >= me.topItemIndex && newIndex < me.topItemIndex + me.listItems.length) {
                 item = me.getItemAt(newIndex);
-                me.doUpdateListItem(item, newIndex, me.getListItemInfo());
+                if(item) {
+                    me.doUpdateListItem(item, newIndex, me.getListItemInfo());
 
-                // Bypassing setter because sometimes we pass the same record (different data)
-                //me.updateListItem(me.getItemAt(newIndex), newIndex, me.getListItemInfo());
-                if (me.getVariableHeights() && me.getRefreshHeightOnUpdate()) {
-                    me.updatedItems.push(item);
-                    me.updateItemHeights();
-                    me.refreshScroller(scroller);
+                    // Bypassing setter because sometimes we pass the same record (different data)
+                    //me.updateListItem(me.getItemAt(newIndex), newIndex, me.getListItemInfo());
+                    if (me.getVariableHeights() && me.getRefreshHeightOnUpdate()) {
+                        me.updatedItems.push(item);
+                        me.updateItemHeights();
+                        me.refreshScroller(scroller);
+                    }
                 }
             }
         }
@@ -57647,7 +57811,7 @@ Ext.define('Ext.dataview.List', {
     },
 
     destroy: function() {
-        Ext.destroy(this.getIndexBar(), this.indexBarElement, this.header);
+        Ext.destroy(this.getIndexBar(), this.indexBarElement, this.header, this.scrollDockItems.top, this.scrollDockItems.bottom);
         if (this.intervalId) {
             cancelAnimationFrame(this.intervalId);
             delete this.intervalId;
@@ -59026,7 +59190,7 @@ Ext.define('Ext.util.PaintMonitor', {
     ],
 
     constructor: function(config) {
-        if (Ext.browser.engineVersion.gtEq('536')) {
+        if (Ext.browser.engineVersion.gtEq('536') && !Ext.os.is.BlackBerry) {
             return new Ext.util.paintmonitor.OverflowChange(config);
         }
         else {
@@ -59240,6 +59404,10 @@ Ext.define('Ext.util.sizemonitor.Abstract', {
         Ext.TaskQueue.requestRead('refresh', this);
     },
 
+    getContentBounds: function() {
+        return this.detectorsContainer.getBoundingClientRect();
+    },
+
     refreshSize: function() {
         var element = this.getElement();
 
@@ -59247,11 +59415,12 @@ Ext.define('Ext.util.sizemonitor.Abstract', {
             return false;
         }
 
-        var width = element.getWidth(),
-            height = element.getHeight(),
-            contentElement = this.detectorsContainer,
-            contentWidth = contentElement.offsetWidth,
-            contentHeight = contentElement.offsetHeight,
+        var elementBounds = element.dom.getBoundingClientRect(),
+            width = elementBounds.width,
+            height = elementBounds.height,
+            contentBounds = this.getContentBounds(),
+            contentWidth = contentBounds.width,
+            contentHeight = contentBounds.height,
             currentContentWidth = this.contentWidth,
             currentContentHeight = this.contentHeight,
             info = this.info,
@@ -59425,16 +59594,20 @@ Ext.define('Ext.util.sizemonitor.OverflowChange', {
     refreshMonitors: function() {
         var expandHelper = this.expandHelper,
             shrinkHelper = this.shrinkHelper,
-            width = this.contentWidth,
-            height = this.contentHeight;
+            contentBounds = this.getContentBounds(),
+            width = contentBounds.width,
+            height = contentBounds.height,
+            style;
 
-        if (expandHelper && !expandHelper.isDestroyed) {
-            expandHelper.style.width = (width + 1) + 'px';
-            expandHelper.style.height = (height + 1) + 'px';
+            if (expandHelper && !expandHelper.isDestroyed) {
+                style = expandHelper.style;
+                style.width = (width + 1) + 'px';
+                style.height = (height + 1) + 'px';
         }
         if (shrinkHelper && !shrinkHelper.isDestroyed) {
-            shrinkHelper.style.width = width + 'px';
-            shrinkHelper.style.height = height + 'px';
+            style = shrinkHelper.style;
+            style.width = width  + 'px';
+            style.height = height + 'px';
         }
 
         Ext.TaskQueue.requestRead('refresh', this);
@@ -61335,7 +61508,7 @@ Ext.define('Ext.field.Checkbox', {
         ln = elements.length;
         for (i = 0; i < ln; i++) {
             element = elements[i];
-            element = Ext.fly(element).up('.x-field-' + element.getAttribute('type'));
+            element = Ext.fly(element).up('.x-field');
             if (element && element.id) {
                 components.push(Ext.getCmp(element.id));
             }
@@ -61491,6 +61664,12 @@ Ext.define('Ext.picker.Slot', {
         valueField: 'value',
 
         /**
+         * @cfg {String} itemTpl The template to be used in this slot.
+         * If you set this, {@link #displayField} will be ignored.
+         */
+        itemTpl: null,
+
+        /**
          * @cfg {Object} scrollable
          * @accessor
          * @hide
@@ -61566,7 +61745,9 @@ Ext.define('Ext.picker.Slot', {
     },
 
     updateDisplayField: function(newDisplayField) {
-        this.setItemTpl('<div class="' + Ext.baseCSSPrefix + 'picker-item {cls} <tpl if="extra">' + Ext.baseCSSPrefix + 'picker-invalid</tpl>">{' + newDisplayField + '}</div>');
+        if (!this.config.itemTpl) {
+            this.setItemTpl('<div class="' + Ext.baseCSSPrefix + 'picker-item {cls} <tpl if="extra">' + Ext.baseCSSPrefix + 'picker-invalid</tpl>">{' + newDisplayField + '}</div>');
+        }
     },
 
     /**
@@ -61608,13 +61789,6 @@ Ext.define('Ext.picker.Slot', {
         }
 
         return data;
-    },
-
-    updateData: function(data) {
-        this.setStore(Ext.create('Ext.data.Store', {
-            fields: ['text', 'value'],
-            data : data
-        }));
     },
 
     // @private
@@ -61761,6 +61935,18 @@ Ext.define('Ext.picker.Slot', {
      * @private
      */
     setValue: function(value) {
+        return this.doSetValue(value);
+    },
+
+    /**
+     * Sets the value of this slot
+     * @private
+     */
+    setValueAnimated: function(value) {
+        return this.doSetValue(value, true);
+    },
+
+    doSetValue: function(value, animated) {
         if (!Ext.isDefined(value)) {
             return;
         }
@@ -61782,38 +61968,9 @@ Ext.define('Ext.picker.Slot', {
 
             this.selectedIndex = index;
             if (item) {
-                this.scrollToItem(item);
-            }
-
-            this._value = value;
-        }
-    },
-
-    /**
-     * Sets the value of this slot
-     * @private
-     */
-    setValueAnimated: function(value) {
-        if (!this.rendered) {
-            //we don't want to call this until the slot has been rendered
-            this._value = value;
-            return;
-        }
-
-        var store = this.getStore(),
-            viewItems = this.getViewItems(),
-            valueField = this.getValueField(),
-            index, item;
-
-        index = store.find(valueField, value);
-        if (index != -1) {
-            item = Ext.get(viewItems[index]);
-            this.selectedIndex = index;
-
-            if (item) {
-                this.scrollToItem(item, {
+                this.scrollToItem(item, (animated) ? {
                     duration: 100
-                });
+                } : false);
             }
 
             this._value = value;
@@ -62074,9 +62231,7 @@ Ext.define('Ext.picker.Picker', {
         toolbar: true
     },
 
-    initElement: function() {
-        this.callParent(arguments);
-
+    initialize: function() {
         var me = this,
             clsPrefix = Ext.baseCSSPrefix,
             innerElement = this.innerElement;
@@ -62094,11 +62249,6 @@ Ext.define('Ext.picker.Picker', {
             scope   : this,
             delegate: 'pickerslot',
             slotpick: 'onSlotPick'
-        });
-
-        me.on({
-            scope: this,
-            show: 'onShow'
         });
     },
 
@@ -62300,7 +62450,13 @@ Ext.define('Ext.picker.Picker', {
         this.fireEvent('pick', this, this.getValue(true), slot);
     },
 
-    onShow: function() {
+    show: function() {
+        if (this.getParent() === undefined) {
+            Ext.Viewport.add(this);
+        }
+        
+        this.callParent(arguments);
+
         if (!this.isHidden()) {
             this.setValue(this._value);
         }
@@ -62538,6 +62694,7 @@ Ext.define('Ext.picker.Date', {
         }
 
         this.callParent([value, animated]);
+        this.onSlotPick();
     },
 
     getValue: function(useDom) {
@@ -62768,11 +62925,11 @@ Ext.define('Ext.picker.Date', {
         }
 
         // We don't need to update the slot days unless it has changed
-        if (slot.getData().length == days.length) {
+        if (slot.getStore().getCount() == days.length) {
             return;
         }
 
-        slot.setData(days);
+        slot.getStore().setData(days);
 
         // Now we have the correct amount of days for the day slot, lets update it
         var store = slot.getStore(),
@@ -63125,7 +63282,7 @@ Ext.define('Ext.field.DatePicker', {
             change: 'onPickerChange',
             hide  : 'onPickerHide'
         });
-        Ext.Viewport.add(picker);
+        
         this._picker = picker;
 
         return picker;
@@ -63395,6 +63552,16 @@ Ext.define('Ext.field.Number', {
          * @accessor
          */
         stepValue: null
+    },
+
+    doInitValue : function() {
+        var value = this.getInitialConfig().value;
+
+        if (value) {
+            value = this.applyValue(value);
+        }
+
+        this.originalValue = value;
     },
 
     applyValue: function(value) {
@@ -65539,6 +65706,8 @@ Ext.define('Ext.navigation.Bar', {
             properties, leftGhost, titleGhost, leftProps, titleProps;
 
         if (animated) {
+            me.isAnimating = true;
+
             leftGhost = me.createProxy(leftBox.element);
             leftBoxElement.setStyle('opacity', '0');
             backButton.setText(backButtonText);
@@ -65548,18 +65717,15 @@ Ext.define('Ext.navigation.Bar', {
             titleElement.setStyle('opacity', '0');
             me.setTitle(titleText);
 
-            me.refreshTitlePosition();
-
             properties = me.measureView(leftGhost, titleGhost, reverse);
             leftProps = properties.left;
             titleProps = properties.title;
-
-            me.isAnimating = true;
 
             me.animate(leftBoxElement, leftProps.element);
             me.animate(titleElement, titleProps.element, function() {
                 titleElement.setLeft(properties.titleLeft);
                 me.isAnimating = false;
+                me.refreshTitlePosition();
             });
 
             if (Ext.os.is.Android2 && !this.getAndroid2Transforms()) {
@@ -67877,7 +68043,11 @@ Ext.define('Ext.viewport.Android', {
 
     if (version.gtEq('4')) {
         this.override({
-            doBlurInput: Ext.emptyFn
+            doBlurInput: Ext.emptyFn,
+            onResize: function() {
+                this.callParent();
+                this.doFixSize();
+            }
         });
     }
 });
@@ -68266,7 +68436,11 @@ Ext.define('Cursame.view.courses.CourseTpl', {
         html = [
         '<div class="profile-header">',
             '<div class="img-header">',
+            '<tpl if="this.validateWall(wall) == true">',
                 '<img src="{wall}">',
+            '<tpl else>',
+                '<img src="'+Cursame.URL + '/assets/imagecoursex.png">',
+            '</tpl>',
             '</div>',
             '<div class="profile-info">',
                 '<div class="profile-avatar">',
@@ -68276,7 +68450,15 @@ Ext.define('Cursame.view.courses.CourseTpl', {
                     '<p>{description}</p>',
                 '</div>',
             '</div>',
-        '</div>'
+        '</div>',{
+                validateWall: function (wall) {
+                    if (wall !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
         ];
         this.callParent(html);
     }
@@ -68641,6 +68823,14 @@ Ext.define('Cursame.view.navigation.View', {
                 type: 'slide',
                 direction: 'left'
             }
+        },
+        listeners:{
+            scope:this,
+            push:function(t, view, eOpts){
+                if(Ext.os.is.Android){
+                    view.doRefresh();
+                }
+            }
         }
     },
     applyLayout: function(config) {
@@ -68878,13 +69068,13 @@ Ext.define('Cursame.view.users.ProfileNavigationView', {
                 '</div>',
             '</div>',
         '</div>',
-        '<tpl if="this.hasPermissions() == true">',
-            '<div class="creation">',
-                '<div class="create-comment">Comentario</div>',
+        '<div class="creation">',
+            '<div class="create-comment">Comentario</div>',
+            '<tpl if="this.hasPermissions() == true">',
                 '<div class="create-homework">Tarea</div>',
                 '<div class="create-discussion">Discusi&oacute;n</div>',
-            '</div>',
-        '</tpl>',
+            '</tpl>',
+        '</div>',
         '<div class="clear:both"></div>',
         '</tpl>',
         '<tpl if = "!emptyStore">',
@@ -69917,7 +70107,8 @@ Ext.define('Cursame.controller.tablet.Main', {
     config: {
         activeNavigationView: undefined, //Referencia al Navigation View Activo
         currentStore: undefined,
-        headerPublicationsData:undefined,//Referencia a los datos par mostrar el header
+        headerPublicationsData: undefined,//Referencia a los datos par mostrar el header
+        headerCommentsData: undefined,//Referencia a los datos para mostrar en el header de Comentarios
         refs: {
             main: {
                 selector: 'main'
@@ -70038,41 +70229,41 @@ Ext.define('Cursame.controller.tablet.Main', {
      * este metodo iniciliza las push notifications mediante faye
      * @return {objet} soy un pinch pro!!
      */
-    startPushNotifications:function(){
-        var me = this, stores ={}, user, NotificationsChannel;
+    startPushNotifications: function () {
+        var me = this, stores = {}, user, NotificationsChannel;
 
         user = Ext.decode(localStorage.getItem("User"));
         stores = {
-            'user_comment_on_network':{
-                'Publications':'Publications'
+            'user_comment_on_network': {
+                'Publications': 'Publications'
             },
-            'user_comment_on_course':{
-                'Publications':'Publications'
+            'user_comment_on_course': {
+                'Publications': 'Publications'
             },
-            'new_delivery_on_course':{
-                'Publications':'Publications'
+            'new_delivery_on_course': {
+                'Publications': 'Publications'
             },
-            'new_public_course_on_network':{
-                'Publications':'Publications',
-                'Courses':'Courses'
+            'new_public_course_on_network': {
+                'Publications': 'Publications',
+                'Courses': 'Courses'
             },
-            'new_survey_on_course':{
-                'Publications':'Publications'
+            'new_survey_on_course': {
+                'Publications': 'Publications'
             },
-            'user_comment_on_comment':{
-                'CommentsComments':'CommentsComments',
-                'Comments':'Comments'
+            'user_comment_on_comment': {
+                'CommentsComments': 'CommentsComments',
+                'Comments': 'Comments'
             },
-            'user_comment_on_user':{
-                'Comments':'Comments'
+            'user_comment_on_user': {
+                'Comments': 'Comments'
             }
         };
 
         NotificationsChannel = Ext.decode(localStorage.getItem("NotificationsChannel"));
         PrivatePub.sign(NotificationsChannel);
         //metodo que escucha las notificaciones y las setea
-        PrivatePub.subscribe(NotificationsChannel.channel, function(data, channel) {
-            store = me.getMenu().getStore().getAt(2).set('numNotifications',data.num);
+        PrivatePub.subscribe(NotificationsChannel.channel, function (data, channel) {
+            store = me.getMenu().getStore().getAt(2).set('numNotifications', data.num);
             user.notifications.length = data.num;
             localStorage.setItem("User", Ext.encode(user));
             Ext.getStore(stores[data.notification.kind][me.currentStore] || 'CommentsComments').load();
@@ -70082,18 +70273,13 @@ Ext.define('Cursame.controller.tablet.Main', {
      *
      */
     getData: function (numNotifications) {
-        var user, userName, avatar;
+        var user, avatar, me = this;
 
         user = Ext.decode(localStorage.getItem("User"));
-        if (user.first_name || user.last_name != null){
-            userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
-        } else {
-            userName = 'Usuario';
-        }
         avatar = user.avatar.url ? Cursame.URL + user.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         return [
             {
-                name: userName,
+                name: me.validateUserName(user),
                 icon: avatar,
                 group: 'PERFIL'
             },
@@ -70147,14 +70333,15 @@ Ext.define('Cursame.controller.tablet.Main', {
                 me.getCardContainer().setActiveItem(0);
                 me.getUserWall().setCommentableType('User');
                 me.getUserWall().setCommentableId(user.id);
-                me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me, [data]));
+                me.setHeaderCommentsData(data);
+                me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me));
                 break;
             case 1:
                 me.getCardContainer().setActiveItem(1);
                 var record = Ext.getStore('Publications').getAt(0);
-                if (record){
-                   record.set('showHeader',null);
-                   record.commit();
+                if (record) {
+                    record.set('showHeader', null);
+                    record.commit();
                 }
                 Ext.getStore('Publications').setParams({}, true);
                 Ext.getStore('Publications').load();
@@ -70197,11 +70384,10 @@ Ext.define('Cursame.controller.tablet.Main', {
      */
     onPublicationTap: function (dataview, index, target, record, e, opt) {
         var me = this,
-            commentsStore = Ext.getStore('Comments'),
-            publicationsStore = Ext.getStore('Publications');
+            commentsStore = Ext.getStore('Comments');
         commentsStore.resetCurrentPage();//Se resetean los filtros de paginado para el store de Comentarios.
         if (e.getTarget('div.like')) {
-            me.onLike(record, 'publication','Publications');
+            me.onLike(record, 'publication', 'Publications');
             return;
         }
         if (e.getTarget('div.comment')) {
@@ -70247,16 +70433,17 @@ Ext.define('Cursame.controller.tablet.Main', {
      */
     pushPublicationContainer: function (record) {
         var me = this,
-            course, user, publication, userName,avatar;
+            course, user, publication, userName;
         publication = record.get('publication');
         course = record.get('course');
         user = record.get('publication').user;
-        userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
+        userName = me.validateUserName(user);
+        Ext.getStore('Publications').resetCurrentPage();
         if (course) {
             publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
             publication.coverphoto = course.coverphoto.url;
             publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-            publication.courseName = course.title; //@todo poner bien el titulo ...
+            publication.courseName = course.title;
             publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
@@ -70311,7 +70498,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             cComments = Ext.getStore('CommentsComments');
         Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación
         if (e.getTarget('div.like')) {
-            me.onLike(record, 'comment','Comments');
+            me.onLike(record, 'comment', 'Comments');
             return;
         }
         if (e.getTarget('div.comment')) {
@@ -70352,7 +70539,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             data = record.get('notificator'),
             navigationView = me.getNotificationNavigationView(),
             creator = record.get('creator'),
-            userName = creator.first_name && creator.last_name ? creator.first_name + ' ' + creator.last_name : 'Usuario',
+            userName = me.validateUserName(creator),
             avatar = creator.avatar && creator.avatar.url ? Cursame.URL + creator.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         switch (record.get('kind')) {
             case 'user_comment_on_network':
@@ -70404,17 +70591,20 @@ Ext.define('Cursame.controller.tablet.Main', {
             case 'new_survey_on_course':
                 break;
             case 'user_comment_on_comment':
-                navigationView.push({
-                    xtype: 'commentwall',
-                    title: Core.Lang.es.comment,
-                    commentableType: 'Comment',
-                    commentableId: data.id
-                });
-                data.user_name = userName;
-                data.timeAgo = Core.Utils.timeAgo(data.created_at);
-                data.avatar = avatar;
-                me.getCommentContainer().setData(data);
-                me.loadCommentsByType('Comment', data.id);
+                var commentOwner = record.get('owner');
+                if (commentOwner) {
+                    navigationView.push({
+                        xtype: 'commentwall',
+                        title: Core.Lang.es.comment,
+                        commentableType: 'Comment',
+                        commentableId: commentOwner.id
+                    });
+                    commentOwner.user_name = userName;
+                    commentOwner.timeAgo = Core.Utils.timeAgo(commentOwner.created_at);
+                    commentOwner.avatar = avatar;
+                    me.getCommentContainer().setData(commentOwner);
+                    me.loadCommentsByType('Comment', commentOwner.id);
+                }
                 break;
         }
     },
@@ -70442,6 +70632,7 @@ Ext.define('Cursame.controller.tablet.Main', {
         var me = this,
             publicationsStore = Ext.getStore('Publications');
         me.currentStore = 'Publications';
+        publicationsStore.resetCurrentPage();
         view.push({
             xtype: 'coursewall',
             title: data.id.title
@@ -70472,7 +70663,8 @@ Ext.define('Cursame.controller.tablet.Main', {
         me.getUserNavigationView().down('userwall').setCommentableId(user.id);
 
         Ext.getStore('Comments').resetCurrentPage();
-        me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me, [data]));
+        me.setHeaderCommentsData(data);
+        me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me));
     },
     /**
      *
@@ -70543,25 +70735,25 @@ Ext.define('Cursame.controller.tablet.Main', {
             me = this,
             type, id, store, record;
 
-            if (data.publication_type && data.publication_id) {
-                type = data.publication_type;
-                id = data.publication_id;
-                store = Ext.getStore('Comments');
-                record = me.getPublicationsList().getSelection()[0];//Si se accede desde el Wall de Publicaciones.
-                if (!record){
-                    record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
-                }
-            } else {
-                type = 'Comment';
-                id = data.id;
-                store = Ext.getStore('CommentsComments');
-                record = me.getUserWall().getSelection()[0];//Si se accede desde el Wall de Usuario.
-                if (!record){
-                    record = me.getUserNavigationView().down('userwall').getSelection()[0];//Si se accede desde un usuario de la comunidad
-                }
+        if (data.publication_type && data.publication_id) {
+            type = data.publication_type;
+            id = data.publication_id;
+            store = Ext.getStore('Comments');
+            record = me.getPublicationsList().getSelection()[0];//Si se accede desde el Wall de Publicaciones.
+            if (!record) {
+                record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
             }
+        } else {
+            type = 'Comment';
+            id = data.id;
+            store = Ext.getStore('CommentsComments');
+            record = me.getUserWall().getSelection()[0];//Si se accede desde el Wall de Usuario.
+            if (!record) {
+                record = me.getUserNavigationView().down('userwall').getSelection()[0];//Si se accede desde un usuario de la comunidad
+            }
+        }
 
-            me.saveComment(comment, Core.Utils.toFirstUpperCase(type), id, store, null, record);
+        me.saveComment(comment, Core.Utils.toFirstUpperCase(type), id, store, null, record);
     },
     /**
      * Metodo generico  para agregar comentarios a discussiones, usuario, surveys ..
@@ -70595,7 +70787,8 @@ Ext.define('Cursame.controller.tablet.Main', {
                     commentable_id: commentableId
                 },
                 success: function (response) {
-                    var callback = {};
+                    var callback = me.addHeaderToComments.bind(me),
+                        data = me.getUserNavigationView().down('userslist').getSelection()[0];//Obtenemos el record seleccionado de la lista de usuarios de comunidad
                     me.getMain().setMasked(false);
                     store.resetCurrentPage();
                     if (form) {
@@ -70618,6 +70811,10 @@ Ext.define('Cursame.controller.tablet.Main', {
                             commentable_type: commentableType,
                             commentable_id: commentableId
                         });
+                        if (data && data.data) { //Se valida que vengan lso datos que se setearan en el header de un usuario
+                            me.setHeaderCommentsData(data.data);
+                            callback = me.addHeaderToComments.bind(me);
+                        }
                     }
                     store.load(callback);
                     me.currentStore = store.getStoreId();
@@ -70761,19 +70958,27 @@ Ext.define('Cursame.controller.tablet.Main', {
         me.saveLike(Core.Utils.toFirstUpperCase(type), id, record, store);
     },
 
-    addHeaderToComments: function (params) {
-        var commentsStore = Ext.getStore('Comments'),
+    addHeaderToComments: function () {
+        var me = this,
+            commentsStore = Ext.getStore('Comments'),
             firstCommentRecord = commentsStore.getAt(0),
-            data = params[0];
-        if (firstCommentRecord) {
-            firstCommentRecord.set('headerWall', data.headerWall);
-            firstCommentRecord.set('headerAvatar', data.headerAvatar);
-            firstCommentRecord.set('headerName', data.headerName);
-            firstCommentRecord.set('headerBios', data.headerBios);
-            firstCommentRecord.commit();
-        } else {
-            data.emptyStore = true;
-            commentsStore.add(data);
+            params = me.getHeaderCommentsData(),
+            data = {};
+        if (params) {
+            data.headerWall = params.headerWall;
+            data.headerAvatar = params.headerAvatar ? params.headerAvatar : params.avatar;
+            data.headerName = params.headerName ? params.headerName : params.headerName = {first_name:params.first_name,last_name:params.last_name};
+            data.headerBios = params.headerBios;
+            if (firstCommentRecord) {
+                firstCommentRecord.set('headerWall', data.headerWall);
+                firstCommentRecord.set('headerAvatar', data.headerAvatar);
+                firstCommentRecord.set('headerName', data.headerName);
+                firstCommentRecord.set('headerBios', data.headerBios);
+                firstCommentRecord.commit();
+            } else {
+                data.emptyStore = true;
+                commentsStore.add(data);
+            }
         }
     },
 
@@ -70783,8 +70988,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             firstPublicationRecord = publicationsStore.getAt(0),
             params = me.getHeaderPublicationsData(),
             data = {};
-
-        if (params){
+        if (params) {
             data.headerAvatar = params.avatar;
             data.headerTitle = params.title;
             data.headerPublicStatus = params.public_status;
@@ -70812,14 +71016,14 @@ Ext.define('Cursame.controller.tablet.Main', {
             }
         }
     },
-    closeMenu: function() {
+    closeMenu: function () {
         var me = this;
 
-        if(Core.Utils.hideMenu){
+        if (Core.Utils.hideMenu) {
             me.moveMainContainer(me, 0);
         }
     },
-    moveMainContainer: function(nav, offsetX) {
+    moveMainContainer: function (nav, offsetX) {
         var me = this,
             container = me.getCardContainer(),
             draggable = container.draggableBehavior.draggable;
@@ -70828,11 +71032,11 @@ Ext.define('Cursame.controller.tablet.Main', {
             duration: 0
         });
 
-        if(offsetX === 0){
+        if (offsetX === 0) {
             container.setWidth('100%');
         }
     },
-    onMenuButtonTap:function(){
+    onMenuButtonTap: function () {
         var me = this,
             container = me.getCardContainer();
 
@@ -70844,21 +71048,21 @@ Ext.define('Cursame.controller.tablet.Main', {
             container.setWidth('100%');
         }
     },
-    isClosed: function() {
+    isClosed: function () {
         return (this.getCardContainer().draggableBehavior.draggable.offset.x == 0);
     },
-    openMenu: function() {
-        var me       = this,
-            offsetX  = this.getMain().getMenu().minWidth;
+    openMenu: function () {
+        var me = this,
+            offsetX = this.getMain().getMenu().minWidth;
 
         me.moveMainContainer(me, offsetX);
     },
-    onMainContainerDragEnd:function(draggable, e, eOpts){
+    onMainContainerDragEnd: function (draggable, e, eOpts) {
         var me = this,
-            velocity  = Math.abs(e.deltaX / e.deltaTime),
+            velocity = Math.abs(e.deltaX / e.deltaTime),
             direction = (e.deltaX > 0) ? "right" : "left",
-            offset    = Ext.clone(draggable.offset),
-            threshold = parseInt(me.getMain().getMenu().minWidth * 0.70,10),
+            offset = Ext.clone(draggable.offset),
+            threshold = parseInt(me.getMain().getMenu().minWidth * 0.70, 10),
             container = me.getCardContainer();
 
         switch (direction) {
@@ -70875,19 +71079,34 @@ Ext.define('Cursame.controller.tablet.Main', {
         me.moveMainContainer(me, offset.x);
     },
 
-    onClickButtonBack: function(t,e){
+    onClickButtonBack: function (t, e) {
         var me = this,
             publicationsStore = Ext.getStore('Publications');
 
         if (t == me.getPublicationNavigationView() && me.currentStore == 'Publications') {
             publicationsStore.setParams({}, true); //Se resetean los parametros
-            publicationsStore.load(function(){
+            publicationsStore.load(function () {
                 var record = publicationsStore.getAt(0);
 
                 record.set('showHeader', null);
                 record.commit();
             });
         }
+    },
+
+    validateUserName: function (user) {
+        var userName = '';
+        if (!Ext.isEmpty(user.first_name)){
+            userName = user.first_name;
+        }
+        if (!Ext.isEmpty(user.last_name)){
+            userName += ' ' + user.last_name;
+        }
+        if (Ext.isEmpty(userName)){
+            userName = 'Usuario';
+        }
+
+        return userName;
     }
 });
 
@@ -71031,7 +71250,8 @@ Ext.define('Cursame.controller.phone.Main', {
     config: {
         activeNavigationView: undefined, //Referencia al Navigation View Activo
         currentStore: undefined,
-        headerPublicationsData:undefined,//Referencia a los datos par mostrar el header
+        headerPublicationsData: undefined,//Referencia a los datos par mostrar el header
+        headerCommentsData: undefined,//Referencia a los datos para mostrar en el header de Comentarios
         refs: {
             main: {
                 selector: 'main'
@@ -71060,7 +71280,7 @@ Ext.define('Cursame.controller.phone.Main', {
             },
             'navigationmenu': {
                 itemtap: 'onMenuTap'/*,
-                select: 'closeMenu'*/
+                 select: 'closeMenu'*/
             },
             'publicationslist': {
                 itemtap: 'onPublicationTap'
@@ -71152,41 +71372,41 @@ Ext.define('Cursame.controller.phone.Main', {
      * este metodo iniciliza las push notifications mediante faye
      * @return {objet} soy un pinch pro!!
      */
-    startPushNotifications:function(){
-        var me = this, stores ={}, user, NotificationsChannel;
+    startPushNotifications: function () {
+        var me = this, stores = {}, user, NotificationsChannel;
 
         user = Ext.decode(localStorage.getItem("User"));
         stores = {
-            'user_comment_on_network':{
-                'Publications':'Publications'
+            'user_comment_on_network': {
+                'Publications': 'Publications'
             },
-            'user_comment_on_course':{
-                'Publications':'Publications'
+            'user_comment_on_course': {
+                'Publications': 'Publications'
             },
-            'new_delivery_on_course':{
-                'Publications':'Publications'
+            'new_delivery_on_course': {
+                'Publications': 'Publications'
             },
-            'new_public_course_on_network':{
-                'Publications':'Publications',
-                'Courses':'Courses'
+            'new_public_course_on_network': {
+                'Publications': 'Publications',
+                'Courses': 'Courses'
             },
-            'new_survey_on_course':{
-                'Publications':'Publications'
+            'new_survey_on_course': {
+                'Publications': 'Publications'
             },
-            'user_comment_on_comment':{
-                'CommentsComments':'CommentsComments',
-                'Comments':'Comments'
+            'user_comment_on_comment': {
+                'CommentsComments': 'CommentsComments',
+                'Comments': 'Comments'
             },
-            'user_comment_on_user':{
-                'Comments':'Comments'
+            'user_comment_on_user': {
+                'Comments': 'Comments'
             }
         };
 
         NotificationsChannel = Ext.decode(localStorage.getItem("NotificationsChannel"));
         PrivatePub.sign(NotificationsChannel);
         //metodo que escucha las notificaciones y las setea
-        PrivatePub.subscribe(NotificationsChannel.channel, function(data, channel) {
-            store = me.getMenu().getStore().getAt(2).set('numNotifications',data.num);
+        PrivatePub.subscribe(NotificationsChannel.channel, function (data, channel) {
+            store = me.getMenu().getStore().getAt(2).set('numNotifications', data.num);
             user.notifications.length = data.num;
             localStorage.setItem("User", Ext.encode(user));
             Ext.getStore(stores[data.notification.kind][me.currentStore] || 'CommentsComments').load();
@@ -71196,18 +71416,13 @@ Ext.define('Cursame.controller.phone.Main', {
      *
      */
     getData: function (numNotifications) {
-        var user, userName, avatar;
+        var user, avatar, me = this;
 
         user = Ext.decode(localStorage.getItem("User"));
-        if (user.first_name || user.last_name != null){
-            userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
-        } else {
-            userName = 'Usuario';
-        }
         avatar = user.avatar.url ? Cursame.URL + user.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         return [
             {
-                name: userName,
+                name: me.validateUserName(user),
                 icon: avatar,
                 group: 'PERFIL'
             },
@@ -71261,14 +71476,15 @@ Ext.define('Cursame.controller.phone.Main', {
                 me.getCardContainer().setActiveItem(0);
                 me.getUserWall().setCommentableType('User');
                 me.getUserWall().setCommentableId(user.id);
-                me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me, [data]));
+                me.setHeaderCommentsData(data);
+                me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me));
                 break;
             case 1:
                 me.getCardContainer().setActiveItem(1);
                 var record = Ext.getStore('Publications').getAt(0);
-                if (record){
-                   record.set('showHeader',null);
-                   record.commit();
+                if (record) {
+                    record.set('showHeader', null);
+                    record.commit();
                 }
                 Ext.getStore('Publications').setParams({}, true);
                 Ext.getStore('Publications').load();
@@ -71311,11 +71527,10 @@ Ext.define('Cursame.controller.phone.Main', {
      */
     onPublicationTap: function (dataview, index, target, record, e, opt) {
         var me = this,
-            commentsStore = Ext.getStore('Comments'),
-            publicationsStore = Ext.getStore('Publications');
+            commentsStore = Ext.getStore('Comments');
         commentsStore.resetCurrentPage();//Se resetean los filtros de paginado para el store de Comentarios.
         if (e.getTarget('div.like')) {
-            me.onLike(record, 'publication','Publications');
+            me.onLike(record, 'publication', 'Publications');
             return;
         }
         if (e.getTarget('div.comment')) {
@@ -71361,16 +71576,17 @@ Ext.define('Cursame.controller.phone.Main', {
      */
     pushPublicationContainer: function (record) {
         var me = this,
-            course, user, publication, userName,avatar;
+            course, user, publication, userName;
         publication = record.get('publication');
         course = record.get('course');
         user = record.get('publication').user;
-        userName = user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : 'Usuario';
+        userName = me.validateUserName(user);
+        Ext.getStore('Publications').resetCurrentPage();
         if (course) {
             publication.wall = course.coverphoto.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagecoursex.png';
             publication.coverphoto = course.coverphoto.url;
             publication.avatar = course.avatar.url ? Cursame.URL + course.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-            publication.courseName = course.title; //@todo poner bien el titulo ...
+            publication.courseName = course.title;
             publication.user_name = userName;
         } else {
             publication.wall = user.coverphoto.url;
@@ -71425,7 +71641,7 @@ Ext.define('Cursame.controller.phone.Main', {
             cComments = Ext.getStore('CommentsComments');
         Ext.getStore('CommentsComments').resetCurrentPage();//Se resetea el store de Comments Comments para inicializar la paginación
         if (e.getTarget('div.like')) {
-            me.onLike(record, 'comment','Comments');
+            me.onLike(record, 'comment', 'Comments');
             return;
         }
         if (e.getTarget('div.comment')) {
@@ -71466,7 +71682,7 @@ Ext.define('Cursame.controller.phone.Main', {
             data = record.get('notificator'),
             navigationView = me.getNotificationNavigationView(),
             creator = record.get('creator'),
-            userName = creator.first_name && creator.last_name ? creator.first_name + ' ' + creator.last_name : 'Usuario',
+            userName = me.validateUserName(creator),
             avatar = creator.avatar && creator.avatar.url ? Cursame.URL + creator.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
         switch (record.get('kind')) {
             case 'user_comment_on_network':
@@ -71518,17 +71734,20 @@ Ext.define('Cursame.controller.phone.Main', {
             case 'new_survey_on_course':
                 break;
             case 'user_comment_on_comment':
-                navigationView.push({
-                    xtype: 'commentwall',
-                    title: Core.Lang.es.comment,
-                    commentableType: 'Comment',
-                    commentableId: data.id
-                });
-                data.user_name = userName;
-                data.timeAgo = Core.Utils.timeAgo(data.created_at);
-                data.avatar = avatar;
-                me.getCommentContainer().setData(data);
-                me.loadCommentsByType('Comment', data.id);
+                var commentOwner = record.get('owner');
+                if (commentOwner) {
+                    navigationView.push({
+                        xtype: 'commentwall',
+                        title: Core.Lang.es.comment,
+                        commentableType: 'Comment',
+                        commentableId: commentOwner.id
+                    });
+                    commentOwner.user_name = userName;
+                    commentOwner.timeAgo = Core.Utils.timeAgo(commentOwner.created_at);
+                    commentOwner.avatar = avatar;
+                    me.getCommentContainer().setData(commentOwner);
+                    me.loadCommentsByType('Comment', commentOwner.id);
+                }
                 break;
         }
     },
@@ -71556,6 +71775,7 @@ Ext.define('Cursame.controller.phone.Main', {
         var me = this,
             publicationsStore = Ext.getStore('Publications');
         me.currentStore = 'Publications';
+        publicationsStore.resetCurrentPage();
         view.push({
             xtype: 'coursewall',
             title: data.id.title
@@ -71586,7 +71806,8 @@ Ext.define('Cursame.controller.phone.Main', {
         me.getUserNavigationView().down('userwall').setCommentableId(user.id);
 
         Ext.getStore('Comments').resetCurrentPage();
-        me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me, [data]));
+        me.setHeaderCommentsData(data);
+        me.loadCommentsByType('User', user.id, me.addHeaderToComments.bind(me));
     },
     /**
      *
@@ -71657,25 +71878,25 @@ Ext.define('Cursame.controller.phone.Main', {
             me = this,
             type, id, store, record;
 
-            if (data.publication_type && data.publication_id) {
-                type = data.publication_type;
-                id = data.publication_id;
-                store = Ext.getStore('Comments');
-                record = me.getPublicationsList().getSelection()[0];//Si se accede desde el Wall de Publicaciones.
-                if (!record){
-                    record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
-                }
-            } else {
-                type = 'Comment';
-                id = data.id;
-                store = Ext.getStore('CommentsComments');
-                record = me.getUserWall().getSelection()[0];//Si se accede desde el Wall de Usuario.
-                if (!record){
-                    record = me.getUserNavigationView().down('userwall').getSelection()[0];//Si se accede desde un usuario de la comunidad
-                }
+        if (data.publication_type && data.publication_id) {
+            type = data.publication_type;
+            id = data.publication_id;
+            store = Ext.getStore('Comments');
+            record = me.getPublicationsList().getSelection()[0];//Si se accede desde el Wall de Publicaciones.
+            if (!record) {
+                record = me.getCourseWall().getSelection()[0];//Si se accede desde un comentario de Cursos.
             }
+        } else {
+            type = 'Comment';
+            id = data.id;
+            store = Ext.getStore('CommentsComments');
+            record = me.getUserWall().getSelection()[0];//Si se accede desde el Wall de Usuario.
+            if (!record) {
+                record = me.getUserNavigationView().down('userwall').getSelection()[0];//Si se accede desde un usuario de la comunidad
+            }
+        }
 
-            me.saveComment(comment, Core.Utils.toFirstUpperCase(type), id, store, null, record);
+        me.saveComment(comment, Core.Utils.toFirstUpperCase(type), id, store, null, record);
     },
     /**
      * Metodo generico  para agregar comentarios a discussiones, usuario, surveys ..
@@ -71709,7 +71930,8 @@ Ext.define('Cursame.controller.phone.Main', {
                     commentable_id: commentableId
                 },
                 success: function (response) {
-                    var callback = {};
+                    var callback = me.addHeaderToComments.bind(me),
+                        data = me.getUserNavigationView().down('userslist').getSelection()[0];//Obtenemos el record seleccionado de la lista de usuarios de comunidad
                     me.getMain().setMasked(false);
                     store.resetCurrentPage();
                     if (form) {
@@ -71732,6 +71954,10 @@ Ext.define('Cursame.controller.phone.Main', {
                             commentable_type: commentableType,
                             commentable_id: commentableId
                         });
+                        if (data && data.data) { //Se valida que vengan lso datos que se setearan en el header de un usuario
+                            me.setHeaderCommentsData(data.data);
+                            callback = me.addHeaderToComments.bind(me);
+                        }
                     }
                     store.load(callback);
                     me.currentStore = store.getStoreId();
@@ -71875,19 +72101,27 @@ Ext.define('Cursame.controller.phone.Main', {
         me.saveLike(Core.Utils.toFirstUpperCase(type), id, record, store);
     },
 
-    addHeaderToComments: function (params) {
-        var commentsStore = Ext.getStore('Comments'),
+    addHeaderToComments: function () {
+        var me = this,
+            commentsStore = Ext.getStore('Comments'),
             firstCommentRecord = commentsStore.getAt(0),
-            data = params[0];
-        if (firstCommentRecord) {
-            firstCommentRecord.set('headerWall', data.headerWall);
-            firstCommentRecord.set('headerAvatar', data.headerAvatar);
-            firstCommentRecord.set('headerName', data.headerName);
-            firstCommentRecord.set('headerBios', data.headerBios);
-            firstCommentRecord.commit();
-        } else {
-            data.emptyStore = true;
-            commentsStore.add(data);
+            params = me.getHeaderCommentsData(),
+            data = {};
+        if (params) {
+            data.headerWall = params.headerWall;
+            data.headerAvatar = params.headerAvatar ? params.headerAvatar : params.avatar;
+            data.headerName = params.headerName ? params.headerName : params.headerName = {first_name:params.first_name,last_name:params.last_name};
+            data.headerBios = params.headerBios;
+            if (firstCommentRecord) {
+                firstCommentRecord.set('headerWall', data.headerWall);
+                firstCommentRecord.set('headerAvatar', data.headerAvatar);
+                firstCommentRecord.set('headerName', data.headerName);
+                firstCommentRecord.set('headerBios', data.headerBios);
+                firstCommentRecord.commit();
+            } else {
+                data.emptyStore = true;
+                commentsStore.add(data);
+            }
         }
     },
 
@@ -71897,8 +72131,7 @@ Ext.define('Cursame.controller.phone.Main', {
             firstPublicationRecord = publicationsStore.getAt(0),
             params = me.getHeaderPublicationsData(),
             data = {};
-
-        if (params){
+        if (params) {
             data.headerAvatar = params.avatar;
             data.headerTitle = params.title;
             data.headerPublicStatus = params.public_status;
@@ -71926,14 +72159,14 @@ Ext.define('Cursame.controller.phone.Main', {
             }
         }
     },
-    closeMenu: function() {
+    closeMenu: function () {
         var me = this;
 
-        if(Core.Utils.hideMenu){
+        if (Core.Utils.hideMenu) {
             me.moveMainContainer(me, 0);
         }
     },
-    moveMainContainer: function(nav, offsetX) {
+    moveMainContainer: function (nav, offsetX) {
         var me = this,
             container = me.getCardContainer(),
             draggable = container.draggableBehavior.draggable;
@@ -71942,11 +72175,11 @@ Ext.define('Cursame.controller.phone.Main', {
             duration: 0
         });
 
-        if(offsetX === 0){
+        if (offsetX === 0) {
             container.setWidth('100%');
         }
     },
-    onMenuButtonTap:function(){
+    onMenuButtonTap: function () {
         var me = this,
             container = me.getCardContainer();
 
@@ -71958,21 +72191,21 @@ Ext.define('Cursame.controller.phone.Main', {
             container.setWidth('100%');
         }
     },
-    isClosed: function() {
+    isClosed: function () {
         return (this.getCardContainer().draggableBehavior.draggable.offset.x == 0);
     },
-    openMenu: function() {
-        var me       = this,
-            offsetX  = this.getMain().getMenu().minWidth;
+    openMenu: function () {
+        var me = this,
+            offsetX = this.getMain().getMenu().minWidth;
 
         me.moveMainContainer(me, offsetX);
     },
-    onMainContainerDragEnd:function(draggable, e, eOpts){
+    onMainContainerDragEnd: function (draggable, e, eOpts) {
         var me = this,
-            velocity  = Math.abs(e.deltaX / e.deltaTime),
+            velocity = Math.abs(e.deltaX / e.deltaTime),
             direction = (e.deltaX > 0) ? "right" : "left",
-            offset    = Ext.clone(draggable.offset),
-            threshold = parseInt(me.getMain().getMenu().minWidth * 0.70,10),
+            offset = Ext.clone(draggable.offset),
+            threshold = parseInt(me.getMain().getMenu().minWidth * 0.70, 10),
             container = me.getCardContainer();
 
         switch (direction) {
@@ -71989,19 +72222,34 @@ Ext.define('Cursame.controller.phone.Main', {
         me.moveMainContainer(me, offset.x);
     },
 
-    onClickButtonBack: function(t,e){
+    onClickButtonBack: function (t, e) {
         var me = this,
             publicationsStore = Ext.getStore('Publications');
 
         if (t == me.getPublicationNavigationView() && me.currentStore == 'Publications') {
             publicationsStore.setParams({}, true); //Se resetean los parametros
-            publicationsStore.load(function(){
+            publicationsStore.load(function () {
                 var record = publicationsStore.getAt(0);
 
                 record.set('showHeader', null);
                 record.commit();
             });
         }
+    },
+
+    validateUserName: function (user) {
+        var userName = '';
+        if (!Ext.isEmpty(user.first_name)){
+            userName = user.first_name;
+        }
+        if (!Ext.isEmpty(user.last_name)){
+            userName += ' ' + user.last_name;
+        }
+        if (Ext.isEmpty(userName)){
+            userName = 'Usuario';
+        }
+
+        return userName;
     }
 });
 
@@ -72226,7 +72474,10 @@ Ext.define('Cursame.model.Publication', {
                 convert: function (headerAvatar, r) {
                     var url = Cursame.URL + '/assets/course-avatarx-0a909a23b940f3f1701b2e6065c29fe6.png';
                     if (headerAvatar) {
-                        url = Cursame.URL + headerAvatar
+                        url = headerAvatar;
+                        if(headerAvatar.search(Cursame.URL) == -1){
+                            url = Cursame.URL + headerAvatar;
+                        }
                     }
                     return url;
                 }
@@ -72369,11 +72620,17 @@ Ext.define('Cursame.model.Comment', {
             type: 'string',
             mapping:'user',
             convert: function (user,r) {
-                var name = 'Usuario';
-                if(user && user.first_name && user.last_name){
-                    name = user.first_name+' '+user.last_name;
+                var name = '';
+                if (user && !Ext.isEmpty(user.first_name)){
+                    name = user.first_name;
                 }
-				return name;
+                if (user && !Ext.isEmpty(user.last_name)){
+                    name += ' ' + user.last_name;
+                }
+                if (Ext.isEmpty(name)){
+                    name = 'Usuario';
+                }
+                return name;
             }
         },{
             name: 'user_avatar',
@@ -72429,7 +72686,7 @@ Ext.define('Cursame.model.Comment', {
             type:'string',
             convert:function(headerAvatar, r){
                 var url = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
-                if(headerAvatar){
+                if(headerAvatar && !Ext.isEmpty(headerAvatar)){
                     url = Cursame.URL+headerAvatar
                 }
                 return url;
@@ -72439,9 +72696,15 @@ Ext.define('Cursame.model.Comment', {
             name:'headerName',
             type:'string',
             convert: function (headerName,r) {
-                var name = 'Usuario';
-                if(headerName && headerName.first_name && headerName.last_name){
-                    name = headerName.first_name + ' ' + headerName.last_name;
+                var name = '';
+                if (headerName && !Ext.isEmpty(headerName.first_name)){
+                    name = headerName.first_name;
+                }
+                if (headerName && !Ext.isEmpty(headerName.last_name)){
+                    name += ' ' + headerName.last_name;
+                }
+                if (Ext.isEmpty(name)){
+                    name = 'Usuario';
                 }
                 return name;
             }
@@ -72555,7 +72818,17 @@ Ext.define('Cursame.model.CommentComment', {
             type: 'string',
             mapping:'user',
             convert: function (user,r) {
-                return user.first_name+' '+user.last_name;
+                var name = '';
+                if (user && !Ext.isEmpty(user.first_name)){
+                    name = user.first_name;
+                }
+                if (user && !Ext.isEmpty(user.last_name)){
+                    name += ' ' + user.last_name;
+                }
+                if (Ext.isEmpty(name)){
+                    name = 'Usuario';
+                }
+                return name;
             }
         }, {
             name: 'user_avatar',
@@ -72761,45 +73034,56 @@ Ext.define('Cursame.model.Notification', {
             mapping:'kind',
             type: 'string',
             convert:function  (value,r) {
-                var text,avatar = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png',
+                var text, avatar = Cursame.URL+'/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png',
                     obj = r.get('notificator_type'),
                     notificator = obj.notificator,
                     owner = obj.owner,
                     creator = obj.creator,
                     course = obj.course,
-                    name = 'Usuario';
-                if(creator && creator.first_name && creator.last_name){
-                    name = creator.first_name + ' ' + creator.last_name;
+                    userName = '';
+
+                if (creator && !Ext.isEmpty(creator.first_name)){
+                    userName = creator.first_name;
+                }
+                if (creator && !Ext.isEmpty(creator.last_name)){
+                    userName += ' ' + creator.last_name;
+                }
+                if (Ext.isEmpty(userName)){
+                    userName = 'Usuario';
                 }
                 switch(value){
                     case 'user_comment_on_network':
-                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
-                        text = '<a href="#">'+name+'</a> ha comentado en al red';
+                        avatar = creator.avatar && creator.avatar.url? Cursame.URL+creator.avatar.url: avatar;
+                        text = '<a href="#">'+userName+'</a> ha comentado en al red';
                     break;
                     case 'user_comment_on_course':
                         avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
-                        text = '<a href="#">'+name+'</a> ha comentado en el curso <a href="#">'+course.title+'</a>';
+                        text = '<a href="#">'+userName+'</a> ha comentado en el curso <a href="#">'+course.title+'</a>';
                     break;
                     case 'new_delivery_on_course':
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = 'Se cre&oacute; la tarea <a href="#">"'+notificator.title+'"</a> en el curso <a href="#">'+course.title+'</a>';
                     break;
                     case 'new_public_course_on_network':
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
                         text = 'Se cre&oacute; el curso <a href="#">'+notificator.title+'</a>';
                     break;
                     case 'new_survey_on_course':
                         text = 'Se ha creado un cuestionario en el curso';
                     break;
                     case 'user_comment_on_comment':
-                        text = '<a href="#">'+name+'</a> ha comentado en el comentario '+'<a href="#">'+owner.comment+'</a>';
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
+                        text = '<a href="#">'+userName+'</a> ha comentado en el comentario '+'<a href="#">'+owner.comment+'</a>';
                     break;
                     case 'user_comment_on_user':
-                        text = '<a href="#">'+name+'</a> ha comentado en tu perfil '+'<a href="#">'+notificator.comment+'</a>';
+                        avatar = creator.avatar && creator.avatar.url?Cursame.URL+creator.avatar.url: avatar;
+                        text = '<a href="#">'+userName+'</a> ha comentado en tu perfil '+'<a href="#">'+notificator.comment+'</a>';
                     break;
                     case 'user_comment_on_discussion':
-                        text = '<a href="#">'+name+'</a> ha comentado en una discusión';
+                        text = '<a href="#">'+userName+'</a> ha comentado en una discusión';
                     break;
                     case 'user_comment_on_delivery':
-                        text = '<a href="#">'+name+'</a> ha comentado en una tarea';
+                        text = '<a href="#">'+userName+'</a> ha comentado en una tarea';
                     break;
                 }
 

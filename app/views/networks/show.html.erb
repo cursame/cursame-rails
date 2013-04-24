@@ -1,8 +1,7 @@
-<% if  current_user.coverphoto.blank? %>
-<div id="banner-profile" style="background:url(/assets/<%= current_user.cover_photox %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%else%>
-<div id="banner-profile" style="background:url('<%= current_user.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%end%>
+
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
+ url(/assets/<%= current_user.coverphoto.blank? ? current_user.cover_photox : current_user.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+
    <div id="notice" class="notice"></div>
 
    <%= render :partial => 'shared/head_menu'%>
@@ -108,6 +107,7 @@
                     <% @friends = current_user.friendships.where(:accepted => true)%>
                     <% @friends += current_user.inverse_friendships.where(:accepted => true)%>
                     <% @friends.uniq! %>
+          
           <a href="#tabs-friends-1">
             <div class="content-tab">
               <span class="title-num"><%= @friends.count %></span>
