@@ -53,8 +53,9 @@ class Survey < ActiveRecord::Base
         Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       end
       #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
-      if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
-        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id 
+      if (!Wall.find_by_publication_type_and_publication_id('Survey',self.id))
+        puts 'crea el wall'
+        Wall.create(:publication => self, :network => self.network)
       end
     end
 
@@ -64,10 +65,11 @@ end
     #
     # Cuando se crea el survey, se le notifica a caca miembro de los cursos que tiene el survey
     #
+    users =[]
     self.courses.each do |course|
+      users+= course.users
       course.members_in_courses.each do |member|
-        Notification.create :user => member.user, :notificator => self, :kind => 'new_survey_on_course'
-        Wall.create :user => member.user, :publication => self, :network => self.network, :course_id => course.id
+        Notification.create(:user => member.user, :notificator => self, :kind => 'new_survey_on_course')
         mail = Notifier.new_survey_notification(member,self)
         mail.deliver
       end
