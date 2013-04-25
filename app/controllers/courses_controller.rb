@@ -172,9 +172,12 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-    if @member.owner = true || current_role = "admin"
+    if current_role == 'admin' || 'superadmin'
     else
-      redirect_to :back
+      if @member.owner = true || current_role = "admin"
+      else
+        redirect_to :back
+      end
     end
   end
 
@@ -193,17 +196,21 @@ class CoursesController < ApplicationController
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    if @member
-     if @member.accepted
-        respond_to do |format|
-           format.html # show.html.erb
-           format.json { render json: @course }
-         end
-     else
-        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-     end
-    else
-        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+    
+    if current_role == "admin" || 'superadmin'
+    else 
+      if @member
+        if @member.accepted
+          respond_to do |format|
+            format.html # show.html.erb
+            format.json { render json: @course }
+          end
+        else
+         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+        end
+      else
+          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+      end
     end
   end
 

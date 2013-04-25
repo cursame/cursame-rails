@@ -15,7 +15,6 @@
        </div>
        
        <%end%>
-     <div class="labels">  <p><div style="float:left" id="counter-like-c<%= comment.id%>"><%= comment.votes.up.size %></div></div>
     <a class="avatar-child-comment" href="#">
     	<img class="media-object" src="<%= comment.user.avatar%>" width ="30px">
     </a>        
@@ -23,6 +22,7 @@
         <div class="username"><%= comment.user.name %></div>
         <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
         <div class="comment"><%= comment.comment_html %></div>
+        <div  id="counter-like-c<%= comment.id%>" style="font-size:9px;"><%= comment.votes.up.size %> me gusta</div>
     </div>
    
 </div>

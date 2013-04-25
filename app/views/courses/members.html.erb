@@ -1,7 +1,27 @@
 <div id="nsdmenu">
 		<h1>Miembros del curso</h1>
 </div>
+<% if current_role == 'admin' || 'superadmin'%>
+   
+		<%@course.members_in_courses.each do |member|  %>
 
+	<div class="everymbrm">
+       <% @members = User.find_by_id(member.user_id) %>
+      
+      <!--coloca la imagen y el nombre-->
+      
+      <div id="imgge" style="width:170px;height:170px;background:#ddd;">
+      <% if  @members.avatar.profile.blank? %>
+      		<%= image_tag(@members.image_avatarx)%>
+      <%else%>
+	       <%= image_tag(@members.avatar.profile)%>
+	   <%end%>
+      </div>
+      <%= link_to  "#{@members.name} perfil", show_user_path(@members.personal_url) %>
+    </div>
+       <%end%>
+     
+<%else%>
 <!-- se agrego un nuevo jquery para los estilos -->
 <script src="../assets/javascripts/jquery.icheck.js"></script>
 
@@ -84,3 +104,4 @@ $(document).ready(function(){
 <%end%>
 <%end%>
 </div>
+<%end%>

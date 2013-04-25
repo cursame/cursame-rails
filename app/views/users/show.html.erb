@@ -1,6 +1,5 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
  url(<%= @user_l.coverphoto.blank? ? '/assets/'+ @user_l.cover_photox : @user_l.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-   
    <div id="notice" class="notice"></div>
 
    <%= render :partial => 'shared/head_menu'%>

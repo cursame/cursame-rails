@@ -1,4 +1,4 @@
 $('#liked-c-<%= @publication.id%>').html('');
 $('#liked-c-<%= @publication.id%>').prepend("<div class='heart-icon'><%= escape_javascript(link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_comment_path(@publication.id), :remote => true) %></div>");
 $('#counter-like-c<%= @publication.id%>').html('');
-$('#counter-like-c<%= @publication.id%>').html('<%= @publication.votes.up.size %>');
+$('#counter-like-c<%= @publication.id%>').html('<%= @publication.votes.up.size %> me gusta');
