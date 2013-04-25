@@ -121,6 +121,11 @@
         });
     </script>
 </div>
+<!--se crea una validación para que los owner del curso y los que no son miembros no puedan entregar las tareas-->
+<% publication.courses.each do |course|%>
+<% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
+<% if @if_im_member != nil%>
+<% if @if_im_member.owner != true%>
 <div class="delivery-box">
     <div class="green-btn">
         <div class="labels">
@@ -130,6 +135,9 @@
         </div>
     </div>
 </div>
+<%end%>
+<%end%>
+<%end%>
 <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
     <% @delivery_id=delivery.id%>
         <%=render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => cargo}%>
