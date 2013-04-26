@@ -50,7 +50,7 @@ class Survey < ActiveRecord::Base
     course.members_in_courses.each do |u|
       user = User.find_by_id(u.user_id)
       if u.owner != true
-        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
+        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course'
       end
       #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       if (!Wall.find_by_publication_type_and_publication_id('Survey',self.id))
