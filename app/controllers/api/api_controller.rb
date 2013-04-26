@@ -85,6 +85,12 @@ class Api::ApiController < ApplicationController
         when 'user_comment_on_user'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
+        when 'user_comment_on_discussion'
+          cretator = notification.notificator.user
+          owner = notification.notificator.commentable
+        when 'user_comment_on_delivery'
+          cretator = notification.notificator.user
+          owner = notification.notificator.commentable
       end
       notification.notificator_type = {
           :creator => cretator,
