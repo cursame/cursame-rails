@@ -73,17 +73,17 @@
                 <!--coloca la imagen y el nombre-->
                 <% if current_role == 'admin' || 'superadmin'%>
                     <% if @members == nil && @members.avatar == nil %>
-                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? && @members.avatar == nil)  %>
+                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) %>
                     <%else%>              
-                       <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? &&  @members.avatar != nil )%>
+                       <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)%>
                     <%end%>
 
                 <%else%>
                 <% if @member.accepted == true %>
                     <% if  @member.avatar == 'nil' %>
-                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? && @members.avatar == nil)  %>
+                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  %>
                     <%else%>              
-                       <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? &&  @members.avatar != nil )%>
+                       <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)%>
                     <%end%>
                 <%end%>
                 <%end%>
