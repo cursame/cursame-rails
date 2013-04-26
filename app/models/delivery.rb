@@ -102,6 +102,4 @@ class Delivery < ActiveRecord::Base
   def max_courses
     errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
   end
-
-
 end
