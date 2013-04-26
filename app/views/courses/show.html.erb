@@ -74,30 +74,22 @@
                 <% if current_role == 'admin' || 'superadmin'%>
                  <% if @members != nil%>
                   
-                      <% if @members.avatar != nil%>          
                        <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)%>
-                      <%end%>
                        
                       <%else%>
                       
-                      <% if @members.avatar == nil  %>
-                             <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) %>
-                      <%end%>
+                      <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) %>
                           
                 <%end%>
                 <%else%>
                 <% if @member.accepted == true %>
                       <% if @members != nil%>
 
-                           <% if @members.avatar != nil%>          
                             <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)%>
-                           <%end%>
 
                            <%else%>
 
-                           <% if @members.avatar == nil  %>
-                                  <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) %>
-                           <%end%>
+                           <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) %>
 
                      <%end%>
                 <%end%>
