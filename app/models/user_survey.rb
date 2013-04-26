@@ -36,4 +36,8 @@ class UserSurvey < ActiveRecord::Base
     self.update_attributes(:result => (correct_answers/responses.size)*100)
     return (correct_answers/responses.size)*100
   end
+
+  def title
+    'respuesta ' + survey.name
+  end
 end

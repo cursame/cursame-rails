@@ -1,5 +1,5 @@
 <div class="image-survey" id="open-close-<%= survey.id %>">
-  <img src="/assets/survey.jpg" class="single-image">
+  <div id="image-<%= survey.id %>"><img src="/assets/survey.jpg" class="single-image"></div>
 </div>
   <div class="survey-assignment-box" id="entrega-<%= survey.id %>">
     <%= render :partial => '/surveys/survey_response_tpl', :locals => {:survey => survey}%>
@@ -7,9 +7,9 @@
 
 <script>
     $("#open-close-<%= survey.id%>").hover(function () {
-        var idOrCls = "#open-close-<%= survey.id%>",
+        var idOrCls = "#image-<%= survey.id%>",
                 msj = "<div class='response-survey'>Responder</div>";
-        $('<div class="ui-widget-overlay" id="mask-<%= survey.id %>"><span>' + msj + '</span></div>').appendTo(idOrCls);
+        $('<div class="ui-survey-overlay" id="mask-<%= survey.id %>"><span>' + msj + '</span></div>').appendTo(idOrCls);
         $('#mask-<%= survey.id %>').show();
     },function () {
         $('#mask-<%= survey.id %>').remove();

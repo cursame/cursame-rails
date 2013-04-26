@@ -124,11 +124,12 @@
                     <div class="element-left" style="width:100px!important;">
                         <a class="plus-courses" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
                         <% @friends = @user_l.friendships.where(:accepted => true)%>
-                        <% @friends += @user_l.inverse_friendships.where(:accepted => true)%>
-                        <% @friends.uniq!%>
+                        <% @inverse_friends = @user_l.inverse_friendships.where(:accepted => true)%>
+                        <% @sum_f =  @friends.count +  @inverse_friends.count %>
+                        
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
-                                <span class="title-num"><%= @friends.count %></span>
+                                <span class="title-num"><%= @sum_f %></span>
                                 <span class="title">amigos</span>
                             </div>
                         </a>
@@ -150,6 +151,11 @@
                            <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
                            <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
                       <%end %>
+                      <% @inverse_friends.each do |friend|%>
+                      <% @inverse_friend = friend.user%>
+                      <%=link_to image_tag(@inverse_friend.avatar.modern, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (!@inverse_friend.avatar.blank?)%>
+                      <%= link_to image_tag(@inverse_friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (@inverse_friend.avatar.blank?)%>
+                      <%end%>
                   </div>
                   <div class="view-all"><%= link_to "Comunidad", network_comunity_path %></div>
                 </div>
