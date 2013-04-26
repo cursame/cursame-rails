@@ -58,16 +58,17 @@ class Survey < ActiveRecord::Base
 
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
     self.courses.each do |course|
-      course.members_in_courses.each do |u|
-        user = User.find_by_id(u.user_id)
-        if u.owner != true
-          Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
-        end
-        #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
-        wall = Wall.find_by_publication_type_and_publication_id('Survey',self.id)
-        if wall.nil? then
-          Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
-        end
+
+    course.members_in_courses.each do |u|
+      user = User.find_by_id(u.user_id)
+      if u.owner != true
+        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course'
+      end
+      #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
+      if (!Wall.find_by_publication_type_and_publication_id('Survey',self.id))
+        puts 'crea el wall'
+        Wall.create(:publication => self, :network => self.network)
+
       end
 
     end
@@ -76,10 +77,11 @@ class Survey < ActiveRecord::Base
     #
     # Cuando se crea el survey, se le notifica a caca miembro de los cursos que tiene el survey
     #
+    users =[]
     self.courses.each do |course|
+      users+= course.users
       course.members_in_courses.each do |member|
-        Notification.create :user => member.user, :notificator => self, :kind => 'new_survey_on_course'
-        Wall.create :user => member.user, :publication => self, :network => self.network, :course_id => course.id
+        Notification.create(:user => member.user, :notificator => self, :kind => 'new_survey_on_course')
         mail = Notifier.new_survey_notification(member,self)
         mail.deliver
       end
