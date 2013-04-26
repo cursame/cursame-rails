@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
   has_many :members_in_courses, :dependent => :destroy
-  has_many :definer_users, :dependent => :destroy
+  has_many :definer_users#, :dependent => :destroy
   has_many :users, :through => :definer_users
   has_many :deliveries_courses#, :dependent => :destroy
   has_many :deliveries, :through => :deliveries_courses, :dependent => :destroy
@@ -19,7 +19,7 @@ class Course < ActiveRecord::Base
   has_many :activities, as: :activitye#, :dependent => :destroy
 
  #publications/walls
-  has_many :coursepublicationings, :dependent => :destroy
+  has_many :coursepublicationings
   has_many :walls, :through => :coursepublicationings
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
@@ -56,6 +56,21 @@ class Course < ActiveRecord::Base
       self.users.each do |u|
         Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
       end
+    end
+  end
+
+  before_destroy do
+
+    walls = Wall.where(:publication_type => "Course",:publication_id => id)
+
+    walls.each do |wall|
+      wall.destroy
+    end
+
+    notifications = Notification.where(:notificator_id => id, :notificator_type => "Course")
+
+    notifications.each do |notification|
+      notification.destroy
     end
   end
 

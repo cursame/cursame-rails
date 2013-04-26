@@ -27,6 +27,18 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  before_destroy do
+    walls = Wall.where(:publication_type => "Discussion", :publication_id => id)
+    notifications = Notification.where(:notificator_type => "Discussion", :notificator_id => id)
+
+    walls.each do |wall|
+      wall.destroy
+    end
+    notifications.each do |notification|
+      notification.destroy
+    end
+  end
+
   def state
     @state = "published"
   end

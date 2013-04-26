@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   #course belongnings
   belongs_to :network
   belongs_to :course
-  has_many :activities, as: :activitye, :dependent => :destroy
+  has_many :activities, as: :activitye#, :dependent => :destroy
 
   #comentarios para los comentarios
   acts_as_commentable
@@ -60,6 +60,18 @@ class Comment < ActiveRecord::Base
   def self.get_commentable(commentable_id,commentable_type)
     #comment = self.find_by_commentable_id(commentable_id)
     commentable_type.camelize.constantize.find(commentable_id)
+  end
+
+  before_destroy do
+    notifications = Notification.where(:notificator_type => "Comment",:notificator_id => id)
+    walls = Wall.where(:publication_type => "Comment",:publication_id => id)
+    walls.each do |wall|
+      wall.destroy
+    end
+
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
   after_create do

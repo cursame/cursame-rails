@@ -18,7 +18,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
-    
+
     if params[:delivery]
       courses = Course.find(params[:delivery][:course_ids])
       @survey.courses.push(courses)

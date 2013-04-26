@@ -32,33 +32,45 @@ class Survey < ActiveRecord::Base
     end
   end
 
+  before_destroy do
+    walls = Wall.where(:publication_type => "Survey", :publication_id => id)
+    notifications = Notification.where(:notificator_type => "Survey", :notificator_id => id)
+    walls.each do |wall|
+      wall.destroy
+    end
+    notifications.each do |notification|
+      notification.destroy
+    end
+  end
+
   before_create do
     self.publish_date ||= DateTime.now
   end
 
   after_create do
 
-     if self.publish_date <= DateTime.now then
-       #self.update_attributes(:publish => true)
-       self.publish!
-     else
-       #self.update_attributes(:publish => false)
-     end
+    if self.publish_date <= DateTime.now then
+      #self.update_attributes(:publish => true)
+      self.publish!
+    else
+      #self.update_attributes(:publish => false)
+    end
 
     Event.create :title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
     self.courses.each do |course|
-    course.members_in_courses.each do |u|
-      user = User.find_by_id(u.user_id)
-      if u.owner != true
-        Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
+      course.members_in_courses.each do |u|
+        user = User.find_by_id(u.user_id)
+        if u.owner != true
+          Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
+        end
+        #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
+        wall = Wall.find_by_publication_type_and_publication_id('Survey',self.id)
+        if wall.nil? then
+          Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
+        end
       end
-      #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
-      if (!Wall.find_by_user_id_and_publication_type_and_publication_id(user.id,'Survey',self.id))
-        Wall.create :user => user, :publication => self, :network => self.network, :course_id => course.id
-      end
-    end
 
-end
+    end
 
 
     #
