@@ -11,7 +11,7 @@
       <!--coloca la imagen y el nombre-->
       
       <div id="imgge" style="width:170px;height:170px;background:#ddd;">
-      <% if  @members.avatar.profile.blank? %>
+      <% if @members.avatar.profile.blank? %>
       		<%= image_tag(@members.image_avatarx)%>
       <%else%>
 	       <%= image_tag(@members.avatar.profile)%>
