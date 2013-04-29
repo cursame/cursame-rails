@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   has_many :members_in_courses, :dependent => :destroy
   has_many :definer_users#, :dependent => :destroy
   has_many :users, :through => :definer_users
-  has_many :deliveries_courses#, :dependent => :destroy
+  has_many :deliveries_courses, :dependent => :destroy
   has_many :deliveries, :through => :deliveries_courses, :dependent => :destroy
   has_many :assignments#, :dependent => :destroy
   has_many :surveyings, :dependent => :destroy

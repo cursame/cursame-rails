@@ -45,7 +45,7 @@ class Delivery < ActiveRecord::Base
 
   before_destroy do
     walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
-    notifications = Notification.where(:notification_type => "Delivery", :publication_id => id)
+    notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => id)
     walls.each do |wall|
       wall.destroy
     end
