@@ -71,19 +71,6 @@
             <% @course.members_in_courses.each do |member|  %>
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
-<<<<<<< HEAD
-	<% if current_role == 'admin' || 'superadmin'%>
-           <%= link_to image_tag('/assets/imagexxx.png', {:class => "avatar-mini"}) %>
-	   <!--<= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>-->
-                    <!--<= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>-->
-
-                <%else%>
-                <% if @member.accepted == true %>
-                    <%= link_to image_tag('/assets/imagexxx.png', {:class => "avatar-mini"}) %>
-                    <!--<= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>
-                    <= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>-->
-
-=======
                 <% if current_role == 'admin' || 'superadmin'%>
                  <% if @members != nil%>
                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
@@ -96,7 +83,7 @@
                               <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                                <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
                               <%else%>              
-                        <%end%
+                        <%end%>
                 <%end%>
                 <%end%>
             <%end%>
@@ -119,6 +106,49 @@
        <%
         @page = params[:page].to_i
         @search = params[:search]
+        @id = params[:id].to_i
+        @user = current_user
+        @desert =  @course.walls.search(@search, @id).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+        @filter = @desert
+        @wall = @filter
+
+
+       %>
+
+
+       <%=render :partial => 'shared/post_menu' %>
+
+       <%=render :partial => 'shared/wall_filters' %>
+       <div id="timeline">
+            <%#= debug  @lik%>
+            <%#= debug  @filter%>
+         <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
+       </div>
+       <!-- fin timeline -->
+       <%= will_paginate(@wall) %>
+</div>
+
+
+
+<script type="text/javascript">
+$(function() {
+  var p = $('#timeline').pageless({
+    totalPages: <%= @wall.total_pages %>,
+    url: '<%= wall_path %>',
+    loaderMsg: '...',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+});
+</script>
+      @search = params[:search]
         @id = params[:id].to_i
         @user = current_user
         @desert =  @course.walls.search(@search, @id).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
