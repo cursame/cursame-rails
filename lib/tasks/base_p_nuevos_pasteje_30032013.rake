@@ -144,7 +144,7 @@ task :nuevos_cursos_pasteje_abril => :environment do
 User.create( :email => "robertapasteje@gmail.com", :first_name => "Roberta", :last_name => "Hermenegildo Nava", :personal_url => "roberta_ermenegildo_nava", :password => "robertanava")
 
 @last_user = User.last
-@network_last = Network.find(6)
+@network_last = 6
 
 Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3") 
 Course.create(:title => "Lab. Ciencias 2B", :silabus => "Laboratorio de Ciencias 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last.id)
@@ -166,7 +166,7 @@ MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_use
 User.create( :email => "aeguiar4304@gmail.com", :first_name => "Andres Felipe", :last_name => "Eguia Rodriguez", :personal_url => "andres_eguia", :password => "andreseguia")
 
 @last_user = User.last
-@network_last = Network.find(6)
+@network_last = 6
 
 Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3") 
 
@@ -226,7 +226,7 @@ MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_use
 User.create( :email => "letyantonioandres@gmail.com", :first_name => "Leticia", :last_name => "Antonio Andres", :personal_url => "leticia_antonio", :password => "leticiaantonio")
 
                @last_user = User.last
-               @network_last = Network.find(6)
+               @network_last = 6
 
     Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3")
     
@@ -296,7 +296,7 @@ User.create( :email => "letyantonioandres@gmail.com", :first_name => "Leticia", 
 User.create( :email => "an.gpe.ponce@gmail.com", :first_name => "Ana Guadalupe", :last_name => " Nava Ponce", :personal_url => "ana_anva", :password => "ananava")
 
                   @last_user = User.last
-                  @network_last = Network.find(6)
+                  @network_last = 6
 
        Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3")
 
@@ -343,9 +343,11 @@ User.create( :email => "an.gpe.ponce@gmail.com", :first_name => "Ana Guadalupe",
 User.create( :email => "liariskimi06@gmail.com", :first_name => "Miguel Angel", :last_name => " Sanchez Lara", :personal_url => "miguel_lara", :password => "miguel_lara")
 
  @last_user = User.last
-  @network_last = Network.find(6)
+  @network_last = 6
 
 Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3")
+
+puts Permissioning.to_yaml
 
 Course.create(:title => "Educacion Fisica 2B", :silabus => "Educacion Fisica 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last.id)
  @last_course_created = Course.last 
