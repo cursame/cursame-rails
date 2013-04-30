@@ -233,6 +233,7 @@ DEPENDENCIES
   carrierwave
   declarative_authorization
   devise
+  execjs
   geocoder
   google-api-client
   jquery-fileupload-rails
