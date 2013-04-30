@@ -34,7 +34,7 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-fileupload-rails'
+ 
 end
 ####### gems for debug erros
 
@@ -72,7 +72,7 @@ gem 'declarative_authorization'
 # gem 'gemcutter'
 # gem 'tumble'
 
-
+gem 'jquery-fileupload-rails'
 # Gem for twitter bootstrap.
 gem "therubyracer"
 gem 'execjs'
