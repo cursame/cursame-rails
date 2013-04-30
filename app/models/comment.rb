@@ -15,8 +15,8 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   #assets
-  #has_many :compart_assets, :dependent => :destroy
-  #has_many :assets, :through => :compart_assets, :source => :comment
+  has_many :compart_assets, :dependent => :destroy
+  has_many :assets, :through => :compart_assets, :source => :comment
 
   #course belongnings
   belongs_to :network
@@ -172,5 +172,12 @@ class Comment < ActiveRecord::Base
 
   def state
     @state = "published"
+  end
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" || user_id == user.id then
+      return true
+    end
+    return commentable.owner?(role,user)
   end
 end

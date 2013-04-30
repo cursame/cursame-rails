@@ -28,4 +28,11 @@ class Group < ActiveRecord::Base
     return self.members
   end
 
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    return user_id == user.id
+  end
+
 end

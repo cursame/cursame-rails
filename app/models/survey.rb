@@ -108,4 +108,11 @@ class Survey < ActiveRecord::Base
      self.name
   end
 
+  def owner?
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    return user_id == user.id
+  end
+
 end

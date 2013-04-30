@@ -16,6 +16,8 @@ class Wall < ActiveRecord::Base
     #para los likes
     acts_as_votable
 
+
+
   def self.search(search,id)
     if search
       query = 'publication_type LIKE "%'+search+'%"'

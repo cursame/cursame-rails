@@ -169,4 +169,14 @@ class Course < ActiveRecord::Base
   def image_coursex
     'imagecoursex.png'
   end
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    members = members_in_courses
+    owners = members.keep_if{ |x| x.owner = true}
+    users_id = owners.map{|x| x.user_id}
+    return users_id.include?(user.id)
+  end
 end

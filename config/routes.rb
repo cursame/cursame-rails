@@ -211,20 +211,8 @@ Cursame30Lb::Application.routes.draw do
   # manejo de la landing page
 
   get "home/index"
-
-  get "home/contact"
-
-  get "home/terms"
-
-  get "home/conditions"
-
-  get "home/team"
-
-  get "home/develop"
-
-  get "home/blog"
-
-  get "home/news"
+  get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
+  get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
 
   root :to => 'home#index'
 

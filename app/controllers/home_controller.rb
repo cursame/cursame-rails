@@ -12,27 +12,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def contact
-  end
-
-  def terms
-  end
-
-  def conditions
-  end
-
-  def team
-  end
-
-  def develop
-  end
-
-  def blog
-  end
-
-  def news
-  end
-
   def add_new_comment
     if user_signed_in?
       # esto es para clonar los comentarios de el grupo
@@ -107,6 +86,23 @@ class HomeController < ApplicationController
        @publication.downvote_from current_user
        respond_to do |format|
          #format.html
+         format.js
+       end
+     end
+
+     def destroy_wall
+       publication = Wall.find(params[:id])
+       publication.publication.destroy
+       respond_to do |format|
+         format.js
+       end
+     end
+
+     def destroy_comment
+       comment = Comment.find(params[:id])
+       comment.destroy
+
+       respond_to do |format|
          format.js
        end
      end
