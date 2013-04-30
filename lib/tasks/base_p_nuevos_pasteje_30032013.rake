@@ -146,19 +146,19 @@ User.create( :email => "robertapasteje@gmail.com", :first_name => "Roberta", :la
 @last_user = User.last
 @network_last = 6
 
-Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3") 
+Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => 3) 
 Course.create(:title => "Lab. Ciencias 2B", :silabus => "Laboratorio de Ciencias 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 
 @last_course_created = Course.last 
 
-MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
 
        alumnos2b.each do |inscript|
          @cg =  User.find_by_email(inscript[:email])
          if @cg == nil
            puts 'nil'
          else
-         MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+         MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
          end
        end
 
@@ -168,57 +168,57 @@ User.create( :email => "aeguiar4304@gmail.com", :first_name => "Andres Felipe", 
 @last_user = User.last
 @network_last = 6
 
-Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3") 
+Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => 3) 
 
 Course.create(:title => "Taller de matematicas 1A", :silabus => "Taller de matematicas 1A", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 @last_course_created = Course.last 
-MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
              
               alumnos1a.each do |inscript|
                 @cg =  User.find_by_email(inscript[:email])
                 if @cg == nil
                    puts 'nil'
                  else
-                MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+                MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
                 end
               end
               
 Course.create(:title => "Taller de matematicas 1B", :silabus => "Taller de matematicas 1B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 @last_course_created = Course.last 
-MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
 
               alumnos1b.each do |inscript|
                 @cg =  User.find_by_email(inscript[:email])
                 if @cg == nil
                    puts 'nil'
                  else
-                MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+                MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
                 end
               end
 
 Course.create(:title => "Taller de matematicas 2A", :silabus => "Taller de matematicas 2A", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 @last_course_created = Course.last 
-MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
 
               alumnos1a.each do |inscript|
                 @cg =  User.find_by_email(inscript[:email])
                 if @cg == nil
                    puts 'nil'
                  else
-                MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true) 
+                MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true) 
                 end 
                end
                
 Course.create(:title => "Taller de matematicas 2B", :silabus => "Taller de matematicas 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 @last_course_created = Course.last 
-MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
 
                alumnos2b.each do |inscript|
                  @cg =  User.find_by_email(inscript[:email])
                  if @cg == nil
                     puts 'nil'
                   else
-                 MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true) 
+                 MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true) 
                  end 
                end
 
@@ -228,35 +228,35 @@ User.create( :email => "letyantonioandres@gmail.com", :first_name => "Leticia", 
                @last_user = User.last
                @network_last = 6
 
-    Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3")
+    Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => 3)
     
      
     Course.create(:title => "Computacion 2A", :silabus => "Computacion 2A", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 
     @last_course_created = Course.last 
 
-    MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+    MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
 
     alumnos2a.each do |inscript|
       @cg =  User.find_by_email(inscript[:email])
       if @cg == nil
          puts 'nil'
        else
-      MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+      MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
       end
     end
     Course.create(:title => "Computacion 2B", :silabus => "Computacion 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
 
     @last_course_created = Course.last 
 
-    MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+    MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
       
     alumnos2b.each do |inscript|
       @cg =  User.find_by_email(inscript[:email])
       if @cg == nil
          puts 'nil'
        else
-      MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+      MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
       end
      end
 
@@ -264,14 +264,14 @@ User.create( :email => "letyantonioandres@gmail.com", :first_name => "Leticia", 
 
     @last_course_created = Course.last 
 
-    MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+    MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
 
    alumnos3a.each do |inscript|
      @cg =  User.find_by_email(inscript[:email])
         if @cg == nil
            puts 'nil'
          else
-        MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+        MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
         end
    end
    
@@ -279,13 +279,13 @@ User.create( :email => "letyantonioandres@gmail.com", :first_name => "Leticia", 
 
    @last_course_created = Course.last 
 
-   MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true, :accepted => true)
+   MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true, :accepted => true)
    alumnos3b.each do |inscript|
      @cg =  User.find_by_email(inscript[:email])
         if @cg == nil
            puts 'nil'
          else
-        MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false, :accepted => true)  
+        MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false, :accepted => true)  
         end
    end
 
@@ -298,45 +298,45 @@ User.create( :email => "an.gpe.ponce@gmail.com", :first_name => "Ana Guadalupe",
                   @last_user = User.last
                   @network_last = 6
 
-       Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3")
+       Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => 3)
 
 
        Course.create(:title => "Tecnologia 2B", :silabus => "Tecnologia 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
        @last_course_created = Course.last 
-       MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true)
+       MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true)
        
        alumnos2b.each do |inscript|
          @cg =  User.find_by_email(inscript[:email])
               if @cg == nil
                  puts 'nil'
                else
-                  MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false)  
+                  MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false)  
                end
         end
 
        Course.create(:title => "Tecnologia 1B", :silabus => "Tecnologia 1B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
         @last_course_created = Course.last 
-        MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true)
+        MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true)
 
       alumnos1b.each do |inscript|
         @cg =  User.find_by_email(inscript[:email])
         if @cg == nil
            puts 'nil'
          else
-           MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false)  
+           MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false)  
          end
       end
       
         Course.create(:title => "Tecnologia 3B", :silabus => "Tecnologia 3B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
         @last_course_created = Course.last 
-        MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true)
+        MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true)
         
       alumnos3b.each do |inscript|
         @cg =  User.find_by_email(inscript[:email])
         if @cg == nil
            puts 'nil'
          else
-           MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false) 
+           MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false) 
          end 
       end
       
@@ -345,20 +345,20 @@ User.create( :email => "liariskimi06@gmail.com", :first_name => "Miguel Angel", 
  @last_user = User.last
   @network_last = 6
 
-Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => "3")
+Permissioning.create(:user_id => @last_user.id, :network_id => @network_last, :role_id => 3)
 
 puts Permissioning.to_yaml
 
 Course.create(:title => "Educacion Fisica 2B", :silabus => "Educacion Fisica 2B", :public_status => "private", :init_date => "01/08/2012", :finish_date => "31/07/2013", :network_id => @network_last)
  @last_course_created = Course.last 
- MembersInCourse.create(:course_id => @last_course_created, :user_id => @last_user, :owner => true)
+ MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @last_user.id, :owner => true)
  
  alumnos2b.each do |inscript|
    @cg =  User.find_by_email(inscript[:email])
    if @cg == nil
       puts 'nil'
     else
-      MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false)  
+      MembersInCourse.create(:course_id => @last_course_created.id, :user_id => @cg.id, :owner => false)  
     end
   end
   
