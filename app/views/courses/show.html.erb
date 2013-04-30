@@ -1,8 +1,7 @@
-<% if  @course.coverphoto.blank? %>
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url('/assets/<%= @course.image_coursex %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%else%>
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url('<%= @course.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%end%>
+
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
+ url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+
 
 <div id="notice" class="notice"></div>
 
@@ -72,14 +71,18 @@
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
                 <% if current_role == 'admin' || 'superadmin'%>
-                    <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>
-                    <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>
-
+                 <% if @members != nil%>
+                      <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
+                       <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                      <%else%>              
+                <%end%>
                 <%else%>
                 <% if @member.accepted == true %>
-                    <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url)  if ( !@members.avatar.blank? && !nil )%>
-                    <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url)  if (@members.avatar.blank? || nil)  %>
-
+                        <% if @members != nil%>
+                              <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
+                               <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                              <%else%>              
+                        <%end%>
                 <%end%>
                 <%end%>
             <%end%>
@@ -116,8 +119,6 @@
 
        <%=render :partial => 'shared/wall_filters' %>
        <div id="timeline">
-            <%#= debug  @lik%>
-            <%#= debug  @filter%>
          <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
        </div>
        <!-- fin timeline -->

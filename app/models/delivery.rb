@@ -115,11 +115,13 @@ class Delivery < ActiveRecord::Base
     errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
   end
 
+
   def owner?(role,user)
     if role == "admin" || role == "superadmin" then
       return true
     end
     return user_id == user.id
   end
+
 
 end
