@@ -356,7 +356,7 @@ Course.create(:title => "Educacion Fisica 2B", :silabus => "Educacion Fisica 2B"
    if @cg == nil
       puts 'nil'
     else
-            MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false)  
+      MembersInCourse.create(:course_id => @last_course_created, :user_id => @cg.id, :owner => false)  
     end
   end
   
