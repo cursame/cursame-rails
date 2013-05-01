@@ -204,7 +204,7 @@ class CoursesController < ApplicationController
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
     
-    if current_role == "admin" || 'superadmin'
+    if current_role == "admin" 
     else 
       if @member
         if @member.accepted
