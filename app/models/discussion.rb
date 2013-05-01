@@ -1,7 +1,7 @@
 class Discussion < ActiveRecord::Base
-   has_many :discussions_coursess
+   has_many :discussions_coursess, :dependent => :destroy
    has_many :courses, :through => :discussions_coursess
-   has_many :activities, as: :activitye
+   has_many :activities, as: :activitye#, :dependent => :destroy
 
    belongs_to :network
    belongs_to :user
@@ -27,11 +27,30 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  before_destroy do
+    walls = Wall.where(:publication_type => "Discussion", :publication_id => id)
+    notifications = Notification.where(:notificator_type => "Discussion", :notificator_id => id)
+
+    walls.each do |wall|
+      wall.destroy
+    end
+    notifications.each do |notification|
+      notification.destroy
+    end
+  end
+
   def state
     @state = "published"
   end
 
   def max_courses
     errors.add(:courses, "Solamente puede tener un curso asociado al delivery") if courses.length >= 2
+  end
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    return user_id == user.id
   end
 end

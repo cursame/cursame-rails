@@ -100,24 +100,24 @@ class UsersController < ApplicationController
 =end
  def pertenence!
 
-     if current_network
+   if current_network
      @user = User.find_by_personal_url(params[:personal_url])
 
      @user_id =  @user.id
      @user_pertenence = NetworksUser.find_by_user_id(@user_id)
      if @user_pertenence != nil
-     @networks_petenence_user = @user_pertenence.network_id
-     @network = Network.find_by_id(@networks_petenence_user)
-     @n = @network
+       @networks_petenence_user = @user_pertenence.network_id
+       @network = Network.find_by_id(@networks_petenence_user)
+       @n = @network
      else
 
-     @notice = "no estas inscrito en ninguna red"
+       @notice = "no estas inscrito en ninguna red"
      end
-     end
+   end
 
  end
 =begin
- def friend
+   def friend
     @friend = UserFriends.new(params[:user_friend])
     @friend.friend_one = current_user.id
     @friend.friend_two = current_friend.id
@@ -174,7 +174,7 @@ class UsersController < ApplicationController
  end
 =end
  def index
-  @user = User.all
+   @user = User.all
  end
 
  def dashboard
@@ -190,13 +190,13 @@ class UsersController < ApplicationController
  end
 
  def acces_courses
-    @course_for_user = current_user.courses.where(:active_status => true)
-    respond_to do |format|
-      #format.html
-      format.json
-      format.js
-    end
-  end
+   @course_for_user = current_user.courses.where(:active_status => true)
+   respond_to do |format|
+     #format.html
+     format.json
+     format.js
+   end
+ end
 
 
 

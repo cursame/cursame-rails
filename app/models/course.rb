@@ -3,24 +3,24 @@ class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
   has_many :members_in_courses, :dependent => :destroy
-  #has_many :definer_users
-  # has_many :users, :through => :definer_users
-  has_many :deliveries_courses
-  has_many :deliveries, :through => :deliveries_courses
-  has_many :assignments
-  has_many :surveyings
-  has_many :surveys, :through => :surveyings
-  has_many :response_to_the_evaluations
-  has_many :discussions_coursess
-  has_many :discussions, :through => :discussions_coursess
+  has_many :definer_users#, :dependent => :destroy
+  has_many :users, :through => :definer_users
+  has_many :deliveries_courses, :dependent => :destroy
+  has_many :deliveries, :through => :deliveries_courses, :dependent => :destroy
+  has_many :assignments#, :dependent => :destroy
+  has_many :surveyings, :dependent => :destroy
+  has_many :surveys, :through => :surveyings, :dependent => :destroy
+  has_many :response_to_the_evaluations, :dependent => :destroy
+  has_many :discussions_coursess, :dependent => :destroy
+  has_many :discussions, :through => :discussions_coursess, :dependent => :destroy
   belongs_to :network
-  has_many :comments
- 
-  has_many :activities, as: :activitye
- 
+  has_many :comments, :dependent => :destroy
+
+  has_many :activities, as: :activitye#, :dependent => :destroy
+
  #publications/walls
   has_many :coursepublicationings
-  has_many :walls, :through => :coursepublicationings 
+  has_many :walls, :through => :coursepublicationings
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
@@ -51,15 +51,30 @@ class Course < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
 
   after_create do
-    if self.public_status == 'public'      
+    if self.public_status == 'public'
       Wall.create :users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true
       self.users.each do |u|
-        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'        
+        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
       end
     end
   end
 
-  def self.import(file)
+  before_destroy do
+
+    walls = Wall.where(:publication_type => "Course",:publication_id => id)
+
+    walls.each do |wall|
+      wall.destroy
+    end
+
+    notifications = Notification.where(:notificator_id => id, :notificator_type => "Course")
+
+    notifications.each do |notification|
+      notification.destroy
+    end
+  end
+
+  def self.import(file,network)
     arrayErrores = Array.new
     count = 1
     begin
@@ -153,5 +168,15 @@ class Course < ActiveRecord::Base
   end
   def image_coursex
     'imagecoursex.png'
+  end
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    members = members_in_courses
+    owners = members.keep_if{ |x| x.owner = true}
+    users_id = owners.map{|x| x.user_id}
+    return users_id.include?(user.id)
   end
 end
