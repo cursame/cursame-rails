@@ -40,9 +40,7 @@ class UsersController < ApplicationController
       @id = params[:id]
       @search = params[:search]
       @page = params[:page].to_i
-      # @wall = @user_l.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-      # @wall = Wall.where(:users => [@user_l.id],:public => true).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-        @wall = @user_l.publications.paginate(:per_page => 10, :page => params[:page])
+      @wall = @user_l.publications.search(@search,@id).paginate(:per_page => 10, :page => params[:page])
      ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build

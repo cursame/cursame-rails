@@ -77,7 +77,7 @@ class MembersInCoursesController < ApplicationController
     @members_in_course.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_in_courses_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

@@ -36,6 +36,7 @@
 }
 .box_comunity:hover { box-shadow: 0px 0px 7px #28C8DF; transition: linear all 0.2s; }
 .image_acces_comunity img { z-index: 0; }
-.place-hldr { background: url("/assets/grdnt-cover.png") repeat-x center bottom; height: 147px; display: block; margin-top: -153px; position: relative; width: 150px; transition: ease-in-out background 0.2s; padding-top: 5px; }
-.place-hldr:hover { background: rgba(39,39,39,0.8); color: #fff!important; }
+.image_acces_comunity img:hover { opacity: 0.2; }
+.place-hldr { height: 147px; display: block; margin-top: -153px;  width: 150px; transition: ease-in-out background 0.2s; padding-top: 5px; }
+.place-hldr:hover { color: #fff!important; }
 .sent-slctd { color: #ccc; }
