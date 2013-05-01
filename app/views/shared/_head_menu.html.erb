@@ -29,11 +29,11 @@
         </div>
         <div id="full-deliveries-area" >          
             <div>
-                <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %>
+                <!-- <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %> -->
             </div> 
           <div id="actual_resources">
           <% @course_for_user = current_user.courses.where(:active_status => true)%>
-          <%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user }%>
+         	<%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user }%>
           </div>
         </div>
         
