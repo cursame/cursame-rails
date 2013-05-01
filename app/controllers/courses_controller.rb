@@ -56,10 +56,18 @@ class CoursesController < ApplicationController
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     @wall = @course.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    respond_to do |format|
-          format.html # show.html.erb
-          format.json { render json: @course }
+    
+    if request.xhr?      
+      respond_to do |format|
+        format.js
+      end           
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @course }
+      end
     end
+
   end
 
 
