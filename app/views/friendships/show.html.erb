@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b> <h3><%=@user.email%> Friendship List: </h3></b>
-</p>
+<div class="user-edit-form">
+<div id="edituserdmenu">
+	<h3>Lista de amigos de <b><%=@user.email%></b></h3>
+</div>
 
-<p>
+
   <b>Amigos actuales:</b>
   <p>
 
@@ -12,7 +13,7 @@
     <%if (hash[:accepted]) then%>
       <tr>
         <td>
-            <%= link_to image_tag(hash[:user].avatar.modern), show_user_path(hash[:user].personal_url)%>
+            <%= link_to image_tag(hash[:user].avatar.image_avatarx), show_user_path(hash[:user].personal_url)%>
             <%if @owner then%>
                 <%= hash[:user].name %>
             <%= link_to "Eliminar amigo", {:controller => "friendships", :action => "destroy", :friend_id => hash[:user].id}, :method => :delete%>
@@ -42,9 +43,9 @@
    <%end%>
    <%end%>
    <%end%>
-</p>
 
 <p> <%= link_to "Profile", show_user_path(current_user.personal_url)%>
 <%if @owner then%>
 <p> <%= link_to "Comunidad", network_comunity_path %>
 <%end%>
+</div>
