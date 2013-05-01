@@ -1,6 +1,8 @@
- <%= f.label :nombre_del_criterio%></br>
- <%= f.text_field  :name %></br>
- <%= f.label :commentarios_de_evaluación_por_rubro%></br>
- <%= f.text_area :comment_for_rubre, :rows => 3 %></br>
- <%= f.label :porcentaje_asignado%></br>
- <%= f.select :figure,(1..100) %>%</br>
+<div class="homeworkCalf">
+ <%= f.label :nombre_del_criterio, :class => "titleCrit"%>
+ <%= f.text_field  :name, :class => "nombreCrit" %></br>
+ <%= f.label :commentarios_de_evaluación_por_rubro, :class => "titleCrit"%>
+ <%= f.text_area :comment_for_rubre, :rows => 3, :class => "areaCrit"%></br>
+ <%= f.label :porcentaje_asignado, :class => "titleCrit"%>
+ 	<span class="default-form" style="width:200px!important;display:block;"><%= f.select :figure,(1..100)%></span>
+</div>

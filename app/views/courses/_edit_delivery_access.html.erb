@@ -4,7 +4,7 @@
    formId= "form-upload-assignments-#{random_id}"
 
 %>
-
+sdfsdf
 <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
       <%= f.hidden_field :network_id, :value => current_network.id %>
       <%= f.hidden_field :user_id, :value => current_user.id %>      <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
