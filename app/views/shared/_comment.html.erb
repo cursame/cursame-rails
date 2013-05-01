@@ -16,11 +16,16 @@
        <%end%>
 
        <%if comment.owner?(current_role, current_user) then%>
-          <%= link_to "Destroy", destroy_comment_path(comment.id), :remote => true%>
+          <%= link_to "Eliminar", destroy_comment_path(comment.id), :remote => true%>
        <%end%>
-    <a class="avatar-child-comment" href="#">
-      <img class="media-object" src="<%= comment.user.avatar%>" width ="30px">
-    </a>
+    <div class="avatar-child-comment" href="#">
+        <%#= debug comment.user.avatar%>
+    <% if comment.user.avatar.blank? %>
+        <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini"}), show_user_path(comment.user.personal_url)%>
+      <%else%>
+        <%= link_to image_tag(comment.user.avatar, {:class => "avatar-mini"}), show_user_path(comment.user.personal_url) %>
+    <%end%>
+    </div>
     <div class="info-comment">
         <div class="username"><%= comment.user.name %></div>
         <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
