@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!
@@ -92,7 +93,9 @@ class HomeController < ApplicationController
 
      def destroy_wall
        publication = Wall.find(params[:id])
-       publication.publication.destroy
+       if !publication.nil?
+         publication.publication.destroy
+       end
        respond_to do |format|
          format.js
        end
@@ -100,7 +103,10 @@ class HomeController < ApplicationController
 
      def destroy_comment
        comment = Comment.find(params[:id])
-       comment.destroy
+
+       if !comment.nil?
+         comment.destroy
+       end
 
        respond_to do |format|
          format.js
