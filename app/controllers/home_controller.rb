@@ -95,6 +95,7 @@ class HomeController < ApplicationController
        publication = Wall.find(params[:id])
        if !publication.nil?
          publication.publication.destroy
+          @id = publication.id
        end
        respond_to do |format|
          format.js
@@ -103,11 +104,11 @@ class HomeController < ApplicationController
 
      def destroy_comment
        comment = Comment.find(params[:id])
-
+       
        if !comment.nil?
          comment.destroy
+         @id = comment.id
        end
-
        respond_to do |format|
          format.js
        end

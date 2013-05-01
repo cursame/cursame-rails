@@ -25,4 +25,8 @@ class Network < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
+  
+  def owner?(role,user)
+    return false
+  end
 end
