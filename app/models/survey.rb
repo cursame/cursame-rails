@@ -108,7 +108,7 @@ class Survey < ActiveRecord::Base
      self.name
   end
 
-  def owner?
+  def owner?(role,user)
     if role == "admin" || role == "superadmin" then
       return true
     end
