@@ -1,7 +1,6 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
  url(<%= @user_l.coverphoto.blank? ? '/assets/'+ @user_l.cover_photox : @user_l.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 
-
    <%= render :partial => 'shared/head_menu'%>
 </div>
 <!-- Content Post Box -->
@@ -11,9 +10,9 @@
         <!-- User Avatar -->
         <div id="box-user-credential" class="network-layout">
             <div class="thumbnail">
-             
+
              <%= link_to image_tag(@user_l.avatar.profile), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank?) %>
-             
+
               <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?) %>
             </div>
 
@@ -56,7 +55,7 @@
                         <% @friends = @user_l.friendships.where(:accepted => true)%>
                         <% @inverse_friends = @user_l.inverse_friendships.where(:accepted => true)%>
                         <% @sum_f =  @friends.count +  @inverse_friends.count %>
-                        
+
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
                                 <span class="title-num"><%= @sum_f %></span>
