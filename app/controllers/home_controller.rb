@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!
@@ -103,7 +104,7 @@ class HomeController < ApplicationController
 
      def destroy_comment
        comment = Comment.find(params[:id])
-       
+
        if !comment.nil?
          comment.destroy
          @id = comment.id
