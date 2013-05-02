@@ -1,6 +1,6 @@
 
 .light_box{
--webkit-border-bottom-right-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-bottomleft: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding:30px; background-color:#eee; width:900px; height: 390px;
+-webkit-border-bottom-right-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-bottomleft: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding:30px; background-color:#eee; width:900px; height: 390px; z-index: 99;
      & h1 {
          font-size:18px;
      }
