@@ -11,6 +11,7 @@
 <div class="description">
     <%= delivery.description %>
 </div>
+<% if delivery.assets.count > 0 %>
 <div class="extra-label">Archivos:</div>
 <div class="asset-box upload-label">
     <% delivery.assets.each do|files|%>
@@ -20,6 +21,8 @@
         </div>
     <%end%>
 </div>
+<%end%>
+<% if delivery.areas_of_evaluations.count > 0 %>
 <div class="extra-label">Se evalua:</div>
 <div class="evaluation-box">
     <div id="chart-delivery-<%= delivery.id %>" style="min-width: 580px; height: 60px; margin: 0 auto"></div>
@@ -121,6 +124,7 @@
         });
     </script>
 </div>
+<%end%>
 <!--se crea una validación para que los owner del curso y los que no son miembros no puedan entregar las tareas-->
 <% publication.courses.each do |course|%>
 <% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
