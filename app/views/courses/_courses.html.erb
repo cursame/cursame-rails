@@ -33,8 +33,6 @@
           <li><a href="#">No hay cursos</a></li>
       <% else %>
           <% courses.each do |cu| %>
-              <% puts 'tab 1' %>
-              <% puts cu.to_yaml %>
               <% @cort = Course.find(cu.course_id) %>
               <% if @cort.network_id == current_network.id %>
                   <% if @cort.active_status == true %>
@@ -55,8 +53,6 @@
           <li><a href="#">No hay cursos</a></li>
       <% else %>
           <% courses.each do |cu| %>
-              <% puts 'tab 2' %>
-              <% puts cu.to_yaml %>
               <% @cort = Course.find(cu.course_id) %>
           <% if @cort.network_id == current_network.id %>
           <% if @cort.active_status == true %>
