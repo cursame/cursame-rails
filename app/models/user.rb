@@ -352,9 +352,5 @@ class User < ActiveRecord::Base
   def inactive!
     self.update_attributes(:locked_at => Time.now)
   end
-  
-  def owner?(role,user)
-    return false
-  end
-  
+
 end

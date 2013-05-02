@@ -178,6 +178,14 @@ class Comment < ActiveRecord::Base
     if role == "admin" || role == "superadmin" || user_id == user.id then
       return true
     end
+
+    puts "ACA PASO"
+    puts commentable_type
+
+    if commentable_type == "User" then
+      return true if commentable_id == user.id
+      return true if user_id == user.id
+    end
     return commentable.owner?(role,user)
   end
 end
