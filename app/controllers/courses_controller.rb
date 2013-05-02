@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = @course.walls.search(@search, nil).order('created”_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     
     if request.xhr?      
       respond_to do |format|
