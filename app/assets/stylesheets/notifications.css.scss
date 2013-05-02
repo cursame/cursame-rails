@@ -88,6 +88,9 @@
       color: #333;
       font-size: 13px;
       padding: 6px 10px 5px 10px;
+      overflow: auto;
+      overflow-x: hidden;
+      height: 400px;
      & li{
 	  padding: 10px 0 10px 0;   
 	  border-bottom: $border-box;

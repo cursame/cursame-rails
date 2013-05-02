@@ -329,7 +329,7 @@ $(document).ready(function() {
 
     var tmp_height_new_course = $('#form-new-course').height();
     var tmp_height_new_course_box = null;
-    $('#new-course-btn').click(function(){
+    $('#new-course-btn').live("click",function(){
         tmp_height_new_course_box = $('#box-course').height();
         $('#box-course').animate({
             height: tmp_height_new_course+'px'
@@ -339,7 +339,7 @@ $(document).ready(function() {
         nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation') );
         nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation') );
     });
-    $('#cancel-course-form, #return-course') .click(function(){
+    $('#cancel-course-form, #return-course') .live("click",function(){
         $('#box-course').animate({
             height: tmp_height_new_course_box+'px'
         }, 400, function() {

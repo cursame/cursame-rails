@@ -2,7 +2,7 @@
 <div class="title">Crear nuevo curso</div>
 <div class="ui-widget-overlay">Cargando ...</div>
 
-<%= form_for(@course, :remote => true, :html => { :class => "default-form course-form"}) do |f|  %>
+<%= form_for(Course.new, :remote => true, :html => { :class => "default-form course-form"}) do |f|  %>
     <%= f.hidden_field :network_id, :value => current_network.id%>
     <%= f.text_field :title, :placeholder=>'Nombre' %>
     <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción' %>
@@ -15,7 +15,7 @@
     <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div>
     <%= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-    <%= f.submit "Crear" , :class=>'input-button active', :id => 'create_course_form'%>    
+    <%= f.submit "Crear" , :class=>'input-button active', :id => 'create_course_form'%>
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
     <div style="clear: both"></div>
 <% end %>

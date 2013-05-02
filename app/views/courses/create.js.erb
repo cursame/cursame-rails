@@ -1,10 +1,17 @@
-resetForm($('#new_course'));
-unmask('#new_course');
 <% if @publication != nil %>
+$( "#tabs-courses" ).tabs();
 $('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>");
 $('#timeline').effect("highlight", {}, 1000);
+
+$('#box-course').html("<%= escape_javascript(render :partial => '/courses/courses', :locals => {:courses => @courses})%>");
+console.info($('#new-course'));
+
 <%end%>
-$('#notice').append('Se ha creado un curso')
+
+$('#notice').append('Se ha creado un curso');
 setTimeout(function() {
     $('#notice').html('')
 }, 2500);
+
+$('#box-course').html("<%= escape_javascript(render :partial => '/courses/courses', :locals => {:courses => @courses})%>");
+$( "#tabs-courses" ).tabs();
