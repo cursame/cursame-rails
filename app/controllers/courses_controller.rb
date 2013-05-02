@@ -6,6 +6,9 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.where(:network_id => current_network.id, :active_status => true).search(params[:search])
+
+    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
+
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|
@@ -117,6 +120,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
+    @courses = Course.where(:network_id => current_network.id, :active_status => true).limit(7)
     @course = Course.new(params[:course])
     @course.network = current_network
     respond_to do |format|
@@ -133,8 +137,12 @@ class CoursesController < ApplicationController
             @az =  @course
             @typed = "Course"
         activation_activity
+        @course_count = Course.count
+        @ccc = current_user.courses.where(:network_id => current_network.id)
+        @count_course_iam_member =  @ccc.where(:active_status => true).count
+        @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
-        format.html { redirect_to courses_url }
+        #format.html { redirect_to courses_url }
         format.js
       else
         #format.json { render json: @course.errors, status: :unprocessable_entity }
