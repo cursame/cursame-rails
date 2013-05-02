@@ -32,14 +32,13 @@
       <% if @course_count == 0 %>
           <li><a href="#">No hay cursos</a></li>
       <% else %>
-          <% @courses.each do |cu| %>
+          <% courses.each do |cu| %>
+              <% puts 'tab 1' %>
+              <% puts cu.to_yaml %>
               <% @cort = Course.find(cu.course_id) %>
               <% if @cort.network_id == current_network.id %>
                   <% if @cort.active_status == true %>
                       <% if cu.accepted == true %>
-              <!--< member_course = MembersInCourse.find_by_course_id(cu.id) %>
-              < if member_course.active_status == true %>
-                  < if member_course.accepted == true %>-->
                       <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
                   <% end %>
               <% end %>
@@ -49,21 +48,21 @@
     </ul>
     <div class="view-all"><%= link_to "Ver todos", courses_path %></div>
   </div>
+  <% permitted_to? :create, :courses do %>
   <div id="tabs-courses-2">
     <ul id="course-list">
       <% if @course_count == 0 %>
           <li><a href="#">No hay cursos</a></li>
       <% else %>
           <% courses.each do |cu| %>
+              <% puts 'tab 2' %>
+              <% puts cu.to_yaml %>
               <% @cort = Course.find(cu.course_id) %>
           <% if @cort.network_id == current_network.id %>
           <% if @cort.active_status == true %>
           <% if cu.owner == true %>
-             <!-- < member_course = MembersInCourse.find_by_course_id(cu.id) %>
-              < if member_course.network_id == current_network.id %>
-                  < if member_course.active_status == true %>
-                      < if member_course.owner == true %>-->
                           <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
+                      <%else%>
                       <% end %>
                   <% end %>
               <% end %>
@@ -71,4 +70,5 @@
       <% end %>
     </ul>
   </div>
+      <% end %>
 </div>
