@@ -1,8 +1,7 @@
-<% if  @course.coverphoto.blank? %>
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url('/assets/<%= @course.image_coursex %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%else%>
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url('<%= @course.coverphoto %>'); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
-<%end%>
+
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
+ url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+
 
 <div id="notice" class="notice"></div>
 
@@ -118,10 +117,8 @@
 
        <%=render :partial => 'shared/post_menu' %>
 
-       <%=render :partial => 'shared/wall_filters' %>
+       <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id)} %>
        <div id="timeline">
-            <%#= debug  @lik%>
-            <%#= debug  @filter%>
          <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
        </div>
        <!-- fin timeline -->

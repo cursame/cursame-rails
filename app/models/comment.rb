@@ -15,13 +15,13 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   #assets
-  has_many :compart_assets
+  has_many :compart_assets, :dependent => :destroy
   has_many :assets, :through => :compart_assets, :source => :comment
 
   #course belongnings
   belongs_to :network
   belongs_to :course
-  has_many :activities, as: :activitye
+  has_many :activities, as: :activitye#, :dependent => :destroy
 
   #comentarios para los comentarios
   acts_as_commentable
@@ -54,12 +54,24 @@ class Comment < ActiveRecord::Base
   end
 
   #agregar un asset al comentario
-  accepts_nested_attributes_for :compart_assets
+  # accepts_nested_attributes_for :compart_assets
 
   #para elegir el elemento que recibir a/o el comentario
   def self.get_commentable(commentable_id,commentable_type)
     #comment = self.find_by_commentable_id(commentable_id)
     commentable_type.camelize.constantize.find(commentable_id)
+  end
+
+  before_destroy do
+    notifications = Notification.where(:notificator_type => "Comment",:notificator_id => id)
+    walls = Wall.where(:publication_type => "Comment",:publication_id => id)
+    walls.each do |wall|
+      wall.destroy
+    end
+
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
   after_create do
@@ -160,5 +172,12 @@ class Comment < ActiveRecord::Base
 
   def state
     @state = "published"
+  end
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" || user_id == user.id then
+      return true
+    end
+    return commentable.owner?(role,user)
   end
 end

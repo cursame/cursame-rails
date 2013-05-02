@@ -47,26 +47,13 @@ class ManagersController < ApplicationController
   end
 
   def import_users
-    #superadmin = current_user.roles.keep_if {
-    #  |role|
-    #  role.id == 4 || role.id == 1
-    #}
-    #if superadmin.size < 1 then
-    #  redirect_to root_path
-    #end
-    @users = User.all
+    @users = current_network.users
   end
 
   def upload_users
-    #superadmin = current_user.roles.keep_if {
-    #  |role|
-    #  role.id ==4 || role.id == 1
-    #}
-    #if superadmin.size < 1 then
-    #  redirect_to root_path
-    #end
-    @errores = User.import(params[:file])
-    @users = User.all
+
+    @errores = User.import(params[:file],current_network)
+    @users = current_network.users
     respond_to do |format|
       format.html { render "managers/import_users"}
       format.json { render json: @users }
@@ -75,14 +62,7 @@ class ManagersController < ApplicationController
 
   def send_mails
     @user = current_user
-    superadmin = @user.roles.keep_if {
-      |role|
-      role.id == 4 || role.id == 1
-    }
 
-    if superadmin.size < 1 then
-      redirect_to root_path
-    end
   end
 
   def sending
@@ -96,29 +76,14 @@ class ManagersController < ApplicationController
 
   #GET /managers/import
   def import_courses
-    superadmin = current_user.roles.keep_if {
-      |role|
-      role.id == 4 || role.id == 1
-    }
-    if superadmin.size < 1 then
-      redirect_to root_path
-    end
-
-    @courses = Course.all
+    @courses = current_network.courses
   end
 
   #POST /managers/upload_csv
   def upload_courses
-    superadmin = current_user.roles.keep_if {
-      |role|
-      role.id == 4 || role.id == 1
-    }
-    if superadmin.size < 1 then
-      redirect_to root_path
-    end
 
-    @errores = Course.import(params[:file])
-    @courses = Course.all
+    @errores = Course.import(params[:file],current_network)
+    @courses = current_network.courses
     respond_to do |format|
       format.html { render "/managers/import_courses"}
       format.json { render json: @courses }

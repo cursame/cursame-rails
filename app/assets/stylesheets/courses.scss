@@ -126,7 +126,7 @@ h3{
    	margin-left: 0px!important;
     border-right: solid #4FA3E9 4px;
     /*border-left: solid #eee 2px;*/ border-left: 0!important;
-    margin-bottom: -3px;
+    margin-bottom: 6px;
     overflow:auto;
     transition: all linear 0.3s;
 }
@@ -162,12 +162,16 @@ h3{
 .deliveries_list{
     margin-top:10px;
     float:left;
-    width:400px;
-    height:400px;
+    width:350px;
+    height:350px;
     overflow:auto;
     
-    
 }
+
+#notice {
+	position: absolute!important; display: block!important; z-index: 100%!important; color: #DFF0D8!important; font-size: 12px;
+}
+
 .title_dxv{
     margin-left:20px;
     height:100%;
@@ -179,10 +183,9 @@ h3{
 }
 .locklok{
     float:left;
-    width:400px;
+    width:480px;
     height:400px;
     overflow:auto;
-    
 }
 .high_tent{
      width:800px;
@@ -253,3 +256,20 @@ float: right; display: inline-block; z-index: 1; margin-left: 754px; margin-top:
 
 .calendarHome { background: #fff; padding: 12px 10px 1px 10px; width: 300px; border-right: 4px solid #83B81F; }
 .calendarEvnt { background: #fff; padding: 12px 10px 1px 10px; width: 300px; border-right: 4px solid #F39C20; }
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ ajax tareas ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+
+.homeworkCalf { }
+input.nombreCrit { width: 300px!important; padding: 10px!important; }
+.rate { background: #00ADC4; color: #fff; font-size: 20px; padding: 3px 10px; display: inline-block; text-align: center; float: left; height: 60px; width: 50px; margin-top: -50px; vertical-align: middle; }
+.header_l { width: 400px; float: right; display: inline-block; }
+.usermenuTitle { color: #969696; font-size: 16px; margin-top: 10px; display: block; }
+.userDescription { color: #969696; font-size: 14px; margin-top: 10px; display: block; }
+.areaCrit { padding: 10px; }
+.titleCrit { color: #969696; font-size: 14px; margin: 12px 0 5px; display: block; }
+.homeworkCalf .default-form select {
+	width: 200px;
+}
+#titleDevSing { background: #fff; padding: 10px; width: 200px; display: block; margin-bottom: 10px; border-right: 2px solid #83B81F; }

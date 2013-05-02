@@ -1,12 +1,20 @@
-<h2>Resend unlock instructions</h2>
+<div class="signup-layout"></div>
+	<div class="content login" id="titlheader" style="text-align:center;">
+			<b>No has recibido instrucciones de desbloqueo</b><br /><br />Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p>
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+				<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+				  <%= devise_error_messages! %>
+				  
+			<div class="form-signin form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;">
+				<div><!-- <%= f.label :email %><br /> -->
+					<%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %></div>
+				
+					<div><%= f.submit "Reenviar instrucciones", :class =>"signup-btn" %></div>
+				<% end %>
+			</div>
+		</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+		<div class="confirmation-links">
+			<%= render "devise/shared/links" %>
+		</div>
+</div>

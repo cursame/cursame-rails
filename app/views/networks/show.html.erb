@@ -83,7 +83,7 @@
 <div id="box-stream-post">
   <%=render :partial => 'shared/post_menu' %>
 
-  <%=render :partial => 'shared/wall_filters' %>
+  <%=render :partial => 'shared/wall_filters', :locals => {:path => wall_path} %>
 
   <!-- timeline -->
   <div id="timeline">

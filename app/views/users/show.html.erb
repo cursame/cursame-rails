@@ -11,18 +11,16 @@
     <div id="side-bar" class="side-left-bar" >
         <!-- User Avatar -->
         <div id="box-user-credential" class="network-layout">
-            <div class="thumbnail"  >
-
-             <%= link_to image_tag(@user_l.avatar.profile), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank? && !nil   ) %>
-             <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?  )  %>
-
-
+            <div class="thumbnail">
+             
+             <%= link_to image_tag(@user_l.avatar.profile), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank?) %>
+             
+              <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?) %>
             </div>
 
             <div class="tagname">
               <%= @user_l.name %>
             </div>
-            <%#= debug  @user_l.avatar.profile   %>
 
         </div>
         <div id="box-profile-info" class="basic-lateral-box margin-top">
@@ -33,9 +31,7 @@
             <li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li>
 
         </div>
-        <%#= debug @user %>
 
-        <%#= current_user.devise_mailer_subdomain%>
 
         <div id="box-course" class="basic-lateral-box" >
             <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
@@ -102,14 +98,13 @@
                 </div>-->
             </div>
         </div>
-        <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
     </div>
 
     <!-- Content -->
     <div id="box-stream-post">
 
       <%=render :partial => 'shared/post_menu' %>
-        <%=render :partial => 'shared/wall_filters' %>
+        <%=render :partial => 'shared/wall_filters', :locals => {:path => show_user_path(@user_l.personal_url)} %>
         <div id="timeline">
           <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
         </div>

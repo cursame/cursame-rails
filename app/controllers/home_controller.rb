@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!
@@ -10,27 +11,6 @@ class HomeController < ApplicationController
         redirect_to "/users/#{user_url}/dashboard"
 
     end
-  end
-
-  def contact
-  end
-
-  def terms
-  end
-
-  def conditions
-  end
-
-  def team
-  end
-
-  def develop
-  end
-
-  def blog
-  end
-
-  def news
   end
 
   def add_new_comment
@@ -107,6 +87,29 @@ class HomeController < ApplicationController
        @publication.downvote_from current_user
        respond_to do |format|
          #format.html
+         format.js
+       end
+     end
+
+     def destroy_wall
+       publication = Wall.find(params[:id])
+       if !publication.nil?
+         publication.publication.destroy
+          @id = publication.id
+       end
+       respond_to do |format|
+         format.js
+       end
+     end
+
+     def destroy_comment
+       comment = Comment.find(params[:id])
+       
+       if !comment.nil?
+         comment.destroy
+         @id = comment.id
+       end
+       respond_to do |format|
          format.js
        end
      end

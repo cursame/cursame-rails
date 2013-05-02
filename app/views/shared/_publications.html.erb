@@ -13,10 +13,10 @@
     content = post.comment_html
     ico =''
   when 'Course'
-    avatar = post.avatar.modern 
-    course_avatarxx = post.course_avatarxx 
+    avatar = post.avatar.modern
+    course_avatarxx = post.course_avatarxx
     name = post.title
-    content = post.silabus 
+    content = post.silabus
     ico = ''
   when 'Discussion'
     avatar = post.user.avatar.modern
@@ -49,7 +49,7 @@
 
 <% if post.state == "published" %>
 
-  <div class="publication-box" >
+  <div class="publication-box" id="deleted_id_<%= id %>">
 
       <%#= debug cargo.publication.comments %>
 
@@ -106,11 +106,14 @@
          <div id="liked-<%= publication.id%>">
          <div class="icon like"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_path(publication.id), :remote => true%></div>
          </div>
-         <%end%>     
+         <%end%>
+          <!-- Destroy Wall -->
+          <%if publication.publication.owner?(current_role, current_user) then %>
+          <%= link_to "Eliminar", destroy_wall_path(publication.id), :remote=>true%>
+          <%end%>
           <div class="labels"><%= post.comments.count %> Comentarios</div>
           <div class="labels"><p><div style="float:left" id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></div> <div style="float:left">&nbsp;me gusta</div></div>
         </div>
-        
       </div>
 
 

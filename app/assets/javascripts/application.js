@@ -11,12 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
-//= require_raphael
-//= require_morris
-//= require private_pub
-//= require jquery-fileupload/basic
-//= require jquery-fileupload/vendor/tmpl
-//= require_tree
+//=require_raphael
+//=require_morris
+//=require private_pub
+//=require jquery-fileupload/basic
+//=require jquery-fileupload/vendor/tmpl
+//=require_tree
 
 // Adding and removing questions answers
 function remove_fields(link, toId) {
