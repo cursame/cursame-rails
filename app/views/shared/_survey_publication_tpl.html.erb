@@ -17,7 +17,7 @@
 
     $("#open-close-<%= survey.id %>").click(function () {
         $('#mask-<%= survey.id %>').remove();
-        $('#entrega-<%= survey.id %>').toggle("slow");
+        $('#entrega-<%= survey.id %>').show();
         $(this).unbind('hover');
         $('#entrega-<%= survey.id %>>form>#cancel-post-form').click(function () {
             $("#open-close-<%= survey.id %>").show();
