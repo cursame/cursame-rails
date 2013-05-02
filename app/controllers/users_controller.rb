@@ -19,14 +19,14 @@ class UsersController < ApplicationController
 
    # @courses = Course.order(:by => :finish_date).limit(7).reverse
 
-    @courses = current_user.members_in_courses.limit(7)
-    @ccc = current_user.courses.where(:network_id => current_network.id)
+    @courses =  @user_l.members_in_courses.limit(7)
+    @ccc =  @user_l.courses.where(:network_id => current_network.id)
     @count_course_iam_member =  @ccc.where(:active_status => true).count
 
-    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
+    @count_course_iam_member_and_owner =  @user_l.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
 
     @course_count = Course.count
-    @member =  current_user.members_in_courses.where(:owner => true)
+    @member =   @user_l.members_in_courses.where(:owner => true)
 
     #==== Areas de evaluación ====
     @areas_of_evaluation = AreasOfEvaluation.new
