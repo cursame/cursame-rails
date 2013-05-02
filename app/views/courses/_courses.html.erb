@@ -1,7 +1,9 @@
 <h2>cursos</h2>
+<% permitted_to? :create, :courses do %>
 <div id="form-new-course" class="form-new-course-lateral">
   <%= render partial: "users/form_course.html.erb" %>
 </div>
+<%end%>
 <div id="tabs-courses" class="tabs-style">
   <ul id="ul-tabs">
     <li class="element-left">
@@ -31,11 +33,10 @@
           <li><a href="#">No hay cursos</a></li>
       <% else %>
           <% @courses.each do |cu| %>
-              <% @cort = Course.find(cu.id) %>
+              <% @cort = Course.find(cu.course_id) %>
               <% if @cort.network_id == current_network.id %>
                   <% if @cort.active_status == true %>
-                      <% member_course = MembersInCourse.find_by_course_id(cu.id) %>
-                      <% if member_course.accepted == true %>
+                      <% if cu.accepted == true %>
               <!--< member_course = MembersInCourse.find_by_course_id(cu.id) %>
               < if member_course.active_status == true %>
                   < if member_course.accepted == true %>-->
@@ -54,11 +55,10 @@
           <li><a href="#">No hay cursos</a></li>
       <% else %>
           <% courses.each do |cu| %>
-              <% @cort = Course.find(cu.id) %>
+              <% @cort = Course.find(cu.course_id) %>
           <% if @cort.network_id == current_network.id %>
           <% if @cort.active_status == true %>
-          <% member_course = MembersInCourse.find_by_course_id(cu.id) %>
-          <% if member_course.owner == true %>
+          <% if cu.owner == true %>
              <!-- < member_course = MembersInCourse.find_by_course_id(cu.id) %>
               < if member_course.network_id == current_network.id %>
                   < if member_course.active_status == true %>
