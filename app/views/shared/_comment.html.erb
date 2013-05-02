@@ -21,13 +21,13 @@
     <div class="avatar-child-comment" href="#">
         <%#= debug comment.user.avatar%>
     <% if comment.user.avatar.blank? %>
-        <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini"}), show_user_path(comment.user.personal_url)%>
+        <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url)%>
       <%else%>
-        <%= link_to image_tag(comment.user.avatar, {:class => "avatar-mini"}), show_user_path(comment.user.personal_url) %>
+        <%= link_to image_tag(comment.user.avatar, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url) %>
     <%end%>
     </div>
     <div class="info-comment">
-        <div class="username"><%= comment.user.name %></div>
+        <div class="username"><%= comment.user.name %>ssss</div>
         <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
         <div class="comment"><%= comment.comment_html %></div>
         <div  id="counter-like-c<%= comment.id%>" style="font-size:9px;"><%= comment.votes.up.size %> me gusta</div>
