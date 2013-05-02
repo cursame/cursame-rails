@@ -29,7 +29,8 @@
         </div>
         <div id="full-deliveries-area" >          
             <div>
-                <!-- <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %> -->
+                <!--no comentar porque se neutraliza el metodo en ajax-->
+                <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %> 
             </div> 
           <div id="actual_resources">
           <% @course_for_user = current_user.courses.where(:active_status => true)%>

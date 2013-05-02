@@ -2,7 +2,6 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
  url(<%= current_user.coverphoto.blank? ? '/assets/'+current_user.cover_photox : current_user.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 
-   <div id="notice" class="notice"></div>
 
    <%= render :partial => 'shared/head_menu'%>
 </div>
@@ -24,76 +23,7 @@
       </div>
     </div>
     <div id="box-course" class="basic-lateral-box margin-top" >
-
-
-      <h2>cursos</h2>
-      <% permitted_to? :create, :courses do %>
-      <div id="form-new-course" class="form-new-course-lateral">
-        <%= render partial: "users/form_course.html.erb"%>
-      </div>
-      <%end%>
-      <div id="tabs-courses" class="tabs-style">
-        <ul id="ul-tabs">
-          <li class="element-left">
-            <a href="#tabs-courses-1">
-              <div class="content-tab">
-                <span class="title-num"><%= @count_course_iam_member%></span>
-                <span class="title">CURSOS</span>
-              </div>
-            </a>
-          </li>
-          <% permitted_to? :create, :courses do %>
-
-          <li class="element-right">
-            <div id="new-course-btn" class="plus-courses"></div>
-            <a href="#tabs-courses-2">
-              <div class="content-tab">
-                <span class="title-num"><%= @count_course_iam_member_and_owner %></span>
-                <span class="title">CREADOS</span>
-              </div>
-            </a>
-          </li>
-          <%end%>
-        </ul>
-        <div id="tabs-courses-1">
-          <ul id="course-list" >
-            <% if @course_count == 0%>
-            <li><a href="#">No hay cursos</a></li>
-            <%else%>
-            <% @courses.each do |cu|%>
-            <% @cort = Course.find(cu.course_id)%>
-            <% if @cort.network_id == current_network.id %>
-            <% if @cort.active_status == true%>
-            <% if cu.accepted == true %>
-            <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
-            <%end%>
-            <%end%>
-            <%end%>
-            <%end%>
-            <%end%>
-          </ul>
-          <div class="view-all"><%= link_to "Ver todos", courses_path%></div>
-        </div>
-        <div id="tabs-courses-2">
-          <ul id="course-list" >
-            <% if @course_count == 0%>
-            <li><a href="#">No hay cursos</a></li>
-            <%else%>
-            <% @courses.each do |cu|%>
-            <% @cort = Course.find(cu.course_id)%>
-            <% if @cort.network_id == current_network.id %>
-            <% if @cort.active_status == true%>
-            <% if cu.owner == true%>
-            <li><%= link_to "#{@cort.title}", course_path(@cort.id) %></li>
-            <%else%>
-            <%end%>
-            <%end%>
-            <%end%>
-            <%end%>
-            <%end%>
-          </ul>
-        </div>
-      </div>
+      <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
     </div>
     <div class= "box-comments"></div>
     <div class="clear"></div>

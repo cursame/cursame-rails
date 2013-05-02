@@ -1,7 +1,7 @@
 <!-- este partial controla la logica para mostrar notificaciones -->
 <% if current_role == "superadmin"%>
 <%else%>
-<li class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
+<li class="<%= cls %>" id="notification-<%=notification.notificator_id.to_s %>" onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
 	<% if current_user.avatar != nil %>
@@ -33,3 +33,13 @@
 	<span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
 <%end%>
+
+<script>
+    $(function(){
+        $('#notification-<%=notification.notificator_id.to_s %>').on('click',function(){
+            console.info($(this).parent().parent());
+            $(this).parent().parent().parent().hide();
+        });
+    });
+</script>
+

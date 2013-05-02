@@ -11,6 +11,10 @@
     image_avatarxx = post.user.image_avatarxx
     name = post.user.name
     content = post.comment_html
+    course = post.commentable if post.commentable_type == 'Course'
+    if course != nil
+    posted_in_for = course.title
+    end
     ico =''
   when 'Course'
     avatar = post.avatar.modern
@@ -23,6 +27,8 @@
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.title
+    course = post.courses
+    posted_in_for = course[0].title
     content = post.description
     ico = '-discussion'
   when 'Delivery'
@@ -31,6 +37,8 @@
     image_avatarxx = post.user.image_avatarxx
     cargo = post.courses[0]
     name = post.title
+    course = post.courses
+    posted_in_for = course[0].title
     content = post.description
     publication_cls = 'delivery'
     ico = '-homework'
@@ -38,6 +46,8 @@
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
+    course = post.courses
+    posted_in_for = course[0].title
     name = post.name
     ico = '-survey'
   end
@@ -65,11 +75,11 @@
          <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank? || nil)%>
         <%else%>
         <%= link_to image_tag(avatar,{:class => "avatar-mini"}), show_user_path(personal_url) if ( !avatar.blank?  && !nil)%>
-        <%= link_to image_tag(image_avatarxx,{:class => "avatar-mini"}), show_user_path(personal_url)if (avatar.blank? || nil)%>
+        <%= link_to image_tag(image_avatarxx,{:class => "avatar-mini"}), show_user_path(personal_url) if (avatar.blank? || nil)%>
         <%end%>
         </div>
 
-        <div class="top-null-image"></div><b><%= name %></b>  <span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
+        <div class="top-null-image"></div><b> <%= "(Curso: #{posted_in_for})" if ( !posted_in_for.blank?) %> </b><%= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
 
 

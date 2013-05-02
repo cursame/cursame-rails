@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = @course.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     
     if request.xhr?      
       respond_to do |format|
@@ -133,8 +133,13 @@ class CoursesController < ApplicationController
             @az =  @course
             @typed = "Course"
         activation_activity
+        @courses = current_user.members_in_courses.limit(7)
+        @course_count = Course.count
+        @ccc = current_user.courses.where(:network_id => current_network.id)
+        @count_course_iam_member =  @ccc.where(:active_status => true).count
+        @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
-        format.html { redirect_to courses_url }
+        #format.html { redirect_to courses_url }
         format.js
       else
         #format.json { render json: @course.errors, status: :unprocessable_entity }
