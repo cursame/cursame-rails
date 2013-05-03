@@ -168,7 +168,11 @@ h3{
     
 }
 
-#notice { position: absolute; color: #608847; font-size: 14px; padding: 0px; margin: 0 auto; text-align: center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; font-weight: bold; z-index: 9999; background: #DFF0D8; border: 0px solid #608847; width: 0px; display: inline; }
+#notice { position: absolute; color: #608847; font-size: 14px; padding: 0px; margin: 0 auto; text-align: center; font-weight: bold; z-index: 9999; background: #DFF0D8; border: 0px solid #608847; width: 900px; display: inline; height: 0px; }
+
+#wrong {
+	
+}
 
 .title_dxv{
     margin-left:20px;
