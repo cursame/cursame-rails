@@ -1,5 +1,6 @@
 class CreateCorrectDeliveriesCourses < ActiveRecord::Migration
   def up
+
     table = nil
     if (ActiveRecord::Base.connection.table_exists?("deliveries_courses")) then
       table = DeliveriesCourse.all

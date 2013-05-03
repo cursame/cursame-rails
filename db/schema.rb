@@ -221,6 +221,8 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
