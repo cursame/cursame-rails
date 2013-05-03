@@ -82,7 +82,7 @@ class Comment < ActiveRecord::Base
 
     if notification_kind["network"]
 
-      Wall.create( :publication => self, :network => self.network, :public => true)
+      Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user.id }
 
       users.each do |user|
