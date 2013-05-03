@@ -1,7 +1,10 @@
 resetForm($('#new_survey'));
 $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
 $('#timeline').effect("highlight", {}, 1000);
-$('#notice').append('Se ha creado una examen')
+$( "#notice" ).animate( { width: "300px", padding: "20px", border: "1px solid #608847" }, { queue: false, duration: 100 });
+$('#notice').append('Se ha creado un cuestionario');
 setTimeout(function() {
     $('#notice').html('')
+    $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
+    
 }, 2500);

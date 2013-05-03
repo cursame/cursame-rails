@@ -28,7 +28,7 @@
     image_avatarxx = post.user.image_avatarxx
     name = post.title
     course = post.courses
-    posted_in_for = course[0].title
+    posted_in_for = course[0].title if ( !post.courses.blank? )
     content = post.description
     ico = '-discussion'
   when 'Delivery'
