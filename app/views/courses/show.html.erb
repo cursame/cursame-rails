@@ -108,9 +108,9 @@
         @search = params[:search]
         @id = params[:id].to_i
         @user = current_user
-        @desert =  @course.walls.search(@search, @id).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
-        @filter = @desert
-        @wall = @filter
+        @wall =  @course.walls.where("publication_type != ?", 'Course').search(@search, @id).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+        # @filter = @desert
+        # @wall = @filter
 
 
        %>
