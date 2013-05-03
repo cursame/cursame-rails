@@ -31,7 +31,7 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'  || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
