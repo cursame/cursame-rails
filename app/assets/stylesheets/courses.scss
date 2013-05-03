@@ -168,9 +168,7 @@ h3{
     
 }
 
-#notice {
-	position: absolute!important; display: block!important; z-index: 100%!important; color: #DFF0D8!important; font-size: 12px;
-}
+#notice { position: absolute; color: #608847; font-size: 14px; padding: 0px; margin: 0 auto; text-align: center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; font-weight: bold; z-index: 9999; background: #DFF0D8; border: 0px solid #608847; width: 0px; display: inline; }
 
 .title_dxv{
     margin-left:20px;
@@ -273,3 +271,13 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
 	width: 200px;
 }
 #titleDevSing { background: #fff; padding: 10px; width: 200px; display: block; margin-bottom: 10px; border-right: 2px solid #83B81F; }
+
+.friendBlock { width:150px;height:235px;display:inline-block;border:1px solid #ccc;margin: 0 15px 10px 0; float: left; }
+.friendHead { clear: both!important; color: #969696!important; font-family: HelvLight!important; font-size: 14px!important; margin-top: 10px!important; position: relative!important; display: block!important; line-height: 14pt!important; }
+.friendPhoto { width: 150px; height: 150px; display: block; }
+.friendName { clear: both!important; color: #969696!important; font-family: HelvLight!important; font-size: 14px!important; margin-top: 10px!important; position: relative!important; display: block!important; line-height: 14pt!important; text-align: center; width: 150px; height: 21px; }
+.acceptFriend { color: #fff!important; display: block;}
+.acceptFriend > a { color: #fff; display: block; width: 150px; background: #00AEC1; text-align: center; height: 30px; padding-top: 14px; margin-top: 10px; }
+.acceptFriend > a:hover { background: #0B6AAD; }
+
+.profileLinks { position: absolute; float: right; display: block; margin-top: -45px; width: 887px; text-align: right; }

@@ -74,6 +74,8 @@
 	<% current_user.courses.each do |course|%>     
 	<% if  course.deliveries.count != 0 %>
 	<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >
+	
+	
 		<div id="headerBar">
 			<h1>Tareas en el curso<pre style="display:inline;">                   </pre>Calificaciones</h1>
 		</div>
@@ -132,3 +134,4 @@
 	<%end%>
 	</div>
 <%end%>
+
