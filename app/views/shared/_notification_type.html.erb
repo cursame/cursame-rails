@@ -10,7 +10,7 @@
 
 	<% when 'user_comment_on_course'%>
 	<% if  current_user && current_user.avatar != nil %>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) %> <%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) %>  <%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
 
 	<% when 'new_public_course_on_network'%>
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>

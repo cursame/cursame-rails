@@ -4,7 +4,9 @@ $('#total_nested_evaluation').remove();
 $('#new_delivery_form').find('.upload-form').remove();
 $('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication}))%>");
 $('#timeline').effect("highlight", {}, 1000);
-$('#notice').append('Se ha creado una tarea')
+$('#notice').append('Se ha creado una tarea');
+$(".delivery-form input[name='files[]']").remove();
+
 setTimeout(function() {
     $('#notice').html('')
 }, 2500);
