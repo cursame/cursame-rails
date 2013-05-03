@@ -175,7 +175,7 @@ class Course < ActiveRecord::Base
       return true
     end
     members = members_in_courses
-    owners = members.keep_if{ |x| x.owner = true}
+    owners = members.keep_if{ |x| x.owner == true}
     users_id = owners.map{|x| x.user_id}
     return users_id.include?(user.id)
   end
