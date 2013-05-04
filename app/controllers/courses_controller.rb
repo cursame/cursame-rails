@@ -213,11 +213,11 @@ class CoursesController < ApplicationController
     else 
       if @member
         if @member.accepted
-          respond_to do |format|
-            format.js
-            format.html # show.html.erb
-            format.json { render json: @course }
-          end
+          # respond_to do |format|
+          #   format.js
+          #   format.html # show.html.erb
+          #   format.json { render json: @course }
+          # end
         else
          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
         end
