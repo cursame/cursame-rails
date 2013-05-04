@@ -62,10 +62,10 @@ class CoursesController < ApplicationController
         format.js
       end           
     else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @course }
-      end
+      # respond_to do |format|
+      #   format.html # show.html.erb
+      #   format.json { render json: @course }
+      # end
     end
 
   end
