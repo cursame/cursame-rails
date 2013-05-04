@@ -108,7 +108,7 @@
         # @search = params[:search]
         # @id = params[:id].to_i
         # @user = current_user
-        @wall =  @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
+        # @wall =  @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 2, :page => params[:page])
         # @filter = @desert
         # @wall = @filter
 
@@ -117,7 +117,7 @@
 
        <%=render :partial => 'shared/post_menu' %>
 
-       <%=render :partial => 'shared/wall_filters', :locals => {:path => show_course_path(@course.id), id:@course.id} %>
+       <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
        <div id="timeline">
          <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
        </div>
