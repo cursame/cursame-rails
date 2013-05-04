@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, @id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     
     if request.xhr?      
       respond_to do |format|
@@ -213,10 +213,11 @@ class CoursesController < ApplicationController
     else 
       if @member
         if @member.accepted
-          # respond_to do |format|
-          #   format.html # show.html.erb
-          #   format.json { render json: @course }
-          # end
+          respond_to do |format|
+            format.js
+            format.html # show.html.erb
+            format.json { render json: @course }
+          end
         else
          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
         end
