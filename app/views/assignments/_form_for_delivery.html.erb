@@ -15,6 +15,7 @@
     <%= f.text_area :brief_description %><br />
     <%= f.hidden_field :user_id, :value => current_user.id %>
      <div id="<%=@labelIdBoxx%>" class="upload-label"></div></br>
+    <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form' %>
     <%= f.submit %>   
 <% end %>
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBoxx, :formId => formId} %>

@@ -1,47 +1,44 @@
+
 .light_box{
-    border:solid 2px #eee;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    padding:30px;
-    background-color:#eee;
-    width:900px;
+-webkit-border-bottom-right-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-bottomleft: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding:30px; background-color:#eee; width:900px; height: 390px; z-index: 99;
      & h1 {
          font-size:18px;
-
      }
      & h2 {
          font-size:15px;
      }
      & .description {
-         font-size:12px;
-         font-style: italic;
+         font-size:12px; font-style: italic;
      }
      
 }
-.btn_l {
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-             border-radius: 10px;
-             
-             background-image: linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
-             background-image: -o-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
-             background-image: -moz-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
-             background-image: -webkit-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
-             background-image: -ms-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
 
-             background-image: -webkit-gradient(
+#headerBar { background: rgba(255,255,255,0.4); color: #fff; margin-top: -85px; height: 55px; width: 100%; padding: 0 30px; margin-left: -30px; position: relative; display: block; margin-bottom: 20px; }
+#headerBar h1 {
+position: relative!important;
+color: #fff!important;
+padding: 18px 0px 13px 0px;
+font-size: 20px;
+ }
+
+
+.btn_l {
+        -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
+		background-image: linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
+		background-image: -o-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
+		background-image: -moz-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
+		background-image: -webkit-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
+		background-image: -ms-linear-gradient(bottom, rgb(57,136,196) 43%, rgb(58,122,179) 72%, rgb(38,119,148) 86%);
+		background-image: -webkit-gradient(
              	linear,
              	left bottom,
              	left top,
              	color-stop(0.43, rgb(57,136,196)),
              	color-stop(0.72, rgb(58,122,179)),
              	color-stop(0.86, rgb(38,119,148))
-             );
+		);
        border:solid 2px #eee;
        color:#fff;
-       
-
 }
 
 .btn_l:hover {
@@ -91,14 +88,13 @@
      -webkit-border-radius: 100px;
         -moz-border-radius: 100px;
         border-radius: 100px;
+		display: block;
+		position: relative;
+		margin-top: -63px;
+		margin-right: -15px;
       
     & :hover {
-     background-image: linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%);
-     background-image: -o-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%);
-     background-image: -moz-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%);
-     background-image: -webkit-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%);
-     background-image: -ms-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%);
-
+     background-image: linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%); background-image: -o-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%); background-image: -moz-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%); background-image: -webkit-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%); background-image: -ms-linear-gradient(bottom, rgb(74,158,161) 43%, rgb(51,164,176) 72%, rgb(26,156,163) 86%);
      background-image: -webkit-gradient(
      	linear,
      	left bottom,

@@ -2,10 +2,10 @@ class Wall < ActiveRecord::Base
   belongs_to :publication, :polymorphic => true
 
   #publications/walls
-    has_many :userpublicationings
+    has_many :userpublicationings, :dependent => :destroy
     has_many :users, :through => :userpublicationings
 
-    has_many :coursepublicationings
+    has_many :coursepublicationings, :dependent => :destroy
     has_many :courses, :through => :coursepublicationings
 
 
@@ -16,10 +16,12 @@ class Wall < ActiveRecord::Base
     #para los likes
     acts_as_votable
 
+
+
   def self.search(search,id)
     if search
       query = "publication_type LIKE '%"+search+"%'"
-      query += id ?  " and publication_id = "+id : ' '
+      query += id ?  " and publication_id = "+id.to_s : ' '
       where(query)
     else
       scoped

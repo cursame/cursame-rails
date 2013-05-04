@@ -1,21 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="user-edit-form">
+<div id="edituserdmenu">
+	<h3>Lista de amigos de <b><%=@user.email%></b></h3>
+</div>
 
-<p>
-  <b> <h3><%=@user.email%> Friendship List: </h3></b>
-</p>
 
-<p>
-  <b>Amigos actuales:</b>
+  <span class="friendHead">Amigos actuales:</span>
   <p>
 
   <%@all_friends.each do |hash|%>
     <%if (hash[:accepted]) then%>
       <tr>
         <td>
-            <%= link_to image_tag(hash[:user].avatar.modern), show_user_path(hash[:user].personal_url)%>
-            <%if @owner then%>
-                <%= hash[:user].name %>
-            <%= link_to "Eliminar amigo", {:controller => "friendships", :action => "destroy", :friend_id => hash[:user].id}, :method => :delete%>
+        	<span class="friendBlock">
+             	<span class="friendPhoto"><%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%></span>
+              <%if @owner then%>
+                <span class="friendName"><%= hash[:user].name %></span>
+                <span class="acceptFriend"><%= link_to "Eliminar amigo", {:controller => "friendships", :action => "destroy", :friend_id => hash[:user].id}, :method => :delete%></span>
+             </span>
             <%end%>
             </td>
       </tr>
@@ -24,27 +25,30 @@
   <%end%>
    <p>
    <%if @owner then%>
-   <b>Solicitudes de aceptación:</b>
+   <span class="friendHead">Solicitudes de aceptación:</span>
    <p>
 
    <%@all_friends.each do |hash|%>
     <%if !(hash[:accepted]) then%>
       <tr>
         <td>
-             
-              <%= link_to image_tag(hash[:user].avatar.modern), show_user_path(hash[:user].personal_url)%>
-              
-                <%= hash[:user].name %>
-                <%= link_to "Aceptar como amigo", {:controller => "friendships", :action => "update", :friend_id => hash[:user].id}, :method => :update%>
+             <span class="friendBlock">
+               	<span class="friendPhoto"><%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%></span>
+               	<span class="friendName"><%= hash[:user].name %></span>
+               	<span class="acceptFriend"><%= link_to "Aceptar como amigo", {:controller => "friendships", :action => "update", :friend_id => hash[:user].id}, :method => :update%></span>
+              </span>
         </td>
       </tr>
       <p>
    <%end%>
    <%end%>
    <%end%>
-</p>
 
-<p> <%= link_to "Profile", show_user_path(current_user.personal_url)%>
-<%if @owner then%>
-<p> <%= link_to "Comunidad", network_comunity_path %>
+   <div class="profileLinks" style="display:none;">
+	<%= link_to "Mi perfil", show_user_path(current_user.personal_url)%>
+   <%if @owner then%>
+	<%= link_to "Comunidad", network_comunity_path %>
+   </div>
+   
 <%end%>
+</div>

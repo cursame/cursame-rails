@@ -2,7 +2,7 @@ class Group < ActiveRecord::Base
 
   has_many :members_in_group, :dependent => :destroy
 
-  has_many :grouppublicationings
+  has_many :grouppublicationings, :dependent => :destroy
   has_many :wall, :through => :grouppublicationings
 
   belongs_to :user
@@ -26,6 +26,13 @@ class Group < ActiveRecord::Base
 
   def users
     return self.members
+  end
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    return user_id == user.id
   end
 
 end

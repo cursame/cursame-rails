@@ -1,15 +1,14 @@
-    <div class="header_l">
-        
-       <h1>  <%= assignment.title%> </h1>
+    <div class="header_l">        
+       		<span class="usermenuTitle"><%= assignment.title%></span>
         <div class="description">
-        <%= assignment.brief_description %>
+        	<span class="userDescription"><%= assignment.brief_description%></span>
         </div>
     </div>
     <div class="body_l" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-      <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></br>
-     <%else%>
-     <%= assignment.accomplishment %></br>
+	      <span class="nombreCrit"><%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
+	 <%else%>
+	     <span class="rate"><%= assignment.accomplishment %>%</span></br>
      <%end%>
      <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>
@@ -17,7 +16,7 @@
         <%= link_to simple_format("#{(@string)}"), "http://#{current_network.subdomain}.#{links}#{aa.file}"%>
         
      <%end%>
-      <b> criterios </b></br>
+      <span class="usermenuTitle">Criterios de calificación</span>
         <%= form_for assignment, remote: true   do |assigments_l |%>
             <% if assignment.response_to_the_evaluations.count != 0%>
                 <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
@@ -28,9 +27,9 @@
             <%else%>
                  <%=assigments_l.label :calificación%>
                 <%= assigments_l.number_field :rub_calification%>
-            <%end%>
-          
-          <%= assigments_l.submit "Actualizar Rubros"%>
+            12qw1	º<%end%>
+            <br />
+          <span class="default-form" style="width:150px;"><%= assigments_l.submit "Calificar tarea"%></span>
        <%end%>
     
    </div>

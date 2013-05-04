@@ -1,18 +1,20 @@
 class Delivery < ActiveRecord::Base
-  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation, :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses
+  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
+ :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses, :areas_of_evaluations,
+ :areas_of_evaluation
 
   scope :active_inactive
   scope :courses
-  has_many :deliveries_courses
-  has_many :courses, :through => :deliveries_courses, :dependent => :destroy
-  has_many :areas_of_evaluation
-  has_many :assignments
+  has_many :deliveries_courses, :dependent => :destroy
+  has_many :courses, :through => :deliveries_courses
+  has_many :areas_of_evaluation, :dependent => :destroy
   has_many :areas_of_evaluations, :dependent => :destroy
+  has_many :assignments, :dependent => :destroy
   belongs_to :user
   has_many :delivery_assets, :dependent => :destroy
   has_many :assets, :through => :delivery_assets
-  has_many :events, as: :schedule
-  has_many :activities, as: :activitye
+  has_many :events, as: :schedule, :dependent => :destroy
+  has_many :activities, as: :activitye#, :dependent => :destroy
   belongs_to :network
 
 
@@ -23,7 +25,6 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :areas_of_evaluations
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
-  accepts_nested_attributes_for :assignments, :assets
 
 
   acts_as_commentable
@@ -40,6 +41,17 @@ class Delivery < ActiveRecord::Base
 
   before_create do
     self.publish_date ||= DateTime.now
+  end
+
+  before_destroy do
+    walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
+    notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => id)
+    walls.each do |wall|
+      wall.destroy
+    end
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
   after_create do
@@ -102,4 +114,14 @@ class Delivery < ActiveRecord::Base
   def max_courses
     errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
   end
+
+
+  def owner?(role,user)
+    if role == "admin" || role == "superadmin" then
+      return true
+    end
+    return user_id == user.id
+  end
+
+
 end

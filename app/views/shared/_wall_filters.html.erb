@@ -1,10 +1,15 @@
-<%= form_tag wall_path, :method => 'get',:class => "filter-form", :id => "wall_search" do %>
+<%= form_tag path, :method => 'get',:class => "filter-form", :id => "wall_search" do %>
 
 <ul id="trans-nav">
     <li><img src="/assets/filtrar.png" style="margin-left: 13px;">
         <ul>
 	        <img src="/assets/line-up.png" style="width:11px;height:10px;position:absolute;display:block;margin:-8px 0 0 25px;">
 			<%= hidden_field_tag :page, 1 %>
+			<%  id = id || nil %>
+			<% if id %>
+				<%= hidden_field_tag :id, id %>
+			<%end%>
+            <li><label class="lblclass"><%= radio_button_tag 'search', 'Todos' %>Todos</label></li>
 			<li><label class="lblclass"><%= radio_button_tag 'search', 'Discussion' %>Discusiones</label></li>
 			<li><label class="lblclass"><%= radio_button_tag 'search', 'Course' %>Cursos</label></li>
 			<li><label class="lblclass"><%= radio_button_tag 'search', 'Comment' %>Comentarios</label></li>
@@ -19,9 +24,10 @@
 <script>
 $(function(){
 	$("#wall_search input:radio").live('click',function(){
-		var form = $('#wall_search');
-		console.log(form.serialize());
-		$.get(form.action,form.serialize(),null,"script");
+		var form = $('#wall_search'),
+            data = form.serialize();
+        data = data.replace('&search=Todos', '');
+		$.get(form.action,data,null,"script");
 	});
 });
 </script>

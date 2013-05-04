@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
        when Rails.env == 'test'
          @link = 'cursatest.com'
        when Rails.env == 'subtest'
-         @link = 'cursamelab.com'
+         @link = 'cursalab.com'
          
      end
   end

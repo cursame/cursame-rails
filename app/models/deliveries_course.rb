@@ -1,4 +1,6 @@
 class DeliveriesCourse < ActiveRecord::Base
-  belongs_to :course, :dependent => :destroy
+  attr_accessible :created_at, :updated_at, :course_id, :delivery_id
+
+  belongs_to :course
   belongs_to :delivery, :dependent => :destroy
 end

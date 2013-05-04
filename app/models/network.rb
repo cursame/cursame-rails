@@ -1,16 +1,17 @@
 class Network < ActiveRecord::Base
-  has_one :network_template
+  has_one :network_template#, :dependent => :destroy
   has_many :permissionings, :dependent => :destroy
   has_many :users, :through => :permissionings
-  has_many :discussions
-  has_many :deliveries
-  has_many :courses
-  has_many :comments
-  has_many :surveys
+  has_many :discussions, :dependent => :destroy
+  has_many :deliveries#, :dependent => :destroy
+  has_many :courses, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :surveys#, :dependent => :destroy
   #walls
-  has_many :walls
+  has_many :walls, :dependent => :destroy
   #library
-  has_many :libraries
+  # Error por que la variable no fue inicializada al usar destroy
+  has_many :libraries#, :dependent => :destroy
   #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
 
   validates_presence_of   :name, :subdomain, :population
@@ -24,4 +25,8 @@ class Network < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
+  
+  def owner?(role,user)
+    return false
+  end
 end

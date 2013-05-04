@@ -12,7 +12,8 @@
   <%= javascript_include_tag('application.js') %>
   <%= javascript_include_tag('application.fullcalendar') %>
  
-
+  <%= favicon_link_tag "favicon.png" %>  
+  
   <% yield :javascript_includes %>
   <%= csrf_meta_tags %>
 </head>
@@ -30,7 +31,13 @@
     <div class="menu-user">
       <% if user_signed_in? %>
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
-          <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%><span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
+        <% if current_user.avatar.blank? %>
+             <%= link_to image_tag(current_user.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+         <%else%>
+          <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+        
+          <%end%>
+         <span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
           <%#= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
 
                  <%#=  debug current_role %>

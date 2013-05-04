@@ -55,11 +55,19 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = @course.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    respond_to do |format|
-          format.html # show.html.erb
-          format.json { render json: @course }
+    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    
+    if request.xhr?      
+      respond_to do |format|
+        format.js
+      end           
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @course }
+      end
     end
+
   end
 
 
@@ -125,8 +133,13 @@ class CoursesController < ApplicationController
             @az =  @course
             @typed = "Course"
         activation_activity
+        @courses = current_user.members_in_courses.limit(7)
+        @course_count = Course.count
+        @ccc = current_user.courses.where(:network_id => current_network.id)
+        @count_course_iam_member =  @ccc.where(:active_status => true).count
+        @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
-        format.html { redirect_to courses_url }
+        #format.html { redirect_to courses_url }
         format.js
       else
         #format.json { render json: @course.errors, status: :unprocessable_entity }
@@ -196,14 +209,15 @@ class CoursesController < ApplicationController
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
     
-    if current_role == "admin" || 'superadmin'
+    if current_role == "admin" 
     else 
       if @member
         if @member.accepted
-          respond_to do |format|
-            format.html # show.html.erb
-            format.json { render json: @course }
-          end
+          # respond_to do |format|
+          #   format.js
+          #   format.html # show.html.erb
+          #   format.json { render json: @course }
+          # end
         else
          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
         end

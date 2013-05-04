@@ -1,16 +1,16 @@
 <!-- este partial controla la logica para mostrar notificaciones -->
 <% if current_role == "superadmin"%>
 <%else%>
-<li class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
+<li class="<%= cls %>" id="notification-<%=notification.notificator_id.to_s %>" onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
-	<% if current_user.avatar != nil %>
+	<% if current_user && current_user.avatar != nil%>
 	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><% end%>
 	<b><%=notification.notificator.user.name%></b> comentó en la red <b><%= notification.notificator.commentable.name %></b> 	
 
 	<% when 'user_comment_on_course'%>
-	<% if current_user.avatar != nil %>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
+	<% if  current_user && current_user.avatar != nil %>
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) %>  <%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
 
 	<% when 'new_public_course_on_network'%>
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>
@@ -22,7 +22,7 @@
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b>Ecuasiones de 2o Grado</b> en tu curso <b>Matemáticas VI</b>
 
 	<% when 'user_comment_on_discussion'%>
-	<% if current_user.avatar != nil %>
+	<% if current_user && current_user.avatar != nil %>
 	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>
 	<%end%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b>
 	
@@ -33,3 +33,13 @@
 	<span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
 <%end%>
+
+<script>
+    $(function(){
+        $('#notification-<%=notification.notificator_id.to_s %>').on('click',function(){
+            console.info($(this).parent().parent());
+            $(this).parent().parent().parent().hide();
+        });
+    });
+</script>
+

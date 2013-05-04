@@ -8,21 +8,29 @@
        <div id="liked-c-<%= comment.id%>">
        <div class="heart-icon"><%= link_to image_tag('icons/heart-icon-child-comment.png'), upvote_comment_path(comment.id), :remote => true%></div>
        </div>
-      
+
        <%else%>
        <div id="liked-c-<%= comment.id%>">
        <div class="heart-icon"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_comment_path(comment.id), :remote => true%></div>
        </div>
-       
        <%end%>
-    <a class="avatar-child-comment" href="#">
-    	<img class="media-object" src="<%= comment.user.avatar%>" width ="30px">
-    </a>        
+
+       <%if comment.owner?(current_role, current_user) then%>
+          <%= link_to "Eliminar", destroy_comment_path(comment.id), :remote => true%>
+       <%end%>
+    <div class="avatar-child-comment" href="#">
+        <%#= debug comment.user.avatar%>
+    <% if comment.user.avatar.blank? %>
+        <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url)%>
+      <%else%>
+        <%= link_to image_tag(comment.user.avatar, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url) %>
+    <%end%>
+    </div>
     <div class="info-comment">
-        <div class="username"><%= comment.user.name %></div>
+        <div class="username"><%= comment.user.name %>ssss</div>
         <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
         <div class="comment"><%= comment.comment_html %></div>
         <div  id="counter-like-c<%= comment.id%>" style="font-size:9px;"><%= comment.votes.up.size %> me gusta</div>
     </div>
-   
+
 </div>

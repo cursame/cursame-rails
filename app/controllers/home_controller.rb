@@ -12,27 +12,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def contact
-  end
-
-  def terms
-  end
-
-  def conditions
-  end
-
-  def team
-  end
-
-  def develop
-  end
-
-  def blog
-  end
-
-  def news
-  end
-
   def add_new_comment
     if user_signed_in?
       # esto es para clonar los comentarios de el grupo
@@ -52,7 +31,7 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'  || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
@@ -107,6 +86,29 @@ class HomeController < ApplicationController
        @publication.downvote_from current_user
        respond_to do |format|
          #format.html
+         format.js
+       end
+     end
+
+     def destroy_wall
+       publication = Wall.find(params[:id])
+       if !publication.nil?
+         publication.publication.destroy
+          @id = publication.id
+       end
+       respond_to do |format|
+         format.js
+       end
+     end
+
+     def destroy_comment
+       comment = Comment.find(params[:id])
+
+       if !comment.nil?
+         comment.destroy
+         @id = comment.id
+       end
+       respond_to do |format|
          format.js
        end
      end

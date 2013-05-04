@@ -1,14 +1,14 @@
-<% current_network.users.each do |user| %>
+<% @network_users.each do |user| %>
      <% @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
      <% @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
      <% if user.personal_url != nil%>
-     
+
      <div class="box_comunity">
          <div class="image_acces_comunity">
              <%= link_to image_tag(user.avatar.profile), show_user_path(user.personal_url) if (!user.avatar.blank?)%>
              <%= link_to image_tag(user.image_avatarx), show_user_path(user.personal_url) if  (user.avatar.blank?)%>
          </div><!-- ends image_access -->
-         
+
      <div class="place-hldr">
 
      <div class="name">
@@ -16,23 +16,22 @@
      </div>
 
      <div class="add_friend_comunity">
-         <%case%>  
+         <%case%>
             <%when  @friend %>
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
-            <%when  @add_me_friend%>  
+            <%when  @add_me_friend%>
                 <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
-    
             <% else %>
             <div id="add_friend<%=user.id%>">
                 <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%></span>
             </div>
-        <%end%>    
+        <%end%>
     </div><!-- ends add friend -->
 
-       
+
       </div><!-- ends dscription-comm -->
 
     </div><!-- ends box_comunity -->
     <%end%>
-    
+
 <% end %>
