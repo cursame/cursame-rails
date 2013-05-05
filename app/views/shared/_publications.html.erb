@@ -157,7 +157,7 @@
 });
 
   $('#more-comments-<%= id %>').live('click',function(e){
-    $.getScript("home/load_more_comments/<%= publication.id %>");
+    $.getScript("<%=request.protocol + request.host_with_port%>/home/load_more_comments/<%= publication.id %>");
     return false;
   });
   </script>
