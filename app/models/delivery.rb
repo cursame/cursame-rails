@@ -73,7 +73,7 @@ class Delivery < ActiveRecord::Base
           users+= course.users
           course.members_in_courses.each do |u|
             user = User.find_by_id(u.user_id)
-            if u.owner != true
+            if u.owner != true && (user != nil)
               Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
               #se envia mail a cada uno de los miembros de curso
               mail = Notifier.new_delivery_notification(u,self)
