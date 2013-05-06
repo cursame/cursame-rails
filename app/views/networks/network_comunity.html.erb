@@ -1,29 +1,28 @@
-<% @network_users.each do |user| %>
-     <% @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
-     <% @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
-     <% if user.personal_url != nil%>
+<% @network_users.each do |array| %>
+     <% if array[0].personal_url != nil%>
 
      <div class="box_comunity">
          <div class="image_acces_comunity">
-             <%= link_to image_tag(user.avatar.profile), show_user_path(user.personal_url) if (!user.avatar.blank?)%>
-             <%= link_to image_tag(user.image_avatarx), show_user_path(user.personal_url) if  (user.avatar.blank?)%>
+             <%= link_to image_tag(array[0].avatar.profile), show_user_path(array[0].personal_url) if (!array[0].avatar.blank?)%>
+             <%= link_to image_tag(array[0].image_avatarx), show_user_path(array[0].personal_url) if  (array[0].avatar.blank?)%>
          </div><!-- ends image_access -->
 
      <div class="place-hldr">
 
      <div class="name">
-       <%= user.name %>
+       <%= array[0].name %>
      </div>
 
      <div class="add_friend_comunity">
          <%case%>
-            <%when  @friend %>
+            <%when  array[1] == "friend_requested" %>
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
-            <%when  @add_me_friend%>
-                <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
+            <%when  array[1] == "accept_request" %>
+                <%= link_to "aceptar", friendships_update_friend_path(array[0].id), :remote => true  %>
+            <%when array[1] == "friend"%>
             <% else %>
-            <div id="add_friend<%=user.id%>">
-                <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%></span>
+            <div id="add_friend<%=array[0].id%>">
+                <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%></span>
             </div>
         <%end%>
     </div><!-- ends add friend -->

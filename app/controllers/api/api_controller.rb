@@ -38,6 +38,9 @@ class Api::ApiController < ApplicationController
     @comments.each do |comment|
       comment.likes = comment.likes.size
     end
+    # if params[:commentable_type] == "Delivery" && @user.roles.last.id == 2
+    #   @comments = @comments = Comment.where("commentable_type" => params[:commentable_type],"user_id" => @user.id ,"commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    # end
     render :json => {:comments => @comments.as_json(:include => [:user, :comments]) , :count => @comments.count()}, :callback => params[:callback]
   end
 
@@ -50,7 +53,8 @@ class Api::ApiController < ApplicationController
       @user.members_in_courses.each do |course|
         @ids.push(course.course_id)
       end
-      @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      # @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      @courses = @user.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
