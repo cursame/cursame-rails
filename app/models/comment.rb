@@ -82,7 +82,7 @@ class Comment < ActiveRecord::Base
 
     if notification_kind["network"]
 
-      Wall.create( :publication => self, :network => self.network, :public => true)
+      Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user.id }
 
       users.each do |user|
@@ -91,9 +91,9 @@ class Comment < ActiveRecord::Base
       return
     elsif notification_kind["course"] || notification_kind["group"]
 
-      #course = notification_kind["course"] ? [commentable] : nil
+      course = notification_kind["course"] ? [commentable] : nil
 
-      #wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
+      wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
 
       users.reject{ |user| user.id == self.user.id }
 

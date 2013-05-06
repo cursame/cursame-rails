@@ -1,10 +1,10 @@
-<% if @comment.commentable_type == 'Network' || @comment.commentable_type == 'User' %>
+<% if @comment.commentable_type == 'Network' || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User' %>
   // si se tiene que agregar al layout principal
   // $('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
 
     $('#comment').val('');
     $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
-  $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
+    $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
     $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
     $('#notice').append('Se ha creado un comentario');
     setTimeout(function() {
@@ -17,7 +17,7 @@
   $('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
   $('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('');
   $( "#notice" ).animate( { width: "900px", padding: "20px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-  $('#notice').append('Se ha creado un comentario');
+  $('#notice').append('Se ha creado un comentario');        
   setTimeout(function() {
       $('#notice').html('')
       $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
