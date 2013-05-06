@@ -28,7 +28,7 @@ alumnos2a = [
     puts "curso vacio"
   else
     @members_destroy = @course.members_in_courses.where(:owner => false)
-    @members_destroy.destroy
+    @members_destroy.destroy_all
       
           alumnos2a.each do |inscript|
             @cg =  User.find_by_email(inscript[:email])
@@ -43,6 +43,6 @@ alumnos2a = [
     if @user_owner_edit_members_in_course == nil
       puts "sin usuario"
     else
-      @users_mk_destroy = @user_owner_edit_members_in_course.members_in_courses.destroy
+      @users_mk_destroy = @user_owner_edit_members_in_course.members_in_courses.destroy_all
     end
 end

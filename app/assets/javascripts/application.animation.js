@@ -70,6 +70,11 @@ $(document).ready(function() {
         }
         tmpGetElementId = getElementId;
     });
+    /**
+     * animacion para el area de calendario|entregas|cursos antigus
+     * @param  {id} elementHide el elemento que se anima
+     * @return {true} La animación de los elementos
+     */
     function closeBannerAnimation(elementHide){
         $('#banner-profile').animate({
             height: defaultBannerHeight+'px'
@@ -92,6 +97,7 @@ $(document).ready(function() {
         $('#side-bar').animate({
             padding: slideBarPaddValue + ' 0px 0px 0px'
         }, time);
+
     }
     function closeAndOpenBannerAnimation( elementHide, elementShow, bannerProfileHeight , slideBarPaddValue ){
         $('#banner-profile').animate({
@@ -110,8 +116,9 @@ $(document).ready(function() {
         $('#side-bar').animate({
             padding: '0px 0px 0px 0px'
         }, time);
-        if(onLoadElement=="calendar")
+        if(onLoadElement=="calendar"){
             initCalendar();
+        }
     }
 
     var initBool = true;
