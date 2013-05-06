@@ -43,10 +43,15 @@ class Api::ApiController < ApplicationController
 
   def courses
     @ids = []
-    @user.members_in_courses.each do |course|
-      @ids.push(course.course_id)
+    # si es admin de la red se le muestran todos los cursos
+    if @user.roles.last.id == 1
+      @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    else
+      @user.members_in_courses.each do |course|
+        @ids.push(course.course_id)
+      end
+      @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
   end
 
