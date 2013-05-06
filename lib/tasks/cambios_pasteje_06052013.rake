@@ -32,7 +32,7 @@ alumnos2a = [
       ml.destroy
       puts "usuario eliminado del curso 2A  #{ml.course_id} "
     end
-      
+
           alumnos2a.each do |inscript|
             @cg =  User.find_by_email(inscript[:email])
             if @cg == nil
