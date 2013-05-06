@@ -29,4 +29,13 @@ class Network < ActiveRecord::Base
   def owner?(role,user)
     return false
   end
+
+  def publications (user_id)
+    Wall.scoped(:include => {
+          :users => :userpublicationings,
+        },
+      :conditions => ['userpublicationings.user_id = ? OR walls.public = ?',user_id,true]).order('walls.created_at DESC')
+  end
+
+
 end
