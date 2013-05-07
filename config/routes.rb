@@ -313,4 +313,5 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
   match '/api/api/create_delivery', :to => 'api/api#create_delivery', :as => :create_delivery
   match '/api/api/create_discussion', :to => 'api/api#create_discussion', :as => :create_discussion
+  match '/api/api/assigment_delivery', :to => 'api/api#assigment_delivery', :as => :assigment_delivery
 end

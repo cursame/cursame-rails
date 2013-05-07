@@ -177,6 +177,19 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
+  def assigment_delivery
+    @assignment = Assignment.new()
+    course_id = DeliveriesCourse.find_by_delivery_id(params[:deliveryId]).course_id
+    @assignment.course_id = course_id
+    @assignment.delivery_id = params[:deliveryId]
+    @assignment.title = params[:title]
+    @assignment.brief_description = params[:description]
+    @assignment.user_id = params[:userId]
+
+    @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
   private
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
