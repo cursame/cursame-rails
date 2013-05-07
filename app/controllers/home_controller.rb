@@ -112,6 +112,18 @@ class HomeController < ApplicationController
          format.js
        end
      end
+     
+     def editing_n
+       @notiv = current_user.notifications.where(:active => true)
+       @notiv.each do |noti|
+         noti.active = false
+         noti.save
+       end
+       @user = current_user
+         respond_to do |format|
+            format.js
+          end
+     end
 
   protected
   def save_comment

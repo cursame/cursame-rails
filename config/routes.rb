@@ -213,7 +213,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
-
+  
   root :to => 'home#index'
 
   #comentarios
@@ -287,7 +287,9 @@ Cursame30Lb::Application.routes.draw do
    get "/upvote_comment/:id", :to => 'home#upvote_comment', :as => :upvote_comment
    get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
 
-
+   ####### actualizacion de noticicacion
+   
+   get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
    ####### rutas de estandarizacion de eventos
 
