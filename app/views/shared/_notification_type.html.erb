@@ -5,12 +5,13 @@
 	<% case notification.kind%>
 	<% when 'user_comment_on_network'%>
 	<% if current_user && current_user.avatar != nil%>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%><% end%>
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%><%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%><% end%>
 	<b><%=notification.notificator.user.name%></b> comentó en la red <b><%= notification.notificator.commentable.name %></b> 	
 
 	<% when 'user_comment_on_course'%>
 	<% if  current_user && current_user.avatar != nil %>
-	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) %>  <%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
+	<%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?) %> 	<%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?) %> 
+	 <%end%><b><%=notification.notificator.user.name%></b> comentó en el curso <b><%= notification.notificator.commentable.title %></b>  
 
 	<% when 'new_public_course_on_network'%>
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>
@@ -19,15 +20,17 @@
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b><%= notification.notificator.title %></b> en tu curso <b><%= notification.notificator.courses[0].title %></b>
 	
 	<% when 'new_survey_on_course'%>
-	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b>Ecuasiones de 2o Grado</b> en tu curso <b>Matemáticas VI</b>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b><%= notification.notificator.title %></b> en tu curso <b><%= notification.notificator.courses[0].title %></b>
 
 	<% when 'user_comment_on_discussion'%>
 	<% if current_user && current_user.avatar != nil %>
-	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"})%>
-	<%end%><b>León Rangel</b> comentó en tu discusión <b>¿Qué opinan del socialismo?</b>
+	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%>
+	<%= image_tag(current_user.avatar.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%>
+	
+	<%end%><b><%=notification.notificator.user.name%></b> comentó en tu discusión <b><%= notification.notificator.courses[0].title %></b>
 	
 	<%else%>
-	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b>Leer de la página 10 a la 100</b> en tu curso <b>Historia</b>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Una actividad por <b><%=notification.notificator.user.name%></b> <!--en tu curso <b>< notification.notificator.courses[0].title  if ( notification.notificator.courses != nil) %></b>-->
 	<%end%>
 	<br/>
 	<span class="time"><%=time_ago_in_words(notification.created_at)%></span>
