@@ -90,8 +90,8 @@
         <%end%>
         </div>
 
-        <div class="top-null-image"></div><b><% if type != 'Course' %><%= link_to " #{tipo} en el curso: #{posted_in_for}", course_path(posted_in_for_id) if ( !posted_in_for.blank?) %><b> por </b><%= link_to " #{user_name}", show_user_path(personal_url) if ( !user_name.blank?) %>
- <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %><%end%> </b><%#= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
+        <div class="top-null-image"></div><% if type != 'Course' %><%= link_to " #{tipo} en el curso: #{posted_in_for}", course_path(posted_in_for_id) if ( !posted_in_for.blank?) %><b> por </b><%= link_to " #{user_name}", show_user_path(personal_url) if ( !user_name.blank?) %>
+ <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %><%end%><%#= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
 
 
