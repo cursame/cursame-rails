@@ -25,7 +25,7 @@
 	<% when 'user_comment_on_discussion'%>
 	<% if current_user && current_user.avatar != nil %>
 	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%>
-	<%= image_tag(current_user.avatar.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%>
+	<%= image_tag(current_user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%>
 	
 	<%end%><b><%=notification.notificator.user.name%></b> comentó en tu discusión <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) %>
 	
