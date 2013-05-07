@@ -34,7 +34,7 @@
     course = post.courses
     posted_in_for = course[0].title if ( !post.courses.blank? )
     posted_in_for_id = course[0].id if ( !post.courses.blank? )
-    content = post.description_html
+    content = post.description_html 
     ico = '-discussion'
     tipo = 'Discusion'
   when 'Delivery'
