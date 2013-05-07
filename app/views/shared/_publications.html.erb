@@ -29,7 +29,7 @@
     name = post.title
     course = post.courses
     posted_in_for = course[0].title if ( !post.courses.blank? )
-    content = post.description
+    content = post.description_html
     ico = '-discussion'
   when 'Delivery'
     avatar = post.user.avatar.modern
@@ -39,7 +39,7 @@
     name = post.title
     course = post.courses
     posted_in_for = course[0].title
-    content = post.description
+    content = post.description_html
     publication_cls = 'delivery'
     ico = '-homework'
   when 'Survey'
