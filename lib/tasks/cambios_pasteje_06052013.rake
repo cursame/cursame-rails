@@ -28,14 +28,19 @@ alumnos2a = [
     puts "curso vacio"
   else
     @members_destroy = @course.members_in_courses.where(:owner => false)
-    @members_destroy.destroy
-      
+    @members_destroy.each do |ml|
+      ml.destroy
+      puts "usuario eliminado del curso 2A  #{ml.course_id} "
+    end
+
           alumnos2a.each do |inscript|
             @cg =  User.find_by_email(inscript[:email])
             if @cg == nil
               puts 'nil'
             else
-              MembersInCourse.create(:course_id => @course.id, :user_id => @cg.id, :owner => false, :accepted => true)  
+              MembersInCourse.create(:course_id => @course.id, :user_id => @cg.id, :owner => false, :accepted => true)
+              @member_last =  MembersInCourse.last
+              puts "Nuebo usuario agregado al curso 2A #{@member_last.id}" 
             end
           end
   end
@@ -43,6 +48,12 @@ alumnos2a = [
     if @user_owner_edit_members_in_course == nil
       puts "sin usuario"
     else
-      @users_mk_destroy = @user_owner_edit_members_in_course.members_in_courses.destroy
+      
+      @users_mk_destroy = @user_owner_edit_members_in_course.members_in_courses
+      @users_mk_destroy.each do |lo|
+       lo.destroy
+       puts "se han eliminado las pertenencias en el curso para  info+juan@cursa.me  #{lo.course_id}"
+       
+      end
     end
 end
