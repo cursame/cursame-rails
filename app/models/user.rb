@@ -291,11 +291,19 @@ class User < ActiveRecord::Base
 
       # Checa que exista el role_id
       if role_id.nil? then
+        arrayErrores.push({:line => count, :message => "Debes de especificar un role para el usuario" })
+        errors = true
+      end
+
+      if !role_id.nil? then
         if Role.find_by_id(role_id).nil? then
           arrayErrores.push({:line => count, :message => "No existe el rol dado"})
           errors = true
         end
       end
+
+      password = Devise.friendly_token.first(6)
+      user.password = password
 
       if !errors then
         begin
@@ -308,9 +316,11 @@ class User < ActiveRecord::Base
         if !user.save then
           arrayErrores.push({:line => count, :message => "Error al guardar"})
         else
-          user.confirm!
-          user.save!
+          # user.confirm!
+          # user.save!
           Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          # mail = Notifier.send_password(user,password)
+          # mail.deliver
         end
       end
     end
