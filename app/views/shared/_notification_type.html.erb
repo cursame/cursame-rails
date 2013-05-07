@@ -17,17 +17,17 @@
 	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>
 
 	<% when 'new_delivery_on_course'%>
-	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) %>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?)%>
 	
 	<% when 'new_survey_on_course'%>
-	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) %>
+	<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?) %>
 
 	<% when 'user_comment_on_discussion'%>
 	<% if current_user && current_user.avatar != nil %>
 	<%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%>
 	<%= image_tag(current_user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%>
 	
-	<%end%><b><%=notification.notificator.user.name%></b> comentó en tu discusión <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) %>
+	<%end%><b><%=notification.notificator.user.name%></b> comentó en tu discusión <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?) %>
 	
 	<%else%>
 	<% if  current_user && current_user.avatar != nil %>
