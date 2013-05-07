@@ -40,9 +40,9 @@
 
 <script>
     $(function(){
-        $('#notification-<%=notification.notificator_id.to_s %>').on('click',function(){
-            console.info($(this).parent().parent());
-            $(this).parent().parent().parent().hide();
+        $('#notification-<%=notification.notificator_id.to_s %>').on('click',
+        	function(){
+            $('#box-notifications').hide();
         });
     });
 </script>
