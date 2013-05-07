@@ -52,7 +52,7 @@ class Api::ApiController < ApplicationController
       end
       @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
+    render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
   def users
@@ -170,6 +170,12 @@ class Api::ApiController < ApplicationController
     @discussion.courses.push(Course.find(params[:courseId]))
 
     @discussion.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def delete
+    element = eval(params[:type]).find(params[:id])
+    element.destroy
     render :json => {:success => true}, :callback => params[:callback]
   end
 
