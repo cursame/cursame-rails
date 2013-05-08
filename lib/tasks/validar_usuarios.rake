@@ -28,10 +28,8 @@ task :validarusuarios => :environment do
         alumno = User.find_by_email(item[:email])
         puts "---------------------cursos de #{alumno.name}---------------------"
         puts "Cursos encontrados #{alumno.courses.count}"
-        alumno.courses.each do |course|
-            puts "-------------------"
+        alumno.courses.each do |course|            
             puts course.title
-            puts "-------------------"
         end
         puts "------------------------------------------------------------------"
     end 
