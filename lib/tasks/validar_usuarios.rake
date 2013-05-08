@@ -27,6 +27,7 @@ task :validarusuarios => :environment do
     alumnos.each do |item|
         alumno = User.find_by_email(item[:email])
         puts "---------------------cursos de #{alumno.name}---------------------"
+        puts "Cursos encontrados #{alumno.courses.count}"
         alumno.courses.each do |course|
             course.to_yaml
         end
