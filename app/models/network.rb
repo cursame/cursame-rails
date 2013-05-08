@@ -36,6 +36,4 @@ class Network < ActiveRecord::Base
         },
       :conditions => ['userpublicationings.user_id = ? OR walls.public = ?',user_id,true]).order('walls.created_at DESC')
   end
-
-
 end
