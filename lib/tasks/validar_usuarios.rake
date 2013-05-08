@@ -30,7 +30,7 @@ task :validarusuarios => :environment do
         puts "Cursos encontrados #{alumno.courses.count}"
         alumno.courses.each do |course|
             puts "-------------------"
-            puts course.to_yaml
+            puts course.title
             puts "-------------------"
         end
         puts "------------------------------------------------------------------"
