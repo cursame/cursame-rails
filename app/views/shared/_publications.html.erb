@@ -10,6 +10,7 @@
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.user.name
+    user_name = name 
     content = post.comment_html
     course = post.commentable if post.commentable_type == 'Course'
     if course != nil
@@ -33,7 +34,7 @@
     course = post.courses
     posted_in_for = course[0].title if ( !post.courses.blank? )
     posted_in_for_id = course[0].id if ( !post.courses.blank? )
-    content = post.description_html
+    content = post.description_html 
     ico = '-discussion'
     tipo = 'Discusion'
   when 'Delivery'
