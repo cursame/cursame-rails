@@ -3,26 +3,25 @@ task :validarusuarios => :environment do
   #creamos la red
   
     alumnos = [      
-        { :first_name => 'DAFNE STACEY', :last_name => 'AVENDANO FELIPE', :email => 'info+011b@cursa.me',:password => 'bnoEsSJ2Fe', :group => 'Primero B' },
-        { :first_name => 'NEYDY LIZBETH', :last_name => 'BECERRIL LARA', :email => 'info+021b@cursa.me',:password => 'XLEk8928z4', :group => 'Primero B' },
-        { :first_name => 'LUIS ARMANDO', :last_name => 'BERNAL CUEVAS', :email => 'info+031b@cursa.me',:password => '1mNN88wf40', :group => 'Primero B' },
-        { :first_name => 'JHOANA ', :last_name => 'CLEMENTE LEOCADIO', :email => 'info+041b@cursa.me',:password => 'ObamXU9Ktr', :group => 'Primero B' },
-        { :first_name => 'AARON ', :last_name => 'CRUZ GONZALEZ', :email => 'info+051b@cursa.me',:password => '0auOg1VAlj', :group => 'Primero B' },
-        { :first_name => 'JUAN ANGEL', :last_name => 'DOMINGUEZ MIRANDA', :email => 'info+061b@cursa.me',:password => 'b54Kdn3iXE', :group => 'Primero B' },
-        { :first_name => 'DULCE NATALIA', :last_name => 'ENRIQUEZ MACARIO', :email => 'info+071b@cursa.me',:password => 'SMEL9PlS7Y', :group => 'Primero B' },
-        { :first_name => 'FABIOLA ', :last_name => 'GARDUNO LOPEZ', :email => 'info+081b@cursa.me',:password => 'UH5z7WztKh', :group => 'Primero B' },
-        { :first_name => 'EDSON MAURICIO', :last_name => 'GARDUNO SEGUNDO', :email => 'info+091b@cursa.me',:password => 'WxxZCZ4fPR', :group => 'Primero B' },
-        { :first_name => 'JORGE ', :last_name => 'GONZALEZ MARTINEZ', :email => 'info+101b@cursa.me',:password => 'hq40Dw2v2k', :group => 'Primero B' },
-        { :first_name => 'ALONDRA ', :last_name => 'JASSO MIRANDA', :email => 'info+111b@cursa.me',:password => 'IoU0dt56BW', :group => 'Primero B' },
-        { :first_name => 'MARLEN ', :last_name => 'MALDONADO MENDEZ', :email => 'info+121b@cursa.me',:password => 'x1KQajhV26', :group => 'Primero B' },
-        { :first_name => 'MEZTLI DANIELA', :last_name => 'MARTINEZ ARRIAGA', :email => 'info+131b@cursa.me',:password => 'vL4XfKeY5g', :group => 'Primero B' },
-        { :first_name => 'OSCAR ', :last_name => 'MARTINEZ GONZALEZ', :email => 'info+141b@cursa.me',:password => 'KX9tMm6oZu', :group => 'Primero B' },
-        { :first_name => 'ALONDRA JANETH', :last_name => 'OCADIZ ALANUZA', :email => 'info+151b@cursa.me',:password => 'IyIGaVTcL8', :group => 'Primero B' },
-        { :first_name => 'YESSICA ', :last_name => 'RAMIREZ GARCIA', :email => 'info+161b@cursa.me',:password => 'NScsY5i5mO', :group => 'Primero B' },
-        { :first_name => 'ELIZABETH ', :last_name => 'REYES ANTONIO', :email => 'info+171b@cursa.me',:password => 'C0tHbiFl9S', :group => 'Primero B' },
-        { :first_name => 'DULCE JAZMIN', :last_name => 'SALINAS LOPEZ', :email => 'info+181b@cursa.me',:password => 'UE2Ln4yNzC', :group => 'Primero B' },
-        { :first_name => 'CRISTIAN ', :last_name => 'SEGUNDO SILVERIO', :email => 'info+191b@cursa.me',:password => 'XWbOWAZ0Wf', :group => 'Primero B' },
-        { :first_name => 'MARISOL ', :last_name => 'VAZQUEZ DOMINGUEZ', :email => 'info+201b@cursa.me',:password => 'H71edcKNAg', :group => 'Primero B' }
+        { :first_name => 'BRANDON ', :last_name => 'ANTONIO CIRILO', :email => 'info+012a@cursa.me',:password => 'QVS4q0ZQwj', :group => 'Segundo A' },
+        { :first_name => 'MARIA DE LOS ANGELES', :last_name => 'BARRIOS JASSO', :email => 'info+022a@cursa.me',:password => 'csEcLJ1jr2', :group => 'Segundo A' },
+        { :first_name => 'MARIA FERNANDA', :last_name => 'CADENA FLORES', :email => 'info+032a@cursa.me',:password => 'zQROo1DZHA', :group => 'Segundo A' },
+        { :first_name => 'MONCERATH ', :last_name => 'DE JESUS LAZARO', :email => 'info+042a@cursa.me',:password => 'cbGc0PyEWH', :group => 'Segundo A' },
+        { :first_name => 'BRENDA JAQUELINE', :last_name => 'DE JESUS LOPEZ', :email => 'info+052a@cursa.me',:password => 'oH1d68SsXw', :group => 'Segundo A' },
+        { :first_name => 'JOSE DE JESUS ', :last_name => 'ENRIQUEZ BARRIOS', :email => 'info+062a@cursa.me',:password => 'fnE1LJARMU', :group => 'Segundo A' },
+        { :first_name => 'REBECA ', :last_name => 'GENARO APOLINAR', :email => 'info+072a@cursa.me',:password => 'RLSvR7Z59C', :group => 'Segundo A' },
+        { :first_name => 'YARET ', :last_name => 'GONZALEZ RIVERA', :email => 'info+082a@cursa.me',:password => 'BZX78lwwKO', :group => 'Segundo A' },
+        { :first_name => 'MARIA FERNANDA', :last_name => 'GUZMAN BLAS', :email => 'info+092a@cursa.me',:password => 'u1KX0c6ngq', :group => 'Segundo A' },
+        { :first_name => 'JASMIN ', :last_name => 'HUERTA LARA', :email => 'info+102a@cursa.me',:password => 'mq8C9XlMJy', :group => 'Segundo A' },
+        { :first_name => 'FELIPE JESUS', :last_name => 'JERONIMO FLORES', :email => 'info+112a@cursa.me',:password => 'svoFQ9fvMo', :group => 'Segundo A' },
+        { :first_name => 'XEARI MILTHON', :last_name => 'LAZARO GONZALEZ', :email => 'info+122a@cursa.me',:password => '4FIDecMhGC', :group => 'Segundo A' },
+        { :first_name => 'MIREYA ', :last_name => 'LOPEZ GONZALEZ', :email => 'info+132a@cursa.me',:password => '2Q7hudzNBQ', :group => 'Segundo A' },
+        { :first_name => 'LESLIE ', :last_name => 'LUCIANO CIRILO', :email => 'info+142a@cursa.me',:password => 'Ofq1zrc31m', :group => 'Segundo A' },
+        { :first_name => 'ARELI ', :last_name => 'MARTINEZ HERNANDEZ', :email => 'info+152a@cursa.me',:password => 'Qysa8mbhro', :group => 'Segundo A' },
+        { :first_name => 'PAOLA ', :last_name => 'MARINEZ ONOFRE', :email => 'info+162a@cursa.me',:password => '0YgNxZ4KzK', :group => 'Segundo A' },
+        { :first_name => 'SAMUEL ', :last_name => 'RAMIREZ DOMINGUEZ', :email => 'info+172a@cursa.me',:password => '9pdV4UHM00', :group => 'Segundo A' },
+        { :first_name => 'SHARON ', :last_name => 'RAMIREZ MENDOZA', :email => 'info+182a@cursa.me',:password => 'bne3g2iIhp', :group => 'Segundo A' },
+        { :first_name => 'ERICA ', :last_name => 'VICTORIANO PATRICIO', :email => 'info+192a@cursa.me',:password => 'mkrz7B9AcT', :group => 'Segundo A' }
     ]
 
     alumnos.each do |item|
