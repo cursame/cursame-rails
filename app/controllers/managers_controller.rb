@@ -53,11 +53,41 @@ class ManagersController < ApplicationController
   def upload_users
 
     @errores = User.import(params[:file],current_network)
+    if @errores.size == 0 then
+      @errores = nil
+    end
     @users = current_network.users
     respond_to do |format|
       format.html { render "managers/import_users"}
       format.json { render json: @users }
     end
+  end
+
+  def upload_members
+    courses = params[:courses]
+    network = current_network
+    @courses = network.courses
+    @errores = Array.new
+    if !courses.nil? then
+      courses.each do
+        |course_id|
+        course = Course.find_by_id(course_id)
+        @errores.push([MembersInCourse.import(params[:file],network,course),course])
+      end
+    end
+    real_errores = @errores.map{|x| x[0]}
+    real_errores.flatten!
+    if real_errores.size == 0 then
+      @errores = nil
+    end
+    respond_to  do |format|
+      format.html { render "managers/import_members"}
+      format.json { render json: @courses}
+    end
+  end
+
+  def import_members
+    @courses = current_network.courses
   end
 
   def send_mails
@@ -83,6 +113,9 @@ class ManagersController < ApplicationController
   def upload_courses
 
     @errores = Course.import(params[:file],current_network)
+    if @errores.size == 0
+      @errores = nil
+    end
     @courses = current_network.courses
     respond_to do |format|
       format.html { render "/managers/import_courses"}

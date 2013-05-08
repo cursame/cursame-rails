@@ -1,0 +1,48 @@
+<div id="admin-sidebar">
+  <h5>Adminitracion</h5>
+  <ul><%= render :partial => "managers/menu"%></ul>
+</div>
+<div id="admin-content">
+<h2> Import Members in Courses </h2>
+<% if !@errores.nil? then %>
+  <h2>List of Errors</h2>
+  </p>
+  </p>
+  <table id="errores">
+    <tr>
+      <th></th>
+      <th>Curso</th>
+      <th>Linea</th>
+      <th>Error</th>
+    </tr>
+    <% @errores.each do |course| %>
+      <% course[0].each do%>
+        <% |errores| %>
+      <tr>
+        <th><%=course[1].title%></th>
+        <th><%=errores[:line]%></th>
+        <th><%=errores[:message]%></th>
+      </tr>
+    <% end %>
+    <% end %>
+    </table>
+<% end %>
+<%= form_tag upload_members_path, multipart: true do %>
+  <table class="striped">
+    <tr>
+      <th>Course</th>
+      <th>¿Importar?</th>
+    </tr>
+  <% @courses.each do %>
+     <% |course| %>
+     <tr>
+       <td><%= course.title %></td>
+       <td><%= check_box_tag 'courses[]', course.id, false %></td>
+     </tr>
+  <% end %>
+  </table>
+  <%= file_field_tag :file %>
+  <p>
+  <%= submit_tag "Import"%>
+<% end %>
+</div>
