@@ -6,9 +6,14 @@ var Cursame ={
 </script>
 
 <div class="notification-icon" id="notifications_count">
-    <span ><%=current_user.notifications.count%></span>
+    <span id="lecto_n_count" ><%=current_user.notifications.where(:active => true).count%></span>
 </div>
 
+<script>
+    $("#notifications_count").click(function () {
+        $.get("/home/editing_n");
+        });
+</script>
 <!-- tratamos las notificaciones para agregarles el css first y last-->
 <%
 notifications = current_user.notifications.order("created_at DESC")

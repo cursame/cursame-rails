@@ -287,7 +287,9 @@ Cursame30Lb::Application.routes.draw do
    get "/upvote_comment/:id", :to => 'home#upvote_comment', :as => :upvote_comment
    get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
 
-
+   ####### actualizacion de noticicacion
+   
+   get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
    ####### rutas de estandarizacion de eventos
 
@@ -313,5 +315,6 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
   match '/api/api/create_delivery', :to => 'api/api#create_delivery', :as => :create_delivery
   match '/api/api/create_discussion', :to => 'api/api#create_discussion', :as => :create_discussion
+  match '/api/api/delete', :to => 'api/api#delete', :as => :delete
   match '/api/api/assigment_delivery', :to => 'api/api#assigment_delivery', :as => :assigment_delivery
 end
