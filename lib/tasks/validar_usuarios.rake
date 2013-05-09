@@ -41,6 +41,12 @@ task :validarusuarios => :environment do
     
     maestros = Permissioning.where(:network_id => 6, :role_id => 3)
 
+    n = Network.find(6)
+    
+    n.courses.each do |course|
+        puts course.title
+    end
+
     maestros.each do |item|
         alumno = item.user
         puts "---------------------cursos de #{alumno.name}---------------------"
