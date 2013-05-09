@@ -2,29 +2,29 @@ task :validarusuarios => :environment do
 
   #creamos la red
   
-    alumnos = [     
-        { :first_name => 'ANDREA ', :last_name => 'ALCANTARA MILLARES', :email => 'info+013a@cursa.me',:password => '0tcpFL6AfH', :group => 'Tercero A' },
-        { :first_name => 'JUAN MANUEL', :last_name => 'ALCANTARA MILLARES', :email => 'info+023a@cursa.me',:password => 'uKXAdg3ZXM', :group => 'Tercero A' },
-        { :first_name => 'GUILLERMO ENRIQUE', :last_name => 'CARMONA BECERRIL', :email => 'info+033a@cursa.me',:password => 'soeKwOe1Zy', :group => 'Tercero A' },
-        { :first_name => 'ABRIL ', :last_name => 'CIRILO GARCIA', :email => 'info+043a@cursa.me',:password => '6KmIYIArAO', :group => 'Tercero A' },
-        { :first_name => 'YAHAIRA HAYDEE', :last_name => 'CONTRERAS ORTIZ', :email => 'info+053a@cursa.me',:password => '1Y05tkG9UC', :group => 'Tercero A' },
-        { :first_name => 'ALONDRA ', :last_name => 'DIEGO GARDUNO', :email => 'info+063a@cursa.me',:password => 'a8KMqRz7k4', :group => 'Tercero A' },
-        { :first_name => 'SERGIO ', :last_name => 'DOMINGUEZ SANCHEZ', :email => 'info+073a@cursa.me',:password => 'eSMcZ83jyz', :group => 'Tercero A' },
-        { :first_name => 'ANDRES ', :last_name => 'EPIGMENIO GARCIA', :email => 'info+083a@cursa.me',:password => 'mhF95jLPwZ', :group => 'Tercero A' },
-        { :first_name => 'YOANA ', :last_name => 'FAUSTINO HERNANDEZ', :email => 'info+093a@cursa.me',:password => 'G7L52ZQUeO', :group => 'Tercero A' },
-        { :first_name => 'CESAR ', :last_name => 'FLORES REYES', :email => 'info+103a@cursa.me',:password => 'XFPkjBtYL5', :group => 'Tercero A' },
-        { :first_name => 'NORMA LAURA', :last_name => 'GARCIA CONTRERAS', :email => 'info+113a@cursa.me',:password => 'ssh6jkcbpP', :group => 'Tercero A' },
-        { :first_name => 'KATIA ', :last_name => 'GONZALEZ MADRAZO', :email => 'info+123a@cursa.me',:password => 'K5mD42suwD', :group => 'Tercero A' },
-        { :first_name => 'ERIKA ', :last_name => 'HUERTA LARA', :email => 'info+133a@cursa.me',:password => 'Zd1hoi4VaJ', :group => 'Tercero A' },
-        { :first_name => 'RODRIGO ', :last_name => 'LAZARO DOMINGUEZ', :email => 'info+143a@cursa.me',:password => 'yW3VekqUwu', :group => 'Tercero A' },
-        { :first_name => 'ALVARO YOEL', :last_name => 'LORENZO VAZQUEZ', :email => 'info+153a@cursa.me',:password => 'bCeaLvuc9Q', :group => 'Tercero A' },
-        { :first_name => 'IVAN ', :last_name => 'MALDONADO GOMEZ', :email => 'info+163a@cursa.me',:password => 'G1NTqy5XK0', :group => 'Tercero A' },
-        { :first_name => 'RUBEN ', :last_name => 'MENDOZA AMADO', :email => 'info+173a@cursa.me',:password => 'HPK5ABgkBE', :group => 'Tercero A' },
-        { :first_name => 'CESAR ', :last_name => 'RAMIREZ BERNABE', :email => 'info+183a@cursa.me',:password => 'x1bbWK8Oo0', :group => 'Tercero A' },
-        { :first_name => 'PAOLA ITZEL', :last_name => 'SANCHEZ QUIROZ', :email => 'info+193a@cursa.me',:password => 'grhUp02r2n', :group => 'Tercero A' },
-        { :first_name => 'ZAHORY ', :last_name => 'SILVERIO LARA', :email => 'info+203a@cursa.me',:password => 'XxEguYem3j', :group => 'Tercero A' },
-        { :first_name => 'BENJAMIN ', :last_name => 'VELAZQUEZ JOSE', :email => 'info+213a@cursa.me',:password => 'Zp0uXBPIvM', :group => 'Tercero A' },
-        { :first_name => 'ALBERTO ARTURO', :last_name => 'VILCHIS GONZALEZ', :email => 'info+223a@cursa.me',:password => 'FUUwJXS2dH', :group => 'Tercero A' }
+    alumnos = [
+        { :first_name => 'CECILIA ', :last_name => 'ANDRES SANCHEZ', :email => 'info+013b@cursa.me',:password => 'tjlky6N00b', :group => 'Tercero B' },
+        { :first_name => 'ARTEMIO ', :last_name => 'BECERRIL VELAZQUEZ', :email => 'info+023b@cursa.me',:password => 'R36WjwVaiZ', :group => 'Tercero B' },
+        { :first_name => 'ARACELI ', :last_name => 'CRUZ CIRILO', :email => 'info+033b@cursa.me',:password => 'sWhD14oZGS', :group => 'Tercero B' },
+        { :first_name => 'ARMANDO ', :last_name => 'CRUZ CIRILO', :email => 'info+043b@cursa.me',:password => 'EIeX41t7du', :group => 'Tercero B' },
+        { :first_name => 'WILLIAM ', :last_name => 'CRUZ GONZALEZ', :email => 'info+053b@cursa.me',:password => 'yaAWCU5htt', :group => 'Tercero B' },
+        { :first_name => 'SUHEYLI AKETZALI', :last_name => 'DE LOYOLA VIDAL', :email => 'info+063b@cursa.me',:password => '3DxzBZNDW5', :group => 'Tercero B' },
+        { :first_name => 'YURIANAG ', :last_name => 'ENRIQUEZ BARRIOS', :email => 'info+073b@cursa.me',:password => '7nC2oCzMBk', :group => 'Tercero B' },
+        { :first_name => 'SURIDAY ', :last_name => 'GARCIA CARDOSO', :email => 'info+083b@cursa.me',:password => 'i6N9yIRnyX', :group => 'Tercero B' },
+        { :first_name => 'RAQUEL ', :last_name => 'GARCIA TRINIDAD', :email => 'info+093b@cursa.me',:password => 'OP0NG0kS7N', :group => 'Tercero B' },
+        { :first_name => 'JUAN PABLO', :last_name => 'GARDUNO HERMENEGILDO', :email => 'info+103b@cursa.me',:password => '6ZyhEsbTdh', :group => 'Tercero B' },
+        { :first_name => 'IRVING ', :last_name => 'GONZALEZ ORTA', :email => 'info+113b@cursa.me',:password => 'Snkj7TsevX', :group => 'Tercero B' },
+        { :first_name => 'CRISTOPHER ', :last_name => 'JERONIMO QUIRINO', :email => 'info+123b@cursa.me',:password => 'ZXvUYRCNN5', :group => 'Tercero B' },
+        { :first_name => 'JOAN TLANESI', :last_name => 'JIMENEZ GONZALEZ', :email => 'info+133b@cursa.me',:password => '46x8n5nPXo', :group => 'Tercero B' },
+        { :first_name => 'EDUARDO ', :last_name => 'LARA SILVERIO', :email => 'info+143b@cursa.me',:password => 'nv8ZaW6yuq', :group => 'Tercero B' },
+        { :first_name => 'AMSEL ', :last_name => 'LORENZO HERMENEGILDO', :email => 'info+153b@cursa.me',:password => 'xIS6GHmisZ', :group => 'Tercero B' },
+        { :first_name => 'ERIC ', :last_name => 'MACARIO DOROTEO', :email => 'info+163b@cursa.me',:password => '0eF6rIWkJM', :group => 'Tercero B' },
+        { :first_name => 'ELIZABETH ', :last_name => 'MARTINEZ GONZALEZ', :email => 'info+173b@cursa.me',:password => 'G9NafDDnnb', :group => 'Tercero B' },
+        { :first_name => 'YOLOTZIN ', :last_name => 'NICOLAS BERNAL', :email => 'info+183b@cursa.me',:password => 'DTubbUtq2S', :group => 'Tercero B' },
+        { :first_name => 'LUIS ALBERTO', :last_name => 'QUIRINO SANCHEZ', :email => 'info+193b@cursa.me',:password => 'b0bFZvQ6aM', :group => 'Tercero B' },
+        { :first_name => 'BEANNY ', :last_name => 'REYES ANTONIO', :email => 'info+203b@cursa.me',:password => 'dK7FkWeVdk', :group => 'Tercero B' },
+        { :first_name => 'CUITLAHUAC MOCTEZUMA', :last_name => 'SAMANO PERFECTO', :email => 'info+213b@cursa.me',:password => 'q5NrZ6NmH0', :group => 'Tercero B' },
+        { :first_name => 'GUSTAVO ', :last_name => 'VENTURA REYES', :email => 'info+223b@cursa.me',:password => 'eys8w5vyQ8', :group => 'Tercero B' },
     ]
 
     alumnos.each do |item|
