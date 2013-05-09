@@ -90,7 +90,11 @@ end
 
 AutoHtml.add_filter(:link).with({}) do |text, options|
   attributes = Array(options).reject { |k,v| v.nil? }.map { |k, v| %{#{k}="#{REXML::Text::normalize(v)}"} }.join(' ')
-  Rinku.auto_link(text, :all, attributes)
+  Rinku.auto_link(text, :all, attributes) do |url|
+    o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+    string  =  (0...5).map{ o[rand(o.length)] }.join
+    "http://crs.me/"+string
+  end
 end
 
 AutoHtml.add_filter(:metacafe).with(:width => 440, :height => 272, :show_stats => false, :autoplay => false) do |text, options|

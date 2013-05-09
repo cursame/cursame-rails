@@ -278,6 +278,106 @@ class CoursesController < ApplicationController
 
   def dashboard_deliver
   end
+  
+  def course_ki_line
+      @course = Course.find(params[:id])
+      deliveries = []
+      assignmentss = []
+      surveyss = []
+      
+      @course.deliveries.each do |del|
+        
+        if del.user.avatar.blank?
+          @avatar = "/assets/#{del.user.image_avatarx}"
+        else
+          @avatar = del.user.avatar.profile
+          
+        end
+        
+        
+        deliveries.push(
+          {
+              startDate: del.publish_date,
+			        endDate: del.end_date,
+              headline:"#{del.title}",
+              text:" Tarea: #{del.description}",
+              asset:
+              {
+                  media: @avatar,
+                  credit:"#{del.user.name}",
+                  caption:"#{@course.title}"
+              }
+          }
+          
+       
+        )
+        
+        
+         del.assignments.each do |as|
+           if as.user.avatar.blank?
+             @avatar_assignment = "/assets/#{as.user.image_avatarx}"
+           else
+             @avatar_assignment = as.user.avatar.profile
+
+           end
+            assignmentss.push(
+                {
+                    startDate: as.created_at,
+      			        endDate: as.created_at,
+                    headline:"#{as.title}",
+                    text:"Tarea entregada: #{as.brief_description}",
+                    asset:
+                    {
+                        media: @avatar_assignment,
+                        credit:"#{as.user.name}",
+                        caption:"#{@course.title}"
+                    }
+                }
+            
+            )
+          end
+        
+      end
+      
+      @course.surveys.each do |survey|
+          if survey.user.avatar.blank?
+            @avatar = "/assets/#{survey.user.image_avatarx}"
+          else
+            @avatar = survey.user.avatar.profile
+
+          end
+          surveyss.push(
+              {
+                  startDate: survey.created_at,
+    			        endDate: survey.created_at,
+                  headline:"#{survey.name}",
+                  text:"Cuestionario: #{survey.state}",
+                  asset:
+                  {
+                      media: @avatar_assignment,
+                      credit:"#{survey.user.name}",
+                      caption:"#{@course.title}"
+                  }
+              }
+          
+          )
+      end
+      respond_to do |format|
+      format.html    
+      format.json { render json:
+        {
+        timeline: {
+                      headline:@course.title,
+                      type:"default",
+                      text: "Linea del tiempo del curso #{@course.title} ",
+                      startDate:"#{@course.init_date}",
+                      
+                       date: deliveries + surveyss + assignmentss
+                  }
+        }
+      }
+    end
+  end
 
   ######  formato para responder la jamada de ajax con js
 
