@@ -1,4 +1,3 @@
-
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
@@ -151,4 +150,72 @@ class MembersInCourse < ActiveRecord::Base
     return false
   end
 
+  def self.import(file,network,course)
+    arrayErrores = Array.new
+    count = 1
+
+    begin
+      file.path
+    rescue NoMethodError
+      return arrayErrores.push({:line => 0, :message => "No selecciono un archivo"})
+    end
+
+    CSV.foreach(file.path, headers: true) do |row|
+      if !row["id"].nil? then
+        member_in_course = find_by_id(row["id"]) || new
+      else
+        member_in_course = new
+      end
+
+      errors = false
+
+      hash = row.to_hash
+      email = hash.delete("Email")
+
+      user = User.find_by_email(email)
+
+      if !email.nil? then
+        if user.nil?
+          arrayErrores.push({:line => count, :message => "El correo no pertenece a algun usuario activo."})
+          errors = true
+        end
+      else
+        arrayErrores.push({:line => count, :message => "No se especifico un correo"})
+        errors = true
+      end
+
+      owner = hash.delete("Propietario")
+
+      owner.downcase! if !owner.nil?
+      owner.strip! if !owner.nil?
+
+      if owner != "0" and owner != "1" then
+        arrayErrores.push({:line => count,:message => "No se especifico si es propietario o no del curso" })
+        errors = true
+      elsif owner == "0" then
+          owner = true
+      else
+        owner = nil
+      end
+
+      if !errors then
+        begin
+          member_db = MembersInCourse.find_by_user_id_and_course_id_and_network_id(user.id,course.id,network.id)
+          member_in_course = member_db if !member_db.nil?
+          member_in_course.user_id = user.id
+          member_in_course.course_id = course.id
+          member_in_course.accepted = true
+          member_in_course.owner = owner
+          member_in_course.network_id = network.id
+          member_in_course.active_status = true
+          member_in_course.save!
+        rescue ActiveRecord::RecordInvalid => invalid
+          invalid.record.error.each do |error|
+            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s })
+          end
+        end
+      end
+    end
+    return arrayErrores
+  end
 end

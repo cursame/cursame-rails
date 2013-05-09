@@ -7,6 +7,12 @@
 </div>
 <div id="admin-content">
 <h2>Import Users</h2>
+<a href="/plantillas/usuarios_plantilla.csv">usuarios_plantilla.csv</a>
+<p>
+El role puede ser estudiante o maestro.
+<p>
+El email debe de ser el email del usuario.
+<p>
 <%= form_tag upload_users_path, multipart: true do %>
   <%= file_field_tag :file %>
   <p>
@@ -35,7 +41,7 @@
     <th>Id</th>
     <th>Email</th>
     <th>Nombre</th>
-    
+
 <!--
     <th>Encrypted_password</th>
     <th>Reset_password_token</th>

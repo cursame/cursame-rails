@@ -84,7 +84,10 @@ Cursame30Lb::Application.routes.draw do
   resources :members_in_courses
 
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
-  post "managers/upload_courses", :to => "managers#upload_courses", :as => :upload_courses
+  post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
+
+  get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
+  post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
 
   resources :courses do
     resources :assignments
@@ -213,7 +216,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
-  
+
   root :to => 'home#index'
 
   #comentarios
@@ -288,7 +291,7 @@ Cursame30Lb::Application.routes.draw do
    get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
 
    ####### actualizacion de noticicacion
-   
+
    get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
    ####### rutas de estandarizacion de eventos
