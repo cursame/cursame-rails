@@ -44,7 +44,7 @@ task :validarusuarios => :environment do
     n = Network.find(6)
     
     n.courses.each do |course|
-        puts course.title
+        puts "[#{course.id}]  #{course.title}"
     end
 
     maestros.each do |item|
