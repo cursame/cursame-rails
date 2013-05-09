@@ -122,4 +122,9 @@ class ManagersController < ApplicationController
       format.json { render json: @courses }
     end
   end
+
+  def send_usuarios
+    send_file "assets/plantillas/usuarios_plantilla.csv"
+    redirect_to :managers_import_users_path
+  end
 end
