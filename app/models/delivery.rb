@@ -26,7 +26,11 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
 
-
+  validates_presence_of :end_date
+  validates_presence_of :publish_date
+  validates_presence_of :porcent_of_evaluation
+  validates_presence_of :title
+  
   acts_as_commentable
   #para los likes
   acts_as_votable

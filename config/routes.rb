@@ -295,6 +295,10 @@ Cursame30Lb::Application.routes.draw do
 
    match 'focus/:id', :to => 'events#show', :as => :eventuable
 
+   ####### ruta para creacion de timeline
+   
+   get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
+   
    ###### ruta para crear super admins
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
