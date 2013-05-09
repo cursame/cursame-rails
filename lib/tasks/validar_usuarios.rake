@@ -39,7 +39,7 @@ task :validarusuarios => :environment do
     #     puts "------------------------------------------------------------------"
     # end 
     
-    maestros = Permissioning.where(:network_id => 6, :role => 3)
+    maestros = Permissioning.where(:network_id => 6, :role_id => 3)
 
     maestros.each do |alumno|
         puts "---------------------cursos de #{alumno.name}---------------------"
