@@ -2,10 +2,12 @@ task :actualizar_pasteje => :environment do
 
     network_id = 6
 
-    #damos de al ra a Felix Arturo
+    #damos de alta a Felix Arturo
     mageo = { :first_name => 'Felix Arturo', :last_name => 'Orta Recendiz', :email => 'farturo.orta@gmail.com', :password => 'ytWrwi9t4A' }
     user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
     Permissioning.create :user_id => user.id, :role_id => '1', :network_id => network_id
+
+    puts "----------------------------alta de Felix Arturo-----------------------------------------------"
 
     #todos a ingles
     alumnos1a = [         
@@ -148,6 +150,7 @@ task :actualizar_pasteje => :environment do
         { :first_name => 'GUSTAVO ', :last_name => 'VENTURA REYES', :email => 'info+223b@cursa.me',:password => 'eys8w5vyQ8', :group => 'Tercero B' },
     ]
 
+
     #cursos de ingles
     ingles1a = Course.create(:title => "Ingles 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
     ingles1b = Course.create(:title => "Ingles 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
@@ -155,6 +158,8 @@ task :actualizar_pasteje => :environment do
     ingles2b = Course.create(:title => "Ingles 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
     ingles3a = Course.create(:title => "Ingles 3A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
     ingles3b = Course.create(:title => "Ingles 3B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
+
+    puts "----------------------------Cursos de ingles-----------------------------------------------"
 
     #mestro de ingles
     mageo = { :first_name => 'Matilde', :last_name => 'Sanchez Vera', :email => 'maty.sanchez.23@gmail.com', :password => 'ytWrwi9t4A' }
@@ -167,6 +172,8 @@ task :actualizar_pasteje => :environment do
     MembersInCourse.create :user_id => user.id, :course_id => ingles2b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
     MembersInCourse.create :user_id => user.id, :course_id => ingles3a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
     MembersInCourse.create :user_id => user.id, :course_id => ingles3b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+
+    puts "----------------------------Maestra de ingles-----------------------------------------------"
 
     #dar de alta usuarios 1 ingles
     alumnos1a.each do |alumno|
@@ -194,14 +201,21 @@ task :actualizar_pasteje => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => ingles3b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end
 
+    puts "----------------------------alumnos de ingles-----------------------------------------------"
+
+
     #lucero maestra de quimica
     lucero = User.where(:email=>"lucero.cuevas.666@gmail.com").first
     MembersInCourse.create :user_id => user.id, :course_id => 29, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
     MembersInCourse.create :user_id => user.id, :course_id => 30, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
 
+    puts "----------------------------Maestra de quimia-----------------------------------------------"
+
     #formacion civica primeros
     FC1a = Course.create(:title => "Formacion Civica y Etica 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
     FC1b = Course.create(:title => "Formacion Civica y Etica 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
+
+    puts "----------------------------Cursos Formacion civica-----------------------------------------------"
 
     #dar de alta usuarios a formacion civica y etica
     alumnos1a.each do |alumno|
@@ -212,4 +226,5 @@ task :actualizar_pasteje => :environment do
       user = User.find_by_email(alumno[:email])
       MembersInCourse.create :user_id => user.id, :course_id => FC1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end
+    puts "----------------------------Alumnos de formacion civica-----------------------------------------------"
 end
