@@ -1,4 +1,4 @@
-task :actualizar_pasteje => :environment do
+task :agregar_computacion => :environment do
 
     network_id = 6
 
