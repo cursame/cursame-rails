@@ -141,9 +141,12 @@ task :agregar_cursos_de_computacion => :environment do
       MembersInCourse.create :user_id => user.id, :course_id => C1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end
 
-    puts "----------------------------Alumnos de computacion secundaria-----------------------------------------------"
+    puts "----------------------------Alumnos de computacion primaria-----------------------------------------------"
     alumnos.each do |alumno|
       user = User.find_by_email(alumno[:email])
+      puts "---------------------------------------------------------------------------"
+      puts user.id
+      puts "---------------------------------------------------------------------------"
       MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? C6a.id : C6b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
     end
 end
