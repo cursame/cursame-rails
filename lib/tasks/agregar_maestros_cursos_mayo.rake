@@ -1,4 +1,4 @@
-task :agregar_computacion => :environment do
+task :agregar_cursos_de_computacion => :environment do
 
     network_id = 6
 
