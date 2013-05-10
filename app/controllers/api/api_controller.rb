@@ -115,6 +115,12 @@ class Api::ApiController < ApplicationController
     render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
   end
 
+  def assignments
+    assignments = Assignment.find_by_course_id(params[:course_id])
+
+    render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
+  end
+
   def create_comment
     @comment = Comment.new
     @comment.commentable_type = params[:commentable_type]
@@ -193,6 +199,14 @@ class Api::ApiController < ApplicationController
     @assignment.user_id = params[:userId]
 
     @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def qualify_assignment
+    assignment = Assignment.find(params[:assignment_id])
+    assignment.rub_calification = params[:calification]
+    assignment.save
+
     render :json => {:success => true}, :callback => params[:callback]
   end
 
