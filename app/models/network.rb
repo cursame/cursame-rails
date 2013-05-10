@@ -33,7 +33,9 @@ class Network < ActiveRecord::Base
   def publications (user_id)
     Wall.scoped(:include => {
           :users => :userpublicationings,
-        },
-      :conditions => ['userpublicationings.user_id = ? OR walls.public = ?',user_id,true]).order('walls.created_at DESC')
+          :courses => :coursepublicationings,
+          :courses => :members_in_courses
+    },
+      :conditions => ['(userpublicationings.user_id = ? OR walls.public = ?) AND (members_in_courses.accepted = ? AND members_in_courses.user_id = ?)',user_id,true,true, user_id]).order('walls.created_at DESC')
   end
 end

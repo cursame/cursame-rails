@@ -81,7 +81,7 @@
       <div class="arrow-left"></div>
       <div class="header">
         <div class="avatar">
-        <% case type %>
+        <% case type  %>
         <% when 'Course'%>
           <%= link_to image_tag(avatar,{:class => "avatar-mini"}), course_path(post.id) if ( !avatar.blank? && !nil)%>
          <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank? || nil)%>
