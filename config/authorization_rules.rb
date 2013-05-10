@@ -11,7 +11,9 @@ authorization do
     has_permission_on [:discussions], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:surveys], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:events], :to => [:users,:create,:destroy,:index,:show,:edit]
-    has_permission_on [:managers], :to => [:users,:create,:destroy,:index,:show,:edit, :wall,:members, :network_configuration, :library, :import_courses, :upload_courses, :import_users, :upload_users,:send_mails, :sending]
+    has_permission_on [:managers], :to => [:users,:create,:destroy,:index,:show,:edit,
+      :wall,:members, :network_configuration, :library, :import_courses, :upload_courses,
+      :import_users, :upload_users, :import_members, :upload_members,:send_mails, :sending]
   end
 
   role :student do
@@ -52,7 +54,11 @@ authorization do
     has_permission_on [:discussions], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:surveys], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:events], :to => [:users,:create,:destroy,:index,:show,:edit]
-    has_permission_on [:managers], :to => [:users,:create,:destroy,:index,:show,:edit, :wall,:members, :network_configuration, :library, :import_courses, :upload_courses, :import_users, :upload_users,:send_mails, :sending]
-    has_permission_on [:superadmnin], :to => [:statistics, :networks, :users, :activities, :roles, :create_super_admin, :courses_sintetic_view_and_edit, :publicity_modul_controller, :instructions]
+    has_permission_on [:managers], :to => [:users,:create,:destroy,:index,:show,:edit,
+      :wall,:members, :network_configuration, :library, :import_courses, :upload_courses,
+      :import_users, :upload_users,:import_members,:upload_members,:send_mails, :sending]
+    has_permission_on [:superadmnin], :to => [:statistics, :networks, :users, :activities,
+      :roles, :create_super_admin, :courses_sintetic_view_and_edit, :publicity_modul_controller,
+      :instructions]
   end
 end

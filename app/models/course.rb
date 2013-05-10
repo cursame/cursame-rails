@@ -53,8 +53,13 @@ class Course < ActiveRecord::Base
   after_create do
     if self.public_status == 'public'
       Wall.create :users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true
-      self.users.each do |u|
-        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
+      # owners = self.users
+      # owners_id = owners.map{|x| x.id}
+      self.network.users.each do
+        |user|
+        # if !owners_id.include?(user.id)
+        Notification.create(:user => user, :notificator => self, :kind => 'new_public_course_on_network')
+        # end
       end
     end
   end
@@ -89,17 +94,41 @@ class Course < ActiveRecord::Base
       else
         course = new
       end
-      course.attributes = row.to_hash.slice(*accessible_attributes)
 
       errors = false
-      if course.survey_param_evaluation.to_i +
-          course.delivery_param_evaluation.to_i != 100 then
-        arrayErrores.push({:line => count, :message => "El porcentaje de examenes o tareas es incorrecto"})
+
+      hash = row.to_hash
+
+      title = hash.delete("Nombre")
+      silabus = hash.delete("Descripcion")
+      init_date = hash.delete("Fecha de Inicio")
+      finish_date = hash.delete("Fecha de Finalizacion")
+      public_status = hash.delete("Estatus")
+
+      if public_status.nil? then
+        arrayErrores.push({:line => count, :message => "No se especifico un estatus del curso" })
         errors = true
+      else
+        public_status = public_status.downcase.strip
+        public_status = "public" if public_status == "publico"
+        public_status = "Private" if public_status == "privado"
+
+        if public_status != "public" and public_status != "Private" then
+          arrayErrores.push({:line => count, :message => "No se especifico un estatus correcto en el curso" })
+          errors = true
+        end
       end
+
+      course.network_id = network.id
+      course.active_status = true
 
       if !errors then
         begin
+          course.title = title
+          course.silabus = silabus
+          course.init_date = init_date
+          course.finish_date = finish_date
+          course.public_status = public_status
           course.save!
         rescue ActiveRecord::RecordInvalid => invalid
           invalid.record.errors.each do |error|

@@ -26,7 +26,11 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
 
-
+  validates_presence_of :end_date
+  validates_presence_of :publish_date
+  validates_presence_of :porcent_of_evaluation
+  validates_presence_of :title
+  
   acts_as_commentable
   #para los likes
   acts_as_votable
@@ -95,12 +99,12 @@ class Delivery < ActiveRecord::Base
         users =[]
         self.courses.each do |course|
           users+= course.users
-          course.members_in_courses.each do |u|
-            user = User.find_by_id(u.user_id)
-            if u.owner != true && (user != nil)
+          course.members_in_courses.each do |member|
+            user = member.user
+            if user.id != self.user_id
               Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
               #se envia mail a cada uno de los miembros de curso
-              mail = Notifier.new_delivery_notification(u,self)
+              mail = Notifier.new_delivery_notification(member,self)
               mail.deliver
             end
           end

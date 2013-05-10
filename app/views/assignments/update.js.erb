@@ -1,5 +1,9 @@
 $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
 $('#notice').append('Se ha actualizado la entrega');
+$('#i_rub_l_<%= @assignment.id%>').html('');
+$('#i_rub_l_<%= @assignment.id%>').html("<%= @assignment.accomplishment %>%"
+);
+
 setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });

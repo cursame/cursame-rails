@@ -13,7 +13,7 @@ class Discussion < ActiveRecord::Base
   acts_as_commentable
   #para los likes
   acts_as_votable
-  
+
   #autoconversion de links, links inteligentes
   auto_html_for :description do
     html_escape
@@ -48,6 +48,11 @@ class Discussion < ActiveRecord::Base
         users+= c.users
       end
       Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
+      users.each do |user|
+        if user.id != self.user_id
+          Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
+        end
+      end
     end
   end
 
