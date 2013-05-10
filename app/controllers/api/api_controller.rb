@@ -83,7 +83,7 @@ class Api::ApiController < ApplicationController
           course = Course.find(notification.notificator.commentable_id)
         when 'new_delivery_on_course'
           cretator = notification.notificator.user
-          owner = notification.notificator.course[0]
+          owner = notification.notificator.courses[0]
           course = Course.find(notification.notificator.commentable_id) #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
         when 'new_public_course_on_network'
           cretator = notification.notificator.user
