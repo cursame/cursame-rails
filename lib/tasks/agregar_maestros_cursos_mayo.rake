@@ -131,14 +131,14 @@ task :agregar_cursos_de_computacion => :environment do
     
 
 
-    #dar de alta usuarios a formacion civica y etica
+    #dar de alta usuarios a fcomputacion
     alumnos1a.each do |alumno|
       user = User.find_by_email(alumno[:email])
-      MembersInCourse.create :user_id => user.id, :course_id => FC1a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => C1a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end
     alumnos1b.each do |alumno|
       user = User.find_by_email(alumno[:email])
-      MembersInCourse.create :user_id => user.id, :course_id => FC1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+      MembersInCourse.create :user_id => user.id, :course_id => C1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
     end
 
     puts "----------------------------Alumnos de computacion secundaria-----------------------------------------------"
