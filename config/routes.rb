@@ -298,6 +298,10 @@ Cursame30Lb::Application.routes.draw do
 
    match 'focus/:id', :to => 'events#show', :as => :eventuable
 
+   ####### ruta para creacion de timeline
+   
+   get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
+   
    ###### ruta para crear super admins
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
@@ -319,4 +323,5 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/create_delivery', :to => 'api/api#create_delivery', :as => :create_delivery
   match '/api/api/create_discussion', :to => 'api/api#create_discussion', :as => :create_discussion
   match '/api/api/delete', :to => 'api/api#delete', :as => :delete
+  match '/api/api/assigment_delivery', :to => 'api/api#assigment_delivery', :as => :assigment_delivery
 end
