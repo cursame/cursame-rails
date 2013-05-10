@@ -137,11 +137,11 @@ class AssignmentsController < ApplicationController
        
       respond_to do |format|
       if @assignment.save
-        format.html { redirect_to :back, notice: 'Assignment was successfully updated.' }
-        format.json { head :no_content }
+        format.js 
+        format.json 
       else
-        format.html { render action: "edit" }
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
+        format.js
+        format.json 
       end
     end
   end

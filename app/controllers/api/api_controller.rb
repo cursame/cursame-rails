@@ -83,8 +83,8 @@ class Api::ApiController < ApplicationController
           course = Course.find(notification.notificator.commentable_id)
         when 'new_delivery_on_course'
           cretator = notification.notificator.user
-          owner = notification.notificator.course[0]
-          course = Course.find(notification.notificator.commentable_id) #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
+          owner = notification.notificator.courses[0]
+          course = owner
         when 'new_public_course_on_network'
           cretator = notification.notificator.user
         # when 'new_survey_on_course'
@@ -113,6 +113,12 @@ class Api::ApiController < ApplicationController
     #
     # @notifications = @user.notifications.includes(:notificator)
     render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
+  end
+
+  def assignments
+    assignments = Assignment.find_by_course_id(params[:course_id])
+
+    render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
   end
 
   def create_comment
@@ -193,6 +199,14 @@ class Api::ApiController < ApplicationController
     @assignment.user_id = params[:userId]
 
     @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def qualify_assignment
+    assignment = Assignment.find(params[:assignment_id])
+    assignment.rub_calification = params[:calification]
+    assignment.save
+
     render :json => {:success => true}, :callback => params[:callback]
   end
 
