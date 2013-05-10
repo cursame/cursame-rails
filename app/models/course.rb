@@ -53,8 +53,13 @@ class Course < ActiveRecord::Base
   after_create do
     if self.public_status == 'public'
       Wall.create :users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true
-      self.users.each do |u|
-        Notification.create :user => u, :notificator => self, :kind => 'new_public_course_on_network'
+      # owners = self.users
+      # owners_id = owners.map{|x| x.id}
+      self.network.users.each do
+        |user|
+        # if !owners_id.include?(user.id)
+        Notification.create(:user => user, :notificator => self, :kind => 'new_public_course_on_network')
+        # end
       end
     end
   end
