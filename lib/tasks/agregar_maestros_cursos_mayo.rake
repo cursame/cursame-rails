@@ -96,57 +96,79 @@ task :agregar_cursos_de_computacion => :environment do
                 { :first_name => 'Alejandro', :last_name => 'Ocampo Salazar', :email => 'info+alenjandro23@cursa.me', :password => 'K6J7jP23u9', :group => 'A' }
             ]
 
-    #damos de alta a Cristian Mendoza Laguna
-    mageo = { :first_name => 'Cristian', :last_name => 'Mendoza Laguna', :email => 'secundariapasteje64@gmail.com', :password => 'ytWrwi9t4A' }
-    user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
-    Permissioning.create :user_id => user.id, :role_id => '1', :network_id => network_id
+    # #damos de alta a Cristian Mendoza Laguna
+    # mageo = { :first_name => 'Cristian', :last_name => 'Mendoza Laguna', :email => 'secundariapasteje64@gmail.com', :password => 'ytWrwi9t4A' }
+    # user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
+    # Permissioning.create :user_id => user.id, :role_id => '1', :network_id => network_id
 
-    puts "----------------------------alta Cristian Mendoza Laguna-----------------------------------------------"
+    # puts "----------------------------alta Cristian Mendoza Laguna-----------------------------------------------"
 
-    #agregar a Alejandra
-    mageo = { :first_name => 'Alejandra', :last_name => 'Nava Sanchez', :email => 'alejandra.N.S.89@gmail.com', :password => 'ytWrwi9t4A' }
-    user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
-    Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
-    #la agregamos a historia como maestro
-    MembersInCourse.create :user_id => user.id, :course_id => 15, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
-    MembersInCourse.create :user_id => user.id, :course_id => 16, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+    # #agregar a Alejandra
+    # mageo = { :first_name => 'Alejandra', :last_name => 'Nava Sanchez', :email => 'alejandra.N.S.89@gmail.com', :password => 'ytWrwi9t4A' }
+    # user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
+    # Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+    # #la agregamos a historia como maestro
+    # MembersInCourse.create :user_id => user.id, :course_id => 15, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+    # MembersInCourse.create :user_id => user.id, :course_id => 16, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
     
    
-    #computacion primeros sec
-    C1a = Course.create(:title => "Computacion 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
-    C1b = Course.create(:title => "Computacion 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
-    #computacion primarias
-    C6a = Course.create(:title => "Computacion 6A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => 2)
-    C6b = Course.create(:title => "Computacion 6B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => 2)
+    # #computacion primeros sec
+    # C1a = Course.create(:title => "Computacion 1A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
+    # C1b = Course.create(:title => "Computacion 1B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => network_id)
+    # #computacion primarias
+    # C6a = Course.create(:title => "Computacion 6A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => 2)
+    # C6b = Course.create(:title => "Computacion 6B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :silabus => "...", :public_status => "private", :network_id => 2)
 
-    puts "----------------------------Cursos Computacion----------------------------------------------"
+    # puts "----------------------------Cursos Computacion----------------------------------------------"
 
-    #agregar a Virginia
-    mageo = { :first_name => 'Virginia', :last_name => 'Olmos Contreras', :email => 'vocsamfran@gmail.com', :password => 'ytWrwi9t4A' }
-    user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
-    Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
-    #la agregamos a historia como maestro
-    MembersInCourse.create :user_id => user.id, :course_id => C1a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
-    MembersInCourse.create :user_id => user.id, :course_id => C1b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+    # #agregar a Virginia
+    # mageo = { :first_name => 'Virginia', :last_name => 'Olmos Contreras', :email => 'vocsamfran@gmail.com', :password => 'ytWrwi9t4A' }
+    # user = User.create :first_name => mageo[:first_name], :last_name => mageo[:last_name], :email => mageo[:email], :password => mageo[:password], :personal_url => "#{mageo[:first_name]}#{mageo[:last_name]}".split.join
+    # Permissioning.create :user_id => user.id, :role_id => '3', :network_id => network_id
+    # #la agregamos a historia como maestro
+    # MembersInCourse.create :user_id => user.id, :course_id => C1a.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+    # MembersInCourse.create :user_id => user.id, :course_id => C1b.id, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
     
 
 
-    #dar de alta usuarios a fcomputacion
-    alumnos1a.each do |alumno|
-      user = User.find_by_email(alumno[:email])
-      MembersInCourse.create :user_id => user.id, :course_id => C1a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
-    end
-    alumnos1b.each do |alumno|
-      user = User.find_by_email(alumno[:email])
-      MembersInCourse.create :user_id => user.id, :course_id => C1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
-    end
+    # #dar de alta usuarios a fcomputacion
+    # alumnos1a.each do |alumno|
+    #   user = User.find_by_email(alumno[:email])
+    #   MembersInCourse.create :user_id => user.id, :course_id => C1a.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+    # end
+    # alumnos1b.each do |alumno|
+    #   user = User.find_by_email(alumno[:email])
+    #   MembersInCourse.create :user_id => user.id, :course_id => C1b.id, :accepted => true, :owner => false, :network_id => network_id, :active_status => true
+    # end
 
-    puts "----------------------------Alumnos de computacion primaria-----------------------------------------------"
+    # puts "----------------------------Alumnos de computacion primaria-----------------------------------------------"
+    # alumnos.each do |alumno|
+    #   user = User.find_by_email(alumno[:email])
+    #   puts "---------------------------------------------------------------------------"
+    #   puts user.id
+    #   puts "---------------------------------------------------------------------------"
+    #   MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? C6a.id : C6b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
+    # end
+    
+    user = User.find_by_email('vocsamfran@gmail.com')
+    if user != nil
+        MembersInCourse.create :user_id => user.id, :course_id => 62, :accepted => true, :owner => true, :network_id => network_id, :active_status => true
+        MembersInCourse.create :user_id => user.id, :course_id => 63, :accepted => true, :owner => true, :network_id => network_id, :active_status => true 
+    end  
+
+    #limpiamos los que ya se metieron
+    MembersInCourse.where(:course_id => 62).delete_all
+    MembersInCourse.where(:course_id => 63).delete_all
     alumnos.each do |alumno|
       user = User.find_by_email(alumno[:email])
-      puts "---------------------------------------------------------------------------"
-      puts user.id
-      puts "---------------------------------------------------------------------------"
-      MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? C6a.id : C6b.id ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
+        if user != nil
+          puts "---------------------------------------------------------------------------"
+          puts user.id
+          puts "---------------------------------------------------------------------------"
+          MembersInCourse.create :user_id => user.id, :course_id => ( alumno[:group] == 'A' ? 62 : 63 ), :accepted => true, :owner => false, :network_id => '2', :active_status => true
+        else
+            puts "no lo encontro#{alumno[:email]}"
+        end
     end
+
 end
