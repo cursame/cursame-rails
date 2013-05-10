@@ -341,9 +341,9 @@ class CoursesController < ApplicationController
       
       @course.surveys.each do |survey|
           if survey.user.avatar.blank?
-            @avatar = "/assets/#{survey.user.image_avatarx}"
+            @avatar_survey = "/assets/#{survey.user.image_avatarx}"
           else
-            @avatar = survey.user.avatar.profile
+            @avatar_survey = survey.user.avatar.profile
 
           end
           surveyss.push(
@@ -354,7 +354,7 @@ class CoursesController < ApplicationController
                   text:"Cuestionario: #{survey.state}",
                   asset:
                   {
-                      media: @avatar_assignment,
+                      media: @avatar_survey,
                       credit:"#{survey.user.name}",
                       caption:"#{@course.title}"
                   }
