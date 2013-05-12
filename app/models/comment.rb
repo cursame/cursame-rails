@@ -93,12 +93,17 @@ class Comment < ActiveRecord::Base
       course = notification_kind["course"] ? [commentable] : nil
 
       wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
+      member_in_courses = MembersInCourse.where(:course_id => commentable_id, :accepted => true)
 
-      users = users.reject{ |user| user.id == self.user_id }
-
-      users.each do |user|
+      member_in_courses.each do |member|
+        user = User.find(member.user_id)
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
+      #users = users.reject{ |user| user.id == self.user_id }
+
+      #users.each do |user|
+        #Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+      #end
       return
     elsif notification_kind["discussion"]
 
