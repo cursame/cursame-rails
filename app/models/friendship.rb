@@ -4,7 +4,7 @@ class Friendship < ActiveRecord::Base
   belongs_to :friend, :class_name => 'User'
 
   after_create do
-    Notification.create(:notificator => self, :user_id => self.friend, :kind => "user_request_friendship",:active => true)
+    Notification.create(:notificator => self, :user_id => self.friend_id, :kind => "user_request_friendship",:active => true)
   end
 
   after_update do

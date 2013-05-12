@@ -10,12 +10,15 @@
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.user.name
+    user_name = name
     content = post.comment_html
     course = post.commentable if post.commentable_type == 'Course'
     if course != nil
     posted_in_for = course.title
+    posted_in_for_id = course.id
     end
     ico =''
+    tipo = 'Comentario'
   when 'Course'
     avatar = post.avatar.modern
     course_avatarxx = post.course_avatarxx
@@ -27,29 +30,38 @@
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.title
+    user_name = post.user.name
     course = post.courses
     posted_in_for = course[0].title if ( !post.courses.blank? )
-    content = post.description
+    posted_in_for_id = course[0].id if ( !post.courses.blank? )
+    content = post.description_html
     ico = '-discussion'
+    tipo = 'Discusion'
   when 'Delivery'
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     cargo = post.courses[0]
     name = post.title
+    user_name = post.user.name
     course = post.courses
     posted_in_for = course[0].title
-    content = post.description
+    posted_in_for_id = course[0].id
+    content = post.description_html
     publication_cls = 'delivery'
     ico = '-homework'
+    tipo  = 'Tarea'
   when 'Survey'
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     course = post.courses
+    user_name = post.user.name
     posted_in_for = course[0].title
+    posted_in_for_id = course[0].id
     name = post.name
     ico = '-survey'
+    tipo = 'Examen'
   end
   created_at = post.created_at
 
@@ -69,7 +81,7 @@
       <div class="arrow-left"></div>
       <div class="header">
         <div class="avatar">
-        <% case type %>
+        <% case type  %>
         <% when 'Course'%>
           <%= link_to image_tag(avatar,{:class => "avatar-mini"}), course_path(post.id) if ( !avatar.blank? && !nil)%>
          <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank? || nil)%>
@@ -79,7 +91,8 @@
         <%end%>
         </div>
 
-        <div class="top-null-image"></div><b> <%= "(Curso: #{posted_in_for})" if ( !posted_in_for.blank?) %> </b><%= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
+        <div class="top-null-image"></div><% if type != 'Course' %><%= link_to " #{tipo} en el curso: #{posted_in_for}", course_path(posted_in_for_id) if ( !posted_in_for.blank?) %><b> por </b><%= link_to " #{user_name}", show_user_path(personal_url) if ( !user_name.blank?) %>
+ <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %><%end%><%#= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
 
 
@@ -89,10 +102,12 @@
         <% case type%>
         <% when 'Discussion'%>
         <p class="title-discusion"><%= name %> </p>
-        <div class="description"><%= content %></div>
+        <!-- <div class="description"><%= content %></div> -->
+        <p><%= content %></p>
         <% when 'Course'%>
         <p class="title-discusion"><%= name %></p>
-        <div class="description"><%= content %></div>
+        <!-- <div class="description"><%= content %></div> -->
+        <p><%= content %></p>
         <% when 'Comment'%>
         <p><%= content %></p>
         <% when 'Survey'%>

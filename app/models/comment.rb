@@ -83,8 +83,7 @@ class Comment < ActiveRecord::Base
     if notification_kind["network"]
 
       Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
-      users = users.reject{ |user| user.id == self.user.id }
-
+      users = users.reject{ |user| user.id == self.user_id }
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
@@ -94,12 +93,19 @@ class Comment < ActiveRecord::Base
       course = notification_kind["course"] ? [commentable] : nil
 
       wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
+      member_in_courses = MembersInCourse.where(:course_id => commentable_id, :accepted => true)
 
-      users.reject{ |user| user.id == self.user.id }
-
-      users.each do |user|
+      member_in_courses = member_in_courses.reject{ |user| user.user_id == self.user_id }
+      
+      member_in_courses.each do |member|
+        user = User.find(member.user_id)
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       end
+      #users = users.reject{ |user| user.id == self.user_id }
+
+      #users.each do |user|
+        #Notification.create(:user => user, :notificator => self, :kind => notification_kind)
+      #end
       return
     elsif notification_kind["discussion"]
 
@@ -109,7 +115,7 @@ class Comment < ActiveRecord::Base
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
 
-      users.reject { |user| user.id == self.user.id }
+      users = users.reject { |user| user.id == self.user.id }
 
       users.each do |user|
         Notification.create(:user => user, :notificator => self, :kind => notification_kind)
@@ -134,8 +140,6 @@ class Comment < ActiveRecord::Base
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
 
-      # Falta agregar cuando el commentable_type, es un usuario
-
     when "User"
       users = [commentable]
       hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
@@ -146,6 +150,7 @@ class Comment < ActiveRecord::Base
       else
         users = commentable.commentable.users
       end
+      users.delete(self.id)
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
       return hash
 
@@ -160,6 +165,7 @@ class Comment < ActiveRecord::Base
           users = users.concat(course.users)
         end
         users.uniq!
+        users.delete(self.user)
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
 

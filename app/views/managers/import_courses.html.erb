@@ -7,6 +7,14 @@
 </div>
 <div id="admin-content">
 <h2>Import Courses</h2>
+<a href="/plantillas/cursos_plantilla.csv">cursos_plantilla.csv</a>
+<p>
+El estatus del curso solo puede ser privado o publico, sin acentos.
+<p>
+Las fechas son del siguiente estilo: AAAA-MM-DD
+<p>
+Si el curso ya se agrego, recuerda que puedes importa otro curso son los mismo valores, pero que es distinto al anterior.
+<p>
 <%= form_tag upload_courses_path, multipart: true do %>
   <%= file_field_tag :file %>
   <p>
@@ -59,5 +67,7 @@
     <th><%= course.delivery_param_evaluation %></th>
     <th><%= course.network_id %></th>
     <th><%= course.active_status %></th>-->
+  </tr>
 <%end%>
+</table>
 </div>

@@ -38,7 +38,9 @@ alumnos2a = [
             if @cg == nil
               puts 'nil'
             else
-              MembersInCourse.create(:course_id => @course.id, :user_id => @cg.id, :owner => false, :accepted => true)  
+              MembersInCourse.create(:course_id => @course.id, :user_id => @cg.id, :owner => false, :accepted => true)
+              @member_last =  MembersInCourse.last
+              puts "Nuebo usuario agregado al curso 2A #{@member_last.id}" 
             end
           end
   end
