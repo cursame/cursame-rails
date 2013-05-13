@@ -286,6 +286,12 @@ class CoursesController < ApplicationController
       assignmentss = []
       surveyss = []
       
+      count_deliveries =  @course.deliveries.count
+      count_surveys =  @course.surveys.count
+      
+      counte_fact = count_deliveries + count_surveys
+      
+      
       @course.deliveries.each do |del|
         
         if del.user.avatar.blank?
@@ -363,6 +369,7 @@ class CoursesController < ApplicationController
           
           )
       end
+      if counte_fact != 0
       respond_to do |format|
       format.html    
       format.json { render json:
@@ -374,10 +381,12 @@ class CoursesController < ApplicationController
                       startDate:"#{@course.init_date}",
                       
                        date: deliveries + surveyss + assignmentss
+                                            
                   }
         }
       }
-    end
+      end
+      end
   end
 
   ######  formato para responder la jamada de ajax con js
