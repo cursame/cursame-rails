@@ -4,7 +4,7 @@ $("#locomotion_<%=@data%><%= @typeo %>").html('<%= escape_javascript(render(part
 
 
 $( "#notice" ).animate( { width: "900px", padding: "10px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-$('#notice').append('Se ha cargado una entrega de tarea')
+$('#notice').append('Se ha cargado una entrega de tarea');
 setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
