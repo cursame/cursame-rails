@@ -70556,10 +70556,16 @@ Ext.define('Cursame.controller.tablet.Main', {
      *
      */
     getData: function (numNotifications) {
-        var user, avatar, me = this;
+        var user, avatar, me = this, numNotifications = 0;
 
         user = Ext.decode(localStorage.getItem("User"));
         avatar = user.avatar.url ? Cursame.URL + user.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+        Ext.each(user.notifications, function(notification) {
+            if(notification.active) {
+                numNotifications++;
+            }
+        });
+
         return [
             {
                 name: me.validateUserName(user),
@@ -70574,7 +70580,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             {
                 name: 'Notificaciones',
                 icon: Cursame.ASSETSURL + 'resources/images/notification.png',
-                numNotifications: user.notifications.length,
+                numNotifications: numNotifications,
                 group: 'MURO'
             },
             {
@@ -71138,7 +71144,7 @@ Ext.define('Cursame.controller.tablet.Main', {
                 },
                 success: function (response) {
                     var callback = me.addHeaderToComments.bind(me),
-                        data = me.getUserNavigationView().down('userslist').getSelection()[0];//Obtenemos el record seleccionado de la lista de usuarios de comunidad
+                        data = me.getActiveNavigationView().down('userslist') ? me.getActiveNavigationView().down('userslist').getSelection()[0] : null;//Obtenemos el record seleccionado de la lista de usuarios de comunidad
                     me.getMain().setMasked(false);
                     store.resetCurrentPage();
                     if (form) {
@@ -71163,7 +71169,8 @@ Ext.define('Cursame.controller.tablet.Main', {
                         });
                         if (data && data.data) { //Se valida que vengan lso datos que se setearan en el header de un usuario
                             me.setHeaderCommentsData(data.data);
-                            callback = me.addHeaderToComments.bind(me);
+                        } else {
+                            callback = {};
                         }
                     }
                     store.load(callback);
@@ -71292,7 +71299,7 @@ Ext.define('Cursame.controller.tablet.Main', {
             return;
         }
         if (e.getTarget('div.delete')) {
-            me.onDelete(record, 'CommentsComments');
+            me.onDelete(record, store);
             return;
         }
     },
@@ -71323,11 +71330,13 @@ Ext.define('Cursame.controller.tablet.Main', {
             data.headerAvatar = params.headerAvatar ? params.headerAvatar : params.avatar;
             data.headerName = params.headerName ? params.headerName : params.headerName = {first_name: params.first_name, last_name: params.last_name};
             data.headerBios = params.headerBios;
+            data.showHeader = true;
             if (firstCommentRecord) {
                 firstCommentRecord.set('headerWall', data.headerWall);
                 firstCommentRecord.set('headerAvatar', data.headerAvatar);
                 firstCommentRecord.set('headerName', data.headerName);
                 firstCommentRecord.set('headerBios', data.headerBios);
+                firstCommentRecord.set('showHeader', data.showHeader);
                 firstCommentRecord.commit();
             } else {
                 data.emptyStore = true;
@@ -71926,10 +71935,16 @@ Ext.define('Cursame.controller.phone.Main', {
      *
      */
     getData: function (numNotifications) {
-        var user, avatar, me = this;
+        var user, avatar, me = this, numNotifications = 0;
 
         user = Ext.decode(localStorage.getItem("User"));
         avatar = user.avatar.url ? Cursame.URL + user.avatar.url : Cursame.URL + '/assets/imagex-c0ba274a8613da88126e84b2cd3b80b3.png';
+        Ext.each(user.notifications, function(notification) {
+            if(notification.active) {
+                numNotifications++;
+            }
+        });
+
         return [
             {
                 name: me.validateUserName(user),
@@ -71944,7 +71959,7 @@ Ext.define('Cursame.controller.phone.Main', {
             {
                 name: 'Notificaciones',
                 icon: Cursame.ASSETSURL + 'resources/images/notification.png',
-                numNotifications: user.notifications.length,
+                numNotifications: numNotifications,
                 group: 'MURO'
             },
             {
@@ -72666,7 +72681,6 @@ Ext.define('Cursame.controller.phone.Main', {
             return;
         }
     },
-
     onLike: function (record, likeOn, store) {
         var me = this,
             type, id;
@@ -73097,21 +73111,31 @@ Ext.define('Cursame.model.Publication', {
                 mapping: 'publication',
                 convert: function (v, r) {
                     var title = '',
-                        courses = r.get('courses'),
                         course = r.raw.courses && r.raw.courses[0] ? r.raw.courses[0] : {title: 'Sin Titulo'},
-                        user = r.get('user');
+                        user = v && v.user ? v.user : 'Usuario',
+                        name = '';
+
+                        if (user && !Ext.isEmpty(user.first_name)) {
+                            name = user.first_name;
+                        }
+                        if (user && !Ext.isEmpty(user.last_name)) {
+                            name += ' ' + user.last_name;
+                        }
+                        if (Ext.isEmpty(name)) {
+                            name = 'Usuario';
+                        }
                     if (course) {
                         switch (r.get('publication_type')) {
                             case 'discussion':
                                 title = 'Discusión nueva ';
-                                title += courses ? 'en el curso de <b>' + course.title + '</b>' : '<b>en la red' + '</b>';
+                                title += course ? 'en el curso de <b>' + course.title + '</b>' : '<b>en la red' + '</b>';
                                 break;
                             case 'delivery':
                                 title = 'Se ha creado una tarea en el curso <b>' + course.title + '</b>';
                                 break;
                             case 'comment':
-                                title = 'Comentario  ';
-                                title += courses ? 'en el curso de <b>' + course.title + '</b>' : '<b>en la red' + '</b>';
+                                title = '<b>'+name+'</b>'+' ha comentado ';
+                                title += course ? 'en el curso de <b>' + course.title + '</b>' : '<b>en la red' + '</b>';
                                 break;
                             case 'course':
                                 title = 'Curso nuevo en la red <b>' + course.title + '</b>';

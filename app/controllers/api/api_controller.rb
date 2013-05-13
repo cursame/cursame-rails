@@ -106,6 +106,8 @@ class Api::ApiController < ApplicationController
           :owner => owner
       }
       @user_notifications.push(notification)
+      notification.active = false
+      notification.save
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
