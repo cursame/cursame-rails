@@ -38,7 +38,7 @@
           <% for course in Course.find(:all) %>
               <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
               <% if !@course_member.nil?%>
-                  <% if @course_member.owner == true && course.id == @course_member.course_id %>
+                  <% if @course_member.owner == true || course.id == @course_member.course_id %>
                       <li>
                         <%= check_box_tag 'delivery[course_ids][]', course.id, false %>
                         <label for="delivery[course_ids][]"><%= course.title %></label>

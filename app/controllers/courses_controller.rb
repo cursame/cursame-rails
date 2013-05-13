@@ -137,7 +137,8 @@ class CoursesController < ApplicationController
         @course_count = Course.count
         @ccc = current_user.courses.where(:network_id => current_network.id)
         @count_course_iam_member =  @ccc.where(:active_status => true).count
-        @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
+        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+        #current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
         #format.html { redirect_to courses_url }
         format.js
@@ -347,9 +348,9 @@ class CoursesController < ApplicationController
       
       @course.surveys.each do |survey|
           if survey.user.avatar.blank?
-            @avatar_survey = "/assets/#{survey.user.image_avatarx}"
+            @avatar = "/assets/#{survey.user.image_avatarx}"
           else
-            @avatar_survey = survey.user.avatar.profile
+            @avatar = survey.user.avatar.profile
 
           end
           surveyss.push(
@@ -360,7 +361,7 @@ class CoursesController < ApplicationController
                   text:"Cuestionario: #{survey.state}",
                   asset:
                   {
-                      media: @avatar_survey,
+                      media: @avatar_assignment,
                       credit:"#{survey.user.name}",
                       caption:"#{@course.title}"
                   }

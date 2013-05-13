@@ -323,5 +323,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/create_delivery', :to => 'api/api#create_delivery', :as => :create_delivery
   match '/api/api/create_discussion', :to => 'api/api#create_discussion', :as => :create_discussion
   match '/api/api/delete', :to => 'api/api#delete', :as => :delete
+  match '/api/api/assignments', :to => 'api/api#assignments', :as => :assignments
   match '/api/api/assigment_delivery', :to => 'api/api#assigment_delivery', :as => :assigment_delivery
+  match '/api/api/qualify_assignment', :to => 'api/api#qualify_assignment', :as => :qualify_assignment
 end
