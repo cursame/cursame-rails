@@ -70713,6 +70713,9 @@ Ext.define('Cursame.controller.tablet.Main', {
             me.onDelete(record, 'Publications');
             return;
         }
+        if (e.getTarget('object')) { //En el caso de los videos de Youtube
+            return;
+        }
         me.pushPublicationContainer(record);
     },
     /**
@@ -72077,6 +72080,9 @@ Ext.define('Cursame.controller.phone.Main', {
         }
         if (e.getTarget('div.delete')) {
             me.onDelete(record, 'Publications');
+            return;
+        }
+        if (e.getTarget('object')) { //En el caso de los videos de Youtube
             return;
         }
         me.pushPublicationContainer(record);
