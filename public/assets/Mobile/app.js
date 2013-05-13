@@ -68555,7 +68555,7 @@ Ext.define('Cursame.view.notifications.NotificationTpl', {
                 '</div>',
                 '<div class="name">',
                 '<tpl if="this.validateName(first_name,last_name) == true">',
-                    '{first_name} {last_name}',
+                    '{last_name} {first_name}',
                 '<tpl else>',
                     'Usuario',
                 '</tpl>',
