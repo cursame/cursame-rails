@@ -1,6 +1,5 @@
 class ActsAsVotableMigration < ActiveRecord::Migration
   # def self.up
-  
   #   create_table :votes do |t|
 
   #     t.references :votable, :polymorphic => true
