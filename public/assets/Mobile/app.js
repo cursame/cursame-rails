@@ -70637,6 +70637,7 @@ Ext.define('Cursame.controller.tablet.Main', {
                 Ext.getStore('Notifications').load();
                 me.currentStore = 'Notifications';
                 me.setActiveNavigationView(me.getNotificationNavigationView());
+                me.getMenu().getStore().getAt(2).set('numNotifications', 0); //Se resetea el número de notificaciones
                 break;
             case 3:
                 me.getCardContainer().setActiveItem(3);
@@ -72006,6 +72007,7 @@ Ext.define('Cursame.controller.phone.Main', {
                 Ext.getStore('Notifications').load();
                 me.currentStore = 'Notifications';
                 me.setActiveNavigationView(me.getNotificationNavigationView());
+                me.getMenu().getStore().getAt(2).set('numNotifications', 0); //Se resetea el número de notificaciones
                 break;
             case 3:
                 me.getCardContainer().setActiveItem(3);
