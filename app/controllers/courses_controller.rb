@@ -369,7 +369,7 @@ class CoursesController < ApplicationController
           
           )
       end
-      
+      if counte_fact != 0
       respond_to do |format|
       format.html    
       format.json { render json:
@@ -379,15 +379,13 @@ class CoursesController < ApplicationController
                       type:"default",
                       text: "Linea del tiempo del curso #{@course.title} ",
                       startDate:"#{@course.init_date}",
-                      if counte_fact != 0
                       
                        date: deliveries + surveyss + assignmentss
-                      
-                      end
-                      
+                                            
                   }
         }
       }
+      end
       end
   end
 
