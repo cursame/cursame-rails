@@ -113,7 +113,6 @@ class Api::ApiController < ApplicationController
 
   def assignments
     assignments = Assignment.find_by_delivery_id(params[:delivery_id])
-
     render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
   end
 
