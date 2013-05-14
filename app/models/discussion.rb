@@ -44,15 +44,18 @@ class Discussion < ActiveRecord::Base
       Wall.create( :publication => self, :network => self.network, :public => true)
     else
       users =[]
-      self.courses.each do |c|
-        users+= c.users
-      end
-      Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
-      users.each do |user|
-        if user.id != self.user_id
-          Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
+      self.courses.each do |course|
+        users+= course.users
+        course.members_in_courses.each do |member|
+          if member.accepted == true
+             user = member.user
+            if user.id != self.user_id
+              Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
+            end
+          end
         end
       end
+      Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
     end
   end
 

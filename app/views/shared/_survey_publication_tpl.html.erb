@@ -1,24 +1,19 @@
-<div class="image-survey" id="open-close-<%= survey.id %>">
-  <div id="image-<%= survey.id %>"><img src="/assets/survey.jpg" class="single-image"></div>
-</div>
-  <div class="survey-assignment-box" id="entrega-<%= survey.id %>">
-    <%= render :partial => '/surveys/survey_response_tpl', :locals => {:survey => survey}%>
-  </div>
+<div class="image-survey" id="open-close-<%= survey.id %>" style="height: 210px;">
+  <% response = UserSurvey.find_by_survey_id_and_user_id(survey.id,current_user.id) %>
+  <% if response.blank? %>
+      <div id="image-<%= survey.id %>" class="image-surveys"><div class="response-survey">Responder</div></div>
+      </div>
+      <div class="survey-assignment-box" id="entrega-<%= survey.id %>">
+        <%= render :partial => '/surveys/survey_response_tpl', :locals => {:survey => survey}%>
+      </div>
+  <% else %>
+      <div id="image-<%= survey.id %>" class="image-surveys"><div class="response-survey">Respondido!!!</div></div>
+  <% end %>
+
 
 <script>
-    $("#open-close-<%= survey.id%>").hover(function () {
-        var idOrCls = "#image-<%= survey.id%>",
-                msj = "<div class='response-survey'>Responder</div>";
-        $('<div class="ui-survey-overlay" id="mask-<%= survey.id %>"><span>' + msj + '</span></div>').appendTo(idOrCls);
-        $('#mask-<%= survey.id %>').show();
-    },function () {
-        $('#mask-<%= survey.id %>').remove();
-    });
-
     $("#open-close-<%= survey.id %>").click(function () {
-        $('#mask-<%= survey.id %>').remove();
         $('#entrega-<%= survey.id %>').show();
-        $(this).unbind('hover');
         $('#entrega-<%= survey.id %>>form>#cancel-post-form').click(function () {
             $("#open-close-<%= survey.id %>").show();
             $("#open-close-<%= survey.id %>").parent().parent().show();
@@ -26,18 +21,4 @@
         });
     });
 </script>
-
-
-<!--<div class="green-btn boton-verde">
-  <div class="labels">
-    <div id="open-close-<= survey.id %>">
-      <a>Responder</a>
-    </div>
-  </div>
-</div>
-<div class="survey-assignment-box" id="entrega-<= survey.id %>">
-  < @survey = survey %>
-  <= render :partial => '/surveys/survey_response_tpl' %>
-</div> -->
-
 

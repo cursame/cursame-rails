@@ -50,11 +50,8 @@ class Api::ApiController < ApplicationController
     if @user.roles.last.id == 1
       @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     else
-      @user.members_in_courses.each do |course|
-        @ids.push(course.course_id)
-      end
-      # @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-      @courses = @user.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      @courses = @user.courses.includes(:members_in_courses).where("members_in_courses.accepted = ?",true).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      #@courses = @user.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
@@ -109,6 +106,9 @@ class Api::ApiController < ApplicationController
           :owner => owner
       }
       @user_notifications.push(notification)
+      notification_to_save = Notification.find(notification.id)
+      notification_to_save.active = false ##para identificar las notificaciones vistas
+      notification_to_save.save
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
@@ -116,7 +116,7 @@ class Api::ApiController < ApplicationController
   end
 
   def assignments
-    assignments = Assignment.find_by_course_id(params[:course_id])
+    assignments = Assignment.where("delivery_id" => params[:delivery_id])
 
     render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
   end
