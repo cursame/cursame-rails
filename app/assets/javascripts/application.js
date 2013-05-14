@@ -27,7 +27,6 @@ function remove_fields(link, toId) {
     }else if( toId =='#box-request' ){
         var grandfather = $(link).parent().parent();
         $(link).parent().remove();
-        console.log('abue: '+ grandfather.attr('id'));
         changeNumbers(grandfather, '#request-num');
     }
 }

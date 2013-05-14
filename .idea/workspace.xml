@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f2d54bc-fe5a-404e-b3ae-c7c3d3f0e33a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/jquery.highlighter.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/blur.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.animation.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.animation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.utilities.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.utilities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_notification_type.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_notification_type.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_notifications.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_notifications.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_publications.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
     </list>
     <list id="fb38c6e8-35c2-4621-bb6f-d32e84105341" name="subir" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -41,96 +41,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_notifications.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_notifications.html.erb">
+      <file leaf-file-name="_survey_publication_tpl.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="46" selection-start="594" selection-end="594" vertical-scroll-proportion="-13.44">
+            <state line="3" column="61" selection-start="258" selection-end="258" vertical-scroll-proportion="-0.9411765">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
+      <file leaf-file-name="_mobile.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="4" selection-start="7473" selection-end="7473" vertical-scroll-proportion="0.1323024">
+            <state line="84" column="51" selection-start="2395" selection-end="2395" vertical-scroll-proportion="-6.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rails cursame-3.0-LB: development" pinned="true" current="false" current-in-tab="false">
-        <entry file="mock:///Rails cursame-3.0-LB: development">
+      <file leaf-file-name="schema.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="55" selection-start="203" selection-end="203" vertical-scroll-proportion="-2.6551723">
+            <state line="32" column="36" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.6340326">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delivery.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
+      <file leaf-file-name="forms.css.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/forms.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="73" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+            <state line="1456" column="9" selection-start="38284" selection-end="38284" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deliveries_course.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/deliveries_course.rb">
+      <file leaf-file-name="survey_reply.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/surveys/survey_reply.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="22" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rails cursame-3.0-LB: development" pinned="true" current="false" current-in-tab="false">
-        <entry file="mock:///Rails cursame-3.0-LB: development">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="41" selection-start="108" selection-end="108" vertical-scroll-proportion="-2.7586207">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="297" column="83" selection-start="9025" selection-end="9025" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1367968551000" expanded="true" signature="7480:7489" placeholder="do ... end" />
-                <marker date="1367968551000" expanded="true" signature="7827:7868" placeholder="do ... end" />
-                <marker date="1367968551000" expanded="true" signature="8387:8398" placeholder="do ... end" />
-                <marker date="1367968551000" expanded="true" signature="9339:9386" placeholder="do ... end" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_delivery_publication_tpl.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="48" selection-start="3758" selection-end="3758" vertical-scroll-proportion="-15.36">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_publications.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_publications.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="50.56">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upvote_comment.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/home/upvote_comment.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="4" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
+            <state line="3" column="154" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,22 +105,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/courses/show.html.erb" />
-        <option value="$PROJECT_DIR$/lib/tasks/delete_comment_wall_in_course.rake" />
-        <option value="$PROJECT_DIR$/lib/tasks/delete_walls_of_course_comments.rake" />
+        <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/networks_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/course.rb" />
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.notifications.js" />
-        <option value="$PROJECT_DIR$/public/assets/Mobile/index.html" />
-        <option value="$PROJECT_DIR$/app/views/shared/_notification_type.html.erb" />
-        <option value="$PROJECT_DIR$/public/assets/application.js" />
-        <option value="$PROJECT_DIR$/app/views/shared/_mobile.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/models/deliveries_course.rb" />
-        <option value="$PROJECT_DIR$/app/models/delivery.rb" />
-        <option value="/Rails cursame-3.0-LB: development" />
         <option value="$PROJECT_DIR$/app/controllers/api/api_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/discussion.rb" />
+        <option value="$PROJECT_DIR$/public/assets/application.js" />
+        <option value="$PROJECT_DIR$/app/views/shared/_notification_type.html.erb" />
+        <option value="/Rails cursame-3.0-LB: development" />
+        <option value="$PROJECT_DIR$/app/views/shared/_publications.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/views/surveys/survey_reply.js.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/forms.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/shared/_mobile.html.erb" />
       </list>
     </option>
   </component>
@@ -182,10 +132,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="388" />
-    <option name="y" value="53" />
-    <option name="width" value="1519" />
-    <option name="height" value="1008" />
+    <option name="y" value="22" />
+    <option name="width" value="1280" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -213,6 +162,26 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -220,10 +189,6 @@
               <option name="myItemId" value="cursame-3.0-LB" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -231,37 +196,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activerecord (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activerecord (v3.2.1, RVM: ruby-1.9.3-p286) [gem]" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_record" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,6 +207,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="script" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -304,60 +243,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -372,20 +257,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -486,28 +357,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="courses" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -584,6 +433,28 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cursame-3.0-LB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -603,28 +474,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursame-3.0-LB" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -632,19 +483,19 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="165" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="171" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="201" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="205" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="204" />
     <property name="recentsLimit" value="5" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="169" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="173" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="680" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="679" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="172" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="207" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="575" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="576" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="206" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="204" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="169" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
@@ -1249,7 +1100,39 @@
       <created>1367968436409</created>
       <updated>1367968436409</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;config/routes.rb&#10;">
+      <created>1368064837072</created>
+      <updated>1368064837072</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Se corrigen bugs de cursos.">
+      <created>1368229845781</created>
+      <updated>1368229845781</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Se corrigen bugs de cursos.">
+      <created>1368255380741</created>
+      <updated>1368255380741</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Se sube compresion de mobile">
+      <created>1368387541513</created>
+      <updated>1368387541513</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Se corrigen notificaciones de comentarios para cursos">
+      <created>1368389104094</created>
+      <updated>1368389104095</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Se corrige listado de cursos.">
+      <created>1368422968796</created>
+      <updated>1368422968797</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Se corrige notificaciones de discusiones.">
+      <created>1368455264313</created>
+      <updated>1368455264313</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Se realiza validación al responder el cuestionario.">
+      <created>1368512478746</created>
+      <updated>1368512478746</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1273,25 +1156,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="388" y="53" width="1519" height="1008" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43044907" sideWeight="0.9135618" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22365737" sideWeight="0.7294633" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2705367" sideWeight="0.32852563" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842416" sideWeight="0.49786323" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5213549" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17946975" sideWeight="0.7294633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4388807" sideWeight="0.9135618" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41477272" sideWeight="0.5611193" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32842416" sideWeight="0.0" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38291606" sideWeight="0.99889076" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21022727" sideWeight="0.25248227" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39103234" sideWeight="0.05715812" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.60350496" sideWeight="0.99864036" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33873343" sideWeight="0.9987374" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21022727" sideWeight="0.25248227" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2371134" sideWeight="0.74531156" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842416" sideWeight="0.49786323" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26436782" sideWeight="0.38164756" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14204545" sideWeight="0.67157584" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.460972" sideWeight="0.99888515" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41826215" sideWeight="0.99889076" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1332,7 +1215,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se realiza la funcionalidad de entrega de delivery para mobile." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se realiza validación al responder el cuestionario." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1345,13 +1228,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Se sube Mobile Compresa." />
-    <MESSAGE value="Se sube modificacion para los dispositivos moviles." />
-    <MESSAGE value="Se sube modificacion para l que valide si es dispositivo mobile." />
-    <MESSAGE value="Se suben modelos para likes en comentarios y publicaciones." />
-    <MESSAGE value="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;db/schema.rb&#10;" />
-    <MESSAGE value="Se sube migrate para likes en comments, discussions, surveys y deliveries." />
-    <MESSAGE value="Se sube migrate para likes en courses." />
     <MESSAGE value="Se modifica likes y listado de publicaciones en curso." />
     <MESSAGE value="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/models/wall.rb&#10;&#9;db/schema.rb&#10;" />
     <MESSAGE value="Se borran likes en la tabla de walls." />
@@ -1370,124 +1246,124 @@
     <MESSAGE value="Correccion de bug para comentarios de cursos." />
     <MESSAGE value="Se realiza task para eliminar publicaciones que se crearon al comentar un curso." />
     <MESSAGE value="Se realiza la funcionalidad de entrega de delivery para mobile." />
+    <MESSAGE value="Merge remote-tracking branch 'origin/development' into development&#10;&#10;Conflicts:&#10;&#9;app/controllers/api/api_controller.rb&#10;&#9;config/routes.rb&#10;" />
+    <MESSAGE value="Se corrigen bugs de cursos." />
+    <MESSAGE value="Se sube compresion de mobile" />
+    <MESSAGE value="Se corrigen notificaciones de comentarios para cursos" />
+    <MESSAGE value="Se corrige listado de cursos." />
+    <MESSAGE value="Se corrige notificaciones de discusiones." />
+    <MESSAGE value="Se realiza validación al responder el cuestionario." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/helpers/assignments_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="27" selection-start="3756" selection-end="3756" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_notification_type.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="43" selection-start="2526" selection-end="2526" vertical-scroll-proportion="-15.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/images/timeline1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/networks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/courses_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="96" column="1" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/course.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/surveys/_survey_response_tpl.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/assignments_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="27" selection-start="7639" selection-end="7639" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/tokens_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/upvote_comment.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.1/lib/active_record/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="8" selection-start="918" selection-end="918" vertical-scroll-proportion="0.9117647">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.6026365">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/deliveries_course.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="22" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/delivery.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="73" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_notifications.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="46" selection-start="594" selection-end="594" vertical-scroll-proportion="-13.44">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="297" column="83" selection-start="9025" selection-end="9025" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1367968551000" expanded="true" signature="7480:7489" placeholder="do ... end" />
-            <marker date="1367968551000" expanded="true" signature="7827:7868" placeholder="do ... end" />
-            <marker date="1367968551000" expanded="true" signature="8387:8398" placeholder="do ... end" />
-            <marker date="1367968551000" expanded="true" signature="9339:9386" placeholder="do ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_delivery_publication_tpl.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="48" selection-start="3758" selection-end="3758" vertical-scroll-proportion="-15.36">
+        <state line="8" column="73" selection-start="648" selection-end="654" vertical-scroll-proportion="-5.12">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/_publications.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="50.56">
+        <state line="113" column="94" selection-start="4175" selection-end="4175" vertical-scroll-proportion="-7.04">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/api/api_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/survey.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="4" selection-start="7473" selection-end="7473" vertical-scroll-proportion="0.1323024">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/surveys_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/surveys/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="30" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/add_new_comment.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/surveys/survey_reply.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="154" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/forms.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1456" column="9" selection-start="38284" selection-end="38284" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_survey_publication_tpl.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="61" selection-start="258" selection-end="258" vertical-scroll-proportion="-0.9411765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_mobile.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="51" selection-start="2395" selection-end="2395" vertical-scroll-proportion="-6.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="36" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.6340326">
           <folding />
         </state>
       </provider>
