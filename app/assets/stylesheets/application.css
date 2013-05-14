@@ -96,8 +96,6 @@ button, input, select, textarea {
     color:#FFF;
 }
 
-<<<<<<< HEAD
-=======
 .cursame-modal {
     position:absolute;
     /*background:url(tint20.png) 0 0 repeat;*/
@@ -123,8 +121,6 @@ button, input, select, textarea {
     display:none;
     color:#FFF;
 }
-
->>>>>>> origin/development
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
