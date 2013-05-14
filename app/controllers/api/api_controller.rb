@@ -105,6 +105,9 @@ class Api::ApiController < ApplicationController
           :owner => owner
       }
       @user_notifications.push(notification)
+      notification_to_save = Notification.find(notification.id)
+      notification_to_save.active = false ##para identificar las notificaciones vistas
+      notification_to_save.save
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
