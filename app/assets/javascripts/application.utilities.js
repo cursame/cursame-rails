@@ -42,26 +42,22 @@ function unmask(idOrCls){
  * sobresalir una div con efecto tumblr
  * @return {} the element overlay
  */
-function goFront(element){
-    $overlay = $('<div class="ui-widget-overlay" id="overlaymask"></div>');
-    $modal = $('<div class="cursame-modal" id="cursame-modal">hgfdsaas</div>');
-    $forms =  $('#post-forms');
-    $('body').append($overlay, $modal);
+function goFront(element,parent){
+    var el  =  $(element);
+    //     modal = $('#cursame-modal');
+    //     console.log(el);
+    // var position = $(parent).position();
 
-    var position = $forms.position();
+    // modal.css({
+    //     top:position.top ,//+ $(window).scrollTop(),
+    //     left:position.left + 200// + $(window).scrollLeft()
+    // });
 
-    var top = Math.max($(window).height(), 0) / 2;
-    var left = Math.max($(window).width(), 0) / 2;
+    // modal.append(el);
 
-    $modal.css({
-        top:position.top ,//+ $(window).scrollTop(),
-        left:position.left// + $(window).scrollLeft()
-    });
-
-    $modal.append($forms);
-    //mostramos el overlay
-    $('#overlaymask').show();
-    $('#cursame-modal').show();
+    // //mostramos el overlay
+    // $('#overlaymask').show();
+    // modal.show();
 
 }
 /**
@@ -69,9 +65,10 @@ function goFront(element){
  * @return {} the lement to hide
  */
 function goBack(form,parent){
-    $form =  $(form);
-    $('parent').append($form);
-    //mostramos el overlay
-    $('#overlaymask').destroy();
-    $('#cursame-modal').destoy();
+    // var el  =  $(form);
+    // $('parent').append(el);
+    // //mostramos el overlay
+    // $('#overlaymask').hide();
+    // $('#cursame-modal').hide();
+    // $('#cursame-modal').children();
 }
