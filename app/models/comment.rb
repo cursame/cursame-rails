@@ -135,7 +135,7 @@ class Comment < ActiveRecord::Base
 
   def group_of_users(comment_type)
     case comment_type
-    when "Network", "Course", "Group", "Delivery"
+      when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
@@ -144,7 +144,7 @@ class Comment < ActiveRecord::Base
       users = [commentable]
       hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       return hash
-    when "Comment"
+      when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
       else
@@ -170,6 +170,19 @@ class Comment < ActiveRecord::Base
       end
 
       return hash
+      when 'Survey'
+      if commentable.courses.size == 0 then
+        hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
+      else
+        courses = commentable.courses
+        users = []
+        courses.each do |course|
+          users = users.concat(course.users)
+        end
+        users.uniq!
+        users.delete(self.user)
+        hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+      end
     else
 
       raise "Grupo de usuarios no definido para " + comment_type
