@@ -32,7 +32,7 @@ class SuperadmninController < ApplicationController
 
   def users
     
-    @users = User.all
+    @users = User.search(params[:search])
     @user_count = @users.count
 
     

@@ -1,6 +1,11 @@
 <div class="super-admin-header">Manejador de datos de usuario
 </div>
-
+<%= form_tag superadmnin_users_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuario' %>
+   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
+  </p>
+<% end %>
 <div>
  <% @users.each do |user|%>
           <div class="gray_box">
@@ -12,7 +17,7 @@
             </div>
          <div class=" link ">
             <a id="activities_d<%= user.id %>" >Mostrar actividades</a>|
-            <a id="time_line<%= user.id%>">Linea del tiempo</a>|
+            <a id="user_edit<%= user.id%>">Editar usuario</a>|
             <a id="statics<%= user.id%>">Estadísticas</a>
         </div>     
           </div>
@@ -28,8 +33,8 @@
                   });
                 });
                 
-                $('#time_line<%= user.id %>').click(function() {
-                  $('.container_timeline<%=user.id%>').toggle('slow', function() {
+                $('#user_edit<%= user.id %>').click(function() {
+                  $('.container_user_edit<%=user.id%>').toggle('slow', function() {
                     // Animation complete.
                   });
                 });
@@ -55,7 +60,9 @@
     </div>
          </div>
          
-          <div class="container_timeline<%=user.id%> container_activity" style="display: none">
+          <div class="container_user_edit<%=user.id%> container_activity" style="display: none">
+              
+            crear un formulario de usuario aqui
                                           
           </div>
  <%end%>
