@@ -30,9 +30,9 @@
  Sistema operativo: <%=  @activity.computer_plataform %></br>
  Red: <%=  @activity.network_id %></br>
  <% @user =  @activity.user %>
-<%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
-<%= link_to image_tag(@user.avatar.profile),show_user_path(@user.personal_url) if (!@user.avatar.blank?) %></br>
-<%= link_to image_tag(@user.image_avatarx),show_user_path(@user.personal_url) if (@user.avatar.blank?) %></br>
+<%= link_to "#{@user.name} ir al usuario", activity_path(@activity.id)  %></br>
+<%= link_to image_tag(@user.avatar.profile), activity_path(@activity.id) if (!@user.avatar.blank?) %></br>
+<%= link_to image_tag(@user.image_avatarx), activity_path(@activity.id) if (@user.avatar.blank?) %></br>
  </div>
  
  <div style="float:left; height:230px; margin-left:5px; margin-top:25px;">
