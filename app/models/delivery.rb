@@ -30,7 +30,7 @@ class Delivery < ActiveRecord::Base
   validates_presence_of :publish_date
   validates_presence_of :porcent_of_evaluation
   validates_presence_of :title
-  
+
   acts_as_commentable
   #para los likes
   acts_as_votable
@@ -74,10 +74,12 @@ class Delivery < ActiveRecord::Base
   before_destroy do
     walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
     notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => id)
-    walls.each do |wall|
+    walls.each do
+      |wall|
       wall.destroy
     end
-    notifications.each do |notification|
+    notifications.each do
+      |notification|
       notification.destroy
     end
   end
@@ -87,30 +89,30 @@ class Delivery < ActiveRecord::Base
       self.publish!
     end
 
-      #### crear notificaciones
-       puts "se ha creado una nueva tarea"
-       #### se genera  el evento en el calendario
-        Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
+    #### crear notificaciones
+    #puts "se ha creado una nueva tarea"
+    #### se genera  el evento en el calendario
+    Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
 
 
-        # Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
+    # Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
 
-        #Aqui se crean las notificaciones y los posts del wall :)
-        users =[]
-        self.courses.each do |course|
-          users+= course.users
-          course.members_in_courses.each do |member|
-            user = member.user
-            if user.id != self.user_id
-              Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
-              #se envia mail a cada uno de los miembros de curso
-              mail = Notifier.new_delivery_notification(member,self)
-              mail.deliver
-            end
-          end
+    #Aqui se crean las notificaciones y los posts del wall :)
+    users =[]
+    self.courses.each do |course|
+      users+= course.users
+      course.members_in_courses.each do |member|
+        user = member.user
+        if user.id != self.user_id
+          Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
+          #se envia mail a cada uno de los miembros de curso
+          mail = Notifier.new_delivery_notification(member,self)
+          mail.deliver
         end
-        #validar que no exista doble publicacion para un usuario
-        Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
+      end
+    end
+    #validar que no exista doble publicacion para un usuario
+    Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
   end
 
 
@@ -151,5 +153,18 @@ class Delivery < ActiveRecord::Base
     return user_id == user.id
   end
 
+  #
+  # Metodos para el analitics
+  #
 
+  def averageCalification
+    assignments = self.assignments
+    size = assignments.size
+    average = 0.0
+    assignments.each do
+      |assignment|
+      average += assignment.accomplishment
+    end
+    return average/size
+  end
 end

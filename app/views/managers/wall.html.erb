@@ -3,33 +3,31 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <div id="admin-sidebar">
-	<h5>Administracion</h5>
-	<ul>
-		<%= render :partial => "managers/menu"%>
-	</ul>
+  <h5>Administracion</h5>
+  <ul>
+    <%= render :partial => "managers/menu"%>
+  </ul>
 </div>
 <div id="admin-content">
-	<div class="users-chart">
+  <div class="users-chart">
           <%= render :partial => "managers/charts/users"%>
           <div class="meter orange nostripes">
-      	    	<span style="width:<%=  @porcent_of_students %>%;"></span>
-      	    	 <p class="hope">Población esperada: <%= @network_population %> / actual: <%= @member_count %></p>
+              <p class="hope">Población esperada: <%= @network_population %> / actual: <%= @member_count %></p>
+              <span style="width:<%=  @porcent_of_students %>%;"></span>
+        </div>
+  </div>
 
-      	</div>
-    
-	</div>
-	
-	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Usuarios</div>
-		
-		 <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
-		 <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
-		 <% @counter_admins = current_network.permissionings.where(:role_id => 1).count %>
+  <div class="admin-chart">
+    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Usuarios</div>
 
-	<div id="profiles_graph" style="height:227px; weight:279px;" ></div>
- 		
+     <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
+     <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
+     <% @counter_admins = current_network.permissionings.where(:role_id => 1).count %>
+
+  <div id="profiles_graph" style="height:227px; weight:279px;" ></div>
+
     <script class="text/javascript">
-	  Morris.Donut({
+    Morris.Donut({
               element: 'profiles_graph',
               data: [
                 {label: "Estudiantes", value:<%= @counter_students %> },
@@ -38,15 +36,15 @@
               ]
             });
     </script>
-    
 
-	</div>
-	
-	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cursos</div>
-		<div id="courses_graph" style="height:227px; weight:279px;" ></div>
-		
-       	<script class="text/javascript">
+
+  </div>
+
+  <div class="admin-chart">
+    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cursos</div>
+    <div id="courses_graph" style="height:227px; weight:279px;" ></div>
+
+        <script class="text/javascript">
         Morris.Donut({
           element: 'courses_graph',
           data: [
@@ -55,16 +53,16 @@
             {label: "Privados", value:<%= @privado%> }
           ]
         });
-       
-       
+
+
          </script>
-	</div>
-	
-	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Tareas</div>
-       	<div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
-	
-       	<script class="text/javascript">
+  </div>
+
+  <div class="admin-chart">
+    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Tareas</div>
+        <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
+
+        <script class="text/javascript">
            Morris.Donut({
              element: 'deliveries_graph',
              data: [
@@ -76,65 +74,65 @@
 
 
         </script>
-       
- 	</div>
- 	<div class="admin-chart">
-	<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
-		<div id="comments_graph" style="height:227px; weight:279px;" ></div>
+
+  </div>
+  <div class="admin-chart">
+  <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
+    <div id="comments_graph" style="height:227px; weight:279px;" ></div>
           <% @comment = current_network.comments.count %>
-        
-          
-          
-          
-           	<script class="text/javascript">
-             
+
+
+
+
+            <script class="text/javascript">
+
               Morris.Donut({
                  element: 'comments_graph',
                  data: [
                    {label: "Comentarios", value: <%=@comment %> }
-                   
+
                  ]
                });
 
 
             </script>
-	</div>
-	
+  </div>
 
-	<div class="admin-chart">
-        <% @surveys = current_network.surveys.count %>     
+
+  <div class="admin-chart">
+        <% @surveys = current_network.surveys.count %>
         <% @surveys_publish = current_network.surveys.where(:state => 'published').count%>
-        <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%> 
-        <%# @user_surveys = current_network.surveys.user_surveys.count %>    
-        	<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Examenes</div>
-        	<div id="surveys_graph" style="height:227px; weight:279px;" ></div>
-           	
+        <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%>
+        <%# @user_surveys = current_network.surveys.user_surveys.count %>
+          <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Examenes</div>
+          <div id="surveys_graph" style="height:227px; weight:279px;" ></div>
+
         <script class="text/javascript">
-         
+
           Morris.Donut({
              element: 'surveys_graph',
              data: [
                {label: "Examenes", value: <%=@surveys %> },
                {label: "Examenes en curso", value: <%=@surveys_publish %> },
                {label: "Examenes sin publicar", value: <%=@surveys_unpublished %> },
-               
-               
-               
+
+
+
              ]
            });
 
 
-        </script>    
-          
-	</div>
-	
-	<div class="admin-chart">
-		<div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Discusiones</div>
-         <% @discussions = current_network.discussions.count %>      
-            <%# @user_surveys = current_network.surveys.user_surveys.count %>    
-          
-               	<div id="discussion_graph" style="height:227px; weight:279px;" ></div>
-        	
+        </script>
+
+  </div>
+
+  <div class="admin-chart">
+    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Discusiones</div>
+         <% @discussions = current_network.discussions.count %>
+            <%# @user_surveys = current_network.surveys.user_surveys.count %>
+
+                <div id="discussion_graph" style="height:227px; weight:279px;" ></div>
+
             <script class="text/javascript">
 
               Morris.Donut({
@@ -148,8 +146,8 @@
 
 
             </script>
-            
-	</div>
-	
-	
+
+  </div>
+
+
 </div>
