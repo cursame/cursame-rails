@@ -214,6 +214,39 @@ opacity: 0.7;
     cursor:pointer;
     
 }
+
+.delivery_help{
+    margin-right:185px;
+    float: right;
+}
+
+.discussion_help{
+    margin-right:325px;
+    float: right;
+    margin-top:-30px;
+}
+
+.survey_help{
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.courses_help{
+    width:260;
+    height:200;
+    
+}
+.help_use_to_delivery{
+    width:500px;
+    height:350px;
+    z-index:99999999%;
+}
+
+.friend_user_help{
+    float:left;
+    margin-right:300px;
+}
+
 .video_help{
     width:500px;
     height:300px;

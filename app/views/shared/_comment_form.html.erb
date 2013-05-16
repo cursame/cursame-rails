@@ -1,4 +1,9 @@
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
+  <div class="video_help" style="display: none" id="comment_help">
+       <div class="content_video" id="content_video_video">
+           
+       </div>
+   </div>
     <%= text_area_tag "comment", nil, :rows => 4, :cols => 76, :placeholder=>'Comentario'  %>
     <%= hidden_field_tag 'commentable_id', commentable_id %>
     <%= hidden_field_tag 'commentable_type', commentable_type %>
@@ -11,7 +16,7 @@
     <a class="help" id="help_comment"><%= image_tag('help.png')%></a>
     <script>
              $('#help_comment').click(function() {
-                 $('#comment_help').toggle('slow');
+                 $('#comment_help').toggle('blind', 400);
                  if($("#comment_help").css( 'visibility')=="hidden"){
                         $('#content_video_video').html('');
                     }
@@ -21,9 +26,5 @@
                 });                         
                 
     </script>
-    <div class="video_help" style="display: none" id="comment_help">
-        <div class="content_video" id="content_video_video">
-            
-        </div>
-    </div>
+   
 <% end %>
