@@ -208,4 +208,41 @@ class Course < ActiveRecord::Base
     users_id = owners.map{|x| x.user_id}
     return users_id.include?(user.id)
   end
+
+  #
+  # Metodos para el analitics
+  #
+
+  def averageCalification
+    members = self.members_in_courses
+    average = 0.0
+    members.each do
+      |member|
+      average += member.evaluation
+    end
+    size = members.size
+    return average/size
+  end
+
+  def averageSurveys
+    members = self.members_in_courses
+    average = 0.0
+    members.each do
+      |member|
+      average += member.evaluationSurveys
+    end
+    size = members.size
+    return average/size
+  end
+
+  def averageDeliveries
+    members = self.members_in_courses
+    average = 0.0
+    members.each do
+      |member|
+      average += member.evaluationDeliverys
+    end
+    size = members.size
+    return average/size
+  end
 end

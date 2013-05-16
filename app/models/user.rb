@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   has_many :groups, :dependent => :destroy
 
   has_many :courses, :through => :members_in_courses
-  has_many :users_surveys#, :dependent => :destroy
+  has_many :user_surveys, :dependent => :destroy
   has_many :assets, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
   has_many :deliveries#, :dependent => :destroy
@@ -394,4 +394,25 @@ class User < ActiveRecord::Base
     self.update_attributes(:locked_at => Time.now)
   end
 
+  def averageCalification
+    members = self.members_in_courses
+    average = 0.0
+    members.each do
+      |member|
+      average += member.evaluation
+    end
+    size = members.size
+    return average/size
+  end
+
+  def averageSurveys
+    user_surveys = self.user_surveys
+    size = user_surveys.size
+    average = 0.0
+    user_surveys.each do
+      |user_survey|
+      average += user_survey.result
+    end
+    return average/size
+  end
 end

@@ -152,4 +152,19 @@ class Delivery < ActiveRecord::Base
     end
     return user_id == user.id
   end
+
+  #
+  # Metodos para el analitics
+  #
+
+  def averageCalification
+    assignments = self.assignments
+    size = assignments.size
+    average = 0.0
+    assignments.each do
+      |assignment|
+      average += assignment.accomplishment
+    end
+    return average/size
+  end
 end
