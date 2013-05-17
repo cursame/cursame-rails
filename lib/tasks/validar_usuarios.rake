@@ -41,7 +41,7 @@ task :validarusuarios => :environment do
     maestros = Permissioning.where(:network_id => network_id, :role_id => 3)
     admins = Permissioning.where(:network_id => network_id, :role_id => 1)
 
-    n = Network.find(6)
+    n = Network.find(network_id)
     
     n.courses.each do |course|
         puts "[#{course.id}]  #{course.title}"
