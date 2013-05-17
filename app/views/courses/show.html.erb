@@ -2,9 +2,9 @@
  url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
 
  <div id="noticce">
- 	<div id="notice" class="notice"></div>
+  <div id="notice" class="notice"></div>
  </div>
- 
+
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
@@ -13,7 +13,7 @@
             <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
             <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
             <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
-            
+
               <%end%>
           </ul>
         </div>
@@ -28,14 +28,14 @@
                                             }
                                           </script>
                                           <script type="text/javascript" src="<%= "http://#{current_network.subdomain}.#{links}/assets/storyjs-embed.js" %>"></script>
-                                         
+
             <ul id ="estadistic-list">
             <% permitted_to? :create, :courses do %>
                 <% @comments = current_course.comments.count %>
                 <% @deliveries = current_course.deliveries.count %>
                 <% @survey = current_course.surveys.count %>
-                <% @activity = @comments + @survey + @deliveries  %>      
-                         
+                <% @activity = @comments + @survey + @deliveries  %>
+
               <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
               <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
               <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
@@ -43,16 +43,16 @@
             <!--  <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>-->
 
             <%end%>
-            
+
             </ul>
-           
-                 
+
+
           </div>
-          <div id="c_area" class="menu-course  active">
-              <%#= render partial: "courses/evaluation"%>
-              
+          <div id="c_area" class="menu-course  active" style="height:500px; color:#fff;">
+              <%= render partial: "courses/evaluation"%>
+
           </div>
-               
+
           <div id="configuration" class="menu-course  active" style="height:500px; color:#fff;">
               <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de curso</h1>
               <%= render :partial => "courses/form"%>
@@ -65,7 +65,7 @@
 
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
-   
+
 <!-- SideBar -->
 <div id="side-bar" class="side-left-bar">
   <!-- User Avatar -->
@@ -96,21 +96,21 @@
                  <% if @members != nil%>
                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                        <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
-                      <%else%>              
+                      <%else%>
                 <%end%>
                 <%else%>
                 <% if @member.accepted == true %>
                         <% if @members != nil%>
                               <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                                <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
-                              <%else%>              
+                              <%else%>
                         <%end%>
                 <%end%>
                 <%end%>
             <%end%>
             <% if current_role == 'admin' || 'superadmin'%>
             <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
-            
+
               <%else%>
              <% if @member.owner == true %>
                     <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
@@ -138,14 +138,14 @@
   <!-- fin de joyride -->
 
   <!-- fin timeline -->
- 
+
   <%= will_paginate(@wall) %>
 </div>
 <script>
     $("#stats-area").on('show',function () {
             $("#timeline-embed").resize();
-            $("#estadistic-list").css("display","block"); 
-            $("#banner-profile").css("height", "900px;"); 
+            $("#estadistic-list").css("display","block");
+            $("#banner-profile").css("height", "900px;");
     });
 </script>
 
@@ -168,5 +168,3 @@ $(function() {
   });
 });
 </script>
-
-

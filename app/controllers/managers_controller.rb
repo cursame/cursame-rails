@@ -2,32 +2,32 @@ class ManagersController < ApplicationController
   filter_access_to :all
 
   def wall
-  ##### for users bar
-  @member = current_network.permissionings
-  @member_count = @member.count
-  @network_population = current_network.population
-  @diision =  @member.count
-  @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
- # @network_users = User.where(:network => current_network)
+    ##### for users bar
+    @member = current_network.permissionings
+    @member_count = @member.count
+    @network_population = current_network.population
+    @diision =  @member.count
+    @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
+    # @network_users = User.where(:network => current_network)
 
 
 
 
     #### for courses counters
-  @courses = current_network.courses
-  @public_courses = @courses.where(:public_status => 'public')
-  @publico = @public_courses.count
-  @private_courses = @courses.where(:public_status => 'Private')
-  @privado =  @private_courses.count
+    @courses = current_network.courses
+    @public_courses = @courses.where(:public_status => 'public')
+    @publico = @public_courses.count
+    @private_courses = @courses.where(:public_status => 'Private')
+    @privado =  @private_courses.count
 
     #### deliveries for courses
 
-  @deliveries = current_network.deliveries
-  @total_deliveries =  @deliveries.count
-  @open_deliveries =  @deliveries.where(:state => 'published')
-  @close_deliveries =  @deliveries.where(:state => 'unpublish')
-  @published_deliveries_count =  @open_deliveries.count
-  @unpublished_deliveries_count =  @close_deliveries.count
+    @deliveries = current_network.deliveries
+    @total_deliveries =  @deliveries.count
+    @open_deliveries =  @deliveries.where(:state => 'published')
+    @close_deliveries =  @deliveries.where(:state => 'unpublish')
+    @published_deliveries_count =  @open_deliveries.count
+    @unpublished_deliveries_count =  @close_deliveries.count
 
 
   end

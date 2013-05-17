@@ -4,9 +4,13 @@
    @labelIdBox = "upload-labels-#{random_id}"
    formId= "form-upload-delivery-#{random_id}"
 %>
-
 <%#if @count_course_iam_member_and_owner != 0%>
     <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
+    <div class="video_help help_use_to_delivery" style="display: none" id="delivery_help">
+         <div class="content_video" id="content_video_video_delivery">
+
+         </div>
+     </div>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
@@ -28,17 +32,39 @@
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
+          
         <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
 
         <div class="submit-area"></div>
+        
+          
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
-
+    
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+          
+            <a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
+                     <script>
+                              $('#help_delivery').click(function() {
+                                  $('#delivery_help').toggle('blind', 400);
+                                  if($("#delivery_help").css( 'visibility')=="hidden"){
+                                         $('#content_video_video_delivery').html('');
+                                     }
+                                     else{
+                                        $('#content_video_video_delivery').html('<object width="560" height="280"><param name="movie" value="http://www.youtube.com/v/l0-viVzXobQ?hl=es_ES&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/l0-viVzXobQ?hl=es_ES&amp;version=3" type="application/x-shockwave-flash" width="560" height="280" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
+                                     }
+                                 });                         
 
+                     </script>
+                    
+                     
+                     
     <% end %>
 <%#end%>
+
+ 
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
+
 <script type="text/javascript">
 $(document).ready(function() {
   $( "#delivery_publish_date, #delivery_end_date" ).datepicker({
@@ -55,3 +81,6 @@ $(document).ready(function() {
   // });
 });
 </script>
+
+ 
+
