@@ -54,7 +54,7 @@ task :validarusuarios => :environment do
         alumno.courses.each do |course|            
             puts course.title
         end
-    endrails 
+    end 
     puts "------------------------------------------------------------------"
     puts "------------------Estos son los admin-----------------------------"
     puts "------------------------------------------------------------------"
