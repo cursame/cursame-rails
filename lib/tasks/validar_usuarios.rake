@@ -54,9 +54,13 @@ task :validarusuarios => :environment do
             puts course.title
         end
     end
+    puts "------------------------------------------------------------------"
+    puts "------------------Estos son los admin-----------------------------"
+    puts "------------------------------------------------------------------"
     admins.each do |item|
         admin =  item.user
         puts "---------------------cursos de #{admin.name}---------------------"
+        puts "---------------------cursos de #{admin.email}---------------------"
         puts "Cursos encontrados #{admin.courses.count}"
         admin.courses.each do |course|            
             puts course.title
