@@ -37,8 +37,9 @@ task :validarusuarios => :environment do
     #     puts "------------------------------------------------------------------"
     # end 
     
-    maestros = Permissioning.where(:network_id => 6, :role_id => 3)
-    admins = Permissioning.where(:network_id => 6, :role_id => 1)
+    network_id = 1 // upap = 6
+    maestros = Permissioning.where(:network_id => network_id, :role_id => 3)
+    admins = Permissioning.where(:network_id => network_id, :role_id => 1)
 
     n = Network.find(6)
     
@@ -53,7 +54,7 @@ task :validarusuarios => :environment do
         alumno.courses.each do |course|            
             puts course.title
         end
-    end
+    endrails 
     puts "------------------------------------------------------------------"
     puts "------------------Estos son los admin-----------------------------"
     puts "------------------------------------------------------------------"
