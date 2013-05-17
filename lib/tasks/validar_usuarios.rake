@@ -37,7 +37,7 @@ task :validarusuarios => :environment do
     #     puts "------------------------------------------------------------------"
     # end 
     
-    network_id = 1 // upap = 6
+    network_id = 1 # upap = 6
     maestros = Permissioning.where(:network_id => network_id, :role_id => 3)
     admins = Permissioning.where(:network_id => network_id, :role_id => 1)
 
