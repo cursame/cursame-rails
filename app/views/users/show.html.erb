@@ -32,7 +32,7 @@
             <li class="mail"> <%= @user_l.email %></li>
             <li class="twitter"><%= @user_l.twitter_link %> </li>
             <!--<li class="facebook"><%#= @user_l.facebook_link%></li>-->
-            <% if current_user.id == @user_l.id%><li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li><%end%>
+            <% if current_user.id == @user_l.id%><li id="edit-user"><%=link_to "editar usuario",  edit_user_registration_path %></li><%end%>
 
         </div>
         <div class="head_banner_style_user">
@@ -165,6 +165,12 @@
         <div id="timeline">
           <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
         </div>
+        <!-- inicio de joyride -->
+        <% if show_joyride(2) == '0' %>
+           <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall} %>
+        <% end %>       
+        <!-- fin de joyride -->
+
         <!-- fin timeline -->
         <%= will_paginate(@wall) %>
 

@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at,:activities
+
+  :confirmation_token, :locked_at, :tour_info,:activities
+
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy

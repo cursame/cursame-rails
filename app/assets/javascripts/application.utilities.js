@@ -44,8 +44,8 @@ function unmask(idOrCls){
  */
 function goFront(element,parent){
     var el  =  $(element);
-    //     modal = $('#cursame-modal');
-    //     console.log(el);
+        
+    // var modal = $('#cursame-modal');
     // var position = $(parent).position();
 
     // modal.css({
@@ -54,21 +54,21 @@ function goFront(element,parent){
     // });
 
     // modal.append(el);
-
     // //mostramos el overlay
     // $('#overlaymask').show();
     // modal.show();
 
+    el.addClass('shadow-forms');
 }
 /**
  * esconder el div efecto tumblr
  * @return {} the lement to hide
  */
 function goBack(form,parent){
-    // var el  =  $(form);
+    var el  =  $(form);
     // $('parent').append(el);
     // //mostramos el overlay
     // $('#overlaymask').hide();
     // $('#cursame-modal').hide();
-    // $('#cursame-modal').children();
+    el.removeClass('shadow-forms');
 }
