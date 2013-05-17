@@ -91,8 +91,12 @@
     <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
   </div>
   <!-- fin timeline -->
-
-
+<!-- inicio de joyride -->
+  <% if show_joyride(0) == '0'%>
+    <%= render :partial => '/shared/network_joyride', :locals => {:wall => @wall} %>
+  <% end %>
+<!-- fin de joyride -->
+  
   <%= will_paginate(@wall) %>
 </div>
 </div>

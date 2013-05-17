@@ -83,7 +83,7 @@
          <p><b>Sylabus</b><b>:</b>
          <%= @course.silabus %> </p>
          <% permitted_to? :create, :courses do %>
-         <br><%= link_to "editar curso", edit_course_path%>
+         <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
         <%end%>
      </div>
 
@@ -129,6 +129,14 @@
   <div id="timeline">
     <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
   </div>
+
+  <!-- inicio de joyride -->
+  <% if show_joyride(1) == '0' %>
+    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall} %>
+  <% end %>
+    
+  <!-- fin de joyride -->
+
   <!-- fin timeline -->
  
   <%= will_paginate(@wall) %>
