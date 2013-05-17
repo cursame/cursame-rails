@@ -35,7 +35,17 @@
             <% if current_user.id == @user_l.id%><li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li><%end%>
 
         </div>
-
+        <div class="head_banner_style_user">
+               <div class="sup_track">
+               <div class="track">
+               <%= image_tag('track.png')%>
+               </div>
+               <div class="track_text">
+                   <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
+                    </p>
+               </div>
+               </div>
+           </div>
 
         <div id="box-course" class="basic-lateral-box" >
             <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>

@@ -86,7 +86,17 @@
          <br><%= link_to "editar curso", edit_course_path%>
         <%end%>
      </div>
-
+      <div class="head_banner_style_user">
+             <div class="sup_track">
+             <div class="track">
+             <%= image_tag('track.png')%>
+             </div>
+             <div class="track_text">
+                 <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
+                  </p>
+             </div>
+             </div>
+         </div>
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
             <% @course.members_in_courses.each do |member|  %>

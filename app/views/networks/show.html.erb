@@ -24,6 +24,17 @@
         <%= @user.name %>
       </div>
     </div>
+    <div class="head_banner_style">
+        <div class="sup_track">
+        <div class="track">
+        <%= image_tag('track.png')%>
+        </div>
+        <div class="track_text">
+            <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
+             </p>
+        </div>
+        </div>
+    </div>
     <div id="box-course" class="basic-lateral-box margin-top" >
       <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
     </div>
