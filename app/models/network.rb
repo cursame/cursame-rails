@@ -36,6 +36,6 @@ class Network < ActiveRecord::Base
           :courses => :coursepublicationings,
           :courses => :members_in_courses
     },
-      :conditions => ['(userpublicationings.user_id = ? OR walls.public = ?) AND (members_in_courses.accepted = ? AND members_in_courses.user_id = ?)',user_id,true,true, user_id]).order('walls.created_at DESC')
+      :conditions => ['(userpublicationings.user_id = ? OR walls.public = ?) OR (members_in_courses.accepted = ? AND members_in_courses.user_id = ?)',user_id,true,true, user_id]).order('walls.created_at DESC')
   end
 end

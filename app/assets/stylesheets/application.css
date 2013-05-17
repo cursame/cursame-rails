@@ -83,8 +83,8 @@ button, input, select, textarea {
 /* /\/\/\/\ End Reset /\/\/\/\ */
 /**overlay**/
 .ui-widget-overlay{
-    opacity:0.1;
-    filter:Alpha(opacity=10);
+    opacity:0.5;
+    filter:Alpha(opacity=50);
     background:#000;
     position:absolute;
     top:0;
@@ -108,7 +108,11 @@ button, input, select, textarea {
     z-index:9999;
     height: auto;
 }
-
+.shadow-forms {
+    -webkit-box-shadow: 10px 10px 6px -6px #888;
+    -moz-box-shadow: 10px 10px 6px -6px #888;
+    box-shadow: 10px 10px 6px -6px #888;
+}
 .ui-survey-overlay{
     opacity:0.5;
     filter:Alpha(opacity=50);

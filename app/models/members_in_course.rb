@@ -23,10 +23,6 @@ class MembersInCourse < ActiveRecord::Base
   end
 
 
-  def deliveries
-    #return Delivery.where()
-  end
-
   #
   #
   #
@@ -38,14 +34,15 @@ class MembersInCourse < ActiveRecord::Base
     end
     course.surveys.each do |response|
       user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id, self.user_id)
-      if (user_survey.nil?) then
-        return 0.0
+      user_survey_result = 0
+      if (!user_survey.nil?) then
+        if user_survey.result.nil? then
+          user_survey.evaluation
+          user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
+        end
+        user_survey_result = user_survey.result
       end
-      if user_survey.result.nil? then
-        user_survey.evaluation
-        user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
-      end
-      evaluationSurveys += user_survey.result
+      evaluationSurveys += user_survey_result
     end
     evaluationSurveys = evaluationSurveys/course.surveys.size
     return evaluationSurveys.to_i
@@ -76,6 +73,12 @@ class MembersInCourse < ActiveRecord::Base
 
     evaluation = evaluationSurveys * survey_param_evaluation +
       evaluationDeliverys * delivery_param_evaluation
+
+    # puts "Evaluation Survey: " + evaluationSurveys.to_s
+    # puts "Survey Param Evaluation: " + survey_param_evaluation.to_s
+    # puts "Evaluation Deliverys: " + evaluationDeliverys.to_s
+    # puts "Delivery Param Evaluation: " + delivery_param_evaluation.to_s
+    # puts "Evaluation: " + evaluation.to_s
 
     return evaluation
   end

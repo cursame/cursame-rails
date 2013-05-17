@@ -196,6 +196,7 @@ $(document).ready(function() {
             marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
+            // goFront('#post-forms','.profile-post-box');
         });
         $('#post-forms').animate({
             height: $( hrefClean ).height()
@@ -213,7 +214,7 @@ $(document).ready(function() {
 
             resetForm($(value).find('form'));
 
-            // goBack('#post-forms','.profile-post-box');
+            goBack('#post-forms','.profile-post-box');
 
             $('#post-forms').animate({
                 height: '0'

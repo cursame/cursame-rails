@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   helper_method :browser
   helper_method :filtrati
   helper_method :parse
+  helper_method :show_joyride
   #roles
   before_filter :set_current_user
 
@@ -206,6 +207,15 @@ class ApplicationController < ActionController::Base
     @computer_plataform = @user_agent.platform
   end
 
+  #joyride
+  def show_joyride(tour)
+    puts "-------------------------------------"
+    puts current_user.tour_info
+    puts current_user.tour_info[tour]
+    puts "-------------------------------------"
+    return User.find(current_user.id).tour_info[tour]
+  end
+  
   def mobile?
    # request.user_agent =~ /Mobile|webOS/ 
     # request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]

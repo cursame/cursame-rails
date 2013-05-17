@@ -152,3 +152,81 @@
     color:#2D6477;
     font-size:12px;
 }
+
+.gray_box{
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #C7CBC9;
+    width:350px;
+    height:100px;
+    margin:10px;
+    float: left;
+     & .user_name{
+         
+         margin:10px;
+         padding: 5px;
+         width:200px;
+         
+     }
+     
+     & .link{
+          padding:5px;
+          margin-left:5px;
+          margin-top:-14px;
+          
+          
+     }
+
+}
+
+.container_activity{
+       width:700px;
+       height:700px;
+       margin:30px;
+       float: left;
+       background-color: #C7CBC9;
+       
+       & .plastic_t{
+              width:600px;
+              height:600px;
+              overflow: auto;
+              padding:30px;
+       }
+       
+       & h4 {
+            font-size:17px;
+       }
+       
+       & .plastic_ck{
+            width:600px;
+            height:50px;
+
+       }
+       
+       & h3 {
+           font-size:20px;
+           
+       }
+       
+       & .joko_orange{
+             width:600px;
+             height:40px;
+             background-color: #E9B416;
+             margin:10px;
+             padding:20px;
+             font-size:20px;
+             
+             
+       }
+       
+       & .lop_container{
+                 width:650px;
+                 height:600px;
+                 overflow: auto;
+                 padding:30px;
+       }
+
+       
+       
+}

@@ -135,7 +135,7 @@ class Comment < ActiveRecord::Base
 
   def group_of_users(comment_type)
     case comment_type
-    when "Network", "Course", "Group", "Delivery"
+      when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
       return hash
@@ -150,11 +150,12 @@ class Comment < ActiveRecord::Base
       else
         users = commentable.commentable.users
       end
-      users.delete(self.id)
+      # users.delete(self.user)
+      users = users.reject { |user| user.id == self.user.id }
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
       return hash
 
-      when "Discussion"
+    when "Discussion"
 
       if commentable.courses.size == 0 then
         hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
@@ -165,11 +166,26 @@ class Comment < ActiveRecord::Base
           users = users.concat(course.users)
         end
         users.uniq!
-        users.delete(self.user)
+        # users.delete(self.user)
+        users = users.reject { |user| user.id == self.user.id }
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
 
       return hash
+      when 'Survey'
+      if commentable.courses.size == 0 then
+        hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
+      else
+        courses = commentable.courses
+        users = []
+        courses.each do |course|
+          users = users.concat(course.users)
+        end
+        users.uniq!
+        # users.delete(self.user)
+        users = users.reject { |user| user.id == self.user.id }
+        hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+      end
     else
 
       raise "Grupo de usuarios no definido para " + comment_type

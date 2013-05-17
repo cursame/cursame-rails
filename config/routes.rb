@@ -221,6 +221,10 @@ Cursame30Lb::Application.routes.draw do
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
+  
+  #finish tour
+  match "/home/finish_tour" => "home#finish_tour", :as => "finish_tour", :via => [:get]
+
 
   #cargas mas comentarios
   match  "home/load_more_comments/:id", :to => "home#load_more_comments", :as => :load_more_comments

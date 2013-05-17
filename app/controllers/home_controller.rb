@@ -45,6 +45,18 @@ class HomeController < ApplicationController
     end
   end
 
+  def finish_tour
+    user = current_user
+    last_info = user.tour_info
+    pos = params[:data].to_i
+    info = last_info[0...pos] + "1" + last_info[pos+1..last_info.length]
+    user.tour_info = info
+    user.save!
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def load_more_comments
     @publication = Wall.find(params[:id])
     @comments = @publication.publication.comments
