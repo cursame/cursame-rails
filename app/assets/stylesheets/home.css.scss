@@ -33,7 +33,22 @@
         margin-bottom: 0!important;
         padding: 7px 9px;
       }
-
+      
+      .form-signin .terms{ width:290; height:100px; overflow:auto; background:#eee; color:#000; font-size:10px;text-align:justify;margin-top:5px;
+             & b {
+                 font-size:10px;
+                 font-weight: bold;
+             }
+             
+             & h1{
+                font-size:10px;
+                font-weight: bold;
+                
+             }
+             
+            
+        }
+      .form-signin .terms_box{  color: #000;font-size:12px; margin-top:5px; margin-bottom:-20px}
 .form-signin .email { width: 260px!important; background: #fff!important; }
 .form-signin .text { width: 260px!important; background: #fff!important; }
 .form-signin .pswd { width: 262px!important; height: 33px!important; margin-left: -5px; padding: 7px 19px!important; font-size: 14px!important; }
@@ -58,7 +73,7 @@ input.log-in:hover { background: #00AEC5; color: #fff; cursor: pointer; transiti
 .menu-user span { margin-top: 2px!important; }
 .menu-user .avatar { margin-top: -8px!important; }
 
-.form-signup { height: 307px; margin: 21px auto 20px!important; }
+.form-signup { height: 417px; margin: 21px auto 20px!important; }
 input:-webkit-autofill,input:-moz-autofill, input:autofill { background-color: #ddd!important; }
 
 .signup-btn { color: white; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);

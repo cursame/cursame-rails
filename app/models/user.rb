@@ -16,9 +16,8 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-
-  :confirmation_token, :locked_at, :tour_info,:activities
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox, 
+  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -51,6 +50,7 @@ class User < ActiveRecord::Base
 
   #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
+  validates_uniqueness_of :accepted_terms
 
   # roles
   #has_many :permissionings, :dependent => :destroy
