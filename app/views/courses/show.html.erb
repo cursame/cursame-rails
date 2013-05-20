@@ -79,7 +79,7 @@
       <%= @course.title %>
     </div>
   </div>
-     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">
+     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">         
          <p><b>Sylabus</b><b>:</b>
          <%= @course.silabus %> </p>
          <% permitted_to? :create, :courses do %>
@@ -97,8 +97,18 @@
              </div>
              </div>
          </div>
+  
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
+               <h2> Alumnos</h2> 
+              <% permitted_to? :create, :courses do %>
+
+                      <% @course_unaccepted =  @course.members_in_courses.where(:accepted => false).count%>
+                      <% if @course_unaccepted == 0%>
+                      <%else%>
+                      <div class="member_pending" onclick="location.href='<%=course_members_path%>';" ><div class="accepted_not_pending"><%=  "#{@course_unaccepted}"%> </div></div>
+                      <%end%>
+                  <%end%>
             <% @course.members_in_courses.each do |member|  %>
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->

@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20130515184700) do
     t.datetime "updated_at",                                             :null => false
     t.text     "comment_html"
     t.integer  "network_id"
+    t.integer  "course_id"
     t.integer  "likes"
   end
 
@@ -109,7 +110,6 @@ ActiveRecord::Schema.define(:version => 20130515184700) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
     t.integer  "asset_id"
     t.integer  "delivery_id"
     t.integer  "assignment_id"
@@ -160,10 +160,8 @@ ActiveRecord::Schema.define(:version => 20130515184700) do
   end
 
   create_table "deliveries_courses", :force => true do |t|
-    t.integer  "course_id"
-    t.integer  "delivery_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer "course_id"
+    t.integer "delivery_id"
   end
 
   create_table "delivery_assets", :force => true do |t|
@@ -189,6 +187,17 @@ ActiveRecord::Schema.define(:version => 20130515184700) do
     t.integer  "course_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "errors", :force => true do |t|
+    t.integer  "number"
+    t.text     "message"
+    t.string   "os"
+    t.string   "browser"
+    t.datetime "create_at"
+    t.integer  "importance"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -224,10 +233,23 @@ ActiveRecord::Schema.define(:version => 20130515184700) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "gade_e"
+    t.boolean  "active"
+    t.string   "file"
+    t.integer  "network_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
