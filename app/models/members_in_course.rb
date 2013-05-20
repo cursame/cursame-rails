@@ -54,14 +54,15 @@ class MembersInCourse < ActiveRecord::Base
   def evaluationDeliverys
     course = Course.find(self.course_id)
     evaluationSurveys = evaluationSurveys
-
     assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id)
     evaluationDeliverys = 0.0
     if !assignments.nil? then
       assignments.each do |response|
-        evaluationDeliverys += response.accomplishment.to_f
+        porcent_of_evaluation = response.delivery.porcent_of_evaluation.to_f/100.0
+        evaluationDeliverys += response.accomplishment.to_f * porcent_of_evaluation
       end
     end
+
     return evaluationDeliverys.to_i
   end
 
@@ -73,12 +74,6 @@ class MembersInCourse < ActiveRecord::Base
 
     evaluation = evaluationSurveys * survey_param_evaluation +
       evaluationDeliverys * delivery_param_evaluation
-
-    # puts "Evaluation Survey: " + evaluationSurveys.to_s
-    # puts "Survey Param Evaluation: " + survey_param_evaluation.to_s
-    # puts "Evaluation Deliverys: " + evaluationDeliverys.to_s
-    # puts "Delivery Param Evaluation: " + delivery_param_evaluation.to_s
-    # puts "Evaluation: " + evaluation.to_s
 
     return evaluation
   end
@@ -99,10 +94,10 @@ class MembersInCourse < ActiveRecord::Base
       assignments_array[i] =  Assignment.find_by_delivery_id_and_user_id(deliveries[i].id,self.user_id)
     end
     table_member[1] = assignments_array
+    delivery_param_evaluation = course.delivery_param_evaluation.to_f/100.0
     evaluation_total_array = Array.new
     evaluation_total_array[0] = course.delivery_param_evaluation
-    evaluation_total_array[1] = self.evaluationDeliverys
-    delivery_param_evaluation = course.delivery_param_evaluation.to_f/100.0
+    evaluation_total_array[1] = self.evaluationDeliverys * delivery_param_evaluation
     table_member[2] = evaluation_total_array
     return table_member
   end
