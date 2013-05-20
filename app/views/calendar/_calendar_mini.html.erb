@@ -8,13 +8,14 @@
     
       <% courses.deliveries.each do |delivery| %>
       <% delivery.events.each do |event|%> 
-                   
+        <% @description = event.description.delete("\r\n/\n/\r") %>
+        
          <script type='text/javascript'>
                 
                 events.push(   
                  {
                  title : '<%= event.title %>',
-                 description: '<%= event.description%>',
+                 description: '"<%= @description.to_s %>"',
                  start :  '<%= event.starts_at%>',
                  end :  '<%= event.ends_at%>'
 

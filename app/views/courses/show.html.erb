@@ -79,16 +79,36 @@
       <%= @course.title %>
     </div>
   </div>
-     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">
+     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">         
          <p><b>Sylabus</b><b>:</b>
          <%= @course.silabus %> </p>
          <% permitted_to? :create, :courses do %>
-         <br><%= link_to "editar curso", edit_course_path%>
+         <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
         <%end%>
      </div>
-
+      <div class="head_banner_style_user">
+             <div class="sup_track">
+             <div class="track">
+             <%= image_tag('track.png')%>
+             </div>
+             <div class="track_text">
+                 <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
+                  </p>
+             </div>
+             </div>
+         </div>
+  
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
+               <h2> Alumnos</h2> 
+              <% permitted_to? :create, :courses do %>
+
+                      <% @course_unaccepted =  @course.members_in_courses.where(:accepted => false).count%>
+                      <% if @course_unaccepted == 0%>
+                      <%else%>
+                      <div class="member_pending" onclick="location.href='<%=course_members_path%>';" ><div class="accepted_not_pending"><%=  "#{@course_unaccepted}"%> </div></div>
+                      <%end%>
+                  <%end%>
             <% @course.members_in_courses.each do |member|  %>
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
@@ -129,6 +149,14 @@
   <div id="timeline">
     <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
   </div>
+
+  <!-- inicio de joyride -->
+  <% if show_joyride(1) == '0' %>
+    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall} %>
+  <% end %>
+    
+  <!-- fin de joyride -->
+
   <!-- fin timeline -->
 
   <%= will_paginate(@wall) %>

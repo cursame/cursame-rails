@@ -144,17 +144,18 @@ class Comment < ActiveRecord::Base
       users = [commentable]
       hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       return hash
-      when "Comment"
+    when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
       else
         users = commentable.commentable.users
       end
-      users.delete(self.id)
+      # users.delete(self.user)
+      users = users.reject { |user| user.id == self.user.id }
       hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
       return hash
 
-      when "Discussion"
+    when "Discussion"
 
       if commentable.courses.size == 0 then
         hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
@@ -165,7 +166,8 @@ class Comment < ActiveRecord::Base
           users = users.concat(course.users)
         end
         users.uniq!
-        users.delete(self.user)
+        # users.delete(self.user)
+        users = users.reject { |user| user.id == self.user.id }
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
 
@@ -180,7 +182,8 @@ class Comment < ActiveRecord::Base
           users = users.concat(course.users)
         end
         users.uniq!
-        users.delete(self.user)
+        # users.delete(self.user)
+        users = users.reject { |user| user.id == self.user.id }
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
     else
