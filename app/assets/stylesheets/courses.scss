@@ -374,4 +374,128 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
        
 }
 
+.arco_course_deliver{
+    width:700x;
+    height:400px;
+    margin:20px;
+    
+    & .content_delivery {
+        width:300px;
+        height:400px;
+        float:left;
+        overflow:auto;
+    
+    & .delivery_f {
+        width:290px;
+        float:left;
+        overflow:auto;
+           & .delivery_container{
+               width:270px;
+               height:100px;
+               background: #CBE49A;
+               margin-bottom:5px;
+               
+               & .title{
+                   background: #7E9157;
+                   font-size:12;
+                   padding:5px;
+                   color: #fff;
+               }
+               
+               & .dates{
+                   
+                   padding:5px;
+                   font-align: justify;
+                   color:#e01e01;
+                   
+               }
+               
+               & .state {
+                   padding:5px;
+                   font-align: justify;
+                   color:#15B1B9;  
+               }
+               
+               & .image{
+                   float:right;
+               }
+           }
+           
+         
+         
+         }
+    }
+    
+      
+   & .so_open{
+        width:300px;
+        height:400px;
+        overflow:auto;
+        float:right;
+        
+        & .assignment{
+            width:270px;
+            height:50px;
+            background:#00BFCD;
+            padding-left: 10px;
+          
+          &  .title{
+              
+              color:#fff;
+              background:#037E87;
+              font-size:14px;
+              
+                
+            }
+            
+          & .name{
+              
+              color:#fff;
+              background:#42B9C1;
+              
+          }
+          
+          & .image{
+                 float:right;
+             }
+            
+        }
+        
+    }
+    
+    & .tcg{
+           color: #fff;
+           background:#385759;
+           width:300px;
+           height:400px;
+           overflow:auto;
+           margin-left:-10px;
+           
+       }
+    & .survey_f {
+         width:290px;
+         float:right;
+         overflow:auto;
+         height:400px;
+         background: #CBE49A;
+         
+         
+         & .survey_container{
+             width:270px;
+             height:100px;
+           
+         }
+        
+    }
+    
+    & h1{
+        color: #fff;
+        font-size:20px;
+        
+        & .survey_container{
+             
+         }
+    }
+}
+
 
