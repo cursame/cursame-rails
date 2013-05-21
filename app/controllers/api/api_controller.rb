@@ -51,7 +51,6 @@ class Api::ApiController < ApplicationController
       @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     else
       @courses = @user.courses.includes(:members_in_courses).where("members_in_courses.accepted = ?",true).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-      #@courses = @user.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
@@ -105,6 +104,7 @@ class Api::ApiController < ApplicationController
           :user => user,
           :owner => owner
       }
+      
       @user_notifications.push(notification)
       notification_to_save = Notification.find(notification.id)
       notification_to_save.active = false ##para identificar las notificaciones vistas
@@ -117,7 +117,6 @@ class Api::ApiController < ApplicationController
 
   def assignments
     assignments = Assignment.where("delivery_id" => params[:delivery_id])
-
     render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
   end
 
