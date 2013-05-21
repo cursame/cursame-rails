@@ -16,8 +16,9 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox, 
+  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
+
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
@@ -31,7 +32,7 @@ class User < ActiveRecord::Base
   has_many :groups, :dependent => :destroy
 
   has_many :courses, :through => :members_in_courses
-  has_many :users_surveys#, :dependent => :destroy
+  has_many :user_surveys, :dependent => :destroy
   has_many :assets, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
   has_many :deliveries#, :dependent => :destroy
@@ -49,6 +50,7 @@ class User < ActiveRecord::Base
 
   #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
+  validates_uniqueness_of :accepted_terms
 
   # roles
   #has_many :permissionings, :dependent => :destroy
@@ -247,7 +249,13 @@ class User < ActiveRecord::Base
 
   def possible_friends(network)
     users = Array.new
-      network.users.each do
+
+    network_users = network.users
+    network_users = network_users.keep_if {
+      |user|
+      user.confirmed?
+    }
+    network_users.each do
       |user|
       if !self.friends_request?(user) then
         users.push(user)
@@ -271,17 +279,38 @@ class User < ActiveRecord::Base
       else
         user = new
       end
-      hash = row.to_hash.slice(*accessible_attributes)
+      hash = row.to_hash
       network_id = network.id
-      hash.delete("network_id")
-      role_id = hash.delete("role_id")
-      user.attributes = hash
+      role_id = hash.delete("Role")
 
       errors = false
 
-      # Checa que el correo sea valido y que no se repita
-      if user.email["@"].nil? || !User.find_by_email(user.email).nil?
-        arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
+      if !role_id.nil? then
+
+        role_id = role_id.downcase.strip
+        role_id = 2 if role_id == "estudiante"
+        role_id = 3 if role_id == "maestro"
+      else
+        arrayErrores.push({ :line => count,:message => "No se especifico un role"})
+        errors = true
+      end
+
+      if role_id.class != Fixnum then
+        arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
+        errors = true
+      end
+
+      user.email = hash.delete("Email")
+
+      if !user.email.nil? then
+        user.email = user.email.downcase
+        # Checa que el correo sea valido y que no se repita
+        if user.email["@"].nil? || !User.find_by_email(user.email).nil?
+          arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
+          errors = true
+        end
+      else
+        arrayErrores.push({:line => count, :message => "No hay ningun email especificado"})
         errors = true
       end
 
@@ -291,11 +320,23 @@ class User < ActiveRecord::Base
 
       # Checa que exista el role_id
       if role_id.nil? then
+        arrayErrores.push({:line => count, :message => "Debes de especificar un role para el usuario" })
+        errors = true
+      end
+
+      if !role_id.nil? then
         if Role.find_by_id(role_id).nil? then
           arrayErrores.push({:line => count, :message => "No existe el rol dado"})
           errors = true
         end
       end
+
+      password = Devise.friendly_token.first(6)
+      charList =  [('a'..'z'),('A'..'Z'),(0..9)].map{ |i| i.to_a }.flatten.map{ |i| i.to_s }
+
+      personal_url_random = (0...100).map{  charList[rand(charList.length)] }.join
+      user.password = password
+      user.personal_url = personal_url_random
 
       if !errors then
         begin
@@ -308,9 +349,11 @@ class User < ActiveRecord::Base
         if !user.save then
           arrayErrores.push({:line => count, :message => "Error al guardar"})
         else
-          user.confirm!
-          user.save!
+          # user.confirm!
+          # user.save!
           Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          # mail = Notifier.send_password(user,password)
+          # mail.deliver
         end
       end
     end
@@ -353,4 +396,25 @@ class User < ActiveRecord::Base
     self.update_attributes(:locked_at => Time.now)
   end
 
+  def averageCalification
+    members = self.members_in_courses
+    average = 0.0
+    members.each do
+      |member|
+      average += member.evaluation
+    end
+    size = members.size
+    return average/size
+  end
+
+  def averageSurveys
+    user_surveys = self.user_surveys
+    size = user_surveys.size
+    average = 0.0
+    user_surveys.each do
+      |user_survey|
+      average += user_survey.result
+    end
+    return average/size
+  end
 end

@@ -56,7 +56,7 @@
  Red: <%= activity.network_id %></br>
  
  <% @user = User.find(activity.user_id)%>
-<%= link_to "#{@user.name} ir al usuario",show_user_path(@user.personal_url)   %></br>
+<%= link_to "Actividad por #{@user.name}", activity_path(activity.id)  %></br>
 <%= link_to "Ir a la actividad", activity_path(activity.id)%>
  </div>
  <div style="float:left; height:230px; margin-left:5px; margin-top:25px;">

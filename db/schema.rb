@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502231106) do
+ActiveRecord::Schema.define(:version => 20130520212906) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -72,11 +72,12 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
     t.text     "brief_description"
     t.integer  "delivery_id"
     t.integer  "accomplishment"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.integer  "course_id"
     t.integer  "user_id"
     t.float    "rub_calification"
+    t.text     "brief_description_html"
   end
 
   create_table "authentications", :force => true do |t|
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
     t.string   "state"
     t.integer  "network_id"
     t.integer  "likes"
+    t.text     "description_html"
   end
 
   create_table "deliveries_courses", :force => true do |t|
@@ -174,11 +176,12 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "network_id"
     t.integer  "user_id"
     t.integer  "likes"
+    t.text     "description_html"
   end
 
   create_table "discussions_courses", :force => true do |t|
@@ -420,8 +423,8 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -430,8 +433,8 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "description"
@@ -449,6 +452,8 @@ ActiveRecord::Schema.define(:version => 20130502231106) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
+    t.string   "tour_info",              :default => "000"
+    t.boolean  "accepted_terms",         :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

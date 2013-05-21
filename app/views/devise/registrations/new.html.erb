@@ -12,6 +12,8 @@
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<%= devise_error_messages! %>
 		<div><!-- <%= f.label :email %><br /> --> <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %></div>
+			<div><!-- <%= f.label :first_name %><br /> --> <%= f.text_field :first_name, :class => "pswd",:placeholder =>"Nombre(s)" %></div>
+				<div><!-- <%= f.label :last_name %><br /> --> <%= f.text_field :last_name, :class => "pswd",:placeholder =>"Apellidos" %></div>
 		<div><!-- <%= f.label :password %><br /> --> <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña" %></div>		
 
 		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd", :placeholder =>"Confirmacion de contraseña" %></div>
@@ -25,8 +27,10 @@
 	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form" %>
 	       <%end%>
 	   </div>
-		
-
+		<div class="terms">
+		    <%= render partial: "home/terms_and_conditions"%>
+		</div>
+       <div class="terms_box"> <%= f.check_box :accepted_terms %> Acepto los términos y condiciones. </div>
 		<%= f.submit "Registrarme", :class =>"signup-btn" %>
 		<% end %>
 	</div><!-- ends form-signup -->

@@ -19,9 +19,9 @@ class Wall < ActiveRecord::Base
 
 
   def self.search(search,id)
-    if search
+    if search != nil
       query = "publication_type LIKE '%"+search+"%'"
-      query += id ?  " and publication_id = "+id : ' '
+      query += id ?  " and publication_id = "+id.to_s : ' '
       where(query)
     else
       scoped

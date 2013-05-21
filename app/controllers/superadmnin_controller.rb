@@ -31,6 +31,11 @@ class SuperadmninController < ApplicationController
   end
 
   def users
+    
+    @users = User.search(params[:search])
+    @user_count = @users.count
+
+    
   end
 
   def activities
@@ -79,4 +84,6 @@ class SuperadmninController < ApplicationController
   
   def instructions
   end
+  
+  
 end

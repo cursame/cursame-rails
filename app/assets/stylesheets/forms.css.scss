@@ -1450,3 +1450,32 @@
 	width: 302px; padding-left: 20px; font-size: 14px;
 	margin-top: -1px; margin-left: -5px;
 }
+
+.image-surveys {
+  height: 90%;
+  width: 100%;
+  position: relative;
+  left: 3px;
+  top: 10px;
+  background: url('/assets/survey.jpg') no-repeat;
+  .response-survey {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    cursor: pointer;
+    display: none;
+    color: #08B5CE;
+    font-size: 14px;
+    font-weight: bolder;
+
+  }
+  &:hover{
+    //background: url('/assets/seleccionar_hover.png') no-repeat;
+    opacity: .7;
+    filter: alpha(opacity=40%);
+    .response-survey{
+      display: block;
+    }
+  };
+
+}

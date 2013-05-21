@@ -12,7 +12,7 @@ class Api::ApiController < ApplicationController
         @publications = @course.walls.where("publication_type != ?", 'Course')
         @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @network.walls.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @network.publications(@user.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
       @publications.each do |publication|
         type = publication.publication_type
@@ -38,16 +38,22 @@ class Api::ApiController < ApplicationController
     @comments.each do |comment|
       comment.likes = comment.likes.size
     end
+    # if params[:commentable_type] == "Delivery" && @user.roles.last.id == 2
+    #   @comments = @comments = Comment.where("commentable_type" => params[:commentable_type],"user_id" => @user.id ,"commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    # end
     render :json => {:comments => @comments.as_json(:include => [:user, :comments]) , :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
     @ids = []
-    @user.members_in_courses.each do |course|
-      @ids.push(course.course_id)
+    # si es admin de la red se le muestran todos los cursos
+    if @user.roles.last.id == 1
+      @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    else
+      @courses = @user.courses.includes(:members_in_courses).where("members_in_courses.accepted = ?",true).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      #@courses = @user.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    @courses = @network.courses.where("public_status = ? OR id in (?)", 'public', @ids).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]
+    render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
   def users
@@ -74,8 +80,8 @@ class Api::ApiController < ApplicationController
           course = Course.find(notification.notificator.commentable_id)
         when 'new_delivery_on_course'
           cretator = notification.notificator.user
-          owner = notification.notificator.course[0]
-          course = Course.find(notification.notificator.commentable_id) #Assignment.find_by_delivery_id_and_course_id(notification.notificator.id,@user.id).course
+          owner = notification.notificator.courses[0]
+          course = owner
         when 'new_public_course_on_network'
           cretator = notification.notificator.user
         # when 'new_survey_on_course'
@@ -100,10 +106,19 @@ class Api::ApiController < ApplicationController
           :owner => owner
       }
       @user_notifications.push(notification)
+      notification_to_save = Notification.find(notification.id)
+      notification_to_save.active = false ##para identificar las notificaciones vistas
+      notification_to_save.save
     end
     #
     # @notifications = @user.notifications.includes(:notificator)
     render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
+  end
+
+  def assignments
+    assignments = Assignment.where("delivery_id" => params[:delivery_id])
+
+    render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
   end
 
   def create_comment
@@ -165,6 +180,33 @@ class Api::ApiController < ApplicationController
     @discussion.courses.push(Course.find(params[:courseId]))
 
     @discussion.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def delete
+    element = eval(params[:type]).find(params[:id])
+    element.destroy
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def assigment_delivery
+    @assignment = Assignment.new()
+    course_id = DeliveriesCourse.find_by_delivery_id(params[:deliveryId]).course_id
+    @assignment.course_id = course_id
+    @assignment.delivery_id = params[:deliveryId]
+    @assignment.title = params[:title]
+    @assignment.brief_description = params[:description]
+    @assignment.user_id = params[:userId]
+
+    @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def qualify_assignment
+    assignment = Assignment.find(params[:assignment_id])
+    assignment.rub_calification = params[:calification]
+    assignment.save
+
     render :json => {:success => true}, :callback => params[:callback]
   end
 

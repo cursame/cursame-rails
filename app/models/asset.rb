@@ -13,5 +13,4 @@ class Asset < ActiveRecord::Base
   #uploader to upadate files
    mount_uploader :file, FileUploader
 
-
 end

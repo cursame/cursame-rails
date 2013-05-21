@@ -3,11 +3,10 @@
 .course{
   float: left;
   height: 250px;
-  width: 240px;
-  margin: 12px 30px 24px 0;
+  width: 200px;
+  margin: 10px 4px;
   border: $border-box;
   @include border-radius;
-  margin: 10px 10px 10px 20px;
   float: left;
   background: #f3f3f3;
   //@include shadow-float-box;
@@ -19,7 +18,7 @@
     font-family: HelvLight;
   }
   & .thumbnail{
-   width: 240px;
+   width: 200px; overflow: hidden; vertical-align: middle;
  }
 }
 
@@ -64,10 +63,10 @@ h3{
 }
 
 #course-title{
-	width: 200px;
+	width: 188px;
     font-size:14px;
     float: left;
-    margin: 10px 20px 5px 20px;
+    margin: 10px 6px;
     color: #444444;
     font-family: helvetica;
     text-align: center;
@@ -75,12 +74,12 @@ h3{
 }
 
 #course-info{
-	 padding: 20px;
+	 padding: 10px;
 	 font-size: 12px !important;	
 }
 
 #courses-list {
-	width: 830px;
+	width: 846px;
 	margin: auto;
 	}
 	
@@ -290,3 +289,93 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
 .acceptFriend > a:hover { background: #0B6AAD; }
 
 .profileLinks { position: absolute; float: right; display: block; margin-top: -45px; width: 887px; text-align: right; }
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ notificacoines de alumnos pendientes ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+
+
+.member_pending{
+       margin-top:-20px;
+       margin-bottom:-5px;
+       margin-left:210px;
+       width: 30px;
+       height:30px;
+        font-size:15px;
+        padding:1px;
+        color:#eee;
+        cursor:pointer;
+        
+        -webkit-border-radius: 1000px;
+        -moz-border-radius: 1000px;
+        border-radius: 1000px;
+        
+        background-image: linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
+        background-image: -o-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
+        background-image: -moz-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
+        background-image: -webkit-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
+        background-image: -ms-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
+
+        background-image: -webkit-gradient(
+        	linear,
+        	left bottom,
+        	left top,
+        	color-stop(0.01, rgb(230,107,25)),
+        	color-stop(0.68, rgb(207,77,29))
+        );
+       
+       
+       & :hover {
+              margin-top:0px;
+              margin-bottom:0px;
+              margin-left:0px;
+              width: 30px;
+              height:30px;
+               font-size:22px;
+               padding:1px;
+               color:#fff;
+               cursor:pointer;
+               
+               
+               -webkit-border-radius: 1000px;
+               -moz-border-radius: 1000px;
+               border-radius: 1000px;
+
+               background-image: linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
+               background-image: -o-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
+               background-image: -moz-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
+               background-image: -webkit-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
+               background-image: -ms-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
+
+               background-image: -webkit-gradient(
+               	linear,
+               	left bottom,
+               	left top,
+               	color-stop(0.01, rgb(158,72,14)),
+               	color-stop(0.68, rgb(138,39,3))
+               );
+           
+           
+           
+       }
+       
+       & li{
+           color:#fff;
+           
+       }
+       
+       & a{
+           color:#fff;
+           
+       }
+        
+       
+}
+
+.accepted_not_pending{
+       margin-left:10px;
+       margin-top:5px;
+       
+}
+
+

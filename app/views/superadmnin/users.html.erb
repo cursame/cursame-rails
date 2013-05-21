@@ -1,2 +1,72 @@
-<h1>Superadmnin#users</h1>
-<p>Find me in app/views/superadmnin/users.html.erb</p>
+<div class="super-admin-header">Manejador de datos de usuario
+</div>
+<%= form_tag superadmnin_users_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuario' %>
+   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
+  </p>
+<% end %>
+<div>
+ <% @users.each do |user|%>
+          <div class="gray_box">
+            <div class="user_name">
+                <%= image_tag(user.avatar.modern) if ( !user.avatar.blank?)%>
+                <%= image_tag(user.image_avatarxxx) if ( user.avatar.blank?)%>
+          
+                <%= user.name %>
+            </div>
+         <div class=" link ">
+            <a id="activities_d<%= user.id %>" >Mostrar actividades</a>|
+            <a id="user_edit<%= user.id%>">Editar usuario</a>|
+            <a id="statics<%= user.id%>">Estadísticas</a>
+        </div>     
+          </div>
+            <script>
+              $('#activities_d<%= user.id %>').click(function() {
+                $('.container_activity<%=user.id%>').toggle('slow', function() {
+                  // Animation complete.
+                });
+              });
+                $('#statics<%= user.id %>').click(function() {
+                  $('.container_statics<%=user.id%>').toggle('slow', function() {
+                    // Animation complete.
+                  });
+                });
+                
+                $('#user_edit<%= user.id %>').click(function() {
+                  $('.container_user_edit<%=user.id%>').toggle('slow', function() {
+                    // Animation complete.
+                  });
+                });
+            </script>          
+          <div  class="container_activity<%=user.id%>  container_activity"style="display: none">
+              <h3>Manejador de actividades</h3>
+          <div class="plastic_t">
+            <% user.activities.each do |activity|%>
+                <div class="joko_orange">
+               <h4> <%= link_to "#{activity.title}",  activity_path(activity.id) %></h4>
+                </div></br>
+            <%end%>
+         </div>
+         </div>
+         
+         <div class="container_statics<%=user.id%> container_activity" style="display: none">
+     <div class="lop_container">
+         <div class="joko_orange"> Tareas:   <%= user.activities.where(:activitye_type => "Delivery").count %> </div>
+         <div class="joko_orange"> Examenes:     <%= user.activities.where(:activitye_type => "Survey").count %></div>
+        <div class="joko_orange">  Respuestas de tareas:     <%= user.activities.where(:activitye_type => "Assignment").count %></div>
+        <div class="joko_orange">  Respuestas de examen:     <%= user.activities.where(:activitye_type => "User_survey").count %></div>
+        <div class="joko_orange">  Discusiones:   <%= user.activities.where(:activitye_type => "Discussion").count %></div>
+    </div>
+         </div>
+         
+          <div class="container_user_edit<%=user.id%> container_activity" style="display: none">
+              
+            crear un formulario de usuario aqui
+                                          
+          </div>
+ <%end%>
+</div>
+
+
+

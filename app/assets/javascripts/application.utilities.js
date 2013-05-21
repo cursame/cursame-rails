@@ -38,3 +38,37 @@ function mask(idOrCls,msj){
 function unmask(idOrCls){
 	$('#mask').hide();
 }
+/**
+ * sobresalir una div con efecto tumblr
+ * @return {} the element overlay
+ */
+function goFront(element,parent){
+    var el  =  $(element);
+        
+    // var modal = $('#cursame-modal');
+    // var position = $(parent).position();
+
+    // modal.css({
+    //     top:position.top ,//+ $(window).scrollTop(),
+    //     left:position.left + 200// + $(window).scrollLeft()
+    // });
+
+    // modal.append(el);
+    // //mostramos el overlay
+    // $('#overlaymask').show();
+    // modal.show();
+
+    el.addClass('shadow-forms');
+}
+/**
+ * esconder el div efecto tumblr
+ * @return {} the lement to hide
+ */
+function goBack(form,parent){
+    var el  =  $(form);
+    // $('parent').append(el);
+    // //mostramos el overlay
+    // $('#overlaymask').hide();
+    // $('#cursame-modal').hide();
+    el.removeClass('shadow-forms');
+}

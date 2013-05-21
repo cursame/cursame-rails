@@ -57,4 +57,11 @@ class Notifier < ActionMailer::Base
     count = user.settings_teacher.limit_deliveries
     mail to: @user.email, subject: "You have "+ count.to_s + " Assignments"
   end
+
+  def send_password(user,password)
+    @user = user
+    @password = password
+    mail to: @user.email, subject: "Tu passwod en cursame"
+  end
+
 end

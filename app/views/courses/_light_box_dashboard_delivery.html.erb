@@ -6,9 +6,9 @@
     </div>
     <div class="body_l" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-	      <span class="nombreCrit"><%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
+	      <span class="nombreCrit" id = "i_rub_l_<%= assignment.id%>"><%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
 	 <%else%>
-	     <span class="rate"><%= assignment.accomplishment %>%</span></br>
+	     <span class="rate"  id = "i_rub_l_<%= assignment.id%>"><%= assignment.accomplishment %>%</span></br>
      <%end%>
      <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>

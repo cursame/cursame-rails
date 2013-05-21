@@ -30,16 +30,47 @@
         <div id="box-profile-info" class="basic-lateral-box margin-top">
             <li class="aboutme"><%= @user_l.bios %></li>
             <li class="mail"> <%= @user_l.email %></li>
-            <li class="twitter"><%= @user_l.facebook_link %> </li>
-            <li class="facebook"><%= @user_l.twitter_link%></li>
-            <li class=""><%=link_to "editar usuario",  edit_user_registration_path %></li>
+            <li class="twitter"><%= @user_l.twitter_link %> </li>
+            <!--<li class="facebook"><%#= @user_l.facebook_link%></li>-->
+            <% if current_user.id == @user_l.id%><li id="edit-user"><%=link_to "editar usuario",  edit_user_registration_path %></li><%end%>
 
         </div>
-
+        <div class="head_banner_style_user">
+               <div class="sup_track">
+               <div class="track">
+               <%= image_tag('track.png')%>
+               </div>
+               <div class="track_text">
+                   <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
+                    </p>
+               </div>
+               </div>
+           </div>
 
         <div id="box-course" class="basic-lateral-box" >
             <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
         </div>
+        
+        <a class="help " id="help_courses"><%= image_tag('help.png')%></a>
+           <script>
+                    $('#help_courses').click(function() {
+                        $('#courses_help').toggle('drop', 400);
+                        if($("#courses_help").css( 'visibility')=="hidden"){
+                               $('#content_video_video_courses').html('');
+                           }
+                           else{
+                              $('#content_video_video_courses').html('<object width="260" height="200" ><param name="movie" value="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
+                           }
+                       });                         
+
+           </script>
+
+           <div class="video_help courses_help" style="display: none" id="courses_help">
+                  <div class="content_video" id="content_video_video_courses">
+
+                  </div>
+           </div>
+           
          <%# if @user.id == current_user.id %>
             <%#= link_to "Solicitudes de amistad", friendships_path%>
             <%#else%>
@@ -102,7 +133,29 @@
                 </div>-->
             </div>
         </div>
+        
+        <a class="help  friend_user_help" id="help_friends"><%= image_tag('help.png')%></a>
+            <script>
+                     $('#help_friends').click(function() {
+                         $('#friends_help').toggle('drop', 400);
+                         if($("#friends_help").css( 'visibility')=="hidden"){
+                                $('#content_video_video_friends').html('');
+                            }
+                            else{
+                               $('#content_video_video_friends').html('<object width="260" height="200" ><param name="movie" value="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
+                            }
+                        });                         
+
+            </script>
+
+            <div class="video_help friend_user_help" style="display: none" id="friends_help">
+                   <div class="content_video" id="content_video_video_friends">
+
+                   </div>
+            </div>
     </div>
+    
+    
 
     <!-- Content -->
     <div id="box-stream-post">
@@ -112,6 +165,12 @@
         <div id="timeline">
           <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
         </div>
+        <!-- inicio de joyride -->
+        <% if show_joyride(2) == '0' %>
+           <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall} %>
+        <% end %>       
+        <!-- fin de joyride -->
+
         <!-- fin timeline -->
         <%= will_paginate(@wall) %>
 

@@ -31,7 +31,7 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'  || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
@@ -42,6 +42,18 @@ class HomeController < ApplicationController
         #format.html
         format.js
       end
+    end
+  end
+
+  def finish_tour
+    user = current_user
+    last_info = user.tour_info
+    pos = params[:data].to_i
+    info = last_info[0...pos] + "1" + last_info[pos+1..last_info.length]
+    user.tour_info = info
+    user.save!
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -111,6 +123,18 @@ class HomeController < ApplicationController
        respond_to do |format|
          format.js
        end
+     end
+     
+     def editing_n
+       @notiv = current_user.notifications.where(:active => true)
+       @notiv.each do |noti|
+         noti.active = false
+         noti.save
+       end
+       @user = current_user
+         respond_to do |format|
+            format.js
+          end
      end
 
   protected

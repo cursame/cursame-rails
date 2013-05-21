@@ -1,5 +1,5 @@
 <div id="nsdmenu">
-		<h1>Miembros del curso <%= @course.members_in_courses.count %></h1>
+		<h1>Miembros del curso <%= @course.members_in_courses.count %>    <%= link_to "Regresar al curso ", course_path(@course.id)%></h1>
 </div>
 
 <% if current_role == "admin"%>

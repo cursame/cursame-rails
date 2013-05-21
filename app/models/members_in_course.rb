@@ -1,4 +1,3 @@
-
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
@@ -18,12 +17,11 @@ class MembersInCourse < ActiveRecord::Base
     mail = Notifier.new_member_in_course(self,self.course)
     mail.deliver
 =end
+    if self.owner.nil? then
+      Notification.create(:user => self.user, :notificator => self.course, :kind => 'user_accepted_in_course')
+    end
   end
 
-
-  def deliveries
-    #return Delivery.where()
-  end
 
   #
   #
@@ -36,14 +34,15 @@ class MembersInCourse < ActiveRecord::Base
     end
     course.surveys.each do |response|
       user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id, self.user_id)
-      if (user_survey.nil?) then
-        return 0.0
+      user_survey_result = 0
+      if (!user_survey.nil?) then
+        if user_survey.result.nil? then
+          user_survey.evaluation
+          user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
+        end
+        user_survey_result = user_survey.result
       end
-      if user_survey.result.nil? then
-        user_survey.evaluation
-        user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
-      end
-      evaluationSurveys += user_survey.result
+      evaluationSurveys += user_survey_result
     end
     evaluationSurveys = evaluationSurveys/course.surveys.size
     return evaluationSurveys.to_i
@@ -55,14 +54,15 @@ class MembersInCourse < ActiveRecord::Base
   def evaluationDeliverys
     course = Course.find(self.course_id)
     evaluationSurveys = evaluationSurveys
-
     assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id)
     evaluationDeliverys = 0.0
     if !assignments.nil? then
       assignments.each do |response|
-        evaluationDeliverys += response.accomplishment.to_f
+        porcent_of_evaluation = response.delivery.porcent_of_evaluation.to_f/100.0
+        evaluationDeliverys += response.accomplishment.to_f * porcent_of_evaluation
       end
     end
+
     return evaluationDeliverys.to_i
   end
 
@@ -94,10 +94,10 @@ class MembersInCourse < ActiveRecord::Base
       assignments_array[i] =  Assignment.find_by_delivery_id_and_user_id(deliveries[i].id,self.user_id)
     end
     table_member[1] = assignments_array
+    delivery_param_evaluation = course.delivery_param_evaluation.to_f/100.0
     evaluation_total_array = Array.new
     evaluation_total_array[0] = course.delivery_param_evaluation
-    evaluation_total_array[1] = self.evaluationDeliverys
-    delivery_param_evaluation = course.delivery_param_evaluation.to_f/100.0
+    evaluation_total_array[1] = self.evaluationDeliverys * delivery_param_evaluation
     table_member[2] = evaluation_total_array
     return table_member
   end
@@ -151,4 +151,72 @@ class MembersInCourse < ActiveRecord::Base
     return false
   end
 
+  def self.import(file,network,course)
+    arrayErrores = Array.new
+    count = 1
+
+    begin
+      file.path
+    rescue NoMethodError
+      return arrayErrores.push({:line => 0, :message => "No selecciono un archivo"})
+    end
+
+    CSV.foreach(file.path, headers: true) do |row|
+      if !row["id"].nil? then
+        member_in_course = find_by_id(row["id"]) || new
+      else
+        member_in_course = new
+      end
+
+      errors = false
+
+      hash = row.to_hash
+      email = hash.delete("Email")
+
+      user = User.find_by_email(email)
+
+      if !email.nil? then
+        if user.nil?
+          arrayErrores.push({:line => count, :message => "El correo no pertenece a algun usuario activo."})
+          errors = true
+        end
+      else
+        arrayErrores.push({:line => count, :message => "No se especifico un correo"})
+        errors = true
+      end
+
+      owner = hash.delete("Propietario")
+
+      owner.downcase! if !owner.nil?
+      owner.strip! if !owner.nil?
+
+      if owner != "0" and owner != "1" then
+        arrayErrores.push({:line => count,:message => "No se especifico si es propietario o no del curso" })
+        errors = true
+      elsif owner == "0" then
+          owner = true
+      else
+        owner = nil
+      end
+
+      if !errors then
+        begin
+          member_db = MembersInCourse.find_by_user_id_and_course_id_and_network_id(user.id,course.id,network.id)
+          member_in_course = member_db if !member_db.nil?
+          member_in_course.user_id = user.id
+          member_in_course.course_id = course.id
+          member_in_course.accepted = true
+          member_in_course.owner = owner
+          member_in_course.network_id = network.id
+          member_in_course.active_status = true
+          member_in_course.save!
+        rescue ActiveRecord::RecordInvalid => invalid
+          invalid.record.error.each do |error|
+            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s })
+          end
+        end
+      end
+    end
+    return arrayErrores
+  end
 end

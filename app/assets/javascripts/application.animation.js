@@ -70,6 +70,11 @@ $(document).ready(function() {
         }
         tmpGetElementId = getElementId;
     });
+    /**
+     * animacion para el area de calendario|entregas|cursos antigus
+     * @param  {id} elementHide el elemento que se anima
+     * @return {true} La animación de los elementos
+     */
     function closeBannerAnimation(elementHide){
         $('#banner-profile').animate({
             height: defaultBannerHeight+'px'
@@ -92,6 +97,7 @@ $(document).ready(function() {
         $('#side-bar').animate({
             padding: slideBarPaddValue + ' 0px 0px 0px'
         }, time);
+
     }
     function closeAndOpenBannerAnimation( elementHide, elementShow, bannerProfileHeight , slideBarPaddValue ){
         $('#banner-profile').animate({
@@ -110,8 +116,9 @@ $(document).ready(function() {
         $('#side-bar').animate({
             padding: '0px 0px 0px 0px'
         }, time);
-        if(onLoadElement=="calendar")
+        if(onLoadElement=="calendar"){
             initCalendar();
+        }
     }
 
     var initBool = true;
@@ -189,6 +196,7 @@ $(document).ready(function() {
             marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
+            // goFront('#post-forms','.profile-post-box');
         });
         $('#post-forms').animate({
             height: $( hrefClean ).height()
@@ -197,6 +205,7 @@ $(document).ready(function() {
         $( hrefClean ).animate({
             opacity: 1
         }, time);
+        // goFront('#post-forms','.profile-post-box');
         return false;
     });
     //Cancel btns
@@ -204,6 +213,8 @@ $(document).ready(function() {
         $(value).find('#cancel-post-form').click(function() {
 
             resetForm($(value).find('form'));
+
+            goBack('#post-forms','.profile-post-box');
 
             $('#post-forms').animate({
                 height: '0'

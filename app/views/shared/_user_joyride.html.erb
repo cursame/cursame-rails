@@ -1,0 +1,65 @@
+ <!-- Tip Content -->
+    <ol id="joyRideTipContentU" style="display:none">
+      <li  data-text="Siguiente" class="custom">
+        <h2>Bienvenido a tu perfil</h2>
+        <p>En este lugar podras ver todo lo que pasa en tu red cursame.</p>
+      </li>
+      <li data-id="noticce" data-button="Siguiente" data-options="tipLocation:top;tipAnimation:fade">
+        <h2>Notificaciones</h2>
+        <p>Esta es el area de notificaciones.</p>
+      </li>
+      <li data-id="box-user-credential" data-button="Siguiente" data-options="tipLocation:right">
+        <h2>Perfil</h2>
+        <p>Aqui ver la foto de tu perfil.</p>
+      </li>
+
+      <li data-id="edit-user" data-button="Siguiente" data-options="tipLocation:right">
+        <h2>Editar perfil</h2>
+        <p>Aqui puedes editar tu perfil.</p>
+      </li>
+
+      <li data-id="edit-user" data-button="Siguiente" data-options="tipLocation:right">
+        <h2>Editar perfil</h2>
+        <p>Aqui puedes editar tu perfil.</p>
+      </li>
+
+      <li data-id="box-course" data-button="Siguiente" data-options="tipLocation:right">
+        <h2>Cursos</h2>
+        <p>Esta es el area de tus cursos.</p>
+      </li>
+
+      <li data-id="tabs-friends-1" data-button="Terminar">
+        <h2>Amigos</h2>
+        <p>Aqui encontraras un listado de tus amigos</p>
+      </li>
+
+      <li data-id="post-forms" data-button="Siguiente" data-options="tipLocation:right">
+        <h2>Creación de contenido</h2>
+        <p>Esta es el area de creación de contenido.</p>
+      </li>
+      <li data-id="timeline" data-button="Terminar" data-options="tipLocation:right">
+        <h2>Publiciones</h2>
+        <p>Aqui encontraras todas las publicaciones de la red.</p>
+      </li>
+    </ol>
+
+
+
+<script>
+  $('#joyRideTipContentU').joyride({
+          autoStart : true,
+          postStepCallback : function (index, tip) {
+          if (index == 2) {
+            $(this).joyride('set_li', false, 1);
+          }
+        },
+        'postRideCallback': function (argument) {
+          var data ={
+              data:2
+          };
+          $.get('/home/finish_tour',data,null,"script");
+        },
+        // modal:true,
+        expose: true
+        });
+</script>

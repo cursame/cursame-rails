@@ -36,7 +36,8 @@ class NetworksController < ApplicationController
     #@courses = Course.where(:network_id => current_network.id, :active_status => true).limit(7)
     @courses = current_user.members_in_courses.limit(7)
     @ccc = current_user.courses.where(:network_id => current_network.id)
-    @count_course_iam_member =  @ccc.where(:active_status => true).count
+    @count_course_iam_member =  MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+    #@ccc.where(:active_status => true).count
 
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
 
@@ -45,7 +46,7 @@ class NetworksController < ApplicationController
     @id = params[:id]
     @page = params[:page].to_i
     # @wall = current_network.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = current_network.walls.search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = current_network.publications(current_user.id).search(@search,@id).paginate(:per_page => 10, :page => params[:page])
     if request.xhr?
       respond_to do |format|
         format.js
@@ -146,9 +147,33 @@ class NetworksController < ApplicationController
   end
 
   def network_comunity
-    @network_users = current_network.users
     user = current_user
-    @network_users = @network_users.reject { |x| x.id == user.id }
+    network = current_network
+    @possible_friends = user.possible_friends(network)
+    # All users in the current_network without friend request
+    @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
+
+    @friends = user.friendships
+    @friends = @friends.map {
+      |friendship|
+      if friendship.accepted then
+        [friendship.friend, "friend"]
+      else
+        [friendship.friend,"friend_requested"]
+      end
+    }
+
+    @inverse_friends = user.inverse_friendships
+    @inverse_friends = @inverse_friends.map {
+      |friendship|
+      if friendship.accepted then
+        [friendship.user, "friend"]
+      else
+        [friendship.user, "accept_request"]
+      end
+    }
+    @network_users = @possible_friends + @friends + @inverse_friends
+    @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
   end
 
 end

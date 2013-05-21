@@ -8,12 +8,12 @@
   
       <% courses.deliveries.each do |delivery| %>
         <% delivery.events.each do |event|%> 
-         
+         <% @description = event.description.delete("\r\n/\n/\r") %>
          <script type='text/javascript'>
                 event_list.push(
                  {
                  title : '<div class="calendarHome"><span style="font-size:16px;display:block;text-transform:capitalize;"><%= event.title %></span>',
-                 description: '<span style="color:#fff;"><%= event.description%></span>',
+                 description: '<span style="color:#fff;"> "<%= @description.to_s %>" </span>',
                  start :  '<span style="color:#fff;"><%= event.starts_at%></span>',
                  end :  '<span style="color:#bbb;display:table;margin-bottom:10px;font-weight:lighter;"><%= event.ends_at%></span></div>'
                  })

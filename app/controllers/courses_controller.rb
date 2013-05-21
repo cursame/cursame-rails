@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = @course.walls.search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     
     if request.xhr?      
       respond_to do |format|
@@ -137,7 +137,8 @@ class CoursesController < ApplicationController
         @course_count = Course.count
         @ccc = current_user.courses.where(:network_id => current_network.id)
         @count_course_iam_member =  @ccc.where(:active_status => true).count
-        @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
+        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+        #current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
         #format.html { redirect_to courses_url }
         format.js
@@ -213,10 +214,11 @@ class CoursesController < ApplicationController
     else 
       if @member
         if @member.accepted
-          respond_to do |format|
-            format.html # show.html.erb
-            format.json { render json: @course }
-          end
+          # respond_to do |format|
+          #   format.js
+          #   format.html # show.html.erb
+          #   format.json { render json: @course }
+          # end
         else
          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
         end
@@ -276,6 +278,115 @@ class CoursesController < ApplicationController
   end
 
   def dashboard_deliver
+  end
+  
+  def course_ki_line
+      @course = Course.find(params[:id])
+      deliveries = []
+      assignmentss = []
+      surveyss = []
+      
+      count_deliveries =  @course.deliveries.count
+      count_surveys =  @course.surveys.count
+      
+      counte_fact = count_deliveries + count_surveys
+      
+      
+      @course.deliveries.each do |del|
+        
+        if del.user.avatar.blank?
+          @avatar = "/assets/#{del.user.image_avatarx}"
+        else
+          @avatar = del.user.avatar.profile
+          
+        end
+        
+        
+        deliveries.push(
+          {
+              startDate: del.publish_date,
+			        endDate: del.end_date,
+              headline:"#{del.title}",
+              text:" Tarea: #{del.description}",
+              asset:
+              {
+                  media: @avatar,
+                  credit:"#{del.user.name}",
+                  caption:"#{@course.title}"
+              }
+          }
+          
+       
+        )
+        
+        
+         del.assignments.each do |as|
+           if as.user.avatar.blank?
+             @avatar_assignment = "/assets/#{as.user.image_avatarx}"
+           else
+             @avatar_assignment = as.user.avatar.profile
+
+           end
+            assignmentss.push(
+                {
+                    startDate: as.created_at,
+      			        endDate: as.created_at,
+                    headline:"#{as.title}",
+                    text:"Tarea entregada: #{as.brief_description}",
+                    asset:
+                    {
+                        media: @avatar_assignment,
+                        credit:"#{as.user.name}",
+                        caption:"#{@course.title}"
+                    }
+                }
+            
+            )
+          end
+        
+      end
+      
+      @course.surveys.each do |survey|
+          if survey.user.avatar.blank?
+            @avatar = "/assets/#{survey.user.image_avatarx}"
+          else
+            @avatar = survey.user.avatar.profile
+
+          end
+          surveyss.push(
+              {
+                  startDate: survey.created_at,
+    			        endDate: survey.created_at,
+                  headline:"#{survey.name}",
+                  text:"Cuestionario: #{survey.state}",
+                  asset:
+                  {
+                      media: @avatar_assignment,
+                      credit:"#{survey.user.name}",
+                      caption:"#{@course.title}"
+                  }
+              }
+          
+          )
+      end
+      if counte_fact != 0
+      respond_to do |format|
+      format.html    
+      format.json { render json:
+        {
+        timeline: {
+                      headline:@course.title,
+                      type:"default",
+                      text: "Linea del tiempo del curso #{@course.title} ",
+                      startDate:"#{@course.init_date}",
+                      
+                       date: deliveries + surveyss + assignmentss
+                                            
+                  }
+        }
+      }
+      end
+      end
   end
 
   ######  formato para responder la jamada de ajax con js
