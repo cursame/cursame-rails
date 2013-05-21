@@ -1,3 +1,11 @@
+<div class="netWorkMenuHeader">
+	<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
+	<div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
+	<span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>
+</div>
+
+<span class="dividerHeader"></span>
+
 <% @network_users.each do |user| %>
      <% @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
      <% @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
@@ -20,16 +28,16 @@
             <%when  @friend %>
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
             <%when  @add_me_friend%>
-                <%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %>
+                <span class="addfriend"><%= link_to "aceptar", friendships_update_friend_path(user.id), :remote => true  %></span>
             <% else %>
             <div id="add_friend<%=user.id%>">
                 <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(user.id), :remote => true%></span>
             </div>
         <%end%>
-    </div><!-- ends add friend -->
+    </div><!-- ends add_friend_comunity -->
 
 
-      </div><!-- ends dscription-comm -->
+      </div><!-- ends place-hldr -->
 
     </div><!-- ends box_comunity -->
     <%end%>

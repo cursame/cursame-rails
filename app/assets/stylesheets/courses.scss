@@ -168,7 +168,7 @@ h3{
     
 }
 
-#notice { position: absolute; color: #608847; font-size: 14px; padding: 0px; margin: 0 auto; text-align: center; font-weight: bold; z-index: 9999; background: #DFF0D8; border: 0px solid #608847; width: 900px; display: inline; height: 0px; }
+#notice { position: absolute; color: #608847; font-size: 14px; padding: 0px; margin: 0 auto; text-align: center; font-weight: bold; z-index: 9999; background: #DFF0D8; border: 0px solid #608847; width: 0px; display: inline; height: 0px; }
 
 #wrong {
 	
@@ -276,12 +276,17 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
 }
 #titleDevSing { background: #fff; padding: 10px; width: 200px; display: block; margin-bottom: 10px; border-right: 2px solid #83B81F; }
 
-.friendBlock { width:150px;height:235px;display:inline-block;border:1px solid #ccc;margin: 0 15px 10px 0; float: left; }
+.friendBlock > .acceptFriend { transition: ease-out all 0.3s; }
+.friendBlock:hover > .acceptFriend { margin-top: -44px; transition: ease-out all 0.3s; }
+
+.friendBlock { width:150px; height:191px; display:block; border:1px solid #ccc; margin: 0 15px 10px 0; float: left; overflow: hidden; transition: ease-out all 0.3s; }
 .friendHead { clear: both!important; color: #969696!important; font-family: HelvLight!important; font-size: 14px!important; margin-top: 10px!important; position: relative!important; display: block!important; line-height: 14pt!important; }
 .friendPhoto { width: 150px; height: 150px; display: block; }
 .friendName { clear: both!important; color: #969696!important; font-family: HelvLight!important; font-size: 14px!important; margin-top: 10px!important; position: relative!important; display: block!important; line-height: 14pt!important; text-align: center; width: 150px; height: 21px; }
-.acceptFriend { color: #fff!important; display: block;}
-.acceptFriend > a { color: #fff; display: block; width: 150px; background: #00AEC1; text-align: center; height: 30px; padding-top: 14px; margin-top: 10px; }
+
+
+.acceptFriend { color: #eee!important; display: block; position: relative; height: 44px; display: block; }
+.acceptFriend > a { color: #fff!important; display: block; width: 126px; background: #00B1C7; text-align: center; height: 22px; padding-top: 6px; margin-top: 16px; margin-left: 12px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
 .acceptFriend > a:hover { background: #0B6AAD; }
 
 .profileLinks { position: absolute; float: right; display: block; margin-top: -45px; width: 887px; text-align: right; }
