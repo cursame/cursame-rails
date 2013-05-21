@@ -20,12 +20,13 @@ class SurveysController < ApplicationController
     @survey.network = current_network
 
     if params[:delivery]
-      courses = Course.find(params[:delivery][:course_ids])
-      @survey.courses.push(courses)
+      params[:delivery][:course_ids].each do |id|
+        @survey.courses.push(Course.find(id))
+      end
     end
 
     respond_to do |format|
-      if @survey.save
+      if @survey.save!
         @az = @survey
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"

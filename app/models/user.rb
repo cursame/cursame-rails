@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
   validates_presence_of :accepted_terms
+  # validates_uniqueness_of :accepted_terms
 
   # roles
   #has_many :permissionings, :dependent => :destroy
@@ -105,7 +106,6 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
-
     @permissionings = self.permissionings.last
      if @permissionings  == nil
         @network=Network.last

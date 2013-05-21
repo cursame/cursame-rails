@@ -162,19 +162,19 @@ task :add_pasteje_sec => :environment do
     #cursos segundo
     hua = Course.create(:title => "Historia Universal A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     hub = Course.create(:title => "Historia Universal B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
-    
+    #16
     mat2a = Course.create(:title => "Matematicas 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     mat2b = Course.create(:title => "Matematicas 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
- 
+    #18
     fisa = Course.create(:title => "Fisica A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     fisb = Course.create(:title => "Fisica B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
-    
+    #20
     fce2a = Course.create(:title => "Formacion Civica y Etica 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     fce2b = Course.create(:title => "Formacion Civica y Etica 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
-    
+    #22
     esp2a = Course.create(:title => "Espanol 2A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     esp2b = Course.create(:title => "Espanol 2B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
-    
+    #24
     #cursos tercero
     hma = Course.create(:title => "Historia de Mexico A", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
     hmb = Course.create(:title => "Historia de Mexico B", :init_date => "01/08/2012", :finish_date => "31/07/2013", :public_status => "private", :network_id => network_id)
