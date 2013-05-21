@@ -12,8 +12,8 @@
 
      <div class="box_comunity">
          <div class="image_acces_comunity">
-             <%= link_to image_tag(array[0].avatar.profile), show_user_path(array[0].personal_url) if (!array[0].avatar.blank?)%>
-             <%= link_to image_tag(array[0].image_avatarx), show_user_path(array[0].personal_url) if  (array[0].avatar.blank?)%>
+             <%= link_to image_tag(array[0].avatar.profile), "users/#{(array[0].personal_url)}" if ( !array[0].avatar.blank?)%>
+             <%= link_to image_tag(array[0].image_avatarx),  "users/#{(array[0].personal_url)}"  if  (array[0].avatar.blank?)%>
          </div><!-- ends image_access -->
 
      <div class="place-hldr">
