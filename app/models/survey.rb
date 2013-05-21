@@ -70,11 +70,7 @@ class Survey < ActiveRecord::Base
         #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       end
     end
-
-    puts "--------------Empieza el guardado de la publicacion de surveys-------------------"
-    puts self.courses.first.users.to_yaml
-    Wall.create!(:publication => self, :network => self.network, :courses => self.courses, :users => users)
-    puts "---------------------------------------------------------------------------------"
+    Wall.create!(:publication => self, :network => self.network, :courses => self.courses, :users => self.courses.first.users)
     #
     # Cuando se crea el survey, se le notifica a aca miembro de los cursos que tiene el survey
     #
