@@ -10,10 +10,10 @@
           <ul id="banner-btns" class="list-header">
             <% permitted_to? :create, :courses do %>
 
-            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
-            <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
-            <li class="calif" get-to="#entregas" move-sidebar-height="105px">Tareas</li>
             
+            <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
+            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
+            <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
              <% end %>
             <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
 
@@ -56,20 +56,28 @@
           </div>
           <div  class="menu-course  active" id="entregas"    style="height:500px;">
               <div class="arco_course_deliver">
-                  <h1>Entregas</h1>
+                  <h1>Tareas</h1>
+                   <span class="deactive">Exámenes</span>
+
                   <div class="content_delivery">
                   
                    <% @course.deliveries.each do |delivery|%>
                   
                    <div class="delivery_f">
-                     <div class="delivery_container">
+                     <div class="delivery_container" onclick="OpenStatus()">
                       <div class="title"><%= delivery.title %></div>
                       <div class="dates"><%= delivery.publish_date %>
                                          <%= delivery.end_date %></div>
-                      <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"><%= image_tag('ir-a.png') %></div></div>
+                      <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"></div></div>
                      
                       </div>
-          
+                      
+                      <script>
+                       	   $('.delivery_f').click(function() {
+	                       	   $('#so_open<%=delivery.id%>').toggle('blind', function() {
+	                       	   });
+                       	   });
+                      </script>
                   
                        <script>
                            $('#opentag<%=delivery.id%>').click(function() {
@@ -88,13 +96,13 @@
                        </div>
                    </div>
                       
-                   <%end%>      
-                  
+                   <%end%>
                  </div>
                  
                  <div class="survey_f"></div>
                  
-                  <div   class="tcg">
+                 
+                  <div class="tcg">
                       <div id="tarea_en_carga">
                       </div>
                   </div>
