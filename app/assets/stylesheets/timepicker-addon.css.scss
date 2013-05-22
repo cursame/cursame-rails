@@ -1,10 +1,89 @@
+.ui-timepicker-div{
+	padding:2px;
+}
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; margin-top:20px;}
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
 .ui-timepicker-rtl{ direction: rtl; }
-.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl { text-align: right; padding:10px;}
 .ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+
+// ui_tpicker_hour_slider ui-slider ui-slider-horizontal  ui-widget-content 
+
+/*
+ * jQuery UI Slider 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { 
+	border-radius: 25px;
+    width: 240px;
+    position: absolute;
+    height: 13px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f9f9f9 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f9f9f9)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f9f9f9 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f9f9f9 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f9f9f9 100%); /* IE10+ */
+    background: linear-gradient(top,  #ffffff 0%,#f9f9f9 100%); /* W3C */
+
+    -webkit-box-shadow: inset 0px 1px 5px #c3c3c3;
+    -moz-box-shadow:    inset 0px 1px 5px #c3c3c3;
+    box-shadow:         inset 0px 1px 5px #c3c3c3;
+
+
+    //box-shadow: inset 0 1px 5px 0px rgba(0, 0, 0, .5), 0 1px 0 0px rgba(250, 250, 250, .5);
+    border: 1px solid #64c2d2;
+ }
+.ui-slider .ui-slider-handle {	
+    position: absolute;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background: url('/assets/icons/handle.png') no-repeat 50% 50%;
+    font-weight: bold;
+    color: #1C94C4;
+    outline: none;
+    top: -6px;
+    margin-left: -12px;
+}
+.ui-slider .ui-slider-range { 
+	background: #72d2e6; /* Old browsers */
+    background: -moz-linear-gradient(top,  #72d2e6 0%, #6abfd5 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#72d2e6), color-stop(100%,#6abfd5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #72d2e6 0%,#6abfd5 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #72d2e6 0%,#6abfd5 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #72d2e6 0%,#6abfd5 100%); /* IE10+ */
+    background: linear-gradient(top,  #72d2e6 0%,#6abfd5 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#72d2e6', endColorstr='#6abfd5',GradientType=0 ); /* IE6-9 */
+    position: absolute;
+    border: 1px solid #3c98a8;
+    top: -1px;
+    left: -1px;
+    height: 100%;
+    border-radius: 25px;
+    -webkit-box-shadow: inset 0px -2px 5px #5facbf;
+    -moz-box-shadow:    inset 0px -2px 5px #5facbf;
+    box-shadow:         inset 0px -2px 5px #5facbf;
+}
+
+.ui_tpicker_hour_slider{
+	width: 130px;
+}
+.ui_tpicker_minute_slider{
+	width: 130px;
+}
+.ui-datepicker-buttonpane{
+	margin-top:10px;
+}

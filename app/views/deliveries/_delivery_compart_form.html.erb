@@ -70,15 +70,14 @@ $(document).ready(function() {
   $( "#delivery_publish_date, #delivery_end_date" ).datetimepicker({
     inline: false,
     minDate: 0,
+    hourMin: 0,
+    hourMax: 23,
+    controlType: 'select',
     showOtherMonths: true,
     dateFormat: 'dd/mm/yy',
     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
   });
-
-  // $("#create_delivery_form").on('click',function(){
-  //   mask('#new_delivery_form','Cargando ...');
-  // });
 });
 </script>
 
