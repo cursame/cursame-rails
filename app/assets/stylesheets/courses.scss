@@ -200,7 +200,8 @@ h3{
 #configuration h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 20px 10px 10px 17px; background: rgba(252,252,252,0.2) url(../assets/tool.png) no-repeat center right; }
 #configurationing h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 16px 10px 13px 17px!important; background: rgba(252,252,252,0.2) url(../assets/) no-repeat center right; font-size: 20px; }
 .fixform { margin-bottom: 20px!important; }
-.form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 0.9); }
+.califHeader { background: #00ADC4; width: 764px; padding: 20px 30px; text-align: center; height: 16px; margin-left: -20px; margin-top: -34px; font-size: 20px; text-transform: uppercase; display: inline-block; position: absolute; }
+.form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 0.9); height: 346px; overflow: auto; }
 .form-course input:focus { border: 1px solid #6AB2BF!important; }
 .form-course p { clear: both; color: #969696; font-family: HelvLight; font-size: 14px; margin-top: 10px; position: relative; display: block; line-height: 14pt!important; }
 .form-course input[type="file"] { background: transparent; }
@@ -262,14 +263,42 @@ float: right; display: inline-block; z-index: 1; margin-left: 754px; margin-top:
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ ajax tareas ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 
-.homeworkCalf { }
-input.nombreCrit { width: 300px!important; padding: 10px!important; }
-.rate { background: #00ADC4; color: #fff; font-size: 20px; padding: 3px 10px; display: inline-block; text-align: center; float: left; height: 60px; width: 50px; margin-top: -50px; vertical-align: middle; }
+.homeworkCalf { width: 300px; text-align: center; clear: both; }
+input.nombreCrit { width: 230px; padding: 10px!important; }
+.rate { 
+	background: #00ADC4;
+	color: #fff;
+	font-size: 20px;
+	padding: 27px 10px 19px 10px;
+	display: inline-block;
+	text-align: center;
+	float: left;
+	width: 280px;
+	margin-top: -64px;
+	vertical-align: middle;
+ }
+.helpText { 
+	width: 260px;
+	text-align: center;
+	color: #333;
+	display: block;
+	padding: 8px 20px;
+ }
+.inputCalif {
+	width: 230px;
+	padding: 10px;
+	margin-left: 23px;
+}
+.submitCalif {
+	margin-left: 93px;
+	position: relative;
+	display: block;
+}
 .header_l { width: 400px; float: right; display: inline-block; }
-.usermenuTitle { color: #969696; font-size: 16px; margin-top: 10px; display: block; }
+.usermenuTitle { color: #333; font-size: 16px; margin-top: 18px; display: block; width: 300px; text-align: center; text-transform: uppercase; }
 .userDescription { color: #969696; font-size: 14px; margin-top: 10px; display: block; }
-.areaCrit { padding: 10px; }
-.titleCrit { color: #969696; font-size: 14px; margin: 12px 0 5px; display: block; }
+.areaCrit { padding: 10px; width: 230px; }
+.titleCrit { color: #969696; font-size: 14px; display: block; width: 270px; margin: 15px auto 4px auto; /*margin: 12px 0 5px;*/ }
 .homeworkCalf .default-form select {
 	width: 200px;
 }
@@ -500,7 +529,7 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
            background:#eaeaea;
            width:300px;
            height:400px;
-           overflow:auto;
+           overflow: scroll;
            margin-left:-10px;
       	   display: inline-block;     
        }
@@ -539,23 +568,25 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
 		color: #333;
 		font-size: 18px;
 		height: 23px;
-		background: rgba(238,238,238,0.6);
+		background: rgba(226,224,224,1);
 		width: 89px;
 		padding: 14px 12px 10px 19px;
 		margin-top: -47px;
-		position: absolute;
+		position: relative;
 		display: block;
 		margin-left: 96px;
 		transition: ease-out all 0.3s;
+		float: right;
+		margin-right: 188px;
     }
 	
-	& .deactive:hover {
+	/* & .deactive:hover {
 		background: #000;
 		cursor: pointer;
 		background: rgba(238,238,238,1);
 		transition: ease-out all 0.3s;
 		box-shadow: inset -7px -8px 12px -5px #ccc;
-	}
+	} */
 }
 
 

@@ -19,7 +19,7 @@ $color-dp-to: #e8eef5;
   -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
-  background: rgba(68, 158, 174, 0.7);
+  background: rgba(241,243,246,0.8);
   border: solid 4px rgba(68, 158, 174, 0.3);
   display: none;
   @include border-radius;
@@ -154,6 +154,14 @@ $color-dp-to: #e8eef5;
   margin-bottom: 0;
 }
 
+.fc-cell-overlay { height: 55px!important; }
+
+.fc-sun, .fc-mon, .fc-tue, .fc-wed, .fc-thu, .fc-fri, .fc-sat {
+
+}
+.fc-day-number { 
+	background: #fff!important; color: #000; font-weight: bold; width: 58px; height: 43px; display: inline-block; overflow: scroll; margin: 1px;
+ }
 
 
 /*

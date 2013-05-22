@@ -40,6 +40,7 @@ class Discussion < ActiveRecord::Base
 
   after_create do
     #con esto se guarda en wall
+    users_notifications = []
     if self.courses.count == 0 # si es publica @todo aqui hay volverla publica
       Wall.create( :publication => self, :network => self.network, :public => true)
     else
@@ -50,25 +51,35 @@ class Discussion < ActiveRecord::Base
           if member.accepted == true
              user = member.user
             if user.id != self.user_id
-              Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
+              users_notifications.push(user.id)
+              #Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
             end
           end
         end
       end
-      Wall.create! :users => users, :publication => self, :network => self.network, :courses => self.courses
+      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
+                         :notifications_kind => 'new_discussion_on_course', :users_id => users_notifications.to_s})
+      Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
     end
   end
 
   before_destroy do
-    walls = Wall.where(:publication_type => "Discussion", :publication_id => id)
-    notifications = Notification.where(:notificator_type => "Discussion", :notificator_id => id)
-
-    walls.each do |wall|
-      wall.destroy
+    ActiveRecord::Base.transaction do
+      notifications = Notification.where(:notificator_type => "Discussion", :notificator_id => id)
+      walls = Wall.where(:publication_type => "Discussion", :publication_id => id)
+    
+      walls.each do |wall|
+        wall.destroy
+      end
+      
+    
+      notifications.each do |notification|
+        notification.destroy
+      end
     end
-    notifications.each do |notification|
-      notification.destroy
-    end
+    
+    #UtilityHelper.call_rake(:destroy_notifications, {:notificator_type => "Discussion", :notificator_id => self.id.to_s})
+    #UtilityHelper.call_rake(:destroy_walls, {:publication_type => "Discussion", :publication_id => self.id.to_s})
   end
 
   def state

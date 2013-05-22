@@ -55,28 +55,37 @@ class Course < ActiveRecord::Base
       Wall.create :users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true
       # owners = self.users
       # owners_id = owners.map{|x| x.id}
-      self.network.users.each do
-        |user|
-        # if !owners_id.include?(user.id)
-        Notification.create(:user => user, :notificator => self, :kind => 'new_public_course_on_network')
-        # end
-      end
+      
+      users = self.network.users
+      users = users.map{|x| x.id}
+      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
+                         :notifications_kind => 'new_public_course_on_network', :users_id => users.to_s})
+      
+      #self.network.users.each do
+      #  |user|
+      #  # if !owners_id.include?(user.id)
+      #  Notification.create(:user => user, :notificator => self, :kind => 'new_public_course_on_network')
+      #  # end
+      #end
     end
   end
 
   before_destroy do
-
-    walls = Wall.where(:publication_type => "Course",:publication_id => id)
-
-    walls.each do |wall|
-      wall.destroy
+    ActiveRecord::Base.transaction do
+      notifications = Notification.where(:notificator_type => "Course", :notificator_id => id)
+      walls = Wall.where(:publication_type => "Course", :publication_id => id)
+    
+      walls.each do |wall|
+        wall.destroy
+      end
+      
+    
+      notifications.each do |notification|
+        notification.destroy
+      end
     end
-
-    notifications = Notification.where(:notificator_id => id, :notificator_type => "Course")
-
-    notifications.each do |notification|
-      notification.destroy
-    end
+    #UtilityHelper.call_rake(:destroy_notifications, {:notificator_type => "Course", :notificator_id => self.id.to_s})
+    #UtilityHelper.call_rake(:destroy_walls, {:publication_type => "Course", :publication_id => self.id.to_s})
   end
 
   def self.import(file,network)

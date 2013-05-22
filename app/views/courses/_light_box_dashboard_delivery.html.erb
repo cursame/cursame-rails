@@ -6,31 +6,33 @@
     </div>
     <div class="body_l" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-	      <span class="nombreCrit" id = "i_rub_l_<%= assignment.id%>"><%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
+	      <span class="nombreCrit rate" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
 	 <%else%>
-	     <span class="rate"  id = "i_rub_l_<%= assignment.id%>"><%= assignment.accomplishment %>%</span></br>
+	      <span class="rate" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= assignment.accomplishment %>%</b></span></br>
      <%end%>
-     <% assignment.assets.each do |aa|%>
+     	 
+	     <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>
          <% @string =  @file.to_s.split('/').last%>
         <%= link_to simple_format("#{(@string)}"), "http://#{current_network.subdomain}.#{links}#{aa.file}"%>
+        
         
      <%end%>
       <span class="usermenuTitle">Criterios de calificación</span>
         <%= form_for assignment, remote: true   do |assigments_l |%>
             <% if assignment.response_to_the_evaluations.count != 0%>
-                <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
+                 <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
               
-                <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
+                 <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
               
                 <%end%>
             <%else%>
-                 <%=assigments_l.label :calificación%>
-                <%= assigments_l.number_field :rub_calification%>
-            %<%end%>
+                 <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea, :class => 'helpText' %>
+                 <center><%= assigments_l.number_field :rub_calification, :class => 'inputCalif' %></center>
+            <%end%>
             <br />
-          <span class="default-form" style="width:150px;"><%= assigments_l.submit "Calificar tarea"%></span>
+            	<span class="default-form submitCalif"><%= assigments_l.submit "Calificar tarea"%></span>
        <%end%>
-    
+       
    </div>
 </div>

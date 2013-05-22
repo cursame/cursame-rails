@@ -268,6 +268,7 @@ input:-moz-placeholder {
       font-size: 18px; 
       font-weight: bold;
       margin-bottom: 10px;
+      width: 340px!important;
     }
     & .text-discusion{
       padding-left: 10px;
@@ -534,8 +535,8 @@ input:-moz-placeholder {
   }
 
   & .header{
-    background: #e9e9e9;//#ebebef;
-    height: 25px;
+    background: #F1F3F6;//#ebebef;
+    height: 30px;
     @include border-t-right-radius;
     @include border-t-left-radius;
     width: 100%;
@@ -629,6 +630,7 @@ input:-moz-placeholder {
 	    font-size: 18px; 
 	    font-weight: bold;
 	    margin-bottom: 10px;
+	    width: 340px!important;
     }
     
     & .text-discusion{
@@ -1137,7 +1139,7 @@ background-position: left center;
   }
 }
 #box-friends{
-  min-height: 80px;
+  min-height: 72px;
   float: left;
   & .content-avtr{
     margin-bottom: 8px;
@@ -1275,9 +1277,9 @@ background-position: left center;
     font-family: helvbold;
     }
 
-#pdf_link { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }    
-#pdf_link > a { width: 150px; height: auto; padding: 19px 26px 15px 26px; border: 1px solid #ccc; background: #D9360E; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; color: #fff; transition: ease-out all 0.3s; }
-#pdf_link > a:hover { background: #CD2203; transition: ease-out all 0.3s; }
+#pdf_link { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+#pdf_link > a { width: 137px; height: auto; padding: 6px 6px 1px 22px !important; border: 1px solid #ccc; background: #00ADC4; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; color: #fff; transition: ease-out all 0.3s; position: absolute; float: right; display: block; margin-left: 709px; margin-top: -48px; border: 0px; }
+#pdf_link > a:hover { background: #0B6AAD; transition: ease-out all 0.3s; }
 
 #box-titles{
   width: 600px;

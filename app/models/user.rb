@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox, 
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
   :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
 
   # Agredas las relaciones de frienship
@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
      @network = Network.find(@permissionings.network_id)
      @network.subdomain
      end
-     
+
   end
 
 
@@ -270,88 +270,91 @@ class User < ActiveRecord::Base
     rescue NoMethodError
       return arrayErrores.push({:line => 0,:message => "No selecciono un archivo"})
     end
-    CSV.foreach(file.path, headers: true) do |row|
-      count += 1
-      if !row["id"].nil? then
-        user = find_by_id(row["id"]) || new
-      else
-        user = new
-      end
-      hash = row.to_hash
-      network_id = network.id
-      role_id = hash.delete("Role")
 
-      errors = false
+    ActiveRecord::Base.transaction do
+      CSV.foreach(file.path, headers: true) do |row|
+        count += 1
+        if !row["id"].nil? then
+          user = find_by_id(row["id"]) || new
+        else
+          user = new
+        end
+        hash = row.to_hash
+        network_id = network.id
+        role_id = hash.delete("Role")
 
-      if !role_id.nil? then
+        errors = false
 
-        role_id = role_id.downcase.strip
-        role_id = 2 if role_id == "estudiante"
-        role_id = 3 if role_id == "maestro"
-      else
-        arrayErrores.push({ :line => count,:message => "No se especifico un role"})
-        errors = true
-      end
+        if !role_id.nil? then
 
-      if role_id.class != Fixnum then
-        arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
-        errors = true
-      end
-
-      user.email = hash.delete("Email")
-
-      if !user.email.nil? then
-        user.email = user.email.downcase
-        # Checa que el correo sea valido y que no se repita
-        if user.email["@"].nil? || !User.find_by_email(user.email).nil?
-          arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
+          role_id = role_id.downcase.strip
+          role_id = 2 if role_id == "estudiante"
+          role_id = 3 if role_id == "maestro"
+        else
+          arrayErrores.push({ :line => count,:message => "No se especifico un role"})
           errors = true
         end
-      else
-        arrayErrores.push({:line => count, :message => "No hay ningun email especificado"})
-        errors = true
-      end
 
-      # Nombre y apellido en mayusculas
-      user.first_name = user.first_name.capitalize if !user.first_name.nil?
-      user.last_name = user.last_name.capitalize if !user.last_name.nil?
-
-      # Checa que exista el role_id
-      if role_id.nil? then
-        arrayErrores.push({:line => count, :message => "Debes de especificar un role para el usuario" })
-        errors = true
-      end
-
-      if !role_id.nil? then
-        if Role.find_by_id(role_id).nil? then
-          arrayErrores.push({:line => count, :message => "No existe el rol dado"})
+        if role_id.class != Fixnum then
+          arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
           errors = true
         end
-      end
 
-      password = Devise.friendly_token.first(6)
-      charList =  [('a'..'z'),('A'..'Z'),(0..9)].map{ |i| i.to_a }.flatten.map{ |i| i.to_s }
+        user.email = hash.delete("Email")
 
-      personal_url_random = (0...100).map{  charList[rand(charList.length)] }.join
-      user.password = password
-      user.personal_url = personal_url_random
+        if !user.email.nil? then
+          user.email = user.email.downcase
+          # Checa que el correo sea valido y que no se repita
+          if user.email["@"].nil? || !User.find_by_email(user.email).nil?
+            arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
+            errors = true
+          end
+        else
+          arrayErrores.push({:line => count, :message => "No hay ningun email especificado"})
+          errors = true
+        end
 
-      if !errors then
-        begin
-          user.save!
-        rescue ActiveRecord::RecordInvalid => invalid
-          invalid.record.errors.each do |error|
-            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+        # Nombre y apellido en mayusculas
+        user.first_name = user.first_name.capitalize if !user.first_name.nil?
+        user.last_name = user.last_name.capitalize if !user.last_name.nil?
+
+        # Checa que exista el role_id
+        if role_id.nil? then
+          arrayErrores.push({:line => count, :message => "Debes de especificar un role para el usuario" })
+          errors = true
+        end
+
+        if !role_id.nil? then
+          if Role.find_by_id(role_id).nil? then
+            arrayErrores.push({:line => count, :message => "No existe el rol dado"})
+            errors = true
           end
         end
-        if !user.save then
-          arrayErrores.push({:line => count, :message => "Error al guardar"})
-        else
-          # user.confirm!
-          # user.save!
-          Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
-          # mail = Notifier.send_password(user,password)
-          # mail.deliver
+
+        password = Devise.friendly_token.first(6)
+        charList =  [('a'..'z'),('A'..'Z'),(0..9)].map{ |i| i.to_a }.flatten.map{ |i| i.to_s }
+
+        personal_url_random = (0...100).map{  charList[rand(charList.length)] }.join
+        user.password = password
+        user.personal_url = personal_url_random
+
+        if !errors then
+          begin
+            user.save!
+          rescue ActiveRecord::RecordInvalid => invalid
+            invalid.record.errors.each do |error|
+              arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+            end
+          end
+          if !user.save then
+            arrayErrores.push({:line => count, :message => "Error al guardar"})
+          else
+            # user.confirm!
+            # user.save!
+            Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+            # mail = Notifier.send_password(user,password)
+            # mail.deliver
+          end
         end
       end
     end
@@ -414,5 +417,9 @@ class User < ActiveRecord::Base
       average += user_survey.result
     end
     return average/size
+  end
+
+  def send_confirmation_instructions
+    # do nothing
   end
 end
