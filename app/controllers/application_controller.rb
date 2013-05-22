@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :refresh_token_for_google
   helper_method :random
+  helper_method :call_rake
 
   # errores
    # Se declaran los errores personalizados
@@ -31,7 +32,7 @@ class ApplicationController < ActionController::Base
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
-  
+
   def current_network?
       if current_network != nil
            u_u = "#{current_network.subdomain}.#{links}"
@@ -65,7 +66,7 @@ class ApplicationController < ActionController::Base
          @link = 'cursatest.com'
        when Rails.env == 'subtest'
          @link = 'cursalab.com'
-         
+
      end
   end
   #determinate the first redirection url before loggin
@@ -184,9 +185,9 @@ class ApplicationController < ActionController::Base
         #@activity.network_id = 1 #current_network.id
         @activity.save
   end
-  
+
   #### like_compare
-  
+
   def compare_like
   end
   def browser_active
@@ -215,15 +216,16 @@ class ApplicationController < ActionController::Base
     puts "-------------------------------------"
     return User.find(current_user.id).tour_info[tour]
   end
-  
+
   def mobile?
-   # request.user_agent =~ /Mobile|webOS/ 
+   # request.user_agent =~ /Mobile|webOS/
     # request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
     puts request.env["HTTP_USER_AGENT"]
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android|Mobile)/]
 
   end
   helper_method :mobile?
+
   protected
   #roles
   def permission_denied

@@ -7,27 +7,28 @@
             <li class="calendar" get-to="#my_old_courses" move-sidebar-height="105px">Cursos antiguos</li>
             <%end%>
         </ul>
-    </div>
+    </div><!-- ends box-titles -->
 
     <div id="box-titles-content" class="box-titles-content-style">
         <div id="calendar-area" style="height:500px">
 	        	<div id="configurationing">
                     <div class="header">
                         <h1 style="margin-left:10px;padding:2px;width:823px;">Calendario</h1>
-                    </div>
+                    </div><!-- ends header -->
                     <!--
                     <div id="getDay">
 						<span class="month">April</span>
 						<span class="day">19</span>
 					</div>
 					-->
-                </div>
-                <div class="form-course" style="width:811px!important;">
-                <%= render partial: "calendar/calendar_mini"%>
-                <%= render partial: "calendar/list"%>
-                </div><!-- ends configurationing -->
-        </div>
-        <div id="full-deliveries-area" >          
+	            </div><!-- ends configurationing -->
+		        <div class="form-course" style="width:811px!important;">
+		                <%= render partial: "calendar/calendar_mini"%>
+		                <%= render partial: "calendar/list"%>
+	            </div><!-- ends form-course -->
+        </div><!-- ends calendar-area -->
+        
+        <div id="full-deliveries-area">          
             <div>
                 <!--no comentar porque se neutraliza el metodo en ajax-->
                 <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %> 
@@ -36,7 +37,7 @@
           <% @course_for_user = current_user.courses.where(:active_status => true)%>
          	<%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user }%>
           </div>
-        </div>
+        </div><!-- ends full-deliveries-area -->
         
         <div id="my_old_courses">
             <%= link_to "Actualizar información", user_old_courses_path, :remote => true ,:id =>"update_old_courses_information"%>
@@ -45,10 +46,11 @@
                 %>
                 <%= render partial: "courses/old_course",:locals => {:old_course_for_user => @old_course_for_user}%>
             </div>
-        </div>  
+        </div><!-- ends my_old_courses -->
                   
-    </div>
-</div>
+    </div><!-- ends box-titles-content -->
+</div><!-- ends banner-shadow -->
+
 <script>
     $("#full-deliveries-area").on('show',function (argument) {
         $("#update_courses_information").trigger("click",$("#update_courses_information"));

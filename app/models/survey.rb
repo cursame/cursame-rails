@@ -33,14 +33,21 @@ class Survey < ActiveRecord::Base
   end
 
   before_destroy do
-    walls = Wall.where(:publication_type => "Survey", :publication_id => id)
-    notifications = Notification.where(:notificator_type => "Survey", :notificator_id => id)
-    walls.each do |wall|
-      wall.destroy
+    ActiveRecord::Base.transaction do
+      notifications = Notification.where(:notificator_type => "Survey", :notificator_id => id)
+      walls = Wall.where(:publication_type => "Survey", :publication_id => id)
+    
+      walls.each do |wall|
+        wall.destroy
+      end
+      
+    
+      notifications.each do |notification|
+        notification.destroy
+      end
     end
-    notifications.each do |notification|
-      notification.destroy
-    end
+    #UtilityHelper.call_rake(:destroy_notifications, {:notificator_type => "Survey", :notificator_id => self.id.to_s})
+    #UtilityHelper.call_rake(:destroy_walls, {:publication_type => "Survey", :publication_id => self.id.to_s})
   end
 
   before_create do
@@ -61,16 +68,21 @@ class Survey < ActiveRecord::Base
           :course_id => self.course_ids, :network_id => self.network_id)
     users = []
     self.courses.each do |course|
-      users+= course.users
+      #users+= course.users
       course.members_in_courses.each do |member|
         user = member.user
         if self.user_id != user.id then
-          Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course'
+          users.push(user.id)
+          #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course'
         end
         #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       end
     end
-    Wall.create!(:publication => self, :network => self.network, :courses => self.courses, :users => self.courses.first.users)
+
+    UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
+                       :notifications_kind => 'new_survey_on_course', :users_id => users.to_s})
+    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => self.courses.first.users)
+
     #
     # Cuando se crea el survey, se le notifica a aca miembro de los cursos que tiene el survey
     #

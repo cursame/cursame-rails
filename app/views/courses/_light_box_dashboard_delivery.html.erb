@@ -6,14 +6,16 @@
     </div>
     <div class="body_l" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-	      <span class="nombreCrit" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
+	      <span class="nombreCrit rate" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
 	 <%else%>
 	      <span class="rate" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= assignment.accomplishment %>%</b></span></br>
      <%end%>
+     	 
 	     <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>
          <% @string =  @file.to_s.split('/').last%>
         <%= link_to simple_format("#{(@string)}"), "http://#{current_network.subdomain}.#{links}#{aa.file}"%>
+        
         
      <%end%>
       <span class="usermenuTitle">Criterios de calificación</span>
