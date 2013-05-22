@@ -172,6 +172,8 @@ Cursame30Lb::Application.routes.draw do
 
   # confirme user
   post "users/confirm" => "users#confirm", :as => :user_confirm
+  # change password
+  post "users/set_password" => "users#set_password", :as => :set_password
 
   #friends
   #resources :user_friends
