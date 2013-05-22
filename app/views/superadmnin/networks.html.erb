@@ -24,7 +24,7 @@
      <%= f.label :password_confirmation %><br />
      <%= user.password_field :password_confirmation %><br />
      <%= f.label :personal_url %></br>
-     <%= user.text_field :personal_url   %></br>
+     <%= user.check_box :personal_url   %></br>
      
      <%= user.hidden_field :accepted_terms, :value => true %>     
    <%end%>
