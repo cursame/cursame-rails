@@ -7,6 +7,7 @@
 
   <div id="configurationing">
 	  	<h1 style="margin-left:10px; padding:2px;">Calificaciones del curso</h1>
+	  	<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
 
 	  	<div class="form-course fixform" style="padding:20px 20px 41px 20px!important;">
      <!--para poder hacer el render partial-->
@@ -176,7 +177,6 @@
     <h3 align="center">Calificacion: <%=table[2]%></h3>
     </br>
     <%end%>
-    <p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
     
     </div>
   </div>
