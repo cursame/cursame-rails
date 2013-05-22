@@ -268,6 +268,7 @@ input:-moz-placeholder {
       font-size: 18px; 
       font-weight: bold;
       margin-bottom: 10px;
+      width: 340px!important;
     }
     & .text-discusion{
       padding-left: 10px;
@@ -534,8 +535,8 @@ input:-moz-placeholder {
   }
 
   & .header{
-    background: #e9e9e9;//#ebebef;
-    height: 25px;
+    background: #F1F3F6;//#ebebef;
+    height: 30px;
     @include border-t-right-radius;
     @include border-t-left-radius;
     width: 100%;
@@ -629,6 +630,7 @@ input:-moz-placeholder {
 	    font-size: 18px; 
 	    font-weight: bold;
 	    margin-bottom: 10px;
+	    width: 340px!important;
     }
     
     & .text-discusion{
@@ -1137,7 +1139,7 @@ background-position: left center;
   }
 }
 #box-friends{
-  min-height: 80px;
+  min-height: 72px;
   float: left;
   & .content-avtr{
     margin-bottom: 8px;

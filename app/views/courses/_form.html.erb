@@ -1,15 +1,16 @@
 <!-- estilo eliminado style="margin-left:70px;" -->
 <div class="form-course"><!-- estilo en courses.scss -->
-<div style="width:400px; float:left;">
-<%= form_for(@course, :html => { :class => "default-form edit-course"}, :remote => true) do |f| %>
-	<p>Nombre del curso</p>
-    <%= f.text_field :title, :class=>"input-style" %>
-    <p>Nombre del curso</p>
-    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
+	<div style="width:400px; float:left;">
+	<%= form_for(@course, :html => { :class => "default-form edit-course"}, :remote => true) do |f| %>
+		<p>Nombre del curso</p>
+	    <%= f.text_field :title, :class=>"input-style" %>
+	    <p>Nombre del curso</p>
+	    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
+	
+	    <p><%= f.label :public_status, 'Privacidad' %></p>
+	    <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+	</div>   
 
-    <p><%= f.label :public_status, 'Privacidad' %></p>
-    <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-</div>   
 <div class="default-form edit-course" style="width:380px; float:left;">
 
  <!-- <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div> -->
