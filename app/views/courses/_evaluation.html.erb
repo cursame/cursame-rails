@@ -10,8 +10,7 @@
 	  	<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
    </div>
 
-
-
+   <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;width:784px!important;">
 		     <!--para poder hacer el render partial-->
    <%  @course = Course.find(params[:id])%>
    <%  @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id) %>
@@ -20,9 +19,9 @@
 		      <%user = User.find_by_id(member.user_id)%>
 		      <% if !member.owner then%>
 		        <%table = member.doTableCourse%>
-		        <h4><%=user.email%></h4>
-		        </br>
-
+		        <span class="califHeader">Calificacion: <%=table[2]%></span>
+		        <h4 style="margin-top: 45px;"><%=user.email%></h4>
+		        
 		        <table border="1" width="500" cellpadding="3" cellspacing="3">
 		          <tr>
 		            <td>Tarea</td>
@@ -93,16 +92,22 @@
 		          <td><%=table[1][2][2]%></td>
 		        </tr>
 		      </table>
-		      </br>
-		      <h3 align="center">Calificacion: <%=table[2]%></h3>
 		      <%end%>
 		      </br>
 		    <%end%>
+		    </div><!-- ends fixform -->
 		<%else%>
-		  <h3>Calificacion del Curso:</h3>
+
+  <div id="configurationing">
+	  	<h1 style="margin-left:10px; padding:2px;">Calificación del curso</h1>
+	  	<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
+   </div>
+   <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;">
 		  <%user = current_user%>
 		    <%table = @member.doTableCourse%>
-		    <h4><%=user.email%></h4>
+
+		    	<span class="califHeader" style="margin-top:-20px;">Calificacion: <%=table[2]%></span>
+		        <h4 style="margin-top: 45px;"><%=user.email%></h4>
 		    </br>
 		    <table border="1" width="500" cellpadding="3" cellspacing="3">
 		    <tr>
@@ -176,7 +181,5 @@
 		      </tr>
 		    </table>
 		    
-		    </br>
-		    <h3 align="center">Calificacion: <%=table[2]%></h3>
-		    </br>
+		    </div><!-- ends fixform -->
 		    <%end%>
