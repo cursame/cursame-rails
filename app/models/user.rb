@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox, 
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
   :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
 
   # Agredas las relaciones de frienship
@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
      @network = Network.find(@permissionings.network_id)
      @network.subdomain
      end
-     
+
   end
 
 
@@ -414,5 +414,9 @@ class User < ActiveRecord::Base
       average += user_survey.result
     end
     return average/size
+  end
+
+  def send_confirmation_instructions
+    # do nothing
   end
 end

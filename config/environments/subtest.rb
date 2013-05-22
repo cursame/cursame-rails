@@ -71,8 +71,7 @@ Cursame30Lb::Application.configure do
     :port           => '25',
     :authentication => 'plain',
     :user_name      => 'wichobabas',
-    #:password       => 'qor43e95',
-    :password       => 'clave_falsa'
+    :password       => 'qor43e95',
     :domain         => 'mail.cursame.me'
   }
   ActionMailer::Base.delivery_method = :smtp
