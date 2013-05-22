@@ -402,6 +402,15 @@ class CoursesController < ApplicationController
       format.js
     end
   end
+  
+  def course_assignment
+    @assignment = Assignment.find(params[:id])
+     respond_to do |format|
+        #format.html
+        format.json
+        format.js
+      end
+  end
 
   def delivery_menu
     respond_to do |format|

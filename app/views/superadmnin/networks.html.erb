@@ -23,8 +23,10 @@
      <%= user.password_field :password %><br />
      <%= f.label :password_confirmation %><br />
      <%= user.password_field :password_confirmation %><br />
+     <%= f.label :personal_url %></br>
      <%= user.text_field :personal_url   %></br>
      
+     <%= user.check_box :accepted_terms, :value => true %>     
    <%end%>
    
 

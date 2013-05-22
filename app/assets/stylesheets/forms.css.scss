@@ -1153,7 +1153,9 @@
   }
   & .info-comment{
     float: left;
-    margin: 6px 0px 0px 0px;
+    margin: 6px 0px 10px 0px;
+    width: 512px;
+    
     & .username{
       color: #7498ce;
       font-weight: bold;
@@ -1193,14 +1195,17 @@
   width: 580px;
   @include border-b-right-radius;
   @include border-b-left-radius;
+
   & .user-post-child-comment{
     float: left;
     padding: 0px 14px;
     width: 560px;
+    
     & .avatar-child-comment{
       float: left;
       margin: 6px 8px 5px 0px;
     }
+    
     & form{
       float: left;
       & textarea{
@@ -1313,6 +1318,8 @@
 	margin-top: 20px;
 	}
 }
+
+.netWorkMenuHeader h3 { color: #969696!important; font-size: 16px!important; position: absolute; }
 
 .clip { background: transparent; width: 35px; height: 91px; position: relative; float: right; margin-top: -47px; }
 

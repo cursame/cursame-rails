@@ -91,8 +91,6 @@ class Comment < ActiveRecord::Base
     notification_kind = hash[:kind]
 
     if notification_kind["network"]
-
-      a = Time.now
       Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user_id }
       #ActiveRecord::Base.transaction do

@@ -1,5 +1,17 @@
-<h1>All users</h1>
+<div class="netWorkMenuHeader">
+	<h3>Todos los usuarios</h3>
+	<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
+	<div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
+	<span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>
+</div>
 
-<% @user.each do |u|%>
-     <%= link_to "#{u.name} #{u.email}", show_user_path(u.personal_url)%></br>
-<%end%>
+<span class="dividerHeader"></span>
+
+
+
+			<% @user.each do |u|%>
+			     <div class="box_AllUsers">
+				     <%= link_to "#{u.name}", show_user_path(u.personal_url)%>
+				     <!-- <%= link_to "#{u.name} #{u.email} #{u.avatar}", show_user_path(u.personal_url)%> -->
+				</div>			     
+			<%end%>

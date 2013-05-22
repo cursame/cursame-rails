@@ -68,6 +68,7 @@ class Survey < ActiveRecord::Base
           :course_id => self.course_ids, :network_id => self.network_id)
     users = []
     self.courses.each do |course|
+      #users+= course.users
       course.members_in_courses.each do |member|
         user = member.user
         if self.user_id != user.id then
@@ -77,6 +78,7 @@ class Survey < ActiveRecord::Base
         #Notification.create :user => user, :notificator => self, :kind => 'new_survey_on_course', :course_id => course.id
       end
     end
+
     UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
                        :notifications_kind => 'new_survey_on_course', :users_id => users.to_s})
     Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => self.courses.first.users)
@@ -92,6 +94,7 @@ class Survey < ActiveRecord::Base
         mail.deliver
       end
     end
+
   end
 
   def expired?
