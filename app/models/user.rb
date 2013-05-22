@@ -114,10 +114,8 @@ class User < ActiveRecord::Base
      @network = Network.find(@permissionings.network_id)
      @network.subdomain
      end
-
+     
   end
-
-
 
 
   #search por nombre en usuario

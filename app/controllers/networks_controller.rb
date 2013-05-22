@@ -86,8 +86,6 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-
-
             @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
             puts "----------------------"
             puts @permissioning
