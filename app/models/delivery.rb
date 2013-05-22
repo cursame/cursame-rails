@@ -72,16 +72,22 @@ class Delivery < ActiveRecord::Base
   end
 
   before_destroy do
-    walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
-    notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => id)
-    walls.each do
-      |wall|
-      wall.destroy
+    ActiveRecord::Base.transaction do
+      notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => id)
+      walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
+    
+      walls.each do |wall|
+        wall.destroy
+      end
+      
+    
+      notifications.each do |notification|
+        notification.destroy
+      end
     end
-    notifications.each do
-      |notification|
-      notification.destroy
-    end
+    
+    #UtilityHelper.call_rake(:destroy_notifications, {:notificator_type => "Delivery", :notificator_id => self.id.to_s})
+    #UtilityHelper.call_rake(:destroy_walls, {:publication_type => "Delivery", :publication_id => self.id.to_s})
   end
 
   after_create do
@@ -99,18 +105,22 @@ class Delivery < ActiveRecord::Base
 
     #Aqui se crean las notificaciones y los posts del wall :)
     users =[]
+    users_notifications = []
     self.courses.each do |course|
       users+= course.users
       course.members_in_courses.each do |member|
         user = member.user
         if user.id != self.user_id
-          Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
+          users_notifications.push(user.id)
+          #Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
           #se envia mail a cada uno de los miembros de curso
           mail = Notifier.new_delivery_notification(member,self)
           mail.deliver
         end
       end
     end
+    UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
+                       :notifications_kind => 'new_delivery_on_course', :users_id => users_notifications.to_s})
     #validar que no exista doble publicacion para un usuario
     Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
   end
