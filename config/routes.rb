@@ -111,6 +111,8 @@ Cursame30Lb::Application.routes.draw do
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
+  get "course_assignment_l/:id", :to => "courses#course_assignment", :as => :course_assignment_l
+  
 
   #### llada de ajax de editar tarea
 

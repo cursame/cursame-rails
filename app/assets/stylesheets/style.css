@@ -260,20 +260,16 @@ opacity: 0.7;
     padding:2%;   
 }
 
-.head_banner_style{
-    margin-top:100px;
-    margin-bottom:-100px;
-    margin-left:15px;
-    width: 235px;
-    height:50px;
-    font-size:8px;
-    padding:5px;
-    background-image: linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
+.head_banner_style_user { margin-left:15px; width: 234px; height: 60px; font-size:8px; padding:5px; background: #fff; transition: ease-out all 0.3s; border: 1px solid #eee; }
+
+.head_banner_style { margin-top:100px; margin-bottom:-100px; margin-left:15px; width: 234px; height: 60px; font-size:8px; padding:5px; background: #fff; transition: ease-out all 0.3s; border: 1px solid #eee;
+
+/*    background-image: linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
     background-image: -o-linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
     background-image: -moz-linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
     background-image: -webkit-linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
     background-image: -ms-linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
-
+    
     background-image: -webkit-gradient(
     	linear,
     	left bottom,
@@ -282,16 +278,18 @@ opacity: 0.7;
     	color-stop(0.65, rgb(255,168,90)),
     	color-stop(1, rgb(247,178,74))
     );
-    
-   
+        */
 }
 
+.head_banner_style:hover, .head_banner_style_user:hover { background: #eee; cursor: pointer; transition: ease-out all 0.3s; }
+
+/*
 .head_banner_style_user{
        margin-top:30px;
        margin-bottom:5px;
        margin-left:15px;
-       width: 235px;
-       height:50px;
+       width: 234px;
+       height: 60px;
        font-size:8px;
        padding:5px;
        background-image: linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
@@ -310,6 +308,8 @@ opacity: 0.7;
        );
        
 }
+*/
+
 .sup_track{
     padding:5px;
 }

@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
 
   #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
+  validates_presence_of :accepted_terms
   # validates_uniqueness_of :accepted_terms
 
   # roles
@@ -113,10 +114,8 @@ class User < ActiveRecord::Base
      @network = Network.find(@permissionings.network_id)
      @network.subdomain
      end
-
+     
   end
-
-
 
 
   #search por nombre en usuario

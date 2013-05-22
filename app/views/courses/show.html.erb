@@ -8,11 +8,11 @@
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
-              <% permitted_to? :create, :courses do %>
-
-            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
+            <% permitted_to? :create, :courses do %>
             <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
-          <% end %>
+            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
+            <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
+             <% end %>
             <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
 
           </ul>
@@ -52,7 +52,65 @@
               <%= render partial: "courses/evaluation"%>
 
           </div>
+          <div  class="menu-course  active" id="entregas"    style="height:500px;">
+              <div class="arco_course_deliver">
+                  <h1>Tareas</h1>
+                   <span class="deactive">Exámenes</span>
 
+                  <div class="content_delivery">
+                  
+                   <% @course.deliveries.each do |delivery|%>
+                  
+                   <div class="delivery_f">
+                     <div class="delivery_container" onclick="OpenStatus()">
+                      <div class="title"><%= delivery.title %></div>
+                      <div class="dates"><%= delivery.publish_date %>
+                                         <%= delivery.end_date %></div>
+                      <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"></div></div>
+                     
+                      </div>
+                      
+                      <script>
+                       	   $('.delivery_f').click(function() {
+	                       	   $('#so_open<%=delivery.id%>').toggle('blind', function() {
+	                       	   });
+                       	   });
+                      </script>
+                  
+                       <script>
+                           $('#opentag<%=delivery.id%>').click(function() {
+                             $('#so_open<%=delivery.id%>').toggle('blind', function() {
+                             });
+                           });
+                        </script>
+                        
+                       <div class="so_open"id="so_open<%=delivery.id%>" style="display:none">
+                           <% delivery.assignments.each do |assignment|%>
+                           <div class="assignment">
+                             <div class="title"> <%= assignment.title %></div>
+                              <div class="name"> <%= assignment.user.name %><div class="image"> <%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>
+                           </div>
+                           <%end%>
+                       </div>
+                   </div>
+                      
+                   <%end%>
+                 </div>
+                 
+                 <div class="survey_f"></div>
+                 
+                 
+                  <div class="tcg">
+                      <div id="tarea_en_carga">
+                      </div>
+                  </div>
+                  
+              
+              </div>
+              
+            
+            
+          </div>
           <div id="configuration" class="menu-course  active" style="height:500px; color:#fff;">
               <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de curso</h1>
               <%= render :partial => "courses/form"%>
@@ -79,7 +137,9 @@
       <%= @course.title %>
     </div>
   </div>
-     <div id="box-course" class="basic-lateral-box margin-top boxinfocourse">         
+     <div id="box-course"  style="margin-top:155px;"class="basic-lateral-box margin-top boxinfocourse"> 
+         <h2  style="margin-right:-60px; margin-top:6px;"> Información </h2> 
+                 
          <p><b>Sylabus</b><b>:</b>
          <%= @course.silabus %> </p>
          <% permitted_to? :create, :courses do %>
@@ -100,7 +160,7 @@
   
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
-               <h2> Alumnos</h2> 
+               <h2  style="margin-right:-30px;"> Miembros </h2> 
               <% permitted_to? :create, :courses do %>
 
                       <% @course_unaccepted =  @course.members_in_courses.where(:accepted => false).count%>

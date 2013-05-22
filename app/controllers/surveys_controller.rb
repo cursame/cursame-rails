@@ -32,7 +32,7 @@ class SurveysController < ApplicationController
         @typed = "Survey"
         activation_activity
         format.js
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+       # format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
         format.json { render json: @survey, status: :created, location: @survey }
       else
         format.html { render action: "new" }

@@ -4,7 +4,11 @@
   <%elsif !@member.accepted%>
     <h3>No has sido aceptado en el grupo!</h3>
   <%elsif @member.owner%>
-  <h3>Calificaciones del Curso:</h3>
+
+  <div id="configurationing">
+	  	<h1 style="margin-left:10px; padding:2px;">Calificaciones del curso</h1>
+
+	  	<div class="form-course fixform" style="padding:20px 20px 41px 20px!important;">
      <!--para poder hacer el render partial-->
        <%  @course = Course.find(params[:id])%>
        <%  @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id) %>
@@ -173,3 +177,6 @@
     </br>
     <%end%>
     <p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
+    
+    </div>
+  </div>
