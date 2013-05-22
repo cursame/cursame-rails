@@ -262,8 +262,8 @@ float: right; display: inline-block; z-index: 1; margin-left: 754px; margin-top:
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ ajax tareas ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 
-.homeworkCalf { }
-input.nombreCrit { width: 300px!important; padding: 10px!important; }
+.homeworkCalf { width: 300px; text-align: center; clear: both; }
+input.nombreCrit { width: 230px; padding: 10px!important; }
 .rate { 
 	background: #00ADC4;
 	color: #fff;
@@ -290,13 +290,14 @@ input.nombreCrit { width: 300px!important; padding: 10px!important; }
 }
 .submitCalif {
 	margin-left: 93px;
-	position: absolute;
+	position: relative;
+	display: block;
 }
 .header_l { width: 400px; float: right; display: inline-block; }
 .usermenuTitle { color: #333; font-size: 16px; margin-top: 18px; display: block; width: 300px; text-align: center; text-transform: uppercase; }
 .userDescription { color: #969696; font-size: 14px; margin-top: 10px; display: block; }
-.areaCrit { padding: 10px; }
-.titleCrit { color: #969696; font-size: 14px; margin: 12px 0 5px; display: block; }
+.areaCrit { padding: 10px; width: 230px; }
+.titleCrit { color: #969696; font-size: 14px; display: block; width: 270px; margin: 15px auto 4px auto; /*margin: 12px 0 5px;*/ }
 .homeworkCalf .default-form select {
 	width: 200px;
 }
