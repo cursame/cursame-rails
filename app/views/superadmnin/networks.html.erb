@@ -1,4 +1,16 @@
-<h1>Crear y administrar networks</h1>
+<h1 class="super-admin-header2">Administrar networks</h1>
+<div class="ko_btn" id="lp_lk"><div class=" button"><center>Crear Red ++</center></div></div>
+  
+  <script>
+         $('#lp_lk').click(function() {
+           $('#lok_n').slideToggle('slow', function() {
+             // Animation complete.
+           });
+         });
+     </script>
+  
+<div id="lok_n" style="display:none;">
+   
 <p>Creando networks</p>
 <%= form_for(@network = Network.new(params[:network]), remote: true) do |f|%>
 
@@ -14,6 +26,14 @@
     <%= f.label :population %><br />
     <%= f.text_field :population %>
   </div>
+  <div class="field">
+      <%= f.label :es_free %><br />
+      <%= f.check_box :free %>
+    </div>
+  <div class="field">
+        <%= f.label :registro_publico %><br />
+        <%= f.check_box :public_register %>
+  </div>
   <% 1.times do networks = @network.users.build end %>
   
    <%= f.fields_for :users do |user|%>
@@ -25,7 +45,7 @@
      <%= user.password_field :password_confirmation %><br />
      <%= f.label :personal_url %></br>
      <%= user.text_field :personal_url   %></br>
-     
+     <%= f.label :acepta_terminos_del_servicio %>
      <%= user.check_box :accepted_terms, :value => true %>     
    <%end%>
    
@@ -33,4 +53,55 @@
        
  <div class="actions">
    <%= f.submit %>
+ </div>
 <%end%>
+</div>
+
+<div class="networks">
+     <% @networks = Network.all %>
+     <% @networks.each do |n| %>
+    <div class="n_n">
+       <h3> Red: <%= n.name %> </h3>
+       <p>  Subdominio: <%= n.subdomain %>  </p>
+       <p>  Population: <%= n.population %>  </p>
+       <p>  Free: <%= n.free %>  </p>
+           
+       <div class="button" id="g_<%=n.id%>"><center>Editar</center></div>
+    </div>
+    <script>
+        $('#g_<%=n.id%>').click(function() {
+          $('#l_<%=n.id%>').slideToggle('slow', function() {
+            // Animation complete.
+          });
+        });
+    </script>
+    <div class="l_tunder"id="l_<%=n.id%>" style="display:none;">        
+              <%= form_for(n, :remote => true) do |f| %>
+                   <div class="field">
+                      <%= f.label :name %><br />
+                      <%= f.text_field :name %>
+                    </div>
+                    <div class="field">
+                      <%= f.label :subdomain %><br />
+                      <%= f.text_field :subdomain %>
+                    </div>
+                    <div class="field">
+                       <%= f.label :population %><br />
+                       <%= f.text_field :population %>
+                     </div>
+                     <div class="field">
+                         <%= f.label :es_free %><br />
+                         <%= f.check_box :free %>
+                       </div>
+                     <div class="field">
+                           <%= f.label :registro_publico %><br />
+                           <%= f.check_box :public_register %>
+                     </div>
+                      <%= f.submit %>
+                      
+              <%end %>
+      </div>
+      </div>
+           
+     <% end %>
+</div>

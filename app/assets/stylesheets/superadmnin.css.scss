@@ -31,6 +31,11 @@
     color:#2D6477;
     font-size:20px;
 }
+
+.super-admin-header2{
+    color:#2D6477;
+    font-size:40px;
+}
 .super-admin-descriptions{
     color:#2D6477;
      font-size:15px;
@@ -230,3 +235,79 @@
        
        
 }
+
+.networks{
+    margin-top:20px;
+    margin-bottom:20px;
+   
+    & h3 {
+        font-size:35px;
+        color:#2AA1AA;
+    }
+        
+    & p{
+         font-size:25px;
+         color:#2F757A;
+        
+    }
+    & .n_n{
+        background-color:#AAE6FD;
+        width:600px;
+        height:160px;
+        
+          & .button{
+              background:#256B86;
+              color:#fff;
+              height:40px;
+              font-size:35px;
+              cursor:pointer;
+              & :hover{
+                  background:#0CC6C3;
+                  color:#eee;
+                  cursor:pointer;
+              }
+          }
+        
+    }
+    
+    & .right{
+        float:right;
+    }
+    
+    & .left{
+        float:left;
+    }
+    
+    & .l_tunder{
+        width:580px;
+        margin-top:8px;
+        background:#C6F0F0;
+        padding:10px;
+        
+    }
+}
+
+.ko_btn{
+        max-width:350px;
+         & .button{
+          background:#256B86;
+          color:#fff;
+          height:40px;
+          font-size:35px;
+          cursor:pointer;
+          padding:4px;
+          -webkit-border-radius: 40px;
+          -moz-border-radius: 40px;
+          border-radius: 40px;
+          }
+          &   :hover{
+              background-color:#0CC6C3;
+              color:#eee;
+              cursor:pointer;
+              -webkit-border-radius: 40px;
+              -moz-border-radius: 40px;
+              border-radius: 40px;
+          }
+      
+}
+
