@@ -1,9 +1,9 @@
 desc "Import users"
 task :import_users => :environment do
-  puts "ACA COMIENZO"
   network_id = ENV["NETWORK_ID"].to_i
   file = ENV["FILE"]
   user_admin_id = ENV["USER_ADMIN_ID"].to_i
+  
   
   a = Time.now
   
@@ -16,7 +16,7 @@ task :import_users => :environment do
       if !row["id"].nil? then
         user = find_by_id(row["id"]) || new
       else
-        user = new
+        user = User.new
       end
       hash = row.to_hash
       network_id = network_id
@@ -99,11 +99,12 @@ task :import_users => :environment do
     end
   end
   
-  user = User.find(user_admin_id)
+  #user = User.find(user_admin_id)
+  user = User.find_by_email("emiliano@cursa.me")
   mail = Notifier.send_import(user,arrayErrores)
   mail.deliver
   
-  
+  system "rm #{file}"
   b = Time.now
   puts "Tiempo total de la transaccion: " + (b - a).to_s
   

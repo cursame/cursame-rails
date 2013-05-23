@@ -269,17 +269,28 @@ class User < ActiveRecord::Base
     begin
       file.path
     rescue NoMethodError
-      
+
       arrayErrores = Array.new
-      
+
       arrayErrores.push({:line => 0,:message => "No selecciono un archivo"})
       user = User.find(user_admin.id)
       mail = Notifier.send_import(user,arrayErrores)
       mail.deliver
-      return 
+      return
     end
 
-    UtilityHelper.call_rake(:import_users, {:network_id => network.id,:file => file.path, :user_admin_id => user_admin.id})
+    text = ""
+    File.open(file.path, 'r').each do |line|
+      text += line
+    end
+
+    path = "#{Rails.root}/public/uploads/import.csv"
+    f = File.open(path, 'w+')
+    f.write(text)
+    f.close
+
+    UtilityHelper.call_rake(:import_users, {:network_id => network.id,:file => path,
+                              :user_admin_id => user_admin.id})
 =begin
     begin
       file.path
@@ -315,7 +326,6 @@ class User < ActiveRecord::Base
           arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
           errors = true
         end
-
         user.email = hash.delete("Email")
 
         if !user.email.nil? then
