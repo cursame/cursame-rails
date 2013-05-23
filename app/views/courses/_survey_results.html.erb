@@ -1,0 +1,26 @@
+    <%#= debug  responces%>
+  <p> <b> Por el usuario: <%= responces.user.name%></b> </p>
+    
+    <% responces.user_survey_responses.each do |r| %>
+        
+         <% @question = Question.find(r.question_id)%>
+            Pregunta:<%= @question.content%></br>
+        
+        <% @answer = Answer.find(r.answer_id)%>
+      <p>  <b>Respuesta del usuario:<%= @answer.content %></b>
+                            <% if  @answer.correct == true %> 
+                                <%= image_tag('icons/question-icon-false.png')%>
+                             <%else%>
+                                <%= image_tag('icons/remove-mini-icon-active.png')%>
+                               
+                            <%end%></p>
+        
+        </br>
+       
+        
+    <%end%>
+    
+     <p> <b> Resultados: <%= responces.evaluation%> </b></p>
+   
+    
+    

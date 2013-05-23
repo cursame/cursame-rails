@@ -97,10 +97,38 @@
                       
                    <%end%>
                   </div>
+                 <div class="content_survey">
                  
-                 <div class="survey_f"></div>
+                 <% @course.surveys.each do |survey|%>
+                 <div class="survey_f " id="survey_f<%=survey.id%>">
+                     
+                       <div class="delivery_container"  onclick="OpenStatus()">
+                             <div class="title"><%= survey.title %></div>
+                             <div class="dates"><%= survey.publish_date %>
+                                             <%= survey.end_date %></div>
+                                             <div class="state"><%= survey.state %> <div class="image" id="opentag_s<%=survey.id%>"></div></div>
+                 </div>
                  
-                 
+                          <script>
+                             	   $('#survey_f<%=survey.id%>').click(function() {
+        	                       	   $('#copea_<%=survey.id%>').toggle('blind', function() {
+        	                       	   });
+                               	   });
+                          </script>
+                        
+                          <div class="so_open" id="copea_<%=survey.id%>" style="display:none">
+                              
+                              <% survey.user_surveys.each do |us|%>
+                                 <% us.user.name%><%= link_to "Ver respuesta", course_survey_l_path(us.id), :remote => true%>
+                              <%end%>
+                              
+                          </div>
+                      </div>
+                 <%end%>
+                   
+                </div>
+               
+                
                   <div class="tcg">
                       <div id="tarea_en_carga">
                       </div>
