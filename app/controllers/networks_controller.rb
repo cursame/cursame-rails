@@ -46,7 +46,7 @@ class NetworksController < ApplicationController
     @id = params[:id]
     @page = params[:page].to_i
     # @wall = current_network.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = current_network.publications(current_user.id).search(@search,@id).paginate(:per_page => 10, :page => params[:page])
+    @wall = current_network.publications(current_user.id,current_network.id).search(@search,@id).paginate(:per_page => 10, :page => params[:page])
     if request.xhr?
       respond_to do |format|
         format.js

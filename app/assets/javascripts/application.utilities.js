@@ -39,36 +39,22 @@ function unmask(idOrCls){
 	$('#mask').hide();
 }
 /**
- * sobresalir una div con efecto tumblr
+ * modal
  * @return {} the element overlay
  */
-function goFront(element,parent){
-    var el  =  $(element);
-        
-    // var modal = $('#cursame-modal');
-    // var position = $(parent).position();
+function modal(element){
+    $('<div class="ui-widget-overlay" id="overlaymask"></div>').appendTo('body');
+    $('<div id="cursame-modal"></div>').appendTo('body');
+    $(element).appendTo('#cursame-modal');
 
-    // modal.css({
-    //     top:position.top ,//+ $(window).scrollTop(),
-    //     left:position.left + 200// + $(window).scrollLeft()
-    // });
+    var contenedor = $('#cursame-modal');
 
-    // modal.append(el);
-    // //mostramos el overlay
-    // $('#overlaymask').show();
-    // modal.show();
+    contenedor.css({
+        top:'250px',
+        left:($(window).width()- $(element).width())/2
+    });
 
-    el.addClass('shadow-forms');
-}
-/**
- * esconder el div efecto tumblr
- * @return {} the lement to hide
- */
-function goBack(form,parent){
-    var el  =  $(form);
-    // $('parent').append(el);
-    // //mostramos el overlay
-    // $('#overlaymask').hide();
-    // $('#cursame-modal').hide();
-    el.removeClass('shadow-forms');
+    //mostramos el overlay
+    $('#overlaymask').show();
+
 }

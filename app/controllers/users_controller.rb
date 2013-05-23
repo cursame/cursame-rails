@@ -199,8 +199,6 @@ class UsersController < ApplicationController
    end
  end
 
-
-
  def confirm
    user = User.find_by_id(params[:user_id])
    user.confirm!
@@ -210,5 +208,29 @@ class UsersController < ApplicationController
      format.js
    end
  end
+
+  def set_password
+    user = User.find_by_id(params[:user_id])
+    user.password = params[:password]
+    if user.save!
+      last_info = user.tour_info
+      pos = 3
+      if last_info.length < 4
+        info = last_info + '1'
+      else
+        info = last_info[0...pos] + "1" + last_info[pos+1..last_info.length]
+      end
+
+      user.tour_info = info
+      # user.save!
+      user.update_attributes(:tour_info => info)
+      sign_in user, :bypass => true
+    
+    end
+    respond_to do |format|
+       format.json
+       format.js
+    end
+  end
 
 end

@@ -210,10 +210,6 @@ class ApplicationController < ActionController::Base
 
   #joyride
   def show_joyride(tour)
-    puts "-------------------------------------"
-    puts current_user.tour_info
-    puts current_user.tour_info[tour]
-    puts "-------------------------------------"
     return User.find(current_user.id).tour_info[tour]
   end
 
