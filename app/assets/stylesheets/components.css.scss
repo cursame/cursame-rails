@@ -154,6 +154,14 @@ $color-dp-to: #e8eef5;
   margin-bottom: 0;
 }
 
+.fc-cell-overlay { height: 55px!important; }
+
+.fc-sun, .fc-mon, .fc-tue, .fc-wed, .fc-thu, .fc-fri, .fc-sat {
+
+}
+.fc-day-number { 
+	background: #fff!important; color: #000; font-weight: bold; width: 58px; height: 43px; display: inline-block; overflow: scroll; margin: 1px;
+ }
 
 
 /*

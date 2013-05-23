@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :members_in_groups
@@ -113,7 +114,7 @@ Cursame30Lb::Application.routes.draw do
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
   get "course_assignment_l/:id", :to => "courses#course_assignment", :as => :course_assignment_l
   get "course_survey_l/:id", :to => "courses#course_survey", :as => :course_survey_l
-  
+
 
   #### llada de ajax de editar tarea
 
@@ -132,6 +133,7 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
+  match "courses/:id/_evaluation", :to => "courses#evaluation", :as => :course_evaluation
   #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
 
@@ -173,6 +175,8 @@ Cursame30Lb::Application.routes.draw do
 
   # confirme user
   post "users/confirm" => "users#confirm", :as => :user_confirm
+  # change password
+  post "users/set_password" => "users#set_password", :as => :set_password
 
   #friends
   #resources :user_friends
@@ -224,7 +228,7 @@ Cursame30Lb::Application.routes.draw do
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
-  
+
   #finish tour
   match "/home/finish_tour" => "home#finish_tour", :as => "finish_tour", :via => [:get]
 
@@ -306,9 +310,9 @@ Cursame30Lb::Application.routes.draw do
    match 'focus/:id', :to => 'events#show', :as => :eventuable
 
    ####### ruta para creacion de timeline
-   
+
    get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
-   
+
    ###### ruta para crear super admins
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create

@@ -96,18 +96,17 @@ button, input, select, textarea {
     color:#FFF;
 }
 
-.cursame-modal {
+#cursame-modal {
     position:absolute;
-    /*background:url(tint20.png) 0 0 repeat;*/
-    /*background:rgba(0,0,0,0.2);*/
-    /*background:#FFF;*/
     border-radius:4px;
     padding:8px;
+    background:#EEE;
     color: blue;
     width: auto;
     z-index:9999;
     height: auto;
 }
+
 .shadow-forms {
     -webkit-box-shadow: 10px 10px 6px -6px #888;
     -moz-box-shadow: 10px 10px 6px -6px #888;
