@@ -1,5 +1,6 @@
 desc "Import users"
 task :import_users => :environment do
+  puts "ACA COMIENZO"
   network_id = ENV["NETWORK_ID"].to_i
   file = ENV["FILE"]
   user_admin_id = ENV["USER_ADMIN_ID"].to_i
