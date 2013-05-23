@@ -104,7 +104,7 @@ task :import_users => :environment do
   mail = Notifier.send_import(user,arrayErrores)
   mail.deliver
   
-  system "rm #{file}"
+  #system "rm #{file}"
   b = Time.now
   puts "Tiempo total de la transaccion: " + (b - a).to_s
   
