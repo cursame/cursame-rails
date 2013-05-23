@@ -12,11 +12,13 @@
             <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
             <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
             <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
-             <% end %>
+            <% end %>
             <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
-
+            
+            
           </ul>
         </div>
+ 
         <div id="box-titles-content" class="box-titles-content-style">
           <div id="stats-area" class="menu-course" style="width:100%px; height:650px; ">
                   <div id="timeline-embed" style="margin-bottom:-200px;"></div>
@@ -45,12 +47,10 @@
             <%end%>
 
             </ul>
-
-
           </div>
+        
           <div id="c_area" class="menu-course  active" style="height:500px; color:#fff;">
               <%= render partial: "courses/evaluation"%>
-
           </div>
           <div  class="menu-course  active" id="entregas"    style="height:500px;">
               <div class="arco_course_deliver">
@@ -61,14 +61,15 @@
                   
                    <% @course.deliveries.each do |delivery|%>
                   
-                   <div class="delivery_f">
-                     <div class="delivery_container" onclick="OpenStatus()">
-                      <div class="title"><%= delivery.title %></div>
-                      <div class="dates"><%= delivery.publish_date %>
-                                         <%= delivery.end_date %></div>
-                      <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"></div></div>
+                            <div class="delivery_f">
+                                    <div class="delivery_container" onclick="OpenStatus()">
+                                        <div class="title"><%= delivery.title %></div>
+                                        <div class="dates"><%= delivery.publish_date %>
+                                                        <%= delivery.end_date %></div>
+                                                        <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"></div></div>
+                                   
                      
-                      </div>
+                            </div>
                       
                       <script>
                        	   $('.delivery_f').click(function() {
@@ -82,7 +83,7 @@
                              $('#so_open<%=delivery.id%>').toggle('blind', function() {
                              });
                            });
-                        </script>
+                       </script>
                         
                        <div class="so_open"id="so_open<%=delivery.id%>" style="display:none">
                            <% delivery.assignments.each do |assignment|%>
@@ -95,11 +96,39 @@
                    </div>
                       
                    <%end%>
+                  </div>
+                 <div class="content_survey">
+                 
+                 <% @course.surveys.each do |survey|%>
+                 <div class="survey_f " id="survey_f<%=survey.id%>">
+                     
+                       <div class="delivery_container"  onclick="OpenStatus()">
+                             <div class="title"><%= survey.title %></div>
+                             <div class="dates"><%= survey.publish_date %>
+                                             <%= survey.end_date %></div>
+                                             <div class="state"><%= survey.state %> <div class="image" id="opentag_s<%=survey.id%>"></div></div>
                  </div>
                  
-                 <div class="survey_f"></div>
-                 
-                 
+                          <script>
+                             	   $('#survey_f<%=survey.id%>').click(function() {
+        	                       	   $('#copea_<%=survey.id%>').toggle('blind', function() {
+        	                       	   });
+                               	   });
+                          </script>
+                        
+                          <div class="so_open" id="copea_<%=survey.id%>" style="display:none">
+                              
+                              <% survey.user_surveys.each do |us|%>
+                                 <% us.user.name%><%= link_to "Ver respuesta", course_survey_l_path(us.id), :remote => true%>
+                              <%end%>
+                              
+                          </div>
+                      </div>
+                 <%end%>
+                   
+                </div>
+               
+                
                   <div class="tcg">
                       <div id="tarea_en_carga">
                       </div>
@@ -109,8 +138,8 @@
               </div>
               
             
-            
           </div>
+          
           <div id="configuration" class="menu-course  active" style="height:500px; color:#fff;">
               <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de curso</h1>
               <%= render :partial => "courses/form"%>
@@ -119,7 +148,7 @@
         </div>
       </div>
     </div>
-
+   
 
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">

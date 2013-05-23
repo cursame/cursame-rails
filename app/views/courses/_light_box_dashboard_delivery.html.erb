@@ -21,6 +21,7 @@
       <span class="usermenuTitle">Criterios de calificación</span>
         <%= form_for assignment, remote: true   do |assigments_l |%>
             <% if assignment.response_to_the_evaluations.count != 0%>
+            <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea, :class => 'helpText' %>
                  <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
               
                  <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>

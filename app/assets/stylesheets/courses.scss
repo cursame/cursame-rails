@@ -533,23 +533,79 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
            margin-left:-10px;
       	   display: inline-block;     
        }
+   & .content_survey {
+              width:300px;
+              height:400px;
+              float:right;
+              overflow:auto;
     & .survey_f {
-			width: 308px;
-			float: right;
-			overflow: auto;
-			height: 400px;
-			background: #e2e0e0;
-			position: relative;
-			display: block;
+		    width:290px;
+            float:right;
+            overflow:auto;
          
          
-         & .survey_container{
-             width:270px;
-             height:100px;
-           
-         }
+              & .survey_container{
+                   width:285px;
+                   height:100px;
+                   margin-bottom:1px;
+                   background: url(../assets/ir-a.png) right center no-repeat #eee;
+                   transition: ease-out all 0.3s;
+                   box-shadow: inset -7px -2px 4px -4px #ccc;
+                   padding-left: 5px;
+                   padding-top: 5px;
+
+                   & .title{
+                       /* background: #7E9157; */
+                       font-size:16px;
+                       padding:8px 5px 5px 5px;
+                       color: #333;
+                       font-weight: bold;
+                   }
+
+                   & .dates{
+                   	   width: 240px;
+                       height: 10px;
+                       overflow: hidden;
+                       padding:5px;
+                       font-align: justify;
+                       color:#4FA3E9;
+
+                   }
+
+                   & .state {
+                       padding:5px;
+                       font-align: justify;
+                       color:#15B1B9;  
+                   }
+
+                   & .image{
+                       float:right;
+                       position: relative;
+                       margin-top: -36px;
+                   }
+               }
+
+
+     }
+     
+     & .content_survey:hover {
+   	   cursor: pointer;
+   	   background: url(../assets/ir-a-two.png) right center no-repeat #fff!important;
+   	   background-repeat:no-repeat;
+   	   transition: ease-out all 0.3s;
+   	   box-shadow: inset 0px 0px 0px transparent;
+      }
+
+      & .content_survey:selected, .delivery_container:selected {
+          background: url(../assets/ir-a.png) right center no-repeat #eee;
+          transition: ease-out all 0.3s;
+          box-shadow: inset 0 -1px 0px 5px transparent;
+      }
+            
         
     }
+    
+    
     
     & h1{
 		color: #333;
