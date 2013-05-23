@@ -58,9 +58,9 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "You have "+ count.to_s + " Assignments"
   end
 
-  def send_password(user,password)
+  def send_import(user,arrayErrores)
     @user = user
-    @password = password
+    @errores = arrayErrores
     mail to: @user.email, subject: "Tu passwod en cursame"
   end
 

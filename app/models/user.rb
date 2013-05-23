@@ -262,9 +262,25 @@ class User < ActiveRecord::Base
     return users.uniq
   end
 
-  def self.import(file,network)
-    arrayErrores = Array.new
-    count = 0
+  def self.import(file,network,user_admin)
+    #arrayErrores = Array.new
+    #count = 0
+
+    begin
+      file.path
+    rescue NoMethodError
+      
+      arrayErrores = Array.new
+      
+      arrayErrores.push({:line => 0,:message => "No selecciono un archivo"})
+      user = User.find(user_admin.id)
+      mail = Notifier.send_import(user,arrayErrores)
+      mail.deliver
+      return 
+    end
+
+    UtilityHelper.call_rake(:import_users, {:network_id => network.id,:file => file.path, :user_admin_id => user_admin.id})
+=begin
     begin
       file.path
     rescue NoMethodError
@@ -337,6 +353,7 @@ class User < ActiveRecord::Base
         personal_url_random = (0...100).map{  charList[rand(charList.length)] }.join
         user.password = password
         user.personal_url = personal_url_random
+        user.accepted_terms = true
 
         if !errors then
           begin
@@ -359,6 +376,7 @@ class User < ActiveRecord::Base
       end
     end
     return arrayErrores
+=end
   end
 
   def member_of?(group,another_user)
