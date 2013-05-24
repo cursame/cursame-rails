@@ -3,5 +3,6 @@ class RemoveLikesToWalls < ActiveRecord::Migration
     remove_column :walls, :likes
   end
   def down
+  	
   end
 end
