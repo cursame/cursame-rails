@@ -99,8 +99,7 @@ task :import_users => :environment do
     end
   end
   
-  #user = User.find(user_admin_id)
-  user = User.find_by_email("emiliano@cursa.me")
+  user = User.find(user_admin_id)
   arrayErrores.each do |hash|
     print hash[:line].to_s  + " " +  hash[:message]
     puts ""

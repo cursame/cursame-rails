@@ -284,7 +284,7 @@ class User < ActiveRecord::Base
       text += line
     end
 
-    path = "#{Rails.root}/public/uploads/import.csv"
+    path = "public/uploads/import.csv"
     f = File.open(path, 'w+')
     f.write(text)
     f.close
