@@ -51,12 +51,12 @@ class ManagersController < ApplicationController
   end
 
   def upload_users
+    puts "ACA PASO"
     User.import(params[:file],current_network,current_user)
     # @errores = User.import(params[:file],current_network)
     # if @errores.size == 0 then
     #  @errores = nil
     # end
-    @errores = nil
     @users = current_network.users
     respond_to do |format|
       format.html { render "managers/import_users"}

@@ -289,8 +289,11 @@ class User < ActiveRecord::Base
     f.write(text)
     f.close
 
+    puts "MANDO A LLAMAR AL TASK"
     UtilityHelper.call_rake(:import_users, {:network_id => network.id,:file => path,
                               :user_admin_id => user_admin.id})
+
+    puts "YA SE LLAMO"
 =begin
     begin
       file.path
