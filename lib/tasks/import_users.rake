@@ -20,11 +20,11 @@ task :import_users => :environment do
       hash = row.to_hash
       network_id = network_id
       role_id = hash.delete("Role")
-
+      puts count
       errors = false
 
       if !role_id.nil? then
-
+      
         role_id = role_id.downcase.strip
         role_id = 2 if role_id == "estudiante"
         role_id = 3 if role_id == "maestro"
