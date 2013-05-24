@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
    devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
-          :token_authenticatable, :confirmable, :lockable, :timeoutable
+          :token_authenticatable, :lockable, :timeoutable#, :confirmable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -290,8 +290,8 @@ class User < ActiveRecord::Base
     f.close
 
     puts "MANDO A LLAMAR AL TASK"
-    UtilityHelper.call_rake(:import_users, {:network_id => network.id,:file => path,
-                              :user_admin_id => user_admin.id})
+    #UtilityHelper.call_rake(:import_users, {:network_id => network.id,:file => path,
+     #                         :user_admin_id => user_admin.id})
 
     puts "YA SE LLAMO"
 =begin
@@ -451,6 +451,7 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation_instructions
+    puts "ACA PASO"
     # do nothing
   end
 end
