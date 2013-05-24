@@ -123,7 +123,7 @@
                         
                           <div class="so_open" id="copea_<%=survey.id%>" style="display:none">
                               <% survey.user_surveys.each do |us|%>
-                                 <% us.user.name%><%= link_to "Ver respuesta", course_survey_l_path(us.id), :remote => true%>
+                                 <%= us.user.name%><%= link_to image_tag('delivery.png'), course_survey_l_path(us.id), :remote => true%>
                               <%end%>
                           </div><!-- ends so_open -->
                           
