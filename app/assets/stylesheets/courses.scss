@@ -375,6 +375,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
         height:400px;
         float:left;
         overflow:auto;
+        background-color: #eee;
     
     & .delivery_f {
         width: 450px;
@@ -572,6 +573,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 		background: #EEEEEE;
 		width: 64px;
 		padding: 14px 12px 10px 19px;
+		
         
         & .survey_container{
              
@@ -621,7 +623,6 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 width: 440px!important;
 float: left;
 overflow: auto;
-padding: 0 10px;
 } 
         
 .delivery_container {
@@ -632,7 +633,7 @@ padding: 0 10px;
                background: url(../assets/ir-a.png) right center no-repeat #eee;
                transition: ease-out all 0.3s;
                box-shadow: inset -7px -2px 4px -4px #ccc;
-               padding-left: 5px;
+               padding-left: 13px;
                padding-top: 5px;
                
                & .title{
