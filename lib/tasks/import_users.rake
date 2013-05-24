@@ -2,7 +2,7 @@ desc "Import users"
 task :import_users => :environment do
   network_id = ENV["NETWORK_ID"].to_i
   file = ENV["FILE"]
-  user_admin_id = ENV["USER_ADMIN_ID"].to_i
+  #user_admin_id = ENV["USER_ADMIN_ID"].to_i
   
   
   a = Time.now
@@ -10,7 +10,6 @@ task :import_users => :environment do
   arrayErrores = Array.new
   count = 0
   
-  ActiveRecord::Base.transaction do
     CSV.foreach(file, headers: true) do |row|
       count += 1
       if !row["id"].nil? then
@@ -89,17 +88,16 @@ task :import_users => :environment do
         if !user.save then
           arrayErrores.push({:line => count, :message => "Error al guardar"})
         else
-          # user.confirm!
-          # user.save!
+           user.confirm!
+           user.save!
           Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
         end
       end
     end
-  end
   
-  user = User.find(user_admin_id)
+  #user = User.find(user_admin_id)
   arrayErrores.each do |hash|
     print hash[:line].to_s  + " " +  hash[:message]
     puts ""
