@@ -113,7 +113,7 @@ class User < ActiveRecord::Base
      else
       @network = Network.find(@permissionings.network_id)     
      end
-      subdomain = @network? @network.subdomain:''
+      subdomain = @network? @network.subdomain : ''
   end
 
 
