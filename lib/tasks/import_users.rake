@@ -101,8 +101,12 @@ task :import_users => :environment do
   
   #user = User.find(user_admin_id)
   user = User.find_by_email("emiliano@cursa.me")
-  mail = Notifier.send_import(user,arrayErrores)
-  mail.deliver
+  arrayErrores.each do |hash|
+    print hash[:line].to_s  + " " +  hash[:message]
+    puts ""
+  end
+  #mail = Notifier.send_import(user,arrayErrores)
+  #mail.deliver
   
   #system "rm #{file}"
   b = Time.now
