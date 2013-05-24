@@ -14,7 +14,7 @@ task :import_users => :environment do
     CSV.foreach(file, headers: true) do |row|
       count += 1
       if !row["id"].nil? then
-        user = find_by_id(row["id"]) || new
+        user = User.find_by_id(row["id"]) || User.new
       else
         user = User.new
       end
