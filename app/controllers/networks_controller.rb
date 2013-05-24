@@ -98,11 +98,9 @@ class NetworksController < ApplicationController
            puts "permisos no guardados correctamente"
          end
 
-        format.html { redirect_to :back , notice: 'Network was successfully created.' }
         format.json { render json: @network, status: :created, location: @network }
         format.js
       else
-        format.html { render action: "new" }
         format.json { render json: @network.errors, status: :unprocessable_entity }
         format.js
       end
