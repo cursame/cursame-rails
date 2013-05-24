@@ -52,12 +52,13 @@
           <div id="c_area" class="menu-course  active" style="height:500px; color:#fff;">
               <%= render partial: "courses/evaluation"%>
           </div>
-          <div  class="menu-course  active" id="entregas"    style="height:500px;">
+          <div  class="menu-course  active" id="entregas" style="height:500px;">
               <div class="arco_course_deliver">
-                  <h1>Tareas</h1>
-                   <span class="deactive">Exámenes</span>
+                   <h1 onclick="test('content_survey_slider','content_delivery_first')" style="cursor: pointer;">Tareas</h1>
+                   <span class="deactive" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
 
-                  <div class="content_delivery">
+               <div class="slider-cointainer" style="width:440px; overflow:hidden; float: left;">
+                  <div class="content_delivery" id="content_delivery_first">
                   
                    <% @course.deliveries.each do |delivery|%>
                   
@@ -67,7 +68,6 @@
                                         <div class="dates"><%= delivery.publish_date %>
                                                         <%= delivery.end_date %></div>
                                                         <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"></div></div>
-                                   
                      
                             </div>
                       
@@ -93,21 +93,26 @@
                            </div>
                            <%end%>
                        </div>
-                   </div>
+                    </div>
                       
                    <%end%>
-                  </div>
-                 <div class="content_survey" style="display:none;">
+                 </div>
+                  
+                 <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #eee; width: 440px; display: block;">
                  
                  <% @course.surveys.each do |survey|%>
-                 <div class="survey_f " id="survey_f<%=survey.id%>">
+                 <div class="survey_fTwo " id="survey_f<%=survey.id%>">
                      
+                     <div class="delivery_f">
                        <div class="delivery_container"  onclick="OpenStatus()">
-                             <div class="title"><%= survey.title %></div>
+                             <div class="title"><%= survey.title %></div><!-- ends title -->
                              <div class="dates"><%= survey.publish_date %>
-                                             <%= survey.end_date %></div>
-                                             <div class="state"><%= survey.state %> <div class="image" id="opentag_s<%=survey.id%>"></div></div>
-                 </div>
+                                             <%= survey.end_date %></div><!-- ends dates -->
+                                             <div class="state"><%= survey.state %>
+                                             	<div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
+                                             </div><!-- ends state -->
+                       </div><!-- ends delivery_container -->
+                     </div><!-- ends delivery_f -->
                  
                           <script>
                              	   $('#survey_f<%=survey.id%>').click(function() {
@@ -117,26 +122,29 @@
                           </script>
                         
                           <div class="so_open" id="copea_<%=survey.id%>" style="display:none">
-                              
                               <% survey.user_surveys.each do |us|%>
                                  <% us.user.name%><%= link_to "Ver respuesta", course_survey_l_path(us.id), :remote => true%>
                               <%end%>
-                              
-                          </div>
-                      </div>
+                          </div><!-- ends so_open -->
+                          
+                      </div><!-- ends survey_f -->
                  <%end%>
                    
-                </div>
-               
+                </div><!-- ends content_survey -->
+           </div><!-- slider-cointainer -->
                 
-                  <div class="tcg">
+                <div class="tcg">
                       <div id="tarea_en_carga">
                       </div>
-                  </div>
-                  
-              
+                </div>
               </div>
               
+<script>
+	function test(idOne , idTwo) {
+		$('#'+idOne).hide();
+		$('#'+idTwo).show();
+	};
+</script>              
             
           </div>
           

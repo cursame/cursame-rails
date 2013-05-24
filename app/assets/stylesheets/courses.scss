@@ -488,7 +488,8 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
            height:400px;
            overflow: scroll;
            margin-left:-10px;
-      	   display: inline-block;     
+      	   display: inline-block;
+      	   float: right;
        }
    & .content_survey {
               width:300px;
@@ -609,3 +610,60 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 .containText {
 			color: #333;
 }
+
+.delivery_f {
+        width: 450px;
+        float: right;
+        overflow: auto;
+        }
+       
+.survey_fTwo {
+width: 440px!important;
+float: left;
+overflow: auto;
+padding: 0 10px;
+} 
+        
+.delivery_container {
+               width: 437px;
+               height: 80px;
+               margin-bottom: 0px;
+               border-bottom: 1px solid #E2E0E0;
+               background: url(../assets/ir-a.png) right center no-repeat #eee;
+               transition: ease-out all 0.3s;
+               box-shadow: inset -7px -2px 4px -4px #ccc;
+               padding-left: 5px;
+               padding-top: 5px;
+               
+               & .title{
+                   /* background: #7E9157; */
+                   font-size:16px;
+                   padding:8px 5px 5px 5px;
+                   color: #333;
+                   height: 40px;
+                   font-weight: bold;
+                   overflow: hidden;
+               }
+               
+               & .dates{
+               	   width: 240px;
+                   height: 10px;
+                   overflow: hidden;
+                   padding:5px;
+                   font-align: justify;
+                   color:#4FA3E9;
+                   float: left;
+               }
+               
+               & .state {
+                   padding:5px;
+                   font-align: justify;
+                   color:#15B1B9;  
+               }
+               
+               & .image{
+                   float:right;
+                   position: relative;
+                   margin-top: -36px;
+               }
+          }
