@@ -2,7 +2,7 @@ desc "Import users"
 task :import_users => :environment do
   network_id = ENV["NETWORK_ID"].to_i
   file = ENV["FILE"]
-  user_admin_id = ENV["USER_ADMIN_ID"].to_i
+  #user_admin_id = ENV["USER_ADMIN_ID"].to_i
   
   
   a = Time.now
@@ -10,22 +10,21 @@ task :import_users => :environment do
   arrayErrores = Array.new
   count = 0
   
-  ActiveRecord::Base.transaction do
     CSV.foreach(file, headers: true) do |row|
       count += 1
       if !row["id"].nil? then
-        user = find_by_id(row["id"]) || new
+        user = User.find_by_id(row["id"]) || User.new
       else
         user = User.new
       end
       hash = row.to_hash
       network_id = network_id
       role_id = hash.delete("Role")
-
+      puts count
       errors = false
 
       if !role_id.nil? then
-
+      
         role_id = role_id.downcase.strip
         role_id = 2 if role_id == "estudiante"
         role_id = 3 if role_id == "maestro"
@@ -39,12 +38,13 @@ task :import_users => :environment do
         errors = true
       end
 
-      user.email = hash.delete("Email")
+      email = hash.delete("Email")
+      user.email = email
 
       if !user.email.nil? then
-        user.email = user.email.downcase
+        #user.email = user.email.downcase
         # Checa que el correo sea valido y que no se repita
-        if user.email["@"].nil? || !User.find_by_email(user.email).nil?
+        if user.email["@"].nil? || !User.find_by_email(email).nil?
           arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
           errors = true
         end
@@ -89,20 +89,22 @@ task :import_users => :environment do
         if !user.save then
           arrayErrores.push({:line => count, :message => "Error al guardar"})
         else
-          # user.confirm!
-          # user.save!
+           #user.confirm!
+           #user.save!
           Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
         end
       end
     end
-  end
   
   #user = User.find(user_admin_id)
-  user = User.find_by_email("emiliano@cursa.me")
-  mail = Notifier.send_import(user,arrayErrores)
-  mail.deliver
+  arrayErrores.each do |hash|
+    print hash[:line].to_s  + " " +  hash[:message]
+    puts ""
+  end
+  #mail = Notifier.send_import(user,arrayErrores)
+  #mail.deliver
   
   #system "rm #{file}"
   b = Time.now
