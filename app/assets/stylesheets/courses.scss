@@ -200,6 +200,12 @@ h3{
 #configuration h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 20px 10px 10px 17px; background: rgba(252,252,252,0.2) url(../assets/tool.png) no-repeat center right; }
 #configurationing h1 { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 797px; color: #fff!important; padding: 16px 10px 13px 17px!important; background: rgba(252,252,252,0.2) url(../assets/) no-repeat center right; font-size: 20px; }
 .fixform { margin-bottom: 20px!important; }
+
+.fixform h4 {
+	color: #333;
+	font-size: 17px;
+}
+
 .califHeader { background: #00ADC4; width: 764px; padding: 20px 30px; text-align: center; height: 16px; margin-left: -20px; margin-top: -34px; font-size: 20px; text-transform: uppercase; display: inline-block; position: absolute; }
 .form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 0.9); height: 346px; overflow: auto; }
 .form-course input:focus { border: 1px solid #6AB2BF!important; }
@@ -273,16 +279,17 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	display: inline-block;
 	text-align: center;
 	float: left;
-	width: 280px;
+	width: 434px;
 	margin-top: -64px;
 	vertical-align: middle;
  }
 .helpText { 
-	width: 260px;
+	width: 414px;
 	text-align: center;
 	color: #333;
 	display: block;
 	padding: 8px 20px;
+	height: 25px;
  }
 .inputCalif {
 	width: 230px;
@@ -290,12 +297,12 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	margin-left: 23px;
 }
 .submitCalif {
-	margin-left: 93px;
+	margin-left: 180px;
 	position: relative;
 	display: block;
 }
 .header_l { width: 400px; float: right; display: inline-block; }
-.usermenuTitle { color: #333; font-size: 16px; margin-top: 18px; display: block; width: 300px; text-align: center; text-transform: uppercase; }
+.usermenuTitle { color: #333; font-size: 16px; margin-top: 18px; display: block; width: 454px; text-align: center; text-transform: uppercase; }
 .userDescription { color: #969696; font-size: 14px; margin-top: 10px; display: block; }
 .areaCrit { padding: 10px; width: 230px; }
 .titleCrit { color: #969696; font-size: 14px; display: block; width: 270px; margin: 15px auto 4px auto; /*margin: 12px 0 5px;*/ }
@@ -325,67 +332,10 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 
 
 .member_pending{
-       margin-top:-20px;
-       margin-bottom:-5px;
-       margin-left:210px;
-       width: 30px;
-       height:30px;
-        font-size:15px;
-        padding:1px;
-        color:#eee;
-        cursor:pointer;
-        
-        -webkit-border-radius: 1000px;
-        -moz-border-radius: 1000px;
-        border-radius: 1000px;
-        
-        background-image: linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
-        background-image: -o-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
-        background-image: -moz-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
-        background-image: -webkit-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
-        background-image: -ms-linear-gradient(bottom, rgb(230,107,25) 1%, rgb(207,77,29) 68%);
-
-        background-image: -webkit-gradient(
-        	linear,
-        	left bottom,
-        	left top,
-        	color-stop(0.01, rgb(230,107,25)),
-        	color-stop(0.68, rgb(207,77,29))
-        );
-       
+background: #FF0000; padding: 0px; color: #fff; text-align: center; display: block; float: right; position: relative; margin-top: -21px; font-size: 12px; font-weight: bold; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; cursor: pointer;
        
        & :hover {
-              margin-top:0px;
-              margin-bottom:0px;
-              margin-left:0px;
-              width: 30px;
-              height:30px;
-               font-size:22px;
-               padding:1px;
-               color:#fff;
-               cursor:pointer;
-               
-               
-               -webkit-border-radius: 1000px;
-               -moz-border-radius: 1000px;
-               border-radius: 1000px;
 
-               background-image: linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
-               background-image: -o-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
-               background-image: -moz-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
-               background-image: -webkit-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
-               background-image: -ms-linear-gradient(bottom, rgb(158,72,14) 1%, rgb(138,39,3) 68%);
-
-               background-image: -webkit-gradient(
-               	linear,
-               	left bottom,
-               	left top,
-               	color-stop(0.01, rgb(158,72,14)),
-               	color-stop(0.68, rgb(138,39,3))
-               );
-           
-           
-           
        }
        
        & li{
@@ -393,12 +343,16 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
            
        }
        
-       & a{
+       & a {
            color:#fff;
            
        }
         
        
+}
+
+.member_pending:hover {
+	background: #AA4643; display: block;
 }
 
 .accepted_not_pending{
@@ -417,19 +371,21 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
     margin:20px;
     
     & .content_delivery {
-        width:300px;
+        width:450px;
         height:400px;
         float:left;
         overflow:auto;
     
     & .delivery_f {
-        width:290px;
-        float:left;
-        overflow:auto;
-           & .delivery_container{
-               width:285px;
-               height:100px;
-               margin-bottom:1px;
+        width: 450px;
+        float: left;
+        overflow: auto;
+        
+           & .delivery_container {
+               width: 437px;
+               height: 80px;
+               margin-bottom: 0px;
+               border-bottom: 1px solid #E2E0E0;
                background: url(../assets/ir-a.png) right center no-repeat #eee;
                transition: ease-out all 0.3s;
                box-shadow: inset -7px -2px 4px -4px #ccc;
@@ -441,7 +397,9 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
                    font-size:16px;
                    padding:8px 5px 5px 5px;
                    color: #333;
+                   height: 40px;
                    font-weight: bold;
+                   overflow: hidden;
                }
                
                & .dates{
@@ -451,7 +409,7 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
                    padding:5px;
                    font-align: justify;
                    color:#4FA3E9;
-                   
+                   float: left;
                }
                
                & .state {
@@ -487,16 +445,15 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
    }
       
    & .so_open{
-        width:300px;
-        height:400px;
-        overflow:auto;
-        float:right;
+        width: 445px;
+        /* height: 400px; */ height: auto;
+        overflow: auto;
+        float: left;
         
         & .assignment{
-            width:290px;
-            height:50px;
-            background:#00BFCD;
-            padding-left: 10px;
+            width: 440px;
+            height: 50px;
+            background: #00BFCD;
           
           & .title{
 			height: 41px;
@@ -516,7 +473,7 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 			float: right;
 			position: relative;
 			display: inline-block;
-			margin-top: -48px;
+			margin-top: -52px;
 			margin-right: 8px;
              }
             
@@ -527,7 +484,7 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
     & .tcg{
            color: #fff;
            background:#eaeaea;
-           width:300px;
+           width:454px;
            height:400px;
            overflow: scroll;
            margin-left:-10px;
@@ -632,17 +589,23 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 		display: block;
 		margin-left: 96px;
 		transition: ease-out all 0.3s;
-		float: right;
+		float: left;
 		margin-right: 188px;
     }
 	
-	/* & .deactive:hover {
+	& .deactive:hover {
 		background: #000;
 		cursor: pointer;
 		background: rgba(238,238,238,1);
 		transition: ease-out all 0.3s;
 		box-shadow: inset -7px -8px 12px -5px #ccc;
-	} */
+	}
 }
 
+.calificacionesSpan {
+		
+}
 
+.containText {
+			color: #333;
+}

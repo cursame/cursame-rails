@@ -20,23 +20,25 @@
 		      <% if !member.owner then%>
 		        <%table = member.doTableCourse%>
 		        <span class="califHeader">Calificacion: <%=table[2]%></span>
-		        <h4 style="margin-top: 45px;"><%=user.email%></h4>
+		        <h4 style="margin-top: 45px;">Alumno: <%=user.email%></h4>
 		        
-		        <table border="1" width="500" cellpadding="3" cellspacing="3">
+		        <table border="1" width="780" cellpadding="3" cellspacing="3" id="calificacionesSpan">
 		          <tr>
-		            <td>Tarea</td>
-		            <td>Entrega</td>
-		            <td>Rubros</td>
-		            <td>Calificacion</td>
+		            <td width="250px"><p>Tarea</p></td>
+		            <td><p>Entrega</p></td>
+		            <td><p>Rubros</p></td>
+		            <td><p>Calificación</p></td>
+		            <td><p>% de la Evaluación<p></td>
+			        <td><p>% Final</p></td>
 		          </tr>
 			        <%for i in 0...table[0][0].size%>
 			        <%delivery = table[0][0][i]%>
 			        <%assignment = table[0][1][i]%>
 		          <tr>
-		            <td><%=delivery.title%></td>
+		            <td valign="top" class="containText" bgcolor="#fff"><%=delivery.title%></td>
 		            <%if !assignment.nil? then%>
-		              <td><%=assignment.title%></td>
-		              <td>
+		            <td valign="top" class="containText" bgcolor="#ddd"><%=assignment.title%></td>
+		            <td valign="top" class="containText" bgcolor="#fff">
 		                <% for j in 0...assignment.response_to_the_evaluations.size%>
 		                <!-- El rubro del assignment -->
 		                  <%= assignment.response_to_the_evaluations[j].name%>
@@ -44,36 +46,28 @@
 		                    </br>
 		                  <%end%>
 		                <%end%>
-		              </td>
-		              <td><%=assignment.accomplishment%></td>
+		            </td>
+		            <td valign="top" class="containText" bgcolor="#ddd"><%=assignment.accomplishment%></td>
 		            <%else%>
-		            <td></td>
 		            <%end%>
-		          </tr>
-		        <%end%>
-		          <tr>
-			          <td> </td>
-			          <td> </td>
-			          <td> Porcentaje de la Evaluacion</td>
-			          <td> Porcentaje obtenido </td>
-		          </tr>
-		          <td> </td>
-		          <td> </td>
-		          <td> <%=table[0][2][0]%></td>
-		          <td> <%=table[0][2][1]%></td>
+		            <%end%>
+			          <td valign="top" class="containText" colspan="2" bgcolor="#fff"><%=table[0][2][0]%></td>
+			          <td valign="top" class="containText" colspan="2" bgcolor="#ddd"><%=table[0][2][1]%></td>
 		          </tr>
 		      </table>
 		      
-		      <table border="1" width="500" cellpadding="3" cellspacing="3">
+		      <table border="1" width="780" cellpadding="3" cellspacing="3" style="margin-top:20px;">
 		      <tr>
-		        <td>Examen</td>
-		        <td>Calificacion</td>
-		        <td></td>
+		        <td width="250px"><p>Examen</p></td>
+		        <td><p>Calificacion</p></td>
+		        <td><p>Calificación Examenes</p></td>
+		        <td><p>% de la Evaluación</p></td>
+		        <td><p>% Obtenido</p></td>
 		      </tr>
 		        <%for i in 0...table[1][0].size%>
 		          <tr>
-		          <td><%=table[1][0][i].name%></td>
-		          <td>
+		          <td valign="top" class="containText" ><%=table[1][0][i].name%></td>
+		          <td valign="top" class="containText" >
 		            <% if !table[1][1][i].nil? then%>
 		            <%= table[1][1][i].result%>
 		            <%end%>
@@ -82,14 +76,9 @@
 		        </tr>
 		        <%end%>
 		        <tr>
-		          <td>Porcentaje de la Evaluacion</td>
-		          <td>Calificacion Examenes</td>
-		          <td>Porcentaje Obtenido</td>
-		        </tr>
-		        <tr>
-		          <td><%=table[1][2][0]%></td>
-		          <td><%=table[1][2][1]%></td>
-		          <td><%=table[1][2][2]%></td>
+		          <td valign="top" class="containText" ><%=table[1][2][0]%></td>
+		          <td valign="top" class="containText" ><%=table[1][2][1]%></td>
+		          <td valign="top" class="containText" ><%=table[1][2][2]%></td>
 		        </tr>
 		      </table>
 		      <%end%>
