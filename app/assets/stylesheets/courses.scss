@@ -283,6 +283,40 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	margin-top: -64px;
 	vertical-align: middle;
  }
+.rateTwo { 
+	background: #00ADC4;
+	color: #fff;
+	font-size: 20px;
+	padding: 27px 10px 19px 10px;
+	display: inline-block;
+	text-align: center;
+	float: left;
+	width: 434px;
+	vertical-align: middle;
+	margin-bottom: 15px;
+ }
+.QuestionAsk {
+	color: #4c4646;
+	font-size: 17px;
+	text-align: left;
+	margin-top: 15px;
+	display: block;
+	border-bottom: 1px solid #d9d9d9;
+	width: 422px;
+	padding: 11px 6px 6px 6px;
+	margin-bottom: 10px;
+}
+.AnswerAsk {
+	color: #262222;
+	font-size: 14px;
+	text-align: left;
+}
+.resultsExams {
+	padding: 10px;
+	width: 433px;
+	height: 400px;
+	display: block;
+}
 .helpText { 
 	width: 414px;
 	text-align: center;
@@ -447,7 +481,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
       
    & .so_open{
         width: 445px;
-        /* height: 400px; */ height: auto;
+        height: 400px; /*height: auto; */
         overflow: auto;
         float: left;
         
@@ -620,11 +654,23 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
         }
        
 .survey_fTwo {
-width: 440px!important;
-float: left;
-overflow: auto;
+		width: 440px!important;
+		float: left;
+		overflow: auto;
 } 
-        
+
+.imageExam { 
+		background: #037E87;
+		color: #fff;
+		height: 45px;
+		padding: 10px;
+		
+		& img {
+			float: right;
+		}
+		
+ }
+
 .delivery_container {
                width: 437px;
                height: 80px;
