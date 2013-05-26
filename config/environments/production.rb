@@ -72,7 +72,8 @@ Cursame30Lb::Application.configure do
     :authentication => 'plain',
     :user_name      => 'wichobabas',
     :password       => 'qor43e95',
-    :domain         => 'mail.cursame.me'
+    :domain         => 'mail.cursame.me',
+    :enable_starttls_auto => true
   }
   ActionMailer::Base.delivery_method = :smtp
 
