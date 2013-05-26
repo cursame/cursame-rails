@@ -20,7 +20,6 @@ task :import_users => :environment do
       hash = row.to_hash
       network_id = network_id
       role_id = hash.delete("Role")
-      puts count
       errors = false
 
       if !role_id.nil? then
@@ -41,6 +40,9 @@ task :import_users => :environment do
       email = hash.delete("Email")
       #user.email = email
 
+      puts email
+      puts email["@"].nil?
+      puts !(User.find_by_email(email).nil?)
       if !email.nil? then
         #user.email = user.email.downcase
         # Checa que el correo sea valido y que no se repita
