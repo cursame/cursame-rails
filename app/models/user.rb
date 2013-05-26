@@ -117,6 +117,20 @@ class User < ActiveRecord::Base
   end
 
 
+  def ubication
+    case
+       when Rails.env == 'development'
+         @link = 'lvh.me:3000'
+       when Rails.env == 'production'
+         @link = 'cursatest.com'
+       when Rails.env == 'test'
+         @link = 'cursatest.com'
+       when Rails.env == 'subtest'
+         @link = 'cursalab.com'
+     end
+  end
+  
+
   #search por nombre en usuario
   def self.search(search)
     if search
