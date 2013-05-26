@@ -44,7 +44,7 @@ task :import_users => :environment do
       if !email.nil? then
         #user.email = user.email.downcase
         # Checa que el correo sea valido y que no se repita
-        if user.email["@"].nil? || !User.find_by_email(email).nil?
+        if email["@"].nil? || !(User.find_by_email(email).nil?)
           arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
           errors = true
         else
