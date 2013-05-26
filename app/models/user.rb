@@ -109,13 +109,27 @@ class User < ActiveRecord::Base
     @permissionings = self.permissionings.last
     subdomain = ''
      if @permissionings  == nil
-        @network=Network.last       
+        @network=Network.last
      else
-      @network = Network.find(@permissionings.network_id)     
+      @network = Network.find(@permissionings.network_id)
      end
       subdomain = @network? @network.subdomain : ''
   end
 
+
+  def ubication
+    case
+       when Rails.env == 'development'
+         @link = 'lvh.me:3000'
+       when Rails.env == 'production'
+         @link = 'cursatest.com'
+       when Rails.env == 'test'
+         @link = 'cursatest.com'
+       when Rails.env == 'subtest'
+         @link = 'cursalab.com'
+     end
+  end
+  
 
   #search por nombre en usuario
   def self.search(search)
@@ -449,8 +463,8 @@ class User < ActiveRecord::Base
     return average/size
   end
 
-  def send_confirmation_instructions
-    puts "ACA PASO"
+  #def send_confirmation_instructions
+   # puts "ACA PASO"
     # do nothing
-  end
+  #end
 end

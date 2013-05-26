@@ -148,12 +148,14 @@
   </div>
   <!-- fin timeline -->
 <!-- mostrar el password por primera vez -->
+<% if current_network.public_register == false%>
  <% if show_joyride(3) != '1'%> 
   <%= render :partial => '/users/set_password_form', :locals => {:user => current_user} %>
     <script>
         modal('#set-password-form');
     </script>
   <% end %>
+<%end%>
 <!-- inicio de joyride -->
   <% if show_joyride(0) == '0'%>
     <%= render :partial => '/shared/network_joyride', :locals => {:wall => @wall} %>

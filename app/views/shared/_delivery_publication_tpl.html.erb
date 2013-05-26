@@ -133,9 +133,11 @@
 <div class="delivery-box">
     <div class="green-btn">
         <div class="labels">
+            <% if delivery.state == "published"%>
             <div id="open-close-<%= delivery.id %>">
                 <a>Responder</a>
             </div>
+            <%end%>
         </div>
     </div>
 </div>

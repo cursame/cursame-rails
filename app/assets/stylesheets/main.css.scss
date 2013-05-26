@@ -325,6 +325,17 @@ input:-moz-placeholder {
     }
   }
 
+
+   .footer > .deleteComment {
+	display: none;
+	}
+
+   .footer:hover > .deleteComment {
+	position: absolute;
+	display: inline-block;
+	margin-top: 5px;
+    }
+
   & .comment-image{
     width: $comment-box;
     height: 100%;
