@@ -205,7 +205,6 @@ $(document).ready(function() {
         $( hrefClean ).animate({
             opacity: 1
         }, time);
-        // goFront('#post-forms','.profile-post-box');
         return false;
     });
     //Cancel btns
@@ -213,8 +212,6 @@ $(document).ready(function() {
         $(value).find('#cancel-post-form').click(function() {
 
             resetForm($(value).find('form'));
-
-            goBack('#post-forms','.profile-post-box');
 
             $('#post-forms').animate({
                 height: '0'
