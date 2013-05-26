@@ -109,9 +109,9 @@ class User < ActiveRecord::Base
     @permissionings = self.permissionings.last
     subdomain = ''
      if @permissionings  == nil
-        @network=Network.last       
+        @network=Network.last
      else
-      @network = Network.find(@permissionings.network_id)     
+      @network = Network.find(@permissionings.network_id)
      end
       subdomain = @network? @network.subdomain : ''
   end
@@ -463,8 +463,8 @@ class User < ActiveRecord::Base
     return average/size
   end
 
-  def send_confirmation_instructions
-    puts "ACA PASO"
+  #def send_confirmation_instructions
+   # puts "ACA PASO"
     # do nothing
-  end
+  #end
 end

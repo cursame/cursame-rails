@@ -18,9 +18,7 @@ task :import_users => :environment do
         user = User.new
       end
       hash = row.to_hash
-      network_id = network_id
       role_id = hash.delete("Role")
-      puts count
       errors = false
 
       if !role_id.nil? then
@@ -39,14 +37,16 @@ task :import_users => :environment do
       end
 
       email = hash.delete("Email")
-      user.email = email
+      #user.email = email
 
-      if !user.email.nil? then
+      if !email.nil? then
         #user.email = user.email.downcase
         # Checa que el correo sea valido y que no se repita
-        if user.email["@"].nil? || !User.find_by_email(email).nil?
+        if email["@"].nil? || !(User.find_by_email(email).nil?)
           arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
           errors = true
+        else
+          user.email = email
         end
       else
         arrayErrores.push({:line => count, :message => "No hay ningun email especificado"})
@@ -86,12 +86,12 @@ task :import_users => :environment do
             arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
           end
         end
-        if !user.save then
+        if !(user.save) then
           arrayErrores.push({:line => count, :message => "Error al guardar"})
         else
            #user.confirm!
            #user.save!
-          Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
         end
