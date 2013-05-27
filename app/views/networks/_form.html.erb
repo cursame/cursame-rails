@@ -1,3 +1,5 @@
+<div class="form-course"><!-- estilo en courses.scss -->
+	<div style="width:400px; float:left;">
 <%= form_for(@network, :remote => true) do |f| %>
   <% if @network.errors.any? %>
     <div id="error_explanation">
@@ -11,20 +13,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="field-style">
+    <p><%= f.label :nombre %><p/>
+    <%= f.text_field :name, :class=> "default-form" %>
   </div>
   <div class="field">
-    <%= f.label :subdomain %><br />
-    <%= f.text_field :subdomain %>
+    <p><%= f.label :subdominio %></p>
+    <%= f.text_field :subdomain, :class=>"default-form" %>
   </div>
   <div class="field">
-     <%= f.label :population %><br />
-     <%= f.text_field :population %>
+     <p><%= f.label :Poblacion %></p>
+     <%= f.text_field :population, :class=>"default-form" %>
    </div>
     
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+</div>

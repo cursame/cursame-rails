@@ -87,6 +87,28 @@ background-image: -o-linear-gradient(top, #f86049, #d6432d);
 background-image: linear-gradient(top, #f86049, #d6432d); }
 .signup-btn:hover { background-image: -webkit-linear-gradient(top, #e35843, #c03c28); }
 
+.confirm-btn { color: white; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); border: 0; width: 290px; height: 45px; font-size: 17px; font-family: "HelveticaNeue-Light", sans-serif; margin-top: 16px; cursor: pointer;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#f86049), to(#d6432d));
+background-image: -moz-linear-gradient(top, #f86049, #d6432d);
+background-image: -ms-linear-gradient(top, #f86049, #d6432d);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f86049), color-stop(100%, #0064CD));
+background-image: -webkit-linear-gradient(top, #f86049, #d6432d);
+background-image: -o-linear-gradient(top, #f86049, #d6432d);
+background-image: linear-gradient(top, #f86049, #d6432d); }
+.confirm-btn:hover { background-image: -webkit-linear-gradient(top, #e35843, #c03c28); }
+
 .confirmation-links { width: 300px; margin: 0 auto; text-align: center; line-height: 2em; margin-top:70px; }
 .confirmation-links > a { color: #fff; text-shadow: 0px 1px 5px #000; }
 .confirmation-links > a:hover { text-decoration: underline; }
+
+.unblock { width: 311px; margin: 0 auto; text-align: center; margin-top:0px; font-size: 12px; display: block; line-height: 14px; background: #ededed; border: 1px solid #ccc; padding: 20px; color: #333; -webkit-border-radius: 5px;
+-webkit-border-top-left-radius: 0px;
+-webkit-border-top-right-radius: 0px;
+-moz-border-radius: 5px;
+-moz-border-radius-topleft: 0px;
+-moz-border-radius-topright: 0px;
+border-radius: 5px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px; }
+.unblock > a:link, .unblock > a:visited { text-decoration: underline; margin-top: 5px; display: block }
+.unblock > a:hover, .unblock > a:active { color: #F15A43!important; }
