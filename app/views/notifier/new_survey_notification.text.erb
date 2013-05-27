@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td style="padding:0px 30px 20px 30px;" width="600px">
-					<p>Hola  "<%= @user.email %>" hay una nuevo examen disponible <%=@survey.name%>, que comenzar&acuote; el <%=@survey.publish_date%> y terminar&acuote; el <%=@delivery.end_date%> .</p>
+					<p>Hola  "<%= @user.email %>" hay una nuevo examen disponible <%=@survey.name%>, que comenzar&acuote; el <%=@survey.publish_date%> y terminar&acuote; el <%=@survey.end_date%> .</p>
 				</td>
 			</tr>
 			<tr>
@@ -46,11 +46,11 @@
 			</tr>
 			<tr>
 				<td>
-				<!--	<center><img src="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/contrasena.jpg"></center>-->
+				<!--	<center><img src="http://<%#= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/contrasena.jpg"></center>-->
 				</td>
 			</tr>
 		</table>
-		<span class="viewFooter">Pomona #7, Roma Norte, Delegaci&oacuote;n Cuauhtemoc, Ciudad de M&eacute;xico.</span>
+		<span class="viewFooter"><%="Pomona #7, Roma Norte, Delegación Cuauhtémoc, Ciudad de México."%></span>
 		</center>
 		
 	</body>
