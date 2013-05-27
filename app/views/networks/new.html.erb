@@ -1,5 +1,10 @@
-<h1>New network</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', networks_path %>
+<div id="nsdmenu">
+	<h1>Crear nueva red</h1>
+		<div class="reload">
+			<ul>
+				<li style="width: 10px;"><img src="/assets/eback.png"></li>
+				<li style="width: 20px;"><%= link_to 'Back', networks_path %></li>
+			</ul>
+		</div>
+</div>
+	<%= render 'form' %>
