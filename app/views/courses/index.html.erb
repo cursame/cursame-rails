@@ -67,7 +67,7 @@ width: 700px!important; text-align: center!important; padding-top: 30px!importan
     </div>
        
       <%#= course.init_date %>
-    <li class="finishdate"> <%= course.finish_date %></li>
+    <li class="finishdate"> <%= course.finish_date if course.finish_date != nil  %></li>
     </div>
     
 </div>
