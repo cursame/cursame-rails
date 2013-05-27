@@ -45,7 +45,7 @@
           <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
         
           <%end%>
-         <span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
+         <span> <%= link_to truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 20), show_user_path(current_user.personal_url) %> </span>
           <%#= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
 
                  <%#=  debug current_role %>
