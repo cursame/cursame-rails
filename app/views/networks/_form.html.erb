@@ -25,6 +25,10 @@
      <p><%= f.label :Poblacion %></p>
      <%= f.text_field :population, :class=>"default-form" %>
    </div>
+   <div class="field">
+      <%= f.label :registro_publico %><br />
+      <%= f.check_box :public_register %>
+   </div>
     
   <div class="actions">
     <%= f.submit %>
