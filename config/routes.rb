@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :members_in_groups
