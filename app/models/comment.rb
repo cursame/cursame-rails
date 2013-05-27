@@ -139,10 +139,13 @@ class Comment < ActiveRecord::Base
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
 
+      puts '-------no mamar------'
+
       users = users.reject { |user| user.id == self.user.id }
       users = users.map{|x| x.id}
       UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
                          :notifications_kind => notification_kind, :users_id => users.to_s})
+      puts notification_kind
       #users.each do |user|
       #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       #end
