@@ -14,7 +14,7 @@
 	     <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>
          <% @string =  @file.to_s.split('/').last%>
-        <%= link_to simple_format("#{(@string)}"), "http://#{current_network.subdomain}.#{links}#{aa.file}"%>
+        <%= link_to simple_format("#{(@string)}", :omission => "...", :length => 25), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank'%>
         
         
      <%end%>

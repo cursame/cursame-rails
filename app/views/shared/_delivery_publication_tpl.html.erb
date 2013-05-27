@@ -17,7 +17,7 @@
     <% delivery.assets.each do|files|%>
         <div class="file-mini-upload">
              <% @string = files.file.to_s.split('/').last %>
-            <%#= debug files.file %> <span><%= link_to "#{@string}", "#{files.file}" %> </span>
+            <%#= debug files.file %> <span><%= link_to "#{@string}", "#{files.file}" , :target => '_blank' %> </span>
         </div>
     <%end%>
 </div>
