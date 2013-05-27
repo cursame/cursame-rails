@@ -91,7 +91,7 @@
         <%end%>
         </div>
 
-        <div class="top-null-image"></div><% if type != 'Course' %><%= link_to " #{tipo} en el curso: #{posted_in_for}", course_path(posted_in_for_id) if ( !posted_in_for.blank?) %><b> por </b><%= link_to " #{user_name}", show_user_path(personal_url) if ( !user_name.blank?) %>
+        <div class="top-null-image"></div><% if type != 'Course' %><%= link_to truncate(" #{tipo} en el curso: #{posted_in_for}", :omission => "...", :length => 35), course_path(posted_in_for_id) if ( !posted_in_for.blank?) %><b> por </b><%= link_to truncate(" #{user_name}", :omission => "...", :length => 15), show_user_path(personal_url) if ( !user_name.blank?) %>
  <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %><%end%><%#= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>
 
@@ -101,11 +101,11 @@
         <div class="null-image"></div>
         <% case type%>
         <% when 'Discussion'%>
-        <p class="title-discusion"><%= name %> </p>
+        <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %> </p>
         <!-- <div class="description"><%= content %></div> -->
         <p><%= content %></p>
         <% when 'Course'%>
-        <p class="title-discusion"><%= name %></p>
+        <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
         <!-- <div class="description"><%= content %></div> -->
         <p><%= content %></p>
         <% when 'Comment'%>

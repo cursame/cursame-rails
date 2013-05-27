@@ -1,6 +1,6 @@
 
 <div class="null-image"></div>
-    <p class="title-discusion" style="width:150px; float:left; margin-left:-60px; "><%= delivery.title %></p>
+    <p class="title-discusion" style="width:150px; float:left; margin-left:-60px; "><%= truncate("#{delivery.title}", :omission => "...", :length => 35) %></p>
 
 <div class="end-date-box">
     <div class="end-date-label">Entregar antes de:</div>
