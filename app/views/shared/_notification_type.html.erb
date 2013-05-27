@@ -20,7 +20,7 @@
 
   <% when 'user_accepted_in_course'%>
 
-  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Has sido acceptedo en el curso <b><%= notification.notificator.title%><b>
+  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Has sido aceptado en el curso <b><%= notification.notificator.title%><b>
 
   <% when 'new_delivery_on_course'%>
   <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?)%>
