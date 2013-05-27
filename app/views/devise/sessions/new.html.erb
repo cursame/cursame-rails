@@ -31,9 +31,10 @@
 </div>
 
 	<div>
-	    <label class="unblock">
-		    Si ya eres usuario, bebes confirmar tu correo electrónico para seguir adelante. Si no lo has hecho por favor
-		    <%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %>
+	    <label class="unblock" style="text-align:justify;">
+		   "Si ya eres usuario haz recibido un correo de confirmación de cuenta, por favor revisa tus bandejas de entrada y sigue el link que te hemos enviado de lo contrario no podrás iniciar sesión"
+		<b style="font-size:10px; font-weight:bold;"> En caso de no haber recibido el correo de confirmación da click en confirmar tu cuenta y sigue las instrucciones.</b>
+		  <center>  <%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></center>
 		</label>
 	</div>
 </div>
