@@ -58,11 +58,11 @@ width: 700px!important; text-align: center!important; padding-top: 30px!importan
            <%end%>
      </div>
      
-    <div id="course-title"><%= course.title %> </div>
+    <div id="course-title"><%= truncate("#{course.title}", :omission => "...", :length => 30) %> </div>
     <div id="course-info">
     <div class="hidden-text">
        <li id="silabus" class="silabus">
-           <%= course.silabus.html_safe if course.silabus? %>
+           <%= truncate("#{course.silabus}", :omission => "...", :length => 30) if course.silabus? %>
        </li> 
     </div>
        
