@@ -10,15 +10,17 @@
 			<a class="new-regs" href="licencias.html"><%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%></a>
 		</center>
 
-<div class="form-signin">
+<div class="form-signin" style="margin-bottom:0px!important; -webkit-border-radius: 5px; -webkit-border-bottom-right-radius: 0px; -webkit-border-bottom-left-radius: 0px;
+-moz-border-radius: 5px; -moz-border-radius-bottomright: 0px; -moz-border-radius-bottomleft: 0px; border-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
-  <h2 class="form-signin-heading">Iniciar Sesión</h2>
+  <h2 class="form-signin-heading">Inicia sesión</h2>
   <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
   <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
   <% if devise_mapping.rememberable? -%>
   	<label class="checkbox remember">
     	<%= f.check_box :remember_me %> Recordarme
     </label>
+    
     <label class="frgt-pswd">
  	   <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
     </label>
@@ -27,6 +29,14 @@
   <!-- <%= render "devise/shared/links" %> -->
 <% end %>
 </div>
+
+	<div>
+	    <label class="unblock" style="text-align:justify;">
+		   "Si ya eres usuario haz recibido un correo de confirmación de cuenta, por favor revisa tus bandejas de entrada y sigue el link que te hemos enviado de lo contrario no podrás iniciar sesión"
+		<b style="font-size:10px; font-weight:bold;"> En caso de no haber recibido el correo de confirmación da click en confirmar tu cuenta y sigue las instrucciones.</b>
+		  <center>  <%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></center>
+		</label>
+	</div>
 </div>
 
 <%= render "devise/shared/footer-links" %>

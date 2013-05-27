@@ -108,10 +108,12 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+      
       if @member.owner = true || current_role = "admin"
       else
         redirect_to :back
       end
+      
   end
 
   # POST /courses
@@ -158,13 +160,11 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
+        format.html { redirect_to :back }
         format.json { head :no_content }
-        format.html { redirect_to :back }
-        format.js
       else
-        format.json { render json: @course.errors, status: :unprocessable_entity }
         format.html { redirect_to :back }
-        format.js
+        format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
   end
