@@ -24,13 +24,13 @@ class Course < ActiveRecord::Base
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
-  validates_presence_of :title
-  validates_presence_of :silabus
-  validates_presence_of :init_date
-  validates_presence_of :finish_date
+   validates_presence_of :title
+   validates_presence_of :silabus
+  #validates_presence_of :init_date
+  #validates_presence_of :finish_date
   # validates_presence_of :survey_param_evaluation
   # validates_presence_of :delivery_param_evaluation
-  validates_presence_of :network_id
+  #validates_presence_of :network_id
 
 
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,

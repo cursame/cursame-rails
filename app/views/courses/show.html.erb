@@ -168,7 +168,10 @@
 
   <div id="box-user-credential" class="network-layout">
     <div class="thumbnail"  >
-          <%= link_to image_tag(@course.avatar.blank? ? @course.course_avatarx : @course.avatar.profile) %>
+         
+         <%= link_to image_tag(@course.avatar.profile), course_path(@course.id) if ( !@course.avatar.blank?) %>
+
+          <%= link_to image_tag(@course.course_avatarx), course_path(@course.id) if (@course.avatar.blank?) %>
     </div>
     <div class="tagname">
       <%= @course.title %>
