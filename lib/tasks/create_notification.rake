@@ -2,7 +2,7 @@ desc "Create notifications"
 task :create_notifications => :environment do
   notificator_type = ENV["NOTIFICATOR_TYPE"]
   notificator_id = ENV["NOTIFICATOR_ID"]
-  notification_kind = ENV["NOTIFICATION_KIND"]
+  notification_kind = ENV["NOTIFICATIONS_KIND"]
   users = ENV["USERS_ID"][1...-1].split(",").map{|s| s.to_i}
   
   a = Time.now
@@ -13,6 +13,5 @@ task :create_notifications => :environment do
     end
   end
   b = Time.now
-  puts "Tiempo total de la transaccion: " + (b - a).to_s
-  
+  puts "Tiempo total de la transaccion: " + (b - a).to_s  
 end

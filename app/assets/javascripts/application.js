@@ -119,6 +119,13 @@ $(function() {
 			'<span class="time">Hace 3 horas</span>',
 			'</li>'];
 			break;
+			case 'user_comment_on_comment':
+			notification = ['<li class="unread" onclick="me(type,id)">',
+			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
+			'<b>'+data.creator.first_name+' '+data.creator.last_name+'</b> comentó en el tu comentario <br/>',
+			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
+			'</li>'];
+			break;
 			default :
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',

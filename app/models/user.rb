@@ -108,12 +108,14 @@ class User < ActiveRecord::Base
   def devise_mailer_subdomain
     @permissionings = self.permissionings.last
     subdomain = ''
-     if @permissionings  == nil
-        @network=Network.last
-     else
+    if @permissionings.nil?
+      @network = Network.last
+    elsif @permissionings.network_id.nil?
+      @network = Network.last
+    else
       @network = Network.find(@permissionings.network_id)
-     end
-      subdomain = @network? @network.subdomain : ''
+    end
+    subdomain = @network ? @network.subdomain : ''
   end
 
 
@@ -129,7 +131,7 @@ class User < ActiveRecord::Base
          @link = 'cursalab.com'
      end
   end
-  
+
 
   #search por nombre en usuario
   def self.search(search)
