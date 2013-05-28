@@ -40,7 +40,8 @@
 
   <%else%>
   
-  <% if notification.notificator.user.avatar.is_a? %>
+   <% @array_data =  notification.notificator.user.avatar %>
+  <% if @array_data.is_a?(Hash) %>
       <%= debug  notification.notificator.user.avatar %>
   <%else%>
   <% if  current_user && current_user.avatar != nil %>
