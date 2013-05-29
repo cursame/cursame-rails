@@ -17,7 +17,6 @@
    <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
   </p>
 <% end %>
-<% @users = current_network.users.search(params[:search])%>
 <% @users.each do |user|%>
 
   <div class="the-list">
@@ -70,4 +69,5 @@
     </ul> </div>
 <%end%>
 
+<%= will_paginate @users %>
 </div>
