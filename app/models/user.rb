@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "first_name LIKE '%"+search+"%' || last_name LIKE '%"+search+"%' "
+      query = "first_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
       where(query)
     else
       # find(:all, :order => :first_name)
