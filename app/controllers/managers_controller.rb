@@ -33,7 +33,7 @@ class ManagersController < ApplicationController
   end
 
   def members
-    @users = current_network.users.search(params[:search]).paginate(:per_page => 10, :page => params[:page]).order('users.first_name')
+    @users = current_network.users.search(params[:search]).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
   end
 
   def network_configuration
