@@ -18,4 +18,6 @@
     <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form' %>
     <%= f.submit %>   
 <% end %>
+
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBoxx, :formId => formId} %>
+<div class="notice-file non-margin">El límite de peso por archivo es de 8Mb</div>
