@@ -42,22 +42,21 @@
   
    <% @array = notification.notificator.user %>
    <% if @array.class == Array %>
-     <% @array.each do |user|%> 
+     <% user =  @array.first %> 
      
      <%= image_tag(user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !user.avatar.blank?) %><%= image_tag(user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( user.avatar.blank?) %>Una actividad por <%=link_to "#{user.name} ",show_user_path(user.personal_url) if ( !user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(user.personal_url) if (user.name.blank?)%>
            <!--en tu curso <b>< notification.notificator.courses[0].title  if ( notification.notificator.courses != nil) %></b>-->
-     <%end%>
     
-     
   <%else%>
+  
     <% if  current_user && current_user.avatar != nil %>
 
            <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?) %><%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?) %><%end%>Una actividad por <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%>
-    
        
   <%end%>
   
   <%end%>
+ 
   <br/>
   <span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
