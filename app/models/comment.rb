@@ -68,12 +68,12 @@ class Comment < ActiveRecord::Base
     ActiveRecord::Base.transaction do
       notifications = Notification.where(:notificator_type => "Comment", :notificator_id => id)
       walls = Wall.where(:publication_type => "Comment", :publication_id => id)
-    
+
       walls.each do |wall|
         wall.destroy
       end
-      
-    
+
+
       notifications.each do |notification|
         notification.destroy
       end
@@ -112,12 +112,12 @@ class Comment < ActiveRecord::Base
       #member_in_courses = MembersInCourse.where(:course_id => commentable_id, :accepted => true)
 
       #member_in_courses = member_in_courses.reject{ |user| user.user_id == self.user_id }
-      
+
       #member_in_courses.each do |member|
       #  user = User.find(member.user_id)
       #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       #end
-      
+
       users = users.reject{ |user| user.id == self.user_id }
       users = users.map{|x| x.id}
       UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
@@ -139,13 +139,11 @@ class Comment < ActiveRecord::Base
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
 
-      puts '-------no mamar------'
-
       users = users.reject { |user| user.id == self.user.id }
       users = users.map{|x| x.id}
       UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
                          :notifications_kind => notification_kind, :users_id => users.to_s})
-      puts notification_kind
+
       #users.each do |user|
       #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
       #end
@@ -156,12 +154,10 @@ class Comment < ActiveRecord::Base
       users = users.map{|x| x.id}
       UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
                          :notifications_kind => notification_kind, :users_id => users.to_s})
-      
+
       return
     else
-      return
     end
-
   end
 
   def group_of_users(comment_type)

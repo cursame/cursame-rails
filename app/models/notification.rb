@@ -21,14 +21,14 @@ class Notification < ActiveRecord::Base
       owner = self.notificator.courses[0]
     end
 
-   	PrivatePub.publish_to("/notifications/"+self.user.id.to_s,
-   		 notification: self, 
+    PrivatePub.publish_to("/notifications/"+self.user.id.to_s,
+       notification: self,
        num: self.user.notifications.count,
-   		 notificator: self.notificator,
+       notificator: self.notificator,
        # creator: self.notificator.user||User.last,
-   		 creator: User.last,
-   		 reciever: self.user,
-   		 owner: owner
-   	)
+       creator: User.last,
+       reciever: self.user,
+       owner: owner
+    )
   end
 end
