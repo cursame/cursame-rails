@@ -21,12 +21,30 @@ class Notification < ActiveRecord::Base
       owner = self.notificator.courses[0]
     end
 
-    PrivatePub.publish_to("/notifications/"+self.user.id.to_s,
+    case self.kind
+    when "user_comment_on_comment"
+      creator = self.notificator.user
+    when "user_comment_on_course"
+      creator = self.notificator.user
+    else
+      creator = nil
+    end
+
+    if !creator.nil? then
+      if creator.first_name.nil? then
+        creator.first_name = "Unknown"
+      end
+      if creator.last_name.nil? then
+        creator.last_name = "Unknown"
+      end
+    end
+
+    PrivatePub.publish_to("/notifications/" + self.user.id.to_s,
        notification: self,
        num: self.user.notifications.count,
        notificator: self.notificator,
        # creator: self.notificator.user||User.last,
-       creator: User.last,
+       creator: creator,
        reciever: self.user,
        owner: owner
     )
