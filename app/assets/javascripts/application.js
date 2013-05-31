@@ -69,18 +69,22 @@ $(function() {
 		$('#notifications_count span').html(data.num*1);
 		console.log(data);
 		var notification = "", type = data.notification.notificator_type, id=data.notification.id;
+		var creator;
+		if (data.creator){
+			name = (data.creator.first_name && data.creator.last_name) ? data.creator.first_name +' '+ data.creator.last_name : data.creator.email;
+		} 
 		switch(data.notification.kind){
 			case 'user_comment_on_network':
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="'+data.creator.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
-			'<b>'+data.creator.first_name+' '+data.creator.last_name+'</b> comentó en la red <b>'+data.owner.name+'</b><br/>',
+			'<b>'+name+'</b> comentó en la red <b>'+data.owner.name+'</b><br/>',
 			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
 			case 'user_comment_on_course':
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="'+data.creator.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
-			'<b>'+data.creator.first_name+' '+data.creator.last_name+'</b> comentó en el curso <b>'+data.owner.title+'</b><br/>',
+			'<b>'+name+'</b> comentó en el curso <b>'+data.owner.title+'</b><br/>',
 			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
@@ -122,7 +126,7 @@ $(function() {
 			case 'user_comment_on_comment':
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'<b>'+data.creator.first_name+' '+data.creator.last_name+'</b> comentó en el tu comentario <br/>',
+			'<b>'+name+'</b> comentó en el tu comentario <br/>',
 			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
