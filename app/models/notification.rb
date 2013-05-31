@@ -31,7 +31,6 @@ class Notification < ActiveRecord::Base
        notification: self,
        num: self.user.notifications.where(:active => true).count,
        notificator: self.notificator,
-       # creator: self.notificator.user||User.last,
        creator: creator,
        reciever: self.user,
        owner: owner

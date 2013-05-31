@@ -67,7 +67,6 @@ function changeNumbers(idParent, idFind){
 $(function() {
 	PrivatePub.subscribe ("/notifications/"+Cursame.userId, function(data, channel){
 		$('#notifications_count span').html(data.num*1);
-		console.log(data);
 		var notification = "", type = data.notification.notificator_type, id=data.notification.id;
 		var creator;
 		if (data.creator){
