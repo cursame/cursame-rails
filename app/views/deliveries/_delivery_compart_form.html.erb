@@ -11,6 +11,32 @@
 
          </div>
      </div>
+     <div id="youtube_content_delivery" style="height:400px; overflow:auto;display: none; float:left; width:100%">
+              Contenido de Youtube recomendado para el tema  <div id="close_youtube_delivery" style="float:right; font-size:30px;">x</div></br>
+    
+          <div id="content_free">
+            
+          </div>
+          
+     
+       
+      </div>
+        <% 1.times do
+                  contents = @delivery.contents.build
+         end%>
+        <%= f.fields_for :contents do |conty| %>
+                    <div id="content_killer">
+                          <%#= conty.text_area :content, :value => "laolaodaodloasdlaoldaodlados"%>
+                    </div>
+          <%end%>
+     
+     
+     <script>
+        $('#close_youtube_delivery').click(function() {
+             $('#youtube_content_delivery').toggle('blind', 400);
+         });
+         
+     </script>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
@@ -37,7 +63,8 @@
 
         <div class="submit-area"></div>
         
-          
+    
+    
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
     
@@ -61,8 +88,21 @@
                      
     <% end %>
 <%#end%>
+<div class="var_delivery">
+    <a id="valu" href="" data-remote="true"><%= image_tag('youtube.png')%></a>
+</div>
 
 <div class="notice-file">El límite de peso por archivo es de 8Mb</div>
+
+<script>
+    $("#delivery_title").keyup(function () {
+      var value = $(this).val();
+        $("#valu").attr("href", "/content/youtube?youtube_search="+value)
+    }).keyup();
+</script>
+
+
+
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
 
 <script type="text/javascript">

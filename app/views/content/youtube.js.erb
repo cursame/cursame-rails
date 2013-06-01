@@ -1,0 +1,3 @@
+$('#youtube_content_delivery').show()
+$('#content_free').prepend("<%= escape_javascript(render(:partial => '/content/youtube', :locals => {:video => [@video], :videos => [@videos]}))%>");
+

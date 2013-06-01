@@ -1,3 +1,12 @@
 // Place all the styles related to the deliveries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.var_delivery{
+    width:600px;height:35px;float:right; background-color:#DBF7F5; font-size:15px; color:#08A940;  text-align:justify;
+    & a {
+        margin-top:5px;
+        padding:5px;
+    }
+    
+}

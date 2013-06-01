@@ -293,6 +293,38 @@ Cursame30Lb::Application.routes.draw do
         resources :activities
     end
 
+
+   ######## rutas para contents 
+
+   resources :contents
+
+     resources :surveys do
+       resources :contents
+     end
+
+     resources :deliveries do
+       resources :contents
+     end
+
+     resources :assignments do
+        resources :contents
+     end
+
+     resources :comments do
+        resources :contents
+     end
+
+     resources :discussions do
+         resources :contents
+     end
+
+     resources :courses do
+         resources :contents
+     end
+
+      resources :user_surveys do
+          resources :contents
+      end
    ####### rutas para like en web
 
    get "/upvote/:id", :to => 'home#upvote', :as => :upvote
@@ -316,6 +348,17 @@ Cursame30Lb::Application.routes.draw do
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
    match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
+
+   ######## contenido
+    get "content/youtube", :as => :c_youtube
+
+    get "content/vimeo"
+
+    get "content/wikipedia"
+
+    get "content/orkut"
+
+    get "content/khanacademy"
 
    # api para la mobile
    #this is for api for the mobile app

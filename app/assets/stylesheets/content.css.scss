@@ -1,0 +1,34 @@
+// Place all the styles related to the content controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.content_charge{
+    height:400px; overflow:auto;
+      
+}
+
+.video{
+           height:180px;
+           weight:200px;
+           margin:5px;
+           background: #eee;
+           margin:solid ;
+           float: left;
+           & .button_add{
+               background:#15FAF2;
+               width: 200px;
+               height: 42px; 
+               font-size:20px;
+               text-align:center;
+               
+           }
+           
+           &  .button_add:hover{
+                  background:#156DFA;
+                  color:#fff;
+                  
+                  
+           }
+           
+           
+}       
+       

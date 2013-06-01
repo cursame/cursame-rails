@@ -105,3 +105,6 @@ gem "pdfkit"
 gem "active_attr"
 
 gem "mocha", :group => :test
+#gemas para contenido
+
+gem "youtube_it"
