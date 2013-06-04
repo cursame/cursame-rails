@@ -14,9 +14,11 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
+
+      @from_enter_key = params[:from_enter_key] == 'true' ? true : false
+
       # esto es para clonar los comentarios de el grupo
       if params[:delivery] then
-
         params[:commentable_type] = 'Course'
         params[:delivery][:course_ids].each do |group_id|
           params[:commentable_id] = group_id
@@ -31,7 +33,8 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'   || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key)|| @comment.commentable_type == 'User'
+      # if @comment.commentable_type == 'Network'   ||  @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
