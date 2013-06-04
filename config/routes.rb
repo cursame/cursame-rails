@@ -354,7 +354,7 @@ Cursame30Lb::Application.routes.draw do
 
     get "content/vimeo"
 
-    get "content/wikipedia"
+    get "content/wikipedia", :as => :c_wikipedia
 
     get "content/orkut"
 

@@ -108,3 +108,4 @@ gem "mocha", :group => :test
 #gemas para contenido
 
 gem "youtube_it"
+gem "mediawiki-gateway"
