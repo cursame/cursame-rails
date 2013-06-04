@@ -49,11 +49,11 @@
                             data.context.find('.trash').remove();
                             data.context.find('span').css("width", "155px")
                                     .css('line-height','27pt')
-                                    .css('font-size','11px')
+                                    .css('font-size','9px')
+                                    .css('color','red')
                                     .css('font-weight','bold')
-                                    .html('Error: Archivo no soportado');
+                                    .html('Error: Archivo o peso no soportado');
                             data.context.find('.progress-bar').hide();
-
                         });
                 },
                 progress:function(e,data){

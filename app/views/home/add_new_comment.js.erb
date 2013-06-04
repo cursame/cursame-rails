@@ -1,4 +1,4 @@
-<% if @comment.commentable_type == 'Network' || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User' %>
+<% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
   // si se tiene que agregar al layout principal
   // $('#comentable_<%= @comment.commentable.id %>').prepend('<%= escape_javascript(render(:partial => 'shared/comments', :locals => {:comment => @comment}))%>');
 
