@@ -136,6 +136,9 @@ class HomeController < ApplicationController
             format.js
           end
      end
+     
+     def authentications_test
+     end
 
   protected
   def save_comment

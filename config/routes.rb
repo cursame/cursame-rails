@@ -50,15 +50,18 @@ Cursame30Lb::Application.routes.draw do
 
   resources :authentications
 
-  #recursos necesarios para el calendario
+  #recursos necesarios para autentificaciones de servicios externos (by alfredot)
   resources :events
+  
+  ########## calendar
 
   get "calendar/index"
   get "calendar/test_calendar"
 
-  match "/auth/:provider/callback" => "authentications#create"
-
-
+  ######### dropbox
+  get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
+  ######## create
+  match "/auth/:provider/callback" => "authentications#create", :as => :providers
   #recursos naturales de la aplicación
 
 
@@ -222,6 +225,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
+  get "home/authentication", :to => "home#authentications_test",:as => :authentications 
 
   root :to => 'home#index'
 
@@ -354,7 +358,7 @@ Cursame30Lb::Application.routes.draw do
 
     get "content/vimeo"
 
-    get "content/wikipedia"
+    get "content/wikipedia", :as => :c_wikipedia
 
     get "content/orkut"
 

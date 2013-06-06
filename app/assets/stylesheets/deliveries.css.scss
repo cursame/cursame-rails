@@ -11,7 +11,39 @@
     
     & a {
         margin-top:5px;
-        padding:5px;
+        padding:0px;
+        margin-left: -4px;
+        margin-bottom:10px;
+    }
+    
+    & .pkl{
+        margin-left:5px;
+        padding-left:5px;
+        width:200px;
+        
+        background-image: linear-gradient(bottom, rgb(56,161,144) 19%, rgb(50,173,167) 60%, rgb(42,168,168) 80%);
+        background-image: -o-linear-gradient(bottom, rgb(56,161,144) 19%, rgb(50,173,167) 60%, rgb(42,168,168) 80%);
+        background-image: -moz-linear-gradient(bottom, rgb(56,161,144) 19%, rgb(50,173,167) 60%, rgb(42,168,168) 80%);
+        background-image: -webkit-linear-gradient(bottom, rgb(56,161,144) 19%, rgb(50,173,167) 60%, rgb(42,168,168) 80%);
+        background-image: -ms-linear-gradient(bottom, rgb(56,161,144) 19%, rgb(50,173,167) 60%, rgb(42,168,168) 80%);
+
+        background-image: -webkit-gradient(
+        	linear,
+        	left bottom,
+        	left top,
+        	color-stop(0.19, rgb(56,161,144)),
+        	color-stop(0.6, rgb(50,173,167)),
+        	color-stop(0.8, rgb(42,168,168))
+        );
+        
+        opacity:0.60;
+        filter:alpha(opacity=60);
+        
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        
+        
     }
     
 }

@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
   
   #helpers para contenido
   helper_method :client_youtube
+  helper_method :auth_hash
+  
 
   # errores
    # Se declaran los errores personalizados
@@ -230,6 +232,9 @@ class ApplicationController < ActionController::Base
     client = YouTubeIt::Client.new(:dev_key => "AI39si5yjznaXM1CWGbLUf6fq9x-MKjeOi9b6cF6lWTayZO45jLHs1nVtMEnUCawKguHUyvLl-I13WLHe50tR_80tZ4aLRd4MQ")
   end
   
+  def auth_hash
+      omniauth = request.env["omniauth.auth"]
+  end
   
   protected
   #roles

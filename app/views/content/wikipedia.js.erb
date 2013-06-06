@@ -1,0 +1,3 @@
+$('#content_free').html('');
+$('#youtube_content_delivery').show();
+$('#content_free').prepend("<%= escape_javascript(render(:partial => '/content/wikipedia', :locals => {:video => [@video], :videos => [@videos]}))%>");
