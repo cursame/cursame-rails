@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .var_delivery{
-    width:600px;height:35px;float:right; background-color:#DBF7F5; font-size:15px; color:#08A940;  text-align:justify;
+    height:35px;
+    float:right;
+    font-size:15px;
+	position: absolute;
+	margin-left: 300px;
+    
     & a {
         margin-top:5px;
         padding:5px;

@@ -1,5 +1,11 @@
+
+<ul>
+
 <% @video.each do |vi|%>
-        <div class="video">
+
+<li style="display: inline; position: relative; float: left; width: 200px; height: 200px; list-style-type: none; margin-right: 2px;">
+
+        <div class="video" id="videoSlider">
             <%= vi.embed_html_with_width(200).html_safe%>
            
              <% @id = vi.published_at %>
@@ -10,6 +16,9 @@
              </div>
       
          </div>
+         
+     </li>
+
          
          <SCRIPT LANGUAGE="JavaScript">
                   
@@ -23,5 +32,39 @@
                 
                 
                 
-         </SCRIPT>        
+         </SCRIPT>
+
+
+
 <%end%>
+
+</ul>
+
+<script>
+$(function(){
+  
+    var $bl    = $("#youtube_content_delivery"),
+        $th    = $("#content_free"),
+        blW    = $bl.outerWidth(),
+        blSW   = $bl[0].scrollWidth,
+        wDiff  = (blSW/blW)-1,  // widths difference ratio
+        mPadd  = 500,  // Mousemove Padding
+        damp   = 20,  // Mousemove response softness
+        mX     = 0,   // Real mouse position
+        mX2    = 0,   // Modified mouse position
+        posX   = 330,
+        mmAA   = blW+(mPadd+10), // The mousemove available area
+        mmAAr  = (blW/mmAA);    // get available mousemove fidderence ratio
+
+	$bl.mousemove(function(e) {
+        mX = e.pageX - this.offsetLeft;
+        mX2 = Math.min( Math.max(0, mX-mPadd), mmAA ) * mmAAr;
+	});
+
+	setInterval(function(){
+		posX += (mX2 - posX) / damp; // zeno's paradox equation "catching delay"	
+		$th.css({marginLeft: -posX*wDiff });
+	}, 10);
+
+});
+</script>
