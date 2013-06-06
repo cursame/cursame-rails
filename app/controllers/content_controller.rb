@@ -15,7 +15,8 @@ class ContentController < ApplicationController
   def vimeo
   end
   
-  
+  def dropbox
+  end
   
   def wikipedia
     require 'open-uri'

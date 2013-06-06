@@ -13,20 +13,24 @@
                     
               <%= link_to "#{value['title']}", "http://es.wikipedia.org/wiki/#{value['title']}", target: "_blank"%> 
                      
+              <% if @complex_id != nil %>
                <div class="button_add" id="add_nested_delivery_content<%= @complex_id %>">
                    Agregar
                </div>
+               <%else%>
+               Este artículo no puede ser agregado ya que no existe
+               <%end%>
                  
                   <SCRIPT LANGUAGE="JavaScript">
                            
                             
                            $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
 
-                                $('#content_killer').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="text" value="<%=url%>">');
-
+                                $('#content_killer').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%=url%>">');
+                                   $("#choser").append("<a href='<%=url%>'><%=url%></a></br>");
 
                             });
-
+                           
 
 
 

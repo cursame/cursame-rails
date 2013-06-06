@@ -18,16 +18,15 @@
             
           </div>
           
-     
+          
        
       </div>
         <% 1.times do
                   contents = @delivery.contents.build
          end%>
         <%= f.fields_for :contents do |conty| %>
-                    <div id="content_killer">
-                          <%#= conty.text_area :content, :value => "laolaodaodloasdlaoldaodlados"%>
-                    </div>
+                    <div id="content_killer"></div>
+                    <div id="choser"></div>
           <%end%>
      
      
@@ -60,7 +59,6 @@
         <%#end%>
           
         <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
-
         <div class="submit-area"></div>
         
     
@@ -95,10 +93,12 @@
    <!-- <a id="valv" href="" data-remote="true"><%#= image_tag('vimeo.png')%></a>-->
    <a href="" id="valw" data-remote="true"><%= image_tag('wikipedia.png')%></a>
     <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler')%>
+    <div> <%= render :partial => "content/dropbox"%></div>
     </center>
  </div>  
-</div>
 
+</div>
+ 
 <div class="notice-file">El límite de peso por archivo es de 8Mb</div>
 
 <script>

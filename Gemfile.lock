@@ -58,6 +58,12 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    dropbox-api (0.3.2)
+      hashie
+      multi_json
+      oauth
+    dropbox-sdk (1.5.1)
+      json
     em-http-request (1.0.3)
       addressable (>= 2.2.3)
       cookiejar
@@ -146,9 +152,14 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
+    omniauth-dropbox (0.2.0)
+      omniauth-oauth (~> 1.0)
     omniauth-google-oauth2 (0.1.13)
       omniauth (~> 1.0)
       omniauth-oauth2
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
@@ -251,6 +262,8 @@ DEPENDENCIES
   carrierwave
   declarative_authorization
   devise
+  dropbox-api
+  dropbox-sdk (~> 1.5.1)
   execjs
   geocoder
   google-api-client
@@ -265,6 +278,7 @@ DEPENDENCIES
   mocha
   nifty-generators
   omniauth
+  omniauth-dropbox
   omniauth-google-oauth2
   pdfkit
   pg

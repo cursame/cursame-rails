@@ -15,11 +15,12 @@
                   
                $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
                    
-                    $('#content_killer').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="text" value="<%= vi.player_url%>">');
-                    
+                    $('#content_killer').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');
+                
+                
+                    $("#choser").append("<a href='<%=vi.player_url%>'><%=vi.player_url%></a></br>");
                     
                 });
-                
                 
                 
                 
