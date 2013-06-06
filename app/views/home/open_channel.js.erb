@@ -1,0 +1,6 @@
+$('body').append('<%= escape_javascript(render(:partial => '/shared/channel_tpl', :locals => {:channel => @channel_name}))%>');
+$('#channel_name').val('<%= @channel_name %>');
+$('#channel_id').val('<%= @channel.id %>');
+
+$('#chat').html('<%= escape_javascript(render(:partial => '/shared/messages', :locals => {:messages => @messages}))%>');
+console.log('conectado');

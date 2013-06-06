@@ -304,6 +304,13 @@ Cursame30Lb::Application.routes.draw do
 
    get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
+  # -----------------------------
+  # chat behaviour of cursame
+  # -----------------------------
+  get "home/chat", :to => "home#chat", :as => :chat
+  get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
+  match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
+
    ####### rutas de estandarizacion de eventos
 
    match 'focus/:id', :to => 'events#show', :as => :eventuable

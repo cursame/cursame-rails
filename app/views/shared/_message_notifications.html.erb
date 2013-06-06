@@ -1,0 +1,30 @@
+<div class="chat-icon" id="messages-notifications-count">
+    <span id="" >0</span>
+</div>
+
+<!-- notification -->
+<div id="box-messages-notifications" style="display:none;">
+	<div id="" class="comment-text" >
+		<div class="arrow-top"></div>
+		<div class="header">
+			<b>Mensajes</b>  
+		</div>
+		<div class="content">
+			<ul id="messages-notifications-list">
+				
+			</ul>
+		</div>
+
+		<div class="footer">
+			<b>Ver todas</b>
+		</div>
+	</div>
+</div>
+
+<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
+
+<script>
+    $("#messages-notifications-count").click(function () {
+    	$("#box-messages-notifications").toggle();
+    });
+</script>
