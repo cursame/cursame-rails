@@ -1,0 +1,23 @@
+<div class="var_delivery">
+ <div class="pkl">
+    <center>
+    <a id="valu" href="" data-remote="true"><%= image_tag('youtube.png')%></a>
+   <!-- <a id="valv" href="" data-remote="true"><%#= image_tag('vimeo.png')%></a>-->
+   <a href="" id="valw" data-remote="true"><%= image_tag('wikipedia.png')%></a>
+    <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler')%>
+    <div> <%= render :partial => "content/dropbox"%></div>
+    </center>
+ </div>  
+
+</div>
+ 
+<div class="notice-file">El límite de peso por archivo es de 8Mb</div>
+
+<script>
+    $("#delivery_title").keyup(function () {
+      var value = $(this).val();
+        $("#valu").attr("href", "/content/youtube?youtube_search="+value)
+        $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" + value.split(" ").join("_"))
+    }).keyup();
+    
+</script>
