@@ -1,0 +1,29 @@
+<div id="chat-channel-<%= channel.id%>" class="chat-panel">
+	<span>Armando Gonzalez</span>
+	<div id="chat-zone-<%= channel.id%>" class="chat-zone">		
+		<%=render(:partial => '/shared/messages', :locals => {:messages => messages})%>
+	</div>
+</div>
+
+<script>
+	window.chatPanelsCount = window.chatPanelsCount || 1;
+
+		$("#chat-channel-<%= channel.id%>").css('bottom','300px');
+		$("#chat-channel-<%= channel.id%>").css('right', ((225 *  window.chatPanelsCount) + 22)+'px');
+		
+		window.chatPanelsCount++;
+
+		$("#chat-channel-<%= channel.id%> span").click(function () {
+			var panel = $("#chat-channel-<%= channel.id%>");
+	    	var chatZonePosition = $(panel).css('bottom');
+
+	    	if(chatZonePosition.replace('px','') < 200){
+	    		$(panel).css('bottom','300px');
+	    	}
+	    	else{
+	    		$(panel).css('bottom','1px');
+	    	}
+	    	$("#chat-zone-<%= channel.id%>").toggle();	    	
+	    });
+   
+</script>

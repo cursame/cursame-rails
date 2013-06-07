@@ -1,0 +1,54 @@
+.visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight,#users-and-groups-for-chat,#chat-panels-zone{
+    position: fixed;
+    width: 220px;
+    height: 20px;
+    border: solid 1px #e1e1e1;
+    vertical-align: middle;
+    background: #ffdab9;
+    text-align: center;
+}
+#topLeft
+{
+    top: 10px;
+    left: 10px;
+}
+
+#topRight
+{
+    top: 10px;
+    right: 10px;
+}
+
+#bottomLeft
+{
+    bottom: 10px;
+    left: 10px;
+}
+
+#bottomRight
+{
+    bottom: 10px;
+    right: 10px;
+}
+#users-and-groups-for-chat
+{
+    bottom: 1px;
+    right: 15px;
+}
+.chat-panel{
+    bottom: 1px;
+    right: 275px;
+    position: fixed;
+    width: 220px;
+    height:20px;
+    background: #2fcce3;
+    border: solid 1px #e1e1e1;
+}
+#users-and-groups-online{
+	background: #EEE;
+	height:320px;
+}
+.chat-zone{
+	background: #EEE;
+	height:320px;
+}

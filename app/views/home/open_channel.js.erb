@@ -2,5 +2,15 @@ $('body').append('<%= escape_javascript(render(:partial => '/shared/channel_tpl'
 $('#channel_name').val('<%= @channel_name %>');
 $('#channel_id').val('<%= @channel.id %>');
 
-$('#chat').html('<%= escape_javascript(render(:partial => '/shared/messages', :locals => {:messages => @messages}))%>');
-console.log('conectado');
+// si estamos en el path del chat
+if($('#chat')){
+	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/messages', :locals => {:messages => @messages}))%>');
+}
+
+// si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación
+if(!$('#chat-channel-<%= @channel.id%>').length) {
+	$('body').append(
+	'<%= escape_javascript(render(:partial => '/shared/conversation', 
+		:locals => {:messages => @messages, :channel => @channel}))%>');
+};
+

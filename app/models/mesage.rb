@@ -11,7 +11,7 @@ class Mesage < ActiveRecord::Base
 		       message: self,
 		       sender: self.user,
 		       reciever: user,
-		       channel_name: self.channel.channel_name
+		       channel: self.channel
 		    )
 		end
   end

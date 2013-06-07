@@ -171,6 +171,7 @@ class HomeController < ApplicationController
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
       @channel_name = params[:channel_name]
+      @channel_id = params[:channel_id]
       respond_to do |format|
        format.js
       end

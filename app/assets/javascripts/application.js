@@ -139,14 +139,32 @@ $(function() {
 		}
 		$('#notifications_list').prepend(notification.join(''));
 	});
+	
+	
 
 	PrivatePub.subscribe ("/messages/notifications_user_"+Cursame.userId, function(data, channel){
-		$('#messages-notifications-count span').html(1);
-		var notification = ['<li class="unread" ">',
+
+		var url,notification,
+			channelType = data.channel.channel_name.split('course_channel_');		
+			url= channelType[1] ? '/home/open_channel/'+channelType[1]+'?course=true':'/home/open_channel/'+data.sender.id;		
+
+		notification = ['<li class="unread">',
+			'<a href="'+url+'" data-remote="true">Conversar</a></br>',
 			'<img src="'+data.sender.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
 			'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
 			'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
 			'</li>'];
+		//si ya existe la conversacion no se crea la notificación
+		if($('#chat-channel-'+data.channel.id).length) {
+			var panel = $("#chat-channel-"+data.channel.id);
+	    	var chatZonePosition = $(panel).css('bottom');
+	    	if(chatZonePosition.replace('px','') < 200){
+	    		$("#chat-channel-"+data.channel.id+ " span").append('*');
+	    	}
+		}
+		else{
+			$('#messages-notifications-count span').html(1);
+		}
 
 		$('#messages-notifications-list').prepend(notification.join(''));
 	});
