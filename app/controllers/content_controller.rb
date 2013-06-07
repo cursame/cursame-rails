@@ -3,7 +3,7 @@ class ContentController < ApplicationController
      parameters = params[:youtube_search]
      puts parameters
      parameter = parameters.delete('<div id="value">','</div>')
-     @videos = client_youtube.videos_by(:query => parameter , :page => 2, :per_page => 20)
+     @videos = client_youtube.videos_by(:query => parameter , :page => 1, :per_page => 50)
      @video =  @videos.videos
        
        respond_to do |format|

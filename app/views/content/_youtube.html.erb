@@ -6,18 +6,34 @@
 <li style="display: inline; position: relative; float: left; width: 200px; height: 200px; list-style-type: none; margin-right: 2px;">
 
         <div class="video" id="videoSlider">
-            <%= vi.embed_html_with_width(200).html_safe%>
+              <% @id = vi.published_at %>
+              <% @complex_id =  @id.strftime("%m""%d""%Y")%>
+             
+               <div  class="tumbail_youtube<%= @complex_id %>" >
+                   <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></br>
+                   <%= image_tag("#{vi.thumbnails[1].url}")%>
+                   <%#= debug vi.thumbnails %>
+               </div>
            
-             <% @id = vi.published_at %>
-                <% @complex_id =  @id.strftime("%m""%d""%Y")%>
-                <div class="button_add" id="add_nested_delivery_content<%= @complex_id %>">
-                    Agregar
-                </div>
-             </div>
-      
-         </div>
-         
-     </li>
+                <div id="l_tumbail_youtube<%= @complex_id %>" style="display:none;">
+                	 <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></br>
+                <%= vi.embed_html_with_width(320).html_safe%>
+                 </div>
+           
+             <SCRIPT LANGUAGE="JavaScript">
+                  $('.tumbail_youtube<%= @complex_id %>').click(function() {
+                         $('.tumbail_youtube<%= @complex_id %>').html('');
+                         $('#l_tumbail_youtube<%= @complex_id %>').show();
+                     });
+             </SCRIPT>
+       
+            
+                   <div class="button_add" id="add_nested_delivery_content<%= @complex_id %>">
+                      Agregar
+                   </div>
+       </div>
+                   
+</li>
 
          
          <SCRIPT LANGUAGE="JavaScript">
@@ -30,10 +46,8 @@
                     $("#choser").append("<a href='<%=vi.player_url%>'><%=vi.player_url%></a></br>");
                     
                 });
-                
-                                
-         </SCRIPT>
-
+          
+          </SCRIPT>       
 <%end%>
 
 </ul>
