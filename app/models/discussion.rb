@@ -78,18 +78,11 @@ class Discussion < ActiveRecord::Base
     walls.each do |wall|
       wall.destroy
     end
-    self.delay.destroy_notifications("Discussion", self.id)
+
+    wrap_notification = WrapNotification.new("Discussion",self.id)
+    wrap_notification.delay.destroy_notifications
+
   end
-
-  def destroy_notifications(notificator_type, notificator_id)
-    notifications = Notification.where(:notificator_type => notificator_type, :notificator_id => notificator_id)
-
-    notifications.each do |notification|
-      notification.destroy
-    end
-  end
-
-  handle_asynchronously :destroy_notifications, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
   def state
     @state = "published"
