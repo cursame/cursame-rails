@@ -1,0 +1,3 @@
+<% messages.each do |message|%>
+	<%= render(:partial => '/shared/chat/message_tpl', :locals => {:message => message})%>
+<%end%>

@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
   helper_method :show_joyride
   #roles
   before_filter :set_current_user
+  #chat
+  before_filter :chat_online_users
 
   helper_method :refresh_token_for_google
   helper_method :random
@@ -231,5 +233,14 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     Authorization.current_user = current_user
+  end
+
+  # -----------------------------
+  # chat behaviour of cursame
+  # -----------------------------
+
+  def chat_online_users
+    @friends_online = current_user.friends(true)
+    @courses_online = current_user.courses
   end
 end

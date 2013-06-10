@@ -138,19 +138,17 @@ class HomeController < ApplicationController
          respond_to do |format|
             format.js
           end
-     end
+     end  
 
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------
 
-    def chat
-      @users = current_user.friends(true)
-      @courses = current_user.courses
+  def chat   
       respond_to do |format|
           format.html
       end
-    end
+  end
 
     def open_channel
       if params[:course]

@@ -1,11 +1,11 @@
 <div>	
 	<div style="float:left;width:200px">
 		----Cursos--- <br>	
-		<% @courses.each do |course|%>
+		<% @courses_online.each do |course|%>
 		    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
 		<%end%>
 		<br>----Amigos conectados---
-		<% @users.each do |user|%>
+		<% @friends_online.each do |user|%>
 		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>	
 	 </div>
@@ -16,13 +16,7 @@
 		<ul id="chat" style="border:#000 1px solid; height:400px;">
 		  
 		</ul>
-
-		<%= form_tag "/home/add_new_mesage", :class => "default-form comment-form", :remote =>true do %>
-		  <%= text_field_tag :mesage %>
-		  <%= hidden_field_tag :channel_name %>
-		  <%= hidden_field_tag :channel_id %>
-		  <%= submit_tag "Send" %>
-		<% end %>
+	<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>'',:channel_id=>''} %> 		
 	</div>
 </div>
 

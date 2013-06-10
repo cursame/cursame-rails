@@ -1,16 +1,15 @@
-$('body').append('<%= escape_javascript(render(:partial => '/shared/channel_tpl', :locals => {:channel => @channel_name}))%>');
-$('#channel_name').val('<%= @channel_name %>');
-$('#channel_id').val('<%= @channel.id %>');
-
-// si estamos en el path del chat
-if($('#chat')){
-	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/messages', :locals => {:messages => @messages}))%>');
-}
 
 // si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación
 if(!$('#chat-channel-<%= @channel.id%>').length) {
+	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
 	$('body').append(
-	'<%= escape_javascript(render(:partial => '/shared/conversation', 
+	'<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
 		:locals => {:messages => @messages, :channel => @channel}))%>');
-};
-
+}
+// si estamos en el path del chat
+if($('#chat').length){
+	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/messages', :locals => {:messages => @messages}))%>');
+	// seteamos los valores al chat para que se direccione bien el mensaje ***
+	$('#channel_name').val('<%= @channel_name %>');
+	$('#channel_id').val('<%= @channel.id %>');
+}

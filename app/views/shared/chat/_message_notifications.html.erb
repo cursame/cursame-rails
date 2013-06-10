@@ -24,23 +24,19 @@
 
 	<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
 
-
-
-<div id="users-and-groups-for-chat">
-       + Chat (88)
+	<div id="users-and-groups-for-chat">
+       + Chat (<%= @courses_online.count + @friends_online.count %>)
        <div id="users-and-groups-online" style="display:none">       	
 		----Cursos--- <br>	
-		<% @courses.each do |course|%>
+		<% @courses_online.each do |course|%>
 		    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
 		<%end%>
 		<br>----Amigos conectados---
-		<% @users.each do |user|%>
+		<% @friends_online.each do |user|%>
 		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>
        </div>
-</div>
-
-
+	</div>
 
 	<script>
 	    $("#messages-notifications-count").click(function () {

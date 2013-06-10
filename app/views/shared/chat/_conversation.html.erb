@@ -1,7 +1,12 @@
 <div id="chat-channel-<%= channel.id%>" class="chat-panel">
 	<span>Armando Gonzalez</span>
-	<div id="chat-zone-<%= channel.id%>" class="chat-zone">		
-		<%=render(:partial => '/shared/messages', :locals => {:messages => messages})%>
+	<div id="chat-zone-<%= channel.id%>" class="chat-zone">	
+		<div class="chat-zone-messages">
+			<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>
+		</div>		
+		<div class="chat-zone-footer">
+		<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+		</div>
 	</div>
 </div>
 
@@ -9,7 +14,7 @@
 	window.chatPanelsCount = window.chatPanelsCount || 1;
 
 		$("#chat-channel-<%= channel.id%>").css('bottom','300px');
-		$("#chat-channel-<%= channel.id%>").css('right', ((225 *  window.chatPanelsCount) + 22)+'px');
+		$("#chat-channel-<%= channel.id%>").css('right', ((240 *  window.chatPanelsCount) + 22)+'px');
 		
 		window.chatPanelsCount++;
 

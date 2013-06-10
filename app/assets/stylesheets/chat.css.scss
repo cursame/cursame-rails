@@ -39,7 +39,7 @@
     bottom: 1px;
     right: 275px;
     position: fixed;
-    width: 220px;
+    width: 230px;
     height:20px;
     background: #2fcce3;
     border: solid 1px #e1e1e1;
@@ -51,4 +51,10 @@
 .chat-zone{
 	background: #EEE;
 	height:320px;
+}
+.chat-zone-messages{
+    height:280px;
+}
+.chat-zone-footer{
+    background: #FFF;
 }
