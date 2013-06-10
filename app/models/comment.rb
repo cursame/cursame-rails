@@ -70,17 +70,11 @@ class Comment < ActiveRecord::Base
     walls.each do |wall|
       wall.destroy
     end
-    self.delay.destroy_notifications("Comment",self.id)
-  end
 
-  def destroy_notifications(notificator_type, notificator_id)
-    notifications = Notification.where(:notificator_type => notificator_type, :notificator_id => notificator_id)
-    notifications.each do |notification|
-      notification.destroy
-    end
-  end
+    wrap_notification = WrapNotification.new("Comment", self.id)
+    wrap_notification.delay.destroy_notifications
 
-  handle_asynchronously :destroy_notifications, :priority => 20, :run_at => Proc.new{Time.zone.now}
+  end
 
   after_create do
     hash = group_of_users(commentable_type)

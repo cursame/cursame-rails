@@ -76,7 +76,7 @@ class Delivery < ActiveRecord::Base
     walls.each do |wall|
       wall.destroy
     end
-    wrap_notification = WrapNotification.new("Course",self.id)
+    wrap_notification = WrapNotification.new("Delivery",self.id)
 
     wrap_notification.delay.destroy_notifications
 
