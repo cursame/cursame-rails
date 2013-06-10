@@ -64,4 +64,10 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "Tu passwod en cursame"
   end
 
+  def send_import_courses(user,arrayErrores)
+    @user = user
+    @errores = arrayErrores
+    mail to: @user.email, subject: "Informe: Importacion Cursos"
+  end
+
 end

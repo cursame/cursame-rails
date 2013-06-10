@@ -63,26 +63,24 @@ class Comment < ActiveRecord::Base
     commentable_type.camelize.constantize.find(commentable_id)
   end
 
-  before_destroy do
-    a = Time.now
-    ActiveRecord::Base.transaction do
-      notifications = Notification.where(:notificator_type => "Comment", :notificator_id => id)
-      walls = Wall.where(:publication_type => "Comment", :publication_id => id)
+  after_destroy do
 
-      walls.each do |wall|
-        wall.destroy
-      end
+    walls = Wall.where(:publication_type => "Comment", :publication_id => id)
 
-
-      notifications.each do |notification|
-        notification.destroy
-      end
+    walls.each do |wall|
+      wall.destroy
     end
-    b = Time.now
-    puts (b-a).to_s
-    #UtilityHelper.call_multiples_rake([[:destroy_notifications, {:notificator_type => "Comment", :notificator_id => id.to_s}],
-     #                                 [:destroy_walls, {:publication_type => "Comment", :publication_id => id.to_s}]])
+    self.delay.destroy_notifications("Comment",self.id)
   end
+
+  def destroy_notifications(notificator_type, notificator_id)
+    notifications = Notification.where(:notificator_type => notificator_type, :notificator_id => notificator_id)
+    notifications.each do |notification|
+      notification.destroy
+    end
+  end
+
+  handle_asynchronously :destroy_notifications, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
   after_create do
     hash = group_of_users(commentable_type)
@@ -93,72 +91,43 @@ class Comment < ActiveRecord::Base
     if notification_kind["network"]
       Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user_id }
-      #ActiveRecord::Base.transaction do
-      #  users.each do |user|
-      #    Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-      #  end
-      #end
-      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                         :notifications_kind => notification_kind, :users_id => users.to_s})
-      #users.each do |user|
-      #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-      #end
+      self.delay.create_notifications(users,notification_kind)
       return
     elsif notification_kind["course"] || notification_kind["group"]
 
       course = notification_kind["course"] ? [commentable] : nil
 
       wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
-      #member_in_courses = MembersInCourse.where(:course_id => commentable_id, :accepted => true)
-
-      #member_in_courses = member_in_courses.reject{ |user| user.user_id == self.user_id }
-
-      #member_in_courses.each do |member|
-      #  user = User.find(member.user_id)
-      #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-      #end
 
       users = users.reject{ |user| user.id == self.user_id }
-      users = users.map{|x| x.id}
-      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                         :notifications_kind => notification_kind, :users_id => users.to_s})
-
-      #users.each do |user|
-        #Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-      #end
+      self.delay.create_notifications(users,notification_kind)
       return
     elsif notification_kind["discussion"]
 
       users = users.reject { |user| user.id == self.user.id }
-      users = users.map{|x| x.id}
-      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                         :notifications_kind => notification_kind, :users_id => users.to_s})
-      #users.each do |user|
-      #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-      #end
+      self.delay.create_notifications(users,notification_kind)
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
 
       users = users.reject { |user| user.id == self.user.id }
-      users = users.map{|x| x.id}
-      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                         :notifications_kind => notification_kind, :users_id => users.to_s})
-
-      #users.each do |user|
-      #  Notification.create(:user => user, :notificator => self, :kind => notification_kind)
-      #end
-      return
+      self.delay.create_notifications(users,notification_kind)
     elsif notification_kind["on_user"]
 
       Wall.create(:publication => self, :network => self.network, :users => users, :public => false)
-      users = users.map{|x| x.id}
-      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                         :notifications_kind => notification_kind, :users_id => users.to_s})
-
+      self.delay.create_notifications(users,notification_kind)
       return
     else
     end
   end
+
+  def create_notifications(users, kind)
+    users.each do |user|
+      Notification.create(:user => user, :notificator => self, :kind => kind)
+    end
+  end
+
+  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{ Time.zone.now}
+
 
   def group_of_users(comment_type)
     case comment_type

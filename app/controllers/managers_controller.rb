@@ -52,12 +52,9 @@ class ManagersController < ApplicationController
   end
 
   def upload_users
-    puts "ACA PASO"
+
     User.import(params[:file],current_network,current_user)
-    # @errores = User.import(params[:file],current_network)
-    # if @errores.size == 0 then
-    #  @errores = nil
-    # end
+
     @users = current_network.users
     respond_to do |format|
       format.html { render "managers/import_users"}
@@ -114,11 +111,44 @@ class ManagersController < ApplicationController
   #POST /managers/upload_csv
   def upload_courses
 
-    @errores = Course.import(params[:file],current_network)
-    if @errores.size == 0
-      @errores = nil
+    network = current_network
+    user_admin = current_user
+
+    if Course.find_by_title_and_silabus("1","1").nil? then
+      course = Course.new(:title => "1", :silabus => "1")
+      course.save!
+    else
+      course = Course.find_by_title_and_silabus("1","1")
     end
-    @courses = current_network.courses
+
+
+    lastFile = Dir.glob("public/imports/*").sort.last
+    if lastFile.nil? then
+      name = "import_courses_1.csv"
+    else
+      lastFile = lastFile.split("/").last
+      nameFile = lastFile[0...-4]
+      name = nameFile.succ + ".csv"
+    end
+
+    text = ""
+    begin
+      File.open(params[:file].path,'r').each do |line|
+        text += line
+      end
+
+
+      path = "public/imports/" + name
+      f = File.open(path,'w+')
+      f.write(text)
+      f.close
+
+      course.delay.import(path,network,user_admin)
+    rescue
+      @noFile = true
+    end
+
+    @courses = network.courses
     respond_to do |format|
       format.html { render "/managers/import_courses"}
       format.json { render json: @courses }
