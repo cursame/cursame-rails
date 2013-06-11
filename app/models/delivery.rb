@@ -76,9 +76,12 @@ class Delivery < ActiveRecord::Base
     walls.each do |wall|
       wall.destroy
     end
-    wrap_notification = WrapNotification.new("Delivery",self.id)
 
-    wrap_notification.delay.destroy_notifications
+    notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => self.id)
+
+    notifications.each do |notification|
+      notification.destroy
+    end
 
   end
 
@@ -95,25 +98,22 @@ class Delivery < ActiveRecord::Base
 
     Wall.create(:users => users, :publication => self, :network => self.network, :courses => self.courses)
 
-    self.delay.create_notifications
-  end
+    users = []
 
-  def create_notifications
-    #Aqui se crean las notificaciones y los posts del wall :)
     self.courses.each do |course|
       course.members_in_courses.each do |member|
         user = member.user
-        if user.id != self.user_id
-          Notification.create(:user => user, :notificator => self, :kind => 'new_delivery_on_course')
-          #se envia mail a cada uno de los miembros de curso
+        if user.id != self.user_id then
+          users.push(user)
           mail = Notifier.new_delivery_notification(member,self)
           mail.deliver
         end
       end
     end
-  end
 
-  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{ Time.zone.now}
+    Notification.create(:users => users, notificator => self, :kind => 'new_delivery_on_course')
+
+  end
 
   after_update do
 
