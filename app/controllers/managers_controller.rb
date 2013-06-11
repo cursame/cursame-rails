@@ -53,8 +53,37 @@ class ManagersController < ApplicationController
 
   def upload_users
 
-    User.import(params[:file],current_network,current_user)
+    network = current_network
+    user_admin = current_user
 
+    user_info = User.find_by_email("info@cursa.me")
+
+    lastFile = Dir.glob("public/imports/import_users_*").sort.last
+    if lastFile.nil? then
+      name = "import_users_1.csv"
+    else
+      lastFile = lastFile.split("/").last
+      nameFile = lastFile[0...-4]
+      name = nameFile.succ + ".csv"
+    end
+
+    text = ""
+    begin
+      File.open(params[:file].path,'r').each do |line|
+        text += line
+      end
+
+
+      path = "public/imports/" + name
+      f = File.open(path,'w+')
+      f.write(text)
+      f.close
+
+      user_info.delay.import(path,network,user_admin)
+
+    rescue
+      @noFile = true
+    end
     @users = current_network.users
     respond_to do |format|
       format.html { render "managers/import_users"}
@@ -63,27 +92,68 @@ class ManagersController < ApplicationController
   end
 
   def upload_members
+
     courses = params[:courses]
     network = current_network
+    user_admin = current_user
     @courses = network.courses
-    @errores = Array.new
+
+    if Course.find_by_title_and_silabus("1","1").nil? then
+      course_empty = Course.new(:title => "1", :silabus => "1")
+      course.save!
+    else
+      course_empty = Course.find_by_title_and_silabus("1","1")
+    end
+
+    user_info = User.find_by_email("info@cursa.me")
+
+    if MembersInCourse.find_by_user_id_and_course_id(1,course_empty.id).nil? then
+      members_in_course_empty = MembersInCourse.new(:user_id => user_info.id, :course_id => course_empty.id)
+      members_in_course_empty.save!
+    else
+      members_in_course_empty = MembersInCourse.find_by_user_id_and_course_id(1,course_empty.id)
+    end
+
     if !courses.nil? then
       courses.each do
         |course_id|
+
+        lastFile = Dir.glob("public/imports/import_members_*").sort.last
+        if lastFile.nil? then
+          name = "import_members_1.csv"
+        else
+          lastFile = lastFile.split("/").last
+          nameFile = lastFile[0...-4]
+          name = nameFile.succ + ".csv"
+        end
+
+        text = ""
+        begin
+          File.open(params[:file].path,'r').each do |line|
+            text += line
+          end
+
+          path = "public/imports/" + name
+          f = File.open(path,'w+')
+          f.write(text)
+          f.close
+
+        rescue
+          @noFile = true
+        end
+
         course = Course.find_by_id(course_id)
-        @errores.push([MembersInCourse.import(params[:file],network,course),course])
+        members_in_course_empty.delay.import(path,network,course,user_admin)
       end
     end
-    real_errores = @errores.map{|x| x[0]}
-    real_errores.flatten!
-    if real_errores.size == 0 then
-      @errores = nil
+
+
+
+      respond_to  do |format|
+        format.html { render "managers/import_members"}
+        format.json { render json: @courses}
+      end
     end
-    respond_to  do |format|
-      format.html { render "managers/import_members"}
-      format.json { render json: @courses}
-    end
-  end
 
   def import_members
     @courses = current_network.courses
@@ -122,7 +192,7 @@ class ManagersController < ApplicationController
     end
 
 
-    lastFile = Dir.glob("public/imports/*").sort.last
+    lastFile = Dir.glob("public/imports/import_courses_*").sort.last
     if lastFile.nil? then
       name = "import_courses_1.csv"
     else

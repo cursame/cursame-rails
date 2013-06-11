@@ -58,16 +58,25 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "You have "+ count.to_s + " Assignments"
   end
 
-  def send_import(user,arrayErrores)
+  def send_import_users(user,arrayErrores)
     @user = user
     @errores = arrayErrores
-    mail to: @user.email, subject: "Tu passwod en cursame"
+    mail to: @user.email, subject: "Informe: Importacion de Usuarios"
   end
 
   def send_import_courses(user,arrayErrores)
     @user = user
     @errores = arrayErrores
     mail to: @user.email, subject: "Informe: Importacion Cursos"
+  end
+
+  def send_import_members(user,arrayErrores,course)
+    @user = user
+    @errores = arrayErrores
+    @course = course
+
+    mail to: @user.email, subject: "Informe: Importacion de Miembros al curso " + course.title
+
   end
 
 end
