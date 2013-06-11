@@ -1,0 +1,23 @@
+<h2> Curso: <%= @course.title%></h2>
+
+<% if @errores.size != 0 then%>
+   <h2>List of Errors </h2>
+  </p>
+  </p>
+  <table id ="errores">
+  <tr>
+    <th>Linea</th>
+    <th>Error</th>
+  </tr>
+
+  <%@errores.each do |hash|%>
+    <tr>
+    <th><%=hash[:line].to_s%></th>
+    <th><%=hash[:message]%></th>
+    <tr>
+  <%end%>
+  </table>
+
+<%else%>
+ No hubo errores
+<%end%>

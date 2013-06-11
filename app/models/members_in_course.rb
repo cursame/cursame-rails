@@ -151,21 +151,15 @@ class MembersInCourse < ActiveRecord::Base
     return false
   end
 
-  def self.import(file,network,course)
+  def import(path,network,course,user_admin)
     arrayErrores = Array.new
     count = 1
 
-    begin
-      file.path
-    rescue NoMethodError
-      return arrayErrores.push({:line => 0, :message => "No selecciono un archivo"})
-    end
-
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(path, headers: true) do |row|
       if !row["id"].nil? then
-        member_in_course = find_by_id(row["id"]) || new
+        member_in_course = MembersInCourse.find_by_id(row["id"]) || MembersInCourse.new
       else
-        member_in_course = new
+        member_in_course = MembersInCourse.new
       end
 
       errors = false
@@ -217,6 +211,11 @@ class MembersInCourse < ActiveRecord::Base
         end
       end
     end
-    return arrayErrores
+
+    mail = Notifier.send_import_members(user_admin,arrayErrores,course)
+    mail.deliver
   end
+
+  handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
+
 end

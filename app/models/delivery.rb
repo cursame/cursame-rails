@@ -71,23 +71,15 @@ class Delivery < ActiveRecord::Base
     self.publish_date ||= DateTime.now
   end
 
-  before_destroy do
-    ActiveRecord::Base.transaction do
-      notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => id)
-      walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
-    
-      walls.each do |wall|
-        wall.destroy
-      end
-      
-    
-      notifications.each do |notification|
-        notification.destroy
-      end
+  after_destroy do
+    walls = Wall.where(:publication_type => "Delivery", :publication_id => id)
+    walls.each do |wall|
+      wall.destroy
     end
-    
-    #UtilityHelper.call_rake(:destroy_notifications, {:notificator_type => "Delivery", :notificator_id => self.id.to_s})
-    #UtilityHelper.call_rake(:destroy_walls, {:publication_type => "Delivery", :publication_id => self.id.to_s})
+    wrap_notification = WrapNotification.new("Delivery",self.id)
+
+    wrap_notification.delay.destroy_notifications
+
   end
 
   after_create do
@@ -95,36 +87,33 @@ class Delivery < ActiveRecord::Base
       self.publish!
     end
 
-    #### crear notificaciones
-    #puts "se ha creado una nueva tarea"
-    #### se genera  el evento en el calendario
-    Event.create :title => self.title, :description => self.description, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id, :course_id => self.course_ids, :network_id => self.network_id
+    Event.create(:title => self.title, :description => self.description, :starts_at => self.publish_date,
+          :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id,
+          :course_id => self.course_ids, :network_id => self.network_id)
 
+    users = self.users
 
-    # Wall.create :user => user, :publication => self, :network => course.network, :course_id => course.id
+    Wall.create(:users => users, :publication => self, :network => self.network, :courses => self.courses)
 
+    self.delay.create_notifications
+  end
+
+  def create_notifications
     #Aqui se crean las notificaciones y los posts del wall :)
-    users =[]
-    users_notifications = []
     self.courses.each do |course|
-      users+= course.users
       course.members_in_courses.each do |member|
         user = member.user
         if user.id != self.user_id
-          users_notifications.push(user.id)
-          #Notification.create :user => user, :notificator => self, :kind => 'new_delivery_on_course'
+          Notification.create(:user => user, :notificator => self, :kind => 'new_delivery_on_course')
           #se envia mail a cada uno de los miembros de curso
           mail = Notifier.new_delivery_notification(member,self)
           mail.deliver
         end
       end
     end
-    UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                       :notifications_kind => 'new_delivery_on_course', :users_id => users_notifications.to_s})
-    #validar que no exista doble publicacion para un usuario
-    Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
   end
 
+  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{ Time.zone.now}
 
   after_update do
 

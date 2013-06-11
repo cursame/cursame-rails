@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <div id="admin-sidebar">
   <h5>Adminitracion</h5>
   <ul><%= render :partial => "managers/menu"%></ul>
@@ -11,29 +12,10 @@ mientras que 1 es para especificar que solo es un miembro del curso nada mas.
 <p>
 El Email debe de ser el correo asociado al usuario.
 <p>
-<% if !@errores.nil? then %>
-  <h2>List of Errors</h2>
-  </p>
-  </p>
-  <table id="errores">
-    <tr>
-      <th></th>
-      <th>Curso</th>
-      <th>Linea</th>
-      <th>Error</th>
-    </tr>
-    <% @errores.each do |course| %>
-      <% course[0].each do%>
-        <% |errores| %>
-      <tr>
-        <th><%=course[1].title%></th>
-        <th><%=errores[:line]%></th>
-        <th><%=errores[:message]%></th>
-      </tr>
-    <% end %>
-    <% end %>
-    </table>
-<% end %>
+
+<%= "NO SE ENCONTRO EL ARCHIVO" if @noFile %>
+<p>
+
 <%= form_tag upload_members_path, multipart: true do %>
   <table class="striped">
     <tr>

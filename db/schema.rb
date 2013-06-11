@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523174922) do
+ActiveRecord::Schema.define(:version => 20130603213156) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
-    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
@@ -144,6 +143,22 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.boolean  "active_status",             :default => true
     t.integer  "likes"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "deliveries", :force => true do |t|
     t.string   "title"
