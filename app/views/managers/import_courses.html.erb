@@ -20,23 +20,8 @@ Si el curso ya se agrego, recuerda que puedes importa otro curso son los mismo v
   <p>
   <%= submit_tag "Import" %>
 <% end %>
-<% if !@errores.nil?%>
-  <h2>List of Errors</h2>
-  </p>
-  </p>
-  <table id ="errores">
-  <tr>
-    <th>Linea</th>
-    <th>Error</th>
-  </tr>
-  <%@errores.each do |hash|%>
-    <tr>
-    <th><%=hash[:line].to_s%></th>
-    <th><%=hash[:message]%></th>
-    <tr>
-  <%end%>
-  </table>
-<%end%>
+
+<%= "NO SE ENCONTRO UN ARCHIVO" if @noFile%>
 </p>
 </p>
 <h2>List Of Courses<h2>
