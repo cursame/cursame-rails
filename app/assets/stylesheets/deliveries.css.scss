@@ -14,20 +14,31 @@
         padding:0px;
         margin-left: -4px;
         margin-bottom:10px;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        margin-right: 4px;
     }
     
     & .pkl{
         margin-left:5px;
         padding-left:5px;
-        width:200px;        
+        width:135px;
     }
     
 }
 
+#valu { background: url('/assets/youtube.png') no-repeat !important; }
+#valu:hover { background: url('/assets/youtube_hover.png') no-repeat !important; }
+
+#valw { background: url('/assets/wikipedia.png') no-repeat !important; }
+#valw:hover { background: url('/assets/wikipedia_hover.png') no-repeat !important; }
+
 .dropbox-chooser {
 	background: url('/assets/dropBox.png') no-repeat !important;
-	margin-top: -30px!important;
+	margin-top: -41px!important;
 	width: 30px!important;
 	height: 30px!important;
 	position: absolute!important;
 }
+.dropbox-chooser:hover { 	background: url('/assets/dropBox_hover.png') no-repeat !important; }
