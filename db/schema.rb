@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604210455) do
+ActiveRecord::Schema.define(:version => 20130611232911) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -269,8 +269,9 @@ ActiveRecord::Schema.define(:version => 20130604210455) do
     t.text     "mesage"
     t.integer  "user_id"
     t.integer  "channel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "mesage_html"
   end
 
   create_table "network_templates", :force => true do |t|

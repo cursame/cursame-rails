@@ -144,7 +144,9 @@ class HomeController < ApplicationController
   # chat behaviour of cursame
   # -----------------------------
 
-  def chat   
+  def chat
+      @channel = Channel.new
+      @messages = @channel.mesages
       respond_to do |format|
           format.html
       end

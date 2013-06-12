@@ -4,31 +4,8 @@
     height: 20px;
     border: solid 1px #e1e1e1;
     vertical-align: middle;
-    background: #ffdab9;
+    background: #4DC7DF;
     text-align: center;
-}
-#topLeft
-{
-    top: 10px;
-    left: 10px;
-}
-
-#topRight
-{
-    top: 10px;
-    right: 10px;
-}
-
-#bottomLeft
-{
-    bottom: 10px;
-    left: 10px;
-}
-
-#bottomRight
-{
-    bottom: 10px;
-    right: 10px;
 }
 #users-and-groups-for-chat
 {
@@ -36,12 +13,12 @@
     right: 15px;
 }
 .chat-panel{
-    bottom: 1px;
+    bottom: 0px;
     right: 275px;
     position: fixed;
     width: 230px;
     height:20px;
-    background: #2fcce3;
+    background: #4DC7DF;
     border: solid 1px #e1e1e1;
 }
 #users-and-groups-online{
@@ -54,7 +31,13 @@
 }
 .chat-zone-messages{
     height:280px;
+    overflow: auto;
 }
 .chat-zone-footer{
     background: #FFF;
+}
+.main-chat-zone{
+    border:#000 1px solid;
+    height:400px;
+    overflow: auto;
 }

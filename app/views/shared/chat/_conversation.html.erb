@@ -12,23 +12,25 @@
 
 <script>
 	window.chatPanelsCount = window.chatPanelsCount || 1;
-
+	if(!$('#chat').length){
 		$("#chat-channel-<%= channel.id%>").css('bottom','300px');
-		$("#chat-channel-<%= channel.id%>").css('right', ((240 *  window.chatPanelsCount) + 22)+'px');
+	}else{
+		$("#chat-zone-<%= channel.id%>").hide();
+	}
+	$("#chat-channel-<%= channel.id%>").css('right', ((240 *  window.chatPanelsCount) + 22)+'px');
 		
-		window.chatPanelsCount++;
+	window.chatPanelsCount++;
 
-		$("#chat-channel-<%= channel.id%> span").click(function () {
-			var panel = $("#chat-channel-<%= channel.id%>");
-	    	var chatZonePosition = $(panel).css('bottom');
+	$("#chat-channel-<%= channel.id%> span").click(function () {
+		var panel = $("#chat-channel-<%= channel.id%>");
+	   	var chatZonePosition = $(panel).css('bottom');
 
-	    	if(chatZonePosition.replace('px','') < 200){
-	    		$(panel).css('bottom','300px');
-	    	}
-	    	else{
-	    		$(panel).css('bottom','1px');
-	    	}
-	    	$("#chat-zone-<%= channel.id%>").toggle();	    	
-	    });
-   
+	 	if(chatZonePosition.replace('px','') < 200){
+    		$(panel).css('bottom','300px');
+    	}
+    	else{
+    		$(panel).css('bottom','1px');
+    	}
+    	$("#chat-zone-<%= channel.id%>").toggle();	    	
+});   
 </script>

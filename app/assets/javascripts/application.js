@@ -140,11 +140,10 @@ $(function() {
 		$('#notifications_list').prepend(notification.join(''));
 	});
 	
-	
-
+	// notificaciones para el chat
 	PrivatePub.subscribe ("/messages/notifications_user_"+Cursame.userId, function(data, channel){
 
-		var url,notification,
+		var url,notification,numNotifications
 			channelType = data.channel.channel_name.split('course_channel_');		
 			url= channelType[1] ? '/home/open_channel/'+channelType[1]+'?course=true':'/home/open_channel/'+data.sender.id;		
 
@@ -163,10 +162,10 @@ $(function() {
 	    	}
 		}
 		else{
-			$('#messages-notifications-count span').html(1);
-		}
-
-		$('#messages-notifications-list').prepend(notification.join(''));
+			numNotifications = $('#messages-notifications-count span').html()*1
+			$('#messages-notifications-count span').html(numNotifications+1);
+			$('#messages-notifications-list').prepend(notification.join(''));
+		}		
 	});
 
 

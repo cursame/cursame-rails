@@ -9,21 +9,8 @@
 		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>	
 	 </div>
-	<div style="float:left;width:600px"> 
-
-		<h1>Chat</h1>
-			
-		<ul id="chat" style="border:#000 1px solid; height:400px;">
-		  
-		</ul>
-	<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>'',:channel_id=>''} %> 		
+	<div id="chat" style="float:left;width:600px">
+		<%=render(:partial => '/shared/chat/chat',
+		 :locals => {:messages => @messages, :channel => @channel})%>
 	</div>
 </div>
-
-
-
-
-
-
-
-
