@@ -1,0 +1,8 @@
+<% publish_to @channel_name do %>
+	if($('#chat').length){
+  		$('#chat-messages').append('<%= escape_javascript(render(:partial => '/shared/chat/message_tpl', :locals => {:message => @message}))%>');
+  	}
+  	if($('#chat-channel-<%= @channel_id%>').length) {
+	  $('#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages').append('<%= escape_javascript(render(:partial => '/shared/chat/message_tpl', :locals => {:message => @message}))%>');
+	}
+<% end %>

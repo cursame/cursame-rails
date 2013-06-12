@@ -1,0 +1,9 @@
+<h1>
+	<%channel.users.reject{ |user| user.id == current_user.id }.each do |u|%>
+			<%= u.email %>
+		<%end%>
+</h1>			
+<ul id="chat-messages" class="main-chat-zone">
+	<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>	  
+</ul>
+<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
