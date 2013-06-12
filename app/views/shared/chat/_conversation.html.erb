@@ -1,5 +1,9 @@
-<div id="chat-channel-<%= channel.id%>" class="chat-panel">
-	<span>Armando Gonzalez</span>
+<div id="chat-channel-<%= channel.id%>" class="chat-panel">	
+	<span>
+		<%channel.users.reject{ |user| user.id == current_user.id }.each do |u|%>
+			<%= u.email %>
+		<%end%>
+	</span>
 	<div id="chat-zone-<%= channel.id%>" class="chat-zone">	
 		<div class="chat-zone-messages">
 			<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>
