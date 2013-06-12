@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603213156) do
+ActiveRecord::Schema.define(:version => 20130611211621) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -295,11 +295,11 @@ ActiveRecord::Schema.define(:version => 20130603213156) do
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
-    t.integer  "user_id"
     t.string   "kind"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
+    t.integer  "user_id"
   end
 
   create_table "permissionings", :force => true do |t|
@@ -429,6 +429,13 @@ ActiveRecord::Schema.define(:version => 20130603213156) do
     t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "usernotificationings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "userpublicationings", :force => true do |t|
