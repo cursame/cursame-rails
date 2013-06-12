@@ -12,6 +12,5 @@ if($('#chat').length){
 	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat',
 		 :locals => {:messages => @messages, :channel => @channel}))%>');
 }
-
 // ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);

@@ -167,7 +167,5 @@ $(function() {
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}		
 	});
-
-
 });
 
