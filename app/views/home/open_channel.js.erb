@@ -2,6 +2,7 @@
 // si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación
 if(!$('#chat-channel-<%= @channel.id%>').length) {
 	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
+	
 	$('body').append(
 	'<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
 		:locals => {:messages => @messages, :channel => @channel}))%>');

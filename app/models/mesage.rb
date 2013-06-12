@@ -5,21 +5,21 @@ class Mesage < ActiveRecord::Base
 	 #autoconversion de links, links inteligentes
   	auto_html_for :mesage do
 	    html_escape
-	    image :width => 128, :height => 128
+	    image :width => 250, :height => 128
 	    # This is defined in config/initializers/auto_html.rb
-	    dailymotion :width => 128, :height => 128
+	    dailymotion :width => 250, :height => 128
 	    #flickr :width => 400, :height => 128
-	    google_map :width => 128, :height => 128
-	    google_video :width => 128, :height => 128
-	    metacafe :width => 128, :height => 128
-	    soundcloud :width => 128, :height => 128
-	    twitter :width => 128, :height => 128
-	    vimeo :width => 128, :height => 128
-	    youtube_js_api :width => 128, :height => 128
-	    slideshare_support :width => 128
-	    ustream_support :width => 128
-	    prezi_with_wmode :width => 128, :height => 128
-	    livestrem_support :width => 128, :height => 128
+	    google_map :width => 250, :height => 128
+	    google_video :width => 250, :height => 128
+	    metacafe :width => 250, :height => 128
+	    soundcloud :width => 250, :height => 128
+	    twitter :width => 250, :height => 128
+	    vimeo :width => 250, :height => 128
+	    youtube_js_api :width => 250, :height => 128
+	    slideshare_support :width => 250
+	    ustream_support :width => 250
+	    prezi_with_wmode :width => 250, :height => 128
+	    livestrem_support :width => 250, :height => 128
 	    link :target => "_blank", :rel => "nofollow"
 	    redcarpet
 	    #sanitize
