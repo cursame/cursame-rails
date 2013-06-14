@@ -15,10 +15,10 @@
        </div>
   <div style="border-bottom: 1px solid #ccc; height: 85px;">
 
-    <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
+    <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input', :required =>'required' %>
     <div style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
-    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input survey" %>
-    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input survey" %>
+    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input survey", :required =>'required' %>
+    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input survey", :required =>'required' %>
 
     </div>
   </div></br>
