@@ -91,7 +91,7 @@ gem "nifty-generators", :group => :development
 #end
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
-
+#gem 'httparty'
 # Deploy with Capistrano
 # gem 'capistrano'
 

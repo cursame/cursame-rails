@@ -136,6 +136,7 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
   match "courses/:id/_evaluation", :to => "courses#evaluation", :as => :course_evaluation
+  match "courses/:id/activities_depot", :to => "courses#activities_depot", :as => :course_activities_depot
   #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
 
