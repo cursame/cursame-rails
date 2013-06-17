@@ -29,16 +29,16 @@ class Notification < ActiveRecord::Base
       creator = self.notificator.user
     end
 
-    self.users.each do |user|
-      PrivatePub.publish_to("/notifications/"+self.user.id.to_s,
-                         notification: self,
-                         num: self.user.notifications.where(:active => true).count,
-                         notificator: self.notificator,
-                         # creator: self.notificator.user||User.last,
-                         creator: creator,
-                         reciever: user,
-                         owner: owner
-                         )
-    end
+  # self.users.each do |user|
+  #    PrivatePub.publish_to("/notifications/"+user.id.to_s,
+  #                       notification: self,
+  #                       num: user.notifications.where(:active => true).count,
+  #                       notificator: self.notificator,
+  #                       # creator: self.notificator.user||User.last,
+  #                       creator: creator,
+  #                       reciever: user,
+  #                       owner: owner
+  #                       )
+  #  end
   end
 end

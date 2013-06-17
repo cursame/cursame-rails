@@ -53,7 +53,7 @@ class Course < ActiveRecord::Base
 
   after_create do
     if self.public_status == 'public'
-      Wall.create(:users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true)
+
 
 
       users = self.network.users
@@ -61,7 +61,11 @@ class Course < ActiveRecord::Base
       owners = owners.reject{ |member| member.owner != true }
       users = users - owners
 
-      Notification.create(:users => users, :notificator => self, :kind => 'new_public_course_on_network')
+      Wall.create(:users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true)
+
+      a = Notification.create(:notificator => self, :kind => 'new_public_course_on_network')
+      a.users << users
+
     end
   end
 
@@ -74,7 +78,7 @@ class Course < ActiveRecord::Base
       wall.destroy
     end
 
-    notifications = Notification.where(:notificator_type => "Course", :publication_id => id)
+    notifications = Notification.where(:notificator_type => "Course", :notificator_id => id)
 
     notifications.each do |notification|
       notification.destroy
@@ -246,4 +250,20 @@ class Course < ActiveRecord::Base
     size = members.size
     return average/size
   end
+
+  def self.create_course
+    a = Time.now
+    Course.create(:title => "Prueba", :silabus => "Prueba", :init_date => "2013-06-12 10:00:00",
+           :finish_date => "2013-06-30 10:00:00", :network_id => 1, :public_status => "public")
+    b = Time.now
+    puts b - a
+  end
+
+  def self.destroy_course
+    a = Time.now
+    Course.last.destroy
+    b = Time.now
+    puts b - a
+  end
+
 end

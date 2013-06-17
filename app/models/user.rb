@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :token_authenticatable, :lockable, :timeoutable, :confirmable
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :trackable, :validatable,
+  :token_authenticatable, :lockable, :timeoutable, :confirmable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -70,7 +70,8 @@ class User < ActiveRecord::Base
   acts_as_commentable
 
   #notificaciones usuarios
-  has_many :notifications, :dependent => :destroy
+  has_many :usernotificationings, :dependent => :destroy
+  has_many :notifications, :through => :usernotificationings
 
 
   #avatar
