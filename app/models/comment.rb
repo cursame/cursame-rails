@@ -72,6 +72,7 @@ class Comment < ActiveRecord::Base
     end
 
     wrap_notification = WrapNotification.new("Comment", self.id)
+
     wrap_notification.delay.destroy_notifications
 
   end
