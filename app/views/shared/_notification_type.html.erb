@@ -6,9 +6,11 @@
 
   <% case notification.kind%>
   <% when 'user_comment_on_network'%>
-  <% if current_user && current_user.avatar != nil%>
+  <% if notification.notificator.user  != nil %>
+     <% if  notification.notificator.user.avatar != nil %>
   <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%><%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%><% end%>
   <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%> comentó en la red <%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
+ <%end%>
 
   <% when 'user_comment_on_course'%>
   <% if  current_user && current_user.avatar != nil %>
