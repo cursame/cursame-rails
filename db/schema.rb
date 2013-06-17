@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603213156) do
+ActiveRecord::Schema.define(:version => 20130611232911) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(:version => 20130603213156) do
     t.text     "brief_description_html"
   end
 
+  create_table "audiences", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -88,6 +95,13 @@ ActiveRecord::Schema.define(:version => 20130603213156) do
     t.datetime "updated_at",    :null => false
     t.string   "name"
     t.string   "client_secret"
+  end
+
+  create_table "channels", :force => true do |t|
+    t.string   "channel_type"
+    t.string   "channel_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -265,6 +279,15 @@ ActiveRecord::Schema.define(:version => 20130603213156) do
     t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "mesages", :force => true do |t|
+    t.text     "mesage"
+    t.integer  "user_id"
+    t.integer  "channel_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "mesage_html"
   end
 
   create_table "network_templates", :force => true do |t|
