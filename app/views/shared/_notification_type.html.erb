@@ -6,31 +6,16 @@
 
   <% case notification.kind%>
   <% when 'user_comment_on_network'%>
-<% if notification.defined? && notification  != nil %>
-<% if notification.notificator.defined? && notification.notificator  != nil %>
-<% if notification.notificator.user.defined?%>
 <% if notification.notificator.user  != nil %>
- <% if  notification.notificator.user.avatar != nil %>
   <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%><%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%><% end%>
   <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%> comentó en la red <%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
- <%end%>
- <%end%>
- <%end%>
- <%end%>
  
 
   <% when 'user_comment_on_course'%>
-  <% if notification.defined? && notification  != nil %>
-  <% if notification.notificator.defined? && notification.notificator  != nil %>
-  <% if notification.notificator.user.defined?%>
   <% if notification.notificator.user  != nil %>
-  <% if  notification.notificator.user.avatar != nil %>
   <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?) %>   <%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?) %>
    <%end%><%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%> comentó en el curso <%= link_to "#{notification.notificator.commentable.title}", course_path(notification.notificator.commentable.id) %>
-   <%end%>
-   <%end%>
-   <%end%>
-   <%end%>
+
 
   <% when 'new_public_course_on_network'%>
   <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>
