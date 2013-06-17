@@ -45,6 +45,9 @@ class User < ActiveRecord::Base
   has_many :userpublicationings, :dependent => :destroy
   has_many :walls, :through => :userpublicationings
 
+  #channels for chat
+  has_many :audiences, :dependent => :destroy
+  has_many :channels, :through => :audiences
 
   has_one :settings_teacher, :dependent => :destroy
 

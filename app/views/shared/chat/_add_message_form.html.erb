@@ -1,0 +1,6 @@
+<%= form_tag "/home/add_new_mesage", :class => "", :remote =>true do %>
+	<%= text_field_tag :mesage %>
+	<%= hidden_field_tag :channel_name, channel_name %>
+	<%= hidden_field_tag :channel_id, channel_id %>
+	<%= submit_tag "Send" %>
+<% end %>
