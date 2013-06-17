@@ -64,7 +64,7 @@ gem 'state_machine'
 # para notifications push
 gem 'thin'
 #gem 'hooves', require: 'hooves/default'
-gem 'private_pub'
+gem 'private_pub', :git =>'git://github.com/ryanb/private_pub.git'
 #gem 'unicorn'
 
 #roles

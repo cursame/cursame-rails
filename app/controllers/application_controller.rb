@@ -17,8 +17,11 @@ class ApplicationController < ActionController::Base
   helper_method :filtrati
   helper_method :parse
   helper_method :show_joyride
+  helper_method :get_chat_title
   #roles
   before_filter :set_current_user
+  #chat
+  before_filter :chat_online_users
 
   helper_method :refresh_token_for_google
   helper_method :random
@@ -213,6 +216,21 @@ class ApplicationController < ActionController::Base
     return User.find(current_user.id).tour_info[tour]
   end
 
+  def get_chat_title(channel)
+    type = channel.channel_name.split('/')
+    type = type[2].split('_')
+
+    if type[0] == 'course'
+      return Course.find_by_id(type[2]).title
+    else
+      chat_title = ''
+      channel.users.reject{ |user| user.id == current_user.id }.first(3).each_with_index do |u, index|
+        chat_title += u.email + ' '
+      end
+      return chat_title
+    end    
+  end
+  
   def mobile?
    # request.user_agent =~ /Mobile|webOS/
     # request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
@@ -231,5 +249,16 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     Authorization.current_user = current_user
+  end
+
+  # -----------------------------
+  # chat behaviour of cursame
+  # -----------------------------
+
+  def chat_online_users
+    if current_user
+      @friends_online = current_user.friends(true)
+      @courses_online = current_user.courses
+    end
   end
 end

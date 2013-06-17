@@ -44,8 +44,55 @@
   }
 }
 
+
+.chat-icon {
+
+  //border-left: transparent solid 1px;
+  //border-right: transparent solid 1px;
+
+  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+  position: relative;
+  cursor: pointer;
+  z-index: 597;
+  float: left;
+  width: 35px;
+  height: 35px;
+  //margin-top: 2px;
+  padding: 0px 0px 0px 8px;
+  color: #fff;
+  &:hover{
+    //background: #f7f7f7;
+    background: #eeeeee url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+    //border-left: #ccc solid 1px;
+    //border-right: #ccc solid 1px;
+  }
+  & a {
+    width: 100%;
+    height: 100%;
+    display:block; color: #fff;
+    text-decoration: none;
+  }
+  & span {
+    float: left;
+    vertical-align: middle;
+    padding-top: 2px;
+    font-family: helvbold;
+    font-size: 10px;
+    //padding: 5px 10px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    min-width: 13px;
+    background: #ff0000;
+    margin: 16px 0px 0px 13px;
+    text-align: center;
+  }
+}
+
+
+
 /* notification */
-#box-notifications{
+#box-notifications,#box-messages-notifications{
   clear: both;
   float: left;
   margin: 5px 0 0 -20px;

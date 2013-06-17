@@ -1,0 +1,16 @@
+<div>	
+	<div style="float:left;width:200px">
+		----Cursos--- <br>	
+		<% @courses_online.each do |course|%>
+		    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
+		<%end%>
+		<br>----Amigos conectados---
+		<% @friends_online.each do |user|%>
+		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
+		<%end%>	
+	 </div>
+	<div id="chat" style="float:left;width:600px">
+		<%=render(:partial => '/shared/chat/chat',
+		 :locals => {:messages => @messages, :channel => @channel})%>
+	</div>
+</div>
