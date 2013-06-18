@@ -213,6 +213,8 @@ $(document).ready(function() {
 
             resetForm($(value).find('form'));
 
+            $('label.error').remove();
+
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -237,23 +239,34 @@ $(document).ready(function() {
     //Submit btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#comment-post-form').click(function() {
-            $('#post-forms').animate({
-                height: '0'
-            }, time);
-            $(this).parent().parent().animate({
-                opacity: 0
-            }, time, function() {
-                $(this).css('display','none');
-            });
-            $('#profile-form-options').css('display','block');
-            $('#profile-form-options').animate({
-                opacity: 1,
-                height: prePostHeight,
-                marginTop: prePostMarginTop,
-                marginLeft: prePostMarginLeft,
-                marginRight: prePostMarginRight,
-                marginBottom: prePostMarginBottom
-            }, time);
+
+            var valid = $(value).find('#comment-post-form').valid(),
+                me = this;
+
+            setTimeout(function (argument) {
+                if ($('label.error').length) {
+                    return false;
+                }
+                else{
+                    $('#post-forms').animate({
+                        height: '0'
+                    }, time);
+                    $(me).parent().parent().animate({
+                        opacity: 0
+                    }, time, function() {
+                        $(me).css('display','none');
+                    });
+                    $('#profile-form-options').css('display','block');
+                    $('#profile-form-options').animate({
+                        opacity: 1,
+                        height: prePostHeight,
+                        marginTop: prePostMarginTop,
+                        marginLeft: prePostMarginLeft,
+                        marginRight: prePostMarginRight,
+                        marginBottom: prePostMarginBottom
+                    }, time);
+                }
+            },500);
         });
 
     });
