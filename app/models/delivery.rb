@@ -111,7 +111,7 @@ class Delivery < ActiveRecord::Base
       end
     end
 
-    Notification.create(:users => users, notificator => self, :kind => 'new_delivery_on_course')
+    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
 
   end
 

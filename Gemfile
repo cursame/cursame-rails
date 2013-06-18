@@ -109,3 +109,6 @@ gem "mocha", :group => :test
 # Delayed jod
 gem 'delayed_job_active_record'
 gem "daemons"
+
+#Last_enable
+#gem 'devise_lastseenable'

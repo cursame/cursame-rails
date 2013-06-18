@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
-  :token_authenticatable, :lockable, :timeoutable, :confirmable
+  :token_authenticatable, :lockable, :timeoutable,
+  :confirmable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -436,9 +437,4 @@ class User < ActiveRecord::Base
     end
     return average/size
   end
-
-  #def send_confirmation_instructions
-   # puts "ACA PASO"
-    # do nothing
-  #end
 end
