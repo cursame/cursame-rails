@@ -350,7 +350,7 @@ opacity: 0.7;
     position: absolute;
 }
 
-#youtube_content_delivery {
+.youtube_content_delivery {
 	height: 182px!important;
 	overflow: auto;
 	float: left;
@@ -362,5 +362,7 @@ opacity: 0.7;
 	width: 3035px;
 	overflow-y: hidden;
 	height: 200px;
+	display:block;
+	position: absolute;
 }
 

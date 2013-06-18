@@ -11,34 +11,10 @@
 
          </div>
      </div>
-     <div id="youtube_content_delivery" style="height:400px; overflow:auto;display: none; float:left; width:100%">
-              Contenido de Youtube recomendado para el tema  <div id="close_youtube_delivery" style="float:right; font-size:30px;">x</div></br>
-    
-          <div id="content_free">
-               
-          </div>
-          <div id="content_wikipedia">
+<!--este render trae el header de contenidos-->    
+<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery'}%>
+     
 
-          </div>
-          
-          
-       
-      </div>
-        <% 1.times do
-                  contents = @delivery.contents.build
-         end%>
-        <%= f.fields_for :contents do |conty| %>
-                    <div id="content_killer"></div>
-                    <div id="choser"></div>
-          <%end%>
-     
-     
-     <script>
-        $('#close_youtube_delivery').click(function() {
-             $('#youtube_content_delivery').toggle('blind', 400);
-         });
-         
-     </script>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea' %>
@@ -89,7 +65,9 @@
                      
     <% end %>
 <%#end%>
-<%= render partial: 'content/list'%>
+<!--este render trae el list de petición de contenidos-->    
+
+<%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
 
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
 
