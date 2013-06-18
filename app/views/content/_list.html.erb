@@ -5,7 +5,7 @@
     <!-- <a id="valv" href="" data-remote="true"><%#= image_tag('vimeo.png')%></a>-->
     <a href="" id="valw" data-remote="true"></a>
     <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler', :typeo => "typeo")%>
-    <div><%= render :partial => "content/dropbox"%></div>
+    <div><%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%></div>
     </center>
  </div>  
 
