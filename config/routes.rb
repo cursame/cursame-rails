@@ -1,5 +1,7 @@
 Cursame30Lb::Application.routes.draw do
 
+  resources :usernotificationings
+
   resources :members_in_groups
   resources :groups
 
