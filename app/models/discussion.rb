@@ -44,33 +44,23 @@ class Discussion < ActiveRecord::Base
       Wall.create( :publication => self, :network => self.network, :public => true)
     else
       users = []
+      users_notifications = []
       course = self.courses.first
       course.members_in_courses.each do |member|
         if member.accepted == true then
           user = member.user
-          users += [users]
+          if user.id != self.user_id then
+            users_notifications.push(user)
+          end
+          users += [user]
         end
       end
 
       Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
-      self.delay.create_notifications
-    end
 
-  end
-
-  def create_notifications
-    course = self.courses.first
-    course.members_in_courses.each do |member|
-      if member.accepted == true  then
-        user = member.user
-        if user.id != self.user_id then
-          Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
-        end
-      end
+      Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
     end
   end
-
-  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
   after_destroy do
     walls = Wall.where(:publication_type => "Discussion", :publication_id => id)
@@ -79,9 +69,11 @@ class Discussion < ActiveRecord::Base
       wall.destroy
     end
 
-    wrap_notification = WrapNotification.new("Discussion",self.id)
-    wrap_notification.delay.destroy_notifications
+    notifications = Notification.where(:notificator_type => "Discussion", :notificator_id => self.id)
 
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
   def state

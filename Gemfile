@@ -109,3 +109,4 @@ gem "mocha", :group => :test
 # Delayed jod
 gem 'delayed_job_active_record'
 gem "daemons"
+

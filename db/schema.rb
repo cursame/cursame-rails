@@ -318,7 +318,6 @@ ActiveRecord::Schema.define(:version => 20130611232911) do
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
-    t.integer  "user_id"
     t.string   "kind"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -452,6 +451,13 @@ ActiveRecord::Schema.define(:version => 20130611232911) do
     t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "usernotificationings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "userpublicationings", :force => true do |t|
