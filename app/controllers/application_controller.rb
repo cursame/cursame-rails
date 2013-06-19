@@ -26,6 +26,11 @@ class ApplicationController < ActionController::Base
   helper_method :refresh_token_for_google
   helper_method :random
   helper_method :call_rake
+  
+  #helpers para contenido
+  helper_method :client_youtube
+  helper_method :auth_hash
+  
 
   # errores
    # Se declaran los errores personalizados
@@ -239,7 +244,16 @@ class ApplicationController < ActionController::Base
 
   end
   helper_method :mobile?
-
+  
+  
+  def client_youtube
+    client = YouTubeIt::Client.new(:dev_key => "AI39si5yjznaXM1CWGbLUf6fq9x-MKjeOi9b6cF6lWTayZO45jLHs1nVtMEnUCawKguHUyvLl-I13WLHe50tR_80tZ4aLRd4MQ")
+  end
+  
+  def auth_hash
+      omniauth = request.env["omniauth.auth"]
+  end
+  
   protected
   #roles
   def permission_denied

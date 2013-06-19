@@ -1,0 +1,87 @@
+<h1 style="font-size:20px;"><%= link_to "Actividades en #{@course.title}", course_path%></h1></br>
+<div class="activities_depot_select" id="select-pol">
+    
+   <!-- <input type="text" id="rtf">-->
+   <center>
+   Filtro por miembros del curso
+    <select  id="rtf" value="">
+                <option>Todas las actividades</option>
+        <% @course.members_in_courses.each do |m|%>
+                <option><%= @user=User.find_by_id(m.user_id).name%></option>
+        <%end%>
+    </select>
+    </center>
+    
+</div>
+    <h2 style="font-size:18px; float:left; height:20px; margin-right:250px;">Actividades realizadas</h2>
+    <h2 style="font-size:18px; height:20px; margin-bottom:30px;">Archivos entregados</h2>
+    <div id="ajax-dump" style="margin-top:12px;float:left;">
+       
+    </div>
+    
+    
+    <div class="expoced"id="expoced">
+        
+        
+    </div>
+
+<script>
+       $("#rtf").change(function () {
+            
+            var value = $(this).val();
+            var flot = '.'+value.split(" ").join("").toLowerCase();
+             console.log(flot);
+                   
+            if(flot === ".todaslasactividades"){
+                $('.activities_depot').show();
+                $('.user_assets').show();
+            }else{
+                $('.activities_depot').hide();//css( "border","3px solid red" );
+                $('.user_assets').hide();
+                
+                $(flot).show();
+            }  
+                
+        });
+        
+
+        var locuorem = $.getJSON( '<%= "#{course_ki_line_path(@course)}.json" %>', function(json) {
+           
+            var timeline = json.timeline.date;
+            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam;
+            for(var i = 0; i < timeline.length;i++){
+                aux = timeline[i];
+                kilspace = aux.text.split(' ').join('');
+                flip = '/assets/'+kilspace.split(':')[0]+'roty.png';
+                id= aux.compose.id + aux.compose.type;
+                
+                dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
+                
+                $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+aux.asset.media+'"  width="10%;" style="float:left; margin-top:10px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+                identifier = '#'+id;
+                assets = aux.assets;
+                casual="casual"+id;
+                var cloud = 'po'+aux.asset.credit.split(" ").join("").toLowerCase();
+                   if(assets){
+                   for(var l = 0; l < assets.length;l++){
+                       
+                   fromk = assets[l];
+                   url = fromk.file.file.url;
+                   nam = fromk.name;
+
+                   $("#expoced").prepend('<div id='+casual+' class="user_assets '+cloud+'">'+'</div>');
+                   $("#"+casual).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
+                      }
+                    }
+              
+                
+                
+            }
+            
+            
+            
+         });
+         
+         
+           
+</script>

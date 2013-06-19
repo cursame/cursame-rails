@@ -1,0 +1,30 @@
+ <div id="look_atemp_conteny<%=typeo%>" class="look_atemp_conteny">
+<div  id="youtube_content_delivery<%=typeo%>" class="youtube_content_delivery" style="height:400px; overflow:auto;display: none; float:left; width:100%">
+        <div style="position:absolute; with:20px; margin-bottom:5px;display:block; background:#eee;">Contenido de recomendado para el tema  <div id="close_youtube_delivery<%=typeo%>" style="float:right; margin-left:560px; margin-top:-15px; font-size:30px;  height:10px;">x</div></div></br>
+
+      <div id="content_free" class="content_free<%=typeo%>">
+           
+      </div>
+      <div id="content_wikipedia<%=typeo%>" style="display:block;" class="content_wikipedia">
+
+      </div>
+      
+      
+   
+  </div>
+    <% 1.times do
+              contents = @delivery.contents.build
+     end%>
+   
+    <%= f.fields_for :contents do |conty| %>
+                <div id="content_killer<%=typeo%>" class="content_killer"></div>
+                <div id="choser<%=typeo%>" class="choser"></div>
+    <%end%>
+</div>
+
+<script>
+   $('#close_youtube_delivery<%=typeo%>').click(function() {
+        $('#youtube_content_delivery<%=typeo%>').toggle('blind', 400);
+    });
+    
+</script>

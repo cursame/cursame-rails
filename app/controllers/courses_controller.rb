@@ -285,6 +285,8 @@ class CoursesController < ApplicationController
       deliveries = []
       assignmentss = []
       surveyss = []
+      assets_assignmentss =[]
+      assets_deliveries =[]
       
       count_deliveries =  @course.deliveries.count
       count_surveys =  @course.surveys.count
@@ -293,7 +295,11 @@ class CoursesController < ApplicationController
       
       
       @course.deliveries.each do |del|
-        
+        del.assets.each do |b|
+           @name = b.file.to_s.split('/').last
+           assets_deliveries.push( {file: b.file,
+                                    name: @name })
+         end
         if del.user.avatar.blank?
           @avatar = "/assets/#{del.user.image_avatarx}"
         else
@@ -307,13 +313,21 @@ class CoursesController < ApplicationController
               startDate: del.publish_date,
 			        endDate: del.end_date,
               headline:"#{del.title}",
-              text:" Tarea: #{del.description}",
+              text:"Tarea: #{del.description}",
               asset:
               {
                   media: @avatar,
                   credit:"#{del.user.name}",
                   caption:"#{@course.title}"
-              }
+              },
+              compose:
+              { id: del.id,
+                type: 'tarea',
+                title: del.title,
+                description: del.description
+              },
+              assets:assets_deliveries          
+              
           }
           
        
@@ -321,6 +335,13 @@ class CoursesController < ApplicationController
         
         
          del.assignments.each do |as|
+           as.assets.each do |a|
+             @name = a.file.to_s.split('/').last
+             assets_assignmentss.push( {file: a.file,
+                                        name: @name
+                                     })
+           end
+           
            if as.user.avatar.blank?
              @avatar_assignment = "/assets/#{as.user.image_avatarx}"
            else
@@ -338,10 +359,19 @@ class CoursesController < ApplicationController
                         media: @avatar_assignment,
                         credit:"#{as.user.name}",
                         caption:"#{@course.title}"
-                    }
+                    },
+                    compose:
+                    { id: as.id,
+                      type: 'entrega_tarea',
+                      title: as.title,
+                      description: as.brief_description, 
+                    }, 
+                    assets: assets_assignmentss       
+                    
                 }
             
             )
+            
           end
         
       end
@@ -364,6 +394,11 @@ class CoursesController < ApplicationController
                       media: @avatar_assignment,
                       credit:"#{survey.user.name}",
                       caption:"#{@course.title}"
+                  },
+                  compose:
+                  {   id: survey.id,
+                      type: 'examen',
+                      title: survey.name 
                   }
               }
           
@@ -388,7 +423,14 @@ class CoursesController < ApplicationController
       end
       end
   end
-
+  
+  
+  def activities_depot
+    @course = Course.find(params[:id])
+   # @render = ("#{course_ki_line_path(@course)}.json").to_s
+    
+  end
+  
   ######  formato para responder la jamada de ajax con js
 
   def call_assignments_response

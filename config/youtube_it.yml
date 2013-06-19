@@ -1,0 +1,14 @@
+common: &common
+  dev_key: AI39si5yjznaXM1CWGbLUf6fq9x-MKjeOi9b6cF6lWTayZO45jLHs1nVtMEnUCawKguHUyvLl-I13WLHe50tR_80tZ4aLRd4MQ
+  username:  jose_alfredo@cursa.me
+  password:  777divino
+  
+test:
+  <<: *common
+development:
+  <<: *common
+production:
+  <<: *common
+subtest:
+  <<: *common
+

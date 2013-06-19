@@ -63,8 +63,8 @@ class Course < ActiveRecord::Base
 
       Wall.create(:users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true)
 
-      a = Notification.create(:notificator => self, :kind => 'new_public_course_on_network')
-      a.users << users
+      # a = Notification.create(:notificator => self, :kind => 'new_public_course_on_network')
+      # a.users << users
 
     end
   end

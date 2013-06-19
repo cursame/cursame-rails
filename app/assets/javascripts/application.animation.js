@@ -210,8 +210,14 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
-
+        
             resetForm($(value).find('form'));
+                /* elimina los contenidos*/
+                 $(".content_free").html('');
+                 $(".content_wikipedia").html('');
+                 $(".content_killer").html('');
+                 $(".choser").html('');
+                 $('.youtube_content_delivery').hide();
 
             $('label.error').remove();
 
