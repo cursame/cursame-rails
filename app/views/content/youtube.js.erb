@@ -1,4 +1,5 @@
-$('#youtube_content_delivery').show();
-$('#content_free').html('');
-$('#content_free').prepend("<%= escape_javascript(render(:partial => '/content/youtube', :locals => {:page => [@page]}))%>");
+$('#youtube_content_delivery<%=@typeo%>').show();
+$('.content_free<%=@typeo%>').html('');
+$('#content_wikipedia<%=@typeo%>').html('');
+$('.content_free<%=@typeo%>').prepend("<%= escape_javascript(render(:partial => '/content/youtube', :locals => {:page => [@page], :typeo => [@typeo]}))%>");
 

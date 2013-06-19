@@ -29,6 +29,7 @@
                color: #fff;
                text-align:center;
                
+               
            }
            
            &  .button_add:hover{
@@ -36,8 +37,35 @@
                   color: #fff;
                   
                   
+                  
            }
            
 }
 
-#close_youtube_delivery { margin-right: 30px; }       
+#close_youtube_delivery { margin-right: 30px; }
+           
+}
+
+.button_pluss{
+     font-size:40px; 
+     color:#30AD2A;  
+     cursor: pointer;
+   
+     
+     
+}       
+.button_pluss:hover{
+      color:#19FC69; 
+      
+}
+.button_pluss:active{
+      color:#B0FBAC; 
+      
+}
+.redo_lik{
+    background:#FBF7DB;
+    width:300px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}

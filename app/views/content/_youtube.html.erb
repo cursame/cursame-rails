@@ -10,27 +10,28 @@
               <% @complex_id =  @id.strftime("%m""%d""%Y")%>
              
                <div  class="tumbail_youtube<%= @complex_id %>" >
-                   <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></br>
+                   <div style="float:left;" id="kolik2_youtube_btn<%= @complex_id %>" ><%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %>       </div></br>
                    <%= image_tag("#{vi.thumbnails[1].url}")%>
                    <%#= debug vi.thumbnails %>
                </div>
            
-                <div id="l_tumbail_youtube<%= @complex_id %>" style="display:none;">
-                	 <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></br>
-                <%= vi.embed_html_with_width(320).html_safe%>
+                <div id="l_tumbail_youtube<%= @complex_id %>" style="display:none; height:142px; width=10%;">
+                	<div style="float:left;" id="kolik_youtube_btn<%= @complex_id %>"> <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></div></br>
+                <%= vi.embed_html_with_width(200).html_safe%>
                  </div>
-           
+                        <div class="button_pluss" id="add_nested_delivery_content<%= @complex_id %>" style="margin-top:-190px; z-index:888px; position:absolute;">
+                                   +
+                          </div>
              <SCRIPT LANGUAGE="JavaScript">
                   $('.tumbail_youtube<%= @complex_id %>').click(function() {
                          $('.tumbail_youtube<%= @complex_id %>').html('');
                          $('#l_tumbail_youtube<%= @complex_id %>').show();
+                         $('#add_nested_delivery_content<%= @complex_id %>').css( { "margin-top" : "-135px"} );
                      });
              </SCRIPT>
        
-            
-                   <div class="button_add" id="add_nested_delivery_content<%= @complex_id %>">
-                      Agregar
-                   </div>
+      
+                 
        </div>
                    
 </li>
@@ -40,10 +41,10 @@
                   
                $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
                    
-                    $('#content_killer').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');
+                    $('#content_killer<%= @typeo %>').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');
                 
                 
-                    $("#choser").append("<a href='<%=vi.player_url%>'><%=vi.player_url%></a></br>");
+                    $("#choser<%= @typeo %>").append("<a href='<%=vi.player_url%>'><%=vi.player_url%></a></br>");
                     
                 });
           
@@ -55,7 +56,7 @@
 <script>
 $(function(){
   
-    var $bl    = $("#youtube_content_delivery"),
+    var $bl    = $(".youtube_content_delivery"),
         $th    = $("#content_free"),
         blW    = $bl.outerWidth(),
         blSW   = $bl[0].scrollWidth,

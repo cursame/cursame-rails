@@ -11,9 +11,9 @@
                       'target': "blank_"
                   }).append("<br/>")
                    
-                  $("#choser").append($link)
+                  $("#choser<%= typeo %>").append($link)
                   
-                  $('#content_killer').append('<input id="delivery_contents_attributes_'+files[i].bytes+'_content" name="delivery[contents_attributes]['+files[i].bytes+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
+                  $('#content_killer<%= typeo %>').append('<input id="delivery_contents_attributes_'+files[i].bytes+'_content" name="delivery[contents_attributes]['+files[i].bytes+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
 
 
                   

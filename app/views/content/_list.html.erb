@@ -4,8 +4,8 @@
     <a id="valu" href="" data-remote="true"></a>
     <!-- <a id="valv" href="" data-remote="true"><%#= image_tag('vimeo.png')%></a>-->
     <a href="" id="valw" data-remote="true"></a>
-    <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler')%>
-    <div><%= render :partial => "content/dropbox"%></div>
+    <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler', :typeo => "typeo")%>
+    <div><%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%></div>
     </center>
  </div>  
 
@@ -16,8 +16,8 @@
 <script>
     $("#delivery_title").keyup(function () {
       var value = $(this).val();
-        $("#valu").attr("href", "/content/youtube?youtube_search="+value);
-        $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" + value.split(" ").join("_"));
+        $("#valu").attr("href", "/content/youtube?youtube_search="+value+'&typeo=<%=typeo%>');
+        $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" + value.split(" ").join("_")+'&typeo=<%=typeo%>');
     }).keyup();
     
 </script>
