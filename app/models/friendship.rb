@@ -7,6 +7,13 @@ class Friendship < ActiveRecord::Base
     Notification.create(:notificator => self, :user_id => self.friend_id, :kind => "user_request_friendship",:active => true)
   end
 
+  after_destroy do
+    notifications = Notification.where(:notificator_type => self.class.to_s, :notificator_id => self.id)
+    notifications.each do |x|
+      x.destroy
+    end
+  end
+
   after_update do
     accepted = self.changes[:accepted]
     if (!accepted.nil?) then
