@@ -11,15 +11,19 @@
 
          </div>
      </div>
+<!--este render trae el header de contenidos-->    
+<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery'}%>
+     
+
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
+        <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea' %>
         <%#= f.datetime_select :publish_date%>
         <%#= f.datetime_select :end_date%>
 
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery" %>
         <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery" %>
-        <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
+        <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'¿En qué consiste esta tarea?' %>
               <% 1.times do
                  areas_of_evaluations = @delivery.areas_of_evaluations.build
              end%>
@@ -34,10 +38,10 @@
         <%#end%>
           
         <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
-
         <div class="submit-area"></div>
         
-          
+    
+    
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
     
@@ -61,8 +65,10 @@
                      
     <% end %>
 <%#end%>
+<!--este render trae el list de petición de contenidos-->    
 
-<div class="notice-file">El límite de peso por archivo es de 8Mb</div>
+<%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
+
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
 
 <script type="text/javascript">

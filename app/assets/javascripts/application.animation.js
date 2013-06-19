@@ -210,8 +210,14 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
-
+        
             resetForm($(value).find('form'));
+                /* elimina los contenidos*/
+                 $(".content_free").html('');
+                 $(".content_wikipedia").html('');
+                 $(".content_killer").html('');
+                 $(".choser").html('');
+                 $('.youtube_content_delivery').hide();
 
             $('#post-forms').animate({
                 height: '0'
@@ -240,6 +246,7 @@ $(document).ready(function() {
             $('#post-forms').animate({
                 height: '0'
             }, time);
+            
             $(this).parent().parent().animate({
                 opacity: 0
             }, time, function() {
@@ -254,6 +261,7 @@ $(document).ready(function() {
                 marginRight: prePostMarginRight,
                 marginBottom: prePostMarginBottom
             }, time);
+            
         });
 
     });

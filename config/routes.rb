@@ -50,15 +50,18 @@ Cursame30Lb::Application.routes.draw do
 
   resources :authentications
 
-  #recursos necesarios para el calendario
+  #recursos necesarios para autentificaciones de servicios externos (by alfredot)
   resources :events
+  
+  ########## calendar
 
   get "calendar/index"
   get "calendar/test_calendar"
 
-  match "/auth/:provider/callback" => "authentications#create"
-
-
+  ######### dropbox
+  get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
+  ######## create
+  match "/auth/:provider/callback" => "authentications#create", :as => :providers
   #recursos naturales de la aplicación
 
 
@@ -133,6 +136,7 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
   match "courses/:id/_evaluation", :to => "courses#evaluation", :as => :course_evaluation
+  match "courses/:id/activities_depot", :to => "courses#activities_depot", :as => :course_activities_depot
   #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
 
@@ -222,6 +226,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
+  get "home/authentication", :to => "home#authentications_test",:as => :authentications 
 
   root :to => 'home#index'
 
@@ -293,6 +298,38 @@ Cursame30Lb::Application.routes.draw do
         resources :activities
     end
 
+
+   ######## rutas para contents 
+
+   resources :contents
+
+     resources :surveys do
+       resources :contents
+     end
+
+     resources :deliveries do
+       resources :contents
+     end
+
+     resources :assignments do
+        resources :contents
+     end
+
+     resources :comments do
+        resources :contents
+     end
+
+     resources :discussions do
+         resources :contents
+     end
+
+     resources :courses do
+         resources :contents
+     end
+
+      resources :user_surveys do
+          resources :contents
+      end
    ####### rutas para like en web
 
    get "/upvote/:id", :to => 'home#upvote', :as => :upvote
@@ -323,6 +360,17 @@ Cursame30Lb::Application.routes.draw do
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
    match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
+
+   ######## contenido
+    get "content/youtube", :as => :c_youtube
+
+    get "content/vimeo"
+
+    get "content/wikipedia", :as => :c_wikipedia
+
+    get "content/orkut"
+
+    get "content/khanacademy"
 
    # api para la mobile
    #this is for api for the mobile app

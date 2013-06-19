@@ -138,6 +138,7 @@ class HomeController < ApplicationController
          respond_to do |format|
             format.js
           end
+<<<<<<< HEAD
      end  
 
   # -----------------------------
@@ -176,6 +177,9 @@ class HomeController < ApplicationController
        format.js
       end
     end
+
+     def authentications_test
+     end
 
   protected
   def save_comment

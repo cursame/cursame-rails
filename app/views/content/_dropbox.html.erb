@@ -1,0 +1,25 @@
+<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="v596nmx3i8q8hhm"></script>
+<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-multiselect="true" data-link-type="preview"/>
+<script type="text/javascript">
+    document.getElementById("db-chooser").addEventListener("DbxChooserSuccess",
+        function(e) {
+            var files = e.files
+            for(var i=0; i<files.length; i++) {
+                  $link = $('<a/>', {
+                      'href': files[i].link,
+                      'text': files[i].link,
+                      'target': "blank_"
+                  }).append("<br/>")
+                   
+                  $("#choser<%= typeo %>").append($link)
+                  
+                  $('#content_killer<%= typeo %>').append('<input id="delivery_contents_attributes_'+files[i].bytes+'_content" name="delivery[contents_attributes]['+files[i].bytes+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
+
+
+                  
+              }
+            
+        }, false);
+</script>
+
+
