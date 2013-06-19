@@ -4,5 +4,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       redirect_uri:'http://localhost/auth/google_oauth2/callback'
       
     }
-
+  provider :dropbox, ENV['9k1z342efr23eub'], ENV['pyro9hdyc4696fq']
 end

@@ -138,7 +138,6 @@ class HomeController < ApplicationController
          respond_to do |format|
             format.js
           end
-<<<<<<< HEAD
      end  
 
   # -----------------------------
