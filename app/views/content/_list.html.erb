@@ -14,7 +14,7 @@
 <div class="notice-file">El límite de peso por archivo es de 8Mb</div>
 
 <script>
-    $("#delivery_title").keyup(function () {
+    $("#<%=typeo%>_title").keyup(function () {
       var value = $(this).val();
         $("#valu").attr("href", "/content/youtube?youtube_search="+value+'&typeo=<%=typeo%>');
         $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" + value.split(" ").join("_")+'&typeo=<%=typeo%>');
