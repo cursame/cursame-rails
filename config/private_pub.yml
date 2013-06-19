@@ -5,10 +5,10 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://10.195.206.150:9292/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "75a7485aeed08961e249a3db5e03fb6f60364eec013d99a8e0d9f457b661f8c9"
   signature_expiration: 36 # one hour
 subtest:
-  server: "http://10.195.206.150:9292/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "75a7485aeed08961e249a3db5e03fb6f60364eec013d99a8e0d9f457b661f8c9"
   #signature_expiration: 36 # one hour
