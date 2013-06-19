@@ -60,6 +60,11 @@ GEM
     cookiejar (0.3.0)
     daemons (1.1.9)
     declarative_authorization (0.5.6)
+    delayed_job (3.0.5)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.4.4)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -267,7 +272,9 @@ DEPENDENCIES
   auto_html
   bcrypt-ruby (~> 3.0.0)
   carrierwave
+  daemons
   declarative_authorization
+  delayed_job_active_record
   devise
   dropbox-api
   dropbox-sdk (~> 1.5.1)

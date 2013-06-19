@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
 
   # mount_uploader :avatar, AvatarUploader
@@ -18,14 +19,14 @@ class Course < ActiveRecord::Base
 
   has_many :activities, as: :activitye#, :dependent => :destroy
 
- #publications/walls
+  #publications/walls
   has_many :coursepublicationings
   has_many :walls, :through => :coursepublicationings
 
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
-   validates_presence_of :title
-   validates_presence_of :silabus
+  validates_presence_of :title
+  validates_presence_of :silabus
   #validates_presence_of :init_date
   #validates_presence_of :finish_date
   # validates_presence_of :survey_param_evaluation
@@ -34,10 +35,10 @@ class Course < ActiveRecord::Base
 
 
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
-                  :created_at, :updated_at, :public_status,
-                  :avatar, :coverphoto, :delivery_id,
-                  :survey_param_evaluation, :delivery_param_evaluation,
-                  :network_id, :active_status
+  :created_at, :updated_at, :public_status,
+  :avatar, :coverphoto, :delivery_id,
+  :survey_param_evaluation, :delivery_param_evaluation,
+  :network_id, :active_status
 
 
   #para los likes
@@ -52,56 +53,48 @@ class Course < ActiveRecord::Base
 
   after_create do
     if self.public_status == 'public'
-      Wall.create :users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true
-      # owners = self.users
-      # owners_id = owners.map{|x| x.id}
-      
+
+
+
       users = self.network.users
-      users = users.map{|x| x.id}
-      UtilityHelper.call_rake(:create_notifications, {:notificator_type => self.class.to_s, :notificator_id => self.id.to_s,
-                         :notifications_kind => 'new_public_course_on_network', :users_id => users.to_s})
-      
-      #self.network.users.each do
-      #  |user|
-      #  # if !owners_id.include?(user.id)
-      #  Notification.create(:user => user, :notificator => self, :kind => 'new_public_course_on_network')
-      #  # end
-      #end
+      owners = self.members_in_courses
+      owners = owners.reject{ |member| member.owner != true }
+      users = users - owners
+
+      Wall.create(:users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true)
+
+      a = Notification.create(:notificator => self, :kind => 'new_public_course_on_network')
+      a.users << users
+
     end
   end
 
-  before_destroy do
-    ActiveRecord::Base.transaction do
-      notifications = Notification.where(:notificator_type => "Course", :notificator_id => id)
-      walls = Wall.where(:publication_type => "Course", :publication_id => id)
-    
-      walls.each do |wall|
-        wall.destroy
-      end
-      
-    
-      notifications.each do |notification|
-        notification.destroy
-      end
+
+
+  after_destroy do
+    walls = Wall.where(:publication_type => "Course", :publication_id => id)
+
+    walls.each do |wall|
+      wall.destroy
     end
-    #UtilityHelper.call_rake(:destroy_notifications, {:notificator_type => "Course", :notificator_id => self.id.to_s})
-    #UtilityHelper.call_rake(:destroy_walls, {:publication_type => "Course", :publication_id => self.id.to_s})
+
+    notifications = Notification.where(:notificator_type => "Course", :notificator_id => id)
+
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
-  def self.import(file,network)
+  def import(path,network,user_admin)
     arrayErrores = Array.new
     count = 1
-    begin
-      file.path
-    rescue NoMethodError
-      return arrayErrores.push({:line => 0, :message => "No selecciono un archivo" })
-    end
-    CSV.foreach(file.path, headers: true) do |row|
+
+    CSV.foreach(path, headers: true) do |row|
       count += 1
       if !row["id"].nil? then
-        course = find_by_id(row["id"]) || new
+        course = Course.find_by_id(row["id"]) || Course.new
       else
-        course = new
+        course = Course.new
       end
 
       errors = false
@@ -146,8 +139,11 @@ class Course < ActiveRecord::Base
         end
       end
     end
-    return arrayErrores
+    mail = Notifier.send_import_courses(user_admin,arrayErrores)
+    mail.deliver
   end
+
+  handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
   def self.search(search)
     if search
@@ -160,19 +156,19 @@ class Course < ActiveRecord::Base
   ####es necesario sustituir el tipo de lectura de la relación manualmente #####
   ########## se crea el campo users en el modelo para poder generar la lectura correcta dentro de las relaciones ######
   def razon_users
-      @members = self.members_in_courses
+    @members = self.members_in_courses
   end
 
   def users_invoque
-     razon_users.select("user_id, course_id")
+    razon_users.select("user_id, course_id")
   end
 
   def users
-      @ids = []
+    @ids = []
     users_invoque.each do |invoque|
       @ids.push(invoque.user_id)
     end
-      @users = User.find(@ids)
+    @users = User.find(@ids)
   end
 
   def pendings
@@ -254,4 +250,20 @@ class Course < ActiveRecord::Base
     size = members.size
     return average/size
   end
+
+  def self.create_course
+    a = Time.now
+    Course.create(:title => "Prueba", :silabus => "Prueba", :init_date => "2013-06-12 10:00:00",
+           :finish_date => "2013-06-30 10:00:00", :network_id => 1, :public_status => "public")
+    b = Time.now
+    puts b - a
+  end
+
+  def self.destroy_course
+    a = Time.now
+    Course.last.destroy
+    b = Time.now
+    puts b - a
+  end
+
 end

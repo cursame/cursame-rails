@@ -50,7 +50,7 @@
   //border-left: transparent solid 1px;
   //border-right: transparent solid 1px;
 
-  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+  background: url("/assets/icons/notification-chat-mini.png") no-repeat 8px 2px;
   position: relative;
   cursor: pointer;
   z-index: 597;
@@ -62,7 +62,7 @@
   color: #fff;
   &:hover{
     //background: #f7f7f7;
-    background: #eeeeee url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+    background: #eeeeee url("/assets/icons/notification-chat-mini.png") no-repeat 8px 2px;
     //border-left: #ccc solid 1px;
     //border-right: #ccc solid 1px;
   }
@@ -95,7 +95,10 @@
 #box-notifications,#box-messages-notifications{
   clear: both;
   float: left;
-  margin: 5px 0 0 -20px;
+  margin: 34px 0 0 -35px;
+  position: absolute;
+  margin-top: 34px;
+  display: block;
     
   & .avatar{
     margin-left: 3px;

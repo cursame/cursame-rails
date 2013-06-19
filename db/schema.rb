@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611232911) do
+ActiveRecord::Schema.define(:version => 20130612233514) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -166,6 +166,22 @@ ActiveRecord::Schema.define(:version => 20130611232911) do
     t.integer  "likes"
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "deliveries", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -312,7 +328,6 @@ ActiveRecord::Schema.define(:version => 20130611232911) do
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
-    t.integer  "user_id"
     t.string   "kind"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -446,6 +461,13 @@ ActiveRecord::Schema.define(:version => 20130611232911) do
     t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "usernotificationings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "userpublicationings", :force => true do |t|
