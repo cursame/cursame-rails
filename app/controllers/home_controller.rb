@@ -14,9 +14,11 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
+
+      @from_enter_key = params[:from_enter_key] == 'true' ? true : false
+
       # esto es para clonar los comentarios de el grupo
       if params[:delivery] then
-
         params[:commentable_type] = 'Course'
         params[:delivery][:course_ids].each do |group_id|
           params[:commentable_id] = group_id
@@ -31,7 +33,8 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'   || @comment.commentable_type == 'Course' || @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key)|| @comment.commentable_type == 'User'
+      # if @comment.commentable_type == 'Network'   ||  @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
@@ -135,11 +138,69 @@ class HomeController < ApplicationController
          respond_to do |format|
             format.js
           end
-     end
+     end  
+
+  # -----------------------------
+  # chat behaviour of cursame
+  # -----------------------------
+
+  def chat
+      @channel = Channel.new
+      @messages = @channel.mesages
+      respond_to do |format|
+          format.html
+      end
+  end
+
+    def open_channel
+      if params[:course]
+        @channel_name = "/messages/course_channel_"+ params[:id]
+        users = Course.find(params[:id]).users
+      else
+        ids = [current_user.id,params[:id].to_i]
+        @channel_name = get_unique_channel_users(ids)
+        users = User.find(ids)
+      end
+      @channel = find_or_insert_channel(@channel_name,users)
+      @messages = @channel.mesages
+      respond_to do |format|
+       format.js
+      end
+    end
+    
+    def add_new_mesage
+      @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
+      @channel_name = params[:channel_name]
+      @channel_id = params[:channel_id]
+      respond_to do |format|
+       format.js
+      end
+    end
 
   protected
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
     @comment = commentable.comments.create!(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
   end
+
+  def get_unique_channel_users(ids)
+    ids = ids.sort
+    channel_name = "/messages/users_channel_"+ (ids * "_")
+    return channel_name 
+  end
+
+  def find_or_insert_channel(channel_name,users)
+    channel = Channel.find_by_channel_name(channel_name)
+    puts "---------------------"
+    puts channel
+    if !channel
+      channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
+      channel.users = users
+      channel.save!
+    end
+    puts "----------el otro-----------"
+    puts channel
+    return channel
+  end
+
 end

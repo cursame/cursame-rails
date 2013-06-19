@@ -6,7 +6,7 @@ Cursame30Lb::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.assets.debug = true
-  
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -36,12 +36,13 @@ Cursame30Lb::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  #config.time_zone = "Mexico_City"
   HOST = 'lvh.me:3000'
   config.action_mailer.default_url_options = { :host => 'lvh.me:3000' }
-  config.action_mailer.delivery_method = :sendmail  
+  config.action_mailer.delivery_method = :sendmail
   #roles
   config.gem "declarative_authorization", :source => "http://gemcutter.org"
-  
+
   ### mailer ###
   ActionMailer::Base.smtp_settings = {
      :address        => '50.116.21.144',
@@ -52,6 +53,6 @@ Cursame30Lb::Application.configure do
      :domain         => 'mail.cursame.me'
    }
    ActionMailer::Base.delivery_method = :smtp
-  
+
 
 end

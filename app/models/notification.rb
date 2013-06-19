@@ -1,7 +1,9 @@
 class Notification < ActiveRecord::Base
   #attr_accessible :notificator_id, :notificator_type, :user_id, :kind
 
-  belongs_to  :user
+  has_many :usernotificationings, :dependent => :destroy
+  has_many :users, :through => :usernotificationings
+
   belongs_to  :notificator, :polymorphic => true
 
   after_create do
@@ -27,14 +29,18 @@ class Notification < ActiveRecord::Base
       creator = self.notificator.user
     end
 
-    PrivatePub.publish_to("/notifications/"+self.user.id.to_s,
-       notification: self,
-       num: self.user.notifications.where(:active => true).count,
-       notificator: self.notificator,
-       # creator: self.notificator.user||User.last,
-       creator: creator,
-       reciever: self.user,
-       owner: owner
-    )
+    self.users.each do |user|
+      Thread.new {
+        PrivatePub.publish_to("/notifications/"+user.id.to_s,
+                           notification: self,
+                           num: user.notifications.where(:active => true).count,
+                           notificator: self.notificator,
+                           # creator: self.notificator.user||User.last,
+                           creator: creator,
+                           reciever: user,
+                           owner: owner
+                           )
+      }
+    end
   end
 end

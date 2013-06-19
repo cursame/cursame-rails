@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523174922) do
+ActiveRecord::Schema.define(:version => 20130612233514) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.text     "brief_description_html"
   end
 
+  create_table "audiences", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -88,6 +95,13 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.datetime "updated_at",    :null => false
     t.string   "name"
     t.string   "client_secret"
+  end
+
+  create_table "channels", :force => true do |t|
+    t.string   "channel_type"
+    t.string   "channel_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -99,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
-    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
@@ -118,6 +131,14 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.integer  "question_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "contents", :force => true do |t|
+    t.string   "contentye_type"
+    t.integer  "contentye_id"
+    t.text     "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "coursepublicationings", :force => true do |t|
@@ -144,6 +165,22 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.boolean  "active_status",             :default => true
     t.integer  "likes"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "deliveries", :force => true do |t|
     t.string   "title"
@@ -225,6 +262,8 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
+
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -250,6 +289,15 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "mesages", :force => true do |t|
+    t.text     "mesage"
+    t.integer  "user_id"
+    t.integer  "channel_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "mesage_html"
   end
 
   create_table "network_templates", :force => true do |t|
@@ -280,7 +328,6 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
   create_table "notifications", :force => true do |t|
     t.integer  "notificator_id"
     t.string   "notificator_type"
-    t.integer  "user_id"
     t.string   "kind"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -414,6 +461,13 @@ ActiveRecord::Schema.define(:version => 20130523174922) do
     t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "usernotificationings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "userpublicationings", :force => true do |t|
