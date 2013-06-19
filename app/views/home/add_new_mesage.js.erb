@@ -1,3 +1,4 @@
+alert('<%=@channel_name%>')
 <% publish_to @channel_name do %>
 	if($('#chat').length){
   		$('#chat-messages').append('<%= escape_javascript(render(:partial => '/shared/chat/message_tpl', :locals => {:message => @message}))%>');
