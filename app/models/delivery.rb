@@ -1,10 +1,11 @@
 class Delivery < ActiveRecord::Base
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
  :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses, :areas_of_evaluations,
- :areas_of_evaluation
+ :areas_of_evaluation,:contents, :contents_attributes
 
   scope :active_inactive
   scope :courses
+  scope :contents
   has_many :deliveries_courses, :dependent => :destroy
   has_many :courses, :through => :deliveries_courses
   has_many :areas_of_evaluation, :dependent => :destroy
@@ -15,6 +16,8 @@ class Delivery < ActiveRecord::Base
   has_many :assets, :through => :delivery_assets
   has_many :events, as: :schedule, :dependent => :destroy
   has_many :activities, as: :activitye#, :dependent => :destroy
+  has_many :contents, :as => :contentye #, :dependent => :destroy
+  
   belongs_to :network
 
 
@@ -25,6 +28,8 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :areas_of_evaluations
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
+  accepts_nested_attributes_for :contents
+  
 
   validates_presence_of :end_date
   validates_presence_of :publish_date

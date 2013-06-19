@@ -177,6 +177,9 @@ class HomeController < ApplicationController
       end
     end
 
+     def authentications_test
+     end
+
   protected
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])

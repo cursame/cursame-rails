@@ -27,11 +27,11 @@
 	<div id="users-and-groups-for-chat">
        + Chat (<%= @courses_online.count + @friends_online.count %>)
        <div id="users-and-groups-online" style="display:none">       	
-		----Cursos--- <br>	
+		<span class="titleBraker">Cursos</span>
 		<% @courses_online.each do |course|%>
 		    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
 		<%end%>
-		<br>----Amigos conectados---
+		<span class="titleBrakerSecondary">Amigos conectados</span>
 		<% @friends_online.each do |user|%>
 		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>

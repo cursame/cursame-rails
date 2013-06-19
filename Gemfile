@@ -91,7 +91,7 @@ gem "nifty-generators", :group => :development
 #end
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
-
+#gem 'httparty'
 # Deploy with Capistrano
 # gem 'capistrano'
 
@@ -105,6 +105,13 @@ gem "pdfkit"
 gem "active_attr"
 
 gem "mocha", :group => :test
+
+#gemas para contenido
+gem "dropbox-sdk", "~> 1.5.1"
+gem "youtube_it"
+gem "mediawiki-gateway"
+gem 'omniauth-dropbox'
+gem "dropbox-api"
 
 # Delayed jod
 gem 'delayed_job_active_record'

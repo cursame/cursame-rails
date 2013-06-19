@@ -1,0 +1,70 @@
+// Place all the styles related to the content controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.content_charge{
+    height:400px; overflow:auto;
+      
+}
+
+.video{
+           height:137px;
+           overflow: hidden;
+           weight:200px;
+           margin:5px;
+           margin:solid ;
+           float: left;
+
+           & .button_add{
+               background: #2CCAE1;
+               width: 130px;
+               border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+               cursor: pointer;
+               margin: -92px 0 0 38px!important;
+               z-index: 2;
+               position: absolute;
+               height: 25px; 
+               font-size:16px;
+               padding-top: 5px;
+               display: block;
+               color: #fff;
+               text-align:center;
+               
+               
+           }
+           
+           &  .button_add:hover{
+                  background: #02B1CB;
+                  color: #fff;
+                  
+                  
+                  
+           }
+           
+}
+
+#close_youtube_delivery{ margin-right: 30px; }
+
+
+.button_pluss{
+     font-size:40px; 
+     color:#30AD2A;  
+     cursor: pointer;
+   
+     
+     
+}       
+.button_pluss:hover{
+      color:#19FC69; 
+      
+}
+.button_pluss:active{
+      color:#B0FBAC; 
+      
+}
+.redo_lik{
+    background:#FBF7DB;
+    width:300px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}

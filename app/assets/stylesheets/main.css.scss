@@ -56,7 +56,7 @@ input:-moz-placeholder {
 
 
 .topbar{
-  position: fixed; background: #f7f7f7;
+  position: fixed; background: #f7f7f7 !important;
   height: 35px;
   z-index: 999;
   border-bottom: 1px solid #ccc;
