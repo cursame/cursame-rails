@@ -38,6 +38,7 @@
 	});
 	$("#close-chat-<%= channel.id%>").click(function () {
 		$("#chat-channel-<%= channel.id%>").remove();
+		console.log(PrivatePub.subscriptionObjects);
 		PrivatePub.unsubscribe("<=%channel.channel_name%>");
 		window.chatPanelsCount--;
 	});   
