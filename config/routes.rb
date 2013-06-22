@@ -54,7 +54,7 @@ Cursame30Lb::Application.routes.draw do
 
   #recursos necesarios para autentificaciones de servicios externos (by alfredot)
   resources :events
-  
+
   ########## calendar
 
   get "calendar/index"
@@ -152,7 +152,9 @@ Cursame30Lb::Application.routes.draw do
 
   #manejo de users
 
-  devise_for :users  do
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
+  as :user do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
 
@@ -228,7 +230,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
-  get "home/authentication", :to => "home#authentications_test",:as => :authentications 
+  get "home/authentication", :to => "home#authentications_test",:as => :authentications
 
   root :to => 'home#index'
 
@@ -301,7 +303,7 @@ Cursame30Lb::Application.routes.draw do
     end
 
 
-   ######## rutas para contents 
+   ######## rutas para contents
 
    resources :contents
 
