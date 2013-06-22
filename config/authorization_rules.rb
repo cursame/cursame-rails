@@ -26,6 +26,7 @@ authorization do
     has_permission_on [:assets], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:assigments], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:events], :to => [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:discussions], :to => [:users,:create,:destroy,:index,:show,:edit]
   end
 
 
