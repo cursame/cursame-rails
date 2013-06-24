@@ -14,13 +14,15 @@
 </div>
 
 <script>
+	var sizeOfWindow = 255;
 	window.chatPanelsCount = window.chatPanelsCount || 1;
 	if(!$('#chat').length){
 		$("#chat-channel-<%= channel.id%>").css('bottom','300px');
 	}else{
 		$("#chat-zone-<%= channel.id%>").hide();
 	}
-	$("#chat-channel-<%= channel.id%>").css('right', ((240 *  window.chatPanelsCount) + 22)+'px');
+	sizeOfWindow = (window.chatPanelsCount === 1)? 200 : 230;
+	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + 15)+'px');
 		
 	window.chatPanelsCount++;
 
