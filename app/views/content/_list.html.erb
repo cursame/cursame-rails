@@ -16,8 +16,32 @@
 <script>
     $("#<%=typeo%>_title").keyup(function () {
       var value = $(this).val();
-        $("#valu").attr("href", "/content/youtube?youtube_search="+value+'&typeo=<%=typeo%>');
-        $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" + value.split(" ").join("_")+'&typeo=<%=typeo%>');
+      
+      function limpiar(text){
+            var text = text.toLowerCase(); // a minusculas
+            text = text.replace(/[áàäâå]/, 'a');
+            text = text.replace(/[éèëê]/, 'e');
+            text = text.replace(/[íìïî]/, 'i');
+            text = text.replace(/[óòöô]/, 'o');
+            text = text.replace(/[úùüû]/, 'u');
+            text = text.replace(/[ýÿ]/, 'y');
+            text = text.replace(/[ñ]/, 'n');
+            text = text.replace(/[ç]/, 'c');
+          /*   text = text.replace(/[^a-zA-Z0-9-]/, ''); 
+            
+            text = text.replace(/['"]/, '');
+            text = text.replace(/\s+/, '-');
+            text = text.replace(/' '/, '-');
+            text = text.replace(/(_)$/, '');
+            text = text.replace(/^(_)/, '');*/
+            return text;
+         }
+        
+      var cleanvalue = limpiar(value)
+                  
+        $("#valu").attr("href", "/content/youtube?youtube_search="+cleanvalue.split(" ").join("+")+'&typeo=<%=typeo%>');
+        $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" +cleanvalue.split(" ").join("_")+'&typeo=<%=typeo%>');
+        
     }).keyup();
     
 </script>
