@@ -1,20 +1,24 @@
-<h1 style="font-size:20px;"><%= link_to "Actividades en #{@course.title}", course_path%></h1></br>
+<h1 style="font-size: 18px; margin-top: 18px;"><span style="color:#1a1a1a;font-weight: lighter;">Actividades realizadas en el curso: </span><%= link_to "#{@course.title}", course_path%></h1></br>
 <div class="activities_depot_select" id="select-pol">
     
    <!-- <input type="text" id="rtf">-->
-   <center>
+   <div class="membFilter">
    Filtro por miembros del curso
-    <select  id="rtf" value="">
+    <select id="rtf" value="" class="dropperDwn">
                 <option>Todas las actividades</option>
         <% @course.members_in_courses.each do |m|%>
                 <option><%= @user=User.find_by_id(m.user_id).name%></option>
         <%end%>
     </select>
-    </center>
+    </div>
     
 </div>
-    <h2 style="font-size:18px; float:left; height:20px; margin-right:250px;">Actividades realizadas</h2>
-    <h2 style="font-size:18px; height:20px; margin-bottom:30px;">Archivos entregados</h2>
+	
+	<div class="classContTitle">
+    	<h2 class="v1">Actividades realizadas</h2>
+    	<h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
+    </div>
+
     <div id="ajax-dump" style="margin-top:12px;float:left;">
        
     </div>
@@ -57,7 +61,7 @@
                 
                 dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
                 
-                $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+aux.asset.media+'"  width="10%;" style="float:left; margin-top:10px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+                $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+aux.asset.media+'"  width="10%;" style="float:left; margin-top:4px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
                 identifier = '#'+id;
                 assets = aux.assets;
                 casual="casual"+id;

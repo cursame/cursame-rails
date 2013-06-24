@@ -42,25 +42,114 @@
            
 }
 
+.shareAdd {
+	background: rgba(0,0,0,0.8);
+	height: 59px;
+	width: 100px;
+	margin-top: -152px!important;
+	display: block;
+	position: absolute;
+	margin-left: 52px;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+
+.tabCalss {
+	width: 591px;
+	background: #5F95BE;
+	color: #fff;
+	text-align: left;
+	height: 20px;
+	margin-left: -11px;
+	padding-top: 5px;
+	padding-left: 10px;
+	z-index: 2;
+	-webkit-border-top-left-radius: 3px; -moz-border-radius-topleft: 3px; border-top-left-radius: 3px;
+}
+.tabCalssClose {
+	background-color: #5F95BE;
+	float: right;
+	font-family: verdana;
+	font-size: 15px;
+	height: 23px;
+	margin-left: 560px;
+	margin-top: -20px;
+	padding-left: 11px;
+	padding-right: 11px;
+	cursor: pointer;
+	padding-top: 2px;
+}
+.tabCalssClose:hover {
+	background: #3B5998;
+}
+
+.youTName {
+	
+}
+
+.choser > a:link {
+width: 178px;
+float: left;
+margin-right: 5px;
+margin-bottom: 5px;
+padding: 0 5px;
+background: #F2F2F2;
+color: #555;
+overflow: hidden;
+display: block;
+height: 25px;
+line-height: 25px;
+}
+
+.choser > a:hover, .choser > a:active {
+	background: #5F95BE;
+	color: #fff;
+}
+
 #close_youtube_delivery{ margin-right: 30px; }
 
-
 .button_pluss{
-     font-size:40px; 
-     color:#30AD2A;  
-     cursor: pointer;
-   
-     
-     
-}       
+	font-size: 28px;
+	color: #FFF;
+	cursor: pointer;
+	background: #30AD2A;
+	width: 30px;
+	height: 35px;
+	text-align: center;
+	margin-top: -131px!important;
+	margin-left: 11px;
+}
 .button_pluss:hover{
-      color:#19FC69; 
-      
+	color:#fff;
+	background: #307BEC;
 }
 .button_pluss:active{
-      color:#B0FBAC; 
-      
+      color:#B0FBAC;       
 }
+.button_plus_selected, .button_plus_selected:hover {
+	color:#fff;
+	background: #ccc;
+	cursor: default;
+}
+
+.play_button_pluss {
+	font-size: 17px;
+	color: #FFF;
+	cursor: pointer;
+	background: #D63F31;
+	display: block;
+	width: 30px;
+	height: 27px;
+	text-align: center;
+	margin-top: -131px!important;
+	margin-left: 58px;
+	vertical-align: middle;
+	padding-top: 8px;
+}
+
+.play_button_pluss:hover {
+	background: #aa2619;	
+}
+
 .redo_lik{
     background:#FBF7DB;
     width:300px;
