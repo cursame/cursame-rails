@@ -79,6 +79,12 @@
 	cursor: pointer;
 }
 
+#users-and-groups-online div > a:active {
+	background: #307BEC;
+	color: #fff;
+	cursor: pointer;
+}
+
 .titleBraker {
 	width: 190px;
 	padding: 5px 10px;

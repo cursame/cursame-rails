@@ -87,7 +87,7 @@ class Comment < ActiveRecord::Base
       Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user_id }
 
-      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+      # Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["course"] || notification_kind["group"]
 
