@@ -4,7 +4,7 @@ class ContentController < ApplicationController
      @typeo = params[:typeo]
      puts parameters
      parameter = parameters.delete('<div id="value">','</div>')
-     @videos = client_youtube.videos_by(:query => parameter , :page => 1, :per_page => 50)
+     @videos = client_youtube.videos_by(:query => parameter , :page => 1, :per_page => 10)
      @video =  @videos.videos
        
        respond_to do |format|

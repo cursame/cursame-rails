@@ -15,21 +15,38 @@
                    <%#= debug vi.thumbnails %>
                </div>
            
-                <div id="l_tumbail_youtube<%= @complex_id %>" style="display:none; height:142px; width=10%;">
+             <!--   <div id="l_tumbail_youtube<%= @complex_id %>" style="display:none; height:142px; width=10%;">
                 	<div style="float:left;" id="kolik_youtube_btn<%= @complex_id %>"> <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></div></br>
-                <%= vi.embed_html_with_width(200).html_safe%>
-                 </div>
+                
+                 </div>-->
                  
                  <div class="shareAdd">
 	                 <div class="button_pluss" id="add_nested_delivery_content<%= @complex_id %>" style="margin-top:-190px; z-index:888px; position:absolute;">+</div>
-	                 <div class="play_button_pluss" style="margin-top:-190px; z-index:888px; position:absolute;"> ► </div>
+	                 <div class="play_button_pluss" id="nested_video<%=@complex_id%>" style="margin-top:-190px; z-index:888px; position:absolute;"> ► </div>
                  </div>
+                 <script>
+                    $('#nested_video<%=@complex_id%>').click(function(e) {
+            	          $('#fokj_video<%=@complex_id%>').lightbox_me({
+            	              centered: true, 
+            	              onLoad: function() { 
+            	                  $('#fokj_video<%=@complex_id%>').find('input:first').focus()
+            	                  }
+            	              });
+            	          e.preventDefault();
+            	      });
+                 </script>
+                <div id="fokj_video<%=@complex_id%>" class="video_box"  style="display:none">
+                    <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
+            	    <center>
+                     <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %> </br>
+                     <%= vi.embed_html_with_width(450).html_safe%>   
+                     </center>
+                </div>
+                
                  
              <SCRIPT LANGUAGE="JavaScript">
                   $('.tumbail_youtube<%= @complex_id %>').click(function() {
-                         $('.tumbail_youtube<%= @complex_id %>').html('');
                          $('#l_tumbail_youtube<%= @complex_id %>').show();
-                         $('#add_nested_delivery_content<%= @complex_id %>').css( { "margin-top" : "-135px"} );
                      });
              </SCRIPT>
        
