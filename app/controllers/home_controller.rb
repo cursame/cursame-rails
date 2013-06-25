@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!
@@ -128,7 +127,7 @@ class HomeController < ApplicationController
          format.js
        end
      end
-
+     
      def editing_n
        @notiv = current_user.notifications.where(:active => true)
        @notiv.each do |noti|
@@ -139,7 +138,7 @@ class HomeController < ApplicationController
          respond_to do |format|
             format.js
           end
-     end
+     end  
 
   # -----------------------------
   # chat behaviour of cursame
@@ -168,7 +167,7 @@ class HomeController < ApplicationController
        format.js
       end
     end
-
+    
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
       @channel_name = params[:channel_name]
@@ -190,7 +189,7 @@ class HomeController < ApplicationController
   def get_unique_channel_users(ids)
     ids = ids.sort
     channel_name = "/messages/users_channel_"+ (ids * "_")
-    return channel_name
+    return channel_name 
   end
 
   def find_or_insert_channel(channel_name,users)

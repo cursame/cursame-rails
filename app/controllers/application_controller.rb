@@ -222,7 +222,8 @@ class ApplicationController < ActionController::Base
   end
 
   def get_chat_title(channel)
-    type = channel.channel_name.split('/')
+
+    type = channel.channel_name ? channel.channel_name.split('/') : 'Chat'
     type = type[2].split('_')
 
     if type[0] == 'course'
