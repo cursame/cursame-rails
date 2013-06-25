@@ -225,7 +225,7 @@ class UsersController < ApplicationController
       # user.save!
       user.update_attributes(:tour_info => info)
       sign_in user, :bypass => true
-    
+
     end
     respond_to do |format|
        format.json
