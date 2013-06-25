@@ -51,7 +51,7 @@
               <%end%>
 
                 </div><!-- ends imgge -->
-                <h3><%= @members.email %></h3>
+                <h3><%= truncate(@members.email, :omission => "...", :length => 15) %></h3>
        
                 <%if @member.accepted != true%>
                 <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
