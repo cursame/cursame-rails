@@ -347,6 +347,7 @@ Cursame30Lb::Application.routes.draw do
   # chat behaviour of cursame
   # -----------------------------
   get "home/chat", :to => "home#chat", :as => :chat
+  get "home/load_more_messages/:id", :to => 'home#load_more_messages', :as => :load_more_messages
   get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
 
