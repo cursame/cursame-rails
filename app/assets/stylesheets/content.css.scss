@@ -85,9 +85,11 @@
 .youTName {
 	
 }
-
+.choser{
+    width:580px;
+}
 .choser > a:link {
-width: 178px;
+width: 230px;
 float: left;
 margin-right: 5px;
 margin-bottom: 5px;
@@ -115,7 +117,7 @@ line-height: 25px;
 	width: 30px;
 	height: 35px;
 	text-align: center;
-	margin-top: -131px!important;
+	margin-top: 10px!important;
 	margin-left: 11px;
 }
 .button_pluss:hover{
@@ -140,7 +142,7 @@ line-height: 25px;
 	width: 30px;
 	height: 27px;
 	text-align: center;
-	margin-top: -131px!important;
+	margin-top: 10px!important;
 	margin-left: 58px;
 	vertical-align: middle;
 	padding-top: 8px;
@@ -158,6 +160,18 @@ line-height: 25px;
     border-radius: 20px;
 }
 
+.cancel_link{
+   color:#EF1F14;float:left;background:#eee;font-size:20px;width:25px;height:25px;text-align:center;margin-left:-5px;
+
+   
+    & .cancel_link:hover{
+        background:#5F95BE;
+        color:#fff;
+            
+        
+     } 
+  
+}
 
 
 

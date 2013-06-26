@@ -6,33 +6,71 @@
                 <p><% @complex_id= value['pageid'] %></p>
                     <% url =  ("http://es.wikipedia.org/wiki/#{value['title']}").to_s%>
                     </br>
-                    <div style=" width:550px; height:180px; position:absolute;left:0px; top:5px;" > 
+                    <div style="margin-left:20px; width:550px; height:280px; position:absolute;left:0px; top:0px;" > 
                     </div>
                     
-                    <center>   <iframe  scrolling="no"src="<%=url%>#content" style="width:500px;height:240px; padding:10px;  overflow-x: hidden;"></iframe></br></br></center>
+                    <center>   <iframe  scrolling="no"src="<%=url%>#content" style="width:500px;height:240px; padding:10px;  overflow-x: hidden;margin-left:20px;"></iframe></br></br></center>
                     
-              <%= link_to "#{value['title']}", "http://es.wikipedia.org/wiki/#{value['title']}", target: "_blank"%> 
+              <%#= link_to "#{value['title']}", "http://es.wikipedia.org/wiki/#{value['title']}", target: "_blank"%> 
                      
               <% if @complex_id != nil %>
-               <div class="button_pluss" style="margin-top:-490px; position:absolute; z-index:888px;" id="add_nested_delivery_content<%= @complex_id %>">
+              <div  style="margin-top:-260px; position:absolute; z-index:888px;opacity:0.8; filter:alpha(opacity=80);">
+                <center>
+                 <div class="button_pluss" id="add_nested_delivery_content<%= @complex_id %>">
                    +
-               </div>
+                 </div>
+                 <div class="play_button_pluss" id="nested_content_wikipedia_<%=@complex_id%>" style="margin-left:10px;"> ► </div> 
+                  
+                </center>
+                <SCRIPT LANGUAGE="JavaScript">
+                
+                            $('#nested_content_wikipedia_<%=@complex_id%>').click(function(e) {
+                        	          $('#fokj_wiki_<%=@complex_id%>').lightbox_me({
+                        	              centered: true, 
+                        	              onLoad: function() { 
+                        	                  $('#fokj_wiki_<%=@complex_id%>').find('input:first').focus()
+                        	                  }
+                        	              });
+                        	          e.preventDefault();
+                        	      });
+                           
+                </SCRIPT>
+                
+                <div id="fokj_wiki_<%=@complex_id%>" class="content_f_box"  style="display:none; overflow:auto;">
+                        <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
+                  <center>
+                    <iframe src="<%=url%>#content" style="width:800px; height:340px; padding:10px; overflow-x: hidden;margin-left:20px;"></iframe>
+                  </center>
+                </div>
+             </div>
+               
+                
+                
                <%else%>
                Este artículo no puede ser agregado ya que no existe
                <%end%>
-                 
+                
                   <SCRIPT LANGUAGE="JavaScript">
                            
-                            
                            $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
 
                                 $('#content_killer<%= @typeo %>').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%=url%>">');
+                                   $('#choser<%= @typeo %>').append('<div id="resput_wikipedia<%=@complex_id%>"style="float:left;"><%= image_tag("wikipedia_mini.png") %></div>');
                                    $("#choser<%=@typeo%>").append("<a href='<%=url%>'><%=url%></a></br>");
+                                   $('#choser<%= @typeo %>').append('<a id="execute_wikipedia<%=@complex_id%>" class="cancel_link">x</a>');
+                                   
+                                     $('#execute_wikipedia<%=@complex_id%>').click(function() {
+
+                                         $('#execute_wikipedia<%=@complex_id%>').hide();
+                                         $('#resput_wikipedia<%=@complex_id%>').hide();
+                                         $('#executable_wikipedia<%=@complex_id%>').hide();
+                                         $('#delivery_contents_attributes_<%=@complex_id%>_content').remove();
+
+                                       });
 
                             });
                            
-
-
+                             
 
                      </SCRIPT>
             <% end %>
@@ -40,4 +78,3 @@
     <%end%>
 
 <%end%>
-  
