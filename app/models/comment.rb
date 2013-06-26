@@ -43,7 +43,7 @@ class Comment < ActiveRecord::Base
     soundcloud :width => "100%", :height => 250
     twitter :width => "100%", :height => 250
     vimeo :width => "100%", :height => 250
-    youtube_js_api :width => "100%", :height => 250
+    youtube :width => "100%", :height => 250
     slideshare_support :width => "100%"
     ustream_support :width => "100%"
     prezi_with_wmode :width => "100%", :height => 360

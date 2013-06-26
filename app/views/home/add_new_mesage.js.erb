@@ -3,10 +3,12 @@
   		$('#chat-messages').append('<%= escape_javascript(render(:partial => '/shared/chat/message_tpl', :locals => {:message => @message}))%>');
   	}
   	if($('#chat-channel-<%= @channel_id%>').length) {
-	  $('#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages').
+	  	$('#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages').
 	  	append('<%= escape_javascript(render(:partial => '/shared/chat/message_tpl', :locals => {:message => @message}))%>');
-	  $("#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages").animate({ scrollBottom: $("#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages").height() }, "fast");
-
-	  $('#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-footer form input[name="mesage"]').val('');
+		$("#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages").animate({ scrollBottom: $("#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-messages").height() }, "fast");
+		// reseteamos el formulario
+		$('#chat-channel-<%= @channel_id%> div.chat-zone div.chat-zone-footer form input[name="mesage"]').val('');
+		//scroleamos hacia abajo en el mensaje
+		$("#chat-zone-messages-channel<%= @channel_id%>").scrollTop($("#chat-zone-messages-channel<%= @channel_id%>")[0].scrollHeight);
 	}
 <% end %>

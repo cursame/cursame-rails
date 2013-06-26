@@ -5,7 +5,7 @@ if(!$('#chat-channel-<%= @channel.id%>').length) {
 	
 	$('body').append(
 	'<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
-		:locals => {:messages => @messages, :channel => @channel}))%>');
+		:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 }
 // si estamos en el path del chat
 if($('#chat').length){

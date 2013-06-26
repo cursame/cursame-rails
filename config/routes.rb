@@ -54,7 +54,7 @@ Cursame30Lb::Application.routes.draw do
 
   #recursos necesarios para autentificaciones de servicios externos (by alfredot)
   resources :events
-  
+
   ########## calendar
 
   get "calendar/index"
@@ -107,11 +107,15 @@ Cursame30Lb::Application.routes.draw do
     end
   end
 
+# Awaiting_confirmation
+  get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
+
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
+
 
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
@@ -152,7 +156,9 @@ Cursame30Lb::Application.routes.draw do
 
   #manejo de users
 
-  devise_for :users  do
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
+  as :user do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
 
@@ -228,7 +234,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
-  get "home/authentication", :to => "home#authentications_test",:as => :authentications 
+  get "home/authentication", :to => "home#authentications_test",:as => :authentications
 
   root :to => 'home#index'
 
@@ -301,7 +307,7 @@ Cursame30Lb::Application.routes.draw do
     end
 
 
-   ######## rutas para contents 
+   ######## rutas para contents
 
    resources :contents
 
@@ -347,6 +353,7 @@ Cursame30Lb::Application.routes.draw do
   # chat behaviour of cursame
   # -----------------------------
   get "home/chat", :to => "home#chat", :as => :chat
+  get "home/load_more_messages/:id", :to => 'home#load_more_messages', :as => :load_more_messages
   get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
 

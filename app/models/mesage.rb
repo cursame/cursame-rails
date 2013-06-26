@@ -15,7 +15,7 @@ class Mesage < ActiveRecord::Base
 	    soundcloud :width => 250, :height => 128
 	    twitter :width => 250, :height => 128
 	    vimeo :width => 250, :height => 128
-	    youtube_js_api :width => 250, :height => 128
+	    youtube :width => 250, :height => 128
 	    slideshare_support :width => 250
 	    ustream_support :width => 250
 	    prezi_with_wmode :width => 250, :height => 128
