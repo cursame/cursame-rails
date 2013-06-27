@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
@@ -45,7 +46,7 @@ class NetworksController < ApplicationController
     @search = params[:search]
     @id = params[:id]
     @page = params[:page].to_i
-    
+
     if current_user.roles.last.id == 1 || current_user.roles.last.id == 4
       @wall = current_network.walls.search(@search,@id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
     else
@@ -175,6 +176,8 @@ class NetworksController < ApplicationController
     }
     @network_users = @possible_friends + @friends + @inverse_friends
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
+    @network_users = @network_users.reject { |array| array[0].nil? }
+
   end
 
 end
