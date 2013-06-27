@@ -186,5 +186,4 @@ class NetworksController < ApplicationController
       @user_inactive = user
     end
   end
-
 end
