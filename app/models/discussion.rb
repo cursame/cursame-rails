@@ -48,7 +48,7 @@ class Discussion < ActiveRecord::Base
       course.members_in_courses.each do |member|
         if member.accepted == true then
           user = member.user
-          users += [users]
+          users += [user]
         end
       end
 
