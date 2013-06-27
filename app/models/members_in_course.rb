@@ -18,7 +18,7 @@ class MembersInCourse < ActiveRecord::Base
     mail.deliver
 =end
     if self.owner.nil? then
-      Notification.create(:user => self.user, :notificator => self.course, :kind => 'user_accepted_in_course')
+      Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
     end
   end
 
