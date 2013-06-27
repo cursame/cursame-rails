@@ -1,4 +1,7 @@
+$('.content_wikipedia').show();
+$('#box_for_loads<%=@typeo%>').show();
 $('#content_wikipedia<%=@typeo%>').html('');
 $('.content_free<%=@typeo%>').html('');
+$('.content_free<%=@typeo%>').hide( );
 $('#youtube_content_delivery<%=@typeo%>').show();
 $('#content_wikipedia<%=@typeo%>').prepend("<%= escape_javascript(render(:partial => '/content/wikipedia', :locals => {:video => [@video], :videos => [@videos], :typeo => [@typeo]}))%>");
