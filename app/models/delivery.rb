@@ -17,7 +17,7 @@ class Delivery < ActiveRecord::Base
   has_many :events, as: :schedule, :dependent => :destroy
   has_many :activities, as: :activitye#, :dependent => :destroy
   has_many :contents, :as => :contentye #, :dependent => :destroy
-  
+
   belongs_to :network
 
 
@@ -29,7 +29,7 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :contents
-  
+
 
   validates_presence_of :end_date
   validates_presence_of :publish_date
@@ -115,6 +115,8 @@ class Delivery < ActiveRecord::Base
         end
       end
     end
+
+    users = users.reject { |user| user.id == self.user_id}
 
     Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
 

@@ -18,10 +18,21 @@ class MembersInCourse < ActiveRecord::Base
     mail.deliver
 =end
     if self.owner.nil? then
-      Notification.create(:user => self.user, :notificator => self.course, :kind => 'user_accepted_in_course')
+      Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
     end
   end
 
+
+  before_destroy do
+    notifications = Notification.where(:notificator_id => self.course_id,:notificator_type => "Course",:kind => 'user_accepted_in_course')
+
+    notifications.each do
+      |notification|
+      if notification.users.include?(self.user) then
+        notification.destroy
+      end
+    end
+  end
 
   #
   #

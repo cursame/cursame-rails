@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
@@ -175,6 +176,7 @@ class NetworksController < ApplicationController
     }
     @network_users = @possible_friends + @friends + @inverse_friends
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
+    @network_users = @network_users.reject {|array| array[0].nil? }
   end
 
   def awaiting_confirmation
@@ -186,5 +188,4 @@ class NetworksController < ApplicationController
       @user_inactive = user
     end
   end
-
 end
