@@ -23,6 +23,17 @@ class MembersInCourse < ActiveRecord::Base
   end
 
 
+  before_destroy do
+    notifications = Notification.where(:notificator_id => self.course_id,:notificator_type => "Course",:kind => 'user_accepted_in_course')
+
+    notifications.each do
+      |notification|
+      if notification.users.include?(self.user) then
+        notification.destroy
+      end
+    end
+  end
+
   #
   #
   #
