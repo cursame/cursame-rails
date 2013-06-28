@@ -61,9 +61,9 @@
                   
                $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
                    
-                    $('#content_killer<%= @typeo %>').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');
+                    $('#content_killer<%= @typeo %>').append('<input id="<%= @typeo %>_contents_attributes_<%=@complex_id%>_content" name="<%= @typeo %>[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');
                 
-                    $('#choser<%= @typeo %>').append('<div id="resput_youtube<%=@complex_id%>"style="float:left;"><%= image_tag("youtube_mini.png") %></div>');
+                    $('#choser<%= @typeo %>').append('<div id="resput_youtube<%=@complex_id%>"style="float:left;"><%= image_tag("youtube-mini2.png") %></div>');
                     $("#choser<%= @typeo %>").append("<a id='executable_youtube<%=@complex_id%>'href='<%=vi.player_url%>'><%=vi.player_url%></a></br>");
                     $('#choser<%= @typeo %>').append('<a id="execute_youtube<%=@complex_id%>" class="cancel_link">x</a>');
                     
