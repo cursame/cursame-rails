@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :survey, :dependent => :destroy
   has_many :activities#, :dependent => :destroy
-
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy
   has_many :walls, :through => :userpublicationings
