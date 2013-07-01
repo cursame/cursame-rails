@@ -1,6 +1,10 @@
-<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="v596nmx3i8q8hhm"></script>
-<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-multiselect="true" data-link-type="preview"/>
 <% @typeo = typeo %>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="v596nmx3i8q8hhm"></script>
+<div id="clasic-mount<%= @typeo %>">
+<!--no podemos poner un id dinamico dentro del ind del db-chosser-->
+
+<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-multiselect="true" data-link-type="preview"/>
+
 <script type="text/javascript">
 
     var eliminarDropbox = function(demagogo){
@@ -8,7 +12,7 @@
                $("#execute_dropbox"+demagogo).hide();
                $("#resput_dropbox"+demagogo).hide();
                $("#executable_dropbox"+demagogo).hide();
-               $("#delivery_contents_attributes_"+demagogo+"_content").remove();
+               $("#<%= @typeo %>_contents_attributes_"+demagogo+"_content").remove();
 
           });
     };
@@ -43,5 +47,7 @@
             
         }, false);
 </script>
+</div>
+
 
 

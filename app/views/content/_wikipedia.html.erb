@@ -3,7 +3,7 @@
     <% acces_wiky.each do |first| %>
         <% unless first['pages'].nil? %>
             <% first['pages'].each do |key,value| %>
-                <p><% @complex_id= value['pageid'] %></p>
+                <p><% @complex_id= (value['pageid']).to_i + (numeric_random).to_i %></p>
                     <% url =  ("http://es.wikipedia.org/wiki/#{value['title']}").to_s%>
                     </br>
                     <div style="margin-left:20px; width:550px; height:280px; position:absolute;left:0px; top:0px;" > 
@@ -64,7 +64,7 @@
                                          $('#execute_wikipedia<%=@complex_id%>').hide();
                                          $('#resput_wikipedia<%=@complex_id%>').hide();
                                          $('#executable_wikipedia<%=@complex_id%>').hide();
-                                         $('#delivery_contents_attributes_<%=@complex_id%>_content').remove();
+                                         $('#<%= @typeo %>_contents_attributes_<%=@complex_id%>_content').remove();
 
                                        });
 
