@@ -16,16 +16,19 @@
 
          </div>
      </div>
+     <% 1.times do
+               contents = @discussion.contents.build
+      end%>
      <!--este render trae el header de contenidos-->    
-     <%#= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'discussion'}%>
+     <%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'discussion', :acces_to => @discussion, :contents => "contents"}%>
      
     <%= f.text_field :title, :placeholder=>'Titulo de la Discusión', :required =>'required', :minlength=>"2" %>
     <%= f.text_area :description , :placeholder=>'Descripción', :required =>'required', :rows => 4, :cols => 76 %>  
     
-    <!--
-    <div style="float:right;margin-right:400px;width:100px; height:50px; position:relative; margin-top:5px;">
-             <%#= render partial: 'content/list', :locals => {:typeo => 'discussion'} %>
-    </div>-->
+    
+    <div style="float:right;margin-right:620px;width:50px; height:30px; position:relative; margin-top:-110px;">
+             <%= render partial: 'content/list', :locals => {:typeo => 'discussion'} %>
+    </div>
     
     <div class="submit-area"></div>
    
