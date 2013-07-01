@@ -45,13 +45,9 @@ class AssetsController < ApplicationController
     @formId = params[:form_id]
     puts '-------------------------------------'
     puts @formId
+    @asset.save!
     respond_to do |format|
-      if @asset.save!
-        format.js{ head :no_content }
-        format.html
-      else
-        format.html { render root_path}
-      end
+      format.js
     end
   end
 

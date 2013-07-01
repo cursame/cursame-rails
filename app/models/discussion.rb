@@ -2,13 +2,15 @@ class Discussion < ActiveRecord::Base
    has_many :discussions_coursess, :dependent => :destroy
    has_many :courses, :through => :discussions_coursess
    has_many :activities, as: :activitye#, :dependent => :destroy
-
+   has_many :contents, :as => :contentye #, :dependent => :destroy
+   
    belongs_to :network
    belongs_to :user
 
   validate :max_courses
 
-
+   accepts_nested_attributes_for :contents
+   
   #comentarios para las discusiones
   acts_as_commentable
   #para los likes
@@ -27,7 +29,7 @@ class Discussion < ActiveRecord::Base
     soundcloud :width => "100%", :height => 250
     twitter :width => "100%", :height => 250
     vimeo :width => "100%", :height => 250
-    youtube_js_api :width => "100%", :height => 250
+    youtube :width => "100%", :height => 250
     slideshare_support :width => "100%"
     ustream_support :width => "100%"
     prezi_with_wmode :width => "100%", :height => 360
@@ -44,33 +46,23 @@ class Discussion < ActiveRecord::Base
       Wall.create( :publication => self, :network => self.network, :public => true)
     else
       users = []
+      users_notifications = []
       course = self.courses.first
       course.members_in_courses.each do |member|
         if member.accepted == true then
           user = member.user
+          if user.id != self.user_id then
+            users_notifications.push(user)
+          end
           users += [user]
         end
       end
 
       Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
-      self.delay.create_notifications
-    end
 
-  end
-
-  def create_notifications
-    course = self.courses.first
-    course.members_in_courses.each do |member|
-      if member.accepted == true  then
-        user = member.user
-        if user.id != self.user_id then
-          Notification.create(:user => user, :notificator => self, :kind => 'new_discussion_on_course')
-        end
-      end
+      Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
     end
   end
-
-  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
   after_destroy do
     walls = Wall.where(:publication_type => "Discussion", :publication_id => id)
@@ -79,9 +71,11 @@ class Discussion < ActiveRecord::Base
       wall.destroy
     end
 
-    wrap_notification = WrapNotification.new("Discussion",self.id)
-    wrap_notification.delay.destroy_notifications
+    notifications = Notification.where(:notificator_type => "Discussion", :notificator_id => self.id)
 
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
   def state

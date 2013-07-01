@@ -105,21 +105,21 @@ $(function() {
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
 			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">Hace 3 horas</span>',
+			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
 			case 'new_survey_on_course':
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
 			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">Hace 3 horas</span>',
+			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
 			case 'user_comment_on_discussion':
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
 			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">Hace 3 horas</span>',
+			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
 			case 'user_comment_on_comment':
@@ -133,11 +133,39 @@ $(function() {
 			notification = ['<li class="unread" onclick="me(type,id)">',
 			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
 			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">Hace 3 horas</span>',
+			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
 			break;
 		}
 		$('#notifications_list').prepend(notification.join(''));
+	});
+	
+	// notificaciones para el chat
+	PrivatePub.subscribe ("/messages/notifications_user_"+Cursame.userId, function(data, channel){
+
+		var url,notification,numNotifications
+			channelType = data.channel.channel_name.split('course_channel_');		
+			url= channelType[1] ? '/home/open_channel/'+channelType[1]+'?course=true':'/home/open_channel/'+data.sender.id;		
+
+		notification = ['<li class="unread">',
+			'<a href="'+url+'" data-remote="true">Conversar</a></br>',
+			'<img src="'+data.sender.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
+			'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
+			'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
+			'</li>'];
+		//si ya existe la conversacion no se crea la notificación
+		if($('#chat-channel-'+data.channel.id).length) {
+			var panel = $("#chat-channel-"+data.channel.id);
+	    	var chatZonePosition = $(panel).css('bottom');
+	    	if(chatZonePosition.replace('px','') < 200){
+	    		$("#chat-channel-"+data.channel.id+ " span").append('*');
+	    	}
+		}
+		else{
+			numNotifications = $('#messages-notifications-count span').html()*1
+			$('#messages-notifications-count span').html(numNotifications+1);
+			$('#messages-notifications-list').prepend(notification.join(''));
+		}		
 	});
 });
 

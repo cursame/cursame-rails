@@ -1,0 +1,113 @@
+
+<ul>
+
+<% @video.each do |vi|%>
+
+<li style="display: inline; position: relative; float: left; width: 200px; height: 142px; list-style-type: none; margin-right: 2px;">
+
+        <div class="video" id="videoSlider">
+              <% @id = vi.published_at %>
+              <% @complex_id =  @id.strftime("%m""%d""%Y")%>
+             
+               <div  class="tumbail_youtube<%= @complex_id %>" >
+                   <div style="float:left;" class="youTName" id="kolik2_youtube_btn<%= @complex_id %>" ><%= link_to truncate("#{vi.title}", :omission => "...", :length => 25), "#{vi.player_url}", :target => '_blank' %>       </div></br>
+                   <%= image_tag("#{vi.thumbnails[1].url}")%>
+                   <%#= debug vi.thumbnails %>
+               </div>
+           
+             <!--   <div id="l_tumbail_youtube<%= @complex_id %>" style="display:none; height:142px; width=10%;">
+                	<div style="float:left;" id="kolik_youtube_btn<%= @complex_id %>"> <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %></div></br>
+                
+                 </div>-->
+                 
+                 <div class="shareAdd">
+	                 <div class="button_pluss" id="add_nested_delivery_content<%= @complex_id %>" style=" z-index:888px; position:absolute;">+</div>
+	                 <div class="play_button_pluss" id="nested_video<%=@complex_id%>" style=" z-index:888px; position:absolute;"> ► </div>
+                 </div>
+                 <script>
+                    $('#nested_video<%=@complex_id%>').click(function(e) {
+            	          $('#fokj_video<%=@complex_id%>').lightbox_me({
+            	              centered: true, 
+            	              onLoad: function() { 
+            	                  $('#fokj_video<%=@complex_id%>').find('input:first').focus()
+            	                  }
+            	              });
+            	          e.preventDefault();
+            	      });
+                 </script>
+                <div id="fokj_video<%=@complex_id%>" class="content_f_box"  style="display:none">
+                    <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
+            	    <center>
+                     <%= link_to truncate("#{vi.title}", :omission => "...", :length => 15), "#{vi.player_url}", :target => '_blank' %> </br>
+                     <%= vi.embed_html_with_width(450).html_safe%>   
+                     </center>
+                </div>
+                
+                 
+             <SCRIPT LANGUAGE="JavaScript">
+                  $('.tumbail_youtube<%= @complex_id %>').click(function() {
+                         $('#l_tumbail_youtube<%= @complex_id %>').show();
+                     });
+             </SCRIPT>
+       
+      
+                 
+       </div>
+                   
+</li>
+
+         
+         <SCRIPT LANGUAGE="JavaScript">
+                  
+               $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
+                   
+                    $('#content_killer<%= @typeo %>').append('<input id="<%= @typeo %>_contents_attributes_<%=@complex_id%>_content" name="<%= @typeo %>[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');
+                
+                    $('#choser<%= @typeo %>').append('<div id="resput_youtube<%=@complex_id%>"style="float:left;"><%= image_tag("youtube-mini2.png") %></div>');
+                    $("#choser<%= @typeo %>").append("<a id='executable_youtube<%=@complex_id%>'href='<%=vi.player_url%>'><%=vi.player_url%></a></br>");
+                    $('#choser<%= @typeo %>').append('<a id="execute_youtube<%=@complex_id%>" class="cancel_link">x</a>');
+                    
+                            $('#execute_youtube<%=@complex_id%>').click(function() {
+                              
+                              $('#execute_youtube<%=@complex_id%>').hide();
+                              $('#resput_youtube<%=@complex_id%>').hide();
+                              $('#executable_youtube<%=@complex_id%>').hide();
+                              $('#delivery_contents_attributes_<%=@complex_id%>_content').remove();
+                              
+                            });
+                    
+                });
+          
+          </SCRIPT>       
+<%end%>
+
+</ul>
+
+<script>
+$(function(){
+  
+    var $bl    = $(".youtube_content_delivery"),
+        $th    = $("#content_free"),
+        blW    = $bl.outerWidth(),
+        blSW   = $bl[0].scrollWidth,
+        wDiff  = (blSW/blW)-1,  // widths difference ratio
+        mPadd  = 500,  // Mousemove Padding
+        damp   = 20,  // Mousemove response softness
+        mX     = 0,   // Real mouse position
+        mX2    = 0,   // Modified mouse position
+        posX   = 330,
+        mmAA   = blW+(mPadd+10), // The mousemove available area
+        mmAAr  = (blW/mmAA);    // get available mousemove fidderence ratio
+
+	$bl.mousemove(function(e) {
+        mX = e.pageX - this.offsetLeft;
+        mX2 = Math.min( Math.max(0, mX-mPadd), mmAA ) * mmAAr;
+	});
+
+	setInterval(function(){
+		posX += (mX2 - posX) / damp; // zeno's paradox equation "catching delay"	
+		$th.css({marginLeft: -posX*wDiff });
+	}, 10);
+
+});
+</script>

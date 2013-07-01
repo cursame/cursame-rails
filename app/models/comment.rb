@@ -43,7 +43,7 @@ class Comment < ActiveRecord::Base
     soundcloud :width => "100%", :height => 250
     twitter :width => "100%", :height => 250
     vimeo :width => "100%", :height => 250
-    youtube_js_api :width => "100%", :height => 250
+    youtube :width => "100%", :height => 250
     slideshare_support :width => "100%"
     ustream_support :width => "100%"
     prezi_with_wmode :width => "100%", :height => 360
@@ -71,9 +71,10 @@ class Comment < ActiveRecord::Base
       wall.destroy
     end
 
-    wrap_notification = WrapNotification.new("Comment", self.id)
-    wrap_notification.delay.destroy_notifications
-
+    notifications = Notification.where(:notificator_type => "Comment", :notificator_id => self.id)
+    notifications.each do |notification|
+      notification.destroy
+    end
   end
 
   after_create do
@@ -85,7 +86,8 @@ class Comment < ActiveRecord::Base
     if notification_kind["network"]
       Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user_id }
-      self.delay.create_notifications(users,notification_kind)
+
+      # Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["course"] || notification_kind["group"]
 
@@ -94,33 +96,32 @@ class Comment < ActiveRecord::Base
       wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
 
       users = users.reject{ |user| user.id == self.user_id }
-      self.delay.create_notifications(users,notification_kind)
+      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["discussion"]
 
       users = users.reject { |user| user.id == self.user.id }
-      self.delay.create_notifications(users,notification_kind)
+
+      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
 
       users = users.reject { |user| user.id == self.user.id }
-      self.delay.create_notifications(users,notification_kind)
+
+      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+
     elsif notification_kind["on_user"]
 
       Wall.create(:publication => self, :network => self.network, :users => users, :public => false)
-      self.delay.create_notifications(users,notification_kind)
+
+      users = users.reject { |user| user.id == self.user.id }
+      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+
       return
     else
     end
   end
-
-  def create_notifications(users, kind)
-    users.each do |user|
-      Notification.create(:user => user, :notificator => self, :kind => kind)
-    end
-  end
-
-  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{ Time.zone.now}
 
 
   def group_of_users(comment_type)

@@ -4,7 +4,7 @@
            
        </div>
    </div>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 76, :placeholder=>'Comentario'  %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 76, :placeholder=>'Comentario', :required =>'required'  %>
     <%= hidden_field_tag 'commentable_id', commentable_id %>
     <%= hidden_field_tag 'commentable_type', commentable_type %>
     <div class="submit-area"></div>

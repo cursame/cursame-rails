@@ -10,6 +10,7 @@ class Authentication < ActiveRecord::Base
          authentication.name = auth["info"]["name"]
          #### for google
          authentication.client_secret = auth["client_secret"]
+         #### for dropbox
          
        end
      end

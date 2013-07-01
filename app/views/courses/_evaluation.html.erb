@@ -1,16 +1,17 @@
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
+<div style="overflow:auto!important;height:500px;">
   <%if @member.nil?%>
     <h3>No eres parte del grupo!</h3>
   <%elsif !@member.accepted%>
     <h3>No has sido aceptado en el grupo!</h3>
   <%elsif @member.owner%>
 
-  <div id="configurationing">
+  <div id="configurationing" style="overflow:auto;">
 	  	<h1 style="margin-left:10px; padding:2px;">Calificaciones del curso</h1>
 	  	<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
    </div>
 
-   <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;width:784px!important;">
+   <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;width:784px!important;overflow:auto!important;">
 		     <!--para poder hacer el render partial-->
    <%  @course = Course.find(params[:id])%>
    <%  @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id) %>
@@ -154,3 +155,4 @@
 		    
 		    </div><!-- ends fixform -->
 		    <%end%>
+</div>

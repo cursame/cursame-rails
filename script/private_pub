@@ -1,0 +1,32 @@
+#! /bin/bash
+
+DAEMON=../private_pub.ru
+DESC=private_pub
+
+export RAILS_ENV=production
+
+test -x $DAEMON || exit -1
+
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+	bundle exec rackup $DAEMON -s thin -D -E production && echo "Ok" || echo "Error"
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+	ps axu | grep private_pub | head -1 | awk '{ print $2 }' | xargs kill -9 && echo "Ok"
+        ;;
+  restart)
+	echo -n "Stopping $DESC: "
+        ps axu | grep private_pub | head -1 | awk '{ print $2 }' | xargs kill -9 && echo "Ok"
+	echo -n "Starting $DESC: "
+        bundle exec rackup $DAEMON -s thin -D -E production && echo "Ok" || echo "Error"
+        ;;
+  *)
+        echo "Usage: $DESC {start|stop|restart}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
+

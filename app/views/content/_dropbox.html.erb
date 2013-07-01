@@ -1,0 +1,47 @@
+<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="v596nmx3i8q8hhm"></script>
+<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-multiselect="true" data-link-type="preview"/>
+<% @typeo = typeo %>
+<script type="text/javascript">
+
+    var eliminarDropbox = function(demagogo){
+          $("#execute_dropbox"+demagogo).click(function() {
+               $("#execute_dropbox"+demagogo).hide();
+               $("#resput_dropbox"+demagogo).hide();
+               $("#executable_dropbox"+demagogo).hide();
+               $("#delivery_contents_attributes_"+demagogo+"_content").remove();
+
+          });
+    };
+
+    document.getElementById("db-chooser").addEventListener("DbxChooserSuccess",
+        function(e) {
+            var files = e.files
+            for(var i=0; i<files.length; i++) {
+                
+                   var random = Math.floor(Math.random()*113);
+                   var size = files[i].bytes;
+                   var demagogo = size+random;
+
+         
+                  $link = $('<a/>', {
+                      'href': files[i].link,
+                      'text': files[i].link,
+                       'id' : 'executable_dropbox'+demagogo,
+                      'target': "blank_"
+                  }).append("<br/>");
+                 
+                  $('#box_for_loads<%=@typeo%>').show();
+                  $('#choser<%= @typeo %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>');
+                  $("#choser<%= @typeo %>").append($link);
+                  $('#choser<%= @typeo %>').append('<a id="execute_dropbox'+demagogo+'" class="cancel_link">'+"x"+'</a>');
+                  
+                  $('#content_killer<%= @typeo %>').append('<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
+
+                eliminarDropbox(demagogo);
+                  
+              }
+            
+        }, false);
+</script>
+
+

@@ -37,7 +37,7 @@ class Network < ActiveRecord::Base
           :courses => :members_in_courses
     },
     :conditions => ["(walls.network_id = ?) AND
-       (userpublicationings.user_id = ? AND walls.public = ?) OR
+       (userpublicationings.user_id = ? OR walls.public = ?) OR
       (members_in_courses.accepted = ? AND members_in_courses.user_id = ? AND walls.publication_type != 'Comment') ",network_id,user_id,true,true, user_id]).order('walls.created_at DESC')
       # :conditions => ["(walls.network_id = ?) AND
       #                 ((walls.public = ? AND walls.publication_type != 'Comment') OR (userpublicationings.user_id = ? AND walls.publication_type != 'Comment')) OR

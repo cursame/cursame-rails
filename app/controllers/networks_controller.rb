@@ -3,9 +3,9 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   # before_filter :filter_user_network_wed
-  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create]
+  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create, :awaiting_confirmation]
   before_filter :filter_user_network_wed
-  skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create]
+  skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create, :awaiting_confirmation]
   def index
     @networks = Network.all
     def network_each
@@ -176,8 +176,17 @@ class NetworksController < ApplicationController
     }
     @network_users = @possible_friends + @friends + @inverse_friends
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
-    @network_users = @network_users.reject { |array| array[0].nil? }
 
+    @network_users = @network_users.reject {|array| array[0].nil? }
   end
 
+  def awaiting_confirmation
+    personal_url = params[:personal_url]
+    user = User.find_by_personal_url(personal_url)
+    if (user.nil?) then
+      redirect_to root_path
+    else
+      @user_inactive = user
+    end
+  end
 end
