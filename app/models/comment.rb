@@ -115,6 +115,7 @@ class Comment < ActiveRecord::Base
 
       Wall.create(:publication => self, :network => self.network, :users => users, :public => false)
 
+      users = users.reject { |user| user.id == self.user.id }
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
 
       return

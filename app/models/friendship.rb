@@ -3,6 +3,15 @@ class Friendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, :class_name => 'User'
 
+  before_destroy do
+    notifications = Notification.where(:notificator_id => self.id, :notificator_type => "Friendship")
+
+    notifications.each do
+      |notification|
+      notification.destroy
+    end
+  end
+
   after_create do
     Notification.create(:notificator => self, :users => [self.friend], :kind => "user_request_friendship",:active => true)
   end

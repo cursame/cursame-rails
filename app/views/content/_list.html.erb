@@ -1,17 +1,19 @@
 <div class="var_delivery">
  <div class="pkl">
     <center>
-    <a id="valu" href="" data-remote="true"></a>
+    <a  id="valu"class="valu<%=typeo%>" href="" data-remote="true"></a>
     <!-- <a id="valv" href="" data-remote="true"><%#= image_tag('vimeo.png')%></a>-->
-    <a href="" id="valw" data-remote="true"></a>
+    <a href="" id="valw"class="valw<%=typeo%>" data-remote="true"></a>
     <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler', :typeo => "typeo")%>
-    <div id="vald"><%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%></div>
+    <div id="vald<%=typeo%>"><%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%></div>
     </center>
  </div>  
 
 </div>
- 
-<div class="notice-file">El límite de peso por archivo es de 8Mb</div>
+ <%if typeo == 'delivery'%>
+    <div class="notice-file">El límite de peso por archivo es de 8Mb</div>
+   <%else%>
+ <%end%>
 <script>
     $("#<%=typeo%>_title").keyup(function () {
       var value = $(this).val();
@@ -38,8 +40,8 @@
         
       var cleanvalue = limpiar(value)
                   
-        $("#valu").attr("href", "/content/youtube?youtube_search="+cleanvalue.split(" ").join("+")+'&typeo=<%=typeo%>');
-        $("#valw").attr("href", "/content/wikipedia?search_wikipedia=" +cleanvalue.split(" ").join("_")+'&typeo=<%=typeo%>');
+        $(".valu<%=typeo%>").attr("href", "/content/youtube?youtube_search="+cleanvalue.split(" ").join("+")+'&typeo=<%=typeo%>');
+        $(".valw<%=typeo%>").attr("href", "/content/wikipedia?search_wikipedia=" +cleanvalue.split(" ").join("_")+'&typeo=<%=typeo%>');
         
     }).keyup();
     

@@ -75,6 +75,7 @@ class Survey < ActiveRecord::Base
       end
     end
 
+    users = users.reject { |user| user.id == self.user_id }
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
   end
 
