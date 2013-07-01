@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
