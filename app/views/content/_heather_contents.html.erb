@@ -12,13 +12,8 @@
       <div id="content_wikipedia<%=typeo%>" style="position: relative;" class="content_wikipedia">
 
       </div>
-      
-      
-   
+         
   </div>
-    <% 1.times do
-              contents = @delivery.contents.build
-     end%>
     <div id="box_for_loads<%=typeo%>"style="width:580px;position:relative;display:block;display:none">
     <%= f.fields_for :contents do |conty| %>
                 <div id="content_killer<%=typeo%>" class="content_killer"></div>
