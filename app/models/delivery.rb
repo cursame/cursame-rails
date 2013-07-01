@@ -1,10 +1,11 @@
 class Delivery < ActiveRecord::Base
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
  :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses, :areas_of_evaluations,
- :areas_of_evaluation
+ :areas_of_evaluation,:contents, :contents_attributes
 
   scope :active_inactive
   scope :courses
+  scope :contents
   has_many :deliveries_courses, :dependent => :destroy
   has_many :courses, :through => :deliveries_courses
   has_many :areas_of_evaluation, :dependent => :destroy
@@ -15,6 +16,8 @@ class Delivery < ActiveRecord::Base
   has_many :assets, :through => :delivery_assets
   has_many :events, as: :schedule, :dependent => :destroy
   has_many :activities, as: :activitye#, :dependent => :destroy
+  has_many :contents, :as => :contentye #, :dependent => :destroy
+
   belongs_to :network
 
 
@@ -25,6 +28,8 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :areas_of_evaluations
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
+  accepts_nested_attributes_for :contents
+
 
   validates_presence_of :end_date
   validates_presence_of :publish_date
@@ -48,7 +53,7 @@ class Delivery < ActiveRecord::Base
     soundcloud :width => "100%", :height => 250
     twitter :width => "100%", :height => 250
     vimeo :width => "100%", :height => 250
-    youtube_js_api :width => "100%", :height => 250
+    youtube :width => "100%", :height => 250
     slideshare_support :width => "100%"
     ustream_support :width => "100%"
     prezi_with_wmode :width => "100%", :height => 360
@@ -76,9 +81,12 @@ class Delivery < ActiveRecord::Base
     walls.each do |wall|
       wall.destroy
     end
-    wrap_notification = WrapNotification.new("Delivery",self.id)
 
-    wrap_notification.delay.destroy_notifications
+    notifications = Notification.where(:notificator_type => "Delivery", :notificator_id => self.id)
+
+    notifications.each do |notification|
+      notification.destroy
+    end
 
   end
 
@@ -95,25 +103,24 @@ class Delivery < ActiveRecord::Base
 
     Wall.create(:users => users, :publication => self, :network => self.network, :courses => self.courses)
 
-    self.delay.create_notifications
-  end
+    users = []
 
-  def create_notifications
-    #Aqui se crean las notificaciones y los posts del wall :)
     self.courses.each do |course|
       course.members_in_courses.each do |member|
         user = member.user
-        if user.id != self.user_id
-          Notification.create(:user => user, :notificator => self, :kind => 'new_delivery_on_course')
-          #se envia mail a cada uno de los miembros de curso
+        if user.id != self.user_id then
+          users.push(user)
           mail = Notifier.new_delivery_notification(member,self)
           mail.deliver
         end
       end
     end
-  end
 
-  handle_asynchronously :create_notifications, :priority => 20, :run_at => Proc.new{ Time.zone.now}
+    users = users.reject { |user| user.id == self.user_id}
+
+    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+
+  end
 
   after_update do
 

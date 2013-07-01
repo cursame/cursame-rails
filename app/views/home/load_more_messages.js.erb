@@ -1,0 +1,4 @@
+
+$('#load-more-messages-<%= @channel.id%>').html('<%= escape_javascript(render(:partial => '/shared/chat/load_more_messages', :locals => {:channel => @channel, :page => @page}))%>');
+
+$('#chat-zone-messages-channel<%= @channel.id%>').prepend('<%= escape_javascript(render(:partial => '/shared/chat/messages', :locals => {:messages => @messages}))%>');

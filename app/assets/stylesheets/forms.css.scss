@@ -1497,3 +1497,17 @@
   };
 
 }
+
+textarea.error, input.error {
+	border: 1px solid red!important; outline: none;
+ }
+ 
+label.error {
+	display: none!important;
+	color: red;
+	position: absolute;
+	display: block;
+	margin-top: -24px;
+	margin-left: 7px;
+	font-size: 10px;
+}

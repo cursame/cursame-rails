@@ -1,0 +1,51 @@
+<div id="chat-channel-<%= channel.id%>" class="chat-panel">	
+	<span>
+		<%= get_chat_title channel %>
+		<div style="float:right" id="close-chat-<%= channel.id%>" class="closeChat"><img src="assets/icons/close_chat.png" style="margin-top: 4px; margin-left: 2px;"></div>		
+	</span>
+	<div class="load-more-messages" id="load-more-messages-<%= channel.id%>">
+			<%=render(:partial => '/shared/chat/load_more_messages', :locals => {:channel => channel, :page => page + 1})%>
+	</div>	
+	<div id="chat-zone-<%= channel.id%>" class="chat-zone">		
+		<div class="chat-zone-messages" id="chat-zone-messages-channel<%= channel.id%>">
+			<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>
+		</div>		
+		<div class="chat-zone-footer">
+		<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+		</div>
+	</div>
+</div>
+
+<script>
+	var sizeOfWindow = 255;
+	window.chatPanelsCount = window.chatPanelsCount || 1;
+	if(!$('#chat').length){
+		$("#chat-channel-<%= channel.id%>").css('bottom','310px');
+	}else{
+		$("#chat-zone-<%= channel.id%>").hide();
+	}
+	sizeOfWindow = (window.chatPanelsCount === 1)? 200 : 230;
+	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + 15)+'px');
+		
+	window.chatPanelsCount++;
+
+	$("#chat-channel-<%= channel.id%> span").click(function () {
+		var panel = $("#chat-channel-<%= channel.id%>");
+	   	var chatZonePosition = $(panel).css('bottom');
+
+	 	if(chatZonePosition.replace('px','') < 200){
+    		$(panel).css('bottom','310px');
+    	}
+    	else{
+    		$(panel).css('bottom','1px');
+    	}
+    	$("#chat-zone-<%= channel.id%>").toggle();	    	
+	});
+	$("#close-chat-<%= channel.id%>").click(function () {
+		$("#chat-channel-<%= channel.id%>").remove();
+		console.log('canales subscritos');
+		console.log(PrivatePub.subscriptionObjects);
+		PrivatePub.unsubscribe("<=%channel.channel_name%>");
+		window.chatPanelsCount--;
+	});   
+</script>

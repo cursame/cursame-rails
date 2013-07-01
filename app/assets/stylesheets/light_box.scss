@@ -215,3 +215,12 @@ font-size: 20px;
              border-radius: 100px;
     }
 }
+
+    /*para los videos*/
+
+.content_f_box{
+    -webkit-border-bottom-right-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-bottomleft: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding:30px; background-color:#020109; max-width:900px; max-height:390; min-width:470px; min-height:200px; z-index: 99;
+    opacity:0.9;
+    filter:alpha(opacity=90); /* For IE8 and earlier */
+    
+} 

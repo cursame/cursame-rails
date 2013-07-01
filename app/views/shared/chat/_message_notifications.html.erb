@@ -1,0 +1,59 @@
+<% if current_user%>
+	<div class="chat-icon" id="messages-notifications-count">
+	    <span id="" >0</span>
+	</div>
+
+	<!-- notification -->
+	<div id="box-messages-notifications" style="display:none;">
+		<div id="" class="comment-text" >
+			<div class="arrow-top"></div>
+			<div class="header">
+				<b>Mensajes</b>  
+			</div>
+			<div class="content">
+				<ul id="messages-notifications-list">
+					
+				</ul>
+			</div>
+
+			<div class="footer">
+				<b>Ver todas</b>
+			</div>
+		</div>
+	</div>
+
+	<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
+
+	<div id="users-and-groups-for-chat">
+       <div id = "toggle-chat">+ Chat (<%= @courses_online.count + @friends_online.count %>)</div>
+       <div id="users-and-groups-online" style="display:none">       	
+		<span class="titleBraker">Cursos</span>
+		<% @courses_online.each do |course|%>
+		    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
+		<%end%>
+		<span class="titleBrakerSecondary">Amigos conectados</span>
+		<% @friends_online.each do |user|%>
+		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
+		<%end%>
+       </div>
+	</div>
+
+	<script>
+	    $("#messages-notifications-count").click(function () {
+	    	$("#box-messages-notifications").toggle();
+	    });
+	    //mostrar online
+	    $("#toggle-chat").click(function () {
+	    	var usersOnlinePanelPosition = $('#users-and-groups-for-chat').css('bottom');
+
+	    	if(usersOnlinePanelPosition.replace('px','') < 200){
+	    		$('#users-and-groups-for-chat').css('bottom','300px');
+	    	}
+	    	else{
+	    		$('#users-and-groups-for-chat').css('bottom','1px');
+	    	}
+	    	$("#users-and-groups-online").toggle();	    	
+	    });
+
+	</script>
+<%end%>

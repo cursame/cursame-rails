@@ -1,5 +1,7 @@
 Cursame30Lb::Application.routes.draw do
 
+  resources :usernotificationings
+
   resources :members_in_groups
   resources :groups
 
@@ -50,15 +52,18 @@ Cursame30Lb::Application.routes.draw do
 
   resources :authentications
 
-  #recursos necesarios para el calendario
+  #recursos necesarios para autentificaciones de servicios externos (by alfredot)
   resources :events
+
+  ########## calendar
 
   get "calendar/index"
   get "calendar/test_calendar"
 
-  match "/auth/:provider/callback" => "authentications#create"
-
-
+  ######### dropbox
+  get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
+  ######## create
+  match "/auth/:provider/callback" => "authentications#create", :as => :providers
   #recursos naturales de la aplicación
 
 
@@ -102,11 +107,15 @@ Cursame30Lb::Application.routes.draw do
     end
   end
 
+# Awaiting_confirmation
+  get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
+
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
+
 
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
@@ -133,6 +142,7 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
   match "courses/:id/_evaluation", :to => "courses#evaluation", :as => :course_evaluation
+  match "courses/:id/activities_depot", :to => "courses#activities_depot", :as => :course_activities_depot
   #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   get    "deliveries/assigment", :to => "deliveries#assigment",:as => :assigment
 
@@ -146,7 +156,9 @@ Cursame30Lb::Application.routes.draw do
 
   #manejo de users
 
-  devise_for :users  do
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
+  as :user do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
 
@@ -222,6 +234,7 @@ Cursame30Lb::Application.routes.draw do
   get "home/index"
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
+  get "home/authentication", :to => "home#authentications_test",:as => :authentications
 
   root :to => 'home#index'
 
@@ -293,6 +306,38 @@ Cursame30Lb::Application.routes.draw do
         resources :activities
     end
 
+
+   ######## rutas para contents
+
+   resources :contents
+
+     resources :surveys do
+       resources :contents
+     end
+
+     resources :deliveries do
+       resources :contents
+     end
+
+     resources :assignments do
+        resources :contents
+     end
+
+     resources :comments do
+        resources :contents
+     end
+
+     resources :discussions do
+         resources :contents
+     end
+
+     resources :courses do
+         resources :contents
+     end
+
+      resources :user_surveys do
+          resources :contents
+      end
    ####### rutas para like en web
 
    get "/upvote/:id", :to => 'home#upvote', :as => :upvote
@@ -303,6 +348,14 @@ Cursame30Lb::Application.routes.draw do
    ####### actualizacion de noticicacion
 
    get "home/editing_n", :to => "home#editing_n", :as => :not_edit
+
+  # -----------------------------
+  # chat behaviour of cursame
+  # -----------------------------
+  get "home/chat", :to => "home#chat", :as => :chat
+  get "home/load_more_messages/:id", :to => 'home#load_more_messages', :as => :load_more_messages
+  get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
+  match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
 
    ####### rutas de estandarizacion de eventos
 
@@ -316,6 +369,17 @@ Cursame30Lb::Application.routes.draw do
 
    match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
    match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
+
+   ######## contenido
+    get "content/youtube", :as => :c_youtube
+
+    get "content/vimeo"
+
+    get "content/wikipedia", :as => :c_wikipedia
+
+    get "content/orkut"
+
+    get "content/khanacademy"
 
    # api para la mobile
    #this is for api for the mobile app

@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :token_authenticatable, :lockable, :timeoutable, :confirmable
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :trackable, :validatable,
+  :token_authenticatable, :lockable, :timeoutable,
+  :confirmable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -44,6 +45,9 @@ class User < ActiveRecord::Base
   has_many :userpublicationings, :dependent => :destroy
   has_many :walls, :through => :userpublicationings
 
+  #channels for chat
+  has_many :audiences, :dependent => :destroy
+  has_many :channels, :through => :audiences
 
   has_one :settings_teacher, :dependent => :destroy
 
@@ -69,7 +73,8 @@ class User < ActiveRecord::Base
   acts_as_commentable
 
   #notificaciones usuarios
-  has_many :notifications, :dependent => :destroy
+  has_many :usernotificationings, :dependent => :destroy
+  has_many :notifications, :through => :usernotificationings
 
 
   #avatar
@@ -434,9 +439,4 @@ class User < ActiveRecord::Base
     end
     return average/size
   end
-
-  #def send_confirmation_instructions
-   # puts "ACA PASO"
-    # do nothing
-  #end
 end
