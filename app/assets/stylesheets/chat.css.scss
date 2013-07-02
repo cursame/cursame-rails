@@ -178,7 +178,11 @@
     overflow: auto;
 }
 .load-more-messages{
-	float:right;
-	width:100%;
+	width:250px;
+	margin-left:-10px;
 	background: #F2F4F8;
+	text-align:center;
+	font-weight:bolt;
+	color:#CCC;
+	cursor:pointer;
 }
