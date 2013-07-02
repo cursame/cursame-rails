@@ -3,10 +3,11 @@ class CorrectNotifications < ActiveRecord::Migration
 
     c = Time.now
     puts "Inicio del script " + "#{Time.now.to_s}" + ": "
+
     registers = Notification.all.map{ |x| [x.notificator_type,x.notificator_id,x.kind]}
     registers.uniq!
 
-    puts "Numero de registros: = " + {registers.size}
+    puts "Numero de registros: = " + "#{registers.size}"
 
     a = Time.now
     puts "Inicio de obtener los usuarios por registro: " + "#{a.to_s}"
