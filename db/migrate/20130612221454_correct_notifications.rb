@@ -35,8 +35,15 @@ class CorrectNotifications < ActiveRecord::Migration
 
     a = Time.now
     puts "Inicio del crear la notificaciones: " + "#{ a.to_s}"
+
+    i = 1
     registers.each do |register|
+      m = Time.now
+      puts "Registro #" + i.to_s + " creandose (tiempo inicio " + m.to_s + "):"
       Notification.create(:users => register[3], :notificator_type => register[0], :notificator_id => register[1], :kind => register[2])
+      o = Time.now
+      i = i + 1
+      puts "Tiempo total que tomo: " + o.to_s
     end
 
     b = Time.now
