@@ -234,6 +234,7 @@ class CoursesController < ApplicationController
 
   def assigment
     @assignment = Assignment.new(params[:assignment])
+   # @content = Content.new(params[:content])
     @assignment.user_id = current_user.id
     @assignment.save!
 
