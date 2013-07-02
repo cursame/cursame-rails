@@ -17,7 +17,7 @@
 </div>
 
 <script>
-	var sizeOfWindow = 255;
+	var sizeOfWindow = 255, separacion;
 	window.chatPanelsCount = window.chatPanelsCount || 1;
 
 	if(!$('#chat').length){
@@ -25,11 +25,12 @@
 	}else{
 		$("#chat-zone-<%= channel.id%>").hide();
 	}
-	sizeOfWindow = (window.chatPanelsCount === 1)? 200 : 230;
-	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + 15)+'px');
+	sizeOfWindow =  255;
+	separacion = - 40;
+
+	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + separacion)+'px');
 		
 	window.chatPanelsCount++;
-
 	$("#chat-channel-<%= channel.id%> span").click(function () {
 		var panel = $("#chat-channel-<%= channel.id%>");
 	   	var chatZonePosition = $(panel).css('bottom');
