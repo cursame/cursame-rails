@@ -37,6 +37,7 @@
     margin-left: 5px;
     display: block;
     margin-right: 20px;
+    -webkit-backface-visibility: hidden;
 }
 
 .chat-panel > span {

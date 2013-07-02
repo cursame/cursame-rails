@@ -19,6 +19,7 @@
 <script>
 	var sizeOfWindow = 255;
 	window.chatPanelsCount = window.chatPanelsCount || 1;
+	
 	if(!$('#chat').length){
 		$("#chat-channel-<%= channel.id%>").css('bottom','310px');
 	}else{
@@ -41,6 +42,8 @@
     	}
     	$("#chat-zone-<%= channel.id%>").toggle();	    	
 	});
+
+	// cerramos el chat
 	$("#close-chat-<%= channel.id%>").click(function () {
 		$("#chat-channel-<%= channel.id%>").remove();
 		console.log('canales subscritos');
