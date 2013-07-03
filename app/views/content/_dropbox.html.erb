@@ -3,7 +3,9 @@
 <div id="clasic-mount<%= @typeo %>">
 <!--no podemos poner un id dinamico dentro del ind del db-chosser-->
 
-<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-multiselect="true" data-link-type="preview"/>
+<!--<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-multiselect="true" data-link-type="preview"/>-->
+
+<input class="dropbox-chooser" id="<%=@typeo%>DP"></input>
 
 <script type="text/javascript">
 
@@ -16,10 +18,43 @@
 
           });
     };
+    //console.log('<%=@typeo%>')
+    // document.getElementById("db-chooser").addEventListener("DbxChooserSuccess",
+    //     function(e) {
+    //         var files = e.files
+    //         for(var i=0; i<files.length; i++) {
+                
+    //                var random = Math.floor(Math.random()*113);
+    //                var size = files[i].bytes;
+    //                var demagogo = size+random;
 
-    document.getElementById("db-chooser").addEventListener("DbxChooserSuccess",
-        function(e) {
-            var files = e.files
+         
+    //               $link = $('<a/>', {
+    //                   'href': files[i].link,
+    //                   'text': files[i].link,
+    //                    'id' : 'executable_dropbox'+demagogo,
+    //                   'target': "blank_"
+    //               }).append("<br/>");
+                 
+    //               $('#box_for_loads<%=@typeo%>').show();
+    //               $('#choser<%= @typeo %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>');
+    //               $("#choser<%= @typeo %>").append($link);
+    //               $('#choser<%= @typeo %>').append('<a id="execute_dropbox'+demagogo+'" class="cancel_link">'+"x"+'</a>');
+                  
+    //               $('#content_killer<%= @typeo %>').append('<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
+
+    //             eliminarDropbox(demagogo);
+                  
+    //           }
+            
+    //     }, false);
+    //     
+    $("#<%=@typeo%>DP").click(function (argument) {
+      options = {
+        linkType: "preview",
+        multiselect: true,
+        success: function(files) {
+            var files = files;
             for(var i=0; i<files.length; i++) {
                 
                    var random = Math.floor(Math.random()*113);
@@ -33,19 +68,25 @@
                        'id' : 'executable_dropbox'+demagogo,
                       'target': "blank_"
                   }).append("<br/>");
-                 
+                  
                   $('#box_for_loads<%=@typeo%>').show();
                   $('#choser<%= @typeo %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>');
                   $("#choser<%= @typeo %>").append($link);
                   $('#choser<%= @typeo %>').append('<a id="execute_dropbox'+demagogo+'" class="cancel_link">'+"x"+'</a>');
-                  
                   $('#content_killer<%= @typeo %>').append('<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
 
                 eliminarDropbox(demagogo);
-                  
-              }
-            
-        }, false);
+                
+                
+          }
+          return false;
+        },
+        
+        cancel:  function() {}
+      };
+      //mandamos a llamar a dropbox
+      Dropbox.choose(options);
+    });
 </script>
 </div>
 
