@@ -12,12 +12,16 @@
      <%end%>
      	 
 	     <% assignment.assets.each do |aa|%>
-         <% @file =  aa.file %>
-         <% @string =  @file.to_s.split('/').last%>
-        <%= link_to simple_format("#{(@string)}", :omission => "...", :length => 25), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank'%>
-        
-        
-     <%end%>
+             <% @file =  aa.file %>
+             <% @string =  @file.to_s.split('/').last%>
+             <%= link_to simple_format("#{(@string)}", :omission => "...", :length => 25), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank'%>   
+         <%end%>
+         
+          <% assignment.contents.each do |as|%>
+              <% @f_file =  as.content_html %>
+              <%= @f_file %>
+          <%end%>
+         
       <span class="usermenuTitle">Criterios de calificación</span>
         <%= form_for assignment, remote: true   do |assigments_l |%>
             <% if assignment.response_to_the_evaluations.count != 0%>
