@@ -83,7 +83,7 @@
 
 	    <div class="deliveries_list">
 	    	
-	        <% course.deliveries.each do |delivery|%>
+	        <% course.deliveries.reverse.each do |delivery|%>
 
 	            <div id="titleDevSing" class="title_from_delivery_<%=delivery.id%>">
 	                <% @delivery_id = delivery.id %>
@@ -114,7 +114,7 @@
 	<!--termina deliveries-->
 	<!--comienza surveys -->
 	<% current_user.courses.each do |course|%>     
-	<% if  course.surveys.count != 0 %>
+	<% if  course.surveys.reverse.count != 0 %>
 	       <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
 	            <a id="close_x" class="close close_l" href="#"><center>x</center></a>
 	            <% course.surveys.each do |survey|%>
