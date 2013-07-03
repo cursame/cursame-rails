@@ -186,3 +186,31 @@
 	color:#CCC;
 	cursor:pointer;
 }
+
+#go-to-chats-url{
+    bottom: 0px;
+    right: 275px;
+    position: fixed;
+    padding: 4px 10px;
+    color: #fff;
+    width: 100px;
+    height:20px;
+    background: #5F95BE;
+    margin-left: 5px;
+    display: block;
+    margin-right: 20px;
+    -webkit-backface-visibility: hidden;
+}
+
+#go-to-chats-url > span {
+	width: 100px;
+	display: block;
+	margin-left: -9px;
+	padding: 6px 8px 6px 9px;
+	margin-top: -3px;
+	cursor: pointer;
+}
+#go-to-chats-url > span a{
+	cursor: pointer !important;
+	color:#FFF;
+}
