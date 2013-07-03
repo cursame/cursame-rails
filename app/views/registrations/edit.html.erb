@@ -1,4 +1,21 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "default-form user-edit-form"}) do |f| %>
+
+<script>
+function readURL(input,id) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			$('#'+id)
+			.attr('src', e.target.result)
+			.width(50)
+			.height(45);
+		};
+
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
 <div id="edituserdmenu">
     <h3>Editar Usuario</h3>
     <div class="box-avatar">
@@ -6,8 +23,8 @@
       <div class="box-image">
       	<table border="0" cellpadding="0" cellspacing="0">
 	      	<tr>
-	      	<td><%= image_tag(current_user.avatar.profile, :class => "avatar-mini avatar")%></td>
-	      	<td><%= f.file_field :avatar, :class=> 'stylize' %></td>
+	      	<td><img id="img_prev_user" src="<%= current_user.avatar.profile || current_user.image_avatarx %>" class = "avatar-mini avatar" /></td>
+	      	<td><%= f.file_field :avatar, :class=> 'stylize', :onchange => "readURL(this,'img_prev_user');" %></td>
 	      	</tr>
 	      	<tr>
 	      	<td></td>
@@ -25,8 +42,8 @@
       <div class="box-image">
       	<table border="0" cellpadding="0" cellspacing="0">
       		<tr>
-      		<td><%= image_tag(current_user.coverphoto, :class => "avatar-mini cover")%></td>
-      		<td><%= f.file_field :coverphoto, :class=> 'stylize' %></td>
+      		<td><img id="img_prev_cover" src="<%= current_user.coverphoto || current_user.image_avatarx %>" class = "avatar-mini cover"/></td>
+      		<td><%= f.file_field :coverphoto, :class=> 'stylize',:onchange => "readURL(this,'img_prev_cover');" %></td>
       		</tr>
       		<tr>
       		<td></td>
