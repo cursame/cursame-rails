@@ -288,6 +288,7 @@ class CoursesController < ApplicationController
       surveyss = []
       assets_assignmentss =[]
       assets_deliveries =[]
+      contents_assignmentss =[]
       
       count_deliveries =  @course.deliveries.count
       count_surveys =  @course.surveys.count
@@ -343,6 +344,13 @@ class CoursesController < ApplicationController
                                      })
            end
            
+           as.contents.each do |ca|
+             @name = ca.content.to_s.split('/').last
+             contents_assignmentss.push( {file: ca.content,
+                                         name:   @name
+                                      })
+           end
+           
            if as.user.avatar.blank?
              @avatar_assignment = "/assets/#{as.user.image_avatarx}"
            else
@@ -367,7 +375,8 @@ class CoursesController < ApplicationController
                       title: as.title,
                       description: as.brief_description, 
                     }, 
-                    assets: assets_assignmentss       
+                    assets: assets_assignmentss + contents_assignmentss  
+                        
                     
                 }
             
