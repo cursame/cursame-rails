@@ -6,10 +6,13 @@ class Assignment < ActiveRecord::Base
   has_many :assets, :through => :assignment_assets
   has_many :response_to_the_evaluations, :dependent => :destroy
   has_many :activities, as: :activitye, :dependent => :destroy
+  has_many :contents, :as => :contentye, :dependent => :destroy
+  
 
 
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :response_to_the_evaluations
+  accepts_nested_attributes_for :contents
 
   #autoconversion de links, links inteligentes
   auto_html_for :brief_description do

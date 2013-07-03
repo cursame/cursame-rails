@@ -2,13 +2,15 @@ class Discussion < ActiveRecord::Base
    has_many :discussions_coursess, :dependent => :destroy
    has_many :courses, :through => :discussions_coursess
    has_many :activities, as: :activitye#, :dependent => :destroy
-
+   has_many :contents, :as => :contentye #, :dependent => :destroy
+   
    belongs_to :network
    belongs_to :user
 
   validate :max_courses
 
-
+   accepts_nested_attributes_for :contents
+   
   #comentarios para las discusiones
   acts_as_commentable
   #para los likes

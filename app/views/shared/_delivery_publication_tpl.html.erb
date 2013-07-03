@@ -11,59 +11,11 @@
 <div class="description">
   <p style="margin:15px;">  <%= delivery.description_html %> </p>
 </div>
-<div class="asset-box upload-label">
-     <% delivery.contents.each do |content|%>
-      <a id="content<%=content.id%>"> <%= content.content %></a></br>
-      <% @html_content = "#{content.content_html}".split("\n")%>
-      <% @ht_lnon =  @html_content[0].html_safe if  (@html_content[0] != nil)%>
-      
-      <SCRIPT LANGUAGE="JavaScript">
-         
-                     $('#content<%=content.id%>').click(function(e) {
-                 	          $('#content_html<%=content.id%>').lightbox_me({
-                 	              centered: true, 
-                 	              onLoad: function() { 
-                 	                  $('#fcontent_html<%=content.id%>').find('input:first').focus()
-                 	                  }
-                 	                  
-                 	              });
-                 	          e.preventDefault();
-                 	          
-                 	          var aaaa;
-           	                   aaaa="<%= content.content %>";
-                                  //aaaa="http://somesite.se/blah/sese";
-                                  var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/);
-
-                                  switch(matches[1]){
-                                      case 'es.wikipedia.org':
-                                       $("#refert<%=content.id%>").html('<iframe src="<%=content.content%>#content" style="width:800px; height:340px; padding:10px; overflow-x: hidden;margin-left:20px;"></iframe>');
-                                      break;
-
-                                      case 'dropbox.com': 
-                                       var str = '<div style="margin-top:70px; font-size:35px;"><%=  @ht_lnon %></div>';
-                                      
-                                        $("#refert<%=content.id%>").html(str);
-                                        
-                                      break;
 
 
-                                      case 'youtube.com':
-                                      var str = '<%=  @ht_lnon %>';
-                                         $("#refert<%=content.id%>").html(str);
-                                      break;
+<!--este script sirve para incertar los contenidos por typo en cada uno de los genericos-->
+<%= render :partial => "content/insertions_to_contents", :locals => { :type => delivery, :cl => "delivery"}%>
 
-                                  }
-                 	      });
-                    
-     </SCRIPT>
-      <div id="content_html<%=content.id%>" class="content_f_box"  style="display:none">
-             <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
-     	    <center>
-     	        <div id="refert<%=content.id%>"></div>
-            </center>
-      </div>
-     <%end%>
-</div>
 <% if delivery.assets.count > 0 %>
 <div class="extra-label">Archivos:</div>
 <div class="asset-box upload-label">

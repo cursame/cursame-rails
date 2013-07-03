@@ -3,7 +3,7 @@
     <% acces_wiky.each do |first| %>
         <% unless first['pages'].nil? %>
             <% first['pages'].each do |key,value| %>
-                <p><% @complex_id= value['pageid'] %></p>
+                <p><% @complex_id= (value['pageid']).to_i + (numeric_random).to_i %></p>
                     <% url =  ("http://es.wikipedia.org/wiki/#{value['title']}").to_s%>
                     </br>
                     <div style="margin-left:20px; width:550px; height:280px; position:absolute;left:0px; top:0px;" > 
@@ -54,9 +54,9 @@
                            
                            $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
 
-                                $('#content_killer<%= @typeo %>').append('<input id="delivery_contents_attributes_<%=@complex_id%>_content" name="delivery[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%=url%>">');
-                                   $('#choser<%= @typeo %>').append('<div id="resput_wikipedia<%=@complex_id%>"style="float:left;"><%= image_tag("wikipedia_mini.png") %></div>');
-                                   $("#choser<%=@typeo%>").append("<a href='<%=url%>'><%=url%></a></br>");
+                                $('#content_killer<%= @typeo %>').append('<input id="<%= @typeo %>_contents_attributes_<%=@complex_id%>_content" name="<%= @typeo %>[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%=url%>">');
+                                   $('#choser<%= @typeo %>').append('<div id="resput_wikipedia<%=@complex_id%>"style="float:left;"><%= image_tag("wikipedia-mini2.png") %></div>');
+                                   $("#choser<%=@typeo%>").append("<a id='executable_wikipedia<%=@complex_id%>' href='<%=url%>'><%=url%></a></br>");
                                    $('#choser<%= @typeo %>').append('<a id="execute_wikipedia<%=@complex_id%>" class="cancel_link">x</a>');
                                    
                                      $('#execute_wikipedia<%=@complex_id%>').click(function() {
@@ -64,7 +64,7 @@
                                          $('#execute_wikipedia<%=@complex_id%>').hide();
                                          $('#resput_wikipedia<%=@complex_id%>').hide();
                                          $('#executable_wikipedia<%=@complex_id%>').hide();
-                                         $('#delivery_contents_attributes_<%=@complex_id%>_content').remove();
+                                         $('#<%= @typeo %>_contents_attributes_<%=@complex_id%>_content').remove();
 
                                        });
 

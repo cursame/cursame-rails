@@ -39,6 +39,8 @@
 	margin-top: -41px!important;
 	width: 30px!important;
 	height: 30px!important;
-	position: absolute!important;
+	position: relative!important;
+	float:left;
+	border:none;
 }
 .dropbox-chooser:hover { 	background: url('/assets/dropBox_hover.png') no-repeat !important; }
