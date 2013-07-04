@@ -5,7 +5,11 @@
   <div id="notice" class="notice"></div>
  </div>
  <% permitted_to? :create, :courses do %>
- <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
+ 
+        <% if @member.owner == true %>
+         <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
+ 
+        <%end%>
  <% end %>
       <div class="banner-shadow">
         <div id="box-titles">
