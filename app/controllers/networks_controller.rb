@@ -151,6 +151,7 @@ class NetworksController < ApplicationController
   def network_comunity
     user = current_user
     network = current_network
+    # current_network_users = current_network.users
     @possible_friends = user.possible_friends(network)
     # All users in the current_network without friend request
     @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
