@@ -63,6 +63,9 @@
     margin-bottom:10px;
     background:#fff;
     padding:5px;
+    min-height: 200px;
+    max-height: 1000px;
+    overflow:auto;
     
     
     & h1{
