@@ -4,8 +4,9 @@
  <div id="noticce">
   <div id="notice" class="notice"></div>
  </div>
+ <% permitted_to? :create, :courses do %>
  <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
-
+ <% end %>
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
@@ -229,8 +230,9 @@
                 <%end%>
                 <%end%>
             <%end%>
-            <% if current_role == 'admin' || 'superadmin'%>
-            <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
+             <% if current_role == 'admin'%>
+            
+                <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
 
               <%else%>
              <% if @member.owner == true %>
