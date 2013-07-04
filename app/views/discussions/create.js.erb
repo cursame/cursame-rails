@@ -3,6 +3,14 @@ $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/public
 $('#timeline').effect("highlight", {}, 1000);
 $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
 $('#notice').append('Se ha creado una notificación');
+
+   /* elimina los contenidos*/
+          $(".content_free").html('');
+          $(".content_wikipedia").html('');
+          $(".content_killer").html('');
+          $(".choser").html('');
+          $('.youtube_content_delivery').hide();
+   
 setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });

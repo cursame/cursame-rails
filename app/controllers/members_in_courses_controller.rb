@@ -44,7 +44,7 @@ class MembersInCoursesController < ApplicationController
     @course = @members_in_course.course_id
     @course_find = Course.find(@course)
     respond_to do |format|
-      if @members_in_course.save
+      if @members_in_course.save!
        format.js
        format.json
       else

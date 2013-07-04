@@ -9,8 +9,6 @@
 <% @network_users.each do |array| %>
      <%# @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
      <%# @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
-    
-    <% if !array[0].nil? %>
      <div class="box_comunity">
          <div class="image_acces_comunity">
              <%= link_to image_tag(array[0].avatar.profile), "users/#{(array[0].personal_url)}" if ( !array[0].avatar.blank?)%>
@@ -18,6 +16,8 @@
          </div><!-- ends image_access -->
 
      <div class="place-hldr">
+    
+    &nbsp;<%= array[0].email %>
 
      <div class="name">
        <%= array[0].name %>
@@ -41,6 +41,4 @@
       </div><!-- ends place-hldr -->
 
     </div><!-- ends box_comunity -->
-
-    <% end %>
 <% end %>

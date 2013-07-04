@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :refresh_token_for_google
   helper_method :random
+  helper_method :numeric_random
   helper_method :call_rake
 
   #helpers para contenido

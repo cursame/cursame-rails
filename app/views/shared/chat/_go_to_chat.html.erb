@@ -1,0 +1,32 @@
+<div  id ="go-to-chats-url">	
+	<span>
+		<%= link_to 'Ver mas ...', chat_path%>
+		<div style="float:right" id="close-chat-go-to-chats-url" class="closeChat"><img src="assets/icons/close_chat.png" style="margin-top: 4px; margin-left: 2px;"></div>	
+
+	</span>
+</div>
+<script>
+	var sizeOfWindow = 255, separacion;
+	window.chatPanelsCount = window.chatPanelsCount || 1;
+
+	if(!$('#chat').length){
+		$("#chat-channel-<%= channel.id%>").css('bottom','312px');
+	}else{
+		$("#chat-zone-<%= channel.id%>").hide();
+	}
+	sizeOfWindow =  255;
+	separacion = - 40;
+
+	$("#go-to-chats-url").css('right', ((sizeOfWindow *  window.chatPanelsCount) + separacion)+'px');
+		
+	window.chatPanelsCount++;
+	// $("#go-to-chats-url span").click(function () {
+	// 	alert('change url');	    	
+	// });
+
+	// cerramos el chat
+	$("#close-chat-go-to-chats-url").click(function () {
+		$("#chat-channel-<%= channel.id%>").remove();
+		window.chatPanelsCount--;
+	});   
+</script>

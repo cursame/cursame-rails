@@ -16,14 +16,28 @@
 
          </div>
      </div>
+     <% 1.times do
+               contents = @discussion.contents.build
+      end%>
+     <!--este render trae el header de contenidos-->    
+     <%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'discussion', :acces_to => @discussion, :contents => "contents"}%>
+     
     <%= f.text_field :title, :placeholder=>'Titulo de la Discusión', :required =>'required', :minlength=>"2" %>
-    <%= f.text_area :description , :placeholder=>'Descripción', :required =>'required', :rows => 4, :cols => 76 %>
-
+    <%= f.text_area :description , :placeholder=>'Descripción', :required =>'required', :rows => 4, :cols => 76 %>  
+    
+    
+    <div style="float:right;margin-right:590px;width:50px; height:30px; position:relative; margin-top:-110px;">
+             <%= render partial: 'content/list', :locals => {:typeo => 'discussion'} %>
+    </div>
+    
     <div class="submit-area"></div>
+   
     <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
     <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Pública', :defaultClass => 'public-dd' } %>
-    <a class="help discussion_help" id="help_discussion"><%= image_tag('help.png')%></a>
+    <a class="help discussion_help" id="help_discussion" ><%= image_tag('help.png')%></a>
+    
+    
        <script>
                 $('#help_discussion').click(function() {
                     $('#discussion_help').toggle('blind', 400);

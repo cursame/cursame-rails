@@ -61,7 +61,7 @@
                <div class="slider-cointainer" style="width:440px; overflow:hidden; float: left; height: 400px;">
                   <div class="content_delivery" id="content_delivery_first">
                   
-                   <% @course.deliveries.each do |delivery|%>
+                   <% @course.deliveries.reverse.each do |delivery|%>
                   
                             <div class="delivery_f">
                                     <div class="delivery_container" onclick="OpenStatus()">
@@ -87,7 +87,7 @@
                        </script>
                         
                        <div class="so_open"id="so_open<%=delivery.id%>" style="display:none">
-                           <% delivery.assignments.each do |assignment|%>
+                           <% delivery.assignments.reverse.each do |assignment|%>
                            <div class="assignment">
                              <div class="title"> <%= assignment.title %></div>
                               <div class="name"> <%= assignment.user.name %><div class="image"><%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>
@@ -101,7 +101,7 @@
                   
                  <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #eee; width: 440px; display: block;">
                  
-                 <% @course.surveys.each do |survey|%>
+                 <% @course.surveys.reverse.each do |survey|%>
                  <div class="survey_fTwo " id="survey_f<%=survey.id%>">
                      
                      <div class="delivery_f">

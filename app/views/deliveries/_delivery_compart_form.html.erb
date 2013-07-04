@@ -11,8 +11,11 @@
 
          </div>
      </div>
+     <% 1.times do
+               contents = @delivery.contents.build
+      end%>
 <!--este render trae el header de contenidos-->    
-<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery'}%>
+<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery', :acces_to => @delivery, :contents => "contents"}%>
      
 
         <%= f.hidden_field :network_id, :value => current_network.id %>
