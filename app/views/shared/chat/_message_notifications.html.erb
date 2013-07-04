@@ -33,7 +33,7 @@
 		<%end%>
 		<span class="titleBrakerSecondary">Amigos conectados</span>
 		<% @friends_online.each do |user|%>
-		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
+		    <div><%= link_to user.name || user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>
        </div>
 	</div>
