@@ -233,7 +233,7 @@ class ApplicationController < ActionController::Base
     else
       chat_title = ''
       channel.users.reject{ |user| user.id == current_user.id }.first(3).each_with_index do |u, index|
-        chat_title += u.email + ' '
+        chat_title += u.name + ' '
       end
       return chat_title
     end
