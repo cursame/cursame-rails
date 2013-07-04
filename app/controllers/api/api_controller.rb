@@ -12,7 +12,7 @@ class Api::ApiController < ApplicationController
         @publications = @course.walls.where("publication_type != ?", 'Course')
         @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        @publications = @network.publications(@user.id, @network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        @publications = @network.publications(@user.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
       @publications.each do |publication|
         type = publication.publication_type
