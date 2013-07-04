@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <div class="super-admin-header">Manejador de datos de usuario
 </div>
 <%= form_tag superadmnin_users_path, :method => 'get' do %>
@@ -7,19 +8,19 @@
   </p>
 <% end %>
 <div>
- <% @users.each do |user|%>
+ <% @users[0..0].each do |user|%>
           <div class="gray_box">
             <div class="user_name">
                 <%= image_tag(user.avatar.modern) if ( !user.avatar.blank?)%>
                 <%= image_tag(user.image_avatarxxx) if ( user.avatar.blank?)%>
-          
+
                 <%= user.name %>
             </div>
          <div class=" link ">
             <a id="activities_d<%= user.id %>" >Mostrar actividades</a>|
             <a id="user_edit<%= user.id%>">Editar usuario</a>|
             <a id="statics<%= user.id%>">Estadísticas</a>
-        </div>     
+        </div>
           </div>
             <script>
               $('#activities_d<%= user.id %>').click(function() {
@@ -32,13 +33,13 @@
                     // Animation complete.
                   });
                 });
-                
+
                 $('#user_edit<%= user.id %>').click(function() {
                   $('.container_user_edit<%=user.id%>').toggle('slow', function() {
                     // Animation complete.
                   });
                 });
-            </script>          
+            </script>
           <div  class="container_activity<%=user.id%>  container_activity"style="display: none">
               <h3>Manejador de actividades</h3>
           <div class="plastic_t">
@@ -49,7 +50,7 @@
             <%end%>
          </div>
          </div>
-         
+
          <div class="container_statics<%=user.id%> container_activity" style="display: none">
      <div class="lop_container">
          <div class="joko_orange"> Tareas:   <%= user.activities.where(:activitye_type => "Delivery").count %> </div>
@@ -59,14 +60,11 @@
         <div class="joko_orange">  Discusiones:   <%= user.activities.where(:activitye_type => "Discussion").count %></div>
     </div>
          </div>
-         
+
           <div class="container_user_edit<%=user.id%> container_activity" style="display: none">
-              
-            crear un formulario de usuario aqui
-                                          
+
+                   <%= render :partial => '/registrations/edit_user' ,:locals => { :user_id => user.id }%>
+
           </div>
  <%end%>
 </div>
-
-
-
