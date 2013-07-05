@@ -97,8 +97,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def inverse_friends
-    return self.inverse_friendships
+  def inverse_friendships
+    return Friendship.where(:friend_id => self.id)
   end
 
   def name
