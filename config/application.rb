@@ -60,5 +60,7 @@ module Cursame30Lb
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    #manejo de errores
+    config.exceptions_app = self.routes
   end
 end
