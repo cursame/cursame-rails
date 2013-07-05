@@ -102,10 +102,9 @@
         <% case type%>
         <% when 'Discussion'%>
         <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %> </p>
-        <!--este script sirve para incertar los contenidos por typo en cada uno de los genericos-->
+        <p><%= content %></p>
         <%= render :partial => "content/insertions_to_contents", :locals => { :type => post, :cl => 'discussion'}%>
         <!-- <div class="description"><%= content %></div> -->
-        <p><%= content %></p>
         <% when 'Course'%>
         <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
         <!-- <div class="description"><%= content %></div> -->
