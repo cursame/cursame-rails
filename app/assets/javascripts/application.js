@@ -130,11 +130,11 @@ $(function() {
 			'</li>'];
 			break;
 			default :
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
+				notification = ['<li class="unread" onclick="me(type,id)">',
+				'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
+				'Hay una nueva actividad en tu red <br/>',
+				'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
+				'</li>'];
 			break;
 		}
 		$('#notifications_list').prepend(notification.join(''));
