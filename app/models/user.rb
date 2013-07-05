@@ -261,7 +261,7 @@ class User < ActiveRecord::Base
     friendship = Friendship.find_by_user_id_and_friend_id(self.id, another_user.id)
     inverse_friendship = Friendship.find_by_user_id_and_friend_id(another_user.id,self.id)
 
-    return !friendship.nil? or !inverse_friendship.nil?
+    return (!friendship.nil? or !inverse_friendship.nil?)
   end
 
   def to_s
