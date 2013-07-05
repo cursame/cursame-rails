@@ -276,13 +276,14 @@ class User < ActiveRecord::Base
       |user|
       user.confirmed?
     }
-    network_users.each do
-      |user|
-      if !self.friends_request?(user) then
-        users.push(user)
-      end
-    end
-    return users.uniq
+    return network_users
+    #network_users.each do
+    #  |user|
+    #  if !self.friends_request?(user) then
+    #    users.push(user)
+    #  end
+    #end
+    #return users.uniq
   end
 
   def import(path,network,user_admin)
