@@ -33,13 +33,30 @@
   <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nuevo cuestionario <b><%= link_to "#{notification.notificator.name}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?) %>
 
 <% when 'new_assignment_on_delivery'%>
- NUEVA RESPUESTA EN TAREA <%= notification.notificator.delivery.title%>
+<%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
+<%= link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) %> ha respondido a la tarea
+<b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
+
 <% when 'new_accomplishment_on_assignment'%>
-NUEVA CALIFICACION EN LA ENTREGA DE TAREA <%= " " + notification.notificator.accomplishment.to_s%>
+<%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
+Han calificado tu tarea
+<b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
+del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
+
  <% when 'user_request_friendship'%>
-  ACA PASO
+  <%user = notification.notificator.user %>
+  <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
+  <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
+  El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
+  ha solicitado ser su amigo.
+
 <% when 'user_accepted_friendship'%>
-ACA PASO
+  <%user = notification.notificator.friend %>
+  <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
+  <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
+  El usuario <b><%= link_to "#{notification.notificator.user.name}", show_user_path(user.personal_url) %></b>
+  ha aceptado su solicitud de amistad.
+
   <% when 'user_comment_on_discussion'%>
   <% if current_user && current_user.avatar != nil %>
   <%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%>
@@ -58,7 +75,7 @@ ACA PASO
 
   <%else%>
 
-
+ACA PASO 1
    <% if notification.notificator.user  != nil %>
        <% if  notification.notificator.user.avatar != nil %>
 
