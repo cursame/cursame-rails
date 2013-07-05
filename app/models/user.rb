@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def inverse_friendships
+    return self.inverse_friendships
+  end
+
   def name
      "#{first_name} #{last_name}".strip
   end
