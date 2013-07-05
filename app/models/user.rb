@@ -279,7 +279,7 @@ class User < ActiveRecord::Base
 
     network_users.each do
       |user|
-      if !self.friends_request?(user) then
+      if self.friends_request?(user) then
         users.push(user)
       end
     end
