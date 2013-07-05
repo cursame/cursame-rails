@@ -53,7 +53,7 @@ del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.titl
   <%user = notification.notificator.friend %>
   <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
   <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
-  El usuario <b><%= link_to "#{notification.notificator.user.name}", show_user_path(user.personal_url) %></b>
+  El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
   ha aceptado su solicitud de amistad.
 
   <% when 'user_comment_on_discussion'%>
