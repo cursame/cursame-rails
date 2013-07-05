@@ -163,7 +163,6 @@ class NetworksController < ApplicationController
         [friendship.friend,"friend_requested"]
       end
     }
-    @user = user
     inverse_friends = user.inverse_friendships
     @inverse_friends_array = Array.new
     inverse_friends = inverse_friends.each {
