@@ -70,9 +70,10 @@ class ApplicationController < ActionController::Base
        when Rails.env == 'development'
          @link = 'lvh.me:3000'
        when Rails.env == 'production'
-         @link = 'cursatest.com'
+         #@link = 'cursatest.com'
+          @link = 'cursame.com'
        when Rails.env == 'test'
-         @link = 'cursatest.com'
+         #@link = 'cursatest.com'
        when Rails.env == 'subtest'
          @link = 'cursalab.com'
 

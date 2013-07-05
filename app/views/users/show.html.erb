@@ -23,7 +23,7 @@
             </div>
 
             <div class="tagname">
-              <%= @user_l.name %>
+              <%= truncate("#{@user_l.name}", :omission => "...", :length => 20) %>
             </div>
 
         </div>
