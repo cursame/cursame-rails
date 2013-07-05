@@ -163,7 +163,7 @@ class NetworksController < ApplicationController
         [friendship.friend,"friend_requested"]
       end
     }
-
+    @user = user
     @inverse_friends = user.inverse_friendships
     @inverse_size = @inverse_friends.size
     @inverse_friends = @inverse_friends.map {
