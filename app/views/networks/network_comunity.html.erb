@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-<%= @inverse_friends_array %> <p>
-<%= @friends %> <p>
-<%= @possible_friends %>
 <div class="netWorkMenuHeader">
   <!--<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
   <div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
@@ -31,7 +28,7 @@
          <%case array[1]%>
             <%when  "friend_requested" %>
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
-            <%when  array[1] == "accept_request" %>
+            <%when  "accept_request" %>
                 <%= link_to "aceptar", friendships_update_friend_path(array[0].id), :remote => true  %>
             <%when "friend"%>
             <% else %>
