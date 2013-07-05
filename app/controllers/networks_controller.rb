@@ -164,9 +164,9 @@ class NetworksController < ApplicationController
       end
     }
     @user = user
-    @inverse_friends = user.inverse_friendships
-    @invsere_friends_array = Array.new
-    @inverse_friends = @inverse_friends.each {
+    inverse_friends = user.inverse_friendships
+    @inverse_friends_array = Array.new
+    inverse_friends = inverse_friends.each {
       |friendship|
       if friendship.accepted then
         @inverse_friends_array.push([friendship.user, "friend"])
