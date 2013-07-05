@@ -66,7 +66,7 @@ class Api::ApiController < ApplicationController
 
     @user_notifications = Array.new
     notifications.each do |notification|
-      user = notification.user
+      user = @user
       owner = nil
       notificator = notification.notificator
       case notification.kind
