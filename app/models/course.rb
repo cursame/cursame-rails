@@ -203,6 +203,13 @@ class Course < ActiveRecord::Base
     'imagecoursex.png'
   end
 
+  def owners
+    members_in_course = self.members_in_courses
+    owners = members_in_course.keep_if {|m| m.owner}
+    owners = owners.map { |o| o.user}
+    return owners
+  end
+
   def owner?(role,user)
     if role == "admin" || role == "superadmin" then
       return true
@@ -248,21 +255,6 @@ class Course < ActiveRecord::Base
     end
     size = members.size
     return average/size
-  end
-
-  def self.create_course
-    a = Time.now
-    Course.create(:title => "Prueba", :silabus => "Prueba", :init_date => "2013-06-12 10:00:00",
-           :finish_date => "2013-06-30 10:00:00", :network_id => 1, :public_status => "public")
-    b = Time.now
-    puts b - a
-  end
-
-  def self.destroy_course
-    a = Time.now
-    Course.last.destroy
-    b = Time.now
-    puts b - a
   end
 
 end

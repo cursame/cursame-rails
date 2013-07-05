@@ -1,7 +1,7 @@
 <div class="netWorkMenuHeader">
-	<!--<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
-	<div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
-	<span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>-->
+  <!--<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
+  <div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
+  <span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>-->
 </div>
 
 <span class="dividerHeader"></span>
@@ -16,7 +16,7 @@
          </div><!-- ends image_access -->
 
      <div class="place-hldr">
-    
+
     &nbsp;<%= array[0].email %>
 
      <div class="name">
@@ -24,12 +24,12 @@
      </div>
 
      <div class="add_friend_comunity">
-         <%case%>
-            <%when  array[1] == "friend_requested" %>
+         <%case array[1]%>
+            <%when  "friend_requested" %>
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
-            <%when  array[1] == "accept_request" %>
-                <%= link_to "aceptar", friendships_update_friend_path(array[0].id), :remote => true  %>
-            <%when array[1] == "friend"%>
+            <%when  "accept_request" %>
+                <span class="addfriend"><%= link_to "aceptar", friendships_update_friend_path(array[0].id), :remote => true  %></span>
+            <%when "friend"%>
             <% else %>
             <div id="add_friend<%=array[0].id%>">
                 <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%></span>

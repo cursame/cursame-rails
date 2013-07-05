@@ -7,60 +7,95 @@
   <% case notification.kind%>
   <% when 'user_comment_on_network'%>
   <% if current_user && current_user.avatar != nil%>
-  <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%><%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%><% end%>
-  <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%> comentó en la red <%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
+  <% user = notification.notificator.user%>
+  <%= link_to image_tag(user.avatar.modern,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !user.avatar.blank?)%>
+  <%= link_to image_tag(user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( user.avatar.blank?)%>
+  <% end%>
+  <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%>
+  <%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%>
+   comentó en la red <%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
 
   <% when 'user_comment_on_course'%>
   <% if  current_user && current_user.avatar != nil %>
-  <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?) %>   <%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?) %>
-   <%end%><%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%> comentó en el curso <%= link_to "#{notification.notificator.commentable.title}", course_path(notification.notificator.commentable.id) %>
+  <% user = notification.notificator.user%>
+  <%= link_to image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !notification.notificator.user.avatar.blank?) %>
+   <%= link_to image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( notification.notificator.user.avatar.blank?) %>
+   <%end%>
+   <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%>
+   <%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%>
+   comentó en el curso <%= link_to "#{notification.notificator.commentable.title}", course_path(notification.notificator.commentable.id) %>
 
   <% when 'new_public_course_on_network'%>
-  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= notification.notificator.title %></b> en tu red <b><%= notification.notificator.network.name %></b>
+  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> en tu red <b><%= notification.notificator.network.name %></b>
 
   <% when 'user_accepted_in_course'%>
 
-  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Has sido aceptado en el curso <b><%= notification.notificator.title%><b>
+  <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>Has sido aceptado en el curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %><b>
 
   <% when 'new_delivery_on_course'%>
-  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nueva tarea <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?)%>
+  <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nueva tarea <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?)%>
 
   <% when 'new_discussion_on_course' %>
-  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini"> Nueva discussion <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}",course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?)%>
+ <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %> Nueva discussion <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}",course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?)%>
 
   <% when 'new_survey_on_course'%>
-  <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">Nuevo cuestionario <b><%= notification.notificator.title %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?) %>
+  <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nuevo cuestionario <b><%= link_to "#{notification.notificator.name}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?) %>
+
+<% when 'new_assignment_on_delivery'%>
+<%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
+<%= link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) %> ha respondido a la tarea
+<b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
+
+<% when 'new_accomplishment_on_assignment'%>
+<%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
+Han calificado tu tarea
+<b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
+del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
+
+ <% when 'user_request_friendship'%>
+  <%user = notification.notificator.user %>
+  <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
+  <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
+  El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
+  ha solicitado ser su amigo.
+
+<% when 'user_accepted_friendship'%>
+  <%user = notification.notificator.friend %>
+  <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
+  <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
+  El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
+  ha aceptado su solicitud de amistad.
 
   <% when 'user_comment_on_discussion'%>
   <% if current_user && current_user.avatar != nil %>
-  <%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%>
-  <%= image_tag(current_user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?)%>
+  <% user = notification.notifcator.user %>
+  <%= link_to image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !notification.notificator.user.avatar.blank?)%>
+  <%= link_to image_tag(current_user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( notification.notificator.user.avatar.blank?)%>
 
   <%end%><b><%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%></b> comentó en tu discusión
 
   <%else%>
-  
+
    <% @array = notification.notificator.user %>
    <% if @array.class == Array %>
-     <% user =  @array.first %> 
-     
+     <% user =  @array.first %>
+
      <%= image_tag(user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !user.avatar.blank?) %><%= image_tag(user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( user.avatar.blank?) %>Una actividad por <%=link_to "#{user.name} ",show_user_path(user.personal_url) if ( !user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(user.personal_url) if (user.name.blank?)%>
            <!--en tu curso <b>< notification.notificator.courses[0].title  if ( notification.notificator.courses != nil) %></b>-->
-    
+
   <%else%>
 
-  
    <% if notification.notificator.user  != nil %>
        <% if  notification.notificator.user.avatar != nil %>
 
               <%= image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?) %><%= image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?) %><%end%>Una actividad por <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%>
- 
+
   <%end%>
-       
+
   <%end%>
-  
+
   <%end%>
- 
+
   <br/>
   <span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>

@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def inverse_friendships
+    return Friendship.where(:friend_id => self.id)
+  end
+
   def name
      "#{first_name} #{last_name}".strip
   end
@@ -261,7 +265,7 @@ class User < ActiveRecord::Base
     friendship = Friendship.find_by_user_id_and_friend_id(self.id, another_user.id)
     inverse_friendship = Friendship.find_by_user_id_and_friend_id(another_user.id,self.id)
 
-    return !friendship.nil? || !inverse_friendship.nil?
+    return (!friendship.nil? or !inverse_friendship.nil?)
   end
 
   def to_s
@@ -276,13 +280,15 @@ class User < ActiveRecord::Base
       |user|
       user.confirmed?
     }
+
     network_users.each do
       |user|
       if !self.friends_request?(user) then
         users.push(user)
       end
     end
-    return users.uniq
+    users.uniq!
+    return users
   end
 
   def import(path,network,user_admin)

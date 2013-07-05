@@ -7,8 +7,15 @@ class Assignment < ActiveRecord::Base
   has_many :response_to_the_evaluations, :dependent => :destroy
   has_many :activities, as: :activitye, :dependent => :destroy
   has_many :contents, :as => :contentye, :dependent => :destroy
-  
 
+  before_destroy do
+    notifications = Notification.where(:notificator_id => self.id, :notificator_type => "Assignment")
+
+    notifications.each do
+      |notification|
+      notification.destroy
+    end
+  end
 
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :response_to_the_evaluations
@@ -50,6 +57,19 @@ class Assignment < ActiveRecord::Base
       teachers.each do
         |teacher|
         teacher.user.settings_teacher.increment_deliveries if !teacher.user.settings_teacher.nil?
+      end
+    end
+
+    # Se crea la notificacion
+    users = self.delivery.courses.first.owners
+    notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
+  end
+
+  after_update do
+    accomplishment = self.changes[:accomplishment]
+    if (!accomplishment.nil?) then
+      if (accomplishment.first.nil? and !accomplishment.last.nil?) or (accomplishment.first != accomplishment.last) then
+        Notification.create(:users => [self.user], :notificator => self, :kind => 'new_accomplishment_on_assignment')
       end
     end
   end
