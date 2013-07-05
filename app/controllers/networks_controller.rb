@@ -155,7 +155,7 @@ class NetworksController < ApplicationController
     @possible_friends = user.possible_friends(network)
     # All users in the current_network without friend request
 
-    @puts =  @possible_friends.map{ |x| x.email }
+
     @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
 
     @friends = user.friendships
@@ -180,6 +180,10 @@ class NetworksController < ApplicationController
     @network_users = @possible_friends + @friends + @inverse_friends
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
     @network_users = @network_users.reject {|array| array[0].nil? }
+
+    @puts_possible =  @possible_friends.map{ |x| x.first.email }
+    @puts_friends = @friends.map{ |x| x.first.email}
+    @puts_inverse = @inverse_friends.map{ |x| x.first.email}
   end
 
   def awaiting_confirmation
