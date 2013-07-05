@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <!-- este partial controla la logica para mostrar notificaciones -->
 <% if current_role == "superadmin"%>
 <%else%>
@@ -35,6 +36,10 @@
  NUEVA RESPUESTA EN TAREA <%= notification.notificator.delivery.title%>
 <% when 'new_accomplishment_on_assignment'%>
 NUEVA CALIFICACION EN LA ENTREGA DE TAREA <%= " " + notification.notificator.accomplishment.to_s%>
+ <% when 'user_request_friendship'%>
+  ACA PASO
+<% when 'user_accepted_friendship'%>
+ACA PASO
   <% when 'user_comment_on_discussion'%>
   <% if current_user && current_user.avatar != nil %>
   <%= image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !notification.notificator.user.avatar.blank?)%>
