@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def inverse_friendships
+  def inverse_friends
     return self.inverse_friendships
   end
 
