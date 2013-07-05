@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 <div class="netWorkMenuHeader">
   <!--<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
   <div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
@@ -29,7 +28,7 @@
             <%when  "friend_requested" %>
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
             <%when  "accept_request" %>
-                <%= link_to "aceptar", friendships_update_friend_path(array[0].id), :remote => true  %>
+                <span class="addfriend"><%= link_to "aceptar", friendships_update_friend_path(array[0].id), :remote => true  %></span>
             <%when "friend"%>
             <% else %>
             <div id="add_friend<%=array[0].id%>">
