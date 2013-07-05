@@ -190,6 +190,16 @@ class HomeController < ApplicationController
      def authentications_test
      end
 
+  # manejo de paginas de error
+  def not_found
+    render :status => 404, :formats => [:html]
+  end
+
+  def server_error
+    render :status => 500, :formats => [:html]
+  end
+ 
+
   protected
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
@@ -215,5 +225,10 @@ class HomeController < ApplicationController
     puts channel
     return channel
   end
-
+  # The exception that resulted in this error action being called can be accessed from
+  # the env. From there you can get a backtrace and/or message or whatever else is stored
+  # in the exception object.
+  def the_exception
+    @e ||= env["action_dispatch.exception"]
+  end
 end
