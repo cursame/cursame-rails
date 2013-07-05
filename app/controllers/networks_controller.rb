@@ -154,6 +154,9 @@ class NetworksController < ApplicationController
     # current_network_users = current_network.users
     @possible_friends = user.possible_friends(network)
     # All users in the current_network without friend request
+
+    print @posible_friends.map{ |x| x.email }
+    puts ""
     @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
 
     @friends = user.friendships
