@@ -224,6 +224,7 @@
                        <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
                       <%else%>
                 <%end%>
+                         <!-- <span class="toolTipUser"><p>HOla</p></span> -->
                 <%else%>
                 <% if @member.accepted == true %>
                         <% if @members != nil%>
