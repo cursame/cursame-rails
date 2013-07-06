@@ -11,7 +11,7 @@
 	  	<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_path(@course, :format => "pdf") %>
    </div>
 
-   <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;width:784px!important;overflow:auto!important;">
+   <div class="form-course fixform" style="padding:20px 0px 41px 20px!important;width:784px!important;overflow:auto!important;">
 		     <!--para poder hacer el render partial-->
    <%  @course = Course.find(params[:id])%>
    <%  @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id) %>
@@ -21,16 +21,17 @@
 		      <% if !member.owner then%>
 		        <%table = member.doTableCourse%>
 		        <span class="califHeader">Calificacion: <%=table[2]%></span>
-		        <h4 style="margin-top: 45px;">Alumno: <%=user.email%></h4>
+		        <h4 style="margin-top: 22px; background: #38CDE2; color: #fff; height: 30px; padding-top: 14px; margin-left: -20px; width: 824px; text-align: center;
+font-weight: lighter;">Alumno: <%=user.email%></h4>
 		        
 		        <table border="1" width="780" cellpadding="3" cellspacing="3" id="calificacionesSpan">
 		          <tr>
-		            <td width="250px"><p>Tarea</p></td>
-		            <td><p>Entrega</p></td>
-		            <td><p>Rubros</p></td>
-		            <td><p>Calificación</p></td>
-		            <td><p>% de la Evaluación<p></td>
-			        <td><p>% Final</p></td>
+		            <td width="250px"><p style="color: #258593;">Tarea</p></td>
+		            <td><p style="color: #258593;">Entrega</p></td>
+		            <td><p style="color: #258593;">Rubros</p></td>
+		            <td><p style="color: #258593;">Calificación</p></td>
+		            <td><p style="color: #258593;">% de la Evaluación<p></td>
+			        <td><p style="color: #258593;">% Final</p></td>
 		          </tr>
 			        <%for i in 0...table[0][0].size%>
 			        <%delivery = table[0][0][i]%>
@@ -52,23 +53,23 @@
 		            <%else%>
 		            <%end%>
 		            <%end%>
-			          <td valign="top" class="containText" colspan="2" bgcolor="#fff"><%=table[0][2][0]%></td>
-			          <td valign="top" class="containText" colspan="2" bgcolor="#ddd"><%=table[0][2][1]%></td>
+			          <td valign="top" class="containText" colspan="2" bgcolor="#fff" style="padding: 5px 0px;"><%=table[0][2][0]%></td>
+			          <td valign="top" class="containText" colspan="2" bgcolor="#ddd" style="padding: 5px 0px;"><%=table[0][2][1]%></td>
 		          </tr>
 		      </table>
 		      
 		      <table border="1" width="780" cellpadding="3" cellspacing="3" style="margin-top:20px; margin-bottom: 45px;">
 		      <tr>
-		        <td width="250px"><p>Examen</p></td>
-		        <td><p>Calificacion</p></td>
-		        <td><p>Calificación Examenes</p></td>
-		        <td><p>% de la Evaluación</p></td>
-		        <td><p>% Obtenido</p></td>
+		        <td width="250px"><p style="color: #258593;">Examen</p></td>
+		        <td><p style="color: #258593;">Calificacion</p></td>
+		        <td><p style="color: #258593;">Calificación Examenes</p></td>
+		        <td><p style="color: #258593;">% de la Evaluación</p></td>
+		        <td><p style="color: #258593;">% Obtenido</p></td>
 		      </tr>
 		        <%for i in 0...table[1][0].size%>
 		          <tr>
-		          <td valign="top" class="containText" ><%=table[1][0][i].name%></td>
-		          <td valign="top" class="containText" >
+		          <td valign="top" class="containText" style="padding: 5px 0px;"><%=table[1][0][i].name%></td>
+		          <td valign="top" class="containText" style="padding: 5px 0px;">
 		            <% if !table[1][1][i].nil? then%>
 		            <%= table[1][1][i].result%>
 		            <%end%>
@@ -77,9 +78,9 @@
 		        </tr>
 		        <%end%>
 		        <tr>
-		          <td valign="top" class="containText" ><%=table[1][2][0]%></td>
-		          <td valign="top" class="containText" ><%=table[1][2][1]%></td>
-		          <td valign="top" class="containText" ><%=table[1][2][2]%></td>
+		          <td valign="top" class="containText" style="padding: 5px 0px;"><%=table[1][2][0]%></td>
+		          <td valign="top" class="containText" style="padding: 5px 0px;"><%=table[1][2][1]%></td>
+		          <td valign="top" class="containText" style="padding: 5px 0px;"><%=table[1][2][2]%></td>
 		        </tr>
 		      </table>
 		      <%end%>
