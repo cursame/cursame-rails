@@ -68,7 +68,7 @@ del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.titl
 
   <% when 'user_comment_on_discussion'%>
   <% if current_user && current_user.avatar != nil %>
-  <% user = notification.notifcator.user %>
+  <% user = notification.notificator.user %>
   <%= link_to image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !notification.notificator.user.avatar.blank?)%>
   <%= link_to image_tag(current_user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( notification.notificator.user.avatar.blank?)%>
 
