@@ -415,6 +415,7 @@ class CoursesController < ApplicationController
           )
       end
       if counte_fact != 0
+      @json_for_this_course = ((surveyss +deliveries + assignmentss).to_json).delete("\n", '')
       respond_to do |format|
       format.html    
       format.json { render json:
@@ -425,29 +426,7 @@ class CoursesController < ApplicationController
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
                       
-                       date:[
-                         {
-                             startDate: "07/07/07",
-               			        endDate: "07/07/07",
-                             headline:("Lobo").delete("\n"),
-                             text:("Cuestionario:").delete("\n"),
-                             asset:
-                             {
-                                # media: @avatar_assignment,
-                                 credit:("s").delete("\n"),
-                                 caption:("s").delete("\n")
-                             },
-                             compose:
-                             {   id: "1",
-                                 type: 'examen',
-                                 title: ("gfrfvfrdfcrfcvfdrfcdrfcdfc").delete("\n") 
-                             }
-                         }
-                      
-                         ]
-                       
-                       
-                       #surveyss +deliveries + assignmentss
+                      date:  ActiveSupport::JSON.decode(@json_for_this_course)
                                             
                   }
         }
