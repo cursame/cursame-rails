@@ -1,7 +1,7 @@
 <div class="insideChat">
 	<span class="insideChatText">
-		<div class="imgChat"><%=image_tag(message.user.avatar.profile || message.user.image_avatarx,:style => "float:left; width:20px; height:20px; margin-top:-4px;", :alt => message.user.name)%>
-		<span class="toolTipUser"><p>HOla</p></span>
+		<div class="imgChat"><%=image_tag(message.user.avatar.profile || message.user.image_avatarx,:style => "float:left; width:20px; height:20px; margin-top:-4px;")%>
+		<span class="toolTipUser"><p><%= message.user.name %></p></span>
 		</div>
 		
 		<p style="float:left; margin-left:5px;"> &nbsp; <%= message.mesage_html %> </p></span>
