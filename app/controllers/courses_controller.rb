@@ -425,7 +425,29 @@ class CoursesController < ApplicationController
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
                       
-                       date: surveyss +deliveries + assignmentss
+                       date:[
+                         {
+                             startDate: "07/07/07",
+               			        endDate: "07/07/07",
+                             headline:("Lobo").delete("\n"),
+                             text:("Cuestionario:").delete("\n"),
+                             asset:
+                             {
+                                # media: @avatar_assignment,
+                                 credit:("s").delete("\n"),
+                                 caption:("s").delete("\n")
+                             },
+                             compose:
+                             {   id: "1",
+                                 type: 'examen',
+                                 title: ("gfrfvfrdfcrfcvfdrfcdrfcdfc").delete("\n") 
+                             }
+                         }
+                      
+                         ]
+                       
+                       
+                       #surveyss +deliveries + assignmentss
                                             
                   }
         }
