@@ -339,7 +339,7 @@ class CoursesController < ApplicationController
          del.assignments.each do |as|
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
-             assets_assignmentss.push( {file: a.file,
+             assets_assignmentss.push({file: a.file,
                                         name:("#{@name}").delete("\n")
                                      })
            end
@@ -422,10 +422,10 @@ class CoursesController < ApplicationController
         timeline: {
                       headline:("#{@course.title}").delete("\n"),
                       type:"default",
-                      text: "Linea del tiempo del curso #{@course.title} ",
+                      text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
                       
-                      # date:[]#surveyss +deliveries + assignmentss
+                       date: surveyss +deliveries + assignmentss
                                             
                   }
         }
