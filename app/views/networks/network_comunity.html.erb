@@ -1,26 +1,32 @@
-<div class="netWorkMenuHeader">
-  <!--<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
+# -*- coding: utf-8 -*-
+
+  <!-- <div class="netWorkMenuHeader">
+<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
   <div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
-  <span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>-->
-</div>
+  <span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>
+</div> -->
 
 <span class="dividerHeader"></span>
 
 <% @network_users.each do |array| %>
      <%# @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
      <%# @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
-     <div class="box_comunity">
-         <div class="image_acces_comunity">
+  <div class="everymbrm" style="height: 240px;">
+      <div id="imgge" style="width:170px;height:170px;background:#ddd;">
              <%= link_to image_tag(array[0].avatar.profile), "users/#{(array[0].personal_url)}" if ( !array[0].avatar.blank?)%>
              <%= link_to image_tag(array[0].image_avatarx),  "users/#{(array[0].personal_url)}"  if  (array[0].avatar.blank?)%>
          </div><!-- ends image_access -->
 
-     <div class="place-hldr">
 
-    &nbsp;<%= array[0].email %>
+     <div class="place-hldr" style="height: 55px; display: inline-block; position: absolute; margin-top: 10px; margin-left: 10px;">
+
+    <!--&nbsp;<%#= array[0].email %>-->
+
 
      <div class="name">
-       <%= array[0].name %>
+     <% if array[0].name != nil%>
+       <%= truncate("#{array[0].name}", :omission => "...", :length => 25 ) %>
+     <%end%>
      </div>
 
      <div class="add_friend_comunity">
@@ -32,7 +38,7 @@
             <%when "friend"%>
             <% else %>
             <div id="add_friend<%=array[0].id%>">
-                <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%></span>
+                <span class="addfriend" style="margin-left: 0px; margin-top: 10px;"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%></span>
             </div>
         <%end%>
     </div><!-- ends add_friend_comunity -->

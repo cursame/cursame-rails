@@ -1,7 +1,9 @@
-<h1>
+<h1 class="titleChat">
 	<%= get_chat_title channel %>
-</h1>			
+</h1>
 <ul id="chat-messages" class="main-chat-zone">
 	<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>	  
 </ul>
-<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+<div class="shareMSJ">
+	<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+</div>
