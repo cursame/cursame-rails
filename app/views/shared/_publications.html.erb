@@ -134,7 +134,7 @@
          <%end%>
           <!-- Destroy Wall -->
           <%if publication.publication.owner?(current_role, current_user) then %>
-          		<span class="deleteComment"><%= link_to "Eliminar", destroy_wall_path(publication.id), :remote=>true%></span>
+	          		<span class="deleteComment"><img src="/assets/trashbin.png" style="margin-right: 5px;"><%= link_to "Eliminar", destroy_wall_path(publication.id), :remote=>true%></span>
           <%end%>
           <div class="labels"><%= post.comments.count %> Comentarios</div>
           <div class="labels"><p><div style="float:left" id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></div> <div style="float:left">&nbsp;me gusta</div></div>
