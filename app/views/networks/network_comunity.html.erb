@@ -20,7 +20,7 @@
     <!--&nbsp;<%#= array[0].email %>-->
 
      <div class="name">
-     <% if array.name != nil%>
+     <% if array[0].name != nil%>
        <%= truncate("#{array[0].name}", :omission => "...", :length => 25 ) %>
      <%end%>
      </div>
