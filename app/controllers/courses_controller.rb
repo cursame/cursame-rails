@@ -300,7 +300,7 @@ class CoursesController < ApplicationController
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
            assets_deliveries.push( {file: b.file,
-                                    name: @name })
+                                    name: "#{@name}".delete("\n") })
          end
         if del.user.avatar.blank?
           @avatar = "/assets/#{del.user.image_avatarx}"
@@ -314,19 +314,19 @@ class CoursesController < ApplicationController
           {
               startDate: del.publish_date,
 			        endDate: del.end_date,
-              headline:"#{del.title}",
-              text:"Tarea: #{del.description}",
+              headline:("#{del.title}").delete("\n"),
+              text:("Tarea: #{del.description}").delete("\n"),
               asset:
               {
                   media: @avatar,
-                  credit:"#{del.user.name}",
-                  caption:"#{@course.title}"
+                  credit:("#{del.user.name}").delete("\n"),
+                  caption:("#{@course.title}").delete("\n")
               },
               compose:
               { id: del.id,
                 type: 'tarea',
-                title: del.title,
-                description: del.description
+                title:("#{del.title}").delete("\n"),
+                description:("#{del.description}").delete("\n")
               },
               assets:assets_deliveries          
               
@@ -340,7 +340,7 @@ class CoursesController < ApplicationController
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
              assets_assignmentss.push( {file: a.file,
-                                        name: @name
+                                        name:("#{@name}").delete("\n")
                                      })
            end
 =begin          
@@ -361,19 +361,19 @@ class CoursesController < ApplicationController
                 {
                     startDate: as.created_at,
       			        endDate: as.created_at,
-                    headline:"#{as.title}",
-                    text:"Tarea entregada: #{as.brief_description}",
+                    headline:("#{as.title}").delete("\n"),
+                    text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
                     {
                         media: @avatar_assignment,
-                        credit:"#{as.user.name}",
-                        caption:"#{@course.title}"
+                        credit:("#{as.user.name}").delete("\n"),
+                        caption:("#{@course.title}").delete("\n")
                     },
                     compose:
                     { id: as.id,
                       type: 'entrega_tarea',
-                      title: as.title,
-                      description: as.brief_description, 
+                      title: ("#{as.title}").delte("\n"),
+                      description: ("#{as.brief_description}").delete("\n"), 
                     }, 
                     assets: assets_assignmentss  #+ contents_assignmentss  
                         
@@ -397,18 +397,18 @@ class CoursesController < ApplicationController
               {
                   startDate: survey.created_at,
     			        endDate: survey.created_at,
-                  headline:"#{survey.name}",
-                  text:"Cuestionario: #{survey.state}",
+                  headline:("#{survey.name}").delete("\n"),
+                  text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
                       media: @avatar_assignment,
-                      credit:"#{survey.user.name}",
-                      caption:"#{@course.title}"
+                      credit:("#{survey.user.name}").delete("\n"),
+                      caption:("#{@course.title}").delete("\n")
                   },
                   compose:
                   {   id: survey.id,
                       type: 'examen',
-                      title: survey.name 
+                      title: ("#{survey.name}").delete("\n") 
                   }
               }
           
@@ -422,10 +422,10 @@ class CoursesController < ApplicationController
         timeline: {
                       headline:("#{@course.title}").delete("\n"),
                       type:"default",
-                      text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
+                      text: "Linea del tiempo del curso #{@course.title} ",
                       startDate:"#{@course.init_date}",
                       
-                       date: ("#{deliveries + surveyss + assignmentss}").delete("\n")
+                       date: deliveries + surveyss + assignmentss
                                             
                   }
         }
