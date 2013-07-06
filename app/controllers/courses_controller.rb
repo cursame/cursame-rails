@@ -372,7 +372,7 @@ class CoursesController < ApplicationController
                     compose:
                     { id: as.id,
                       type: 'entrega_tarea',
-                      title: ("#{as.title}").delte("\n"),
+                      title: ("#{as.title}").delete("\n"),
                       description: ("#{as.brief_description}").delete("\n"), 
                     }, 
                     assets: assets_assignmentss  #+ contents_assignmentss  
