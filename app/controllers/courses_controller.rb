@@ -420,12 +420,12 @@ class CoursesController < ApplicationController
       format.json { render json:
         {
         timeline: {
-                      headline:@course.title,
+                      headline:("#{@course.title}").delete("\n"),
                       type:"default",
-                      text: "Linea del tiempo del curso #{@course.title} ",
+                      text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
                       
-                       date: deliveries + surveyss + assignmentss
+                       date: ("#{deliveries + surveyss + assignmentss}").delete("\n")
                                             
                   }
         }
