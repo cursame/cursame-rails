@@ -17,10 +17,12 @@
 
      <div class="place-hldr" style="height: 55px; display: inline-block; position: absolute; margin-top: 10px; margin-left: 10px;">
     
-    &nbsp;<%= array[0].email %>
+    <!--&nbsp;<%#= array[0].email %>-->
 
      <div class="name">
-       <%= array[0].name %>
+     <% if array.name != nil%>
+       <%= truncate("#{array[0].name}", :omission => "...", :length => 25 ) %>
+     <%end%>
      </div>
 
      <div class="add_friend_comunity">
