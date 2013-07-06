@@ -299,8 +299,8 @@ class CoursesController < ApplicationController
       @course.deliveries.each do |del|
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
-           assets_deliveries.push( {file: b.file,
-                                    name: "#{@name}".delete("\n") })
+           assets_deliveries.push({file: b.file,
+                                   name:("#{@name}").delete("\n") })
          end
         if del.user.avatar.blank?
           @avatar = "/assets/#{del.user.image_avatarx}"
