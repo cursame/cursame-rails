@@ -234,9 +234,9 @@ div#dummy:hover { background: #08B5CE; color: #fff; }
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ edit members ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 
-.cmembers { width: 800px; margin: 0 auto; }
+.cmembers { width: 809px; margin: 0 auto; }
 .pndts { margin-top: -25px; float: right; }
-.everymbrm { background: #fff; width: 170px; border: 1px solid #eee; box-shadow: 1px 2px 1px #ccc; padding: 10px 10px 0px 10px; transition: linear all 0.2s; float: left; margin-right: 10px; margin-bottom: 20px; }
+.everymbrm { background: #fff; width: 170px; border: 1px solid #eee; box-shadow: 1px 2px 1px #ccc; padding: 10px 10px 10px 10px; transition: linear all 0.2s; float: left; margin-right: 10px; margin-bottom: 20px; }
 .everymbrm .everymbrm { margin-top: -10px; }
 .everymbrm:hover { box-shadow: 0px 0px 5px #28C8DF; transition: linear all 0.2s; }
 .everymbrm h3 { text-align: center; font-size: 14px; display: block; height: 20px; position: relative; margin-top: 17px; }
@@ -316,7 +316,20 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	width: 433px;
 	height: 400px;
 	display: block;
+	font-family: arial;
+	color: #000;
 }
+.responUser {
+background: #ddd;
+vertical-align: middle;
+text-align: center;
+padding: 0!important;
+height: 117px;
+margin-bottom: 20px;
+margin-left: -10px;
+width: 454px;
+}
+
 .helpText { 
 	width: 414px;
 	text-align: center;
@@ -718,7 +731,8 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
           
 .activities_depot{
          width:400px;
-         height:65px;
+         min-height:65px;
+         max-height: 200px;
          background-color:#f7f7f7;
          margin-top:-13px;
          border-bottom:solid #ccc 1px;
