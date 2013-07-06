@@ -425,7 +425,7 @@ class CoursesController < ApplicationController
                       text: "Linea del tiempo del curso #{@course.title} ",
                       startDate:"#{@course.init_date}",
                       
-                       date: deliveries + surveyss + assignmentss
+                       date: deliveries #+ surveyss + assignmentss
                                             
                   }
         }
