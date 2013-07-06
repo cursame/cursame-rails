@@ -35,7 +35,8 @@
                                              source: '<%=@course.id%>/course_ki_line.json'
                                             }
                                           </script>
-                                          <script type="text/javascript" src="<%= "http://#{current_network.subdomain}.#{links}/assets/storyjs-embed.js" %>"></script>
+                                          <%= javascript_include_tag('storyjs-embed.js') %>
+                                        <!--  <script type="text/javascript" src="<%#= "http://#{current_network.subdomain}.#{links}/assets/storyjs-embed.js" %>"></script>-->
 
             <ul id ="estadistic-list">
             <% permitted_to? :create, :courses do %>
