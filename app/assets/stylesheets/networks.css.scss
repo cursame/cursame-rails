@@ -39,8 +39,8 @@
 .box_comunity:hover  { /*box-shadow: 0px 0px 7px #28C8DF;*/ transition: linear all 0.2s; }
 .image_acces_comunity img { z-index: 0; }
 .image_acces_comunity img:hover { opacity: 0.2; }
-.place-hldr { height: 147px; display: block; margin-top: -153px;  width: 150px; transition: ease-in-out background 0.2s; overflow: hidden; }
-.place-hldr:hover { color: #fff!important; }
+.place-hldr { height: 147px; display: block; margin-top: -153px;  width: 150px; transition: ease-in-out background 0.2s; overflow: hidden; text-align: center; }
+.place-hldr:hover { color: inherit; }
 .sent-slctd { color: #ccc; }
 
 .box_comunity .add_friend_comunity { transition: ease-out all 0.3s; }

@@ -1,5 +1,7 @@
-<p>
-  Se envio un correo de confirmacion a <%= @user_inactive.email %>
-  <p>
-  <a href="/">Sign up</a>
-<p>
+<div class="signup-layout"></div>
+	<div class="content login" id="titlheader" style="text-align:center; padding-top: 160px;">
+		<b style="font-size: 25px;">Se envió un correo de confirmación a </b>
+		<div class="userNotiInside"><div class="userNoti"><%= @user_inactive.email %></div></div>
+		<p>¿Ya recibiste el correo de confirmación?</p>
+		<div class="confirm-btn no-wrap"><%= link_to "iniciar sesión",  'sign_up_path' %></div>
+	</div>

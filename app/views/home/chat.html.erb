@@ -1,8 +1,8 @@
-<div>	
-	<div style="float:left;width:200px">
+<div>
+	<div style="float:left;width:200px;margin-top: 20px;">
 		<span class="titleBraker">Cursos</span>
 		<% @courses_online.each do |course|%>
-		    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
+		    <div class="chatSingle"><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
 		<%end%>
 		<span class="titleBrakerSecondary">Amigos conectados</span>
 		<% @friends_online.each do |user|%>
