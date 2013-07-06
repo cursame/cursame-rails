@@ -154,12 +154,13 @@ class NetworksController < ApplicationController
     @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
 
     @friends = user.friendships
-    @friends = @friends.map {
+    @friends_array = Array.new
+    @friends = @friends.each {
       |friendship|
       if friendship.accepted then
-        [friendship.friend, "friend"]
+        @friends_array.push([friendship.friend, "friend"])
       else
-        [friendship.friend,"friend_requested"]
+        @friends_array.push([friendship.friend,"friend_requested"])
       end
     }
     @inverse_friends = user.inverse_friendships
@@ -172,7 +173,7 @@ class NetworksController < ApplicationController
         @inverse_friends_array.push([friendship.user, "accept_request"])
       end
      }
-    @network_users = @possible_friends + @friends + @inverse_friends_array
+    @network_users = @possible_friends + @friends_array + @inverse_friends_array
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
   end
 

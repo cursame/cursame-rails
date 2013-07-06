@@ -101,6 +101,10 @@ class User < ActiveRecord::Base
     return Friendship.where(:friend_id => self.id)
   end
 
+  def friendships
+    return Friendship.where(:user_id => self.id)
+  end
+
   def name
      "#{first_name} #{last_name}".strip
   end
