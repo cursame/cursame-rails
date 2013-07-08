@@ -423,7 +423,7 @@ class CoursesController < ApplicationController
                       headline:("#{@course.title}").delete("\n"),
                       type:"default",
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
-                      startDate:"07/07/2013",
+                      startDate:"#{@course.init_date}",
                       
                       date: surveyss + deliveries + assignmentss
                                             
