@@ -318,7 +318,7 @@ class CoursesController < ApplicationController
               text:("Tarea: #{del.description}").delete("\n"),
               asset:
               {
-                  media: @avatar,
+                  media: @avatar.url,
                   credit:("#{del.user.name}").delete("\n"),
                   caption:("#{@course.title}").delete("\n")
               },
@@ -365,7 +365,7 @@ class CoursesController < ApplicationController
                     text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
                     {
-                        media: @avatar_assignment,
+                        media: @avatar_assignment.url,
                         credit:("#{as.user.name}").delete("\n"),
                         caption:("#{@course.title}").delete("\n")
                     },
@@ -401,7 +401,7 @@ class CoursesController < ApplicationController
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
-                      media: @avatar_assignment,
+                      media: @avatar_assignment.url,
                       credit:("#{survey.user.name}").delete("\n"),
                       caption:("#{@course.title}").delete("\n")
                   },
@@ -415,7 +415,7 @@ class CoursesController < ApplicationController
           )
       end
       if counte_fact != 0
-      @json_for_this_course = (surveyss + deliveries + assignmentss).to_json.delete("\n", '')
+      # @json_for_this_course = (surveyss + deliveries + assignmentss).to_json.delete("\n", '')
       respond_to do |format|
       format.html    
       format.json { render json:
@@ -426,7 +426,7 @@ class CoursesController < ApplicationController
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"07/07/2013",
                       
-                      date:  ActiveSupport::JSON.decode(@json_for_this_course)
+                      date: surveyss + deliveries + assignmentss
                                             
                   }
         }
