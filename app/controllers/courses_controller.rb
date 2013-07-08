@@ -415,7 +415,6 @@ class CoursesController < ApplicationController
           )
       end
       if counte_fact != 0
-      # @json_for_this_course = (surveyss + deliveries + assignmentss).to_json.delete("\n", '')
       respond_to do |format|
       format.html    
       format.json { render json:
