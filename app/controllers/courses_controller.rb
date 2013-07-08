@@ -288,7 +288,7 @@ class CoursesController < ApplicationController
       surveyss = []
       assets_assignmentss =[]
       assets_deliveries =[]
-      contents_assignmentss =[]
+      #contents_assignmentss =[]
       
       count_deliveries =  @course.deliveries.count
       count_surveys =  @course.surveys.count
@@ -299,8 +299,8 @@ class CoursesController < ApplicationController
       @course.deliveries.each do |del|
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
-           assets_deliveries.push( {file: b.file,
-                                    name: @name })
+           assets_deliveries.push({file: b.file,
+                                   name:("#{@name}").delete("\n") })
          end
         if del.user.avatar.blank?
           @avatar = "/assets/#{del.user.image_avatarx}"
@@ -313,20 +313,20 @@ class CoursesController < ApplicationController
         deliveries.push(
           {
               startDate: del.publish_date,
-			        endDate: del.end_date,
-              headline:"#{del.title}",
-              text:"Tarea: #{del.description}",
+              endDate: del.end_date,
+              headline:("#{del.title}").delete("\n"),
+              text:("Tarea: #{del.description}").delete("\n"),
               asset:
               {
-                  media: @avatar,
-                  credit:"#{del.user.name}",
-                  caption:"#{@course.title}"
+                  media: @avatar.url,
+                  credit:("#{del.user.name}").delete("\n"),
+                  caption:("#{@course.title}").delete("\n")
               },
               compose:
               { id: del.id,
                 type: 'tarea',
-                title: del.title,
-                description: del.description
+                title:("#{del.title}").delete("\n"),
+                description:("#{del.description}").delete("\n")
               },
               assets:assets_deliveries          
               
@@ -339,18 +339,18 @@ class CoursesController < ApplicationController
          del.assignments.each do |as|
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
-             assets_assignmentss.push( {file: a.file,
-                                        name: @name
+             assets_assignmentss.push({file: a.file,
+                                        name:("#{@name}").delete("\n")
                                      })
            end
-           
+=begin          
            as.contents.each do |ca|
              @name = ca.content.to_s.split('/').last
              contents_assignmentss.push( {file: ca.content,
                                          name:   @name
                                       })
            end
-           
+=end
            if as.user.avatar.blank?
              @avatar_assignment = "/assets/#{as.user.image_avatarx}"
            else
@@ -360,22 +360,22 @@ class CoursesController < ApplicationController
             assignmentss.push(
                 {
                     startDate: as.created_at,
-      			        endDate: as.created_at,
-                    headline:"#{as.title}",
-                    text:"Tarea entregada: #{as.brief_description}",
+                    endDate: as.created_at,
+                    headline:("#{as.title}").delete("\n"),
+                    text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
                     {
-                        media: @avatar_assignment,
-                        credit:"#{as.user.name}",
-                        caption:"#{@course.title}"
+                        media: @avatar_assignment.url,
+                        credit:("#{as.user.name}").delete("\n"),
+                        caption:("#{@course.title}").delete("\n")
                     },
                     compose:
                     { id: as.id,
                       type: 'entrega_tarea',
-                      title: as.title,
-                      description: as.brief_description, 
+                      title: ("#{as.title}").delete("\n"),
+                      description: ("#{as.brief_description}").delete("\n"), 
                     }, 
-                    assets: assets_assignmentss + contents_assignmentss  
+                    assets: assets_assignmentss  #+ contents_assignmentss  
                         
                     
                 }
@@ -396,19 +396,19 @@ class CoursesController < ApplicationController
           surveyss.push(
               {
                   startDate: survey.created_at,
-    			        endDate: survey.created_at,
-                  headline:"#{survey.name}",
-                  text:"Cuestionario: #{survey.state}",
+                  endDate: survey.created_at,
+                  headline:("#{survey.name}").delete("\n"),
+                  text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
-                      media: @avatar_assignment,
-                      credit:"#{survey.user.name}",
-                      caption:"#{@course.title}"
+                      media: @avatar_assignment.url,
+                      credit:("#{survey.user.name}").delete("\n"),
+                      caption:("#{@course.title}").delete("\n")
                   },
                   compose:
                   {   id: survey.id,
                       type: 'examen',
-                      title: survey.name 
+                      title: ("#{survey.name}").delete("\n") 
                   }
               }
           
@@ -420,12 +420,12 @@ class CoursesController < ApplicationController
       format.json { render json:
         {
         timeline: {
-                      headline:@course.title,
+                      headline:("#{@course.title}").delete("\n"),
                       type:"default",
-                      text: "Linea del tiempo del curso #{@course.title} ",
+                      text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
                       
-                       date: deliveries + surveyss + assignmentss
+                      date: surveyss + deliveries + assignmentss
                                             
                   }
         }
