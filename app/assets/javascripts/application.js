@@ -72,6 +72,7 @@ $(function() {
 		if (data.creator){
 			name = (data.creator.first_name && data.creator.last_name) ? data.creator.first_name +' '+ data.creator.last_name : data.creator.email;
 		} 
+		console.log(data);
 		switch(data.notification.kind){
 			case 'user_comment_on_network':
 			notification = ['<li class="unread" onclick="me(type,id)">',
@@ -128,6 +129,13 @@ $(function() {
 			'<b>'+name+'</b> comentó en el tu comentario <br/>',
 			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
 			'</li>'];
+			break;			
+			case "new_assignment_on_delivery":
+				notification = ['<li class="unread" onclick="me(type,id)">',
+				'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
+				data.creator.first_name +' '+data.creator.last_name +'ha respondido una tarea, <a href="/courses/'+data.notificator.course_id+'">ver<br/>',
+				'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
+				'</li>'];
 			break;
 			default :
 				notification = ['<li class="unread" onclick="me(type,id)">',
