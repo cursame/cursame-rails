@@ -737,7 +737,8 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
          margin-top:-13px;
          border-bottom:solid #ccc 1px;
          text-align:justify;
-         
+         display: block;
+         height:150px;
          & .title{
              font-size:16px;
              color:#293433;
@@ -753,7 +754,6 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
               position:absolute;
               margin-top:30px;
               margin-left:50px;
-              height:20px;
               width: 345px;
               line-height: 15px;
          }
