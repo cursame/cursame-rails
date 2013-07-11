@@ -65,16 +65,9 @@ Cursame30Lb::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   HOST = "cursalab.com"
   config.action_mailer.default_url_options = { :host => 'cursame.com' }
-  # Action Mailer
-  #ActionMailer::Base.smtp_settings = {
-  #  :address        => '50.116.21.144',
-  #  :port           => '25',
-  #  :authentication => 'plain',
-  #  :user_name      => 'wichobabas',
-  #  :password       => 'qor43e95',
-  #  :domain         => 'mail.cursame.me'
-  #}
-  #ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.delivery_method = :ses
+  config.middleware.use ExceptionNotifier,
+    :sender_address => %{"notifier" <error-notifier@cursa.me>},
+    :exception_recipients => %w{desarrollo@cursa.me}
 
 end
