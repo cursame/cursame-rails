@@ -139,7 +139,16 @@ class HomeController < ApplicationController
             format.js
           end
      end  
-
+  # -----------------------------
+  # chat behaviour of cursame
+  # -----------------------------
+  
+  def render_notifications
+    @notification = Notification.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end 
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------

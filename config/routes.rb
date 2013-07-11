@@ -349,6 +349,7 @@ Cursame30Lb::Application.routes.draw do
 
    get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
+   get "home/render_notifications", :to => "home#render_notifications", :as => :render_notifications
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------

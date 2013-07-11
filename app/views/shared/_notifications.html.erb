@@ -49,15 +49,24 @@ notifications_last = notifications.pop
 	</div>
 </div>
 <%= subscribe_to "/notifications/"+current_user.id.to_s %>
-<%end%>
+
 <script>
-me = function (type,id) {
-	var form = $('#wall_search'),
-		filter={
-			search:type,
-			id:id,
-			page:1
+	me = function (type,id) {
+		var form = $('#wall_search'),
+			filter={
+				search:type,
+				id:id,
+				page:1
+			};
+		$.get(form.action,$.param(filter),null,"script");
+	}
+	// rendering notifications
+	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", function(data, channel){
+		var params = {
+			id:data.notification.id
 		};
-	$.get(form.action,$.param(filter),null,"script");
-}
+	    $('#notifications_count span').html(data.num*1);
+	    $.get('/home/render_notifications',$.param(params),null,"script");
+	});
 </script>
+<%end%>
