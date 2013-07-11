@@ -119,3 +119,6 @@ gem "daemons"
 
 # Amazon SES
 gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
+
+# Exception Notifier Plugin for Rails
+gem 'exception_notification', '~> 3.0.1'
