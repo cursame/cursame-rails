@@ -313,7 +313,7 @@ class CoursesController < ApplicationController
         deliveries.push(
           {
               startDate: del.publish_date,
-              endDate: del.end_date,
+			        endDate: del.end_date,
               headline:("#{del.title}").delete("\n"),
               text:("Tarea: #{del.description}").delete("\n"),
               asset:
@@ -360,7 +360,7 @@ class CoursesController < ApplicationController
             assignmentss.push(
                 {
                     startDate: as.created_at,
-                    endDate: as.created_at,
+      			        endDate: as.created_at,
                     headline:("#{as.title}").delete("\n"),
                     text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
@@ -396,7 +396,7 @@ class CoursesController < ApplicationController
           surveyss.push(
               {
                   startDate: survey.created_at,
-                  endDate: survey.created_at,
+    			        endDate: survey.created_at,
                   headline:("#{survey.name}").delete("\n"),
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:

@@ -12,19 +12,18 @@
     </style>
   </head>
 
-  <body background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/utiles.jpg" style="background-position: top center;">
+  <body background="http://<%= @user.devise_mailer_subdomain %>.<%= @user.ubication %>/assets/mails/utiles.jpg" style="background-position: top center;">
 
     <center>
     <table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
       <tr>
-        <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/
-            /logo_welcome.png";>
-          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;">Notificaci&oacoute;</b></h1>
+        <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/logo_welcome.png";>
+          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;">Notificación</b></h1>
         </td>
       </tr>
       <tr>
         <td style="padding:0px 30px 20px 30px;" width="600px">
-          <p>Hola  <%= @user.email %> hay una nueva tarea titulada <%=@delivery.title%>, que comenzar&acuote; el <%=@delivery.publish_date%> y terminar&acuote; el <%=@delivery.end_date%> .</p>
+          <p>Hola  <%= @user.email %> hay una nueva tarea titulada <%=@delivery.title%>, que comenzará el <%=@delivery.publish_date%> y terminará el <%=@delivery.end_date%> .</p>
         </td>
       </tr>
       <tr>
