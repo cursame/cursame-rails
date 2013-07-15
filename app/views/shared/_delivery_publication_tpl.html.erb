@@ -138,9 +138,13 @@
 <div class="delivery-box">
     <div class="green-btn">
         <div class="labels">
-            <% if delivery.state == "published"%>
+            <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty?%>
             <div id="open-close-<%= delivery.id %>">
                 <a>Responder</a>
+            </div>
+            <%else%>
+            <div>
+                <%= link_to "Editar Entrega", root_path %>
             </div>
             <%end%>
         </div>
