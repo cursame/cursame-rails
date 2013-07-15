@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class SuperadmninController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:instructions]
   #skip_before_filter :authenticate_user!, :only => [:create_super_admin]

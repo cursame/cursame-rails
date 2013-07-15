@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
 
