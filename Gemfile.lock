@@ -50,6 +50,11 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    aws-ses (0.5.0)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
     carrierwave (0.8.0)
@@ -86,6 +91,8 @@ GEM
       eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
     eventmachine (1.0.0)
+    exception_notification (3.0.1)
+      actionmailer (>= 3.0.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
     extlib (0.9.16)
@@ -253,6 +260,7 @@ GEM
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.3)
+    xml-simple (1.1.2)
     yajl-ruby (1.1.0)
     youtube_it (2.2.1)
       builder
@@ -270,6 +278,7 @@ DEPENDENCIES
   acts_as_commentable
   acts_as_votable (~> 0.5.0)
   auto_html
+  aws-ses (~> 0.5.0)
   bcrypt-ruby (~> 3.0.0)
   carrierwave
   daemons
@@ -278,6 +287,7 @@ DEPENDENCIES
   devise
   dropbox-api
   dropbox-sdk (~> 1.5.1)
+  exception_notification (~> 3.0.1)
   execjs
   geocoder
   google-api-client

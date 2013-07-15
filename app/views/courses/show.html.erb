@@ -4,8 +4,13 @@
  <div id="noticce">
   <div id="notice" class="notice"></div>
  </div>
- <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
-
+ <% permitted_to? :create, :courses do %>
+ 
+        <% if @member.owner == true %>
+         <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
+ 
+        <%end%>
+ <% end %>
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
@@ -219,6 +224,9 @@
                        <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
                       <%else%>
                 <%end%>
+                
+                       	 <!-- <span class="toolTipUser"><p>HOla</p></span> -->
+                         
                 <%else%>
                 <% if @member.accepted == true %>
                         <% if @members != nil%>
@@ -229,8 +237,9 @@
                 <%end%>
                 <%end%>
             <%end%>
-            <% if current_role == 'admin' || 'superadmin'%>
-            <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
+             <% if current_role == 'admin'%>
+            
+                <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
 
               <%else%>
              <% if @member.owner == true %>

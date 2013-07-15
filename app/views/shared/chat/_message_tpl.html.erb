@@ -1,11 +1,9 @@
-<div style="padding: 4px 10px;
-width: 209px;
-margin-left: -5px;
-margin-bottom: 6px;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;">
-	<span style="font-family: arial; color: #111; font-size: 11px; font-weight: lighter; margin-bottom: 4px; height:auto; min-height:50px;">
-		<%=image_tag(message.user.avatar.profile || message.user.image_avatarx,:style => "float:left; width:20px; height:20px; margin-top:-4px;")%><p style="float:left; margin-left:5px;"> : <%= message.mesage_html %> </p></span> 
+<div class="insideChat">
+	<span class="insideChatText">
+		<div class="imgChat"><%=image_tag(message.user.avatar.profile || message.user.image_avatarx,:style => "float:left; width:20px; height:20px; margin-top:-4px;")%>
+		<span class="toolTipUser"><p><%= message.user.name %></p></span>
+		</div>
+		
+		<p style="float:left; margin-left:5px;"> &nbsp; <%= message.mesage_html %> </p></span>
 </div>
 <div style="clear:both"></div>

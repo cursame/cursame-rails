@@ -151,31 +151,30 @@ class NetworksController < ApplicationController
     user = current_user
     network = current_network
     @possible_friends = user.possible_friends(network)
-    # All users in the current_network without friend request
     @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
 
     @friends = user.friendships
-    @friends = @friends.map {
+    @friends_array = Array.new
+    @friends = @friends.each {
       |friendship|
       if friendship.accepted then
-        [friendship.friend, "friend"]
+        @friends_array.push([friendship.friend, "friend"])
       else
-        [friendship.friend,"friend_requested"]
+        @friends_array.push([friendship.friend,"friend_requested"])
       end
     }
-
     @inverse_friends = user.inverse_friendships
-    @inverse_friends = @inverse_friends.map {
+    @inverse_friends_array = Array.new
+    @inverse_friends = @inverse_friends.each {
       |friendship|
       if friendship.accepted then
-        [friendship.user, "friend"]
+        @inverse_friends_array.push([friendship.user, "friend"])
       else
-        [friendship.user, "accept_request"]
+        @inverse_friends_array.push([friendship.user, "accept_request"])
       end
-    }
-    @network_users = @possible_friends + @friends + @inverse_friends
+     }
+    @network_users = @possible_friends + @friends_array + @inverse_friends_array
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
-
     @network_users = @network_users.reject {|array| array[0].nil? }
   end
 

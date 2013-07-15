@@ -4,7 +4,7 @@
 	</div>
 
 	<!-- notification -->
-	<div id="box-messages-notifications" style="display:none;">
+	<div id="box-messages-notifications" style="display:none; margin-left:-35px;">
 		<div id="" class="comment-text" >
 			<div class="arrow-top"></div>
 			<div class="header">
@@ -33,7 +33,7 @@
 		<%end%>
 		<span class="titleBrakerSecondary">Amigos conectados</span>
 		<% @friends_online.each do |user|%>
-		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
+		    <div><%= link_to user.name || user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>
        </div>
 	</div>

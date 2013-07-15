@@ -70,9 +70,10 @@ class ApplicationController < ActionController::Base
        when Rails.env == 'development'
          @link = 'lvh.me:3000'
        when Rails.env == 'production'
-         @link = 'cursatest.com'
+         #@link = 'cursatest.com'
+          @link = 'cursame.com'
        when Rails.env == 'test'
-         @link = 'cursatest.com'
+         #@link = 'cursatest.com'
        when Rails.env == 'subtest'
          @link = 'cursalab.com'
 
@@ -232,7 +233,7 @@ class ApplicationController < ActionController::Base
     else
       chat_title = ''
       channel.users.reject{ |user| user.id == current_user.id }.first(3).each_with_index do |u, index|
-        chat_title += u.email + ' '
+        chat_title += u.name + ' '
       end
       return chat_title
     end

@@ -327,6 +327,10 @@ input:-moz-placeholder {
   }
 
 
+  	.footer:hover {
+	  	
+  	}
+
    .footer > .deleteComment {
 	display: none;
 	}
@@ -336,6 +340,8 @@ input:-moz-placeholder {
 	display: inline-block;
 	margin-top: 5px;
     }
+    
+
 
   & .comment-image{
     width: $comment-box;
@@ -1165,6 +1171,17 @@ background-position: left center;
   }
 }
 
+
+#box-friends a img .toolTipUser {
+		visibility: hidden;
+		transition: all ease-in 0.4;
+}
+#box-friends a img:hover + .toolTipUser {
+		visibility: visible;
+		transition: all ease-in 0.4;
+}
+
+
 .view-all{
   clear: both;
   @include border-b-right-radius;
@@ -1492,6 +1509,9 @@ background-position: left center;
     color: #666;
     padding: 0px 10px 0px 3px;
     font-family: HelvLight;
+  }
+  & .admin-access{
+    margin-left: -20px;
   }
 }
 

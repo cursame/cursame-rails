@@ -8,17 +8,8 @@ class MembersInCourse < ActiveRecord::Base
       if (!accepted[0] and accepted[1])
         mail = Notifier.accepted_message(self,self.course)
         mail.deliver
+        Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
       end
-    end
-  end
-
-  after_create do
-=begin
-    mail = Notifier.new_member_in_course(self,self.course)
-    mail.deliver
-=end
-    if self.owner.nil? then
-      Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
     end
   end
 

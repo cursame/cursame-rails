@@ -27,8 +27,16 @@ class Notification < ActiveRecord::Base
     when "user_comment_on_comment"#---
       owner = self.notificator.user
       creator = self.notificator.user
+    when "new_assignment_on_delivery"
+      owner = self.notificator.delivery
+      creator = self.notificator.user
+    when "user_request_friendship"
+      creator = self.notificator.friend
+    when "user_accepted_friendship"
+      creator = self.notificator.user
     end
 
+    ActiveRecord::Base.connection.close
     self.users.each do |user|
       Thread.new {
         PrivatePub.publish_to("/notifications/"+user.id.to_s,

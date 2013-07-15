@@ -65,84 +65,8 @@ function changeNumbers(idParent, idFind){
 }
 //notificaciones push usando private_pub
 $(function() {
-	PrivatePub.subscribe ("/notifications/"+Cursame.userId, function(data, channel){
-		$('#notifications_count span').html(data.num*1);
-		var notification = "", type = data.notification.notificator_type, id=data.notification.id;
-		var creator;
-		if (data.creator){
-			name = (data.creator.first_name && data.creator.last_name) ? data.creator.first_name +' '+ data.creator.last_name : data.creator.email;
-		} 
-		switch(data.notification.kind){
-			case 'user_comment_on_network':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="'+data.creator.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
-			'<b>'+name+'</b> comentó en la red <b>'+data.owner.name+'</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'user_comment_on_course':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="'+data.creator.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
-			'<b>'+name+'</b> comentó en el curso <b>'+data.owner.title+'</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'new_public_course_on_network':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nuevo curso <b>'+data.notificator.title+'</b> en tu red <b>'+data.owner.name+'</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'new_delivery_on_course':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nueva tarea <b>'+data.notificator.title+'</b> en tu curso <b>'+data.owner.title+'</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'new_survey_on_course':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'new_survey_on_course':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'user_comment_on_discussion':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			case 'user_comment_on_comment':
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'<b>'+name+'</b> comentó en el tu comentario <br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-			default :
-			notification = ['<li class="unread" onclick="me(type,id)">',
-			'<img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">',
-			'Nuevo curso <b>Ecuasiones de 2o Grado</b> en tu red <b>Cúrsame</b><br/>',
-			'<span class="time">'+jQuery.timeago(data.notification.created_at)+'</span>',
-			'</li>'];
-			break;
-		}
-		$('#notifications_list').prepend(notification.join(''));
-	});
-	
 	// notificaciones para el chat
 	PrivatePub.subscribe ("/messages/notifications_user_"+Cursame.userId, function(data, channel){
-
 		var url,notification,numNotifications
 			channelType = data.channel.channel_name.split('course_channel_');		
 			url= channelType[1] ? '/home/open_channel/'+channelType[1]+'?course=true':'/home/open_channel/'+data.sender.id;		
@@ -162,7 +86,7 @@ $(function() {
 	    	}
 		}
 		else{
-			numNotifications = $('#messages-notifications-count span').html()*1
+			numNotifications = $('#messages-notifications-count span').html()*1;
 			$('#messages-notifications-count span').html(numNotifications+1);
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}		

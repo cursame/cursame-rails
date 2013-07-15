@@ -31,7 +31,7 @@
         <div id="full-deliveries-area">
             <div>
                 <!--no comentar porque se neutraliza el metodo en ajax-->
-                <%= link_to "Atualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %> 
+                <div class="updateW"><%= link_to "Actualizar información", user_acces_courses_path, :remote => true ,:id =>"update_courses_information" %></div>
             </div> 
           <div id="actual_resources">
           <% @course_for_user = current_user.courses.where(:active_status => true)%>
@@ -40,7 +40,7 @@
         </div><!-- ends full-deliveries-area -->
         
         <div id="my_old_courses">
-            <%= link_to "Actualizar información", user_old_courses_path, :remote => true ,:id =>"update_old_courses_information"%>
+            	<div class="updateW"><%= link_to "Actualizar información", user_old_courses_path, :remote => true ,:id =>"update_old_courses_information"%></div>
             <div id="old_resources" >
                 <% @old_course_for_user = current_user.courses.where(:active_status => false)
                 %>

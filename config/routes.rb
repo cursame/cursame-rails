@@ -349,6 +349,7 @@ Cursame30Lb::Application.routes.draw do
 
    get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
+   get "home/render_notifications", :to => "home#render_notifications", :as => :render_notifications
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------
@@ -380,6 +381,11 @@ Cursame30Lb::Application.routes.draw do
     get "content/orkut"
 
     get "content/khanacademy"
+
+  #paginas de errores
+  match '/404', :to => 'home#not_found'
+  match '/422', :to => 'home#server_error'
+  match '/500', :to => 'home#server_error'
 
    # api para la mobile
    #this is for api for the mobile app
