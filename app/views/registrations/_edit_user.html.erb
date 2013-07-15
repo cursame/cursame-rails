@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "default-form user-edit-form"}) do |f| %>
+<% resource = User.find(user_id)%>
+<% resource_name = :user%>
+<%= form_for(resource, :as => :user, :url => registration_path(resource_name), :html => { :method => :put, :class => "default-form user-edit-form"}) do |f| %>
 <div id="edituserdmenu">
     <h3>Editar Usuario</h3>
     <div class="box-avatar">
@@ -7,7 +9,7 @@
       <div class="box-image">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr>
-          <td><%= image_tag(current_user.avatar.profile, :class => "avatar-mini avatar")%></td>
+          <td><%= image_tag(resource.avatar.profile, :class => "avatar-mini avatar")%></td>
           <td><%= f.file_field :avatar, :class=> 'stylize' %></td>
           </tr>
           <tr>
@@ -26,7 +28,7 @@
       <div class="box-image">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr>
-          <td><%= image_tag(current_user.coverphoto, :class => "avatar-mini cover")%></td>
+          <td><%= image_tag(resource.coverphoto, :class => "avatar-mini cover")%></td>
           <td><%= f.file_field :coverphoto, :class=> 'stylize' %></td>
           </tr>
           <tr>
@@ -47,7 +49,6 @@
       </div>
     </div><!-- ends box-image -->
 
-  <%= devise_error_messages! %>
   <div class="box-fields edituser">
       <div class="leftlabel">
         <%= f.label :Nombre %>
@@ -75,10 +76,6 @@
         <div style="float:left; clear: both;">
         <div class="personal-url-label" style="padding-top:10px;">http://cursa.me/users/</div><%= f.text_field :personal_url, :class => 'personal-url' %></div>
       </div>
-      <div class="rightlabel">
-        <%= f.label :confirma_tus_cambios %>
-        <%= f.password_field :current_password, :placeholder => 'Contraseña' %>
-      </div>
       <div class="passsctn" style="clear: both;background: #eee;width: 526px;height: 80px; padding: 0px 10px; margin-left: -10px; top: 13px; margin-bottom:20px; position: relative; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">
         <div class="leftlabel">
           <div><%= f.label :nuevo_password %>
@@ -89,14 +86,12 @@
             <div><%= f.label :confirma_el_password %><br />
             <%= f.password_field :password_confirmation %></div>
       </div>
+      <%= f.hidden_field :user_id, :value => resource.id %>
     </div><!-- ends   -->
 
   </div><!-- ends box-fields -->
 
   <div class="submit-area"></div>
-      <!-- <div><%= f.label :confirma_tus_cambios_colocando_tu_contraseña %>
-        <%= f.password_field :current_password %>
-      </div> -->
   <div class="submit-btns" style="margin-top:0px!important;float:right!important;"><%= f.submit "Actualizar" %><%= link_to "Regresar", :back, :class => "a-btn" %></div>
 
   </div><!-- ends edituserdmenu -->

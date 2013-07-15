@@ -8,7 +8,7 @@
   </p>
 <% end %>
 <div>
- <% @users[0..0].each do |user|%>
+ <% @users.each do |user|%>
           <div class="gray_box">
             <div class="user_name">
                 <%= image_tag(user.avatar.modern) if ( !user.avatar.blank?)%>
@@ -63,7 +63,7 @@
 
           <div class="container_user_edit<%=user.id%> container_activity" style="display: none">
 
-                   <%= render :partial => '/registrations/edit_user' ,:locals => { :user_id => user.id }%>
+           <%= render :partial => '/registrations/edit_user' ,:locals => { :user_id => user.id }%>
 
           </div>
  <%end%>
