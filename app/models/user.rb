@@ -449,4 +449,5 @@ class User < ActiveRecord::Base
     end
     return average/size
   end
+
 end
