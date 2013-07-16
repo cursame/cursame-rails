@@ -7,8 +7,6 @@ class RegistrationsController < Devise::RegistrationsController
       params[:user].delete("password_confirmation")
     end
     if !params[:user][:user_id].blank?
-     # @user = User.find(current_user.id)
-    #else
       @user = User.find(params[:user][:user_id])
       user = User.find(current_user.id)
       params[:user].delete("user_id")
