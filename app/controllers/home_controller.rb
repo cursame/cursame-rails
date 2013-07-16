@@ -156,6 +156,7 @@ class HomeController < ApplicationController
   def chat
       @channel = Channel.new
       @messages = @channel.mesages
+      @show_chat_panel = false
       respond_to do |format|
           format.html
       end

@@ -276,6 +276,7 @@ class ApplicationController < ActionController::Base
     if current_user
       @friends_online = current_user.friends(true)
       @courses_online = current_user.courses
+      @show_chat_panel = true
     end
   end
 end
