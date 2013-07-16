@@ -248,29 +248,42 @@ $(document).ready(function() {
 
             var valid = $(value).find('#comment-post-form').valid(),
                 me = this;
+            // colapsamos los menus
+            resetForm($(value).find('form'));
+                /* elimina los contenidos*/
+                 $(".content_free").html('');
+                 $(".content_wikipedia").html('');
+                 $(".content_killer").html('');
+                 $(".choser").html('');
+                 $('.youtube_content_delivery').hide();
 
+            $('label.error').remove();
+
+            $('#post-forms').animate({
+                height: '0'
+            }, time);
+            $(this).parent().parent().animate({
+                opacity: 0
+            }, time, function() {
+                $(this).css('display','none');
+            });
+            $('#profile-form-options').css('display','block');
+            $('#profile-form-options').animate({
+                opacity: 1,
+                height: prePostHeight,
+                marginTop: prePostMarginTop,
+                marginLeft: prePostMarginLeft,
+                marginRight: prePostMarginRight,
+                marginBottom: prePostMarginBottom
+            }, time);
+
+            //para validar los errores
             setTimeout(function (argument) {
                 if ($('label.error').length) {
                     return false;
                 }
                 else{
-                    $('#post-forms').animate({
-                        height: '0'
-                    }, time);
-                    $(me).parent().parent().animate({
-                        opacity: 0
-                    }, time, function() {
-                        $(me).css('display','none');
-                    });
-                    $('#profile-form-options').css('display','block');
-                    $('#profile-form-options').animate({
-                        opacity: 1,
-                        height: prePostHeight,
-                        marginTop: prePostMarginTop,
-                        marginLeft: prePostMarginLeft,
-                        marginRight: prePostMarginRight,
-                        marginBottom: prePostMarginBottom
-                    }, time);
+                     resetForm($(value).find('form'));
                 }
             },500);
         });
