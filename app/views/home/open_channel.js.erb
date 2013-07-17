@@ -5,11 +5,13 @@ if(!$('#chat-channel-<%= @channel.id%>').length) {
 	
 
 	if(window.chatPanelsCount > 3){
-		$('body').append(
-		'<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
-			:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+		if(window.chatPanelsCount == 4){
+			$('body').append(
+				'<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
+					:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+		}
 	}
-	else{
+	else {
 		$('body').append(
 		'<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
 			:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
