@@ -7,7 +7,7 @@ task :migration_networks => :environment do
 
   a = Time.now
   puts "Procesando"
-"
+
   CSV.foreach(path, headers: true) do |row|
     #begin
     puts row["name"].class
