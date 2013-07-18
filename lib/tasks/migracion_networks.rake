@@ -9,7 +9,7 @@ task :migration_networks => :environment do
   puts "Procesando"
 
   CSV.foreach(path, headers: true) do |row|
-    begin
+    #begin
       if Network.find_by_subdomain(row["subdomain"]) then
         puts "Network Subdomain Repetido: " + row["subdomain"]
         puts "Network Name: " + row["name"]
@@ -20,10 +20,10 @@ task :migration_networks => :environment do
         puts "Network Name: " + row["name"] if (count == 1)
         print count.to_s + " "
       end
-    rescue
+    #rescue
       puts "\nError Name: " + row["name"]
       puts "\nError Linea: " + count.to_s
-    end
+    #end
     count += 1
   end
   puts ""
