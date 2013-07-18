@@ -9,21 +9,21 @@ task :migration_networks => :environment do
   puts "Procesando"
 
   CSV.foreach(path, headers: true) do |row|
-    #begin
+    begin
       if Network.find_by_subdomain(row["subdomain"]) then
         puts "Network Subdomain Repetido: " + row["subdomain"]
         puts "Network Name: " + row["name"]
       else
         Network.create!(:name => row["name"], :subdomain => row["subdomain"],
-          :public_register => row["public_register"], :population => (row["population"] + 500),
+          :public_register => row["public_register"], :population => (row["population"].to_i + 500),
           :free => false)
         puts "Network Name: " + row["name"] if (count == 1)
         print count.to_s + " "
       end
-    #rescue
+    rescue
       puts "\nError Name: " + row["name"]
       puts "\nError Linea: " + count.to_s
-    #end
+    end
     count += 1
   end
   puts ""
