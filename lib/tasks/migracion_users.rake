@@ -18,9 +18,18 @@ task :migration_users => :environment do
           role_id = Role.find_by_title(row["role"]).id
           network_id = network.id
 
-          user = User.create!(:email => row["email"], :first_name => row["first_name"],
-            :last_name => row["last_name"], :about_me => row["about_me"],
-            :twitter_link => row["twitter_link"], :facebook_link => row["facebook_link"])
+          first_name = row["first_name"].nil? ? "" : row["first_name"]
+          last_name = row["last_name"].nil? ? "" : row["last_name"]
+          about_me = row["about_me"].nil? ? "" : row["about_me"]
+          twitter_link = row["twitter_link"].nil? ? "" : row["twitter_link"]
+          facebook_link = row["facebook_link"].nil? ? "" : row["facebook_link"]
+
+          password = (0...8).map{(65+rand(26)).chr}.join
+
+          user = User.create!(:email => row["email"], :first_name => first_name,
+            :last_name => last_name, :about_me => about_me, :twitter_link => twitter_link,
+            :facebook_link => facebook_link, :password => password)
+
           Permissioning.create!(:user_id => user.id, :role_id => role_id, :network_id => network_id)
 
           puts "Correo " + row["email"]
