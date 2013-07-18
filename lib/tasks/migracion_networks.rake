@@ -1,4 +1,5 @@
-task :migration => :environment do
+desc "Migracion de las networks"
+task :migration_networks => :environment do
 
   path = "public/imports/migracion_networks.csv"
 
