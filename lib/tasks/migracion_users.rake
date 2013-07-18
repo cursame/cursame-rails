@@ -26,7 +26,7 @@ task :migration_users => :environment do
           puts "Correo " + row["email"]
         end
       rescue
-        puts "\nError Name: " + row["name"]
+        puts "\nError Name: " + row["email"]
         puts "\nError Linea: " + count.to_s
       end
     end
