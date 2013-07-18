@@ -143,8 +143,8 @@
                 <a>Responder</a>
             </div>
             <%else%>
-            <div>
-                <%= link_to "Editar Entrega", root_path %>
+            <div id="open-close-<%= delivery.id%>">
+               <a>Editar Entrega</a>
             </div>
             <%end%>
         </div>
@@ -194,10 +194,10 @@
         $('#entrega-<%= delivery.id %>').show("slow");
        // $(this).toggle("slow");
        //  $(this).parent().parent().toggle("slow");
-        $('#entrega-<%= delivery.id %>>form>#cancel-post-form').click(function () {
+        $('#cancel-post-form-<%=delivery.id%>').click(function () {
             $("#open-close-<%= delivery.id %>").show();
             $("#open-close-<%= delivery.id %>").parent().parent().show();
-            $('#entrega-<%= delivery.id %>').hide();
+            $('#entrega-<%= delivery.id %>').hide("slow");
         });
     });
 
