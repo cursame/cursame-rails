@@ -6,7 +6,7 @@ task :migration_networks => :environment do
   count = 1
 
   a = Time.now
-  puts "Procesando
+  puts "Procesando"
 "
   CSV.foreach(path, headers: true) do |row|
     #begin
