@@ -198,7 +198,7 @@ class HomeController < ApplicationController
         end
      end
      def load_more_notfications
-        @notifications = current_user.notifications.paginate(:per_page => 1, :page => params[:page]).order("created_at DESC")
+        @notifications = current_user.notifications.paginate(:per_page => 10, :page => params[:page]).order("created_at DESC")
         @page = params[:page].to_i
         respond_to do |format|
          format.js
