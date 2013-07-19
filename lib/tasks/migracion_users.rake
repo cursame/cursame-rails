@@ -9,7 +9,7 @@ task :migration_users => :environment do
   puts "Procesando"
 
   CSV.foreach(path, headers: true) do |row|
-    if (count > 6267 and count <= 9000) then
+    if ((count > 6265 and count < 6268) or (count > 9000)) then
       begin
         network = Network.find_by_subdomain(row["network"])
         if network.nil? then
