@@ -1,5 +1,5 @@
 desc "Reenviando correos"
-task :resend => :enviroment do
+task :resend => :environment do
 
   puts "Preprocesado:"
   a = Time.now
