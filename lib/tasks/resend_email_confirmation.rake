@@ -1,0 +1,45 @@
+desc "Reenviando correos"
+task :resend => :enviroment do
+
+  puts "Preprocesado:"
+  a = Time.now
+
+  networks = Network.where(["created_at > ?", "2013-07-18 00:00:00 -0500".to_time])
+
+  users = Array.new
+
+  networks.each do |net|
+    if !net.users.nil? then
+      users = users + net.users
+    end
+  end
+
+  users.uniq!
+
+  users = users.sort{ |x,y| x.email <=> y.email }
+
+  puts "Preposcesado Terminado"
+  b = Time.now
+  puts "Tiempo total de preprocesado: " + (b-a).to_s
+
+  puts "Procesando correos:"
+
+  a = Time.now
+
+  count = 1
+
+  users.each do |user|
+    #if (count < 7000) then
+    user.resend_confirmation_token
+    print count.to_s + " "
+    #end
+    count += 1
+  end
+  puts ""
+
+  b = Time.now
+
+  puts "Terminado"
+  puts "Tiempo total:" + (b-a).to_s
+
+end
