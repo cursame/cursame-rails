@@ -43,7 +43,16 @@
     <%= f.hidden_field :user_id, :value => current_user.id if @assignment_id.nil?%>
     <%= f.hidden_field :user_id, :value => @assignment.user_id if !@assignment_id.nil?%>
     <%= f.hidden_field :id, :value => @assignment_id if !@assignment_id.nil? %>
-     <div id="<%=@labelIdBoxx%>" class="upload-label"></div></br>
+     <div id="<%=@labelIdBoxx%>" class="upload-label">      
+          <% @assignment.assets.each do |asset|%>            
+            <div class="file-mini-upload" id="file-mini-upload-<%=asset.id%>" >
+              <input type="hidden" name="files[]" value="<%= @asset.id%>">
+              <span><%=asset.file%></span>
+              <%= link_to "","/assets/"+asset.id.to_s,
+            :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :class =>'trash', :onclick => "$(this).parent().remove();"%>
+            </div>
+          <% end%>  
+     </div></br>
      <div style="margin-right:30px;">
     <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form-'+ @delivery_id.to_s %>
     <%= f.submit "Entregar Tarea" %>

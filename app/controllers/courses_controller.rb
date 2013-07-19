@@ -247,7 +247,7 @@ class CoursesController < ApplicationController
 
         assets = Array.new
         params[:files].each do |asset_id|
-          assets.push(Array.find(asset_id))
+          assets.push(Asset.find(asset_id))
         end
 
         destroy = @assignment.assets - assets
