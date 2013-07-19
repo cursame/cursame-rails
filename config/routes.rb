@@ -357,12 +357,16 @@ Cursame30Lb::Application.routes.draw do
   get "home/load_more_messages/:id", :to => 'home#load_more_messages', :as => :load_more_messages
   get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
+  #--------------
+  #NOTIFICATIONS
+  #---------------
+  get "home/load_more_notfications", :to => 'home#load_more_notfications', :as => :load_more_notfications
 
-   ####### rutas de estandarizacion de eventos
+  ####### rutas de estandarizacion de eventos
 
-   match 'focus/:id', :to => 'events#show', :as => :eventuable
+  match 'focus/:id', :to => 'events#show', :as => :eventuable
 
-   ####### ruta para creacion de timeline
+  ####### ruta para creacion de timeline
 
    get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
 
