@@ -56,11 +56,11 @@ class CoursesController < ApplicationController
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    
-    if request.xhr?      
+
+    if request.xhr?
       respond_to do |format|
         format.js
-      end           
+      end
     else
       respond_to do |format|
         format.html # show.html.erb
@@ -108,12 +108,12 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-      
+
       if @member.owner = true || current_role = "admin"
       else
         redirect_to :back
       end
-      
+
   end
 
   # POST /courses
@@ -209,9 +209,9 @@ class CoursesController < ApplicationController
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    
-    if current_role == "admin" 
-    else 
+
+    if current_role == "admin"
+    else
       if @member
         if @member.accepted
           # respond_to do |format|
@@ -233,12 +233,48 @@ class CoursesController < ApplicationController
   end
 
   def assigment
-    @assignment = Assignment.new(params[:assignment])
+    if params[:assignment]["id"].blank? then
+
+      @assignment = Assignment.new(params[:assignment])
+
+    else
+
+      @id = params[:assignment].delete("id")
+      @assignment = Assignment.find(@id)
+      @assignment.update_attributes(params[:assignment])
+
+      if params[:files] then
+
+        assets = Array.new
+        params[:files].each do |asset_id|
+          assets.push(Asset.find(asset_id))
+        end
+
+        destroy = @assignment.assets - assets
+
+        destroy.each do |asset|
+          asset.destroy
+        end
+
+        assignment_assets = @assignment.assets
+
+        assets.each do |asset|
+
+          if !assignment_assets.include?(asset) then
+            @assignment.assets.push(asset)
+          end
+        end
+
+      end
+
+      redirect_to :back
+      return
+    end
    # @content = Content.new(params[:content])
-    @assignment.user_id = current_user.id
+   #  @assignment.user_id = current_user.id
     @assignment.save!
 
-    if @assignment.save!
+    if @assignment.save! and @id.nil?
 
       # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
 
@@ -280,7 +316,7 @@ class CoursesController < ApplicationController
 
   def dashboard_deliver
   end
-  
+
   def course_ki_line
       @course = Course.find(params[:id])
       deliveries = []
@@ -289,13 +325,13 @@ class CoursesController < ApplicationController
       assets_assignmentss =[]
       assets_deliveries =[]
       #contents_assignmentss =[]
-      
+
       count_deliveries =  @course.deliveries.count
       count_surveys =  @course.surveys.count
-      
+
       counte_fact = count_deliveries + count_surveys
-      
-      
+
+
       @course.deliveries.each do |del|
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
@@ -306,14 +342,14 @@ class CoursesController < ApplicationController
           @avatar = "/assets/#{del.user.image_avatarx}"
         else
           @avatar = del.user.avatar.profile
-          
+
         end
-        
-        
+
+
         deliveries.push(
           {
               startDate: del.publish_date,
-			        endDate: del.end_date,
+              endDate: del.end_date,
               headline:("#{del.title}").delete("\n"),
               text:("Tarea: #{del.description}").delete("\n"),
               asset:
@@ -328,14 +364,14 @@ class CoursesController < ApplicationController
                 title:("#{del.title}").delete("\n"),
                 description:("#{del.description}").delete("\n")
               },
-              assets:assets_deliveries          
-              
+              assets:assets_deliveries
+
           }
-          
-       
+
+
         )
-        
-        
+
+
          del.assignments.each do |as|
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
@@ -343,7 +379,7 @@ class CoursesController < ApplicationController
                                         name:("#{@name}").delete("\n")
                                      })
            end
-=begin          
+=begin
            as.contents.each do |ca|
              @name = ca.content.to_s.split('/').last
              contents_assignmentss.push( {file: ca.content,
@@ -360,7 +396,7 @@ class CoursesController < ApplicationController
             assignmentss.push(
                 {
                     startDate: as.created_at,
-      			        endDate: as.created_at,
+                    endDate: as.created_at,
                     headline:("#{as.title}").delete("\n"),
                     text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
@@ -373,19 +409,19 @@ class CoursesController < ApplicationController
                     { id: as.id,
                       type: 'entrega_tarea',
                       title: ("#{as.title}").delete("\n"),
-                      description: ("#{as.brief_description}").delete("\n"), 
-                    }, 
-                    assets: assets_assignmentss  #+ contents_assignmentss  
-                        
-                    
+                      description: ("#{as.brief_description}").delete("\n"),
+                    },
+                    assets: assets_assignmentss  #+ contents_assignmentss
+
+
                 }
-            
+
             )
-            
+
           end
-        
+
       end
-      
+
       @course.surveys.each do |survey|
           if survey.user.avatar.blank?
             @avatar = "/assets/#{survey.user.image_avatarx}"
@@ -396,7 +432,7 @@ class CoursesController < ApplicationController
           surveyss.push(
               {
                   startDate: survey.created_at,
-    			        endDate: survey.created_at,
+                  endDate: survey.created_at,
                   headline:("#{survey.name}").delete("\n"),
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
@@ -408,15 +444,15 @@ class CoursesController < ApplicationController
                   compose:
                   {   id: survey.id,
                       type: 'examen',
-                      title: ("#{survey.name}").delete("\n") 
+                      title: ("#{survey.name}").delete("\n")
                   }
               }
-          
+
           )
       end
       if counte_fact != 0
       respond_to do |format|
-      format.html    
+      format.html
       format.json { render json:
         {
         timeline: {
@@ -424,23 +460,23 @@ class CoursesController < ApplicationController
                       type:"default",
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
-                      
+
                       date: surveyss + deliveries + assignmentss
-                                            
+
                   }
         }
       }
       end
       end
   end
-  
-  
+
+
   def activities_depot
     @course = Course.find(params[:id])
    # @render = ("#{course_ki_line_path(@course)}.json").to_s
-    
+
   end
-  
+
   ######  formato para responder la jamada de ajax con js
 
   def call_assignments_response
@@ -454,7 +490,7 @@ class CoursesController < ApplicationController
       format.js
     end
   end
-  
+
   def course_assignment
     @assignment = Assignment.find(params[:id])
      respond_to do |format|
@@ -463,16 +499,16 @@ class CoursesController < ApplicationController
         format.js
       end
   end
-  
+
   def course_survey
     @responces = UserSurvey.find(params[:id])
-    
+
      respond_to do |format|
         #format.html
         format.json
         format.js
       end
-    
+
   end
 
   def delivery_menu
