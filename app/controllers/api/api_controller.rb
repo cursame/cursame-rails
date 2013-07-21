@@ -212,11 +212,6 @@ class Api::ApiController < ApplicationController
   private
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
-    # @notifications_chanel = nil
-    # if PrivatePub.signature_expired?
-      #@notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
-    # end
-
     @network = @user.networks[0]
     if @user.nil?
       logger.info("Token not found.")

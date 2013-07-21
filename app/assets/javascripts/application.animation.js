@@ -246,19 +246,9 @@ $(document).ready(function() {
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#comment-post-form').click(function() {
 
-            var valid = $(value).find('#comment-post-form').valid(),
-                me = this;
-            // colapsamos los menus
-            resetForm($(value).find('form'));
-                /* elimina los contenidos*/
-                 $(".content_free").html('');
-                 $(".content_wikipedia").html('');
-                 $(".content_killer").html('');
-                 $(".choser").html('');
-                 $('.youtube_content_delivery').hide();
-
-            $('label.error').remove();
-
+            // var valid = $(value).find('#comment-post-form').valid(),
+            //     me = this;
+            
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -279,12 +269,17 @@ $(document).ready(function() {
 
             //para validar los errores
             setTimeout(function (argument) {
-                if ($('label.error').length) {
-                    return false;
-                }
-                else{
-                     resetForm($(value).find('form'));
-                }
+                // if ($('label.error').length) {
+                //     return false;
+                // }
+                // else{
+                    resetForm($(value).find('form'));
+                    $(".content_free").html('');
+                    $(".content_wikipedia").html('');
+                    $(".content_killer").html('');
+                    $(".choser").html('');
+                    $('.youtube_content_delivery').hide();
+                // }
             },500);
         });
 

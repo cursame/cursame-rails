@@ -143,8 +143,8 @@
                 <a>Responder</a>
             </div>
             <%else%>
-            <div>
-                <%= link_to "Editar Entrega", root_path %>
+            <div id="open-close-<%= delivery.id%>">
+               <a>Editar Entrega</a>
             </div>
             <%end%>
         </div>
@@ -155,7 +155,7 @@
 <%end%>
 <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
     <% @delivery_id=delivery.id%>
-        <%=render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => cargo}%>
+    <%=render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => cargo}%>
 </div>
 
  <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
@@ -194,10 +194,10 @@
         $('#entrega-<%= delivery.id %>').show("slow");
        // $(this).toggle("slow");
        //  $(this).parent().parent().toggle("slow");
-        $('#entrega-<%= delivery.id %>>form>#cancel-post-form').click(function () {
+        $('#cancel-post-form-<%=delivery.id%>').click(function () {
             $("#open-close-<%= delivery.id %>").show();
             $("#open-close-<%= delivery.id %>").parent().parent().show();
-            $('#entrega-<%= delivery.id %>').hide();
+            $('#entrega-<%= delivery.id %>').hide("slow");
         });
     });
 

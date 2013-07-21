@@ -16,7 +16,7 @@ var Cursame ={
 </script>
 <!-- tratamos las notificaciones para agregarles el css first y last-->
 <%
-notifications = current_user.notifications.order("created_at DESC")
+notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
 notifications_first = notifications.shift
 notifications_last = notifications.pop
 %>
@@ -44,7 +44,9 @@ notifications_last = notifications.pop
 		</div>
 
 		<div class="footer">
-			<b>Ver todas</b>
+			<b id = "load-more-notifications">
+				<%= link_to "Ver mas ...", load_more_notfications_path("page" => 2), :remote => true%>
+			</b>
 		</div>
 	</div>
 </div>
