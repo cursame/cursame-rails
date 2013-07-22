@@ -28,11 +28,16 @@ task :resend => :environment do
 
   count = 1
 
+  o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+
   users.each do |user|
-    if (count > 7081) then
-      user.resend_confirmation_token
-      print count.to_s + " "
-    end
+    #if (count > 7081) then
+      #user.resend_confirmation_token
+      #print count.to_s + " "
+    #end
+    string  =  (0...50).map{ o[rand(o.length)] }.join
+    user.personal_url = string
+    user.save!
     count += 1
   end
   puts ""
