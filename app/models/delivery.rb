@@ -1,7 +1,7 @@
 class Delivery < ActiveRecord::Base
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
  :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses, :areas_of_evaluations,
- :areas_of_evaluation,:contents, :contents_attributes
+ :areas_of_evaluation,:contents, :contents_attributes, :expired?
 
   scope :active_inactive
   scope :courses
@@ -67,9 +67,11 @@ class Delivery < ActiveRecord::Base
   state_machine :state, :initial => :unpublish do
     state :unpublish
     state :published
+    
     event :publish do
       transition :to => :published, :from => :unpublish
     end
+    
   end
 
   before_create do
@@ -92,8 +94,8 @@ class Delivery < ActiveRecord::Base
 
   after_create do
     if self.publish_date <= DateTime.now
-      self.publish!
-    end
+       self.publish!
+  end
 
     Event.create(:title => self.title, :description => self.description, :starts_at => self.publish_date,
           :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id,
@@ -135,13 +137,24 @@ class Delivery < ActiveRecord::Base
   end
 
   def expired?
-    end_date < DateTime.now
+    if self.end_date < DateTime.now
+    @expired = true
+    else
+    @expired = false
+    end
+    
+    if  @expired == true
+       self.state = 'unpublish'
+       self.save!
+     end
   end
 
   def self.publish_new_deliveries
     Delivery.created.each do |delivery|
       if delivery.publish_date <= DateTime.now
-        delivery.publish!
+         if delivery.end_date >= DateTime.now
+         delivery.publish!
+         end
       end
     end
   end
