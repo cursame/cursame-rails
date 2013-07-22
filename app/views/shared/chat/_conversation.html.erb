@@ -47,7 +47,7 @@
 	// cerramos el chat
 	$("#close-chat-<%= channel.id%>").click(function () {
 		$("#chat-channel-<%= channel.id%>").remove();
-		PrivatePub.unsubscribe("<=%channel.channel_name%>");
+		PrivatePub.unsubscribe("<%=channel.channel_name%>");
 		window.chatPanelsCount--;
 	});   
 </script>

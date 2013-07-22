@@ -76,5 +76,8 @@ Cursame30Lb::Application.configure do
   #}
   #ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.delivery_method = :ses
+  config.middleware.use ExceptionNotifier,
+    :sender_address => %{"notifier" <error-notifier@cursa.me>},
+    :exception_recipients => %w{desarrollo@cursa.me}
 
 end

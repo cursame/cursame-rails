@@ -36,7 +36,7 @@ class Notification < ActiveRecord::Base
       creator = self.notificator.user
     end
 
-
+    ActiveRecord::Base.connection.close
     self.users.each do |user|
       Thread.new {
         PrivatePub.publish_to("/notifications/"+user.id.to_s,

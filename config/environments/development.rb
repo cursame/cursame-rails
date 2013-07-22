@@ -44,16 +44,6 @@ Cursame30Lb::Application.configure do
   #roles
   config.gem "declarative_authorization", :source => "http://gemcutter.org"
 
-  ### mailer ###
-  # ActionMailer::Base.smtp_settings = {
-  #    :address        => '50.116.21.144',
-  #    :port           => '25',
-  #    :authentication => 'plain',
-  #    :user_name      => 'wichobabas',
-  #    :password       => 'qor43e95',
-  #    :domain         => 'mail.cursame.me'
-  #  }
-  #  ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.delivery_method = :ses
 
 end
