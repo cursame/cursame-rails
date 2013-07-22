@@ -380,6 +380,12 @@ Cursame30Lb::Application.routes.draw do
     get "content/orkut"
 
     get "content/khanacademy"
+    
+  
+  ####### parents
+   # get "home/parents", :as => :parents
+   # get "home/my_son", :as => :my_son
+   # get "home/acces_on_course", :as => :acces_on_course
 
   #paginas de errores
   match '/404', :to => 'home#not_found'
