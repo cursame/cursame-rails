@@ -39,7 +39,7 @@ task :resend => :environment do
     #user.personal_url = string
     #user.save!
     #print count.to_s + " "
-    puts users.ubication
+    puts user.ubication
     raise
     count += 1
   end
