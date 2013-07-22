@@ -162,14 +162,16 @@ class User < ActiveRecord::Base
     end
     subdomain = @network ? @network.subdomain : ''
   end
-
+  
+  
+  ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
     case
        when Rails.env == 'development'
          @link = 'lvh.me:3000'
        when Rails.env == 'production'
-         @link = 'cursame.com'
+         @link = 'cursa.me'
        when Rails.env == 'test'
          @link = 'cursatest.com'
        when Rails.env == 'subtest'
