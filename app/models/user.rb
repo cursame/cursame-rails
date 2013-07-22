@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
        when Rails.env == 'test'
          @link = 'cursatest.com'
        when Rails.env == 'subtest'
-         @link = 'cursalab.com'
+         @link = 'cursa.me'
      end
   end
 
