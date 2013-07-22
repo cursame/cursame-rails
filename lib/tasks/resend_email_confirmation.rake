@@ -35,10 +35,12 @@ task :resend => :environment do
       #user.resend_confirmation_token
       #
     #end
-    string  =  (0...50).map{ o[rand(o.length)] }.join
-    user.personal_url = string
-    user.save!
-    print count.to_s + " "
+    #string  =  (0...50).map{ o[rand(o.length)] }.join
+    #user.personal_url = string
+    #user.save!
+    #print count.to_s + " "
+    puts users.ubication
+    raise
     count += 1
   end
   puts ""
