@@ -29,7 +29,7 @@ task :resend => :environment do
   count = 1
 
   users.each do |user|
-    if (count > 2429) then
+    if (count > 7081) then
       user.resend_confirmation_token
       print count.to_s + " "
     end
