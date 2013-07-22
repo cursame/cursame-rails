@@ -53,7 +53,7 @@ class Survey < ActiveRecord::Base
   after_create do
 
     if self.publish_date <= DateTime.now then
-      self.publish!
+       self.publish!
     end
 
     Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date,
@@ -80,13 +80,24 @@ class Survey < ActiveRecord::Base
   end
 
   def expired?
-     end_date < DateTime.now
-   end
+    if self.end_date < DateTime.now
+    @expired = true
+    else
+    @expired = false
+    end
+    
+    if  @expired == true
+       self.state = 'unpublish'
+       self.save!
+     end
+  end
 
    def self.publish_new_surveys
      Survey.unpublished.each do |survey|
        if survey.start_at <= DateTime.now
+         if survey.end_date >= DateTime.now
          survey.publish!
+         end
        end
      end
    end

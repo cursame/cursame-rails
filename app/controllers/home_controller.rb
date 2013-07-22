@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => [:index]
   helper_method :get_commentable
-
+ # layout 'landing', :only => [:index]
 
   def index
     if user_signed_in?
@@ -140,6 +140,68 @@ class HomeController < ApplicationController
           end
      end  
   # -----------------------------
+  # Develop for parents
+  # -----------------------------
+=begin  
+  def my_son
+     @id = params[:id]
+     @user = User.find(@id)
+     ##### comieza el acceso a surveys
+     @acces_to_survey = @user.user_surveys
+     ##### comienza el acceso a assignments
+     @acces_to_assignment = @user.assignments
+    
+     ##### comienza el acceso a cursos
+     @acces_to_courses = @user.courses.where(:active_status => true)
+     
+     #### promedio general
+      @general_potential = 0
+       @n = 0
+      
+       @acces_to_courses.each do |course|
+            @member = course.members_in_courses.where(:user_id => @user.id)
+             
+            @member.each do |c| 
+                eval = c.evaluation 
+                 @n = @n + 1
+                 @general_potential =  @general_potential+eval
+                
+           end
+      end
+       @general_potentia = @general_potential/ @n
+      
+  end
+  
+  def acces_on_course
+    id_course = params[:course_id]
+    id_user = params[:user_id]
+    @course = Course.find(id_course)
+    @user = User.find(id_user)
+    
+    ####### detectando si el usuario es miembro aprobado 
+    @member = MembersInCourse.find_by_user_id_and_course_id(id_user, id_course)
+    
+    if @member.accepted == true
+       @mensaje = "su hijo es miembro del curso"
+       ##### surveys actuales
+         @survey_now = @course.surveys.where(:state => 'published')
+        # puts @survey_now
+       ##### surveys pasados
+         @survey_old = @course.surveys.where(:state => 'unpublish')
+        # puts @survey_old
+       ##### deliveries actuales
+         @delivery_now = @course.deliveries.where(:state => 'published')
+        # puts @delivery_now
+       #### deliveries pasadas
+         @delivery_old = @course.deliveries.where(:state => 'unpublish')
+        # puts  @delivery_old
+    else
+       @mensaje = "su hijo  no ha sido aceptado en el curso"
+    end    
+    
+  end
+=end
+
   # chat behaviour of cursame
   # -----------------------------
   
@@ -217,6 +279,9 @@ class HomeController < ApplicationController
     render :status => 500, :formats => [:html]
   end
  
+  def parents
+    @tutors = current_user.tutors
+  end
 
   protected
   def save_comment
