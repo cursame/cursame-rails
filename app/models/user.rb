@@ -23,7 +23,10 @@ class User < ActiveRecord::Base
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
-
+  
+  # se agregan las relaciones para hijos no es necesaria esta relacion
+  #has_many :p_id_to_h_ids, :uniq => true, :dependent => :destroy 
+   
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
   #has_many :users_friends, :dependent => :destroy
@@ -104,7 +107,37 @@ class User < ActiveRecord::Base
   def friendships
     return Friendship.where(:user_id => self.id)
   end
+  
+ # def tutors
+ #   return PIdToHId.where(:p_id => self.id)
+ # end
+  
+#  def parents
+  #  return PIdToHId.where(:h_id => self.id)
+ # end
 
+  
+  before_destroy do
+    
+    #antes de destruir un usuario borra las relaciones de padres 
+    
+  #   self.parents.each do |parent|
+   #    parent.destroy
+  #   end
+   # self.tutors do |parents|
+    #   parents.destroy
+  #  end
+    #antes de destruir un usuario borra las relaciones de amigos 
+    
+    self.inverse_friendships.each do |friend|
+      friend.destroy
+    end
+    self.friendships.each do |firends|
+      friends.destroy
+    end
+    
+  end
+  
   def name
      "#{first_name} #{last_name}".strip
   end
