@@ -150,16 +150,15 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
-    @permissionings = self.permissionings.last
+    networks = self.networks
     subdomain = ''
-    if @permissionings.nil?
-      @network = Network.last
-    elsif @permissionings.network_id.nil?
-      @network = Network.last
+    if networks.nil?
+      network = Network.last
     else
-      @network = Network.find(@permissionings.network_id)
+      network = networks.last
     end
-    subdomain = @network ? @network.subdomain : ''
+    subdomain = network.subdomain
+    return subdomain
   end
 
 
