@@ -18,15 +18,15 @@ class User < ActiveRecord::Base
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
+  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms, :subdomain
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
-  
+
   # se agregan las relaciones para hijos no es necesaria esta relacion
-  #has_many :p_id_to_h_ids, :uniq => true, :dependent => :destroy 
-   
+  #has_many :p_id_to_h_ids, :uniq => true, :dependent => :destroy
+
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
   #has_many :users_friends, :dependent => :destroy
@@ -106,37 +106,35 @@ class User < ActiveRecord::Base
   def friendships
     return Friendship.where(:user_id => self.id)
   end
-  
+
  # def tutors
  #   return PIdToHId.where(:p_id => self.id)
  # end
-  
+
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
 
-  
+
   before_destroy do
-    
-    #antes de destruir un usuario borra las relaciones de padres 
-    
-  #   self.parents.each do |parent|
-   #    parent.destroy
-  #   end
-   # self.tutors do |parents|
+    #antes de destruir un usuario borra las relaciones de padres
+
+    #   self.parents.each do |parent|
+    #    parent.destroy
+    #   end
+    # self.tutors do |parents|
     #   parents.destroy
-  #  end
-    #antes de destruir un usuario borra las relaciones de amigos 
-    
+    #  end
+    #antes de destruir un usuario borra las relaciones de amigos
+
     self.inverse_friendships.each do |friend|
       friend.destroy
     end
     self.friendships.each do |firends|
       friends.destroy
     end
-    
   end
-  
+
   def name
      "#{first_name} #{last_name}".strip
   end
@@ -151,19 +149,10 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
-    @permissionings = self.permissionings.last
-    subdomain = ''
-    if @permissionings.nil?
-      @network = Network.last
-    elsif @permissionings.network_id.nil?
-      @network = Network.last
-    else
-      @network = Network.find(@permissionings.network_id)
-    end
-    subdomain = @network ? @network.subdomain : ''
+    return self.subdomain
   end
-  
-  
+
+
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
