@@ -151,7 +151,7 @@ class User < ActiveRecord::Base
 
   def devise_mailer_subdomain
     networks = self.networks
-    if networks.size = 0
+    if networks.count = 0
       network = Network.last
     else
       network = networks.last
