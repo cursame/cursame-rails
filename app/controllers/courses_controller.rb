@@ -354,7 +354,7 @@ class CoursesController < ApplicationController
               text:("Tarea: #{del.description}").delete("\n"),
               asset:
               {
-                  media: @avatar && @avatar,
+                  media: @avatar && @avatar.url,
                   credit:("#{del.user.name}").delete("\n"),
                   caption:("#{@course.title}").delete("\n")
               },
@@ -401,7 +401,7 @@ class CoursesController < ApplicationController
                     text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
                     {
-                        media: @avatar_assignment && @avatar_assignment,
+                        media: @avatar_assignment && @avatar_assignment.url,
                         credit:("#{as.user.name}").delete("\n"),
                         caption:("#{@course.title}").delete("\n")
                     },
@@ -437,7 +437,7 @@ class CoursesController < ApplicationController
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
-                      media:  @avatar_surveys && @avatar_surveys,
+                      media:  @avatar_surveys && @avatar_surveys.url,
                       credit:("#{survey.user.name}").delete("\n"),
                       caption:("#{@course.title}").delete("\n")
                   },
