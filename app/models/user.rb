@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -19,7 +18,7 @@ class User < ActiveRecord::Base
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
+  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms, :subdomain
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -150,14 +149,7 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
-    networks = self.networks
-    if networks.size == 0
-      network = Network.last
-    else
-      network = networks.last
-    end
-    subdomain = network.subdomain
-    return subdomain
+    return self.subdomain
   end
 
 
