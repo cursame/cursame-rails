@@ -339,7 +339,7 @@ class CoursesController < ApplicationController
                                    name:("#{@name}").delete("\n") })
          end
         if del.user.avatar.blank?
-          @avatar = "/assets/#{del.user.image_avatarx}"
+          @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
         else
           @avatar = del.user.avatar.profile
 
@@ -388,7 +388,7 @@ class CoursesController < ApplicationController
            end
 =end
            if as.user.avatar.blank?
-             @avatar_assignment = "/assets/#{as.user.image_avatarx}"
+             @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
            else
              @avatar_assignment = as.user.avatar.profile
 
@@ -424,9 +424,9 @@ class CoursesController < ApplicationController
 
       @course.surveys.each do |survey|
           if survey.user.avatar.blank?
-            @avatar = "/assets/#{survey.user.image_avatarx}"
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
           else
-            @avatar = survey.user.avatar.profile
+            @avatar_surveys = survey.user.avatar.profile
 
           end
           surveyss.push(
@@ -437,7 +437,7 @@ class CoursesController < ApplicationController
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
-                      media:  @avatar_assignment && @avatar_assignment.url,
+                      media:  @avatar_surveys && @avatar_surveys.url,
                       credit:("#{survey.user.name}").delete("\n"),
                       caption:("#{@course.title}").delete("\n")
                   },
