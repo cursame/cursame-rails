@@ -324,14 +324,16 @@ class CoursesController < ApplicationController
       surveyss = []
       assets_assignmentss =[]
       assets_deliveries =[]
+      simple = []
       #contents_assignmentss =[]
 
       count_deliveries =  @course.deliveries.count
       count_surveys =  @course.surveys.count
 
-      counte_fact = count_deliveries + count_surveys
-
-
+      count_assignmentss = assignmentss.count
+      
+      counte_fact = count_deliveries + count_surveys + count_assignmentss
+      
       @course.deliveries.each do |del|
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
@@ -427,7 +429,6 @@ class CoursesController < ApplicationController
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
           else
             @avatar_surveys = survey.user.avatar.profile
-
           end
           surveyss.push(
               {
@@ -437,7 +438,7 @@ class CoursesController < ApplicationController
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
-                      media:  @avatar_surveys && @avatar_surveys,
+                      media:  @avatar_survery && @avatar_survery,
                       credit:("#{survey.user.name}").delete("\n"),
                       caption:("#{@course.title}").delete("\n")
                   },
@@ -450,7 +451,22 @@ class CoursesController < ApplicationController
 
           )
       end
+      
+        simple.push({
+          startDate: @course.created_at,
+	        endDate: @course.created_at,
+          headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+          text:"Curso nuevo",
+          
+        })
+      
+      
       if counte_fact != 0
+        @date = surveyss + deliveries + assignmentss +  simple  
+        else
+        @date = simple    
+      end
+      
       respond_to do |format|
       format.html
       format.json { render json:
@@ -460,14 +476,14 @@ class CoursesController < ApplicationController
                       type:"default",
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
-
-                      date: surveyss + deliveries + assignmentss
-
+                      
+                      date: @date
+                                            
                   }
         }
       }
       end
-      end
+      
   end
 
 
