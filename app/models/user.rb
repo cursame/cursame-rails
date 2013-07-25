@@ -153,7 +153,6 @@ class User < ActiveRecord::Base
     return self.subdomain
   end
 
-
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
