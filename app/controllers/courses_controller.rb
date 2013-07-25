@@ -288,12 +288,14 @@ class CoursesController < ApplicationController
       surveyss = []
       assets_assignmentss =[]
       assets_deliveries =[]
+      simple = []
       #contents_assignmentss =[]
       
       count_deliveries =  @course.deliveries.count
       count_surveys =  @course.surveys.count
+      count_assignmentss = assignmentss.count
       
-      counte_fact = count_deliveries + count_surveys
+      counte_fact = count_deliveries + count_surveys + count_assignmentss
       
       
       @course.deliveries.each do |del|
@@ -318,7 +320,7 @@ class CoursesController < ApplicationController
               text:("Tarea: #{del.description}").delete("\n"),
               asset:
               {
-                  media: @avatar && @avatar.url,
+                  media: @avatar && @avatar,
                   credit:("#{del.user.name}").delete("\n"),
                   caption:("#{@course.title}").delete("\n")
               },
@@ -365,7 +367,7 @@ class CoursesController < ApplicationController
                     text:("Tarea entregada: #{as.brief_description}").delete("\n"),
                     asset:
                     {
-                        media: @avatar_assignment && @avatar_assignment.url,
+                        media: @avatar_assignment && @avatar_assignment,
                         credit:("#{as.user.name}").delete("\n"),
                         caption:("#{@course.title}").delete("\n")
                     },
@@ -388,9 +390,9 @@ class CoursesController < ApplicationController
       
       @course.surveys.each do |survey|
           if survey.user.avatar.blank?
-            @avatar = "/assets/#{survey.user.image_avatarx}"
+            @avatar_survery = "/assets/#{survey.user.image_avatarx}"
           else
-            @avatar = survey.user.avatar.profile
+            @avatar_survery = survey.user.avatar.profile
 
           end
           surveyss.push(
@@ -401,7 +403,7 @@ class CoursesController < ApplicationController
                   text:("Cuestionario: #{survey.state}").delete("\n"),
                   asset:
                   {
-                      media:  @avatar_assignment && @avatar_assignment.url,
+                      media:  @avatar_survery && @avatar_survery,
                       credit:("#{survey.user.name}").delete("\n"),
                       caption:("#{@course.title}").delete("\n")
                   },
@@ -414,7 +416,23 @@ class CoursesController < ApplicationController
           
           )
       end
+      
+        simple.push({
+          startDate: @course.created_at,
+	        endDate: @course.created_at,
+          headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+          text:"Curso nuevo",
+          
+        }
+        )
+      
+      
       if counte_fact != 0
+        @date = surveyss + deliveries + assignmentss +  simple  
+        else
+        @date = simple    
+      end
+      
       respond_to do |format|
       format.html    
       format.json { render json:
@@ -425,13 +443,13 @@ class CoursesController < ApplicationController
                       text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
                       startDate:"#{@course.init_date}",
                       
-                      date: surveyss + deliveries + assignmentss
+                      date: @date
                                             
                   }
         }
       }
       end
-      end
+      
   end
   
   
