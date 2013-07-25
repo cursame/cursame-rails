@@ -136,8 +136,11 @@ class Delivery < ActiveRecord::Base
     return users
   end
 
+  
   def expired?
-    if self.end_date < DateTime.now
+  @expired_in  = self.end_date
+
+    if @expired_in <= DateTime.now
     @expired = true
     else
     @expired = false
@@ -148,7 +151,9 @@ class Delivery < ActiveRecord::Base
        self.save!
      end
   end
+  
 
+  
   def self.publish_new_deliveries
     Delivery.created.each do |delivery|
       if delivery.publish_date <= DateTime.now
