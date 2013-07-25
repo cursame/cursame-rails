@@ -6,6 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 #   create migrate puts rake db:seed 
+=begin
 User.create(:email => "info+alejo@cursa.me", :first_name => 'Alejo', :last_name => 'Peralta', :personal_url => 'AlejoPeralta', :password => "alejop1" )
     a = User.last
      Permissioning.create( user_id: a.id, role_id: "1", :network_id => '2')
@@ -24,6 +25,26 @@ User.create(:email => "info+madayriv@cursa.me", :first_name => 'Sara ', :last_na
 User.create(:email => "info+curosas.lu@cursa.me", :first_name => 'Lucia ', :last_name => 'Cruz Rojas', :personal_url => 'LuciaCruzRojas', :password => "liciacr1" )
     f = User.last
     Permissioning.create( user_id: f.id, role_id: "1", :network_id => '2')
+=end
+
+######################### se crea un archivo de instalación directo para los locales ##############################
+
+n = Network.create(:subdomain => "pruebas", :name => "pruebas", :population => "100", :public_register => true, :free => true)
+u = User.create(:email => "joser_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfihfoi584030)
+u1 = User.create(:email => "joser_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfihfoi534284030)
+u2 = User.create(:email => "joser_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfih76543foi584030)
+
+n_last => Network.last
+
+p  = Permissioning.create( :user_id => u.id, :role_id => "1", :network_id => n_last.id )
+p1 = Permissioning.create(:user_id => u1.id, :role_id => "3", :network_id => n_last.id )
+p2 = Permissioning.create(:user_id => u2.id, :role_id => "2", :network_id => n_last.id )
+
+
+
+
+
+
 
     
 
