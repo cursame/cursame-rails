@@ -316,19 +316,19 @@ class CoursesController < ApplicationController
           {
               startDate: del.publish_date,
 			        endDate: del.end_date,
-              headline:("#{del.title}").delete("\n"),
-              text:("Tarea: #{del.description}").delete("\n"),
+              headline:(("#{del.title}").to_s).delete("\n"),
+              text:(("Tarea: #{del.description}").to_s).delete("\n"),
               asset:
               {
                   media: @avatar && @avatar,
-                  credit:("#{del.user.name}").delete("\n"),
-                  caption:("#{@course.title}").delete("\n")
+                  credit:(("#{del.user.name}").to_s).delete("\n"),
+                  caption:(("#{@course.title}").to_s).delete("\n")
               },
               compose:
               { id: del.id,
                 type: 'tarea',
-                title:("#{del.title}").delete("\n"),
-                description:("#{del.description}").delete("\n")
+                title:(("#{del.title}").to_s).delete("\n"),
+                description:(("#{del.description}").to_s).delete("\n")
               },
               assets:assets_deliveries          
               
@@ -363,19 +363,19 @@ class CoursesController < ApplicationController
                 {
                     startDate: as.created_at,
       			        endDate: as.created_at,
-                    headline:("#{as.title}").delete("\n"),
-                    text:("Tarea entregada: #{as.brief_description}").delete("\n"),
+                    headline:(("#{as.title}").to_s).delete("\n"),
+                    text:(("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
                     asset:
                     {
                         media: @avatar_assignment && @avatar_assignment,
-                        credit:("#{as.user.name}").delete("\n"),
-                        caption:("#{@course.title}").delete("\n")
+                        credit:(("#{as.user.name}").to_s).delete("\n"),
+                        caption:(("#{@course.title}").to_s).delete("\n")
                     },
                     compose:
                     { id: as.id,
                       type: 'entrega_tarea',
-                      title: ("#{as.title}").delete("\n"),
-                      description: ("#{as.brief_description}").delete("\n"), 
+                      title: (("#{as.title}").to_s).delete("\n"),
+                      description: (("#{as.brief_description}").to_s).delete("\n"), 
                     }, 
                     assets: assets_assignmentss  #+ contents_assignmentss  
                         
@@ -399,18 +399,18 @@ class CoursesController < ApplicationController
               {
                   startDate: survey.created_at,
     			        endDate: survey.created_at,
-                  headline:("#{survey.name}").delete("\n"),
-                  text:("Cuestionario: #{survey.state}").delete("\n"),
+                  headline:(("#{survey.name}").to_s).delete("\n"),
+                  text:(("Cuestionario: #{survey.state}").to_s).delete("\n"),
                   asset:
                   {
                       media:  @avatar_survery && @avatar_survery,
-                      credit:("#{survey.user.name}").delete("\n"),
-                      caption:("#{@course.title}").delete("\n")
+                      credit:(("#{survey.user.name}").to_s).delete("\n"),
+                      caption:(("#{@course.title}").to_s).delete("\n")
                   },
                   compose:
                   {   id: survey.id,
                       type: 'examen',
-                      title: ("#{survey.name}").delete("\n") 
+                      title: (("#{survey.name}").to_s).delete("\n") 
                   }
               }
           
@@ -438,9 +438,9 @@ class CoursesController < ApplicationController
       format.json { render json:
         {
         timeline: {
-                      headline:("#{@course.title}").delete("\n"),
+                      headline:(("#{@course.title}").to_s).delete("\n"),
                       type:"default",
-                      text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
+                      text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
                       startDate:"#{@course.init_date}",
                       
                       date: @date
