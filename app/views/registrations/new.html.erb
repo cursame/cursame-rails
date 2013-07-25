@@ -36,12 +36,13 @@
 		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd", :placeholder =>"Confirmacion de contraseña" %></div>
 		<!-- <div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div> -->
 		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
-		<div class="dropperDwn">
+
 	       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
 	       <% 1.times do networks = @user.permissionings.build end %>
 		       <%= f.fields_for :permissionings do |permissioning|%>
 	           <%= permissioning.hidden_field :network_id, :value => current_network.id %>
-	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form" %>
+	   <div class="dropperDwn">
+	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form dropperDwn" %>
 	       <%end%>
 	   </div>
 		<div class="terms">
