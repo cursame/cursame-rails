@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms
+  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms, :confirmed_at
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
