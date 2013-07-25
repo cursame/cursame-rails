@@ -803,8 +803,8 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
  }
 .dropperDwn {
 	-webkit-appearance: none;
-	border: 1px solid #ccc;
-	background: url(/assets/icons/select-mini.png) #fff no-repeat center right;
+	//border: 1px solid #ccc;
+	//background: url(/assets/icons/select-mini.png) #fff no-repeat center right;
 	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
 	padding: 5px;
 	color: #B3B3B3;
@@ -813,7 +813,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 	padding-left: 20px;
 	font-size: 14px;
 	margin-top: -1px;
-	margin-left: 10px;
+	margin-left: -20px;
 }
  .expoced{
      position:relative;
