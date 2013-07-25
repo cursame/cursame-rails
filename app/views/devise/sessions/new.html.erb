@@ -1,4 +1,19 @@
-
+<% if current_network.nil? %>
+<div class="bg-layout"></div>
+<div class="login">
+    <p>
+    <b>Lo sentimos pero la red a la que estas intentado accesar no existe</b></br>
+    <b>pregunta a un encargado de tu escuela él sabrá ayudarte.</b></br>
+    
+    <h1 style="font-size:65px;color:#000;text-align:center;margin-top:40px;">¡Gracias!</h1></br>
+    <center>
+       <b style="text-align:center;"><%= link_to "Ir al inicio", "http://www.cursa.me" %></b>
+       </center>    
+    </p>
+    <br><br>
+    <center>
+</div>
+<%else%>
 <div class="bg-layout"></div>
 
 <% if !@user_inactive.nil? then %>
@@ -47,3 +62,4 @@
 </div>
 
 <%= render "devise/shared/footer-links" %>
+<%end%>
