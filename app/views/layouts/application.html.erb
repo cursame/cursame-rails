@@ -3,7 +3,7 @@
 <% else%>
 <!DOCTYPE html>
 <!-- redirigimos a cursa.me  -->
-<% if request.domain != "cursa.me" %>
+<% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
   <%url =  request.url%>
   <%cursame = url.gsub(request.domain,"cursa.me")%>
   <script type="text/javascript">
