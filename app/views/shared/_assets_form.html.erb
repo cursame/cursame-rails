@@ -29,32 +29,40 @@
             $('#new_assets').fileupload({
                 dataType: "script",
                 add:function(e,data){
-                    $('<%= labelIdBox%>').show();
-                    data.context = $(tmpl("template-upload",data.files[0]));
+                    var types = /(\.|\/)(jpg|jpeg|gif|ico|png|pdf|exe|ppt|txt|pptx|dmg|dwg|dwf|rar|zip|tar|iso|swf|flv|doc|docx|ade|adp|odt|rtf|sxw|sao|csv|xls)$/i;
+                    var file = data.files[0];
 
-                    data.context.find('.trash').click(function() {
-                        $(this).parent().remove(); //se remueve la etiqueta
+                    if(types.test(file.type) || types.test(file.name)){
+                        $('<%= labelIdBox%>').show();
+                        data.context = $(tmpl("template-upload",data.files[0]));
 
-                        if($('<%= labelIdBox%>').children().length == 0)
-                            $('<%= labelIdBox%>').hide();
-                    });
+                        data.context.find('.trash').click(function() {
+                            $(this).parent().remove(); //se remueve la etiqueta
 
-                    //console.log($('#unica').attr('id'));//.html('hola');//data.context);
-                    $('<%= labelIdBox%>').append(data.context);
-                    data.submit()
-                        .success(function (result, textStatus, jqXHR) {
-                            data.context.find('.progress-bar').hide();
-                        })
-                        .error(function (jqXHR, textStatus, errorThrown) {
-                            data.context.find('.trash').remove();
-                            data.context.find('span').css("width", "155px")
-                                    .css('line-height','27pt')
-                                    .css('font-size','9px')
-                                    .css('color','red')
-                                    .css('font-weight','bold')
-                                    .html('Error: Archivo o peso no soportado');
-                            data.context.find('.progress-bar').hide();
+                            if($('<%= labelIdBox%>').children().length == 0)
+                                $('<%= labelIdBox%>').hide();
                         });
+
+                        //console.log($('#unica').attr('id'));//.html('hola');//data.context);
+                        $('<%= labelIdBox%>').append(data.context);
+                        data.submit()
+                            .success(function (result, textStatus, jqXHR) {
+                                data.context.find('.progress-bar').hide();
+                            })
+                            .error(function (jqXHR, textStatus, errorThrown) {
+                                data.context.find('.trash').remove();
+                                data.context.find('span').css("width", "155px")
+                                        .css('line-height','27pt')
+                                        .css('font-size','9px')
+                                        .css('color','red')
+                                        .css('font-weight','bold')
+                                        .html('Error: Archivo o peso no soportado');
+                                data.context.find('.progress-bar').hide();
+                            });
+                    }
+                    else{
+                        alert(file.name+" : tipo de archivo no soportado :(");
+                    }
                 },
                 progress:function(e,data){
                     if(data.context){
