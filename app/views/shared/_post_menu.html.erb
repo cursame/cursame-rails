@@ -3,7 +3,7 @@
   <div id="post-forms">
     <div id="message-form-area"  class="message-form-area-style">
       <% permitted_to? :create, :comments do %>
-      <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network'} %>
+      <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil} %>
       <%end%>
     </div>
     <div id="delivery-form-area" class="delivery-form-area-style">
@@ -48,7 +48,7 @@
    <div id="post-forms">
      <div id="message-form-area"  class="message-form-area-style">
        <% permitted_to? :create, :comments do %>
-       <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User'} %>
+       <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User', :comment_id => nil} %>
        <%end%>
      </div>
    </div>

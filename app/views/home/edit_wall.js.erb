@@ -3,12 +3,17 @@
     <% when @type == "Delivery" %>
        <% @delivery = Delivery.find(@id) %>
        $('#<%= "#{@type}_id_#{@id}"%>').html('');
+
     <% when @type == "Survey" %>
        <% @survey = Survey.find(@id) %>
        $('#<%= "#{@type}_id_#{@id}"%>').html('');
     <% when @type == "Comment"%>
        <% @comment = Comment.find(@id) %>
-       $('#<%= "#{@type}_id_#{@id}"%>').html('');
+       <% commentable_id = @comment.commentable_id %>
+       <% commentable_type = @comment.commentable_type %>
+       $('#<%= "#{@type}_id_#{@id}"%>').append('<%= escape_javascript(render(:partial => 'shared/comment_form',
+                                       :locals => {:commentable_id => commentable_id,:commentable_type => commentable_type,
+                                                   :comment_id => @comment.id, :comment => @comment.comment})) %>');
     <% when @type == "Discussion"%>
        <% @discussion = Discussion.find(@id)%>
        $('#<%= "#{@type}_id_#{@id}"%>').html('');
