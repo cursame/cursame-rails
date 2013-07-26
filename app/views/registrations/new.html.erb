@@ -42,7 +42,6 @@
 	       <% 1.times do networks = @user.permissionings.build end %>
 		       <%= f.fields_for :permissionings do |permissioning|%>
 	           <%= permissioning.hidden_field :network_id, :value => current_network.id %>
-	   <div class="dropperDwn">
 	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form dropperDwn" %>
 	       <%end%>
 	   </div>
