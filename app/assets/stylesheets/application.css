@@ -100,7 +100,7 @@ button, input, select, textarea {
     position:absolute;
     border-radius:4px;
     padding:8px;
-    background:#EEE;
+    /*background:#EEE;*/
     color: blue;
     width: auto;
     z-index:9999;

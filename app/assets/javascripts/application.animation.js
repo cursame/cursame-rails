@@ -266,7 +266,6 @@ $(document).ready(function() {
                 marginRight: prePostMarginRight,
                 marginBottom: prePostMarginBottom
             }, time);
-
             //para validar los errores
             setTimeout(function (argument) {
                 // if ($('label.error').length) {
@@ -412,5 +411,19 @@ $(document).ready(function() {
     $( "#tabs-courses" ).tabs();
     $( "#tabs-friends" ).tabs();
 
-
+    /*
+    *=======================================================================================
+    *========= Caching all forms submit for masking and giving feedback ====================
+    *=======================================================================================
+    */
+    // $("form").on('submit',function(e) {
+    //     console.log(e);
+    //     mask($(e.target),"Submiting your form");
+    // });
+    // 
+    $(document).ajaxStart( function() {
+            modal('<div id="ajax-msj"><img alt="loading" src="/assets/ajax-loader.gif"></div>');
+        }).ajaxStop( function() {
+            unmodal();
+        });
 });
