@@ -56,5 +56,14 @@ function modal(element){
 
     //mostramos el overlay
     $('#overlaymask').show();
+}
+/**
+ * unmodal
+ * @return {} the element overlay
+ */
+function unmodal(){
+    $('#overlaymask').remove();
+    $('#cursame-modal').remove();
+    // $('#ajax-msj').remove();
 
 }
