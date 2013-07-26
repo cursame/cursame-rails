@@ -422,7 +422,7 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
-            modal('<div id="ajax-msj"><img alt="loading" src="/assets/ajax-loader.gif"></div>');
+            modal('<div id="ajax-msj"><img alt="loading" src="/assets/ajax-loader.gif"> <span style="color:#FFF;">Procesando ...</span></div>');
         }).ajaxStop( function() {
             unmodal();
         });
