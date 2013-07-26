@@ -1,0 +1,33 @@
+.link_publications{
+    
+    padding-top:5px;
+    padding-left:3px;
+    padding-right:3px;
+    padding-bottom:5px;
+   // background:#F4F1F3;
+   background:#F0E9ED;
+    float:left; margin-left:602px; margin-top:-40px;text-align:center;
+    position:absolute;
+    border:solid 1px #D2DCDF;
+       
+       & a {
+           margin-top:4px;
+           padding-top:10px;
+       }
+       
+       & a:hover{
+           background:#B8BABA;
+       }
+    
+}
+
+.form_for_edit_wall{
+    width:625px;
+    height:250px;
+    background:#fff;
+    position:absolute;
+    z-index:99999px;
+    margin-top:-220px;
+    margin-left:-30px;
+    border:#F0E9ED solid 4px;
+}

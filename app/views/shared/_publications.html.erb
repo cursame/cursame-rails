@@ -134,7 +134,22 @@
          <%end%>
           <!-- Destroy Wall -->
           <%if publication.publication.owner?(current_role, current_user) then %>
-	          		<span class="deleteComment"><img src="/assets/trashbin.png" style="margin-right: 5px;"><%= link_to "Eliminar", destroy_wall_path(publication.id), :remote=>true%></span>
+	         <!-- 		<span class="deleteComment" ><img src="/assets/trashbin.png" style="margin-right: 5px; float:left;"></span>-->
+	         
+	     <!--modificaciones a la caja de edición-->     
+	     <div class="link_publications">
+	           <div ><%= link_to image_tag("trash22.png"), destroy_wall_path(publication.id), :remote=>true%></div>
+	              <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>"><%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true%></div>
+	     </div>
+	     
+	     <script>
+	            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function () {
+                $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
+                });
+	     </script>
+	      
+	      <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;"></div>     
+	     
           <%end%>
           <div class="labels"><%= post.comments.count %> Comentarios</div>
           <div class="labels"><p><div style="float:left" id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></div> <div style="float:left">&nbsp;me gusta</div></div>

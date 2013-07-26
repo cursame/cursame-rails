@@ -1,0 +1,15 @@
+
+<% case %>
+    <% when @type == "Delivery" %>
+       <% @delivery = Delivery.find(@id) %>
+       $('#<%= "#{@type}_id_#{@id}"%>').html('');
+    <% when @type == "Survey" %>
+       <% @survey = Survey.find(@id) %>
+       $('#<%= "#{@type}_id_#{@id}"%>').html('');
+    <% when @type == "Comment"%>
+       <% @comment = Comment.find(@id) %>
+       $('#<%= "#{@type}_id_#{@id}"%>').html('');
+    <% when @type == "Discussion"%>
+       <% @discussion = Discussion.find(@id)%>
+       $('#<%= "#{@type}_id_#{@id}"%>').html('');
+<%end%>
