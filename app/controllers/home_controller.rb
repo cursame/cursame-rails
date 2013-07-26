@@ -115,6 +115,16 @@ class HomeController < ApplicationController
          format.js
        end
      end
+     
+     def edit_wall
+       @id = params[:id]
+       puts @id
+       @type = params[:type]
+       puts @type       
+       respond_to do |format|
+         format.js
+       end
+     end
 
      def destroy_comment
        comment = Comment.find(params[:id])
