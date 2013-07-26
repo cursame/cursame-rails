@@ -151,13 +151,12 @@
                    <a>Editar Entrega</a>
                 </div>
             <%end%>
-            <%end%>
         </div>
     </div>
 </div>
 <%end%>
 <%end%>
-<%#end%>
+<%end%>
 <div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
     <% @delivery_id=delivery.id%>
     <%=render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => cargo}%>
