@@ -343,28 +343,28 @@ class CoursesController < ApplicationController
         if del.user.avatar.blank?
           @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
         else
-          @avatar = del.user.avatar.profile
+          @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
 
         end
-
 
         deliveries.push(
           {
               startDate: del.publish_date,
-              endDate: del.end_date,
-              headline:("#{del.title}").delete("\n"),
-              text:("Tarea: #{del.description}").delete("\n"),
+			        endDate: del.end_date,
+              headline:(("#{del.title}").to_s).delete("\n"),
+              text:(("Tarea: #{del.description}").to_s).delete("\n"),
               asset:
               {
                   media: @avatar && @avatar,
-                  credit:("#{del.user.name}").delete("\n"),
-                  caption:("#{@course.title}").delete("\n")
+                  credit:(("#{del.user.name}").to_s).delete("\n"),
+                  caption:(("#{@course.title}").to_s).delete("\n")
               },
               compose:
-              { id: del.id,
+              { 
+                id: del.id,
                 type: 'tarea',
-                title:("#{del.title}").delete("\n"),
-                description:("#{del.description}").delete("\n")
+                title:(("#{del.title}").to_s).delete("\n"),
+                description:(("#{del.description}").to_s).delete("\n")
               },
               assets:assets_deliveries
 
@@ -392,31 +392,31 @@ class CoursesController < ApplicationController
            if as.user.avatar.blank?
              @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
            else
-             @avatar_assignment = as.user.avatar.profile
+             @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
 
            end
             assignmentss.push(
                 {
                     startDate: as.created_at,
-                    endDate: as.created_at,
-                    headline:("#{as.title}").delete("\n"),
-                    text:("Tarea entregada: #{as.brief_description}").delete("\n"),
+      			        endDate: as.created_at,
+                    headline:(("#{as.title}").to_s).delete("\n"),
+                    text:(("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
+
                     asset:
                     {
-                        media: @avatar_assignment && @avatar_assignment,
-                        credit:("#{as.user.name}").delete("\n"),
-                        caption:("#{@course.title}").delete("\n")
+                        media:@avatar_assignment && @avatar_assignment,
+                        credit:(("#{as.user.name}").to_s).delete("\n"),
+                        caption:(("#{@course.title}").to_s).delete("\n")
                     },
                     compose:
                     { id: as.id,
                       type: 'entrega_tarea',
-                      title: ("#{as.title}").delete("\n"),
-                      description: ("#{as.brief_description}").delete("\n"),
-                    },
-                    assets: assets_assignmentss  #+ contents_assignmentss
-
-
-                }
+                      title: (("#{as.title}").to_s).delete("\n"),
+                      description: (("#{as.brief_description}").to_s).delete("\n"), 
+                    }, 
+                    assets: assets_assignmentss  #+ contents_assignmentss  
+                        
+                    }
 
             )
 
@@ -428,24 +428,24 @@ class CoursesController < ApplicationController
           if survey.user.avatar.blank?
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
           else
-            @avatar_surveys = survey.user.avatar.profile
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
           end
           surveyss.push(
               {
                   startDate: survey.created_at,
-                  endDate: survey.created_at,
-                  headline:("#{survey.name}").delete("\n"),
-                  text:("Cuestionario: #{survey.state}").delete("\n"),
+    			        endDate: survey.created_at,
+                  headline:(("#{survey.name}").to_s).delete("\n"),
+                  text:(("Cuestionario: #{survey.state}").to_s).delete("\n"),
                   asset:
                   {
                       media:  @avatar_survery && @avatar_survery,
-                      credit:("#{survey.user.name}").delete("\n"),
-                      caption:("#{@course.title}").delete("\n")
+                      credit:(("#{survey.user.name}").to_s).delete("\n"),
+                      caption:(("#{@course.title}").to_s).delete("\n")
                   },
                   compose:
                   {   id: survey.id,
                       type: 'examen',
-                      title: ("#{survey.name}").delete("\n")
+                      title: (("#{survey.name}").to_s).delete("\n") 
                   }
               }
 
@@ -462,19 +462,19 @@ class CoursesController < ApplicationController
       
       
       if counte_fact != 0
-        @date = surveyss + deliveries + assignmentss +  simple  
+        @date = simple  + surveyss + deliveries + assignmentss  
         else
         @date = simple    
       end
-      
+       # @date = simple 
       respond_to do |format|
       format.html
       format.json { render json:
         {
         timeline: {
-                      headline:("#{@course.title}").delete("\n"),
+                      headline:(("#{@course.title}").to_s).delete("\n"),
                       type:"default",
-                      text: ("Linea del tiempo del curso #{@course.title} ").delete("\n"),
+                      text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
                       startDate:"#{@course.init_date}",
                       
                       date: @date
