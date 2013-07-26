@@ -1,3 +1,7 @@
+<% 
+   @d = Delivery.find(delivery.id)
+   @d.expired?
+%> 
 
 <div class="null-image"></div>
     <p class="title-discusion" style="width:150px; float:left; margin-left:-60px; "><%= truncate("#{delivery.title}", :omission => "...", :length => 35) %></p>
@@ -143,9 +147,9 @@
                 <a>Responder</a>
             </div>
             <%else%>
-            <div id="open-close-<%= delivery.id%>">
-               <a>Editar Entrega</a>
-            </div>
+                <div id="open-close-<%= delivery.id%>">
+                   <a>Editar Entrega</a>
+                </div>
             <%end%>
         </div>
     </div>
@@ -188,7 +192,6 @@
                 <% end %>
 </div>
 <!-- algo que se puede descifrar de alguna manera -->
-
 <script>
     $("#open-close-<%= delivery.id %>").click(function () {
         $('#entrega-<%= delivery.id %>').show("slow");

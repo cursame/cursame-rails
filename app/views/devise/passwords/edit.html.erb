@@ -1,16 +1,20 @@
-<h2>Change your password</h2>
-
+<div class="signup-layout"></div>
+	<div class="content login" id="titlheader" style="text-align:center;">
+        	<b>Cambia tu contraseña:</b>
+    		<p style="font-size: 16px; margin-top: 10px;">Puedes cambiar tu contraseña después de fácilmente colocándola en los campos requeridos</p>
+ <div class="form-signin form-signup" style="height:325px;padding-top:7px;margin-top:40px;display:block;">
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></div>
+  <div><%= f.label :password, "Nueva contraseña" %><br />
+  <%= f.password_field :password %></div><br />
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div><%= f.label :password_confirmation, "Confirmar contraseña" %><br />
+  <%= f.password_field :password_confirmation %></div><br />
 
-  <div><%= f.submit "Change my password" %></div>
+  <div><%= f.submit "Cambiar contraseña" %></div><br />
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
+</div>
