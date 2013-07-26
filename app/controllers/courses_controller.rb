@@ -343,10 +343,9 @@ class CoursesController < ApplicationController
         if del.user.avatar.blank?
           @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
         else
-          @avatar = del.user.avatar.profile
+          @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
 
         end
-
 
         deliveries.push(
           {
@@ -361,7 +360,8 @@ class CoursesController < ApplicationController
                   caption:(("#{@course.title}").to_s).delete("\n")
               },
               compose:
-              { id: del.id,
+              { 
+                id: del.id,
                 type: 'tarea',
                 title:(("#{del.title}").to_s).delete("\n"),
                 description:(("#{del.description}").to_s).delete("\n")
@@ -392,7 +392,7 @@ class CoursesController < ApplicationController
            if as.user.avatar.blank?
              @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
            else
-             @avatar_assignment = as.user.avatar.profile
+             @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
 
            end
             assignmentss.push(
@@ -404,7 +404,7 @@ class CoursesController < ApplicationController
 
                     asset:
                     {
-                        media: @avatar_assignment && @avatar_assignment,
+                        media:@avatar_assignment && @avatar_assignment,
                         credit:(("#{as.user.name}").to_s).delete("\n"),
                         caption:(("#{@course.title}").to_s).delete("\n")
                     },
@@ -428,7 +428,7 @@ class CoursesController < ApplicationController
           if survey.user.avatar.blank?
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
           else
-            @avatar_surveys = survey.user.avatar.profile
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
           end
           surveyss.push(
               {
@@ -462,11 +462,11 @@ class CoursesController < ApplicationController
       
       
       if counte_fact != 0
-        @date = surveyss + deliveries + assignmentss +  simple  
+        @date = simple  + surveyss + deliveries + assignmentss  
         else
         @date = simple    
       end
-      
+       # @date = simple 
       respond_to do |format|
       format.html
       format.json { render json:
