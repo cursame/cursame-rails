@@ -5,7 +5,10 @@
    formId= "form-upload-delivery-#{random_id}"
 %>
 <%#if @count_course_iam_member_and_owner != 0%>
-    <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
+<% if @active_edit == false %>
+  <% @delivery=Delivery.new %>
+<% end %>
+    <%= form_for(@delivery, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
     <div class="video_help help_use_to_delivery" style="display: none" id="delivery_help">
          <div class="content_video" id="content_video_video_delivery">
 
@@ -15,7 +18,11 @@
                contents = @delivery.contents.build
       end%>
 <!--este render trae el header de contenidos-->    
+<% if @active_edit == false %>
+
 <%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery', :acces_to => @delivery, :contents => "contents"}%>
+
+<%end%>
      
 
         <%= f.hidden_field :network_id, :value => current_network.id %>
@@ -27,6 +34,8 @@
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery", :required =>'required' %>
         <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery", :required =>'required' %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción', :required =>'required' %>
+        <% if @active_edit == false %>
+        
               <% 1.times do
                  areas_of_evaluations = @delivery.areas_of_evaluations.build
              end%>
@@ -36,6 +45,7 @@
         <% end %>
 
         <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input", :required =>'required' %>
+        
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
@@ -44,13 +54,27 @@
         <div class="submit-area"></div>
         
     
-    
+        
+        
         <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
-    
+        
+        <%else%>
+        <%= f.submit "Editar Tarea", :id => 'comment-post-form'%>
+        
+        <%end%>
+        
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+        
+        
+        
+          <% if @active_edit == false %>
           
             <a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
+         
+          <%end%>
+          
+          
                      <script>
                               $('#help_delivery').click(function() {
                                   $('#delivery_help').toggle('blind', 400);
@@ -69,10 +93,19 @@
     <% end %>
 <%#end%>
 <!--este render trae el list de petición de contenidos-->    
+<% if @active_edit == false %>
 
 <%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
-
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
+   <%else%></br></br>
+    <i style="color:#fff; float:right;">Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </i></br>
+   <div style="color:#fff; width:100%; float:right; text-align:center; font-size:20px; padding:5px;">
+     <b style="text-align:justify;"> Criterios: </b></br>
+    <% @delivery.areas_of_evaluations.each do |d| %>
+       <%= d.name%>: <%= d.evaluation_percentage%></br>
+    <%end%>
+    </div>
+<%end%>
 
 <script type="text/javascript">
 $(document).ready(function() {
