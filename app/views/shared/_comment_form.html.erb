@@ -11,19 +11,21 @@
     <% end %>
     <%= hidden_field_tag 'commentable_id', commentable_id %>
     <%= hidden_field_tag 'commentable_type', commentable_type %>
-    <% if comment_id != nil %>
-       <%= hidden_field_tag 'comment_id' => comment_id %>
+    <% if comment_id != nil then %>
+       <%= hidden_field_tag 'comment_id', comment_id %>
     <% end %>
     <div class="submit-area"></div>
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
     <%= submit_tag "Comentar",:class=>"btn btn-primary", :id => 'comment-post-form' %>
     <%if !@user_show%>
-    <% if comment_id == nil %>
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
+      <% if comment_id == nil %>
+       <%= render :partial => "shared/dropdown",
+                  :locals => { :hasPublic => true,:hasCourses => true, :hasGroups => true,
+                               :hasUser => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
      <% end %>
-    <%end%>
+    <% end %>
     <a class="help" id="help_comment"><%= image_tag('help.png')%></a>
-    <script>
+     <script>
              $('#help_comment').click(function() {
                  $('#comment_help').toggle('blind', 400);
                  if($("#comment_help").css( 'visibility')=="hidden"){

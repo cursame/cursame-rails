@@ -3,17 +3,16 @@
     $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
     $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
     $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
-    $('#notice').append('Se ha creado un comentario');   
+    $('#notice').append('Se ha creado un comentario');
 <% else %>
   // si se tiene que agregar a nivel de los coments
   $('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
   $('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('');
   $( "#notice" ).animate( { width: "900px", padding: "20px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-  $('#notice').append('Se ha creado un comentario'); 
+  $('#notice').append('Se ha creado un comentario');
 <% end %>
 
  setTimeout(function() {
         $('#notice').html('')
         $( "#notice" ).animate( { width: "900px", height: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
  }, 2500);
-
