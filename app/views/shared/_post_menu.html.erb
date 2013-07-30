@@ -1,6 +1,7 @@
 <div class="profile-post-box">
 <%if !@user_show %>
   <div id="post-forms">
+     <% @active_edit = false %> 
     <div id="message-form-area"  class="message-form-area-style">
       <% permitted_to? :create, :comments do %>
       <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil} %>
@@ -8,18 +9,18 @@
     </div>
     <div id="delivery-form-area" class="delivery-form-area-style">
       <% permitted_to? :create, :deliveries do %>
-      <%= render :partial => '/deliveries/delivery_compart_form'%>
+      <%= render :partial => '/deliveries/delivery_compart_form', :locals => {:active_edit => @active_edit}%>
       <%end%>
     </div>
     <div id="survey-form-area" class="survey-form-area-style">
       <% permitted_to? :create, :surveys do %>
-      <%= render :partial => '/surveys/form'%>
+      <%= render :partial => '/surveys/form', :locals => {:active_edit => @active_edit}%>
       <%end%>
     </div>
 
     <div id="discussion-form-area" class="discussion-form-area-style">
       <% permitted_to? :create, :discussions do %>
-      <%= render :partial => "/discussions/form_for_discussion"%>
+      <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit}%>
       <%end%>
     </div>
   </div>

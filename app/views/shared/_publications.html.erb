@@ -147,8 +147,10 @@
                 $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
                 });
 	     </script>
-	      
-	      <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;"></div>     
+	            
+	            <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;"></div>
+	            
+	             
 	     
           <%end%>
           <div class="labels"><%= post.comments.count %> Comentarios</div>
