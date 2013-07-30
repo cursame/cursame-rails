@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -20,7 +21,6 @@ class User < ActiveRecord::Base
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
   :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain
 
-
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
-  #has_many :users_friends, :dependent => :destroy
   has_many :members_in_courses, :dependent => :destroy
   # Miembros de grupos
   has_many :members_in_groups, :dependent => :destroy
@@ -40,7 +39,8 @@ class User < ActiveRecord::Base
   has_many :user_surveys, :dependent => :destroy
   has_many :assets, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
-  has_many :deliveries#, :dependent => :destroy
+  has_many :discussions, :dependent => :destroy
+  has_many :deliveries, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   has_many :survey, :dependent => :destroy
@@ -55,13 +55,13 @@ class User < ActiveRecord::Base
 
   has_one :settings_teacher, :dependent => :destroy
 
-  #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
-  #validates_presence_of :accepted_terms
+  validates_presence_of :personal_url
+  validates_presence_of :subdomain
   # validates_uniqueness_of :accepted_terms
 
   # roles
-  #has_many :permissionings, :dependent => :destroy
+  has_many :permissionings, :dependent => :destroy
   has_many :roles, :through => :permissionings
 
   #nested atributes for forms asets
@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
     #
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
     # Solamente el estudiante no tiene asociado ese modelo.
-    teacher_roles = self.permissionings.keep_if{
+    teacher_roles = self.permissionings.keep_if {
       |permissioning|
       permissioning.role_id != 2
     }
@@ -128,11 +128,25 @@ class User < ActiveRecord::Base
     #  end
     #antes de destruir un usuario borra las relaciones de amigos
 
+    assets = Asset.where(:user_id => self.id)
+
+    assets.each do
+      |asset|
+      asset.destroy
+    end
+
     self.inverse_friendships.each do |friend|
       friend.destroy
     end
-    self.friendships.each do |firends|
-      friends.destroy
+    self.friendships.each do |firend|
+      friend.destroy
+    end
+
+    comments = Comment.where(:user_id => self.id)
+
+    comments.each do
+      |comment|
+      comment.destroy
     end
   end
 
@@ -174,7 +188,7 @@ class User < ActiveRecord::Base
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "first_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
+      query = "first<_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
       where(query)
     else
       # find(:all, :order => :first_name)
