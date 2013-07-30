@@ -12,14 +12,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
 
-  attr_accessible :email, :password, :password_confirmation,:network,:authentication_token,
-  :networks, :bios, :permissioning, :permissionings, :search,
-  :permissionings_attributes, :network_id, :role_id, :user_id,
+  attr_accessible :email, :password, :password_confirmation,:network,
+  :authentication_token, :networks, :bios, :permissioning, :permissionings,
+  :search, :permissionings_attributes, :network_id, :role_id, :user_id,
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx,
+  :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
+  :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -58,6 +59,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
   validates_presence_of :subdomain
+  validates_presence_of :domain
   # validates_uniqueness_of :accepted_terms
 
   # roles
@@ -171,16 +173,11 @@ class User < ActiveRecord::Base
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
-    case
-       when Rails.env == 'development'
-         @link = 'lvh.me:3000'
-       when Rails.env == 'production'
-         @link = 'cursa.me'
-       when Rails.env == 'test'
-         @link = 'cursatest.com'
-       when Rails.env == 'subtest'
-         @link = 'cursa.me'
-     end
+
+    if (Rails.env == 'development')
+      self.update_attributes(:domain => "lvh.me:3000")
+    end
+    return self.domain
   end
 
 

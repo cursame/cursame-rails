@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
@@ -181,7 +182,9 @@ class NetworksController < ApplicationController
   def awaiting_confirmation
     personal_url = params[:personal_url]
     user = User.find_by_personal_url(personal_url)
-    if (user.nil?) then
+    if (user.nil?)
+      redirect_to root_path
+    elsif (user.confirmed?)
       redirect_to root_path
     else
       @user_inactive = user

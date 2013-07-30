@@ -37,6 +37,7 @@
 		<!-- <div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div> -->
 		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
     	<%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain%>
+		<%= f.hidden_field :domain, :class => "pswdcode", :value => request.domain %>
 		<div class="dropperDwn">
 	       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
 	       <% 1.times do networks = @user.permissionings.build end %>
