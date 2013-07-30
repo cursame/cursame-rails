@@ -1,26 +1,27 @@
 <% @active_edit = true %>
-$('#<%= "#{@type}_id_#{@id}"%>').html('');
+$('#<%= "#{@type}_id_#{@id}"%>_contribution').html('');
 //$('#<%= "#{@type}_id_#{@id}"%>_heiter').show();
+
 
 <% case %>
     <% when @type == "Delivery" %>
        <% @delivery = Delivery.find(@id) %>
-       $('#<%= "#{@type}_id_#{@id}"%>').html('<%= escape_javascript(render(:partial => '/deliveries/delivery_compart_form',
+       $('#<%= "#{@type}_id_#{@id}"%>_contribution').html('<%= escape_javascript(render(:partial => '/deliveries/delivery_compart_form',
                                              :locals => {:delivery => @delivery, :active_edit => @active_edit })) %>');
     <% when @type == "Survey" %>
        <% @survey = Survey.find(@id) %>
-       $('#<%= "#{@type}_id_#{@id}"%>').html('<%= escape_javascript(render(:partial => '/surveys/form',
+       $('#<%= "#{@type}_id_#{@id}"%>_contribution').html('<%= escape_javascript(render(:partial => '/surveys/form',
                                              :locals => {:survey => @survey, :active_edit => @active_edit })) %>');
     <% when @type == "Comment"%>
        <% @comment = Comment.find(@id) %>
        <% commentable_id = @comment.commentable_id %>
        <% commentable_type = @comment.commentable_type %>
-       $('#<%= "#{@type}_id_#{@id}"%>').append('<%= escape_javascript(render(:partial => 'shared/comment_form',
+       $('#<%= "#{@type}_id_#{@id}"%>_contribution').append('<%= escape_javascript(render(:partial => 'shared/comment_form',
                                        :locals => {:commentable_id => commentable_id,:commentable_type => commentable_type,
                                                    :comment_id => @comment.id, :comment => @comment.comment})) %>');
     <% when @type == "Discussion"%>
        <% @discussion = Discussion.find(@id)%>
-       $('#<%= "#{@type}_id_#{@id}"%>').html('<%= escape_javascript(render(:partial => 'discussions/form_for_discussion',
+       $('#<%= "#{@type}_id_#{@id}"%>_contribution').html('<%= escape_javascript(render(:partial => 'discussions/form_for_discussion',
                                           :locals => {:discussion => @discussion, :active_edit => @active_edit })) %>');
        
 <%end%>
