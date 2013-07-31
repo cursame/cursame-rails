@@ -240,7 +240,7 @@ Cursame30Lb::Application.routes.draw do
   root :to => 'home#index'
 
   #comentarios
-  match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
+  match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }
 
   #finish tour
   match "/home/finish_tour" => "home#finish_tour", :as => "finish_tour", :via => [:get]

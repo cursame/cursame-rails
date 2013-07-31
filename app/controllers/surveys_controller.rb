@@ -49,9 +49,14 @@ class SurveysController < ApplicationController
     params[:survey][:course_ids] ||= []
     @survey = Survey.find(params[:id])
     if @survey.update_attributes(params[:survey])
-      redirect_to @survey, :notice  => "Successfully updated survey."
-    else
-      render :action => 'edit'
+     @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
+     respond_to do |format|
+        format.js
+        format.html { render action: "edit" }
+        format.json { render json: @discussion.errors, status: :unprocessable_entity }
+      end
+     else
+      format.js
     end
   end
 

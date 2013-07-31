@@ -248,7 +248,7 @@ $(document).ready(function() {
 
             // var valid = $(value).find('#comment-post-form').valid(),
             //     me = this;
-            
+
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -426,4 +426,18 @@ $(document).ready(function() {
         }).ajaxStop( function() {
             unmodal();
         });
+
+    /*
+    *=======================================================================================
+    *========= Editing the forms in the wall ====================
+    *=======================================================================================
+    */
+    $('.btn').live('click',function () {
+        // alert(123);
+        var modal = $(this).closest('.form_for_edit_wall');
+        // console.log(modal.length);
+        $(this).closest("form").submit();
+        // console.log($(this).closest("form").length);
+        // $(this).closest("form").hide();
+    });
 });

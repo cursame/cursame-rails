@@ -60,8 +60,7 @@
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
         
         <%else%>
-        <%= f.submit "Editar Tarea", :id => 'comment-post-form'%>
-        
+          <%= f.submit "Editar Tarea", :id => 'comment-post-form', :class =>"btn"%>        
         <%end%>
         
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
