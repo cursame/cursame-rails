@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
@@ -24,7 +25,7 @@ class CoursesController < ApplicationController
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
     @asset = Asset.new
-     @ll = @course.users
+    @ll = @course.users
     # @user = current_user
     # @course_new = Course.new
     @delivery = Delivery.new
@@ -55,8 +56,11 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-
+    #if (self.active_status) then
+      @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    #else
+    #  @wall = []
+    #end
     if request.xhr?
       respond_to do |format|
         format.js
@@ -331,9 +335,9 @@ class CoursesController < ApplicationController
       count_surveys =  @course.surveys.count
 
       count_assignmentss = assignmentss.count
-      
+
       counte_fact = count_deliveries + count_surveys + count_assignmentss
-      
+
       @course.deliveries.each do |del|
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
@@ -350,7 +354,7 @@ class CoursesController < ApplicationController
         deliveries.push(
           {
               startDate: del.publish_date,
-			        endDate: del.end_date,
+              endDate: del.end_date,
               headline:(("#{del.title}").to_s).delete("\n"),
               text:(("Tarea: #{del.description}").to_s).delete("\n"),
               asset:
@@ -360,7 +364,7 @@ class CoursesController < ApplicationController
                   caption:(("#{@course.title}").to_s).delete("\n")
               },
               compose:
-              { 
+              {
                 id: del.id,
                 type: 'tarea',
                 title:(("#{del.title}").to_s).delete("\n"),
@@ -398,7 +402,7 @@ class CoursesController < ApplicationController
             assignmentss.push(
                 {
                     startDate: as.created_at,
-      			        endDate: as.created_at,
+                    endDate: as.created_at,
                     headline:(("#{as.title}").to_s).delete("\n"),
                     text:(("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
 
@@ -412,10 +416,10 @@ class CoursesController < ApplicationController
                     { id: as.id,
                       type: 'entrega_tarea',
                       title: (("#{as.title}").to_s).delete("\n"),
-                      description: (("#{as.brief_description}").to_s).delete("\n"), 
-                    }, 
-                    assets: assets_assignmentss  #+ contents_assignmentss  
-                        
+                      description: (("#{as.brief_description}").to_s).delete("\n"),
+                    },
+                    assets: assets_assignmentss  #+ contents_assignmentss
+
                     }
 
             )
@@ -433,7 +437,7 @@ class CoursesController < ApplicationController
           surveyss.push(
               {
                   startDate: survey.created_at,
-    			        endDate: survey.created_at,
+                  endDate: survey.created_at,
                   headline:(("#{survey.name}").to_s).delete("\n"),
                   text:(("Cuestionario: #{survey.state}").to_s).delete("\n"),
                   asset:
@@ -445,28 +449,28 @@ class CoursesController < ApplicationController
                   compose:
                   {   id: survey.id,
                       type: 'examen',
-                      title: (("#{survey.name}").to_s).delete("\n") 
+                      title: (("#{survey.name}").to_s).delete("\n")
                   }
               }
 
           )
       end
-      
+
         simple.push({
           startDate: @course.created_at,
-	        endDate: @course.created_at,
+          endDate: @course.created_at,
           headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
           text:"Curso nuevo",
-          
+
         })
-      
-      
+
+
       if counte_fact != 0
-        @date = simple  + surveyss + deliveries + assignmentss  
+        @date = simple  + surveyss + deliveries + assignmentss
         else
-        @date = simple    
+        @date = simple
       end
-       # @date = simple 
+       # @date = simple
       respond_to do |format|
       format.html
       format.json { render json:
@@ -476,14 +480,14 @@ class CoursesController < ApplicationController
                       type:"default",
                       text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
                       startDate:"#{@course.init_date}",
-                      
+
                       date: @date
-                                            
+
                   }
         }
       }
       end
-      
+
   end
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
 
   # mount_uploader :avatar, AvatarUploader
@@ -68,6 +69,21 @@ class Course < ActiveRecord::Base
     end
   end
 
+  after_update do
+    active_status = self.changes[:active_status]
+
+    if (!active_status.nil?) then
+      if (active_status[0] and !active_status[1]) then
+
+        notifications = Notification.where(:notificator_type => "Course", :notificator_id => id)
+
+        notifications.each do |notification|
+          notification.destroy
+        end
+
+      end
+    end
+  end
 
 
   after_destroy do
