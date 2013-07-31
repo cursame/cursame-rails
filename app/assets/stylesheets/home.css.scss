@@ -112,3 +112,24 @@ border-top-left-radius: 0px;
 border-top-right-radius: 0px; }
 .unblock > a:link, .unblock > a:visited { text-decoration: underline; margin-top: 5px; display: block }
 .unblock > a:hover, .unblock > a:active { color: #F15A43!important; }
+
+
+.plain-text{
+    width:90%;
+    padding:5%;
+    text-align:justify;
+    line-height:250%; 
+    
+    
+    & h1{
+        color:#1C1B1B;
+        font-size:25px;
+        font-height:bold;
+
+    } 
+    
+    & p{
+      font-size:15px;  
+    }
+
+}
