@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724220300) do
+ActiveRecord::Schema.define(:version => 20130730205055) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -541,6 +541,7 @@ ActiveRecord::Schema.define(:version => 20130724220300) do
     t.string   "tour_info",              :default => "000"
     t.boolean  "accepted_terms",         :default => false
     t.string   "subdomain"
+    t.string   "domain"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
