@@ -232,6 +232,9 @@ Cursame30Lb::Application.routes.draw do
   # manejo de la landing page
 
   get "home/index"
+  get "/terms-conditions", :to => "home#conditions", :as => :conditions
+  get "/blog", :to => "home#blog", :as => :blog
+  get "/help", :to => "home#help", :as => :help
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
   get "home/authentication", :to => "home#authentications_test",:as => :authentications

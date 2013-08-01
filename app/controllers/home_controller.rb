@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help ]
   helper_method :get_commentable
  # layout 'landing', :only => [:index]
 
@@ -11,7 +11,14 @@ class HomeController < ApplicationController
 
     end
   end
-
+  def conditions
+  end
+  
+  def blog
+  end
+  
+  def help
+  end
   def add_new_comment
     if user_signed_in?
       @from_enter_key = params[:from_enter_key] == 'true' ? true : false

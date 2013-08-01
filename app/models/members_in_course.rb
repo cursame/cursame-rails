@@ -4,8 +4,8 @@ class MembersInCourse < ActiveRecord::Base
 
   after_update do
     accepted = self.changes[:accepted]
-    if (!accepted.nil?)
-      if (!accepted[0] and accepted[1])
+    if (!accepted.nil?) then
+      if (!accepted[0] and accepted[1]) then
         mail = Notifier.accepted_message(self,self.course)
         mail.deliver
         Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
