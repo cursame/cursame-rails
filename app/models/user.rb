@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -21,6 +20,7 @@ class User < ActiveRecord::Base
   :settings_teacher, :friendships, :friends, :registerable, :image_avatarx,
   :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
   :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain
+
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
