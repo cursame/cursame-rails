@@ -46,25 +46,24 @@ class SurveysController < ApplicationController
   end
 
   def update
-    params[:survey][:course_ids] ||= []
     @survey = Survey.find(params[:id])
-    courses = @survey.courses
-    puts '------------cursos------------------'
-    puts courses.count
+    ids = []
+
+    if !params[:delivery]
+      @survey.courses.each do |course|
+        ids.push(course.id)
+      end
+    else
+      params[:delivery][:course_ids].each do |id|
+        ids.push(id)
+      end
+    end
 
     if @survey.update_attributes(params[:survey])
-      if params[:delivery]
-        puts '------------------------------'
-         @survey.courses=[]
-        params[:delivery][:course_ids].each do |id|
+        @survey.courses=[]
+        ids.each do |id|
           @survey.courses.push(Course.find(id))
         end
-      else
-        puts '---------nada de delivery---------------------'
-        @survey.courses=[]
-        @survey.courses.push(courses)
-      end
-      puts @survey.courses.count
       @survey.save
 
      @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
