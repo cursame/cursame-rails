@@ -116,6 +116,14 @@ class User < ActiveRecord::Base
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
+ 
+ 
+ after_create do 
+   
+   self.domain = 'cursa.me'
+   self.save!
+   
+ end
 
 
   before_destroy do
