@@ -34,7 +34,6 @@
             
             var value = $(this).val();
             var flot = '.'+value.split(" ").join("").toLowerCase();
-             console.log(flot);
                    
             if(flot === ".todaslasactividades"){
                 $('.activities_depot').show();
@@ -53,7 +52,6 @@
            
             var timeline = json.timeline.date;
             var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam, avatar;
-            console.log(timeline);
             for(var i = 0; i < timeline.length;i++){
                 aux = timeline[i];
                 if(aux.compose){
