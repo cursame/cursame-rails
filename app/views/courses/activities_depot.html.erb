@@ -52,7 +52,7 @@
         var locuorem = $.getJSON( '<%= "#{course_ki_line_path(@course)}.json" %>', function(json) {
            
             var timeline = json.timeline.date;
-            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam;
+            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam, avatar;
             console.log(timeline);
             for(var i = 0; i < timeline.length;i++){
                 aux = timeline[i];
@@ -62,8 +62,10 @@
                   id= aux.compose.id + aux.compose.type;
                   
                   dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
+
+                  avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
                   
-                  $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+aux.asset.media+'"  width="10%;" style="float:left; margin-top:4px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+                  $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+avatar+'"  width="10%;" style="float:left; margin-top:4px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
                   identifier = '#'+id;
                   assets = aux.assets;
                   casual="casual"+id;
