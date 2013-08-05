@@ -46,12 +46,34 @@ class SurveysController < ApplicationController
   end
 
   def update
-    params[:survey][:course_ids] ||= []
     @survey = Survey.find(params[:id])
-    if @survey.update_attributes(params[:survey])
-      redirect_to @survey, :notice  => "Successfully updated survey."
+    ids = []
+
+    if !params[:delivery]
+      @survey.courses.each do |course|
+        ids.push(course.id)
+      end
     else
-      render :action => 'edit'
+      params[:delivery][:course_ids].each do |id|
+        ids.push(id)
+      end
+    end
+
+    if @survey.update_attributes(params[:survey])
+        @survey.courses=[]
+        ids.each do |id|
+          @survey.courses.push(Course.find(id))
+        end
+      @survey.save
+
+     @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
+     respond_to do |format|
+        format.js
+        format.html { render action: "edit" }
+        format.json { render json: @discussion.errors, status: :unprocessable_entity }
+      end
+     else
+      format.js
     end
   end
 

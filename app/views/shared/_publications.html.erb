@@ -139,8 +139,8 @@
 	     <!--modificaciones a la caja de edición-->     
 	     <div class="link_publications">
 	           <div ><%= link_to image_tag("trash22.png"), destroy_wall_path(publication.id), :remote=>true%></div>
-	              <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>"><%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true%></div>
-	     </div>
+	          <% if publication.publication_type != 'Course'%><div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>"><%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true%></div><%end%>
+	      </div>
 	     
 	     <script>
 	            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function () {

@@ -21,7 +21,6 @@ class HomeController < ApplicationController
   end
   def add_new_comment
     if user_signed_in?
-
       @from_enter_key = params[:from_enter_key] == 'true' ? true : false
 
       # esto es para clonar los comentarios de el grupo
@@ -40,20 +39,14 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key)|| @comment.commentable_type == 'User'
-      # if @comment.commentable_type == 'Network'   ||  @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
         @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
       end
 
-      if params[:comment_id].blank? then
-        respond_to do |format|
-          #format.html
-          format.js
-        end
-      end
+      @editar = !params[:comment_id].blank?
     end
   end
 
@@ -66,6 +59,7 @@ class HomeController < ApplicationController
     user.save!
     respond_to do |format|
       format.js
+      format.json
     end
   end
 
@@ -128,6 +122,8 @@ class HomeController < ApplicationController
      def edit_wall
        @id = params[:id]
        @type = params[:type]
+       puts '------------------------'
+       puts @id 
        respond_to do |format|
          format.js
        end
@@ -308,7 +304,7 @@ class HomeController < ApplicationController
       @comment = commentable.comments.create!(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
     else
       @comment = Comment.find(params[:comment_id])
-      @comment.update_attributtes(:comment => params[:comment])
+      @comment.update_attributes(:comment => params[:comment])
     end
   end
 

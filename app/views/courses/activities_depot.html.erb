@@ -3,7 +3,7 @@
     
    <!-- <input type="text" id="rtf">-->
    <div class="membFilter">
-   Filtro por miembros del curso
+   Miembros del curso
     <select id="rtf" value="" class="dropperDwn">
                 <option>Todas las actividades</option>
         <% @course.members_in_courses.each do |m|%>
@@ -34,7 +34,6 @@
             
             var value = $(this).val();
             var flot = '.'+value.split(" ").join("").toLowerCase();
-             console.log(flot);
                    
             if(flot === ".todaslasactividades"){
                 $('.activities_depot').show();
@@ -52,35 +51,36 @@
         var locuorem = $.getJSON( '<%= "#{course_ki_line_path(@course)}.json" %>', function(json) {
            
             var timeline = json.timeline.date;
-            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam;
+            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam, avatar;
             for(var i = 0; i < timeline.length;i++){
                 aux = timeline[i];
-                kilspace = aux.text.split(' ').join('');
-                flip = '/assets/'+kilspace.split(':')[0]+'roty.png';
-                id= aux.compose.id + aux.compose.type;
-                
-                dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
-                
-                $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+aux.asset.media+'"  width="10%;" style="float:left; margin-top:4px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
-                identifier = '#'+id;
-                assets = aux.assets;
-                casual="casual"+id;
-                var cloud = 'po'+aux.asset.credit.split(" ").join("").toLowerCase();
-                   if(assets){
-                   for(var l = 0; l < assets.length;l++){
-                       
-                   fromk = assets[l];
-                   url = fromk.file.file.url;
-                   nam = fromk.name;
+                if(aux.compose){
+                  kilspace = aux.text.split(' ').join('');
+                  flip = '/assets/'+kilspace.split(':')[0]+'roty.png';
+                  id= aux.compose.id + aux.compose.type;
+                  
+                  dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
 
-                   $("#expoced").prepend('<div id='+casual+' class="user_assets '+cloud+'">'+'</div>');
-                   $("#"+casual).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
-                      }
+                  avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
+                  
+                  $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+avatar+'"  width="10%;" style="float:left; margin-top:4px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+                  identifier = '#'+id;
+                  assets = aux.assets;
+                  casual="casual"+id;
+                  var cloud = 'po'+aux.asset.credit.split(" ").join("").toLowerCase();
+                     if(assets){
+                     for(var l = 0; l < assets.length;l++){                             
+                           fromk = assets[l];
+                           url = fromk.file.file.url;
+                           nam = fromk.name;
+
+                           $("#expoced").prepend('<div id='+casual+' class="user_assets '+cloud+'">'+'</div>');
+                           $("#"+casual).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
+                        }
+
                     }
-              
-                
-                
             }
+        }
             
             
             
