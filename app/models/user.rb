@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -166,6 +165,9 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
+    if self.subdomain.split(".").size != 1 then
+      return self.subdomain.split(".").last
+    end
     return self.subdomain
   end
 
@@ -173,9 +175,9 @@ class User < ActiveRecord::Base
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
-    #if (Rails.env == 'development')
-    #  self.update_attributes(:domain => "lvh.me:3000")
-    #end
+    if (self.domian == "lvh.me") then
+      return (self.domain + ":3000")
+    end
     return self.domain
   end
 

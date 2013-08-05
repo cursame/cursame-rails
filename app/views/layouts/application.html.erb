@@ -4,10 +4,18 @@
 <!-- redirigimos a cursa.me  -->
 <!DOCTYPE html>
 <% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
-  <% url =  request.url%>
-  <% cursame = url.gsub(request.domain,"cursa.me")%>
+  <% url =  request.url %>
+  <% cursame = url.gsub(request.domain,"cursa.me") %>
   <script type="text/javascript">
     window.location.href="<%= cursame %>"  // put your correct path in a string here
+  </script>
+<% end %>
+
+<% if request.subdomain.split(".").size != 1 then %>
+	<% url = request.url %>
+    <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
+  <script type="text/javascript">
+    window.location.href="<%= new_url %>"  // put your correct path in a string here
   </script>
 <% end %>
 
