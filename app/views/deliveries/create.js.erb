@@ -4,7 +4,7 @@ $('#total_nested_evaluation').remove();
 $('#new_delivery_form').find('.upload-form').remove();
 $('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication}))%>");
 $('#timeline').effect("highlight", {}, 1000);
-$('#notice').append('Se ha creado una tarea');
+//$('#notice').append('Se ha creado una tarea ');
 $(".delivery-form input[name='files[]']").remove();
 
   /* elimina los contenidos*/
@@ -17,7 +17,7 @@ $(".delivery-form input[name='files[]']").remove();
 
 
 $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
-$('#notice').append('Se ha creado una tarea');
+$('#notice').append('Se ha creado una tarea ');
 setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });

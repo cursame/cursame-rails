@@ -218,7 +218,8 @@ $(document).ready(function() {
                  $(".content_killer").html('');
                  $(".choser").html('');
                  $('.youtube_content_delivery').hide();
-
+                 DisableBlured();
+                 
             $('label.error').remove();
 
             $('#post-forms').animate({
@@ -278,6 +279,7 @@ $(document).ready(function() {
                     $(".content_killer").html('');
                     $(".choser").html('');
                     $('.youtube_content_delivery').hide();
+                    DisableBlured();
                 // }
             },500);
         });
@@ -422,9 +424,12 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
-            modal('<div id="ajax-msj"><img alt="loading" src="/assets/ajax-loader.gif"></div>');
+            modal('<div scrolling="no" id="ajax-msj" style="position:fixed;"><img alt="loading" src="/assets/ajax-loader.gif"><p style="color:#fff;">Procesando...</p></div>');
+            $('body').css({'overflow':'hidden'});
         }).ajaxStop( function() {
             unmodal();
+            $('body').css({'overflow':'auto'});
+             
         });
 
     /*
