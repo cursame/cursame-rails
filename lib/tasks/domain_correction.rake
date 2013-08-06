@@ -6,7 +6,7 @@ task :subdomain_users => :environment do
   # Obtenemos todos los usuarios que no esten confirmados
 
   puts "Comenzando el proceso...."
-
+=begin
   a = Time.now
   users_mailers = Array.new
 
@@ -21,20 +21,32 @@ task :subdomain_users => :environment do
 
   users = users_mailers
 
-  users_without_networks = Array.new
-
-  users.each do |user|
-    network = user.networks.last
-    if network.nil? then
-      users_without_networks.push(user)
-    else
-    user.update_attributes(:subdomain => network.subdomain)
-    end
-  end
-
   b = Time.now
   puts "Tiempo total de procesado: #{(b - a).to_s}"
+=end
 
+  # Pruebas
+
+  users = ["jose_alfredo@cursa.me", "leon@cursa.me", "jose_alfredo+pi@cursa.me", "jose_alfredo+stuti1@cursa.me", "jose_alfredo+pi2@cursa.me",
+           "jemiliano.cabrera@gmail.com", "emiliano@cursa.me", "gerrysbq28@gmail.com", "iam@armando.mx", "armando@codetlan.com", "armando@cursa.me"]
+
+
+  users_class = users.map{|x| User.find_by_email(x)}
+
+  users_class.each do |users|
+    users.destroy
+  end
+
+  num = rand(1050)
+  users.each do |user|
+    User.create!(:password => "123456", :email => user, :personal_url => num.succ.to_s, :subdomain => "pruebas")
+  end
+
+  users_class = users.map{|x| User.find_by_email(x)}
+
+  users_class.each do |user|
+    user.resend_confirmation_token
+  end
 
   # Enviando su correo de confirmacion
 
