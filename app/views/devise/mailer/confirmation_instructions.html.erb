@@ -18,13 +18,19 @@
 		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
 			<tr>
 				<td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/logo_welcome.png";>
-					<h1 style="color: #00B0C6;font-size: 40px;text-align: center;margin-top:130px;">Bienvenido</b></h1>
+					<h1 style="color: #00B0C6;font-size: 40px;text-align: center;margin-top:130px;">Confirmación de Usuario</b></h1>
 				</td>
 			</tr>
 			<tr>
 				<td style="padding:0px 30px 20px 30px;" width="600px">
 					
-					<p>Felicidades  "<%= @resource.email %>" por unirte a los miles de usuarios que est&aacute;n utilizando c&uacute;rsame como plataforma para sus actividades escolares.</p>
+					<!--<p>Felicidades  "<%= @resource.email %>" por unirte a los miles de usuarios que est&aacute;n utilizando c&uacute;rsame como plataforma para sus actividades escolares.</p>-->
+                 <p>Estimado <%= @resource.email %>, acabamos de lanzar la nueva y mejorada versión de nuestra plataforma, misma que estamos seguros cambiará para bien la manera en la que interactúas dentro y fuera del aula de clases.
+
+<p>Algunos de nuestros usuarios han experimentado problemas con la migración de su cuenta a la nueva versión por lo que estamos enviando este segundo correo para quienes detectamos tienen este problema y sea solucionado con un solo click.
+
+<p>En Cúrsame estamos comprometidos con mejorar la experiencia educativa de cada uno de los profesores y alumnos que usan diariamente nuestro sistema en sus instituciones y agradecemos tu preferencia.<p>
+			
 				</td>
 			</tr>
 			<tr>
