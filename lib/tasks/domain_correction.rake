@@ -16,7 +16,7 @@ task :subdomain_users => :environment do
   end
 
   puts "Usuarios sin roles"
-  no_role do |user|
+  no_role.each do |user|
     puts user.email
   end
 
