@@ -11,15 +11,14 @@ task :subdomain_users => :environment do
   users_mailers = Array.new
 
   users.each do |user|
-    #if !(user.confirmed?) then
+    if !(user.confirmed?) then
       users_mailers.push(user)
-    #end
+    end
   end
 
-  #puts "Numero de usuarios a los que se les enviara el correo #{users_mailers.size.to_s}"
+  puts "Numero de usuarios a los que se les enviara el correo #{users_mailers.size.to_s}"
   # Revisamos su subdomain
 
-  puts "Resolviendo el subdomain a todos los usuarios"
   users = users_mailers
 
   users_without_networks = Array.new
@@ -36,10 +35,6 @@ task :subdomain_users => :environment do
   b = Time.now
   puts "Tiempo total de procesado: #{(b - a).to_s}"
 
-  puts "Usuarios sin una Network asignada"
-  users_without_networks.each do |user|
-    puts user.email
-  end
 
   # Enviando su correo de confirmacion
 
