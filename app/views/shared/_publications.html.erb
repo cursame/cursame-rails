@@ -71,7 +71,7 @@
 
 <% if post.state == "published" %>
 
-  <div class="publication-box" id="deleted_id_<%= id %>">
+  <div class="publication-box  public-blur" id="deleted_id_<%= id %>">
 
       <%#= debug cargo.publication.comments %>
 
@@ -139,11 +139,14 @@
 	     <!--modificaciones a la caja de edición-->     
 	     <div class="link_publications">
 	           <div ><%= link_to image_tag("trash22.png"), destroy_wall_path(publication.id), :remote=>true%></div>
-	          <% if publication.publication_type != 'Course'%><div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>"><%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true%></div><%end%>
+	          <% if publication.publication_type != 'Course'%><div  class="non-blur"id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>"><%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true%></div><%end%>
 	      </div>
 	     
 	     <script>
 	            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function () {
+	                EditingBlur(); 
+	                $('#deleted_id_<%= id %>').foggy(false);
+                    $('.link_publications').hide();
                 $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
                 });
 	     </script>
@@ -160,8 +163,11 @@
            <script>
 
                  $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
+                    CancelEditingBlur();
+                     $('.link_publications').show();
                     $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
-                    $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');                                        
+                    $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
+                                                        
                  });
 
             </script>
