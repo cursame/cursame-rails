@@ -41,7 +41,8 @@ task :subdomain_users => :environment do
 
   num = rand(1050)
   users.each do |user|
-    User.create!(:password => "123456", :email => user, :personal_url => num.to_s, :subdomain => "pruebas")
+    u = User.create!(:password => "123456", :email => user, :personal_url => num.to_s, :subdomain => "pruebas")
+    Permissioning.create!(:role_id => 2, :user_id => u.id, :network_id => 3)
     num = num.succ
   end
 
