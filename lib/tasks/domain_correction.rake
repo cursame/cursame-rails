@@ -33,13 +33,16 @@ task :subdomain_users => :environment do
 
   users_class = users.map{|x| User.find_by_email(x)}
 
-  users_class.each do |users|
-    users.destroy
+  users_class.each do |user|
+    if !(user.nil?) then
+      user.destroy
+    end
   end
 
   num = rand(1050)
   users.each do |user|
-    User.create!(:password => "123456", :email => user, :personal_url => num.succ.to_s, :subdomain => "pruebas")
+    User.create!(:password => "123456", :email => user, :personal_url => num.to_s, :subdomain => "pruebas")
+    num = num.succ
   end
 
   users_class = users.map{|x| User.find_by_email(x)}
