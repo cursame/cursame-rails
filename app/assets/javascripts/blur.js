@@ -46,7 +46,38 @@ $('.container').css({'background':'#fff'});
 $('body').css({'background':'#fff'});
 }
 
+function CancelEditingBlur(){
+     $('.non-blur').foggy(false);
+     $('.public-blur').foggy(false);
+     $('#side-bar').foggy(false);
+     $('#banner-profile').foggy(false);
+     $('#box-user-credential').foggy(false);
+     $('.blured-i').foggy(false);
+     $('#timeline').foggy(false);
+     $('.container').css({'background':'#fff'});
+     $('body').css({'background':'#fff'});
+     
+     
+}
+
+function CleanerBlur(){
+     $('.non-blur').foggy(false);
+     $('.public-blur').foggy(false);
+     $('#side-bar').foggy(false);
+     $('#banner-profile').foggy(false);
+     $('#box-user-credential').foggy(false);
+     $('.blured-i').foggy(false);
+     $('#timeline').foggy(false);
+     $('.container').css({'background':'#fff'});
+     $('body').foggy(false);
+     $('body').css({'background':'#fff'});
+    
+}
+
 function EditingBlur(){
+    
+    CancelEditingBlur();
+    CleanerBlur();
     
     $('.blured-i').foggy({
       blurRadius: 1,          // In pixels.
@@ -84,7 +115,6 @@ function EditingBlur(){
    
 }
 
-
 function CancelEditingBlur(){
      $('.non-blur').foggy(false);
      $('.public-blur').foggy(false);
@@ -92,8 +122,23 @@ function CancelEditingBlur(){
      $('#banner-profile').foggy(false);
      $('#box-user-credential').foggy(false);
      $('.blured-i').foggy(false);
+     $('#timeline').foggy(false);
      $('.container').css({'background':'#fff'});
      $('body').css({'background':'#fff'});
      
      
+}
+
+function CleanerBlur(){
+     $('.non-blur').foggy(false);
+     $('.public-blur').foggy(false);
+     $('#side-bar').foggy(false);
+     $('#banner-profile').foggy(false);
+     $('#box-user-credential').foggy(false);
+     $('.blured-i').foggy(false);
+     $('#timeline').foggy(false);
+     $('.container').css({'background':'#fff'});
+     $('body').foggy(false);
+     $('body').css({'background':'#fff'});
+    
 }

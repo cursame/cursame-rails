@@ -438,6 +438,9 @@ $(document).ready(function() {
     *=======================================================================================
     */
     $('.btn').live('click',function () {
+        CleanerBlur();
+        CancelEditingBlur();
+        $('.link_publications').show();
         // alert(123);
         var modal = $(this).closest('.form_for_edit_wall');
         // console.log(modal.length);
