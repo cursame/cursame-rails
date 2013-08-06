@@ -1,5 +1,5 @@
 desc "Subdomain corregido"
-task :subdomain_users => :enviroment do
+task :subdomain_users => :environment do
 
   users = User.all
 
