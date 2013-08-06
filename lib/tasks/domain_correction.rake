@@ -22,13 +22,25 @@ task :subdomain_users => :environment do
   puts "Resolviendo el subdomain a todos los usuarios"
   users = users_mailers
 
+  users_without_networks = Array.new
+
   users.each do |user|
     network = user.networks.last
+    if network.nil? then
+      users_without_networks.push(user)
+    else
     user.update_attributes(:subdomain => network.subdomain)
+    end
   end
 
   b = Time.now
   puts "Tiempo total de procesado: #{(b - a).to_s}"
+
+  puts "Usuarios sin una Network asignada"
+  users_without_networks.each do |user|
+    puts user.email
+  end
+
   # Enviando su correo de confirmacion
 
   # users.each do |user|
