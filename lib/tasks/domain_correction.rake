@@ -5,6 +5,9 @@ task :subdomain_users => :enviroment do
 
   # Obtenemos todos los usuarios que no esten confirmados
 
+  puts "Comenzando el proceso...."
+
+  a = Time.now
   users_mailers = Array.new
 
   users.each do |user|
@@ -13,6 +16,7 @@ task :subdomain_users => :enviroment do
     end
   end
 
+  puts "Numero de usuarios a los que se les enviara el correo #{users_mailers.size.to_s}"
   # Revisamos su subdomain
 
   users = users_mailers
@@ -22,6 +26,8 @@ task :subdomain_users => :enviroment do
     user.update_attributes(:subdomain => network.subdomain)
   end
 
+  b = Time.now
+  puts "Tiempo total de procesado: #{(b - a).to_s}"
   # Enviando su correo de confirmacion
 
   # users.each do |user|
