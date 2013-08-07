@@ -176,6 +176,7 @@ class UsersController < ApplicationController
 =end
  def index
    @user = User.all
+   redirect_to network_comunity_path
  end
 
  def dashboard

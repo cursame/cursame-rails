@@ -400,7 +400,7 @@ Cursame30Lb::Application.routes.draw do
   match '/404', :to => 'home#not_found'
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
-
+  match '/503', :to => 'home#server_error'
    # api para la mobile
    #this is for api for the mobile app
   namespace :api do
@@ -420,4 +420,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/assignments', :to => 'api/api#assignments', :as => :assignments
   match '/api/api/assigment_delivery', :to => 'api/api#assigment_delivery', :as => :assigment_delivery
   match '/api/api/qualify_assignment', :to => 'api/api#qualify_assignment', :as => :qualify_assignment
+
+  # api para nativa
+  match '/api/api/native_publications', :to => 'api/api#native_publications', :as => :native_publicationsjson
 end

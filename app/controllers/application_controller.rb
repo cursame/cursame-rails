@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    
   protect_from_forgery
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
@@ -31,11 +32,7 @@ class ApplicationController < ActionController::Base
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
-
-
-  # errores
-   # Se declaran los errores personalizados
-
+    
 
   #data of the networks you are
   def current_network
