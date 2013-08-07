@@ -400,7 +400,7 @@ Cursame30Lb::Application.routes.draw do
   match '/404', :to => 'home#not_found'
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
-
+  match '/503', :to => 'home#server_error'
    # api para la mobile
    #this is for api for the mobile app
   namespace :api do
