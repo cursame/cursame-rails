@@ -182,7 +182,7 @@ class User < ActiveRecord::Base
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
-    if (self.domian == "lvh.me") then
+    if (self.domain == "lvh.me") then
       return (self.domain + ":3000")
     end
     return self.domain
