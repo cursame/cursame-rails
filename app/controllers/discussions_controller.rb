@@ -76,14 +76,7 @@ class DiscussionsController < ApplicationController
     end
 
     respond_to do |format|
-
       format.js
-      #    format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
-      #    format.json { render json: @discussion, status: :created, location: @discussion }
-      # else
-      # format.html { render action: "new" }
-      #   format.json { render json: @discussion.errors, status: :unprocessable_entity }
-
     end
   end
 
@@ -91,12 +84,15 @@ class DiscussionsController < ApplicationController
   # PUT /discussions/1.json
   def update
     @discussion = Discussion.find(params[:id])
-
+    @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
+    
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
+        format.js
         format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
         format.json { head :no_content }
       else
+        format.js
         format.html { render action: "edit" }
         format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end

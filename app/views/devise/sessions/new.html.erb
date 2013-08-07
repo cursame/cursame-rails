@@ -1,5 +1,12 @@
 <% if current_network.nil? %>
-<div class="bg-layout"></div>
+<script>
+$(document).ready(function() {
+    $("#bg").ezBgResize();
+});
+
+</script>
+<div class="bg-layout" id="bg"></div>
+
 <div class="login">
     <p>
     <b>Lo sentimos pero la red a la que estas intentado accesar no existe</b></br>
@@ -19,11 +26,40 @@
 <% if !@user_inactive.nil? then %>
   <div class="user-inactive">
     Se ha enviado un correo a  <%= @user_inactive.email %>. <p>
-    Esperando confirmacion
+    Esperando confirmación
   </div>
 <% end %>
 
 <div class="login">
+    <!--sirve para colocar la ayuda express a antiguos usuarios-->
+    <div class="btn large primary" id="linked" style="cursor:pointer;"><center>Soy un usuario antiguo y tengo dudas</center></div></br>
+    <script>
+            $('#linked').click(function() {
+              $('#sub_linked').slideToggle('slow', function() {
+                // Animation complete.
+              });
+            });
+    </script>
+    <div id="sub_linked"  style="font-size:15px; background:#FAE8BF; padding:10px; text-align:justify; margin-bottom:10px; margin-top:-20px; color:#807D77; display:none;">
+        <p style="text-shadow:none;"><b style="font-size:15px; color:#000;">¿Soy usuario?:</b></br>
+            
+            "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."</br></br>
+            
+            <b style="font-size:15px; color:#000;">¿Mi clave sigue siendo la misma?:</b></br>
+            
+            Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
+             te pedirá que cambies tu contraseña.</br></br>
+             
+            <b style="font-size:15px; color:#000;">No me ha llegado el mail de confirmación:</b></br>
+            
+            Da click en el link <i><%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></i> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.</br></br>
+            
+            <b style="font-size:15px; color:#000;">Confirmé mi email pero olvide cambiar mi contraseña:</b></br>
+            
+            Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.
+            
+        </p>
+    </div>
     <p>
     <b>Clases, Actividades, Red Social.</b><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
     </p>

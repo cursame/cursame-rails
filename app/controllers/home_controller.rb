@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help ]
   helper_method :get_commentable
  # layout 'landing', :only => [:index]
 
@@ -11,10 +11,16 @@ class HomeController < ApplicationController
 
     end
   end
-
+  def conditions
+  end
+  
+  def blog
+  end
+  
+  def help
+  end
   def add_new_comment
     if user_signed_in?
-
       @from_enter_key = params[:from_enter_key] == 'true' ? true : false
 
       # esto es para clonar los comentarios de el grupo
@@ -33,18 +39,14 @@ class HomeController < ApplicationController
         save_comment
       end
 
-      if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key)|| @comment.commentable_type == 'User'
-      # if @comment.commentable_type == 'Network'   ||  @comment.commentable_type == 'User'
+      if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
         @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
       end
 
-      respond_to do |format|
-        #format.html
-        format.js
-      end
+      @editar = !params[:comment_id].blank?
     end
   end
 
@@ -57,6 +59,7 @@ class HomeController < ApplicationController
     user.save!
     respond_to do |format|
       format.js
+      format.json
     end
   end
 
@@ -116,6 +119,16 @@ class HomeController < ApplicationController
        end
      end
 
+     def edit_wall
+       @id = params[:id]
+       @type = params[:type]
+       puts '------------------------'
+       puts @id 
+       respond_to do |format|
+         format.js
+       end
+     end
+
      def destroy_comment
        comment = Comment.find(params[:id])
 
@@ -127,7 +140,7 @@ class HomeController < ApplicationController
          format.js
        end
      end
-     
+
      def editing_n
        @notiv = current_user.notifications.where(:active => true)
        @notiv.each do |noti|
@@ -138,11 +151,11 @@ class HomeController < ApplicationController
          respond_to do |format|
             format.js
           end
-     end  
+     end
   # -----------------------------
   # Develop for parents
   # -----------------------------
-=begin  
+=begin
   def my_son
      @id = params[:id]
      @user = User.find(@id)
@@ -150,37 +163,37 @@ class HomeController < ApplicationController
      @acces_to_survey = @user.user_surveys
      ##### comienza el acceso a assignments
      @acces_to_assignment = @user.assignments
-    
+
      ##### comienza el acceso a cursos
      @acces_to_courses = @user.courses.where(:active_status => true)
-     
+
      #### promedio general
       @general_potential = 0
        @n = 0
-      
+
        @acces_to_courses.each do |course|
             @member = course.members_in_courses.where(:user_id => @user.id)
-             
-            @member.each do |c| 
-                eval = c.evaluation 
+
+            @member.each do |c|
+                eval = c.evaluation
                  @n = @n + 1
                  @general_potential =  @general_potential+eval
-                
+
            end
       end
        @general_potentia = @general_potential/ @n
-      
+
   end
-  
+
   def acces_on_course
     id_course = params[:course_id]
     id_user = params[:user_id]
     @course = Course.find(id_course)
     @user = User.find(id_user)
-    
-    ####### detectando si el usuario es miembro aprobado 
+
+    ####### detectando si el usuario es miembro aprobado
     @member = MembersInCourse.find_by_user_id_and_course_id(id_user, id_course)
-    
+
     if @member.accepted == true
        @mensaje = "su hijo es miembro del curso"
        ##### surveys actuales
@@ -197,20 +210,20 @@ class HomeController < ApplicationController
         # puts  @delivery_old
     else
        @mensaje = "su hijo  no ha sido aceptado en el curso"
-    end    
-    
+    end
+
   end
 =end
 
   # chat behaviour of cursame
   # -----------------------------
-  
+
   def render_notifications
     @notification = Notification.find(params[:id])
     respond_to do |format|
       format.js
     end
-  end 
+  end
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------
@@ -236,12 +249,12 @@ class HomeController < ApplicationController
       end
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
-      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')      
+      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
       respond_to do |format|
        format.js
       end
     end
-    
+
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
       @channel_name = params[:channel_name]
@@ -278,21 +291,27 @@ class HomeController < ApplicationController
   def server_error
     render :status => 500, :formats => [:html]
   end
- 
+
   def parents
     @tutors = current_user.tutors
   end
 
-  protected
+  private
+
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
-    @comment = commentable.comments.create!(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
+    if params[:comment_id].blank? then
+      @comment = commentable.comments.create!(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
+    else
+      @comment = Comment.find(params[:comment_id])
+      @comment.update_attributes(:comment => params[:comment])
+    end
   end
 
   def get_unique_channel_users(ids)
     ids = ids.sort
     channel_name = "/messages/users_channel_"+ (ids * "_")
-    return channel_name 
+    return channel_name
   end
 
   def find_or_insert_channel(channel_name,users)

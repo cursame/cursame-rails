@@ -1,15 +1,23 @@
 <% if mobile? %>
  <%= render :partial => "shared/mobile" %>
 <% else%>
-<!DOCTYPE html>
 <!-- redirigimos a cursa.me  -->
-<% if request.domain != "cursa.me" %>
-  <%url =  request.url%>
-  <%cursame = url.gsub(request.domain,"cursa.me")%>
+<!DOCTYPE html>
+<% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
+  <% url =  request.url %>
+  <% cursame = url.gsub(request.domain,"cursa.me") %>
   <script type="text/javascript">
-    window.location.href="<%= cursame %>"  // put your correct path in a string here
+    // window.location.href="<%= cursame %>"  // put your correct path in a string here
   </script>
-<%end%>
+<% end %>
+
+<% if request.subdomain.split(".").size != 1 then %>
+	<% url = request.url %>
+    <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
+  <script type="text/javascript">
+    window.location.href="<%= new_url %>"  // put your correct path in a string here
+  </script>
+<% end %>
 <html>
 <head>
   <title>Cursame</title>
@@ -28,6 +36,24 @@
   <![endif]-->
 </head>
 <body>
+
+    <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
+    <style type="text/css" media="screen, projection">
+      @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
+    </style>
+    <script type="text/javascript">
+      if (typeof(Zenbox) !== "undefined") {
+        Zenbox.init({
+          dropboxID:   "20209757",
+          url:         "https://cursame.zendesk.com",
+          tabTooltip:  "Ayuda y soporte técnico",
+          tabImageURL: "/assets/megaphone-24.png",
+          tabColor:    "#fff",
+          tabPosition: "Right"
+        });
+      }
+    </script>
+    
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -79,13 +105,14 @@
 
 <div class="center-div">
   <!-- content -->
-  <div class="container">
+  <div class="container" >
     <!-- content -->
     <%= yield %>
     <br>
     <!--<img src="http://placehold.it/920x100/" alt="">  -->
   </div>
 </div>
+
 </body>
 </html>
 <% end %>

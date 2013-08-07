@@ -11,15 +11,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
 
-  attr_accessible :email, :password, :password_confirmation,:network,:authentication_token,
-  :networks, :bios, :permissioning, :permissionings, :search,
-  :permissionings_attributes, :network_id, :role_id, :user_id,
+  attr_accessible :email, :password, :password_confirmation,:network,
+  :authentication_token, :networks, :bios, :permissioning, :permissionings,
+  :search, :permissionings_attributes, :network_id, :role_id, :user_id,
   :remember_me, :first_name, :last_name, :name, :id, :personal_url,
   :avatar, :networks_users, :coverphoto, :facebook_link,
   :twitter_link, :update, :comments, :networks, :assets,
-  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx, :image_avatarxx, :cover_photox,
-  :confirmation_token, :locked_at, :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain
-
+  :settings_teacher, :friendships, :friends, :registerable, :image_avatarx,
+  :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
+  :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
 
   has_many :permissionings, :dependent => :destroy
   has_many :networks, :through => :permissionings
-  #has_many :users_friends, :dependent => :destroy
   has_many :members_in_courses, :dependent => :destroy
   # Miembros de grupos
   has_many :members_in_groups, :dependent => :destroy
@@ -40,7 +39,8 @@ class User < ActiveRecord::Base
   has_many :user_surveys, :dependent => :destroy
   has_many :assets, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
-  has_many :deliveries#, :dependent => :destroy
+  has_many :discussions, :dependent => :destroy
+  has_many :deliveries, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   has_many :survey, :dependent => :destroy
@@ -55,13 +55,14 @@ class User < ActiveRecord::Base
 
   has_one :settings_teacher, :dependent => :destroy
 
-  #validates :password,:presence=>true,:on=>:create
   validates_uniqueness_of :personal_url
-  #validates_presence_of :accepted_terms
+  validates_presence_of :personal_url
+  validates_presence_of :subdomain
+  validates_presence_of :domain
   # validates_uniqueness_of :accepted_terms
 
   # roles
-  #has_many :permissionings, :dependent => :destroy
+  has_many :permissionings, :dependent => :destroy
   has_many :roles, :through => :permissionings
 
   #nested atributes for forms asets
@@ -90,7 +91,7 @@ class User < ActiveRecord::Base
     #
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
     # Solamente el estudiante no tiene asociado ese modelo.
-    teacher_roles = self.permissionings.keep_if{
+    teacher_roles = self.permissionings.keep_if {
       |permissioning|
       permissioning.role_id != 2
     }
@@ -115,6 +116,14 @@ class User < ActiveRecord::Base
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
+ 
+ 
+ after_create do 
+   
+   self.domain = 'cursa.me'
+   self.save!
+   
+ end
 
 
   before_destroy do
@@ -128,11 +137,25 @@ class User < ActiveRecord::Base
     #  end
     #antes de destruir un usuario borra las relaciones de amigos
 
+    assets = Asset.where(:user_id => self.id)
+
+    assets.each do
+      |asset|
+      asset.destroy
+    end
+
     self.inverse_friendships.each do |friend|
       friend.destroy
     end
-    self.friendships.each do |firends|
-      friends.destroy
+    self.friendships.each do |firend|
+      friend.destroy
+    end
+
+    comments = Comment.where(:user_id => self.id)
+
+    comments.each do
+      |comment|
+      comment.destroy
     end
   end
 
@@ -150,22 +173,19 @@ class User < ActiveRecord::Base
   #mailer for subdominea_save
 
   def devise_mailer_subdomain
+    if self.subdomain.split(".").size != 1 then
+      return self.subdomain.split(".").last
+    end
     return self.subdomain
   end
 
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
-    case
-       when Rails.env == 'development'
-         @link = 'lvh.me:3000'
-       when Rails.env == 'production'
-         @link = 'cursa.me'
-       when Rails.env == 'test'
-         @link = 'cursatest.com'
-       when Rails.env == 'subtest'
-         @link = 'cursa.me'
-     end
+    if (self.domian == "lvh.me") then
+      return (self.domain + ":3000")
+    end
+    return self.domain
   end
 
 
@@ -173,7 +193,7 @@ class User < ActiveRecord::Base
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "first_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
+      query = "first<_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
       where(query)
     else
       # find(:all, :order => :first_name)

@@ -232,14 +232,18 @@ Cursame30Lb::Application.routes.draw do
   # manejo de la landing page
 
   get "home/index"
+  get "/terms-conditions", :to => "home#conditions", :as => :conditions
+  get "/blog", :to => "home#blog", :as => :blog
+  get "/help", :to => "home#help", :as => :help
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall
   get "comment/:id/destroy_comment", :to => "home#destroy_comment", :as => :destroy_comment
   get "home/authentication", :to => "home#authentications_test",:as => :authentications
+  get "edit/:id", :to => "home#edit_wall", :as => :edit_wall
 
   root :to => 'home#index'
 
   #comentarios
-  match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post]
+  match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }
 
   #finish tour
   match "/home/finish_tour" => "home#finish_tour", :as => "finish_tour", :via => [:get]

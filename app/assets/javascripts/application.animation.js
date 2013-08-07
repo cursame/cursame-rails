@@ -218,7 +218,8 @@ $(document).ready(function() {
                  $(".content_killer").html('');
                  $(".choser").html('');
                  $('.youtube_content_delivery').hide();
-
+                 DisableBlured();
+                 
             $('label.error').remove();
 
             $('#post-forms').animate({
@@ -248,7 +249,7 @@ $(document).ready(function() {
 
             // var valid = $(value).find('#comment-post-form').valid(),
             //     me = this;
-            
+
             $('#post-forms').animate({
                 height: '0'
             }, time);
@@ -278,6 +279,7 @@ $(document).ready(function() {
                     $(".content_killer").html('');
                     $(".choser").html('');
                     $('.youtube_content_delivery').hide();
+                    DisableBlured();
                 // }
             },500);
         });
@@ -422,8 +424,25 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
-            modal('<div id="ajax-msj"><img alt="loading" src="/assets/ajax-loader.gif"> <span style="color:#FFF;">Procesando ...</span></div>');
+            modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
         }).ajaxStop( function() {
-            unmodal();
+            setTimeout(function () {
+                unmodal(); 
+            },4000);
+            // unmodal();             
         });
+
+    /*
+    *=======================================================================================
+    *========= Editing the forms in the wall ====================
+    *=======================================================================================
+    */
+    $('.btn').live('click',function () {
+        CleanerBlur();
+        CancelEditingBlur();
+        $('.link_publications').show();
+        if($('.form_for_edit_wall').is(':visible')){
+            $(this).closest("form").submit();
+        }        
+    });
 });
