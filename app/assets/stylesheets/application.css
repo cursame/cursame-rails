@@ -83,14 +83,14 @@ button, input, select, textarea {
 /* /\/\/\/\ End Reset /\/\/\/\ */
 /**overlay**/
 .ui-widget-overlay{
+    position:fixed;
     opacity:0.5;
     filter:Alpha(opacity=50);
     background:#000;
-    position:absolute;
     top:0;
     left:0;
     width:100%;
-    height:2000px;
+    height:100%;
     z-index:9000;
     display:none;
     color:#FFF;
@@ -128,6 +128,20 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+#ajax-msj{
+    position: fixed;
+    color: #FFF;
+    padding: 10px;
+}
+#ajax-msj img{
+    float: left;
+}
+#ajax-msj p{
+    float: left;
+    margin-top: -15px;
+    font-size: 28px;
+    margin-right: 5px;
 }
 
 #calendar {

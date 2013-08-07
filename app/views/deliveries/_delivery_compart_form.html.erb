@@ -31,8 +31,8 @@
         <%#= f.datetime_select :publish_date%>
         <%#= f.datetime_select :end_date%>
 
-        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery", :required =>'required' %>
-        <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input delivery", :required =>'required' %>
+        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery", :id => 'end_date_'+random_id, :required =>'required', :value=>f.object.end_date  %>
+        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :class=>"date-input delivery", :id => 'publish_date_'+random_id ,:required =>'required', :value=>f.object.end_date %>
         <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción', :required =>'required' %>
         <% if @active_edit == false %>
         
@@ -108,7 +108,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $( "#delivery_publish_date, #delivery_end_date" ).datetimepicker({
+  $( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
     inline: false,
     minDate: 0,
     hourMin: 0,

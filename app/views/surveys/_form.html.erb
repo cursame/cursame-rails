@@ -1,4 +1,5 @@
 <%
+random_id = "#{random}"
 #inicializamos el cuestionario
   if !active_edit
     @survey = Survey.new
@@ -18,8 +19,8 @@
 
     <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input', :required =>'required' %>
     <div style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
-    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input survey", :required =>'required' %>
-    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input survey", :required =>'required' %>
+    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey", :required =>'required', :value=>f.object.publish_date %>
+    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :id => 'end_date_'+random_id, :class=>"date-input survey", :required =>'required', :value=>f.object.end_date %>
     </div>
   </div></br>
 
@@ -58,7 +59,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $( "#survey_publish_date, #survey_end_date" ).datetimepicker({
+  $( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
     inline: false,
     minDate: 0,
     hourMin: 0,

@@ -1,4 +1,20 @@
 <!-- estilo eliminado style="margin-left:70px;" -->
+
+<script>
+	function readURL(input,id,width) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#'+id)
+				.attr('src', e.target.result)
+				.width(width)
+				.height(68);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+
 <div class="form-course"><!-- estilo en courses.scss -->
 	<div style="width:400px; float:left;">
 	<%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
@@ -22,8 +38,12 @@
     <td><p><%= f.label :imagen_de_cabecera %></p></td>
 	    </tr>
 	    <tr>
-	    <td width="180px"><%= f.file_field :avatar, :class=>"stylizeForm" %></td>
-	    <td height="52px"><%= f.file_field :coverphoto, :class=>"stylizeForm" %></td>
+	    	<td><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%></td>
+	    	<td><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%></td>	    	
+	    </tr>
+	    <tr>
+	    <td width="180px"><%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%></td>
+	    <td height="52px"><%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%></td>
 	<!-- <td width="180px"><div id="uploadthingie"><%= f.file_field :avatar, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>  -->
 	<!-- <td height="52px"><div id="uploadthingie"><%= f.file_field :coverphoto, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td> -->
 		</tr>
