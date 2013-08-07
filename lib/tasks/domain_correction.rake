@@ -22,15 +22,15 @@ task :subdomain_users => :environment do
 
   # Enviando su correo de confirmacion
 
-  count = 1
+  #count = 1
 
-   users.each do |user|
-    if (count < 7000) then
-      user.resend_confirmation_token
-      print count.to_s + ", "
-    end
-    count += 1
-  end
+   # users.each do |user|
+   #  if (count >= 7000) then
+   #    user.resend_confirmation_token
+   #    print count.to_s + ", "
+   #  end
+   #  count += 1
+   #  end
 
   puts ""
 
