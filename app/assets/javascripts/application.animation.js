@@ -426,10 +426,7 @@ $(document).ready(function() {
     $(document).ajaxStart( function() {
             modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
         }).ajaxStop( function() {
-            setTimeout(function () {
-                unmodal(); 
-            },4000);
-            // unmodal();             
+            unmodal();             
         });
 
     /*
