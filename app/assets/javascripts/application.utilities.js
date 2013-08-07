@@ -64,6 +64,6 @@ function modal(element){
 function unmodal(){
     $('#overlaymask').remove();
     $('#cursame-modal').remove();
-    // $('#ajax-msj').remove();
+    $('#ajax-msj').remove();
 
 }

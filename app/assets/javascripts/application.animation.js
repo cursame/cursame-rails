@@ -424,12 +424,9 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
-            modal('<div scrolling="no" id="ajax-msj" style="position:fixed;"><img alt="loading" src="/assets/ajax-loader.gif"><p style="color:#fff;">Procesando...</p></div>');
-            $('body').css({'overflow':'hidden'});
+            modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
         }).ajaxStop( function() {
-            unmodal();
-            $('body').css({'overflow':'auto'});
-             
+            unmodal();             
         });
 
     /*
@@ -441,11 +438,8 @@ $(document).ready(function() {
         CleanerBlur();
         CancelEditingBlur();
         $('.link_publications').show();
-        // alert(123);
-        var modal = $(this).closest('.form_for_edit_wall');
-        // console.log(modal.length);
-        $(this).closest("form").submit();
-        // console.log($(this).closest("form").length);
-        // $(this).closest("form").hide();
+        if($('.form_for_edit_wall').is(':visible')){
+            $(this).closest("form").submit();
+        }        
     });
 });
