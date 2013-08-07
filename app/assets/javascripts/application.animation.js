@@ -187,7 +187,6 @@ $(document).ready(function() {
         prePostMarginRight = $('#profile-form-options').css('marginRight');
         prePostMarginBottom = $('#profile-form-options').css('marginBottom');
         prePostMarginLeft = $('#profile-form-options').css('marginLeft');
-
         var hrefClean = $(this).attr('href');
         $(this).parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
@@ -196,6 +195,7 @@ $(document).ready(function() {
             marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
+          
             // goFront('#post-forms','.profile-post-box');
         });
         $('#post-forms').animate({
@@ -210,7 +210,7 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
-        
+           
             resetForm($(value).find('form'));
                 /* elimina los contenidos*/
                  $(".content_free").html('');
@@ -229,6 +229,7 @@ $(document).ready(function() {
                 opacity: 0
             }, time, function() {
                 $(this).css('display','none');
+                 $('.tim').foggy(false);
             });
             $('#profile-form-options').css('display','block');
             $('#profile-form-options').animate({
@@ -257,6 +258,7 @@ $(document).ready(function() {
                 opacity: 0
             }, time, function() {
                 $(this).css('display','none');
+                 $('.tim').foggy(false);
             });
             $('#profile-form-options').css('display','block');
             $('#profile-form-options').animate({
@@ -280,6 +282,7 @@ $(document).ready(function() {
                     $(".choser").html('');
                     $('.youtube_content_delivery').hide();
                     DisableBlured();
+                    $('.tim').foggy(false);
                 // }
             },500);
         });
@@ -442,4 +445,5 @@ $(document).ready(function() {
             $(this).closest("form").submit();
         }        
     });
+    
 });
