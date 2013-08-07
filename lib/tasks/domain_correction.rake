@@ -24,8 +24,8 @@ task :subdomain_users => :environment do
 
   count = 1
 
-   users.each do |user|
-    if (count < 7000) then
+  users.each do |user|
+    if (count >= 7000) then
       user.resend_confirmation_token
       print count.to_s + ", "
     end
