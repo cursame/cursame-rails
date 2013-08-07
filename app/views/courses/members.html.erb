@@ -37,10 +37,10 @@
     <%@course.members_in_courses.each do |member|  %>
         <%if @members == "nil"%>
         <%else%>
-              <div class="everymbrm">
+             
                     <% @members = User.find_by_id(member.user_id) %>
                     <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
-
+                <div class="everymbrm" id="usk_<%=@member.id%>">
                 <!--coloca la imagen y el nombre-->
        
                 <div id="imgge" style="width:170px;height:170px;background:#ddd;">
@@ -59,7 +59,7 @@
                         <div class="nonAce">
                           <div class="helptext" style="height:16px!important;height:35px!important;"><%=  fcm.check_box :accepted, :onclick => 'submit()'  %><%= "El usuario no ha sido aceptado aún"%></div>
                           <div class="addfriend" style="margin-top: 10px; text-align: center;">
-                          <%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete %>
+                          <%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
                           <%#= link_to 'Eliminar', member, confirm: 'Are you sure?', method: :delete %>
                       </div>
                     </div><!-- ends nonAce -->
@@ -82,7 +82,7 @@
             <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
                 <%= form_for @member, :remote => true do |fcm| %>
                 <div class="helptext"><%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%></div>
-                <div class="addfriend" style="margin-top: 10px; text-align: center;"><%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete %></div>
+                <div class="addfriend" style="margin-top: 10px; text-align: center;"><%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %></div>
                 <%end%>
             <%end%>
      </div><!-- ends everymbrm -->

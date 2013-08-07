@@ -77,8 +77,8 @@ class MembersInCoursesController < ApplicationController
     @members_in_course.destroy
 
     respond_to do |format|
-      format.html { redirect_to :back }
-      format.json { head :no_content }
+      format.js 
+      format.json
     end
   end
 end

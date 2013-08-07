@@ -40,9 +40,12 @@ width: 700px!important; text-align: center!important; padding-top: 30px!importan
             <% if @correspond %> 
                  <% if @correspond.accepted == true %>
 <!--                         <%= link_to image_tag('/assets/icons/files.png'), course %> -->
+                      <div style="float:left; align:left; margin-right:155px;" id="uik_<%=@correspond.id%>">  <%= link_to image_tag('unsuscript.png'),  @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true%></div>
                     <% if @correspond.owner == true %>
+                       <div style="position:absolute; float:left; margin-top:5px; margin-left:150px;" id="usk_<%=@correspond.id%>">
                         <%= link_to image_tag('/assets/icons/edit.png'), edit_course_path(course) %>
-                        <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: 'Are you sure?', method: :delete %>
+                        <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
+                       </div>
                     <%end%>
                    <%else%>
                     <span style="color:#fff;font-weight:lighter;font-size:12px;">Aún no has sido aceptado en este curso</span>
