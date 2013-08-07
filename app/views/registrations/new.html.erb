@@ -1,5 +1,11 @@
 <% if current_network.nil? %>
-<div class="bg-layout"></div>
+<script>
+$(document).ready(function() {
+    $("#bg").ezBgResize();
+});
+
+</script>
+<div class="bg-layout" id="bg"></div>
 <div class="login">
     <p>
     <b>Lo sentimos pero la red a la que estas intentado accesar no existe</b></br>
@@ -37,12 +43,12 @@
 		<!-- <div style="color:#bbb;text-align:center;font-size:14px;font-weight:lighter;margin-top:23px;">Codigo de confirmación</div> -->
 		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
     	<%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain%>
+		<%= f.hidden_field :domain, :class => "pswdcode", :value => request.domain %>
 		<div class="dropperDwn">
 	       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
 	       <% 1.times do networks = @user.permissionings.build end %>
 		       <%= f.fields_for :permissionings do |permissioning|%>
 	           <%= permissioning.hidden_field :network_id, :value => current_network.id %>
-	   <div class="dropperDwn">
 	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form dropperDwn" %>
 	       <%end%>
 	   </div>

@@ -83,8 +83,13 @@ class Comment < ActiveRecord::Base
     users = hash[:users]
     notification_kind = hash[:kind]
 
+    puts '--------------------------------'
+    puts notification_kind
+
     if notification_kind["network"]
-      Wall.create( :users => [self.user], :publication => self, :network => self.network, :public => true)
+      puts '------------aqui--------------------'
+      puts self.user.id
+      Wall.create!( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user_id }
 
       # Notification.create(:users => users, :kind => notification_kind, :notificator => self)

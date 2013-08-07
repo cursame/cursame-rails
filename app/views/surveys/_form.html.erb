@@ -1,12 +1,14 @@
 <%
+random_id = "#{random}"
 #inicializamos el cuestionario
+  if !active_edit
     @survey = Survey.new
     1.times do
       question = @survey.questions.build
       1.times { question.answers.build}
     end
+  end
 %>
-
 <%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
    <div class="video_help" style="display: none" id="survey_help">
            <div class="content_video" id="content_video_video_survey">
@@ -17,20 +19,24 @@
 
     <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input', :required =>'required' %>
     <div style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
-    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input survey", :required =>'required' %>
-    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input survey", :required =>'required' %>
+    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey", :required =>'required', :value=>f.object.publish_date %>
+    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :id => 'end_date_'+random_id, :class=>"date-input survey", :required =>'required', :value=>f.object.end_date %>
     </div>
   </div></br>
-  <div id="box-question" class="box-question">
-      <%= f.fields_for :questions do |builder| %>
-        <%= render "/surveys/question_fields", :f => builder %>
-      <% end %>
-  </div>
-  <div class="box-question">
-    <div class="question-field" style="height: 40px;">
-      <%= link_to_add_fields "Agregar Pregunta", f, :questions, {:class=>'add-question'}, '#box-question' %>
-    </div>
-  </div>
+
+    <% if !active_edit %> 
+      <div id="box-question" class="box-question">
+          <%= f.fields_for :questions do |builder| %>
+            <%= render "/surveys/question_fields", :f => builder %>
+          <% end %>
+      </div>
+      <div class="box-question">
+        <div class="question-field" style="height: 40px;">
+          <%= link_to_add_fields "Agregar Pregunta", f, :questions, {:class=>'add-question'}, '#box-question' %>
+        </div>
+      </div>
+    <% end %>
+
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
     <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary", :id => 'comment-post-form'%>
     <br>
@@ -53,7 +59,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $( "#survey_publish_date, #survey_end_date" ).datetimepicker({
+  $( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
     inline: false,
     minDate: 0,
     hourMin: 0,

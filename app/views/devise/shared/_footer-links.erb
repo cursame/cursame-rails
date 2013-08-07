@@ -1,13 +1,13 @@
 <footer>
 <ul class="foo">
-	<li><a href="#">Sobre nosotros</a></li>
-	<li><a href="#">Ayuda</a></li>
-	<li><a href="#">Blog</a></li>
-	<li><a href="#">Empleos</a></li>
-	<li><a href="#">T&eacute;rminos</a></li>
-	<li><a href="#">Privacidad</a></li>
-	<li><a href="#">Publicidad</a></li>
-	<li><a href="#">Desarrolladores</a></li>
+	<!--<li><a href="#">Sobre nosotros</a></li>-->
+	<li><a href="#"><%= link_to "Ayuda", help_path %></a></li>
+	<li><%= link_to "Blog", blog_path %></li>
+	<!--<li><a href="#">Empleos</a></li>-->
+	<li><%= link_to "Términos y Condiciones", conditions_path%></li>
+	<!--<li><a href="#">Privacidad</a></li>-->
+ 	<!--<li><a href="#">Publicidad</a></li>-->
+	<!--<li><a href="#">Desarrolladores</a></li>-->
 	<li><script>document.write(new Date().getFullYear())</script> &#174; C&uacute;rsame</li>
 </ul>
 </footer>
