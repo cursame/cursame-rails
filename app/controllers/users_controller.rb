@@ -233,5 +233,19 @@ class UsersController < ApplicationController
        format.js
     end
   end
+  
+  def corroborate_url
+    @user = User.find_by_personal_url(params[:personal_url])
+    puts '####################'
+    puts @user
+    puts '####################'
+     
+     if @user == nil
+        @url = true
+     else
+        @url = false
+     end
 
+    end
+  
 end
