@@ -50,6 +50,10 @@ User.update_all(:confirmed_at => Time.now)
 
 
 
+
+
+
+
     
 
 
