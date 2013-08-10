@@ -30,15 +30,19 @@ User.create(:email => "info+curosas.lu@cursa.me", :first_name => 'Lucia ', :last
 ######################### se crea un archivo de instalación directo para los locales ##############################
 
 n = Network.create(:subdomain => "pruebas", :name => "pruebas", :population => "100", :public_register => true, :free => true)
-u = User.create(:email => "joser_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfihfoi584030)
-u1 = User.create(:email => "joser_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfihfoi534284030)
-u2 = User.create(:email => "joser_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfih76543foi584030)
+u = User.create(:email => "jose_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi584030', :domain => 'lvh.me', :subdomain => 'pruebas')
+u1 = User.create(:email => "jose_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi534284030',:domain => 'lvh.me', :subdomain => 'pruebas')
+u2 = User.create(:email => "jose_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'lvh.me', :subdomain => 'pruebas')
+u3 = User.create(:email => "info@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih76543fdadaoi584030',:domain => 'lvh.me', :subdomain => 'pruebas')
 
-n_last => Network.last
+n_last = Network.last
 
 p  = Permissioning.create( :user_id => u.id, :role_id => "1", :network_id => n_last.id )
 p1 = Permissioning.create(:user_id => u1.id, :role_id => "3", :network_id => n_last.id )
 p2 = Permissioning.create(:user_id => u2.id, :role_id => "2", :network_id => n_last.id )
+p3 = Permissioning.create(:user_id => u3.id, :role_id => "4", :network_id => n_last.id )
+
+User.update_all(:confirmed_at => Time.now)
 
 
 
