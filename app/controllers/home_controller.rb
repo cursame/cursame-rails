@@ -217,7 +217,15 @@ class HomeController < ApplicationController
 
   # chat behaviour of cursame
   # -----------------------------
-
+  def closer_db
+    #alfredot_rifa_free_pro_forever
+    ActiveRecord::Base.connection.close
+     respond_to do |format|
+        format.js
+      end
+    
+  end
+ 
   def render_notifications
     @notification = Notification.find(params[:id])
     respond_to do |format|

@@ -452,9 +452,13 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
+           $.get("/closer_db");
+            console.log($.get("/closer_db"));
             modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
+            
         }).ajaxStop( function() {
-            unmodal();             
+            unmodal(); 
+           // $.get("/closer_db");            
         });
 
     /*
