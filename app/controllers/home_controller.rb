@@ -218,8 +218,27 @@ class HomeController < ApplicationController
   # chat behaviour of cursame
   # -----------------------------
   def closer_db
-    #alfredot_rifa_free_pro_forever
-    ActiveRecord::Base.connection.close
+   
+   # @closer = ActiveRecord::Base.connection.close
+    @head_connections =  ActiveRecord::Base.clear_active_connections!
+    @funct = ActiveRecord::Base.connection.disconnect!
+    @status = ActiveRecord::Base.connected?
+    ActiveRecord::Base.establish_connection(
+       adapter: 'postgresql',
+       encoding: 'utf8',
+       database: 'postgres',
+       pool: 1,
+       timeout: 10000000
+    )
+    @status_l = ActiveRecord::Base.connected?
+    
+    
+    
+    alfredot_rifa_free_pro_forever
+    puts "#{@status_l}"
+    puts " #{@status} "
+   
+   
      respond_to do |format|
         format.js
       end

@@ -7,12 +7,12 @@ development:
   adapter: postgresql
   encoding: utf8
   database: postgres
-  pool: 5
+  pool: 1
+  timeout: 10000000
   username: 
   password: 
  # database: db/development.sqlite3
-  pool: 5
-  timeout: 10000000
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
