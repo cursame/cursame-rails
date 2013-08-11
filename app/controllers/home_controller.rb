@@ -232,11 +232,9 @@ class HomeController < ApplicationController
     )
     @status_l = ActiveRecord::Base.connected?
     
-    
-    
-    alfredot_rifa_free_pro_forever
-    puts "#{@status_l}"
-    puts " #{@status} "
+    #alfredot_rifa_free_pro_forever
+    #puts "#{@status_l}"
+    #puts " #{@status} "
    
    
      respond_to do |format|
