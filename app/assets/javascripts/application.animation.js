@@ -298,9 +298,8 @@ $(document).ready(function() {
                 if (godrop == true){
     
                     CleanerBlur();
-                    return false;
                     //alert('Tiene algunos campos sin llenar');
-                 
+                    DisableBlured();
                 }else{
                 
                     resetForm($(value).find('form'));
@@ -454,13 +453,8 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
-<<<<<<< HEAD
-           $.get("/closer_db");
-            //console.log($.get("/closer_db"));
-=======
-           // $.get("/closer_db");
-            // console.log($.get("/closer_db"));
->>>>>>> fe437d9296f9a4cd98f95e17553be901e0c7e8dc
+          // $.get("/closer_db");
+
             modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
             
         }).ajaxStop( function() {
