@@ -219,6 +219,7 @@ class HomeController < ApplicationController
   # -----------------------------
   def closer_db
    
+   if Rails.env == 'subtest'
    # @closer = ActiveRecord::Base.connection.close
     @head_connections =  ActiveRecord::Base.clear_active_connections!
     @funct = ActiveRecord::Base.connection.disconnect!
@@ -236,6 +237,7 @@ class HomeController < ApplicationController
     #puts "#{@status_l}"
     #puts " #{@status} "
    
+   end
    
      respond_to do |format|
         format.js
