@@ -16,7 +16,7 @@
        <%end%>
 
        <%if comment.owner?(current_role, current_user) then%>
-          <span class="deleteComment"><%= link_to "Eliminar", destroy_comment_path(comment.id), :remote => true%></span>
+          <span class="deleteComment"><%= link_to image_tag('icons/trash.png'), destroy_comment_path(comment.id), :remote => true%></span>
        <%end%>
     <div class="avatar-child-comment" href="#">
         <%#= debug comment.user.avatar%>

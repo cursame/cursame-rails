@@ -57,15 +57,16 @@
 }
 
 #users-and-groups-online{
-	background: #F2F4F8;
+	width: 188px;
 	height:320px;
+	background: #F2F4F8;
 	margin-top: 5px;
+	margin-left: -10px;
 	display: block;
 	padding-top: 10px;
 	padding-left: 12px;
 	padding-right: 10px;
-	margin-left: -10px;
-	width: 188px;
+	overflow: scroll;
 	}
 		#users-and-groups-online div > a:link {
 			width: 198px;

@@ -1,11 +1,19 @@
 
-  <!-- <div class="netWorkMenuHeader">
+<!-- Se quitan estás opciones hasta que estén habilitadas
+
+<div class="netWorkMenuHeader">
 <div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
   <div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
   <span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>
-</div> -->
+</div>
 
 <span class="dividerHeader"></span>
+
+-->
+
+<div style="width: 910px; display: block; padding: 30px 0 20px; height: 35px; margin: 0 auto;">
+	<h2 class="courses-title-h2">Comunidad</h2>
+</div>
 
 <% @network_users.each do |array| %>
      <%# @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
@@ -17,7 +25,7 @@
          </div><!-- ends image_access -->
 
 
-     <div class="place-hldr" style="height: 55px; display: inline-block; position: absolute; margin-top: 10px; margin-left: 10px;">
+     <div class="place-hldr">
 
     <!--&nbsp;<%#= array[0].email %>-->
 
@@ -37,10 +45,16 @@
             <%when "friend"%>
             <% else %>
             <div id="add_friend<%=array[0].id%>">
-                <span class="addfriend" style="margin-left: 0px; margin-top: 10px;"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%></span>
+                <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%></span>
             </div>
         <%end%>
     </div><!-- ends add_friend_comunity -->
+    
+    	<script>
+    		$(".addfriend").clic( function() {
+    			$(this).css({background: '#B3B3B3'});
+    		});
+    	</script>
 
 
       </div><!-- ends place-hldr -->

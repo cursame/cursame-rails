@@ -217,7 +217,34 @@ class HomeController < ApplicationController
 
   # chat behaviour of cursame
   # -----------------------------
-
+  def closer_db
+   
+   if Rails.env == 'subtest'
+   # @closer = ActiveRecord::Base.connection.close
+    @head_connections =  ActiveRecord::Base.clear_active_connections!
+    @funct = ActiveRecord::Base.connection.disconnect!
+    @status = ActiveRecord::Base.connected?
+    ActiveRecord::Base.establish_connection(
+       adapter: 'postgresql',
+       encoding: 'utf8',
+       database: 'postgres',
+       pool: 1,
+       timeout: 10000000
+    )
+    @status_l = ActiveRecord::Base.connected?
+    
+    #alfredot_rifa_free_pro_forever
+    #puts "#{@status_l}"
+    #puts " #{@status} "
+   
+   end
+   
+     respond_to do |format|
+        format.js
+      end
+    
+  end
+ 
   def render_notifications
     @notification = Notification.find(params[:id])
     respond_to do |format|

@@ -62,7 +62,7 @@ class Comment < ActiveRecord::Base
     #comment = self.find_by_commentable_id(commentable_id)
     commentable_type.camelize.constantize.find(commentable_id)
   end
-
+  
   after_destroy do
 
     walls = Wall.where(:publication_type => "Comment", :publication_id => id)
