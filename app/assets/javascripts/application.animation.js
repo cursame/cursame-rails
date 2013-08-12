@@ -256,10 +256,10 @@ $(document).ready(function() {
 
                   if ($('label.error').length){
                       godrop = true;
-                      console.log(godrop);
+                    //  console.log(godrop);
                     }else{
                       godrop = false;
-                      console.log(godrop);
+                    //  console.log(godrop);
                     }
             
             
@@ -295,10 +295,11 @@ $(document).ready(function() {
             //para validar los errores
             setTimeout(function (argument) {
                 
-                if (godrop == false){
-                    HashBlured();
+                if (godrop == true){
+    
+                    CleanerBlur();
                     //alert('Tiene algunos campos sin llenar');
-                 
+                    DisableBlured();
                 }else{
                 
                     resetForm($(value).find('form'));
@@ -452,8 +453,8 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
-           // $.get("/closer_db");
-            // console.log($.get("/closer_db"));
+          // $.get("/closer_db");
+
             modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
             
         }).ajaxStop( function() {

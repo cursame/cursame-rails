@@ -21,5 +21,6 @@ $('#notice').append('Se ha creado una tarea ');
 setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-    
+      CleanerBlur();
+      DisableBlured();
 }, 2500);

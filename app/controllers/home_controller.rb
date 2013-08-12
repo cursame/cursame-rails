@@ -219,25 +219,41 @@ class HomeController < ApplicationController
   # -----------------------------
   def closer_db
    
-   if Rails.env == 'subtest'
+   
+ #  if Rails.env == 'subtest'
    # @closer = ActiveRecord::Base.connection.close
-    @head_connections =  ActiveRecord::Base.clear_active_connections!
+    
+    #@head_connections =  ActiveRecord::Base.clear_active_connections!
+  
+   
+    
+    
+=begin
+    @active = ActiveRecord::Base.verify_active_connections!
+    @all = ActiveRecord::Base::Reapers
+    alfredot_rifa_free_pro_forever
+     puts  @active.count 
+     puts "///////"
+     puts @all.count
     @funct = ActiveRecord::Base.connection.disconnect!
     @status = ActiveRecord::Base.connected?
     ActiveRecord::Base.establish_connection(
-       adapter: 'postgresql',
-       encoding: 'utf8',
-       database: 'postgres',
-       pool: 1,
-       timeout: 10000000
+        adapter: 'postgresql',
+        host: 'ip-10-151-14-176.ec2.internal',
+        database: 'cursalab',
+        username: 'cursame',
+        password: 'r8o54q58',
+        encoding: 'unicode',
+        timeout: 5000,
+        pool: 5
     )
     @status_l = ActiveRecord::Base.connected?
-    
+=end
     #alfredot_rifa_free_pro_forever
     #puts "#{@status_l}"
     #puts " #{@status} "
    
-   end
+ #  end
    
      respond_to do |format|
         format.js
