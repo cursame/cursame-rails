@@ -393,3 +393,16 @@ opacity: 0.7;
 	position: relative;
 }
 
+.scarlate{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    width:100%;
+    background:#FCBBA8;
+    color:#C73C15;
+    height:50px;
+    font-size:20px;
+    
+}

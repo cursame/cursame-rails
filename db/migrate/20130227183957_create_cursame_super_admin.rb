@@ -1,5 +1,6 @@
 class CreateCursameSuperAdmin < ActiveRecord::Migration
   def up
+
     
     #n = Network.create(:name => 'preubas', :subdomain => 'pruebas')
     
@@ -11,7 +12,6 @@ class CreateCursameSuperAdmin < ActiveRecord::Migration
     #a.save!
     
     #Permissioning.create!( user_id: a.id, role_id: "4", :network_id => n_last.id)
-    
     
   end
 
