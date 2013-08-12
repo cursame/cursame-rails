@@ -77,8 +77,11 @@ class DeliveriesController < ApplicationController
       if @delivery.save
         @typed = "Delivery"
         @az = @delivery
+        puts '------------ aqui ya se creo el delivery -------------------'
         @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))
         activation_activity
+        puts @publication.to_yaml
+        puts '------------ debio de imprmir el publication -------------------'
         #actualizamos los assets del delivery
         if(params[:files])
           params[:files].each do |asset_id|
