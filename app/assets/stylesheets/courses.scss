@@ -3,7 +3,7 @@
 .course{
   float: left;
   height: 250px;
-  width: 200px;
+  width: 218px;
   margin: 10px 4px;
   border: $border-box;
   @include border-radius;
@@ -18,7 +18,7 @@
     font-family: HelvLight;
   }
   & .thumbnail{
-   width: 200px; overflow: hidden; vertical-align: middle;
+   width: 218px; overflow: hidden; vertical-align: middle;
  }
 }
 
@@ -79,14 +79,14 @@ h3{
 }
 
 #courses-list {
-	width: 846px;
+	width: 915px;
 	margin: auto;
 	}
 	
 .courses-title-h2{
 	font-size: 30px;
 	font-family: helvetica;
-	font-weight: bold;
+	font-weight: lighter;
 	float: left;
 	width: 260px;
 }
@@ -111,9 +111,19 @@ h3{
 }
 
 #header-courses{
-	width: 780px;
+	width: 910px;
 	margin: auto;
-	padding: 15px;
+	padding: 25px 15px 15px 15px;
+}
+
+.SearchForm {
+	width: 600px;
+	margin-top: 10px;
+}
+
+.SearchForm #search {
+	width: 600px;
+	padding-top: 6px;
 }
 
 .list_alt_box{
@@ -147,6 +157,11 @@ h3{
 
 .list_alt_box .headerOne { font-family: Arial; font-weight: lighter; margin-left: 3px; color: #000; }
 .list_alt_box .headerOne .status > a:headerOne { color: #39D4E2; }
+
+.list_alt_box .headerOne h1 {
+	height: 20px;
+	overflow: hidden;
+}
 
 .top-header-delivery-box ul li .green-circle-mini, .top-header-delivery-box ul li .orange-circle-mini { margin: 6px 0px 0px 6px!important; color: #1a1a1a!important; display: block; width: 130px!important; }
 .top-header-delivery-box ul li { margin: 2px 0px 5px 0px !important; width: 130px!important; }
@@ -225,7 +240,7 @@ div#dummy:hover { background: #08B5CE; color: #fff; }
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ edit course ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
-#nsdmenu { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 790px; padding: 20px 10px 10px 17px; }
+#nsdmenu { margin: 17px auto 0 !important; position: relative!important; display: block!important; width: 900px; padding: 20px 10px 10px 17px; }
 #nsdmenu h1 { color: #969696!important; font-size: 16px; }
 #nsdmenu .reload { float: right; display: inline; position: relative; margin-top: -17px; }
 .reload li { display: inline-table; height: 17px; vertical-align: middle; }
@@ -234,19 +249,78 @@ div#dummy:hover { background: #08B5CE; color: #fff; }
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ edit members ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 
-.cmembers { width: 809px; margin: 0 auto; }
-.pndts { margin-top: -25px; float: right; }
-.everymbrm { background: #fff; width: 170px; border: 1px solid #eee; box-shadow: 1px 2px 1px #ccc; padding: 10px 10px 10px 10px; transition: linear all 0.2s; float: left; margin-right: 10px; margin-bottom: 20px; }
-.everymbrm .everymbrm { margin-top: -10px; }
-.everymbrm:hover { box-shadow: 0px 0px 5px #28C8DF; transition: linear all 0.2s; }
-.everymbrm h3 { text-align: center; font-size: 14px; display: block; height: 20px; position: relative; margin-top: 17px; }
+.cmembers {
+	width: 809px;
+	margin: 0 auto;
+	}
+.pndts {
+	margin-top: -25px;
+	float: right;
+	}
+.everymbrm {
+	background: #fff;
+	width: 170px;
+	overflow: hidden;
+	/*border: 1px solid #eee;*/
+	padding: 3px;
+	transition: linear all 0.2s;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	}
+.everymbrm .everymbrm {
+	margin-top: -10px;
+	}
+.everymbrm:hover {
+	box-shadow: 0px 0px 0px #28C8DF;
+	transition: linear all 0.2s;
+	color: #FFF;
+	/*background: #5F95BE;*/
+	}
+
+.everymbrm:hover > a:link {
+	color: #FFF!important;
+}
+.everymbrm h3{
+	background: #DEDEDE;
+	padding: 5px;
+	text-align: center;
+	font-size: 14px;
+	display: block;
+	height: 20px;
+	position: relative;
+	margin-top: 3px;
+	}
+	
 .everymbrm img { width: 100%; }
 .everymbrm .nameUser { height: 10px; }
-.everymbrm .helptext { color: #ccc; font-weight: lighter; font-size: 12px; position: relative; display: block; }
+.everymbrm .helptext {
+	color: #FFF;
+	font-weight: lighter;
+	font-size: 14px;
+	position: relative;
+	display: block;
+	}
 .helptext { color: #ccc; font-weight: lighter; font-size: 12px; position: relative; display: block; }
 .everymbrm .dstroytxt { width: 190px; background: #ccc; color: #fff!important; margin-left: -10px; padding: 0; text-align: center; margin-top: 20px; transition: linear all 0.2s; }
 .everymbrm .dstroytxt:hover { background: red; transition: linear all 0.2s; }
 .everymbrm .dstroytxt > a { color: #fff; display: block; height: 30px; position: relative; padding-top: 14px; }
+
+.membersCurse {
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+
+.hoverShowEdit {
+	background: rgba(0,177,199,0.8);
+	height: 150px;
+	width: 170px;
+	padding-top: 20px;
+	display: inline-block;
+	position: absolute;
+	margin-top: -462px;
+}
 
 .dstroytxt { width: 190px; background: #ccc; color: #fff!important; margin-left: -10px; padding: 10px 0; text-align: center; margin-top: 20px; transition: linear all 0.2s; }
 .dstroytxt:hover { background: red; transition: linear all 0.2s; }
@@ -524,7 +598,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 			display: inline-block;
 			margin-top: -52px;
 			margin-right: 8px;
-             }
+          }
             
         }
         

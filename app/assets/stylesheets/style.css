@@ -198,13 +198,14 @@ float: left;
 
 }
 
+#titlheader {
+	background: url('restore_mail.jpg') rgba(95,149,190,0.9);
+}
+
 .userNotiInside {
-	width: 450px;
 	padding: 20px;
-	background: rgba(255,255,255,0.8);
 	padding: 1px;
-	margin: 35px auto 30px auto;
-	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	margin: 0px auto;
 }
 .userNoti {
 	width: 350px;

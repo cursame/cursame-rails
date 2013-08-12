@@ -138,8 +138,15 @@
 	         
 	     <!--modificaciones a la caja de edición-->     
 	     <div class="link_publications">
-	           <div ><%= link_to image_tag("trash22.png"), destroy_wall_path(publication.id), :remote=>true%></div>
-	          <% if publication.publication_type != 'Course'%><div  class="non-blur"id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>"><%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true %></div><%end%>
+	          <div class="trashIt"><%= link_to image_tag("trash22.png"), destroy_wall_path(publication.id), :remote=>true%>
+			  		<span style="visibility: hidden; position: absolute; display: inline; margin-top: -20px; margin-left: 15px;" class="OpenIdTrashIt">Eliminar</span>
+			  </div>
+	          	<% if publication.publication_type != 'Course'%>
+			  <div class="non-blur editIt" id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
+				  <%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true %>
+			  		<span style="visibility: hidden; position: absolute; display: inline; margin-top: -20px; margin-left: 15px;" class="OpenIdEditIt">Editar</span>
+			  </div>
+			 <%end%>
 	      </div>
 	     
 	     <script>
@@ -151,6 +158,59 @@
                 $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
                 });
 	     </script>
+		<!-- 
+		 <script>
+				$('.delivery').mouseenter(function() {
+					$('.link_publications').fadeIn(100);
+				}),
+				$('.delivery').mouseleave(function() {
+					$('.link_publications').fadeOut(100);
+				}),
+				$('.trashIt').mouseenter( function() {
+					$('.OpenIdTrashIt').css({visibility: "visible"}, 200);
+				}),
+				$('.trashIt').mouseleave( function() {
+					$('.OpenIdTrashIt').css({visibility: "hidden"}, 200);
+				}),
+				$('.editIt').mouseenter( function() {
+					$('.OpenIdEditIt').fadeIn('slow').css({visibility: "visible"}, 200);
+				}),
+				$('.editIt').mouseleave( function() {
+					$('.OpenIdEditIt').css({visibility: "hidden"}, 200);
+				});
+		 </script>
+	 -->
+
+		 <script>
+		 $(document).ready( function() {
+			 $('.link_publications').hide();
+		 });
+		 </script>
+
+		 <script>
+			// evento mostrar, ocultar caja 
+		 	$('.delivery').mouseenter(function() {
+		 		$(this).find('.link_publications').fadeIn(100);
+		 	}),
+		 	$('.delivery').mouseleave(function() {
+		 		$(this).find('.link_publications').fadeOut(100);
+		 	}),
+			// evento mostrar, ocultar texto eliminar
+		 	$('.trashIt').mouseenter(function() {
+		 		$(this).find('.OpenIdTrashIt').css({visibility: "visible"}, 200);
+		 	}),
+		 	$('.trashIt').mouseleave(function() {
+		 		$(this).find('.OpenIdTrashIt').css({visibility: "hidden"}, 200);
+		 	}),
+			// evento mostrar, ocultar texto editar
+		 	$('.editIt').mouseenter(function() {
+		 		$(this).find('.OpenIdEditIt').css({visibility: "visible"}, 200);
+		 	}),
+		 	$('.editIt').mouseleave(function() {
+		 		$(this).find('.OpenIdEditIt').css({visibility: "hidden"}, 200);
+		 	});
+		 </script>
+
 	   
 	            
 	            <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">

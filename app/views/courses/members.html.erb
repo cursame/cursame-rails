@@ -1,5 +1,6 @@
-<div id="nsdmenu">
-		<h1>Miembros del curso <%= @course.members_in_courses.count %>    <div style="float:right;"><%= link_to "Regresar al curso ", course_path(@course.id)%></div></h1>e
+<div style="width: 910px; display: block; padding: 30px 0 20px; height: 35px; margin: 0 auto;">
+		<h2 class="courses-title-h2" style="width: 800px;">Miembros del curso <%= @course.members_in_courses.count %> </h2>
+			<div style="float:right; padding-top: 10px;"><%= link_to "Regresar al curso ", course_path(@course.id)%></div>
 </div>
 
 
@@ -8,7 +9,7 @@
 <%else%>
 <%@course.members_in_courses.each do |member|  %>
 
-  <div class="everymbrm">
+  <div class="everymbrm membersCurse">
        <% @members = User.find_by_id(member.user_id) %>
        
        <%if @members == "nil"%>
@@ -20,7 +21,7 @@
                   <%= image_tag(@members.avatar.profile)%>
                   <%end%>
               </div>
-                   <%= link_to  "#{@members.name} perfil", show_user_path(@members.personal_url) %>
+                   <h3><%= link_to  "#{@members.name} perfil", show_user_path(@members.personal_url) %></h3>
       <%end%>
     </div>
     
@@ -32,8 +33,12 @@
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <div class="cmembers">
 <% if  @course.members_in_courses.count > 0 %>
-  
-  <div class="pndts"><h1>Pendientes de Aprobacion: <%= @course.pendings%></h1></div>
+
+	<!--   
+  <div class="pndts">
+  	<h1>Pendientes de Aprobacion: <%= @course.pendings%></h1>
+  </div>
+    -->
 
 
     <%@course.members_in_courses.each do |member|  %>
@@ -42,28 +47,30 @@
              
                     <% @members = User.find_by_id(member.user_id) %>
                     <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
-                <div class="everymbrm" id="usk_<%=@member.id%>">
+                <div class="everymbrm membersCurse" id="usk_<%=@member.id%>">
                 <!--coloca la imagen y el nombre-->
        
-                <div id="imgge" style="width:170px;height:170px;background:#ddd;">
-                <% if  @members.avatar.profile.blank? %>
-              <%= image_tag(@members.image_avatarx)%>
-                <%else%>
-              <%= image_tag(@members.avatar.profile)%>
-              <%end%>
 
-                </div><!-- ends imgge -->
+				<div id="imgge" style="width:170px;height:170px;background:#ddd;">
+					<% if  @members.avatar.profile.blank? %>
+					<%= image_tag(@members.image_avatarx)%>
+					<%else%>
+					<%= image_tag(@members.avatar.profile)%>
+					<%end%>
+				</div><!-- ends imgge -->
+				  
                 <h3><%= truncate(@members.name, :omission => "...", :length => 15) %></h3>
        
                 <%if @member.accepted != true%>
                 <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
                     <div class="nameUser"><%= form_for @member, :remote => true do |fcm| %></div>
                         <div class="nonAce">
-                          <div class="helptext" style="height:16px!important;height:35px!important;"><%=  fcm.check_box :accepted, :onclick => 'submit()'  %><%= "El usuario no ha sido aceptado aún"%></div>
+                          <div class="helptext" style="height:16px!important;height:35px!important;">
+                          	<%=  fcm.check_box :accepted, :onclick => 'submit()'  %><%= "El usuario no ha sido aceptado aún"%>
+                          </div>
                           <div class="addfriend" style="margin-top: 10px; text-align: center;">
-                          <%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
-                          <%#= link_to 'Eliminar', member, confirm: 'Are you sure?', method: :delete %>
-                      </div>
+                          	<%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
+						  </div>
                     </div><!-- ends nonAce -->
                     <%end%>
                 <%else%>
@@ -81,10 +88,22 @@
                         <%= "No es administrador"%></div>
                 <%end%>
              <%end%>
+
             <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
-                <%= form_for @member, :remote => true do |fcm| %>
-                <div class="helptext"><%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%></div>
-                <div class="addfriend" style="margin-top: 10px; text-align: center;"><%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %></div>
+
+			
+              <div class="hoverShowEdit">
+              	  <center>
+	                <div class="helptext" style="margin-bottom: 15px;">
+	                	<%= form_for @member, :remote => true do |fcm| %>
+	                	<%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%>
+	                </div>
+	                <div class="addfriend" style="margin-top: 10px; text-align: center;">
+	                	<%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
+	                </div>
+	              </center>
+              </div>
+                
                 <%end%>
             <%end%>
      </div><!-- ends everymbrm -->
@@ -93,3 +112,33 @@
 <%end%>
 <%end%>
 </div>
+
+
+	<script>
+			$('.everymbrm').mouseenter( function() {
+				$(this).find('.hoverShowEdit').animate({ marginTop: '-231px' }, 200);
+			});
+			$('.everymbrm').mouseleave( function() {
+				$(this).find('.hoverShowEdit').animate({ marginTop: '-462px' }, 200);
+			});
+			
+			$('.everymbrm').mouseenter( function() {
+				$(this).find('h3').css({ background: "#00B1C7", });
+			});
+			$('.everymbrm').mouseleave( function() {
+				$(this).find('h3').css({ background: "#DEDEDE", });
+			});
+	</script>
+
+<!--
+	<script>
+		$document.ready(function() {
+			$('.everymbrm').mouseenter( function() {
+				$('.hoverShowEdit').animate({ marginTop: '-231px' }, 200);
+			}),
+			$('.everymbrm').mouseleave( function() {
+				$('.hoverShowEdit').animate({ marginTop: '-462px' }, 100);
+			});
+		});
+	</script>
+-->

@@ -30,6 +30,7 @@ User.create(:email => "info+curosas.lu@cursa.me", :first_name => 'Lucia ', :last
 ######################### se crea un archivo de instalación directo para los locales ##############################
 
 n = Network.create(:subdomain => "pruebas", :name => "pruebas", :population => "100", :public_register => true, :free => true)
+
 u = User.create(:email => "jose_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi584030', :domain => 'lvh.me', :subdomain => 'pruebas')
 u1 = User.create(:email => "jose_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi534284030',:domain => 'lvh.me', :subdomain => 'pruebas')
 u2 = User.create(:email => "jose_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'lvh.me', :subdomain => 'pruebas')

@@ -33,15 +33,44 @@
         color:#fff;
         display: block;
     }
-    
-    
 }
-.box_comunity:hover  { /*box-shadow: 0px 0px 7px #28C8DF;*/ transition: linear all 0.2s; }
-.image_acces_comunity img { z-index: 0; }
-.image_acces_comunity img:hover { opacity: 0.2; }
-.place-hldr { height: 147px; display: block; margin-top: -153px;  width: 150px; transition: ease-in-out background 0.2s; overflow: hidden; text-align: center; }
-.place-hldr:hover { color: inherit; }
-.sent-slctd { color: #ccc; }
+.box_comunity:hover  {
+	/*box-shadow: 0px 0px 7px #28C8DF;*/
+	transition: linear all 0.2s;
+	}
+.image_acces_comunity img {
+	z-index: 0;
+	}
+.image_acces_comunity img:hover {
+	opacity: 0.2;
+	}
+
+.place-hldr {
+	height: 147px;
+	display: block;
+	margin-top: -153px;
+	width: 170px;
+	transition: ease-in-out background 0.2s;
+	overflow: hidden;
+	text-align: center;
+	margin-top: 4px!important;
+	
+	& .add_friend_comunity {
+		height: 30px;
+		padding-top: 5px!important;
+	}
+	& .name {
+		display: block;
+		position: relative;
+		height: 25px;
+		}
+	}
+.place-hldr:hover {
+	color: inherit;
+	}
+.sent-slctd {
+	color: #ccc;
+	}
 
 .box_comunity .add_friend_comunity { transition: ease-out all 0.3s; }
 .box_comunity:hover .add_friend_comunity { margin-top: -40px; transition: ease-out all 0.3s; }
