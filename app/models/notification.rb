@@ -35,7 +35,7 @@ class Notification < ActiveRecord::Base
     when "user_accepted_friendship"
       creator = self.notificator.user
     end
-
+=begin
     self.users.each do |user|
       count = user.notifications.where(:active => true).count
       notificator = self.notificator
@@ -59,7 +59,9 @@ class Notification < ActiveRecord::Base
       #       ActiveRecord::Base.connection.close
       #     end
       #   }      
-    end
-    # ActiveRecord::Base.connection.close
+      end
+     ActiveRecord::Base.connection.close
+=end
   end
+
 end
