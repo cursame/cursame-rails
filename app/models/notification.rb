@@ -41,15 +41,13 @@ class Notification < ActiveRecord::Base
         Thread.new {
           begin
             PrivatePub.publish_to("/notifications/"+user.id.to_s,
-                           notification: self,
-                           num: count,
-                           notificator:notificator,
-                           # creator: self.notificator.user||User.last,
-                           creator: creator,
-                           reciever: user,
-                           owner: owner
-                           )
-
+               notification: self,
+               num: count,
+               notificator:notificator,             
+               creator: creator,
+               reciever: user,
+               owner: owner
+             )
           rescue => ex
             puts 'error'
             #logger.info ex

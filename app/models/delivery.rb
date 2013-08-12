@@ -103,7 +103,7 @@ class Delivery < ActiveRecord::Base
 
     users = self.users
 
-    Wall.create!(:users => users, :publication => self, :network => self.network, :courses => self.courses)
+    Wall.create(:users => users, :publication => self, :network => self.network, :courses => self.courses)
 
     users = []
 
