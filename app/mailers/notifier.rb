@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
   def new_delivery_notification(member_in_course,delivery)
     @user = member_in_course.user
     @delivery = delivery
-    mail to:  @user.email, subject: "New Delivery Avaliable"
+    mail to:  @user.email, subject: "Nueva tarea disponible"
   end
 
   def new_survey_notification(member_in_course,survey)
@@ -17,13 +17,13 @@ class Notifier < ActionMailer::Base
     @user = member_in_course.user
     @survey = survey
 
-    mail to: @user.email, subject: "New Survey Avaliable"
+    mail to: @user.email, subject: "Nuevo cuestionario disponible"
   end
 
   def accepted_message(member_in_course,course)
     @user = member_in_course.user
     @course = course
-    mail to: @user.email, subject: "You have been accepted"
+    mail to: @user.email, subject: "Haz sido aceptado en el curso #{@course.title}"
   end
 
   def new_member_in_course(member_in_course,course)
@@ -31,7 +31,7 @@ class Notifier < ActionMailer::Base
     emails = owners.map{ |owner| owner.user.email }
     @member = member_in_course.user
     @course = course
-    mail to: emails, subject: "A new user waits for be accepted"
+    mail to: emails, subject: "Un nuevo usuario esta esperando para ser aceptado en el curso #{@course.title}"
   end
 
   def send_email_members_in_course(member_in_course, subject, message)
