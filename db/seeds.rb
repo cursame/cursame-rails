@@ -30,11 +30,12 @@ User.create(:email => "info+curosas.lu@cursa.me", :first_name => 'Lucia ', :last
 ######################### se crea un archivo de instalación directo para los locales ##############################
 
 n = Network.create(:subdomain => "pruebas", :name => "pruebas", :population => "100", :public_register => true, :free => true)
-u = User.create(:email => "joser_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfihfoi584030)
-u1 = User.create(:email => "joser_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfihfoi534284030)
-u2 = User.create(:email => "joser_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => fiahfih76543foi584030)
+u = User.create(:email => "jose_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih42424foi584030', :subdomain => 'pruebas', :domain => 'lvh.me')
+u1 = User.create(:email => "jose_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihf4242424oi534284030', :subdomain => 'pruebas', :domain => 'lvh.me')
+u2 = User.create(:email => "jose_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi5424242484030', :subdomain => 'pruebas', :domain => 'lvh.me')
+a = User.create(email:"info@cursa.me", first_name: "super", last_name: "admin", password: "cursameautonomo201330lb", personal_url: "superadmin", :subdomain => 'pruebas', :domain => 'lvh.me')
 
-n_last => Network.last
+n_last = Network.last
 
 p  = Permissioning.create( :user_id => u.id, :role_id => "1", :network_id => n_last.id )
 p1 = Permissioning.create(:user_id => u1.id, :role_id => "3", :network_id => n_last.id )

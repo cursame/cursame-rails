@@ -1368,7 +1368,9 @@ background-position: left center;
   -moz-box-shadow:  0px 1px 2px #666;
   -webkit-box-shadow: 0px 1px 2px #666;
   box-shadow: 0px 1px 2px #666;
-}
+  position: relative;
+  z-index: 1;
+  }
 
 #box-user-credential-principal{
   margin-left: 55px;
@@ -1652,11 +1654,40 @@ background-position: left center;
 
 #event_list { height: 365px; overflow: hidden; overflow: scroll; }
 
-.solistyle { color: #fff; background: #B3B3B3 /*url('../assets/icons/checked.png') no-repeat left center*/; padding-left: 24px; padding: 7px 19px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; margin-left: -4px; margin-top: 0px; width: 100px; position: absolute; }
+.solistyle {
+	width: 100px;
+	position: relative;
+	display: inline-block;
+	margin: 0 auto;
+	color: #fff;
+	background: #B3B3B3;
+	padding: 7px 19px 7px 24px;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	}
 
-.addfriend { background: #00B1C7; padding: 7px 19px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; display: block; margin-left: -2px; }
-.addfriend > a:link { color: #fff; }
-.addfriend:hover { background: #0B6AAD; }
+.addfriend {
+	border: 2px solid #FFF;
+	position: relative;
+	display: block;
+	margin-top: 0!important;
+	border-radius: 20px;
+	width: 70px;
+	height: 20px;
+	position: relative;
+	padding: 0px 10px 10px 0px;
+	}
+.addfriend > a:link { color: #FFF; padding: 7px 19px; display: block; }
+.addfriend > a:hover { color: #00B1C7; }
+
+.addfriend:hover { background: #FFF; color: #FFF; }
+
+.add_friend2 {
+	margin-top: 8px;
+}
+
+.imgge {
+	overflow: hidden;
+}
 
 .publication-box .comment-text .footer > a:link { position: absolute; margin-top: 5px; }
 

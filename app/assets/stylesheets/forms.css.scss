@@ -842,7 +842,6 @@
   & .survey-form {
     margin: 7px 0px 0px 0px;
     & .box-question{
-      background: #000;
       float: left;
       width: 100%;
     }
@@ -1040,7 +1039,6 @@
   //background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
 
   & .box-question{
-    background: #000;
     width: 100%;
   }
   & .question-field{
@@ -1188,7 +1186,8 @@
 .child-comment-box:hover > .deleteComment {
 	position: absolute;
 	display: inline-block;
-	margin-top: 44px;
+	margin-top: 28px;
+	margin-left: 529px;
 	font-size: 10px;
 }
 
@@ -1476,6 +1475,7 @@
   left: 3px;
   top: 10px;
   background: url('/assets/survey.jpg') no-repeat;
+  
   .response-survey {
     position: absolute;
     left: 45%;
@@ -1490,13 +1490,24 @@
   &:hover{
     //background: url('/assets/seleccionar_hover.png') no-repeat;
     opacity: .7;
+    cursor: pointer;
     filter: alpha(opacity=40%);
+
     .response-survey{
       display: block;
     }
   };
 
 }
+
+.resolve-surveys {
+  height: 90%;
+  width: 100%;
+  position: relative;
+  left: 3px;
+  top: 10px;
+  background: url('/assets/survey-response.jpg') no-repeat;
+  }
 
 textarea.error, input.error {
 	border: 1px solid red!important; outline: none;
