@@ -2,8 +2,10 @@
 		<h1>Miembros del curso <%= @course.members_in_courses.count %>    <div style="float:right;"><%= link_to "Regresar al curso ", course_path(@course.id)%></div></h1>e
 </div>
 
-<% if current_role == "admin"%>
 
+<% if current_role == "admin"%>
+<% if @member.owner == true%>
+<%else%>
 <%@course.members_in_courses.each do |member|  %>
 
   <div class="everymbrm">
@@ -23,7 +25,7 @@
     </div>
     
 <%end%>
-     
+<%end%>    
 <%end%>
 
 
@@ -51,7 +53,7 @@
               <%end%>
 
                 </div><!-- ends imgge -->
-                <h3><%= truncate(@members.email, :omission => "...", :length => 15) %></h3>
+                <h3><%= truncate(@members.name, :omission => "...", :length => 15) %></h3>
        
                 <%if @member.accepted != true%>
                 <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
