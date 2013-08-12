@@ -267,6 +267,9 @@ div#dummy:hover { background: #08B5CE; color: #fff; }
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 20px;
+	  & a {
+	      color:#fff;
+      }
 	}
 .everymbrm .everymbrm {
 	margin-top: -10px;

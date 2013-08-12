@@ -59,8 +59,8 @@
 					<%end%>
 				</div><!-- ends imgge -->
 				  
-                <h3><%= truncate(@members.name, :omission => "...", :length => 15) %></h3>
-       
+                <h3><%= link_to "#{truncate(@members.name, :omission => "...", :length => 15)}", show_user_path(@members.personal_url) %></h3>
+               
                 <%if @member.accepted != true%>
                 <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
                     <div class="nameUser"><%= form_for @member, :remote => true do |fcm| %></div>
