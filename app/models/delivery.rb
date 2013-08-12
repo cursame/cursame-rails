@@ -95,7 +95,7 @@ class Delivery < ActiveRecord::Base
   after_create do
     if self.publish_date <= DateTime.now
        self.publish!
-  end
+    end
 
     Event.create(:title => self.title, :description => self.description, :starts_at => self.publish_date,
           :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id,
@@ -103,7 +103,7 @@ class Delivery < ActiveRecord::Base
 
     users = self.users
 
-    Wall.create(:users => users, :publication => self, :network => self.network, :courses => self.courses)
+    Wall.create!(:users => users, :publication => self, :network => self.network, :courses => self.courses)
 
     users = []
 
