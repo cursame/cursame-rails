@@ -97,7 +97,7 @@ button, input, select, textarea {
 }
 
 #cursame-modal {
-    position:absolute;
+    position:fixed;
     border-radius:4px;
     padding:8px;
     /*background:#EEE;*/

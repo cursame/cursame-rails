@@ -21,6 +21,5 @@
 
     $('.form_for_edit_wall').hide();
     $('#deleted_id_<%=@publication.id%>').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
-
   <% end %>
 

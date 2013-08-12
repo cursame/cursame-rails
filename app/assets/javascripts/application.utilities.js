@@ -50,7 +50,7 @@ function modal(element){
     var contenedor = $('#cursame-modal');
 
     contenedor.css({
-        top:'250px',
+        top:$(window).height()/2,
         left:($(window).width()- $(element).width())/2
     });
 
@@ -64,6 +64,4 @@ function modal(element){
 function unmodal(){
     $('#overlaymask').remove();
     $('#cursame-modal').remove();
-    $('#ajax-msj').remove();
-
 }
