@@ -36,19 +36,30 @@ class Notification < ActiveRecord::Base
       creator = self.notificator.user
     end
 
-    ActiveRecord::Base.connection.close
     self.users.each do |user|
+      count = user.notifications.where(:active => true).count
+      notificator = self.notificator
       Thread.new {
         PrivatePub.publish_to("/notifications/"+user.id.to_s,
                            notification: self,
-                           num: user.notifications.where(:active => true).count,
-                           notificator: self.notificator,
+                           num: count,
+                           notificator:notificator,
                            # creator: self.notificator.user||User.last,
                            creator: creator,
                            reciever: user,
                            owner: owner
                            )
       }
+      # Thread.new {
+      #     begin
+      #       block.call
+      #     rescue => ex
+      #       logger.info ex
+      #     ensure
+      #       ActiveRecord::Base.connection.close
+      #     end
+      #   }      
     end
+    # ActiveRecord::Base.connection.close
   end
 end
