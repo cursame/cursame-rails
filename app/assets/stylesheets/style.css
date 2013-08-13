@@ -198,13 +198,14 @@ float: left;
 
 }
 
+#titlheader {
+	background: url('restore_mail.jpg') rgba(95,149,190,0.9);
+}
+
 .userNotiInside {
-	width: 450px;
 	padding: 20px;
-	background: rgba(255,255,255,0.8);
 	padding: 1px;
-	margin: 35px auto 30px auto;
-	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	margin: 0px auto;
 }
 .userNoti {
 	width: 350px;
@@ -392,3 +393,16 @@ opacity: 0.7;
 	position: relative;
 }
 
+.scarlate{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    width:100%;
+    background:#FCBBA8;
+    color:#C73C15;
+    height:50px;
+    font-size:20px;
+    
+}

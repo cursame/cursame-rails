@@ -32,6 +32,65 @@ class Api::ApiController < ApplicationController
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
+  def native_publications
+    case params[:type]
+      when 'Course'
+        @course = Course.find(params[:publicacionId])
+        @publications = @course.walls.where("publication_type != ?", 'Course')
+        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      else
+        @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    end
+      @pubs = []
+      @publications.each do |publication|
+        type = publication.publication_type
+        id = publication.publication_id
+        
+        case type
+          when 'Comment'
+            publication = Comment.find(id)
+            case publication.commentable_type
+              when 'Course'
+                auxtext = 'en el curso de #{publication.commentable.title}'
+              when 'Network'
+                auxtext = 'en la red'
+            end            
+            text = '#{publication.user.name} ha comentado #{auxtext}'
+            avatar = publication.user.avatar.blank? ? publication.user.avatar.profile : publication.user.image_avatarx
+          when 'Discussion'
+            publication = Discussion.find(id)
+            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en el curso de #{publication.courses[0].title}'
+            text = 'Se ha creado un discusion #{auxtext} '
+            avatar = publication.user.avatar.blank? ? publication.user.avatar.profile : publication.user.image_avatarx
+          when 'Course'
+            publication = Course.find(id)
+            text = 'Nuevo curso en tu #{publication.title}'
+            avatar = publication.avatar.blank? ? publication.avatar.profile : publication.image_avatarx
+          when 'Delivery'
+            publication = Delivery.find(id)
+            text = 'Se ha creado una tarea en el curso de #{publication.courses[0].title}'
+            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].avatar.profile : publication.courses[0].image_avatarx
+          when 'Survey'
+            publication = Survey.find(id)
+            text = 'Se ha creado un cuestionario en el curso de #{publication.courses[0].title}'
+            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].avatar.profile : publication.courses[0].image_avatarx
+        end
+        # publication.likes = publication.likes.size
+       
+        pub = {
+          type: type,
+          publicationId: id,
+          text: text,
+          avatar:avatar,
+          createdAt: publication.created_at
+        }
+       @pubs.push(pub)
+      end
+    # render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
+    render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
+  end
+
+
   def comments
     @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
 

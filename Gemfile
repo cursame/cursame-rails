@@ -100,7 +100,7 @@ gem 'jbuilder'
 
 # Render pdf from html
 gem "pdfkit"
-
+gem "launchy", '~>2.1.2'#, "~> 2.3.0"
 # Gem to create non-persistance objects 
 gem "active_attr"
 

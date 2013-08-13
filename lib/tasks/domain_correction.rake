@@ -22,13 +22,19 @@ task :subdomain_users => :environment do
 
   # Enviando su correo de confirmacion
 
+  user_errors = Array.new
+
   count = 1
 
-   users.each do |user|
-    if (count < 7000) then
-      user.resend_confirmation_token
-      print count.to_s + ", "
-    end
+  users.each do |user|
+    if (count >= 10954) then
+      begin
+        user.resend_confirmation_token
+        print count.to_s + ", "
+      rescue
+        user_errors.push(user)
+      end
+      end
     count += 1
   end
 
@@ -37,5 +43,11 @@ task :subdomain_users => :environment do
   b = Time.now
   puts "Tiempo total de procesado: #{(b - a).to_s}"
 
+  if (user_errors.size != 0) then
+    puts "Usuarios que mandan error.."
+    user_errors.each do |user|
+      puts user.email
+    end
+  end
 
 end

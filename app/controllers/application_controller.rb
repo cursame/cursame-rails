@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    
   protect_from_forgery
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
@@ -31,11 +32,7 @@ class ApplicationController < ActionController::Base
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
-
-
-  # errores
-   # Se declaran los errores personalizados
-
+    
 
   #data of the networks you are
   def current_network
@@ -200,6 +197,9 @@ class ApplicationController < ActionController::Base
 
   def compare_like
   end
+  
+  #### validate brwosers
+  
   def browser_active
     @data_integrate = request.env['HTTP_USER_AGENT']
     @user_agent = UserAgent.parse(@data_integrate)
@@ -217,6 +217,70 @@ class ApplicationController < ActionController::Base
     @user_agent = UserAgent.parse(@data_integrate)
     @computer_plataform = @user_agent.platform
   end
+  
+  def browser
+       
+    string = request.env['HTTP_USER_AGENT']
+    user_agent = UserAgent.parse(string)
+    
+    @browser =   user_agent.browser
+    @version =   user_agent.version
+    @version_sintetica = @version.to_s.delete(".")
+    @total = "#{@browser} #{ @version}"
+    puts @total
+    case
+    
+     when @browser == 'Chrome' 
+        if @version > '230127191'
+          puts "navegador no compatible"
+          @compatible = false
+        else
+          puts "navegador compatible"
+          @compatible = true
+        end
+     when @browser == 'Safari' 
+       
+        if @version > '500'
+          puts "navegador no compatible"
+          @compatible = false
+        else
+          puts "navegador compatible"
+          @compatible = true
+        end
+       
+     when @browser == 'Firefox'
+       
+       if @version > '190'
+         puts "navegador no compatible"
+         @compatible = false
+       else
+         puts "navegador compatible"
+         @compatible = true
+       end
+
+     when @browser == 'Internet Explorer'
+       
+       if @version > '80'
+         puts "navegador no compatible"
+         @compatible = false
+       else
+         puts "navegador compatible"
+         @compatible = true
+       end
+     else
+       
+         puts "navegador no compatible"
+         @compatible = false
+       
+    
+   end
+    
+  @status = @compatible
+ 
+  end
+  
+  ######
+
 
   #joyride
   def show_joyride(tour)

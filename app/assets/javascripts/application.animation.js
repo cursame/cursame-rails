@@ -246,20 +246,43 @@ $(document).ready(function() {
 
     //Submit btns
     $('#post-forms > div').each(function( index, value ) {
+        
+         
         $(value).find('#comment-post-form').click(function() {
 
-            // var valid = $(value).find('#comment-post-form').valid(),
-            //     me = this;
+             var valid = $(value).find('#comment-post-form').valid(),
+                me = this;
+             
+                 var godrop;
 
+                  if ($('label.error').length){
+                      godrop = true;
+                    //  console.log(godrop);
+                    }else{
+                      godrop = false;
+                    //  console.log(godrop);
+                    }
+            
+            
+            //animates
+            
+            if (godrop == false){
+               
+            }else{
             $('#post-forms').animate({
                 height: '0'
             }, time);
             $(this).parent().parent().animate({
                 opacity: 0
             }, time, function() {
+                
                 $(this).css('display','none');
-                 $('.tim').foggy(false);
+                $('.tim').foggy(false);
+
             });
+           
+            
+            
             $('#profile-form-options').css('display','block');
             $('#profile-form-options').animate({
                 opacity: 1,
@@ -269,12 +292,18 @@ $(document).ready(function() {
                 marginRight: prePostMarginRight,
                 marginBottom: prePostMarginBottom
             }, time);
+            }
+            
             //para validar los errores
             setTimeout(function (argument) {
-                // if ($('label.error').length) {
-                //     return false;
-                // }
-                // else{
+                
+                if (godrop == true){
+    
+                    CleanerBlur();
+                    //alert('Tiene algunos campos sin llenar');
+                    DisableBlured();
+                }else{
+                
                     resetForm($(value).find('form'));
                     $(".content_free").html('');
                     $(".content_wikipedia").html('');
@@ -282,8 +311,12 @@ $(document).ready(function() {
                     $(".choser").html('');
                     $('.youtube_content_delivery').hide();
                     DisableBlured();
+
                     $('.tim').foggy(false);
                 // }
+
+                }
+
             },500);
         });
 
@@ -427,9 +460,13 @@ $(document).ready(function() {
     // });
     // 
     $(document).ajaxStart( function() {
+          // $.get("/closer_db");
+
             modal('<div id="ajax-msj"><p>Procesando</p><img alt="loading" src="/assets/ajax-loader.gif"></div>');
+            
         }).ajaxStop( function() {
-            unmodal();             
+            unmodal(); 
+           // $.get("/closer_db");            
         });
 
     /*

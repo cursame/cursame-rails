@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
   validates_presence_of :personal_url
   validates_presence_of :subdomain
   validates_presence_of :domain
+  # validates_format_of   :personal_url, :with => /^[\-a-z0-9]+$/
   # validates_uniqueness_of :accepted_terms
 
   # roles
@@ -182,7 +183,7 @@ class User < ActiveRecord::Base
   ################ este metodo funciona para llamar la ubicación en la linea 50 del confirmation ##########
 
   def ubication
-    if (self.domian == "lvh.me") then
+    if (self.domain == "lvh.me") then
       return (self.domain + ":3000")
     end
     return self.domain

@@ -35,20 +35,27 @@ class Notification < ActiveRecord::Base
     when "user_accepted_friendship"
       creator = self.notificator.user
     end
-
-    ActiveRecord::Base.connection.close
     self.users.each do |user|
-      Thread.new {
-        PrivatePub.publish_to("/notifications/"+user.id.to_s,
-                           notification: self,
-                           num: user.notifications.where(:active => true).count,
-                           notificator: self.notificator,
-                           # creator: self.notificator.user||User.last,
-                           creator: creator,
-                           reciever: user,
-                           owner: owner
-                           )
-      }
+      count = user.notifications.where(:active => true).count
+      notificator = self.notificator     
+        Thread.new {
+          begin
+            PrivatePub.publish_to("/notifications/"+user.id.to_s,
+               notification: self,
+               num: count,
+               notificator:notificator,             
+               creator: creator,
+               reciever: user,
+               owner: owner
+             )
+          rescue => ex
+            puts 'error'
+            #logger.info ex
+          ensure
+            ActiveRecord::Base.connection.close
+          end
+        }      
     end
   end
+
 end
