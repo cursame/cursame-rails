@@ -122,8 +122,9 @@ class User < ActiveRecord::Base
  after_create do 
    
    self.domain = 'cursa.me'
+   self.avatar = '/assets/imagex.png'
    self.save!
-   
+  
  end
 
 

@@ -198,7 +198,7 @@ float: left;
 
 }
 
-#titlheader {
+.confirmationIndexHeader {
 	background: url('restore_mail.jpg') rgba(95,149,190,0.9);
 }
 
@@ -210,10 +210,10 @@ float: left;
 .userNoti {
 	width: 350px;
 	padding: 20px;
-	background: #00B1C7;
+	background: rgba(255,255,255,0.8);
 	margin: 30px auto;
 	font-weight: lighter;
-	color: #fff;
+	color: #5F96BF;
 }
 
 .no-wrap {
