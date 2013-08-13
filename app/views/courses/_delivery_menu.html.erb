@@ -1,3 +1,9 @@
-   <%= link_to image_tag(assignment.user.avatar.mini, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if ( !assignment.user.avatar.blank?) %>
+<% if assignment.user %>   
+<%else%>  
+   <% if assignment.user.avatar != nil %>
+       <%= link_to image_tag(assignment.user.avatar.mini, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if ( !assignment.user.avatar.blank?) %>
+    <%else%>
         <%= link_to image_tag(assignment.user.image_avatarxx, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if (assignment.user.avatar.blank?) %>
+    <%end%>
      <%= link_to "#{assignment.user.name}", call_assignments_response_path(assignment.id, :data=> course.id) , :remote =>  true %></a>
+<%end%>
