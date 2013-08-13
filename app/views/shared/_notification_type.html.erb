@@ -43,7 +43,9 @@
 
 <% when 'new_assignment_on_delivery'%>
 <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
-<%= link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name)  %> ha respondido a la tarea
+<% if notification.notificator.user != nil%>
+<% if notification.notificator.user.name != nil%>
+<%= link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)  %><%else%><%= link_to "Un usuario", show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)  %><%end%> <%end%>ha respondido a la tarea
 <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
 
 <% when 'new_accomplishment_on_assignment'%>
