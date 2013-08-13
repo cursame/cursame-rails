@@ -96,7 +96,8 @@
                            <% delivery.assignments.reverse.each do |assignment|%>
                            <div class="assignment">
                              <div class="title"> <%= assignment.title %></div>
-                              <div class="name"> <%= assignment.user.name %><div class="image"><%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>
+                             <% if assignment.user != nil %>
+                              <div class="name"> <%= assignment.user.name if ( !assignment.user.name.blank?) %><div class="image"><%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>                 <%end%>
                            </div>
                            <%end%>
                        </div>
