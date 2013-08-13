@@ -98,7 +98,10 @@ function readURL(input,id) {
 	      <script>
               $("#user_personal_url").keyup(function () {
                   var value = $(this).val();
-                  var url = '/personlization_url_corroborate/'+value+""
+
+                  $(this).val(value.replace(/[0-9]/g, ''));
+                  
+                  var url = '/personlization_url_corroborate/'+value+"";
 
                     $.get(""+url+"");
                     return
