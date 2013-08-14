@@ -159,8 +159,9 @@
 
     <!-- Content -->
     <div id="box-stream-post">
-
+    <div id="pk_menu">
       <%=render :partial => 'shared/post_menu' %>
+    </div>
         <%=render :partial => 'shared/wall_filters', :locals => {:path => show_user_path(@user_l.personal_url)} %>
         <div id="timeline" class="tim">
           <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
