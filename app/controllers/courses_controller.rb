@@ -338,11 +338,13 @@ class CoursesController < ApplicationController
       counte_fact = count_deliveries + count_surveys + count_assignmentss
 
       @course.deliveries.each do |del|
+        if  del.user != nil
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
            assets_deliveries.push({file: b.file,
                                    name:("#{@name}").delete("\n") })
          end
+        
         if del.user.avatar.blank?
           @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
         else
@@ -376,8 +378,11 @@ class CoursesController < ApplicationController
 
         )
 
-
+        
          del.assignments.each do |as|
+           
+           if as.user != nil
+           
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
              assets_assignmentss.push({file: a.file,
@@ -422,12 +427,13 @@ class CoursesController < ApplicationController
                     }
 
             )
-
+           end
           end
-
+        end
       end
 
       @course.surveys.each do |survey|
+         if survey.user != nil
           if survey.user.avatar.blank?
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
           else
@@ -453,6 +459,7 @@ class CoursesController < ApplicationController
               }
 
           )
+        end
       end
 
         simple.push({

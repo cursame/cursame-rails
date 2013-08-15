@@ -2,7 +2,7 @@ resetForm($('.delivery-form'));
 $('#nested_evaluation_form').empty();
 $('#total_nested_evaluation').remove();
 $('#new_delivery_form').find('.upload-form').remove();
-$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication}))%>");
+$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication,:visible_for => 'network'}))%>");
 $('#timeline').effect("highlight", {}, 1000);
 //$('#notice').append('Se ha creado una tarea ');
 $(".delivery-form input[name='files[]']").remove();
@@ -13,13 +13,17 @@ $(".delivery-form input[name='files[]']").remove();
          $(".content_killer").html('');
          $(".choser").html('');
          $('.youtube_content_delivery').hide();
-    
 
-
+$("#notice").html('');
+$("#notice").css('color','#608847');
+$("#notice").css('background','#DFF0D8');         
 $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
 $('#notice').append('Se ha creado una tarea ');
 setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
+      CleanerBlur();
+      DisableBlured();
+    $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
     
-}, 2500);
+}, 1500);

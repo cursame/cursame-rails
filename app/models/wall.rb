@@ -13,8 +13,8 @@ class Wall < ActiveRecord::Base
   belongs_to :course
 
   acts_as_commentable
-    #para los likes
-    acts_as_votable
+  #para los likes
+  acts_as_votable
 
 
 

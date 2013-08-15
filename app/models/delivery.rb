@@ -95,7 +95,7 @@ class Delivery < ActiveRecord::Base
   after_create do
     if self.publish_date <= DateTime.now
        self.publish!
-  end
+    end
 
     Event.create(:title => self.title, :description => self.description, :starts_at => self.publish_date,
           :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id,
@@ -103,7 +103,7 @@ class Delivery < ActiveRecord::Base
 
     users = self.users
 
-    Wall.create(:users => users, :publication => self, :network => self.network, :courses => self.courses)
+    Wall.create! :users => users, :publication => self, :network => self.network, :courses => self.courses
 
     users = []
 
@@ -117,11 +117,8 @@ class Delivery < ActiveRecord::Base
         end
       end
     end
-
-    users = users.reject { |user| user.id == self.user_id}
-
+    users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
     Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
-
   end
 
   after_update do

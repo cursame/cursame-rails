@@ -170,7 +170,7 @@ class Course < ActiveRecord::Base
   ####es necesario sustituir el tipo de lectura de la relación manualmente #####
   ########## se crea el campo users en el modelo para poder generar la lectura correcta dentro de las relaciones ######
   def razon_users
-    @members = self.members_in_courses
+    @members = self.members_in_courses #.where(:accepted => true)
   end
 
   def users_invoque

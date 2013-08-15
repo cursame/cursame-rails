@@ -1,7 +1,7 @@
-<div class="signup-layout"></div>
-	<div class="content login" id="titlheader" style="text-align:center; padding-top: 160px;">
-		<b style="font-size: 25px;">Se envió un correo de confirmación a </b>
+<div class="signup-restore"></div>
+	<div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 120px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px;">
+		<span style="font-size: 25px; font-weight: lighter;">Se envió un correo de confirmación a</span>
 		<div class="userNotiInside"><div class="userNoti"><%= @user_inactive.email %></div></div>
-		<p>¿Ya recibiste el correo de confirmación?</p>
-		<div class="confirm-btn no-wrap"><%= link_to "iniciar sesión",  'sign_up_path' %></div>
+		<span style="font-weight: lighter;">¿Ya recibiste el correo de confirmación?</span>
+		<div class="confirm-btn no-wrap"><%= link_to "Inicia sesión",  'sign_up_path' %></div>
 	</div>

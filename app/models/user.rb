@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
   validates_presence_of :personal_url
   validates_presence_of :subdomain
   validates_presence_of :domain
+  # validates_format_of   :personal_url, :with => /^[\-a-z0-9]+$/
   # validates_uniqueness_of :accepted_terms
 
   # roles
@@ -121,8 +122,9 @@ class User < ActiveRecord::Base
  after_create do 
    
    self.domain = 'cursa.me'
+   self.avatar = '/assets/imagex.png'
    self.save!
-   
+  
  end
 
 
@@ -451,17 +453,21 @@ class User < ActiveRecord::Base
   end
 
   def publications
-    ids = []
-    self.courses.each do |c|
-      ids.push(c.id)
-    end
-
-    Wall.scoped(:include => {
-          :courses => :coursepublicationings,
-          :users => :userpublicationings,
-        },
+    
+    # Wall.scoped(:include => [{
+    #       :courses => :coursepublicationings,
+    #       :users => :userpublicationings,
+    #       :courses => :members_in_courses,
+    #       :users => :comments
+    #     }],
       # :conditions => ['userpublicationings.user_id = ? OR public = ?',self.id,true])
-      :conditions => ['userpublicationings.user_id = ? OR coursepublicationings.course_id in (?)',self.id,ids]).order('walls.created_at DESC')
+      # :conditions => ["(userpublicationings.user_id = ? AND walls.publication_type == 'Comment') OR coursepublicationings.course_id in (?)",self.id,ids]).order('walls.created_at DESC')
+      # :conditions => ["(members_in_courses.user_id = ? AND members_in_courses.accepted = ?)", self.id, true]).order('walls.created_at DESC')
+
+     Wall.scoped(:include => [{
+        :users => :userpublicationings
+      }],
+      :conditions => ["userpublicationings.user_id = ? AND walls.publication_type == 'Comment'", self.id])
   end
 
   def active!

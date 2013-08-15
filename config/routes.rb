@@ -161,6 +161,10 @@ Cursame30Lb::Application.routes.draw do
   as :user do
     match 'users/sign_out', :to => 'devise/sessions#destroy'
   end
+  
+  ###### users personal_url_validation
+  
+  get '/personlization_url_corroborate/:personal_url', :to => 'users#corroborate_url', :as => :corroborate_url
 
   # Groups
   get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
@@ -390,6 +394,9 @@ Cursame30Lb::Application.routes.draw do
 
     get "content/khanacademy"
     
+    ##### cierra la base de datos
+    
+    get '/closer_db', :to => 'home#closer_db', :as => :clorse_db
   
   ####### parents
    # get "home/parents", :as => :parents

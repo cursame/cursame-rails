@@ -18,7 +18,7 @@
 	        <div class="status">
 	            <%if  course.active_status == true%>
 	             <span class="course_status">
-	             	<%= link_to "Activo", active_status_path(course.id), :remote => true %>
+	             	<%= link_to "Desactivar", active_status_path(course.id), :remote => true %>
 	             </span>
 	            <%else%>
 	              Inactivo <%= link_to "activar curso", active_status_path(course.id), :remote => true %>
@@ -104,7 +104,7 @@
 	        
 	    </div>
 	        <div class="locklok"  id="locomotion_<%=course.id%>">
-	            <div id="locomotion_<%=course.id%>delivery"></div> 
+            <div id="locomotion_<%=course.id%>delivery"></div> 
 	            <div id="locomotion_<%=course.id%>assignment"></div>
 	        </div>
 	</div>   

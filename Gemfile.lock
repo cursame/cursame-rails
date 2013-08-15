@@ -295,6 +295,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   json
+  launchy (~> 2.1.2)
   less-rails
   mediawiki-gateway
   mime-types

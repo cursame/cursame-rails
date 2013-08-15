@@ -1,15 +1,19 @@
-<div style="font-size:50px; padding:100px; font-height:bold; margin-top:-50px;">
+<div class="error-res"></div>
+
+<div style="font-size:30px; padding:10px; font-height:bold; margin-top: 100px;">
+        <div class="Sorry" style="font-family: 'Roboto', sans-serif; font-weight: lighter; font-size: 30px; text-align: center; margin: 0 auto;">Lo sentimos, no encontramos la ruta</div>
+</div>
+
+<div style="font-size:40px; padding:100px; font-height:bold; color:#fff; margin: 0 auto;">
     <center>
-        <p>No hemos podido encontrar esta página</p>
+	    <div style="background:url('/assets/five.jpg'); padding:5px; width:220px; float:left;">4</div>
+	    <div style="background:url('/assets/restore_mail.jpg'); padding:5px; width:220px; float:left;">0</div>
+	    <div style="background:url('/assets/four.jpg'); padding:5px; width:220px; float:left;">4</div>
     </center>
 </div>
-<div style="font-size:170px; padding:100px; font-height:bold; margin-top:-150px; color:#fff;">
+
+<div style="font-size:20px; font-height:bold; margin-top:30px;">
     <center>
-    <p><div style="background:#FFCC64; padding:5px; width:220px; float:left;">4</div><div style="background:#64C9FF; padding:5px; width:220px; float:left;">0</div><div style="background:#B5FFC6; padding:5px; width:220px; float:left;">4</div></p>
-    </center>
-</div>
-<div style="font-size:50px; padding:100px; font-height:bold; margin-top:30px;">
-    <center>
-        <p><%= link_to "Regresar al inicio", "http://#{current_network.subdomain}.#{links}"%></p>
+        <img src="/assets/back_icon.png" style="margin-left: -35px; margin-top: -1px; position: absolute; display: inline-block;"><%= link_to "Regresar al inicio", "http://#{current_network.subdomain}.#{links}"%>
     </center>
 </div>
