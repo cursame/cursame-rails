@@ -144,7 +144,7 @@
 
   <!-- timeline -->
   <div id="timeline" class="tim">
-    <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
+    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'network'} %>
   </div>
   <!-- fin timeline -->
 <!-- mostrar el password por primera vez -->

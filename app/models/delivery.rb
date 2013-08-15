@@ -117,11 +117,8 @@ class Delivery < ActiveRecord::Base
         end
       end
     end
-
-    users = users.reject { |user| user.id == self.user_id}
-
+    users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
     Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
-
   end
 
   after_update do

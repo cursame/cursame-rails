@@ -2,7 +2,7 @@
       
     <% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
         $('#comment').val('');
-        $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
+        $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>');
         $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
         $("#notice").html('');
         $("#notice").css('color','#608847');
@@ -34,7 +34,7 @@
   <% else %>
 
     $('.form_for_edit_wall').hide();
-    $('#deleted_id_<%=@publication.id%>').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>');
+    $('#deleted_id_<%=@publication.id%>').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>');
    
   <% end %>
 

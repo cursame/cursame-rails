@@ -1,5 +1,5 @@
 resetForm($('#new_survey'));
-$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>");
+$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>");
 $('#timeline').effect("highlight", {}, 1000);
 $("#notice").html('');
 $("#notice").css('color','#608847');
