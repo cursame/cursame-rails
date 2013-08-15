@@ -467,7 +467,7 @@ class User < ActiveRecord::Base
      Wall.scoped(:include => [{
         :users => :userpublicationings
       }],
-      :conditions => ["userpublicationings.user_id = ? AND walls.publication_type == 'Comment'", self.id])
+      :conditions => ["userpublicationings.user_id = ? AND walls.publication_type = 'Comment'", self.id])
   end
 
   def active!
