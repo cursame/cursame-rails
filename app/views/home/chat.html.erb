@@ -1,6 +1,8 @@
+
 <div>
-	<div style="float:left;width:200px;margin-top: 20px;">
-		<span class="titleBraker">Cursos</span>
+	<div style="float:left;width:200px; padding-top: 20px; border-right: 1px solid #ccc; height: 400px; overflow-x:hidden; padding-left: 13px;">
+		<span class="titleBraker persist-header" style="width: 192px; background: rgba(244,244,244,0.9); height: 26px; margin-top: -19px; padding-top: 17px; border-bottom: 1px solid #ccc; border-left: 1px solid #ccc; font-weight: lighter; display: block; position: fixed; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">Cursos</span>
+		<div style="height: 40px; disply: block;"></div>
 		<% @courses_online.each do |course|%>
 		    <div class="chatSingle"><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
 		<%end%>
@@ -9,8 +11,62 @@
 		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
 		<%end%>	
 	 </div>
-	<div id="chat" style="float:left;width:600px">
+	<div id="chat" style="float:left;width:555px; margin-left: -1px;">
 		<%=render(:partial => '/shared/chat/chat',
 		 :locals => {:messages => @messages, :channel => @channel})%>
 	</div>
+	<!--
+	<div class="ads" style="width: 170px; height: 400px; display: inline-block; background: #ddd; position: relative; float: right; margin-top: 7px; margin-right: -9px; margin-left: 3px;">
+		
+	</div>
+	-->
 </div>
+
+<script>
+	$('.chatSingle > a').click( function() {
+		$('.chatSingle > a').css({ background: "#FFF", color: "#000" }, 200);
+		$(this).css({ background: "#307BEC", color: "#FFF" }).siblings();
+	});
+</script>
+
+  <script>
+    function UpdateTableHeaders() {
+       $(".persist-area").each(function() {
+       
+           var el             = $(this),
+               offset         = el.offset(),
+               scrollTop      = $(window).scrollTop(),
+               floatingHeader = $(".floatingHeader", this)
+           
+           if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
+               floatingHeader.css({
+                "visibility": "visible"
+               });
+           } else {
+               floatingHeader.css({
+                "visibility": "hidden"
+               });      
+           };
+       });
+    }
+    
+    // DOM Ready      
+    $(function() {
+    
+       var clonedHeaderRow;
+    
+       $(".persist-area").each(function() {
+           clonedHeaderRow = $(".persist-header", this);
+           clonedHeaderRow
+             .before(clonedHeaderRow.clone())
+             .css("width", clonedHeaderRow.width())
+             .addClass("floatingHeader");
+             
+       });
+       
+       $(window)
+        .scroll(UpdateTableHeaders)
+        .trigger("scroll");
+       
+    });
+  </script>

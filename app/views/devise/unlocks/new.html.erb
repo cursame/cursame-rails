@@ -1,11 +1,11 @@
-<div class="signup-layout"></div>
-	<div class="content login" id="titlheader" style="text-align:center;">
-			<b>No has recibido instrucciones de desbloqueo</b><br /><br />Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p>
+<div class="signup-restore"></div>
+	<div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px;">
+			<b style="font-size: 27px; line-height: 30px;">No has recibido instrucciones<br /> de desbloqueo</b><br /><br />Por favor, ingresa tu correo en el campo inferior<br /> para dar seguimiento a tu solicitud</p>
 
 				<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
 				  <%= devise_error_messages! %>
 				  
-			<div class="form-signin form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;">
+			<div class="form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;background: transparent; border: 0px; padding-bottom: 30px;">
 				<div><!-- <%= f.label :email %><br /> -->
 					<%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %></div>
 				
@@ -14,7 +14,7 @@
 			</div>
 		</div>
 
-		<div class="confirmation-links">
+		<div class="confirmation-links" style="margin-top: 20px;">
 			<%= render "devise/shared/links" %>
 		</div>
 </div>

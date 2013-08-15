@@ -3,8 +3,8 @@
     
    <!-- <input type="text" id="rtf">-->
    <div class="membFilter">
-   Miembros del curso
-    <select id="rtf" value="" class="dropperDwn">
+   		<span style="display: inline-block; width: 300px; margin-left: -310px; text-align: right;">Miembros del curso</span>
+    <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
                 <option>Todas las actividades</option>
         <% @course.members_in_courses.each do |m|%>
                 <option><%= @user=User.find_by_id(m.user_id).name%></option>
@@ -25,8 +25,7 @@
     
     
     <div class="expoced"id="expoced">
-        
-        
+		
     </div>
 
 <script>
@@ -47,7 +46,6 @@
                 
         });
         
-
         var locuorem = $.getJSON( '<%= "#{course_ki_line_path(@course)}.json" %>', function(json) {
            
             var timeline = json.timeline.date;
@@ -63,7 +61,8 @@
 
                   avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
                   
-                  $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img src="'+avatar+'"  width="10%;" style="float:left; margin-top:4px;margin-left:5px;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+                  $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img  src="'+avatar+'"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+				  
                   identifier = '#'+id;
                   assets = aux.assets;
                   casual="casual"+id;
@@ -76,16 +75,35 @@
 
                            $("#expoced").prepend('<div id='+casual+' class="user_assets '+cloud+'">'+'</div>');
                            $("#"+casual).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
+						   
+						   $('.activities_depot').click( function() {
+						   if('.activities_depot' <= '65') {
+							   $(this).css({ height: "200px" });
+							   $(this).find('.title').removeClass('title').addClass('titleNoTwo');
+							   $(this).find('.reference').removeClass('reference').addClass('referenceNoTwo');
+							   }
+							else if ('.activities_depot' >= '200') {
+							   $(this).css({ height: "65px" });
+							   $(this).find('.titleNoTwo').removeClass('titleNoTwo').addClass('title');
+							   $(this).find('.referenceNoTwo').removeClass('referenceNoTwo').addClass('reference');
+							   }
+						   });
+						   
+						   //$('.activities_depot').on("click", changeClass);
+						   //function changeClass() {
+							 //$(this).find('.title').removeClass('.title'), function() {
+								 //$(this).addClass('.titleNoTwo');
+							 //};
+							 //$(this).find('.reference').removeClass('.reference'), function() {
+								 //$(this).addClass('.referenceNoTwo');
+							 //};
+						   //};
+						   
+						   
                         }
-
                     }
-            }
-        }
-            
-            
-            
+            	}
+        	}
          });
-         
-         
-           
 </script>
+
