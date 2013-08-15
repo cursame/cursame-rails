@@ -1654,6 +1654,7 @@ background-position: left center;
 
 #event_list { height: 365px; overflow: hidden; overflow: scroll; }
 
+/*
 .solistyle {
 	width: 100px;
 	position: relative;
@@ -1664,17 +1665,32 @@ background-position: left center;
 	padding: 7px 19px 7px 24px;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 	}
+*/
+
+.solistyle {
+	width: 106px;
+	position: relative;
+	display: inline-block;
+	margin: 0 auto;
+	color: #fff;
+	text-align: center;
+	border: 2px solid #FFF;
+	background: transparent;
+	padding: 7px;
+	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+	}
 
 .addfriend {
 	border: 2px solid #FFF;
 	position: relative;
 	display: block;
 	margin-top: 0!important;
-	border-radius: 20px;
-	width: 70px;
+	border-radius: 5px;
+	width: 120px;
+	text-align: center;
 	height: 20px;
 	position: relative;
-	padding: 0px 10px 10px 0px;
+	padding: 0px 0px 10px 0px;
 	}
 .addfriend > a:link { color: #FFF; padding: 7px 19px; display: block; }
 .addfriend > a:hover { color: #00B1C7; }

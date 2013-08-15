@@ -90,21 +90,33 @@
 .titleBraker {
 	width: 190px;
 	padding: 5px 10px;
-	background: #bec0c4;
-	color: #fff;
+	font-size: 16px;
+	font-weight: lighter;
+	margin-top: 10px;
+	color: #000;
+	font-weight: bold;
 	display: block;
 	margin-left: -12px;
-	margin-top: -10px;
+	margin-top: -4px;
+	margin-bottom: 6px;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 
 .titleBrakerSecondary {
-	width: 190px;
-	padding: 5px 10px;
-	background: #bec0c4;
-	color: #fff;
+	width: 200px;
+	background: rgba(244,244,244,0.9);
+	height: 26px;
+	padding-top: 17px;
+	padding-left: 10px;
+	margin-top: 10px;
+	margin-left: -11px;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	font-weight: lighter;
 	display: block;
-	margin-left: -12px;
-	margin-top: 5px;
+	position: fixed;
+	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
 }
 
 .chat-zone{
@@ -175,7 +187,8 @@
 }
 .main-chat-zone{
     border:#ddd 1px solid;
-    height:500px;
+    /*height:500px;*/
+    height: 400px;
     overflow: auto;
     padding-top: 10px;
 }
@@ -190,17 +203,22 @@
 	font-weight: lighter;
 }
 		.chatSingle > a:link {
-			width: 198px;
+			width: 189px;
 			display: block;
 			margin-left: -11px;
 			padding-left: 10px;
-			padding: 5px 0 5px 10px;
+			padding: 11px 5px 11px 10px;
 			color: #1a1a1a;
 			font-weight: lighter;
+			transition: 0.3s;
+			-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+			
 		}
 		.chatSingle > a:hover {
-			background: #E0E4EE;
+			background: #5F95BE;
 			cursor: pointer;
+			color: #FFF;
+			transition: 0.1s;
 		}
 		.chatSingle > a:active {
 			background: #307BEC;
@@ -209,11 +227,17 @@
 		}
 
 .titleChat {
-		background: #BEC0C4;
-		padding: 5px 10px 5px 10px;
-		margin-top: 10px;
-		color: #fff;
-		min-height: 14px;
+		width: 535px;
+		padding-top: 20px;
+		background: rgba(221,221,221,0.2);
+		text-align: left;
+		display: fixed;
+		padding: 18px 10px 5px 10px;
+		height: 26px;
+		color: #000;
+		font-size: 16px;
+		border-bottom: 1px solid #DDD;
+		border-right: 1px solid #DDD;
 }
 
 .insideChat {
@@ -224,7 +248,6 @@
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
 		border-radius: 3px;
-		border: 1px solid #ddd;
 		min-height: 13px;
 }
 .insideChat p {
@@ -286,7 +309,7 @@
 
 .shareMSJ input#mesage {
 	padding: 10px;
-	width: 400px;
+	width: 355px;
 	outline: none;
 	margin-top: -2px;
 	float: left;

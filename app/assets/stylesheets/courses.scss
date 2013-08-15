@@ -250,7 +250,7 @@ div#dummy:hover { background: #08B5CE; color: #fff; }
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
 
 .cmembers {
-	width: 809px;
+	width: 939px;
 	margin: 0 auto;
 	}
 .pndts {
@@ -807,7 +807,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
           }
           
 .activities_depot{
-         width:400px;
+         width:390px;
          min-height:65px;
          max-height: 200px;
          background-color:#f7f7f7;
@@ -815,24 +815,54 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
          border-bottom:solid #ccc 1px;
          text-align:justify;
          display: block;
-         height:150px;
+         padding: 13px 5px;
+         
          & .title{
-             font-size:16px;
-             color:#293433;
-             float:left;
-             margin-top:3px;
-             margin-left:5px;
-             height:20px;
+         	 width: 332px;
+         	 overflow-y: hidden;
+             font-size: 16px;
+             color: #293433;
+             float: left;
+             margin-top: 3px;
+             margin-left: 60px;
+             height: 20px;
          }
+         & .titleNoTwo{
+         	 width: 332px;
+             font-size: 16px;
+             color: #293433;
+             float: left;
+             margin-top: 3px;
+             margin-left: 55px;
+             display: block;
+         }
+         
          & .reference{
+              width: 310px;
               font-size:12px;
               color:#293433;
               float:left;
               position:absolute;
               margin-top:30px;
-              margin-left:50px;
-              width: 345px;
+              margin-left: 60px;
               line-height: 15px;
+              height: 30px;
+              overflow-y: hidden;
+         }
+         
+         & .referenceNoTwo{
+              font-size:12px;
+              color:#293433;
+              float:left;
+              position:absolute;
+              margin-top:10px;
+              margin-left:56px;
+              width: 330px;
+              height: 145px;
+              overflow: scroll;
+              line-height: 15px;
+              position: relative;
+			  display: block;
          }
 }
 
@@ -843,6 +873,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 
 .activities_depot:hover {
 	background: #e6e6e6;
+	cursor: pointer;
 }
 
  .activities_depot_select{
@@ -895,20 +926,22 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
  .expoced{
      position:relative;
      float:left;
-     width:500px;
+     width:517px;
      overflow:auto;
-     background:#eee;
-     margin-left:10px;
+     background: #F7F7F7;
+     margin-left:21px;
      
  }
  .user_assets{
-     width:470px;
-     height:40px;
-     background:#fff;
-     margin-top:5px;
-     margin-left:14px;
-     margin-bottom:3px;
+     width:475px;
+     padding: 25px 20px;
+     border-bottom: 1px solid #ccc;
+     border-top: 1px solid #fff;
+     overflow: hidden;
  }
+  .user_assets:hover {
+	  background: #E6E6E6;
+  }
  
  .depot_button{
      background:#F2F2F2;

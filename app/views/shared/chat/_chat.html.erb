@@ -1,6 +1,7 @@
-<h1 class="titleChat">
+<h1 class="titleChat" style="position: fixed;">
 	<%= get_chat_title channel %>
 </h1>
+<div style="height: 50px;"></div>
 <div id="load-more-messages-<%= channel.id%>" style="text-align: center;">
 	<a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true" style="cursor:pointer; text-align: center;">...</a>
 </div>

@@ -5,17 +5,23 @@ $(document).ready(function() {
 });
 
 </script>
-<div class="bg-layout" id="bg"></div>
+<div class="signup-restore"></div>
 
-<div class="login">
-    <p>
-    <b>Lo sentimos pero la red a la que estas intentado accesar no existe</b></br>
-    <b>pregunta a un encargado de tu escuela él sabrá ayudarte.</b></br>
-    
-    <h1 style="font-size:65px;color:#000;text-align:center;margin-top:40px;">¡Gracias!</h1></br>
+<div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px; padding-left: 20px; padding-right: 20px;">
+			<b style="font-size: 35px!important; line-height: 30px;">
+			Lo sentimos
+    		</b>
+    		<br /><br />
+			<span style="width: 250px;!important">
+    La red a la que estas intentado accesar no existe
+    pregunta a un encargado de tu escuela él sabrá ayudarte.
+    		</span>
+ 
     <center>
-       <b style="text-align:center;"><%= link_to "Ir al inicio", "http://www.cursa.me" %></b>
-       </center>    
+       <span class="confirm-btn" style="padding: 10px 30px; color: #FFF!important;">
+       	<%= link_to "Ir al inicio", "http://www.cursa.me" %>
+       </span>   
+    </center>    
     </p>
     <br><br>
     <center>
