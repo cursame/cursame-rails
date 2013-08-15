@@ -1,9 +1,9 @@
 <% if assignment.user %>   
 <%else%>  
    <% if assignment.user.avatar != nil %>
-       <%= link_to image_tag(assignment.user.avatar.mini, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if ( !assignment.user.avatar.blank?) %>
+       <%= link_to image_tag(assignment.user.avatar.mini, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if ( !assignment.user.avatar?) %>
     <%else%>
-        <%= link_to image_tag(assignment.user.image_avatarxx, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if (assignment.user.avatar.blank?) %>
+        <%= link_to image_tag(assignment.user.image_avatarxx, :class => "avatar-mini avatar"), call_assignments_response_path(assignment.id, :data=> course.id) , :remote => true  if (assignment.user.avatar?) %>
     <%end%>
      <%= link_to "#{assignment.user.name}", call_assignments_response_path(assignment.id, :data=> course.id) , :remote =>  true %></a>
 <%end%>

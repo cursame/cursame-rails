@@ -42,6 +42,9 @@ class UsersController < ApplicationController
       @search = params[:search]
       @page = params[:page].to_i
       @wall = @user_l.publications.search(@search,@id).paginate(:per_page => 10, :page => params[:page])
+      # @wall = @user_l.walls.paginate(:per_page => 10, :page => params[:page])
+
+      # @wall = @wall.reject{ |w| w.courses == true }
      ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build

@@ -1,4 +1,9 @@
 <% wall.each do |publication| %>
+
+<% if !publication.courses.empty?%>
+  <%  next %>
+<%end%>
+
 <%
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
