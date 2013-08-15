@@ -286,8 +286,8 @@
 
   & .wrapper-dropdown {
     /* Size and position */
-    position: relative !important;
-    width: 120px !important;
+    position: absolute;
+    width: 120px;
     //padding: 6px 0px 0px 30px;
     border: $border-forms !important;
     color: #999;

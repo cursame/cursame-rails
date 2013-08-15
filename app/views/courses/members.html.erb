@@ -14,7 +14,7 @@
        
        <%if @members == "nil"%>
        <%else%>
-            <div id="imgge" style="width:170px;height:170px;background:#ddd;">
+            <div id="imgge" style="width:170px;height:170px;background:#ddd;overflow: hidden;">
                     <% if  @members.avatar.profile.blank? %>
                   <%= image_tag(@members.image_avatarx)%>
                     <%else%>
@@ -28,7 +28,6 @@
 <%end%>
 <%end%>    
 <%end%>
-
 
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <div class="cmembers">
@@ -51,7 +50,7 @@
                 <!--coloca la imagen y el nombre-->
        
 
-				<div id="imgge" style="width:170px;height:170px;background:#ddd;">
+				<div id="imgge" style="width:170px;height:170px;background:#ddd; overflow: hidden;">
 					<% if  @members.avatar.profile.blank? %>
 					<%= image_tag(@members.image_avatarx)%>
 					<%else%>
@@ -59,7 +58,12 @@
 					<%end%>
 				</div><!-- ends imgge -->
 				  
-                <h3><%= link_to "#{truncate(@members.name, :omission => "...", :length => 15)}", show_user_path(@members.personal_url) %></h3>
+        <h3 style="background-color: rgb(222, 222, 222);">
+        	<%= link_to "#{truncate(@members.name, :omission => "...", :length => 15)}", show_user_path(@members.personal_url) %>
+        </h3>
+             
+	              <div class="hoverShowEdit">
+	              	  <center>
                
                 <%if @member.accepted != true%>
                 <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
@@ -84,16 +88,14 @@
              
                 <%else%>
                     <div class="nameUser"><%= form_for @member, :remote => true do |owner|%></div>
-                    <div style = "color:#F31E25;"><%= owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %>
+                    <div style = "color:#FFF;"><%= owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %>
                         <%= "No es administrador"%></div>
                 <%end%>
              <%end%>
 
             <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
 
-			
-              <div class="hoverShowEdit">
-              	  <center>
+		
 	                <div class="helptext" style="margin-bottom: 15px;">
 	                	<%= form_for @member, :remote => true do |fcm| %>
 	                	<%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%>
@@ -116,7 +118,7 @@
 
 	<script>
 			$('.everymbrm').mouseenter( function() {
-				$(this).find('.hoverShowEdit').animate({ marginTop: '-231px' }, 200);
+				$(this).find('.hoverShowEdit').animate({ marginTop: '-203px' }, 200);
 			});
 			$('.everymbrm').mouseleave( function() {
 				$(this).find('.hoverShowEdit').animate({ marginTop: '-462px' }, 200);
@@ -128,6 +130,13 @@
 			$('.everymbrm').mouseleave( function() {
 				$(this).find('h3').css({ background: "#DEDEDE", });
 			});
+			
+			$('.everymbrm').mouseeenter ( function() {
+				$(this).find('h3 > a').css({ color: "#FFF" });
+			});
+			$('.everymbrm').mouseleave ( function() {
+				$(this).find('h3 > a').css({ color: "#000" });
+			});			
 	</script>
 
 <!--
