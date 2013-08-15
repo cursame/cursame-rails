@@ -96,7 +96,8 @@
                            <% delivery.assignments.reverse.each do |assignment|%>
                            <div class="assignment">
                              <div class="title"> <%= assignment.title %></div>
-                              <div class="name"> <%= assignment.user.name %><div class="image"><%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>
+                             <% if assignment.user != nil %>
+                              <div class="name"> <%= assignment.user.name if ( !assignment.user.name.blank?) %><div class="image"><%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>                 <%end%>
                            </div>
                            <%end%>
                        </div>
@@ -255,10 +256,12 @@
 <!-- Content -->
 
 <div id="box-stream-post">
+<div id="pk_menu">
   <%=render :partial => 'shared/post_menu' %>
+</div>
   <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
-  <div id="timeline">
-    <%= render :partial => '/shared/publications', :locals => {:wall => @wall} %>
+  <div id="timeline" class="tim">
+    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'network'} %>
   </div>
 
   <!-- inicio de joyride -->

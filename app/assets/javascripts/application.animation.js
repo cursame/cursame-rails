@@ -187,7 +187,6 @@ $(document).ready(function() {
         prePostMarginRight = $('#profile-form-options').css('marginRight');
         prePostMarginBottom = $('#profile-form-options').css('marginBottom');
         prePostMarginLeft = $('#profile-form-options').css('marginLeft');
-
         var hrefClean = $(this).attr('href');
         $(this).parent().animate({  // Se va por $('#profile-form-options')
             opacity: 0.0,
@@ -196,6 +195,7 @@ $(document).ready(function() {
             marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
+          
             // goFront('#post-forms','.profile-post-box');
         });
         $('#post-forms').animate({
@@ -210,7 +210,7 @@ $(document).ready(function() {
     //Cancel btns
     $('#post-forms > div').each(function( index, value ) {
         $(value).find('#cancel-post-form').click(function() {
-        
+           
             resetForm($(value).find('form'));
                 /* elimina los contenidos*/
                  $(".content_free").html('');
@@ -229,6 +229,7 @@ $(document).ready(function() {
                 opacity: 0
             }, time, function() {
                 $(this).css('display','none');
+                 $('.tim').foggy(false);
             });
             $('#profile-form-options').css('display','block');
             $('#profile-form-options').animate({
@@ -244,42 +245,62 @@ $(document).ready(function() {
     });
 
     //Submit btns
-    $('#post-forms > div').each(function( index, value ) {
+    $('#post-forms > div').each(function( index, value ) {   
+        var godrop;
+        var gl;
         
-         
+            
+            
+             
         $(value).find('#comment-post-form').click(function() {
-
+                          
              var valid = $(value).find('#comment-post-form').valid(),
                 me = this;
-             
-                 var godrop;
-
-                  if ($('label.error').length){
-                      godrop = true;
-                    //  console.log(godrop);
-                    }else{
-                      godrop = false;
-                    //  console.log(godrop);
-                    }
+                godrop = true;
+                gl = godrop;
+                
+                if ($('label.error').length){
+                           godrop = true;
+                         //  console.log(godrop);
+                         }else{
+                           godrop = false;
+                         //  console.log(godrop);
+                      }
+                   
+              // console.log(gl);
             
             
-            //animates
-            
-            if (godrop == false){
-               
+         if (gl == true){
+              $("#notice").html('');
+              $('#comment-post-form').css('display','none');
+              $("#notice").css('background','#E63A3A');
+              $("#notice").css('color','#fff');
+              $("#notice").animate( { width: "900px", padding: "20px", border: "1px solid #E63A3A" }, { queue: false, duration: 100 });
+              $('#notice').append('Error de validación hay algunos campos sin llenar.');
+              
+              setTimeout(function() {
+                      
+                        $('#notice').html('')
+                        $( "#notice" ).animate( { width: "900px", height: "0px", padding: "0px", border: "1px solid #E63A3A", background: "#E63A3A" }, { queue: false, duration: 100 });
+                        $('#comment-post-form').css('display','block');
+                         HashBlured();
+                        
+              }, 1500);
+              
             }else{
+             $("#notice").html('');
+             $("#notice").css('color','#608847');
+             $("#notice").css('background','#DFF0D8');
+
             $('#post-forms').animate({
                 height: '0'
             }, time);
             $(this).parent().parent().animate({
                 opacity: 0
             }, time, function() {
-                
                 $(this).css('display','none');
-               
+
             });
-           
-            
             
             $('#profile-form-options').css('display','block');
             $('#profile-form-options').animate({
@@ -290,18 +311,16 @@ $(document).ready(function() {
                 marginRight: prePostMarginRight,
                 marginBottom: prePostMarginBottom
             }, time);
-            }
-            
+        }
             //para validar los errores
             setTimeout(function (argument) {
                 
-                if (godrop == true){
-    
+                if (gl == true){
                     CleanerBlur();
-                    //alert('Tiene algunos campos sin llenar');
                     DisableBlured();
+                   // alert( ' se ha enviado el formulario incorrectamente');                    
+                    return false;
                 }else{
-                
                     resetForm($(value).find('form'));
                     $(".content_free").html('');
                     $(".content_wikipedia").html('');
@@ -309,8 +328,12 @@ $(document).ready(function() {
                     $(".choser").html('');
                     $('.youtube_content_delivery').hide();
                     DisableBlured();
+                   // alert( ' se ha enviado el formulario correctamente');
+                    $(this).css('display','none');
+           
                 }
             },500);
+           
         });
 
     });
@@ -475,4 +498,5 @@ $(document).ready(function() {
             $(this).closest("form").submit();
         }        
     });
+    
 });

@@ -42,6 +42,9 @@ class UsersController < ApplicationController
       @search = params[:search]
       @page = params[:page].to_i
       @wall = @user_l.publications.search(@search,@id).paginate(:per_page => 10, :page => params[:page])
+      # @wall = @user_l.walls.paginate(:per_page => 10, :page => params[:page])
+
+      # @wall = @wall.reject{ |w| w.courses == true }
      ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
@@ -100,22 +103,16 @@ class UsersController < ApplicationController
   end
 =end
  def pertenence!
-
-   if current_network
-     @user = User.find_by_personal_url(params[:personal_url])
-
-     @user_id =  @user.id
-     @user_pertenence = NetworksUser.find_by_user_id(@user_id)
+   if current_network && @user = User.find_by_personal_url(params[:personal_url])
+     @user_pertenence = NetworksUser.find_by_user_id(@user.id)
      if @user_pertenence != nil
        @networks_petenence_user = @user_pertenence.network_id
        @network = Network.find_by_id(@networks_petenence_user)
        @n = @network
      else
-
        @notice = "no estas inscrito en ninguna red"
      end
    end
-
  end
 =begin
    def friend
