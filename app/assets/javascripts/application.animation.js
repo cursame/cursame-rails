@@ -267,7 +267,7 @@ $(document).ready(function() {
                          //  console.log(godrop);
                       }
                    
-               console.log(gl);
+              // console.log(gl);
             
             
          if (gl == true){
@@ -277,6 +277,7 @@ $(document).ready(function() {
               $("#notice").css('color','#fff');
               $("#notice").animate( { width: "900px", padding: "20px", border: "1px solid #E63A3A" }, { queue: false, duration: 100 });
               $('#notice').append('Error de validación hay algunos campos sin llenar.');
+              
               setTimeout(function() {
                       
                         $('#notice').html('')

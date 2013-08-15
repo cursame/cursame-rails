@@ -19,9 +19,11 @@
     <%= submit_tag "Comentar",:class=>"btn btn-primary", :id => 'comment-post-form' %>
     <%if !@user_show%>
       <% if comment_id == nil %>
+       <div id="dropdrop_comment">
        <%= render :partial => "shared/dropdown",
                   :locals => { :hasPublic => true,:hasCourses => true, :hasGroups => true,
                                :hasUser => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
+       </div>
      <% end %>
     <% end %>
     <a class="help" id="help_comment"><%= image_tag('help.png')%></a>
