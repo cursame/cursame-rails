@@ -6,7 +6,7 @@
 <%end%>
 
 <% if visible_for == 'network' && !publication.courses.empty? && !(current_user.roles.last.id == 1 || current_user.roles.last.id == 4) %>
-  <%  if publication.publication.courses[0].members_in_courses.where(:user_id =>current_user.id,:accepted => false )%>
+  <%  if publication.courses[0].members_in_courses.where(:user_id =>@user_l.id,:accepted => false )%>
     <%  next %>
   <%end%>
 <%end%>
