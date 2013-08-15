@@ -25,6 +25,7 @@ class NetworksController < ApplicationController
     puts request.url
 
     @user = current_user
+    @user_l = current_user
     @course = Course.new
     @delivery = Delivery.new
 
