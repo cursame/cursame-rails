@@ -43,14 +43,14 @@
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
                 <span style="height: 10px; display: block; position: relative;"></span>
 				<span class="addfriend" style="margin-top: 20px;">
-					<%= link_to "Ver perfil", friendships_update_friend_path(array[0].id), :remote => true  %>
+                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
 				</span>
             <%when  "accept_request" %>
             	<span style="display: block; margin-bottom: 10px;">Aceptar amistad</span>
                 <span class="addfriend"><%= link_to "Aceptar", friendships_update_friend_path(array[0].id), :remote => true  %></span>
                 <span style="height: 10px; display: block; position: relative;"></span>
                 <span class="addfriend" style="margin-top: 20px;">
-                	<%= link_to "Ver perfil", friendships_update_friend_path(array[0].id), :remote => true  %>
+                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
                 </span>
             <%when "friend"%>
             <% else %>

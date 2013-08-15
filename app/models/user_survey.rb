@@ -33,7 +33,6 @@ class UserSurvey < ActiveRecord::Base
       answer = Answer.find(response.answer_id)
       correct_answers += 1 if answer.correct
     end
-
     if (responses.size != 0) then
       self.update_attributes(:result => (correct_answers/responses.size)*100)
       return (correct_answers/responses.size)*100
