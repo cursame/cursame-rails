@@ -18,11 +18,10 @@
   publication_cls = 'delivery'
   case publication.publication_type
   when 'Comment'
-    if post.user != nil
-    avatar = post.user.avatar.modern if ( !post.user.avatar.blank?)
-    else
-    avatar = '/assets/imagexx.png'
-    end 
+    if post.user == nil
+      next
+    end    
+    avatar = post.user.avatar.modern 
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.user.name
@@ -42,6 +41,9 @@
     content = post.silabus
     ico = ''
   when 'Discussion'
+    if post.user == nil
+      next
+    end
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
@@ -54,6 +56,9 @@
     ico = '-discussion'
     tipo = 'Discusion'
   when 'Delivery'
+    if post.user == nil
+      next
+    end
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
@@ -68,6 +73,9 @@
     ico = '-homework'
     tipo  = 'Tarea'
   when 'Survey'
+    if post.user == nil
+      next
+    end
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
