@@ -30,7 +30,7 @@
 
 	     <h3 style="background-color: rgb(222, 222, 222);">
 		     <% if array[0].name != nil%>
-			       <%= truncate("#{array[0].name}", :omission => "...", :length => 25 ) %>
+			       <%= link_to truncate("#{array[0].name}", :omission => "...", :length => 20 ), "users/#{(array[0].personal_url)}"  %>
 		     <%end%>
 	     </h3>
 
