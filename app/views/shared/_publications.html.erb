@@ -18,7 +18,11 @@
   publication_cls = 'delivery'
   case publication.publication_type
   when 'Comment'
-    avatar = post.user.avatar.modern
+    if post.user != nil
+    avatar = post.user.avatar.modern if ( !post.user.avatar.blank?)
+    else
+    avatar = '/assets/imagexx.png' if ( post.user.avatar.blank?)
+    end 
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.user.name
