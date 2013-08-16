@@ -42,6 +42,8 @@ class CoursesController < ApplicationController
     #validamos que el maestro no pueda crear tareas en el curso
     if current_user.roles.last.id == 3
       @has_permitions = !@course.members_in_courses.where(:user_id =>current_user.id,:accepted => true, :owner =>true).empty?
+    else 
+      @has_permitions = true
     end
     
 
