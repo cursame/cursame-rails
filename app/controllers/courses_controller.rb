@@ -34,32 +34,18 @@ class CoursesController < ApplicationController
     @asset = Asset.new
     assets = @delivery.assets.build
 
-    #==== Areas de evaluación ====#
-    #@areas_of_evaluation = AreasOfEvaluation.new
-    #areas_of_evaluations = @delivery.areas_of_evaluations.build
-
-    #==== Assets ====#
-    #@asset = Asset.new
-    #assets = @delivery.assets.build
-
-    #@survey = Survey.new
-
-    #@course_count = Course.count
-    #@courses = current_user.members_in_courses.limit(7)
-
-
-    #@network = Network.find_by_subdomain!(request.subdomain)
-    #@comments = @network.comments
-
     @id = params[:id]
     @search = params[:search]
     @page = params[:page].to_i
-    # @wall = @course.walls.where('public = ? OR user_id = ?',true,current_user.id).search(@search,@id).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    #if (self.active_status) then
-      @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    #else
-    #  @wall = []
-    #end
+    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    
+    #validamos que el maestro no pueda crear tareas en el curso
+    if current_user.roles.last.id == 3
+      @user_show = @course.members_in_courses.where(:user_id =>current_user.id,:accepted => true, :owner =>true).empty?
+      @user_l = current_user
+    end
+    
+
     if request.xhr?
       respond_to do |format|
         format.js

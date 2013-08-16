@@ -54,11 +54,8 @@ class NetworksController < ApplicationController
     @id = params[:id]
     @page = params[:page].to_i
 
-    # if current_user.roles.last.id == 1 || current_user.roles.last.id == 4
-      @wall = current_network.walls.search(@search,@id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
-    # else
-      # @wall = current_network.publications(current_user.id,current_network.id).search(@search,@id).paginate(:per_page => 10, :page => params[:page])
-    # end
+    @wall = current_network.walls.search(@search,@id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
+    
 
     if request.xhr?
       respond_to do |format|
