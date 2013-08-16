@@ -5,9 +5,9 @@
 		search:'<%=@search%>'
 	};
 	this.pageless.opts.startListener();
-	$('#timeline').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall}))%>');
+	$('#timeline').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'courses'}))%>');
 	$('#timeline').append(this.pageless.opts.loader);
 <%else%>
-	var element = '<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall}))%>';
+	var element = '<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'courses'}))%>';
 	this.pageless.opts.loader ? this.pageless.opts.loader.before(element):$('#timeline').append(element);
 <%end%>

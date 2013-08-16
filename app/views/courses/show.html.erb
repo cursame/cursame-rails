@@ -261,7 +261,7 @@
 </div>
   <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
   <div id="timeline" class="tim">
-    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'courses'} %>
+    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
   </div>
 
   <!-- inicio de joyride -->
