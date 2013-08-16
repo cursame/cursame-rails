@@ -53,6 +53,9 @@
                 	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
                 </span>
             <%when "friend"%>
+                <span class="addfriend" style="margin-top: 20px;">
+                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
+				</span>
             <% else %>
             <div id="add_friend<%=array[0].id%>">
                 <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%>
