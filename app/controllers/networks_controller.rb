@@ -55,7 +55,7 @@ class NetworksController < ApplicationController
     @page = params[:page].to_i
 
     @wall = current_network.walls.search(@search,@id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
-    
+    @has_permitions = true    
 
     if request.xhr?
       respond_to do |format|
