@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
+  helper_method :courses_with_permissions
     
 
   #data of the networks you are
@@ -319,6 +320,34 @@ class ApplicationController < ActionController::Base
 
   def auth_hash
       omniauth = request.env["omniauth.auth"]
+  end 
+
+  def courses_with_permissions
+    courses = []
+
+    case current_user.roles.last.id
+      # when 1 #si es admin
+      #   return current_user.courses
+      when 2 #si es alumno
+        current_user.courses.each do |course|
+          if !course.members_in_courses.where(:user_id =>current_user.id,:accepted => true).empty?
+            courses.push(course)
+          end
+        end
+        return courses
+      when 3 #si es maestro
+        current_user.courses.each do |course|
+          if !course.members_in_courses.where(:user_id =>current_user.id,:accepted => true, :owner =>true).empty?
+            courses.push(course)
+          end
+        end
+        return courses
+      else
+      # when 4 #super admin
+      #   return current_user.courses
+      # when 5 #supervisor
+        return current_user.courses
+    end
   end
 
   protected

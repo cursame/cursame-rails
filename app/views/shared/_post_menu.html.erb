@@ -9,17 +9,13 @@
       <% end %>
     </div>
     <div id="delivery-form-area" class="delivery-form-area-style flonder  " >
-      <% permitted_to? :create, :deliveries do %>
-        <% if @has_permitions%>
+      <% permitted_to? :create, :deliveries do %>        
           <%= render :partial => '/deliveries/delivery_compart_form', :locals => {:active_edit => @active_edit}%>
-        <%end%>
       <%end%>
     </div>
     <div id="survey-form-area" class="survey-form-area-style flonder " >
-      <% permitted_to? :create, :surveys do %>
-        <% if @has_permitions%>
+      <% permitted_to? :create, :surveys do %>        
           <%= render :partial => '/surveys/form', :locals => {:active_edit => @active_edit}%>
-        <%end%>
       <%end%>
     </div>
 
@@ -34,18 +30,14 @@
     <% permitted_to? :create, :comments do %>
     <a href="#message-form-area" class="message-form-btn blured" onclick="HashBlured();" ><div class="border" ><div class="icon"></div></div>Comentario</a>
     <%end%>
-    <% permitted_to? :create, :deliveries do %>
-      <% if @has_permitions%>
+    <% permitted_to? :create, :deliveries do %>      
         <a href="#delivery-form-area"class="delivery-form-btn blured" onclick="HashBlured();"><div class="border" > <div class="icon"></div></div>Tarea</a>
-      <% end%>
     <% end%>
     <% permitted_to? :create, :discussions do %>
     <a href="#discussion-form-area" class="discussion-form-btn blured" onclick="HashBlured();"><div class="border" ><div class="icon"></div></div>Discusión</a>
     <% end%>
-    <% permitted_to? :create, :surveys do %>
-      <% if @has_permitions%>
+    <% permitted_to? :create, :surveys do %>      
         <a href="#survey-form-area" class="survey-form-btn blured" onclick="HashBlured();"><div class="border" ><div class="icon"></div></div>Cuestionario</a>
-      <% end%>
     <% end%>
   </div>
 <%else%>
