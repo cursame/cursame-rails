@@ -60,7 +60,6 @@ class Survey < ActiveRecord::Base
           :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id,
           :course_id => self.course_ids, :network_id => self.network_id)
 
-    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => self.courses.first.users)
 
 
     users = []
@@ -74,6 +73,8 @@ class Survey < ActiveRecord::Base
         end
       end
     end
+
+    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)    
 
     users = users.reject { |user| user.id == self.user_id }
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
