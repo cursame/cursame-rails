@@ -28,5 +28,9 @@
       $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');    
   }, 1500);
 <%else%>
-  alert('La tarea no tiene cursos asignados');
+  $("#notice").html('');
+  $("#notice").css('color','#FFF');
+  $("#notice").css('background','#E63A3A');         
+  $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
+  $('#notice').append('La tarea no tiene cursos asignados');
 <%end%>

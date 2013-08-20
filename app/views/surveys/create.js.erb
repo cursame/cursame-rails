@@ -16,5 +16,9 @@
 	    
 	}, 1500);
 <%else%>
-  alert('El cuestionario no tiene cursos asignados');
+  $("#notice").html('');
+  $("#notice").css('color','#FFF');
+  $("#notice").css('background','#E63A3A');         
+  $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
+  $('#notice').append('El cuestionario no tiene cursos asignados');
 <%end%>
