@@ -240,6 +240,27 @@ class Api::ApiController < ApplicationController
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
 
+    # files
+    # Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZXQAGafwUCfr9ubqyIhH8UCvVsNR0Zb8c5+Ka6qP0iQ=",
+    #  "asset"=>{"user_id"=>"3", 
+    #  "file"=>#<ActionDispatch::Http::UploadedFile:0x007fbd7e2a3120 @original_filename="logo.png",
+    #   @content_type="image/png", 
+    #   @headers="Content-Disposition: form-data; name=\"asset[file]\"; filename=\"logo.png\"\r\nContent-Type: image/png\r\n", 
+    #   @tempfile=#<File:/var/folders/ns/qny61vn97cb_ln478qy57df00000gn/T/RackMultipart20130820-449-hz921m>>}, 
+    #   "form_id"=>"form-upload-delivery-hQKgYWpOqSyRjVhDoihIhMNYhjNgwm_254732678324634"}
+
+    # Parameters: {"utf8"=>"✓",
+    #  "authenticity_token"=>"ZXQAGafwUCfr9ubqyIhH8UCvVsNR0Zb8c5+Ka6qP0iQ=",
+    #  "delivery"=>{"network_id"=>"1",
+    #   "user_id"=>"3", 
+    #   "title"=>"Tarea",
+    #   "end_date"=>"21/08/2013 15:05", 
+    #   "publish_date"=>"20/08/2013 15:05",
+    #   "description"=>"asdasd", 
+    #   "areas_of_evaluations_attributes"=>{"0"=>{"name"=>"uno", 
+    #   "evaluation_percentage"=>"25", "delivery_id"=>"", 
+    #   "active"=>"true", "date_of_item"=>"20/08/2013 15:05:26"}, 
+    #   "1"=>{"name"=>"dos", "evaluation_percentage"=>"75", "delivery_id"=>"", "active"=>"true", "date_of_item"=>"20/08/2013 15:05:26"}}, "porcent_of_evaluation"=>"23", "course_ids"=>["89"]}, "files"=>["66"], "commit"=>"Publicar"}
     @delivery.save
     render :json => {:success => true}, :callback => params[:callback]
   end

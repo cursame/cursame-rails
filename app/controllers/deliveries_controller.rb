@@ -62,7 +62,7 @@ class DeliveriesController < ApplicationController
   # POST /deliveries
   # POST /deliveries.json
   def create
-    courses = courses = params[:delivery] ? nil : params[:delivery]["course_ids"]
+    courses = courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
     @publication = []
     @error = false
 
