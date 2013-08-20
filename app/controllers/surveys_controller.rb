@@ -115,7 +115,32 @@ class SurveysController < ApplicationController
     end
 
   end
+  def publish_unpublish_survey_manualy
+     @state = params[:state]
+     @id = params[:id]
+         @survey = Survey.find_by_id(@id)
+         if @survey.state == 'unpublish'
 
+          @survey.state = 'published'
+          @survey.publish_date = Time.now
+          @survey.end_date = Time.now + 2.days 
+          @message = "se ha republicado agregando 2 dias desde ahora"
+          
+         else
+
+           @survey.state = 'unpublish'
+           @survey.end_date = Time.now
+           @message = "se ha despublicado"
+           
+
+         end
+         @survey.save!
+         if @survey.save   
+           respond_to do |format|
+             format.js
+           end
+         end
+  end
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy

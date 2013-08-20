@@ -197,4 +197,32 @@ class DeliveriesController < ApplicationController
   else
   end
 end
+
+ def publish_unpublish_delivery_manualy
+   @state = params[:state]
+   @id = params[:id]
+       @delivery = Delivery.find_by_id(@id)
+       if @delivery.state == 'unpublish'
+       
+        @delivery.state = 'published'
+        @delivery.publish_date = Time.now
+        @delivery.end_date = Time.now + 10.days 
+        @message = "se ha republicado agregando 10 dias desde ahora"
+         
+       else
+         
+         @delivery.state = 'unpublish'
+         @delivery.end_date = Time.now
+         @message = "se ha despublicado"
+         
+         
+       end
+       @delivery.save!
+       if @delivery.save   
+       respond_to do |format|
+       format.js
+       end
+       end
+   
+ end
 end

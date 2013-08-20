@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
          #@link = 'cursatest.com'
          @link = 'cursa.me'
        when Rails.env == 'test'
-         #@link = 'cursatest.com'
+         @link = 'lvh.me:3001'
        when Rails.env == 'subtest'
          @link = 'cursa.me'
 
