@@ -30,7 +30,7 @@
 
 	     <h3 style="background-color: rgb(222, 222, 222);">
 		     <% if array[0].name != nil%>
-			       <%= truncate("#{array[0].name}", :omission => "...", :length => 25 ) %>
+			       <%= link_to truncate("#{array[0].name}", :omission => "...", :length => 20 ), "users/#{(array[0].personal_url)}"  %>
 		     <%end%>
 	     </h3>
 
@@ -43,16 +43,19 @@
                 <span class="solistyle"><%= "Solicitud enviada" %></span>
                 <span style="height: 10px; display: block; position: relative;"></span>
 				<span class="addfriend" style="margin-top: 20px;">
-					<%= link_to "Ver perfil", friendships_update_friend_path(array[0].id), :remote => true  %>
+                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
 				</span>
             <%when  "accept_request" %>
             	<span style="display: block; margin-bottom: 10px;">Aceptar amistad</span>
                 <span class="addfriend"><%= link_to "Aceptar", friendships_update_friend_path(array[0].id), :remote => true  %></span>
                 <span style="height: 10px; display: block; position: relative;"></span>
                 <span class="addfriend" style="margin-top: 20px;">
-                	<%= link_to "Ver perfil", friendships_update_friend_path(array[0].id), :remote => true  %>
+                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
                 </span>
             <%when "friend"%>
+                <span class="addfriend" style="margin-top: 20px;">
+                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
+				</span>
             <% else %>
             <div id="add_friend<%=array[0].id%>">
                 <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%>

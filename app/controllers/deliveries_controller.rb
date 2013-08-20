@@ -62,38 +62,36 @@ class DeliveriesController < ApplicationController
   # POST /deliveries
   # POST /deliveries.json
   def create
-    courses = params[:delivery]["course_ids"]
+    courses = courses = params[:delivery] ? nil : params[:delivery]["course_ids"]
     @publication = []
+    @error = false
 
-    courses.each do |course|
-
-      @delivery = Delivery.new(params[:delivery])
-      @delivery.courses = [Course.find_by_id(course)]
-      # @areas_of_evaluation = AreasOfEvaluation.new(params[:areas_of_evaluation])
-      # @compart_assets = CompartAsset.new(params[:compart_assets])
-      # @assignment = Assignment.new(params[:assignment])
-
-
-      if @delivery.save
-        @typed = "Delivery"
-        @az = @delivery
-        puts '------------ aqui ya se creo el delivery -------------------'
-        @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))
-        activation_activity
-        puts @publication.to_yaml
-        puts '------------ debio de imprmir el publication -------------------'
-        #actualizamos los assets del delivery
-        if(params[:files])
-          params[:files].each do |asset_id|
-            @asset = Asset.find(asset_id)
-            @delivery.assets.push(@asset)
+    if courses && !courses.empty?      
+      courses.each do |course|
+        @delivery = Delivery.new(params[:delivery])
+        @delivery.courses = [Course.find_by_id(course)]
+        if @delivery.save
+          @typed = "Delivery"
+          @az = @delivery
+          puts '------------ aqui ya se creo el delivery -------------------'
+          @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))
+          activation_activity
+          puts @publication.to_yaml
+          puts '------------ debio de imprmir el publication -------------------'
+          #actualizamos los assets del delivery
+          if(params[:files])
+            params[:files].each do |asset_id|
+              @asset = Asset.find(asset_id)
+              @delivery.assets.push(@asset)
+            end
           end
         end
       end
+    else
+      @error = true      
     end
 
     respond_to do |format|
-      # format.json { render json: @delivery, status: :created, location: @delivery }
       format.js
     end
   end
@@ -197,4 +195,32 @@ class DeliveriesController < ApplicationController
   else
   end
 end
+
+ def publish_unpublish_delivery_manualy
+   @state = params[:state]
+   @id = params[:id]
+       @delivery = Delivery.find_by_id(@id)
+       if @delivery.state == 'unpublish'
+       
+        @delivery.state = 'published'
+        @delivery.publish_date = Time.now
+        @delivery.end_date = Time.now + 10.days 
+        @message = "se ha republicado agregando 10 dias desde ahora"
+         
+       else
+         
+         @delivery.state = 'unpublish'
+         @delivery.end_date = Time.now
+         @message = "se ha despublicado"
+         
+         
+       end
+       @delivery.save!
+       if @delivery.save   
+       respond_to do |format|
+       format.js
+       end
+       end
+   
+ end
 end

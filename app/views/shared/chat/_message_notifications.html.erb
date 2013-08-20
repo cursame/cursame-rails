@@ -30,11 +30,12 @@
 	       <div id="users-and-groups-online" style="display:none">       	
 			<span class="titleBraker">Cursos</span>
 			<% @courses_online.each do |course|%>
-			    <div><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
+			    <div><%= link_to truncate("#{course.title}", :omission => "...", :length => 30), open_channel_path(course.id,"course" => true), :remote => true%></div>
 			<%end%>
-			<span class="titleBrakerSecondary">Amigos conectados</span>
+		<!--	<span class="titleBrakerSecondary">Amigos conectados</span>-->
+		    <span class="titleBraker">Amigos conectados</span>
 			<% @friends_online.each do |user|%>
-			    <div><%= link_to user.name || user.email, open_channel_path(user.id), :remote => true%></div>
+			    <div><%= link_to truncate("#{user.name}", :omission => "...", :length => 30) || user.email, open_channel_path(user.id), :remote => true%></div>
 			<%end%>
 	       </div>
 		</div>

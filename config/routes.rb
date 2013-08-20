@@ -133,6 +133,12 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
      end
   end
+  ################ llamada para republicar tarea ################
+  get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
+  get'/publish_unpublish_survey_manualy', :to => 'surveys#publish_unpublish_survey_manualy', :as => :publish_unpublish_survey_manualy
+  
+  ##### coureses coment
+  
   get "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   match "/courses/sending" => "courses#sending", :as => "sending", :via => [:post]
   #post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
@@ -271,7 +277,7 @@ Cursame30Lb::Application.routes.draw do
   resources :deliveries do
     resources :events
   end
-
+ 
   # subiendo permisos en manager
   #match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
   #match 'managers/permissioning_for_manager/roles/:id',:to => "managers#permissioning_for_manager", :as => :permissioning_for_manager

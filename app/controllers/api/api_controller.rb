@@ -228,6 +228,21 @@ class Api::ApiController < ApplicationController
     @delivery.save
     render :json => {:success => true}, :callback => params[:callback]
   end
+  
+  def native_create_delivery
+    @delivery = Delivery.new
+    @delivery.title = params[:title]
+    @delivery.description = params[:description]
+    @delivery.publish_date = params[:publication]
+    @delivery.end_date = params[:deliver]
+    @delivery.porcent_of_evaluation = params[:value]
+    @delivery.user = @user
+    @delivery.network = @network
+    @delivery.courses.push(Course.find(params[:courseId]))
+
+    @delivery.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
 
   def create_discussion
     @discussion = Discussion.new

@@ -42,8 +42,10 @@ class ManagersController < ApplicationController
 
   def library
 
-    @libraries = current_network.libraries
-    @library = Library.new(params[:id])
+   # @libraries = current_network.libraries
+  # @library = Library.new(params[:id])
+  
+  redirect_to '/managers/wall'
 
   end
 

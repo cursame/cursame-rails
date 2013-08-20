@@ -2,8 +2,6 @@
   <% @discussion=Discussion.new %>
 <% end %>
 <%= form_for(@discussion, :remote => true,:html => { :class => "default-form discussion-form" }) do |f| %>
-
-
  
   <% if @discussion.errors.any? %>
     <div id="error_explanation">

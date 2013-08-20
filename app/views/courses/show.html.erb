@@ -72,10 +72,9 @@
                             <div class="delivery_f">
                                     <div class="delivery_container" onclick="OpenStatus()">
                                         <div class="title"><%= delivery.title %></div>
-                                        <div class="dates"><%= delivery.publish_date %>
+                                        <div class="dates" id="dates_delivery<%=delivery.id%>"><%= delivery.publish_date %>
                                                         <%= delivery.end_date %></div>
-                                                        <div class="state"><%= delivery.state %> <div class="image" id="opentag<%=delivery.id%>"></div></div>
-                     
+                                                        <div class="state"><div id="delivery_state_publish<%=delivery.id%>"><%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %> </div><div class="image" id="opentag<%=delivery.id%>"></div></div>
                             </div>
                       
                       <script>
@@ -95,9 +94,12 @@
                        <div class="so_open"id="so_open<%=delivery.id%>" style="display:none">
                            <% delivery.assignments.reverse.each do |assignment|%>
                            <div class="assignment">
-                             <div class="title"> <%= assignment.title %></div>
-                             <% if assignment.user != nil %>
-                              <div class="name"> <%= assignment.user.name if ( !assignment.user.name.blank?) %><div class="image"><%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%> </div></div>                 <%end%>
+                              
+                             <div class="title"> &nbsp; <b>Entrega:</b><%= truncate("#{assignment.title}", :omission => "...", :length => 35)%>
+                                    <% if assignment.user != nil %>
+                                     &nbsp; <b>Por:</b><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %> &nbsp;&nbsp;<%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>                      <%end%>
+                            </div></br>
+                            
                            </div>
                            <%end%>
                        </div>
@@ -106,6 +108,7 @@
                    <%end%>
                  </div>
                   
+                   
                  <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #eee; width: 440px; display: block;">
                  
                  <% @course.surveys.reverse.each do |survey|%>
@@ -114,9 +117,9 @@
                      <div class="delivery_f">
                        <div class="delivery_container"  onclick="OpenStatus()">
                              <div class="title"><%= survey.title %></div><!-- ends title -->
-                             <div class="dates"><%= survey.publish_date %>
+                             <div class="dates" id="survey_dates<%= survey.id%>"><%= survey.publish_date %>
                                              <%= survey.end_date %></div><!-- ends dates -->
-                                             <div class="state"><%= survey.state %>
+                                             <div class="state"><div id="survey_state_publish<%=survey.id%>"><%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %></div>
                                              	<div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
                                              </div><!-- ends state -->
                        </div><!-- ends delivery_container -->
@@ -131,7 +134,7 @@
                         
                           <div class="so_open" id="copea_<%=survey.id%>" style="display:none">
                               <% survey.user_surveys.each do |us|%>
-                                 <div class="imageExam"><%= us.user.name%><%= link_to image_tag('delivery.png'), course_survey_l_path(us.id), :remote => true%></div>
+                                 <div class="imageExam"> <b>Entregó:</b> <%= us.user.name%><%= link_to image_tag('delivery.png'), course_survey_l_path(us.id), :remote => true%></div>
                               <%end%>
                           </div><!-- ends so_open -->
                           
@@ -261,12 +264,12 @@
 </div>
   <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
   <div id="timeline" class="tim">
-    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'network'} %>
+    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
   </div>
 
   <!-- inicio de joyride -->
   <% if show_joyride(1) == '0' %>
-    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall} %>
+    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
   <% end %>
     
   <!-- fin de joyride -->

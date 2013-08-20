@@ -19,25 +19,24 @@ class SurveysController < ApplicationController
     @survey.user = current_user
     @survey.network = current_network
 
-    if params[:delivery]
-      params[:delivery][:course_ids].each do |id|
+    courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
+
+    if courses && !courses.empty? 
+      courses.each do |id|
         @survey.courses.push(Course.find(id))
       end
-    end
-
-    respond_to do |format|
       if @survey.save!
         @az = @survey
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"
         activation_activity
-        format.js
-       # format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
-        format.json { render json: @survey, status: :created, location: @survey }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
       end
+    else
+      @error = true       
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -115,7 +114,32 @@ class SurveysController < ApplicationController
     end
 
   end
+  def publish_unpublish_survey_manualy
+     @state = params[:state]
+     @id = params[:id]
+         @survey = Survey.find_by_id(@id)
+         if @survey.state == 'unpublish'
 
+          @survey.state = 'published'
+          @survey.publish_date = Time.now
+          @survey.end_date = Time.now + 2.days 
+          @message = "se ha republicado agregando 2 dias desde ahora"
+          
+         else
+
+           @survey.state = 'unpublish'
+           @survey.end_date = Time.now
+           @message = "se ha despublicado"
+           
+
+         end
+         @survey.save!
+         if @survey.save   
+           respond_to do |format|
+             format.js
+           end
+         end
+  end
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy

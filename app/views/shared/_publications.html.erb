@@ -6,7 +6,7 @@
 <%end%>
 
 <% if visible_for == 'network' && !publication.courses.empty? && !(current_user.roles.last.id == 1 || current_user.roles.last.id == 4) %>
-  <%  if publication.courses[0].members_in_courses.where(:user_id =>@user_l.id,:accepted => false )%>
+  <%  if publication.courses[0].public_status == "Private" && publication.courses[0].members_in_courses.where(:user_id =>current_user.id,:accepted => false )%>
     <%  next %>
   <%end%>
 <%end%>
@@ -18,7 +18,10 @@
   publication_cls = 'delivery'
   case publication.publication_type
   when 'Comment'
-    avatar = post.user.avatar.modern
+    if post.user == nil
+      next
+    end    
+    avatar = post.user.avatar.modern 
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
     name = post.user.name
@@ -38,6 +41,9 @@
     content = post.silabus
     ico = ''
   when 'Discussion'
+    if post.user == nil
+      next
+    end
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
@@ -50,6 +56,9 @@
     ico = '-discussion'
     tipo = 'Discusion'
   when 'Delivery'
+    if post.user == nil
+      next
+    end
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx
@@ -64,6 +73,9 @@
     ico = '-homework'
     tipo  = 'Tarea'
   when 'Survey'
+    if post.user == nil
+      next
+    end
     avatar = post.user.avatar.modern
     personal_url = post.user.personal_url
     image_avatarxx = post.user.image_avatarxx

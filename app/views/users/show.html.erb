@@ -168,7 +168,7 @@
         </div>
         <!-- inicio de joyride -->
         <% if show_joyride(2) == '0' %>
-           <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall} %>
+           <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall,:visible_for => 'network'} %>
         <% end %>       
         <!-- fin de joyride -->
 

@@ -1,6 +1,6 @@
 <% if @publication != nil %>
 $( "#tabs-courses" ).tabs();
-$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication]}))%>");
+$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>");
 $('#timeline').effect("highlight", {}, 1000);
 
 $('#box-course').html("<%= escape_javascript(render :partial => '/courses/courses', :locals => {:courses => @courses})%>");

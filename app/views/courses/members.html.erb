@@ -62,8 +62,8 @@
         	<%= link_to "#{truncate(@members.name, :omission => "...", :length => 15)}", show_user_path(@members.personal_url) %>
         </h3>
              
-	              <div class="hoverShowEdit">
-	              	  <center>
+	     <div class="hoverShowEdit">
+	             <center>
                
                 <%if @member.accepted != true%>
                 <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
@@ -76,6 +76,7 @@
                           	<%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
 						  </div>
                     </div><!-- ends nonAce -->
+                    </div>
                     <%end%>
                 <%else%>
         
