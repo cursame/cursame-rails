@@ -269,7 +269,7 @@
 
   <!-- inicio de joyride -->
   <% if show_joyride(1) == '0' %>
-    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall} %>
+    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
   <% end %>
     
   <!-- fin de joyride -->

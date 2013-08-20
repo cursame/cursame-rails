@@ -39,14 +39,6 @@ class CoursesController < ApplicationController
     @page = params[:page].to_i
     @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     
-    #validamos que el maestro no pueda crear tareas en el curso
-    if current_user.roles.last.id == 3
-      @has_permitions = !@course.members_in_courses.where(:user_id =>current_user.id,:accepted => true, :owner =>true).empty?
-    else 
-      @has_permitions = true
-    end
-    
-
     if request.xhr?
       respond_to do |format|
         format.js
