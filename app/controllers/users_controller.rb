@@ -1,8 +1,14 @@
+# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
 
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
+
+    if @user_l.nil? then
+      redirect_to :back
+    end
+
     #@accesible_id = @user.id
     #helper methods in aplication controller
     pertenence!
@@ -230,13 +236,13 @@ class UsersController < ApplicationController
        format.js
     end
   end
-  
+
   def corroborate_url
     @user = User.find_by_personal_url(params[:personal_url])
     puts '####################'
     puts @user
     puts '####################'
-     
+
      if @user == nil
         @url = true
      else
@@ -244,5 +250,5 @@ class UsersController < ApplicationController
      end
 
     end
-  
+
 end
