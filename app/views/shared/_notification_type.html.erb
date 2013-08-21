@@ -3,7 +3,7 @@
 <%else%>
 <li class="<%= cls %>" id="notification-<%=notification.notificator_id.to_s %>"
   onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
-
+<% if notification.notificator != nil%>
   <% case notification.kind%>
   <% when 'user_comment_on_network'%>
   <% if current_user && current_user.avatar != nil%>
@@ -108,6 +108,7 @@ del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.titl
   <br/>
   <span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
+<%end%>
 <%end%>
 
 <script>
