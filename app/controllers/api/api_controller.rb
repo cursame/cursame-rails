@@ -240,6 +240,28 @@ class Api::ApiController < ApplicationController
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
 
+    
+    # agregamos los files
+    files = params[:files]
+    areas = params[:areas]
+    
+    if files && !files.empty?
+      files.each do |file|
+        asset = Asset.new(params[:files])
+        asset.save
+        @delivery.assets.push(asset)
+      end
+    end
+    if areas && !areas.empty?
+      areas.each do |file|
+        areas = AreasOfEvaluation.new(params[:areas])
+        areas.save
+        @delivery.areas_of_evaluations.push(areas)
+      end
+    end
+
+    # 
+
     # files
     # Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZXQAGafwUCfr9ubqyIhH8UCvVsNR0Zb8c5+Ka6qP0iQ=",
     #  "asset"=>{"user_id"=>"3", 
