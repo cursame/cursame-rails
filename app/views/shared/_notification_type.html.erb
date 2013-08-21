@@ -108,7 +108,10 @@ del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.titl
   <br/>
   <span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
+<%else%>
+  <%next%>
 <%end%>
+
 <%end%>
 
 <script>
