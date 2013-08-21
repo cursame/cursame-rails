@@ -1,12 +1,37 @@
+<div class="cogki_content_delivery">
+    
+ 
+    
+        <ul class="tabs">
+        		<li class="tab-link current" data-tab="tab-1">Entrega</li>
+        		<li class="tab-link" data-tab="tab-2">Evaluación</li>
+        </ul>
+        
+        <script>
+         $(document).ready(function(){	
+         	$('ul.tabs li').click(function(){
+         		var tab_id = $(this).attr('data-tab');
+
+         		$('ul.tabs li').removeClass('current');
+         		$('.tab-content').removeClass('current');
+
+         		$(this).addClass('current');
+         		$("#"+tab_id).addClass('current');
+         	})
+
+         })
+         </script>
+
+<div id="tab-1" class="tab-content current">
     <div class="coklo-title">
     
-       <h1> <%= assignment.title%> </h1></br>
-       <p> <%= assignment.brief_description%> </p></br>
+       <h1>TÍTULO: <%= assignment.title%> </h1></br>
+       <p><div class="cont">DESCRIPCIÓN: <%= assignment.brief_description%> </div> </p></br>
     
     </div>
     
-    
- 	 <div class="content-assets">
+<div class="content-assets">
+ 	 <p> ARCHIVOS DE LA ENTREGA: </p></br>
      <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>
          <% @string =  @file.to_s.split('/').last%>
@@ -19,38 +44,44 @@
           <%= @f_file %>
       <%end%>
       
-      </div>
-    <!--
-    <div class="header_l">        
+</div>
+</div>
+
+<div id="tab-2" class="tab-content">
+    <!--<div class="header_l">        
        		<span class="usermenuTitle"><%= assignment.title%></span>
         <div class="description">
         	<span class="userDescription"><%= assignment.brief_description%></span>
         </div>
     </div>-->
-    <div class="body_l" id="accomplishment">
+    <div class="coklo-title" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-	      <span class="nombreCrit rate" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></span></br>
+	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></h1></br>
 	 <%else%>
-	      <span class="rate" id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= assignment.accomplishment %>%</b></span></br>
+	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= assignment.accomplishment %>%</b></h1></br>
      <%end%>
    
          
-      <span class="usermenuTitle">Criterios de calificación</span>
+      <p>Criterios de calificación</p>
         <%= form_for assignment, remote: true   do |assigments_l |%>
+            <center>
             <% if assignment.response_to_the_evaluations.count != 0%>
-            <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea, :class => 'helpText' %>
+            
+            <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea  %>
                  <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
               
                  <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
               
                 <%end%>
             <%else%>
-                 <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea, :class => 'helpText' %>
-                 <center><%= assigments_l.number_field :rub_calification, :class => 'inputCalif' %></center>
+                 <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea  %>
+                 <%= assigments_l.number_field :rub_calification, :class => 'inputCalif' %>
             <%end%>
             <br />
             	<span class="default-form submitCalif"><%= assigments_l.submit "Calificar tarea"%></span>
+            </center>
        <%end%>
        
-   </div>
+    </div>
+</div>
 </div>
