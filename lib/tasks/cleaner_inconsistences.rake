@@ -13,7 +13,7 @@ puts "******************** Encontrando los deliveries y surveys sin curso ******
    if d.courses == nil
    puts "delivery sin curso"
    puts d.id
-   @d.destroy
+   d.destroy
    else
     puts "delivery con curso"
    end
@@ -23,7 +23,7 @@ puts "******************** Encontrando los deliveries y surveys sin curso ******
    if s.courses == nil
    puts "survey sin curso"
    puts s.id
-   @s.destroy
+   s.destroy
    else
      puts "survey con curso"
    end
@@ -35,7 +35,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
    if n.notificator_id == nil
    puts "sin identificador"
    puts n.id
-   @n.destroy
+   n.destroy
    else
     puts "con identificador"
    end
@@ -43,7 +43,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
    if n.notificator_type == nil
    puts "sin tipo"
    puts n.id
-   @n.destroy
+   n.destroy
    else     
    puts "con tipo"
    end
@@ -51,7 +51,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
    if n.users == nil
     puts "sin usuarios"
     puts n.id
-    @n.destroy
+    n.destroy
     else     
     puts "con usuarios"
    end
@@ -59,7 +59,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
     if n.kind == nil
      puts "sin kind"
      puts n.id
-     @n.destroy
+     n.destroy
      else     
      puts "con kind"
     end
@@ -72,7 +72,7 @@ puts "******************** Delimintando Assigments limpiando y corrigiendo *****
    if a.delivery == nil
    puts "sin tarea"
    puts a.id
-   @a.destroy
+   a.destroy
    else
     puts "con tarea"
    end
@@ -80,7 +80,7 @@ puts "******************** Delimintando Assigments limpiando y corrigiendo *****
    if a.course == nil
    puts "sin curso"
    puts a.id
-   @a.destroy
+   a.destroy
    else     
    puts "con tipo"
    end
@@ -88,7 +88,7 @@ puts "******************** Delimintando Assigments limpiando y corrigiendo *****
    if a.user == nil
     puts "sin curso"
     puts a.id
-    @a.destroy
+    a.destroy
     else     
     puts "con curso"
    end
@@ -100,7 +100,7 @@ puts "******************** Buscando solicitudes de amistad fallidas ************
    if f.friend_id == nil
    puts "sin amigo"
    puts f.id
-   @f.destroy
+   f.destroy
    else
     puts "con amigo"
    end
@@ -108,7 +108,7 @@ puts "******************** Buscando solicitudes de amistad fallidas ************
    if f.user_id == nil
    puts "sin propietario"
    puts f.id
-   @f.destroy
+   f.destroy
    else     
    puts "con propietario"
    end
@@ -120,7 +120,7 @@ puts "******************** Buscando comment sin usuario y eliminandolo *********
    if c.user == nil
    puts "comment sin usuario"
    puts c.id
-   @c.destroy
+   c.destroy
    else
     puts "comment con usuario"
    end
