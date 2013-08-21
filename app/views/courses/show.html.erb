@@ -95,9 +95,9 @@
                            <% delivery.assignments.reverse.each do |assignment|%>
                            <div class="assignment">
                               
-                             <div class="title"> &nbsp; <b>Entrega:</b><%= truncate("#{assignment.title}", :omission => "...", :length => 35)%>
+                             <div class="title"> &nbsp; <b>Entrega:</b><%= truncate("#{assignment.title}", :omission => "...", :length => 15)%>
                                     <% if assignment.user != nil %>
-                                     &nbsp; <b>Por:</b><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %> &nbsp;&nbsp;<%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>                      <%end%>
+                                     &nbsp; <b>Por:</b><%= truncate("#{assignment.user.name}", :omission => "...", :length => 18) if ( !assignment.user.name.blank?) %> &nbsp;&nbsp;<%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>                      <%end%>
                             </div></br>
                             
                            </div>
