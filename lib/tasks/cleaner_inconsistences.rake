@@ -12,7 +12,7 @@ puts "******************** Encontrando los deliveries y surveys sin curso ******
  @d.each do |d|        
    if d.courses == nil
    puts "delivery sin curso"
-   puts @d.id
+   puts d.id
    @d.destroy
    else
     puts "delivery con curso"
@@ -22,7 +22,7 @@ puts "******************** Encontrando los deliveries y surveys sin curso ******
  @s.each do |s|        
    if s.courses == nil
    puts "survey sin curso"
-   puts @s.id
+   puts s.id
    @s.destroy
    else
      puts "survey con curso"
@@ -34,7 +34,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
 @n.each do |n|        
    if n.notificator_id == nil
    puts "sin identificador"
-   puts @n.id
+   puts n.id
    @n.destroy
    else
     puts "con identificador"
@@ -42,7 +42,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
    
    if n.notificator_type == nil
    puts "sin tipo"
-   puts @n.id
+   puts n.id
    @n.destroy
    else     
    puts "con tipo"
@@ -50,7 +50,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
    
    if n.users == nil
     puts "sin usuarios"
-    puts @n.id
+    puts n.id
     @n.destroy
     else     
     puts "con usuarios"
@@ -58,7 +58,7 @@ puts "******************** Encontrando las notificaciones sin notificator y sin 
    
     if n.kind == nil
      puts "sin kind"
-     puts @n.id
+     puts n.id
      @n.destroy
      else     
      puts "con kind"
@@ -71,7 +71,7 @@ puts "******************** Delimintando Assigments limpiando y corrigiendo *****
 @a.each do |a|        
    if a.delivery == nil
    puts "sin tarea"
-   puts @a.id
+   puts a.id
    @a.destroy
    else
     puts "con tarea"
@@ -79,7 +79,7 @@ puts "******************** Delimintando Assigments limpiando y corrigiendo *****
    
    if a.course == nil
    puts "sin curso"
-   puts @a.id
+   puts a.id
    @a.destroy
    else     
    puts "con tipo"
@@ -87,7 +87,7 @@ puts "******************** Delimintando Assigments limpiando y corrigiendo *****
    
    if a.user == nil
     puts "sin curso"
-    puts @a.id
+    puts a.id
     @a.destroy
     else     
     puts "con curso"
@@ -99,7 +99,7 @@ puts "******************** Buscando solicitudes de amistad fallidas ************
 @f.each do |f|        
    if f.friend_id == nil
    puts "sin amigo"
-   puts @f.id
+   puts f.id
    @f.destroy
    else
     puts "con amigo"
@@ -107,7 +107,7 @@ puts "******************** Buscando solicitudes de amistad fallidas ************
    
    if f.user_id == nil
    puts "sin propietario"
-   puts @f.id
+   puts f.id
    @f.destroy
    else     
    puts "con propietario"
@@ -119,7 +119,7 @@ puts "******************** Buscando comment sin usuario y eliminandolo *********
 @c.each do |c|        
    if c.user == nil
    puts "comment sin usuario"
-   puts @c.id
+   puts c.id
    @c.destroy
    else
     puts "comment con usuario"
