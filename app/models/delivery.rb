@@ -35,6 +35,9 @@ class Delivery < ActiveRecord::Base
   validates_presence_of :publish_date
   validates_presence_of :porcent_of_evaluation
   validates_presence_of :title
+  validates_presence_of :courses
+  validates_presence_of :user
+  
 
   acts_as_commentable
   #para los likes

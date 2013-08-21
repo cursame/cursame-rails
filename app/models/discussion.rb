@@ -8,7 +8,8 @@ class Discussion < ActiveRecord::Base
    belongs_to :user
 
   validate :max_courses
-
+  validates_presence_of :user
+  
    accepts_nested_attributes_for :contents
    
   #comentarios para las discusiones

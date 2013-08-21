@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
   #include UtilityHelper
-
+  
   #attr_accessible :commentable_type
 
   belongs_to :commentable, :polymorphic => true
@@ -23,6 +23,9 @@ class Comment < ActiveRecord::Base
   belongs_to :network
   belongs_to :course
   has_many :activities, as: :activitye#, :dependent => :destroy
+  
+  validates_presence_of :user
+  
 
   #comentarios para los comentarios
   acts_as_commentable

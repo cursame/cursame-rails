@@ -20,7 +20,13 @@ class Survey < ActiveRecord::Base
   acts_as_commentable
   #para los likes
   acts_as_votable
-
+  
+  ###### validando la presencia de algunos rubros #######
+  validates_presence_of :courses
+  validates_presence_of :questions
+  validates_presence_of :user
+  
+  
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
