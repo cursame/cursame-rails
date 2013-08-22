@@ -245,18 +245,30 @@ class Api::ApiController < ApplicationController
     files = params[:files]
     areas = params[:areas]
     
-    if files && !files.empty?
-      files.each do |file|
-        asset = Asset.new(params[:files])
+    # if files && !files.empty?
+    #   files.each do |file|
+    #     asset = Asset.new()
+    #     asset.file = params[:file]
+    #     asset.user_id = current_user.id
+    #     asset.save
+    #     @delivery.assets.push(asset)
+    #   end
+    # end
+    if files
+        asset = Asset.new()
+        asset.file = params[:files]
+        asset.user_id = current_user.id
         asset.save
         @delivery.assets.push(asset)
-      end
     end
+
     if areas && !areas.empty?
-      areas.each do |file|
-        areas = AreasOfEvaluation.new(params[:areas])
-        areas.save
-        @delivery.areas_of_evaluations.push(areas)
+      areas.each do |area|
+        a = AreasOfEvaluation.new()
+        a.evaluation_percentage = area[1]['percentage']
+        a.name = area[1]['name']
+        a.save
+        @delivery.areas_of_evaluations.push(a)
       end
     end
 
