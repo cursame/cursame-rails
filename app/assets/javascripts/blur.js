@@ -1,5 +1,8 @@
 
+
+
 function HashBlured(){
+    if ($.browser.webkit) {
     var flucted = $('#').hasClass('message-form-btn');
 
         if (flucted = true){
@@ -34,10 +37,14 @@ function HashBlured(){
         else{
           
         }
+        
+        }
 
 }
 
 function DisableBlured(){
+    if ($.browser.webkit) {
+
 $('#timeline').foggy(false);
 $('#box-user-credential').foggy(false);
 $('#banner-profile').foggy(false);
@@ -45,9 +52,11 @@ $('#side-bar').foggy(false);
 $('.container').css({'background':'#fff'});
 $('body').css({'background':'#fff'});
 $('.tim').foggy(false);
+    }
 }
 
 function CancelEditingBlur(){
+     if ($.browser.webkit) {
      $('.non-blur').foggy(false);
      $('.public-blur').foggy(false);
      $('#side-bar').foggy(false);
@@ -57,11 +66,12 @@ function CancelEditingBlur(){
      $('#timeline').foggy(false);
      $('.container').css({'background':'#fff'});
      $('body').css({'background':'#fff'});
-     
+     }
      
 }
 
 function CleanerBlur(){
+     if ($.browser.webkit) {
      $('.non-blur').foggy(false);
      $('.public-blur').foggy(false);
      $('#side-bar').foggy(false);
@@ -72,11 +82,11 @@ function CleanerBlur(){
      $('.container').css({'background':'#fff'});
      $('body').foggy(false);
      $('body').css({'background':'#fff'});
-    
+     }
 }
 
 function EditingBlur(){
-    
+    if ($.browser.webkit) {
     CancelEditingBlur();
     CleanerBlur();
     
@@ -113,6 +123,6 @@ function EditingBlur(){
     $('.non-blur').foggy(false);
     $('.container').css({'background':'#f7f7f7'});
     $('body').css({'background':'#f7f7f7'});
-   
+    }
 }
 
