@@ -508,35 +508,40 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
     
     
     & .content_delivery {
-        width:450px;
+        width:440px;
         height:400px;
         float:left;
         overflow:auto;
-        background-color: #eee;
+        background-color: #FFF;
     
     & .delivery_f {
-        width: 450px;
+        width: 436px;
         float: left;
         overflow: auto;
+        border-left: 4px solid #2683B3;
+        border-bottom: 1px solid #e6e6e6;
         
            & .delivery_container {
-               width: 437px;
+               width: 431px;
                height: 80px;
                margin-bottom: 0px;
-               border-bottom: 1px solid #E2E0E0;
-               background: url(../assets/ir-a.png) right center no-repeat #eee;
+               /*border-bottom: 1px solid #E2E0E0;*/
+               /* background: url(../assets/ir-a.png) right center no-repeat #FFF; */
+               background: #FFF;
                transition: ease-out all 0.3s;
-               box-shadow: inset -7px -2px 4px -4px #ccc;
+               /*box-shadow: inset -7px -2px 4px -4px #ccc;*/
                padding-left: 5px;
                padding-top: 5px;
                
                & .title{
                    /* background: #7E9157; */
-                   font-size:16px;
+                   width: 386px;
+                   font-size:15px;
                    padding:8px 5px 5px 5px;
-                   color: #333;
-                   height: 40px;
-                   font-weight: bold;
+                   color: #444;
+                   height: 20px;
+                   margin-top: 10px;
+                   font-weight: lighter;
                    overflow: hidden;
                }
                
@@ -544,9 +549,10 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                	   width: 240px;
                    height: 10px;
                    overflow: hidden;
-                   padding:5px;
+                   padding: 0px 5px 5px 5px;
                    font-align: justify;
-                   color:#4FA3E9;
+                   color:#8d8d8d;
+                   margin-top: -3px;
                    float: left;
                }
                
@@ -554,13 +560,16 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                    padding:5px;
                    font-align: justify;
                    color:#15B1B9;  
+                   
                     & .state-btn{
                         padding:4px;
-                        background:#EBDDB1 !important;
-                        width:70px;   
+                        background:#128617 !important;
+                        width:70px;
+                        color: #FFF;
                         float:left;
                         text-align:center;
                         margin-top:-8px;
+                        -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
                     }
                     
                     & .state-btn:hover{
@@ -580,13 +589,14 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
          
          }
     }
-    
+   
+   
    & .delivery_container:hover {
-	   cursor: pointer;
+	   /* cursor: pointer;
 	   background: url(../assets/ir-a-two.png) right center no-repeat #fff!important;
-	   background-repeat:no-repeat;
+	   background-repeat:no-repeat; 
 	   transition: ease-out all 0.3s;
-	   box-shadow: inset 0px 0px 0px transparent;
+	   box-shadow: inset 0px 0px 0px transparent; */
    }
    
    & .delivery_container:selected, .delivery_container:selected {
@@ -683,7 +693,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                        overflow: hidden;
                        padding:5px;
                        font-align: justify;
-                       color:#4FA3E9;
+                       color:#ccc;
 
                    }
 
@@ -740,10 +750,11 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
     & h1 {
 		color: #333;
 		font-size: 18px;
-		height: 23px;
-		width: 64px;
+		height: 19px;
+		width: 169px;
+		border-top: 4px solid #2683B3;
 		padding: 14px 12px 10px 19px;
-		background: rgba(238,238,238,1);
+		background: rgba(255,255,255,1);
 		transition: ease-out all 0.3s;		
         
         & .survey_container{
@@ -752,19 +763,18 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
     }
     
     & .deactive {
-		color: #333;
-		font-size: 18px;
-		height: 23px;
-		background: rgba(226,224,224,0.6);
-		width: 89px;
-		padding: 14px 12px 10px 19px;
-		margin-top: -47px;
-		position: relative;
-		display: block;
-		margin-left: 96px;
-		transition: ease-out all 0.3s;
-		float: left;
-		margin-right: 188px;
+font-size: 18px;
+height: 23px;
+background: rgba(226, 224, 224, 0.6);
+width: 209px;
+padding: 14px 12px 10px 19px;
+margin-top: -47px;
+position: absolute;
+display: block;
+transition: ease-out all 0.3s;
+margin-right: 188px;
+float: right;
+margin-left: 200px;
     }
 	
 	& .deactive:hover {
@@ -785,7 +795,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 }
 
 .delivery_f {
-        width: 450px;
+        width: 436px;
         float: right;
         overflow: auto;
         }
@@ -833,10 +843,10 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                width: 437px;
                height: 80px;
                margin-bottom: 0px;
-               border-bottom: 1px solid #E2E0E0;
+               /*border-bottom: 1px solid #E2E0E0;*/
                background: url(../assets/ir-a.png) right center no-repeat #eee;
                transition: ease-out all 0.3s;
-               box-shadow: inset -7px -2px 4px -4px #ccc;
+               /*box-shadow: inset -7px -2px 4px -4px #ccc;*/
                padding-left: 13px;
                padding-top: 5px;
                

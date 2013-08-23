@@ -70,40 +70,52 @@
                    <% @course.deliveries.reverse.each do |delivery|%>
                   
                             <div class="delivery_f">
+                            		<!-- <div class="delivery_container" onclick="OpenStatus()"> -->
+
                                     <div class="delivery_container" onclick="OpenStatus()">
+<div id="OpenClose" style="disply: block; position: absolute; height: 30px; width: 30px; background: #CCC; float: right; margin-left: 394px; margin-top: 26px;"></div>
                                         <div class="title"><%= delivery.title %></div>
-                                        <div class="dates" id="dates_delivery<%=delivery.id%>"><%= delivery.publish_date %>
-                                                        <%= delivery.end_date %></div>
-                                                        <div class="state"><div id="delivery_state_publish<%=delivery.id%>"><%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %> </div><div class="image" id="opentag<%=delivery.id%>"></div></div>
-                            </div>
-                      
-                      <script>
-                       	   $('.delivery_f').click(function() {
-	                       	   $('#so_open<%=delivery.id%>').toggle('blind', function() {
-	                       	   });
-                       	   });
-                      </script>
-                  
-                       <script>
-                           $('#opentag<%=delivery.id%>').click(function() {
-                             $('#so_open<%=delivery.id%>').toggle('blind', function() {
-                             });
-                           });
-                       </script>
+                                        <div class="state"><div id="delivery_state_publish<%=delivery.id%>"><%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %></div>
+                                        <div class="dates" id="dates_delivery<%=delivery.id%>">
+                                        	<img src="/assets/clock.png">
+                                        	<%= delivery.publish_date %>
+                                            <%= delivery.end_date %>
+                                        </div>
+                                        <div class="image" id="opentag<%=delivery.id%>"></div>
+                                    </div><!-- ends delivery_container -->
+                            </div><!-- ends delivery_f -->
+                            
+                       
                         
                        <div class="so_open"id="so_open<%=delivery.id%>" style="display:none">
                            <% delivery.assignments.reverse.each do |assignment|%>
                            <div class="assignment">
-                              
-                             <div class="title"> &nbsp; <b>Entrega:</b><%= truncate("#{assignment.title}", :omission => "...", :length => 35)%>
-                                    <% if assignment.user != nil %>
-                                     &nbsp; <b>Por:</b><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %> &nbsp;&nbsp;<%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>                      <%end%>
-                            </div></br>
-                            
-                           </div>
-                           <%end%>
-                       </div>
+                              <div class="title">
+                              <b>Entrega:</b><%= truncate("#{assignment.title}", :omission => "...", :length => 35)%>
+                              	<% if assignment.user != nil %>
+                              <b>Por:</b><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %> &nbsp;&nbsp;<%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
+                              	<%end%>
+                              </div><!-- ends title -->
+                           </div><!-- ends assigment -->
+                         <%end%>
+                       </div><!-- ends so_open -->
                     </div>
+                    
+                      <script>
+                       	   $('#OpenClose').click(function() {
+	                       	   $('#so_open<%=delivery.id%>').toggle('blind');
+                       	   });
+                           $('#opentag<%=delivery.id%>').click(function() {
+                             $('#so_open<%=delivery.id%>').fade('blind');
+                           });
+                           
+$('#OpenClose').hover(function () {
+        this.src = '/images/signup_big_hover.png';
+    }, function () {
+        this.src = '/images/signup_big.png';
+    });
+                           
+                      </script>
                       
                    <%end%>
                  </div>

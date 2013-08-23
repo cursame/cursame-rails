@@ -394,17 +394,19 @@ opacity: 0.7;
 }
 
 .scarlate{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    width:100%;
-    background:#FCBBA8;
-    color:#C73C15;
-    height:50px;
-    font-size:20px;
-    
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	width: 100%;
+	background: rgba(252,187,168,0.9);
+	color: #C73C15;
+	height: 50px;
+	font-size: 20px;
+	position: absolute;
+	z-index: 9999;
+	padding-top: 14px;
 }
 
 
