@@ -216,6 +216,11 @@ puts "******************** Encontrando si el curso tine owner o si no asignando 
 @mco.each do |mco|
   mn = mco.members_in_courses.where(:owner => true).count
   puts  "******************** #{mn} ********************"
+  ulc =  mco.members_in_courses.count
+  if ulc != 0
+    puts "curso con usuarios"
+    puts ulc
+  
   if mn == 0
     puts "este curso no tiene owner"
     own = mco.members_in_courses.first
@@ -259,6 +264,14 @@ puts "******************** Encontrando si el curso tine owner o si no asignando 
     puts own
     puts own.owner
   end
+  
+  else
+    puts "este curso no tiene ningun usuario y sera eliminado"
+    puts ulc
+    mco.destroy
+  end
+  
+  
 end
 
 
