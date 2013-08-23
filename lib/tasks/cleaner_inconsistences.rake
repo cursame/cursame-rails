@@ -269,6 +269,7 @@ puts "******************** Encontrando si el curso tine owner o si no asignando 
     puts "este curso no tiene ningun usuario y sera eliminado"
     puts ulc
     mco.destroy
+    puts "este curso ha sido eliminado"
   end
   
   
