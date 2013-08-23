@@ -5,7 +5,7 @@
    formId= "form-upload-delivery-#{random_id}"
 %>
 <%#if @count_course_iam_member_and_owner != 0%>
-<% if @active_edit == false %>
+<% if !@active_edit %>
   <% @delivery=Delivery.new %>
 <% end %>
     <%= form_for(@delivery, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
