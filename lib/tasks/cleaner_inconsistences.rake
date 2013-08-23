@@ -177,17 +177,15 @@ puts "******************** Limpiando notificaciones que tengan inconsistencias d
          nk.destroy
          puts "se ha eliminado la notificacion"
      end
-  end
   
   when type == 'Friendship'
       fs = Friendship.exists?(nk.notificator_id)
       puts fs 
       if  fs == false
-          nk.destroy
-          puts "se ha eliminado la notificacion"
+        nk.destroy
+        puts "se ha eliminado la notificacion"
       end
-   end
-   
+  end   
 end
   
 
