@@ -7,6 +7,8 @@ $('#box-course').html("<%= escape_javascript(render :partial => '/courses/course
 console.info($('#new-course'));
 
 <%end%>
+$("#notice").css('color','#608847');
+$("#notice").css('background','#DFF0D8');
 $( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
 $('#notice').append('Se ha creado un curso');
 setTimeout(function() {

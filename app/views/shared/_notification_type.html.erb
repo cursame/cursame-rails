@@ -3,7 +3,7 @@
 <%else%>
 <li class="<%= cls %>" id="notification-<%=notification.notificator_id.to_s %>"
   onclick ="me('<%= notification.notificator_type %>',<%=notification.notificator_id.to_s %>)">
-
+<% if notification.notificator != nil%>
   <% case notification.kind%>
   <% when 'user_comment_on_network'%>
   <% if current_user && current_user.avatar != nil%>
@@ -55,19 +55,26 @@ Han calificado tu tarea
 del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
 
  <% when 'user_request_friendship'%>
-  <%user = notification.notificator.user %>
+  <% if notification.notificator != nil %>
+  <% if notification.notificator.user != nil %>
+  <% user = notification.notificator.user %>
   <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
   <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
   El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
   ha solicitado ser su amigo.
-
+  <%end%>
+  <%end%>
 <% when 'user_accepted_friendship'%>
+  <% if notification.notificator != nil %>
+  <% if notification.notificator.friend != nil %>
   <%user = notification.notificator.friend %>
+  
   <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
   <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
   El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
   ha aceptado su solicitud de amistad.
-
+  <%end%>
+  <%end%>
   <% when 'user_comment_on_discussion'%>
   <% if current_user && current_user.avatar != nil %>
   <% user = notification.notificator.user %>
@@ -101,6 +108,8 @@ del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.titl
   <br/>
   <span class="time"><%=time_ago_in_words(notification.created_at)%></span>
 </li>
+<%end%>
+
 <%end%>
 
 <script>

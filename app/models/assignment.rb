@@ -7,7 +7,11 @@ class Assignment < ActiveRecord::Base
   has_many :response_to_the_evaluations, :dependent => :destroy
   has_many :activities, as: :activitye, :dependent => :destroy
   has_many :contents, :as => :contentye, :dependent => :destroy
-
+  
+  validates_presence_of :user
+  validates_presence_of :course
+  validates_presence_of :delivery
+  
   before_destroy do
     notifications = Notification.where(:notificator_id => self.id, :notificator_type => "Assignment")
 

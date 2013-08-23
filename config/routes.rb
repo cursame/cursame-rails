@@ -435,5 +435,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/qualify_assignment', :to => 'api/api#qualify_assignment', :as => :qualify_assignment
 
   # api para nativa
-  match '/api/api/native_publications', :to => 'api/api#native_publications', :as => :native_publicationsjson
+  match '/api/api/native_publications', :to => 'api/api#native_publications', :as => :native_publications_json
+  match '/api/api/native_create_delivery', :to => 'api/api#native_create_delivery', :as => :native_create_delivery_json
+  match '/api/api/native_assigment_delivery', :to => 'api/api#native_assigment_delivery', :as => :native_assigment_delivery_json
 end

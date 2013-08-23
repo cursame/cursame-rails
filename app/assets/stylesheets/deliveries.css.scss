@@ -46,7 +46,7 @@
 .dropbox-chooser:hover { 	background: url('/assets/dropBox_hover.png') no-repeat !important; }
 
 .content-assets{
-	 width:454px;
+	 width:97%;
 	 background:#CBD0D0;
      margin-bottom:64px;
      min-height: 30px;
@@ -60,20 +60,21 @@
 .coklo-title{
     position:relative;
     display:block;
-    width:100%;
-    background:#fff;
+    width:97%;
+    background:#CBD0D0;
     min-height: 200px;
-    max-height: 1000px;
+    max-height: 4000px;
     overflow:auto;
+    margin-top:30px;
     
     
     & h1{
         color:#241344;
         background: #00ADC4;
-        width: 423px;
         color: #fff;
         font-size:20px;
         font-weight:bold;
+        width: 92.5%;
         
     }
     
@@ -81,7 +82,67 @@
         color:#241344;
         font-size:15px;
         padding: 0 20px;
+        overflow:auto;
+        min-height:40px;
+        max-height:130px;
+        width:97%;
+        
+       
         
     }
     
+     & .cont{
+             margin-top:-30px;
+             width:96%;
+             color:#241344;
+             font-size:15px;
+             overflow:auto;
+             min-height:40px;
+             max-height:130px;
+             padding:5px;
+             text-align:justify;
+        }
+    
+    
+    
+  
+    
+}
+
+.cogki_content_delivery{
+         width:100%;
+        
+         & ul.tabs{
+       			margin: 0px;
+       			padding: 0px;
+       			list-style: none;
+       			position:absolute;
+       			display:block;
+       		  }
+       	  &	ul.tabs li{
+       			background: none;
+       			color: #222;
+       			display: inline-block;
+       			padding: 10px 15px;
+       			cursor: pointer;
+                float:left;
+                width:195px;
+                height:20px;
+                font-size:17px;
+       		}
+
+       	  &	ul.tabs li.current{
+       			background: #fff;
+       			color: #222;
+       		}
+
+       	  &	.tab-content{
+       			display: none;
+       			background: #ededed;
+       			padding: 15px;
+       		}
+
+       	  &	.tab-content.current{
+       			display: inherit;
+       		}
 }

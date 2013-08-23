@@ -5,7 +5,11 @@ class Notification < ActiveRecord::Base
   has_many :users, :through => :usernotificationings
 
   belongs_to  :notificator, :polymorphic => true
-
+ 
+  validates_presence_of :notificator_id
+  validates_presence_of :notificator_type
+  
+  
   after_create do
 
     owner = nil

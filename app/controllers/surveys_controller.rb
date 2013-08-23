@@ -21,7 +21,7 @@ class SurveysController < ApplicationController
 
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
 
-    if courses && !courses.empty? 
+    if courses && !courses.empty?
       courses.each do |id|
         @survey.courses.push(Course.find(id))
       end
@@ -32,7 +32,7 @@ class SurveysController < ApplicationController
         activation_activity
       end
     else
-      @error = true       
+      @error = true
     end
 
     respond_to do |format|
@@ -122,19 +122,19 @@ class SurveysController < ApplicationController
 
           @survey.state = 'published'
           @survey.publish_date = Time.now
-          @survey.end_date = Time.now + 2.days 
+          @survey.end_date = Time.now + 2.days
           @message = "se ha republicado agregando 2 dias desde ahora"
-          
+
          else
 
            @survey.state = 'unpublish'
            @survey.end_date = Time.now
            @message = "se ha despublicado"
-           
+
 
          end
          @survey.save!
-         if @survey.save   
+         if @survey.save
            respond_to do |format|
              format.js
            end

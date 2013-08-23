@@ -240,6 +240,40 @@ class Api::ApiController < ApplicationController
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
 
+    
+    # agregamos los files
+    files = params[:files]
+    areas = params[:areas]
+    
+    # if files && !files.empty?
+    #   files.each do |file|
+    #     asset = Asset.new()
+    #     asset.file = params[:file]
+    #     asset.user_id = current_user.id
+    #     asset.save
+    #     @delivery.assets.push(asset)
+    #   end
+    # end
+    if files
+        asset = Asset.new()
+        asset.file = params[:files]
+        asset.user_id = current_user.id
+        asset.save
+        @delivery.assets.push(asset)
+    end
+
+    if areas && !areas.empty?
+      areas.each do |area|
+        a = AreasOfEvaluation.new()
+        a.evaluation_percentage = area[1]['percentage']
+        a.name = area[1]['name']
+        a.save
+        @delivery.areas_of_evaluations.push(a)
+      end
+    end
+
+    # 
+
     @delivery.save
     render :json => {:success => true}, :callback => params[:callback]
   end
@@ -275,11 +309,31 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
+  def native_assigment_delivery
+    @assignment = Assignment.new()
+    course_id = DeliveriesCourse.find_by_delivery_id(params[:deliveryId]).course_id
+    @assignment.course_id = course_id
+    @assignment.delivery_id = params[:deliveryId]
+    @assignment.title = params[:title]
+    @assignment.brief_description = params[:description]
+    @assignment.user_id = params[:userId]
+    files = params[:files]
+    if files
+        asset = Asset.new()
+        asset.file = params[:files]
+        asset.user_id = current_user.id
+        asset.save
+        @assignment.assets.push(asset)
+    end
+
+    @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
   def qualify_assignment
     assignment = Assignment.find(params[:assignment_id])
     assignment.rub_calification = params[:calification]
     assignment.save
-
     render :json => {:success => true}, :callback => params[:callback]
   end
 
