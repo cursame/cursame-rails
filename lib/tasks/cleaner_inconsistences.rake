@@ -5,7 +5,14 @@ task :cleaner_inconsistences => :environment do
 @a = Assignment.all
 @f = Friendship.all
 @c = Comment.all
+@m = MembersInCourse.all
+@mco = Course.all
 
+puts "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
+puts "---------------------------------------------------------------------------------------"
+puts "| Task de limpieza de inconsistncias en cursame by Alfredo Rifa Free forever pro 2013 |"
+puts "---------------------------------------------------------------------------------------"
+puts "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
 
 puts "******************** Encontrando los deliveries y surveys sin curso **********************"
 
@@ -125,6 +132,136 @@ puts "******************** Buscando comment sin usuario y eliminandolo *********
     puts "comment con usuario"
    end
 end
+
+puts "******************** Limpiando notificaciones que tengan inconsistencias de existente de los notificado *******************"
+
+@n.each do |nk|
+  type = nk.notificator_type 
+  case
+  when type == 'Delivery'
+     dl = Delivery.exists?(nk.notificator_id)
+     puts dl
+     if dl == false
+       nk.destroy
+       puts "se ha eliminado la notificacion"
+       
+     end
+  when type == 'Survey'
+     sv = Survey.exists?(nk.notificator_id)
+     puts sv
+     if sv == false
+        nk.destroy
+        puts "se ha eliminado la notificacion"
+        
+     end
+  when type == 'Assignment'
+     as = Assignment.exists?(nk.notificator_id)
+     puts as
+     if as == false
+         nk.destroy
+         puts "se ha eliminado la notificacion"
+         
+     end
+  when type == 'Comment'
+     cmt = Comment.exists?(nk.notificator_id)
+     puts cmt
+    if cmt == false
+        nk.destroy
+        puts "se ha eliminado la notificacion"
+        
+    end
+  when type == 'Discussion'
+     ds = Comment.exists?(nk.notificator_id)
+     puts ds 
+     if ds == false
+         nk.destroy
+         puts "se ha eliminado la notificacion"
+     end
+  end
+end
+  
+
+
+puts "******************** Assignando aclaracion de  mienbros del curso insconsistencias *******************"
+
+@m.each do |m|        
+   if m.owner == nil
+   puts "comment sin usuario"
+   puts m.id
+   m.owner = false
+   m.save
+   else
+    puts "comment con usuario"
+   end
+   if m.active_status == nil
+    puts "comment sin usuario"
+    puts m.id
+    m.active_status = false
+    m.save
+    else
+     puts "comment con usuario"
+   end
+   if m.accepted == nil
+      puts "comment sin usuario"
+      puts m.id
+      m.accepted = false
+      m.save
+      else
+       puts "comment con usuario"
+    end
+end
+
+puts "******************** Encontrando si el curso tine owner o si no asignando el primer miembro del curso a ser owner *******************"
+
+@mco.each do |mco|
+  mn = mco.members_in_courses.where(:owner => true).count
+  puts  "******************** #{mn} ********************"
+  if mn == 0
+    puts "este curso no tiene owner"
+    own = mco.members_in_courses.first
+    puts own
+    puts own.owner
+    
+    user = User.find(own.user_id)
+    #############  atrapando el primer role del usuario ###########
+    pol = user.permissionings.first  
+    puts pol.role_id
+    
+    if own.owner == false
+      if pol.role_id == 1
+      own.owner == true
+      own.save
+      puts "se ha agregado el owner exitosamente al curso"
+      end
+      if pol.role_id == 3
+      own.owner == true
+      own.save
+      puts "se ha agregado el owner exitosamente al curso"
+      end
+    end
+    
+    if own.owner == nil
+        if pol.role_id == 1
+        own.owner == true
+        own.save
+        puts "se ha agregado el owner exitosamente al curso"
+        end
+        if pol.role_id == 3
+        own.owner == true
+        own.save
+        puts "se ha agregado el owner exitosamente al curso"
+        end
+    end
+    
+  else
+    puts "este curso  tiene owner"
+    own = mco.members_in_courses.first
+    puts own
+    puts own.owner
+  end
+end
+
+
 
 
 end
