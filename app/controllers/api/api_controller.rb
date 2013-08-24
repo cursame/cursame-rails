@@ -180,7 +180,12 @@ class Api::ApiController < ApplicationController
   end
 
   def create_comment
-    @comment = Comment.new
+    if params[:id].to_i != 0
+      @comment = Comment.find(params[:id])
+    else
+      @comment = Comment.new
+    end
+    
     @comment.commentable_type = params[:commentable_type]
     @comment.commentable_id = params[:commentable_id] || @user.id
     @comment.comment = params[:comment]
@@ -215,7 +220,9 @@ class Api::ApiController < ApplicationController
   end
 
   def create_delivery
-    @delivery = Delivery.new
+
+    @delivery = Delivery.new   
+    
     @delivery.title = params[:title]
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
@@ -230,7 +237,11 @@ class Api::ApiController < ApplicationController
   end
   
   def native_create_delivery
-    @delivery = Delivery.new
+    if params[:id].to_i != 0
+      @delivery = Delivery.find(params[:id])
+    else
+      @delivery = Delivery.new
+    end
     @delivery.title = params[:title]
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
@@ -245,19 +256,18 @@ class Api::ApiController < ApplicationController
     files = params[:files]
     areas = params[:areas]
     
-    # if files && !files.empty?
-    #   files.each do |file|
-    #     asset = Asset.new()
-    #     asset.file = params[:file]
-    #     asset.user_id = current_user.id
-    #     asset.save
-    #     @delivery.assets.push(asset)
-    #   end
-    # end
-    if files
+    if files && files.kind_of?(Array) && !files.empty?
+      files.each do |file|
+        asset = Asset.new()
+        asset.file = file[1]
+        asset.user_id = @user.id
+        asset.save
+        @delivery.assets.push(asset)
+      end
+    elsif files
         asset = Asset.new()
         asset.file = params[:files]
-        asset.user_id = current_user.id
+        asset.user_id = @user.id
         asset.save
         @delivery.assets.push(asset)
     end
@@ -272,14 +282,18 @@ class Api::ApiController < ApplicationController
       end
     end
 
-    # 
-
+    # guardamos la tarea
     @delivery.save
     render :json => {:success => true}, :callback => params[:callback]
   end
 
   def create_discussion
-    @discussion = Discussion.new
+    if params[:id].to_i != 0
+      @discussion = Discussion.find(params[:id])
+    else
+      @discussion = Discussion.new
+    end
+    
     @discussion.title = params[:title]
     @discussion.description = params[:discussion]
     @discussion.user = @user
@@ -318,15 +332,50 @@ class Api::ApiController < ApplicationController
     @assignment.brief_description = params[:description]
     @assignment.user_id = params[:userId]
     files = params[:files]
-    if files
+
+    if files && files.kind_of?(Array) && !files.empty?
+      files.each do |file|
+        asset = Asset.new()
+        asset.file = file[1]
+        asset.user_id = @user.id
+        asset.save
+        @assignment.assets.push(asset)
+      end
+    elsif files
         asset = Asset.new()
         asset.file = params[:files]
-        asset.user_id = current_user.id
+        asset.user_id = @user.id
         asset.save
         @assignment.assets.push(asset)
     end
 
     @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def native_create_survey
+    @survey = Survey.new(params[:survey])
+    @survey.user = @user
+    @survey.network = @network
+    success = true
+
+    courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
+
+    if courses && !courses.empty?
+      courses.each do |id|
+        @survey.courses.push(Course.find(id))
+      end
+      @survey.save
+    else
+      success = false
+    end
+    render :json => {:success => success}, :callback => params[:callback]
+  end
+
+  def native_change_notification_status
+    @notification = Notification.find(params[:id])
+    @notification.active = false
+    !@notification.save
     render :json => {:success => true}, :callback => params[:callback]
   end
 
