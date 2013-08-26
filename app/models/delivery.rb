@@ -1,4 +1,7 @@
 class Delivery < ActiveRecord::Base
+  # para agilizar la creacion de notificaciones en tareas
+  after_commit :create_notifications, :on => :create
+
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
  :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses, :areas_of_evaluations,
  :areas_of_evaluation,:contents, :contents_attributes, :expired?
@@ -110,6 +113,25 @@ class Delivery < ActiveRecord::Base
 
     users = []
 
+    # self.courses.each do |course|
+    #   course.members_in_courses.each do |member|
+    #     user = member.user
+    #     if user.id != self.user_id then
+    #       users.push(user)
+    #       mail = Notifier.new_delivery_notification(member,self)
+    #       mail.deliver
+    #     end
+    #   end
+    # end
+    # users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
+    # Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+  end
+
+  after_update do
+
+  end
+
+  def create_notifications
     self.courses.each do |course|
       course.members_in_courses.each do |member|
         user = member.user
@@ -122,10 +144,6 @@ class Delivery < ActiveRecord::Base
     end
     users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
     Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
-  end
-
-  after_update do
-
   end
 
   def users
