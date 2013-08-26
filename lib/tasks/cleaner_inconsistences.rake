@@ -7,6 +7,7 @@ task :cleaner_inconsistences => :environment do
 @c = Comment.all
 @m = MembersInCourse.all
 @mco = Course.all
+@u = User.all
 
 puts "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
 puts "---------------------------------------------------------------------------------------"
@@ -282,6 +283,19 @@ puts "******************** Encontrando si el curso tine owner o si no asignando 
   
   
 end
+
+puts '********************************** Se validan usuarios sin permisos ******************'
+@u.each do |up|
+ l = up.permissionings
+  if l == nil
+   puts "este usuario no tiene permisos"
+   puts up.id
+   puts "se procede a eliminar el usuario sin permisos"
+   up.destroy   
+  end
+end
+
+
 
 
 
