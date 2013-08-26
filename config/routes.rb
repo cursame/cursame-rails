@@ -420,6 +420,8 @@ Cursame30Lb::Application.routes.draw do
     resources :tokens,:only => [:create, :destroy]
   end
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
+  match '/api/tokens/destroy', :to => 'api/tokens#destroy', :as => :logout
+
   match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
@@ -438,4 +440,6 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_publications', :to => 'api/api#native_publications', :as => :native_publications_json
   match '/api/api/native_create_delivery', :to => 'api/api#native_create_delivery', :as => :native_create_delivery_json
   match '/api/api/native_assigment_delivery', :to => 'api/api#native_assigment_delivery', :as => :native_assigment_delivery_json
+  match '/api/api/native_create_survey', :to => 'api/api#native_create_survey', :as => :native_create_survey_json
+  match '/api/api/native_change_notification_status', :to => 'api/api#native_change_notification_status', :as => :native_change_notification_status_json
 end

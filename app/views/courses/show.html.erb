@@ -29,7 +29,6 @@
             
           </ul>
         </div>
- 
         <div id="box-titles-content" class="box-titles-content-style">
           <div id="stats-area" class="menu-course" style="width:100%px; height:650px; ">
                   <div id="timeline-embed" style="margin-bottom:-200px;"></div>
@@ -73,8 +72,7 @@
                   <div class="content_delivery" id="content_delivery_first">
                   
                    <% @course.deliveries.reverse.each do |delivery|%>
-                  
-                            <div class="delivery_f">
+                            <div class="delivery_f<%=delivery.id%>">
                                     <div class="delivery_container" onclick="OpenStatus()">
                                         <div class="title"><%= delivery.title %></div>
                                         <div class="dates" id="dates_delivery<%=delivery.id%>"><%= delivery.publish_date %>
@@ -83,7 +81,7 @@
                             </div>
                       
                       <script>
-                       	   $('.delivery_f').click(function() {
+                       	   $('.delivery_f<%=delivery.id%>').click(function() {
 	                       	   $('#so_open<%=delivery.id%>').toggle('blind', function() {
 	                       	   });
                        	   });

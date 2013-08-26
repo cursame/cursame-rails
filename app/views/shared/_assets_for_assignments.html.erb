@@ -21,7 +21,6 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-
         // var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
 
 
@@ -80,7 +79,7 @@
 
 <script id="template-upload" type="text/x-tmpl">
   <div class="file-mini-upload">
-    <span>{%=o.name%}</span>
+    <span><%=o.name%></span>
     <div class="trash"></div>
     <div class="progress-bar"><div class="bar" style="width: 0%"></div></div>
   </div>

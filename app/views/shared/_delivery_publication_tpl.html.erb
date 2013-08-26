@@ -23,7 +23,7 @@
 <% if delivery.assets.count > 0 %>
 <div class="extra-label">Archivos:</div>
 <div class="asset-box upload-label">
-    <% delivery.assets.each do|files|%>
+    <% delivery.assets.each do |files|%>
         <div class="file-mini-upload">
              <% @string = files.file.to_s.split('/').last %>
             <%#= debug files.file %> <span><%= link_to "#{@string}", "#{files.file}" , :target => '_blank' %> </span>
