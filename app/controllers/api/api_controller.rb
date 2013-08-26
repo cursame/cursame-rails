@@ -386,6 +386,61 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
+  def native_update_user_profile
+    id = params[:id]
+    email = params[:email]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
+    bios = params[:bios]
+    twitter_link = params[:twitter_link]
+    avatar = params[:avatar]
+    coverphoto = params[:coverphoto]
+    
+    if id && email && first_name && last_name
+      user = User.find(id)
+      user.email = email
+      # user.password = password
+      user.first_name = first_name
+      user.last_name = last_name
+      user.bios = bios
+      user.twitter_link = twitter_link
+
+      if avatar
+        user.avatar = avatar
+      end
+
+      if coverphoto
+        user.coverphoto = coverphoto
+      end
+      
+      success = user.save!
+      msg = success ? "Usuario guardado!" : "Error al guardar usuario"
+    else
+      success= false
+      msg = "Faltan campos obligatorios"
+    end
+    render :json => {:success => success, :msg => msg}, :callback => params[:callback]
+  end
+
+  def native_create_courses
+    if params[:id].to_i != 0
+      @course = Course.find(params[:id])
+      @course.update_attributes(params[:course])
+    else
+      @course = Course.new(params[:course])
+      @course.save
+      @member = MembersInCourse.new
+      @member.user_id = @user.id
+      @member.course_id =  @course.id
+      @member.accepted = true
+      @member.owner = true
+      @member.network_id = @network.id
+      @member.title = @course.title
+      @member.save
+    end 
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
   private
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
@@ -393,6 +448,8 @@ class Api::ApiController < ApplicationController
     if @user.nil?
       logger.info("Token not found.")
       render :status => 200, :json => {:message => "Invalid token", :success => false}
+    else
+      @network = @user.networks[0]
     end
   end
 
