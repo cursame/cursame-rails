@@ -45,6 +45,8 @@ class Api::ApiController < ApplicationController
       @publications.each do |publication|
         type = publication.publication_type
         id = publication.publication_id
+        created_at = publication.created_at
+        done = true
         
         case type
           when 'Comment'
@@ -56,24 +58,26 @@ class Api::ApiController < ApplicationController
                 auxtext = 'en la red'
             end            
             text = '#{publication.user.name} ha comentado #{auxtext}'
-            avatar = publication.user.avatar.blank? ? publication.user.avatar.profile : publication.user.image_avatarx
+            avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Discussion'
             publication = Discussion.find(id)
             auxtext = publication.courses.empty? ? 'publica en tu red' : 'en el curso de #{publication.courses[0].title}'
             text = 'Se ha creado un discusion #{auxtext} '
-            avatar = publication.user.avatar.blank? ? publication.user.avatar.profile : publication.user.image_avatarx
+            avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Course'
             publication = Course.find(id)
             text = 'Nuevo curso en tu #{publication.title}'
-            avatar = publication.avatar.blank? ? publication.avatar.profile : publication.image_avatarx
+            avatar = publication.avatar.blank? ? publication.course_avatarx : publication.avatar.profile
           when 'Delivery'
             publication = Delivery.find(id)
+            done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
             text = 'Se ha creado una tarea en el curso de #{publication.courses[0].title}'
-            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].avatar.profile : publication.courses[0].image_avatarx
+            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile
           when 'Survey'
             publication = Survey.find(id)
             text = 'Se ha creado un cuestionario en el curso de #{publication.courses[0].title}'
-            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].avatar.profile : publication.courses[0].image_avatarx
+            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile 
+            publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
         end
         # publication.likes = publication.likes.size
        
@@ -82,7 +86,9 @@ class Api::ApiController < ApplicationController
           publicationId: id,
           text: text,
           avatar:avatar,
-          createdAt: publication.created_at
+          publication:publication,
+          createdAt: created_at,
+          done: done
         }
        @pubs.push(pub)
       end
@@ -176,7 +182,7 @@ class Api::ApiController < ApplicationController
 
   def assignments
     assignments = Assignment.where("delivery_id" => params[:delivery_id])
-    render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
+    render :json => {:assignments => assignments.as_json(:include => [:user,:assets])}, :callback => params[:callback]
   end
 
   def create_comment
