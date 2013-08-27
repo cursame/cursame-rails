@@ -446,6 +446,26 @@ class Api::ApiController < ApplicationController
     end 
     render :json => {:success => true}, :callback => params[:callback]
   end
+  def native_answer_survey
+
+    @user_survey = UserSurvey.new
+    @user_survey.survey_id = params[:survey_id]
+    @user_survey.user = @user
+    @user_survey.result = 0;
+
+    if @user_survey.save
+      params[:questions].each do |question|
+          question[1].each do |answer|
+            @user_response = UserSurveyResponse.new
+            @user_response.user_survey_id = @user_survey.id
+            @user_response.question_id = question[0]
+            @user_response.answer_id = answer[1]
+            @user_response.save
+          end
+      end
+    end
+    render :json => {:success => true}, :callback => params[:callback]
+  end
 
   private
   def authorize
