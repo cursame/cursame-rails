@@ -1,7 +1,7 @@
 <% if message.user != nil%>
 <% if message.user.avatar != nil%>
 <div class="insideChat">
-	<span class="insideChatText">
+	<span class="insideChatText" id ="message_<%= message.id %>" style="<%= (message.user.id != current_user.id) ? 'float:right' : 'float:left' %>">
 		<div class="imgChat" style="width: 30px; height: 30px;">
 			<%=image_tag(message.user.avatar.blank? ? message.user.image_avatarx : message.user.avatar.profile ,:style => "float:left; width:20px; height:20px; margin-top:-4px;")%>
 			<span class="toolTipUser"><p><%= message.user.name %></p></span>
