@@ -54,7 +54,7 @@ class Api::ApiController < ApplicationController
             publication = Comment.find(id)
             case publication.commentable_type
               when 'Course'
-                auxtext = 'en el curso de ' + publication.commentable.title
+                auxtext = 'en la asignatura de ' + publication.commentable.title
               when 'Network'
                 auxtext = 'en la red'
             end            
@@ -63,24 +63,24 @@ class Api::ApiController < ApplicationController
           when 'Discussion'
             publication = Discussion.find(id)
             comments = publication.comments
-            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en el curso de ' + publication.courses[0].title
+            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en la asignatura de ' + publication.courses[0].title
             text = 'Se ha creado un discusion ' + auxtext
             avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Course'
             publication = Course.find(id)
             comments = publication.comments
-            text = 'Nuevo curso ' + publication.title
+            text = 'Nueva asignatura ' + publication.title
             avatar = publication.avatar.blank? ? publication.course_avatarx : publication.avatar.profile
           when 'Delivery'
             publication = Delivery.find(id)
             comments = publication.comments
             done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
-            text = 'Se ha creado una tarea en el curso de ' + publication.courses[0].title
+            text = 'Se ha creado una tarea en la asignatura de ' + publication.courses[0].title
             avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile
           when 'Survey'
             publication = Survey.find(id)
             comments = publication.comments
-            text = 'Se ha creado un cuestionario en el curso de ' + publication.courses[0].title
+            text = 'Se ha creado un cuestionario en la asignatura de ' + publication.courses[0].title
             avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile 
             publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
         end
@@ -117,7 +117,7 @@ class Api::ApiController < ApplicationController
 
   def courses
     @ids = []
-    # si es admin de la red se le muestran todos los cursos
+    # si es admin de la red se le muestran todos los asignaturas
     if @user.roles.last.id == 1
       @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     else
