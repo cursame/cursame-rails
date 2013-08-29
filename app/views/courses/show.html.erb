@@ -68,53 +68,70 @@
                   <div class="content_delivery" id="content_delivery_first">
                   
                    <% @course.deliveries.reverse.each do |delivery|%>
-                  
-                            <div class="delivery_f">
-                            		<!-- <div class="delivery_container" onclick="OpenStatus()"> -->
 
-                                    <div class="delivery_container" onclick="OpenStatus()">
-<div id="OpenClose" style="disply: block; position: absolute; height: 30px; width: 30px; background: #CCC; float: right; margin-left: 394px; margin-top: 26px;"></div>
-                                        <div class="title"><%= delivery.title %></div>
-                                        <div class="state"><div id="delivery_state_publish<%=delivery.id%>"><%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %></div>
-                                        <div class="dates" id="dates_delivery<%=delivery.id%>">
-                                        	<img src="/assets/clock.png">
-                                        	<%= delivery.publish_date %>
-                                            <%= delivery.end_date %>
-                                        </div>
-                                        <div class="image" id="opentag<%=delivery.id%>"></div>
-                                    </div><!-- ends delivery_container -->
-                            </div><!-- ends delivery_f -->
-                            
-                       
-                        
-                       <div class="so_open"id="so_open<%=delivery.id%>" style="display:none">
-                           <% delivery.assignments.reverse.each do |assignment|%>
-                           <div class="assignment">
-                              <div class="title">
-                              <b>Entrega:</b><%= truncate("#{assignment.title}", :omission => "...", :length => 35)%>
-                              	<% if assignment.user != nil %>
-                              <b>Por:</b><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %> &nbsp;&nbsp;<%= link_to image_tag('delivery.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
-                              	<%end%>
-                              </div><!-- ends title -->
-                           </div><!-- ends assigment -->
-                         <%end%>
-                       </div><!-- ends so_open -->
-                    </div>
+
+
+	<div class="delivery_f">
+	
+	        <div class="delivery_container">
+	        	<div id="OpenClose"></div>
+	            <div class="title"><%= delivery.title %></div>
+	            <div class="state"><div id="delivery_state_publish<%=delivery.id%>">
+	            	<%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+	            </div>
+	            <div class="dates" id="dates_delivery<%=delivery.id%>">
+	            	<img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
+	            </div>
+	            <div class="image" id="opentag<%=delivery.id%>"></div>
+	        </div><!-- ends delivery_container -->
+
+
+
+	       <div class="so_open" id="so_open<%=delivery.id%>" style="display:none">
+	           <% delivery.assignments.reverse.each do |assignment|%>
+	           <div class="assignment">
+	              <div class="title">
+	              <span style="width: 345px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
+		              <span>Entrega:&nbsp;</span> <%= truncate("#{assignment.title}", :omission => "...", :length => 35)%><br />
+		              	<% if assignment.user != nil %>
+		              <span>Por:&nbsp;</span><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %>
+	              </span>
+	              	
+	              <span id="RightArrow" style="float: right;"><%= link_to image_tag('right_arrow.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
+	              </span>
+	              
+	              	<%end%>
+	              </div><!-- ends title -->
+	           </div><!-- ends assigment -->
+	         <%end%>
+	       </div><!-- ends so_open -->
+
+	</div><!-- ends delivery_f -->
+
+
+</div>
                     
                       <script>
-                       	   $('#OpenClose').click(function() {
-	                       	   $('#so_open<%=delivery.id%>').toggle('blind');
+                       	   //  $('#OpenClose').click(function() {
+						   //  $('#so_open<%=delivery.id%>').toggle('blind');
+                       	   //  });
+                       	   
+                       	   $('.assignment').mouseenter( function() {
+                       	   		$(this).css({background: "#EEE"});
+                       	   		$('#RightArrow').css({background: "#e2dfdf"});
                        	   });
+                       	   $('.assignment').mouseleave( function() {
+                       	   		$(this).css({background: "#F5F5F5"});
+                       	   		$('#RightArrow').css({background: "transparent"});
+                       	   });
+                       	   
+                       	   $('.delivery_f #OpenClose').click ( function() {
+                       	   		$('.delivery_f').find( '#so_open<%=delivery.id%>' ).toggle('blind');
+                       	   });
+                       	   
                            $('#opentag<%=delivery.id%>').click(function() {
                              $('#so_open<%=delivery.id%>').fade('blind');
-                           });
-                           
-$('#OpenClose').hover(function () {
-        this.src = '/images/signup_big_hover.png';
-    }, function () {
-        this.src = '/images/signup_big.png';
-    });
-                           
+                           });                           
                       </script>
                       
                    <%end%>
@@ -209,6 +226,8 @@ $('#OpenClose').hover(function () {
          <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
         <%end%>
      </div>
+
+
      <!--  <div class="head_banner_style_user">
              <div class="sup_track">
              <div class="track">
@@ -219,8 +238,9 @@ $('#OpenClose').hover(function () {
                   </p>
              </div>
              </div>
-         </div> -->
-  
+      </div> -->
+
+
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" >
                <h2  style="margin-right:-30px;"> Miembros </h2> 

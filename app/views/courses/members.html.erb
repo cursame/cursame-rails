@@ -118,26 +118,25 @@
 
 
 	<script>
-			$('.everymbrm').mouseenter( function() {
-				$(this).find('.hoverShowEdit').animate({ marginTop: '-203px' }, 200);
-			});
-			$('.everymbrm').mouseleave( function() {
-				$(this).find('.hoverShowEdit').animate({ marginTop: '-462px' }, 200);
-			});
-			
-			$('.everymbrm').mouseenter( function() {
-				$(this).find('h3').css({ background: "#00B1C7", });
-			});
-			$('.everymbrm').mouseleave( function() {
-				$(this).find('h3').css({ background: "#DEDEDE", });
-			});
-			
-			$('.everymbrm').mouseeenter ( function() {
-				$(this).find('h3 > a').css({ color: "#FFF" });
-			});
-			$('.everymbrm').mouseleave ( function() {
-				$(this).find('h3 > a').css({ color: "#000" });
-			});			
+		$('.everymbrm').mouseenter( function() {
+			$(this).find('.hoverShowEdit').animate({ marginTop: '-203px' }, 200);
+		});
+		$('.everymbrm').mouseleave( function() {
+			$(this).find('.hoverShowEdit').animate({ marginTop: '-462px' }, 200);
+		});
+		
+		$('.everymbrm').mouseenter( function() {
+			$(this).find('h3').css({ background: "#006696", });
+			$(this).find('#imgge').delay( 3000 ).css({ 'filter' : 'blur(5px)', '-webkit-filter' : 'blur(5px)', '-moz-filter' : 'blur(5px)',
+										 '-o-filter' : 'blur(5px)', '-ms-filter' : 'blur(5px)' });
+			$(this).find('h3 > a').css({ color: "#FFF" });
+		});
+		$('.everymbrm').mouseleave( function() {
+			$(this).find('h3').css({ background: "#DEDEDE", });
+			$(this).find('#imgge').delay(1800).css({ 'filter' : 'blur(0px)', '-webkit-filter' : 'blur(0px)', '-moz-filter' : 'blur(0px)',
+										 '-o-filter' : 'blur(0px)', '-ms-filter' : 'blur(0px)' });
+			$(this).find('h3 > a').css({ color: "#000" });
+		});
 	</script>
 
 <!--

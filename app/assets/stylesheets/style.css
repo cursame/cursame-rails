@@ -47,7 +47,7 @@ line-height: 1;
 .login{
 margin: auto;
 padding-top: 50px;
-width: 500px;
+width: 700px;
 font-family: "Helvetica Neue", sans-serif;
 color: white;
 font-size: 18px;
@@ -56,7 +56,7 @@ font-weight: normal;
 
 .login p{
 	text-align: center;	
-	text-shadow: 1px 1px 7px #86624c;
+	text-shadow: 0px 1px 3px #8a8a8a;
 	}
 
 .login b {
@@ -70,13 +70,25 @@ font-weight: normal;
 	font-style: normal;
 }
 
+.login-heading {
+	background: #EEE;
+	padding: 10px;
+	color: #757575;
+	font-weight: normal;
+	border-bottom: 1px solid #ddd;
+}
+
 .btn.large {
 font-size: 17px;
 font-family: "HelveticaNeue-Light", sans-serif;
 line-height: normal;
-padding: 20px 30px ;
-
+padding: 20px 30px;
+margin-top: 30px;
+position: relative;
+display: block;
+width: 200px;
 }
+
 
 .btn.primary {
 color: white;
@@ -128,27 +140,27 @@ font-family: "HelveticaNeue", sans-serif;
 .email{
 margin-top: 15px;
 width: 245px;
-height: 10px;
+height: 25px;
 border: 1px solid #c9c9c9;
-padding: 20px;
-color: #c9c9c9;
-font-size: 12px;
+padding: 11px 20px;
+color: #000;
+font-size: 14px;
 line-height: 15px;
 font-family: "HelveticaNeue-Light", sans-serif;
-margin-left: -5px;
+margin-left: 10px;
 }
 
 .pswd{
 width: 245px;
-height: 10px;
+height: 25px;
 border: 1px solid #c9c9c9;
-border-top: 0px;
-padding: 20px;
-color: #c9c9c9;
-font-size: 12px;
+padding: 11px 20px;
+color: #000;
+font-size: 14px;
 line-height: 15px;
 font-family: "HelveticaNeue-Light", sans-serif;
-
+margin-left: 10px;
+margin-top: 10px;
 }
 
 .login-form input:focus{
@@ -156,16 +168,37 @@ color: black;
 }
 
 .log-in{
-margin-top: 10px;
+margin-top: 10px!important;
+margin-right: 12px;
 border: 1px solid #c9c9c9;
-background-color: #fcfcfc;	
-padding: 15px;
-color: #a8a4a4;
-font-size: 12px;
+background-color: #006696;	
+padding: 12px 20px;
+color: #FFF;
+font-size: 14px;
 font-family: "HelveticaNeue-Light", sans-serif;
 float: right;
-margin-right: 7px;
+margin-right: 14px;
+-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
+
+.Confirmation_ins {
+	clear: both;
+	font-size: 13px;
+	margin-left: 10px;
+	display: block;
+	position: relative;
+	padding-top: 63px;
+}
+
+.Confirmation_ins > a:link, .Confirmation_ins > a:visited {
+	color: #6a6a6a!important;
+	line-height: 20px;
+}
+
+.Confirmation_ins > a:hover, .Confirmation_ins > a:active {
+	color: #E24D37!important;
+}
+
 
 button.log-in:hover {
     cursor: pointer; 
@@ -230,7 +263,7 @@ float: left;
 footer{
 width: 800px;
 margin: auto;
-margin-top: 100px;
+margin-top: 40px;
 font-size: 12px;
 font-family: "HelveticaNeue-Light", sans-serif;
 text-align: center;
@@ -410,3 +443,27 @@ opacity: 0.7;
 }
 
 
+.rgister #new_user {
+	padding-left: 10px;
+}
+
+input[type="checkbox"] {
+	display:none;
+}
+
+input[type="checkbox"] + label {
+	display:inline-block;
+	width:0px;
+	height:20px;
+	padding-left:20px; 
+	margin: -1px 4px 0 0;
+	vertical-align:middle;
+	background: url('check.png') right top no-repeat;
+	cursor:pointer;
+	color: #676767;
+	padding-top: 4px;
+}
+
+input[type="checkbox"]:checked + label {
+	background: url('check.png') 0px top no-repeat;
+}
