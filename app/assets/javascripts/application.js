@@ -81,9 +81,18 @@ $(function() {
 		if($('#chat-channel-'+data.channel.id).length) {
 			var panel = $("#chat-channel-"+data.channel.id);
 	    	var chatZonePosition = $(panel).css('bottom');
-	    	if(chatZonePosition.replace('px','') < 200){
+	    	
+            // aqui agrego un asterisco a la ventanita
+            // cuando esta collapsada, asi sabe cuando el usario tiene un msj pendiente esa ventana
+            if(chatZonePosition.replace('px','') < 200){
 	    		$("#chat-channel-"+data.channel.id+ " span").append('*');
 	    	}
+            
+            // alineamos los comentarios que no son de nosotros a la derecha
+            setTimeout(function () {
+                $('#message_'+data.message.id).css('float','right');
+            },200);
+            
 		}
 		else{
 			numNotifications = $('#messages-notifications-count span').html()*1;

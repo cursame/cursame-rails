@@ -306,7 +306,7 @@ class HomeController < ApplicationController
       end
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
-      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
+      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
       respond_to do |format|
        format.js
       end
@@ -323,7 +323,7 @@ class HomeController < ApplicationController
 
      def load_more_messages
         @channel = Channel.find(params[:id])
-        @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at ASC')
+        @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
         @page = params[:page].to_i
         respond_to do |format|
          format.js
