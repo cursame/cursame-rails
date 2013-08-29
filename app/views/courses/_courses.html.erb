@@ -58,7 +58,12 @@
           <li><a href="#">No hay cursos</a></li>
       <% else %>
           <% courses.each do |cu| %>
-              <% @cort = Course.find(cu.course_id) %>
+          <% 
+            if !cu.course_id  
+              next 
+            end
+          %>
+          <% @cort = Course.find(cu.course_id) %>
           <% if @cort.network_id == current_network.id %>
           <% if @cort.active_status == true %>
           <% if cu.owner == true %>
