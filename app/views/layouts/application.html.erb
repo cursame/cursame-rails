@@ -62,15 +62,24 @@
           }else{
              $('#scarlate').show(); 
              $('#scarlate').html(' <center><p style="padding-top:5px;"> Sin connexión a la red <b> :( </b>. </p></center>');
-             $('body').css('overflow','hidden');
-             
+             $('body').css('overflow','hidden'); 
           }
+          
       },5000);
       
+       window.clearInterval(GetIntevalExpire);
+       var IntervalFunctionForExpireSession;
+       IntervalFunctionForExpireSession = 1800000;
+       var GetIntevalExpire = setInterval(function(){ 
+           $.get('<%= expire_session_path %>');
+       },IntervalFunctionForExpireSession);
+       
+       //console.log(IntervalFunctionForExpireSession);
 
       </script>
       <div class="scarlate" id="scarlate" style="display:none;"></div>
-          
+      <div class="expires" id="expires" style="display:none;"></div>
+      
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -2,9 +2,10 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   # before_filter :filter_user_network_wed
-  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create, :awaiting_confirmation]
+  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create, :awaiting_confirmation, :alertmethod]
   before_filter :filter_user_network_wed
   skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create, :awaiting_confirmation]
+  helper_method :ko_net
   def index
     @networks = Network.all
     def network_each
@@ -16,6 +17,42 @@ class NetworksController < ApplicationController
 
   end
 
+  def alertmethod
+    
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
+  
+  def ko_net
+     if network_member == nil
+     permissions = Permissioning.where(:user_id => current_user.id)
+     ############## encontrando permissionings
+        if permissions != nil
+             ############ validando contador de permissionings
+             if permissions.count == 1
+                @permission = permissions.first
+                   ####### encontrando redes
+                   @find_network = Network.find(@permission.network_id)
+                      ###### validando que la red no sea nula para redirigir
+                   if @find_network != nil
+                      ####### redirecciona la red
+                      puts "****************** se ha encontrado una red a la cual seras redirigido ************"
+                       #render do |page| 
+                        # page.js{alertmethod_path} 
+                       #end
+                      @net = @find_network
+                   end
+               else
+                ####### se deja abierto para los permisos que estan pendientes
+                puts "*************** demasiados *****************"  
+             end
+        end
+      end
+  end
+ 
   # GET /networks/1
   # GET /networks/1.json
   def show
@@ -193,5 +230,19 @@ class NetworksController < ApplicationController
       @user_inactive = user
     end
   end
+  
+  # sesion expire
+   def expire_session
+       puts "se ha ingresado al metodo"
+       @status = user_signed_in?
+       @timer = Time.now
+       @minute = 5
+       #puts @status
+        respond_to do |format|
+           format.js
+           format.json
+         end
+   end
 
+ 
 end

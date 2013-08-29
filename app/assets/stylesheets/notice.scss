@@ -13,3 +13,26 @@
     }
 
 }
+
+.expires{
+    color:#FADA08;
+    background:#F9F3CB;
+    font-size:20px;
+    font-weight:bold;
+    
+    & .uninstal_exit{
+        width:200px;
+        height:40px;
+        text-align:center;
+        background:#D2F9CB;
+        color:#75F45B;
+        
+    }
+    & .uninstal_exit:hover{
+        width:200px;
+        height:40px;
+        text-align:center;
+        background:#ABDAA2;
+        color:#75F45B;
+    }
+}
