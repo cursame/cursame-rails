@@ -1,0 +1,110 @@
+<% if current_network.nil? %>
+<script>
+$(document).ready(function() {
+    $("#bg").ezBgResize();
+});
+
+</script>
+<div class="signup-restore"></div>
+
+<div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px; padding-left: 20px; padding-right: 20px;">
+			<b style="font-size: 35px!important; line-height: 30px;">
+			Lo sentimos
+    		</b>
+    		<br /><br />
+			<span style="width: 250px;!important">
+    La red a la que estas intentado accesar no existe
+    pregunta a un encargado de tu escuela él sabrá ayudarte.
+    		</span>
+ 
+    <center>
+       <span class="confirm-btn" style="padding: 10px 30px; color: #FFF!important;">
+       	<%= link_to "Ir al inicio", "http://www.cursa.me" %>
+       </span>   
+    </center>    
+    </p>
+    <br><br>
+    <center>
+</div>
+<%else%>
+<div class="bg-layout"></div>
+
+<% if !@user_inactive.nil? then %>
+  <div class="user-inactive">
+    Se ha enviado un correo a  <%= @user_inactive.email %>. <p>
+    Esperando confirmación
+  </div>
+<% end %>
+
+<div class="login">    
+    <p>
+    <b>Clases, Actividades, Red Social.</b><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
+    </p>
+    <br><br>
+    <center>
+      <a class="new-regs" href="licencias.html"><%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%></a>
+    </center>
+
+<div class="form-signin" style="margin-bottom:0px!important; -webkit-border-radius: 5px; -webkit-border-bottom-right-radius: 0px; -webkit-border-bottom-left-radius: 0px;
+-moz-border-radius: 5px; -moz-border-radius-bottomright: 0px; -moz-border-radius-bottomleft: 0px; border-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
+  <h2 class="form-signin-heading">Inicia sesión</h2>
+  <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
+  <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
+  <% if devise_mapping.rememberable? -%>
+    <label class="checkbox remember">
+      <%= f.check_box :remember_me %> Recordarme
+    </label>
+
+    <label class="frgt-pswd">
+     <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
+    </label>
+  <% end -%>
+  <%= f.submit "Iniciar Sesión", :class =>"log-in" %><br>
+  <!-- <%= render "devise/shared/links" %> -->
+<% end %>
+</div>
+
+  <div>
+      <label class="unblock" style="text-align:justify;">
+       "Si ya eres usuario haz recibido un correo de confirmación de cuenta, por favor revisa tus bandejas de entrada y sigue el link que te hemos enviado de lo contrario no podrás iniciar sesión"
+    <b style="font-size:10px; font-weight:bold;"> En caso de no haber recibido el correo de confirmación da click en confirmar tu cuenta y sigue las instrucciones.</b>
+      <center>  <%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></center>
+    </label>
+  </div>
+</div>
+<br>
+<br>
+
+<!--sirve para colocar la ayuda express a antiguos usuarios-->
+    <div class="" id="linked" style="cursor:pointer; text-decoration: underline; color:#FFF; font-size:24px;"><center>Soy un usuario antiguo y tengo dudas</center></div></br></br>
+    <script>
+            $('#linked').click(function() {
+              $('#sub_linked').slideToggle('', function() {
+                // Animation complete.
+              });
+            });
+    </script>
+    <div id="sub_linked"  style="font-size:15px; background:#FFF; padding:10px; text-align:justify; margin-bottom:10px; margin-top:-20px; color:#807D77; display:none;">
+        <p style="text-shadow:none;"><b style="font-size:15px; color:#000;">¿Soy usuario?:</b></br>
+            
+            "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."</br></br>
+            
+            <b style="font-size:15px; color:#000;">¿Mi clave sigue siendo la misma?:</b></br>
+            
+            Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
+             te pedirá que cambies tu contraseña.</br></br>
+             
+            <b style="font-size:15px; color:#000;">No me ha llegado el mail de confirmación:</b></br>
+            
+            Da click en el link <i><%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></i> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.</br></br>
+            
+            <b style="font-size:15px; color:#000;">Confirmé mi email pero olvide cambiar mi contraseña:</b></br>
+            
+            Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.
+            
+        </p>
+    </div>
+
+<%= render "devise/shared/footer-links" %>
+<%end%>

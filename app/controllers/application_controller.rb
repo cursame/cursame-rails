@@ -102,9 +102,9 @@ class ApplicationController < ActionController::Base
   def filtrati
     if current_role == "superadmin"
     else
-     if network_member != nil
+     if network_member != nil         
      else
-       redirect_to "/users/sign_out"
+         render '/networks/alertmethod'         
      end
     end
   end
