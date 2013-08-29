@@ -40,13 +40,17 @@
     </div>
     <%= f.text_area :brief_description, :cols => 76, :rows => 15 %>
 <br />
-    <%= f.hidden_field :user_id, :value => current_user.id if @assignment_id.nil?%>
-    <%= f.hidden_field :user_id, :value => @assignment.user_id if !@assignment_id.nil?%>
+    <% if @assingment_id.nil? then %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% else %>
+    <%= f.hidden_field :user_id, :value => @assignment.user_id %>
+    <% end %>
+
     <%= f.hidden_field :id, :value => @assignment_id if !@assignment_id.nil? %>
      <div id="<%=@labelIdBoxx%>" class="upload-label">      
           <% @assignment.assets.each do |asset|%>            
             <div class="file-mini-upload" id="file-mini-upload-<%=asset.id%>" >
-              <input type="hidden" name="files[]" value="<%= @asset.id%>">
+              <input type="hidden" name="files[]" value="<%= asset.id%>">
               <span><%=asset.file%></span>
               <%= link_to "","/assets/"+asset.id.to_s,
             :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :class =>'trash', :onclick => "$(this).parent().remove();"%>
@@ -59,5 +63,5 @@
     </div>
 <% end %>
 
-<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBoxx, :formId => formId, :assignment_id => @assingment_id} %>
+<%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+ @labelIdBoxx, :formId => formId} %>
 <div class="notice-file non-margin" style="margin-top:-40px; margin-left:100px; display:block; position:relative;">El límite de peso por archivo es de 8Mb</div>

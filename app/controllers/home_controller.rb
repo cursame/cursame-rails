@@ -17,6 +17,13 @@ class HomeController < ApplicationController
   def blog
   end
   
+  ###### destroye sesiones caducadas
+  def ending_session
+      sign_out(current_user)
+      
+      redirect_to root_path
+  end
+  
   def help
   end
   def add_new_comment
@@ -285,14 +292,21 @@ class HomeController < ApplicationController
       if params[:course]
         @channel_name = "/messages/course_channel_"+ params[:id]
         users = Course.find(params[:id]).users
+        
+        ######## se agregan validadores de users para el exist #########
+        
+        users = users.keep_if{|x| x != nil}
+        
+        
       else
         ids = [current_user.id,params[:id].to_i]
         @channel_name = get_unique_channel_users(ids)
         users = User.find(ids)
+        
       end
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
-      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
+      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
       respond_to do |format|
        format.js
       end
@@ -309,7 +323,7 @@ class HomeController < ApplicationController
 
      def load_more_messages
         @channel = Channel.find(params[:id])
-        @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at ASC')
+        @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
         @page = params[:page].to_i
         respond_to do |format|
          format.js

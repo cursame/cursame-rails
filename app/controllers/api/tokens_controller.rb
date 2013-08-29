@@ -68,6 +68,38 @@ class Api::TokensController < ApplicationController
     end
 end
 
+def native_create_user
+    email = params[:email]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
+    password = params[:password]
+    subdomain = params[:subdomain] || 'recreo'
+
+    if email && first_name && last_name && password && subdomain
+      permissioning = Permissioning.new()
+      permissioning.role_id = params[:role]
+      permissioning.network_id = Network.find_by_subdomain(subdomain) || Network.last
+
+      user = User.new()
+      user.email = email
+      user.password = password
+      user.first_name = first_name
+      user.last_name = last_name
+      user.personal_url = email
+      user.subdomain = subdomain
+      user.domain = "cursa.me" 
+      user.permissionings.push(permissioning)
+
+      success = user.save!
+      msg = success ? "Usuario registrado!" : "Error al guardar usuario"
+    else
+      success= false
+      msg = "Faltan campos obligatorios"
+    end
+
+    render :json => {:success => success, :msg => msg}, :callback => params[:callback]
+end
+
 def destroy
 	@user=User.find_by_authentication_token(params[:id])
 	if @user.nil?
@@ -77,5 +109,6 @@ def destroy
 		@user.reset_authentication_token!
 		render :status => 200, :json => {:response =>{:token => params[:id], :success => true}}
 	end
-end 
+end
+
 end
