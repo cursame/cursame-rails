@@ -39,7 +39,7 @@
  <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %> Nueva discussion <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}",course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?)%>
 
   <% when 'new_survey_on_course'%>
-  <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nuevo cuestionario <b><%= link_to "#{notification.notificator.name}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?) %>
+  <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nuevo cuestionario <b><%= link_to "#{notification.notificator.name}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?) %>
 
 <% when 'new_assignment_on_delivery'%>
 <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>

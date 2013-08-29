@@ -24,14 +24,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
       
    version :compress do
      process :resize_to_fit => [10, 10]
-   end
-   
+   end   
  
 
    def extension_white_list
-      %w(jpg jpeg gif png)
+      %w(jpg jpeg gif ico png)
    end  
-   
    
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
