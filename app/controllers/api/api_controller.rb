@@ -442,6 +442,7 @@ class Api::ApiController < ApplicationController
       @course.update_attributes(params[:course])
     else
       @course = Course.new(params[:course])
+      @course.network_id = @network.id
       @course.save
       @member = MembersInCourse.new
       @member.user_id = @user.id
