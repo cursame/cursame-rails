@@ -524,7 +524,6 @@ class Api::ApiController < ApplicationController
       @cmts.push(cmt)     
     end
     render :json => {:comments => @cmts.as_json, :count => @cmts.count()}, :callback => params[:callback]
-    # render :json => {:comments => @comments.as_json(:include => [:user, :comments]) , :count => @comments.count()}, :callback => params[:callback]
   end
 
   private

@@ -88,6 +88,7 @@ def native_create_user
       user.personal_url = email
       user.subdomain = subdomain
       user.domain = "cursa.me" 
+      user.confirmed_at = Time.now
       user.permissionings.push(permissioning)
 
       success = user.save!
