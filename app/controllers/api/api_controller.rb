@@ -515,7 +515,8 @@ class Api::ApiController < ApplicationController
           updated_at: comment.updated_at,
           comment_html: comment.comment_html,
           network_id: comment.network_id,
-          likes: comment.likes.size,   
+          num_likes: comment.likes.size,   
+          likes: comment.likes,   
           text: text,
           avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile 
 
