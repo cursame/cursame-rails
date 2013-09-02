@@ -526,6 +526,43 @@ class Api::ApiController < ApplicationController
     render :json => {:comments => @cmts.as_json, :count => @cmts.count()}, :callback => params[:callback]
   end
 
+  def native_list_members_in_course
+    course =  Course.find(params[:id])
+    @members = course.members_in_courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:members => @members.as_json, :count => @members.count()}, :callback => params[:callback]
+  end
+
+  def native_change_members_in_course_status      
+      @course =  Course.find(params[:id])
+      @requester =  User.find(params[:user_id])
+      success = false
+
+      case params[:status]
+        when 'join'
+          member = MembersInCourse.new
+          member.user_id = @requester.id
+          member.course_id =  @course.id
+          member.accepted = false
+          member.owner = (params[:owner] && params[:owner] == 'true') ? true : false 
+          member.network_id = @network.id
+          member.title = @course.title
+          success = member.save
+        when 'accept'
+          member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
+          if member
+            member.owner = (params[:owner] && params[:owner] == 'true') ? true : false 
+            member.accepted = true
+            success = member.save
+          end     
+        when 'decline'          
+          member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
+          if member
+            success = !!member.delete
+          end
+      end      
+      render :json => {:success => success}, :callback => params[:callback]
+  end
+
   private
   def authorize
     @user = User.find_by_authentication_token(params[:auth_token])

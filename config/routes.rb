@@ -458,4 +458,6 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_create_courses', :to => 'api/api#native_create_courses', :as => :native_create_courses_json
   match '/api/api/native_answer_survey', :to => 'api/api#native_answer_survey', :as => :native_answer_survey_json
   match '/api/api/native_comments', :to => 'api/api#native_comments', :as => :native_comments_json
+  match '/api/api/native_list_members_in_course', :to => 'api/api#native_list_members_in_course', :as => :native_list_members_in_course_json
+  match '/api/api/native_change_members_in_course_status', :to => 'api/api#native_change_members_in_course_status', :as => :native_change_members_in_course_status_json
 end

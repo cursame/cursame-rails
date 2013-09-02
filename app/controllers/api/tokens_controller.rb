@@ -24,7 +24,7 @@ class Api::TokensController < ApplicationController
 			password_length = 6
 			password = Devise.friendly_token.first(password_length)
       #password = User.generate_token('password')
-      # User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
+      #User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
       @user.password = password
       puts '-------------------'
       # puts password
