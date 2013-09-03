@@ -149,7 +149,7 @@ class Comment < ActiveRecord::Base
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
-      elsif commentable.commentable_type = "Network"
+      elsif commentable.commentable_type == "Network"
         users = [commentable.user]
       else
         users = commentable.commentable.users
