@@ -149,15 +149,20 @@ class Comment < ActiveRecord::Base
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
+        hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+        return hash
       elsif commentable.commentable_type == "Network"
         users = [commentable.user]
+        hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+        return hash
       else
         users = commentable.commentable.users
         users = users.reject { |user| user.id == self.user.id }
+        hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+        return hash
       end
       # users.delete(self.user)
-      hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
-      return hash
+
 
     when "Discussion"
 
