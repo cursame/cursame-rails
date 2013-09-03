@@ -120,6 +120,14 @@ margin-bottom: 6px;
 border-radius: 3px;
 }
 
+#filterCont {
+background: none repeat scroll 0 0 #000000;
+display: block;
+height: 50px;
+position: fixed;
+width: 213px;
+}
+
 #ChatFilter:hover {
 	background: #FFF;
 }
@@ -127,9 +135,9 @@ border-radius: 3px;
 #ChatFilterDrop {
 	position: absolute;
 	background: #363F4D;
-	margin-top: 17px;
+	margin-top: 11px;
 	margin-left: -12px;
-	width: 221px;
+	width: 212px;
 	display: block;
 }
 
@@ -144,7 +152,7 @@ color: #FFF;
 	display: block;
 	position: relative;
 	padding: 14px 10px 14px 14px;
-	width: 198px;
+	width: 189px;
 	color: #FFF;
 	margin-left: -1px;
 }
@@ -155,7 +163,7 @@ color: #FFF;
 	display: block;
 	position: relative;
 	padding: 14px 10px 14px 14px;
-	width: 198px;
+	width: 189px;
 	color: #FFF;
 }
 
@@ -310,9 +318,9 @@ cursor: pointer;
 
 
 .chatSingle_big {
-width: 198px;
+width: 170px;
 display: block;
-margin-left: -11px;
+//margin-left: -11px;
 padding-left: 10px;
 padding: 0px 0 0px 10px;
 color: #FFF;
@@ -343,7 +351,7 @@ cursor: pointer;
 }
 
 #chat .titleChat {
-	width: 695px!important;
+	width: 720px!important;
 	z-index: 99;
 }
 #chat .main-chat-zone {
@@ -429,8 +437,9 @@ cursor: pointer;
 		bottom:-2px;
 		left:-7px;
 		height:20px;
-		border-left:20px solid #E5E5EA;
+		/*border-left:20px solid #E5E5EA;
 		border-bottom-right-radius: 16px 14px;
+		*/
 		-webkit-transform:translate(0, -2px);
 	}
 
@@ -439,10 +448,12 @@ cursor: pointer;
 		position:absolute;
 		z-index:3;
 		bottom:-2px;
-		left:4px;
+		/*left:4px;*/
+		-moz-margin-start: -28px;
+		left: 23px;
 		width:26px;
 		height:20px;
-		background:white;
+		background: url('colophon.png') no-repeat;
 		border-bottom-right-radius: 10px;
 		-webkit-transform:translate(-30px, -2px);
 	}
@@ -507,7 +518,8 @@ z-index: 0;
 #chat-messages .insideChat .insideChatText .imgChat img {
 	width: 30px!important;
 	height: 30px!important;
-	margin-top: -13px!important;
+	/*margin-top: -13px!important;*/
+	margin-top: -3px!important;
 	position: relative;
 	display: block;
 	margin-left: -7px;

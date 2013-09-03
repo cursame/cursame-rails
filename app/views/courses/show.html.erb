@@ -5,26 +5,30 @@
   <div id="notice" class="notice"></div>
  </div>
  <% permitted_to? :create, :courses do %>
- 
+      <% if @member.owner != nil %>
         <% if @member.owner == true %>
          <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
  
         <%end%>
+      <%end%>
  <% end %>
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
             <% permitted_to? :create, :courses do %>
+            <% if @member.owner != nil %>
+             <% if @member.owner == true %>
             <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
             <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
             <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
+             <%end%>
+             <%end%>
             <% end %>
             <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
             
             
           </ul>
         </div>
- 
         <div id="box-titles-content" class="box-titles-content-style">
           <div id="stats-area" class="menu-course" style="width:100%px; height:650px; ">
                   <div id="timeline-embed" style="margin-bottom:-200px;"></div>
@@ -61,14 +65,26 @@
           </div>
           <div  class="menu-course  active" id="entregas" style="height:500px;">
               <div class="arco_course_deliver">
-                   <h1 onclick="test('content_survey_slider','content_delivery_first')" style="cursor: pointer;">Tareas</h1>
-                   <span class="deactive" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
 
-               <div class="slider-cointainer" style="width:440px; overflow:hidden; float: left; height: 400px;">
+			<div class="classTabs" style="height: 53px; width: 440px;">
+
+                <span class="activate" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left;" onclick="test('content_survey_slider','content_delivery_first')">Tareas</span>
+                <span class="deactive" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left; position: absolute;" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
+
+            </div>
+
+			<script>
+			$(document).ready( function() {
+				$('.classTabs span').click( function() {
+					$('.classTabs span').removeClass('activate').addClass('deactive');
+					$(this).removeClass('deactive').addClass('activate');
+				});
+			});
+			</script>
+				   	<div class="slider-cointainer" style="width:440px; overflow:hidden; float: left; height: 400px;">
                   <div class="content_delivery" id="content_delivery_first">
                   
                    <% @course.deliveries.reverse.each do |delivery|%>
-
 
 
 	<div class="delivery_f">
@@ -125,10 +141,11 @@
                        	   		$('#RightArrow').css({background: "transparent"});
                        	   });
                        	   
+                       	   
+                       	   
                        	   $('.delivery_f #OpenClose').click ( function() {
                        	   		$('.delivery_f').find( '#so_open<%=delivery.id%>' ).toggle('blind');
                        	   });
-                       	   
                            $('#opentag<%=delivery.id%>').click(function() {
                              $('#so_open<%=delivery.id%>').fade('blind');
                            });                           
@@ -138,21 +155,24 @@
                  </div>
                   
                    
-                 <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #eee; width: 440px; display: block;">
+                 <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block;">
                  
                  <% @course.surveys.reverse.each do |survey|%>
                  <div class="survey_fTwo " id="survey_f<%=survey.id%>">
                      
-                     <div class="delivery_f">
-                       <div class="delivery_container"  onclick="OpenStatus()">
-                             <div class="title"><%= survey.title %></div><!-- ends title -->
-                             <div class="dates" id="survey_dates<%= survey.id%>"><%= survey.publish_date %>
-                                             <%= survey.end_date %></div><!-- ends dates -->
-                                             <div class="state"><div id="survey_state_publish<%=survey.id%>"><%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %></div>
-                                             	<div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
-                                             </div><!-- ends state -->
-                       </div><!-- ends delivery_container -->
-                     </div><!-- ends delivery_f -->
+	<div class="delivery_f">
+	
+	        <div class="delivery_container">
+	        	<div id="OpenClose"></div>
+	                 <div class="title"><%= survey.title %></div><!-- ends title -->
+	                    <div class="state" id="survey_dates<%= survey.id%>"><%= survey.publish_date %><%= survey.end_date %></div>
+	                    <div class="state">
+	                    	<div id="survey_state_publish<%=survey.id%>"><%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
+	                    	</div>
+							<div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
+	                    </div><!-- ends state -->
+					</div><!-- ends delivery_container -->
+	         </div><!-- ends delivery_f -->
                  
                           <script>
                              	   $('#survey_f<%=survey.id%>').click(function() {
@@ -184,8 +204,12 @@
 		$('#'+idOne).hide();
 		$('#'+idTwo).show();
 	};
-</script>              
-            
+</script>
+
+<script>
+	$()
+</script>
+
           </div>
           
           <div id="configuration" class="menu-course  active" style="height:500px; color:#fff;">
@@ -279,9 +303,11 @@
                 <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
 
               <%else%>
+             <% if @member.owner != nil %>
              <% if @member.owner == true %>
                     <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
                <%end%>
+              <%end%>
              <%end%>
          </div>
 

@@ -1,4 +1,8 @@
+<% if message.user != nil%>
+<% if message.user.avatar != nil%>
 <div class="insideChat">
+
+<!--
 	<span class="insideChatText">
 		<span class="imgChat">
 			<%=image_tag(message.user.avatar.blank? ? message.user.image_avatarx : message.user.avatar.profile ,:style => "float:left; width:30px; height:30px;")%>
@@ -26,3 +30,35 @@
 		$(this).find('.toolTipUser').fadeOut('500');
 	});
 </script>
+-->
+	<span class="insideChatText" id ="message_<%= message.id %>" style="<%= (message.user.id != current_user.id) ? 'float:right' : 'float:left' %>">
+		<span class="imgChat">
+			<%=image_tag(message.user.avatar.blank? ? message.user.image_avatarx : message.user.avatar.profile ,:style => "float:left; width:30px; height:30px;")%>
+			<span class="toolTipUser"><p><%= message.user.name %></p></span>
+		</span>
+		
+		<span class="MsjC">&nbsp; <%= message.mesage_html %></span>
+		
+	</span>
+</div>
+
+<div id="DivIer" style="clear:both;"></div>
+
+<script>
+	$(document).ready ( function() {
+		$('p:empty').hide();
+		$('.toolTipUser').hide();
+	});
+	
+	$('.insideChat').mouseenter( function() {
+		$(this).find('.toolTipUser').fadeIn('slow');
+	});
+
+	$('.insideChat').mouseleave( function() {
+		$(this).find('.toolTipUser').fadeOut('500');
+	});
+</script>
+
+
+<%end%>
+<%end%>

@@ -45,35 +45,44 @@ class Api::ApiController < ApplicationController
       @publications.each do |publication|
         type = publication.publication_type
         id = publication.publication_id
+        created_at = publication.created_at
+        
+        done = true
         
         case type
           when 'Comment'
             publication = Comment.find(id)
             case publication.commentable_type
               when 'Course'
-                auxtext = 'en el curso de #{publication.commentable.title}'
+                auxtext = 'en el curso de ' + publication.commentable.title
               when 'Network'
                 auxtext = 'en la red'
             end            
-            text = '#{publication.user.name} ha comentado #{auxtext}'
-            avatar = publication.user.avatar.blank? ? publication.user.avatar.profile : publication.user.image_avatarx
+            text = '' + publication.user.name + ' ha comentado ' + auxtext
+            avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Discussion'
             publication = Discussion.find(id)
-            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en el curso de #{publication.courses[0].title}'
-            text = 'Se ha creado un discusion #{auxtext} '
-            avatar = publication.user.avatar.blank? ? publication.user.avatar.profile : publication.user.image_avatarx
+            comments = publication.comments
+            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en el curso de ' + publication.courses[0].title
+            text = 'Se ha creado un discusion ' + auxtext
+            avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Course'
             publication = Course.find(id)
-            text = 'Nuevo curso en tu #{publication.title}'
-            avatar = publication.avatar.blank? ? publication.avatar.profile : publication.image_avatarx
+            comments = publication.comments
+            text = 'Nuevo curso ' + publication.title
+            avatar = publication.avatar.blank? ? publication.course_avatarx : publication.avatar.profile
           when 'Delivery'
             publication = Delivery.find(id)
-            text = 'Se ha creado una tarea en el curso de #{publication.courses[0].title}'
-            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].avatar.profile : publication.courses[0].image_avatarx
+            comments = publication.comments
+            done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
+            text = 'Se ha creado una tarea en el curso de ' + publication.courses[0].title
+            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile
           when 'Survey'
             publication = Survey.find(id)
-            text = 'Se ha creado un cuestionario en el curso de #{publication.courses[0].title}'
-            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].avatar.profile : publication.courses[0].image_avatarx
+            comments = publication.comments
+            text = 'Se ha creado un cuestionario en el curso de ' + publication.courses[0].title
+            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile 
+            publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
         end
         # publication.likes = publication.likes.size
        
@@ -82,7 +91,10 @@ class Api::ApiController < ApplicationController
           publicationId: id,
           text: text,
           avatar:avatar,
-          createdAt: publication.created_at
+          publication:publication,
+          createdAt: created_at,
+          done: done,
+          comments: comments
         }
        @pubs.push(pub)
       end
@@ -176,11 +188,16 @@ class Api::ApiController < ApplicationController
 
   def assignments
     assignments = Assignment.where("delivery_id" => params[:delivery_id])
-    render :json => {:assignments => assignments.as_json(:include => [:user])}, :callback => params[:callback]
+    render :json => {:assignments => assignments.as_json(:include => [:user,:assets])}, :callback => params[:callback]
   end
 
   def create_comment
-    @comment = Comment.new
+    if params[:id].to_i != 0
+      @comment = Comment.find(params[:id])
+    else
+      @comment = Comment.new
+    end
+    
     @comment.commentable_type = params[:commentable_type]
     @comment.commentable_id = params[:commentable_id] || @user.id
     @comment.comment = params[:comment]
@@ -215,7 +232,9 @@ class Api::ApiController < ApplicationController
   end
 
   def create_delivery
-    @delivery = Delivery.new
+
+    @delivery = Delivery.new   
+    
     @delivery.title = params[:title]
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
@@ -230,7 +249,11 @@ class Api::ApiController < ApplicationController
   end
   
   def native_create_delivery
-    @delivery = Delivery.new
+    if params[:id].to_i != 0
+      @delivery = Delivery.find(params[:id])
+    else
+      @delivery = Delivery.new
+    end
     @delivery.title = params[:title]
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
@@ -245,19 +268,18 @@ class Api::ApiController < ApplicationController
     files = params[:files]
     areas = params[:areas]
     
-    # if files && !files.empty?
-    #   files.each do |file|
-    #     asset = Asset.new()
-    #     asset.file = params[:file]
-    #     asset.user_id = current_user.id
-    #     asset.save
-    #     @delivery.assets.push(asset)
-    #   end
-    # end
-    if files
+    if files && files.kind_of?(Array) && !files.empty?
+      files.each do |file|
+        asset = Asset.new()
+        asset.file = file[1]
+        asset.user_id = @user.id
+        asset.save
+        @delivery.assets.push(asset)
+      end
+    elsif files
         asset = Asset.new()
         asset.file = params[:files]
-        asset.user_id = current_user.id
+        asset.user_id = @user.id
         asset.save
         @delivery.assets.push(asset)
     end
@@ -272,14 +294,18 @@ class Api::ApiController < ApplicationController
       end
     end
 
-    # 
-
+    # guardamos la tarea
     @delivery.save
     render :json => {:success => true}, :callback => params[:callback]
   end
 
   def create_discussion
-    @discussion = Discussion.new
+    if params[:id].to_i != 0
+      @discussion = Discussion.find(params[:id])
+    else
+      @discussion = Discussion.new
+    end
+    
     @discussion.title = params[:title]
     @discussion.description = params[:discussion]
     @discussion.user = @user
@@ -318,15 +344,50 @@ class Api::ApiController < ApplicationController
     @assignment.brief_description = params[:description]
     @assignment.user_id = params[:userId]
     files = params[:files]
-    if files
+
+    if files && files.kind_of?(Array) && !files.empty?
+      files.each do |file|
+        asset = Asset.new()
+        asset.file = file[1]
+        asset.user_id = @user.id
+        asset.save
+        @assignment.assets.push(asset)
+      end
+    elsif files
         asset = Asset.new()
         asset.file = params[:files]
-        asset.user_id = current_user.id
+        asset.user_id = @user.id
         asset.save
         @assignment.assets.push(asset)
     end
 
     @assignment.save
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def native_create_survey
+    @survey = Survey.new(params[:survey])
+    @survey.user = @user
+    @survey.network = @network
+    success = true
+
+    courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
+
+    if courses && !courses.empty?
+      courses.each do |id|
+        @survey.courses.push(Course.find(id))
+      end
+      @survey.save
+    else
+      success = false
+    end
+    render :json => {:success => success}, :callback => params[:callback]
+  end
+
+  def native_change_notification_status
+    @notification = Notification.find(params[:id])
+    @notification.active = false
+    !@notification.save
     render :json => {:success => true}, :callback => params[:callback]
   end
 
@@ -337,6 +398,81 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
+  def native_update_user_profile
+    id = params[:id]
+    email = params[:email]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
+    bios = params[:bios]
+    twitter_link = params[:twitter_link]
+    avatar = params[:avatar]
+    coverphoto = params[:coverphoto]
+    
+    if id && email && first_name && last_name
+      user = User.find(id)
+      user.email = email
+      # user.password = password
+      user.first_name = first_name
+      user.last_name = last_name
+      user.bios = bios
+      user.twitter_link = twitter_link
+
+      if avatar
+        user.avatar = avatar
+      end
+
+      if coverphoto
+        user.coverphoto = coverphoto
+      end
+      
+      success = user.save!
+      msg = success ? "Usuario guardado!" : "Error al guardar usuario"
+    else
+      success= false
+      msg = "Faltan campos obligatorios"
+    end
+    render :json => {:success => success, :msg => msg}, :callback => params[:callback]
+  end
+
+  def native_create_courses
+    if params[:id].to_i != 0
+      @course = Course.find(params[:id])
+      @course.update_attributes(params[:course])
+    else
+      @course = Course.new(params[:course])
+      @course.save
+      @member = MembersInCourse.new
+      @member.user_id = @user.id
+      @member.course_id =  @course.id
+      @member.accepted = true
+      @member.owner = true
+      @member.network_id = @network.id
+      @member.title = @course.title
+      @member.save
+    end 
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+  def native_answer_survey
+
+    @user_survey = UserSurvey.new
+    @user_survey.survey_id = params[:survey_id]
+    @user_survey.user = @user
+    @user_survey.result = 0;
+
+    if @user_survey.save
+      params[:questions].each do |question|
+          question[1].each do |answer|
+            @user_response = UserSurveyResponse.new
+            @user_response.user_survey_id = @user_survey.id
+            @user_response.question_id = question[0]
+            @user_response.answer_id = answer[1]
+            @user_response.save
+          end
+      end
+    end
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
   private
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
@@ -344,6 +480,8 @@ class Api::ApiController < ApplicationController
     if @user.nil?
       logger.info("Token not found.")
       render :status => 200, :json => {:message => "Invalid token", :success => false}
+    else
+      @network = @user.networks[0]
     end
   end
 

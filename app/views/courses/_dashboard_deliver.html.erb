@@ -77,9 +77,9 @@
 	
 	
 		<div id="headerBar">
-			<h1>Tareas en el curso<pre style="display:inline;">                   </pre>Calificaciones</h1>
+			<h1>Tareas en el curso<pre style="display:inline;">               </pre>Calificaciones</h1>
 		</div>
-	    <div><a id="close_x" class="close close_l" href="#"><center>x</center></a></div>
+	    <div><a id="close_x" class="close CloseWinWd" href="#"><center>x</center></a></div>
 
 	    <div class="deliveries_list">
 	    	
@@ -93,20 +93,19 @@
 	       
 	            <% delivery.assignments.each do |assignment|%>
 	            
-	            <div id="assignment_id_al_<%= delivery.id %>" >
-	                 <div>
+	            <div id="assignment_id_al_<%= delivery.id %>" class="aSSigmentHW">
 	                 <%= render :partial => "courses/delivery_menu", :locals => {:assignment => assignment, :course => course}%>
-	                 </div>
 	            </div>
 	            
 	            <%end%>
 	         <%end%>
 	        
 	    </div>
-	        <div class="locklok"  id="locomotion_<%=course.id%>">
-            <div id="locomotion_<%=course.id%>delivery"></div> 
-	            <div id="locomotion_<%=course.id%>assignment"></div>
-	        </div>
+
+        <div id="locomotion_<%=course.id%>" class="locklok">
+            <div id="locomotion_<%=course.id%>delivery" class="locklokDel"></div>
+            <div id="locomotion_<%=course.id%>assignment"></div>
+        </div>
 	</div>   
 	
 	<%end%>
@@ -117,16 +116,22 @@
 	<% if  course.surveys.reverse.count != 0 %>
 	       <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
 	            <a id="close_x" class="close close_l" href="#"><center>x</center></a>
-	            <% course.surveys.each do |survey|%>
-	               Contador de examenes respondidos   <%= survey.user_surveys.count%>
-	
+
+<div class="test_exam_list">
+	        <% course.surveys.each do |survey|%>
+				  
+				<div class="" style="border-bottom: 1px solid #EEEEEE; padding: 10px 20px;">
+				Contador de examenes respondidos   <%= survey.user_surveys.count%>
 	               <div id="title_from_delivery<%=survey.id%>">
 	                   <b><%= survey.name %></b>
 	                   <% survey.user_surveys.each do |user_survey|%>
 	                       <%= user_survey.evaluation %>
 	                   <%end%>
 	               </div>
-	            <%end%>
+	            </div>
+	        <%end%>
+</div>
+	            
 	         </div>
 	         
 	         

@@ -924,9 +924,11 @@ input:-moz-placeholder {
     margin-left: 79px;
     cursor:pointer;
     margin-top: -1px;
+    transition: ease-out all 0.2s;
   }
   & .plus-courses:hover{
     background: url('/assets/plus-box-icon-hover.png') no-repeat;
+    transition: ease-out all 0.2s;
   }
   & .element-left{
     float: left;
@@ -1242,9 +1244,11 @@ background-position: left center;
     border-top-left-radius: $border-radius-box;
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
+    transition: ease-out all 0.2s;
   }
    & .return-course-icon:hover{
 	background: url('/assets/return-box-icon-hover.png') no-repeat;
+	transition: ease-out all 0.2s;
 	}
   & .title{
     font-family: helvlight;
@@ -1743,3 +1747,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	font-size: 15px;
 	padding: 15px;
 }
+

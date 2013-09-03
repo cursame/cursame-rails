@@ -199,13 +199,52 @@ h3{
 }
 .locklok{
     float:left;
-    width:480px;
+    width:515px;
     height:400px;
-    overflow:auto;
+    //overflow:auto;
+    overflow: auto;
+    padding-left: 46px;
 }
 .high_tent{
      width:800px;
      height:450px;
+}
+
+.light_box #new_delivery_form #delivery_title {
+	padding-top: 5px;
+	width: 340px;
+}
+
+.light_box #new_delivery_form textarea {
+	padding-left: 7px;
+	padding-top: 10px;
+	width: 504px;
+}
+
+.light_box #new_delivery_form #delivery_publish_date, .light_box #new_delivery_form #delivery_end_date {
+	width: 246px;
+}
+
+.light_box #new_delivery_form .wrapper-dropdown {
+	margin-top: 10px;
+}
+
+.light_box #new_delivery_form submit {
+	margin-top: 10px;
+}
+
+.light_box #new_delivery_form .upload-input {
+	margin-top: -5px;
+}
+
+/* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ lightbox exam ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
+
+.test_exam_list {
+	background: #F8F8F8;
+	width: 300px;
+	height: 450px;
+	overflow: auto;
+	margin: -30px 0 0 -30px;
 }
 
 /* ⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵⌵ */
@@ -223,17 +262,31 @@ h3{
 
 .califHeader {
 	background: #00ADC4;
-	width: 764px;
-	padding: 20px 30px;
+	width: 198px;
+	padding: 13px 30px 7px 30px;
 	text-align: center;
-	height: 16px;
-	margin-left: -20px;
-	margin-top: -34px;
-	font-size: 20px;
+	font-size: 16px;
+	height: 25px;
 	text-transform: uppercase;
 	display: inline-block;
-	position: absolute;
+	position: relative;
+	float: right;
 	}
+.AlumHeader {
+	width: 551px;
+	float: left;
+	background: #38CDE2;
+	color: #fff;
+	display: inline-block;
+	height: 31px;
+	padding-top: 14px;
+	padding-left: 13px;
+	font-size: 16px;
+	position: relative;
+	text-align: left;
+	font-weight: lighter;
+}
+
 .form-course { display: table; position: relative; width: 784px; border-top: 0px solid #ccc; margin: 0 auto; padding: 20px; background: rgba(252, 252, 252, 0.9); height: 346px; overflow: scroll; }
 .form-course input:focus { border: 1px solid #6AB2BF!important; }
 .form-course p { clear: both; color: #969696; font-family: HelvLight; font-size: 14px; margin-top: 10px; position: relative; display: block; line-height: 14pt!important; }
@@ -445,6 +498,32 @@ width: 454px;
 .homeworkCalf .default-form select {
 	width: 200px;
 }
+
+.light_box .deliveries_list {
+	margin-left: -30px;
+	margin-top: -19px;
+	background: #f8f8f8;
+	height: 450px;
+}
+
+.deliveries_list #titleDevSing {
+	background: #f8f8f8!important;
+	padding: 10px;
+	width: 326px;
+	display: block;
+	margin-bottom: 0!important;
+	border-bottom: 1px solid #f4f3f3;
+	border-right: 3px solid #f8f8f8;
+	}
+.deliveries_list #titleDevSing:hover {
+	background: #fff!important;
+	padding: 10px;
+	width: 326px;
+	display: block;
+	border-right: 3px solid #83B81F;
+	}
+
+
 #titleDevSing { background: #fff; padding: 10px; width: 200px; display: block; margin-bottom: 10px; border-right: 2px solid #83B81F; }
 
 .friendBlock > .acceptFriend { transition: ease-out all 0.3s; }
@@ -763,29 +842,6 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
              
         }
     }
-    
-    & .deactive {
-font-size: 18px;
-height: 23px;
-background: rgba(226, 224, 224, 0.6);
-width: 209px;
-padding: 14px 12px 10px 19px;
-margin-top: -47px;
-position: absolute;
-display: block;
-transition: ease-out all 0.3s;
-margin-right: 188px;
-float: right;
-margin-left: 200px;
-    }
-	
-	& .deactive:hover {
-		background: #000;
-		cursor: pointer;
-		background: rgba(238,238,238,1);
-		transition: ease-out all 0.3s;
-		box-shadow: inset -7px -8px 12px -5px #ccc;
-	}
 }
 
 .calificacionesSpan {
@@ -1073,9 +1129,160 @@ margin-left: 200px;
 	float: right;
 	z-index: 999;
 	transition: 0.2s;
+	background: url(right_arrow.png) no-repeat center center;
  }
  #OpenClose:hover {
 	 transition: 0.2s;
-	 background: #EAEAEA;
+	 background: #EAEAEA url(right_arrow.png) no-repeat center center;
  }
  
+ 
+// area de evaluaciones
+
+.stripe {
+	background: #e7e6e6;
+	border: 1px solid #d3d2d2;
+	padding: 10px 14px;
+	color: #5b5b5b;
+	
+	& p {
+		margin-top: 0px!important;
+	}
+}
+
+.string {
+	background: #ececec;
+	border: 1px solid #d3d2d2;
+	padding: 10px 14px;
+	color: #5b5b5b;
+
+	& p {
+		margin-top: 0px!important;
+	}
+}
+td {
+	color: #5b5b5b;
+	// border: 1px solid #d3d2d2;
+}
+
+.activate {
+	color: #333;
+	background: rgba(255,255,255,1);
+	transition: ease-out all 0.3s;
+	cursor: pointer;
+	border-top: 4px solid #2683B3;
+	/*
+	font-size: 18px;
+	height: 19px;
+	width: 169px;
+	padding: 14px 12px 10px 19px;
+	display: inline-block;
+	position: relative;
+	*/
+}
+.deactive {
+	background: rgba(226, 224, 224, 0.6);
+	transition: ease-out all 0.3s;
+	/*
+	font-size: 18px;
+	height: 23px;
+	width: 209px;
+	padding: 14px 12px 10px 19px;
+	margin-top: -47px;
+	position: absolute;
+	display: block;
+	margin-right: 188px;
+	float: right;
+	margin-left: 200px;
+	*/
+    }
+	
+.deactive:hover {
+	background: #000;
+	cursor: pointer;
+	background: rgba(238,238,238,1);
+	padding-top: 4px;
+	transition: ease-out all 0.3s;
+	box-shadow: inset -7px -8px 12px -5px #ccc;
+	}
+	
+#tab-2 .coklo-title {
+	overflow: hidden!important;
+}
+
+.aSSigmentHW {
+	 padding: 10px 10px;
+	 background: #F5F5F5;
+}
+.aSSigmentHW:hover {
+	background: #FFF;
+}
+
+.light_box .locklok {
+	width: 610px;
+	height: 451px;
+	overflow: auto;
+	padding-left: 0px;
+	margin-left: 320px;
+	margin-top: -20px;
+	position: absolute;
+	display: block;
+	float: right;
+}
+
+.light_box .locklok .cogki_content_delivery ul.tabs {
+	width: 610px;
+}
+
+.light_box .locklok .cogki_content_delivery ul.tabs li {
+	width: 275px;
+}
+
+.light_box .locklok .cogki_content_delivery #tab-1 .coklo-title, .light_box .locklok .cogki_content_delivery #tab-2 .coklo-title {
+	width: 610px;
+}
+.light_box .locklok .cogki_content_delivery #tab-1 .coklo-title h1, .light_box .locklok .cogki_content_delivery #tab-2 .coklo-title h1 {
+	width: 570px;
+	padding-bottom: 17px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.light_box .locklok .cogki_content_delivery #tab-1 .coklo-title .cont, .light_box .locklok .cogki_content_delivery #tab-2 .coklo-title .cont {
+	width: 580px;
+}
+
+.light_box .locklok .cogki_content_delivery .tab-content.current {
+	min-height: 435px;
+}
+
+.locklokDel form {
+	width: 535px;
+	margin: 30px auto 10px;
+	min-height: 220px;
+}
+
+.locklokDel #delivery_description {
+	width: 523px;
+}
+
+.CloseWinWd {
+	width: 26px;
+	height: 26px;
+	padding: 1px;
+	color: #fff;
+	text-align: center;
+	font-size: 20px;
+	margin-top: -60px;
+	z-index: 999;
+	position: relative;
+	display: inline-block;
+	background: #006696;
+	float: right;
+	cursor: pointer;
+	}
+
+.CloseWinWd:hover {
+	background: #013E5A;
+}	
+	
+	
