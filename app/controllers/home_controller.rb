@@ -17,6 +17,13 @@ class HomeController < ApplicationController
   def blog
   end
   
+  ###### destroye sesiones caducadas
+  def ending_session
+      sign_out(current_user)
+      
+      redirect_to root_path
+  end
+  
   def help
   end
   def add_new_comment

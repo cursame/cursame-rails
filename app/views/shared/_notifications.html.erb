@@ -63,12 +63,15 @@ notifications_last = notifications.pop
 		$.get(form.action,$.param(filter),null,"script");
 	}
 	// rendering notifications
-	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", function(data, channel){
-		var params = {
-			id:data.notification.id
-		};
-	    $('#notifications_count span').html(data.num*1);
-	    $.get('/home/render_notifications',$.param(params),null,"script");
-	});
+	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
+		function(data, channel){
+			console.log(data);
+			var params = {
+				id:data.notification.id
+			};
+		    $('#notifications_count span').html(data.num*1);
+		    $.get('/home/render_notifications',$.param(params),null,"script");
+		}
+	);
 </script>
 <%end%>

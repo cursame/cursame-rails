@@ -83,3 +83,26 @@
 .waitS > a:hover, .currentFriends > a:hover { background: #0B6AAD; }
 
 .box_AllUsers { height: 150px; width: 148px; float:left; margin:3px; transition: linear all 0.2s; position: relative; display: table; overflow: hidden; border: 1px #ccc solid; }
+.alert_method{
+    width:480px;
+    height:480px;
+    background:url('/assets/explorer_network.png');
+    color:#383D3A;
+    font-size:17px;
+    margin-top:50px;
+    padding:15px;
+}
+.network_button_aler_method{
+    margin-top:30px;
+    padding:10px;
+    font-size:23px;
+    color:#383D3A;
+    background:#F9FEA6;
+}
+.network_button_aler_method:hover{
+    margin-top:30px;
+    padding:10px;
+    font-size:23px;
+    color:#383D3A;
+    background:#EEF55D;
+}

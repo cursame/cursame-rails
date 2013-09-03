@@ -175,13 +175,17 @@
 	     
 	     <script>
 	            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function () {
-	                
+	                if($.browser.webkit){
 	                EditingBlur();
-	                $('.dek<%=id%>').foggy(false);	                
+	                $('.dek<%=id%>').foggy(false);	 
+	                }               
                     $('.link_publications').hide();
-                $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
+                    $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
                 });
 	     </script>
+	     
+	     
+         
 		<!-- 
 		 <script>
 				$('.delivery').mouseenter(function() {
@@ -236,29 +240,31 @@
 		 </script>
 
 	   
-	            
+	              
 	            <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
 	                <div class="rander">
 	                    <div class="form_for_edit_wall_top"id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close" >x</div>
 	                </div>
 	               <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
-	    
+	              
 	            </div>
 	           
-           <script>
+                <script>
 
-                 $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
-                    CancelEditingBlur();
-                    DisableBlured();
-                    $('#deleted_id_<%= id %>').foggy(false);
-                    $('.link_publications').show();
-                    $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
-                    $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
-                                                        
-                 });
+                             $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
 
-            </script>
+                                if($.browser.webkit){
+                                CancelEditingBlur();
+                                DisableBlured();
+                                $('#deleted_id_<%= id %>').foggy(false);
+                                }
+                                $('.link_publications').show();
+                                $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
+                                $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
 
+                             });
+
+                   </script>
 
 	             
 	     

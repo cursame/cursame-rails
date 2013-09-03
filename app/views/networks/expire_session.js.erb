@@ -1,0 +1,35 @@
+     window.clearInterval(intervalo);
+    // $('#expires').show();
+     <% if @status = true %>
+     var i = <%=  @minute %>;
+     var contador = 0;
+     var valor = 0;
+     var intervalo = setInterval(function(){
+         contador ++;
+         valor = (i*60) - contador;
+        // $('#expires').html('Tu sessión expirará en'+valor+'<div id="uninstal_exit" class="uninstal_exit">Detener el Cierre de Sessión</div>');
+     },1000);
+     
+     if(valor == 1){
+         alert('Tu sessión ya ha expirado');
+         window.location.href='<%=ending_session_path%>'
+     }
+     
+     <%else%>
+         alert('Tu sessión ya ha expirado');
+         window.location.href='<%=ending_session_path%>'
+     <%end%>
+  
+     
+     
+         
+        
+
+     
+    
+    
+       
+    
+  
+    
+    

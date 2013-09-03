@@ -11,6 +11,7 @@
   <div id="<%= @asset_unique %>" class="file-input-box">
         <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
         <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0', multiple: true, name: "asset[file]" %>
+        <!--no colocar igual a password field-->
         <% f.password_field :encryption_code_to_access %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= hidden_field_tag :form_id, formId %>

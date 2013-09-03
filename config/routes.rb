@@ -122,6 +122,10 @@ Cursame30Lb::Application.routes.draw do
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
   get "course_assignment_l/:id", :to => "courses#course_assignment", :as => :course_assignment_l
   get "course_survey_l/:id", :to => "courses#course_survey", :as => :course_survey_l
+  
+  ##### llamada ajax para saber si la session ha expirado
+  
+  get "expire_session", :to => "networks#expire_session", :as => :expire_session
 
 
   #### llada de ajax de editar tarea
@@ -162,11 +166,18 @@ Cursame30Lb::Application.routes.draw do
 
   #manejo de users
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "usessions" }
 
   as :user do
-    match 'users/sign_out', :to => 'devise/sessions#destroy'
+    match 'users/sign_out', :to => 'usessions/sessions#destroy', :as => :sign_out
+    match 'users/sign_in', :to =>  'usessions/sessions#new', :as => :sign_in
   end
+  
+  #### finalizador de sesiones
+  get '/ending_session', :to =>  'home#ending_session', :as => :ending_session
+  get '/alertmethod', :to => 'networks#alertmethod', :as => :alertmethod
+  #get '/session_conserve', :to => 'networks#session_conserve', :as => :session_conserve 
+  
   
   ###### users personal_url_validation
   
@@ -446,4 +457,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_update_user_profile', :to => 'api/api#native_update_user_profile', :as => :native_update_user_profile_json
   match '/api/api/native_create_courses', :to => 'api/api#native_create_courses', :as => :native_create_courses_json
   match '/api/api/native_answer_survey', :to => 'api/api#native_answer_survey', :as => :native_answer_survey_json
+  match '/api/api/native_comments', :to => 'api/api#native_comments', :as => :native_comments_json
+  match '/api/api/native_list_members_in_course', :to => 'api/api#native_list_members_in_course', :as => :native_list_members_in_course_json
+  match '/api/api/native_change_members_in_course_status', :to => 'api/api#native_change_members_in_course_status', :as => :native_change_members_in_course_status_json
 end

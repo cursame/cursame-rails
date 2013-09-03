@@ -54,33 +54,38 @@ class Api::ApiController < ApplicationController
             publication = Comment.find(id)
             case publication.commentable_type
               when 'Course'
-                auxtext = 'en el curso de ' + publication.commentable.title
+                auxtext = 'en la asignatura de ' + publication.commentable.title
               when 'Network'
-                auxtext = 'en la red'
-            end            
-            text = '' + publication.user.name + ' ha comentado ' + auxtext
+                auxtext = 'en la red '
+              when 'User'
+                auxtext = 'en tu prefil '
+            end 
+
+            text = publication.user.name + ' ha comentado ' + auxtext
             avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Discussion'
             publication = Discussion.find(id)
             comments = publication.comments
-            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en el curso de ' + publication.courses[0].title
+            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en la asignatura de ' + publication.courses[0].title
             text = 'Se ha creado un discusion ' + auxtext
             avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
           when 'Course'
             publication = Course.find(id)
             comments = publication.comments
-            text = 'Nuevo curso ' + publication.title
+            text = 'Nueva asignatura ' + publication.title
             avatar = publication.avatar.blank? ? publication.course_avatarx : publication.avatar.profile
           when 'Delivery'
             publication = Delivery.find(id)
             comments = publication.comments
             done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
-            text = 'Se ha creado una tarea en el curso de ' + publication.courses[0].title
+            text = 'Se ha creado una tarea en la asignatura de ' + publication.courses[0].title
             avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile
+            publication = publication.as_json(:include => [:areas_of_evaluations,:assets])
           when 'Survey'
             publication = Survey.find(id)
             comments = publication.comments
-            text = 'Se ha creado un cuestionario en el curso de ' + publication.courses[0].title
+            done = !UserSurvey.where(:survey_id => id, :user_id => @user.id).empty?
+            text = 'Se ha creado un cuestionario en la asignatura de ' + publication.courses[0].title
             avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile 
             publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
         end
@@ -109,15 +114,12 @@ class Api::ApiController < ApplicationController
     @comments.each do |comment|
       comment.likes = comment.likes.size
     end
-    # if params[:commentable_type] == "Delivery" && @user.roles.last.id == 2
-    #   @comments = @comments = Comment.where("commentable_type" => params[:commentable_type],"user_id" => @user.id ,"commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    # end
     render :json => {:comments => @comments.as_json(:include => [:user, :comments]) , :count => @comments.count()}, :callback => params[:callback]
   end
 
   def courses
     @ids = []
-    # si es admin de la red se le muestran todos los cursos
+    # si es admin de la red se le muestran todos los asignaturas
     if @user.roles.last.id == 1
       @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     else
@@ -440,6 +442,7 @@ class Api::ApiController < ApplicationController
       @course.update_attributes(params[:course])
     else
       @course = Course.new(params[:course])
+      @course.network_id = @network.id
       @course.save
       @member = MembersInCourse.new
       @member.user_id = @user.id
@@ -473,10 +476,96 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
+   def native_comments
+    @cmts = []
+    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    
+
+    @comments.each do |comment|
+      type = comment.commentable_type
+      text = 'Comentario de ' + comment.user.name
+      case type
+        when 'Course'
+          text =  text + ' en la asignatura ' + comment.commentable.title
+        when 'User'
+          text =  text + ' para ' + comment.commentable.name
+        when 'Comment'
+          text =  text + ' en el comentario de ' + comment.commentable.user.name
+        when 'Network'
+          text =  text + ' en la red' + comment.commentable.name
+        when 'Delivery'
+          text =  text + ' en la tarea ' + comment.commentable.title
+        when 'Group'
+          text =  text + ' en el grupo ' + comment.commentable.name
+        when 'Discussion'
+          text =  text + ' en la discusion ' + comment.commentable.title
+        when 'Survey'
+          text =  text + ' en el cuestionario ' + comment.commentable.name
+      end
+
+       cmt = {
+          id: comment.id,
+          title: comment.title,
+          comment: comment.comment,
+          commentable_id: comment.commentable_id,
+          commentable_type: comment.commentable_type,
+          user_id: comment.user_id,
+          role: comment.role,
+          created_at: comment.created_at,
+          updated_at: comment.updated_at,
+          comment_html: comment.comment_html,
+          network_id: comment.network_id,
+          num_likes: comment.likes.size,   
+          likes: comment.likes,   
+          text: text,
+          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile 
+
+        }
+      @cmts.push(cmt)     
+    end
+    render :json => {:comments => @cmts.as_json, :count => @cmts.count()}, :callback => params[:callback]
+  end
+
+  def native_list_members_in_course
+    course =  Course.find(params[:id])
+    @members = course.members_in_courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:members => @members.as_json, :count => @members.count()}, :callback => params[:callback]
+  end
+
+  def native_change_members_in_course_status      
+      @course =  Course.find(params[:id])
+      @requester =  User.find(params[:user_id])
+      success = false
+
+      case params[:status]
+        when 'join'
+          member = MembersInCourse.new
+          member.user_id = @requester.id
+          member.course_id =  @course.id
+          member.accepted = false
+          member.owner = (params[:owner] && params[:owner] == 'true') ? true : false 
+          member.network_id = @network.id
+          member.title = @course.title
+          success = member.save
+        when 'accept'
+          member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
+          if member
+            member.owner = (params[:owner] && params[:owner] == 'true') ? true : false 
+            member.accepted = true
+            success = member.save
+          end     
+        when 'decline'          
+          member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
+          if member
+            success = !!member.delete
+          end
+      end      
+      render :json => {:success => success}, :callback => params[:callback]
+  end
+
   private
   def authorize
-    @user=User.find_by_authentication_token(params[:auth_token])
-    @network = @user.networks[0]
+    @user = User.find_by_authentication_token(params[:auth_token])
     if @user.nil?
       logger.info("Token not found.")
       render :status => 200, :json => {:message => "Invalid token", :success => false}
