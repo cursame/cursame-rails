@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
   #include UtilityHelper
-  
+
   #attr_accessible :commentable_type
 
   belongs_to :commentable, :polymorphic => true
@@ -26,9 +26,9 @@ class Comment < ActiveRecord::Base
   belongs_to :network
   belongs_to :course
   has_many :activities, as: :activitye#, :dependent => :destroy
-  
+
   validates_presence_of :user
-  
+
 
   #comentarios para los comentarios
   acts_as_commentable
@@ -68,7 +68,7 @@ class Comment < ActiveRecord::Base
     #comment = self.find_by_commentable_id(commentable_id)
     commentable_type.camelize.constantize.find(commentable_id)
   end
-  
+
   after_destroy do
 
     walls = Wall.where(:publication_type => "Comment", :publication_id => id)
@@ -149,6 +149,8 @@ class Comment < ActiveRecord::Base
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
+      elsif commentable.comentable_type = "Network"
+        users = [commentable.user]
       else
         users = commentable.commentable.users
       end
