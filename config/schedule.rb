@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+ set :output, "log/subtest.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -17,8 +17,21 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 2.minutes do
-    runner "Delivery.active_inactive", :environment => 'development' 
+#every 2.minutes do
+ #   runner "Delivery.active_inactive", :environment => 'development' 
+#end
+set :environment, 'subtest'
+
+#every :day, :at => '12:30am' do
+every :day, :at => "11:06pm"  do
+  puts "*************************************************************"
+  puts "*************************************************************"
+  puts "*************************************************************"
+  puts "*************************************************************"
+  puts "********************Runing TASK*****************************"
+  
+  rake 'cleaner_inconsistences.task',  :environment => 'development' 
+ #rake :cleaner_inconsistences,  :environment => 'development' 
 end
 
 # Learn more: http://github.com/javan/whenever
