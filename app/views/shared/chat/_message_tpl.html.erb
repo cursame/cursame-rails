@@ -31,7 +31,7 @@
 	});
 </script>
 -->
-	<span class="insideChatText" id ="message_<%= message.id %>" style="<%= (message.user.id != current_user.id) ? 'float:right' : 'float:left' %>">
+	<span id ="message_<%= message.id %>" class="<%= (message.user.id != current_user.id) ? 'floater insideChatText' : 'c2' %>">
 		<span class="imgChat">
 			<%=image_tag(message.user.avatar.blank? ? message.user.image_avatarx : message.user.avatar.profile ,:style => "float:left; width:30px; height:30px;")%>
 			<span class="toolTipUser"><p><%= message.user.name %></p></span>
