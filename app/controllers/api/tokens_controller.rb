@@ -78,7 +78,7 @@ def native_create_user
     if email && first_name && last_name && password && subdomain
       permissioning = Permissioning.new()
       permissioning.role_id = params[:role]
-      permissioning.network_id = Network.find_by_subdomain(subdomain) || Network.last
+      permissioning.network = Network.find_by_subdomain(subdomain) || Network.last
 
       user = User.new()
       user.email = email
