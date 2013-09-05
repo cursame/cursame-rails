@@ -1,0 +1,42 @@
+  <center>
+      <% if ['pdf','xls','xlsx','ppt','txt','pptx','doc','docx', 'txt'].include? @termination %>
+       
+           <% case %>
+              <%when @termination == 'pdf'%> 
+                <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/pdf.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                  <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'xls'%>   
+                  <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/xlx.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                       <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>     
+             <%when @termination == 'xlsx'%>   
+                 <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/xlx.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'ppt'%>    
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'txt'%> 
+                       <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'pptx'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/ppt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'docx'%> 
+                         <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/doc.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'doc'%> 
+                       <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/doc.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                       
+                      <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                
+              <%when @termination == 'txt'%>    
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                      <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      
+           <%end%>
+                  
+      <%end%>
+      
+      <% if  ['png','jpg','jpeg','gif','tif','bmp'].include? @termination %>
+          <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('<%=@name%>'); background-size:40px 40px; float:left; margin:2px;"></div>
+              <%= render partial: 'course_files/box_and_js_for_img', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+      <%end%>
+    </center>

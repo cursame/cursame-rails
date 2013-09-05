@@ -213,7 +213,7 @@
          </div> -->
   
      <div id="tabs-friends" class="tabs-style">
-         <div id="box-friends" class="basic-lateral-box" >
+         <div id="box-friends" class="basic-lateral-box" style="margin-top:-140px;"  >
                <h2  style="margin-right:-30px;"> Miembros </h2> 
               <% permitted_to? :create, :courses do %>
 
@@ -257,9 +257,58 @@
               <%end%>
              <%end%>
          </div>
+        
+         
+           
+        
+   <div d="box-d" class="basic-lateral-box" style="margin-top:200px; position:relative;" >
+        <h2  style="margin-right:-30px; width:260px;"> Biblioteca <%= @course.course_files.count %> </h2> 
+        <%= form_for CourseFile.new do |f|%>
+           <label style="position:absolute; margin-left:-80px; margin-top:10px;">Subir Archivos al Curso</label>
+          <input id="course_file_file" name="course_file[file]" type="file" multiple="multiple"></input>
+          <%= hidden_field_tag :course_id, @course.id %> 
+          <%= f.hidden_field :published, :value => true %>
+                
+        <%end%>
+        <div id="uplok">
+         <script id="template-upload-2" type="text/x-tmpl">
+           <div class="upload">
+            
+             <div class="deletedprogresbar"> {%=o.name%}
+             <div class="content_progress_bar">
+               <div class="progress_exact"></div>
+              
+             </div>      
+             </div>
+           </div>
+               
+         </script>
 
+        </div>
+       
+         <div  style="width:245px; overflow:auto; max-height:1000px;">
+          <div id="files"></div>
+        <% @course.course_files.reverse.each do |cf|%>
+          <% @name =  "#{cf.file}" %>
+          <% @sintetic_name = @name.split('/').last%>
+          <% @termination = @name.split('.').last %>
+          <!--se ha colocan los archivos dependiendo su categoría-->
+          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+          
+          
+        <%end%>
+        </div>
+        
+        <!--valdiador de tipos -->
+        
+        
+   </div>
+   
   </div>
 </div>
+<!--archivos del curso-->
+
+
 
 <!-- Content -->
 
