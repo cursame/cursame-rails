@@ -120,11 +120,12 @@ class Api::ApiController < ApplicationController
   def courses
     @ids = []
     # si es admin de la red se le muestran todos los asignaturas
-    if @user.roles.last.id == 1
-      @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    else
-      @courses = @network.courses.includes(:members_in_courses).where("members_in_courses.accepted = ?",true).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    end
+    # if @user.roles.last.id == 1
+    #   @courses = @network.courses.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    # else
+    #   @courses = @network.courses.includes(:members_in_courses).where("members_in_courses.accepted = ?",true).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    # end
+    @courses = @network.courses.includes(:members_in_courses).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
@@ -552,7 +553,7 @@ class Api::ApiController < ApplicationController
       }
       @users.push(user)
     end
-    render :json => {:members => @users.as_json, :count => @users.count()}, :callback => params[:callback]
+    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
   end
 
   def native_change_members_in_course_status      
