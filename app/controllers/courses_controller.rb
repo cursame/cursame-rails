@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
@@ -38,7 +39,7 @@ class CoursesController < ApplicationController
     @search = params[:search]
     @page = params[:page].to_i
     @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-    
+
     if request.xhr?
       respond_to do |format|
         format.js
@@ -188,6 +189,18 @@ class CoursesController < ApplicationController
     @role = current_role
   end
 
+  def evaluation_download
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
+    if !@member.nil? then
+      if @member.owner.nil? then
+        @member.update_attributes(:owner => false)
+      end
+    end
+    @role = current_role
+  end
+
+
   def filter_protection
      @course = Course.find(params[:id])
      @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
@@ -323,7 +336,7 @@ class CoursesController < ApplicationController
            assets_deliveries.push({file: b.file,
                                    name:("#{@name}").delete("\n") })
          end
-        
+
         if del.user.avatar.blank?
           @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
         else
@@ -357,11 +370,11 @@ class CoursesController < ApplicationController
 
         )
 
-        
+
          del.assignments.each do |as|
-           
+
            if as.user != nil
-           
+
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
              assets_assignmentss.push({file: a.file,
