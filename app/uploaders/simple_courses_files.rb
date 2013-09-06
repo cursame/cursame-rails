@@ -19,7 +19,10 @@ class SimpleCoursesFiles< CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-
+  
+  def extension_white_list
+     %w(jpg jpeg gif ico png pdf exe ppt txt pptx dmg dwg dwf rar zip tar iso swf flv doc docx ade adp odt rtf sxw sao csv xls)
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:

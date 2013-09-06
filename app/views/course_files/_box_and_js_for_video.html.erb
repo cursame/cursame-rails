@@ -1,0 +1,32 @@
+ <script>
+  $("#<%=@termination%>_<%=cf.id%>").hover(
+    function () {
+      $(this).append($("<span style='z-index:100000000;position: absolute;'><div class='tooltipr'><%=truncate("#{@sintetic_name}", :omission => "...", :length => 25)%></div></span>"));
+    },
+    function () {
+      $(this).find("span:last").remove();
+    }
+  );
+  
+   $('#<%=@termination%>_<%=cf.id%>').click(function(e) {
+         $('#t_<%=@termination%>_<%=cf.id%>').lightbox_me({
+	              centered: true, 
+	              onLoad: function() { 
+                 $('#t_<%=@termination%>_<%=cf.id%>').find('input:first').focus() 
+                                     }
+
+   	              });
+   	  e.preventDefault();
+	  });
+  
+ </script>
+<%#= link_to truncate("#{@sintetic_name}", :omission => "...", :length => 35), "#{cf.file}"%>
+<div id="t_<%=@termination%>_<%=cf.id%>" class="content_f_box"  style="display:none">
+            <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
+                     <center>  
+                   <%= link_to truncate("#{@sintetic_name} DESCARGAR", :omission => "...", :length => 25), "#{cf.file}", :download => @sintetic_name, :class=>'link_download'%></br>                                                         
+                    <video style="position:realtive;" src="<%=@name%>" width="730" height="318" preload="none" controls></video></br>
+                    
+                  <%= link_to truncate("#{@sintetic_name} DESCARGAR", :omission => "...", :length => 25), "#{cf.file}", :download => @sintetic_name, :class=>'link_download' %></br>  
+                    </center>
+</div>
