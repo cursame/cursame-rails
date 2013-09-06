@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801204904) do
+ActiveRecord::Schema.define(:version => 20130902195351) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20130801204904) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
+    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
@@ -140,6 +141,27 @@ ActiveRecord::Schema.define(:version => 20130801204904) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.text     "content_html"
+  end
+
+  create_table "course_file_id_user_ids", :force => true do |t|
+    t.integer  "course_file_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "course_files", :force => true do |t|
+    t.string   "file"
+    t.boolean  "published"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "course_id_course_file_ids", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "course_file_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "coursepublicationings", :force => true do |t|

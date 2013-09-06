@@ -1,0 +1,38 @@
+Invoice Number: 2471078
+Invoice Date: August 01, 2013
+Invoice To: www.livingchannel.org
+
+Description                                   From           To    Setup    Price
+---------------------------------------------------------------------------------
+[203479] linode203479 - Linode 768           08/01/2013 - 08/30/2013    $0.00   $75.86
+[203479] linode203479 - Backup      Service -08/01/2013 - 08/30/2013    $0.00   $41.18
+[203479] linode203479 - SSL         Service -08/01/2013 - 08/30/2013    $0.00   $23.20
+[203479] linode203479 - Rtransition Service -08/01/2013 - 08/30/2013    $0.00   $31.32
+[203479] linode203479 - PG backup   Service -08/01/2013 - 08/30/2013    $0.00   $3.20
+
+Previous Balance                                                                ($0.00)
+
+
+Total Due: $171.76
+
+Thank you for your order!
+
+If you are paying via credit card, you should receive a receipt of payment
+email within 24 hours.  If you do not receive your receipt, please verify
+your credit card information on the Account tab of the Linode Manager. We
+accept Visa, MasterCard, American Express and Discover.
+
+To update your credit card information or view your current balance online,
+please use the Linode Manager control panel:
+
+https://manager.linode.com/
+
+If payment is not received after 10 days, your account may be disabled.
+Please keep your billing information up to date to ensure uninterrupted
+service.
+
+If you have any questions or concerns, please contact: billing@linode.com
+
+Thank you,
+The Linode.com Team
+http://www.linode.com/

@@ -21,7 +21,8 @@ class Course < ActiveRecord::Base
   #publications/walls
   has_many :coursepublicationings
   has_many :walls, :through => :coursepublicationings
-
+  has_many :course_id_course_file_id
+  has_many :course_files, :through => :course_id_course_file_id
   #se declara la presencia de los campos que deben ser llenados en el modelo de curso
 
   validates_presence_of :title
@@ -31,7 +32,8 @@ class Course < ActiveRecord::Base
   # validates_presence_of :survey_param_evaluation
   # validates_presence_of :delivery_param_evaluation
   #validates_presence_of :network_id
-
+  accepts_nested_attributes_for :course_files
+  
 
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
   :created_at, :updated_at, :public_status,
