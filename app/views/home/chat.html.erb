@@ -1,72 +1,145 @@
+<div style="width: 940px; height: auto; display: block; position: relative;">
 
-<div>
-	<div style="float:left;width:200px; padding-top: 20px; border-right: 1px solid #ccc; height: 400px; overflow-x:hidden; padding-left: 13px;">
-		<span class="titleBraker persist-header" style="width: 192px; background: rgba(244,244,244,0.9); height: 26px; margin-top: -19px; padding-top: 17px; border-bottom: 1px solid #ccc; border-left: 1px solid #ccc; font-weight: lighter; display: block; position: fixed; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">Cursos</span>
-		<div style="height: 40px; disply: block;"></div>
+<script type="text/javascript">
+$(function(){
+        // Check the initial Poistion of the Sticky Header
+        var stickyHeaderTop = $('#filterCont').offset().top;
+ 
+        $('.SDBr').scroll(function(){
+                if( $('.SDBr').scrollTop() > stickyHeaderTop ) {
+                        $('#filterCont').css({position: 'fixed', top: '36px',});
+                        $('#filterCont').css('display', 'block');
+                } else {
+                        $('#filterCont').css({position: 'static', top: '36px'});
+                }
+        });
+  });
+  </script>
+
+<!-- begin sidebar -->
+<div class="SDBr" style="float:left; width: 213px; height: 91%; position: fixed; display: block; padding-top: 0px; border-right: 1px solid #ccc; overflow-x:hidden; padding-left: 0px; margin-left: -15px; background: #404959; color: #FFF;">
+
+	
+	<div id="filterCont">
+		<div id="ChatFilter">
+		    <img src="/assets/chat_icon.png">&nbsp;&nbsp;
+		    <span style="display: inline-block; padding-top: 3px; position: absolute; vertical-align: middle;">Filtrar por</span>
+		    <span class="imageChatDrop">
+		    	<img src="/assets/imageChatDrop.png">
+		    </span>
+			
+			<span id="ChatFilterDrop">
+				<ul>
+					<!-- <li style="padding: 10px 1px 10px 7px; display: block; width: 150px;">&nbsp;&nbsp;Ver</li> -->
+					<li><a id="everything">Todo</a></li>
+					<li><a id="ShowCourses">Solo cursos</a></li>
+					<li><a id="ShowFriends">Solo amigos</a></li>
+				</ul>
+			</span><!-- ChatFilterDrop -->
+		</div><!-- ends ChatFilter -->
+	</div><!-- filterCont -->
+	
+
+	<!-- <div class="divider" style="display: block; position: relative; height: 70px;"></div> -->
+	
+	<div id="OnlyCourses">
+	<span class="titleBraker" style="width: 175px; margin-bottom: 6px; margin-left: 0px; color: #FFF; height: 18px; margin-top: 0px; padding-top: 17px; font-weight: lighter; display: block; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">
+	<img src="/assets/small_courses.png">&nbsp;&nbsp;Cursos</span>
+
 		<% @courses_online.each do |course|%>
-		    <div class="chatSingle"><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
+		
+		<div class="chatSingle_big"><%= link_to course.title, open_channel_path(course.id,"course" => true), :remote => true%></div>
+
 		<%end%>
-		<span class="titleBrakerSecondary">Amigos conectados</span>
+	</div><!-- OnlyCourses -->
+
+	<div id="JustFriends">
+	<span class="titleBraker" style="width: 192px; color: #FFF; height: 18px; margin-left: 0px; padding-top: 17px; font-weight: lighter; display: block; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">
+	<img src="/assets/friends.png">&nbsp;&nbsp;Amigos conectados</span>
+
 		<% @friends_online.each do |user|%>
-		    <div><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
-		<%end%>	
-	 </div>
-	<div id="chat" style="float:left;width:555px; margin-left: -1px;">
-		<%=render(:partial => '/shared/chat/chat',
-		 :locals => {:messages => @messages, :channel => @channel})%>
+		
+		<div class="chatSingle_big"><%= link_to user.email, open_channel_path(user.id), :remote => true%></div>
+		
+		<%end%>
+	</div><!-- JustFriends -->
+</div><!-- ends sidebar -->
+	
+	
+	
+	<!-- begins text area -->
+	<div id="chat" style="float: right; width: 741px; margin-left: -1px; height: 100%; position: relative; display: block;">
+		<%=render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel})%>
 	</div>
+	<!-- ends text area -->
+	
 	<!--
 	<div class="ads" style="width: 170px; height: 400px; display: inline-block; background: #ddd; position: relative; float: right; margin-top: 7px; margin-right: -9px; margin-left: 3px;">
 		
 	</div>
 	-->
-</div>
+</div><!-- close -->
+
+
 
 <script>
-	$('.chatSingle > a').click( function() {
-		$('.chatSingle > a').css({ background: "#FFF", color: "#000" }, 200);
-		$(this).css({ background: "#307BEC", color: "#FFF" }).siblings();
+	$(document).ready( function() {
+	   $('#ChatFilterDrop').hide();
 	});
+	$('#ChatFilter').click( function() {
+		$('#ChatFilterDrop').slideToggle();
+	});
+	$('.chatSingle_big > a:link').click( function() {
+  		$('.chat-panel').css({ visibility: "hidden" });
+  	});
+  	
+  	$('#ChatFilter').mouseenter( 
+  		function() { $(this).css({ background: "#006696" }) },
+  		function() { $(this).css({ background: "#334259" })
+  	});
+  	
+  	$('#ChatFilter').hover(
+        function() { $(this).css({ background: "#006696"}) },
+        function() { $(this).css({ background: "#363F4D"})
+	});
+  	
+  	
+  	
+  	// filtros
+  	
+  	$('#everything').click( function() {
+  		$('#JustFriends').show();
+  		$('#OnlyCourses').show();
+  	});  	
+  	$('#ShowCourses').click( function() {
+  		$('#JustFriends').hide();
+  		$('#OnlyCourses').show();
+  	});
+	$('#ShowFriends').click( function() {
+  		$('#OnlyCourses').hide();
+  		$('#JustFriends').show();
+  	});
+  	
+  	
 </script>
 
+
+<!--
   <script>
-    function UpdateTableHeaders() {
-       $(".persist-area").each(function() {
-       
-           var el             = $(this),
-               offset         = el.offset(),
-               scrollTop      = $(window).scrollTop(),
-               floatingHeader = $(".floatingHeader", this)
-           
-           if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
-               floatingHeader.css({
-                "visibility": "visible"
-               });
-           } else {
-               floatingHeader.css({
-                "visibility": "hidden"
-               });      
-           };
-       });
-    }
-    
-    // DOM Ready      
-    $(function() {
-    
-       var clonedHeaderRow;
-    
-       $(".persist-area").each(function() {
-           clonedHeaderRow = $(".persist-header", this);
-           clonedHeaderRow
-             .before(clonedHeaderRow.clone())
-             .css("width", clonedHeaderRow.width())
-             .addClass("floatingHeader");
-             
-       });
-       
-       $(window)
-        .scroll(UpdateTableHeaders)
-        .trigger("scroll");
-       
-    });
+  $(document).ready( function() {
+	   $('#ChatFilterDrop').hide();
+  });
+  $('#ChatFilter').click( function() {
+	   $('#ChatFilterDrop').toggle();
+  });
+  $('#ChatFilter').click( function() {
+  	$(this).css({ background: "#006696" })
+  });
+  $('#ChatFilter').click( function() {
+  	$(this).css({ background: "#006696" })
+  });
+  $('.chatSingle_big > a:link').click( function() {
+  	$('.chat-panel').css({ visibility: "hidden" });
+  });
   </script>
+  -->

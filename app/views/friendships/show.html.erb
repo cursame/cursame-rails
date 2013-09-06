@@ -1,59 +1,82 @@
 <div class="user-edit-form containerFriends">
 
-	
+
+<div style="width: 910px; display: block; padding: 30px 0 20px; height: 35px; margin: 0 auto;">
+	<h2 class="courses-title-h2">Tu lista de amigos<!-- <%=@user.email%> --></h2>
+</div>
+
+<!--
 <div class="edituserdmenuHeader">
 	<div id="edituserdmenu">
 		<h3>Lista de amigos de <b><%=@user.email%></b></h3>
-		<!--
+		
 		<div class="containerFriendsCateg">
 		
 			<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a>
 			</div>
 			<div class="waitS"><a href="#PNDS">solicitudes pendiéntes <span class="redPop">2</span></a>
 			</div>
-		</div>-->
+		</div>
 	</div>
 </div>
 
+-->
 
-  <span class="friendHead" id="FDNS" style="margin-top:100px!important;">Amigos actuales:</span>
+
+  <!-- <span class="friendHead" id="FDNS">Amigos actuales:</span> -->
   
-  <p>
 
   <%@all_friends.each do |hash|%>
     <%if (hash[:accepted]) then%>
       <tr>
         <td>
-        	<span class="friendBlock">
-             	<span class="friendPhoto"><%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%></span>
+        	<div class="everymbrm" style="height: 203px; overflow: hidden; position: relative;">
+             	<span id="imgge" style="width:170px;height:170px; display: block; background:#ddd; overflow: hidden;">
+             		<%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%>
+             	</span>
+             	<div class="place-hldr" style="height: 30px;"><h3 style="background-color: rgb(222, 222, 222);"><%= hash[:user].name %></h3></div>
+             	
               <%if @owner then%>
-                <span class="friendName"><%= hash[:user].name %></span>
-                <span class="acceptFriend"><%= link_to "Eliminar", {:controller => "friendships", :action => "destroy", :friend_id => hash[:user].id}, :method => :delete%></span>
-             </span>
+              
+              <div class="hoverShowEdit" style="margin-top: -380px;">
+                <span class="addfriend" style="margin: 20px auto 10px;">
+                	<%= link_to "Eliminar", {:controller => "friendships", :action => "destroy", :friend_id => hash[:user].id}, :method => :delete%></span>
+              </div>
+                
+             </div>
             <%end%>
-            </td>
+          </td>
       </tr>
-      <p>
       
     <%end%>
   <%end%>
-   <p>
+  
    <%if @owner then%>
-   <span class="friendHead" id="PNDS">Solicitudes pendientes:</span>
-   <p>
+
+
+<span class="friendHead" id="PNDS">Solicitudes pendientes:</span>
+
 
    <%@all_friends.each do |hash|%>
     <%if !(hash[:accepted]) then%>
       <tr>
         <td>
-             <span class="friendBlock">
-               	<span class="friendPhoto"><%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%></span>
-               	<span class="friendName"><%= hash[:user].name %></span>
-               	<span class="acceptFriend"><%= link_to "Aceptar", {:controller => "friendships", :action => "update", :friend_id => hash[:user].id}, :method => :update%></span>
-              </span>
+        	<div class="everymbrm" style="height: 203px; overflow: hidden; position: relative;">
+               	<span id="imgge" style="width:170px;height:170px; display: block; background:#ddd; overflow: hidden;">
+               		<%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%>
+               	</span>
+               	
+               	<div class="place-hldr" style="height: 30px;"><h3 style="background-color: rgb(222, 222, 222);"><%= hash[:user].name %></h3>
+               	</div>
+               	
+               	<div class="hoverShowEdit" style="margin-top: -380px;">
+               		<span class="addfriend" style="margin: 20px auto 10px;">
+               			<%= link_to "Aceptar", {:controller => "friendships", :action => "update", :friend_id => hash[:user].id}, :method => :update%></span>
+                </div>
+              </div>
         </td>
       </tr>
-      <p>
+
    <%end%>
    <%end%>
    <%end%>
@@ -77,3 +100,36 @@ $(".friendBlock").mouseover(function(){
    
 <%end%>
 </div>
+
+	<script>
+		$(".addfriend").clic( function() {
+			$(this).css({background: '#B3B3B3'});
+		});
+	</script>
+    	
+	<script>
+	
+			$(document).ready ( function() {
+				$('p:empty').hide();
+			});
+			
+			$('.everymbrm').mouseenter( function() {
+				$(this).find('.hoverShowEdit').animate({ marginTop: '-205px' }, 200);
+			});
+			$('.everymbrm').mouseleave( function() {
+				$(this).find('.hoverShowEdit').animate({ marginTop: '-380px' }, 200);
+			});
+
+		$('.everymbrm').mouseenter( function() {
+			$(this).find('h3').css({ background: "#006696", });
+			$(this).find('#imgge').delay( 3000 ).css({ 'filter' : 'blur(5px)', '-webkit-filter' : 'blur(5px)', '-moz-filter' : 'blur(5px)',
+										 '-o-filter' : 'blur(5px)', '-ms-filter' : 'blur(5px)' });
+			$(this).find('h3 > a').css({ color: "#FFF" });
+		});
+		$('.everymbrm').mouseleave( function() {
+			$(this).find('h3').css({ background: "#DEDEDE", });
+			$(this).find('#imgge').delay(1800).css({ 'filter' : 'blur(0px)', '-webkit-filter' : 'blur(0px)', '-moz-filter' : 'blur(0px)',
+										 '-o-filter' : 'blur(0px)', '-ms-filter' : 'blur(0px)' });
+			$(this).find('h3 > a').css({ color: "#000" });
+		});
+	</script>

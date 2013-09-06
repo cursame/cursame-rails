@@ -16,9 +16,9 @@ var Cursame ={
 </script>
 <!-- tratamos las notificaciones para agregarles el css first y last-->
 <%
-notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
-notifications_first = notifications.shift
-notifications_last = notifications.pop
+	notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
+	notifications_first = notifications.shift
+	notifications_last = notifications.pop
 %>
 <!-- notification -->
 <div id="box-notifications" style="display:none;">
@@ -60,7 +60,8 @@ notifications_last = notifications.pop
 				id:id,
 				page:1
 			};
-		$.get(form.action,$.param(filter),null,"script");
+			alert('filtrar');
+		// $.get(form.action,$.param(filter),null,"script");
 	}
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 

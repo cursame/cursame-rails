@@ -924,9 +924,11 @@ input:-moz-placeholder {
     margin-left: 79px;
     cursor:pointer;
     margin-top: -1px;
+    transition: ease-out all 0.2s;
   }
   & .plus-courses:hover{
     background: url('/assets/plus-box-icon-hover.png') no-repeat;
+    transition: ease-out all 0.2s;
   }
   & .element-left{
     float: left;
@@ -1242,9 +1244,11 @@ background-position: left center;
     border-top-left-radius: $border-radius-box;
     background: url('/assets/return-box-icon.png') no-repeat;
     cursor:pointer;
+    transition: ease-out all 0.2s;
   }
    & .return-course-icon:hover{
 	background: url('/assets/return-box-icon-hover.png') no-repeat;
+	transition: ease-out all 0.2s;
 	}
   & .title{
     font-family: helvlight;
@@ -1487,15 +1491,16 @@ background-position: left center;
 }
 
 .menu-user{
-  width: 280px;
+  width: 320px;
   float: right;
   margin-top: 10px;
+  
   & .logout{
     margin-top: 5px;
     float: right;
-    border-left: #CCC solid 1px;
     padding-left: 6px;
   }
+  
   & .avatar{
     float: right;
     text-align: center;
@@ -1504,6 +1509,7 @@ background-position: left center;
     margin-top: 1px;
     font-size: 13px;
   }
+  
   & span{
     margin-top: 11px;
     float: right;
@@ -1733,3 +1739,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 .fc-header-left { width: 440px; }
 .fc-header-center { width: 0; position: absolute; margin-left: -265px; }
 .fc-header-right { width: 0px; }
+
+
+#error_explanation {
+	color: #FFF;
+	background: red;
+	font-size: 15px;
+	padding: 15px;
+}
+

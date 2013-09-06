@@ -1,0 +1,110 @@
+  <!--modulo de integración de archivose en el sistema de cursos para cúrsame-->
+  
+  <center>
+      <% if ['pdf','xls','xlsx','ppt','txt','pptx','doc','docx', 'txt', 'odt', 'adp', 'ade'].include? @termination %>
+       
+           <% case %>
+              <%when @termination == 'pdf'%> 
+                <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/pdf.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                  <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'xls'%>   
+                  <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/xlx.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                       <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>     
+             <%when @termination == 'xlsx'%>   
+                 <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/xlx.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'ppt'%>    
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'txt'%> 
+                       <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'pptx'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/ppt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'docx'%> 
+                         <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/doc.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                     <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'doc'%> 
+                       <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/doc.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                       
+                      <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                
+              <%when @termination == 'txt'%>    
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                      <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'odt'%>    
+                       <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                                <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'adp'%>    
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                                                    <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+              <%when @termination == 'ade'%>    
+                     <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/txt.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                                                                                            <%= render partial: 'course_files/box_and_js', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      
+           <%end%>
+                  
+      <%end%>
+      
+      <% if  ['png','jpg','jpeg','gif','tif','bmp'].include? @termination %>
+          <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('<%=@name%>'); background-size:40px 40px; float:left; margin:2px;"></div>
+              <%= render partial: 'course_files/box_and_js_for_img', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+      <%end%>
+      
+      
+      
+      <% if  ['avi','mp4','mov','wma','mpge','flv', 'm4v'].include? @termination %>
+            <% case %>
+                  <%when @termination == 'avi'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                          <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                  <%when @termination == 'm4v'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                          <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                  <%when @termination == 'mp4'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                           <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                  <%when @termination == 'mov'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                         <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                  <%when @termination == 'wma'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                         <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                  <%when @termination == 'mpge'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                         <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                  <%when @termination == 'flv'%>
+                        <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/fl.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                         <%= render partial: 'course_files/box_and_js_for_video', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+            <% end %>
+              
+     <%end%>
+     
+      <% if  ['exe','zip','rar','iso','dmg','psd', 'cad'].include? @termination %>
+               <% case %>
+                      <%when @termination == 'exe'%>
+                         <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/exe.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                           <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      <%when @termination == 'zip'%>
+                         <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/zip.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                          <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      <%when @termination == 'rar'%>
+                          <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/zip.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                          <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      <%when @termination == 'iso'%>
+                          <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/iso.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                          <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      <%when @termination == 'dmg'%>
+                          <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/dmg.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                          <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      <%when @termination == 'psd'%>
+                           <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/ps.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                           <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      <%when @termination == 'cad'%>
+                           <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/cad.png'); background-size:40px 40px; float:left; margin:2px;"></div>
+                           <%= render partial: 'course_files/box_and_js_for_compress_and_executables', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
+                      
+                <% end %>
+                      
+      <%end%>
+    </center>

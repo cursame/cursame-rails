@@ -112,7 +112,7 @@ input.log-in:hover { background: #00AEC5; color: #fff; cursor: pointer; transiti
 input:-webkit-autofill,input:-moz-autofill, input:autofill { background-color: #ddd!important; }
 
 .signup-btn { color: white; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-/*border-color: #f46d59; border-color: #f46d59;*/ border: 0; width: 290px; height: 45px; font-size: 17px; font-family: "HelveticaNeue-Light", sans-serif; margin-top: 50px; cursor: pointer;
+/*border-color: #f46d59; border-color: #f46d59;*/ border: 0; width: 290px; height: 45px; font-size: 17px; font-family: "HelveticaNeue-Light", sans-serif; margin: 10px; cursor: pointer;
 background-image: -khtml-gradient(linear, left top, left bottom, from(#f86049), to(#d6432d));
 background-image: -moz-linear-gradient(top, #f86049, #d6432d);
 background-image: -ms-linear-gradient(top, #f86049, #d6432d);
@@ -171,4 +171,24 @@ border-top-right-radius: 0px; }
 #zenbox_tab{
     background:transparent!important;
     border: 0px!important;
+}
+
+.checkbox input[type="checkbox"] {
+    display:none;
+}
+.checkbox input[type="checkbox"] + label {
+    display:inline-block;
+    width:0px;
+    height:20px;
+    padding-left:20px; 
+    margin: -1px 4px 0 0;
+    vertical-align:middle;
+    background: url('check.png') right top no-repeat;
+    cursor:pointer;
+    color: #676767;
+	padding-top: 4px;
+    
+}
+.checkbox input[type="checkbox"]:checked + label {
+    background: url('/assets/check.png') 0px top no-repeat;
 }

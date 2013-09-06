@@ -101,7 +101,12 @@
      <%end%>
     <div class="menu-user">
       <% if user_signed_in? %>
+          
+          <div id="logoutHover" style="width: 20px; margin-top: -11px!important; margin-left: 6px; position: relative; display: block; float: right; height: 26px!important; padding-top: 11px; padding-right: 5px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; padding-left: 8px; color: #A3A9B5;">
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
+          		<div id="ShowLogout" style="display: none;">Salir</div>
+          </div>
+          
         <% if current_user.avatar.blank? %>
              <%= link_to image_tag(current_user.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
          <%else%>
@@ -153,6 +158,18 @@
             $('body').css('overflow','hidden');
       }
    },2000)
+  </script>
+  
+  <script>
+	$('#logoutHover').mouseenter( function() {
+  		$(this).animate({ width: "58px" }, 200);
+  	});
+  	$('#logoutHover').mouseleave( function() {
+  		$(this).animate({ width: "20px" }, 100);
+  	});
+  	$('#logoutHover').hover( function() {
+  		$('#ShowLogout').slideToggle(100).delay(300);
+  	});
   </script>
   
  
