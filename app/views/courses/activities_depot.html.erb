@@ -77,16 +77,16 @@
                            $("#"+casual).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
 						   
 						   $('.activities_depot').click( function() {
-						   if('.activities_depot' <= '65') {
-							   $(this).css({ height: "200px" });
-							   $(this).find('.title').removeClass('title').addClass('titleNoTwo');
-							   $(this).find('.reference').removeClass('reference').addClass('referenceNoTwo');
-							   }
-							else if ('.activities_depot' >= '200') {
-							   $(this).css({ height: "65px" });
-							   $(this).find('.titleNoTwo').removeClass('titleNoTwo').addClass('title');
-							   $(this).find('.referenceNoTwo').removeClass('referenceNoTwo').addClass('reference');
-							   }
+							   if('.activities_depot' <= '65') {
+								   $(this).css({ height: "200px" });
+								   $(this).find('.title').removeClass('title').addClass('titleNoTwo');
+								   $(this).find('.reference').removeClass('reference').addClass('referenceNoTwo');
+								   }
+								else if ('.activities_depot' >= '200') {
+								   $(this).css({ height: "65px" });
+								   $(this).find('.titleNoTwo').removeClass('titleNoTwo').addClass('title');
+								   $(this).find('.referenceNoTwo').removeClass('referenceNoTwo').addClass('reference');
+								   }
 						   });
 						   
 						   //$('.activities_depot').on("click", changeClass);

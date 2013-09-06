@@ -1,11 +1,13 @@
-<div class="signup-layout"></div>
-	<div class="content login" id="titlheader" style="text-align:center;">
-			<b>No has recibido confirmación</b><br /><br />Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p>
-		
+<div class="signup-restore"></div>
+
+<div class="content login confirmationIndexHeader" id="titlheader" style="width: 600px; text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px;">
+			<b style="font-size: 15px!important; line-height: 30px;">
+			<b>No has recibido confirmación</b><p style="width: 400px; font-size: 18px; margin: 20px auto 0 auto; line-height: 21px;">Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p>
+			</b>
 		<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
 		  <%= devise_error_messages! %>
 		
-			<div class="form-signin form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;">
+			<div class="form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;">
 				  <div><!-- <%= f.label :email %><br /> -->
 				  	<%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %>
 				  </div>
@@ -15,7 +17,7 @@
 			</div>
 		</div>
 
-		<div class="confirmation-links">
+		<div class="confirmation-links" style="margin-top: 50px!important;">
 			<%= render "devise/shared/links" %>
 		</div>
 </div>

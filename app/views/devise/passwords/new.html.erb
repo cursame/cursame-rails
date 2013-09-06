@@ -1,12 +1,13 @@
-<div class="signup-layout"></div>
-	<div class="content login" id="titlheader" style="text-align:center;">
+<div class="signup-restore"></div>
+
+<div class="content login confirmationIndexHeader" id="titlheader" style="width: 600px; text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px;">
 		<b>¿Olvidaste tu contraseña?</b>
-		<p style="font-size: 16px; margin-top: 10px;">No importa, nosotros te ayudamos a recuperarla, por favor solo agrega el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p>
+		<p style="width: 420px; padding-top: 20px; margin: 0 auto; font-size: 16px; margin-top: 10px; margin-bottom: 20px;">No importa, nosotros te ayudamos a recuperarla, por favor solo agrega el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p>
 
 			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 				<%= devise_error_messages! %>
 				
-				  <div class="form-signin form-signup" style="height:125px;padding-top:7px;margin-top:40px;display:block;">
+				  <div class="form-signup" style="height:125px;padding-top:7px;margin-top:40px;display:block;">
 					<div><!-- <%= f.label :Por_favor_escribe_tu_correo_electronico %> -->
 						<%= f.email_field :email, :class => 'email', :placeholder =>"Correo electrónico" %></div>
 						<div><%= f.submit "Reactivar contraseña", :class =>"confirm-btn" %></div>
@@ -15,6 +16,6 @@
 
 </div>
 	
-							<div class="confirmation-links">
+				<div class="confirmation-links" style="margin-top: 50px;">
 					<%= render "devise/shared/links" %>
 				</div>

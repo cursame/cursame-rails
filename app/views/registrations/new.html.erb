@@ -5,7 +5,8 @@ $(document).ready(function() {
 });
 
 </script>
-<div class="bg-layout" id="bg"></div>
+<div class="signup-restore"></div>
+
 <div class="login">
     <p>
     <b>Lo sentimos pero la red a la que estas intentado accesar no existe</b></br>
@@ -21,22 +22,40 @@ $(document).ready(function() {
     <center>
 </div>
 <%else%>
-<div class="signup-layout"></div>
+
+<div class="signup-restore"></div>
 
 <div class="content login" id="titlheader">
 
-		<p>
-		<b>Regístrate en Cúrsame</b><br /><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
-		</p>
-		<br/>
+		<p><b>Regístrate en Cúrsame</b><br /><br /></p>
 
-<!-- <h2>Sign up</h2> -->
-	<div class="form-signin form-signup">
+
+<div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 640px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: auto;">
+
+	<div class="" style="float: left; width: 319px; margin: 10px auto; padding: 15px;">
+		<p>C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>
+		
+	<div class="confirmation-links" style="text-align: left; font-size: 12px; line-height: 1.5em;">
+		<%- if controller_name != 'sessions' %>
+		  <%= link_to "¿Ya eres usuario? Ingresa", new_session_path(resource_name) %><br />
+		<% end -%>
+		<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+		  <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
+		<% end -%>
+		<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+		  <%= link_to "¿No recibiste las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
+		<% end -%>
+	</div>
+		
+	</div>
+
+	<div class="rgister" style="width: 330px; background: #FFF; float: right; padding-bottom: 10px;">
+		<div class="login-heading">Registrate</div>
+			<%= devise_error_messages! %>
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-		<%= devise_error_messages! %>
 		<div><!-- <%= f.label :email %><br /> --> <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %></div>
-			<div><!-- <%= f.label :first_name %><br /> --> <%= f.text_field :first_name, :class => "pswd",:placeholder =>"Nombre(s)" %></div>
-				<div><!-- <%= f.label :last_name %><br /> --> <%= f.text_field :last_name, :class => "pswd",:placeholder =>"Apellidos" %></div>
+		<div><!-- <%= f.label :first_name %><br /> --> <%= f.text_field :first_name, :class => "pswd",:placeholder =>"Nombre(s)" %></div>
+		<div><!-- <%= f.label :last_name %><br /> --> <%= f.text_field :last_name, :class => "pswd",:placeholder =>"Apellidos" %></div>
 		<div><!-- <%= f.label :password %><br /> --> <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña" %></div>		
 
 		<div><!-- <%= f.label :password_confirmation %><br /> --> <%= f.password_field :password_confirmation, :class => "pswd", :placeholder =>"Confirmacion de contraseña" %></div>
@@ -44,6 +63,7 @@ $(document).ready(function() {
 		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
     	<%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain%>
 		<%= f.hidden_field :domain, :class => "pswdcode", :value => request.domain %>
+
 		<div class="dropperDwn">
 	       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
 	       <% 1.times do networks = @user.permissionings.build end %>
@@ -52,27 +72,23 @@ $(document).ready(function() {
 	           <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form dropperDwn" %>
 	       <%end%>
 	   </div>
-		<div class="terms">
+		<div class="terms" style="width: 285px;font-size: 12px!important; color: #CCC; height: 120px; margin: 0 auto; margin: 10px auto; overflow: auto;">
 		    <%= render partial: "home/terms_and_conditions"%>
 		</div>
-			<div class="terms_box"> <%= f.check_box :accepted_terms %>Acepto los términos y condiciones.</div>
+		
+
+		
+		<label class="terms_box" style="color: #6a6a6a; font-size: 12px; margin-left: 10px; width: 200px;">
+			<%= f.check_box :accepted_terms %> <label></label><span>Acepto los términos y condiciones</span>
+		</label>
+		
 		<%= f.submit "Registrarme", :class =>"signup-btn" %>
+		
 		<% end %>
+		
 	</div><!-- ends form-signup -->
 </div><!-- ends content login -->
 
-<div class="confirmation-links">
-<%- if controller_name != 'sessions' %>
-  <%= link_to "¿Ya eres usuario? Ingresa", new_session_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "¿No recibiste las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
-<% end -%>
 </div>
 
 <!-- <%= render "devise/shared/links" %> -->
