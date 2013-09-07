@@ -31,12 +31,12 @@
         <%#= f.datetime_select :publish_date%>
         <%#= f.datetime_select :end_date%>
 		
-	<div style="float: left;">
+	<div style="float: right;">
 		<span style="display: block; position: relative; float: left; margin-right: 5px; padding-top: 13px;">Fecha entrega</span>
         <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery form_fix_date_overlay", :id => 'end_date_'+random_id, :required =>'required', :value=>f.object.end_date  %>
     </div>
     
-    <div style="float: right;">
+    <div style="float: left;">
         <span style="display: block; position: relative; float: left; margin-right: 5px; padding-top: 13px;">Fecha publicación</span>
         <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :class=>"date-input delivery form_fix_date_overlay", :id => 'publish_date_'+random_id ,:required =>'required', :value=>f.object.end_date %>
     </div>
