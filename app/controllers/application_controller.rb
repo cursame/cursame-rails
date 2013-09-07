@@ -241,7 +241,7 @@ class ApplicationController < ActionController::Base
         end
      when @browser == 'Safari' 
        
-        if @version > '500'
+        if @version && @version > '500'
           puts "navegador no compatible"
           @compatible = false
         else
