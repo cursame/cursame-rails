@@ -21,11 +21,28 @@ class CourseFilesController < ApplicationController
     @cf = @course_file
     @name = @file
     @sintetic_name = @split_name
+    ##### encontrando al owner del curso
+    @member = MembersInCourse.find_by_course_id_and_user_id(@course_id, current_user.id)
+    
   end
 
   def destroy
-    @course_file = CourseFile.find(params[:course_file])
+      @course_file = CourseFile.find(params[:id])
+      @file = "#{@course_file.file}"
+      @split_name =  @file.split('/').last
+      @termination = @file.split('.').last
+      ###### homogenizacion de variables
+      @cf = @course_file
+      @name = @file
+      @sintetic_name = @split_name
     @course_file.destroy
+    
+                
+        respond_to do |format|
+          format.json
+          format.js 
+        end
+   
     
   end
 end

@@ -21,7 +21,7 @@
   
  </script>
 <%#= link_to truncate("#{@sintetic_name}", :omission => "...", :length => 35), "#{cf.file}"%>
-<div id="t_<%=@termination%>_<%=cf.id%>" class="content_f_box"  style="display:none">
+<div id="t_<%=@termination%>_<%=cf.id%>" class="content_f_box"  style="display:none;">
             <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
                      <center>  
                    <%= link_to truncate("#{@sintetic_name} DESCARGAR", :omission => "...", :length => 25), "#{cf.file}", :download => @sintetic_name, :class=>'link_download'%></br>                                                         
