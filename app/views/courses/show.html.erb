@@ -304,7 +304,7 @@
 
 
      <div id="tabs-friends" class="tabs-style">
-         <div id="box-friends" class="basic-lateral-box" style="margin-top:-140px;"  >
+         <div id="box-friends" class="basic-lateral-box" style="margin-top:40px; height:270px; overflow:auto;"  >
                <h2  style="margin-right:-30px;"> Miembros </h2> 
               <% permitted_to? :create, :courses do %>
 
@@ -348,18 +348,18 @@
               <%end%>
              <%end%>
          </div><!--end members in courses-->
- 
+      </div>
          
            
         
-   <div id="box-d" class="basic-lateral-box" style="margin-top:200px; position:relative;" >
+   <div id="box-d" class="basic-lateral-box" style="margin-top:400px; position:relative; display:block;" >
         
         <h2  style="margin-right:-30px; width:260px;"> Biblioteca <%= @course.course_files.count %> </h2> 
          <% if @member.owner != nil %>
          <% if @member.owner == true %>
         
         <%= form_for CourseFile.new do |f|%>
-           <label style="position:absolute; margin-left:-80px; margin-top:10px;">Subir Archivos al Curso</label>
+          <label style="position:realtive; display:block; margin-left:-10px; margin-top:0px; text-align:center;">Subir Archivos al Curso</label>
            <input id="course_file_file" name="course_file[file]" type="file" multiple="multiple"/>
           <%= hidden_field_tag :course_id, @course.id %> 
           <%= f.hidden_field :published, :value => true %>
@@ -398,7 +398,6 @@
         
         <!--valdiador de tipos -->
         
-   </div>
    
   </div>
 </div>
