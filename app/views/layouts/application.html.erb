@@ -92,17 +92,18 @@
     </script>
     
 <!-- header -->
-<header id="user_nav" class="topbar" >
+<header id="user_nav" class="topbar">
   <div class="center-div">
+  	<div class="headFix">
      <% if current_network == nil%> 
        <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
      <%else%>
        <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
      <%end%>
-    <div class="menu-user">
+	 <div class="menu-user">
       <% if user_signed_in? %>
           
-          <div id="logoutHover" style="width: 20px; margin-top: -11px!important; margin-left: 6px; position: relative; display: block; float: right; height: 26px!important; padding-top: 11px; padding-right: 5px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; padding-left: 8px; color: #A3A9B5;">
+          <div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           		<div id="ShowLogout" style="display: none;">Salir</div>
           </div>
@@ -131,6 +132,7 @@
       <%= render :partial => '/shared/notifications' %>
     </div>
   </div>
+ </div><!-- ends headFix -->
 </header>
 
 
@@ -172,14 +174,16 @@
   	});
   </script>
   
- 
   <div class="container" >
     <!-- content -->
     <%= yield %>
     <br>
     <!--<img src="http://placehold.it/920x100/" alt="">  -->
   </div>
+  
+  
 </div>
+
 <div id="browsers_box" class="content_f_box"  style="display:none">
      <!---  <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>-->
  	   

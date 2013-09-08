@@ -3,7 +3,7 @@
         <ul id="banner-btns" class="list-header">
             <li class="calendar" get-to="#calendar-area" move-sidebar-height="105px" on-load-function="calendar">Calendario</li>
           <% permitted_to? :create, :courses do %>
-            <li class="calendar" get-to="#full-deliveries-area" move-sidebar-height="105px">Entregas</li>
+            <li class="delivery" get-to="#full-deliveries-area" move-sidebar-height="105px">Entregas</li>
             <li class="calendar" get-to="#my_old_courses" move-sidebar-height="105px">Cursos antiguos</li>
             <%end%>
         </ul>

@@ -50,13 +50,22 @@ input:-moz-placeholder {
 
 /* /\/\/\/\ Template Generic /\/\/\/\ */
 .center-div{
-  width: $widht-content;
+  width: 100%;
+  //width: $widht-content;
   margin: 0px auto;
 }
 
 
+.headFix {
+	//width: 950px;
+	width: 900px;
+	margin: 0 auto;
+}
+
 .topbar{
-  position: fixed; background: #f7f7f7 !important;
+  position: fixed;
+  //background: #f7f7f7 !important;
+  background: #FFF !important;
   height: 35px;
   z-index: 999;
   border-bottom: 1px solid #ccc;
@@ -69,10 +78,12 @@ input:-moz-placeholder {
   position: absolute;
   margin-top: 35px;
   /* border: 1px solid #d5d5d5; */
-  background: linear-gradient(to bottom, rgba(252,252,252,1), rgba(255,255,255,0));
   /*background: $bg-general; */
+  //background: linear-gradient(to bottom, rgba(252,252,252,1), rgba(255,255,255,0));
+  background: #FFF!important;
   z-index: -2;
-  width: 939px;
+  //width: 939px;
+  width: 100%;
 }
 .side-left-bar{
   width: $width-left-bar;
@@ -87,9 +98,13 @@ input:-moz-placeholder {
   border-bottom: 1px solid #ccc;
 }
 #box-content{
-  float: left;
+  //float: left;
+  margin: 0 auto;
+  display: table;
+  
   &.profile-line{
-    background: url('/assets/line-tl.png') $bg-general repeat-y 285px 0px;
+    //background: url('/assets/line-tl.png') $bg-general repeat-y 285px 0px;
+    background: url('/assets/line-tl.png') repeat-y 285px 0px;
   }
 
 }
@@ -968,7 +983,8 @@ input:-moz-placeholder {
       }
     }
     & li.ui-state-default{
-      background: #fafafa;
+      //background: #fafafa;
+      background: #EEE;
       border-bottom: $border-box;
       margin-bottom: -1px;
       @include shadow-title-tab;
@@ -993,9 +1009,10 @@ input:-moz-placeholder {
   width: $width-lateral-box;
   position: relative;
   z-index: 10;
+  
   & h2{
     position: absolute;
-    top:-21px;
+    top:-26px;
     color:#dfdfdf;
     font-family: helvbold;
     font-size: 19pt;
@@ -1191,6 +1208,7 @@ background-position: left center;
   height: 24px;
   margin-top: -1px;
   font-size: 12px;
+  
   & a{
     background: #f9f9f9;
     text-align: center;
@@ -1204,18 +1222,20 @@ background-position: left center;
     border-right: $border-box;
     @include border-b-right-radius;
     @include border-b-left-radius;
-    -webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
-    -moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
-    box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
-
+    //-webkit-box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
+    //-moz-box-shadow:    inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
+    //box-shadow:         inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
   }
+  
   & a:hover{
-    color: #555;
-    background: #edf1f5;
-    -webkit-box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
-    -moz-box-shadow:    inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
-    box-shadow:         inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+    color: #FFF;
+    background: #006696;
+    //background: #edf1f5;
+    //-webkit-box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+    //-moz-box-shadow:    inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+    //box-shadow:         inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
   }
+  
 }
 
 /*-- generic boxes --*/
@@ -1296,7 +1316,9 @@ background-position: left center;
 
 .banner-shadow{
   height:740px;
-  width:100%;
+  //width:100%;
+  width: 950px;
+  margin: 0 auto;
   overflow: hidden;
   color: white;
   background: url('/assets/shadow.png') no-repeat center bottom;
@@ -1337,12 +1359,15 @@ background-position: left center;
   width: 155px;
   text-align: center;
   position: absolute;
+
   &.user-layout{
     margin-top: -25px;
   }
+
   &.network-layout{
     margin-top: -95px;
   }
+
   &.course-layout {
     margin-top: -115px;
   }
@@ -1350,13 +1375,21 @@ background-position: left center;
   & .thumbnail{
     width: 150px;
     height: 150px;
-    background: #DCEAF4;
-    border: 3px solid white;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow:    0px 1px 4px rgba(0, 0, 0, 0.75);
-    box-shadow:         0px 1px 4px rgba(0, 0, 0, 0.75);
+    //background: #DCEAF4;
+    background: #00B4C4;
+    border: 3px solid #EEE;
+    border-radius: 50%;
+    overflow: hidden;
+    //border-radius: 1px;
+    //-webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.75);
+    //-moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.75);
+    //box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.75);
     text-align: center;
+    transition: ease-out all 0.4s;
+  }
+  & .thumbnail:hover {
+	 border: 3px solid #00B4C4;
+	 transition: ease-out all 0.4s; 
   }
   & .tagname{
     font-size: 11pt;
@@ -1365,16 +1398,21 @@ background-position: left center;
     margin-top: 12px;
   }
 }
-.avatar-mini{
+.avatar-mini {
   border: #FFF solid 2px;
   border-radius: $border-radius-avatar-mini;
   color: #fff !important;
-  -moz-box-shadow:  0px 1px 2px #666;
-  -webkit-box-shadow: 0px 1px 2px #666;
-  box-shadow: 0px 1px 2px #666;
+  //-moz-box-shadow:  0px 1px 2px #666;
+  //-webkit-box-shadow: 0px 1px 2px #666;
+  //box-shadow: 0px 1px 2px #666;
   position: relative;
   z-index: 1;
+  transition: ease-out all 0.5s;
   }
+.avatar-mini:hover, .avatar-mini img:hover {
+	border: #00B4C4 solid 2px;	
+	transition: ease-out all 0.2s;
+}
 
 #box-user-credential-principal{
   margin-left: 55px;
@@ -1382,6 +1420,7 @@ background-position: left center;
   text-align: center;
   position: absolute;
   margin-top: 30px;
+  
   & .thumbnail-principal{
     width: 140px;
     height: 140px;
@@ -1417,6 +1456,9 @@ background-position: left center;
   }
   & .calendar{
     background: url('/assets/icons/calendar-mini-white.png') no-repeat;
+  }
+  & .delivery{
+    background: url('/assets/icons/delivery.png') no-repeat;
   }
   & .schools{
     background: url('/assets/schools.png') no-repeat;
