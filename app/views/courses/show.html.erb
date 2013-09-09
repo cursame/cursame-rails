@@ -369,6 +369,9 @@
         <%end%>
   
         <script type="text/javascript">
+          $.ajaxSetup({
+              timeout:60000
+            });
 
             $(document).ready(function() {
               $('#upload-files-to-course').click(function(){
