@@ -19,7 +19,9 @@ class CourseFilesController < ApplicationController
     @sintetic_name = @split_name
     ##### encontrando al owner del curso
     @member = MembersInCourse.find_by_course_id_and_user_id(@course_id, current_user.id)
-    
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
@@ -32,5 +34,8 @@ class CourseFilesController < ApplicationController
       @name = @file
       @sintetic_name = @split_name
       @course_file.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 end
