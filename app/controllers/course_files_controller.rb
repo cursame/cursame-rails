@@ -1,5 +1,6 @@
 class CourseFilesController < ApplicationController
   def index
+    redirect_to :back
   end
   def show
   end
@@ -24,12 +25,11 @@ class CourseFilesController < ApplicationController
      if @course_file.save
        @cf_ui =  CourseFileIdUserId.create(:user_id => current_user.id, :course_file_id => @course_file.id )
        @cf_ci =  CourseIdCourseFileId.create(:course_id => @course_id, :course_file_id => @course_file.id ) 
-          respond_to do |format|
-             format.json
-             format.js 
-           end
+          
       end
-    
+      respond_to do |format|
+         format.js 
+       end
          
     
   end
@@ -43,11 +43,10 @@ class CourseFilesController < ApplicationController
       @cf = @course_file
       @name = @file
       @sintetic_name = @split_name
-    @course_file.destroy
+      @course_file.destroy
     
                 
         respond_to do |format|
-          format.json
           format.js 
         end
    
