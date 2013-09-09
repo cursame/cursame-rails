@@ -365,7 +365,35 @@
         <%end%>
         <%end%>
         <%end%>
-        <div id="uplok">
+  
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                    $('#new_course_file').fileupload({
+                        dataType: "script",
+                        add:function(e,data){
+                                data.context = $(tmpl("template-upload-2",data.files[0]));
+
+                                //console.log($('#unica').attr('id'));//.html('hola');//data.context);
+                                $('#uplok').append(data.context);
+                                data.submit();
+                        },
+                        progress:function(e,data){
+                            if(data.context){
+                                progress = parseInt(data.loaded / data.total * 100,0);
+                                data.context.find('.progress_exact').css('width',progress+ "%");
+                                if (progress == 100){
+                                  data.context.find('.deletedprogresbar').hide();
+                                }
+                           
+                            }
+                        }
+                    });
+            });
+        </script>
+
+
+        <div id="uplok">          
          <script id="template-upload-2" type="text/x-tmpl">
            <div class="upload">
             
