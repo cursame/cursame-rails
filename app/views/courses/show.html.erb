@@ -351,7 +351,79 @@
       </div>
          
            
-     
+        
+   <div id="box-d" class="basic-lateral-box" style="margin-top:400px; position:relative; display:block;" >
+        
+        <h2  style="margin-right:-30px; width:260px;"> Biblioteca <%= @course.course_files.count %> </h2> 
+         <% if @member.owner != nil %>
+         <% if @member.owner == true %>
+        <%= form_for (CourseFile.new) do |f|%>
+          <label style="position:realtive; display:block; margin-left:-10px; margin-top:0px; text-align:center;">Subir Archivos al Curso</label>
+          <%= f.file_field :file,  :id =>'course_file_file', multiple: true, name: "course_file[file]" %>
+          <%= hidden_field_tag :course_id, @course.id %> 
+          <%= f.hidden_field :published, :value => true %>
+        <%end%>
+        <%end%>
+        <%end%>
+  
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                    $('#new_course_file').fileupload({
+                        dataType: "script",
+                        add:function(e,data){
+                                data.context = $(tmpl("template-upload-2",data.files[0]));
+
+                                //console.log($('#unica').attr('id'));//.html('hola');//data.context);
+                                $('#uplok').append(data.context);
+                                data.submit();
+                        },
+                        progress:function(e,data){
+                            if(data.context){
+                                progress = parseInt(data.loaded / data.total * 100,0);
+                                data.context.find('.progress_exact').css('width',progress+ "%");
+                                if (progress == 100){
+                                  data.context.find('.deletedprogresbar').hide();
+                                }
+                           
+                            }
+                        }
+                    });
+            });
+        </script>
+
+
+        <div id="uplok">          
+         <script id="template-upload-2" type="text/x-tmpl">
+           <div class="upload">
+            
+             <div class="deletedprogresbar"> {%=o.name%}
+             <div class="content_progress_bar">
+               <div class="progress_exact"></div>
+              
+             </div>      
+             </div>
+           </div>
+               
+         </script>
+
+       </div>
+   <div  style="width:245px; overflow:auto; height:300px;">
+          <div id="files"></div>
+          <% @course.course_files.reverse.each do |cf|%>
+          <% @name =  "#{cf.file}" %>
+          <% @sintetic_name = @name.split('/').last%>
+          <% @termination = @name.split('.').last %>
+          <!--se ha colocan los archivos dependiendo su categoría-->
+          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+          
+          
+          <%end%>
+    </div>
+        
+        <!--valdiador de tipos -->
+        
+   </div>
   </div>
 </div>
 <!--archivos del curso-->
