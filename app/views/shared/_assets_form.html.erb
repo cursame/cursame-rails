@@ -6,7 +6,7 @@
 %>
 
 <% @asset = Asset.new %>
-<%= form_for @asset, :html => {:class => "default-form uploader-form"} do |f| %>
+<%= form_for @asset, :html => {:multipart => true, :class => "default-form uploader-form"} do |f| %>
 <div id="new_assets">
   <div id="<%= @asset_unique %>" class="file-input-box">
         <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
