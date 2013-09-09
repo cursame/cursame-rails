@@ -357,17 +357,15 @@
         <h2  style="margin-right:-30px; width:260px;"> Biblioteca <%= @course.course_files.count %> </h2> 
          <% if @member.owner != nil %>
          <% if @member.owner == true %>
-        <%= form_for (CourseFile.new), :remote => true do |f|%>
+        <%= form_for (CourseFile.new) do |f|%>
           <label style="position:realtive; display:block; margin-left:-10px; margin-top:0px; text-align:center;">Subir Archivos al Curso</label>
-           <input id="course_file_file" name="course_file[file]" type="file" multiple="multiple"></input>
-
+          <%= f.file_field :file,  :id =>'course_file_file', multiple: true, name: "course_file[file]" %>
           <%= hidden_field_tag :course_id, @course.id %> 
           <%= f.hidden_field :published, :value => true %>
         <%end%>
         <%end%>
         <%end%>
         <div id="uplok">
-          <script src="/assets/jquery-fileupload/jquery.fileupload.js?body=1" type="text/javascript"></script>
          <script id="template-upload-2" type="text/x-tmpl">
            <div class="upload">
             
