@@ -88,11 +88,7 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
   # colocando course files
-  
-  get 'course_files/new'
-  get 'course_files/create'
-  get 'course_files/destroy'
-  
+  resources :course_files 
   # metodos de manejo de cursos
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
   post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses

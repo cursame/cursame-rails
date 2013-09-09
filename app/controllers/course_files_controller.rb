@@ -1,9 +1,4 @@
 class CourseFilesController < ApplicationController
-  def index
-    redirect_to :back
-  end
-  def show
-  end
   def new
     @course_file = CourseFile.new
   end
@@ -11,7 +6,10 @@ class CourseFilesController < ApplicationController
   def create
     @course_file = CourseFile.new(params[:course_file])
     @course_id = (params[:course_id])
-   
+    if @course_file.save
+    @cf_ui =  CourseFileIdUserId.create(:user_id => current_user.id, :course_file_id => @course_file.id )
+    @cf_ci =  CourseIdCourseFileId.create(:course_id => @course_id, :course_file_id => @course_file.id )
+    end
     @file = "#{@course_file.file}"
     @split_name =  @file.split('/').last
     @termination = @file.split('.').last
@@ -21,16 +19,6 @@ class CourseFilesController < ApplicationController
     @sintetic_name = @split_name
     ##### encontrando al owner del curso
     @member = MembersInCourse.find_by_course_id_and_user_id(@course_id, current_user.id)
-    
-     if @course_file.save
-       @cf_ui =  CourseFileIdUserId.create(:user_id => current_user.id, :course_file_id => @course_file.id )
-       @cf_ci =  CourseIdCourseFileId.create(:course_id => @course_id, :course_file_id => @course_file.id ) 
-          
-      end
-      respond_to do |format|
-         format.js 
-       end
-         
     
   end
 
@@ -44,12 +32,5 @@ class CourseFilesController < ApplicationController
       @name = @file
       @sintetic_name = @split_name
       @course_file.destroy
-    
-                
-        respond_to do |format|
-          format.js 
-        end
-   
-    
   end
 end
