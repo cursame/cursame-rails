@@ -426,27 +426,28 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	vertical-align: middle;
  }
 .rateTwo { 
-	background: #00ADC4;
+	background: #006696;
 	color: #fff;
 	font-size: 20px;
-	padding: 27px 10px 19px 10px;
+	padding: 17px 10px 9px 10px;
 	display: inline-block;
 	text-align: center;
 	float: left;
-	width: 434px;
+	width: 439px;
 	vertical-align: middle;
-	margin-bottom: 15px;
+	//margin-bottom: 15px;
  }
 .QuestionAsk {
 	color: #4c4646;
+	background: #f0efef;
 	font-size: 17px;
-	text-align: left;
-	margin-top: 15px;
+	text-align: center;
+	//margin-top: 15px;
 	display: block;
-	border-bottom: 1px solid #d9d9d9;
-	width: 422px;
-	padding: 11px 6px 6px 6px;
-	margin-bottom: 10px;
+	//border-bottom: 1px solid #d9d9d9;
+	width: 447px;
+	padding: 13px 6px 10px 6px;
+	//margin-bottom: 10px;
 }
 .AnswerAsk {
 	color: #262222;
@@ -454,8 +455,8 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	text-align: left;
 }
 .resultsExams {
-	padding: 10px;
-	width: 433px;
+	//padding: 10px;
+	width: 459px;
 	height: 400px;
 	display: block;
 	font-family: arial;
@@ -467,8 +468,8 @@ vertical-align: middle;
 text-align: center;
 padding: 0!important;
 height: 117px;
-margin-bottom: 20px;
-margin-left: -10px;
+//margin-bottom: 20px;
+//margin-left: -10px;
 width: 454px;
 }
 
@@ -590,13 +591,16 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
         width:440px;
         height:400px;
         float:left;
-        overflow:auto;
+        //overflow:auto;
+        overflow-y: scroll;
+		overflow-x: hidden;
         background-color: #FFF;
     
     & .delivery_f {
         width: 436px;
         float: left;
-        overflow: auto;
+        //overflow: auto;
+        overflow-y: scroll; overflow-x: hidden;
         border-left: 4px solid #2683B3;
         border-bottom: 1px solid #e6e6e6;
         
@@ -614,7 +618,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                
                & .title{
                    /* background: #7E9157; */
-                   width: 390px;
+                   width: 375px;
                    font-size:15px;
                    padding:8px 5px 5px 5px;
                    color: #444;
@@ -638,7 +642,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                    padding:5px;
                    font-align: justify;
                    color:#15B1B9;
-                   width: 390px;
+                   width: 375px;
                    float: left;
                    
                     & .state-btn{
@@ -734,7 +738,8 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
            background: #F5F5F5;
            width:459px;
            height:400px;
-           overflow: scroll;
+           overflow-y: scroll;
+           overflow-x: hidden;
            margin-left:-10px;
       	   display: inline-block;
       	   float: right;
@@ -1120,7 +1125,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
  }
  
 #OpenClose {
-	width: 30px;
+	width: 45px;
 	height: 85px;
 	display: inline-block;
 	background: #FFF;
@@ -1170,7 +1175,7 @@ td {
 	background: rgba(255,255,255,1);
 	transition: ease-out all 0.3s;
 	cursor: pointer;
-	border-top: 4px solid #2683B3;
+	border-top: 1px solid #2683B3;
 	/*
 	font-size: 18px;
 	height: 19px;
@@ -1284,5 +1289,191 @@ td {
 .CloseWinWd:hover {
 	background: #013E5A;
 }	
+
+#ExamsDelivery .delivery_container .dates{
+	width: 240px;
+   height: 10px;
+   overflow: hidden;
+   padding: 0px 5px 5px 5px;
+   font-align: justify;
+   color:#8d8d8d;
+   margin-top: -3px;
+   float: left;
+}
 	
-	
+.state {
+   padding:5px;
+   font-align: justify;
+   color:#15B1B9;
+   width: 390px;
+   float: left;
+   
+    & .state-btn{
+        padding:4px;
+        background:#128617 !important;
+        width:70px;
+        color: #FFF;
+        float:left;
+        text-align:center;
+        margin-top:-8px;
+        -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+    }
+    
+    & .state-btn:hover{
+        background:#EED12C !important;
+    }
+   
+}
+
+.delivery_f {
+        width: 436px;
+        float: left;
+        overflow: auto;
+        border-left: 4px solid #2683B3;
+        border-bottom: 1px solid #e6e6e6;
+        
+           & .delivery_container {
+               width: 431px;
+               height: 80px;
+               margin-bottom: 0px;
+               /*border-bottom: 1px solid #E2E0E0;*/
+               /* background: url(../assets/ir-a.png) right center no-repeat #FFF; */
+               background: #FFF;
+               transition: ease-out all 0.3s;
+               /*box-shadow: inset -7px -2px 4px -4px #ccc;*/
+               padding-left: 5px;
+               padding-top: 5px;
+               
+               & .title{
+                   /* background: #7E9157; */
+                   width: 375px;
+                   font-size:15px;
+                   padding:8px 5px 5px 5px;
+                   color: #444;
+                   height: 37px;
+                   font-weight: lighter;
+                   overflow: hidden;
+               }
+               
+               & .dates{
+               	   width: 240px;
+                   height: 10px;
+                   overflow: hidden;
+                   padding: 0px 5px 5px 5px;
+                   font-align: justify;
+                   color:#8d8d8d;
+                   margin-top: -3px;
+                   float: left;
+               }
+               
+               & .state {
+                   padding:5px;
+                   font-align: justify;
+                   color:#15B1B9;
+                   width: 375px;
+                   float: left;
+                   
+                    & .state-btn{
+                        padding:4px;
+                        background:#128617 !important;
+                        width:70px;
+                        color: #FFF;
+                        float:left;
+                        text-align:center;
+                        margin-top:-8px;
+                        -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+                    }
+                    
+                    & .state-btn:hover{
+                        background:#EED12C !important;
+                    }
+                   
+               }
+               
+               & .image{
+                   float:right;
+                   position: relative;
+                   margin-top: -36px;
+               }
+           }
+         }
+
+.arco_course_deliver .so_open_C2 {
+	height: 400px;
+	overflow: auto;
+	float: left;
+	margin-left: 0px;	
+}
+
+	.so_open_C2{
+        width: 436px;
+        height: 400px; /*height: auto; */
+        overflow: auto;
+        float: left;
+        margin-left: -5px;
+        
+        & .assignment{
+            width: 436px;
+            height: 60px;
+            background: #eee;
+          
+          & .title{
+			height: 41px;
+			overflow: hidden;
+			color: #0f0f0f;
+			background: transparent;
+			font-size: 12px;
+			padding: 10px;
+			/*border-top:solid 1px #929292;
+            border-bottom:solid 1px #929292;*/
+              & b{
+                  
+              }
+			
+            }
+            
+          & .name{
+              color:#fff;
+              background:#42B9C1;
+          }
+          
+          & .image{
+			float: right;
+			position: relative;
+			display: inline-block;
+			margin-top: -52px;
+			margin-right: 8px;
+          }
+            
+        }
+        
+     }
+
+.resultsExams .responUser {
+	background: #EEEEEE;
+	height: 40px;
+	clear: both;
+	padding-top: 11px!important;
+}
+.resultsExams table {
+	width: 459px;
+}
+
+tr:nth-child(even) {
+  background-color: #FFF!important;
+  height: 32px;
+  border-top: 1px solid #EEE;
+}
+tr:nth-child(odd) {
+  background-color: #f7f6f6!important;
+  height: 40px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+tr:nth-child(odd) > td {
+	padding-top: 12px;
+	padding-bottom: 10px;
+	border-right: 1px solid #ccc;
+	text-align: center;
+}

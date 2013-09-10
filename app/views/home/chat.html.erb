@@ -1,32 +1,50 @@
 <div style="width: 940px; height: auto; display: block; position: relative;">
 
+<script type="text/javascript">
+$(function(){
+        // Check the initial Poistion of the Sticky Header
+        var stickyHeaderTop = $('#filterCont').offset().top;
+ 
+        $('.SDBr').scroll(function(){
+                if( $('.SDBr').scrollTop() > stickyHeaderTop ) {
+                        $('#filterCont').css({position: 'fixed', top: '36px',});
+                        $('#filterCont').css('display', 'block');
+                } else {
+                        $('#filterCont').css({position: 'static', top: '36px'});
+                }
+        });
+  });
+  </script>
+
 <!-- begin sidebar -->
 <div class="SDBr" style="float:left; width: 213px; height: 91%; position: fixed; display: block; padding-top: 0px; border-right: 1px solid #ccc; overflow-x:hidden; padding-left: 0px; margin-left: -15px; background: #404959; color: #FFF;">
 
 	
-<div id="filterCont" style="position: fixed;">
-	<div id="ChatFilter" style="background: #363F4D; cursor: pointer; display: block; height: 32px; padding-left: 13px; padding-top: 17px;
-    position: absolute; width: 200px; z-index: 999;">
-    
-    <img src="/assets/chat_icon.png">
-    <span style="display: inline-block; padding-top: 3px; position: absolute; vertical-align: middle;">Chat</span>
+	<div id="filterCont">
+		<div id="ChatFilter">
+		    <img src="/assets/chat_icon.png">&nbsp;&nbsp;
+		    <span style="display: inline-block; padding-top: 3px; position: absolute; vertical-align: middle;">Filtrar por</span>
+		    <span class="imageChatDrop">
+		    	<img src="/assets/imageChatDrop.png">
+		    </span>
+			
+			<span id="ChatFilterDrop">
+				<ul>
+					<!-- <li style="padding: 10px 1px 10px 7px; display: block; width: 150px;">&nbsp;&nbsp;Ver</li> -->
+					<li><a id="everything">Todo</a></li>
+					<li><a id="ShowCourses">Solo cursos</a></li>
+					<li><a id="ShowFriends">Solo amigos</a></li>
+				</ul>
+			</span><!-- ChatFilterDrop -->
+		</div><!-- ends ChatFilter -->
+	</div><!-- filterCont -->
 	
-	<span id="ChatFilterDrop">
-		<ul>
-			<li style="padding: 10px 1px 10px 7px; display: block; width: 150px;">&nbsp;&nbsp;Ver</li>
-			<li><a id="everything">Todo</a></li>
-			<li><a id="ShowCourses">Solo cursos</a></li>
-			<li><a id="ShowFriends">Solo amigos</a></li>
-		</ul>
-	</span><!-- ChatFilterDrop -->
-	</div><!-- ends ChatFilter -->
-</div><!-- filterCont -->
 
 	<!-- <div class="divider" style="display: block; position: relative; height: 70px;"></div> -->
 	
 	<div id="OnlyCourses">
-	<span class="titleBraker" style="width: 175px; margin-bottom: 6px; margin-left: 0px; color: #FFF; height: 18px; margin-top: 40px; padding-top: 17px; font-weight: lighter; display: block; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">
-	<img src="/assets/small_courses.png">Cursos</span>
+	<span class="titleBraker" style="width: 175px; margin-bottom: 6px; margin-left: 0px; color: #FFF; height: 18px; margin-top: 0px; padding-top: 17px; font-weight: lighter; display: block; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">
+	<img src="/assets/small_courses.png">&nbsp;&nbsp;Cursos</span>
 
 		<% @courses_online.each do |course|%>
 		
@@ -36,8 +54,8 @@
 	</div><!-- OnlyCourses -->
 
 	<div id="JustFriends">
-	<span class="titleBraker" style="width: 192px; color: #FFF; height: 18px; margin-top: -22px; padding-top: 37px; font-weight: lighter; display: block; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">
-	<img src="/assets/friends.png">Amigos conectados</span>
+	<span class="titleBraker" style="width: 192px; color: #FFF; height: 18px; margin-left: 0px; padding-top: 17px; font-weight: lighter; display: block; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;">
+	<img src="/assets/friends.png">&nbsp;&nbsp;Amigos conectados</span>
 
 		<% @friends_online.each do |user|%>
 		
@@ -75,9 +93,15 @@
   		$('.chat-panel').css({ visibility: "hidden" });
   	});
   	
-  	$('#ChatFilter').click( function() {
-  		$(this).css({ background: "#334259" });
+  	$('#ChatFilter').mouseenter( 
+  		function() { $(this).css({ background: "#006696" }) },
+  		function() { $(this).css({ background: "#334259" })
   	});
+  	
+  	$('#ChatFilter').hover(
+        function() { $(this).css({ background: "#006696"}) },
+        function() { $(this).css({ background: "#363F4D"})
+	});
   	
   	
   	
@@ -119,45 +143,3 @@
   });
   </script>
   -->
-
-  <script>
-    function UpdateTableHeaders() {
-       $(".persist-area").each(function() {
-       
-           var el             = $(this),
-               offset         = el.offset(),
-               scrollTop      = $(window).scrollTop(),
-               floatingHeader = $(".floatingHeader", this)
-           
-           if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
-               floatingHeader.css({
-                "visibility": "visible"
-               });
-           } else {
-               floatingHeader.css({
-                "visibility": "hidden"
-               });      
-           };
-       });
-    }
-    
-    // DOM Ready      
-    $(function() {
-    
-       var clonedHeaderRow;
-    
-       $(".persist-area").each(function() {
-           clonedHeaderRow = $(".persist-header", this);
-           clonedHeaderRow
-             .before(clonedHeaderRow.clone())
-             .css("width", clonedHeaderRow.width())
-             .addClass("floatingHeader");
-             
-       });
-       
-       $(window)
-        .scroll(UpdateTableHeaders)
-        .trigger("scroll");
-       
-    });
-  </script>

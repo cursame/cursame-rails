@@ -18,6 +18,7 @@
     window.location.href="<%= new_url %>"  // put your correct path in a string here
   </script>
 <% end %>
+<% if request.url.split("/").last != "evaluation_download" then %>
 <html>
 <head>
   <title>Cursame</title>
@@ -196,4 +197,66 @@
 </div>
 </body>
 </html>
+<%else%>
+  <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+
+<div class="center-div">
+  <!-- content -->
+  
+  <script>
+   setTimeout(function(){
+      var bt = '<%= browser %>' 
+      if(bt == 'true'){
+          
+        //  alert('browser compatible');
+    
+          
+      }else{
+
+           $('#browsers_box').lightbox_me({
+                centered: true, 
+                onLoad: function() { 
+                    $('#browsers_box').find('input:first').focus()
+                    }
+
+                });
+            
+            $('body').css('overflow','hidden');
+      }
+   },2000)
+  </script>
+  
+  <script>
+	$('#logoutHover').mouseenter( function() {
+  		$(this).animate({ width: "58px" }, 200);
+  	});
+  	$('#logoutHover').mouseleave( function() {
+  		$(this).animate({ width: "20px" }, 100);
+  	});
+  	$('#logoutHover').hover( function() {
+  		$('#ShowLogout').slideToggle(100).delay(300);
+  	});
+  </script>
+  
+ 
+  <div class="container" >
+    <!-- content -->
+    <%= yield %>
+    <br>
+    <!--<img src="http://placehold.it/920x100/" alt="">  -->
+  </div>
+</div>
+<div id="browsers_box" class="content_f_box"  style="display:none">
+     <!---  <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>-->
+ 	   
+                <p style="color:#fff; font-size:17px;">Browser no compatible, no podemos garantizar el funcionamiento adecuado de la aplicación.</p></br>
+                <p style="color:#fff;" ><i>No podrá usar la aplicación hasta haber instalado una versión compatible de su navegador, le recomendamos estos navegadores:</i></p>
+        <div style="text-align:center;padding:10px; margin-top:15px;">
+          <center>
+                <a href="http://www.google.com/intl/es-419/chrome/" target="_blank" style="width:350px; height:50px;float:left; margin-left:55px;"><%= image_tag('chrome.png')%>Descarga Google Chrome</a>
+                <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;"><%= image_tag('Icon_Firefox.png')%>Descarga Mozila Firefox</a>
+          </center>
+        </div>
+               
+<%end%>
 <% end %>

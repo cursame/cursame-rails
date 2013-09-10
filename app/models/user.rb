@@ -48,7 +48,9 @@ class User < ActiveRecord::Base
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy
   has_many :walls, :through => :userpublicationings
-
+  # archivos en cursos
+  has_many :course_file_id_user_id
+  has_many :course_files, :through => :course_file_id_user_id
   #channels for chat
   has_many :audiences, :dependent => :destroy
   has_many :channels, :through => :audiences
@@ -71,6 +73,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :networks
+ # accepts_nested_attributes_for :course_files
+  
 
   #surveys
   #has_many :assets, :dependent => :destroy

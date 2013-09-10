@@ -18,7 +18,7 @@ $(document).ready(function() {
     		</span>
  
     <center>
-       <span class="confirm-btn" style="padding: 10px 30px; color: #FFF!important;">
+       <span class="confirm-btn" style="width: 140px; height: 22px; color: #FFF; padding: 10px 30px; color: #FFF!important; margin-top: 30px; display: block; position: relative;">
        	<%= link_to "Ir al inicio", "http://www.cursa.me" %>
        </span>   
     </center>    
@@ -27,7 +27,9 @@ $(document).ready(function() {
     <center>
 </div>
 <%else%>
-<div class="bg-layout"></div>
+
+<!-- <div class="bg-layout"></div> -->
+<div class="signup-restore"></div>
 
 <% if !@user_inactive.nil? then %>
   <div class="user-inactive">
@@ -64,46 +66,47 @@ $(document).ready(function() {
 <% end %>
 </div>
 
-  <div>
-      <label class="unblock" style="text-align:justify;">
-       "Si ya eres usuario haz recibido un correo de confirmación de cuenta, por favor revisa tus bandejas de entrada y sigue el link que te hemos enviado de lo contrario no podrás iniciar sesión"
-    <b style="font-size:10px; font-weight:bold;"> En caso de no haber recibido el correo de confirmación da click en confirmar tu cuenta y sigue las instrucciones.</b>
-      <center>  <%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></center>
-    </label>
-  </div>
-</div>
-<br>
-<br>
+<center><div id="Closelinked" style="cursor: pointer; background: #000; color: #FFF; width: 60px; padding: 8px 20px; margin-bottom: 28px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; text-align: center;">Cerrar</div></center>
 
-<!--sirve para colocar la ayuda express a antiguos usuarios-->
-    <div class="" id="linked" style="cursor:pointer; text-decoration: underline; color:#FFF; font-size:24px;"><center>Soy un usuario antiguo y tengo dudas</center></div></br></br>
+	    
+        <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
+			<b style="font-size:15px; color:#000; clear: both;">¿Soy usuario?:</b><br /><br />
+			"Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."
+        </div>
+        
+        <div style="width: 315px; height: 120px; text-shadow:none; float: right;">
+            <b style="font-size:15px; color:#000; clear: both;">¿Mi clave sigue siendo la misma?:</b></br></br>
+            Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
+             te pedirá que cambies tu contraseña.
+        </div>
+        
+        <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
+           <b style="font-size:15px; color:#000; clear: both;">No me ha llegado el mail de confirmación:</b></br></br>
+            Da click en el link <b style="font-size: 14px;"><%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></b> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.
+        </div>
+            
+		<div style="width: 315px; height: 120px; text-shadow:none; float: right;">
+           <b style="font-size:15px; color:#000; clear: both;">Confirmé mi email pero olvide cambiar mi contraseña:</b></br></br>
+            Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.
+        </div>
+            
+    </div>
+	
+  </div><!-- ends Register_Singin -->
+  
+
     <script>
             $('#linked').click(function() {
-              $('#sub_linked').slideToggle('', function() {
-                // Animation complete.
-              });
+              $('#sub_linked').animate( {marginTop: "0px"} );
+            });
+			$('#Closelinked').click(function() {
+              $('#sub_linked').animate( {marginTop: "400px"} );
             });
     </script>
-    <div id="sub_linked"  style="font-size:15px; background:#FFF; padding:10px; text-align:justify; margin-bottom:10px; margin-top:-20px; color:#807D77; display:none;">
-        <p style="text-shadow:none;"><b style="font-size:15px; color:#000;">¿Soy usuario?:</b></br>
-            
-            "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."</br></br>
-            
-            <b style="font-size:15px; color:#000;">¿Mi clave sigue siendo la misma?:</b></br>
-            
-            Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
-             te pedirá que cambies tu contraseña.</br></br>
-             
-            <b style="font-size:15px; color:#000;">No me ha llegado el mail de confirmación:</b></br>
-            
-            Da click en el link <i><%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></i> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.</br></br>
-            
-            <b style="font-size:15px; color:#000;">Confirmé mi email pero olvide cambiar mi contraseña:</b></br>
-            
-            Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.
-            
-        </p>
-    </div>
+  
+</div>
+
+<!--sirve para colocar la ayuda express a antiguos usuarios-->
 
 <%= render "devise/shared/footer-links" %>
 <%end%>
