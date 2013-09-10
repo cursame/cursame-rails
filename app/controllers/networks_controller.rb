@@ -91,7 +91,7 @@ class NetworksController < ApplicationController
     @id = params[:id]
     @page = params[:page].to_i
 
-    @wall = current_network.walls.search(@search,@id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
+    @wall = current_network.walls.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
 
     if request.xhr?
       respond_to do |format|

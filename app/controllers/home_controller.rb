@@ -2,15 +2,13 @@ class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help ]
   helper_method :get_commentable
- # layout 'landing', :only => [:index]
 
   def index
     if user_signed_in?
-      #redirect_to "/users/#{current_user.personal_url}"
-        redirect_to "/users/#{user_url}/dashboard"
-
+      redirect_to "/users/#{user_url}/dashboard"
     end
   end
+
   def conditions
   end
   
@@ -19,13 +17,14 @@ class HomeController < ApplicationController
   
   ###### destroye sesiones caducadas
   def ending_session
-      sign_out(current_user)
-      
-      redirect_to root_path
+    sign_out(current_user)
+    
+    redirect_to root_path
   end
   
   def help
   end
+  
   def add_new_comment
     if user_signed_in?
       @from_enter_key = params[:from_enter_key] == 'true' ? true : false
@@ -154,11 +153,14 @@ class HomeController < ApplicationController
          noti.active = false
          noti.save
        end
+       
        @user = current_user
-         respond_to do |format|
-            format.js
-          end
+       
+       respond_to do |format|
+         format.js
+       end
      end
+     
   # -----------------------------
   # Develop for parents
   # -----------------------------
@@ -329,6 +331,7 @@ class HomeController < ApplicationController
          format.js
         end
      end
+     
      def load_more_notfications
         @notifications = current_user.notifications.paginate(:per_page => 10, :page => params[:page]).order("created_at DESC")
         @page = params[:page].to_i

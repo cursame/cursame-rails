@@ -36,18 +36,18 @@ $(document).ready(function() {
   </div>
 <% end %>
 
-<div class="login">    
+  <div class="login">    
     <p>
-    <b>Clases, Actividades, Red Social.</b><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
+      <b>Clases, Actividades, Red Social.</b><br>C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
     </p>
     <br><br>
     <center>
       <a class="new-regs" href="licencias.html"><%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%></a>
     </center>
 
-<div class="form-signin" style="margin-bottom:0px!important; -webkit-border-radius: 5px; -webkit-border-bottom-right-radius: 0px; -webkit-border-bottom-left-radius: 0px;
--moz-border-radius: 5px; -moz-border-radius-bottomright: 0px; -moz-border-radius-bottomleft: 0px; border-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
+  <div class="form-signin" style="margin-bottom:0px!important; -webkit-border-radius: 5px; -webkit-border-bottom-right-radius: 0px; -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius: 5px; -moz-border-radius-bottomright: 0px; -moz-border-radius-bottomleft: 0px; border-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
   <h2 class="form-signin-heading">Inicia sesión</h2>
   <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
   <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
@@ -61,7 +61,6 @@ $(document).ready(function() {
     </label>
   <% end -%>
   <%= f.submit "Iniciar Sesión", :class =>"log-in" %><br>
-  <!-- <%= render "devise/shared/links" %> -->
 <% end %>
 </div>
 

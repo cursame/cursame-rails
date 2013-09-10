@@ -18,6 +18,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+  
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
     @course_member = MembersInCourse.find_by_course_id(@course.id)
@@ -36,8 +37,10 @@ class CoursesController < ApplicationController
 
     @id = params[:id]
     @search = params[:search]
+    id_search = params[:id_search]
+    
     @page = params[:page].to_i
-    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, nil).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, id_search).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     
     if request.xhr?
       respond_to do |format|
