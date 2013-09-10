@@ -194,12 +194,12 @@ class ApplicationController < ActionController::Base
         ip = request.ip
         puts '***************************'
 
-        puts city
-        puts country
+        puts ct
+        puts cot
         puts ip
 
         puts '***************************'
-        @activity.address = "#{city} #{country}"
+        @activity.address = "#{ct} #{cot}"
         @activity.browser = "#{browser_active}"
         @activity.version_browser ="#{browser_version}"
         @activity.computer_plataform = "#{computer_platform}"
