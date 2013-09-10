@@ -60,8 +60,7 @@ var Cursame ={
 				id:id,
 				page:1
 			};
-			alert('filtrar');
-		// $.get(form.action,$.param(filter),null,"script");
+		$.get(form.action,$.param(filter),null,"script");
 	}
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
