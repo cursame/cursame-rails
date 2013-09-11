@@ -376,12 +376,12 @@
               $('#upload-files-to-course').click(function(){
                     $('#upload-files-to-course').fileupload({
                         dataType: "script",
-                        timeout:60000,
+                        timeout:120000,
                         add:function(e,data){
                                 data.context = $(tmpl("template-upload-2",data.files[0]));
                                 $('#uplok').append(data.context);
                                 data.submit().error(function (jqXHR, textStatus, errorThrown) {
-                                  console.log(arguments);
+                                  // console.log(arguments);
                                 });
                         },
                         progress:function(e,data){

@@ -73,7 +73,7 @@
 	
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
-		function(data, channel) {
+		function(data, channel){
 			var params = {
 				id:data.notification.id
 			};
