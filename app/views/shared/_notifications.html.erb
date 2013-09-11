@@ -65,7 +65,6 @@ var Cursame ={
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
 		function(data, channel){
-			console.log(data);
 			var params = {
 				id:data.notification.id
 			};
