@@ -22,8 +22,7 @@
 <% if @active_edit == false %>
 	<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery', :acces_to => @delivery, :contents => "contents"}%>
 <%end%>
-     
-
+</div>
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         
@@ -73,7 +72,6 @@
         
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
         
-</div><!-- ends -->
 
         
 		<% if @active_edit == false %>
