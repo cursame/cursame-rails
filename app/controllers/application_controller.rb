@@ -176,7 +176,21 @@ class ApplicationController < ActionController::Base
         @activity.ip_address = request.ip
 
         city = request.location.city
+        if city == nil
+          ct = 'Location City not Found'
+        else
+          ct = city
+        end
+        
         country = request.location.country_code
+        
+        if country == nil
+          cot = 'Location Country not Found'
+          else
+          cot = country
+        end
+        
+        
         ip = request.ip
         puts '***************************'
 

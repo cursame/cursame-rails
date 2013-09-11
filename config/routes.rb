@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :usernotificationings
@@ -67,10 +66,7 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
   # colocando course files
-  resources :course_files
-
-
-
+  resources :course_files , :defaults => { :format => 'js' }
   # metodos de manejo de cursos
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
   post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses

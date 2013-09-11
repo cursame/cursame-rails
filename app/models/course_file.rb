@@ -6,6 +6,6 @@ class CourseFile < ActiveRecord::Base
   
   #validates_presence_of :users
   #validates_presence_of :courses
-  #validates_presence_of :file
+  validates_presence_of :file
   
 end
