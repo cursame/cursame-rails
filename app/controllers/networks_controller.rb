@@ -2,9 +2,9 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   # before_filter :filter_user_network_wed
-  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create, :awaiting_confirmation, :alertmethod]
+  skip_before_filter :authenticate_user!, :only => [:network_mask, :new, :create, :awaiting_confirmation, :alertmethod, :network_search]
   before_filter :filter_user_network_wed
-  skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create, :awaiting_confirmation]
+  skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create, :awaiting_confirmation, :network_search]
   helper_method :ko_net
   def index
     @networks = Network.all
@@ -186,6 +186,24 @@ class NetworksController < ApplicationController
   end
 
   def network_mask
+  end
+  
+  def network_search
+   
+     @networks = Network.all
+     network = []
+     
+        @networks.each do |net|
+          network.push(
+             { name: "#{net.name}",
+              subdomain: "#{net.subdomain}"}
+          )
+        end
+     
+   
+     render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback]
+          
+     
   end
 
   def network_comunity
