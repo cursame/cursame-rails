@@ -56,7 +56,6 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
-
     puts request.domain
     puts request.subdomain
     puts request.url
@@ -89,9 +88,14 @@ class NetworksController < ApplicationController
     end
     @search = params[:search]
     @id = params[:id]
+    id_search = params[:id_search]
     @page = params[:page].to_i
-
-    @wall = current_network.walls.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
+    
+    if id_search.nil?
+      @wall = current_network.walls.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
+    else
+      @wall = current_network.walls.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
+    end
 
     if request.xhr?
       respond_to do |format|

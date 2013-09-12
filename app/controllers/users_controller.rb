@@ -36,9 +36,14 @@ class UsersController < ApplicationController
 
    ### wall
       @id = params[:id]
+      id_search = params[:id_search]
       @search = params[:search]
       @page = params[:page].to_i
-      @wall = @user_l.publications.search(@search,@id).paginate(:per_page => 10, :page => params[:page])
+      if id_search.nil?
+        @wall = @user_l.publications.search(@search, @id).paginate(:per_page => 10, :page => params[:page])
+      else
+        @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page])
+      end
 
      ##### print assets
      @asset = Asset.new

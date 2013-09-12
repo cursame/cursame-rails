@@ -117,9 +117,10 @@
       <% if notification.notificator.commentable.courses.first.nil? %>
         <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/?search=<%= notification.notificator.commentable_type %>&id_search=<%=notification.notificator.commentable_id.to_s %>")</script>
       <% else %>
-        <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%= notification.notificator.commentable.courses.first.id.to_s %>?search=<%= notification.notificator.commentable_type %>&id_search=<%=notification.notificator.commentable_id.to_s %>")</script>
+        <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%= notification.notificator.commentable.courses.first.id.to_s %>?search=<%= notification.notificator.commentable_type %>&id_search=<%=notification.notificator.commentable_id.to_s %>");</script>
       <% end %>
-     <!-- Notificacion: 13 - Usuario comento en un comentario -->
+      
+    <!-- Notificacion: 13 - Usuario comento en un comentario -->
     <% when 'user_comment_on_comment'%>    
       <% if notification.notificator != nil %>
          <% user = notification.notificator.user %>
@@ -127,14 +128,22 @@
           El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
           ha comentado en un comentario que hiciste .
       <% end %>
-     <!-- Notificacion: 14 - Usuario comento en un usuario -->      
+      <% if notification.notificator.commentable.commentable_type == "Course" %>
+        <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%= notification.notificator.commentable.commentable_id %>?search=Comment&id_search=<%=notification.notificator.commentable_id%>")</script>
+      <% else %>
+        <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/?search=Comment&id_search=<%=notification.notificator.commentable_id%>")</script>
+      <% end %>
+    
+    <!-- Notificacion: 14 - Usuario comento en un usuario -->      
     <% when 'user_comment_on_user'%>
-     <% if notification.notificator != nil %>
-         <% user = notification.notificator.user %>
-         <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
+      <% if notification.notificator != nil %>
+        <% user = notification.notificator.user %>
+        <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
           El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
           ha comentado en tu perfil.
       <% end %> 
+      <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/users/<%=notification.notificator.commentable.personal_url%>?search=Comment&id_search=<%=notification.notificator_id%>")</script>
+    
     <!-- Notificacion: 15 - Usuario comento en una tarea --> 
     <% when 'user_comment_on_delivery'%>
        <% if notification.notificator != nil %>
@@ -142,7 +151,9 @@
          <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
           El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
           ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
-      <% end %> 
+      <% end %>
+      
+      
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>
