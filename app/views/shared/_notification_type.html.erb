@@ -5,8 +5,8 @@
 <li id="notification-<%=notification.notificator_id.to_s %>" redirect_to="" class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>', <%=notification.notificator_id.to_s %>, '<%=notification.kind.to_s %>')">
 <% if notification.notificator != nil%>
   <% case notification.kind %>
-    <% when 'user_comment_on_network'%>
-    <!-- Notificacion: 1 - Usuario comento en una red -->
+    <% when 'user_comment_on_network'%> 
+    <!-- Notificacion: 1 - Usuario comento en una red *** esta no sucede por que son muchos usuarios-->
       <% if current_user && current_user.avatar != nil%>
         <% user = notification.notificator.user%>
         
@@ -133,7 +133,7 @@
          <% user = notification.notificator.user %>
          <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
           El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
-          ha comentado en tu comentario.
+          ha comentado en tu perfil.
       <% end %> 
     <!-- Notificacion: 15 - Usuario comento en una tarea --> 
     <% when 'user_comment_on_delivery'%>
