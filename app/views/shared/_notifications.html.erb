@@ -20,7 +20,7 @@
 <%
   notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
   notifications_first = notifications.shift
-  notifications_last = notifications.pop
+  notifications_last = notifications.pop 
 %>
 
 <!-- notification -->
@@ -33,15 +33,19 @@
 		<div class="content">
 			<ul id="notifications_list">
 				<%if notifications_first%>
-				  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>				
+				  <% if notifications_first != notifications_last %>
+  				  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>
+  				<% end %>
 				<%end%>
 
 				<% notifications.each do |notification|%>
-  		    <%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+				  <% if notification != notifications_first and notification != notifications_first %>
+    		    <%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+    		  <% end %>
 				<%end%>
 
 				<%if notifications_last%>
-				  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %>	
+  			  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %>	
 				<%end%>
 			</ul>
 		</div>
