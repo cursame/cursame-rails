@@ -151,9 +151,7 @@
          <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
           El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
           ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
-      <% end %>
-      
-      
+      <% end %>      
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>
