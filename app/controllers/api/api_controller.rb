@@ -99,7 +99,8 @@ class Api::ApiController < ApplicationController
           publication:publication,
           createdAt: created_at,
           done: done,
-          comments: comments
+          comments: comments,
+          num_comments: comments.nil? ? 0 : comments.count
         }
        @pubs.push(pub)
       end
@@ -519,8 +520,8 @@ class Api::ApiController < ApplicationController
           num_likes: comment.likes.size,   
           likes: comment.likes,   
           text: text,
-          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile 
-
+          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile,
+          num_comments: comment.comments.count
         }
       @cmts.push(cmt)     
     end
@@ -540,7 +541,7 @@ class Api::ApiController < ApplicationController
         last_name: u.last_name, 
         description: u.description, 
         personal_url: u.personal_url, 
-        avatar: u.avatar, 
+        avatar: u.avatar.blank? ? u.image_avatarx : u.avatar.profile, 
         coverphoto: u.coverphoto, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
