@@ -38,58 +38,33 @@ $(document).ready(function() {
   </div>
 <% end %>
 
-<div class="login">    
+  <div class="login">    
     <p>
-    <b>Clases, Actividades, Red Social.</b><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
+      <b>Clases, Actividades, Red Social.</b><br>C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
     </p>
     <br><br>
+    <center>
+      <a class="new-regs" href="licencias.html"><%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%></a>
+    </center>
 
-    
-    <div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 400px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: hidden;">
-    
-    <div class="register_class" style="float: left; width: 333px; height: auto; padding: 27px;">
-    
-    	C&uacute;rsame conecta a directivos, profesores y alumnos permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
-		<br />
-		
-		<center>
-    		<%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%>
-    	</center>
-    </div>
-    
-    
-    <div class="sign-in-class" style="width: 310px; height: 400px; display: block; float: right; background: #FFF;">
-    
-		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
-		<div class="login-heading">Inicia sesión</div>
-		
-		<%= devise_error_messages! %>
-		
-		<%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
-		<%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
-		<% if devise_mapping.rememberable? -%>
-		<label class="checkbox remember" style="margin-left: 11px;">
-		  <%= f.check_box :remember_me %> <label>&nbsp;&nbsp;Recordarme</label>
-		</label>
-		
-		<!--
-		<label class="frgt-pswd">
-		 <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
-		</label>
-		-->
-		
-		<% end -%>
-		<%= f.submit "Iniciar Sesión", :class =>"log-in" %>
-		
-		<div class="Confirmation_ins" style="clear: both;"><%= render "devise/shared/links" %></div>
-		
-		<div class="" id="linked" style="cursor:pointer; color: #6a6a6a; font-size: 12px; margin-left: 12px; margin-top: 3px;">Soy un usuario antiguo y tengo dudas</div>
-		
-		<% end %>
-	
-	</div><!-- ends sign-in-class -->
-	
-	    <div id="sub_linked" style=" width: 640px; height: 340px; font-size: 14px; background-color: rgba(245,245,245,1); padding: 30px; text-align: left; color: rgb(128, 125, 119); z-index: 999; position: absolute; margin-top: 400px; ">
+  <div class="form-signin" style="margin-bottom:0px!important; -webkit-border-radius: 5px; -webkit-border-bottom-right-radius: 0px; -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius: 5px; -moz-border-radius-bottomright: 0px; -moz-border-radius-bottomleft: 0px; border-radius: 5px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
+  <h2 class="form-signin-heading">Inicia sesión</h2>
+  <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
+  <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
+  <% if devise_mapping.rememberable? -%>
+    <label class="checkbox remember">
+      <%= f.check_box :remember_me %> Recordarme
+    </label>
+
+    <label class="frgt-pswd">
+     <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
+    </label>
+  <% end -%>
+  <%= f.submit "Iniciar Sesión", :class =>"log-in" %><br>
+<% end %>
+</div>
 
 <center><div id="Closelinked" style="cursor: pointer; background: #000; color: #FFF; width: 60px; padding: 8px 20px; margin-bottom: 28px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; text-align: center;">Cerrar</div></center>
 

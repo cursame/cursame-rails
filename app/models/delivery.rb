@@ -116,14 +116,13 @@ class Delivery < ActiveRecord::Base
     self.courses.each do |course|
       course.members_in_courses.each do |member|
         user = member.user
-        if user.id != self.user_id then
+        if user.id != self.user_id && member.accepted == true then
           users.push(user)
           mail = Notifier.new_delivery_notification(member,self)
           mail.deliver
         end
       end
     end
-    users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
     Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
   end
 

@@ -13,7 +13,6 @@ class MembersInCourse < ActiveRecord::Base
     end
   end
 
-
   before_destroy do
     notifications = Notification.where(:notificator_id => self.course_id,:notificator_type => "Course",:kind => 'user_accepted_in_course')
 
