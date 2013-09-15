@@ -419,6 +419,7 @@ Cursame30Lb::Application.routes.draw do
     ##### obtines las bases para busqueda de networks
     get '/network_search', :to => 'networks#network_search', :as => :network_search
   ####### parents
+     get '/acces_t', :to => 'parents#info_to_parents', :as => :info_to_parents
    # get "home/parents", :as => :parents
    # get "home/my_son", :as => :my_son
    # get "home/acces_on_course", :as => :acces_on_course
