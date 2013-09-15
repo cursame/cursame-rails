@@ -167,7 +167,7 @@ class Comment < ActiveRecord::Base
     when "Discussion"
 
       if commentable.courses.size == 0 then
-        hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
+        hash = {:users => [commentable.user] , :kind => 'user_comment_on_' + comment_type.downcase }
       else
         courses = commentable.courses
         users = []
