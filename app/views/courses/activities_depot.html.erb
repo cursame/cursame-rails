@@ -49,34 +49,57 @@
         var locuorem = $.getJSON( '<%= "#{course_ki_line_path(@course)}.json" %>', function(json) {
            
             var timeline = json.timeline.date;
-            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam, avatar;
+            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam, avatar, clasificate;
             for(var i = 0; i < timeline.length;i++){
                 aux = timeline[i];
                 if(aux.compose){
                   kilspace = aux.text.split(' ').join('');
                   flip = '/assets/'+kilspace.split(':')[0]+'roty.png';
                   id= aux.compose.id + aux.compose.type;
+                  clasificate = aux.compose.clasificate;
+                  as_to_pertence_com_assets = aux.compose.pertencenence_to 
                   
+                
+                  // console.log(as_to_pertence_com_assets);
                   dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
-
+                   
                   avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
                   
-                  $('#ajax-dump').append('<div class="activities_depot '+dd2+'" id="'+id+'">'+'<img  src="'+avatar+'"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
-				  
-                  identifier = '#'+id;
+                  $('#ajax-dump').append('<div class="activities_depot '+as_to_pertence_com_assets+' '+dd2+'" id="'+id+'">'+'<img  src="'+avatar+'"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div><br>');
+                  
+                  // este controlador hace que se empaten los archivos
+                  
+                       $('#'+id).click( function(){
+                           var axelid =  $(this).attr("id"); 
+                           var cl_actives = $(this).attr("class").split(/\s/);;
+                           var last_class = cl_actives[1];
+                           $('.user_assets').hide();
+                           $('.'+last_class).show();
+                           //alert(last_class);
+                           
+                           return true;
+                        });
+                   
+                   
+                 
+                   casual="casual"+id;
+                    
+				  identifier = '#'+id;
+                  
                   assets = aux.assets;
-                  casual="casual"+id;
                   var cloud = 'po'+aux.asset.credit.split(" ").join("").toLowerCase();
                      if(assets){
                      for(var l = 0; l < assets.length;l++){                             
                            fromk = assets[l];
                            url = fromk.file.file.url;
                            nam = fromk.name;
-
-                           $("#expoced").prepend('<div id='+casual+' class="user_assets '+cloud+'">'+'</div>');
-                           $("#"+casual).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
+                            pertence_al = fromk.pertencenence_to;
+                            // console.log(pertence_al);
+                           $("#expoced").prepend('<div id='+pertence_al+' class="user_assets '+cloud+' '+ pertence_al+'">'+'</div>');
+                           
+                           $("#"+pertence_al).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
 						   
-						   $('.activities_depot').click( function() {
+					 /*$('.activities_depot').click( function() {
 							   if('.activities_depot' <= '65') {
 								   $(this).css({ height: "200px" });
 								   $(this).find('.title').removeClass('title').addClass('titleNoTwo');
@@ -87,7 +110,13 @@
 								   $(this).find('.titleNoTwo').removeClass('titleNoTwo').addClass('title');
 								   $(this).find('.referenceNoTwo').removeClass('referenceNoTwo').addClass('reference');
 								   }
-						   });
+						   });*/
+						   
+						  
+						   
+						   
+                        
+						   
 						   
 						   //$('.activities_depot').on("click", changeClass);
 						   //function changeClass() {
@@ -100,8 +129,9 @@
 						   //};
 						   
 						   
-                        }
+                       }
                     }
+                       
             	}
         	}
          });
