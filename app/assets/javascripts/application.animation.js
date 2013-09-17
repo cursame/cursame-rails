@@ -275,13 +275,13 @@ $(document).ready(function() {
               $('#comment-post-form').css('display','none');
               $("#notice").css('background','#E63A3A');
               $("#notice").css('color','#fff');
-              $("#notice").animate( { width: "900px", padding: "20px", border: "1px solid #E63A3A" }, { queue: false, duration: 100 });
+              $("#notice").animate( { width: "100%", padding: "20px", border: "1px solid #E63A3A" }, { queue: false, duration: 100 });
               $('#notice').append('Error de validación hay algunos campos sin llenar.');
               
               setTimeout(function() {
                       
                         $('#notice').html('')
-                        $( "#notice" ).animate( { width: "900px", height: "0px", padding: "0px", border: "1px solid #E63A3A", background: "#E63A3A" }, { queue: false, duration: 100 });
+                        $( "#notice" ).animate( { width: "100%", height: "0px", padding: "0px", border: "1px solid #E63A3A", background: "#E63A3A" }, { queue: false, duration: 100 });
                         $('#comment-post-form').css('display','block');
                          HashBlured();
                         
@@ -289,8 +289,8 @@ $(document).ready(function() {
               
             }else{
              $("#notice").html('');
-             $("#notice").css('color','#608847');
-             $("#notice").css('background','#DFF0D8');
+            // $("#notice").css('color','#608847');
+            // $("#notice").css('background','#DFF0D8');
 
             $('#post-forms').animate({
                 height: '0'
