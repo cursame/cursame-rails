@@ -337,13 +337,16 @@
          <% if @member.owner != nil %>
          <% if @member.owner == true %>
         
-        <%= form_for CourseFile.new do |f|%>
+          <%= form_for CourseFile.new, :html => {:multipart => true} do |f|%>
+          <div id="upload-files-to-course">
+          
           <label class="UploadArchiveBtn">
           	Subir Archivos al Curso
           </label>
           <input id="course_file_file" class="UploadFiles" style="height: 55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
           <%= hidden_field_tag :course_id, @course.id %> 
           <%= f.hidden_field :published, :value => true %>
+          </div>
         <%end%>
         
          <%end%>
@@ -354,64 +357,65 @@
          		(this).addClass('.UploadArchiveBtnHover');
          	});
 		 	$(document).ready(function() {
-              $.ajaxSetup({
-                timeout:120000
-              });
-              
-              
-              function humanSize (size)
-                   {
-                       var b = [1<<30, 1<<20, 1<<10], s = ['GB', ' MB', ' kB'];
-                       for (var i in b) if (size >= b[i]) return (size/b[i]).toFixed(1) + s[i];
-                   }
-              
-              
-              $('#upload-files-to-course').click(function(){
-                    $('#upload-files-to-course').fileupload({
-                        dataType: "script",
-                        timeout:120000,
-                        add:function(e,data){
-                                data.context = $(tmpl("template-upload-2",data.files[0]));
-                                $('#uplok').append(data.context);
-                                data.submit().error(function (jqXHR, textStatus, errorThrown) {
-                                  // console.log(arguments);
+                          $.ajaxSetup({
+                            timeout:120000
+                          });
+
+
+                          function humanSize (size)
+                               {
+                                   var b = [1<<30, 1<<20, 1<<10], s = ['GB', ' MB', ' kB'];
+                                   for (var i in b) if (size >= b[i]) return (size/b[i]).toFixed(1) + s[i];
+                               }
+
+
+                          $('#upload-files-to-course').click(function(){
+                                $('#upload-files-to-course').fileupload({
+                                    dataType: "script",
+                                    timeout:120000,
+                                    add:function(e,data){
+                                            data.context = $(tmpl("template-upload-2",data.files[0]));
+                                            $('#uplok').append(data.context);
+                                            data.submit().error(function (jqXHR, textStatus, errorThrown) {
+                                              // console.log(arguments);
+                                            });
+                                    },
+                                    progress:function(e,data){
+                                        if(data.context){
+                                            progress = parseInt(data.loaded / data.total * 100,0);
+                                            speed = humanSize(data.bitrate / 8) + '/s';
+                                            data.context.find('.progress-add').html(speed + ' '+ progress+"%" );
+                                            data.context.find('.progress_exact').css('width',progress+ "%");
+                                            if (progress == 100){
+                                              data.context.find('.deletedprogresbar').hide();
+                                              console.log(speed);
+
+                                            }
+
+                                        }
+                                    }
                                 });
-                        },
-                        progress:function(e,data){
-                            if(data.context){
-                                progress = parseInt(data.loaded / data.total * 100,0);
-                                speed = humanSize(data.bitrate / 8) + '/s';
-                                data.context.find('.progress-add').html(speed + ' '+ progress+"%" );
-                                data.context.find('.progress_exact').css('width',progress+ "%");
-                                if (progress == 100){
-                                  data.context.find('.deletedprogresbar').hide();
-                                  console.log(speed);
-                                  
-                                }
-                           
-                            }
-                        }
-                    });
-              });
-            });
+                          });
+                        });
+                    </script>
 
-         </script>
-         
-        <div id="uplok">
-         <script id="template-upload-2" type="text/x-tmpl">
-           <div class="upload">
-             <div class="deletedprogresbar"> {%=o.name%}<div class="progress-add"></div>
-             
-             <div class="content_progress_bar">
-               <div class="progress_exact"></div>
-              
-             </div>      
-             </div>
-           </div>
-               
-         </script>
 
-       </div><!-- uplok -->
+                    <div id="uplok">          
+                     <script id="template-upload-2" type="text/x-tmpl">
+                       <div class="upload">
+
+                         <div class="deletedprogresbar"> {%=o.name%}<div class="progress-add"></div>
+
+                         <div class="content_progress_bar">
+                           <div class="progress_exact"></div>
+
+                         </div>      
+                         </div>
+                       </div>
+
+                     </script>
+
+                   </div><!-- uplok -->
     
    <div  style="width: 230px; overflow:auto; min-height:0px; max-height: 300px; overflow-y: scroll; overflow-x: hidden; padding-top: 25px;">
           <div id="files"></div>

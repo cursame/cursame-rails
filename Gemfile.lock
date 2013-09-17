@@ -63,13 +63,6 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.9.0)
-    coffee-rails (3.2.2)
-      coffee-script (>= 2.2.0)
-      railties (~> 3.2.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.6.3)
     commonjs (0.2.6)
     cookiejar (0.3.0)
     daemons (1.1.9)
@@ -298,7 +291,6 @@ DEPENDENCIES
   aws-ses (~> 0.5.0)
   bcrypt-ruby (~> 3.0.0)
   carrierwave
-  coffee-rails (~> 3.2.1)
   daemons
   declarative_authorization
   delayed_job_active_record
