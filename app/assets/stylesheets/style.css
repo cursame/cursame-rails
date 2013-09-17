@@ -408,18 +408,19 @@ opacity: 0.7;
 .notice-file{
 	padding-left: 50px;
     float: left;
-    height: 24px;
-    width: 100px;
+    height: 15px;
+    width: 130px;
     font-size: 11px;
     color: #cbcbcb;
-    padding-top: 15px;
+    /*padding-top: 15px;*/
     text-align: left;
     padding-right: 20px;
-    margin-top: 37px;
+    margin-top: -10px;
     z-index: 0;
     font-weight: lighter;
     font-family: arial;
     position: absolute;
+    margin-left:120px;
 }
 
 .youtube_content_delivery {
