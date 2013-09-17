@@ -440,8 +440,10 @@ class Api::ApiController < ApplicationController
 
   def native_create_courses
     if params[:id].to_i != 0
-      @course = Course.find(params[:id])
+      @course = Course.find(params[:id])      
       @course.update_attributes(params[:course])
+      @course.network_id = @network.id
+      @course.save      
     else
       @course = Course.new(params[:course])
       @course.network_id = @network.id
@@ -541,8 +543,8 @@ class Api::ApiController < ApplicationController
         last_name: u.last_name, 
         description: u.description, 
         personal_url: u.personal_url, 
-        avatar: u.avatar.blank? ? u.image_avatarx : u.avatar.profile, 
-        coverphoto: u.coverphoto, 
+        avatar: u.avatar.blank? ? u.image_avatarx.url : u.avatar.profile.url, 
+        coverphoto: u.coverphoto.url, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
         bios: u.bios,
