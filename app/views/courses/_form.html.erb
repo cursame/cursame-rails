@@ -23,58 +23,63 @@
 	    <p>Nombre del curso</p>
 	    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
 	
+		<div style="float: right; margin-right: 20px;">
 	    <p><%= f.label :public_status, 'Privacidad' %></p>
 	    <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-	</div>   
+	    </div>
+	    
+	    <div class="UpdateSubmit" style="float: left; margin-top: 7px;"><%= f.submit "Actualizar Curso", :class=>"act-crs" %></div>
+	</div>
+
 
 <div class="default-form edit-course" style="width:380px; float:left;">
 
  <!-- <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div> -->
     <%#= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
-    <table border="0" cellpadding="0" cellspacing="0">
-    <tr>
-    <td><p><%= f.label :avatar%></p></td>
 
-    <td><p><%= f.label :imagen_de_cabecera %></p></td>
-	    </tr>
-	    <tr>
-	    	<td><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%></td>
-	    	<td><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%></td>	    	
-	    </tr>
-	    <tr>
-	    <td width="180px"><%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%></td>
-	    <td height="52px"><%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%></td>
-	<!-- <td width="180px"><div id="uploadthingie"><%= f.file_field :avatar, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td>  -->
-	<!-- <td height="52px"><div id="uploadthingie"><%= f.file_field :coverphoto, :class=>"upload" %><div id="dummy">Seleccionar</div></div></td> -->
-		</tr>
-		<tr>
-	<td width="180px"><p><%= f.label :Valor_de_examenes%></p></td>
-	<td width="190px"><p><%= f.label :Valor_de_tareas_o_entregas %></p></td>
-		</tr>
-		<tr>
-	<td width="180px"><%= f.text_field :survey_param_evaluation, :class=>"custom-size-form" %></td>
-	<td width="180px"><%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form" %></td>
-		</tr>
-		<tr>
-	<td width="180px"><p><%= f.label :fecha_de_inicio %></p></td>
-	<td width="180px"><p><%= f.label :fecha_de_finalización %></p></td>
-		</tr>
-		<tr>
-	<td width="180px">
- <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
-	</td>
-	<td width="180px">
+<div class="UpdateBox">
+	<div class="UpdateLeft">
+	<p style="clear: both;"><%= f.label :avatar%></p>
+	
+	<div style="height: 80px;"><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%>
+	</div>
+	<%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+	</div>
+
+	<div class="UpdateRight">
+	<p><%= f.label :imagen_de_cabecera %></p>
+	
+	<div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
+	</div>
+	<%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+	</div>
+</div>
+
+<div class="UpdateBox">
+	<div class="UpdateLeft">
+	<p><%= f.label :Valor_de_examenes%></p>
+	<%= f.text_field :survey_param_evaluation, :class=>"custom-size-form" %>
+	</div>
+
+	<div class="UpdateRight">
+	<p><%= f.label :Valor_de_tareas_o_entregas %></p>
+	<%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form" %>
+	</div>
+</div>
+
+<div class="UpdateBox">
+	<div class="UpdateLeft">
+	<p><%= f.label :fecha_de_inicio %></p>
+	 <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
+	</div>
+	
+	<div class="UpdateRight">
+<p><%= f.label :fecha_de_finalización %></p>
 <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
-	</td>
-		</tr>
-		<tr>
-		<td></td>
-		<td>
+	</div>
+</div>
 
-    <%= f.submit "Actualizar Curso", :class=>"act-crs" %>
-		</td>
-		</tr>
-		</table>
+    
  <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
     <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
     

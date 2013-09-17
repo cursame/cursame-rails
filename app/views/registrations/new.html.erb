@@ -27,30 +27,78 @@ $(document).ready(function() {
 
 <div class="content login" id="titlheader">
 
-		<p><b>Regístrate en Cúrsame</b><br /><br /></p>
+		<p style="background: rgba(95,150,191,0.4); text-align: center; padding: 20px 0 14px 0; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"><b style="font-size: 23px;">Regístrate en Cúrsame</b></p>
 
 
-<div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 640px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: auto;">
+<div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 625px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: auto;">
 
 	<div class="" style="float: left; width: 319px; margin: 10px auto; padding: 15px;">
-		<p>C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>
+		<p>C&uacute;rsame conecta a directivos, profesores y alumnos permiti&eacute;ndoles interactuar social y acad&eacute;micamente.</p>
 		
-	<div class="confirmation-links" style="text-align: left; font-size: 12px; line-height: 1.5em;">
-		<%- if controller_name != 'sessions' %>
-		  <%= link_to "¿Ya eres usuario? Ingresa", new_session_path(resource_name) %><br />
-		<% end -%>
-		<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-		  <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
-		<% end -%>
-		<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-		  <%= link_to "¿No recibiste las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
-		<% end -%>
-	</div>
+		<div class="SliderLogin" style="display: block; position: relative; margin: 15px auto 0px -15px; width: 370px; height: 300px; overflow: hidden;">
+
+			<div class="banner">
+        <div class="contentSlider video">
+        <p style="font-size: 16px; margin-top: 42px; text-align: center;">Conoce un poco más de <b style="font-size: 16px;">Cúrsame</b></p>
+        </div>
+        
+        <div class="contentSlider plataforma">
+        <p style="font-size: 16px; margin-top: 22px; text-align: center;"><b style="font-size: 16px;">Cúrsame</b> ofrece una plafatorma de aprendizaje dentro de una red social educativa</p>
+        </div>
+
+        <div class="contentSlider funciones">
+        <p style="font-size: 16px; margin-top: 42px; text-align: center;">Contamos con funciones simples pero poderosas para ayudarte a ser más productivo</p>
+        </div>
+			</div>
+		</div>
+		
+<ul class="styleNav" style="margin: 0 auto; position: relative; display: block; width: 50px; margin-top: 15px; padding-left: 25px;">
+	<li><a id="idone" style="cursor: pointer;"><img src="../assets/circle.png" border="0"></a></li>
+	<li><a id="idtwo" style="cursor: pointer;"><img src="../assets/circle.png" border="0"></a></li>
+	<li><a id="idtree" style="cursor: pointer;"><img src="../assets/circle.png" border="0"></a></li>
+</ul>
+
+
+<script type="text/javascript">
+    $('#idone').click( function() { $('.banner').animate({left: '0px'}, 800); });
+    $('#idtwo').click( function() { $('.banner').animate({left: '-380px'}, 600); });
+    $('#idtree').click( function() { $('.banner').animate({left: '-750px'}, 800); });
+    
+    $('.video').click( function() {
+		window.location = "http://www.youtube.com/watch?v=aeMPQJ6VhmQ"
+    });
+    
+    $('.styleNav li img').click ( function() {
+    	$('.styleNav li img').css({ opacity: "0.5" });
+    	$(this).css({ opacity: "1" });
+    });
+</script>
+
+<!--
+<script type="text/javascript">
+	var number = [ one, two, tree ];
+    $('#id+number').click( function() {
+    		$('.banner').animate({left: '-300px'});
+    });
+</script>
+-->
+		
+		<div class="confirmation-links" style="text-align: left; font-size: 12px; line-height: 1.5em;">
+			<%- if controller_name != 'sessions' %>
+			  <%= link_to "¿Ya eres usuario? Ingresa", new_session_path(resource_name) %><br />
+			<% end -%>
+			<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+			  <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
+			<% end -%>
+			<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+			  <%= link_to "¿No recibiste las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
+			<% end -%>
+		</div>
 		
 	</div>
 
 	<div class="rgister" style="width: 330px; background: #FFF; float: right; padding-bottom: 10px;">
-		<div class="login-heading">Registrate</div>
+		<div class="login-heading">Por favor, llena los siguientes datos</div>
 			<%= devise_error_messages! %>
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<div><!-- <%= f.label :email %><br /> --> <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %></div>

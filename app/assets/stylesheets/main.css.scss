@@ -198,13 +198,16 @@ input:-moz-placeholder {
   & .end-date-box{
     width: 157px;
     height: 34px;
-    border: #b9c3d4 solid 1px;
-    color: #9696ac;
-    @include border-radius-btn;
-    background: #f7f7f9 url('/assets/icons/end-date-icon.png') no-repeat 0px 6px;
+    //border: #b9c3d4 solid 1px;
+    //color: #9696ac;
+    color: #FFF;
+    //@include border-radius-btn;
+    //background: #f7f7f9 url('/assets/icons/end-date-icon.png') no-repeat 0px 6px;
+    background: #4FA3E9 url('/assets/icons/end-date-icon.png') no-repeat 0px 6px;
     font-size: 11px;
+    margin-top: 10px;
     position: absolute;
-    right: 10px;
+    right: -4px;
     & .end-date-label {
       padding: 5px 0px 0px 23px;
     }
@@ -275,9 +278,18 @@ input:-moz-placeholder {
         float: left;
       }
       & .date{
-        color: #999;
-        float: right;
-        margin-right: 6px;
+        //color: #999;
+        //float: right;
+        //margin-right: 6px;
+        color: #909090;
+		float: right;
+		margin-right: -4px;
+		background: #eee;
+		z-index: 2;
+		position: relative;
+		padding: 0 5px 0 10px;
+		margin-top: 6px;
+		font-size: 12px;
       }
     }
     & .title-discusion{
@@ -308,6 +320,7 @@ input:-moz-placeholder {
       font-size: 13px;
       padding: 6px 0px 5px 0px;
       position: relative;
+      //background: #F6F7F9;
       & .null-image{
         width: 60px;
         height: 23px;
@@ -320,7 +333,7 @@ input:-moz-placeholder {
       color: #777777;
       float: left;
       width: 100%;
-      margin-top: 15px;
+      //margin-top: 15px;
       & .icon{
         float: left;
         margin: 4px 0px 0px 5px;
@@ -370,6 +383,8 @@ input:-moz-placeholder {
 
     & .content{
       float:left;
+      //background: #F6F7F9!important;
+      
       & .single-image{
         width: $comment-box;
         float: left;
@@ -404,7 +419,8 @@ input:-moz-placeholder {
   }
 
   & .header{
-    background: #e9e9e9;//#ebebef;
+    //background: #e9e9e9;//#ebebef;
+    //background: #F6F7F9;
     height: 25px;
     @include border-t-right-radius;
     @include border-t-left-radius;
@@ -412,7 +428,8 @@ input:-moz-placeholder {
     -moz-box-shadow:    inset 0px 1px 0px #f7f7f8;
     -webkit-box-shadow: inset 0px 1px 0px #f7f7f8;
     box-shadow:         inset 0px 1px 0px #f7f7f8;
-    border-bottom: $border-box;
+    //border-bottom: $border-box;
+    
     & .null-image{
       width: 60px;
       height: 15px;
@@ -481,6 +498,8 @@ input:-moz-placeholder {
       color: #333;
       font-size: 13px;
       padding: 6px 10px 5px 10px;
+      //background: #F6F7F9!important;
+      
       & .null-image{
         width: 60px;
         height: 23px;
@@ -534,6 +553,7 @@ input:-moz-placeholder {
 
     & .content{
       float:left;
+
       & .single-image{
         width: $comment-box;
         float: left;
@@ -1311,7 +1331,8 @@ background-position: left center;
   color: white;
   margin-top: -5px;
   background-repeat: no-repeat!important;
-  background-color: #272727!important;
+  //background-color: #272727!important;
+  background-color: #000!important;
 }
 
 .banner-shadow{
@@ -1321,7 +1342,7 @@ background-position: left center;
   margin: 0 auto;
   overflow: hidden;
   color: white;
-  background: url('/assets/shadow.png') no-repeat center bottom;
+  //background: url('/assets/shadow.png') no-repeat center bottom;
   top: 0px;
  
 }
@@ -1347,8 +1368,10 @@ background-position: left center;
 }
 .box-titles-content-style{
   clear: both;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  outline: 1px solid #000;
+  padding-top: 5px;
+  //border-top: 1px solid rgba(255,255,255,0.2);
+  //outline: 1px solid #000;
+  
   &>div{
     display: none;
   }
@@ -1456,6 +1479,9 @@ background-position: left center;
   }
   & .calendar{
     background: url('/assets/icons/calendar-mini-white.png') no-repeat;
+  }
+  & .courses{
+    background: url('/assets/icons/courses.png') no-repeat;
   }
   & .delivery{
     background: url('/assets/icons/delivery.png') no-repeat;
@@ -1755,6 +1781,10 @@ background-position: left center;
 
 .publication-box .comment-text .footer > a:link { position: absolute; margin-top: 5px; }
 
+.publication-box .comment-text .content {
+//background: #F6F7F9;
+padding-bottom: 20px; 
+}
 .publication-box .comment-text .content p { padding: 0 10px; }
 
 .gradientBg { 
@@ -1790,3 +1820,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	padding: 15px;
 }
 
+.UploadFiles {
+	 height: 55px;
+	 background: transparent!important;
+	 cursor: pointer;
+}

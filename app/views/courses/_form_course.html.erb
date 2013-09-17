@@ -1,0 +1,122 @@
+<!-- estilo eliminado style="margin-left:70px;" -->
+
+<script>
+	function readURL(input,id,width) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#'+id)
+				.attr('src', e.target.result)
+				.width(width)
+				.height(68);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+
+	<%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
+
+<div class="form-course" style="width: 855px; margin-top: 39px; background: transparent;"><!-- estilo en courses.scss -->
+ 
+<div class="" style="position: absolute; display: block; width: 630px; background: #F6F7F9; padding: 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border: 1px solid #eee; position: relative; height: 36px; display: block;">
+	<div class="UpdateSubmit" style="float: left;"><%= f.submit "Actualizar Curso" %></div>
+</div>
+
+
+	<div style="width: 465px; float:left; margin-top: 30px;">
+	
+		<p>Nombre del curso</p>
+	    <%= f.text_field :title, :class=>"input-style fixFormUser" %>
+	    <p>Nombre del curso</p>
+	    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style fixFormUser" %>
+	</div>
+
+
+	<div class="default-form edit-course" style="width: 220px; float:left; margin-top: 30px;">
+	<div class="UpdateBox">
+
+	<div style="display: block; position: relative; height: 62px; clear: both;">
+	<p><%= f.label :Valor_de_examenes%></p>
+	<%= f.text_field :survey_param_evaluation, :class=>"custom-size-form fixLabeluser" %>
+	</div>
+
+	<div style="display: block; position: relative; height: 62px; clear: both;">
+	<p><%= f.label :Valor_de_tareas_o_entregas %></p>
+	<%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form fixLabeluser" %>
+	</div>
+
+	<div style="display: block; position: relative; height: 62px; clear: both;">
+	<p><%= f.label :fecha_de_inicio %></p>
+	 <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input fixLabeluser", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
+	</div>
+	
+	<div style="display: block; position: relative; height: 62px; clear: both;">
+	<p><%= f.label :fecha_de_finalización %></p>
+	<%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input fixLabeluser", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
+	</div>
+	
+	<div style="display: block; position: relative; height: 62px; clear: both;">
+	<p><%= f.label :public_status, 'Privacidad' %></p>
+	<%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+	</div>
+
+	</div>
+</div>
+
+<div class="" style="width: 200px; position: absolute; display: inline; margin-top: -110px;">
+
+
+	<div class="" style="float: right; background: #F6F7F9; height: 443px; width: 220px; margin-top: 52px; padding-bottom: 0px; border: 1px solid #eee; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
+	
+	<div style="margin-top: -80px; text-align: center;">
+	<div style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: #00B4C4; border: 2px solid #FFF; overflow: hidden; position: relative;">
+		<%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"",:style =>"padding-top:-50%",:class => "coverphoto-label AvatarLabelText", :id =>"img_prev_course_avatar" )%>
+	</div>
+	
+	<p style="clear: both; text-align: center;"><%= f.label :avatar, :style => "float: none;" %></p>
+	<div style="width: 100%; margin: 0 auto; height: 50px;">
+		<%= f.file_field :avatar, :class=>"stylizeForm" , :style => "margin: 0 auto; float: none;", :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+	</div>
+	
+	
+	<div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
+	</div>
+	<p style="clear: both; text-align: center;"><%= f.label :imagen_de_cabecera, :style => "float: none;" %></p>
+	
+	<%= f.file_field :coverphoto, :class=>"stylizeForm" , :style => "margin: 0 auto; float: none;", :onchange => "readURL(this,'img_prev_course_header',168);"%>
+	</div>
+	</div>
+	
+</div>
+
+
+    
+ <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
+    <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
+    
+
+<% end %>
+<script type="text/javascript">
+    $("#create_course_form").on('click',function(){
+       //$(".ui-widget-overlay").css('display','block');
+    });
+
+        $(function() {
+            $( "#course_init_date, #course_finish_date" ).datepicker({
+                inline: true,
+                minDate: 0,
+                showOtherMonths: true,
+                dateFormat: 'dd/mm/yy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+            });
+
+        /*    var nestedNewCourseSlider = new NestedSlider(false);
+            nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation'), $('#course_survey_param_evaluation') );
+            nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation'), $('#course_delivery_param_evaluation') ); */
+        });
+</script>
+</div>
+</div>
+

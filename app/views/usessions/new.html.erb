@@ -39,15 +39,11 @@ $(document).ready(function() {
 <% end %>
 
 <div class="login">    
-    <p>
-    <b>Clases, Actividades, Red Social.</b><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
-    </p>
-    <br><br>
-
+<p style="background: rgba(95,150,191,0.4); text-align: center; padding: 20px 0 14px 0; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"><b style="font-size: 23px;">Inicia sesión</b></p>
     
     <div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 400px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: hidden;">
     
-    <div class="register_class" style="float: left; width: 333px; height: auto; padding: 27px;">
+    <div class="register_class" style="float: left; width: 290px; height: auto; padding: 27px;">
     
     	C&uacute;rsame conecta a directivos, profesores y alumnos permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
 		<br />
@@ -58,17 +54,17 @@ $(document).ready(function() {
     </div>
     
     
-    <div class="sign-in-class" style="width: 310px; height: 400px; display: block; float: right; background: #FFF;">
+    <div class="sign-in-class" style="width: 330px; height: 400px; display: block; float: right; background: #FFF; padding-left: 16px;">
     
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
-		<div class="login-heading">Inicia sesión</div>
+		<div class="login-heading" style="padding: 14px 10px 0px 10px!important;">Inicia sesión</div>
 		
 		<%= devise_error_messages! %>
 		
 		<%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
 		<%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
 		<% if devise_mapping.rememberable? -%>
-		<label class="checkbox remember" style="margin-left: 11px;">
+		<label class="checkbox remember" style="margin-left: 11px!important;">
 		  <%= f.check_box :remember_me %> <label>&nbsp;&nbsp;Recordarme</label>
 		</label>
 		
@@ -79,7 +75,7 @@ $(document).ready(function() {
 		-->
 		
 		<% end -%>
-		<%= f.submit "Iniciar Sesión", :class =>"log-in" %>
+		<%= f.submit "Iniciar Sesión", :class =>"log-in fixLogin" %>
 		
 		<div class="Confirmation_ins" style="clear: both;"><%= render "devise/shared/links" %></div>
 		

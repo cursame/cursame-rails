@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :usernotificationings
@@ -87,7 +88,12 @@ Cursame30Lb::Application.routes.draw do
 
   # colocando miembros en cursos
   resources :members_in_courses
+  # colocando course files
+  resources :course_files
 
+
+
+  # metodos de manejo de cursos
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
   post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
 
@@ -122,9 +128,9 @@ Cursame30Lb::Application.routes.draw do
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
   get "course_assignment_l/:id", :to => "courses#course_assignment", :as => :course_assignment_l
   get "course_survey_l/:id", :to => "courses#course_survey", :as => :course_survey_l
-  
+
   ##### llamada ajax para saber si la session ha expirado
-  
+
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
 
 
@@ -140,9 +146,9 @@ Cursame30Lb::Application.routes.draw do
   ################ llamada para republicar tarea ################
   get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
   get'/publish_unpublish_survey_manualy', :to => 'surveys#publish_unpublish_survey_manualy', :as => :publish_unpublish_survey_manualy
-  
+
   ##### coureses coment
-  
+
   get "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
   match "/courses/sending" => "courses#sending", :as => "sending", :via => [:post]
   #post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
@@ -150,7 +156,7 @@ Cursame30Lb::Application.routes.draw do
   match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
-  match "courses/:id/evaluation", :to => "courses#evaluation", :as => :course_evaluation
+  match "courses/:id/evaluation_download", :to => "courses#evaluation_download", :as => :course_evaluation_download
   match "courses/:id/_evaluation", :to => "courses#evaluation", :as => :course_evaluation
   match "courses/:id/activities_depot", :to => "courses#activities_depot", :as => :course_activities_depot
   #match "courses/:id/send_mails", :to => "courses#send_mails", :as => :course_send_mails
@@ -172,15 +178,15 @@ Cursame30Lb::Application.routes.draw do
     match 'users/sign_out', :to => 'usessions/sessions#destroy', :as => :sign_out
     match 'users/sign_in', :to =>  'usessions/sessions#new', :as => :sign_in
   end
-  
+
   #### finalizador de sesiones
   get '/ending_session', :to =>  'home#ending_session', :as => :ending_session
   get '/alertmethod', :to => 'networks#alertmethod', :as => :alertmethod
-  #get '/session_conserve', :to => 'networks#session_conserve', :as => :session_conserve 
-  
-  
+  #get '/session_conserve', :to => 'networks#session_conserve', :as => :session_conserve
+
+
   ###### users personal_url_validation
-  
+
   get '/personlization_url_corroborate/:personal_url', :to => 'users#corroborate_url', :as => :corroborate_url
 
   # Groups
@@ -288,7 +294,7 @@ Cursame30Lb::Application.routes.draw do
   resources :deliveries do
     resources :events
   end
- 
+
   # subiendo permisos en manager
   #match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
   #match 'managers/permissioning_for_manager/roles/:id',:to => "managers#permissioning_for_manager", :as => :permissioning_for_manager
@@ -410,11 +416,11 @@ Cursame30Lb::Application.routes.draw do
     get "content/orkut"
 
     get "content/khanacademy"
-    
+
     ##### cierra la base de datos
-    
+
     get '/closer_db', :to => 'home#closer_db', :as => :clorse_db
-  
+
   ####### parents
    # get "home/parents", :as => :parents
    # get "home/my_son", :as => :my_son

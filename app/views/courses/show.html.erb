@@ -1,77 +1,77 @@
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
- url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
+ url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100% 440px;
+ background-position-y: 0px; background-repeat: repeat-y;">
 
  <div id="noticce">
   <div id="notice" class="notice"></div>
  </div>
+ 
  <% permitted_to? :create, :courses do %>
       <% if @member.owner != nil %>
         <% if @member.owner == true %>
-         <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
- 
+          <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
         <%end%>
       <%end%>
  <% end %>
+ 
       <div class="banner-shadow">
         <div id="box-titles">
           <ul id="banner-btns" class="list-header">
-            <% permitted_to? :create, :courses do %>
+           <% permitted_to? :create, :courses do %>
             <% if @member.owner != nil %>
              <% if @member.owner == true %>
-            <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
-            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
-            <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
+	            <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
+	            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
+	            <li class="delivery" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
              <%end%>
-             <%end%>
-            <% end %>
-            <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
-            
-            
+            <%end%>
+           <%end%>
+		   		<li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
           </ul>
-        </div>
+        </div><!-- box-titles -->
+        
         <div id="box-titles-content" class="box-titles-content-style">
           <div id="stats-area" class="menu-course" style="width:100%px; height:650px; ">
-                  <div id="timeline-embed" style="margin-bottom:-200px;"></div>
-                                          <script type="text/javascript">
-                                            var timeline_config = {
-                                             width: "100%",
-                                             height: "78%",
-                                             source: '<%=@course.id%>/course_ki_line.json'
-                                            }
-                                          </script>
-                                          <%= javascript_include_tag('storyjs-embed.js') %>
-                                        <!--  <script type="text/javascript" src="<%#= "http://#{current_network.subdomain}.#{links}/assets/storyjs-embed.js" %>"></script>-->
+              <div id="timeline-embed" style="margin-bottom:-200px;"></div>
+                                      <script type="text/javascript">
+                                        var timeline_config = {
+                                         width: "100%",
+                                         height: "78%",
+                                         source: '<%=@course.id%>/course_ki_line.json'
+                                        }
+                                      </script>
+                                      <%= javascript_include_tag('storyjs-embed.js') %>
+                                    <!--  <script type="text/javascript" src="<%#= "http://#{current_network.subdomain}.#{links}/assets/storyjs-embed.js" %>"></script>-->
 
-            <ul id ="estadistic-list">
-            <% permitted_to? :create, :courses do %>
-                <% @comments = current_course.comments.count %>
-                <% @deliveries = current_course.deliveries.count %>
-                <% @survey = current_course.surveys.count %>
-                <% @activity = @comments + @survey + @deliveries  %>
-
-              <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
-              <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
-              <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
-              <li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
-            <!--  <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>-->
-
-            <%end%>
-
-            </ul>
-          </div>
+				<ul id ="estadistic-list">
+					<% permitted_to? :create, :courses do %>
+					<% @comments = current_course.comments.count %>
+					<% @deliveries = current_course.deliveries.count %>
+					<% @survey = current_course.surveys.count %>
+					<% @activity = @comments + @survey + @deliveries  %>
+					
+					<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
+					<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
+					<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
+					<li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
+					<!--  <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>-->
+					<%end%>
+				</ul>
+         </div>
         
           <div id="c_area" class="menu-course  active" style="height:500px; color:#fff;">
               <%= render partial: "courses/evaluation"%>
-          </div>
+          </div><!-- c_area -->
+          
           <div  class="menu-course  active" id="entregas" style="height:500px;">
               <div class="arco_course_deliver">
 
-			<div class="classTabs" style="height: 50px; width: 440px;">
-
-                <span class="activate" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left;" onclick="test('content_survey_slider','content_delivery_first')">Tareas</span>
-                <span class="deactive" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left; position: absolute;" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
-
-            </div>
+				<div class="classTabs" style="height: 50px; width: 440px;">
+	
+	                <span class="activate" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left;" onclick="test('content_survey_slider','content_delivery_first')">Tareas</span>
+	                <span class="deactive" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left; position: absolute;" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
+	
+	            </div>
 
 			<script>
 			$(document).ready( function() {
@@ -81,8 +81,9 @@
 				});
 			});
 			</script>
-				   	<div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
-                  <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">
+			
+				<div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
+                	<div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">
                   
                    <% @course.deliveries.reverse.each do |delivery|%>
 
@@ -121,17 +122,10 @@
 	           </div><!-- ends assigment -->
 	         <%end%>
 	       </div><!-- ends so_open -->
-
-	</div><!-- ends delivery_f -->
-
-
-</div>
+		 </div><!-- ends delivery_f -->
+	   </div>
                     
                       <script>
-                       	   //  $('#OpenClose').click(function() {
-						   //  $('#so_open<%=delivery.id%>').toggle('blind');
-                       	   //  });
-                       	   
                        	   $('.assignment').mouseenter( function() {
                        	   		$(this).css({background: "#EEE"});
                        	   		$('#RightArrow').css({background: "#e2dfdf"});
@@ -153,7 +147,7 @@
                       
                    <%end%>
                  </div>
-<!--conten-suervey-->                  
+<!--content-suervey-->                  
                    
                  <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden;">
                  
@@ -209,27 +203,6 @@
                                	   });
                           </script>
 
-						   <!--
-						      <script>
-						   	   $('.assignment').mouseenter( function() {
-						   	   		$(this).css({background: "#EEE"});
-						   	   		$('#RightArrow').css({background: "#e2dfdf"});
-						   	   });
-						   	   $('.assignment').mouseleave( function() {
-						   	   		$(this).css({background: "#F5F5F5"});
-						   	   		$('#RightArrow').css({background: "transparent"});
-						   	   });
-						   	   
-						   	   
-						   	   $('#OpenClose').click ( function() {
-						   	   		$( '#copea_<%=survey.id%>' ).toggle('blind');
-						   	   });
-						       $('#opentag_s<%=survey.id%>').click(function() {
-						         $('#copea_<%=survey.id%>').fade('blind');
-						       });                           
-						  </script>
-						  -->
-    
                  <%end%>
                    
                 </div><!-- ends content_survey -->
@@ -258,8 +231,7 @@
 
         </div>
       </div>
-    </div>
-   
+    </div><!--end banner profile-->
 
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
@@ -271,24 +243,23 @@
 
   <div id="box-user-credential" class="network-layout">
     <div class="thumbnail"  >
-         
          <%= link_to image_tag(@course.avatar.profile), course_path(@course.id) if ( !@course.avatar.blank?) %>
-
-          <%= link_to image_tag(@course.course_avatarx), course_path(@course.id) if (@course.avatar.blank?) %>
+         <%= link_to image_tag(@course.course_avatarx), course_path(@course.id) if (@course.avatar.blank?) %>
     </div>
-    <div class="tagname">
-      <%= @course.title %>
-    </div>
+    <div class="tagname"><%= @course.title %></div>
   </div>
-     <div id="box-course"  style="margin-top:155px;"class="basic-lateral-box margin-top boxinfocourse"> 
-         <h2  style="margin-right:-60px; margin-top:6px;"> Información </h2> 
-                 
-         <p><b>Sylabus</b><b>:</b>
-         <%= @course.silabus %> </p>
-         <% permitted_to? :create, :courses do %>
-         <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
-        <%end%>
-     </div>
+
+	<div id="box-course"  style="margin-top:155px;" class="basic-lateral-box margin-top boxinfocourse"> 
+	 <h2 style="margin-right:-60px; margin-top:6px;"> Información </h2> 
+	         
+	<p><b>Sylabus</b><b>:</b>
+	<%= @course.silabus %> </p>
+
+	 <% permitted_to? :create, :courses do %>
+	 <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
+	<%end%>
+	</div><!-- box-course -->
+
 
 
      <!--  <div class="head_banner_style_user">
@@ -304,17 +275,21 @@
       </div> -->
 
 
-     <div id="tabs-friends" class="tabs-style">
-         <div id="box-friends" class="basic-lateral-box" >
-               <h2  style="margin-right:-30px;"> Miembros </h2> 
-              <% permitted_to? :create, :courses do %>
+     <div id="tabs-friends" class="tabs-style" style="clear: both; display: table; margin-bottom: 40px;">
+         <div id="box-friends" class="basic-lateral-box" style="margin-top:40px; min-height:70px; max-height: 270px; clear: both;"  >
+               <h2  style="margin-right:-30px;">Miembros</h2>
+	              <% permitted_to? :create, :courses do %>
+	
+	                      <% @course_unaccepted =  @course.members_in_courses.where(:accepted => false).count%>
+	                      <% if @course_unaccepted == 0%>
+	                      <%else%>
+		                      <div class="member_pending" onclick="location.href='<%=course_members_path%>';" >
+		                      	<div class="accepted_not_pending"><%=  "#{@course_unaccepted}"%></div>
+		                      </div>
+	                      <%end%>
+	                      
+	               <%end%>
 
-                      <% @course_unaccepted =  @course.members_in_courses.where(:accepted => false).count%>
-                      <% if @course_unaccepted == 0%>
-                      <%else%>
-                      <div class="member_pending" onclick="location.href='<%=course_members_path%>';" ><div class="accepted_not_pending"><%=  "#{@course_unaccepted}"%> </div></div>
-                      <%end%>
-                  <%end%>
             <% @course.members_in_courses.each do |member|  %>
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
@@ -323,9 +298,9 @@
                       <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                        <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
                       <%else%>
-                <%end%>
+            <%end%>
                 
-                       	 <!-- <span class="toolTipUser"><p>HOla</p></span> -->
+            <!-- <span class="toolTipUser"><p>HOla</p></span> -->
                          
                 <%else%>
                 <% if @member.accepted == true %>
@@ -339,7 +314,7 @@
             <%end%>
              <% if current_role == 'admin'%>
             
-                <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
+                <div class="view-all"><%= link_to "Administrador de miembros", course_members_path %></div>
 
               <%else%>
              <% if @member.owner != nil %>
@@ -348,10 +323,68 @@
                <%end%>
               <%end%>
              <%end%>
-         </div>
+         </div><!--end members in courses-->
+      </div>
+         
+           
+        
+   <div id="box-d" class="basic-lateral-box" style="margin-top: 0px; position: relative; display: block;">
+        <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
+        <span class="RedBallon"><%= @course.course_files.count %></span>
 
+         <% if @member.owner != nil %>
+         <% if @member.owner == true %>
+        
+        <%= form_for CourseFile.new do |f|%>
+          <label class="UploadArchiveBtn">
+          	Subir Archivos al Curso
+          </label>
+          <input id="course_file_file" class="UploadFiles" style="height: 55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
+          <%= hidden_field_tag :course_id, @course.id %> 
+          <%= f.hidden_field :published, :value => true %>
+        <%end%>
+        
+         <%end%>
+         <%end%>
+         
+         <script>
+         	$('.UploadArchiveBtn').mouseenter ( function() {
+         		(this).addClass('.UploadArchiveBtnHover');
+         	});
+         </script>
+         
+        <div id="uplok">
+         <script id="template-upload-2" type="text/x-tmpl">
+           <div class="upload">
+            
+             <div class="deletedprogresbar"> {%=o.name%}
+	             <div class="content_progress_bar">
+	               <div class="progress_exact"></div>
+	             </div>
+             </div>
+             
+           </div>
+               
+         </script>
+
+       </div><!-- uplok -->
+    
+   <div  style="width: 230px; overflow:auto; min-height:0px; max-height: 300px; overflow-y: scroll; overflow-x: hidden; padding-top: 25px;">
+          <div id="files"></div>
+          <% @course.course_files.reverse.each do |cf|%>
+          <% @name =  "#{cf.file}" %>
+          <% @sintetic_name = @name.split('/').last%>
+          <% @termination = @name.split('.').last %>
+          <!--se ha colocan los archivos dependiendo su categoría-->
+          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+          <%end%>
+    </div>
+        
+        <!--valdiador de tipos -->
+           
   </div>
 </div>
+<!--archivos del curso-->
 
 <!-- Content -->
 
@@ -359,21 +392,25 @@
 	<div id="pk_menu">
 	  <%=render :partial => 'shared/post_menu' %>
 	</div>
-	  <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
-	  <div id="timeline" class="tim">
-	    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
-	  </div>
 
-	  <!-- inicio de joyride -->
-		  <% if show_joyride(1) == '0' %>
-		    <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
-		  <% end %>    
+	<%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
+
+	<div id="timeline" class="tim">
+	<%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
+	</div>
+
+	<!-- inicio de joyride -->
+	<% if show_joyride(1) == '0' %>
+		<%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
+	<% end %>
 	  <!-- fin de joyride -->
 
   <!-- fin timeline -->
 
   <%= will_paginate(@wall) %>
 </div>
+
+
 <script>
 	$(document).ready ( function() {
 		$('p:empty').hide();

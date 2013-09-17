@@ -16,18 +16,17 @@
 			<li><label class="lblclass"><%= radio_button_tag 'search', 'Delivery' %>Tareas</label></li>
         </ul>
     </li>
-</ul>
-	</nav>
+</ul><!-- </nav> -->
 
 <% end %>
 
 <script>
-$(function(){
-	$("#wall_search input:radio").live('click',function(){
-		var form = $('#wall_search'),
-            data = form.serialize();
-        data = data.replace('&search=Todos', '');
-		$.get(form.action,data,null,"script");
+	$(function(){
+		$("#wall_search input:radio").live('click',function(){
+			var form = $('#wall_search'),
+	            data = form.serialize();
+	        data = data.replace('&search=Todos', '');
+			$.get(form.action,data,null,"script");
+		});
 	});
-});
 </script>

@@ -11,9 +11,14 @@
 
 -->
 
+
+
 <div style="width: 910px; display: block; padding: 30px 0 20px; height: 35px; margin: 0 auto;">
 	<h2 class="courses-title-h2">Comunidad</h2>
 </div>
+
+<div class="fixedForm" style="width: 100%; position: absolute;">
+	<div style="width:910px; margin: 0 auto;">
 
 <% @network_users.each do |array| %>
      <%# @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
@@ -71,6 +76,9 @@
     </div><!-- ends box_comunity -->
 
 <% end %>
+
+	</div>
+</div>
 
 	<script>
 		$(".addfriend").clic( function() {

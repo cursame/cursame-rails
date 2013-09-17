@@ -1459,6 +1459,67 @@ td {
 	width: 459px;
 }
 
+.UpdateBox {
+	clear: both;
+}
+.UpdateRight {
+	width: 190px;
+	float: right;	
+}
+.UpdateLeft {
+	width: 190px;
+	float: left;
+}
+
+.UpdateSubmit > .default-form input[type=submit] {
+	min-width: 146px!important;
+}
+
+.UpdateLeft p, .UpdateRight p {
+	clear: both;
+	position: relative;
+	display: table;
+	height: 22px;
+	width: 183px;
+	margin: 0;
+	padding-top: 10px;
+}
+
+.RedBallon {
+	min-width: 14px;
+	float: right;
+	position: relative;
+	margin-top: -25px;
+	background: #00B4C4;
+	color: #FFF;
+	border-radius: 50%;
+	padding: 3px;
+	text-align: center;
+}
+
+.UploadArchiveBtn {
+	width: 217px;
+	position:realtive;
+	display:block;
+	margin: 5px auto;
+	text-align:center;
+	padding: 20px 0 10px 0;
+	background: #FFF;
+	border: 1px dotted #00B4C4;
+	color: #00B4C4;
+	height: 30px;
+	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+}
+
+.UploadArchiveBtnHover {
+	background: #006696!important;
+	color: #FFF!important;
+}
+
+.fixedForm > .form-course {
+	background: rgba(252, 252, 252, 0);
+}
+
 tr:nth-child(even) {
   background-color: #FFF!important;
   height: 32px;
