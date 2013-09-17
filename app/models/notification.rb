@@ -16,28 +16,38 @@ class Notification < ActiveRecord::Base
     creator=nil
 
     case self.kind
-    when "user_comment_on_network"
+    when "user_comment_on_network"  #esta ya no sucede por que son muchos usuarios en la red
       owner = self.notificator.user
       creator = self.notificator.user
-    when "user_comment_on_course"#---
+    when "user_comment_on_course"   #funcionando
       owner = self.notificator.commentable
       creator = self.notificator.user
-    when "new_delivery_on_course"
-      owner = self.notificator.courses[0]
-    when "new_public_course_on_network"
+    when "new_public_course_on_network" #esta ya no sucede
       owner = self.notificator.network
-    when "new_survey_on_course"#---
+    when "user_accepted_in_course" #funcionando
+      owner = self.notificator
+    when "new_delivery_on_course" #funcionando
       owner = self.notificator.courses[0]
-    when "user_comment_on_comment"#---
-      owner = self.notificator.user
-      creator = self.notificator.user
-    when "new_assignment_on_delivery"
+    when "new_discussion_on_course" #funcionando
+      owner = self.notificator    
+    when "new_survey_on_course" #funcionando
+      owner = self.notificator.courses[0]
+    when "new_assignment_on_delivery" #funcionando
       owner = self.notificator.delivery
       creator = self.notificator.user
-    when "user_request_friendship"
+    when "new_accomplishment_on_assignment" #funcionando
+      owner = self.notificator
+      creator = self.notificator.delivery.courses.first.members_in_courses.first
+    when "user_request_friendship" #funcionando
       creator = self.notificator.friend
-    when "user_accepted_friendship"
+    when "user_accepted_friendship" #funcionando
       creator = self.notificator.user
+    when "user_comment_on_discussion" #funcionando
+    when "user_comment_on_comment" #
+      owner = self.notificator.user
+      creator = self.notificator.user 
+    when "user_comment_on_user" #funcionando
+    when "user_comment_on_delivery" #funcionando  
     end
     self.users.each do |user|
       count = user.notifications.where(:active => true).count

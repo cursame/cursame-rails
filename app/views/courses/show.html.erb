@@ -2,7 +2,7 @@
  url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100% 440px;
  background-position-y: 0px; background-repeat: repeat-y;">
 
- <div id="noticce">
+  <div id="noticce">
   <div id="notice" class="notice"></div>
  </div>
  
@@ -10,7 +10,8 @@
       <% if @member.owner != nil %>
         <% if @member.owner == true %>
           <div class="depot_button"><%= link_to "Monitor de actividades", course_activities_depot_path %></div>
-        <%end%>
+
+          <%end%>
       <%end%>
  <% end %>
  
@@ -290,6 +291,7 @@
 	                      
 	               <%end%>
 
+
             <% @course.members_in_courses.each do |member|  %>
                 <% @members = User.find_by_id(member.user_id) %>
                 <!--coloca la imagen y el nombre-->
@@ -351,6 +353,35 @@
          	$('.UploadArchiveBtn').mouseenter ( function() {
          		(this).addClass('.UploadArchiveBtnHover');
          	});
+		 	$(document).ready(function() {
+              $.ajaxSetup({
+                timeout:120000
+              });
+              $('#upload-files-to-course').click(function(){
+                    $('#upload-files-to-course').fileupload({
+                        dataType: "script",
+                        timeout:120000,
+                        add:function(e,data){
+                                data.context = $(tmpl("template-upload-2",data.files[0]));
+                                $('#uplok').append(data.context);
+                                data.submit().error(function (jqXHR, textStatus, errorThrown) {
+                                  // console.log(arguments);
+                                });
+                        },
+                        progress:function(e,data){
+                            if(data.context){
+                                progress = parseInt(data.loaded / data.total * 100,0);
+                                data.context.find('.progress_exact').css('width',progress+ "%");
+                                if (progress == 100){
+                                  data.context.find('.deletedprogresbar').hide();
+                                }
+                           
+                            }
+                        }
+                    });
+              });
+            });
+
          </script>
          
         <div id="uplok">
@@ -362,7 +393,6 @@
 	               <div class="progress_exact"></div>
 	             </div>
              </div>
-             
            </div>
                
          </script>
@@ -377,6 +407,7 @@
           <% @termination = @name.split('.').last %>
           <!--se ha colocan los archivos dependiendo su categoría-->
           <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+
           <%end%>
     </div>
         
@@ -409,7 +440,6 @@
 
   <%= will_paginate(@wall) %>
 </div>
-
 
 <script>
 	$(document).ready ( function() {

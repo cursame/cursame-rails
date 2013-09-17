@@ -1,4 +1,5 @@
   <!--modulo de integración de archivose en el sistema de cursos para cúrsame-->
+
 <div id="conten_course_file<%=cf.id%>" style="background:#eee;width:41px; height:41px; margin-left:3px; margin-top:10px; margin-bottom:10px; float:left;">
   <center>
       <% if ['pdf','xls','xlsx','ppt','txt','pptx','doc','docx', 'txt', 'odt', 'adp', 'ade'].include? @termination %>
@@ -6,9 +7,11 @@
            <% if @member.owner == true %>
            <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
            <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
-           <%end%>
-           <%end%>
+
            </div>
+           <%end%>
+           <%end%>
+		   <!--AQUI VA EL DIV SEGUN-->
            <% case %>
               <%when @termination == 'pdf'%> 
                 <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/pdf.png'); background-size:40px 40px; float:left; margin:2px;"></div>
@@ -53,12 +56,14 @@
       <%end%>
       
       <% if  ['png','jpg','jpeg','gif','tif','bmp'].include? @termination %>
-            <% if @member.owner != nil %>
-              <% if @member.owner == true %>
-              <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
-              <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
-              <%end%>
-              <%end%>
+
+             <% if @member.owner != nil %>
+               <% if @member.owner == true %>
+               <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
+               <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
+               </div>
+               <%end%>
+               <%end%>
           <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('<%=@name%>'); background-size:40px 40px; margin-left:-12px; margin-top:-15px;"></div>
               <%= render partial: 'course_files/box_and_js_for_img', :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination } %>
       <%end%>
@@ -66,13 +71,13 @@
       
       
       <% if  ['avi','mp4','mov','wma','mpge','flv', 'm4v'].include? @termination %>
-              <% if @member.owner != nil %>
-                <% if @member.owner == true %>
-                <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
-                <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
-                <%end%>
-                <%end%>
-      
+             <% if @member.owner != nil %>
+               <% if @member.owner == true %>
+               <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
+               <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
+               </div>
+               <%end%>
+               <%end%>      
             <% case %>
                   <%when @termination == 'avi'%>
                         <div id="<%=@termination%>_<%=cf.id%>" style="width:40px; height:40px; background:url('/assets/icons_for_documents/movie2.png'); background-size:40px 40px; float:left; margin:2px;"></div>
@@ -101,12 +106,13 @@
      
       <% if  ['exe','zip','rar','iso','dmg','psd', 'cad'].include? @termination %>
               
-             <% if @member.owner != nil %>
-               <% if @member.owner == true %>
-               <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
-               <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
-               <%end%>
-               <%end%>
+            <% if @member.owner != nil %>
+              <% if @member.owner == true %>
+              <div id="<%=cf.id%>_delete_cf" style="width:40px; margin-left:8px; z-index:1;margin-top:1px; margin-bottom:-18px;">
+              <%= link_to image_tag('/assets/icons_for_documents/minicancel.png'),cf, confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
+              </div>
+              <%end%>
+              <%end%>
               
                <% case %>
                       <%when @termination == 'exe'%>

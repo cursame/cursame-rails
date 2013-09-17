@@ -12,6 +12,5 @@
 			<% @user.each do |u|%>
 			     <div class="box_AllUsers">
 				     <%= link_to "#{u.name}", show_user_path(u.personal_url)%>
-				     <!-- <%= link_to "#{u.name} #{u.email} #{u.avatar}", show_user_path(u.personal_url)%> -->
 				</div>			     
 			<%end%>

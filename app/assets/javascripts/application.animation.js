@@ -475,7 +475,7 @@ $(document).ready(function() {
     //     mask($(e.target),"Submiting your form");
     // });
     // 
-    $(document).ajaxStart( function() {
+     $(document).ajaxStart( function() {
           // $.get("/closer_db");
 
             modal('<div class="spinn"></div>');
@@ -483,7 +483,7 @@ $(document).ready(function() {
         }).ajaxStop( function() {
             unmodal(); 
            // $.get("/closer_db");            
-        });
+    });
 
     /*
     *=======================================================================================

@@ -16,7 +16,6 @@
       margin-left: 19px;
 }
 
-
 .tooltipr:after {
       content: "";
       position: absolute;
@@ -29,7 +28,6 @@
       left: -10px;
       margin-left:18px;
 }
-
 
 .link_download{
    background: rgb(12, 126, 213);
@@ -47,8 +45,7 @@
 }
 
 #new_course_file{
-  
-    //background: rgb(12, 126, 213);
+      //background: rgb(12, 126, 213);
     width:100%;
     height:35px;
     //color:#fff;
@@ -71,7 +68,7 @@
 }
 
 #new_course_file:hover{
-     //background: #1C39A2;
+     background: #1C39A2;
 }
 
 .content_progress_bar{
@@ -103,7 +100,5 @@
 .string_uploader{
     float: left;
     margin-top: 20px;
-    margin-left:5px;
-    
-    
+    margin-left:5px;    
 }

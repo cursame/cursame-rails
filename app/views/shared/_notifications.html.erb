@@ -1,25 +1,28 @@
 <% if current_user%>
+
 <script>
-var Cursame ={
-	userId: <%= current_user.id%>
-};
+  var Cursame ={
+	  userId: <%= current_user.id%>
+  };
 </script>
 
-<div class="notification-icon" id="notifications_count">
-    <span id="lecto_n_count" ><%=current_user.notifications.where(:active => true).count%></span>
+<div id="notifications_count" class="notification-icon">
+  <span id="lecto_n_count" ><%=current_user.notifications.where(:active => true).count%></span>
 </div>
 
 <script>
-    $("#notifications_count").click(function () {
-        $.get("/home/editing_n");
-        });
+  $("#notifications_count").click(function () {
+    $.get("/home/editing_n");
+  });
 </script>
+
 <!-- tratamos las notificaciones para agregarles el css first y last-->
 <%
-	notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
-	notifications_first = notifications.shift
-	notifications_last = notifications.pop
+  notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
+  notifications_first = notifications.shift
+  notifications_last = notifications.pop 
 %>
+
 <!-- notification -->
 <div id="box-notifications" style="display:none;">
 	<div id="" class="comment-text" >
@@ -30,15 +33,19 @@ var Cursame ={
 		<div class="content">
 			<ul id="notifications_list">
 				<%if notifications_first%>
-				<%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>				
+				  <% if notifications_first != notifications_last %>
+  				  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>
+  				<% end %>
 				<%end%>
 
 				<% notifications.each do |notification|%>
-				<%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+				  <% if notification != notifications_first and notification != notifications_first %>
+    		    <%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+    		  <% end %>
 				<%end%>
 
 				<%if notifications_last%>
-				<%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %>	
+  			  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %>	
 				<%end%>
 			</ul>
 		</div>
@@ -50,28 +57,33 @@ var Cursame ={
 		</div>
 	</div>
 </div>
+
 <%= subscribe_to "/notifications/"+current_user.id.to_s %>
 
 <script>
-	me = function (type,id) {
-		var form = $('#wall_search'),
-			filter={
-				search:type,
-				id:id,
-				page:1
-			};
-			alert('filtrar');
-		// $.get(form.action,$.param(filter),null,"script");
+	me = function (type, id, kind) {
+	  var noti = $("#notification-" + id);
+	  
+		var form = $("#wall_search"),
+		filter = {
+		    search: type,
+				id: id,
+				page: 1
+		};
+		
+    $(location).attr("href", noti.attr("redirect_to"));			
+    $("#box-notifications").hide();
 	}
+	
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
 		function(data, channel){
-			console.log(data);
 			var params = {
 				id:data.notification.id
 			};
-		    $('#notifications_count span').html(data.num*1);
-		    $.get('/home/render_notifications',$.param(params),null,"script");
+			
+		  $('#notifications_count span').html(data.num*1);
+		  $.get('/home/render_notifications', $.param(params), null, "script");
 		}
 	);
 </script>

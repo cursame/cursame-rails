@@ -28,7 +28,11 @@ gem 'mini_magick'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+<<<<<<< HEAD
   gem 'coffee-rails', '~> 3.2.1'
+=======
+
+>>>>>>> bdadab25b66f3953aaa0f3db97041cd47dc6625d
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -38,6 +42,7 @@ group :assets do
 end
 ####### gems for debug erros
 
+# gem 'coffee-rails', '~> 3.2.1'
 group :development do
   # gem 'better_errors'
   # gem 'binding_of_caller'

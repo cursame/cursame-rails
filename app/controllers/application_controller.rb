@@ -176,16 +176,30 @@ class ApplicationController < ActionController::Base
         @activity.ip_address = request.ip
 
         city = request.location.city
+        if city == nil
+          ct = 'Location City not Found'
+        else
+          ct = city
+        end
+        
         country = request.location.country_code
+        
+        if country == nil
+          cot = 'Location Country not Found'
+          else
+          cot = country
+        end
+        
+        
         ip = request.ip
         puts '***************************'
 
-        puts city
-        puts country
+        puts ct
+        puts cot
         puts ip
 
         puts '***************************'
-        @activity.address = "#{city} #{country}"
+        @activity.address = "#{ct} #{cot}"
         @activity.browser = "#{browser_active}"
         @activity.version_browser ="#{browser_version}"
         @activity.computer_plataform = "#{computer_platform}"

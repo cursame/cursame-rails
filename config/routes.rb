@@ -2,47 +2,31 @@
 Cursame30Lb::Application.routes.draw do
 
   resources :usernotificationings
-
   resources :members_in_groups
   resources :groups
-
   resources :libraries
-
   resources :settings_teachers
-
   resources :polls
   resources :messages
 
   get "superadmnin/statistics"
-
   get "superadmnin/networks"
-
   get "superadmnin/users"
-
   get "superadmnin/activities"
-
   get "superadmnin/roles"
-
   get "superadmnin/create_super_admin"
-
   get "superadmnin/courses_sintetic_view_and_edit"
-
   get "superadmnin/publicity_modul_controller"
 
-###### configuración de managers de la red
-
+  ###### configuración de managers de la red
   get "managers/wall"
-
   get "managers/members"
-
   get "managers/network_configuration"
-
   get "managers/library"
 
-
   resources :discussions
-###### respuestas a la evaluaciones
 
+  ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
     collection do
       post :create
@@ -50,14 +34,12 @@ Cursame30Lb::Application.routes.draw do
      end
   end
 
-
   resources :authentications
 
   #recursos necesarios para autentificaciones de servicios externos (by alfredot)
   resources :events
 
   ########## calendar
-
   get "calendar/index"
   get "calendar/test_calendar"
 
@@ -65,16 +47,12 @@ Cursame30Lb::Application.routes.draw do
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
   ######## create
   match "/auth/:provider/callback" => "authentications#create", :as => :providers
+
+
   #recursos naturales de la aplicación
-
-
-
   resources :notifications
-
   resources :compart_assets
-
   resources :assets
-
   resources :areas_of_evaluations
 
   #### manejo de assignments
@@ -89,10 +67,7 @@ Cursame30Lb::Application.routes.draw do
   # colocando miembros en cursos
   resources :members_in_courses
   # colocando course files
-  resources :course_files
-
-
-
+  resources :course_files , :defaults => { :format => 'js' }
   # metodos de manejo de cursos
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
   post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
@@ -171,7 +146,6 @@ Cursame30Lb::Application.routes.draw do
 
 
   #manejo de users
-
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "usessions" }
 
   as :user do
