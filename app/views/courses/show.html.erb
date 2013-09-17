@@ -373,6 +373,15 @@
               $.ajaxSetup({
                 timeout:120000
               });
+              
+              
+              function humanSize (size)
+                   {
+                       var b = [1<<30, 1<<20, 1<<10], s = ['GB', ' MB', ' kB'];
+                       for (var i in b) if (size >= b[i]) return (size/b[i]).toFixed(1) + s[i];
+                   }
+              
+              
               $('#upload-files-to-course').click(function(){
                     $('#upload-files-to-course').fileupload({
                         dataType: "script",
@@ -387,9 +396,13 @@
                         progress:function(e,data){
                             if(data.context){
                                 progress = parseInt(data.loaded / data.total * 100,0);
+                                speed = humanSize(data.bitrate / 8) + '/s'
+                                data.context.find('.progre-add').html(speed + ' '+ progress+"%" )
                                 data.context.find('.progress_exact').css('width',progress+ "%");
                                 if (progress == 100){
                                   data.context.find('.deletedprogresbar').hide();
+                                  console.log(speed);
+                                  
                                 }
                            
                             }
@@ -404,7 +417,8 @@
          <script id="template-upload-2" type="text/x-tmpl">
            <div class="upload">
             
-             <div class="deletedprogresbar"> {%=o.name%}
+             <div class="deletedprogresbar"> {%=o.name%}<div class="progre-add"></div>
+             
              <div class="content_progress_bar">
                <div class="progress_exact"></div>
               
