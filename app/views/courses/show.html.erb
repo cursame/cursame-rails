@@ -396,8 +396,8 @@
                         progress:function(e,data){
                             if(data.context){
                                 progress = parseInt(data.loaded / data.total * 100,0);
-                                speed = humanSize(data.bitrate / 8) + '/s'
-                                data.context.find('.progre-add').html(speed + ' '+ progress+"%" )
+                                speed = humanSize(data.bitrate / 8) + '/s';
+                                data.context.find('.progress-add').html(speed + ' '+ progress+"%" );
                                 data.context.find('.progress_exact').css('width',progress+ "%");
                                 if (progress == 100){
                                   data.context.find('.deletedprogresbar').hide();
@@ -417,7 +417,7 @@
          <script id="template-upload-2" type="text/x-tmpl">
            <div class="upload">
             
-             <div class="deletedprogresbar"> {%=o.name%}<div class="progre-add"></div>
+             <div class="deletedprogresbar"> {%=o.name%}<div class="progress-add"></div>
              
              <div class="content_progress_bar">
                <div class="progress_exact"></div>
