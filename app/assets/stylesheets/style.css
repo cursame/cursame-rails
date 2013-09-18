@@ -313,7 +313,7 @@ opacity: 0.7;
 .help_use_to_delivery{
     width:500px;
     height:350px;
-    z-index:99999999%;
+    z-index:99999999;
 }
 
 .friend_user_help{
@@ -424,7 +424,7 @@ opacity: 0.7;
 }
 
 .youtube_content_delivery {
-	height: 182px!important;
+	height: 182px !important;
 	overflow: auto;
 	float: left;
 	width: 100px;
@@ -544,4 +544,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f73131', e
 @keyframes translate {
    from {transform: translate(0px);}
    to {transform: translate(100%);}
+}
 
