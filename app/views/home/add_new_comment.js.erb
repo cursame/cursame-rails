@@ -20,6 +20,13 @@
       $('#notice').append('Se ha creado un comentario');
     <% end %>
 
+    <% if @comment.commentable_type == 'User' %>
+      <% 
+        @user_show = true 
+        @user_l = @comment.commentable
+      %>
+    <% end %>
+
      setTimeout(function() {
             $('#notice').html('')
             $( "#notice" ).animate( { width: "0px", height: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
@@ -27,7 +34,6 @@
               DisableBlured();
            
             $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
-            //$('#pk_menu').append('<%= javascript_include_tag('application.animation.js') %>')
      }, 1500);
             
             
