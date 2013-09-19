@@ -5,7 +5,7 @@
   //border-left: transparent solid 1px;
   //border-right: transparent solid 1px;
 
-  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 6px;
   position: relative;
   cursor: pointer;
   z-index: 597;
@@ -15,9 +15,12 @@
   //margin-top: 2px;
   padding: 0px 0px 0px 8px;
   color: #fff;
+  transition: ease-out all 0.2s;
+  
   &:hover{
     //background: #f7f7f7;
-    background: #eeeeee url("/assets/icons/notification-mini-high.png") no-repeat 8px 2px;
+    background: url("/assets/icons/notification-mini-high-hover.png") no-repeat 8px 6px;
+	transition: ease-out all 0.2s;
     //border-left: #ccc solid 1px;
     //border-right: #ccc solid 1px;
   }
@@ -39,7 +42,8 @@
     border-radius: 7px;
     min-width: 13px;
     background: #ff0000;
-    margin: 16px 0px 0px 13px;
+    //margin: 16px 0px 0px 13px;
+	margin: 10px 0px 0px 18px;
     text-align: center;
   }
 }
@@ -50,7 +54,7 @@
   //border-left: transparent solid 1px;
   //border-right: transparent solid 1px;
 
-  background: url("/assets/icons/notification-chat-mini.png") no-repeat 8px 2px;
+  background: url("/assets/icons/notification-chat-mini.png") no-repeat 8px 6px;
   position: relative;
   cursor: pointer;
   z-index: 597;
@@ -60,9 +64,12 @@
   //margin-top: 2px;
   padding: 0px 0px 0px 8px;
   color: #fff;
+  transition: ease-out all 0.2s;
+
   &:hover{
     //background: #f7f7f7;
-    background: #eeeeee url("/assets/icons/notification-chat-mini.png") no-repeat 8px 2px;
+    background: url("/assets/icons/notification-chat-mini-hover.png") no-repeat 8px 6px;
+	transition: ease-out all 0.2s;
     //border-left: #ccc solid 1px;
     //border-right: #ccc solid 1px;
   }
@@ -84,7 +91,8 @@
     border-radius: 7px;
     min-width: 13px;
     background: #ff0000;
-    margin: 16px 0px 0px 13px;
+    //margin: 16px 0px 0px 13px;
+	margin: 10px 0 0 18px;
     text-align: center;
   }
 }

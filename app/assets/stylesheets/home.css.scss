@@ -58,6 +58,8 @@ input, textarea { background-color: #fff; }
 h2.form-signin-heading { text-align: center; color: #00b0ca; }
 .form-signin .form-signin-heading, .form-signin .checkbox { margin: 0px!important; }
 input.log-in { transition: ease-out all 0.2s; }
+.fixLogin { margin-right: 32px!important; }
+
 input.log-in:hover { background: #00AEC5; color: #fff; cursor: pointer; transition: ease-out all 0.2s; }
 .bg-layout { overflow: hidden; width: 100%; height: 100%; z-index: -1; position: fixed; top: 0px; left: 0px; background: url('/assets/background-login.png') no-repeat top center; background-size: 120%;}
 .signup-layout {

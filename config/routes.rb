@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
   resources :usernotificationings
@@ -393,8 +394,10 @@ Cursame30Lb::Application.routes.draw do
     ##### cierra la base de datos
 
     get '/closer_db', :to => 'home#closer_db', :as => :clorse_db
-
+    ##### obtines las bases para busqueda de networks
+    get '/network_search', :to => 'networks#network_search', :as => :network_search
   ####### parents
+     get '/acces_t', :to => 'parents#info_to_parents', :as => :info_to_parents
    # get "home/parents", :as => :parents
    # get "home/my_son", :as => :my_son
    # get "home/acces_on_course", :as => :acces_on_course

@@ -153,7 +153,7 @@
           ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
       <% end %>
       <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.commentable.courses.first.id%>?search=Delivery&id_search=<%=notification.notificator.commentable_id%>")</script>
-      
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>

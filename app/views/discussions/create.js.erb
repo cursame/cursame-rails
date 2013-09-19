@@ -4,7 +4,7 @@ $('#timeline').effect("highlight", {}, 1000);
 $("#notice").html('');
 $("#notice").css('color','#608847');
 $("#notice").css('background','#DFF0D8');
-$( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
+$( "#notice" ).animate( { width: "100%", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
 $('#notice').append('Se ha creado una notificación');
 
    /* elimina los contenidos*/
@@ -15,6 +15,7 @@ $('#notice').append('Se ha creado una notificación');
           $('.youtube_content_delivery').hide();
    
 setTimeout(function() {
+
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
      CleanerBlur();

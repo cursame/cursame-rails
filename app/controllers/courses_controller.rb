@@ -321,8 +321,6 @@ class CoursesController < ApplicationController
       deliveries = []
       assignmentss = []
       surveyss = []
-      assets_assignmentss =[]
-      assets_deliveries =[]
       simple = []
       #contents_assignmentss =[]
 
@@ -334,11 +332,14 @@ class CoursesController < ApplicationController
       counte_fact = count_deliveries + count_surveys + count_assignmentss
 
       @course.deliveries.each do |del|
+        assets_deliveries =[]
+        
         if  del.user != nil
         del.assets.each do |b|
            @name = b.file.to_s.split('/').last
            assets_deliveries.push({file: b.file,
-                                   name:("#{@name}").delete("\n") })
+                                   name:("#{@name}").delete("\n"),
+                                   pertencenence_to:"tarea#{del.id}" })
          end
 
         if del.user.avatar.blank?
@@ -365,7 +366,10 @@ class CoursesController < ApplicationController
                 id: del.id,
                 type: 'tarea',
                 title:(("#{del.title}").to_s).delete("\n"),
-                description:(("#{del.description}").to_s).delete("\n")
+                description:(("#{del.description}").to_s).delete("\n"),
+                pertencenence_to:"tarea#{del.id}",
+                assets_integrate: assets_deliveries
+                
               },
               assets:assets_deliveries
 
@@ -376,13 +380,15 @@ class CoursesController < ApplicationController
 
 
          del.assignments.each do |as|
-
+           assets_assignmentss =[]
+           
            if as.user != nil
 
            as.assets.each do |a|
              @name = a.file.to_s.split('/').last
              assets_assignmentss.push({file: a.file,
-                                        name:("#{@name}").delete("\n")
+                                      name:("#{@name}").delete("\n"),
+                                      pertencenence_to: "entrega_tarea#{as.id}"
                                      })
            end
 =begin
@@ -417,6 +423,9 @@ class CoursesController < ApplicationController
                       type: 'entrega_tarea',
                       title: (("#{as.title}").to_s).delete("\n"),
                       description: (("#{as.brief_description}").to_s).delete("\n"),
+                      pertencenence_to: "entrega_tarea#{as.id}",
+                      assets_integrate: assets_assignmentss
+                      
                     },
                     assets: assets_assignmentss  #+ contents_assignmentss
 

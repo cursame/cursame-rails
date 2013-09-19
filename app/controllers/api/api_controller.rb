@@ -99,7 +99,8 @@ class Api::ApiController < ApplicationController
           publication:publication,
           createdAt: created_at,
           done: done,
-          comments: comments
+          comments: comments,
+          num_comments: comments.nil? ? 0 : comments.count
         }
        @pubs.push(pub)
       end
@@ -439,8 +440,10 @@ class Api::ApiController < ApplicationController
 
   def native_create_courses
     if params[:id].to_i != 0
-      @course = Course.find(params[:id])
+      @course = Course.find(params[:id])      
       @course.update_attributes(params[:course])
+      @course.network_id = @network.id
+      @course.save      
     else
       @course = Course.new(params[:course])
       @course.network_id = @network.id
@@ -519,8 +522,8 @@ class Api::ApiController < ApplicationController
           num_likes: comment.likes.size,   
           likes: comment.likes,   
           text: text,
-          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile 
-
+          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile,
+          num_comments: comment.comments.count
         }
       @cmts.push(cmt)     
     end
@@ -540,8 +543,8 @@ class Api::ApiController < ApplicationController
         last_name: u.last_name, 
         description: u.description, 
         personal_url: u.personal_url, 
-        avatar: u.avatar, 
-        coverphoto: u.coverphoto, 
+        avatar: u.avatar.blank? ? u.image_avatarx.url : u.avatar.profile.url, 
+        coverphoto: u.coverphoto.url, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
         bios: u.bios,

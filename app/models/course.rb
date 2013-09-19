@@ -32,6 +32,7 @@ class Course < ActiveRecord::Base
   # validates_presence_of :survey_param_evaluation
   # validates_presence_of :delivery_param_evaluation
   #validates_presence_of :network_id
+
   # accepts_nested_attributes_for :course_files
   
 

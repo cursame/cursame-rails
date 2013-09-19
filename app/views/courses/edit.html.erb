@@ -1,6 +1,12 @@
 <% if @member.owner == true%>
+
+<div id="edituserdmenu" style="margin-top: 52px;">
+<div style="width: 860px; display: block; padding: 20px auto 0 auto; height: 35px; margin: 0 auto;">
+	<h2 class="courses-title-h2">Editar curso</h2>
+</div>
+
+	<!--
 	<div id="nsdmenu">
-		<h1>Editar curso</h1>
 		<div class="reload">
 			<ul>
 				<li style="width: 10px;"><img src="/assets/reload.png"></li>
@@ -10,13 +16,15 @@
 			</ul>
 		</div>
 	</div>
+	-->
 
 <script type="text/javascript">
 	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-	
 </script>
-<%= render 'form' %>
 
-<%else%>
-   <h1>Usted no esta autorizado para editar este curso<h1>
-<%end%>
+<div class="fixedForm" style="width: 100%; position: absolute;">
+	<%= render 'form_course' %>
+	<%else%>
+	   <h1>Usted no esta autorizado para editar este curso<h1>
+	<%end%>
+</div>

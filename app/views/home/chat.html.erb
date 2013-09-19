@@ -1,4 +1,4 @@
-<div style="width: 940px; height: auto; display: block; position: relative;">
+<div class="fixingContent" style="width: 940px; height: auto; display: block; position: relative; ">
 
 <script type="text/javascript">
 $(function(){
@@ -102,11 +102,9 @@ $(function(){
         function() { $(this).css({ background: "#006696"}) },
         function() { $(this).css({ background: "#363F4D"})
 	});
-  	
-  	
-  	
+
+
   	// filtros
-  	
   	$('#everything').click( function() {
   		$('#JustFriends').show();
   		$('#OnlyCourses').show();
@@ -120,7 +118,11 @@ $(function(){
   		$('#JustFriends').show();
   	});
   	
-  	
+  	$('.chatSingle_big > a:link').click( function() {
+  		$('.chatSingle_big > a:link').removeClass('SelectedClass');
+  		$(this).addClass('SelectedClass');
+  	});
+
 </script>
 
 

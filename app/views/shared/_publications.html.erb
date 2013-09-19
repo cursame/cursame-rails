@@ -148,30 +148,42 @@
           <% @vote = publication.publication.votes.up.by_type(User).where(:voter_id => current_user.id)%>
           <% @condition =  @vote[0]%>
           <%if @condition == nil %>
+
          <div id="liked-<%= publication.id%>">
-         <div class="icon like"><%= link_to image_tag('icons/heart-icon-child-comment.png'), upvote_path(publication.id), :remote => true%></div>
+	         <div class="icon like">
+	         	<%= link_to image_tag('icons/heart-icon-child-comment.png'), upvote_path(publication.id), :remote => true%>
+	         </div>
          </div>
+         
          <%else%>
+         
          <div id="liked-<%= publication.id%>">
-         <div class="icon like"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_path(publication.id), :remote => true%></div>
-         </div>
+	         <div class="icon like"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_path(publication.id), :remote => true%></div>
+         </div><!-- liked -->
+         
          <%end%>
-          <!-- Destroy Wall -->
-          <%if publication.publication.owner?(current_role, current_user) then %>
-	         <!-- 		<span class="deleteComment" ><img src="/assets/trashbin.png" style="margin-right: 5px; float:left;"></span>-->
+         
+         <!-- Destroy Wall -->
+         <%if publication.publication.owner?(current_role, current_user) then %>
+          
+	     <!-- 		<span class="deleteComment" ><img src="/assets/trashbin.png" style="margin-right: 5px; float:left;"></span>-->
 	         
 	     <!--modificaciones a la caja de edición-->     
 	     <div class="link_publications">
 	          <div class="trashIt"><%= link_to image_tag("trash22.png"), destroy_wall_path(publication.id), :remote=>true%>
 			  		<span style="visibility: hidden; position: absolute; display: inline; margin-top: -20px; margin-left: 15px;" class="OpenIdTrashIt">Eliminar</span>
 			  </div>
-	          	<% if publication.publication_type != 'Course'%>
+
+	          <% if publication.publication_type != 'Course'%>
+	          	
 			  <div class="non-blur editIt" id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
 				  <%= link_to image_tag('icons/pencil-mini-low.png'), edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true %>
 			  		<span style="visibility: hidden; position: absolute; display: inline; margin-top: -20px; margin-left: 15px;" class="OpenIdEditIt">Editar</span>
-			  </div>
+			  </div><!-- non-blur -->
+			  
 			 <%end%>
-	      </div>
+	    </div><!-- link_publications -->
+	    
 	     
 	     <script>
 	            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function () {
@@ -184,31 +196,6 @@
                 });
 	     </script>
 	     
-	     
-         
-		<!-- 
-		 <script>
-				$('.delivery').mouseenter(function() {
-					$('.link_publications').fadeIn(100);
-				}),
-				$('.delivery').mouseleave(function() {
-					$('.link_publications').fadeOut(100);
-				}),
-				$('.trashIt').mouseenter( function() {
-					$('.OpenIdTrashIt').css({visibility: "visible"}, 200);
-				}),
-				$('.trashIt').mouseleave( function() {
-					$('.OpenIdTrashIt').css({visibility: "hidden"}, 200);
-				}),
-				$('.editIt').mouseenter( function() {
-					$('.OpenIdEditIt').fadeIn('slow').css({visibility: "visible"}, 200);
-				}),
-				$('.editIt').mouseleave( function() {
-					$('.OpenIdEditIt').css({visibility: "hidden"}, 200);
-				});
-		 </script>
-	 -->
-
 		 <script>
 		 $(document).ready( function() {
 			 $('.link_publications').hide();
@@ -242,35 +229,35 @@
 	   
 	              
 	            <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
-	                <div class="rander">
-	                    <div class="form_for_edit_wall_top"id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close" >x</div>
-	                </div>
-	               <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
-	              
-	            </div>
+	              <div class="rander">
+	                 <div class="form_for_edit_wall_top"id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close" >x</div>
+	              </div>
+	              <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
+	            </div><!-- form_for_edit_wall -->
 	           
-                <script>
-
-                             $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
-
-                                if($.browser.webkit){
-                                CancelEditingBlur();
-                                DisableBlured();
-                                $('#deleted_id_<%= id %>').foggy(false);
-                                }
-                                $('.link_publications').show();
-                                $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
-                                $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
-
-                             });
-
-                   </script>
-
-	             
-	     
+        <script>
+	         $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
+	
+	            if($.browser.webkit){
+	            CancelEditingBlur();
+	            DisableBlured();
+	            $('#deleted_id_<%= id %>').foggy(false);
+	            }
+	            $('.link_publications').show();
+	            $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
+	            $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
+	
+	         });
+           </script>
+                   	     
           <%end%>
+          
           <div class="labels"><%= post.comments.count %> Comentarios</div>
-          <div class="labels"><p><div style="float:left" id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></div> <div style="float:left">&nbsp;me gusta</div></div>
+          <div class="labels">
+          	<div style="float:left" id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></div>
+		  	<div style="float:left">&nbsp;me gusta</div>
+		  </div>
+		  
         </div>
       </div>
 
@@ -291,8 +278,11 @@
         <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => post.id,:commentable_type => type} %>
       </div>
     </div>
+    
+    
   </div>
 <%end%>
+
   <script type="text/javascript">
   $('#footer-publication-<%= id %>').on('click',function(e){
     e.preventDefault();
@@ -309,4 +299,5 @@
     return false;
   });
   </script>
+  
 <%end%>

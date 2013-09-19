@@ -1,3 +1,7 @@
+.fixingContent {
+	margin: 0 auto;
+}
+
 .visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight,#users-and-groups-for-chat,#chat-panels-zone{
     position: fixed;
     width: 200px;
@@ -298,7 +302,7 @@ z-index: 1;
     /*border:#ddd 1px solid;*/
     /*height:500px;*/
     height: 400px;
-    overflow: auto;
+    //overflow-y: scroll;
     padding-top: 10px;
 }
 
@@ -356,9 +360,14 @@ font-weight: lighter;
 	color: #FFF;
 	font-weight: lighter;
 	transition: 0.3s;
-	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-	
+	//-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;	
 }
+
+.chatSingle_big > a.SelectedClass {
+	background: #5F95BE;
+	//background: #FFF;
+}
+
 .chatSingle_big > a:hover {
 background: #5F95BE;
 cursor: pointer;
@@ -379,7 +388,6 @@ cursor: pointer;
 	width: 714px;
 	padding-top: 10px;
 	display: block;
-	overflow: auto;
 	height: 100%;
 	padding-bottom: 50px;
 }
@@ -425,19 +433,14 @@ cursor: pointer;
 		max-height: 300px;
 	}
 
-/*
-#chat-messages .insideChat {
-		box-shadow: 0px 2px 4px #ccc;
-		background: #1C87A4;
-	}
-*/
-
 .insideChat p {
 		font-family: arial;
 		font-size: 12px;
 		color: #1a1a1a;
 }
 
+// --------------------------------------------------------------- //
+///////////////////// label de ballon chat left /////////////////////
 
 .MsjC {
 	//display: table-cell;
@@ -484,61 +487,64 @@ cursor: pointer;
 	}
 }
 
+// --------------------------------------------------------------- //
+///////////////////// label de ballon chat right /////////////////////
 
-
-/*
-.MsjC p {
-		width: 310px;
-		font-family: arial;
-		min-height: 10px;
-		max-height: 240px;
-		display: table;
-		position: relative;
-		font-size: 12px;
-		color: #2576aa;
-		float: right;
-		font-weight: bold;
-		height: 0px;
-		padding: 11px 15px;
-		background: #CBE6F7;
-		margin-bottom: 13px;
-		border: #8acbf3 solid 1px;
-		-webkit-border-radius: 6px;
-		-moz-border-radius: 6px;
-		border-radius: 6px;
+.insideChat .MsjD {
+	//display: table-cell;
+	display: -moz-grid;
+	min-width: 50px;
+	max-width: 225px;
 }
 
-Hay que checar los estilos ya que no se pueden customizar
+.insideChat .MsjD p {
+	position: relative!important;
+	padding: 10px 20px!important;
+	color: #FFF!important; 
+	background: #0B93F6!important;
+	border-radius: 25px!important;
+	text-align: right!important;
+	float: right!important;
+	display: block;
+		
+	&:before {
+		content: ""!important;
+		position: absolute!important;
+		z-index: -1!important;
+		bottom: -2px!important;
+		right: -7px!important;
+		float: right!important;
+		height: 20px!important;
+		//border-right: 20px solid #0B93F6;
+		background: url('colophon_right.png') no-repeat!important;
+		border-bottom-left-radius: 16px 14px!important;
+		-webkit-transform: translate(0, -2px)!important;
+	}
 
-.MsjC p:after {
-	content: "";
-position: absolute;
-top: 3px;
-left: -15px;
-border-style: solid;
-border-width: 15px 15px 15px 0;
-border-color: transparent #CBE6F7;
-display: block;
-width: 0;
-z-index: 1;
+	&:after {
+		content: ""!important;
+		position: absolute!important;
+		z-index: 1!important;
+		bottom: -2px!important;
+		right: -56px!important;
+		width: 26px!important;
+		height: 20px!important;
+		background: transparent!important;
+		border-bottom-left-radius: 10px!important;
+		-webkit-transform:translate(-30px, -2px)!important;
+	}
 }
 
-.MsjC p:before {
-content: "";
-position: absolute;
-top: 3px;
-left: -16px;
-border-style: solid;
-border-width: 15px 15px 15px 0;
-border-color: transparent #8acbf3;
-display: block;
-width: 0;
-z-index: 0;
+// --------------------------------------------------------------- //
+////////////////////// terminan labels de chat //////////////////////
+
+#chat-messages .insideChat p { 
+	max-width: 300px;
+	color: #000;
+	margin: -3px 12px 0 12px!important;
+	z-index: -1;
+	font-size: 14px;
 }
-
-*/
-
-#chat-messages .insideChat p { color: #000; margin-top: 0px; margin-left: 4px; z-index: -1; margin-top: -19px; font-size: 14px; }
 
 #chat-messages .insideChat .insideChatText .imgChat img {
 	width: 30px!important;
@@ -562,45 +568,38 @@ z-index: 0;
 
 .toolTipUser {
 		/*background: url('/assets/triangle.png') no-repeat center right;*/
-		min-width: 0;
-		max-width: 200px;
-		height: 10px;
-		display: table-cell;
-		position: absolute;
-		float: right;
-		text-align: right;
-		padding: 5px 6px 5px 5px;
-		margin-top: 4px;
-		z-index: 99;
-		margin-left: -130px;
-}
-.toolTipUser p {
-		background: rgba(254,254,254,0.9);
-		color: #000;
-		padding: 5px;
 		width: auto;
-		margin-top: -6px;
+		height: 10px;
+		background: rgba(254,254,254,0.9);
+		position: relative;
+		text-align: right;
+		float: left;
+		padding: 5px 5px 5px 5px;
+		margin-top: 0px;
+		z-index: 99;
+		//margin-left: -130px;
 		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-	}
+}
 
-.imgChat { 
+.MsjD .toolTipUser {
+	float: right;
+}
+
+.MsjC .imgChat { 
 		width: 30px;
 		height: 30px;
 		display: table;
 		float: left;
 		cursor: pointer;
  }
- 
-/*
-.imgChat img + .toolTipUser {
-		visibility: hidden;
-		transition: all ease-in 0.4;
-}
-.imgChat img:hover + .toolTipUser {
-		visibility: visible;
-		transition: all ease-in 0.4;
-}
-*/
+.MsjD .imgChat { 
+		width: 30px;
+		height: 30px;
+		display: table;
+		float: right;
+		cursor: pointer;
+ }
+
 
 .shareMSJ {}
 
@@ -611,6 +610,7 @@ z-index: 0;
 	margin-top: -2px;
 	float: left;
 }
+
 .shareMSJ input.sendBtnChat {
 	padding: 12px;
 	width: 176px;
@@ -660,10 +660,6 @@ z-index: 0;
 #go-to-chats-url > span a{
 	cursor: pointer !important;
 	color:#FFF;
-}
-
-.slajdk {
-	float: right;
 }
 
 .imageChatDrop {
