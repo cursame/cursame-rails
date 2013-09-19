@@ -1,193 +1,199 @@
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)),
- url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
+<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
 
   <div id="noticce">
-  <div id="notice" class="notice"></div>
+    <div id="notice" class="notice"></div>
   </div>
   <% permitted_to? :create, :courses do %>
     <% if @member.owner != nil %>
-        <% if @member.owner == true %>
-         <div class="depot_button"> <%= link_to "Monitor de actividades", course_activities_depot_path %> </div>
- 
-        <%end%>
+      <% if @member.owner == true %>
+        <div class="depot_button"> <%= link_to "Monitor de actividades", course_activities_depot_path %> </div>
       <%end%>
- <% end %>
-      <div class="banner-shadow">
-        <div id="box-titles">
-          <ul id="banner-btns" class="list-header">
-            <% permitted_to? :create, :courses do %>
-            <% if @member.owner != nil %>
-             <% if @member.owner == true %>
-            <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
-            <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
-            <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
-             <%end%>
-             <%end%>
-            <% end %>
-            <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
-            
-            
-          </ul>
-        </div>
-        <div id="box-titles-content" class="box-titles-content-style">
-          <div id="stats-area" class="menu-course" style="width:100%px; height:650px; ">
-                  <div id="timeline-embed" style="margin-bottom:-200px;"></div>
-                                          <script type="text/javascript">
-                                            var timeline_config = {
-                                             width: "100%",
-                                             height: "78%",
-                                             source: '<%=@course.id%>/course_ki_line.json'
-                                            }
-                                          </script>
-                                          <%= javascript_include_tag('storyjs-embed.js') %>
-                                        <!--  <script type="text/javascript" src="<%#= "http://#{current_network.subdomain}.#{links}/assets/storyjs-embed.js" %>"></script>-->
-
-            <ul id ="estadistic-list">
-            <% permitted_to? :create, :courses do %>
-                <% @comments = current_course.comments.count %>
-                <% @deliveries = current_course.deliveries.count %>
-                <% @survey = current_course.surveys.count %>
-                <% @activity = @comments + @survey + @deliveries  %>
-
-              <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
-              <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
-              <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
-              <li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
-            <!--  <li> <img src="/assets/icons/grades.png"> <br> <b> 9.1 </b>PROMEDIO <br><i>8.5 general</i></li>-->
-
+    <%end%>
+  <% end %>
+  
+  <div class="banner-shadow">
+    <div id="box-titles">
+      <ul id="banner-btns" class="list-header">
+        <% permitted_to? :create, :courses do %>
+          <% if @member.owner != nil %>
+            <% if @member.owner == true %>
+              <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
+              <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
+              <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
             <%end%>
+          <%end%>
+        <% end %>
+        <li get-to="#c_area" class="calif" move-sidebar-height="105px" >Calificaciones</li>
+        <script>
+          $(document).ready( function() {              
+            // Redireccionamiento de una notificacion: "Nueva calificacion en una entrega"
+            if(<%= (@show_accomplishment and @id_search) %>) {
+              // Se despliegan las calificaciones
+              var assignmentsElement = $("#banner-btns > li.calif").first();
+              assignmentsElement.click();
+            }
+          });
+        </script>
+      </ul>
+    </div>
+    
+    <div id="box-titles-content" class="box-titles-content-style">
+      <div id="stats-area" class="menu-course" style="width:100%px; height:650px; ">
+        <div id="timeline-embed" style="margin-bottom:-200px;"></div>
+        <script type="text/javascript">
+          var timeline_config = {
+            width: "100%",
+            height: "78%",
+            source: '<%=@course.id%>/course_ki_line.json'
+          }
+        </script>
 
-            </ul>
+        <%= javascript_include_tag('storyjs-embed.js') %>
+        
+        <ul id ="estadistic-list">
+          <% permitted_to? :create, :courses do %>
+            <% @comments = current_course.comments.count %>
+            <% @deliveries = current_course.deliveries.count %>
+            <% @survey = current_course.surveys.count %>
+            <% @activity = @comments + @survey + @deliveries  %>
+
+            <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
+            <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
+            <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
+            <li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
+          <%end%>
+        </ul>
+      </div>
+
+      <div id="c_area" class="menu-course  active" style="height:500px; color:#fff;">
+        <%= render partial: "courses/evaluation"%>
+      </div>
+
+      <div class="menu-course  active" id="entregas" style="height:500px;">
+        <div class="arco_course_deliver">
+          <div class="classTabs" style="height: 50px; width: 440px;">
+            <span class="activate" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left;" onclick="test('content_survey_slider','content_delivery_first')">Tareas</span>
+            <span class="deactive" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left; position: absolute;" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
           </div>
         
-          <div id="c_area" class="menu-course  active" style="height:500px; color:#fff;">
-              <%= render partial: "courses/evaluation"%>
-          </div>
-          <div  class="menu-course  active" id="entregas" style="height:500px;">
-              <div class="arco_course_deliver">
-
-			<div class="classTabs" style="height: 50px; width: 440px;">
-
-                <span class="activate" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left;" onclick="test('content_survey_slider','content_delivery_first')">Tareas</span>
-                <span class="deactive" style="width: 190px; display: inline-block; font-size: 17px; height: 32px; padding: 17px 15px 0; float: left; position: absolute;" onclick="test('content_delivery_first','content_survey_slider')">Exámenes</span>
-
-            </div>
-
-			<script>
-			$(document).ready( function() {
-				$('.classTabs span').click( function() {
-					$('.classTabs span').removeClass('activate').addClass('deactive');
-					$(this).removeClass('deactive').addClass('activate');
-				});
-			});
-			</script>
-				   	<div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
-                  <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">
-                  
-                   <% @course.deliveries.reverse.each do |delivery|%>
-
-
-	<div class="delivery_f">
-	
-	        <div class="delivery_container">
-	        	<div id="OpenClose"></div>
-	            <div class="title"><%= delivery.title %></div>
-	            <div class="state"><div id="delivery_state_publish<%=delivery.id%>">
-	            	<%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
-	            </div>
-	            <div class="dates" id="dates_delivery<%=delivery.id%>">
-	            	<img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
-	            </div>
-	            <div class="image" id="opentag<%=delivery.id%>"></div>
-	        </div><!-- ends delivery_container -->
-
-
-
-	       <div class="so_open" id="so_open<%=delivery.id%>" style="display:none">
-	           <% delivery.assignments.reverse.each do |assignment|%>
-	           <div class="assignment">
-	              <div class="title" style="width: 422px;">
-	              <span style="width: 345px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
-		              <span>Entrega:&nbsp;</span> <%= truncate("#{assignment.title}", :omission => "...", :length => 35)%><br />
-		              	<% if assignment.user != nil %>
-		              <span>Por:&nbsp;</span><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %>
-	              </span>
-	              	
-	              <span id="RightArrow" style="float: right;"><%= link_to image_tag('right_arrow.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
-	              </span>
-	              
-	              	<%end%>
-	              </div><!-- ends title -->
-	           </div><!-- ends assigment -->
-	         <%end%>
-	       </div><!-- ends so_open -->
-
-	</div><!-- ends delivery_f -->
-
-
-</div>
+          <script>
+            $(document).ready( function() {
+              $('.classTabs span').click( function() {
+                $('.classTabs span').removeClass('activate').addClass('deactive');
+                $(this).removeClass('deactive').addClass('activate');
+              });
+              
+              // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
+              if(<%= (@show_assignment and @id_search) %>) {
+                // Se despliegan las tareas
+                var assignmentsElement = $("#banner-btns > li.calif").first();
+                assignmentsElement.click();
+                
+                // Se deslpiegan las entregas de la tarea elegida
+                var deliveryElement = $(".delivery_f").find("#opentag<%= @id_search%>").parent().parent();
+                deliveryElement.find("#OpenClose").click();
+                
+                // Se despliega la nueva entrega en particular
+                var assignmentElement = deliveryElement.find("#div-assignment-<%= @show_assignment %> div.title a");
+                assignmentElement.click();
+              }
+              
+              // Redireccionamiento de una notificacion: "Nueva calificacion en una entrega"
+              if(<%= (@show_accomplishment and @id_search) %>) {
+                // Se despliegan las calificaciones
+                var assignmentsElement = $("#banner-btns > li.calif").first();
+                console.log(assignmentsElement);
+              }
+            });
+          </script>
+				  <div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
+            <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">      
+            <% @course.deliveries.reverse.each do |delivery|%>
+            
+        	    <div class="delivery_f" >
+	              <div class="delivery_container">
+	        	      <div id="OpenClose"></div>
+	                <div class="title"><%= delivery.title %></div>
+	                <div class="state">
+	                  <div id="delivery_state_publish<%=delivery.id%>">
+	                    <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+	                  </div>
+	                  <div class="dates" id="dates_delivery<%=delivery.id%>">
+	                    <img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
+	                  </div>
+	                  <div class="image" id="opentag<%=delivery.id%>"></div>
+	              </div><!-- ends delivery_container -->
+	                
+	                <div class="so_open" id="so_open<%=delivery.id%>" style="display:none">
+	                <% delivery.assignments.reverse.each do |assignment|%>
+	                  <div class="assignment" id="div-assignment-<%= assignment.id %>">
+	                    <div class="title" style="width: 422px;">
+	                      <span style="width: 345px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
+	                        <span>Entrega:&nbsp;</span> <%= truncate("#{assignment.title}", :omission => "...", :length => 35)%><br />
+	                          <% if assignment.user != nil %>
+	                            <span>Por:&nbsp;</span><%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %>
+	                      </span>
+	                      <span id="RightArrow" style="float: right;"><%= link_to image_tag('right_arrow.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
+	                      </span>
+	              	          <%end%>
+	                    </div><!-- ends title -->
+	                  </div><!-- ends assigment -->
+	                <%end%>
+	                </div><!-- ends so_open -->
+	            </div><!-- ends delivery_f -->
+	          </div>
                     
-                      <script>
-                       	   //  $('#OpenClose').click(function() {
-						   //  $('#so_open<%=delivery.id%>').toggle('blind');
-                       	   //  });
+            <script>
+              $('.assignment').mouseenter( function() {
+                $(this).css({background: "#EEE"});
+                $('#RightArrow').css({background: "#e2dfdf"});
+              });
+            
+              $('.assignment').mouseleave( function() {
+                $(this).css({background: "#F5F5F5"});
+                $('#RightArrow').css({background: "transparent"});
+              });
                        	   
-                       	   $('.assignment').mouseenter( function() {
-                       	   		$(this).css({background: "#EEE"});
-                       	   		$('#RightArrow').css({background: "#e2dfdf"});
-                       	   });
-                       	   $('.assignment').mouseleave( function() {
-                       	   		$(this).css({background: "#F5F5F5"});
-                       	   		$('#RightArrow').css({background: "transparent"});
-                       	   });
-                       	   
-                       	   
-                       	   
-                       	   $('.delivery_f #OpenClose').click ( function() {
-                       	   		$('.delivery_f').find( '#so_open<%=delivery.id%>' ).toggle('blind');
-                       	   });
-                           $('#opentag<%=delivery.id%>').click(function() {
-                             $('#so_open<%=delivery.id%>').fade('blind');
-                           });                           
-                      </script>
+              $('.delivery_f #OpenClose').click ( function() {
+                $('.delivery_f').find( '#so_open<%=delivery.id%>' ).toggle('blind');
+               });
+             
+               $('#opentag<%=delivery.id%>').click(function() {
+                 $('#so_open<%=delivery.id%>').fade('blind');
+               });                           
+             </script>
                       
-                   <%end%>
-                 </div>
-<!--conten-suervey-->                  
+            <%end%>
+            </div><!--conten-suervey-->                  
                    
-                 <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden;">
-                 
-                 <% @course.surveys.reverse.each do |survey|%>
-                 <div class="survey_fTwo " id="survey_f<%=survey.id%>">
-                     
-
-
-	<div id="ExamsDelivery" class="delivery_f">
-	
-	        <div class="delivery_container">
-	        	<div id="OpenClose" class="OpenClose<%=survey.id%>"></div>
-	                 <div class="title"><%= survey.title %></div>
-
-					 <div class="state">
+            <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden;">
+            
+            <% @course.surveys.reverse.each do |survey|%>
+              <div class="survey_fTwo " id="survey_f<%=survey.id%>">
+                <div id="ExamsDelivery" class="delivery_f">
+              
+                  <div class="delivery_container">
+                    <div id="OpenClose" class="OpenClose<%=survey.id%>"></div>
+	                  <div class="title"><%= survey.title %></div>
+	                   
+	                  <div class="state">
 	                    <div class="dates" id="survey_dates<%= survey.id%>">
-	                    	<%= survey.publish_date %><%= survey.end_date %>
+	                      <%= survey.publish_date %><%= survey.end_date %>
 	                    </div><!-- ends state -->
 
-	                      	<div id="survey_state_publish<%=survey.id%>">
-	                      	  <%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
-						  	 </div><!-- ends survey_state_publish -->
-	                     </div><!-- ends state -->
+	                    <div id="survey_state_publish<%=survey.id%>">
+	                      <%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
+						  	      </div><!-- ends survey_state_publish -->
+	                  </div><!-- ends state -->
 	                     
-	                     <div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
-	                     
-					</div><!-- ends survey_dates -->
-	         </div><!-- ends delivery_container -->	         
-
-                        
-                  <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none, margin-left: 1px!important; width: 440px;">
-                      <% survey.user_surveys.each do |us|%>
-                         <div class="assignment" style="width: 440px;">
-                           <div class="title">
+	                  <div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
+	                </div><!-- ends survey_dates -->
+	              </div><!-- ends delivery_container -->
+	              
+	              <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none, margin-left: 1px!important; width: 440px;">
+	              <% survey.user_surveys.each do |us|%>
+                  <div class="assignment" style="width: 440px;">
+                    <div class="title">
 							 <span style="width: 410px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
 							 	<span class="title" style="font-size: 15px;">Entregó: <%= us.user.name%></span>
 							 	<span id="RightArrow" style="float: right; margin-top: -5px;">
@@ -208,28 +214,6 @@
         	                       	   });
                                	   });
                           </script>
-
-						   <!--
-						      <script>
-						   	   $('.assignment').mouseenter( function() {
-						   	   		$(this).css({background: "#EEE"});
-						   	   		$('#RightArrow').css({background: "#e2dfdf"});
-						   	   });
-						   	   $('.assignment').mouseleave( function() {
-						   	   		$(this).css({background: "#F5F5F5"});
-						   	   		$('#RightArrow').css({background: "transparent"});
-						   	   });
-						   	   
-						   	   
-						   	   $('#OpenClose').click ( function() {
-						   	   		$( '#copea_<%=survey.id%>' ).toggle('blind');
-						   	   });
-						       $('#opentag_s<%=survey.id%>').click(function() {
-						         $('#copea_<%=survey.id%>').fade('blind');
-						       });                           
-						  </script>
-						  -->
-    
                  <%end%>
                    
                 </div><!-- ends content_survey -->
@@ -288,20 +272,6 @@
          <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
         <%end%>
      </div>
-
-
-     <!--  <div class="head_banner_style_user">
-             <div class="sup_track">
-             <div class="track">
-             <%= image_tag('track.png')%>
-             </div>
-             <div class="track_text">
-                 <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
-                  </p>
-             </div>
-             </div>
-      </div> -->
-
 
      <div id="tabs-friends" class="tabs-style">
          <div id="box-friends" class="basic-lateral-box" style="margin-top:40px; height:270px; overflow:auto;"  >
@@ -488,4 +458,3 @@ $(function() {
     loaderImage: '<%= image_path("load.gif")%>'
   });
 });
-</script>
