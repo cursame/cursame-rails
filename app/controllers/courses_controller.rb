@@ -37,11 +37,13 @@ class CoursesController < ApplicationController
     assets = @delivery.assets.build
 
     @id = params[:id]
+    @show_assignment = params[:show_assig]
+    @show_accomplishment = params[:show_accom]
     @search = params[:search]
-    id_search = params[:id_search]
+    @id_search = params[:id_search]
     
     @page = params[:page].to_i
-    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, id_search).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+    @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, @id_search).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     if request.xhr?
       respond_to do |format|
         format.js

@@ -85,6 +85,7 @@ $(document).ready(function() {
             padding: '0px 0px 0px 0px'
         }, time);
     }
+    
     function openBannerAnimation( elementHide, bannerProfileHeight , slideBarPaddValue ){
         $(elementHide).show();
         $(elementHide).trigger('show');
@@ -97,8 +98,8 @@ $(document).ready(function() {
         $('#side-bar').animate({
             padding: slideBarPaddValue + ' 0px 0px 0px'
         }, time);
-
     }
+    
     function closeAndOpenBannerAnimation( elementHide, elementShow, bannerProfileHeight , slideBarPaddValue ){
         $('#banner-profile').animate({
             height: defaultBannerHeight+'px'
