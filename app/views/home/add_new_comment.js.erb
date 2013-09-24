@@ -1,4 +1,4 @@
-  <% if !@editar %> 
+<% if !@editar %> 
       
     <% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
         $('#comment').val('');
@@ -13,6 +13,16 @@
       // si se tiene que agregar a nivel de los coments
       $('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
       $('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('');
+      $('#comment_for_<%= @comment.commentable_type + @comment.commentable_id.to_s %>').on("keypress", function(e) {
+        if(e.keyCode == 13) {
+          e.preventDefault();
+          
+          if($(this).val() != "") {
+            $(this).off(e);
+            $(this).parents("form").submit();
+          }
+        }
+      });
       $("#notice").html('');
       $("#notice").css('color','#608847');
       $("#notice").css('background','#DFF0D8');
@@ -43,4 +53,3 @@
     $('#deleted_id_<%=@publication.id%>').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>');
    
   <% end %>
-
