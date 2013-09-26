@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -375,6 +376,8 @@ class User < ActiveRecord::Base
         arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
         errors = true
       end
+      user.first_name = hash.delete("Nombre")
+      user.last_name = hash.delete("Apellido")
       user.email = hash.delete("Email")
 
       if !user.email.nil? then
