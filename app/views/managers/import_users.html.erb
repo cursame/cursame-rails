@@ -17,7 +17,6 @@ El email debe de ser el email del usuario.
   <%= file_field_tag :file %>
   <p>
 	<%= hidden_field_tag 'domain', request.domain %>
-	<%= hidden_field_tag 'subdomain', request.subdomain %>
   <%= submit_tag "Import" %>
 <% end %>
 
