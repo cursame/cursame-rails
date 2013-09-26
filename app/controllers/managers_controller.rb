@@ -70,7 +70,7 @@ class ManagersController < ApplicationController
     end
 
     text = ""
-    begin
+    #begin
       File.open(params[:file].path,'r').each do |line|
         text += line
       end
@@ -83,9 +83,9 @@ class ManagersController < ApplicationController
 
       user_info.delay.import(path,network,user_admin,domain,subdomain)
 
-    rescue
-      @noFile = true
-    end
+    #rescue
+     # @noFile = true
+    #end
     @users = current_network.users
     respond_to do |format|
       format.html { render "managers/import_users"}
