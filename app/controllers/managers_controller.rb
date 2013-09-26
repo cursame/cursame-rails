@@ -58,7 +58,7 @@ class ManagersController < ApplicationController
     network = current_network
     user_admin = current_user
 
-    user_info = User.find_by_email("info@cursa.me")
+    user_info = User.find_by_email("emiliano@cursa.me")
 
     lastFile = Dir.glob("public/imports/import_users_*").sort.last
     if lastFile.nil? then
