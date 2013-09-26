@@ -81,7 +81,7 @@ class ManagersController < ApplicationController
       f.write(text)
       f.close
 
-      user_info.delay.import(path,network,user_admin)
+      user_info.delay.import(path,network,user_admin,domain,subdomain)
 
     rescue
       @noFile = true
