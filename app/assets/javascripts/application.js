@@ -100,5 +100,9 @@ $(function() {
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}		
 	});
+
+    PrivatePub.subscribe ("/messages/users_channel_21933_21935", function() {
+        console.log(arguments);
+    });
 });
 
