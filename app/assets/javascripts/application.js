@@ -63,6 +63,7 @@ function changeNumbers(idParent, idFind){
     }
     var count = 0 ;
 }
+
 //notificaciones push usando private_pub
 $(function() {
 	// notificaciones para el chat

@@ -202,11 +202,11 @@ class HomeController < ApplicationController
         
         
       else
-        ids = [current_user.id,params[:id].to_i]
+        ids = [current_user.id, params[:id].to_i]
         @channel_name = get_unique_channel_users(ids)
         users = User.find(ids)
-        
       end
+      
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
       @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')

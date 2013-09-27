@@ -77,13 +77,14 @@
 	
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
-		function(data, channel){
+		function(data, channel) {
+		  console.log(data);  
 			var params = {
 				id:data.notification.id
 			};
 			
 		  $('#notifications_count span').html(data.num*1);
-		  $.get('/home/render_notifications', $.param(params), null, "script");
+		 // $.get('/home/render_notifications', $.param(params), null, "script");
 		}
 	);
 </script>
