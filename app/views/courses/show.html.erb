@@ -255,8 +255,8 @@
 	  </div><!-- box-course -->
 	  
 	  <div id="tabs-friends" class="tabs-style">
-	    <div id="box-friends" class="basic-lateral-box" style="margin-top:40px; height:270px; overflow:auto;"  >
-	      <h2  style="margin-right:-30px;"> Miembros </h2> 
+	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; height: 110px; position: relative; display: block;" >
+        <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
 	      <% permitted_to? :create, :courses do %>
 	        <% @course.members_in_courses.each do |member|  %>
 	          <% @members = User.find_by_id(member.user_id) %>
@@ -291,7 +291,7 @@
       </div>
     </div>
     
-    <div id="box-d" class="basic-lateral-box" style="margin-top: 0px; position: relative; display: block;">
+    <div id="box-d" class="basic-lateral-box" style="margin-top: 180px; position: relative; display: block;">
       <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
       <span class="RedBallon"><%= @course.course_files.count %></span>
       
