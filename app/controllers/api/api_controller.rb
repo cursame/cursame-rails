@@ -480,7 +480,8 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
-   def native_comments
+  #checar la respuesta
+  def native_comments
     @cmts = []
     @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     
@@ -543,7 +544,7 @@ class Api::ApiController < ApplicationController
         last_name: u.last_name, 
         description: u.description, 
         personal_url: u.personal_url, 
-        avatar: u.avatar.blank? ? u.image_avatarx.url : u.avatar.profile.url, 
+        avatar: u.avatar.blank? ? u.image_avatarx : u.avatar.profile, 
         coverphoto: u.coverphoto.url, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
@@ -588,6 +589,17 @@ class Api::ApiController < ApplicationController
           end
       end      
       render :json => {:success => success}, :callback => params[:callback]
+  end
+  
+  def native_add_new_message
+    @channel = Channel.find_by_channel_name(params[:channel_name])
+
+    if !@channel
+      @channel = Channel.create!(:channel_name=>params[:channel_name],:channel_type => "")
+    end
+
+    @message = Mesage.create!(:mesage => params[:mesage],:user_id =>@user.id,:channel_id =>@channel.id)
+    render :json => {:success => true}, :callback => params[:callback]
   end
 
   private

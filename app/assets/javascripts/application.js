@@ -68,7 +68,10 @@ function changeNumbers(idParent, idFind){
 $(function() {
 	// notificaciones para el chat
 	PrivatePub.subscribe ("/messages/notifications_user_"+Cursame.userId, function(data, channel){
-		var url,notification,numNotifications
+		
+        console.log(arguments);
+        
+        var url,notification,numNotifications
 			channelType = data.channel.channel_name.split('course_channel_');		
 			url= channelType[1] ? '/home/open_channel/'+channelType[1]+'?course=true':'/home/open_channel/'+data.sender.id;		
 
@@ -101,5 +104,9 @@ $(function() {
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}		
 	});
+
+    PrivatePub.subscribe ("/messages/users_channel_2_4", function() {
+        console.log(arguments);
+    });
 });
 
