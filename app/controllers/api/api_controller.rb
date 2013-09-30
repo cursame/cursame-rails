@@ -132,7 +132,33 @@ class Api::ApiController < ApplicationController
 
   def users
     @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
+    
+    @usuarios = []
+    @users.each do |u|
+      uu = {
+      accepted_terms: u.accepted_terms,
+      avatar: {
+        url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+      },
+      bios: u.bios,
+      coverphoto: u.coverphoto,
+      created_at: u.created_at,
+      description: u.description,
+      domain: u.domain,
+      email: u.email,
+      facebook_link: u.facebook_link,
+      first_name: u.first_name,
+      id: u.id,
+      last_name: u.last_name,
+      personal_url: u.personal_url,
+      subdomain: u.subdomain,
+      tour_info: u.tour_info,
+      twitter_link: u.twitter_link,
+      updated_at: u.updated_at
+    }
+      @usuarios.push(uu)
+    end
+    render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
   def notifications
@@ -508,6 +534,7 @@ class Api::ApiController < ApplicationController
           text =  text + ' en el cuestionario ' + comment.commentable.name
       end
 
+       u = comment.user
        cmt = {
           id: comment.id,
           title: comment.title,
@@ -523,7 +550,9 @@ class Api::ApiController < ApplicationController
           num_likes: comment.likes.size,   
           likes: comment.likes,   
           text: text,
-          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile,
+          avatar: {
+            url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+          },
           num_comments: comment.comments.count
         }
       @cmts.push(cmt)     
@@ -544,7 +573,9 @@ class Api::ApiController < ApplicationController
         last_name: u.last_name, 
         description: u.description, 
         personal_url: u.personal_url, 
-        avatar: u.avatar.blank? ? u.image_avatarx : u.avatar.profile, 
+        avatar: {
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+        }, 
         coverphoto: u.coverphoto.url, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
