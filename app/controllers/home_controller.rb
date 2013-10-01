@@ -194,18 +194,13 @@ class HomeController < ApplicationController
     def open_channel
       if params[:course]
         @channel_name = "/messages/course_channel_"+ params[:id]
-        users = Course.find(params[:id]).users
-        
-        ######## se agregan validadores de users para el exist #########
-        
-        users = users.keep_if{|x| x != nil}
-        
-        
+        users = Course.find(params[:id]).users        
+        ######## se agregan validadores de users para el exist #########        
+        users = users.keep_if{|x| x != nil}        
       else
         ids = [current_user.id,params[:id].to_i]
         @channel_name = get_unique_channel_users(ids)
-        users = User.find(ids)
-        
+        users = User.find(ids)        
       end
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
