@@ -427,9 +427,9 @@ class User < ActiveRecord::Base
             arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
           end
         end
-        if !user.save then
-          arrayErrores.push({:line => count, :message => "Error al guardar"})
-        else
+        #if !user.save then
+        #  arrayErrores.push({:line => count, :message => "Error al guardar"})
+        #else
           # user.confirm!
           # user.save!
           p = Permissioning.new
@@ -440,7 +440,7 @@ class User < ActiveRecord::Base
           #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
-        end
+        #end
       end
     end
 
