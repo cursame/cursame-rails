@@ -436,6 +436,7 @@ class User < ActiveRecord::Base
           p.role_id = role_id.to_i
           p.network_id = network_id.to_i
           p.user_id = (User.find_by_email(user.email)).id
+          p.save
           #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
