@@ -688,7 +688,7 @@ class Api::ApiController < ApplicationController
       end
     end
     channel = find_or_insert_channel(params['channel_name'],users)
-    @messages = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @messages = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('created_at DESC')
     render :json => {:users => @messages.as_json, :count => @messages.count()}, :callback => params[:callback]
   end
 
