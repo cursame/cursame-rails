@@ -62,31 +62,41 @@ class Api::ApiController < ApplicationController
             end 
 
             text = publication.user.name + ' ha comentado ' + auxtext
-            avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
+            avatar =  {
+              url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
+            }
           when 'Discussion'
             publication = Discussion.find(id)
             comments = publication.comments
             auxtext = publication.courses.empty? ? 'publica en tu red' : 'en la asignatura de ' + publication.courses[0].title
             text = 'Se ha creado un discusion ' + auxtext
-            avatar = publication.user.avatar.blank? ? publication.user.image_avatarx : publication.user.avatar.profile 
+            avatar =  {
+              url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
+            }
           when 'Course'
             publication = Course.find(id)
             comments = publication.comments
             text = 'Nueva asignatura ' + publication.title
-            avatar = publication.avatar.blank? ? publication.course_avatarx : publication.avatar.profile
+            avatar =  {
+              url: publication.avatar.url.nil? ? "/assets/" + publication.course_avatarx : publication.avatar.url 
+            }
           when 'Delivery'
             publication = Delivery.find(id)
             comments = publication.comments
             done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
             text = 'Se ha creado una tarea en la asignatura de ' + publication.courses[0].title
-            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile
+            avatar =  {
+              url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url 
+            }
             publication = publication.as_json(:include => [:areas_of_evaluations,:assets])
           when 'Survey'
             publication = Survey.find(id)
             comments = publication.comments
             done = !UserSurvey.where(:survey_id => id, :user_id => @user.id).empty?
             text = 'Se ha creado un cuestionario en la asignatura de ' + publication.courses[0].title
-            avatar = publication.courses[0].avatar.blank? ? publication.courses[0].course_avatarx : publication.courses[0].avatar.profile 
+            avatar =  {
+              url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url 
+            }
             publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
         end
         # publication.likes = publication.likes.size
@@ -132,7 +142,33 @@ class Api::ApiController < ApplicationController
 
   def users
     @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
+    
+    @usuarios = []
+    @users.each do |u|
+      uu = {
+      accepted_terms: u.accepted_terms,
+      avatar: {
+        url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+      },
+      bios: u.bios,
+      coverphoto: u.coverphoto,
+      created_at: u.created_at,
+      description: u.description,
+      domain: u.domain,
+      email: u.email,
+      facebook_link: u.facebook_link,
+      first_name: u.first_name,
+      id: u.id,
+      last_name: u.last_name,
+      personal_url: u.personal_url,
+      subdomain: u.subdomain,
+      tour_info: u.tour_info,
+      twitter_link: u.twitter_link,
+      updated_at: u.updated_at
+    }
+      @usuarios.push(uu)
+    end
+    render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
   def notifications
@@ -508,6 +544,7 @@ class Api::ApiController < ApplicationController
           text =  text + ' en el cuestionario ' + comment.commentable.name
       end
 
+       u = comment.user
        cmt = {
           id: comment.id,
           title: comment.title,
@@ -523,7 +560,9 @@ class Api::ApiController < ApplicationController
           num_likes: comment.likes.size,   
           likes: comment.likes,   
           text: text,
-          avatar: comment.user.avatar.blank? ? comment.user.image_avatarx : comment.user.avatar.profile,
+          avatar: {
+            url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+          },
           num_comments: comment.comments.count
         }
       @cmts.push(cmt)     
@@ -544,7 +583,9 @@ class Api::ApiController < ApplicationController
         last_name: u.last_name, 
         description: u.description, 
         personal_url: u.personal_url, 
-        avatar: u.avatar.blank? ? u.image_avatarx : u.avatar.profile, 
+        avatar: {
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+        }, 
         coverphoto: u.coverphoto.url, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
@@ -602,6 +643,55 @@ class Api::ApiController < ApplicationController
     render :json => {:success => true}, :callback => params[:callback]
   end
 
+  def native_chat_list
+    friends_online = @user.friends(true)
+    courses_online = @user.courses
+
+    @list = []
+
+    courses_online.each do |c|
+      item = {
+        name:c.title,
+        channel_name: "/messages/course_channel_"+ c.id.to_s,
+        type: 'course',
+        avatar: {
+          url: c.avatar.url.nil? ? "/assets/" + c.course_avatarx : c.avatar.url
+        }
+      }
+      @list.push(item)
+    end
+    friends_online.each do |u|
+      item = {
+        name:u.name,
+        channel_name: get_unique_channel_users([@user.id,u.id]),
+        type: 'user',
+        avatar: {
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url
+        }
+      }
+      @list.push(item)
+    end    
+    render :json => {:users => @list.as_json, :count => @list.count()}, :callback => params[:callback]
+  end
+
+  def native_load_chat_messages    
+    ids = params['channel_name'].split(/_/);
+    users = []
+    if ids.length == 3 #se trata de un curso
+      users = Course.find(ids[2]).users
+    end
+    if ids.length > 3 #se trata de chat entre usuarios
+      ids.each_with_index do |id,index|
+        if index > 2
+          users.push(User.find(id))
+        end
+      end
+    end
+    channel = find_or_insert_channel(params['channel_name'],users)
+    @messages = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('created_at DESC')
+    render :json => {:users => @messages.as_json, :count => @messages.count()}, :callback => params[:callback]
+  end
+
   private
   def authorize
     @user = User.find_by_authentication_token(params[:auth_token])
@@ -621,5 +711,21 @@ class Api::ApiController < ApplicationController
       end
     end
     return @bandera
+  end
+
+  def get_unique_channel_users(ids)
+    ids = ids.sort
+    channel_name = "/messages/users_channel_"+ (ids * "_")
+    return channel_name
+  end
+
+  def find_or_insert_channel(channel_name,users)
+    channel = Channel.find_by_channel_name(channel_name)
+    if !channel
+      channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
+      channel.users = users
+      channel.save!
+    end
+    return channel
   end
 end
