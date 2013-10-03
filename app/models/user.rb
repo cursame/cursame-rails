@@ -420,20 +420,20 @@ class User < ActiveRecord::Base
       user.accepted_terms = true
 
       if !errors then
-        begin
+        #begin
           user.save!
           
           per = Permissioning.new
           per.role_id = role_id.to_i
           per.network_id = network_id.to_i
           per.user_id = user.id
-          per.save
+          per.save!
           
-        rescue ActiveRecord::RecordInvalid => invalid
-          invalid.record.errors.each do |error|
-            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
-          end
-        end
+        #rescue ActiveRecord::RecordInvalid => invalid
+        #  invalid.record.errors.each do |error|
+        #    arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+        #  end
+        #end
         #if !user.save then
         #  arrayErrores.push({:line => count, :message => "Error al guardar"})
         #else
