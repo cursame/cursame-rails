@@ -424,8 +424,8 @@ class User < ActiveRecord::Base
           if user.save then
             per = Permissioning.new
             per.role_id = role_id.to_i
-            per.network_id = Network.find_by_subdomain(subdomain).id
-            per.user_id = (User.find_by_email(user.email)).id
+            per.network_id = network_id.to_i
+            per.user_id = user..id
             per.save
           end
         rescue ActiveRecord::RecordInvalid => invalid
