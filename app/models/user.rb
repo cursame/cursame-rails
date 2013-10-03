@@ -421,12 +421,13 @@ class User < ActiveRecord::Base
 
       if !errors then
         begin
-          user.save!
-          per = Permissioning.new
-          per.role_id = role_id.to_i
-          per.network_id = network_id.to_i
-          per.user_id = (User.find_by_email(user.email)).id
-          per.save
+          if user.save then
+            per = Permissioning.new
+            per.role_id = role_id.to_i
+            per.network_id = network_id.to_i
+            per.user_id = (User.find_by_email(user.email)).id
+            per.save
+          end
         rescue ActiveRecord::RecordInvalid => invalid
           invalid.record.errors.each do |error|
             arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
