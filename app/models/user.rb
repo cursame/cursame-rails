@@ -420,19 +420,23 @@ class User < ActiveRecord::Base
       user.accepted_terms = true
 
       if !errors then
-        #begin
+        begin
           user.save!
-        #rescue ActiveRecord::RecordInvalid => invalid
-        #  invalid.record.errors.each do |error|
-        #    arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
-        #  end
-        #end
-        #if !user.save then
-        #  arrayErrores.push({:line => count, :message => "Error al guardar"})
-        #else
+        rescue ActiveRecord::RecordInvalid => invalid
+          invalid.record.errors.each do |error|
+            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+          end
+        end
+        if !user.save then
+          arrayErrores.push({:line => count, :message => "Error al guardar"})
+        else
           # user.confirm!
           # user.save!
-          Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          p = Permissioning.new
+          p.role_id = role_id.to_i
+          p.network_id = network_id.to_i
+          p.user_id = (User.find_by_email(user.email)).id
+          #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
         #end
