@@ -428,7 +428,7 @@ class User < ActiveRecord::Base
           per.network_id = network_id.to_i
           per.user_id = user.id
           per.save
-        end
+          
         rescue ActiveRecord::RecordInvalid => invalid
           invalid.record.errors.each do |error|
             arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
