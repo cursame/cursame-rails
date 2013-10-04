@@ -58,7 +58,7 @@ class ManagersController < ApplicationController
     network = current_network
     user_admin = current_user
 
-    user_info = User.find_by_email("jemiliano.cabrera@gmail.com") # Cambiar esto por info@cursa.me
+    user_info = User.find_by_email("info@cursa.me") # Cambiar esto por info@cursa.me
 
     lastFile = Dir.glob("public/imports/import_users_*")    
     lastFile = lastFile.sort.map{|x| x.gsub(/[^0-9]/, '')}.map{|x| x.to_i}.sort.last
