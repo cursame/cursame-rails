@@ -413,30 +413,30 @@ class User < ActiveRecord::Base
       user.avatar = '/assets/imagex.png'
 
       if !errors then
-        begin
-          user.save!
+        if (user.save) then
+          Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
         
-        rescue ActiveRecord::RecordInvalid => invalid
-          invalid.record.errors.each do |error|
-            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
-          end
-        end
-        if !user.save then
-          arrayErrores.push({:line => count, :message => "Error al guardar"})
-        else
+        #rescue ActiveRecord::RecordInvalid => invalid
+        #  invalid.record.errors.each do |error|
+        #    arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+        #  end
+        #end
+        #if !user.save then
+        #  arrayErrores.push({:line => count, :message => "Error al guardar"})
+        #else
           # user.confirm!
           # user.save!
-          Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
-        end
+        #end
       end
     end
 
     mail = Notifier.send_import_users(user_admin,arrayErrores)
     mail.deliver
-    return arrayErrores
-
+    #return arrayErrores
+    return
   end
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
