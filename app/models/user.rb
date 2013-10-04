@@ -122,15 +122,6 @@ class User < ActiveRecord::Base
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
- 
- 
- after_create do 
-   
-   self.domain = 'cursa.me'
-   self.avatar = '/assets/imagex.png'
-   self.save!
-  
- end
 
 
   before_destroy do
@@ -351,11 +342,9 @@ class User < ActiveRecord::Base
 
     CSV.foreach(path, headers: true) do |row|
       count += 1
-      if !row["id"].nil? then
-        user = User.find_by_id(row["id"]) || User.new
-      else
-        user = User.new
-      end
+      
+      user = User.new
+
       hash = row.to_hash
       network_id = network.id
       role_id = hash.delete("Role")
@@ -376,10 +365,12 @@ class User < ActiveRecord::Base
         arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
         errors = true
       end
+
       user.first_name = hash.delete("Nombre")
       user.last_name = hash.delete("Apellido")
       user.domain = domain
       user.subdomain = subdomain
+
       user.email = hash.delete("Email")
 
       if !user.email.nil? then
@@ -419,30 +410,26 @@ class User < ActiveRecord::Base
       user.personal_url = personal_url_random
       user.accepted_terms = true
 
+      user.avatar = '/assets/imagex.png'
+
       if !errors then
-        #begin
+        begin
           user.save!
-          
-          per = Permissioning.new
-          per.role_id = role_id.to_i
-          per.network_id = network_id.to_i
-          per.user_id = user.id
-          per.save!
-          
-        #rescue ActiveRecord::RecordInvalid => invalid
-        #  invalid.record.errors.each do |error|
-        #    arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
-        #  end
-        #end
-        #if !user.save then
-        #  arrayErrores.push({:line => count, :message => "Error al guardar"})
-        #else
+        
+        rescue ActiveRecord::RecordInvalid => invalid
+          invalid.record.errors.each do |error|
+            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+          end
+        end
+        if !user.save then
+          arrayErrores.push({:line => count, :message => "Error al guardar"})
+        else
           # user.confirm!
           # user.save!
-          #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
-        #end
+        end
       end
     end
 
