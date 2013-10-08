@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   has_many :deliveries, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
-  has_many :survey, :dependent => :destroy
+  has_many :surveys, :dependent => :destroy
   has_many :activities#, :dependent => :destroy
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy

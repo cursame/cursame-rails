@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
   
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    #@member ||= (MembersInCourse.new).owner = true
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")

@@ -445,4 +445,5 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_add_new_message', :to => 'api/api#native_add_new_message', :as => :native_add_new_message_json
   match '/api/api/native_chat_list', :to => 'api/api#native_chat_list', :as => :native_chat_list_json
   match '/api/api/native_load_chat_messages', :to => 'api/api#native_load_chat_messages', :as => :native_load_chat_messages_json
+  match '/api/api/native_list_user_calification', :to => 'api/api#native_list_user_calification', :as => :native_list_user_calification_json
 end
