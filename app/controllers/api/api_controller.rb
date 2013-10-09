@@ -698,24 +698,36 @@ class Api::ApiController < ApplicationController
     @results = []
     user.user_surveys.each do |us|
       us.evaluation
+      puts us.to_yaml
       r = {
         result: us.result,
         name: us.survey.name,
         type: 'Survey'
       }
-      puts '------------'
       @results.push(r)
     end
     user.assignments.each do |as|
+      if as.delivery.nil?
+        next
+      end
       r = {
         result: as.accomplishment,
         name: as.delivery.title,
         type: 'Delivery'
       }
-      puts '------------'
       @results.push(r)
     end
     render :json => {:results => @results.as_json, :count => @results.count()}, :callback => params[:callback]
+  end
+
+  def native_list_activities
+    @events = @user.events.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
+  end
+
+  def native_list_activities_monitor
+    @events = @user.events.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
   end
 
   private

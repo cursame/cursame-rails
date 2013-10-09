@@ -259,7 +259,6 @@ class CoursesController < ApplicationController
         assignment_assets = @assignment.assets
 
         assets.each do |asset|
-
           if !assignment_assets.include?(asset) then
             @assignment.assets.push(asset)
           end
