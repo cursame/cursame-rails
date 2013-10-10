@@ -103,7 +103,7 @@
      <%end%>
 	 <div class="menu-user">
       <% if user_signed_in? %>
-          
+          <% @pure_key = current_user.detect_key_analytics %>
           <div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           		<div id="ShowLogout" style="display: none;">Salir</div>
