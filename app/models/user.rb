@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   # Miembros de grupos
   has_many :members_in_groups, :dependent => :destroy
   has_many :groups, :dependent => :destroy
+  #eventos
+  has_many :events, :dependent => :destroy
 
   has_many :courses, :through => :members_in_courses
   has_many :user_surveys, :dependent => :destroy
@@ -44,7 +46,7 @@ class User < ActiveRecord::Base
   has_many :deliveries, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
-  has_many :survey, :dependent => :destroy
+  has_many :surveys, :dependent => :destroy
   has_many :activities#, :dependent => :destroy
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy

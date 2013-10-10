@@ -146,26 +146,26 @@ class Api::ApiController < ApplicationController
     @usuarios = []
     @users.each do |u|
       uu = {
-      accepted_terms: u.accepted_terms,
-      avatar: {
-        url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
-      },
-      bios: u.bios,
-      coverphoto: u.coverphoto,
-      created_at: u.created_at,
-      description: u.description,
-      domain: u.domain,
-      email: u.email,
-      facebook_link: u.facebook_link,
-      first_name: u.first_name,
-      id: u.id,
-      last_name: u.last_name,
-      personal_url: u.personal_url,
-      subdomain: u.subdomain,
-      tour_info: u.tour_info,
-      twitter_link: u.twitter_link,
-      updated_at: u.updated_at
-    }
+        accepted_terms: u.accepted_terms,
+        avatar: {
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+        },
+        bios: u.bios,
+        coverphoto: u.coverphoto,
+        created_at: u.created_at,
+        description: u.description,
+        domain: u.domain,
+        email: u.email,
+        facebook_link: u.facebook_link,
+        first_name: u.first_name,
+        id: u.id,
+        last_name: u.last_name,
+        personal_url: u.personal_url,
+        subdomain: u.subdomain,
+        tour_info: u.tour_info,
+        twitter_link: u.twitter_link,
+        updated_at: u.updated_at
+      }
       @usuarios.push(uu)
     end
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
@@ -689,7 +689,45 @@ class Api::ApiController < ApplicationController
     end
     channel = find_or_insert_channel(params['channel_name'],users)
     @messages = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('created_at DESC')
-    render :json => {:users => @messages.as_json, :count => @messages.count()}, :callback => params[:callback]
+    render :json => {:messages => @messages.as_json, :count => @messages.count()}, :callback => params[:callback]
+  end
+
+  def native_list_user_calification
+    user = User.find(params[:id])
+
+    @results = []
+    user.user_surveys.each do |us|
+      us.evaluation
+      puts us.to_yaml
+      r = {
+        result: us.result,
+        name: us.survey.name,
+        type: 'Survey'
+      }
+      @results.push(r)
+    end
+    user.assignments.each do |as|
+      if as.delivery.nil?
+        next
+      end
+      r = {
+        result: as.accomplishment,
+        name: as.delivery.title,
+        type: 'Delivery'
+      }
+      @results.push(r)
+    end
+    render :json => {:results => @results.as_json, :count => @results.count()}, :callback => params[:callback]
+  end
+
+  def native_list_activities
+    @events = @user.events.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
+  end
+
+  def native_list_activities_monitor
+    @events = @user.events.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
   end
 
   private
