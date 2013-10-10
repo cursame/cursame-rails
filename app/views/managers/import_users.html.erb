@@ -16,6 +16,7 @@ El email debe de ser el email del usuario.
 <%= form_tag upload_users_path, multipart: true do %>
   <%= file_field_tag :file %>
   <p>
+	<%= hidden_field_tag 'domain', request.domain %>
   <%= submit_tag "Import" %>
 <% end %>
 

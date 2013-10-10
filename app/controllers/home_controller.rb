@@ -36,7 +36,8 @@ class HomeController < ApplicationController
           params[:commentable_id] = group_id
           save_comment
         end
-        #esto es para comentarios que son publicos de la red
+      
+      #esto es para comentarios que son publicos de la red
       elsif params[:is_user] then
         params[:commentable_type] = 'User'
         params[:commentable_id] = params[:is_user]
@@ -46,10 +47,10 @@ class HomeController < ApplicationController
       end
 
       if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User'
-        @publication = Wall.find_by_publication_type_and_publication_id("Comment",@comment.id)
+        @publication = Wall.find_by_publication_type_and_publication_id("Comment", @comment.id)
       else
         #aqui obtenemos el tipo de publicación para poder agregarla via ajax
-        @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type,@comment.commentable_id);
+        @publication = Wall.find_by_publication_type_and_publication_id(@comment.commentable_type, @comment.commentable_id);
       end
 
       @editar = !params[:comment_id].blank?
@@ -161,113 +162,13 @@ class HomeController < ApplicationController
        end
      end
      
-  # -----------------------------
-  # Develop for parents
-  # -----------------------------
-=begin
-  def my_son
-     @id = params[:id]
-     @user = User.find(@id)
-     ##### comieza el acceso a surveys
-     @acces_to_survey = @user.user_surveys
-     ##### comienza el acceso a assignments
-     @acces_to_assignment = @user.assignments
-
-     ##### comienza el acceso a cursos
-     @acces_to_courses = @user.courses.where(:active_status => true)
-
-     #### promedio general
-      @general_potential = 0
-       @n = 0
-
-       @acces_to_courses.each do |course|
-            @member = course.members_in_courses.where(:user_id => @user.id)
-
-            @member.each do |c|
-                eval = c.evaluation
-                 @n = @n + 1
-                 @general_potential =  @general_potential+eval
-
-           end
-      end
-       @general_potentia = @general_potential/ @n
-
-  end
-
-  def acces_on_course
-    id_course = params[:course_id]
-    id_user = params[:user_id]
-    @course = Course.find(id_course)
-    @user = User.find(id_user)
-
-    ####### detectando si el usuario es miembro aprobado
-    @member = MembersInCourse.find_by_user_id_and_course_id(id_user, id_course)
-
-    if @member.accepted == true
-       @mensaje = "su hijo es miembro del curso"
-       ##### surveys actuales
-         @survey_now = @course.surveys.where(:state => 'published')
-        # puts @survey_now
-       ##### surveys pasados
-         @survey_old = @course.surveys.where(:state => 'unpublish')
-        # puts @survey_old
-       ##### deliveries actuales
-         @delivery_now = @course.deliveries.where(:state => 'published')
-        # puts @delivery_now
-       #### deliveries pasadas
-         @delivery_old = @course.deliveries.where(:state => 'unpublish')
-        # puts  @delivery_old
-    else
-       @mensaje = "su hijo  no ha sido aceptado en el curso"
-    end
-
-  end
-=end
 
   # chat behaviour of cursame
   # -----------------------------
   def closer_db
-   
-   
- #  if Rails.env == 'subtest'
-   # @closer = ActiveRecord::Base.connection.close
-    
-    #@head_connections =  ActiveRecord::Base.clear_active_connections!
-  
-   
-    
-    
-=begin
-    @active = ActiveRecord::Base.verify_active_connections!
-    @all = ActiveRecord::Base::Reapers
-    alfredot_rifa_free_pro_forever
-     puts  @active.count 
-     puts "///////"
-     puts @all.count
-    @funct = ActiveRecord::Base.connection.disconnect!
-    @status = ActiveRecord::Base.connected?
-    ActiveRecord::Base.establish_connection(
-        adapter: 'postgresql',
-        host: 'ip-10-151-14-176.ec2.internal',
-        database: 'cursalab',
-        username: 'cursame',
-        password: 'r8o54q58',
-        encoding: 'unicode',
-        timeout: 5000,
-        pool: 5
-    )
-    @status_l = ActiveRecord::Base.connected?
-=end
-    #alfredot_rifa_free_pro_forever
-    #puts "#{@status_l}"
-    #puts " #{@status} "
-   
- #  end
-   
-     respond_to do |format|
-        format.js
-      end
-    
+    respond_to do |format|
+      format.js
+    end
   end
  
   def render_notifications
@@ -276,10 +177,10 @@ class HomeController < ApplicationController
       format.js
     end
   end
+  
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------
-
   def chat
       @channel = Channel.new
       @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
@@ -293,18 +194,13 @@ class HomeController < ApplicationController
     def open_channel
       if params[:course]
         @channel_name = "/messages/course_channel_"+ params[:id]
-        users = Course.find(params[:id]).users
-        
-        ######## se agregan validadores de users para el exist #########
-        
-        users = users.keep_if{|x| x != nil}
-        
-        
+        users = Course.find(params[:id]).users        
+        ######## se agregan validadores de users para el exist #########        
+        users = users.keep_if{|x| x != nil}        
       else
         ids = [current_user.id,params[:id].to_i]
         @channel_name = get_unique_channel_users(ids)
-        users = User.find(ids)
-        
+        users = User.find(ids)        
       end
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
@@ -359,9 +255,9 @@ class HomeController < ApplicationController
   private
 
   def save_comment
-    commentable = Comment.get_commentable(params[:commentable_id],params[:commentable_type])
+    commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
     if params[:comment_id].blank? then
-      @comment = commentable.comments.create!(:title=>'cursame',:comment => params[:comment],:user_id =>current_user.id,:network_id => current_network.id)
+      @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
     else
       @comment = Comment.find(params[:comment_id])
       @comment.update_attributes(:comment => params[:comment])

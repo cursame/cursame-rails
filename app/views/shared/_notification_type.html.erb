@@ -59,7 +59,7 @@
       <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nuevo cuestionario <b><%= link_to "#{notification.notificator.name}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?) %>
       <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.courses.first.id.to_s%>?search=<%=notification.notificator_type%>&id_search=<%=notification.notificator_id.to_s%>")</script>
 
-    <!-- Notificacion: 8 - Nueva respuesta a una entrega -->
+    <!-- Notificacion: 8 - Nueva entrega a una tarea -->
     <% when 'new_assignment_on_delivery'%>
       <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
       <% if notification.notificator.user != nil%>
@@ -70,14 +70,14 @@
         <%end%>
       <%end%>ha respondido a la tarea
       <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-      <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>")</script>
+      <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>&show_assig=<%= notification.notificator_id.to_s %>")</script>
 
     <!-- Notificacion: 9 - Nueva calificacion en una respuesta -->
     <% when 'new_accomplishment_on_assignment'%>
       <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>Han calificado tu tarea
       <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
       del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-      <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>")</script>
+      <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>&show_accom=<%= notification.notificator_id.to_s %>")</script>
 
     <!-- Notificacion: 10 - Solicitud de amistad -->
     <% when 'user_request_friendship'%>
@@ -88,7 +88,7 @@
           <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
           El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
           ha solicitado ser su amigo.
-        <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/comunity")</script>
+        <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/comunity?search_reqfs=<%=notification.notificator.user_id%>")</script>
         <%end%>
       <%end%>
     
@@ -151,7 +151,9 @@
          <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
           El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
           ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
-      <% end %>      
+      <% end %>
+      <script>$("#notification-<%=notification.notificator_id.to_s %>").attr("redirect_to", "/courses/<%=notification.notificator.commentable.courses.first.id%>?search=Delivery&id_search=<%=notification.notificator.commentable_id%>")</script>
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>

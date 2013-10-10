@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -361,12 +362,12 @@ class User < ActiveRecord::Base
       if !self.friends_request?(user) then
         users.push(user)
       end
-    end
+    end 
     users.uniq!
     return users
   end
 
-  def import(path,network,user_admin)
+  def import(path,network,user_admin, domain, subdomain)
     arrayErrores = Array.new
     count = 0
 
@@ -397,6 +398,10 @@ class User < ActiveRecord::Base
         arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
         errors = true
       end
+      user.first_name = hash.delete("Nombre")
+      user.last_name = hash.delete("Apellido")
+      user.domain = domain
+      user.subdomain = subdomain
       user.email = hash.delete("Email")
 
       if !user.email.nil? then

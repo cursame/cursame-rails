@@ -80,8 +80,11 @@ class ManagersController < ApplicationController
       f = File.open(path,'w+')
       f.write(text)
       f.close
-
-      user_info.delay.import(path,network,user_admin)
+      
+      domain = params["domain"]
+      subdomain = network.subdomain
+      
+      user_info.delay.import(path,network,user_admin,domain,subdomain)
 
     rescue
       @noFile = true

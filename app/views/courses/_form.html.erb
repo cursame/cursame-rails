@@ -1,65 +1,62 @@
 <!-- estilo eliminado style="margin-left:70px;" -->
 
 <script>
-	function readURL(input,id,width) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function (e) {
-				$('#'+id)
-				.attr('src', e.target.result)
-				.width(width)
-				.height(68);
-			};
-			reader.readAsDataURL(input.files[0]);
+  function readURL(input, id, width) {
+    if (input.files && input.files[0]) {
+		  var reader = new FileReader();
+		  reader.onload = function (e) {
+		    $('#' + id)
+		    .attr('src', e.target.result)
+		    .width(width)
+		    .height(68);
+		  };
+		  reader.readAsDataURL(input.files[0]);
 		}
-	}
+  }
 </script>
 
 <div class="form-course"><!-- estilo en courses.scss -->
-	<div style="width:400px; float:left;">
-	<%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
-		<p>Nombre del curso</p>
-	    <%= f.text_field :title, :class=>"input-style" %>
-	    <p>Nombre del curso</p>
-	    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
-	
-		<div style="float: right; margin-right: 20px;">
-	    <p><%= f.label :public_status, 'Privacidad' %></p>
-	    <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+  <div style="width:400px; float:left;">
+    <%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
+      <p>Nombre del curso</p>
+      <%= f.text_field :title, :class=>"input-style" %>
+      
+      <p>Nombre del curso</p>
+      <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
+      
+      <div style="float: right; margin-right: 20px;">
+	      <p><%= f.label :public_status, 'Privacidad' %></p>
+	      <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
 	    </div>
-	    
 	    <div class="UpdateSubmit" style="float: left; margin-top: 7px;"><%= f.submit "Actualizar Curso", :class=>"act-crs" %></div>
 	</div>
-
-
-<div class="default-form edit-course" style="width:380px; float:left;">
-
- <!-- <div id="content-slider-course-1" class="slider-content"><div id="slider-course-1" class="slider"></div></div> -->
-    <%#= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
-
-<div class="UpdateBox">
-	<div class="UpdateLeft">
-	<p style="clear: both;"><%= f.label :avatar%></p>
 	
-	<div style="height: 80px;"><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%>
-	</div>
-	<%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
-	</div>
-
-	<div class="UpdateRight">
-	<p><%= f.label :imagen_de_cabecera %></p>
-	
-	<div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
-	</div>
-	<%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%>
-	</div>
-</div>
-
-<div class="UpdateBox">
-	<div class="UpdateLeft">
-	<p><%= f.label :Valor_de_examenes%></p>
-	<%= f.text_field :survey_param_evaluation, :class=>"custom-size-form" %>
-	</div>
+	<div class="default-form edit-course" style="width:380px; float:left;">
+      <%#= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
+      
+      <div class="UpdateBox">
+        <div class="UpdateLeft">
+          <p style="clear: both;"><%= f.label :avatar%></p>
+          
+          <div style="height: 80px;"><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%>
+          </div>  
+          <%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+        </div>
+        
+        <div class="UpdateRight">
+          <p><%= f.label :imagen_de_cabecera %></p>
+          
+          <div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
+          </div>
+          <%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+        </div>
+      </div>
+      
+      <div class="UpdateBox">
+        <div class="UpdateLeft">
+          <p><%= f.label :Valor_de_examenes%></p>
+          <%= f.text_field :survey_param_evaluation, :class=>"custom-size-form" %>
+        </div>
 
 	<div class="UpdateRight">
 	<p><%= f.label :Valor_de_tareas_o_entregas %></p>
@@ -86,12 +83,9 @@
 
 <% end %>
 <script type="text/javascript">
-    $("#create_course_form").on('click',function(){
-       //$(".ui-widget-overlay").css('display','block');
-    });
-
+    $("#create_course_form").on('click',function() {});
         $(function() {
-            $( "#course_init_date, #course_finish_date" ).datepicker({
+            $("#course_init_date, #course_finish_date" ).datepicker({
                 inline: true,
                 minDate: 0,
                 showOtherMonths: true,
@@ -99,10 +93,6 @@
                 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
             });
-
-        /*    var nestedNewCourseSlider = new NestedSlider(false);
-            nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation'), $('#course_survey_param_evaluation') );
-            nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation'), $('#course_delivery_param_evaluation') ); */
         });
 </script>
 </div>

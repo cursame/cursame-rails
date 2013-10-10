@@ -1,28 +1,30 @@
 <!-- imagen avatar del usuario -->
-<%
-   random_id = "#{random}"
-%>
+<% random_id = "#{random}" %>
 
 <a id="avatar-child-<%= random_id %>" class="avatar-child-comment" href="#" style="display: none;">
 	<img src="<%= current_user.avatar%>" width ="30px">
 </a>
 
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
-    <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s%>
-    <%=hidden_field_tag 'commentable_id', commentable_id %>
-    <%=hidden_field_tag 'commentable_type', commentable_type %>
-    <%=hidden_field_tag 'from_enter_key', true %>
-    <%= submit_tag "Comentar",:style=>"display:none;" %>
+  <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required' %>
+  <%=hidden_field_tag 'commentable_id', commentable_id %>
+  <%=hidden_field_tag 'commentable_type', commentable_type %>
+  <%=hidden_field_tag 'from_enter_key', true %>
+  <%= submit_tag "Comentar",:style=>"display:none;" %>
 <% end %>
 
 <script type="text/javascript">
-$('#comment_for_<%=commentable_type+commentable_id.to_s%>').keypress(function(e){    
+  $('#comment_for_<%=commentable_type+commentable_id.to_s%>').keypress(function(e) {
     if(e.keyCode == 13) {
-        e.preventDefault();
+      e.preventDefault();
+      
+      if($(this).val() != "") {
+        $(this).off(e);
         $(this).parents("form").submit();
+      }
     }
-    }).click(function(){
-        $('#avatar-child-<%= random_id %>').show();
-        $(this).css('width','505px');
-});
+  }).click(function() {
+    $('#avatar-child-<%= random_id %>').show();
+    $(this).css('width','505px');
+  });
 </script>
