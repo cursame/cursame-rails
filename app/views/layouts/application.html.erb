@@ -103,7 +103,7 @@
      <%end%>
 	 <div class="menu-user">
       <% if user_signed_in? %>
-          
+          <% @pure_key = current_user.detect_key_analytics %>
           <div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           		<div id="ShowLogout" style="display: none;">Salir</div>
@@ -122,6 +122,7 @@
           <% if current_role == "admin"%>
               <%= link_to "Administración", managers_wall_path, :class => "admin-access"%>
            <%end%>
+        
       <% else %>
           <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
       <% end %>
@@ -134,6 +135,7 @@
     </div>
   </div>
  </div><!-- ends headFix -->
+ <div id="log_loadding"style="display:none;"></div>
 </header>
 
 

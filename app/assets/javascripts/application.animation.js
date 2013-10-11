@@ -479,11 +479,11 @@ $(document).ready(function() {
      $(document).ajaxStart( function() {
           // $.get("/closer_db");
 
-            modal('<div class="spinn"></div>');
+           $('#log_loadding').show();
             
         }).ajaxStop( function() {
-            unmodal(); 
-           // $.get("/closer_db");            
+         
+            $('#log_loadding').hide('');           
     });
 
     /*
