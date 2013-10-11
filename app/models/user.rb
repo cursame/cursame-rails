@@ -141,7 +141,7 @@ class User < ActiveRecord::Base
         string  =  (0...41).map{ o[rand(o.length)] }.join 
         numeric = rand(0..930123909)
         ran = "#{numeric}_#{string}_#{numeric}"
-        valer = @user.find_by_key_analytics(ran) 
+        valer = User.find_by_key_analytics(ran) 
       if valer == nil
         self.key_analytics = "#{numeric}_#{string}_#{numeric}"
         self.save
