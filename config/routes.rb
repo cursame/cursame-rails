@@ -397,7 +397,10 @@ Cursame30Lb::Application.routes.draw do
     ##### obtines las bases para busqueda de networks
     get '/network_search', :to => 'networks#network_search', :as => :network_search
   ####### parents
-     get '/acces_t', :to => 'parents#info_to_parents', :as => :info_to_parents
+     get '/acces_t/:key_analytics', :to => 'parents#info_to_parents', :as => :info_to_parents
+     get '/inc_activity', :to => 'parents#inc_activity', :as => :inc_activity
+     get '/general_prm', :to => 'parents#general_prm', :as => :inc_activity
+     get '/acces_course_for_render', :to => 'parents#acces_course', :as => :acces_course_for_render
    # get "home/parents", :as => :parents
    # get "home/my_son", :as => :my_son
    # get "home/acces_on_course", :as => :acces_on_course
@@ -443,4 +446,6 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_list_members_in_course', :to => 'api/api#native_list_members_in_course', :as => :native_list_members_in_course_json
   match '/api/api/native_change_members_in_course_status', :to => 'api/api#native_change_members_in_course_status', :as => :native_change_members_in_course_status_json
   match '/api/api/native_add_new_message', :to => 'api/api#native_add_new_message', :as => :native_add_new_message_json
+  match '/api/api/native_chat_list', :to => 'api/api#native_chat_list', :as => :native_chat_list_json
+  match '/api/api/native_load_chat_messages', :to => 'api/api#native_load_chat_messages', :as => :native_load_chat_messages_json
 end
