@@ -1,8 +1,8 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
-
   <div id="noticce">
     <div id="notice" class="notice"></div>
   </div>
+
   <% permitted_to? :create, :courses do %>
     <% if @member.owner != nil %>
       <% if @member.owner == true %>
@@ -234,7 +234,6 @@
   <!-- SideBar -->
   <div id="side-bar" class="side-left-bar">
     <!-- User Avatar -->
-    <% @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)%>
 
     <div id="box-user-credential" class="network-layout">
       <div class="thumbnail"  >
@@ -261,7 +260,7 @@
 	        <% @course.members_in_courses.each do |member|  %>
 	          <% @members = User.find_by_id(member.user_id) %>
             <!--coloca la imagen y el nombre-->
-            <% if current_role == 'admin' || 'superadmin'%>
+            <% if current_role == 'admin' || current_role == 'superadmin'%>
               <% if @members != nil%>
                 <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                 <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
@@ -278,7 +277,7 @@
             <%end%>
           <%end%>
           
-          <% if current_role == 'admin'%>
+          <% if current_role == 'admin' || current_role == 'superadmin' %>
             <div class="view-all"><%= link_to "Administrador de miembros", course_members_path %></div>
           <%else%>
             <% if @member.owner != nil %>
