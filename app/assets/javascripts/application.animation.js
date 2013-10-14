@@ -247,32 +247,16 @@ $(document).ready(function() {
 
     //Submit btns
     $('#post-forms > div').each(function( index, value ) {   
-        var godrop;
-        var gl;
-        
-            
-            
+    
              
         $(value).find('#comment-post-form').click(function() {
                           
-             var valid = $(value).find('#comment-post-form').valid(),
+             var valid = $(value).find('#comment-post-form').valid();
                 me = this;
-                godrop = true;
-                gl = godrop;
-                
-                if ($('label.error').length){
-                           godrop = true;
-                         //  console.log(godrop);
-                         }else{
-                           godrop = false;
-                         //  console.log(godrop);
-                      }
-                   
-              // console.log(gl);
-            
-            
-         if (gl == true){
+                var lokye = $(".error").length;
+         if (lokye == 0){
               $("#notice").html('');
+             /* 
               $('#comment-post-form').css('display','none');
               $("#notice").css('background','#E63A3A');
               $("#notice").css('color','#fff');
@@ -284,9 +268,7 @@ $(document).ready(function() {
                         $('#notice').html('')
                         $( "#notice" ).animate( { width: "100%", height: "0px", padding: "0px", border: "1px solid #E63A3A", background: "#E63A3A" }, { queue: false, duration: 100 });
                         $('#comment-post-form').css('display','block');
-                         HashBlured();
-                        
-              }, 1500);
+              }, 1000);*/
               
             }else{
              $("#notice").html('');
@@ -316,7 +298,7 @@ $(document).ready(function() {
             //para validar los errores
             setTimeout(function (argument) {
                 
-                if (gl == true){
+                if (lokye == 0){
                     CleanerBlur();
                     DisableBlured();
                    // alert( ' se ha enviado el formulario incorrectamente');                    
