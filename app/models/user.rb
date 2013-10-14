@@ -64,6 +64,7 @@ class User < ActiveRecord::Base
   validates_presence_of :personal_url
   validates_presence_of :subdomain
   validates_presence_of :domain
+  
   # validates_format_of   :personal_url, :with => /^[\-a-z0-9]+$/
   # validates_uniqueness_of :accepted_terms
 
@@ -124,6 +125,35 @@ class User < ActiveRecord::Base
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
+ 
+ after_create do 
+   
+   self.domain = 'cursa.me'
+   self.avatar = '/assets/imagex.png'
+   self.save!
+  
+ end
+ 
+ 
+  def detect_key_analytics
+   if self.key_analytics == nil
+      
+        o = [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+        string  =  (0...41).map{ o[rand(o.length)] }.join 
+        numeric = rand(0..930123909)
+        ran = "#{numeric}_#{string}_#{numeric}"
+        valer = User.find_by_key_analytics(ran) 
+      if valer == nil
+        self.key_analytics = "#{numeric}_#{string}_#{numeric}"
+        self.save
+        @value = self.key_analytics
+        puts =  @value
+      end
+   else
+      @value = self.key_analytics
+      puts =  @value
+   end
+  end
 
 
   before_destroy do

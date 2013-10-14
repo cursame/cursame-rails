@@ -397,7 +397,10 @@ Cursame30Lb::Application.routes.draw do
     ##### obtines las bases para busqueda de networks
     get '/network_search', :to => 'networks#network_search', :as => :network_search
   ####### parents
-     get '/acces_t', :to => 'parents#info_to_parents', :as => :info_to_parents
+     get '/acces_t/:key_analytics', :to => 'parents#info_to_parents', :as => :info_to_parents
+     get '/inc_activity', :to => 'parents#inc_activity', :as => :inc_activity
+     get '/general_prm', :to => 'parents#general_prm', :as => :inc_activity
+     get '/acces_course_for_render', :to => 'parents#acces_course', :as => :acces_course_for_render
    # get "home/parents", :as => :parents
    # get "home/my_son", :as => :my_son
    # get "home/acces_on_course", :as => :acces_on_course
@@ -445,7 +448,8 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_add_new_message', :to => 'api/api#native_add_new_message', :as => :native_add_new_message_json
   match '/api/api/native_chat_list', :to => 'api/api#native_chat_list', :as => :native_chat_list_json
   match '/api/api/native_load_chat_messages', :to => 'api/api#native_load_chat_messages', :as => :native_load_chat_messages_json
+  
   match '/api/api/native_list_user_calification', :to => 'api/api#native_list_user_calification', :as => :native_list_user_calification_json
-  match '/api/api/native_list_activities', :to => 'api/api#native_list_activities', :as => :native_list_activities_json
-  match '/api/api/native_list_activities_monitor', :to => 'api/api#native_list_activities_monitor', :as => :native_list_activities_monitor_json
+  match '/api/api/native_list_events', :to => 'api/api#native_list_events', :as => :native_list_events_json
+  match '/api/api/native_list_activities_of_course', :to => 'api/api#native_list_activities_of_course', :as => :native_list_activities_of_course_json
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902195351) do
+ActiveRecord::Schema.define(:version => 20130927032031) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20130902195351) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
-    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
@@ -539,6 +538,7 @@ ActiveRecord::Schema.define(:version => 20130902195351) do
     t.boolean  "accepted_terms",         :default => false
     t.string   "subdomain"
     t.string   "domain"
+    t.string   "key_analytics"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

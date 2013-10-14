@@ -720,14 +720,40 @@ class Api::ApiController < ApplicationController
     render :json => {:results => @results.as_json, :count => @results.count()}, :callback => params[:callback]
   end
 
-  def native_list_activities
+  def native_list_events
     @events = @user.events.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
   end
 
-  def native_list_activities_monitor
-    @events = @user.events.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
+  def native_list_activities_of_course
+    course = Course.find(params[:id])
+    @activities = []
+     
+    course.deliveries.each do |delivery|
+      activity = {
+        type: 'Delivery',
+        title: delivery.title,
+        description: delivery.description,
+        publish_date: delivery.publish_date,
+        end_date: delivery.end_date,
+        assignments: delivery.assignments
+      }
+      @activities.push(activity)
+    end
+
+    course.surveys.each do |survey|
+      activity = {
+        type: 'Delivery',
+        title: survey.name,
+        description: '',
+        publish_date: survey.publish_date,
+        end_date: survey.end_date,
+        responses: survey.user_surveys
+      }
+      @activities.push(activity)
+    end
+    
+    render :json => {:results => @activities.as_json, :count => @activities.count()}, :callback => params[:callback]
   end
 
   private

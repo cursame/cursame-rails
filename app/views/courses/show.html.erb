@@ -1,8 +1,9 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
-  <div id="noticce">
-    <div id="notice" class="notice"></div>
-  </div>
 
+  
+    <!--<div id="noticce">
+     <div id="notice" class="notice"></div>
+    </div>-->
   <% permitted_to? :create, :courses do %>
     <% if @member.owner != nil %>
       <% if @member.owner == true %>
@@ -254,10 +255,12 @@
 	  </div><!-- box-course -->
 	  
 	  <div id="tabs-friends" class="tabs-style">
-	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; height: 110px; position: relative; display: block;" >
+	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; height: 310px; position: relative; display: block;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
 	      <% permitted_to? :create, :courses do %>
+	        <div style="height:290px; overflow:auto;">
 	        <% @course.members_in_courses.each do |member|  %>
+	         
 	          <% @members = User.find_by_id(member.user_id) %>
             <!--coloca la imagen y el nombre-->
             <% if current_role == 'admin' || current_role == 'superadmin'%>
@@ -278,6 +281,7 @@
           <%end%>
           
           <% if current_role == 'admin' || current_role == 'superadmin' %>
+          </div>
             <div class="view-all"><%= link_to "Administrador de miembros", course_members_path %></div>
           <%else%>
             <% if @member.owner != nil %>
@@ -290,7 +294,7 @@
       </div>
     </div>
     
-    <div id="box-d" class="basic-lateral-box" style="margin-top: 180px; position: relative; display: block;">
+    <div id="box-d" class="basic-lateral-box" style="margin-top: 380px; position: relative; display: block;">
       <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
       <span class="RedBallon"><%= @course.course_files.count %></span>
       

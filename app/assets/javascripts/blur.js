@@ -2,8 +2,8 @@
 
 
 function HashBlured(){
-    if ($.browser.webkit) {
-    var flucted = $('#').hasClass('message-form-btn');
+     /* if ($.browser.webkit) {
+  var flucted = $('#').hasClass('message-form-btn');
 
         if (flucted = true){
 
@@ -38,7 +38,7 @@ function HashBlured(){
           
         }
         
-        }
+        }*/
 
 }
 
@@ -86,7 +86,7 @@ function CleanerBlur(){
 }
 
 function EditingBlur(){
-    if ($.browser.webkit) {
+  /*  if ($.browser.webkit) {
     CancelEditingBlur();
     CleanerBlur();
     
@@ -123,6 +123,6 @@ function EditingBlur(){
     $('.non-blur').foggy(false);
     $('.container').css({'background':'#f7f7f7'});
     $('body').css({'background':'#f7f7f7'});
-    }
+    }*/
 }
 
