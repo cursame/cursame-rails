@@ -1,6 +1,7 @@
 <% if mobile? %>
- <%= render :partial => "shared/mobile" %>
+  <%= render :partial => "shared/mobile" %>
 <% else%>
+
 <!-- redirigimos a cursa.me  -->
 <!DOCTYPE html>
 <% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
@@ -19,7 +20,7 @@
   </script>
 <% end %>
 <% if request.url.split("/").last != "evaluation_download" then %>
-<html>
+<html ng-app ng-controller="ExampleController">
 <head>
   <title>Cursame</title>
   <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
@@ -37,7 +38,6 @@
   <![endif]-->
 </head>
 <body>
-
     <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
       @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
@@ -78,6 +78,7 @@
        //console.log(IntervalFunctionForExpireSession);
 
       </script>
+
       <div class="scarlate" id="scarlate" style="display:none;"></div>
       <div class="expires" id="expires" style="display:none;"></div>
       

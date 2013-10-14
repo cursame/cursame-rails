@@ -200,7 +200,6 @@ class HomeController < ApplicationController
         
         users = users.keep_if{|x| x != nil}
         
-        
       else
         ids = [current_user.id, params[:id].to_i]
         @channel_name = get_unique_channel_users(ids)
@@ -277,14 +276,12 @@ class HomeController < ApplicationController
 
   def find_or_insert_channel(channel_name,users)
     channel = Channel.find_by_channel_name(channel_name)
-    puts "---------------------"
     puts channel
     if !channel
       channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
       channel.users = users
       channel.save!
     end
-    puts "----------el otro-----------"
     puts channel
     return channel
   end

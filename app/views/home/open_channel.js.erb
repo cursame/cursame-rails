@@ -1,12 +1,14 @@
 // si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación
 if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
-	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');	
-	
 
-	if(window.chatPanelsCount > 3){
-		if(window.chatPanelsCount == 4){
-			$('body').append(
-				'<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
+	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
+
+	// Si ya hay mas de 3 conversaciones 
+	if(window.chatPanelsCount > 3) {
+
+		// Si hay exactamente 4 conversaciones se agrega un link para que se vean mas conversaciones
+		if(window.chatPanelsCount == 4) {
+			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
 					:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 		}
 	}
@@ -16,11 +18,14 @@ if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
 			:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 	}
 }
+
 // si estamos en el path del chat
-if($('#chat').length){
+if($('#chat').length) {
 	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
-	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat',
-		 :locals => {:messages => @messages, :channel => @channel}))%>');
+	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel}))%>');
 }
+
 // ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
+
+PrivatePub.subscribe('<%= @channel.channel_name %>', function(data) {});
