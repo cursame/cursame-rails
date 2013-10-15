@@ -62,29 +62,22 @@
 
 <script>
 	me = function (type, id, kind) {
-	  var noti = $("#notification-" + id);
-	  
-		var form = $("#wall_search"),
-		filter = {
-		    search: type,
-				id: id,
-				page: 1
-		};
-		
-    $(location).attr("href", noti.attr("redirect_to"));			
-    $("#box-notifications").hide();
+		var noti = $("#notification-" + id);
+
+		// Redireccionamos a donde tenga que redireccionar
+		$(location).attr("href", noti.attr("redirect_to"));			
+		$("#box-notifications").hide();
 	}
 	
 	// rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
 		function(data, channel) {
-		  console.log(data);  
 			var params = {
 				id:data.notification.id
 			};
 			
-		  $('#notifications_count span').html(data.num*1);
-		 // $.get('/home/render_notifications', $.param(params), null, "script");
+		  $('#notifications_count span').html(data.num * 1);
+		  $.get('/home/render_notifications', $.param(params), null, "script");
 		}
 	);
 </script>

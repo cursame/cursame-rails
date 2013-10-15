@@ -2,6 +2,14 @@ class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
 
+  after_create do
+    if (!self.owner) then
+      if(!self.accepted) then
+        #Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_request_membership_in_course')
+      end
+    end
+  end
+
   after_update do
     accepted = self.changes[:accepted]
     if (!accepted.nil?) then
