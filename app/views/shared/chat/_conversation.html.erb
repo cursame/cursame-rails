@@ -1,4 +1,4 @@
-<div id="chat-channel-<%= channel.id%>" class="chat-panel">	
+<div id="chat-channel-<%= channel.id%>" class="chat-panel">
 	<span>
 		<%= get_chat_title channel %>
 		<div style="float:right" id="close-chat-<%= channel.id%>" class="closeChat">
@@ -8,10 +8,10 @@
 	<div class="load-more-messages" id="load-more-messages-<%= channel.id%>">
 		<%=render(:partial => '/shared/chat/load_more_messages', :locals => {:channel => channel, :page => page + 1})%>
 	</div>	
-	<div id="chat-zone-<%= channel.id%>" class="chat-zone">		
+	<div id="chat-zone-<%= channel.id%>" class="chat-zone">
 		<div class="chat-zone-messages" id="chat-zone-messages-channel<%= channel.id%>">
 			<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>
-		</div>		
+		</div>
 		<div class="chat-zone-footer">
 		<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
 		</div>

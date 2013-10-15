@@ -20,7 +20,7 @@
             <% if @member.owner == true %>
               <li class="settings" get-to="#configuration" move-sidebar-height="105px">Configuracion</li>
               <li class="stats" get-to="#stats-area" move-sidebar-height="105px">Estadisticas</li>
-              <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li>
+              <li class="calif" get-to="#entregas" move-sidebar-height="105px">Entregas</li> 
             <%end%>
           <%end%>
         <% end %>
@@ -238,7 +238,7 @@
 
     <div id="box-user-credential" class="network-layout">
       <div class="thumbnail"  >
-        <%= link_to image_tag(@course.avatar.profile), course_path(@course.id) if ( !@course.avatar.blank?) %>
+        <%= link_to image_tag(@course.avatar.profile, :whidth => '150px', :height => '150px'), course_path(@course.id) if ( !@course.avatar.blank?) %>
         <%= link_to image_tag(@course.course_avatarx), course_path(@course.id) if (@course.avatar.blank?) %>
       </div>
       <div class="tagname"><%= @course.title %></div>
@@ -279,9 +279,8 @@
               <%end%>
             <%end%>
           <%end%>
-	  </div>
-          <% if current_role == 'admin' || current_role == 'superadmin' %>
-          </div>
+	        </div>
+          <% if current_role == 'admin' || current_role == 'superadmin' %>          
             <div class="view-all"><%= link_to "Administrador de miembros", course_members_path %></div>
           <%else%>
             <% if @member.owner != nil %>
