@@ -1,6 +1,7 @@
 <% if mobile? %>
- <%= render :partial => "shared/mobile" %>
+  <%= render :partial => "shared/mobile" %>
 <% else%>
+
 <!-- redirigimos a cursa.me  -->
 <!DOCTYPE html>
 <% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
@@ -19,7 +20,7 @@
   </script>
 <% end %>
 <% if request.url.split("/").last != "evaluation_download" then %>
-<html>
+<html ng-app ng-controller="ExampleController">
 <head>
   <title>Cursame</title>
   <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
@@ -28,7 +29,7 @@
   <%= javascript_include_tag('application.js') %>
   <%= javascript_include_tag('application.fullcalendar') %>
  
-  <%= favicon_link_tag "favicon.png" %>  
+  <%= favicon_link_tag "favicon.png" %> 
   
   <% yield :javascript_includes %>
   <%= csrf_meta_tags %>
@@ -37,7 +38,6 @@
   <![endif]-->
 </head>
 <body>
-
     <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
       @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
@@ -78,6 +78,7 @@
        //console.log(IntervalFunctionForExpireSession);
 
       </script>
+
       <div class="scarlate" id="scarlate" style="display:none;"></div>
       <div class="expires" id="expires" style="display:none;"></div>
       
@@ -103,7 +104,6 @@
      <%end%>
 	 <div class="menu-user">
       <% if user_signed_in? %>
-          <% @pure_key = current_user.detect_key_analytics %>
           <div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
           <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           		<div id="ShowLogout" style="display: none;">Salir</div>
