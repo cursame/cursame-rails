@@ -126,15 +126,6 @@ class User < ActiveRecord::Base
   #  return PIdToHId.where(:h_id => self.id)
  # end
  
- after_create do 
-   
-   self.domain = 'cursa.me'
-   self.avatar = '/assets/imagex.png'
-   self.save!
-  
- end
- 
- 
   def detect_key_analytics
    if self.key_analytics == nil
       
