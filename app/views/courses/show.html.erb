@@ -257,7 +257,12 @@
 	  <div id="tabs-friends" class="tabs-style">
 	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; height: 310px; position: relative; display: block;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
+        
 	      <% permitted_to? :create, :courses do %>
+	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:active_status => false).count %>
+	      <% if @new_and_non_aproval_members != 0%>
+	      <span class="RedBallon"><%=@new_and_non_aproval_members%></span>
+          <%end%>
 	        <div style="height:290px; overflow:auto;">
 	        <% @course.members_in_courses.each do |member|  %>
 	         
