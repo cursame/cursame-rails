@@ -5,7 +5,6 @@ if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
 
 	// Si ya hay mas de 3 conversaciones 
 	if(window.chatPanelsCount > 3) {
-
 		// Si hay exactamente 4 conversaciones se agrega un link para que se vean mas conversaciones
 		if(window.chatPanelsCount == 4) {
 			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
