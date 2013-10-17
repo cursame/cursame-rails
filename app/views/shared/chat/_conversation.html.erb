@@ -67,10 +67,9 @@
 			pos = pos.replace('px','');
 		var	index = ((pos - separacion)/sizeOfWindow) - 1;
 
-		//alert(index);
-
 		$("#chat-channel-<%= channel.id%>").remove();
 		window.chatPanelsCount--;
-		window.chatPanelsArray[index] = 0;		
+		window.chatPanelsArray[index] = 0;
+		PrivatePub.unsubscribe("<%=channel.channel_name%>");
 	});   
 </script>
