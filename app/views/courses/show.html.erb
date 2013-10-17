@@ -255,7 +255,7 @@
 	  </div><!-- box-course -->
 	  
 	  <div id="tabs-friends" class="tabs-style">
-	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; height: 310px; position: relative; display: block;" >
+	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
        
 	      <% permitted_to? :create, :courses do %>
@@ -264,7 +264,7 @@
 	      <!--ejemplo para tooltip-->
 	           <span class="RedBallon" id="unser_new_in_course" title="Alumnos pendientes de aprobación" onmouseover='tool_tip_heft({identifier:"unser_new_in_course"})' onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span>   
           <%end%>
-	        <div style="height:290px; overflow:auto;">
+	        <div style="min-height:290px; max-height:580px;">
 	        <% @course.members_in_courses.each do |member|  %>
 	         
 	          <% @members = User.find_by_id(member.user_id) %>
@@ -388,7 +388,11 @@
     </div><!--ends box-d -->
   </div><!--ends side-bar-->
   <!--archivos del curso-->
-
+  <script>
+   var friend_height = $('#box-friends').height();
+   var margin_box_d = friend_height + 80+'px';
+   $('#box-d').css('margin-top',margin_box_d);
+  </script>
   <!-- Content -->
   <div id="box-stream-post">
 	  <div id="pk_menu">
