@@ -67,9 +67,11 @@
 			pos = pos.replace('px','');
 		var	index = ((pos - separacion)/sizeOfWindow) - 1;
 
+		alert(index);
+
 		$("#chat-channel-<%= channel.id%>").remove();
-		PrivatePub.unsubscribe("<%=channel.channel_name%>");
 		window.chatPanelsCount--;
 		window.chatPanelsArray[index] = 0;
+		PrivatePub.unsubscribe("<%=channel.channel_name%>");		
 	});   
 </script>
