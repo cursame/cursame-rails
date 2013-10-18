@@ -100,7 +100,8 @@
               }
             });
           </script>
-				  <div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
+			 
+			 <div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
             <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">      
             <% @course.deliveries.reverse.each do |delivery|%>
             
@@ -136,7 +137,6 @@
 	                </div><!-- ends so_open -->
 	              </div><!-- ends delivery_container -->
 	            </div><!-- ends delivery_f -->
-	            
 	            <script>
                 $('.assignment').mouseenter(function() {
                   $(this).css({background: "#EEE"});
@@ -158,8 +158,7 @@
               </script>
             <%end%>
           </div><!-- end content_delivery-->
-          
-          <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden;">
+          <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden; display:none;">
             <% @course.surveys.reverse.each do |survey|%>
               <div class="survey_fTwo " id="survey_f<%=survey.id%>">
                 <div id="ExamsDelivery" class="delivery_f">
@@ -174,27 +173,28 @@
 
 	                    <div id="survey_state_publish<%=survey.id%>">
 	                      <%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
-						  	      </div><!-- ends survey_state_publish -->
+						 </div><!-- ends survey_state_publish -->
 	                  </div><!-- ends state -->
 	                     
 	                  <div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
 	                </div><!-- ends delivery_container -->
 	              </div><!-- ends ExamsDelivery -->
 	              
-	              <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none, margin-left: 1px!important; width: 440px;">
+	              <!--se muestran las tareas al dar click-->
+	              
+	              <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none; margin-left: 1px!important; width: 440px;">
 	                <% survey.user_surveys.each do |us|%>
                     <div class="assignment" style="width: 440px;">
                       <div class="title">
 					  		        <span style="width: 410px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
 						  	 	        <span class="title" style="font-size: 15px;">Entregó: <%= us.user.name%></span>
-							   	        <span id="RightArrow" style="float: right; margin-top: -5px;">
-							 	  	        <%= link_to image_tag('right_arrow.png'), course_survey_l_path(us.id), :remote => true%>
-							 	          </span>
-							 	        </span>
-							 	      </div>
-							 	    </div>
+							   	        <span id="RightArrow" style="float: right; margin-top: -5px;"><%= link_to image_tag('right_arrow.png'), course_survey_l_path(us.id), :remote => true%></span>
+							 	    </span>
+							 	     
+					 </div>
+				   </div>
                   <%end%>
-                </div><!-- ends so_open_C2 -->
+                </div><!-- ends so_open_C2 --> 
               </div><!-- ends survey_fTwo -->
               
               <script>
@@ -204,7 +204,6 @@
                 });
               </script>
             <%end%>
-            
           </div><!-- ends content_survey -->
         </div><!-- ends arco_course_deliver -->
         
@@ -255,10 +254,16 @@
 	  </div><!-- box-course -->
 	  
 	  <div id="tabs-friends" class="tabs-style">
-	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; height: 310px; position: relative; display: block;" >
+	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
+       
 	      <% permitted_to? :create, :courses do %>
-	        <div style="height:290px; overflow:auto;">
+	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:active_status => false).count %>
+	      <% if @new_and_non_aproval_members != 0%>
+	      <!--ejemplo para tooltip-->
+	           <span class="RedBallon" id="unser_new_in_course" title="Alumnos pendientes de aprobación" onmouseover='tool_tip_heft({identifier:"unser_new_in_course"})' onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span>   
+          <%end%>
+	        <div style="min-height:290px; max-height:580px;">
 	        <% @course.members_in_courses.each do |member|  %>
 	         
 	          <% @members = User.find_by_id(member.user_id) %>
@@ -368,21 +373,29 @@
         </script>
       </div><!-- uplok -->
       
-      <div style="width: 230px; overflow:auto; min-height:0px; max-height: 300px; overflow-y: scroll; overflow-x: hidden; padding-top: 25px;">
+      <div style="width: 230px;  overflow:auto; min-height:0px; max-height: 300px; overflow-x: hidden; padding-top: 25px; padding:1px; min-height:300px; max-height:600px;">
         <div id="files"></div>
         <% @course.course_files.reverse.each do |cf|%>
           <% @name =  "#{cf.file}" %>
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
           <!--se ha colocan los archivos dependiendo su categoría-->
+          <div style="margin-top:25px;">
           <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+          </div>
 
         <%end%>
       </div>
     </div><!--ends box-d -->
   </div><!--ends side-bar-->
   <!--archivos del curso-->
-
+  <script>
+   $( document ).ready(function() {
+   var friend_height = $('#box-friends').height();
+   var margin_box_d = friend_height + 80+'px';
+   $('#box-d').css('margin-top',margin_box_d);
+   });
+  </script>
   <!-- Content -->
   <div id="box-stream-post">
 	  <div id="pk_menu">
