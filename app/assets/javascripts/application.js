@@ -21,10 +21,10 @@
 // Adding and removing questions answers
 function remove_fields(link, toId) {
     console.log(toId);
-    if(toId =='#box-question'){
+    if(toId == '#box-question') {
         $(link).parent().parent().remove();
         changeNumbers('#box-question', '#question-num');
-    }else if( toId =='#box-request' ){
+    } else if( toId =='#box-request' ) {
         var grandfather = $(link).parent().parent();
         $(link).parent().remove();
         changeNumbers(grandfather, '#request-num');
@@ -63,49 +63,43 @@ function changeNumbers(idParent, idFind){
     }
     var count = 0 ;
 }
-//notificaciones push usando private_pub
+
+// notificaciones push usando private_pub
 $(function() {
-	// notificaciones para el chat
-	PrivatePub.subscribe ("/messages/notifications_user_"+Cursame.userId, function(data, channel){
-		
-        console.log(arguments);
-        
-        var url,notification,numNotifications
-			channelType = data.channel.channel_name.split('course_channel_');		
-			url= channelType[1] ? '/home/open_channel/'+channelType[1]+'?course=true':'/home/open_channel/'+data.sender.id;		
+
+	// Se suscribe al canal para las notificaciones del chat
+	PrivatePub.subscribe ("/messages/notifications_user_" + Cursame.userId, function(data, channel) {
+        var url, notification, numNotifications;
+		var channelType = data.channel.channel_name.split('course_channel_');
+		url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;		
 
 		notification = ['<li class="unread">',
-			'<a href="'+url+'" data-remote="true">Conversar</a></br>',
-			'<img src="'+data.sender.avatar.modern.url+'" class="avatar-notifications avatar-mini">',
+			'<a href="' + url + '" data-remote="true">Conversar</a></br>',
+			'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
 			'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
 			'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
 			'</li>'];
+
 		//si ya existe la conversacion no se crea la notificación
 		if($('#chat-channel-'+data.channel.id).length) {
-			var panel = $("#chat-channel-"+data.channel.id);
+			var panel = $("#chat-channel-" + data.channel.id);
 	    	var chatZonePosition = $(panel).css('bottom');
 	    	
             // aqui agrego un asterisco a la ventanita
             // cuando esta collapsada, asi sabe cuando el usario tiene un msj pendiente esa ventana
-            if(chatZonePosition.replace('px','') < 200){
+            if(chatZonePosition.replace('px','') < 200) {
 	    		$("#chat-channel-"+data.channel.id+ " span").append('*');
 	    	}
             
             // alineamos los comentarios que no son de nosotros a la derecha
             setTimeout(function () {
-                $('#message_'+data.message.id).css('float','right');
-            },200);
+                $('#message_' + data.message.id).css('float','right');
+            }, 200);
             
-		}
-		else{
-			numNotifications = $('#messages-notifications-count span').html()*1;
-			$('#messages-notifications-count span').html(numNotifications+1);
+		} else {
+			numNotifications = $('#messages-notifications-count span').html() * 1;
+			$('#messages-notifications-count span').html(numNotifications + 1);
 			$('#messages-notifications-list').prepend(notification.join(''));
-		}		
+		}
 	});
-
-    PrivatePub.subscribe ("/messages/users_channel_2_4", function() {
-        console.log(arguments);
-    });
 });
-

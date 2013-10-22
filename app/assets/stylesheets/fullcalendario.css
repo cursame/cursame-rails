@@ -25,16 +25,16 @@
 /* horizontal events */
 	
 .fc-event-hori {
-	border-width: 0 0 1px 0 !important;
+	/*border-width: 0 0 1px 0 !important;
 	border-bottom-style: dotted !important;
-	border-bottom-color: #000 !important;
+	border-bottom-color: #000 !important;*/
 	padding: 1px 0 0 0 !important;
-	width: 14px!important;
-	float: left!important;
+	width: 6px!important;
+	float: left;
 	}
 
 .fc-event-title {
-	width: 14px!important;
+	width: 6px;
 }
 
 .fc-event-hori .fc-event-inner {

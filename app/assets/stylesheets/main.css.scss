@@ -1799,18 +1799,51 @@ background: linear-gradient(to bottom,  rgba(255,255,255,0) 66%,rgba(86,86,86,1)
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#565656',GradientType=0 ); /* IE6-8 */
  }
 
-.fc-button-next { float: right; }
+.fc-button-next { float: right; margin-top: 7px; display: inline-block; position: relative; margin-right: 10px; }
+.fc-button-prev { float: left; margin-top: 7px; display: inline-block; position: relative; margin-left: 10px; }
 .fc-button-inner { background: transparent; border: 0; border-color: transparent; }
 .fc-state-default { background: transparent!important; color: #ccc!important; border: 0px!important; }
 .fc-state-default .fc-button-effect span { height: 0px; border: 0!important; border-color: transparent; }
 .fc-state-default, .fc-state-default .fc-button-inner { background: transparent; border: 0px solid; }
-.fc-button-content { color: #C3BBBB; background: transparent; transition: ease-out all 0.3s; }
-.fc-button-content:hover { background: #00AEC1; color: #fff; cursor: pointer; transition: ease-out all 0.3s; }
-.fc-widget-header { background: transparent; }
 
-.fc-header-left { width: 440px; }
-.fc-header-center { width: 0; position: absolute; margin-left: -265px; }
-.fc-header-right { width: 0px; }
+.fc-button-content {
+	border-radius: 50%;
+	height: 25px;
+	width: 25px;
+	color: #C3BBBB;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	background: transparent;
+	transition: ease-out all 0.3s;
+	}
+.fc-button-content:hover {
+	background: #00AEC1;
+	color: #FFF;
+	border-radius: 50%;
+	height: 25px;
+	width: 25px;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	cursor: pointer;
+	transition: ease-out all 0.3s;
+	}
+.fc-widget-header {
+	background: transparent;
+	}
+.fc-button-today {
+	display: none;
+}
+.fc-first {
+	
+}
+.fc-day-content {
+	padding: 2px 2px 1px;
+	margin-top: -31px;
+	width: 60px;
+	height: 20px;
+}
 
 
 #error_explanation {

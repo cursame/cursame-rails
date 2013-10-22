@@ -37,8 +37,6 @@ group :assets do
  
 end
 ####### gems for debug erros
-
-# gem 'coffee-rails', '~> 3.2.1'
 group :development do
   # gem 'better_errors'
   # gem 'binding_of_caller'
