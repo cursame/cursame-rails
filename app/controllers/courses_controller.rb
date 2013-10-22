@@ -21,7 +21,13 @@ class CoursesController < ApplicationController
   def show
   
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    
+    @member = obtainMember(@course.id,current_user.id)
+
+    if (@member.nil?)
+      redirect_to :back
+    end
+
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @deliveries = @course.deliveries.where(:status => "publish")
     @unpubliushed_deliveries = @course.deliveries.where(:status => "unpublish")
@@ -62,7 +68,7 @@ class CoursesController < ApplicationController
   def send_mails
     @user = current_user
     @course = Course.find(params[:id])
-    member = MembersInCourse.find_by_user_id_and_course_id(@user.id,params[:id])
+    member = obtainMember(@course.id,@user.id)
 
     if !member.owner then
       redirect_to course_path(@course)
@@ -94,8 +100,9 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
-     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
 
+    @member = obtainMember(@course.id, current_user.id)
+    
       if @member.owner = true || current_role = "admin"
       else
         redirect_to :back
@@ -184,7 +191,8 @@ class CoursesController < ApplicationController
 
   def evaluation
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
+    @member = obtainMember(@course.id, current_user.id)
+   
     if !@member.nil? then
       if @member.owner.nil? then
         @member.update_attributes(:owner => false)
@@ -195,7 +203,7 @@ class CoursesController < ApplicationController
 
   def evaluation_download
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)
+    @member = obtainMember(@course.id, current_user.id)
     if !@member.nil? then
       if @member.owner.nil? then
         @member.update_attributes(:owner => false)
@@ -206,10 +214,10 @@ class CoursesController < ApplicationController
 
 
   def filter_protection
-     @course = Course.find(params[:id])
-     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    @course = Course.find(params[:id])
+    @member = obtainMember(@course.id,current_user.id)
 
-    if current_role == "admin"
+    if current_role == "admin" || current_role == "superadmin"
     else
       if @member
         if @member.accepted
@@ -258,7 +266,6 @@ class CoursesController < ApplicationController
         assignment_assets = @assignment.assets
 
         assets.each do |asset|
-
           if !assignment_assets.include?(asset) then
             @assignment.assets.push(asset)
           end
@@ -592,4 +599,24 @@ class CoursesController < ApplicationController
       end
   end
 
+private 
+
+  def obtainMember(course_id, user_id)
+    member = MembersInCourse.find_by_course_id_and_user_id(course_id,user_id)
+    
+    if (member.nil?) 
+      superadmin = current_role == "superadmin"
+      admin = current_role == "admin"
+      if (superadmin || admin)
+        member = MembersInCourse.new
+        member.course_id = @course.id
+        member.user_id = current_user.id
+        member.accepted = true
+        member.owner = true
+        member.network_id = current_network.id
+      end
+   
+    end
+    return member
+  end
 end

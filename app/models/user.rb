@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   # Miembros de grupos
   has_many :members_in_groups, :dependent => :destroy
   has_many :groups, :dependent => :destroy
+  #eventos
+  has_many :events, :dependent => :destroy
 
   has_many :courses, :through => :members_in_courses
   has_many :user_surveys, :dependent => :destroy
@@ -44,7 +46,7 @@ class User < ActiveRecord::Base
   has_many :deliveries, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
-  has_many :survey, :dependent => :destroy
+  has_many :surveys, :dependent => :destroy
   has_many :activities#, :dependent => :destroy
   #publications/walls
   has_many :userpublicationings, :dependent => :destroy
@@ -123,7 +125,6 @@ class User < ActiveRecord::Base
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
- 
  
  after_create do 
    
@@ -370,22 +371,20 @@ class User < ActiveRecord::Base
   def import(path,network,user_admin, domain, subdomain)
     arrayErrores = Array.new
     count = 0
-
+    
     CSV.foreach(path, headers: true) do |row|
       count += 1
-      if !row["id"].nil? then
-        user = User.find_by_id(row["id"]) || User.new
-      else
-        user = User.new
-      end
+      
+      user = User.new
+      
       hash = row.to_hash
       network_id = network.id
       role_id = hash.delete("Role")
 
       errors = false
-
+      
       if !role_id.nil? then
-
+        
         role_id = role_id.downcase.strip
         role_id = 2 if role_id == "estudiante"
         role_id = 3 if role_id == "maestro"
@@ -393,15 +392,17 @@ class User < ActiveRecord::Base
         arrayErrores.push({ :line => count,:message => "No se especifico un role"})
         errors = true
       end
-
+      
       if role_id.class != Fixnum then
         arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
         errors = true
       end
+
       user.first_name = hash.delete("Nombre")
       user.last_name = hash.delete("Apellido")
       user.domain = domain
       user.subdomain = subdomain
+
       user.email = hash.delete("Email")
 
       if !user.email.nil? then
@@ -419,7 +420,7 @@ class User < ActiveRecord::Base
       # Nombre y apellido en mayusculas
       user.first_name = user.first_name.capitalize if !user.first_name.nil?
       user.last_name = user.last_name.capitalize if !user.last_name.nil?
-
+      
       # Checa que exista el role_id
       if role_id.nil? then
         arrayErrores.push({:line => count, :message => "Debes de especificar un role para el usuario" })
@@ -432,7 +433,7 @@ class User < ActiveRecord::Base
           errors = true
         end
       end
-
+      
       password = Devise.friendly_token.first(6)
       charList =  [('a'..'z'),('A'..'Z'),(0..9)].map{ |i| i.to_a }.flatten.map{ |i| i.to_s }
 
@@ -441,30 +442,33 @@ class User < ActiveRecord::Base
       user.personal_url = personal_url_random
       user.accepted_terms = true
 
+      user.avatar = '/assets/imagex.png'
+      
       if !errors then
-        begin
-          user.save!
-        rescue ActiveRecord::RecordInvalid => invalid
-          invalid.record.errors.each do |error|
-            arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
-          end
-        end
-        if !user.save then
-          arrayErrores.push({:line => count, :message => "Error al guardar"})
-        else
+        if user.save then
+          Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          
+        #rescue ActiveRecord::RecordInvalid => invalid
+          #  invalid.record.errors.each do |error|
+          #    arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+          #  end
+          #end
+        #if !user.save then
+        #  arrayErrores.push({:line => count, :message => "Error al guardar"})
+        #else
           # user.confirm!
           # user.save!
-          Permissioning.create!(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
           # mail = Notifier.send_password(user,password)
           # mail.deliver
         end
       end
     end
-
+    
     mail = Notifier.send_import_users(user_admin,arrayErrores)
     mail.deliver
-    return arrayErrores
-
+    #return arrayErrores
+    return
   end
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}

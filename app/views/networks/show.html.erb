@@ -1,9 +1,10 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
  url(<%= current_user.coverphoto.blank? ? '/assets/'+current_user.cover_photox : current_user.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
 
-  <div id="noticce">
-  <div id="notice" class="notice"></div>
-  </div>
+  
+  <!--<div id="noticce">
+   <div id="notice" class="notice"></div>
+  </div>-->
    <%= render :partial => 'shared/head_menu'%>
 </div>
 <!-- Content Post Box -->

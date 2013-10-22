@@ -32,7 +32,8 @@
         <td>
         	<div class="everymbrm" style="height: 203px; overflow: hidden; position: relative;">
              	<span id="imgge" style="width:170px;height:170px; display: block; background:#ddd; overflow: hidden;">
-             		<%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%>
+             		<%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url) if ( !hash[:user].avatar.blank?)%>
+             		<%= link_to image_tag(hash[:user].image_avatarx), show_user_path(hash[:user].personal_url) if (hash[:user].avatar.blank?)%>
              	</span>
              	<div class="place-hldr" style="height: 30px;"><h3 style="background-color: rgb(222, 222, 222);"><%= hash[:user].name %></h3></div>
              	
@@ -63,7 +64,8 @@
         <td>
         	<div class="everymbrm" style="height: 203px; overflow: hidden; position: relative;">
                	<span id="imgge" style="width:170px;height:170px; display: block; background:#ddd; overflow: hidden;">
-               		<%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url)%>
+               	    <%= link_to image_tag(hash[:user].avatar.profile), show_user_path(hash[:user].personal_url) if ( !hash[:user].avatar.blank?)%>
+             		<%= link_to image_tag(hash[:user].image_avatarx), show_user_path(hash[:user].personal_url) if (hash[:user].avatar.blank?)%>
                	</span>
                	
                	<div class="place-hldr" style="height: 30px;"><h3 style="background-color: rgb(222, 222, 222);"><%= hash[:user].name %></h3>

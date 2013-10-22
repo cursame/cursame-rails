@@ -22,7 +22,7 @@
   <div class="the-list">
     <ul class="list">
       <li class="user-list">
-        <div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"}) if ( !user.avatar.blank?) %> <%= image_tag(user.image_avatarxxx,{:class => "avatar-mini"}) if ( user.avatar.blank?) %> </div>
          <div class="info"> <%= user.name %><br/>
          <a href=""><%= user.email %> </a>
          </div>
