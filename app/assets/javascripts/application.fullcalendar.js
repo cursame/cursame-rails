@@ -802,7 +802,7 @@ function Header(calendar, options) {
 					prevButton.addClass(tm + '-corner-right');
 				}
 			});
-		}
+		}		
 		return e;
 	}
 	
@@ -2372,7 +2372,7 @@ function BasicView(element, calendar, viewName) {
 	}
 	
 	
-	function dayClick(ev) {
+   	function dayClick(ev) {
 		if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
 			var index = parseInt(this.className.match(/fc\-day(\d+)/)[1]); // TODO: maybe use .data
 			var date = indexDate(index);
@@ -3222,7 +3222,7 @@ function AgendaView(element, calendar, viewName) {
 
 	function dayBind(cells) {
 		cells.click(slotClick)
-			.mousedown(daySelectionMousedown);
+		.mousedown(daySelectionMousedown);
 	}
 
 
