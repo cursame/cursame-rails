@@ -17,8 +17,8 @@
                  {
                  title : '<%= event.title %>',
                  description: '"<%= @description.to_s %>"',
-                 start :  '<%= event.starts_at%>',,
-                 // end :  '<%= event.ends_at%>'
+                 start :  '<%= event.starts_at%>',
+                //  end :  '<%= event.ends_at%>',
 
                  })
           </script>      
@@ -34,7 +34,7 @@
                            title : '<%= event.title%>',
                            description: '<%= event.title%>',
                            start :  '<%= event.starts_at%>',
-                           // end :  '<%= event.ends_at%>'
+                           //end :  '<%= event.ends_at%>',
 
                            })
                     </script>
@@ -43,12 +43,9 @@
 <%end%>
 <%end%>
 
-<script type="text/javascript">
-	$(document).ready( function(){
-		$('calendar_g').removeDuplicates();
-	});
-</script>
 
-<div id='calendar_g' style="width: 440px; float:right; margin-right:20px; height:340px;"></div>
+
+<div id='calendar_g' style="width: 440px; float:right; margin-right:20px; height:340px;">
+</div>
 
 

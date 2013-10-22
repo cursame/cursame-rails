@@ -2215,7 +2215,7 @@ function BasicView(element, calendar, viewName) {
 		var table;
 
 		s =
-			"<table class='fc-border-separate' style='width:100%' cellspacing='0'>" +
+			"<table id='calendar_table' class='fc-border-separate' style='width:100%' cellspacing='0'>" +
 			"<thead>" +
 			"<tr>";
 		for (i=0; i<colCnt; i++) {
