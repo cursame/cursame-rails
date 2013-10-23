@@ -25,6 +25,8 @@ gem 'mini_magick'
  gem 'omniauth'
  gem 'google-api-client', :require => 'google/api_client'
  gem 'omniauth-google-oauth2'
+#facebookconnect
+gem 'omniauth-facebook'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
