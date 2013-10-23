@@ -107,8 +107,9 @@
             
         	    <div class="delivery_f" >
 	              <div class="delivery_container">
-	        	      <div id="OpenClose"></div>
-	                <div class="title"><%= delivery.title %></div>
+	        	      <div class="OpenClose<%=delivery.id%>"id="OpenClose"></div>
+	                <div class="title"><%= delivery.title %>  <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
+	                </div>
 	                <div class="state">
 	                  <div id="delivery_state_publish<%=delivery.id%>">
 	                    <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
@@ -116,10 +117,10 @@
 	                  <div class="dates" id="dates_delivery<%=delivery.id%>">
 	                    <img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
 	                  </div>
-	                  <div class="image" id="opentag<%=delivery.id%>"></div>
+	                  <div class="image" id="opentag<%=delivery.id%>" onmouseover=""></div>
 	                </div>
 	                
-	                <div class="so_open" id="so_open<%=delivery.id%>" style="display:none">
+	                <div class="so_open" id="so_open<%=delivery.id%>" style="display:none;">
 	                  <% delivery.assignments.reverse.each do |assignment|%>
 	                    <div class="assignment" id="div-assignment-<%= assignment.id %>">
 	                      <div class="title" style="width: 422px;">
@@ -148,13 +149,24 @@
                   $('#RightArrow').css({background: "transparent"});
                 });
                        	   
-                $('.delivery_f #OpenClose').click (function() {
-                  $('.delivery_f').find( '#so_open<%=delivery.id%>' ).toggle('blind');
+                $('.delivery_f .OpenClose<%=delivery.id%>').click (function() {
+                  $( '#so_open<%=delivery.id%>' ).toggle('blind');
+                  $('#image_scroll<%=delivery.id%>').toggle();
                 });
              
                 $('#opentag<%=delivery.id%>').click(function() {
                   $('#so_open<%=delivery.id%>').fade('blind');
-                });                           
+                  $('#image_scroll<%=delivery.id%>').fade();
+                  
+                });                
+               $('#image_scroll<%=delivery.id%>').click(function() {  
+                     //alert('scroll');  
+                     var scroll = $('#so_open<%=delivery.id%>').scrollTop();
+                     setTimeout(function(){
+                        $('#so_open<%=delivery.id%>').scrollTop(scroll+15)
+                     },1); 
+                     
+               });           
               </script>
             <%end%>
           </div><!-- end content_delivery-->
@@ -164,7 +176,7 @@
                 <div id="ExamsDelivery" class="delivery_f">
                   <div class="delivery_container">
                     <div id="OpenClose" class="OpenClose<%=survey.id%>"></div>
-	                  <div class="title"><%= survey.title %></div>
+	                  <div class="title"><%= survey.title %><div class="image_scroll" id="image_scroll_s<%=survey.id%>" style="display:none;" ></div></div>
 	                   
 	                  <div class="state">
 	                    <div class="dates" id="survey_dates<%= survey.id%>">
@@ -199,9 +211,21 @@
               
               <script>
                 $('.OpenClose<%=survey.id%>').click(function() {
+
                   $('#copea_<%=survey.id%>').toggle('blind', function() {
+                         
                   });
+                  $('#image_scroll_s<%=survey.id%>').toggle();
+                  
                 });
+                  $('#image_scroll_s<%=survey.id%>').click(function() {  
+                         //alert('scroll');  
+                         var scroll = $('#copea_<%=survey.id%>').scrollTop();
+                         setTimeout(function(){
+                            $('#copea_<%=survey.id%>').scrollTop(scroll+15)
+                         },1); 
+
+                   });
               </script>
             <%end%>
           </div><!-- ends content_survey -->
