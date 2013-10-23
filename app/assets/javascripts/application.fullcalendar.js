@@ -2230,18 +2230,22 @@ function BasicView(element, calendar, viewName) {
 			s +=
 				"<tr class='fc-week" + i + "'>";
 			for (j=0; j<colCnt; j++) {
+			    
+			    
+			    
 				s +=
-					"<td class='fc- " + contentClass + " fc-day" + (i*colCnt+j) + "'>" + // need fc- for setDayID
+					"<td class='fc- " + contentClass + " fc-day" + (i*colCnt+j) + " alertkkk'>" + // need fc- for setDayID
 					"<div>" +
 					(showNumbers ?
-						"<div class='fc-day-number'/>" :
+						"<div class='fc-day-number fc-day_c"+(i*colCnt+j)+"'/>" :
 						''
 						) +
-					"<div class='fc-day-content'>" +
+					"<div class='fc-day-content fc-day_c"+(i*colCnt+j)+"'>" +
 					"<div style='position:relative'>&nbsp;</div>" +
 					"</div>" +
 					"</div>" +
-					"</td>";
+					"</td>";	
+                	
 			}
 			s +=
 				"</tr>";
@@ -2269,6 +2273,11 @@ function BasicView(element, calendar, viewName) {
 			$("<div style='position:absolute;z-index:8;top:0;left:0'/>")
 				.appendTo(element);
 	}
+	
+	
+	
+	    
+	 
 	
 	
 	
