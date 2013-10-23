@@ -14,7 +14,6 @@
    <div class="form-course fixform" style="padding: 0 0 41px !important; width: 823px!important; overflow:auto;">
 		     <!--para poder hacer el render partial-->
    <%  @course = Course.find(params[:id])%>
-   <%  @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id) %>
 		
 		    <%@course.members_in_courses.each do |member| %>
 		      <%user = User.find_by_id(member.user_id)%>
@@ -106,7 +105,7 @@
 		    <%table = @member.doTableCourse%>
 
 		    	<span class="califHeader" style="margin-top:-20px;">Calificacion: <%=table[2]%></span>
-		        <h4 style="margin-top: 45px;">Alumno: <%=user.email%></h4>
+		        <h4 style="margin-top: 45px;">Alumno: <%=user.name%></h4>
 		    </br>
 		    <table border="1" width="750" cellpadding="3" cellspacing="3">
 		    <tr>

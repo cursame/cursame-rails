@@ -14,7 +14,7 @@
 	<!-- estamos creando un container especial para que no se descomponga el layout -->
 	<div class="list_alt_box" id="propyety_course_<%= course.id %>">
 	    <div class="headerOne">
-	        <h1><%= course.title %></h1>
+	        <h1><%= link_to "#{course.title}", course_path(course.id) %></h1>
 	        <div class="status">
 	            <%if  course.active_status == true%>
 	             <span class="course_status">
@@ -25,21 +25,25 @@
 	            <%end%>
 	        </div>
 	    </div>
-	
-	  
+	    
+	    <div class="top-header-delivery-box">
+	      <%= link_to "Monitor de actividades", course_activities_depot_path(course.id) %>
+	    </div>
+	  <!--
 	    <div class="top-header-delivery-box">
 	        <ul>
-	            <li id="tareas_list_<%= course.id %>" >
-	                <!-- <div class="green-circle-mini" ></div> -->
-	                <span>Tareas</span>
+	            <li id="tareas_list_<%= course.id %>" >-->
+	                <!--<div class="green-circle-mini" ></div> -->
+	                <!--<span>Tareas</span>
 	            </li>
-	            <li id="cuestrionario_list_<%= course.id %>">
+	            <li id="cuestrionario_list_<%= course.id %>">-->
 	                <!-- <div class="orange-circle-mini"></div> -->
-	                <span>Cuestionario</span>
+	              <!--  <span>Cuestionario</span>
 	            </li>
 	        </ul>
 	    </div>
-	  
+	    -->
+	   
 	  <script>
 	      $('#tareas_list_<%= course.id %>').click(function(e) {
 	          $('#delivery_list_<%= course.id %>').lightbox_me({

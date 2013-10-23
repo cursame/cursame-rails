@@ -74,7 +74,7 @@
                   
                        $('#'+id).click( function(){
                            var axelid =  $(this).attr("id"); 
-                           var cl_actives = $(this).attr("class").split(/\s/);;
+                           var cl_actives = $(this).attr("class").split(/\s/);
                            var last_class = cl_actives[1];
                            $('.user_assets').hide();
                            $('.'+last_class).show();

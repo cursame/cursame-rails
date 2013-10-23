@@ -802,7 +802,7 @@ function Header(calendar, options) {
 					prevButton.addClass(tm + '-corner-right');
 				}
 			});
-		}
+		}		
 		return e;
 	}
 	
@@ -2215,7 +2215,7 @@ function BasicView(element, calendar, viewName) {
 		var table;
 
 		s =
-			"<table class='fc-border-separate' style='width:100%' cellspacing='0'>" +
+			"<table id='calendar_table' class='fc-border-separate' style='width:100%' cellspacing='0'>" +
 			"<thead>" +
 			"<tr>";
 		for (i=0; i<colCnt; i++) {
@@ -2230,18 +2230,22 @@ function BasicView(element, calendar, viewName) {
 			s +=
 				"<tr class='fc-week" + i + "'>";
 			for (j=0; j<colCnt; j++) {
+			    
+			    
+			    
 				s +=
-					"<td class='fc- " + contentClass + " fc-day" + (i*colCnt+j) + "'>" + // need fc- for setDayID
+					"<td class='fc- " + contentClass + " fc-day" + (i*colCnt+j) + " alertkkk'>" + // need fc- for setDayID
 					"<div>" +
 					(showNumbers ?
-						"<div class='fc-day-number'/>" :
+						"<div class='fc-day-number fc-day_c"+(i*colCnt+j)+"'/>" :
 						''
 						) +
-					"<div class='fc-day-content'>" +
+					"<div class='fc-day-content fc-day_c"+(i*colCnt+j)+"'>" +
 					"<div style='position:relative'>&nbsp;</div>" +
 					"</div>" +
 					"</div>" +
-					"</td>";
+					"</td>";	
+                	
 			}
 			s +=
 				"</tr>";
@@ -2269,6 +2273,11 @@ function BasicView(element, calendar, viewName) {
 			$("<div style='position:absolute;z-index:8;top:0;left:0'/>")
 				.appendTo(element);
 	}
+	
+	
+	
+	    
+	 
 	
 	
 	
@@ -2372,7 +2381,7 @@ function BasicView(element, calendar, viewName) {
 	}
 	
 	
-	function dayClick(ev) {
+   	function dayClick(ev) {
 		if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
 			var index = parseInt(this.className.match(/fc\-day(\d+)/)[1]); // TODO: maybe use .data
 			var date = indexDate(index);
@@ -3222,7 +3231,7 @@ function AgendaView(element, calendar, viewName) {
 
 	function dayBind(cells) {
 		cells.click(slotClick)
-			.mousedown(daySelectionMousedown);
+		.mousedown(daySelectionMousedown);
 	}
 
 

@@ -111,6 +111,7 @@ $(document).ready(function() {
 		<%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
     	<%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain%>
 		<%= f.hidden_field :domain, :class => "pswdcode", :value => request.domain %>
+		<%= f.hidden_field :avatar, :class => "psdcode", :value => '/assets/imagex.png'%>
 
 		<div class="dropperDwn">
 	       <!--muy importante estas lineas sirven para machar la red en caso de que exista una current_network con lo cual el usuario al crearse puede ingresar directamente a la red -->
