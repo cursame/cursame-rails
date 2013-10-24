@@ -23,7 +23,8 @@ Cursame30Lb::Application.routes.draw do
   get "managers/members"
   get "managers/network_configuration"
   get "managers/library"
-
+  get "managers/delete_user", :as => :delete_user
+  
   resources :discussions
 
   ##### respuestas a la evaluaciones
@@ -258,6 +259,8 @@ Cursame30Lb::Application.routes.draw do
 
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
+  get "/permissionings/unactive_user", :to => "permissionings#unactive_user", :as => "unactive_user", :via => [:post]
+  
 
   #machando las relaciones de creación de eventos para delivery, survey
 
