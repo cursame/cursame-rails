@@ -282,10 +282,21 @@
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
        
 	      <% permitted_to? :create, :courses do %>
-	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:active_status => false).count %>
+	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:active_status => false).count %>              
 	      <% if @new_and_non_aproval_members != 0%>
 	      <!--ejemplo para tooltip-->
-	           <span class="RedBallon" id="unser_new_in_course" title="Alumnos pendientes de aprobación" onmouseover='tool_tip_heft({identifier:"unser_new_in_course"})' onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span>   
+	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> 
+                           <script>
+                                $("#unser_new_in_course").hover(
+                                     function () {
+                                       $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:-10px'><div class='tooltipr'><%=truncate("Tienes #{@new_and_non_aproval_members} miembros pendientes de aprovación.", :omission => "...", :length => 155)%></div></span>"));
+                                     },
+                                     function () {
+                                       $(this).find("span:last").remove();
+                                     }
+                                   );
+                             </script>
+	           
           <%end%>
 	        <div style="min-height:290px; max-height:580px;">
 	        <% @course.members_in_courses.each do |member|  %>
@@ -294,33 +305,71 @@
             <!--coloca la imagen y el nombre-->
             <% if current_role == 'admin' || current_role == 'superadmin'%>
               <% if @members != nil%>
+              <div id="member_id<%=@members.id%>" style="float:left">
                 <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                 <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                    <script>
+                        $("#member_id<%=@members.id%>").hover(
+                             function () {
+                               $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@members.name}", :omission => "...", :length => 25)%></div></span>"));
+                             },
+                             function () {
+                               $(this).find("span:last").remove();
+                             }
+                           );
+                     </script>
+              </div>
               <%else%>
               <%end%>    
             <%else%>
               <% if @member.accepted == true %>
                 <% if @members != nil%>
+                   <div id="member_id<%=@members.id%>" style="float:left;">
                   <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                   <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                          <script>
+                              $("#member_id<%=@members.id%>").hover(
+                                   function () {
+                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@members.name}", :omission => "...", :length => 25)%></div></span>"));
+                                   },
+                                   function () {
+                                     $(this).find("span:last").remove();
+                                   }
+                                 );
+                           </script>
+                   </div>
                 <%else%>
                 <%end%>
               <%end%>
             <%end%>
           <%end%>
+                 
 	        </div>
           <% if current_role == 'admin' || current_role == 'superadmin' %>          
-            <div class="view-all"><%= link_to "Administrador de miembros", course_members_path %></div>
+            <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
           <%else%>
             <% if @member.owner != nil %>
               <% if @member.owner == true %>
-                <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
+                <div class="view-all" id="members_admin"> <%= link_to "Administrador de miembros", course_members_path %></div>
               <%end%>
             <%end%>
           <%end%>
         <%end%>
       </div>
     </div>
+    
+    <script>
+          $("#members_admin").hover(
+               function () {
+                 $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("Deso ver todos los miembros del curso", :omission => "...", :length => 55)%></div></span>"));
+               },
+               function () {
+                 $(this).find("span:last").remove();
+               }
+             );
+       </script>
+    
+
     
     <div id="box-d" class="basic-lateral-box" style="margin-top: 380px; position: relative; display: block;">
       <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
@@ -340,6 +389,17 @@
           <%end%>
         <%end%>
       <%end%>
+      
+          <script>
+              $("#upload-files-to-course").hover(
+                   function () {
+                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:100px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("Da click aquí para subir un archivo a la biblioteca del curso.", :omission => "...", :length => 155)%></div></span>"));
+                   },
+                   function () {
+                     $(this).find("span:last").remove();
+                   }
+                 );
+           </script>
          
       <script>
         $('.UploadArchiveBtn').mouseenter ( function() {
@@ -398,13 +458,14 @@
       </div><!-- uplok -->
       
       <div style="width: 230px;  overflow:auto; min-height:0px; max-height: 300px; overflow-x: hidden; padding-top: 25px; padding:1px; min-height:300px; max-height:600px;">
-        <div id="files"></div>
         <% @course.course_files.reverse.each do |cf|%>
           <% @name =  "#{cf.file}" %>
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
           <!--se ha colocan los archivos dependiendo su categoría-->
-          <div style="margin-top:25px;">
+          <div style="margin-top:35px;" style="min-height:100px;">
+              <div id="files"></div>
+              
           <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
           </div>
 
