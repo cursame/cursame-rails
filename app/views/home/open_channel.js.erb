@@ -1,21 +1,35 @@
-// si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación
+// si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación 
 if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
 
 	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
 
-	// Si ya hay mas de 3 conversaciones 
-	if(window.chatPanelsCount > 3) {
-		// Si hay exactamente 4 conversaciones se agrega un link para que se vean mas conversaciones
-		if(window.chatPanelsCount == 4) {
+	if(window.chatPanelsCount == undefined) {
+		window.chatPanelsCount = 0;
+	}
+
+	// Si ya hay mas de 3 conversaciones
+	if(window.chatPanelsCount >= 3) {
+		if(window.pendingChatsCount == undefined) {
+			window.pendingChatsCount = 0;
+		}
+
+		// Se muestra el recuadro 'Ver mas' si no esta (y se guarda el canal que no se pudo abrir)
+		if($("#go-to-chats-url").length) {
+			// Si si esta, solo se guarda el canal que no se pudo abrir
+			var pendingChats = $("#go-to-chats-url").attr('pendingChats');
+			$("#go-to-chats-url").attr('pendingChats', pendingChats + ' <%=@channel.channel_name%>');
+		} else {
 			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
 					:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 		}
+		window.pendingChatsCount++;	
 	}
 	else {
-		$('body').append(
-		'<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
+		window.chatPanelsCount++;
+		$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
 			:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 	}
+	
 }
 
 // si estamos en el path del chat
