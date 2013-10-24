@@ -177,6 +177,8 @@ GEM
       rack
     omniauth-dropbox (0.2.0)
       omniauth-oauth (~> 1.0)
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
     omniauth-google-oauth2 (0.1.13)
       omniauth (~> 1.0)
       omniauth-oauth2
@@ -314,6 +316,7 @@ DEPENDENCIES
   nifty-generators
   omniauth
   omniauth-dropbox
+  omniauth-facebook
   omniauth-google-oauth2
   pdfkit
   pg

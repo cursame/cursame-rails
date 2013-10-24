@@ -48,7 +48,7 @@ Cursame30Lb::Application.routes.draw do
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
   ######## create
   match "/auth/:provider/callback" => "authentications#create", :as => :providers
-
+  match 'auth/failure', to: redirect('/')
 
   #recursos naturales de la aplicación
   resources :notifications
@@ -147,7 +147,7 @@ Cursame30Lb::Application.routes.draw do
 
 
   #manejo de users
-  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "usessions" }
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "usessions", :omniauth_callbacks => "omniauth_callbacks" }
 
   as :user do
     match 'users/sign_out', :to => 'usessions/sessions#destroy', :as => :sign_out

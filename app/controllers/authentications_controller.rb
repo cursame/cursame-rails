@@ -1,16 +1,16 @@
 class AuthenticationsController < ApplicationController
   
+  skip_before_filter :authenticate_user!, :only => [:create]
   
   def index
     @authentications = Authentication.all
   end
 
   def create
-    @provider = params[:provider]
+    @provider = params[:provider]    
      
-    if @provider = "dropbox"
-       
-        
+    if @provider == "dropbox"
+    
     else
       omniauth = request.env["omniauth.auth"]
       @authentication = Authentication.find_by_provider_and_uid(omniauth["#{@provider}"], omniauth["uid"]) || Authentication.create_with_omniauth(omniauth)

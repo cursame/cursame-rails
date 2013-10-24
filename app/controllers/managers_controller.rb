@@ -71,7 +71,7 @@ class ManagersController < ApplicationController
 
     text = ""
     begin
-      File.open(params[:file].path,'r').each do |line|
+      File.open(params[:file].path,"r:ISO-8859-1").each do |line|
         text += line
       end
 
@@ -84,6 +84,7 @@ class ManagersController < ApplicationController
       subdomain = network.subdomain
       
       user_info.delay.import(path,network,user_admin,domain,subdomain)
+    #user_info.import(path,network,user_admin,domain,subdomain)
 
     rescue
       @noFile = true
