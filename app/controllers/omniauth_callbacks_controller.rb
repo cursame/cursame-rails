@@ -2,18 +2,18 @@ class OmniauthCallbacksController < ApplicationController
 	skip_before_filter :authenticate_user!, :only => [:facebook]
 	def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
+    @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user,current_network)
     # @user = User.from_omniauth(request.env["omniauth.auth"])
 
-    @user.permissionings = []
-    @user.save!
+    # @user.permissionings = []
+    # @user.save!
     
-    permissioning = Permissioning.new
-    permissioning.network = current_network
-    permissioning.user = @user
-    permissioning.role_id = 2
+    # permissioning = Permissioning.new
+    # permissioning.network = current_network
+    # permissioning.user = @user
+    # permissioning.role_id = 2
 
-    permissioning.save!
+    # permissioning.save!
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated

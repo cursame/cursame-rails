@@ -530,7 +530,7 @@ class User < ActiveRecord::Base
 
   #facebook connect
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil, network=nil)
     user = User.where(:email => auth.info.email).first
     unless user
       user = User.create(
@@ -538,7 +538,7 @@ class User < ActiveRecord::Base
           last_name:auth.info.last_name,
           email:auth.info.email,
           password:Devise.friendly_token[0,20],
-          subdomain: 'pruebas',
+          subdomain: network.subdomain,
           domain: 'lvh.me:3000',
           personal_url: auth.uid,
           confirmed_at: Time.now
