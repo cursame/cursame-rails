@@ -9,11 +9,12 @@
   </ul>
 </div>
 <div id="admin-content">
+     <p class="" style="z-index:4; color:#000; padding:15px; font-size:20px; font-style:italic; margin-bottom:-30px; font-weigh:bold;">Población esperada: <%= @network_population %> / actual: <%= @member_count %> <img src="/assets/icons_for_admin/simple_icons_real/internet.png" class=" class_image2525"></p>
   <div class="users-chart">
           <%= render :partial => "managers/charts/users"%>
+          
           <div class="meter orange nostripes">
-              <p class="hope">Población esperada: <%= @network_population %> / actual: <%= @member_count %></p>
-              <span style="width:<%=  @porcent_of_students %>%;"></span>
+              <span style="width:<%=  @porcent_of_students %>%; z-index:1 !important; margin-top: -18px;"></span>
         </div>
   </div>
 
