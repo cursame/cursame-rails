@@ -52,7 +52,7 @@ production:
   pool: 5
   
 
-production:
+emprendedores:
   adapter: postgresql
   host: ip-10-151-14-176.ec2.internal
   database: emprendedores
