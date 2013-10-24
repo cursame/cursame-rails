@@ -140,7 +140,10 @@ $(document).ready(function() {
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    var title = prompt('Event Title:');
+                    
+                    console.log(arguments);
+                    
+                   /* var title = prompt('Event Title:');
                     if (title) {
                         calendar.fullCalendar('renderEvent',
                             {
@@ -151,11 +154,13 @@ $(document).ready(function() {
                             },
                             true // make the event "stick"
                         );
+                        
                     }
-                    calendar.fullCalendar('unselect');
+                    calendar.fullCalendar('unselect');*/
                 },
                 editable: true,
                 events: events
+                
             });
             initBool = false;
         }

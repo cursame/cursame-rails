@@ -18,4 +18,26 @@ class PermissioningsController < ApplicationController
      end
    end
   end
+  
+  def unactive_user
+   @i = params[:id]
+   @p = Permissioning.find_by_id(@i)
+   puts @p 
+   
+   puts @p.suspended
+    if  @p.suspended == true
+      @p.suspended = false
+    else
+      @p.suspended = true
+    end
+    @p.save
+    respond_to do |format|
+     format.js
+    end
+  end
+  
+  
+  def delete_user
+     
+  end
 end

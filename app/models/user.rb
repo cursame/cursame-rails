@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   :token_authenticatable, :lockable, :timeoutable,
   :confirmable
 
+  devise :omniauthable, :omniauth_providers => [:facebook]
+
 
   # Setup accessible (or protected) attributes for your model
 
@@ -539,5 +541,31 @@ class User < ActiveRecord::Base
     end
     return average/size
   end
+
+  #facebook connect
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil, network, domain, subdomain)
+    user = User.where(:email => auth.info.email).first
+    unless user
+      user = User.create(
+          first_name:auth.info.first_name,
+          last_name:auth.info.last_name,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],
+          subdomain: subdomain,
+          domain: domain,
+          personal_url: auth.uid,
+          confirmed_at: Time.now
+      )
+      #creamos los permisos del usuario    
+      permissioning = Permissioning.new
+      permissioning.network = network
+      permissioning.user = user
+      permissioning.role_id = 2
+
+      permissioning.save!
+    end
+    user
+end
 
 end

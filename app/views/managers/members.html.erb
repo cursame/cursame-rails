@@ -19,10 +19,10 @@
 <% end %>
 <% @users.each do |user|%>
 
-  <div class="the-list">
+  <div class="the-list" style="margin-top:10px;">
     <ul class="list">
       <li class="user-list">
-        <div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"})%></div>
+        <div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"}) if ( !user.avatar.blank?) %> <%= image_tag(user.image_avatarxxx,{:class => "avatar-mini"}) if ( user.avatar.blank?) %> </div>
          <div class="info"> <%= user.name %><br/>
          <a href=""><%= user.email %> </a>
          </div>
@@ -32,8 +32,13 @@
                  <%= @role.title %>
                  </div>
          <div class="actions">
-
-           <img src="/assets/icons/config.png" class="" id="edit_user-<%= @permisos.id%>">
+            <!--<img src="/assets/icons_for_admin/bullet_delete.png" style="width:40px; height:40px; cursor:pointer; margin-top:-10px;"/>-->
+            <%if @permisos.suspended == true %>
+            <%=link_to image_tag("icons_for_admin/lock_locked.png", :class => 'class_image4040 grayfilterto-images', :id => "suspenden_div#{@permisos.id}"), unactive_user_path(:id => @permisos.id), :remote => true%>
+            <%else%>
+            <%=link_to image_tag("icons_for_admin/lock_locked.png", :class => 'class_image4040', :id => "suspenden_div#{@permisos.id}"), unactive_user_path(:id => @permisos.id), :remote => true%>
+            <%end%>
+           <img src="/assets/icons_for_admin/file_edit.png"  style="width:40px; height:40px; cursor:pointer; margin-top:-10px;" class="" id="edit_user-<%= @permisos.id%>">
            <div id="edit_user_role_open-<%= @permisos.id%>" style="display: none">
                <b> Cambiar el rol del usuario </b>
                 <%= form_tag "/permissionings/update", remote: true do  %>

@@ -1,5 +1,6 @@
 <script type='text/javascript'>
     var events = [];
+   
 </script>
 <!-- creamos un arreglo directo a survey y a delivery y asi jalamos los eventos propios de este -->
 <% @user = current_user %>
@@ -17,7 +18,7 @@
                  title : '<%= event.title %>',
                  description: '"<%= @description.to_s %>"',
                  start :  '<%= event.starts_at%>',
-                 // end :  '<%= event.ends_at%>'
+                //  end :  '<%= event.ends_at%>',
 
                  })
           </script>      
@@ -27,12 +28,13 @@
       <% courses.surveys.each do |survey|%>
            <% survey.events.each do |event|%>
                    <script type='text/javascript'>
+                   
                           events.push(   
                            {
                            title : '<%= event.title%>',
                            description: '<%= event.title%>',
                            start :  '<%= event.starts_at%>',
-                           // end :  '<%= event.ends_at%>'
+                           //end :  '<%= event.ends_at%>',
 
                            })
                     </script>
@@ -42,6 +44,8 @@
 <%end%>
 
 
-<div id='calendar_g' style="width: 440px;float:right; margin-right:20px;overflow: scroll; height:365px;"></div>
+
+<div id='calendar_g' style="width: 440px; float:right; margin-right:20px; height:340px;">
+</div>
 
 

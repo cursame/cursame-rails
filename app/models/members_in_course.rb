@@ -5,7 +5,7 @@ class MembersInCourse < ActiveRecord::Base
   after_create do
     if (!self.owner) then
       if(!self.accepted) then
-        #Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_request_membership_in_course')
+        Notification.create(:notificator => self, :users => self.course.owners, :kind => "user_request_membership_in_course", :active => true)
       end
     end
   end

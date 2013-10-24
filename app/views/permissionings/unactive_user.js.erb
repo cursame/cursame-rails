@@ -1,0 +1,7 @@
+<% if @p.suspended == true %>
+  alert('usuario suspendido');
+  $('#suspenden_div'+<%=@p.id%>).addClass('grayfilterto-images');
+<%else%>
+  alert('se ha quitado la suspensión al usuario');
+  $('#suspenden_div'+<%=@p.id%>).removeClass('grayfilterto-images');
+<%end%>

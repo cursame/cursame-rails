@@ -2,7 +2,7 @@
 <% if current_role == "superadmin"%>
 <%else%>
 
-<li id="notification-<%=notification.id.to_s%>" redirect_to="" class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>', <%=notification.id.to_s%>, '<%=notification.kind.to_s %>')">
+<li id="notification-<%=notification.id.to_s%>" style="padding_right: 0px" redirect_to="" class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>', <%=notification.id.to_s%>, '<%=notification.kind.to_s %>')">
 <% if notification.notificator != nil%>
   <% case notification.kind %>
     <% when 'user_comment_on_network'%> 
@@ -153,6 +153,19 @@
           ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
       <% end %>
       <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.commentable.courses.first.id%>?search=Delivery&id_search=<%=notification.notificator.commentable_id%>")</script>
+
+    <!-- Notificacion: 16 - Solicitud de membresia en un curso -->
+    <% when 'user_request_membership_in_course' %>
+      <% if notification.notificator != nil %>
+        <% if notification.notificator.user != nil %>
+          <% user = notification.notificator.user %>
+          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
+          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
+          El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
+          ha solicitado entrar al curso <b><%= link_to "#{notification.notificator.course.title}", course_path(notification.notificator.course.id) %><b>
+        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "<%= course_path(notification.notificator.course.id)%>/members")</script>
+        <%end%>
+      <%end%>
 
     <%else%>
       <%= notification.kind %>
