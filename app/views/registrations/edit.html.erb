@@ -7,12 +7,17 @@
 function readURL(input,id) {
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
-
+        var width = $('#'+id).width();
+        var height = $('#'+id).height();
+        
+       // console.log(width);
+       // console.log(input);
+        
 		reader.onload = function (e) {
 			$('#'+id)
 			.attr('src', e.target.result)
-			.width(50)
-			.height(45);
+			.width(width)
+			.height(height);
 		};
 
 		reader.readAsDataURL(input.files[0]);
@@ -40,9 +45,10 @@ function readURL(input,id) {
 
 <div class="" style="float: right; background: #F6F7F9; height: 443px; width: 220px; margin-top: 40px; padding-bottom: 0px; border: 1px solid #eee; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
 
-    <div style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: #00B4C4; border: 2px solid #FFF; overflow: hidden; position: relative; margin-top: -80px;">
-		<img id="img_prev_user" style="width: 100%;" src="<%= current_user.avatar.profile || current_user.image_avatarx %>"
+    <div  id="reizer_croper_avatar" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: #00B4C4; border: 2px solid #FFF; overflow: hidden; position: relative; margin-top: -80px;">
+		<img id="img_prev_user" style="width: 100%; height:150px;" src="<%= current_user.avatar.profile || current_user.image_avatarx %>"
 		class="thumbnail" style="margin: 0 auto; display: block;"/>
+		<sc>
 	</div>
 	
 	<span class="fixelement" style="margin-top: 0px; height: 24px; width: 220px;">

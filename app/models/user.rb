@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   :token_authenticatable, :lockable, :timeoutable,
   :confirmable
 
+  devise :omniauthable, :omniauth_providers => [:facebook]
+
 
   # Setup accessible (or protected) attributes for your model
 
@@ -125,15 +127,6 @@ class User < ActiveRecord::Base
 #  def parents
   #  return PIdToHId.where(:h_id => self.id)
  # end
- 
- after_create do 
-   
-   self.domain = 'cursa.me'
-   self.avatar = '/assets/imagex.png'
-   self.save!
-  
- end
- 
  
   def detect_key_analytics
    if self.key_analytics == nil
@@ -534,5 +527,24 @@ class User < ActiveRecord::Base
     end
     return average/size
   end
+
+  #facebook connect
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:email => auth.info.email).first
+    unless user
+      user = User.create(
+          first_name:auth.info.first_name,
+          last_name:auth.info.last_name,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],
+          subdomain: 'pruebas',
+          domain: 'lvh.me:3000',
+          personal_url: auth.uid,
+          confirmed_at: Time.now
+      )
+    end
+    user
+end
 
 end

@@ -19,20 +19,35 @@
 </div>
 
 <script>
-	var sizeOfWindow = 255, separacion;
+	var sizeOfWindow, separacion;
 	window.chatPanelsCount = window.chatPanelsCount || 1;
+	window.chatPanelsArray = window.chatPanelsArray || [0,0,0,0];
+	window.chatPanelsIndex = window.chatPanelsIndex || 0;
 
 	if(!$('#chat').length){
 		$("#chat-channel-<%= channel.id%>").css('bottom','312px');
 	}else{
 		$("#chat-zone-<%= channel.id%>").hide();
 	}
+
 	sizeOfWindow =  255;
 	separacion = - 40;
 
-	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + separacion)+'px');
+	$.each(window.chatPanelsArray,function (index, value) {
+		if(!value){
+			$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow * (index+1)) + separacion)+'px');
+			window.chatPanelsCount++;
+			window.chatPanelsArray[index]=1;
+			window.chatPanelsIndex = index;
+			return false;
+		}
+	});
+
+	//$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + separacion)+'px');
 		
-	window.chatPanelsCount++;
+	//window.chatPanelsCount++;
+
+	//agregamos el evento de ocultar el chat
 	$("#chat-channel-<%= channel.id%> span").click(function () {
 		var panel = $("#chat-channel-<%= channel.id%>");
 	   	var chatZonePosition = $(panel).css('bottom');
@@ -48,8 +63,13 @@
 
 	// cerramos el chat
 	$("#close-chat-<%= channel.id%>").click(function () {
+		var pos = $("#chat-channel-<%= channel.id%>").css('right');
+			pos = pos.replace('px','');
+		var	index = ((pos - separacion)/sizeOfWindow) - 1;
+
 		$("#chat-channel-<%= channel.id%>").remove();
-		PrivatePub.unsubscribe("<%=channel.channel_name%>");
 		window.chatPanelsCount--;
+		window.chatPanelsArray[index] = 0;
+		PrivatePub.unsubscribe("<%=channel.channel_name%>");
 	});   
 </script>

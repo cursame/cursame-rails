@@ -4,11 +4,11 @@
 	function readURL(input,id,width) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
+			
 			reader.onload = function (e) {
 				$('#'+id)
 				.attr('src', e.target.result)
-				.width(width)
-				.height(68);
+				
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -71,7 +71,7 @@
 	
 	<div style="margin-top: -80px; text-align: center;">
 	<div style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: #00B4C4; border: 2px solid #FFF; overflow: hidden; position: relative;">
-		<%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"",:style =>"padding-top:-50%",:class => "coverphoto-label AvatarLabelText", :id =>"img_prev_course_avatar" )%>
+		<%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"150px", :height =>"150px",:style =>"padding-top:-50%",:class => "coverphoto-label AvatarLabelText", :id =>"img_prev_course_avatar" )%>
 	</div>
 	
 	<p style="clear: both; text-align: center;"><%= f.label :avatar, :style => "float: none;" %></p>

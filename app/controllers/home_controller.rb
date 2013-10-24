@@ -183,7 +183,7 @@ class HomeController < ApplicationController
   # -----------------------------
   def chat
       @channel = Channel.new
-      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
+      @messages = []# @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
       @show_chat_panel = false
       @page = 1
       respond_to do |format|
