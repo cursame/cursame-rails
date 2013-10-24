@@ -59,5 +59,5 @@ emprendedores:
   username: cursame
   password: r8o54q58
   encoding: unicode
-  timeout: 7000
-  pool: 5
+  timeout: 107000
+  pool: 15
