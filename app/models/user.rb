@@ -543,8 +543,7 @@ class User < ActiveRecord::Base
           personal_url: auth.uid,
           confirmed_at: Time.now
       )
-      #creamos los permisos del usuario
-    
+      #creamos los permisos del usuario    
       permissioning = Permissioning.new
       permissioning.network = network
       permissioning.user = user
