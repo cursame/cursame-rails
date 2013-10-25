@@ -1,5 +1,6 @@
 <div class="form-course"><!-- estilo en courses.scss -->
 	<div style="width:400px; float:left;">
+<div class="form-for-admin">
 <%= form_for(@network, :remote => true) do |f| %>
   <% if @network.errors.any? %>
     <div id="error_explanation">
@@ -26,13 +27,19 @@
      <%= f.text_field :population, :class=>"default-form" %>
    </div>
    <div class="field">
-      <%= f.label :registro_publico %><br />
-      <%= f.check_box :public_register %>
+    <p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :reestablecer_contraseña_al_importación_de_usuarios %> </p>
+      <%= f.check_box :public_register, :title=> 'Registro público' %>
+   </div>
+   
+   <div class="field">
+       <p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :Formulario_de_registro_bloqueado  %> </p>
+         <%= f.check_box :register_form, :title=> 'Registro público formulario' %>
    </div>
     
-  <div class="actions">
+  <div class="actions" style="margin-top:100px;">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 </div>
 </div>

@@ -6,26 +6,41 @@
   </ul>
 </div>
 <div id="admin-content">
-<h2>Import Users</h2>
-<div style="margin-top:30px; margin-bottom:30px; margin-left:5px;">
+    <div class="header-for-content">
+        <h8 class="h8" style="float:left;">Importar usuarios </h8></br></br>
+        <p style="font-style:oblique; float:left;">Importa los usuarios de tu comunidad desde una base de datos.</p>
+    </div>
+<div style="margin-top:30px; margin-bottom:30px; margin-left:5px; float:left;">
 <a href="/plantillas/usuarios_plantilla.csv" class="button_button"><img src="/assets/icons_for_admin/folder_download.png" class="icon margin-right10x class_image2525">usuarios_plantilla.csv</a>
 </div>
+<div class="form-for-admin" style="float:left; margin-left:280px; margin-top:30px;">
+
+<%= form_tag upload_users_path, multipart: true do %>
+  <label class="fileContainer">
+    Da click para subir tu archivo de usuarios.
+      <%= file_field_tag :file %>
+  </label>
+  <p>
+	<%= hidden_field_tag 'domain', request.domain %>
+	<div style="margin-top:30px;">
+        <%= submit_tag "Import" %>
+    </div>
+<% end %>
+
+</div>
+</br>
+<div class="instructions">
 <p class="manager_notice">Es importante tomar en cuenta que el formato del archivo es muy importante para importar correctamente los usuarios.</p></br>
 <p>
 El role puede ser estudiante o maestro.
 <p>
 El email debe de ser el email del usuario.
 <p>
-<%= form_tag upload_users_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <p>
-	<%= hidden_field_tag 'domain', request.domain %>
-  <%= submit_tag "Import" %>
-<% end %>
+</div>
 
 <%="NO SE ENCONTRO UN ARCHIVO" if @noFile %>
 
-<h2>List Of Users<h2>
+<p style="font-size:20px; padding:10px;">Lista de usuarios<p>
 <table class="striped">
   <tr>
     <th>Id</th>

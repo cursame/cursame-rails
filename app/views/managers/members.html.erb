@@ -10,13 +10,20 @@
 <!--
 <div id="header-users"> Maestros | Estudiantes | Adminsitradores _______ Nuevo Usuario <br /><br />
 -->
-<h2 class="courses-title-h2">Lista de usuarios </h2>
+<div class="header-for-content">
+<h8 class="h8" style="float:left;">Lista de usuarios</h8></br></br>
+<p style="font-style:oblique; float:left;">Lista para el manejo de miembros de la red.</p>
+<div style="float:right; margin-top:-15px;">
 <%= form_tag managers_members_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuarios' %>
+     <div style="float:left;"><%= image_tag('icons_for_admin/search.png', :width => 25, :height => 25)%></div>
+    <div style="float:left;"><%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuarios' %></div>
    <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
   </p>
 <% end %>
+</div>
+</div>
+
 <% @users.each do |user|%>
 
   <div class="the-list" style="margin-top:10px;">
