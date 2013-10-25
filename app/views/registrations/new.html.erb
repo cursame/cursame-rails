@@ -23,6 +23,24 @@ $(document).ready(function() {
 </div>
 <%else%>
 
+<% if current_network.register_form == true%>
+<div class="signup-restore"></div>
+
+   <div class="login">
+       <p>
+       <b>Lo sentimos pero la red a la que estas intentado no permite el registro público.</b></br>
+       <b>pregunta a un encargado de tu escuela él sabrá ayudarte.</b></br>
+
+       <h1 style="font-size:65px;color:#000;text-align:center;margin-top:40px;">¡Gracias!</h1></br>
+       <center>
+       <b style="text-align:center;"><%= link_to "Ir a la página principal", "/users/sign_in" %></b>
+       </center>
+
+       </p>
+       <br><br>
+       <center>
+   </div>
+<%else%>
 <div class="signup-restore"></div>
 
 <div class="content login" id="titlheader">
@@ -146,4 +164,5 @@ $(document).ready(function() {
 <!-- <%= render "devise/shared/links" %> -->
 
 <div style="margin-bottom:20px;"><%= render "devise/shared/footer-links" %></div>
+<%end%>
 <%end%>

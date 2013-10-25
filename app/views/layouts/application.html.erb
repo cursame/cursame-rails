@@ -124,7 +124,9 @@
            <%end%>
         
       <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+      <div style="float:right;">
+         <%= link_to "Logueate", new_user_session_path %><% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>  <%end%>
+      </div>
       <% end %>
     </div>
     <div id="message_notifications">    
