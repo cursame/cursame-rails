@@ -49,6 +49,7 @@ class ManagersController < ApplicationController
 
   end
 
+  
   def import_users
     @users = current_network.users
   end
@@ -233,4 +234,6 @@ class ManagersController < ApplicationController
     send_file "assets/plantillas/usuarios_plantilla.csv"
     redirect_to :managers_import_users_path
   end
+  
+  
 end

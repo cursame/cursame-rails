@@ -111,7 +111,12 @@ class ApplicationController < ActionController::Base
   def filtrati
     if current_role == "superadmin"
     else
-     if network_member != nil         
+     if network_member != nil  
+        if  network_member.suspended == true
+            sign_out(current_user)
+            redirect_to :back
+        else
+        end      
      else
          render '/networks/alertmethod'         
      end
