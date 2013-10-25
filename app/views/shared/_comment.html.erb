@@ -18,7 +18,7 @@
        <%if comment.owner?(current_role, current_user) then%>
           <span class="deleteComment"><%= link_to image_tag('icons/trash.png'), destroy_comment_path(comment.id), :remote => true%></span>
        <%end%>
-    <div class="avatar-child-comment" href="#">
+    <div class="avatar-child-comment id_for_avatar_c<%=comment.user.id%>" href="#">
         <%#= debug comment.user.avatar%>
     <% if comment.user.avatar.blank? %>
         <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url)%>
@@ -34,3 +34,14 @@
     </div>
 
 </div>
+
+ <script>
+       $(".id_for_avatar_c<%=comment.user.id%>").hover(
+            function () {
+              $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:30px; float:left; margin-top:-30px'><div class='tooltipr'><%=truncate("#{comment.user.name}", :omission => "...", :length => 155)  if ( !comment.user.name.blank?) %></div></span>"));
+            },
+            function () {
+              $(this).find("span:last").remove();
+            }
+          );
+</script>

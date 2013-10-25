@@ -85,9 +85,19 @@
       <div id="box-friends" class="basic-lateral-box" >
             <h2>AMIGOS</h2>
             <div id="tabs-friends" class="tabs-style">
-                <ul id="ul-tabs">
+                <ul id="ul-tabs" class="tabs-friends-cc">
                     <div class="element-left" style="width:100px!important;">
-                        <a class="plus-courses" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
+                        <a class="plus-courses"  id="friend_solicitud" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
+                            <script>
+                                  $(".tabs-friends-cc").hover(
+                                           function () {
+                                             $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:225px; float:left; margin-top:-30px'><div class='tooltipr'><%=truncate("Para ver las solicitudes de amistad da click en el boton azul de la derecha.", :omission => "...", :length => 155) %></div></span>"));
+                                           },
+                                           function () {
+                                             $(this).find("span:last").remove();
+                                           }
+                                  );
+                              </script>
                         <% @friends = @user_l.friendships.where(:accepted => true)%>
                         <% @inverse_friends = @user_l.inverse_friendships.where(:accepted => true)%>
                         <% @sum_f =  @friends.count +  @inverse_friends.count %>
@@ -113,16 +123,55 @@
                   <div class="content-avtr">
                       <% @friends.each do |friend|%>
                       <%  @friend = friend.friend%>
+                      <div class="friend_id_tooltip<%=@friend.id%>" style="float:left;">
+                      
                            <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
                            <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
+                        </div>
+                        
+                       <script>
+                                 $(".friend_id_tooltip<%=@friend.id%>").hover(
+                                          function () {
+                                            $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@friend.name}", :omission => "...", :length => 155) if ( !@friend.name.blank?) %></div></span>"));
+                                          },
+                                          function () {
+                                            $(this).find("span:last").remove();
+                                          }
+                                 );
+                       </script>
                       <%end %>
                       <% @inverse_friends.each do |friend|%>
                       <% @inverse_friend = friend.user%>
+                      <div class="friend_id_tooltip<%=@inverse_friend.id%>" style="float:left;">
+                      
                       <%=link_to image_tag(@inverse_friend.avatar.modern, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (!@inverse_friend.avatar.blank?)%>
                       <%= link_to image_tag(@inverse_friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (@inverse_friend.avatar.blank?)%>
+                      </div>
+                      
+                       <script>
+                             $(".friend_id_tooltip<%=@inverse_friend.id%>").hover(
+                                      function () {
+                                        $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@inverse_friend.name}", :omission => "...", :length => 155) if ( !@inverse_friend.name.blank?) %></div></span>"));
+                                      },
+                                      function () {
+                                        $(this).find("span:last").remove();
+                                      }
+                             );
+                        </script>
                       <%end%>
                   </div>
-                  <div class="view-all"><%= link_to "Comunidad", network_comunity_path %></div>
+                  <div class="view-all" id="comunidad_fgthk"><%= link_to "Comunidad", network_comunity_path %></div>
+                    <script>
+                              $("#comunidad_fgthk").hover(
+                                   function () {
+                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-7px; float:left; margin-top:-5px'><div class='tooltipr'><%=truncate("Ver todos los miebros de la comunidad.", :omission => "...", :length => 155) %></div></span>"));
+                                   },
+                                   function () {
+                                     $(this).find("span:last").remove();
+                                   }
+                                 );
+
+                       </script>
                 </div>
                 <!-- <div id="tabs-friends-2">
                   <div class="content-avtr">

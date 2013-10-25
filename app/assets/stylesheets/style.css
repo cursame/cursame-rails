@@ -514,6 +514,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f73131', e
  	left: -100%;
 }
 
+.image_scroll{
+    width:20px;
+    height:20px;
+    background:url('/assets/scroll-image.png');
+    margin-top:5px;
+    cursor:pointer;
+    float:right;
+    background-size:95%;
+    margin-left:2px;
+    border:#1B8563 solid;
+    position:relative;
+    margin-left:5px;
+}
+.image_scroll:hover{
+    border:#0BEAFF solid;
+    
+}
 /*.spinn:before {
 	content:"";
 	display:inline-block;
