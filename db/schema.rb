@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131024181851) do
+ActiveRecord::Schema.define(:version => 20131025181410) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -360,6 +360,7 @@ ActiveRecord::Schema.define(:version => 20131024181851) do
     t.integer  "population"
     t.boolean  "public_register", :default => true
     t.boolean  "free",            :default => true
+    t.boolean  "register_form"
   end
 
   create_table "networks_users", :force => true do |t|

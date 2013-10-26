@@ -5,11 +5,34 @@
 
   </ul>
 </div>
-<div  class="form-mailer" id="admin-content">
+<div id="admin-content">
+    <div class="header-for-content">
+        <h8 class="h8" style="float:left;">Mail masivo a usuarios</h8></br></br>
+        <p style="font-style:oblique; float:left;">Envía un mail a todos los miembros de tu comunidad.</p>
+    </div>
+<div class="form-course"><!-- estilo en courses.scss -->
+<div class="form-for-admin" style="float:left;">
+<!--<div  class="form-mailer" id="admin-content">-->
+
 <%= form_tag "/managers/sending" do%>
-Subject: <%= text_field_tag(:subject) %>
-<p>
-Message: <%=text_area_tag(:message)%>
+<p>Título:</p> </br><%= text_field_tag(:subject) %>
+
+<p>Contenido:</p> </br><%=text_area_tag(:message)%></br></br>
+<div style="margin-top:30px; margin-left:30px;">
 <%=submit_tag("Send")%>
+</div>
 <%end%>
+     <!-- </div>-->
+    </div>
+    <div id="preview-button">Preview</br><div style="margin-top:-10px;"><%= image_tag('icons_for_admin/preview.png', width:40, height:40)%></div></div>
+    <script>
+       $("#preview-button").click(function() {
+         $('#posting-preview').html('');
+       var msg = $("#message").val();
+         $('#posting-preview').html(msg);
+       });
+    </script>
+    <div class="posting-preview" id="posting-preview"></div>
+</div>
+
 </div>
