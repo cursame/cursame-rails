@@ -76,6 +76,8 @@
         
 		<% if @active_edit == false %>
 			<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
+			<div class="line_bottom" style="margin-top:10px;" ></div>
+            
 		<%end%>
           
           
@@ -95,12 +97,12 @@
 
 <%#end%>
 
+
 <!--este render trae el list de petición de contenidos-->    
 <% if @active_edit == false %>
 
 <%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
-
 
    <%else%></br></br>
     <p style="color:#646464; float:left; margin-top: 10px; padding: 6px;">Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
@@ -112,6 +114,8 @@
     <%end%>
     </div>
 <%end%>
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {

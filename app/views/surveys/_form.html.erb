@@ -43,6 +43,8 @@ random_id = "#{random}"
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
     
     <a class="help survey_help" id="help_survey"><%= image_tag('help.png')%></a>
+    <div class="line_bottom" style="margin-top:10px;" ></div>
+	
     <script>
              $('#help_survey').click(function() {
                  $('#survey_help').toggle('blind', 400);

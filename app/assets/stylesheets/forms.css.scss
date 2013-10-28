@@ -803,11 +803,12 @@
 }
 
 .message-form-area-style{
-  height: 130px;
+  min-height:130px;
+  max-height: 430px;
   background: #FFF;
   position: relative;
   display: none;
-  border: 1px solid #ccc;
+  //border: 1px solid #ccc;
   @include border-radius;
   width: $width-form-post;
   
@@ -834,12 +835,13 @@
 }
 
 .discussion-form-area-style{
-  height: 158px;
+  height: 178px;
   background: #FFF;
   position: relative;
   display: none;
-  border: 1px solid #ccc;
+  //border: 1px solid #ccc;
   padding: 13px 0;
+  margin-bottom:10px;
   @include border-radius;
   width: $width-form-post;
 
@@ -1643,3 +1645,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f5ff', end
 
 .fixFormUser { width: 435px; }
 .fixLabeluser { width: 175px; }
+
+.line_bottom{
+    margin-top:20px;
+    margin-bottom:5px;
+    border-bottom:solid 2px #0A7EB7;
+    width:100%;
+    float:left;    
+    
+}
