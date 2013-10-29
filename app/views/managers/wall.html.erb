@@ -2,12 +2,16 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
+
+<div id="fix_admin" style="width: 980px; margin: 0 auto;">
+
 <div id="admin-sidebar">
   <h5>Administracion</h5>
   <ul>
     <%= render :partial => "managers/menu"%>
   </ul>
 </div>
+
 <div id="admin-content">
   <div class="users-chart">
           <%= render :partial => "managers/charts/users"%>
@@ -18,7 +22,7 @@
   </div>
 
   <div class="admin-chart">
-    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Usuarios</div>
+    <div class="header-chart"> <img src="/assets/icons/file_icon.png" class="icon"> Usuarios</div>
 
      <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
      <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
@@ -41,7 +45,7 @@
   </div>
 
   <div class="admin-chart">
-    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Cursos</div>
+    <div class="header-chart"> <img src="/assets/icons/file_icon.png" class="icon"> Cursos</div>
     <div id="courses_graph" style="height:227px; weight:279px;" ></div>
 
         <script class="text/javascript">
@@ -59,7 +63,7 @@
   </div>
 
   <div class="admin-chart">
-    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Tareas</div>
+    <div class="header-chart"> <img src="/assets/icons/file_icon.png" class="icon"> Tareas</div>
         <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
 
         <script class="text/javascript">
@@ -77,7 +81,7 @@
 
   </div>
   <div class="admin-chart">
-  <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Comentarios</div>
+  <div class="header-chart"> <img src="/assets/icons/file_icon.png" class="icon"> Comentarios</div>
     <div id="comments_graph" style="height:227px; weight:279px;" ></div>
           <% @comment = current_network.comments.count %>
 
@@ -104,7 +108,7 @@
         <% @surveys_publish = current_network.surveys.where(:state => 'published').count%>
         <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%>
         <%# @user_surveys = current_network.surveys.user_surveys.count %>
-          <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Examenes</div>
+          <div class="header-chart"> <img src="/assets/icons/file_icon.png" class="icon"> Examenes</div>
           <div id="surveys_graph" style="height:227px; weight:279px;" ></div>
 
         <script class="text/javascript">
@@ -127,7 +131,7 @@
   </div>
 
   <div class="admin-chart">
-    <div class="header-chart"> <img src="/assets/icons/grey-mini-comment.png" class="icon"> Discusiones</div>
+    <div class="header-chart"> <img src="/assets/icons/file_icon.png" class="icon"> Discusiones</div>
          <% @discussions = current_network.discussions.count %>
             <%# @user_surveys = current_network.surveys.user_surveys.count %>
 
@@ -148,6 +152,6 @@
             </script>
 
   </div>
-
+</div>
 
 </div>

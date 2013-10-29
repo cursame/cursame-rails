@@ -1,3 +1,4 @@
+<div id="fix_admin" style="width: 980px; margin: 0 auto;">
 <div id="admin-sidebar">
   <h5>Administracion</h5>
   <ul>
@@ -10,30 +11,33 @@
 <!--
 <div id="header-users"> Maestros | Estudiantes | Adminsitradores _______ Nuevo Usuario <br /><br />
 -->
-<h2 class="courses-title-h2">Lista de usuarios </h2>
+<h2 class="admin-title">Lista de usuarios</h2>
 <%= form_tag managers_members_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuarios' %>
-   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
-  </p>
+	<span class="manager_search_user" style="">
+		<%= text_field_tag :search, params[:search], :placeholder =>'Búscar Usuarios' %><!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
+	</span>
 <% end %>
 <% @users.each do |user|%>
 
   <div class="the-list">
     <ul class="list">
-      <li class="user-list">
-        <div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"}) if ( !user.avatar.blank?) %> <%= image_tag(user.image_avatarxxx,{:class => "avatar-mini"}) if ( user.avatar.blank?) %> </div>
-         <div class="info"> <%= user.name %><br/>
-         <a href=""><%= user.email %> </a>
-         </div>
+    	<li class="user-list">
+			<div class="manager_fix_list" style="padding: 5px 0px 5px 5px; height: 49px; float: left;">
+		        <div class="avatar"> <%= image_tag(user.avatar.modern,{:class => "avatar-mini"}) if ( !user.avatar.blank?) %> <%= image_tag(user.image_avatarxxx,{:class => "avatar-mini"}) if ( user.avatar.blank?) %> </div>
+		        <div class="info"> <%= user.name %><br/>
+		        <a href=""><%= user.email %></a>
+			</div>
+		</div>
+		
          <% @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
-         <div style="color:#F6C103;">
-                 <% @role = Role.find(@permisos.role_id)%>
-                 <%= @role.title %>
-                 </div>
+		 <div class="manager-role-user">
+              <% @role = Role.find(@permisos.role_id)%>
+              <%= @role.title %>
+		 </div>
+		 
          <div class="actions">
 
-           <img src="/assets/icons/config.png" class="" id="edit_user-<%= @permisos.id%>">
+           <img src="/assets/icons/icon_settings.png" class="" id="edit_user-<%= @permisos.id%>">
            <div id="edit_user_role_open-<%= @permisos.id%>" style="display: none">
                <b> Cambiar el rol del usuario </b>
                 <%= form_tag "/permissionings/update", remote: true do  %>
@@ -69,5 +73,6 @@
     </ul> </div>
 <%end%>
 
-<%= will_paginate @users %>
+	<%= will_paginate @users %>
+	</div>
 </div>
