@@ -15,26 +15,13 @@
     <!-- User Avatar -->
     <div id="box-user-credential" class="network-layout">
       <div class="thumbnail"  >
-
-           <%= link_to image_tag(current_user.avatar.profile, :whidth => '150px', :height => '150px'), show_user_path(current_user.personal_url) if ( !current_user.avatar.blank? ) %>
-           <%= link_to image_tag(current_user.image_avatarx), show_user_path(current_user.personal_url) if (current_user.avatar.blank?  )  %>
-
+        <%= link_to image_tag(current_user.avatar.blank? ? current_user.image_avatarx : current_user.avatar.profile, :whidth => '150px', :height => '150px'), show_user_path(current_user.personal_url) %>
       </div>
       <div class="tagname">
         <%= @user.name %>
       </div>
     </div>
-   <!--  <div class="head_banner_style">
-        <div class="sup_track">
-        <div class="track">
-        <%= image_tag('track.png')%>
-        </div>
-        <div class="track_text">
-            <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
-             </p>
-        </div>
-        </div>
-    </div> -->
+   
     <div id="box-course" class="basic-lateral-box margin-top" >
       <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
     </div>

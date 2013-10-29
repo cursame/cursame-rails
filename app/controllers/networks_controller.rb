@@ -56,10 +56,6 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
-    puts request.domain
-    puts request.subdomain
-    puts request.url
-
     @user = current_user
     @course = Course.new
     @delivery = Delivery.new
@@ -74,18 +70,18 @@ class NetworksController < ApplicationController
 
 
     @course_count = Course.count
-    #@courses = Course.where(:network_id => current_network.id, :active_status => true).limit(7)
     @courses = current_user.members_in_courses.limit(7)
     @ccc = current_user.courses.where(:network_id => current_network.id)
     @count_course_iam_member =  MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
-    #@ccc.where(:active_status => true).count
 
     @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
 
-    @network = Network.find_by_subdomain(request.subdomain)
-    if @network.nil? then
-      @network = Network.find_by_subdomain!(request.subdomain.split(".").last)
-    end
+    # @network = Network.find_by_subdomain(request.subdomain)
+    # if @network.nil? then
+    #   @network = Network.find_by_subdomain!(request.subdomain.split(".").last)
+    # end
+
+    @network=current_network
     @search = params[:search]
     @id = params[:id]
     id_search = params[:id_search]
