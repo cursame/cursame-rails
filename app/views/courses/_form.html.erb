@@ -26,7 +26,11 @@
       
       <div style="float: right; margin-right: 20px;">
 	      <p><%= f.label :public_status, 'Privacidad' %></p>
+	      <% if @course.public_status == 'public' %>
 	      <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+	      <%else%>
+	      <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
+	      <%end%>
 	    </div>
 	    <div class="UpdateSubmit" style="float: left; margin-top: 7px;"><%= f.submit "Actualizar Curso", :class=>"act-crs" %></div>
 	</div>
