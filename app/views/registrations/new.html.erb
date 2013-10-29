@@ -121,6 +121,7 @@ $(document).ready(function() {
 	<div class="rgister" style="width: 330px; background: #FFF; float: right; padding-bottom: 10px;">
 		<div class="login-heading">Por favor, llena los siguientes datos</div>
 			<%= devise_error_messages! %>
+			<div id="error_message"></div>
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 		<div><!-- <%= f.label :email %><br /> --> <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %></div>
 		<div><!-- <%= f.label :first_name %><br /> --> <%= f.text_field :first_name, :class => "pswd",:placeholder =>"Nombre(s)" %></div>
@@ -166,3 +167,239 @@ $(document).ready(function() {
 <div style="margin-bottom:20px;"><%= render "devise/shared/footer-links" %></div>
 <%end%>
 <%end%>
+<script>
+ 
+  $("#user_email").keyup(function () {
+     var value = $(this).val();
+      if (value ==" " || value == ""){             
+             $(this).css('border',' solid 1px #EE1D1D');
+             $('.signup-btn').attr("disabled", true);
+             $('.signup-btn').css('background', '#EE1D1D');
+             $('.signup-btn').css('cursor', 'default');
+             $('#sin_user_email').remove();
+             $('#error_message').append('<div id="sin_user_email" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de email sin llenar</div>');
+             
+
+         }else{
+             $(this).css('border',' solid 1px #c9c9c9'); 
+             $('.signup-btn').attr("disabled", false);
+             $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+             $('.signup-btn').css('cursor', 'pointer');
+             $('#sin_user_email').remove();
+             
+             
+         }
+     
+  });
+  $("#user_first_name").keyup(function () {
+      var value = $(this).val();
+       if (value ==" " || value == ""){             
+                $(this).css('border',' solid 1px #EE1D1D');
+                $('.signup-btn').attr("disabled", true);
+                $('.signup-btn').css('background', '#EE1D1D');
+                $('.signup-btn').css('cursor', 'default');
+                $('#sin_user_first_name').remove();
+                $('#error_message').append('<div id="sin_user_first_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de nombre sin llenar</div>');
+
+
+            }else{
+                $(this).css('border',' solid 1px #c9c9c9'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_first_name').remove();
+
+
+            }
+
+   });
+   $("#user_last_name").keyup(function () {
+         var value = $(this).val();
+          if (value ==" " || value == ""){             
+                     $(this).css('border',' solid 1px #EE1D1D');
+                     $('.signup-btn').attr("disabled", true);
+                     $('.signup-btn').css('background', '#EE1D1D');
+                     $('.signup-btn').css('cursor', 'default');
+                     $('#sin_user_last_name').remove();
+                     $('#error_message').append('<div id="sin_user_last_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de apellidos sin llenar</div>');
+
+
+                 }else{
+                     $(this).css('border',' solid 1px #c9c9c9'); 
+                     $('.signup-btn').attr("disabled", false);
+                     $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                     $('.signup-btn').css('cursor', 'pointer');
+                     $('#sin_user_last_name').remove();
+
+
+                 }
+
+    });
+   $("#user_password").keyup(function () {
+             var value = $(this).val();
+              if (value ==" " || value == ""){             
+                          $(this).css('border',' solid 1px #EE1D1D');
+                          $('.signup-btn').attr("disabled", true);
+                          $('.signup-btn').css('background', '#EE1D1D');
+                          $('.signup-btn').css('cursor', 'default');
+                          $('#sin_user_password').remove();
+                          $('#error_message').append('<div id="sin_user_password" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de contraseña sin llenar</div>');
+
+
+                      }else{
+                          $(this).css('border',' solid 1px #c9c9c9'); 
+                          $('.signup-btn').attr("disabled", false);
+                          $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                          $('.signup-btn').css('cursor', 'pointer');
+                          $('#sin_user_password').remove();
+
+
+                      }
+
+   });
+   
+   $("#user_password_confirmation").keyup(function () {
+                var value = $(this).val();
+                 if (value ==" " || value == ""){             
+                              $(this).css('border',' solid 1px #EE1D1D');
+                              $('.signup-btn').attr("disabled", true);
+                              $('.signup-btn').css('background', '#EE1D1D');
+                              $('.signup-btn').css('cursor', 'default');
+                              $('#sin_user_password_confirmation').remove();
+                              $('#error_message').append('<div id="sin_user_password_confirmation" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de confirmar contraseña sin llenar</div>');
+
+
+                          }else{
+                              $(this).css('border',' solid 1px #c9c9c9'); 
+                              $('.signup-btn').attr("disabled", false);
+                              $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                              $('.signup-btn').css('cursor', 'pointer');
+                              $('#sin_user_password_confirmation').remove();
+
+
+                          }
+
+    });
+    
+    $("#user_accepted_terms").click(function () {
+                  var value = $(this).val();
+                  var checked = $(this).attr('checked');
+                  console.log(checked);
+                  
+                  if (checked == null){             
+                      $('.terms_box').css('border',' solid 1px #EE1D1D');
+                      $('.signup-btn').attr("disabled", true);
+                        $('.signup-btn').css('background', '#EE1D1D');
+                        $('.signup-btn').css('cursor', 'default');
+                        $('#sin_user_accepted_terms').remove();
+                        $('#error_message').append('<div id="sin_user_accepted_terms" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Términos y condiciones del sitio sin llenar.</div>');
+                  }else{
+                      $('.terms_box').css('border',' solid 1px #fff'); 
+                      $('.signup-btn').attr("disabled", false);
+                      $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                      $('.signup-btn').css('cursor', 'pointer');
+                      $('#sin_user_user_accepted_terms').remove();
+                      
+                  }
+
+      });
+      
+  
+      $('#new_user').submit(function(){
+            var email = $("#user_email").val();
+            var nombre = $("#user_first_name").val();
+            var apellidos = $("#user_last_name").val();
+            var password = $("#user_password").val();
+            var confirmed_password = $("#user_password_confirmation").val();
+            var terms = $("#user_accepted_terms").attr('checked');
+            
+            if(email == " " || email == ""){
+                 $('#user_email').css('border',' solid 1px #EE1D1D');
+                 //$('.signup-btn').attr("disabled", true);
+                 $('.signup-btn').css('background', '#EE1D1D');
+                 $('#sin_user_email').remove();
+                 $('#error_message').append('<div id="sin_user_email" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de email sin llenar</div>');
+               return false;
+            }else if(nombre == " " || nombre == ""){
+                 $('#user_first_name').css('border',' solid 1px #EE1D1D');
+                 //$('.signup-btn').attr("disabled", true);
+                 $('.signup-btn').css('background', '#EE1D1D');
+                 $('#sin_user_first_name').remove();
+                 $('#error_message').append('<div id="sin_user_first_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de nombre sin llenar</div>');
+               return false;    
+            }else if(apellidos == " " || apellidos == ""){
+                  $('#user_last_name').css('border',' solid 1px #EE1D1D');
+                  //$('.signup-btn').attr("disabled", true);
+                  $('.signup-btn').css('background', '#EE1D1D');
+                  $('#sin_user_last_name').remove();
+                  $('#error_message').append('<div id="sin_user_last_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de apellidos sin llenar</div>');
+               return false;   
+            }else if(password == " " || password == ""){
+                  $('#user_password').css('border',' solid 1px #EE1D1D');
+                  //$('.signup-btn').attr("disabled", true);
+                  $('.signup-btn').css('background', '#EE1D1D');
+                  $('#sin_user_password').remove();
+                  $('#error_message').append('<div id="sin_user_password" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de contraseña sin llenar</div>');
+               return false;   
+            }else if(confirmed_password == " " || confirmed_password == ""){
+                  $('#user_password_confirmation').css('border',' solid 1px #EE1D1D');
+                  //$('.signup-btn').attr("disabled", true);
+                  $('.signup-btn').css('background', '#EE1D1D');
+                  $('#sin_user_password_confirmation').remove();
+                  $('#error_message').append('<div id="sin_user_password_confirmation" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de confirmar contraseña sin llenar</div>');
+               return false;   
+            }else if(terms == null){
+                    $('.terms_box').css('border',' solid 1px #EE1D1D');
+                    //$('.signup-btn').attr("disabled", true);
+                    $('.signup-btn').css('background', '#EE1D1D');
+                    $('#sin_user_accepted_terms').remove();
+                    $('#error_message').append('<div id="sin_user_accepted_terms" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Términos y condiciones del sitio sin llenar.</div>');
+               return false;   
+            }else{
+                $('#user_email').css('border',' solid 1px #c9c9c9'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_email').remove();
+                
+                $('#user_first_name').css('border',' solid 1px #c9c9c9'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_first_name').remove();
+                
+                $('#user_last_name').css('border',' solid 1px #c9c9c9'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_last_name').remove();
+                
+                $('#user_password').css('border',' solid 1px #c9c9c9'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_password').remove();
+                
+                $('#user_password_confirmation').css('border',' solid 1px #c9c9c9'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');       
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_password_confirmation').remove();
+                
+                $('.terms_box').css('border',' solid 1px #fff'); 
+                $('.signup-btn').attr("disabled", false);
+                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
+                $('.signup-btn').css('cursor', 'pointer');
+                $('#sin_user_user_accepted_terms').remove();
+                
+               return true;   
+               
+                
+                
+           }
+        
+            
+          
+         
+      });
+</script>

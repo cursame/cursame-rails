@@ -100,13 +100,17 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
-
+    
+    
     @member = obtainMember(@course.id, current_user.id)
     
       if @member.owner = true || current_role = "admin"
       else
         redirect_to :back
       end
+      
+      
+      
 
   end
 
@@ -151,9 +155,25 @@ class CoursesController < ApplicationController
   # PUT /courses/1.json
   def update
     @course = Course.find(params[:id])
-
+    if @course.init_date != nil
+    @idate = @course.init_date.strftime('%Y-%m-%d')     
+    end
+    if @course.finish_date != nil
+    @fdate = @course.finish_date.strftime('%Y-%m-%d')    
+    end
     respond_to do |format|
       if @course.update_attributes(params[:course])
+        @last_date = @course.init_date
+        @last_end_date = @course.finish_date
+        if @last_date  == nil 
+          @last_date =  @idate
+        end
+        if @last_end_date == nil
+          @last_end_date = @fdate 
+        end
+        @course.init_date = @last_date
+        @course.finish_date = @last_end_date
+        @course.save
         format.html { redirect_to :back }
         format.json { head :no_content }
       else
