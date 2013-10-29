@@ -15,10 +15,12 @@ class UserSurvey < ActiveRecord::Base
         |member|
         member.owner == true
       }
-
-      teachers.each do
-        |teacher|
-        teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil?
+      
+      if !(teachers.nil?) then
+        teachers.each do
+          |teacher|
+          teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil?
+        end
       end
     end
   end

@@ -6,11 +6,10 @@ class UsessionsController < Devise::SessionsController
 
     # GET /resource/sign_in
     def new
-      puts "******************************************* Creando Session ***********************************************"
+      puts "******************************************* Creando Session New ***********************************************"
       self.resource = resource_class.new()
       clean_up_passwords(resource)
-      respond_with(resource, serialize_options(resource))
-      
+      respond_with(resource, serialize_options(resource))      
     end
 
     # POST /resource/sign_in

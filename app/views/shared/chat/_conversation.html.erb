@@ -20,7 +20,6 @@
 
 <script>
 	var sizeOfWindow = 255, separacion;
-	window.chatPanelsCount = window.chatPanelsCount || 1;
 
 	if(!$('#chat').length){
 		$("#chat-channel-<%= channel.id%>").css('bottom','312px');
@@ -31,8 +30,7 @@
 	separacion = - 40;
 
 	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + separacion)+'px');
-		
-	window.chatPanelsCount++;
+	
 	$("#chat-channel-<%= channel.id%> span").click(function () {
 		var panel = $("#chat-channel-<%= channel.id%>");
 	   	var chatZonePosition = $(panel).css('bottom');
@@ -43,13 +41,64 @@
     	else{
     		$(panel).css('bottom','1px');
     	}
-    	$("#chat-zone-<%= channel.id%>").toggle();	    	
+    	$("#chat-zone-<%= channel.id%>").toggle();
 	});
 
 	// cerramos el chat
 	$("#close-chat-<%= channel.id%>").click(function () {
+		// Obtenemos la posicion del panel que se borrara
+		var lastChatLocation = $("#chat-channel-<%= channel.id%>").position();
+
 		$("#chat-channel-<%= channel.id%>").remove();
 		PrivatePub.unsubscribe("<%=channel.channel_name%>");
 		window.chatPanelsCount--;
-	});   
+
+		// Se recorren los otros paneles a la derecha
+		var chatPanels = $(".chat-panel");
+		for (var i = 0; i < chatPanels.length; i++) {
+			var currChatLocation = $(chatPanels[i]).position();
+
+			// Si el panel actual esta a la derecha entonces hay que recorrerlo
+			if(currChatLocation.left < lastChatLocation.left) {
+				$(chatPanels[i]).css({
+					'left': lastChatLocation.left
+				});
+
+				lastChatLocation = currChatLocation;
+			}
+		};
+
+		// Checamos si hay canales que no se pudieron abrir
+		if($("#go-to-chats-url").length) {
+
+			// Obtenemos los canales que estaba pendientes
+			var pendingChatsIds = $("#go-to-chats-url").attr('pendingChats').split(' ');
+
+			// Abrimos el ultimo canal que no se pudo abrir
+			var pendingChatInfo = pendingChatsIds[pendingChatsIds.length - 1].split("/")[2].split("_");
+			var urlPendingChat = "/home/open_channel/" + pendingChatInfo[pendingChatInfo.length - 1];
+
+			// Si el ultimo chat es de un curso
+			if(pendingChatInfo.length == 3) {
+				urlPendingChat = urlPendingChat + "?course=true";
+			}
+
+			pendingChatsIds.pop();
+
+			var newPendingChats = '';
+			for (var i = 0; i < pendingChatsIds.length; i++) {
+				newPendingChats = newPendingChats + pendingChatsIds[i];
+			};
+			$("#go-to-chats-url").attr('pendingChats', newPendingChats);
+
+			$.get(urlPendingChat, function() {
+				window.pendingChatsCount--;
+
+				// Si ya no hay chats pendientes entonces quitamos el cuadro de 'ver mas'
+				if(window.pendingChatsCount == 0) {
+					$("#go-to-chats-url").remove();
+				}
+			});
+		}
+	});
 </script>

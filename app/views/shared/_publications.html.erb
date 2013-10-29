@@ -104,17 +104,32 @@
     <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
       <div class="arrow-left"></div>
       <div class="header">
-        <div class="avatar">
+        <div class="avatar" >
         <% case type  %>
         <% when 'Course'%>
           <%= link_to image_tag(avatar,{:class => "avatar-mini"}), course_path(post.id) if ( !avatar.blank? && !nil)%>
          <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank? || nil)%>
         <%else%>
+        <div class="id_for_avatar<%=post.user.id%>">
         <%= link_to image_tag(avatar,{:class => "avatar-mini"}), show_user_path(personal_url) if ( !avatar.blank?  && !nil)%>
         <%= link_to image_tag(image_avatarxx,{:class => "avatar-mini"}), show_user_path(personal_url) if (avatar.blank? || nil)%>
+        </div>
+        
+        <script>
+               $(".id_for_avatar<%=post.user.id%>").hover(
+                    function () {
+                      $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:30px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{user_name}", :omission => "...", :length => 155)  if ( !user_name.blank?) %></div></span>"));
+                    },
+                    function () {
+                      $(this).find("span:last").remove();
+                    }
+                  );
+        </script>
         <%end%>
         </div>
-
+             
+             
+             
         <div class="top-null-image"></div><% if type != 'Course' %><%= link_to truncate(" #{tipo} en el curso: #{posted_in_for}", :omission => "...", :length => 35), course_path(posted_in_for_id) if ( !posted_in_for.blank?) %><b> por </b><%= link_to truncate(" #{user_name}", :omission => "...", :length => 15), show_user_path(personal_url) if ( !user_name.blank?) %>
  <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %><%end%><%#= "#{name}" %><span class="date">Creado: <%= created_at.strftime( '%d-%h-%Y %l:%M%P') %></span>
       </div>

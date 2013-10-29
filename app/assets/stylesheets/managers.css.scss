@@ -171,8 +171,6 @@ color:#000;
 background-color:#EAF2D3;
 }
 
-/* >>>>>>>>>>>>>>>>>>>>>>>>>  Lista de usuarios <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
-
 .manager_search_user {
 	position: relative;
 	display: inline-block;
@@ -183,4 +181,14 @@ background-color:#EAF2D3;
 	padding: 6px;
 	border: 1px solid #CCC;
 	width: 150px;
+}
+
+.class_image4040{
+    width:40px; height:40px; cursor:pointer; margin-top:-10px;
+}
+
+.grayfilterto-images{
+    filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
 }

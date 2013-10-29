@@ -12,7 +12,23 @@
 			</div>
 			<div class="content">
 				<ul id="messages-notifications-list">
-					
+
+					<%current_user.channels.last(5).each do |channel|%>
+					<% last_message = channel.mesages.last %>
+					<% if last_message.nil? %>
+						<% next %>
+					<% end %>
+					<% 
+						channelType = channel.channel_name.split('course_channel_');
+						url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + last_message.user.id.to_s;		
+					%>
+						<li>
+							<%= link_to "Convensar", url, :remote => true%></br>
+								<%=image_tag(last_message.user.avatar.blank? ? last_message.user.image_avatarx : last_message.user.avatar.profile ,:style => "float:left; width:48px; height:48px;", :class => "avatar-notifications avatar-mini")%>
+							<b><%= last_message.user.name %></b><br/><%= last_message.mesage_html %>
+							<br/><span class="time"><%=time_ago_in_words(last_message.created_at)%></span>
+						</li>
+					<%end%>
 				</ul>
 			</div>
 
@@ -26,13 +42,13 @@
 	
 	<% if @show_chat_panel %>
 		<div id="users-and-groups-for-chat">
-	       <div id = "toggle-chat">+ Chat (<%= @courses_online.count + @friends_online.count %>)</div>
-	       <div id="users-and-groups-online" style="display:none">       	
+	       <div id = "toggle-chat">+ Chat(<%= @courses_online.count + @friends_online.count %>)</div>
+	       <div id="users-and-groups-online" style="display:none">
 			<span class="titleBraker">Cursos</span>
 			<% @courses_online.each do |course|%>
 			    <div><%= link_to truncate("#{course.title}", :omission => "...", :length => 30), open_channel_path(course.id,"course" => true), :remote => true%></div>
 			<%end%>
-		<!--	<span class="titleBrakerSecondary">Amigos conectados</span>-->
+		<!--<span class="titleBrakerSecondary">Amigos conectados</span>-->
 		    <span class="titleBraker">Amigos conectados</span>
 			<% @friends_online.each do |user|%>
 			    <div><%= link_to truncate("#{user.name}", :omission => "...", :length => 30) || user.email, open_channel_path(user.id), :remote => true%></div>
