@@ -3,9 +3,8 @@
    
 </script>
 <!-- creamos un arreglo directo a survey y a delivery y asi jalamos los eventos propios de este -->
-<% @user = current_user %>
-<% if @user.courses != nil %>
-<% @user.courses.each do |courses|%>
+<% if current_user.courses != nil %>
+<% current_user.courses.each do |courses|%>
     
       <% courses.deliveries.each do |delivery| %>
       <% delivery.events.each do |event|%> 

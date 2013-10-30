@@ -29,45 +29,8 @@
 	    <div class="top-header-delivery-box">
 	      <%= link_to "Monitor de actividades", course_activities_depot_path(course.id) %>
 	    </div>
-	  <!--
-	    <div class="top-header-delivery-box">
-	        <ul>
-	            <li id="tareas_list_<%= course.id %>" >-->
-	                <!--<div class="green-circle-mini" ></div> -->
-	                <!--<span>Tareas</span>
-	            </li>
-	            <li id="cuestrionario_list_<%= course.id %>">-->
-	                <!-- <div class="orange-circle-mini"></div> -->
-	              <!--  <span>Cuestionario</span>
-	            </li>
-	        </ul>
-	    </div>
-	    -->
 	   
-	  <script>
-	    /*  $('#tareas_list_<%= course.id %>').click(function(e) {
-	          $('#delivery_list_<%= course.id %>').lightbox_me({
-	              centered: true, 
-	              onLoad: function() { 
-	                  $('#delivery_list_<%= course.id %>').find('input:first').focus()
-	                  }
-	              });
-	          e.preventDefault();
-	      });
-	      $('#cuestrionario_list_<%= course.id %>').click(function(e) {
-	            $('#survey_list_<%= course.id %>').lightbox_me({
-	                centered: true, 
-	                onLoad: function() { 
-	                    $('#survey_list_<%= course.id %>').find('input:first').focus()
-	                    }
-	                });
-	            e.preventDefault();
-	       });*/
-	      
-	  </script>
 	</div>
-
-
 	
 	 <%end%>
 </div>
@@ -77,8 +40,7 @@
 	<!-- comienza deliveries courses -->
 	<% current_user.courses.each do |course|%>     
 	<% if  course.deliveries.count != 0 %>
-	<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >
-	
+	<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >	
 	
 		<div id="headerBar">
 			<h1>Tareas en el curso<pre style="display:inline;">               </pre>Calificaciones</h1>
@@ -117,7 +79,7 @@
 	<!--termina deliveries-->
 	<!--comienza surveys -->
 	<% current_user.courses.each do |course|%>     
-	<% if  course.surveys.reverse.count != 0 %>
+	<% if  course.surveys.count != 0 %>
 	       <div class="light_box" id="survey_list_<%= course.id %>" style="display:none"  >
 	            <a id="close_x" class="close close_l" href="#"><center>x</center></a>
 

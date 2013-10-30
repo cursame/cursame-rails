@@ -15,26 +15,13 @@
     <!-- User Avatar -->
     <div id="box-user-credential" class="network-layout">
       <div class="thumbnail"  >
-
-           <%= link_to image_tag(current_user.avatar.profile, :whidth => '150px', :height => '150px'), show_user_path(current_user.personal_url) if ( !current_user.avatar.blank? ) %>
-           <%= link_to image_tag(current_user.image_avatarx), show_user_path(current_user.personal_url) if (current_user.avatar.blank?  )  %>
-
+        <%= link_to image_tag(current_user.avatar.blank? ? current_user.image_avatarx : current_user.avatar.profile, :whidth => '150px', :height => '150px'), show_user_path(current_user.personal_url) %>
       </div>
       <div class="tagname">
         <%= @user.name %>
       </div>
     </div>
-   <!--  <div class="head_banner_style">
-        <div class="sup_track">
-        <div class="track">
-        <%= image_tag('track.png')%>
-        </div>
-        <div class="track_text">
-            <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
-             </p>
-        </div>
-        </div>
-    </div> -->
+   
     <div id="box-course" class="basic-lateral-box margin-top" >
       <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
     </div>
@@ -105,8 +92,7 @@
               <% @friends.each do |friend|%>
               <%  @friend = friend.friend%>
               <div class="friend_id_tooltip<%=@friend.id%>" style="float:left;">
-                   <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
-                   <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
+                   <%= link_to image_tag(@friend.avatar.blank? ? @friend.image_avatarxxx : @friend.avatar.modern, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)%>
               </div>
               
               <script>
@@ -123,9 +109,7 @@
               <% @inverse_friends.each do |friend|%>
               <% @inverse_friend = friend.user%>
               <div class="friend_id_tooltip<%=@inverse_friend.id%>" style="float:left;">
-              
-              <%=link_to image_tag(@inverse_friend.avatar.modern, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (!@inverse_friend.avatar.blank?)%>
-              <%= link_to image_tag(@inverse_friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (@inverse_friend.avatar.blank?)%>
+              <%= link_to image_tag(@inverse_friend.avatar.blank? ? @inverse_friend.image_avatarxxx : @inverse_friend.avatar.modern, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (@inverse_friend.avatar.blank?)%>
                  
               </div>
                  <script>
@@ -157,29 +141,9 @@
                       
             </script>
       </div>
-     <!-- <div id="tabs-friends-2">
-        <div class="content-avtr">
-          <%#= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-
-        </div>
-      </div>-->
+     
     </div>
   </div>
-  <!--<img src="http://placehold.it/260x350/4D99E0/ffffff&text=cursos" alt="">  -->
-    <!--<a class="help " id="help_friends"><%= image_tag('help.png')%></a>
-     <script>
-              $('#help_friends').click(function() {
-                  $('#friends_help').toggle('drop', 400);
-                  if($("#friends_help").css( 'visibility')=="hidden"){
-                         $('#content_video_video_friends').html('');
-                     }
-                     else{
-                        $('#content_video_video_friends').html('<object width="260" height="200" ><param name="movie" value="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
-                     }
-                 });
-
-     </script>-->
-
      <div class="video_help courses_help" style="display: none" id="friends_help">
             <div class="content_video" id="content_video_video_friends">
 

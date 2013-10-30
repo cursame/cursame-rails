@@ -28,7 +28,8 @@
         <script>
           $(document).ready( function() {
             // Redireccionamiento de una notificacion: "Nueva calificacion en una entrega"
-            if(<%= (@show_accomplishment and @id_search) %>) {
+            var aux = <%= (@show_accomplishment and @id_search) || false %>;
+            if(aux) {
               // Se despliegan las calificaciones
               var assignmentsElement = $("#banner-btns > li.calif").first();
               assignmentsElement.click();
@@ -84,8 +85,9 @@
                 $(this).removeClass('deactive').addClass('activate');
               });
               
-              // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
-              if(<%= (@show_assignment and @id_search) %>) {
+              // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"              
+              var aux = <%= (@show_accomplishment and @id_search) || false %>;
+              if(aux) {
                 // Se despliegan las tareas
                 var assignmentsElement = $("#banner-btns > li.calif").first();
                 assignmentsElement.click();
