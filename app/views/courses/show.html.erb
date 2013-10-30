@@ -85,7 +85,9 @@
               });
               
               // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
-              if(<%= (@show_assignment and @id_search) %>) {
+              
+              var aux = <%= (@show_assignment and @id_search) %>;
+              if(aux) {
                 // Se despliegan las tareas
                 var assignmentsElement = $("#banner-btns > li.calif").first();
                 assignmentsElement.click();
