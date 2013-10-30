@@ -284,10 +284,10 @@
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
              
             
-	         <!-- <% permitted_to? :create, :courses do %>
+	         <% permitted_to? :create, :courses do %>
         	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
         	      <% if @new_and_non_aproval_members != 0%>
-        	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> 
+        	      <!--<span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> -->
                                    <script>
                                         $("#unser_new_in_course").hover(
                                              function () {
@@ -300,7 +300,7 @@
                                      </script>
 
                   <%end%>
-                  <%end%>-->    	     
+                  <%end%>  	     
              <div style="min-height:0px; max-height:580px;">
       	    
 	        <% @course.members_in_courses.each do |member|  %>
