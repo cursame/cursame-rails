@@ -283,11 +283,12 @@
 	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block; margin-bottom:0px;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
              
+            <div style="min-height:0px;">
             
 	         <% permitted_to? :create, :courses do %>
         	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
         	      <% if @new_and_non_aproval_members != 0%>
-        	      <!--<span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> -->
+        	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span>
                                    <script>
                                         $("#unser_new_in_course").hover(
                                              function () {
@@ -301,7 +302,6 @@
 
                   <%end%>
                   <%end%>  	     
-             <div style="min-height:0px; max-height:580px;">
       	    
 	        <% @course.members_in_courses.each do |member|  %>
 	         
