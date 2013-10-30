@@ -278,34 +278,37 @@
 	  </div><!-- box-course -->
 	  
 	  <div id="tabs-friends" class="tabs-style">
-	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block;" >
+	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block; margin-bottom:0px;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
-       
-	      <% permitted_to? :create, :courses do %>
-	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
-	      <% if @new_and_non_aproval_members != 0%>
-	      <!--ejemplo para tooltip-->
-	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> 
-                           <script>
-                                $("#unser_new_in_course").hover(
-                                     function () {
-                                       $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:-10px'><div class='tooltipr'><%=truncate("Tienes #{@new_and_non_aproval_members} miembros pendientes de aprovación.", :omission => "...", :length => 155)%></div></span>"));
-                                     },
-                                     function () {
-                                       $(this).find("span:last").remove();
-                                     }
-                                   );
-                             </script>
-	           
-          <%end%>
-	        <div style="min-height:290px; max-height:580px;">
+             
+	        <div style="min-height:0px; max-height:580px;">
+            
+	          <% permitted_to? :create, :courses do %>
+        	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
+        	      <% if @new_and_non_aproval_members != 0%>
+        	      <!--ejemplo para tooltip-->
+        	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> 
+                                   <script>
+                                        $("#unser_new_in_course").hover(
+                                             function () {
+                                               $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:-10px'><div class='tooltipr'><%=truncate("Tienes #{@new_and_non_aproval_members} miembros pendientes de aprovación.", :omission => "...", :length => 155)%></div></span>"));
+                                             },
+                                             function () {
+                                               $(this).find("span:last").remove();
+                                             }
+                                           );
+                                     </script>
+
+                  <%end%>
+                  <%end%>    	     
+          	
 	        <% @course.members_in_courses.each do |member|  %>
 	         
 	          <% @members = User.find_by_id(member.user_id) %>
             <!--coloca la imagen y el nombre-->
             <% if current_role == 'admin' || current_role == 'superadmin'%>
               <% if @members != nil%>
-              <div id="member_id<%=@members.id%>" style="float:left">
+              <div id="member_id<%=@members.id%>" style="float:left;">
                 <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                 <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
                     <script>
@@ -337,14 +340,15 @@
                                    }
                                  );
                            </script>
-                   </div>
+                    </div>
                 <%else%>
                 <%end%>
               <%end%>
             <%end%>
-          <%end%>
-                 
-	        </div>
+           </div>
+           <%end%>
+           </div>
+           <div style="position:realtive; margin-left:18px; margin-top:-2px; height:30px; width:230px;">
           <% if current_role == 'admin' || current_role == 'superadmin' %>          
             <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
           <%else%>
@@ -354,10 +358,9 @@
               <%end%>
             <%end%>
           <%end%>
-        <%end%>
-      </div>
-    </div>
-    
+          </div>
+          
+      
     <script>
           $("#members_admin").hover(
                function () {
@@ -371,7 +374,7 @@
     
 
     
-    <div id="box-d" class="basic-lateral-box" style="margin-top: 380px; position: relative; display: block;">
+    <div id="box-d" class="basic-lateral-box" style="margin-top: 30px; position: relative; display: block;">
       <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
       <span class="RedBallon"><%= @course.course_files.count %></span>
       
