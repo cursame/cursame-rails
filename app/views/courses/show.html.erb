@@ -85,9 +85,8 @@
                 $(this).removeClass('deactive').addClass('activate');
               });
               
-              // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
-              
-              var aux = <%= (@show_assignment and @id_search) %>;
+              // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"              
+              var aux = <%= (@show_accomplishment and @id_search) || false %>;
               if(aux) {
                 // Se despliegan las tareas
                 var assignmentsElement = $("#banner-btns > li.calif").first();
