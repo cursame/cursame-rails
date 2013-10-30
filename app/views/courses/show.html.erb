@@ -283,7 +283,6 @@
 	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block; margin-bottom:0px;" >
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
              
-	        <div style="min-height:0px; max-height:580px;">
             
 	          <% permitted_to? :create, :courses do %>
         	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
@@ -303,7 +302,8 @@
 
                   <%end%>
                   <%end%>    	     
-          	
+             <div style="min-height:0px; max-height:580px;">
+      	    
 	        <% @course.members_in_courses.each do |member|  %>
 	         
 	          <% @members = User.find_by_id(member.user_id) %>
@@ -350,6 +350,7 @@
            </div>
            <%end%>
            </div>
+           
            <div style="position:realtive; margin-left:18px; margin-top:-2px; height:30px; width:230px;">
           <% if current_role == 'admin' || current_role == 'superadmin' %>          
             <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
