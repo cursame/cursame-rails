@@ -24,6 +24,7 @@ class Delivery < ActiveRecord::Base
   belongs_to :network
 
 
+
   validate :max_courses
 
   # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
