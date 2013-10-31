@@ -38,13 +38,13 @@
     <% end %>
 
      setTimeout(function() {
-            $('#notice').html('')
+            $('#notice').html('');
             $( "#notice" ).animate( { width: "0px", height: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-              CleanerBlur();
-              DisableBlured();
+              // CleanerBlur();
+              // DisableBlured();
            
             $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
-     }, 1500);
+     }, 500);
             
             
   <% else %>
