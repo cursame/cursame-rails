@@ -1,5 +1,4 @@
 <div class="profile-post-box blured-i">    
-  <%= javascript_include_tag('application.animation.js') %>
   <%if !@user_show %>
   <div id="post-forms">      
      <% @active_edit = false %>
@@ -20,13 +19,11 @@
       <%end%>
     </div>
 
-    <div id="discussion-form-area" class="discussion-form-area-style  flonder" >
-        
+    <div id="discussion-form-area" class="discussion-form-area-style  flonder" >        
       <% permitted_to? :create, :discussions do %>
       <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit}%>
       <%end%>
-    </div>
-    
+    </div>    
   </div>
   
 

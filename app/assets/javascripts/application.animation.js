@@ -42,6 +42,8 @@ $(document).ready(function() {
     $('#banner-btns > li').click(function() {
         getElementId = $(this).attr('get-to');
 
+        alert(88);
+
         onLoadElement = $(this).attr('on-load-function');
 
         if(tmpGetElementId==getElementId){
@@ -187,7 +189,7 @@ $(document).ready(function() {
     var prePostMarginBottom;
     var prePostMarginLeft;
 
-    $('#profile-form-options > a').click(function() {
+    $('#profile-form-options > a').live('click',function() {
         prePostHeight = $('#profile-form-options').height();
         prePostMarginTop = $('#profile-form-options').css('marginTop');
         prePostMarginRight = $('#profile-form-options').css('marginRight');
@@ -201,8 +203,6 @@ $(document).ready(function() {
             marginBottom: '0'
         }, time, function() {
             $(this).css('display','none');
-          
-            // goFront('#post-forms','.profile-post-box');
         });
         $('#post-forms').animate({
             height: $( hrefClean ).height()
@@ -214,45 +214,46 @@ $(document).ready(function() {
         return false;
     });
     //Cancel btns
-    $('#post-forms > div').each(function( index, value ) {
-        $(value).find('#cancel-post-form').click(function() {
-           
-            resetForm($(value).find('form'));
-                /* elimina los contenidos*/
-                 $(".content_free").html('');
-                 $(".content_wikipedia").html('');
-                 $(".content_killer").html('');
-                 $(".choser").html('');
-                 $('.youtube_content_delivery').hide();
-                 DisableBlured();
-                 
-            $('label.error').remove();
+    //
+    cancelButtonsPostMenu = function  () {
+        $('#post-forms > div').each(function( index, value ) {
+            $(value).find('#cancel-post-form').click(function() {           
+                resetForm($(value).find('form'));
+                    /* elimina los contenidos*/
+                     $(".content_free").html('');
+                     $(".content_wikipedia").html('');
+                     $(".content_killer").html('');
+                     $(".choser").html('');
+                     $('.youtube_content_delivery').hide();
+                     DisableBlured();
+                     
+                $('label.error').remove();
 
-            $('#post-forms').animate({
-                height: '0'
-            }, time);
-            $(this).parent().parent().animate({
-                opacity: 0
-            }, time, function() {
-                $(this).css('display','none');
-                 $('.tim').foggy(false);
+                $('#post-forms').animate({
+                    height: '0'
+                }, time);
+                $(this).parent().parent().animate({
+                    opacity: 0
+                }, time, function() {
+                    $(this).css('display','none');
+                     $('.tim').foggy(false);
+                });
+                $('#profile-form-options').css('display','block');
+                $('#profile-form-options').animate({
+                    opacity: 1,
+                    height: prePostHeight,
+                    marginTop: prePostMarginTop,
+                    marginLeft: prePostMarginLeft,
+                    marginRight: prePostMarginRight,
+                    marginBottom: prePostMarginBottom
+                }, time);
             });
-            $('#profile-form-options').css('display','block');
-            $('#profile-form-options').animate({
-                opacity: 1,
-                height: prePostHeight,
-                marginTop: prePostMarginTop,
-                marginLeft: prePostMarginLeft,
-                marginRight: prePostMarginRight,
-                marginBottom: prePostMarginBottom
-            }, time);
-
         });
-    });
+    }
+    cancelButtonsPostMenu();
 
     //Submit btns
-    $('#post-forms > div').each(function( index, value ) {   
-    
+    $('#post-forms > div').each(function( index, value ) {    
              
         $(value).find('#comment-post-form').click(function() {
                           
