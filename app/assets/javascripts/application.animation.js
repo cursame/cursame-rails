@@ -41,9 +41,6 @@ $(document).ready(function() {
     var isOpen = undefined;
     $('#banner-btns > li').click(function() {
         getElementId = $(this).attr('get-to');
-
-        alert(88);
-
         onLoadElement = $(this).attr('on-load-function');
 
         if(tmpGetElementId==getElementId){
