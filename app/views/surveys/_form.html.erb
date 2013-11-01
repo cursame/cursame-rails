@@ -37,13 +37,12 @@ random_id = "#{random}"
       </div>
     <% end %>
 
-    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
     <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary", :id => 'comment-post-form'%>
     <br>
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
     
     <a class="help survey_help" id="help_survey"><%= image_tag('help.png')%></a>
-    <div class="line_bottom" style="margin-top:10px;" ></div>
 	
     <script>
              $('#help_survey').click(function() {

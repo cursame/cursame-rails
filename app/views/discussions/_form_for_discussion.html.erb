@@ -30,7 +30,7 @@
      <%end%>
      
     <%= f.text_field :title, :placeholder=>'Titulo de la Discusión', :required =>'required', :minlength=>"2" %>
-    <%= f.text_area :description , :placeholder=>'Descripción', :required =>'required', :rows => 4, :cols => 76 %>  
+    <%= f.text_area :description , :placeholder=>'Descripción', :required =>'required', :rows => 4, :cols => 81, :class => 'border_for_text'%>  
     
     <% if @active_edit == false %>
     
@@ -43,19 +43,36 @@
     <div class="submit-area"></div>
      <% if @active_edit == false %>
      
-    <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-post-form', :onClick=>'removeSliderEvaluation();' %>
+    <%= button_tag "Cancel", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' %>
     <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
     <%else%>
     <%= f.submit "Guardar discussion",  :class => "btn" %>
     
     <%end%>
-     
+     <div style="margin:10px;">
+    <% if @incourse != true%>
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Pública', :defaultClass => 'public-dd' } %>
-    
+    <%else%>
+       <% 1.times do
+           courses = @discussion.courses.build
+       end%>
+       
+       <%= f.fields_for :courses do |discussion| %>
+           <%= discussion.hidden_field :delivery["#{@course.id}"] %>
+       <%end%>
+       
+       <script>
+         $(document).ready(function(){
+         $('#help_discussion').css('margin-top','10px');
+         $('#discussion_description').attr("placeholder","Coloca un discusión en este curso.");
+         
+         });
+       </script>
+    <%end%>
+    </div>
     <% if @active_edit == false %>
     
-    <a class="help discussion_help" id="help_discussion" ><%= image_tag('help.png')%></a>
-    <div class="line_bottom" style="margin-top:10px;" ></div>
+    <a class="help discussion_help" id="help_discussion" style="margin-top:-25px;" ><%= image_tag('help.png')%></a>
 	
     <%end%>
     

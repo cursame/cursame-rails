@@ -7,9 +7,9 @@
     </div>
   </div>
   <% if comment_id.nil? then %>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 76, :placeholder=>'Comentario', :required =>'required' %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :placeholder=>'¿En que estás pensando?', :required =>'required' %>
   <% else %>
-    <%= text_area_tag "comment", comment, :rows => 4, :cols => 76, :placeholder=>'Comentario', :required =>'required' %>
+    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81,  :placeholder=>'¿En que estás pensando?', :required =>'required' %>
   <% end %>
   <%= hidden_field_tag 'commentable_id', commentable_id %>
   <%= hidden_field_tag 'commentable_type', commentable_type %>
@@ -19,20 +19,36 @@
   
   <div class="submit-area"></div>
   
-  <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :id => 'cancel-post-form' %>
+  <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
   <%= submit_tag "Comentar", :class=>"btn btn-primary", :id => 'comment-post-form' %>
-  
+   <a class="help" id="help_comment" style="float:left; margin:4px;"><%= image_tag('help.png')%></a>
   <%if !@user_show%>
+  <% if @incourse != true%>
+  
     <% if comment_id == nil %>
-      <div id="dropdrop_comment">
+    
+      <div id="dropdrop_comment" style="float:left; margin:4px;">
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true,
                                                   :hasUser => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
       </div>
-    <% end %>
+   <% end %>
+      
+      
+        <%else%>
+         
+              <%=  hidden_field_tag "commentable_type",'Course'%>
+              <%=  hidden_field_tag "delivery[course_ids][]", @course.id %>
+             
+             <script>
+               $(document).ready(function(){
+               $('#help_comment').css('margin-top','10px');
+               $('#comment').attr("placeholder","Coloca un comentario en este curso.");
+               });
+             </script>
+     <%end%>
   <% end %>
   
-  <a class="help" id="help_comment"><%= image_tag('help.png')%></a>
-  <div class="line_bottom"></div>
+ 
 
   <script>
     $('#help_comment').click(function() {

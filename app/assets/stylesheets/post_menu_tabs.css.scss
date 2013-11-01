@@ -1,0 +1,41 @@
+.simple-tab{
+    padding:5px;
+    margin-bottom:5px;
+    //background:#F8B1FF;
+    //background:#D6FAF7;
+    //background:#E86850;
+    background:#c9d1da;
+    
+    margin-left:0px;
+    cursor:pointer;
+    color:#3399FF;
+    margin-top:4px;
+    position:relative;
+    float:left;
+}
+
+ .simple-tab:hover {
+      color:#3399FF;
+      text-decoration: underline;
+ }
+
+#tab-form-options{
+     //background:#F8B1FF;
+     //background:#D6FAF7;
+     //background:#E86850;
+     background:#c9d1da;
+     height:45px;
+     border-bottom:1px solid #d3d6db;
+     
+      
+}
+.tab-style{
+  //border:1.5px solid #FBCBFF;  
+  border:1.5px solid #3399FF;
+}
+
+.border_for_text{ 
+   border:solid 1px #c9d1da !important;
+   border-radius: 5px;
+   margin: 4px 0px 0px 0px;
+ }

@@ -1,5 +1,6 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
  url(<%= current_user.coverphoto.blank? ? '/assets/'+current_user.cover_photox : current_user.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
+ <% @incourse = false %>
 
   
   <!--<div id="noticce">
@@ -154,34 +155,36 @@
 <!-- Content -->
 
 <div id="box-stream-post">
-  <div id="pk_menu">
-  <%=render :partial => 'shared/post_menu' %>
-  </div>
-  <%=render :partial => 'shared/wall_filters', :locals => {:path => wall_path} %>
+    <div id="pk_menu">
+    <%=render :partial => 'shared/post_menu' %>
+    </div>
+    <%=render :partial => 'shared/wall_filters', :locals => {:path => wall_path} %>
 
-  <!-- timeline -->
-  <div id="timeline" class="tim">
-    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'network'} %>
-  </div>
-  <!-- fin timeline -->
-<!-- mostrar el password por primera vez -->
-<% if current_network.public_register == false%>
- <% if show_joyride(3) != '1'%>
-  <%= render :partial => '/users/set_password_form', :locals => {:user => current_user} %>
-    <script>
-        modal('#set-password-form');
-    </script>
-  <% end %>
-<%end%>
-<!-- inicio de joyride -->
-  <% if show_joyride(0) == '0'%>
-    <%= render :partial => '/shared/network_joyride', :locals => {:wall => @wall,:visible_for => 'network'} %>
-  <% end %>
-<!-- fin de joyride -->
+    <!-- timeline -->
+    <div id="timeline" class="tim">
+        <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+    </div>
+    <!-- fin timeline -->
+  <!-- mostrar el password por primera vez -->
+  <% if current_network.public_register == false%>
+   <% if show_joyride(3) != "1"%>
+    <%= render :partial => "/users/set_password_form", :locals => {:user => current_user} %>
+      <script>
+          modal("#set-password-form");
+      </script>
+    <% end %>
+  <%end%>
+  <!-- inicio de joyride -->
+    <% if show_joyride(0) == "0"%>
+      <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
+    <% end %>
+  <!-- fin de joyride -->
 
-  <%= will_paginate(@wall) %>
+    <%= will_paginate(@wall) %>
 </div>
 </div>
+
+
 <script type="text/javascript">
 $(function() {
   var p = $('#timeline').pageless({

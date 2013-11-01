@@ -33,6 +33,7 @@ class HomeController < ApplicationController
       if params[:delivery] then
         params[:commentable_type] = 'Course'
         params[:delivery][:course_ids].each do |group_id|
+          @course = Course.find_by_id(group_id)
           params[:commentable_id] = group_id
           save_comment
         end

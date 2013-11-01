@@ -29,12 +29,13 @@
     float: left;
   }
   & textarea{
-    border: $border-forms;
-    border-radius: $border-radius-box;
-    margin: 0px;
+    //border: $border-forms;
+    //border-radius: $border-radius-box;
     padding-left: 7px;
+    padding-right:5px;
     //@include shadow-input;
     margin: 4px 0px 0px 0px;
+    border:solid 0px;
   }
   & input[type=text], input[type=email], input[type=password]{
     background: #FFF;
@@ -173,7 +174,7 @@
     min-width: 100px;
     height: $height-btn;
     line-height: 23px;
-    float:left;
+    float:right;
     background: #006696;
     transition: ease-out all 0.2s;
     
@@ -221,7 +222,7 @@
     color: #999;
     min-width: 100px;
     height: $height-btn;
-    float:left;
+    float:right;
     border: $border-forms;
     cursor: pointer;
     @include border-radius-btn;
@@ -471,7 +472,7 @@
     padding: 0px 23px 0px 0px;
     margin: 10px 0px 0px 0px;
     width: 30px;
-    float: right;
+    float: left;
   }
   //===============================================================
   //==========================  Sliders ===========================
@@ -781,16 +782,18 @@
       color: #666;
       padding: 5px 0px 5px 20px;
       text-align: right;
-      clear: both;
+      //clear: both;
       margin-bottom: 5px;
       font-size: 12pt;
+      width:20px;
     }
     & .evaluation-area{
       border-top: 1px dotted #ccc;
-      margin-top: 4px;
+      margin-top: 44px;
       padding-top: 5px;
-      float: left;
+      float: right;
       width: 100%;
+      position:relative;
     }
   }
   & .uploader-form{

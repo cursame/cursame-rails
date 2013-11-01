@@ -21,6 +21,7 @@
 <div style="width: 576px; background: transparent;">
 <% if @active_edit == false %>
 	<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'delivery', :acces_to => @delivery, :contents => "contents"}%>
+    
 <%end%>
 </div>
         <%= f.hidden_field :network_id, :value => current_network.id %>
@@ -41,7 +42,7 @@
     </div>
     
     <div style="margin-bottom: 10px;">
-        <%= f.text_area :description , :rows => 6, :cols => 76 , :placeholder=>'Descripción', :required =>'required', :class => 'form_fix_overlay' %>
+        <%= f.text_area :description , :rows => 4, :cols => 81 , :placeholder=>'Descripción', :required =>'required', :class => 'border_for_text' %>
     </div>
     
         <% if @active_edit == false %>
@@ -49,35 +50,52 @@
 		<% 1.times do
 		areas_of_evaluations = @delivery.areas_of_evaluations.build
 		end%>
-
+        <div style="position:relative; width:600px;margin-bottom:50px;">
+        	<div style="float:right;">
+		       
+          <%= f.number_field :porcent_of_evaluation, :placeholder=>'En evaluación final', :class=>"percent-input", :required =>'required' %>
+           </div>
+           </div>
+          
+          
+           <div style="width:600px; min-height:0px; max-height:200px; overflow:auto; background:#fff;">           
         <%= f.fields_for :areas_of_evaluations do |builder| %>
             <%= render :partial => "areas_of_evaluations/form", :id => 'areas_of_evaluations', :locals => { :f => builder } %>
         <% end %>
-
-        <%= f.number_field :porcent_of_evaluation, :placeholder=>'Eval.', :class=>"percent-input", :required =>'required' %>
+           </div>
+           <div style="width:600px; min-height:40px;" >
+               <div id="more_nested_evaluation_btn" class="evaluate-btn" style="float:left;">Agregar Criterio</div>
+               
+            <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
+            
+            </div>
+         
         
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
-          
-        <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
+        
+        <div style="position:relative; width:600px; height:30px;">
+        
         <div class="submit-area"></div>
                 
-        <%= button_tag "Cancelar", :type => 'button', :class=>'input-button', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form' %>
+        <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
         <%= f.submit "Publicar", :id => 'comment-post-form'%>
+        </div>
         
         <%else%>
+          <div style="float:right;">
+          
           <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn"%>        
+           </div>
         <%end%>
-        
+        <div style="position:absolute; margin-top:-66px; margin-left:430px; min-height:40px;">
         <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
         
-
+         </div>
         
 		<% if @active_edit == false %>
-			<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
-			<div class="line_bottom" style="margin-top:10px;" ></div>
-            
+		<div style="float:left; margin-top:-20px; margin-left:10px;">	<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a></div>  
 		<%end%>
           
           
@@ -100,10 +118,11 @@
 
 <!--este render trae el list de petición de contenidos-->    
 <% if @active_edit == false %>
-
-<%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
+<div style="float:left; diaplay:block; position:absolute; margin-top:-70px; margin-left:150px; width:300px;"> 
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
+<div style="float:left; margin-left:-295px;"><%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %></div>
 
+</div>
    <%else%></br></br>
     <p style="color:#646464; float:left; margin-top: 10px; padding: 6px;">Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
     
