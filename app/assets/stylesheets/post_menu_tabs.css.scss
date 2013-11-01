@@ -4,8 +4,8 @@
     //background:#F8B1FF;
     //background:#D6FAF7;
     //background:#E86850;
-    background:#c9d1da;
-    
+    //background:#c9d1da;
+    background :#F7FAFF;
     margin-left:0px;
     cursor:pointer;
     color:#3399FF;
@@ -23,9 +23,11 @@
      //background:#F8B1FF;
      //background:#D6FAF7;
      //background:#E86850;
-     background:#c9d1da;
+     //background:#c9d1da;
+     background :#F7FAFF;
+     
      height:45px;
-     border-bottom:1px solid #d3d6db;
+     border-bottom:3px solid #0CCEF5;
      
       
 }
@@ -39,3 +41,9 @@
    border-radius: 5px;
    margin: 4px 0px 0px 0px;
  }
+.selected_tab{
+    //background:#c9d1da;
+    background :#F7FAFF;
+    border-bottom:solid 4px #000;
+    padding:8px;
+} 

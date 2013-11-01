@@ -7,7 +7,7 @@
       <div id="tab-form-options">
          <% permitted_to? :create, :comments do %>
          <!--<a href="#message-form-area" class="message-form-btn blured"  ><div class="border" ><div class="icon"></div></div>Comentario</a>-->
-         <a id="comment-tab" class="simple-tab"><%= image_tag('comment-cir-mini.png', width:22, height:22)%> Comentario</a>
+         <a id="comment-tab" class="simple-tab selected_tab"><%= image_tag('comment-cir-mini.png', width:22, height:22)%> Comentario</a>
          <%end%>
          <% permitted_to? :create, :deliveries do %>      
              <a id="delvery-tab" class="simple-tab"> <%= image_tag('comment-cir-mini-homework.png', width:22, height:22)%>  Tarea</a>
