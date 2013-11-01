@@ -63,15 +63,35 @@ $('.cancel-post-form_tab').click(function(){
     $('#delivery-form-area-tab').hide();
     $('#survey-form-area-tab').hide();
     $('#discussion-form-area-tab').hide();
-    $('#new_discussion')[0].reset();
-    $('.comment-form')[0].reset();
-    $('.delivery-form')[0].reset();
-    $('#new_survey')[0].reset();
+    if ($('#new_discussion').length){
+        $('#new_discussion')[0].reset();
+        
+    }
+    if ($('.comment-form').length){
+        $('.comment-form')[0].reset();
+        
+    }
+    if ($('.delivery-form').length){
+        $('.delivery-form')[0].reset();
+        
+    }
+    if ($('#new_survey').length){
+        $('#new_survey')[0].reset();
+        
+    }
     
     $('#comment-tab').addClass('selected_tab');
     $('#delvery-tab').removeClass('selected_tab');
     $('#survey-tab').removeClass('selected_tab');
     $('#discusison-tab').removeClass('selected_tab');
+    $('.frcomment').show();
+    $('.ftcomment').hide();
+});
+
+$('.frcomment').click(function(){
+    $('.frcomment').hide();
+    $('.ftcomment').show();
+    
 });
 
 });
