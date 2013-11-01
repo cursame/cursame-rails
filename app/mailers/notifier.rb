@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Notifier < ActionMailer::Base
   default from: "mail-sin-respuesta@cursa.me"
 
@@ -77,6 +78,24 @@ class Notifier < ActionMailer::Base
 
     mail to: @user.email, subject: "Informe: Importacion de Miembros al curso " + course.title
 
+  end
+
+  def send_comment_on_course(comment)
+    @comment = comment
+    @isComment_on_comment = comment.commentable_type == 'Comment'
+    @user = comment.user
+    if (@isComment_on_comment)
+      users = comment.commentable.commentable.users
+      @course = comment.commentable.commentable
+    else
+      users = comment.commentable.users
+      @course = comment.commentable
+    end
+
+    emails = users.map{|user| user.email}
+    emails = emails.keep_if{ |email|  email != @user.email}
+    subject = "#{@user.name} comentó en el curso #{@course.title}"
+    mail to: emails, subject: subject
   end
 
 end
