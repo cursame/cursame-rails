@@ -58,7 +58,7 @@ $('#survey-tab').click(function(){
     
 });
 $('.cancel-post-form_tab').click(function(){
-    console.log('click');
+    //console.log('click');
     $('#message-form-area-tab').show();
     $('#delivery-form-area-tab').hide();
     $('#survey-form-area-tab').hide();
