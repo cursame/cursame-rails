@@ -41,15 +41,15 @@
 	<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
 	
 	<% if @show_chat_panel %>
-		<div id="users-and-groups-for-chat">
-	       <div id = "toggle-chat">+ Chat(<%= @courses_online.count + @friends_online.count %>)</div>
+		<div id="users-and-groups-for-chat" class="users-and-groups-for-chat">
+	       <div id="toggle-chat"><div class="toggle_chat_image"></div>Chat (<%= @courses_online.count + @friends_online.count %>)<img src="/assets/icon_point.png" style="float: right;"></div>
 	       <div id="users-and-groups-online" style="display:none">
-			<span class="titleBraker">Cursos</span>
+			<span class="titleBraker"><img src="/assets/icon_small_courses.png" style="margin-right: 4px;">Cursos</span>
 			<% @courses_online.each do |course|%>
 			    <div><%= link_to truncate("#{course.title}", :omission => "...", :length => 30), open_channel_path(course.id,"course" => true), :remote => true%></div>
 			<%end%>
 		<!--<span class="titleBrakerSecondary">Amigos conectados</span>-->
-		    <span class="titleBraker">Amigos conectados</span>
+		    <span class="titleBraker" style="margin-bottom: 3px; margin-top: 1px;"><img src="/assets/icon_friends.png" style="margin-right: 4px;">Amigos conectados</span>
 			<% @friends_online.each do |user|%>
 			    <div><%= link_to truncate("#{user.name}", :omission => "...", :length => 30) || user.email, open_channel_path(user.id), :remote => true%></div>
 			<%end%>
@@ -57,3 +57,10 @@
 		</div>
 	<% end %>	
 <%end%>
+
+	<script>
+		$('#toggle-chat').click ( function() {
+			$('.toggle_chat_image').toggleClass('toggle_chat_image_active');
+			$('#users-and-groups-for-chat').toggleClass('users-and-groups-for-chat-active');
+		});
+	</script>

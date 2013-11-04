@@ -2,7 +2,7 @@
 	margin: 0 auto;
 }
 
-.visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight,#users-and-groups-for-chat,#chat-panels-zone{
+.visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight, #chat-panels-zone{
     position: fixed;
     width: 200px;
     height: 20px;
@@ -11,22 +11,57 @@
     background: #4DC7DF;
     text-align: center;
 }
-#users-and-groups-for-chat {
-	background: #5F95BE;
-	color: #fff;
+
+.users-and-groups-for-chat {
+	width: 200px;
+    height: 20px;
+	//background: #4D68A2;
+	//background: #F6F7F8;
+	background: #F6F7F8;
+	position: fixed;
+	color: #000;
+	font-weight: bold;
 	padding-top: 7px;
 	padding-left: 10px;
     bottom: 0px;
     right: 15px;
-    transition: ease-out all 0.3s;
     text-align: left;
-    -webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px;
+    border: solid 1px #B2B2B2;
+    vertical-align: middle;
 }
 
-#users-and-groups-for-chat:hover {
-	background: #0094E1;
+.users-and-groups-for-chat:hover {
+	background: #EEE;
 	cursor: pointer;
 	transition: ease-out all 0.3s;
+}
+
+.users-and-groups-for-chat-active {
+	background: #4862A3!important;
+	color: #FFF;
+	font-weight: 100;
+}
+
+#toggle-chat {
+	font-size: 11px;
+	//font-weight: bold;
+}
+
+.toggle_chat_image {
+	width: 14px;
+	height: 14px;
+	margin-right: 4px;
+	margin-top: -1px;
+	float: left;
+	background: url('../assets/icons/user.png') left center no-repeat;
+}
+.toggle_chat_image_active {
+	width: 14px;
+	height: 14px;
+	margin-right: 4px;
+	margin-top: -1px;
+	float: left;
+	background: url('../assets/icons/user_white.png') left center no-repeat;
 }
 
 .chat-panel{
@@ -37,7 +72,8 @@
     color: #fff;
     width: 230px;
     height:20px;
-    background: #5F95BE;
+    background: #4862A3;
+    font-weight: 100;
     margin-left: 5px;
     display: block;
     margin-right: 20px;
@@ -61,12 +97,16 @@
 	margin-right: 10px;
 }
 
-#users-and-groups-online{
+#users-and-groups-online {
 	width: 188px;
 	height:302px;
-	background: #F2F4F8;
-	margin-top: 5px;
-	margin-left: -10px;
+	//background: #F2F4F8;
+	background: #FFF;
+	font-weight: 100;
+	border-left: 1px solid #B2B2B2;
+	border-right: 1px solid #B2B2B2;
+	margin-top: 8px;
+	margin-left: -11px;
 	display: block;
 	padding-top: 10px;
 	padding-left: 12px;
@@ -80,7 +120,7 @@
 			padding-left: 10px;
 			padding: 5px 0 5px 10px;
 			color: #1a1a1a;
-			font-weight: lighter;
+			font-weight: normal;
 		}
 		#users-and-groups-online div > a:hover {
 			background: #E0E4EE;
@@ -98,13 +138,14 @@
 	font-size: 16px;
 	font-weight: lighter;
 	margin-top: 10px;
-	color: #000;
-	font-weight: bold;
+	color: #A6A6A6;
+	font-size: 13px;
+	font-weight: normal;
 	display: block;
 	margin-left: -12px;
 	margin-top: -4px;
-	margin-bottom: 6px;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	cursor: default;
 }
 
 .titleBrakerSecondary {
@@ -196,7 +237,7 @@ background: #006696;
 
 .closeChat { 
 	width: 23px;
-	height: 28px;
+	height: 27px;
 	position: absolute;
 	margin-left: 216px;
 	margin-top: -22px;
@@ -205,7 +246,7 @@ background: #006696;
  }
  
 .closeChat:hover {
-	background: #3B5998;
+	//background: #3B5998;
 	cursor: pointer;
 }
 
@@ -215,15 +256,18 @@ background: #006696;
 
 
 .chat-zone-messages{
-	width: 230px;
-	height: 250px;
+	width: 228px;
+	//height: 250px;
+	height: 147px;
 	margin-left: -10px;
 	/*background: #F2F4F8;*/
 	background: #FFF;
 	overflow: auto;
 	padding: 10px;
 	color: #000;
-	font-weight: lighter;
+	font-weight: 100;
+	border-left: 1px solid #B2B2B2;
+	border-right: 1px solid #B2B2B2;
 }
 
 .chat-zone-messages .insideChat {
@@ -279,11 +323,27 @@ z-index: 1;
 }
 
 .chat-zone-footer form {
-	width: 250px;
+	width: 248px;
 	margin-left: -10px;
 	background: #fff;
 	height: 30px;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #B2B2B2;
+	border-left: 1px solid #B2B2B2;
+	border-right: 1px solid #B2B2B2;
+}
+
+.chat-zone-footer .sendBtnChat {
+	//background: #28C9AB;
+	font-weight: normal;
+	background: transparent;
+	color: #A6A6A6;
+	border: 0;
+	margin-top: 5px;
+	position: absolute;
+}
+.chat-zone-footer .sendBtnChat:hover {
+	color: #4862A3;
+	background: transparent!important;
 }
 
 .sendBtnChat {
@@ -634,17 +694,19 @@ cursor: pointer;
 }
 
 #go-to-chats-url{
+    width: 100px;
+    height:20px;
     bottom: 0px;
     right: 275px;
     position: fixed;
     padding: 4px 10px;
     color: #fff;
-    width: 100px;
-    height:20px;
-    background: #5F95BE;
+    background: #4862A3;
     margin-left: 5px;
+    font-weight: 100;
     display: block;
     margin-right: 20px;
+    overflow: hidden;
     -webkit-backface-visibility: hidden;
 }
 

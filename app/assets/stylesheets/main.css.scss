@@ -1612,6 +1612,7 @@ background-position: left center;
 	color: #FFF;
 	font-weight: 100;
 	font-size: 12px;
+	margin-top: 20px;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 
@@ -1880,4 +1881,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	 height: 55px;
 	 background: transparent!important;
 	 cursor: pointer;
+}
+
+.zenbox_tab__text {
+	content: "ayuda";
+	display: block;
+	float: right;
+}
+
+/* --------------------- media queries --------------------- */
+
+@media all and (max-width: 940px) and (min-width: 675px) {
+  #side-bar {
+    display: none;
+  }
+}
+
+@media all and (max-width: 675px) and (min-width: 0px) {
+  #side-bar {
+    display: none;
+  }
+  #box-stream-post {
+	  display: none;
+  }
+  .hola {
+	  visibility: visible;
+  }
 }

@@ -1,48 +1,54 @@
+<div id="fix_admin" style="width: 980px; margin: 0 auto;">
+
 <div id="admin-sidebar" style="background: #1A83D5; color: #FFF;">
   <h5>Administracion</h5>
   <ul>
     <%= render :partial => "managers/menu"%>
-
   </ul>
 </div>
-<div id="admin-content">
-    <div class="header-for-content">
-           <h8 class="h8" style="float:left;">Importar cursos </h8></br></br>
-           <p style="font-style:oblique; float:left;">Importa los cursos de tu comunidad desde una base de datos.</p>
-       </div>
-<div style="margin-top:30px; margin-bottom:30px; margin-left:5px;">
-<a href="/plantillas/cursos_plantilla.csv" class="button_button" > <img src="/assets/icons_for_admin/folder_download.png" class="icon margin-right10x class_image2525"> cursos_plantilla.csv</a>
-</div>
-<div class="form-for-admin" style="float:left; margin-left:480px; margin-top:-70px;">
 
-<%= form_tag upload_courses_path, multipart: true do %>
- <label class="fileContainer">
-     Da click para subir tu archivo de cursos.
-       <%= file_field_tag :file %>
-   </label>
-  <p>
-  	<div style="margin-top:30px;">
-        <%= submit_tag "Import" %>
-    </div>
-<% end %>
+<div id="admin-content" style="width: 700px;">
+	<div id="admin-content">
+		<div class="header-for-content">
+			<h8 class="h8" style="float:left;">Importar cursos </h8>
+			<p style="font-style:oblique; float:left;">Importa los cursos de tu comunidad desde una base de datos.</p>
+		</div>
+		<div style="margin-top: 30px; margin-bottom: 30px; margin-left: 85px; float: left;">
+		<a href="/plantillas/cursos_plantilla.csv" class="button_button" >
+			Descargar archivo de cursos
+		</a>
+	</div>
+
+	<div class="form-for-admin" style="float: left; margin-left: 40px; margin-top: 10px;">
+		<%= form_tag upload_courses_path, multipart: true do %>
+			<label class="fileContainer">
+				<!-- Da click para subir tu archivo de cursos. -->
+				<%= file_field_tag :file %>
+			</label>
+	
+			<p>
+				<div style="margin-top:30px;">
+				<%= submit_tag "Importar archivo de cursos" %>
+				</div>
+		<% end %>
+	</div>
 </div>
+
 
 </br>
 <div class="instructions">
 <p class="manager_notice">Es importante tomar en cuenta que el formato del archivo es muy importante para importar correctamente los cursos.</p></br>
-<p>
-El estatus del curso solo puede ser privado o publico, sin acentos.
-<p>
-Las fechas son del siguiente estilo: AAAA-MM-DD
-<p>
-Si el curso ya se agrego, recuerda que puedes importa otro curso son los mismo valores, pero que es distinto al anterior.
-<p>
+<p class="manager_notice">
+• El estatus del curso solo puede ser privado o publico, sin acéntos.<br />
+• Las fechas son del siguiente estilo: AAAA-MM-DD.<br />
+• Si el curso ya se agrego, recuerda que puedes importa otro curso son los mismo valores, pero que es distinto al anterior.
+</p>
 </div>
 
 <%= "NO SE ENCONTRO UN ARCHIVO" if @noFile%>
 </p>
 </p>
-<p style="font-size:20px; padding:10px;">Lista de cursos<p>
+<p style="font-size: 18px; font-weight: 100; padding:10px;">Lista de cursos<p>
 <table class="striped">
   <tr>
     <th>Id</th>
@@ -74,3 +80,9 @@ Si el curso ya se agrego, recuerda que puedes importa otro curso son los mismo v
 <%end%>
 </table>
 </div>
+
+</div>
+
+<script>
+	$('#admin-sidebar li:contains("Importar cursos")').css({ background: "#1B57A0" });
+</script>

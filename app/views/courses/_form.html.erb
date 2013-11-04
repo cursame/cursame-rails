@@ -44,7 +44,13 @@
           
           <div style="height: 80px;"><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%>
           </div>  
-          <%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+        <span id="inputHide" style="width: 220px; text-align: center; position: relative; display: block;">
+		  	<label for="user[avatar]" class="stylize" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select">
+				<%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+			</label>
+		</span>
+          
+        
         </div>
         
         <div class="UpdateRight">
@@ -52,7 +58,13 @@
           
           <div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
           </div>
-          <%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+        <span id="inputHide" style="width: 220px; text-align: center; position: relative; display: block;">
+		  	<label for="user[avatar]" class="stylize" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select">
+		  		<%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+			</label>
+		</span>
+          
+
         </div>
       </div>
       

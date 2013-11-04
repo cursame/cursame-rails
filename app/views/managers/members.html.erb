@@ -3,7 +3,6 @@
   <h5>Administracion</h5>
   <ul>
     <%= render :partial => "managers/menu"%>
-
   </ul>
 </div>
 <div id="admin-content">
@@ -19,7 +18,7 @@
 <% end %>
 <% @users.each do |user|%>
 
-  <div class="the-list" style="margin-top:10px;">
+  <div class="the-list" style="">
     <ul class="list">
       <li class="user-list">
       <div class="manager_fix_list" style="padding: 5px 0px 5px 5px; height: 49px; float: left;">
@@ -37,40 +36,52 @@
      
          <div class="actions">
             <!--<img src="/assets/icons_for_admin/bullet_delete.png" style="width:40px; height:40px; cursor:pointer; margin-top:-10px;"/>-->
-            <%if @permisos.suspended == true %>
-            <%=link_to image_tag("icons_for_admin/lock_locked.png", :class => 'class_image4040 grayfilterto-images', :id => "suspenden_div#{@permisos.id}"), unactive_user_path(:id => @permisos.id), :remote => true%>
-            <%else%>
-            <%=link_to image_tag("icons_for_admin/lock_locked.png", :class => 'class_image4040', :id => "suspenden_div#{@permisos.id}"), unactive_user_path(:id => @permisos.id), :remote => true%>
-            <%end%>
-           <img src="/assets/icons_for_admin/file_edit.png"  style="width:40px; height:40px; cursor:pointer; margin-top:-10px;" class="" id="edit_user-<%= @permisos.id%>">
-           <div id="edit_user_role_open-<%= @permisos.id%>" style="display: none">
-               <b> Cambiar el rol del usuario </b>
+            	<%if @permisos.suspended == true %>
+					<%=link_to image_tag("icons_for_admin/lock.png", :class => 'class_image4040 grayfilterto-images', :id => "suspenden_div#{@permisos.id}"), unactive_user_path(:id => @permisos.id), :remote => true%>
+				<%else%>
+					<%=link_to image_tag("icons_for_admin/unlock.png", :class => 'class_image4040', :id => "suspenden_div#{@permisos.id}"), unactive_user_path(:id => @permisos.id), :remote => true%>
+				<%end%>
+
+				<img src="/assets/icons_for_admin/settings.png" style="width: 26px; height: 26px; cursor:pointer; margin-top:-10px;" class="openClass_toggle" id="edit_user-<%= @permisos.id%>">
+
+           <div id="edit_user_role_open-<%= @permisos.id%>" style="display: none; float: right;">
+               <b style="font-weight: 100;">Cambiar el rol del usuario</b>
                 <%= form_tag "/permissionings/update", remote: true do  %>
-                <%= select_tag 'role_id', options_for_select([['alumno', '2'], ['profesor', '3'], ['admin', '1'] ])%>
-                <%= hidden_field_tag 'user_id',user.id %>
-                           <%= submit_tag "Actualizar role" %>
+	                <%= select_tag 'role_id', options_for_select([['alumno', '2'], ['profesor', '3'], ['admin', '1'] ])%>
+	                <%= hidden_field_tag 'user_id',user.id %>
+					<%= submit_tag "Actualizar" %>
                 <%end%>
            </div>
+           
            <%if !user.confirmed? then%>
-              <div id="edit_user_confirmed_open-<%= user.id%>" style="display: none"><label id="icon-user-confirmed" class="user-confirm">
-              <%= form_tag "/users/confirm", remote: true do%>
-                   <%= hidden_field_tag 'user_id', user.id %>
-                   <%= submit_tag "Confirmar"%>
-              <%end%>
-              </label>
+              <div id="edit_user_confirmed_open-<%= user.id%>" style="display: none; float: right; position: relative; padding-top: 8px;">
+				<label id="icon-user-confirmed" class="user-confirm">
+					<%= form_tag "/users/confirm", remote: true do%>
+					<%= hidden_field_tag 'user_id', user.id %>
+					<%= submit_tag "Confirmar"%>
+					<%end%>
+				</label>
               </div>
            <%end%>
-           <script>
+           
+		<script>
+			$('#edit_user-<%= @permisos.id%>').click(function() {
+				$('#edit_user_role_open-<%= @permisos.id%>').toggle('fast', function() {
+					
+				});
+				$('#edit_user_confirmed_open-<%= user.id%>').toggle('fast',function() {
+					//$('#edit_user-<%= @permisos.id%>').removeClass('user-confirm');
+				});
+				$(this).parent('.actions').toggleClass('actions_active');
+				//$(this).attr( 'src', "/assets/icons_for_admin/settings_white.png" )
+			});
+			
 
-                       $('#edit_user-<%= @permisos.id%>').click(function() {
-                         $('#edit_user_role_open-<%= @permisos.id%>').toggle('slow', function() {
-                           // Animation complete.
-                         });
-                       $('#edit_user_confirmed_open-<%= user.id%>').toggle('slow',function() {
-                         $('#edit_user-<%= @permisos.id%>').removeClass('user-confirm');
-                          });
-                       });
-                     </script>
+			$('.manager-role-user:contains("admin")').css({ background: "#4862A3" });
+			$('.manager-role-user:contains("student")').css({ background: "#EB9D1A" });
+			$('#admin-sidebar li:contains("Usuarios")').css({ background: "#1B57A0" });
+			
+		</script>
            <%#= link_to image_tag('/assets/icons/suspsend.png'), user, :confirm => '¿Estas seguro de querer eliminar este usuario?', :method => :delete  %>
          </div>
          <div class="clear"></div>

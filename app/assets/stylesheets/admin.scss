@@ -68,7 +68,7 @@
 
 	}
   & li:hover{
-	   background-color: #f0f0f0;
+	   background-color: #f2f2f2;
 	}
 
 }
@@ -112,6 +112,7 @@
 	//padding: 10px;
 	border-bottom: 1px solid #e0e0e0;
 	border-right: 1px solid #e0e0e0;
+	overflow: hidden;
 	
 	& .avatar{
 		float: left;
@@ -122,7 +123,7 @@
 		margin-left: 10px;
 		line-height: 20px;
 		//width: 250px;
-		width: 450px;
+		width: 380px;
 		float: left;
 		font-family: HelvLight;
 		font-size: 16px;
@@ -133,7 +134,9 @@
 	}
 	& .actions{
 		float: right;
-		opacity: .6;
+		//opacity: .6;
+		margin-top: 25px;
+		margin-right: 10px;
 		//margin-right: 30px;
 		//border-left: 1px solid #EEE;
 	}
@@ -143,6 +146,21 @@
 	& .clear {
 		clear: both;
 	}
+}
+
+.actions_active {
+	position: absolute;
+	float: right;
+	//width: 208px;
+	width: 273px;
+	height: 49px;
+	display: inline-block;
+	background: #1A83D5;
+	color: #FFF;
+	margin: 0px!important;
+	padding-top: 10px;
+	padding-right: 10px;
+	opacity: 1;
 }
 
 .par {

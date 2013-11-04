@@ -1,29 +1,45 @@
+<div id="fix_admin" style="width: 980px; margin: 0 auto;">
+
 <div id="admin-sidebar">
   <h5>Adminitracion</h5>
   <ul><%= render :partial => "managers/menu"%></ul>
 </div>
 <div id="admin-content">
-    <div class="header-for-content">
-             <h8 class="h8" style="float:left;">Importar miembros en los cursos </h8></br></br>
-             <p style="font-style:oblique; float:left;">Importa los miembros de los cursos de tu comunidad desde una base de datos.</p>
-         </div><div style="margin-top:30px; margin-bottom:30px; margin-left:5px;">
-<a href="/plantillas/members_course_plantilla.csv" class="button_button"> <img src="/assets/icons_for_admin/folder_download.png" class="icon margin-right10x class_image2525"> miembros_plantilla.csv</a>
-</div>
-<div class="instructions">
+	<div class="header-for-content">
+		<h8 class="h8" style="float:left;">Importar miembros <!-- en los cursos --> </h8>
+		<p style="font-style:oblique; float:left;">Importa los miembros de los cursos desde una base de datos.</p>
+	</div>
+	
+	<div style="margin-top:30px; margin-bottom:30px; margin-left: 85px; float: left;">
+		<a href="/plantillas/members_course_plantilla.csv" class="button_button">
+			<!-- <img src="/assets/icons_for_admin/folder_download.png" class="icon margin-right10x class_image2525"> -->
+			Descargar archivo de cursos
+		</a>
+	</div>
+	
+	<div class="form-for-admin" style="float: left; margin-left: 40px; margin-top: 10px;">
+		<label class="fileContainer">
+			<%= file_field_tag :file %>
+		</label>
+			<p>
+		<div style="margin-top:30px;">
+			<%= submit_tag "Importar lista de usuarios"%>
+		</div>	
+	</div>
 
-<p class="manager_notice">Es importante tomar en cuenta que el formato del archivo es muy importante para importar correctamente los usuarios.</p></br>
-<p>
-Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso
-mientras que 1 es para especificar que solo es un miembro del curso nada mas.
-<p>
-El Email debe de ser el correo asociado al usuario.
-<p>
 
-</div>
+	<div class="instructions">
+		<p class="manager_notice">
+			Es importante tomar en cuenta que el formato del archivo es muy importante para importar correctamente los usuarios.<br /><br />
+			Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que solo es un miembro del curso nada mas.<br />
+			El Email debe de ser el correo asociado al usuario.
+		</p>
+	</div>
+
 
 <%= "NO SE ENCONTRO EL ARCHIVO" if @noFile %>
-<p>
-    <p style="font-size:20px; padding:10px;">Lista donde se puede importar.<p>
+	<p>
+    <p style="font-size: 18px; font-weight: 100; padding:10px;">Lista donde se puede importar.<p>
     
 
 <%= form_tag upload_members_path, multipart: true do %>
@@ -41,18 +57,11 @@ El Email debe de ser el correo asociado al usuario.
   <% end %>
   
   </table>
-  <div class="form-for-admin" style="float:left; margin-left:480px; margin-top:30px;">
-  
-  <label class="fileContainer">
-       Da click para subir tus alumnos a tus cursos.
-         <%= file_field_tag :file %>
-     </label>  <p>
-         <div style="margin-top:30px;">
-       	
-               <%= submit_tag "Import"%>
-         
-         </div>
-  </div>
   
 <% end %>
 </div>
+</div>
+
+<script>
+	$('#admin-sidebar li:contains("Importar alumnos de curso")').css({ background: "#1B57A0" });
+</script>

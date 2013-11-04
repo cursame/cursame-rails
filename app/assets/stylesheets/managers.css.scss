@@ -136,7 +136,7 @@
 	font-weight: 100;
 }
 
-.hope-right{
+.hope-right {
 	margin-top: -23px;
 	font-size: 16px;
 	color:  white;
@@ -144,33 +144,31 @@
 	text-align: right;
 	padding-right: 30px;
 }
-.striped
-{
-font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-width:100%;
-border-collapse:collapse;
+.striped {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 680px;
+	margin-left: 10px;
+	border-collapse:collapse;
 }
-.striped td, #customers th 
-{
-font-size:1.2em;
-border:1px solid #98bf21;
-padding:3px 7px 2px 7px;
+.striped td, #customers th {
+	font-size:1.2em;
+	border: 1px solid #1A83D5;
+	padding:3px 7px 2px 7px;
 }
-.striped th 
-{
-font-size:1.4em;
-text-align:left;
-padding-top:5px;
-padding-bottom:4px;
-background-color:#A7C942;
-color:#fff;
+.striped th {
+	font-size: 14px;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	background: #1A83D5;
+	//background-color: #A7C942;
+	color:#fff;
 }
-.striped tr.alt td 
-{
-color:#000;
-background-color:#EAF2D3;
+.striped tr.alt td {
+	color: #000;
+	background-color: #1A83D5;
 }
-
 .manager_search_user {
 	position: relative;
 	display: inline-block;
@@ -182,89 +180,117 @@ background-color:#EAF2D3;
 	border: 1px solid #CCC;
 	width: 150px;
 }
-
 .class_image4040{
-    width:40px; height:40px; cursor:pointer; margin-top:-10px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    margin-top:-10px;
 }
-
 .grayfilterto-images{
     filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
     filter: gray; /* IE6-9 */
     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
 }
-
 .class_image2525{
-    width:25px; height:25px;
+    width:25px;
+    height:25px;
 }
 .margin-right10x{
- margin-right:10px;   
+	margin-right:10px;   
 }
-
 .button_button{
-    background:#eee;
-    padding:15px;
-    width:250px;
-    text-align:center;
-    border-radius:10px;
-    cursor:pointer;
+    background: #1B57A0 url('../assets/icons_for_admin/download.png') no-repeat left center;
+    color: #FFF;
+    font-size: 16px;
+    padding: 10px 15px 12px 45px;
+    font-weight: 100;
+    font-size: 14px;
+    width: 350px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 .button_button:hover{
-    background:#C2F7F7;
-    
+    background: #0B9BD0 url('../assets/icons_for_admin/download.png') no-repeat left center;
 }
 .manager_notice{
-    font-style:italic;
-    font-size:15px;
+    font-size: 15px;
+    font-weight: 100;
 }
 
 .form-for-admin{
+
     & input{
-    width:375px;
-    display:block;
-    border: 1px solid #999;
-    height: 25px;
-    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		//width:375px;
+		width: 575px;
+		display:block;
+		float: left;
+		border: 1px solid #C9D1DA;
+		height: 25px;
+		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
     }
     & textarea{
-    width:375px;
-    height:150px;
+	    //width:375px;
+	    width: 574px;
+	    height:150px;
+	    float: left;
+	    border: 1px solid #C9D1DA;
+	    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
     }
     & input[type='submit'] {
-    width:240px;
-    position:relative;
-    display:block;
-    margin:auto;
-    right:20px;
-    bottom:20px;
-    background:#09C;
-    color:#eee;
-    font-family: Tahoma, Geneva, sans-serif;
-    height:30px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    border: 1p solid #999;
-    cursor:pointer;
+	    //width: 180px;
+	    position: relative;
+	    display: block;
+	    margin: auto;
+	    display: block;
+		position: relative;
+		float: left;
+		width: 245px;
+		padding: 11px 11px 11px 45px;
+		height: auto;
+		font-weight: 100;
+	    //right: 20px;
+	    bottom: 20px;
+	    background: #006696 url('../assets/icons_for_admin/upload.png') left center no-repeat;
+	    color: #eee;
+	    //font-family: Tahoma, Geneva, sans-serif;
+	    //height: 30px;
+	    font-size: 14px;
+	    //float: right;
+	    border: 0px solid #FFF;
+	    cursor: pointer;
+	    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
     }
     & input[type='submit']:hover {
-    background:#fff;
-    color:#09C;
+	    background: #0B9BD0 url('../assets/icons_for_admin/upload.png') left center no-repeat;
+	    color: #FFF;
     }
     & textarea:focus, input:focus {
-    border: 1px solid #09C;
+	    border: 1px solid #09C;
     }
     & .fileContainer {
         overflow: hidden;
         position: relative;
         color:#81D4D7;
-        cursor:pointer;
-        
+        cursor:pointer;    
     }
 
     & .fileContainer [type=file] {
         cursor: inherit;
+		display: inline-block;
+		font-size: 999px;width: 244px;
+		opacity: 0;
+		position: absolute;
+		right: -245px;
+		top: 0;
+		margin: 0;
+		padding: 0;
+		height: 36px;
+		margin-top: -20px;
+		top: 12px;
+		
+		z-index: 99;
+        /*
         display: block;
         font-size: 999px;
         filter: alpha(opacity=0);
@@ -275,6 +301,7 @@ background-color:#EAF2D3;
         right: 0;
         text-align: right;
         top: 0;
+        */
     }
     & .fileContainer:hover {
         color:#8193D7;
@@ -287,45 +314,69 @@ background-color:#EAF2D3;
 }
 
 .header-for-content{
-    background:#255980;
-    width:804px;
-    height:60px;
+    //background:#255980;
+    background: #EEEEEE;
+    //width:804px;
+    //height:60px;
+    width: 680px;
+    height: 28px;
     padding:10px;
     color:#FFFFFF; 
+}
+.header-for-content h8 {
+	padding: 4px 0px 4px 4px;
+	font-size: 18px;
+	color: #000;
+	font-family: helvetica;
+	font-weight: lighter;
+	float: left;
+	display: inline-block;
+	position: relative;
+}
+.header-for-content p {
+	float: right;
+	color: #000;
+	font-family: helvetica;
+	font-weight: lighter;
+	font-size: 14px;
+	padding: 7px 15px 3px 13px;
 }
 
 .instructions{
     color:#61646E;
     padding:10px;
+    clear: both;
 }
 .posting-preview{
     float:left;
     background:#fff;
-    width:370px;
+    width: 568px;
+    //width: 370px;
     height:400px;
     padding:5px;
-    margin:5px;
+    margin: 5px 5px 5px 76px;
     border:solid #BABBBF 1px;
     overflow:auto;
 }
 #preview-button{
     margin:5px;
     padding:5px;
-    background:#04787A;
-    color:#04787A;
+    background:#CC7AA5;
+    color:#FFF;
     cursor:pointer;
-    width:60px;
+    //width:60px;
+    width: 108px;
     height:20px;
     position:absolute;
-    margin-left:355px;
+    //margin-left:355px;
+    margin-left: 76px;
     text-align:center;
-    margin-top:-10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    //margin-top:-10px;
+    margin-top: -60px;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
     
 }
 #preview-button:hover{
-    background:#19A4A6;
-    color:#fff;
+    background: #BC7499;
+    color: #fff;
 }
