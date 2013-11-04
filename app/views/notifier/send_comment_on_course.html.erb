@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>Cursame | Bienvenido</title>
+  <title>Cursame</title>
     <style type="text/css">
       h1 { font-family: arial; font-size: 15px; font-weight: lighter; }
       p { font-family: arial; color: #333; font-size: 14px; }
@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td style="padding:0px 30px 20px 30px;" width="600px">
-          <p>Hola  <%= @user.email %> hay una nueva tarea titulada <%=@delivery.title%>, que comenzará el <%=@delivery.publish_date%> y terminará el <%=@delivery.end_date%> .</p>
+          <p>Hola el usuario <%= @user.email %> comento en el curso <%=@course.title%>.</p>
         </td>
       </tr>
       <tr>
@@ -35,7 +35,7 @@
         <td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
           <center>
             <span class="buttonClick">
-                        <%= link_to 'Ir a la red', "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" %></span>
+              <%= link_to 'Ir al curso', "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}" %></span>
           </center>
         </td>
       </tr>
