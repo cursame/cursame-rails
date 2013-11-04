@@ -744,6 +744,7 @@ class Api::ApiController < ApplicationController
     fecha = params[:date].split('-')
     @events = @user.events.where("extract(year from starts_at) = ? AND extract(month from starts_at) = ?", fecha[0], fecha[1]).order('created_at DESC')
     render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
+    #@events = @user.events.where("strftime('%Y-%m', starts_at) = ?", params[:date]).order('created_at DESC')
   end
 
   def native_list_activities_of_course
