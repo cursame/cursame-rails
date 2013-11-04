@@ -7,9 +7,9 @@
     </div>
   </div>
   <% if comment_id.nil? then %>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :placeholder=>'¿Que estás pensando?', :required =>'required' %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :placeholder=>'¿Que estás pensando?' %>
   <% else %>
-    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81,  :placeholder=>'¿Que estás pensando?', :required =>'required' %>
+    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81,  :placeholder=>'¿Que estás pensando?' %>
   <% end %>
   <%= hidden_field_tag 'commentable_id', commentable_id %>
   <%= hidden_field_tag 'commentable_type', commentable_type %>

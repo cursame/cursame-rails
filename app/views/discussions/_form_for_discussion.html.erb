@@ -29,8 +29,8 @@
      
      <%end%>
      
-    <%= f.text_field :title, :placeholder=>'Titulo de la Discusión', :required =>'required', :minlength=>"2" %>
-    <%= f.text_area :description , :placeholder=>'Descripción', :required =>'required', :rows => 4, :cols => 81, :class => 'border_for_text'%>  
+    <%= f.text_field :title, :placeholder=>'Titulo de la Discusión', :minlength=>"2" %>
+    <%= f.text_area :description , :placeholder=>'Descripción', :rows => 4, :cols => 81, :class => 'border_for_text'%>  
     
     <% if @active_edit == false %>
     
@@ -57,14 +57,12 @@
            courses = @discussion.courses.build
        end%>
        
-       <%= f.fields_for :courses do |discussion| %>
-           <%= discussion.hidden_field :delivery["#{@course.id}"] %>
-       <%end%>
+       <%=  hidden_field_tag "delivery[course_ids][]", @course.id %>
        
        <script>
          $(document).ready(function(){
          $('#help_discussion').css('margin-top','10px');
-         $('#discussion_description').attr("placeholder","Coloca un discusión en este curso.");
+         $('#discussion_description').attr("placeholder","Coloca una discusión en este curso.");
          
          });
        </script>

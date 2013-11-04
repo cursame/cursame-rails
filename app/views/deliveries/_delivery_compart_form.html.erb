@@ -27,22 +27,22 @@
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         
-        <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea', :class => 'form_fix_title_overlay', :required =>'required' %>
+        <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea', :class => 'form_fix_title_overlay' %>
         <%#= f.datetime_select :publish_date%>
         <%#= f.datetime_select :end_date%>
 		
 	<div style="float: right;">
 		<span style="display: block; position: relative; float: left; margin-right: 5px; padding-top: 13px;">Fecha entrega</span>
-        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery form_fix_date_overlay", :id => 'end_date_'+random_id, :required =>'required', :value=>f.object.end_date  %>
+        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
     </div>
     
     <div style="float: left;">
         <span style="display: block; position: relative; float: left; margin-right: 5px; padding-top: 13px;">Fecha publicación</span>
-        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :class=>"date-input delivery form_fix_date_overlay", :id => 'publish_date_'+random_id ,:required =>'required', :value=>f.object.end_date %>
+        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :class=>"date-input delivery form_fix_date_overlay delivery_publish_date", :id => 'publish_date_'+random_id, :value=>f.object.end_date %>
     </div>
     
     <div style="margin-bottom: 10px;">
-        <%= f.text_area :description , :rows => 4, :cols => 81 , :placeholder=>'Descripción', :required =>'required', :class => 'border_for_text' %>
+        <%= f.text_area :description , :rows => 4, :cols => 81 , :placeholder=>'Descripción', :class => 'border_for_text' %>
     </div>
     
         <% if @active_edit == false %>
@@ -53,7 +53,7 @@
         <div style="position:relative; width:600px;margin-bottom:50px;">
         	<div style="float:right;">
 		       
-          <%= f.number_field :porcent_of_evaluation, :placeholder=>'En evaluación final', :class=>"percent-input", :required =>'required' %>
+          <%= f.number_field :porcent_of_evaluation, :placeholder=>'En evaluación final', :class=>"percent-input" %>
            </div>
            </div>
           

@@ -61,3 +61,30 @@
 .frcomment{
     cursor:text;
 }
+
+/* validando los placeholders*/
+.red-placeholder::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #EE1D1D;
+}
+.red-placeholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #EE1D1D;
+}
+.red-placeholder::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #EE1D1D;
+}
+.red-placeholder:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #EE1D1D;
+}
+
+.normal-placeholder::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #c9d1da;
+}
+.normal-placeholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #c9d1da;
+}
+.normal-placeholder::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #c9d1da;
+}
+.normal-placeholder:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #c9d1da;
+}
