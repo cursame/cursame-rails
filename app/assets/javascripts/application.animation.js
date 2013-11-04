@@ -139,9 +139,6 @@ $(document).ready(function() {
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    
-                    console.log(arguments);
-                    
                    /* var title = prompt('Event Title:');
                     if (title) {
                         calendar.fullCalendar('renderEvent',

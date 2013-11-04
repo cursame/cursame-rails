@@ -29,10 +29,13 @@
       </div>
     </div>
     
-         <% @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
+     <% @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
+     <% if @permisos.nil? %>
+      <% next %>
+     <% end %>
      <div class="manager-role-user">
-              <% @role = Role.find(@permisos.role_id)%>
-              <%= @role.title %>
+      <% @role = Role.find(@permisos.role_id)%>
+      <%= @role.title %>
      </div>
      
          <div class="actions">
