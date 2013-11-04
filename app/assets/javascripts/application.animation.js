@@ -251,7 +251,7 @@ $(document).ready(function() {
     });
 
     //Submit btns
-    $('#post-forms > div').each(function( index, value ) {   
+    /*$('#tabs_form > div').each(function( index, value ) {   
     
              
         $(value).find('#comment-post-form').click(function() {
@@ -261,19 +261,7 @@ $(document).ready(function() {
                 var lokye = $(".error").length;
          if (lokye == 0){
               $("#notice").html('');
-             /* 
-              $('#comment-post-form').css('display','none');
-              $("#notice").css('background','#E63A3A');
-              $("#notice").css('color','#fff');
-              $("#notice").animate( { width: "100%", padding: "20px", border: "1px solid #E63A3A" }, { queue: false, duration: 100 });
-              $('#notice').append('Error de validación hay algunos campos sin llenar.');
-              
-              setTimeout(function() {
-                      
-                        $('#notice').html('')
-                        $( "#notice" ).animate( { width: "100%", height: "0px", padding: "0px", border: "1px solid #E63A3A", background: "#E63A3A" }, { queue: false, duration: 100 });
-                        $('#comment-post-form').css('display','block');
-              }, 1000);*/
+             
               
             }else{
              $("#notice").html('');
@@ -315,7 +303,6 @@ $(document).ready(function() {
                     $(".content_killer").html('');
                     $(".choser").html('');
                     $('.youtube_content_delivery').hide();
-                    DisableBlured();
                    // alert( ' se ha enviado el formulario correctamente');
                     $(this).css('display','none');
            
@@ -324,7 +311,7 @@ $(document).ready(function() {
            
         });
 
-    });
+    });*/
 
     /*
      *=======================================================================================
