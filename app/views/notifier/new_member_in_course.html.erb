@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>Cursame | Bienvenido</title>
+  <title>Cursame</title>
     <style type="text/css">
       h1 { font-family: arial; font-size: 15px; font-weight: lighter; }
       p { font-family: arial; color: #333; font-size: 14px; }
@@ -12,18 +12,18 @@
     </style>
   </head>
 
-  <body background="http://<%= @member.devise_mailer_subdomain %>.<%=@member.ubication %>/assets/mails/utiles.jpg" style="background-position: top center;">
+  <body background="http://<%= @user.devise_mailer_subdomain %>.<%= @user.ubication %>/assets/mails/utiles.jpg" style="background-position: top center;">
 
     <center>
     <table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
       <tr>
-        <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @member.devise_mailer_subdomain %>.<%=@member.ubication %>/assets/mails/logo_welcome.png";>
-          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;">Notificaci&oacoute;</b></h1>
+        <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/logo_welcome.png";>
+          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;">Notificación</b></h1>
         </td>
       </tr>
       <tr>
         <td style="padding:0px 30px 20px 30px;" width="600px">
-          <p>Hola el usuario  "<%=@member.email%>" esta esperando ser aceptado en el curso <%= @course.title%>.</p>
+          <p>Hola, el usuario <%= @user.email %> desea formar parte del curso <%=@course.title%>.</p>
         </td>
       </tr>
       <tr>
@@ -35,7 +35,7 @@
         <td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
           <center>
             <span class="buttonClick">
-                        <%= link_to 'Ir al curso', "http://#{@member.devise_mailer_subdomain}.#{@member.ubication}/courses/#{@member.id}/members" %></span>
+              <%= link_to 'Ir al administrador de Usuarios', "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}/members" %></span>
           </center>
         </td>
       </tr>
@@ -45,11 +45,10 @@
       </tr>
       <tr>
         <td>
-        <!--  <center><img src="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/contrasena.jpg"></center>-->
+
         </td>
       </tr>
-    </table>
-    <span class="viewFooter">Pomona #7, Roma Norte, Delegaci&oacuote;n Cuauhtemoc, Ciudad de M&eacute;xico.</span>
+    </table>  <span class="viewFooter">Pomona #7, Roma Norte, Delegación Cuauhtémoc, Ciudad de México.</span>
     </center>
 
   </body>

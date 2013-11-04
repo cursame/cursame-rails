@@ -98,4 +98,12 @@ class Notifier < ActionMailer::Base
     mail to: emails, subject: subject
   end
 
+  def new_member_in_course(course, user)
+    @course = course
+    @user = user
+    emails = @course.owners.map{|user| user.email}
+    subject = "#{@user.name} desea ingresar al curso #{@course.title} del cual eres maestro"
+    mail to: emails, subject: subject
+  end
+
 end

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class MembersInCoursesController < ApplicationController
   # GET /members_in_courses
   # GET /members_in_courses.json
@@ -14,7 +15,7 @@ class MembersInCoursesController < ApplicationController
   # GET /members_in_courses/1.json
   def show
     @members_in_course = MembersInCourse.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @members_in_course }
@@ -45,8 +46,13 @@ class MembersInCoursesController < ApplicationController
     @course_find = Course.find(@course)
     respond_to do |format|
       if @members_in_course.save!
-       format.js
-       format.json
+        # Mail de notificación de un nuevo usuario.
+        if (!@members_in_course.owner and @course_find.public_status == "Private") then
+          mail = Notifier.new_member_in_course(@course_find, @members_in_course.user)
+          mail.deliver
+        end
+        format.js
+        format.json
       else
        format.js
        format.json
@@ -77,7 +83,7 @@ class MembersInCoursesController < ApplicationController
     @members_in_course.destroy
 
     respond_to do |format|
-      format.js 
+      format.js
       format.json
     end
   end
