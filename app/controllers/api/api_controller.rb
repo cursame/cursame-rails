@@ -750,7 +750,7 @@ class Api::ApiController < ApplicationController
   def native_list_activities_of_course
     course = Course.find(params[:id])
     @pubs = []
-    publications = course.walls
+    publications = course.walls.order('created_at DESC')
 
     publications.each do |publication|
         type = publication.publication_type
@@ -786,7 +786,7 @@ class Api::ApiController < ApplicationController
         }
        @pubs.push(pub)
       end    
-    render :json => {:results => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
+    render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
   end
 
   private
