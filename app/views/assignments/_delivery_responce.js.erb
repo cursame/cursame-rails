@@ -3,24 +3,24 @@
 /*valdiación de formulario de comment*/
  $('#'+"<%=formId%>").submit(function(){
     
-     var assignment_title = $('#assignment_title').val();
-     var assignment_brief_description = $('#assignment_brief_description').val();
+     var assignment_title = $('.'+"<%=formId%>"+'_assignment_title').val();
+     var assignment_brief_description = $('.'+"<%=formId%>"+'_assignment_brief_description').val();
      
      if (assignment_title == ''){
-         $('#assignment_title').attr("placeholder", "Este campo no debe quedar vacio coloca el título.");
-         $('#assignment_title').addClass('red-placeholder');
-         $('#assignment_title').removeClass('normal-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_title').attr("placeholder", "Este campo no debe quedar vacio coloca el título.");
+         $('.'+"<%=formId%>"+'_assignment_title').addClass('red-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_title').removeClass('normal-placeholder');
          return false;
          }else if (assignment_brief_description == ''){
-         $('#assignment_brief_description').attr("placeholder", "Este campo no debe quedar vacio coloca la descripcción.");
-         $('#assignment_brief_description').addClass('red-placeholder');
-         $('#assignment_brief_description').removeClass('normal-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_brief_description').attr("placeholder", "Este campo no debe quedar vacio coloca la descripcción.");
+         $('.'+"<%=formId%>"+'_assignment_brief_description').addClass('red-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_brief_description').removeClass('normal-placeholder');
          return false;
          }else{
-         $('#assignment_title').attr("placeholder", "");
-         $('#assignment_title').addClass('normal-placeholder');
-         $('#assignment_brief_description').attr("placeholder", "");
-         $('#assignment_brief_description').addClass('normal-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_title').attr("placeholder", "");
+         $('.'+"<%=formId%>"+'_assignment_title').addClass('normal-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_brief_description').attr("placeholder", "");
+         $('.'+"<%=formId%>"+'_assignment_brief_description').addClass('normal-placeholder');
          return true;     
      }  
  
