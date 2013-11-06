@@ -167,6 +167,20 @@
         <%end%>
       <%end%>
 
+      <!-- Notificacion: 17 - Nueva respuesta en un cuestionario -->
+    <% when 'new_assignment_on_survey' %>
+      <% if notification.notificator != nil %>
+        <% if notification.notificator.user != nil %>
+          <% user = notification.notificator.user %>
+          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
+          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
+          El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
+          ha respondido el cuestionario <b><%= notification.notificator.survey.name %><b>
+          <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.survey.courses.first.id.to_s
+%>?search=Survey&id_search=<%=notification.notificator.survey.id.to_s%>&show_survey=<%= notification.notificator_id.to_s %>")</script>
+        <%end%>
+      <%end%>
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>

@@ -44,6 +44,7 @@ class CoursesController < ApplicationController
 
     @id = params[:id]
     @show_assignment = params[:show_assig]
+    @show_survey = params[:show_survey]
     @show_accomplishment = params[:show_accom]
     @search = params[:search]
     @id_search = params[:id_search]
@@ -62,8 +63,6 @@ class CoursesController < ApplicationController
     end
 
   end
-
-
 
   def send_mails
     @user = current_user
@@ -547,15 +546,35 @@ class CoursesController < ApplicationController
       end
   end
 
+  def course_assignment_notif
+    @assignment = Assignment.find(params[:id])
+     respond_to do |format|
+        #format.html
+        format.js
+        format.json
+      end
+  end
+
   def course_survey
     @responces = UserSurvey.find(params[:id])
 
-     respond_to do |format|
-        #format.html
-        format.json
-        format.js
-      end
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
 
+  end
+
+  def course_survey_notif
+    @responces = UserSurvey.find(params[:id])
+
+    respond_to do |format|
+      #format.html
+      format.js
+      format.json
+    end
+    
   end
 
   def delivery_menu

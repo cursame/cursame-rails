@@ -7,7 +7,6 @@ class UserSurvey < ActiveRecord::Base
   accepts_nested_attributes_for :user_survey_responses, :reject_if => lambda { |a| a[:answer_id].blank? }, :allow_destroy => true
 
 
-
   after_create do
     self.survey.courses.each do
       |course|
@@ -21,7 +20,12 @@ class UserSurvey < ActiveRecord::Base
           |teacher|
           teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil?
         end
+
+        teacher_users = teachers.map { |t| t.user}
+
+        Notification.create(:notificator => self, :users => teacher_users, :kind => "new_assignment_on_survey", :active => true)
       end
+
     end
   end
 

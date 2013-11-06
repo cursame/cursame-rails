@@ -86,17 +86,13 @@
               
               // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
               if(<%= (@show_assignment and @id_search) %>) {
-                // Se despliegan las tareas
-                var assignmentsElement = $("#banner-btns > li.calif").first();
-                assignmentsElement.click();
-                
-                // Se deslpiegan las entregas de la tarea elegida
-                var deliveryElement = $(".delivery_f").find("#opentag<%= @id_search%>").parent().parent();
-                deliveryElement.find("#OpenClose").click();
-                
-                // Se despliega la nueva entrega en particular
-                var assignmentElement = deliveryElement.find("#div-assignment-<%= @show_assignment %> div.title a");
-                assignmentElement.click();
+                $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+                $.get('<%= course_assignment_l_notif_path(@show_assignment) %>', function() {
+                  $('#tarea_en_carga_notification').css('width', '100%');
+                  $('#tarea_en_carga_notification').css('min-width', '100%');
+                  //$('#tarea_en_carga_notification').css('margin-left', '10%');
+                  $('#tarea_en_carga_notification').css('margin-top', '25%');
+                });
               }
             });
           </script>
@@ -407,6 +403,14 @@
         });
 		 	  
 		 	  $(document).ready(function() {
+          if(<%= (@show_survey and @id_search) %>) {
+            $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+            $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
+              $('#tarea_en_carga_notification').css('min-width', '100%');
+              $('#tarea_en_carga_notification').css('margin-left', '10%');
+            });
+          }
+
 		 	    $.ajaxSetup({
 		 	      timeout:120000
 		 	    });
