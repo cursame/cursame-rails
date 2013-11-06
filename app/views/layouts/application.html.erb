@@ -121,17 +121,16 @@
 
                  <%#=  debug current_role %>
           <% if current_role == "admin"%>
-              <%= link_to "Administración", managers_wall_path, :class => "admin-access"%>
+              <%= link_to "Administración", managers_wall_path, :style =>'float: right; padding: 3px 5px; background: #1A83D5; color: #FFF; margin-right: 10px; font-weight: 100; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;', :class => "admin-access"%>
            <%end%>
       <% else %>
       
       
-      <!--
+
       <div style="float:right;">
-         <%= link_to "Logueate", new_user_session_path %><% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>
-         <%end%>
+       <!--  <%= link_to "Logueate", new_user_session_path %><% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %><%end%>-->
       </div>
-      -->
+
       
       
       <% end %>
@@ -151,7 +150,11 @@
  </div>
   
 </header>
-
+<div id="sub_nav">
+	<div class="user_subnav"></div>
+	<div class="friends_subnav"></div>
+	<div class="courses_subnav"></div>
+</div>
 
 <div class="center-div">
   <!-- content -->
@@ -264,10 +267,13 @@
   		$('#ShowLogout').slideToggle(100).delay(300);
   	});
   	
-  	$('.ZenboxTabRight').hover ( function() {
+  	$('.ZenboxTabRight').mouseenter ( function() {
   		$(this).animate({ marginRight: "60px" });
 	  	$(this).addClass('zenbox_tab__text');
-	  	console.log('hola');
+  	});
+  	$('.ZenboxTabRight').mouseleave ( function() {
+  		$(this).animate({ marginRight: "0px" });
+  		$(this).removeClass('zenbox_tab__text');
   	});
   	
   </script>

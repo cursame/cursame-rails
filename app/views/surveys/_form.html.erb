@@ -15,14 +15,16 @@ random_id = "#{random}"
 
            </div>
        </div>
-  <div style="border-bottom: 1px solid #ccc; height: 85px;">
+  <div class="form_container_fix_survey" style="border-bottom: 1px solid #ccc; height: 85px;">
 
-    <%= f.text_field :name, :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
-    <div style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
-    <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey survey_publish_date", :value=>f.object.publish_date %>
-    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega ', :id => 'end_date_'+random_id, :class=>"date-input survey survey_end_date", :value=>f.object.end_date %>
-    </div>
-  </div></br>
+	  <%= f.text_field :name, :style =>'outline-width: 0px;', :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
+    
+	  <div class="form_fix_survey" style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
+		  <%= f.text_field :publish_date, :style =>'outline-width: 0px;', :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey survey_publish_date", :value=>f.object.publish_date %>
+		  <%= f.text_field :end_date, :style =>'outline-width: 0px;', :placeholder=>'Fecha de entrega ', :id => 'end_date_'+random_id, :class=>"date-input survey survey_end_date", :value=>f.object.end_date %>
+	  </div>
+	  
+  </div>
 
     <% if !active_edit %> 
       <div id="box-question" class="box-question">
@@ -37,12 +39,14 @@ random_id = "#{random}"
       </div>
     <% end %>
 
+	<div class="form_submit_fix_survey" style="padding: 10px 0px;">
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
     <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary", :id => 'comment-post-form'%>
-    <br>
+    
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
     
     <a class="help survey_help" id="help_survey"><%= image_tag('help.png')%></a>
+	</div>
 	
     <script>
              $('#help_survey').click(function() {

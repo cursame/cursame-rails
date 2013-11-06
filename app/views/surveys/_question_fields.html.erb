@@ -1,7 +1,7 @@
 <div id="box-question-child" class="question-field">
-  <div class="element">
+  <div class="element" style="padding: 12px 0px; height: 50px;">
       <div id="question-num" class="num">1.</div>
-      <%= f.text_field :content, :rows => 3, :placeholder=>'Ingresar pregunta' %>
+      <%= f.text_field :content, :rows => 3, :style =>'width: 410px; margin-right: 5px; outline-width: 0px;', :placeholder=>'Ingresar pregunta' %>
       <%#= f.text_field :value%>
       <%= link_to_remove_fields "Eliminar", f, {:class=>'remove-icon', :clear => 'both'}, '#box-question'  %>
   </div>
@@ -11,6 +11,6 @@
       <% end %>
   </div>
   <div class="request-field" style="height: 40px;">
-    <%= link_to_add_fields "+ Agregar Respuesta", f, :answers, {:class=>'add-request'}, '#box-request' %>
+    <%= link_to_add_fields "Agregar Respuesta", f, :answers, {:class=>'add-request'}, '#box-request' %>
   </div>
 </div>

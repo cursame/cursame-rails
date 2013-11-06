@@ -9,18 +9,22 @@
       <div id="tab-form-options">
          <% permitted_to? :create, :comments do %>
          <!--<a href="#message-form-area" class="message-form-btn blured"  ><div class="border" ><div class="icon"></div></div>Comentario</a>-->
-         <a id="comment-tab" class="simple-tab selected_tab"><%= image_tag('comment-cir-mini.png', width:22, height:22)%> Comentario</a>
+         <a id="comment-tab" class="simple-tab selected_tab">Comentario
+         	 <!--
+         	<span style="background: url('/assets/icon_small_courses.png') no-repeat; width: 30px; height: 30px; display: inline; position: absolute; margin-left: -50px;;"></span>
+	         <%= image_tag('comment-cir-mini.png', width:22, height:22)%> --> 
+         </a>
          <%end%>
          <% permitted_to? :create, :deliveries do %>      
-             <a id="delvery-tab" class="simple-tab"> <%= image_tag('comment-cir-mini-homework.png', width:22, height:22)%>  Tarea</a>
+             <a id="delvery-tab" class="simple-tab "> <!-- <%= image_tag('comment-cir-mini-homework.png', width:22, height:22)%> --> Tarea</a>
              
          <% end%>
          <% permitted_to? :create, :discussions do %>
-            <a id="discusison-tab" class="simple-tab"><%= image_tag('comment-cir-mini-discusion.png', width:22, height:22)%>Discusión</a>
+            <a id="discusison-tab" class="simple-tab"> <!-- <%= image_tag('comment-cir-mini-discusion.png', width:22, height:22)%> --> Discusión</a>
          
          <% end%>
          <% permitted_to? :create, :surveys do %>      
-            <a id="survey-tab" class="simple-tab"><%= image_tag('comment-cir-mini-surveys.png', width:22, height:22)%> Cuestionario</a>
+            <a id="survey-tab" class="simple-tab"> <!-- <%= image_tag('comment-cir-mini-surveys.png', width:22, height:22)%> --> Cuestionario</a>
          <% end%>
        </div>
        
@@ -36,18 +40,19 @@
       <% end %>
       </div>
     </div>
-    <div id="delivery-form-area-tab" class="flonder "  style="display:none;">
+    
+    <div id="delivery-form-area-tab" class="flonder" style="display:none;">
       <% permitted_to? :create, :deliveries do %>        
           <%= render :partial => '/deliveries/delivery_compart_form', :locals => {:active_edit => @active_edit}%>
       <%end%>
     </div>
-    <div id="survey-form-area-tab" class=" survey-form-area-style flonder "  style="display:none;" >
+    <div id="survey-form-area-tab" class="survey-form-area-style flonder" style="display:none;" >
       <% permitted_to? :create, :surveys do %>        
           <%= render :partial => '/surveys/form', :locals => {:active_edit => @active_edit}%>
       <%end%>
     </div>
 
-    <div id="discussion-form-area-tab" class="  flonder"   style="display:none;">
+    <div id="discussion-form-area-tab" class="flonder" style="display:none;">
         
       <% permitted_to? :create, :discussions do %>
       <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit}%>
@@ -63,7 +68,7 @@
   <div id="tab-form-options">
        
           <% permitted_to? :create, :comments do %>
-          <a id="comment-tab" class="simple-tab"><%= image_tag('comment-cir-mini.png', width:22, height:22)%> Comentario</a>
+          <a id="comment-tab" class="simple-tab"> <!-- <%= image_tag('comment-cir-mini.png', width:22, height:22)%> -->Comentario</a>
           <%end%>
   </div>            
   <div id="message-form-area-tab"  class=" flonder" >

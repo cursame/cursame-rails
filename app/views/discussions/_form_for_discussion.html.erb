@@ -29,8 +29,8 @@
      
      <%end%>
      
-    <%= f.text_field :title, :placeholder=>'Titulo de la Discusión', :minlength=>"2" %>
-    <%= f.text_area :description , :placeholder=>'Descripción', :rows => 4, :cols => 81, :class => 'border_for_text'%>  
+    <%= f.text_field :title, :style =>'outline-width: 0px;', :placeholder=>'Titulo de la Discusión', :minlength=>"2" %>
+    <%= f.text_area :description , :style =>'outline-width: 0px;', :placeholder=>'Descripción', :rows => 4, :cols => 81, :class => 'border_for_text'%>  
     
     <% if @active_edit == false %>
     

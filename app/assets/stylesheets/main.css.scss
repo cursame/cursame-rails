@@ -157,7 +157,8 @@ input:-moz-placeholder {
     }
   & .upload-label{
     float: left;
-    background: #f2f7fd;
+    background: #FFF;
+    color: #333;
     border: $border-high;
     @include border-radius-btn;
     width: 568px;
@@ -184,6 +185,9 @@ input:-moz-placeholder {
         text-overflow: ellipsis;
         overflow: hidden;
         width: 125px;
+        & a {
+	        color: #333;
+        }
       }
     }
   }
@@ -1889,11 +1893,57 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	float: right;
 }
 
+#sub_nav {
+	background: #FFF;
+	height: 40px;
+	width: 100%;
+	display: none;
+	position: fixed;
+	clear: both;
+	margin-top: 35px;
+	border-bottom: 1px solid #CCC;
+}
+.user_subnav {
+	background: #000;
+	display: block;
+	height: 41px;
+	width: 120px;
+	float: left;
+	display: inline-block;
+}
+.friends_subnav {
+	background: #1A83D5;
+	display: block;
+	height: 41px;
+	width: 120px;
+	float: right;
+	display: inline-block;
+}
+.courses_subnav {
+	background: #CCC;
+	display: block;
+	height: 41px;
+	width: 120px;
+	float: right;
+	display: inline-block;
+}
+
 /* --------------------- media queries --------------------- */
 
 @media all and (max-width: 940px) and (min-width: 675px) {
   #side-bar {
     display: none;
+  }
+  .headFix {
+	  width: 100%;
+  }
+  #box-titles {
+	  width: 600px;
+	  margin: 110px auto 0 auto;
+	  float: none;
+  }
+  #sub_nav {
+	  display: inline-block;
   }
 }
 
@@ -1901,8 +1951,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   #side-bar {
     display: none;
   }
-  #box-stream-post {
-	  display: none;
+  .headFix {
+	  width: 100%;
   }
   .hola {
 	  visibility: visible;

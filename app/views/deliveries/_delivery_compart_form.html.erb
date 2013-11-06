@@ -27,22 +27,22 @@
         <%= f.hidden_field :network_id, :value => current_network.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         
-        <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea', :class => 'form_fix_title_overlay' %>
+        <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea', :style =>'outline-width: 0px;', :class => 'form_fix_title_overlay' %>
         <%#= f.datetime_select :publish_date%>
         <%#= f.datetime_select :end_date%>
 		
 	<div style="float: right;">
 		<span style="display: block; position: relative; float: left; margin-right: 5px; padding-top: 13px;">Fecha entrega</span>
-        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
+        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
     </div>
     
     <div style="float: left;">
         <span style="display: block; position: relative; float: left; margin-right: 5px; padding-top: 13px;">Fecha publicación</span>
-        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :class=>"date-input delivery form_fix_date_overlay delivery_publish_date", :id => 'publish_date_'+random_id, :value=>f.object.end_date %>
+        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_publish_date", :id => 'publish_date_'+random_id, :value=>f.object.end_date %>
     </div>
     
     <div style="margin-bottom: 10px;">
-        <%= f.text_area :description , :rows => 4, :cols => 81 , :placeholder=>'Descripción', :class => 'border_for_text' %>
+        <%= f.text_area :description , :rows => 4, :cols => 81, :style =>'outline-width: 0px;', :placeholder=>'Descripción', :class => 'border_for_text' %>
     </div>
     
         <% if @active_edit == false %>
@@ -50,53 +50,52 @@
 		<% 1.times do
 		areas_of_evaluations = @delivery.areas_of_evaluations.build
 		end%>
-        <div style="position:relative; width:600px;margin-bottom:50px;">
-        	<div style="float:right;">
-		       
-          <%= f.number_field :porcent_of_evaluation, :placeholder=>'En evaluación final', :class=>"percent-input" %>
-           </div>
-           </div>
-          
-          
-           <div style="width:600px; min-height:0px; max-height:200px; overflow:auto; background:#fff;">           
-        <%= f.fields_for :areas_of_evaluations do |builder| %>
+
+        <div class="form_fix_criteria" style="width: 566px; min-height:0px; max-height:200px; overflow:auto; background:#fff;">
+        	<%= f.fields_for :areas_of_evaluations do |builder| %>
             <%= render :partial => "areas_of_evaluations/form", :id => 'areas_of_evaluations', :locals => { :f => builder } %>
-        <% end %>
-           </div>
-           <div style="width:600px; min-height:40px;" >
-               <div id="more_nested_evaluation_btn" class="evaluate-btn" style="float:left;">Agregar Criterio</div>
-               
-            <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
-            
-            </div>
-         
-        
+			<% end %>
+        </div>
+
+        <div style="width: 557px; min-height: 40px;">
+           <div id="more_nested_evaluation_btn" class="evaluate-btn" style="float:left;">Agregar Criterio</div>
+			<div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
+			<%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación final', :style =>'width: 113px; float: right; display: inline-block; position: absolute;
+margin-left: 292px; height: 21px; outline-width: 0px;', :class=>"percent-input" %>
+        </div>
+
+
         <%#= f.fields_for :assets do |asset| %>
             <%#= render :partial => "shared/assets_form" %>
         <%#end%>
-        
-        <div style="position:relative; width:600px; height:30px;">
-        
-        <div class="submit-area"></div>
-                
-        <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
-        <%= f.submit "Publicar", :id => 'comment-post-form'%>
+
+        <div style="height:30px;">
+	        <div class="submit-area"></div>
+	        <div style="position: relative; margin-top: 2px; margin-left: 15px; min-height: 31px; float: right;">
+			<%= button_tag "Cancelar", :type => 'button', :style =>'position: relative; display: block;', :class=>'input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
+			<%= f.submit "Publicar", :style =>'position: relative; display: block;', :id => 'comment-post-form'%>
+			</div>
+			
+	        <div style="position: relative; margin-top: 7px; min-height: 31px; float: right;">
+        		<%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+			</div>
         </div>
         
         <%else%>
-          <div style="float:right;">
-          
-          <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn"%>        
-           </div>
-        <%end%>
-        <div style="position:absolute; margin-top:-66px; margin-left:430px; min-height:40px;">
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
         
-         </div>
+        <div style="float:right;">
+			<%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn"%>        
+		</div>
+        
+        <%end%>
         
 		<% if @active_edit == false %>
-		<div style="float:left; margin-top:-20px; margin-left:10px;">	<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a></div>  
-		<%end%>
+
+		<div style="float: left; margin-top: 9px; position: absolute; display: block;">
+			<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
+		</div>  
+
+	<%end%>
           
           
 		<script>

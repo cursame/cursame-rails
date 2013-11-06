@@ -72,8 +72,6 @@
 </div>
       </div><!-- ends place-hldr -->
 
-<div class="request_friendship_sent" style="/*display: none;*/">Solicitud enviada</div>
-
     </div><!-- ends box_comunity -->
 
 <% end %>
@@ -125,19 +123,6 @@
 		    else css={width:'100%', height:'auto'};
 		    $(this).css(css);
 		});
-
-		$('.add_friend_comunity').each( function() {
-			if ( $(this).has('.solistyle:contains("Solicitud enviada")').length > 0 ) {
-					$('.request_friendship_sent').show();
-				}
-		});
-
-		
-		//$('.add_friend_comunity .solistyle:contains("Solicitud enviada")').each( function() {
-			//$('request_friendship_sent').show();
-		//});
-		
-		//$('.solistyle:contains("Solicitud enviada")').css({ background: "#1B57A0" });
 		
 	</script>
 	

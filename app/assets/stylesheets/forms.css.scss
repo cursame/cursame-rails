@@ -91,19 +91,22 @@
     }
   }
   & .upload-label{
+  	width: 545px;
     float: left;
-    background: #f2f7fd;
+    background: #FFF;
     border: $border-high;
-    @include border-radius-btn;
-    width: 568px;
+    //@include border-radius-btn;
+    border: 1px solid #CCC;
     font-size: 12px;
     font-weight: 300;
     padding: 0px 5px 4px 5px;
-    margin-top: 4px;
+    margin-top: 16px;
     display: none;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+
     & .file-mini-upload{
       float: left;
-      width: 157px;
+      width: 148px;
       background: url('/assets/icons/file-basic-mini.png') no-repeat 1px 1px;
       height: 32px;
       padding: 0px 0px 0px 30px;
@@ -111,13 +114,15 @@
       margin: 4px 0px 0px 0px;
       cursor: pointer;
       border: solid 1px transparent;
+
       & span{
         float: left;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        width: 125px;
+        width: 118px;
       }
+      
       & .progress-bar {
         height: 5px;
         width: 120px;
@@ -143,20 +148,22 @@
       & .trash{
         display: none;
         float: right;
-        background: url('/assets/icons/trash-mini-active.png') no-repeat left;
+        background: url('/assets/icons/icon_trash_white.png') no-repeat left;
         width: 24px;
         height: 23px;
         margin: 5px 5px 0px 0px;
       }
       &:hover{
-        background-color: #e5edf6;
+        background-color: #333;
         border: solid 1px #b9c3d3;
+        color: #FFF;
         @include border-radius-btn;
         & .trash{
           display: block;
           &:hover{
-            background: #d5dde9 url('/assets/icons/trash-mini-hover.png') no-repeat left;
-            border: 1px solid #95a4be;
+            background: #FFF url('/assets/icons/icon_trash_dark.png') no-repeat left;
+            border: 1px solid #FFF;
+            color: #FFF;
             font-weight: bold;
             margin: 4px 4px 0px 0px;
           }
@@ -227,15 +234,15 @@
     cursor: pointer;
     @include border-radius-btn;
     @include bg-normal-btn;
-    @include shadow-normal-btn;
+    //@include shadow-normal-btn;
     margin: 4px 4px 2px 4px;
     font-size: 14px;
     &:hover{
       color: #555;
-      background: #f8f8f8;
-      -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
-      -moz-box-shadow:    inset 0px 1px 1px #91a5bb;
-      box-shadow:         inset 0px 1px 1px #91a5bb;
+      background: #F1F3F6;
+      //-webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+      //-moz-box-shadow:    inset 0px 1px 1px #91a5bb;
+      //box-shadow:         inset 0px 1px 1px #91a5bb;
     }
   }
   & .a-btn{
@@ -309,7 +316,7 @@
     color: #999;
     background: #fff;
     @include bg-normal-btn;
-    @include shadow-normal-btn;
+    //@include shadow-normal-btn;
     cursor: pointer !important;
     outline: none !important;
     @include border-radius-btn;
@@ -467,25 +474,32 @@
   & .percent-label{
     background: url('/assets/icons/percent-mini-high.png') no-repeat #FFF right !important;
     color: #999;
-    font-size: 12pt;
+    font-size: 17px;
     text-align: right;
     padding: 0px 23px 0px 0px;
     margin: 10px 0px 0px 0px;
     width: 30px;
     float: left;
   }
+  #total_nested_evaluation {
+	 border-top: 1px solid #999999; 
+	 font-size: 17px;
+  }
   //===============================================================
   //==========================  Sliders ===========================
   //===============================================================
   & .slider-content{
-    width: 245px;
+    //width: 245px;
+    width: 200px;
     position: relative;
     height: 18px;
   }
   & .slider{
     border-radius: 25px;
-    width: 240px;
+    //width: 240px;
+    width: 190px;
     position: absolute;
+    margin-left: 15px;
     //height: 13px;
     height: 4px;
     background: #CBCED4;
@@ -894,39 +908,55 @@
         background: url('/assets/icons/add-question.png') no-repeat;
         height: 35px;
         float: left;
+        color: #919FB5;
+        font-weight: 100;
         padding: 8px 0px 0px 37px;
         margin: 5px 0px 0px 22px;
+        
         &:hover{
-          text-decoration: underline;
+          text-decoration: none;
         }
+        
       }
       & .element{
         float: left;
         height: 40px;
         width: 100%;
+        
         & .remove-icon{
           display: none !important;
         }
+        
         &:hover{
+        
           & .remove-icon{
             display: block !important;
             height: 27px;
             float: left;
             margin-top: 6px;
             cursor: pointer;
-            background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
+            background: #FFF url('/assets/icons/icon_remove_red.png') left center no-repeat;
+            border: 1px solid #C32B1C;
             width: 45px;
             padding-left: 27px;
             line-height: 27px;
             font-size: 11px;
+            color: #C32B1C;
+            transition: all 0.2s;
+            -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+            
             &:hover{
-              background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
+            background: #A2140C url('/assets/icons/icon_remove.png') left center no-repeat;
+            transition: all 0.2s;
+            color: #FFF;
             }
+            
           }
         }
       }
 
       & .num{
+      
         float: left;
         color:  #919fb5;
         font-weight: bold;
@@ -941,17 +971,27 @@
         //background: url('/assets/icons/question-mini-low.png') no-repeat #FFF right !important;
       }
       & .add-request{
-        //background: url('/assets/icons/add-answer.png') no-repeat;
+        //background: url('/assets/icons/add-question.png') left center no-repeat;
         float: left;
-        width: 138px;
+        //width: 138px;
+        width: 573px;
         background-position: left;
-        height: 25px;
+        height: 30px;
+        color: #919FB5;
         line-height: 25px;
-        margin: 0px 0px 0px 69px;
-        padding: 6px 0px 0px 5px;
+        margin: 0px!important;
+        padding: 9px 0px 0px 27px!important;
+        transition: all 0.2s;
+        outline-color: #006696;
+        outline-width: 1px;
+        
         &:hover{
-          text-decoration: underline;
+        	background: #333334;
+			text-decoration: none;
+			color: #FFF;
+			transition: all 0.2s;
         }
+        
       }
     }
     & .request-field {
@@ -969,19 +1009,26 @@
       }
       &:hover{
         & .remove-icon{
-          display: block !important;
-          //height: 27px;
-          float: left;
-          margin-top: 6px;
-          cursor: pointer;
-          background: url('/assets/icons/remove-mini-icon-active.png') no-repeat;
-          //width: 10px;
-          padding-left: 27px;
-          line-height: 27px;
-          font-size: 11px;
-          &:hover{
-            background: url('/assets/icons/remove-mini-icon-hover.png') no-repeat;
-          }
+            display: block !important;
+            height: 27px;
+            float: left;
+            margin-top: 6px;
+            cursor: pointer;
+            background: #FFF url('/assets/icons/icon_remove_red.png') left center no-repeat;
+            border: 1px solid #C32B1C;
+            width: 45px;
+            padding-left: 27px;
+            line-height: 27px;
+            font-size: 11px;
+            color: #C32B1C;
+            transition: all 0.2s;
+            -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+            
+            &:hover{
+            background: #A2140C url('/assets/icons/icon_remove.png') left center no-repeat;
+            transition: all 0.2s;
+            color: #FFF;
+            }
         }
       }
       & .num{
@@ -1004,14 +1051,22 @@
         cursor: pointer;
         color: #00B1C5;
         font-size: 12px;
-        background: url('/assets/icons/question-icon-true.png') no-repeat right;
-        height: 23px;
-        padding: 12px 29px 0px 0px;
+        background: url('/assets/icons/icon_check.png') no-repeat right;
+        //height: 23px;
+        padding: 7px 29px 7px 0px;
         text-align: right;
         margin-right: 13px;
+        margin-top: 5px;
+        transition: all 0.2s;
+        -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+        
         &:hover{
-          background: url('/assets/icons/question-icon-true-hover.png') no-repeat right;
+          background: #72AF4B url('/assets/icons/icon_check_true.png') no-repeat right;
+          color: #FFF;
+          text-decoration: none;
+          transition: all 0.2s;
         }
+        
       }
       & .is-correct-chk{
         float: right;
@@ -1021,7 +1076,10 @@
         left: -9999px;
         /* Toggled State */
         &:checked ~ .is-correct-label {
-          background: url('/assets/icons/question-icon-false.png') no-repeat right;
+          background: #72AF4B url('/assets/icons/icon_check_true.png') no-repeat right;
+          color: #FFF;
+          text-decoration: none;
+          transition: all 0.2s;
         }
       }
     }
@@ -1089,8 +1147,8 @@
       width: 100%;
     }
     & .num{
-      color:  #919fb5;
-      font-weight: bold;
+      color: #919fb5;
+      font-weight: 100;
       font-size: 13pt;
       line-height: 40px;
       margin: 0px 5px 0px 23px;
@@ -1144,6 +1202,19 @@
       float: right;
     }
   }
+}
+.ingresar_resp {
+	margin-right: 5px;
+}
+#request-num {
+	font-weight: 100;
+	/*
+	height: 20px;
+	display: block;
+	width: 20px;
+	text-align: center;
+	border-radius: 50%;
+	*/
 }
 
 .more-comment-box{

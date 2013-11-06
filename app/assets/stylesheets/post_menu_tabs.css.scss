@@ -3,24 +3,29 @@
     //background:#D6FAF7;
     //background:#E86850;
     //background:#c9d1da;
-    background :#F7FAFF;
-    margin-left:0px;
-    cursor:pointer;
-    color:#3399FF;
+    //background :#00B1C7;
+    margin-left: 0px;
+    cursor: pointer;
+    color: #FFF;
     position:relative;
-    width: 23%;
+    width: 139px;
     float:left;
-    
     text-align: center;
     text-decoration: none!important;
-    padding: 8px 5px 5px 5px;
-    height: 33px;
+    padding: 15px 5px 5px 5px;
+    height: 25px;
+    font-size: 15px;
+    font-size: 100;
+    
+	background: #2B2A28;
+	transition: linear all 0.2s;
 }
 
  .simple-tab:hover {
-      background: #CCCCCC;
-      color: #000;
+      color: #FFF;
+      transition: linear all 0.2s;
       text-decoration: none;
+	  background: #1b7ab1;
  }
 
 #tab-form-options{
@@ -28,12 +33,10 @@
      //background:#D6FAF7;
      //background:#E86850;
      //background:#c9d1da;
-     background :#F7FAFF;
-     
+     overflow: hidden;
      height:45px;
-     border-bottom:3px solid #0CCEF5;
-     
-      
+     border-bottom:3px solid #126899;     
+	 background: #2B2A28;
 }
 .tab-style{
   //border:1.5px solid #FBCBFF;  
@@ -46,20 +49,56 @@
    margin: 4px 0px 0px 0px;
  }
 .selected_tab {
+	//background: #F04B1F;
+	//border-bottom: solid 4px #F04B1F;
+	background: #126899;
+	border-bottom: solid 4px #126899;
+	padding: 16px 8px 8px 8px;
+	width: 137px;
+	text-align: center;
+	text-decoration: none!important;
+	margin: -1px 0px 0px 0px;
+	//height: auto;
+	height: 18px;
+	font-size: 15px;
+	color: #FFF!important;
+
+/*
     //background:#c9d1da;
-    background :#F7FAFF;
-    border-bottom:solid 4px #2A7A8A;
+    background : #F7FAFF;
+    border-bottom:solid 4px #0098D6;
     padding:8px;
     width: 23%;
-    background: #126899;
+    background: #0098D6;
     color: #FFF!important;
     text-align: center;
     text-decoration: none!important;
     margin: -1px 0px 0px 0px;
     height: 29px;
+*/
 }
+.selected_tab:hover {
+	background: #126899;
+	cursor: default;
+}
+
+
+.tarea_tab {
+	background: #87B53A;
+}
+.discusion_tab {
+	background: #DEDF50;
+}
+.cuestionario_tab {
+	background: #F3913B
+}
+
 .frcomment{
     cursor:text;
+}
+
+#message-form-area-tab {
+	padding-top: 10px;
 }
 
 /* validando los placeholders*/
@@ -88,3 +127,85 @@
 .normal-placeholder:-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    #c9d1da;
 }
+
+/* -------------- estilos tarea -------------- */
+/* -------------- estilos tarea -------------- */
+
+#delivery-form-area-tab {
+	padding: 21px 21px 21px 19px;
+}
+#delivery-form-area-tab .form_fix_title_overlay {
+	width: 547px!important;
+	margin-bottom: 8px!important;
+}
+#delivery-form-area-tab span {
+	line-height: 25px;
+}
+#delivery-form-area-tab span:hover {
+	color: #FFF;
+}
+#delivery-form-area-tab .border_for_text {
+	width: 543px;
+	margin-top: 12px;
+}
+#delivery-form-area-tab .percent-input {
+	margin-right: 44px;
+}
+
+/* -------------- estilos discusion -------------- */
+/* -------------- estilos discusion -------------- */
+
+#discussion-form-area-tab {
+	padding: 21px 21px 21px 19px;
+}
+#discussion-form-area-tab #discussion_title {
+	width: 400px;
+}
+#discussion-form-area-tab .border_for_text {
+	width: 542px;
+}
+#discussion-form-area-tab .var_delivery {
+	margin-left: 532px;
+}
+
+/* -------------- estilos cuestionario -------------- */
+/* -------------- estilos cuestionario -------------- */
+
+#tabs_form #survey-form-area-tab .survey-form {
+	border: 0px!important;
+}
+#tabs_form #survey-form-area-tab .survey-form .title-txt-input {
+	width: 545px!important;
+}
+#tabs_form #survey-form-area-tab .form_container_fix_survey {
+	padding: 1px 0px 13px 0px;
+}
+#tabs_form #survey-form-area-tab .form_container_fix_survey .form_fix_survey {
+	padding-left: 20px!important;
+}
+#tabs_form #survey-form-area-tab #box-question #box-question-child .element {
+	padding-bottom: 0px!important;
+	background: #FFF!important;
+}
+#tabs_form #survey-form-area-tab #box-question #box-question-child #survey_questions_attributes_0_content {
+	width: 400px!important;
+	outline-color: #006696;
+	outline-width: 1px;
+}
+
+#tabs_form #survey-form-area-tab #box-question #box-question-child #request-num {
+	margin-left: 24px!important;
+}
+#tabs_form #survey-form-area-tab #box-question #box-question-child #survey_questions_attributes_0_answers_attributes_0_content {
+	outline-color: #006696;
+	outline-width: 1px;
+}
+#tabs_form #survey-form-area-tab .survey-form #box-question #box-question-child #box-request #box-request-child {
+	background: #FFF!important;
+	padding: 5px 0px;
+	border: 0px!important;
+}
+
+
+/* -------------- estilos cuestionario -------------- */
+/* -------------- estilos cuestionario -------------- */

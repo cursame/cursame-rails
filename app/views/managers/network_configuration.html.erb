@@ -1,17 +1,22 @@
-<div id="admin-sidebar">
-	<h5>Administracion</h5>
-	<ul>
-		<%= render :partial => "managers/menu"%>
-	</ul>
+<div id="fix_admin" style="width: 980px; margin: 0 auto;">
+	<div id="admin-sidebar">
+		<h5>Administracion</h5>
+		<ul>
+			<%= render :partial => "managers/menu"%>
+		</ul>
+	</div>
+	
+	<div id="admin-content">
+		<div class="header-for-content">
+			<h8 class="h8">Configuración de la red</h8>
+			<p style="font-style:oblique;">Formulario para configuración de aspectos de la red</p>
+		</div>
+
+		<%= render :partial => "networks/form"%>
+	</div>
+	
 </div>
 
-<div id="admin-content">
-
-<div class="header-for-content">
-<h8 class="h8">Configuración de la red</h8>
-<p style="font-style:oblique;">Formulario para configuración de aspectos de la red</p>
-</div>
-<%= render :partial => "networks/form"%>
-
-</div>
-</div>
+<script>
+	$('#admin-sidebar li:contains("Settings")').css({ background: "#1B57A0" });
+</script>

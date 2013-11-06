@@ -413,6 +413,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	overflow: hidden;
 	position: relative;
 }
+.membersCurse #imgge img {
+	width: 100%;
+}
 
 .hoverShowEdit {
 	background: rgba(0,102,150,0.8);
@@ -1132,8 +1135,11 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
      cursor: pointer;
 	
      filter:alpha(opacity=60); 
+     
       & a{
-             color:#2E2E2E;
+             //color:#2E2E2E;
+             color: #FFF;
+             font-weight: 100;
          }
      
         &:hover {
@@ -1572,4 +1578,9 @@ td {
 	padding-bottom: 10px;
 	border-right: 1px solid #ccc;
 	text-align: center;
+}
+
+#admin-content .form-course {
+	width: 660px!important;
+	float: left;
 }

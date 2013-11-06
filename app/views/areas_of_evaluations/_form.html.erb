@@ -1,13 +1,17 @@
 <% @time_now = Time.now %>
-<div id="nested_evaluation_form" class="evaluation-area">
-   <div style="float:left;"> <%= f.text_field :name, :class => 'subject', :placeholder=>'¿Que criterio se evaluará?' %></div>
-    <div id="content-slider-0" class="slider-content" style="float:left; margin-top:20px; margin-left:10px; margin-right:30px;"><div id="slider-0" class="slider"></div></div>
+<div id="nested_evaluation_form" class="evaluation-area" style="font-size: 14px!important;">
+	<div style="float:left;"> <%= f.text_field :name, :class => 'subject', :placeholder=>'¿Que criterio se evaluará?' %></div>
+    <div id="content-slider-0" class="slider-content" style="float:left; margin-top:20px; margin-left:10px; margin-right:30px;">
+    	<div id="slider-0" class="slider"></div>
+    </div>
+    
     <%= f.hidden_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input"  %>
     <label id="label-nested-form-0" class="percent-label" style="float:right; margin-left:-45px;"></label>
     <%= f.hidden_field :delivery_id, :value => @delivery_id %>
     <%= f.hidden_field :active, :value =>  true %>
     <%= f.hidden_field :date_of_item, :value =>@time_now %>
 </div>
+
 <div id="total_nested_evaluation" class="total" style="float:right ;color: #999; font-size: 12pt; text-align: right; padding: 7px; margin-left:30px; width: 45px;"></div>
 <div class="clear"></div>
 

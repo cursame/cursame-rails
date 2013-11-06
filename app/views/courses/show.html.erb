@@ -5,13 +5,14 @@
     <!--<div id="noticce">
      <div id="notice" class="notice"></div>
     </div>-->
-  <% permitted_to? :create, :courses do %>
-    <% if @member.owner != nil %>
-      <% if @member.owner == true %>
-        <div class="depot_button"> <%= link_to "Monitor de actividades", course_activities_depot_path %> </div>
-      <%end%>
-    <%end%>
-  <% end %>
+    
+  <%# permitted_to? :create, :courses do %>
+    <%# if @member.owner != nil %>
+      <%# if @member.owner == true %>
+        <!-- <div class="depot_button"> <%= link_to "Monitor de actividades", course_activities_depot_path %></div> -->
+      <%#end%>
+    <%#end%>
+  <%#end %>
   
   <div class="banner-shadow">
     <div id="box-titles">
@@ -262,16 +263,26 @@
   <div id="side-bar" class="side-left-bar">
     <!-- User Avatar -->
 
-    <div id="box-user-credential" class="network-layout">
+    <div id="box-user-credential" class="network-layout" style="position: relative;">
       <div class="thumbnail"  >
         <%= link_to image_tag(@course.avatar.profile, :whidth => '150px', :height => '150px'), course_path(@course.id) if ( !@course.avatar.blank?) %>
         <%= link_to image_tag(@course.course_avatarx), course_path(@course.id) if (@course.avatar.blank?) %>
       </div>
       <div class="tagname"><%= @course.title %></div>
     </div>
+	
+	<% permitted_to? :create, :courses do %>
+		<% if @member.owner != nil %>
+			<% if @member.owner == true %>
+				<div class="depot_button" style="font-size: 14px; padding: 7px 14px; background: #1A83D5; float: none; width: 150px; margin: 26px auto 0 auto; display: block; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">
+					<%= link_to "Monitor de actividades", course_activities_depot_path %>
+				</div>
+			<%end%>
+		<%end%>
+	<% end %>
 
-	  <div id="box-course"  style="margin-top:155px;" class="basic-lateral-box margin-top boxinfocourse"> 
-	    <h2 style="margin-right:-60px; margin-top:6px;"> Información </h2> 
+	  <div id="box-course"  style=" /*margin-top:155px;*/ margin-top: 65px;" class="basic-lateral-box margin-top boxinfocourse"> 
+	    <h2 style="margin-right:-60px; margin-top:6px;">Información</h2>
 	    
 	    <p><b>Sylabus</b><b>:</b><%= @course.silabus %> </p>
 	    
