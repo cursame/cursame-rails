@@ -3,7 +3,7 @@
  $('.comment-form').submit(function(){
      var comment_validate = $('#comment').val();
      if (comment_validate == ''){
-         $('#comment').attr("placeholder", "Este campo nos debe quedar vacio para colocar el comentario.");
+         $('#comment').attr("placeholder", "Este campo no debe quedar vacio para colocar el comentario.");
          $('#comment').addClass('red-placeholder');
          $('#comment').removeClass('normal-placeholder');
          

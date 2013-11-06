@@ -119,6 +119,8 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
      end
   end
+  
+  get 'assignments/delivery_responce'
   ################ llamada para republicar tarea ################
   get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
   get'/publish_unpublish_survey_manualy', :to => 'surveys#publish_unpublish_survey_manualy', :as => :publish_unpublish_survey_manualy

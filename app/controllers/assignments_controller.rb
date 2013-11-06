@@ -157,4 +157,10 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def delivery_responce
+    respond_to do |format|
+      format.js
+    end
+  end
 end
