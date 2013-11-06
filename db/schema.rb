@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025181410) do
+ActiveRecord::Schema.define(:version => 20131105172306) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20131025181410) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
+    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
@@ -336,6 +337,7 @@ ActiveRecord::Schema.define(:version => 20131025181410) do
     t.boolean  "public_register", :default => true
     t.boolean  "free",            :default => true
     t.boolean  "register_form"
+    t.text     "welcom_message"
   end
 
   create_table "networks_users", :force => true do |t|
