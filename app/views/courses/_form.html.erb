@@ -17,12 +17,12 @@
 
 <div class="form-course"><!-- estilo en courses.scss -->
   <div style="width:400px; float:left;">
-    <%= form_for(@course, :html => { :class => "default-form edit-course"}) do |f| %>
+    <%= form_for(@course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
       <p>Nombre del curso</p>
       <%= f.text_field :title, :class=>"input-style" %>
       
       <p>Nombre del curso</p>
-      <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
+      <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style border_for_text" %>
       
       <div style="float: right; margin-right: 20px;">
 	      <p><%= f.label :public_status, 'Privacidad' %></p>
