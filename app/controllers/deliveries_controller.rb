@@ -5,6 +5,7 @@ class DeliveriesController < ApplicationController
   before_filter :filter_protection, :only => [:show, :edit]
   before_filter :protection_to_index, :only => [:index]
   helper_method :assigment
+  
   def index
     @deliveries = Delivery.all
     @delivery = Delivery.new
@@ -73,11 +74,8 @@ class DeliveriesController < ApplicationController
         if @delivery.save
           @typed = "Delivery"
           @az = @delivery
-          puts '------------ aqui ya se creo el delivery -------------------'
           @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))
           activation_activity
-          puts @publication.to_yaml
-          puts '------------ debio de imprmir el publication -------------------'
           #actualizamos los assets del delivery
           if(params[:files])
             params[:files].each do |asset_id|

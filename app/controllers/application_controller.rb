@@ -202,17 +202,10 @@ class ApplicationController < ActionController::Base
           cot = 'Location Country not Found'
           else
           cot = country
-        end
-        
+        end        
         
         ip = request.ip
-        puts '***************************'
 
-        puts ct
-        puts cot
-        puts ip
-
-        puts '***************************'
         @activity.address = "#{ct} #{cot}"
         @activity.browser = "#{browser_active}"
         @activity.version_browser ="#{browser_version}"

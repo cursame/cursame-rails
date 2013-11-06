@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Notifier < ActionMailer::Base
   default from: "mail-sin-respuesta@cursa.me"
 
@@ -7,17 +6,15 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.new_delivery_notification.subject
   #
-  def new_delivery_notification(member_in_course,delivery)
-    @user = member_in_course.user
+  def new_delivery_notification(user,delivery)
+    @user = user
     @delivery = delivery
     mail to:  @user.email, subject: "Nueva tarea disponible"
   end
 
-  def new_survey_notification(member_in_course,survey)
-
-    @user = member_in_course.user
+  def new_survey_notification(user,survey)
+    @user = user
     @survey = survey
-
     mail to: @user.email, subject: "Nuevo cuestionario disponible"
   end
 

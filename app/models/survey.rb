@@ -73,16 +73,14 @@ class Survey < ActiveRecord::Base
       course.members_in_courses.each do |member|
         user = member.user
         if self.user_id != user.id then
-          users.push(user)
-          mail = Notifier.new_survey_notification(member,self)
-          mail.deliver
+          users.push(user)          
         end
       end
     end
 
-    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)    
-
+    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)
     users = users.reject { |user| user.id == self.user_id }
+    self.send_mail(users)
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
   end
 
@@ -137,6 +135,21 @@ class Survey < ActiveRecord::Base
       average += user_survey.result
     end
     return average/size
+  end
+
+  def send_mail(users)
+    Thread.new {
+          begin
+            users.each do |user|
+              mail = Notifier.new_delivery_notification(user,self)
+              mail.deliver
+            end
+          rescue => ex
+            puts 'error al enviar mail'
+          ensure
+            ActiveRecord::Base.connection.close
+          end
+    }    
   end
 
 end

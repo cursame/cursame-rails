@@ -118,33 +118,17 @@ class Delivery < ActiveRecord::Base
       course.members_in_courses.each do |member|
         user = member.user
         if user.id != self.user_id && member.accepted == true then
-          users.push(user)
-          mail = Notifier.new_delivery_notification(member,self)
-          mail.deliver
+          users.push(user)          
         end
       end
     end
-    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+    self.send_mail(users)
+    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')    
   end
 
   after_update do
 
   end
-
-  # def create_notifications
-  #   self.courses.each do |course|
-  #     course.members_in_courses.each do |member|
-  #       user = member.user
-  #       if user.id != self.user_id then
-  #         users.push(user)
-  #         mail = Notifier.new_delivery_notification(member,self)
-  #         mail.deliver
-  #       end
-  #     end
-  #   end
-  #   users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
-  #   Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
-  # end
 
   def users
     users = []
@@ -209,4 +193,20 @@ class Delivery < ActiveRecord::Base
     end
     return average/size
   end
+
+  def send_mail(users)
+    Thread.new {
+          begin
+            users.each do |user|
+              mail = Notifier.new_delivery_notification(user,self)
+              mail.deliver
+            end
+          rescue => ex
+            puts 'error al enviar mail'
+          ensure
+            ActiveRecord::Base.connection.close
+          end
+        }    
+  end
+
 end
