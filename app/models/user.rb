@@ -188,9 +188,23 @@ class User < ActiveRecord::Base
 
   #roles
   def role_symbols
-    roles.map do |role|
-      role.title.underscore.to_sym
+    superadmin = Role.find_by_title("superadmin")
+    if roles.include?(superadmin) then
+      return [superadmin.title.underscore.to_sym]
+    else
+      network = Network.find_by_subdomain(subdomain)
+      permissining = Permissioning.find_by_user_id_and_network_id(id, network.id)
+      
+      if permissining.nil? then
+        return []
+      else
+        [permissining.role.title.underscore.to_sym]
+      end
+      
     end
+    #roles.map do |role|
+    #  role.title.underscore.to_sym
+    #end
   end
 
   #mailer for subdominea_save
