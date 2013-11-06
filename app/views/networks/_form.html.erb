@@ -1,8 +1,10 @@
 <div class="form-course"><!-- estilo en courses.scss -->
 	<div style="width:400px; float:left;">
-		<div class="form-for-admin">
-			<%= form_for(@network, :remote => true) do |f| %>
-			<% if @network.errors.any? %>
+
+<div class="form-for-admin" style="height:800px;">
+<%= form_for(@network, :remote => true) do |f| %>
+  <% if @network.errors.any? %>
+
 
 				<div id="error_explanation">
 					<h2><%= pluralize(@network.errors.count, "error") %> prohibited this network from being saved:</h2>
@@ -12,7 +14,7 @@
 							<% end %>
 						</ul>
 				</div>
-			<% end %>
+  <% end %>
 
 				<div class="field-style" style="clear: both; position: relative; display: block; height: 70px;">
 					<p><%= f.label :nombre %><p/>
@@ -27,6 +29,8 @@
 				<div class="field" style="clear: both; position: relative; display: block; height: 60px;">
 					<p><%= f.label :Poblacion %></p>
 					<%= f.text_field :population, :class=>"default-form" %>
+					 <p><%#= f.label :Mensaje_de_bienvenida_a_la_red %></p>
+     <%#= f.text_area :welcom_message, :class=>"default-form" %>   
 				</div>
 		
 				<div class="field" style="clear: both; position: relative; display: block; height: 30px;">
@@ -34,12 +38,11 @@
 					<%= f.check_box :public_register, :title=> 'Registro público' %>
 				</div>
 		   
-				<!--
+				
 				<div class="field">
 					<p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :Formulario_de_registro_bloqueado  %> </p>
-					<%# f.check_box :register_form, :title=> 'Registro público formulario' %>
+					<%= f.check_box :register_form, :title=> 'Registro público formulario' %>
 				</div>
-				-->
 		    
 				<div class="actions" style="margin-top: 40px;">
 					<%= f.submit %>
@@ -47,4 +50,7 @@
 			<% end %>
 		</div>
 	</div>
+
+</div>
+</div>
 </div>

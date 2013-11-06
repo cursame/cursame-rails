@@ -37,9 +37,8 @@ $(document).ready(function() {
     Esperando confirmación
   </div>
 <% end %>
-
 <div class="login">    
-<p style="background: rgba(95,150,191,0.4); text-align: center; padding: 20px 0 14px 0; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"><b style="font-size: 23px;">Inicia sesión</b></p>
+<p style="background: rgba(95,150,191,0.4); text-align: center; padding: 20px 0 14px 0; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"><b style="font-size: 23px;">Inicia sesión en <%= current_network.name %></b></p>
     
     <div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 400px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: hidden;">
     
@@ -126,6 +125,7 @@ $(document).ready(function() {
   </div><!-- ends Register_Singin -->
   
 
+   
     <script>
             $('#linked').click(function() {
               $('#sub_linked').animate( {marginTop: "0px"} );
@@ -136,7 +136,7 @@ $(document).ready(function() {
     </script>
   
 </div>
-
+   <div style="font-size:20px;color:#f5f5f5; width:800px;height:60px; padding:10px; margin:15px auto 0 auto; background: rgba(95,150,191,0.4);"><center><p><%= current_network.welcom_message%></p></center></div>
 <!--sirve para colocar la ayuda express a antiguos usuarios-->
 
 <%= render "devise/shared/footer-links" %>
