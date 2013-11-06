@@ -91,7 +91,7 @@ class Notifier < ActionMailer::Base
 
     emails = users.map{|user| user.email}
     emails = emails.keep_if{ |email|  email != @user.email}
-    subject = "#{@user.name} comentó en el curso #{@course.title}"
+    subject = "#{@user.name} comento en el curso #{@course.title}"
     mail to: emails, subject: subject
   end
 
