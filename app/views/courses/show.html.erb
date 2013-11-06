@@ -86,28 +86,25 @@
               
               // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
               if(<%= (@show_assignment and @id_search) %>) {
-                // Se despliegan las tareas
-                var assignmentsElement = $("#banner-btns > li.calif").first();
-                assignmentsElement.click();
-                
-                // Se deslpiegan las entregas de la tarea elegida
-                var deliveryElement = $(".delivery_f").find("#opentag<%= @id_search%>").parent().parent();
-                deliveryElement.find("#OpenClose").click();
-                
-                // Se despliega la nueva entrega en particular
-                var assignmentElement = deliveryElement.find("#div-assignment-<%= @show_assignment %> div.title a");
-                assignmentElement.click();
+                $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+                $.get('<%= course_assignment_l_notif_path(@show_assignment) %>', function() {
+                  $('#tarea_en_carga_notification').css('width', '100%');
+                  $('#tarea_en_carga_notification').css('min-width', '100%');
+                  $('#tarea_en_carga_notification').css('margin-top', '25%');
+                });
               }
             });
           </script>
-				  <div class="slider-cointainer" style="width:440px; overflow-y: scroll; overflow-x: hidden; float: left; height: 400px;">
+			 
+			 <div class="slider-cointainer" style="width:440px; overflow-y: hidden; overflow-x: scroll ; float: left; height: 400px;">
             <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">      
             <% @course.deliveries.reverse.each do |delivery|%>
             
         	    <div class="delivery_f" >
 	              <div class="delivery_container">
-	        	      <div id="OpenClose"></div>
-	                <div class="title"><%= delivery.title %></div>
+	        	      <div class="OpenClose<%=delivery.id%>"id="OpenClose"></div>
+	                <div class="title"><%= delivery.title %>  <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
+	                </div>
 	                <div class="state">
 	                  <div id="delivery_state_publish<%=delivery.id%>">
 	                    <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
@@ -115,10 +112,10 @@
 	                  <div class="dates" id="dates_delivery<%=delivery.id%>">
 	                    <img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
 	                  </div>
-	                  <div class="image" id="opentag<%=delivery.id%>"></div>
+	                  <div class="image" id="opentag<%=delivery.id%>" onmouseover=""></div>
 	                </div>
 	                
-	                <div class="so_open" id="so_open<%=delivery.id%>" style="display:none">
+	                <div class="so_open" id="so_open<%=delivery.id%>" style="display:none;">
 	                  <% delivery.assignments.reverse.each do |assignment|%>
 	                    <div class="assignment" id="div-assignment-<%= assignment.id %>">
 	                      <div class="title" style="width: 422px;">
@@ -136,7 +133,6 @@
 	                </div><!-- ends so_open -->
 	              </div><!-- ends delivery_container -->
 	            </div><!-- ends delivery_f -->
-	            
 	            <script>
                 $('.assignment').mouseenter(function() {
                   $(this).css({background: "#EEE"});
@@ -148,24 +144,34 @@
                   $('#RightArrow').css({background: "transparent"});
                 });
                        	   
-                $('.delivery_f #OpenClose').click (function() {
-                  $('.delivery_f').find( '#so_open<%=delivery.id%>' ).toggle('blind');
+                $('.delivery_f .OpenClose<%=delivery.id%>').click (function() {
+                  $( '#so_open<%=delivery.id%>' ).toggle('blind');
+                  $('#image_scroll<%=delivery.id%>').toggle();
                 });
              
                 $('#opentag<%=delivery.id%>').click(function() {
                   $('#so_open<%=delivery.id%>').fade('blind');
-                });                           
+                  $('#image_scroll<%=delivery.id%>').fade();
+                  
+                });                
+               $('#image_scroll<%=delivery.id%>').click(function() {  
+                     //alert('scroll');  
+                     var scroll = $('#so_open<%=delivery.id%>').scrollTop();
+                     setTimeout(function(){
+                        $('#so_open<%=delivery.id%>').scrollTop(scroll+15)
+                     },1); 
+                     
+               });           
               </script>
             <%end%>
           </div><!-- end content_delivery-->
-          
-          <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden;">
+          <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden; display:none;">
             <% @course.surveys.reverse.each do |survey|%>
               <div class="survey_fTwo " id="survey_f<%=survey.id%>">
                 <div id="ExamsDelivery" class="delivery_f">
                   <div class="delivery_container">
                     <div id="OpenClose" class="OpenClose<%=survey.id%>"></div>
-	                  <div class="title"><%= survey.title %></div>
+	                  <div class="title"><%= survey.title %><div class="image_scroll" id="image_scroll_s<%=survey.id%>" style="display:none;" ></div></div>
 	                   
 	                  <div class="state">
 	                    <div class="dates" id="survey_dates<%= survey.id%>">
@@ -174,37 +180,49 @@
 
 	                    <div id="survey_state_publish<%=survey.id%>">
 	                      <%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
-						  	      </div><!-- ends survey_state_publish -->
+						 </div><!-- ends survey_state_publish -->
 	                  </div><!-- ends state -->
 	                     
 	                  <div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
 	                </div><!-- ends delivery_container -->
 	              </div><!-- ends ExamsDelivery -->
 	              
-	              <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none, margin-left: 1px!important; width: 440px;">
+	              <!--se muestran las tareas al dar click-->
+	              
+	              <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none; margin-left: 1px!important; width: 440px;">
 	                <% survey.user_surveys.each do |us|%>
                     <div class="assignment" style="width: 440px;">
                       <div class="title">
 					  		        <span style="width: 410px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
 						  	 	        <span class="title" style="font-size: 15px;">Entregó: <%= us.user.name%></span>
-							   	        <span id="RightArrow" style="float: right; margin-top: -5px;">
-							 	  	        <%= link_to image_tag('right_arrow.png'), course_survey_l_path(us.id), :remote => true%>
-							 	          </span>
-							 	        </span>
-							 	      </div>
-							 	    </div>
+							   	        <span id="RightArrow" style="float: right; margin-top: -5px;"><%= link_to image_tag('right_arrow.png'), course_survey_l_path(us.id), :remote => true%></span>
+							 	    </span>
+							 	     
+					 </div>
+				   </div>
                   <%end%>
-                </div><!-- ends so_open_C2 -->
+                </div><!-- ends so_open_C2 --> 
               </div><!-- ends survey_fTwo -->
               
               <script>
                 $('.OpenClose<%=survey.id%>').click(function() {
+
                   $('#copea_<%=survey.id%>').toggle('blind', function() {
+                         
                   });
+                  $('#image_scroll_s<%=survey.id%>').toggle();
+                  
                 });
+                  $('#image_scroll_s<%=survey.id%>').click(function() {  
+                         //alert('scroll');  
+                         var scroll = $('#copea_<%=survey.id%>').scrollTop();
+                         setTimeout(function(){
+                            $('#copea_<%=survey.id%>').scrollTop(scroll+15)
+                         },1); 
+
+                   });
               </script>
             <%end%>
-            
           </div><!-- ends content_survey -->
         </div><!-- ends arco_course_deliver -->
         
@@ -259,10 +277,21 @@
         <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>
        
 	      <% permitted_to? :create, :courses do %>
-	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:active_status => false).count %>
+	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
 	      <% if @new_and_non_aproval_members != 0%>
 	      <!--ejemplo para tooltip-->
-	           <span class="RedBallon" id="unser_new_in_course" title="Alumnos pendientes de aprobación" onmouseover='tool_tip_heft({identifier:"unser_new_in_course"})' onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span>   
+	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> 
+                           <script>
+                                $("#unser_new_in_course").hover(
+                                     function () {
+                                       $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:-10px'><div class='tooltipr'><%=truncate("Tienes #{@new_and_non_aproval_members} miembros pendientes de aprovación.", :omission => "...", :length => 155)%></div></span>"));
+                                     },
+                                     function () {
+                                       $(this).find("span:last").remove();
+                                     }
+                                   );
+                             </script>
+	           
           <%end%>
 	        <div style="min-height:290px; max-height:580px;">
 	        <% @course.members_in_courses.each do |member|  %>
@@ -271,33 +300,71 @@
             <!--coloca la imagen y el nombre-->
             <% if current_role == 'admin' || current_role == 'superadmin'%>
               <% if @members != nil%>
+              <div id="member_id<%=@members.id%>" style="float:left">
                 <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                 <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                    <script>
+                        $("#member_id<%=@members.id%>").hover(
+                             function () {
+                               $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@members.name}", :omission => "...", :length => 25)%></div></span>"));
+                             },
+                             function () {
+                               $(this).find("span:last").remove();
+                             }
+                           );
+                     </script>
+              </div>
               <%else%>
               <%end%>    
             <%else%>
               <% if @member.accepted == true %>
                 <% if @members != nil%>
+                   <div id="member_id<%=@members.id%>" style="float:left;">
                   <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
                   <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                          <script>
+                              $("#member_id<%=@members.id%>").hover(
+                                   function () {
+                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@members.name}", :omission => "...", :length => 25)%></div></span>"));
+                                   },
+                                   function () {
+                                     $(this).find("span:last").remove();
+                                   }
+                                 );
+                           </script>
+                   </div>
                 <%else%>
                 <%end%>
               <%end%>
             <%end%>
           <%end%>
+                 
 	        </div>
           <% if current_role == 'admin' || current_role == 'superadmin' %>          
-            <div class="view-all"><%= link_to "Administrador de miembros", course_members_path %></div>
+            <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
           <%else%>
             <% if @member.owner != nil %>
               <% if @member.owner == true %>
-                <div class="view-all"> <%= link_to "Administrador de miembros", course_members_path %></div>
+                <div class="view-all" id="members_admin"> <%= link_to "Administrador de miembros", course_members_path %></div>
               <%end%>
             <%end%>
           <%end%>
         <%end%>
       </div>
     </div>
+    
+    <script>
+          $("#members_admin").hover(
+               function () {
+                 $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("Deso ver todos los miembros del curso", :omission => "...", :length => 55)%></div></span>"));
+               },
+               function () {
+                 $(this).find("span:last").remove();
+               }
+             );
+       </script>
+    
+
     
     <div id="box-d" class="basic-lateral-box" style="margin-top: 380px; position: relative; display: block;">
       <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
@@ -317,6 +384,17 @@
           <%end%>
         <%end%>
       <%end%>
+      
+          <script>
+              $("#upload-files-to-course").hover(
+                   function () {
+                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:100px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("Da click aquí para subir un archivo a la biblioteca del curso.", :omission => "...", :length => 155)%></div></span>"));
+                   },
+                   function () {
+                     $(this).find("span:last").remove();
+                   }
+                 );
+           </script>
          
       <script>
         $('.UploadArchiveBtn').mouseenter ( function() {
@@ -324,6 +402,14 @@
         });
 		 	  
 		 	  $(document).ready(function() {
+          if(<%= (@show_survey and @id_search) %>) {
+            $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+            $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
+              $('#tarea_en_carga_notification').css('min-width', '100%');
+              $('#tarea_en_carga_notification').css('margin-left', '10%');
+            });
+          }
+
 		 	    $.ajaxSetup({
 		 	      timeout:120000
 		 	    });
@@ -374,14 +460,17 @@
         </script>
       </div><!-- uplok -->
       
-      <div style="width: 230px; overflow:auto; min-height:0px; max-height: 300px; overflow-y: scroll; overflow-x: hidden; padding-top: 25px;">
-        <div id="files"></div>
+      <div style="width: 230px;  overflow:auto; min-height:0px; max-height: 300px; overflow-x: hidden; padding-top: 25px; padding:1px; min-height:300px; max-height:600px;">
         <% @course.course_files.reverse.each do |cf|%>
           <% @name =  "#{cf.file}" %>
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
           <!--se ha colocan los archivos dependiendo su categoría-->
+          <div style="margin-top:35px;" style="min-height:100px;">
+              <div id="files"></div>
+              
           <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+          </div>
 
         <%end%>
       </div>

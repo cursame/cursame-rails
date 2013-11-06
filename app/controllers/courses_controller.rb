@@ -44,6 +44,7 @@ class CoursesController < ApplicationController
 
     @id = params[:id]
     @show_assignment = params[:show_assig]
+    @show_survey = params[:show_survey]
     @show_accomplishment = params[:show_accom]
     @search = params[:search]
     @id_search = params[:id_search]
@@ -62,8 +63,6 @@ class CoursesController < ApplicationController
     end
 
   end
-
-
 
   def send_mails
     @user = current_user
@@ -349,11 +348,13 @@ class CoursesController < ApplicationController
                                    pertencenence_to:"tarea#{del.id}" })
          end
 
-        if del.user.avatar.blank?
-          @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
-        else
+        case 
+          when del.user.avatar.blank?
+            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+          when del.user.avatar == nil
+            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+          else
           @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
-
         end
 
         deliveries.push(
@@ -406,12 +407,16 @@ class CoursesController < ApplicationController
                                       })
            end
 =end
-           if as.user.avatar.blank?
-             @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-           else
-             @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
 
-           end
+           case 
+             when as.user.avatar.blank?
+               @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+             when as.user.avatar == nil
+               @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+             else
+               @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
+            end
+           
             assignmentss.push(
                 {
                     startDate: as.created_at,
@@ -446,9 +451,12 @@ class CoursesController < ApplicationController
 
       @course.surveys.each do |survey|
          if survey.user != nil
-          if survey.user.avatar.blank?
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
-          else
+          case
+            when survey.user.avatar.blank?
+              @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+            when survey.user.avatar == nil 
+              @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"     
+            else
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
           end
           surveyss.push(
@@ -538,15 +546,35 @@ class CoursesController < ApplicationController
       end
   end
 
+  def course_assignment_notif
+    @assignment = Assignment.find(params[:id])
+     respond_to do |format|
+        #format.html
+        format.js
+        format.json
+      end
+  end
+
   def course_survey
     @responces = UserSurvey.find(params[:id])
 
-     respond_to do |format|
-        #format.html
-        format.json
-        format.js
-      end
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
 
+  end
+
+  def course_survey_notif
+    @responces = UserSurvey.find(params[:id])
+
+    respond_to do |format|
+      #format.html
+      format.js
+      format.json
+    end
+    
   end
 
   def delivery_menu
