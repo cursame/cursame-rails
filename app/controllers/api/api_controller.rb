@@ -222,7 +222,6 @@ class Api::ApiController < ApplicationController
       notification_to_save.save
     end
     #
-    # @notifications = @user.notifications.includes(:notificator)
     render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
   end
 

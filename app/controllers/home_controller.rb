@@ -264,14 +264,14 @@ class HomeController < ApplicationController
     if params[:comment_id].blank? then
       @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
       if (@comment.commentable_type == 'Course')
-        mailer = Notifier.send_comment_on_course(@comment)
-        mailer.deliver
+        # mailer = Notifier.send_comment_on_course(@comment)
+        # mailer.deliver
       end
 
       if (@comment.commentable_type == 'Comment')
         if (@comment.commentable.commentable_type == 'Course')
-          mailer = Notifier.send_comment_on_course(@comment)
-          mailer.deliver
+          # mailer = Notifier.send_comment_on_course(@comment)
+          # mailer.deliver
         end
       end
     else
