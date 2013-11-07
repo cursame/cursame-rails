@@ -454,10 +454,14 @@ $(document).ready(function() {
           // $.get("/closer_db");
 
            $('#log_loadding').show();
-            
+           $('.activable').attr("disabled", true);
+           
         }).ajaxStop( function() {
          
-            $('#log_loadding').hide('');           
+            $('#log_loadding').hide('');    
+            $('.activable').attr("disabled", false);
+            
+                  
     });
 
     /*

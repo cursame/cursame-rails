@@ -61,7 +61,7 @@
      </div></br>
      <div style="margin-right:30px;">
     <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form-'+ @delivery_id.to_s %>
-    <%= f.submit "Entregar Tarea" %>
+    <%= f.submit "Entregar Tarea", :class => 'activable' %>
     </div>
     <script>
     <%= render :partial => '/assignments/delivery_responce.js.erb', :locals => {:formId => formId}%>

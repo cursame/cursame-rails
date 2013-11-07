@@ -6,7 +6,7 @@
 </a>
 
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
-  <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required' %>
+  <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required', :class => 'activable' %>
   <%=hidden_field_tag 'commentable_id', commentable_id %>
   <%=hidden_field_tag 'commentable_type', commentable_type %>
   <%=hidden_field_tag 'from_enter_key', true %>

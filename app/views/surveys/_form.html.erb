@@ -41,7 +41,7 @@ random_id = "#{random}"
 
 	<div class="form_submit_fix_survey" style="padding: 10px 0px;">
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
-    <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary", :id => 'comment-post-form'%>
+    <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary activable", :id => 'comment-post-form'%>
     
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
     

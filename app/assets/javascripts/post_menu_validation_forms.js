@@ -1,16 +1,16 @@
  $(document).ready(function(){
 /*valdiación de formulario de comment*/
- $('.comment-form').submit(function(){
-     var comment_validate = $('#comment').val();
+ $('.comment_form_top').submit(function(){
+     var comment_validate = $('.comment_for_wall').val();
      if (comment_validate == ''){
-         $('#comment').attr("placeholder", "Este campo no debe quedar vacio para colocar el comentario.");
-         $('#comment').addClass('red-placeholder');
-         $('#comment').removeClass('normal-placeholder');
+         $('.comment_for_wall').attr("placeholder", "Este campo no debe quedar vacio para colocar el comentario.");
+         $('.comment_for_wall').addClass('red-placeholder');
+         $('.comment_for_wall').removeClass('normal-placeholder');
          
          return false;
          }else{
-         $('#comment').attr("placeholder", "¿Que estás pensando?");
-         $('#comment').addClass('normal-placeholder');
+         $('.comment_for_wall').attr("placeholder", "¿Que estás pensando?");
+         $('.comment_for_wall').addClass('normal-placeholder');
          return true;     
      }    
 
