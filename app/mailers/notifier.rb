@@ -6,16 +6,20 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.new_delivery_notification.subject
   #
-  def new_delivery_notification(user,delivery)
-    @user = user
-    @delivery = delivery
-    mail to:  @user.email, subject: "Nueva tarea disponible"
+  def new_delivery_notification(users,delivery)
+    users.each do |user|
+      @user = user
+      @delivery = delivery
+      mail to:  @user.email, subject: "Nueva tarea disponible"
+    end
   end
 
-  def new_survey_notification(user,survey)
-    @user = user
-    @survey = survey
-    mail to: @user.email, subject: "Nuevo cuestionario disponible"
+  def new_survey_notification(users,survey)
+    users.each do |user|
+      @user = user
+      @survey = survey
+      mail to: @user.email, subject: "Nuevo cuestionario disponible"
+    end
   end
 
   def accepted_message(member_in_course,course)

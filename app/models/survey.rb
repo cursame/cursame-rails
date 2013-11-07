@@ -139,16 +139,14 @@ class Survey < ActiveRecord::Base
 
   def send_mail(users)
     Thread.new {
-          begin
-            users.each do |user|
-              mail = Notifier.new_delivery_notification(user,self)
-              mail.deliver
-            end
-          rescue => ex
-            puts 'error al enviar mail'
-          ensure
-            ActiveRecord::Base.connection.close
-          end
+      begin
+        mail = Notifier.new_survey_notification(users,self)
+        mail.deliver          
+      rescue => ex
+        puts 'error al enviar mail'
+      ensure
+        ActiveRecord::Base.connection.close
+      end
     }    
   end
 

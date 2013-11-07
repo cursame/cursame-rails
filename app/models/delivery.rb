@@ -118,7 +118,9 @@ class Delivery < ActiveRecord::Base
       course.members_in_courses.each do |member|
         user = member.user
         if user.id != self.user_id && member.accepted == true then
-          users.push(user)          
+          users.push(user)
+          # mail = Notifier.new_delivery_notification(user,self)
+          # mail.deliver        
         end
       end
     end
@@ -197,10 +199,8 @@ class Delivery < ActiveRecord::Base
   def send_mail(users)
     Thread.new {
           begin
-            users.each do |user|
-              mail = Notifier.new_delivery_notification(user,self)
-              mail.deliver
-            end
+              mail = Notifier.new_delivery_notification(users,self)
+              mail.deliver          
           rescue => ex
             puts 'error al enviar mail'
           ensure
