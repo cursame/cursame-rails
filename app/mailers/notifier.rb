@@ -20,6 +20,14 @@ class Notifier < ActionMailer::Base
       @survey = survey
       mail to: @user.email, subject: "Nuevo cuestionario disponible"
     end
+  end 
+
+  def new_discussion_notification(users,discussion)
+    users.each do |user|
+      @user = user
+      @discussion = discussion
+      mail to: @user.email, subject: "Nuevo discusion disponible"
+    end
   end
 
   def accepted_message(member_in_course,course)
