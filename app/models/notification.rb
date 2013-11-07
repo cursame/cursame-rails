@@ -49,6 +49,7 @@ class Notification < ActiveRecord::Base
     when "user_comment_on_user" #funcionando
     when "user_comment_on_delivery" #funcionando  
     when "user_request_membership_in_course"
+    when "new_assignment_on_survey"
     end
     self.users.each do |user|
       count = user.notifications.where(:active => true).count
