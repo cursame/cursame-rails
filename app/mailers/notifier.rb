@@ -26,7 +26,7 @@ class Notifier < ActionMailer::Base
     users.each do |user|
       @user = user
       @discussion = discussion
-      mail to: @user.email, subject: "Nuevo discusion disponible"
+      mail to: @user.email, subject: "Nueva discusion disponible"
     end
   end
 
