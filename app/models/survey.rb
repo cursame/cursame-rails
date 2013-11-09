@@ -20,13 +20,13 @@ class Survey < ActiveRecord::Base
   acts_as_commentable
   #para los likes
   acts_as_votable
-  
+
   ###### validando la presencia de algunos rubros #######
   validates_presence_of :courses
   validates_presence_of :questions
   validates_presence_of :user
-  
-  
+
+
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
@@ -80,7 +80,7 @@ class Survey < ActiveRecord::Base
       end
     end
 
-    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)    
+    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)
 
     users = users.reject { |user| user.id == self.user_id }
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
@@ -92,7 +92,7 @@ class Survey < ActiveRecord::Base
     else
     @expired = false
     end
-    
+
     if  @expired == true
        self.state = 'unpublish'
        self.save!
@@ -131,6 +131,9 @@ class Survey < ActiveRecord::Base
   def averageCalification
     user_surveys = self.user_surveys
     size = user_surveys.size
+    if (size == 0) then
+      return 0.0
+    end
     average = 0.0
     user_surveys.each do
       |user_survey|

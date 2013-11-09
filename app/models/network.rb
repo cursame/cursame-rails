@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Network < ActiveRecord::Base
   has_one :network_template#, :dependent => :destroy
   has_many :permissionings, :dependent => :destroy
@@ -25,7 +26,7 @@ class Network < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
-  
+
   def owner?(role,user)
     return false
   end
@@ -42,7 +43,62 @@ class Network < ActiveRecord::Base
       # :conditions => ["(walls.network_id = ?) AND
       #                 ((walls.public = ? AND walls.publication_type != 'Comment') OR (userpublicationings.user_id = ? AND walls.publication_type != 'Comment')) OR
       #                 (members_in_courses.accepted = ? AND members_in_courses.user_id = ? AND walls.publication_type != 'Comment')",network_id,true,user_id,true, user_id]).order('walls.created_at DESC')
-  
 
+
+  end
+
+  def averageCalificationSurvey
+    surveys = self.surveys
+    if surveys.size == 0 then
+      return 0.0
+    end
+
+    average = 0.0
+
+    surveys.each do |survey|
+      average += survey.averageCalification
+    end
+    return average/surveys.size
+  end
+
+  def averageCalificationDelivery
+    deliveries = self.deliveries
+
+    if deliveries.size == 0 then
+      return 0.0
+    end
+
+    average = 0.0
+
+    deliveries.each do |delivery|
+      average += delivery.averageCalification
+    end
+    return average/deliveries.size
+  end
+
+  def self.averageNetworkSurvey
+    networks = Network.all
+    if (networks.size == 0) then
+      return 0
+    end
+    average = 0.0
+    networks.each do |network|
+      average = network.averageCalificationSurvey
+    end
+
+    return average/networks.size
+  end
+
+  def self.averageNetworkDelivery
+    networks = Network.all
+    if (networks.size == 0) then
+      return 0
+    end
+    average = 0.0
+    networks.each do |network|
+      average = network.averageCalificationDelivery
+    end
+
+    return average/networks.size
   end
 end
