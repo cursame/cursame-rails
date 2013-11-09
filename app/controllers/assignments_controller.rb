@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
@@ -29,12 +30,12 @@ class AssignmentsController < ApplicationController
      1.times do
          assets = @assignment.assets.build
      end
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @assignment }
     end
-    
+
   end
 
   # GET /assignments/1/edit
@@ -55,55 +56,55 @@ class AssignmentsController < ApplicationController
       puts "**************"
 
      if @assignment.save!
-       
-           if(params[:files])
-             params[:files].each do |asset_id|
-               @asset = Asset.find(asset_id)
-               @delivery.assets.push(@asset)
-             end
-           end
-            puts "************************************************************************"
-           @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id) 
-           
-           @delivery_from_assignment = Delivery.find(@assignment.delivery)
-            puts  @delivery_from_assignment
 
-                @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
-
-                  @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
-                  @response_to_the_evaluation.name = generate_rubres.name
-                  @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-                  @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
-                  @response_to_the_evaluation.assignment_id = @assignment.id
-                  @response_to_the_evaluation.save
-
-                   puts "******** se han generado las areas de evaluacion ************"
-
-                end
-
-
-                    @typed = "Assignment"
-                    @az =  @assignment
-                  ####### despues de guardar se crea la notificación de actividad con geo localización
-                    activation_activity
-
-
-             if @activity.save
-                 redirect_to :back
-             else
-             end
+       if(params[:files])
+         params[:files].each do |asset_id|
+          @asset = Asset.find(asset_id)
+          @delivery.assets.push(@asset)
         end
+       end
+       puts "************************************************************************"
+       @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+
+       @delivery_from_assignment = Delivery.find(@assignment.delivery)
+       puts  @delivery_from_assignment
+
+       @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
+
+        @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+        @response_to_the_evaluation.name = generate_rubres.name
+        @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
+        @response_to_the_evaluation.assignment_id = @assignment.id
+        @response_to_the_evaluation.save
+
+        puts "******** se han generado las areas de evaluacion ************"
+
+      end
+
+
+       @typed = "Assignment"
+       @az =  @assignment
+       ####### despues de guardar se crea la notificación de actividad con geo localización
+       activation_activity
+
+
+       if @activity.save
+         redirect_to :back
+       else
+       end
+     end
   end
 
   # PUT /assignments/1
   # PUT /assignments/1.json
   def update
     @assignment = Assignment.find(params[:id])
-    
-    
+
+
     if @assignment.response_to_the_evaluations.count != 0
       puts "con rubros"
-      
+
       if @assignment.update_attributes(params[:assignment])
          @assignment.response_to_the_evaluations.each do |docificate|
            ###### se actualiza el valor del rubro con respecto a la califiación
@@ -111,7 +112,7 @@ class AssignmentsController < ApplicationController
                puts docificate.rub_calification
                @valor_total = docificate.evaluation_porcentage
                puts   @valor_total
-               @valor_recibido = docificate.figure  
+               @valor_recibido = docificate.figure
                puts    @valor_recibido
                @division = (@valor_recibido)/100.0000
                puts @division.to_f
@@ -125,23 +126,23 @@ class AssignmentsController < ApplicationController
           @assignment.accomplishment =  @sum_value_to_accomplishment
           @assignment.save
        end
-     else 
+     else
        puts "sin rubros"
        puts (params[:assignment])[:rub_calification].to_f
        @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
        @assignment.accomplishment = @assignment.rub_calification
        @assignment.save
      end
-     
-       
-       
+
+
+
       respond_to do |format|
       if @assignment.save
-        format.js 
-        format.json 
+        format.js
+        format.json
       else
         format.js
-        format.json 
+        format.json
       end
     end
   end

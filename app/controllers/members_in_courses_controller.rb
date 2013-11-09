@@ -47,6 +47,12 @@ class MembersInCoursesController < ApplicationController
     respond_to do |format|
       if @members_in_course.save!
         # Mail de notificación de un nuevo usuario.
+
+        # activity
+        @az = @members_in_course
+        @typed = @members_in_course.class.to_s
+        activation_activity
+
         if (!@members_in_course.owner and @course_find.public_status == "Private") then
           mail = Notifier.new_member_in_course(@course_find, @members_in_course.user)
           mail.deliver

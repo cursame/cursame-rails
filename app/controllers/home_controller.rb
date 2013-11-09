@@ -217,6 +217,11 @@ class HomeController < ApplicationController
 
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
+
+      @az = @message
+      @typed = @message.class.to_s
+      activation_activity
+
       @channel_name = params[:channel_name]
       @channel_id = params[:channel_id]
       respond_to do |format|
@@ -263,6 +268,12 @@ class HomeController < ApplicationController
     commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
     if params[:comment_id].blank? then
       @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
+
+      # activity
+      @az = @comment
+      @typed = @comment.class.to_s
+      activation_activity
+
       if (@comment.commentable_type == 'Course')
         # mailer = Notifier.send_comment_on_course(@comment)
         # mailer.deliver
