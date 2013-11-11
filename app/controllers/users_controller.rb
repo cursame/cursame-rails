@@ -4,9 +4,10 @@ class UsersController < ApplicationController
 
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
-
+    
     if @user_l.nil? then
-      redirect_to :back
+      redirect_to not_found_path
+      return
     end
 
     #helper methods in aplication controller
