@@ -5,7 +5,7 @@ class DeliveriesController < ApplicationController
   before_filter :filter_protection, :only => [:show, :edit]
   before_filter :protection_to_index, :only => [:index]
   helper_method :assigment
-  
+
   def index
     @deliveries = Delivery.all
     @delivery = Delivery.new
@@ -67,7 +67,7 @@ class DeliveriesController < ApplicationController
     @publication = []
     @error = false
 
-    if courses && !courses.empty?      
+    if courses && !courses.empty?
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
         @delivery.courses = [Course.find_by_id(course)]
@@ -86,7 +86,7 @@ class DeliveriesController < ApplicationController
         end
       end
     else
-      @error = true      
+      @error = true
     end
 
     respond_to do |format|
@@ -199,26 +199,26 @@ end
    @id = params[:id]
        @delivery = Delivery.find_by_id(@id)
        if @delivery.state == 'unpublish'
-       
+
         @delivery.state = 'published'
         @delivery.publish_date = Time.now
-        @delivery.end_date = Time.now + 10.days 
+        @delivery.end_date = Time.now + 10.days
         @message = "se ha republicado agregando 10 dias desde ahora"
-         
+
        else
-         
+
          @delivery.state = 'unpublish'
          @delivery.end_date = Time.now
          @message = "se ha despublicado"
-         
-         
+
+
        end
        @delivery.save!
-       if @delivery.save   
+       if @delivery.save
        respond_to do |format|
        format.js
        end
        end
-   
+
  end
 end

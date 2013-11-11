@@ -117,14 +117,14 @@ class Comment < ActiveRecord::Base
 
 
   def group_of_users(comment_type)
-    case comment_type    
+    case comment_type
     when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
-      
+
       if comment_type == "Course"
         self.send_mail
-      end      
+      end
       return hash
 
     when "User"
@@ -145,10 +145,10 @@ class Comment < ActiveRecord::Base
         users = commentable.commentable.users
         users = users.reject { |user| user.id == self.user.id }
         hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
-        
+
         if commentable.commentable_type == "Course"
           self.send_mail
-        end 
+        end
         return hash
       end
 
@@ -166,7 +166,7 @@ class Comment < ActiveRecord::Base
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
       return hash
-    
+
     when 'Survey'
       if commentable.courses.size == 0 then
         hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
@@ -212,6 +212,10 @@ class Comment < ActiveRecord::Base
           ensure
             ActiveRecord::Base.connection.close
           end
-        }    
+        }
+  end
+
+  def title
+    return ""
   end
 end

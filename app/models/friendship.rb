@@ -34,4 +34,8 @@ class Friendship < ActiveRecord::Base
       end
     end
   end
+
+  def title
+    return ""
+  end
 end
