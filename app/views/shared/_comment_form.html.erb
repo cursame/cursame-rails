@@ -7,7 +7,7 @@
   </div>
   
   <% if comment_id.nil? then %>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 576px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?' %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 574px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?' %>
   <% else %>
     <%= text_area_tag "comment", comment, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 576px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?' %>
   <% end %>

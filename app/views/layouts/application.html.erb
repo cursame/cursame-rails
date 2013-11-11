@@ -98,91 +98,95 @@
 <header id="user_nav" class="topbar">
   <div class="center-div">
   	<div class="headFix">
+
      <% if current_network == nil%> 
        <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
      <%else%>
        <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
      <%end%>
-	 <div class="menu-user">
-      <% if user_signed_in? %>
-          <div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
-          <%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
+     
+	<div class="menu-user">
+		<% if user_signed_in? %>
+			<div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
+				<%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           		<div id="ShowLogout" style="display: none;">Salir</div>
-          </div>
+		  	</div>
           
         <% if current_user.avatar.blank? %>
-             <%= link_to image_tag(current_user.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-         <%else%>
-          <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-        
-          <%end%>
-         <span> <%= link_to truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 20), show_user_path(current_user.personal_url) %> </span>
-          <%#= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+			<%= link_to image_tag(current_user.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+		<%else%>
+			<%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+        <%end%>
+			<span>
+				<%= link_to truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 20), show_user_path(current_user.personal_url) %> 
+			</span>
+				<%#= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
 
-                 <%#=  debug current_role %>
-          <% if current_role == "admin"%>
-              <%= link_to "Administración", managers_wall_path, :style =>'float: right; padding: 3px 5px; background: #1A83D5; color: #FFF; margin-right: 10px; font-weight: 100; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;', :class => "admin-access"%>
-           <%end%>
-      <% else %>
-      
-      
+                <%#=  debug current_role %>
+				
+				<% if current_role == "admin"%>
+				<%= link_to "Administración", managers_wall_path, :style =>'float: right; padding: 3px 5px; background: #1A83D5; color: #FFF; margin-right: 10px; font-weight: 100; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;', :class => "admin-access"%>
+           
+				<%end%>
+			<% else %>
 
-      <div style="float:right;">
-       <!--  <%= link_to "Logueate", new_user_session_path %><% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %><%end%>-->
-      </div>
+		<div style="float:right;">
+			<!-- 
+				<%= link_to "Logueate", new_user_session_path %>
+					<% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>
+				<%end%>
+			-->
+		</div>
 
-      
-      
-      <% end %>
-    </div>
-    <div id="message_notifications">    
-      <%= render :partial => '/shared/chat/message_notifications' %>
-    </div>
-    <div id="notifications">    
-      <%= render :partial => '/shared/notifications' %>
-    </div>
-  </div>
- </div><!-- ends headFix -->
- <div id="log_loadding"style="display:none;"></div>
- 
- <div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
-   <div id="notice" class="notice"></div>
- </div>
+		<% end %>
+
+		</div>
+		
+		<div id="message_notifications">    
+			<%= render :partial => '/shared/chat/message_notifications' %>
+		</div>
+
+		<div id="notifications">    
+			<%= render :partial => '/shared/notifications' %>
+		</div>
+	</div>
+
+</div><!-- ends headFix -->
+
+<div id="log_loadding"style="display:none;"></div>
+	<div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
+		<div id="notice" class="notice"></div>
+	</div>
   
-</header>
-<div id="sub_nav">
-	<div class="user_subnav"></div>
-	<div class="friends_subnav"></div>
-	<div class="courses_subnav"></div>
-</div>
+	</header>
 
-<div class="center-div">
-  <!-- content -->
+	<div id="sub_nav">
+		<div class="user_subnav"></div>
+		<div class="friends_subnav"></div>
+		<div class="courses_subnav"></div>
+	</div>
+
+	<div class="center-div">
+		<!-- content -->
   
-  <script>
+<script>
    setTimeout(function(){
       var bt = '<%= browser %>' 
       if(bt == 'true'){
-          
         //  alert('browser compatible');
-    
-          
       }else{
-
            $('#browsers_box').lightbox_me({
                 centered: true, 
                 onLoad: function() { 
                     $('#browsers_box').find('input:first').focus()
-                    }
-
+					}
                 });
-            
             $('body').css('overflow','hidden');
-      }
+		}
    },2000)
-  </script>
+</script>
   
-  <script>
+<script>
 	$('#logoutHover').mouseenter( function() {
   		$(this).animate({ width: "58px" }, 200);
   	});
@@ -193,12 +197,15 @@
   		$('#ShowLogout').slideToggle(100).delay(300);
   	});
   	
-  	$('.ZenboxTabRight').hover ( function() {
-  		$(this).animate({ marginRight: "60px" });
-	  	$(this).addClass('zenbox_tab__text');
-	  	console.log('hola');
-  	});
   	
+  	$('.ZenboxTabRight').mouseenter ( function() {
+  		$(this).animate({ paddingRight: "80px" });
+	  	$(this).addClass('zenbox_tab__text');
+  	});
+  	$('.ZenboxTabRight').mouseleave ( function() {
+  		$(this).animate({ paddingRight: "0px" });
+  		$(this).removeClass('zenbox_tab__text');
+  	});
   </script>
   
   <div class="container" >
@@ -227,33 +234,26 @@
 </div>
 </body>
 </html>
-<%else%>
-  <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-
+	<%else%>
+		<%= stylesheet_link_tag "application", :media => "all", :debug => true %>
 <div class="center-div">
   <!-- content -->
   
   <script>
-   setTimeout(function(){
-      var bt = '<%= browser %>' 
-      if(bt == 'true'){
-          
-        //  alert('browser compatible');
-    
-          
-      }else{
-
-           $('#browsers_box').lightbox_me({
-                centered: true, 
-                onLoad: function() { 
-                    $('#browsers_box').find('input:first').focus()
-                    }
-
-                });
-            
-            $('body').css('overflow','hidden');
-      }
-   },2000)
+	setTimeout(function(){
+	  var bt = '<%= browser %>' 
+	  if(bt == 'true'){
+	    //  alert('browser compatible');
+	  }else{
+	       $('#browsers_box').lightbox_me({
+	            centered: true, 
+	            onLoad: function() { 
+	                $('#browsers_box').find('input:first').focus()
+	                }
+	            });
+	        $('body').css('overflow','hidden');
+	  }
+	},2000)
   </script>
   
   <script>
@@ -268,14 +268,13 @@
   	});
   	
   	$('.ZenboxTabRight').mouseenter ( function() {
-  		$(this).animate({ marginRight: "60px" });
+  		$(this).animate({ marginRight: "120px" });
 	  	$(this).addClass('zenbox_tab__text');
   	});
   	$('.ZenboxTabRight').mouseleave ( function() {
-  		$(this).animate({ marginRight: "0px" });
+  		$(this).animate({ paddingRight: "0px" });
   		$(this).removeClass('zenbox_tab__text');
   	});
-  	
   </script>
   
 
