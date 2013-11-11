@@ -1,0 +1,27 @@
+
+
+/*valdiación de formulario de comment*/
+ $('#'+"<%=formId%>").submit(function(){
+    
+     var assignment_title = $('.'+"<%=formId%>"+'_assignment_title').val();
+     var assignment_brief_description = $('.'+"<%=formId%>"+'_assignment_brief_description').val();
+     
+     if (assignment_title == ''){
+         $('.'+"<%=formId%>"+'_assignment_title').attr("placeholder", "Este campo no debe quedar vacio coloca el título.");
+         $('.'+"<%=formId%>"+'_assignment_title').addClass('red-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_title').removeClass('normal-placeholder');
+         return false;
+         }else if (assignment_brief_description == ''){
+         $('.'+"<%=formId%>"+'_assignment_brief_description').attr("placeholder", "Este campo no debe quedar vacio coloca la descripcción.");
+         $('.'+"<%=formId%>"+'_assignment_brief_description').addClass('red-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_brief_description').removeClass('normal-placeholder');
+         return false;
+         }else{
+         $('.'+"<%=formId%>"+'_assignment_title').attr("placeholder", "");
+         $('.'+"<%=formId%>"+'_assignment_title').addClass('normal-placeholder');
+         $('.'+"<%=formId%>"+'_assignment_brief_description').attr("placeholder", "");
+         $('.'+"<%=formId%>"+'_assignment_brief_description').addClass('normal-placeholder');
+         return true;     
+     }  
+ 
+ });

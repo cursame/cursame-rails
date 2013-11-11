@@ -40,7 +40,7 @@ class Delivery < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :courses
   validates_presence_of :user
-  
+
 
   acts_as_commentable
   #para los likes
@@ -73,11 +73,11 @@ class Delivery < ActiveRecord::Base
   state_machine :state, :initial => :unpublish do
     state :unpublish
     state :published
-    
+
     event :publish do
       transition :to => :published, :from => :unpublish
     end
-    
+
   end
 
   before_create do
@@ -153,7 +153,7 @@ class Delivery < ActiveRecord::Base
     return users
   end
 
-  
+
   def expired?
   @expired_in  = self.end_date
 
@@ -162,15 +162,15 @@ class Delivery < ActiveRecord::Base
     else
     @expired = false
     end
-    
+
     if  @expired == true
        self.state = 'unpublish'
        self.save!
      end
   end
-  
 
-  
+
+
   def self.publish_new_deliveries
     Delivery.created.each do |delivery|
       if delivery.publish_date <= DateTime.now
@@ -201,6 +201,9 @@ class Delivery < ActiveRecord::Base
   def averageCalification
     assignments = self.assignments
     size = assignments.size
+    if (size == 0) then
+      return 0.0
+    end
     average = 0.0
     assignments.each do
       |assignment|

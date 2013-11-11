@@ -103,7 +103,9 @@ Cursame30Lb::Application.routes.draw do
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
   get "delivery_menu/:id", :to => "courses#delivery_menu", :as => :delivery_menu
   get "course_assignment_l/:id", :to => "courses#course_assignment", :as => :course_assignment_l
+  get "course_assignment_l_notif/:id", :to => "courses#course_assignment_notif", :as => :course_assignment_l_notif
   get "course_survey_l/:id", :to => "courses#course_survey", :as => :course_survey_l
+  get "course_survey_l_notif/:id", :to => "courses#course_survey_notif", :as => :course_survey_l_notif
 
   ##### llamada ajax para saber si la session ha expirado
 
@@ -119,6 +121,8 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
      end
   end
+  
+  get 'assignments/delivery_responce'
   ################ llamada para republicar tarea ################
   get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
   get'/publish_unpublish_survey_manualy', :to => 'surveys#publish_unpublish_survey_manualy', :as => :publish_unpublish_survey_manualy

@@ -1,5 +1,5 @@
 
-<%= form_tag "/home/add_new_comment", :class => "default-form comment-form", remote: true do %>
+<%= form_tag "/home/add_new_comment", :class => "default-form comment-form comment_form_top", remote: true do %>
 
 
   <div class="video_help" style="display: none" id="comment_help">
@@ -7,9 +7,9 @@
   </div>
   
   <% if comment_id.nil? then %>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 574px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?' %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 576px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?', :class => 'comment_for_wall' %>
   <% else %>
-    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 576px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?' %>
+    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 576px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?', :class => 'comment_for_wall' %>
   <% end %>
   <%= hidden_field_tag 'commentable_id', commentable_id %>
   <%= hidden_field_tag 'commentable_type', commentable_type %>
@@ -20,7 +20,7 @@
   <div class="submit-area"></div>
   
   	<%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
-  	<%= submit_tag "Comentar", :class=>"btn btn-primary", :id => 'comment-post-form' %>
+  	<%= submit_tag "Comentar", :class=>"btn btn-primary activable", :id => 'comment-post-form' %>
   	<a class="help" id="help_comment" style="float:left; margin:4px;"><%= image_tag('help.png')%></a>
   		<%if !@user_show%>
   			<% if @incourse != true%>

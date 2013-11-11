@@ -2,6 +2,8 @@
    random_id = "#{random}"
    @labelIdBoxx = "upload-labels-assignments-#{random_id}"
    formId= "form-upload-assignments-#{random_id}"
+   class_id_assignment_brief_description = "#{formId}_assignment_brief_description"
+   class_id_assignment_title = "#{formId}_assignment_title"
 %>
 
  <% @assignment = Assignment.find_by_user_id_and_delivery_id(current_user.id,@delivery_id) %>
@@ -28,7 +30,7 @@
     <%= f.label :Título %><br />
     </div>
 
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => "#{formId}_assignment_title" %>
    <div style="float:right;margin-right:280px;width:50px; height:30px; position:relative; margin-top:10px;">
               <%= render partial: 'content/assignments/puts', :locals => {:typeo => 'assignment', :acces_to => @assignment, :id => formId  } %>
               <div style="display:block; float:left; color:#DEDEDE; width:250%; margin-left:30px; margin-top:-40px;">Entrega tu tarea desde Dropbox</div>
@@ -38,7 +40,7 @@
     <div style="font-size:22px;">
        <%= f.label :Descripción %>
     </div>
-    <%= f.text_area :brief_description, :cols => 76, :rows => 15 %>
+    <%= f.text_area :brief_description, :cols => 76, :rows => 15, :class => "border_for_text #{formId}_assignment_brief_description " %>
 <br />
     <% if @assingment_id.nil? then %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -59,9 +61,14 @@
      </div></br>
      <div style="margin-right:30px;">
     <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form-'+ @delivery_id.to_s %>
-    <%= f.submit "Entregar Tarea" %>
+    <%= f.submit "Entregar Tarea", :class => 'activable' %>
     </div>
+    <script>
+    <%= render :partial => '/assignments/delivery_responce.js.erb', :locals => {:formId => formId}%>
+    </script>
 <% end %>
+<%#= render :partial => "/assignments/delivery_responce" , :locals => {:formId => formId} %>
+
 
 <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+ @labelIdBoxx, :formId => formId} %>
 <div class="notice-file non-margin" style="margin-top:-40px; margin-left:100px; display:block; position:relative;">El límite de peso por archivo es de 8Mb</div>
