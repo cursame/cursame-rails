@@ -409,7 +409,7 @@ Cursame30Lb::Application.routes.draw do
    # get "home/acces_on_course", :as => :acces_on_course
 
   #paginas de errores
-  match '/404', :to => 'home#not_found'
+  match '/404', :to => 'home#not_found', :as => :not_found
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
   match '/503', :to => 'home#server_error'

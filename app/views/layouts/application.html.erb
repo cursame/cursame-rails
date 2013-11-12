@@ -125,7 +125,9 @@
         
       <% else %>
       <div style="float:right;">
-         <%= link_to "Logueate", new_user_session_path %><% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>  <%end%>
+        <% if !current_network.nil? %>
+          <%= link_to "Logueate", new_user_session_path %><% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>  <%end%>        
+        <% end %>        
       </div>
       <% end %>
     </div>
