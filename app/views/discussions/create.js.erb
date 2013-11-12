@@ -13,13 +13,14 @@ $('#notice').append('Se ha creado una notificación');
           $(".content_killer").html('');
           $(".choser").html('');
           $('.youtube_content_delivery').hide();
-   
-setTimeout(function() {
 
+  setTimeout(function() {
     $('#notice').html('')
     $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-     CleanerBlur();
-      DisableBlured();
-    $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
+  }, 800);
+  
+  CleanerBlur();
+  DisableBlured();
+  $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
+  cancelButtonsPostMenu();
     
-}, 2500);

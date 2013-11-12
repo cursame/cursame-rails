@@ -145,11 +145,18 @@
             <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty?%>
             <div id="open-close-<%= delivery.id %>">
                 <a>Responder</a>
-            </div>
+            </div>            
             <%else%>
-                <div id="open-close-<%= delivery.id%>">
-                   <a>Editar Entrega</a>
-                </div>
+                <% accomplishment = current_user.assignments.where(:delivery_id => delivery.id)[0].accomplishment%>
+                <% if accomplishment != nil %>
+                    <div style="background-color:#FFF; border:5px solid #FFF; margin:-2px -2px -2px -2px; color:#3BB3C5;font-size:34px; text-shadow:none">
+                       <%= accomplishment.to_s %>
+                    </div>
+                <%else%>
+                    <div id="open-close-<%= delivery.id%>">
+                       <a>Editar Entrega</a>
+                    </div>
+                <%end%>                
             <%end%>
         </div>
     </div>

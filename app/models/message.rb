@@ -13,4 +13,8 @@ class Message
 
   def course_id
   end
+
+  def title
+    return ""
+  end
 end

@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td style="padding:0px 30px 20px 30px;" width="600px">
-          <p>Hola, el usuario <%= @user.email %> desea formar parte del curso <%=@course.title%>.</p>
+          <p>Hola el usuario <%= @user.email %> comento en el curso <%=@course.title%>.</p>
         </td>
       </tr>
       <tr>
@@ -35,7 +35,7 @@
         <td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
           <center>
             <span class="buttonClick">
-              <%= link_to 'Ir al administrador de Usuarios', "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}/members" %></span>
+              <%= link_to 'Ir al curso', "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}" %></span>
           </center>
         </td>
       </tr>
