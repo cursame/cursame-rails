@@ -194,9 +194,11 @@ class NetworksController < ApplicationController
      network = []
      
         @networks.each do |net|
+         @lader = I18n.transliterate("#{net.name}")
           network.push(
              { name: "#{net.name}",
-              subdomain: "#{net.subdomain}"}
+              subdomain: "#{net.subdomain}",
+              simplify: "#{@lader}".downcase!}
           )
         end
      
