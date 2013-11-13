@@ -6,79 +6,67 @@
     //background :#00B1C7;
     margin-left: 0px;
     cursor: pointer;
-    color: #FFF;
+    color: #AAA;
     position:relative;
-    width: 139px;
-    float:left;
-    text-align: center;
+    //width: 139px;
+    width: 122px;
+    float: left;
+    text-align: left;
     text-decoration: none!important;
     padding: 15px 5px 5px 5px;
     height: 25px;
     font-size: 15px;
     font-size: 100;
-    
-	background: #2B2A28;
+    //background: #2B2A28;
 	transition: linear all 0.2s;
 }
 
  .simple-tab:hover {
-      color: #FFF;
+      color: #000;
       transition: linear all 0.2s;
       text-decoration: none;
-	  background: #1b7ab1;
+	  //background: #1b7ab1;
  }
 
-#tab-form-options{
-     //background:#F8B1FF;
-     //background:#D6FAF7;
-     //background:#E86850;
-     //background:#c9d1da;
-     overflow: hidden;
-     height:45px;
-     border-bottom:3px solid #126899;     
-	 background: #2B2A28;
+#tab-form-options {
+	//background:#F8B1FF;
+	//background:#D6FAF7;
+	//background:#E86850;
+	//background:#c9d1da;
+	overflow: hidden;
+	height:45px;
+	//border-bottom:3px solid #126899;     
+	//background: #2B2A28;
 }
 .tab-style{
-  //border:1.5px solid #FBCBFF;  
-  border:1.5px solid #CCC;
+	//border:1.5px solid #CCC;
 }
 
 .border_for_text{ 
-   border:solid 1px #c9d1da !important;
-   border-radius: 5px;
-   margin: 4px 0px 0px 0px;
+	border:solid 1px #c9d1da !important;
+	border-radius: 5px;
+	margin: 4px 0px 0px 0px;
  }
 .selected_tab {
 	//background: #F04B1F;
 	//border-bottom: solid 4px #F04B1F;
-	background: #126899;
-	border-bottom: solid 4px #126899;
-	padding: 16px 8px 8px 8px;
-	width: 137px;
-	text-align: center;
+	//background: #126899;
+	//border-bottom: solid 4px #126899;
+	//padding: 16px 8px 8px 8px;
+	padding: 16px 8px 13px 8px;
+	//width: 137px;
+	width: 122px;
+	text-align: left;
 	text-decoration: none!important;
 	margin: -1px 0px 0px 0px;
 	//height: auto;
 	height: 18px;
 	font-size: 15px;
-	color: #FFF!important;
-
-/*
-    //background:#c9d1da;
-    background : #F7FAFF;
-    border-bottom:solid 4px #0098D6;
-    padding:8px;
-    width: 23%;
-    background: #0098D6;
-    color: #FFF!important;
-    text-align: center;
-    text-decoration: none!important;
-    margin: -1px 0px 0px 0px;
-    height: 29px;
-*/
+	color: #000!important;
+	background: url('/assets/selected_arrow.png') bottom center no-repeat;
 }
 .selected_tab:hover {
-	background: #126899;
+	//background: #126899;
 	cursor: default;
 }
 
@@ -99,6 +87,8 @@
 
 #message-form-area-tab {
 	padding-top: 10px;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 
 /* validando los placeholders*/
@@ -133,6 +123,9 @@
 
 #delivery-form-area-tab {
 	padding: 21px 21px 21px 19px;
+	border: 1px solid #CCC;
+	margin-top: -1px;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 #delivery-form-area-tab .form_fix_title_overlay {
 	width: 547px!important;
@@ -157,6 +150,10 @@
 
 #discussion-form-area-tab {
 	padding: 21px 21px 21px 19px;
+	border: 1px solid #CCC;
+	margin-top: -1px;
+	min-height: 135px;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 #discussion-form-area-tab #discussion_title {
 	width: 400px;
@@ -171,8 +168,14 @@
 /* -------------- estilos cuestionario -------------- */
 /* -------------- estilos cuestionario -------------- */
 
+#tabs_form #survey-form-area-tab {
+	margin-top: -1px;
+}
+
 #tabs_form #survey-form-area-tab .survey-form {
-	border: 0px!important;
+	border: 1px solid #CCC;
+	margin: 0px;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 #tabs_form #survey-form-area-tab .survey-form .title-txt-input {
 	width: 545px!important;

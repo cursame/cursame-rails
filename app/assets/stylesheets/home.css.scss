@@ -174,6 +174,12 @@ border-top-right-radius: 0px; }
     background:transparent!important;
     border: 0px!important;
 }
+.zenbox_tab__text {
+	background: url('line-dashed-mini.png') no-repeat center center;
+}
+.ZenboxTabRight:hover, #zenbox_tab:hover {
+	background: url('/assets/ayuda.png') 70px center no-repeat!important;
+}
 
 .checkbox input[type="checkbox"] {
     display:none;

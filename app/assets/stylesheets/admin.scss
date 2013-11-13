@@ -148,6 +148,48 @@
 	}
 }
 
+.submit_role_user {
+	border: 0px;
+	background: #FFF;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	color: #333;
+	padding: 2px 6px;
+}
+.submit_role_user:hover {
+   background: #4FA3E9;
+   color: #FFF;
+   cursor: pointer;
+}
+
+.submit_role_dropdown {
+    position: relative;
+    width: 80px;
+    color: #FFF;
+    cursor: pointer;
+    outline: none;
+    height: 25px;
+    font-size: 14px;
+    padding: 0px;
+    float: left;
+    border: 0px;
+    
+    background-color: transparent;
+	background-image: url('images/select_arrow.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 20px;
+    }
+.submit_role_dropdown select {
+   background: transparent;
+   width: 80px;
+   height: 25px;
+   border: none;
+   padding: 0px;
+   color: #FFF;
+   outline: none;
+}
+    
+
 .actions_active {
 	position: absolute;
 	float: right;
@@ -155,13 +197,21 @@
 	width: 273px;
 	height: 49px;
 	display: inline-block;
-	background: #1A83D5;
+	background: #1B57A0;
 	color: #FFF;
 	margin: 0px!important;
 	padding-top: 10px;
 	padding-right: 10px;
 	opacity: 1;
 }
+.actions_active > .openClass_toggle {
+	margin-top: 6px!important;
+}
+.user-list-clear, .user-list-clear:hover {
+	background: #1B57A0!important;
+	color: #FFF;
+}
+
 
 .par {
 	   background-color: #f9f9f9;

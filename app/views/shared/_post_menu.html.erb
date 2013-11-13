@@ -8,29 +8,37 @@
   <div id="tabs_form">      
       <div id="tab-form-options">
          <% permitted_to? :create, :comments do %>
-         <!--<a href="#message-form-area" class="message-form-btn blured"  ><div class="border" ><div class="icon"></div></div>Comentario</a>-->
          <a id="comment-tab" class="simple-tab selected_tab">Comentario
-         	 <!--
-         	<span style="background: url('/assets/icon_small_courses.png') no-repeat; width: 30px; height: 30px; display: inline; position: absolute; margin-left: -50px;;"></span>
-	         <%= image_tag('comment-cir-mini.png', width:22, height:22)%> --> 
+			 <span style="background: url('assets/icon_comment.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
+			 </span>
          </a>
          <%end%>
-         <% permitted_to? :create, :deliveries do %>      
-             <a id="delvery-tab" class="simple-tab "> <!-- <%= image_tag('comment-cir-mini-homework.png', width:22, height:22)%> --> Tarea</a>
+         <% permitted_to? :create, :deliveries do %>
+             <a id="delvery-tab" class="simple-tab" style="width: 90px;">Tarea
+			  <span style="background: url('/assets/icon_homew.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
+			  </span>
+             </a>
              
          <% end%>
          <% permitted_to? :create, :discussions do %>
-            <a id="discusison-tab" class="simple-tab"> <!-- <%= image_tag('comment-cir-mini-discusion.png', width:22, height:22)%> --> Discusión</a>
+            <a id="discusison-tab" class="simple-tab">Discusión
+			 <span style="background: url('/assets/icon_disq.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
+			 </span>
+            </a>
          
          <% end%>
-         <% permitted_to? :create, :surveys do %>      
-            <a id="survey-tab" class="simple-tab"> <!-- <%= image_tag('comment-cir-mini-surveys.png', width:22, height:22)%> --> Cuestionario</a>
+         <% permitted_to? :create, :surveys do %>
+            <a id="survey-tab" class="simple-tab">Cuestionario
+			 <span style="background: url('/assets/icon_surveys.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
+			 </span>
+            </a>
+            
          <% end%>
        </div>
        
      <% @active_edit = false %>
      
-    <div id="message-form-area-tab"  class=" flonder" >  
+    <div id="message-form-area-tab" class="flonder" style="margin-top: -1px;">
       <% permitted_to? :create, :comments do %>
       <div class="frcomment" >
           <%= image_tag('image-pensando.png')%>
@@ -67,11 +75,15 @@
   <div id="tabs_form"> 
   <div id="tab-form-options">
        
-          <% permitted_to? :create, :comments do %>
-          <a id="comment-tab" class="simple-tab"> <!-- <%= image_tag('comment-cir-mini.png', width:22, height:22)%> -->Comentario</a>
-          <%end%>
+	  <% permitted_to? :create, :comments do %>
+			<a id="comment-tab" class="simple-tab selected_tab">Comentario
+				 <span style="background: url('../assets/icon_comment.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
+				 </span>
+			</a>
+      <%end%>
+      
   </div>            
-  <div id="message-form-area-tab"  class=" flonder" >
+  <div id="message-form-area-tab" class="flonder" style="margin-top: -1px;">
       <div class="frcomment" >
                  <%= image_tag('image-pensando.png')%>
         </div>             

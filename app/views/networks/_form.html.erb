@@ -33,18 +33,20 @@
      <%= f.text_area :welcom_message, :class=>"default-form" %>   
 				</div>
 		
-				<div class="field" style="clear: both; position: relative; display: block; height: 30px;">
-					<p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :reestablecer_contraseña_al_importar_los_usuarios %> </p>
-					<%= f.check_box :public_register, :title=> 'Registro público' %>
-				</div>
-		   
-				
-				<div class="field">
-					<p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :Formulario_de_registro_bloqueado  %> </p>
-					<%= f.check_box :register_form, :title=> 'Registro público formulario' %>
+				<div class="checkboxes_layout" style="margin-bottom: 30px;">
+					<div class="field" style="clear: both; position: relative; display: block; height: 30px;">
+						<p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :reestablecer_contraseña_al_importar_los_usuarios %> </p>
+						<%= f.check_box :public_register, :title=> 'Registro público' %>
+					</div>
+			   
+					
+					<div class="field">
+						<p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :Formulario_de_registro_bloqueado  %> </p>
+						<%= f.check_box :register_form, :title=> 'Registro público formulario' %>
+					</div>
 				</div>
 		    
-				<div class="actions" style="margin-top: 40px;">
+				<div class="actions_form" style="margin-top: 60px;">
 					<%= f.submit %>
 				</div>
 			<% end %>

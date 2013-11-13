@@ -1,19 +1,23 @@
 .tooltipr {
     //  position: absolute;
-      width: auto;
+      min-width: 100px;
+      max-width: 200px;
       height: auto;
       //line-height: 48px;
       padding: 5px 16px;
-      font-size: 15px;
-      text-align: center;
+      font-size: 13px;
+      text-align: left;
       margin-top: 3px;
       color: rgb(255, 255, 255);
+      font-weight: 100;
+      text-shadow: 1px 0px 1px #000;
       background: rgba(0,0,0,0.7);
       //border: 0px 0px 0px 0px none none none none rgb(12, 126, 213) rgb(12, 126, 213) rgb(255, 255, 255) rgb(255, 255, 255);
       //border-radius: 0px 3.1875px 3.1875px 0px;
       //text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 1px;
       //box-shadow: rgb(12, 126, 213) -4px 0px 4px 0px inset;
       margin-left: 19px;
+      -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
 }
 
 .tooltipr:after {
@@ -25,7 +29,7 @@
       border-style: solid;
       border-color: transparent rgba(0,0,0,0.7) transparent transparent;
       top: 10px;
-      left: -10px;
+      left: -11px;
       margin-left:18px;
 }
 
