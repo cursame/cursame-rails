@@ -1,0 +1,76 @@
+var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course_id, :per_page => @per_page, :page => @page) }.json" %>', function(json) {
+  var timeline = json.timeline.date;
+  var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
+
+  for(var i = 0; i < timeline.length; i++) {
+    aux = timeline[i];
+
+    if(aux.compose) {
+      kilspace = aux.text.split(' ').join('');
+      flip = '/assets/' + kilspace.split(':')[0] + 'roty.png';
+      id = aux.compose.id + aux.compose.type;
+      clasificate = aux.compose.clasificate;
+      as_to_pertence_com_assets = aux.compose.pertencenence_to;
+
+      dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
+      avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
+
+      $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot '+as_to_pertence_com_assets+' '+dd2+'" id="'+id+'">'+'<img  src="'+avatar+'"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
+
+      // este controlador hace que se empaten los archivos          
+      $('#' + id).click(function() {
+        var axelid =  $(this).attr("id");
+        var cl_actives = $(this).attr("class").split(/\s/);
+        var last_class = cl_actives[1];
+        $('.user_assets').hide();
+        $('.'+last_class).show();
+
+        if(axelid.lastIndexOf("examen") != -1) {
+            $('#expoced').html('');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados"></div></div>');
+
+            $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
+          }
+          else if(axelid.lastIndexOf("entrega_tarea") != -1) {
+            $('#expoced').html('');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+
+            $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', ''), function() {
+              $('#tcg_actdepot').css('width', '75%');
+              $('#tcg_actdepot').css('min-width', '75%');
+              $('#tcg_actdepot').css('margin-top', '2%');
+              $('#tcg_actdepot').css('margin-left', '7%');
+            });
+          }
+          else if(axelid.lastIndexOf("tarea") != -1) {
+            $('#expoced').html('');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tareas_entregadas"></div></div>');
+
+            $.get('/course_delivery_actdepot/' + axelid.replace('tarea', ''), function() {
+            });
+          }       
+
+        return true;
+      });
+        
+      casual = "casual" + id;
+      identifier = '#' + id;
+
+      assets = aux.assets;
+      var cloud = 'po' + aux.asset.credit.split(" ").join("").toLowerCase();
+      if(assets) {
+        for(var l = 0; l < assets.length;l++) {
+         fromk = assets[l];
+          url = fromk.file.file.url;
+          nam = fromk.name;
+          pertence_al = fromk.pertencenence_to;
+
+          $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets ' + cloud + ' ' + pertence_al + '">' + '</div>');
+          $("#" + pertence_al).prepend('<a href="' + url + '" id=' + id + '>' + nam + '<a>');
+        }
+      }
+    }
+  }
+});
+
+$('#load-more-activities').html('<b><a href="/courses/<%= @course_id %>/load_more_activities?per_page=3&page=<%=@page + 1%>" data-remote="true">Ver mas ...</a></b>');

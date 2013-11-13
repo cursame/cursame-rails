@@ -1,118 +1,135 @@
-<div class="" style="width: 938px; margin: 0 auto; position: relative; display: block;">
-<h1 style="font-size: 18px; margin-top: 18px;"><span style="color:#1a1a1a;font-weight: lighter;">Actividades realizadas en el curso: </span><%= link_to "#{@course.title}", course_path%></h1></br>
-<div class="activities_depot_select" id="select-pol">
-    
-   <!-- <input type="text" id="rtf">-->
-   <div class="membFilter">
-   		<span style="display: inline-block; width: 300px; margin-left: -310px; text-align: right;">Miembros del curso</span>
-    <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
-                <option>Todas las actividades</option>
+<div style="width: 938px; margin: 0 auto; position: relative; display: block;">
+
+  <h1 style="font-size: 18px; margin-top: 18px;">
+    <span style="color:#1a1a1a;font-weight: lighter;">Actividades realizadas en el curso: </span><%= link_to "#{@course.title}", course_path%>
+  </h1>
+  </br>
+
+  <div class="activities_depot_select" id="select-pol">
+
+    <!-- <input type="text" id="rtf">-->
+    <div class="membFilter">
+      <span style="display: inline-block; width: 300px; margin-left: -310px; text-align: right;">Miembros del curso</span>
+
+      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
+        <option>Todas los miembros</option>
         <% @course.members_in_courses.each do |m|%>
-                <option><%= @user=User.find_by_id(m.user_id).name%></option>
-        <%end%>
-    </select>
+          <option><%= @user=User.find_by_id(m.user_id).name%></option>
+        <% end %>
+      </select>
     </div>
-    
-</div>
-	
-	<div class="classContTitle">
-    	<h2 class="v1">Actividades realizadas</h2>
-    	<h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
-    </div>
+  </div>
 
-    <div id="ajax-dump" style="margin-top:12px;float:left;">
-       
-    </div>
-    
-    
-    <div class="expoced"id="expoced">
-        <div id="resonance" style="position:fixed;"></div>
-		
-    </div>
+  <div class="classContTitle">
+    <h2 class="v1">Actividades realizadas</h2>
+    <h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
+  </div>
 
+  <div id="ajax-dump" style="margin-top:12px;float:left;"></div>
+
+  <div class="expoced" id="expoced" style="margin-top:12px;">
+    <!--<div id="resonance" style="position:fixed;"></div>-->
+  </div>
+
+  <div id="load-more-activities">
+      <b><%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 3, :page => 1), :remote => true%></b>
+  </div>
 </div>
 
 <script>
-       $("#rtf").change(function () {
-            
-            var value = $(this).val();
-            var flot = '.'+value.split(" ").join("").toLowerCase();
-            console.log(flot);
-            if(flot === ".todaslasactividades"){
-                $('.activities_depot').show();
-                $('.user_assets').show();
-            }else{
-                $('.activities_depot').hide();//css( "border","3px solid red" );
-                $('.user_assets').hide();
-                $(flot).show();
-                
-            }  
-                
+  function red_actdepot(elem) {
+    var red_to = $(elem).attr("redirect_to");
+    $(location).attr("href", red_to); 
+  }
+
+  $("#rtf").change(function() {         
+    var value = $(this).val();
+    var flot = '.' + value.split(" ").join("").toLowerCase();
+
+    if(flot == ".todaslasactividades") {
+      $('.activities_depot').show();
+      $('.user_assets').show();
+    } else {
+      $('.activities_depot').hide();
+      $('.user_assets').hide();
+      $(flot).show();
+    }
+  });
+        
+  var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course, :per_page => 3, :page => 0) }.json" %>', function(json) {
+    var timeline = json.timeline.date;
+    var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
+
+    for(var i = 0; i < timeline.length; i++) {
+      aux = timeline[i];
+
+      if(aux.compose) {
+        kilspace = aux.text.split(' ').join('');
+        flip = '/assets/' + kilspace.split(':')[0] + 'roty.png';
+        id = aux.compose.id + aux.compose.type;
+        clasificate = aux.compose.clasificate;
+        as_to_pertence_com_assets = aux.compose.pertencenence_to;
+
+        dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
+        avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
+
+        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + '" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
+
+        // este controlador muestra la información correspondiente a la actividad
+        $('#' + id).click(function() {
+          var axelid =  $(this).attr("id");
+          var cl_actives = $(this).attr("class").split(/\s/);
+          var last_class = cl_actives[1];
+          $('.user_assets').hide();
+          $('.' + last_class).show();
+
+          // Se coloca el div para que el usuario vea quien entrego el examen
+          if(axelid.lastIndexOf("examen") != -1) {
+            $('#expoced').html('');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados"></div></div>');
+
+            $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
+          }
+          // Se coloca el div para que el usuario pueda calificar la tarea
+          else if(axelid.lastIndexOf("entrega_tarea") != -1) {
+            $('#expoced').html('');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+
+            $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', ''), function() {
+              $('#tcg_actdepot').css('width', '75%');
+              $('#tcg_actdepot').css('min-width', '75%');
+              $('#tcg_actdepot').css('margin-top', '2%');
+              $('#tcg_actdepot').css('margin-left', '7%');
+            });
+          }
+          else if(axelid.lastIndexOf("tarea") != -1) {
+            $('#expoced').html('');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tareas_entregadas"></div></div>');
+
+            $.get('/course_delivery_actdepot/' + axelid.replace('tarea', ''));
+          }          
+
+          return true;
         });
         
-        var locuorem = $.getJSON( '<%= "#{course_ki_line_path(@course)}.json" %>', function(json) {
-           
-            var timeline = json.timeline.date;
-            var aux,dd2, flip, kilspace, id, identifier, assets,casual, url, nam, avatar, clasificate;
-            for(var i = 0; i < timeline.length;i++){
-                aux = timeline[i];
-                if(aux.compose){
-                  kilspace = aux.text.split(' ').join('');
-                  flip = '/assets/'+kilspace.split(':')[0]+'roty.png';
-                  id= aux.compose.id + aux.compose.type;
-                  clasificate = aux.compose.clasificate;
-                  as_to_pertence_com_assets = aux.compose.pertencenence_to 
-                  
-                
-                  // console.log(as_to_pertence_com_assets);
-                  dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
-                   
-                  avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
-                  
-                  $('#ajax-dump').prepend('<div style="margin-top:1px;" class="activities_depot '+as_to_pertence_com_assets+' '+dd2+'" id="'+id+'">'+'<img  src="'+avatar+'"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
-                  
-                  // este controlador hace que se empaten los archivos
-                  
-                       $('#'+id).click( function(){
-                           var axelid =  $(this).attr("id"); 
-                           var cl_actives = $(this).attr("class").split(/\s/);
-                           var last_class = cl_actives[1];
-                           $('.user_assets').hide();
-                           $('.'+last_class).show();
-                           //$('.user_assets').css('margin','0px');
-                           //$('.'+last_class).css({'margin-top': '3px',
-                           //'margin-left':' 60px'})
-                           //alert(last_class);
-                           
-                           return true;
-                        });
-                   
-                   
-                 
-                   casual="casual"+id;
-                    
-				  identifier = '#'+id;
-                  
-                  assets = aux.assets;
-                  var cloud = 'po'+aux.asset.credit.split(" ").join("").toLowerCase();
-                  //console.log(cloud);
-                     if(assets){
-                     for(var l = 0; l < assets.length;l++){                             
-                           fromk = assets[l];
-                           url = fromk.file.file.url;
-                           nam = fromk.name;
-                            pertence_al = fromk.pertencenence_to;
-                            // console.log(pertence_al);
-                           $("#resonance").prepend('<div style="display:none;" id='+pertence_al+' class="user_assets '+cloud+' '+ pertence_al+'">'+'</div>');
-                           
-                           $("#"+pertence_al).prepend('<a href="'+url+'" id='+id+'>'+nam+'<a>');
-					
-						   
-						   
-                       }
-                    }
-                       
-            	}
-        	}
-         });
+        casual = "casual" + id;
+        identifier = '#' + id;
+
+        assets = aux.assets;
+        var cloud = 'po' + aux.asset.credit.split(" ").join("").toLowerCase();
+        if(assets) {
+          for(var l = 0; l < assets.length;l++) {
+           fromk = assets[l];
+            url = fromk.file.file.url;
+            nam = fromk.name;
+            pertence_al = fromk.pertencenence_to;
+
+            $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets ' + cloud + ' ' + pertence_al + '">' + '</div>');
+            $("#" + pertence_al).prepend('<a href="' + url + '" id=' + id + '>' + nam + '<a>');
+          }
+        }
+      }
+    }
+  });
+
 </script>

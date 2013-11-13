@@ -1,0 +1,2 @@
+$('#tarea_en_carga_notification').html('');
+$('#tarea_en_carga_notification').html('<%= escape_javascript(render(partial: "courses/survey_results", :locals => {:responces => @responces})) %>');
