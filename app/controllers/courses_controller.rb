@@ -199,8 +199,10 @@ class CoursesController < ApplicationController
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
     if current_role == 'admin' || 'superadmin'
+      @member = MembersInCourse.new
+      @member.owner = true
     else
-      if @member.owner = true || current_role = "admin"
+      if @member.owner == true || current_role == "admin"
       else
         redirect_to :back
       end
