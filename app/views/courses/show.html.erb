@@ -403,20 +403,34 @@
                    }
                  );
            </script>
-         
+          <!--acción de noficación cuando se debe mostrar la respuesta de un cuestionario--> 
+     <script>
+            $(document).ready(function() {
+                  	if(<%= (@show_survey and @id_search) %>) {
+                    $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+                    $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
+                      $('#tarea_en_carga_notification').css('min-width', '100%');
+                      $('#tarea_en_carga_notification').css('margin-left', '10%');
+                    });
+                  } 
+             }); 
+            
+            
+     </script>
+     
       <script>
         $('.UploadArchiveBtn').mouseenter ( function() {
           (this).addClass('.UploadArchiveBtnHover');
         });
 		 	  
-		 	  $(document).ready(function() {
-          if(<%= (@show_survey and @id_search) %>) {
+	 $(document).ready(function() {
+          	/*if(<%= (@show_survey and @id_search) %>) {
             $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
             $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
               $('#tarea_en_carga_notification').css('min-width', '100%');
               $('#tarea_en_carga_notification').css('margin-left', '10%');
             });
-          }
+          } */
 
 		 	    $.ajaxSetup({
 		 	      timeout:120000
