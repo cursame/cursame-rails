@@ -83,28 +83,25 @@ class SurveysController < ApplicationController
       @user_survey.user = current_user
       @user_survey.result = 0;
       @survey_id = params[:survey_id]
+      @error = false
 
-      if @user_survey.save
+      if  params[:questions] && @user_survey.save
         params[:questions].each do |question|
-
-          #
           # question[1] es el id de la respuesta
           # question[0] es la id de la pregunta
-          #
           question[1].each do |answer|
             @user_response = UserSurveyResponse.new
             @user_response.user_survey_id = @user_survey.id
             @user_response.question_id = question[0]
             @user_response.answer_id = answer[1]
             @user_response.save
-
           end
             @az = @user_survey
             @typed = "User_survey"
             activation_activity
         end
       else
-        #logica por que no se guardo
+        @error = true
       end
       # Ejemplo de como usar la evaluation de un examen
       # evaluation(current_user,@user_survey.survey_id)

@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
-    
+
   protect_from_forgery
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
@@ -33,7 +34,7 @@ class ApplicationController < ActionController::Base
   helper_method :client_youtube
   helper_method :auth_hash
   helper_method :courses_with_permissions
-    
+
 
   #data of the networks you are
   def current_network
@@ -111,14 +112,14 @@ class ApplicationController < ActionController::Base
   def filtrati
     if current_role == "superadmin"
     else
-     if network_member != nil  
+     if network_member != nil
         if  network_member.suspended == true
             sign_out(current_user)
             redirect_to :back
         else
-        end      
+        end
      else
-         render '/networks/alertmethod'         
+         render '/networks/alertmethod'
      end
     end
   end
@@ -183,52 +184,45 @@ class ApplicationController < ActionController::Base
   end
   ###### comandos de generación de actividades
   def activation_activity
-      @activity = Activity.new
-        @activity.title =  @az.title
-        @activity.activitye_id= @az.id
-        @activity.activitye_type =  @typed
-        @activity.ip_address = request.ip
+    @activity = Activity.new
+    @activity.title =  @az.title
+    @activity.activitye_id= @az.id
+    @activity.activitye_type =  @typed
+    @activity.ip_address = request.ip
 
-        city = request.location.city
-        if city == nil
-          ct = 'Location City not Found'
-        else
-          ct = city
-        end
-        
-        country = request.location.country_code
-        
-        if country == nil
-          cot = 'Location Country not Found'
-          else
-          cot = country
-        end
-        
-        
-        ip = request.ip
-        puts '***************************'
+    city = request.location.city
+    if city == nil
+      ct = 'Location City not Found'
+    else
+      ct = city
+    end
 
-        puts ct
-        puts cot
-        puts ip
+    country = request.location.country_code
 
-        puts '***************************'
-        @activity.address = "#{ct} #{cot}"
-        @activity.browser = "#{browser_active}"
-        @activity.version_browser ="#{browser_version}"
-        @activity.computer_plataform = "#{computer_platform}"
-        @activity.user_id = current_user.id
-        #@activity.network_id = 1 #current_network.id
-        @activity.save
+    if country == nil
+      cot = 'Location Country not Found'
+    else
+      cot = country
+    end
+
+    ip = request.ip
+
+    @activity.address = "#{ct} #{cot}"
+    @activity.browser = "#{browser_active}"
+    @activity.version_browser ="#{browser_version}"
+    @activity.computer_plataform = "#{computer_platform}"
+    @activity.user_id = current_user.id
+    #@activity.network_id = 1 #current_network.id
+    @activity.save
   end
 
   #### like_compare
 
   def compare_like
   end
-  
+
   #### validate brwosers
-  
+
   def browser_active
     @data_integrate = request.env['HTTP_USER_AGENT']
     @user_agent = UserAgent.parse(@data_integrate)
@@ -246,20 +240,20 @@ class ApplicationController < ActionController::Base
     @user_agent = UserAgent.parse(@data_integrate)
     @computer_plataform = @user_agent.platform
   end
-  
+
   def browser
-       
+
     string = request.env['HTTP_USER_AGENT']
     user_agent = UserAgent.parse(string)
-    
+
     @browser =   user_agent.browser
     @version =   user_agent.version
     @version_sintetica = @version.to_s.delete(".")
     @total = "#{@browser} #{ @version}"
     puts @total
     case
-    
-     when @browser == 'Chrome' 
+
+     when @browser == 'Chrome'
         if @version > '230127191'
           puts "navegador no compatible"
           @compatible = false
@@ -267,8 +261,8 @@ class ApplicationController < ActionController::Base
           puts "navegador compatible"
           @compatible = true
         end
-     when @browser == 'Safari' 
-       
+     when @browser == 'Safari'
+
         if @version && @version > '500'
           puts "navegador no compatible"
           @compatible = false
@@ -276,9 +270,9 @@ class ApplicationController < ActionController::Base
           puts "navegador compatible"
           @compatible = true
         end
-       
+
      when @browser == 'Firefox'
-       
+
        if @version > '190'
          puts "navegador no compatible"
          @compatible = false
@@ -288,7 +282,7 @@ class ApplicationController < ActionController::Base
        end
 
      when @browser == 'Internet Explorer'
-       
+
        if @version > '80'
          puts "navegador no compatible"
          @compatible = false
@@ -297,17 +291,17 @@ class ApplicationController < ActionController::Base
          @compatible = true
        end
      else
-       
+
          puts "navegador no compatible"
          @compatible = false
-       
-    
+
+
    end
-    
+
   @status = @compatible
- 
+
   end
-  
+
   ######
 
 
@@ -348,7 +342,7 @@ class ApplicationController < ActionController::Base
 
   def auth_hash
       omniauth = request.env["omniauth.auth"]
-  end 
+  end
 
   def courses_with_permissions
     courses = []

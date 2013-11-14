@@ -96,12 +96,13 @@
 			 
 			 <div class="slider-cointainer" style="width:440px; overflow-y: hidden; overflow-x: scroll ; float: left; height: 400px;">
             <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">      
-            <% @course.deliveries.reverse.each do |delivery|%>
-            
+            <% @course.deliveries.reverse.each do |delivery|%>            
         	    <div class="delivery_f" >
 	              <div class="delivery_container">
 	        	      <div class="OpenClose<%=delivery.id%>"id="OpenClose"></div>
-	                <div class="title"><%= delivery.title %>  <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
+	                <div class="title"> <%= delivery.title %> <br>
+                    <span><%=truncate(delivery.description, :length => 25)%></span>
+                    <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
 	                </div>
 	                <div class="state">
 	                  <div id="delivery_state_publish<%=delivery.id%>">

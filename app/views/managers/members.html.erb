@@ -37,12 +37,20 @@
 					</div>
 				</div><!-- ends manager_fix_list -->
     
-			<% @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
+			<%# @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
 			
-				<div class="manager-role-user">
-					<% @role = Role.find(@permisos.role_id)%>
-					<%= @role.title %>
-				</div>
+				<!--<div class="manager-role-user">
+					<%# @role = Role.find(@permisos.role_id)%>
+					<%#= @role.title %>
+				</div>-->
+     <% @permisos = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id) %>
+     <% if @permisos.nil? %>
+      <% next %>
+     <% end %>
+     <div class="manager-role-user">
+      <% @role = Role.find(@permisos.role_id)%>
+      <%= @role.title %>
+     </div>
      
 				<div class="actions">
 					<!--<img src="/assets/icons_for_admin/bullet_delete.png" style="width:40px; height:40px; cursor:pointer; margin-top:-10px;"/>-->

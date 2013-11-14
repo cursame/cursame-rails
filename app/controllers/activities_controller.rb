@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(params[:activity])
-      
+
      respond_to do |format|
         if @activity.save
           format.json
@@ -11,14 +11,14 @@ class ActivitiesController < ApplicationController
           format.js
         end
      end
-    
+
   end
-  def new  
+  def new
       @activity = Activity.new
   end
-  
+
   def show
     @activity = Activity.find(params[:id])
-    
+
   end
 end

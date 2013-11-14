@@ -24,6 +24,7 @@ class Delivery < ActiveRecord::Base
   belongs_to :network
 
 
+
   validate :max_courses
 
   # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
@@ -118,32 +119,18 @@ class Delivery < ActiveRecord::Base
         user = member.user
         if user.id != self.user_id && member.accepted == true then
           users.push(user)
-          mail = Notifier.new_delivery_notification(member,self)
-          mail.deliver
+          # mail = Notifier.new_delivery_notification(user,self)
+          # mail.deliver        
         end
       end
     end
-    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+    self.send_mail(users)
+    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')    
   end
 
   after_update do
 
   end
-
-  # def create_notifications
-  #   self.courses.each do |course|
-  #     course.members_in_courses.each do |member|
-  #       user = member.user
-  #       if user.id != self.user_id then
-  #         users.push(user)
-  #         mail = Notifier.new_delivery_notification(member,self)
-  #         mail.deliver
-  #       end
-  #     end
-  #   end
-  #   users = users.reject { |user| (user.id == self.user_id || self.courses[0].members_in_courses.where(:user_id =>user.id,:accepted => false))}
-  #   Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
-  # end
 
   def users
     users = []
@@ -211,4 +198,18 @@ class Delivery < ActiveRecord::Base
     end
     return average/size
   end
+
+  def send_mail(users)
+    Thread.new {
+          begin
+              mail = Notifier.new_delivery_notification(users,self)
+              mail.deliver          
+          rescue => ex
+            puts 'error al enviar mail'
+          ensure
+            ActiveRecord::Base.connection.close
+          end
+        }    
+  end
+
 end
