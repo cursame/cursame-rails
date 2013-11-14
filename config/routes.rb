@@ -107,6 +107,10 @@ Cursame30Lb::Application.routes.draw do
   get "course_survey_l/:id", :to => "courses#course_survey", :as => :course_survey_l
   get "course_survey_l_notif/:id", :to => "courses#course_survey_notif", :as => :course_survey_l_notif
 
+  ##### llamadas por ayax rapidas en rails para el activities depot
+  get "course_delivery_actdepot/:id", :to => "courses#course_delivery_actdepot", :as => :course_delivery_actdepot
+  get "course_survey_actdepot/:id", :to => "courses#course_survey_actdepot", :as => :course_survey_actdepot
+
   ##### llamada ajax para saber si la session ha expirado
 
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
@@ -381,6 +385,12 @@ Cursame30Lb::Application.routes.draw do
   ####### ruta para creacion de timeline
 
    get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
+
+   ###### ruta para creacion de timeline paginada
+   get 'courses/:id/course_ki_line_pag', :to => 'courses#course_ki_line_pag', :as => :course_ki_line_pag
+
+   ###### carga mas actividades
+   get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
 
    ###### ruta para crear super admins
 

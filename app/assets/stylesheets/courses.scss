@@ -499,6 +499,7 @@ input.nombreCrit { width: 230px; padding: 10px!important; }
 	font-family: arial;
 	color: #000;
 }
+
 .responUser {
 background: #ddd;
 vertical-align: middle;
@@ -983,6 +984,16 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
                    margin-top: -36px;
                }
           }
+
+#load-more-activities {
+	width: 390px;
+	min-height: 65px;
+	max-height: 200px;
+	margin-top: -13px;
+	display: block;
+	padding: 13px 5px;
+	text-align: center;
+}
           
 .activities_depot{
          width:390px;

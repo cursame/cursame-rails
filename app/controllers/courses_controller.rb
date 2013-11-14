@@ -343,30 +343,30 @@ class CoursesController < ApplicationController
   end
 
   def course_ki_line
-      @course = Course.find(params[:id])
-      deliveries = []
-      assignmentss = []
-      surveyss = []
-      simple = []
-      #contents_assignmentss =[]
+    @course = Course.find(params[:id])
 
-      count_deliveries =  @course.deliveries.count
-      count_surveys =  @course.surveys.count
+    deliveries = []
+    assignmentss = []
+    surveyss = []
+    simple = []
 
-      count_assignmentss = assignmentss.count
+    count_deliveries =  @course.deliveries.count
+    count_surveys =  @course.surveys.count
+    count_assignmentss = assignmentss.count
 
-      counte_fact = count_deliveries + count_surveys + count_assignmentss
+    counte_fact = count_deliveries + count_surveys + count_assignmentss
 
-      @course.deliveries.each do |del|
-        assets_deliveries =[]
+    # Tareas del curso
+    @course.deliveries.each do |del|
+      assets_deliveries = []
         
-        if  del.user != nil
+      if del.user != nil
         del.assets.each do |b|
-           @name = b.file.to_s.split('/').last
-           assets_deliveries.push({file: b.file,
-                                   name:("#{@name}").delete("\n"),
-                                   pertencenence_to:"tarea#{del.id}" })
-         end
+          @name = b.file.to_s.split('/').last
+          assets_deliveries.push({file: b.file,
+                                  name: ("#{@name}").delete("\n"),
+                                  pertencenence_to: "tarea#{del.id}" })
+        end
 
         case 
           when del.user.avatar.blank?
@@ -374,173 +374,336 @@ class CoursesController < ApplicationController
           when del.user.avatar == nil
             @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
           else
-          @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
+            @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
         end
 
-        deliveries.push(
-          {
-              startDate: del.publish_date,
-              endDate: del.end_date,
-              headline:(("#{del.title}").to_s).delete("\n"),
-              text:(("Tarea: #{del.description}").to_s).delete("\n"),
-              asset:
-              {
-                  media: @avatar && @avatar,
-                  credit:(("#{del.user.name}").to_s).delete("\n"),
-                  caption:(("#{@course.title}").to_s).delete("\n")
-              },
-              compose:
-              {
-                id: del.id,
-                type: 'tarea',
-                title:(("#{del.title}").to_s).delete("\n"),
-                description:(("#{del.description}").to_s).delete("\n"),
-                pertencenence_to:"tarea#{del.id}",
-                assets_integrate: assets_deliveries
-                
-              },
-              assets:assets_deliveries
-
-          }
-
-
-        )
-
-
-         del.assignments.each do |as|
-           assets_assignmentss =[]
-           
-           if as.user != nil
-
-           as.assets.each do |a|
-             @name = a.file.to_s.split('/').last
-             assets_assignmentss.push({file: a.file,
-                                      name:("#{@name}").delete("\n"),
-                                      pertencenence_to: "entrega_tarea#{as.id}"
-                                     })
-           end
-=begin
-           as.contents.each do |ca|
-             @name = ca.content.to_s.split('/').last
-             contents_assignmentss.push( {file: ca.content,
-                                         name:   @name
-                                      })
-           end
-=end
-
-           case 
-             when as.user.avatar.blank?
-               @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-             when as.user.avatar == nil
-               @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-             else
-               @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
-            end
-           
-            assignmentss.push(
-                {
-                    startDate: as.created_at,
-                    endDate: as.created_at,
-                    headline:(("#{as.title}").to_s).delete("\n"),
-                    text:(("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
-
-                    asset:
-                    {
-                        media:@avatar_assignment && @avatar_assignment,
-                        credit:(("#{as.user.name}").to_s).delete("\n"),
-                        caption:(("#{@course.title}").to_s).delete("\n")
-                    },
-                    compose:
-                    { id: as.id,
-                      type: 'entrega_tarea',
-                      title: (("#{as.title}").to_s).delete("\n"),
-                      description: (("#{as.brief_description}").to_s).delete("\n"),
-                      pertencenence_to: "entrega_tarea#{as.id}",
-                      assets_integrate: assets_assignmentss
-                      
-                    },
-                    assets: assets_assignmentss  #+ contents_assignmentss
-
-                    }
-
-            )
-           end
-          end
-        end
-      end
-
-      @course.surveys.each do |survey|
-         if survey.user != nil
-          case
-            when survey.user.avatar.blank?
-              @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
-            when survey.user.avatar == nil 
-              @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"     
-            else
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
-          end
-          surveyss.push(
-              {
-                  startDate: survey.created_at,
-                  endDate: survey.created_at,
-                  headline:(("#{survey.name}").to_s).delete("\n"),
-                  text:(("Cuestionario: #{survey.state}").to_s).delete("\n"),
-                  asset:
-                  {
-                      media:  @avatar_survery && @avatar_survery,
-                      credit:(("#{survey.user.name}").to_s).delete("\n"),
-                      caption:(("#{@course.title}").to_s).delete("\n")
-                  },
-                  compose:
-                  {   id: survey.id,
-                      type: 'examen',
-                      title: (("#{survey.name}").to_s).delete("\n")
-                  }
-              }
-
-          )
-        end
-      end
-
-        simple.push({
-          startDate: @course.created_at,
-          endDate: @course.created_at,
-          headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
-          text:"Curso nuevo",
-
+        deliveries.push({
+          startDate: del.publish_date,
+          endDate: del.end_date,
+          headline: (("#{del.title}").to_s).delete("\n"),
+          text: (("Tarea: #{del.description}").to_s).delete("\n"),
+          asset: {
+            media: @avatar && @avatar,
+            credit: (("#{del.user.name}").to_s).delete("\n"),
+            caption: (("#{@course.title}").to_s).delete("\n")
+          },
+          compose: {
+            id: del.id,
+            type: 'tarea',
+            title: (("#{del.title}").to_s).delete("\n"),
+            description: (("#{del.description}").to_s).delete("\n"),
+            pertencenence_to: "tarea#{del.id}",
+            assets_integrate: assets_deliveries
+          },
+          assets: assets_deliveries
         })
 
+        del.assignments.each do |as|
+          assets_assignmentss = []
+           
+          if as.user != nil
+            as.assets.each do |a|
+              @name = a.file.to_s.split('/').last
+              assets_assignmentss.push({file: a.file,
+                                        name: ("#{@name}").delete("\n"),
+                                        pertencenence_to: "entrega_tarea#{as.id}"
+                                      })
+            end
 
-      if counte_fact != 0
-        @date = simple  + surveyss + deliveries + assignmentss
-        else
-        @date = simple
+            case 
+              when as.user.avatar.blank?
+                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+              when as.user.avatar == nil
+                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+              else
+                @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
+            end
+           
+            assignmentss.push({
+              startDate: as.created_at,
+              endDate: as.created_at,
+              headline: (("#{as.title}").to_s).delete("\n"),
+              text: (("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
+              asset: {
+                media:@avatar_assignment && @avatar_assignment,
+                credit:(("#{as.user.name}").to_s).delete("\n"),
+                caption:(("#{@course.title}").to_s).delete("\n")
+              },
+              compose: {
+                id: as.id,
+                type: 'entrega_tarea',
+                title: (("#{as.title}").to_s).delete("\n"),
+                description: (("#{as.brief_description}").to_s).delete("\n"),
+                pertencenence_to: "entrega_tarea#{as.id}",
+                assets_integrate: assets_assignmentss
+              },
+              assets: assets_assignmentss  #+ contents_assignmentss
+            })
+          end
+        end
       end
-       # @date = simple
-      respond_to do |format|
+    end
+
+    # Examenes del curso
+    @course.surveys.each do |survey|
+      if survey.user != nil
+
+        case
+          when survey.user.avatar.blank?
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+          when survey.user.avatar == nil 
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+          else
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
+        end
+
+        surveyss.push({
+          startDate: survey.created_at,
+          endDate: survey.created_at,
+          headline: (("#{survey.name}").to_s).delete("\n"),
+          text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
+          asset: {
+            media: @avatar_survery && @avatar_survery,
+            credit: (("#{survey.user.name}").to_s).delete("\n"),
+            caption: (("#{@course.title}").to_s).delete("\n")
+          },
+          compose: {
+            id: survey.id,
+            type: 'examen',
+            title: (("#{survey.name}").to_s).delete("\n")
+          }
+        })
+      end
+    end
+
+    simple.push({
+      startDate: @course.created_at,
+      endDate: @course.created_at,
+      headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+      text:"Curso nuevo",
+    })
+
+    if counte_fact != 0
+      @date = simple  + surveyss + deliveries + assignmentss
+    else
+      @date = simple
+    end
+
+    # @date = simple
+    respond_to do |format|
       format.html
-      format.json { render json:
-        {
-        timeline: {
-                      headline:(("#{@course.title}").to_s).delete("\n"),
-                      type:"default",
-                      text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
-                      startDate:"#{@course.init_date}",
-
-                      date: @date
-
-                  }
-        }
-      }
-      end
-
+      format.json {
+        render json: {
+                timeline: {
+                  headline: (("#{@course.title}").to_s).delete("\n"),
+                  type: "default",
+                  text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
+                  startDate: "#{@course.init_date}",
+                  date: @date
+                }
+              }
+            }
+    end
   end
 
+  def course_ki_line_pag
+    id = Course.find(params[:id])
+    page = (params[:page]).to_i
+    per_page = (params[:per_page]).to_i
+    @date = getActivities((page * per_page), ((page * per_page) + per_page), id)
+
+    # @date = simple
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: {
+                timeline: {
+                  headline: (("#{@course.title}").to_s).delete("\n"),
+                  type: "default",
+                  text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
+                  startDate: "#{@course.init_date}",
+                  date: @date
+                }
+              }
+            }
+    end
+  end
 
   def activities_depot
     @course = Course.find(params[:id])
-   # @render = ("#{course_ki_line_path(@course)}.json").to_s
+  end
 
+  def load_more_activities
+    @course_id = Course.find(params[:id])
+    @page = (params[:page]).to_i
+    @per_page = (params[:per_page]).to_i
+
+    respond_to do |format|
+      format.js
+      format.json
+    end
+  end
+
+  ###### Metodo que devuelve de start a end notificaciones
+  def getActivities(startN, endN, idCourse)
+    @course = Course.find(params[:id])
+    per_page = params[:per_page].to_i
+    page = params[:page].to_i
+
+    deliveries = []
+    assignmentss = []
+    surveyss = []
+    simple = []
+
+    count_deliveries =  @course.deliveries.count
+    count_surveys =  @course.surveys.count
+    count_assignmentss = assignmentss.count
+
+    counte_fact = count_deliveries + count_surveys + count_assignmentss
+
+    # Tareas del curso
+    @course.deliveries.each do |del|
+      assets_deliveries = []
+        
+      if del.user != nil
+        del.assets.each do |b|
+          @name = b.file.to_s.split('/').last
+          assets_deliveries.push({file: b.file,
+                                  name: ("#{@name}").delete("\n"),
+                                  pertencenence_to: "tarea#{del.id}" })
+        end
+
+        case 
+          when del.user.avatar.blank?
+            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+          when del.user.avatar == nil
+            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+          else
+            @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
+        end
+
+        deliveries.push({
+          startDate: del.publish_date,
+          endDate: del.end_date,
+          headline: (("#{del.title}").to_s).delete("\n"),
+          text: (("Tarea: #{del.description}").to_s).delete("\n"),
+          asset: {
+            media: @avatar && @avatar,
+            credit: (("#{del.user.name}").to_s).delete("\n"),
+            caption: (("#{@course.title}").to_s).delete("\n")
+          },
+          compose: {
+            id: del.id,
+            type: 'tarea',
+            title: (("#{del.title}").to_s).delete("\n"),
+            description: (("#{del.description}").to_s).delete("\n"),
+            pertencenence_to: "tarea#{del.id}",
+            assets_integrate: assets_deliveries
+          },
+          assets: assets_deliveries
+        })
+
+        del.assignments.each do |as|
+          assets_assignmentss = []
+           
+          if as.user != nil
+            as.assets.each do |a|
+              @name = a.file.to_s.split('/').last
+              assets_assignmentss.push({file: a.file,
+                                        name: ("#{@name}").delete("\n"),
+                                        pertencenence_to: "entrega_tarea#{as.id}"
+                                      })
+            end
+
+            case 
+              when as.user.avatar.blank?
+                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+              when as.user.avatar == nil
+                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+              else
+                @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
+            end
+           
+            assignmentss.push({
+              startDate: as.created_at,
+              endDate: as.created_at,
+              headline: (("#{as.title}").to_s).delete("\n"),
+              text: (("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
+              asset: {
+                media:@avatar_assignment && @avatar_assignment,
+                credit:(("#{as.user.name}").to_s).delete("\n"),
+                caption:(("#{@course.title}").to_s).delete("\n")
+              },
+              compose: {
+                id: as.id,
+                type: 'entrega_tarea',
+                title: (("#{as.title}").to_s).delete("\n"),
+                description: (("#{as.brief_description}").to_s).delete("\n"),
+                pertencenence_to: "entrega_tarea#{as.id}",
+                assets_integrate: assets_assignmentss
+              },
+              assets: assets_assignmentss  #+ contents_assignmentss
+            })
+          end
+        end
+      end
+    end
+
+    # Examenes del curso
+    @course.surveys.each do |survey|
+      if survey.user != nil
+
+        case
+          when survey.user.avatar.blank?
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+          when survey.user.avatar == nil 
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+          else
+            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
+        end
+
+        surveyss.push({
+          startDate: survey.created_at,
+          endDate: survey.created_at,
+          headline: (("#{survey.name}").to_s).delete("\n"),
+          text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
+          asset: {
+            media: @avatar_survery && @avatar_survery,
+            credit: (("#{survey.user.name}").to_s).delete("\n"),
+            caption: (("#{@course.title}").to_s).delete("\n")
+          },
+          compose: {
+            id: survey.id,
+            type: 'examen',
+            title: (("#{survey.name}").to_s).delete("\n")
+          }
+        })
+      end
+    end
+
+    simple.push({
+      startDate: @course.created_at,
+      endDate: @course.created_at,
+      headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+      text:"Curso nuevo",
+    })
+
+    if counte_fact != 0
+      @date = simple  + surveyss + deliveries + assignmentss
+    else
+      @date = simple
+    end
+
+    @date = @date.sort {
+      |a, b|
+
+      a[:startDate] <=> b[:startDate]
+    }
+    @date = @date.reverse
+
+    @date = @date[startN ... endN]
+
+    return @date
   end
 
   ######  formato para responder la jamada de ajax con js
@@ -575,6 +738,14 @@ class CoursesController < ApplicationController
       end
   end
 
+  def course_delivery_actdepot
+    @delivery = Delivery.find(params[:id])
+    @assignments = @delivery.assignments
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def course_survey
     @responces = UserSurvey.find(params[:id])
 
@@ -583,7 +754,6 @@ class CoursesController < ApplicationController
       format.json
       format.js
     end
-
   end
 
   def course_survey_notif
@@ -595,6 +765,27 @@ class CoursesController < ApplicationController
       format.json
     end
     
+  end
+
+  def course_survey_notif
+    @responces = UserSurvey.find(params[:id])
+
+    respond_to do |format|
+      #format.html
+      format.js
+      format.json
+    end
+  end
+
+  def course_survey_actdepot
+    @survey = Survey.find(params[:id])
+    @responces = @survey.user_surveys
+
+    respond_to do |format|
+      #format.html
+      format.js
+      format.json
+    end
   end
 
   def delivery_menu

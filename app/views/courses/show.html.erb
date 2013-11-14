@@ -1,10 +1,5 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
     <%@incourse = true%>
-
-    <!--<div id="noticce">
-     <div id="notice" class="notice"></div>
-    </div>-->
-
   <div class="banner-shadow">
     <div id="box-titles">
       <ul id="banner-btns" class="list-header">
@@ -82,10 +77,18 @@
               if(<%= (@show_assignment and @id_search) %>) {
                 $('#timeline :nth-child(1)').find('.content').append('<div id="tcg_notif" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
                 $.get('<%= course_assignment_l_notif_path(@show_assignment) %>', function() {
-                  $('#tcg_notif').css('width', '75%');
+                  $('#tcg_notif').css('width', '100%');
                   $('#tcg_notif').css('min-width', '75%');
                   $('#tcg_notif').css('margin-top', '25%');
-                  $('#tcg_notif').css('margin-left', '10%');
+
+                  // Ajustes
+                  $('div.coklo-title').css('margin-left', '13%');
+                  $('div.coklo-title').css('margin-top', '6%');
+                  $('ul.tabs').css('margin-left', '12%');
+
+                  if($('div.content-assets a').length != 0) {
+                    $('#tcg_notif').css('margin-top', '38%');
+                  }
                 });
               }
             });

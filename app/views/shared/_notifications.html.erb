@@ -1,7 +1,7 @@
 <% if current_user%>
 
 <script>
-  var Cursame ={
+  var Cursame = {
 	  userId: <%= current_user.id%>
   };
 </script>
@@ -65,7 +65,7 @@
 		var noti = $("#notification-" + id);
 
 		// Redireccionamos a donde tenga que redireccionar
-		$(location).attr("href", noti.attr("redirect_to"));			
+		$(location).attr("href", noti.attr("redirect_to"));
 		$("#box-notifications").hide();
 	}
 	
