@@ -168,7 +168,7 @@
 	background: url('/assets/icons/close.png') no-repeat;
 	font-size: 20px;
 	width: 18px;
-	height: 18px;
+	height: 26px;
 	text-align: center;
 	margin-left: 5px;
 	margin-top: 8px;
@@ -178,6 +178,11 @@
         color:#fff;
         cursor: pointer;
      }
+}
+
+.appendClass {
+	float: left;
+	width: 280px;
 }
 
 .link_cto_content_macher{
