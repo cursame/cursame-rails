@@ -49,7 +49,7 @@
       </div>
     </div>
     
-    <div id="delivery-form-area-tab" class="flonder" style="display:none;">
+    <div id="delivery-form-area-tab" class="flonder" style="width: 560px; display:none;">
       <% permitted_to? :create, :deliveries do %>        
           <%= render :partial => '/deliveries/delivery_compart_form', :locals => {:active_edit => @active_edit}%>
       <%end%>
@@ -83,7 +83,7 @@
       <%end%>
       
   </div>            
-  <div id="message-form-area-tab" class="flonder" style="margin-top: -1px;">
+  <div id="message-form-area-tab" class="flonder" style="margin-top: -1px; display: inline-block!important;">
       <div class="frcomment" >
                  <%= image_tag('image-pensando.png')%>
         </div>             

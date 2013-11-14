@@ -71,6 +71,13 @@ margin-left: 292px; height: 21px; outline-width: 0px;', :class=>"percent-input" 
 
         <div style="height:30px;">
 	        <div class="submit-area"></div>
+	        
+			<% if @active_edit == false %>
+			<div style="width: 30px;float: left; margin-top: 9px; position: relative; display: block;">
+				<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
+			</div>
+			<%end%>
+	        
 	        <div style="position: relative; margin-top: 2px; margin-left: 15px; min-height: 31px; float: right;">
 			<%= button_tag "Cancelar", :type => 'button', :style =>'position: relative; display: block;', :class=>'input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
 			<%= f.submit "Publicar", :style =>'position: relative; display: block;', :id => 'comment-post-form'%>
@@ -89,13 +96,7 @@ margin-left: 292px; height: 21px; outline-width: 0px;', :class=>"percent-input" 
         
         <%end%>
         
-		<% if @active_edit == false %>
 
-		<div style="float: left; margin-top: 9px; position: absolute; display: block;">
-			<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
-		</div>  
-
-	<%end%>
           
           
 		<script>

@@ -33,13 +33,13 @@ random_id = "#{random}"
           <% end %>
       </div>
       <div class="box-question">
-        <div class="question-field" style="height: 40px;">
+        <div class="question-field">
           <%= link_to_add_fields "Agregar Pregunta", f, :questions, {:class=>'add-question'}, '#box-question' %>
         </div>
       </div>
     <% end %>
 
-	<div class="form_submit_fix_survey" style="padding: 10px 0px;">
+	<div class="form_submit_fix_survey" style="padding: 4px 0px; display: block; position: relative; clear: both;">
     <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
     <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary activable", :id => 'comment-post-form'%>
     

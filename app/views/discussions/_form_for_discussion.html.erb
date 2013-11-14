@@ -13,19 +13,20 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-    <div class="video_help" style="display: none" id="discussion_help">
-         <div class="content_video" id="content_video_video_discussion">
 
-         </div>
+  <% end %>
+
+     <div class="video_help" style="display: none" id="discussion_help">
+         <div class="content_video" id="content_video_video_discussion"></div>
      </div>
+     
      <% 1.times do
                contents = @discussion.contents.build
       end%>
      <!--este render trae el header de contenidos--> 
      <% if @active_edit == false %>
         
-     <%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'discussion', :acces_to => @discussion, :contents => "contents"}%>
+     	<%= render :partial => "content/heather_contents", :locals => {:f => f, :typeo => 'discussion', :acces_to => @discussion, :contents => "contents"}%>
      
      <%end%>
      
@@ -70,7 +71,7 @@
     </div>
     <% if @active_edit == false %>
     
-    <a class="help discussion_help" id="help_discussion" style="margin-top:-25px;" ><%= image_tag('help.png')%></a>
+    <a class="help discussion_help" id="help_discussion" style="margin-top: 3px!important; float: left!important; margin-right: 0px!important;" ><%= image_tag('help.png')%></a>
 	
     <%end%>
     
@@ -86,7 +87,6 @@
                    }); 
                    $().ready(function() {
                       $('#new_discussion').validate();
-                   });                                           
-
+                   });
        </script>
 <% end %>

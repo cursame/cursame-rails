@@ -34,6 +34,8 @@
 	//background:#E86850;
 	//background:#c9d1da;
 	overflow: hidden;
+	z-index: 99;
+	position: relative;
 	height:45px;
 	//border-bottom:3px solid #126899;     
 	//background: #2B2A28;
@@ -86,6 +88,8 @@
 }
 
 #message-form-area-tab {
+	width: 600px;
+	display: inline-block;
 	padding-top: 10px;
 	border: 1px solid #CCC;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
@@ -122,7 +126,7 @@
 /* -------------- estilos tarea -------------- */
 
 #delivery-form-area-tab {
-	padding: 21px 21px 21px 19px;
+	padding: 14px 21px 6px 19px;
 	border: 1px solid #CCC;
 	margin-top: -1px;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
@@ -135,7 +139,7 @@
 	line-height: 25px;
 }
 #delivery-form-area-tab span:hover {
-	color: #FFF;
+	//color: #FFF;
 }
 #delivery-form-area-tab .border_for_text {
 	width: 543px;
@@ -149,7 +153,8 @@
 /* -------------- estilos discusion -------------- */
 
 #discussion-form-area-tab {
-	padding: 21px 21px 21px 19px;
+	width: 560px;
+	padding: 14px 21px 11px 19px;
 	border: 1px solid #CCC;
 	margin-top: -1px;
 	min-height: 135px;
@@ -170,6 +175,8 @@
 
 #tabs_form #survey-form-area-tab {
 	margin-top: -1px;
+	position: relative;
+	z-index: 1;
 }
 
 #tabs_form #survey-form-area-tab .survey-form {
