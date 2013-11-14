@@ -48,12 +48,6 @@
 </div>
 
 <div id="tab-2" class="tab-content">
-    <!--<div class="header_l">        
-       		<span class="usermenuTitle"><%= assignment.title%></span>
-        <div class="description">
-        	<span class="userDescription"><%= assignment.brief_description%></span>
-        </div>
-    </div>-->
     <div class="coklo-title" id="accomplishment">
      <%if assignment.accomplishment == nil %>
 	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></h1></br>
