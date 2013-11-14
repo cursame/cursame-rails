@@ -385,7 +385,7 @@
               <label class="UploadArchiveBtn">
             	  Subir Archivos al Curso
               </label>
-              <input id="course_file_file" class="UploadFiles" style="height: 55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
+              <input id="course_file_file" class="UploadFiles" style="height: 55px; min-width:55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
               <%= hidden_field_tag :course_id, @course.id %> 
               <%= f.hidden_field :published, :value => true %>
             </div>
@@ -403,20 +403,34 @@
                    }
                  );
            </script>
-         
+          <!--acción de noficación cuando se debe mostrar la respuesta de un cuestionario--> 
+     <script>
+            $(document).ready(function() {
+                  	if(<%= (@show_survey and @id_search) %>) {
+                    $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
+                    $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
+                      $('#tarea_en_carga_notification').css('min-width', '100%');
+                      $('#tarea_en_carga_notification').css('margin-left', '10%');
+                    });
+                  } 
+             }); 
+            
+            
+     </script>
+     
       <script>
         $('.UploadArchiveBtn').mouseenter ( function() {
           (this).addClass('.UploadArchiveBtnHover');
         });
 		 	  
-		 	  $(document).ready(function() {
-          if(<%= (@show_survey and @id_search) %>) {
+	 $(document).ready(function() {
+          	/*if(<%= (@show_survey and @id_search) %>) {
             $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
             $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
               $('#tarea_en_carga_notification').css('min-width', '100%');
               $('#tarea_en_carga_notification').css('margin-left', '10%');
             });
-          }
+          } */
 
 		 	    $.ajaxSetup({
 		 	      timeout:120000
