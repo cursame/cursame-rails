@@ -88,7 +88,6 @@
 	padding: 6px 8px 6px 9px;
 	margin-top: -3px;
 	cursor: pointer;
-	overflow: hidden;
 	height: 10px;
 	margin-bottom: 5px;
 }
@@ -111,7 +110,7 @@
 	padding-top: 10px;
 	padding-left: 12px;
 	padding-right: 10px;
-	overflow: scroll;
+	overflow: auto;
 	}
 		#users-and-groups-online div > a:link {
 			width: 198px;
@@ -263,6 +262,7 @@ background: #006696;
 	/*background: #F2F4F8;*/
 	background: #FFF;
 	overflow: auto;
+	overflow-x: hidden;
 	padding: 10px;
 	color: #000;
 	font-weight: 100;
