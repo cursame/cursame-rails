@@ -670,7 +670,7 @@ class CoursesController < ApplicationController
           headline: (("#{survey.name}").to_s).delete("\n"),
           text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
           asset: {
-            media: @avatar_survery && @avatar_survery,
+            media: @avatar_surveys && @avatar_surveys,
             credit: (("#{survey.user.name}").to_s).delete("\n"),
             caption: (("#{@course.title}").to_s).delete("\n")
           },
