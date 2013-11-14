@@ -385,7 +385,7 @@
               <label class="UploadArchiveBtn">
             	  Subir Archivos al Curso
               </label>
-              <input id="course_file_file" class="UploadFiles" style="height: 55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
+              <input id="course_file_file" class="UploadFiles" style="height: 55px; min-width:55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
               <%= hidden_field_tag :course_id, @course.id %> 
               <%= f.hidden_field :published, :value => true %>
             </div>
