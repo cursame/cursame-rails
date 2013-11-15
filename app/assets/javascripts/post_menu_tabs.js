@@ -17,9 +17,9 @@ $('#delvery-tab').click(function(){
     //console.log('click');
     
     $('#message-form-area-tab').hide();
-    $('#delivery-form-area-tab').show();
+    $('#delivery-form-area-tab').show().css({ display: "inline-block" });
     $('#survey-form-area-tab').hide();
-    $('#discussion-form-area-tab').hide();
+    $('#discussion-form-area-tab').hide().css({ display: "none" });
     
     $('#comment-tab').removeClass('selected_tab');
     $('#delvery-tab').addClass('selected_tab');
@@ -31,8 +31,8 @@ $('#discusison-tab').click(function(){
     //console.log('click');
     
     $('#message-form-area-tab').hide();
-    $('#delivery-form-area-tab').hide();
-    $('#discussion-form-area-tab').show();
+    $('#delivery-form-area-tab').hide().css({ display: "none" });
+    $('#discussion-form-area-tab').show().css({ display: "inline-block" });
     $('#survey-form-area-tab').hide();
     
     $('#comment-tab').removeClass('selected_tab');
@@ -46,8 +46,8 @@ $('#survey-tab').click(function(){
     //console.log('click');
     
     $('#message-form-area-tab').hide();
-    $('#delivery-form-area-tab').hide();
-    $('#discussion-form-area-tab').hide();
+    $('#delivery-form-area-tab').hide().css({ display: "none" });
+    $('#discussion-form-area-tab').hide().css({ display: "none" });
     $('#survey-form-area-tab').show();
     
     $('#comment-tab').removeClass('selected_tab');
@@ -60,9 +60,9 @@ $('#survey-tab').click(function(){
 $('.cancel-post-form_tab').click(function(){
     //console.log('click');
     $('#message-form-area-tab').show();
-    $('#delivery-form-area-tab').hide();
+    $('#delivery-form-area-tab').hide().css({ display: "none" });
     $('#survey-form-area-tab').hide();
-    $('#discussion-form-area-tab').hide();
+    $('#discussion-form-area-tab').hide().css({ display: "none" });
     if ($('#new_discussion').length){
         $('#new_discussion')[0].reset();
         

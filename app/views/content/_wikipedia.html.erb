@@ -19,7 +19,7 @@
                  <div class="button_pluss" id="add_nested_delivery_content<%= @complex_id %>">
                    +
                  </div>
-                 <div class="play_button_pluss" id="nested_content_wikipedia_<%=@complex_id%>" style="margin-left:10px;"> ► </div> 
+                 <!-- <div class="play_button_pluss" id="nested_content_wikipedia_<#%=@complex_id%>" style="margin-left:10px;"></div> -->
                   
                 </center>
                 <SCRIPT LANGUAGE="JavaScript">
@@ -33,11 +33,12 @@
                         	              });
                         	          e.preventDefault();
                         	      });
+                        	
                            
                 </SCRIPT>
                 
                 <div id="fokj_wiki_<%=@complex_id%>" class="content_f_box"  style="display:none; overflow:auto;">
-                        <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>
+                        <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><!--<center>x</center>--></a></div>
                   <center>
                     <iframe src="<%=url%>#content" style="width:800px; height:340px; padding:10px; overflow-x: hidden;margin-left:20px;"></iframe>
                   </center>
@@ -50,14 +51,16 @@
                Este artículo no puede ser agregado ya que no existe
                <%end%>
                 
-                  <SCRIPT LANGUAGE="JavaScript">
-                           
-                           $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
+                  <SCRIPT LANGUAGE="JavaScript">   
+                        $('#add_nested_delivery_content<%= @complex_id%>').click(function() {
 
-                                $('#content_killer<%= @typeo %>').append('<input id="<%= @typeo %>_contents_attributes_<%=@complex_id%>_content" name="<%= @typeo %>[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%=url%>">');
-                                   $('#choser<%= @typeo %>').append('<div id="resput_wikipedia<%=@complex_id%>"style="float:left;"><%= image_tag("wikipedia-mini2.png") %></div>');
-                                   $("#choser<%=@typeo%>").append("<a id='executable_wikipedia<%=@complex_id%>' href='<%=url%>'><%=url%></a></br>");
-                                   $('#choser<%= @typeo %>').append('<a id="execute_wikipedia<%=@complex_id%>" class="cancel_link">x</a>');
+                        $('#content_killer<%= @typeo %>').append('<input id="<%= @typeo %>_contents_attributes_<%=@complex_id%>_content" name="<%= @typeo %>[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%=url%>">');
+                          
+                        $('#choser<%= @typeo %>').append('<div class="appendClass"><div id="resput_wikipedia<%=@complex_id%>"style="float:left;"><%= image_tag("wikipedia-mini2.png") %></div>'+"<a style='margin-left: 2px; top: 5px; position: relative;' id='executable_wikipedia<%=@complex_id%>' href='<%=url%>'><%=url%></a>"+'<a id="execute_wikipedia<%=@complex_id%>" class="cancel_link" style="margin-top: 2px; float: right;"></a></div>');
+                                
+                        //$('#choser<%= @typeo %>').append('<div id="resput_wikipedia<%=@complex_id%>"style="float:left;"><%= image_tag("wikipedia-mini2.png") %></div>');
+                        //$("#choser<%=@typeo%>").append("<a id='executable_wikipedia<%=@complex_id%>' href='<%=url%>'><%=url%></a></br>");
+                        //$('#choser<%= @typeo %>').append('<a id="execute_wikipedia<%=@complex_id%>" class="cancel_link"; style: margin-top: -9px;></a>');
                                    
                                      $('#execute_wikipedia<%=@complex_id%>').click(function() {
 
@@ -67,10 +70,8 @@
                                          $('#<%= @typeo %>_contents_attributes_<%=@complex_id%>_content').remove();
 
                                        });
-
                             });
-                           
-                             
+
 
                      </SCRIPT>
             <% end %>

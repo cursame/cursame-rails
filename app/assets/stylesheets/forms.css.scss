@@ -72,7 +72,7 @@
       color: #999;
       @include border-radius-btn;
       @include bg-upload-btn;
-      @include shadow-normal-btn;
+      //@include shadow-normal-btn;
       background-repeat: no-repeat;
       background-position: left;
     }
@@ -278,7 +278,7 @@
     color: #999;
     @include border-radius-btn;
     @include bg-evaluate-btn;
-    @include shadow-normal-btn;
+    //@include shadow-normal-btn;
     margin: 4px 0px 0px 0px;
     background-position: left;
     height: 28px;
@@ -289,9 +289,10 @@
     line-height: 30px;
     &:hover{
       color: #555;
-      -webkit-box-shadow: inset 0px 1px 1px #91a5bb;
+      /*-webkit-box-shadow: inset 0px 1px 1px #91a5bb;
       -moz-box-shadow:    inset 0px 1px 1px #91a5bb;
       box-shadow:         inset 0px 1px 1px #91a5bb;
+      */
     }
   }
   & .submit-area{
@@ -899,22 +900,32 @@
       width: 100%;
     }
     & .question-field{
-      border-bottom: 1px dashed #c9d1da;
+      //border-bottom: 1px dashed #c9d1da;
       background: #f9fafc;
       float: left;
       clear: both;
       width: 100%;
+      
       & .add-question{
-        background: url('/assets/icons/add-question.png') no-repeat;
-        height: 35px;
+        background: #919FB5 url('/assets/icons/add-question.png') 11px 8px no-repeat;
+        height: 29px!important;
+        width: 548px;
+        border-bottom: 1px solid #919FB5;
+        border-top: 1px solid #919FB5;
         float: left;
-        color: #919FB5;
+        color: #FFF;
         font-weight: 100;
-        padding: 8px 0px 0px 37px;
-        margin: 5px 0px 0px 22px;
+        padding: 15px 0px 0px 50px;
+        transition: all 0.2s;
+        //margin: 5px 0px 0px 22px;
         
         &:hover{
-          text-decoration: none;
+        	background: #333334 url('/assets/icons/add-question.png') 11px 8px no-repeat;
+			text-decoration: none;
+			color: #FFF;
+			transition: all 0.2s;
+			border-bottom: 1px solid #333334;
+			border-top: 1px solid #333334;
         }
         
       }
@@ -974,7 +985,7 @@
         //background: url('/assets/icons/add-question.png') left center no-repeat;
         float: left;
         //width: 138px;
-        width: 573px;
+        width: 571px;
         background-position: left;
         height: 30px;
         color: #919FB5;
@@ -1131,9 +1142,9 @@
 }
 
 .survey-assignment-box{
-  display:none;
-  margin: 7px 0px 0px 30px;
-  //background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
+display:none;
+margin: 7px 0px 0px 30px;
+//background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
 
   & .box-question{
     width: 100%;
