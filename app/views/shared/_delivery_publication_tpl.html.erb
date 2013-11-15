@@ -143,7 +143,7 @@
     <div class="green-btn">
         <div class="labels">
             <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty?%>
-            <div id="open-close-<%= delivery.id %>">
+            <div id="open-close-delivery<%= delivery.id %>">
                 <a>Responder</a>
             </div>            
             <%else%>
@@ -153,7 +153,7 @@
                        <%= accomplishment.to_s %>
                     </div>
                 <%else%>
-                    <div id="open-close-<%= delivery.id%>">
+                    <div id="open-close-delivery<%= delivery.id%>">
                        <a>Editar Entrega</a>
                     </div>
                 <%end%>                
@@ -163,22 +163,22 @@
 </div>
     <!-- algo que se puede descifrar de alguna manera -->
     <script>
-        $("#open-close-<%= delivery.id %>").click(function () {
+        $("#open-close-delivery<%= delivery.id %>").click(function () {
             alert(123);
             $('#entrega-<%= delivery.id %>').show("slow");
            // $(this).toggle("slow");
            //  $(this).parent().parent().toggle("slow");
             $('#cancel-post-form-<%=delivery.id%>').click(function () {
-                $("#open-close-<%= delivery.id %>").show();
-                $("#open-close-<%= delivery.id %>").parent().parent().show();
+                $("#open-close-delivery<%= delivery.id %>").show();
+                $("#open-close-delivery<%= delivery.id %>").parent().parent().show();
                 $('#entrega-<%= delivery.id %>').hide("slow");
             });
         });
 
-        $("#open-close-lo<%= delivery.id %>").click(function () {
-            $('#entrega-lo<%= delivery.id %>').toggle("slow");
+        // $("#open-close-deliverylo<%= delivery.id %>").click(function () {
+        //     $('#entrega-lo<%= delivery.id %>').toggle("slow");
 
-        });
+        // });
     </script>
 <%end%>
 <%end%>
