@@ -75,20 +75,28 @@
               
               // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
               if(<%= (@show_assignment and @id_search) %>) {
+                // Obtenemos a que altura debe de quedar la entrega
+                var deliveryHeight = 0;
+                deliveryHeight += $('.title-discusion').height();
+                deliveryHeight += $('.end-date-box').height();
+                deliveryHeight += $('.description').height();
+                deliveryHeight += $('.contents_title').height();
+                deliveryHeight += $('.asset-box').height();
+                deliveryHeight += $('.evaluation-box').height();
+                $('.extra-label').each(function() {
+                  deliveryHeight += $(this).height();
+                });
+
                 $('#timeline :nth-child(1)').find('.content').append('<div id="tcg_notif" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
                 $.get('<%= course_assignment_l_notif_path(@show_assignment) %>', function() {
                   $('#tcg_notif').css('width', '100%');
                   $('#tcg_notif').css('min-width', '75%');
-                  $('#tcg_notif').css('margin-top', '25%');
+                  $('#tcg_notif').css('margin-top', deliveryHeight + 'px');
 
                   // Ajustes
                   $('div.coklo-title').css('margin-left', '13%');
                   $('div.coklo-title').css('margin-top', '6%');
                   $('ul.tabs').css('margin-left', '12%');
-
-                  if($('div.content-assets a').length != 0) {
-                    $('#tcg_notif').css('margin-top', '38%');
-                  }
                 });
               }
             });
