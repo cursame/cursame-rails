@@ -38,6 +38,10 @@ class FriendshipsController < ApplicationController
       @friendship.friend_id = @user.id
       @friendship.accepted = false
       @friendship.save
+
+      @typed = @friendship.class.to_s
+      @az = @friendship
+      activation_activity
     end
 
     respond_to do |format|
@@ -75,6 +79,9 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.create(:user_id => current_user.id, :friend_id => params[:friend_id], :accepted => false)
     if @friendship.save
+      @az = @friendship
+      @typed = @friendship.class.to_s
+      activation_activity
       redirect_to :new_friends
     else
       redirect_to :new_friends

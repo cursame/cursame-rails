@@ -8,6 +8,11 @@
   <% @delivery=Delivery.new %>
 <% end %>
 
+<% if @active_edit == false %>
+
+			<a class="help delivery_help" id="help_delivery" style="margin-top: -25px; margin-right:565px;"><%= image_tag('help.png')%></a>
+<%end%>
+
 <%= form_for(@delivery, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
 
     <div class="video_help help_use_to_delivery" style="display: none" id="delivery_help">
@@ -95,9 +100,6 @@ margin-left: 292px; height: 21px; outline-width: 0px;', :class=>"percent-input" 
 		</div>
         
         <%end%>
-        
-
-          
           
 		<script>
 		$('#help_delivery').click(function() {

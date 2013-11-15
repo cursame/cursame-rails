@@ -60,8 +60,8 @@ class Discussion < ActiveRecord::Base
       end
 
       Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
-
       Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
+      self.send_mail(users_notifications)
     end
   end
 
@@ -93,4 +93,18 @@ class Discussion < ActiveRecord::Base
     end
     return user_id == user.id
   end
+
+  def send_mail(users)
+    Thread.new {
+          begin
+              mail = Notifier.new_discussion_notification(users,self)
+              mail.deliver          
+          rescue => ex
+            puts 'error al enviar mail'
+          ensure
+            ActiveRecord::Base.connection.close
+          end
+        }    
+  end
+
 end

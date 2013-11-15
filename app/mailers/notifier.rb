@@ -6,18 +6,28 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.new_delivery_notification.subject
   #
-  def new_delivery_notification(member_in_course,delivery)
-    @user = member_in_course.user
-    @delivery = delivery
-    mail to:  @user.email, subject: "Nueva tarea disponible"
+  def new_delivery_notification(users,delivery)
+    users.each do |user|
+      @user = user
+      @delivery = delivery
+      mail to:  @user.email, subject: "Nueva tarea disponible"
+    end
   end
 
-  def new_survey_notification(member_in_course,survey)
+  def new_survey_notification(users,survey)
+    users.each do |user|
+      @user = user
+      @survey = survey
+      mail to: @user.email, subject: "Nuevo cuestionario disponible"
+    end
+  end 
 
-    @user = member_in_course.user
-    @survey = survey
-
-    mail to: @user.email, subject: "Nuevo cuestionario disponible"
+  def new_discussion_notification(users,discussion)
+    users.each do |user|
+      @user = user
+      @discussion = discussion
+      mail to: @user.email, subject: "Nueva discusion disponible"
+    end
   end
 
   def accepted_message(member_in_course,course)
@@ -77,6 +87,32 @@ class Notifier < ActionMailer::Base
 
     mail to: @user.email, subject: "Informe: Importacion de Miembros al curso " + course.title
 
+  end
+
+  def send_comment_on_course(comment)
+    @comment = comment
+    @isComment_on_comment = comment.commentable_type == 'Comment'
+    @user = comment.user
+    if (@isComment_on_comment)
+      users = comment.commentable.commentable.users
+      @course = comment.commentable.commentable
+    else
+      users = comment.commentable.users
+      @course = comment.commentable
+    end
+
+    emails = users.map{|user| user.email}
+    emails = emails.keep_if{ |email|  email != @user.email}
+    subject = "#{@user.name} comento en el curso #{@course.title}"
+    mail to: emails, subject: subject
+  end
+
+  def new_member_in_course(course, user)
+    @course = course
+    @user = user
+    emails = @course.owners.map{|user| user.email}
+    subject = "#{@user.name} desea ingresar al curso #{@course.title} del cual eres maestro"
+    mail to: emails, subject: subject
   end
 
 end

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help ]
@@ -11,20 +12,20 @@ class HomeController < ApplicationController
 
   def conditions
   end
-  
+
   def blog
   end
-  
+
   ###### destroye sesiones caducadas
   def ending_session
     sign_out(current_user)
-    
+
     redirect_to root_path
   end
-  
+
   def help
   end
-  
+
   def add_new_comment
     if user_signed_in?
       @from_enter_key = params[:from_enter_key] == 'true' ? true : false
@@ -37,7 +38,7 @@ class HomeController < ApplicationController
           params[:commentable_id] = group_id
           save_comment
         end
-      
+
       #esto es para comentarios que son publicos de la red
       elsif params[:is_user] then
         params[:commentable_type] = 'User'
@@ -131,7 +132,7 @@ class HomeController < ApplicationController
        @id = params[:id]
        @type = params[:type]
        puts '------------------------'
-       puts @id 
+       puts @id
        respond_to do |format|
          format.js
        end
@@ -155,14 +156,14 @@ class HomeController < ApplicationController
          noti.active = false
          noti.save
        end
-       
+
        @user = current_user
-       
+
        respond_to do |format|
          format.js
        end
      end
-     
+
 
   # chat behaviour of cursame
   # -----------------------------
@@ -171,14 +172,14 @@ class HomeController < ApplicationController
       format.js
     end
   end
- 
+
   def render_notifications
     @notification = Notification.find(params[:id])
     respond_to do |format|
       format.js
     end
   end
-  
+
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------
@@ -196,17 +197,17 @@ class HomeController < ApplicationController
       if params[:course]
         @channel_name = "/messages/course_channel_"+ params[:id]
 
-        users = Course.find(params[:id]).users        
-        ######## se agregan validadores de users para el exist #########        
-        users = users.keep_if{|x| x != nil}        
+        users = Course.find(params[:id]).users
+        ######## se agregan validadores de users para el exist #########
+        users = users.keep_if{|x| x != nil}
 
       else
         ids = [current_user.id, params[:id].to_i]
         @channel_name = get_unique_channel_users(ids)
-        users = User.find(ids)        
+        users = User.find(ids)
 
       end
-      
+
       @channel = find_or_insert_channel(@channel_name,users)
       @page = 1
       @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
@@ -217,6 +218,11 @@ class HomeController < ApplicationController
 
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
+
+      @az = @message
+      @typed = @message.class.to_s
+      activation_activity
+
       @channel_name = params[:channel_name]
       @channel_id = params[:channel_id]
       respond_to do |format|
@@ -232,7 +238,7 @@ class HomeController < ApplicationController
          format.js
         end
      end
-     
+
      def load_more_notfications
         @notifications = current_user.notifications.paginate(:per_page => 10, :page => params[:page]).order("created_at DESC")
         @page = params[:page].to_i
@@ -263,6 +269,23 @@ class HomeController < ApplicationController
     commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
     if params[:comment_id].blank? then
       @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
+
+      # activity
+      @az = @comment
+      @typed = @comment.class.to_s
+      activation_activity
+
+      if (@comment.commentable_type == 'Course')
+        # mailer = Notifier.send_comment_on_course(@comment)
+        # mailer.deliver
+      end
+
+      if (@comment.commentable_type == 'Comment')
+        if (@comment.commentable.commentable_type == 'Course')
+          # mailer = Notifier.send_comment_on_course(@comment)
+          # mailer.deliver
+        end
+      end
     else
       @comment = Comment.find(params[:comment_id])
       @comment.update_attributes(:comment => params[:comment])

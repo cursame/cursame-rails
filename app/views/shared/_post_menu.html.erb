@@ -3,7 +3,6 @@
   <%= javascript_include_tag('post_menu_tabs.js') %>
   <%= javascript_include_tag('post_menu_validation_forms.js') %>
   
-  
   <%if !@user_show %>
   <div id="tabs_form">      
       <div id="tab-form-options">
@@ -65,8 +64,7 @@
       <% permitted_to? :create, :discussions do %>
       <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit}%>
       <%end%>
-    </div>
-    
+    </div>    
   </div>
   
 

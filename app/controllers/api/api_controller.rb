@@ -222,7 +222,6 @@ class Api::ApiController < ApplicationController
       notification_to_save.save
     end
     #
-    # @notifications = @user.notifications.includes(:notificator)
     render :json => {:notifications => @user_notifications.as_json, :num_notifications => @num_notifications}, :callback => params[:callback]
   end
 
@@ -677,6 +676,7 @@ class Api::ApiController < ApplicationController
   def native_load_chat_messages    
     ids = params['channel_name'].split(/_/);
     users = []
+    @messages = []
     if ids.length == 3 #se trata de un curso
       users = Course.find(ids[2]).users
     end
@@ -687,8 +687,27 @@ class Api::ApiController < ApplicationController
         end
       end
     end
+    
     channel = find_or_insert_channel(params['channel_name'],users)
-    @messages = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('created_at DESC')
+    msgs = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('created_at DESC')
+    
+    msgs.each do |message|
+      msg = {
+        channel_id: message.channel_id,
+        created_at: message.created_at,
+        id: message.id,
+        mesage: message.mesage,
+        mesage_html: message.mesage_html,
+        updated_at: message.updated_at,
+        user_id: message.user_id,
+        user: message.user,
+        avatar: {
+            url: message.user.avatar.url.nil? ? "/assets/" + message.user.image_avatarx : message.user.avatar.url, 
+        },
+      }
+      @messages.push(msg)
+    end 
+
     render :json => {:messages => @messages.as_json, :count => @messages.count()}, :callback => params[:callback]
   end
 
@@ -721,39 +740,52 @@ class Api::ApiController < ApplicationController
   end
 
   def native_list_events    
-    @events = @user.events.where("strftime('%Y-%m', starts_at) = ?", params[:date]).order('created_at DESC')
+    fecha = params[:date].split('-')
+    @events = @user.events.where("extract(year from starts_at) = ? AND extract(month from starts_at) = ?", fecha[0], fecha[1]).order('created_at DESC')
     render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
+    #@events = @user.events.where("strftime('%Y-%m', starts_at) = ?", params[:date]).order('created_at DESC')
   end
 
   def native_list_activities_of_course
     course = Course.find(params[:id])
-    @activities = []
-     
-    course.deliveries.each do |delivery|
-      activity = {
-        type: 'Delivery',
-        title: delivery.title,
-        description: delivery.description,
-        publish_date: delivery.publish_date,
-        end_date: delivery.end_date,
-        assignments: delivery.assignments
-      }
-      @activities.push(activity)
-    end
+    @pubs = []
+    publications = course.walls.order('created_at DESC')
 
-    course.surveys.each do |survey|
-      activity = {
-        type: 'Delivery',
-        title: survey.name,
-        description: '',
-        publish_date: survey.publish_date,
-        end_date: survey.end_date,
-        responses: survey.user_surveys
-      }
-      @activities.push(activity)
-    end
-    
-    render :json => {:results => @activities.as_json, :count => @activities.count()}, :callback => params[:callback]
+    publications.each do |publication|
+        type = publication.publication_type
+        id = publication.publication_id
+        created_at = publication.created_at
+
+        case type          
+          when 'Delivery'
+            publication = Delivery.find(id)
+            text = 'Se ha creado una tarea en la asignatura de ' + course.title
+            avatar =  {
+              url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url 
+            }
+            publication = publication.as_json(:include => [{:assignments => {:include => [:assets]}},:assets])
+          when 'Survey'
+            publication = Survey.find(id)
+            text = 'Se ha creado un cuestionario en la asignatura de ' + course.title
+            avatar =  {
+              url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url 
+            }
+            publication = publication.as_json(:include => [{:user_surveys => {:include => [:user]}}])
+          else
+            next
+        end
+       
+        pub = {
+          type: type,
+          publicationId: id,
+          text: text,
+          avatar:avatar,
+          publication:publication,
+          createdAt: created_at
+        }
+       @pubs.push(pub)
+      end    
+    render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
   end
 
   private

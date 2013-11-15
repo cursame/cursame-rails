@@ -14,7 +14,7 @@
         <%= render :partial => '/surveys/survey_response_tpl', :locals => {:survey => survey}%>
       </div>
   <% else %>
-      <div id="image-<%= survey.id %>" class="resolve-surveys"><div class="response-survey"></div></div>
+      <div id="image-<%= survey.id %>" class="resolve-surveys"><div class="response-survey" style=" margin-top:-10px;color:#3BB3C5;font-size:34px"><%= response.result.to_s %></div></div>
       </div>
   <% end %>
 

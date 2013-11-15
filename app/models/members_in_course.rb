@@ -227,4 +227,8 @@ class MembersInCourse < ActiveRecord::Base
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
+  def title
+    return ""
+  end
+
 end

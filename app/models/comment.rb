@@ -89,46 +89,27 @@ class Comment < ActiveRecord::Base
     users = hash[:users]
     notification_kind = hash[:kind]
 
-    puts '--------------------------------'
-    puts notification_kind
-
     if notification_kind["network"]
-      puts '------------aqui--------------------'
-      puts self.user.id
       Wall.create!( :users => [self.user], :publication => self, :network => self.network, :public => true)
       users = users.reject{ |user| user.id == self.user_id }
-
-      # Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["course"] || notification_kind["group"]
-
       course = notification_kind["course"] ? [commentable] : nil
-
       wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
-
       users = users.reject{ |user| user.id == self.user_id }
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["discussion"]
-
       users = users.reject { |user| user.id == self.user.id }
-
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
-
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
-
       users = users.reject { |user| user.id == self.user.id }
-
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
-
     elsif notification_kind["on_user"]
-
       Wall.create(:publication => self, :network => self.network, :users => users, :public => false)
-
       users = users.reject { |user| user.id == self.user.id }
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
-
       return
     else
     end
@@ -137,15 +118,20 @@ class Comment < ActiveRecord::Base
 
   def group_of_users(comment_type)
     case comment_type
-      when "Network", "Course", "Group", "Delivery"
+    when "Network", "Course", "Group", "Delivery"
       users = commentable.users
       hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
+
+      if comment_type == "Course"
+        self.send_mail
+      end
       return hash
 
     when "User"
       users = [commentable]
       hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       return hash
+
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
@@ -159,13 +145,14 @@ class Comment < ActiveRecord::Base
         users = commentable.commentable.users
         users = users.reject { |user| user.id == self.user.id }
         hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+
+        if commentable.commentable_type == "Course"
+          self.send_mail
+        end
         return hash
       end
-      # users.delete(self.user)
-
 
     when "Discussion"
-
       if commentable.courses.size == 0 then
         hash = {:users => [commentable.user] , :kind => 'user_comment_on_' + comment_type.downcase }
       else
@@ -175,13 +162,12 @@ class Comment < ActiveRecord::Base
           users = users.concat(course.users)
         end
         users.uniq!
-        # users.delete(self.user)
         users = users.reject { |user| user.id == self.user.id }
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
-
       return hash
-      when 'Survey'
+
+    when 'Survey'
       if commentable.courses.size == 0 then
         hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
       else
@@ -191,12 +177,10 @@ class Comment < ActiveRecord::Base
           users = users.concat(course.users)
         end
         users.uniq!
-        # users.delete(self.user)
         users = users.reject { |user| user.id == self.user.id }
         hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
       end
     else
-
       raise "Grupo de usuarios no definido para " + comment_type
     end
   end
@@ -216,5 +200,22 @@ class Comment < ActiveRecord::Base
       return false
     end
     return commentable.owner?(role,user)
+  end
+
+  def send_mail
+    Thread.new {
+          begin
+            mailer = Notifier.send_comment_on_course(self)
+            mailer.deliver
+          rescue => ex
+            puts 'error al enviar mail'
+          ensure
+            ActiveRecord::Base.connection.close
+          end
+        }
+  end
+
+  def title
+    return ""
   end
 end

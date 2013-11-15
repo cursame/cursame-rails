@@ -3,7 +3,7 @@ $('#survey_dates<%= @survey.id%>').html('<%= @survey.publish_date %> <%= @survey
 $("#notice").html('');
 $("#notice").css('color','#608847');
 $("#notice").css('background','#DFF0D8');         
-$( "#notice" ).animate( { width: "900px", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
+$( "#notice" ).animate( { width: "100%", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
 $('#notice').append('<%= @message %>');
 setTimeout(function() {
     $('#notice').html('')

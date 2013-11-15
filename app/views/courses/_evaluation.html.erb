@@ -14,23 +14,23 @@
    <div class="form-course fixform" style="padding: 0 0 41px !important; width: 823px!important; overflow:auto;">
 		     <!--para poder hacer el render partial-->
    <%  @course = Course.find(params[:id])%>
-		
+
 		    <%@course.members_in_courses.each do |member| %>
 		      <%user = User.find_by_id(member.user_id)%>
 		      <% if !member.owner then%>
 		        <%table = member.doTableCourse%>
-		        
+
 		        <div class="" style="width: 823px; background: #000; margin-top: -15px;;">
 		        <span class="califHeader">Calificacion: <%=table[2]%></span>
 		        <span class="AlumHeader">Alumno: <%=user.name%></span>
 		        </div>
 
-				<!-- 
+				<!--
 		        <h4 style="margin-top: 22px; background: #38CDE2; color: #fff; height: 30px; padding-top: 14px; margin-left: -20px; width: 824px; text-align: center; font-weight: lighter;">Alumno: <%=user.name%></h4>
 		        -->
-		        
 
-		        
+
+
 		        <table border="1" cellpadding="3" cellspacing="3" id="calificacionesSpan" width="823px">
 		          <tr>
 		            <td width="205px"><p style="color: #258593;">Tarea</p></td>
@@ -58,18 +58,27 @@
 		            </td>
 		            <td valign="top"><%=assignment.accomplishment%></td>
 		            <%else%>
+					<td valig="top">Sin entregar</td>
+					<td valig="top"></td>
+					<td valig="top"></td>
 		            <%end%>
 		            <%end%>
+					</tr>
+					<<tr>
+					   <td valig="top"></td>
+					   <td valig="top"></td>
+					   <td valig="top"</td>
+					   <td valig="top"></td>
 			        <td valign="top"><%=table[0][2][0]%></td>
 			        <td valign="top"><%=table[0][2][1]%></td>
 		          </tr>
 		      </table>
-		      
+
 		      <table border="1" width="823px" cellpadding="3" cellspacing="3" style="margin-top:20px; margin-bottom: 45px;">
 		      <tr>
 		        <td width="205px"><p style="color: #258593;">Examen</p></td>
 		        <td><p style="color: #258593;">Calificacion</p></td>
-		        <td><p style="color: #258593;">Calificación Examenes</p></td>
+		        <td><p style="color: #258593;">Calificación Total</p></td>
 		        <td><p style="color: #258593;">% de la Evaluación</p></td>
 		        <td><p style="color: #258593;">% Obtenido</p></td>
 		      </tr>
@@ -79,14 +88,18 @@
 		          <td valign="top"style="padding: 5px 0px;">
 		            <% if !table[1][1][i].nil? then%>
 		            <%= table[1][1][i].result%>
+					<%else%>
+					Sin resolver
 		            <%end%>
 		          </td>
-		          <td></td>
+
 		        </tr>
 		        <%end%>
 		        <tr>
-		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][0]%></td>
+				  <td valig="top"style="padding: 5px 0px"></td>
+				  <td valig="top"style="padding: 5px 0px"></td>
 		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][1]%></td>
+		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][0]%></td>
 		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][2]%></td>
 		        </tr>
 		      </table>
@@ -134,40 +147,52 @@
 	            </td>
 	            <td valign="top"><%=assignment.accomplishment%></td>
 	          <%else%>
-	          <td></td>
+			  <td valig="top">Sin entregar</<td>
+	          <td valig="top"></td>
+			  <td valig="top"></td>
 	          <%end%>
 		      <%end%>
 		        <td valign="top"> <%=table[0][2][0]%></td>
 		        <td valign="top"> <%=table[0][2][1]%></td>
 		      </tr>
 		    </table>
-		    
+
 		    <table border="1" width="750" cellpadding="3" cellspacing="3">
 		    <tr>
 		      <td><p>Examen</p></td>
 		      <td><p>Calificación</p></td>
+			  <td><p>Calificación Total</p></td>
 		      <td><p>% de la Evaluación</p></td>
-		      <td><p>Calificación exámenes</p></td>
 		      <td><p>% Obtenido</p></td>
 		    </tr>
 		      <%for i in 0...table[1][0].size%>
 		    <tr>
 	        	<td valign="top"><%=table[1][0][i].name%></td>
-		        <td valign="top"><% if !table[1][1][i].nil? then%><%= table[1][1][i].result%><%end%></td>
+		        <td valign="top">
+				  <% if !table[1][1][i].nil? then%>
+				  <%= table[1][1][i].result%>
+				  <%else%>
+				  Sin resolver
+				  <%end%>
+				</td>
+				</tr>
 		         <%end%>
-		        <td valign="top"><%=table[1][2][0]%></td>
+				 <tr>
+				<td valig="top"style"paddig: 5px 0px"></<td>
+				<td valig="top"style"paddig: 5px 0px"></td>
 		        <td valign="top"><%=table[1][2][1]%></td>
+		        <td valign="top"><%=table[1][2][0]%></td>
 		        <td valign="top"><%=table[1][2][2]%></td>
 		      </tr>
 		    </table>
-		    
+
 		    </div><!-- ends fixform -->
 		    <%end%>
 </div>
 <script type="text/javascript">
- $(document).ready(function(){ 
+ $(document).ready(function(){
 	 $(".fixform td:odd").addClass("stripe");
 	 $(".fixform td:even").addClass("string");
 	 $('.fixform p:empty').hide();
- }); 
+ });
 </script>

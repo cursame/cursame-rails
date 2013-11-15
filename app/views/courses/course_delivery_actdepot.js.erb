@@ -11,8 +11,15 @@ $('#tareas_entregadas').html('');
         	'</div>' +
         	'<div style="display: inline-block; margin-left: 10px; margin-top: 10px;">Tarea entregada por: <br><b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b></div>' +
         	'<div style="width: 100px; height: 100%; color: white; position: absolute; text-align: center; display: inline-block; background: #5F95BE; margin-left: 29%; margin-top: -4%;">' +
-        	'<div style="position: relative; margin-top: 30%;">VER<br>ENTREGA</div></div>' +
+        	'<div id="entrega-tarea-actdepot" style="position: relative;"></div></div>' +
 		'</div>');
 		$('#tarea_entregada_actdepot-<%= assign.id %>').attr("redirect_to", "/courses/<%=@delivery.courses.first.id%>?search=Delivery&id_search=<%=@delivery.id.to_s%>&show_assig=<%= assign.id.to_s %>");
+		<% if assign.accomplishment.nil? %>
+			$('#entrega-tarea-actdepot').html('No se ha<br>calificado<br><span style="font-size: 7px; text-decoration: underline;">VER ENTREGA</span>');
+			$('#entrega-tarea-actdepot').css('margin-top', '22%');
+		<% else %>
+			$('#entrega-tarea-actdepot').html('<%= assign.accomplishment.round(2) %>%<br><span style="font-size: 8px; text-decoration: underline;">VER ENTREGA</span>');
+			$('#entrega-tarea-actdepot').css('margin-top', '30%');
+		<% end %>
 	<% end %>
 <% end %>

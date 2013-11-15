@@ -25,7 +25,7 @@
 	var sizeOfWindow = 255, separacion;
 
 	if(!$('#chat').length){
-		$("#chat-channel-<%= channel.id%>").css('bottom','212px');
+		$("#chat-channel-<%= channel.id%>").css('bottom','312px');
 	}else{
 		$("#chat-zone-<%= channel.id%>").hide();
 	}
@@ -39,7 +39,7 @@
 	   	var chatZonePosition = $(panel).css('bottom');
 
 	 	if(chatZonePosition.replace('px','') < 200){
-    		$(panel).css('bottom','212px');
+    		$(panel).css('bottom','312px');
     	}
     	else{
     		$(panel).css('bottom','-1px');
