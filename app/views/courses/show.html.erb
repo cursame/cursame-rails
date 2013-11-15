@@ -74,11 +74,10 @@
               });
               
               // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
-              var aux = <%= (@show_accomplishment and @id_search) || false %>;              
+              var aux = <%= (@show_assignment and @id_search) || false %>;
               if(aux) {
                 // Obtenemos a que altura debe de quedar la entrega
                 var deliveryHeight = 0;
-                deliveryHeight += $('.header').height();
                 deliveryHeight += $('.title-discusion').height();
                 deliveryHeight += $('.end-date-box').height();
                 deliveryHeight += $('.description').height();
@@ -416,7 +415,8 @@
           <!--acción de noficación cuando se debe mostrar la respuesta de un cuestionario--> 
      <script>
             $(document).ready(function() {
-                  	if(<%= (@show_survey and @id_search) %>) {
+                var aux = <%= (@show_survey and @id_search) || false %>;
+                  	if(aux) {
                     $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
                     $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
                       $('#tarea_en_carga_notification').css('min-width', '100%');
