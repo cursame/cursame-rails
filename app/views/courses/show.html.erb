@@ -77,6 +77,7 @@
               if(<%= (@show_assignment and @id_search) %>) {
                 // Obtenemos a que altura debe de quedar la entrega
                 var deliveryHeight = 0;
+                deliveryHeight += $('.header').height();
                 deliveryHeight += $('.title-discusion').height();
                 deliveryHeight += $('.end-date-box').height();
                 deliveryHeight += $('.description').height();
