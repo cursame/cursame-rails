@@ -74,7 +74,8 @@
               });
               
               // Redireccionamiento de una notificacion: "Nueva entrega en una tarea"
-              if(<%= (@show_assignment and @id_search) %>) {
+              var aux = <%= (@show_accomplishment and @id_search) || false %>;              
+              if(aux) {
                 // Obtenemos a que altura debe de quedar la entrega
                 var deliveryHeight = 0;
                 deliveryHeight += $('.title-discusion').height();
