@@ -28,22 +28,14 @@
     
 }
 
-#valu { background: url('/assets/youtube.png') no-repeat !important; }
-#valu:hover { background: url('/assets/youtube_hover.png') no-repeat !important; }
+#valu { background: url('/assets/youtube.png') no-repeat !important; outline: none; }
+#valu:hover { background: url('/assets/youtube_hover.png') no-repeat !important; outline: none; }
 
-#valw { background: url('/assets/wikipedia.png') no-repeat !important; }
-#valw:hover { background: url('/assets/wikipedia_hover.png') no-repeat !important; }
+#valw { background: url('/assets/wikipedia.png') no-repeat !important; outline: none; }
+#valw:hover { background: url('/assets/wikipedia_hover.png') no-repeat !important; outline: none; }
 
-.dropbox-chooser {
-	background: url('/assets/dropBox.png') no-repeat !important;
-	margin-top: -41px!important;
-	width: 30px!important;
-	height: 30px!important;
-	position: relative!important;
-	float:left;
-	border:none;
-}
-.dropbox-chooser:hover { 	background: url('/assets/dropBox_hover.png') no-repeat !important; }
+.dropbox-chooser { background: url('/assets/dropBox.png') no-repeat !important; margin-top: -41px!important; width: 30px!important; height: 30px!important; position: relative!important; float:left; border:none; outline: none; }
+.dropbox-chooser:hover { background: url('/assets/dropBox_hover.png') no-repeat !important; outline: none; }
 
 .content-assets{
 	 /*width:97%;*/
