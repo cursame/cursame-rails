@@ -190,7 +190,11 @@ GEM
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
     pdfkit (0.5.3)
+<<<<<<< HEAD
     pg (0.16.0)
+=======
+    pg (0.15.1)
+>>>>>>> 3f17a8f03f3e658da26d872bd3413d09397dfe05
     polyglot (0.3.3)
     rack (1.4.4)
     rack-cache (1.2)

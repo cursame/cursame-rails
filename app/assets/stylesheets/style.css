@@ -332,8 +332,7 @@ footer {
 	padding: 5px;
 	background: #fff;
 	transition: ease-out all 0.3s;
-	border: 1p
-x solid #eee;
+	border: 1px solid #eee;
 /*    background-image: linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
     background-image: -o-linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
     background-image: -moz-linear-gradient(bottom, rgb(212,140,64) 29%, rgb(255,168,90) 65%, rgb(247,178,74) 100%);
@@ -421,8 +420,7 @@ px;*/
 .youtube_content_delivery {
 	height: 197px !important;
 	overflow: hidden!important;
-	float: left;
-	//width: 100px;
+	float: left;	
 }
 #content_free {
 	margin-top: 20px;
