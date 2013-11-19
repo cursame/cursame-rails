@@ -143,7 +143,7 @@
     <div class="green-btn">
         <div class="labels">
             <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty?%>
-            <div id="open-close-<%= delivery.id %>">
+            <div id="open-close-delivery<%= delivery.id %>">
                 <a>Responder</a>
             </div>            
             <%else%>
@@ -153,7 +153,7 @@
                        <%= accomplishment.to_s %>
                     </div>
                 <%else%>
-                    <div id="open-close-<%= delivery.id%>">
+                    <div id="open-close-delivery<%= delivery.id%>">
                        <a>Editar Entrega</a>
                     </div>
                 <%end%>                
@@ -161,15 +161,29 @@
         </div>
     </div>
 </div>
+    <!-- algo que se puede descifrar de alguna manera -->
+    <script>
+        $("#open-close-delivery<%= delivery.id %>").click(function () {
+            $('#entrega-delivery-<%= delivery.id %>').show("slow");
+            $('#cancel-post-form-<%=delivery.id%>').click(function () {
+                $("#open-close-delivery<%= delivery.id %>").show();
+                $("#open-close-delivery<%= delivery.id %>").parent().parent().show();
+                $('#entrega-delivery-<%= delivery.id %>').hide("slow");
+            });
+        });
+        // $("#open-close-deliverylo<%= delivery.id %>").click(function () {
+        //     $('#entrega-delivery-lo<%= delivery.id %>').toggle("slow");
+        // });
+    </script>
 <%end%>
 <%end%>
 <%end%>
-<div class="delivery-assignment-box" id="entrega-<%= delivery.id %>">
+<div class="delivery-assignment-box" id="entrega-delivery-<%= delivery.id %>">
     <% @delivery_id=delivery.id%>
     <%=render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => cargo}%>
 </div>
 
- <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-lo<%= delivery.id %>">
+ <div style="display:none; margin-top:15px; margin-left:5px;" id="entrega-delivery-lo<%= delivery.id %>">
                 <% @count_deliveries_assignments = delivery.assignments.count %>
                 <%= @count_deliveries_areas_of_evaluation = delivery.areas_of_evaluation.count %>
 
@@ -198,22 +212,3 @@
                     <b>No se han encontrado respuestas a esta tarea</b>
                 <% end %>
 </div>
-<!-- algo que se puede descifrar de alguna manera -->
-
-<script>
-    $("#open-close-<%= delivery.id %>").click(function () {
-        $('#entrega-<%= delivery.id %>').show("slow");
-       // $(this).toggle("slow");
-       //  $(this).parent().parent().toggle("slow");
-        $('#cancel-post-form-<%=delivery.id%>').click(function () {
-            $("#open-close-<%= delivery.id %>").show();
-            $("#open-close-<%= delivery.id %>").parent().parent().show();
-            $('#entrega-<%= delivery.id %>').hide("slow");
-        });
-    });
-
-    $("#open-close-lo<%= delivery.id %>").click(function () {
-        $('#entrega-lo<%= delivery.id %>').toggle("slow");
-
-    });
-</script>

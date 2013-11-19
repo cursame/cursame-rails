@@ -32,7 +32,7 @@
   </div>
 
   <div id="load-more-activities">
-      <b><%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 3, :page => 1), :remote => true%></b>
+      <b><%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 15, :page => 1), :remote => true%></b>
   </div>
 </div>
 
@@ -56,7 +56,7 @@
     }
   });
         
-  var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course, :per_page => 3, :page => 0) }.json" %>', function(json) {
+  var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course, :per_page => 15, :page => 0) }.json" %>', function(json) {
     var timeline = json.timeline.date;
     var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
 
