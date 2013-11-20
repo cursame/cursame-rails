@@ -4,10 +4,10 @@
 <% @video.each do |vi|%>
 
 <li class="list_youtube">
-
+    <% @num_r = Random.rand(10...142).to_s %>
 	<div class="video" id="videoSlider">
     	<% @id = vi.published_at %>
-        <% @complex_id =  @id.strftime("%m""%d""%Y")%>
+        <% @complex_id =  @id.strftime("%m""%d""%Y")+ @num_r.to_s%>
              
         <div class="tumbail_youtube<%= @complex_id %>" id="individual_youtube" >
         	<div style="float:left;" class="youTName" id="kolik2_youtube_btn<%= @complex_id %>" >
@@ -68,13 +68,14 @@
                     
                     
                     
-	                    $('#choser<%= @typeo %>').append('<div class="appendClass"><div id="resput_youtube<%=@complex_id%>"style="float: left;"> <%= image_tag("youtube_icon.png") %> </div>'+"<a style='float: left; width: 225px; overflow: hidden; height: 16px; margin-top: 8px;' id='executable_youtube<%=@complex_id%>' href='<%=vi.player_url%>'><%=vi.player_url%></a>"+'<a id="execute_youtube<%=@complex_id%>" class="cancel_link"></a></div>');
+	                    $('#choser<%= @typeo %>').append('<div class="appendClass" id="caller_<%=@complex_id%>"><div id="resput_youtube<%=@complex_id%>"style="float: left;"> <%= image_tag("youtube_icon.png") %> </div>'+"<a style='float: left; width: 225px; overflow: hidden; height: 16px; margin-top: 8px;' id='executable_youtube<%=@complex_id%>' href='<%=vi.player_url%>'><%=vi.player_url%></a>"+'<a id="execute_youtube<%=@complex_id%>" class="cancel_link"></a></div>');
 	                    
                     
                     $('#execute_youtube<%=@complex_id%>').click(function() {
                           $('#execute_youtube<%=@complex_id%>').hide();
                           $('#resput_youtube<%=@complex_id%>').hide();
                           $('#executable_youtube<%=@complex_id%>').hide();
+                          $('#caller_<%=@complex_id%>').hide();
                           $('#<%= @typeo %>_contents_attributes_<%=@complex_id%>_content').remove();
                     });
                 });
