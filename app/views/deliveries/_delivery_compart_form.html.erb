@@ -10,7 +10,6 @@
 
 <% if @active_edit == false %>
 
-			<a class="help delivery_help" id="help_delivery" style="margin-top: -25px; margin-right:565px;"><%= image_tag('help.png')%></a>
 <%end%>
 
 <%= form_for(@delivery, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
@@ -79,7 +78,7 @@ margin-left: 292px; height: 21px; outline-width: 0px;', :class=>"percent-input" 
 	        
 			<% if @active_edit == false %>
 			<div style="width: 30px;float: left; margin-top: 9px; position: relative; display: block;">
-				<a class="help delivery_help" id="help_delivery"><%= image_tag('help.png')%></a>
+				<a class="help delivery_help" style="float: left!important; margin-left: -2px;" id="help_delivery"><%= image_tag('help.png')%></a>
 			</div>
 			<%end%>
 	        
