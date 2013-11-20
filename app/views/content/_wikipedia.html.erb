@@ -19,12 +19,13 @@
                  <div class="button_pluss" id="add_nested_delivery_content<%= @complex_id %>">
                    +
                  </div>
-                 <!-- <div class="play_button_pluss" id="nested_content_wikipedia_<#%=@complex_id%>" style="margin-left:10px;"></div> -->
+                 <div class="play_button_pluss" id="nested_content_wikipedia_<%=@complex_id%>" style="margin-left:10px;"></div>
                   
                 </center>
                 <SCRIPT LANGUAGE="JavaScript">
                 
                             $('#nested_content_wikipedia_<%=@complex_id%>').click(function(e) {
+                                     
                         	          $('#fokj_wiki_<%=@complex_id%>').lightbox_me({
                         	              centered: true, 
                         	              onLoad: function() { 
