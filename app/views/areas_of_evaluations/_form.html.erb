@@ -26,13 +26,13 @@
     var nestedNewHomeworkSlider=undefined;
 
     $(document).ready(function() {
-        $('#more_nested_evaluation_btn').click(function(){
+        $('#more_nested_evaluation_btn').click(function(){            
             if(nestedNewHomeworkSlider==undefined){
                 nestedNewHomeworkSlider = new NestedSlider();
             }
             var str=null;
             $('#nested_evaluation_form, #total_nested_evaluation').show();  //show area
-            $(nestedInputs).each(function( index, value ) {
+            $(nestedInputs).each(function( index, value ) {                
                 changeAttr($(value).clone(),'id','name');
             });
             var slider  = $('#slider-'+controlNestedHomework),
@@ -47,8 +47,11 @@
         //Si contiene un objeto hijo entra   (para el caso del slider)
         if ( $(value).children().length > 0 ) {
             var child_id = $(value).children().attr(id_value);
-            child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
-            $(value).children().attr(id_value, child_id);
+            var child_name = $(value).children().attr(id_name);
+                child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
+                child_name = (child_name!=undefined)?child_name.replace('0',controlNestedHomework):undefined;
+                $(value).children().attr(id_value, child_id);
+                $(value).children().attr(id_name, child_name);
         }
         var str_id = $(value).attr(id_value);
         str_id = (str_id!=undefined)? str_id.replace('0',controlNestedHomework) : undefined;

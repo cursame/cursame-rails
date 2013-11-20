@@ -67,6 +67,10 @@ class DeliveriesController < ApplicationController
     @publication = []
     @error = false
 
+    puts '------------------------------'
+    puts params[:delivery].to_yaml
+    puts '------------------------------'
+
     if courses && !courses.empty?
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
