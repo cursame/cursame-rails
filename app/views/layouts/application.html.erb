@@ -205,6 +205,21 @@
   		$(this).animate({ paddingRight: "0px" });
   		$(this).removeClass('zenbox_tab__text');
   	});
+
+    // Scroll top
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 100) {
+        $('.scrollup').fadeIn();
+      } else {
+        $('.scrollup').fadeOut();
+      }
+    });
+
+    $('.scrollup').click(function(){
+      $("html, body").animate({ scrollTop: 0 }, 800);
+    
+      return false;
+    });
   </script>
   
   <div class="container" >
@@ -228,9 +243,8 @@
                 <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;"><%= image_tag('Icon_Firefox.png')%>Descarga Mozila Firefox</a>
           </center>
         </div>
-               
-       
 </div>
+<a href="#" class="scrollup">Scroll</a>
 </body>
 </html>
 <% end %>
