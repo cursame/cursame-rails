@@ -102,4 +102,20 @@ $(function() {
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}
 	});
+
+    // Scroll top
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 100) {
+        $('#scrollup').fadeIn();
+      } else {
+        $('#scrollup').fadeOut();
+      }
+    });
+
+    $('#scrollup').click(function() {
+      $('html,body').animate({ scrollTop: 0 }, '1500', 'swing', function() { 
+      });
+    
+      return false;
+    });
 });
