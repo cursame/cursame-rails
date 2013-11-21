@@ -205,21 +205,6 @@
   		$(this).animate({ paddingRight: "0px" });
   		$(this).removeClass('zenbox_tab__text');
   	});
-
-    // Scroll top
-    $(window).scroll(function(){
-      if ($(this).scrollTop() > 100) {
-        $('.scrollup').fadeIn();
-      } else {
-        $('.scrollup').fadeOut();
-      }
-    });
-
-    $('.scrollup').click(function(){
-      $("html, body").animate({ scrollTop: 0 }, 800);
-    
-      return false;
-    });
   </script>
   
   <div class="container" >
@@ -244,7 +229,7 @@
           </center>
         </div>
 </div>
-<a href="#" class="scrollup">Scroll</a>
+<div id="scrollup"></div>
 </body>
 </html>
 <% end %>
