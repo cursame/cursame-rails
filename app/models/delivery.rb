@@ -78,7 +78,6 @@ class Delivery < ActiveRecord::Base
     event :publish do
       transition :to => :published, :from => :unpublish
     end
-
   end
 
   before_create do

@@ -65,8 +65,9 @@
 		    	
 		    	<div class="collapse_friends">
 					<% @friends_online.each do |user|%>
-					<div>
+					<div style="display:block">
 						<%= link_to truncate("#{user.name}", :omission => "...", :length => 30) || user.email, open_channel_path(user.id), :remote => true%>
+						<div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>"></div>
 					</div>
 				<%end%>
 				</div>

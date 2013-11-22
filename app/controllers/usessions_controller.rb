@@ -4,10 +4,12 @@ class UsessionsController < Devise::SessionsController
     prepend_before_filter :allow_params_authentication!, :only => :create
     prepend_before_filter { request.env["devise.skip_timeout"] = true }
 
+    before_filter :set_offline, :only => :destroy
+
     # GET /resource/sign_in
     def new
       puts "******************************************* Creando Session New ***********************************************"
-      self.resource = resource_class.new()
+      self.resource = resource_class.new()      
       clean_up_passwords(resource)
       respond_with(resource, serialize_options(resource))      
     end
@@ -20,6 +22,13 @@ class UsessionsController < Devise::SessionsController
       set_flash_message(:notice, :signed_in) if is_navigational_format?
      
       @find_user = User.find_by_email(resource.email)
+
+      @find_user.online = true
+      @find_user.save!
+
+      puts @find_user.to_yaml
+      puts '---------------'
+
       find_permissionings = Permissioning.where(:user_id => @find_user.id, :network_id => current_network.id)
       
       if find_permissionings == nil
@@ -57,6 +66,7 @@ class UsessionsController < Devise::SessionsController
       puts "***************************************** Destruyendo Session *********************************************"
       redirect_path = after_sign_out_path_for(resource_name)
       sign_out(current_user) 
+
       respond_to do |format|
         format.all { head :no_content }
         format.any(*navigational_formats) { redirect_to redirect_path }
@@ -90,5 +100,14 @@ class UsessionsController < Devise::SessionsController
 
     def auth_options
       { :scope => resource_name, :recall => "#{controller_path}#new" }
+    end
+
+    private
+
+    def set_offline
+      current_user.online = false
+      current_user.save!      
+      puts current_user.to_yaml
+      puts '---------------'
     end
 end

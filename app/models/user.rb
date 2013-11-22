@@ -543,7 +543,6 @@ class User < ActiveRecord::Base
   end
 
   #facebook connect
-
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil, network, domain, subdomain)
     user = User.where(:email => auth.info.email).first
     unless user
