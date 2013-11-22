@@ -29,21 +29,17 @@ class Mesage < ActiveRecord::Base
 
   after_create do
     users =  self.channel.users.reject{ |user| user.id == self.user_id }
-    user_ids = self.user.friends(true).map{|user| [user.id,user.online] }
+    # user_ids = self.user.friends(true).map{|user| [user.id,user.online] }
 
     if users.empty? #si no hay usuarios en el canal solo le publica a el
       PrivatePub.publish_to(self.channel.channel_name,
                               message: self,
                               sender: self.user,
                               reciever: user,
-                              usersIds:user_ids,
+                              # usersIds:user_ids,
                               channel: self.channel
                               )
-    else
-      #variable para modificar el estatus online de los usuarios
-      # user_ids = self.user.friends(true).keep_if{ |user| user.online }.map{|user| user.id }
-      
-      
+    else     
       users.each do |user|
         PrivatePub.publish_to("/messages/notifications_user_"+user.id.to_s,
                               message: self,
@@ -56,7 +52,7 @@ class Mesage < ActiveRecord::Base
                               message: self,
                               sender: self.user,
                               reciever: user,
-                              usersIds:user_ids,
+                              # usersIds:user_ids,
                               channel: self.channel
                               )
       end

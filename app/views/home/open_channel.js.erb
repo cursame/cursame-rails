@@ -108,12 +108,13 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function(data) {
 	$('div.shareMSJ form input[name="mesage"]').val('');
 
 	/*^^^^^^^^^^^^^^^^^^^^Para poner a los usuarios online/offline^^^^^^^^^^^^^^^^^^^^*/
-	$.each(data.usersIds, function(index,value) {
-		if (value[1]) {
-			$('#chat-list-user-'+value[0]).removeClass('user-offline').addClass('user-online');
-		}else{
-			$('#chat-list-user-'+value[0]).removeClass('user-online').addClass('user-offline');
-		}
+	
+	// $.each(data.usersIds, function(index,value) {
+	// 	if (value[1]) {
+	// 		$('#chat-list-user-'+value[0]).removeClass('user-offline').addClass('user-online');
+	// 	}else{
+	// 		$('#chat-list-user-'+value[0]).removeClass('user-online').addClass('user-offline');
+	// 	}
 	  
-	});
+	// });
 });
