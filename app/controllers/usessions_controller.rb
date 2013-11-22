@@ -26,8 +26,12 @@ class UsessionsController < Devise::SessionsController
       @find_user.online = true
       @find_user.save!
 
-      puts @find_user.to_yaml
-      puts '---------------'
+      # avisamos que el usuario se conecto
+       PrivatePub.publish_to("/messages/chat_notifications",
+                              userId: @find_user.id,
+                              online: true
+                            )
+      
 
       find_permissionings = Permissioning.where(:user_id => @find_user.id, :network_id => current_network.id)
       
@@ -106,8 +110,11 @@ class UsessionsController < Devise::SessionsController
 
     def set_offline
       current_user.online = false
-      current_user.save!      
-      puts current_user.to_yaml
-      puts '---------------'
+      current_user.save!
+      #avisamos que ya de desconecto el usuario
+      PrivatePub.publish_to("/messages/chat_notifications",
+                              userId: current_user.id,
+                              online: false
+                            )
     end
 end

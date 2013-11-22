@@ -64,6 +64,14 @@ function changeNumbers(idParent, idFind){
     var count = 0 ;
 }
 
+ function playSound(soundfile) {
+    soundfile = "./assets/sounds/new_message.mp3";
+    document.getElementById("chat_sounds").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+    setTimeout(function () {
+        document.getElementById("chat_sounds").innerHTML="";
+    },1000);
+ }
+
 // notificaciones push usando private_pub
 $(function() {
 
@@ -80,17 +88,19 @@ $(function() {
 			'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
 			'</li>'];
 
+        // reproducimos sonido cuando hay mensaje
+        playSound();
+
 		//si ya existe la conversacion no se crea la notificación
 		if($('#chat-channel-'+data.channel.id).length) {
 			var panel = $("#chat-channel-" + data.channel.id);
 	    	var chatZonePosition = $(panel).css('bottom');
-	    	
+
             // aqui agrego un asterisco a la ventanita
             // cuando esta collapsada, asi sabe cuando el usario tiene un msj pendiente esa ventana
-            if(chatZonePosition.replace('px','') < 200) {
-	    		$("#chat-channel-"+data.channel.id+ " span").append('*');
-	    	}
-            
+            if (chatZonePosition.replace('px', '') < 200) {
+                $("#chat-channel-" + data.channel.id + " span").append('*');
+            }
             // alineamos los comentarios que no son de nosotros a la derecha
             setTimeout(function () {
                 $('#message_' + data.message.id).css('float','right');
@@ -102,7 +112,14 @@ $(function() {
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}
 	});
-
+    
+    PrivatePub.subscribe("/messages/chat_notifications", function(data, channel) {
+        if (data && data.online) {
+            $('#chat-list-user-' + data.userId).removeClass('user-offline').addClass('user-online');
+        } else {
+            $('#chat-list-user-' + data.userId).removeClass('user-online').addClass('user-offline');
+        }
+    });
     // Scroll top
     $(window).scroll(function(){
       if ($(this).scrollTop() > 100) {
