@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105172306) do
+ActiveRecord::Schema.define(:version => 20131122010703) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20131105172306) do
     t.integer  "user_id"
     t.float    "rub_calification"
     t.text     "brief_description_html"
+    t.datetime "rate_time"
   end
 
   create_table "audiences", :force => true do |t|
