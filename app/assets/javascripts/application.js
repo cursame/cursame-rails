@@ -66,11 +66,11 @@ function changeNumbers(idParent, idFind){
 
  function playSound(soundfile) {
     soundfile = "./assets/sounds/new_message.mp3";
-    // document.getElementById("chat_sounds").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
-    document.getElementById("chat_sounds").innerHTML='<audio id="new_message_sound" src="+soundfile+" autoplay></audio>';
+    document.getElementById("chat_sounds").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+    // document.getElementById("chat_sounds").innerHTML='<audio id="new_message_sound" src="+soundfile+" autoplay></audio>';
 
     // document.getElementById('new_message_sound').play();
-    alert(1232);
+    // alert(1232);
     setTimeout(function () {
         document.getElementById("chat_sounds").innerHTML="";
     },1000);
