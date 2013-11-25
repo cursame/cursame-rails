@@ -7,27 +7,27 @@
   <div id="tabs_form">      
       <div id="tab-form-options">
          <% permitted_to? :create, :comments do %>
-         <a id="comment-tab" class="simple-tab selected_tab">Comentario
+         <a id="comment-tab" class="simple-tab selected_tab" style="font-weight:normal !important;">Comentario
 			 <span style="background: url('/assets/icon_comment.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
 			 </span>
          </a>
          <%end%>
          <% permitted_to? :create, :deliveries do %>
-             <a id="delvery-tab" class="simple-tab" style="width: 90px;">Tarea
+             <a id="delvery-tab" class="simple-tab" style="width: 90px; font-weight:normal !important;">Tarea
 			  <span style="background: url('/assets/icon_homew.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
 			  </span>
              </a>
              
          <% end%>
          <% permitted_to? :create, :discussions do %>
-            <a id="discusison-tab" class="simple-tab">Discusión
+            <a id="discusison-tab" class="simple-tab"  style="font-weight:normal !important;">Discusión
 			 <span style="background: url('/assets/icon_disq.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
 			 </span>
             </a>
          
          <% end%>
          <% permitted_to? :create, :surveys do %>
-            <a id="survey-tab" class="simple-tab">Cuestionario
+            <a id="survey-tab" class="simple-tab"  style="font-weight:normal !important;">Cuestionario
 			 <span style="background: url('/assets/icon_surveys.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
 			 </span>
             </a>
