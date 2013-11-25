@@ -141,10 +141,10 @@
         <% case type%>
         <% when 'Discussion'%>
         <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %> </p>
-        <p><%= content %></p>
+        <div style="font-weight:normal !important;"><p><%= content %></p></div>
         <%= render :partial => "content/insertions_to_contents", :locals => { :type => post, :cl => 'discussion'}%>
         <% when 'Course'%>
-        <p class="title-discusion" ><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
+        <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
          <div style="font-weight:normal !important;"><p ><%= content %></p></div>
         <% when 'Comment'%>
          <div style="font-weight:normal !important;"> <p ><%= content %></p></div>
