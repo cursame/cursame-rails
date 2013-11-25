@@ -144,11 +144,10 @@
         <p><%= content %></p>
         <%= render :partial => "content/insertions_to_contents", :locals => { :type => post, :cl => 'discussion'}%>
         <% when 'Course'%>
-        <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
-        <!-- <div class="description"><%= content %></div> -->
-        <p style="font-weight:normal !important;"><%= content %></p>
+        <p class="title-discusion" ><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
+         <div style="font-weight:normal !important;"><p ><%= content %></p></div>
         <% when 'Comment'%>
-        <p style="font-weight:normal !important;" ><%= content %></p>
+         <div style="font-weight:normal !important;"> <p ><%= content %></p></div>
         <% when 'Survey'%>
           <%= render :partial => '/shared/survey_publication_tpl', :locals => {:survey => post} %>
         <% when 'Delivery'%>
