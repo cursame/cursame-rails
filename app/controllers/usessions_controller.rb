@@ -109,12 +109,14 @@ class UsessionsController < Devise::SessionsController
     private
 
     def set_offline
-      current_user.online = false
-      current_user.save!
-      #avisamos que ya de desconecto el usuario
-      PrivatePub.publish_to("/messages/chat_notifications",
+      if current_user
+        current_user.online = false
+        current_user.save!
+        #avisamos que ya de desconecto el usuario
+        PrivatePub.publish_to("/messages/chat_notifications",
                               userId: current_user.id,
                               online: false
                             )
+      end     
     end
 end
