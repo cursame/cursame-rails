@@ -146,9 +146,9 @@
         <% when 'Course'%>
         <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
         <!-- <div class="description"><%= content %></div> -->
-        <p><%= content %></p>
+        <p style="font-weight:normal !important;"><%= content %></p>
         <% when 'Comment'%>
-        <p><%= content %></p>
+        <p style="font-weight:normal !important;" ><%= content %></p>
         <% when 'Survey'%>
           <%= render :partial => '/shared/survey_publication_tpl', :locals => {:survey => post} %>
         <% when 'Delivery'%>
