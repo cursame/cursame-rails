@@ -733,3 +733,20 @@ cursor: pointer;
 	//margin-top: -19px;
 	margin-top: 2px;
 }
+// user online
+.user-online{	
+	background:#65A830;
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	float:right;
+	margin-top:-17px;
+}
+.user-offline{
+	background:#CCC;
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	float:right;
+	margin-top:-17px;
+}

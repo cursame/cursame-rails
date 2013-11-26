@@ -5,8 +5,8 @@
   <%  next %>
 <%end%>
 
-<% if visible_for == 'network' && !publication.courses.empty? && !(current_user.roles.last.id == 1 || current_user.roles.last.id == 4) %>
-  <%  if publication.courses[0].public_status == "Private" && publication.courses[0].members_in_courses.where(:user_id =>current_user.id,:accepted => false )%>
+<% if visible_for == 'network' && !publication.courses.empty? && !(current_user.roles.last.id == 1 || current_user.roles.last.id == 4)%>
+  <%  if publication.courses[0].public_status == "Private" && !publication.courses[0].members_in_courses.where(:user_id =>current_user.id, :accepted => true )[0]%>
     <%  next %>
   <%end%>
 <%end%>
@@ -141,14 +141,13 @@
         <% case type%>
         <% when 'Discussion'%>
         <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %> </p>
-        <p><%= content %></p>
+        <div style="font-weight:normal !important;"><p><%= content %></p></div>
         <%= render :partial => "content/insertions_to_contents", :locals => { :type => post, :cl => 'discussion'}%>
         <% when 'Course'%>
         <p class="title-discusion"><%= truncate("#{name}", :omission => "...", :length => 35) %></p>
-        <!-- <div class="description"><%= content %></div> -->
-        <p><%= content %></p>
+         <div style="font-weight:normal !important;"><p ><%= content %></p></div>
         <% when 'Comment'%>
-        <p><%= content %></p>
+         <div style="font-weight:normal !important;"> <p ><%= content %></p></div>
         <% when 'Survey'%>
           <%= render :partial => '/shared/survey_publication_tpl', :locals => {:survey => post} %>
         <% when 'Delivery'%>

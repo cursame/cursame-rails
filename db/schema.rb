@@ -545,6 +545,7 @@ ActiveRecord::Schema.define(:version => 20131125232310) do
     t.string   "subdomain"
     t.string   "domain"
     t.string   "key_analytics"
+    t.boolean  "online",                 :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

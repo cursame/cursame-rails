@@ -29,19 +29,22 @@ class Mesage < ActiveRecord::Base
 
   after_create do
     users =  self.channel.users.reject{ |user| user.id == self.user_id }
+    # user_ids = self.user.friends(true).map{|user| [user.id,user.online] }
+
     if users.empty? #si no hay usuarios en el canal solo le publica a el
       PrivatePub.publish_to(self.channel.channel_name,
                               message: self,
                               sender: self.user,
                               reciever: user,
+                              # usersIds:user_ids,
                               channel: self.channel
                               )
-    else
+    else     
       users.each do |user|
         PrivatePub.publish_to("/messages/notifications_user_"+user.id.to_s,
                               message: self,
                               sender: self.user,
-                              reciever: user,
+                              reciever: user,                              
                               channel: self.channel
                               )
 
@@ -49,6 +52,7 @@ class Mesage < ActiveRecord::Base
                               message: self,
                               sender: self.user,
                               reciever: user,
+                              # usersIds:user_ids,
                               channel: self.channel
                               )
       end
