@@ -62,16 +62,19 @@
                    var demagogo = size+random;
 
          
-                  $link = $('<a/>', {
+                  /*$link = $('<a>', {
                       'href': files[i].link,
                       'text': files[i].link,
                        'id' : 'executable_dropbox'+demagogo,
                       'target': "blank_"
-                  }).append("<br/>");
+                  }).append("<br/>");*/
+                  var dinamic_id_d = 'executable_dropbox'+demagogo;
+                  var link_ninamic_file = files[i].link;
+                  var link = '<a id="'+dinamic_id_d+'" href="'+link_ninamic_file+'" style="color:#00B1C5;">'+link_ninamic_file+'</a>';
                   
                   $('#box_for_loads<%=@typeo%>').show();
                   
-                  $('#choser<%= @typeo %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>'+'$link'+'<a id="execute_dropbox'+demagogo+'" class="cancel_link">'+"x"+'</a>'+'<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">'+'</div>');
+                  $('#choser<%= @typeo %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>'+link+'<a id="execute_dropbox'+demagogo+'" class="cancel_link"></a>'+'<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">'+'</div>');
                   
                   //$('#choser<%= @typeo %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>');
                   //$("#choser<%= @typeo %>").append($link);
