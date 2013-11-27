@@ -59,6 +59,7 @@ class NetworksController < ApplicationController
     @user = current_user
     @course = Course.new
     @delivery = Delivery.new
+    @show_course_expired = params[:course_expired]
 
     #==== Areas de evaluación ====#
     @areas_of_evaluation = AreasOfEvaluation.new

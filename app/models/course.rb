@@ -53,21 +53,8 @@ class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
 
-  #maquina de estados
-  #state_machine :state, :initial => :publish do
-  #  state :publish
-  #  state :unpublished
-  #  event :unpublish do
-  #    transition :to => :unpublished, :from => :publish
-  #  end
-  #end
 
   after_create do
-    #self.state = 'published'
-    self.publish = true
-    puts "------------------------CURSO NOTIF"
-    puts self.publish
-    puts "CURSO NOTIF------------------------"
     if self.public_status == 'public'
 
       users = self.network.users
@@ -288,18 +275,17 @@ class Course < ActiveRecord::Base
   # Para verificar si todavía no expira
   ############
   def expired?
-    @expired_in  = self.end_date
+    @expired_in  = self.finish_date
 
-    if @expired_in <= DateTime.now
+    if @expired_in < DateTime.now
       @expired = true
     else
       @expired = false
     end
 
     if  @expired == true
-      self.state = 'unpublish'
-      self.save!
-     end
+      Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
+    end
   end
 
 end

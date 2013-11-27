@@ -136,7 +136,7 @@ h3{
 	padding-top: 6px;
 }
 
-.list_alt_box{
+.list_alt_box {
 	width: 226px!important;
 	background: #fff;
     float: left;
@@ -145,6 +145,22 @@ h3{
    	margin-left: 0px!important;
     border-right: solid #4FA3E9 4px;
     /*border-left: solid #eee 2px;*/ border-left: 0!important;
+    margin-bottom: 6px;
+    overflow:auto;
+    transition: all linear 0.3s;
+}
+
+.list_alt_box_expired {
+	width: 226px!important;
+	background: #fff;
+    float: left;
+    padding: 7px 15px 8px 7px;
+   	margin-right: 7px!important;
+   	margin-left: 0px!important;
+    border-right: solid #4FA3E9 4px;
+    border-left: 0!important;
+    border-style: solid;
+    border-color: #FF0000;
     margin-bottom: 6px;
     overflow:auto;
     transition: all linear 0.3s;

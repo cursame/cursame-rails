@@ -1,7 +1,6 @@
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
  url(<%= current_user.coverphoto.blank? ? '/assets/'+current_user.cover_photox : current_user.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
  <% @incourse = false %>
-
   
   <!--<div id="noticce">
    <div id="notice" class="notice"></div>
@@ -187,6 +186,11 @@
 
 <script type="text/javascript">
 $(function() {
+  var aux = <%= (@show_course_expired) || false %>;
+  if(aux) {
+    $('li.delivery').click();
+  }
+
   var p = $('#timeline').pageless({
     totalPages: <%= @wall.total_pages %>,
     url: '<%= wall_path %>',
