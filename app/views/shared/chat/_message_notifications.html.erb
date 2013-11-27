@@ -15,7 +15,7 @@
 
 					<%current_user.channels.last(5).each do |channel|%>
 					<% last_message = channel.mesages.last %>
-					<% if last_message.nil? %>
+					<% if last_message.nil? || last_message.user.nil? %>
 						<% next %>
 					<% end %>
 					<% 
