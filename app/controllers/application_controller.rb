@@ -192,30 +192,31 @@ class ApplicationController < ActionController::Base
     @activity.activitye_type =  @typed
     @activity.ip_address = request.ip
 
-    city = request.location.city
-    if city == nil
-      ct = 'Location City not Found'
-    else
-      ct = city
-    end
+    if(request && request.location)
+      city = request.location.city
+      if city == nil
+        ct = 'Location City not Found'
+      else
+        ct = city
+      end
 
-    country = request.location.country_code
+      country = request.location.country_code
 
-    if country == nil
-      cot = 'Location Country not Found'
-    else
-      cot = country
-    end
+      if country == nil
+        cot = 'Location Country not Found'
+      else
+        cot = country
+      end
 
-    ip = request.ip
+      ip = request.ip
 
-    @activity.address = "#{ct} #{cot}"
-    @activity.browser = "#{browser_active}"
-    @activity.version_browser ="#{browser_version}"
-    @activity.computer_plataform = "#{computer_platform}"
-    @activity.user_id = current_user.id
-    #@activity.network_id = 1 #current_network.id
-    @activity.save
+      @activity.address = "#{ct} #{cot}"
+      @activity.browser = "#{browser_active}"
+      @activity.version_browser ="#{browser_version}"
+      @activity.computer_plataform = "#{computer_platform}"
+      @activity.user_id = current_user.id
+      @activity.save
+    end    
   end
 
   #### like_compare

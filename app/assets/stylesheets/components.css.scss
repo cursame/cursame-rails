@@ -455,8 +455,8 @@ display: inline-block;
   position: relative;
   float: left;
   margin-top: -50%;
-  *margin-top: 0;
-  *top: -50%;
+  /*margin-top: 0;
+  top: -50%;*/
 }
 
 /* gloss effect */
@@ -836,7 +836,7 @@ table.fc-border-separate {
 }
 
 .fc-agenda-slots tr.fc-minor th.ui-widget-header {
-  *border-top-style: solid; /* doesn't work with background in IE6/7 */
+  /*border-top-style: solid; /* doesn't work with background in IE6/7 */
 }
 
 
@@ -875,7 +875,7 @@ table.fc-border-separate {
 
 .fc .ui-draggable-dragging .fc-event-bg, /* TODO: something nicer like .fc-opacity */
 .fc-select-helper .fc-event-bg {
-  display: none\9; /* for IE6/7/8. nested opacity filters while dragging don't work */
+  display: none; /* for IE6/7/8. nested opacity filters while dragging don't work */
 }
 
 /* resizable */

@@ -43,8 +43,11 @@
                 //console.log($(value).children().attr('id'));
                 //changeAttr($(value).children(),'id','name');
                 var child_id = $(value).children().attr(id_value);
+                var child_name = $(value).children().attr(id_name);
                 child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
+                child_name = (child_name!=undefined)?child_name.replace('0',controlNestedHomework):undefined;
                 $(value).children().attr(id_value, child_id);
+                $(value).children().attr(id_name, child_name);
             }
             var str_id = $(value).attr(id_value);
             str_id = (str_id!=undefined)? str_id.replace('0',controlNestedHomework) : undefined;

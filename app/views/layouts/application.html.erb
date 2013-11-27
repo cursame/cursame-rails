@@ -37,7 +37,7 @@
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
-<body>
+<body >
 	
     <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
@@ -133,7 +133,7 @@
 		<div style="float:right;">
 			<!-- 
 				<%= link_to "Logueate", new_user_session_path %>
-					<% if current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>
+					<% if current_network && current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>
 				<%end%>
 			-->
 		</div>
@@ -153,18 +153,18 @@
 
 </div><!-- ends headFix -->
 
-<div id="log_loadding"style="display:none;"></div>
+    <div id="log_loadding"style="display:none;"></div>
 	<div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
 		<div id="notice" class="notice"></div>
 	</div>
 	</header>
-
+	
 	<div id="sub_nav">
 		<div class="user_subnav"></div>
 		<div class="friends_subnav"></div>
+		
 		<div class="courses_subnav"></div>
 	</div>
-
 	<div class="center-div">
 		<!-- content -->
   
@@ -228,10 +228,11 @@
                 <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;"><%= image_tag('Icon_Firefox.png')%>Descarga Mozila Firefox</a>
           </center>
         </div>
-               
-       
 </div>
+<div id="scrollup"></div>
 </body>
 </html>
 <% end %>
 <% end %>
+
+<div id="chat_sounds"></div>

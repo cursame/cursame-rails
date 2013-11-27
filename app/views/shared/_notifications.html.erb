@@ -34,14 +34,14 @@
 			<ul id="notifications_list">
 				<%if notifications_first%>
 				  <% if notifications_first != notifications_last %>
-  				  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>
-  				<% end %>
+  				  	<%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>
+  				  <% end %>
 				<%end%>
 
 				<% notifications.each do |notification|%>
 				  <% if notification != notifications_first and notification != notifications_first %>
-    		    <%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
-    		  <% end %>
+    		    	<%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+    		  	  <% end %>
 				<%end%>
 
 				<%if notifications_last%>
