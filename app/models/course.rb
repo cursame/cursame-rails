@@ -53,10 +53,9 @@ class Course < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
 
+
   after_create do
     if self.public_status == 'public'
-
-
 
       users = self.network.users
       owners = self.members_in_courses
@@ -64,9 +63,6 @@ class Course < ActiveRecord::Base
       users = users - owners
 
       Wall.create(:users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true)
-
-      # a = Notification.create(:notificator => self, :kind => 'new_public_course_on_network')
-      # a.users << users
 
     end
   end
@@ -341,6 +337,23 @@ class Course < ActiveRecord::Base
     
     return average/size
     
+  end
+
+  ############
+  # Para verificar si todavía no expira
+  ############
+  def expired?
+    @expired_in  = self.finish_date
+
+    if @expired_in < DateTime.now
+      @expired = true
+    else
+      @expired = false
+    end
+
+    if  @expired == true
+      Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
+    end
   end
 
 end

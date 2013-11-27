@@ -188,6 +188,8 @@ ActiveRecord::Schema.define(:version => 20131122010703) do
     t.integer  "network_id"
     t.boolean  "active_status",             :default => true
     t.integer  "likes"
+    t.string   "state"
+    t.boolean  "publish"
   end
 
   create_table "delayed_jobs", :force => true do |t|
