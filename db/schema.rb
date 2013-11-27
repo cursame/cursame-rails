@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20131126223603) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
+    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
