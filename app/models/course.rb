@@ -246,6 +246,8 @@ class Course < ActiveRecord::Base
       average += member.evaluation
     end
     size = members.size
+    
+    return 0.0 if size == 0
     return average/size
   end
 
@@ -257,6 +259,7 @@ class Course < ActiveRecord::Base
       average += member.evaluationSurveys
     end
     size = members.size
+    return 0.0 if size == 0
     return average/size
   end
 
@@ -268,7 +271,72 @@ class Course < ActiveRecord::Base
       average += member.evaluationDeliverys
     end
     size = members.size
+    return 0.0 if size == 0
     return average/size
+  end
+  
+  #
+  # Tiempo promedio que se tardan en calificar las tareas de un curso
+  #
+  def averageTimeToRateDeliveries
+    deliveries = self.deliveries
+    
+    size = deliveries.size
+    
+    if (size == 0) then
+      return 0.0
+    end
+    
+    average = 0.0
+    deliveries.each do |delivery|
+      average += delivery.averageTimeToRate
+    end
+    
+    return average/size
+
+  end
+
+  #
+  # Tiempo promedio que se tardan en contestar las tareas de un curso
+  #
+  def averageTimeToResponseDeliveries
+    deliveries = self.deliveries
+    
+    size = deliveries.size
+    
+    if (size == 0) then
+      return 0.0
+    end
+    
+    average = 0.0
+    deliveries.each do |delivery|
+      average += delivery.averageTimeToResponse
+    end
+    
+    return average/size
+    
+  end
+  
+  #
+  # Tiempo promedio que se tardan en contestar las tareas de un curso
+  #
+  def averageTimeToResponseSurveys
+    
+    surveys = self.surveys
+    
+    size = surveys.size
+    
+    if (size == 0) then
+      return 0.0
+    end
+    
+    average = 0.0
+    surveys.each do |survey|
+      average += survey.averageTimeToResponse
+    end
+    
+    return average/size
+    
   end
 
   ############
