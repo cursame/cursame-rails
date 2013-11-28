@@ -171,9 +171,11 @@ class ManagersController < ApplicationController
 
   def sending
     users = current_network.users
-    users.each do |user|
-      mail = Notifier.send_email(user,params[:subject],params[:message])
-      mail.deliver
+    if !users.nil? then
+      if users.size != 0 then
+        mail = Notifier.send_email(users,params[:subject],params[:message])
+        mail.deliver
+      end
     end
     redirect_to managers_wall_path
   end
