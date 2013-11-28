@@ -38,6 +38,11 @@
      
       <% @html_content = "#{content.content_html}".split("\n")%>
       <% @ht_lnon =  @html_content[0].html_safe if  (@html_content[0] != nil)%>
+      <% @ty = "#{content.content}".split('/').last %>
+      <% @tyd = "#{content.content}".split('.').last %>
+      
+      
+      
       <SCRIPT LANGUAGE="JavaScript">
          
                      $('#content<%=content.id%>').click(function(e) {
@@ -60,8 +65,12 @@
                                        $("#refert<%=content.id%>").html('<iframe src="<%=content.content%>#content" style="width:800px; height:340px; padding:10px; overflow-x: hidden;margin-left:20px;"></iframe>');
                                       break;
 
-                                      case 'dropbox.com': 
-                                       var str = '<div style="margin-top:70px; font-size:35px;"><%=  @ht_lnon %></div>';
+                                      case 'dropbox.com':
+                                      var str = '<div style="margin-top:70px; font-size:35px;"><%= link_to image_tag("megadropbox.png"), "#{content.content}", :target => "_blank"%></div>';
+          
+                                      
+                        
+                                       
                                       
                                         $("#refert<%=content.id%>").html(str);
                                         

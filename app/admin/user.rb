@@ -1,5 +1,5 @@
-
 ActiveAdmin.register User do
+
  index do
     column :email
     column :first_name
