@@ -11,8 +11,9 @@
 
 <div class="form-course fixform">
 	<% course_for_user.each do |course|%>
+	<% desact_course_expired = !course.finish_date.nil? && course.finish_date < DateTime.now %>
 	<!-- estamos creando un container especial para que no se descomponga el layout -->
-	<div class="list_alt_box<%= course.id.to_s == show_course_expired ? '_expired' : '' %>" id="propyety_course_<%= course.id %>">
+	<div class="list_alt_box<%= desact_course_expired ? '_expired' : '' %>" id="propyety_course_<%= course.id %>">
 	    <div class="headerOne">
 	        <h1><%= link_to "#{course.title}", course_path(course.id) %></h1>
 	        <div class="status">

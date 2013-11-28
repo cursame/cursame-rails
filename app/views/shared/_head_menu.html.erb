@@ -45,7 +45,7 @@
             </div> 
           <div id="actual_resources">
           <% @course_for_user = current_user.courses.where(:active_status => true)%>
-         	<%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user, :show_course_expired => @show_course_expired }%>
+         	<%= render partial: "courses/dashboard_deliver", :locals => {:course_for_user => @course_for_user, :desact_course_expired => @show_course_expired }%>
           </div>
         </div><!-- ends full-deliveries-area -->
         
