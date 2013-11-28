@@ -170,7 +170,7 @@ class ManagersController < ApplicationController
   end
 
   def sending
-    users = User.all
+    users = current_network.users
     users.each do |user|
       mail = Notifier.send_email(user,params[:subject],params[:message])
       mail.deliver
