@@ -22,6 +22,9 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Actividades de este anio" do
           render('/admin/dashboard_this_year_activities')
         end
+        panel "Total de Actividades" do
+          render('/admin/dashboard_total_activities')
+        end
       end
     end
 
