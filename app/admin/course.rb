@@ -17,6 +17,7 @@ ActiveAdmin.register Course do
     f.inputs "Course Details" do
       f.input :title
       f.input :silabus
+      f.input :network_id, :as => :select, :collection => Hash[Network.all.map{|b| [b.name,b.id]}]
     end
     f.actions
   end
