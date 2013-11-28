@@ -343,16 +343,18 @@ class Course < ActiveRecord::Base
   # Para verificar si todavía no expira
   ############
   def expired?
-    @expired_in  = self.finish_date
+    if !self.finish_date.nil?
+      @expired_in  = self.finish_date
 
-    if @expired_in < DateTime.now
-      @expired = true
-    else
-      @expired = false
-    end
+      if @expired_in < DateTime.now
+        @expired = true
+      else
+        @expired = false
+      end
 
-    if  @expired == true
-      Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
+      if  @expired == true
+        Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
+      end
     end
   end
 
