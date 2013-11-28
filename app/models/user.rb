@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   has_many :groups, :dependent => :destroy
   #eventos
   has_many :events, :dependent => :destroy
+  has_many :mesages, :dependent => :destroy
 
   has_many :courses, :through => :members_in_courses
   has_many :user_surveys, :dependent => :destroy
