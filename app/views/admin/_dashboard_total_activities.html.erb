@@ -1,9 +1,4 @@
-
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
-<div id="main-admin-dashboard-container-month"></div>
+<div id="main-admin-dashboard-container-total"></div>
 
 <%
 comments = []
@@ -14,32 +9,24 @@ discussions = []
 users = []
 networks = []
 
-date=Date.today
-month = (date.month - 1)
-
-start_date = Time.now.beginning_of_month
-end_date = Time.now.end_of_month
-
-comments.push(Comment.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-deliveries.push(Delivery.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-courses.push(Course.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-surveys.push(Survey.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-discussions.push(Discussion.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-users.push(User.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-networks.push(Network.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+comments.push(Comment.count)
+deliveries.push(Delivery.count)
+courses.push(Course.count)
+surveys.push(Survey.count)
+discussions.push(Discussion.count)
+users.push(User.count)
+networks.push(Network.count)
 
 %>
 
 <script>
 	$(function () {
-        var meses = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        $('#main-admin-dashboard-container-month').highcharts({
+        $('#main-admin-dashboard-container-total').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Actividades del mes',
+                text: 'Actividades',
                 x: 0 //center
             },
             subtitle: {
@@ -47,7 +34,7 @@ networks.push(Network.where("created_at > ? AND created_at < ?", start_date, end
                 x: 0
             },
             xAxis: {
-                categories: [meses[<%= month %>]]
+                categories: ['Actividades']
             },
             yAxis: {
                 title: {
