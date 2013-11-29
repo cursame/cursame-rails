@@ -136,7 +136,11 @@ $(document).ready(function() {
     </script>
   
 </div>
-   <div style="font-size:20px;color:#f5f5f5; width:800px;height:60px; padding:10px; margin:15px auto 0 auto; background: rgba(95,150,191,0.4);"><center><p><%= current_network.welcom_message%></p></center></div>
+	<div class="welcome_msj" style="/*font-size:20px;color:#f5f5f5; width:600px;height:60px; padding:10px; margin:15px auto 0 auto; background: rgba(95,150,191,0.4);*/">
+			<p style="width: 640px; min-height: 15px; margin: 20px auto; padding: 20px 0 20px 60px; background: rgba(255,255,255,0.8) url('/assets/star.png') no-repeat 10px 10px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">
+				<%= current_network.welcom_message%>
+			</p>
+	</div>
 <!--sirve para colocar la ayuda express a antiguos usuarios-->
 
 <%= render "devise/shared/footer-links" %>

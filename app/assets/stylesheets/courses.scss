@@ -1080,22 +1080,55 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
 	font-size: 15px;
 	font-weight: lighter;
 	color: #555;
-	text-align: center;
+	text-align: left;
 	float: left;
 	height: 20px;
 	margin-right: 20px;
 	margin-top: 10px;
-	margin-bottom: 12px;
 	background: #F2F2F2;
 	width: 378px;
 	padding: 11px;
 	display: block;
-	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	-webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px;
+}
+.filter_acti {
+	width: 95px;
+	height: 40px;
+	display: inline-block;
+	float: right;
+	background: url('/assets/drop_arrow.png') no-repeat right center;
+	//border-left: 1px solid #F7F7F7;
+	margin: -10px 0 0 0;
+}
+.filter_acti:hover {
+	background: url('/assets/drop_arrow.png') no-repeat right center;
+	cursor: pointer;
+}
+.drop_views {
+	width: 105px;
+	margin-top: 13px;
+	padding: 0px;
+	display: inline-block;
+	float: left;
+	margin-left: 0px;
+	z-index: 9;
+	position: absolute;
+	box-shadow: 0px 2px 5px #ccc;
+}
+.drop_views li {
+	list-style: none;
+	position: relative;
+	text-align: right;
+	background: #FFF;
+	padding: 8px;
+}
+.drop_views li:hover {
+	background: #EEE;
 }
  
  .membFilter {
 	 float: right;
-	 padding-top: 7px;
+	 padding-top: 5px;
 	 padding-right: 7px
  }
 .dropperDwn {
@@ -1115,10 +1148,11 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
  .expoced{
      position:relative;
      float:left;
-     width:517px;
+     width: 493px;
      overflow:auto;
      background: #F7F7F7;
      margin-left:21px;
+     padding: 12px;
      
  }
  .user_assets{

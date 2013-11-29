@@ -6,28 +6,40 @@
   </br>
 
   <div class="activities_depot_select" id="select-pol">
+  
+  	<div class="" style="display: inline-block; position: absolute;">
+  		<span style="display: inline-block; width: 300px; font-weight: 100; margin-left: 0px; text-align: left;">Curso</span>
+  	</div>
 
     <!-- <input type="text" id="rtf">-->
     <div class="membFilter">
-      <span style="display: inline-block; width: 300px; margin-left: -310px; text-align: right;">Miembros del curso</span>
-
+      <span style="display: inline-block; width: 300px; font-weight: 100; margin-left: -310px; text-align: right;">Miembros del curso</span>
       <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
         <option>Todas los miembros</option>
         <% @course.members_in_courses.each do |m|%>
           <option><%= @user=User.find_by_id(m.user_id).name%></option>
         <% end %>
       </select>
-    </div>
+    </div><!-- membFilter -->
+    
   </div>
 
   <div class="classContTitle">
-    <h2 class="v1">Actividades realizadas</h2>
+    <h2 class="v1">Actividades realizadas
+	    	<span class="filter_acti"><p style="margin: 12px 0 0 10px;">Filtrar</p>
+	    		<ul class="drop_views" style="display: none;">
+	    			<li>Tarea</li>
+	    			<li>Cuestionario</li>
+	    			<li>Exámen</li>
+	    		</ul>
+	    	</span>
+    </h2>
     <h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
   </div>
 
-  <div id="ajax-dump" style="margin-top:12px;float:left;"></div>
+  <div id="ajax-dump" style="float:left;"></div>
 
-  <div class="expoced" id="expoced" style="margin-top:12px;">
+  <div class="expoced" id="expoced" style="margin-top:1px;">
     <!--<div id="resonance" style="position:fixed;"></div>-->
   </div>
 
@@ -134,6 +146,10 @@
         }
       }
     }
+  });
+  
+  $('.filter_acti').click ( function() {
+	  $('.drop_views').slideToggle();
   });
 
 </script>
