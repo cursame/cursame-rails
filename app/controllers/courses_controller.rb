@@ -821,6 +821,11 @@ class CoursesController < ApplicationController
         end
 
      if @course.save
+      # Notificando a todos los usuarios que el curso se desactivo
+      @course.users.each do |member|
+        Notification.create(:users => [member], :notificator => @course, :kind => 'course_deactivated')
+      end
+
       respond_to do |format|
         #format.html
         format.json

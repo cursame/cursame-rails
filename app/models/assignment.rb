@@ -72,7 +72,11 @@ class Assignment < ActiveRecord::Base
   after_update do
     accomplishment = self.changes[:accomplishment]
     if (!accomplishment.nil?) then
-      if (accomplishment.first.nil? and !accomplishment.last.nil?) or (accomplishment.first != accomplishment.last) then
+      if (accomplishment.first.nil? and !accomplishment.last.nil? and self.rate_time.nil?) then
+        self.update_attributes(:rate_time => Time.zone.now)
+      end
+      
+      if (accomplishment.first != accomplishment.last) then
         Notification.create(:users => [self.user], :notificator => self, :kind => 'new_accomplishment_on_assignment')
       end
     end

@@ -180,6 +180,21 @@
         <%end%>
       <%end%>
 
+    <!-- Notificacion: 18 - Curso expirado -->
+    <% when 'course_expired' %>
+      <% if notification.notificator != nil %>
+        <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>
+        El curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> ha llegado a su fecha final. Por favor desactivelo.
+        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/?course_expired=<%=notification.notificator.id%>")</script>
+      <% end %>
+
+    <% when 'course_deactivated' %>
+      <% if notification.notificator != nil %>
+        <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>
+        El curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> ha sido desactivado.
+        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses")</script>
+      <% end %>
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>
