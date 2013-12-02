@@ -198,6 +198,50 @@ class Delivery < ActiveRecord::Base
     return average/size
   end
 
+
+  #
+  # Tiempo promedio que se tarda en calificar un profesor
+  # 
+  def averageTimeToRate
+    assignments = self.assignments
+    size = assignments.size
+    
+    if (size == 0) then
+      return 0.0
+    end
+    
+    average = 0.0
+    assignments.each do 
+      |assignment|
+      if (!assignment.rate_time.nil?)
+        average += assignment.rate_time - assignment.created_at
+      end
+    end
+    
+    return average/size
+  end
+
+
+  #
+  # Tiempo promedio que se tardan en contestar la tarea
+  #
+  def averageTimeToResponse
+    assignments = self.assignments
+    size = assignments.size
+    
+    if (size == 0) then
+      return 0.0
+    end
+    
+    average = 0.0
+    assignments.each do
+      |assignment|
+      average += assignment.created_at - self.created_at
+    end
+    
+    return average/size
+  end
+
   def send_mail(users)
     Thread.new {
           begin
@@ -210,5 +254,4 @@ class Delivery < ActiveRecord::Base
           end
         }    
   end
-
 end
