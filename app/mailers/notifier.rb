@@ -33,7 +33,7 @@ class Notifier < ActionMailer::Base
   def accepted_message(member_in_course,course)
     @user = member_in_course.user
     @course = course
-    mail to: @user.email, subject: "Haz sido aceptado en el curso #{@course.title}"
+    mail to: @user.email, subject: "Has sido aceptado en el grupo #{@course.title}"
   end
 
   def new_member_in_course(member_in_course,course)
