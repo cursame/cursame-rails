@@ -1,7 +1,7 @@
 $('#hidden-<%= @course %>').html('');
  <% if @course_find.public_status == "Private" %>
-   $('#hidden-<%= @course %>').prepend('<span style="color:#fff;font-weight:lighter;font-size:12px;">Aún no has sido aceptado en este curso</span>');
+   $('#hidden-<%= @course %>').prepend('<span style="color:#fff;font-weight:lighter;font-size:12px;">Aún no has sido aceptado en este grupo</span>');
    
  <%else%>
-   $('#hidden-<%= @course %>').prepend('<span style="color:#fff;font-weight:lighter;font-size:12px;">Ya has sido aceptado</span>'); 
+   $('#hidden-<%= @course %>').prepend('<span style="color:#fff;font-weight:lighter;font-size:12px;">Has sido aceptado en el grupo</span>'); 
  <%end%>
