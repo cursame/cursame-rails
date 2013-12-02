@@ -75,9 +75,9 @@
 <div id="tab-2" class="tab-content">
     <div class="coklo-title" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></h1></br>
+	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= number_with_precision(assignment.response_to_the_evaluations.sum(:rub_calification), :precision => 2 )%></h1></br>
 	 <%else%>
-	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= assignment.accomplishment %>%</b></h1></br>
+	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= number_with_precision(assignment.accomplishment, :precision => 2) %>%</b></h1></br>
      <%end%>
    
          
