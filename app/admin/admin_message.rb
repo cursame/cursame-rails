@@ -1,10 +1,10 @@
 ActiveAdmin.register AdminMessage do
   index do
     column :title
-    column :text
-    column :status
+    column :text    
     column :dom_id
     column :position
+    column "Activado?", :status 
     default_actions
   end
 
