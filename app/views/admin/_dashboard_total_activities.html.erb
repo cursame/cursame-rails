@@ -1,0 +1,83 @@
+<div id="main-admin-dashboard-container-total"></div>
+
+<%
+comments = []
+deliveries = []
+courses = []
+surveys = []
+discussions = []
+users = []
+networks = []
+
+comments.push(Comment.count)
+deliveries.push(Delivery.count)
+courses.push(Course.count)
+surveys.push(Survey.count)
+discussions.push(Discussion.count)
+users.push(User.count)
+networks.push(Network.count)
+
+%>
+
+<script>
+	$(function () {
+        $('#main-admin-dashboard-container-total').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Actividades',
+                x: 0 //center
+            },
+            subtitle: {
+                text: 'Cursos, Tareas, Cuestionarios, Redes, Discusiones',
+                x: 0
+            },
+            xAxis: {
+                categories: ['Actividades']
+            },
+            yAxis: {
+                title: {
+                    text: 'Cantidad'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+
+            series: [{
+                name: 'Comentarios',
+                data: <%= comments %>
+            }, {
+                name: 'Tareas',
+                data: <%= deliveries %>
+            }, {
+                name: 'Cursos',
+                data: <%= courses %>
+            }, {
+                name: 'Cuestionarios',
+                data: <%= surveys %>
+            }, {
+                name: 'Discusiones',
+                data: <%= discussions %>
+            }, {
+                name: 'Usuarios',
+                data: <%= users %>
+            }, {
+                name: 'Redes',
+                data: <%= networks %>
+            }]
+        });
+    });
+</script>

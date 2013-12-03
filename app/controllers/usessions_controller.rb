@@ -30,7 +30,7 @@ class UsessionsController < Devise::SessionsController
        PrivatePub.publish_to("/messages/chat_notifications",
                               userId: @find_user.id,
                               online: true
-                            )
+                             )
       
 
       find_permissionings = Permissioning.where(:user_id => @find_user.id, :network_id => current_network.id)

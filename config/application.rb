@@ -62,5 +62,8 @@ module Cursame30Lb
 
     #manejo de errores
     config.exceptions_app = self.routes
+
+    #active admin
+    config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
   end
 end

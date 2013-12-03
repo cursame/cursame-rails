@@ -34,25 +34,50 @@
  	 <p> ARCHIVOS DE LA ENTREGA: </p></br>
      <% assignment.assets.each do |aa|%>
          <% @file =  aa.file %>
-         <% @string =  @file.to_s.split('/').last%>
-         <%= link_to simple_format("#{(@string)}", :omission => "...", :length => 25), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank'%>   
+         <% @string_file =  @file.to_s.split('/').last%>
+         <%#= link_to simple_format("#{(@string)}", :omission => "...", :length => 25), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank'%>  
+          <div id="<%= aa.id %>_file" style="float:left;"><%= link_to image_tag("icons/file-basic-mini.png"), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank' %></div>
+          <script>
+              $("#<%= aa.id %>_file").hover(
+                   function () {
+                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-15px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("#{@string_file}", :omission => "...", :length => 25)%></div></span>"));
+                   },
+                   function () {
+                     $(this).find("span:last").remove();
+                   }
+                 );
+           </script>
+         
      <%end%>
      
      
       <% assignment.contents.each do |as|%>
-          <% @f_file =  as.content_html %>
-          <%= @f_file %>
+          <%# @f_file =  as.content_html %>
+          <%#= @f_file %>
+          <% @refer_content = as.content.split('/').last%>
+          <div id="<%= as.id %>_content" style="float:left;"><%= link_to image_tag("icons/file-basic-mini.png"), "#{as.content}", :target => '_blank' %></div>
+            <script>
+                $("#<%= as.id %>_content").hover(
+                     function () {
+                       $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-15px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("#{@refer_content}", :omission => "...", :length => 25)%></div></span>"));
+                     },
+                     function () {
+                       $(this).find("span:last").remove();
+                     }
+                   );
+             </script>
       <%end%>
       
+    
 </div>
 </div>
 
 <div id="tab-2" class="tab-content">
     <div class="coklo-title" id="accomplishment">
      <%if assignment.accomplishment == nil %>
-	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= assignment.response_to_the_evaluations.sum(:rub_calification)%></h1></br>
+	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= number_with_precision(assignment.response_to_the_evaluations.sum(:rub_calification), :precision => 2 )%></h1></br>
 	 <%else%>
-	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= assignment.accomplishment %>%</b></h1></br>
+	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= number_with_precision(assignment.accomplishment, :precision => 2) %>%</b></h1></br>
      <%end%>
    
          
