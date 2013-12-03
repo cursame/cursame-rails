@@ -1082,7 +1082,8 @@
       & .is-correct-chk{
         float: right;
         width: 10px;
-        position: absolute;
+        // position: absolute;
+        display: none;
         top: -9999px;
         left: -9999px;
         /* Toggled State */
@@ -1196,7 +1197,8 @@ margin: 7px 0px 0px 30px;
     }
     & .is-correct-chk{
       width: 10px;
-      position: absolute;
+      // position: absolute;
+      display: none;
       top: -9999px;
       left: -9999px;
     /* Toggled State */
