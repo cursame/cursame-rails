@@ -1,0 +1,36 @@
+<!-- Tip Content -->
+<ol id="joyRideTipAdminMessages" style="display:none">
+  
+  <% AdminMessage.where(:status => true).each do |admin_message|%>
+    <% if admin_message.dom_id.nil?%>
+      <li  data-text="Siguiente" class="custom">
+    <% else %>
+     <li data-id="<%= admin_message.dom_id %>" data-button="Siguiente" data-options="tipLocation:<%= admin_message.position%>">
+    <% end %>
+    <% if !admin_message.title.nil?%>
+      <h2><%= admin_message.title %></h2>
+    <% end %>
+    <p><%= admin_message.text%></p>
+  </li>
+  <%end%>
+</ol>
+
+
+
+<script>
+  $('#joyRideTipAdminMessages').joyride({
+          autoStart : true,
+          postStepCallback : function (index, tip) {
+          if (index == 2) {
+            $(this).joyride('set_li', false, 1);
+          }
+        },
+        'postRideCallback': function (argument) {
+          // var data ={
+          //     data:0
+          // };
+          // $.get('/home/finish_tour',data,null,"script");
+        },
+        expose: true
+  });
+</script>

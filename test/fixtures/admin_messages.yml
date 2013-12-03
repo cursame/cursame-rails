@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  text: MyText
+  status: false
+  dom_id: MyString
+
+two:
+  title: MyString
+  text: MyText
+  status: false
+  dom_id: MyString
