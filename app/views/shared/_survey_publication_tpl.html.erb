@@ -1,4 +1,4 @@
-<div class="image-survey" id="open-close-<%= survey.id %>" style="height: 109px; margin-top: -16px; position: relative; z-index: 0;">
+<div class="image-survey" id="open-close-<%= survey.id %>" style="height: 86px; /*margin-top: -16px;*/ position: relative; z-index: 0;">
   <% response = UserSurvey.find_by_survey_id_and_user_id(survey.id,current_user.id) %>
   <%  @s = Survey.find(survey.id)
       @s.expired?  
@@ -14,12 +14,21 @@
         <%= render :partial => '/surveys/survey_response_tpl', :locals => {:survey => survey}%>
       </div>
   <% else %>
-      <div id="image-<%= survey.id %>" class="resolve-surveys"><div class="response-survey" style=" margin-top:-10px;color:#3BB3C5;font-size:34px"><%= response.result.to_s %></div></div>
-      </div>
+      <div id="image-<%= survey.id %>" class="resolve-surveys">
+		  	<div class="response-survey" style="margin-top: -6px; font-size: 18px; font-weight: 100; width: 470px; margin-left: -210px;">
+				<p style="float: left;">Cuestionario respondido</p>
+				<span style="float: right"><%= response.result.to_s %></span>
+			</div>
+	  </div>
+     </div>
   <% end %>
 
 
 <script>
+
+	//$(document).ready( function (){
+		//$('#tarea_en_carga_notification').hide();
+	//});
     $("#open-close-<%= survey.id %>").click(function () {
         $('#entrega-<%= survey.id %>').show();
         $('#entrega-<%= survey.id %>>form>#cancel-post-form').click(function () {
@@ -29,17 +38,6 @@
         });
     });
 </script>
-
-<!-- funcionalidad cuestionario
-<script>
-	$('.image-surveys').mouseenter( function() {
-		$(this).css({ marginTop: "-25px", position: "absolute", display: "block" });
-	}),
-	$('.image-surveys').mouseleave( function() {
-		$(this).css({ marginTop: "0px", position: "absolute", display: "block" });
-	});
-</script>
--->
 
 <script>
 	$('.image-survey').click( function() {

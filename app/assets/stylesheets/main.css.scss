@@ -21,7 +21,7 @@ ul{
 }
 
 a {
-  color: #00B1C5;
+  color: #4FA3E9;
   text-decoration: none;
 }
 
@@ -242,11 +242,13 @@ input:-moz-placeholder {
     &.delivery{
 
       & h1{
+      	/*
         float: left;
         clear: both;
         font-weight: bold;
         padding: 8px 0px 0px 0px;
         margin: 0px 10px;
+        */
       }
       & .description{
         float: left;
@@ -1358,9 +1360,30 @@ background-position: left center;
     font-family: helvbold;
     }
 
-#pdf_link { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
-#pdf_link > a { width: 137px; height: auto; padding: 6px 6px 1px 22px !important; border: 1px solid #ccc; background: #00ADC4; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; color: #fff; transition: ease-out all 0.3s; position: absolute; float: right; display: block; margin-left: 709px; margin-top: -48px; border: 0px; }
-#pdf_link > a:hover { background: #0B6AAD; transition: ease-out all 0.3s; }
+#pdf_link { 
+	border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+	}
+#pdf_link > a {
+	width: 137px;
+	height: auto;
+	
+	background: #0B6AAD;
+	border: 0px;
+	color: #fff;
+	display: block;
+	float: right;
+	font-weight: lighter!important;
+	padding: 6px 6px 1px 22px !important;
+	margin-left: 709px;
+	margin-top: -48px;	
+	position: absolute;
+	transition: ease-out all 0.3s;
+	border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+	}
+#pdf_link > a:hover {
+	background: #4FA3E9;
+	transition: ease-out all 0.3s;
+	}
 
 #box-titles{
   width: 800px;
@@ -1404,7 +1427,7 @@ background-position: left center;
     width: 150px;
     height: 150px;
     //background: #DCEAF4;
-    background: #00B4C4;
+    background: #4FA3E9;
     border: 3px solid #EEE;
     border-radius: 50%;
     overflow: hidden;
@@ -1420,7 +1443,7 @@ background-position: left center;
     }
   }
   & .thumbnail:hover {
-	 border: 3px solid #00B4C4;
+	 border: 3px solid #4FA3E9;
 	 transition: ease-out all 0.4s; 
   }
   & .tagname{
@@ -1430,6 +1453,40 @@ background-position: left center;
     margin-top: 12px;
   }
 }
+
+.depot_button {
+	width: 150px;
+	font-size: 14px;
+	padding: 7px 14px;
+	background: #4FA3E9;
+	float: none;
+	margin: 26px auto 0 auto;
+	display: block;
+	transition: 0.3s;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+.depot_button:hover {
+	color: #FFF;
+	background: #1A83D5;
+	transition: 0.3s;
+}
+
+.admin-access {
+	background: #4FA3E9;
+	color: #FFF;
+	float: right;
+	font-weight: 100;
+	margin-right: 10px;
+	padding: 3px 5px;
+	transition: 0.3s;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+.admin-access:hover {
+	color: #FFF!important;
+	background: #1A83D5;
+	transition: 0.3s;
+}
+
 .avatar-mini {
   border: #FFF solid 2px;
   border-radius: $border-radius-avatar-mini;
@@ -1442,7 +1499,7 @@ background-position: left center;
   transition: ease-out all 0.5s;
   }
 .avatar-mini:hover, .avatar-mini img:hover {
-	border: #00B4C4 solid 2px;	
+	border: #4FA3E9 solid 2px;	
 	transition: ease-out all 0.2s;
 }
 
@@ -1487,28 +1544,29 @@ background-position: left center;
     line-height: 26px;
   }
   & .calendar{
-    background: url('/assets/icons/calendar-mini-white.png') no-repeat;
+    background: url('/assets/icons/calendar_icon.png') no-repeat;
   }
   & .courses{
-    background: url('/assets/icons/courses.png') no-repeat;
+    background: url('/assets/icons/courses_icon.png') no-repeat;
   }
   & .delivery{
-    background: url('/assets/icons/delivery.png') no-repeat;
+    background: url('/assets/icons/delivery_icon.png') no-repeat;
   }
   & .schools{
     background: url('/assets/schools.png') no-repeat;
   }
-
   & .settings{
-    background: url('/assets/icons/settings.png') no-repeat;
+    background: url('/assets/icons/settings_icon.png') no-repeat;
   }
-  
   & .calif{
-    background: url('/assets/icons/a.png') no-repeat;
+    background: url('/assets/icons/calif_icon.png') no-repeat;
   }
-
+  & .delivery_two{
+    background: url('/assets/icons/delivery_icon.png') no-repeat;
+  }
   & .stats{
-    background: url('/assets/icons/stats.png') no-repeat;
+    background: url('/assets/icons/stats_icon.png') no-repeat;
+    padding-left: 30px;
   }
 	
 }
@@ -1616,7 +1674,7 @@ background-position: left center;
 	display: inline-block;
 	position: absolute;
 	float: left;
-	background: #00B4C4;
+	background: #4FA3E9;
 	padding: 3px;
 	color: #FFF;
 	font-weight: 100;
@@ -1663,10 +1721,12 @@ background-position: left center;
 /*
 
 */
+
 .top-header-delivery-box{
 	margin-top: 10px;
 	
   & ul{
+
     & li{
       width: 180px;
       float: left;

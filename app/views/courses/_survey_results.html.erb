@@ -2,46 +2,46 @@
 <span class="rateTwo">Resultados: <%= responces.evaluation%> </span>
 
 <span class="resultsExams">
-	<table cellpadding="0" cellspacing="0" border="0">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 		<tr>
+			<!--
 			<td valign="top" width="150px" style="color:#333;">Respuesta alumno</td>
 			<td valign="top" width="180px" style="color:#333;">Respuesta correcta</td>
 			<td valign="top" width="50px" style="color:#333;">Resultado</td>
+			-->
+			<td valign="top" width="38%" style="padding: 2% 0 2% 2%; color:#333;">Respuesta alumno</td>
+			<td valign="top" width="38%" style="padding: 2% 0 2% 2%; color:#333;"><!--Respuesta correcta--></td>
+			<td valign="top" width="18%" style="padding: 2% 0 2% 2%; color:#333;">Resultado</td>
+			
 		</tr>
-			<p class="responUser"><%= responces.user.name%></p>
+			<p class="responUser" style="width: 100%; font-size: 20px; font-weight: 100; padding: 17px 0 0 0!important;"><%= responces.user.name%></p>
 			<% responces.user_survey_responses.each do |r| %>
-		
 		<tr>
-			<td colspan="3" bgcolor="#eee">
-				<% @question = Question.find(r.question_id)%>
-					<span class="QuestionAsk">Pregunta:<%= @question.content%></span>
-            </td>
-        </tr>
-		<tr>
-			<td width="150px"></td>
-			<td width="180px" bgcolor="#ccc">
-				<span class="AnswerAsk"><% @answer = Answer.find(r.answer_id)%>
-				<%= @answer.content %></span>
-			</td>
-			<td width="50px">
-				<% if  @answer.correct == true %> 
-				<%= image_tag('icons/question-icon-false.png')%>
-				<%else%>
-				<%= image_tag('icons/remove-mini-icon-active.png')%>
-				<%end%>
-			</td>
-		</tr>
-	</table>
-    
-    
-        
+		</table>
 
-        
-        
-                           </p>
-        
-        </br>
-       
-        
+				<% @question = Question.find(r.question_id)%>
+				<span class="QuestionAsk">
+					<b>Pregunta:</b><%= @question.content%>
+				</span>
+
+
+			<div class="AnswerContainer" style="width: 100%; min-height: 40px; display: block; background: #FFF;">
+				<span class="AnswerAsk">
+					<% @answer = Answer.find(r.answer_id)%>
+					<%= @answer.content %>
+				</span>
+				
+				<span class="resultAnswer">
+					<% if  @answer.correct == true %> 
+						<%= image_tag('icons/icon_false.png')%>
+					<%else%>
+						<%= image_tag('icons/icon_true.png')%>
+					<%end%>
+				</span>
+
+			</div>
+				
+            </p>
+
     <%end%>
 </span>
