@@ -1082,9 +1082,10 @@
       & .is-correct-chk{
         float: right;
         width: 10px;
-        position: absolute;
+        // position: absolute; /**aqui esssssss*/
         top: -9999px;
         left: -9999px;
+        display: none;
         /* Toggled State */
         &:checked ~ .is-correct-label {
           background: #72AF4B url('/assets/icons/icon_check_true.png') no-repeat right;
