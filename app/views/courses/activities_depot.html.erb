@@ -1,33 +1,57 @@
-<div style="width: 938px; margin: 0 auto; position: relative; display: block;">
+<div class="" style="background: #1A5E97; width: 100%; height: 160px; display: inline-block;">
 
-  <h1 style="font-size: 18px; margin-top: 18px;">
-    <span style="color:#1a1a1a;font-weight: lighter;">Actividades realizadas en el curso: </span><%= link_to "#{@course.title}", course_path%>
-  </h1>
-  </br>
+	<div style="width: 938px; margin: 0 auto; position: relative; display: block; margin-top: 63px;">
 
-  <div class="activities_depot_select" id="select-pol">
+	  <h1 style="font-size: 18px; margin-top: 18px;">
+	    <span style="color: #CCC; font-size: 15px; font-weight: lighter;">Actividades realizadas en el curso:</span><br />
+	    <%= link_to "#{@course.title}", course_path, :style => 'color: #9BCCF4; font-weight: lighter;' %>
+	  </h1>
+	  
+	  </br>
 
-    <!-- <input type="text" id="rtf">-->
-    <div class="membFilter">
-      <span style="display: inline-block; width: 300px; margin-left: -310px; text-align: right;">Miembros del curso</span>
+	  <div class="activities_depot_select" id="select-pol">
 
-      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
-        <option>Todas los miembros</option>
-        <% @course.members_in_courses.each do |m|%>
-          <option><%= @user=User.find_by_id(m.user_id).name%></option>
-        <% end %>
-      </select>
-    </div>
-  </div>
+	  	<div class="" style="display: inline-block; position: absolute;">
+	  		<span style="display: inline-block; width: 300px; color: #CCC; padding: 11px; font-weight: 100; margin-left: 0px; text-align: left;">
+	  			Curso: <%= link_to "#{@course.title}", course_path, :style => 'color: #FFF;' %>
+	  		</span>
+	  	</div>
 
+	    <!-- <input type="text" id="rtf">-->
+	    <div class="membFilter">
+	      <span style="display: inline-block; width: 300px; font-weight: 100; margin-left: -310px; text-align: right;">Miembros del curso</span>
+	      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
+	        <option>Todos los miembros</option>
+	        <% @course.members_in_courses.each do |m|%>
+	          <option><%= @user=User.find_by_id(m.user_id).name%></option>
+	        <% end %>
+	      </select>
+	    </div><!-- membFilter -->
+	    
+	  </div>
+
+  </div><!-- unclass conatiner -->
+</div>
+
+
+<div style="width: 938px; margin: 15px auto 0; position: relative; display: block;">
   <div class="classContTitle">
-    <h2 class="v1">Actividades realizadas</h2>
+    <h2 class="v1">Actividades realizadas
+	    	<span class="filter_acti"><p style="margin: 12px 0 0 10px;">Filtrar</p>
+	    		<ul class="drop_views" style="display: none;">
+	    			<li class="all_select">Todos</li>
+	    			<li class="homework_select">Tarea</li>
+	    			<li class="survey_select">Cuestionario</li>
+	    			<li class="test_select">Exámen</li>
+	    		</ul>
+	    	</span>
+    </h2>
     <h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
   </div>
 
-  <div id="ajax-dump" style="margin-top:12px;float:left;"></div>
+  <div id="ajax-dump" style="float:left;"></div>
 
-  <div class="expoced" id="expoced" style="margin-top:12px;">
+  <div class="expoced" id="expoced" style="margin-top:1px;">
     <!--<div id="resonance" style="position:fixed;"></div>-->
   </div>
 
@@ -135,5 +159,16 @@
       }
     }
   });
+  
+  $('.filter_acti').click ( function() {
+	  $('.drop_views').slideToggle();
+  });
 
+  $('.homework_select').click( function() {
+	  $('.undefined').fadeOut();
+  });
+  $('.all_select').click( function() {
+	  $('.undefined, .tarea').fadeIn();
+  });
+  
 </script>
