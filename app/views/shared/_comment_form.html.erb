@@ -22,7 +22,8 @@
   	<%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
   	<%= submit_tag "Comentar", :class=>"btn btn-primary activable", :id => 'comment-post-form' %>
   	
-  	<a class="help" id="help_comment" style="float:left; margin:4px;"><%= image_tag('help.png')%></a>
+  	<a class="help" id="help_comment" style="float: left!important; margin: 7px 0px 0px 17px!important;"><%= image_tag('help.png')%></a>
+  	
   		<%if !@user_show%>
   			<% if @incourse != true%>
   				<% if comment_id == nil %>

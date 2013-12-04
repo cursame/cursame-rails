@@ -456,12 +456,13 @@ input:-moz-placeholder {
     float: left;
   }
   & .arrow-left {
-    background: url('/assets/arrow_comment.png') no-repeat;
+    //background: url('/assets/arrow_comment.png') no-repeat;
+    background: url('/assets/arrow_balloon.png') no-repeat;
     width: 9px;
     height: 14px;
     float:left;
     position: absolute;
-    margin:5px 0px 0px -9px;
+    margin:5px 0px 0px -8px;
   }
 }
 
@@ -628,7 +629,7 @@ input:-moz-placeholder {
     height: 14px;
     float:left;
     position: absolute;
-    margin:5px 0px 0px -9px;
+    margin: 5px 0px 0px -8px;
   }
 }
 
@@ -787,7 +788,7 @@ input:-moz-placeholder {
     height: 14px;
     float:left;
     position: absolute;
-    margin:5px 0px 0px -9px;
+    margin:5px 0px 0px -8px;
   }
 }
 
@@ -945,7 +946,7 @@ input:-moz-placeholder {
     height: 14px;
     float:left;
     position: absolute;
-    margin:5px 0px 0px -9px;
+    margin:5px 0px 0px -8px;
   }
 }
 
@@ -1943,7 +1944,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	  float: none;
   }
   #sub_nav {
-	  display: inline-block;
+	  //display: inline-block;
+	  display: none;
   }
 }
 
@@ -1956,5 +1958,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   }
   .hola {
 	  visibility: visible;
+  }
+  #sub_nav {
+	  display: none;
   }
 }

@@ -132,7 +132,7 @@
             <script>
                    $("#comunidad_fgthk").hover(
                         function () {
-                          $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-7px; float:left; margin-top:-5px'><div class='tooltipr'><%=truncate("Ver todos los miebros de la comunidad.", :omission => "...", :length => 155) %></div></span>"));
+                          $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-7px; float:left; margin-top:-5px'><div class='tooltipr'><%=truncate("Ver todos los miembros de la comunidad.", :omission => "...", :length => 155) %></div></span>"));
                         },
                         function () {
                           $(this).find("span:last").remove();

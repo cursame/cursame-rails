@@ -1,0 +1,87 @@
+<div id="main-admin-dashboard-container-year"></div>
+
+<%
+comments = []
+deliveries = []
+courses = []
+surveys = []
+discussions = []
+users = []
+networks = []
+
+date=Date.today
+number_of_months = 0..(date.month - 1)
+number_of_months.to_a.reverse.each do |month_offset|
+  start_date = month_offset.months.ago.beginning_of_month
+  end_date = month_offset.months.ago.end_of_month
+
+  comments.push(Comment.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+  deliveries.push(Delivery.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+  courses.push(Course.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+  surveys.push(Survey.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+  discussions.push(Discussion.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+  users.push(User.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+  networks.push(Network.where("created_at > ? AND created_at < ?", start_date, end_date).count)
+end
+%>
+
+<script>
+	$(function () {
+        $('#main-admin-dashboard-container-year').highcharts({
+            title: {
+                text: 'Actividades del año actual',
+                x: 0 //center
+            },
+            subtitle: {
+                text: 'Cursos, Tareas, Cuestionarios, Redes, Discusiones',
+                x: 0
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Cantidad'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+
+            series: [{
+                name: 'Comentarios',
+                data: <%= comments %>
+            }, {
+                name: 'Tareas',
+                data: <%= deliveries %>
+            }, {
+                name: 'Cursos',
+                data: <%= courses %>
+            }, {
+                name: 'Cuestionarios',
+                data: <%= surveys %>
+            }, {
+                name: 'Discusiones',
+                data: <%= discussions %>
+            }, {
+                name: 'Usuarios',
+                data: <%= users %>
+            }, {
+                name: 'Redes',
+                data: <%= networks %>
+            }]
+        });
+    });
+</script>

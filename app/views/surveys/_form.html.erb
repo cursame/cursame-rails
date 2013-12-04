@@ -12,7 +12,6 @@ random_id = "#{random}"
 <%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
    <div class="video_help" style="display: none" id="survey_help">
            <div class="content_video" id="content_video_video_survey">
-
            </div>
        </div>
   <div class="form_container_fix_survey" style="border-bottom: 1px solid #ccc; height: 85px;">
@@ -45,7 +44,7 @@ random_id = "#{random}"
     
     <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
     
-    <a class="help survey_help" id="help_survey"><%= image_tag('help.png')%></a>
+    <a class="help survey_help" style="margin: 6px 0px 0px 17px; display: block;" id="help_survey"><%= image_tag('help.png')%></a>
 	</div>
 	
     <script>

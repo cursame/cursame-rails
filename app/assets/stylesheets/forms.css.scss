@@ -297,7 +297,7 @@
   }
   & .submit-area{
     clear: both;
-    border-top: 1px dotted #ccc;
+    //border-top: 1px dotted #ccc;
     margin-top: 5px;
     float: right;
     width: 100%;
@@ -1082,9 +1082,10 @@
       & .is-correct-chk{
         float: right;
         width: 10px;
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
+        // position: absolute;
+        display: none;
+        // top: -9999px;
+        // left: -9999px;       
         /* Toggled State */
         &:checked ~ .is-correct-label {
           background: #72AF4B url('/assets/icons/icon_check_true.png') no-repeat right;
@@ -1196,9 +1197,10 @@ margin: 7px 0px 0px 30px;
     }
     & .is-correct-chk{
       width: 10px;
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
+      // position: absolute;
+      display: none;
+      // top: -9999px;
+      // left: -9999px;
     /* Toggled State */
       &:checked ~ .is-correct-label {
         background: url('/assets/icons/question-icon-false.png') no-repeat right;

@@ -57,7 +57,8 @@ gem 'acts_as_votable', '~> 0.5.0'
 gem "auto_html"
 
 #paginacion
-gem 'will_paginate'
+gem 'will_paginate', "3.0.3"
+# gem "will_paginate", "3.0.pre2"
 
 #gems for preoces time in background
 gem 'whenever', :require => false
@@ -124,3 +125,8 @@ gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
 
 # Exception Notifier Plugin for Rails
 gem 'exception_notification', '~> 3.0.1'
+
+#active_admin
+ gem 'activeadmin'
+ gem "meta_search",    '>= 1.1.0.pre'
+ 

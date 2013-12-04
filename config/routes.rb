@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :usernotificationings
   resources :members_in_groups
   resources :groups
@@ -156,6 +159,7 @@ Cursame30Lb::Application.routes.draw do
 
   #manejo de users
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "usessions", :omniauth_callbacks => "omniauth_callbacks" }
+  ActiveAdmin.routes(self)
 
   as :user do
     match 'users/sign_out', :to => 'usessions/sessions#destroy', :as => :sign_out
