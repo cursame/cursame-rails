@@ -101,11 +101,10 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     
     
-    @member = obtainMember(@course.id, current_user.id)
-    
-      if @member.owner = true || current_role = "admin"
+    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
+      if @member.owner == true || current_role == "admin"
       else
-        redirect_to :back
+        redirect_to course_path(@course)
       end
       
       
@@ -198,13 +197,13 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-    if current_role == 'admin' || 'superadmin'
+    if current_role == 'admin' || current_role == 'superadmin'
       @member = MembersInCourse.new
       @member.owner = true
     else
       if @member.owner == true || current_role == "admin"
       else
-        redirect_to :back
+        redirect_to course_path(@course)
       end
     end
   end
@@ -533,6 +532,15 @@ class CoursesController < ApplicationController
 
   def activities_depot
     @course = Course.find(params[:id])
+     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+      if current_role == 'admin' || current_role == 'superadmin'
+        @member.owner = true
+      else
+        if @member.owner == true || current_role == "admin"
+        else
+          redirect_to course_path(@course)
+        end
+      end
   end
 
   def load_more_activities

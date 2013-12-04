@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     @courses =  @user_l.members_in_courses.limit(7)
     @ccc =  @user_l.courses.where(:network_id => current_network.id)
-    @count_course_iam_member =  MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+    @count_course_iam_member =  MembersInCourse.where(:user_id => current_user.id, :accepted => true, :active_status => true).count
 
     @count_course_iam_member_and_owner =  @user_l.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
 
