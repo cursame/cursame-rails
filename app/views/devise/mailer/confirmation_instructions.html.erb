@@ -11,13 +11,13 @@
 		</style>
 	</head>
 	
-	<body background="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/utiles.jpg" style="background-position: top center;">
+	<body background="http://<%= @resource.subdomain %>.<%=@resource.domain %>/assets/mails/utiles.jpg" style="background-position: top center;">
 		
 		<center>
 <!--	<span class="viewBrowser">Si no puedes ver este mail correctamente, haz <a href="#">click aqui</a></span>-->
 		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
 			<tr>
-				<td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/logo_welcome.png";>
+				<td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @resource.subdomain %>.<%=@resource.domain %>/assets/mails/logo_welcome.png";>
 					<h1 style="color: #00B0C6;font-size: 40px;text-align: center;margin-top:130px;">Confirmación de Usuario</b></h1>
 				</td>
 			</tr>
@@ -42,7 +42,7 @@
 				<td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
 					<center>
 						<span class="buttonClick">
-						 <%= link_to 'Quiero activar mi Cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.devise_mailer_subdomain, :domain => @resource.domain) %>
+						 <%= link_to 'Quiero activar mi Cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain) %>
 						</span>
 					</center>
 				</td>
@@ -53,7 +53,7 @@
 			</tr>
 			<tr>
 				<td>
-					<center><img src="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/iMac_tres.jpg"></center>
+					<center><img src="http://<%= @resource.subdomain %>.<%=@resource.domain %>/assets/mails/iMac_tres.jpg"></center>
 				</td>
 			</tr>
 		</table>
