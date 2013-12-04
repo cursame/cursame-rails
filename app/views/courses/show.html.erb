@@ -289,7 +289,11 @@
 	    <p><b>Sylabus</b><b>:</b><%= @course.silabus %> </p>
 	    
 	    <% permitted_to? :create, :courses do %>
+	         <% if @member.owner != nil %>
+                <% if @member.owner == true %>
    	    <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
+   	            <%end%>
+   	         <%end%>
 	    <%end%>
 	  </div><!-- box-course -->
 	  
