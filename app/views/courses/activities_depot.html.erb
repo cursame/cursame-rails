@@ -41,8 +41,9 @@
 	    		<ul class="drop_views" style="display: none;">
 	    			<li class="all_select">Todos</li>
 	    			<li class="homework_select">Tarea</li>
-	    			<li class="survey_select">Cuestionario</li>
-	    			<li class="test_select">Exámen</li>
+	    			<li class="assignment_select">Tarea Entregada</li>
+	    			<li class="survey_select">Cuestionario o Examenes</li>
+	    			<!--<li class="test_select">Exámen</li>-->
 	    		</ul>
 	    	</span>
     </h2>
@@ -96,8 +97,7 @@
 
         dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
         avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
-
-        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + '" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
+        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + ' '+ aux.compose.type +'" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
 
         // este controlador muestra la información correspondiente a la actividad
         $('#' + id).click(function() {
@@ -110,7 +110,7 @@
           // Se coloca el div para que el usuario vea quien entrego el examen
           if(axelid.lastIndexOf("examen") != -1) {
             $('#expoced').html('');
-            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados"></div></div>');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados" ></div></div>');
 
             $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
           }
@@ -152,7 +152,7 @@
             nam = fromk.name;
             pertence_al = fromk.pertencenence_to;
 
-            $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets ' + cloud + ' ' + pertence_al + '">' + '</div>');
+            $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets' + cloud + ' ' + pertence_al + '">' + '</div>');
             $("#" + pertence_al).prepend('<a href="' + url + '" id=' + id + '>' + nam + '<a>');
           }
         }
@@ -165,10 +165,25 @@
   });
 
   $('.homework_select').click( function() {
-	  $('.undefined').fadeOut();
+	  $('.activities_depot').hide();
+	  $('.tarea').show();
+	  
+  });
+  $('.assignment_select').click( function() {
+  	  $('.activities_depot').hide();
+  	  $('.entrega_tarea').show();
+  	  
+	  
+  });
+  $('.survey_select').click( function() {
+  	  $('.activities_depot').hide();
+  	  $('.examen').show();
+  	  
+	  
   });
   $('.all_select').click( function() {
-	  $('.undefined, .tarea').fadeIn();
+	  $('.activities_depot').show();
+	  
   });
   
 </script>

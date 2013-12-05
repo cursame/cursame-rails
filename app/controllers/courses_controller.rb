@@ -448,7 +448,6 @@ class CoursesController < ApplicationController
     # Examenes del curso
     @course.surveys.each do |survey|
       if survey.user != nil
-
         case
           when survey.user.avatar.blank?
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
@@ -457,7 +456,7 @@ class CoursesController < ApplicationController
           else
             @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
         end
-
+        
         surveyss.push({
           startDate: survey.created_at,
           endDate: survey.created_at,
@@ -471,8 +470,9 @@ class CoursesController < ApplicationController
           compose: {
             id: survey.id,
             type: 'examen',
-            title: (("#{survey.name}").to_s).delete("\n")
-          }
+            title: (("#{survey.name}").to_s).delete("\n"),
+            pertencenence_to: "entrega_survey#{survey.id}"
+          }          
         })
       end
     end

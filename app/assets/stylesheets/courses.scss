@@ -150,7 +150,7 @@ h3{
     transition: all linear 0.3s;
 }
 
-.list_alt_box_expired {
+/*.list_alt_box_expired {
 	width: 226px!important;
 	background: #fff;
     float: left;
@@ -164,7 +164,7 @@ h3{
     margin-bottom: 6px;
     overflow:auto;
     transition: all linear 0.3s;
-}
+}*/
 
 .list_alt_box:hover { transition: all linear 0.3s; }
 
@@ -809,7 +809,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
            background: #F5F5F5;
            //width:459px;
            width: 470px;
-           height:400px;
+           height-min:400px;
            overflow-y: scroll;
            overflow-x: hidden;
            margin-left:-10px;
@@ -1170,7 +1170,7 @@ background: #FF0000; padding: 0px; color: #fff; text-align: center; display: blo
      float:left;
      //width: 493px;
      width: 517px;
-     overflow:auto;
+     //overflow:auto;
      background: #F7F7F7;
      margin-left:21px;
      //padding: 12px;

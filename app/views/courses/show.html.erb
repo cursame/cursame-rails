@@ -534,14 +534,20 @@
       </div><!-- uplok -->
       
       <div style="width: 230px;  overflow:auto; min-height:0px; max-height: 300px; overflow-x: hidden; padding-top: 25px; padding:1px; min-height:300px; max-height:600px;">
+          <% if @course.course_files.count == 0 %> 
+          <div id="files" style="margin-top:20px;"></div>
+          
+          <%end%>  
+          
         <% @course.course_files.reverse.each do |cf|%>
           <% @name =  "#{cf.file}" %>
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
           <!--se ha colocan los archivos dependiendo su categoría-->
           <div style="margin-top:35px;" style="min-height:100px;">
+            <% if @course.course_files.count != 0 %> 
               <div id="files"></div>
-              
+            <%end%>  
           <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
           </div>
 
