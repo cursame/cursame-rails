@@ -95,11 +95,13 @@
 
 <% if post.state == "published" %>
 
-  <div class="publication-box  public-blur dek<%=id%>" id="deleted_id_<%= id %>">
+  <div class="publication-box public-blur dek<%=id%>" id="deleted_id_<%= id %>">
 
       <%#= debug cargo.publication.comments %>
-
-    <div class="general-cir<%=ico%>"></div>
+	
+	<div class="icon_persistent_container" style="width: 35px; height: 35px; float: left;">
+	    <div class="general-cir<%=ico%> persistent_icon"></div>
+    </div>
 
     <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
       <div class="arrow-left"></div>
@@ -124,6 +126,44 @@
                       $(this).find("span:last").remove();
                     }
                   );
+
+				// se agregaron persistent icons
+				$(function(){
+					var stickyIcon = $('#deleted_id_<%= id %>').offset().top;
+					
+					$(window).scroll(function(){
+						//if( $('#deleted_id_<%= id %>') >= 0 ) {
+						if( $(window).scrollTop() > (stickyIcon - 35 ) ) {
+							$('#deleted_id_<%= id %>').find('.general-cir<%=ico%>').css({position: 'fixed', display: 'block', top: '35px'});
+							//console.log('hola');
+						} else {
+							$('#deleted_id_<%= id %>').find('.general-cir<%=ico%>').css({position: 'static', top: '0px'});
+							//$('.persistent_icon').css({position: 'static', top: '0px'});
+						}
+					});
+				});
+
+				/*
+				$(function(){
+				        //var stickyIcon = $('.publication-box').offset().top;
+				        var stickyIcon = $('#deleted_id_<%= id %>').offset().top;
+				          
+				        $(window).scroll(function(){
+				                if( $(window).scrollTop() > stickyIcon ) {
+				                		$('#deleted_id_<%= id %>').each( function() {
+					                		$('.persistent_icon').css({position: 'fixed', display: 'block', top: '35px'});
+					                		console.log('hola');
+				                		});
+				                        
+				                } else {
+				                        $('.persistent_icon').css({position: 'static', top: '0px'});
+				                }
+				        });
+				});
+				*/
+
+				
+
         </script>
         <%end%>
         </div>

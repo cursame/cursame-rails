@@ -1,33 +1,58 @@
-<div style="width: 938px; margin: 0 auto; position: relative; display: block;">
+<div class="" style="background: #1A5E97; width: 100%; height: 160px; display: inline-block;">
 
-  <h1 style="font-size: 18px; margin-top: 18px;">
-    <span style="color:#1a1a1a;font-weight: lighter;">Actividades realizadas en el curso: </span><%= link_to "#{@course.title}", course_path%>
-  </h1>
-  </br>
+	<div style="width: 938px; margin: 0 auto; position: relative; display: block; margin-top: 63px;">
 
-  <div class="activities_depot_select" id="select-pol">
+	  <h1 style="font-size: 18px; margin-top: 18px;">
+	    <span style="color: #CCC; font-size: 15px; font-weight: lighter;">Actividades realizadas en el curso:</span><br />
+	    <%= link_to "#{@course.title}", course_path, :style => 'color: #9BCCF4; font-weight: lighter;' %>
+	  </h1>
+	  
+	  </br>
 
-    <!-- <input type="text" id="rtf">-->
-    <div class="membFilter">
-      <span style="display: inline-block; width: 300px; margin-left: -310px; text-align: right;">Miembros del curso</span>
+	  <div class="activities_depot_select" id="select-pol">
 
-      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
-        <option>Todas los miembros</option>
-        <% @course.members_in_courses.each do |m|%>
-          <option><%= @user=User.find_by_id(m.user_id).name%></option>
-        <% end %>
-      </select>
-    </div>
-  </div>
+	  	<div class="" style="display: inline-block; position: absolute;">
+	  		<span style="display: inline-block; width: 300px; color: #CCC; padding: 11px; font-weight: 100; margin-left: 0px; text-align: left;">
+	  			Curso: <%= link_to "#{@course.title}", course_path, :style => 'color: #FFF;' %>
+	  		</span>
+	  	</div>
 
+	    <!-- <input type="text" id="rtf">-->
+	    <div class="membFilter">
+	      <span style="display: inline-block; width: 300px; font-weight: 100; margin-left: -310px; text-align: right;">Miembros del curso</span>
+	      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
+	        <option>Todos los miembros</option>
+	        <% @course.members_in_courses.each do |m|%>
+	          <option><%= @user=User.find_by_id(m.user_id).name%></option>
+	        <% end %>
+	      </select>
+	    </div><!-- membFilter -->
+	    
+	  </div>
+
+  </div><!-- unclass conatiner -->
+</div>
+
+
+<div style="width: 938px; margin: 15px auto 0; position: relative; display: block;">
   <div class="classContTitle">
-    <h2 class="v1">Actividades realizadas</h2>
+    <h2 class="v1">Actividades realizadas
+	    	<span class="filter_acti"><p style="margin: 12px 0 0 10px;">Filtrar</p>
+	    		<ul class="drop_views" style="display: none;">
+	    			<li class="all_select">Todos</li>
+	    			<li class="homework_select">Tarea</li>
+	    			<li class="assignment_select">Tarea Entregada</li>
+	    			<li class="survey_select">Cuestionario o Examenes</li>
+	    			<!--<li class="test_select">Exámen</li>-->
+	    		</ul>
+	    	</span>
+    </h2>
     <h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
   </div>
 
-  <div id="ajax-dump" style="margin-top:12px;float:left;"></div>
+  <div id="ajax-dump" style="float:left;"></div>
 
-  <div class="expoced" id="expoced" style="margin-top:12px;">
+  <div class="expoced" id="expoced" style="margin-top:1px;">
     <!--<div id="resonance" style="position:fixed;"></div>-->
   </div>
 
@@ -72,8 +97,7 @@
 
         dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
         avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
-
-        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + '" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
+        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + ' '+ aux.compose.type +'" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
 
         // este controlador muestra la información correspondiente a la actividad
         $('#' + id).click(function() {
@@ -86,7 +110,7 @@
           // Se coloca el div para que el usuario vea quien entrego el examen
           if(axelid.lastIndexOf("examen") != -1) {
             $('#expoced').html('');
-            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados"></div></div>');
+            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados" ></div></div>');
 
             $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
           }
@@ -128,12 +152,38 @@
             nam = fromk.name;
             pertence_al = fromk.pertencenence_to;
 
-            $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets ' + cloud + ' ' + pertence_al + '">' + '</div>');
+            $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets' + cloud + ' ' + pertence_al + '">' + '</div>');
             $("#" + pertence_al).prepend('<a href="' + url + '" id=' + id + '>' + nam + '<a>');
           }
         }
       }
     }
   });
+  
+  $('.filter_acti').click ( function() {
+	  $('.drop_views').slideToggle();
+  });
 
+  $('.homework_select').click( function() {
+	  $('.activities_depot').hide();
+	  $('.tarea').show();
+	  
+  });
+  $('.assignment_select').click( function() {
+  	  $('.activities_depot').hide();
+  	  $('.entrega_tarea').show();
+  	  
+	  
+  });
+  $('.survey_select').click( function() {
+  	  $('.activities_depot').hide();
+  	  $('.examen').show();
+  	  
+	  
+  });
+  $('.all_select').click( function() {
+	  $('.activities_depot').show();
+	  
+  });
+  
 </script>
