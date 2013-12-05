@@ -34,10 +34,12 @@
 
     //     var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
     //
+    $.ajaxSetup({timeout:120000});
 
     $('#new_assets #<%= @asset_unique %>').click(function(){
             $('#new_assets #<%= @asset_unique %>').fileupload({
                 dataType: "script",
+                timeout:120000,
                 add:function(e,data){
                     var types = /(\.|\/)(jpg|jpeg|gif|ico|png|pdf|exe|ppt|txt|pptx|dmg|dwg|dwf|rar|zip|tar|iso|swf|flv|doc|docx|ade|adp|odt|rtf|sxw|sao|csv|xls)$/i;
                     var file = data.files[0];
