@@ -34,12 +34,16 @@
     end
     ico =''
     tipo = 'Comentario'
+    definition = '-comment'
+    
   when 'Course'
     avatar = post.avatar.modern
     course_avatarxx = post.course_avatarxx
     name = post.title
     content = post.silabus
     ico = ''
+    definition = '-course'
+    
   when 'Discussion'
     if post.user == nil
       next
@@ -55,6 +59,7 @@
     content = post.description_html
     ico = '-discussion'
     tipo = 'Discusion'
+    definition = '-discussion'
   when 'Delivery'
     if post.user == nil
       next
@@ -72,6 +77,8 @@
     publication_cls = 'delivery'
     ico = '-homework'
     tipo  = 'Tarea'
+    definition = '-homework'
+    
   when 'Survey'
     if post.user == nil
       next
@@ -86,6 +93,7 @@
     name = post.name
     ico = '-survey'
     tipo = 'Examen'
+    deginition = '-survey'
   end
   created_at = post.created_at
 
@@ -100,7 +108,7 @@
       <%#= debug cargo.publication.comments %>
 	
 	<div class="icon_persistent_container" style="width: 35px; height: 35px; float: left;">
-	    <div class="general-cir<%=ico%> persistent_icon"></div>
+	    <div class="general-cir<%=ico%> persistent_icon general-definition<%=definition%>"></div>
     </div>
 
     <div id = "publication-<%= id %>" class="comment-text <%= publication_cls %>" >
@@ -111,6 +119,23 @@
         <% when 'Course'%>
           <%= link_to image_tag(avatar,{:class => "avatar-mini"}), course_path(post.id) if ( !avatar.blank? && !nil)%>
          <%= link_to image_tag(course_avatarxx,{:class => "avatar-mini"}), course_path(post.id) if (avatar.blank? || nil)%>
+         <script>
+           	$(function(){
+					var stickyIcon = $('#deleted_id_<%= id %>').offset().top;
+					
+					$(window).scroll(function(){
+						//if( $('#deleted_id_<%= id %>') >= 0 ) {
+						if( $(window).scrollTop() > (stickyIcon - 35 ) ) {
+					   var scroll =	$('#deleted_id_<%= id %>').find('.general-definition<%=definition%>').css({position: 'fixed', display: 'block', top: '35px'});
+						} else {
+						$('#deleted_id_<%= id %>').find('.general-definition<%=definition%>').css({position: 'static', top: '0px'});
+							//console.log('bye');
+							
+							//$('.persistent_icon').css({position: 'static', top: '0px'});
+						}
+					});
+				});
+         </script>
         <%else%>
         <div class="id_for_avatar<%=post.user.id%>">
         <%= link_to image_tag(avatar,{:class => "avatar-mini"}), show_user_path(personal_url) if ( !avatar.blank?  && !nil)%>
@@ -134,10 +159,11 @@
 					$(window).scroll(function(){
 						//if( $('#deleted_id_<%= id %>') >= 0 ) {
 						if( $(window).scrollTop() > (stickyIcon - 35 ) ) {
-							$('#deleted_id_<%= id %>').find('.general-cir<%=ico%>').css({position: 'fixed', display: 'block', top: '35px'});
-							//console.log('hola');
+					   var scroll =	$('#deleted_id_<%= id %>').find('.general-definition<%=definition%>').css({position: 'fixed', display: 'block', top: '35px'});
 						} else {
-							$('#deleted_id_<%= id %>').find('.general-cir<%=ico%>').css({position: 'static', top: '0px'});
+						$('#deleted_id_<%= id %>').find('.general-definition<%=definition%>').css({position: 'static', top: '0px'});
+							//console.log('bye');
+							
 							//$('.persistent_icon').css({position: 'static', top: '0px'});
 						}
 					});
