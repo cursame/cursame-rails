@@ -64,7 +64,7 @@ class Api::TokensController < ApplicationController
     	render :status => 200, :json => {:response =>{:message => "Invalid email or password.", :success => false}}, :callback => params[:callback]
     else
       @notifications_chanel =  PrivatePub.subscription(:channel => "/notifications/"+@user.id.to_s)
-    	render :status => 200, :json => {:response =>{:user => @user.as_json(:include => [:roles, :notifications]), :token => @user.authentication_token,:channel => @notifications_chanel,:success => true}}, :callback => params[:callback]
+    	render :status => 200, :json => {:response =>{:user => @user.as_json(:include => [:roles, :notifications, :networks]), :token => @user.authentication_token,:channel => @notifications_chanel,:success => true}}, :callback => params[:callback]
     end
 end
 

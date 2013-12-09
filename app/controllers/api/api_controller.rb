@@ -782,6 +782,11 @@ class Api::ApiController < ApplicationController
     render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
   end
 
+  def native_list_networks
+    @networks = Network.where("name like ?",'%' + params[:text] + '%').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    render :json => {:networks => @networks.as_json, :count => @networks.count()}, :callback => params[:callback]
+  end
+
   private
   def authorize
     @user = User.find_by_authentication_token(params[:auth_token])

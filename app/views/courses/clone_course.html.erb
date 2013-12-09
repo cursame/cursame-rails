@@ -1,0 +1,65 @@
+<h1><%= @course.title%></h1>
+<div id="clone-course-data">
+	<h3>Datos del curso</h3>	
+	<%= @course.title %> <br>	
+	<div>
+		<button class="clone-course-btn" data="clone-course-deliveries" action="move" type="button">Siguiente</button>
+	</div>
+</div>
+<div id="clone-course-deliveries" style="display:none">
+	<h3>Tareas</h3>
+	<% @course.deliveries.each do |d|%>
+		<%= d.title %> <br>
+	<% end %>
+	<div>
+		<button class="clone-course-btn" data="clone-course-data" action="move" type="button">Anterior</button>
+		<button class="clone-course-btn" data="clone-course-discussions" action="move" type="button">Siguiente</button>
+	</div>
+</div>
+<div id="clone-course-discussions" style="display:none">
+	<h3>Discusiones</h3>
+	<% @course.discussions.each do |d|%>
+		<%= d.title %> <br>
+	<% end %>
+	<div>
+		<button class="clone-course-btn" data="clone-course-deliveries" action="move" type="button">Anterior</button>
+		<button class="clone-course-btn" data="clone-course-surveys" action="move" type="button">Siguiente</button>
+	</div>
+</div>
+<div id="clone-course-surveys" style="display:none">
+	<h3>Cuestionarios</h3>
+	<% @course.surveys.each do |s|%>
+		<%= s.name %> <br>
+	<% end %>
+	<div>
+		<button class="clone-course-btn" data="clone-course-discussions" action="move" type="button">Anterior</button>
+		<button class="clone-course-btn" data="clone-course-files" action="move" type="button">Siguiente</button>
+	</div>
+</div>
+<div id="clone-course-files" style="display:none">
+	<h3>Documentos</h3>
+	<% @course.course_files.each do  |c|%>
+		<%=c.file%> <br>
+	<% end %>
+	<div>
+		<button class="clone-course-btn" data="clone-course-surveys" action="move" type="button">Anterior</button>
+		<button class="clone-course-btn" data="next" action="submit" type="button">Guardar</button>
+	</div>
+</div>
+
+<script>
+	$(".clone-course-btn").on('click', function () {
+		var data = $(this).attr( "data" ),
+			action = $(this).attr( "action" );
+
+		switch(action){
+			case 'move': 
+				$('#'+data).show();
+				$(this).parent().parent().hide();
+			break;
+			case 'submit': 
+				alert('Guardar');
+			break;
+		}
+	});
+</script>

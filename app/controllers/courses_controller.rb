@@ -853,6 +853,15 @@ class CoursesController < ApplicationController
       end
   end
 
+  def clone_course
+    @course = Course.find(params[:id])
+    respond_to do |format|
+        format.html
+        # format.json
+        # format.js
+    end
+  end
+
 private 
 
   def obtainMember(course_id, user_id)
