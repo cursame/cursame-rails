@@ -47,6 +47,18 @@ class Network < ActiveRecord::Base
 
   end
 
+
+  def send_email(admin, users, subject, message)
+    users.each do |user|
+      if (admin != user) then
+        mail = Notifier.send_email(user,subject,message)
+        mail.deliver
+      end
+    end
+  end
+
+  handle_asynchronously :send_email, :priority => 20, :run_at => Proc.new{Time.zone.now}
+
   def averageCalificationSurvey
     surveys = self.surveys
     if surveys.size == 0 then
