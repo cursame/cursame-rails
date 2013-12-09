@@ -97,6 +97,8 @@ Cursame30Lb::Application.routes.draw do
 
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
+  ##### clonar curso
+  get "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
@@ -473,4 +475,5 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_list_user_calification', :to => 'api/api#native_list_user_calification', :as => :native_list_user_calification_json
   match '/api/api/native_list_events', :to => 'api/api#native_list_events', :as => :native_list_events_json
   match '/api/api/native_list_activities_of_course', :to => 'api/api#native_list_activities_of_course', :as => :native_list_activities_of_course_json
+  match '/api/api/native_list_networks', :to => 'api/api#native_list_networks', :as => :native_list_networks_json
 end
