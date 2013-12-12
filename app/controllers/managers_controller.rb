@@ -173,8 +173,7 @@ class ManagersController < ApplicationController
     users = current_network.users
     if !users.nil? then
       if users.size != 0 then
-        mail = Notifier.send_email(users,params[:subject],params[:message])
-        mail.deliver
+        current_network.delay.send_email(current_user,users,params[:subject],params[:message])
       end
     end
     redirect_to managers_wall_path
