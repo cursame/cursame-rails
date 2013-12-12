@@ -542,6 +542,17 @@ class User < ActiveRecord::Base
     return average/size
   end
 
+  Warden::Manager.before_logout do |user, auth, opts|
+    if !user.nil?
+      user.online = false
+      user.save!
+      PrivatePub.publish_to("/messages/chat_notifications",
+                                userId: user.id,
+                                online: false
+                               )
+    end
+  end
+
   #facebook connect
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil, network, domain, subdomain)
     user = User.where(:email => auth.info.email).first
