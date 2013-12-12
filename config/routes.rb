@@ -98,7 +98,8 @@ Cursame30Lb::Application.routes.draw do
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
   ##### clonar curso
-  get "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course
+  get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
+  match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
