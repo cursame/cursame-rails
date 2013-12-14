@@ -33,12 +33,15 @@ class Api::ApiController < ApplicationController
   end
 
   def native_publications
+    count = 0
     case params[:type]
       when 'Course'
         @course = Course.find(params[:publicacionId])
         @publications = @course.walls.where("publication_type != ?", 'Course')
+        count =  @publications.count()
         @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
+        count = @network.publications(@user.id,@network.id).count()
         @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
       @pubs = []
@@ -115,7 +118,8 @@ class Api::ApiController < ApplicationController
        @pubs.push(pub)
       end
     # render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
-    render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
+    # render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
+    render :json => {:publications => @pubs.as_json, :count => count}, :callback => params[:callback]
   end
 
 
@@ -130,7 +134,10 @@ class Api::ApiController < ApplicationController
 
   def courses
     @ids = []
-    @courses = @network.courses.includes(:members_in_courses).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    # @courses = @network.courses.includes(:members_in_courses).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
+    @courses = @courses.uniq
+    @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
