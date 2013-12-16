@@ -114,7 +114,9 @@
 	        	      <div class="OpenClose<%=delivery.id%>"id="OpenClose"></div>
 					  <div class="title"> <%= delivery.title %> <br>
 					  <span><%=truncate(delivery.description, :length => 25)%></span>
+					  <%if delivery.assignments.count != 0 then%>
 					  <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
+					  <%end%>
 	              </div>
 	              <div class="state">
 	                  <div id="delivery_state_publish<%=delivery.id%>">
@@ -214,7 +216,9 @@
                     <div id="OpenClose" class="OpenClose<%=survey.id%>"></div>
 	                  <div class="title">
 	                  	<%= survey.title %>
+						<%if survey.user_surveys.count != 0 then%>
 	                  	<div class="image_scroll" id="image_scroll_s<%=survey.id%>" style="display:none;"></div>
+						<%end%>
 	                  </div>
 	                   
 	                  <div class="state">
