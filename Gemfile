@@ -129,4 +129,8 @@ gem 'exception_notification', '~> 3.0.1'
 #active_admin
  gem 'activeadmin'
  gem "meta_search",    '>= 1.1.0.pre'
+
+ # group :development, :test do
+ #  gem 'rails-dev-tweaks', '~> 0.6.1' 
+ # end
  

