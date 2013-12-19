@@ -476,4 +476,7 @@ Cursame30Lb::Application.routes.draw do
   match '/api/api/native_list_events', :to => 'api/api#native_list_events', :as => :native_list_events_json
   match '/api/api/native_list_activities_of_course', :to => 'api/api#native_list_activities_of_course', :as => :native_list_activities_of_course_json
   match '/api/api/native_list_networks', :to => 'api/api#native_list_networks', :as => :native_list_networks_json
+  #logout
+  match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]
+
 end
