@@ -263,6 +263,17 @@ class HomeController < ApplicationController
     @tutors = current_user.tutors
   end
 
+  def logout_user
+    PrivatePub.publish_to("/messages/chat_notifications",
+                              userId: current_user.id,
+                              online: false
+                            )
+    sign_out(current_user)
+    respond_to do |format|
+       format.js
+    end
+  end
+
   private
 
   def save_comment
