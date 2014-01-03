@@ -32,7 +32,8 @@
             <li class="mail"> <%= @user_l.email %></li>
             <li class="twitter"><%= @user_l.twitter_link %> </li>
             <!--<li class="facebook"><%#= @user_l.facebook_link%></li>-->
-            <% if current_user.id == @user_l.id%><li id="edit-user"><%=link_to "editar usuario",  edit_user_registration_path %></li><%end%>
+            
+            <% if current_user.id == @user_l.id%><li id="edit-user"><%=link_to "editar #{current_network.user_tag}",  edit_user_registration_path %></li><%end%>
 
         </div>
         <!-- <div class="head_banner_style_user">
@@ -91,7 +92,7 @@
             <%#end%>
       <!-- se comenta amigos para la beta que saldrá el día 15 de febrero -->
       <div id="box-friends" class="basic-lateral-box" >
-            <h2>AMIGOS</h2>
+            <h2><%= current_network.friends_tag %></h2>
             <div id="tabs-friends" class="tabs-style">
                 <ul id="ul-tabs" class="tabs-friends-cc">
                     <div class="element-left" style="width:100px!important;">
@@ -113,7 +114,7 @@
                         <a href="#tabs-friends-1">
                             <div class="content-tab">
                                 <span class="title-num"><%= @sum_f %></span>
-                                <span class="title">amigos</span>
+                                <span class="title"><%= current_network.friends_tag %></span>
                             </div>
                         </a>
                     </li>
@@ -168,11 +169,11 @@
                         </script>
                       <%end%>
                   </div>
-                  <div class="view-all" id="comunidad_fgthk"><%= link_to "Comunidad", network_comunity_path %></div>
+                  <div class="view-all" id="comunidad_fgthk"><%= link_to "#{current_network.comunity_tag}", network_comunity_path %></div>
                     <script>
                               $("#comunidad_fgthk").hover(
                                    function () {
-                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-7px; float:left; margin-top:-5px'><div class='tooltipr'><%=truncate("Ver todos los miembros de la comunidad.", :omission => "...", :length => 155) %></div></span>"));
+                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-7px; float:left; margin-top:-5px'><div class='tooltipr'><%=truncate("Ver todos los miembros de la #{current_network.comunity_tag}.", :omission => "...", :length => 155) %></div></span>"));
                                    },
                                    function () {
                                      $(this).find("span:last").remove();

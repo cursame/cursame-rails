@@ -10,4 +10,8 @@
 	<!--<li><a href="#">Desarrolladores</a></li>-->
 	<li><script>document.write(new Date().getFullYear())</script> &#174; C&uacute;rsame</li>
 </ul>
+</br></br>
+<% if current_network.logo != nil %>
+  Powered by <%= link_to 'Cúrsame', 'http://www.cursa.me', :style => " color:#fff; text-decoration:underline;", :target => '_blank'%>
+<%end%>
 </footer>

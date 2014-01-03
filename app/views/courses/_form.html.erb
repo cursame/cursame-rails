@@ -18,10 +18,10 @@
 <div class="form-course"><!-- estilo en courses.scss -->
   <div style="width:400px; float:left;">
     <%= form_for(@course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
-      <p>Nombre del curso</p>
+      <p>Nombre del <%= current_network.course_tag%></p>
       <%= f.text_field :title, :class=>"input-style" %>
       
-      <p>Descripción del curso</p>
+      <p>Descripción del <%=  current_network.course_tag%></p>
       <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style border_for_text" %>
       
       <div style="float: right; margin-right: 20px;">
@@ -32,7 +32,7 @@
 	      <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
 	      <%end%>
 	    </div>
-	    <div class="UpdateSubmit" style="float: left; margin-top: 7px;"><%= f.submit "Actualizar Curso", :class=>"act-crs" %></div>
+	    <div class="UpdateSubmit" style="float: left; margin-top: 7px;"><%= f.submit "Actualizar #{current_network.course_tag}", :class=>"act-crs" %></div>
 	</div>
 	
 	<div class="default-form edit-course" style="width:380px; float:left;">

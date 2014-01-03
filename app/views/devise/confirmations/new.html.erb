@@ -1,4 +1,10 @@
-<div class="signup-restore"></div>
+<% if current_network.image_front != nil%>
+
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <%else%>
+  <div class="signup-restore"></div>
+
+<%end%>
 
 <div class="content login confirmationIndexHeader" id="titlheader" style="width: 600px; text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px;">
 			<b style="font-size: 15px!important; line-height: 30px;">
