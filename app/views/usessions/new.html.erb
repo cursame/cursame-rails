@@ -86,7 +86,8 @@ $(document).ready(function() {
 		<%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
 		<%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
 		<% if devise_mapping.rememberable? -%>
-		<label class="checkbox remember" style="margin-left: 11px!important;">
+		<!--<label class="checkbox remember" style="margin-left: 11px!important;">-->
+		<label class="remember" style="margin-left: 11px!important;">
 			<%= f.check_box :remember_me %> <label>&nbsp;&nbsp;Recordarme</label>
 		</label>
 		
