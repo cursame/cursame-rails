@@ -1,6 +1,6 @@
-<% if current_network.image_front != nil%>
+<% if current_network.image_front.file.file != nil%>
 
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front.file %>") !important; background-size: 120%;'></div>
   <%else%>
   <div class="signup-restore"></div>
 
