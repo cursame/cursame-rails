@@ -111,7 +111,7 @@
        <% when current_network.logo_type == '26x26' %>
        <%= link_to image_tag("#{current_network.logo.square}", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
        <%else%>
-       <%= link_to image_tag("#{current_network.logo.response}", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
+       <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
        
        <%end%>
       <%end%>
