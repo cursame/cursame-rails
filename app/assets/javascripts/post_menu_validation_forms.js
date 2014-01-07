@@ -9,7 +9,7 @@
          
          return false;
          }else{
-         $('.comment_for_wall').attr("placeholder", "¿Que estás pensando?");
+         $('.comment_for_wall').attr("placeholder", "¿Qué estás pensando?");
          $('.comment_for_wall').addClass('normal-placeholder');
          return true;     
      }    

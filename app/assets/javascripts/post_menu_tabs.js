@@ -90,7 +90,7 @@ $('.cancel-post-form_tab').click(function(){
     
     /*se limpian todos los campos de los formularios*/
      /*comments*/
-      $('#comment').attr("placeholder", "¿Que estás pensando?");
+      //$('#comment').attr("placeholder", "¿Que estás pensando?");
       $('#comment').addClass('normal-placeholder');
     
      /*tareas*/

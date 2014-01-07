@@ -1,15 +1,16 @@
 
 <%= form_tag "/home/add_new_comment", :class => "default-form comment-form comment_form_top", remote: true do %>
 
+  	 <% @message = message %>
 
   <div class="video_help" style="display: none" id="comment_help">
 	  <div class="content_video" id="content_video_video"></div>
   </div>
   
   <% if comment_id.nil? then %>
-    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 570px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?', :class => 'comment_for_wall' %>
+    <%= text_area_tag "comment", nil, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 570px; outline-width: 0px;', :placeholder=> "#{message}", :class => 'comment_for_wall' %>
   <% else %>
-    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 570px; outline-width: 0px;', :placeholder=>'¿Que estás pensando?', :class => 'comment_for_wall' %>
+    <%= text_area_tag "comment", comment, :rows => 4, :cols => 81, :style =>'padding: 12px 12px 12px 12px; width: 570px; outline-width: 0px;', :placeholder=> "#{message}", :class => 'comment_for_wall' %>
   <% end %>
   <%= hidden_field_tag 'commentable_id', commentable_id %>
   <%= hidden_field_tag 'commentable_type', commentable_type %>
@@ -35,18 +36,25 @@
 
 				<% end %>
 			<%else%>
-
+             <% @message = 'Coloca un comentario en este curso.' %>
+			 
               <%=  hidden_field_tag "commentable_type",'Course'%>
               <%=  hidden_field_tag "delivery[course_ids][]", @course.id %>
-
+ 			 
              <script>
                $(document).ready(function(){
                $('#help_comment').css('margin-top','10px');
-               $('#comment').attr("placeholder","Coloca un comentario en este curso.");
+               $('#colp').html("<%= @message %>")
+               $('#comment').attr("placeholder","<%= @message %>");
                });
              </script>
 		<%end%>
 	<% end %>
+	<script>
+	  $('#cancel-post-form_tab').click(function(){
+	      $('#comment').attr("placeholder", "<%= @message %>");
+      });
+	</script>
 
   <script>
     $('#help_comment').click(function() {
