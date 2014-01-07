@@ -1,0 +1,312 @@
+
+/* Super Admin Custom Style
+----------------------------------*/
+.super-admin-menu{
+    background-image: linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -o-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -moz-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -webkit-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+    background-image: -ms-linear-gradient(bottom, rgb(192,182,207) 10%, rgb(217,216,230) 55%);
+
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.1, rgb(192,182,207)),
+      color-stop(0.55, rgb(217,216,230))
+    );
+    position:absolute;
+      top:0;
+      left:0;
+      width:150px;
+      height:100%;
+      margin-right:10px;
+}
+.lateral-content{
+   margin-left:160px;
+    
+}
+.super-admin-header{
+    color:#2D6477;
+    font-size:20px;
+}
+
+.super-admin-header2{
+    color:#2D6477;
+    font-size:40px;
+}
+.super-admin-descriptions{
+    color:#2D6477;
+     font-size:15px;
+}
+.counter-marquer{
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    color:#E28A1E;
+    font-size:25px;
+    float:right;
+    padding:15px;
+    margin: 5px;
+    width:30px;
+    height:30px;
+    background-image: linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -o-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -moz-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -webkit-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+    background-image: -ms-linear-gradient(bottom, rgb(45,46,41) 10%, rgb(33,38,38) 55%);
+
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.1, rgb(45,46,41)),
+      color-stop(0.55, rgb(33,38,38))
+    );
+    
+    
+}
+
+.super-admin-list{
+     background-color:#CECDCC;
+     border-bottom:#fff solid 2px;
+     font-size:15px;
+     padding:5px;
+     
+}
+.oppening_parts{
+    width:600px;
+    height:200px;
+    border-bottom:solid #eee 2px;
+    float:left;
+    overflow:auto;
+    
+}
+.course_container{
+   width:170px;
+   height:200px;
+   background-color:#eee; 
+   float:left;
+    
+}
+.heder_courses{
+    color:#2D6477;
+    font-size:18px;
+}
+.body_course{
+    color:#2D6477;
+    font-size:12px;
+    width:100px;
+}
+.holder_admin{
+    
+}
+
+.tareas_super_admin{
+    display:none;
+    
+}
+.survey_super_admin{
+    display:none;
+    
+}
+
+.delivery_course_admin{
+    color:#2D6477;
+    font-size:13px;
+     width:90%;
+     background-color:#eee;
+     padding:7px;
+     margin:10px;
+     
+     
+}
+.secon_title_super_admin{
+    color:#2D6477;
+    font-size:15px;
+    margin:10px;
+}
+.title_delivery_admin{
+       color:#2D6477;
+       font-weight:bold;
+}
+
+.float_right{
+    float:right;
+    background-color:#eee;
+    
+}
+.surveys_super_admin{
+    border:solid #eee 2px;
+    margin-left:10px;
+    margin-top:3px;
+    padding:3px;
+    width:90%;
+    display:none;
+    
+}
+
+.red_line_container{
+   border-bottom:solid #FF8000 2px;
+   width:100%;
+   margin-top:5px;
+}
+
+.body_assignment{
+    color:#2D6477;
+    font-size:12px;
+}
+
+.gray_box{
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #C7CBC9;
+    width:350px;
+    height:100px;
+    margin:10px;
+    float: left;
+     & .user_name{
+         
+         margin:10px;
+         padding: 5px;
+         width:200px;
+         
+     }
+     
+     & .link{
+          padding:5px;
+          margin-left:5px;
+          margin-top:-14px;
+          
+          
+     }
+
+}
+
+.container_activity{
+       width:700px;
+       height:700px;
+       margin:30px;
+       float: left;
+       background-color: #C7CBC9;
+       
+       & .plastic_t{
+              width:600px;
+              height:600px;
+              overflow: auto;
+              padding:30px;
+       }
+       
+       & h4 {
+            font-size:17px;
+       }
+       
+       & .plastic_ck{
+            width:600px;
+            height:50px;
+
+       }
+       
+       & h3 {
+           font-size:20px;
+           
+       }
+       
+       & .joko_orange{
+             width:600px;
+             height:40px;
+             background-color: #E9B416;
+             margin:10px;
+             padding:20px;
+             font-size:20px;
+             
+             
+       }
+       
+       & .lop_container{
+                 width:650px;
+                 height:600px;
+                 overflow: auto;
+                 padding:30px;
+       }
+
+       
+       
+}
+
+.networks{
+    margin-top:20px;
+    margin-bottom:20px;
+   
+    & h3 {
+        font-size:35px;
+        color:#2AA1AA;
+    }
+        
+    & p{
+         font-size:25px;
+         color:#2F757A;
+        
+    }
+    & .n_n{
+        background-color:#AAE6FD;
+        width:600px;
+        height:160px;
+        
+          & .button{
+              background:#256B86;
+              color:#fff;
+              height:40px;
+              font-size:35px;
+              cursor:pointer;
+              & :hover{
+                  background:#0CC6C3;
+                  color:#eee;
+                  cursor:pointer;
+              }
+          }
+        
+    }
+    
+    & .right{
+        float:right;
+    }
+    
+    & .left{
+        float:left;
+    }
+    
+    & .l_tunder{
+        width:580px;
+        margin-top:8px;
+        background:#C6F0F0;
+        padding:10px;
+        
+    }
+}
+
+.ko_btn{
+        max-width:350px;
+         & .button{
+          background:#256B86;
+          color:#fff;
+          height:40px;
+          font-size:35px;
+          cursor:pointer;
+          padding:4px;
+          -webkit-border-radius: 40px;
+          -moz-border-radius: 40px;
+          border-radius: 40px;
+          }
+          &   :hover{
+              background-color:#0CC6C3;
+              color:#eee;
+              cursor:pointer;
+              -webkit-border-radius: 40px;
+              -moz-border-radius: 40px;
+              border-radius: 40px;
+          }
+      
+}
+

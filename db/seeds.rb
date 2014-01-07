@@ -29,16 +29,19 @@ User.create(:email => "info+curosas.lu@cursa.me", :first_name => 'Lucia ', :last
 
 ######################### se crea un archivo de instalación directo para los locales ##############################
 
-n = Network.find_by_id(1)
 
-u = User.create(:email => "jose_alfredo@cursa.me", :password => "mmmmmm", :first_name => "Alfredo", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi584030', :domain => 'cursa.me', :subdomain => 'test')
-u1 = User.create(:email => "jose_alfredo+1@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s1", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi534284030',:domain => ' cursa.me', :subdomain => 'test')
-u2 = User.create(:email => "jose_alfredo+2@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'cursa.me', :subdomain => 'test')
-u3 = User.create(:email => "info@cursa.me", :password => "mmmmmm", :first_name => "Alfredo s2", :last_name => "Reyes", :confirmed_at => Time.now, :personal_url => 'fiahfih76543fdadaoi584030',:domain => 'cursa.me', :subdomain => 'test')
+#n = Network.find_by_id(1)
+
+n = Network.create(name: 'pruebas', subdomain: 'pruebas', population: '300', public_register: true , free: true, register_form: true, welcom_message: 'Hola')
+
+u = User.create(:email => "salvador@cursa.me", :password => "mmmmmm", :first_name => "Salvador", :last_name => "Lopez", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi584030', :domain => 'cursa.me', :subdomain => 'test')
+u1 = User.create(:email => "salvador+1@cursa.me", :password => "mmmmmm", :first_name => "Salvador s1", :last_name => "Lopez", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi534284030',:domain => ' cursa.me', :subdomain => 'test')
+u2 = User.create(:email => "salvador+2@cursa.me", :password => "mmmmmm", :first_name => "Salvador s2", :last_name => "Lopez", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'cursa.me', :subdomain => 'test')
+u3 = User.create(:email => "info@cursa.me", :password => "mmmmmm", :first_name => "Salvador s3", :last_name => "Lopez", :confirmed_at => Time.now, :personal_url => 'fiahfih76543fdadaoi584030',:domain => 'cursa.me', :subdomain => 'test')
 
 n_last = Network.last
 
-p  = Permissioning.create( :user_id => u.id, :role_id => "1", :network_id => n_last.id )
+p  = Permissioning.create(:user_id => u.id, :role_id => "1", :network_id => n_last.id )
 p1 = Permissioning.create(:user_id => u1.id, :role_id => "3", :network_id => n_last.id )
 p2 = Permissioning.create(:user_id => u2.id, :role_id => "2", :network_id => n_last.id )
 p3 = Permissioning.create(:user_id => u3.id, :role_id => "4", :network_id => n_last.id )

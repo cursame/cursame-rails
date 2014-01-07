@@ -1,0 +1,226 @@
+
+/* Global Skeleton
+----------------------------------*/
+.topbar {
+  position: fixed;
+  height: 35px;
+  z-index: 999;
+  width: 100%;
+}
+
+.menu-user {
+  a {
+    position: relative;
+    margin-top: -3px!important;
+  }
+
+  span {
+    margin-top: 2px!important;
+  }
+
+  .avatar {
+    margin-top: -8px!important;
+  }
+}
+
+.clear{
+  clear:both;
+}
+
+/* Notifications and Messages
+----------------------------------*/
+#box-notifications, #box-messages-notifications{
+  clear: both;
+  float: left;
+  margin: 34px 0 0 10px;
+  position: absolute;
+  margin-top: 34px;
+  display: block;
+    
+  &.avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
+
+  &.comment-text{
+    width: 300px;
+    height: 100%;
+    float: left;
+    margin: 5px 0px 10px 11px;
+
+    &.header{
+      line-height: 23pt;
+      padding-bottom: 6px;
+
+      &.top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+
+      &.date{
+        float: right;
+        margin-right: 6px;
+      }
+    }
+
+    & .content{
+      padding: 6px 10px 5px 10px;
+      overflow: auto;
+      overflow-x: hidden;
+      height: 400px;
+
+      & li{
+        padding: 10px 0 10px 0;   
+        min-height: 50px;
+      }
+
+      &.avatar-notifications{
+        float: left;
+        margin-right: 10px;
+      }
+
+      &.first{
+        margin-top: -5px;
+      }
+
+      &.last{
+        border: none;
+      }
+    }
+           
+    &.video{
+      padding: 10px;
+    }
+    
+    &.title-discusion{
+      margin-bottom: 10px;
+    }
+    
+    &.text-discusion{
+      padding-left: 10px;
+    }
+    
+    &.footer{
+      height: 25px;
+      float: left;
+      width: 100%;
+      padding-top: 6px;
+
+      &.icon{
+        float: left;
+        margin: 4px 0px 0px 5px;
+      }
+
+      &.labels{
+        float: right;
+        margin: 4px 5px 0px 10px;
+      }
+    }
+  }
+
+ 
+  &.header{
+    height: 25px;
+    width: 100%;
+
+    &.name{
+      color: #333;
+    }
+  }
+
+  &.general-cir-discusion{
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+
+  &.arrow-top {
+    width: 14px;
+    height: 9px;
+    position: absolute;
+    margin:-9px 0px 0px 145px;
+    z-index: 20;
+  }
+}
+
+/* Menu User
+----------------------------------*/
+.menu-user{
+  width: 320px;
+  float: right;
+  margin-top: 10px;
+  
+  & .logout{
+    margin-top: 5px;
+    float: right;
+    padding-left: 6px;
+  }
+  
+  & .avatar {
+    float: right;
+    text-align: center;
+    color: #666;
+    width: 27px;
+    margin-top: 1px;
+    font-size: 13px;
+    border-radius: 50%;
+    border: 1px solid #FFF;
+    transition: 0.3s;
+  }
+  & .avatar:hover {
+  border-radius: 50%;
+  border: 1px solid #006696;
+  transition: 0.3s;
+  }
+  
+  & span{
+    margin-top: 11px;
+    float: right;
+    text-align: center;
+    color: #666;
+    padding: 0px 10px 0px 3px;
+    font-family: HelvLight;
+  }
+  & .admin-access{
+    margin-left: -20px;
+  }
+}
+
+/* Notices
+----------------------------------*/
+.notice {
+  width:100%;
+}
+
+.expires .uninstal_exit{
+  width:200px;
+  height:40px;        
+
+  &:hover{
+    width:200px;
+    height:40px;
+  }
+}
+
+/* Zenbox Tab
+----------------------------------*/
+#zenbox_tab{
+  top: 38%!important;
+  margin-right: 5px!important;
+}
+
+/* Scroll to Top Button
+----------------------------------*/
+#scrollup{
+  width:40px;
+  height:40px;
+  opacity:0.3;
+  position:fixed;
+  bottom: 86%;
+  right: 1%;
+  display:none;
+}

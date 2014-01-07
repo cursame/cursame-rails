@@ -1,0 +1,692 @@
+
+.visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight, #chat-panels-zone{
+    position: fixed;
+    width: 200px;
+    height: 20px;
+}
+
+.users-and-groups-for-chat {
+	width: 200px;
+  height: 20px;
+	padding-top: 7px;
+	padding-left: 10px;
+  bottom: 0px;
+  right: 15px;
+}
+
+.toggle_chat_image {
+	width: 14px;
+	height: 14px;
+	margin-right: 4px;
+	margin-top: -1px;
+	float: left;
+}
+
+.toggle_chat_image_active {
+	width: 14px;
+	height: 14px;
+	margin-right: 4px;
+	margin-top: -1px;
+	float: left;
+}
+
+.chat-panel{
+	bottom: 0px;
+	right: 275px;
+	position: fixed;
+	padding: 4px 10px;
+	width: 230px;
+	height:20px;
+	margin-left: 5px;
+	display: block;
+	margin-right: 20px;
+
+	> span {
+		width: 204px;
+		overflow: hidden;
+		display: inline-block;
+		margin-left: -9px;
+		padding: 6px 8px 6px 9px;
+		margin-top: -3px;
+		cursor: pointer;
+		height: 10px;
+		margin-bottom: 5px;
+	}
+}
+
+.chatWrapper {
+	margin-right: 10px;
+}
+
+#users-and-groups-online {
+	width: 188px;
+	height:302px;
+	margin-top: 8px;
+	margin-left: -11px;
+	display: block;
+	padding-top: 10px;
+	padding-left: 12px;
+	padding-right: 10px;
+	overflow: auto;
+}
+
+#users-and-groups-online div > a:link {
+	width: 198px;
+	display: block;
+	margin-left: -11px;
+	padding-left: 10px;
+	padding: 5px 0 5px 10px;
+}
+
+.titleBraker {
+	width: 190px;
+	padding: 5px 10px;
+	margin-top: 10px;
+	display: block;
+	margin-left: -12px;
+	margin-top: -4px;
+}
+
+.titleBrakerSecondary {
+	width: 190px;
+	padding: 5px 10px;
+	font-size: 16px;
+	font-weight: lighter;
+	margin-top: 10px;
+	color: #000;
+	font-weight: bold;
+	display: block;
+	margin-left: -12px;
+	margin-top: 10px;
+	margin-bottom: 6px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#filterCont {
+background: none repeat scroll 0 0 #000000;
+display: block;
+height: 50px;
+width: 213px;
+}
+
+#ChatFilter {
+	width: 200px;
+	height: 32px;
+	background: #363F4D;
+	cursor: pointer;
+	display: block;
+	padding-left: 13px;
+	padding-top: 17px;
+	position: absolute;
+	z-index: 999;
+}
+
+#ChatFilter:hover {
+	background: #FFF;
+}
+
+.floater {
+	float: right!important;
+	display: block;
+	position: relative;
+	}
+
+#ChatFilterDrop {
+	position: absolute;
+	background: #006696;
+	margin-top: 11px;
+	margin-left: -12px;
+	width: 212px;
+	display: block;
+}
+
+#ChatFilterDrop ul li {
+display: block;
+position: relative;
+width: 203px;
+color: #FFF;
+background: #006696;
+}
+
+#ChatFilterDrop ul li > a {
+	display: block;
+	position: relative;
+	padding: 14px 10px 14px 14px;
+	width: 189px;
+	color: #FFF;
+	margin-left: -1px;
+}
+
+#ChatFilterDrop ul li > a:hover {
+	color: #FFF;
+	background: #0077af;
+	display: block;
+	position: relative;
+	padding: 14px 10px 14px 14px;
+	width: 189px;
+	color: #FFF;
+}
+
+.chat-zone{
+	background: #EEE;
+	// height:320px;
+}
+
+.closeChat { 
+	width: 23px;
+	height: 27px;
+	position: absolute;
+	margin-left: 216px;
+	margin-top: -22px;
+	overflow: visible;
+	z-index: 99999;
+ }
+ 
+.closeChat:hover {
+	//background: #3B5998;
+	cursor: pointer;
+}
+
+
+//------------------------------------------------------------------------------------//
+//------------------------------- zona de tabs en chat -------------------------------//
+
+
+.chat-zone-messages{
+	width: 228px;
+	height: 247px;
+	// height: 147px;
+	margin-left: -10px;
+	/*background: #F2F4F8;*/
+	background: #FFF;
+	overflow: auto;
+	overflow-x: hidden;
+	padding: 10px;
+	color: #000;
+	font-weight: 100;
+	border-left: 1px solid #B2B2B2;
+	border-right: 1px solid #B2B2B2;
+}
+
+.chat-zone-messages .insideChat {
+	width: 228px;
+	padding: 0;
+	margin: 0;
+	min-height: 43px;
+	max-height: 500px;
+	margin-bottom: 10px;
+	display: table;
+	}
+
+.chat-zone-messages .insideChat .insideChatText .imgChat {
+width: 20px;
+height: 20px;
+float: left;
+position: relative;
+display: block;
+z-index: 1;
+}
+
+.chat-zone-messages .insideChat .insideChatText .MsjC {
+	float: right;
+}
+
+.chat-zone-messages .insideChat .insideChatText .MsjC p {
+	min-width: 146px;
+	max-width: 225px;
+	margin-top: -5px;
+	float: right;
+	z-index: 0;
+}
+
+
+//------------------------------- termina zona de tabs en chat -------------------------------//
+//--------------------------------------------------------------------------------------------//
+
+
+.chat-zone-footer{
+    background: #FFF;
+}
+
+.chat-zone-footer #mesage { 
+	background: transparent;
+	border: 0;
+	padding: 7px 6px;
+	width: 183px;
+	outline: none
+}
+
+.chat-zone-footer #mesage input:focus { 
+	border: 0;
+}
+
+.chat-zone-footer form {
+	width: 248px;
+	margin-left: -10px;
+	background: #fff;
+	height: 30px;
+	border-top: 1px solid #B2B2B2;
+	border-left: 1px solid #B2B2B2;
+	border-right: 1px solid #B2B2B2;
+}
+
+.chat-zone-footer .sendBtnChat {
+	//background: #28C9AB;
+	font-weight: normal;
+	background: transparent;
+	color: #A6A6A6;
+	border: 0;
+	margin-top: 5px;
+	position: absolute;
+}
+.chat-zone-footer .sendBtnChat:hover {
+	color: #4862A3;
+	background: transparent!important;
+}
+
+.sendBtnChat {
+	background: #28C9AB;
+	color: #fff;
+	border: 0;
+	margin-top: 5px;
+	position: absolute;
+	border-radius: 3px; -webkit-border-radius: 3px;
+}
+.sendBtnChat:hover {
+	background: #5F95BE;
+	cursor: pointer;
+}
+.main-chat-zone{
+    /*border:#ddd 1px solid;*/
+    /*height:500px;*/
+    height: 400px;
+    //overflow-y: scroll;
+    padding-top: 10px;
+}
+
+.chatSingle {
+width: 198px;
+display: block;
+margin-left: -11px;
+padding-left: 10px;
+padding: 0px 0 0px 10px;
+color: #1a1a1a;
+font-weight: lighter;
+}
+.chatSingle > a:link {
+width: 189px;
+display: block;
+margin-left: -11px;
+padding-left: 10px;
+padding: 11px 5px 11px 10px;
+color: #1a1a1a;
+font-weight: lighter;
+transition: 0.3s;
+-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+
+}
+.chatSingle > a:hover {
+background: #5F95BE;
+cursor: pointer;
+color: #FFF;
+transition: 0.1s;
+}
+.chatSingle > a:active {
+background: #307BEC;
+color: #fff;
+cursor: pointer;
+}
+
+
+.chatSingle_big {
+width: 170px;
+display: block;
+//margin-left: -11px;
+padding-left: 10px;
+padding: 0px 0 0px 10px;
+color: #FFF;
+font-weight: lighter;
+}
+.chatSingle_big > a:link {
+	//width: 189px;
+	width: 180px;
+	display: block;
+	margin-left: -11px;
+	padding-left: 10px;
+	//padding: 11px 5px 11px 10px;
+	padding: 11px 24px 11px 10px;
+	color: #FFF;
+	font-weight: lighter;
+	transition: 0.3s;
+	//-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;	
+}
+
+.chatSingle_big > a.SelectedClass {
+	background: #5F95BE;
+	//background: #FFF;
+}
+
+.chatSingle_big > a:hover {
+background: #5F95BE;
+cursor: pointer;
+color: #FFF;
+transition: 0.1s;
+}
+.chatSingle_big > a:active {
+background: #307BEC;
+color: #fff;
+cursor: pointer;
+}
+
+#chat .titleChat {
+	width: 720px!important;
+	z-index: 99;
+}
+#chat .main-chat-zone {
+	width: 714px;
+	padding-top: 10px;
+	display: block;
+	height: 100%;
+	padding-bottom: 50px;
+}
+#chat .shareMSJ {
+	width: 716px;
+	background: #F2F2F2;
+	z-index: 99;
+	position: fixed;
+	bottom: 0;
+	display: block;
+	margin-bottom: -3px;
+}
+
+#chat .shareMSJ input#mesage {
+	width: 485px;
+	margin: 10px;
+}
+
+.titleChat {
+		width: 535px;
+		padding-top: 20px;
+		background: #FFF;
+		text-align: left;
+		display: fixed;
+		padding: 18px 10px 5px 10px;
+		height: 26px;
+		color: #000;
+		font-size: 16px;
+		border-bottom: 1px solid #DDD;
+		border-right: 1px solid #DDD;
+}
+
+.insideChat {
+		padding: 10px 10px;
+		//width: 375px;
+		max-width: 700px;
+		margin-left: 7px;
+		margin-bottom: 10px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		min-height: 22px;
+		max-height: 300px;
+	}
+
+.insideChat p {
+		font-family: arial;
+		font-size: 12px;
+		color: #1a1a1a;
+}
+
+// --------------------------------------------------------------- //
+///////////////////// label de ballon chat left /////////////////////
+
+.MsjC {
+	//display: table-cell;
+	display: -moz-grid;
+	min-width: 50px;
+	max-width: 225px;
+}
+
+.MsjC p {
+	position:relative;
+	padding:10px 20px;
+	background:#E5E5EA;
+	border-radius:25px;
+	color: black;
+	float: left;
+	display: block;
+		
+	&:before {
+		content:"";
+		position:absolute;
+		z-index:2;
+		bottom:-2px;
+		left:-7px;
+		height:20px;
+		/*border-left:20px solid #E5E5EA;
+		border-bottom-right-radius: 16px 14px;
+		*/
+		-webkit-transform:translate(0, -2px);
+	}
+
+	&:after {
+		content:"";
+		position:absolute;
+		z-index:3;
+		bottom:-2px;
+		/*left:4px;*/
+		-moz-margin-start: -28px;
+		left: 23px;
+		width:26px;
+		height:20px;
+		background: url('colophon.png') no-repeat;
+		border-bottom-right-radius: 10px;
+		-webkit-transform:translate(-30px, -2px);
+	}
+}
+
+// --------------------------------------------------------------- //
+///////////////////// label de ballon chat right /////////////////////
+
+.insideChat .MsjD {
+	//display: table-cell;
+	display: -moz-grid;
+	min-width: 50px;
+	max-width: 225px;
+}
+
+.insideChat .MsjD p {
+	position: relative!important;
+	padding: 10px 20px!important;
+	color: #FFF!important; 
+	background: #0B93F6!important;
+	border-radius: 25px!important;
+	text-align: right!important;
+	float: right!important;
+	display: block;
+		
+	&:before {
+		content: ""!important;
+		position: absolute!important;
+		z-index: -1!important;
+		bottom: -2px!important;
+		right: -7px!important;
+		float: right!important;
+		height: 20px!important;
+		//border-right: 20px solid #0B93F6;
+		background: url('colophon_right.png') no-repeat!important;
+		border-bottom-left-radius: 16px 14px!important;
+		-webkit-transform: translate(0, -2px)!important;
+	}
+
+	&:after {
+		content: ""!important;
+		position: absolute!important;
+		z-index: 1!important;
+		bottom: -2px!important;
+		right: -56px!important;
+		width: 26px!important;
+		height: 20px!important;
+		background: transparent!important;
+		border-bottom-left-radius: 10px!important;
+		-webkit-transform:translate(-30px, -2px)!important;
+	}
+}
+
+// --------------------------------------------------------------- //
+////////////////////// terminan labels de chat //////////////////////
+
+#chat-messages .insideChat p { 
+	max-width: 300px;
+	color: #000;
+	margin: -3px 12px 0 12px!important;
+	z-index: -1;
+	font-size: 14px;
+}
+
+#chat-messages .insideChat .insideChatText .imgChat img {
+	width: 30px!important;
+	height: 30px!important;
+	/*margin-top: -13px!important;*/
+	margin-top: -3px!important;
+	position: relative;
+	display: block;
+	margin-left: -7px;
+	border: 1px solid #F7F7F7;
+}
+
+.insideChatText {
+		font-family: arial;
+		color: #111;
+		font-size: 11px;
+		font-weight: lighter;
+		margin-bottom: 4px; 
+		height:auto; min-height:50px;
+}
+
+.toolTipUser {
+		/*background: url('/assets/triangle.png') no-repeat center right;*/
+		width: auto;
+		height: 10px;
+		background: rgba(254,254,254,0.9);
+		position: relative;
+		text-align: right;
+		float: left;
+		padding: 5px 5px 5px 5px;
+		margin-top: 0px;
+		z-index: 99;
+		//margin-left: -130px;
+		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+}
+
+.MsjD .toolTipUser {
+	float: right;
+}
+
+.MsjC .imgChat { 
+		width: 30px;
+		height: 30px;
+		display: table;
+		float: left;
+		cursor: pointer;
+ }
+.MsjD .imgChat { 
+		width: 30px;
+		height: 30px;
+		display: table;
+		float: right;
+		cursor: pointer;
+ }
+
+
+.shareMSJ {}
+
+.shareMSJ input#mesage {
+	padding: 10px;
+	width: 355px;
+	outline: none;
+	margin-top: -2px;
+	float: left;
+}
+
+.shareMSJ input.sendBtnChat {
+	padding: 12px;
+	width: 176px;
+	outline: none;
+	margin-top: 9px;
+	float: right;
+	display: inline-block;
+	position: absolute;
+	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
+}
+
+.load-more-messages{
+	width:250px;
+	margin-left:-10px;
+	background: #F2F4F8;
+	text-align:center;
+	font-weight:bolt;
+	color:#CCC;
+	cursor:pointer;
+	margin-top: -4px;
+}
+
+#go-to-chats-url{
+    width: 100px;
+    height:20px;
+    bottom: 0px;
+    right: 275px;
+    position: fixed;
+    padding: 4px 10px;
+    color: #fff;
+    background: #4497DA;
+    margin-left: 5px;
+    font-weight: 100;
+    display: block;
+    margin-right: 20px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+#go-to-chats-url > span {
+	width: 100px;
+	display: block;
+	margin-left: -9px;
+	padding: 6px 8px 6px 9px;
+	margin-top: -3px;
+	cursor: pointer;
+}
+
+#go-to-chats-url > span a{
+	cursor: pointer !important;
+	color:#FFF;
+}
+
+.imageChatDrop {
+	width: 20px;
+	height: 20px;
+	position: relative;
+	display: block;
+	float: right;
+	//margin-top: -19px;
+	margin-top: 2px;
+}
+// user online
+.user-online{	
+	background:#65A830;
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	float:right;
+	margin-top:-17px;
+}
+.user-offline{
+	background:#CCC;
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	float:right;
+	margin-top:-17px;
+}

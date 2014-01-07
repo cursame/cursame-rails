@@ -1,0 +1,153 @@
+
+/* Global Skin
+----------------------------------*/
+body {
+  color: #333;
+  font-family:  $helvetica;
+  font-size: 13px;
+  background: $bg-page;
+}
+
+ul{
+  list-style-type: none;
+}
+
+a {
+  color: #4FA3E9;
+  text-decoration: none;
+}
+
+.topbar {
+  background: #FFF !important;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Notifications and Messages
+----------------------------------*/
+#box-notifications, #box-messages-notifications{
+    
+  &.comment-text{
+    background: #FFF;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    box-shadow: 1px 3px 7px #757575;
+
+    &.header{
+      line-height: 23pt;
+
+      &.date{
+        color: #999;
+      }
+    }
+
+    &.content{
+      color: #333;
+      font-size: 13px;
+      
+      & li {
+        border-bottom: $border-box;
+        line-height: 18px;
+        font-size: 12px;
+
+        &:hover{
+          background-color: #f8f8f8;
+        } 
+      }
+
+      &.time{
+        font-size: 10px;
+        color: #777;
+      }
+
+      &.last{
+        border: none;
+      }
+    }
+
+    &.title-discusion{
+      font-size: 18px; 
+      font-weight: bold;
+    }
+  
+    &.footer{
+      border-top:1px solid $border-general;
+      color: #777777;
+      text-align: center;
+      box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;     
+
+      &:hover{
+        background-color: #f8f8f8;
+        box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+      }
+    }
+  }
+
+ 
+  &.header{
+    background: #fff;
+    border-bottom: $border-box;
+    box-shadow:         inset 0px 1px 0px #f7f7f8;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
+    
+    &.name{
+      color: #333;
+    }
+  }
+
+  &.general-cir-discusion{
+    background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
+  }
+
+  &.arrow-top {
+    background: url('/assets/arrow_notification.png') no-repeat;
+  }
+}
+
+/* Notices
+----------------------------------*/
+.notice{
+  color: #F5F210;
+  font-size:15px;
+}
+
+.expires{
+  color:#FADA08;
+  background:#F9F3CB;
+  font-size:20px;
+  font-weight:bold;
+  
+  .uninstal_exit{
+    text-align:center;
+    background:#D2F9CB;
+    color:#75F45B;        
+
+    &:hover{
+      text-align:center;
+      background:#ABDAA2;
+      color:#75F45B;
+    }
+  }
+}
+
+/* Zenbox Tab
+----------------------------------*/
+#zenbox_tab{
+  background:transparent!important;
+  border: 0px!important;
+}
+
+.zenbox_tab__text {
+  background: url('line-dashed-mini.png') no-repeat center center;
+}
+
+.ZenboxTabRight:hover, #zenbox_tab:hover {
+  background: url('/assets/ayuda.png') 70px center no-repeat!important;
+}
+
+/* Scroll to Top Button
+----------------------------------*/
+#scrollup{
+  opacity:0.3;
+  background: url('/assets/icon_top.png') no-repeat;
+}
