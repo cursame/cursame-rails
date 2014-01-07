@@ -41,10 +41,10 @@
     <div id="message-form-area-tab" class="flonder" style="margin-top: -1px;">
       <% permitted_to? :create, :comments do %>
       <div class="frcomment" >
-          <%= image_tag('image-pensando.png')%>
+          <%= "¿Qué estás pensando?"%>
       </div>
       <div class="ftcomment" style="display:none;">
-      <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil} %>
+      <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil, :message => '¿Qué estás pensando?'} %>
       <% end %>
       </div>
     </div>
@@ -84,11 +84,11 @@
   </div>            
   <div id="message-form-area-tab" class="flonder" style="margin-top: -1px; display: inline-block!important;">
       <div class="frcomment" >
-                 <%= image_tag('image-pensando.png')%>
+                 <%= "Deja un comentario."%>
         </div>             
        <% permitted_to? :create, :comments do %>
             <div class="ftcomment" style="display:none;">
-       <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User', :comment_id => nil} %>
+       <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User', :comment_id => nil, :message => 'Deja un comentario.'} %>
            </div>
            
        <%end%>
