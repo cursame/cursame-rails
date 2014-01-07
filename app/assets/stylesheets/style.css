@@ -422,7 +422,7 @@ px;*/
 	overflow: hidden!important;
 	float: left;	
 }
-#content_free {
+.content_free {
 	margin-top: 20px;
 	width: 3035px;
 	overflow-y: hidden;

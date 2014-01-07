@@ -20,13 +20,18 @@ class Network < ActiveRecord::Base
   validates_format_of     :subdomain, :with => /^[\-a-z0-9]+$/
 
 
-
+ 
   #comentarios para las redes
   acts_as_commentable
 
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
-
+  
+  #uploader de imagenes de fondo de redes
+  
+  mount_uploader :image_front, BackendFromNetworkUploader
+  mount_uploader :logo, LogoNetworkUploader
+  
   def owner?(role,user)
     return false
   end
@@ -233,4 +238,53 @@ class Network < ActiveRecord::Base
 
     return average/networks.size
   end
+  
+  ##### definiciones de cambios de etiquetas especializadas.
+  
+  def user_tag
+    @defter = (self.titles).to_s.split(',')[0]
+    @self_defter = @defter.split(':').last   
+  end
+  
+  def profesor_tag
+    @defter = (self.titles).to_s.split(',')[1]
+    @self_defter = @defter.split(':').last
+  end
+  
+  def student_tag
+    @defter = (self.titles).to_s.split(',')[2]
+    @self_defter = @defter.split(':').last
+  end
+  
+  def admin_tag
+    @defter = (self.titles).to_s.split(',')[3]
+    @self_defter = @defter.split(':').last
+  end
+  
+  def course_tag
+     @defter = (self.titles).to_s.split(',')[4]
+     @self_defter = @defter.split(':').last
+  end
+  
+  def courses_tag
+     @defter = (self.titles).to_s.split(',')[5]
+     @self_defter = @defter.split(':').last
+  end
+  
+  def friend_tag
+     @defter = (self.titles).to_s.split(',')[6]
+     @self_defter = @defter.split(':').last
+  end
+  
+  def friends_tag
+     @defter = (self.titles).to_s.split(',')[7]
+     @self_defter = @defter.split(':').last
+  end
+  
+  def comunity_tag
+      @defter = (self.titles).to_s.split(',')[8]
+      @self_defter = @defter.split(':').last
+   end
+  
+
 end

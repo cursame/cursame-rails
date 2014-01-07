@@ -203,3 +203,4 @@ es:
   activerecord:
     errors:
       <<: *errors
+    

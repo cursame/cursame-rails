@@ -5,7 +5,6 @@
 <%= form_for(@network, :remote => true) do |f| %>
   <% if @network.errors.any? %>
 
-
 				<div id="error_explanation">
 					<h2><%= pluralize(@network.errors.count, "error") %> prohibited this network from being saved:</h2>
 						<ul>
@@ -15,7 +14,8 @@
 						</ul>
 				</div>
   <% end %>
-
+               <div id="open_setting_personalize" style="float:right; margin-right:-280px;"><a style="cursor:pointer;" class="btn_blue">Configuración avanzada</a></div>
+               
 				<div class="field-style" style="clear: both; position: relative; display: block; height: 70px;">
 					<p><%= f.label :nombre %><p/>
 					<%= f.text_field :name, :class=> "default-form" %>
@@ -32,7 +32,32 @@
 					 <p><%= f.label :Mensaje_de_bienvenida_a_la_red %></p>
      <%= f.text_area :welcom_message, :class=>"default-form" %>   
 				</div>
-		
+			<script>
+			   $('#open_setting_personalize').click(function(){
+				      $('#setting_personalize').toggle('slide');
+				  });
+			</script>
+			 <div id="setting_personalize" style="display:none;">
+			 <p style="float:left;">Imagen de loggin actual:  Tipo largo: <%= (current_network.image_front).to_s.split('/').last%><%= image_tag(current_network.image_front, :style => "width:120px; height:80px; margin-left:20px;  float:left;") %>  </p>  <div id="change" style="float:left; margin-left:20px;"><p style="float:left;"><a style="cursor:pointer;  ">Cambiar Imagen</a></p></div>
+			
+                <div id="septos_loader" style="display:none; margin-bottom:16px;"><p><%= f.file_field :image_front %></p></div>
+                
+                
+                 <p style="float:left;">Logo actual:  <%= (current_network.logo.response).to_s.split('/').last%> </br> Tipo Recatangular:<%= image_tag(current_network.logo.response, :style => "width:150px; height:26px; ") %></br> </br>Tipo cuadrado: <%= image_tag(current_network.logo.square, :style => "width:26px; height:26px; ") %></p>  <div id="change_logo" style=" margin-left:20px;"><p style="float:left;"><a style="cursor:pointer;  float:left;">Cambiar logo</a></p></div>
+			
+                
+                <div id="septos_loader_logo" style="display:none; margin-bottom:16px;"><p><%= f.file_field :logo %></p>
+                    <p> Tipo del logo <%= f.select :logo_type, options_for_select([ "128x26", "26x26" ]) %></p></div>
+                    <p><a style="cursor:pointer; float:right; margin-right:-260px; margin-top:-45px;" id="opm_tag" class="btn_blue">Etiquetas</a></p>
+                    <p><a style="cursor:pointer; float:right; margin-right:-160px; margin-top:-45px;" id="opm_domain" class="btn_blue">Dominio</a></p>
+                    
+                <div id="etiquetas" style="display:none;"><%= f.text_area :titles %></div>
+                <div id="domain" style="margin-top:30px; margin-bottom:50px; display:none;"><%= f.text_field :personalize_domain, :placeholder => "Dominio personalizado" %></div>
+                
+                
+                </div>
+                </br>
+                
 				<div class="checkboxes_layout" style="margin-bottom: 30px;">
 					<div class="field" style="clear: both; position: relative; display: block; height: 30px;">
 						<p style="margin-left:30px;margin-top:5px; position:absolute;">  <%= f.label :reestablecer_contraseña_al_importar_los_usuarios %> </p>
@@ -58,3 +83,19 @@
 </div>
 </div>
 </div>
+
+	<script>
+	  $('#change').click(function(){
+	      $('#septos_loader').toggle('slide');
+	  });
+
+	  $('#change_logo').click(function(){
+		  $('#septos_loader_logo').toggle('slide');
+	  });
+	  $('#opm_tag').click(function(){
+  		  $('#etiquetas').toggle('slide');
+  	  });
+  	  $('#opm_domain').click(function(){
+    		  $('#domain').toggle('slide');
+    	  });
+	 </script>

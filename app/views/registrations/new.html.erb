@@ -5,7 +5,13 @@ $(document).ready(function() {
 });
 
 </script>
-<div class="signup-restore"></div>
+<% if current_network.image_front != nil%>
+
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <%else%>
+  <div class="signup-restore"></div>
+
+<%end%>
 
 <div class="login">
     <p>
@@ -41,7 +47,13 @@ $(document).ready(function() {
        <center>
    </div>
 <%else%>
-<div class="signup-restore"></div>
+<% if current_network.image_front != nil%>
+
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <%else%>
+  <div class="signup-restore"></div>
+
+<%end%>
 
 <div class="content login" id="titlheader">
 
@@ -100,9 +112,9 @@ $(document).ready(function() {
     });
 </script>
 -->
-	<!-- <div style="background:#FFF; padding:20px; margin:10px">
+	 <div style="background:#FFF; padding:20px; margin:10px; display:none;">
       <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-    </div> -->
+    </div> 
 		
 		<div class="confirmation-links" style="text-align: left; font-size: 12px; line-height: 1.5em;">
 			<%- if controller_name != 'sessions' %>

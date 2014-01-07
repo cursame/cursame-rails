@@ -1,4 +1,10 @@
-<div class="signup-layout"></div>
+<% if current_network.image_front.file != nil%>
+
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <%else%>
+  <div class="signup-restore"></div>
+
+<%end%>
 	<div class="content login" id="titlheader" style="text-align:center;">
         	<b>Cambia tu contraseña:</b>
     		<p style="font-size: 16px; margin-top: 10px;">Puedes cambiar tu contraseña después de fácilmente colocándola en los campos requeridos</p>

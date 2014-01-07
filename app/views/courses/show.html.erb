@@ -290,7 +290,7 @@
     </div><!--ends box-titles-content-->
     
     <div id="configuration" class="menu-course  active" style="height:500px; color:#fff;">
-      <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de curso</h1>
+      <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de <%= current_network.course_tag%></h1>
       <%= render :partial => "courses/form"%>
     </div>
   </div><!--ends banner-shadow-->
@@ -330,7 +330,7 @@
 	    <% permitted_to? :create, :courses do %>
 	         <% if @member.owner != nil %>
                 <% if @member.owner == true %>
-   	    <br><%= link_to "editar curso", edit_course_path,:id =>"edit_course"%>
+   	    <br><%= link_to "editar #{current_network.course_tag}", edit_course_path,:id =>"edit_course"%>
    	            <%end%>
    	         <%end%>
 	    <%end%>
@@ -419,7 +419,7 @@
     <script>
           $("#members_admin").hover(
                function () {
-                 $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("Deso ver todos los miembros del curso", :omission => "...", :length => 55)%></div></span>"));
+                 $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("Deso ver todos los miembros del #{current_network.course_tag}", :omission => "...", :length => 55)%></div></span>"));
                },
                function () {
                  $(this).find("span:last").remove();
@@ -438,7 +438,7 @@
           <%= form_for CourseFile.new, :html => {:multipart => true} do |f|%>
             <div id="upload-files-to-course">
               <label class="UploadArchiveBtn">
-            	  Subir Archivos al Curso
+            	  Subir Archivos al <%= current_network.course_tag%>
               </label>
               <input id="course_file_file" class="UploadFiles" style="height: 55px; min-width:55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
               <%= hidden_field_tag :course_id, @course.id %> 
@@ -451,7 +451,7 @@
 	<script>
 	  $("#upload-files-to-course").hover(
 	       function () {
-	         $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:100px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("Da click aquí para subir un archivo a la biblioteca del curso.", :omission => "...", :length => 155)%></div></span>"));
+	         $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:100px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("Da click aquí para subir un archivo a la biblioteca del #{ current_network.course_tag }.", :omission => "...", :length => 155)%></div></span>"));
 	       },
 	       function () {
 	         $(this).find("span:last").remove();

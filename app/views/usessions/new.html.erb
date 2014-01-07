@@ -5,8 +5,13 @@ $(document).ready(function() {
 });
 
 </script>
-<div class="signup-restore"></div>
+<% if current_network.image_front.file != nil%>
 
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <%else%>
+  <div class="signup-restore"></div>
+
+<%end%>
 <div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px; padding-left: 20px; padding-right: 20px;">
       <b style="font-size: 35px!important; line-height: 30px;">
       Lo sentimos
@@ -29,8 +34,20 @@ $(document).ready(function() {
 <%else%>
 
 <!-- <div class="bg-layout"></div> -->
-<div class="signup-restore"></div>
+<% if current_network.image_front.file != nil%>
 
+  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
+  <%else%>
+  <div class="signup-restore"></div>
+
+<%end%>
+<% if current_network.image_front.file != nil%>
+  <script>
+     $(document).ready(function() {
+        $('.signup-restore').css('background','url("<%= current_network.image_front.file %>") !important');
+     });
+  </script>
+<%end%>
 <% if !@user_inactive.nil? then %>
   <div class="user-inactive">
     Se ha enviado un correo a  <%= @user_inactive.email %>. <p>
@@ -69,7 +86,8 @@ $(document).ready(function() {
 		<%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
 		<%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
 		<% if devise_mapping.rememberable? -%>
-		<label class="checkbox remember" style="margin-left: 11px!important;">
+		<!--<label class="checkbox remember" style="margin-left: 11px!important;">-->
+		<label class="remember" style="margin-left: 11px!important;">
 			<%= f.check_box :remember_me %> <label>&nbsp;&nbsp;Recordarme</label>
 		</label>
 		

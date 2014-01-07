@@ -20,16 +20,16 @@
 <div class="form-course" style="width: 855px; margin-top: 39px; background: transparent;"><!-- estilo en courses.scss -->
  
 <div class="" style="position: absolute; display: block; width: 630px; background: #F6F7F9; padding: 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border: 1px solid #eee; position: relative; height: 36px; display: block;">
-	<div class="UpdateSubmit" style="float: left;"><%= f.submit "Actualizar Curso" %> </div>
-	<div style="margin-top:5px; float:right; margin-right:15px;"><%= link_to "Regresar al Cúrso", course_path(@course.id)%></div>
+	<div class="UpdateSubmit" style="float: left;"><%= f.submit "Actualizar #{current_network.course_tag}" %> </div>
+	<div style="margin-top:5px; float:right; margin-right:15px;"><%= link_to "Regresar al #{current_network.course_tag}", course_path(@course.id)%></div>
 </div>
 
 
 	<div style="width: 465px; float:left; margin-top: 30px;">
 	
-		<p>Nombre del curso</p>
+		<p>Nombre del <%= current_network.course_tag %></p>
 	    <%= f.text_field :title, :class=>"input-style fixFormUser" %>
-	    <p>Nombre del curso</p>
+	    <p>Nombre del <%= current_network.course_tag %></p>
 	    <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style fixFormUser border_for_text" %>
 	</div>
 
