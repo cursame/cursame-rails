@@ -38,7 +38,7 @@
 				  });
 			</script>
 			 <div id="setting_personalize" style="display:none;">
-			 <p style="float:left;">Imagen de loggin actual:  Tipo largo: <%= (current_network.image_front.file).to_s.split('/').last%><%= image_tag(current_network.image_front.file, :style => "width:120px; height:80px; margin-left:20px;  float:left;") %>  </p>  <div id="change" style="float:left; margin-left:20px;"><p style="float:left;"><a style="cursor:pointer;  ">Cambiar Imagen</a></p></div>
+			 <p style="float:left;">Imagen de loggin actual:  Tipo largo: <%= (current_network.image_front).to_s.split('/').last%><%= image_tag(current_network.image_front, :style => "width:120px; height:80px; margin-left:20px;  float:left;") %>  </p>  <div id="change" style="float:left; margin-left:20px;"><p style="float:left;"><a style="cursor:pointer;  ">Cambiar Imagen</a></p></div>
 			
                 <div id="septos_loader" style="display:none; margin-bottom:16px;"><p><%= f.file_field :image_front %></p></div>
                 

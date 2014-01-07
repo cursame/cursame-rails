@@ -102,7 +102,7 @@
      <% if current_network == nil%> 
        <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
      <%else%>
-      <% if current_network.logo == nil %>
+      <% if current_network.logo.file == nil %>
        <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
       <%else%>
        <%case %>
