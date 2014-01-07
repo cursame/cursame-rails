@@ -91,7 +91,7 @@
 $(function(){
   
     var $bl    = $(".youtube_content_delivery"),
-        $th    = $("#content_free"),
+        $th    = $(".content_free<%=@typeo%>"),
         blW    = $bl.outerWidth(),
         blSW   = $bl[0].scrollWidth,
         wDiff  = (blSW/blW)-1,  // widths difference ratio

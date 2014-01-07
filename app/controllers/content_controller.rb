@@ -1,12 +1,12 @@
 class ContentController < ApplicationController
   def youtube
      parameters = params[:youtube_search]
+     parameters_spliyi = parameters.gsub(' ', '+') 
      @typeo = params[:typeo]
-     puts parameters
      parameter = parameters.delete('<div id="value">','</div>')
-     @videos = client_youtube.videos_by(:query => parameter , :page => 1, :per_page => 16)
+     @videos = client_youtube.videos_by( :query => "%22#{parameters_spliyi.capitalize}%22" ,:page => 1, :per_page => 15)  
      @video =  @videos.videos
-       
+       puts @video
        respond_to do |format|
          format.json
          format.js 
