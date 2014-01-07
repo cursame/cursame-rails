@@ -1,0 +1,92 @@
+.tooltipr {
+  height: auto;
+  margin-top: 3px;
+  margin-left: 19px;
+  padding: 5px 16px;
+  max-width: 200px;
+  min-width: 100px;
+  border-radius: 3px;
+  text-align: left;
+  text-shadow: 1px 0 1px #000;
+  font-size: 13px;
+  font-weight: 100;
+  color: rgb(255,255,255);
+  background: rgba(0,0,0,0.7);
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -11px;
+    width: 0;
+    height: 0;
+    margin-left: 18px;
+    border: 6px solid transparent rgba(0,0,0,0.7) transparent transparent;
+  }
+}
+
+.link_download {
+& .link_download a {
+  position: relative;
+  padding: 10px;
+  color: #fff;
+  color: #fff !important;
+  background: rgb(12,126,213);
+}
+}
+
+.link_download:hover {
+  padding: 10px;
+  background: #1C39A2;
+}
+
+#new_course_file {
+& input[type=file] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 35px;
+  height: 25px;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+  opacity: 0;
+  cursor: inherit;
+  filter: alpha(opacity=0);
+}
+}
+
+#new_course_file:hover {
+  background: transparent;
+}
+
+.content_progress_bar {
+  width: 210px;
+  height: 5px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+  background: url('/assets/icons_for_documents/stripe.png');
+}
+
+.progress_exact {
+  width: 5%;
+  height: 7px;
+  padding: 3px;
+  border-radius: 13px;
+  background-color: #0E7FD0;
+}
+
+.uploader {
+  margin-top: -20px;
+  margin-bottom: 45px;
+  margin-left: 2px;
+}
+
+.string_uploader {
+  float: left;
+  margin-top: 20px;
+  margin-left: 5px;
+}

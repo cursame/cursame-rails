@@ -1,0 +1,1044 @@
+
+/* Courses Skin
+----------------------------------*/
+.course{
+  float: left;
+  background: #f3f3f3;
+  border: $border-box;
+  @include border-radius;
+
+  h2{
+    font-size:24px;
+    color: #444444;
+    font-family: HelvLight;
+  }
+
+  .thumbnail{
+    vertical-align: middle;
+ }
+}
+
+.hidden-text{  
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+h4 {
+  font-size:14px;
+} 
+
+h3 {
+  font-size:18px;  
+}
+
+.al {
+  font-size:18px;  
+  background:none;
+  border:none; 
+}
+
+.course-banner-profile {
+  background-image: url("/assets/bannerprofile.png");
+}
+
+.course li {
+  list-style: none;
+  color: #444444;
+}
+
+#crud{
+  opacity: 0.5;
+  text-align: right;
+}
+
+#course-title{
+  font-size:14px;
+  color: #444444;
+  font-family: helvetica;
+  text-align: center;
+  font-weight: bold;
+}
+
+#course-info{
+  font-size: 12px !important;	
+}
+	
+.courses-title-h2 {
+  font-size: 30px;
+  font-family: helvetica;
+  font-weight: lighter;
+}
+
+.admin-title {
+  background: #EEE;
+  font-size: 18px;
+  font-family: helvetica;
+  font-weight: lighter;
+}
+
+.serch-courses input{
+  font-size: 14px; 
+  line-height: 16px;
+  font-family: HelvLight;
+}
+
+.list_alt_box {
+  background: #fff;
+  border-right: solid #4FA3E9 4px;
+  transition: all linear 0.3s;
+
+  .header {
+    font-family: Arial;
+    font-weight: lighter;
+    color: #ddd;
+
+    .status > a:hover {
+      color: #39D4E2;
+    }
+  }
+
+  .headerOne {
+    font-family: Arial;
+    font-weight: lighter;
+    color: #000;
+
+    h1 a {
+      font-weight: lighter;
+      color: #000!important;
+    }
+
+    .status > a:headerOne {
+      color: #39D4E2;
+    }
+  }
+}
+
+.top-header-delivery-box {
+  > a {
+    font-weight: lighter;
+    color: #000!important;
+  }
+
+  ul li {
+    span {
+      color: #B3B3B3;
+
+      &:hover {
+        color: #4FA3E9;
+      }
+    }
+
+    .green-circle-mini, .orange-circle-mini {
+      color: #1a1a1a !important;
+    }
+  }
+}
+
+.course_status {
+  color: #fff!important;
+  background: #83B81F;
+  cursor: pointer;
+  border-radius: 3px;
+  
+  &:hover {
+    background: #F39C20;
+  }
+
+  > a {
+    color: #fff!important;
+  }
+}
+
+
+#notice {
+  border: 0 solid #608847;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #608847;
+  background: #DFF0D8;
+}
+
+.title_dxv h1 {
+  font-size:20px;
+}
+
+/* Lightbox Exam
+----------------------------------*/
+.test_exam_list {
+	background: #F8F8F8;
+}
+
+/* Course Form
+----------------------------------*/
+#configuration h1 {
+  color: #fff!important;
+  background: rgba(252,252,252,0.2) url(../assets/tool.png) no-repeat center right;
+}
+
+#configurationing h1 {
+  font-size: 20px;
+  color: #fff!important;
+  background: rgba(252,252,252,0.2) url(../assets/) no-repeat center right;
+}
+
+.fixform h4 {
+  font-size: 17px;
+  color: #333;
+}
+
+.califHeader {
+  background: #1A5E97;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.AlumHeader {
+  background: #4FA3E9;
+  color: #fff;
+  font-size: 16px;
+  text-align: left;
+  font-weight: lighter;
+}
+
+.form-course {
+  border-top: 0 solid #ccc;
+  background: rgba(252,252,252,0.9);
+
+  input:focus {
+    border: 1px solid #6AB2BF!important;
+  }
+  
+  input[type="file"] {
+    background: transparent;
+  }
+
+  .upload {
+    display: none;
+  }
+
+  p {
+    font-family: HelvLight;
+    font-size: 14px;
+    line-height: 14pt!important;
+    color: #969696;
+  }
+}
+
+#dummy {
+  border: 1px solid #c9d1da;
+  text-align: center;
+  font-family: arial;
+  color: #969696;
+  background: rgb(252,252,252);
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:hover {
+    color: #fff;
+    background: #08B5CE;
+  }
+}
+
+.slct-style input {
+  color: #fff;
+  background: #00B1C7;
+}
+
+/* Edit Course
+----------------------------------*/
+#nsdmenu h1 {
+  font-size: 16px;
+  color: #969696!important;
+}
+
+.reload li {
+  vertical-align: middle;
+}
+
+/* Edit Members
+----------------------------------*/
+#imgge {
+	background:#ddd;
+}
+
+.imgge_gradient {
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQzJSIgc3RvcC1jb2xvcj0iIzkwYmRkMSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iIzAzNjg5NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzAwNjY5NiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(144,189,209,0) 43%, rgba(3,104,151,1) 98%, rgba(0,102,150,1) 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(43%,rgba(144,189,209,0)), color-stop(98%,rgba(3,104,151,1)), color-stop(99%,rgba(0,102,150,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(144,189,209,0) 43%,rgba(3,104,151,1) 98%,rgba(0,102,150,1) 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(144,189,209,0) 43%,rgba(3,104,151,1) 98%,rgba(0,102,150,1) 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(144,189,209,0) 43%,rgba(3,104,151,1) 98%,rgba(0,102,150,1) 99%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(144,189,209,0) 43%,rgba(3,104,151,1) 98%,rgba(0,102,150,1) 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#006696',GradientType=0 ); /* IE6-8 */
+}
+
+.everymbrm {
+	background: #fff;
+	transition: linear all 0.2s;
+  
+  a {
+    color:#fff;
+    font-weight: 100;
+  }
+  
+  h3 {
+    background: #006696;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .helptext {
+    color: #FFF;
+    font-weight: lighter;
+    font-size: 14px;
+  }
+  
+  .dstroytxt {
+    text-align: center;
+    color: #fff!important;
+    background: #ccc;
+    transition: linear all 0.2s;
+    
+    > a {
+      color: #fff;
+    }
+
+    &:hover {
+      background: red;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 0px #28C8DF;
+    color: #FFF;
+
+    > a {
+      color: #FFF!important;
+    }
+  }
+}
+
+.helptext {
+  font-size: 12px;
+  font-weight: lighter;
+  color: #ccc;
+}
+
+.hoverShowEdit {
+	background: rgba(0,102,150,0.8);
+}
+
+.dstroytxt {
+  text-align: center;
+  color: #fff!important;
+  background: #ccc;
+  transition: linear all 0.2s;
+
+  a {
+    color: #fff;
+  }
+
+  &:hover {
+    background: red;
+  }
+}
+
+/* Get Day Calendar
+----------------------------------*/
+#getDay {
+  border-radius: 6px;
+  text-align: center;
+
+  .month {
+    font-weight: lighter;
+    color: #4FA3E9;
+  }
+
+  .day {
+    font-size: 20px;
+    color: #4FA3E9!important;
+  }
+}
+
+.calendarHome {
+  border-right: 4px solid #83B81F;
+  background: #fff;
+}
+
+.calendarEvnt {
+  border-right: 4px solid #F39C20;
+  background: #fff;
+}
+
+/* Ajax Tareas
+----------------------------------*/
+.homeworkCalf {
+  text-align: center;
+}
+
+.rate { 
+  background: #00ADC4;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.rateTwo { 
+  background: #4FA3E9;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.QuestionAsk {
+  color: #4c4646;
+  background: #f0efef;
+  font-size: 14px;
+  text-align: left;
+}
+
+.AnswerAsk {
+  color: #262222;
+  background: #FFF;
+  font-size: 14px;
+  text-align: left;
+}
+
+.resultsExams {
+  font-family: arial;
+  color: #000;
+}
+
+.responUser {
+  background: #ddd;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.helpText { 
+	text-align: center;
+	color: #333;
+}
+
+.usermenuTitle {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #333;
+}
+
+.userDescription {
+  font-size: 14px;
+  color: #969696;
+}
+
+.titleCrit {
+  font-size: 14px;
+  color: #969696;
+}
+
+.light_box .deliveries_list {
+  background: #f8f8f8;
+}
+
+.deliveries_list #titleDevSing {
+  background: #f8f8f8!important;
+  
+  &:hover {
+    background: #fff!important;
+    border-right: 3px solid #83B81F;
+  }
+}
+
+
+#titleDevSing {
+  border-right: 2px solid #83B81F;
+  background: #fff;
+}
+
+.friendBlock {
+  border: 1px solid #ccc;
+  transition: ease-out all 0.3s;
+
+  > .acceptFriend {
+    transition: ease-out all 0.3s;
+  }
+}
+
+.friendHead {
+  font-family: HelvLight!important;
+  font-size: 14px!important;
+  line-height: 14pt!important;
+  color: #969696!important;
+}
+
+.friendName {
+  text-align: center;
+  font-family: HelvLight!important;
+  font-size: 14px!important;
+  line-height: 14pt!important;
+  color: #969696!important;
+}
+
+
+.acceptFriend {
+  color: #eee!important;
+
+  > a {
+    border-radius: 3px;
+    text-align: center;
+    color: #fff!important;
+    background: #00B1C7;
+
+    &:hover {
+      background: #0B6AAD;
+    }
+  }
+}
+
+.profileLinks {
+  text-align: right;
+}
+
+/* Notificacoines de Alumnos Pendientes
+----------------------------------*/
+.member_pending {
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: #FF0000;
+  cursor: pointer;
+
+  li {
+    color:#fff;   
+  }
+
+  a {
+    color:#fff;     
+  }
+
+  &:hover {
+    background: #AA4643;
+  }
+}
+
+/* Entregas - Menu Superior Curso Show
+----------------------------------*/
+.arco_course_deliver{
+
+  .content_delivery {
+    background-color: #FFF;
+
+    .delivery_f {
+      border-left: 4px solid #2683B3;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    .delivery_container {
+      background: #FFF;
+      transition: ease-out all 0.3s;
+    
+      .title {
+        font-size:15px;
+        color: #444;
+        font-weight: lighter;
+      }
+               
+      .dates {
+        font-align: justify;
+        color:#8d8d8d;
+      }
+         
+      .state {
+        font-align: justify;
+        color:#15B1B9;
+
+        .state-btn{
+          background:#128617 !important;
+          color: #FFF;
+          text-align:center;
+          border-radius: 3px;
+
+          &:hover{
+            background:#EED12C !important;
+          }
+        }     
+      }
+    }
+  }
+
+  .so_open{
+    .assignment{
+      background: #eee;      
+      
+      .title{
+        color: #0f0f0f;
+        background: transparent;
+        font-size: 12px;
+      }
+              
+      .name{
+        color:#fff;
+        background:#42B9C1;
+      }
+    }
+  }
+
+  .tcg{
+    color: #000;
+    background: #F5F5F5;
+  }
+
+  .content_survey {
+  
+    .survey_f {         
+           
+      .survey_container{
+        background: url(../assets/ir-a.png) right center no-repeat #eee;
+        transition: ease-out all 0.3s;
+        box-shadow: inset -7px -2px 4px -4px #ccc;
+
+        .title {
+          font-size:16px;
+          color: #333;
+          font-weight: bold;
+        }
+
+        .dates{
+          font-align: justify;
+          color:#ccc;
+        }
+
+        .state {
+          font-align: justify;
+          color:#15B1B9;  
+          
+          .state-btn{
+            background:#EBDDB1 !important;
+            text-align:center;
+
+            &:hover{
+              background:#EED12C !important;
+            }
+          }     
+        }
+      }
+    }
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 18px;
+    border-top: 4px solid #2683B3;
+    background: rgba(255,255,255,1);
+    transition: ease-out all 0.3s;
+  }
+}
+
+.content_survey_slider {
+  background: #FFF;
+}
+
+.containText {
+	color: #333;
+}
+       
+.survey_fTwo .state-btn {
+  background:#EBDDB1 !important;
+  text-align:center;
+
+  &:hover{
+    background:#EED12C !important;
+  }
+}
+
+.imageExam { 
+  color: #0f0f0f;
+  background: #e1e1e1;
+  font-size:15px;
+  text-align:center;
+  border-top: solid 1px #929292;
+  border-bottom: solid 1px #929292;
+
+	b{
+    color:#013B43 !important;
+  }	
+}
+
+
+.delivery_container {
+  background: url(../assets/ir-a.png) right center no-repeat #eee;
+  transition: ease-out all 0.3s;
+
+  .title{
+    font-size:16px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .dates{
+    font-align: justify;
+    color:#4FA3E9;
+  }
+
+  .state {
+    font-align: justify;
+    color:#15B1B9;  
+  }           
+}
+
+#load-more-activities {
+	text-align: center;
+}
+          
+.activities_depot {
+  background-color:#f7f7f7;
+  border-bottom:solid #ccc 1px;
+  text-align:justify;         
+
+  .title{
+    font-size: 16px;
+    color: #293433;
+  }
+  
+  .titleNoTwo{
+    font-size: 16px;
+    color: #293433;
+  }
+
+  .reference{
+    font-size:12px;
+    color:#293433;
+    line-height: 15px;
+  }
+
+  .referenceNoTwo{
+    font-size:12px;
+    color:#293433;
+    line-height: 15px;
+  }
+
+  &:hover {
+    background: #e6e6e6;
+    cursor: pointer;
+  }
+}
+
+.activities_depot_select{
+  background: #4FA3E9;
+  color: #fff;
+  font-size: 15px;
+}
+
+.classContTitle h2 {
+	font-size: 15px;
+	font-weight: lighter;
+	color: #555;
+	text-align: left;
+	background: #F2F2F2;
+  border-radius: 3px;
+}
+
+.filter_acti {
+	background: url('/assets/drop_arrow.png') no-repeat right center;
+  cursor: pointer;
+
+  &:hover {
+    background: url('/assets/drop_arrow.png') no-repeat right center;
+  }
+}
+
+.drop_views {
+	box-shadow: 0px 2px 5px #ccc;
+
+  li {
+    list-style: none;
+    text-align: right;
+    background: #FFF;
+
+    &:hover {
+      background: #EEE;
+    }
+  }
+}
+
+.dropperDwn {
+  color: #B3B3B3;
+  font-weight: lighter;
+  font-size: 14px;
+  -webkit-appearance: none;
+  border-radius: 0px;
+}
+
+.expoced{
+  background: #F7F7F7;
+}
+
+.user_assets{
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+
+  &:hover {
+    background: #E6E6E6;
+  }
+}
+ 
+#OpenClose {
+  background: #FFF;
+  cursor: pointer;
+  transition: 0.2s;
+  background: url(bottom_arrow.png) no-repeat center center;
+  
+  &:hover {
+   background: #EAEAEA url(bottom_arrow_selected.png) no-repeat center center;
+ }
+}
+
+.CloseOpenClass {
+  background: #EEEEEE url(bottom_arrow_selected.png) no-repeat center center!important;
+}
+
+/* Area de Evaluaciones
+----------------------------------*/
+.stripe {
+	background: #e7e6e6;
+	border: 1px solid #d3d2d2;
+	color: #5b5b5b;
+}
+
+.string {
+	background: #ececec;
+	border: 1px solid #d3d2d2;
+	color: #5b5b5b;
+}
+
+td {
+	color: #5b5b5b;
+}
+
+.activate {
+	color: #333;
+	background: rgba(255,255,255,1);
+	transition: ease-out all 0.3s;
+	cursor: pointer;
+	border-top: 1px solid #2683B3;
+}
+
+.deactive {
+	background: rgba(226, 224, 224, 0.6);
+	transition: ease-out all 0.3s;
+
+  &:hover {
+    background: #000;
+    cursor: pointer;
+    background: rgba(238,238,238,1);
+    box-shadow: inset -7px -8px 12px -5px #ccc;
+  }
+}
+
+.aSSigmentHW {
+  background: #F5F5F5;
+
+  &:hover {
+    background: #FFF;
+  }
+}
+
+.CloseWinWd {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  background: #006696;
+  cursor: pointer;
+
+  &:hover {
+    background: #013E5A;
+  }
+}
+
+#ExamsDelivery .delivery_container .dates{
+  font-align: justify;
+  color:#8d8d8d;
+}
+	
+.state {
+   font-align: justify;
+   color:#15B1B9;   
+
+  .state-btn{
+    background:#128617 !important;
+    color: #FFF;
+    text-align:center;
+    border-radius: 3px;
+
+    &:hover{
+      background:#EED12C !important;
+    }
+  }
+}
+
+.delivery_f {
+  border-left: 4px solid #2683B3;
+  border-bottom: 1px solid #e6e6e6;
+  
+  .delivery_container {
+    background: #FFF;
+    transition: ease-out all 0.3s;
+
+    .title{
+      font-size:15px;
+      color: #444;
+      font-weight: lighter;
+    }
+               
+    .dates{
+      font-align: justify;
+      color:#8d8d8d;
+    }
+               
+    .state {
+      font-align: justify;
+      color:#15B1B9;
+                   
+      .state-btn {
+        background:#128617 !important;
+        color: #FFF;
+        text-align:center;
+        border-radius: 3px;
+
+        &:hover{
+          background:#EED12C !important;
+        }
+      }
+    }
+  }
+}
+
+.so_open_C2 .assignment {
+  background: #eee;
+        
+  .title{
+		color: #0f0f0f;
+		background: transparent;
+		font-size: 12px;
+  }
+          
+  .name{
+    color:#fff;
+    background:#42B9C1;
+  }        
+}
+
+.resultsExams .responUser {
+  background: #EEEEEE;
+}
+
+.RedBallon {
+  background: #4FA3E9;
+  color: #FFF;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.UploadArchiveBtn {
+  text-align:center;
+  background: #FFF;
+  color: #C9D1DA!important;
+  border: 1px solid #C9D1DA;
+  color: #00B4C4;
+  font-weight: 100;
+  border-radius: 5px;
+}
+
+.UploadArchiveBtn_selected {
+  background: #4FA3E9!important;
+  color: #FFF!important;
+  border: 1px solid #FFF;
+}
+
+.fixedForm > .form-course {
+  background: rgba(252, 252, 252, 0);
+  
+  > tr:nth-child(even) {
+    background-color: #FFF!important;
+    border-top: 1px solid #EEE;
+  }
+  
+  > tr:nth-child(odd) {
+    background-color: #f7f6f6!important;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    td {
+      border-right: 1px solid #ccc;
+      text-align: center;
+    }
+  }
+}
+
+// Admit Users
+.place-hldr {
+  transition: ease-in-out background 0.2s;
+  text-align: center;
+}
+
+.netWorkMenuHeader {
+  background: rgba(221,221,221,0.2);
+  transition: ease-out all 0.3s;
+
+  &:hover {
+    background: rgb(247,247,247);
+  }
+}
+
+.redPop {
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: #FF0000;
+}
+
+.waitS > a,
+.currentFriends > a {
+  text-align: center;
+  color: #fff;
+  background: #00AEC1;
+}
+
+
+.waitS > a:hover,
+.currentFriends > a:hover {
+  background: #0B6AAD;
+}
+
+.box_AllUsers {
+  border: 1px #ccc solid;
+  transition: linear all 0.2s;
+}
+
+.alert_method {
+  font-size: 17px;
+  color: #383D3A;
+  background: url('/assets/explorer_network.png');
+}
+
+.network_button_aler_method {
+  font-size: 23px;
+  color: #383D3A;
+  background: #F9FEA6;
+
+  &:hover {
+    font-size: 23px;
+    color: #383D3A;
+    background: #EEF55D;
+  }
+}

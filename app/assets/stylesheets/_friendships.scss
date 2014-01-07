@@ -1,0 +1,57 @@
+.edituserdmenuHeader {
+  z-index: 9;
+  position: fixed;
+  width: 899px;
+  height: 48px;
+  margin-top: -22px;
+  margin-left: -25px;
+  padding: 20px;
+  background: rgba(221,221,221,0.2);
+  transition: ease-out all 0.3s;
+
+  &:hover {
+    background: rgba(221,221,221,0.9);
+  }
+}
+
+.containerFriendsCateg {
+  display: inline-block;
+  float: right;
+  position: relative;
+  width: 220px;
+  margin-top: -41px;
+}
+
+.redPop {
+  display: block;
+  float: right;
+  position: absolute;
+  margin-top: -35px;
+  margin-left: -3px;
+  padding: 2px 4px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: #FF0000;
+}
+
+.containerFriends .waitS > a,
+.containerFriends .currentFriends > a {
+  display: block;
+  float: right;
+  margin-left: 2px;
+  padding: 5px 8px;
+  text-align: center;
+  color: #fff;
+  color: #fff;
+  background: #00AEC1;
+}
+
+.containerFriends .waitS > a:hover,
+.containerFriends .currentFriends > a:hover {
+  background: #0B6AAD;
+}

@@ -375,12 +375,12 @@ ActiveRecord::Schema.define(:version => 20140103215549) do
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.datetime "created_at",                                                                                                                                                                                     :null => false
-    t.datetime "updated_at",                                                                                                                                                                                     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "population"
-    t.boolean  "public_register",    :default => true
-    t.boolean  "free",               :default => true
-    t.boolean  "register_form"
+    t.boolean  "public_register", :default => true
+    t.boolean  "free",            :default => true
+    t.boolean  "register_form",   :default => false
     t.text     "welcom_message"
     t.string   "image_front"
     t.string   "logo"

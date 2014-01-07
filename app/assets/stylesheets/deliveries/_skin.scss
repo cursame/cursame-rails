@@ -1,0 +1,102 @@
+
+/* Deliveries Skeleton
+----------------------------------*/
+.var_delivery{
+  font-size:15px;
+}
+
+#valu {
+  outline: none;
+  background: url('/assets/youtube.png') no-repeat !important;
+
+  &:hover {
+    outline: none;
+    background: url('/assets/youtube_hover.png') no-repeat !important;
+  }
+}
+
+
+#valw {
+  outline: none;
+  background: url('/assets/wikipedia.png') no-repeat !important;
+
+  &:hover {
+    outline: none;
+    background: url('/assets/wikipedia_hover.png') no-repeat !important;
+  }
+}
+
+.dropbox-chooser {
+  border: none;
+  outline: none;
+  background: url('/assets/dropBox.png') no-repeat !important;
+
+  &:hover {
+    outline: none;
+    background: url('/assets/dropBox_hover.png') no-repeat !important;
+  }
+}
+
+.content-assets {
+  background: #EEE;
+  line-height: 10px;
+  border: 1px solid #cacaca;
+  border-radius: 3px;
+  overflow: hidden;
+  
+  p {
+    font-size: 12px !important;
+  }
+  
+  a {
+   font-size:15px;
+  }
+}
+
+.coklo-title{
+  background: #F5F5F5;
+
+  h1 {
+    color:#241344;
+    background: #006696!important;
+    color: #fff;
+    font-size:14px!important;
+    font-weight: normal;
+  }
+    
+  p {
+    color:#241344;
+    font-size:15px;
+  }
+    
+  .cont {
+    color:#241344;
+    font-size:15px;
+    text-align:justify;
+  }
+}
+
+.cogki_content_delivery{
+        
+  ul.tabs{
+    background: #FFF;
+    list-style: none;
+
+    li {
+      background: none;
+      color: #222;
+      cursor: pointer;
+      font-size:17px;
+      
+      &.current{
+        background: #006696;
+        color: #FFF;
+        font-weight: 100;
+      }
+    }
+  }
+
+  & .tab-content{
+    background: #F5F5F5;
+  }
+}

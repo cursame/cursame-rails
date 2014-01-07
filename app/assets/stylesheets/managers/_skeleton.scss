@@ -1,0 +1,327 @@
+
+/* Managers Admin Skeleton
+----------------------------------*/
+#admin-sidebar {
+	width: 250px;
+	float: left;
+	height: 900px;
+	display: block;
+	position: relative;
+		
+	h5 {
+		padding: 15px 5px 15px 10px;
+	}
+
+	li a {
+		padding: 15px 5px 15px 40px;
+		display: block;
+	}
+
+	li > img {
+		padding-left: 10px;
+		padding-top: 11px;
+		position: absolute;
+	}
+}
+
+#admin-content {
+	width:728px;
+	float:left;
+	padding-bottom: 20px;
+	
+	h3{
+  	padding: 20px;
+	}
+}
+
+.admin-chart {
+	display: block;
+	width: 344px;
+	height: 300px;
+	float: left;
+	margin: 9px 0 0 4px;
+}
+
+.users-chart{
+	display: block;
+	width: 700px;
+	height: 43px;
+	float: left;
+	margin: 45px 0 0 0px;
+}
+
+.header-chart{
+	padding: 10px;
+}
+
+.user-list{
+	overflow: hidden;
+	
+	.avatar{
+		float: left;
+	}
+
+	.info{
+		float: left;
+		margin-left: 10px;
+		width: 380px;
+		float: left;
+		padding-top: 6px;
+	}
+
+	.actions{
+		float: right;
+		margin-top: 25px;
+		margin-right: 10px;
+
+		& .actions:hover{
+			opacity: 1;
+		}
+	}
+	
+	.clear {
+		clear: both;
+	}
+}
+
+.submit_role_user {
+	padding: 2px 6px;
+}
+
+.actions_active {
+	position: absolute;
+	float: right;
+	width: 273px;
+	height: 49px;
+	display: inline-block;
+	margin: 0px!important;
+	padding-top: 10px;
+	padding-right: 10px;
+
+	> .openClass_toggle {
+		margin-top: 6px!important;
+	}
+}
+
+.list {
+	width: 100%;
+	margin: auto;
+}
+
+.the-list {
+	clear: both;
+}
+
+#header-users{
+	width: 600px;
+	margin: auto;
+	padding: 15px;
+	margin-bottom: 20px;
+}
+
+/* Managers Admin Second Joint
+----------------------------------*/
+.meter { 
+  height: 46px;
+  position: relative;
+  margin: 2px 0 20px 0;
+
+  > span {
+    display: block;
+    height: 100%;
+  }
+}
+
+.meter > span:after,
+.animate > span > span {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.animate > span:after {
+  display: none;
+}
+
+.orange > span {
+  height: 46px;
+}
+
+.hope {
+	margin-top: -31px;
+	z-index: 3;
+	padding-left: 20px;
+	position: absolute;
+}
+
+.hope-right {
+	margin-top: -23px;
+	z-index: 3;
+	padding-right: 30px;
+}
+
+.striped {
+	width: 680px;
+	margin-left: 10px;
+
+	th {
+		padding-top: 5px;
+		padding-bottom: 4px;
+		padding-left: 10px;
+	}
+}
+
+.striped td, #customers th {
+	padding:3px 7px 2px 7px;
+}
+
+
+.manager_search_user {
+	position: relative;
+	display: inline-block;
+	float: right;
+	margin-top: -40px;
+}
+
+.manager_search_user > #search {
+	padding: 6px;
+	width: 150px;
+}
+
+.class_image4040{
+  width: 26px;
+  height: 26px;
+  margin-top:-10px;
+}
+
+.class_image2525{
+  width:25px;
+  height:25px;
+}
+
+.margin-right10x{
+	margin-right:10px;   
+}
+
+.button_button{
+  padding: 10px 15px 12px 45px;
+  width: 350px;
+}
+
+.form-for-admin{
+  
+  input{
+		width: 575px;
+		display:block;
+		float: left;
+		height: 25px;
+  }
+  
+  textarea{
+    width: 574px;
+    height:150px;
+    float: left;
+  }
+
+  input[type='submit'] {
+    position: relative;
+    display: block;
+    margin: auto;
+    display: block;
+    position: relative;
+    float: left;
+    width: 245px;
+    padding: 11px 11px 11px 45px;
+    height: auto;
+    bottom: 20px;
+  }
+
+  .fileContainer {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .fileContainer {
+    display: inline-block;
+    width: 244px;
+    position: absolute;
+    right: -245px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    height: 36px;
+    margin-top: -20px;
+    top: 12px;
+    z-index: 99;
+  }
+}
+
+.actions_form input[type='submit'] {
+	margin: auto;
+	display: block;
+	position: relative;
+	float: left;
+	width: 245px;
+	padding: 11px;
+	height: auto;
+	bottom: 20px;
+}
+
+.header-for-content{
+  width: 680px;
+  height: 28px;
+  padding:10px;
+}
+
+.header-for-content h8 {
+  padding: 4px 0px 4px 4px;
+  float: left;
+  display: inline-block;
+  position: relative;
+}
+
+.header-for-content p {
+  float: right;
+  padding: 7px 15px 3px 13px;
+}
+
+.instructions{
+  padding:10px;
+  clear: both;
+}
+
+.posting-preview{
+  float:left;
+  width: 568px;
+  height:400px;
+  padding:5px;
+  margin: 5px 5px 5px 76px;
+  overflow:auto;
+}
+
+#preview-button{
+  margin:5px;
+  padding:5px;
+  width: 108px;
+  height:20px;
+  position:absolute;
+  margin-left: 76px;
+  margin-top: -60px;
+}
+
+.checkbox input[type="checkbox"] {
+  display:none;
+
+  + label {
+    display:inline-block;
+    width:0px;
+    height:20px;
+    padding-left:20px;
+    margin: -1px 4px 0 0;
+    padding-top: 4px;
+  }
+}

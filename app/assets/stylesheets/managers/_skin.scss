@@ -1,0 +1,329 @@
+
+/* Managers Admin Skin
+----------------------------------*/
+#admin-sidebar {
+	background: #1A83D5;
+	color: #FFF;
+	
+	h5 {
+		font-size: 25px;
+		border-bottom: 1px solid #3490DA;
+		text-align: left;
+		color: #FFF;
+		font-weight: 100;
+		font-size: 15px;
+	}
+	
+	li {
+		border-bottom: 1px solid #3490DA;
+		background-color: #1A83D5;	
+		
+		&:hover{
+			background-color: #1B57A0;
+		}
+
+		a {
+			color: #FFF;
+			font-weight: 100;
+		}
+
+		img {
+			opacity: 0.5;
+		}
+	}
+}
+
+#admin-content {
+	background-color: #fff;
+	border-left: 1px solid #e0e0e0;
+
+	h3{
+		text-align: center;
+		font-size: 20px;
+		text-transform: capitalize;
+	}
+
+  li:hover{
+	   background-color: #f2f2f2;
+	}
+}
+
+.header-chart{
+	font-family: HelvLight;
+	font-size: 16px;
+	text-transform: capitalize;
+}
+
+.user-list{
+	border-bottom: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	
+	&.info{
+		line-height: 20px;
+		font-family: HelvLight;
+		font-size: 16px;
+
+		a {
+			font-size: 14px;
+		}
+	}
+}
+
+.submit_role_user {
+	border: 0px;
+	background: #FFF;
+	border-radius: 3px;
+	color: #333;
+
+	&:hover {
+		background: #4FA3E9;
+		color: #FFF;
+		cursor: pointer;
+	}
+}
+
+.actions_active {
+	background: #1B57A0;
+	color: #FFF;
+	opacity: 1;
+}
+
+.user-list-clear, .user-list-clear:hover {
+	background: #1B57A0 !important;
+	color: #FFF;
+}
+
+.par {
+	background-color: #f9f9f9;
+}
+
+
+/* Managers Admin Second Joint
+----------------------------------*/
+.meter { 
+  background: #F0F0F0;
+}
+
+.meter > span:after,
+.animate > span > span {
+  content: "";
+  border-radius: 20px 8px 8px 20px;
+  background-image: -webkit-gradient(linear,0 0,100% 100%,color-stop(.25,rgba(255,255,255,.2) ), color-stop(.25,transparent), color-stop(.5,transparent), color-stop(.5,rgba(255,255,255,.2) ), color-stop(.75,rgba(255,255,255,.2) ), color-stop(.75,transparent), to(transparent) );
+  background-image: -moz-linear-gradient(-45deg,rgba(255,255,255,.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.2) 50%,rgba(255,255,255,.2) 75%,transparent 75%,transparent);
+  -webkit-background-size: 50px 50px;
+  -moz-background-size: 50px 50px;
+  -webkit-animation: move 2s linear infinite;
+}
+
+@-webkit-keyframes move { 
+  0 {
+    background-position: 0 0;
+  }
+  
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.orange > span {
+  background-color: #65C178;
+}
+
+.nostripes > span > span,
+.nostripes > span:after {
+  background-image: none;
+  -webkit-animation: none;
+}
+
+.hope {
+	font-size: 16px;
+	color:  #000;
+	text-align: left;
+	font-weight: 100;
+}
+
+.hope-right {
+	font-size: 16px;
+	color:  white;
+	text-align: right;
+}
+
+.striped {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse:collapse;
+}
+
+.striped td, #customers th {
+	font-size:1.2em;
+	border: 1px solid #1A83D5;
+}
+
+.striped th {
+	font-size: 14px;
+	text-align: left;
+	background: #1A83D5;
+	color:#fff;
+}
+
+.striped tr.alt td {
+	color: #000;
+	background-color: #1A83D5;
+}
+
+.manager_search_user {
+	position: relative;
+	display: inline-block;
+	float: right;
+	margin-top: -40px;
+}
+
+.manager_search_user > #search {
+	border: 1px solid #CCC;
+}
+
+.class_image4040{
+  cursor: pointer;
+}
+
+.button_button{
+  background: #1B57A0 url('../assets/icons_for_admin/download.png') no-repeat left center;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 100;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+	border-radius: 3px;
+
+  &:hover{
+    background: #0B9BD0 url('../assets/icons_for_admin/download.png') no-repeat left center;
+  }
+}
+
+.manager_notice{
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.form-for-admin{
+  
+  input{
+		border: 1px solid #C9D1DA;
+    border-radius: 3px;
+  }
+  
+  textarea{
+    border: 1px solid #C9D1DA;
+    border-radius: 3px;
+  }
+
+  input[type='submit'] {
+    font-weight: 100;
+    background: #006696 url('../assets/icons_for_admin/upload.png') left center no-repeat;
+    color: #eee;
+    font-size: 14px;
+    border: 0px solid #FFF;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  input[type='submit']:hover {
+    background: #0B9BD0 url('../assets/icons_for_admin/upload.png') left center no-repeat;
+    color: #FFF;
+  }
+
+  textarea:focus, input:focus {
+    border: 1px solid #09C;
+  }
+
+  .fileContainer {
+    color:#81D4D7;
+    cursor:pointer;
+  }
+
+  .fileContainer {
+    cursor: inherit;
+    font-size: 999px;width: 244px;
+    opacity: 0;
+
+    &:hover {
+      color:#8193D7;
+    }
+  }
+}
+
+.actions_form {
+
+	input[type='submit'] {
+  	font-weight: 100;
+  	background: #006696;
+  	color: #eee;
+  	font-size: 14px;
+  	border: 0px solid white;
+  	cursor: pointer;
+  	border-radius: 3px;
+
+    &:hover {
+     background: #009CCB;
+    }
+	}
+}
+
+.h8{
+  font-size:25px;
+}
+
+.header-for-content{
+  background: #EEEEEE;
+  color:#FFFFFF; 
+}
+
+.header-for-content h8 {
+  font-size: 18px;
+  color: #000;
+  font-family: helvetica;
+  font-weight: lighter;
+}
+
+.header-for-content p {
+  color: #000;
+  font-family: helvetica;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.instructions{
+  color:#61646E;
+}
+
+.posting-preview{
+  background:#fff;
+  border:solid #BABBBF 1px;
+}
+
+#preview-button{
+  background:#CC7AA5;
+  color:#FFF;
+  cursor:pointer;
+  text-align:center;
+  border-radius: 3px;  
+
+  &:hover{
+    background: #BC7499;
+    color: #fff;
+  }
+}
+
+.checkbox input[type="checkbox"] {
+
+  + label {
+    vertical-align:middle;
+    background: url('check.png') right top no-repeat;
+    cursor:pointer;
+    color: #676767;
+  }
+
+  &:checked + label {
+    background: url('/assets/check.png') 0px top no-repeat;
+  }
+}

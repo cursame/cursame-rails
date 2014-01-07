@@ -1,0 +1,243 @@
+
+.notification-icon {
+  background: url("/assets/icons/notification-mini-high.png") no-repeat 8px 6px;
+  position: relative;
+  cursor: pointer;
+  z-index: 597;
+  float: left;
+  width: 35px;
+  height: 35px;
+  padding: 0px 0px 0px 8px;
+  color: #fff;
+  transition: ease-out all 0.2s;
+  
+  &:hover{
+    background: url("/assets/icons/notification-mini-high-hover.png") no-repeat 8px 6px;
+    transition: ease-out all 0.2s;
+  }
+
+  a {
+    width: 100%;
+    height: 100%;
+    display:block; color: #fff;
+    text-decoration: none;
+  }
+
+  span {
+    float: left;
+    vertical-align: middle;
+    padding-top: 2px;
+    font-family: helvbold;
+    font-size: 10px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    min-width: 13px;
+    background: #ff0000;
+  	margin: 10px 0px 0px 18px;
+    text-align: center;
+  }
+}
+
+.chat-icon {
+  background: url("/assets/icons/notification-chat-mini.png") no-repeat 8px 6px;
+  position: relative;
+  cursor: pointer;
+  z-index: 597;
+  float: left;
+  width: 35px;
+  height: 35px;
+  padding: 0px 0px 0px 8px;
+  color: #fff;
+  transition: ease-out all 0.2s;
+
+  &:hover{
+    background: url("/assets/icons/notification-chat-mini-hover.png") no-repeat 8px 6px;
+  	transition: ease-out all 0.2s;
+  }
+  
+  a {
+    width: 100%;
+    height: 100%;
+    display:block; color: #fff;
+    text-decoration: none;
+  }
+
+  span {
+    float: left;
+    vertical-align: middle;
+    padding-top: 2px;
+    font-family: helvbold;
+    font-size: 10px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    min-width: 13px;
+    background: #ff0000;
+  	 margin: 10px 0 0 18px;
+    text-align: center;
+  }
+}
+
+/* Notification */
+#box-notifications, #box-messages-notifications{
+  clear: both;
+  float: left;
+  margin: 34px 0 0 10px;
+  position: absolute;
+  margin-top: 34px;
+  display: block;
+    
+  .avatar{
+    margin-left: 3px;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: 8px;
+    float: left;
+  }
+
+  .comment-text {
+    width: 300px;
+    height: 100%;
+    background: #FFF;
+    float: left;
+    border: $border-box;
+    border-radius: $border-radius-box;
+    margin: 5px 0px 10px 11px;
+    box-shadow: 1px 3px 7px #757575;
+
+    .header{
+      line-height: 23pt;
+      padding-bottom: 6px;
+    
+      .top-null-image{
+        width: 60px;
+        height: 10px;
+        float: left;
+      }
+
+      .date{
+        color: #999;
+        float: right;
+        margin-right: 6px;
+      }
+    }
+
+    .content {
+      color: #333;
+      font-size: 13px;
+      padding: 6px 10px 5px 10px;
+      overflow: auto;
+      overflow-x: hidden;
+      height: 400px;
+      
+      li {
+    	  padding: 10px 0 10px 0;   
+    	  border-bottom: $border-box;
+    	  min-height: 50px;
+    	  line-height: 18px;
+    	  font-size: 12px;
+
+        &:hover{
+          background-color: #f8f8f8;
+        } 
+    	}
+
+      .avatar-notifications{
+	     	float: left;
+	     	margin-right: 10px;
+      }
+
+      .time{
+        font-size: 10px;
+        color: #777;
+      }
+
+  	  .first{
+  		  margin-top: -5px;
+  	  }
+
+      .last{
+		    border: none;
+      }
+    }
+     	     
+    .video{
+      padding: 10px;
+    }
+
+    .title-discusion{
+	    font-size: 18px; 
+	    font-weight: bold;
+	    margin-bottom: 10px;
+    }
+    
+    .text-discusion{
+	    padding-left: 10px;
+    }
+    
+    .footer {
+      border-top:1px solid $border-general;
+      height: 25px;
+      color: #777777;
+      float: left;
+      width: 100%;
+      text-align: center;
+      padding-top: 6px;
+      box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;
+
+      .icon{
+        float: left;
+        margin: 4px 0px 0px 5px;
+      }
+
+      .labels{
+        float: right;
+        margin: 4px 5px 0px 10px;
+      }
+
+      &:hover{
+        box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
+        background-color: #f8f8f8;
+      }
+    }
+  }
+
+  .header {
+    background: #fff;
+    height: 25px;
+    @include border-t-right-radius;
+    @include border-t-left-radius;
+    width: 100%;
+    box-shadow:         inset 0px 1px 0px #f7f7f8;
+    border-bottom: $border-box;
+    
+    b {
+      margin-left: 10px;
+    }
+    
+    .name{
+      color: #333;
+    }
+  }
+
+  .general-cir-discusion{
+    background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
+    width: 35px;
+    height: 35px;
+    float: left;
+  }
+
+  .arrow-top {
+    background: url('/assets/arrow_notification.png') no-repeat;
+    width: 14px;
+    height: 9px;
+    position: absolute;
+    margin:-9px 0px 0px 145px;
+    z-index: 20;
+  }
+}
+
+.unread{
+	background-color: #f2f7fd;
+}
