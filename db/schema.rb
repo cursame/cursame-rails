@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103215549) do
+ActiveRecord::Schema.define(:version => 20140108170844) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -411,6 +411,7 @@ ActiveRecord::Schema.define(:version => 20140103215549) do
     t.string   "logo_type",          :default => "128x26"
     t.text     "titles",             :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
+    t.boolean  "authenticate_teacher"
   end
 
   create_table "networks_users", :force => true do |t|

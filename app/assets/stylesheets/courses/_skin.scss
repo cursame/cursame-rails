@@ -113,6 +113,38 @@ h3 {
   }
 }
 
+.list_alt_box_expired {
+  background: #fff;
+  border-right: solid #F50924 4px;
+  transition: all linear 0.3s;
+
+  .header {
+    font-family: Arial;
+    font-weight: lighter;
+    color: #ddd;
+
+    .status > a:hover {
+      color: #39D4E2;
+    }
+  }
+
+  .headerOne {
+    font-family: Arial;
+    font-weight: lighter;
+    color: #000;
+
+    h1 a {
+      font-weight: lighter;
+      color: #000!important;
+    }
+
+    .status > a:headerOne {
+      color: #39D4E2;
+    }
+  }
+}
+
+
 .top-header-delivery-box {
   > a {
     font-weight: lighter;
