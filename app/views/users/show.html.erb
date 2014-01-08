@@ -50,9 +50,17 @@
 
 		<div class="friendship_conf" style="margin: 0 auto; clear: both; position: relative; display: block; width: 230px;">
 		    <!--btones de solicitud de amistad -->
-			<div class="send_request btn_blue" style="margin-bottom: 10px; display:none;">Enviar solicitud de amistad</div>
-			<div class="sent_request btn_gray" style="margin-bottom: 10px; display:none;">Solicitud enviada</div>
-			<div class="reject_request btn_gray" style="margin-bottom: 10px; display:none;">Solicitud rechazada</div>
+			
+			<%if current_user == @user_l%>
+			<%elsif current_user.friends?(@user_l)%>
+			<div class="send_request btn_gray" style="margin-bottom: 10px;">Amigo</div>
+			<%elsif current_user.friends_request?(@user_l) %>
+			<div class="sent_request btn_gray" style="margin-bottom: 10px;">Solicitud enviada</div>
+			<%elsif current_user.sent_me_request?(@user_l)%>
+			<div class="sent_me_request btn_blue" style="margin-bottom: 10px;"><%= link_to "Aceptar amistad", friendships_update_friend_path(@user_l.id), :remote => true%></div>
+			<%elsif current_user != @user_l%>
+			<div  class="send_request btn_blue" style="margin-bottom: 10px;"><%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), :remote => true%></div>
+			<%end%>
 		</div>
 
         <div id="box-course" class="basic-lateral-box" >

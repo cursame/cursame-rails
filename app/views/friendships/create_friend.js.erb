@@ -1,2 +1,6 @@
 $('#add_friend<%=@user.id%>').html('');
 $('#add_friend<%=@user.id%>').append('Solicitud enviada');
+
+
+$('.send_request').remove().html('');
+$(".friendship_conf").append('<div class="sent_request btn_gray" style="margin-bottom: 10px;">Solicitud enviada</div>');
