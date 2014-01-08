@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 </script>
-<% if current_network.image_front != nil%>
+<% if current_network.image_front.file != nil%>
 
   <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
   <%else%>
@@ -47,7 +47,7 @@ $(document).ready(function() {
        <center>
    </div>
 <%else%>
-<% if current_network.image_front != nil%>
+<% if current_network.image_front.file != nil%>
 
   <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
   <%else%>

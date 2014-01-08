@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103215549) do
+ActiveRecord::Schema.define(:version => 20140108170844) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -375,18 +375,19 @@ ActiveRecord::Schema.define(:version => 20140103215549) do
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                                                                                                                                                                       :null => false
+    t.datetime "updated_at",                                                                                                                                                                                       :null => false
     t.integer  "population"
-    t.boolean  "public_register", :default => true
-    t.boolean  "free",            :default => true
-    t.boolean  "register_form",   :default => false
+    t.boolean  "public_register",      :default => true
+    t.boolean  "free",                 :default => true
+    t.boolean  "register_form"
     t.text     "welcom_message"
     t.string   "image_front"
     t.string   "logo"
     t.string   "logo_type"
-    t.text     "titles",             :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
+    t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
+    t.boolean  "authenticate_teacher"
   end
 
   create_table "networks_users", :force => true do |t|
