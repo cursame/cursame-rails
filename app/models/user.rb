@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -347,9 +348,16 @@ class User < ActiveRecord::Base
     end
 
     friendship = Friendship.find_by_user_id_and_friend_id(self.id, another_user.id)
-    inverse_friendship = Friendship.find_by_user_id_and_friend_id(another_user.id,self.id)
 
-    return (!friendship.nil? or !inverse_friendship.nil?)
+    return !friendship.nil?
+  end
+
+  def sent_me_request?(another_user)
+    return true if self.id == another_user.id
+    
+    inverse_friendship = Friendship.find_by_user_id_and_friend_id(another_user.id, self.id)
+
+    return !inverse_friendship.nil?
   end
 
   def to_s
