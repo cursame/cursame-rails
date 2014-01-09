@@ -71248,7 +71248,7 @@ Ext.define('Cursame.controller.tablet.Main', {
                         return Ext.Msg.alert('', 'Escribe una descripción a la Tarea.');
                     }
                     else if (deliver <= publication) {
-                        return Ext.Msg.alert('', 'La fecha de Publicación no puede ser menor o igual a la fecha de Entrega');
+                        return Ext.Msg.alert('', 'La fecha de Publicación no puede ser menor o igual a la Fecha límite');
                     }
                     else if (values.value == null) {
                         return Ext.Msg.alert('', 'Escribe un valor para la Tarea.');
@@ -72626,7 +72626,7 @@ Ext.define('Cursame.controller.phone.Main', {
                         return Ext.Msg.alert('', 'Escribe una descripción a la Tarea.');
                     }
                     else if (deliver <= publication) {
-                        return Ext.Msg.alert('', 'La fecha de Publicación no puede ser menor o igual a la fecha de Entrega');
+                        return Ext.Msg.alert('', 'La fecha de Publicación no puede ser menor o igual a la Fecha límite');
                     }
                     else if (values.value == null) {
                         return Ext.Msg.alert('', 'Escribe un valor para la Tarea.');

@@ -120,7 +120,11 @@
 	              </div>
 	              <div class="state">
 	                  <div id="delivery_state_publish<%=delivery.id%>">
-	                  <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+	                  <% if delivery.state == 'published' %>
+	                  <%= link_to "Activo", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+	                  <%else%>
+	                  <%= link_to "Inactivo", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+	                  <%end%>
 	                  </div>
 	                  <div class="dates" id="dates_delivery<%=delivery.id%>">
 	                  	<img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
@@ -200,13 +204,10 @@
           </div><!-- end content_delivery-->
           
           
-          <!-------------------------------
-          -------------------------------
+          <!--
           
 	          comienza tab de examenes
-	          
-	      -------------------------------
-          ------------------------------->
+	       -->
           
           <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden; display:none;">
             <% @course.surveys.reverse.each do |survey|%>
@@ -227,7 +228,11 @@
 						</div>
 
 	                    <div id="survey_state_publish<%=survey.id%>">
-	                    	<%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
+	                     <% if survey.state == 'published' %>
+	                    	<%= link_to "Activo", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
+	                      <%else%>
+	                        <%= link_to "Inactivo", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
+	                      <%end%>
 						</div><!-- ends survey_state_publish -->
 	                  </div><!-- ends state -->
 	                     

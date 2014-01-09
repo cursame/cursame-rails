@@ -1,4 +1,8 @@
-$('#survey_state_publish<%=@survey.id%>').html('<%= link_to "#{@survey.state}", publish_unpublish_survey_manualy_path(:state => @survey.state, :id => @survey.id ), :remote => true, :class => "state-btn" %>');
+<% if @survey.state == 'published' %>
+$('#survey_state_publish<%=@survey.id%>').html('<%= link_to "Activo", publish_unpublish_survey_manualy_path(:state => @survey.state, :id => @survey.id ), :remote => true, :class => "state-btn" %>');
+<%else%>
+$('#survey_state_publish<%=@survey.id%>').html('<%= link_to "Inactivo", publish_unpublish_survey_manualy_path(:state => @survey.state, :id => @survey.id ), :remote => true, :class => "state-btn" %>');
+<%end%>
 $('#survey_dates<%= @survey.id%>').html('<%= @survey.publish_date %> <%= @survey.end_date %>');
 $("#notice").html('');
 $("#notice").css('color','#608847');

@@ -95,7 +95,7 @@ $('.cancel-post-form_tab').click(function(){
     
      /*tareas*/
       $('#delivery_title').attr("placeholder", "Escribe el tema de la tarea");
-      $('.delivery_end_date').attr("placeholder", "Fecha de entrega");
+      $('.delivery_end_date').attr("placeholder", "Fecha límite");
       $('.delivery_publish_date').attr("placeholder", "Dia de publicación");
       $('#delivery_description').attr("placeholder", "Descripcción");
       $('#delivery_porcent_of_evaluation').attr("placeholder", "En evalación final");
@@ -117,7 +117,7 @@ $('.cancel-post-form_tab').click(function(){
       
       $('#survey_name').attr("placeholder", "Título del cuestionario");
       $('.survey_publish_date').attr("placeholder", "Fecha de publicación");
-      $('.survey_end_date').attr("placeholder", "Fecha de entrega");
+      $('.survey_end_date').attr("placeholder", "Fecha límite");
       
       $('#survey_name').addClass('normal-placeholder');
       $('.survey_publish_date').addClass('normal-placeholder');

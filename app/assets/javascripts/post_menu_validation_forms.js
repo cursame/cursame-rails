@@ -62,7 +62,7 @@
              
              
          $('#delivery_title').attr("placeholder", "Escribe el tema de la tarea");
-         $('.delivery_end_date').attr("placeholder", "Fecha de entrega");
+         $('.delivery_end_date').attr("placeholder", "Fecha límite");
          $('.delivery_publish_date').attr("placeholder", "Dia de publicación");
          $('#delivery_description').attr("placeholder", "Descripcción");
          $('#delivery_porcent_of_evaluation').attr("placeholder", "En evalación final");
@@ -126,7 +126,7 @@
        
        return false;  
        }else if (survey_end_date == ''){
-       $('.survey_end_date').attr("placeholder", "Sin fecha de entrega.");
+       $('.survey_end_date').attr("placeholder", "Sin Fecha límite.");
        $('.survey_end_date').addClass('red-placeholder');
        $('.survey_end_date').removeClass('normal-placeholder');
        
@@ -135,7 +135,7 @@
        }else{
        $('#survey_name').attr("placeholder", "Título del cuestionario ");
        $('.survey_publish_date').attr("placeholder", "Fecha de publicación");
-       $('.survey_end_date').attr("placeholder", "Fecha de entrega");
+       $('.survey_end_date').attr("placeholder", "Fecha límite");
        
        $('#survey_name').addClass('normal-placeholder');
        $('.survey_publish_date').addClass('normal-placeholder');

@@ -39,7 +39,7 @@
 	        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_publish_date", :id => 'publish_date_'+random_id, :value=>f.object.end_date %>
 	    </div>
 	<div style="float: left;">
-        <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
+        <%= f.text_field :end_date, :placeholder=>'Fecha límite', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
     </div>
     
 
