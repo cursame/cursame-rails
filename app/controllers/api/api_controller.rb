@@ -63,7 +63,7 @@ class Api::ApiController < ApplicationController
               when 'User'
                 auxtext = 'en tu prefil '
             end 
-
+            comments = []
             text = publication.user.name + ' ha comentado ' + auxtext
             avatar =  {
               url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
@@ -72,7 +72,7 @@ class Api::ApiController < ApplicationController
             publication = Discussion.find(id)
             comments = publication.comments
             auxtext = publication.courses.empty? ? 'publica en tu red' : 'en la asignatura de ' + publication.courses[0].title
-            text = 'Se ha creado un discusion ' + auxtext
+            text = publication.user.name + ' ha creado un discusion ' + auxtext
             avatar =  {
               url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
             }
@@ -101,6 +101,8 @@ class Api::ApiController < ApplicationController
               url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url 
             }
             publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
+          else
+            next
         end
         # publication.likes = publication.likes.size
        
@@ -113,7 +115,7 @@ class Api::ApiController < ApplicationController
           createdAt: created_at,
           done: done,
           comments: comments,
-          num_comments: comments.nil? ? 0 : comments.count
+          num_comments:comments.count
         }
        @pubs.push(pub)
       end
@@ -185,36 +187,45 @@ class Api::ApiController < ApplicationController
         when 'user_comment_on_network'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
+          text = cretator.name + ' ha comentado en la red'
         when 'user_comment_on_course'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
           course = Course.find(notification.notificator.commentable_id)
+          text = cretator.name + ' ha comentado en el curso ' + course.title
         when 'new_delivery_on_course'
           cretator = notification.notificator.user
           owner = notification.notificator.courses[0]
           course = owner
+          text = 'Se ha creado una tarea nueva en el curso ' + course.title
         when 'new_public_course_on_network'
           cretator = notification.notificator.user
+          text = 'Se ha creado un curso nuevo ' + course.title
         # when 'new_survey_on_course'
         when 'user_comment_on_comment'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
+          text = cretator.name + ' ha comentado en tu comentario'
         when 'user_comment_on_user'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
+          text = cretator.name + ' ha comentado en tu perfil'
         when 'user_comment_on_discussion'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
+          text = cretator.name + ' ha comentado en tu discussion'
         when 'user_comment_on_delivery'
           cretator = notification.notificator.user
           owner = notification.notificator.commentable
+          text = cretator.name + ' ha comentado en la tarea ' + owner.title
       end
       notification.notificator_type = {
           :creator => cretator,
           :course => course,
           :notificator => notificator,
           :user => user,
-          :owner => owner
+          :owner => owner,
+          :text => text
       }
       
       @user_notifications.push(notification)

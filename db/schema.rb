@@ -336,31 +336,6 @@ ActiveRecord::Schema.define(:version => 20140108170844) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "impressions", :force => true do |t|
-    t.string   "impressionable_type"
-    t.integer  "impressionable_id"
-    t.integer  "user_id"
-    t.string   "controller_name"
-    t.string   "action_name"
-    t.string   "view_name"
-    t.string   "request_hash"
-    t.string   "ip_address"
-    t.string   "session_hash"
-    t.text     "message"
-    t.text     "referrer"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  add_index "impressions", ["controller_name", "action_name", "ip_address"], :name => "controlleraction_ip_index"
-  add_index "impressions", ["controller_name", "action_name", "request_hash"], :name => "controlleraction_request_index"
-  add_index "impressions", ["controller_name", "action_name", "session_hash"], :name => "controlleraction_session_index"
-  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
-  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
-  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
-  add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
-
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
@@ -399,17 +374,17 @@ ActiveRecord::Schema.define(:version => 20140108170844) do
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.datetime "created_at",                                                                                                                                                                                     :null => false
-    t.datetime "updated_at",                                                                                                                                                                                     :null => false
+    t.datetime "created_at",                                                                                                                                                                                       :null => false
+    t.datetime "updated_at",                                                                                                                                                                                       :null => false
     t.integer  "population"
-    t.boolean  "public_register",    :default => true
-    t.boolean  "free",               :default => true
+    t.boolean  "public_register",      :default => true
+    t.boolean  "free",                 :default => true
     t.boolean  "register_form"
     t.text     "welcom_message"
-    t.string   "image_front",        :default => "background-restore.jpg"
-    t.string   "logo",               :default => "logo.png"
-    t.string   "logo_type",          :default => "128x26"
-    t.text     "titles",             :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
+    t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
   end
