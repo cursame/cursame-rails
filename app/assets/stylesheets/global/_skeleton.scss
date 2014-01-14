@@ -3,9 +3,24 @@
 ----------------------------------*/
 .topbar {
   position: fixed;
-  height: 35px;
-  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 50px;
+  z-index: 100;
   width: 100%;
+
+  .network {
+    float: left;
+  }
+
+  .activity-notificactions {
+    float: right;
+    @include clearfix;
+
+    > div {
+      float: left;
+    }
+  }
 }
 
 .menu-user {
@@ -23,8 +38,100 @@
   }
 }
 
+.wrapper {
+  width: 720px;
+  margin: 0 auto;
+  @include clearfix;
+}
+
+.space-sidebar {
+  padding-left: 230px;
+}
+
+.wrap {
+  padding: 50px 0 0 230px;
+}
+
 .clear{
   clear:both;
+}
+
+.avatar {
+
+  &.avatar-24 {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Sidebar Global
+----------------------------------*/
+.global-sidebar {
+  width: 230px;
+  position: fixed;
+  z-index: 105;
+  left: 0;
+  height: 100%;
+  @include clearfix;
+
+  .user {
+    padding: 13px 10px 12px 10px;
+    @include clearfix;
+    
+    > a {
+      display: block;
+      float: left;
+
+      img {
+        margin-right: 5px;
+      }
+    }
+
+    .dropdown-wrap {
+      float: right;
+    }
+
+    .dropdown-pull {
+      padding: 5px;
+      margin-top: 6px;
+    }
+  }
+
+  .navigation li a .i {
+    margin-right: 7px;
+  }
+
+  .side-courses li a {
+    img {
+      margin-right: 3px;
+    }
+  }
+
+  &:after {
+    content: "";
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.sidebar-section {
+  .sidebar-section-header {
+    padding: 5px 10px;
+  }
+}
+
+.section-list {
+  > li a {
+    padding: 5px 10px;
+    display: block;
+  }
+}
+
+.scroller {
+  overflow-y: auto; 
 }
 
 /* Notifications and Messages

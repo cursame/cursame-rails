@@ -1,0 +1,20 @@
+
+/* Icons
+----------------------------------*/
+.i {
+  background: url("/assets/pack.png") no-repeat;
+  vertical-align: middle;
+  @include inline-block;
+}
+
+.i-home-w { width: 16px; height: 16px; background-position: 0 0; }
+.i-homeworks-w { width: 16px; height: 16px; background-position: 0 -15px; }
+.i-questionaries-w { width: 16px; height: 16px; background-position: 0 -34px; }
+.i-discussions-w { width: 16px; height: 16px; background-position: -17px 0; }
+.i-courses-w { width: 16px; height: 16px; background-position: -19px -17px; }
+.i-stats-w { width: 16px; height: 16px; background-position: -18px -37px; }
+.i-calendar-w { width: 16px; height: 16px; background-position: -18px -55px; }
+.i-community-w { width: 16px; height: 16px; background-position: -0px -54px; }
+
+
+

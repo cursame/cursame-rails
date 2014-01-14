@@ -3,16 +3,7 @@
 	width: 100%;
 	height: 100%;
 }
-.topbar2 {
-	height: 35px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 10000;
-	overflow: visible;
-	display: block;
-}
+
 .topbar-inner2, .topbar .fill {
 	height: 35px;
 	background-color: #f7f7f7;
@@ -30,16 +21,7 @@
 	margin-right: auto;
 	zoom: 1;
 }
-.topbar2 h3 a, .topbar .brand {
-	float: left;
-	display: block;
-	padding: 6px 20px 0px 20px;
-	margin-left: -20px;
-	color: white;
-	font-size: 20px;
-	font-weight: 200;
-	line-height: 1;
-}
+
 .login {
 	margin: auto;
 	padding-top: 50px;

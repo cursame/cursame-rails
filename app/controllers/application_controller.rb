@@ -35,6 +35,9 @@ class ApplicationController < ActionController::Base
   helper_method :auth_hash
   helper_method :courses_with_permissions
 
+  #current_user_course_when_inscript
+  helper_method :current_user_courses
+
 
   #data of the networks you are
   def current_network
@@ -101,6 +104,10 @@ class ApplicationController < ActionController::Base
 
   def current_course
       @course = Course.find(params[:id])
+  end
+  
+  def current_user_courses
+     @ccc = current_user.courses.where(:network_id => current_network.id)
   end
 
   ####### difininiendo variables de miembros de una red de forma global ########
