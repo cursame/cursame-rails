@@ -28,7 +28,7 @@
   <%= javascript_include_tag('jquery-ui-1.9.2.custom.js') %>
   <%= javascript_include_tag('application.js') %>
   <%= javascript_include_tag('application.fullcalendar') %>
- 
+
   <%= favicon_link_tag "favicon.png" %> 
   
   <% yield :javascript_includes %>
@@ -38,7 +38,8 @@
   <![endif]-->
 </head>
 <body >
-	
+	    
+
     <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
       @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
@@ -71,7 +72,7 @@
       
        window.clearInterval(GetIntevalExpire);
        var IntervalFunctionForExpireSession;
-       IntervalFunctionForExpireSession = 1800000;
+       IntervalFunctionForExpireSession = 50000;
        var GetIntevalExpire = setInterval(function(){ 
            $.get('<%= expire_session_path %>');
        },IntervalFunctionForExpireSession);

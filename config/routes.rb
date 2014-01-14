@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 Cursame30Lb::Application.routes.draw do
 
+  get "load_layout/load_wall"
+
+  get "load_layout/load_post_menu"
+
+  get "load_layout/load_sidebar"
+
+  get "load_layout/load_chat"
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
