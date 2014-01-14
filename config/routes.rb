@@ -119,10 +119,13 @@ Cursame30Lb::Application.routes.draw do
   ##### llamada ajax para saber si la session ha expirado
 
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
+  
+  ##### vista de todas mis tareas como miembro del curso #####
 
+  get "deliveries", :to => "deliveries#my_deliveries", :as => :my_deliveries
 
   #### llada de ajax de editar tarea
-
+  
   get "edit_delivery_access/:id", :to => "courses#edit_delivery_access", :as => :edit_delivery_access
 
   resources :deliveries do
