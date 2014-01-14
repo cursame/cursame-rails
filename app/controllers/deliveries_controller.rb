@@ -20,6 +20,10 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
+  ##### manueja todas las tareas del usuario dentro de la red
+  def my_deliveries
+    @wall = current_network.walls.where(:publication_type => 'Delivery').paginate(:per_page => 15, :page => params[:page])
+  end
 
   def condocourse
    @course = current_course.id
