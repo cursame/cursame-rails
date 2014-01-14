@@ -34,11 +34,10 @@
   <% yield :javascript_includes %>
   <%= csrf_meta_tags %>
   <!--[if IE]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 <body >
-	
     <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
       @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
@@ -93,144 +92,229 @@
       ga('send', 'pageview');
 
     </script>
-    
-<!-- header -->
-<header id="user_nav" class="topbar">
-  <div class="center-div">
-  	<div class="headFix">
 
-     <% if current_network == nil%> 
-       <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
-     <%else%>
-      <% if current_network.logo.file == nil %>
-       <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-      <%else%>
-       <%case %>
-       <% when current_network.logo_type == '128x26'%>
-       <%= link_to image_tag("#{current_network.logo.response}", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-       <% when current_network.logo_type == '26x26' %>
-       <%= link_to image_tag("#{current_network.logo.square}", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-       <%else%>
-       <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-       
-       <%end%>
-      <%end%>
-     <%end%>
-     
-	<div class="menu-user">
-		<% if user_signed_in? %>
-			<div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
-				<%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
-          		<div id="ShowLogout" style="display: none;">Salir</div>
-		  	</div>
+    <script>
+     setTimeout(function(){
+        var bt = '<%= browser %>' 
+        if(bt == 'true'){
+          //  alert('browser compatible');
+        }else{
+             $('#browsers_box').lightbox_me({
+                  centered: true, 
+                  onLoad: function() { 
+                      $('#browsers_box').find('input:first').focus()
+            }
+                  });
+              $('body').css('overflow','hidden');
+      }
+     },2000)
+    </script>
+
+<% if user_signed_in? %>
+  <div class="global-sidebar">
+    <div class="user">
+
+        <%= link_to show_user_path(current_user.personal_url) do %>
           
-        <% if current_user.avatar.blank? %>
-			<%= link_to image_tag(current_user.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-		<%else%>
-			<%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-        <%end%>
-			<span>
-				<%= link_to truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 20), show_user_path(current_user.personal_url) %> 
-			</span>
-				<%#= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
+          <% if current_user.avatar.blank? %>
+            <%= image_tag(current_user.image_avatarxx, class: "avatar") %>
+          <%else%>
+            <%= image_tag(current_user.avatar.mini, class: "avatar") %>
+          <%end%>
+          
+          <span class="name">
+            <%= truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 22) %>
+          </span>
 
-                <%#=  debug current_role %>
-				
-				<% if current_role == "admin"%>
-				<%= link_to "Administración", managers_wall_path, :style =>'', :class => "admin-access"%>
-           
-				<%end%>
-			<% else %>
+        <% end %>
 
-		<div style="float:right;">
-			<!-- 
-				<%= link_to "Logueate", new_user_session_path %>
-					<% if current_network && current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>
-				<%end%>
-			-->
-		</div>
+        <div class="dropdown-wrap">
+          <div class="dropdown-pull">
+            <div class="triangle"></div>
+          </div>
+          <div class="dropdown-v right">
+            <i class="tip"></i>
+            <ul>
+              <li>
+                <%= link_to "Editar perfil", edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-		<% end %>
+        <% if current_role == "admin"%>
+          <%= link_to "Administración", managers_wall_path, :style =>'', :class => "admin-access"%>
+        <% end %>
+        
+    </div>
 
-		</div>
-		
-		<div id="message_notifications">    
-			<%= render :partial => '/shared/chat/message_notifications' %>
-		</div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-main">
+        <ul class="section-list navigation">
+          <li>
+            <%= link_to "http://#{current_network.subdomain}.#{links}/" do %>
+              <i class="i i-home-w"></i>Home
+            <% end %>
+          </li>
+          <li>
+            <a href="">
+              <i class="i i-homeworks-w"></i>Tareas
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="i i-questionaries-w"></i>Cuestionarios
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="i i-discussions-w"></i>Discusiones
+            </a>
+          </li>
+          <li>
+            <%= link_to courses_path do %>
+              <i class="i i-courses-w"></i>Cursos
+            <% end %>
+          </li>
+          <li>
+            <a href="">
+              <i class="i i-stats-w"></i>Calificaciones
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="i i-calendar-w"></i>Calendario
+            </a>
+          </li>
+          <li>
+          <%= link_to network_comunity_path do %>
+              <i class="i i-community-w"></i>Comunidad
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <h3><%= current_network.courses_tag %></h3>
+      </div>
+      <div class="sidebar-section-main scroller">
+        <ul class="section-list side-courses">
+          <% current_user_courses.each do |c| %>
+            <li>
+              <%= link_to course_path(c.id) do %>
+                <% if c.avatar.file == nil %> 
+                  <%= image_tag("course-avatarxxx.png", class: "avatar avatar-24") %>
+                <%else%>
+                <%= image_tag("#{c.avatar.mini}", class: "avatar avatar-24") %>
+                <%end%>
+                <%= c.title %>
+              <% end %>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">
+        <h3>Chat (<%= @courses_online.count + @friends_online.count %>)</h3>
+      </div>
+      <div class="sidebar-section-main scroller">
+        <% if @show_chat_panel %>  
 
-		<div id="notifications">    
-			<%= render :partial => '/shared/notifications' %>
-		</div>
-	</div>
+          <ul class="section-list">
+            <% @courses_online.each do |course|%>
+              <li>
+                <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
+                  <% if course.avatar.file == nil %> 
+                    <%= image_tag("course-avatarxx.png", class: "avatar avatar-24") %>
+                  <%else%>
+                    <%= image_tag("#{user.avatar.mini}", class: "avatar avatar-24") %>
+                  <%end%>
 
-</div><!-- ends headFix -->
+                  <%= truncate("#{course.title}", :omission => "...", :length => 30) %>
+                <% end %>
+              </li>
+            <%end%>
+          </ul>
+          
+          <ul class="section-list side-courses">
+            <% @friends_online.each do |user|%>
+              <li>
+                <%= link_to open_channel_path(user.id), :remote => true do %>
+                  <% if user.avatar.file == nil %> 
+                    <%= image_tag("imagexx.png", class: "avatar avatar-24") %>
+                  <%else%>
+                    <%= image_tag("#{user.avatar.mini}", class: "avatar avatar-24") %>
+                  <%end%>
 
-    <div id="log_loadding"style="display:none;"></div>
-	<div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
-		<div id="notice" class="notice"></div>
-	</div>
-	</header>
-	
-	<div id="sub_nav">
-		<div class="user_subnav"></div>
-		<div class="friends_subnav"></div>
-		
-		<div class="courses_subnav"></div>
-	</div>
-	<div class="center-div">
-		<!-- content -->
-  
-<script>
-   setTimeout(function(){
-      var bt = '<%= browser %>' 
-      if(bt == 'true'){
-        //  alert('browser compatible');
-      }else{
-           $('#browsers_box').lightbox_me({
-                centered: true, 
-                onLoad: function() { 
-                    $('#browsers_box').find('input:first').focus()
-					}
-                });
-            $('body').css('overflow','hidden');
-		}
-   },2000)
-</script>
-  
-<script>
-	$('#logoutHover').mouseenter( function() {
-  		$(this).animate({ width: "58px" }, 200);
-  	});
-  	$('#logoutHover').mouseleave( function() {
-  		$(this).animate({ width: "20px" }, 100);
-  	});
-  	$('#logoutHover').hover( function() {
-  		$('#ShowLogout').slideToggle(100).delay(300);
-  	});
-  	
-  	
-  	$('.ZenboxTabRight').mouseenter ( function() {
-  		$(this).animate({ paddingRight: "80px" });
-	  	$(this).addClass('zenbox_tab__text');
-  	});
-  	$('.ZenboxTabRight').mouseleave ( function() {
-  		$(this).animate({ paddingRight: "0px" });
-  		$(this).removeClass('zenbox_tab__text');
-  	});
-  </script>
-  
-  <div class="container" >
-    <!-- content -->
-    <%= yield %>
-    <br>
-    <!--<img src="http://placehold.it/920x100/" alt="">  -->
+                  <%= truncate("#{user.name}", :omission => "...", :length => 30) || user.email %>
+                  <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>"></div>
+
+                <% end %>
+              </li>
+            <%end%>
+          </ul>
+
+        <% end %>
+      </div>
+    </div>
+
   </div>
+<% end %>
   
-  
-</div>
+  <div class="wrap">
+    <header id="user_nav" class="topbar">
+      <div class="wrapper space-sidebar">
+
+        <div class="network">
+          <% if current_network == nil%> 
+            <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
+          <%else%>
+            <% if current_network.logo.file == nil %>
+              <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
+            <%else%>
+              <%case %>
+                <% when current_network.logo_type == '128x26'%>
+                  <%= link_to image_tag("#{current_network.logo.response}"), "http://#{current_network.subdomain}.#{links}/"%>
+                <% when current_network.logo_type == '26x26' %>
+                  <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+                <%else%>
+                  <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
+              <%end%>
+            <%end%>
+          <%end%>
+        </div>
+        
+        <div class="activity-notificactions">
+          <div id="message_notifications">    
+            <%= render :partial => '/shared/chat/message_notifications' %>
+          </div>
+
+          <div id="notifications">    
+            <%= render :partial => '/shared/notifications' %>
+          </div>
+        </div>
+
+        <div id="log_loadding"style="display:none;"></div>
+        <div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
+          <div id="notice" class="notice"></div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="main">
+      <%= yield %>
+    </div>
+  </div>
+
 
 <div id="browsers_box" class="content_f_box"  style="display:none">
-     <!---  <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>-->
  	   
                 <p style="color:#fff; font-size:17px;">Browser no compatible, no podemos garantizar el funcionamiento adecuado de la aplicación.</p></br>
                 <p style="color:#fff;" ><i>No podrá usar la aplicación hasta haber instalado una versión compatible de su navegador, le recomendamos estos navegadores:</i></p>

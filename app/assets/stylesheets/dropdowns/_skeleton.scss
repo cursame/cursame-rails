@@ -1,0 +1,55 @@
+
+/* Dropdowns
+----------------------------------*/
+
+ .dropdown-wrap {
+  position: relative;
+
+  .dropdown-v {
+    display: none;
+    z-index: 200;
+    position: absolute;
+    top: 100%;
+    margin-top: 13px;
+    min-width: 160px;
+
+    &.left {
+      left: 0;
+
+      .tip {
+        left: 10px;
+      }
+    }
+
+    &.right {
+      right: 0;
+
+      .tip {
+        right: 10px;
+      }
+    }
+
+    &.center {
+      left: -80px;
+
+      .tip {
+        left: 50%;
+        margin-left: -10px;
+      }
+    }
+
+    .tip {
+      position: absolute;
+      top: -9px;
+      width: 20px;
+      height: 10px;
+    }
+  }
+}
+
+
+
+.dropdown-wrap .dropdown-v > ul li a {
+  display: block;
+  padding: 8px 10px;
+}

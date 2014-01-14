@@ -375,16 +375,16 @@ ActiveRecord::Schema.define(:version => 20140103215549) do
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                                                                                                                                                                     :null => false
+    t.datetime "updated_at",                                                                                                                                                                                     :null => false
     t.integer  "population"
-    t.boolean  "public_register", :default => true
-    t.boolean  "free",            :default => true
-    t.boolean  "register_form",   :default => false
+    t.boolean  "public_register",    :default => true
+    t.boolean  "free",               :default => true
+    t.boolean  "register_form",      :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",        :default => "background-restore.jpg"
+    t.string   "logo",               :default => "logo.png"
+    t.string   "logo_type",          :default => "128x26"
     t.text     "titles",             :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
   end

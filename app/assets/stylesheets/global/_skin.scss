@@ -1,11 +1,15 @@
 
 /* Global Skin
 ----------------------------------*/
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   color: #333;
-  font-family:  $helvetica;
+  background: $main-background;
+  font-family: $font-cursame;
   font-size: 13px;
-  background: $bg-page;
 }
 
 ul{
@@ -18,8 +22,79 @@ a {
 }
 
 .topbar {
-  background: #FFF !important;
-  border-bottom: 1px solid #ccc;
+  background: $white;
+  box-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+
+.avatar {
+  border-radius: $radius;
+}
+
+/* Sidebar Global
+----------------------------------*/
+.global-sidebar {
+  background: $primary-color;
+  color: $white;
+
+  a {
+    color: $white;
+  }
+
+  .user {
+    background: lighten($primary-color, 1);
+    border-bottom: 1px solid darken($primary-color, 5);
+
+    img {
+      vertical-align: -7px;
+    }
+
+    .name {
+      color: $white;
+      font-size: 14px;
+    }
+
+    .triangle {
+      @include triangle(8px, $white, down);
+    }
+  }
+
+  .navigation li a .i {
+    vertical-align: -3px;
+  }
+
+  .side-courses li a {
+    img {
+      vertical-align: -7px;
+    }
+  }
+
+  &:after {
+    @include background(linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.15)) repeat);
+    pointer-events: none;
+  }
+}
+
+.sidebar-section {
+  .sidebar-section-header {
+    background: lighten($primary-color, 1);
+    border-top: 1px solid lighten($primary-color, 5);
+    border-bottom: 1px solid darken($primary-color, 5);
+
+    h3 {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  }
+}
+
+.section-list {
+  > li a {
+    
+    &:hover {
+      background: lighten($primary-color, 2);
+    }
+  }
 }
 
 /* Notifications and Messages
