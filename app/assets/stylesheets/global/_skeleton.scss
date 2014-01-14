@@ -134,6 +134,27 @@
   overflow-y: auto; 
 }
 
+/* Footer
+----------------------------------*/
+.footer {
+  padding: 10px;
+  @include clearfix;
+  
+  .footer-logo {
+    display: block;
+    width: 62px;
+    height: 20px;
+  }  
+
+  .cursame-brand {
+    float: left;
+  }
+
+  .rights {
+    float: right;
+  }
+}
+
 /* Notifications and Messages
 ----------------------------------*/
 #box-notifications, #box-messages-notifications{

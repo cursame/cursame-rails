@@ -97,6 +97,19 @@ a {
   }
 }
 
+/* Footer
+----------------------------------*/
+.footer {
+  background: lighten($primary-color, 1);
+  border-top: 1px solid lighten($primary-color, 5);
+  box-shadow: 0 -1px 1px darken($primary-color, 5);
+
+  .footer-logo {
+    background: url('pack.png') -36px -11px;
+    @include hide-text;
+  }  
+}
+
 /* Notifications and Messages
 ----------------------------------*/
 #box-notifications, #box-messages-notifications{
