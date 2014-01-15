@@ -17,7 +17,7 @@ ul{
 }
 
 a {
-  color: #4FA3E9;
+  color: $primary-color;
   text-decoration: none;
 }
 
@@ -31,7 +31,7 @@ a {
 .avatar-holder {
   &:after {
     content: "";
-    border-radius: $radius;
+    border-radius: $radius + 1;
     box-shadow: inset 0 0 1px rgba(0,0,0,.7);
   }
 }

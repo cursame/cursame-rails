@@ -7,22 +7,29 @@
     border: 1px solid #cccccc;
     border-radius: $radius;
   }
-
-  .post-child-comment-box {
-    background: #fcfcfc; 
-    border-top: 1px solid #d6d6d6;
-    border-radius: 0 0 $radius $radius;
-    
-    .more-comment-box {
-      border-bottom: 1px solid #e6e6e6;
-    }
-
-    .child-comment-box {
-      border-bottom: 1px solid #e6e6e6;
-    }
-  }
 }
 
+.post-child-comment-box {
+  background: #fcfcfc; 
+  border-top: 1px solid #d6d6d6;
+  border-radius: 0 0 $radius $radius;
+  
+  .more-comment-box {
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .child-comment-box {
+    border-bottom: 1px solid #e6e6e6;
+  }
+  
+  .new-comment-actions {
+    text-align: right;
+  }
+
+  .add-comment {
+    border-bottom: 0;
+  }
+}
 
 .publication-metadata {
   .meta-data {

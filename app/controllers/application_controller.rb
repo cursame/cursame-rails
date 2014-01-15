@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
   helper_method :numeric_random
   helper_method :call_rake
 
+  #metodo de lista de iconos
+
+  helper_method :icon
+
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
@@ -380,6 +384,11 @@ class ApplicationController < ActionController::Base
       # when 5 #supervisor
         return current_user.courses
     end
+  end
+
+  def icon(name)
+    @match_list = "<i class='i i-#{name}'></i>"
+    @match_list.html_safe
   end
 
   protected

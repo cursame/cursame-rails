@@ -31,7 +31,7 @@
           <% when 'Course'%>
             <%= link_to image_tag(avatar), course_path(post.id) if ( !avatar.blank? && !nil)%>
             <%= link_to image_tag(course_avatarxx), course_path(post.id) if (avatar.blank? || nil)%>
-          <%else%>
+          <% else %>
             <div class="id_for_avatar<%=post.user.id%>">
               <% if ( !avatar.blank?  && !nil) %>
                 <%= link_to show_user_path(personal_url) do %>
@@ -86,10 +86,8 @@
           <%end%>
         </div>
 
-        <div class="user-post-child-comment">
-          <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => post.id,:commentable_type => type} %>
-        </div>
-        
+        <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => post.id,:commentable_type => type} %>  
+
       </div>
 
         
@@ -123,5 +121,4 @@
   </div>
     
     
-  </div>
 <%end%>

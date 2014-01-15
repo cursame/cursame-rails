@@ -92,32 +92,8 @@
 .styleNav li img {
 	opacity: 0.5;
 }
-.btn.primary {
-	color: white;
-	background-image: -khtml-gradient(linear, left top, left bottom, from(#f86049), to(#d6432d));
-	background-image: -moz-linear-gradient(top, #f86049, #d6432d);
-	background-image: -ms-linear-gradient(top, #f86049, #d6432d);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f86049), color-stop(100%, #0064CD));
-	background-image: -webkit-linear-gradient(top, #f86049, #d6432d);
-	background-image: -o-linear-gradient(top, #f86049, #d6432d);
-	background-image: linear-gradient(top, #f86049, #d6432d);
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-	border-color: #f46d59 #f46d59 #f46d59;
-	border-color: #f46d59;
-}
-.btn:hover {
-	color: white;
-	background-image: -khtml-gradient(linear, left top, left bottom, from(#e35843), to(#c03c28));
-	background-image: -moz-linear-gradient(top, #e35843, #c03c28);
-	background-image: -ms-linear-gradient(top, #e35843, #c03c28);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e35843), color-stop(100%, #c03c28));
-	background-image: -webkit-linear-gradient(top, #e35843, #c03c28);
-	background-image: -o-linear-gradient(top, #e35843, #c03c28);
-	background-image: linear-gradient(top, #e35843, #c03c28);
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	border-color: #f46d59 #f46d59 #f46d59;
-	border-color: #f46d59;
-}
+
+
 .login-form {
 	margin-top: 35px;
 	width: 300px;

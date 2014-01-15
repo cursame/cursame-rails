@@ -1,0 +1,20 @@
+
+/* Buttons Skeleton
+----------------------------------*/
+.btn {
+  @include inline-block;
+  padding: 0 10px;
+  height: 28px;
+
+  &.input-btn {
+    padding: 0;
+    height: auto;
+
+    > input {
+      margin: 0;
+      padding: 0 10px;
+      height: 28px;
+    }
+  }
+}
+
