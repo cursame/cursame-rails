@@ -5,6 +5,10 @@ class SurveysController < ApplicationController
     # @surveys = @course.surveys
   end
 
+  def my_surveys
+    @wall = current_network.walls.where(:publication_type => 'Survey').paginate(:per_page => 15, :page => params[:page])
+  end
+
   def show
     @survey = Survey.find(params[:id])
     puts @survey

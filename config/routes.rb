@@ -135,7 +135,7 @@ Cursame30Lb::Application.routes.draw do
   end
   
   get 'assignments/delivery_responce'
-  ################ llamada para republicar tarea ################
+  ################ llamada para republicar tarea  y  cuestionario ################
   get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
   get'/publish_unpublish_survey_manualy', :to => 'surveys#publish_unpublish_survey_manualy', :as => :publish_unpublish_survey_manualy
 
@@ -273,6 +273,9 @@ Cursame30Lb::Application.routes.draw do
 
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
+  
+  ##### surveys vista general #####
+   get "all_surveys", :to => 'surveys#my_surveys', :as => :my_surveys
 
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
