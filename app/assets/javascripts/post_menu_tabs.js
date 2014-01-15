@@ -15,7 +15,7 @@ $('#comment-tab').click(function(){
 
 $('#delvery-tab').click(function(){
     //console.log('click');
-    
+
     $('#message-form-area-tab').hide();
     $('#delivery-form-area-tab').show().css({ display: "inline-block" });
     $('#survey-form-area-tab').hide();

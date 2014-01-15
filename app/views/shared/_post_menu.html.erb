@@ -1,99 +1,92 @@
-<div class="profile-post-box tab-style">    
-  <%#= javascript_include_tag('application.animation.js') %>
+
+<div class="profile-post-box tab-style">
+
   <%= javascript_include_tag('post_menu_tabs.js') %>
   <%= javascript_include_tag('post_menu_validation_forms.js') %>
-  
-  <%if !@user_show %>
-  <div id="tabs_form">      
-      <div id="tab-form-options">
-         <% permitted_to? :create, :comments do %>
 
-         <a id="comment-tab" class="simple-tab selected_tab" style="font-weight:normal !important;">Comentario
-			 <span style="background: url('/assets/icon_comment.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
-			 </span>
-         </a>
-         <%end%>
-         <% permitted_to? :create, :deliveries do %>
-             <a id="delvery-tab" class="simple-tab" style="width: 90px; font-weight:normal !important;">Tarea
-			  <span style="background: url('/assets/icon_homew.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
-			  </span>
-             </a>
-             
-         <% end%>
-         <% permitted_to? :create, :discussions do %>
-            <a id="discusison-tab" class="simple-tab"  style="font-weight:normal !important;">Discusión
-			 <span style="background: url('/assets/icon_disq.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
-			 </span>
-            </a>
-         
-         <% end%>
-         <% permitted_to? :create, :surveys do %>
-            <a id="survey-tab" class="simple-tab"  style="font-weight:normal !important;">Cuestionario
-			 <span style="background: url('/assets/icon_surveys.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
-			 </span>
-            </a>
-            
-         <% end%>
-       </div>
-       
-     <% @active_edit = false %>
-     
-    <div id="message-form-area-tab" class="flonder" style="margin-top: -1px;">
-      <% permitted_to? :create, :comments do %>
-      <div class="frcomment" >
-          <%= "¿Qué estás pensando?"%>
-      </div>
-      <div class="ftcomment" style="display:none;">
-      <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil, :message => '¿Qué estás pensando?'} %>
-      <% end %>
-      </div>
-    </div>
-    
-    <div id="delivery-form-area-tab" class="flonder" style="width: 560px; display:none;">
-      <% permitted_to? :create, :deliveries do %>        
-          <%= render :partial => '/deliveries/delivery_compart_form', :locals => {:active_edit => @active_edit}%>
-      <%end%>
-    </div>
-    <div id="survey-form-area-tab" class="survey-form-area-style flonder" style="display:none;" >
-      <% permitted_to? :create, :surveys do %>        
-          <%= render :partial => '/surveys/form', :locals => {:active_edit => @active_edit}%>
-      <%end%>
-    </div>
-
-    <div id="discussion-form-area-tab" class="flonder" style="display:none;">
-        
-      <% permitted_to? :create, :discussions do %>
-      <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit}%>
-      <%end%>
-    </div>    
+  <div class="new-publications-author">
+    <%= link_to show_user_path(current_user.personal_url) do %>
+      <span class="avatar-holder">
+        <%= image_tag current_user.avatar.modern, class: "avatar" %>
+      </span>
+    <% end %>
   </div>
   
+  <% if !@user_show %>
+    <div id="tabs_form">
+      <div id="tabs-list">
+        <% permitted_to? :create, :comments do %>
+          <div class="tab" data-tab-target="create-comment-tab-content"><%= icon('commet-post') %> Comentario</div>
+        <%end%>
 
- 
-<%else%>
-  <div id="tabs_form"> 
-  <div id="tab-form-options">
+        <% permitted_to? :create, :deliveries do %>
+          <li>
+            <a>Tarea</a>
+          </li>
+        <% end%>
+
+        <% permitted_to? :create, :discussions do %>
+          <li>
+            <a><%= icon('discussion-post') %> Discusión</a>
+          </li>
+        <% end%>
+
+        <% permitted_to? :create, :surveys do %>
+          <a id="survey-tab" class="simple-tab">Cuestionario</a>
+        <% end%>
+      </div>
        
-	  <% permitted_to? :create, :comments do %>
-			<a id="comment-tab" class="simple-tab selected_tab" style="font-weight:normal !important;">Comentario
-				 <span style="background: url('../assets/icon_comment.png') no-repeat; width: 30px; height: 30px; display: inline; position: relative; float: left;">
-				 </span>
-			</a>
+      <% @active_edit = false %>
+      
+      <% permitted_to? :create, :comments do %>
+        <div id="message-form-area-tab" class="flonder">
+          <div class="frcomment" >
+            <%= "¿Qué estás pensando?"%>
+          </div>
+          <div class="ftcomment" style="display:none;">
+            <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil, :message => '¿Qué estás pensando?'} %>
+          </div>
+        </div>
+      <% end %>
+      
+      <% permitted_to? :create, :deliveries do %>
+        <div id="delivery-form-area-tab" class="flonder" style="width: 560px; display:none;">   
+          <%= render :partial => '/deliveries/delivery_compart_form', :locals => {:active_edit => @active_edit}%>
+        </div>
+      <%end%>
+
+      <% permitted_to? :create, :surveys do %>
+        <div id="survey-form-area-tab" class="survey-form-area-style flonder" style="display:none;" >
+          <%= render :partial => '/surveys/form', :locals => {:active_edit => @active_edit}%>
+        </div>
       <%end%>
       
-  </div>            
-  <div id="message-form-area-tab" class="flonder" style="margin-top: -1px; display: inline-block!important;">
-      <div class="frcomment" >
-                 <%= "Deja un comentario."%>
-        </div>             
-       <% permitted_to? :create, :comments do %>
-            <div class="ftcomment" style="display:none;">
-       <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User', :comment_id => nil, :message => 'Deja un comentario.'} %>
-           </div>
-           
-       <%end%>
-  </div>
-</div>
-<%end%>
+      <% permitted_to? :create, :discussions do %>
+        <div id="discussion-form-area-tab" class="flonder" style="display:none;">
+          <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit}%>
+        </div>
+      <%end%>
+    </div>
+  
+  <% else %>
+    <div id="tabs_form"> 
+       
+	  <% permitted_to? :create, :comments do %>
+      <div id="tab-form-options">
+        <a id="comment-tab" class="simple-tab selected_tab">Comentario</a>
+      </div>
+    <%end%>
+
+    <div id="message-form-area-tab" class="flonder">
+      <div class="frcomment"><%= "Deja un comentario."%></div>
+
+      <% permitted_to? :create, :comments do %>
+        <div class="ftcomment" style="display:none;">
+          <%= render :partial => '/shared/comment_form',:locals => { :commentable_id => @user_l.id,:commentable_type => 'User', :comment_id => nil, :message => 'Deja un comentario.'} %>
+         </div>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
    
 </div>
