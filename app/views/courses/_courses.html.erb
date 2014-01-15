@@ -52,6 +52,7 @@
     </ul>
     <div class="view-all"><%= link_to "Ver todos", courses_path %></div>
   </div>
+  
   <% permitted_to? :create, :courses do %>
   <div id="tabs-courses-2">
     <ul id="course-list">

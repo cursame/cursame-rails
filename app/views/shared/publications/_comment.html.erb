@@ -1,0 +1,127 @@
+<%
+  ### Variables for the Comment publication
+  post = publication.publication
+  id = publication.id
+  publication_cls = 'delivery'
+
+  avatar          = post.user.avatar.modern 
+  personal_url    = post.user.personal_url
+  image_avatarxx  = post.user.image_avatarxx
+  name            = post.user.name
+  user_name       = name
+  content         = post.comment_html
+  course          = post.commentable if post.commentable_type == 'Course'
+  ico             =''
+  tipo            = 'Comentario'
+  definition      = '-comment'
+  type = publication.publication_type
+
+  if course != nil
+    posted_in_for     = course.title
+    posted_in_for_id  = course.id
+  end
+%>
+
+<% if post.state == "published" %>
+  <div class="publication-box public-blur dek<%=id%>" id="deleted_id_<%= id %>">
+
+    <div class="publication-author">
+      <div class="avatar" >
+        <% case type %>
+          <% when 'Course'%>
+            <%= link_to image_tag(avatar), course_path(post.id) if ( !avatar.blank? && !nil)%>
+            <%= link_to image_tag(course_avatarxx), course_path(post.id) if (avatar.blank? || nil)%>
+          <%else%>
+            <div class="id_for_avatar<%=post.user.id%>">
+              <% if ( !avatar.blank?  && !nil) %>
+                <%= link_to show_user_path(personal_url) do %>
+                  <span class="avatar-holder">
+                    <%= image_tag(avatar, class: "avatar") %>
+                  </span>
+                <% end %>
+              <% end %>
+              
+              <% if (avatar.blank? || nil) %>
+                <%= link_to show_user_path(personal_url) do %>
+                  <span class="avatar-holder">
+                    <%= image_tag(image_avatarxxx, class: "avatar") %>
+                  </span>
+                <% end %>
+              <% end %>
+
+            </div>
+        <%end%>
+      </div>
+    </div>
+
+    <div id = "publication-<%= id %>" class="publication-main comment-text <%= publication_cls %>" >
+
+      <div class="publication-content">
+        <h6>
+          <% if type != 'Course' %>
+            <%= link_to "#{tipo} en el curso: #{posted_in_for}", course_path(posted_in_for_id) if ( !posted_in_for.blank?) %>
+
+            <%= link_to user_name, show_user_path(personal_url) if ( !user_name.blank?) %>
+            
+            <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %>
+          <%end%>
+        </h6>
+        
+        <%= content %>
+      </div>
+      
+      <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: post} %>
+      
+      <div class="post-child-comment-box" id="commentable-area-<%= publication.id %>">
+        <div id="comments-publication-<%= publication.id %>" style="display: block;">
+          
+          <% if post.comments.count > 3 %>
+            <div id="more-comments-<%= id  %>" class="more-comment-box">
+              <span>Ver comentarios anteriores</span>
+            </div>
+          <%end%>
+
+          <% post.comments.last(3).each do |commentt| %>
+            <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+          <%end%>
+        </div>
+
+        <div class="user-post-child-comment">
+          <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => post.id,:commentable_type => type} %>
+        </div>
+        
+      </div>
+
+        
+      <% if publication.publication.owner?(current_role, current_user) %>
+        <div class="footer" id="footer-publication-<%= id %>">       
+          <script>
+            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function(){
+              $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
+            });
+
+            $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
+
+                
+              $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
+              $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
+
+            });
+          </script>
+
+          <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
+
+            <div class="rander">
+              <div class="form_for_edit_wall_top"id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close" >x</div>
+            </div>
+            <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
+          </div>
+        </div>          
+      <%end%>
+
+    </div>
+  </div>
+    
+    
+  </div>
+<%end%>

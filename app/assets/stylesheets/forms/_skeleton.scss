@@ -9,29 +9,6 @@
     margin: 4px 0px 0px 0px;
     float: left;
   }
-  
-  textarea{
-    padding-left: 7px;
-    padding-right:5px;
-    margin: 4px 0px 0px 0px;
-  }
-
-  input[type=text], input[type=email], input[type=password]{
-    height: 28px;
-    padding-left: 7px;
-    margin: 4px 0px 0px 0px;
-  }
-
-  input[type=number] {
-    height: 28px;
-    padding-left: 13px;
-    padding-top: 5px;
-    margin: 4px 0px 0px 0px;
-    
-    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
-      margin: 0;
-    }
-  }
 
   // Uploader
   .file-input-box{
@@ -526,102 +503,6 @@
 
 .ingresar_resp {
   margin-right: 5px;
-}
-
-.more-comment-box{
-  clear: both;
-  float: left;
-  width: 553px;
-  margin-left: 14px;
-  position: relative;
-  height: 28px;
-
-  span{
-    width: 528px;
-    height: 100%;
-    padding: 0px 0px 0px 25px;
-    float: left;
-  }
-}
-
-.child-comment-box{
-  clear: both;
-  float: left;
-  width: 553px;
-  margin-left: 14px;
-  position: relative;
-
-  .heart-icon{
-    position: absolute;
-    right: 1px;
-    height: 23px;
-    width: 20px;
-    top: 6px;
-  }
-
-  .info-comment{
-    float: left;
-    margin: 6px 0px 10px 0px;
-    width: 512px;
-    
-    .username{
-      float: left;
-    }
-
-    .date{
-      float: left;
-      margin-left: 13px;
-    }
-
-    .comment{
-      clear: both;
-    }
-  }
-
-  .avatar-child-comment{
-    float: left;
-    margin: 6px 8px 5px 0px;
-  }
-}
-
-.deleteComment {
-  display: none;
-}
-
-.child-comment-box:hover > .deleteComment {
-  position: absolute;
-  display: inline-block;
-  margin-top: 28px;
-  margin-left: 529px;
-}
-
-.post-child-comment-box {
-  float: left;
-  margin-bottom: 12px;
-  margin-left: 56px;
-  width: 580px;
-
-  .user-post-child-comment{
-    float: left;
-    padding: 0px 14px;
-    width: 560px;
-    
-    .avatar-child-comment{
-      float: left;
-      margin: 6px 8px 5px 0px;
-    }
-    
-    form{
-      float: left;
-
-      textarea{
-        padding-left: 7px;
-        width: 543px;
-        height: 24px;
-        margin: 7px 0px 4px 0px;
-      }
-    }
-  }
 }
 
 .user-edit-form {

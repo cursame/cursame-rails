@@ -730,16 +730,15 @@ cursor: pointer;
 	position: relative;
 	display: block;
 	float: right;
-	//margin-top: -19px;
 	margin-top: 2px;
 }
-// user online
+
 .user-online{	
 	background:#65A830;
 	border-radius:10px;
 }
 
 .user-offline{
-	background:#CCC;
+	background: lighten($primary-color, 7);
 	border-radius:10px;
 }

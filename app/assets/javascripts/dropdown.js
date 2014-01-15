@@ -16,4 +16,6 @@ $(function() {
     $('.dropdown-v').hide();
   });
 
+  $('.autogrow').autosize();
+
 });

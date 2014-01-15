@@ -1,38 +1,17 @@
 
 /* Forms Skin
 ----------------------------------*/
+
+#{$all-text-inputs}, textarea {
+  background: $white;
+  border: 1px solid #ccc;
+  border-radius: $radius;
+  box-shadow: inset 0 1px 0 #fcfcfc;
+  margin: 0;
+}
+
 .default-form{
-  select{
-    background: url('/assets/icons/select-mini.png') no-repeat right #fff!important;
-    border: $border-forms!important;
-    -webkit-appearance: none;
-    appearance: none;
-    @include shadow-input;
-  }
-
-  textarea{
-    border:solid 0px;
-  }
-
-  input[type=text], input[type=email], input[type=password]{
-    background: #FFF;
-    border: $border-forms;
-    border-radius: $border-radius-box;
-  }
-
-  input[type=number]{
-    background: #FFF;
-    border: $border-forms;
-    border-radius: $border-radius-box;
-    @include shadow-input;
-
-    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-  }
-
-  // Uploader
+  
   .file-input-box{
 
     .browse-button{
@@ -602,73 +581,6 @@
 
 #request-num {
   font-weight: 100;
-}
-
-.more-comment-box{
-  border-bottom: $border-forms;
-  cursor: pointer;
-  color: #7498ce;
-  font-size: 11px;
-  line-height: 27px;
-  background: url("/assets/icons/more-comments-icon.png") 0px 3px no-repeat;
-
-  span {
-    background: url("/assets/icons/dots-comment-mini.png") 264px 3px no-repeat;
-  }
-}
-
-.child-comment-box{
-  border-bottom: $border-forms;
-
-  .heart-icon{
-    background: url("/assets/icons/heart-icon-child-comment.png") no-repeat;
-    cursor: pointer;
-
-    &:hover{
-      background: url("/assets/icons/heart-icon-child-comment-hover.png") no-repeat;
-    }
-  }
-
-  .info-comment{
-    
-    .username{
-      color: #7498ce;
-      font-weight: bold;
-      font-size: 11px;
-    }
-
-    .date{
-      font-size: 10px;
-      color: #9c9c9c;
-    }
-
-    .comment{
-      font-size: 12px;
-      color: #333;
-      line-height: 1.28;
-    }
-  }
-}
-
-.child-comment-box:hover > .deleteComment {
-  font-size: 10px;
-}
-
-.post-child-comment-box{
-  background-color: #f7f7f9;
-  border: 1px solid #d7dbe1;
-  border-top: 1px solid #d7dbe1;
-  box-shadow: inset 0px 1px 0px #eeeef1;
-  @include border-b-right-radius;
-  @include border-b-left-radius;
-
-  .user-post-child-comment form textarea{
-    font-size: 12px;
-    border: $border-forms;
-    border-radius: $border-radius-child-comment-box;
-    padding-left: 7px;
-    line-height: 24px;
-  }
 }
 
 .user-edit-form {

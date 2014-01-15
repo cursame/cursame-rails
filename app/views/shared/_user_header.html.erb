@@ -1,0 +1,38 @@
+<header id="user_nav" class="topbar">
+  <div class="wrapper space-sidebar">
+
+    <div class="network">
+      <% if current_network == nil%> 
+        <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
+      <%else%>
+        <% if current_network.logo.file == nil %>
+          <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
+        <%else%>
+          <%case %>
+            <% when current_network.logo_type == '128x26'%>
+              <%= link_to image_tag("#{current_network.logo.response}"), "http://#{current_network.subdomain}.#{links}/"%>
+            <% when current_network.logo_type == '26x26' %>
+              <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+            <%else%>
+              <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
+          <%end%>
+        <%end%>
+      <%end%>
+    </div>
+    
+    <div class="activity-notificactions">
+      <div id="message_notifications">    
+        <%= render :partial => '/shared/chat/message_notifications' %>
+      </div>
+
+      <div id="notifications">    
+        <%= render :partial => '/shared/notifications' %>
+      </div>
+    </div>
+
+    <div id="log_loadding"style="display:none;"></div>
+    <div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
+      <div id="notice" class="notice"></div>
+    </div>
+  </div>
+</header>

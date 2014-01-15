@@ -1,0 +1,53 @@
+<div class="publication-metadata">
+  <div class="meta-data">
+      <% @vote = publication.publication.votes.up.by_type(User).where(:voter_id => current_user.id)%>
+      <% @condition = @vote[0]%>
+      <%if @condition == nil %>
+
+        <div id="liked-<%= publication.id%>">
+          <%= link_to upvote_path(publication.id), :remote => true do %>
+            <i class="i i-like-c"></i>
+          <% end %>
+        </div>
+       
+      <%else%>
+       
+         <div id="liked-<%= publication.id%>">
+           <%= link_to downvote_path(publication.id), :remote => true do %>
+           <i class="i i-like-c-active"></i>
+           <% end %>
+         </div>
+       
+      <%end%>
+    </div>
+    <span>&middot;</span>
+    <div class="meta-data">
+      <span id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></span>
+      Me gusta
+    </div>
+    <span>&middot;</span>
+    <div class="meta-data">
+      <%= post.comments.count %> Comentarios
+    </div>
+    <span>&middot;</span>
+    <div class="meta-data">
+      <span><%= post.created_at.strftime( '%d %h %Y %l:%M%P') %></span>
+    </div>
+
+    <% if publication.publication.owner?(current_role, current_user) %>
+      <div class="edit-publication">
+        <span>&middot;</span>
+        <div class="meta-data">
+          <%= link_to "Borrar", destroy_wall_path(publication.id), :remote=>true%>
+        </div>
+        <% if publication.publication_type != 'Course'%>
+          <span>&middot;</span>
+          <div class="meta-data">
+            <div class="non-blur editIt" id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
+              <%= link_to "Editar", edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true %>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    <% end %>
+</div>

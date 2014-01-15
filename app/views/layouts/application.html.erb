@@ -20,24 +20,25 @@
   </script>
 <% end %>
 <% if request.url.split("/").last != "evaluation_download" then %>
+
 <html>
-<head>
-  <title>Cursame</title>
-  <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-  <%= javascript_include_tag('jquery-1.8.3.js') %>
-  <%= javascript_include_tag('jquery-ui-1.9.2.custom.js') %>
-  <%= javascript_include_tag('application.js') %>
-  <%= javascript_include_tag('application.fullcalendar') %>
- 
-  <%= favicon_link_tag "favicon.png" %> 
-  
-  <% yield :javascript_includes %>
-  <%= csrf_meta_tags %>
-  <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-<body >
+  <head>
+    <title>Cursame</title>
+    <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+    <%= javascript_include_tag('jquery-1.8.3.js') %>
+    <%= javascript_include_tag('jquery-ui-1.9.2.custom.js') %>
+    <%= javascript_include_tag('application.js') %>
+    <%= javascript_include_tag('application.fullcalendar') %>
+   
+    <%= favicon_link_tag "favicon.png" %> 
+    
+    <% yield :javascript_includes %>
+    <%= csrf_meta_tags %>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body >
     <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
       @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
@@ -110,70 +111,42 @@
      },2000)
     </script>
 
-<% if user_signed_in? %>
-  <%= render partial: '/shared/sidebar' %>
-<% end %>
-  
-  <div class="wrap">
-    <header id="user_nav" class="topbar">
-      <div class="wrapper space-sidebar">
-
-        <div class="network">
-          <% if current_network == nil%> 
-            <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
-          <%else%>
-            <% if current_network.logo.file == nil %>
-              <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
-            <%else%>
-              <%case %>
-                <% when current_network.logo_type == '128x26'%>
-                  <%= link_to image_tag("#{current_network.logo.response}"), "http://#{current_network.subdomain}.#{links}/"%>
-                <% when current_network.logo_type == '26x26' %>
-                  <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
-                <%else%>
-                  <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
-              <%end%>
-            <%end%>
-          <%end%>
-        </div>
-        
-        <div class="activity-notificactions">
-          <div id="message_notifications">    
-            <%= render :partial => '/shared/chat/message_notifications' %>
-          </div>
-
-          <div id="notifications">    
-            <%= render :partial => '/shared/notifications' %>
-          </div>
-        </div>
-
-        <div id="log_loadding"style="display:none;"></div>
-        <div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
-          <div id="notice" class="notice"></div>
-        </div>
-      </div>
-    </header>
+    <% if user_signed_in? %>
+      <%= render partial: '/shared/sidebar' %>
+    <% end %>
     
-    <div class="main">
-      <%= yield %>
+    <div class="wrap">
+      <%= render partial: '/shared/user_header' %>
+      
+      <div class="main">
+        <%= yield %>
+      </div>
     </div>
-  </div>
 
 
-<div id="browsers_box" class="content_f_box"  style="display:none">
- 	   
-                <p style="color:#fff; font-size:17px;">Browser no compatible, no podemos garantizar el funcionamiento adecuado de la aplicación.</p></br>
-                <p style="color:#fff;" ><i>No podrá usar la aplicación hasta haber instalado una versión compatible de su navegador, le recomendamos estos navegadores:</i></p>
-        <div style="text-align:center;padding:10px; margin-top:15px;">
-          <center>
-                <a href="http://www.google.com/intl/es-419/chrome/" target="_blank" style="width:350px; height:50px;float:left; margin-left:55px;"><%= image_tag('chrome.png')%>Descarga Google Chrome</a>
-                <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;"><%= image_tag('Icon_Firefox.png')%>Descarga Mozila Firefox</a>
-          </center>
-        </div>
-</div>
-<div id="scrollup"></div>
-</body>
+    <div id="browsers_box" class="content_f_box"  style="display:none">
+      <p style="color:#fff; font-size:17px;">Browser no compatible, no podemos garantizar el funcionamiento adecuado de la aplicación.</p>
+      </br>
+      <p style="color:#fff;" ><i>No podrá usar la aplicación hasta haber instalado una versión compatible de su navegador, le recomendamos estos navegadores:</i></p>
+      <div style="text-align:center;padding:10px; margin-top:15px;">
+        <center>
+          <a href="http://www.google.com/intl/es-419/chrome/" target="_blank" style="width:350px; height:50px;float:left; margin-left:55px;">
+            <%= image_tag('chrome.png')%>
+            Descarga Google Chrome
+          </a>
+          <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;">
+            <%= image_tag('Icon_Firefox.png')%>
+            Descarga Mozila Firefox
+          </a>
+        </center>
+      </div>
+    </div>
+
+    <div id="scrollup"></div>
+
+  </body>
 </html>
+
 <% end %>
 <% end %>
 
@@ -214,7 +187,7 @@
         return void 0;
       });
   });
-  </script>
+</script>
 <% end %>
 
 

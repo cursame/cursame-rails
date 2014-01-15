@@ -670,18 +670,18 @@ cursor: pointer;
 	position: relative;
 	display: block;
 	float: right;
-	//margin-top: -19px;
 	margin-top: 2px;
 }
-// user online
+
 .user-online{	
-	width:10px;
-	height:10px;
+	width: 8px;
+	height: 8px;
 	float:right;
+	margin-top: 8px;
 }
 .user-offline{
-	width:10px;
-	height:10px;
+	width: 8px;
+	height: 8px;
 	float:right;
-	margin-top: 3px;
+	margin-top: 8px;
 }

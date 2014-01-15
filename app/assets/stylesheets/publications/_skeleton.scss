@@ -1,479 +1,97 @@
 
 /* Publications Skeleton
 ----------------------------------*/
-#trans-nav {
-  z-index: 99;
-  position: absolute;
-  height: 40px;
-  margin: 0 0 0 -5px;
-  padding: 0;
-
-  li {
-    float: left;
-    position: relative;
-    height: 60px;
-    padding: 0;
-
-    &:first-child {
-      padding-top: 25px;
-    }
-  
-    &:hover ul li {
-      height: 30px;
-    }
-
-    ul {
-      position: absolute;
-      left: 0;
-      width: 8em;
-      margin: 0;
-      padding: 0;
-
-      li {
-        float: none;
-        position: static;
-        height: 0;
-
-        label {
-          margin-left: 11px;
-
-          input[type="radio"] {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+#pk_menu {
+  @include clearfix;
 }
 
-.publication-box{
-  clear: both;
-  float: left;
-  margin-left: 9px;
-  margin-top: 10px;
-  
-  .upload-label{
-    float: left;
-    width: 568px;
-    padding: 0px 5px 4px 5px;
-    margin-top: 4px;
-    display: block;
+.publication-box {
+  margin: 10px 0;
+  @include clearfix;
 
-    .file-mini-upload{
-      float: left;
-      width: 157px;
-      height: 32px;
-      padding: 0px 0px 0px 30px;
-      margin: 4px 0px 0px 0px;
-      position: relative;
-
-      span{
-        float: left;
-        overflow: hidden;
-        width: 125px;
-      }
-    }
-  }
-
-  .avatar{
-    margin-left: 4px;
-    position: absolute;
-    margin-top: 4px;
-    margin-right: 8px;
+  .publication-author {
     float: left;
   }
 
-  .end-date-box{
-    width: 157px;
-    height: 34px;
-    margin-top: 10px;
-    position: absolute;
-    right: -4px;
+  .publication-main {
+    margin-left: 55px;
 
-    .end-date-label {
-      padding: 5px 0px 0px 23px;
+    > .publication-metadata {
+      margin: 0 10px 10px 10px;
     }
-    
-    .end-date {
-      padding: 0px 0px 0px 23px;
+
+    &:hover > .publication-metadata .edit-publication {
+      @include inline-block;
     }
   }
 
-  .extra-label{
-    float: left;
-    clear: both;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+  .publication-content {
+    padding: 10px;
+
+    h6 {
+      margin-bottom: 3px;
+      margin-top: -4px;
+    }
   }
 
-  .comment-text{
-    width: $comment-box;
-    height: 100%;
-    float: left;
-    margin: 5px 0px 0px 11px;
-
-    &.delivery {
-
-      .description{
-        float: left;
-        clear: both;
-        margin-top: 3px;
-        margin: 0px 10px;
-      }
-
-      .asset-box{
-        float: left;
-        margin: 0px 10px;
-      }
-
-      .evaluation-box{
-        float: left;
-        margin: 0px 10px;
-      }
-
-      .delivery-box{
-        width: 100%;
-        float: left;
-      }
-
-      .green-btn{
-        float: right;
-        margin-right: 10px;
-      }
-    }
-    
-    .header{
-      
-      .top-null-image{
-        width: 60px;
-        height: 10px;
-        float: left;
-      }
-
-      .date {
-    		float: right;
-    		margin-right: -4px;
-    		z-index: 2;
-    		position: relative;
-    		padding: 0 5px 0 10px;
-    		margin-top: 6px;
-      }
-    }
-
-    .title-discusion{
-      margin-bottom: 10px;
-      width: 340px!important;
-    }
-
-    .text-discusion{
-      padding-left: 10px;
-    }
-
-    .video{
+  .post-child-comment-box {
+    .more-comment-box {
       padding: 10px;
     }
-
-    .title-homework{
-      margin-bottom: 10px;
-    }
-
-    .text-homework {
-      padding-left: 10px;
-    }
-
-    .content {
-      padding: 6px 0px 5px 0px;
-      position: relative;
-
-      .null-image {
-        width: 60px;
-        height: 23px;
-        float: left;
-      }
-    }
-
-    .footer {
-      height: 25px;
-      float: left;
-      width: 100%;
-
-      .icon {
-        float: left;
-        margin: 4px 0px 0px 5px;
-      }
-
-      .labels {
-        float: right;
-        margin: 4px 5px 0px 10px;
-      }
-
-      .like {
-        width: 23px;
-        margin-left: 14px;
-        margin-top: 6px;
-      }
-    }
   }
-  
-  .footer{
-    >.deleteComment {
-      display: none;
-    }
-    
-    &:hover > .deleteComment {
-      position: absolute;
-      display: inline-block;
-      margin-top: 5px;
+}
+
+.publication-metadata {
+  @include clearfix;
+
+  > div {
+    @include inline-block;
+  }
+
+  .meta-data {
+    padding: 0 3px;
+    @include inline-block;
+
+    &:first-child {
+      padding-left: 0;
     }
   }
 
-  .comment-image{
-    width: $comment-box;
-    height: 100%;
-    float: left;
-    margin: 5px 0px 10px 11px;
-    position: relative;
-
-    .content{
-      float:left;
-      
-      .single-image{
-        width: $comment-box;
-        float: left;
-      }
-    }
-
-    .footer{
-      position: absolute;
-      height: 40px;
-      float: left;
-      width: $comment-box;
-      bottom:0;
-
-      .content-footer{
-        margin-top: 12px;
-
-        .icon{
-          float: left;
-          margin: 5px 0px 0px 5px;
-        }
-
-        .labels{
-          float: right;
-          margin: 5px 5px 0px 10px;
-        }
-      }
-    }
+  .edit-publication {
+    display: none;
   }
+}
 
-  .header{
-    height: 25px;
-    width: 100%;
-    
-    .null-image{
-      width: 60px;
-      height: 15px;
+.post-child-comment-box {
+
+  .child-comment-box {
+    padding: 10px;
+    @include clearfix;
+
+    .comment-author {
       float: left;
     }
-  }
 
-  .general-cir{
-    width: 35px;
-    height: 35px;
-    float: left;
-  }
+    .comment-main {
+      margin-left: 48px;
 
-  .general-cir-surveys{
-    width: 35px;
-    height: 35px;
-    float: left;
-  }
-  
-  .arrow-left {
-    width: 9px;
-    height: 14px;
-    float:left;
-    position: absolute;
-    margin:5px 0px 0px -8px;
-  }
-}
+      > h6 {
+        margin-top: -4px;
+      }
 
-// Edit Publications
-.link_publications {
-  float:left;
-  margin-left:600px;
-  margin-top:-40px;
-  position: absolute;
-  
-  a {
-    margin-top:4px;
-    padding-top:10px;
-  } 
-}
-
-.form_for_edit_wall{
-  width: 584px;
-  height: 300px;
-  position: absolute;
-  z-index: 99;
-  margin-top: -224px;
-  margin-right: -20px;
-  margin-left: -3px;
-  padding: 14px 10px 10px 15px;
-  overflow: auto;
-}
-
-.form_for_edit_wall_top{
-  width: 26px;
-  height: 26px;
-  padding: 1px;
-  margin-top: -5px; 
-  float:right;
-}
-
-.rander {
-  height: 40px;
-  float: right;
-  margin-right: 8px;
-  margin-top: 10px;
-  position: absolute;
-  margin-left: 544px;
-}
-
-.heiter{
-  width:800px;
-  height:800px;
-  position:relative;
-}
-
-.backckoverlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-}
-
-/* Create Publications
-----------------------------------*/
-.nested_evaluation_form {
-  overflow: hidden;
-}
-
-.simple-tab {
-  margin-left: 0px;
-  position:relative;
-  width: 122px;
-  float: left;
-  padding: 15px 5px 5px 5px;
-  height: 25px;
-}
-
-#tab-form-options {
-  overflow: hidden;
-  z-index: 99;
-  position: relative;
-  height:45px;
-}
-
-.border_for_text{ 
-  margin: 4px 0px 0px 0px;
-}
-
-.selected_tab {
-  padding: 16px 8px 13px 8px;
-  width: 122px;
-  margin: -1px 0px 0px 0px;
-  height: 18px;
-}
-
-#message-form-area-tab {
-  width: 600px;
-  display: inline-block;
-  padding-top: 10px;
-  padding-bottom: 4px;
-}
-
-// Homework
-#delivery-form-area-tab {
-  padding: 14px 21px 6px 19px;
-  margin-top: -1px;
-
-  .form_fix_title_overlay {
-    width: 547px!important;
-    margin-bottom: 8px!important;
-  }
-
-  .border_for_text {
-    width: 543px;
-    margin-top: 12px;
-  }
-
-  .percent-input {
-    margin-right: 44px;
-  }
-}
-
-
-// Discussion
-#discussion-form-area-tab {
-  width: 560px;
-  padding: 14px 21px 11px 19px;
-  margin-top: -1px;
-  min-height: 135px;
-
-  #discussion_title {
-    width: 400px;
-  }
-
-  .border_for_text {
-    width: 542px;
-  }
-  
-  .var_delivery {
-    margin-left: 532px;
-  }
-}
-
-
-// Survey
-#tabs_form #survey-form-area-tab {
-  margin-top: -1px;
-  position: relative;
-  z-index: 1;
-
-  .survey-form {
-    margin: 0px;
-
-    .title-txt-input {
-      width: 545px!important;
+      .publication-metadata {
+        margin-top: 8px;
+      }
     }
 
-    #box-question #box-question-child #box-request #box-request-child {
-      padding: 5px 0px;
+    &:hover {
+      .edit-publication {
+        @include inline-block;
+      }
     }
   }
 
-  .form_container_fix_survey {
-    padding: 1px 0px 13px 0px;
-
-    .form_fix_survey {
-      padding-left: 20px!important;
-    }
-  }
-  
-  #box-question #box-question-child {
-    .element {
-      padding-bottom: 0px!important;
-    }
-
-    #survey_questions_attributes_0_content {
-      width: 400px!important;
-    }
-
-    #request-num {
-      margin-left: 24px!important;
-    }
+  .user-post-child-comment {
+    padding: 5px;
   }
 }

@@ -9,7 +9,7 @@ $(function() {
       coursesHeader = courses.find('div.sidebar-section-header').outerHeight(),
       chat          = sidebar.find('div.sidebar-chat'),
       chatHeader    = chat.find('div.sidebar-section-header').outerHeight(),
-      footer        = sidebar.find('div.footer'),
+      footer        = sidebar.find('div.global-footer'),
       staticHeight  = user.outerHeight() + nav.outerHeight() + footer.outerHeight(),
 
       target1       = courses.find('.sidebar-section-main'),
