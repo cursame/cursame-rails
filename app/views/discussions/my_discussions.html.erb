@@ -1,0 +1,24 @@
+<!-- contiene todas las deliveries mediante el wall del usuario -->
+
+<div id="timeline" class="tim">
+        <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+</div>
+
+<%= will_paginate(@wall) %>
+
+<script>
+ var p = $('#timeline').pageless({
+    totalPages: <%= @wall.total_pages %>,
+    url: '<%= my_discussions_path(current_network) %>',
+    loaderMsg: '...',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+</script>

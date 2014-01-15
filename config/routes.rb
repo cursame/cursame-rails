@@ -30,6 +30,10 @@ Cursame30Lb::Application.routes.draw do
   
   resources :discussions
 
+##### ruta para ver todas las dicusiones
+
+get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussions
+
   ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
     collection do
