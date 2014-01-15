@@ -95,11 +95,7 @@
         <% current_user_courses.each do |c| %>
           <li>
             <%= link_to course_path(c.id) do %>
-              <% if c.avatar.file == nil %> 
-                <%= image_tag("course-avatarxxx.png", alt: "", class: "avatar avatar-24") %>
-              <%else%>
-              <%= image_tag("#{c.avatar.mini}", alt: "", class: "avatar avatar-24") %>
-              <%end%>
+              <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
               <%= c.title %>
             <% end %>
           </li>

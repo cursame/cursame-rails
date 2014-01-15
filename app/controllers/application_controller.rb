@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :icon
 
+  #metodo de acceso a los avatares
+
+  helper_method :avatar
+
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
@@ -386,10 +390,135 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  ###### valida los iconos dentro de la aplicación ######
+
   def icon(name)
     @match_list = "<i class='i i-#{name}'></i>"
     @match_list.html_safe
   end
+
+  ###### validadores de avatars dentro de la aplicación ######
+  
+  def avatar(type, size, url, destinate, clase, identificador,resize_to)
+    
+    
+    ##### casos para la url
+    case
+      when url == 'no'
+        object_url = ''
+        object_url_end = ''
+      when url != 'no'
+        object_url = '<a'+ ' href='+ "#{url}" +'>'
+        object_url_end = '</a>'
+    end
+        
+    #### casos para resize_to
+
+    case
+      when resize_to == 'no'
+        object_resize_to = ''
+      when resize_to != 'no'
+        object_resize_to = " width="+"'"+"#{resize_to}px"+"'" + " height=" +"'"+ "#{resize_to}px"+"'"
+    end
+    
+     
+    ### coloca una clase en la imagen
+    case
+      when clase == 'no'
+        object_clase = ''
+      when clase != 'no'
+        object_clase =  (" class='#{clase}'").to_s
+    end
+    ### coloca un id en la imagen
+    case
+      when identificador == 'no'
+        object_identificador = ''
+      when identificador != 'no'
+        object_identificador = " id="+"#{identificador}"
+    end
+
+    ### se macha en el tipo de imagen
+    case
+     when type == "course"
+            #### se crea el obejto que se busca
+            object = Course.find_by_id(destinate)
+            puts object
+            #### se revisa si el objeto contiene avatar
+            if object.avatar.file != nil
+               #### si el objeto contiene un avatar se machan las diversas medidas 
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.compress}"+ object_resize_to+ "object_clase" + object_identificador +'>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.mini}"+ object_resize_to+ object_clase+ object_identificador +'>'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.head}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.modern}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.profile}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                               
+               end
+            else
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxxxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                end
+
+            end
+            
+
+     when type == "user"
+            #### se crea el obejto que se busca
+            object = User.find_by_id(destinate)
+            puts object
+            #### se revisa si el objeto contiene avatar
+            if object.avatar.file != nil
+               #### si el objeto contiene un avatar se machan las diversas medidas 
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.compress}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.mini}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.head}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.modern}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.profile}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                               
+               end
+            else
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxxxx.png"'+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src="/assets/course-avatarx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                end
+
+            end
+            
+    end
+    
+    ##### esta parte del metodo lee en html el helper #####  
+    @self_avatar.html_safe  
+
+  end
+
 
   protected
   #roles

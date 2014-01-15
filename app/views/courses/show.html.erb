@@ -306,8 +306,7 @@
 
     <div id="box-user-credential" class="network-layout" style="position: relative;">
       <div class="thumbnail"  >
-        <%= link_to image_tag(@course.avatar.profile, :whidth => '150px', :height => '150px'), course_path(@course.id) if ( !@course.avatar.blank?) %>
-        <%= link_to image_tag(@course.course_avatarx), course_path(@course.id) if (@course.avatar.blank?) %>
+        <%= avatar('course', '150', "#{course_path(@course.id)}", "#{@course.id}", "course_heather_avatar", "course_heather_avatar", "190") %>
       </div>
       <div class="tagname"><%= @course.title %></div>
     </div>
@@ -364,8 +363,7 @@
             <% if current_role == 'admin' || current_role == 'superadmin'%>
               <% if @members != nil%>
               <div id="member_id<%=@members.id%>" style="float:left;">
-                <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
-                <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                <%= avatar('user', '45', "#{show_user_path(@members.personal_url)}", "#{@members.id}", "course_heather_avatar", "course_heather_avatar", "60") %>
                     <script>
                         $("#member_id<%=@members.id%>").hover(
                              function () {
@@ -383,8 +381,8 @@
               <% if @member.accepted == true %>
                 <% if @members != nil%>
                    <div id="member_id<%=@members.id%>" style="float:left;">
-                  <%= link_to image_tag(@members.image_avatarxxx,{:class => "avatar-mini"}), show_user_path(@members.personal_url) if (@members.avatar.blank?) %>
-                  <%= link_to image_tag(@members.avatar.modern,{:class => "avatar-mini"}),  show_user_path(@members.personal_url) if ( !@members.avatar.blank?)%>
+                      <%= avatar('user', '45', "#{show_user_path(@members.personal_url)}", "#{@members.id}", "course_heather_avatar", "course_heather_avatar", "60") %>
+
                           <script>
                               $("#member_id<%=@members.id%>").hover(
                                    function () {
