@@ -20,7 +20,8 @@
       margin: 0 10px 10px 10px;
     }
 
-    &:hover > .publication-metadata .edit-publication {
+    &:hover > .publication-metadata .edit-publication,
+    &:hover .publication-content .edit-publication {
       @include inline-block;
     }
   }
@@ -36,7 +37,36 @@
 
   .post-child-comment-box {
     .more-comment-box {
-      padding: 10px;
+      padding: 6px 10px 8px 10px;
+
+      i {
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.academic-publication {
+  .publication-content {
+    position: relative;
+    margin: -1px;
+    padding: 20px;
+  }
+
+  .academic-content {
+    padding: 15px 0 19px 0;
+    @include clearfix;
+    
+    .academic-action {
+      float: right;
+    }
+    
+    .academic-content-icon {
+      float: left
+    }
+
+    .academic-content-desc {
+      margin-left: 42px;
     }
   }
 }
@@ -119,5 +149,69 @@
         margin-left: 40px;
       }
     }
+  }
+}
+
+/* New Publications
+----------------------------------*/
+.new-publication {
+  margin-bottom: 20px;
+  @include clearfix;
+
+  .new-publication-author {
+    float: left;
+  }
+
+  .new-publication-main {
+    margin-left: 55px;
+
+    .new-publication-form-content {
+      padding: 10px;
+    }
+
+    .new-publication-footer {
+      padding: 10px;
+    }
+  }
+
+  .tabs {
+    .tabs-buttons {
+      height: 39px;
+      @include clearfix;
+
+      .tab {
+        float: left;
+        padding: 9px 10px 12px 10px;
+        position: relative;
+
+        .tip {
+          position: absolute;
+          width: 19px;
+          height: 7px;
+          bottom: 0;
+          left: 50%;
+          margin-left: -10px;
+          display: none;
+        }
+
+        &.active {
+          .tip {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .tabs-main {
+      .tab-content {
+        display: none;
+      }
+    }
+  }
+}
+
+#comment-tab-content{ 
+  .comment_for_wall {
+    width: 100%;
   }
 }

@@ -60,6 +60,10 @@
   clear:both;
 }
 
+.inline-block {
+  @include inline-block;
+}
+
 /* Avatars
 ----------------------------------*/
 .avatar-holder {

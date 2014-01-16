@@ -6,6 +6,72 @@
     background: $white;
     border: 1px solid #cccccc;
     border-radius: $radius;
+
+    .publication-content {
+      border-radius: $radius $radius 0 0;
+ 
+      h6 {
+        color: $meta-color;
+
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.academic-publication {
+
+  &.discusion .publication-content {
+    background: url('publication-covers/discussion.jpg');
+  }
+
+  &.tarea .publication-content {
+    background: url('publication-covers/delivery.jpg');
+  }
+
+  &.examen .publication-content {
+    background: url('publication-covers/survey.jpg');
+  }
+  
+  .publication-main {
+    .publication-content {
+      h6 {
+        color: $white;
+
+        a {
+          color: $white;        
+        }
+      }
+
+      .publication-metadata {
+        color: $white;
+
+        .meta-data {
+          color: $white;
+        }
+
+        a {
+          color: $white;
+        }
+      }
+    }
+    
+    .academic-content-icon .i {
+      vertical-align: -25px;
+    }
+
+    .academic-content-desc {
+      h4 {
+        font-size: 17px;
+        color: $white;
+        font-weight: bold;
+      }
+      p {
+        color: $white;
+      }
+    }
   }
 }
 
@@ -15,7 +81,13 @@
   border-radius: 0 0 $radius $radius;
   
   .more-comment-box {
+    cursor: pointer;
     border-bottom: 1px solid #e6e6e6;
+    color: $primary-color;
+
+    .i {
+      vertical-align: -3px;
+    }
   }
 
   .child-comment-box {
@@ -36,5 +108,39 @@
     color: $meta-color;
     text-transform: uppercase;
     font-size: 11px;
+  }
+}
+
+/* New Publications
+----------------------------------*/
+.new-publication {
+  
+  .new-publication-main {
+    background: $white;
+    border: 1px solid #cccccc;
+    border-radius: $radius;
+
+    .new-publication-footer {
+      background: #fcfcfc;
+      border-top: 1px solid #d6d6d6; 
+      border-radius: 0 0 $radius $radius;
+      text-align: right;
+    }
+  }
+
+  .tabs {
+    .tabs-buttons {
+      background: #fcfcfc;
+      border-bottom: 1px solid #d6d6d6;
+      borde-radius: $radius $radius 0 0;
+
+      .tab {
+        cursor: pointer;
+
+        .tip {
+          background: url('pack.png') -37px -60px;
+        }
+      }
+    }
   }
 }

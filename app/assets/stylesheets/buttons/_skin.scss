@@ -16,6 +16,10 @@
       cursor: pointer;
     }
   }
+
+  &.btn-medium {
+    line-height: 38px;
+  }
 }
 
 .btn-primary {
@@ -39,5 +43,15 @@
 
   &:hover {
     background: lighten(#f2f2f2, 3);
+  }
+}
+
+.btn-transparent {
+  color: #fff;
+  background: rgba(255,255,255,.3);
+  border: 1px solid $white;
+
+  &:hover {
+    background: rgba(255,255,255,.6);
   }
 }

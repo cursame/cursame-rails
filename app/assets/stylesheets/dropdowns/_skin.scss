@@ -37,3 +37,7 @@
     }
   }
 }
+
+.arrow-dropdown {
+  @include triangle(8px, gray, down);
+}
