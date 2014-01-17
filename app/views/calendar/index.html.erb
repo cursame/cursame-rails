@@ -1,98 +1,16 @@
-<%= link_to "new event", new_event_path %>
-
-<script type='text/javascript'>
-    var events = [];
-</script>
-<% if  @event == nil %>
-    <script type="text/javascript">
- 
-    window.location = "/auth/google_oauth2"
-    
-    </script>
-<%else%>
-<% @event.each do |eventssss| %>
-<% @init = eventssss.start
-%>
-    <% if @init %>
-    <script type='text/javascript'>
-       events.push(   
-        {
-        title : '<%=eventssss.summary%>',
-        location: '<%=eventssss.location%>',
-        start :  '<%=eventssss.start.dateTime%>',
-        end :  '<%=eventssss.end.dateTime%>',
-            //recurrence : <%=eventssss.recurrence%>
-
-        })
-    </script>
-
-    <%end%>
-<%end%>
-<%end%>
-
-
-
-<script type='text/javascript'>
-
-	$(document).ready(function() {
-	
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
-		var calendar = $('#calendar_g').fullCalendar({
-			header: {
-				left: 'prev,next',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			selectable: true,
-			selectHelper: true,
-			select: function(start, end, allDay) {
-				var title = prompt('Event Title:');
-				if (title) {
-					calendar.fullCalendar('renderEvent',
-						{
-							title: title,
-							start: start,
-							end: end,
-							allDay: allDay
-						},
-						true // make the event "stick"
-					);
-				}
-				calendar.fullCalendar('unselect');
-			},
-			editable: true,
-			events: events
-		});
-		
-	});
-	
-
-		$('.fc-widget-content').mouseenter({
-			alert('hola')
-			$('.fc-day-number').addClass('fc-day-number-hover');
-		});
-
-</script>
-
-
-
-
-<style type='text/css'>
-
-	body {
-		margin-top: 40px;
-		text-align: center;
-		font-size: 14px;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		}
-
-	#calendar_g {
-		width: 900px;
-		margin: 0 auto;
-		}
-
-</style>
-<div id='calendar_g'></div>
+<div id="calendar_g">
+  <h2 id="month">
+   <center> <%= link_to "Més anterior", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
+    <%= link_to "Més siguiente", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %></center>
+  </h2>
+<%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
+  <%= t.head('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo') %>
+  <%= t.day do |day, tasks| %>
+    <%= day.day %>
+    <% tasks.each do |task| %>
+      <%= h(task.title) %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>

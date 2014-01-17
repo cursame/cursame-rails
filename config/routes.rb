@@ -48,9 +48,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   resources :events
 
   ########## calendar
-  get "calendar/index"
+  get "calendar", :to => 'calendar#index', :as => :calendar
   get "calendar/test_calendar"
-
+  
   ######### dropbox
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
   ######## create

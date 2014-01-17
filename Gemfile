@@ -11,6 +11,9 @@ gem 'sqlite3'
 gem 'devise'
 gem 'json'
 
+#gema para calendario y tablas espcificas
+gem "watu_table_builder", :require => "table_builder"
+
 #gemas para uso de gestion de archivos
 gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
 gem 'mime-types'
