@@ -404,7 +404,7 @@ class ApplicationController < ActionController::Base
 
   ###### validadores de avatars dentro de la aplicación ######
   
-  def avatar(type, size, url, destinate, clase, identificador,resize_to)
+  def avatar(type, size, url, destinate, clase, identificador, resize_to)
     
     
     ##### casos para la url

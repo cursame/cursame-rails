@@ -1,16 +1,13 @@
 <div id="comment_<%= comment.id %>" class="child-comment-box">
 
   <div class="comment-author">
-    <% if comment.user.avatar.blank? %>
-        <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url)%>
-      <%else%>
-
-        <%= link_to show_user_path(comment.user.personal_url) do %>
-          <span class="avatar-holder">
-            <%= image_tag(comment.user.avatar.head, class: "avatar") %>
-          </span>
-        <% end %>
-    <%end%>
+    
+    <%= link_to show_user_path(comment.user.personal_url) do %>
+      <span class="avatar-holder">
+        <%= avatar('user', '30', 'no', comment.user.id, 'avatar', 'no', 'no') %>
+      </span>
+    <% end %>
+    
   </div>
 
     <div class="comment-main">

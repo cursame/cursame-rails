@@ -1,0 +1,17 @@
+<div class="post-child-comment-box" id="commentable-area-<%= publication.id %>">
+  <div id="comments-publication-<%= publication.id %>" style="display: block;">
+    
+    <% if post.comments.count > 3 %>
+      <div id="more-comments-<%= publication.id  %>" class="more-comment-box">
+        <%= icon('comments') %> Ver comentarios anteriores
+      </div>
+    <%end%>
+
+    <% post.comments.last(3).each do |commentt| %>
+      <%= render :partial => '/shared/comment', :locals => {:comment => commentt} %>
+    <%end%>
+  </div>
+
+  <%= render :partial => '/shared/form_commentable',:locals => {:commentable_id => post.id,:commentable_type => publication.publication_type} %>  
+
+</div>

@@ -1,0 +1,206 @@
+<%
+  ### Variables globales de publicaciones
+  post = publication.publication
+  id = publication.id
+  publication_cls = 'delivery'
+  created_at = post.created_at
+  type = publication.publication_type
+%>
+
+<%
+  # Variables for Comment
+  if type == "Comment"
+    personal_url = post.user.personal_url
+    name = post.user.name
+    user_name = name
+    content = post.comment_html
+    course = post.commentable if post.commentable_type == 'Course'
+    ico =''
+    tipo = 'Comentario'
+    definition = '-comment'
+
+    if course != nil
+      posted_in_for = course.title
+      posted_in_for_id = course.id
+    end
+  end
+%>
+
+<% 
+  # Variables for Course
+  if type == "Course"
+    name = post.title
+    content = post.silabus
+    ico = ''
+    definition = '-course'
+  end
+%>
+
+<% 
+  # Variables for Discussion
+  if type == "Discussion"
+    personal_url = post.user.personal_url
+    name = post.title
+    user_name = post.user.name
+    course = post.courses
+    posted_in_for = course[0].title if ( !post.courses.blank? )
+    posted_in_for_id = course[0].id if ( !post.courses.blank? )
+    content = post.description_html
+    ico = '-discussion'
+    tipo = 'Discusion'
+    definition = '-discussion'
+  end
+%>
+
+<% 
+  # Variables for Delivery
+  if type == "Delivery"
+    personal_url = post.user.personal_url
+    cargo = post.courses[0]
+    name = post.title
+    user_name = post.user.name
+    course = post.courses
+    posted_in_for = course[0].title
+    posted_in_for_id = course[0].id
+    content = post.description_html
+    publication_cls = 'delivery'
+    ico = '-homework'
+    tipo  = 'Tarea'
+    definition = '-homework'
+  end
+%>
+
+<% 
+  if type == "Survey"
+    personal_url = post.user.personal_url
+    course = post.courses
+    user_name = post.user.name
+    posted_in_for = course[0].title
+    posted_in_for_id = course[0].id
+    name = post.name
+    ico = '-survey'
+    tipo = 'Examen'
+    deginition = '-survey'
+  end
+%>
+
+<% if post.state == "published" %>
+  <div class="publication-box <%= id %> <%= tipo.downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>">
+
+    <div class="publication-author">
+      <% case type %>
+        <% when 'Course' %>
+          <%= link_to course_path(post.id) do %>
+            <span class="avatar-holder">
+              <%= avatar('course', '45', 'no', post.id, 'avatar', 'no', 'no') %>
+            </span>
+          <% end %>
+        <% else %>
+          <%= link_to show_user_path(personal_url) do %>
+            <span class="avatar-holder">
+              <%= avatar('user', '45', 'no', post.user.id, 'avatar', 'no', 'no') %>
+            </span>
+          <% end %>
+      <%end%>
+    </div>
+
+    <div id = "publication-<%= id %>" class="publication-main comment-text <%= publication_cls %>" >
+      
+      <div class="publication-content">
+        <% if type == "Comment" %>
+            <h6>
+              <%= link_to user_name, show_user_path(personal_url) if ( !user_name.blank?) %>
+              <% if !posted_in_for.blank? %>
+                comento en el curso
+                <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+              <% end %>
+                
+              <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %>
+            </h6>
+            <%= content %>
+          
+          <% else %>
+            <h6>
+
+              <%= link_to user_name, show_user_path(personal_url) %>
+              <% case type %>
+              <% when "Discussion" %>
+                inicio una discussion
+                <% if posted_in_for %>
+                  en el curso
+                  <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+                <% end %>
+
+              <% when "Delivery" %>
+                agrego una tarea en el curso
+                <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+
+              <% when "Survey" %>
+                agrego un cuestionario en el curso
+                <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+              <% end %>
+
+            </h6>
+
+            <div class="academic-content">
+              <div class="academic-action">
+                <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver discusión</a>
+              </div>
+              <div class="academic-content-icon">
+                <%= icon('discussion-publication') %>
+              </div>
+              <div class="academic-content-desc">
+                <h4><%= name %></h4>
+                <% if type != "Survey" %>
+                  <p><%= truncate( content, omission: "...", length: 70).html_safe %></p>
+                <% else %>
+                  <p><%= post.questions.count %> Preguntas</p>
+                <% end %>
+              </div>
+            </div>
+
+        <% end %>
+
+        <% if type != "Comment" %>
+          <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: post, white_like_icon: true} %>
+        <% end %>
+      </div>
+      
+      <% if type == "Comment" %>
+        <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: post, white_like_icon: false} %>
+      <% end %>
+      
+      <%= render partial: 'shared/publications/publication_comments', locals: { publication: publication, post: post } %>
+
+        
+      <% if publication.publication.owner?(current_role, current_user) %>
+        <div class="footer" id="footer-publication-<%= id %>">       
+          <script>
+            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function(){
+              $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
+            });
+
+            $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
+
+                
+              $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
+              $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
+
+            });
+          </script>
+
+          <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
+
+            <div class="rander">
+              <div class="form_for_edit_wall_top"id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close" >x</div>
+            </div>
+            <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
+          </div>
+        </div>          
+      <%end%>
+
+    </div>
+  </div>
+    
+    
+<%end%>

@@ -6,16 +6,16 @@
 
         <div id="liked-<%= publication.id%>">
           <%= link_to upvote_path(publication.id), :remote => true do %>
-            <i class="i i-like-c"></i>
+            <%= white_like_icon = true ? icon('like-c-white') : icon('like-c') %>
           <% end %>
         </div>
        
       <%else%>
        
          <div id="liked-<%= publication.id%>">
-           <%= link_to downvote_path(publication.id), :remote => true do %>
-           <i class="i i-like-c-active"></i>
-           <% end %>
+            <%= link_to downvote_path(publication.id), :remote => true do %>
+              <%= white_like_icon = true ? icon('like-c-white-active') : icon('like-c-active') %>
+            <% end %>
          </div>
        
       <%end%>

@@ -1,4 +1,7 @@
-<% wall.each do |publication| %>
+<% 
+  wall.each do |publication|
+  next if publication.publication.user == nil
+%>
 
 <!-- le ocultamos informacion privada al usuario -->
 <% if visible_for == 'user' && !publication.courses.empty?%>
@@ -11,22 +14,10 @@
   <%end%>
 <%end%>
 
-<%
-  # aqui es inicializan las variables para todos los tipos de publicaciones
-  post = publication.publication
-  id = publication.id
-  publication_cls = 'delivery'
-  
-  type = publication.publication_type
-%>
+<%= render partial: 'shared/publications/publication_template', locals: { publication: publication } %>
 
-<% if type == "Comment" %>
-  <%= render partial: 'shared/publications/comment', locals: { publication: publication } %>
-<% end %>
-
-
-  <script type="text/javascript">
-  $('#footer-publication-<%= id %>').on('click',function(e){
+<script type="text/javascript">
+  $('#footer-publication-<%= publication.id %>').on('click',function(e){
     e.preventDefault();
   if(e.target.className === 'icon comments'){ //si quiere ver los comentarios
     // alert('comments!!');
@@ -36,7 +27,7 @@
   }
 });
 
-  $('#more-comments-<%= id %>').live('click',function(e){
+  $('#more-comments-<%= publication.id %>').live('click',function(e){
     $.getScript("<%=request.protocol + request.host_with_port%>/home/load_more_comments/<%= publication.id %>");
     return false;
   });
