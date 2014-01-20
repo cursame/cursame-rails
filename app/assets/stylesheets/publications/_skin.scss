@@ -31,7 +31,7 @@
     background: url('publication-covers/delivery.jpg');
   }
 
-  &.examen .publication-content {
+  &.cuestionario .publication-content {
     background: url('publication-covers/survey.jpg');
   }
   
@@ -132,7 +132,7 @@
     .tabs-buttons {
       background: #fcfcfc;
       border-bottom: 1px solid #d6d6d6;
-      borde-radius: $radius $radius 0 0;
+      border-radius: $radius $radius 0 0;
 
       .tab {
         cursor: pointer;

@@ -5,20 +5,17 @@
   publication_cls = 'delivery'
   created_at = post.created_at
   type = publication.publication_type
-  # tipo = 'Comentario'
+  personal_url = post.user.personal_url
 %>
 
 <%
   # Variables for Comment
   if type == "Comment"
-    personal_url = post.user.personal_url
     name = post.user.name
     user_name = name
     content = post.comment_html
     course = post.commentable if post.commentable_type == 'Course'
-    ico =''
     tipo = 'Comentario'
-    definition = '-comment'
 
     if course != nil
       posted_in_for = course.title
@@ -32,31 +29,25 @@
   if type == "Course"
     name = post.title
     content = post.silabus
-    ico = ''
-    definition = '-course'
   end
 %>
 
 <% 
   # Variables for Discussion
   if type == "Discussion"
-    personal_url = post.user.personal_url
     name = post.title
     user_name = post.user.name
     course = post.courses
     posted_in_for = course[0].title if ( !post.courses.blank? )
     posted_in_for_id = course[0].id if ( !post.courses.blank? )
     content = post.description_html
-    ico = '-discussion'
     tipo = 'Discusion'
-    definition = '-discussion'
   end
 %>
 
 <% 
   # Variables for Delivery
   if type == "Delivery"
-    personal_url = post.user.personal_url
     cargo = post.courses[0]
     name = post.title
     user_name = post.user.name
@@ -65,23 +56,18 @@
     posted_in_for_id = course[0].id
     content = post.description_html
     publication_cls = 'delivery'
-    ico = '-homework'
     tipo  = 'Tarea'
-    definition = '-homework'
   end
 %>
 
 <% 
   if type == "Survey"
-    personal_url = post.user.personal_url
     course = post.courses
     user_name = post.user.name
     posted_in_for = course[0].title
     posted_in_for_id = course[0].id
     name = post.name
-    ico = '-survey'
-    tipo = 'Examen'
-    deginition = '-survey'
+    tipo = 'Cuestionario'
   end
 %>
 
@@ -145,7 +131,7 @@
 
             <div class="academic-content">
               <div class="academic-action">
-                <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver discusión</a>
+                <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver <%= tipo %></a>
               </div>
               <div class="academic-content-icon">
                 <%= icon('discussion-publication') %>

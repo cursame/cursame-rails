@@ -37,7 +37,12 @@ class ApplicationController < ActionController::Base
   #metodo de acceso a los avatares
 
   helper_method :avatar
+  
+  # helper methos de fechas 
 
+  helper_method :es_month
+  helper_method :es_day
+  helper_method :es_current_date
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
@@ -519,7 +524,90 @@ class ApplicationController < ActionController::Base
 
   end
 
+  ###### ayuda alos cambiar los meses del año a español
+  def es_month(monthx = '')
+    case
+     when monthx == 'January'
+      @name = 'Enero'
+     when monthx == 'February'
+      @name = 'Febrero'
+     when monthx == 'March'
+      @name = 'Marzo'
+     when monthx == 'April'
+      @name = 'Abril'
+     when monthx == 'May'
+      @name = 'Mayo'
+     when monthx == 'June'
+      @name = 'Junio'
+     when monthx == 'July'
+      @name = 'Julio'
+     when monthx == 'August'
+      @name = 'Agosto'
+     when monthx == 'September'
+      @name = 'Septiembre'
+     when monthx == 'October'
+      @name = 'Octubre'
+     when monthx == 'November'
+      @name = 'Nobiembre'
+     when monthx == 'December'
+      @name = 'December'
+     else
+      @name = 'Este no es un més'
 
+    end
+  end
+
+  ##### da formato a las fechas en español
+  
+  def es_current_date(month = '', day = '' , year = '', format = 'mexican')
+    ##### example :    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
+
+    case 
+      when format == 'american'
+      case 
+        when month != '' && day != '' && year != ''
+        @date = "#{es_month(month)} / #{day} / #{year}"
+        when month != '' && day != ''
+        @date = "#{es_month(month)} / #{day}"
+        when month != '' && year != ''
+        @date = "#{es_month(month)} / #{year}"
+      end
+    when format == 'mexican'
+       case 
+        when month != '' && day != '' && year != ''
+        @date = "#{day} / #{es_month(month)} / #{year}"
+        when month != '' && day != ''
+        @date = "#{day} / #{es_month(month)}"
+        when month != '' && year != ''
+        @date = "#{es_month(month)} / #{year}"
+      end
+    end 
+  end
+  
+  ###### da formato a los días de la semana en español
+  def es_day(esday)
+    case 
+      when esday != 'Week'
+      case 
+      when esday == 'Monday'
+        @day_name = 'Lunes'
+      when esday == 'Tuesday'
+        @day_name = 'Martes'  
+      when esday == 'Wednesday'
+        @day_name = 'Miercoles'  
+      when esday == 'Thursday'
+        @day_name = 'Juevez'  
+      when esday == 'Friday'
+        @day_name = 'Viernes'  
+      when esday == 'Saturday'
+        @day_name = 'Sabado'
+      when esday == 'Sunday'
+        @day_name = 'Domingo' 
+      end
+        when esday == 'Week'
+        @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
+    end
+  end
   protected
   #roles
   def permission_denied

@@ -48,9 +48,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   resources :events
 
   ########## calendar
-  get "calendar/index"
+  get "calendar", :to => 'calendar#index', :as => :calendar
   get "calendar/test_calendar"
-
+  
   ######### dropbox
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
   ######## create
@@ -174,8 +174,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   ActiveAdmin.routes(self)
 
   as :user do
-    match 'users/sign_out', :to => 'usessions/sessions#destroy', :as => :sign_out
-    match 'users/sign_in', :to =>  'usessions/sessions#new', :as => :sign_in
+    match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
+    match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
   end
 
   #### finalizador de sesiones
