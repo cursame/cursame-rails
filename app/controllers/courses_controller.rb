@@ -853,6 +853,69 @@ class CoursesController < ApplicationController
       end
   end
 
+  def clone_course_view
+    @course = Course.find(params[:id])
+    respond_to do |format|
+        format.html
+        # format.json
+        # format.js
+    end
+  end
+   
+  def clone_course
+    @course = Course.new(params[:course])
+    @course.network = current_network
+    if @course.save!
+      params[:deliveries].keep_if{|x| !x["id"].nil?}.each do |obj|
+        new_delivery = Delivery.find(obj["id"]).dup
+        new_delivery.state = 'unpublish'
+        new_delivery.publish_date = obj["publish_date"]
+        new_delivery.end_date = obj["end_date"]
+        new_delivery.courses.push(@course)
+        new_delivery.save!
+      end
+
+      params[:discussions].each do |id|
+        new_discussion = Discussion.find(id).dup
+        new_discussion.courses.push(@course)
+        new_discussion.save!
+      end
+
+      params[:surveys].keep_if{|x| !x["id"].nil?}.each do |obj|
+        new_survey = Survey.find(obj["id"]).dup
+        new_survey.state = 'unpublish'
+        new_survey.publish_date = obj["publish_date"]
+        new_survey.end_date = obj["end_date"]
+        new_survey.courses.push(@course)
+
+        #agregamos preguntas al survey
+        Survey.find(obj["id"]).questions.each do |question|
+          new_question = question.dup;
+          question.answers.each do |answer|
+            new_question.answers.push(answer.dup)
+          end
+          new_survey.questions.push(new_question)
+        end
+
+        new_survey.save!
+      end
+
+      params[:course_files].each do |id|
+        new_course_file = CourseFile.find(id).dup
+        new_course_file.file = CourseFile.find(id).file
+        new_course_file.save!
+        new_course_id_course_file_id = CourseIdCourseFileId.new
+        new_course_id_course_file_id.course = @course
+        new_course_id_course_file_id.course_file = new_course_file
+        new_course_id_course_file_id.save!
+      end
+
+    end
+    respond_to do |format|
+        format.html
+    end
+  end
+
 private 
 
   def obtainMember(course_id, user_id)
