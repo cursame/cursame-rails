@@ -144,3 +144,22 @@
     }
   }
 }
+
+/* Survey
+----------------------------------*/
+.new-survey-questions {
+  @include clearfix;
+
+  #box-question {
+    .question-field {
+      border: 1px solid #ccc;
+      background: #f7f7f7;
+      border-radius: $radius;
+
+      .element {
+        background: #fff;
+        border-radius: $radius $radius 0 0;
+      }
+    }
+  }
+}

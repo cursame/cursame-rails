@@ -1,16 +1,21 @@
+
 <div id="box-question-child" class="question-field">
-  <div class="element" style="padding: 12px 0px; height: 50px;">
-      <div id="question-num" class="num">1.</div>
-      <%= f.text_field :content, :rows => 3, :style =>'width: 410px; margin-right: 5px; outline-width: 0px;', :placeholder=>'Ingresar pregunta' %>
-      <%#= f.text_field :value%>
-      <%= link_to_remove_fields "Eliminar", f, {:class=>'remove-icon', :clear => 'both'}, '#box-question'  %>
+  <div class="element">
+    <div class="fl">
+      <span id="question-num">1.</span>
+      <%= f.text_field :content, :rows => 3, :placeholder=>'Ingresar pregunta', class: 'question-input-field' %>
+    </div>
+    <div class="fr">
+      <%= link_to_remove_fields "Eliminar pregunta", f, {:class=>'btn btn-secondary', :clear => 'both'}, '#box-question'  %>
+    </div>
   </div>
+
   <div id="box-request">
-      <%= f.fields_for :answers do |builder| %>
-        <%= render '/surveys/answer_fields', :f => builder %>
-      <% end %>
+    <%= f.fields_for :answers do |builder| %>
+      <%= render '/surveys/answer_fields', :f => builder %>
+    <% end %>
   </div>
-  <div class="request-field" style="height: 40px;">
+  <div class="request-field">
     <%= link_to_add_fields "Agregar Respuesta", f, :answers, {:class=>'add-request'}, '#box-request' %>
   </div>
 </div>

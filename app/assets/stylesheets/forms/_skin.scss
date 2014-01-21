@@ -8,7 +8,8 @@
   border-radius: $radius;
   box-shadow: inset 0 1px 0 #fcfcfc;
   margin: 0;
-  padding: 3px 5px;
+  padding: 7px 7px 8px 7px;
+  width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -90,21 +91,6 @@ textarea {
       }
     }
   }
-  
-  button{
-    text-align: center;
-    color: #999;
-    border: $border-forms;
-    cursor: pointer;
-    font-size: 14px;
-    @include border-radius-btn;
-    @include bg-normal-btn;
-
-    &:hover{
-      color: #555;
-      background: #F1F3F6;
-    }
-  }
 
   .a-btn{
     text-align: center;
@@ -121,22 +107,7 @@ textarea {
       background: #f8f8f8;
     }
   }
-
-  .evaluate-btn{
-    color: #999;
-    background-position: left;
-    border: $border-forms;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 30px;
-    @include border-radius-btn;
-    @include bg-evaluate-btn;
-
-    &:hover{
-      color: #555;
-    }
-  }
-
+  
   // Dropdown (Checkbox)
   // .wrapper-dropdown {
   //   border: $border-forms;
@@ -333,14 +304,10 @@ textarea {
 }
 
 .survey-form-area-style{
-  background: #FFF;
-  @include border-radius;
 
   .survey-form {
-    border: 1px solid #ccc;
 
     .question-field{
-      background: #f9fafc;
       
       .add-question{
         background: #919FB5 url('/assets/icons/add-question.png') 11px 8px no-repeat;
@@ -359,21 +326,6 @@ textarea {
         }        
       }
 
-      .element:hover .remove-icon {
-        cursor: pointer;
-        background: #FFF url('/assets/icons/icon_remove_red.png') left center no-repeat;
-        border: 1px solid #C32B1C;
-        line-height: 27px;
-        font-size: 11px;
-        color: #C32B1C;
-        transition: all 0.2s;
-        border-radius: 3px;
-        
-        &:hover {
-          background: #A2140C url('/assets/icons/icon_remove.png') left center no-repeat;
-          color: #FFF;
-        }
-      }
 
       .num {
         color:  #919fb5;
@@ -399,23 +351,6 @@ textarea {
     }
 
     .request-field {
-      border-top: 1px dotted #c9d1da;
-
-      &:hover .remove-icon {
-        cursor: pointer;
-        background: #FFF url('/assets/icons/icon_remove_red.png') left center no-repeat;
-        border: 1px solid #C32B1C;
-        line-height: 27px;
-        font-size: 11px;
-        color: #C32B1C;
-        transition: all 0.2s;
-        border-radius: 3px;
-        
-        &:hover{
-          background: #A2140C url('/assets/icons/icon_remove.png') left center no-repeat;
-          color: #FFF;
-        }
-      }
 
       .num{
         font-weight: none;
@@ -453,10 +388,6 @@ textarea {
     .add-response{
       color: #919fb5;
     }
-
-    .request-field{
-      background: #f1f3f6;
-    }
   }
 }
 
@@ -479,7 +410,6 @@ textarea {
   }
 
   .request-field {
-    border-top: 1px dotted #c9d1da;
 
     .num{
       color:  #919fb5;
@@ -659,3 +589,11 @@ label.error {
   font-size: 10px;
 }
 
+
+/* Forms Columns
+----------------------------------*/
+.form-group {
+  .form-group-label {
+    font-weight: bold;
+  }
+}

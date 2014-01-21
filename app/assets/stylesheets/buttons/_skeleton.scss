@@ -4,7 +4,7 @@
 .btn {
   @include inline-block;
   padding: 0 10px;
-  height: 28px;
+  height: 33px;
 
   &.input-btn {
     padding: 0;
@@ -13,7 +13,7 @@
     > input {
       margin: 0;
       padding: 0 10px;
-      height: 28px;
+      height: 33px;
     }
   }
 

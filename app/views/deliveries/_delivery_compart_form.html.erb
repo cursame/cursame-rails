@@ -11,71 +11,124 @@
 <% if @active_edit == false %>
   <!--	<a class="help delivery_help" id="help_delivery" style="margin-top: -25px; margin-right:565px;"><%= image_tag('help.png')%></a>-->
 <%end%>
-<%= form_for(@delivery, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => formId}) do |f| %>
+<%= form_for(@delivery, remote: true, html: { class: "default-form delivery-form", multipart: true, id: formId}) do |f| %>
   
   <div class="new-publication-form-content">
-    <div class="video_help help_use_to_delivery" style="display: none" id="delivery_help">
-      <div class="content_video" id="content_video_video_delivery"></div>
-    </div>
     
     <% contents = @delivery.contents.build %>
-
-    <div>
-      <% if @active_edit == false %>
-  	   <%= render :partial => "content/heather_contents",
-                  :locals => {:f => f, :typeo => 'delivery', :acces_to => @delivery, :contents => "contents" } %>
-      <%end%>
+    <%= f.hidden_field :network_id, value: current_network.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    
+    <div class="form-group">
+      <div class="form-group-label">
+        <label>Tema de la tarea:</label>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= f.text_field :title , placeholder: "Ejemp. Numero primos" %>
+        </div>
+      </div>
     </div>
     
-    <%= f.hidden_field :network_id, :value => current_network.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-          
-    <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea', :class => 'form_fix_title_overlay' %>
-    <%#= f.datetime_select :publish_date%>
-    <%#= f.datetime_select :end_date%>
+    <div class="form-group">
+      <div class="form-group-label">
+        <label>Fechas:</label>
+      </div>
+      <div class="form-group-main">
+        <div class="f-col f-col-5">
+          <div class="form-unit">
+            <%= f.text_field :publish_date, placeholder: 'Día de publicación', class: "date-input delivery delivery_publish_date", id: 'publish_date_'+random_id, value: f.object.end_date %>
+          </div>
+        </div>
 
-    <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :class=>"date-input delivery form_fix_date_overlay delivery_publish_date", :id => 'publish_date_'+random_id, :value=> f.object.end_date %>
+        <div class="f-col f-col-5">
+          <div class="form-unit">
+            <%= f.text_field :end_date, placeholder: 'Fecha de entrega', class: "date-input delivery delivery_end_date", id: 'end_date_'+random_id, value: f.object.end_date  %>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <%= f.text_field :end_date, :placeholder=>'Fecha de entrega', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
-    
-    <%= f.text_area :description , :placeholder=>'Descripción', :class => 'border_for_text' %>
+    <div class="form-group">
+      <div class="form-group-label">
+      <label>Descripción:</label>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= f.text_area :description, rows: 6, placeholder: "Descripción" %>
+        </div>
+      </div>
+    </div>
 
     <% if @active_edit == false %>    
       <% areas_of_evaluations = @delivery.areas_of_evaluations.build %>
+      
+      <div class="form-group">
+        <div class="form-group-label">
+          <label>Evaluación:</label>
+        </div>
+        <div class="form-group-main">
 
-      <div class="form_fix_criteria">
-        <%= f.fields_for :areas_of_evaluations do |builder| %>
-          <%= render :partial => "areas_of_evaluations/form", :id => 'areas_of_evaluations', :locals => { :f => builder } %>
-  			<% end %>
+          <div class="areas-of-evaluation">
+            <div class="form-unit">
+              <%= f.fields_for :areas_of_evaluations do | builder | %>
+                <%= render partial: "areas_of_evaluations/form", id: 'areas_of_evaluations', locals: { f: builder } %>
+              <% end %>
+            
+              <div class="evaluation-footer">
+                <div class="fl">
+                  <div id="more_nested_evaluation_btn" class="btn btn-secondary">Agregar Criterio</div>
+                </div>
+                <div class="fr">
+                  <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación final', :class=>"percent-input" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="form-group-label">
+          <label>Material de soporte</label>
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
+            <div>
+              <% if @active_edit == false %>
+                <%= render partial: "content/heather_contents", locals: { f: f, typeo: 'delivery', acces_to: @delivery, contents: "contents" } %>
+              <%end%>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="more_nested_evaluation_btn" class="evaluate-btn">Agregar Criterio</div>
+      <div class="form-group">
+        <div class="form-group-label">
+          <label>Archivos adjuntos</label>
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
+          </div>
+        </div>
+      </div>
 
-  		<div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
-  		
-      <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación final', :class=>"percent-input" %>
-
-      <%#= f.fields_for :assets do |asset| %>
-        <%#= render :partial => "shared/assets_form" %>
-      <%#end%>
-    </div>
+  </div>
     
-    <div class="new-publication-footer">
+  <div class="new-publication-footer">
     <div>
       <div class="submit-area"></div>
-	        
-			<% if @active_edit == false %>
-				<a class="help delivery_help" style="float: left!important; margin-left: -2px;" id="help_delivery"><%= image_tag('help.png')%></a>
-			<%end%>
-	        
-      <div>
-  			<%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
-  			<%= f.submit "Publicar", :id => 'comment-post-form'%>
-			</div>
-			
-      <div>
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
-			</div>
+
+      <%= button_tag "Cancelar", :type => 'button', :class=>'btn btn-secondary input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
+
+		
+      <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+      
+      <span class="btn btn-primary input-btn">
+        <%= f.submit "Publicar", :id => 'comment-post-form'%>
+      </span>
     </div>      
 
   <%else%>
@@ -91,15 +144,7 @@
 <% end %>
 
 <% if @active_edit == false %>
-
-  <div> 
-    <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
-
-    <div>
-      <%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
-    </div>
-  </div>
-
+  <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
 <%else%>
 
   <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>

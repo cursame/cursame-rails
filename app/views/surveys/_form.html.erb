@@ -1,6 +1,7 @@
 <%
-random_id = "#{random}"
-#inicializamos el cuestionario
+  random_id = "#{random}"
+  
+  #inicializamos el cuestionario
   if !active_edit
     @survey = Survey.new
     1.times do
@@ -9,56 +10,74 @@ random_id = "#{random}"
     end
   end
 %>
+
 <%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
-   <div class="video_help" style="display: none" id="survey_help">
-           <div class="content_video" id="content_video_video_survey">
-           </div>
-       </div>
-  <div class="form_container_fix_survey" style="border-bottom: 1px solid #ccc; height: 85px;">
-
-	  <%= f.text_field :name, :style =>'outline-width: 0px;', :placeholder=>'Titulo del cuestionario', :class=>'title-txt-input' %>
+  
+  <div class="new-publication-form-content">
     
-	  <div class="form_fix_survey" style="float:left; height:35px; padding-left:40px; margin-top:5px; width:100%;">
-		  <%= f.text_field :publish_date, :style =>'outline-width: 0px;', :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey survey_publish_date", :value=>f.object.publish_date %>
-		  <%= f.text_field :end_date, :style =>'outline-width: 0px;', :placeholder=>'Fecha de entrega ', :id => 'end_date_'+random_id, :class=>"date-input survey survey_end_date", :value=>f.object.end_date %>
-	  </div>
-	  
-  </div>
-
-    <% if !active_edit %> 
-      <div id="box-question" class="box-question">
-          <%= f.fields_for :questions do |builder| %>
-            <%= render "/surveys/question_fields", :f => builder %>
-          <% end %>
+    <div class="form-group">
+      <div class="form-group-label">
+        <label>Titulo del cuestionario:</label>
       </div>
-      <div class="box-question">
-        <div class="question-field">
-          <%= link_to_add_fields "Agregar Pregunta", f, :questions, {:class=>'add-question'}, '#box-question' %>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= f.text_field :name, :placeholder=>'Titulo del cuestionario' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-group-label">
+        <label>Fechas:</label>
+      </div>
+      <div class="form-group-main">
+        <div class="f-col f-col-5">
+          <div class="form-unit">
+            <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey survey_publish_date", :value=>f.object.publish_date %>
+          </div>      
+        </div>
+        <div class="f-col f-col-5">
+          <div class="form-unit">
+            <%= f.text_field :end_date, :placeholder=>'Fecha de entrega ', :id => 'end_date_'+random_id, :class=>"date-input survey survey_end_date", :value=>f.object.end_date %>
+          </div>
+        </div>
+      </div>
+    </div>
+  	
+    <% unless active_edit %> 
+      <div class="form-group">
+        <div class="form-group-label">
+          <label>Preguntas:</label>
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <div class="new-survey-questions">
+              <div id="box-question" class="box-question">
+                <%= f.fields_for :questions do |builder| %>
+                  <%= render "/surveys/question_fields", :f => builder %>
+                <% end %>
+              </div>
+
+              <div class="box-question">
+                <div class="question-field">
+                  <%= link_to_add_fields "Agregar Pregunta", f, :questions, {:class=>'add-question'}, '#box-question' %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
-
-	<div class="form_submit_fix_survey" style="padding: 4px 0px; display: block; position: relative; clear: both;">
-    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
-    <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary activable", :id => 'comment-post-form'%>
-    
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
-    
-    <a class="help survey_help" style="margin: 6px 0px 0px 17px; display: block;" id="help_survey"><%= image_tag('help.png')%></a>
-	</div>
+  </div>
 	
-    <script>
-             $('#help_survey').click(function() {
-                 $('#survey_help').toggle('blind', 400);
-                 if($("#survey_help").css( 'visibility')=="hidden"){
-                        $('#content_video_video_survey').html('');
-                    }
-                    else{
-                       $('#content_video_video_survey').html('<object width="560" height="280"><param name="movie" value="http://www.youtube.com/v/EJ5A9RCCXXA?version=3&amp;hl=es_ES&amp;rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/EJ5A9RCCXXA?version=3&amp;hl=es_ES&amp;rel=0" type="application/x-shockwave-flash" width="560" height="280" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
-                    }
-                });                         
-                
-    </script>
+  <div class="new-publication-footer">
+    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
+    
+    <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary activable", :id => 'comment-post-form'%>
+      
+    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
+  </div>
+    
 <% end %>
 
 <script type="text/javascript">

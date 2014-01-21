@@ -134,7 +134,7 @@
                 <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver <%= tipo %></a>
               </div>
               <div class="academic-content-icon">
-                <%= icon('discussion-publication') %>
+                <%= icon( tipo.downcase + '-publication') %>
               </div>
               <div class="academic-content-desc">
                 <h4><%= name %></h4>
