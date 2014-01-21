@@ -156,9 +156,32 @@
       background: #f7f7f7;
       border-radius: $radius;
 
+      .num {
+        font-weight: bold;
+        color: #666;
+      }
+
       .element {
         background: #fff;
+        border-bottom: 1px solid #ccc;
         border-radius: $radius $radius 0 0;
+
+        .question-input-field {
+          border-color: transparent;
+          box-shadow: none;
+          outline: none;
+        }
+      }
+
+      .request-field {
+        border-bottom: 1px solid #ccc;
+
+        .answer-field-input {
+          background: transparent;
+          border-color: transparent;
+          box-shadow: none;
+          outline: none;
+        }
       }
     }
   }

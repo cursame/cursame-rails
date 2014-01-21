@@ -239,22 +239,42 @@
   #box-question {
     .question-field {
       margin-bottom: 10px;
+      
+      .num {
+        display: inline;
+      }
 
       .element {
         padding: 5px;
         overflow: hidden;
 
-        #question-num {
-          display: inline;
+        .question-input-field {
+          width: 283px;
+          padding-left: 0;
         }
 
-        .question-input-field {
-          width: 220px;
+        .delete-question-button {
+          display: none;
+        }
+
+        &:hover .delete-question-button {
+          display: block;
         }
       }
 
       .request-field {
         overflow: hidden;
+        padding: 5px;
+        
+        .answer-field-input {
+          padding-left: 0;
+          width: 240px;
+        }
+      }
+
+      .add-aswer a {
+        display: block;
+        padding: 5px;
       }
     }
   }
