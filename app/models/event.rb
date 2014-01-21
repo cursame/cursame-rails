@@ -23,7 +23,6 @@ class Event < ActiveRecord::Base
       :recurring => false,
       :url => Rails.application.routes.url_helpers.event_path(id)
     }
-
   end
 
   def self.format_date(date_time)

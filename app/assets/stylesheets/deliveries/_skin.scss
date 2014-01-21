@@ -1,10 +1,6 @@
 
 /* Deliveries Skeleton
 ----------------------------------*/
-.var_delivery{
-  font-size:15px;
-}
-
 #valu {
   outline: none;
   background: url('/assets/youtube.png') no-repeat !important;
@@ -27,12 +23,9 @@
 }
 
 .dropbox-chooser {
-  border: none;
-  outline: none;
   background: url('/assets/dropBox.png') no-repeat !important;
 
   &:hover {
-    outline: none;
     background: url('/assets/dropBox_hover.png') no-repeat !important;
   }
 }

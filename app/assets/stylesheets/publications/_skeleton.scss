@@ -171,17 +171,18 @@
 
     .new-publication-footer {
       padding: 10px;
+      clear: both;
     }
   }
 
   .tabs {
     .tabs-buttons {
-      height: 39px;
+      height: 43px;
       @include clearfix;
 
       .tab {
         float: left;
-        padding: 9px 10px 12px 10px;
+        padding: 13px 10px 12px 10px;
         position: relative;
 
         .tip {
@@ -213,5 +214,48 @@
 #comment-tab-content{ 
   .comment_for_wall {
     width: 100%;
+  }
+}
+
+/* homework
+----------------------------------*/
+.areas-of-evaluation {
+
+  .evaluation-areas-list {
+    @include clearfix;
+  }
+
+  .evaluation-footer {
+    clear: both;
+    @include clearfix;
+  }
+}
+
+/* Survey
+----------------------------------*/
+.new-survey-questions {
+  @include clearfix;
+
+  #box-question {
+    .question-field {
+      margin-bottom: 10px;
+
+      .element {
+        padding: 5px;
+        overflow: hidden;
+
+        #question-num {
+          display: inline;
+        }
+
+        .question-input-field {
+          width: 220px;
+        }
+      }
+
+      .request-field {
+        overflow: hidden;
+      }
+    }
   }
 }

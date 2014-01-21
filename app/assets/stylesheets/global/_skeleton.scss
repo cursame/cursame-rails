@@ -57,11 +57,23 @@
 }
 
 .clear{
-  clear:both;
+  @include clearfix;
+}
+
+.clear-break {
+  clear: both;
 }
 
 .inline-block {
   @include inline-block;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
 }
 
 /* Avatars
@@ -190,6 +202,33 @@
 
   .rights {
     float: right;
+  }
+}
+
+/* List of Buttons
+----------------------------------*/
+.list-buttons {
+  @include clearfix;
+
+  > li {
+    margin: 0 5px;
+  }
+
+  &.left > li {
+    float: left;
+
+
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+
+  &.right > li {
+    float: right;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
