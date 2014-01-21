@@ -14,13 +14,26 @@ class CalendarController < ApplicationController
    end
    
   def index
-   course_id = []
+   id_event = []
+  
+   ####### docifica los eventos dentro de los cursos por sus tipos #######
    current_user.courses.each do |c|
-     course_id.push(c.id)
+    c.deliveries.each do |d|
+      d.events.each do |de|
+        id_event.push(de.id)
+      end
+    end
+
+    c.surveys.each do |s|
+      s.events.each do |se|
+        id_event.push(se.id)
+      end
+    end
    end
-   puts "#{course_id}"
+   
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
-   @tasks = Event.where(:course_id => course_id)
+   @tasks = Event.where(:id => id_event)
+   
    puts @tasks           
   end
   

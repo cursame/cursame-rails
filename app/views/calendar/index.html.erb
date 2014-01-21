@@ -6,10 +6,12 @@
   </h2>
 <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
   <%= t.head('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo') %>
-  <%= t.day do |day, tasks| %>
+  <%= t.day(:day_method => :ends_at) do |day, tasks| %>
     <%= day.day %>
     <% tasks.each do |task| %>
-      <%= h(task.title) %>
+     <!--en caso de requerir el tipo para colocar imagen--><%= task.schedule_type %>
+     <!--fecha de entrega-->
+     <div style="padding:1px;"> <%= h( ("#{task.title}").truncate(20, omission: '...')) %></div>
     <% end %>
   <% end %>
 <% end %>
