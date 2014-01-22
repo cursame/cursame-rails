@@ -550,7 +550,7 @@ class ApplicationController < ActionController::Base
      when monthx == 'November'
       @name = 'Nobiembre'
      when monthx == 'December'
-      @name = 'December'
+      @name = 'Diciembre'
      else
       @name = 'Este no es un més'
 
@@ -608,6 +608,8 @@ class ApplicationController < ActionController::Base
         @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
     end
   end
+
+
   protected
   #roles
   def permission_denied
@@ -618,7 +620,7 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Authorization.current_user = current_user
   end
-
+ 
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------

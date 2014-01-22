@@ -405,11 +405,18 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
    get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
 
+
    ###### ruta para creacion de timeline paginada
    get 'courses/:id/course_ki_line_pag', :to => 'courses#course_ki_line_pag', :as => :course_ki_line_pag
 
    ###### carga mas actividades
    get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
+
+
+   ####### tuas extras para el curso
+
+   get '/courses/:id/about', :to => 'courses#about', :as => :about_course 
+   get '/library/:id/library', :to =>  'courses#library', :as => :library_in_course
 
    ###### ruta para crear super admins
 

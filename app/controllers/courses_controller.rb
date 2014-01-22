@@ -208,6 +208,22 @@ class CoursesController < ApplicationController
     end
   end
 
+  
+  def libray
+    @course = current_course
+  end
+  
+  def about
+    id_for_users = []
+    @course = current_course
+    @owners = MembersInCourse.where(:course_id => @course.id, :owner => true)
+
+    @owners.each do |o|
+      id_for_users.push(o.user_id)
+    end
+    
+    @users = User.where(:id => id_for_users)
+  end
 
   def evaluation
     @course = Course.find(params[:id])
