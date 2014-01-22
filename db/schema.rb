@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140108170844) do
+ActiveRecord::Schema.define(:version => 20140122014429) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20140108170844) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "online"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20140108170844) do
     t.string   "role",                           :default => "comments"
     t.datetime "created_at",                                             :null => false
     t.datetime "updated_at",                                             :null => false
+    t.integer  "netwok_id"
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
@@ -381,9 +383,9 @@ ActiveRecord::Schema.define(:version => 20140108170844) do
     t.boolean  "free",                 :default => true
     t.boolean  "register_form"
     t.text     "welcom_message"
-    t.string   "image_front",          :default => "background-restore.jpg"
-    t.string   "logo",                 :default => "logo.png"
-    t.string   "logo_type",            :default => "128x26"
+    t.string   "image_front"
+    t.string   "logo"
+    t.string   "logo_type"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
