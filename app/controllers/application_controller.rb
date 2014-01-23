@@ -164,7 +164,7 @@ class ApplicationController < ActionController::Base
   end
 
   def alfredot_rifa_free_pro_forever
-     puts "alfredot rifa free pro forever 2013"
+     puts "alfredot rifa free pro forever 2014"
      puts "
      _+88__________________________...
      _+880_________________________...
@@ -189,6 +189,14 @@ class ApplicationController < ActionController::Base
      ________++++++0088888888______...
      ________+++++0008888888_______...
      ________...............8888888... "
+     puts "casual aqui programando "
+     puts "Desarrolladores 2014:"
+     puts '**************************************'
+     puts "Alfredo Reyes de Antuñano"
+     puts "Emiliano Cabrera Blancas"
+     puts "Salvador López Mendoza"
+     puts "Armando Gonzalez López"
+     puts '**************************************'
    end
 
    def fail_in_save
