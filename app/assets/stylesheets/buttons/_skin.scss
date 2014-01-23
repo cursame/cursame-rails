@@ -16,9 +16,18 @@
       cursor: pointer;
     }
   }
+  
+  &.btn-small {
+    line-height: 20px;
+    font-size: 12px;
+  }
 
   &.btn-medium {
     line-height: 38px;
+  }
+
+  &.hard-border-btn {
+    border-color: #000;
   }
 }
 

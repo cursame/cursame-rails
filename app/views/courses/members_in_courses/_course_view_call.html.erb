@@ -8,6 +8,65 @@
     <% @courses.each do |course| %>
       <div class="course">
         <div class="course-cover">
+
+          <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
+          <% @course_id = course.id%>
+          <% if @correspond %>
+
+            <% if @correspond.accepted == true %>
+
+              <div class="dropdown-wrap course-actions">
+                <div class="dropdown-pull">
+                  <i class="i i-settings"></i>
+                </div>
+                <div class="dropdown-v right">
+                  <i class="tip"></i>
+                  <ul>
+                    <li>
+                      <div id="uik_<%=@correspond.id%>"> 
+                        <%= link_to @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true do %>
+                          <i class="i i-leave-course"></i> Abandonar
+                        <% end %>
+                      </div>
+                    </li>
+
+                    <% if @correspond.owner == true %>
+                      <li>
+                        <%= link_to edit_course_path(course) do %>
+                          <i class="i i-edit-12"></i> Editar</a>
+                        <% end %>
+                      </li>
+                      <li>
+                        <div id="usk_<%=@correspond.id%>">
+                          <%= link_to course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete do %>
+                            <i class="i i-trash-12"></i> Borrar</a>
+                          <% end %>
+                        </div>
+                      </li>
+                    <%end%>
+                  </ul>
+                </div>
+              </div>
+            <%else%>
+              <div class="course-user-status">
+                <p class="request-sent"><i class="i i-clock-w"></i> Esperando a ser aceptado</p>
+              </div>
+            <%end%>
+          
+          <% else %>
+            <div class="course-user-status">
+              <div id="hidden-<%= course.id %>" class="join-course-status">
+                <% if course.public_status == "Private" %>
+                  <%= render partial: "courses/members_in_courses/private_course" %>
+                <% else %>   
+                  <%= render partial: "courses/members_in_courses/public_course" %>  
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          
+
           <div class="course-cover-image">
             <%= link_to course_path(course.id) do %>
               <% if course.coverphoto.file.nil? %>
@@ -17,36 +76,6 @@
               <% end %>
             <% end %>
           </div>
-        </div>
-        <div id="crud"> 
-          <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
-          <% @course_id = course.id%>
-          <% if @correspond %>
-
-            <% if @correspond.accepted == true %>
-              <div id="uik_<%=@correspond.id%>"> 
-              <%= link_to image_tag('unsuscript.png'),  @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true%>
-              </div>
-
-              <% if @correspond.owner == true %>
-                <div id="usk_<%=@correspond.id%>">
-                  <%= link_to image_tag('/assets/icons/edit.png'), edit_course_path(course) %>
-                  <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
-                </div>
-              <%end%>
-            <%else%>
-              <span>Aún no has sido aceptado en este curso</span>
-            <%end%>
-          
-          <% else %>
-            <div id="hidden-<%= course.id %>">
-              <% if course.public_status == "Private" %>
-                <%= render partial: "courses/members_in_courses/private_course"%>|
-              <% else %>   
-                <%= render partial: "courses/members_in_courses/public_course"%>|  
-              <% end %>
-            </div>
-          <% end %>
         </div>
          
         <div id="course-title">

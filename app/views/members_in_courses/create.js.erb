@@ -1,7 +1,12 @@
-$('#hidden-<%= @course %>').html('');
- <% if @course_find.public_status == "Private" %>
-   $('#hidden-<%= @course %>').prepend('<span style="color:#fff;font-weight:lighter;font-size:12px;">Aún no has sido aceptado en este grupo</span>');
-   
- <%else%>
-   $('#hidden-<%= @course %>').prepend('<span style="color:#fff;font-weight:lighter;font-size:12px;">Has sido aceptado en el grupo</span>'); 
- <%end%>
+var target        = $('#hidden-<%= @course %>'),
+    statusHolder  = target.closest('.course-user-status');
+
+target.remove();
+
+<% if @course_find.public_status == "Private" %>
+  statusHolder.prepend('<p class="request-sent"><i class="i i-clock-w"></i> Esperando a ser aceptado</p>');
+<%else%>
+  statusHolder.prepend('<p class="request-sent">Has ingresado a este grupo</p>'); 
+<%end%>
+
+

@@ -3,6 +3,7 @@
 ----------------------------------*/
 * {
   -webkit-font-smoothing: antialiased;
+  font-weight: normal;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   background: $main-background;
   font-family: $font-cursame;
   font-size: 13px;
+  font-weight: normal;
 }
 
 ul{

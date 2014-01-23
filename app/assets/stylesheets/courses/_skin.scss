@@ -10,16 +10,29 @@
 .courses-list {
   .course {
     @extend .basic-container-style;
-  }
-
-  .course-cover {
-    .course-cover-image {
-      border-radius: $radius $radius 0 0;
-
-      &:after {
-        content: "";
+    
+    .course-cover {
+      .course-cover-image {
         border-radius: $radius $radius 0 0;
-        box-shadow: inset 0 0 1px rgba(0,0,0,.5);
+
+        &:after {
+          content: "";
+          border-radius: $radius $radius 0 0;
+          box-shadow: inset 0 0 1px rgba(0,0,0,.65);
+        }
+      }
+    }
+
+    .course-user-status {
+      border-radius: 3px 3px 0 0;
+      text-align: center;
+      background: rgba(0,0,0,.65);
+
+      .request-sent {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: bold;
+        color: #fff;
       }
     }
   }
