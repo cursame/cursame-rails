@@ -6,7 +6,8 @@ class CoursesController < ApplicationController
   filter_access_to :show
 
   def index
-    @courses = Course.where(:network_id => current_network.id, :active_status => true).search(params[:search])
+    
+     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     respond_to do |format|
@@ -17,6 +18,8 @@ class CoursesController < ApplicationController
   end
   
   def my_courses
+    @member = MembersInCourse.new
+
     @courses = current_user.courses
     respond_to do |format|
       format.js
@@ -25,32 +28,54 @@ class CoursesController < ApplicationController
   end
 
   def all_courses
-    #### coloca los cursos a los que no pertenezco
-    comparative_courses = []
-    course_in_network = []
-    
-   ####### obtiene los ids de lo que pertenezco y lo que no y los compara
-    current_user.courses.each do |c|
-      comparative_courses.push(c.id)
-    end
-    
-    current_network.courses.each do |cs|
-      course_in_network.push(cs.id)
-    end
-    
-    ids =  course_in_network.reject{|mycourses| mycourses !=  comparative_courses }
-
-    #puts "******************#{comparative_courses}"
-    #puts "******************#{course_in_network}"
-    #puts "#{ids}"
-
-     @courses = Course.where(:id => ids ,:network_id => current_network.id,:active_status => true)
+    @member = MembersInCourse.new
+     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true).search(params[:search])
     respond_to do |format|
       format.js 
     end
 
   end
+   
 
+  def operator_courses(typed = 'normal')
+    case 
+      when typed == 'inverse'
+          #### coloca los cursos a los que no pertenezco
+          comparative_courses = []
+          course_in_network = []
+    
+        ####### obtiene los ids de lo que pertenezco y lo que no y
+          current_user.courses.each do |c|
+            comparative_courses.push(c.id)
+          end
+    
+          current_network.courses.each do |cs|
+             course_in_network.push(cs.id)
+          end
+    
+          ids = course_in_network - comparative_courses
+
+          #puts "******************#{comparative_courses}"
+          #puts "******************#{course_in_network}"
+          #puts "#{ids}"
+       when typed == 'normal'
+          ### coloca los ids de los cursos para comparacion
+          comparative_courses = []
+          current_user.courses.each do |c|
+            comparative_courses.push(c.id)
+          end
+          ids = comparative_courses
+
+    end
+  end
+
+  def courses_search_ajax
+    @member = MembersInCourse.new
+    @courses = Course.search(params[:activiesearch])
+    respond_to do |format|
+      format.js 
+    end
+  end
   # GET /courses/1
   # GET /courses/1.json
   def show

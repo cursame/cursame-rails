@@ -17,9 +17,7 @@
     <div class="section-header-actions">
       <ul class="list-buttons right">
         <li>
-          <%= form_tag courses_path, :method => 'get' do %>
-            <%= text_field_tag :search, params[:search], :placeholder =>'Busca cursos y presiona enter' %>
-          <% end %>
+          <%= render partial: "/courses/courses_search" %>
         </li>
         <% permitted_to? :create, :courses do %>
           <li>
@@ -35,5 +33,5 @@
 <span><%= notice %></span>
 
 <div id="courses_content">
-  <%= render partial: "/courses/members_in_courses/course_view_call", :locals => {:courses => @courses} %>
+  <%= render partial: "/courses/members_in_courses/course_view_call", :locals => {:courses => @courses, :member => @member} %>
 </div>
