@@ -416,7 +416,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
    ####### tuas extras para el curso
 
    get '/courses/:id/about', :to => 'courses#about', :as => :about_course 
-   get '/library/:id/library', :to =>  'courses#library', :as => :library_in_course
+   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
 
    ###### ruta para crear super admins
 
