@@ -1,0 +1,12 @@
+<p><b>Acerca de este curso:</b><p><%= @course.silabus %></p></p>
+
+<p><b>Fecha de incio:</b><p><%= es_current_date("#{ @course.init_date.strftime( '%B')}", "#{@course.init_date.strftime( '%d')}", "#{@course.init_date.strftime( '%Y')}") %></p></p>
+<p><b>Fecha de finalización:</b><p><%= es_current_date("#{ @course.finish_date.strftime( '%B')}", "#{@course.finish_date.strftime( '%d')}", "#{@course.finish_date.strftime( '%Y')}") %></p></p>
+
+<p><b>Administradores del curso:</b>
+	<p>
+		<% @users.each do |u|%>
+		 <%= u.name %>
+		<%end%>
+	</p>
+</p>
