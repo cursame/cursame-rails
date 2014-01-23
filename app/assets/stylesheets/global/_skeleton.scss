@@ -76,6 +76,13 @@
   float: right;
 }
 
+.hide-input-file {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  @include inline-block;
+}
+
 /* Avatars
 ----------------------------------*/
 .avatar-holder {
@@ -212,22 +219,49 @@
 
   > li {
     margin: 0 5px;
+    float: left;
   }
 
-  &.left > li {
+  &.left > li:first-child{
+    margin-left: 0;
+  }
+
+  &.right > li:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Sections Pages
+----------------------------------*/
+.section-header {
+  padding: 25px 0;
+  
+  .section-header-title {
     float: left;
 
-
-    &:first-child{
-      margin-left: 0;
+    .section-icon {
+      float: left;
+      padding-top: 4px;
     }
-  }
 
-  &.right > li {
-    float: right;
+    .section-title {
+      margin-left: 55px;
+      padding-top: 6px;
+    }
 
-    &:last-child {
-      margin-right: 0;
+    .section-subnav {
+      @include clearfix;
+
+      li {
+        float: left;
+        padding-right: 10px;
+      }
+    }
+
+    &.w-subnav {
+      .section-title {
+        padding-top: 0;
+      }
     }
   }
 }

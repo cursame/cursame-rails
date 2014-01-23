@@ -9,6 +9,7 @@
   border-radius: 2px;
   background: #fff;
   box-shadow: 0 0 0 1px rgba(0,0,0,.15) ,0 1px 2px rgba(0,0,0,.1);
+  text-align: left;
 
   .tip {
     background: url("/assets/pack.png") -36px -1px no-repeat;
@@ -40,4 +41,46 @@
 
 .arrow-dropdown {
   @include triangle(8px, gray, down);
+}
+
+/* Public, User and Courses Dropdown
+----------------------------------*/
+.target-dropdown {
+
+  .dropdown-pull {
+    .arrow {
+      @include triangle(8px, gray, down);
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  .target-courses-selector li label {
+    img {
+      vertical-align: -8px;
+    }
+
+    input[type="checkbox"] {
+    }
+    
+    &:hover {
+      background: #f7f7f7;
+    }
+
+    &:first-child {
+      border-radius: $radius $radius 0 0 ;
+    }
+  }
+
+  .return-dd {
+    color: $primary-color;
+    cursor: pointer;
+    border-radius: 0 0 $radius $radius;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+  } 
 }

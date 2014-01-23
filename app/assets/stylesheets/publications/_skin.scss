@@ -186,3 +186,22 @@
     }
   }
 }
+
+/* Publication Assets
+----------------------------------*/
+.look_atemp_conteny {
+  .choser {
+    .publication-asset {
+      border-radius: $radius;
+
+      .cancel_link, .trash {
+        color: $primary-color;
+        cursor: pointer;
+      }
+
+      &:hover {
+        background: #f7f7f7;
+      }
+    }
+  }
+}

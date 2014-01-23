@@ -1,7 +1,6 @@
 
 /* Dropdowns
 ----------------------------------*/
-
  .dropdown-wrap {
   position: relative;
 
@@ -48,8 +47,65 @@
 }
 
 
-
 .dropdown-wrap .dropdown-v > ul li a {
   display: block;
   padding: 8px 10px;
+}
+
+/* Public, User and Courses Dropdown
+----------------------------------*/
+.target-dropdown {
+
+  .dropdown-pull {
+    @include clearfix;
+  
+    #title-dd {
+      float: left;
+
+      .i {
+        margin-right: 3px;
+      }
+    }
+
+    .arrow {
+      float: right;
+      margin: 15px 0 0 5px;
+    }
+  }
+
+  .dropdown-v {
+    width: 180px;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .target-selector li label, .target-courses-selector li label {
+      display: block;
+      padding: 5px;
+      overflow: hidden;
+
+      .i-checked-16 {
+        display: none;
+        float: right;
+        margin: 4px 2px 0 0;
+      }
+
+      &.active .i-checked-16 {
+        display: block;
+      }
+  }
+
+  .target-selector li label {
+    padding: 8px;
+
+    .i-checked-16 {
+      margin: 0;
+    }
+  }
+
+  .return-dd {
+    padding: 8px;
+  }
 }

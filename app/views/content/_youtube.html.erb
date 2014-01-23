@@ -55,7 +55,7 @@
                 
           $('#content_killer<%= @typeo %>').append('<input id="<%= @typeo %>_contents_attributes_<%=@complex_id%>_content" name="<%= @typeo %>[contents_attributes][<%=@complex_id%>][content]" size="30" type="hidden" value="<%= vi.player_url%>">');      
                 
-          $('#choser<%= @typeo %>').append("<div class='appendClass' id='caller_<%=@complex_id%>'><a id='executable_youtube<%=@complex_id%>' href='<%=vi.player_url%>' target='_blank'><%= icon('youtube-asset-blue') %> <%= truncate( vi.player_url, omission: '...', length: 50 )%></a><a id='execute_youtube<%=@complex_id%>' class='cancel_link'>Borrar</a></div>");
+          $('#choser<%= @typeo %>').append("<div id='caller_<%=@complex_id%>' class='appendClass publication-asset'><a id='executable_youtube<%=@complex_id%>' href='<%=vi.player_url%>' target='_blank'><%= icon('youtube-asset-blue') %> <%= truncate( vi.player_url, omission: '...', length: 50 )%></a><a id='execute_youtube<%=@complex_id%>' class='cancel_link'>Borrar</a></div>");
                   
                 
           $('#execute_youtube<%=@complex_id%>').click(function() {

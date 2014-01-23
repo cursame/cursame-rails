@@ -21,7 +21,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :name, :placeholder=>'Titulo del cuestionario' %>
+          <%= f.text_field :name, :placeholder=>'Ejemplo: Numeros primos' %>
         </div>
       </div>
     </div>
@@ -71,11 +71,22 @@
   </div>
 	
   <div class="new-publication-footer">
-    <%= button_tag "Cancelar", :type => 'button', :class=>'input-button cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
-    
-    <%= f.submit "Crear Cuestionario",:class=>"btn btn-primary activable", :id => 'comment-post-form'%>
+
+    <ul class="list-buttons right fr">
+      <li>
+      <%= link_to "Cancelar", "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+      </li>
       
-    <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'public-dd', :extra_style => 'margin-top:4px' } %>
+      <li>
+        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :extra_style => 'margin-top:4px' } %>
+      </li>
+      
+      <li>
+        <span class="btn btn-primary input-btn">
+          <%= f.submit "Crear Cuestionario", :id => 'comment-post-form'%>
+        </span>
+      </li>
+    </ul>
   </div>
     
 <% end %>

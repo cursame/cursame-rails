@@ -3,7 +3,7 @@
 ----------------------------------*/
 
 #{$all-text-inputs}, textarea {
-  background: $white;
+  background-color: $white;
   border: 1px solid #ccc;
   border-radius: $radius;
   box-shadow: inset 0 1px 0 #fcfcfc;
@@ -19,26 +19,16 @@ textarea {
   resize: none;
 }
 
-.default-form{
-  
-  .file-input-box{
+input.red-placeholder, textarea.red-placeholder {
+  border-color: red;
+  background: #fff4f4;
 
-    .browse-button{
-      color: #999;
-      background-position: left;
-      @include border-radius-btn;
-      @include bg-upload-btn;
-      background-repeat: no-repeat;
-    }
-
-    .upload-input{
-      font-size: 1em;
-      cursor: pointer;
-      opacity:0;
-      -moz-opacity:0;
-      filter: alpha(opacity=0);
-    }
+  @include placeholder {
+    color: red;
   }
+}
+
+.default-form{
 
   .upload-label{
     background: #FFF;
@@ -110,7 +100,9 @@ textarea {
 
   // Date fields
   .date-input{
-    background: url('/assets/icons/calendar-mini.png') no-repeat #FFF right !important;
+    background-image: url('/assets/icons/calendar-mini.png');
+    background-repeat: no-repeat;
+    background-position: right center;
   }
 
   .percent-input{
@@ -190,11 +182,8 @@ textarea {
 }
 
 .survey-form-area-style{
-
   .survey-form {
-
     .request-field {
-
       .is-correct-label{
         cursor: pointer;
         color: #00B1C5;
@@ -216,10 +205,6 @@ textarea {
         color: #FFF;
         text-decoration: none;
       }
-    }
-
-    .add-response{
-      color: #919fb5;
     }
   }
 }

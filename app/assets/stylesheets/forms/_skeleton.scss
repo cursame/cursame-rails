@@ -10,25 +10,7 @@
     float: left;
   }
 
-  // Uploader
-  .file-input-box{
-    position: relative;
-    float: left;
-
-    .browse-button{
-      padding: 0px 9px 0px 24px;
-    }
-
-    .upload-input{
-      position:absolute;
-      top:0px;
-      left: 0px;
-      z-index:2;
-      width: 145px;
-      height: 35px;
-    }
-  }
-
+  // Uploade
   .upload-label{
     padding: 0px 5px 4px 5px;
     display: none;
@@ -189,10 +171,6 @@
         width: 45px;
         padding-left: 27px;
       }
-    }
-
-    .add-response{
-      float: right;
     }
   }
 }

@@ -172,6 +172,7 @@
     .new-publication-footer {
       padding: 10px;
       clear: both;
+      @include clearfix;
     }
   }
 
@@ -231,6 +232,16 @@
   }
 }
 
+.new-publication-upload {
+  position: relative;
+
+  #new_assets {
+    position: absolute;
+    top: -45px;
+    left: 10px;
+  }
+}
+
 /* Survey
 ----------------------------------*/
 .new-survey-questions {
@@ -249,7 +260,7 @@
         overflow: hidden;
 
         .question-input-field {
-          width: 283px;
+          width: 265px;
           padding-left: 0;
         }
 
@@ -275,6 +286,31 @@
       .add-aswer a {
         display: block;
         padding: 5px;
+      }
+    }
+  }
+}
+
+/* Publication Assets
+----------------------------------*/
+.look_atemp_conteny {
+  .choser {
+    margin-top: 5px;
+
+    .publication-asset {
+      padding: 3px 4px;
+      @include clearfix;
+
+      .cancel_link, .trash {
+        float: right;
+        display: none;
+      }
+
+      &:hover {
+
+        .cancel_link, .trash {
+          display: block;
+        }
       }
     }
   }

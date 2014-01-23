@@ -17,24 +17,29 @@
   </div>
 
   <div class="new-publication-footer">
-  	<%= link_to "Cancelar", "#", class: 'cancel-new-publication btn btn-secondary' %>
 
-    <%if !@user_show%>
-        
-      <% if @incourse != true && comment_id == nil %>
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :defaultClass => 'public-dd' } %>
-      <%else%>
+    <ul class="list-buttons right fr">
+      <li>
+      	<%= link_to "Cancelar", "#", class: 'cancel-post-form_tab btn btn-secondary' %>
+      </li>
 
-        <%= hidden_field_tag "commentable_type", 'Course'%>
-        <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
+      <% unless @user_show%>
+        <li>
+        <% if @incourse != true && comment_id == nil %>
+          <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :default_icon => 'public-new-publication' } %>
+        <%else%>
 
-      <%end%>
+          <%= hidden_field_tag "commentable_type", 'Course'%>
+          <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
 
-    <% end %>
-
-    <span class="btn btn-primary input-btn">
-      <%= submit_tag "Comentar", :class=>"activable", :id => 'comment-post-form' %>
-    </span>
+        <%end%>
+        </li>
+      <% end %>
+      <li>
+        <span class="btn btn-primary input-btn">
+          <%= submit_tag "Comentar", :class=>"activable", :id => 'comment-post-form' %>
+        </span>
+      </li>
 
   </div>
 

@@ -25,7 +25,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title , placeholder: "Ejemp. Numero primos" %>
+          <%= f.text_field :title , placeholder: "Ejemplo: Numero primos" %>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_area :description, rows: 6, placeholder: "Descripción" %>
+          <%= f.text_area :description, rows: 6 %>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group upload-files-group-delivery" style="display: none;">
         <div class="form-group-label">
           <label>Archivos adjuntos</label>
         </div>
@@ -118,25 +118,22 @@
   </div>
     
   <div class="new-publication-footer">
-    <div>
-      <div class="submit-area"></div>
-
-      <%= button_tag "Cancelar", :type => 'button', :class=>'btn btn-secondary input-button cancel-post-form_tab', :onClick=>'removeSliderEvaluation();' , :id => 'cancel-post-form_tab' %>
-
-		
-      <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
-      
-      <span class="btn btn-primary input-btn">
-        <%= f.submit "Publicar", :id => 'comment-post-form'%>
-      </span>
-    </div>      
+    <ul class="list-buttons right fr">
+      <li>
+        <%= link_to "Cancelar", "", :class=>'btn btn-secondary cancel-post-form_tab', :onClick=>'removeSliderEvaluation();', :id => 'cancel-post-form_tab' %>
+      </li>
+      <li>
+        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication' } %>
+      </li>
+      <li>
+        <span class="btn btn-primary input-btn">
+          <%= f.submit "Publicar", :id => 'comment-post-form'%>
+        </span> 
+      </li>
+    </ul>
 
   <%else%>
-
-      <div>
-			 <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn activable"%>        
-		  </div>
-
+    <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn activable"%>
   <%end%>
   </div> 
           
@@ -144,7 +141,7 @@
 <% end %>
 
 <% if @active_edit == false %>
-  <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId} %>
+  <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId, :typeo => 'delivery'} %>
 <%else%>
 
   <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
