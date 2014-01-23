@@ -1,42 +1,27 @@
 
 /* Courses Skeleton
 ----------------------------------*/
-.course{
-  float: left;
-  height: 250px;
-  width: 218px;
-  margin: 10px 4px;
-  float: left;
-  @include border-radius;
-
-  h2{
-    float: left;margin: 10px 0 5px 0px;
-  }
-
-  .thumbnail{
+.courses-list {
+  .course {
+    float: left;
+    margin: 10px;
     width: 218px;
-    overflow: hidden;
   }
-}
 
-.hidden-text{  
-  white-space: nowrap;
-  width: 79%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  .course-cover {
+    margin: -1px;
+    position: relative;
 
-h4{
-  font-size:14px;
-}
+    .course-cover-image {
+      overflow: hidden;
+      height: 100px;
 
-h3{
-  font-size:18px;  
-}
-
-.course li {
-	padding-left: 20px;
-	margin: 5px;
+      &:after {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
 
 #crud{

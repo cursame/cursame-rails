@@ -1,6 +1,7 @@
 
+
 <div class="section-header">
-  <div class="wrapper">
+  <div class="wrapper spaced">
 
     <div class="section-header-title w-subnav">
       <div class="section-icon">
@@ -15,7 +16,7 @@
       </div>
     </div>
 
-    <div class="fr">
+    <div class="section-header-actions">
       <ul class="list-buttons right">
         <li>
           <%= form_tag courses_path, :method => 'get' do %>
@@ -33,68 +34,76 @@
   </div>
 </div>
 
-<span style="position: relative!important; text-transform: uppercase; display: block!important; clear: both!important; margin: 35px auto 0 auto!important;
-width: 700px!important; text-align: center!important; padding-top: 30px!important;"><%= notice %></span>
- 
-<% @cc = @courses.count %>
-<% if @cc == 0%>
-  <b><%= t('No hay resultados en la busqueda')%> </b>
-<%end%>
+<span><%= notice %></span>
 
-<div id="courses-list">
-  <% @courses.each do |course| %>
-    <div class="course">
-      <div class="thumbnail">
-        <%= link_to image_tag('/assets/courses.png'), course %>
-      </div>
-      <div id="crud"> 
-        <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
-        <% @course_id = course.id%>
-        <% if @correspond %>
+<div class="wrapper">
+  <% @cc = @courses.count %>
+  <% if @cc == 0%>
+    <b><%= t('No hay resultados en la busqueda')%> </b>
+  <%end%>
 
-          <% if @correspond.accepted == true %>
-            <div id="uik_<%=@correspond.id%>"> 
-            <%= link_to image_tag('unsuscript.png'),  @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true%>
-            </div>
-
-            <% if @correspond.owner == true %>
-              <div id="usk_<%=@correspond.id%>">
-                <%= link_to image_tag('/assets/icons/edit.png'), edit_course_path(course) %>
-                <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
-              </div>
-            <%end%>
-  				<%else%>
-            <span>Aún no has sido aceptado en este curso</span>
-  				<%end%>
-        
-        <% else %>
-          <div id="hidden-<%= course.id %>">
-            <% if course.public_status == "Private" %>
-              <%= render partial: "courses/members_in_courses/private_course"%>|
-            <% else %>   
-              <%= render partial: "courses/members_in_courses/public_course"%>|  
+  <div class="courses-list">
+    <% @courses.each do |course| %>
+      <div class="course">
+        <div class="course-cover">
+          <div class="course-cover-image">
+            <%= link_to course_path(course.id) do %>
+              <% if course.coverphoto.file.nil? %>
+                <%= image_tag "courses.png", alt: "corse" %>
+              <% else %>
+                <%= image_tag course.coverphoto.mosaic %>
+              <% end %>
             <% end %>
           </div>
-        <% end %>
-      </div>
-       
-      <div id="course-title">
-        <%= truncate("#{course.title}", :omission => "...", :length => 30) %>
-      </div>
+        </div>
+        <div id="crud"> 
+          <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
+          <% @course_id = course.id%>
+          <% if @correspond %>
 
-      <div id="course-info">
-        <div class="hidden-text">
-          <li id="silabus" class="silabus">
-            <%= truncate("#{course.silabus}", :omission => "...", :length => 30) if course.silabus? %>
-          </li> 
+            <% if @correspond.accepted == true %>
+              <div id="uik_<%=@correspond.id%>"> 
+              <%= link_to image_tag('unsuscript.png'),  @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true%>
+              </div>
+
+              <% if @correspond.owner == true %>
+                <div id="usk_<%=@correspond.id%>">
+                  <%= link_to image_tag('/assets/icons/edit.png'), edit_course_path(course) %>
+                  <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
+                </div>
+              <%end%>
+    				<%else%>
+              <span>Aún no has sido aceptado en este curso</span>
+    				<%end%>
+          
+          <% else %>
+            <div id="hidden-<%= course.id %>">
+              <% if course.public_status == "Private" %>
+                <%= render partial: "courses/members_in_courses/private_course"%>|
+              <% else %>   
+                <%= render partial: "courses/members_in_courses/public_course"%>|  
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+         
+        <div id="course-title">
+          <%= truncate("#{course.title}", :omission => "...", :length => 30) %>
         </div>
 
-        <li class="finishdate">
-          <%= course.finish_date if (course.finish_date != nil)  %>
-        </li>
-      </div>
-    </div>
-  <% end %>
-</div>
+        <div id="course-info">
+          <div class="hidden-text">
+            <li id="silabus" class="silabus">
+              <%= truncate("#{course.silabus}", :omission => "...", :length => 30) if course.silabus? %>
+            </li> 
+          </div>
 
+          <li class="finishdate">
+            <%= course.finish_date if (course.finish_date != nil)  %>
+          </li>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 

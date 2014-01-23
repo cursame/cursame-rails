@@ -2,7 +2,7 @@ $(function() {
 
   /* Adjuts the sidebar components depending on the window Height
   ----------------------------------*/
-  var sidebar       = $('.global-sidebar'),
+  var sidebar       = $('div.global-sidebar'),
       user          = sidebar.find('div.user'),
       nav           = sidebar.find('div.sidebar-navigation'),
       courses       = sidebar.find('div.sidebar-courses'),
@@ -15,8 +15,10 @@ $(function() {
       target1       = courses.find('.sidebar-section-main'),
       target2       = chat.find('.sidebar-section-main');
 
+  var userHeader    = $('#user_nav');
+
   function adjustSidebar() {
-    var winHeight   = $(window).height();
+    var winHeight = $(window).height();
 
     availableHeight = winHeight - staticHeight - coursesHeader - chatHeader;
     sidebar.height(winHeight);
@@ -25,10 +27,25 @@ $(function() {
     target2.height(availableHeight/2)
   }
 
+  function adjustUserHeader() {
+    var winWidth      = $(window).width(),
+        sidebarWidth  = sidebar.outerWidth(),
+        finalWidth    = winWidth - sidebarWidth;
+
+    if ( finalWidth > 720 ) {
+      userHeader.width( finalWidth );
+    } else {
+      userHeader.width( 720 );
+    }
+
+  }
+
   adjustSidebar();
+  adjustUserHeader();
 
   $(window).on('resize', function() {
     adjustSidebar();    
+    adjustUserHeader();
   });
 
 });

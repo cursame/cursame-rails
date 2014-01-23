@@ -1,40 +1,28 @@
 
 /* Courses Skin
 ----------------------------------*/
-.course{
-  float: left;
-  background: #f3f3f3;
-  border: $border-box;
-  @include border-radius;
+.basic-container-style {
+  background-color: $white;
+  border-radius: $radius;
+  border: 1px solid #ccc;
+}
 
-  h2{
-    font-size:24px;
-    color: #444444;
-    font-family: HelvLight;
+.courses-list {
+  .course {
+    @extend .basic-container-style;
   }
 
-  .thumbnail{
-    vertical-align: middle;
- }
-}
+  .course-cover {
+    .course-cover-image {
+      border-radius: $radius $radius 0 0;
 
-.hidden-text{  
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-h4 {
-  font-size:14px;
-} 
-
-h3 {
-  font-size:18px;  
-}
-
-.al {
-  font-size:18px;  
-  background:none;
-  border:none; 
+      &:after {
+        content: "";
+        border-radius: $radius $radius 0 0;
+        box-shadow: inset 0 0 1px rgba(0,0,0,.5);
+      }
+    }
+  }
 }
 
 .course-banner-profile {

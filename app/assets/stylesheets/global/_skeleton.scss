@@ -8,7 +8,7 @@
 .topbar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   height: 50px;
   z-index: 100;
   width: 100%;
@@ -46,10 +46,11 @@
   width: 720px;
   margin: 0 auto;
   @include clearfix;
-}
 
-.space-sidebar {
-  padding-left: 230px;
+  &.spaced {
+    width: 700px;
+    padding: 0 10px;
+  }
 }
 
 .wrap {
@@ -263,6 +264,11 @@
         padding-top: 0;
       }
     }
+  }
+
+  .section-header-actions {
+    float: right;
+    margin-top: 10px;
   }
 }
 
