@@ -25,7 +25,7 @@ class ContentController < ApplicationController
           @variable = params[:search_wikipedia]
           @typeo = params[:typeo]
          
-          @mw=  JSON.parse(open("http://en.wikipedia.org/w/api.php?format=json&action=query&titles=#{ @variable }&prop=revisions&rvprop=content").read)
+          @mw=  JSON.parse(open("https://es.wikipedia.org/w/api.php?format=json&action=query&titles=#{ @variable }&prop=revisions&rvprop=content").read)
             # no requiere generate sesion se deja anotado el login en caso de que sea necesario un call with ajax
             #login = mw.login('Cursame', '12345678')
             puts = "#{@mw}"

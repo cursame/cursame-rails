@@ -15,6 +15,22 @@ class CoursesController < ApplicationController
     end
 
   end
+  
+  def my_courses
+    @courses = current_user.courses
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def all_courses
+    @courses = Course.where(:network_id => current_network.id, :active_status => true).search(params[:search])
+    respond_to do |format|
+      format.js 
+    end
+
+  end
 
   # GET /courses/1
   # GET /courses/1.json

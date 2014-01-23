@@ -82,6 +82,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
+  
 
   resources :courses do
     resources :assignments
@@ -95,6 +96,12 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
       post :assigment
     end
   end
+
+  # metodos de filtrado en cursos
+
+  get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
+  get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
+
 
 # Awaiting_confirmation
   get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
