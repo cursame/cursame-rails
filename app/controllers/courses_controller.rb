@@ -15,6 +15,41 @@ class CoursesController < ApplicationController
     end
 
   end
+  
+  def my_courses
+    @courses = current_user.courses
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def all_courses
+    #### coloca los cursos a los que no pertenezco
+    comparative_courses = []
+    course_in_network = []
+    
+   ####### obtiene los ids de lo que pertenezco y lo que no y los compara
+    current_user.courses.each do |c|
+      comparative_courses.push(c.id)
+    end
+    
+    current_network.courses.each do |cs|
+      course_in_network.push(cs.id)
+    end
+    
+    ids =  course_in_network.reject{|mycourses| mycourses !=  comparative_courses }
+
+    #puts "******************#{comparative_courses}"
+    #puts "******************#{course_in_network}"
+    #puts "#{ids}"
+
+     @courses = Course.where(:id => ids ,:network_id => current_network.id,:active_status => true)
+    respond_to do |format|
+      format.js 
+    end
+
+  end
 
   # GET /courses/1
   # GET /courses/1.json
