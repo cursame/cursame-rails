@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
      @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
+    #alfredot_rifa_free_pro_forever
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
@@ -271,8 +272,9 @@ class CoursesController < ApplicationController
   end
 
   
-  def libray
-    @course = current_course
+  def library
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
   end
   
   def about

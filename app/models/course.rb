@@ -33,14 +33,14 @@ class Course < ActiveRecord::Base
   # validates_presence_of :delivery_param_evaluation
   #validates_presence_of :network_id
 
-  # accepts_nested_attributes_for :course_files
+  #accepts_nested_attributes_for :course_files
   
 
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
   :created_at, :updated_at, :public_status,
   :avatar, :coverphoto, :delivery_id,
   :survey_param_evaluation, :delivery_param_evaluation,
-  :network_id, :active_status
+  :network_id, :active_status, :course_files
 
 
   #para los likes
