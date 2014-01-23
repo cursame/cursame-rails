@@ -62,23 +62,23 @@
       margin-top: 32px;
     }
   }
-}
 
-#crud{
-	position: relative;
-	top: 0px;
-	float: right;
-	margin: -130px 10px 0 0; 
-}
+  .course-description {
+    padding: 8px 10px;
+    height: 80px;
+  }
 
-#course-title{
-  width: 188px;
-  float: left;
-  margin: 10px 6px;
-}
+  .course-detail-list {
+    padding: 10px;
 
-#course-info{
-  padding: 10px;
+    .course-detail {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 .courses-title-h2{

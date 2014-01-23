@@ -48,4 +48,18 @@ $(function() {
     adjustUserHeader();
   });
 
+
+  /* Add active class tu subnav links*/
+  $('.section-subnav li > a').on('click', function() {
+    var $this = $(this),
+        nav   = $this.closest('.section-subnav');
+
+    nav.children('li').removeClass('active');
+    $this.parent().addClass('active');
+  });
+
+  $('.search-courses').on('submit', function() {
+    $('.section-subnav li').removeClass('active');
+  });
+
 });

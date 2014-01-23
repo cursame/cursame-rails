@@ -75,22 +75,25 @@
             <% end %>
           </div>
         </div>
-         
-        <div id="course-title">
-          <%= truncate("#{course.title}", :omission => "...", :length => 30) %>
+        
+        <div class="course-description">
+          <%= link_to course_path(course.id) do %>
+            <h6><%= truncate course.title, :omission => "...", :length => 60 %></h6>
+          <% end %>
+          <%= truncate course.silabus, :omission => "...", :length => 60 if course.silabus? %>
         </div>
-
-        <div id="course-info">
-          <div class="hidden-text">
-            <li id="silabus" class="silabus">
-              <%= truncate("#{course.silabus}", :omission => "...", :length => 30) if course.silabus? %>
-            </li> 
+        
+        <div class="course-detail-list">
+          <div class="course-detail">
+            <span class="meta-info"><i class="i i-calendar-12"></i> Finaliza:</span>
+            <p><%= course.finish_date.to_formatted_s(:long) unless course.finish_date.nil? %></p>
           </div>
-
-          <li class="finishdate">
-            <%= course.finish_date if (course.finish_date != nil)  %>
-          </li>
+          <div class="course-detail clearfix">
+            <span class="meta-info"><i class="i i-profesor-12"></i> Profesor:</span>
+            <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name }.first %></p>
+          </div>
         </div>
+
       </div>
     <% end %>
   </div>

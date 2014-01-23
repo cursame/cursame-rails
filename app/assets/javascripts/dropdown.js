@@ -2,12 +2,12 @@ $(function() {
 
   /* Dropddowns
 ----------------------------------*/
-  $('.dropdown-pull').click( function() {
-    var that      = $(this),
-        holder    = that.parent(),
+  $('body').on( 'click', 'div.dropdown-pull', function() {
+    var $this      = $(this),
+        holder    = $this.parent(),
         dropdown  = holder.children('.dropdown-v');
 
-    $('.dropdown-v').hide();
+    $('div.dropdown-v').hide();
     dropdown.show();
     return false;
   });

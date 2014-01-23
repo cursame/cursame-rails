@@ -32,8 +32,19 @@ a {
   text-transform: uppercase;
 }
 
+.meta-info {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11px;
+  color: $meta-color;
+}
+
 /* Titles
 ----------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
 h1 {
   font-size: 22px;
 }
@@ -162,6 +173,10 @@ h6 {
 .section-header {
   background-color: #fcfcfc;
   border-bottom: 1px solid #c7cdcf;
+
+  .section-subnav > li.active > a {
+    color: $meta-color;
+  }
 }
 
 /* Notifications and Messages

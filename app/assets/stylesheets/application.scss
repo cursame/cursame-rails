@@ -11,6 +11,8 @@
 @import "reset";
 
 @import "base";
+@import "base_v4";
+
 @import "appli";
 @import "components";
 @import "friendships";
@@ -21,8 +23,6 @@
 @import "notifications";
 @import "simplespantooltip";
 @import "style";
-
-@import "base_v4";
 
 // Global
 @import "global/skeleton";

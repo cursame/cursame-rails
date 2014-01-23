@@ -35,6 +35,12 @@
         color: #fff;
       }
     }
+
+    .course-detail-list {
+      background: #fcfcfc;
+      border-top: 1px solid #d6d6d6;
+      border-radius: 0 0$radius $radius;
+    }
   }
 }
 
@@ -42,28 +48,6 @@
   background-image: url("/assets/bannerprofile.png");
 }
 
-.course li {
-  list-style: none;
-  color: #444444;
-}
-
-#crud{
-  opacity: 0.5;
-  text-align: right;
-}
-
-#course-title{
-  font-size:14px;
-  color: #444444;
-  font-family: helvetica;
-  text-align: center;
-  font-weight: bold;
-}
-
-#course-info{
-  font-size: 12px !important;	
-}
-	
 .courses-title-h2 {
   font-size: 30px;
   font-family: helvetica;

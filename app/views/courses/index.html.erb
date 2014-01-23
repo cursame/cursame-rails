@@ -8,8 +8,12 @@
       <div class="section-title">
         <h1>Cursos</h1>
         <ul class="section-subnav">
-          <li><%= link_to "Mis cursos", my_courses_path, :remote => true %></li>
-          <li><%= link_to "Todos los cursos", all_courses_path, :remote => true %></li>
+          <li class="active">
+            <%= link_to "Mis cursos", my_courses_path, :remote => true %>
+          </li>
+          <li>
+            <%= link_to "Todos los cursos", all_courses_path, :remote => true %>
+          </li>
         </ul>
       </div>
     </div>
