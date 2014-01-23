@@ -69,7 +69,13 @@ class CoursesController < ApplicationController
     end
   end
 
-
+  def courses_search_ajax
+    @member = MembersInCourse.new
+    @courses = Course.search(params[:activiesearch])
+    respond_to do |format|
+      format.js 
+    end
+  end
   # GET /courses/1
   # GET /courses/1.json
   def show

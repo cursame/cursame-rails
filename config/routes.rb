@@ -101,7 +101,10 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
   get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
+  
+  #search ajax courses
 
+  match 'search_course', :to => "courses#courses_search_ajax", :as => :courses_search_ajax
 
 # Awaiting_confirmation
   get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
