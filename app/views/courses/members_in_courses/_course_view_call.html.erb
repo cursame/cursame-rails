@@ -5,7 +5,7 @@
   <%end%>
 
   <div class="courses-list">
-    <% @courses.each do |course| %>
+    <% courses.each do |course| %>
       <div class="course">
         <div class="course-cover">
           <div class="course-cover-image">
@@ -41,9 +41,9 @@
           <% else %>
             <div id="hidden-<%= course.id %>">
               <% if course.public_status == "Private" %>
-                <%= render partial: "courses/members_in_courses/private_course"%>|
+                <%= render partial: "courses/members_in_courses/private_course", :locals => {:member => member, :course_id => @course_id}%>|
               <% else %>   
-                <%= render partial: "courses/members_in_courses/public_course"%>|  
+                <%= render partial: "courses/members_in_courses/public_course", :locals => {:member => member, :course_id => @course_id}%>|  
               <% end %>
             </div>
           <% end %>
