@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
   def my_courses
     @member = MembersInCourse.new
 
-    @courses = current_user.courses
+     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     respond_to do |format|
       format.js
     end
