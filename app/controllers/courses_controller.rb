@@ -71,7 +71,9 @@ class CoursesController < ApplicationController
 
   def courses_search_ajax
     @member = MembersInCourse.new
-    @courses = Course.search(params[:activiesearch])
+    @search = params[:activiesearch]
+    @courses = Course.search(@search)
+
     respond_to do |format|
       format.js 
     end
