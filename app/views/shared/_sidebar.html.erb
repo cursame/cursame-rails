@@ -96,7 +96,7 @@
           <li>
             <%= link_to course_path(c.id) do %>
               <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
-              <%= c.title %>
+              <%= truncate( c.title, omission: "...", length: 28) %>
             <% end %>
           </li>
         <%end%>
@@ -121,7 +121,7 @@
                   <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
                 <%end%>
 
-                <%= truncate("#{course.title}", :omission => "...", :length => 30) %>
+                <%= truncate("#{course.title}", :omission => "...", :length => 28) %>
               <% end %>
             </li>
           <%end%>

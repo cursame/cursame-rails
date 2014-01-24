@@ -84,6 +84,7 @@ class HomeController < ApplicationController
   def upvote
       @publication = Wall.find(params[:id])
       @publication.publication.liked_by current_user
+      
       respond_to do |format|
        #format.html
        format.js

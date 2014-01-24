@@ -35,9 +35,15 @@
   &.cuestionario .publication-content {
     background: url('publication-covers/survey.jpg');
   }
+
+  &.curso .publication-content {
+    background: url('publication-covers/course.jpg');
+  }
   
   .publication-main {
     .publication-content {
+      background-size: cover;
+
       h6 {
         color: $white;
 
@@ -60,7 +66,7 @@
     }
     
     .academic-content-icon .i {
-      vertical-align: -25px;
+      vertical-align: -24px;
     }
 
     .academic-content-desc {

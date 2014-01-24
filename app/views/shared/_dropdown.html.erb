@@ -64,7 +64,7 @@
                   <label for="<%= random_id.to_s + course.id.to_s %>">
                     <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
                     <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
-                    <%= course.title %>
+                    <%= truncate( course.title, omission: "...", length: 21) %>
                     <%= icon('checked-16') %>
                   </label>
                 </li>

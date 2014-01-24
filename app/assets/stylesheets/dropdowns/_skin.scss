@@ -48,6 +48,10 @@
 .target-dropdown {
 
   .dropdown-pull {
+    #title-dd {
+      font-weight: bold;
+    }
+
     .arrow {
       @include triangle(8px, gray, down);
     }
