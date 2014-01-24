@@ -106,12 +106,24 @@ $(function() {
 		var channelType = data.channel.channel_name.split('course_channel_');
 		url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;		
 
-		notification = ['<li class="unread">',
-			'<a href="' + url + '" data-remote="true">Conversar</a></br>',
-			'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
-			'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
-			'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
-			'</li>'];
+		// notification = ['<li class="unread">',
+		// 	'<a href="' + url + '" data-remote="true">Conversar</a></br>',
+		// 	'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
+		// 	'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
+		// 	'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
+		// 	'</li>'];
+
+        notification = [
+            '<li class="unread">',
+            '<div class="activity-feed">',
+            '<a title="Conversar" href="' + url + '" data-remote="true">',
+            '<div class="activity-feed-author">',
+            '<img src="' + data.sender.avatar.modern.url + '" class="avatar avatar-45"></div>',
+            '<div class="activity-feed-main">',
+            '<h6>' + data.sender.first_name+' '+ data.sender.last_name + '</h6>',
+            '<p>' + truncate(data.message.mesage, 88, "...") +'</p>',
+            '<span class="meta">' + jQuery.timeago(data.message.created_at) + '</span></div></a></div></li>'
+        ];
 
         // reproducimos sonido cuando hay mensaje
         playSound();

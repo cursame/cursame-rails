@@ -235,7 +235,7 @@
 /* Sections Pages
 ----------------------------------*/
 .section-header {
-  padding: 15px 0;
+  padding: 20px 0;
   
   .section-header-title {
     float: left;
@@ -247,7 +247,7 @@
 
     .section-title {
       margin-left: 55px;
-      padding-top: 6px;
+      padding-top: 11px;
     }
 
     .section-subnav {
@@ -272,124 +272,9 @@
   }
 }
 
-/* Notifications and Messages
-----------------------------------*/
-#box-notifications, #box-messages-notifications{
-  clear: both;
-  float: left;
-  margin: 34px 0 0 10px;
-  position: absolute;
-  margin-top: 34px;
-  display: block;
-    
-  &.avatar{
-    margin-left: 3px;
-    position: absolute;
-    margin-top: 4px;
-    margin-right: 8px;
-    float: left;
-  }
-
-  &.comment-text{
-    width: 300px;
-    height: 100%;
-    float: left;
-    margin: 5px 0px 10px 11px;
-
-    &.header{
-      line-height: 23pt;
-      padding-bottom: 6px;
-
-      &.top-null-image{
-        width: 60px;
-        height: 10px;
-        float: left;
-      }
-
-      &.date{
-        float: right;
-        margin-right: 6px;
-      }
-    }
-
-    & .content{
-      padding: 6px 10px 5px 10px;
-      overflow: auto;
-      overflow-x: hidden;
-      height: 400px;
-
-      & li{
-        padding: 10px 0 10px 0;   
-        min-height: 50px;
-      }
-
-      &.avatar-notifications{
-        float: left;
-        margin-right: 10px;
-      }
-
-      &.first{
-        margin-top: -5px;
-      }
-
-      &.last{
-        border: none;
-      }
-    }
-           
-    &.video{
-      padding: 10px;
-    }
-    
-    &.title-discusion{
-      margin-bottom: 10px;
-    }
-    
-    &.text-discusion{
-      padding-left: 10px;
-    }
-    
-    &.footer{
-      height: 25px;
-      float: left;
-      width: 100%;
-      padding-top: 6px;
-
-      &.icon{
-        float: left;
-        margin: 4px 0px 0px 5px;
-      }
-
-      &.labels{
-        float: right;
-        margin: 4px 5px 0px 10px;
-      }
-    }
-  }
-
- 
-  &.header{
-    height: 25px;
-    width: 100%;
-
-    &.name{
-      color: #333;
-    }
-  }
-
-  &.general-cir-discusion{
-    width: 35px;
-    height: 35px;
-    float: left;
-  }
-
-  &.arrow-top {
-    width: 14px;
-    height: 9px;
-    position: absolute;
-    margin:-9px 0px 0px 145px;
-    z-index: 20;
-  }
+.sc-margined {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Menu User

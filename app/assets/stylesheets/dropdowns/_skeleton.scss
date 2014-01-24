@@ -119,3 +119,48 @@
 .course-actions .dropdown-pull {
     padding: 10px 10px 5px 10px;
 }
+
+/* Activity Dropdown
+----------------------------------*/
+.activity-dropdown-wrap {
+  .activity-dropdown {
+    width: 320px;
+    display: none;
+  }
+  
+  .activity-dropdown-title {
+    padding: 5px 10px 6px 10px;
+  }
+
+  .activity-dropdown-content {
+    height: 300px;
+    overflow-y: scroll;
+  }
+
+  .activity-dropdown-footer {
+    margin-top: -1px;
+    position: relative;
+
+    > a {
+      display: block;
+      padding: 5px 10px;
+    }
+  }
+
+  .activity-feed {
+
+    > a {
+      padding: 10px;
+      display: block;
+      @include clearfix;
+    }
+
+    .activity-feed-author {
+      float: left;
+    }
+
+    .activity-feed-main {
+      margin-left: 55px;
+    }
+  }
+}
