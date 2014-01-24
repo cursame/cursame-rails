@@ -266,7 +266,6 @@ class CoursesController < ApplicationController
     else
       if @member.owner == true || current_role == "admin"
       else
-        redirect_to course_path(@course)
       end
     end
   end
