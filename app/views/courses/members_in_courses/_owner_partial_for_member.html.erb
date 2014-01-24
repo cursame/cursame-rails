@@ -4,10 +4,8 @@
 
   <%@course.members_in_courses.each do |member|  %>
 
-      <%= member_it = agil_find_user(findX="#{member.user_id}", byX='id') %>
-      <div id="imgge" style="width:170px;height:170px;background:#ddd; overflow: hidden;">
-          <span class="imgge_gradient"></span>
-          <%= avatar('user', '150', "no", "#{member.user_id}", "avatar avatar-24", "no", "no") %>
+      <% member_it = agil_find_user(findX="#{member.user_id}", byX='id') %>
+          <%= avatar('user', '150', "no", "#{member.user_id}", "avatar", "no", "no") %>
       </div>
       <h3 style="background-color: rgb(222, 222, 222);">
           <%= link_to "#{truncate(member_it.name, :omission => "...", :length => 35)}", show_user_path(member_it.personal_url) %>
