@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   #metodo de acceso a los avatares
 
   helper_method :avatar
-  
+  helper_method :agil_find_user
   # helper methos de fechas 
 
   helper_method :es_month
@@ -614,6 +614,16 @@ class ApplicationController < ActionController::Base
       end
         when esday == 'Week'
         @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
+    end
+  end
+  
+  ###### metodo para encontrar un usuario de manera facil ######
+  def agil_find_user(findX, byX='id')
+    case 
+      when byX == 'id'  
+       @user = User.find_by_id("#{findX}")
+      when byx == 'personal_url'
+       @user = User.find_by_perosnal_url("#{findX}")
     end
   end
 

@@ -2,144 +2,34 @@
 		<h2 class="courses-title-h2" style="width: 800px;">Miembros del curso: <%= @course.members_in_courses.count %> </h2>
 			<!-- <div style="float:right; padding-top: 10px;"><%= link_to "Regresar al curso ", course_path(@course.id)%></div> -->
 </div>
+<scirpt src="/assets/course_members.js" ></scirpt>
 
 
-<% if current_role == "admin"%>
-<% if @member.owner == true%>
-<%else%>
-<%@course.members_in_courses.each do |member|  %>
-
-  <div class="everymbrm membersCurse">
-       <% @members = User.find_by_id(member.user_id) %>       
-       <%if @members == "nil"%>
-       <%else%>
-            <div id="imgge" style="width:170px;height:170px;background:#ddd;overflow: hidden;">
-            	<span class="imgge_gradient"></span>
-					<% if  @members.avatar.profile.blank? %>
-						<%= image_tag(@members.image_avatarx)%>
-                    <%else%>
-						<%= image_tag(@members.avatar.profile)%>
-					<%end%>
-             </div>
-             <h3>
-             	<%= link_to  "#{@members.name} perfil", show_user_path(@members.personal_url) %>
-             </h3>
-      <%end%>
-  </div>
-    
-<%end%>
-<%end%>    
-<%end%>
-
-<!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
-<div class="cmembers">
-<% if  @course.members_in_courses.count > 0 %>
-
-	<!--   
-  <div class="pndts">
-  	<h1>Pendientes de Aprobacion: <%= @course.pendings%></h1>
-  </div>
-    -->
-
-
-    <%@course.members_in_courses.each do |member|  %>
-        <%if @members == "nil"%>
-        <%else%>
-             
-                    <% @members = User.find_by_id(member.user_id) %>
-                    <% @member = MembersInCourse.find_by_user_id_and_course_id(member.user_id, current_course.id)%>
-                <div class="everymbrm membersCurse" id="usk_<%=@member.id%>">
-                <!--coloca la imagen y el nombre-->
-       
-
-				<div id="imgge" style="width:170px;height:170px;background:#ddd; overflow: hidden;">
-					<span class="imgge_gradient"></span>
-						<% if  @members.avatar.profile.blank? %>
-							<%= image_tag(@members.image_avatarx)%>
-						<%else%>
-							<%= image_tag(@members.avatar.profile)%>
-						<%end%>
-				</div><!-- ends imgge -->
-				  
-        <h3 style="background-color: rgb(222, 222, 222);">
-        	<%= link_to "#{truncate(@members.name, :omission => "...", :length => 15)}", show_user_path(@members.personal_url) %>
-        </h3>
-             
-	     <div class="hoverShowEdit">
-	             <center>
-               
-                <%if @member.accepted != true%>
-                <!--el usuario se mustra de esta manera cuando no ha sido aceptado-->
-                    <div class="nameUser"><%= form_for @member, :remote => true do |fcm| %></div>
-                        <div class="nonAce">
-                          <div class="helptext" style="height:16px!important;height:35px!important;">
-                          	<%=  fcm.check_box :accepted, :onclick => 'submit()'  %><%= "Aceptar a este usuario en el curso."%>
-                          </div>
-                          <div class="addfriend" style="margin-top: 10px; text-align: center;">
-                          	<%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
-						  </div>
-                    </div><!-- ends nonAce -->
-                    </div>
-                    <%end%>
-                <%else%>
-        
-                <!--cuando un usuario es owner se le muestra la caja de permisos de adminitrador el permiso de administrador lo adquiere el usuario que crea el curso-->
-                <% if @member.owner == true %>
-                    <div class="nameUser"><%= form_for @member, :remote => true do |owner|%></div>
-                    <div class="helptext">
-                       <div class="admin-settings-selector-true-admin" style="width:30px; height:30px; cursor:pointer;"><%= image_tag('icons_for_admin/settings.png')%></div>
-                       
-                      <div class="admin-settings-admin" style = "color:#FFF; display:none;" > <%= owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer quitar los permisos de administrador de curso a este usuario, el ya no podrá editar nada de este curso?'  %> <%= "Administrador" %></div>
-                    </div>
-                      <script>
-                        $('.admin-settings-selector-true-admin').click(function(){
-                            $('.admin-settings-admin').toggle( "slow", function() {
-                              });
-                         });
-                      </script>
-                <%end%>
-             
-                <%else%>
-                    <div class="nameUser"><%= form_for @member, :remote => true do |owner|%></div>
-                    <div class="admin-settings-selector-no-admin"style="width:30px; height:30px;  cursor:pointer;"><%= image_tag('icons_for_admin/settings.png')%></div>
-                    <div style = "color:#FFF; display:none;" class="admin-settings"><%= owner.check_box :owner, :onclick => 'submit()', confirm: '¿Estas seguro de querer agregar los permisos de administrador de curso a este usuario, el podrá editar el curso?'  %>
-                        <%= "No es administrador"%></div>
-                <%end%>
-             <%end%>
-             
-             <script>
-             
-             $('.admin-settings-selector-no-admin').click(function(){
-                  $('.admin-settings').toggle( "slow", function() {
-                  });
-             });
-             </script>
-
-            <!--el usuario se muestra de esta manera cuando ya ha sido aceptado-->
-
-		
-	                <div class="helptext" style="margin-bottom: 15px;">
-	                	<%= form_for @member, :remote => true do |fcm| %>
-	                	<%=fcm.check_box :accepted, :onclick => 'submit()' %><%= "Miembro"%>
-	                </div>
-	                <div class="addfriend" style="margin-top: 10px; text-align: center;">
-	                	<%= link_to 'Eliminar', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
-	                </div>
-	              </center>
-              </div>
-                
-                <%end%>
-            <%end%>
-     </div><!-- ends everymbrm -->
-     
-<%end%>
-<%end%>
+<% case %>
+  <% when current_role == "admin" %>
+    <% if @member.owner == true%>
+       <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
+     <%else%>
+       <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
+    <%end%>    
+  <% when current_role == "teacher" %>
+    <% if @member.owner == true%>
+       <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
+     <%else%>
+       <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
+    <%end%> 
+  <% when current_role == "student" %>
+    <% if @member.owner == true%>
+       <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
+     <%else%>
+       <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
+    <%end%> 
 <%end%>
 </div>
 
 
 	<script>
-		$('document').ready ( function() {
+		/*$('document').ready ( function() {
 			$('.everymbrm').find('h3 > a').css({ color: "#FFF" });
 			$('.everymbrm').find('h3').css({ color: "#FFF", background: "rgb(0, 102, 150)" });
 		});
@@ -175,7 +65,7 @@
 			    else if (ratio>pratio) css={width:'auto', height:'auto'};
 		    else css={width:'100%', height:'auto'};
 		    $(this).css(css);
-		});
+		});*/
 	</script>
 
 <!--
