@@ -57,6 +57,7 @@ class MembersInCourse < ActiveRecord::Base
             result += assignment.accomplishment.to_f * porcent_of_evaluation
           else
             result += 0
+          end
         else
           result += 0
         end
