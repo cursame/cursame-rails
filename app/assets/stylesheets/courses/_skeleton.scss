@@ -2,6 +2,9 @@
 /* Courses Skeleton
 ----------------------------------*/
 .courses-list {
+  margin: 10px 0;
+  @include clearfix;
+
   .course {
     float: left;
     margin: 10px;
