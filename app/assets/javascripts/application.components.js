@@ -199,7 +199,4 @@ DropDown.prototype = {
         return this.index;
     }
 }
-$(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-});
 

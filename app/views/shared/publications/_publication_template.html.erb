@@ -30,6 +30,7 @@
   if type == "Course"
     name = post.title
     content = post.silabus
+    tipo = 'Curso'
   end
 %>
 
@@ -109,8 +110,12 @@
           
           <% else %>
             <h6>
+              <% if type == 'Course'  %>
+                Nuevo curso se ha creado
+              <% else %>
+                <%= link_to user_name, show_user_path(personal_url) %>
+              <% end %>
 
-              <%= link_to user_name, show_user_path(personal_url) %>
               <% case type %>
               <% when "Discussion" %>
                 inicio una discussion
@@ -132,13 +137,19 @@
 
             <div class="academic-content">
               <div class="academic-action">
-                <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver <%= tipo %></a>
+                <% if type == 'Course' %>
+                  <%= link_to course_path(post.id), class: "btn btn-transparent btn-medium uppercase" do %>
+                    Ver <%= tipo %>                  
+                  <% end %>
+                <% else %>
+                  <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver <%= tipo %></a>
+                <% end %>
               </div>
               <div class="academic-content-icon">
                 <%= icon( tipo.to_s.downcase + '-publication') %>
               </div>
               <div class="academic-content-desc">
-                <h4><%= name %></h4>
+                <h4><%= truncate( name, omission: "...", length: 50) %></h4>
                 <% if type != "Survey" %>
                   <p><%= truncate( content, omission: "...", length: 70).html_safe %></p>
                 <% else %>

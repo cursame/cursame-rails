@@ -44,6 +44,10 @@
       height: 10px;
     }
   }
+
+  &.active > .dropdown-v {
+    display: block !important;
+  }
 }
 
 

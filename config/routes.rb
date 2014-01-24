@@ -74,6 +74,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   # colocando miembros en cursos
   resources :members_in_courses
+
+  get '/update_mc', :to => 'members_in_courses#update'
   # colocando course files
   resources :course_files , :defaults => { :format => 'js' }
   # metodos de manejo de cursos

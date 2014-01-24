@@ -2,6 +2,7 @@
 		<h2 class="courses-title-h2" style="width: 800px;">Miembros del curso: <%= @course.members_in_courses.count %> </h2>
 			<!-- <div style="float:right; padding-top: 10px;"><%= link_to "Regresar al curso ", course_path(@course.id)%></div> -->
 </div>
+<scirpt src="/assets/course_members.js" ></scirpt>
 
 
 <% case %>
@@ -28,7 +29,7 @@
 
 
 	<script>
-		$('document').ready ( function() {
+		/*$('document').ready ( function() {
 			$('.everymbrm').find('h3 > a').css({ color: "#FFF" });
 			$('.everymbrm').find('h3').css({ color: "#FFF", background: "rgb(0, 102, 150)" });
 		});
@@ -64,7 +65,7 @@
 			    else if (ratio>pratio) css={width:'auto', height:'auto'};
 		    else css={width:'100%', height:'auto'};
 		    $(this).css(css);
-		});
+		});*/
 	</script>
 
 <!--

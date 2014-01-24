@@ -1,20 +1,22 @@
 $(function() {
 
-  /* Dropddowns
+  /* Dropowns
 ----------------------------------*/
-  $('body').on( 'click', 'div.dropdown-pull', function() {
-    var $this      = $(this),
-        holder    = $this.parent(),
-        dropdown  = holder.children('.dropdown-v');
+  $('div.dropdown-pull').live( 'click', function() {
+    var $this    = $(this),
+        holder   = $this.closest('.dropdown-wrap'),
+        dropdown = holder.find('.dropdown-v');
 
     $('div.dropdown-v').hide();
     dropdown.show();
-    return false;
+    console.log("asdasd");
+
   });
 
 
   $('html').click(function(event) {
     $('.dropdown-v').hide();
+    $('.dropdown-wrap').removeClass('active');
   });
 
   $('.dropdown-v').click(function(e) {
