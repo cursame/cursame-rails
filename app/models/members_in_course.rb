@@ -53,7 +53,10 @@ class MembersInCourse < ActiveRecord::Base
         |result, (assignment,index)|
         porcent_of_evaluation = deliveries[index].porcent_of_evaluation.to_f/100.0
         if assignment
-          result += assignment.accomplishment.to_f * porcent_of_evaluation if assignment.accomplishment
+          if assignment.accomplishment
+            result += assignment.accomplishment.to_f * porcent_of_evaluation
+          else
+            result += 0
         else
           result += 0
         end
