@@ -2,9 +2,7 @@
   <div class="everymbrm membersCurse">
        <%if agil_find_user(findX="#{member.user_id}", byX='id') == "nil"%>
        <%else%>
-					<% if  agil_find_user(findX="#{member.user_id}", byX='id').avatar.profile.blank? %>
 						  <%= avatar('user', '150', "no", "#{member.user_id}", "avatar", "no", "no") %>
-					<%end%>
              </div>
              <h3>
              	<%= link_to  "#{agil_find_user(findX="#{member.user_id}", byX='id').name} perfil", show_user_path(agil_find_user(findX="#{member.user_id}", byX='id').personal_url) %>
