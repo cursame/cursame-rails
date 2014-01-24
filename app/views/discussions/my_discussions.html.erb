@@ -1,7 +1,18 @@
-<!-- contiene todas las deliveries mediante el wall del usuario -->
+<div class="section-header">
+  <div class="wrapper spaced">
+    <div class="section-header-title">
+      <div class="section-icon">
+        <%= icon('section-discussions') %>  
+      </div>
+      <div class="section-title">
+        <h1>Discusiones</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div id="timeline" class="tim">
-        <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+<div id="timeline" class="tim wrapper spaced sc-margined">
+  <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
 </div>
 
 <%= will_paginate(@wall) %>

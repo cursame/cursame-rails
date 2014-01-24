@@ -23,6 +23,10 @@ $(function() {
     e.stopPropagation();
   });
 
+  $('div.activity-dropdown-pull').on('click', function() {
+    
+  });
+
   /* Autoresize textareas
   ----------------------------------*/
   $('.autogrow').autosize();
