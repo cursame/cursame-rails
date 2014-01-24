@@ -74,7 +74,6 @@ class MembersInCoursesController < ApplicationController
       c = params[:checked]
       t = params[:type_update]
       @member_it = User.find_by_id(params[:member_it])
-      puts c
       case
         when t == 'acceptin' 
              case 
@@ -82,17 +81,17 @@ class MembersInCoursesController < ApplicationController
                  @members_in_course.accepted = true
                when c == 'undefined'
                  @members_in_course.accepted = false
+                 @members_in_course.owner = false
+
               end
         when t == 'ownerin' 
               case 
                when c == 'checked'
-                 @members_in_course.accepted = true
+                 @members_in_course.owner = true
                when c == 'undefined'
-                 @members_in_course.accepted = false
+                 @members_in_course.owner = false
               end
       end
-
-      puts  @members_in_course.accepted 
 
       @members_in_course.save
 
