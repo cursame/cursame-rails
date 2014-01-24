@@ -10,19 +10,19 @@
     <% if @member.owner == true%>
        <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
      <%else%>
-       <%= render partial: '/courses/members_in_courses/admin_partial_for_members', :locals => {:course => @course, :member => @member} %>
+       <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
     <%end%>    
   <% when current_role == "teacher" %>
     <% if @member.owner == true%>
        <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
      <%else%>
-       <%= render partial: '/courses/members_in_courses/admin_partial_for_members', :locals => {:course => @course, :member => @member} %>
+       <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
     <%end%> 
   <% when current_role == "student" %>
     <% if @member.owner == true%>
        <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
      <%else%>
-       <%= render partial: '/courses/members_in_courses/admin_partial_for_members', :locals => {:course => @course, :member => @member} %>
+       <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
     <%end%> 
 <%end%>
 </div>
