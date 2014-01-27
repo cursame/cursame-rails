@@ -1,14 +1,13 @@
 <% if current_user%>
 
   <!-- Notification -->
-  <div id="box-messages-notifications" class="activity-dropdown-wrap">
-  	<div class="activity-dropdown-pull">
-  		<h6>Mensajes</h6>
-  		<div class="chat-icon" id="messages-notifications-count">
-				<span id="" >0</span>
-		  </div>
+  <div id="box-messages-notifications" class="activity-dropdown-wrap dropdown-wrap">
+  	<div class="activity-dropdown-pull dropdown-pull">
+      <%= icon('activity-messages') %>
+  		<div id="messages-notifications-count" class="activity-counter">0</div>
   	</div>
-  	<div class="activity-dropdown">
+  	<div class="activity-dropdown dropdown-v right">
+      <i class="tip"></i>
   		<div class="activity-dropdown-title">
   			<h6>Mensajes</h6>
   		</div>
@@ -24,10 +23,12 @@
 			      	<div class="activity-feed">
 				      	<%= link_to url, :remote => true do %>
 				      		<div class="activity-feed-author">
-					        	<%= avatar('user', '45', "no", last_message.user.id, "avatar", "no", "no") %>
+                    <span class="avatar-holder">
+					        	  <%= avatar('user', '45', "no", last_message.user.id, "avatar", "no", "no") %>
+                    </span>
 					        </div>
 					        <div class="activity-feed-main">
-						        <h6><%= last_message.user.name %></h6>
+						        <h6><span class="as-link"><%= last_message.user.name %></span></h6>
 						        <p><%= sanitize last_message.mesage_html %></p>
 						        <span class="meta"><%=time_ago_in_words(last_message.created_at)%></span>
 					        </div>
