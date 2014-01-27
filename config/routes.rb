@@ -74,6 +74,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   # colocando miembros en cursos
   resources :members_in_courses
+
+  get '/update_mc', :to => 'members_in_courses#update'
   # colocando course files
   resources :course_files , :defaults => { :format => 'js' }
   # metodos de manejo de cursos
@@ -82,6 +84,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
+  
 
   resources :courses do
     resources :assignments
@@ -95,6 +98,15 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
       post :assigment
     end
   end
+
+  # metodos de filtrado en cursos
+
+  get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
+  get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
+  
+  #search ajax courses
+
+  match 'search_course', :to => "courses#courses_search_ajax", :as => :courses_search_ajax
 
 # Awaiting_confirmation
   get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
@@ -416,7 +428,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
    ####### tuas extras para el curso
 
    get '/courses/:id/about', :to => 'courses#about', :as => :about_course 
-   get '/library/:id/library', :to =>  'courses#library', :as => :library_in_course
+   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
 
    ###### ruta para crear super admins
 

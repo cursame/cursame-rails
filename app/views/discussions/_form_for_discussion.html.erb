@@ -24,7 +24,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title, placeholder: 'Ejemp. Numero Primos', minlength: 2 %>
+          <%= f.text_field :title, placeholder: 'Ejemplo: Numero primos', minlength: 2 %>
         </div>
       </div>
     </div>
@@ -60,20 +60,24 @@
 
   <div class="new-publication-footer">
     <% if @active_edit == false %>
-     
-    <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", onClick: 'removeSliderEvaluation();' %>
-    
-    <% if @incourse != true%>
-      <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Pública', :defaultClass => 'public-dd' } %>
-    <%else%>
-      <% courses = @discussion.courses.build %>
-      <%= hidden_field_tag "delivery[course_ids][]", @course.id %>   
-    <%end%>
-
-    <span class="btn btn-primary input-btn">
-      <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
-    </span>
-
+      <ul class="list-buttons right fr">
+        <li>
+          <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", onClick: 'removeSliderEvaluation();' %>
+        </li>
+        <li>
+          <% if @incourse != true%>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Público', :default_icon => 'public-new-publication' } %>
+          <%else%>
+            <% courses = @discussion.courses.build %>
+            <%= hidden_field_tag "delivery[course_ids][]", @course.id %>   
+          <%end%>
+        </li>
+        <li>
+          <span class="btn btn-primary input-btn">
+            <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
+          </span>
+        </li>
+      </ul>
     <%else%>
       <%= f.submit "Guardar discussion",  :class => "btn activable" %>
     <%end%>

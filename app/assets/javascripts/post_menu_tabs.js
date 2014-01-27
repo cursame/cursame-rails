@@ -5,6 +5,10 @@ $(document).ready(function(){
 
     $('div.tab-content').hide()
     $('div#comment-tab-content').show();
+    $('div.tabs-buttons .tab').removeClass('active');
+    $('div.tabs-buttons .tab[data-id-target="comment-tab-content"]').addClass('active');
+
+
       
     /*comments*/
     $('#comment').val('');

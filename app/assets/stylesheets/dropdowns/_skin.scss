@@ -9,6 +9,7 @@
   border-radius: 2px;
   background: #fff;
   box-shadow: 0 0 0 1px rgba(0,0,0,.15) ,0 1px 2px rgba(0,0,0,.1);
+  text-align: left;
 
   .tip {
     background: url("/assets/pack.png") -36px -1px no-repeat;
@@ -40,4 +41,109 @@
 
 .arrow-dropdown {
   @include triangle(8px, gray, down);
+}
+
+/* Public, User and Courses Dropdown
+----------------------------------*/
+.target-dropdown {
+
+  .dropdown-pull {
+    #title-dd {
+      font-weight: bold;
+    }
+
+    .arrow {
+      @include triangle(8px, gray, down);
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  .target-courses-selector li label {
+    img {
+      vertical-align: -8px;
+    }
+
+    input[type="checkbox"] {
+    }
+    
+    &:hover {
+      background: #f7f7f7;
+    }
+
+    &:first-child {
+      border-radius: $radius $radius 0 0 ;
+    }
+  }
+
+  .return-dd {
+    color: $primary-color;
+    cursor: pointer;
+    border-radius: 0 0 $radius $radius;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+  } 
+}
+
+/* Courses Actions
+----------------------------------*/
+.course-actions .dropdown-pull {
+  background: rgba(0,0,0,.7);
+  border-radius: $radius;
+
+  &:hover {
+    background: #000;
+  }    
+}
+
+/* Activity Dropdown
+----------------------------------*/
+.activity-dropdown-wrap {
+  .activity-dropdown {
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15) ,0 1px 2px rgba(0,0,0,.1);
+    text-align: left;
+  }
+
+  .activity-dropdown-title {
+    border-bottom: 1px solid #D6D6D6;
+  }
+  
+  .activity-dropdown-content {
+    background: #fcfcfc;
+  }
+
+  .activity-dropdown-footer {
+    border-top: 1px solid #D6D6D6;
+  }
+
+  .activity-feed-list {
+    > li {
+      border-bottom: 1px solid #e6e6e6;
+
+      &:hover {
+        background: #f7f7f7;
+      }
+    }
+  }
+
+  .activity-feed {
+    .activity-feed-main {
+      p {
+        color: $global-color;
+      }
+
+      .meta {
+        font-weight: normal;
+        color: $meta-color;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+    }
+  }
 }

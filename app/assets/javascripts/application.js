@@ -22,11 +22,11 @@
 function remove_fields(link, toId) {
     console.log(toId);
     if(toId == '#box-question') {
-        $(link).parent().parent().remove();
+        $(link).closest('.question-field').remove();
         changeNumbers('#box-question', '#question-num');
     } else if( toId =='#box-request' ) {
-        var grandfather = $(link).parent().parent();
-        $(link).parent().remove();
+        var grandfather = $(link).parent().parent().parent();
+        $(link).parent().parent().remove();
         changeNumbers(grandfather, '#request-num');
     }
 }
@@ -76,6 +76,27 @@ function changeNumbers(idParent, idFind){
     },1000);
  }
 
+// Truncate for javascript
+function truncate(text, maxLength, ellipseText){
+  ellipseText = ellipseText || '&hellip;';
+
+  if (text.length < maxLength) 
+    return text;
+
+  //Find the last piece of string that contain a series of not A-Za-z0-9_ followed by A-Za-z0-9_ starting from maxLength
+  var m = text.substr(0, maxLength).match(/([^A-Za-z0-9_]*)[A-Za-z0-9_]*$/);
+  if(!m) return ellipseText;
+  
+  //Position of last output character
+  var lastCharPosition = maxLength-m[0].length;
+  
+  //If it is a space or "[" or "(" or "{" then stop one before. 
+  if(/[\s\(\[\{]/.test(text[lastCharPosition])) lastCharPosition--;
+  
+  //Make sure we do not just return a letter..
+  return (lastCharPosition ? text.substr(0, lastCharPosition+1) : '') + ellipseText;
+}
+
 // notificaciones push usando private_pub
 $(function() {
 
@@ -85,12 +106,24 @@ $(function() {
 		var channelType = data.channel.channel_name.split('course_channel_');
 		url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;		
 
-		notification = ['<li class="unread">',
-			'<a href="' + url + '" data-remote="true">Conversar</a></br>',
-			'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
-			'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
-			'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
-			'</li>'];
+		// notification = ['<li class="unread">',
+		// 	'<a href="' + url + '" data-remote="true">Conversar</a></br>',
+		// 	'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
+		// 	'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
+		// 	'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
+		// 	'</li>'];
+
+        notification = [
+            '<li class="unread">',
+            '<div class="activity-feed">',
+            '<a title="Conversar" href="' + url + '" data-remote="true">',
+            '<div class="activity-feed-author">',
+            '<img src="' + data.sender.avatar.modern.url + '" class="avatar avatar-45"></div>',
+            '<div class="activity-feed-main">',
+            '<h6>' + data.sender.first_name+' '+ data.sender.last_name + '</h6>',
+            '<p>' + truncate(data.message.mesage, 88, "...") +'</p>',
+            '<span class="meta">' + jQuery.timeago(data.message.created_at) + '</span></div></a></div></li>'
+        ];
 
         // reproducimos sonido cuando hay mensaje
         playSound();

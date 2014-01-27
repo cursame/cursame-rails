@@ -1,1 +1,72 @@
-<p><b>Acerca de este curso:</b><p><%= @silabus %></p></p>
+<p><b>Biblioteca del curso</p></p>
+
+<div id="box-d" class="basic-lateral-box" style="margin-top: 30px; position: relative; display: block;">
+      <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
+
+
+      <span class="RedBallon"><%= @course.course_files.count if (@course.course_files != nil)  %></span>
+      
+      <% if @member.owner != nil %>
+        <% if @member.owner == true %>
+          <%= form_for CourseFile.new, :html => {:multipart => true} do |f|%>
+            <div id="upload-files-to-course">
+              <label class="UploadArchiveBtn">
+            	  Subir Archivos al <%= current_network.course_tag%>
+              </label>
+              <input id="course_file_file" class="UploadFiles" style="height: 55px; min-width:55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
+              <%= hidden_field_tag :course_id, @course.id %> 
+              <%= f.hidden_field :published, :value => true %>
+            </div>
+          <%end%>
+        <%end%>
+      <%end%>
+      
+	<script>
+	  $("#upload-files-to-course").hover(
+	       function () {
+	         $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:100px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("Da click aquí para subir un archivo a la biblioteca del #{ current_network.course_tag }.", :omission => "...", :length => 155)%></div></span>"));
+	       },
+	       function () {
+	         $(this).find("span:last").remove();
+	       }
+	     );
+	</script>
+	<!--acción de noficación cuando se debe mostrar la respuesta de un cuestionario-->
+	
+     <script src="/assets/jquery-fileupload/jquery.fileupload.js?body=1" type="text/javascript"></script>
+     <script src="/assets/library.js"></script>
+      
+      <div id="uplok">
+        <script id="template-upload-2" type="text/x-tmpl">
+          <div class="upload">
+            <div class="deletedprogresbar">
+              {%=o.name%}<div class="progress-add"></div>
+              <div class="content_progress_bar">
+                <div class="progress_exact"></div>
+              </div>
+            </div>
+          </div>
+        </script>
+      </div><!-- uplok -->
+      
+      <div style="width: 230px;  overflow:auto; min-height:0px; max-height: 300px; overflow-x: hidden; padding-top: 25px; padding:1px; min-height:300px; max-height:600px;">
+          <% if @course.course_files.count == 0 %> 
+          <div id="files" style="margin-top:20px;"></div>
+          
+          <%end%>  
+          
+        <% @course.course_files.reverse.each do |cf|%>
+          <% @name =  "#{cf.file}" %>
+          <% @sintetic_name = @name.split('/').last%>
+          <% @termination = @name.split('.').last %>
+          <!--se ha colocan los archivos dependiendo su categoría-->
+          <div style="margin-top:35px;" style="min-height:100px;">
+            <% if @course.course_files.count != 0 %> 
+              <div id="files"></div>
+            <%end%>  
+          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
+          </div>
+
+        <%end%>
+      </div>
+    </div><!--ends box-d -->

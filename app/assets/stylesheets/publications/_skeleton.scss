@@ -172,6 +172,7 @@
     .new-publication-footer {
       padding: 10px;
       clear: both;
+      @include clearfix;
     }
   }
 
@@ -231,6 +232,16 @@
   }
 }
 
+.new-publication-upload {
+  position: relative;
+
+  #new_assets {
+    position: absolute;
+    top: -45px;
+    left: 10px;
+  }
+}
+
 /* Survey
 ----------------------------------*/
 .new-survey-questions {
@@ -239,22 +250,67 @@
   #box-question {
     .question-field {
       margin-bottom: 10px;
+      
+      .num {
+        display: inline;
+      }
 
       .element {
         padding: 5px;
         overflow: hidden;
 
-        #question-num {
-          display: inline;
+        .question-input-field {
+          width: 265px;
+          padding-left: 0;
         }
 
-        .question-input-field {
-          width: 220px;
+        .delete-question-button {
+          display: none;
+        }
+
+        &:hover .delete-question-button {
+          display: block;
         }
       }
 
       .request-field {
         overflow: hidden;
+        padding: 5px;
+        
+        .answer-field-input {
+          padding-left: 0;
+          width: 240px;
+        }
+      }
+
+      .add-aswer a {
+        display: block;
+        padding: 5px;
+      }
+    }
+  }
+}
+
+/* Publication Assets
+----------------------------------*/
+.look_atemp_conteny {
+  .choser {
+    margin-top: 5px;
+
+    .publication-asset {
+      padding: 3px 4px;
+      @include clearfix;
+
+      .cancel_link, .trash {
+        float: right;
+        display: none;
+      }
+
+      &:hover {
+
+        .cancel_link, .trash {
+          display: block;
+        }
       }
     }
   }

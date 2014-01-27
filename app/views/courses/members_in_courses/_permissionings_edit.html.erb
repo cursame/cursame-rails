@@ -1,0 +1,25 @@
+  <% case %>
+        <% when member.accepted == true %>
+
+              <% if current_user.id != member_it.id %>
+                    <!-- settings de administración del curso -->
+                    
+                    <div id="options_to_<%=member_it.id%>" style="display:block;"> 
+                      <%= form_for member, :remote => true do |fcm| %>                           
+                            <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{member_it.id}', '#{member.id}','acceptin', '#{member_it.id}');"  %><%= "Aceptar a este usuario en el curso."%>
+                            <%= link_to 'Eliminar', member, confirm: 'Are you sure?', method: :delete, :remote => true %>
+                      <%end%>
+                      <%= form_for member, :remote => true do |owner|%>
+                            <%= owner.check_box :owner, :onclick => "ValidateMemberInCourse('owner_in_course#{member_it.id}', '#{member.id}','ownerin', '#{member_it.id}');", :class=> "owner_in_course#{member_it.id}"  %> <%= "Administrador" %>
+                      <%end%>
+                    </div>
+                
+              <%end%>
+       
+                     
+        <% when member.accepted == false %>
+                  <%= form_for member, :remote => true do |fcm| %>                           
+                      <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{member_it.id}', '#{member.id}','acceptin', '#{member_it.id}');", :class=> "members_in_course_accepted_#{member_it.id}"  %><%= "Miembro aún no aceptado en el curso."%>
+                      <%= link_to 'Eliminar', member, confirm: 'Are you sure?', method: :delete, :remote => true %>
+                  <%end%>
+  <%end%> 

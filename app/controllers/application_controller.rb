@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   #metodo de acceso a los avatares
 
   helper_method :avatar
-  
+  helper_method :agil_find_user
   # helper methos de fechas 
 
   helper_method :es_month
@@ -164,7 +164,7 @@ class ApplicationController < ActionController::Base
   end
 
   def alfredot_rifa_free_pro_forever
-     puts "alfredot rifa free pro forever 2013"
+     puts "alfredot rifa free pro forever 2014"
      puts "
      _+88__________________________...
      _+880_________________________...
@@ -189,6 +189,14 @@ class ApplicationController < ActionController::Base
      ________++++++0088888888______...
      ________+++++0008888888_______...
      ________...............8888888... "
+     puts "casual aqui programando "
+     puts "Desarrolladores 2014:"
+     puts '**************************************'
+     puts "Alfredo Reyes de Antuñano"
+     puts "Emiliano Cabrera Blancas"
+     puts "Salvador López Mendoza"
+     puts "Armando Gonzalez López"
+     puts '**************************************'
    end
 
    def fail_in_save
@@ -506,13 +514,13 @@ class ApplicationController < ActionController::Base
                 when size == '10'
                   @self_avatar = object_url+'<img src="/assets/course-avatarxxxx.png"'+ object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '25'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src="/assets/imagexx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '30'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src="/assets/imagexx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '45'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src="/assets/imagexxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '150'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src="/assets/imagex.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
                 end
 
             end
@@ -606,6 +614,16 @@ class ApplicationController < ActionController::Base
       end
         when esday == 'Week'
         @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
+    end
+  end
+  
+  ###### metodo para encontrar un usuario de manera facil ######
+  def agil_find_user(findX, byX='id')
+    case 
+      when byX == 'id'  
+       @user = User.find_by_id("#{findX}")
+      when byx == 'personal_url'
+       @user = User.find_by_perosnal_url("#{findX}")
     end
   end
 

@@ -8,7 +8,7 @@
 .topbar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   height: 50px;
   z-index: 100;
   width: 100%;
@@ -46,10 +46,11 @@
   width: 720px;
   margin: 0 auto;
   @include clearfix;
-}
 
-.space-sidebar {
-  padding-left: 230px;
+  &.spaced {
+    width: 700px;
+    padding: 0 10px;
+  }
 }
 
 .wrap {
@@ -74,6 +75,13 @@
 
 .fr {
   float: right;
+}
+
+.hide-input-file {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  @include inline-block;
 }
 
 /* Avatars
@@ -212,144 +220,61 @@
 
   > li {
     margin: 0 5px;
-  }
-
-  &.left > li {
     float: left;
-
-
-    &:first-child{
-      margin-left: 0;
-    }
   }
 
-  &.right > li {
-    float: right;
+  &.left > li:first-child{
+    margin-left: 0;
+  }
 
-    &:last-child {
-      margin-right: 0;
-    }
+  &.right > li:last-child {
+    margin-right: 0;
   }
 }
 
-/* Notifications and Messages
+/* Sections Pages
 ----------------------------------*/
-#box-notifications, #box-messages-notifications{
-  clear: both;
-  float: left;
-  margin: 34px 0 0 10px;
-  position: absolute;
-  margin-top: 34px;
-  display: block;
-    
-  &.avatar{
-    margin-left: 3px;
-    position: absolute;
-    margin-top: 4px;
-    margin-right: 8px;
+.section-header {
+  padding: 20px 0;
+  
+  .section-header-title {
     float: left;
-  }
 
-  &.comment-text{
-    width: 300px;
-    height: 100%;
-    float: left;
-    margin: 5px 0px 10px 11px;
-
-    &.header{
-      line-height: 23pt;
-      padding-bottom: 6px;
-
-      &.top-null-image{
-        width: 60px;
-        height: 10px;
-        float: left;
-      }
-
-      &.date{
-        float: right;
-        margin-right: 6px;
-      }
-    }
-
-    & .content{
-      padding: 6px 10px 5px 10px;
-      overflow: auto;
-      overflow-x: hidden;
-      height: 400px;
-
-      & li{
-        padding: 10px 0 10px 0;   
-        min-height: 50px;
-      }
-
-      &.avatar-notifications{
-        float: left;
-        margin-right: 10px;
-      }
-
-      &.first{
-        margin-top: -5px;
-      }
-
-      &.last{
-        border: none;
-      }
-    }
-           
-    &.video{
-      padding: 10px;
-    }
-    
-    &.title-discusion{
-      margin-bottom: 10px;
-    }
-    
-    &.text-discusion{
-      padding-left: 10px;
-    }
-    
-    &.footer{
-      height: 25px;
+    .section-icon {
       float: left;
-      width: 100%;
-      padding-top: 6px;
+      padding-top: 4px;
+    }
 
-      &.icon{
+    .section-title {
+      margin-left: 55px;
+      padding-top: 11px;
+    }
+
+    .section-subnav {
+      @include clearfix;
+
+      li {
         float: left;
-        margin: 4px 0px 0px 5px;
+        padding-right: 10px;
       }
+    }
 
-      &.labels{
-        float: right;
-        margin: 4px 5px 0px 10px;
+    &.w-subnav {
+      .section-title {
+        padding-top: 0;
       }
     }
   }
 
- 
-  &.header{
-    height: 25px;
-    width: 100%;
-
-    &.name{
-      color: #333;
-    }
+  .section-header-actions {
+    float: right;
+    margin-top: 9px;
   }
+}
 
-  &.general-cir-discusion{
-    width: 35px;
-    height: 35px;
-    float: left;
-  }
-
-  &.arrow-top {
-    width: 14px;
-    height: 9px;
-    position: absolute;
-    margin:-9px 0px 0px 145px;
-    z-index: 20;
-  }
+.sc-margined {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Menu User

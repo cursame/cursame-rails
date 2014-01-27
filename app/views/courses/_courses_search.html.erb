@@ -1,0 +1,3 @@
+<%= form_tag(courses_search_ajax_path, :method => 'get', :remote => true, :class => "search-courses") do %>
+  <%= text_field_tag 'activiesearch', '' , :placeholder =>'Busca cursos y presiona enter' %>
+<% end %>

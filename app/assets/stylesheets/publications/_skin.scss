@@ -12,6 +12,7 @@
  
       h6 {
         color: $meta-color;
+        font-weight: normal;
 
         a {
           font-weight: bold;
@@ -34,9 +35,15 @@
   &.cuestionario .publication-content {
     background: url('publication-covers/survey.jpg');
   }
+
+  &.curso .publication-content {
+    background: url('publication-covers/course.jpg');
+  }
   
   .publication-main {
     .publication-content {
+      background-size: cover;
+
       h6 {
         color: $white;
 
@@ -59,7 +66,7 @@
     }
     
     .academic-content-icon .i {
-      vertical-align: -25px;
+      vertical-align: -24px;
     }
 
     .academic-content-desc {
@@ -156,9 +163,51 @@
       background: #f7f7f7;
       border-radius: $radius;
 
+      .num {
+        font-weight: bold;
+        color: #666;
+      }
+
       .element {
         background: #fff;
+        border-bottom: 1px solid #ccc;
         border-radius: $radius $radius 0 0;
+
+        .question-input-field {
+          border-color: transparent;
+          box-shadow: none;
+          outline: none;
+        }
+      }
+
+      .request-field {
+        border-bottom: 1px solid #ccc;
+
+        .answer-field-input {
+          background: transparent;
+          border-color: transparent;
+          box-shadow: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+/* Publication Assets
+----------------------------------*/
+.look_atemp_conteny {
+  .choser {
+    .publication-asset {
+      border-radius: $radius;
+
+      .cancel_link, .trash {
+        color: $primary-color;
+        cursor: pointer;
+      }
+
+      &:hover {
+        background: #f7f7f7;
       }
     }
   }

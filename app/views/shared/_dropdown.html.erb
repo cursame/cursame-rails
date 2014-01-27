@@ -11,54 +11,74 @@
 %>
 
 <div id="dropdrop_comment" class="inline-block">
-  <div id="drop-down-<%= random_id %>" class="dropdown-wrap">
+  <div id="drop-down-<%= random_id %>" class="dropdown-wrap target-dropdown">
 
     <div class="dropdown-pull btn btn-secondary">
-      <span id="title-dd"><%= defaultText %></span>
+      <span id="title-dd"><%= icon(default_icon) %><%= defaultText %></span><span class="arrow"></span>
     </div>
     
     <div class="dropdown-v right">
       <i class="tip"></i>
-      
-      <% if hasPublic  %>
-        <ul class="dropdown" id="box-selector-dd" style="display: block;">
-          <li>
-            <input id="is_public" name="is_public" type="checkbox" value="1">
-            <label id="icon-dd-public" class="world-dd">Público</label>
-          </li>
-
-          <%if hasUser%>
+        
+        <% if hasPublic && hasCourses %>
+        <ul class="dropdown target-selector" id="box-selector-dd" style="display: block;">
+          <% if hasPublic  %>
             <li>
-              <input id="is_user" name="is_user" type="checkbox" value="<%= current_user.id%>">
-              <label id="icon-dd-user" for="is_user" class="user-dd">Usuario</label>
+              <label id="icon-dd-public" class="world-dd">
+                <%= icon('public-new-publication') %>
+                <input id="is_public" name="is_public" type="checkbox" value="1">
+                Público
+                <%= icon('checked-16') %>
+              </label>
             </li>
-          <%end%>
+          <% end %>
+        
+          <% if hasUser %>
+            <!-- <li>
+              <label id="icon-dd-user" for="is_user" class="user-dd">
+                <input id="is_user" name="is_user" type="checkbox" value="<%= current_user.id%>">
+                Usuario
+              </label>
+            </li> -->
+          <% end %>
           
-          <li>
-            <label id="icon-dd-course" class="course-dd">Cursos</label>
-          </li>
+          <% if hasCourses %>
+            <li>
+              <label id="icon-dd-course" class="course-dd">
+                <%= icon('course-new-publication') %>
+                Cursos
+              </label>
+            </li>
+          <% end %>
         </ul>
       <% end %>
-
+      
       <% if hasCourses  %>
-        <ul class="dropdown" id="box-course-dd" style="display: none;">
+        <ul class="dropdown target-courses-selector" id="box-course-dd" style="<%= "display: none;" if hasPublic %>">
           <% for course in Course.find(:all) %>
             <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
               
             <% if !@course_member.nil?%>
               <% if @course_member.owner == true #|| course.id == @course_member.course_id %>
                 <li>
-                  <%= check_box_tag 'delivery[course_ids][]', course.id, false %>
-                  <label for="delivery[course_ids][]"><%= course.title %></label>
+                  <label for="<%= random_id.to_s + course.id.to_s %>">
+                    <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                    <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
+                    <%= truncate( course.title, omission: "...", length: 21) %>
+                    <%= icon('checked-16') %>
+                  </label>
                 </li>
               <% end%>
 
             <%end%>
           <% end %>
 
-          <% if hasSomeLocals %>
+          <% if hasCourses && hasPublic %>
             <li>
-              <label id="box-return-dd" class="return-dd">Volver</label>
+              <div id="box-return-dd" class="return-dd">
+                <%= icon('back-blue') %>
+                Volver
+              </div>
             </li>
           <% end %>
         </ul>
@@ -71,33 +91,57 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        var idDD = '#drop-down-<%= random_id %>';
-        new DropDown( $(idDD) );
+        var dropdown      = $('#drop-down-<%= random_id %>'),
+            titleDropdown = dropdown.find('#title-dd');
 
-        $(idDD + ' #icon-dd-public').click(function() {
+        new DropDown( dropdown );
 
-            $(idDD + ' input:checkbox').removeAttr('checked');
-            $(idDD + ' #title-dd').html($(idDD + ' #icon-dd-public').html());
+        dropdown.find('#icon-dd-public').click(function() {
+
+            dropdown.find('input:checkbox').removeAttr('checked');
+            dropdown.find('label').removeClass('active');
+            $(this).addClass('active');
+
+            titleDropdown.text('Público').prepend($('<i class="i i-public-new-publication"></i>'));
+        });
+
+        dropdown.find('#icon-dd-user').click(function() {
+
+            dropdown.find('input:checkbox').removeAttr('checked');
+            titleDropdown.html( $(this).text() );
 
         });
 
-        $(idDD + ' #icon-dd-user').click(function() {
-
-            $(idDD + ' input:checkbox').removeAttr('checked');
-            $(idDD + ' #title-dd').html($(idDD + ' #icon-dd-user').html());
-
-        });
-
-        $(idDD + ' #icon-dd-course').click(function() {
+        dropdown.find('#icon-dd-course').click(function() {
           
-            $(idDD+' #title-dd').html($(idDD + ' #icon-dd-course').html());
-            $(idDD + ' #box-selector-dd').hide();
-            $(idDD + ' #box-course-dd').show();
+            titleDropdown.text('Cursos').prepend( $('<i class="i i-course-new-publication"></i>') );
+            dropdown.find('label').removeClass('active');
+            dropdown.find('#box-selector-dd').hide();
+            dropdown.find('#box-course-dd').show();
+
         });
 
-        $(idDD + ' #box-return-dd').click(function() {
-            $(idDD + ' #box-selector-dd').show();
-            $(idDD + ' #box-course-dd').hide();
+        dropdown.find('#box-return-dd').click(function(e) {
+            dropdown.find('#box-selector-dd').show();
+            dropdown.find('#box-course-dd').hide();
+
+            e.preventDefault();
+        });
+
+        dropdown.find('.target-courses-selector > li label').click(function(e) {
+          var $this     = $(this),
+              checkbox  = $this.find('input[type="checkbox"]');
+
+
+          if ( checkbox.is(':checked') ) {
+            checkbox.attr('checked', false);
+            $this.removeClass('active');
+          } else {
+            checkbox.attr('checked', true);
+            $this.addClass('active');
+          }
+
+          e.preventDefault();
         });
     });
 </script>

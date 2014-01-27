@@ -1,64 +1,87 @@
 
 /* Courses Skeleton
 ----------------------------------*/
-.course{
-  float: left;
-  height: 250px;
-  width: 218px;
-  margin: 10px 4px;
-  float: left;
-  @include border-radius;
+.courses-list {
+  margin: 10px 0;
+  @include clearfix;
 
-  h2{
-    float: left;margin: 10px 0 5px 0px;
-  }
-
-  .thumbnail{
+  .course {
+    float: left;
+    margin: 10px;
     width: 218px;
-    overflow: hidden;
+
+    &:hover {
+      .course-actions {
+        display: block;
+      }
+    }
   }
-}
 
-.hidden-text{  
-  white-space: nowrap;
-  width: 79%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  .course-cover {
+    margin: -1px;
+    position: relative;
 
-h4{
-  font-size:14px;
-}
+    .course-cover-image {
+      overflow: hidden;
+      height: 100px;
 
-h3{
-  font-size:18px;  
-}
+      img {
+        width: 100%;
+        height: auto;
+      }
 
-.course li {
-	padding-left: 20px;
-	margin: 5px;
-}
+      &:after {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
 
-#crud{
-	position: relative;
-	top: 0px;
-	float: right;
-	margin: -130px 10px 0 0; 
-}
+  .course-actions {
+    display: none;
+    z-index: 3;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 
-#course-title{
-  width: 188px;
-  float: left;
-  margin: 10px 6px;
-}
+  .course-user-status {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
 
-#course-info{
-  padding: 10px;
-}
+    .request-sent {
+      margin-top: 35px;
+      padding: 8px;
+    }
 
-#courses-list {
-  width: 915px;
-  margin: auto;
+    .join-course-status {
+      margin-top: 32px;
+    }
+  }
+
+  .course-description {
+    padding: 8px 10px;
+    height: 80px;
+  }
+
+  .course-detail-list {
+    padding: 10px;
+
+    .course-detail {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 .courses-title-h2{
@@ -72,37 +95,6 @@ h3{
   float: left;
   display: inline-block;
   position: relative;
-}
-
-.serch-courses{
-  width: 300px;
-  margin: 4px 0 0 0;
-  float: left;
-}
-
-.serch-courses input{
-  width: 200px;
-}
-
-.new-course {
-  float: right;
-  margin: 6px 0 0 0;
-}
-
-#header-courses{
-  width: 910px;
-  margin: auto;
-  padding: 25px 15px 15px 15px;
-}
-
-.SearchForm {
-  width: 600px;
-  margin-top: 10px;
-
-  #search {
-    width: 600px;
-    padding-top: 6px;
-  }
 }
 
 .list_alt_box {

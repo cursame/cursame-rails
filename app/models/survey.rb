@@ -62,13 +62,7 @@ class Survey < ActiveRecord::Base
        self.publish!
     end
 
-    
-    
-    
-    Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date,
-          :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id,
-          :course_id => self.courses.ids, :network_id => self.network_id)
-
+  Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
 
 
     users = []

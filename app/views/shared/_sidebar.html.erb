@@ -44,7 +44,7 @@
       <ul class="section-list navigation">
         <li>
           <%= link_to "http://#{current_network.subdomain}.#{links}/" do %>
-            <i class="i i-home-w"></i>Home
+            <i class="i i-home-w"></i>Inicio
           <% end %>
         </li>
         <li>
@@ -73,8 +73,9 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <%= link_to calendar_path do %>
             <i class="i i-calendar-w"></i>Calendario
+          <%end%>
           </a>
         </li>
         <li>
@@ -96,7 +97,7 @@
           <li>
             <%= link_to course_path(c.id) do %>
               <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
-              <%= c.title %>
+              <%= truncate( c.title, omission: "...", length: 28) %>
             <% end %>
           </li>
         <%end%>
@@ -111,7 +112,7 @@
     <div class="sidebar-section-main scroller">
       <% if @show_chat_panel %>  
 
-        <ul class="section-list" style="display: none;">
+        <ul class="section-list">
           <% @courses_online.each do |course|%>
             <li>
               <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
@@ -121,7 +122,7 @@
                   <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
                 <%end%>
 
-                <%= truncate("#{course.title}", :omission => "...", :length => 30) %>
+                <%= truncate("#{course.title}", :omission => "...", :length => 28) %>
               <% end %>
             </li>
           <%end%>

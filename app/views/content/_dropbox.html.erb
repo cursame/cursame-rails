@@ -27,16 +27,16 @@
             var files = files;
             for(var i=0; i<files.length; i++) {
                 
-                   var random = Math.floor(Math.random()*113);
-                   var size = files[i].bytes;
-                   var demagogo = size+random;
+                  var random = Math.floor(Math.random()*113);
+                  var size = files[i].bytes;
+                  var demagogo = size+random;
                   var dinamic_id_d = 'executable_dropbox'+demagogo;
                   var link_ninamic_file = files[i].link;
-                  var link = '<a id="'+dinamic_id_d+'" href="'+link_ninamic_file+'" target="_blank"><i class="i i-dropbox-asset-blue"></i> '+ link_ninamic_file.substring(0, 47)+'...</a>';
+                  var link = '<a id="'+dinamic_id_d+'" href="'+link_ninamic_file+'" target="_blank"><i class="i i-dropbox-asset-blue"></i> '+ truncate(link_ninamic_file, 47, '...') +'</a>';
                   
                   $('#box_for_loads<%=@typeo%>').show();
                   
-                  $('#choser<%= @typeo %>').append("<div id='resput_dropbox"+ demagogo +"'>"+ link +"<a id='execute_dropbox"+demagogo+"' class='cancel_link'>Borrar</a><input id='<%=@typeo%>_contents_attributes_"+ demagogo +"_content' name='<%=@typeo%>[contents_attributes]["+ demagogo +"][content]' size='30' type='hidden' value='"+ files[i].link +"></div>");
+                  $('#choser<%= @typeo %>').append("<div id='resput_dropbox"+ demagogo +"' class='publication-asset'>"+ link +"<a id='execute_dropbox"+demagogo+"' class='cancel_link'>Borrar</a><input id='<%=@typeo%>_contents_attributes_"+ demagogo +"_content' name='<%=@typeo%>[contents_attributes]["+ demagogo +"][content]' size='30' type='hidden' value='"+ files[i].link +"></div>");
                   
                 eliminarDropbox(demagogo);
                 

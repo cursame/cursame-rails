@@ -17,6 +17,15 @@
     }
   }
 
+  &.input-btn.btn-small input {
+    height: 20px;
+    padding: 0 5px;
+  }
+  
+  &.btn-small {
+    height: 20px;
+  }
+
   &.btn-medium {
     height: 38px;
     padding: 0 20px;
