@@ -9,10 +9,10 @@
         <h1>Cuestionarios</h1>
         <ul class="section-subnav">
           <li class="active">
-            <%= link_to "Por contestar", my_courses_path, :remote => true %>
+            <%= link_to "Por contestar", wall_filter_path(:typeforfilter => 'Survey', :responds => 'false'), :remote => true %>
           </li>
           <li>
-            <%= link_to "Cuestionarios contestados", all_courses_path, :remote => true %>
+            <%= link_to "Cuestionarios contestados", wall_filter_path(:typeforfilter => 'Survey', :responds => 'true'), :remote => true %>
           </li>
         </ul>
       </div>

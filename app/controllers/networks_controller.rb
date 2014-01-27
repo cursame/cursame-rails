@@ -257,7 +257,7 @@ class NetworksController < ApplicationController
     @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
     @network_users = @network_users.reject {|array| array[0].nil? }
   end
-
+  
   def awaiting_confirmation
     personal_url = params[:personal_url]
     user = User.find_by_personal_url(personal_url)
@@ -270,6 +270,103 @@ class NetworksController < ApplicationController
     end
   end
   
+  def wall_filter
+    ##### detecta los tipos de publicación para procesarorlos mediante un filtro ######
+    typeforfilter = params[:typeforfilter]
+    responds = params[:responds]
+
+    #puts "#{typeforfilter}"
+    #puts "#{responds}"
+    responds_true = []
+    responds_false = []
+    ######## inicia el acceso a los cursos del usuario #######
+    current_user.courses.each do |c|
+    @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+
+    case 
+      when typeforfilter == 'Delivery'
+####################################### inicia el filtro de deliveries ########################################
+        case 
+          when responds == 'true' && @member.owner == true
+            c.deliveries.each do |d|
+             if d.assignments.count != 0
+             responds_true.push(d.id)
+             end
+            end    
+          when responds == 'true' && @member.owner != true
+            c.deliveries.each do |d|
+              user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
+              if user_delivery.count != 0
+                 responds_false.push(d.id)
+              end
+            end
+          when responds == 'false' && @member.owner == true
+            c.deliveries.each do |d|
+             if d.assignments.count == 0
+              responds_false.push(d.id)
+             end            end    
+          when responds == 'false' && @member.owner != true
+            c.deliveries.each do |d|
+              user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
+              if user_delivery.count == 0
+                 responds_false.push(d.id)
+              end
+            end
+        end
+####################################### finaliza el filtro de delivereis ######################################
+      when typeforfilter == 'Survey'
+####################################### inicia filtro de survey ##############################################
+    
+        ##### se accesa a todos los cursos
+          #puts @member
+          case 
+            ###### se validan las variables que buscamos
+             when responds == 'true' && @member.owner == true
+                #puts "owner"
+               c.surveys.each do |s|
+                if s.user_surveys.count != 0
+                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
+                  responds_true.push(s.id)
+                end
+               end
+             when responds == 'true' && @member.owner != true
+              #puts "no owner"
+               c.surveys.each do |s|
+                 user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
+                 if user_survey.count != 0
+                    responds_true.push(s.id)
+                 end
+               end
+             when responds == 'false' && @member.owner != true
+                c.surveys.each do |s|
+                 user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
+                  if user_survey.count == 0
+                    responds_false.push(s.id)
+                  end
+                end
+              #puts "no owner"
+             when responds == 'false' && @member.owner == true
+              c.surveys.each do |s|
+                if s.user_surveys.count == 0
+                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
+                  responds_false.push(s.id)
+                end
+             end
+           end
+    end
+      ##################################### finaliza filtro de survey ##########################################
+    end
+    #################### finaliza el acceso a los datos de los curos del usuario #####################
+    #################### se generan las epecificaicones del wall #############################
+    @operator = responds_true + responds_false
+    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{typeforfilter}").paginate(:per_page => 15, :page => params[:page])
+
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # sesion expire
    def expire_session
        puts "se ha ingresado al metodo"
