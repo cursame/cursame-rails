@@ -123,9 +123,14 @@
 /* Activity Dropdown
 ----------------------------------*/
 .activity-dropdown-wrap {
+  position: relative;
+
   .activity-dropdown {
     width: 320px;
     display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
   }
   
   .activity-dropdown-title {

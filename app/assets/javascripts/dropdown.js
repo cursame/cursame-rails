@@ -7,24 +7,23 @@ $(function() {
         holder   = $this.closest('.dropdown-wrap'),
         dropdown = holder.find('.dropdown-v');
 
-    $('div.dropdown-v').hide();
-    dropdown.show();
-    console.log("asdasd");
+    $('div.dropdown-v').parent().removeClass('active');
+
+    if ( holder.hasClass('active') ) {
+      holder.removeClass('active');
+    } else {
+      holder.addClass('active');
+    }
 
   });
 
 
-  $('html').click(function(event) {
-    $('.dropdown-v').hide();
-    $('.dropdown-wrap').removeClass('active');
+  $('body').click(function() {
+    $('div.dropdown-wrap').removeClass('active');
   });
 
-  $('.dropdown-v').click(function(e) {
+  $('div.dropdown-v').click(function(e) {
     e.stopPropagation();
-  });
-
-  $('div.activity-dropdown-pull').on('click', function() {
-    
   });
 
   /* Autoresize textareas

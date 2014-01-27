@@ -134,6 +134,11 @@
 
   .activity-feed {
     .activity-feed-main {
+      h6 {
+        font-weight: normal;
+        color: $global-color;
+      }
+
       p {
         color: $global-color;
       }
