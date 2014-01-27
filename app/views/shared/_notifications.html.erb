@@ -1,13 +1,9 @@
 <% if current_user%>
 
 <script>
-  var Cursame = {
-	  userId: <%= current_user.id%>
-  };
-
-  $("#notifications_count").click(function () {
-    $.get("/home/editing_n");
-  });
+		var Cursame = {
+			userId: <%= current_user.id %>
+		};		
 </script>
 
 <!-- tratamos las notificaciones para agregarles el css first y last-->
@@ -55,6 +51,9 @@
 <%= subscribe_to "/notifications/"+current_user.id.to_s %>
 
 <script>
+	$("#box-notifications").click(function() {
+			$.get("/home/editing_n");
+	});
   // rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
 		function(data, channel) {
