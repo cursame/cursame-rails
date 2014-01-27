@@ -1,7 +1,7 @@
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
-
+  
   after_create do
     if (!self.owner) then
       if(!self.accepted) then
@@ -9,7 +9,7 @@ class MembersInCourse < ActiveRecord::Base
       end
     end
   end
-
+  
   after_update do
     accepted = self.changes[:accepted]
     if (!accepted.nil?) then
@@ -20,10 +20,10 @@ class MembersInCourse < ActiveRecord::Base
       end
     end
   end
-
+    
   before_destroy do
     notifications = Notification.where(:notificator_id => self.course_id,:notificator_type => "Course",:kind => 'user_accepted_in_course')
-
+    
     notifications.each do
       |notification|
       if notification.users.include?(self.user) then
@@ -31,122 +31,89 @@ class MembersInCourse < ActiveRecord::Base
       end
     end
   end
-
-  #
-  #
-  #
-  def evaluationSurveys
-    course = Course.find(self.course_id)
-    evaluationSurveys = 0.0
-    if (course.surveys.size == 0) then
-      return 0
-    end
-    course.surveys.each do |response|
-      user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id, self.user_id)
-      user_survey_result = 0
-      if (!user_survey.nil?) then
-        if user_survey.result.nil? then
-          user_survey.evaluation
-          user_survey = UserSurvey.find_by_survey_id_and_user_id(response.id,self.user_id)
+  
+  # Calcula la calificacion de examenes
+  def evaluation_surveys(user_surveys, surveys)
+    if user_surveys.any? then
+      user_surveys.each_with_index.inject(0.0) { 
+        |result, (user_survey,index)|
+        if user_survey
+          result += user_survey.result ? user_survey.result : user_survey.evaluation
+        else
+          result += 0.0
         end
-        user_survey_result = user_survey.result
-      end
-      evaluationSurveys += user_survey_result
-    end
-    evaluationSurveys = evaluationSurveys/course.surveys.size
-    return evaluationSurveys.to_i
+      }.to_i
+    else ;0;end
   end
-
-  #
-  #
-  #
-  def evaluationDeliverys
-    course = Course.find(self.course_id)
-    evaluationSurveys = evaluationSurveys
-    assignments = Assignment.where(:course_id => self.course_id, :user_id => self.user_id)
-    evaluationDeliverys = 0.0
-    if !assignments.nil? then
-      assignments.each do |response|
-        porcent_of_evaluation = response.delivery.porcent_of_evaluation.to_f/100.0
-        evaluationDeliverys += response.accomplishment.to_f * porcent_of_evaluation
-      end
-    end
-
-    return evaluationDeliverys.to_i
+  
+  # Calcula la calificacion de tareas
+  def evaluation_deliveries(assignments, deliveries)
+    if assignments.any? then
+      assignments.each_with_index.inject(0.0) { 
+        |result, (assignment,index)|
+        porcent_of_evaluation = deliveries[index].porcent_of_evaluation.to_f/100.0
+        if assignment
+          if assignment.accomplishment
+            result += assignment.accomplishment.to_f * porcent_of_evaluation
+          else
+            result += 0
+          end
+        else
+          result += 0
+        end
+      }.to_i
+    else; 0;end
   end
-
-  def evaluation
-
-    survey_param_evaluation = (course.survey_param_evaluation.to_f)/100.0
-
-    delivery_param_evaluation = (course.delivery_param_evaluation.to_f)/100.0
-
-    evaluation = evaluationSurveys * survey_param_evaluation +
-      evaluationDeliverys * delivery_param_evaluation
-
-    return evaluation
-  end
-
+  
   #
-  # table_member[0] => Tareas ordenadas de acerudo a la fecha de creacion en la base de datos
-  # table_member[1] => Calificaciones de cada tarea.
-  # table_member[2] => Calificacion total de las tareas.
-  # table_member[2][0..2] => Valor de las tareas, calificiacion en 100%, calificacion del total.
+  # table["deliveries"] => Hash con la informacion de tareas
+  #      table["deliveries"]["deliveries"] => Tareas ordenadas, es un Array
+  #      table["deliveries"]["assignments"] => Tareas entregadas, es un Array
+  #      table["deliveries"]["percent_of_deliveries"] => % de la evaluacion
+  #      table["deliveries"]["evaluation_total"] => Calificacion de las tareas
   #
-  def doTableDeliveries
-    table_member = Array.new
-    course = Course.find(self.course_id)
-    deliveries = course.deliveries.sort{|x,y| x.created_at <=> y.created_at}
-    table_member[0] = deliveries
-    assignments_array = Array.new
-    for i in 0...deliveries.size
-      assignments_array[i] =  Assignment.find_by_delivery_id_and_user_id(deliveries[i].id,self.user_id)
-    end
-    table_member[1] = assignments_array
-    delivery_param_evaluation = course.delivery_param_evaluation.to_f/100.0
-    evaluation_total_array = Array.new
-    evaluation_total_array[0] = course.delivery_param_evaluation
-    evaluation_total_array[1] = self.evaluationDeliverys * delivery_param_evaluation
-    table_member[2] = evaluation_total_array
-    return table_member
-  end
+  # table["surveys"] => Hash con la informacion de los examenes
+  #      table["surveys"]["surveys"] => Examenes ordenados, es un Array
+  #      table["surveys"]["user_surveys"] => Respuestas a examenes, es un Array
+  #      table["surveys"]["percent_of_surveys"] => % de la evaluacion
+  #      table["surveys"]["evaluation_total"] => Calificacion de los examenes
+  #      table["surveys"]["percent_of_evaluation"] => % Obtenido
+  #
+  # table["evaluation"] => Calificacion total del curso.
 
+  # Si logras mejorar este metodo, por favor, deja tu nombre.
+  def course_evaluation(course,deliveries, surveys)
+    
+    table = {}
+    deliveries_table = {}
+    surveys_table = {}
+    
+    deliveries_table["deliveries"] = course.deliveries.sort{ |x,y| x.created_at <=> y.created_at }
+    deliveries_table["assignments"] = deliveries_table["deliveries"].map {
+      |delivery|
+      Assignment.find_by_delivery_id_and_user_id(delivery.id,self.user_id)
+    }
+    deliveries_table["percent_of_deliveries"] = course.delivery_param_evaluation.to_f 
+    deliveries_table["evaluation_total"] = 
+      evaluation_deliveries(deliveries_table["assignments"], deliveries_table["deliveries"])
+    
+    surveys_table["surveys"] = course.surveys.sort{ |x,y| x.created_at <=> y.created_at }
+    surveys_table["user_surveys"] = surveys_table["surveys"].map {
+      |survey|
+      UserSurvey.find_by_survey_id_and_user_id(survey.id,self.user_id)
+    }
+    surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
+    surveys_table["evaluation_total"] = 
+      evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"])
+    surveys_table["percent_of_evaluation"] =
+      surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0
 
-  #
-  # table_member[0] => Lista de Surveys
-  # table_member[1] => Lista de User_Surveys
-  # table_member[2] => Calificacion total
-  # table_member[2][0..2] => Valor de los examenes, calificiacion en 100%, calificacion del total.
-  #
-  def doTableSurveys
-    table_member = Array.new
-    course = Course.find(self.course_id)
-    surveys = course.surveys.sort{ |x,y| x.created_at <=> y.created_at}
-    table_member[0] = surveys
-    user_survey_array = Array.new
-    for i in 0...surveys.size
-      user_survey_array[i] = UserSurvey.find_by_survey_id_and_user_id(surveys[i].id,self.user_id)
-    end
-    table_member[1] = user_survey_array
-    evaluation_total_array = Array.new
-    evaluation_total_array[0] = course.survey_param_evaluation
-    evaluation_total_array[1] = self.evaluationSurveys
-    survey_param_evaluation = course.survey_param_evaluation.to_f/100.0
-    evaluation_total_array[2] = evaluation_total_array[1] * survey_param_evaluation
-    evaluation_total_array[1] = self.evaluationSurveys/10.0
-    table_member[2] = evaluation_total_array
-    return table_member
-  end
-
-  #
-  # Manda a llamar los dos metodos anteriores para unirlos en un arreglo
-  #
-  def doTableCourse
-    table_course = Array.new
-    table_course[0] = doTableDeliveries
-    table_course[1] = doTableSurveys
-    table_course[2] = evaluation
-    return table_course
+    table["deliveries"] = deliveries_table
+    table["surveys"] = surveys_table
+    table["evaluation"] = deliveries_table["evaluation_total"] + 
+      surveys_table["percent_of_evaluation"]
+    
+    table
   end
 
   # obtiene si es owner del grupo mediante un delivery

@@ -56,7 +56,8 @@ ActiveAdmin.setup do |config|
   # This setting changes the method which Active Admin calls
   # within the controller.
   config.authentication_method = :authenticate_admin_user!
-
+  # to quit devise
+  config.skip_before_filter :authenticate_user!
   # == User Authorization
   #
   # Active Admin will automatically call an authorization

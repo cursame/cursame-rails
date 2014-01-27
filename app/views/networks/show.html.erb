@@ -152,10 +152,12 @@
 </div>
 
 <!-- Content -->
+<%= javascript_include_tag('load_layout.js') %>
 
 <div id="box-stream-post">
     <div id="pk_menu">
-    <%=render :partial => 'shared/post_menu' %>
+       <!-- <center id="gcharger" style="width:90%; height:100px; margin-left:60px; padding-top:20px;">  <%= image_tag('loader_gray.gif') %></center>-->
+       <%= render :partial => "shared/post_menu" %>
     </div>
     <%=render :partial => 'shared/wall_filters', :locals => {:path => wall_path} %>
 
