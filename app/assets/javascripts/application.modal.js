@@ -1,4 +1,4 @@
-/*$(function() {
+$(function() {
 	$('a').click(function() {
 		var me = $(this);
 		if (me.attr('data') === 'modal') {
@@ -6,10 +6,9 @@
 			$('body').append('<div class="overlayia"></div>').show();
 			me.closest("div").find('.modalia').show();
 		}
-		// return false;
 	});
 	$('.overlayia').live('click',function () {
 		$('.modalia').hide();
 		$(this).hide();
 	});
-});*/
+});
