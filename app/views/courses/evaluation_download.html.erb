@@ -7,180 +7,175 @@
   <%elsif @member.owner%>
 
    <div class="form-course fixform" style="padding: 0 0 41px !important; width: 823px!important; overflow:auto;">
-		     <!--para poder hacer el render partial-->
-   <%  @course = Course.find(params[:id])%>
+                     <!--para poder hacer el render partial-->
+   <%deliveries_from_course = @course.deliveries.sort{|x,y| x.created_at <=> y.created_at}%>
+   <%surveys_from_course = @course.surveys.sort{|x,y| x.created_at <=> y.created_at}%>
+                    <%@course.members_in_courses.each do |member| %>
+                      <%user = member.user%>
+                      <% if !member.owner then%>
+                        <%table = member.course_evaluation(@course,deliveries_from_course,surveys_from_course)%>
 
-		    <%@course.members_in_courses.each do |member| %>
-		      <%user = User.find_by_id(member.user_id)%>
-		      <% if !member.owner then%>
-		        <%table = member.doTableCourse%>
+                        <div class="" style="width: 823px; background: #000; margin-top: -15px;;">
+                        <span class="califHeader">Calificacion: <%=table["evaluation"]%></span>
+                        <span class="AlumHeader">Alumno: <%=user.name%></span>
+                        </div>
 
-		        <div class="" style="width: 823px; background: #000; margin-top: -15px;;">
-		        <span class="califHeader">Calificacion: <%=table[2]%></span>
-		        <span class="AlumHeader">Alumno: <%=user.name%></span>
-		        </div>
-
-				<!--
-		        <h4 style="margin-top: 22px; background: #38CDE2; color: #fff; height: 30px; padding-top: 14px; margin-left: -20px; width: 824px; text-align: center; font-weight: lighter;">Alumno: <%=user.name%></h4>
-		        -->
+                                <!--
+                        <h4 style="margin-top: 22px; background: #38CDE2; color: #fff; height: 30px; padding-top: 14px; margin-left: -20px; width: 824px; text-align: center; font-weight: lighter;">Alumno: <%=user.name%></h4>
+                        -->
 
 
 
-		        <table border="1" cellpadding="3" cellspacing="3" id="calificacionesSpan" width="823px">
-		          <tr>
-		            <td width="205px"><p style="color: #258593;">Tarea</p></td>
-		            <td><p style="color: #258593;">Entrega</p></td>
-		            <td><p style="color: #258593;">Rubros</p></td>
-		            <td><p style="color: #258593;">Calificación</p></td>
-		            <td width="80px"><p style="color: #258593;">% de la Evaluación<p></td>
-			        <td width="60px"><p style="color: #258593;">% Final</p></td>
-		          </tr>
-			        <%for i in 0...table[0][0].size%>
-			        <%delivery = table[0][0][i]%>
-			        <%assignment = table[0][1][i]%>
-		          <tr>
-		            <td valign="top"><%=delivery.title%></td>
-			            <%if !assignment.nil? then%>
-		            <td valign="top"><%=assignment.title%></td>
-		            <td valign="top">
-		                <% for j in 0...assignment.response_to_the_evaluations.size%>
-		                <!-- El rubro del assignment -->
-		                  <%= assignment.response_to_the_evaluations[j].name%>
-		                  <%if !(j == assignment.response_to_the_evaluations.size - 1) then%>
-		                    </br>
-		                  <%end%>
-		                <%end%>
-		            </td>
-		            <td valign="top"><%=assignment.accomplishment%></td>
-		            <%else%>
-					<td valig="top">Sin entregar</td>
-					<td valig="top"></td>
-					<td valig="top"></td>
-		            <%end%>
-		            <%end%>
-					</tr>
-					<<tr>
-					   <td valig="top"></td>
-					   <td valig="top"></td>
-					   <td valig="top"</td>
-					   <td valig="top"></td>
-			        <td valign="top"><%=table[0][2][0]%></td>
-			        <td valign="top"><%=table[0][2][1]%></td>
-		          </tr>
-		      </table>
+                        <table border="1" cellpadding="3" cellspacing="3" id="calificacionesSpan" width="823px">
+                          <tr>
+                            <td width="205px"><p style="color: #258593;">Tarea</p></td>
+                            <td><p style="color: #258593;">Entrega</p></td>
+                            <td><p style="color: #258593;">Rubros</p></td>
+                            <td><p style="color: #258593;">Calificación</p></td>
+                            <td width="80px"><p style="color: #258593;">% de la Evaluación<p></td>
+                                <td width="60px"><p style="color: #258593;">% Final</p></td>
+                          </tr>
+                                <%table["deliveries"]["deliveries"].each_with_index do |delivery,index|%>
+                                <%assignment = table["deliveries"]["assignments"][index]%>
+                          <tr>
+                            <td valign="top"><%=delivery.title%></td>
+                                    <%if assignment then%>
+                            <td valign="top"><%=assignment.title%></td>
+                            <td valign="top">
+                                <% assignment.response_to_the_evalutions.each do |response_to_evaluation|%>
+                                <!-- El rubro del assignment -->
+                                  <%= response_to_evaluation.name%>
+                                  <%if response_to_evaluation != assignment.response_to_the_evaluations.last then%>
+                                    </br>
+                                  <%end%>
+                                <%end%>
+                            </td>
+                            <td valign="top"><%=assignment.accomplishment%></td>
+                            <%else%>
+                                        <td valig="top">Sin entregar</td>
+                                        <td valig="top"></td>
+                                        <td valig="top"></td>
+                            <%end%>
+                            <%end%>
+                                        </tr>
+                                        <<tr>
+                                           <td valig="top"></td>
+                                           <td valig="top"></td>
+                                           <td valig="top"</td>
+                                           <td valig="top"></td>
+                                <td valign="top"><%=table["deliveries"]["percent_of_deliveries"]%></td>
+                                <td valign="top"><%=table["deliveries"]["evaluation_total"]%></td>
+                          </tr>
+                      </table>
 
-		      <table border="1" width="823px" cellpadding="3" cellspacing="3" style="margin-top:20px; margin-bottom: 45px;">
-		      <tr>
-		        <td width="205px"><p style="color: #258593;">Examen</p></td>
-		        <td><p style="color: #258593;">Calificacion</p></td>
-		        <td><p style="color: #258593;">Calificación Total</p></td>
-		        <td><p style="color: #258593;">% de la Evaluación</p></td>
-		        <td><p style="color: #258593;">% Obtenido</p></td>
-		      </tr>
-		        <%for i in 0...table[1][0].size%>
-		          <tr>
-		          <td valign="top"style="padding: 5px 0px;"><%=table[1][0][i].name%></td>
-		          <td valign="top"style="padding: 5px 0px;">
-		            <% if !table[1][1][i].nil? then%>
-		            <%= table[1][1][i].result%>
-					<%else%>
-					Sin resolver
-		            <%end%>
-		          </td>
+                      <table border="1" width="823px" cellpadding="3" cellspacing="3" style="margin-top:20px; margin-bottom: 45px;">
+                      <tr>
+                        <td width="205px"><p style="color: #258593;">Examen</p></td>
+                        <td><p style="color: #258593;">Calificacion</p></td>
+                        <td><p style="color: #258593;">Calificación Total</p></td>
+                        <td><p style="color: #258593;">% de la Evaluación</p></td>
+                        <td><p style="color: #258593;">% Obtenido</p></td>
+                      </tr>
+                        <%table["surveys"]["surveys"].each_with_index do |survey,index|%>
+                          <tr>
+                          <td valign="top"style="padding: 5px 0px;"><%=survey.name%></td>
+                          <td valign="top"style="padding: 5px 0px;">
+                            <% if table["surveys"]["user_surveys"][index] then%>
+                            <%= table["surveys"]["user_surveys"][index].result%>
+                                        <%else%>
+                                        Sin resolver
+                            <%end%>
+                          </td>
 
-		        </tr>
-		        <%end%>
-		        <tr>
-				  <td valig="top"style="padding: 5px 0px"></td>
-				  <td valig="top"style="padding: 5px 0px"></td>
-		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][1]%></td>
-		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][0]%></td>
-		          <td valign="top"style="padding: 5px 0px;"><%=table[1][2][2]%></td>
-		        </tr>
-		      </table>
-		      <%end%>
-		      </br>
-		    <%end%>
-		    </div><!-- ends fixform -->
-		<%else%>
-
-  <div id="configurationing">
-	  	<h1 style="margin-left:10px; padding:2px;">Calificación del curso</h1>
-	  	<p id="pdf_link"><%= link_to "Descargar (PDF)", course_evaluation_download_path(@course, :format => "pdf") %>
-   </div>
+                        </tr>
+                        <%end%>
+                        <tr>
+                                  <td valig="top"style="padding: 5px 0px"></td>
+                                  <td valig="top"style="padding: 5px 0px"></td>
+                          <td valign="top"style="padding: 5px 0px;"><%=table["surveys"]["evaluation_total"]%></td>
+                          <td valign="top"style="padding: 5px 0px;"><%=table["surveys"]["percent_of_surveys"]%></td>
+                          <td valign="top"style="padding: 5px 0px;"><%=table["surveys"]["percent_of_evaluation"]%></td>
+                        </tr>
+                      </table>
+                      <%end%>
+                      </br>
+                    <%end%>
+                    </div><!-- ends fixform -->
+                <%else%>
    <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;">
-		  <%user = current_user%>
-		    <%table = @member.doTableCourse%>
+              <%user = current_user%>
+          <%deliveries_from_course = @course.deliveries.sort{|x,y| x.created_at <=> y.created_at}%>
+                  <%surveys_from_course = @course.surveys.sort{|x,y| x.created_at <=> y.created_at}%>
+                    <%table = @member.course_evaluation(@course,deliveries_from_course,surveys_from_course)%>
 
-		    	<span class="califHeader" style="margin-top:-20px;">Calificacion: <%=table[2]%></span>
-		        <h4 style="margin-top: 45px;">Alumno: <%=user.name%></h4>
-		    </br>
-		    <table border="1" width="750" cellpadding="3" cellspacing="3">
-		    <tr>
-		      <td><p>Tarea</p></td>
-		      <td><p>Entrega</p></td>
-		      <td><p>Rubros</p></td>
-		      <td><p>Calificación</p></td>
-		      <td><p>% de la Evaluación</p></td>
-		      <td><p>% obtenido</p></td>
-		    </tr>
-		      <%for i in 0...table[0][0].size%>
-		      <%delivery = table[0][0][i]%>
-		      <%assignment = table[0][1][i]%>
-	        <tr>
-	          <td valign="top"><%=delivery.title%></td>
-	          <%if !assignment.nil? then%>
-	            <td valign="top"><%=assignment.title%></td>
-	            <td valign="top">
-	              <% for j in 0...assignment.response_to_the_evaluations.size%>
-	              <!-- El rubro del assignment -->
-	                <%= assignment.response_to_the_evaluations[j].name%>
-	                <%if !(j == assignment.response_to_the_evaluations.size - 1) then%>
-	                  </br>
-	                <%end%>
-	              <%end%>
-	            </td>
-	            <td valign="top"><%=assignment.accomplishment%></td>
-	          <%else%>
-			  <td valig="top">Sin entregar</<td>
-	          <td valig="top"></td>
-			  <td valig="top"></td>
-	          <%end%>
-		      <%end%>
-		        <td valign="top"> <%=table[0][2][0]%></td>
-		        <td valign="top"> <%=table[0][2][1]%></td>
-		      </tr>
-		    </table>
+                            <span class="califHeader" style="margin-top:-20px;">Calificacion: <%=table["evaluation"]%></span>
+                        <h4 style="margin-top: 45px;">Alumno: <%=user.name%></h4>
+                    </br>
+                    <table border="1" width="750" cellpadding="3" cellspacing="3">
+                    <tr>
+                      <td><p>Tarea</p></td>
+                      <td><p>Entrega</p></td>
+                      <td><p>Rubros</p></td>
+                      <td><p>Calificación</p></td>
+                      <td><p>% de la Evaluación</p></td>
+                      <td><p>% obtenido</p></td>
+                    </tr>
+                      <%table["deliveries"]["deliveries"].each_with_index do |delivery,index|%>
+                      <%assignment = table["deliveries"]["assignments"][index]%>
+                <tr>
+                  <td valign="top"><%=delivery.title%></td>
+                  <%if assignment then%>
+                    <td valign="top"><%=assignment.title%></td>
+                    <td valign="top">
+                      <% assignment.response_to_the_evaluations.each do |response_to_evaluation|%>
+                      <!-- El rubro del assignment -->
+                        <%= response_to_evaluation.name%>
+                        <%if response_to_evaluation != assignment.response_to_the_evaluations.last then%>
+                          </br>
+                        <%end%>
+                      <%end%>
+                    </td>
+                    <td valign="top"><%=assignment.accomplishment%></td>
+                  <%else%>
+                          <td valig="top">Sin entregar</<td>
+                  <td valig="top"></td>
+                          <td valig="top"></td>
+                  <%end%>
+                      <%end%>
+                        <td valign="top"> <%=table["deliveries"]["percent_of_deliveries"]%></td>
+                        <td valign="top"> <%=table["deliveries"]["evaluation_total"]%></td>
+                      </tr>
+                    </table>
 
-		    <table border="1" width="750" cellpadding="3" cellspacing="3">
-		    <tr>
-		      <td><p>Examen</p></td>
-		      <td><p>Calificación</p></td>
-			  <td><p>Calificación Total</p></td>
-		      <td><p>% de la Evaluación</p></td>
-		      <td><p>% Obtenido</p></td>
-		    </tr>
-		      <%for i in 0...table[1][0].size%>
-		    <tr>
-	        	<td valign="top"><%=table[1][0][i].name%></td>
-		        <td valign="top">
-				  <% if !table[1][1][i].nil? then%>
-				  <%= table[1][1][i].result%>
-				  <%else%>
-				  Sin resolver
-				  <%end%>
-				</td>
-				</tr>
-		         <%end%>
-				 <tr>
-				<td valig="top"style"paddig: 5px 0px"></<td>
-				<td valig="top"style"paddig: 5px 0px"></td>
-		        <td valign="top"><%=table[1][2][1]%></td>
-		        <td valign="top"><%=table[1][2][0]%></td>
-		        <td valign="top"><%=table[1][2][2]%></td>
-		      </tr>
-		    </table>
+                    <table border="1" width="750" cellpadding="3" cellspacing="3">
+                    <tr>
+                      <td><p>Examen</p></td>
+                      <td><p>Calificación</p></td>
+                          <td><p>Calificación Total</p></td>
+                      <td><p>% de la Evaluación</p></td>
+                      <td><p>% Obtenido</p></td>
+                    </tr>
+                      <%table["surveys"]["surveys"].each_with_index do |survey,index|%>
+                    <tr>
+                        <td valign="top"><%=survey.name%></td>
+                        <td valign="top">
+                                  <% if table["surveys"]["user_surveys"][index] then%>
+                                  <%= table["surveys"]["user_surveys"][index].result%>
+                                  <%else%>
+                                  Sin resolver
+                                  <%end%>
+                                </td>
+                                </tr>
+                         <%end%>
+                                 <tr>
+                                <td valig="top"style"paddig: 5px 0px"></<td>
+                                <td valig="top"style"paddig: 5px 0px"></td>
+                        <td valign="top"><%=table["surveys"]["evaluation_total"]%></td>
+                        <td valign="top"><%=table["surveys"]["percent_of_surveys"]%></td>
+                        <td valign="top"><%=table["surveys"]["percent_of_evaluation"]%></td>
+                      </tr>
+                    </table>
 
-		    </div><!-- ends fixform -->
-		    <%end%>
+                    </div><!-- ends fixform -->
+                    <%end%>
 </div>
