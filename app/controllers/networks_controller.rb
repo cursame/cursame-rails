@@ -361,7 +361,7 @@ class NetworksController < ApplicationController
     #################### finaliza el acceso a los datos de los curos del usuario #####################
     #################### se generan las epecificaicones del wall #############################
     @operator = responds_true + responds_false
-    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{typeforfilter}").paginate(:per_page => 15, :page => params[:page])
+    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{typeforfilter}").paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
 
 
     respond_to do |format|

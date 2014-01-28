@@ -1,0 +1,6 @@
+<%= link_to "Solicitudes pendientes", pendding_friends_path(@user_l.personal_url), :remote => true %>
+<div id=" accepted_friends">
+<%= render :partial => 'users/friends_tpl', :locals => {:friends => @friends} %>
+</div>
+<div id="pending_friends">
+</div>

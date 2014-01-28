@@ -37,6 +37,14 @@
       }
     }
   }
+
+  #log_loadding {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    margin-top: 49px;
+    height: 2px;
+  }
 }
 
 .menu-user {
@@ -188,7 +196,9 @@
 
 .sidebar-section {
   .sidebar-section-header {
-    padding: 5px 10px;
+    padding: 6px 10px;
+    position: relative;
+    @include clearfix;
   }
 }
 
@@ -201,6 +211,29 @@
 
 .scroller {
   overflow-y: auto; 
+}
+
+/* Chat Switch
+----------------------------------*/
+.chat-switch-wrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include clearfix;
+
+  .chat-switch {
+    float: left;
+    padding: 4px 9px 3px 9px;
+    height: 21px;
+
+    span {
+      display: none;
+    }
+
+    &:hover span { 
+      display: inline;
+    }
+  }
 }
 
 /* Footer

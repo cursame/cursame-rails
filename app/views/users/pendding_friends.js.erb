@@ -1,0 +1,5 @@
+<% if @friends.count != 0 %>
+$('#pending_friends').html("<%= escape_javascript(render :partial => 'users/friends_tpl', :locals => {:friends => @friends})%>");
+<%else%>
+alert('No hay solicitudes pendientes.');
+<%end%>

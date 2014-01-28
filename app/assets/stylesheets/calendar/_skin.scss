@@ -1,0 +1,52 @@
+
+/* Buttons Skeleton
+----------------------------------*/
+.calendar-wrap {
+  .calendar-header {
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #c7cdcf;
+
+    .calendar-header-current-month {
+      text-align: center;
+    }
+
+    .calendar-header-prev-month {
+
+    }
+  }
+
+  table {
+    thead tr th {
+      background-color: #fcfcfc;
+      border-bottom: 1px solid #c7cdcf;
+      border-left: 1px solid #c7cdcf;
+    }
+
+    tbody {
+      background-color: #fff;
+
+      tr {
+        td {
+          border: 1px solid #E6E6E6;
+          border-width: 1px 0 0 1px;
+        }
+      }
+    }
+  }
+
+  .calendar-day {
+
+    .calendar-day-main {
+      .calendar-day-task {
+        color: $white;
+        border-radius: $radius;
+
+        &.delivery {
+          background-color: #8bbf27;
+        }
+
+        
+      }
+    }
+  }
+}

@@ -6,7 +6,23 @@ class SurveysController < ApplicationController
   end
 
   def my_surveys
-    @wall = current_network.walls.where(:publication_type => 'Survey').paginate(:per_page => 15, :page => params[:page])
+    surveys = []
+      current_user.courses.each do |c|
+        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+         c.surveys.each do |s|
+           case 
+              when @member.owner
+                  if s.user_surveys.count == 0
+                       surveys.push(s.id)
+                  end
+              when (!@member.owner.nil? || !@member.owner)
+                  if s.user_surveys.count == 0
+                       surveys.push(s.id)
+                  end
+           end
+          end
+      end
+    @wall = current_network.walls.where(:publication_type => 'Survey', :publication_id => surveys ).paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
   end
 
   def show
