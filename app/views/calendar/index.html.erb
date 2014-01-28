@@ -23,9 +23,12 @@
         </div>
         <div class="calendar-day-main">
           <% tasks.each do |task| %>
+            <% if task.schedule.state == 'published'%>
             <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
-              <h6><%= h( ("#{task.title}").truncate(20, omission: '...')) %></h6>
+              <h6><%= h(("#{task.title}").truncate(20, omission: '...')) %></h6>
             </div>
+            <%end%>
+
           <% end %>
         </div>
       </div>
