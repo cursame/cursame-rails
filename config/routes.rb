@@ -200,6 +200,16 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get '/personlization_url_corroborate/:personal_url', :to => 'users#corroborate_url', :as => :corroborate_url
 
+  ###### users tabs
+
+  get '/users/:personal_url/info', :to => 'users#info', :as => :user_info 
+  get '/users/:personal_url/friends', :to => 'users#friends', :as => :user_friends
+  get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
+  get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
+
+
+
+  
   # Groups
   get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
   post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
