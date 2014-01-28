@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 	$('a').click(function() {
 		var me = $(this);
 		if (me.attr('data') === 'modal') {
@@ -12,4 +12,4 @@ $(function() {
 		$('.modalia').hide();
 		$(this).hide();
 	});
-});
+});*/
