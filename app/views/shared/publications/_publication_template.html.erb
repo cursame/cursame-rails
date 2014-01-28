@@ -138,12 +138,17 @@
             <div class="academic-content">
               <div class="academic-action">
                 <% if type == 'Course' %>
-                  <%= link_to course_path(post.id), class: "btn btn-transparent btn-medium uppercase" do %>
+                  <%= link_to '',class: "btn btn-transparent btn-medium uppercase" do %>
                     Ver <%= tipo %>                  
                   <% end %>
                 <% else %>
-                  <a class="btn btn-transparent btn-medium uppercase" href="#" title="Ver discusión">Ver <%= tipo %></a>
+                  <a data="modal" class="btn btn-transparent btn-medium uppercase" href="" title="Ver discusión">Ver <%= tipo %></a>
                 <% end %>
+                <!-- modal view -->                  
+                  <div class="modalia" style="display:none">
+                    sdsdss
+                  </div>       
+                <!-- termina modal view -->
               </div>
               <div class="academic-content-icon">
                 <%= icon( tipo.to_s.downcase + '-publication') %>
@@ -157,6 +162,8 @@
                 <% end %>
               </div>
             </div>
+
+            
 
         <% end %>
 
@@ -199,7 +206,5 @@
       <%end%>
 
     </div>
-  </div>
-    
-    
+  </div>    
 <%end%>
