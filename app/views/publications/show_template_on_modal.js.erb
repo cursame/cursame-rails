@@ -1,0 +1,2 @@
+<% tpl = '/publications/' + @publication.publication_type.to_s.downcase + '_template' %>
+$('#modal-publication-<%=@publication.id%>').html('<%= escape_javascript(render(:partial => tpl, :locals => {:publication => @publication}))%>');

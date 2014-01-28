@@ -6,7 +6,7 @@ $(function() {
 			$('body').append('<div class="overlayia"></div>').show();
 			me.closest("div").find('.modalia').show();
 		}
-		return false;
+		// return false;
 	});
 	$('.overlayia').live('click',function () {
 		$('.modalia').hide();
