@@ -29,8 +29,13 @@
 @import "global/skin";
 @import "global/icons";
 
+// Calendar
+@import "calendar/skeleton";
+@import "calendar/skin";
+
 // Network Selector
-@import "forms/skeleton";
+@import "networks/skeleton";
+@import "networks/skin";
 
 // Dropdowns
 @import "dropdowns/skeleton";

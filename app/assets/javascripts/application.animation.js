@@ -455,7 +455,6 @@ $(document).ready(function() {
     *=======================================================================================
     */
     $('.btn').live('click',function () {
-        CancelEditingBlur();
         $('.link_publications').show();
         if($('.form_for_edit_wall').is(':visible')){
             $(this).closest("form").submit();

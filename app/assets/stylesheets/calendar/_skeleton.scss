@@ -1,0 +1,54 @@
+
+/* Buttons Skeleton
+----------------------------------*/
+.calendar-wrap {
+  .calendar-header {
+    @include clearfix;
+    
+    .calendar-header-current-month {
+      margin: 0 auto;
+      width: 400px;
+    }
+
+    .calendar-header-prev-month {
+      float: left;
+    }
+
+    .calendar-header-next-month {
+      float: right;
+    }
+
+    .change-month {
+      a {
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    height: 100%;
+
+    thead tr th {
+      padding: 10px;
+      width: (100/7) * 1%;
+    }
+
+    tbody tr {
+      td {
+        padding: 10px;
+      }
+    }
+  }
+
+  .calendar-day {
+
+    .calendar-day-main {
+      .calendar-day-task {
+        padding: 2px;
+        margin: 2px 0px;
+      }
+    }
+  }
+}

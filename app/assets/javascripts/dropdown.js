@@ -17,7 +17,6 @@ $(function() {
 
   });
 
-
   $('body').click(function(e) {
     var holder   = $(e.target).closest( "div.dropdown-wrap" );
     // si no estamos sobre un dropdown
@@ -35,7 +34,7 @@ $(function() {
   $('.tabs-buttons .tab').click(function() {
     var $this       = $(this),
         targetTab   = $this.attr('data-id-target'),
-        tabsHolder  = $this.closest('.tabs').children('.tabs-main');
+        tabsHolder  = $this.closest('.tabs').find('.tabs-main');
 
     $this.siblings().removeClass('active');
     $this.addClass('active');

@@ -1,0 +1,8 @@
+
+/* Cards Listing
+----------------------------------*/
+.cards-list {
+  .card {
+    @extend .basic-container-style;
+  }
+}

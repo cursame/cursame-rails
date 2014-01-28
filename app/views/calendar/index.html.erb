@@ -1,18 +1,34 @@
-<div id="calendar_g">
-  <h2 id="month">
-   <center> <%= link_to "Més anterior", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
-    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
-    <%= link_to "Més siguiente", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %></center>
-  </h2>
-<%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
-  <%= t.head('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo') %>
-  <%= t.day(:day_method => :ends_at) do |day, tasks| %>
-    <%= day.day %>
-    <% tasks.each do |task| %>
-     <!--en caso de requerir el tipo para colocar imagen--><%= task.schedule_type %>
-     <!--fecha de entrega-->
-     <div style="padding:1px;"> <%= h( ("#{task.title}").truncate(20, omission: '...')) %></div>
+
+<div class="calendar-wrap">
+  <div class="calendar-header">
+    <div class="wrapper spaced">
+      <div class="calendar-header-prev-month change-month">
+        <%= link_to "Més anterior", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+      </div>
+      <div class="calendar-header-next-month change-month">
+        <%= link_to "Més siguiente", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+      </div>
+      <div class="calendar-header-current-month">
+        <h1><%= h es_current_date( @date.strftime( '%B'), "", @date.strftime( '%Y') )  %></h1>
+      </div>
+    </div>
+  </div>
+
+  <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
+    <%= t.head( 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado') %>
+    <%= t.day(:day_method => :ends_at) do |day, tasks| %>
+      <div class="calendar-day">
+        <div class="calendar-day-number">
+          <%= day.day %>
+        </div>
+        <div class="calendar-day-main">
+          <% tasks.each do |task| %>
+            <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
+              <h6><%= h( ("#{task.title}").truncate(20, omission: '...')) %></h6>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   <% end %>
-<% end %>
 </div>
