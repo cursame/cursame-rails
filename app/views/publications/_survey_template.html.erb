@@ -1,15 +1,15 @@
 
-<% @survey = @publication.publication %>
+<% survey = publication.publication %>
 <%= form_tag "/surveys/survey_reply", :remote =>true do %>
   <p>
-    <%= @survey.name %><br />
-    <%= hidden_field_tag 'survey_id', @survey.id%>
+    <%= survey.name %><br />
+    <%= hidden_field_tag 'survey_id', survey.id%>
     <br />
-     <% for course in @survey.courses %>
+     <% for course in survey.courses %>
         <%= course.title %><br />
      <% end %>
   </p>
-  <% for question in @survey.questions %>
+  <% for question in survey.questions %>
   <p>
     <%= question.content%><br />
     <b>archivo</b>
