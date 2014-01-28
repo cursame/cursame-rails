@@ -80,7 +80,32 @@ class UsersController < ApplicationController
    @user = User.all
    redirect_to network_comunity_path
  end
+ 
+ ######## se colocan todas las rutas de para las tabs de show de users #####
+ def info
+   @user_l= User.find_by_personal_url(params[:personal_url])
+   permisos = Permissioning.find_by_user_id_and_network_id(@user_l.id, current_network.id)
+   @role = Role.find_by_id(permisos.role_id)
+ end
 
+ def courses
+  @user_l= User.find_by_personal_url(params[:personal_url])
+
+ end
+
+ def friends
+  @user_l= User.find_by_personal_url(params[:personal_url])
+  @friends = @user_l.friends(true)
+ end
+ 
+ def pendding_friends
+   @user_l= User.find_by_personal_url(params[:personal_url])
+   @friends = @user_l.friends(false)
+
+   respond_to do |format|
+    format.js
+   end
+ end
  def dashboard
  end
 

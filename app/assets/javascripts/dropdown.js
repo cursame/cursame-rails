@@ -23,6 +23,9 @@ $(function() {
     if (!holder.length){
        $('div.dropdown-wrap').removeClass('active');
     }
+    else{
+      holder.find('.activity-counter').html(0);
+    }
   });
 
   /* Autoresize textareas
