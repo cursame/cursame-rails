@@ -238,9 +238,6 @@
 
 /* Edit Members
 ----------------------------------*/
-#imgge {
-	background:#ddd;
-}
 
 .imgge_gradient {
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQzJSIgc3RvcC1jb2xvcj0iIzkwYmRkMSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iIzAzNjg5NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iIzAwNjY5NiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
@@ -251,52 +248,6 @@
   background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(144,189,209,0) 43%,rgba(3,104,151,1) 98%,rgba(0,102,150,1) 99%); /* IE10+ */
   background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(144,189,209,0) 43%,rgba(3,104,151,1) 98%,rgba(0,102,150,1) 99%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#006696',GradientType=0 ); /* IE6-8 */
-}
-
-.everymbrm {
-	background: #fff;
-	transition: linear all 0.2s;
-  
-  a {
-    color:#fff;
-    font-weight: 100;
-  }
-  
-  h3 {
-    background: #006696;
-    text-align: center;
-    font-size: 14px;
-  }
-
-  .helptext {
-    color: #FFF;
-    font-weight: lighter;
-    font-size: 14px;
-  }
-  
-  .dstroytxt {
-    text-align: center;
-    color: #fff!important;
-    background: #ccc;
-    transition: linear all 0.2s;
-    
-    > a {
-      color: #fff;
-    }
-
-    &:hover {
-      background: red;
-    }
-  }
-
-  &:hover {
-    box-shadow: 0px 0px 0px #28C8DF;
-    color: #FFF;
-
-    > a {
-      color: #FFF!important;
-    }
-  }
 }
 
 .helptext {
@@ -963,11 +914,6 @@ td {
 }
 
 // Admit Users
-.place-hldr {
-  transition: ease-in-out background 0.2s;
-  text-align: center;
-}
-
 .netWorkMenuHeader {
   background: rgba(221,221,221,0.2);
   transition: ease-out all 0.3s;
