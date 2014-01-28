@@ -6,7 +6,7 @@ class SurveysController < ApplicationController
   end
 
   def my_surveys
-    @wall = current_network.walls.where(:publication_type => 'Survey').paginate(:per_page => 15, :page => params[:page])
+    @wall = current_network.walls.where(:publication_type => 'Survey').paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
   end
 
   def show

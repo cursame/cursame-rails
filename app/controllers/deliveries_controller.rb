@@ -22,7 +22,23 @@ class DeliveriesController < ApplicationController
   end
   ##### manueja todas las tareas del usuario dentro de la red
   def my_deliveries
-    @wall = current_network.walls.where(:publication_type => 'Delivery').paginate(:per_page => 15, :page => params[:page])
+      deliveries = []
+      current_user.courses.each do |c|
+        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+         c.deliveries.each do |d|
+           case 
+              when @member.owner
+                  if d.assignments.count == 0
+                       deliveries.push(d.id)
+                  end
+              when (!@member.owner.nil? || !@member.owner)
+                  if d.assignment.count == 0
+                       deliveries.push(d.id)
+                  end
+           end
+          end
+      end
+    @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
   end
 
   def condocourse

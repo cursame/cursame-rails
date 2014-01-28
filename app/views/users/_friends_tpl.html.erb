@@ -1,0 +1,7 @@
+
+<% friends.each do |f|%>
+
+<%= avatar('user', '150', "no", "#{f.id }", "avatar", "no", "60") %>
+<%= link_to "#{f.name}", show_user_path(f.personal_url) %>
+
+<% end %>

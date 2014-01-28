@@ -1,0 +1,4 @@
+<% @user_l.courses.each do |c| %>
+    <%= avatar('course', '25', "no", "#{c.id}", "avatar", "no", "no") %>
+	<%= c.title %> <%= link_to "Ver curso", course_path(c.id)%></br>
+<%end%>
