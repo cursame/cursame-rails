@@ -137,18 +137,7 @@
 
             <div class="academic-content">
               <div class="academic-action">
-                <% if type == 'Course' %>
-                  <%= link_to '',class: "btn btn-transparent btn-medium uppercase" do %>
-                    Ver <%= tipo %>                  
-                  <% end %>
-                <% else %>
-                  <a data="modal" class="btn btn-transparent btn-medium uppercase" href="" title="Ver discusión">Ver <%= tipo %></a>
-                <% end %>
-                <!-- modal view -->                  
-                  <div class="modalia" style="display:none">
-                    sdsdss
-                  </div>       
-                <!-- termina modal view -->
+                <%= link_to 'Ver ' + tipo, show_template_on_modal_path(publication.id),:remote => true, class: "btn btn-transparent btn-medium uppercase", data: "modal"%>
               </div>
               <div class="academic-content-icon">
                 <%= icon( tipo.to_s.downcase + '-publication') %>
