@@ -118,6 +118,7 @@
                 <div class="state">
                     <div id="delivery_state_publish<%=delivery.id%>">
                     <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+                    
                     </div>
                     <div class="dates" id="dates_delivery<%=delivery.id%>">
                       <img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>

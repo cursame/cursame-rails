@@ -1,4 +1,4 @@
-$("#delivery_state_publish<%=@delivery.id%>").html('<%= link_to "#{@delivery.state}", publish_unpublish_delivery_manualy_path(:state => @delivery.state, :id => @delivery.id ), :remote => true, :class => "state-btn" %>');
+$("#delivery_state_publish<%=@delivery.id%>").html('<%= link_to "#{@linkik}", publish_unpublish_delivery_manualy_path(:state => @delivery.state, :id => @delivery.id ), :remote => true, :class => "state-btn" %>');
 $("#dates_delivery<%=@delivery.id%>").html('<%= @delivery.publish_date %> <%= @delivery.end_date %>')
 $("#notice").html('');
 $("#notice").css('color','#608847');
