@@ -1,7 +1,4 @@
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(39,39,39,1)), url(<%= @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>); background-size: 100%; background-position-y: 0px; background-repeat: repeat-y; repeat: none;">
-  
-  <% @course.expired? %>
-  <% @incourse = true %>
+<div id="banner-profile" style="display: none">
   <div class="banner-shadow">
     <div id="box-titles">
       <ul id="banner-btns" class="list-header">
@@ -105,63 +102,63 @@
               }
             });
           </script>
-			 
-			 <div class="slider-cointainer" style="width:440px; overflow-y: hidden; overflow-x: scroll ; float: left; height: 400px;">
+       
+       <div class="slider-cointainer" style="width:440px; overflow-y: hidden; overflow-x: scroll ; float: left; height: 400px;">
             <div class="content_delivery" id="content_delivery_first" style="overflow-y: scroll; overflow-x: hidden;">      
             <% @course.deliveries.reverse.each do |delivery|%>            
-        	    <div class="delivery_f" >
-	              <div class="delivery_container">
-	        	      <div class="OpenClose<%=delivery.id%>"id="OpenClose"></div>
-					  <div class="title"> <%= delivery.title %> <br>
-					  <span><%=truncate(delivery.description, :length => 25)%></span>
-					  <%if delivery.assignments.count != 0 then%>
-					  <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
-					  <%end%>
-	              </div>
-	              <div class="state">
-	                  <div id="delivery_state_publish<%=delivery.id%>">
-	                  <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
-	                  </div>
-	                  <div class="dates" id="dates_delivery<%=delivery.id%>">
-	                  	<img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
-	                  </div>
-	                  <div class="image" id="opentag<%=delivery.id%>" onmouseover="">
-		                  
-	                  </div>
-	              </div>
-	                
-	              <div class="so_open" id="so_open<%=delivery.id%>" style="display:none;"><!-- start so_open -->
-	              	<% delivery.assignments.reverse.each do |assignment|%>
-	              	
-	                	<div class="assignment" id="div-assignment-<%= assignment.id %>"><!-- start assignment -->
+              <div class="delivery_f" >
+                <div class="delivery_container">
+                  <div class="OpenClose<%=delivery.id%>"id="OpenClose"></div>
+            <div class="title"> <%= delivery.title %> <br>
+            <span><%=truncate(delivery.description, :length => 25)%></span>
+            <%if delivery.assignments.count != 0 then%>
+            <div class="image_scroll" id="image_scroll<%=delivery.id%>" style="display:none;"></div>
+            <%end%>
+                </div>
+                <div class="state">
+                    <div id="delivery_state_publish<%=delivery.id%>">
+                    <%= link_to "#{delivery.state}", publish_unpublish_delivery_manualy_path(:state => delivery.state, :id => delivery.id ), :remote => true, :class => "state-btn" %>
+                    </div>
+                    <div class="dates" id="dates_delivery<%=delivery.id%>">
+                      <img src="/assets/clock.png"><%= delivery.publish_date %><%= delivery.end_date %>
+                    </div>
+                    <div class="image" id="opentag<%=delivery.id%>" onmouseover="">
+                      
+                    </div>
+                </div>
+                  
+                <div class="so_open" id="so_open<%=delivery.id%>" style="display:none;"><!-- start so_open -->
+                  <% delivery.assignments.reverse.each do |assignment|%>
+                  
+                    <div class="assignment" id="div-assignment-<%= assignment.id %>"><!-- start assignment -->
 
-	                    	<div class="title" style="width: 422px;"><!-- start title -->
-	                        	<span style="width: 345px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
-									<span>
-										Entrega:&nbsp;
-									</span>
-									<%= truncate("#{assignment.title}", :omission => "...", :length => 35)%><br/>
-									<% if assignment.user != nil %>
-									<span>
-										Por:&nbsp;
-									</span>
-										<%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %>
-								</span>
-								
-								<span id="RightArrow" style="float: right;">
-	                        		<%= link_to image_tag('right_arrow.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
-								</span>
-							<%end%>
-	                      </div><!-- ends title -->
+                        <div class="title" style="width: 422px;"><!-- start title -->
+                            <span style="width: 345px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
+                  <span>
+                    Entrega:&nbsp;
+                  </span>
+                  <%= truncate("#{assignment.title}", :omission => "...", :length => 35)%><br/>
+                  <% if assignment.user != nil %>
+                  <span>
+                    Por:&nbsp;
+                  </span>
+                    <%= truncate("#{assignment.user.name}", :omission => "...", :length => 35) if ( !assignment.user.name.blank?) %>
+                </span>
+                
+                <span id="RightArrow" style="float: right;">
+                              <%= link_to image_tag('right_arrow.png'), course_assignment_l_path(assignment.id, :data=> @course.id), :remote => true%>
+                </span>
+              <%end%>
+                        </div><!-- ends title -->
   
-	                    </div><!-- ends assigment -->
+                      </div><!-- ends assigment -->
 
-	                  <%end%>
-	                </div><!-- ends so_open -->
-	                
-	              </div><!-- ends delivery_container -->
-	            </div><!-- ends delivery_f -->
-	            <script>
+                    <%end%>
+                  </div><!-- ends so_open -->
+                  
+                </div><!-- ends delivery_container -->
+              </div><!-- ends delivery_f -->
+              <script>
                 $('.assignment').mouseenter(function() {
                   $(this).css({background: "#EEE"});
                   $('#RightArrow').css({background: "#e2dfdf"});
@@ -171,7 +168,7 @@
                   $(this).css({background: "#F5F5F5"});
                   $('#RightArrow').css({background: "transparent"});
                 });
-                       	   
+                           
                 $('.delivery_f .OpenClose<%=delivery.id%>').click (function() {
                   $('#nothing_found').hide();
                   $( '#so_open<%=delivery.id%>' ).toggle('blind');
@@ -203,9 +200,9 @@
           <!-------------------------------
           -------------------------------
           
-	          comienza tab de examenes
-	          
-	      -------------------------------
+            comienza tab de examenes
+            
+        -------------------------------
           ------------------------------->
           
           <div class="content_survey" id="content_survey_slider" style="float: left; position: relative; background: #FFF; width: 440px; display: block; overflow-x: hidden; display:none;">
@@ -214,41 +211,41 @@
                 <div id="ExamsDelivery" class="delivery_f">
                   <div class="delivery_container">
                     <div id="OpenClose" class="OpenClose<%=survey.id%>"></div>
-	                  <div class="title">
-	                  	<%= survey.title %>
-						<%if survey.user_surveys.count != 0 then%>
-	                  	<div class="image_scroll" id="image_scroll_s<%=survey.id%>" style="display:none;"></div>
-						<%end%>
-	                  </div>
-	                   
-	                  <div class="state">
-	                  	<div class="dates" id="survey_dates<%= survey.id%>">
-						  	<%= survey.publish_date %><%= survey.end_date %>
-						</div>
+                    <div class="title">
+                      <%= survey.title %>
+            <%if survey.user_surveys.count != 0 then%>
+                      <div class="image_scroll" id="image_scroll_s<%=survey.id%>" style="display:none;"></div>
+            <%end%>
+                    </div>
+                     
+                    <div class="state">
+                      <div class="dates" id="survey_dates<%= survey.id%>">
+                <%= survey.publish_date %><%= survey.end_date %>
+            </div>
 
-	                    <div id="survey_state_publish<%=survey.id%>">
-	                    	<%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
-						</div><!-- ends survey_state_publish -->
-	                  </div><!-- ends state -->
-	                     
-	                  <div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
-	                </div><!-- ends delivery_container -->
-	              </div><!-- ends ExamsDelivery -->
+                      <div id="survey_state_publish<%=survey.id%>">
+                        <%= link_to "#{survey.state}", publish_unpublish_survey_manualy_path(:state => survey.state, :id => survey.id ), :remote => true, :class => "state-btn" %>
+            </div><!-- ends survey_state_publish -->
+                    </div><!-- ends state -->
+                       
+                    <div class="image" id="opentag_s<%=survey.id%>"></div><!-- ends image -->
+                  </div><!-- ends delivery_container -->
+                </div><!-- ends ExamsDelivery -->
 
-	              <!--se muestran las tareas al dar click-->
-	              <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none; margin-left: 1px!important; width: 440px;">
-	              	<% survey.user_surveys.each do |us|%>
-                    	<div class="assignment" style="width: 440px;">
-							<div class="title">
-				  		        <span style="width: 410px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
-					  	 	        <span class="title" style="font-size: 15px;">Entregó: <%= us.user.name%></span>
-						   	        <span id="RightArrow" style="float: right; margin-top: -5px;">
-						   	        	<%= link_to image_tag('right_arrow.png'), course_survey_l_path(us.id), :remote => true%>
-						   	        </span>
-						 	    </span>
-						 	</div>
-						 </div>
-					<%end%>
+                <!--se muestran las tareas al dar click-->
+                <div class="so_open_C2" id="copea_<%=survey.id%>" style="display:none; margin-left: 1px!important; width: 440px;">
+                  <% survey.user_surveys.each do |us|%>
+                      <div class="assignment" style="width: 440px;">
+              <div class="title">
+                      <span style="width: 410px; margin: 5px 0px 0px 5px; float: left; overflow: hidden;">
+                        <span class="title" style="font-size: 15px;">Entregó: <%= us.user.name%></span>
+                        <span id="RightArrow" style="float: right; margin-top: -5px;">
+                          <%= link_to image_tag('right_arrow.png'), course_survey_l_path(us.id), :remote => true%>
+                        </span>
+                  </span>
+              </div>
+             </div>
+          <%end%>
                 </div><!-- ends so_open_C2 --> 
                 
                 
@@ -256,20 +253,20 @@
               
               <script>
                 $('.OpenClose<%=survey.id%>').click(function() {
-					$('#nothing_found').hide();
-					//$('#copea_<%=survey.id%>').toggle('blind', function() {});
-					$('#copea_<%=survey.id%>').toggle( function(){} );
-					$('#image_scroll_s<%=survey.id%>').toggle();
-					$(this).toggleClass('CloseOpenClass');
-				});
+          $('#nothing_found').hide();
+          //$('#copea_<%=survey.id%>').toggle('blind', function() {});
+          $('#copea_<%=survey.id%>').toggle( function(){} );
+          $('#image_scroll_s<%=survey.id%>').toggle();
+          $(this).toggleClass('CloseOpenClass');
+        });
 
-				$('#image_scroll_s<%=survey.id%>').click(function() {
-						//alert('scroll');
-						var scroll = $('#copea_<%=survey.id%>').scrollTop();
-						setTimeout(function(){
-							$('#copea_<%=survey.id%>').scrollTop(scroll+15)
-					},1);
-				});
+        $('#image_scroll_s<%=survey.id%>').click(function() {
+            //alert('scroll');
+            var scroll = $('#copea_<%=survey.id%>').scrollTop();
+            setTimeout(function(){
+              $('#copea_<%=survey.id%>').scrollTop(scroll+15)
+          },1);
+        });
               </script>
             <%end%>
           </div><!-- ends content_survey -->
@@ -293,339 +290,71 @@
       <h1 style=" margin:10px;color:#fff; font-size:20px;">Configuración de <%= current_network.course_tag%></h1>
       <%= render :partial => "courses/form"%>
     </div>
-  </div><!--ends banner-shadow-->
+  </div>
+  </div>
 </div>
-</div><!--end banner profile-->
 
-<!-- Content Post Box -->
-<div id="box-content" class="profile-line">
+<%= render :partial => 'course-header' %>
 
-  <!-- SideBar -->
-  <div id="side-bar" class="side-left-bar">
-    <!-- User Avatar -->
-
-    <div id="box-user-credential" class="network-layout" style="position: relative;">
-      <div class="thumbnail"  >
-        <%= avatar('course', '150', "#{course_path(@course.id)}", "#{@course.id}", "course_heather_avatar", "course_heather_avatar", "190") %>
-      </div>
-      <div class="tagname"><%= @course.title %></div>
-    </div>
-	
-	<% permitted_to? :create, :courses do %>
-		<% if @member.owner != nil %>
-			<% if @member.owner == true %>
-				<div class="depot_button" style="">
-          <%= link_to "Monitor de actividades", course_activities_depot_path %>
-        </div>
-
-        <div class="depot_button" style="">
-					<%= link_to "Clonar curso", clone_course_view_path %>
-				</div>
-			<%end%>
-		<%end%>
-	<% end %>
-
-	  <div id="box-course"  style=" /*margin-top:155px;*/ margin-top: 65px;" class="basic-lateral-box margin-top boxinfocourse"> 
-	    <h2 style="margin-right:-60px; margin-top:6px;">Información</h2>
-	    
-	    <p><b>Sylabus</b><b>:</b><%= @course.silabus %> </p>
-	    
-	    <% permitted_to? :create, :courses do %>
-	         <% if @member.owner != nil %>
-                <% if @member.owner == true %>
-   	    <br><%= link_to "editar #{current_network.course_tag}", edit_course_path,:id =>"edit_course"%>
-   	            <%end%>
-   	         <%end%>
-	    <%end%>
-	  </div><!-- box-course -->
-	  
-	  <div id="tabs-friends" class="tabs-style">
-	    <div id="box-friends" class="basic-lateral-box" style="margin-top: 23px; min-height: 310px; max-height: 610px; position: relative; display: block; margin-bottom:0px;" >
-        <h2  style="margin-right:-30px; width:260px;"> Miembros </h2>             
-	         <% permitted_to? :create, :courses do %>
-        	      <% @new_and_non_aproval_members =  @course.members_in_courses.where(:accepted => false).count %>              
-        	      <% if @new_and_non_aproval_members != 0%>
-        	      <span class="RedBallon" id="unser_new_in_course" onclick="location.href='<%= course_members_path %>'"><%=@new_and_non_aproval_members%></span> 
-                                   <script>
-                                        $("#unser_new_in_course").hover(
-                                             function () {
-                                               $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:-10px'><div class='tooltipr'><%=truncate("Tienes #{@new_and_non_aproval_members} miembros pendientes de aprovación.", :omission => "...", :length => 155)%></div></span>"));
-                                             },
-                                             function () {
-                                               $(this).find("span:last").remove();
-                                             }
-                                           );
-                                     </script>
-
-                  <%end%>
-                  <%end%>  	     
-      	    
-	        <% @course.members_in_courses.each do |member|  %>             
-         
-	          <% @members = User.find_by_id(member.user_id) %>
-            <!--coloca la imagen y el nombre-->
-            <% if current_role == 'admin' || current_role == 'superadmin'%>
-              <% if @members != nil%>
-              <div id="member_id<%=@members.id%>" style="float:left;">
-                <%= avatar('user', '45', "#{show_user_path(@members.personal_url)}", "#{@members.id}", "course_heather_avatar", "course_heather_avatar", "60") %>
-                    <script>
-                        $("#member_id<%=@members.id%>").hover(
-                             function () {
-                               $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@members.name}", :omission => "...", :length => 25)%></div></span>"));
-                             },
-                             function () {
-                               $(this).find("span:last").remove();
-                             }
-                           );
-                     </script>
-              </div>
-              <%else%>
-              <%end%>    
-            <%else%>
-              <% if @member.accepted == true %>
-                <% if @members != nil%>
-                   <div id="member_id<%=@members.id%>" style="float:left;">
-                      <%= avatar('user', '45', "#{show_user_path(@members.personal_url)}", "#{@members.id}", "course_heather_avatar", "course_heather_avatar", "60") %>
-
-                          <script>
-                              $("#member_id<%=@members.id%>").hover(
-                                   function () {
-                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@members.name}", :omission => "...", :length => 25)%></div></span>"));
-                                   },
-                                   function () {
-                                     $(this).find("span:last").remove();
-                                   }
-                                 );
-                           </script>
-                    </div>
-                <%else%>
-                <%end%>
-              <%end%>              
-            <%end%>
-           <%end%>
-           </div>
-          </div> 
-           <div style="position:realtive; margin-left:18px; margin-top:-2px; height:30px; width:230px;">
-          <% if current_role == 'admin' || current_role == 'superadmin' %>          
-            <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
-          <%else%>
-            <% if @member.owner != nil %>
-              <% if @member.owner == true %>
-                <div class="view-all" id="members_admin"> <%= link_to "Administrador de miembros", course_members_path %></div>
-              <%end%>
-            <%end%>
-          <%end%>
-          </div>
-          
-      
-    <script>
-          $("#members_admin").hover(
-               function () {
-                 $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-10px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("Deso ver todos los miembros del #{current_network.course_tag}", :omission => "...", :length => 55)%></div></span>"));
-               },
-               function () {
-                 $(this).find("span:last").remove();
-               }
-             );
-       </script>
-    
-
-    
-    <div id="box-d" class="basic-lateral-box" style="margin-top: 30px; position: relative; display: block;">
-      <h2  style="margin-right:-30px; width:260px;"> Biblioteca </h2>
-      <span class="RedBallon"><%= @course.course_files.count %></span>
-      
-      <% if @member.owner != nil %>
-        <% if @member.owner == true %>
-          <%= form_for CourseFile.new, :html => {:multipart => true} do |f|%>
-            <div id="upload-files-to-course">
-              <label class="UploadArchiveBtn">
-            	  Subir Archivos al <%= current_network.course_tag%>
-              </label>
-              <input id="course_file_file" class="UploadFiles" style="height: 55px; min-width:55px; background: transparent!important; cursor: pointer;" name="course_file[file]" type="file" multiple="multiple"/>
-              <%= hidden_field_tag :course_id, @course.id %> 
-              <%= f.hidden_field :published, :value => true %>
-            </div>
-          <%end%>
-        <%end%>
-      <%end%>
-      
-	<script>
-	  $("#upload-files-to-course").hover(
-	       function () {
-	         $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:100px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("Da click aquí para subir un archivo a la biblioteca del #{ current_network.course_tag }.", :omission => "...", :length => 155)%></div></span>"));
-	       },
-	       function () {
-	         $(this).find("span:last").remove();
-	       }
-	     );
-	</script>
-	<!--acción de noficación cuando se debe mostrar la respuesta de un cuestionario-->
-	
-     <script>
-            $(document).ready(function() {
-                var aux = <%= (@show_survey and @id_search) || false %>;
-                  	if(aux) {
-                    $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
-                    $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
-                      $('#tarea_en_carga_notification').css('min-width', '100%');
-                      //$('#tarea_en_carga_notification').css('margin-left', '10%');
-                    });
-                  } 
-             });
-     </script>
-     
-      <script>
-        $('.UploadArchiveBtn').mouseenter ( function() {
-          (this).addClass('.UploadArchiveBtnHover');
-        });
-		 	  
-	 $(document).ready(function() {
-          	/*if(<%= (@show_survey and @id_search) %>) {
-            $('#timeline :nth-child(1)').find('.content').append('<div class="tcg"><div id="tarea_en_carga_notification"></div></div>');
-            $.get('<%= course_survey_l_notif_path(@show_survey) %>', function() {
-              $('#tarea_en_carga_notification').css('min-width', '100%');
-              $('#tarea_en_carga_notification').css('margin-left', '10%');
-            });
-          } */
-
-		 	    $.ajaxSetup({timeout:120000});
-		 	    
-		 	    function humanSize (size) {
-		 	      var b = [1<<30, 1<<20, 1<<10], s = ['GB', ' MB', ' kB'];
-		 	      for (var i in b) if (size >= b[i]) return (size/b[i]).toFixed(1) + s[i];
-		 	    }
-		 	    
-		 	    $('#upload-files-to-course').click(function() {
-		 	      $('#upload-files-to-course').fileupload({
-		 	        dataType: "script",
-		 	        timeout:120000,
-		 	        add:function(e,data) {
-		 	          data.context = $(tmpl("template-upload-2",data.files[0]));
-		 	          $('#uplok').append(data.context);
-		 	          data.submit().error(function (jqXHR, textStatus, errorThrown) {
-                });
-              },
-              progress:function(e,data) {
-                if(data.context) {
-                  progress = parseInt(data.loaded / data.total * 100,0);
-                  speed = humanSize(data.bitrate / 8) + '/s';
-                  data.context.find('.progress-add').html(speed + ' '+ progress+"%" );
-                  data.context.find('.progress_exact').css('width',progress+ "%");
-                  
-                  if (progress == 100) {
-                    data.context.find('.deletedprogresbar').hide();
-                  }
-                  
-                }
-              }
-            });
-          });
-        });
-      </script>
-      
-      <div id="uplok">
-        <script id="template-upload-2" type="text/x-tmpl">
-          <div class="upload">
-            <div class="deletedprogresbar">
-              {%=o.name%}<div class="progress-add"></div>
-              <div class="content_progress_bar">
-                <div class="progress_exact"></div>
-              </div>
-            </div>
-          </div>
-        </script>
-      </div><!-- uplok -->
-      
-      <div style="width: 230px;  overflow:auto; min-height:0px; max-height: 300px; overflow-x: hidden; padding-top: 25px; padding:1px; min-height:300px; max-height:600px;">
-          <% if @course.course_files.count == 0 %> 
-          <div id="files" style="margin-top:20px;"></div>
-          
-          <%end%>  
-          
-        <% @course.course_files.reverse.each do |cf|%>
-          <% @name =  "#{cf.file}" %>
-          <% @sintetic_name = @name.split('/').last%>
-          <% @termination = @name.split('.').last %>
-          <!--se ha colocan los archivos dependiendo su categoría-->
-          <div style="margin-top:35px;" style="min-height:100px;">
-            <% if @course.course_files.count != 0 %> 
-              <div id="files"></div>
-            <%end%>  
-          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination }%>
-          </div>
-
-        <%end%>
-      </div>
-    </div><!--ends box-d -->
-  </div><!--ends side-bar-->
-  <!--archivos del curso-->
-  <script>
-   $( document ).ready(function() {
-   var friend_height = $('#box-friends').height();
-   var margin_box_d = friend_height + 80+'px';
-   $('#box-d').css('margin-top',margin_box_d);
-   });
-  </script>
-  <!-- Content -->
+<div class="wrapper spaced">
   <div id="box-stream-post">
-	  <div id="pk_menu">
-	    <%=render :partial => 'shared/post_menu' %>
-	  </div>
+    <div id="pk_menu">
+      <%=render :partial => 'shared/post_menu' %>
+    </div>
 
-	  <%=render :partial => 'shared/wall_filters', :locals => {:path => course_path(@course.id), id:@course.id} %>
+    <div id="timeline" class="tim">
+      <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
+    </div>
 
-	  <div id="timeline" class="tim">
-	    <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
-	  </div>
-
-	  <!-- inicio de joyride -->
-	  <% if show_joyride(1) == '0' %>
-		  <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
-	  <% end %>
-	  <!-- fin de joyride -->
-
-    <!-- fin timeline -->
+    <% if show_joyride(1) == '0' %>
+      <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
+    <% end %>
 
     <%= will_paginate(@wall) %>
   </div>
-  
-  <! -------------------- area de scripts -------------------- >
-  <! -------------------- area de scripts -------------------- >
-  
-  <script type="text/javascript">
-  	$('#box-d').mouseenter ( function() {
-	  	$('.UploadArchiveBtn').addClass('UploadArchiveBtn_selected'), 100;
-  	});
-  	$('#box-d').mouseleave ( function() {
-	  	$('.UploadArchiveBtn').removeClass('UploadArchiveBtn_selected'), 300;
-  	});
-  
-	// elimina todos los p vacios  
-	$(document).ready ( function() {
-		$('p:empty').hide();
-	});
-	
-	$("#stats-area").on('show',function () {
-		$("#timeline-embed").resize();
-		$("#estadistic-list").css("display","block");
-		$("#banner-profile").css("height", "900px;");
-	});
-  
-    $(function() {
-      var p = $('#timeline').pageless({
-        totalPages: <%= @wall.total_pages %>,
-        url: '<%= course_path(@course.id) %>',
-        loaderMsg: '...',
-        onInit:function(opts) {
-          this.pageless = {
-          opts : opts
-        };
-      },
-      params:{
-        search:''
-      },
-      loaderImage: '<%= image_path("load.gif")%>'
-    });
+</div>
+
+<div style="display: none">
+  <% if current_role == 'admin' || current_role == 'superadmin' %>          
+    <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
+  <% elsif @member.owner != nil && @member.owner == true %>
+    <div class="view-all" id="members_admin"> <%= link_to "Administrador de miembros", course_members_path %></div>
+  <%end%>
+</div>
+
+<script type="text/javascript">
+  $('#box-d').mouseenter ( function() {
+    $('.UploadArchiveBtn').addClass('UploadArchiveBtn_selected'), 100;
   });
-  </script>
+  $('#box-d').mouseleave ( function() {
+    $('.UploadArchiveBtn').removeClass('UploadArchiveBtn_selected'), 300;
+  });
+
+  // elimina todos los p vacios  
+  $(document).ready ( function() {
+    $('p:empty').hide();
+  });
+
+  $("#stats-area").on('show',function () {
+    $("#timeline-embed").resize();
+    $("#estadistic-list").css("display","block");
+    $("#banner-profile").css("height", "900px;");
+  });
+
+  $(function() {
+    var p = $('#timeline').pageless({
+      totalPages: <%= @wall.total_pages %>,
+      url: '<%= course_path(@course.id) %>',
+      loaderMsg: '...',
+      onInit:function(opts) {
+        this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+});
+</script>

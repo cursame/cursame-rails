@@ -32,7 +32,7 @@ class DeliveriesController < ApplicationController
                        deliveries.push(d.id)
                   end
               when (!@member.owner.nil? || !@member.owner)
-                  if d.assignment.count == 0
+                  if d.assignments.count == 0
                        deliveries.push(d.id)
                   end
            end

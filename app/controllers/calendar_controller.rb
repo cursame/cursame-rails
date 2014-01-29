@@ -32,9 +32,10 @@ class CalendarController < ApplicationController
    end
    
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+   @today = Time.now
    @tasks = Event.where(:id => id_event)
    
-   puts @tasks           
+   #puts @tasks
   end
   
   def connection

@@ -3,10 +3,10 @@
   <div class="calendar-header">
     <div class="wrapper spaced">
       <div class="calendar-header-prev-month change-month">
-        <%= link_to "Més anterior", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+        <%= link_to "&#8592; Més anterior".html_safe, :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
       </div>
       <div class="calendar-header-next-month change-month">
-        <%= link_to "Més siguiente", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+        <%= link_to "Més siguiente &#8594;".html_safe, :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
       </div>
       <div class="calendar-header-current-month">
         <h1><%= h es_current_date( @date.strftime( '%B'), "", @date.strftime( '%Y') )  %></h1>
@@ -18,17 +18,31 @@
     <%= t.head( 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado') %>
     <%= t.day(:day_method => :ends_at) do |day, tasks| %>
       <div class="calendar-day">
-        <div class="calendar-day-number">
+        <% today = true if (Time.now.strftime("%d/%m/%Y") == "#{day.day}/#{day.month}/#{day.year}")%>
+        <div class="calendar-day-number <%= "today" if today %>">
           <%= day.day %>
         </div>
+
         <div class="calendar-day-main">
           <% tasks.each do |task| %>
             <% if task.schedule.state == 'published'%>
-            <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
-              <h6><%= h(("#{task.title}").truncate(20, omission: '...')) %></h6>
-            </div>
-            <%end%>
 
+              <% task.schedule.courses.each do |course| %>
+                <% member_in = MembersInCourse.find_by_course_id_and_user_id( course.id, current_user.id)%>
+
+                <% if !member_in.nil? %>
+
+                  <%= link_to "#{course_path(course.id)}?search=#{task.schedule_type.to_s}&id_search=#{task.schedule.id}" do %>
+                    <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
+                      <h6><%= truncate( task.title, :omission => "...", :length => 20) %></h6>
+                      <span><%= task.schedule.end_date.strftime("%I:%M%P") %></span>
+                      <span>- <%= course.title %></span>
+                    </div>
+                  <% end %>
+                <% end %>
+              <%end%>
+
+            <%end%>
           <% end %>
         </div>
       </div>

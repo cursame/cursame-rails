@@ -286,6 +286,7 @@ class CoursesController < ApplicationController
     end
     
     @users = User.where(:id => id_for_users)
+    @member = obtainMember(@course.id,current_user.id)
   end
 
   def evaluation

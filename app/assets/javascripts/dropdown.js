@@ -18,12 +18,12 @@ $(function() {
   });
 
   $('body').click(function(e) {
-    var holder   = $(e.target).closest( "div.dropdown-wrap" );
+    var holder = $(e.target).closest( "div.dropdown-wrap" );
+
     // si no estamos sobre un dropdown
-    if (!holder.length){
-       $('div.dropdown-wrap').removeClass('active');
-    }
-    else{
+    if ( !holder.length ) {
+      $('div.dropdown-wrap').removeClass('active');
+    } else {
       holder.find('.activity-counter').html(0);
     }
   });
