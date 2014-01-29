@@ -286,6 +286,7 @@ class CoursesController < ApplicationController
     end
     
     @users = User.where(:id => id_for_users)
+    @member = obtainMember(@course.id,current_user.id)
   end
 
   def evaluation
@@ -473,6 +474,7 @@ class CoursesController < ApplicationController
             title: (("#{del.title}").to_s).delete("\n"),
             description: (("#{del.description}").to_s).delete("\n"),
             pertencenence_to: "tarea#{del.id}",
+            state: del.state,
             assets_integrate: assets_deliveries
           },
           assets: assets_deliveries
@@ -515,6 +517,7 @@ class CoursesController < ApplicationController
                 title: (("#{as.title}").to_s).delete("\n"),
                 description: (("#{as.brief_description}").to_s).delete("\n"),
                 pertencenence_to: "entrega_tarea#{as.id}",
+                state: "none",
                 assets_integrate: assets_assignmentss
               },
               assets: assets_assignmentss  #+ contents_assignmentss
@@ -550,6 +553,7 @@ class CoursesController < ApplicationController
             id: survey.id,
             type: 'examen',
             title: (("#{survey.name}").to_s).delete("\n"),
+            state: survey.state,
             pertencenence_to: "entrega_survey#{survey.id}"
           }          
         })
@@ -687,6 +691,7 @@ class CoursesController < ApplicationController
             title: (("#{del.title}").to_s).delete("\n"),
             description: (("#{del.description}").to_s).delete("\n"),
             pertencenence_to: "tarea#{del.id}",
+            state: del.state,
             assets_integrate: assets_deliveries
           },
           assets: assets_deliveries
@@ -729,6 +734,7 @@ class CoursesController < ApplicationController
                 title: (("#{as.title}").to_s).delete("\n"),
                 description: (("#{as.brief_description}").to_s).delete("\n"),
                 pertencenence_to: "entrega_tarea#{as.id}",
+                state: "none",
                 assets_integrate: assets_assignmentss
               },
               assets: assets_assignmentss  #+ contents_assignmentss
@@ -764,6 +770,7 @@ class CoursesController < ApplicationController
           compose: {
             id: survey.id,
             type: 'examen',
+            state: survey.state,
             title: (("#{survey.name}").to_s).delete("\n")
           }
         })

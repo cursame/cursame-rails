@@ -61,6 +61,7 @@
   </div>
 </div>
 
+
 <script>
   function red_actdepot(elem) {
     var red_to = $(elem).attr("redirect_to");
@@ -97,7 +98,25 @@
 
         dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
         avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
-        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + ' '+ aux.compose.type +'" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
+        state =  aux.compose.state;
+
+        // genera el publicado y el no publicado
+        if(state == 'published' && aux.compose.type == 'tarea'){
+           linkik = '<div id="delivery_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'Publicado'+'</a></div>';
+         }else if(state == 'published' && aux.compose.type == 'examen'){
+           linkik = '<div id="survey_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'Publicado'+'</a></div>';
+         }else if(state == 'unpublish' && aux.compose.type == 'tarea'){
+           linkik = '<div id="delivery_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'No publicado'+'</a></div>';
+
+         }else if(state == 'unpublish' && aux.compose.type == 'examen'){
+            linkik = '<div id="survey_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'No publicado'+'</a></div>';
+         }else if(state == 'none' && aux.compose.type == 'entrega_tarea'){
+            linkik = " ";
+        }
+
+        //console.log(linkik);
+
+        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + ' '+ aux.compose.type +'" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+'' + linkik +' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
 
         // este controlador muestra la información correspondiente a la actividad
         $('#' + id).click(function() {

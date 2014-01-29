@@ -680,38 +680,6 @@ background-position: left center;
   }
 }
 
-#box-user-credential{
-  margin-left: 55px;
-  width: 155px;
-  text-align: center;
-  position: absolute;
-  
-  & .thumbnail{
-    width: 150px;
-    height: 150px;
-    background: #4FA3E9;
-    border: 3px solid #EEE;
-    border-radius: 50%;
-    overflow: hidden;
-    text-align: center;
-    transition: ease-out all 0.4s;
-    img {
-	    width: 100%;
-	    height: 100%;
-    }
-  }
-  & .thumbnail:hover {
-	 border: 3px solid #4FA3E9;
-	 transition: ease-out all 0.4s; 
-  }
-  & .tagname{
-    font-size: 11pt;
-    line-height: 13pt;
-    font-family: helvbold;
-    margin-top: 12px;
-  }
-}
-
 .depot_button {
 	width: 150px;
 	font-size: 14px;

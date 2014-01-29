@@ -1,0 +1,19 @@
+/* Grid System
+----------------------------------*/
+$gw-column: 60px;
+$gw-gutter: 20px;
+
+.cols-12 {
+  @include clearfix;
+
+  .col {
+    float: left;  
+    margin: 0 10px;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: grid-width($i);
+  }
+}
