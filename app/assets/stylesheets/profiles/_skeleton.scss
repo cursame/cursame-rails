@@ -1,0 +1,49 @@
+
+/* Courses and User Profiles
+----------------------------------*/
+.profile-cover-photo {
+  height: 180px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+.profile-user-bar {
+  height: 49px;
+
+  .profile-name-avatar {
+    float: left;
+    padding-left: 175px;
+    position: relative;
+
+    .profile-avatar {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      padding: 5px;
+      width: 150px;
+      height: 150px;
+
+      a, img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .profile-navigation {
+    float: right;
+
+    > ul > li {
+      float: left;
+
+      a {
+        display: block;
+        padding: 15px 8px 16px 8px;
+      }
+    }
+  }
+}
