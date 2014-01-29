@@ -55,7 +55,7 @@
             <% when  "friend_requested" %>
               <span class="btn btn-small btn-disabled">Solicitud enviada</span>
             
-            <%when  "accept_request" %>
+            <% when  "accept_request" %>
               <%= link_to "Aceptar", friendships_update_friend_path(array[0].id), class: "btn btn-small btn-primary", remote: true %>
             
             <% else %>
