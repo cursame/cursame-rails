@@ -1,5 +1,4 @@
-<% if !@editar %> 
-      
+<% if !@editar %>       
     <% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
         $('#comment').val('');
         $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>');
@@ -32,9 +31,7 @@
             $('#notice').html('');
             $( "#notice" ).animate( { width: "0px", height: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });            
      }, 800);
-     
-    CleanerBlur();
-    DisableBlured();           
+            
     $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
     cancelButtonsPostMenu();
             

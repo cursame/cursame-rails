@@ -1,0 +1,56 @@
+
+/* Overlays Skeleton
+----------------------------------*/
+.overlay-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+
+  .overlay-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 205;
+  }
+
+  .overlay {
+    width: 600px;
+    position: absolute;
+    z-index: 210; 
+  }
+
+  .overlay-icon .i {
+    margin-top: 4px;
+  }
+
+  .overlay-header {
+    padding: 20px 0;
+    position: relative;
+    @include clearfix;
+
+    .overlay-icon {
+      margin-left: -20px;
+      float: left;
+    }
+
+    .overlay-title {
+      margin-left: 55px;
+      margin-top: 23px;
+    }
+
+    .close-overlay {
+      position: absolute;
+      top: 46px;
+      right: 20px;
+    }
+  }
+
+  .overlay-content {
+    padding: 30px;
+  }
+}

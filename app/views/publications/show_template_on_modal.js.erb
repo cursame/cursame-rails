@@ -1,3 +1,4 @@
 <% tpl = '/publications/' + @publication.publication_type.to_s.downcase + '_template' %>
+
 createModal('<%= escape_javascript(render(:partial => tpl, :locals => {:publication => @publication}))%>');
 

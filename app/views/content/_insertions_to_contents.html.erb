@@ -1,37 +1,35 @@
 <% if type.contents.count > 0 %>
-<%#=type.contents.count %>
-<div class="contents_title"> 
-<div class="conetiner_manager_content_bar">
-    <div id="parcer<%=type.id%>_<%=cl%>" style="margin-top:10px; margin-left:5px;"></div>
+  
+  <div class="contents_title"> 
+    <div class="conetiner_manager_content_bar">
+    <div id="parcer<%=type.id%>_<%=cl%>"></div>
 
      <% type.contents.each do |content|%>
      
       <script>
-            var aaaa;
-                aaaa="<%= content.content %>";
-                   //aaaa="http://somesite.se/blah/sese";
-                   var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/);
-                   var lof = matches[1];
-                 switch(lof){
-                   
-                     case 'dropbox.com': 
-                      $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" id="content<%=content.id%>"><%= image_tag("dropbox-mini2.png") %></a>');
-                     break;
+        var aaaa;
+        
+        aaaa="<%= content.content %>";
+        
+        //aaaa="http://somesite.se/blah/sese";
+        var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/),
+            lof = matches[1];
+
+        switch(lof) {
+        
+          case 'dropbox.com': 
+            $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" ><%= image_tag("dropbox-mini2.png") %></a>');
+            break;
                      
-                     case 'youtube.com':
-                       $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" id="content<%=content.id%>"> <%= image_tag("youtube-mini2.png") %></a>');
-                     break;
+          case 'youtube.com':
+            $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" id="content<%=content.id%>"> <%= image_tag("youtube-mini2.png") %></a>');
+            break;
                      
-                      case 'es.wikipedia.org': 
-                      $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" id="content<%=content.id%>"><%= image_tag("wikipedia-mini2.png") %></a>');                        
-                      break;
-                     
-                     
-                     
-                     
-                 };
+          case 'es.wikipedia.org': 
+            $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a class="link_cto_content_macher" id="content<%=content.id%>"><i class="i i-wikipedia-asset-blue"></i> <%= content.content %></a></div>');
+            break;    
+        };
                  
-            
       </script>
      
       
@@ -44,7 +42,6 @@
       
       
       <SCRIPT LANGUAGE="JavaScript">
-         
                      $('#content<%=content.id%>').click(function(e) {
                  	          $('#content_html<%=content.id%>').lightbox_me({
                  	              centered: true, 
@@ -87,7 +84,7 @@
                     
      </SCRIPT>
       <div id="content_html<%=content.id%>" class="content_f_box"  style="display:none">
-             <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><!--<center>x</center>--></a></div>
+             <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"></a></div>
      	    <center>
      	        <div id="refert<%=content.id%>"></div>
             </center>

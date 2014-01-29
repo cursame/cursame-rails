@@ -1,0 +1,17 @@
+<% publication = publication.publication %>
+
+<div class="overlay-header">
+  <div class="overlay-icon">
+    <%= icon('overlay-discussions') %>
+  </div>
+  <div class="overlay-title">
+  <h6><a href=""><%= publication.user.name %></a> ha inicidado una discusión</h6>
+  </div>
+  <div class="close-overlay"><%= icon('x-close') %> Cerrar</div>
+</div>
+
+<div class="overlay-content">
+  <h3><%= publication.title %></h3>
+  <%= publication.description_html %>
+  <%= render :partial => "content/insertions_to_contents", :locals => { :type => publication, :cl => 'discussion'}%>
+</div>

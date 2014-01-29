@@ -34,7 +34,7 @@ $(function() {
 
   /* Tab switcher
   ----------------------------------*/
-  $('.tabs-buttons .tab').click(function() {
+  $('.tabs-buttons .tab').live('click', function() {
     var $this       = $(this),
         targetTab   = $this.attr('data-id-target'),
         tabsHolder  = $this.closest('.tabs').find('.tabs-main');

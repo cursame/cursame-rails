@@ -296,22 +296,22 @@
 .look_atemp_conteny {
   .choser {
     margin-top: 5px;
+  }
+}
 
-    .publication-asset {
-      padding: 3px 4px;
-      @include clearfix;
+.publication-asset {
+  padding: 3px 4px;
+  @include clearfix;
 
-      .cancel_link, .trash {
-        float: right;
-        display: none;
-      }
+  .cancel_link, .trash {
+    float: right;
+    display: none;
+  }
 
-      &:hover {
+  &:hover {
 
-        .cancel_link, .trash {
-          display: block;
-        }
-      }
+    .cancel_link, .trash {
+      display: block;
     }
   }
 }
