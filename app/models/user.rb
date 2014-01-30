@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
@@ -373,6 +374,18 @@ class User < ActiveRecord::Base
     end 
     users.uniq!
     return users
+  end
+
+  def friendships_request
+    friendships = Friendship.where(user_id: self.id, accepted: false)
+    inverse_friendships = Friendship.where(friend_id: self.id, accepted: false)
+
+    return friendships + inverse_friendships
+  end
+
+  def who_sent?(friendship)
+    return self if friendship.user_id == self.id
+    return friendship.user
   end
 
   def import(path,network,user_admin, domain, subdomain)
