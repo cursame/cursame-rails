@@ -151,11 +151,11 @@
         <% else %>
           <% accomplishment = current_user.assignments.where(:delivery_id => publication.id)[0].accomplishment %>
           <% if accomplishment != nil %>
-            <div>
-              <%= accomplishment.to_s %>
+            <div class="delivery-results">
+              Calificación obtenida: <strong><%= accomplishment.to_s %></strong>
             </div>
           <%else%>
-            <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= publication.id %>">Editar Entrega</a>
+            <a href="#" class="show-delivery-form btn btn-medium btn-primary">Editar Entrega</a>
           <%end%>                
         <%end%>
       </div>

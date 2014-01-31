@@ -81,6 +81,15 @@ class CoursesController < ApplicationController
   end
   # GET /courses/1
   # GET /courses/1.json
+  
+  def califications
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
+  end
+  
+  def statistics
+    @course = Course.find(params[:id])   
+  end
   def show
   
     @course = Course.find(params[:id])

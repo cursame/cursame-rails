@@ -42,14 +42,30 @@ $(function() {
 
 	/* Show delivery submit form */
   $('.show-delivery-form').live('click', function(e) {
-    var $this = $(this),
-        target = $this.data('target-id');
+    var $this = $(this);
 
     $this.closest('.delivery-overlay-content').hide();
-    $('div#' + target).show();
+    $this.closest('.overlay').children('.delivery-overlay-submit-form').show();
 
-    overlayPositioning( $('div.overlay') );    
+    overlayPositioning( $('div.overlay') );
     e.preventDefault();
   });
 
+  /* Hide delivery submit form */
+  $('.cancel-delivery-submit').live('click', function(e) {
+    var $this = $(this);
+
+    $this.closest('.delivery-overlay-submit-form').hide();
+    $this.closest('.overlay').children('.delivery-overlay-content').show();
+
+    overlayPositioning( $('div.overlay') );
+
+    e.preventDefault();
+  });
+
+  /* Add Class to answer survey overlay */
+  $('.survey-question-answer input').live('click', function() {
+    $(this).parent().toggleClass('active');
+    $(this).closest('li').toggleClass('active');
+  });
 });

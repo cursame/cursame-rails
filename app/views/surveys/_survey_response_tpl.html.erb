@@ -1,3 +1,4 @@
+
 <%= form_for(survey, :url => "/surveys/survey_reply", :remote => true, :method => :post, :html => {:class => "default-form assignment-survey-form"}) do |f| %>
     <%= hidden_field_tag 'course_id', @course_id %>
     <%= hidden_field_tag 'survey_id', survey.id %>

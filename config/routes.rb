@@ -84,6 +84,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
+
   
 
   resources :courses do
@@ -103,6 +104,12 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
   get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
+
+  # metodos de amplio acceso al curso
+
+  get 'courses/:id/califications', :to => 'courses#califications', :as => :califications_in_course
+  get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
+
   
   #search ajax courses
 

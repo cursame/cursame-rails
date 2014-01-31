@@ -11,10 +11,10 @@
         <h1>Tareas</h1>
         <ul class="section-subnav">
           <li class="active">
-            <%= link_to "Por contestar", wall_filter_path(:typeforfilter => 'Delivery', :responds => 'false'), :remote => true %>
+            <%= link_to "Por entregar", wall_filter_path(:typeforfilter => 'Delivery', :responds => 'false'), :remote => true %>
           </li>
           <li>
-            <%= link_to "Tareas contestadas", wall_filter_path(:typeforfilter => 'Delivery', :responds => 'true'), :remote => true %>
+            <%= link_to "Tareas entregadas", wall_filter_path(:typeforfilter => 'Delivery', :responds => 'true'), :remote => true %>
           </li>
         </ul>
       </div>
@@ -22,7 +22,7 @@
   </div>
 </div>
 <div id="timeline" class="tim wrapper spaced sc-margined">
-        <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+  <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
 </div>
 
 <%= will_paginate(@wall) %>

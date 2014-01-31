@@ -48,6 +48,12 @@
                     <li>
                       <%= link_to "Clonar curso", clone_course_view_path %>
                     </li>
+                    <li>
+                      <%= link_to "Timeline", statistics_in_course_path( @course.id ) %>
+                    </li>
+                    <li>
+                      <%= link_to "Calificaciones", califications_in_course_path( @course.id ) %>
+                    </li>
                   </ul>
                 </div>
               </div>
