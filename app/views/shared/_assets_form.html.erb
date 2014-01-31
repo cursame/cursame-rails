@@ -47,8 +47,16 @@
           
           if( types.test(file.type) || types.test(file.name) ){
             data.context = $( tmpl("template-upload", data.files[0]) );
-
+             
+            if ('<%=typeo%>'== 'delivery' || '<%=typeo%>'== 'survey') {
+            
             $('#choser<%=typeo%>').append(data.context);
+
+            }else{
+
+            $('#choser<%=typeo%>_<%=formId%>').append(data.context);
+
+            }
 
             data.context.find('.trash').click(function() {
                 $(this).parent().remove();

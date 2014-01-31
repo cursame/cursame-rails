@@ -17,7 +17,7 @@
           <%if f.friends?(current_user) %>
                 <%= link_to "Eliminar", friendships_update_friend_path(f.id), class: "btn btn-small btn-primary", remote: true %>
           <%else%>
-          <% p @user_l.friends_request?(f).friend %>
+          <% p @user_l.friends_request?(f) %>
           <%@user_l.friends_request?(f) %>
           <div class="user-actions">
             <% case  %>
