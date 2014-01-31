@@ -137,7 +137,7 @@
 
             <div class="academic-content">
               <div class="academic-action">
-                <%= link_to 'Ver ' + tipo, show_template_on_modal_path(publication.id),:remote => true, class: "btn btn-transparent btn-medium uppercase", data: "modal"%>
+                <%= link_to 'Ver ' + tipo, show_template_on_modal_path(:id => publication.id,:type => 'wall'),:remote => true, class: "btn btn-transparent btn-medium uppercase", data: "modal"%>
               </div>
               <div class="academic-content-icon">
                 <%= icon( tipo.to_s.downcase + '-publication') %>
