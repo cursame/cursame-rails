@@ -84,6 +84,7 @@ class CoursesController < ApplicationController
   
   def califications
     @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
   end
   
   def statistics
