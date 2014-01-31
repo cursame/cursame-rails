@@ -48,3 +48,73 @@
     border-radius: 0 0 $radius $radius;
   }
 }
+
+/* Delivery Overlay
+----------------------------------*/
+.delivery-results {
+  color: $meta-color;
+  font-size: 15px;
+  font-weight: normal;
+
+  strong {
+    font-weight: bold;
+    color: $primary-color;
+  }
+}
+
+/* Survey Overlay
+----------------------------------*/
+.survey-wrap {
+  ol {
+    li {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+
+  .survey-question {
+    p {
+      font-size: 14px;
+      color: #000;
+    }
+  }
+
+  .survey-answers {
+    ul {
+      list-style-type: lower-alpha;
+      list-style-position: inside;
+
+      li {
+        font-weight: bold;
+        font-size: 14px;
+
+        &.active {
+          color: #fff;
+        }
+      }
+    }
+
+    .survey-question-answer label {
+      background: #f7f7f7;
+      border: 1px solid #d6d6d6;
+      border-radius: $radius;
+      cursor: pointer;
+      font-size: 13px;
+      
+      input[type="checkbox"] {
+        display: none;
+      }
+        
+      &:hover {
+        background: #f0f0f0;
+        border-color: #cfcfcf;
+      }
+
+      &.active {
+        background: #86b100;
+        border-color: #7aa629;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -40,7 +40,8 @@
 
     .overlay-icon {
       margin-left: -55px;
-      margin-top: -14px;
+      margin-top: -23px;
+      top: 50%;
       position: absolute;
     }
 
@@ -78,5 +79,36 @@
     position: absolute;
     left: 30px;
     top: -57px;
+  }
+}
+
+/* Survey Overlay
+----------------------------------*/
+.survey-wrap {
+  ol {
+    > li {
+      margin-left: 22px;
+      margin-top: 30px;
+
+      &:first-child {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .survey-answers {
+    margin-top: 10px;
+
+    ul > li {
+      margin-top: 5px;
+    }
+
+    .survey-question-answer {
+
+      label {
+          padding: 2px 7px 4px 7px;
+          display: block;
+        }
+      }
   }
 }

@@ -1,23 +1,26 @@
 
 <% survey = publication.publication %>
-<%= form_tag "/surveys/survey_reply", :remote =>true do %>
-  <p>
-    <%= survey.name %><br />
-    <%= hidden_field_tag 'survey_id', survey.id%>
-    <br />
-     <% for course in survey.courses %>
-        <%= course.title %><br />
-     <% end %>
-  </p>
-  <% for question in survey.questions %>
-  <p>
-    <%= question.content%><br />
-    <b>archivo</b>
-  </p>
-    <% for answer in question.answers %>
-      <%= answer.content %>
-      <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id %><br />
-    <% end %>  
-  <% end %>
-  <%= submit_tag "Contestar",:class=>"btn btn-primary" %>
+<% response = UserSurvey.find_by_survey_id_and_user_id( survey.id, current_user.id) %>
+
+<div class="overlay-header">
+  <div class="overlay-icon">
+    <%= icon('section-surveys') %>
+  </div>
+  <div class="overlay-title">
+    <h6>
+      Cuestionario en el curso <%= link_to survey.courses[0].title, course_path(survey.courses[0].id) %>
+    </h6>
+    <span>Responder antes del <%= survey.end_date.strftime( '%A %e de %B del %Y a las %l:%M%P') %></span>
+  </div>
+  <div class="close-overlay"><%= icon('x-close') %></div>
+</div>
+
+<% if response.blank?  %>
+  <%= render :partial => "survey_questions_answers_form", :locals => { survey: survey} %>
+<% else %>
+  <div class="overlay-content">
+    <h3>Cuestionario contestado</h3>
+
+    <p>Calificación Obtenida: <span><%= number_with_precision(response.result.to_s, :precision => 2) %></span></p>
+  </div>
 <% end %>
