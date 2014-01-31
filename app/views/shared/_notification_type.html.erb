@@ -98,25 +98,39 @@
 
     <!-- Notificacion: 8 - Nueva entrega a una tarea -->
     <% when 'new_assignment_on_delivery'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
-      <% if notification.notificator.user != nil%>
-        <% if notification.notificator.user.name != nil%>
-          <%= link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)  %>
-        <%else%>
-          <%= link_to "Un usuario", show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?) %>
-        <%end%>
-      <%end%>ha respondido a la tarea
-      <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-
-      <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>&show_assig=<%= notification.notificator_id.to_s %>") -->
+      <%= link_to "#{course_path(notification.notificator.course_id)}/activities_depot" do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            <% if notification.notificator.user != nil && notification.notificator.user.name != nil%>
+              <span class="as-link"><%= notification.notificator.user.name %></span>
+            <%else%>
+              Un usuario
+            <%end%>
+            ha respondido a la tarea <span class="as-link"><%= notification.notificator.delivery.title %></span>.
+          </h6>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 9 - Nueva calificacion en una respuesta -->
     <% when 'new_accomplishment_on_assignment'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>Han calificado tu tarea
-      <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-      del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
 
-      <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>&show_accom=<%= notification.notificator_id.to_s %>") -->
+      <%= link_to course_path(notification.notificator.delivery.courses.first.id) do %>      
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.delivery.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            Han calificado tu tarea <span class="as-link"><%= notification.notificator.delivery.title %></span> del curso <span class="as-link"><%= notification.notificator.delivery.courses.first.title %></span>
+          </h6>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 10 - Solicitud de amistad -->
     <% when 'user_request_friendship'%>

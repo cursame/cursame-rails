@@ -1,96 +1,41 @@
-<% if type.contents.count > 0 %>
-  
-  <div class="contents_title"> 
-    <div class="conetiner_manager_content_bar">
-    <div id="parcer<%=type.id%>_<%=cl%>"></div>
+<% if type.contents.count > 0 %>  
+  <div id="parcer<%=type.id%>_<%=cl%>">
+    
+  </div>
 
-     <% type.contents.each do |content|%>
-     
-      <script>
-        var aaaa;
-        
-        aaaa="<%= content.content %>";
-        
-        //aaaa="http://somesite.se/blah/sese";
-        var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/),
-            lof = matches[1];
-
-        switch(lof) {
-        
-          case 'dropbox.com': 
-            $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" ><%= image_tag("dropbox-mini2.png") %></a>');
-            break;
-                     
-          case 'youtube.com':
-            $('#parcer<%=type.id%>_<%=cl%>').prepend('<a class="link_cto_content_macher" id="content<%=content.id%>"> <%= image_tag("youtube-mini2.png") %></a>');
-            break;
-                     
-          case 'es.wikipedia.org': 
-            $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a class="link_cto_content_macher" id="content<%=content.id%>"><i class="i i-wikipedia-asset-blue"></i> <%= content.content %></a></div>');
-            break;    
-        };
-                 
-      </script>
-     
+  <% type.contents.each do |content|%>
+ 
+    <script>
+      var aaaa;
       
-     
-      <% @html_content = "#{content.content_html}".split("\n")%>
-      <% @ht_lnon =  @html_content[0].html_safe if  (@html_content[0] != nil)%>
-      <% @ty = "#{content.content}".split('/').last %>
-      <% @tyd = "#{content.content}".split('.').last %>
+      aaaa="<%= content.content %>";
       
+      //aaaa="http://somesite.se/blah/sese";
+      var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/),
+          lof = matches[1];
+
+      switch(lof) {
       
-      
-      <SCRIPT LANGUAGE="JavaScript">
-                     $('#content<%=content.id%>').click(function(e) {
-                 	          $('#content_html<%=content.id%>').lightbox_me({
-                 	              centered: true, 
-                 	              onLoad: function() { 
-                 	                  $('#content_html<%=content.id%>').find('input:first').focus()
-                 	                  }
-                 	                  
-                 	              });
-                 	          e.preventDefault();
-                 	          
-                 	          var aaaa;
-           	                   aaaa="<%= content.content %>";
-                                  //aaaa="http://somesite.se/blah/sese";
-                                  var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/);
+        case 'dropbox.com': 
+          $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a href="<%= content.content %>" target="_blank"><i class="i i-dropbox-asset-blue"></i> <%= content.content %></a></div>');
+          break;
+                   
+        case 'youtube.com':
+          $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a href="<%= content.content %>" target="_blank"><i class="i i-youtube-asset-blue"></i> <%= content.content %></a></div>');
 
-                                  switch(matches[1]){
-                                      case 'es.wikipedia.org':
-                                       $("#refert<%=content.id%>").html('<iframe src="<%=content.content%>#content" style="width:800px; height:340px; padding:10px; overflow-x: hidden;margin-left:20px;"></iframe>');
-                                      break;
+          break;
+                   
+        case 'es.wikipedia.org': 
+          $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a href="<%= content.content %>" target="_blank"><i class="i i-wikipedia-asset-blue"></i> <%= content.content %></a></div>');
+          break;    
+      };
+               
+    </script>
 
-                                      case 'dropbox.com':
-                                      var str = '<div style="margin-top:70px; font-size:35px;"><%= link_to image_tag("megadropbox.png"), "#{content.content}", :target => "_blank"%></div>';
-          
-                                      
-                        
-                                       
-                                      
-                                        $("#refert<%=content.id%>").html(str);
-                                        
-                                      break;
+    <% @html_content = "#{content.content_html}".split("\n")%>
+    <% @ht_lnon =  @html_content[0].html_safe if  (@html_content[0] != nil)%>
+    <% @ty = "#{content.content}".split('/').last %>
+    <% @tyd = "#{content.content}".split('.').last %>
 
-
-                                      case 'youtube.com':
-                                      var str = '<%=  @ht_lnon %>';
-                                         $("#refert<%=content.id%>").html(str);
-                                      break;
-
-                                  }
-                 	      });
-                    
-     </SCRIPT>
-      <div id="content_html<%=content.id%>" class="content_f_box"  style="display:none">
-             <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"></a></div>
-     	    <center>
-     	        <div id="refert<%=content.id%>"></div>
-            </center>
-      </div>
-     <%end%>
-
-</div>
-</div>
+  <%end%>
 <%end%>

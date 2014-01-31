@@ -1,6 +1,10 @@
 
 /* Overlays Skeleton
 ----------------------------------*/
+.overlay-open {
+  overflow: hidden !important;
+}
+
 .overlay-wrapper {
   position: fixed;
   width: 100%;
@@ -22,35 +26,57 @@
     width: 600px;
     position: absolute;
     z-index: 210; 
-  }
 
-  .overlay-icon .i {
-    margin-top: 4px;
+    &.not-height {
+      position: relative;
+      margin: 50px auto;
+    }
   }
 
   .overlay-header {
-    padding: 20px 0;
+    padding: 20px 30px;
     position: relative;
     @include clearfix;
 
     .overlay-icon {
-      margin-left: -20px;
-      float: left;
-    }
-
-    .overlay-title {
-      margin-left: 55px;
-      margin-top: 23px;
+      margin-left: -55px;
+      margin-top: -14px;
+      position: absolute;
     }
 
     .close-overlay {
       position: absolute;
-      top: 46px;
-      right: 20px;
+      top: 21px;
+      right: 10px;
+    }
+
+    &.discussion {
+      background: #e2c500;
     }
   }
 
   .overlay-content {
     padding: 30px;
+  }
+
+  .overlay-footer {
+    padding: 20px 30px;
+    @include clearfix;
+  }
+}
+
+/* Delivery Overlay
+----------------------------------*/
+.delivery-overlay-submit-form {
+  display: none;
+}
+
+.add-file-delivery-submit {
+  position: relative;
+
+  > form {
+    position: absolute;
+    left: 30px;
+    top: -57px;
   }
 }

@@ -209,10 +209,6 @@ input.red-placeholder, textarea.red-placeholder {
   }
 }
 
-.delivery-assignment-box {
-  background: url('/assets/line-dashed-mini.png') repeat-x 0px 0px;
-}
-
 .survey-assignment-box {
 
   .question-field{
@@ -392,8 +388,9 @@ label.error {
 
 /* Forms Columns
 ----------------------------------*/
+
 .form-group {
-  .form-group-label {
+  .form-group-label label {
     font-weight: bold;
   }
 }

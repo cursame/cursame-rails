@@ -2,12 +2,18 @@
 
 <div class="overlay-header">
   <div class="overlay-icon">
-    <%= icon('overlay-discussions') %>
+    <%= icon('section-discussions') %>
   </div>
   <div class="overlay-title">
-  <h6><a href=""><%= publication.user.name %></a> ha inicidado una discusión</h6>
+    <h6>
+      <%= link_to publication.user.name, show_user_path(publication.user.personal_url) %> ha inicidado una discusión
+
+      <% unless publication.courses.empty? %>
+        en el curso <%= link_to publication.courses[0].title, course_path(publication.courses[0].id) %>
+      <% end %>
+    </h6>
   </div>
-  <div class="close-overlay"><%= icon('x-close') %> Cerrar</div>
+  <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
 
 <div class="overlay-content">

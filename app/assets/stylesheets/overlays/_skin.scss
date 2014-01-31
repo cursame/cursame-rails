@@ -41,4 +41,10 @@
       }
     }
   }
+
+  .overlay-footer {
+    background: #f7f7f7;
+    border-top: 1px solid #d6d6d6;
+    border-radius: 0 0 $radius $radius;
+  }
 }

@@ -232,13 +232,15 @@
   }
 }
 
-.new-publication-upload {
-  position: relative;
+#delivery-tab-content {
+  .new-publication-upload {
+    position: relative;
 
-  #new_assets {
-    position: absolute;
-    top: -45px;
-    left: 10px;
+    #new_assets {
+      position: absolute;
+      top: -45px;
+      left: 10px;
+    }
   }
 }
 
@@ -296,22 +298,30 @@
 .look_atemp_conteny {
   .choser {
     margin-top: 5px;
+
+    .publication-asset {
+      padding: 3px 4px;
+      @include clearfix;
+
+      .cancel_link, .trash {
+        float: right;
+        display: none;
+      }
+
+      &:hover {
+
+        .cancel_link, .trash {
+          display: block;
+        }
+      }
+    }
   }
 }
 
-.publication-asset {
-  padding: 3px 4px;
-  @include clearfix;
+.publication-assets {
+  margin-top: 20px;
 
-  .cancel_link, .trash {
-    float: right;
-    display: none;
-  }
-
-  &:hover {
-
-    .cancel_link, .trash {
-      display: block;
-    }
+  .publication-asset {
+    padding: 3px 0;
   }
 }
