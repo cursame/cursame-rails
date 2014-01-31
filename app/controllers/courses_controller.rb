@@ -81,6 +81,14 @@ class CoursesController < ApplicationController
   end
   # GET /courses/1
   # GET /courses/1.json
+  
+  def califications
+    @course = Course.find(params[:id])
+  end
+  
+  def statistics
+    @course = Course.find(params[:id])   
+  end
   def show
   
     @course = Course.find(params[:id])
