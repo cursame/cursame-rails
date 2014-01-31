@@ -1,0 +1,50 @@
+
+/* Overlays Skeleton
+----------------------------------*/
+.overlay-wrapper {
+
+  .overlay-screen {
+    background-color: rgba(0, 13, 19, .8);
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, .5)
+  }
+
+  .overlay {
+    background-color: #fff;
+    border-radius: $radius;
+  }
+
+  .overlay-header {
+    background: #f7f7f7;
+    border-bottom: 1px solid #d6d6d6;
+    border-radius: $radius $radius 0 0;
+
+    .overlay-title {
+      h6 {
+        font-weight: normal;
+        color: #666;
+
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .close-overlay {
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bold;
+      color: #b2b2b2;
+
+      .i {
+        vertical-align: -3px;
+      }
+    }
+  }
+
+  .overlay-footer {
+    background: #f7f7f7;
+    border-top: 1px solid #d6d6d6;
+    border-radius: 0 0 $radius $radius;
+  }
+}

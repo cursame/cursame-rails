@@ -21,6 +21,15 @@
     height: 20px;
     padding: 0 5px;
   }
+
+  &.input-btn.btn-medium {
+    padding: 0;
+
+    input {
+      height: 40px;
+      padding: 0 20pxpx;
+    }
+  }
   
   &.btn-small {
     height: 20px;

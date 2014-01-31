@@ -2,24 +2,36 @@
 /* Buttons Skeleton
 ----------------------------------*/
 .calendar-wrap {
+
   .calendar-header {
     background-color: #fcfcfc;
     border-bottom: 1px solid #c7cdcf;
 
     .calendar-header-current-month {
       text-align: center;
+
+      h1 {
+        line-height: 45px;
+      }
     }
 
-    .calendar-header-prev-month {
-
+    .change-month a {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 11px;
     }
   }
 
   table {
     thead tr th {
-      background-color: #fcfcfc;
-      border-bottom: 1px solid #c7cdcf;
-      border-left: 1px solid #c7cdcf;
+      background-color: #fff;
+      border: 1px solid #E6E6E6;
+      border-width: 0 0 1px 1px;
+      @extend .meta-info;
+
+      &:first-child {
+        border-left: 0;
+      }
     }
 
     tbody {
@@ -29,12 +41,32 @@
         td {
           border: 1px solid #E6E6E6;
           border-width: 1px 0 0 1px;
+
+          &:first-child {
+            border-left: 0;
+          }
         }
       }
     }
   }
 
+  .today {
+    background-color: #F0F6F8;
+
+    .calendar-day-number {
+      color: $primary-color;
+    }
+  }
+  
+  .notmonth {
+    background-color: #F8F8F8;
+  }
+
   .calendar-day {
+    
+    .calendar-day-number {
+      font-weight: bold;
+    }
 
     .calendar-day-main {
       .calendar-day-task {
@@ -44,8 +76,14 @@
         &.delivery {
           background-color: #8bbf27;
         }
-
         
+        &.survey {
+          background-color: #f06c15;
+        }
+        
+        span {
+          font-size: 12px;
+        }
       }
     }
   }

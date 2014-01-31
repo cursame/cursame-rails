@@ -172,11 +172,6 @@ function DropDown(el) {
 DropDown.prototype = {
     initEvents : function() {
         var obj = this;
-
-        obj.dd.on('click', function(event){
-            $(this).toggleClass('active');
-            event.stopPropagation();
-        });
         
         obj.opts.children('label').on('click',function(event){
             var opt = $(this).parent(),

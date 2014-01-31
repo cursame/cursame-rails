@@ -69,8 +69,11 @@
 
   &.spaced {
     width: 700px;
-    padding: 0 10px;
   }
+}
+
+.spaced {
+  padding: 0 10px;
 }
 
 .wrap {
@@ -152,25 +155,21 @@
   @include clearfix;
 
   .user {
-    padding: 13px 10px 12px 10px;
     @include clearfix;
     
-    > a {
-      display: block;
-      float: left;
-
-      img {
-        margin-right: 5px;
-      }
-    }
-
-    .dropdown-wrap {
-      float: right;
+    img {
+      margin-right: 5px;
     }
 
     .dropdown-pull {
-      padding: 5px;
-      margin-top: 6px;
+      padding: 13px;
+      position: relative;
+    }
+
+    .triangle {
+      position: absolute;
+      top: 25px;
+      right: 10px;
     }
   }
 

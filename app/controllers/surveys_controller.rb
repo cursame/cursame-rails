@@ -141,12 +141,15 @@ class SurveysController < ApplicationController
           @survey.publish_date = Time.now
           @survey.end_date = Time.now + 2.days
           @message = "se ha republicado agregando 2 dias desde ahora"
+          @linkik = 'Publicado'
+
 
          else
 
            @survey.state = 'unpublish'
            @survey.end_date = Time.now
            @message = "se ha despublicado"
+           @linkik = 'No publicado'
 
 
          end

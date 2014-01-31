@@ -1,0 +1,60 @@
+<div class="profile-cover-photo">
+  <%= image_tag @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>      
+</div>
+
+<% @course.expired? %>
+
+<% @incourse = true %>
+
+<div class="profile-user-bar">
+  <div class="wrapper spaced">
+    <div class="profile-name-avatar">
+      <div class="profile-avatar" id="box-user-credential" >
+        <%= link_to course_path(@course.id) do %>
+          <span class="avatar-holder">
+            <%= avatar('course', '150', 'no', @course.id, "avatar", "no", "no") %>
+          </span>
+        <% end %>
+      </div>
+      <%= link_to course_path(@course.id) do %>
+        <h1><%= @course.title %></h1>
+      <% end %>
+    </div>
+
+    <div class="profile-navigation">
+      <ul>
+        <li>
+          <%= link_to "Información", about_course_path %>
+        </li>
+        <li>
+          <%= link_to "Miembros", course_members_path %>
+        </li>
+        <li>
+          <%= link_to "Biblioteca", library_in_course_path %>
+        </li>
+        <% permitted_to? :create, :courses do %>
+          <% if @member.owner != nil && @member.owner == true%>
+            <li>
+              <div class="dropdown-wrap">
+                <div class="dropdown-pull">
+                  <span class="as-link">Editar</span>
+                </div>
+                <div class="dropdown-v right">
+                  <i class="tip"></i>
+                  <ul>
+                    <li>
+                      <%= link_to "Monitor de actividades", course_activities_depot_path %>
+                    </li>
+                    <li>
+                      <%= link_to "Clonar curso", clone_course_view_path %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          <%end%>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

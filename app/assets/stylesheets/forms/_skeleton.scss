@@ -175,19 +175,6 @@
   }
 }
 
-.delivery-assignment-box{
-  display:none;
-  float: left;
-  padding: 0px 10px;
-
-  .assignment-delevery-form {
-    
-    input[type=submit]{
-      float: right;
-    }
-  }
-}
-
 .survey-assignment-box{
   display:none;
   margin: 7px 0px 0px 30px;
@@ -556,6 +543,7 @@ label.error {
   .form-group-label {
     float: left;
     padding-top: 6px;
+    width: 150px;
   }
 
   .form-group-main {

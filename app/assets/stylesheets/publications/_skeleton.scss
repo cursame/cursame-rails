@@ -232,13 +232,15 @@
   }
 }
 
-.new-publication-upload {
-  position: relative;
+#delivery-tab-content {
+  .new-publication-upload {
+    position: relative;
 
-  #new_assets {
-    position: absolute;
-    top: -45px;
-    left: 10px;
+    #new_assets {
+      position: absolute;
+      top: -45px;
+      left: 10px;
+    }
   }
 }
 
@@ -313,5 +315,13 @@
         }
       }
     }
+  }
+}
+
+.publication-assets {
+  margin-top: 20px;
+
+  .publication-asset {
+    padding: 3px 0;
   }
 }

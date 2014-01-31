@@ -32,7 +32,7 @@ class DeliveriesController < ApplicationController
                        deliveries.push(d.id)
                   end
               when (!@member.owner.nil? || !@member.owner)
-                  if d.assignment.count == 0
+                  if d.assignments.count == 0
                        deliveries.push(d.id)
                   end
            end
@@ -233,13 +233,14 @@ end
         @delivery.publish_date = Time.now
         @delivery.end_date = Time.now + 10.days
         @message = "se ha republicado agregando 10 dias desde ahora"
+        @linkik = 'Publicado'
 
        else
 
          @delivery.state = 'unpublish'
          @delivery.end_date = Time.now
          @message = "se ha despublicado"
-
+         @linkik = 'No publicado'
 
        end
        @delivery.save!

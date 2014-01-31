@@ -1,7 +1,7 @@
 <% if !@error %>
 	resetForm($('#new_survey'));
 	$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>");
-	$('#timeline').effect("highlight", {}, 1000);
+	
 	$("#notice").html('');
 	$("#notice").css('color','#608847');
 	$("#notice").css('background','#DFF0D8');
@@ -17,5 +17,4 @@
 	DisableBlured();
 	$('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
 	cancelButtonsPostMenu();
-<%else%>
 <%end%>

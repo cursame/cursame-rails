@@ -24,10 +24,17 @@
 @import "simplespantooltip";
 @import "style";
 
+// Grid
+@import "grid/skeleton";
+
 // Global
 @import "global/skeleton";
 @import "global/skin";
 @import "global/icons";
+
+// Profiles
+@import "profiles/skeleton";
+@import "profiles/skin";
 
 // Calendar
 @import "calendar/skeleton";
@@ -68,7 +75,7 @@
 // Courses
 @import "courses/skeleton";
 @import "courses/skin";
-@import "courses/statistics-theme-white";
+@import "courses/timeline.css";
 
 // Deliveries
 @import "deliveries/skeleton";
@@ -77,5 +84,6 @@
 // Super Admin Custom
 @import "admin/custom-admin";
 
-// modal
-@import "modal/skeleton";
+// Overlays
+@import "overlays/skeleton";
+@import "overlays/skin";
