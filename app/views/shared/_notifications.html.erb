@@ -17,7 +17,8 @@
 <div id="box-notifications" class="activity-dropdown-wrap dropdown-wrap">
   <div class="activity-dropdown-pull dropdown-pull">
     <%= icon('activity-notifications') %>
-    <div id="notifications_count"><span id="lecto_n_count" class="activity-counter"><%=current_user.notifications.where(:active => true).count%></span></div>
+   <% notifications_count = current_user.notifications.where(:active => true).count%>
+    <span id="lecto_n_count" style="display:<%=notifications_count > 0 ? 'block' : 'none'%>"class="activity-counter"></span>
   </div>
   <div class="activity-dropdown dropdown-v right">
     <i class="tip"></i>
@@ -61,7 +62,8 @@
 				id:data.notification.id
 			};
 			
-		  $('#notifications_count span').html(data.num * 1);
+      $('#lecto_n_count').html(data.num * 1);
+		  $('#lecto_n_count').show();
 		  $.get('/home/render_notifications', $.param(params), null, "script");
 		}
 	);

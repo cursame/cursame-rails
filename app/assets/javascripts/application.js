@@ -144,8 +144,9 @@ $(function() {
             }, 200);
             
 		} else {
-			numNotifications = $('#messages-notifications-count span').html() * 1;
-			$('#messages-notifications-count span').html(numNotifications + 1);
+			numNotifications = $('#messages-notifications-count').html() * 1;
+			$('#messages-notifications-count').html(numNotifications + 1);
+            $('#messages-notifications-count').show();
 			$('#messages-notifications-list').prepend(notification.join(''));
 		}
 	});

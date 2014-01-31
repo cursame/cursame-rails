@@ -89,12 +89,13 @@ class NetworksController < ApplicationController
     @page = params[:page].to_i
     
     if id_search.nil?
-      @wall = current_network.walls.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
+      @wall = current_network.walls.search(@search, @id).paginate(:per_page => 3, :page => params[:page]).order('walls.created_at DESC')   
     else
-      @wall = current_network.walls.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
+      @wall = current_network.walls.search(@search, id_search).paginate(:per_page => 3, :page => params[:page]).order('walls.created_at DESC')   
     end
 
-    if request.xhr?
+    # if request.xhr?
+    if request.xhr? && @page > 1
       respond_to do |format|
         format.js
       end

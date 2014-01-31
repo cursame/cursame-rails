@@ -25,6 +25,7 @@ $(function() {
     }
     else{
       holder.find('.activity-counter').html(0);
+      holder.find('.activity-counter').hide();
     }
   });
 

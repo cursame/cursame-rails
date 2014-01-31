@@ -30,17 +30,20 @@
   </div>
 </div>
 
-
+ <%= javascript_include_tag('jquery.pageless.min.js') %>
 <script type="text/javascript">
 $(function() {
   var aux = <%= (@show_course_expired) || false %>;
   if(aux) {
     $('li.delivery').click();
   }
-
-  var p = $('#timeline').pageless({
-    totalPages: <%= @wall.total_pages %>,
-    url: '<%= wall_path %>',
+  window.pagelessSettings = {
+    url : '<%= wall_path %>',
+    loaderImage : '<%= image_path("load.gif")%>'
+  };
+  $('#timeline').pageless({
+    totalPages: 3,
+    url: window.pagelessSettings.url,
     loaderMsg: '...',
     onInit:function(opts){
       this.pageless = {
@@ -50,7 +53,7 @@ $(function() {
     params:{
       search:''
     },
-    loaderImage: '<%= image_path("load.gif")%>'
+    loaderImage: window.pagelessSettings.loaderImage,
   });
 });
 </script>

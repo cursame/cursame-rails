@@ -68,13 +68,7 @@
           }
           
       },5000);
-      
-       window.clearInterval(GetIntevalExpire);
-       var IntervalFunctionForExpireSession;
-       IntervalFunctionForExpireSession = 1800000;
-       var GetIntevalExpire = setInterval(function(){ 
-           $.get('<%= expire_session_path %>');
-       },IntervalFunctionForExpireSession);
+       
        
        //console.log(IntervalFunctionForExpireSession);
 
@@ -116,8 +110,7 @@
     <% end %>
     
     <div class="wrap">
-      <%= render partial: '/shared/user_header' %>
-      
+      <%= render partial: '/shared/user_header' %>      
       <div class="main">
         <%= yield %>
       </div>
@@ -154,8 +147,15 @@
 <div id="chat_sounds"></div>
 
 <% if user_signed_in? %>
-<script>  
-  $(function() {
+<script> 
+   window.clearInterval(GetIntevalExpire);
+   var IntervalFunctionForExpireSession;
+   IntervalFunctionForExpireSession = 1800000;
+   var GetIntevalExpire = setInterval(function() {
+     $.get('<%= expire_session_path %>');
+   }, IntervalFunctionForExpireSession);
+
+  $(function() {    
       /**
        * metodos para cerrar sesion con devise y detectar cuando
        * el usuario cierra la ventana de cursame

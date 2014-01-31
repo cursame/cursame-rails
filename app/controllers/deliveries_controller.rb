@@ -39,6 +39,11 @@ class DeliveriesController < ApplicationController
           end
       end
     @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+    
+    respond_to do |format|
+      format.html
+    end
+
   end
 
   def condocourse
