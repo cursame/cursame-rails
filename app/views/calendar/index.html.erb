@@ -29,10 +29,9 @@
 
               <% task.schedule.courses.each do |course| %>
                 <% member_in = MembersInCourse.find_by_course_id_and_user_id( course.id, current_user.id)%>
-
+                  
                 <% if !member_in.nil? %>
-
-                  <%= link_to "#{course_path(course.id)}?search=#{task.schedule_type.to_s}&id_search=#{task.schedule.id}" do %>
+                  <%= link_to show_template_on_modal_path(:id => task.schedule.id, :type => 'task'), :remote => true do %>
                     <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
                       <h6><%= truncate( task.title, :omission => "...", :length => 20) %></h6>
                       <span><%= task.schedule.end_date.strftime("%I:%M%P") %></span>

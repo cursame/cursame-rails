@@ -1,17 +1,27 @@
-
 <% if  @course.members_in_courses.count > 0 %>
-<!-- coloca a los alumnos pendientes de aprovación -->
+  
+  <div class="cards-list comunity-card-list">
 
-  <%@course.members_in_courses.each do |member|  %>
-
+    <% @course.members_in_courses.each do |member| %>
       <% member_it = agil_find_user(findX="#{member.user_id}", byX='id') %>
-          <%= avatar('user', '150', "no", "#{member.user_id}", "avatar", "no", "no") %>
+
+      <div class="card">
+        <div class="card-avatar">
+          <%= link_to show_user_path(member_it.personal_url) do %>
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", member.user_id, "avatar", "no", "no") %>        
+            </span>
+          <% end %>
+        </div>
+
+        <div class="card-main">
+          <%= link_to truncate(member_it.name, :omission => "...", :length => 35), show_user_path(member_it.personal_url) %>
+          <div id="member_options<%=member.id%>">
+            <%= render partial: '/courses/members_in_courses/permissionings_edit', :locals => {:member => member, :member_it => member_it} %>
+          </div>   
+        </div>
       </div>
-      <h3 style="background-color: rgb(222, 222, 222);">
-          <%= link_to "#{truncate(member_it.name, :omission => "...", :length => 35)}", show_user_path(member_it.personal_url) %>
-      </h3>
-      <div id="member_options<%=member.id%>"
-       <%= render partial: '/courses/members_in_courses/permissionings_edit', :locals => {:member => member, :member_it => member_it} %>
-      </div>   
-   <%end%>
+     <%end%>
+   </div>
+
 <%end%>

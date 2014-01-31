@@ -1,7 +1,6 @@
 class PublicationsController < ApplicationController
 
 	def show_template_on_modal
-
 		if(params[:type] == 'wall')
 			@publication = Wall.find(params[:id])
     else
