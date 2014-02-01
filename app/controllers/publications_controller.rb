@@ -5,7 +5,10 @@ class PublicationsController < ApplicationController
 			@publication = Wall.find(params[:id])
     else
     	event = Event.find(params[:id])
-    	@publication = Wall.find_by_publication_id_and_publication_type(event.id,event.schedule_type)
+    	puts '=========================='
+    		puts event.to_yaml
+    	puts '=========================='
+    	@publication = Wall.find_by_publication_id_and_publication_type(event.schedule_id,event.schedule_type)
     end
 
 		respond_to do |format|
