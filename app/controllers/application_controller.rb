@@ -455,7 +455,7 @@ class ApplicationController < ActionController::Base
      when type == "course"
             #### se crea el obejto que se busca
             object = Course.find_by_id(destinate)
-            puts object
+            ##puts object
             #### se revisa si el objeto contiene avatar
             if object.avatar.file != nil
                #### si el objeto contiene un avatar se machan las diversas medidas 
@@ -475,15 +475,15 @@ class ApplicationController < ActionController::Base
             else
                case 
                 when size == '10'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxxxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 when size == '25'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 when size == '30'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 when size == '45'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 when size == '150'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarx.png"'+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 end
 
             end
@@ -492,7 +492,7 @@ class ApplicationController < ActionController::Base
      when type == "user"
             #### se crea el obejto que se busca
             object = User.find_by_id(destinate)
-            puts object
+            ###puts object
             #### se revisa si el objeto contiene avatar
             if object.avatar.file != nil
                #### si el objeto contiene un avatar se machan las diversas medidas 
@@ -512,15 +512,15 @@ class ApplicationController < ActionController::Base
             else
                case 
                 when size == '10'
-                  @self_avatar = object_url+'<img src="/assets/course-avatarxxxx.png"'+ object_resize_to+ object_clase +'/>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxxx.png'"+' '+object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '25'
-                  @self_avatar = object_url+'<img src="/assets/imagexx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexx.png'"+' '+ object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '30'
-                  @self_avatar = object_url+'<img src="/assets/imagexx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '45'
-                  @self_avatar = object_url+'<img src="/assets/imagexxx.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexxx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '150'
-                  @self_avatar = object_url+'<img src="/assets/imagex.png"'+ object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/imagex.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
                 end
 
             end
