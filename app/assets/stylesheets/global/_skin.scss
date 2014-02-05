@@ -12,6 +12,10 @@ body {
   font-family: $font-cursame;
   font-size: 13px;
   font-weight: normal;
+
+  &.background-white {
+    background: $white;
+  }
 }
 
 ul{

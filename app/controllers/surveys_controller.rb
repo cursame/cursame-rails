@@ -126,7 +126,7 @@ class SurveysController < ApplicationController
       # Evaluation del examen
       @user_survey.evaluation
       respond_to do |format|
-          format.js
+        format.js
       end
     end
 

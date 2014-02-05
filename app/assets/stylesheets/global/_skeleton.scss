@@ -67,13 +67,18 @@
   margin: 0 auto;
   @include clearfix;
 
-  .spaced {
+  &.spaced {
     width: 700px;
   }
 }
 
 .full-width {
   width: 100%;
+}
+
+.ver-spaced {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .spaced {
@@ -146,6 +151,16 @@
   &.avatar-60 {
     width: 60px;
     height: 60px;
+  }
+
+  &.avatar-150 {
+    width: 150px;
+    height: 150px;
+  }
+
+  &.avatar-cover-small {
+    height: 65px;
+    width: 175px;
   }
 }
 

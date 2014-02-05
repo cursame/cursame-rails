@@ -1,5 +1,3 @@
-<!-- estilo eliminado style="margin-left:70px;" -->
-
 <script>
   function readURL(input, id, width) {
     if (input.files && input.files[0]) {
@@ -7,97 +5,132 @@
 		  reader.onload = function (e) {
 		    $('#' + id)
 		    .attr('src', e.target.result)
-		    .width(width)
-		    .height(68);
 		  };
 		  reader.readAsDataURL(input.files[0]);
 		}
   }
 </script>
 
-<div class="form-course"><!-- estilo en courses.scss -->
-  <div style="width:400px; float:left;">
-    <%= form_for(@course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
-      <p>Nombre del <%= current_network.course_tag%></p>
-      <%= f.text_field :title, :class=>"input-style" %>
-      
-      <p>Descripción del <%=  current_network.course_tag%></p>
-      <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style border_for_text" %>
-      
-      <div style="float: right; margin-right: 20px;">
-	      <p><%= f.label :public_status, 'Privacidad' %></p>
-	      <% if @course.public_status == 'public' %>
-	      <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-	      <%else%>
-	      <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-	      <%end%>
-	    </div>
-	    <div class="UpdateSubmit" style="float: left; margin-top: 7px;"><%= f.submit "Actualizar #{current_network.course_tag}", :class=>"act-crs" %></div>
-	</div>
-	
-	<div class="default-form edit-course" style="width:380px; float:left;">
-      <%#= f.text_field :survey_param_evaluation, :class=> 'percent-input' %>
-      
-      <div class="UpdateBox">
-        <div class="UpdateLeft">
-          <p style="clear: both;"><%= f.label :avatar%></p>
-          
-          <div style="height: 80px;"><%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"64",:style =>"margin-left:40px",:class => "avatar-mini avatar", :id =>"img_prev_course_avatar" )%>
-          </div>  
-        <span id="inputHide" style="width: 220px; text-align: center; position: relative; display: block;">
-		  	<label for="user[avatar]" class="stylize" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select">
-				<%= f.file_field :avatar, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
-			</label>
-		</span>
-          
-        
-        </div>
-        
-        <div class="UpdateRight">
-          <p><%= f.label :imagen_de_cabecera %></p>
-          
-          <div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
-          </div>
-        <span id="inputHide" style="width: 220px; text-align: center; position: relative; display: block;">
-		  	<label for="user[avatar]" class="stylize" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select">
-		  		<%= f.file_field :coverphoto, :class=>"stylizeForm" , :onchange => "readURL(this,'img_prev_course_header',168);"%>
-			</label>
-		</span>
-          
+<%= form_for(@course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
+  
+  <div class="cols-12">
+    <div class="col col-6">
 
+      <div class="form-group">
+        <div class="form-group-label">
+          <label>Nombre del <%= current_network.course_tag%></label>  
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <%= f.text_field :title %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group-label">
+          <label>Descripción del <%=  current_network.course_tag%></label>
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group-label">
+          <%= f.label :public_status, 'Privacidad' %>
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <% if @course.public_status == 'public' %>
+              <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+            <%else%>
+              <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
+            <%end%>
+          </div>
         </div>
       </div>
       
-      <div class="UpdateBox">
-        <div class="UpdateLeft">
-          <p><%= f.label :Valor_de_examenes%></p>
-          <%= f.text_field :survey_param_evaluation, :class=>"custom-size-form" %>
+      <div class="form-group">
+        <div class="form-group-label">
+          <%= f.label :Duración %>
+        </div>
+        <div class="form-group-main">
+          <div class="f-col f-col-5">
+            <div class="form-unit">
+              <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
+            </div>
+          </div>
+          <div class="f-col f-col-5">
+            <div class="form-unit">
+              <%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="form-group-label">
+          <%= f.label :Evaluación%>
+        </div>
+        <div class="form-group-main">
+          <div class="f-col f-col-5">
+            <div class="form-unit">
+              <%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios" %>
+            </div>
+          </div>
+          <div class="f-col f-col-5">
+            <div class="form-unit">
+              <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col col-3">
+      
+      <div class="profile-images">
+        <div class="profile-image">
+          <span class="avatar-holder">
+            <%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx : @course.avatar.profile, :id =>"img_prev_course_avatar", :class => "avatar avatar-150" )%>
+          </span>  
+          <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-primary">
+            Subir imagen del curso
+            <span class="hide-input-file">
+              <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+            </span>
+          </label>
         </div>
 
-	<div class="UpdateRight">
-	<p><%= f.label :Valor_de_tareas_o_entregas %></p>
-	<%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form" %>
-	</div>
-</div>
+        <div class="profile-image">
+          <span class="avatar-holder">
+            <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
+          </span>
+          <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-primary">
+            Subir imagen de cabecera
+            <span class="hide-input-file">
+              <%= f.file_field :coverphoto , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+            </span>
+          </label>
+        </div>
+      </div>
+      
+    </div>
 
-<div class="UpdateBox">
-	<div class="UpdateLeft">
-	<p><%= f.label :fecha_de_inicio %></p>
-	 <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
-	</div>
-	
-	<div class="UpdateRight">
-<p><%= f.label :fecha_de_finalización %></p>
-<%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
-	</div>
-</div>
-
-    
- <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
-    <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
-    
+  </div>
+  
+  <div class="spaced">
+    <span class="btn btn-primary input-btn">
+      <%= f.submit "Crear #{current_network.course_tag}", :class=>"act-crs" %>
+    </span>
+  </div>
 
 <% end %>
+
 <script type="text/javascript">
     $("#create_course_form").on('click',function() {});
         $(function() {

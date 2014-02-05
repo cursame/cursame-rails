@@ -189,6 +189,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(params[:course])
     @course.network = current_network
+    
     respond_to do |format|
       if @course.save
             @member = MembersInCourse.new

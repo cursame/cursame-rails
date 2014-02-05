@@ -44,6 +44,10 @@
   }
 }
 
+.profile-images {
+  text-align: center;   
+}
+
 .course-banner-profile {
   background-image: url("/assets/bannerprofile.png");
 }
@@ -181,30 +185,6 @@
   font-weight: lighter;
 }
 
-.form-course {
-  border-top: 0 solid #ccc;
-  background: rgba(252,252,252,0.9);
-
-  input:focus {
-    border: 1px solid #6AB2BF!important;
-  }
-  
-  input[type="file"] {
-    background: transparent;
-  }
-
-  .upload {
-    display: none;
-  }
-
-  p {
-    font-family: HelvLight;
-    font-size: 14px;
-    line-height: 14pt!important;
-    color: #969696;
-  }
-}
-
 #dummy {
   border: 1px solid #c9d1da;
   text-align: center;
@@ -223,17 +203,6 @@
 .slct-style input {
   color: #fff;
   background: #00B1C7;
-}
-
-/* Edit Course
-----------------------------------*/
-#nsdmenu h1 {
-  font-size: 16px;
-  color: #969696!important;
-}
-
-.reload li {
-  vertical-align: middle;
 }
 
 /* Edit Members

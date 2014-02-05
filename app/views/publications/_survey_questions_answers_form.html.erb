@@ -33,10 +33,15 @@
 
   <% if current_user != survey.user %>
     <div class="overlay-footer">
-      <span class="btn btn-medium btn-primary input-btn">
-        <%= submit_tag "Enviar cuestionario", :class=>"btn btn-medium btn-primary" %>
-      </span>
-      <%= hidden_field_tag 'survey_id', survey.id%>
+      <div class="fl">
+        <span class="btn btn-medium btn-primary input-btn">
+          <%= submit_tag "Enviar cuestionario", :class=>"btn btn-medium btn-primary" %>
+        </span>
+        <%= hidden_field_tag 'survey_id', survey.id%>
+      </div>
+      <div class="fr">
+        <div id="errors"></div>
+      </div>
     </div>
   <% end %>
 <% end %>
