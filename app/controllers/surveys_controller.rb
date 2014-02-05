@@ -113,7 +113,7 @@ class SurveysController < ApplicationController
             @user_response = UserSurveyResponse.new
             @user_response.user_survey_id = @user_survey.id
             @user_response.question_id = question[0]
-            @user_response.answer_id = answer[1]
+            @user_response.answer_id = answer
             @user_response.save
           end
             @az = @user_survey
@@ -123,8 +123,8 @@ class SurveysController < ApplicationController
       else
         @error = true
       end
-      # Ejemplo de como usar la evaluation de un examen
-      # evaluation(current_user,@user_survey.survey_id)
+      # Evaluation del examen
+      @user_survey.evaluation
       respond_to do |format|
           format.js
       end
