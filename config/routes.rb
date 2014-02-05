@@ -257,6 +257,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
   get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
+  get "community/:id/destroy", :to => "friendships#destroy", :as => :friendships_destroy_friend
+
 
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles

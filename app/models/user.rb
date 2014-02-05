@@ -376,16 +376,12 @@ class User < ActiveRecord::Base
     return users
   end
 
-  def friendships_request
-    friendships = Friendship.where(user_id: self.id, accepted: false)
-    inverse_friendships = Friendship.where(friend_id: self.id, accepted: false)
-
-    return friendships + inverse_friendships
-  end
-
-  def who_sent?(friendship)
-    return self if friendship.user_id == self.id
-    return friendship.user
+  def who_sent?(another_user)
+    if (Friendship.find_by_user_id_and_friend_id(self.id,another_user.id))
+      return self
+    else
+      return another_user
+    end
   end
 
   def import(path,network,user_admin, domain, subdomain)

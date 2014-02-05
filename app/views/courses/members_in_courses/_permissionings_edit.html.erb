@@ -1,6 +1,5 @@
-<% case %>
-  
-  <% when member.accepted == true %>
+<% case member.accepted %>
+  <% when true %>
     <% if current_user.id != member_it.id %>
 
                   
@@ -17,7 +16,7 @@
             <%end%>
      
                    
-      <% when member.accepted == false %>
+      <% when false %>
                 <%= form_for member, :remote => true do |fcm| %>                           
                     <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{member_it.id}', '#{member.id}','acceptin', '#{member_it.id}');", :class=> "members_in_course_accepted_#{member_it.id}"  %><%= "Miembro aún no aceptado en el curso."%>
                     <%= link_to 'Eliminar', member, confirm: 'Are you sure?', method: :delete, :remote => true %>
