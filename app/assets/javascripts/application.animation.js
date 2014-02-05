@@ -230,7 +230,7 @@ $(document).ready(function() {
                     opacity: 0
                 }, time, function() {
                     $(this).css('display','none');
-                     $('.tim').foggy(false);
+                    // $('.tim').foggy(false);
                 });
                 $('#profile-form-options').css('display','block');
                 $('#profile-form-options').animate({
