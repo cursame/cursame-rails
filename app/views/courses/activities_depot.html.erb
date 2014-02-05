@@ -53,7 +53,6 @@
   </div>
 </div>
 
-
 <script>
   function red_actdepot(elem) {
     var red_to = $(elem).attr("redirect_to");
@@ -82,8 +81,6 @@
 
       aux = timeline[i];
 
-      console.log(aux);
-
       if ( aux.compose ) {
         kilspace = aux.text.split(' ').join('');
         flip = '/assets/' + aux.compose.type + 'roty.png';
@@ -109,12 +106,7 @@
             linkik = " ";
         }
 
-        if ( aux.compose.type == "tarea" ) {
-          $('#ajax-dump').append('<div class="activities_depot ' + as_to_pertence_com_assets +' '+ aux.compose.type +'" id="' + id + '"><div class="activity-depot-author"><i class="i i-depot-'+aux.compose.type+'"></i></div> <div class="activity-depot-main"><h6 class="as-link">'+ aux.headline +'</h6><p>' + truncate(aux.text, 50, '...')  +'</p>'+ linkik );
-        } else if ( aux.compose.type == "examen" ) {
-          $('#ajax-dump').append('<div class="activities_depot ' + as_to_pertence_com_assets +' '+ aux.compose.type +'" id="' + id + '"><div class="activity-depot-author"><i class="i i-depot-'+aux.compose.type+'"></i></div> <div class="activity-depot-main"><h6 class="as-link">'+ aux.headline +'</h6><p>'+  aux.compose.questions_count +' Preguntas</p>'+ linkik );
-        }
-
+        $('#ajax-dump').append('<div class="activities_depot ' + as_to_pertence_com_assets +' '+ aux.compose.type +'" id="' + id + '"><div class="activity-depot-author"><i class="i i-depot-'+aux.compose.type+'"></i></div> <div class="activity-depot-main"><h6 class="as-link">'+ aux.headline +'</h6><p>' + truncate(aux.text, 50, '...')  +'</p>'+ linkik );
         
 
         // este controlador muestra la información correspondiente a la actividad
