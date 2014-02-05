@@ -34,6 +34,7 @@ gem 'omniauth-facebook'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bourbon', "~> 3.1.8"
+  gem 'handlebars_assets'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
