@@ -233,14 +233,14 @@ end
         @delivery.publish_date = Time.now
         @delivery.end_date = Time.now + 10.days
         @message = "se ha republicado agregando 10 dias desde ahora"
-        @linkik = 'Publicado'
+        @linkik = 'Despublicar'
 
        else
 
          @delivery.state = 'unpublish'
          @delivery.end_date = Time.now
          @message = "se ha despublicado"
-         @linkik = 'No publicado'
+         @linkik = 'Publicar'
 
        end
        @delivery.save!

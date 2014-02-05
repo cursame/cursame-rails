@@ -1,96 +1,26 @@
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
- url(<%= @user_l.coverphoto.blank? ? '/assets/'+ @user_l.cover_photox : @user_l.coverphoto %>); background-size: 100% 440px;
- background-position-y: 0px; background-repeat: repeat-y;">
-<%@incourse = false%>
- <!--<div id="noticce">
-  <div id="notice" class="notice"></div>
- </div>-->
+<div id="banner-profile" style="display: none">
+  <%@incourse = false%>
+  <%= render :partial => 'shared/head_menu' %>
+</div>
 
-<%= render :partial => 'shared/head_menu' %>
+<%= render :partial => 'user-header' %>
+
+<div class="wrapper spaced">
+
 </div>
 <!-- Content Post Box -->
 <div id="box-content" class="profile-line">
     <!-- SideBar -->
     <div id="side-bar" class="side-left-bar" >
-        <!-- User Avatar -->
-        <div id="box-user-credential" class="network-layout">
-            <div class="thumbnail">
 
-             <%= link_to image_tag(@user_l.avatar.profile, :whidth => '150px', :height => '150px'), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank?) %>
-
-              <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?) %>
-            </div>
-
-            <div class="tagname">
-              <%= truncate("#{@user_l.name}", :omission => "...", :length => 20) %>
-            </div>
-		
-        </div>
-        
-        <div id="box-profile-info" class="basic-lateral-box margin-top">
-            <li class="aboutme"><%= @user_l.bios %></li>
-            <li class="mail"> <%= @user_l.email %></li>
-            <li class="twitter"><%= @user_l.twitter_link %> </li>
-            <!--<li class="facebook"><%#= @user_l.facebook_link%></li>-->
-            
-            <% if current_user.id == @user_l.id%><li id="edit-user"><%=link_to "editar #{current_network.user_tag}",  edit_user_registration_path %></li><%end%>
-
-        </div>
-        <!-- <div class="head_banner_style_user">
-               <div class="sup_track">
-               <div class="track">
-               <%= image_tag('track.png')%>
-               </div>
-               <div class="track_text">
-                   <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
-                    </p>
-               </div>
-               </div>
-           </div> -->
-
-		<div class="friendship_conf" style="margin: 0 auto; clear: both; position: relative; display: block; width: 230px;">
-		    <!--btones de solicitud de amistad -->
-			<div class="send_request btn_blue" style="margin-bottom: 10px; display:none;">Enviar solicitud de amistad</div>
-			<div class="sent_request btn_gray" style="margin-bottom: 10px; display:none;">Solicitud enviada</div>
-			<div class="reject_request btn_gray" style="margin-bottom: 10px; display:none;">Solicitud rechazada</div>
-		</div>
-
-        <div id="box-course" class="basic-lateral-box" >
-            <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
-        </div>
-        
-        <a class="help " id="help_courses"><%= image_tag('help.png')%></a>
-           <script>
-                    $('#help_courses').click(function() {
-                        $('#courses_help').toggle('drop', 400);
-                        if($("#courses_help").css( 'visibility')=="hidden"){
-                               $('#content_video_video_courses').html('');
-                           }
-                           else{
-                              $('#content_video_video_courses').html('<object width="260" height="200"><param name="movie" value="http://www.youtube.com/v/OBZwWue4NhQ?hl=es_ES&amp;version=3&amp;rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/OBZwWue4NhQ?hl=es_ES&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
-                           }
-                       });                         
-
-           </script>
-
-           <div class="video_help courses_help" style="display: none" id="courses_help">
-                  <div class="content_video" id="content_video_video_courses">
-
-                  </div>
-           </div>
-           
-         <%# if @user.id == current_user.id %>
-            <%#= link_to "Solicitudes de amistad", friendships_path%>
-            <%#else%>
-            <%#= form_for (@friendship = Frienship.new) do |friendship|%>
-
-             <%#= friendship.hidden_field :user_id, :value => current_user.id %>
-             <%#= friendship.hidden_field :user_id, :value => @user.id %>
-             <%#= friendship.submit "Agregar a mis amigos"%>
-
-            <%#end%>
-            <%#end%>
-      <!-- se comenta amigos para la beta que saldrá el día 15 de febrero -->
+    <div class="friendship_conf" style="margin: 0 auto; clear: both; position: relative; display: block; width: 230px;">
+        <!--btones de solicitud de amistad -->
+      <div class="send_request btn_blue" style="margin-bottom: 10px; display:none;">Enviar solicitud de amistad</div>
+      <div class="sent_request btn_gray" style="margin-bottom: 10px; display:none;">Solicitud enviada</div>
+      <div class="reject_request btn_gray" style="margin-bottom: 10px; display:none;">Solicitud rechazada</div>
+    </div>
+    
+    <!-- se comenta amigos para la beta que saldrá el día 15 de febrero -->
       <div id="box-friends" class="basic-lateral-box" >
             <h2><%= current_network.friends_tag %></h2>
             <div id="tabs-friends" class="tabs-style">
@@ -118,14 +48,6 @@
                             </div>
                         </a>
                     </li>
-                  <!--   <li class="element-right" style="width:130px!important;">
-                      <a href="#tabs-friends-2">
-                        <div class="content-tab">
-                          <span class="title-num">20</span>
-                          <span class="title">sugerencias</span>
-                        </div>
-                      </a>
-                    </li> -->
                 </ul>
 
                 <div id="tabs-friends-1">
@@ -182,28 +104,8 @@
 
                        </script>
                 </div>
-                <!-- <div id="tabs-friends-2">
-                  <div class="content-avtr">
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-
-                  </div>
-                </div>-->
             </div>
         </div>
-        
-      <!--  <a class="help  friend_user_help" id="help_friends"><%= image_tag('help.png')%></a>
-            <script>
-                     $('#help_friends').click(function() {
-                         $('#friends_help').toggle('drop', 400);
-                         if($("#friends_help").css( 'visibility')=="hidden"){
-                                $('#content_video_video_friends').html('');
-                            }
-                            else{
-                               $('#content_video_video_friends').html('<object width="260" height="200" ><param name="movie" value="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
-                            }
-                        });                         
-
-            </script>-->
 
             <div class="video_help friend_user_help" style="display: none" id="friends_help">
                    <div class="content_video" id="content_video_video_friends">

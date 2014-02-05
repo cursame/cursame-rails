@@ -36,14 +36,7 @@ var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course_id, :per_page =
             $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
 
             $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', ''), function() {
-              $('#tcg_notif').css('width', '100%');
-              $('#tcg_notif').css('min-width', '75%');
-              $('#tcg_notif').css('margin-top', '25%');
-
-              // Ajustes
-              $('div.coklo-title').css('margin-left', '8%');
-              $('div.coklo-title').css('margin-top', '6%');
-              $('ul.tabs').css('margin-left', '5%');
+              
             });
           }
           else if(axelid.lastIndexOf("tarea") != -1) {

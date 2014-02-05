@@ -1,0 +1,59 @@
+
+/* Activity Depot Skeletong
+----------------------------------*/
+.activities-depot-wrap {
+  @include clearfix;
+
+  .activities-depot-feeds {
+    width: 320px;
+    float: left;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  .activities_depot {
+    padding: 10px;
+    @include clearfix;
+
+    .activity-depot-author {
+      float: left;
+    }
+
+    .activity-depot-main {
+      margin-left: 25px;
+    }
+  }
+
+  .activities-depot-main {
+    margin-left: 320px;
+    overflow-y: scroll;
+    height: 100%;
+  }
+}
+
+.delivery-submited-wrap {
+  .assets {
+    margin-top: 15px;
+  }
+  
+  .delivery-submited-content {
+    padding: 20px;
+  }
+
+  .delivery-submited-evaluation-fields {
+    padding: 20px;
+
+    .evaluation-fields-title {
+      margin-bottom: 15px;
+    }
+
+    .homeworkCalf {
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .delivery-submited-evaluation-footer {
+      @include clearfix;
+    }
+  }
+}
