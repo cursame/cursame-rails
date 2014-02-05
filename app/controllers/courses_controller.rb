@@ -186,7 +186,6 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(params[:course])
     @course.network = current_network
-    
     respond_to do |format|
       if @course.save
             @member = MembersInCourse.new
@@ -205,7 +204,17 @@ class CoursesController < ApplicationController
         @course_count = Course.count
         @ccc = current_user.courses.where(:network_id => current_network.id)
         @count_course_iam_member =  @ccc.where(:active_status => true).count
-        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
+
+        if @count_course_iam_member_and_owner == 0
+           @miembro = MembersInCourse.where(course_id = @course.id).first
+           @miembro.owner == true
+           @miembro.save 
+           puts "se le ha agregado un owner al curso"
+        else
+           puts "este curso tiene owner"
+
+        end
         format.html { redirect_to course_path(@course.id) }
         
         #current_user.members_in_courses.where(:owner => true).count
