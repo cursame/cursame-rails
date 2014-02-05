@@ -848,6 +848,8 @@ class CoursesController < ApplicationController
   def course_delivery_actdepot
     @delivery = Delivery.find(params[:id])
     @assignments = @delivery.assignments
+    @count = @assignments.count
+    puts 
     respond_to do |format|
       format.js
     end

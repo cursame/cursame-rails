@@ -1,13 +1,12 @@
 
 $('#tareas_entregadas').html('');
-
-<% if @assignments.empty? %>
+<% if  @count == 0  %>
   $('#tareas_entregadas').html('No hay ninguna entrega en esta tarea.');
 <% else %>
   <% @assignments.each do |assign|%>
 		<% user = assign.user %>
-
-    var avatar = "<span class='avatar-holder'><%= avatar('user', '45', 'no', user.id, 'avatar', 'no', 'no') %></span>";
+        var avatar = "<span class='avatar-holder'><%= avatar('user', '45', 'no', user.id, 'avatar', 'no', 'no') %></span>";
+        
 
 		$('#tareas_entregadas').append('<div id="tarea_entregada_actdepot-<%= assign.id %>" redirect_to="" onclick = "red_actdepot(this);">' +
 			'<div class="">'+ avatar +'</div>' +
