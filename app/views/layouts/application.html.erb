@@ -19,7 +19,7 @@
     window.location.href="<%= new_url %>"  // put your correct path in a string here
   </script>
 <% end %>
-<% if request.url.split("/").last != "evaluation_download" then %>
+<% #if request.url.split("/").last != "evaluation_download" then %>
 <html>
 <head>
   <title>Cursame</title>
@@ -245,7 +245,7 @@
 <div id="scrollup"></div>
 </body>
 </html>
-<% end %>
+<% #end %>
 <% end %>
 
 <%= render :partial => '/shared/admin_messages' %>
@@ -258,32 +258,32 @@
        * metodos para cerrar sesion con devise y detectar cuando
        * el usuario cierra la ventana de cursame
        */
-      var callback = function () {
-        $('.logout').trigger('click');
-      };
-      // el valor numerico debe de ser igual al valor de devise
-      // para expirar la session
-      var logout_timer = new Timer(1800, callback, window);
-      logout_timer.start();
+      // var callback = function () {
+      //   $('.logout').trigger('click');
+      // };
+      // // el valor numerico debe de ser igual al valor de devise
+      // // para expirar la session
+      // var logout_timer = new Timer(1800, callback, window);
+      // logout_timer.start();
 
-      // restart timer if activity
-      $(document).on('keyup keypress blur change mousemove',function(){
-        logout_timer.start();
-        window.CERRARCURSAME=false;        
-      });
-      $(document).on('mouseleave',function(){
-          window.CERRARCURSAME=true;
-      });     
-      $(window).on("beforeunload",function(){
-        if(window.CERRARCURSAME){ 
-          $.ajax({
-              type: 'POST',
-              async: false,
-              url: '/home/logout_user'
-          });
-        }
-        return void 0;
-      });
+      // // restart timer if activity
+      // $(document).on('keyup keypress blur change mousemove',function(){
+      //   logout_timer.start();
+      //   window.CERRARCURSAME=false;        
+      // });
+      // $(document).on('mouseleave',function(){
+      //     window.CERRARCURSAME=true;
+      // });     
+      // $(window).on("beforeunload",function(){
+      //   if(window.CERRARCURSAME){ 
+      //     $.ajax({
+      //         type: 'POST',
+      //         async: false,
+      //         url: '/home/logout_user'
+      //     });
+      //   }
+      //   return void 0;
+      // });
   });
   </script>
 <% end %>

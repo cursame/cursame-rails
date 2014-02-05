@@ -39,10 +39,10 @@ class UserSurvey < ActiveRecord::Base
     end
     if (responses.size != 0) then
       self.update_attributes(:result => (correct_answers/responses.size)*100)
-      return (correct_answers/responses.size)*100
+      return (correct_answers/responses.size)*100.to_f
     else
       self.update_attributes(:result => 0)
-      return 0
+      return 0.0
     end
   end
 
