@@ -179,9 +179,6 @@ class CoursesController < ApplicationController
         redirect_to course_path(@course)
       end
       
-      
-      
-
   end
 
   # POST /courses
@@ -209,14 +206,17 @@ class CoursesController < ApplicationController
         @ccc = current_user.courses.where(:network_id => current_network.id)
         @count_course_iam_member =  @ccc.where(:active_status => true).count
         @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+        format.html { redirect_to course_path(@course.id) }
+        
         #current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
-        #format.html { redirect_to courses_url }
-        format.js
+
       else
         #format.json { render json: @course.errors, status: :unprocessable_entity }
-        format.html { redirect_to courses_url }
-        format.js
+        #format.html { redirect_to courses_url }
+        #format.js
+         format.html { redirect_to :back }
+
 
       end
     end
