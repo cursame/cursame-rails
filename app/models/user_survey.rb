@@ -30,7 +30,7 @@ class UserSurvey < ActiveRecord::Base
   #
   # Calcula la calificacion de la evaluacion
   #
-  def evaluation
+def evaluation
     responses = self.user_survey_responses
     correct_answers = 0.0
     responses.each do |response|
@@ -44,7 +44,7 @@ class UserSurvey < ActiveRecord::Base
       self.update_attributes(:result => 0)
       return 0.0
     end
-  end
+end
 
   def title
     'respuesta ' + survey.name
