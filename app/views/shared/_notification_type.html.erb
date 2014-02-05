@@ -246,7 +246,7 @@
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
         
-        <%= link_to "#{course_path(notification.notificator.course.id)}/members" do %>
+        <%= link_to course_members_path(notification.notificator.course.id) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
@@ -264,12 +264,20 @@
       <% if notification.notificator != nil %>
         <% if notification.notificator.user != nil %>
           <% user = notification.notificator.user %>
-          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
-          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
-          El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
-          ha respondido el cuestionario <b><%= notification.notificator.survey.name %></b>
 
-        <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.survey.courses.first.id%>?search=Survey&id_search=<%=notification.notificator.survey.id.to_s%>&show_survey=<%= notification.notificator_id.to_s %>") -->
+          <%= link_to course_activities_depot_path(notification.notificator.survey.courses.first.id) do %>
+            <div class="activity-feed-author">
+              <span class="avatar-holder">
+                <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+              </span>
+            </div>
+            <div class="activity-feed-main">
+              <h6>
+                <span class="as-link"><%= user.name %></span> ha respondido el cuestionario <span class="as-link"><%= notification.notificator.survey.name %></span>
+              </h6>
+            </div>
+          <% end %>
+          
         <%end%>
       <%end%>
 

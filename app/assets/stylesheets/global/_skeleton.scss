@@ -67,13 +67,18 @@
   margin: 0 auto;
   @include clearfix;
 
-  &.spaced {
+  .spaced {
     width: 700px;
   }
 }
 
+.full-width {
+  width: 100%;
+}
+
 .spaced {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .wrap {
@@ -279,7 +284,8 @@
 /* Sections Pages
 ----------------------------------*/
 .section-header {
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
   
   .section-header-title {
     float: left;
@@ -303,10 +309,12 @@
       }
     }
 
-    &.w-subnav {
-      .section-title {
-        padding-top: 0;
-      }
+    &.w-subnav .section-title {
+      padding-top: 0;
+    }
+
+    &.no-icon .section-title {
+      margin-left: 0;
     }
   }
 

@@ -624,15 +624,16 @@ class CoursesController < ApplicationController
 
   def activities_depot
     @course = Course.find(params[:id])
-     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-      if current_role == 'admin' || current_role == 'superadmin'
-        @member.owner = true
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    
+    if current_role == 'admin' || current_role == 'superadmin'
+      @member.owner = true
+    else
+      if @member.owner == true || current_role == "admin"
       else
-        if @member.owner == true || current_role == "admin"
-        else
-          redirect_to course_path(@course)
-        end
+        redirect_to course_path(@course)
       end
+    end
   end
 
   def load_more_activities
@@ -688,7 +689,7 @@ class CoursesController < ApplicationController
           startDate: del.publish_date,
           endDate: del.end_date,
           headline: (("#{del.title}").to_s).delete("\n"),
-          text: (("Tarea: #{del.description}").to_s).delete("\n"),
+          text: del.description.to_s.delete("\n"),
           asset: {
             media: @avatar && @avatar,
             credit: (("#{del.user.name}").to_s).delete("\n"),
@@ -770,7 +771,7 @@ class CoursesController < ApplicationController
           startDate: survey.created_at,
           endDate: survey.created_at,
           headline: (("#{survey.name}").to_s).delete("\n"),
-          text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
+          text: "",
           asset: {
             media: @avatar_surveys && @avatar_surveys,
             credit: (("#{survey.user.name}").to_s).delete("\n"),
@@ -780,7 +781,8 @@ class CoursesController < ApplicationController
             id: survey.id,
             type: 'examen',
             state: survey.state,
-            title: (("#{survey.name}").to_s).delete("\n")
+            title: (("#{survey.name}").to_s).delete("\n"),
+            questions_count: survey.questions.count
           }
         })
       end

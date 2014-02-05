@@ -19,8 +19,7 @@
   <%= render :partial => "survey_questions_answers_form", :locals => { survey: survey} %>
 <% else %>
   <div class="overlay-content">
-    <h3>Cuestionario contestado</h3>
-
+    <h3><%= survey.name %></h3>
     <p>Calificación Obtenida: <span><%= number_with_precision(response.result.to_s, :precision => 2) %></span></p>
   </div>
 <% end %>

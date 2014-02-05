@@ -304,10 +304,6 @@
 
 /* Ajax Tareas
 ----------------------------------*/
-.homeworkCalf {
-  text-align: center;
-}
-
 .rate { 
   background: #00ADC4;
   color: #fff;
@@ -363,11 +359,6 @@
 }
 
 .userDescription {
-  font-size: 14px;
-  color: #969696;
-}
-
-.titleCrit {
   font-size: 14px;
   color: #969696;
 }
@@ -624,43 +615,6 @@
   }           
 }
 
-#load-more-activities {
-	text-align: center;
-}
-          
-.activities_depot {
-  background-color:#f7f7f7;
-  border-bottom:solid #ccc 1px;
-  text-align:justify;         
-
-  .title{
-    font-size: 16px;
-    color: #293433;
-  }
-  
-  .titleNoTwo{
-    font-size: 16px;
-    color: #293433;
-  }
-
-  .reference{
-    font-size:12px;
-    color:#293433;
-    line-height: 15px;
-  }
-
-  .referenceNoTwo{
-    font-size:12px;
-    color:#293433;
-    line-height: 15px;
-  }
-
-  &:hover {
-    background: #e6e6e6;
-    cursor: pointer;
-  }
-}
-
 .activities_depot_select{
   background: #4FA3E9;
   color: #fff;
@@ -676,39 +630,12 @@
   border-radius: 3px;
 }
 
-.filter_acti {
-	background: url('/assets/drop_arrow.png') no-repeat right center;
-  cursor: pointer;
-
-  &:hover {
-    background: url('/assets/drop_arrow.png') no-repeat right center;
-  }
-}
-
-.drop_views {
-	box-shadow: 0px 2px 5px #ccc;
-
-  li {
-    list-style: none;
-    text-align: right;
-    background: #FFF;
-
-    &:hover {
-      background: #EEE;
-    }
-  }
-}
-
 .dropperDwn {
   color: #B3B3B3;
   font-weight: lighter;
   font-size: 14px;
   -webkit-appearance: none;
   border-radius: 0px;
-}
-
-.expoced{
-  background: #F7F7F7;
 }
 
 .user_assets{

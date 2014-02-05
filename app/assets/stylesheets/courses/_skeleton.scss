@@ -438,16 +438,6 @@
 
 /* Ajax Tareas
 ----------------------------------*/
-.homeworkCalf {
-  clear: both;
-  width: 300px;
-}
-
-input.nombreCrit {
-  width: 230px;
-  padding: 10px!important;
-}
-
 .rate {
   display: inline-block;
   float: left;
@@ -510,12 +500,6 @@ input.nombreCrit {
   padding: 10px;
 }
 
-.submitCalif {
-  display: block;
-  position: relative;
-  margin-left: 180px;
-}
-
 .header_l {
   display: inline-block;
   float: right;
@@ -536,16 +520,6 @@ input.nombreCrit {
 .areaCrit {
   width: 230px;
   padding: 10px;
-}
-
-.titleCrit {
-  display: block;
-  width: 270px;
-  margin: 15px auto 4px auto;
-}
-
-.homeworkCalf .default-form select {
-  width: 200px;
 }
 
 .light_box .deliveries_list {
@@ -887,67 +861,6 @@ input.nombreCrit {
   }
 }
 
-#load-more-activities {
-	width: 390px;
-	min-height: 65px;
-	max-height: 200px;
-	margin-top: -13px;
-	display: block;
-	padding: 13px 5px;
-}
-          
-.activities_depot {
-  width:390px;
-  min-height:65px;
-  max-height: 200px;
-  margin-top:-13px;
-  display: block;
-  padding: 13px 5px;         
-  
-  .title {
-    width: 320px;
-    overflow-y: hidden;
-    float: left;
-    margin-top: 3px;
-    margin-left: 60px;
-    height: 20px;
-  }
-
-  .titleNoTwo{
-    width: 320px;
-    float: left;
-    margin-top: 3px;
-    margin-left: 60px;
-    display: block;
-  }
-
-  .reference{
-    width: 310px;
-    float:left;
-    position:absolute;
-    margin-top:30px;
-    margin-left: 60px;
-    height: 30px;
-
-    img {
-      position: relative;
-      float: right;
-    }
-  }
-         
-  .referenceNoTwo{
-    width: 310px;
-    float:left;
-    position:absolute;
-    margin-top:10px;
-    margin-left:60px;
-    height: 145px;
-    overflow: scroll;
-    position: relative;
-    display: block;
-  }
-}
-
 .activities_depot_select{
   height: 40px;
 }
@@ -966,48 +879,10 @@ input.nombreCrit {
   }
 }
 
-.filter_acti {
-	width: 95px;
-	height: 40px;
-	display: inline-block;
-	float: right;
-	margin: -10px 0 0 0;
-}
-
-.drop_views {
-	width: 105px;
-	margin-top: 13px;
-	padding: 0px;
-	display: inline-block;
-	float: left;
-	margin-left: 0px;
-	z-index: 9;
-	position: absolute;
-
-  li {
-    position: relative;
-    padding: 8px;
-  }
-}
- 
-.membFilter {
-  float: right;
-  padding-top: 5px;
-  padding-right: 7px
-}
-
 .dropperDwn {
 	padding: 5px;
 	width: 250px;
 }
-
-.expoced{
-  position:relative;
-  float:left;
-  width: 517px;
-  margin-left:21px;
-}
-
 .user_assets{
   width:475px;
   padding: 25px 20px;
@@ -1065,18 +940,9 @@ input.nombreCrit {
 	float: right;
 
   .cogki_content_delivery {
-
-    .tabs {
-      width: 610px;
-
-      li {
-        width: 275px;
-      }
-    }
     
     #tab-1, #tab-2 {
       .coklo-title{
-        width: 610px;
         
         h1 {
           width: 570px;

@@ -1,63 +1,55 @@
-<div class="" style="background: #1A5E97; width: 100%; height: 160px; display: inline-block;">
+<div class="section-header spaced activities-depot-header">
+  <div class="wrapper full-width">
 
-	<div style="width: 938px; margin: 0 auto; position: relative; display: block; margin-top: 63px;">
+    <div class="section-header-title w-subnav">
+      <div class="section-icon">
+        <span class="avatar-holder">
+          <%= avatar('course', '45', "no", @course.id, "avatar", "no", "no") %>
+        </span>
+      </div>
+      <div class="section-title">
+        <h1><%= @course.title %></h1>
+        <ul class="section-subnav">
+          <li class="active">
+            <a class="all_select" href="#" title="Todos">Todo</a>
+          </li>
+          <li>
+            <a class="homework_select" href="#"  title="Tareas">Tareas</a>
+          </li>
+          <li>
+            <a class="survey_select" href="#"  title="Cuestionarios">Cuestionarios</a>  
+          </li>
+        </ul>
+      </div>
+    </div>
 
-	  <h1 style="font-size: 18px; margin-top: 18px;">
-	    <span style="color: #CCC; font-size: 15px; font-weight: lighter;">Actividades realizadas en el curso:</span><br />
-	    <%= link_to "#{@course.title}", course_path, :style => 'color: #9BCCF4; font-weight: lighter;' %>
-	  </h1>
-	  
-	  </br>
+    <div class="section-header-actions">
+      <div class="membFilter">
+        <select id="rtf" value="">
+          <option>Todos los miembros</option>
+          <% @course.members_in_courses.each do |m|%>
+            <option><%= @user=User.find_by_id(m.user_id).name%></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
 
-	  <div class="activities_depot_select" id="select-pol">
-
-	  	<div class="" style="display: inline-block; position: absolute;">
-	  		<span style="display: inline-block; width: 300px; color: #CCC; padding: 11px; font-weight: 100; margin-left: 0px; text-align: left;">
-	  			Curso: <%= link_to "#{@course.title}", course_path, :style => 'color: #FFF;' %>
-	  		</span>
-	  	</div>
-
-	    <!-- <input type="text" id="rtf">-->
-	    <div class="membFilter">
-	      <span style="display: inline-block; width: 300px; font-weight: 100; margin-left: -310px; text-align: right;">Miembros del curso</span>
-	      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
-	        <option>Todos los miembros</option>
-	        <% @course.members_in_courses.each do |m|%>
-	          <option><%= @user=User.find_by_id(m.user_id).name%></option>
-	        <% end %>
-	      </select>
-	    </div><!-- membFilter -->
-	    
-	  </div>
-
-  </div><!-- unclass conatiner -->
+  </div>
 </div>
 
-
-<div style="width: 938px; margin: 15px auto 0; position: relative; display: block;">
-  <div class="classContTitle">
-    <h2 class="v1">Actividades realizadas
-	    	<span class="filter_acti"><p style="margin: 12px 0 0 10px;">Filtrar</p>
-	    		<ul class="drop_views" style="display: none;">
-	    			<li class="all_select">Todos</li>
-	    			<li class="homework_select">Tarea</li>
-	    			<li class="assignment_select">Tarea Entregada</li>
-	    			<li class="survey_select">Cuestionario o Examenes</li>
-	    			<!--<li class="test_select">Exámen</li>-->
-	    		</ul>
-	    	</span>
-    </h2>
-    <h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
+<div class="activities-depot-wrap">
+  <div class="activities-depot-feeds">
+    <div id="ajax-dump">
+      
+    </div>
+    <div id="load-more-activities">
+      <%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 15, :page => 1), :remote => true%>
+    </div>
   </div>
+  <div class="activities-depot-main">
+    <div class="expoced" id="expoced">
 
-  <div id="ajax-dump" style="float:left;"></div>
-
-  <div class="expoced" id="expoced" style="margin-top:5px; position:fixed; margin-left:400px; overflow:auto; height:400px;">
-    <!--<div id="resonance" style="position:fixed;"></div>--> 
-  </div>
-
-  <div id="load-more-activities">
-      <b><%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 15, :page => 1), :remote => true%></b>
+    </div>
   </div>
 </div>
 
@@ -87,11 +79,14 @@
     var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
 
     for(var i = 0; i < timeline.length; i++) {
+
       aux = timeline[i];
 
-      if(aux.compose) {
+      console.log(aux);
+
+      if ( aux.compose ) {
         kilspace = aux.text.split(' ').join('');
-        flip = '/assets/' + kilspace.split(':')[0] + 'roty.png';
+        flip = '/assets/' + aux.compose.type + 'roty.png';
         id = aux.compose.id + aux.compose.type;
         clasificate = aux.compose.clasificate;
         as_to_pertence_com_assets = aux.compose.pertencenence_to;
@@ -102,21 +97,25 @@
 
         // genera el publicado y el no publicado
         if(state == 'published' && aux.compose.type == 'tarea'){
-           linkik = '<div id="delivery_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'Publicado'+'</a></div>';
+           linkik = '<div id="delivery_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'Despublicar'+'</a></div>';
          }else if(state == 'published' && aux.compose.type == 'examen'){
-           linkik = '<div id="survey_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'Publicado'+'</a></div>';
+           linkik = '<div id="survey_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'Despublicar'+'</a></div>';
          }else if(state == 'unpublish' && aux.compose.type == 'tarea'){
-           linkik = '<div id="delivery_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'No publicado'+'</a></div>';
+           linkik = '<div id="delivery_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'Publicar'+'</a></div>';
 
          }else if(state == 'unpublish' && aux.compose.type == 'examen'){
-            linkik = '<div id="survey_state_publish'+aux.compose.id+'" style="float:right; margin-top:-20px;">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'No publicado'+'</a></div>';
+            linkik = '<div id="survey_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'Publicar'+'</a></div>';
          }else if(state == 'none' && aux.compose.type == 'entrega_tarea'){
             linkik = " ";
         }
 
-        //console.log(linkik);
+        if ( aux.compose.type == "tarea" ) {
+          $('#ajax-dump').append('<div class="activities_depot ' + as_to_pertence_com_assets +' '+ aux.compose.type +'" id="' + id + '"><div class="activity-depot-author"><i class="i i-depot-'+aux.compose.type+'"></i></div> <div class="activity-depot-main"><h6 class="as-link">'+ aux.headline +'</h6><p>' + truncate(aux.text, 50, '...')  +'</p>'+ linkik );
+        } else if ( aux.compose.type == "examen" ) {
+          $('#ajax-dump').append('<div class="activities_depot ' + as_to_pertence_com_assets +' '+ aux.compose.type +'" id="' + id + '"><div class="activity-depot-author"><i class="i i-depot-'+aux.compose.type+'"></i></div> <div class="activity-depot-main"><h6 class="as-link">'+ aux.headline +'</h6><p>'+  aux.compose.questions_count +' Preguntas</p>'+ linkik );
+        }
 
-        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + ' '+ aux.compose.type +'" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+'' + linkik +' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
+        
 
         // este controlador muestra la información correspondiente a la actividad
         $('#' + id).click(function() {
@@ -133,22 +132,15 @@
 
             $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
           }
+
           // Se coloca el div para que el usuario pueda calificar la tarea
           else if(axelid.lastIndexOf("entrega_tarea") != -1) {
             $('#expoced').html('');
             $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
 
-            $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', ''), function() {
-              $('#tcg_notif').css('width', '100%');
-              $('#tcg_notif').css('min-width', '75%');
-              $('#tcg_notif').css('margin-top', '25%');
-
-              // Ajustes
-              $('div.coklo-title').css('margin-left', '8%');
-              $('div.coklo-title').css('margin-top', '6%');
-              $('ul.tabs').css('margin-left', '5%');
-            });
+            $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', '') );
           }
+
           else if(axelid.lastIndexOf("tarea") != -1) {
             $('#expoced').html('');
             $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tareas_entregadas"></div></div>');
@@ -156,7 +148,6 @@
             $.get('/course_delivery_actdepot/' + axelid.replace('tarea', ''));
           }          
 
-          return true;
         });
         
         casual = "casual" + id;
@@ -178,31 +169,29 @@
       }
     }
   });
-  
-  $('.filter_acti').click ( function() {
-	  $('.drop_views').slideToggle();
-  });
 
-  $('.homework_select').click( function() {
+  $('.homework_select').click( function(e) {
+    e.preventDefault();
 	  $('.activities_depot').hide();
 	  $('.tarea').show();
 	  
   });
-  $('.assignment_select').click( function() {
-  	  $('.activities_depot').hide();
-  	  $('.entrega_tarea').show();
-  	  
-	  
+
+  $('.assignment_select').click( function(e) {
+    e.preventDefault();
+	  $('.activities_depot').hide();
+	  $('.entrega_tarea').show();
   });
-  $('.survey_select').click( function() {
-  	  $('.activities_depot').hide();
-  	  $('.examen').show();
-  	  
-	  
+
+  $('.survey_select').click( function(e) {
+    e.preventDefault();
+	  $('.activities_depot').hide();
+	  $('.examen').show();
   });
-  $('.all_select').click( function() {
+
+  $('.all_select').click( function(e) {
+    e.preventDefault();
 	  $('.activities_depot').show();
-	  
   });
   
 </script>

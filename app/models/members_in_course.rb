@@ -38,7 +38,7 @@ class MembersInCourse < ActiveRecord::Base
       user_surveys.each_with_index.inject(0.0) { 
         |result, (user_survey,index)|
         if user_survey
-          result += user_survey.result ? user_survey.result : user_survey.evaluation
+          result += user_survey.result
         else
           result += 0.0
         end

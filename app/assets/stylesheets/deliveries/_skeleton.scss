@@ -1,79 +1,11 @@
 
 /* Deliveries Skeleton
 ----------------------------------*/
-.content-assets{
-  width: 428px;
-  margin: 0 auto 4px;
-  min-height: 80px;
-  max-height: 400px;
-  padding-top: 10px;
-  overflow: hidden;
-
-  p {
-    margin-left: 15px;
-  }
-}
-
 #tareas_entregadas {
   padding: 12px;
 }
 
-.coklo-title{
-  width: 100%;
-  position: relative;
-  display: block;
-  min-height: 200px;
-  max-height: 4000px;
-  overflow: auto;
-  margin: 26px 0px 0px 0px!important;
-  
-  h1 {
-    width: 98%;
-    padding: 17px 0px 12px 2%;
-  }
-    
-  p{
-    padding: 0 20px;
-    overflow:auto;
-  } 
-   
-  .cont{
-    margin-top:-30px;
-    width:96%;
-    overflow:auto;
-    min-height:40px;
-    max-height:400px;
-    margin: 0 auto;
-    padding:5px;
-  } 
-}
-
 .cogki_content_delivery{
-  width:100%;      
-  
-  ul.tabs{
-    width: 100%;
-    height: 47px;
-    margin: 0px!important;
-    padding: 0px;
-    position:absolute;
-    display:block;
-    z-index: 99;
-
-    li{
-      display: inline-block;
-      padding: 10px 0 10px 2%;
-      float:left;
-      width: 48%;
-      height: 20px;
-      padding-top: 16px;
-
-      &.current{
-        width: 48%;
-        padding-top: 16px;
-      }
-    }
-  }
 
   .tab-content{
     display: none;

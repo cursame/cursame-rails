@@ -1,0 +1,34 @@
+<div class="profile-cover-photo">
+  <%= image_tag @user_l.coverphoto.blank? ? '/assets/'+ @user_l.image_coursex  :  @user_l.coverphoto %>      
+</div>
+
+<div class="profile-user-bar">
+  <div class="wrapper spaced">
+    <div class="profile-name-avatar">
+      <div class="profile-avatar" id="box-user-credential" >
+        <%= link_to course_path(@user_l.id) do %>
+          <span class="avatar-holder">
+            <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
+          </span>
+        <% end %>
+      </div>
+      <%= link_to course_path(@user_l.id) do %>
+        <h1><%= @user_l.name %></h1>
+      <% end %>
+    </div>
+
+    <div class="profile-navigation">
+      <ul>
+        <li>
+          <a href="">Información</a>
+        </li>
+        <li>
+          <a href="">Cursos</a>
+        </li>
+        <li>
+          <a href="">Amigos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

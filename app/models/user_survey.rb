@@ -38,10 +38,11 @@ def evaluation
       correct_answers += 1 if answer.correct
     end
     if (responses.size != 0) then
-      self.update_attributes(:result => (correct_answers/responses.size)*100)
-      return (correct_answers/responses.size)*100.to_f
+      evaluation = (correct_answers/responses.size)*100.to_f
+      self.update_attributes(result: evaluation)
+      return evaluation
     else
-      self.update_attributes(:result => 0)
+      self.update_attributes(result: 0.0)
       return 0.0
     end
 end

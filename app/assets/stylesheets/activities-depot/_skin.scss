@@ -1,0 +1,39 @@
+
+/* Activity Depot Skin
+----------------------------------*/
+.activities-depot-wrap {
+  background: #fff;
+
+  .activities-depot-feeds {
+    border-right: 1px solid #e6e6e6;
+
+    .activities_depot {
+      border-bottom: 1px solid #e6e6e6;
+      cursor: pointer;
+
+      &:hover {
+        background: #fcfcfc;
+      }
+    }
+  }
+
+  .activities-depot-main {
+    background: #f9f9f9;
+  }
+}
+
+.delivery-submited-wrap {
+
+  .delivery-submited-content {
+    background: #fff;
+    border-bottom: 1px solid #E6E6E6;
+  }
+  .delivery-submited-evaluation-fields {
+
+    .homeworkCalf {
+      border: 1px solid #E6E6E6;
+      background: #fff;
+      border-radius: $radius;
+    }
+  }
+}
