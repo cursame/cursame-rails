@@ -6,6 +6,12 @@
   margin: 0;
 }
 
+.no-sidebar {
+  .wrap {
+    padding-left: 0;
+  }
+}
+
 .topbar {
   position: fixed;
   top: 0;
