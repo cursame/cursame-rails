@@ -7,7 +7,7 @@
   </div>
 </div>
 <% if @user_l == current_user %>
-<%= link_to "Todos mis amigos", user_friends_path%>
+<%= link_to "Todos mis amigos", user_friends_path%> |
 <%= link_to "Solicitudes pendientes", pendding_friends_path(@user_l.personal_url), :remote => true %>
 <%else%>
 <%#= link_to "Amigos en Común", user_friends_path%>
