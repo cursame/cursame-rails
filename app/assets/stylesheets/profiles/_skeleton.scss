@@ -4,9 +4,19 @@
 .profile-cover-photo {
   height: 180px;
   overflow: hidden;
+  position: relative;
 
   img {
     width: 100%;
+    height: auto;
+  }
+
+  &:after {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
   }
 }
 
@@ -32,6 +42,19 @@
         height: 100%;
       }
     }
+
+    &.compact {
+      padding-left: 0;
+
+      .profile-avatar-compact {
+        float: left;
+        margin-top: 12px;
+      }
+
+      .profile-avatar-compact-name {
+        margin-left: 40px;
+      }
+    }
   }
 
   .profile-navigation {
@@ -44,6 +67,20 @@
         display: block;
         padding: 15px 8px 16px 8px;
       }
+    }
+  }
+}
+
+.sub-profile-title {
+  margin: 20px 0;
+}
+
+.course-info-blocks {
+  .course-info-block {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
     }
   }
 }

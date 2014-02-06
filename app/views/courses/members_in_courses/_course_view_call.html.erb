@@ -22,13 +22,15 @@
                 <div class="dropdown-v right">
                   <i class="tip"></i>
                   <ul>
-                    <li>
-                      <div id="uik_<%=@correspond.id%>"> 
-                        <%= link_to @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true do %>
-                          <i class="i i-leave-course"></i> Abandonar
-                        <% end %>
-                      </div>
-                    </li>
+                    <% if !@correspond.owner  %>
+                      <li>
+                        <div id="uik_<%=@correspond.id%>"> 
+                          <%= link_to @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true do %>
+                            <i class="i i-leave-course"></i> Abandonar
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
 
                     <% if @correspond.owner == true %>
                       <li>

@@ -3,9 +3,9 @@
   
   <div class="new-publication-form-content">
     <% if comment_id.nil? then %>
-      <%= text_area_tag "comment", nil, :placeholder=>'¿Que estás pensando?', :class => 'comment_for_wall autogrow' %>
+      <%= text_area_tag "comment", nil, :placeholder=> message , :class => 'comment_for_wall autogrow' %>
     <% else %>
-      <%= text_area_tag "comment", comment, :placeholder=>'¿Que estás pensando?', :class => 'comment_for_wall' %>
+      <%= text_area_tag "comment", comment, :placeholder=> message, :class => 'comment_for_wall autogrow' %>
     <% end %>
 
     <%= hidden_field_tag 'commentable_id', commentable_id %>

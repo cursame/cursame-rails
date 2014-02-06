@@ -76,6 +76,10 @@ a {
   color: $primary-color;
 }
 
+.triagle-8 {
+  @include triangle(8px, gray, down);
+}
+
 /* Titles
 ----------------------------------*/
 h1, h2, h3, h4, h5, h6 {
