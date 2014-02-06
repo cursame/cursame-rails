@@ -46,3 +46,22 @@
     }
   }
 }
+
+/* Edit User Profile
+----------------------------------*/
+.user-custom-url-wrap {
+
+  span {
+    background: $gray-lighter;
+    border-right: 1px solid #CCC;
+    font-size: 11px;
+    color: $global-color;
+    border-radius: $radius 0 0 $radius;
+  }
+}
+
+#url-status {
+  .url-available {
+    color: #66b00a;
+  }
+}

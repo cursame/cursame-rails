@@ -1,180 +1,207 @@
-<div class="fixedForm" style="width: 100%; position: absolute;">
-	<div style="width:910px; margin: 0 auto;">
+<% content_for :body_classes do %>
+background-white
+<% end %>
+
+<div class="section-header">
+  <div class="wrapper spaced">
+
+    <div class="section-header-title no-icon">
+      <div class="section-title">
+        <h1>Editar Perfil</h1>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "default-form user-edit-form"}) do |f| %>
 
-<script>
-function readURL(input,id) {
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-        var width = $('#'+id).width();
-        var height = $('#'+id).height();
+  <div class="wrapper ver-spaced">
+    <div class="cols-12">
+      <div class="col col-6">
+
+        <%= devise_error_messages! %>
         
-       // console.log(width);
-       // console.log(input);
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :Nombre %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.text_field :first_name %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :Apellido %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.text_field :last_name %> 
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :Biografia %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.text_area :bios, :rows => 6 %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :Correo_electronico %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.email_field :email %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :Twitter_URl %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.text_field :twitter_link, :class => 'EditUserLabel' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :Direccion %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <div class="user-custom-url-wrap">
+                <%= icon('green-checkmark') %>
+                <%= icon('red-x') %>
+                <span>http://cursa.me/users/</span>
+                <%= f.text_field :personal_url, :class => 'personal-url' %>
+              </div>
+              <span id="url-status"></span>
+              <p>Recuerda no colocar espacios ni simbolos como (¨,:*`^;/ \) ya que no se aceptará tu url</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :nuevo_password %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.password_field :password, :autocomplete => "off" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :confirma_nuevo_password %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.password_field :password_confirmation  %>
+            </div>
+          </div>
+        </div>
         
-		reader.onload = function (e) {
-			$('#'+id)
-			.attr('src', e.target.result)
-			.width(width)
-			.height(height);
-		};
-
-		reader.readAsDataURL(input.files[0]);
-	}
-}
-</script>
-
-<div id="edituserdmenu">
-<div style="width: 910px; display: block; padding: 30px 0 20px; height: 35px; margin: 0 auto;">
-	<h2 class="courses-title-h2">Editar usuario</h2>
-	<!-- Token Secreto:--> <%#= current_user.key_analytics %>
-</div>
-  
-  <div class="" style="position: absolute; display: block; margin-top: 40px!important; width: 630px; background: #F6F7F9; padding: 10px;
-  	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border: 1px solid #eee;">
-  	
-  	  <%= f.submit "Actualizar" %>
-  	  <%= link_to "Regresar", :back, :class => "a-btn" %>
-  	
-  	  <div class="rightlabel" style="float: right; margin: 0; width: 315px;">
-	      <!-- <%= f.label :confirma_tus_cambios_escribiendo_tu_contrasena %> -->
-	      <%= f.password_field :current_password, :placeholder => 'Confirma tus cambios escribiendo tu contraseña', :class => 'EditUserLabel' %>
-      </div>
-  	
-  </div>
-
-<div class="" style="float: right; background: #F6F7F9; height: 443px; width: 220px; margin-top: 40px; padding-bottom: 0px; border: 1px solid #eee; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-
-    <div  id="reizer_croper_avatar" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: #CCCCCC; border: 2px solid #FFF; overflow: hidden; position: relative; margin-top: -80px;">
-		<img id="img_prev_user" style="width: 100%; height:150px;" src="<%= current_user.avatar.profile || current_user.image_avatarx %>" class="thumbnail" style="margin: 0 auto; display: block;"/>
-		<sc>
-	</div>
-	
-	<span class="fixelement" style="margin-top: 0px; height: 24px; width: 220px;">
-	 	<%= f.label :Imagen_de_perfil, :class=> 'avatar-label AvatarLabelText' %>
-	</span>
-	<span id="inputHide" style="width: 220px; text-align: center; position: relative; display: block;">
-		<label for="user[avatar]" class="stylize" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select">
-			<%= f.file_field :avatar, :class=> '', :style => '', :onchange => "readURL(this,'img_prev_user');" %>
-		</label>
-	</span>
-
-
-	<div class="" style="width: 180px; height: 70px; display: block; position: relative; background: #ccc; margin: 20px auto 0 auto; border: 1px solid #FFF; overflow: hidden;">
-		<img style="width: 100%; height: 66px;" id="img_prev_cover" class="avatar-mini cover" src="<%= current_user.coverphoto || current_user.image_avatarx %>"/>
-	</div>
-	
-	<span class="fixelement" style="margin-top: 0px; height: 24px; width: 220px;">
-		<%= f.label :imagen_de_portada, :class=> 'coverphoto-label AvatarLabelText' %>
-	</span>
-	<span id="inputHide" style="width: 220px; text-align: center; position: relative; display: block;">
-		<label for="user[background]" class="stylize" onchange="readURL(this,'img_prev_user');" name="user[background]" id="user_avatar_select">
-			<%= f.file_field :coverphoto, :class=> 'stylize FixStylize',:onchange => "readURL(this,'img_prev_cover');" %>
-		</label>
-	</span>
-	
-	
-	 <p style="position: absolute; display: block; background: #eee; margin-top: 108px; padding: 10px 10px;">¿Quieres darte de baja? <%= link_to "Cancela tu cuenta", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>	
-</div>
-      
-
-   
-  <div class="EditUserFix" style="float: left; border: 0px solid #eee; width: 645px; margin-top: 120px; padding: 10px;">  
-  <%= devise_error_messages! %>
-  <div class="box-fields edituser">
-  	  <div class="leftlabel">
-	      <%= f.label :Nombre %>
-	      <%= f.text_field :first_name, :class => 'EditUserLabel' %>
-      </div>
-  	  <div class="rightlabel">
-	      <%= f.label :Apellido %>
-	      <%= f.text_field :last_name, :class => 'EditUserLabel'%> 
-  	  </div>
-  	  <div class="leftlabel">
-	      <%= f.label :Correo_electronico %>
-	      <%= f.email_field :email, :class => 'EditUserLabel' %>
-      </div>
-  	  <div class="rightlabel">
-	      <%= f.label :bio %>
-	      <%= f.text_area :bios, :rows => 6, :style=>"width:300px; border: 1px solid #ccc; height: 180px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" %>
-      </div>
-  	  <div class="leftlabel">
-	      <%= f.label :twitter_link %>
-	      <%= f.text_field :twitter_link, :class => 'EditUserLabel' %>
-  	  </div>
-  	  
-  
-
-  	  <div class="leftlabel" style="">
-	      <%= f.label :Direccion %><div id="taget"></div>
-	      <div style="float:left; clear: both;">
-	      <div class="personal-url-label" style="padding-top:10px;">http://cursa.me/users/</div><%= f.text_field :personal_url, :class => 'personal-url' %>
-	      </div>
-	      <p style="font-size:10px;">Recuerda no colocar espacios ni simbolos como (¨,:*`^;/ \) </br>
-	         ya que no se aceptará tu url</p>
-	      
-	      <script>
-              $("#user_personal_url").keyup(function () {
-                  var value = $(this).val();
-                  $(this).val(value.replace(/[^a-z0-9]/gi,''));                  
-                  var url = '/personlization_url_corroborate/'+value+"";
-                  $.get(""+url+"");
-                    return
-              });
-            </script>
+        <p>¿Quieres darte de baja? <%= link_to "Cancela tu cuenta", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
       </div>
       
+      <div class="col col-3">
+        <div class="profile-images">
+          
+          <div class="profile-image">
+            <span class="avatar-holder">
+              <img id="img_prev_user" src="<%= current_user.avatar.profile || current_user.image_avatarx %>" class="avatar avatar-150" />
+            </span>
 
-      <div class="passsctn" style="clear: both;background: #; width: 100%;height: 80px; padding: 0px 10px; margin-left: -10px; top: 13px; margin-bottom:20px; position: relative; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">
-	  	  <div class="leftlabel">
-		      <div><%= f.label :nuevo_password %>
-		      	<%= f.password_field :password, :autocomplete => "off", :class => 'EditUserLabel'  %></div>
-		      	<!-- (Deja el campo en blanco si no quieres cambiar tu contraseña) -->
-		  </div>
-	  	  <div class="rightlabel">
-		        <div><%= f.label :confirma_el_password %>
-		        <%= f.password_field :password_confirmation, :class => 'EditUserLabel'  %></div>
-		  </div>
-	  </div><!-- ends   -->
+            <label class="btn btn-secondary" >
+              Cambiar imagen de perfil
+              <span class="hide-input-file">
+                <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_user');" %>
+              </span>
+            </label>
+          </div>
 
-  </div><!-- ends box-fields -->
-  
+          <div class="profile-image">
+            <span class="avatar-holder">
+              <img id="img_prev_cover" class="avatar avatar-cover-small" src="<%= current_user.coverphoto || current_user.image_avatarx %>"/>
+            </span>
+
+            <label class="btn btn-secondary">
+              Cambiar imagen de portada
+              <span class="hide-input-file">
+                <%= f.file_field :coverphoto, :onchange => "readURL(this,'img_prev_cover');" %>
+              </span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 
+  <div class="wrapper ver-spaced spaced clearfix">
+    <div class="fl">
+      <%= link_to "Cancelar", :back, class: 'btn btn-secondary' %>
+    </div>
+    <div class="fr">
+      <ul class="list-buttons right">
+        <li>
+          <%= f.password_field :current_password, :placeholder => 'Escribe tu contraseña para guardar'%>
+        </li>
+        <li>
+          <span class="btn btn-primary input-btn">
+            <%= f.submit "Actualizar perfil" %>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-      <!-- <div><%= f.label :confirma_tus_cambios_colocando_tu_contraseña %>
-        <%= f.password_field :current_password %>
-      </div> -->
-
-  </div><!-- ends edituserdmenu -->
-  
-  
-  
 <% end %>
 
 <script>
-// ----- hace un resize de la imagen en caso de que sea más pequeña
-		$('#img_prev_user').on('load',function(){
-		    var css;
-		    var ratio=$(this).width() / $(this).height();
-		    var pratio=$(this).parent().width() / $(this).parent().height();
-		    if (ratio<pratio) css={width:'100%', height:'auto'};
-		    else css={width:'110%', height:'auto'};
-		    $(this).css(css);
-		});
-		$('#img_prev_cover').on('load',function(){
-		    var css;
-		    var ratio=$(this).width() / $(this).height();
-		    var pratio=$(this).parent().width() / $(this).parent().height();
-		    if (ratio<pratio) css={width:'100%', height:'auto'};
-		    else css={width:'110%', height:'auto'};
-		    $(this).css(css);
-		});
-// ----- oculta el label de select
-		//$('input[type=file]').css('visibility', 'hidden');
-		
-</script>
+  $("#user_personal_url").keyup(function () {
+    var value = $(this).val();
+    $(this).val(value.replace(/[^a-z0-9]/gi,''));
+    var url = '/personlization_url_corroborate/'+value+"";
+    $.get(""+url+"");
+    
+    return
+  });
 
-  </div>
-</div>
+  function readURL(input,id) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+          var width = $('#'+id).width();
+          var height = $('#'+id).height();
+
+          
+      reader.onload = function (e) {
+        $('#'+id)
+        .attr('src', e.target.result)
+        .width(width)
+        .height(height);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>

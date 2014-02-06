@@ -236,20 +236,6 @@ input.red-placeholder, textarea.red-placeholder {
   }
 }
 
-.user-edit-form {
-
-  .personal-url-label{
-    color: #666;
-    font-size: 11pt;
-  }
-
-  .box-avatar{
-    background: #eee;
-    box-shadow: 0px 2px 7px #bbb;
-    border-radius: 3px;
-  }
-}
-
 #edituserdmenu h3{
   color: #969696!important;
   font-size: 16px!important;
@@ -262,40 +248,6 @@ input.red-placeholder, textarea.red-placeholder {
 
 .clip {
   background: transparent;
-}
-
-.stylize {
-  background: #fff url('/assets/seleccionar.png') no-repeat center center;
-  border: 1px solid #ddd;
-  color: #fff!important;
-  border-radius: 6px;
-
-  &:hover {
-    background: #006696 url('/assets/seleccionar_hover.png') no-repeat center center;
-    color: #006696!important;
-    cursor: pointer;
-  }
-
-  &::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-}
-
-.stylizeForm {
-  background: #fff url('/assets/seleccionar.png') no-repeat center center!important;
-  border: 1px solid #ddd;
-  color: #fff!important;
-  border-radius: 6px;
-
-  &:hover {
-    background: #08B5CE url('/assets/seleccionar_hover.png') no-repeat center center!important;
-    color: #08B5CE!important;
-    cursor: pointer;
-  }
-
-  &::-webkit-file-upload-button {
-    visibility: hidden;
-  }
 }
 
 .fixelementpass {

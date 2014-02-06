@@ -185,15 +185,9 @@
       margin-right: 5px;
     }
 
-    .dropdown-pull {
-      padding: 13px;
-      position: relative;
-    }
-
-    .triangle {
-      position: absolute;
-      top: 25px;
-      right: 10px;
+    > a {
+      display: block;
+      padding: 13px 10px;
     }
   }
 

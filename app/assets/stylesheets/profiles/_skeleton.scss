@@ -84,3 +84,36 @@
     }
   }
 }
+
+/* Edit User Profile
+----------------------------------*/
+.user-custom-url-wrap {
+  position: relative;
+
+  .i {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    display: none;
+  }
+
+  span {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    padding: 9px 5px 9px 4px;
+  }
+
+  input[type="text"] {
+    padding-left: 135px;
+    padding-right: 30px;
+  }
+
+  &.url-available .i-green-checkmark {
+    display: block;
+  }
+
+  &.url-not-available .i-red-x {
+    display: block;
+  }
+}

@@ -2,37 +2,14 @@
 <div class="global-sidebar">
 
   <div class="user">
-    <div class="dropdown-wrap">
-      <div class="dropdown-pull">
+    <%= link_to show_user_path(current_user.personal_url) do %>
 
-        <%= avatar('user', '25', "no", current_user.id, "avatar avatar-24", "no", "no") %>
-        <span class="name">
-          <%= truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 22) %>
-        </span>
-        <div class="triangle"></div>
+      <%= avatar('user', '25', "no", current_user.id, "avatar avatar-24", "no", "no") %>
+      <span class="name">
+        <%= truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 25) %>
+      </span>
 
-      </div>
-      <div class="dropdown-v right">
-        <i class="tip"></i>
-        <ul>
-          <% if current_role == "admin"%>
-            <li>
-              <%= link_to "Administración", managers_wall_path %>
-            </li>
-          <% end %>
-          <li>
-            <%= link_to "Ir a mi perfil", show_user_path(current_user.personal_url) %>
-          </li>
-          <li>
-            <%= link_to "Editar perfil", edit_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "Salir", sign_out_path, method: :delete %>
-          </li>
-        </ul>
-      </div>
-    </div>
-      
+    <% end %>
   </div>
 
   <div class="sidebar-section sidebar-navigation">

@@ -147,8 +147,8 @@ h6 {
       font-size: 14px;
     }
 
-    .triangle {
-      @include triangle(8px, $white, down);
+    > a:hover {
+      background: lighten($primary-color, 2);
     }
   }
 
