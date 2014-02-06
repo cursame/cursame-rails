@@ -12,13 +12,17 @@
           <% end %>
         </div>
         <div class="card-main">
-        <% if f.name != nil%>
+          <% if f.name != nil%>
             <%= link_to truncate( f.name, :omission => "...", :length => 36 ), show_user_path(f.personal_url) %>
           <%end%>
+         <% if @user_l == current_user %>
+
           <%if f.friends?(current_user) %>
                 <%= link_to "Eliminar", friendships_destroy_friend_path(f.id), class: "btn btn-small btn-primary" %>
           <%else%>
           <div class="user-actions">
+            <div id="taxk_<%=f.id%>">             
+
             <% case @user_l.who_sent?(f) %>
              <% when @user_l %>
                 <span class="btn btn-small btn-disabled">Solicitud enviada</span>
@@ -29,9 +33,13 @@
                 <%= link_to "Añadir a amigos", friendships_create_friend_path(f.id), class: "btn btn-small btn-secondary ", remote: true %>
               </div>
             <%end%>
+             </div>
           </div>
          <%end%>
+         <%end%>
+
         </div>
+
       </div>
     <% end %>
   </div>

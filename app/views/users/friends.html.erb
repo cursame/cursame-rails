@@ -6,9 +6,13 @@
     <h3>Amigos</h3>
   </div>
 </div>
-
+<% if @user_l == current_user %>
 <%= link_to "Solicitudes pendientes", pendding_friends_path(@user_l.personal_url), :remote => true %>
-<div id=" accepted_friends">
+<%= link_to "Todos mis amigos", user_friends_path%>
+<%else%>
+<%= link_to "Amigos en Común", user_friends_path%>
+<%end%>
+<div id="accepted_friends">
 <%= render :partial => 'users/friends_tpl', :locals => {:friends => @friends} %>
 </div>
 <div id="pending_friends">
