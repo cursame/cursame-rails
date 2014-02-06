@@ -384,6 +384,27 @@ class User < ActiveRecord::Base
     end
   end
 
+  def have_a_friendship(another_user)
+    friend = Friendship.find_by_user_id_and_friend_id(self.id,another_user.id)
+    
+    p friend
+
+    if friend == nil 
+      inverse_friend = Friendship.find_by_user_id_and_friend_id(another_user.id, self.id)
+
+      p inverse_friend
+      
+        if inverse_friend == nil
+           @true = false
+         else
+           @true = true
+        end
+      else
+      @true = true
+    end
+
+  end
+
   def import(path,network,user_admin, domain, subdomain)
     arrayErrores = Array.new
     count = 0

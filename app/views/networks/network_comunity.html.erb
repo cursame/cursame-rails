@@ -12,7 +12,7 @@
             <%= link_to "Mis amigos" %>
           </li>
           <li>
-            <%= link_to "Todos los usuarios" %>
+            <%= link_to "Todos los usuarios", filter_comunity_path, :remote => true %>
           </li>
         </ul>
       </div>
@@ -21,88 +21,9 @@
   </div>
 </div>
 
-<div class="wrapper">
-  
-  <div class="cards-list comunity-card-list">
-    <% @network_users.each do |array| %>
-      <div class="card">
-        <div class="card-avatar">
-          <%= link_to show_user_path(array[0].personal_url) do %>
-            <span class="avatar-holder">
-              <%= avatar('user', '45', 'no', array[0].id, 'avatar', 'no', 'no') %>
-            </span>
-          <% end %>
-        </div>
-        <div class="card-main">
-          <% if array[0].name != nil%>
-            <%= link_to truncate( array[0].name, :omission => "...", :length => 36 ), show_user_path(array[0].personal_url) %>
-          <%end%>
-          
-          <div class="user-actions">
-            <% case array[1] %>
-            <% when  "friend_requested" %>
-              <span class="btn btn-small btn-disabled">Solicitud enviada</span>
-            
-            <% when  "accept_request" %>
-              <%= link_to "Aceptar", friendships_update_friend_path(array[0].id), class: "btn btn-small btn-primary", remote: true %>
-            
-            <% else %>
-              <div id="add_friend<%=array[0].id%>">
-                <%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), class: "btn btn-small btn-secondary ", remote: true %>
-              </div>
-            <%end%>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
+<div id="accesed">
+<%= render :partial => 'networks/who_sent', :locals => {:friends => @friends} %>
 </div>
 
-	<script>
-		$(".addfriend").clic( function() {
-			$(this).css({background: '#B3B3B3'});
-		});
-	</script>
-    	
-	<script>
-		$('document').ready ( function() {
-			$('.everymbrm').find('h3 > a').css({ color: "#FFF" });
-			$('.everymbrm').find('h3').css({ color: "#FFF" });
-		});
-	
-		$('.everymbrm').mouseenter( function() {
-			$(this).find('.hoverShowEdit').animate({ marginTop: '-200px' }, 200);
-		});
-		$('.everymbrm').mouseleave( function() {
-			$(this).find('.hoverShowEdit').animate({ marginTop: '-380px' }, 200);
-		});
 
-		$('.everymbrm').mouseenter( function() {
-			$(this).find('h3').css({ background: "#2E7FA6", });
-			$(this).find('#imgge').delay( 3000 ).css({ 'filter' : 'blur(5px)', '-webkit-filter' : 'blur(5px)', '-moz-filter' : 'blur(5px)',
-										 '-o-filter' : 'blur(5px)', '-ms-filter' : 'blur(5px)' });
-			$(this).find('.imgge_gradient').fadeOut(200);
-			$(this).find('h3 > a').css({ color: "#FFF" });
-		});
-		$('.everymbrm').mouseleave( function() {
-			$(this).find('h3').css({ background: "#006696", });
-			$(this).find('#imgge').delay(1800).css({ 'filter' : 'blur(0px)', '-webkit-filter' : 'blur(0px)', '-moz-filter' : 'blur(0px)',
-										 '-o-filter' : 'blur(0px)', '-ms-filter' : 'blur(0px)' });
-			$(this).find('.imgge_gradient').fadeIn(200);
-			$(this).find('h3 > a').css({ color: "#FFF" });
-		});
-		
-		// ----- hace un resize de la imagen en caso de que sea más pequeña
-		$('.everymbrm img').on('load',function(){
-		    var css;
-		    var ratio=$(this).width() / $(this).height();
-		    var pratio=$(this).parent().width() / $(this).parent().height();
-		    if (ratio<pratio) css={width:'100%', height:'auto'};
-			    else if (ratio>pratio) css={width:'auto', height:'auto'};
-		    else css={width:'100%', height:'auto'};
-		    $(this).css(css);
-		});
-		
-	</script>
 	

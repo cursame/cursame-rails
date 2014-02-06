@@ -211,52 +211,24 @@ class NetworksController < ApplicationController
   end
 
   def network_comunity
-    search_reqfs = params[:search_reqfs]
-    user = current_user
-    network = current_network
-    
-    if search_reqfs then
-      @inverse_friends = user.inverse_friendships
-      @inverse_friends_array = Array.new
-      @inverse_friends = @inverse_friends.each {
-        |friendship|
-        if not(friendship.accepted) and (friendship.user.id.to_s == search_reqfs) then
-          @inverse_friends_array.push([friendship.user, "accept_request"])
-        end
-      }
-      
-      @network_users = @inverse_friends_array
-    else
-      @possible_friends = user.possible_friends(network)
-      @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
-    
-      @friends = user.friendships
-      @friends_array = Array.new
-      @friends = @friends.each {
-        |friendship|
-        if friendship.accepted then
-          @friends_array.push([friendship.friend, "friend"])
-        else
-          @friends_array.push([friendship.friend,"friend_requested"])
-        end
-      }
-      
-      @inverse_friends = user.inverse_friendships
-      @inverse_friends_array = Array.new
-      @inverse_friends = @inverse_friends.each {
-        |friendship|
-        if friendship.accepted then
-          @inverse_friends_array.push([friendship.user, "friend"])
-        else
-          @inverse_friends_array.push([friendship.user, "accept_request"])
-        end
-      }
-      
-      @network_users = @possible_friends + @friends_array + @inverse_friends_array
-    end
+  @user_l= current_user
+  @friends = @user_l.friends(false) + @user_l.friends(true)
 
-    @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
-    @network_users = @network_users.reject {|array| array[0].nil? }
+   respond_to do |f|
+    f.html
+   end
+
+  end
+
+  def all_user_in_network_where_not_my_friends
+  @user_l= current_user
+
+  @friends = current_network.users
+   
+  respond_to do |f|
+    f.js
+  end
+
   end
   
   def awaiting_confirmation
