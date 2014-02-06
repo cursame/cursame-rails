@@ -17,7 +17,7 @@ $(function() {
 
   });
 
-  $('body').click(function(e) {
+  $('html').click(function(e) {
     var holder = $(e.target).closest( "div.dropdown-wrap" );
 
     // si no estamos sobre un dropdown

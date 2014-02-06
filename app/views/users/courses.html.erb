@@ -1,4 +1,48 @@
-<% @user_l.courses.each do |c| %>
-    <%= avatar('course', '25', "no", "#{c.id}", "avatar", "no", "no") %>
-	<%= c.title %> <%= link_to "Ver curso", course_path(c.id)%></br>
-<%end%>
+
+<%= render partial: 'user-header', locals: { compact: false } %>
+
+<div class="wrapper spaced">
+  <div class="sub-profile-title">
+    <h3>Cursos</h3>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="courses-list">
+    <% @user_l.courses.each do |course| %>
+
+      <div class="course">
+        <div class="course-cover">
+          <div class="course-cover-image">
+            <%= link_to course_path(course.id) do %>
+              <% if course.coverphoto.file.nil? %>
+                <%= image_tag "courses.png", alt: "corse" %>
+              <% else %>
+                <%= image_tag course.coverphoto.mosaic %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="course-description">
+          <%= link_to course_path(course.id) do %>
+            <h6><%= truncate course.title, :omission => "...", :length => 60 %></h6>
+          <% end %>
+          <%= truncate course.silabus, :omission => "...", :length => 60 if course.silabus? %>
+        </div>
+        
+        <div class="course-detail-list">
+          <div class="course-detail">
+            <span class="meta-info"><i class="i i-calendar-12"></i> Finaliza:</span>
+            <p><%= course.finish_date.to_formatted_s(:long) unless course.finish_date.nil? %></p>
+          </div>
+          <div class="course-detail clearfix">
+            <span class="meta-info"><i class="i i-profesor-12"></i> Profesor:</span>
+            <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name }.first %></p>
+          </div>
+        </div>
+
+      </div>
+    <%end%>
+  </div>
+</div>

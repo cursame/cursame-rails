@@ -1,3 +1,12 @@
+
+<%= render partial: 'user-header', locals: { compact: false } %>
+
+<div class="wrapper spaced">
+  <div class="sub-profile-title">
+    <h3>Amigos</h3>
+  </div>
+</div>
+
 <%= link_to "Solicitudes pendientes", pendding_friends_path(@user_l.personal_url), :remote => true %>
 <div id=" accepted_friends">
 <%= render :partial => 'users/friends_tpl', :locals => {:friends => @friends} %>

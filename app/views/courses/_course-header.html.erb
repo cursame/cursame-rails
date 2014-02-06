@@ -1,5 +1,5 @@
 <div class="profile-cover-photo">
-  <%= image_tag @course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto %>      
+  <%= image_tag @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>      
 </div>
 
 <% @course.expired? %>

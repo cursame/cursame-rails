@@ -2,7 +2,9 @@
 <%= render :partial => 'course-header' %>
 
 <div class="wrapper spaced">
-  <h2>Miembros del curso <%= @course.members_in_courses.count %></h2>
+  <div class="sub-profile-title">
+    <h3>Miembros del curso <%= @course.members_in_courses.count %></h3>
+  </div>
 </div>
 
 <scirpt src="/assets/course_members.js" ></scirpt>

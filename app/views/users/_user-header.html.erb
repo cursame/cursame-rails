@@ -1,32 +1,53 @@
-<div class="profile-cover-photo">
-  <%= image_tag @user_l.coverphoto.blank? ? '/assets/imagecoursex copy.png'  :  @user_l.coverphoto %>      
-</div>
+
+<% if !compact %>
+  <div class="profile-cover-photo">
+    <%= image_tag @user_l.coverphoto.blank? ? '/assets/imagecoursex copy.png'  :  @user_l.coverphoto %>      
+  </div>
+<% end %>
 
 <div class="profile-user-bar">
   <div class="wrapper spaced">
-    <div class="profile-name-avatar">
-      <div class="profile-avatar" id="box-user-credential" >
-        <%= link_to course_path(@user_l.id) do %>
-          <span class="avatar-holder">
-            <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
-          </span>
+
+    <% if !compact %>
+      <div class="profile-name-avatar">
+        <div class="profile-avatar" id="box-user-credential" >
+          <%= link_to show_user_path(@user_l.personal_url) do %>
+            <span class="avatar-holder">
+              <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
+            </span>
+          <% end %>
+        </div>
+        <%= link_to show_user_path(@user_l.personal_url) do %>
+          <h1><%= @user_l.name %></h1>
         <% end %>
       </div>
-      <%= link_to course_path(@user_l.id) do %>
-        <h1><%= @user_l.name %></h1>
-      <% end %>
-    </div>
+    <% else %>
+      <div class="profile-name-avatar compact">
+        <div class="profile-avatar-compact">
+          <%= link_to show_user_path(@user_l.personal_url) do %>
+            <span class="avatar-holder">
+              <%= avatar('user', '30', 'no', @user_l.id, "avatar", "no", "no") %>
+            </span>
+          <% end %>
+        </div>
+        <div class="profile-avatar-compact-name">
+          <%= link_to show_user_path(@user_l.personal_url) do %>
+            <h1><%= @user_l.name %></h1>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
     <div class="profile-navigation">
       <ul>
         <li>
-          <a href="">Información</a>
+          <%= link_to 'Información', user_info_path(@user_l.personal_url) %>
         </li>
         <li>
-          <a href="">Cursos</a>
+          <%= link_to 'Cursos', user_courses_path(@user_l.personal_url) %>
         </li>
         <li>
-          <a href="">Amigos</a>
+          <%= link_to 'Amigos', user_friends_path(@user_l.personal_url) %>
         </li>
       </ul>
     </div>

@@ -11,7 +11,7 @@
   }
 </script>
 
-<%= form_for(@course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
+<%= form_for( @course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
   
   <div class="cols-12">
     <div class="col col-6">
@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="form-group">
         <div class="form-group-label">
           <%= f.label :Evaluación%>
@@ -98,8 +98,8 @@
           <span class="avatar-holder">
             <%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx : @course.avatar.profile, :id =>"img_prev_course_avatar", :class => "avatar avatar-150" )%>
           </span>  
-          <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-primary">
-            Subir imagen del curso
+          <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
+            <%= create ? 'Subir' : 'Actualizar' %> imagen del curso
             <span class="hide-input-file">
               <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
             </span>
@@ -110,8 +110,8 @@
           <span class="avatar-holder">
             <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
           </span>
-          <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-primary">
-            Subir imagen de cabecera
+          <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
+            <%= create ? 'Subir' : 'Actualizar' %> imagen de cabecera
             <span class="hide-input-file">
               <%= f.file_field :coverphoto , :onchange => "readURL(this,'img_prev_course_header',168);"%>
             </span>
@@ -125,7 +125,7 @@
   
   <div class="spaced">
     <span class="btn btn-primary input-btn">
-      <%= f.submit "Crear #{current_network.course_tag}", :class=>"act-crs" %>
+      <%= f.submit "#{ create ? "Crear" : "Actualizar" } #{current_network.course_tag}", :class=>"act-crs activable" %>
     </span>
   </div>
 

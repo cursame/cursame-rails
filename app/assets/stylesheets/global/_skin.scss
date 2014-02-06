@@ -76,6 +76,10 @@ a {
   color: $primary-color;
 }
 
+.triagle-8 {
+  @include triangle(8px, gray, down);
+}
+
 /* Titles
 ----------------------------------*/
 h1, h2, h3, h4, h5, h6 {
@@ -143,8 +147,8 @@ h6 {
       font-size: 14px;
     }
 
-    .triangle {
-      @include triangle(8px, $white, down);
+    > a:hover {
+      background: lighten($primary-color, 2);
     }
   }
 

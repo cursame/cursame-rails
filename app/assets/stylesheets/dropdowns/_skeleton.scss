@@ -51,9 +51,11 @@
 }
 
 
-.dropdown-wrap .dropdown-v > ul li a {
-  display: block;
-  padding: 8px 10px;
+.dropdown-wrap .dropdown-v > ul li {
+  a, .as-link {
+    display: block;
+    padding: 8px 10px;
+  }
 }
 
 /* Public, User and Courses Dropdown

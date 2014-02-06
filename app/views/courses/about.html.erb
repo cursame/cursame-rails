@@ -2,26 +2,38 @@
 <%= render partial: 'course-header' %>
 
 <div class="wrapper spaced">
-  <h2>Información del Curso</h2>
+  <div class="sub-profile-title">
+    <h3>Información del Curso</h3>
+  </div>
 </div>
 
 <div class="wrapper">
   <div class="cols-12">
     <div class="col col-6">
-      <h5>Sylabus</h5>
-      <%= @course.silabus %>
+      <div class="basic-container-style padded">
+        <h5>Sylabus</h5>
+        <%= @course.silabus %>
+      </div>
     </div>
     <div class="col col-3">
-      <h6>Fecha de incio:</h6>
-      <%= es_current_date("#{ @course.init_date.strftime( '%B')}", "#{@course.init_date.strftime( '%d')}", "#{@course.init_date.strftime( '%Y')}") %>
+      <div class="basic-container-style padded course-info-blocks">
+        <div class="course-info-block">
+          <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de incio:</h6>
+          <%= es_current_date("#{ @course.init_date.strftime( '%B')}", "#{@course.init_date.strftime( '%d')}", "#{@course.init_date.strftime( '%Y')}") %>
+        </div>
 
-      <h6>Fecha de finalización:</h6>
-      <%= es_current_date("#{ @course.finish_date.strftime( '%B')}", "#{@course.finish_date.strftime( '%d')}", "#{@course.finish_date.strftime( '%Y')}") %>
+        <div class="course-info-block">
+          <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de finalización:</h6>
+          <%= es_current_date("#{ @course.finish_date.strftime( '%B')}", "#{@course.finish_date.strftime( '%d')}", "#{@course.finish_date.strftime( '%Y')}") %>
+        </div>
 
-      <h6>Administradores del curso:</h6>
-      <% @users.each do |u|%>
-       <%= u.name %>
-      <%end%>
+        <div class="course-info-block">
+          <h6 class="meta-info"><%= icon('profesor-12') %> Administradores del curso:</h6>
+          <% @users.each do |u|%>
+           <%= u.name %>
+          <%end%>
+        </div>
+      </div>
     </div>
   </div>
 </div>

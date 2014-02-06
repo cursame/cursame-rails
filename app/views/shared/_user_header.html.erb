@@ -28,6 +28,33 @@
       <div id="notifications" class="activity-block">
         <%= render :partial => '/shared/notifications' %>
       </div>
+
+      <div class="activity-block">
+        <div class="dropdown-wrap">
+          <div class="dropdown-pull activity-dropdown-pull">
+            <%= icon('user-settings') %>
+          </div>
+          <div class="dropdown-v right">
+            <i class="tip"></i>
+            <ul>
+              <% if current_role == "admin"%>
+                <li>
+                  <%= link_to "Administración", managers_wall_path %>
+                </li>
+              <% end %>
+              <li>
+                <%= link_to "Ir a mi perfil", show_user_path(current_user.personal_url) %>
+              </li>
+              <li>
+                <%= link_to "Editar perfil", edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "Salir", sign_out_path, method: :delete %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="log_loadding" style="display:none;"></div>

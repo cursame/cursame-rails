@@ -1,6 +1,8 @@
-<% if (@url == true) %>
-   $('#taget').html('<p style="color:#14FD30; font-size:10px; padding:12px; margin-left:53px;">La url está disponible</p>');
-<%end%>
-<% if (@url == false) %>
-   $('#taget').html('<p style="color:#D01515; font-size:10px; padding:12px; margin-left:53px;">La url no está disponible</p>');
+
+var urlStatus = $('.user-custom-url-wrap');
+
+<% if @url %>
+  urlStatus.addClass('url-available').removeClass('url-not-available');
+<% else %>
+  urlStatus.addClass('url-not-available').removeClass('url-available');
 <%end%>

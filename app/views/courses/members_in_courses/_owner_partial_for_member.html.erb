@@ -16,7 +16,7 @@
 
         <div class="card-main">
           <%= link_to truncate(member_it.name, :omission => "...", :length => 35), show_user_path(member_it.personal_url) %>
-          <div id="member_options<%=member.id%>">
+          <div class="card-actions" id="member_options<%=member.id%>">
             <%= render partial: '/courses/members_in_courses/permissionings_edit', :locals => {:member => member, :member_it => member_it} %>
           </div>   
         </div>
