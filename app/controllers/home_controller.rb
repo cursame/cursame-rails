@@ -133,6 +133,7 @@ class HomeController < ApplicationController
        @type = params[:type]
        puts '------------------------'
        puts @id
+       @messages = "Comentario"
        respond_to do |format|
          format.js
        end
