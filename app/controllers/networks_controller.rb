@@ -213,7 +213,7 @@ class NetworksController < ApplicationController
   def network_comunity
   @user_l= current_user
   @friends = @user_l.friends(false) + @user_l.friends(true)
-
+  
    respond_to do |f|
     f.html
    end
@@ -223,8 +223,13 @@ class NetworksController < ApplicationController
   def all_user_in_network_where_not_my_friends
   @user_l= current_user
 
-  @friends = current_network.users
-   
+   @a = current_network.users
+
+   @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
+
+   @v = @a - @r
+
+   @friends = @v
   respond_to do |f|
     f.js
   end

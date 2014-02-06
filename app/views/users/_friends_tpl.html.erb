@@ -25,8 +25,10 @@
 
             <% case @user_l.who_sent?(f) %>
              <% when @user_l %>
+                <%= link_to "Eliminar", friendships_destroy_friend_path(f.id), class: "btn btn-small btn-primary" %>
                 <span class="btn btn-small btn-disabled">Solicitud enviada</span>
              <% when f %>
+                <%= link_to "Eliminar", friendships_destroy_friend_path(f.id), class: "btn btn-small btn-primary" %>
                 <%= link_to "Aceptar", friendships_update_friend_path(f.id), class: "btn btn-small btn-primary", remote: true %>
               <% else %>
               <div id="add_friend<%=f.id%>">
