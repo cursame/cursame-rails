@@ -1,0 +1,6 @@
+<h1>Calificaciones</h1>
+
+	<% @courses.each do |course|%>
+      <% @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, course.id) %>
+      <%= render partial: "users/evaluation", :locals => {:course => course, :member => @member}%>
+    <%end%>

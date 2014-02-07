@@ -128,7 +128,10 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
+  
+  #### lista calificaciones
 
+  get "/califications", :to => "users#califications", :as =>  :califications
 
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
