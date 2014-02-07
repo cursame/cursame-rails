@@ -47,7 +47,7 @@
 			
                 
                 <div id="septos_loader_logo" style="display:none; margin-bottom:16px;"><p><%= f.file_field :logo %></p>
-                    <p> Tipo del logo <%= f.select :logo_type, options_for_select([ "128x26", "26x26" ]) %></p></div>
+                    <p> Tipo del logo <%= f.hidden_field :logo_type, :value => "26x26"  %></p></div>
                     <p><a style="cursor:pointer; float:right; margin-right:-260px; margin-top:-45px;" id="opm_tag" class="btn_blue">Etiquetas</a></p>
                     <p><a style="cursor:pointer; float:right; margin-right:-160px; margin-top:-45px;" id="opm_domain" class="btn_blue">Dominio</a></p>
                     
