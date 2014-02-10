@@ -1,8 +1,10 @@
+<% @member_it = member_it %>
+<% @member =  member %>
 
-<% case member.accepted %>
+<% case @member.accepted %>
   <% when true %>
-    <% if current_user.id != member_it.id %>
-      <div id="options_to_<%=member_it.id%>" style="display:block;"> 
+    <% if current_user.id != @member_it.id %>
+      <div id="options_to_<%@member_it.id%>" style="display:block;"> 
         <div class="dropdown-wrap">
           <div class="dropdown-pull">
             <span class="btn btn-small btn-secondary"> Editar </span>
@@ -11,23 +13,23 @@
             <i class="tip"></i>
             <ul>
               <li>
-                <%= form_for member, :remote => true do |fcm| %>                           
+                <%= form_for @member, :remote => true do |fcm| %>                           
                   <label class="as-link">
-                    <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{member_it.id}', '#{member.id}','acceptin', '#{member_it.id}');"  %>
+                    <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{@member_it.id}', '#{@member.id}','acceptin', '#{@member_it.id}');"  %>
                     ¿Miembro aceptado en el grupo?
                   </label>
                 <%end%>
               </li>
               <li>
-                <%= form_for member, :remote => true do |owner|%>
+                <%= form_for @member, :remote => true do |owner|%>
                   <label class="as-link">
-                    <%= owner.check_box :owner, :onclick => "ValidateMemberInCourse('owner_in_course#{member_it.id}', '#{member.id}','ownerin', '#{member_it.id}');", :class=> "owner_in_course#{member_it.id}"  %>
+                    <%= owner.check_box :owner, :onclick => "ValidateMemberInCourse('owner_in_course#{@member_it.id}', '#{@member.id}','ownerin', '#{@member_it.id}');", :class=> "owner_in_course#{@member_it.id}"  %>
                     Administrador
                   </label>
                 <%end%>
               </li>
               <li>
-                <%= link_to 'Eliminar del grupo', member, confirm: 'Are you sure?', method: :delete, :remote => true %>
+                <%= link_to 'Eliminar del grupo', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
               </li>
             </ul>
           </div>
@@ -36,14 +38,13 @@
     <%end%>
   
   <% when false %>
-    <%= form_for member, :remote => true do |fcm| %>                           
-      <%= link_to 'Eliminar', member, confirm: 'Are you sure?', class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
+    <%= form_for @member, :remote => true do |fcm| %>                           
+      <%= link_to 'Eliminar', @member, confirm: 'Are you sure?', class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
 
-      <label class="btn btn-small btn-primary" for="members_in_course_accepted">
+      <label class="btn btn-small btn-primary">
         Aceptar Usuario
-        <span class="hide-input-file">
-          <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{member_it.id}', '#{member.id}','acceptin', '#{member_it.id}');", :class=> "members_in_course_accepted_#{member_it.id}"  %>
-        </span>
+          <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse("+"'"+"members_in_course_accepted_#{@member_it.id}"+"'"+","+"'"+"#{@member.id}"+"'"+","+"'"+"acceptin"+"'"+","+"'"+"#{@member_it.id}"+"'"+");", :class=> "members_in_course_accepted_#{@member_it.id}", :style => "display:none;"  %>
       </label>
     <%end%>
 <%end%> 
+
