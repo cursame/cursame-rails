@@ -29,7 +29,7 @@
                 <%end%>
               </li>
               <li>
-                <%= link_to 'Eliminar del grupo', @member, confirm: 'Are you sure?', method: :delete, :remote => true %>
+                <%= link_to 'Eliminar del grupo', @member, confirm: '¿Estás seguro de querer eliminar este usuario del curso?', method: :delete, :remote => true %>
               </li>
             </ul>
           </div>
@@ -39,7 +39,7 @@
   
   <% when false %>
     <%= form_for @member, :remote => true do |fcm| %>                           
-      <%= link_to 'Eliminar', @member, confirm: 'Are you sure?', class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
+      <%= link_to 'Eliminar', @member, confirm: '¿Estás seguro de querer eliminar este usuario del curso?', class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
 
       <label class="btn btn-small btn-primary">
         Aceptar Usuario

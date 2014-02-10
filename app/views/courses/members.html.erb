@@ -13,6 +13,7 @@
   <% case %>
     <% when current_role == "admin" %>
       <% if @member.owner == true %>
+         <%= @member.owner %>
          <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
        <%else%>
          <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
@@ -20,6 +21,8 @@
 
     <% when current_role == "teacher" %>
       <% if @member.owner == true%>
+        <%= @member.owner %>
+
          <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
        <%else%>
          <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
@@ -27,6 +30,8 @@
 
     <% when current_role == "student" %>
       <% if @member.owner == true%>
+         <%= @member.owner %>
+
          <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
        <%else%>
          <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
