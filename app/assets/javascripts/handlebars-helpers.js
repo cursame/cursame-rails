@@ -108,6 +108,11 @@
 
 }));
 
+var DateFormats = {
+    short: "DD [de] MMMM [del] YYYY",
+    long: "dddd DD.MM.YYYY HH:mm"
+};
+
 Handlebars.registerHelper ('truncate', function (str, len) {
   if (str.length > len && str.length > 0) {
     var new_str = str + " ";
@@ -119,4 +124,14 @@ Handlebars.registerHelper ('truncate', function (str, len) {
   }
   
   return str;
+});
+
+Handlebars.registerHelper("formatDate", function(datetime, format) {
+  if (moment) {
+    f = DateFormats[format];
+    return moment(datetime).lang('es').format(f);
+  }
+  else {
+    return datetime;
+  }
 });

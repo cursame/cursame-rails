@@ -1,16 +1,12 @@
 
-feedsDetailContainer = $('.activities-depot-main'),
-feedRespondsContainer = feedsDetailContainer.find('.activity-responds');
-activityDetails = feedsDetailContainer.find('.activity-responds-detail');
+feedsDetailContainer  = $('.activities-depot-main');
+feedsDetailContainer.html('');
 
-feedRespondsContainer.html('');
-activityDetails.html('')
-
-activityDetails.html( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @delivery.to_json.html_safe %> ) );
+feedsDetailContainer.append( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @delivery.to_json.html_safe %> ) );
  
 <% if  @count == 0  %>
-  feedRespondsContainer.html('No hay ninguna entrega en esta tarea.');
+  feedsDetailContainer.append('No hay ninguna entrega en esta tarea.');
 <% else %>
   console.log( <%=j @deliveries.to_json.html_safe %> );
-  feedRespondsContainer.html( HandlebarsTemplates['activities-depot/deliveries']( <%=j @deliveries.to_json.html_safe %> ) );
+  feedsDetailContainer.append( HandlebarsTemplates['activities-depot/deliveries']( <%=j @deliveries.to_json.html_safe %> ) );
 <% end %>

@@ -1,18 +1,14 @@
 
-feedsDetailContainer = $('.activities-depot-main'),
-feedRespondsContainer = feedsDetailContainer.find('.activity-responds');
-activityDetails = feedsDetailContainer.find('.activity-responds-detail');
+feedsDetailContainer  = $('.activities-depot-main');
+feedsDetailContainer.html('');
 
-feedRespondsContainer.html('');
-activityDetails.html('')
-
-activityDetails.html( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @survey.to_json.html_safe %> ) );
+feedsDetailContainer.append( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @survey.to_json.html_safe %> ) );
 
 <% if @responces.empty? %>
-	feedRespondsContainer.html('Nadie ha contestado este cuestionario.');
+	feedsDetailContainer.append('Nadie ha contestado este cuestionario.');
 <% else %>
   
   console.log( <%=j @survey_replies.to_json.html_safe %> );
-  feedRespondsContainer.html( HandlebarsTemplates['activities-depot/surveys']( <%=j @survey_replies.to_json.html_safe %> ) );
+  feedsDetailContainer.append( HandlebarsTemplates['activities-depot/surveys']( <%=j @survey_replies.to_json.html_safe %> ) );
 
 <% end %>

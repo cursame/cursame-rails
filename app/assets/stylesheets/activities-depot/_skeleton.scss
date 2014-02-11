@@ -5,11 +5,16 @@
   @include clearfix;
 
   .activities-depot-feeds {
-    width: 320px;
+    width: 268px;
     float: left;
     overflow-y: scroll;
     height: 100%;
     position: relative;
+    margin: 20px 0;
+    
+    .activities-depot-feeds-title {
+      padding: 5px 10px;
+    }
 
     #load-more-activities {
       > a {
@@ -33,31 +38,46 @@
   }
 
   .activities-depot-main {
-    margin-left: 320px;
+    width: 408px;
+    float: left;
+    margin: 20px 0 20px 20px;
     overflow-y: scroll;
     height: 100%;
 
     .activity-responds-detail {
-      padding: 13px 10px 15px 10px;
+      padding: 10px;
 
       .list-buttons {
-        margin-top: 10px;
+        margin-top: 4px;
       }
     }
   }
 }
 
 .delivery-submited-wrap {
+  .back-to-activity a {
+    display: block;
+    padding: 7px 10px; 
+  }
+
   .assets {
     margin-top: 15px;
   }
   
   .delivery-submited-content {
-    padding: 20px;
+    padding: 10px;
+
+    > div {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 
   .delivery-submited-evaluation-fields {
-    padding: 20px;
+    padding: 10px;
 
     .evaluation-fields-title {
       margin-bottom: 15px;
@@ -83,6 +103,14 @@
   }
 
   .delivery-item-main {
-    margin-left: 55px;
+    position: relative;
+    margin: 5px 0 0 55px;
+  }
+  
+  .i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -7px;
   }
 }

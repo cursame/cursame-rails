@@ -1,6 +1,3 @@
 feedsDetailContainer = $('.activities-depot-main'),
-feedRespondsContainer = feedsDetailContainer.find('.activity-responds'),
-deliveriesActivityWrap = $('.deliveries-activity-wrap');
 
-deliveriesActivityWrap.hide();
-feedRespondsContainer.append('<%= escape_javascript(render(partial: "courses/light_box_dashboard_delivery", :locals => {:assignment => @assignment})) %>');
+feedsDetailContainer.html('').append('<%= escape_javascript(render(partial: "courses/light_box_dashboard_delivery", :locals => {:assignment => @assignment})) %>');

@@ -614,6 +614,8 @@ class CoursesController < ApplicationController
     page = (params[:page]).to_i
     per_page = (params[:per_page]).to_i
     @date = getActivities((page * per_page), ((page * per_page) + per_page), id)
+    puts @date
+
 
     # @date = simple
     respond_to do |format|
@@ -848,6 +850,7 @@ class CoursesController < ApplicationController
 
   def course_assignment_notif
     @assignment = Assignment.find(params[:id])
+    
      respond_to do |format|
         #format.html
         format.js

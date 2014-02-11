@@ -1,5 +1,5 @@
 <div class="section-header spaced activities-depot-header">
-  <div class="wrapper full-width">
+  <div class="wrapper spaced">
 
     <div class="section-header-title w-subnav">
       <div class="section-icon">
@@ -17,7 +17,7 @@
             <a class="homework_select" href="#"  title="Tareas" data-filter="tarea">Tareas</a>
           </li>
           <li>
-            <a class="survey_select" href="#"  title="Cuestionarios" data-filter="survey">Cuestionarios</a>  
+            <a class="survey_select" href="#"  title="Cuestionarios" data-filter="examen">Cuestionarios</a>  
           </li>
         </ul>
       </div>
@@ -37,43 +37,35 @@
   </div>
 </div>
 
-<div class="activities-depot-wrap">
-  <div class="activities-depot-feeds">
-    <div id="activites-feeds-container">
+<div class="wrapper spaced">
+  <div class="activities-depot-wrap">
+    <div class="activities-depot-feeds">
+      <div class="activities-depot-feeds-title">
+        <span class="meta-info">Actividades</span>
+      </div>
+      <div id="activites-feeds-container">
 
+      </div>
+      <div id="load-more-activities">
+        <%= link_to "Cargar más actividades", "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 }  %>
+      </div>
     </div>
-    <div id="load-more-activities">
-      <%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 15, :page => 1), :remote => true%>
-    </div>
-  </div>
-  <div class="activities-depot-main">
-    <div class="activity-responds-detail">
-      
-    </div>
-    <div class="activity-responds">
-
+    <div class="activities-depot-main">
     </div>
   </div>
 </div>
 
 <script>
 
-  var feedsURL              = '<%= "#{course_ki_line_pag_path(@course, :per_page => 15, :page => 0) }.json" %>',
+  var feedsURL              = '<%= "#{course_ki_line_pag_path(@course, :per_page => 10, :page => 0) }.json" %>',
+      feedsMainContainer    = $('.activities-depot-feeds'),
       feedsContainer        = $('#activites-feeds-container'),
       feedsDetailContainer  = $('.activities-depot-main'),
+      loadMoreContainer     = $('#load-more-activities'),
       feedRespondsContainer = feedsDetailContainer.find('.activity-responds');
 
-  $.getJSON( feedsURL, function( data ) {
-    var activitiesFeeds = data.timeline.date;
-
-    for( var i = 0; i < activitiesFeeds.length; i++ ) {
-      var activityFeed = activitiesFeeds[i];
-
-      if ( activityFeed.compose && activityFeed.compose.type == "tarea" || activityFeed.compose.type == "examen") {
-          feedsContainer.append( HandlebarsTemplates['activities-depot/feeds']( activityFeed ) );
-      }
-    }
-
+  getAndRenderFeeds( feedsURL, function() {
+    loadMoreContainer.remove();
   });
 
   feedsContainer.on('click', '.activity-depot-feed', function(event) {
@@ -81,20 +73,12 @@
 
     var $this         = $(this),
         activityID    = $this.attr('id'),
-        activityType  = $this.data('type'),
-        url;
+        activityType  = $this.data('type');
 
     $this.siblings('.activity-depot-feed').removeClass('active');
     $this.addClass('active');
 
-    if ( activityType == "tarea" ) {
-      url = '/course_delivery_actdepot/';
-
-    } else if ( activityType == "examen" ) {
-      url = '/course_survey_actdepot/';
-    }
-
-    $.get( url + activityID );
+    getActivityDepotFeedDetail( activityID, activityType );
   });
 
   feedsDetailContainer.on('click', '.show-activity-delivery', function(event) {
@@ -112,126 +96,70 @@
     $.get( url + activityID );
   });
 
-  feedsDetailContainer.on('click', '.show-deliveries-activity', function(event) {
+  feedsDetailContainer.on('click', '.show-activity-feed', function(event) {
     event.preventDefault();
 
-    var $this = $(this);
+    var $this = $(this),
+        type  = $this.data('type'),
+        id    = $this.data('id');
 
-    $('.delivery-submited-wrap').remove();
-    $('.deliveries-activity-wrap').show();
+    getActivityDepotFeedDetail( id, type );
+    
   });
 
+  feedsMainContainer.on('click', '.load-more-activities-feeds', function(event) {
+    var $this     = $(this),
+        per_page  = $this.data('perpage'),
+        page      = $this.data('page'),
+        url       = '<%= course_ki_line_pag_path(@course) %>?page='+ page +'&per_page='+ per_page +'.json';
 
-  // var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course, :per_page => 15, :page => 0) }.json" %>', function(json) {
-  //   var timeline = json.timeline.date;
-  //   var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
+    getAndRenderFeeds( url, function() {
+      loadMoreContainer.remove();
+    });
+    
+    feedsMainContainer.animate({
+      scrollTop: feedsMainContainer.height()
+    });
 
-  //   for(var i = 0; i < timeline.length; i++) {
+    $this.data( 'page', ++page );
+    event.preventDefault();
+  });
 
-  //     aux = timeline[i];
+  function getActivityDepotFeedDetail( id, type ) {
+    var url;
 
-  //     if ( aux.compose ) {
-  //       kilspace = aux.text.split(' ').join('');
-  //       flip = '/assets/' + aux.compose.type + 'roty.png';
-  //       id = aux.compose.id + aux.compose.type;
-  //       clasificate = aux.compose.clasificate;
-  //       as_to_pertence_com_assets = aux.compose.pertencenence_to;
+    if ( type == "tarea" ) {
+      url = '/course_delivery_actdepot/';
 
-  //       dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
-  //       avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
-  //       state =  aux.compose.state;
+    } else if ( type == "examen" ) {
+      url = '/course_survey_actdepot/';
+    }
 
-  //       // genera el publicado y el no publicado
-  //       if(state == 'published' && aux.compose.type == 'tarea'){
-  //          linkik = '<div id="delivery_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'Despublicar'+'</a></div>';
-  //        }else if(state == 'published' && aux.compose.type == 'examen'){
-  //          linkik = '<div id="survey_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'Despublicar'+'</a></div>';
-  //        }else if(state == 'unpublish' && aux.compose.type == 'tarea'){
-  //          linkik = '<div id="delivery_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_delivery_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' +  'data-remote="true">'+'Publicar'+'</a></div>';
-
-  //        }else if(state == 'unpublish' && aux.compose.type == 'examen'){
-  //           linkik = '<div id="survey_state_publish'+aux.compose.id+'">'+ '<a class="state-btn" href="/publish_unpublish_survey_manualy?state='+state+'&id='+aux.compose.id+'"' + ' ' + 'data-remote="true"> '+'Publicar'+'</a></div>';
-  //        }else if(state == 'none' && aux.compose.type == 'entrega_tarea'){
-  //           linkik = " ";
-  //       }
-
-  //       $('#ajax-dump').append('<div class="activities_depot ' + as_to_pertence_com_assets +' '+ aux.compose.type +'" id="' + id + '"><div class="activity-depot-author"><i class="i i-depot-'+aux.compose.type+'"></i></div> <div class="activity-depot-main"><h6 class="as-link">'+ aux.headline +'</h6><p>' + truncate(aux.text, 50, '...')  +'</p>'+ linkik );
-        
-
-  //       // este controlador muestra la información correspondiente a la actividad
-  //       $('#' + id).click(function() {
-  //         var axelid =  $(this).attr("id");
-  //         var cl_actives = $(this).attr("class").split(/\s/);
-  //         var last_class = cl_actives[1];
-  //         $('.user_assets').hide();
-  //         $('.' + last_class).show();
-
-  //         // Se coloca el div para que el usuario vea quien entrego el examen
-  //         if(axelid.lastIndexOf("examen") != -1) {
-  //           $('#expoced').html('');
-  //           $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados" ></div></div>');
-
-
-  //           $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
-  //         }
-
-  //         // Se coloca el div para que el usuario pueda calificar la tarea
-  //         else if(axelid.lastIndexOf("entrega_tarea") != -1) {
-  //           $('#expoced').html('');
-  //           $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
-
-  //           $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', '') );
-  //         }
-
-  //         else if(axelid.lastIndexOf("tarea") != -1) {
-  //           $('#expoced').html('');
-  //           $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tareas_entregadas"></div></div>');
-
-  //           $.get('/course_delivery_actdepot/' + axelid.replace('tarea', ''));
-  //         }          
-
-  //       });
-        
-  //       casual = "casual" + id;
-  //       identifier = '#' + id;
-
-  //       assets = aux.assets;
-  //       var cloud = 'po' + aux.asset.credit.split(" ").join("").toLowerCase();
-  //       if(assets) {
-  //         for(var l = 0; l < assets.length;l++) {
-  //          fromk = assets[l];
-  //           url = fromk.file.file.url;
-  //           nam = fromk.name;
-  //           pertence_al = fromk.pertencenence_to;
-
-  //           $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets' + cloud + ' ' + pertence_al + '">' + '</div>');
-  //           $("#" + pertence_al).prepend('<a href="' + url + '" id=' + id + '>' + nam + '<a>');
-  //         }
-  //       }
-  //     }
-  //   }
-  // });
-  
-  function red_actdepot(elem) {
-    var red_to = $(elem).attr("redirect_to");
-    $(location).attr("href", red_to); 
+    $.get( url + id );
   }
 
-  $("#rtf").change(function() {         
-    var value = $(this).val();
-    var flot = value.split(" ").join("").toLowerCase();
-    console.log(flot);
+  function getAndRenderFeeds( url, callback ) {
+    console.log(url);
 
-    if(flot == ".todaslasactividades") {
-      $('.activities_depot').show();
-      $('.user_assets').show();
-    } else {
-      $('.activities_depot').hide();
-      $('.user_assets').hide();
-      $(flot).show();
-    }
-  });
+    $.getJSON( url, function( data ) {
+      var activitiesFeeds = data.timeline.date;
 
+      if ( activitiesFeeds == null ) {
+        callback();
+      } else {
+        for( var i = 0; i < activitiesFeeds.length; i++ ) {
+          var activityFeed = activitiesFeeds[i];
+
+          if (activityFeed.compose === undefined) continue;
+
+          if ( activityFeed.compose && activityFeed.compose.type == "tarea" || activityFeed.compose.type == "examen") {
+              feedsContainer.append( HandlebarsTemplates['activities-depot/feeds']( activityFeed ) );
+          }
+        }
+      }
+
+    });
+  }
 
   $('.section-subnav li > a').on('click', function() {
     var $this = $(this),
@@ -241,7 +169,7 @@
       feedsContainer.children('.activity-depot-feed').show();  
     } else {
       feedsContainer.children('.activity-depot-feed').hide();
-      feedsContainer.children('.' + filter).show();
+      feedsContainer.children('[data-type="'+ filter +'"]').show();
     }
 
   });
