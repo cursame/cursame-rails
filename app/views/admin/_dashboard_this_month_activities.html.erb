@@ -25,7 +25,7 @@ deliveries.push(Delivery.where("created_at > ? AND created_at < ?", start_date, 
 courses.push(Course.where("created_at > ? AND created_at < ?", start_date, end_date).count)
 surveys.push(Survey.where("created_at > ? AND created_at < ?", start_date, end_date).count)
 discussions.push(Discussion.where("created_at > ? AND created_at < ?", start_date, end_date).count)
-users.push(User.where("created_at > ? AND created_at < ?", start_date, end_date).count + 27222)
+users.push((User.where("created_at > ? AND created_at < ?", start_date, end_date).count).to_i + (27222).to_i))
 networks.push(Network.where("created_at > ? AND created_at < ?", start_date, end_date).count)
 
 %>
