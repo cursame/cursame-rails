@@ -1,4 +1,5 @@
 var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course_id, :per_page => @per_page, :page => @page) }.json" %>', function(json) {
+  
   var timeline = json.timeline.date;
   var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
 
@@ -70,4 +71,4 @@ var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course_id, :per_page =
   }
 });
 
-$('#load-more-activities').html('<b><a href="/courses/<%= @course_id %>/load_more_activities?per_page=3&page=<%=@page + 1%>" data-remote="true">Ver mas ...</a></b>');
+$('#load-more-activities').html('<a href="/courses/<%= @course_id %>/load_more_activities?per_page=3&page=<%=@page + 1%>" data-remote="true">Ver mas ...</a>');

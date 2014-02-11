@@ -856,9 +856,27 @@ class CoursesController < ApplicationController
   end
 
   def course_delivery_actdepot
-    @delivery = Delivery.find(params[:id])
-    @assignments = @delivery.assignments
-    @count = @assignments.count
+    @delivery     = Delivery.find(params[:id])
+    @assignments  = @delivery.assignments
+    @count        = @assignments.count
+    @deliveries   = Array.new
+    
+    @assignments.each do |assign|
+      user = User.find(assign.user_id)
+
+      @deliveries << {
+        id: assign.id,
+        title: assign.title,
+        description: assign.brief_description,
+        user_id: assign.user_id,
+        user_name: "#{user.first_name} #{user.last_name}",
+        user_avatar: avatar('user', '45', 'no',assign.user_id, 'avatar', 'no', 'no'),
+        updated_at: assign.updated_at,
+        accomplishment: assign.accomplishment,
+        type: "tarea"
+      }
+    end
+
     puts 
     respond_to do |format|
       format.js
@@ -899,6 +917,18 @@ class CoursesController < ApplicationController
   def course_survey_actdepot
     @survey = Survey.find(params[:id])
     @responces = @survey.user_surveys
+    @survey_replies = Array.new
+
+    @responces.each do |survey_reply|
+      user = User.find(survey_reply.user_id)
+
+      @survey_replies << {
+        id: survey_reply.id,
+        result: survey_reply.result,
+        user_name: "#{user.first_name} #{user.last_name}",
+        user_avatar: avatar('user', '45', 'no', survey_reply.user_id, 'avatar', 'no', 'no'),
+      }
+    end
 
     respond_to do |format|
       #format.html

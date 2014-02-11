@@ -5,11 +5,11 @@ class LogoNetworkUploader < CarrierWave::Uploader::Base
   storage :file
   
    version :response do
-      process :resize_to_fill => [128, 26]
+      process :resize_to_fill => [44, 44]
     end
     
    version :square do
-     process :resize_to_fill => [26, 26]
+     process :resize_to_fit => ['',44]
    end
 
    

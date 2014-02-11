@@ -1,18 +1,18 @@
 
-$('#examenes_contestados').html('');
+feedsDetailContainer = $('.activities-depot-main'),
+feedRespondsContainer = feedsDetailContainer.find('.activity-responds');
+activityDetails = feedsDetailContainer.find('.activity-responds-detail');
+
+feedRespondsContainer.html('');
+activityDetails.html('')
+
+activityDetails.html( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @survey.to_json.html_safe %> ) );
 
 <% if @responces.empty? %>
-	$('#examenes_contestados').html('Nadie ha contestado este cuestionario.');
+	feedRespondsContainer.html('Nadie ha contestado este cuestionario.');
 <% else %>
-	<% @responces.each do | respon |%>
-		<% user = respon.user %>
+  
+  console.log( <%=j @survey_replies.to_json.html_safe %> );
+  feedRespondsContainer.html( HandlebarsTemplates['activities-depot/surveys']( <%=j @survey_replies.to_json.html_safe %> ) );
 
-    var avatar = "<span class='avatar-holder'><%= avatar('user', '45', 'no', user.id, 'avatar', 'no', 'no') %></span>";
-
-		$('#examenes_contestados').append('<div id="examen_contestado_actdepot-<%= respon.id %>" redirect_to="" onclick = "red_actdepot(this);">' +
-			'<div>'+ avatar +'</div><div>Cuestionario contestado por: <br><b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b></div>' +
-        	'<div><div>Resultado obtenido: <%= respon.result.round(3) %></div></div></div>');
-
-		$('#examen_contestado_actdepot-<%= respon.id %>').attr("redirect_to", "/courses/<%=@survey.courses.first.id%>?search=Survey&id_search=<%=@survey.id.to_s%>&show_survey=<%= respon.id.to_s %>");
-	<% end %>
 <% end %>

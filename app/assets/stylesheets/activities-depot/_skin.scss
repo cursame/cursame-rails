@@ -7,18 +7,32 @@
   .activities-depot-feeds {
     border-right: 1px solid #e6e6e6;
 
-    .activities_depot {
+    .activity-depot-feed {
       border-bottom: 1px solid #e6e6e6;
       cursor: pointer;
 
       &:hover {
         background: #fcfcfc;
       }
+
+      &.active {
+        background: #f2f2f2; 
+      }
+    }
+
+    #load-more-activities {
+      text-align: center;
+      background: #fff;
     }
   }
 
   .activities-depot-main {
     background: #f9f9f9;
+
+    .activity-responds-detail {
+      background: #fff;
+      border-bottom: 1px solid #E6E6E6;
+    }
   }
 }
 
@@ -28,6 +42,7 @@
     background: #fff;
     border-bottom: 1px solid #E6E6E6;
   }
+
   .delivery-submited-evaluation-fields {
 
     .homeworkCalf {
@@ -36,4 +51,8 @@
       border-radius: $radius;
     }
   }
+}
+
+.delivery-item {
+  border-bottom: 1px solid #d6d6d6;  
 }

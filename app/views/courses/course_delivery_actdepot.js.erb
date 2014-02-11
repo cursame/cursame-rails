@@ -1,24 +1,16 @@
 
-$('#tareas_entregadas').html('');
+feedsDetailContainer = $('.activities-depot-main'),
+feedRespondsContainer = feedsDetailContainer.find('.activity-responds');
+activityDetails = feedsDetailContainer.find('.activity-responds-detail');
+
+feedRespondsContainer.html('');
+activityDetails.html('')
+
+activityDetails.html( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @delivery.to_json.html_safe %> ) );
+ 
 <% if  @count == 0  %>
-  $('#tareas_entregadas').html('No hay ninguna entrega en esta tarea.');
+  feedRespondsContainer.html('No hay ninguna entrega en esta tarea.');
 <% else %>
-  <% @assignments.each do |assign|%>
-		<% user = assign.user %>
-        var avatar = "<span class='avatar-holder'><%= avatar('user', '45', 'no', user.id, 'avatar', 'no', 'no') %></span>";
-        
-
-		$('#tareas_entregadas').append('<div id="tarea_entregada_actdepot-<%= assign.id %>" redirect_to="" onclick = "red_actdepot(this);">' +
-			'<div class="">'+ avatar +'</div>' +
-        	'<div>Tarea entregada por: <br><b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b></div>' +
-        	'<div>' + '<div id="entrega-tarea-actdepot"></div></div>' +
-		'</div>');
-
-		$('#tarea_entregada_actdepot-<%= assign.id %>').attr("redirect_to", "/courses/<%=@delivery.courses.first.id%>?search=Delivery&id_search=<%=@delivery.id.to_s%>&show_assig=<%= assign.id.to_s %>");
-		<% if assign.accomplishment.nil? %>
-			$('#entrega-tarea-actdepot').html('No se ha calificado <span class="as-link">Ver entrega</span>');
-		<% else %>
-			$('#entrega-tarea-actdepot').html('<%= assign.accomplishment.round(2) %>% <span>Ver entrega</span>');
-		<% end %>
-	<% end %>
+  console.log( <%=j @deliveries.to_json.html_safe %> );
+  feedRespondsContainer.html( HandlebarsTemplates['activities-depot/deliveries']( <%=j @deliveries.to_json.html_safe %> ) );
 <% end %>

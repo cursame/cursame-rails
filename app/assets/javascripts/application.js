@@ -16,7 +16,7 @@
 //= require private_pub
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require handlebars
+//= require handlebars.runtime
 //= require_tree .
 
 // Adding and removing questions answers

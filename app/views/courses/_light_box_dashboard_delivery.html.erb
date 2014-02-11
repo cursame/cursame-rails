@@ -1,5 +1,4 @@
 <div class="cogki_content_delivery delivery-submited-wrap">
-  
   <div class="delivery-submited-content">
     <h6><%= assignment.title%></h6>
     <p><%= assignment.brief_description%></p>
@@ -62,9 +61,16 @@
       
       <div class="delivery-submited-evaluation-footer">
         <div class="fl">
-          <span class="btn btn-primary input-btn">
-            <%= assigments_l.submit "Calificar tarea"%>
-          </span>
+          <ul class="list-buttons left">
+            <li>
+              <span class="btn btn-primary input-btn">
+                <%= assigments_l.submit "Calificar tarea"%>
+              </span>
+            </li>
+            <li>
+              <a class="show-deliveries-activity btn btn-secondary" href="" title="">Atras</a>
+            </li>
+          </ul>
         </div>
         <div class="fr">
           <%if assignment.accomplishment == nil %>
