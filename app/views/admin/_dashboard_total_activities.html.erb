@@ -21,7 +21,7 @@ networks.push(Network.count)
     
     @networks = Network.all
 
-    @count = 12000 
+    @count = 0 
     @networks.each do |n|
          @count = @count + (n.population).to_i 
     end
