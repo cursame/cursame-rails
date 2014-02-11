@@ -8,6 +8,7 @@ surveys = []
 discussions = []
 users = []
 networks = []
+pontential_in_teworks = []
 
 comments.push(Comment.count)
 deliveries.push(Delivery.count)
@@ -17,6 +18,14 @@ discussions.push(Discussion.count)
 users.push((User.count).to_i + (27222).to_i)
 networks.push(Network.count)
 
+    
+    @networks = Network.all
+
+    @count = 12000 
+    @networks.each do |n|
+         @count = @count + (n.population).to_i 
+    end
+pontential_in_teworks.push(@count)
 %>
 
 <script>
@@ -77,6 +86,11 @@ networks.push(Network.count)
             }, {
                 name: 'Redes',
                 data: <%= networks %>
+
+            },{
+                name: 'Usuarios Potenciales',
+                data: <%= pontential_in_teworks %>
+
             }]
         });
     });
