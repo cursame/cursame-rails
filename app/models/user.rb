@@ -486,8 +486,117 @@ class User < ActiveRecord::Base
     return
   end
 
-  handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
+  handle_asynchronously :import, :priority => 0, :run_at => Proc.new{Time.zone.now}
 
+
+
+  def import_for_admin(path,network,user_admin, domain, subdomain)
+    puts "ingresando en el método de administrador"
+    arrayErrores = Array.new
+    count = 0
+    
+    CSV.foreach(path, headers: true) do |row|
+      count += 1
+      
+      user = User.new
+      
+      hash = row.to_hash
+      network_id = network.id
+      role_id = hash.delete("Role")
+
+      errors = false
+      
+      if !role_id.nil? then
+        
+        role_id = role_id.downcase.strip
+        role_id = 2 if role_id == "estudiante"
+        role_id = 3 if role_id == "maestro"
+      else
+        arrayErrores.push({ :line => count,:message => "No se especifico un role"})
+        errors = true
+      end
+      
+      if role_id.class != Fixnum then
+        arrayErrores.push({:line => count, :message => "El role esta incorrecto"})
+        errors = true
+      end
+
+      user.first_name = hash.delete("Nombre")
+      user.last_name = hash.delete("Apellido")
+      user.domain = domain
+      user.subdomain = subdomain
+
+      user.email = hash.delete("Email")
+  
+      if !user.email.nil? then
+        user.email = user.email.downcase
+        # Checa que el correo sea valido y que no se repita
+        if user.email["@"].nil? || !User.find_by_email(user.email).nil?
+          arrayErrores.push({:line => count, :message => "El correo no es valido o ya existe en la DB" })
+          errors = true
+        end
+      else
+        arrayErrores.push({:line => count, :message => "No hay ningun email especificado"})
+        errors = true
+      end
+
+      # Nombre y apellido en mayusculas
+      user.first_name = user.first_name.capitalize if !user.first_name.nil?
+      user.last_name = user.last_name.capitalize if !user.last_name.nil?
+      
+      # Checa que exista el role_id
+      if role_id.nil? then
+        arrayErrores.push({:line => count, :message => "Debes de especificar un role para el usuario" })
+        errors = true
+      end
+
+      if !role_id.nil? then
+        if Role.find_by_id(role_id).nil? then
+          arrayErrores.push({:line => count, :message => "No existe el rol dado"})
+          errors = true
+        end
+      end
+      
+      password = Devise.friendly_token.first(6)
+      charList =  [('a'..'z'),('A'..'Z'),(0..9)].map{ |i| i.to_a }.flatten.map{ |i| i.to_s }
+      
+      personal_url_random = (0...100).map{  charList[rand(charList.length)] }.join
+      user.password = password
+      user.personal_url = personal_url_random
+      user.accepted_terms = true
+      
+      user.avatar = '/assets/imagex.png'
+      if !errors then
+        user.skip_confirmation!
+        if user.save then
+          Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          @mail = Notifier.user_mailer_with_password(user, password).deliver
+        #rescue ActiveRecord::RecordInvalid => invalid
+          #  invalid.record.errors.each do |error|
+          #    arrayErrores.push({:line => count, :message => "Falta especificar: " + error.to_s})
+          #  end
+          #end
+        #if !user.save then
+        #  arrayErrores.push({:line => count, :message => "Error al guardar"})
+        #else
+          # user.confirm!
+          # user.save!
+          #Permissioning.create(:role_id => role_id.to_i,:network_id => network_id.to_i, :user_id => user.id)
+          # mail = Notifier.send_password(user,password)
+          # mail.deliver
+        end
+      end
+    end
+    
+    mail = Notifier.send_import_users(user_admin,arrayErrores)
+    mail.deliver
+    #return arrayErrores
+    return
+  end
+
+  handle_asynchronously :import_for_admin, :priority => 0, :run_at => Proc.new{Time.zone.now}
+  
+  
   def member_of?(group,another_user)
     member_in_group = MembersInGroup.find_by_user_id_and_group_id(another_user.id,group.id)
     return !member_in_group.nil?

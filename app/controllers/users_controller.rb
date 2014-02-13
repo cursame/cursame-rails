@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
+  skip_before_filter :authenticate_user!, :only => [:upload_users_a ]
 
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
@@ -148,6 +149,59 @@ class UsersController < ApplicationController
         @url = false
      end
 
-    end
+  end
 
+  def upload_users_a
+    puts "**************A"
+    ###### cacha red y usuario para mandar mail de errores ####
+    network = Network.find(params[:red])
+    user_info = User.find_by_email("info@cursa.me") # Cambiar esto por info@cursa.me
+    user_admin = user_info
+    t_email = params[:t_email]
+    puts "**************B"
+
+    ######### sube el archivo a la carpeta de importación de usuarios #####
+    lastFile = Dir.glob("public/imports/import_users_*")    
+    lastFile = lastFile.sort.map{|x| x.gsub(/[^0-9]/, '')}.map{|x| x.to_i}.sort.last
+    if lastFile.nil? then
+      name = "import_users_1.csv"
+    else
+      name = "import_users_" + lastFile.succ.to_s + ".csv"
+    end
+ 
+    text = ""
+    #begin
+      File.open(params[:file].path,"r:ISO-8859-1").each do |line|
+        text += line
+      end
+
+      path = "public/imports/" + name
+      f = File.open(path,'w+')
+      f.write(text)
+      f.close
+    ####### setea las variables del dominio ########## 
+      domain = params["domain"]
+      subdomain = network.subdomain
+      puts "************** c"
+      puts t_email.nil?
+      if t_email == 'confirmate'
+        user_info.delay.import(path,network,user_admin,domain,subdomain)
+      else
+        puts "******************"
+        user_info.delay.import_for_admin(path,network,user_admin,domain,subdomain)
+      end
+
+
+
+    #user_info.import(path,network,user_admin,domain,subdomain)
+
+    #rescue
+      @noFile = true
+    #end
+    @users = current_network.users
+    respond_to do |format|
+      format.html { redirect_to :back}
+      format.json { render json: @users }
+    end
+  end
 end

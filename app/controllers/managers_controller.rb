@@ -96,6 +96,7 @@ class ManagersController < ApplicationController
     end
   end
 
+
   def upload_members
 
     courses = params[:courses]

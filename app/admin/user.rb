@@ -1,6 +1,9 @@
 ActiveAdmin.register User do
 
  index do
+    panel "Importar Usuarios" do
+          render('/admin/form_for_import_users_to_network')
+    end
     column :email do |user|
       link_to truncate("#{user.email}", :omission => "...", :length => 27), admin_user_path(user)
     end
