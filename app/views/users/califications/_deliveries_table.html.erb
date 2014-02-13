@@ -1,0 +1,59 @@
+<div class="course-califications-section">
+  <div class="course-califications-section-title">
+    <h4><%= icon('depot-tarea') %> Tareas</h4>
+  </div>
+  <% unless table["deliveries"]["deliveries"].empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Tarea</th>
+          <th>Entrega</th>
+          <th>Rubros</th>
+          <th>Calificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% table["deliveries"]["deliveries"].each_with_index do |delivery,index| %>
+          <% assignment = table["deliveries"]["assignments"][index]%>
+          <tr <%= "class='even'" if !index.odd? %>>
+            <td>
+              <h6><%=delivery.title%></h6>
+            </td>
+            <% if assignment %>
+              <td>
+                <%= assignment.title %>
+              </td>
+              <td>
+                <% assignment.response_to_the_evaluations.each do |response_to_evaluation|%>
+                  <p><%= response_to_evaluation.name %></p>
+                <%end%>
+              </td>
+              <td>
+                <%= assignment.accomplishment %>
+              </td>
+            <%else%>
+              <td>&ndash;</td>
+              <td>&ndash;</td>
+              <td>&ndash;</td>
+            <%end%>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>              
+    <div class="course-califications-section-footer">
+      <div class="cali-section">
+        <h5>% de la Evaluación</h5>
+        <span class="number"><%=table["deliveries"]["percent_of_deliveries"]%></span>
+      </div>
+      <div class="cali-section">
+        <h5>% Obtenido</h5>
+        <span class="number"><%=table["deliveries"]["evaluation_total"]%></span>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-califications">
+      <h6>Aún no hay tareas en este curso.</h6>
+    </div>
+  <% end %>
+</div>
+

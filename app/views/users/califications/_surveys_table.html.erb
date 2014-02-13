@@ -1,0 +1,50 @@
+<div class="course-califications-section">
+  <div class="course-califications-section-title">
+    <h4><%= icon('depot-examen') %> Cuestionarios</h4>
+  </div>
+
+  <% unless table["surveys"]["surveys"].empty? %>
+    <table border="1" cellpadding="3" cellspacing="3">
+      <thead>
+        <tr>
+          <th colspan="2">Examen</th>
+          <th>Calificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% table["surveys"]["surveys"].each_with_index do |survey,index| %>
+          <tr <%= "class='even'" if !index.odd? %>>
+            <td colspan="2">
+              <%=survey.name%>
+            </td>
+            <td>
+              <% if table["surveys"]["user_surveys"][index] %>
+                <span class="number"><%= table["surveys"]["user_surveys"][index].result%></span>
+              <% else %>
+                Sin resolver
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="course-califications-section-footer">
+      <div class="cali-section">
+        <h5>% Obtenido:</h5>
+        <span class="number"><%=table["surveys"]["percent_of_evaluation"]%></span>
+      </div>
+      <div class="cali-section">
+        <h5>% de la Evaluación:</h5>
+        <span class="number"><%=table["surveys"]["percent_of_surveys"]%></span>
+      </div>
+      <div class="cali-section">
+        <h5>Calificación Total:</h5>
+        <span class="number"><%=table["surveys"]["evaluation_total"]%></span>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-califications">
+      <h6>Aún no hay cuestionarios en este curso.</h6>
+    </div>
+  <% end %>
+</div>
