@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 task :edit_red_emprendedores => :environment do
    users =[
 			{:email => "cecati107.vinc@dgcft.sems.gob.mx", :password => "emprendedores110"},
