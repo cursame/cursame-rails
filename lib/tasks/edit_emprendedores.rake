@@ -93,7 +93,7 @@ task :edit_red_emprendedores => :environment do
 
    users.each do |u|
    		user = User.find_by_email(u[:email])
-   		puts "#{user.name}"
+   		#puts "#{user.name}"
    		puts "#{user.email}"
    		user.password = u[:password]
    		user.confirmed_at = Time.now
