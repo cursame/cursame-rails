@@ -1,6 +1,5 @@
 task :edit_red_emprendedores => :environment do
    users =[
-=begin
 			{:email => "cecati107.vinc@dgcft.sems.gob.mx", :password => "emprendedores110"},
 			{:email => "itzelcardm@hotmail.com", :password => "emprendedores111"},
 			{:email => "mluna@icathi.edu.mx", :password => "emprendedores112"},
@@ -88,9 +87,7 @@ task :edit_red_emprendedores => :environment do
 			{:email => "rafhgo@hotmail.com", :password => "emprendedores194"},
 			{:email => "caroyu@hotmail.com", :password => "emprendedores195"},
 			{:email => "rigocetac@hotmail.com", :password => "emprendedores196"},
-			{:email => "elsaibalo@hotmail.com", :password => "emprendedores197"},
-=end
-			{:email => "jose_alfredo+emprendedor@cursa.me", :password => "emprendedores198"}
+			{:email => "elsaibalo@hotmail.com", :password => "emprendedores197"}
    ]
 
    users.each do |u|
