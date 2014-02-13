@@ -93,12 +93,20 @@ task :edit_red_emprendedores => :environment do
 
    users.each do |u|
    		user = User.find_by_email(u[:email])
-   		#puts "#{user.name}"
-   		puts "#{user.email}"
-   		user.password = u[:password]
-   		user.confirmed_at = Time.now
-   		user.save
+   		if user.nil?
+   			
+   			puts "usuario nulo"
+   			puts "#{u.email}"
 
-   		@mail = Notifier.user_mailer_with_password(user,u[:password]).deliver
+   		else
+   	    	puts "#{user.name}"
+   			puts "#{user.email}"
+   			user.password = u[:password]
+   			user.confirmed_at = Time.now
+   			user.save
+
+   			@mail = Notifier.user_mailer_with_password(user,u[:password]).deliver
+   		end
+   		
    end
 end
