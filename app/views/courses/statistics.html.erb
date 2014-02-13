@@ -1,35 +1,28 @@
-        
-        <div style="width:100%; height:250px; position:absolute;">
-        <div id="timeline-embed" style="position:absolute;"></div>
-        <script type="text/javascript">
-          var timeline_config = {
-            width: "80%",
-            height: "200%",
-            source: 'course_ki_line.json'
-            }
-        </script>
-        <script src="/assets/storyjs-embed.js"></script>
-        </div>
 
+<ul id ="estadistic-list">
+<% permitted_to? :create, :courses do %>
+<% @comments = current_course.comments.count %>
+<% @deliveries = current_course.deliveries.count %>
+<% @survey = current_course.surveys.count %>
+<% @activity = @comments + @survey + @deliveries  %>
 
+<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
+<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
+<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
+<li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
+<%end%>
+</ul>
 
-        <ul id ="estadistic-list">
-          <% permitted_to? :create, :courses do %>
-            <% @comments = current_course.comments.count %>
-            <% @deliveries = current_course.deliveries.count %>
-            <% @survey = current_course.surveys.count %>
-            <% @activity = @comments + @survey + @deliveries  %>
+<div id="timeline-embed" style="position: absolute">
+  
+</div>
 
-            <li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
-            <li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
-            <li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
-            <li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
-          <%end%>
-        </ul>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#timeline-embed").resize();
-
- 	 });
+  var timeline_config = {
+    width: '100%',
+    height: '600',
+    source: 'course_ki_line.json'
+  }
 </script>
- 
+
+<script src="/assets/storyjs-embed.js"></script>

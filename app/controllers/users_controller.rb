@@ -95,7 +95,6 @@ class UsersController < ApplicationController
 
  def califications
   @courses = current_user.courses
-
  end
 
  def friends

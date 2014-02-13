@@ -2,22 +2,16 @@
   <div class="wrapper spaced">
 
     <div class="network">
-      <% if current_network == nil%> 
-        <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
-      <%else%>
-        <% if current_network.logo.file == nil %>
-          <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
-        <%else%>
-          <%case %>
-            <% when current_network.logo_type == '128x26'%>
-              <%= link_to image_tag("#{current_network.logo.response}"), "http://#{current_network.subdomain}.#{links}/"%>
-            <% when current_network.logo_type == '26x26' %>
-              <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
-            <%else%>
-              <%= link_to image_tag("logo.png"), "http://#{current_network.subdomain}.#{links}/"%>
-          <%end%>
-        <%end%>
-      <%end%>
+      <% if current_network.free || current_network.logo.file == nil %>
+
+        <%= link_to root_path, title: current_network.name, class: "free_network" do %>
+          <%= icon('logo-cursame') %>
+        <% end %>
+
+      <% else %>
+        <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+      <% end %>
+
     </div>
     
     <% if current_user %>

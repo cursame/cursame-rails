@@ -1,6 +1,62 @@
-<h1>Calificaciones</h1>
+<div class="section-header">
+  <div class="wrapper spaced">
+    <div class="section-header-title">
+      <div class="section-icon">
+        <%= icon('section-califications') %>  
+      </div>
+      <div class="section-title">
+        <h1>Calificaciones</h1>
+      </div>
+    </div>
+    
+    <% unless @courses.empty? %>
+      <div class="section-header-actions">
+        <span class="meta-info">Filtrar: </span>
+        <select class="course-califications-filter">
+          <option value="all">Todos los cursos</option>
+          <% @courses.each do |course|%>
+            <option value="<%= course.id %>"><%= course.title %></option>
+          <% end %>
+        </select>
+      </div>
+    <% end %>
 
-<% @courses.each do |course|%>
-      <% @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, course.id) %>
-      <%= render partial: "users/evaluation", :locals => {:course => course, :member => @member}%>
-    <%end%>
+  </div>
+</div>
+
+<div class="califications-section-main">
+  <div class="wrapper spaced">
+    <% unless @courses.empty? %>
+      <% @courses.each do |course|%>
+        <% @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, course.id) %>
+        <%= render partial: "users/evaluation", :locals => {:course => course, :member => @member}%>
+      <%end%>
+    <% else %>
+      <div class="no-content-section">
+        <h4>Aún no tienes calificaciones.</h4>
+        <p>Necesitas estar inscrito en al menos un curso para tener calificaiones.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(function() {
+
+    $('.user-califications-header').click(function() {
+      $(this).toggleClass('active').parent().children('.user-califications-main').slideToggle(400);
+    });
+
+    $('.course-califications-filter').change(function() {
+      var id = $(this).val();
+
+      if ( id == 'all') {
+        $('.course-califications-wrap').show();  
+      } else {
+        $('.course-califications-wrap').hide();
+      $('.califications-section-main').find('div#' + id).show();
+      }
+    });
+
+  });
+</script>

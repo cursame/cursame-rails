@@ -80,6 +80,10 @@ a {
   @include triangle(8px, gray, down);
 }
 
+.no-content-section, .no-sub-content-section {
+  text-align: center;
+}
+
 /* Titles
 ----------------------------------*/
 h1, h2, h3, h4, h5, h6 {
