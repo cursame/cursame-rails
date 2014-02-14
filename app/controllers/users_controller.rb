@@ -198,7 +198,7 @@ class UsersController < ApplicationController
     #rescue
       @noFile = true
     #end
-    @users = current_network.users
+    @users = network.users
     respond_to do |format|
       format.html { redirect_to :back}
       format.json { render json: @users }
