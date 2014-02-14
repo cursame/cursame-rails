@@ -293,6 +293,18 @@ class CoursesController < ApplicationController
   def library
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @files = @course.course_files.paginate(:page => 1, :per_page => 10)
+  end
+  
+  def library_pagination
+    page = (params[:page]).to_i
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @files = @course.course_files.paginate(:page => page , :per_page => 10)
+    @next = page + 1
+    respond_to do |f|
+      f.js
+    end
   end
   
   def about

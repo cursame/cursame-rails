@@ -48,7 +48,7 @@ background-white
   <div class="library-wrap">
     <% if @course.course_files.any? %>
       <div class="library-items-list">
-        <% @course.course_files.reverse.each do |cf|%>
+        <% @files.reverse.each do |cf|%>
           <% @name =  "#{cf.file}" %>
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
@@ -56,6 +56,8 @@ background-white
           <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
 
         <%end%>
+        <div id="paginate-files"></div>
+        <div id="paginador_container"><%= link_to "Cargar archivos anteriores", library_in_course_pagination_path(:page => 2), :id => "paginador", :remote => true%></div>
       </div>
     <% else %>
       <div class="no-content-section">

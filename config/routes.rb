@@ -457,6 +457,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
    get '/courses/:id/about', :to => 'courses#about', :as => :about_course 
    get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
+   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+
 
    ###### ruta para crear super admins
 
