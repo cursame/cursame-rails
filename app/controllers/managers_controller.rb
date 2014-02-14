@@ -1,5 +1,6 @@
 class ManagersController < ApplicationController
   filter_access_to :all
+  skip_before_filter :filter_access_filter, :only => :upload_users_a
 
   def wall
     ##### for users bar
@@ -94,6 +95,49 @@ class ManagersController < ApplicationController
       format.html { render "managers/import_users"}
       format.json { render json: @users }
     end
+  end
+
+  def upload_users_a
+
+    user_info = User.find_by_email("info@cursa.me") 
+    network = params[:red]
+    user_admin = user_info
+# Cambiar esto por info@cursa.me
+
+    lastFile = Dir.glob("public/imports/import_users_*")    
+    lastFile = lastFile.sort.map{|x| x.gsub(/[^0-9]/, '')}.map{|x| x.to_i}.sort.last
+    if lastFile.nil? then
+      name = "import_users_1.csv"
+    else
+      name = "import_users_" + lastFile.succ.to_s + ".csv"
+    end
+
+    text = ""
+    begin
+      File.open(params[:file].path,"r:ISO-8859-1").each do |line|
+        text += line
+      end
+
+      path = "public/imports/" + name
+      f = File.open(path,'w+')
+      f.write(text)
+      f.close
+      
+      domain = params["domain"]
+      subdomain = network.subdomain
+      
+      user_info.delay.import(path,network,user_info,domain,subdomain)
+    #user_info.import(path,network,user_admin,domain,subdomain)
+
+    rescue
+      @noFile = true
+    end
+    @users = current_network.users
+    respond_to do |format|
+      format.html redirect_to :back
+      format.json { render json: @users }
+    end
+
   end
 
   def upload_members

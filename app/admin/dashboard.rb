@@ -28,6 +28,9 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+    
+
+
     columns do
       column do
         panel "Cursos Recientes" do

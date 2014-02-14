@@ -237,6 +237,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "managers/send_mails" => "managers#send_mails", :as => :massive_mails
   match "managers/sending" => "managers#sending", :as => "massive_sending", :via => [:post]
   post "/managers/upload_users" => "managers#upload_users", :as => :upload_users
+  post "/managers/upload_users_a" => "managers#upload_users_a", :as => :upload_users_a
+
 
   get  "/users/:personal_url", :to => "users#show",  :as =>  :show_user
   match  "/users/", :to => "users#index",  :as =>  :users
