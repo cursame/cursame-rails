@@ -907,16 +907,6 @@ class CoursesController < ApplicationController
     
   end
 
-  def course_survey_notif
-    @responces = UserSurvey.find(params[:id])
-
-    respond_to do |format|
-      #format.html
-      format.js
-      format.json
-    end
-  end
-
   def course_survey_actdepot
     @survey = Survey.find(params[:id])
     @responces = @survey.user_surveys

@@ -114,3 +114,32 @@
     margin-top: -7px;
   }
 }
+
+.survey-items-list {
+  li {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+.survey-item {
+  .survey-item-question {
+    padding: 5px 10px;
+  }
+
+  .survey-item-answers {
+    padding: 5px 10px;
+    position: relative;
+
+    p {
+      padding-left: 26px;
+    }
+
+    img {
+      position: absolute;
+      top: 27px;
+    }
+  }
+}

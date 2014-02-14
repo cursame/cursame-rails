@@ -22,18 +22,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- <div class="section-header-actions">
-      <div class="membFilter">
-        <select id="rtf" value="">
-          <option>Todos los miembros</option>
-          <% @course.members_in_courses.each do |m|%>
-            <option><%= @user=User.find_by_id(m.user_id).name%></option>
-          <% end %>
-        </select>
-      </div>
-    </div> -->
-
   </div>
 </div>
 
@@ -91,6 +79,8 @@
 
     if ( activityType == "tarea" ) {
       url = '/course_assignment_l_notif/';
+    } else if (activityType == "survey") {
+      url = '/course_survey_l_notif/';
     }
 
     $.get( url + activityID );
@@ -131,7 +121,7 @@
     if ( type == "tarea" ) {
       url = '/course_delivery_actdepot/';
 
-    } else if ( type == "examen" ) {
+    } else if ( type == "examen" || type == "survey" ) {
       url = '/course_survey_actdepot/';
     }
 

@@ -863,3 +863,19 @@ td {
     background: #EEF55D;
   }
 }
+
+/* Library
+----------------------------------*/
+.library-items-list {
+  .library-item {
+    border-bottom: 1px solid #e3e3e3;
+
+    &:first-child {
+      border-top: 1px solid #e3e3e3;
+    }
+
+    &:hover {
+      background: #f7f7f7;
+    }
+  }
+}

@@ -5,7 +5,7 @@ feedsDetailContainer.html('');
 feedsDetailContainer.append( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @delivery.to_json.html_safe %> ) );
  
 <% if  @count == 0  %>
-  feedsDetailContainer.append('No hay ninguna entrega en esta tarea.');
+  feedsDetailContainer.append('<div class="no-sub-content-section"><h6>Todavia no hay ninguna entrega en esta tarea.</h6></div>');
 <% else %>
   console.log( <%=j @deliveries.to_json.html_safe %> );
   feedsDetailContainer.append( HandlebarsTemplates['activities-depot/deliveries']( <%=j @deliveries.to_json.html_safe %> ) );

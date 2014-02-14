@@ -77,7 +77,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get '/update_mc', :to => 'members_in_courses#update'
   # colocando course files
-  resources :course_files , :defaults => { :format => 'js' }
+  resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
   # metodos de manejo de cursos
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
   post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses

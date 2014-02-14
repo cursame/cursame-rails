@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
   #end
 
   def current_course
-      @course = Course.find(params[:id])
+    @course = Course.find(params[:id])
   end
   
   def current_user_courses

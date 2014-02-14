@@ -135,3 +135,7 @@ Handlebars.registerHelper("formatDate", function(datetime, format) {
     return datetime;
   }
 });
+
+Handlebars.registerHelper("formatCalification", function( number ) {
+  return parseFloat(Math.round(number * 100) / 100).toFixed(2);
+});

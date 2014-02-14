@@ -11,6 +11,7 @@ class CourseFilesController < ApplicationController
 
     @cf_ui =  CourseFileIdUserId.create(:user_id => current_user.id, :course_file_id => @course_file.id )
     @cf_ci =  CourseIdCourseFileId.create(:course_id => @course_id, :course_file_id => @course_file.id )
+
     end
     @file = "#{@course_file.file}"
     @split_name =  @file.split('/').last
@@ -22,6 +23,8 @@ class CourseFilesController < ApplicationController
     ##### encontrando al owner del curso
     @member = MembersInCourse.find_by_course_id_and_user_id(@course_id, current_user.id)
 
+    @course_files = Course.find(@course_id).course_files
+
     respond_to do |format|
       format.js
     end
@@ -29,6 +32,7 @@ class CourseFilesController < ApplicationController
 
   def destroy
       @course_file = CourseFile.find(params[:id])
+      @course = params[:course]
       @file = "#{@course_file.file}"
       @split_name =  @file.split('/').last
       @termination = @file.split('.').last

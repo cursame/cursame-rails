@@ -103,7 +103,7 @@ class AssignmentsController < ApplicationController
 
 
     if @assignment.response_to_the_evaluations.count != 0
-      puts "con rubros"
+      # con rubros
 
       if @assignment.update_attributes(params[:assignment])
          @assignment.response_to_the_evaluations.each do |docificate|
@@ -127,7 +127,7 @@ class AssignmentsController < ApplicationController
           @assignment.save
        end
      else
-       puts "sin rubros"
+       # sin rubros
        puts (params[:assignment])[:rub_calification].to_f
        @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
        @assignment.accomplishment = @assignment.rub_calification

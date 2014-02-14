@@ -1,15 +1,20 @@
-{{#each this}}
-  <div id="{{id}}" class="delivery-item">
-    <div class="delivery-item-author">
-      <span class="avatar-holder">
-        {{{user_avatar}}}
-      </span>
-    </div>
-    <div class="delivery-item-main">
-      <h6>{{user_name}}</h6>
-      <div class="delivery-result">
-        <p>Resultado Obtenido: {{result}}</p>
+<div class="activity-responds">
+  <div class="deliveries-activity-wrap">
+    {{#each this}}
+      <div id="{{id}}" class="delivery-item show-activity-delivery" data-type="survey" data-id="{{id}}">
+        <div class="delivery-item-author">
+          <span class="avatar-holder">
+            {{{user_avatar}}}
+          </span>
+        </div>
+        <div class="delivery-item-main">
+          <i class="i i-arrow-gray-right"></i>
+          <h6>{{user_name}}</h6>
+          <div class="delivery-result">
+            <p>Resultado Obtenido: {{formatCalification result}}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    {{/each}}
   </div>
-{{/each}}
+</div>

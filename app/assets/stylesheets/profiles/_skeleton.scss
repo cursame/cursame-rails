@@ -72,6 +72,7 @@
 }
 
 .sub-profile-title {
+  @include clearfix;
   margin: 20px 0;
 }
 

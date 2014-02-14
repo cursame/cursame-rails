@@ -5,7 +5,7 @@ feedsDetailContainer.html('');
 feedsDetailContainer.append( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @survey.to_json.html_safe %> ) );
 
 <% if @responces.empty? %>
-	feedsDetailContainer.append('Nadie ha contestado este cuestionario.');
+	feedsDetailContainer.append('<div class="no-sub-content-section"><h6>Nadie ha contestado este cuestionario.</h6></div>');
 <% else %>
   
   console.log( <%=j @survey_replies.to_json.html_safe %> );

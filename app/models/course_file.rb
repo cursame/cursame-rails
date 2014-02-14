@@ -4,6 +4,8 @@ class CourseFile < ActiveRecord::Base
   
   mount_uploader :file, SimpleCoursesFiles
   
+  has_many :course_id_course_file_id
+  has_many :courses, :through => :course_id_course_file_id
   #validates_presence_of :users
   #validates_presence_of :courses
 

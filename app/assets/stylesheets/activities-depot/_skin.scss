@@ -98,3 +98,27 @@
     }
   }
 }
+
+.survey-items-list {
+  list-style: decimal;
+  list-style-position: inside;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.survey-item {
+  border: 1px solid #E6E6E6;
+  background: #fff;
+  border-radius: $radius;
+
+  .survey-item-question {
+    font-size: 13px;
+  }
+
+  .survey-item-answers {
+    border-top: 1px solid #E6E6E6;
+    background: #fcfcfc;
+    border-radius: 0 0 $radius $radius;
+    font-size: 13px;
+  }
+}

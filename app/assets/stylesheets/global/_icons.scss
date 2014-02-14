@@ -67,3 +67,16 @@
 .i-arrow-gray-right { width: 11px; height: 17px; background-position: -29px -181px; }
 .i-arrow-gray-left { width: 11px; height: 17px; background-position: -42px -181px; }
 .i-logo-cursame { width: 91px; height: 28px; background-position: 0 -205px; }
+
+/* File Types Icons */
+.i-file-type-dimension { width: 31px; height: 37px; }
+.i-type-image { @extend .i-file-type-dimension; background-position: -179px -38px; }
+
+@each $image-type in png, jpg, jpeg, gif, tif, bmp  {
+  .i-type-#{$image-type} {
+    @extend .i-type-image
+  }
+}
+
+.i-type-pdf { @extend .i-file-type-dimension; background-position: -179px 0; }
+.i-type-psd { @extend .i-file-type-dimension; background-position: -179px -76px; }

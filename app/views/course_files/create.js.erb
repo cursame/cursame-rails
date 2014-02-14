@@ -1,1 +1,9 @@
-$("#files").append("<%= escape_javascript(render(:partial => 'course_files/kshow', :locals => {:cf => @cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :member => @member }))%>");
+<% if @course_files.count == 1 %>
+  var libraryWrap = $('.library-wrap');
+
+  libraryWrap.find('.no-content-section').remove();
+  libraryWrap.prepend('<div class="library-items-list"></div>');
+<% end %>
+
+$('.library-count').html("<%= pluralize(@course_files.count, 'Archivo', 'Archivos') %>")
+$(".library-items-list").prepend("<%= escape_javascript(render(:partial => 'course_files/kshow', :locals => {:cf => @cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :member => @member, :course => @course }))%>");
