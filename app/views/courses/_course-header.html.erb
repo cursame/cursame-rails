@@ -1,5 +1,42 @@
-<div class="profile-cover-photo">
-  <%= image_tag @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>      
+<div class="profile-cover-photo" style="background-image: url(<%= @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>)">
+  
+  <% permitted_to? :create, :courses do %>
+    <div class="wrapper spaced">
+      <div class="admin-buttons">
+        <% if @member.owner != nil && @member.owner == true%>
+          <div class="group-buttons hard-border">
+            <div class="button">
+              <%= link_to "Monitor de actividades", course_activities_depot_path, class: 'btn btn-small btn-secondary' %>
+            </div>
+            <div class="button">
+              <%= link_to "Calificaciones", califications_in_course_path( @course.id ), class: 'btn btn-small btn-secondary' %>
+            </div>
+            <div class="button">
+              <div class="dropdown-wrap">
+                <div class="dropdown-pull">
+                  <span class="btn btn-small btn-secondary">Mas</span>
+                </div>
+                <div class="dropdown-v right">
+                  <i class="tip"></i>
+                  <ul>
+                    <li>
+                      <%= link_to "Timeline", statistics_in_course_path( @course.id ) %>
+                    </li>
+                    <li>
+                      <%= link_to "Editar", edit_course_path( @course.id ) %>
+                    </li>
+                    <li>
+                      <%= link_to "Clonar curso", clone_course_view_path %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  <% end %>
 </div>
 
 <% @course.expired? %>
@@ -32,34 +69,6 @@
         <li>
           <%= link_to "Biblioteca", library_in_course_path %>
         </li>
-        <% permitted_to? :create, :courses do %>
-          <% if @member.owner != nil && @member.owner == true%>
-            <li>
-              <div class="dropdown-wrap">
-                <div class="dropdown-pull">
-                  <span class="as-link">Editar</span>
-                </div>
-                <div class="dropdown-v right">
-                  <i class="tip"></i>
-                  <ul>
-                    <li>
-                      <%= link_to "Monitor de actividades", course_activities_depot_path %>
-                    </li>
-                    <li>
-                      <%= link_to "Clonar curso", clone_course_view_path %>
-                    </li>
-                    <li>
-                      <%= link_to "Timeline", statistics_in_course_path( @course.id ) %>
-                    </li>
-                    <li>
-                      <%= link_to "Calificaciones", califications_in_course_path( @course.id ) %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-          <%end%>
-        <% end %>
       </ul>
     </div>
   </div>
