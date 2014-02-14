@@ -1,6 +1,6 @@
 <% 
   file_types = [
-    'pdf','xls','xlsx','ppt','txt','pptx','doc','docx', 'txt', 'odt', 'adp', 'ade',
+    'pdf','xls','xlsx','ppt','txt','pptx','doc','docx', 'odt', 'adp', 'ade',
     'png','jpg','jpeg','gif','tif','bmp',
     'avi','mp4','mov','wma','mpge','flv', 'm4v',
     'exe','zip','rar','iso','dmg','psd', 'cad'
@@ -11,6 +11,8 @@
   <div class="library-item-icon">
     <% if file_types.include? @termination %>
       <%= icon("type-#{@termination}") %>
+    <% else %>
+      <%= icon("type-default") %>
     <%end%>
   </div>
   <div class="library-item-main">

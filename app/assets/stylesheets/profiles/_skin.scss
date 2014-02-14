@@ -1,7 +1,10 @@
 
 /* Courses and User Profiles
 ----------------------------------*/
-.profile-cover-photo {  
+.profile-cover-photo {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 
   &:after {
     content: "";

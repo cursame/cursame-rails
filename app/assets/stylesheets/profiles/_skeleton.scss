@@ -3,12 +3,21 @@
 ----------------------------------*/
 .profile-cover-photo {
   height: 180px;
-  overflow: hidden;
   position: relative;
 
   img {
     width: 100%;
     height: auto;
+  }
+
+  .wrapper {
+    position: relative
+  }
+
+  .admin-buttons {
+    position: absolute;
+    right: 10px;
+    top: 140px;
   }
 
   &:after {

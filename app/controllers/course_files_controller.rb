@@ -42,6 +42,8 @@ class CourseFilesController < ApplicationController
       @name = @file
       @sintetic_name = @split_name
 
+      @course_files = Course.find(@course).course_files
+
       @course_file.destroy
     respond_to do |format|
       format.js

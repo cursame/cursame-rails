@@ -53,7 +53,7 @@ background-white
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
         
-          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
+          <%= render :partial => "course_files/library_item", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
 
         <%end%>
         <div id="paginate-files"></div>
@@ -61,7 +61,7 @@ background-white
       </div>
     <% else %>
       <div class="no-content-section">
-        <h4>Este curso todavia no tiene archivos en su libreria.</h4>
+        <h4>Este curso no tiene archivos en su libreria.</h4>
       </div>
     <% end %>
     <div class="library-terms">

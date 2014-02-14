@@ -6,4 +6,4 @@
 <% end %>
 
 $('.library-count').html("<%= pluralize(@course_files.count, 'Archivo', 'Archivos') %>")
-$(".library-items-list").prepend("<%= escape_javascript(render(:partial => 'course_files/kshow', :locals => {:cf => @cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :member => @member, :course => @course }))%>");
+$(".library-items-list").prepend("<%= escape_javascript(render(:partial => 'course_files/library_item', :locals => {:cf => @cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :member => @member, :course => @course }))%>");

@@ -70,13 +70,32 @@
 
 /* File Types Icons */
 .i-file-type-dimension { width: 31px; height: 37px; }
-.i-type-image { @extend .i-file-type-dimension; background-position: -179px -38px; }
-
 @each $image-type in png, jpg, jpeg, gif, tif, bmp  {
   .i-type-#{$image-type} {
-    @extend .i-type-image
+    @extend .i-type-image;
   }
 }
 
+@each $image-type in avi, mp4, mov, wma, mpge, flv, m4v  {
+  .i-type-#{$image-type} {
+    @extend .i-type-video;
+  }
+}
+
+.i-type-image { @extend .i-file-type-dimension; background-position: -179px -38px; }
+.i-type-video { @extend .i-file-type-dimension; background-position: -211px -76px; }
 .i-type-pdf { @extend .i-file-type-dimension; background-position: -179px 0; }
 .i-type-psd { @extend .i-file-type-dimension; background-position: -179px -76px; }
+.i-type-xls, .i-type-xlsx { @extend .i-file-type-dimension; background-position: -179px -114px; }
+.i-type-ppt, .i-type-pptx { @extend .i-file-type-dimension; background-position: -179px -152px; }
+.i-type-txt { @extend .i-file-type-dimension; background-position: -179px -228px; }
+.i-type-doc, .i-type-docx { @extend .i-file-type-dimension; background-position: -179px -190px; }
+.i-type-odt { @extend .i-file-type-dimension; background-position: -179px -266px; }
+.i-type-adp { @extend .i-file-type-dimension; background-position: -211px 0; }
+.i-type-ade { @extend .i-file-type-dimension; background-position: -211px -38px; }
+.i-type-exe { @extend .i-file-type-dimension; background-position: -211px -152px; }
+.i-type-zip, .i-type-rar { @extend .i-file-type-dimension; background-position: -211px -114px; }
+.i-type-iso { @extend .i-file-type-dimension; background-position: -211px -190px; }
+.i-type-dmg { @extend .i-file-type-dimension; background-position: -211px -228px; }
+.i-type-cad { @extend .i-file-type-dimension; background-position: -211px -266px; }
+.i-type-default { @extend .i-file-type-dimension; background-position: -243px 0; }

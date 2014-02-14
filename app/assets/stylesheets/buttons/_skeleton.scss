@@ -42,3 +42,15 @@
   }
 }
 
+.group-buttons {
+  @include clearfix;
+
+  .button {
+    float: left;
+    margin-left: -1px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
