@@ -53,7 +53,7 @@ background-white
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
         
-          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => current_course }%>
+          <%= render :partial => "course_files/kshow", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
 
         <%end%>
       </div>
