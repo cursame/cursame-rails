@@ -65,33 +65,41 @@
 }
 
 .chat-panel{
-    bottom: 0px;
-    right: 275px;
-    position: fixed;
-    padding: 4px 10px;
-    color: #fff;
-    width: 230px;
-    height:20px;
-    background: #4497DA;
-    font-weight: 100;
-    margin-left: 5px;
-    display: block;
-    margin-right: 20px;
-    -webkit-backface-visibility: hidden;
-}
+	background: #EEE;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+	border-radius: $radius $radius 0 0;
+	
+	.chat-panel-header {
+		background: $primary-color;
+		border: 1px solid darken($primary-color, 5);
+		color: #fff;
+		border-radius: $radius $radius 0 0;
+		cursor: pointer;
 
-.chat-panel > span {
-	width: 204px;
-	overflow: hidden;
-	display: inline-block;
-	margin-left: -9px;
-	padding: 6px 8px 6px 9px;
-	margin-top: -3px;
-	cursor: pointer;
-	height: 10px;
-	margin-bottom: 5px;
-}
+		&:hover {
+			background: lighten( $primary-color, 2% );
+		}
 
+		.chat-panel-actions {
+
+			.chat-panel-action {
+				border-left: 1px solid darken($primary-color, 20%);
+
+				a:hover {
+					background: lighten( $primary-color, 2% );
+				}
+			}
+		}
+	}
+
+	.load-more-messages a {
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 11px;
+		font-weight: bold;
+		color: $meta-color;
+	}
+}
 .chatWrapper {
 	margin-right: 10px;
 }
@@ -250,71 +258,10 @@ background: #006696;
 }
 
 
-//------------------------------------------------------------------------------------//
-//------------------------------- zona de tabs en chat -------------------------------//
-
-
-.chat-zone-messages{
-	width: 228px;
-	height: 247px;
-	// height: 147px;
-	margin-left: -10px;
-	/*background: #F2F4F8;*/
-	background: #FFF;
-	overflow: auto;
-	overflow-x: hidden;
-	padding: 10px;
-	color: #000;
-	font-weight: 100;
-	border-left: 1px solid #B2B2B2;
-	border-right: 1px solid #B2B2B2;
-}
-
-.chat-zone-messages .insideChat {
-	width: 228px;
-	padding: 0;
-	margin: 0;
-	min-height: 43px;
-	max-height: 500px;
-	margin-bottom: 10px;
-	display: table;
-	}
-
-.chat-zone-messages .insideChat .insideChatText .imgChat {
-width: 20px;
-height: 20px;
-float: left;
-position: relative;
-display: block;
-z-index: 1;
-}
-
-.chat-zone-messages .insideChat .insideChatText .MsjC {
-	float: right;
-}
-
-.chat-zone-messages .insideChat .insideChatText .MsjC p {
-	min-width: 146px;
-	max-width: 225px;
-	margin-top: -5px;
-	float: right;
-	z-index: 0;
-}
-
-
-//------------------------------- termina zona de tabs en chat -------------------------------//
-//--------------------------------------------------------------------------------------------//
-
-
-.chat-zone-footer{
-    background: #FFF;
-}
-
 .chat-zone-footer #mesage { 
 	background: transparent;
 	border: 0;
 	padding: 7px 6px;
-	width: 183px;
 	outline: none
 }
 
@@ -322,14 +269,13 @@ z-index: 1;
 	border: 0;
 }
 
-.chat-zone-footer form {
-	width: 248px;
-	margin-left: -10px;
-	background: #fff;
-	height: 30px;
-	border-top: 1px solid #B2B2B2;
-	border-left: 1px solid #B2B2B2;
-	border-right: 1px solid #B2B2B2;
+.chat-zone-footer {
+	background: #FFF;
+
+	form {
+		background: #fff;
+		border-top: 1px solid #B2B2B2;
+	}
 }
 
 .chat-zone-footer .sendBtnChat {
@@ -682,17 +628,6 @@ cursor: pointer;
 	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
 }
 
-.load-more-messages{
-	width:250px;
-	margin-left:-10px;
-	background: #F2F4F8;
-	text-align:center;
-	font-weight:bolt;
-	color:#CCC;
-	cursor:pointer;
-	margin-top: -4px;
-}
-
 #go-to-chats-url{
     width: 100px;
     height:20px;
@@ -741,4 +676,45 @@ cursor: pointer;
 .user-offline{
 	background: lighten($primary-color, 7);
 	border-radius:10px;
+}
+
+.chat-messages-container {
+	.chat-message-item {
+
+
+		.chat-message-main {
+
+			.chat-message-content {
+				border-radius: 4px;
+			  border-radius: $radius;
+			  border: 1px solid #ccc;
+			  font-size: 12px;
+				box-shadow: 0 1px 2px rgba(0,0,0,.1);
+			}
+		}
+
+		&.message-received {
+			.tip {
+				background: url('pack.png') -77px -165px no-repeat;
+			}
+
+			.chat-message-content {
+				background: #fff;
+				@include background(linear-gradient( #fff, #F3F3F3) left repeat);
+			}
+		}
+
+		&.message-sent {
+			.tip {
+				background: url('pack.png') -69px -165px no-repeat;
+			}
+
+			.chat-message-content {
+				background: tint($primary-color, 95%);
+				border-color: tint($primary-color, 50%);
+				@include background(linear-gradient( tint($primary-color, 95%), tint($primary-color, 85%)) left repeat);
+			}
+		}
+
+	}
 }

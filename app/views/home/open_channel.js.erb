@@ -19,15 +19,19 @@ if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
 			var pendingChats = $("#go-to-chats-url").attr('pendingChats');
 			$("#go-to-chats-url").attr('pendingChats', pendingChats + ' <%=@channel.channel_name%>');
 		} else {
-			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', 
-					:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 		}
 		window.pendingChatsCount++;	
 	}
 	else {
 		window.chatPanelsCount++;
-		$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', 
-			:locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+		$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+
+		var chatPanel 	= $('#chat-channel-<%= @channel.id%>'),
+				chatContent = chatPanel.find('.chat-panel-main-content');
+
+		chatPanel.find('input#mesage').focus();
+		chatContent.scrollTop( chatContent.outerHeight() );
 	}	
 }
 
@@ -40,69 +44,60 @@ if($('#chat').length) {
 // ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
 
-PrivatePub.subscribe('<%= @channel.channel_name %>', function(data) {
-	////////////// MESSAGE TPL /////////////////
+console.log("<%= @channel.channel_name %>");
+
+PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
+	var chatPanel 	= $('#chat-channel-'+ data.channel.id ),
+			chatContent = chatPanel.find('.chat-panel-main-content');
+
+	console.log( data );
+	
 	function append_new_message_tpl(element) {
+
 		if(data.message.user_id != undefined) {
 			if(data.sender.avatar != undefined) {
-				var typeMsg = '';
-				if(('' + <%= current_user.id %>) != ('' + data.message.user_id)) {
-					typeMsg = 'MsjD';
-				} else {
-					typeMsg = 'MsjC';
-				}
+				var typeMsg 	= '',
+						srcAvatar = '';
 
-				var srcAvatar = '';
-				if(data.sender.avatar.profile.url != null) {
-					srcAvatar = data.sender.avatar.profile.url;
+				if( data.sender.avatar.profile.url != null ) {
+					srcAvatar = data.sender.avatar.head.url;
 				} else {
 					srcAvatar = '/assets/imagex.png';
 				}
-			
-				$('<div class="insideChat">' + 
-					'<span id ="message_' + data.message.id + '" class="' + typeMsg + '">' + 
-						'<span class="imgChat">' +
-							'<img src="' + srcAvatar + '" style="float:left; width:30px; height:30px;" />'+ 
-						'</span>' +
-						'<span class="Mensaje">&nbsp; ' + data.message.mesage_html + '</span>' +
-						'<span class="toolTipUser">' + data.sender.first_name + ' ' + data.sender.last_name + '</span>' +
-					'</span>' +
-				   '</div>'+
-				   '<div id="DivIer" style="clear:both;"></div>').appendTo(element);
 
-				$(document).ready ( function() {
-					$('p:empty').hide();
-					$('.toolTipUser').hide();
-				});
-	
-				$('.insideChat').mouseenter( function() {
-					$(this).find('.toolTipUser').fadeIn('slow');
-				});
+				if(('' + <%= current_user.id %>) != ('' + data.message.user_id)) {
+					typeMsg = 'message-received';
+					avatar = '<div class="chat-message-author"><span class="avatar-holder"><img src="'+ srcAvatar +'"</span></div>';
+				} else {
+					avatar = ''
+					typeMsg = 'message-sent';
+				}
+				
+			  $('<div id ="message_'+ data.message.id +'" class="chat-message-item '+ typeMsg +'">' + avatar +
+			  	'<div class="chat-message-main">' +
+					'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div></div></div>'
+			  ).appendTo( element );
 
-				$('.insideChat').mouseleave( function() {
-					$(this).find('.toolTipUser').fadeOut('fast');
-				});
 			}
 		}
 	}
 
 	//////////////add_new_mesage.js.erb//////////////////////////////////////////////////
-	if($('#chat').length) {
+	if( $('#chat').length ) {
 		append_new_message_tpl($('#chat-messages'));
-
-  		//scroleamos hacia abajo en el mensaje
-  		$('body, html').animate({ scrollTop: $("#chat-messages")[0].scrollHeight }, 1800);
+		//scroleamos hacia abajo en el mensaje
+		$('body, html').animate({ scrollTop: $("#chat-messages")[0].scrollHeight }, 1800);
 	}
 
-	if($('#chat-channel-' + data.channel.id).length) {
+	if( $('#chat-channel-' + data.channel.id).length ) {
 		append_new_message_tpl($('#chat-channel-' + data.channel.id + ' div.chat-zone div.chat-zone-messages'));
 
 		//scroleamos hacia abajo en el mensaje
-		$('#chat-zone-messages-channel' + data.channel.id).animate({ scrollTop: $("#chat-zone-messages-channel" + data.channel.id)[0].scrollHeight }, 1800);
+		chatContent.scrollTop( chatContent.outerHeight() );
 	}
 
 	// reseteamos el formulario
-	$('#chat-channel-'+ data.channel.id + ' div.chat-zone div.chat-zone-footer form input[name="mesage"]').val('');
+	chatPanel.find('input#mesage').val('');
 
 	// reseteamos el formulario general
 	$('div.shareMSJ form input[name="mesage"]').val('');

@@ -1,50 +1,59 @@
-<div id="chat-channel-<%= channel.id%>" class="chat-panel">
-	<span>
-		<%= get_chat_title channel %>
-		<div style="float: right; display: none;" id="close-chat-<%= channel.id%>" class="closeChat">
-			<%= image_tag('icons/close_chat.png',:style => "margin-top: 4px; margin-left: 2px;") %>
-		</div>		
-	</span>
-	<div class="load-more-messages" id="load-more-messages-<%= channel.id%>">
-		<%=render(:partial => '/shared/chat/load_more_messages', :locals => {:channel => channel, :page => page + 1})%>
-	</div>	
-	<div id="chat-zone-<%= channel.id%>" class="chat-zone">
-		<div class="chat-zone-messages" id="chat-zone-messages-channel<%= channel.id%>">
-			<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>
+<div id="chat-channel-<%= channel.id%>" class="chat-panel active">
+	<div class="chat-panel-header">
+		<h6><%= get_chat_title channel %></h6>
+		<div class="chat-panel-actions">
+			<div class="chat-panel-action">
+				<a href="" id="close-chat-<%= channel.id%>" title="Cerrar"><%= icon('w-cross-9') %></a>
+			</div>
 		</div>
-		<div class="chat-zone-footer">
-		<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+	</div>
+	<div class="chat-panel-main">
+		<div id="chat-zone-<%= channel.id%>" class="chat-zone">
+			<div class="chat-panel-main-content">
+				<% unless messages.empty? %>
+					<div class="load-more-messages" id="load-more-messages-<%= channel.id%>">
+						<%=render(:partial => '/shared/chat/load_more_messages', :locals => {:channel => channel, :page => page + 1})%>
+					</div>
+				<% end %>
+
+				<div class="chat-zone-messages chat-messages-container" id="chat-zone-messages-channel<%= channel.id%>">
+					<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>
+				</div>
+			</div>
+			
+			<div class="chat-zone-footer">
+			<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+			</div>
 		</div>
 	</div>
 </div>
-
-
-<!-- --------------- comienzan scripts --------------- -->
 
 <script>
 	var sizeOfWindow = 255, separacion;
 
 	if(!$('#chat').length){
-		$("#chat-channel-<%= channel.id%>").css('bottom','312px');
+		
 	}else{
 		$("#chat-zone-<%= channel.id%>").hide();
 	}
-	sizeOfWindow =  255;
-	separacion = - 40;
+	sizeOfWindow =  $("#chat-channel-<%= channel.id%>").outerWidth();
+	separacion = 20;
 
-	$("#chat-channel-<%= channel.id%>").css('right', ((sizeOfWindow *  window.chatPanelsCount) + separacion)+'px');
+
+	if ( window.chatPanelsCount > 1) {
+		var space = 20 + sizeOfWindow + separacion;
+		console.log(space);
+
+		$("#chat-channel-<%= channel.id%>").css('right', space * (window.chatPanelsCount - 1) + 'px');
+	} else {
+		$("#chat-channel-<%= channel.id%>").css('right', separacion + 'px');
+	}
+
 	
-	$("#chat-channel-<%= channel.id%> span").click(function () {
-		var panel = $("#chat-channel-<%= channel.id%>");
-	   	var chatZonePosition = $(panel).css('bottom');
+	$("#chat-channel-<%= channel.id%> .chat-panel-header").click(function () {
+		var panel = $(this).closest('.chat-panel');
 
-	 	if(chatZonePosition.replace('px','') < 200){
-    		$(panel).css('bottom','312px');
-    	}
-    	else{
-    		$(panel).css('bottom','-1px');
-    	}
-    	$("#chat-zone-<%= channel.id%>").toggle();
+		panel.toggleClass('active');
 	});
 
 	// cerramos el chat

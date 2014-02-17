@@ -194,28 +194,28 @@ class HomeController < ApplicationController
       end
   end
 
-    def open_channel
-      if params[:course]
-        @channel_name = "/messages/course_channel_"+ params[:id]
+  def open_channel
+    if params[:course]
+      @channel_name = "/messages/course_channel_"+ params[:id]
 
-        users = Course.find(params[:id]).users
-        ######## se agregan validadores de users para el exist #########
-        users = users.keep_if{|x| x != nil}
+      users = Course.find(params[:id]).users
+      ######## se agregan validadores de users para el exist #########
+      users = users.keep_if{|x| x != nil}
 
-      else
-        ids = [current_user.id, params[:id].to_i]
-        @channel_name = get_unique_channel_users(ids)
-        users = User.find(ids)
+    else
+      ids = [current_user.id, params[:id].to_i]
+      @channel_name = get_unique_channel_users(ids)
+      users = User.find(ids)
 
-      end
-
-      @channel = find_or_insert_channel(@channel_name,users)
-      @page = 1
-      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
-      respond_to do |format|
-       format.js
-      end
     end
+
+    @channel = find_or_insert_channel(@channel_name,users)
+    @page = 1
+    @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
+    respond_to do |format|
+     format.js
+    end
+  end
 
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
@@ -226,6 +226,7 @@ class HomeController < ApplicationController
 
       @channel_name = params[:channel_name]
       @channel_id = params[:channel_id]
+      
       respond_to do |format|
        format.js
       end
@@ -312,13 +313,13 @@ class HomeController < ApplicationController
 
   def find_or_insert_channel(channel_name,users)
     channel = Channel.find_by_channel_name(channel_name)
-    puts channel
+
     if !channel
       channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
       channel.users = users
       channel.save!
     end
-    puts channel
+
     return channel
   end
   # The exception that resulted in this error action being called can be accessed from
