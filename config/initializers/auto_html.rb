@@ -246,6 +246,14 @@ AutoHtml.add_filter(:prezi_with_wmode).with(:width => 400, :height => 360) do |t
   end
 end
 
+AutoHtml.add_filter(:murally_simple_format).with(:width => 400, :height => 360) do |text, options|
+  text.gsub(/https?:\/\/(www\.|)mural\.ly\/(.+)/) do
+    
+   %{<iframe id="mural_#{id}" name="mural_#{id}"  width="#{options[:width]}" height="#{options[:height]}" src="https://#{text}"></iframe>}
+  
+  end
+end
+
 AutoHtml.add_filter(:livestrem_support).with(:width => 400, :height => 360) do |text, options|
   text.gsub(/https?:\/\/(www\.|)livestream\.com\/(.+)/) do
     user = $2
