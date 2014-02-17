@@ -105,9 +105,9 @@ task :edit_red_emprendedores => :environment do
    	    	puts "#{user.name}"
    			puts "#{user.email}"
    			user.password = u[:password]
-   			user.confirmed_at = Time.now
+   			user.confirmed_at = "#{Time.now}"
    			user.save
-
+   			puts "#{user.confirmed_at}"
    			@mail = Notifier.user_mailer_with_password(user,u[:password]).deliver
    		end
    		
