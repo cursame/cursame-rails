@@ -27,11 +27,11 @@ if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
 		window.chatPanelsCount++;
 		$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
 
-		var chatPanel 	= $('#chat-channel-<%= @channel.id%>'),
-				chatContent = chatPanel.find('.chat-panel-main-content');
+		var chatPanel = $('#chat-channel-<%= @channel.id%>');
 
+		chatPanel.find('.chat-panel-main-content').scrollTop( chatPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
 		chatPanel.find('input#mesage').focus();
-		chatContent.scrollTop( chatContent.outerHeight() );
+
 	}	
 }
 
@@ -44,14 +44,10 @@ if($('#chat').length) {
 // ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
 
-console.log("<%= @channel.channel_name %>");
-
 PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	var chatPanel 	= $('#chat-channel-'+ data.channel.id ),
 			chatContent = chatPanel.find('.chat-panel-main-content');
 
-	console.log( data );
-	
 	function append_new_message_tpl(element) {
 
 		if(data.message.user_id != undefined) {
@@ -90,10 +86,12 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	}
 
 	if( $('#chat-channel-' + data.channel.id).length ) {
-		append_new_message_tpl($('#chat-channel-' + data.channel.id + ' div.chat-zone div.chat-zone-messages'));
+		var chatPanel 				= $('#chat-channel-' + data.channel.id),
+				messagesContainer = chatPanel.find('.chat-zone div.chat-zone-messages');
 
-		//scroleamos hacia abajo en el mensaje
-		chatContent.scrollTop( chatContent.outerHeight() );
+		append_new_message_tpl( messagesContainer );
+
+		chatPanel.find('.chat-panel-main-content').scrollTop( messagesContainer.prop('scrollHeight') + 30 );
 	}
 
 	// reseteamos el formulario
@@ -102,14 +100,4 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	// reseteamos el formulario general
 	$('div.shareMSJ form input[name="mesage"]').val('');
 
-	/*^^^^^^^^^^^^^^^^^^^^Para poner a los usuarios online/offline^^^^^^^^^^^^^^^^^^^^*/
-	
-	// $.each(data.usersIds, function(index,value) {
-	// 	if (value[1]) {
-	// 		$('#chat-list-user-'+value[0]).removeClass('user-offline').addClass('user-online');
-	// 	}else{
-	// 		$('#chat-list-user-'+value[0]).removeClass('user-online').addClass('user-offline');
-	// 	}
-	  
-	// });
 });
