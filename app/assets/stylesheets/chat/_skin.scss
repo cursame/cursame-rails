@@ -76,14 +76,10 @@
 		border-radius: $radius $radius 0 0;
 		cursor: pointer;
 
-		&:hover {
-			background: lighten( $primary-color, 2% );
-		}
-
 		.chat-panel-actions {
 
 			.chat-panel-action {
-				border-left: 1px solid darken($primary-color, 20%);
+				border-left: 1px solid darken($primary-color, 5%);
 
 				a:hover {
 					background: lighten( $primary-color, 2% );
@@ -258,17 +254,6 @@ background: #006696;
 }
 
 
-.chat-zone-footer #mesage { 
-	background: transparent;
-	border: 0;
-	padding: 7px 6px;
-	outline: none
-}
-
-.chat-zone-footer #mesage input:focus { 
-	border: 0;
-}
-
 .chat-zone-footer {
 	background: #FFF;
 
@@ -276,34 +261,14 @@ background: #006696;
 		background: #fff;
 		border-top: 1px solid #B2B2B2;
 	}
+
+	#mesage { 
+		background: transparent;
+		border: 0;
+		outline: none
+	}
 }
 
-.chat-zone-footer .sendBtnChat {
-	//background: #28C9AB;
-	font-weight: normal;
-	background: transparent;
-	color: #A6A6A6;
-	border: 0;
-	margin-top: 5px;
-	position: absolute;
-}
-.chat-zone-footer .sendBtnChat:hover {
-	color: #4862A3;
-	background: transparent!important;
-}
-
-.sendBtnChat {
-	background: #28C9AB;
-	color: #fff;
-	border: 0;
-	margin-top: 5px;
-	position: absolute;
-	border-radius: 3px; -webkit-border-radius: 3px;
-}
-.sendBtnChat:hover {
-	background: #5F95BE;
-	cursor: pointer;
-}
 .main-chat-zone{
     /*border:#ddd 1px solid;*/
     /*height:500px;*/
@@ -689,7 +654,7 @@ cursor: pointer;
 			  border-radius: $radius;
 			  border: 1px solid #ccc;
 			  font-size: 12px;
-				box-shadow: 0 1px 2px rgba(0,0,0,.1);
+				box-shadow: 0 1px 2px rgba(0,0,0,.07);
 			}
 		}
 

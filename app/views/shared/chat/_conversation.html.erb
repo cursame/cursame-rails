@@ -57,7 +57,9 @@
 	});
 
 	// cerramos el chat
-	$("#close-chat-<%= channel.id%>").click(function () {
+	$("#close-chat-<%= channel.id%>").click(function (e) {
+		e.preventDefault();
+		
 		// Obtenemos la posicion del panel que se borrara
 		var lastChatLocation = $("#chat-channel-<%= channel.id%>").position();
 
