@@ -88,7 +88,10 @@ task :edit_red_emprendedores => :environment do
 			{:email => "rafhgo@hotmail.com", :password => "emprendedores194"},
 			{:email => "caroyu@hotmail.com", :password => "emprendedores195"},
 			{:email => "rigocetac@hotmail.com", :password => "emprendedores196"},
-			{:email => "elsaibalo@hotmail.com", :password => "emprendedores197"}
+			{:email => "elsaibalo@hotmail.com", :password => "emprendedores197"},
+			{:email => "eccfilos@gmail.com", :password => "emprendedores198"},
+			{:email => "katiajanette@hotmail.com", :password => "emprendedores199"}
+
    ]
 
    users.each do |u|
