@@ -55,7 +55,7 @@ task :edit_red_emprendedores => :environment do
 			{:email => "davidmontielalvino@yahoo.com.mx", :password => "emprendedores161"},
 			{:email => "arturo_gomezsilva@yahoo.com.mx", :password => "emprendedores162"},
 			{:email => "azpog@yahoo.com.mx", :password => "emprendedores163"},
-			{:email => "planeaciÑn_cetamr02@yahoo.com.mx", :password => "emprendedores164"},
+			{:email => "planeacion_cetamr02@yahoo.com.mx", :password => "emprendedores164"},
 			{:email => "novelo72@hotmail.com", :password => "emprendedores165"},
 			{:email => "terejrc@hotmail.com", :password => "emprendedores166"},
 			{:email => "karmaro2@yahoo.com.mx", :password => "emprendedores167"},
