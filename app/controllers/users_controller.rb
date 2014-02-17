@@ -185,10 +185,10 @@ class UsersController < ApplicationController
       puts "************** c"
       puts t_email.nil?
       if t_email == 'confirmate'
-        user_info.delay.import(path,network,user_admin,domain,subdomain)
+        user_info.import(path,network,user_admin,domain,subdomain)
       else
         puts "******************"
-        user_info.delay.import_for_admin(path,network,user_admin,domain,subdomain)
+        user_info.import_for_admin(path,network,user_admin,domain,subdomain)
       end
 
 

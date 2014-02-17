@@ -486,7 +486,7 @@ class User < ActiveRecord::Base
     return
   end
 
-  handle_asynchronously :import, :priority => 0, :run_at => Proc.new{Time.zone.now}
+  #handle_asynchronously :import, :priority => 0, :run_at => Proc.new{Time.zone.now}
 
 
 
@@ -594,7 +594,7 @@ class User < ActiveRecord::Base
     return
   end
 
-  handle_asynchronously :import_for_admin, :priority => 0, :run_at => Proc.new{Time.zone.now}
+  #handle_asynchronously :import_for_admin, :priority => 0, :run_at => Proc.new{Time.zone.now}
   
   
   def member_of?(group,another_user)
