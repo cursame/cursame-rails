@@ -107,7 +107,6 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   # metodos de amplio acceso al curso
 
-  get 'courses/:id/califications', :to => 'courses#califications', :as => :califications_in_course
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
   
