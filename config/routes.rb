@@ -204,7 +204,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/alertmethod', :to => 'networks#alertmethod', :as => :alertmethod
   #get '/session_conserve', :to => 'networks#session_conserve', :as => :session_conserve
 
-
+  
   ###### users personal_url_validation
 
   get '/personlization_url_corroborate/:personal_url', :to => 'users#corroborate_url', :as => :corroborate_url
@@ -215,7 +215,10 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/users/:personal_url/friends', :to => 'users#friends', :as => :user_friends
   get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
   get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
-
+  
+  ###### buscador de users
+  
+  get '/network_find_user', :to => 'networks#find_user', :as => :user_n_find
 
 
   
