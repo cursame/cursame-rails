@@ -1,6 +1,14 @@
 
 <% if !compact %>
-  <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/imagecoursex copy.png'  :  @user_l.coverphoto %>);"></div>
+  <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/imagecoursex copy.png'  :  @user_l.coverphoto %>);">
+
+    <div class="wrapper spaced">
+      <div class="admin-buttons">
+        <%= link_to "Agregar a mis amigos", "#", class: 'btn btn-small btn-primary hard-border' %>
+      </div>
+    </div>
+
+  </div>
 <% end %>
 
 <div class="profile-user-bar">
