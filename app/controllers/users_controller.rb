@@ -98,18 +98,19 @@ class UsersController < ApplicationController
  end
 
  def friends
-  @user_l= User.find_by_personal_url(params[:personal_url])
+  @user_l = User.find_by_personal_url(params[:personal_url])
   @friends = @user_l.friends(true)
  end
  
  def pendding_friends
-   @user_l= current_user
+   @user_l = current_user
    @friends = @user_l.friends(false)
    
    respond_to do |format|
     format.js
    end
  end
+ 
  def dashboard
  end
 
