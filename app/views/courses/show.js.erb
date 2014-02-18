@@ -11,5 +11,3 @@
 	var element = '<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'courses'}))%>';
 	this.pageless.opts.loader ? this.pageless.opts.loader.before(element):$('#timeline').append(element);
 <%end%>
-
-$('.autogrow').autosize();
