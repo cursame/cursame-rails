@@ -166,8 +166,6 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
-    
-    
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
       if @member.owner == true || current_role == "admin"
       else
@@ -249,7 +247,8 @@ class CoursesController < ApplicationController
         @course.init_date = @last_date
         @course.finish_date = @last_end_date
         @course.save
-        format.html { redirect_to :back }
+        flash[:notice] = "Se han guardado satisfactoriamente los cambios en el curso. "
+        format.html {redirect_to course_path(@course)}
         format.json { head :no_content }
       else
         format.html { redirect_to :back }
