@@ -3,7 +3,6 @@
   next if publication.publication.user == nil
 %>
 
-<!-- le ocultamos informacion privada al usuario -->
 <% if visible_for == 'user' && !publication.courses.empty?%>
   <%  next %>
 <%end%>
@@ -17,20 +16,11 @@
 <%= render partial: 'shared/publications/publication_template', locals: { publication: publication } %>
 
 <script type="text/javascript">
-  $('#footer-publication-<%= publication.id %>').on('click',function(e){
-    e.preventDefault();
-  if(e.target.className === 'icon comments'){ //si quiere ver los comentarios
-    // alert('comments!!');
-  }
-  if(e.target.className === 'icon like'){ //si quiere daler like ;)
-    // alert('like!!');
-  }
-});
-
   $('#more-comments-<%= publication.id %>').live('click',function(e){
     $.getScript("<%=request.protocol + request.host_with_port%>/home/load_more_comments/<%= publication.id %>");
-    return false;
+
+    e.preventDefault();
   });
-  </script>
+</script>
   
 <%end%>

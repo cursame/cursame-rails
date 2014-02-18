@@ -3,10 +3,10 @@
   <div class="calendar-header">
     <div class="wrapper spaced">
       <div class="calendar-header-prev-month change-month">
-        <%= link_to "&#8592; Més anterior".html_safe, :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+        <%= link_to "&#8592; Mes anterior".html_safe, :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
       </div>
       <div class="calendar-header-next-month change-month">
-        <%= link_to "Més siguiente &#8594;".html_safe, :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+        <%= link_to "Mes siguiente &#8594;".html_safe, :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
       </div>
       <div class="calendar-header-current-month">
         <h1><%= h es_current_date( @date.strftime( '%B'), "", @date.strftime( '%Y') )  %></h1>

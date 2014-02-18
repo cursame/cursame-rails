@@ -1,61 +1,139 @@
-<%= form_for(@course, :url => clone_course_path, :method => :post,:html => { :class => "default-form"}) do |f| %>
-	<div id="clone-course-data" class="form-course">
-		<div style="width:400px; float:left;">
-			<h3>Datos del curso</h3>
-			
-				<p>Nombre del curso</p>
-	      <%= f.text_field :title, :class=>"input-style" %>
-	      
-	      <p>Silabus</p>
-	      <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :class=>"input-style" %>
-	     <div style="display: block; position: relative; height: 62px; clear: both;">
-			<p><%= f.label :Valor_de_examenes%></p>
-			<%= f.text_field :survey_param_evaluation, :class=>"custom-size-form fixLabeluser" %>
-		</div>
+<% content_for :body_classes do %>
+background-white
+<% end %>
 
-		<div style="display: block; position: relative; height: 62px; clear: both;">
-			<p><%= f.label :Valor_de_tareas_o_entregas %></p>
-			<%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form fixLabeluser" %>
-		</div>
+<div class="section-header">
+  <div class="wrapper spaced">
+    <div class="section-header-title">
+    	<div class="section-icon">
+    		<%= link_to course_path(@course), title: @course.title do %>
+	        <span class="avatar-holder">
+	          <%= avatar('course', '45', "no", @course.id, "avatar", "no", "no") %>
+	        </span>
+        <% end %>
+      </div>
+      <div class="section-title">
+        <h1>Clonar curso</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-		<div style="display: block; position: relative; height: 62px; clear: both;">
-			<p><%= f.label :fecha_de_inicio %></p>
-			 <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input fixLabeluser", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
-		</div>
-	
-		<div style="display: block; position: relative; height: 62px; clear: both;">
-			<p><%= f.label :fecha_de_finalización %></p>
-			<%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input fixLabeluser", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
-		</div>
-	      
-	      <div style="float: right; margin-right: 0px;">
-		      <p><%= f.label :public_status, 'Privacidad' %></p>
-		      <% if @course.public_status == 'public' %>
-		      <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-		      <%else%>
-		      <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-		      <%end%>
-		  </div>
+<div class="wrapper ver-spaced">
+	<div class="cols-12">
+	  <div class="col col-8">
+	  	<%= form_for(@course, :url => clone_course_path, :method => :post,:html => { :class => "default-form"}) do |f| %>
 
-		</div>
-		<div style="clear: both"></div>
-		<div>
-			<button class="clone-course-btn" data="clone-course-deliveries" action="move" type="button">Siguiente</button>
-		</div>
-	</div>
+				<div id="clone-course-data" class="form-course">
+					<h3>Datos del curso</h3>
+					<p>Cambia la información para el nuevo curso.</p>
+					<br>
 
-	<div id="clone-course-deliveries" class="form-course" style="display:none">
-		<h3>Tareas</h3>
-		<% @course.deliveries.each do |delivery|%>
-			<div>
-				<%= delivery.title %>
-				<% delivery_id =  delivery.id.to_s%>
-				<%=text_field_tag "deliveries[][publish_date]", nil ,:placeholder=>'Fecha publicación', :class=>"date-input fixLabeluser", :id => "fecha_publicacion_delivery_" + delivery_id %>
-				<%=text_field_tag "deliveries[][end_date]", nil ,:placeholder=>'Fecha Entrega', :class=>"date-input fixLabeluser", :id => "fecha_entrega_delivery_" + delivery_id%>
-				<%= check_box_tag "deliveries[][id]", delivery_id, false, :class => 'is-correct-chk' %>
+					<div class="form-group">
+		        <div class="form-group-label">
+		          <label>Nombre del <%= current_network.course_tag%></label>  
+		        </div>
+		        <div class="form-group-main">
+		          <div class="form-unit">
+		            <%= f.text_field :title %>
+		          </div>
+		        </div>
+		      </div>
 
-				<script>
-				$(function() {
+		      <div class="form-group">
+		        <div class="form-group-label">
+		          <label>Silabus</label>  
+		        </div>
+		        <div class="form-group-main">
+		          <div class="form-unit">
+		            <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción' %>
+		          </div>
+		        </div>
+		      </div>
+
+		      <div class="form-group">
+		        <div class="form-group-label">
+		          <%= f.label :Evaluación%>
+		        </div>
+		        <div class="form-group-main">
+		          <div class="f-col f-col-5">
+		            <div class="form-unit">
+		            	<%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios" %>
+		            </div>
+		          </div>
+		          <div class="f-col f-col-5">
+		            <div class="form-unit">
+		              <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas" %>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+		      <div class="form-group">
+		        <div class="form-group-label">
+		          <%= f.label :Fechas%>
+		        </div>
+		        <div class="form-group-main">
+		          <div class="f-col f-col-5">
+		            <div class="form-unit">
+			            <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
+		            </div>
+		          </div>
+		          <div class="f-col f-col-5">
+		            <div class="form-unit">
+		            	<%= f.text_field :finish_date, :placeholder=>'Fecha final', :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date %>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+		      <div class="form-group">
+		        <div class="form-group-label">
+		          <%= f.label :public_status, 'Privacidad' %>
+		        </div>
+		        <div class="form-group-main">
+		          <div class="form-unit">
+		            <% if @course.public_status == 'public' %>
+						      <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+						     <%else%>
+						      <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
+						     <%end%>
+		          </div>
+		        </div>
+		      </div>
+					
+					<button class="btn btn-primary clone-course-btn" data="clone-course-deliveries" action="move" type="button">Siguiente</button>
+				</div>
+
+				<div id="clone-course-deliveries" class="form-course" style="display:none">
+					<h3>Tareas</h3>
+					<p>Selecciona las tareas que quieres clonar para el nuevo curso.</p>
+					<br>
+					
+					<% unless @course.deliveries.empty? %>
+						<% @course.deliveries.each do |delivery|%>
+							<% delivery_id = delivery.id.to_s %>
+
+							<div class="form-group">
+				        <div class="form-group-label">
+				          <label><%= check_box_tag "deliveries[][id]", delivery_id, false, :class => 'is-correct-chk' %> <%= delivery.title %></label>
+				        </div>
+				        <div class="form-group-main">
+				          <div class="f-col f-col-5">
+				            <div class="form-unit">
+				            	<%= text_field_tag "deliveries[][publish_date]", nil ,:placeholder=>'Fecha de publicación', :id => "fecha_publicacion_delivery_" + delivery_id %>
+				            </div>
+				          </div>
+				          <div class="f-col f-col-5">
+				            <div class="form-unit">
+				              <%= text_field_tag "deliveries[][end_date]", nil ,:placeholder=>'Fecha Entrega', :id => "fecha_entrega_delivery_" + delivery_id%>
+				            </div>
+				          </div>
+				        </div>
+				      </div>
+
+							<script>
+								$(function() {
 			            $( "#fecha_entrega_delivery_<%=delivery_id%>, #fecha_publicacion_delivery_<%=delivery_id%>" ).datepicker({
 			                inline: true,
 			                minDate: 0,
@@ -64,70 +142,133 @@
 			                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 			                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
 			            });
-			    });
-				</script>
-			</div> 
-		<% end %>
-		<div>
-			<button class="clone-course-btn" data="clone-course-discussions" action="move" type="button">Siguiente</button>
-			<button class="clone-course-btn" data="clone-course-data" action="move" type="button">Anterior</button>			
-		</div>
+						    });
+							</script>
+						<% end %>
+					<% else %>
+						<div class="no-content-section">
+							<h4>Este curso no tiene tareas para clonar.</h4>
+						</div>
+					<% end %>
+
+					<button class="clone-course-btn btn btn-secondary" data="clone-course-data" action="move" type="button">Anterior</button>
+					<button class="clone-course-btn btn btn-primary" data="clone-course-discussions" action="move" type="button">Siguiente</button>
+
+				</div>
+
+				<div id="clone-course-discussions" class="form-course" style="display:none">
+					<h3>Discusiones</h3>
+					<p>Selecciona las discusiones que quieres clonar para el nuevo curso.</p>
+					<br>
+
+					<% unless @course.discussions.empty? %>
+						<% @course.discussions.each do |discussion|%>
+							<div>
+							<label>
+								<%= check_box_tag "discussions[]", discussion.id, false %>
+								<%= discussion.title %>
+							</label>
+							</div>
+						<% end %>
+					<% else %>
+						<div class="no-content-section">
+							<h4>Este curso no tiene discusiones para clonar.</h4>
+						</div>
+					<% end %>
+					
+					<br>
+					<button class="clone-course-btn btn btn-secondary" data="clone-course-deliveries" action="move" type="button">Anterior</button>	
+					<button class="clone-course-btn btn btn-primary" data="clone-course-surveys" action="move" type="button">Siguiente</button>
+
+				</div>
+
+				<div id="clone-course-surveys" class="form-course" style="display:none">
+					<h3>Cuestionarios</h3>
+					<p>Selecciona los cuestionarios que quieres clonar para el nuevo curso.</p>
+					<br>
+					
+					<% unless @course.surveys.empty? %>
+						<% @course.surveys.each do |survey| %>
+							<% survey_id =  survey.id.to_s%>
+
+							<div class="form-group">
+				        <div class="form-group-label">
+				          <label>
+				          	<%= check_box_tag "surveys[][id]", survey.id, false %>
+				          	<%= survey.name %>
+			          	</label>
+				        </div>
+				        <div class="form-group-main">
+				          <div class="f-col f-col-5">
+				            <div class="form-unit">
+				            	<%= text_field_tag "surveys[][publish_date]", nil ,:placeholder=>'Fecha publicación', :id => "fecha_publicacion_survey_" + survey_id %>
+				            </div>
+				          </div>
+				          <div class="f-col f-col-5">
+				            <div class="form-unit">
+				              <%= text_field_tag "surveys[][end_date]", nil ,:placeholder=>'Fecha Entrega', :id => "fecha_entrega_survey_" + survey_id%>
+				            </div>
+				          </div>
+				        </div>
+				      </div>
+
+							<script>
+								$(function() {
+							            $( "#fecha_entrega_survey_<%=survey_id%>, #fecha_publicacion_survey_<%=survey_id%>" ).datepicker({
+							                inline: true,
+							                minDate: 0,
+							                showOtherMonths: true,
+							                dateFormat: 'dd/mm/yy',
+							                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+							                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+							            });
+							    });
+								</script>
+						<% end %>
+					<% else %>
+						<div class="no-content-section">
+							<h4>Este curso no tiene cuestionarios para clonar.</h4>
+						</div>
+					<% end %>
+
+					<button class="clone-course-btn btn btn-secondary" data="clone-course-discussions" action="move" type="button">Anterior</button>
+					<button class="clone-course-btn btn btn-primary" data="clone-course-files" action="move" type="button">Siguiente</button>
+
+				</div>
+
+				<div id="clone-course-files" class="form-course" style="display:none">
+					<h3>Libreria</h3>
+					<p>Selecciona los archivos de la libreria que quieres clonar para el nuevo curso.</p>
+					<br>
+					
+					<% unless @course.course_files.empty? %>
+						<% @course.course_files.each do  |course_file|%>
+							<div>
+								<label>
+									<%= check_box_tag "course_files[]", course_file.id, false %>
+									<%= course_file.file %>
+								</label>
+							</div>
+						<% end %>
+					<% else %>
+						<div class="no-content-section">
+							<h4>Este curso no tiene cuestionarios para clonar.</h4>
+						</div>
+					<% end %>
+
+					<br>
+					<button class="clone-course-btn btn btn-secondary" data="clone-course-surveys" action="move" type="button">Anterior</button>
+					<span class="btn btn-primary input-btn">
+						<%= f.submit "Clonar Curso" %>
+					</span>
+
+				</div>
+
+			<% end %>
+	  </div>
 	</div>
-	<div id="clone-course-discussions" class="form-course" style="display:none">
-		<h3>Discusiones</h3>
-		<% @course.discussions.each do |discussion|%>
-			<div>
-				<%= discussion.title %>
-				<%= check_box_tag "discussions[]", discussion.id, false, :class => 'is-correct-chk' %>
-			</div>
-		<% end %>
-		<div>
-			<button class="clone-course-btn" data="clone-course-surveys" action="move" type="button">Siguiente</button>
-			<button class="clone-course-btn" data="clone-course-deliveries" action="move" type="button">Anterior</button>	
-		</div>
-	</div>
-	<div id="clone-course-surveys" class="form-course" style="display:none">
-		<h3>Cuestionarios</h3>
-		<% @course.surveys.each do |survey|%>
-			<div>
-				<%= survey.name %>
-				<% survey_id =  survey.id.to_s%>
-				<%=text_field_tag "surveys[][publish_date]", nil ,:placeholder=>'Fecha publicación', :class=>"date-input fixLabeluser", :id => "fecha_publicacion_survey_" + survey_id %>
-				<%=text_field_tag "surveys[][end_date]", nil ,:placeholder=>'Fecha Entrega', :class=>"date-input fixLabeluser", :id => "fecha_entrega_survey_" + survey_id%>
-				<%= check_box_tag "surveys[][id]", survey.id, false, :class => 'is-correct-chk' %>
-			</div>
-			<script>
-				$(function() {
-			            $( "#fecha_entrega_survey_<%=survey_id%>, #fecha_publicacion_survey_<%=survey_id%>" ).datepicker({
-			                inline: true,
-			                minDate: 0,
-			                showOtherMonths: true,
-			                dateFormat: 'dd/mm/yy',
-			                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-			                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-			            });
-			    });
-				</script>
-		<% end %>
-		<div>
-			<button class="clone-course-btn" data="clone-course-files" action="move" type="button">Siguiente</button>
-			<button class="clone-course-btn" data="clone-course-discussions" action="move" type="button">Anterior</button>
-		</div>
-	</div>
-	<div id="clone-course-files" class="form-course" style="display:none">
-		<h3>Documentos</h3>
-		<% @course.course_files.each do  |course_file|%>
-			<div>
-				<%= course_file.file %>
-				<%= check_box_tag "course_files[]", course_file.id, false, :class => 'is-correct-chk' %>
-			</div>
-		<% end %>
-		<div>
-			<%= f.submit "Clonar Curso", :class=>"clone-course-btn" %>
-			<button class="clone-course-btn" data="clone-course-surveys" action="move" type="button">Anterior</button>		
-		</div>
-	</div>
-<% end %>
+</div>
+
 <script>
  	$(function() {
             $( "#course_init_date, #course_finish_date" ).datepicker({
@@ -147,7 +288,7 @@
 		switch(action){
 			case 'move': 
 				$('#'+data).show();
-				$(this).parent().parent().hide();
+				$(this).parent().hide();
 			break;
 			case 'submit': 
 				alert('Guardar');

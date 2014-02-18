@@ -1,7 +1,9 @@
 <div class="wrapper">
-  <% @cc = @courses.count %>
-  <% if @cc == 0%>
-    <b><%= t('No hay resultados en la busqueda')%> </b>
+
+  <% if @courses.empty? %>
+    <div class="no-content-section">
+      <h4>No hay cursos.</h4>
+    </div>
   <%end%>
 
   <div class="courses-list">

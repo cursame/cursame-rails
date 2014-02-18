@@ -175,3 +175,13 @@ $(function() {
       return false;
     });
 });
+
+
+$('.edit-publication-link').live('click', function() {
+  $(this).closest('.publication-box').find('.form_for_edit_wall').slideToggle(300);
+});
+
+$('.cancel-edit-publication').live('click', function(event) {
+  event.preventDefault();
+  $(this).closest('.form_for_edit_wall').slideUp(300);
+});

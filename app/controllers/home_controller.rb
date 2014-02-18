@@ -130,10 +130,25 @@ class HomeController < ApplicationController
      end
 
      def edit_wall
-       @id = params[:id]
-       @type = params[:type]
-       puts '------------------------'
-       puts @id
+      @id = params[:id]
+      @type = params[:type]
+
+      case @type
+        when 'Delivery'
+          @delivery = Delivery.find(@id)
+
+        when 'Survey'
+          @survey = Survey.find(@id)
+
+        when 'Comment'
+          @comment = Comment.find(@id)
+          @commentable_id = @comment.commentable_id
+          @commentable_type = @comment.commentable_type
+
+        when 'Discussion'
+          @discussion = Discussion.find(@id)
+      end
+
        respond_to do |format|
          format.js
        end

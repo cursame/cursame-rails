@@ -19,7 +19,7 @@
     <%= link_to truncate("#{@sintetic_name}", :omission => "...", :length => 95), cf.file.to_s, download: @sintetic_name %>
     <br>
     <span class="meta-info"><%= cf.created_at.strftime( '%A %e de %B del %Y') %></span>
-    <% if @member.owner != nil && @member.owner == true %>
+    <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
       <%= link_to "Borrar", "#{course_files_path}/#{cf.id}?course=#{course.id}", confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
     <% end %>
   </div>

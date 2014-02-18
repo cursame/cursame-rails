@@ -43,7 +43,7 @@
     posted_in_for = course[0].title if ( !post.courses.blank? )
     posted_in_for_id = course[0].id if ( !post.courses.blank? )
     content = post.description_html
-    tipo = 'Discusion'
+    tipo = 'Discusión'
   end
 %>
 
@@ -74,7 +74,7 @@
 %>
 
 <% if post.state == "published" %>
-  <div class="publication-box <%= id %> <%= tipo.to_s.downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>">
+  <div class="publication-box <%= id %> <%= I18n.transliterate(tipo.to_s).downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>">
 
     <div class="publication-author">
       <% case type %>
@@ -100,7 +100,7 @@
             <h6>
               <%= link_to user_name, show_user_path(personal_url) if ( !user_name.blank?) %>
               <% if !posted_in_for.blank? %>
-                comento en el curso
+                comentó en el curso
                 <%= link_to posted_in_for, course_path(posted_in_for_id) %>
               <% end %>
                 
@@ -111,25 +111,25 @@
           <% else %>
             <h6>
               <% if type == 'Course'  %>
-                Un nuevo curso publico se ha creado
+                Un nuevo curso público se ha creado
               <% else %>
                 <%= link_to user_name, show_user_path(personal_url) %>
               <% end %>
 
               <% case type %>
               <% when "Discussion" %>
-                inicio una discussion
+                inició una discussión
                 <% if posted_in_for %>
                   en el curso
                   <%= link_to posted_in_for, course_path(posted_in_for_id) %>
                 <% end %>
 
               <% when "Delivery" %>
-                agrego una tarea en el curso
+                agregó una tarea en el curso
                 <%= link_to posted_in_for, course_path(posted_in_for_id) %>
 
               <% when "Survey" %>
-                agrego un cuestionario en el curso
+                agregó un cuestionario en el curso
                 <%= link_to posted_in_for, course_path(posted_in_for_id) %>
               <% end %>
 
@@ -137,10 +137,15 @@
 
             <div class="academic-content">
               <div class="academic-action">
-                <%= link_to 'Ver ' + tipo, show_template_on_modal_path(:id => publication.id,:type => 'wall'),:remote => true, class: "btn btn-transparent btn-medium uppercase", data: "modal"%>
+                <% if type == 'Course' %>
+                  <%= link_to 'Ir al Curso', course_path(post.id), class: "btn btn-transparent btn-medium uppercase" %>
+                <% else %>
+                  <%= link_to 'Ver ' + tipo, show_template_on_modal_path(:id => publication.id, :type => 'wall'),:remote => true, class: "btn btn-transparent btn-medium uppercase", data: "modal"%>
+                  
+                <% end %>
               </div>
               <div class="academic-content-icon">
-                <%= icon( tipo.to_s.downcase + '-publication') %>
+                <%= icon( I18n.transliterate(tipo.to_s).downcase + '-publication') %>
               </div>
               <div class="academic-content-desc">
                 <h4><%= truncate( name, omission: "...", length: 50) %></h4>
@@ -164,35 +169,18 @@
       <% if type == "Comment" %>
         <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: post, white_like_icon: false} %>
       <% end %>
-      
-      <%= render partial: 'shared/publications/publication_comments', locals: { publication: publication, post: post } %>
 
-        
       <% if publication.publication.owner?(current_role, current_user) %>
-        <div class="footer" id="footer-publication-<%= id %>">       
-          <script>
-            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function(){
-              $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
-            });
-
-            $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
-
-                
-              $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
-              $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   
-
-            });
-          </script>
-
+        <div id="footer-publication-<%= id %>">       
           <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
-
-            <div class="rander">
-              <div class="form_for_edit_wall_top"id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close" >x</div>
-            </div>
+            <h5>Editar publicación</h5>
+            <br>
             <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
           </div>
         </div>          
       <%end%>
+      
+      <%= render partial: 'shared/publications/publication_comments', locals: { publication: publication, post: post } %>
 
     </div>
   </div>    

@@ -183,8 +183,9 @@
 
       .tab {
         float: left;
-        padding: 13px 10px 12px 10px;
+        padding: 13px 10px 0px 10px;
         position: relative;
+        height: 31px;
 
         .tip {
           position: absolute;
@@ -324,4 +325,10 @@
   .publication-asset {
     padding: 3px 0;
   }
+}
+
+/* Edit Publications
+----------------------------------*/
+.form_for_edit_wall {
+  padding: 10px;
 }

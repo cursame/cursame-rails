@@ -447,18 +447,7 @@ $(document).ready(function() {
     }).ajaxStop( function() {
         $('#log_loadding').hide();
         $('.activable').attr("disabled", false);
-    });
-
-    /*
-    *=======================================================================================
-    *========= Editing the forms in the wall ====================
-    *=======================================================================================
-    */
-    $('.btn').live('click',function () {
-        $('.link_publications').show();
-        if($('.form_for_edit_wall').is(':visible')){
-            $(this).closest("form").submit();
-        }        
+        $('.autogrow').autosize();
     });
     
 });

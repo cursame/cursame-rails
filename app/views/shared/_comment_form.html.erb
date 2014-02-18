@@ -15,33 +15,46 @@
       <%= hidden_field_tag 'comment_id', comment_id %>
     <% end %>
   </div>
+  
+  <% unless active_edit %>
+    <div class="new-publication-footer">
 
-  <div class="new-publication-footer">
-
-    <ul class="list-buttons right fr">
-      <li>
-      	<%= link_to "Cancelar", "#", class: 'cancel-post-form_tab btn btn-secondary' %>
-      </li>
-
-      <% unless @user_show%>
+      <ul class="list-buttons right fr">
         <li>
-        <% if @incourse != true && comment_id == nil %>
-          <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :default_icon => 'public-new-publication' } %>
-        <%else%>
-
-          <%= hidden_field_tag "commentable_type", 'Course'%>
-          <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
-
-        <%end%>
+        	<%= link_to "Cancelar", "#", class: 'cancel-post-form_tab btn btn-secondary' %>
         </li>
-      <% end %>
+
+        <% unless @user_show %>
+          <li>
+          <% if @incourse != true && comment_id == nil %>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :default_icon => 'public-new-publication' } %>
+          <%else%>
+
+            <%= hidden_field_tag "commentable_type", 'Course'%>
+            <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
+
+          <%end%>
+          </li>
+        <% end %>
+        <li>
+          <span class="btn btn-primary input-btn">
+            <%= submit_tag "Comentar", :class=>"activable", :id => 'comment-post-form' %>
+          </span>
+        </li>
+
+    </div>
+  <% else %>
+    <ul class="list-buttons left">
+      <li>
+        <a class="cancel-edit-publication btn btn-secondary" href="#">Cancelar</a>
+      </li>
       <li>
         <span class="btn btn-primary input-btn">
-          <%= submit_tag "Comentar", :class=>"activable", :id => 'comment-post-form' %>
+          <%= submit_tag "Guardar", :class=> "activable", :id => "comment-post-form" %>
         </span>
       </li>
-
-  </div>
+    </ul>
+  <% end %>
 
 <% end %>
 

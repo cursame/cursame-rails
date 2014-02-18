@@ -25,7 +25,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title , placeholder: "Ejemplo: Numero primos" %>
+          <%= f.text_field :title , placeholder: "Ejemplo: Números primos" %>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <% if @active_edit == false %>    
+    <% if @active_edit == false %>  
       <% areas_of_evaluations = @delivery.areas_of_evaluations.build %>
       
       <div class="form-group">
@@ -114,26 +114,46 @@
           </div>
         </div>
       </div>
-
+    <% end %>
   </div>
-    
-  <div class="new-publication-footer">
-    <ul class="list-buttons right fr">
-      <li>
-        <%= link_to "Cancelar", "", :class=>'btn btn-secondary cancel-post-form_tab', :onClick=>'removeSliderEvaluation();', :id => 'cancel-post-form_tab' %>
-      </li>
-      <li>
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication' } %>
-      </li>
-      <li>
-        <span class="btn btn-primary input-btn">
-          <%= f.submit "Publicar", :id => 'comment-post-form'%>
-        </span> 
-      </li>
-    </ul>
+  
+  <% if @active_edit %>
+    <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
+    <% unless delivery.areas_of_evaluations.empty? %>    
+      <h5>Criterios:</h5>
+      <% delivery.areas_of_evaluations.each do |d| %>
+        <p><%= d.name%>: <%= d.evaluation_percentage%></p>
+      <%end%>
+      <br>
+    <% end %>
+  <% end %>
 
-  <%else%>
-    <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn activable"%>
+  <div class="new-publication-footer">
+    <% if @active_edit == false %>
+      <ul class="list-buttons right fr">
+        <li>
+          <%= link_to "Cancelar", "", :class=>'btn btn-secondary cancel-post-form_tab', :onClick=>'removeSliderEvaluation();', :id => 'cancel-post-form_tab' %>
+        </li>
+        <li>
+          <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication' } %>
+        </li>
+        <li>
+          <span class="btn btn-primary input-btn">
+            <%= f.submit "Publicar", :id => 'comment-post-form'%>
+          </span> 
+        </li>
+      </ul>
+    <%else%>
+      <ul class="list-buttons left">
+        <li>
+          <a class="cancel-edit-publication btn btn-secondary" href="#">Cancelar</a>
+        </li>
+        <li>
+          <span class="btn btn-primary input-btn">
+            <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn activable"%>
+          </span>
+        </li>
+      </ul>
   <%end%>
   </div> 
           
@@ -144,15 +164,6 @@
   <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId, :typeo => 'delivery'} %>
 <%else%>
 
-  <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
-    
-  <div>
-    <b style="text-align:justify;"> Criterios: </b></br>
-
-    <% @delivery.areas_of_evaluations.each do |d| %>
-       <%= d.name%>: <%= d.evaluation_percentage%></br>
-    <%end%>
-  </div>
 <%end%>
 
 <script type="text/javascript">

@@ -51,8 +51,8 @@
         <% if publication.publication_type != 'Course'%>
           <span>&middot;</span>
           <div class="meta-data">
-            <div class="non-blur editIt" id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
-              <%= link_to "Editar", edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=>true %>
+            <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
+              <%= link_to "Editar", edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=> true, :class => 'edit-publication-link' %>
             </div>
           </div>
         <%end%>

@@ -15,7 +15,7 @@ background-white
         <% end %>
       </span>
     </div>
-    <% if @member.owner != nil && @member.owner == true %>
+    <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
       <div class="fr">
         <%= form_for CourseFile.new, :html => {:multipart => true} do |f| %>
           <label class="btn btn-primary">
@@ -61,11 +61,11 @@ background-white
       </div>
     <% else %>
       <div class="no-content-section">
-        <h4>Este curso no tiene archivos en su libreria.</h4>
+        <h4>Este curso no tiene archivos en su librería.</h4>
       </div>
     <% end %>
     <div class="library-terms">
-      <p class="small">Cúrsame no se hace responsable de cualquier contenido de este tipo que pueda ser subido a la página, ni de derechos de autor ni de derechos de marca, el usuario que ha subido este contenido en 100% responsable de él. "Cualquier problema de este tipo favor de reportarlo a <%= mail_to "info@cursa.me", "info@cursa.me"%></p>
+      <p class="small">Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo <%= mail_to "info@cursa.me", "info@cursa.me"%></p>
     </div>
   </div>
 </div>

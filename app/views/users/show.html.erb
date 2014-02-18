@@ -24,3 +24,22 @@
   </div>
   
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    var p = $('#timeline').pageless({
+      totalPages: <%= @wall.total_pages %>,
+      url: '<%= show_user_path(@user_l.personal_url) %>',
+      loaderMsg: '...',
+      onInit:function(opts){
+        this.pageless = {
+          opts : opts
+        };
+      },
+      params:{
+        search:''
+      },
+      loaderImage: '<%= image_path("load.gif")%>'
+    });
+  });
+</script>

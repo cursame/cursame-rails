@@ -52,7 +52,7 @@
         <div class="tabs-main">
           <% permitted_to? :create, :comments do %>
             <div id="comment-tab-content" class="tab-content" style="display: block;">
-              <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil, :message => '¿Qué estás pensando?'} %>
+              <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil, :message => '¿Qué estás pensando?', :active_edit => false} %>
             </div>
           <% end %>
           

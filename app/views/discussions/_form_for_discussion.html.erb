@@ -24,7 +24,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title, placeholder: 'Ejemplo: Numero primos', minlength: 2 %>
+          <%= f.text_field :title, placeholder: 'Ejemplo: Números primos', minlength: 2 %>
         </div>
       </div>
     </div>
@@ -78,8 +78,17 @@
           </span>
         </li>
       </ul>
-    <%else%>
-      <%= f.submit "Guardar discussion",  :class => "btn activable" %>
+    <% else %>
+      <ul class="list-buttons right">
+        <li>
+          <div class="btn btn-secondary cancel-edit-publication">Cancelar</div>
+        </li>
+        <li>
+          <span class="btn btn-primary input-btn">
+            <%= f.submit "Guardar discussion",  :class => "btn activable" %>
+          </span>
+        </li>
+      </ul>
     <%end%>
   </div>
 
