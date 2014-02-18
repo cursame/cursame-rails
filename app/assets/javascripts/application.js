@@ -141,7 +141,7 @@ $(function() {
             }
             // alineamos los comentarios que no son de nosotros a la derecha
             setTimeout(function () {
-                $('#message_' + data.message.id).css('float','right');
+                //$('#message_' + data.message.id).css('float','right');
             }, 200);
             
 		} else {

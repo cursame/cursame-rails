@@ -58,7 +58,7 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 				if( data.sender.avatar.profile.url != null ) {
 					srcAvatar = data.sender.avatar.head.url;
 				} else {
-					srcAvatar = '/assets/imagex.png';
+					srcAvatar = '/assets/imagexx.png';
 				}
 
 				if(('' + <%= current_user.id %>) != ('' + data.message.user_id)) {
