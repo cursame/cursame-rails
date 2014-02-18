@@ -247,6 +247,13 @@ class NetworksController < ApplicationController
       @user_inactive = user
     end
   end
+
+  def find_user
+    @users = current_network.users.search(params[:activiesearch]).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
+    respond_to do |format|
+      format.js
+    end
+  end
   
   def wall_filter
     ##### detecta los tipos de publicación para procesarlos mediante un filtro ######

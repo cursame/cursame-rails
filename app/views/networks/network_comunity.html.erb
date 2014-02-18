@@ -14,6 +14,9 @@
           <li>
             <%= link_to "Todos los usuarios", filter_comunity_path, :remote => true %>
           </li>
+          <li>
+           <%= render partial: "/networks/users_search" %>
+          </li>
         </ul>
       </div>
     </div>
