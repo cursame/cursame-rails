@@ -10,7 +10,7 @@
     <h6>
       Cuestionario en el curso <%= link_to survey.courses[0].title, course_path(survey.courses[0].id) %>
     </h6>
-    <span>Responder antes del <%= survey.end_date.strftime( '%A %e de %B del %Y a las %l:%M%P') %></span>
+    <span>Responder antes del <%= es_current_date("#{survey.end_date.strftime('%B')}", "#{survey.end_date.strftime('%d')}", "#{survey.end_date.strftime('%Y')}" , "#{survey.end_date.strftime('%l:%M%P')}", format = 'latin_string') %></span>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>

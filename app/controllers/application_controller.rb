@@ -567,27 +567,41 @@ class ApplicationController < ActionController::Base
 
   ##### da formato a las fechas en español
   
-  def es_current_date(month = '', day = '' , year = '', format = 'mexican')
+  def es_current_date(month = '', day = '' , year = '', hour ='',format = 'mexican')
     ##### example :    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
-
+   
+    if hour == nil
+       hour_mesage = ""
+      else
+       hour_mesage = "-#{hour}"
+    end
     case 
       when format == 'american'
       case 
         when month != '' && day != '' && year != ''
-        @date = "#{es_month(month)} / #{day} / #{year}"
+        @date = "#{es_month(month)} / #{day} / #{year} #{hour_mesage}"
         when month != '' && day != ''
-        @date = "#{es_month(month)} / #{day}"
+        @date = "#{es_month(month)} / #{day} #{hour_mesage}"
         when month != '' && year != ''
-        @date = "#{es_month(month)} / #{year}"
+        @date = "#{es_month(month)} / #{year} #{hour_mesage}"
       end
     when format == 'mexican'
        case 
         when month != '' && day != '' && year != ''
-        @date = "#{day} / #{es_month(month)} / #{year}"
+        @date = "#{day} / #{es_month(month)} / #{year} #{hour_mesage}"
         when month != '' && day != ''
-        @date = "#{day} / #{es_month(month)}"
+        @date = "#{day} / #{es_month(month)} #{hour_mesage}"
         when month != '' && year != ''
-        @date = "#{es_month(month)} / #{year}"
+        @date = "#{es_month(month)} / #{year} #{hour_mesage}"
+      end
+    when format == 'latin_string'
+      case 
+        when month != '' && day != '' && year != ''
+        @date = "#{day} de #{es_month(month)} del #{year} #{hour_mesage}"
+        when month != '' && day != ''
+        @date = "#{day} de #{es_month(month)} #{hour_mesage}"
+        when month != '' && year != ''
+        @date = "#{es_month(month)} del #{year} #{hour_mesage}"
       end
     end 
   end

@@ -9,7 +9,7 @@
       Tarea en el curso <%= link_to publication.courses[0].title, course_path(publication.courses[0].id) %>
 
     </h6>
-    <span>Entregar antes del <%= publication.end_date.strftime( '%A %e de %B del %Y a las %l:%M%P') %></span>
+    <span>Entregar antes del <%= es_current_date("#{publication.end_date.strftime('%B')}", "#{publication.end_date.strftime('%d')}", "#{publication.end_date.strftime('%Y')}" , "#{publication.end_date.strftime('%l:%M%P')}", format = 'latin_string') %></span>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
