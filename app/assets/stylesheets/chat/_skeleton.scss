@@ -603,7 +603,7 @@ cursor: pointer;
 			}
 
 			.chat-message-content {
-				padding: 6px 7px;
+				padding: 5px 7px 7px 7px;
 				@include inline-block;
 			}
 		}
@@ -642,6 +642,10 @@ cursor: pointer;
 
 		&:first-child {
 			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
 }
