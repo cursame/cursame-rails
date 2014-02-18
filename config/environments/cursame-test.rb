@@ -13,7 +13,7 @@ Cursame30Lb::Application.configure do
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
-
+  config.assets.debug = true
   # Don't fallback to assets pipeline if a precompiled asset is missed
 
   # Generate digests for assets URLs
