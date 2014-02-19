@@ -53,7 +53,7 @@ task :courses_from_emprendedores => :environment do
 	           	puts "El usuario no ha sido encontrado no puede ser agregado al curso"
 	           else
 	           	puts "el usuario #{@user} ha sido encontrado procederemos a gestionar su ingreso al curso"
-                 @member = MembersInCourse.create(:user_id => p.id, :course_id => @course.id, :accepted => true, :owner => true, :title => @course.title, :network_id => @network.id, :active_status => true)
+                 @member = MembersInCourse.create(:user_id => @user.id, :course_id => @course.id, :accepted => true, :owner => true, :title => @course.title, :network_id => @network.id, :active_status => true)
 	           end
 
         end
