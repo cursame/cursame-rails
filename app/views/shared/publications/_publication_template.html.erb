@@ -43,6 +43,7 @@
     posted_in_for = course[0].title if ( !post.courses.blank? )
     posted_in_for_id = course[0].id if ( !post.courses.blank? )
     content = post.description_html
+    content_no_html = post.description
     tipo = 'Discusión'
   end
 %>
@@ -57,6 +58,7 @@
     posted_in_for = course[0].title
     posted_in_for_id = course[0].id
     content = post.description_html
+    content_no_html = post.description
     publication_cls = 'delivery'
     tipo  = 'Tarea'
   end
@@ -150,7 +152,7 @@
               <div class="academic-content-desc">
                 <h4><%= truncate( name, omission: "...", length: 50) %></h4>
                 <% if type != "Survey" %>
-                  <p><%= truncate( content, omission: "...", length: 70).html_safe %></p>
+                  <p><%= truncate( content_no_html, omission: "...", length: 70) %></p>
                 <% else %>
                   <p><%= post.questions.count %> Preguntas</p>
                 <% end %>
