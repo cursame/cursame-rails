@@ -556,7 +556,7 @@ class ApplicationController < ActionController::Base
      when monthx == 'October'
       @name = 'Octubre'
      when monthx == 'November'
-      @name = 'Nobiembre'
+      @name = 'Noviembre'
      when monthx == 'December'
       @name = 'Diciembre'
      else
