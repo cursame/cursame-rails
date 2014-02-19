@@ -1,8 +1,8 @@
 task :usuarios_test => :environment do
 
-		u = User.create(:email => "juan@cursa.me", :password => "mmmmmm", :first_name => "Juan", :last_name => "Azpilicueta", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi584030', :domain => 'cursa.me', :subdomain => 'test')
-		u1 = User.create(:email => "rafael@cursa.me", :password => "mmmmmm", :first_name => "Rafael", :last_name => "Camps", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi534284030',:domain => ' cursa.me', :subdomain => 'test')
-		u2 = User.create(:email => "fernanda@cursa.me", :password => "mmmmmm", :first_name => "Fernanda", :last_name => "Torres", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'cursa.me', :subdomain => 'test')
+		u = User.create(:email => "juan@cursa.me", :password => "123456", :first_name => "Juan", :last_name => "Azpilicueta", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi584030', :domain => 'cursa.me', :subdomain => 'test')
+		u1 = User.create(:email => "rafael@cursa.me", :password => "123456", :first_name => "Rafael", :last_name => "Camps", :confirmed_at => Time.now, :personal_url => 'fiahfihfoi534284030',:domain => ' cursa.me', :subdomain => 'test')
+		u2 = User.create(:email => "fernanda@cursa.me", :password => "123456", :first_name => "Fernanda", :last_name => "Torres", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'cursa.me', :subdomain => 'test')
 		u2 = User.create(:email => "salvador@cursa.me", :password => "mmmmmm", :first_name => "Salvador", :last_name => "Lopez", :confirmed_at => Time.now, :personal_url => 'fiahfih76543foi584030',:domain => 'cursa.me', :subdomain => 'test')
 
 
