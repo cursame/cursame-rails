@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   helper_method :cache_expire
   
   def cache_expire 
-    cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 1.minutes)
+    cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 10.minutes)
   end
 
   #data of the networks you are
