@@ -50,7 +50,12 @@ class ApplicationController < ActionController::Base
 
   #current_user_course_when_inscript
   helper_method :current_user_courses
-
+  #quit cache
+  helper_method :cache_expire
+  
+  def cache_expire 
+    cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 1.minutes)
+  end
 
   #data of the networks you are
   def current_network

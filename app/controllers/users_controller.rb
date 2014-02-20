@@ -58,7 +58,7 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render stream: true}
         format.json { render json: @user_l }
       end
     end

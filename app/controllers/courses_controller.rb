@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     @member = MembersInCourse.new
     #alfredot_rifa_free_pro_forever
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render stream: true}
       format.json { render json: @courses }
     end
 
@@ -124,7 +124,7 @@ class CoursesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render stream: true}
         format.json { render json: @course }
       end
     end

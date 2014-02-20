@@ -94,6 +94,8 @@ class NetworksController < ApplicationController
       @wall = current_network.walls.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
     end
 
+    
+
     # if request.xhr?
     if request.xhr? && @page > 1
       respond_to do |format|
@@ -101,7 +103,7 @@ class NetworksController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render stream: true}
         format.json { render json: @network }
       end
     end
