@@ -73,7 +73,8 @@ class CoursesController < ApplicationController
   def courses_search_ajax
     @member = MembersInCourse.new
     @search = params[:activiesearch].downcase
-    @courses = Course.search(@search)
+    docificate_search_changes = I18n.transliterate("#{@search}")
+    @courses = Course.search(docificate_search_changes)
 
     respond_to do |format|
       format.js 
