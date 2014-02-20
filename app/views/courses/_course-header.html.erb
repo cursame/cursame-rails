@@ -61,7 +61,7 @@
         <% end %>
       </div>
       <%= link_to course_path(@course.id) do %>
-        <h1><%= @course.title %></h1>
+        <h1><%= truncate(@course.title, :omission => "...", :length => 27) %></h1>
       <% end %>
     </div>
 

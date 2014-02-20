@@ -80,12 +80,16 @@ a {
   @include triangle(8px, gray, down);
 }
 
-.no-content-section, .no-sub-content-section {
+.no-content-section, .no-sub-content-section, .inner-no-content {
   text-align: center;
 }
 
 .small {
   font-size: 11px;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 /* Titles

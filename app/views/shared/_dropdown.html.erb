@@ -55,22 +55,36 @@
       
       <% if hasCourses  %>
         <ul class="dropdown target-courses-selector" id="box-course-dd" style="<%= "display: none;" if hasPublic %>">
-          <% for course in Course.find(:all) %>
-            <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
-              
-            <% if !@course_member.nil?%>
-              <% if @course_member.owner == true #|| course.id == @course_member.course_id %>
-                <li>
-                  <label for="<%= random_id.to_s + course.id.to_s %>">
-                    <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
-                    <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
-                    <%= truncate( course.title, omission: "...", length: 21) %>
-                    <%= icon('checked-16') %>
-                  </label>
-                </li>
-              <% end%>
 
-            <%end%>
+          <% unless current_user.courses.empty? %>
+            
+            <% for course in current_network.courses %>
+              <% @course_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
+
+              <% if !@course_member.nil? %>
+                <% if @course_member.owner == true || course.id == @course_member.course_id %>
+                  <li>
+                    <label for="<%= random_id.to_s + course.id.to_s %>">
+                      <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                      <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
+                      <%= truncate( course.title, omission: "...", length: 21) %>
+                      <%= icon('checked-16') %>
+                    </label>
+                  </li>
+                <% end%>
+              <% end %>
+            <% end %>
+
+          <% else %>
+            <div class="inner-no-content">
+              <% if current_role == 'student' %>
+                <h5>No eres miembro de ningún curso.</h5>
+                <p>Unete a uno en la sección de <%= link_to 'Cursos', courses_path %></p>
+              <% else %>
+                <h5>No has creado ningún curso todavia.</h5>
+                <p><%= link_to 'Crear curso ahora →', new_course_path %></p>
+              <% end %>
+            </div>
           <% end %>
 
           <% if hasCourses && hasPublic %>
