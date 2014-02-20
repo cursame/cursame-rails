@@ -41,7 +41,7 @@
                 dataType: "script",
                 timeout:120000,
                 add:function(e,data){
-                    var types = /(\.|\/)(jpg|jpeg|gif|ico|png|pdf|exe|ppt|txt|pptx|dmg|dwg|dwf|rar|zip|tar|iso|swf|flv|doc|docx|ade|adp|odt|rtf|sxw|sao|csv|xls)$/i;
+                    var types = /(\.|\/)(jpg|jpeg|gif|ico|png|pdf|exe|ppt|txt|pptx|dmg|dwg|dwf|rar|zip|tar|xls|xlsx|xlsm|xlsb|iso|swf|flv|doc|docx|dotx|ade|adp|odt|rtf|sxw|sao|csv|xls)$/i;
                     var file = data.files[0];
 
                     if(types.test(file.type) || types.test(file.name)){
