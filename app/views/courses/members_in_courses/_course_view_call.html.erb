@@ -90,7 +90,9 @@
         <div class="course-detail-list">
           <div class="course-detail">
             <span class="meta-info"><i class="i i-calendar-12"></i> Finaliza:</span>
-            <p><%= es_current_date("#{course.finish_date.strftime('%B')}", "#{course.finish_date.strftime('%d')}" , "#{course.finish_date.strftime('%Y')}", nil,format = 'latin_string') %></p>
+            <% if course.finish_date %>
+              <p><%= es_current_date("#{course.finish_date.strftime('%B')}", "#{course.finish_date.strftime('%d')}" , "#{course.finish_date.strftime('%Y')}", nil, format = 'latin_string') %></p>
+            <% end %>
           </div>
           <div class="course-detail clearfix">
             <span class="meta-info"><i class="i i-profesor-12"></i> Profesor:</span>
