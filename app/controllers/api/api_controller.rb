@@ -167,10 +167,12 @@ class Api::ApiController < ApplicationController
         subdomain: u.subdomain,
         tour_info: u.tour_info,
         twitter_link: u.twitter_link,
-        updated_at: u.updated_at
+        updated_at: u.updated_at,
+        friend: @user.friends?(u)
       }
       @usuarios.push(uu)
     end
+    @usuarios = @usuarios.sort_by { |x| x["friend"] && x["last_name"] }
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
@@ -803,6 +805,42 @@ class Api::ApiController < ApplicationController
   def native_list_networks
     @networks = Network.where("name like ?",'%' + params[:text] + '%').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:networks => @networks.as_json, :count => @networks.count()}, :callback => params[:callback]
+  end
+
+  # friendships
+  def friend_request
+    friendship = Friendship.new()
+    friendship.friend_id = params[:id]
+    friendship.user_id = @user.id
+
+    if friendship.save
+      success = true
+    else
+      success = false
+    end
+    render :json => {:success => success}, :callback => params[:callback]
+  end
+
+  def friend_accept
+    friendship = Friendship.find_by_user_id_and_friend_id(@user.id, params[:id])
+    friendship.accepted = true
+
+    if friendship.save
+      success = true
+    else
+      success = false
+    end
+    render :json => {:success => success}, :callback => params[:callback]   
+  end
+
+  def friend_remove
+    friendship = Friendship.find_by_user_id_and_friend_id(@user.id, params[:id])
+    if friendship.destroy
+      success = true
+    else
+      success = false
+    end
+    render :json => {:success => success}, :callback => params[:callback]   
   end
 
   private
