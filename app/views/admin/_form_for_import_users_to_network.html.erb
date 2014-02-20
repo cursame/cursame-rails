@@ -1,0 +1,9 @@
+<%= form_tag upload_users_a_path, multipart: true do %>
+ <%= select_tag "red", options_from_collection_for_select(Network.all, "id", "name") %>
+ <%= file_field_tag 'file' %></br>
+ <%= hidden_field_tag 'domain', request.domain %></br>
+ <%= select_tag "t_email", options_for_select( [["Mail confirmación", "confirmate"],["Mail password", "pass"]]) %>
+
+ <%= submit_tag "Importar archivo de usuarios" %>
+
+<%end%>

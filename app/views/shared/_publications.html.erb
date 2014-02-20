@@ -268,8 +268,6 @@
 	     <script>
 	            $('#oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').click(function () {
 	                if($.browser.webkit){
-	                EditingBlur();
-	                $('.dek<%=id%>').foggy(false);	 
 	                }               
                     $('.link_publications').hide();
                     $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('puff');
@@ -319,10 +317,7 @@
 	         $('#<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_close').click(function () {
 	
 	            if($.browser.webkit){
-	            CancelEditingBlur();
-	            DisableBlured();
-	            $('#deleted_id_<%= id %>').foggy(false);
-	            }
+	         	  }
 	            $('.link_publications').show();
 	            $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>').toggle('highlight', {color: '#000'}, 3700);
 	            $('#<%="#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution').html('');   

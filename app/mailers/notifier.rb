@@ -117,4 +117,11 @@ class Notifier < ActionMailer::Base
     mail to: emails, subject: subject
   end
 
+  def user_mailer_with_password(user, password)
+    @user = user
+    @password = password
+    subject = "#{@user.name} has sido confirmado en la red"
+    mail to:@user.email, subject: subject
+  end
+
 end

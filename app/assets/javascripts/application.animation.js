@@ -230,7 +230,7 @@ $(document).ready(function() {
                     opacity: 0
                 }, time, function() {
                     $(this).css('display','none');
-                     $('.tim').foggy(false);
+                    // $('.tim').foggy(false);
                 });
                 $('#profile-form-options').css('display','block');
                 $('#profile-form-options').animate({
@@ -466,8 +466,6 @@ $(document).ready(function() {
     *=======================================================================================
     */
     $('.btn').live('click',function () {
-        CleanerBlur();
-        CancelEditingBlur();
         $('.link_publications').show();
         if($('.form_for_edit_wall').is(':visible')){
             $(this).closest("form").submit();

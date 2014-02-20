@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   helper_method :client_youtube
   helper_method :auth_hash
   helper_method :courses_with_permissions
-
+  
 
   #data of the networks you are
   def current_network
