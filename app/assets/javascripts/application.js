@@ -100,7 +100,7 @@ function truncate(text, maxLength, ellipseText){
 
 // notificaciones push usando private_pub
 $(function() {
-
+    // data.sender.id = data.reciver.id return
 	// Se suscribe al canal para las notificaciones del chat
 	PrivatePub.subscribe ("/messages/notifications_user_" + Cursame.userId, function(data, channel) {
         var url, notification, numNotifications;

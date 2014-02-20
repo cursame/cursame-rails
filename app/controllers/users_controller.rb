@@ -42,9 +42,9 @@ class UsersController < ApplicationController
       @search = params[:search]
       @page = params[:page].to_i
       if id_search.nil?
-        @wall = @user_l.publications.search(@search, @id).paginate(:per_page => 10, :page => params[:page])
+        @wall = @user_l.publications.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
       else
-        @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page])
+        @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
       end
 
      ##### print assets
