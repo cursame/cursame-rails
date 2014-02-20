@@ -32,14 +32,18 @@
 
 <script type="text/javascript">
 $(function() {
+
   var aux = <%= (@show_course_expired) || false %>;
+  
   if(aux) {
     $('li.delivery').click();
   }
+
   window.pagelessSettings = {
     url : '<%= wall_path %>',
     loaderImage : '<%= image_path("load.gif")%>'
   };
+
   $('#timeline').pageless({
     totalPages: 10,
     url: window.pagelessSettings.url,
@@ -53,6 +57,9 @@ $(function() {
       search:''
     },
     loaderImage: window.pagelessSettings.loaderImage,
+    complete: function( what ) {
+      console.log(what);
+    }
   });
 });
 </script>

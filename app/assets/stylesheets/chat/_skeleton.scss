@@ -34,6 +34,7 @@
 	position: fixed;
 	bottom: 0px;
 	width: 280px;
+	z-index: 20;
 	
 	&.active {
 		.chat-panel-main {
@@ -351,102 +352,6 @@ cursor: pointer;
 }
 
 // --------------------------------------------------------------- //
-///////////////////// label de ballon chat left /////////////////////
-
-.MsjC {
-	//display: table-cell;
-	display: -moz-grid;
-	min-width: 50px;
-	max-width: 225px;
-}
-
-.MsjC p {
-	position:relative;
-	padding:10px 20px;
-	background:#E5E5EA;
-	border-radius:25px;
-	color: black;
-	float: left;
-	display: block;
-		
-	&:before {
-		content:"";
-		position:absolute;
-		z-index:2;
-		bottom:-2px;
-		left:-7px;
-		height:20px;
-		/*border-left:20px solid #E5E5EA;
-		border-bottom-right-radius: 16px 14px;
-		*/
-		-webkit-transform:translate(0, -2px);
-	}
-
-	&:after {
-		content:"";
-		position:absolute;
-		z-index:3;
-		bottom:-2px;
-		/*left:4px;*/
-		-moz-margin-start: -28px;
-		left: 23px;
-		width:26px;
-		height:20px;
-		background: url('colophon.png') no-repeat;
-		border-bottom-right-radius: 10px;
-		-webkit-transform:translate(-30px, -2px);
-	}
-}
-
-// --------------------------------------------------------------- //
-///////////////////// label de ballon chat right /////////////////////
-
-.insideChat .MsjD {
-	//display: table-cell;
-	display: -moz-grid;
-	min-width: 50px;
-	max-width: 225px;
-}
-
-.insideChat .MsjD p {
-	position: relative!important;
-	padding: 10px 20px!important;
-	color: #FFF!important; 
-	background: #0B93F6!important;
-	border-radius: 25px!important;
-	text-align: right!important;
-	float: right!important;
-	display: block;
-		
-	&:before {
-		content: ""!important;
-		position: absolute!important;
-		z-index: -1!important;
-		bottom: -2px!important;
-		right: -7px!important;
-		float: right!important;
-		height: 20px!important;
-		//border-right: 20px solid #0B93F6;
-		background: url('colophon_right.png') no-repeat!important;
-		border-bottom-left-radius: 16px 14px!important;
-		-webkit-transform: translate(0, -2px)!important;
-	}
-
-	&:after {
-		content: ""!important;
-		position: absolute!important;
-		z-index: 1!important;
-		bottom: -2px!important;
-		right: -56px!important;
-		width: 26px!important;
-		height: 20px!important;
-		background: transparent!important;
-		border-bottom-left-radius: 10px!important;
-		-webkit-transform:translate(-30px, -2px)!important;
-	}
-}
-
-// --------------------------------------------------------------- //
 ////////////////////// terminan labels de chat //////////////////////
 
 #chat-messages .insideChat p { 
@@ -466,71 +371,6 @@ cursor: pointer;
 	display: block;
 	margin-left: -7px;
 	border: 1px solid #F7F7F7;
-}
-
-.insideChatText {
-		font-family: arial;
-		color: #111;
-		font-size: 11px;
-		font-weight: lighter;
-		margin-bottom: 4px; 
-		height:auto; min-height:50px;
-}
-
-.toolTipUser {
-		/*background: url('/assets/triangle.png') no-repeat center right;*/
-		width: auto;
-		height: 10px;
-		background: rgba(254,254,254,0.9);
-		position: relative;
-		text-align: right;
-		float: left;
-		padding: 5px 5px 5px 5px;
-		margin-top: 0px;
-		z-index: 99;
-		//margin-left: -130px;
-		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-}
-
-.MsjD .toolTipUser {
-	float: right;
-}
-
-.MsjC .imgChat { 
-		width: 30px;
-		height: 30px;
-		display: table;
-		float: left;
-		cursor: pointer;
- }
-.MsjD .imgChat { 
-		width: 30px;
-		height: 30px;
-		display: table;
-		float: right;
-		cursor: pointer;
- }
-
-
-.shareMSJ {}
-
-.shareMSJ input#mesage {
-	padding: 10px;
-	width: 355px;
-	outline: none;
-	margin-top: -2px;
-	float: left;
-}
-
-.shareMSJ input.sendBtnChat {
-	padding: 12px;
-	width: 176px;
-	outline: none;
-	margin-top: 9px;
-	float: right;
-	display: inline-block;
-	position: absolute;
-	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
 }
 
 #go-to-chats-url{

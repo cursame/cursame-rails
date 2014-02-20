@@ -6,7 +6,7 @@
 
       <%= avatar('user', '25', "no", current_user.id, "avatar avatar-24", "no", "no") %>
       <span class="name">
-        <%= truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 25) %>
+        <%= truncate("#{current_user.name}" , :omission => "...", :length => 25) %>
       </span>
 
     <% end %>
@@ -66,14 +66,26 @@
     </div>
     <div class="sidebar-section-main scroller">
       <ul class="section-list side-courses">
-        <% current_user_courses.each do |c| %>
-          <li>
-            <%= link_to course_path(c.id) do %>
-              <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
-              <%= truncate( c.title, omission: "...", length: 28) %>
+        <% unless current_user_courses.empty? %>
+          <% current_user_courses.each do |c| %>
+            <li>
+              <%= link_to course_path(c.id) do %>
+                <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
+                <%= truncate( c.title, omission: "...", length: 28) %>
+              <% end %>
+            </li>
+          <% end %>
+        <% else %>
+          <div class="inner-no-content">
+            <% if current_role == 'student' %>
+              <h5>No eres miembro de ningún curso.</h5>
+              <p>Unete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+            <% else %>
+              <h5>No has creado ningún curso todavia.</h5>
+              <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
             <% end %>
-          </li>
-        <%end%>
+          </div>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -92,10 +104,11 @@
       </div>
 
     </div>
-    <div class="sidebar-section-main scroller">
-      <% if @show_chat_panel %>  
-        <div class="tabs-main">
-          <div id="chat-group-friends" class="tab-content">
+    <div class="sidebar-section-main scroller"> 
+      <div class="tabs-main">
+        <div id="chat-group-friends" class="tab-content">
+
+          <% unless current_user.friendships.empty? %>
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>
@@ -113,27 +126,33 @@
                 </li>
               <%end%>
             </ul>
-          </div>
-          
-          <div id="chat-group-courses" class="tab-content" style="display: none;">
-            <ul class="section-list side-courses">
-              <% @courses_online.each do |course|%>
-                <li>
-                  <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
-                    <% if course.avatar.file == nil %> 
-                      <%= image_tag("course-avatarxx.png", alt: "", class: "avatar avatar-24") %>
-                    <%else%>
-                      <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
-                    <%end%>
+          <% else %>
+            <div class="inner-no-content">
+              <h5>No tienes amigos.</h5>
+              <p>Agrega a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path, class: 'underline' %></p>
+            </div>
+          <% end %>
 
-                    <%= truncate("#{course.title}", :omission => "...", :length => 28) %>
-                  <% end %>
-                </li>
-              <%end%>
-            </ul>
-          </div>
         </div>
-      <% end %>
+        
+        <div id="chat-group-courses" class="tab-content" style="display: none;">
+          <ul class="section-list side-courses">
+            <% @courses_online.each do |course|%>
+              <li>
+                <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
+                  <% if course.avatar.file == nil %> 
+                    <%= image_tag("course-avatarxx.png", alt: "", class: "avatar avatar-24") %>
+                  <%else%>
+                    <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
+                  <%end%>
+
+                  <%= truncate("#{course.title}", :omission => "...", :length => 28) %>
+                <% end %>
+              </li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 

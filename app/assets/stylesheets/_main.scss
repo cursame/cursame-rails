@@ -231,24 +231,6 @@ input:-moz-placeholder {
 
 
 .tabs-style{
-  
-  .plus-courses{
-    position: absolute;
-    float: right;
-    width: 37px;
-    height: 38px;
-    text-align: right;
-    @include border-t-right-radius;
-    background: url('/assets/plus-box-icon.png') no-repeat;
-    margin-left: 79px;
-    cursor:pointer;
-    margin-top: -1px;
-    transition: ease-out all 0.2s;
-
-    &:hover{
-      background: url('/assets/plus-box-icon-hover.png') no-repeat;
-    }
-  }
 
   .element-left{
     float: left;
@@ -488,31 +470,6 @@ background-position: left center;
 
   }
 }
-#box-friends{
-  min-height: 72px;
-  float: left;
-  & .content-avtr{
-    margin-bottom: 8px;
-  }
-  & #tabs-friends-1, #tabs-friends-2{
-    padding: 8px 0px 0px 0px;
-    clear: both;
-  }
-  & .avatar-mini {
-    margin: 2px 0px 2px 4px;
-  }
-}
-
-
-#box-friends a img .toolTipUser {
-		visibility: hidden;
-		transition: all ease-in 0.4;
-}
-#box-friends a img:hover + .toolTipUser {
-		visibility: visible;
-		transition: all ease-in 0.4;
-}
-
 
 .view-all{
   clear: both;
@@ -796,53 +753,6 @@ background-position: left center;
     padding-left: 30px;
   }
 	
-}
-
-
-.menu-course{
-	width: 100%;
-	height: 100px;
-	display: block;
-	z-index: 0;
-	list-style:none; 
-	display: inline;
-	color: rgba(0,0,0,0.5);
-	color: #444444;
-	font-family: HelvLight;
-	font-size: 12px;
-	
-}
-
-.menu-course li{
-	float: left;
-	width: 203px;
-	height: 76px;
-	display: block;
-	cursor: hand !important;
-	padding: 22px 15px 0px 15px;
-	text-align: center;
-	border-bottom: 1px solid #d5d5d5;
-	background: #ffffff /*  url('/assets/active.png') repeat */;
-
-}
-
-.last {
-	min-width: 206px!important;
-}
-
-.menu-course li b{
-	font-size: 15px;
-	text-align: center;
-	font-family: HelvBold;
-	margin-top: 15px;
-	
-}
-
-.menu-course li i{
-	color: #969696;
-	font-family: HelvLight;
-	font-size: 12px;
-	font-style: normal;
 }
 
 

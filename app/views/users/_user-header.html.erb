@@ -1,6 +1,6 @@
 
 <% if !compact %>
-  <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/imagecoursex copy.png'  :  @user_l.coverphoto %>);">
+  <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
 
     <div class="wrapper spaced">
       <div class="admin-buttons">
@@ -49,7 +49,7 @@
           <% end %>
         </div>
         <%= link_to show_user_path(@user_l.personal_url) do %>
-          <h1><%= @user_l.name %></h1>
+          <h1><%= truncate(@user_l.name , :omission => "...", :length => 27) %></h1>
         <% end %>
       </div>
     <% else %>

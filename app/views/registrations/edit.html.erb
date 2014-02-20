@@ -127,7 +127,7 @@ background-white
           
           <div class="profile-image">
             <span class="avatar-holder">
-              <img id="img_prev_user" src="<%= current_user.avatar.profile || current_user.image_avatarx %>" class="avatar avatar-150" />
+              <%= avatar('user', '150', "no", current_user.id, "avatar img_prev_user", "no", "no") %>
             </span>
 
             <label class="btn btn-secondary" >
@@ -140,7 +140,7 @@ background-white
 
           <div class="profile-image">
             <span class="avatar-holder">
-              <img id="img_prev_cover" class="avatar avatar-cover-small" src="<%= current_user.coverphoto || current_user.image_avatarx %>"/>
+              <img class="avatar avatar-cover-small img_prev_cover" src="<%= current_user.coverphoto.file.nil? ? "/assets/#{current_user.cover_photox}" : current_user.coverphoto %>"/>
             </span>
 
             <label class="btn btn-secondary">
@@ -190,12 +190,12 @@ background-white
   function readURL(input,id) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
-          var width = $('#'+id).width();
-          var height = $('#'+id).height();
+          var width = $('.'+id).width();
+          var height = $('.'+id).height();
 
           
       reader.onload = function (e) {
-        $('#'+id)
+        $('.'+id)
         .attr('src', e.target.result)
         .width(width)
         .height(height);
