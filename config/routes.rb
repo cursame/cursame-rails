@@ -283,7 +283,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
-  match '/comunity', :to =>  "networks#network_comunity", :as => :network_comunity
+  match '/community', :to =>  "networks#network_comunity", :as => :network_comunity
 
   get '/filter_comunity', :to => "networks#all_user_in_network_where_not_my_friends", :as => :filter_comunity
   # filtro del wall
