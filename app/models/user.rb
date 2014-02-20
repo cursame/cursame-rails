@@ -230,11 +230,7 @@ class User < ActiveRecord::Base
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      if Rails.env = "cursame-test" || Rails.env = "production"
-      query = "lower(unaccent(first_name)) LIKE '%"+search+"%' OR lower((last_name)) LIKE '%"+search+"%' " 
-      else
       query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' " 
-      end
       #puts query
       where(query)
     else
