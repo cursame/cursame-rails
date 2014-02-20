@@ -226,12 +226,12 @@ class User < ActiveRecord::Base
     return self.domain
   end
 
-
   #search por nombre en usuario
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "first_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
+      query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' "
+      #puts query
       where(query)
     else
       # find(:all, :order => :first_name)

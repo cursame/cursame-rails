@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
 
   def index
     
-     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
+    @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     #alfredot_rifa_free_pro_forever
@@ -72,7 +72,7 @@ class CoursesController < ApplicationController
 
   def courses_search_ajax
     @member = MembersInCourse.new
-    @search = params[:activiesearch]
+    @search = params[:activiesearch].downcase
     @courses = Course.search(@search)
 
     respond_to do |format|

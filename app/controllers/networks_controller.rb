@@ -251,7 +251,8 @@ class NetworksController < ApplicationController
   end
 
   def find_user
-    @users = current_network.users.search(params[:activiesearch]).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
+    search_changes = params[:activiesearch].downcase
+    @users = current_network.users.search(search_changes).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
     respond_to do |format|
       format.js
     end
