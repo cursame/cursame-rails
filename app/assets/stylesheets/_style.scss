@@ -90,37 +90,7 @@
 	color: #00b0ca;
 	font-family: "HelveticaNeue", sans-serif;
 }
-.email {
-	margin-top: 15px;
-	width: 245px;
-	height: 25px;
-	border: 1px solid #c9c9c9;
-	padding: 11px 20px;
-	color: #000;
-	font-size: 14px;
-	line-height: 15px;
-	font-family: "HelveticaNeue-Light", sans-serif;
-	margin-left: 10px;
-	outline-width: 1px;
-	outline-color: #5F96BF;
-}
-.pswd {
-	width: 245px;
-	height: 25px;
-	border: 1px solid #c9c9c9;
-	padding: 11px 20px;
-	color: #000;
-	font-size: 14px;
-	line-height: 15px;
-	font-family: "HelveticaNeue-Light", sans-serif;
-	margin-left: 10px;
-	margin-top: 10px;
-	outline-width: 1px;
-	outline-color: #5F96BF;
-}
-.login-form input:focus {
-	color: black;
-}
+
 .log-in {
 	margin-top: 10px!important;
 	margin-right: 12px;
@@ -137,21 +107,7 @@
 	border-radius: 3px;
 	outline-width: 0px;
 }
-.Confirmation_ins {
-	clear: both;
-	font-size: 13px;
-	margin-left: 10px;
-	display: block;
-	position: relative;
-	padding-top: 50px;
-}
-.Confirmation_ins > a:link, .Confirmation_ins > a:visited {
-	color: #6a6a6a!important;
-	line-height: 20px;
-}
-.Confirmation_ins > a:hover, .Confirmation_ins > a:active {
-	color: #E24D37!important;
-}
+
 button.log-in:hover {
 	cursor: pointer;
 	background: white;
@@ -171,8 +127,6 @@ button.log-in:active {
 	text-shadow: 0;
 }
 .remember {
-	color: #00b0ca;
-	font-size: 12px;
 	margin-top: 15px;
 	float: left;
 }
@@ -201,19 +155,11 @@ button.log-in:active {
 .no-wrap a:link, .no-wrap a:visited {
 	color: #fff!important;
 }
-footer {
-	width: 800px;
-	margin: auto;
-	margin-top: 40px;
-	font-size: 12px;
-	font-family: "HelveticaNeue-Light", sans-serif;
-	text-align: center;
-	color: white;
-	opacity: 0.7;
-}
+
 .help {
 	cursor: pointer;
 }
+
 .delivery_help {
 	/*margin-right: 185px;*/
 	float: right;

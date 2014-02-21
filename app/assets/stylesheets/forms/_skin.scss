@@ -351,7 +351,13 @@ label.error {
 ----------------------------------*/
 
 .form-group {
-  .form-group-label label {
-    font-weight: bold;
+  .form-group-label {
+    label {
+      font-weight: bold;
+    }
+
+    &.label-right, &.label-right label {
+      text-align: right;
+    }
   }
 }

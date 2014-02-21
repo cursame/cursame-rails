@@ -261,42 +261,43 @@ class NetworksController < ApplicationController
   
   def wall_filter
     ##### detecta los tipos de publicación para procesarlos mediante un filtro ######
-    typeforfilter = params[:typeforfilter]
-    responds = true if  params[:responds] == "true" 
-    responds = false if  params[:responds] == "false" 
+    @typeforfilter = params[:typeforfilter]
+    @responds = true if  params[:responds] == "true" 
+    @responds = false if  params[:responds] == "false" 
 
-    p typeforfilter
-    p responds
+    p @typeforfilter
+    p @responds
     responds_true = []
     responds_false = []
+
     ######## inicia el acceso a los cursos del usuario #######
     current_user.courses.each do |c|
     @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
     p @member.owner
     case 
-      when typeforfilter == 'Delivery'
+      when @typeforfilter == 'Delivery'
 ####################################### inicia el filtro de deliveries ########################################
         case 
-          when responds && @member.owner
+          when @responds && @member.owner
             c.deliveries.each do |d|
              if d.assignments.count != 0
              responds_true.push(d.id)
              end
             end    
-          when responds && (@member.owner.nil? or !@member.owner)
+          when @responds && (@member.owner.nil? or !@member.owner)
             c.deliveries.each do |d|
               user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
               if user_delivery.count != 0
                  responds_false.push(d.id)
               end
             end
-          when !responds  && @member.owner
+          when !@responds  && @member.owner
             c.deliveries.each do |d|
              if d.assignments.count == 0
               responds_false.push(d.id)
              end            
             end    
-          when !responds  && (@member.owner.nil? or !@member.owner)
+          when !@responds  && (@member.owner.nil? or !@member.owner)
             c.deliveries.each do |d|
               user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
               if user_delivery.count == 0
@@ -305,14 +306,14 @@ class NetworksController < ApplicationController
             end
         end
 ####################################### finaliza el filtro de delivereis ######################################
-      when typeforfilter == 'Survey'
+      when @typeforfilter == 'Survey'
 ####################################### inicia filtro de survey ##############################################
     
         ##### se accesa a todos los cursos
           #puts @member
           case 
             ###### se validan las variables que buscamos
-             when responds && @member.owner
+             when @responds && @member.owner
                 #puts "owner"
                c.surveys.each do |s|
                 if s.user_surveys.count != 0
@@ -320,7 +321,7 @@ class NetworksController < ApplicationController
                   responds_true.push(s.id)
                 end
                end
-             when responds && (@member.owner.nil? or !@member.owner)
+             when @responds && (@member.owner.nil? or !@member.owner)
               #puts "no owner"
                c.surveys.each do |s|
                  user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
@@ -328,7 +329,7 @@ class NetworksController < ApplicationController
                     responds_true.push(s.id)
                  end
                end
-             when !responds && (@member.owner.nil? or !@member.owner)
+             when !@responds && (@member.owner.nil? or !@member.owner)
                 c.surveys.each do |s|
                  user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
                   if user_survey.count == 0
@@ -336,7 +337,7 @@ class NetworksController < ApplicationController
                   end
                 end
               #puts "no owner"
-             when !responds && @member.owner
+             when !@responds && @member.owner
               c.surveys.each do |s|
                 if s.user_surveys.count == 0
                   #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
@@ -350,7 +351,7 @@ class NetworksController < ApplicationController
     #################### finaliza el acceso a los datos de los curos del usuario #####################
     #################### se generan las epecificaicones del wall #############################
     @operator = responds_true + responds_false
-    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{typeforfilter}").paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{@typeforfilter}").paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
 
 
     respond_to do |format|

@@ -1,2 +1,24 @@
 $('#timeline').html();
-$('#timeline').html("<%= escape_javascript(render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"})%>");
+<% unless @wall.empty? %>
+  $('#timeline').html("<%= escape_javascript(render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"})%>");
+<% else %>
+  var message;
+
+  <% case @typeforfilter %>
+    <% when !@responds && 'Survey' %>
+      message = 'No tienes cuestionarios por contestar.'
+
+    <% when @responds && 'Survey' %>
+      message = 'No tienes cuestionarios contestados.'
+
+    <% when !@responds && 'Delivery' %>
+      message = 'No tienes tareas para entregar.'
+
+    <% when @responds && 'Delivery' %>
+      message = 'No tienes tareas entregadas.'
+    <% else %>
+      message = 'No se encontro nada.'
+  <% end %>
+
+  $('#timeline').html('<div class="no-content-section"><h4>'+ message +'</h4></div>');
+<% end %>
