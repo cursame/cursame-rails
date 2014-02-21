@@ -243,7 +243,7 @@ AutoHtml.add_filter(:prezi_with_wmode).with(:width => 400, :height => 360) do |t
     puts "#{text}"
     puts "#{options}"
     user = $2
-     %{<iframe src= "http://prezi.com/embed/#{user}/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="#{options[:width]}" height="#{options[:height]}" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowfullscreen></iframe>}
+     %{<iframe src= "https://prezi.com/embed/#{user}/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="#{options[:width]}" height="#{options[:height]}" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowfullscreen></iframe>}
   end
 end
 
