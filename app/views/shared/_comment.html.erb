@@ -39,7 +39,7 @@
         </div>
         <span>&middot;</span>
         <div class="meta-data">
-          <%= comment.created_at.strftime('%d/%m/%Y') %>
+        <%= es_current_date("#{comment.created_at.strftime('%B')}", "#{comment.created_at.strftime('%d')}" , "#{comment.created_at.strftime('%Y')}","#{comment.created_at.strftime('%l:%M%P')}",'latin_string')%>
         </div>
         <%if comment.owner?(current_role, current_user) %>
           <div class="edit-publication">

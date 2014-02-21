@@ -121,6 +121,12 @@ class User < ActiveRecord::Base
     return Friendship.where(:user_id => self.id)
   end
 
+  def count_friendships
+   a = Friendship.where(:user_id => self.id, :accepted => true).count 
+   b = Friendship.where(:friend_id => self.id, :accepted => true).count 
+   @count = a + b
+  end
+
  # def tutors
  #   return PIdToHId.where(:p_id => self.id)
  # end
@@ -230,7 +236,7 @@ class User < ActiveRecord::Base
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' "
+      query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' " 
       #puts query
       where(query)
     else
