@@ -53,6 +53,10 @@ a {
     &:first-child {
       border-left: 1px solid #e6e6e6;        
     }
+
+    &.support-buttton .i {
+      vertical-align: -3px;
+    }
   }
 
   #log_loadding {
@@ -276,17 +280,9 @@ h6 {
   border: 0px!important;
 }
 
-.zenbox_tab__text {
-  background: url('line-dashed-mini.png') no-repeat center center;
-}
-
-.ZenboxTabRight:hover, #zenbox_tab:hover {
-  background: url('/assets/ayuda.png') 70px center no-repeat!important;
-}
-
 /* Scroll to Top Button
 ----------------------------------*/
 #scrollup{
-  opacity:0.3;
-  background: url('/assets/icon_top.png') no-repeat;
+  cursor: pointer;
+  background: url('/assets/pack.png') -93px -196px no-repeat;
 }

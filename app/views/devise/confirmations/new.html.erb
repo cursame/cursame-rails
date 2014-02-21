@@ -1,29 +1,46 @@
-<% if current_network.image_front.file != nil%>
 
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
+<div class="user-sessions-wrap user-sessions-medium">
+	<div class="user-sessions-network-brand">
+    <% if current_network.free || current_network.logo.file == nil %>
 
-<%end%>
+      <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
 
-<div class="content login confirmationIndexHeader" id="titlheader" style="width: 600px; text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px;">
-			<b style="font-size: 15px!important; line-height: 30px;">
-			<b>No has recibido confirmación</b><p style="width: 400px; font-size: 18px; margin: 20px auto 0 auto; line-height: 21px;">Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p>
-			</b>
-		<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-		  <%= devise_error_messages! %>
-		
-			<div class="form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;">
-				  <div><!-- <%= f.label :email %><br /> -->
-				  	<%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %>
-				  </div>
+    <% else %>
+      <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+    <% end %>
+  </div>
+  <div class="user-sessions-main">
+    <div class="user-session-content">
+    	<h4>No has recibido confirmación</h4>
+    	<p>Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p><br>
 				
-				  <div><%= f.submit "Reenviar instrucciones", :class =>"confirm-btn" %></div>
-				<% end %>
-			</div>
-		</div>
+			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+			  <%= devise_error_messages! %>
 
-		<div class="confirmation-links" style="margin-top: 50px!important;">
-			<%= render "devise/shared/links" %>
-		</div>
+			  <div class="form-group no-label">
+          <div class="form-group-main">
+            <span class="input-icon session-icon-input">
+              <%= icon('email') %>
+              <%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %>
+            </span>
+          </div>
+        </div>
+
+        <div class="user-sessions-footer">
+          <div class="fr">
+            <span class="btn btn-primary btn-medium input-btn">
+              <%= f.submit "Reenviar instrucciones" %>
+            </span>
+          </div>
+        </div>
+
+			<% end %>
+
+    </div>
+
+    <div class="user-session-links">
+	    <%= render "devise/shared/links" %>
+	  </div>
+
+  </div>
 </div>

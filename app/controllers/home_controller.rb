@@ -19,7 +19,6 @@ class HomeController < ApplicationController
   ###### destroye sesiones caducadas
   def ending_session
     sign_out(current_user)
-
     redirect_to root_path
   end
 

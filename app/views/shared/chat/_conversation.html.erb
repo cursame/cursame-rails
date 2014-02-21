@@ -1,6 +1,6 @@
 <div id="chat-channel-<%= channel.id%>" class="chat-panel active">
 	<div class="chat-panel-header">
-		<h6><%= get_chat_title channel %></h6>
+		<h6><%= truncate(get_chat_title(channel), :omission => "...", :length => 35) %></h6>
 		<div class="chat-panel-actions">
 			<div class="chat-panel-action">
 				<a href="" id="close-chat-<%= channel.id%>" title="Cerrar"><%= icon('w-cross-9') %></a>

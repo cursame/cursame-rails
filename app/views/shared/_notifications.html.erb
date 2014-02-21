@@ -15,8 +15,10 @@
 <div id="box-notifications" class="activity-dropdown-wrap dropdown-wrap">
   <div class="activity-dropdown-pull dropdown-pull">
     <%= icon('activity-notifications') %>
-   <% notifications_count = current_user.notifications.where(:active => true).count%>
-    <span id="lecto_n_count" style="display:<%=notifications_count > 0 ? 'block' : 'none'%>"class="activity-counter"></span>
+    <% notifications_count = current_user.notifications.where(:active => true).count%>
+    <span id="lecto_n_count" style="display:<%= notifications_count > 0 ? 'block' : 'none' %>"class="activity-counter">
+      <%= notifications_count if notifications_count > 0 %>
+    </span>
   </div>
   <div class="activity-dropdown dropdown-v right">
     <i class="tip"></i>

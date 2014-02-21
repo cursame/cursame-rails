@@ -49,6 +49,11 @@
         }
       }
     }
+
+    .support-buttton a {
+      display: block;
+      padding: 15px 10px 17px 10px;
+    }
   }
 
   #log_loadding {
@@ -427,22 +432,13 @@
   }
 }
 
-/* Zenbox Tab
-----------------------------------*/
-#zenbox_tab{
-  top: 38%!important;
-  margin-right: 5px!important;
-}
-
 /* Scroll to Top Button
 ----------------------------------*/
-#scrollup{
-  width:40px;
-  height:40px;
-  opacity:0.3;
-  position:fixed;
-  bottom: 86%;
-  right: 1%;
+#scrollup {
+  width: 34px;
+  height: 34px;
+  position: fixed;
+  top: 60px;
+  right: 6px;
   display:none;
-  cursor: pointer;
 }

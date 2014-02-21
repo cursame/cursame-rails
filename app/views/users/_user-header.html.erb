@@ -1,73 +1,53 @@
+<div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
 
-<% if !compact %>
-  <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
+  <div class="wrapper spaced">
+    <div class="admin-buttons">
+    <div id="taxk_<%=@user_l.id%>">  
+    <% if @user_l != current_user %>
+    <% if @user_l.friends?(current_user) %>
+      <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
+    <%else%>
+      <%if  @user_l.have_a_friendship(current_user) %>           
 
-    <div class="wrapper spaced">
-      <div class="admin-buttons">
-      <div id="taxk_<%=@user_l.id%>">  
-      <% if @user_l != current_user %>
-      <% if @user_l.friends?(current_user) %>
-        <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
-      <%else%>
-        <%if  @user_l.have_a_friendship(current_user) %>           
-
-          <%case current_user.who_sent?(@user_l) %>
-            <% when current_user %>
-                <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
-                    <span class="btn btn-small btn-disabled">Solicitud enviada</span>
-            <%when @user_l %>
-                <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
-                <%= link_to "Aceptar", friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary", remote: true%>
-            <%else%>
-                <%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary ", remote: true %>
-
-          <%end%>
+        <%case current_user.who_sent?(@user_l) %>
+          <% when current_user %>
+              <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
+                  <span class="btn btn-small btn-disabled">Solicitud enviada</span>
+          <%when @user_l %>
+              <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
+              <%= link_to "Aceptar", friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary", remote: true%>
           <%else%>
-              <div id="add_friend<%=@user_l.id%>">
-                 <%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary ", remote: true %>
-              </div>
-          <%end%>
-       <%end%>
-       <%end%>
-       </div>
-      </div>
-    </div>
+              <%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary ", remote: true %>
 
+        <%end%>
+        <%else%>
+            <div id="add_friend<%=@user_l.id%>">
+               <%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary ", remote: true %>
+            </div>
+        <%end%>
+     <%end%>
+     <%end%>
+     </div>
+    </div>
   </div>
-<% end %>
+
+</div>
 
 <div class="profile-user-bar">
   <div class="wrapper spaced">
-
-    <% if !compact %>
-      <div class="profile-name-avatar">
-        <div class="profile-avatar" id="box-user-credential" >
-          <%= link_to show_user_path(@user_l.personal_url) do %>
-            <span class="avatar-holder">
-              <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
-            </span>
-          <% end %>
-        </div>
+  
+    <div class="profile-name-avatar">
+      <div class="profile-avatar" id="box-user-credential" >
         <%= link_to show_user_path(@user_l.personal_url) do %>
-          <h1><%= truncate(@user_l.name , :omission => "...", :length => 27) %></h1>
+          <span class="avatar-holder">
+            <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
+          </span>
         <% end %>
       </div>
-    <% else %>
-      <div class="profile-name-avatar compact">
-        <div class="profile-avatar-compact">
-          <%= link_to show_user_path(@user_l.personal_url) do %>
-            <span class="avatar-holder">
-              <%= avatar('user', '30', 'no', @user_l.id, "avatar", "no", "no") %>
-            </span>
-          <% end %>
-        </div>
-        <div class="profile-avatar-compact-name">
-          <%= link_to show_user_path(@user_l.personal_url) do %>
-            <h1><%= @user_l.name %></h1>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+      <%= link_to show_user_path(@user_l.personal_url) do %>
+        <h1><%= truncate(@user_l.name , :omission => "...", :length => 24) %></h1>
+      <% end %>
+    </div>
 
     <div class="profile-navigation">
       <ul>

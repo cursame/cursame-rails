@@ -21,7 +21,13 @@
 </div>
 
 <div id="timeline" class="tim wrapper spaced sc-margined">
-  <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+  <% unless @wall.empty? %>
+    <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+  <% else %>
+    <div class="no-content-section">
+      <h4>No tienes cuestionarios por contestar.</h4>
+    </div>
+  <% end %>
 </div>
 
 <%= will_paginate(@wall) %>

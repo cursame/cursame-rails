@@ -1,0 +1,85 @@
+
+/* Sessions Skeleton
+/*----------------------------------*/
+.user-sessions-wrap {
+  width: 360px;
+  margin: 50px auto 50px auto;
+
+  .user-sessions-network-brand {
+    padding: 20px;
+    
+    img {
+      display: block;
+    }
+
+    .free_network {
+      display: block;
+      margin-bottom: -10px;
+    }
+  }
+
+  .user-session-content {
+    padding: 20px;
+  }
+
+  .user-sessions-footer {
+    @include clearfix;
+  }
+
+  .user-session-links {
+    padding: 20px;
+  }
+}
+
+.form-sessions {
+  margin-top: 5px
+}
+
+.session-icon-input{
+  .i {
+    top: 10px;
+    left: 10px;
+  }
+
+  input {
+    padding: 12px 12px 12px 35px !important;
+  }
+}
+
+.user-sessions-medium {
+  width: 470px;
+}
+
+#sub_linked {
+  margin-top: 10px;
+}
+
+.signup-restore {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+  .background-layer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.sessions-footer {
+  margin-bottom: 30px;
+  .sessions-footer-link {
+    margin-bottom: 10px;
+
+    ul li {
+      padding: 0 5px;
+      @include inline-block;
+    }
+  }
+}

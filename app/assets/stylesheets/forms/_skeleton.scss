@@ -388,4 +388,17 @@ label.error {
       padding-left: 10px;
     }
   }
+
+  &.no-label .form-group-main {
+    margin-left: 0;
+  }
+}
+
+.input-icon {
+  display: block;
+  position: relative;
+
+  .i {
+    position: absolute;
+  }
 }

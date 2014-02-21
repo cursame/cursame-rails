@@ -1,17 +1,19 @@
-<footer>
-<ul class="foo">
-	<!--<li><a href="#">Sobre nosotros</a></li>-->
-	<li><a href="#"><%= link_to "Ayuda", help_path %></a></li>
-	<li><%= link_to "Blog", blog_path %></li>
-	<!--<li><a href="#">Empleos</a></li>-->
-	<li><%= link_to "Términos y Condiciones", conditions_path%></li>
-	<!--<li><a href="#">Privacidad</a></li>-->
- 	<!--<li><a href="#">Publicidad</a></li>-->
-	<!--<li><a href="#">Desarrolladores</a></li>-->
-	<li><script>document.write(new Date().getFullYear())</script> &#174; C&uacute;rsame</li>
-</ul>
-</br></br>
-<% if current_network.logo != nil %>
-  Powered by <%= link_to 'Cúrsame', 'http://www.cursa.me', :style => " color:#fff; text-decoration:underline;", :target => '_blank'%>
-<%end%>
-</footer>
+
+<div class="sessions-footer">
+  <div class="sessions-footer-link">
+    <ul>
+      <li>
+        <%= link_to "Ayuda", help_path %>
+      </li>
+      <li>
+        <%= link_to "Blog", blog_path %>
+      </li>
+      <li>
+        <%= link_to "Términos y Condiciones", conditions_path%>
+      </li>
+    </ul>
+  </div>
+  <div class="sessions-footer-cursame">
+    <p>Powered by <%= link_to 'Cúrsame', 'http://www.cursa.me', :target => '_blank'%></p>
+  </div>
+</div>
