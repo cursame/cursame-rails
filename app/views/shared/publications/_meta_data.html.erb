@@ -39,7 +39,7 @@
     </div>
     <span>&middot;</span>
     <div class="meta-data">
-      <span><%= es_current_date("#{post.created_at.strftime('%B')}", "#{post.created_at.strftime('%d')}", "#{post.created_at.strftime('%Y')}" , "#{post.created_at.strftime('%l:%M%P')}", format = 'latin_string') %></span>
+      <span><%= es_current_date("#{post.created_at.strftime('%B')}", "#{post.created_at.strftime('%d')}", "#{post.created_at.strftime('%Y')}" , "#{post.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
     </div>
 
     <% if publication.publication.owner?(current_role, current_user) %>

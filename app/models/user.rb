@@ -121,6 +121,12 @@ class User < ActiveRecord::Base
     return Friendship.where(:user_id => self.id)
   end
 
+  def count_friendships
+   a = Friendship.where(:user_id => self.id, :accepted => true).count 
+   b = Friendship.where(:friend_id => self.id, :accepted => true).count 
+   @count = a + b
+  end
+
  # def tutors
  #   return PIdToHId.where(:p_id => self.id)
  # end

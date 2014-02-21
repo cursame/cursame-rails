@@ -107,8 +107,7 @@
     <div class="sidebar-section-main scroller"> 
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
-
-          <% unless current_user.friendships.empty? %>
+          <% if current_user.count_friendships != 0 %>
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>

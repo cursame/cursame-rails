@@ -590,6 +590,7 @@ class ApplicationController < ActionController::Base
       else
        hour_mesage = "-#{hour}"
     end
+
     case 
       when format == 'american'
       case 
