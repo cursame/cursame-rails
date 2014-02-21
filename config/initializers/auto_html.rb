@@ -240,9 +240,10 @@ end
 
 AutoHtml.add_filter(:prezi_with_wmode).with(:width => 400, :height => 360) do |text, options|
   text.gsub(/https?:\/\/(www\.|)prezi\.com\/(.+)\/(.+)/) do
+    puts "#{text}"
+    puts "#{options}"
     user = $2
-     #se descontinua este métodp por updates de prezzi => %{<object id="prezi_#{user}" name="prezi_#{user}" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="#{options[:width]}" height="#{options[:height]}"><param name="wmode" value="transparent"></param><param name="movie" value="https://prezi.com/bin/preziloader.swf"/><param name="allowfullscreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="bgcolor" value="#ffffff"/><param name="flashvars" value="prezi_id=#{user}&amp;lock_to_path=1&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"/><embed id="preziEmbed_#{user}" name="preziEmbed_#{user}" src="http://prezi.com/bin/preziloader.swf" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="400" bgcolor="#ffffff" flashvars="prezi_id=#{user}&amp;lock_to_path=1&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"></embed></object>}
-     %{<iframe id="prezi_#{user}" name="prezi_#{user}" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="#{options[:width]}" height="#{options[:height]}" src="https://prezi.com/bin/preziloader.swf?prezi_id=#{user}&amp;lock_to_path=1&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"></iframe>}
+     %{<iframe src= "http://prezi.com/embed/#{user}/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="#{options[:width]}" height="#{options[:height]}" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowfullscreen></iframe>}
   end
 end
 
