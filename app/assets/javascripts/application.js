@@ -45,6 +45,10 @@ function add_fields(link, association, content, toId) {
         $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
         changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
     }
+
+    $(document).ready(function(){
+        $('textarea').autosize();   
+    });
 }
 
 function changeNumbers(idParent, idFind){
@@ -200,3 +204,4 @@ $('.cancel-edit-publication').live('click', function(event) {
   event.preventDefault();
   $(this).closest('.form_for_edit_wall').slideUp(300);
 });
+

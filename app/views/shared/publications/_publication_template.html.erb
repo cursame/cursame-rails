@@ -7,6 +7,10 @@
   type = publication.publication_type
   personal_url = post.user.personal_url if type != 'Course'
   personal_url = post.id if type == 'Course'
+
+  if defined?(post.courses)
+    courses_ids = post.courses.map {|k| k.id }
+  end
 %>
 
 <%
@@ -76,8 +80,7 @@
 %>
 
 <% if post.state == "published" %>
-  <div class="publication-box <%= id %> <%= I18n.transliterate(tipo.to_s).downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>">
-
+  <div class="publication-box <%= id %> <%= I18n.transliterate(tipo.to_s).downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>" data-course="<%= courses_ids[0] if !courses_ids.nil? %>">
     <div class="publication-author">
       <% case type %>
         <% when 'Course' %>
@@ -185,5 +188,12 @@
       <%= render partial: 'shared/publications/publication_comments', locals: { publication: publication, post: post } %>
 
     </div>
+    <script type="text/javascript">
+      $('#more-comments-<%= publication.id %>').live('click',function(e){
+        $.getScript("<%=request.protocol + request.host_with_port%>/home/load_more_comments/<%= publication.id %>");
+
+        e.preventDefault();
+      });
+    </script>
   </div>    
 <%end%>

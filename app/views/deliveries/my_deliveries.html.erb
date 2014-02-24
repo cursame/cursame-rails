@@ -20,7 +20,10 @@
       </div>
     </div>
 
-    
+    <% unless current_user.courses.empty? %>
+      <%= render partial: '/shared/publications-filter/filter_by_course_publications', locals: { type: 'tareas' } %>
+    <% end %>
+
   </div>
 </div>
 
@@ -30,6 +33,8 @@
 <%= will_paginate(@wall) %>
 
 <script>
+
+
  var p = $('#timeline').pageless({
     totalPages: <%= @wall.total_pages %>,
     url: '<%= my_deliveries_path(current_network) %>',

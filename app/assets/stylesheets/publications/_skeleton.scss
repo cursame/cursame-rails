@@ -259,16 +259,27 @@
       }
 
       .element {
-        padding: 5px;
+        padding: 5px 5px 5px 20px;
         overflow: hidden;
+        position: relative;
+
+        .num {
+          position: absolute;
+          top: 9px;
+          left: 9px;
+        }
 
         .question-input-field {
-          width: 265px;
-          padding-left: 0;
+          width: 400px;
+          padding: 3px;
         }
 
         .delete-question-button {
           display: none;
+
+          .i-x-close {
+            vertical-align: -3px;
+          }
         }
 
         &:hover .delete-question-button {
@@ -278,10 +289,17 @@
 
       .request-field {
         overflow: hidden;
-        padding: 5px;
-        
+        padding: 5px 5px 5px 23px;
+        position: relative;
+
+        .num {
+          position: absolute;
+          top: 9px;
+          left: 9px;
+        }
+
         .answer-field-input {
-          padding-left: 0;
+          padding: 3px;
           width: 240px;
         }
       }

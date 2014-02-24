@@ -17,6 +17,11 @@
         </ul>
       </div>
     </div>
+
+    <% unless current_user.courses.empty? %>
+      <%= render partial: '/shared/publications-filter/filter_by_course_publications', locals: { type: 'cuestionarios' } %>
+    <% end %>
+
   </div>
 </div>
 

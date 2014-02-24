@@ -1,5 +1,21 @@
 $(document).ready(function(){
 
+  function clearNewPublicationsTabs( type ) {
+    $('#comment-tab-content').show();
+    $('#delivery-tab-content, #discussion-tab-content, #survey-tab-content').hide();
+    $('.tabs-buttons').find('.tab').removeClass('active').first().addClass('active');
+    $('.tabs-buttons').find('.tab:first-child').addClass('active');
+
+    if (type == 'Survey' ) {
+      var questionsContainer = $('#box-question'),
+          clone = questionsContainer.find('.question-field:first-child').clone(true, true);
+
+      questionsContainer.find('.question-field').remove();
+      questionsContainer.append( clone );
+
+    };
+  }
+
   /* Valdiación de formulario de comment*/
   $('.comment_form_top').submit(function(){
      var comment_validate = $('.comment_for_wall').val();
@@ -68,6 +84,8 @@ $(document).ready(function(){
           delivery_porcent_of_evaluation.attr("placeholder", "En evalación final");
           delivery_porcent_of_evaluation.removeClass('red-placeholder');
 
+          clearNewPublicationsTabs();
+
           return true;
      }
   });
@@ -92,6 +110,8 @@ $(document).ready(function(){
       discussion_title.removeClass('red-placeholder');
 
       discussion_description.removeClass('red-placeholder');
+
+      clearNewPublicationsTabs();
       
       return true;
     }
@@ -125,6 +145,8 @@ $(document).ready(function(){
       survey_name.removeClass('red-placeholder');
       survey_publish_date.removeClass('red-placeholder');
       survey_end_date.removeClass('red-placeholder');
+
+      clearNewPublicationsTabs( type = 'Survey');
 
       return true;
     }

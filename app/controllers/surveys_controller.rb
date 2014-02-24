@@ -35,6 +35,8 @@ class SurveysController < ApplicationController
   end
 
   def create
+    puts params
+
     @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network

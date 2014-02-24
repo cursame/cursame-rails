@@ -3,10 +3,10 @@
   <div class="element">
     <div class="fl">
       <span id="question-num" class="num">1.</span>
-      <%= f.text_field :content, :rows => 3, :placeholder=>'Ingresar pregunta', class: 'question-input-field' %>
+      <%= f.text_area :content, rows: 1, placeholder: 'Ingresar pregunta', class: 'question-input-field autogrow' %>
     </div>
     <div class="fr delete-question-button">
-      <%= link_to_remove_fields "Eliminar pregunta", f, {:class=>'btn btn-secondary', :clear => 'both'}, '#box-question'  %>
+      <%= link_to_remove_fields icon('x-close'), f, {:class=>'btn btn-small btn-secondary', :clear => 'both'}, '#box-question'  %>
     </div>
   </div>
 
