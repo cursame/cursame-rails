@@ -106,11 +106,26 @@ function truncate(text, maxLength, ellipseText){
 $(function() {
     // data.sender.id = data.reciver.id return
 	// Se suscribe al canal para las notificaciones del chat
+    
+    if (typeof Cursame === 'undefined') {
+      return;
+    }
+
 	PrivatePub.subscribe ("/messages/notifications_user_" + Cursame.userId, function(data, channel) {
         var url, notification, numNotifications;
 		var channelType = data.channel.channel_name.split('course_channel_');
 		url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;		
+    
+        var avatar_modern = data.sender.avatar.modern.url 
 
+        if (data.sender.id == Cursame.userId){
+           return;
+
+           }else{
+
+           // alert("Nueva notificación de"+data.sender.first_name+' '+ data.sender.last_name);
+
+        }
 		// notification = ['<li class="unread">',
 		// 	'<a href="' + url + '" data-remote="true">Conversar</a></br>',
 		// 	'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
@@ -123,7 +138,7 @@ $(function() {
             '<div class="activity-feed">',
             '<a title="Conversar" href="' + url + '" data-remote="true">',
             '<div class="activity-feed-author">',
-            '<img src="' + data.sender.avatar.modern.url + '" class="avatar avatar-45"></div>',
+            '<img src="' + avatar_modern + '" class="avatar avatar-45"></div>',
             '<div class="activity-feed-main">',
             '<h6>' + data.sender.first_name+' '+ data.sender.last_name + '</h6>',
             '<p>' + truncate(data.message.mesage, 88, "...") +'</p>',
