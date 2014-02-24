@@ -138,7 +138,7 @@ $(document).ready(function(){
       return false;  
       
     } else {
-      survey_name.attr("placeholder", "Ejemplo Numero primos");
+      survey_name.attr("placeholder", "Ejemplo Número primo");
       survey_publish_date.attr("placeholder", "Fecha de publicación");
       survey_end_date.attr("placeholder", "Fecha de entrega");
 

@@ -3,7 +3,8 @@
   <div class="element">
     <div class="fl">
       <span id="question-num" class="num">1.</span>
-      <%= f.text_area :content, rows: 1, placeholder: 'Ingresar pregunta', class: 'question-input-field autogrow' %>
+      <%= f.text_field :content,rows: 1, placeholder: 'Ingresar pregunta', class: 'question-input-field' %>
+    
     </div>
     <div class="fr delete-question-button">
       <%= link_to_remove_fields icon('x-close'), f, {:class=>'btn btn-small btn-secondary', :clear => 'both'}, '#box-question'  %>
