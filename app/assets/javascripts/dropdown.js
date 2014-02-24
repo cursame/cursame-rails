@@ -29,10 +29,6 @@ $(function() {
     }
   });
 
-  /* Autoresize textareas
-  ----------------------------------*/
-  $('.autogrow').autosize();
-
   /* Tab switcher
   ----------------------------------*/
   $('.tabs-buttons .tab').live('click', function() {
@@ -47,4 +43,9 @@ $(function() {
     tabsHolder.find("#" + targetTab).show();
   });
 
+
+  /* Autoresize textareas
+    ----------------------------------*/
+  $('.autogrow').autosize();
+  
 });
