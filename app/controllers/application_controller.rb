@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-  #skip_before_filter  :verify_authenticity_token
+  skip_before_filter  :verify_authenticity_token
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
   helper_method :network_member
