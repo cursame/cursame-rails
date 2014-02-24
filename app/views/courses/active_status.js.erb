@@ -1,1 +1,6 @@
-$("#propyety_course_<%= @course.id %>").hide("slow")
+<% if current_course.active_status %>
+	$("#propyety_course_<%= @course.id %>").html('<%= link_to "Desactivar",  active_status_path, :remote => true %>');
+ 	<%else%>
+    $("#propyety_course_<%= @course.id %>").html('<%= link_to "Activar",  active_status_path, :remote => true %>');
+
+<%end%>

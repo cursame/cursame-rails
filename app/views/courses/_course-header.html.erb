@@ -35,6 +35,17 @@
                     <li>
                       <%= link_to "Clonar", clone_course_view_path %>
                     </li>
+                    <li>
+                      <div id="propyety_course_<%=current_course.id%>">
+                       <% if current_course.active_status %>
+                         <%= link_to "Desactivar",  active_status_path, :remote => true %>
+                        <%else%>
+                         <%= link_to "Activar",  active_status_path, :remote => true %>
+                       <%end%>
+                      </div>
+
+
+                    </li>
                   </ul>
                 </div>
               </div>

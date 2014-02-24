@@ -137,10 +137,10 @@
       <% if notification.notificator != nil && notification.notificator.user != nil %>
         <% user = notification.notificator.user %>
         
-        <%= link_to "/comunity?search_reqfs=#{notification.notificator.user_id}" do %>
+        <%= link_to "/comumnity?search_reqfs=#{notification.notificator.user_id}" do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
-              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+              <%= avatar('user', '45', "no", "#{notification.notificator.user_id}", "avatar", "no", "no") %>
             </span>
           </div>
           <div class="activity-feed-main">
@@ -299,8 +299,18 @@
 
     <% when 'course_deactivated' %>
       <% if notification.notificator != nil %>
-        <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>
-        El curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> ha sido desactivado.
+        <div class="activity-feed-author">
+             <span class="avatar-holder">
+             <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
+             </span>
+        </div>
+        <div class="activity-feed-main">
+        <% if notification.notificator.active_status %>
+        El curso <span class="meta"><b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b></span> ha sido desactivado.
+          <%else%>
+        El curso <b>  <span class="meta"><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b></span> ha sido activado.
+        <%end%>
+        </div>
         <!-- #notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses") -->
       <% end %>
 
