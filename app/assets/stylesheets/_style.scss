@@ -306,6 +306,22 @@ button.log-in:active {
 	z-index: 9999;
 	padding-top: 14px;
 }
+.green-notification{
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	width: 100%;
+	background:#DFF0D8;
+	color: #608847;
+	height: 50px;
+	font-size: 20px;
+	position: absolute;
+	z-index: 9999;
+	padding-top: 14px;
+	
+}
 .rgister #new_user {
 	padding-left: 10px;
 }

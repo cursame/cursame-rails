@@ -72,6 +72,18 @@
 
       </script>
 
+      <% if flash[:notice] %>
+        <div id="notice-no-dinamic" class="green-notification"><%= notice %></div>  
+        <script>
+           $(document).ready(function(){
+             setTimeout(function() {
+               $( "#notice-no-dinamic").hide();    
+              }, 2500);
+           });
+        </script>
+
+      <%end%>
+
       <div class="scarlate" id="scarlate" style="display:none;"></div>
       <div class="expires" id="expires" style="display:none;"></div>
       

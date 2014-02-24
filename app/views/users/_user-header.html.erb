@@ -1,9 +1,5 @@
 <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
- <% if flash[:notice] %>
-     <script>
-          alert("<%= notice %>");
-     </script>
- <%end%>
+
   <div class="wrapper spaced">
     <div class="admin-buttons">
     <div id="taxk_<%=@user_l.id%>">  

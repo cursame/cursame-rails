@@ -369,6 +369,7 @@ class CoursesController < ApplicationController
     if params[:assignment]["id"].blank? then
 
       @assignment = Assignment.new(params[:assignment])
+      flash[:notice] = "Se ha entregado correctamente una tarea."
 
     else
 
@@ -376,7 +377,7 @@ class CoursesController < ApplicationController
       @assignment = Assignment.find(@id)
       @assignment.update_attributes(params[:assignment])
 
-      if params[:files] then
+        if params[:files] then
 
         assets = Array.new
         params[:files].each do |asset_id|
@@ -396,9 +397,9 @@ class CoursesController < ApplicationController
             @assignment.assets.push(asset)
           end
         end
+      flash[:notice] = "Se ha actualizado correctamente entrega de una tarea."
 
-      end
-
+    end
       redirect_to :back
       return
     end

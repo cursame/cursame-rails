@@ -1,12 +1,4 @@
 <div class="profile-cover-photo" style="background-image: url(<%= @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>)">
-  <% if flash[:notice] %>
-  <div id="course_update_notice"><%= notice %></div>
-     <script>
-       setTimeout(function(){
-           $('#course_update_notice').remove();
-     },3000);
-    </script>
-  <%end%>
 
   <% permitted_to? :create, :courses do %>
     <div class="wrapper spaced">
