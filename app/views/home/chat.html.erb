@@ -27,7 +27,7 @@ background-white
                     <%= avatar('user', '25', "no", "#{user.id}", "avatar avatar-24", "no", "no") %>
                   </div>
                   <%= truncate(user.name , :omission => "...", :length => 37) %>
-                  <div class="<%= user.online ? 'user-online': 'user-offline user-gray-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
+                  <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
                 <% end %>
               </li>
             <% end %>

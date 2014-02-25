@@ -402,11 +402,6 @@ cursor: pointer;
 	border-radius:10px;
 }
 
-.user-gray-offline{
-	background: lighten($meta-color, 20);
-	border-radius:10px;
-}
-
 .chat-messages-container {
 	.chat-message-item {
 
@@ -521,6 +516,10 @@ cursor: pointer;
 			.avatar-holder {
 				vertical-align: -7px;
 			}
+		}
+
+		.user-offline {
+			background: lighten($meta-color, 20);
 		}
 
 		&.active a {
