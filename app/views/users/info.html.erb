@@ -11,7 +11,7 @@
     <div class="col col-6">
       <div class="basic-container-style padded">
         
-        <% if !@user_l.bios.empty? %>
+        <% if !@user_l.bios.blank? %>
           <h5>Biografia</h5>
           <%= @user_l.bios %>
         <% else %>
@@ -27,7 +27,7 @@
 
         </div>
 
-        <% if !@user_l.twitter_link.empty? %>
+        <% if !@user_l.twitter_link.blank? %>
           <div class="course-info-block">
             <h6 class="meta-info"><%= icon('twitter-12') %> Twitter:</h6>
             <%= link_to @user_l.twitter_link, @user_l.twitter_link, target: '_blank' %>

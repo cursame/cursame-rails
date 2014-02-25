@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
+   
+  ### manejo de que ven si son amigos 
+  helper_method :filter_friendship
+
 
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
-    
+  
     if @user_l.nil? then
       redirect_to not_found_path
       return
@@ -179,5 +183,10 @@ class UsersController < ApplicationController
      end
 
     end
+
+  def filter_friendship
+    @user_l= User.find_by_personal_url(params[:personal_url])
+    @user_l.approved_friend(current_user)
+  end
 
 end

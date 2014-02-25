@@ -411,6 +411,27 @@ class User < ActiveRecord::Base
 
   end
 
+  def approved_friend(another_user)
+    friend = Friendship.find(:all, :conditions => {:user_id => self.id, :friend_id => another_user.id, :accepted => true})
+    puts "#{friend}"
+    if friend == nil || friend.empty?
+      puts "amigo nulo se procese a buscar"
+      inverse_friend = Friendship.find(:all, :conditions => {:user_id => another_user.id, :friend_id => self.id, :accepted => true})
+      puts "#{inverse_friend}"
+      if inverse_friend == nil || inverse_friend.empty?
+        puts "inverso nulo se procese a negar"
+        @existed_friend = false
+      else
+        puts "inverso verdadero se procese a afirmar"
+        @existed_friend = true
+      end
+    else 
+      puts "se detecta que exista el friendship"
+      @existed_friend = true
+    end
+    @existed_friend
+  end
+
   def import(path,network,user_admin, domain, subdomain)
     arrayErrores = Array.new
     count = 0

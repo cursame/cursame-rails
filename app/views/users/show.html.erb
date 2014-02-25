@@ -2,11 +2,11 @@
   <% @incourse = false %>
   <%= render :partial => 'shared/head_menu' %>
 </div>
-
 <%= render partial: 'user-header' %>
 
 <div class="wrapper spaced">
-  
+  <% if  filter_friendship %>
+
   <div id="box-stream-post">
     <div id="pk_menu">
       <%=render :partial => 'shared/post_menu' %>
@@ -22,7 +22,11 @@
     
     <%= will_paginate(@wall) %>
   </div>
-  
+  <%else%>
+    </br>
+    </br>
+    <center><h2>No eres amigo del usuario <%= @user_l.name%></h2> <p>Agregalo para poder postear en su muro.</p></center>
+  <%end%>
 </div>
 
 <script type="text/javascript">
