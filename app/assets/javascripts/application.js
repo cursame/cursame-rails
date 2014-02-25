@@ -43,10 +43,6 @@ function add_fields(link, association, content, toId) {
     $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
     changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
   }
-
-  $(document).ready(function(){
-      $('textarea').autosize();   
-  });
 };
 
 function changeNumbers(idParent, idFind){

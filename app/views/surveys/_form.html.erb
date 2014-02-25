@@ -5,13 +5,13 @@
   if !active_edit
     @survey = Survey.new
     1.times do
-      question = @survey.questions.build
-      1.times { question.answers.build}
+      questions = @survey.questions.build
+      1.times { questions.answers.build}
     end
   end
 %>
 
-<%= form_for (@survey),:remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
+<%= form_for @survey, :remote => true ,:html => { :class => "default-form survey-form"} do |f| %>
   
   <div class="new-publication-form-content">
     
@@ -52,9 +52,11 @@
         <div class="form-group-main">
           <div class="form-unit">
             <div class="new-survey-questions">
-              <div id="box-question" class="box-question">
+              <div  class="box-question">
                 <%= f.fields_for :questions do |builder| %>
-                  <%= render "/surveys/question_fields", :f => builder %>
+                   <div id="box-question">
+                    <%= render "/surveys/question_fields", :f => builder%>
+                   </div>
                 <% end %>
               </div>
 
