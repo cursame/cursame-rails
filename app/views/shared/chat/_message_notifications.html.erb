@@ -26,7 +26,7 @@
 				        </div>
 				        <div class="activity-feed-main">
 					        <h6><span class="as-link"><%= last_message.user.name %></span></h6>
-					        <p><%= sanitize last_message.mesage_html %></p>
+                  <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
 					        <span class="meta"><%=time_ago_in_words(last_message.created_at)%></span>
 				        </div>
 			        <% end %>

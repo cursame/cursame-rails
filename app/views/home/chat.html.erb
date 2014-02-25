@@ -2,16 +2,23 @@
 background-white
 <% end %>
 
-<div class="wrapper spaced">
-  <div class="chat-wrap">
-
-    <div class="chat-sidebar">
-      <div class="chat-sidebar-title">
-        <h4>Chat</h4>
+<div class="chat-wrap">
+  <div class="chat-sidebar tabs">
+    <div class="chat-sidebar-title">
+      <h4>Chat</h4>
+      <div class="chat-filter tabs-buttons">
+        <div class="chat-filter-tab tab active" data-id-target="JustFriends">
+          <span><%= icon('users-gray') %> Amigos</span>
+        </div>
+        <div class="chat-filter-tab tab" data-id-target="OnlyCourses">
+          <span><%= icon('courses-gray') %> Cursos</span>
+        </div>
       </div>
-      
-      <div class="chat-sidebar-container">
-        <div id="JustFriends">
+    </div>
+    
+    <div class="chat-sidebar-container tabs-main">
+      <div id="JustFriends" class="tab-content">
+        <% if current_user.count_friendships != 0 %>
           <ul class="chat-list">
             <% @friends_online.each do |user| %>
               <li>
@@ -19,15 +26,22 @@ background-white
                   <div class="avatar-holder">
                     <%= avatar('user', '25', "no", "#{user.id}", "avatar avatar-24", "no", "no") %>
                   </div>
-                  <%= truncate(user.name , :omission => "...", :length => 28) %>
-                  <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
+                  <%= truncate(user.name , :omission => "...", :length => 37) %>
+                  <div class="<%= user.online ? 'user-online': 'user-offline user-gray-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
                 <% end %>
               </li>
             <% end %>
           </ul>
-        </div>
+        <% else %>
+          <div class="inner-no-content">
+            <h5>No tienes amigos.</h5>
+            <p>Agrega a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path, class: 'underline' %></p>
+          </div>
+        <% end %>
+      </div>
 
-        <div id="OnlyCourses">
+      <div id="OnlyCourses" class="tab-content" style="display: none;">
+        <% unless current_user.courses.empty? %>
           <ul class="chat-list" >
             <% @courses_online.each do |course| %>
               <li>
@@ -35,21 +49,31 @@ background-white
                   <div class="avatar-holder">
                     <%= avatar('course', '25', "no", "#{course.id}", "avatar avatar-24", "no", "no") %>
                   </div>
-                  <%= truncate(course.title, :omission => "...", :length => 28) %>
+                  <%= truncate(course.title, :omission => "...", :length => 37) %>
                 <% end %>
               </li>
             <% end %>
           </ul>
-        </div>
+        <% else %>
+          <div class="inner-no-content">
+            <% if current_role == 'student' %>
+              <h5>No eres miembro de ningún curso.</h5>
+              <p>Unete a uno en la sección de <%= link_to 'Cursos', courses_path %></p>
+            <% else %>
+              <h5>No has creado ningún curso todavia.</h5>
+              <p><%= link_to 'Crear curso ahora →', new_course_path %></p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    
     </div>
-
-    <div id="chat" class="chat-main">
-      <%=render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel})%>
-    </div>
-
+  
   </div>
+
+  <div id="chat" class="chat-main">
+    <%=render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel})%>
+  </div>
+
 </div>
 
 

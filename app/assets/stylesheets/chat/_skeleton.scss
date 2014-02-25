@@ -361,21 +361,33 @@ cursor: pointer;
 .chat-wrap {
 	.chat-sidebar {
 		height: 100%;
-		width: 250px;
+		width: 300px;
 		float: left;
 
 		.chat-sidebar-title {
 			padding: 14px 10px;
+			position: relative;
 		}
 
 		.chat-sidebar-container {
 			overflow-y: scroll;
 		}
+	
+		.chat-filter {
+			position: absolute;
+			right: 0;
+			top: 11px;
+
+			.chat-filter-tab {
+				float: left;
+				padding: 5px 10px;
+			}
+		}
 	}
 
 	.chat-main {
 		height: 100%;
-		margin-left: 250px;
+		margin-left: 300px;
 
 		.chat-main-container {
 			overflow-y: scroll
@@ -391,6 +403,10 @@ cursor: pointer;
 	}
 
 	.chat-converstion-title {
+		padding: 10px;
+	}
+
+	.load-more-messages-trigger {
 		padding: 10px;
 	}
 }

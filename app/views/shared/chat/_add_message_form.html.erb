@@ -1,5 +1,5 @@
 <%= form_tag "/home/add_new_mesage", :class => "new-chat-pannel-message", :remote =>true do %>
-	<%= text_field_tag :mesage, nil , :required =>'required' %>
+	<%= text_field_tag :mesage, nil , :required =>'required', :placeholder => 'Escribe un mensaje y presiona Enter.' %>
 	<%= hidden_field_tag :channel_name, channel_name %>
 	<%= hidden_field_tag :channel_id, channel_id %>
 <% end %>

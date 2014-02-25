@@ -531,7 +531,7 @@ class ApplicationController < ActionController::Base
                 when size == '25'
                   @self_avatar = object_url+'<img src='+"'/assets/imagexx.png'"+' '+ object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '30'
-                  @self_avatar = object_url+'<img src='+"'/assets/imagexx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexxxx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '45'
                   @self_avatar = object_url+'<img src='+"'/assets/imagexxx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
                 when size == '150'

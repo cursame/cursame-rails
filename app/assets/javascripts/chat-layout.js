@@ -23,7 +23,7 @@ $(function() {
   };
 
   function adjustChatContainer() {
-    messagesContainer.height( $(window).height() - userBar.outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
+    $('.chat-main-container').height( $(window).height() - userBar.outerHeight() - $('.chat-converstion-title').outerHeight() - $('.chat-new-message').outerHeight() );
   };
 
   adjustChat();

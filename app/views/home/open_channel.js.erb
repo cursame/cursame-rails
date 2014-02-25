@@ -45,6 +45,7 @@ if( $('#chat').length ) {
       messagesNewContainer = $('.chat-new-message');
 
   messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
+  $('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
 
 }
 
