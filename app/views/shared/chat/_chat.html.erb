@@ -1,13 +1,22 @@
-<h1 class="titleChat" style="position: fixed;">
-	<%= get_chat_title channel %>
-</h1>
-<div style="height: 50px;"></div>
-<div id="load-more-messages-<%= channel.id%>" style="text-align: center;">
-	<a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true" style="cursor:pointer; text-align: center;">...</a>
-</div>
-<ul id="chat-messages" class="main-chat-zone">
-	<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>	  
-</ul>
-<div class="shareMSJ">
-	<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
-</div>
+<% if messages && channel %>
+  <div class="chat-converstion-title">
+    <h1><%= truncate(get_chat_title(channel) , :omission => "...", :length => 40) %></h1>
+  </div>
+
+  <div class="chat-main-container">
+    <div id="load-more-messages-<%= channel.id%>" class="load-more-messages-trigger">
+      <a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true">Cargar más mensajes...</a>
+    </div>
+    <div id="chat-messages" class="chat-messages-container">
+      <%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>    
+    </div>
+  </div>
+
+  <div class="chat-new-message">
+    <%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+  </div>
+<% else %>
+  <div class="no-content-section">
+    <h4>Selecciona a un amigo o curso para enviar mensaje.</h4>
+  </div>
+<% end %>

@@ -405,7 +405,6 @@ cursor: pointer;
 .chat-messages-container {
 	.chat-message-item {
 
-
 		.chat-message-main {
 
 			.chat-message-content {
@@ -449,5 +448,39 @@ cursor: pointer;
 
 	.chat-sidebar {
 		border-right: 1px solid #d6d6d6;
+		background: #fafafa;
+
+		.chat-sidebar-title {
+			border-bottom: 1px solid #e1e1e1;
+		}
 	}
-} 
+
+	.chat-new-message {
+		border-top: 1px solid #d6d6d6;
+		background: #fafafa;
+	}
+
+	.chat-converstion-title {
+		background: #fff;
+		border-bottom: 1px solid #d6d6d6;
+		box-shadow: 0 2px 0px rgba(0, 0, 0, 0.03);
+	}
+}
+
+.chat-list {
+	li a {
+		border-bottom: 1px solid #e1e1e1;
+
+		&:hover {
+			background: #fff;
+		}
+
+		&.active {
+			background: #f5f5f5;
+		}
+
+		.avatar-holder {
+			vertical-align: -7px;
+		}
+	}
+}

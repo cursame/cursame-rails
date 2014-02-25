@@ -360,17 +360,50 @@ cursor: pointer;
 
 .chat-wrap {
 	.chat-sidebar {
+		height: 100%;
 		width: 250px;
 		float: left;
-	}
 
-	.chat-sidebar {
-		height: 100%;
-		overflow-y: scroll;
+		.chat-sidebar-title {
+			padding: 14px 10px;
+		}
+
+		.chat-sidebar-container {
+			overflow-y: scroll;
+		}
 	}
 
 	.chat-main {
-		overflow-y: scroll;
+		height: 100%;
 		margin-left: 250px;
+
+		.chat-main-container {
+			overflow-y: scroll
+		}
+
+		.chat-messages-container {
+			padding: 10px;
+		}
+	}
+
+	.chat-new-message {
+		padding: 10px;
+	}
+
+	.chat-converstion-title {
+		padding: 10px;
+	}
+}
+
+.chat-list {
+	li {
+		a {
+			display: block;
+			padding: 10px;
+
+			.avatar-holder {
+				margin-right: 4px;
+			}
+		}
 	}
 }

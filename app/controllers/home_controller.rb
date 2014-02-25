@@ -199,13 +199,12 @@ class HomeController < ApplicationController
   # chat behaviour of cursame
   # -----------------------------
   def chat
-      @channel = Channel.new
-      @messages = []# @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
-      @show_chat_panel = false
-      @page = 1
-      respond_to do |format|
-          format.html
-      end
+    @messages = [] # @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
+    @show_chat_panel = false
+    @page = 1
+    respond_to do |format|
+        format.html
+    end
   end
 
   def open_channel

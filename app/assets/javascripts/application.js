@@ -123,16 +123,6 @@ $(function() {
 
            }else{
 
-           // alert("Nueva notificación de"+data.sender.first_name+' '+ data.sender.last_name);
-
-        }
-		// notification = ['<li class="unread">',
-		// 	'<a href="' + url + '" data-remote="true">Conversar</a></br>',
-		// 	'<img src="' + data.sender.avatar.modern.url + '" class="avatar-notifications avatar-mini">',
-		// 	'<b>'+data.sender.first_name+' '+data.sender.last_name+'</b><br/>'+data.message.mesage,
-		// 	'<br/><span class="time">'+jQuery.timeago(data.message.created_at)+'</span>',
-		// 	'</li>'];
-
         notification = [
             '<li class="unread">',
             '<div class="activity-feed">',

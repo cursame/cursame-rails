@@ -1,0 +1,11 @@
+<div id="message_{{ message.id }}" class="chat-message-item">
+  <div class="chat-message-author">
+    <span class="avatar-holder">
+      <img src="{{ sender.avatar.modern.url }}">
+    </span>
+  </div>
+  <div class="chat-message-main">
+    <a href="/users/{{ sender.personal_url }}">{{ sender.first_name }} {{ sender.last_name }}</a>
+    <p>{{ message.mesage }}</p>
+  </div>
+</div>

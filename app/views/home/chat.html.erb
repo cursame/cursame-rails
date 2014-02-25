@@ -6,36 +6,48 @@ background-white
   <div class="chat-wrap">
 
     <div class="chat-sidebar">
-      <div id="OnlyCourses">
-        <ul>
-          <% @courses_online.each do |course| %>
-            <li>
-              <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
-                <%= avatar('course', '25', "no", "#{course.id}", "avatar avatar-24", "no", "no") %>
-                <%= course.title %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+      <div class="chat-sidebar-title">
+        <h4>Chat</h4>
       </div>
       
-      <div id="JustFriends">
-        <ul>
-          <% @friends_online.each do |user| %>
-            <li>
-              <%= link_to open_channel_path(user.id), :remote => true do %>
-                <%= avatar('user', '25', "no", "#{user.id}", "avatar avatar-24", "no", "no") %>
-                <%= user.name %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+      <div class="chat-sidebar-container">
+        <div id="JustFriends">
+          <ul class="chat-list">
+            <% @friends_online.each do |user| %>
+              <li>
+                <%= link_to open_channel_path(user.id), :remote => true do %>
+                  <div class="avatar-holder">
+                    <%= avatar('user', '25', "no", "#{user.id}", "avatar avatar-24", "no", "no") %>
+                  </div>
+                  <%= truncate(user.name , :omission => "...", :length => 28) %>
+                  <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div id="OnlyCourses">
+          <ul class="chat-list" >
+            <% @courses_online.each do |course| %>
+              <li>
+                <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
+                  <div class="avatar-holder">
+                    <%= avatar('course', '25', "no", "#{course.id}", "avatar avatar-24", "no", "no") %>
+                  </div>
+                  <%= truncate(course.title, :omission => "...", :length => 28) %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
+    
     </div>
-  
-  <div id="chat" class="chat-main">
-   <%=render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel})%>
-  </div>
+
+    <div id="chat" class="chat-main">
+      <%=render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel})%>
+    </div>
 
   </div>
 </div>
@@ -44,59 +56,10 @@ background-white
 
 <script>
 	$(document).ready( function() {
+    $('.chat-list li a').on('click', function() {
+      $(this).parent().addClass('active')
 
-    // Check the initial Poistion of the Sticky Header
-    var stickyHeaderTop = $('#filterCont').offset().top;
-
-    $('.SDBr').scroll(function(){
-      if( $('.SDBr').scrollTop() > stickyHeaderTop ) {
-        $('#filterCont').css({position: 'fixed', top: '36px',});
-        $('#filterCont').css('display', 'block');
-      } else {
-        $('#filterCont').css({position: 'static', top: '36px'});
-      }
+      $(this).parent().siblings().removeClass('active');
     });
-
-    $('#ChatFilterDrop').hide();
-
-    $('#ChatFilter').click( function() {
-      $('#ChatFilterDrop').slideToggle();
-    });
-
-    $('.chatSingle_big > a:link').click( function() {
-      $('.chat-panel').css({ visibility: "hidden" });
-    });
-
-    $('#ChatFilter').mouseenter( 
-      function() { $(this).css({ background: "#006696" }) },
-      function() { $(this).css({ background: "#334259" })
-    });
-
-    $('#ChatFilter').hover(
-      function() { $(this).css({ background: "#006696"}) },
-      function() { $(this).css({ background: "#363F4D"})
-    });
-
-    // filtros
-    $('#everything').click( function() {
-      $('#JustFriends').show();
-      $('#OnlyCourses').show();
-    });
-
-    $('#ShowCourses').click( function() {
-      $('#JustFriends').hide();
-      $('#OnlyCourses').show();
-    });
-
-    $('#ShowFriends').click( function() {
-     $('#OnlyCourses').hide();
-      $('#JustFriends').show();
-    });
-    
-    $('.chatSingle_big > a:link').click( function() {
-      $('.chatSingle_big > a:link').removeClass('SelectedClass');
-      $(this).addClass('SelectedClass');
-    });
-
 	});
 </script>
