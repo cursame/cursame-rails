@@ -88,11 +88,12 @@
           window.clearInterval(GetIntevalExpire);
 
           var IntervalFunctionForExpireSession;
-          IntervalFunctionForExpireSession = 1800000;
-          
+          IntervalFunctionForExpireSession = 1400000;
+
           var GetIntevalExpire = setInterval(function() {
             $.get('<%= expire_session_path %>');
           }, IntervalFunctionForExpireSession);
+
 
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

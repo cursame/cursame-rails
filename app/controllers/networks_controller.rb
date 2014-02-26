@@ -359,12 +359,23 @@ class NetworksController < ApplicationController
     end
   end
 
+
+
   # sesion expire
    def expire_session
        puts "se ha ingresado al metodo"
        @status = user_signed_in?
-       @timer = Time.now
-       @minute = 5
+       puts "esta logueado es #{@status}"
+       puts "se procede a candelar la session de usuario #{@status}"
+       if @status
+           current_user.online = false
+           current_user.save!
+           PrivatePub.publish_to("/messages/chat_notifications",
+                                  userId: current_user.id,
+                                  online: false
+                                )
+           sign_out(current_user) 
+       end
        #puts @status
         respond_to do |format|
            format.js
