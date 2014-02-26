@@ -229,14 +229,14 @@ end
     if @delivery.state == 'published'
       @delivery.state = 'unpublish'
       @delivery.end_date = Time.now
-      @message = "se ha despublicado"
+      @message = "Se ha despublicado esta tarea."
       @linkik = 'Publicar'
     
     else
       @delivery.state = 'published'
       @delivery.publish_date = Time.now
       @delivery.end_date = Time.now + 10.days
-      @message = "se ha republicado agregando 10 dias desde ahora"
+      @message = "Se ha republicado esta tarea agregando 10 dias desde ahora."
       @linkik = 'Despublicar'
     end
 

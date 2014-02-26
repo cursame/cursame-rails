@@ -2,32 +2,30 @@
 
   <div class="wrapper spaced">
     <div class="admin-buttons">
-    <div id="taxk_<%=@user_l.id%>">  
-    <% if @user_l != current_user %>
-    <% if @user_l.friends?(current_user) %>
-      <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
-    <%else%>
-      <%if  @user_l.have_a_friendship(current_user) %>           
-
-        <%case current_user.who_sent?(@user_l) %>
-          <% when current_user %>
-              <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
+      <div id="taxk_<%=@user_l.id%>">
+        <% if @user_l != current_user %>
+          <% if @user_l.friends?(current_user) %>
+            <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
+          <% else %>
+            <% if @user_l.have_a_friendship(current_user) %>
+              <% case current_user.who_sent?(@user_l) %>
+                <% when current_user %>
+                  <%= link_to "Cancelar solictud de amistad", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
                   <span class="btn btn-small btn-disabled">Solicitud enviada</span>
-          <%when @user_l %>
-              <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
-              <%= link_to "Aceptar", friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary", remote: true%>
-          <%else%>
-              <%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary ", remote: true %>
-
+                <% when @user_l %>
+                  <%= link_to "Ignorar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
+                  <%= link_to "Aceptar solicitud de amistad", friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true%>
+                <% else %>
+                  <%= link_to "Añadir a mis amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn", remote: true %>
+              <% end %>
+            <% else %>
+              <div id="add_friend<%=@user_l.id%>">
+                <%= link_to "Añadir a mis amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true %>
+              </div>
+            <% end %>
+          <%end%>
         <%end%>
-        <%else%>
-            <div id="add_friend<%=@user_l.id%>">
-               <%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary ", remote: true %>
-            </div>
-        <%end%>
-     <%end%>
-     <%end%>
-     </div>
+      </div>
     </div>
   </div>
 

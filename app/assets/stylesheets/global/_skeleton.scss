@@ -418,8 +418,20 @@
 
 /* Notices
 ----------------------------------*/
-.notice {
+#noticce {
   width:100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  #notice {
+    display: none;
+    padding: 15px;
+
+    &.active {
+      display: block;
+    }
+  }
 }
 
 .expires .uninstal_exit{
@@ -441,4 +453,14 @@
   top: 60px;
   right: 6px;
   display:none;
+}
+
+#pageless-loader {
+  width: 80px !important;
+  height: 80px;
+  margin: 30px auto;
+
+  img {
+    margin-top: 20px !important;
+  }
 }

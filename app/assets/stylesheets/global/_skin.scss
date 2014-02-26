@@ -286,3 +286,23 @@ h6 {
   cursor: pointer;
   background: url('/assets/pack.png') -93px -196px no-repeat;
 }
+
+/* Notices
+----------------------------------*/
+#noticce {
+  #notice {
+    text-align: center;
+    font-size: 15px;
+
+    &.success {
+      background: #DFF0D8;
+      color: #608847;
+    }
+  }
+}
+
+#pageless-loader {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1);
+  border-radius: 100px;
+}

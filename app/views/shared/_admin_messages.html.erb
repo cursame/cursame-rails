@@ -1,6 +1,4 @@
-<!-- Tip Content -->
 <ol id="joyRideTipAdminMessages" style="display:none">  
-
   <% AdminMessage.where(:status => true).each do |admin_message|%>
     <% if admin_message.dom_id.nil?%>
       <li  data-text="Siguiente" class="custom">

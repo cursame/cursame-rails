@@ -131,22 +131,22 @@ class SurveysController < ApplicationController
         format.js
       end
     end
-
   end
+
   def publish_unpublish_survey_manualy
     @survey = Survey.find(params[:id])
 
     if @survey.state == 'published'
       @survey.state = 'unpublish'
       @survey.end_date = Time.now
-      @message = "se ha despublicado"
+      @message = "Se ha despublicado este cuestionario."
       @linkik = 'No publicado'
 
     else
       @survey.state == 'published'
       @survey.publish_date = Time.now
       @survey.end_date = Time.now + 2.days
-      @message = "se ha republicado agregando 2 dias desde ahora"
+      @message = "Se ha republicado el cuestionario agregando 2 dias desde ahora."
       @linkik = 'Publicado'
     end
 
