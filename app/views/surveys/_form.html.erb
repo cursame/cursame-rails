@@ -84,8 +84,9 @@
       </li>
       
       <li>
+
         <span class="btn btn-primary input-btn">
-          <%= f.submit "Crear Cuestionario", :id => 'comment-post-form'%>
+          <%= f.submit (active_edit ? "Guardar Cuestionario":"Crear Cuestionario"), :id => 'comment-post-form' %>
         </span>
       </li>
     </ul>
