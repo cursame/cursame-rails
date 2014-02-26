@@ -82,8 +82,9 @@ class MembersInCourse < ActiveRecord::Base
   # table["evaluation"] => Calificacion total del curso.
 
   # Si logras mejorar este metodo, por favor, deja tu nombre.
+
   def course_evaluation(course,deliveries, surveys)
-    
+    count_surveys = surveys.count
     table = {}
     deliveries_table = {}
     surveys_table = {}
@@ -102,14 +103,13 @@ class MembersInCourse < ActiveRecord::Base
       |survey|
       UserSurvey.find_by_survey_id_and_user_id(survey.id,self.user_id)
     }
+    #### mi nombre es JARDA #####
     surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
-    surveys_table["evaluation_total"] = 
-      evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"])
-    surveys_table["percent_of_evaluation"] =
-      surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0
+    surveys_table["evaluation_total"] =  (evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]))/count_surveys
+    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0)/count_surveys
 
     table["deliveries"] = deliveries_table
-    table["surveys"] = surveys_table
+    table["surveys"] = surveys_table 
     table["evaluation"] = deliveries_table["evaluation_total"] + 
       surveys_table["percent_of_evaluation"]
     
