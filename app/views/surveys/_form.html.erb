@@ -52,11 +52,9 @@
         <div class="form-group-main">
           <div class="form-unit">
             <div class="new-survey-questions">
-              <div  class="box-question">
+              <div id="box-question"  class="box-question">
                 <%= f.fields_for :questions do |builder| %>
-                   <div id="box-question">
                     <%= render "/surveys/question_fields", :f => builder%>
-                   </div>
                 <% end %>
               </div>
 

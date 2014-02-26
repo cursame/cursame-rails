@@ -30,20 +30,23 @@ function remove_fields(link, toId) {
     $(link).parent().parent().remove();
     changeNumbers(grandfather, '#request-num');
   }
-};
+}
+
 
 function add_fields(link, association, content, toId) {
-	var new_id = new Date().getTime();
-	var regexp = new RegExp("new_" + association, "g");
-
-  if ( toId =='#box-question' ) {
-    $(toId).append(content.replace(regexp, new_id));
-    changeNumbers('#box-question', '#question-num');
-  }else if( toId =='#box-request' ){
-    $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
-    changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
-  }
-};
+    //toId catch:
+    //  #box-request
+    //  #box-question
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+    if(toId =='#box-question'){
+        $(toId).append(content.replace(regexp, new_id));
+        changeNumbers('#box-question', '#question-num');
+    }else if( toId =='#box-request' ){
+        $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
+        changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
+    }
+}
 
 function changeNumbers(idParent, idFind){
   var count = 0 ;

@@ -35,9 +35,7 @@ class SurveysController < ApplicationController
   end
 
   def create
-    puts params
-
-    @survey = Survey.new(params[:survey])
+    @survey = Survey.create(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
 
@@ -56,10 +54,9 @@ class SurveysController < ApplicationController
     else
       @error = true
     end
-     redirect_to :back
-    #respond_to do |format|
-     # format.js
-    #end
+    respond_to do |format|
+     format.js
+    end
   end
 
   def edit
