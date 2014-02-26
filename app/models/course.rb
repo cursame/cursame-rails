@@ -96,6 +96,11 @@ class Course < ActiveRecord::Base
     notifications.each do |notification|
       notification.destroy
     end
+    
+    self.members_in_courses.each do |mic|
+      notificacion = Notification.where(:notificator_type =>"MembersInCourse", :notificator_id => mic.id)
+      notificacion.destroy
+    end
   end
 
   def import(path,network,user_admin)
