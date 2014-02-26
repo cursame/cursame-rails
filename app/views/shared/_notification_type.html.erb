@@ -118,7 +118,6 @@
 
     <!-- Notificacion: 9 - Nueva calificacion en una respuesta -->
     <% when 'new_accomplishment_on_assignment'%>
-
       <%= link_to course_path(notification.notificator.delivery.courses.first.id) do %>      
         <div class="activity-feed-author">
           <span class="avatar-holder">
@@ -136,8 +135,7 @@
     <% when 'user_request_friendship'%>
       <% if notification.notificator != nil && notification.notificator.user != nil %>
         <% user = notification.notificator.user %>
-        
-        <%= link_to "/comumnity?search_reqfs=#{notification.notificator.user_id}" do %>
+        <%= link_to "#{user_friends_path(notification.notificator.friend.personal_url)}?pending=true" do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", "#{notification.notificator.user_id}", "avatar", "no", "no") %>
@@ -233,13 +231,20 @@
     <!-- Notificacion: 15 - Usuario comento en una tarea --> 
     <% when 'user_comment_on_delivery'%>
        <% if notification.notificator != nil %>
-         <% user = notification.notificator.user %>
-         <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
-          <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
-          ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
+        <% user = notification.notificator.user %>
+        <%= link_to "#{course_path(notification.notificator.commentable.courses.first.id)}?search=Delivery&id_search=#{notification.notificator.commentable_id}" do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= user.name %></span> ha comentado en la tarea <span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+          </div>
+        <% end %>
       <% end %>
 
-      <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.commentable.courses.first.id%>?search=Delivery&id_search=<%=notification.notificator.commentable_id%>" -->
+      <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=%>" -->
 
     <!-- Notificacion: 16 - Solicitud de membresia en un curso -->
     <% when 'user_request_membership_in_course' %>
@@ -299,19 +304,19 @@
 
     <% when 'course_deactivated' %>
       <% if notification.notificator != nil %>
-        <div class="activity-feed-author">
-             <span class="avatar-holder">
-             <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
-             </span>
-        </div>
-        <div class="activity-feed-main">
-        <% if notification.notificator.active_status %>
-        El curso <span class="meta"><b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b></span> ha sido desactivado.
-          <%else%>
-        El curso <b>  <span class="meta"><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b></span> ha sido activado.
-        <%end%>
-        </div>
-        <!-- #notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses") -->
+        <%= link_to course_path(notification.notificator.id) do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6>
+              El curso <span class="as-link"><%= notification.notificator.title %></span> ha sido
+              <%= notification.notificator.active_status ? "activado" : "desactivado" %>.
+            </h6>
+          </div>
+        <% end %>
       <% end %>
 
     <%else%>

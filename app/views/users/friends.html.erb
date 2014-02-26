@@ -1,5 +1,11 @@
-
-<%= render partial: 'user-header', locals: { compact: false } %>
+<% if @pending && @user_l == current_user %>
+  <script>
+    $(function() {
+      $('#pending-friendship-trigger').trigger('click');
+    });
+  </script>
+<% end %>
+<%= render partial: 'user-header' %>
 
 <div class="wrapper spaced">
   <div class="sub-profile-title">
@@ -9,7 +15,7 @@
     <% if @user_l == current_user %>
       <div class="fr">
         <%= link_to "Todos mis amigos", user_friends_path%> | 
-        <%= link_to "Solicitudes pendientes", pendding_friends_path( @user_l.personal_url ), :remote => true %>
+        <%= link_to "Solicitudes pendientes", pendding_friends_path( @user_l.personal_url ), :remote => true, :id => "pending-friendship-trigger" %>
       </div>
     <% end %> 
   </div>

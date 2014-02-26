@@ -34,9 +34,8 @@ function remove_fields(link, toId) {
 
 
 function add_fields(link, association, content, toId) {
-    //toId catch:
-    //  #box-request
-    //  #box-question
+  console.log(toId);
+
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
     if(toId =='#box-question'){
@@ -96,6 +95,15 @@ function truncate(text, maxLength, ellipseText){
   //Make sure we do not just return a letter..
   return (lastCharPosition ? text.substr(0, lastCharPosition+1) : '') + ellipseText;
 };
+
+window.Notice = function(type, message)  {
+
+  $('#notice').addClass(type + ' active').html( message );
+
+  setTimeout(function() {
+    $('#notice').removeClass('active');
+  }, 3000);
+}
 
 // notificaciones push usando private_pub
 $(function() {

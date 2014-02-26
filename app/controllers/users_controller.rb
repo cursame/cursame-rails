@@ -103,6 +103,7 @@ class UsersController < ApplicationController
 
  def friends
   @user_l = User.find_by_personal_url(params[:personal_url])
+  @pending = params[:pending]
   @friends = @user_l.friends(true)
  end
  

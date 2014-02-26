@@ -7,6 +7,14 @@
 
   .user-sessions-network-brand {
     padding: 20px;
+    position: relative;
+
+    .header-link {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      margin-top: -9px;
+    }
     
     img {
       display: block;

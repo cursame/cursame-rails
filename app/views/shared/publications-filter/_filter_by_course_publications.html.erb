@@ -1,6 +1,6 @@
 <div class="section-header-actions">
   <span class="meta-info">Filtrar: &nbsp;</span>
-  <select class="course-publications-filter">
+  <select class="course-publications-filter" style="width: 180px;">
     <option value="all">Todos los cursos</option>
     <% current_user.courses.each do |course|%>
       <option value="<%= course.id %>"><%= course.title %></option>

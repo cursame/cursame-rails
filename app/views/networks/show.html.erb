@@ -10,18 +10,16 @@
     </div>
     
     <% if current_network.public_register == false%>
-      <!-- Mostrar el password por primera vez -->
       <% if show_joyride(3) != "1"%>
         <%= render :partial => "/users/set_password_form", :locals => {:user => current_user} %>
         
         <script>
-        modal("#set-password-form");
+          modal("#set-password-form");
         </script>
       <% end %>
     <%end%>
 
     <% if show_joyride(0) == "0"%>
-      <!-- Inicio de Joyride -->
       <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
     <% end %>
 
@@ -47,7 +45,7 @@ $(function() {
   $('#timeline').pageless({
     totalPages: 10,
     url: window.pagelessSettings.url,
-    loaderMsg: '...',
+    loader: "#loader-pagination",
     onInit:function(opts){
       this.pageless = {
         opts : opts
@@ -57,8 +55,11 @@ $(function() {
       search:''
     },
     loaderImage: window.pagelessSettings.loaderImage,
-    complete: function( what ) {
-      console.log(what);
+    complete: function(e) {
+      console.log(e);
+    },
+    end: function() {
+      $('#timeline').append('<div class="no-more-publications"><h4>No hay publicaciones</h4></div>')
     }
   });
 });

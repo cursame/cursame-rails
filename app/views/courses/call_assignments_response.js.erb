@@ -2,11 +2,4 @@ $("#locomotion_<%=@data%>delivery").html('');
 $('#locomotion_<%=@data%><%= @typeo %>').effect("highlight", {}, 1000);
 $("#locomotion_<%=@data%><%= @typeo %>").html('<%= escape_javascript(render(partial: "courses/light_box_dashboard_delivery", :locals => {:assignment => @assignment})) %>');
 
-
-$( "#notice" ).animate( { width: "100%", padding: "10px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-$('#notice').append('Se ha cargado una entrega de tarea');
-setTimeout(function() {
-    $('#notice').html('')
-    $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-    
-}, 2500);
+Notice('success', 'Se ha cargado una entrega de tarea');

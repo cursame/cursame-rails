@@ -30,6 +30,7 @@
 <div id="timeline" class="tim wrapper spaced sc-margined">
   <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
 </div>
+
 <%= will_paginate(@wall) %>
 
 <script>
