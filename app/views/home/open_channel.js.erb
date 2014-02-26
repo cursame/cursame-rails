@@ -95,18 +95,19 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	}
 
 	if( $('#chat-channel-' + data.channel.id).length ) {
-		var chatPanel 				= $('#chat-channel-' + data.channel.id),
-				messagesContainer = chatPanel.find('.chat-zone div.chat-zone-messages');
-
+		var chatPanel = $('#chat-channel-' + data.channel.id),
+	    messagesContainer = chatPanel.find('.chat-zone div.chat-zone-messages');
 		append_new_message_tpl( messagesContainer );
-
 		chatPanel.find('.chat-panel-main-content').scrollTop( messagesContainer.prop('scrollHeight') + 30 );
 	}
+    $('#new-chat-pannel-message')[0].reset();
 
 	// reseteamos el formulario
 	chatPanel.find('input#mesage').val('');
 
 	// reseteamos el formulario general
 	$('div.shareMSJ form input[name="mesage"]').val('');
+	// rompe el proceso para no poner repetidos
+    this.abort();
 
 });

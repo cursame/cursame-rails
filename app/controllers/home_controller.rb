@@ -221,7 +221,7 @@ class HomeController < ApplicationController
       users = User.find(ids)
 
     end
-
+    
     @channel = find_or_insert_channel(@channel_name,users)
     @page = 1
     @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
@@ -331,9 +331,15 @@ class HomeController < ApplicationController
       channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
       channel.users = users
       channel.save!
-    end
+      puts "******************************"
+      puts "canal nuevo"
+      puts "******************************"
 
-    return channel
+    end
+      puts "******************************"
+      puts "canal existente"
+      puts "******************************"
+      return channel
   end
   # The exception that resulted in this error action being called can be accessed from
   # the env. From there you can get a backtrace and/or message or whatever else is stored
