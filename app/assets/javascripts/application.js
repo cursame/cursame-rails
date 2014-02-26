@@ -96,14 +96,15 @@ function truncate(text, maxLength, ellipseText){
 };
 
 window.Notice = function(type, message)  {
+  var notice        = $('#notice'),
+      noticeWrapper = notice.parent();
 
-  $('#notice').addClass(type + ' active animated slideInDown').removeClass('slideOutUp').html( message );
+  noticeWrapper.addClass('active');
+  notice.addClass( type ).html( message );
 
   setTimeout(function() {
-    $('#notice').addClass('slideOutUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-      $(this).removeClass('slideInDown active');
-    });
-  }, 3500);
+    noticeWrapper.removeClass('active');
+  }, 3100);
 }
 
 // notificaciones push usando private_pub

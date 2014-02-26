@@ -36,6 +36,10 @@
   background: $primary-color;
   border: 1px solid darken($primary-color, 10);
 
+  input {
+    color: $white;
+  }
+
   &:hover {
     background: lighten($primary-color, 7);
   }
@@ -52,6 +56,10 @@
 
   &:hover {
     background: lighten(#f2f2f2, 3);
+  }
+
+  input {
+    color: #666;
   }
 }
 

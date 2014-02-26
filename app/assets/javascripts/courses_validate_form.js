@@ -8,7 +8,10 @@ $(document).ready(function(){
         course_finish_date = $('#course_finish_date'),
         course_survey_param_evaluation = $('#course_survey_param_evaluation'),
         course_delivery_param_evaluation = $('#course_delivery_param_evaluation');
-     
+
+    var surveys_percentage    = course_survey_param_evaluation.val(),
+        deliveries_percentage = course_delivery_param_evaluation.val(),
+        evaluation_total      = surveys_percentage + deliveries_percentage;
      
     if ( course_title.val() == '' ){
       course_title.attr("placeholder", "Debes colocar un título.");
@@ -38,6 +41,14 @@ $(document).ready(function(){
     } else if ( course_delivery_param_evaluation.val() == '' ){
       course_delivery_param_evaluation.attr("placeholder", "No puede estar vacio");
       course_delivery_param_evaluation.addClass('red-placeholder');
+      return false;
+
+    } else if ( evaluation_total > 100 || evaluation_total <= 0 || evaluation_total < 100 ) {
+      Notice('error', 'Los porcentajes de evaluación deben sumar 100.');
+      return false;
+
+    } else if ( typeof evaluation_total != "number" ) {
+      Notice('error', 'Los porcentajes de evaluación deben de ser numeros.');
       return false;
 
     } else {

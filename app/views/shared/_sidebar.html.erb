@@ -136,19 +136,31 @@
         
         <div id="chat-group-courses" class="tab-content" style="display: none;">
           <ul class="section-list side-courses">
-            <% @courses_online.each do |course|%>
-              <li>
-                <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
-                  <% if course.avatar.file == nil %> 
-                    <%= image_tag("course-avatarxx.png", alt: "", class: "avatar avatar-24") %>
-                  <%else%>
-                    <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
-                  <%end%>
+            <% unless current_user_courses.empty? %>
+              <% @courses_online.each do |course|%>
+                <li>
+                  <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
+                    <% if course.avatar.file == nil %> 
+                      <%= image_tag("course-avatarxx.png", alt: "", class: "avatar avatar-24") %>
+                    <%else%>
+                      <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
+                    <%end%>
 
-                  <%= truncate("#{course.title}", :omission => "...", :length => 26) %>
+                    <%= truncate("#{course.title}", :omission => "...", :length => 26) %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% else %>
+              <div class="inner-no-content">
+                <% if current_role == 'student' %>
+                  <h5>No eres miembro de ningún curso.</h5>
+                  <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+                <% else %>
+                  <h5>No has creado ningún curso.</h5>
+                  <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
                 <% end %>
-              </li>
-            <%end%>
+              </div>
+            <% end %>
           </ul>
         </div>
       </div>
