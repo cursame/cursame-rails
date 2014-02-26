@@ -1,14 +1,6 @@
 resetForm($('#new_discussion'));
+
 $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication,:visible_for => 'network'}))%>');
-
-Notice('success', 'Discusión creada correctamente.');
-
-/* elimina los contenidos*/
-$(".content_free").html('');
-$(".content_wikipedia").html('');
-$(".content_killer").html('');
-$(".choser").html('');
-$('.youtube_content_delivery').hide();
-
 $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
+Notice('success', 'Discusión creada correctamente.');
 cancelButtonsPostMenu();

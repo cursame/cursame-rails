@@ -21,7 +21,7 @@
         
   cancelButtonsPostMenu();
 
-<% else #Es editar %>
+<% else # Es editar %>
   $('.form_for_edit_wall').hide();
   $('#deleted_id_<%=@publication.id%>').replaceWith('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication], :visible_for => 'network'}))%>');
 <% end %>
