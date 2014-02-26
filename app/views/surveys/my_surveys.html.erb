@@ -41,7 +41,6 @@
  var p = $('#timeline').pageless({
     totalPages: <%= @wall.total_pages %>,
     url: '<%= my_surveys_path(current_network) %>',
-    loaderMsg: '...',
     onInit:function(opts){
       this.pageless = {
         opts : opts

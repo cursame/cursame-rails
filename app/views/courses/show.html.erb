@@ -43,7 +43,6 @@
     var p = $('#timeline').pageless({
       totalPages: <%= @wall.total_pages %>,
       url: '<%= course_path(@course.id) %>',
-      loaderMsg: '...',
       onInit:function(opts) {
         this.pageless = {
         opts : opts

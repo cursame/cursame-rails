@@ -54,13 +54,7 @@ $(function() {
     params:{
       search:''
     },
-    loaderImage: window.pagelessSettings.loaderImage,
-    complete: function(e) {
-      console.log(e);
-    },
-    end: function() {
-      $('#timeline').append('<div class="no-more-publications"><h4>No hay publicaciones</h4></div>')
-    }
+    loaderImage: window.pagelessSettings.loaderImage
   });
 });
 </script>

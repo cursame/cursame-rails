@@ -5,14 +5,12 @@
     $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>');
     $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
 
-    Notice('success', 'Se ha creado un comentario');
-
   <% else #si se tiene que agregar a nivel de los coments %>
     $('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
     $('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('').height(18);
-
-    Notice('success', 'Se ha creado un comentario');
   <% end %>
+
+  Notice('success', 'Se ha creado un comentario');
 
   <% if @comment.commentable_type == 'User' %>
     <%  @user_show = true 
@@ -24,4 +22,5 @@
 <% else # Es editar %>
   $('.form_for_edit_wall').hide();
   $('#deleted_id_<%=@publication.id%>').replaceWith('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication], :visible_for => 'network'}))%>');
+  Notice('success', 'Comentario editado correctamente.');
 <% end %>

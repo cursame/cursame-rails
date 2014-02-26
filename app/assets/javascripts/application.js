@@ -97,11 +97,13 @@ function truncate(text, maxLength, ellipseText){
 
 window.Notice = function(type, message)  {
 
-  $('#notice').addClass(type + ' active').html( message );
+  $('#notice').addClass(type + ' active animated slideInDown').removeClass('slideOutUp').html( message );
 
   setTimeout(function() {
-    $('#notice').removeClass('active');
-  }, 3000);
+    $('#notice').addClass('slideOutUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      $(this).removeClass('slideInDown active');
+    });
+  }, 3500);
 }
 
 // notificaciones push usando private_pub

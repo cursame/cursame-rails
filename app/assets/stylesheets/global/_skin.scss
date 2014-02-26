@@ -301,8 +301,8 @@ h6 {
   }
 }
 
+/* Pageless Loader
+----------------------------------*/
 #pageless-loader {
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1);
-  border-radius: 100px;
+  background: url('/assets/pack.png') -193px -305px;
 }

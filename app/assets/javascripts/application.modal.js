@@ -26,14 +26,18 @@ $(function() {
 		$('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay" ></div>').show();
 		$('div.overlay-wrapper').css("overflow-y", "scroll");
 		$('.overlay').html(content);
+    $('.overlay').addClass('animated pulse');
 
 		overlayPositioning( $('.overlay') );
 
 	};
 	
 	$('.overlay-screen, .close-overlay').live('click',function () {
-		$('.overlay-wrapper').remove();
-		$('body').removeClass('overlay-open');
+    $('.overlay').addClass('animated bounceOut');
+    $('.overlay').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      $('.overlay-wrapper').remove();
+      $('body').removeClass('overlay-open');
+    });
 	});
 
 	$(window).on('resize', function() {

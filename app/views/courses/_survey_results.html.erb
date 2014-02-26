@@ -29,12 +29,14 @@
 					</div>
 					<div class="survey-item-answers">
 						<span class="meta-info">Respuesta:</span>
-						<p><%= @answer.content %></p>
-						<% if  @answer.correct == true %> 
-							<%= image_tag('icons/icon_true.png')%>
-						<%else%>
-							<%= image_tag('icons/icon_false.png')%>
-						<%end%>
+            <div class="survey-item-answer-content">
+              <% if  @answer.correct == true %> 
+                <%= image_tag('icons/icon_true.png')%>
+              <%else%>
+                <%= image_tag('icons/icon_false.png')%>
+              <%end%>
+              <p><%= @answer.content %></p>
+            </div>
 					</div>
 				</div>
 			</li>

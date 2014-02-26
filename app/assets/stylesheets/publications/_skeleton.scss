@@ -349,4 +349,8 @@
 ----------------------------------*/
 .form_for_edit_wall {
   padding: 10px;
+
+  .new-publication-footer {
+    @include clearfix;
+  }
 }

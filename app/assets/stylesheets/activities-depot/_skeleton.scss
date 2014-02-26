@@ -126,20 +126,24 @@
 }
 .survey-item {
   .survey-item-question {
-    padding: 5px 10px;
+    padding: 4px 10px 8px 10px;
   }
 
   .survey-item-answers {
     padding: 5px 10px;
     position: relative;
 
-    p {
-      padding-left: 26px;
-    }
+    .survey-item-answer-content {
+      margin-top: 3px;
+      @include clearfix;
 
-    img {
-      position: absolute;
-      top: 27px;
+      img {
+        float: left;
+      }
+
+      p {
+        padding-left: 26px;
+      }
     }
   }
 }
