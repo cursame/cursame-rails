@@ -10,12 +10,13 @@
 		</div>
 		<div class="activity-dropdown-content">
   		<ul id="messages-notifications-list" class="activity-feed-list">
-		    <% current_user.channels.last(5).each do |channel|%>
+		    <% current_user.channels.last(7).reverse.each do |channel|%>
 		      <% last_message = channel.mesages.last %>
 		      <% next if last_message.nil? || last_message.user.nil? %>
+		      <% if current_user.id != last_message.user.id %>
+		      
 		      <% channelType = channel.channel_name.split('course_channel_') %>
 		      <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>
-		      
 		      <li>
 		      	<div class="activity-feed">
 			      	<%= link_to url, :remote => true do %>
@@ -32,6 +33,8 @@
 			        <% end %>
 		        </div>
 		      </li>
+		      <%end%>
+
 		    <%end%>
 		  </ul>
   	</div>

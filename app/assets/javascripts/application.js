@@ -116,15 +116,21 @@ $(function() {
   }
 
 	PrivatePub.subscribe ("/messages/notifications_user_" + Cursame.userId, function(data, channel) {
-    var url, notification, numNotifications;
-		var channelType = data.channel.channel_name.split('course_channel_');
-		url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;		
-    var avatar_modern = data.sender.avatar.modern.url;
-    
+
     if ( data.sender.id == Cursame.userId ){
-      return;
+          alert("notificación del mismo usuario" );
+          return;
     } else {
-      
+     var url, notification, numNotifications;
+     var channelType = data.channel.channel_name.split('course_channel_');
+     url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;    
+     if (data.sender.avatar.modern.url != null){
+        var avatar_modern = data.sender.avatar.modern.url;
+
+     }else{
+        var avatar_modern = "/assets/imagexxx.png";
+     }
+         
       notification = [
           '<li class="unread">',
           '<div class="activity-feed">',
@@ -132,7 +138,7 @@ $(function() {
           '<div class="activity-feed-author">',
           '<img src="' + avatar_modern + '" class="avatar avatar-45"></div>',
           '<div class="activity-feed-main">',
-          '<h6>' + data.sender.first_name+' '+ data.sender.last_name + '</h6>',
+          '<span class="as-link">' + data.sender.first_name+' '+ data.sender.last_name + '</span>',
           '<p>' + truncate(data.message.mesage, 88, "...") +'</p>',
           '<span class="meta">' + jQuery.timeago(data.message.created_at) + '</span></div></a></div></li>'
       ];
