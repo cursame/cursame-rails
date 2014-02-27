@@ -29,7 +29,7 @@ a {
 
 .topbar {
   background: $white;
-  box-shadow: 0 1px 0 rgba(0,0,0,.15);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0,0,0,.1);
 
   .activity-notificactions .activity-block {
     border-right: 1px solid #e6e6e6;
@@ -293,10 +293,18 @@ h6 {
   #notice {
     text-align: center;
     font-size: 15px;
+    border-bottom: 1px solid transparent;
 
     &.success {
-      background: #DFF0D8;
-      color: #608847;
+      background: #75b70c;
+      color: #fff;
+      border-bottom-color: #578c03; 
+    }
+
+    &.error {
+      background: #eb5757;
+      color: #fff;
+      border-bottom-color: #ac0f0f;
     }
   }
 }
@@ -305,4 +313,7 @@ h6 {
 ----------------------------------*/
 #pageless-loader {
   background: url('/assets/pack.png') -193px -305px;
+}
+
+.search-wrap {
 }

@@ -25,7 +25,7 @@
         </li>
         <% permitted_to? :create, :courses do %>
           <li>
-            <%= link_to 'Crear curso nuevo', new_course_path, :class=>"btn btn-primary" %>
+            <%= link_to icon('plus-white'), new_course_path, :title => 'Crear curso nuevo', :class=> "btn btn-primary" %>
           </li>
         <%end%>
       </ul>

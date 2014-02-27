@@ -422,15 +422,15 @@
   width:100%;
   position: absolute;
   left: 0;
-  top: 0;
+  top: -51px;
+  @include transition (top .3s ease-in-out);
 
   #notice {
-    display: none;
-    padding: 15px;
+    padding: 14px 15px 16px 15px;;
+  }
 
-    &.active {
-      display: block;
-    }
+  &.active {
+    top: -1px;
   }
 }
 
@@ -462,5 +462,19 @@
 
   img {
     margin-top: 20px !important;
+  }
+}
+
+.search-wrap {
+  position: relative;
+  
+  .search-input {
+    padding-right: 70px;
+  }
+
+  .search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }

@@ -26,7 +26,7 @@ background-white
         
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :Nombre %>
+            <%= f.label :first_name, 'Nombre:'  %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
@@ -37,7 +37,7 @@ background-white
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :Apellido %>
+            <%= f.label :last_name, 'Apellido:' %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
@@ -48,7 +48,7 @@ background-white
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :Biografia %>
+            <%= f.label :bios, 'Biografia:' %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
@@ -59,7 +59,7 @@ background-white
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :Correo_electronico %>
+            <%= f.label :email, 'Correo electrónico' %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
@@ -70,18 +70,18 @@ background-white
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :Twitter_URl %>
+            <%= f.label :twitter_link, 'Twitter:' %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.text_field :twitter_link, :class => 'EditUserLabel' %>
+              <%= f.text_field :twitter_link, :placeholder => 'Ejemplo: https://twitter.com/cursame' %>
             </div>
           </div>
         </div>
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :Direccion %>
+            <%= f.label :personal_url, 'Dirección:'%>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
@@ -99,7 +99,7 @@ background-white
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :nuevo_password %>
+            <%= f.label :password, 'Nueva contraseña:' %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
@@ -110,7 +110,7 @@ background-white
 
         <div class="form-group">
           <div class="form-group-label">
-            <%= f.label :confirma_nuevo_password %>
+            <%= f.label :password_confirmation, 'Confirmar nueva contraseña:' %>
           </div>
           <div class="form-group-main">
             <div class="form-unit">
