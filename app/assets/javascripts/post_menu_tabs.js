@@ -3,12 +3,12 @@ $(document).ready(function(){
   $('.cancel-post-form_tab').click(function(e){
     e.preventDefault();
 
-    $('div.tab-content').hide()
-    $('div#comment-tab-content').show();
-    $('div.tabs-buttons .tab').removeClass('active');
-    $('div.tabs-buttons .tab[data-id-target="comment-tab-content"]').addClass('active');
-
-
+    var newPublicationBox = $('.new-publication');
+    newPublicationBox.find('div.tab-content').hide()
+    newPublicationBox.find('div#comment-tab-content').show();
+    newPublicationBox.find('div.tabs-buttons .tab').removeClass('active');
+    newPublicationBox.find('div.tabs-buttons .tab[data-id-target="comment-tab-content"]').addClass('active');
+    
       
     /*comments*/
     $('#comment').val('');

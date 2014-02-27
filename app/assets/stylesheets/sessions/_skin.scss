@@ -24,7 +24,11 @@
 
   .background-layer {
     background: rgba(0,0,0,.2);
-    box-shadow: inset 0 0 150px rgba(0,0,0,.2);
+    box-shadow: inset 0 0 150px rgba(0,0,0,.5);
+  }
+
+  .sessions-video {
+    @include filter(blur, 10px);
   }
 }
 
