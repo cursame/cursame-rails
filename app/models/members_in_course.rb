@@ -109,6 +109,7 @@ class MembersInCourse < ActiveRecord::Base
     surveys_table["evaluation_total"] = 0 if count_surveys == 0
     surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0)/count_surveys if count_surveys != 0
     surveys_table["percent_of_evaluation"] = 0 if count_surveys == 0
+    
     table["deliveries"] = deliveries_table
     table["surveys"] = surveys_table 
     table["evaluation"] = deliveries_table["evaluation_total"] + 
