@@ -85,7 +85,7 @@
           window.clearInterval(GetIntevalExpire);
 
           var IntervalFunctionForExpireSession;
-          IntervalFunctionForExpireSession = 1400000;
+          IntervalFunctionForExpireSession = 1200000;
 
           var GetIntevalExpire = setInterval(function() {
             $.get('<%= expire_session_path %>');
