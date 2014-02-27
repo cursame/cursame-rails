@@ -105,9 +105,10 @@ class MembersInCourse < ActiveRecord::Base
     }
     #### mi nombre es JARDA #####
     surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
-    surveys_table["evaluation_total"] =  (evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]))/count_surveys
-    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0)/count_surveys
-
+    surveys_table["evaluation_total"] =  (evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]))/count_surveys if count_surveys != 0
+    surveys_table["evaluation_total"] = 0 if count_surveys == 0
+    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0)/count_surveys if count_surveys != 0
+    surveys_table["percent_of_evaluation"] = 0 if count_surveys == 0
     table["deliveries"] = deliveries_table
     table["surveys"] = surveys_table 
     table["evaluation"] = deliveries_table["evaluation_total"] + 
