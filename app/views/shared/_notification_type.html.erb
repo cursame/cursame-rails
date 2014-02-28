@@ -298,7 +298,7 @@
           </div>
           <div class="activity-feed-main">
             <h6>El curso <span class="as-link"><%= notification.notificator.title %></span> ha llegado a su fecha final. Por favor desactívalo.</h6>
-            <span class="meta"><%= time_ago_in_words(notification.created_at) %></span>
+            <span class="meta"><span class="meta"><%= es_current_date("#{notification.created_at.strftime('%B')}", "#{notification.created_at.strftime('%d')}", "#{notification.created_at.strftime('%Y')}" , "#{notification.created_at.strftime('%l:%M%P')}",'latin_string') %></span></span>
           </div>
         <% end %>
       <% end %>
