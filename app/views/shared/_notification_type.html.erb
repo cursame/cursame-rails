@@ -34,6 +34,7 @@
         </div>
         <div class="activity-feed-main">
           <h6><span class="as-link"><%= user.name %></span> comentó en el curso <span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
       
@@ -54,6 +55,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>Has sido aceptado en el curso <span class="as-link"><%= notification.notificator.title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
 
@@ -67,6 +69,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>Nueva tarea <span class="as-link"><%= notification.notificator.title %></span> en tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
 
@@ -80,6 +83,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>Nueva discusion <span class="as-link"><%= notification.notificator.title %></span> en tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
 
@@ -93,6 +97,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>Nuevo cuestionario <span class="as-link"><%= notification.notificator.name %></span> en tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span> </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
 
@@ -113,6 +118,7 @@
             <%end%>
             ha respondido a la tarea <span class="as-link"><%= notification.notificator.delivery.title %></span>.
           </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
 
@@ -129,6 +135,7 @@
           <h6>
             Han calificado tu tarea <span class="as-link"><%= notification.notificator.delivery.title %></span> del curso <span class="as-link"><%= notification.notificator.delivery.courses.first.title %></span>
           </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
 
@@ -144,6 +151,7 @@
           </div>
           <div class="activity-feed-main">
             <h6><span class="as-link"><%= notification.notificator.user.name %></span> ha solicitado ser su amigo</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
 
@@ -162,6 +170,7 @@
             </div>
             <div class="activity-feed-main">
               <h6><span class="as-link"><%= user.name %></span> ha aceptado su solicitud de amistad.</h6>
+              <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
           <% end %>
 
@@ -186,6 +195,7 @@
         </div>
         <div class="activity-feed-main">
           <h6><span class="as-link"><%= user.name %></span> comentó en tu discusión <span class="as-link"><%=  %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
       
@@ -208,6 +218,7 @@
           </div>
           <div class="activity-feed-main">
             <h6><span class="as-link"><%= user.name %></span> ha comentado en un comentario que hiciste.</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
       <% end %>
@@ -225,6 +236,7 @@
           </div>
           <div class="activity-feed-main">
             <h6><span class="as-link"><%= user.name %></span> ha comentado en tu perfil.</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
       <% end %> 
@@ -241,6 +253,7 @@
           </div>
           <div class="activity-feed-main">
             <h6><span class="as-link"><%= user.name %></span> ha comentado en la tarea <span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
       <% end %>
@@ -260,6 +273,7 @@
           </div>
           <div class="activity-feed-main">
             <h6><span class="as-link"><%= user.name %></span> ha solicitado entrar al curso <span class="as-link"><%= notification.notificator.course.title %></span></h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
 
@@ -281,6 +295,7 @@
               <h6>
                 <span class="as-link"><%= user.name %></span> ha respondido el cuestionario <span class="as-link"><%= notification.notificator.survey.name %></span>
               </h6>
+              <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
           <% end %>
           
@@ -297,8 +312,9 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6>El curso <span class="as-link"><%= notification.notificator.title %></span> ha llegado a su fecha final. Por favor desactívalo.</h6>
-            <span class="meta"><span class="meta"><%= es_current_date("#{notification.created_at.strftime('%B')}", "#{notification.created_at.strftime('%d')}", "#{notification.created_at.strftime('%Y')}" , "#{notification.created_at.strftime('%l:%M%P')}",'latin_string') %></span></span>
+            <h6>El curso <span class="as-link"><%= notification.notificator.title %></span> ha llegado a su fecha final. Por favor desactívalo.</h6>          
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+
           </div>
         <% end %>
       <% end %>
@@ -316,6 +332,7 @@
               El curso <span class="as-link"><%= notification.notificator.title %></span> ha sido
               <%= notification.notificator.active_status ? "activado" : "desactivado" %>.
             </h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
       <% end %>

@@ -1,1 +1,3 @@
+
+$('#notifications_list').find('.inner-no-content').remove();
 $('#notifications_list').prepend('<%= escape_javascript(render(:partial => '/shared/notification_type', :locals => {:notification => @notification, :cls => 'first'}))%>');

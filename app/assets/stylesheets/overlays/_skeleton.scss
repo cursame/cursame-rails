@@ -31,6 +31,18 @@
       position: relative;
       margin: 50px auto;
     }
+
+    &.overlay-informative {
+      .overlay-header,
+      .overlay-content,
+      .overlay-footer {
+        padding: 15px;
+      }
+    }
+
+    &.overlay-small {
+      width: 400px;
+    }
   }
 
   .overlay-header {
@@ -47,8 +59,9 @@
 
     .close-overlay {
       position: absolute;
-      top: 21px;
-      right: 10px;
+      top: 50%;
+      right: 15px;
+      margin-top: -7px;
     }
 
     &.discussion {
@@ -80,6 +93,37 @@
     left: 30px;
     top: -57px;
   }
+}
+
+.delivery-results {
+  .delivery-overall-result {
+    margin-bottom: 4px;
+    @include clearfix;
+    
+    h4 {
+      padding: 8px 0 0 48px;
+    }
+    .result {
+      float: left;
+      padding: 7px 9px;
+    }
+  }
+}
+
+.delivered-delivery-rubres {
+  .delivered-delivery-rubre {
+    padding: 4px 0;
+    @include clearfix;
+
+    .rubre-calification {
+      float: left;
+      padding: 9px 11px; 
+    }
+
+    .rubre-main {
+      margin-left: 49px;
+    }
+  }    
 }
 
 /* Survey Overlay
