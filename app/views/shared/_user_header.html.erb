@@ -16,6 +16,10 @@
     
     <% if current_user %>
       <div class="activity-notificactions">
+        <div class="activity-block support-buttton">
+          <a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> Ayuda</a>
+        </div>
+        
         <div id="message_notifications" class="activity-block">
           <%= render :partial => '/shared/chat/message_notifications' %>
         </div>
@@ -49,10 +53,6 @@
               </ul>
             </div>
           </div>
-        </div>
-
-        <div class="activity-block support-buttton">
-          <a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> Ayuda</a>
         </div>
       </div>
     <% end %>

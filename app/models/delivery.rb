@@ -253,4 +253,5 @@ class Delivery < ActiveRecord::Base
           end
         }    
   end
+
 end

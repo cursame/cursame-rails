@@ -480,7 +480,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
     get "content/orkut"
 
     get "content/khanacademy"
-
+    
+    get "content/destroy/:id", :to =>  'content#destroy', :as => :destroy_content
     ##### cierra la base de datos
 
     get '/closer_db', :to => 'home#closer_db', :as => :clorse_db

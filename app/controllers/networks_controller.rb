@@ -251,8 +251,8 @@ class NetworksController < ApplicationController
   end
 
   def find_user
-    search_changes = params[:activiesearch].downcase
-    docificate_search_changes = I18n.transliterate("#{search_changes}")
+    @search_changes = params[:activiesearch].downcase
+    docificate_search_changes = I18n.transliterate("#{@search_changes}")
     @users = current_network.users.search(docificate_search_changes).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
     respond_to do |format|
       format.js

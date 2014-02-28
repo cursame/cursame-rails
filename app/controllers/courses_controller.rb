@@ -367,27 +367,18 @@ class CoursesController < ApplicationController
 
   def assigment
     if params[:assignment]["id"].blank? then
-
       @assignment = Assignment.new(params[:assignment])
       flash[:notice] = "Se ha entregado correctamente una tarea."
-
     else
-
       @id = params[:assignment].delete("id")
       @assignment = Assignment.find(@id)
       @assignment.update_attributes(params[:assignment])
 
-        if params[:files] then
+      if params[:files] then
 
         assets = Array.new
         params[:files].each do |asset_id|
           assets.push(Asset.find(asset_id))
-        end
-
-        destroy = @assignment.assets - assets
-
-        destroy.each do |asset|
-          asset.destroy
         end
 
         assignment_assets = @assignment.assets

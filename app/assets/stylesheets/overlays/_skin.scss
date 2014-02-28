@@ -11,6 +11,8 @@
   .overlay {
     background-color: #fff;
     border-radius: $radius;
+    @include animation-duration(.52s);
+
   }
 
   .overlay-header {

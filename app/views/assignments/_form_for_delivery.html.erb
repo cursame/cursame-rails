@@ -6,17 +6,18 @@
   class_id_assignment_title = "#{formId}_assignment_title"
 %>
 
-<% @assignment = Assignment.find_by_user_id_and_delivery_id(current_user.id, @delivery_id) %>
+<% @assignment = Assignment.find_by_user_id_and_delivery_id(current_user.id, delivery.id) #ya se entrego la tarea? %>
 
 <% if @assignment.nil? %>
   <% @assignment = Assignment.new %>
 <% else %>
+  <% already_delivered = true %>
   <% @assignment_id = @assignment.id %>
 <% end %>
 
 <%= form_for( @assignment, :url => assigment_courses_path, :method => :post, :html => { :class => "default-form assignment-delevery-form", :id => formId}) do |f| %>
-  
   <div class="overlay-content">
+
     <% contents = @assignment.contents.build %>
 
     <%= f.hidden_field :course_id, :value => cargo.id %>
@@ -24,7 +25,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :Título %>
+        <%= f.label :title, 'Título:' %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -35,7 +36,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :Descripción %>
+        <%= f.label :brief_description, 'Descripción:' %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -46,7 +47,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <label>Entrega tu tarea desde Dropbox</label>
+        <label>Entrega tu tarea desde Dropbox:</label>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -56,23 +57,13 @@
       </div>
     </div>
 
-    <% if @assingment_id.nil? %>
+    <% if !already_delivered %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
     <% else %>
       <%= f.hidden_field :user_id, :value => @assignment.user_id %>
     <% end %>
 
     <%= f.hidden_field :id, :value => @assignment_id if !@assignment_id.nil? %>
-
-    <div id="<%=@labelIdBoxx%>" class="upload-label">      
-      <% @assignment.assets.each do |asset|%>            
-        <div class="file-mini-upload" id="file-mini-upload-<%=asset.id%>" >
-        <input type="hidden" name="files[]" value="<%= asset.id%>">
-        <span><%=asset.file%></span>
-        <%= link_to "","/assets/"+asset.id.to_s, :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :class =>'trash', :onclick => "$(this).parent().remove();"%>
-            </div>
-      <% end%>
-    </div>
     
     <script>
       <%= render :partial => '/assignments/delivery_responce.js.erb', :locals => {:formId => formId}%>
@@ -86,7 +77,7 @@
       </li>
       <li>
         <span class="btn btn-medium btn-primary input-btn">
-          <%= f.submit "Entregar Tarea", :class => 'activable' %>
+          <%= f.submit already_delivered ? "Guardar nueva entrega" : "Entregar Tarea", :class => 'activable' %>
         </span>
       </li>
     </ul>

@@ -4,6 +4,8 @@
 .user-sessions-wrap {
   width: 360px;
   margin: 50px auto 50px auto;
+  position: relative;
+  z-index: 10;
 
   .user-sessions-network-brand {
     padding: 20px;
