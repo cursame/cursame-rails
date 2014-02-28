@@ -31,6 +31,18 @@
       position: relative;
       margin: 50px auto;
     }
+
+    &.overlay-informative {
+      .overlay-header,
+      .overlay-content,
+      .overlay-footer {
+        padding: 15px;
+      }
+    }
+
+    &.overlay-small {
+      width: 400px;
+    }
   }
 
   .overlay-header {

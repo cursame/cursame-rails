@@ -1,5 +1,6 @@
+
 <% @notifications.each do |notification|%>
 	$('#notifications_list').append('<%= escape_javascript(render(:partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''}))%>');
-<%end%>
-
+<% end %>
+$('#notifications_list').parent().scrollTop( $('#notifications_list').height() );
 $('#load-more-notifications').html('<a href="/home/load_more_notfications?page=<%=@page + 1%>" data-remote="true">Ver mas ...</a>');

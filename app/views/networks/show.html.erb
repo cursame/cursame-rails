@@ -7,17 +7,7 @@
     
     <div id="timeline" class="tim">
       <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
-    </div>
-    
-    <% if current_network.public_register == false%>
-      <% if show_joyride(3) != "1"%>
-        <%= render :partial => "/users/set_password_form", :locals => {:user => current_user} %>
-        
-        <script>
-          modal("#set-password-form");
-        </script>
-      <% end %>
-    <%end%>
+    </div>        
 
     <% if show_joyride(0) == "0"%>
       <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
@@ -30,6 +20,11 @@
 
 <script type="text/javascript">
 $(function() {
+
+  <% if !current_network.public_register && show_joyride(3) != "1" %>
+    var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
+    createModal( content, "overlay-small overlay-informative" );
+  <% end %>
 
   var aux = <%= (@show_course_expired) || false %>;
   

@@ -41,11 +41,7 @@
       <body class="<%= yield :body_classes %>">
 
         <% if flash[:notice] %>
-          <script>
-             $(document).ready(function(){
-               Notice('success', '<%= notice %>');
-             });
-          </script>
+          <script>$(function() { Notice('success', '<%= notice %>'); })</script>
         <%end%>
 
         <div class="scarlate" id="scarlate" style="display:none;"></div>
@@ -55,7 +51,7 @@
         <% cache_expire %>
         
         <div class="wrap">
-          <%= render partial: '/shared/user_header' %>      
+          <%= render partial: '/shared/user_header' %>
           <div class="main">
             <%= yield %>
           </div>
