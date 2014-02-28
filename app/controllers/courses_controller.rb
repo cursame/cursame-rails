@@ -995,8 +995,14 @@ class CoursesController < ApplicationController
    
   def clone_course
     @course = Course.new(params[:course])
+    @course.title = "#{@course.title}(clonado)"
+    puts "#{@course.title}"
+    puts "#{@course.init_date}"
+    puts "#{@course.finish_date}"
     @course.network = current_network
     if @course.save!
+
+      if params[:deliveries] != nil
       params[:deliveries].keep_if{|x| !x["id"].nil?}.each do |obj|
         new_delivery = Delivery.find(obj["id"]).dup
         new_delivery.state = 'unpublish'
@@ -1005,13 +1011,17 @@ class CoursesController < ApplicationController
         new_delivery.courses.push(@course)
         new_delivery.save!
       end
+      end
 
+      if params[:discussions] != nil
       params[:discussions].each do |id|
         new_discussion = Discussion.find(id).dup
         new_discussion.courses.push(@course)
         new_discussion.save!
       end
+      end
 
+      if params[:surveys] != nil
       params[:surveys].keep_if{|x| !x["id"].nil?}.each do |obj|
         new_survey = Survey.find(obj["id"]).dup
         new_survey.state = 'unpublish'
@@ -1030,7 +1040,9 @@ class CoursesController < ApplicationController
 
         new_survey.save!
       end
+      end
 
+      if params[:course_files] != nil      
       params[:course_files].each do |id|
         new_course_file = CourseFile.find(id).dup
         new_course_file.file = CourseFile.find(id).file
@@ -1040,8 +1052,13 @@ class CoursesController < ApplicationController
         new_course_id_course_file_id.course_file = new_course_file
         new_course_id_course_file_id.save!
       end
-
+      end
     end
+
+    if @course.save 
+      owner = MembersInCourse.create(:course_id => @course.id, :user_id => current_user.id, :accepted => true, :owner => true, :network_id => current_network.id )
+    end
+
     respond_to do |format|
         format.html
     end
