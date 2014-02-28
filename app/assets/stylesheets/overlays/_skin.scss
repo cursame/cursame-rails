@@ -54,13 +54,26 @@
 /* Delivery Overlay
 ----------------------------------*/
 .delivery-results {
-  color: $meta-color;
-  font-size: 15px;
   font-weight: normal;
 
-  strong {
-    font-weight: bold;
-    color: $primary-color;
+  .delivery-overall-result {
+    .result {
+      background-color: $primary-color;
+      color: #fff;
+      border-radius: $radius;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
+
+.delivered-delivery-rubres {
+  .delivered-delivery-rubre {
+    .rubre-calification {
+      background: #ededed;
+      border-radius: $radius;
+      font-size: 15px;
+    }
   }
 }
 

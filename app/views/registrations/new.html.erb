@@ -130,15 +130,7 @@
       </div>
 
       <div class="user-session-links">
-        <%- if controller_name != 'sessions' %>
-          <%= link_to "¿Ya eres usuario? Ingresa", new_session_path(resource_name) %><br />
-        <% end -%>
-        <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-          <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
-        <% end -%>
-        <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-          <%= link_to "¿No recibiste las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
-        <% end -%>
+        <%= render partial: 'devise/shared/links', locals: { login: false, signup: false, password: true, confirmation: true, unlock: true } %>
       </div>
 
     </div>

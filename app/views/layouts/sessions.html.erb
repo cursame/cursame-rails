@@ -51,9 +51,8 @@
     
     <div class="sessions-wrap">
       <%= yield %>
+      <%= render "devise/shared/footer-links" %>
     </div>
-
-    <%= render "devise/shared/footer-links" %>
 
     <% if !current_network.free && current_network.image_front != nil%>
       <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>");'><div class="background-layer"></div></div>
@@ -66,7 +65,7 @@
           <source type="video/webm" src="/videos/video.webm">
         </video>
       </div>
-    <%end%>
+    <% end %>
 
     <div id="browsers_box" class="content_f_box"  style="display:none">
       <p style="color:#fff; font-size:17px;">Browser no compatible, no podemos garantizar el funcionamiento adecuado de la aplicación.</p>

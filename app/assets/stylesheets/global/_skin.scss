@@ -96,6 +96,11 @@ a {
   text-decoration: underline;
 }
 
+.plain-text p {
+  line-height: 23px;
+  text-align: justify;
+}
+
 /* Titles
 ----------------------------------*/
 h1, h2, h3, h4, h5, h6 {

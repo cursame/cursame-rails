@@ -68,40 +68,10 @@
 
       <div class="user-session-links">
         <div class="links">
-          <%= render "devise/shared/links" %>
-          <a href="#" id="linked" >Soy un usuario antiguo y tengo dudas</a>
-        </div>
-
-        <div id="sub_linked" style="display: none;">
-          <h5>¿Soy usuario?</h5>
-          <p>Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame.</p>
-          <br>
-          <h5>¿Mi clave sigue siendo la misma?</h5>
-          <p>Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos te pedirá que cambies tu contraseña.</p>
-          <br>
-          <h5>No me ha llegado el mail de confirmación.</h5>
-          <p>Da click en el link <%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.</p>
-          <br>
-          <h5>Confirmé mi email pero olvide cambiar mi contraseña</h5>
-          <p>Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.</p>
-          <br>
-          <a href="#" id="Closelinked">Cerrar</a>
+          <%= render partial: 'devise/shared/links', locals: { login: false, signup: false, password: true, confirmation: true, unlock: true } %>
         </div>
       </div>
 
     </div>
   </div>
-  
 <% end %>
-
-<script>
-  $('#linked').click(function(event) {
-    event.preventDefault();
-    $('#sub_linked').slideToggle();
-  });
-
-  $('#Closelinked').click(function(event) {
-    event.preventDefault();
-    $('#sub_linked').slideUp();
-  });
-</script>

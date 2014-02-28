@@ -39,7 +39,7 @@
     </div>
 		
 		<div class="user-session-links">
-	    <%= render "devise/shared/links" %>
+	    <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
 	  </div>
   </div>
 </div>

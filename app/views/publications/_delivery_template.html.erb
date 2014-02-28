@@ -1,4 +1,5 @@
 <% publication = publication.publication %>
+<% delivered = current_user.assignments.where(:delivery_id => publication.id)[0] %>
 
 <div class="overlay-header">
   <div class="overlay-icon">
@@ -140,8 +141,7 @@
     <%end%>
   </div>
 
-  <!-- Se crea una validación para que los owner del curso y los que no son miembros no puedan entregar las tareas-->
-  <% publication.courses.each do |course|%>
+  <% publication.courses.each do |course| %>
     <% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
 
     <% if @if_im_member != nil && @if_im_member.owner != true%>
@@ -149,12 +149,29 @@
         <% if publication.state == "published" && current_user.assignments.where(:delivery_id => publication.id).empty? %>
           <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= publication.id %>">Responder tarea</a>
         <% else %>
-          <% accomplishment = current_user.assignments.where(:delivery_id => publication.id)[0].accomplishment %>
-          <% if accomplishment != nil %>
+          <% if !delivered.nil? && !delivered.accomplishment.nil? %>
             <div class="delivery-results">
-              Calificación obtenida: <strong><%= accomplishment.to_s %></strong>
+              <div class="delivery-overall-result">
+                <div class="result"><%= delivered.accomplishment.to_s %></div>
+                <h4>Calificación final obtenida</h4>
+              </div>
+              <% unless delivered.response_to_the_evaluations.empty? %>
+                <div class="delivered-delivery-rubres">
+                  <% delivered.response_to_the_evaluations.each do |delivery_rubre| %>
+                    <div class="delivered-delivery-rubre">
+                      <div class="rubre-calification">
+                        <%= delivery_rubre.evaluation_porcentage %>
+                      </div>
+                      <div class="rubre-main">
+                        <h6><%= delivery_rubre.name %></h6>
+                        <p><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
-          <%else%>
+          <% else %>
             <a href="#" class="show-delivery-form btn btn-medium btn-primary">Editar Entrega</a>
           <%end%>                
         <%end%>
@@ -163,9 +180,11 @@
   <%end%>
 </div>
 
-<div class="delivery-overlay-submit-form" id="<%= publication.id %>">
-  <div class="delivery-assignment-box" id="entrega-delivery-<%= publication.id %>">
-    <% @delivery_id = publication.id %>
-    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => publication, :cargo => publication.courses[0]}%>
+<% if !delivered.nil? && delivered.accomplishment.nil? %>
+  <div class="delivery-overlay-submit-form" id="<%= publication.id %>">
+    <div class="delivery-assignment-box" id="entrega-delivery-<%= publication.id %>">
+      <% @delivery_id = publication.id %>
+      <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => publication, :cargo => publication.courses[0]}%>
+    </div>
   </div>
-</div>
+<% end %>
