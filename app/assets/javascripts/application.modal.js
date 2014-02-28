@@ -1,6 +1,6 @@
 $(function() {
 
-	function overlayPositioning( overlay ) {
+	function overlayPositioning( overlay, f ) {
 		var	winHeight 		= $(window).height(),
 				winWidth			= $(window).width(),
 				overlayHeight = overlay.outerHeight(),
@@ -21,24 +21,29 @@ $(function() {
 		}
 	}
 	
-	window.createModal = function (content) {
+	window.createModal = function ( content) {
+
 		$('body').addClass('overlay-open').append('<div class="overlay-wrapper"></div>');
-		$('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay" ></div>').show();
+		$('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay"></div>').show();
 		$('div.overlay-wrapper').css("overflow-y", "scroll");
-		$('.overlay').html(content);
+
+    $('.overlay').html(content);
+    overlayPositioning( $('.overlay') );
     $('.overlay').addClass('animated pulse');
 
-		overlayPositioning( $('.overlay') );
-
 	};
-	
-	$('.overlay-screen, .close-overlay').live('click',function () {
+
+  window.removeModal = function() {
     $('.overlay').addClass('animated bounceOut');
     $('.overlay').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-      $('.overlay-wrapper').remove();
+      $('.overlay-wrapper').fadeOut(250, function() {
+        $(this).remove();
+      });
       $('body').removeClass('overlay-open');
     });
-	});
+  };
+	
+	$('.overlay-screen, .close-overlay').live('click', removeModal );
 
 	$(window).on('resize', function() {
     overlayPositioning( $('div.overlay') );

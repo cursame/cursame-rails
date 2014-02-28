@@ -9,8 +9,8 @@ $(document).ready(function(){
         course_survey_param_evaluation = $('#course_survey_param_evaluation'),
         course_delivery_param_evaluation = $('#course_delivery_param_evaluation');
 
-    var surveys_percentage    = course_survey_param_evaluation.val(),
-        deliveries_percentage = course_delivery_param_evaluation.val(),
+    var surveys_percentage    = parseInt(course_survey_param_evaluation.val()),
+        deliveries_percentage = parseInt(course_delivery_param_evaluation.val()),
         evaluation_total      = surveys_percentage + deliveries_percentage;
      
     if ( course_title.val() == '' ){

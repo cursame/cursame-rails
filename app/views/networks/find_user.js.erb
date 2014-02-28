@@ -1,1 +1,7 @@
-$('#accesed').html("<%= escape_javascript(render :partial => 'networks/who_sent', :locals => {:friends => @users})%>");
+
+<% if @search_changes != '' %>
+  $('#accesed').html("<%= escape_javascript(render :partial => 'networks/who_sent', :locals => {:friends => @users})%>");
+<% else %>
+  Notice('error', 'Por favor escribe algo en el campo de busqueda.');
+  $('#users-search-input').focus();
+<% end %>
