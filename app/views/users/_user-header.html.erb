@@ -2,11 +2,13 @@
 
   <div class="wrapper spaced">
     <div class="admin-buttons">
+      <% if @user_l == current_user %>
+        <%= link_to "Editar Perfil", edit_user_registration_path, class: 'btn btn-small btn-secondary hard-border-btn' %>
+      <% end %>
+
       <div id="taxk_<%=@user_l.id%>">
         <% if @user_l != current_user %>
-          <% if @user_l.friends?(current_user) %>
-            <%= link_to "Eliminar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-primary" %>
-          <% else %>
+          <% unless @user_l.friends?(current_user) %>
             <% if @user_l.have_a_friendship(current_user) %>
               <% case current_user.who_sent?(@user_l) %>
                 <% when current_user %>

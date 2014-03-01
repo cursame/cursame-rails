@@ -172,6 +172,19 @@ $(function() {
     }
   });
 
+  // Open commentable area in publications
+  $('.new-comment-trigger').live('click', function() {
+    commentHolder = $(this).closest('.add-comment');
+
+    commentHolder.addClass("active");
+    commentHolder.find('.new-comment-actions').show();
+    commentHolder.find('.comment-author').show();
+
+    if ( $('div.overlay').length ) {
+      overlayPositioning( $('div.overlay') );
+    }
+  });
+
   // Scroll top
   $(window).scroll(function(){
     if ($(this).scrollTop() > 100) {

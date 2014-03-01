@@ -6,8 +6,12 @@
     $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
 
   <% else #si se tiene que agregar a nivel de los coments %>
-    $('#comments-publication-<%= @publication.id %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
-    $('#comment_for_<%= @comment.commentable_type+@comment.commentable_id.to_s %>').val('').height(18);
+    $('div[data-commentable="<%= @publication.id %>"]').find('.publication-comments').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
+    $('div[data-commentable="<%= @publication.id %>"]').find('.new-comment-trigger').val('').height(18);
+
+    if ( $('div.overlay').length ) {
+      overlayPositioning( $('div.overlay') );
+    }
   <% end %>
 
   Notice('success', 'Se ha creado un comentario');

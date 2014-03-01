@@ -1,3 +1,4 @@
+<% post = publication %>
 <% publication = publication.publication %>
 
 <div class="overlay-header">
@@ -21,3 +22,4 @@
   <%= publication.description_html %>
   <%= render :partial => "content/insertions_to_contents", :locals => { :type => publication, :cl => 'discussion'}%>
 </div>
+<%= render partial: 'shared/publications/publication_comments', locals: { publication: post, post: publication } %>

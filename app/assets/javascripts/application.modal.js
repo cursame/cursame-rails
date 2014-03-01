@@ -1,6 +1,6 @@
 $(function() {
 
-	function overlayPositioning( overlay, f ) {
+	window.overlayPositioning = function ( overlay, f ) {
 		var	winHeight 		= $(window).height(),
 				winWidth			= $(window).width(),
 				overlayHeight = overlay.outerHeight(),

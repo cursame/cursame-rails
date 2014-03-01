@@ -1,5 +1,5 @@
-<div class="post-child-comment-box" id="commentable-area-<%= publication.id %>">
-  <div id="comments-publication-<%= publication.id %>" style="display: block;">
+<div class="post-child-comment-box" id="commentable-area-<%= publication.id %>" data-commentable="<%= publication.id %>">
+  <div id="comments-publication-<%= publication.id %>" style="display: block;" class="publication-comments">
     
     <% if post.comments.count > 3 %>
       <div id="more-comments-<%= publication.id  %>" class="more-comment-box">

@@ -95,6 +95,8 @@
     min-height: 100%;
     position: absolute;
     z-index: 5;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
   }
 }
 

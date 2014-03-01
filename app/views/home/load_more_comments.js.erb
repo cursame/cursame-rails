@@ -1,5 +1,5 @@
-$('#comments-publication-<%= @publication.id %>').html('');
+$('div[data-commentable="<%= @publication.id %>"]').find('.publication-comments').html('');
 
 <% @comments.each do |comment| %>
-	$('#comments-publication-<%= @publication.id  %>').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => comment}))%>');
+	$('div[data-commentable="<%= @publication.id %>"]').find('.publication-comments').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => comment}))%>');
 <%end%>
