@@ -25,11 +25,14 @@ class UsessionsController < Devise::SessionsController
       @find_user.save!
 
       # avisamos que el usuario se conecto
-       PrivatePub.publish_to("/messages/chat_notifications",
+      PrivatePub.publish_to("/messages/chat_notifications",
                               userId: @find_user.id,
                               online: true
                              )
-      
+      # limpiamos los archivos en cache en busqueda de nuevas actualizaciones
+      cache_self = Rails.cache.clear
+
+      puts "#{cache_self}"
 
       find_permissionings = Permissioning.where(:user_id => @find_user.id, :network_id => current_network.id)
       
@@ -56,6 +59,7 @@ class UsessionsController < Devise::SessionsController
                end
         else          
          sign_in(resource_name, resource)
+
          respond_with resource, :location => after_sign_in_path_for(resource)   
       end
    
