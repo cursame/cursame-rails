@@ -63,14 +63,50 @@
 
               <% if !@course_member.nil? %>
                 <% if @course_member.owner == true || course.id == @course_member.course_id %>
-                  <li>
-                    <label for="<%= random_id.to_s + course.id.to_s %>">
-                      <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
-                      <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
-                      <%= truncate( course.title, omission: "...", length: 17) %>
-                      <%= icon('checked-16') %>
-                    </label>
-                  </li>
+                  <% case in_type %>
+                      <% when 'delivery' %>
+                      <%  if @course_member.owner == true %>
+                      <li>
+                         <label for="<%= random_id.to_s + course.id.to_s %>">
+                          <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                          <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
+                          <%= truncate( course.title, omission: "...", length: 17) %>
+                           <%= icon('checked-16') %>
+                        </label>
+                       </li>  
+                       <%else%>      
+                       <%end%>
+                      <% when 'survey' %>
+                          <%  if @course_member.owner == true %>
+                          <li>
+                          <label for="<%= random_id.to_s + course.id.to_s %>">
+                            <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                            <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
+                            <%= truncate( course.title, omission: "...", length: 17) %>
+                           <%= icon('checked-16') %>
+                           </label>
+                         </li>  
+                         <%else%>      
+                         <%end%>
+                      <% when 'comment' %>
+                       <li>
+                         <label for="<%= random_id.to_s + course.id.to_s %>">
+                          <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                          <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
+                          <%= truncate( course.title, omission: "...", length: 17) %>
+                           <%= icon('checked-16') %>
+                        </label>
+                       </li> 
+                      <% when 'discussion' %>    
+                        <li>
+                         <label for="<%= random_id.to_s + course.id.to_s %>">
+                          <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                          <%= check_box_tag 'delivery[course_ids][]', course.id, false, id: "#{random_id.to_s + course.id.to_s}" %>
+                          <%= truncate( course.title, omission: "...", length: 17) %>
+                           <%= icon('checked-16') %>
+                        </label>
+                       </li>               
+                  <%end%>
                 <% end%>
               <% end %>
             <% end %>
@@ -86,6 +122,16 @@
               <% end %>
             </div>
           <% end %>
+
+               <% count_aht = MembersInCourse.where(:user_id => current_user.id, :owner => true).count %>  
+               <% if current_role == "admin" || current_role == "teacher" %>  
+                  <% if count_aht == 0  %>
+                    <div class="inner-no-content">
+                      <h5>No has creado ningún curso todavia.</h5>
+                      <p><%= link_to 'Crear curso ahora →', new_course_path %></p>
+                    </div>
+                 <%end%>  
+               <%end%>
 
           <% if hasCourses && hasPublic %>
             <li>

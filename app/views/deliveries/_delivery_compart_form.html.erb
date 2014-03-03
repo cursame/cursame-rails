@@ -135,7 +135,7 @@
           <%= link_to "Cancelar", "", :class=>'btn btn-secondary cancel-post-form_tab', :onClick=>'removeSliderEvaluation();', :id => 'cancel-post-form_tab' %>
         </li>
         <li>
-          <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication' } %>
+          <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :in_type => in_type} %>
         </li>
         <li>
           <span class="btn btn-primary input-btn">

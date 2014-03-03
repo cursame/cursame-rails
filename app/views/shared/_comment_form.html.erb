@@ -27,7 +27,7 @@
         <% unless @user_show %>
           <li>
           <% if @incourse != true && comment_id == nil %>
-            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :default_icon => 'public-new-publication' } %>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
           <%else%>
 
             <%= hidden_field_tag "commentable_type", 'Course'%>
