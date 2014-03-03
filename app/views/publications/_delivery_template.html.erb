@@ -143,7 +143,6 @@
 
   <% publication.courses.each do |course| %>
     <% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
-
     <% if @if_im_member != nil && @if_im_member.owner != true%>
       <div class="overlay-footer">
         <% if publication.state == "published" && current_user.assignments.where(:delivery_id => publication.id).empty? %>
@@ -180,11 +179,9 @@
   <%end%>
 </div>
 
-<% if !delivered.nil? && delivered.accomplishment.nil? %>
-  <div class="delivery-overlay-submit-form" id="<%= publication.id %>">
-    <div class="delivery-assignment-box" id="entrega-delivery-<%= publication.id %>">
-      <% @delivery_id = publication.id %>
-      <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => publication, :cargo => publication.courses[0]}%>
-    </div>
+<div class="delivery-overlay-submit-form" id="<%= publication.id %>">
+  <div class="delivery-assignment-box" id="entrega-delivery-<%= publication.id %>">
+    <% @delivery_id = publication.id %>
+    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => publication, :cargo => publication.courses[0]}%>
   </div>
-<% end %>
+</div>
