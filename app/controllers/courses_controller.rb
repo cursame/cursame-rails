@@ -908,6 +908,10 @@ class CoursesController < ApplicationController
 
   def course_survey_actdepot
     @survey = Survey.find(params[:id])
+    puts "#{@survey.publish_date}"
+    puts "#{@survey.end_date}"
+    puts "#{@survey.state}"
+
     @responces = @survey.user_surveys
     @survey_replies = Array.new
 

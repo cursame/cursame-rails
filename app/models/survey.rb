@@ -31,13 +31,6 @@ class Survey < ActiveRecord::Base
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
 
-  state_machine :state, :initial => :unpublish do
-    state :unpublish
-    state :published
-    event :publish do
-      transition :to => :published, :from => :unpublish
-    end
-  end
 
   after_destroy do
     walls = Wall.where(:publication_type => "Survey", :publication_id => self.id)
@@ -60,7 +53,7 @@ class Survey < ActiveRecord::Base
   after_create do
 
     if self.publish_date <= DateTime.now then
-       self.publish!
+       self.state = "published"
     end
 
   Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
@@ -89,21 +82,23 @@ class Survey < ActiveRecord::Base
     else
     @expired = false
     end
-
     if  @expired == true
        self.state = 'unpublish'
        self.save!
      end
   end
 
-   def self.publish_new_surveys
-     Survey.unpublished.each do |survey|
-       if survey.start_at <= DateTime.now
-         if survey.end_date >= DateTime.now
-         survey.publish!
-         end
+   def self.publish_new_surveys  
+
+       if self.publish_date < DateTime.now
+        if self.end_date > DateTime.now
+          self.state = "published"
+          else
+          self.state = "unpublish"
+        end
        end
-     end
+       puts "#{self.state}"
+
    end
 
   def self.user

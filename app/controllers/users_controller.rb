@@ -168,6 +168,7 @@ class UsersController < ApplicationController
     respond_to do |format|
        format.json
        format.js
+       format.html{redirect_to root_path, :notice => "Se ha guardado tu contraseña correctamente."}
     end
   end
 
