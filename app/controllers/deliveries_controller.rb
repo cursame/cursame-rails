@@ -26,12 +26,16 @@ class DeliveriesController < ApplicationController
       current_user.courses.each do |c|
         @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
          c.deliveries.each do |d|
-           case 
-              when @member.owner
+           case @member.owner
+              when true
                   if d.assignments.count == 0
                        deliveries.push(d.id)
                   end
-              when (!@member.owner.nil? || !@member.owner)
+              when !nil 
+                  if d.assignments.count == 0
+                       deliveries.push(d.id)
+                  end
+              when false
                   if d.assignments.count == 0
                        deliveries.push(d.id)
                   end
