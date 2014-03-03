@@ -148,6 +148,7 @@ class Api::ApiController < ApplicationController
     
     @usuarios = []
     @users.each do |u|
+      inverse_friendship = Friendship.find_by_user_id_and_friend_id(u.id, @user.id)
       uu = {
         accepted_terms: u.accepted_terms,
         avatar: {
@@ -168,11 +169,12 @@ class Api::ApiController < ApplicationController
         tour_info: u.tour_info,
         twitter_link: u.twitter_link,
         updated_at: u.updated_at,
-        friend: @user.friends?(u)
+        friend: @user.friends?(u),
+        friendship_request: inverse_friendship.nil? ? false : true
       }
       @usuarios.push(uu)
     end
-    @usuarios = @usuarios.sort_by { |x| x["friend"] && x["last_name"] }
+    @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
@@ -835,12 +837,22 @@ class Api::ApiController < ApplicationController
 
   def friend_remove
     friendship = Friendship.find_by_user_id_and_friend_id(@user.id, params[:id])
-    if friendship.destroy
-      success = true
-    else
-      success = false
+    inverse_friendship = Friendship.find_by_user_id_and_friend_id(params[:id], @user.id)
+    success = false
+
+    if friendship.nil? && inverse_friendship.nil? then      
+      msg = 'No existe una amistad entre estos usuarios'
     end
-    render :json => {:success => success}, :callback => params[:callback]   
+
+    if !friendship.nil? && friendship.destroy
+      success = true
+    end
+
+    if !inverse_friendship.nil? && inverse_friendship.destroy
+      success = true
+    end
+
+    render :json => {:success => success, :msg => msg}, :callback => params[:callback]   
   end
 
   private

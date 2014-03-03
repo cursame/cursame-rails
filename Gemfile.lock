@@ -230,7 +230,6 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pdfkit (0.5.4)
-    pg (0.17.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -373,7 +372,6 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   pdfkit
-  pg
   private_pub!
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
