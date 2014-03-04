@@ -175,7 +175,7 @@ class Api::ApiController < ApplicationController
       @usuarios.push(uu)
     end
 
-    @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name].nil? ? 1 : 0]}
+    #@usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name].nil? ? 1 : 0]}
     #@usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
