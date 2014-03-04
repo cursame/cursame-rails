@@ -104,6 +104,7 @@ class MembersInCoursesController < ApplicationController
   # DELETE /members_in_courses/1.json
   def destroy
     @members_in_course = MembersInCourse.find(params[:id])
+    @course_id = @members_in_course.course_id
     @members_in_course.destroy
 
     respond_to do |format|

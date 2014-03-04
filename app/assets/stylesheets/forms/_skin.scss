@@ -19,13 +19,21 @@ textarea {
   resize: none;
 }
 
-input.red-placeholder, textarea.red-placeholder {
+input.red-placeholder,
+textarea.red-placeholder,
+input.error,
+textarea.error {
   border-color: red;
   background: #f7e7e7;
 
   @include placeholder {
     color: red;
   }
+}
+
+label.error {
+  color: red;
+  font-size: 11px;
 }
 
 select {
@@ -336,16 +344,6 @@ select {
   background: #1A5E97;
   color: #FFF!important;
 }
-
-textarea.error, input.error {
-  border: 1px solid red!important; outline: none;
-}
- 
-label.error {
-  color: red;
-  font-size: 10px;
-}
-
 
 /* Forms Columns
 ----------------------------------*/
