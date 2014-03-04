@@ -174,11 +174,14 @@ class Api::ApiController < ApplicationController
         friend: friend,
         friendship_request: inverse_friendship.nil? ? false : true
       }
+      puts "------------------------------------"
+      puts uu.to_yaml
+      puts "------------------------------------"
       @usuarios.push(uu)
     end
 
-    @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name]]}
-    #@usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
+    #@usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name]]}
+    @usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
