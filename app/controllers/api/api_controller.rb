@@ -149,6 +149,8 @@ class Api::ApiController < ApplicationController
     @usuarios = []
     @users.each do |u|
       inverse_friendship = Friendship.find_by_user_id_and_friend_id(u.id, @user.id)
+      friend = @user.friends?(u)
+      friend = friend.nil? ? false : friend
       uu = {
         accepted_terms: u.accepted_terms,
         avatar: {
@@ -169,13 +171,14 @@ class Api::ApiController < ApplicationController
         tour_info: u.tour_info,
         twitter_link: u.twitter_link,
         updated_at: u.updated_at,
-        friend: @user.friends?(u),
+        friend: friend,
         friendship_request: inverse_friendship.nil? ? false : true
       }
       @usuarios.push(uu)
     end
-    #@usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name]]}
-    @usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
+
+    @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1, x[:last_name]]}
+    #@usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
