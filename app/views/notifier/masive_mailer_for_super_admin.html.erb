@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>C&uacute;rsame</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
+  </style>
+</head>
+<body style="padding: 0; margin: 0; font-family: 'Roboto', 'Helvetica Neue', sans-serif;">
+
+  <div style="border-bottom: 3px solid #F3F3F3; background: #FAFAFA;">
+    <div style="border-bottom: 1px solid #CFCFCF;">
+      <table style="width: 540px;" align="center">
+        <tr>
+          <td style="padding: 20px 0 12px 0;">
+            <a href="https://www.cursa.me/" title="Cúrsame">
+
+              <img src="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/logo.png" alt="Cúrsame">
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <table style="width: 540px;" align="center">
+    <tr>
+      <td>
+      <br>
+        <h1 style="font-size: 20px; font-weight: 400;">Estimados usuarios de C&uacute;rsame:</h1>
+        <p style="font-size: 15px; color: #4c4c4c; font-weight: 300; line-height: 25px;"><%= (@message.message).html_safe %></p>
+
+        <p style="font-size: 15px; color: #4c4c4c; font-weight: 300; line-height: 25px;">C&uacute;rsame.</p>
+
+        <a href="http://www.youtube.com/watch?v=OG_IYAngraw" target="_blank">
+          <img src="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/video_promo.png" alt="Ver video">
+        </a>
+        <br>
+        <br>
+        <br>
+      </td>
+    </tr>
+  </table>
+  <div style="background: #fafafa; border-top: 1px solid #e3e3e3; background-color: #fafafa;">
+    <table style="width: 540px;" align="center">
+      <tr>
+        <td style="padding: 20px 0;">
+          <h5 style="font-weight: bold; font-size: 13px; color: #333; margin: 0;">C&uacute;rsame &reg; 2014</h5>
+          <p style="color: #333; font-size: 12px; margin: 0;">Pomona #7, Roma Norte, Delegaci&oacute;n Cuauht&eacute;moc, Ciudad de M&eacute;xico.</p>
+          <p style="color: #333; font-size: 12px; margin: 0;"><a href="mailto:hola@cursa.me" style="color: #0071a2; text-decoration: none;">hola@cursa.me</a></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

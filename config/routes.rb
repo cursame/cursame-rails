@@ -382,6 +382,9 @@ Cursame30Lb::Application.routes.draw do
    get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
    get "home/render_notifications", :to => "home#render_notifications", :as => :render_notifications
+
+   ####### envio de mail masivo con notificaciones 
+   get "/masive_mailer", :to => "superadmnin#masive_mailer", :as => :masive_mailer, :defaults => { :format => 'js' }
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------

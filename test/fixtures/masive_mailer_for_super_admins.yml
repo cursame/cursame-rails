@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key_m: MyString
+  title: MyString
+  message: MyString
+  number_of_users: MyString
+  array_hash_from_sended: MyString
+
+two:
+  key_m: MyString
+  title: MyString
+  message: MyString
+  number_of_users: MyString
+  array_hash_from_sended: MyString

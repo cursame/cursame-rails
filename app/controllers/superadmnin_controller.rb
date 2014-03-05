@@ -1,5 +1,5 @@
 class SuperadmninController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:instructions]
+  skip_before_filter :authenticate_user!, :only => [:instructions, :masive_mailer]
   #skip_before_filter :authenticate_user!, :only => [:create_super_admin]
   #skip_before_filter :require_no_authentication, :only => [:create_super_admin]
 
@@ -82,5 +82,73 @@ class SuperadmninController < ApplicationController
   def instructions
   end
 
+  def masive_mailer
+    @msa = MasiveMailerForSuperAdmin.find_by_key_m(params[:key])
+    if @msa == nil
+       puts "no se ha encontraso el mensaje se procese a crearlo"
+       n = (params[:number]).to_i
+       array_sended = []
+       @msa_create = MasiveMailerForSuperAdmin.create(key_m: "#{params[:key]}", title: "#{params[:titulo]}" , message: "#{params[:message]}", number_of_users: "#{params[:number]}", array_hash_from_sended: "#{array_sended}") 
+
+       #@user_to_send = User.first(n)
+        
+       #@user_to_send.each do |uts|
+       #  array_sended.push(uts.id)
+       #  puts "#{@mailer}"
+       #end
+        
+       ##### mail para pruebas
+       @user_to_send = User.find_by_email("jose_alfredo+232@cursa.me")
+       puts" mails para preubas #{@user_to_send}"
+       puts "se encola en el proceso de enviado del email"
+       @msa_create.delay.delayed_send_mailer(@user_to_send)
+
+       puts "#{array_sended}"
+
+    else
+      puts "mensaje encontrado se procedea reenviar a cantidad de usuarios siguiente"
+         
+          array_sended = []
+          str = @msa.array_hash_from_sended
+          eval(str)
+          str = @msa.array_hash_from_sended.scan( /\d+/ ) 
+          new_array_old_things = str.map!{ |s| s.to_i }
+          user_actualy =  User.all.map { |x| x.id}
+      
+
+        defini = user_actualy - new_array_old_things
+         
+          puts "#{user_actualy}"
+          puts "#{new_array_old_things}"
+          puts "#{defini}"
+
+        select_new_array = User.where(:id => defini)
+
+        first_count_selected =  select_new_array.first(@msa.number_of_users)
+
+        first_count_selected.each do |sna|
+          array_sended.push(sna.id)
+           puts "#{@mailer}"
+        end
+
+        @msa.delay.delayed_send_mailer(first_count_selected)
+
+
+        puts "******* Usuarios a los que se envia ********"
+
+        puts "#{array_sended}"
+
+        sended_users = array_sended + new_array_old_things
+
+        @msa.number_of_users = "#{sended_users}"
+        @msa.save
+
+        puts "#{sended_users}"
+       
+    end
+    ###### finaliza y redirecciona
+    flash[:notice] = "Enviado exitos"
+    redirect_to :back
+  end
 
 end

@@ -39,4 +39,6 @@ class NotificationsController < ApplicationController
     @notification.destroy
     redirect_to notifications_url, :notice => "Successfully destroyed notification."
   end
+
+  
 end

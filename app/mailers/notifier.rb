@@ -123,5 +123,13 @@ class Notifier < ActionMailer::Base
     subject = "#{@user.name} has sido confirmado en la red"
     mail to:@user.email, subject: subject
   end
+  
+
+  def masive_mailer_for_super_admin(user, message)
+    @user = user
+    @message = message
+    subject = " #{@user.name}"
+    mail to:@user.email, subject: @message.title
+  end
 
 end
