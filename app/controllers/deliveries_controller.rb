@@ -243,7 +243,7 @@ end
       @message = "Se ha republicado esta tarea agregando 10 dias desde ahora."
       @linkik = 'Despublicar'
     end
-
+    
     @delivery.save!
 
     if @delivery.save

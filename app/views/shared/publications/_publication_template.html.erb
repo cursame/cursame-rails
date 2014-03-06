@@ -157,7 +157,7 @@
                 <% if type != "Survey" %>
                   <p><%= truncate( content_no_html, omission: "...", length: 70) %></p>
                 <% else %>
-                  <p><%= post.questions.count %> Preguntas</p>
+                  <p><%= pluralize(post.questions.count, 'Pregunta', 'Preguntas') %></p>
                 <% end %>
               </div>
             </div>

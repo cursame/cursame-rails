@@ -265,7 +265,7 @@ class CoursesController < ApplicationController
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to courses_url }
+      format.html { redirect_to courses_url, notice: 'Curso borrado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -914,6 +914,7 @@ class CoursesController < ApplicationController
 
     @responces = @survey.user_surveys
     @survey_replies = Array.new
+    p @survey
 
     @responces.each do |survey_reply|
       user = User.find(survey_reply.user_id)
@@ -1006,7 +1007,7 @@ class CoursesController < ApplicationController
     @course.network = current_network
     if @course.save!
 
-      if params[:deliveries] != nil
+    if params[:deliveries] != nil
       params[:deliveries].keep_if{|x| !x["id"].nil?}.each do |obj|
         new_delivery = Delivery.find(obj["id"]).dup
         new_delivery.state = 'unpublish'
@@ -1061,10 +1062,7 @@ class CoursesController < ApplicationController
 
     if @course.save 
       owner = MembersInCourse.create(:course_id => @course.id, :user_id => current_user.id, :accepted => true, :owner => true, :network_id => current_network.id )
-    end
-
-    respond_to do |format|
-        format.html
+      redirect_to course_path(@course), :notice => "Curso clonado correctamente."
     end
   end
 

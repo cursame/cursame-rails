@@ -8,7 +8,7 @@
 
   <div class="courses-list">
     <% courses.each do |course| %>
-      <div class="course">
+      <div id="<%= course.id %>" class="course">
         <div class="course-cover">
 
           <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
@@ -26,7 +26,7 @@
                   <ul>
                     <% if !@correspond.owner  %>
                       <li>
-                        <div id="uik_<%=@correspond.id%>"> 
+                        <div id="uik_<%= @correspond.id %>"> 
                           <%= link_to @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true do %>
                             <i class="i i-leave-course"></i> Abandonar
                           <% end %>

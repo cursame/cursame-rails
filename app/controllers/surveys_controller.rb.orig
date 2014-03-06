@@ -132,13 +132,21 @@ class SurveysController < ApplicationController
 
   def publish_unpublish_survey_manualy
     @survey = Survey.find(params[:id])
+<<<<<<< Updated upstream
+=======
+    puts @survey.id
 
+>>>>>>> Stashed changes
     if @survey.state == 'published'
       @survey.state = 'unpublish'
       @survey.end_date = Time.now
       @message = "Se ha despublicado este cuestionario."
       @linkik = 'Publicar'
+<<<<<<< Updated upstream
+=======
+      puts "Estaba publicado, se despublicara."
 
+>>>>>>> Stashed changes
     else
       @survey.state == 'unpublish'
       @survey.state = 'published'
@@ -146,10 +154,20 @@ class SurveysController < ApplicationController
       @survey.end_date = Time.now + 2.days
       @message = "Se ha republicado el cuestionario agregando 2 dias desde ahora."
       @linkik = 'Despublicar'
-
+<<<<<<< Updated upstream
     end
-    
+
     @survey.save!
+    puts @survey
+    puts "#{@message}"
+
+=======
+
+      puts "Estaba despublicado, se publicara."
+    end
+
+    @survey.save!
+>>>>>>> Stashed changes
 
     if @survey.save
       respond_to do |format|
