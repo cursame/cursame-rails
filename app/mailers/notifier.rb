@@ -1,5 +1,7 @@
 class Notifier < ActionMailer::Base
-  default from: "mail-sin-respuesta@cursa.me"
+  default from: "cursa.me@cursa.me",
+          domain: "cursa.me",
+          user_name: "cursa.me"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
