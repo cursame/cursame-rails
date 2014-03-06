@@ -50,7 +50,6 @@ production:
   encoding: unicode
   timeout: 7000
   pool: 5
-  
 
 cursame-test:
   adapter: postgresql
