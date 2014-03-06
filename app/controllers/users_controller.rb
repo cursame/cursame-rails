@@ -191,4 +191,22 @@ class UsersController < ApplicationController
     @user_l.approved_friend(current_user)
   end
 
+  def tour_reciver
+    puts "entrando en la ruta"
+    
+    case params[:type_route]
+      when 'network'
+         current_user.tour_network = true
+      when 'profile'
+         current_user.tour_profile = true
+      when 'course'
+         current_user.tour_course = true
+    end
+
+    current_user.save
+    respond_to do |f|
+      f.js
+    end
+  end
+
 end

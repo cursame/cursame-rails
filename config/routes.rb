@@ -128,6 +128,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
   
+  #### tour virtual 
+  get "tour_reciver", :to => "users#tour_reciver", :as => :tour_reciver
   #### lista calificaciones
 
   get "/califications", :to => "users#califications", :as =>  :califications
