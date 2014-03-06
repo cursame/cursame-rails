@@ -1,8 +1,11 @@
 ActiveAdmin.register User do
 
+
+
  index do
     panel "Importar Usuarios" do
           render('/admin/form_for_import_users_to_network')
+
     end
     column :email do |user|
       link_to truncate("#{user.email}", :omission => "...", :length => 27), admin_user_path(user)
@@ -24,10 +27,18 @@ ActiveAdmin.register User do
     column :online
     default_actions
   end
+
+
+
+
+  
  
   filter :email
   filter :first_name
   filter :last_name
+
+ 
+
   form do |f|
     f.inputs "Course Details" do
       f.input :email
@@ -76,4 +87,5 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+
 end

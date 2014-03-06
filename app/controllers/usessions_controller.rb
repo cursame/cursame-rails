@@ -1,4 +1,5 @@
 class UsessionsController < Devise::SessionsController
+    layout "sessions"
     require "devise"
     prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
     prepend_before_filter :allow_params_authentication!, :only => :create
@@ -16,19 +17,22 @@ class UsessionsController < Devise::SessionsController
     # POST /resource/sign_in
     def create      
       self.resource = warden.authenticate!(auth_options)
-      set_flash_message(:notice, :signed_in) if is_navigational_format?
-     
+     # set_flash_message(:notice, :signed_in) if is_navigational_format?
       @find_user = User.find_by_email(resource.email)
+      flash[:notice] = "Hola #{ @find_user.name } bienvenido de nuevo."
 
       @find_user.online = true
       @find_user.save!
 
       # avisamos que el usuario se conecto
-       PrivatePub.publish_to("/messages/chat_notifications",
+      PrivatePub.publish_to("/messages/chat_notifications",
                               userId: @find_user.id,
                               online: true
                              )
-      
+      # limpiamos los archivos en cache en busqueda de nuevas actualizaciones
+      cache_self = Rails.cache.clear
+
+      puts "#{cache_self}"
 
       find_permissionings = Permissioning.where(:user_id => @find_user.id, :network_id => current_network.id)
       
@@ -55,6 +59,7 @@ class UsessionsController < Devise::SessionsController
                end
         else          
          sign_in(resource_name, resource)
+
          respond_with resource, :location => after_sign_in_path_for(resource)   
       end
    

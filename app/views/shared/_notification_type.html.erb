@@ -1,12 +1,14 @@
-<!-- este partial controla la logica para mostrar notificaciones -->
 <% if current_role == "superadmin"%>
-<%else%>
+<% else %>
 
-<li id="notification-<%=notification.id.to_s%>" style="padding_right: 0px" redirect_to="" class="<%= cls %>" onclick ="me('<%= notification.notificator_type %>', <%=notification.id.to_s%>, '<%=notification.kind.to_s %>')">
-<% if notification.notificator != nil%>
-  <% case notification.kind %>
+<li id="notification-<%=notification.id.to_s%>" class="<%= cls %>" >
+  
+  <div class="activity-feed">  
+  <% if notification.notificator != nil%>
+    
+    <% case notification.kind %>
     <% when 'user_comment_on_network'%> 
-    <!-- Notificacion: 1 - Usuario comento en una red *** esta no sucede por que son muchos usuarios-->
+      <!-- Notificacion: 1 - Usuario comento en una red *** esta no sucede por que son muchos usuarios-->
       <% if current_user && current_user.avatar != nil%>
         <% user = notification.notificator.user%>
         
@@ -17,154 +19,264 @@
       <%=link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if (!notification.notificator.user.name.blank?)%>
       <%=link_to " Ver usuario ", show_user_path(notification.notificator.user.personal_url) if (notification.notificator.user.name.blank?)%>
       comentó en la red <%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/?search=<%= notification.notificator_type %>&id_search=<%=notification.notificator_id.to_s%>")</script>
+      
+      <!-- /?search=<%= notification.notificator_type %>&id_search=<%=notification.notificator_id.to_s%>") -->
       
     <!-- Notificacion: 2 - Usuario comento en un curso -->
     <% when 'user_comment_on_course'%>
-      <% if current_user && current_user.avatar != nil %>
-        <% user = notification.notificator.user%>
-        
-        <%= link_to image_tag(notification.notificator.user.avatar.modern,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !notification.notificator.user.avatar.blank?) %>
-        <%= link_to image_tag(notification.notificator.user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( notification.notificator.user.avatar.blank?) %>
-      <% end %>
+      <% user = notification.notificator.user%>
       
-      <%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%>
-      <%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%>comentó en el curso <%= link_to "#{notification.notificator.commentable.title}", course_path(notification.notificator.commentable.id) %>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.commentable_id.to_s%>?search=<%=notification.notificator_type%>&id_search=<%=notification.notificator_id.to_s%>")</script>
+      <%= link_to course_path(notification.notificator.commentable.id) do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6><span class="as-link"><%= user.name %></span> comentó en el curso <span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
       
     <!-- Notificacion: 3 - Curso publico nuevo en una red -->
     <% when 'new_public_course_on_network'%>
       <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">
       Nuevo curso
       <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> en tu red <b><%= notification.notificator.network.name %></b>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses")</script>
+      <!-- #notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses") -->
     
     <!-- Notificacion: 4 - Usuario aceptado en un curso -->
     <% when 'user_accepted_in_course'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>Has sido aceptado en el curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %><b>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator_id.to_s%>")</script>
+      <%= link_to course_path(notification.notificator.id) do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>Has sido aceptado en el curso <span class="as-link"><%= notification.notificator.title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 5 - Nueva tarea en un curso -->
     <% when 'new_delivery_on_course'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nueva tarea <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if ( !notification.notificator.courses.blank?)%>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.courses.first.id.to_s%>?search=<%=notification.notificator_type%>&id_search=<%=notification.notificator_id.to_s%>")</script>
+      <%= link_to "#{course_path(notification.notificator.courses[0].id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>Nueva tarea <span class="as-link"><%= notification.notificator.title %></span> en tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 6 - Nueva discusion en un curso -->
     <% when 'new_discussion_on_course' %>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %> Nueva discusion <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}",course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?)%>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.courses.first.id.to_s%>?search=<%=notification.notificator_type%>&id_search=<%=notification.notificator_id.to_s%>")</script>
+      <%= link_to "#{course_path(notification.notificator.courses[0].id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>Nueva discusion <span class="as-link"><%= notification.notificator.title %></span> en tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 7 - Nuevo cuestionario en un curso -->
     <% when 'new_survey_on_course'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.courses.first.id), class:"avatar-notifications avatar-mini" %>Nuevo cuestionario <b><%= link_to "#{notification.notificator.name}", course_path(notification.notificator.courses.first.id) %></b> en tu curso <%= link_to "#{notification.notificator.courses[0].title}", course_path(notification.notificator.courses[0].id) if (!notification.notificator.courses.blank?) %>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.courses.first.id.to_s%>?search=<%=notification.notificator_type%>&id_search=<%=notification.notificator_id.to_s%>")</script>
+      <%= link_to "#{course_path(notification.notificator.courses.first.id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>Nuevo cuestionario <span class="as-link"><%= notification.notificator.name %></span> en tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span> </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 8 - Nueva entrega a una tarea -->
     <% when 'new_assignment_on_delivery'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>
-      <% if notification.notificator.user != nil%>
-        <% if notification.notificator.user.name != nil%>
-          <%= link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)  %>
-        <%else%>
-          <%= link_to "Un usuario", show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?) %>
-        <%end%>
-      <%end%>ha respondido a la tarea
-      <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>&show_assig=<%= notification.notificator_id.to_s %>")</script>
+      <%= link_to "#{course_path(notification.notificator.course_id)}/activities_depot" do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            <% if notification.notificator.user != nil && notification.notificator.user.name != nil%>
+              <span class="as-link"><%= notification.notificator.user.name %></span>
+            <%else%>
+              Un usuario
+            <%end%>
+            ha respondido a la tarea <span class="as-link"><%= notification.notificator.delivery.title %></span>.
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 9 - Nueva calificacion en una respuesta -->
     <% when 'new_accomplishment_on_assignment'%>
-      <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.delivery.courses.first.id), class:"avatar-notifications avatar-mini" %>Han calificado tu tarea
-      <b><%= link_to "#{notification.notificator.delivery.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-      del curso <b><%= link_to "#{notification.notificator.delivery.courses.first.title}", course_path(notification.notificator.delivery.courses.first.id) %></b>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.course_id%>?search=Delivery&id_search=<%=notification.notificator.delivery.id.to_s%>&show_accom=<%= notification.notificator_id.to_s %>")</script>
+      <%= link_to "#{course_path(notification.notificator.delivery.courses.first.id)}?search=Delivery&id_search=#{notification.notificator.delivery.id.to_s}" do %>
+
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.delivery.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            Han calificado tu tarea <span class="as-link"><%= notification.notificator.delivery.title %></span> del curso <span class="as-link"><%= notification.notificator.delivery.courses.first.title %></span>
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
 
     <!-- Notificacion: 10 - Solicitud de amistad -->
     <% when 'user_request_friendship'%>
-      <% if notification.notificator != nil %>
-        <% if notification.notificator.user != nil %>
-          <% user = notification.notificator.user %>
-          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
-          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
-          El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
-          ha solicitado ser su amigo.
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/comunity?search_reqfs=<%=notification.notificator.user_id%>")</script>
-        <%end%>
+      <% if notification.notificator != nil && notification.notificator.user != nil %>
+        <% user = notification.notificator.user %>
+        <%= link_to "#{user_friends_path(notification.notificator.friend.personal_url)}?pending=true" do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", "#{notification.notificator.user_id}", "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= notification.notificator.user.name %></span> ha solicitado ser su amigo</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
+
       <%end%>
     
     <!-- Notificacion: 11 - Usuario acepto amistad -->
     <% when 'user_accepted_friendship'%>
-      <% if notification.notificator != nil %>
-        <% if notification.notificator.friend != nil %>
+      <% if notification.notificator != nil && notification.notificator.friend != nil %>
           <% user = notification.notificator.friend %>
           
-          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
-          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
-          El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
-          ha aceptado su solicitud de amistad.
-          <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/users/<%= notification.notificator.friend.personal_url %>")</script>
-        <%end%>
+          <%= link_to show_user_path(user.personal_url) do %>
+            <div class="activity-feed-author">
+              <span class="avatar-holder">
+                <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+              </span>
+            </div>
+            <div class="activity-feed-main">
+              <h6><span class="as-link"><%= user.name %></span> ha aceptado su solicitud de amistad.</h6>
+              <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+            </div>
+          <% end %>
+
       <%end%>
       
     <!-- Notificacion: 12 - Usuario comento en una discusion -->
     <% when 'user_comment_on_discussion'%>
-      <% if current_user && current_user.avatar != nil %>
-        <% user = notification.notificator.user %>
-        <%= link_to image_tag(current_user.avatar.modern,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !notification.notificator.user.avatar.blank?)%>
-        <%= link_to image_tag(current_user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( notification.notificator.user.avatar.blank?)%>
-      <%end%>
-      <b><%=link_to "#{notification.notificator.user.name} ",show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%><%=link_to " Ver usuario ",show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?)%></b> comentó en tu discusión
-      <% if notification.notificator.commentable.courses.first.nil? %>
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/?search=<%= notification.notificator.commentable_type %>&id_search=<%=notification.notificator.commentable_id.to_s %>")</script>
-      <% else %>
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%= notification.notificator.commentable.courses.first.id.to_s %>?search=<%= notification.notificator.commentable_type %>&id_search=<%=notification.notificator.commentable_id.to_s %>");</script>
+      <% user = notification.notificator.user %>
+
+      <%
+        if notification.notificator.commentable.courses.first.nil?
+          notificationURL = "/?search=#{notification.notificator.commentable_type}&id_search=#{notification.notificator.commentable_id.to_s}"
+        else
+          notificationURL = "#{course_path(notification.notificator.commentable.courses.first.id)}?search=#{notification.notificator.commentable_type}&id_search=#{notification.notificator.commentable_id.to_s}"
+        end
+      %>
+      <%= link_to notificationURL do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6><span class="as-link"><%= user.name %></span> comentó en tu discusión <span class="as-link"><%=  %></span></h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
       <% end %>
       
     <!-- Notificacion: 13 - Usuario comento en un comentario -->
     <% when 'user_comment_on_comment'%>    
       <% if notification.notificator != nil %>
-         <% user = notification.notificator.user %>
-         <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
-          El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
-          ha comentado en un comentario que hiciste .
-      <% end %>
-      <% if notification.notificator.commentable.commentable_type == "Course" %>
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%= notification.notificator.commentable.commentable_id %>?search=Comment&id_search=<%=notification.notificator.commentable_id%>")</script>
-      <% else %>
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/?search=Comment&id_search=<%=notification.notificator.commentable_id%>")</script>
+        <% user = notification.notificator.user %>
+
+        <% if notification.notificator.commentable.commentable_type == "Course" %>
+          <% url = "/courses/#{notification.notificator.commentable.commentable_id}?search=Comment&id_search=#{notification.notificator.commentable_id}" %>
+        <% else %>
+          <% url = "/?search=Comment&id_search=#{notification.notificator.commentable_id}" %>
+        <% end %>
+
+        <%= link_to url do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= user.name %></span> ha comentado en un comentario que hiciste.</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
       <% end %>
     
     <!-- Notificacion: 14 - Usuario comento en un usuario -->      
     <% when 'user_comment_on_user'%>
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
-        <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
-          El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
-          ha comentado en tu perfil.
+        
+        <%= link_to "#{show_user_path(notification.notificator.commentable.personal_url)}?search=Comment&id_search=#{notification.notificator_id}" do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= user.name %></span> ha comentado en tu perfil.</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
       <% end %> 
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/users/<%=notification.notificator.commentable.personal_url%>?search=Comment&id_search=<%=notification.notificator_id%>")</script>
     
     <!-- Notificacion: 15 - Usuario comento en una tarea --> 
     <% when 'user_comment_on_delivery'%>
        <% if notification.notificator != nil %>
-         <% user = notification.notificator.user %>
-         <%= link_to image_tag(user.avatar.blank? ? user.image_avatarxxx : user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" %>        
-          El usuario <b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b>
-          ha comentado en la tarea <%="#{notification.notificator.commentable.title}"%>.
+        <% user = notification.notificator.user %>
+        <%= link_to "#{course_path(notification.notificator.commentable.courses.first.id)}?search=Delivery&id_search=#{notification.notificator.commentable_id}" do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= user.name %></span> ha comentado en la tarea <span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
       <% end %>
-      <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.commentable.courses.first.id%>?search=Delivery&id_search=<%=notification.notificator.commentable_id%>")</script>
+
+      <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=%>" -->
 
     <!-- Notificacion: 16 - Solicitud de membresia en un curso -->
     <% when 'user_request_membership_in_course' %>
       <% if notification.notificator != nil %>
-        <% if notification.notificator.user != nil %>
-          <% user = notification.notificator.user %>
-          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
-          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
-          El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
-          ha solicitado entrar al curso <b><%= link_to "#{notification.notificator.course.title}", course_path(notification.notificator.course.id) %><b>
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "<%= course_path(notification.notificator.course.id)%>/members")</script>
-        <%end%>
+        <% user = notification.notificator.user %>
+        
+        <%= link_to course_members_path(notification.notificator.course.id) do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= user.name %></span> ha solicitado entrar al curso <span class="as-link"><%= notification.notificator.course.title %></span></h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
+
       <%end%>
 
     <!-- Notificacion: 17 - Respuesta de cuestionario -->
@@ -172,27 +284,57 @@
       <% if notification.notificator != nil %>
         <% if notification.notificator.user != nil %>
           <% user = notification.notificator.user %>
-          <%= link_to image_tag(user.image_avatarxxx), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini" if (user.avatar.blank?) %>
-          <%= link_to image_tag(user.avatar.modern), show_user_path(user.personal_url), class:"avatar-notifications avatar-mini"  if (!user.avatar.blank?) %>
-          El usuario <b><%= link_to "#{notification.notificator.user.name}", show_friends_path(current_user.personal_url) %></b>
-          ha respondido el cuestionario <b><%= notification.notificator.survey.name %></b>
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=notification.notificator.survey.courses.first.id%>?search=Survey&id_search=<%=notification.notificator.survey.id.to_s%>&show_survey=<%= notification.notificator_id.to_s %>")</script>
+
+          <%= link_to course_activities_depot_path(notification.notificator.survey.courses.first.id) do %>
+            <div class="activity-feed-author">
+              <span class="avatar-holder">
+                <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+              </span>
+            </div>
+            <div class="activity-feed-main">
+              <h6>
+                <span class="as-link"><%= user.name %></span> ha respondido el cuestionario <span class="as-link"><%= notification.notificator.survey.name %></span>
+              </h6>
+              <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+            </div>
+          <% end %>
+          
         <%end%>
       <%end%>
 
     <!-- Notificacion: 18 - Curso expirado -->
     <% when 'course_expired' %>
       <% if notification.notificator != nil %>
-        <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>
-        El curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> ha llegado a su fecha final. Por favor desactivelo.
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/?course_expired=<%=notification.notificator.id%>")</script>
+        <%= link_to course_path(notification.notificator.id) do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6>El curso <span class="as-link"><%= notification.notificator.title %></span> ha llegado a su fecha final. Por favor desactívalo.</h6>          
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+
+          </div>
+        <% end %>
       <% end %>
 
     <% when 'course_deactivated' %>
       <% if notification.notificator != nil %>
-        <%= link_to image_tag("/assets/group-avatar-mini.png"), course_path(notification.notificator.id), class:"avatar-notifications avatar-mini" %>
-        El curso <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b> ha sido desactivado.
-        <script>$("#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses")</script>
+        <%= link_to course_path(notification.notificator.id) do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6>
+              El curso <span class="as-link"><%= notification.notificator.title %></span> ha sido
+              <%= notification.notificator.active_status ? "activado" : "desactivado" %>.
+            </h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
       <% end %>
 
     <%else%>
@@ -212,8 +354,8 @@
         <%end%>
       <%end%>
     <%end%>
-  <br/>
-  <span class="time"><%=time_ago_in_words(notification.created_at)%></span>
+
+    </div>
   </li>
   <%end%>
 <%end%>

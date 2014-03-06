@@ -1,2 +1,3 @@
-$('#tarea_en_carga_notification').html('');
-$('#tarea_en_carga_notification').html('<%= escape_javascript(render(partial: "courses/survey_results", :locals => {:responces => @responces})) %>');
+feedsDetailContainer = $('.activities-depot-main'),
+
+feedsDetailContainer.html('').append('<%= escape_javascript(render(partial: "courses/survey_results", :locals => {:responces => @responces})) %>');

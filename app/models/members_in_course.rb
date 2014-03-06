@@ -33,12 +33,13 @@ class MembersInCourse < ActiveRecord::Base
   end
   
   # Calcula la calificacion de examenes
+
   def evaluation_surveys(user_surveys, surveys)
     if user_surveys.any? then
       user_surveys.each_with_index.inject(0.0) { 
         |result, (user_survey,index)|
         if user_survey
-          result += user_survey.result ? user_survey.result : user_survey.evaluation
+          result += user_survey.result
         else
           result += 0.0
         end
@@ -82,8 +83,10 @@ class MembersInCourse < ActiveRecord::Base
   # table["evaluation"] => Calificacion total del curso.
 
   # Si logras mejorar este metodo, por favor, deja tu nombre.
+
+
   def course_evaluation(course,deliveries, surveys)
-    
+    count_surveys = surveys.count
     table = {}
     deliveries_table = {}
     surveys_table = {}
@@ -102,14 +105,16 @@ class MembersInCourse < ActiveRecord::Base
       |survey|
       UserSurvey.find_by_survey_id_and_user_id(survey.id,self.user_id)
     }
-    surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
-    surveys_table["evaluation_total"] = 
-      evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"])
-    surveys_table["percent_of_evaluation"] =
-      surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0
 
+    #### mi nombre es JARDA #####
+    surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
+    surveys_table["evaluation_total"] =  (evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]))/count_surveys if count_surveys != 0
+    surveys_table["evaluation_total"] = 0 if count_surveys == 0
+    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0)/count_surveys if count_surveys != 0
+    surveys_table["percent_of_evaluation"] = 0 if count_surveys == 0
+    
     table["deliveries"] = deliveries_table
-    table["surveys"] = surveys_table
+    table["surveys"] = surveys_table 
     table["evaluation"] = deliveries_table["evaluation_total"] + 
       surveys_table["percent_of_evaluation"]
     

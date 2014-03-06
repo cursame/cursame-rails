@@ -1,7 +1,7 @@
 class Content < ActiveRecord::Base
   attr_accessible :contentye_type, :contentye_id, :content, :contents_attributes
   belongs_to :contentye, :polymorphic =>:true
-  
+
   auto_html_for :content do
     html_escape
     image
@@ -26,3 +26,4 @@ class Content < ActiveRecord::Base
   end
     
 end
+

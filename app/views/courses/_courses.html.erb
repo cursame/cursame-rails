@@ -4,6 +4,7 @@
   <%= render partial: "users/form_course.html.erb" %>
 </div>
 <%end%>
+
 <div id="tabs-courses" class="tabs-style">
   <ul id="ul-tabs">
     <li class="element-left">
@@ -51,6 +52,7 @@
     </ul>
     <div class="view-all"><%= link_to "Ver todos", courses_path %></div>
   </div>
+  
   <% permitted_to? :create, :courses do %>
   <div id="tabs-courses-2">
     <ul id="course-list">

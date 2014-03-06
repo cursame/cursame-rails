@@ -1,105 +1,74 @@
-<% if current_user%>
-	<div class="chat-icon" id="messages-notifications-count">
-	    <span id="" >0</span>
+<div id="box-messages-notifications" class="activity-dropdown-wrap dropdown-wrap">
+	<div class="activity-dropdown-pull dropdown-pull">
+    <%= icon('activity-messages') %>
+		<span id="messages-notifications-count" style="display:none" class="activity-counter">0</span>
 	</div>
-
-	<!-- notification -->
-	<div id="box-messages-notifications" style="display:none; margin-left:-35px;">
-		<div id="" class="comment-text" >
-			<div class="arrow-top"></div>
-			<div class="header">
-				<b>Mensajes</b>  
-			</div>
-			<div class="content">
-				<ul id="messages-notifications-list">
-
-					<%current_user.channels.last(5).each do |channel|%>
-					<% last_message = channel.mesages.last %>
-					<% if last_message.nil? || last_message.user.nil? %>
-						<% next %>
-					<% end %>
-					<% 
-						channelType = channel.channel_name.split('course_channel_');
-						url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + last_message.user.id.to_s;		
-					%>
-						<li>
-							<%= link_to "Convensar", url, :remote => true%></br>
-								<%=image_tag(last_message.user.avatar.blank? ? last_message.user.image_avatarx : last_message.user.avatar.profile ,:style => "float:left; width:48px; height:48px;", :class => "avatar-notifications avatar-mini")%>
-							<b><%= last_message.user.name %></b><br/><%= last_message.mesage_html %>
-							<br/><span class="time"><%=time_ago_in_words(last_message.created_at)%></span>
-						</li>
-					<%end%>
-				</ul>
-			</div>
-
-			<div class="footer">
-				<b><%= link_to "Ver todos los mensajes",chat_path%></b>
-			</div>
+	<div class="activity-dropdown dropdown-v right">
+    <i class="tip"></i>
+		<div class="activity-dropdown-title">
+			<h6>Mensajes</h6>
 		</div>
+		<div class="activity-dropdown-content">
+  		<ul id="messages-notifications-list" class="activity-feed-list">
+		    <% current_user.channels.last(7).reverse.each do |channel|%>
+		      <% last_message = channel.mesages.last %>
+		      <% next if last_message.nil? || last_message.user.nil? %>
+		      <% if current_user.id != last_message.user.id %>
+		      
+		      <% channelType = channel.channel_name.split('course_channel_') %>
+		      <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>
+		      <li>
+		      	<div class="activity-feed">
+			      	<%= link_to url, :remote => true do %>
+			      		<div class="activity-feed-author">
+                  <span class="avatar-holder">
+				        	  <%= avatar('user', '45', "no", last_message.user.id, "avatar", "no", "no") %>
+                  </span>
+				        </div>
+				        <div class="activity-feed-main">
+					        <h6><span class="as-link"><%= last_message.user.name %></span></h6>
+                  <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
+					        <span class="meta"><%= es_current_date("#{last_message.created_at.strftime('%B')}", "#{last_message.created_at.strftime('%d')}", "#{last_message.created_at.strftime('%Y')}" , "#{last_message.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
+				        </div>
+			        <% end %>
+		        </div>
+		      </li>
+		      <%end%>
+
+		    <%end%>
+		  </ul>
+  	</div>
+  	<div class="activity-dropdown-footer">
+    	<%= link_to "Ver todos los mensajes",chat_path%>
+    </div>
 	</div>
+</div>
 
-	<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
-	<!-- para poder cambiar el estatus de los usuarios conectados -->
-	<%= subscribe_to "/messages/chat_notifications"%>
-	
-	<% if @show_chat_panel %>
-		<div id="users-and-groups-for-chat" class="users-and-groups-for-chat">
-	       <div id="toggle-chat"><div class="toggle_chat_image"></div>Chat (<%= @courses_online.count + @friends_online.count %>)<img src="/assets/icon_point.png" style="float: right;"></div>
-				<div id="users-and-groups-online" style="display:none">
-					<span class="titleBraker">
-						<img src="/assets/icon_small_courses.png" style="margin-right: 4px;">Cursos
-						<span class="collapse_title_courses" style="float: right; cursor: pointer; padding-top: 6px;">Mostrar</span>
-					</span>
-					
-					<div class="collapse_courses" style="display: none;">
-					<% @courses_online.each do |course|%>
-					
-						<div>
-							<%= link_to truncate("#{course.title}", :omission => "...", :length => 30), open_channel_path(course.id,"course" => true), :remote => true%>
-						</div>
-					<%end%>
-					</div>
-		<!--<span class="titleBrakerSecondary">Amigos conectados</span>-->
-		    <span class="titleBraker" style="margin-bottom: 3px; margin-top: 1px;">
-		    		<img src="/assets/icon_friends.png" style="margin-right: 4px;">Amigos
-		    		<span class="collapse_title_friends" style="float: right; cursor: pointer; padding-top: 6px;">Ocultar</span>
-		    	</span>
-		    	
-		    	<div class="collapse_friends">
-					<% @friends_online.each do |user|%>
-					<div style="display:block">
-						<%= link_to truncate("#{user.name}", :omission => "...", :length => 30) || user.email, open_channel_path(user.id), :remote => true%>
-						<div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>"></div>
-					</div>
-				<%end%>
-				</div>
-				
-	       </div>
-		</div>
-	<% end %>	
-<%end%>
+<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
+<!-- para poder cambiar el estatus de los usuarios conectados -->
+<%= subscribe_to "/messages/chat_notifications"%>
 
-	<script>
-		$('#toggle-chat').click ( function() {
-			$('.toggle_chat_image').toggleClass('toggle_chat_image_active');
-			$('#users-and-groups-for-chat').toggleClass('users-and-groups-for-chat-active');
-		});
-		
-		
-		$('.collapse_title_courses').click ( function() {
-			$('.collapse_courses').toggle();
-			//$('.collapse_title_courses').text('Ocultar');
-		});		
-		$(".collapse_title_courses").click(function() {
-		     var txt = $(".collapse_courses").is(':visible') ? 'Ocultar' : 'Mostrar';
-		     $(".collapse_title_courses").text(txt);
-		});
-		
-		$('.collapse_title_friends').click ( function() {
-			$('.collapse_friends').toggle();
-		});
-		$(".collapse_title_friends").click(function() {
-		     var txt = $(".collapse_friends").is(':visible') ? 'Ocultar' : 'Mostrar';
-		     $(".collapse_title_friends").text(txt);
-		});
-	</script>
+<script>
+  $('#toggle-chat').click ( function() {
+    $('.toggle_chat_image').toggleClass('toggle_chat_image_active');
+    $('#users-and-groups-for-chat').toggleClass('users-and-groups-for-chat-active');
+  });
+  
+  
+  $('.collapse_title_courses').click ( function() {
+    $('.collapse_courses').toggle();
+    //$('.collapse_title_courses').text('Ocultar');
+  });   
+  $(".collapse_title_courses").click(function() {
+       var txt = $(".collapse_courses").is(':visible') ? 'Ocultar' : 'Mostrar';
+       $(".collapse_title_courses").text(txt);
+  });
+  
+  $('.collapse_title_friends').click ( function() {
+    $('.collapse_friends').toggle();
+  });
+  $(".collapse_title_friends").click(function() {
+       var txt = $(".collapse_friends").is(':visible') ? 'Ocultar' : 'Mostrar';
+       $(".collapse_title_friends").text(txt);
+  });
+</script>

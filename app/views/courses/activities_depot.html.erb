@@ -1,189 +1,170 @@
-<div class="" style="background: #1A5E97; width: 100%; height: 160px; display: inline-block;">
+<div class="section-header spaced activities-depot-header">
+  <div class="wrapper spaced">
 
-	<div style="width: 938px; margin: 0 auto; position: relative; display: block; margin-top: 63px;">
-
-	  <h1 style="font-size: 18px; margin-top: 18px;">
-	    <span style="color: #CCC; font-size: 15px; font-weight: lighter;">Actividades realizadas en el curso:</span><br />
-	    <%= link_to "#{@course.title}", course_path, :style => 'color: #9BCCF4; font-weight: lighter;' %>
-	  </h1>
-	  
-	  </br>
-
-	  <div class="activities_depot_select" id="select-pol">
-
-	  	<div class="" style="display: inline-block; position: absolute;">
-	  		<span style="display: inline-block; width: 300px; color: #CCC; padding: 11px; font-weight: 100; margin-left: 0px; text-align: left;">
-	  			Curso: <%= link_to "#{@course.title}", course_path, :style => 'color: #FFF;' %>
-	  		</span>
-	  	</div>
-
-	    <!-- <input type="text" id="rtf">-->
-	    <div class="membFilter">
-	      <span style="display: inline-block; width: 300px; font-weight: 100; margin-left: -310px; text-align: right;">Miembros del curso</span>
-	      <select id="rtf" value="" class="dropperDwn" style="margin-left: 10px;">
-	        <option>Todos los miembros</option>
-	        <% @course.members_in_courses.each do |m|%>
-	          <option><%= @user=User.find_by_id(m.user_id).name%></option>
-	        <% end %>
-	      </select>
-	    </div><!-- membFilter -->
-	    
-	  </div>
-
-  </div><!-- unclass conatiner -->
+    <div class="section-header-title w-subnav">
+      <div class="section-icon">
+        <span class="avatar-holder">
+          <%= avatar('course', '45', "no", @course.id, "avatar", "no", "no") %>
+        </span>
+      </div>
+      <div class="section-title">
+        <h1><%= @course.title %></h1>
+        <ul class="section-subnav">
+          <li class="active">
+            <a class="all_select" href="#" title="Todos" data-filter="all">Todo</a>
+          </li>
+          <li>
+            <a class="homework_select" href="#"  title="Tareas" data-filter="tarea">Tareas</a>
+          </li>
+          <li>
+            <a class="survey_select" href="#"  title="Cuestionarios" data-filter="examen">Cuestionarios</a>  
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-header-actions">
+      <%=link_to "Regresar al curso", course_path(@course)%>
+    </div>
+  </div>
 </div>
 
 
-<div style="width: 938px; margin: 15px auto 0; position: relative; display: block;">
-  <div class="classContTitle">
-    <h2 class="v1">Actividades realizadas
-	    	<span class="filter_acti"><p style="margin: 12px 0 0 10px;">Filtrar</p>
-	    		<ul class="drop_views" style="display: none;">
-	    			<li class="all_select">Todos</li>
-	    			<li class="homework_select">Tarea</li>
-	    			<li class="assignment_select">Tarea Entregada</li>
-	    			<li class="survey_select">Cuestionario o Examenes</li>
-	    			<!--<li class="test_select">Exámen</li>-->
-	    		</ul>
-	    	</span>
-    </h2>
-    <h2 class="v2" style="width: 497px; margin-right: 0px;">Archivos entregados</h2>
-  </div>
+<div class="wrapper spaced">
+  <div class="activities-depot-wrap">
+    <div class="activities-depot-feeds">
+      <div class="activities-depot-feeds-title">
+        <span class="meta-info">Actividades</span>
+      </div>
+      <div id="activites-feeds-container">
 
-  <div id="ajax-dump" style="float:left;"></div>
-
-  <div class="expoced" id="expoced" style="margin-top:1px;">
-    <!--<div id="resonance" style="position:fixed;"></div>-->
-  </div>
-
-  <div id="load-more-activities">
-      <b><%= link_to "Ver mas ...", load_more_activities_path(@course, :per_page => 15, :page => 1), :remote => true%></b>
+      </div>
+      <div id="load-more-activities">
+        <%= link_to "Cargar más actividades", "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 }  %>
+      </div>
+    </div>
+    <div class="activities-depot-main">
+    </div>
   </div>
 </div>
 
 <script>
-  function red_actdepot(elem) {
-    var red_to = $(elem).attr("redirect_to");
-    $(location).attr("href", red_to); 
+
+  var feedsURL              = '<%= "#{course_ki_line_pag_path(@course, :per_page => 10, :page => 0) }.json" %>',
+      feedsMainContainer    = $('.activities-depot-feeds'),
+      feedsContainer        = $('#activites-feeds-container'),
+      feedsDetailContainer  = $('.activities-depot-main'),
+      loadMoreContainer     = $('#load-more-activities'),
+      feedRespondsContainer = feedsDetailContainer.find('.activity-responds');
+
+  getAndRenderFeeds( feedsURL, function() {
+    loadMoreContainer.remove();
+  });
+
+  feedsContainer.on('click', '.activity-depot-feed', function(event) {
+    event.preventDefault();
+
+    var $this         = $(this),
+        activityID    = $this.attr('id'),
+        activityType  = $this.data('type');
+
+    $this.siblings('.activity-depot-feed').removeClass('active');
+    $this.addClass('active');
+
+    getActivityDepotFeedDetail( activityID, activityType );
+  });
+
+  feedsDetailContainer.on('click', '.show-activity-delivery', function(event) {
+    event.preventDefault();
+
+    var $this         = $(this),
+        activityType  = $this.data('type'),
+        activityID    = $this.data('id'),
+        url;
+
+    if ( activityType == "tarea" ) {
+      url = '/course_assignment_l_notif/';
+    } else if (activityType == "survey") {
+      url = '/course_survey_l_notif/';
+    }
+
+    $.get( url + activityID );
+  });
+
+  feedsDetailContainer.on('click', '.show-activity-feed', function(event) {
+    event.preventDefault();
+
+    var $this = $(this),
+        type  = $this.data('type'),
+        id    = $this.data('id');
+
+    getActivityDepotFeedDetail( id, type );
+    
+  });
+
+  feedsMainContainer.on('click', '.load-more-activities-feeds', function(event) {
+    var $this     = $(this),
+        per_page  = $this.data('perpage'),
+        page      = $this.data('page'),
+        url       = '<%= course_ki_line_pag_path(@course) %>?page='+ page +'&per_page='+ per_page +'.json';
+
+    getAndRenderFeeds( url, function() {
+      loadMoreContainer.remove();
+    });
+    
+    feedsMainContainer.animate({
+      scrollTop: feedsMainContainer.height()
+    });
+
+    $this.data( 'page', ++page );
+    event.preventDefault();
+  });
+
+  function getActivityDepotFeedDetail( id, type ) {
+    var url;
+    if ( type == "tarea" ) {
+      url = '/course_delivery_actdepot/';
+
+    } else if ( type == "examen" || type == "survey" ) {
+      url = '/course_survey_actdepot/';
+    }
+
+    $.get( url + id );
   }
 
-  $("#rtf").change(function() {         
-    var value = $(this).val();
-    var flot = '.' + value.split(" ").join("").toLowerCase();
+  function getAndRenderFeeds( url, callback ) {
+    console.log(url);
 
-    if(flot == ".todaslasactividades") {
-      $('.activities_depot').show();
-      $('.user_assets').show();
-    } else {
-      $('.activities_depot').hide();
-      $('.user_assets').hide();
-      $(flot).show();
-    }
-  });
-        
-  var locuorem = $.getJSON('<%= "#{course_ki_line_pag_path(@course, :per_page => 15, :page => 0) }.json" %>', function(json) {
-    var timeline = json.timeline.date;
-    var aux, dd2, flip, kilspace, id, identifier, assets, casual, url, nam, avatar, clasificate;
+    $.getJSON( url, function( data ) {
+      var activitiesFeeds = data.timeline.date;
 
-    for(var i = 0; i < timeline.length; i++) {
-      aux = timeline[i];
+      if ( activitiesFeeds == null ) {
+        callback();
+      } else {
+        for( var i = 0; i < activitiesFeeds.length; i++ ) {
+          var activityFeed = activitiesFeeds[i];
 
-      if(aux.compose) {
-        kilspace = aux.text.split(' ').join('');
-        flip = '/assets/' + kilspace.split(':')[0] + 'roty.png';
-        id = aux.compose.id + aux.compose.type;
-        clasificate = aux.compose.clasificate;
-        as_to_pertence_com_assets = aux.compose.pertencenence_to;
+          if (activityFeed.compose === undefined) continue;
 
-        dd2 = aux.asset.credit.split(" ").join("").toLowerCase();
-        avatar = aux.asset.media || 'http://pruebas.cursa.me/assets/imagex.png';
-        $('#ajax-dump').append('<div style="margin-top:1px;" class="activities_depot ' + as_to_pertence_com_assets + ' ' + dd2 + ' '+ aux.compose.type +'" id="' + id + '">' + '<img  src="' + avatar + '"  width="40px;" style="float:left; margin-top:4px;margin-left:10px; position: absolute; display: inline-block;">'+''+'<div class="title">'+aux.headline+'</div>'+' '+'<div class="reference">'+aux.asset.credit+""+aux.text+""+'<img src="'+flip+'">'+'</div>'+ ' ' +'</div>');
-
-        // este controlador muestra la información correspondiente a la actividad
-        $('#' + id).click(function() {
-          var axelid =  $(this).attr("id");
-          var cl_actives = $(this).attr("class").split(/\s/);
-          var last_class = cl_actives[1];
-          $('.user_assets').hide();
-          $('.' + last_class).show();
-
-          // Se coloca el div para que el usuario vea quien entrego el examen
-          if(axelid.lastIndexOf("examen") != -1) {
-            $('#expoced').html('');
-            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="examenes_contestados" ></div></div>');
-
-            $.get('/course_survey_actdepot/' + axelid.replace('examen', ''));
-          }
-          // Se coloca el div para que el usuario pueda calificar la tarea
-          else if(axelid.lastIndexOf("entrega_tarea") != -1) {
-            $('#expoced').html('');
-            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tarea_en_carga_notification"></div></div>');
-
-            $.get('/course_assignment_l_notif/' + axelid.replace('entrega_tarea', ''), function() {
-              $('#tcg_notif').css('width', '100%');
-              $('#tcg_notif').css('min-width', '75%');
-              $('#tcg_notif').css('margin-top', '25%');
-
-              // Ajustes
-              $('div.coklo-title').css('margin-left', '8%');
-              $('div.coklo-title').css('margin-top', '6%');
-              $('ul.tabs').css('margin-left', '5%');
-            });
-          }
-          else if(axelid.lastIndexOf("tarea") != -1) {
-            $('#expoced').html('');
-            $('#expoced').append('<div id="tcg_actdepot" class="tcg"><div id="tareas_entregadas"></div></div>');
-
-            $.get('/course_delivery_actdepot/' + axelid.replace('tarea', ''));
-          }          
-
-          return true;
-        });
-        
-        casual = "casual" + id;
-        identifier = '#' + id;
-
-        assets = aux.assets;
-        var cloud = 'po' + aux.asset.credit.split(" ").join("").toLowerCase();
-        if(assets) {
-          for(var l = 0; l < assets.length;l++) {
-           fromk = assets[l];
-            url = fromk.file.file.url;
-            nam = fromk.name;
-            pertence_al = fromk.pertencenence_to;
-
-            $("#resonance").prepend('<div style="display:none;" id=' + pertence_al + ' class="user_assets' + cloud + ' ' + pertence_al + '">' + '</div>');
-            $("#" + pertence_al).prepend('<a href="' + url + '" id=' + id + '>' + nam + '<a>');
+          if ( activityFeed.compose && activityFeed.compose.type == "tarea" || activityFeed.compose.type == "examen") {
+              feedsContainer.append( HandlebarsTemplates['activities-depot/feeds']( activityFeed ) );
           }
         }
       }
-    }
-  });
-  
-  $('.filter_acti').click ( function() {
-	  $('.drop_views').slideToggle();
-  });
 
-  $('.homework_select').click( function() {
-	  $('.activities_depot').hide();
-	  $('.tarea').show();
-	  
-  });
-  $('.assignment_select').click( function() {
-  	  $('.activities_depot').hide();
-  	  $('.entrega_tarea').show();
-  	  
-	  
-  });
-  $('.survey_select').click( function() {
-  	  $('.activities_depot').hide();
-  	  $('.examen').show();
-  	  
-	  
-  });
-  $('.all_select').click( function() {
-	  $('.activities_depot').show();
-	  
+    });
+  }
+
+  $('.section-subnav li > a').on('click', function() {
+    var $this = $(this),
+        filter = $this.data('filter');
+    
+    if ( filter == 'all') {
+      feedsContainer.children('.activity-depot-feed').show();  
+    } else {
+      feedsContainer.children('.activity-depot-feed').hide();
+      feedsContainer.children('[data-type="'+ filter +'"]').show();
+    }
+
   });
   
 </script>

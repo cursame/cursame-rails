@@ -1,0 +1,52 @@
+<div class="activity-responds-detail">
+  <h4>
+    {{#if title}}
+      {{title}}
+    {{/if}}
+
+    {{#if name}}
+      {{name}}
+    {{/if}}
+  </h4>
+
+  <ul class="list-buttons left">
+    <li>
+      <span class="meta-info">Publicado:</span><br>
+      {{formatDate publish_date "short"}}
+    </li>
+    <li>
+      <span class="meta-info">Fecha de Entrega:</span><br>
+      {{formatDate end_date "short"}}
+    </li>
+    <li>
+      <span class="meta-info">Acciones:</span><br>
+        {{#if title}}
+          <div id="delivery_state_publish{{id}}">
+            {{#is state "published" }}
+              <a href="/publish_unpublish_delivery_manualy?id={{id}}" data-remote="true">
+                Despublicar
+              </a>
+            {{else}}
+              <a href="/publish_unpublish_delivery_manualy?id={{id}}" data-remote="true">
+                Publicar
+              </a>
+            {{/is}}
+          </div>
+        {{/if}}
+
+        {{#if name}}
+          <div id="survey_state_publish{{id}}">
+            {{#is state "published" }}
+              <a href="/publish_unpublish_survey_manualy?id={{id}}" data-remote="true">
+                Despublicar
+              </a>
+            {{else}}
+              <a href="/publish_unpublish_survey_manualy?id={{id}}" data-remote="true">
+                Publicar
+              </a>
+            {{/is}}
+          </div>
+        {{/if}}
+    </li>
+  </ul>
+</div>

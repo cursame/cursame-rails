@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
  url(<%= current_user.coverphoto.blank? ? '/assets/'+current_user.cover_photox : current_user.coverphoto %>); background-size: 100% 440px; background-position-y: 0px; background-repeat: repeat-y;">
  <% @incourse = false %>
@@ -157,45 +158,51 @@
     <div id="pk_menu">
        <!-- <center id="gcharger" style="width:90%; height:100px; margin-left:60px; padding-top:20px;">  <%= image_tag('loader_gray.gif') %></center>-->
        <%= render :partial => "shared/post_menu" %>
-    </div>
-    <%=render :partial => 'shared/wall_filters', :locals => {:path => wall_path} %>
+=======
+<div id="box-content" class="wrapper spaced">
+  <div id="box-stream-post">
 
-    <!-- timeline -->
-    <div id="timeline" class="tim">
-        <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+    <div id="pk_menu">
+      <%=render :partial => 'shared/post_menu' %>
+>>>>>>> depuracion_ui
     </div>
-    <!-- fin timeline -->
-  <!-- mostrar el password por primera vez -->
-  <% if current_network.public_register == false%>
-   <% if show_joyride(3) != "1"%>
-    <%= render :partial => "/users/set_password_form", :locals => {:user => current_user} %>
-      <script>
-          modal("#set-password-form");
-      </script>
-    <% end %>
-  <%end%>
-  <!-- inicio de joyride -->
+    
+    <div id="timeline" class="tim">
+      <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+    </div>        
+
     <% if show_joyride(0) == "0"%>
       <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
     <% end %>
-  <!-- fin de joyride -->
 
     <%= will_paginate(@wall) %>
-</div>
-</div>
 
+  </div>
+</div>
 
 <script type="text/javascript">
 $(function() {
+
+  <% if !current_network.public_register && show_joyride(3) != "1" %>
+    var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
+    createModal( content, "overlay-small overlay-informative" );
+  <% end %>
+
   var aux = <%= (@show_course_expired) || false %>;
+  
   if(aux) {
     $('li.delivery').click();
   }
 
-  var p = $('#timeline').pageless({
-    totalPages: <%= @wall.total_pages %>,
-    url: '<%= wall_path %>',
-    loaderMsg: '...',
+  window.pagelessSettings = {
+    url : '<%= wall_path %>',
+    loaderImage : '<%= image_path("load.gif")%>'
+  };
+
+  $('#timeline').pageless({
+    totalPages: 10,
+    url: window.pagelessSettings.url,
+    loader: "#loader-pagination",
     onInit:function(opts){
       this.pageless = {
         opts : opts
@@ -204,7 +211,7 @@ $(function() {
     params:{
       search:''
     },
-    loaderImage: '<%= image_path("load.gif")%>'
+    loaderImage: window.pagelessSettings.loaderImage
   });
 });
 </script>

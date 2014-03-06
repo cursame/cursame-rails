@@ -20,6 +20,35 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
+  ##### manueja todas las tareas del usuario dentro de la red
+  def my_deliveries
+      deliveries = []
+      current_user.courses.each do |c|
+        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+         c.deliveries.each do |d|
+           case @member.owner
+              when true
+                  if d.assignments.count == 0
+                       deliveries.push(d.id)
+                  end
+              when !nil 
+                  if d.assignments.count == 0
+                       deliveries.push(d.id)
+                  end
+              when false
+                  if d.assignments.count == 0
+                       deliveries.push(d.id)
+                  end
+           end
+          end
+      end
+    @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+    
+    respond_to do |format|
+      format.html
+    end
+
+  end
 
   def condocourse
    @course = current_course.id
@@ -198,31 +227,30 @@ class DeliveriesController < ApplicationController
   end
 end
 
- def publish_unpublish_delivery_manualy
-   @state = params[:state]
-   @id = params[:id]
-       @delivery = Delivery.find_by_id(@id)
-       if @delivery.state == 'unpublish'
+  def publish_unpublish_delivery_manualy
+    @delivery = Delivery.find(params[:id])
+    
+    if @delivery.state == 'published'
+      @delivery.state = 'unpublish'
+      @delivery.end_date = Time.now
+      @message = "Se ha despublicado esta tarea."
+      @linkik = 'Publicar'
+    
+    else
+      @delivery.state = 'published'
+      @delivery.publish_date = Time.now
+      @delivery.end_date = Time.now + 10.days
+      @message = "Se ha republicado esta tarea agregando 10 dias desde ahora."
+      @linkik = 'Despublicar'
+    end
+    
+    @delivery.save!
 
-        @delivery.state = 'published'
-        @delivery.publish_date = Time.now
-        @delivery.end_date = Time.now + 10.days
-        @message = "se ha republicado agregando 10 dias desde ahora"
-
-       else
-
-         @delivery.state = 'unpublish'
-         @delivery.end_date = Time.now
-         @message = "se ha despublicado"
-
-
-       end
-       @delivery.save!
-       if @delivery.save
-       respond_to do |format|
-       format.js
-       end
-       end
+    if @delivery.save
+      respond_to do |format|
+      format.js
+    end
+  end
 
  end
 end

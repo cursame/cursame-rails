@@ -121,6 +121,12 @@ class User < ActiveRecord::Base
     return Friendship.where(:user_id => self.id)
   end
 
+  def count_friendships
+   a = Friendship.where(:user_id => self.id, :accepted => true).count 
+   b = Friendship.where(:friend_id => self.id, :accepted => true).count 
+   @count = a + b
+  end
+
  # def tutors
  #   return PIdToHId.where(:p_id => self.id)
  # end
@@ -226,12 +232,12 @@ class User < ActiveRecord::Base
     return self.domain
   end
 
-
-  #search por nombre en usuario
+####### busqueda por nombre de usario ######
   def self.search(search)
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "first_name LIKE '%"+search+"%' OR last_name LIKE '%"+search+"%' "
+      query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' " 
+      #puts query
       where(query)
     else
       # find(:all, :order => :first_name)
@@ -256,7 +262,7 @@ class User < ActiveRecord::Base
   end
 
 
-  # search all friends accepted or not accepted
+  ####### busca todos los migos aceptados ########
   def friends(accepted)
     friendships = self.friendships.keep_if {
       |friendship|
@@ -284,7 +290,7 @@ class User < ActiveRecord::Base
     }
     return ordered_friends
   end
-
+  ######## cikica todos lo amigos #########
   def all_friends
     friendships = self.friendships
     friendships_inverse = self.inverse_friendships
@@ -315,13 +321,15 @@ class User < ActiveRecord::Base
     }
     return ordered_friends
   end
+  ###### detecta los amigos en comun #######
 
   def mutual_friends(other_user)
     friends = self.friends(true)
     other_friends = other_user.friends(true)
     return friends | other_friends
   end
-
+ 
+  ###### detecta si entre dos usuarios son amigos #######
   def friends?(another_user)
     if self.id == another_user.id then
       return true
@@ -341,7 +349,8 @@ class User < ActiveRecord::Base
       return inverse_friendship.accepted
     end
   end
-
+  
+  ####### detecta si hay request de amistad #######
   def friends_request?(another_user)
     if self.id == another_user.id then
       return true
@@ -363,7 +372,8 @@ class User < ActiveRecord::Base
   def to_s
     return self.name + " (" + self.email + ")"
   end
-
+  
+  ###### detecta los posibles amigos en la red #####
   def possible_friends(network)
     users = Array.new
 
@@ -381,6 +391,67 @@ class User < ActiveRecord::Base
     end 
     users.uniq!
     return users
+  end
+
+  ####### detecta quien envio la solicitud de amistad #####
+
+  def who_sent?(another_user)
+    if (Friendship.find_by_user_id_and_friend_id(self.id,another_user.id))
+      return self
+    else
+      return another_user
+    end
+  end
+  
+  ###### detecta solicitudes de amistad entre usuarios
+  def have_a_friendship(another_user)
+    friend = Friendship.find_by_user_id_and_friend_id(self.id,another_user.id)
+    
+    p friend
+
+    if friend == nil 
+      inverse_friend = Friendship.find_by_user_id_and_friend_id(another_user.id, self.id)
+
+      p inverse_friend
+      
+        if inverse_friend == nil
+           @true = false
+         else
+           @true = true
+        end
+      else
+      @true = true
+    end
+
+  end
+  ##### es un filtro que detecta si el usuario ha sido aceptado en el perfil #######
+
+  def approved_friend(another_user)
+   if self.id == another_user.id
+     #### este usuario eres tu mismo la amistad es necesaria para poder ver tu perfil ####
+     puts "***************************************ingresando a mi perfil*********************************************"
+     @existed_friend = true
+   else
+    friend = Friendship.find(:all, :conditions => {:user_id => self.id, :friend_id => another_user.id, :accepted => true})
+    puts "#{friend}"
+    if friend == nil || friend.empty?
+      puts "amigo nulo se procese a buscar"
+      inverse_friend = Friendship.find(:all, :conditions => {:user_id => another_user.id, :friend_id => self.id, :accepted => true})
+      puts "#{inverse_friend}"
+      if inverse_friend == nil || inverse_friend.empty?
+        puts "***********************************inverso nulo se procese a negar***********************************"
+        @existed_friend = false
+      else
+        puts "***********************************inverso verdadero se procese a afirmar***********************************"
+        @existed_friend = true
+      end
+    else 
+      puts "***********************************se detecta que exista el friendship***********************************"
+      @existed_friend = true
+    end
+   end
+    @existed_friend
+
   end
 
   def import(path,network,user_admin, domain, subdomain)

@@ -1,0 +1,115 @@
+
+/* Sessions Skeleton
+/*----------------------------------*/
+.sessions-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+}
+
+.user-sessions-wrap {
+  width: 360px;
+  margin: 50px auto 50px auto;
+  position: relative;
+  z-index: 30;
+
+  .user-sessions-network-brand {
+    padding: 20px;
+    position: relative;
+
+    .header-link {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      margin-top: -9px;
+    }
+    
+    img {
+      display: block;
+    }
+
+    .free_network {
+      display: block;
+      margin-bottom: -10px;
+    }
+  }
+
+  .user-session-content {
+    padding: 20px;
+  }
+
+  .user-sessions-footer {
+    @include clearfix;
+  }
+
+  .user-session-links {
+    padding: 20px;
+  }
+}
+
+.form-sessions {
+  margin-top: 5px
+}
+
+.session-icon-input{
+  .i {
+    top: 10px;
+    left: 10px;
+  }
+
+  input {
+    padding: 12px 12px 12px 35px !important;
+  }
+}
+
+.user-sessions-medium {
+  width: 470px;
+}
+
+#sub_linked {
+  margin-top: 10px;
+}
+
+.signup-restore {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  
+  .background-layer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+  }
+  
+  .sessions-video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: 5;
+  }
+}
+
+.sessions-footer {
+  margin-bottom: 30px;
+  .sessions-footer-link {
+    margin-bottom: 10px;
+
+    ul li {
+      padding: 0 5px;
+      @include inline-block;
+    }
+  }
+}

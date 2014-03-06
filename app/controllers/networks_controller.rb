@@ -94,13 +94,16 @@ class NetworksController < ApplicationController
       @wall = current_network.walls.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
     end
 
-    if request.xhr?
+    
+
+    # if request.xhr?
+    if request.xhr? && @page > 1
       respond_to do |format|
         format.js
       end
     else
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render stream: true}
         format.json { render json: @network }
       end
     end
@@ -210,54 +213,31 @@ class NetworksController < ApplicationController
   end
 
   def network_comunity
-    search_reqfs = params[:search_reqfs]
-    user = current_user
-    network = current_network
-    
-    if search_reqfs then
-      @inverse_friends = user.inverse_friendships
-      @inverse_friends_array = Array.new
-      @inverse_friends = @inverse_friends.each {
-        |friendship|
-        if not(friendship.accepted) and (friendship.user.id.to_s == search_reqfs) then
-          @inverse_friends_array.push([friendship.user, "accept_request"])
-        end
-      }
-      
-      @network_users = @inverse_friends_array
-    else
-      @possible_friends = user.possible_friends(network)
-      @possible_friends = @possible_friends.map{|user| [user,"not_friend_request"]}
-    
-      @friends = user.friendships
-      @friends_array = Array.new
-      @friends = @friends.each {
-        |friendship|
-        if friendship.accepted then
-          @friends_array.push([friendship.friend, "friend"])
-        else
-          @friends_array.push([friendship.friend,"friend_requested"])
-        end
-      }
-      
-      @inverse_friends = user.inverse_friendships
-      @inverse_friends_array = Array.new
-      @inverse_friends = @inverse_friends.each {
-        |friendship|
-        if friendship.accepted then
-          @inverse_friends_array.push([friendship.user, "friend"])
-        else
-          @inverse_friends_array.push([friendship.user, "accept_request"])
-        end
-      }
-      
-      @network_users = @possible_friends + @friends_array + @inverse_friends_array
-    end
+  @user_l= current_user
+  @friends = @user_l.friends(false) + @user_l.friends(true)
+  
+   respond_to do |f|
+    f.html
+   end
 
-    @network_users = @network_users.sort { |x,y| x[0].to_s <=> y[0].to_s }
-    @network_users = @network_users.reject {|array| array[0].nil? }
   end
 
+  def all_user_in_network_where_not_my_friends
+  @user_l= current_user
+
+   @a = current_network.users
+
+   @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
+
+   @v = @a - @r
+
+   @friends = @v
+  respond_to do |f|
+    f.js
+  end
+
+  end
+  
   def awaiting_confirmation
     personal_url = params[:personal_url]
     user = User.find_by_personal_url(personal_url)
@@ -269,13 +249,133 @@ class NetworksController < ApplicationController
       @user_inactive = user
     end
   end
+
+  def find_user
+    @search_changes = params[:activiesearch].downcase
+    docificate_search_changes = I18n.transliterate("#{@search_changes}")
+    @users = current_network.users.search(docificate_search_changes).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
+    respond_to do |format|
+      format.js
+    end
+  end
   
+  def wall_filter
+    ##### detecta los tipos de publicación para procesarlos mediante un filtro ######
+    @typeforfilter = params[:typeforfilter]
+    @responds = true if  params[:responds] == "true" 
+    @responds = false if  params[:responds] == "false" 
+
+    p @typeforfilter
+    p @responds
+    responds_true = []
+    responds_false = []
+
+    ######## inicia el acceso a los cursos del usuario #######
+    current_user.courses.each do |c|
+    @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+    p @member.owner
+    case 
+      when @typeforfilter == 'Delivery'
+####################################### inicia el filtro de deliveries ########################################
+        case 
+          when @responds && @member.owner
+            c.deliveries.each do |d|
+             if d.assignments.count != 0
+             responds_true.push(d.id)
+             end
+            end    
+          when @responds && (@member.owner.nil? or !@member.owner)
+            c.deliveries.each do |d|
+              user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
+              if user_delivery.count != 0
+                 responds_false.push(d.id)
+              end
+            end
+          when !@responds  && @member.owner
+            c.deliveries.each do |d|
+             if d.assignments.count == 0
+              responds_false.push(d.id)
+             end            
+            end    
+          when !@responds  && (@member.owner.nil? or !@member.owner)
+            c.deliveries.each do |d|
+              user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
+              if user_delivery.count == 0
+                 responds_false.push(d.id)
+              end
+            end
+        end
+####################################### finaliza el filtro de delivereis ######################################
+      when @typeforfilter == 'Survey'
+####################################### inicia filtro de survey ##############################################
+    
+        ##### se accesa a todos los cursos
+          #puts @member
+          case 
+            ###### se validan las variables que buscamos
+             when @responds && @member.owner
+                #puts "owner"
+               c.surveys.each do |s|
+                if s.user_surveys.count != 0
+                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
+                  responds_true.push(s.id)
+                end
+               end
+             when @responds && (@member.owner.nil? or !@member.owner)
+              #puts "no owner"
+               c.surveys.each do |s|
+                 user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
+                 if user_survey.count != 0
+                    responds_true.push(s.id)
+                 end
+               end
+             when !@responds && (@member.owner.nil? or !@member.owner)
+                c.surveys.each do |s|
+                 user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
+                  if user_survey.count == 0
+                    responds_false.push(s.id)
+                  end
+                end
+              #puts "no owner"
+             when !@responds && @member.owner
+              c.surveys.each do |s|
+                if s.user_surveys.count == 0
+                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
+                  responds_false.push(s.id)
+                end
+             end
+           end
+    end
+      ##################################### finaliza filtro de survey ##########################################
+    end
+    #################### finaliza el acceso a los datos de los curos del usuario #####################
+    #################### se generan las epecificaicones del wall #############################
+    @operator = responds_true + responds_false
+    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{@typeforfilter}").paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
+
   # sesion expire
    def expire_session
        puts "se ha ingresado al metodo"
        @status = user_signed_in?
-       @timer = Time.now
-       @minute = 5
+       puts "esta logueado es #{@status}"
+       puts "se procede a candelar la session de usuario #{@status}"
+       if @status
+           current_user.online = false
+           current_user.save!
+           PrivatePub.publish_to("/messages/chat_notifications",
+                                  userId: current_user.id,
+                                  online: false
+                                )
+           sign_out(current_user) 
+       end
        #puts @status
         respond_to do |format|
            format.js

@@ -1,6 +1,9 @@
-<% wall.each do |publication| %>
 
-<!-- le ocultamos informacion privada al usuario -->
+<% 
+  wall.each do |publication|
+  next if publication.publication.user == nil
+%>
+
 <% if visible_for == 'user' && !publication.courses.empty?%>
   <%  next %>
 <%end%>
@@ -11,6 +14,7 @@
   <%end%>
 <%end%>
 
+<<<<<<< HEAD
 <%
   # aqui es inicializan las variables para todos los tipos de publicaciones
   post = publication.publication
@@ -374,5 +378,8 @@
     return false;
   });
   </script>
+=======
+<%= render partial: 'shared/publications/publication_template', locals: { publication: publication } %>
+>>>>>>> depuracion_ui
   
 <%end%>

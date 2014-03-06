@@ -1,0 +1,103 @@
+
+/* Califications Skeleton
+----------------------------------*/
+.califications-section-main {
+  margin: 10px 0;
+}
+
+.course-califications-wrap {
+  margin: 10px 0;
+
+  .course-califications-header {
+    padding: 10px;
+    padding-bottom: 0;
+    @include clearfix;
+  
+    .course-califications-header-avatar {
+      float: left;
+    }
+
+    .course-califications-header-main {
+      margin-left: 55px;
+      position: relative;
+
+      .btn {
+        position: absolute;
+        top: 5px;
+        right: 0;
+      }
+    }
+  }
+
+  .course-califications-main {
+    padding: 10px;
+    padding-top: 0;
+  }
+}
+
+.course-califications-section {
+  margin-top: 10px;
+  
+  .no-califications {
+    padding: 40px 0;
+  }
+  .course-califications-section-title {
+    padding: 10px;
+  }
+
+  .course-califications-section-footer {
+    @include clearfix;
+
+    .cali-section {
+      float: right;
+      padding: 10px;
+    } 
+  }
+}
+
+.user-califications-wrap {
+  margin-top: 10px;
+
+  .user-califications-header {
+    padding: 10px;
+    position: relative;
+    @include clearfix;
+
+    .avatar {
+      float: left
+    }
+
+    .user-califications-header-title {
+      margin-left: 35px;
+    }
+
+    .arrow-down {
+      position: absolute;
+      right: 15px;
+      top: 27px;
+    }
+
+    &.active .arrow-down {
+      top: 20px
+    }
+  }
+
+  .user-califications-main {
+    display: none;
+    padding: 10px;
+  }
+
+  
+}
+
+table {
+  width: 100%;
+
+  thead tr th {
+    padding: 5px 10px
+  }
+
+  tbody tr td {
+    padding: 8px 10px;
+  }
+}

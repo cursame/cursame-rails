@@ -1,0 +1,6 @@
+<% if @search != '' %>
+  $('#courses_content').html("<%= escape_javascript(render :partial => '/courses/members_in_courses/course_view_call', :locals => {:courses => @courses, :member => @member})%>");
+<% else %>
+  Notice('error', 'Por favor escribe algo en el campo de busqueda.');
+  $('#search-courses').focus();
+<% end %>

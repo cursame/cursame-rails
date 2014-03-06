@@ -125,7 +125,11 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
+<<<<<<< HEAD
   config.timeout_in = 70.minutes
+=======
+  config.timeout_in = 20.minutes
+>>>>>>> depuracion_ui
   
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
@@ -151,7 +155,7 @@ Devise.setup do |config|
   # config.maximum_attempts = 20
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
-  # config.unlock_in = 1.hour
+  config.unlock_in = 1.hour
 
   # ==> Configuration for :recoverable
   #

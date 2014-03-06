@@ -1,0 +1,66 @@
+<div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
+
+  <div class="wrapper spaced">
+    <div class="admin-buttons">
+      <% if @user_l == current_user %>
+        <%= link_to "Editar Perfil", edit_user_registration_path, class: 'btn btn-small btn-secondary hard-border-btn' %>
+      <% end %>
+
+      <div id="taxk_<%=@user_l.id%>">
+        <% if @user_l != current_user %>
+          <% unless @user_l.friends?(current_user) %>
+            <% if @user_l.have_a_friendship(current_user) %>
+              <% case current_user.who_sent?(@user_l) %>
+                <% when current_user %>
+                  <%= link_to "Cancelar solictud de amistad", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
+                  <span class="btn btn-small btn-disabled">Solicitud enviada</span>
+                <% when @user_l %>
+                  <%= link_to "Ignorar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
+                  <%= link_to "Aceptar solicitud de amistad", friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true%>
+                <% else %>
+                  <%= link_to "Añadir a mis amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn", remote: true %>
+              <% end %>
+            <% else %>
+              <div id="add_friend<%=@user_l.id%>">
+                <%= link_to "Añadir a mis amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true %>
+              </div>
+            <% end %>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="profile-user-bar">
+  <div class="wrapper spaced">
+  
+    <div class="profile-name-avatar">
+      <div class="profile-avatar" id="box-user-credential" >
+        <%= link_to show_user_path(@user_l.personal_url) do %>
+          <span class="avatar-holder">
+            <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
+          </span>
+        <% end %>
+      </div>
+      <%= link_to show_user_path(@user_l.personal_url) do %>
+        <h1><%= truncate(@user_l.name , :omission => "...", :length => 24) %></h1>
+      <% end %>
+    </div>
+
+    <div class="profile-navigation">
+      <ul>
+        <li>
+          <%= link_to 'Información', user_info_path(@user_l.personal_url) %>
+        </li>
+        <li>
+          <%= link_to 'Cursos', user_courses_path(@user_l.personal_url) %>
+        </li>
+        <li>
+          <%= link_to 'Amigos', user_friends_path(@user_l.personal_url) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

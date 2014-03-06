@@ -1,0 +1,100 @@
+
+/* Califications Skin
+----------------------------------*/
+.course-califications-wrap {
+  @extend .basic-container-style;
+}
+
+table {
+  thead tr th {
+    border-bottom: 1px solid #e3e3e3;
+    @extend .meta-info;
+   }
+
+   tbody tr {
+    &.even td {
+      background: #f7f7f7;
+    }
+
+    td {
+      border: 1px solid #e3e3e3;
+      border-width: 1px 0 0 1px;
+
+      &:first-child {
+        border-left: 0;
+      }
+    }
+   }
+}
+
+.course-califications-section {
+  border-radius: $radius;
+  
+  .course-califications-section-title {
+    border-radius: $radius $radius 0 0;
+    border: 1px solid #e3e3e3;
+    border-bottom: 0;
+  }
+
+  table {
+    border: 1px solid #e3e3e3;
+    border-width: 0 1px;
+  }
+
+  .no-califications {
+    text-align: center;
+    border: 1px solid #e3e3e3;
+    border-radius: 0 $radius;
+  }
+
+  .course-califications-section-footer {
+    border: 1px solid #e3e3e3;
+    border-width: 1px 1px 0 0;
+
+    .cali-section {
+      border: 1px solid #e3e3e3;        
+      border-width: 0 0 1px 1px;
+
+      &:first-child {
+        border-radius: 0 0 $radius 0; 
+      }
+
+      &:last-child {
+       border-radius: 0 0 0 $radius;
+      }
+    }
+  }
+}
+
+.user-califications-wrap {
+  border: 1px solid #e3e3e3;
+  border-radius: $radius;
+
+  .user-califications-header {
+    background: #fcfcfc;
+    border-radius: $radius $radius 0 0;
+    cursor: pointer;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+
+    .arrow-down {
+      @include triangle(12px, #e3e3e3, down);
+    }
+
+    &.active {
+      border-bottom: 1px solid #e3e3e3;
+
+      .arrow-down {
+        @include triangle(12px, #e3e3e3, up);
+      }
+    }
+  }
+}
+
+.number {
+  font-size: 16px;
+  font-weight: bold;
+  color: $primary-color;
+}

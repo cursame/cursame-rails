@@ -1,27 +1,27 @@
 <div class="var_delivery">
- <div class="pkl">
-    <center>
-      <%if typeo != 'assignment'%>
+  <%if typeo != 'assignment'%>
+  
+    <ul class="list-buttons left">
+      <li>
+        <a class="valu<%=typeo%> btn btn-secondary" href="" data-remote="true"> <%= icon('youtube-asset') %> Youtube</a>
+      </li>
+      <li>
+        <a href="" class="valw<%=typeo%> btn btn-secondary" data-remote="true"> <%= icon('wikipedia-asset') %> Wikipedia</a>      
+      </li>
+      <li>
+        <%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%>        
+      </li>
+    </ul>
         
-        <a  id="valu"class="valu<%=typeo%>" href="" data-remote="true"></a>
-        <!-- <a id="valv" href="" data-remote="true"><%#= image_tag('vimeo.png')%></a>-->
-        <a href="" id="valw"class="valw<%=typeo%>" data-remote="true"></a>
-        <%#=link_to image_tag('wikipedia.png'),  c_wikipedia_path(:search_wikipedia => 'alfredo adler', :typeo => "typeo")%>
-        <div id="vald<%=typeo%>"><%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%></div>
+  <%else%>   
+    
+    <a class="valu<%=typeo%> btn btn-secondary" href="" data-remote="true"> <%= icon('youtube-asset') %> Youtube</a>
+    <%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%>
         
-       <%else%>   
-        <a  id="valu"class="valu<%=typeo%>" href="" data-remote="true"></a>     
-        <div id="vald<%=typeo%>"><%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%></div>
-        
-       <%end%>
-    </center>
- </div>  
+  <%end%>
 
 </div>
- <%if typeo == 'delivery'%>
-    <div class="notice-file">El límite de peso 10Mb</div>
-   <%else%>
- <%end%>
+
 <script>
     $("#<%=typeo%>_title").keyup(function () {
       var value = $(this).val();
@@ -36,13 +36,6 @@
             text = text.replace(/[ýÿ]/, 'y');
             text = text.replace(/[ñ]/, 'n');
             text = text.replace(/[ç]/, 'c');
-          /*   text = text.replace(/[^a-zA-Z0-9-]/, ''); 
-            
-            text = text.replace(/['"]/, '');
-            text = text.replace(/\s+/, '-');
-            text = text.replace(/' '/, '-');
-            text = text.replace(/(_)$/, '');
-            text = text.replace(/^(_)/, '');*/
             return text;
          }
         

@@ -1,25 +1,12 @@
-$('#tareas_entregadas').html('');
-<% if @assignments.empty? %>
-	$('#tareas_entregadas').html('No hay ninguna entrega en esta tarea.');
+
+feedsDetailContainer  = $('.activities-depot-main');
+feedsDetailContainer.html('');
+
+feedsDetailContainer.append( HandlebarsTemplates['activities-depot/delivery-detail']( <%=j @delivery.to_json.html_safe %> ) );
+ 
+<% if  @count == 0  %>
+  feedsDetailContainer.append('<div class="no-sub-content-section"><h6>Todavia no hay ninguna entrega en esta tarea.</h6></div>');
 <% else %>
-	<% @assignments.each do |assign|%>
-		<% user = assign.user %>
-		$('#tareas_entregadas').append('<div id="tarea_entregada_actdepot-<%= assign.id %>" style="height: 70px; margin-top: 20px; padding-left: 10px; cursor: pointer;" redirect_to="" onclick = "red_actdepot(this);">' +
-			'<div style="display: inline-block; float: left;">' +
-			'<%= link_to image_tag(user.avatar.modern, {:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !user.avatar.blank? )%>' +
-        	'<%= link_to image_tag(user.image_avatarxxx, {:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( user.avatar.blank? )%>' +
-        	'</div>' +
-        	'<div style="display: inline-block; margin-left: 10px; margin-top: 10px;">Tarea entregada por: <br><b><%= link_to "#{user.name}", show_user_path(user.personal_url) %></b></div>' +
-        	'<div style="width: 100px; height: 95px; color: white; position: absolute; text-align: center; display: inline-block; background: #5F95BE; margin-left: 40%; margin-top: -4%;">' +
-        	'<div id="entrega-tarea-actdepot" style="position: relative;"></div></div>' +
-		'</div>');
-		$('#tarea_entregada_actdepot-<%= assign.id %>').attr("redirect_to", "/courses/<%=@delivery.courses.first.id%>?search=Delivery&id_search=<%=@delivery.id.to_s%>&show_assig=<%= assign.id.to_s %>");
-		<% if assign.accomplishment.nil? %>
-			$('#entrega-tarea-actdepot').html('No se ha<br>calificado<br><span style="font-size: 7px; text-decoration: underline;">VER ENTREGA</span>');
-			$('#entrega-tarea-actdepot').css('margin-top', '22%');
-		<% else %>
-			$('#entrega-tarea-actdepot').html('<%= assign.accomplishment.round(2) %>%<br><span style="font-size: 8px; text-decoration: underline;">VER ENTREGA</span>');
-			$('#entrega-tarea-actdepot').css('margin-top', '30%');
-		<% end %>
-	<% end %>
+  console.log( <%=j @deliveries.to_json.html_safe %> );
+  feedsDetailContainer.append( HandlebarsTemplates['activities-depot/deliveries']( <%=j @deliveries.to_json.html_safe %> ) );
 <% end %>

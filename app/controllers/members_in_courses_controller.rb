@@ -69,16 +69,34 @@ class MembersInCoursesController < ApplicationController
   # PUT /members_in_courses/1
   # PUT /members_in_courses/1.json
   def update
-    @members_in_course = MembersInCourse.find(params[:id])
+    @id = params[:id_member]
+    @members_in_course = MembersInCourse.find(@id)
+      c = params[:checked]
+      t = params[:type_update]
+      @member_it = User.find_by_id(params[:member_it])
+      case
+        when t == 'acceptin' 
+             case 
+               when c == 'checked'
+                 @members_in_course.accepted = true
+               when c == 'undefined'
+                 @members_in_course.accepted = false
+                 @members_in_course.owner = false
+
+              end
+        when t == 'ownerin' 
+              case 
+               when c == 'checked'
+                 @members_in_course.owner = true
+               when c == 'undefined'
+                 @members_in_course.owner = false
+              end
+      end
+
+      @members_in_course.save
 
     respond_to do |format|
-      if @members_in_course.update_attributes(params[:members_in_course])
-        format.html { redirect_to :back, notice: 'Members in course was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @members_in_course.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
  end
 
@@ -86,6 +104,7 @@ class MembersInCoursesController < ApplicationController
   # DELETE /members_in_courses/1.json
   def destroy
     @members_in_course = MembersInCourse.find(params[:id])
+    @course_id = @members_in_course.course_id
     @members_in_course.destroy
 
     respond_to do |format|

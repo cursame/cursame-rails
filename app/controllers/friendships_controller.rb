@@ -57,11 +57,15 @@ class FriendshipsController < ApplicationController
     @friendship.accepted = true
     @friendship.save
     @user = User.find(params[:id])
+    @f = params[:id]
+    puts @f
      respond_to do |format|
         format.js
         format.json
       end
   end
+
+
 
   # PUT /friendships
   # PUT /friendships.json
@@ -91,11 +95,12 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
-    @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id,params[:friend_id])
+    @friendship = Friendship.find_by_user_id_and_friend_id(params[:id],current_user.id)
     if @friendship.nil? then
-      @friendship = Friendship.find_by_user_id_and_friend_id(params[:friend_id],current_user.id)
+      @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
     end
+    
     @friendship.destroy
-    redirect_to :show_friends
+    redirect_to :back
   end
 end

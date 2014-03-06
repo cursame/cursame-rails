@@ -168,13 +168,11 @@ function DropDown(el) {
        // objForm[0].reset();
     }
 }
+
 DropDown.prototype = {
     initEvents : function() {
         var obj = this;
-        obj.dd.on('click', function(event){
-            $(this).toggleClass('active');
-            event.stopPropagation();
-        });
+        
         obj.opts.children('label').on('click',function(event){
             var opt = $(this).parent(),
                 chbox = opt.children('input'),
@@ -196,7 +194,4 @@ DropDown.prototype = {
         return this.index;
     }
 }
-$(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-});
 

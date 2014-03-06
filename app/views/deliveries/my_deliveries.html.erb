@@ -1,0 +1,52 @@
+
+<!-- Contiene todas las deliveries mediante el wall del usuario -->
+<div class="section-header">
+  <div class="wrapper spaced">
+
+    <div class="section-header-title w-subnav">
+      <div class="section-icon">
+        <%= icon('section-deliveries') %>  
+      </div>
+      <div class="section-title">
+        <h1>Tareas</h1>
+        <ul class="section-subnav">
+          <li class="active">
+            <%= link_to "Por entregar", wall_filter_path(:typeforfilter => 'Delivery', :responds => 'false'), :remote => true %>
+          </li>
+          <li>
+            <%= link_to "Tareas entregadas", wall_filter_path(:typeforfilter => 'Delivery', :responds => 'true'), :remote => true %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <% unless current_user.courses.empty? %>
+      <%= render partial: '/shared/publications-filter/filter_by_course_publications', locals: { type: 'tareas' } %>
+    <% end %>
+
+  </div>
+</div>
+
+<div id="timeline" class="tim wrapper spaced sc-margined">
+  <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
+</div>
+
+<%= will_paginate(@wall) %>
+
+<script>
+
+
+ var p = $('#timeline').pageless({
+    totalPages: <%= @wall.total_pages %>,
+    url: '<%= my_deliveries_path(current_network) %>',
+    onInit:function(opts){
+      this.pageless = {
+        opts : opts
+      };
+    },
+    params:{
+      search:''
+    },
+    loaderImage: '<%= image_path("load.gif")%>'
+  });
+</script>

@@ -19,7 +19,6 @@ class HomeController < ApplicationController
   ###### destroye sesiones caducadas
   def ending_session
     sign_out(current_user)
-
     redirect_to root_path
   end
 
@@ -84,6 +83,7 @@ class HomeController < ApplicationController
   def upvote
       @publication = Wall.find(params[:id])
       @publication.publication.liked_by current_user
+      
       respond_to do |format|
        #format.html
        format.js
@@ -129,11 +129,26 @@ class HomeController < ApplicationController
      end
 
      def edit_wall
-       @id = params[:id]
-       @type = params[:type]
-       puts '------------------------'
-       puts @id
-       @messages = "Comentario"
+
+      @id = params[:id]
+      @type = params[:type]
+
+      case @type
+        when 'Delivery'
+          @delivery = Delivery.find(@id)
+
+        when 'Survey'
+          @survey = Survey.find(@id)
+
+        when 'Comment'
+          @comment = Comment.find(@id)
+          @commentable_id = @comment.commentable_id
+          @commentable_type = @comment.commentable_type
+
+        when 'Discussion'
+          @discussion = Discussion.find(@id)
+      end
+
        respond_to do |format|
          format.js
        end
@@ -185,37 +200,36 @@ class HomeController < ApplicationController
   # chat behaviour of cursame
   # -----------------------------
   def chat
-      @channel = Channel.new
-      @messages = []# @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
-      @show_chat_panel = false
-      @page = 1
-      respond_to do |format|
-          format.html
-      end
+    @messages = [] # @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
+    @show_chat_panel = false
+    @page = 1
+    respond_to do |format|
+        format.html
+    end
   end
 
-    def open_channel
-      if params[:course]
-        @channel_name = "/messages/course_channel_"+ params[:id]
+  def open_channel
+    if params[:course]
+      @channel_name = "/messages/course_channel_"+ params[:id]
 
-        users = Course.find(params[:id]).users
-        ######## se agregan validadores de users para el exist #########
-        users = users.keep_if{|x| x != nil}
+      users = Course.find(params[:id]).users
+      ######## se agregan validadores de users para el exist #########
+      users = users.keep_if{|x| x != nil}
 
-      else
-        ids = [current_user.id, params[:id].to_i]
-        @channel_name = get_unique_channel_users(ids)
-        users = User.find(ids)
+    else
+      ids = [current_user.id, params[:id].to_i]
+      @channel_name = get_unique_channel_users(ids)
+      users = User.find(ids)
 
-      end
-
-      @channel = find_or_insert_channel(@channel_name,users)
-      @page = 1
-      @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
-      respond_to do |format|
-       format.js
-      end
     end
+    
+    @channel = find_or_insert_channel(@channel_name,users)
+    @page = 1
+    @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
+    respond_to do |format|
+     format.js
+    end
+  end
 
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
@@ -226,6 +240,7 @@ class HomeController < ApplicationController
 
       @channel_name = params[:channel_name]
       @channel_id = params[:channel_id]
+      
       respond_to do |format|
        format.js
       end
@@ -312,14 +327,20 @@ class HomeController < ApplicationController
 
   def find_or_insert_channel(channel_name,users)
     channel = Channel.find_by_channel_name(channel_name)
-    puts channel
+
     if !channel
       channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
       channel.users = users
       channel.save!
+      puts "******************************"
+      puts "canal nuevo"
+      puts "******************************"
+
     end
-    puts channel
-    return channel
+      puts "******************************"
+      puts "canal existente"
+      puts "******************************"
+      return channel
   end
   # The exception that resulted in this error action being called can be accessed from
   # the env. From there you can get a backtrace and/or message or whatever else is stored

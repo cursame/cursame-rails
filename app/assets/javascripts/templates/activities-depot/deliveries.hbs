@@ -1,0 +1,24 @@
+<div class="activity-responds">
+  <div class="deliveries-activity-wrap">
+    {{#each this}}
+      <div id="{{id}}" class="delivery-item show-activity-delivery" data-type="{{type}}" data-id="{{id}}">
+        <div class="delivery-item-author">
+          <span class="avatar-holder">
+            {{{user_avatar}}}
+          </span>
+        </div>
+        <div class="delivery-item-main">
+          <i class="i i-arrow-gray-right"></i>
+          <h6>{{user_name}}</h6>
+          <div class="delivery-result">
+            {{#if accomplishment}}
+              <p>Calificación: <span>{{accomplishment}}</span></p>
+            {{else}}
+              <p>Sin calificar</p>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

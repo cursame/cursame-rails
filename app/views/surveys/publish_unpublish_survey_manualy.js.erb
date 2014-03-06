@@ -1,15 +1,13 @@
+<<<<<<< HEAD
 <% if @survey.state == 'published' %>
 $('#survey_state_publish<%=@survey.id%>').html('<%= link_to "Activo", publish_unpublish_survey_manualy_path(:state => @survey.state, :id => @survey.id ), :remote => true, :class => "state-btn" %>');
 <%else%>
 $('#survey_state_publish<%=@survey.id%>').html('<%= link_to "Inactivo", publish_unpublish_survey_manualy_path(:state => @survey.state, :id => @survey.id ), :remote => true, :class => "state-btn" %>');
 <%end%>
+=======
+
+$('#survey_state_publish<%=@survey.id%>').html('<%= link_to "#{@linkik}", publish_unpublish_survey_manualy_path(:id => @survey.id ), :remote => true, :class => "state-btn" %>');
+>>>>>>> depuracion_ui
 $('#survey_dates<%= @survey.id%>').html('<%= @survey.publish_date %> <%= @survey.end_date %>');
-$("#notice").html('');
-$("#notice").css('color','#608847');
-$("#notice").css('background','#DFF0D8');         
-$( "#notice" ).animate( { width: "100%", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
-$('#notice').append('<%= @message %>');
-setTimeout(function() {
-    $('#notice').html('')
-    $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });
-}, 3500);
+
+Notice('success', '<%= @message %>');

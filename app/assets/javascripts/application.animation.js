@@ -441,35 +441,14 @@ $(document).ready(function() {
     *========= Caching all forms submit for masking and giving feedback ====================
     *=======================================================================================
     */
-    // $("form").on('submit',function(e) {
-    //     console.log(e);
-    //     mask($(e.target),"Submiting your form");
-    // });
-    // 
-     $(document).ajaxStart( function() {
-          // $.get("/closer_db");
 
-           $('#log_loadding').show();
-           $('.activable').attr("disabled", true);
-           
-        }).ajaxStop( function() {
-         
-            $('#log_loadding').hide('');    
-            $('.activable').attr("disabled", false);
-            
-                  
-    });
-
-    /*
-    *=======================================================================================
-    *========= Editing the forms in the wall ====================
-    *=======================================================================================
-    */
-    $('.btn').live('click',function () {
-        $('.link_publications').show();
-        if($('.form_for_edit_wall').is(':visible')){
-            $(this).closest("form").submit();
-        }        
+    $(document).ajaxStart( function() {
+        $('#log_loadding').show();
+        $('.activable').attr("disabled", true);
+    }).ajaxStop( function() {
+        $('#log_loadding').hide();
+        $('.activable').attr("disabled", false);
+        $('.autogrow').autosize();
     });
     
 });

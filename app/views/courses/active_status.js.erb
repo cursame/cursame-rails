@@ -1,1 +1,7 @@
-$("#propyety_course_<%= @course.id %>").hide("slow")
+<% if current_course.active_status %>
+	$("#propyety_course_<%= @course.id %>").html('<%= link_to "Desactivar",  active_status_path, :remote => true %>');
+  Notice('success', 'Se ha activado correctamente el curso.');
+<% else %>
+  $("#propyety_course_<%= @course.id %>").html('<%= link_to "Activar",  active_status_path, :remote => true %>');
+  Notice('success', 'Se ha desactivado correctamente el curso.');
+<% end %>

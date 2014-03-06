@@ -1,53 +1,47 @@
 <% @typeo = typeo %>
-<input class="dropbox-chooser" id="<%=@typeo%>DP_<%= id%>"></input>
+
+<a href="#" class="btn btn-secondary" id="<%=@typeo%>DP_<%= id%>"> <%= icon('dropbox-asset') %> Dropbox</a>
+
 
 <script>
 
-    var eliminarDropbox = function(demagogo){
-             $("#execute_dropbox"+demagogo).click(function() {
-                  $("#execute_dropbox"+demagogo).hide();
-                  $("#resput_dropbox"+demagogo).hide();
-                  $("#executable_dropbox"+demagogo).hide();
-                  $("#<%= @typeo %>_contents_attributes_"+demagogo+"_content").remove();
+  var eliminarDropbox = function(demagogo){
+    $("#execute_dropbox"+demagogo).click(function() {
+      $("#execute_dropbox"+demagogo).hide();
+      $("#resput_dropbox"+demagogo).hide();
+      $("#executable_dropbox"+demagogo).hide();
+      $("#<%= @typeo %>_contents_attributes_"+demagogo+"_content").remove();
+    });
+  };
+  
+  $("#<%=@typeo%>DP_<%= id %>").click(function (e, argument) {
+    e.preventDefault();
 
-             });
-       };
+    options = {
+      linkType: "preview",
+      multiselect: true,
+      success: function(files) {
+        var files = files;
 
+        box = $('#choser<%= @typeo %>_<%= id %>');
+        
+        for(var i=0; i<files.length; i++) {
+          var random = Math.floor(Math.random()*113);
+          var size = files[i].bytes;
+          var demagogo = size+random;
 
-       $("#<%=@typeo%>DP_<%= id%>").click(function (argument) {
-         options = {
-           linkType: "preview",
-           multiselect: true,
-           success: function(files) {
-               var files = files;
-               for(var i=0; i<files.length; i++) {
-
-                      var random = Math.floor(Math.random()*113);
-                      var size = files[i].bytes;
-                      var demagogo = size+random;
-
-
-                     $link = $('<a/>', {
-                         'href': files[i].link,
-                         'text': files[i].link,
-                          'id' : 'executable_dropbox'+demagogo,
-                         'target': "blank_"
-                     }).append("<br/>");
-
-                     $('#choser<%= @typeo %>_<%= id %>').append('<div id="resput_dropbox'+demagogo+'" style="float:left;">'+'<%= image_tag("dropbox-mini2.png") %>'+'</div>');
-                     $("#choser<%= @typeo %>_<%= id %>").append($link);
-                     $('#choser<%= @typeo %>_<%= id %>').append('<a id="execute_dropbox'+demagogo+'" class="cancel_link">'+"x"+'</a>');
-                     $('#content_killer<%= @typeo %>_<%= id %>').append('<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
-
-                   eliminarDropbox(demagogo);
+          box.append('<div class="publication-asset"><div id="resput_dropbox'+demagogo+'"><a href="'+ files[i].link +'" target="_blank"> <i class="i i-dropbox-asset-blue"></i> '+ truncate( files[i].link, 45, '...') +'</a> <a id="execute_dropbox'+demagogo+'" class="cancel_link">Borrar</a></div></div>');
 
 
-             }
-           },
+          $('#content_killer<%= @typeo %>_<%= id %>').append('<input id="<%=@typeo%>_contents_attributes_'+demagogo+'_content" name="<%=@typeo%>[contents_attributes]['+demagogo+'][content]" size="30" type="hidden" value="'+files[i].link+'">');
 
-           cancel:  function() {}
-         };
-         //mandamos a llamar a dropbox
-         Dropbox.choose(options);
-       });
+          eliminarDropbox(demagogo);
+        }
+      },
+      cancel:  function() {}
+    };
+
+    //mandamos a llamar a dropbox
+    Dropbox.choose(options);
+  });
 </script>

@@ -1,5 +1,5 @@
 if($('#chat').length){
-	$('#load-more-messages-<%= @channel.id%>').html('<a href="/home/load_more_messages/<%= @channel.id%>?page=<%= @page + 1 %>" data-remote="true" style="cursor:pointer; text-align: center;">...</a>');
+	$('#load-more-messages-<%= @channel.id%>').html('<a href="/home/load_more_messages/<%= @channel.id%>?page=<%= @page + 1 %>" data-remote="true">Cargar más mensajes...</a>');
 	$('#chat-messages').prepend('<%= escape_javascript(render(:partial => '/shared/chat/messages', :locals => {:messages => @messages}))%>');
 }
 else{

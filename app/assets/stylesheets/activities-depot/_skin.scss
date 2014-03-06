@@ -1,0 +1,124 @@
+
+/* Activity Depot Skin
+----------------------------------*/
+.activities-depot-wrap {
+
+  .activities-depot-feeds {
+    @extend .basic-container-style;
+    
+    .activities-depot-feeds-title {
+      border-bottom: 1px solid #d6d6d6;
+      background: #fff;
+      border-radius: $radius $radius 0 0;
+    }
+
+    #activites-feeds-container {
+      background: #fcfcfc;
+    }
+
+    .activity-depot-feed {
+      border-top: 1px solid #e6e6e6;
+      cursor: pointer;
+      
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:hover {
+        background: #fcfcfc;
+      }
+
+      &.active {
+        background: #f2f2f2; 
+      }
+    }
+
+    #load-more-activities {
+      text-align: center;
+      background: #fff;
+      border-top: 1px solid #e6e6e6;
+    }
+  }
+
+  .activities-depot-main {
+    @extend .basic-container-style;
+    background: #fcfcfc;
+
+    .activity-responds-detail {
+      background: #fff;
+      border-bottom: 1px solid #d6d6d6;
+    }
+  }
+}
+
+.delivery-submited-wrap {
+  .back-to-activity {
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    border-radius: $radius $radius 0 0;
+
+    a {
+      @extend .meta-info;
+    }
+
+    i {
+      vertical-align: -4px;
+    }
+  }
+
+  .delivery-submited-content {
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .delivery-submited-evaluation-fields {
+
+    .homeworkCalf {
+      border: 1px solid #E6E6E6;
+      background: #fff;
+      border-radius: $radius;
+    }
+  }
+}
+
+.delivery-item {
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+
+  &:hover {
+    background: #fff; 
+  }
+
+  .delivery-result {
+    color: #808080;
+
+    span {
+      color: $primary-color;
+      font-weight: bold;
+    }
+  }
+}
+
+.survey-items-list {
+  list-style: decimal;
+  list-style-position: inside;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.survey-item {
+  border: 1px solid #E6E6E6;
+  background: #fff;
+  border-radius: $radius;
+
+  .survey-item-question {
+    font-size: 13px;
+  }
+
+  .survey-item-answers {
+    border-top: 1px solid #E6E6E6;
+    background: #fcfcfc;
+    border-radius: 0 0 $radius $radius;
+    font-size: 13px;
+  }
+}

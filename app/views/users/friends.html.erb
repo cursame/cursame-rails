@@ -1,0 +1,38 @@
+<% if @pending && @user_l == current_user %>
+  <script>
+    $(function() {
+      $('#pending-friendship-trigger').trigger('click');
+    });
+  </script>
+<% end %>
+<%= render partial: 'user-header' %>
+
+<div class="wrapper spaced">
+  <div class="sub-profile-title">
+    <div class="fl">
+      <h3>Amigos</h3>
+    </div>
+    <% if @user_l == current_user %>
+      <div class="fr">
+        <%= link_to "Todos mis amigos", user_friends_path%> | 
+        <%= link_to "Solicitudes pendientes", pendding_friends_path( @user_l.personal_url ), :remote => true, :id => "pending-friendship-trigger" %>
+      </div>
+    <% end %> 
+  </div>
+</div>
+
+<div id="accesed">
+  <% unless @friends.empty? %>
+    <%= render :partial => 'users/friends_tpl', :locals => {:friends => @friends} %>
+  <% else %>
+
+    <div class="no-content-section">
+      <% if @user_l == current_user %>
+        <h4>Aún no tienes amigos.</h4>
+        <p>Busca a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path %>.</p>
+      <% else %>
+        <h4>Este usuario no tiene amigos aún.</h4>
+      <% end %>
+    </div>
+  <% end %>
+</div>
