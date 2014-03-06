@@ -201,6 +201,8 @@ class UsersController < ApplicationController
          current_user.tour_profile = true
       when 'course'
          current_user.tour_course = true
+      when 'form'
+         current_user.form_before_tour = true
     end
 
     current_user.save
