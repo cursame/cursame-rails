@@ -138,14 +138,11 @@ class SuperadmninController < ApplicationController
 
         puts "******* Usuarios a los que se envia ********"
 
-        puts "#{array_sended}"
-
-        sended_users = array_sended + new_array_old_things
+        sended_users = first_count_selected + new_array_old_things
 
         @msa.number_of_users = "#{sended_users}"
         @msa.save
 
-        puts "#{sended_users}"
        
     end
     ###### finaliza y redirecciona
