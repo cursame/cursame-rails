@@ -125,65 +125,14 @@
             </div>
             
           <% end %>
-
-<<<<<<< HEAD
-</script>
-<% if current_network.image_front.file != nil%>
-=======
         <% end %>
       </div>
->>>>>>> depuracion_ui
 
       <div class="user-session-links">
         <%= render partial: 'devise/shared/links', locals: { login: false, signup: false, password: true, confirmation: true, unlock: true } %>
       </div>
-
-<<<<<<< HEAD
-<%end%>
-
-<div class="login">
-    <p>
-    <b>Lo sentimos pero la red a la que estas intentado accesar no existe</b></br>
-    <b>pregunta a un encargado de tu escuela él sabrá ayudarte.</b></br>
-    
-    <h1 style="font-size:65px;color:#000;text-align:center;margin-top:40px;">¡Gracias!</h1></br>
-    <center>
-    <b style="text-align:center;"><%= link_to "Ir al inicio", "http://www.cursa.me" %></b>
-    </center>
-    
-    </p>
-    <br><br>
-    <center>
-</div>
-<%else%>
-
-<% if current_network.register_form == true%>
-<div class="signup-restore"></div>
-
-   <div class="login">
-       <p>
-       <b>Lo sentimos pero la red a la que estas intentado no permite el registro público.</b></br>
-       <b>pregunta a un encargado de tu escuela él sabrá ayudarte.</b></br>
-
-       <h1 style="font-size:65px;color:#000;text-align:center;margin-top:40px;">¡Gracias!</h1></br>
-       <center>
-       <b style="text-align:center;"><%= link_to "Ir a la página principal", "/users/sign_in" %></b>
-       </center>
-
-       </p>
-       <br><br>
-       <center>
-   </div>
-<%else%>
-<% if current_network.image_front.file != nil%>
-
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
-=======
     </div>
   </div>
->>>>>>> depuracion_ui
 
 <%end%>
 

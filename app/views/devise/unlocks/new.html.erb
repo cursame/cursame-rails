@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-<% if current_network.image_front.file != nil%>
-
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front.file %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
-
-<%end%>
-	<div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px;">
-			<b style="font-size: 27px; line-height: 30px;">No has recibido instrucciones<br /> de desbloqueo</b><br /><br />Por favor, ingresa tu correo en el campo inferior<br /> para dar seguimiento a tu solicitud</p>
-
-				<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-				  <%= devise_error_messages! %>
-				  
-			<div class="form-signup" style="height:115px;padding-top:7px;margin-top:40px;display:block;background: transparent; border: 0px; padding-bottom: 30px;">
-				<div><!-- <%= f.label :email %><br /> -->
-					<%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %></div>
-				
-					<div class="margin-top: 16px!important;"><%= f.submit "Reenviar instrucciones", :class =>"confirm-btn" %></div>
-				<% end %>
-			</div>
-		</div>
-
-		<div class="confirmation-links" style="margin-top: 20px;">
-			<%= render "devise/shared/links" %>
-		</div>
-=======
 <div class="user-sessions-wrap user-sessions-medium">
 	<div class="user-sessions-network-brand">
     <% if current_network.free || current_network.logo.file == nil %>
@@ -68,5 +41,4 @@
 	  </div>
 
   </div>
->>>>>>> depuracion_ui
 </div>

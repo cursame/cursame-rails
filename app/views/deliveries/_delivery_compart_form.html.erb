@@ -15,21 +15,6 @@
   
   <div class="new-publication-form-content">
     
-<<<<<<< HEAD
-<%end%>
-</div>
-        <%= f.hidden_field :network_id, :value => current_network.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        
-        <%= f.text_field :title , :placeholder=>'Escribe el tema de la tarea', :style =>'outline-width: 0px;', :class => 'form_fix_title_overlay' %>
-        <%#= f.datetime_select :publish_date%>
-        <%#= f.datetime_select :end_date%>
-	    <div style="float: left;">
-	        <%= f.text_field :publish_date, :placeholder=>'Día de publicación', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_publish_date", :id => 'publish_date_'+random_id, :value=>f.object.end_date %>
-	    </div>
-	<div style="float: left;">
-        <%= f.text_field :end_date, :placeholder=>'Fecha límite', :style =>'outline-width: 0px;', :class=>"date-input delivery form_fix_date_overlay delivery_end_date", :id => 'end_date_'+random_id, :value=>f.object.end_date  %>
-=======
     <% contents = @delivery.contents.build %>
     <%= f.hidden_field :network_id, value: current_network.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
@@ -43,7 +28,6 @@
           <%= f.text_field :title , placeholder: "Ejemplo: Números primos" %>
         </div>
       </div>
->>>>>>> depuracion_ui
     </div>
     
     <div class="form-group">

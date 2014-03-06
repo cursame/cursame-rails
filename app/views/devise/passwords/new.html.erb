@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-<% if current_network.image_front.file != nil%>
 
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front.file %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
-=======
 
 <div class="user-sessions-wrap user-sessions-medium">
 	<div class="user-sessions-network-brand">
     <% if current_network.free || current_network.logo.file == nil %>
->>>>>>> depuracion_ui
 
       <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
 
