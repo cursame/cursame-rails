@@ -129,7 +129,7 @@ class Notifier < ActionMailer::Base
     @user = user
     @message = message
     subject = " #{@user.name}"
-    mail to:@user.email, subject: @message.title
+    mail to:@user.email, subject: "#{@message.title}"
   end
 
 end

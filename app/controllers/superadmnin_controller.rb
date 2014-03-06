@@ -90,16 +90,16 @@ class SuperadmninController < ApplicationController
        array_sended = []
        @msa_create = MasiveMailerForSuperAdmin.create(key_m: "#{params[:key]}", title: "#{params[:titulo]}" , message: "#{params[:message]}", number_of_users: "#{params[:number]}", array_hash_from_sended: "#{array_sended}") 
 
-       #@user_to_send = User.first(n)
+       @user_to_send = User.first(n)
         
-       #@user_to_send.each do |uts|
-       #  array_sended.push(uts.id)
-       #  puts "#{@mailer}"
-       #end
+       @user_to_send.each do |uts|
+         array_sended.push(uts.id)
+         puts "#{@mailer}"
+       end
         
        ##### mail para pruebas
-       @user_to_send = User.find_by_email("jose_alfredo+232@cursa.me")
-       puts" mails para preubas #{@user_to_send}"
+       #@user_to_send = User.find_by_email("jose_alfredo+232@cursa.me")
+       #puts" mails para preubas #{@user_to_send}"
        puts "se encola en el proceso de enviado del email"
        @msa_create.delay.delayed_send_mailer(@user_to_send)
 
