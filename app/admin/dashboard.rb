@@ -1,7 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
 
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
-
+=begin   
   content :title => proc{ I18n.t("active_admin.dashboard") } do
     # div :class => "blank_slate_container", :id => "dashboard_default_message" do
     #   span :class => "blank_slate" do
@@ -13,7 +13,7 @@ ActiveAdmin.register_page "Dashboard" do
     # Here is an example of a simple dashboard with columns and panels.
     #
     #
-=begin    
+ 
     columns do
       column do
         panel "Actividades de este mes" do
@@ -59,7 +59,7 @@ ActiveAdmin.register_page "Dashboard" do
           strong { link_to "Ver todos los usuarios ...", admin_courses_path}
         end
       end
-=end
+
 
       column do
         panel "Redes Recientes" do
@@ -72,6 +72,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end #end column
-    
+  
   #end # content
+=end
 end
