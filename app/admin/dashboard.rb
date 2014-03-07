@@ -73,5 +73,5 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end #end column
     
-  end # content
+  #end # content
 end
