@@ -32,6 +32,12 @@
   // elimina todos los p vacios  
   $(document).ready ( function() {
     $('p:empty').hide();
+
+
+    <% if current_user.tour_course == false %>
+      var tourContent = '<%= escape_javascript(render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "-ZYSwRYySWc", tour_type: "course" })) %>';
+      createModal( tourContent, "video-tutorial-overlay overlay-informative not-removable" );
+    <% end %>
   });
 
   $("#stats-area").on('show',function () {

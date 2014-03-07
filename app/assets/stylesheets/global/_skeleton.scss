@@ -482,3 +482,13 @@ html, body {
     top: 0;
   }
 }
+
+#support-tab-sessions {
+  width: 44px;
+  height: 105px;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  margin-top: -22px;
+  z-index: 30;
+}

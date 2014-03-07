@@ -14,7 +14,7 @@
       <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
     <% end %>
 
-    <%= will_paginate(@wall) %>
+    <%= will_paginate( @wall ) %>
 
   </div>
 </div>
@@ -23,8 +23,19 @@
 $(function() {
 
   <% if !current_network.public_register && show_joyride(3) != "1" %>
+
     var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
     createModal( content, "overlay-small overlay-informative" );
+
+  <% elsif current_user.tour_network == false %>
+
+    var tourContent = '<%= escape_javascript(render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "hRXdl0MHKoY", tour_type: "network" })) %>';
+    createModal( tourContent, "video-tutorial-overlay overlay-informative not-removable" );
+
+  <% elsif current_user.form_before_tour == false %>
+  
+    createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login")) %>', 'overlay-informative first-time-survey-overlay not-removable');
+
   <% end %>
 
   var aux = <%= (@show_course_expired) || false %>;

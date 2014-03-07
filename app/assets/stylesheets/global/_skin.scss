@@ -322,3 +322,8 @@ h6 {
 
 .search-wrap {
 }
+
+#support-tab-sessions {
+  background: url('/assets/megaphone-24.png') 0 0 no-repeat;
+  @include hide-text;
+}

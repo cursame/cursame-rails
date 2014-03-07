@@ -1,0 +1,109 @@
+<%
+  wufoo = WuParty.new(ACCOUNT, API_KEY)
+  wufoo_form = wufoo.form("z1mgiziq0ywt4x0")
+  wufoo_fields = wufoo_form.fields
+%>
+
+<div class="overlay-header">
+  <div class="overlay-title">
+    <h4>Por favor contesta la siguiente encuesta.</h4>
+    <p>Esta encuesta es obligatoria.</p>
+  </div>
+</div>
+
+<%= form_tag update_wufoo_form_path, method: :get, remote: true, id: "user-quiz-form" do %>
+  <div class="overlay-content">
+    
+    <% wufoo_fields.each do |field| %>
+      <% 
+        type = field['Type']
+        id = field['ID']
+      %>
+
+      <% if type == 'text' && id == 'EntryId' %>
+        <%= hidden_field_tag id, wufoo_form.entries.count %>
+      <% end %>
+
+      <% if type == 'date' && id == 'DateCreated' %>
+        <%= hidden_field_tag id, Time.now %>
+      <% end %>
+
+      <% if type == 'text' && id == 'CreatedBy' %>
+        <%= hidden_field_tag id, current_user.name %>
+      <% end %>
+
+      <% if type == 'date' && id == 'LastUpdated' %>
+        <%= hidden_field_tag id, Time.now %>
+      <% end %>
+
+      <% if type == 'text' && id == 'UpdatedBy' %>
+        <%= hidden_field_tag id, current_user.name %>
+      <% end %>
+
+      <% if id != 'EntryId' %>
+        <% if id != 'DateCreated' %>
+          <% if id != 'CreatedBy' %>
+            <% if id != 'LastUpdated' %>
+              <% if id != 'UpdatedBy' %>
+
+                <div class="quiz-item">
+                  <div class="quiz-item-header">
+                    <%= label_tag id, "#{field['Title']} <span class='required'>*</span>".html_safe %>
+                  </div>
+                  <div class="quiz-item-options">
+                    
+                    <% if type == 'text' %>
+                      <%= text_field_tag id, "", required: "required" %>
+                    <% end %>
+
+                    <% if type == 'radio' %>
+                      <% field['Choices'].each_with_index do |choice, index| %>
+                        <% index == 0 ? options = {required: "required"} : options = { class: "require-one" } %>
+                        <div class="option">
+                          <%= label_tag do %>
+                            <%= radio_button_tag id, choice['Label'], false, options %> <%= choice['Label'] %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    <% end %>
+
+                    <% if type == 'checkbox' %>
+                      <% field['SubFields'].each_with_index do |subfield, index| %>
+                        <% index == 0 ? options = {required: "required" } : options = {} %>
+                        <div class="option">
+                          <%= label_tag do %>
+                            <%= check_box_tag subfield['ID'], subfield['Label'], false, options %> <%= subfield['Label'] %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    <% end %>
+
+                  </div>
+                </div>
+              <% end %>  
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+  </div>
+  <div class="overlay-footer">
+    <span class="btn btn-medium btn-primary input-btn">
+      <%= submit_tag "Enviar" %>
+    </span>
+  </div>
+<% end %>
+
+<script>
+  $(function(){
+
+    $('#user-quiz-form').validate({
+      errorPlacement: function(error, element) {
+        $(element).closest('.quiz-item-options').append(error);
+      }
+    });
+
+  });
+</script>

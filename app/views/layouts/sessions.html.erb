@@ -48,7 +48,7 @@
 
     <div class="scarlate" id="scarlate" style="display:none;"></div>
     <div class="expires" id="expires" style="display:none;"></div>
-    
+
     <div class="sessions-wrap">
       <%= yield %>
       <%= render "devise/shared/footer-links" %>
@@ -84,7 +84,8 @@
         </center>
       </div>
     </div>
-
+  
+    <a id="support-tab-sessions" href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;">Ayuda</a>
 
   </body>
   <script>
@@ -126,12 +127,13 @@
 
     if (typeof(Zenbox) !== "undefined") {
       Zenbox.init({
-        dropboxID:   "20209757",
+        dropboxID:   "20290348",
         url:         "https://cursame.zendesk.com",
-        tabTooltip:  "Ayuda y soporte técnico",
-        tabImageURL: "/assets/megaphone-24.png",
-        tabColor:    "#fff",
-        tabPosition: "Right"
+        hide_tab:   "true",
+        tabTooltip:  "Soporte",
+        tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
+        tabColor:    "black",
+        tabPosition: "Left"
       });
     }
 

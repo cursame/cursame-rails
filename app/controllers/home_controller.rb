@@ -290,6 +290,28 @@ class HomeController < ApplicationController
     end
   end
 
+  def update_wufoo_form
+    wufoo = WuParty.new(ACCOUNT, API_KEY)
+    wufoo_form = wufoo.form("z1mgiziq0ywt4x0")
+    
+    data = params.reject! do |k|
+      k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action'
+    end
+
+    result = wufoo_form.submit(data)
+
+    if result['Success'] == 0
+      @error = result['ErrorText']
+    else
+      current_user.form_before_tour = true
+      current_user.save
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def save_comment

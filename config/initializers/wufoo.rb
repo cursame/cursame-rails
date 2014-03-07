@@ -1,0 +1,2 @@
+ACCOUNT = 'cursame'
+API_KEY = 'F0GC-XKMU-SADX-HJ8Z'

@@ -139,3 +139,4 @@ gem 'exception_notification', '~> 3.0.1'
  #  gem 'rails-dev-tweaks', '~> 0.6.1' 
  # end
  
+gem "wuparty", "~> 1.2.6"

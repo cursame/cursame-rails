@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20140306195155) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "online"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -339,16 +338,6 @@ ActiveRecord::Schema.define(:version => 20140306195155) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "masive_mailer_for_super_admins", :force => true do |t|
-    t.string   "key_m"
-    t.string   "title"
-    t.text     "message"
-    t.integer  "number_of_users"
-    t.text     "array_hash_from_sended"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
-
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
@@ -387,19 +376,18 @@ ActiveRecord::Schema.define(:version => 20140306195155) do
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.datetime "created_at",                                                                                                                                                                                       :null => false
-    t.datetime "updated_at",                                                                                                                                                                                       :null => false
+    t.datetime "created_at",                                                                                                                                                                                     :null => false
+    t.datetime "updated_at",                                                                                                                                                                                     :null => false
     t.integer  "population"
-    t.boolean  "public_register",      :default => true
-    t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "public_register",    :default => true
+    t.boolean  "free",               :default => true
+    t.boolean  "register_form",      :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
-    t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
+    t.string   "image_front",        :default => "background-restore.jpg"
+    t.string   "logo",               :default => "logo.png"
+    t.string   "logo_type",          :default => "128x26"
+    t.text     "titles",             :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
-    t.boolean  "authenticate_teacher"
   end
 
   create_table "networks_users", :force => true do |t|

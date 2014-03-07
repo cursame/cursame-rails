@@ -1,4 +1,4 @@
-
+first-time-survey-overlay
 /* Overlays Skeleton
 ----------------------------------*/
 .overlay-open {
@@ -37,6 +37,10 @@
       .overlay-content,
       .overlay-footer {
         padding: 15px;
+
+        &.no-padding {
+          padding: 0;
+        }
       }
     }
 
@@ -154,5 +158,39 @@
           display: block;
         }
       }
+  }
+}
+
+/* First Time Video Tutorial
+----------------------------------*/
+.overlay.video-tutorial-overlay {
+  width: 800px;
+
+  .overlay-content {
+    height: 437px;
+    border-radius: 0 0 $radius $radius;
+    overflow: hidden;
+    position: relative;
+  }
+
+  iframe {
+    width: 100%;
+    height: 437px;
+    display: block;
+  }
+
+  #player {
+    border-radius: $radius;
+    overflow: hidden;
+  }
+}
+
+.overlay.first-time-survey-overlay {
+  width: 450px;
+
+  .overlay-content {
+    height: 430px;
+    overflow-y: scroll;
+    border-radius: 0 0 $radius $radius;
   }
 }

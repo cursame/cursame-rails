@@ -44,7 +44,7 @@
 
         <% if flash[:notice] %>
           <script>$(function() { Notice('success', '<%= notice %>'); })</script>
-        <%end%>
+        <% end %>
 
         <div class="scarlate" id="scarlate" style="display:none;"></div>
         <div class="expires" id="expires" style="display:none;"></div>
@@ -79,7 +79,7 @@
         <div id="scrollup"></div>
         <div id="chat_sounds"></div>
 
-        <script> 
+        <script>
           window.clearInterval(GetIntevalExpire);
 
           var IntervalFunctionForExpireSession;
@@ -100,9 +100,13 @@
 
           if (typeof(Zenbox) !== "undefined") {
             Zenbox.init({
-              dropboxID:   "20209757",
+              dropboxID:   "20290348",
               url:         "https://cursame.zendesk.com",
-              hide_tab:   "true"
+              hide_tab:   "true",
+              tabTooltip:  "Soporte",
+              tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
+              tabColor:    "black",
+              tabPosition: "Left"
             });
           }
 

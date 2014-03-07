@@ -24,7 +24,7 @@ $(function() {
 	window.createModal = function ( content, classes ) {
 
 		$('body').addClass('overlay-open').append('<div class="overlay-wrapper"></div>');
-		$('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay '+ classes +'"></div>').show();
+		$('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay '+ (classes ? classes : "") +'"></div>').show();
 		$('div.overlay-wrapper').css("overflow-y", "scroll");
 
     $('.overlay').html(content);
@@ -34,14 +34,25 @@ $(function() {
 	};
 
   window.removeModal = function() {
-    $('.overlay').addClass('animated bounceOut');
-    $('.overlay').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    var removable = $('.overlay').hasClass('not-removable');
+
+    if ( !removable ) {
+      removeModalAction( $('.overlay') );
+    }
+  };
+
+  window.removeModalAction = function( overlay, f ) {
+    overlay.addClass('animated bounceOut');
+    overlay.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
       $('.overlay-wrapper').fadeOut(250, function() {
         $(this).remove();
+        if ( f && typeof f == 'function') {
+          f();
+        }
       });
       $('body').removeClass('overlay-open');
     });
-  };
+  }
 	
 	$('.overlay-screen, .close-overlay').live('click', removeModal );
 
