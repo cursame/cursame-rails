@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<% if @delivery.state == 'published' %>
-$("#delivery_state_publish<%=@delivery.id%>").html('<%= link_to "Activo", publish_unpublish_delivery_manualy_path(:state => @delivery.state, :id => @delivery.id ), :remote => true, :class => "state-btn" %>');
-<%else%>
-$("#delivery_state_publish<%=@delivery.id%>").html('<%= link_to "Inactivo", publish_unpublish_delivery_manualy_path(:state => @delivery.state, :id => @delivery.id ), :remote => true, :class => "state-btn" %>');
-<%end%>
-=======
 $("#delivery_state_publish<%=@delivery.id%>").html('<%= link_to "#{@linkik}", publish_unpublish_delivery_manualy_path(:state => @delivery.state, :id => @delivery.id ), :remote => true, :class => "state-btn" %>');
->>>>>>> depuracion_ui
 $("#dates_delivery<%=@delivery.id%>").html('<%= @delivery.publish_date %> <%= @delivery.end_date %>')
 
 Notice('success', '<%= @message %>');
