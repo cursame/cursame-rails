@@ -292,10 +292,10 @@ class HomeController < ApplicationController
 
   def update_wufoo_form
     wufoo = WuParty.new(ACCOUNT, API_KEY)
-    wufoo_form = wufoo.form("z1mgiziq0ywt4x0")
+    wufoo_form = wufoo.form( params[:wufoo_form_id] )
     
     data = params.reject! do |k|
-      k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action'
+      k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action' || k == 'wufoo_form_id'
     end
 
     result = wufoo_form.submit(data)

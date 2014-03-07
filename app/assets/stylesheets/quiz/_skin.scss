@@ -2,13 +2,16 @@
 /* Quiz Forms Skin
 ----------------------------------*/
 .quiz-item {
+  border-bottom: 1px solid #E6E6E6;
 
   .quiz-item-header {
     label {
       font-size: 14px;
-      font-weight: 400;
+      font-weight: 600;
+
+      .required {
+        color: red;
+      }
     }
   }
-
-  border-bottom: 1px solid #E6E6E6;
 }
