@@ -298,6 +298,8 @@ class HomeController < ApplicationController
       k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action' || k == 'wufoo_form_id'
     end
 
+    puts data
+    
     result = wufoo_form.submit(data)
 
     if result['Success'] == 0

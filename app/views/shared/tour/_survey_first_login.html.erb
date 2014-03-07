@@ -21,6 +21,7 @@
     <div class="quiz-wrap">
       <%= hidden_field_tag "wufoo_form_id", wufoo_form_id %>
       <% wufoo_fields.each do |field| %>
+
         <% 
           type = field['Type']
           id = field['ID']
@@ -67,20 +68,67 @@
                           <% index == 0 ? options = {required: "required"} : options = {} %>
                           <div class="option">
                             <%= label_tag do %>
-                              <%= radio_button_tag id, choice['Label'], false, options %> <%= choice['Label'] %>
+                              <%= radio_button_tag id, (index + 1), false, options %> <%= choice['Label'] %>
                             <% end %>
                           </div>
                         <% end %>
                       <% end %>
 
                       <% if type == 'checkbox' %>
-                        <% field['SubFields'].each_with_index do |subfield, index| %>
-                          <div class="option">
-                            <%= label_tag do %>
-                              <%= check_box_tag subfield['ID'], subfield['Label'], false, { class: "require-one" } %> <%= subfield['Label'] %>
+                        <div class="checkbox-group">
+                          <% field['SubFields'].each_with_index do |subfield, index| %>
+
+                            <div class="option">
+                              <%= label_tag do %>
+                                <%= check_box_tag subfield['ID'], subfield['Label'], false, { class: "require-one" } %> <%= subfield['Label'] %>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+
+                      <% if type == "likert" %>
+                        <table class="quiz-table">
+                          <thead>
+                            <tr>
+                              <th>&nbsp;</th>
+                              <% field['Choices'].each_with_index do |choice, index| %>
+                                <th>
+                                  <%= choice['Label'] %>
+                                </th>
+                              <% end %>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% field['SubFields'].each_with_index do |subfield, index| %>
+                              <tr>
+                                <td>
+                                  <%= subfield['Label'] %>
+                                </td>
+                                <td class="center">
+                                  <%= label_tag do %>
+                                    <%= radio_button_tag subfield['ID'], "1", false, {required: "required"} %> <br> 1
+                                  <% end %>
+                                </td>
+                                <td class="center">
+                                  <%= label_tag do %>
+                                    <%= radio_button_tag subfield['ID'], "2" %> <br> 2
+                                  <% end %>
+                                </td>
+                                <td class="center">
+                                  <%= label_tag do %>
+                                    <%= radio_button_tag subfield['ID'], "3" %> <br> 3
+                                  <% end %>
+                                </td>
+                                <td class="center">
+                                  <%= label_tag do %>
+                                    <%= radio_button_tag subfield['ID'], "4" %> <br> 4
+                                  <% end %>
+                                </td>
+                              </tr>
                             <% end %>
-                          </div>
-                        <% end %>
+                          </tbody>
+                        </table>
                       <% end %>
 
                     </div>
@@ -108,16 +156,24 @@
       return $('.require-one:checked').size() > 0;
     }, 'Selecciona al menos una opción.');
 
-    var checkboxes = $('.require-one');
-    var checkbox_names = $.map(checkboxes, function(e, i) {
-      return $(e).attr("name")
-    }).join(" ");
+    var all_checkboxes = {};
+
+    $('.checkbox-group').each(function(index, el) {
+      var checkboxes = $(this).find('.require-one');
+
+      var checkbox_names = $.map(checkboxes, function(e, i) {
+        return $(e).attr("name")
+      }).join(" ");
+
+      all_checkboxes[index.toString()] = checkbox_names;
+    });
+
+    console.log ( all_checkboxes );
 
     $('#user-quiz-form').validate({
-      groups: {
-        checks: checkbox_names
-      },
+      groups: all_checkboxes,
       errorPlacement: function(error, element) {
+        console.log("Error");
         $(element).closest('.quiz-item-options').append(error);
       }
     });
