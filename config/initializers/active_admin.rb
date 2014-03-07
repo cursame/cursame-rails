@@ -235,5 +235,4 @@ ActiveAdmin.setup do |config|
   config.clear_javascripts!
   config.register_javascript 'admin/active_admin.js'
 
-
 end
