@@ -42,7 +42,6 @@ ActiveAdmin.register_page "Dashboard" do
           strong { link_to "Ver todos los cursos ...", admin_courses_path}
         end
       end
-=end
 
       column do
         panel "Usuarios Recientes" do
@@ -60,6 +59,8 @@ ActiveAdmin.register_page "Dashboard" do
           strong { link_to "Ver todos los usuarios ...", admin_courses_path}
         end
       end
+=end
+
       column do
         panel "Redes Recientes" do
           table_for Network.order("created_at desc").limit(10) do
