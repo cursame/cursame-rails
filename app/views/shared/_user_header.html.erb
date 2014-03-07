@@ -1,0 +1,63 @@
+<header id="user_nav" class="topbar">
+  <div class="wrapper spaced">
+
+    <div class="network">
+      <% if current_network.free || current_network.logo.file == nil %>
+
+        <%= link_to root_path, title: current_network.name, class: "free_network" do %>
+          <%= icon('logo-cursame') %>
+        <% end %>
+
+      <% else %>
+        <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+      <% end %>
+
+    </div>
+    
+    <% if current_user %>
+      <div class="activity-notificactions">
+        <div class="activity-block support-buttton">
+          <a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> Ayuda</a>
+        </div>
+        
+        <div id="message_notifications" class="activity-block">
+          <%= render :partial => '/shared/chat/message_notifications' %>
+        </div>
+
+        <div id="notifications" class="activity-block">
+          <%= render :partial => '/shared/notifications' %>
+        </div>
+
+        <div class="activity-block">
+          <div class="dropdown-wrap">
+            <div class="dropdown-pull activity-dropdown-pull">
+              <%= icon('user-settings') %>
+            </div>
+            <div class="dropdown-v right">
+              <i class="tip"></i>
+              <ul>
+                <% if current_role == "admin"%>
+                  <li>
+                    <%= link_to "Administración", managers_wall_path %>
+                  </li>
+                <% end %>
+                <li>
+                  <%= link_to "Ir a mi perfil", show_user_path(current_user.personal_url) %>
+                </li>
+                <li>
+                  <%= link_to "Editar perfil", edit_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to "Salir", sign_out_path, method: :delete %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div id="log_loadding" style="display:none;"></div>
+    <div id="noticce"><div id="notice" class="notice"></div></div>
+  </div>
+</header>

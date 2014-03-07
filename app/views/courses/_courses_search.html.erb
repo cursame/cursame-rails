@@ -1,0 +1,10 @@
+<%= form_tag(courses_search_ajax_path, :method => 'get', :remote => true, :class => "search-courses") do %>
+  <div class="search-wrap">
+    <%= text_field_tag 'activiesearch', '' , :placeholder =>'Buscar curso...', :class => 'search-input', :id => 'search-courses' %>
+    <div class="search-button">
+      <span class="btn btn-secondary input-btn">
+        <%= submit_tag 'Buscar' %>
+      </span>
+    </div>
+  </div>
+<% end %>

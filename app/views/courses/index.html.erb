@@ -1,87 +1,39 @@
+<div class="section-header">
+  <div class="wrapper spaced">
 
-<div id="header-courses">
-	<h2 class="courses-title-h2" style="margin-top:6px; width: 100%;">Lista de cursos</h2>
-<div class="search default-form delivery-form serch-courses">
+    <div class="section-header-title w-subnav">
+      <div class="section-icon">
+        <%= icon('section-courses') %>  
+      </div>
+      <div class="section-title">
+        <h1>Cursos</h1>
+        <ul class="section-subnav">
+          <li class="active">
+            <%= link_to "Mis cursos", my_courses_path, :remote => true %>
+          </li>
+          <li>
+            <%= link_to "Cursos a los que no pertenezco", all_courses_path, :remote => true %>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-<%= form_tag courses_path, :method => 'get' do %>
-  <div class="SearchForm">
-   <%= text_field_tag :search, params[:search], :placeholder =>'Ingresa el nombre del curso que deseas buscar y presiona enter' %><!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
+    <div class="section-header-actions">
+      <ul class="list-buttons right">
+        <li>
+          <%= render partial: "/courses/courses_search" %>
+        </li>
+        <% permitted_to? :create, :courses do %>
+          <li>
+            <%= link_to icon('plus-white'), new_course_path, :title => 'Crear curso nuevo', :class=> "btn btn-primary" %>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+
   </div>
-<% end %> 
-</div>
-<% permitted_to? :create, :courses do %>
-    <div class="new-course" style="margin-top: 16px; position: relative; display: block;"><%= link_to 'Crear curso nuevo', new_course_path, :class=>"a-button" %></div>
-<%end%>
 </div>
 
-<span style="position: relative!important; text-transform: uppercase; display: block!important; clear: both!important; margin: 35px auto 0 auto!important;
-width: 700px!important; text-align: center!important; padding-top: 30px!important;"><%= notice %></span>
-
-<br />
- 
-<% @cc = @courses.count %>
-<% if @cc == 0%>
-  <b><%= t('No hay resultados en la busqueda')%> </b>
-<%end%>
-<div id="courses-list">
-<% @courses.each do |course| %>
-
-
-<div class="course">
-
-   <div class="thumbnail">
-	   <%= link_to image_tag('/assets/courses.png'), course %>
-   </div>
-   
-   <div id="crud"> 
-            <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>            
-          
-               <% ##### importante no mover esta varialbe ######%>  
-            <% @course_id = course.id%>
-            <% if @correspond %> 
-                 <% if @correspond.accepted == true %>
-<!--                         <%= link_to image_tag('/assets/icons/files.png'), course %> -->
-                      <div style="float:left; align:left; margin-right:164px;" id="uik_<%=@correspond.id%>"> 
-                      	<%= link_to image_tag('unsuscript.png'),  @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true%>
-                      </div>
-
-                    <% if @correspond.owner == true %>
-                       <div style="position:absolute; float:left; margin-left:150px;" id="usk_<%=@correspond.id%>">
-                        <%= link_to image_tag('/assets/icons/edit.png'), edit_course_path(course) %>
-                        <%= link_to image_tag('/assets/icons/destroy.png'), course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
-                       </div>
-                    <%end%>
-					<%else%>
-                    	<span style="color:#fff; height:30px; position:relative; display:block; text-align:center; padding: 8px 10px 5px 10px; font-weight:lighter; width:180px; background:#000; font-size:12px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">Aún no has sido aceptado en este curso</span>
-					<%end%>
-            <%else%>
-            <div id="hidden-<%= course.id %>">
-               <% if course.public_status == "Private" %>
-                  <%= render partial: "courses/members_in_courses/private_course"%>|
-              <%else%>   
-                  <%= render partial: "courses/members_in_courses/public_course"%>|  
-              <%end%>
-            </div>
-           <%end%>
-     </div>
-     
-    <div id="course-title"><%= truncate("#{course.title}", :omission => "...", :length => 30) %> </div>
-    <div id="course-info">
-    <div class="hidden-text">
-       <li id="silabus" class="silabus">
-           <%= truncate("#{course.silabus}", :omission => "...", :length => 30) if course.silabus? %>
-       </li> 
-    </div>
-       
-      <%#= course.init_date %>
-    <li class="finishdate"> <%= course.finish_date if (course.finish_date != nil)  %></li>
-    </div>
-    
+<div id="courses_content">
+  <%= render partial: "/courses/members_in_courses/course_view_call", :locals => {:courses => @courses, :member => @member} %>
 </div>
-   
-   
-   
-<% end %> 
-</div>
-
-

@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
-  skip_before_filter :authenticate_user!, :only => [:upload_users_a ]
+
+  ### manejo de que ven si son amigos 
+  helper_method :filter_friendship
 
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
-    
+  
     if @user_l.nil? then
       redirect_to not_found_path
       return
@@ -43,9 +45,9 @@ class UsersController < ApplicationController
       @search = params[:search]
       @page = params[:page].to_i
       if id_search.nil?
-        @wall = @user_l.publications.search(@search, @id).paginate(:per_page => 10, :page => params[:page])
+        @wall = @user_l.publications.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
       else
-        @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page])
+        @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
       end
 
      ##### print assets
@@ -59,7 +61,7 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render stream: true}
         format.json { render json: @user_l }
       end
     end
@@ -81,7 +83,38 @@ class UsersController < ApplicationController
    @user = User.all
    redirect_to network_comunity_path
  end
+ 
+ ######## se colocan todas las rutas de para las tabs de show de users #####
+ def info
+   @user_l= User.find_by_personal_url(params[:personal_url])
+   permisos = Permissioning.find_by_user_id_and_network_id(@user_l.id, current_network.id)
+   @role = Role.find_by_id(permisos.role_id)
+ end
 
+ def courses
+  @user_l= User.find_by_personal_url(params[:personal_url])
+
+ end
+
+ def califications
+  @courses = current_user.courses
+ end
+
+ def friends
+  @user_l = User.find_by_personal_url(params[:personal_url])
+  @pending = params[:pending]
+  @friends = @user_l.friends(true)
+ end
+ 
+ def pendding_friends
+   @user_l = current_user
+   @friends = @user_l.friends(false)
+   
+   respond_to do |format|
+    format.js
+   end
+ end
+ 
  def dashboard
  end
 
@@ -134,6 +167,7 @@ class UsersController < ApplicationController
     respond_to do |format|
        format.json
        format.js
+       format.html{redirect_to root_path, :notice => "Se ha guardado tu contraseña correctamente."}
     end
   end
 
@@ -204,4 +238,30 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
+
+  def filter_friendship
+    @user_l= User.find_by_personal_url(params[:personal_url])
+    @user_l.approved_friend(current_user)
+  end
+
+  def tour_reciver
+    puts "entrando en la ruta"
+    
+    case params[:type_route]
+      when 'network'
+         current_user.tour_network = true
+      when 'profile'
+         current_user.tour_profile = true
+      when 'course'
+         current_user.tour_course = true
+      when 'form'
+         current_user.form_before_tour = true
+    end
+
+    current_user.save
+    respond_to do |f|
+      f.js
+    end
+  end
+
 end

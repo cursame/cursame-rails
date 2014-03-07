@@ -1,4 +1,44 @@
 
+/* Cards Listing
+----------------------------------*/
+.cards-list {
+  margin: 10px 0;
+  @include clearfix;
+
+  .card {
+    float: left;
+    margin: 10px;
+    width: 218px;
+    position: relative;
+
+    .card-avatar {
+      float: left;
+      margin: 10px 0 10px 10px;
+    }
+
+    .card-main {
+      margin: 10px 10px 10px 65px;
+
+      .card-actions {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+  }
+}
+
+.comunity-card-list .card {
+  height: 100px;
+  position: relative;
+
+  .user-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
 .user_networks_show{
   width:200px;
   height:100px;

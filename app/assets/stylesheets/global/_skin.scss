@@ -1,11 +1,21 @@
 
 /* Global Skin
 ----------------------------------*/
+* {
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+}
+
 body {
-  color: #333;
-  font-family:  $helvetica;
+  color: $global-color;
+  background: $main-background;
+  font-family: $font-cursame;
   font-size: 13px;
-  background: $bg-page;
+  font-weight: normal;
+
+  &.background-white {
+    background: $white;
+  }
 }
 
 ul{
@@ -13,120 +23,258 @@ ul{
 }
 
 a {
-  color: #4FA3E9;
+  color: $primary-color;
   text-decoration: none;
 }
 
 .topbar {
-  background: #FFF !important;
-  border-bottom: 1px solid #ccc;
-}
+  background: $white;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0,0,0,.1);
 
-/* Notifications and Messages
-----------------------------------*/
-#box-notifications, #box-messages-notifications{
-    
-  &.comment-text{
-    background: #FFF;
-    border: $border-box;
-    border-radius: $border-radius-box;
-    box-shadow: 1px 3px 7px #757575;
-
-    &.header{
-      line-height: 23pt;
-
-      &.date{
-        color: #999;
-      }
-    }
-
-    &.content{
-      color: #333;
-      font-size: 13px;
+  .activity-notificactions .activity-block {
+    border-right: 1px solid #e6e6e6;
       
-      & li {
-        border-bottom: $border-box;
-        line-height: 18px;
-        font-size: 12px;
-
-        &:hover{
-          background-color: #f8f8f8;
-        } 
+    .activity-dropdown-pull {
+      &:hover {
+        background: #FCFCFC;
       }
 
-      &.time{
-        font-size: 10px;
-        color: #777;
+      .activity-counter {
+          background: #df2a2a;
+          border-radius: $radius;
+          border-bottom: 1px solid #b91515;
+          color: #fff;
+          font-weight: 800;
+          font-size: 10px;
+          text-shadow: 0 -1px 0 #b91515;
+        }
       }
 
-      &.last{
-        border: none;
-      }
+    &:first-child {
+      border-left: 1px solid #e6e6e6;        
     }
 
-    &.title-discusion{
-      font-size: 18px; 
-      font-weight: bold;
-    }
-  
-    &.footer{
-      border-top:1px solid $border-general;
-      color: #777777;
-      text-align: center;
-      box-shadow: inset 0px 1px 3px #FFF, inset 0px -1px 4px #c9d1da;     
-
-      &:hover{
-        background-color: #f8f8f8;
-        box-shadow: inset 0px 1px 2px #999, inset 0px 3px 6px #c9d1da;
-      }
+    &.support-buttton .i {
+      vertical-align: -3px;
     }
   }
 
- 
-  &.header{
-    background: #fff;
-    border-bottom: $border-box;
-    box-shadow:         inset 0px 1px 0px #f7f7f8;
-    @include border-t-right-radius;
-    @include border-t-left-radius;
-    
-    &.name{
-      color: #333;
-    }
-  }
-
-  &.general-cir-discusion{
-    background: url('/assets/comment-cir-mini-discusion.png') no-repeat;
-  }
-
-  &.arrow-top {
-    background: url('/assets/arrow_notification.png') no-repeat;
+  #log_loadding {
+    background: $primary-color;
   }
 }
 
-/* Notices
+.uppercase {
+  text-transform: uppercase;
+}
+
+.meta-info {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11px;
+  color: $meta-color;
+}
+
+.as-link {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.triagle-8 {
+  @include triangle(8px, gray, down);
+}
+
+.no-content-section, .no-sub-content-section, .inner-no-content {
+  text-align: center;
+}
+
+.small {
+  font-size: 11px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.plain-text p {
+  line-height: 23px;
+  text-align: justify;
+}
+
+/* Titles
 ----------------------------------*/
-.notice{
-  color: #F5F210;
-  font-size:15px;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
 }
 
-.expires{
-  color:#FADA08;
-  background:#F9F3CB;
-  font-size:20px;
-  font-weight:bold;
-  
-  .uninstal_exit{
-    text-align:center;
-    background:#D2F9CB;
-    color:#75F45B;        
+h1 {
+  font-size: 22px;
+}
 
-    &:hover{
-      text-align:center;
-      background:#ABDAA2;
-      color:#75F45B;
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+/* Avatars
+----------------------------------*/
+.avatar-holder {
+  &:after {
+    content: "";
+    border-radius: $radius + 1;
+    box-shadow: inset 0 0 1px rgba(0,0,0,.7);
+  }
+}
+
+.avatar {
+  border-radius: $radius;
+}
+
+/* Sidebar Global
+----------------------------------*/
+.global-sidebar {
+  background: $primary-color;
+  color: $white;
+
+  a {
+    color: $white;
+  }
+
+  .user {
+    background: lighten($primary-color, 1);
+    border-bottom: 1px solid darken($primary-color, 5);
+
+    img {
+      vertical-align: -7px;
     }
+
+    .name {
+      color: $white;
+      font-size: 14px;
+    }
+
+    > a:hover {
+      background: lighten($primary-color, 2);
+    }
+  }
+
+  .navigation li a .i {
+    vertical-align: -3px;
+  }
+
+  .side-courses li a {
+    img {
+      vertical-align: -7px;
+    }
+  }
+
+  &:after {
+    @include background(linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.15)) repeat);
+    pointer-events: none;
+  }
+}
+
+.sidebar-section {
+  .sidebar-section-header {
+    background: lighten($primary-color, 1);
+    border-top: 1px solid lighten($primary-color, 5);
+    border-bottom: 1px solid darken($primary-color, 5);
+
+    h3 {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  }
+}
+
+.section-list {
+  > li a {
+    
+    &:hover {
+      background: lighten($primary-color, 2);
+    }
+  }
+}
+
+/* Chat Switch
+----------------------------------*/
+.chat-switch-wrap {
+  .chat-switch {
+    cursor: pointer;
+    border-left: 1px solid darken($primary-color, 4);
+
+    i {
+      vertical-align: -1px;
+      opacity: .5;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bold;
+      opacity: .5;
+    }
+
+    &.active {
+      background: lighten($primary-color, 3.5);
+
+      span, .i {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background: lighten($primary-color, 3.5);
+
+      span, .i {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* Footer
+----------------------------------*/
+.global-footer {
+  background: lighten($primary-color, 1);
+  border-top: 1px solid lighten($primary-color, 5);
+  box-shadow: 0 -1px 1px darken($primary-color, 5);
+
+  .footer-logo {
+    background: url('pack.png') -36px -11px;
+    @include hide-text;
+  }  
+
+  .rights {
+    color: lighten($primary-color, 50);
+    font-size: 12px;
+  }
+}
+
+/* Sections Pages
+----------------------------------*/
+.section-header {
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #c7cdcf;
+
+  .section-subnav > li.active > a {
+    color: $meta-color;
   }
 }
 
@@ -137,17 +285,45 @@ a {
   border: 0px!important;
 }
 
-.zenbox_tab__text {
-  background: url('line-dashed-mini.png') no-repeat center center;
-}
-
-.ZenboxTabRight:hover, #zenbox_tab:hover {
-  background: url('/assets/ayuda.png') 70px center no-repeat!important;
-}
-
 /* Scroll to Top Button
 ----------------------------------*/
 #scrollup{
-  opacity:0.3;
-  background: url('/assets/icon_top.png') no-repeat;
+  cursor: pointer;
+  background: url('/assets/pack.png') -93px -196px no-repeat;
+}
+
+/* Notices
+----------------------------------*/
+#noticce {
+  #notice {
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid transparent;
+
+    &.success {
+      background: #75b70c;
+      color: #fff;
+      border-bottom-color: #578c03; 
+    }
+
+    &.error {
+      background: #eb5757;
+      color: #fff;
+      border-bottom-color: #ac0f0f;
+    }
+  }
+}
+
+/* Pageless Loader
+----------------------------------*/
+#pageless-loader {
+  background: url('/assets/pack.png') -193px -305px;
+}
+
+.search-wrap {
+}
+
+#support-tab-sessions {
+  background: url('/assets/megaphone-24.png') 0 0 no-repeat;
+  @include hide-text;
 }

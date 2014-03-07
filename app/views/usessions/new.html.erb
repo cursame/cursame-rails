@@ -1,161 +1,76 @@
 <% if current_network.nil? %>
-<script>
-$(document).ready(function() {
-    $("#bg").ezBgResize();
-});
+  <div class="content login confirmationIndexHeader" id="titlheader">
+    <p>Lo sentimos, la red a la que estas intentado accesar no existe
+    pregunta a un encargado de tu escuela él sabrá ayudarte.</p>
+    <%= link_to "Ir al inicio", "http://www.cursa.me/browser/" %>
+  </div>
+<% else %>
 
-</script>
+  <% if !@user_inactive.nil? %>
+    <p>Se ha enviado un correo a <%= @user_inactive.email %>. Esperando confirmación</p>
+  <% end %>
 
-<div class="signup-restore"></div>
+  <div class="user-sessions-wrap">
+    <div class="user-sessions-network-brand">
+      <% if current_network.free || current_network.logo.file == nil %>
+        <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
+      <% else %>
+        <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+      <% end %>
+      <div class="header-link">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "Registarme →", new_user_registration_path %><br />
+        <% end -%>
+      </div>
+    </div>
+    <div class="user-sessions-main">
+      <div class="user-session-content">
+        <h4>Iniciar sesión</h4><br>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-sessions form-signin" ) do |f| %>
+          <%= devise_error_messages! %>
+          
+          <div class="form-group no-label">
+            <div class="form-group-main">
+              <span class="input-icon session-icon-input">
+                <%= icon('email') %>
+                <%= f.email_field :email,:placeholder =>"Correo electrónico" %>
+              </span>
+            </div>
+          </div>
 
-<div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px; padding-left: 20px; padding-right: 20px;">
-      <b style="font-size: 35px!important; line-height: 30px;">
-      Lo sentimos
-        </b>
-        <br /><br />
-      <span style="width: 250px;!important">
-    La red a la que estas intentado accesar no existe
-    pregunta a un encargado de tu escuela él sabrá ayudarte.
-        </span>
- 
-    <center>
-       <span class="confirm-btn" style="width: 140px; height: 22px; color: #FFF; padding: 10px 30px; color: #FFF!important; margin-top: 30px; display: block; position: relative;">
-        <%= link_to "Ir al inicio", "http://www.cursa.me/browser/" %>
-       </span>   
-    </center>    
-    </p>
-    <br><br>
-    <center>
-</div>
-<%else%>
+          <div class="form-group no-label">
+            <div class="form-group-main">
+              <span class="input-icon session-icon-input">
+                <%= icon('password') %>
+                <%= f.password_field :password, :placeholder =>"Contraseña"%>
+              </span>
+            </div>
+          </div>
 
-<!-- <div class="bg-layout"></div> -->
-<% if current_network.image_front.file != nil%>
+          <div class="user-sessions-footer">
+            <div class="fl">
+              <% if devise_mapping.rememberable? -%>
+                <label class="remember">
+                  <%= f.check_box :remember_me %> &nbsp;Recordarme
+                </label>
+              <% end %>
+            </div>
+            <div class="fr">
+              <span class="btn btn-primary btn-medium input-btn">
+                <%= f.submit "Iniciar Sesión" %>
+              </span>
+            </div>
+          </div>
+          
+          <% end %>
+      </div>
 
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
+      <div class="user-session-links">
+        <div class="links">
+          <%= render partial: 'devise/shared/links', locals: { login: false, signup: false, password: true, confirmation: true, unlock: true } %>
+        </div>
+      </div>
 
-<%end%>
-<% if current_network.image_front.file != nil%>
-  <script>
-     $(document).ready(function() {
-        $('.signup-restore').css('background','url("<%= current_network.image_front.file %>") !important');
-     });
-  </script>
-<%end%>
-<% if !@user_inactive.nil? then %>
-  <div class="user-inactive">
-    Se ha enviado un correo a  <%= @user_inactive.email %>. <p>
-    Esperando confirmación
+    </div>
   </div>
 <% end %>
-<div class="login">    
-<p style="background: rgba(95,150,191,0.4); text-align: center; padding: 20px 0 14px 0; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"><b style="font-size: 23px;">Inicia sesión en <%= current_network.name %></b></p>
-    
-    <div id="Register_Singin" class="confirmationIndexHeader" style="width: 700px; height: 400px; margin: 0 auto; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; overflow: hidden;">
-    
-    <div class="register_class" style="float: left; width: 290px; height: auto; padding: 27px;">
-    
-    	C&uacute;rsame conecta a directivos, profesores y alumnos permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
-		<br />
-		
-		<center>
-    		<%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%>
-    </center>
-
-    <!-- <div style="background:#FFF; padding:20px; margin:10px">
-      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-    </div> -->
-
-    </div>
-    
-
-    
-    <div class="sign-in-class" style="width: 330px; height: 400px; display: block; float: right; background: #FFF; padding-left: 16px;">
-    
-		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
-		<div class="login-heading" style="padding: 14px 10px 0px 10px!important;">Inicia sesión</div>
-		
-		<%= devise_error_messages! %>
-		
-		<%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
-		<%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
-		<% if devise_mapping.rememberable? -%>
-		<!--<label class="checkbox remember" style="margin-left: 11px!important;">-->
-		<label class="remember" style="margin-left: 11px!important;">
-			<%= f.check_box :remember_me %> <label>&nbsp;&nbsp;Recordarme</label>
-		</label>
-		
-		<!--
-		<label class="frgt-pswd">
-		 <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
-		</label>
-		-->
-		
-		<% end -%>
-		<%= f.submit "Iniciar Sesión", :class =>"log-in fixLogin" %>
-    
-    
-    
-		
-		<div class="Confirmation_ins" style="clear: both;"><%= render "devise/shared/links" %></div>
-		
-		<div class="" id="linked" style="cursor:pointer; color: #6a6a6a; font-size: 12px; margin-left: 12px; margin-top: 3px;">Soy un usuario antiguo y tengo dudas</div>
-		
-		<% end %>
-	
-	</div><!-- ends sign-in-class -->
-	
-	    <div id="sub_linked" style=" width: 640px; height: 340px; font-size: 14px; background-color: rgba(245,245,245,1); padding: 30px; text-align: left; color: rgb(128, 125, 119); z-index: 999; position: absolute; margin-top: 400px; ">
-
-
-<center><div id="Closelinked" style="cursor: pointer; background: #000; color: #FFF; width: 60px; padding: 8px 20px; margin-bottom: 28px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; text-align: center;">Cerrar</div></center>
-
-      
-        <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
-      <b style="font-size:15px; color:#000; clear: both;">¿Soy usuario?:</b><br /><br />
-      "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."
-        </div>
-        
-        <div style="width: 315px; height: 120px; text-shadow:none; float: right;">
-            <b style="font-size:15px; color:#000; clear: both;">¿Mi clave sigue siendo la misma?:</b></br></br>
-            Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
-             te pedirá que cambies tu contraseña.
-        </div>
-        
-        <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
-           <b style="font-size:15px; color:#000; clear: both;">No me ha llegado el mail de confirmación:</b></br></br>
-            Da click en el link <b style="font-size: 14px;"><%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></b> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.
-        </div>
-            
-    <div style="width: 315px; height: 120px; text-shadow:none; float: right;">
-           <b style="font-size:15px; color:#000; clear: both;">Confirmé mi email pero olvide cambiar mi contraseña:</b></br></br>
-            Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.
-        </div>
-            
-    </div>
-  
-  </div><!-- ends Register_Singin -->
-  
-
-   
-    <script>
-            $('#linked').click(function() {
-              $('#sub_linked').animate( {marginTop: "0px"} );
-            });
-      $('#Closelinked').click(function() {
-              $('#sub_linked').animate( {marginTop: "400px"} );
-            });
-    </script>
-  
-</div>
-	<div class="welcome_msj" style="/*font-size:20px;color:#f5f5f5; width:600px;height:60px; padding:10px; margin:15px auto 0 auto; background: rgba(95,150,191,0.4);*/">
-			<p style="width: 640px; min-height: 15px; margin: 20px auto; padding: 20px 0 20px 60px; background: rgba(255,255,255,0.8) url('/assets/star.png') no-repeat 10px 10px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;">
-				<%= current_network.welcom_message%>
-			</p>
-	</div>
-<!--sirve para colocar la ayuda express a antiguos usuarios-->
-
-<%= render "devise/shared/footer-links" %>
-<%end%>

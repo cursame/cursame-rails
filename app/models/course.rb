@@ -33,14 +33,14 @@ class Course < ActiveRecord::Base
   # validates_presence_of :delivery_param_evaluation
   #validates_presence_of :network_id
 
-  # accepts_nested_attributes_for :course_files
+  #accepts_nested_attributes_for :course_files
   
 
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
   :created_at, :updated_at, :public_status,
   :avatar, :coverphoto, :delivery_id,
   :survey_param_evaluation, :delivery_param_evaluation,
-  :network_id, :active_status
+  :network_id, :active_status, :course_files
 
 
   #para los likes
@@ -95,6 +95,11 @@ class Course < ActiveRecord::Base
 
     notifications.each do |notification|
       notification.destroy
+    end
+    
+    self.members_in_courses.each do |mic|
+      notificacion = Notification.where(:notificator_type =>"MembersInCourse", :notificator_id => mic.id)
+      notificacion.destroy
     end
   end
 
@@ -160,7 +165,7 @@ class Course < ActiveRecord::Base
 
   def self.search(search)
     if search
-      @searcher = find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+      @searcher = find(:all, :conditions => ['lower(title) LIKE ?', "%#{search}%"])
     else
       find(:all, :order => :title)
     end

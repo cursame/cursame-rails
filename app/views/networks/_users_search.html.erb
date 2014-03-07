@@ -1,0 +1,10 @@
+<%= form_tag(user_n_find_path, :method => 'get', :remote => true, :class => "search-courses") do %>
+  <div class="search-wrap">
+    <%= text_field_tag 'activiesearch', '' , :placeholder =>'Buscar amigos...', :class => 'search-input', :id => "users-search-input" %>
+    <div class="search-button">
+      <span class="btn btn-secondary input-btn">
+        <%= submit_tag 'Buscar' %>
+      </span>
+    </div>
+  </div>
+<% end %>

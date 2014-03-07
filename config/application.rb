@@ -65,5 +65,14 @@ module Cursame30Lb
 
     #active admin
     config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
+
+    # Diferent layout for Devise
+    config.to_prepare do
+        Devise::SessionsController.layout "sessions"
+        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "sessions" }
+        Devise::ConfirmationsController.layout "sessions"
+        Devise::UnlocksController.layout "sessions"
+        Devise::PasswordsController.layout "sessions"
+    end
   end
 end

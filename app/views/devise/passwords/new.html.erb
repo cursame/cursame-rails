@@ -1,27 +1,46 @@
-<% if current_network.image_front.file != nil%>
 
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front.file %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
 
-<%end%>
+<div class="user-sessions-wrap user-sessions-medium">
+	<div class="user-sessions-network-brand">
+    <% if current_network.free || current_network.logo.file == nil %>
 
-<div class="content login confirmationIndexHeader" id="titlheader" style="width: 600px; text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 25px; padding-left: 20px; padding-right: 20px;">
-		<b>¿Olvidaste tu contraseña?</b>
-		<p style="width: 420px; padding-top: 20px; margin: 0 auto; font-size: 16px; margin-top: 10px; margin-bottom: 20px;">No importa, nosotros te ayudamos a recuperarla, por favor solo agrega el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p>
+      <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
 
-			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <% else %>
+      <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+    <% end %>
+  </div>
+  <div class="user-sessions-main">
+    <div class="user-session-content">
+    	<h4>Recupera tu cotraseña</h4>
+    	<p>Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p><br>
+
+    	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 				<%= devise_error_messages! %>
-				
-				  <div class="form-signup" style="height:125px;padding-top:7px;margin-top:40px;display:block;">
-					<div><!-- <%= f.label :Por_favor_escribe_tu_correo_electronico %> -->
-						<%= f.email_field :email, :class => 'email', :placeholder =>"Correo electrónico" %></div>
-						<div><%= f.submit "Reactivar contraseña", :class =>"confirm-btn" %></div>
-				<% end %>
-	</div>
 
+				<div class="form-group no-label">
+          <div class="form-group-main">
+            <span class="input-icon session-icon-input">
+              <%= icon('email') %>
+              <%= f.email_field :email, :class => 'email', :placeholder =>"Correo electrónico" %>
+            </span>
+          </div>
+        </div>
+				
+				<div class="user-sessions-footer">
+          <div class="fr">
+            <span class="btn btn-primary btn-medium input-btn">
+              <%= f.submit "Reactivar contraseña" %>
+            </span>
+          </div>
+        </div>
+
+			<% end %>
+
+    </div>
+		
+		<div class="user-session-links">
+	    <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
+	  </div>
+  </div>
 </div>
-	
-				<div class="confirmation-links" style="margin-top: 50px;">
-					<%= render "devise/shared/links" %>
-				</div>

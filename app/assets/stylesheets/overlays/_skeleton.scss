@@ -1,0 +1,196 @@
+first-time-survey-overlay
+/* Overlays Skeleton
+----------------------------------*/
+.overlay-open {
+  overflow: hidden !important;
+}
+
+.overlay-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+
+  .overlay-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 205;
+  }
+
+  .overlay {
+    width: 600px;
+    position: absolute;
+    z-index: 210; 
+
+    &.not-height {
+      position: relative;
+      margin: 50px auto;
+    }
+
+    &.overlay-informative {
+      .overlay-header,
+      .overlay-content,
+      .overlay-footer {
+        padding: 15px;
+
+        &.no-padding {
+          padding: 0;
+        }
+      }
+    }
+
+    &.overlay-small {
+      width: 400px;
+    }
+  }
+
+  .overlay-header {
+    padding: 20px 30px;
+    position: relative;
+    @include clearfix;
+
+    .overlay-icon {
+      margin-left: -55px;
+      margin-top: -23px;
+      top: 50%;
+      position: absolute;
+    }
+
+    .close-overlay {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      margin-top: -7px;
+    }
+
+    &.discussion {
+      background: #e2c500;
+    }
+  }
+
+  .overlay-content {
+    padding: 30px;
+  }
+
+  .overlay-footer {
+    padding: 20px 30px;
+    @include clearfix;
+  }
+}
+
+/* Delivery Overlay
+----------------------------------*/
+.delivery-overlay-submit-form {
+  display: none;
+}
+
+.add-file-delivery-submit {
+  position: relative;
+
+  > form {
+    position: absolute;
+    left: 30px;
+    top: -57px;
+  }
+}
+
+.delivery-results {
+  .delivery-overall-result {
+    margin-bottom: 4px;
+    @include clearfix;
+    
+    h4 {
+      padding: 8px 0 0 48px;
+    }
+    .result {
+      float: left;
+      padding: 7px 9px;
+    }
+  }
+}
+
+.delivered-delivery-rubres {
+  .delivered-delivery-rubre {
+    padding: 4px 0;
+    @include clearfix;
+
+    .rubre-calification {
+      float: left;
+      padding: 9px 11px; 
+    }
+
+    .rubre-main {
+      margin-left: 49px;
+    }
+  }    
+}
+
+/* Survey Overlay
+----------------------------------*/
+.survey-wrap {
+  ol {
+    > li {
+      margin-left: 22px;
+      margin-top: 30px;
+
+      &:first-child {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .survey-answers {
+    margin-top: 10px;
+
+    ul > li {
+      margin-top: 5px;
+    }
+
+    .survey-question-answer {
+
+      label {
+          padding: 2px 7px 4px 7px;
+          display: block;
+        }
+      }
+  }
+}
+
+/* First Time Video Tutorial
+----------------------------------*/
+.overlay.video-tutorial-overlay {
+  width: 800px;
+
+  .overlay-content {
+    height: 437px;
+    border-radius: 0 0 $radius $radius;
+    overflow: hidden;
+    position: relative;
+  }
+
+  iframe {
+    width: 100%;
+    height: 437px;
+    display: block;
+  }
+
+  #player {
+    border-radius: $radius;
+    overflow: hidden;
+  }
+}
+
+.overlay.first-time-survey-overlay {
+  width: 550px;
+
+  .overlay-content {
+    height: 430px;
+    overflow-y: scroll;
+    border-radius: 0 0 $radius $radius;
+  }
+}

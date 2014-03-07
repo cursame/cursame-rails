@@ -1,0 +1,15 @@
+
+<% if message.user != nil && message.user.avatar != nil%>
+  <div id="message_<%= message.id %>" class="chat-message-item">
+    <div class="chat-message-author">
+      <span class="avatar-holder">
+        <%= avatar('user', '45', "no", message.user.id, "avatar", "no", "no") %>
+      </span>
+    </div>
+    <div class="chat-message-main">
+      <%= link_to message.user.name, show_user_path(message.user.personal_url) %>
+      <p><%= message.mesage %></p>
+    </div>
+  </div>
+<%end%>
+  

@@ -1,263 +1,54 @@
-<div id="banner-profile" style="background: linear-gradient(to bottom, rgba(39,39,39,0), rgba(0,0,0,1)),
- url(<%= @user_l.coverphoto.blank? ? '/assets/'+ @user_l.cover_photox : @user_l.coverphoto %>); background-size: 100% 440px;
- background-position-y: 0px; background-repeat: repeat-y;">
-<%@incourse = false%>
- <!--<div id="noticce">
-  <div id="notice" class="notice"></div>
- </div>-->
-
-<%= render :partial => 'shared/head_menu' %>
+<div id="banner-profile" style="display: none">
+  <% @incourse = false %>
+  <%= render :partial => 'shared/head_menu' %>
 </div>
-<!-- Content Post Box -->
-<div id="box-content" class="profile-line">
-    <!-- SideBar -->
-    <div id="side-bar" class="side-left-bar" >
-        <!-- User Avatar -->
-        <div id="box-user-credential" class="network-layout">
-            <div class="thumbnail">
+<%= render partial: 'user-header' %>
 
-             <%= link_to image_tag(@user_l.avatar.profile, :whidth => '150px', :height => '150px'), show_user_path(@user_l.personal_url) if ( !@user_l.avatar.blank?) %>
-
-              <%= link_to image_tag(@user_l.image_avatarx), show_user_path(@user_l.personal_url) if (@user_l.avatar.blank?) %>
-            </div>
-
-            <div class="tagname">
-              <%= truncate("#{@user_l.name}", :omission => "...", :length => 20) %>
-            </div>
-		
-        </div>
-        
-        <div id="box-profile-info" class="basic-lateral-box margin-top">
-            <li class="aboutme"><%= @user_l.bios %></li>
-            <li class="mail"> <%= @user_l.email %></li>
-            <li class="twitter"><%= @user_l.twitter_link %> </li>
-            <!--<li class="facebook"><%#= @user_l.facebook_link%></li>-->
-            
-            <% if current_user.id == @user_l.id%><li id="edit-user"><%=link_to "editar #{current_network.user_tag}",  edit_user_registration_path %></li><%end%>
-
-        </div>
-        <!-- <div class="head_banner_style_user">
-               <div class="sup_track">
-               <div class="track">
-               <%= image_tag('track.png')%>
-               </div>
-               <div class="track_text">
-                   <p><%= mail_to "info@cursa.me", "¡Anunciate aquí!"%>
-                    </p>
-               </div>
-               </div>
-           </div> -->
-
-		<div class="friendship_conf" style="margin: 0 auto; clear: both; position: relative; display: block; width: 230px;">
-		    <!--btones de solicitud de amistad -->
-			
-			<%if current_user == @user_l%>
-			<%elsif current_user.friends?(@user_l)%>
-			<div class="send_request btn_gray" style="margin-bottom: 10px;">Amigo</div>
-			<%elsif current_user.friends_request?(@user_l) %>
-			<div class="sent_request btn_gray" style="margin-bottom: 10px;">Solicitud enviada</div>
-			<%elsif current_user.sent_me_request?(@user_l)%>
-			<div class="sent_me_request btn_blue" style="margin-bottom: 10px;"><%= link_to "Aceptar amistad", friendships_update_friend_path(@user_l.id), :remote => true%></div>
-			<%elsif current_user != @user_l%>
-			<div  class="send_request btn_blue" style="margin-bottom: 10px;"><%= link_to "Añadir a amigos", friendships_create_friend_path(@user_l.id), :remote => true%></div>
-			<%end%>
-		</div>
-
-        <div id="box-course" class="basic-lateral-box" >
-            <%=render :partial => 'courses/courses.html.erb', :locals => {:courses => @courses} %>
-        </div>
-        
-        <a class="help " id="help_courses"><%= image_tag('help.png')%></a>
-           <script>
-                    $('#help_courses').click(function() {
-                        $('#courses_help').toggle('drop', 400);
-                        if($("#courses_help").css( 'visibility')=="hidden"){
-                               $('#content_video_video_courses').html('');
-                           }
-                           else{
-                              $('#content_video_video_courses').html('<object width="260" height="200"><param name="movie" value="http://www.youtube.com/v/OBZwWue4NhQ?hl=es_ES&amp;version=3&amp;rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/OBZwWue4NhQ?hl=es_ES&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
-                           }
-                       });                         
-
-           </script>
-
-           <div class="video_help courses_help" style="display: none" id="courses_help">
-                  <div class="content_video" id="content_video_video_courses">
-
-                  </div>
-           </div>
-           
-         <%# if @user.id == current_user.id %>
-            <%#= link_to "Solicitudes de amistad", friendships_path%>
-            <%#else%>
-            <%#= form_for (@friendship = Frienship.new) do |friendship|%>
-
-             <%#= friendship.hidden_field :user_id, :value => current_user.id %>
-             <%#= friendship.hidden_field :user_id, :value => @user.id %>
-             <%#= friendship.submit "Agregar a mis amigos"%>
-
-            <%#end%>
-            <%#end%>
-      <!-- se comenta amigos para la beta que saldrá el día 15 de febrero -->
-      <div id="box-friends" class="basic-lateral-box" >
-            <h2><%= current_network.friends_tag %></h2>
-            <div id="tabs-friends" class="tabs-style">
-                <ul id="ul-tabs" class="tabs-friends-cc">
-                    <div class="element-left" style="width:100px!important;">
-                        <a class="plus-courses"  id="friend_solicitud" style='margin-left: 194px;' href="<%=show_friends_path(current_user.personal_url)%>"></div>
-                            <script>
-                                  $(".tabs-friends-cc").hover(
-                                           function () {
-                                             $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:225px; float:left; margin-top:-30px'><div class='tooltipr'><%=truncate("Para ver las solicitudes de amistad da click en el boton azul de la derecha.", :omission => "...", :length => 155) %></div></span>"));
-                                           },
-                                           function () {
-                                             $(this).find("span:last").remove();
-                                           }
-                                  );
-                              </script>
-                        <% @friends = @user_l.friendships.where(:accepted => true)%>
-                        <% @inverse_friends = @user_l.inverse_friendships.where(:accepted => true)%>
-                        <% @sum_f =  @friends.count +  @inverse_friends.count %>
-
-                        <a href="#tabs-friends-1">
-                            <div class="content-tab">
-                                <span class="title-num"><%= @sum_f %></span>
-                                <span class="title"><%= current_network.friends_tag %></span>
-                            </div>
-                        </a>
-                    </li>
-                  <!--   <li class="element-right" style="width:130px!important;">
-                      <a href="#tabs-friends-2">
-                        <div class="content-tab">
-                          <span class="title-num">20</span>
-                          <span class="title">sugerencias</span>
-                        </div>
-                      </a>
-                    </li> -->
-                </ul>
-
-                <div id="tabs-friends-1">
-                  <div class="content-avtr">
-                      <% @friends.each do |friend|%>
-                      <%  @friend = friend.friend%>
-                      <div class="friend_id_tooltip<%=@friend.id%>" style="float:left;">
-                      
-                           <%= link_to image_tag(@friend.avatar.modern, {:class => "avatar-mini"}),show_user_path(@friend.personal_url)  if ( !@friend.avatar.blank? ) %>
-                           <%= link_to image_tag(@friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@friend.personal_url)  if (@friend.avatar.blank? )  %>
-                        </div>
-                        
-                       <script>
-                                 $(".friend_id_tooltip<%=@friend.id%>").hover(
-                                          function () {
-                                            $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@friend.name}", :omission => "...", :length => 155) if ( !@friend.name.blank?) %></div></span>"));
-                                          },
-                                          function () {
-                                            $(this).find("span:last").remove();
-                                          }
-                                 );
-                       </script>
-                      <%end %>
-                      <% @inverse_friends.each do |friend|%>
-                      <% @inverse_friend = friend.user%>
-                      <div class="friend_id_tooltip<%=@inverse_friend.id%>" style="float:left;">
-                      
-                      <%=link_to image_tag(@inverse_friend.avatar.modern, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (!@inverse_friend.avatar.blank?)%>
-                      <%= link_to image_tag(@inverse_friend.image_avatarxxx, {:class => "avatar-mini"}), show_user_path(@inverse_friend.personal_url) if (@inverse_friend.avatar.blank?)%>
-                      </div>
-                      
-                       <script>
-                             $(".friend_id_tooltip<%=@inverse_friend.id%>").hover(
-                                      function () {
-                                        $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:35px; float:left; margin-top:-50px'><div class='tooltipr'><%=truncate("#{@inverse_friend.name}", :omission => "...", :length => 155) if ( !@inverse_friend.name.blank?) %></div></span>"));
-                                      },
-                                      function () {
-                                        $(this).find("span:last").remove();
-                                      }
-                             );
-                        </script>
-                      <%end%>
-                  </div>
-                  <div class="view-all" id="comunidad_fgthk"><%= link_to "#{current_network.comunity_tag}", network_comunity_path %></div>
-                    <script>
-                              $("#comunidad_fgthk").hover(
-                                   function () {
-                                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-7px; float:left; margin-top:-5px'><div class='tooltipr'><%=truncate("Ver todos los miembros de la #{current_network.comunity_tag}.", :omission => "...", :length => 155) %></div></span>"));
-                                   },
-                                   function () {
-                                     $(this).find("span:last").remove();
-                                   }
-                                 );
-
-                       </script>
-                </div>
-                <!-- <div id="tabs-friends-2">
-                  <div class="content-avtr">
-                    <%= image_tag(@user.avatar.modern,{:class => "avatar-mini"})%>
-
-                  </div>
-                </div>-->
-            </div>
-        </div>
-        
-      <!--  <a class="help  friend_user_help" id="help_friends"><%= image_tag('help.png')%></a>
-            <script>
-                     $('#help_friends').click(function() {
-                         $('#friends_help').toggle('drop', 400);
-                         if($("#friends_help").css( 'visibility')=="hidden"){
-                                $('#content_video_video_friends').html('');
-                            }
-                            else{
-                               $('#content_video_video_friends').html('<object width="260" height="200" ><param name="movie" value="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/gudXW66O9OM?hl=es_ES&amp;version=3" type="application/x-shockwave-flash" width="260" height="200" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
-                            }
-                        });                         
-
-            </script>-->
-
-            <div class="video_help friend_user_help" style="display: none" id="friends_help">
-                   <div class="content_video" id="content_video_video_friends">
-
-                   </div>
-            </div>
-    </div>
-    
-    
-
-    <!-- Content -->
+<div class="wrapper spaced">
+  <% if filter_friendship %>
     <div id="box-stream-post">
-    <div id="pk_menu">
-      <%=render :partial => 'shared/post_menu' %>
+      <div id="pk_menu">
+        <%=render :partial => 'shared/post_menu' %>
+      </div>
+      
+      <div id="timeline" class="tim">
+        <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'user'} %>
+      </div>
+      
+      <% if show_joyride(2) == '0' %>
+        <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall,:visible_for => 'network'} %>
+      <% end %>       
+      
+      <%= will_paginate(@wall) %>
     </div>
-        <%=render :partial => 'shared/wall_filters', :locals => {:path => show_user_path(@user_l.personal_url)} %>
-        <div id="timeline" class="tim">
-          <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'user'} %>
-        </div>
-        <!-- inicio de joyride -->
-        <% if show_joyride(2) == '0' %>
-           <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall,:visible_for => 'network'} %>
-        <% end %>       
-        <!-- fin de joyride -->
-
-        <!-- fin timeline -->
-        <%= will_paginate(@wall) %>
-
+  <% else %>
+    <div class="no-content-section">
+      <h4>No eres amigo del usuario <%= @user_l.name%></h4>
+      <p>Agrégalo para poder postear en su muro.</p>
     </div>
-
+  <% end %>
 </div>
+
 <script type="text/javascript">
-$(function() {
-  var p = $('#timeline').pageless({
-    totalPages: <%= @wall.total_pages %>,
-    url: '<%= show_user_path(@user_l.personal_url) %>',
-    loaderMsg: '...',
-    onInit:function(opts){
-      this.pageless = {
-        opts : opts
-      };
-    },
-    params:{
-      search:''
-    },
-    loaderImage: '<%= image_path("load.gif")%>'
+  $(function() {
+
+    <% if current_user.tour_profile == false %>
+      var tourContent = '<%= escape_javascript(render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "wtFVoBnwi9Y", tour_type: "profile" })) %>';
+      createModal( tourContent, "video-tutorial-overlay overlay-informative not-removable" );
+    <% end %>
+
+    var p = $('#timeline').pageless({
+      totalPages: <%= @wall.total_pages %>,
+      url: '<%= show_user_path(@user_l.personal_url) %>',
+      onInit:function(opts){
+        this.pageless = {
+          opts : opts
+        };
+      },
+      params:{
+        search:''
+      },
+      loaderImage: '<%= image_path("load.gif")%>'
+    });
   });
-});
 </script>

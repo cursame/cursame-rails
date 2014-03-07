@@ -5,11 +5,14 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'pg'#, :groups => [:production]
 gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise'
 gem 'json'
+
+#gema para calendario y tablas espcificas
+gem "watu_table_builder", :require => "table_builder"
 
 #gemas para uso de gestion de archivos
 gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
@@ -31,6 +34,7 @@ gem 'omniauth-facebook'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bourbon', "~> 3.1.8"
+  gem 'handlebars_assets'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -41,8 +45,9 @@ end
 ####### gems for debug erros
 group :development do
   # gem 'better_errors'
-  # gem 'binding_of_caller'
-  # gem 'meta_request'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  
   gem "selenium-webdriver", "~> 2.35.0"
 end
 
@@ -134,3 +139,4 @@ gem 'exception_notification', '~> 3.0.1'
  #  gem 'rails-dev-tweaks', '~> 0.6.1' 
  # end
  
+gem "wuparty", "~> 1.2.6"

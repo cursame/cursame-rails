@@ -1,106 +1,97 @@
-<div class="cogki_content_delivery">
-    
- 
-    
-        <ul class="tabs">
-        		<li class="tab-link current" data-tab="tab-1">Entrega</li>
-        		<li class="tab-link" data-tab="tab-2">Evaluación</li>
-        </ul>
-        
-        <script>
-         $(document).ready(function(){	
-         	$('ul.tabs li').click(function(){
-         		var tab_id = $(this).attr('data-tab');
 
-         		$('ul.tabs li').removeClass('current');
-         		$('.tab-content').removeClass('current');
-
-         		$(this).addClass('current');
-         		$("#"+tab_id).addClass('current');
-         	})
-
-         })
-         </script>
-
-<div id="tab-1" class="tab-content current">
-    <div class="coklo-title">
-    
-       <h1>TÍTULO: <%= assignment.title%> </h1></br>
-       <p><div class="cont">DESCRIPCIÓN: <%= assignment.brief_description%> </div> </p></br>
-    
+<div class="cogki_content_delivery delivery-submited-wrap">
+  <div class="back-to-activity">
+    <a class="show-activity-feed" href="" title="Atras" data-type="tarea" data-id="<%= assignment.delivery_id %>"><%= icon('arrow-gray-left') %> Atras</a>
+  </div>
+  <div class="delivery-submited-content">
+    <div>
+      <span class="meta-info">Alumno:</span>
+      <p><%= link_to assignment.user.name, show_user_path(assignment.user.personal_url) %></p>
+    </div>
+    <div>
+      <span class="meta-info">Titulo de entrega:</span>
+      <p><%= assignment.title%></p>
+    </div>
+    <div>
+      <span class="meta-info">Descripción de entrega:</span>
+      <p><%= assignment.brief_description%></p>
     </div>
     
-<div class="content-assets">
- 	 <p> ARCHIVOS DE LA ENTREGA: </p></br>
-     <% assignment.assets.each do |aa|%>
-         <% @file =  aa.file %>
-         <% @string_file =  @file.to_s.split('/').last%>
-         <%#= link_to simple_format("#{(@string)}", :omission => "...", :length => 25), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank'%>  
-          <div id="<%= aa.id %>_file" style="float:left;"><%= link_to image_tag("icons/file-basic-mini.png"), "http://#{current_network.subdomain}.#{links}#{aa.file}", :target => '_blank' %></div>
-          <script>
-              $("#<%= aa.id %>_file").hover(
-                   function () {
-                     $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-15px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("#{@string_file}", :omission => "...", :length => 25)%></div></span>"));
-                   },
-                   function () {
-                     $(this).find("span:last").remove();
-                   }
-                 );
-           </script>
-         
-     <%end%>
-     
-     
-      <% assignment.contents.each do |as|%>
-          <%# @f_file =  as.content_html %>
-          <%#= @f_file %>
-          <% @refer_content = as.content.split('/').last%>
-          <div id="<%= as.id %>_content" style="float:left;"><%= link_to image_tag("icons/file-basic-mini.png"), "#{as.content}", :target => '_blank' %></div>
-            <script>
-                $("#<%= as.id %>_content").hover(
-                     function () {
-                       $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:-15px; float:left; margin-top:0px'><div class='tooltipr'><%=truncate("#{@refer_content}", :omission => "...", :length => 25)%></div></span>"));
-                     },
-                     function () {
-                       $(this).find("span:last").remove();
-                     }
-                   );
-             </script>
-      <%end%>
-      
-    
-</div>
-</div>
+    <% if assignment.assets.count > 0 || assignment.contents.count > 0 %>
+      <div class="assets">
+        <span class="meta-info">Archivos de la entrega:</span>
+        
+        <% domain = "http://#{current_network.subdomain}.#{links}" %>
+        <% assignment.assets.each do |aa|%>
+          <% @file =  aa.file %>
+          <% @string_file =  @file.to_s.split('/').last%>
+          <div id="<%= aa.id %>_file">
+            <%= link_to truncate( "#{domain}#{aa.file}", :omission => "...", :length => 60), "#{domain}#{aa.file}", :target => '_blank' %>
 
-<div id="tab-2" class="tab-content">
-    <div class="coklo-title" id="accomplishment">
-     <%if assignment.accomplishment == nil %>
-	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <%= number_with_precision(assignment.response_to_the_evaluations.sum(:rub_calification), :precision => 2 )%></h1></br>
-	 <%else%>
-	      <h1  id = "i_rub_l_<%= assignment.id%>">CALIFICACION: <b><%= number_with_precision(assignment.accomplishment, :precision => 2) %>%</b></h1></br>
-     <%end%>
-   
-         
-      <p>Criterios de calificación</p>
-        <%= form_for assignment, remote: true   do |assigments_l |%>
-            <center>
-            <% if assignment.response_to_the_evaluations.count != 0%>
-            
-            <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea  %>
-                 <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
-              
-                 <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
-              
-                <%end%>
-            <%else%>
-                 <%=assigments_l.label :Por_favor_selecciona_un_porcentaje_de_1_a_100_para_calificar_esta_tarea  %>
-                 <%= assigments_l.number_field :rub_calification, :class => 'inputCalif' %>
-            <%end%>
-            <br />
-            	<span class="default-form submitCalif"><%= assigments_l.submit "Calificar tarea"%></span>
-            </center>
+          </div>
        <%end%>
        
-    </div>
-</div>
+        <% assignment.contents.each do |as|%>
+          <% @refer_content = as.content.split('/').last%>
+          <div id="<%= as.id %>_content">
+            <%= link_to truncate( as.content, :omission => "...", :length => 60), as.content, :target => '_blank' %>
+          </div>
+        <%end%>
+      
+      </div>
+    <% end %>
+  </div>
+
+  <div class="delivery-submited-evaluation-fields" id="accomplishment">
+    <%= form_for assignment, remote: true   do |assigments_l |%>
+      <% if assignment.response_to_the_evaluations.count != 0%>      
+        <div class="evaluation-fields-title">
+          <h4>Criterios de calificación</h4>
+          <p>Por favor selecciona un porcentaje de 1 a 100 para calificar esta tarea</p>
+        </div>
+
+        <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
+          <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
+        <%end%>
+      <%else%>
+        <div class="evaluation-fields-title">
+          <h5>Calificación de la tarea</h5>
+          <p>Seleccione un porcentaje de 1 a 100 para calificar esta tarea</p>
+        </div>
+
+        <div class="homeworkCalf">
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= assigments_l.label :Calificación  %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= assigments_l.number_field :rub_calification %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      
+      <div class="delivery-submited-evaluation-footer">
+        <div class="fl">
+          <ul class="list-buttons left">
+            <li>
+              <span class="btn btn-primary input-btn">
+                <%= assigments_l.submit "Calificar tarea"%>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="fr">
+          <%if assignment.accomplishment == nil %>
+            <h3>Calificación: <span id="i_rub_l_<%= assignment.id%>"><%= number_with_precision(assignment.response_to_the_evaluations.sum(:rub_calification), :precision => 2 )%></span></h3>
+          <%else%>
+            <h3>Calificación: <span id="i_rub_l_<%= assignment.id%>"><%= number_with_precision(assignment.accomplishment, :precision => 2) %>%</span></h3>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+       
+  </div>
 </div>

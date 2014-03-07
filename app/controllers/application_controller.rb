@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
 
-  protect_from_forgery
+  #protect_from_forgery
+  #skip_before_filter  :verify_authenticity_token
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
   helper_method :network_member
@@ -30,11 +31,31 @@ class ApplicationController < ActionController::Base
   helper_method :numeric_random
   helper_method :call_rake
 
+  #metodo de lista de iconos
+
+  helper_method :icon
+
+  #metodo de acceso a los avatares
+  helper_method :avatar
+  helper_method :agil_find_user
+  # helper methos de fechas 
+
+  helper_method :es_month
+  helper_method :es_day
+  helper_method :es_current_date
   #helpers para contenido
   helper_method :client_youtube
   helper_method :auth_hash
   helper_method :courses_with_permissions
+
+  #current_user_course_when_inscript
+  helper_method :current_user_courses
+  #quit cache
+  helper_method :cache_expire
   
+  def cache_expire 
+    cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 10.minutes)
+  end
 
   #data of the networks you are
   def current_network
@@ -100,7 +121,11 @@ class ApplicationController < ActionController::Base
   #end
 
   def current_course
-      @course = Course.find(params[:id])
+    @course = Course.find(params[:id])
+  end
+  
+  def current_user_courses
+     @ccc = current_user.courses.where(:network_id => current_network.id)
   end
 
   ####### difininiendo variables de miembros de una red de forma global ########
@@ -144,7 +169,7 @@ class ApplicationController < ActionController::Base
   end
 
   def alfredot_rifa_free_pro_forever
-     puts "alfredot rifa free pro forever 2013"
+     puts "alfredot rifa free pro forever 2014"
      puts "
      _+88__________________________...
      _+880_________________________...
@@ -169,6 +194,14 @@ class ApplicationController < ActionController::Base
      ________++++++0088888888______...
      ________+++++0008888888_______...
      ________...............8888888... "
+     puts "casual aqui programando "
+     puts "Desarrolladores 2014:"
+     puts '**************************************'
+     puts "Alfredo Reyes de Antuñano"
+     puts "Emiliano Cabrera Blancas"
+     puts "Salvador López Mendoza"
+     puts "Armando Gonzalez López"
+     puts '**************************************'
    end
 
    def fail_in_save
@@ -183,6 +216,16 @@ class ApplicationController < ActionController::Base
     @permisos = current_user.permissionings.last
     @role = Role.find_by_id(@permisos.role_id)
     @role.title
+     #case @role.title
+      # when 'admin'
+       # @role_t = "Administrador"
+       #when 'student'
+       # @role_t = "Estudiante"
+       #when 'teacher'
+        #@role_t = "Profesor"
+       #else
+        #@role.title
+     #end
   end
   ###### comandos de generación de actividades
   def activation_activity
@@ -375,6 +418,246 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  ###### valida los iconos dentro de la aplicación ######
+
+  def icon(name)
+    @match_list = "<i class='i i-#{name}'></i>"
+    @match_list.html_safe
+  end
+
+  ###### validadores de avatars dentro de la aplicación ######
+  
+  def avatar(type, size, url, destinate, clase, identificador, resize_to)
+    
+    
+    ##### casos para la url
+    case
+      when url == 'no'
+        object_url = ''
+        object_url_end = ''
+      when url != 'no'
+        object_url = '<a'+ ' href='+ "#{url}" +'>'
+        object_url_end = '</a>'
+    end
+        
+    #### casos para resize_to
+
+    case
+      when resize_to == 'no'
+        object_resize_to = ''
+      when resize_to != 'no'
+        object_resize_to = " width="+"'"+"#{resize_to}px"+"'" + " height=" +"'"+ "#{resize_to}px"+"'"
+    end
+    
+     
+    ### coloca una clase en la imagen
+    case
+      when clase == 'no'
+        object_clase = ''
+      when clase != 'no'
+        object_clase =  (" class='#{clase}'").to_s
+    end
+    ### coloca un id en la imagen
+    case
+      when identificador == 'no'
+        object_identificador = ''
+      when identificador != 'no'
+        object_identificador = " id="+"#{identificador}"
+    end
+
+    ### se macha en el tipo de imagen
+    case
+     when type == "course"
+            #### se crea el obejto que se busca
+            object = Course.find_by_id(destinate)
+            ##puts object
+            #### se revisa si el objeto contiene avatar
+            if object.avatar.file != nil
+               #### si el objeto contiene un avatar se machan las diversas medidas 
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.compress}"+ object_resize_to+ "object_clase" + object_identificador +'>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.mini}"+ object_resize_to+ object_clase+ object_identificador +'>'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.head}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.modern}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.profile}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                               
+               end
+            else
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
+                end
+
+            end
+            
+
+     when type == "user"
+            #### se crea el obejto que se busca
+            object = User.find_by_id(destinate)
+            ###puts object
+            #### se revisa si el objeto contiene avatar
+            if object.avatar.file != nil
+               #### si el objeto contiene un avatar se machan las diversas medidas 
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.compress}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img  src='+"#{object.avatar.mini}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.head}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.modern}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.profile}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                               
+               end
+            else
+               case 
+                when size == '10'
+                  @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxxx.png'"+' '+object_resize_to+ object_clase +'/>'+ object_url_end
+                when size == '25'
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexx.png'"+' '+ object_resize_to+ object_clase +' />'+ object_url_end
+                when size == '30'
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexxxx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
+                when size == '45'
+                  @self_avatar = object_url+'<img src='+"'/assets/imagexxx.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
+                when size == '150'
+                  @self_avatar = object_url+'<img src='+"'/assets/imagex.png'"+' '+object_resize_to+ object_clase +' />'+ object_url_end
+                end
+
+            end
+            
+    end
+    
+    ##### esta parte del metodo lee en html el helper #####  
+    @self_avatar.html_safe  
+
+  end
+
+  ###### ayuda alos cambiar los meses del año a español
+  def es_month(monthx = '')
+    case
+     when monthx == 'January'
+      @name = 'Enero'
+     when monthx == 'February'
+      @name = 'Febrero'
+     when monthx == 'March'
+      @name = 'Marzo'
+     when monthx == 'April'
+      @name = 'Abril'
+     when monthx == 'May'
+      @name = 'Mayo'
+     when monthx == 'June'
+      @name = 'Junio'
+     when monthx == 'July'
+      @name = 'Julio'
+     when monthx == 'August'
+      @name = 'Agosto'
+     when monthx == 'September'
+      @name = 'Septiembre'
+     when monthx == 'October'
+      @name = 'Octubre'
+     when monthx == 'November'
+      @name = 'Noviembre'
+     when monthx == 'December'
+      @name = 'Diciembre'
+     else
+      @name = 'Este no es un més'
+
+    end
+  end
+
+  ##### da formato a las fechas en español
+  
+  def es_current_date(month = '', day = '' , year = '', hour ='',format = 'mexican')
+    ##### example :    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
+   
+    if hour == nil
+       hour_mesage = ""
+      else
+       hour_mesage = "-#{hour}"
+    end
+
+    case 
+      when format == 'american'
+      case 
+        when month != '' && day != '' && year != ''
+        @date = "#{es_month(month)} / #{day} / #{year} #{hour_mesage}"
+        when month != '' && day != ''
+        @date = "#{es_month(month)} / #{day} #{hour_mesage}"
+        when month != '' && year != ''
+        @date = "#{es_month(month)} / #{year} #{hour_mesage}"
+      end
+    when format == 'mexican'
+       case 
+        when month != '' && day != '' && year != ''
+        @date = "#{day} / #{es_month(month)} / #{year} #{hour_mesage}"
+        when month != '' && day != ''
+        @date = "#{day} / #{es_month(month)} #{hour_mesage}"
+        when month != '' && year != ''
+        @date = "#{es_month(month)} / #{year} #{hour_mesage}"
+      end
+    when format == 'latin_string'
+      case 
+        when month != '' && day != '' && year != ''
+        @date = "#{day} de #{es_month(month)} del #{year} #{hour_mesage}"
+        when month != '' && day != ''
+        @date = "#{day} de #{es_month(month)} #{hour_mesage}"
+        when month != '' && year != ''
+        @date = "#{es_month(month)} del #{year} #{hour_mesage}"
+      end
+    end 
+  end
+  
+  ###### da formato a los días de la semana en español
+  def es_day(esday)
+    case 
+      when esday != 'Week'
+      case 
+      when esday == 'Monday'
+        @day_name = 'Lunes'
+      when esday == 'Tuesday'
+        @day_name = 'Martes'  
+      when esday == 'Wednesday'
+        @day_name = 'Miercoles'  
+      when esday == 'Thursday'
+        @day_name = 'Juevez'  
+      when esday == 'Friday'
+        @day_name = 'Viernes'  
+      when esday == 'Saturday'
+        @day_name = 'Sabado'
+      when esday == 'Sunday'
+        @day_name = 'Domingo' 
+      end
+        when esday == 'Week'
+        @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
+    end
+  end
+  
+  ###### metodo para encontrar un usuario de manera facil ######
+  def agil_find_user(findX, byX='id')
+    case 
+      when byX == 'id'  
+       @user = User.find_by_id("#{findX}")
+      when byx == 'personal_url'
+       @user = User.find_by_perosnal_url("#{findX}")
+    end
+  end
+
+
   protected
   #roles
   def permission_denied
@@ -385,7 +668,7 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Authorization.current_user = current_user
   end
-
+ 
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------

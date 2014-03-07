@@ -1,3 +1,2 @@
-$('#uik_<%=@members_in_course.id%>').html('');
-$('#usk_<%=@members_in_course.id%>').html('');
-$('#uik_<%=@members_in_course.id%>').html('<p style="color:#fff; width:100%; padding:5px;margin-left:140px;">Usted ha abandonado el curso</p>');
+$('.course#<%= @course_id %>').remove();
+Notice('success', 'Has abandonado correctamente el curso.')

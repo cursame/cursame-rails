@@ -1,84 +1,75 @@
-<% if current_user%>
-
 <script>
   var Cursame = {
-	  userId: <%= current_user.id%>
-  };
+    userId: <%= current_user.id %>
+  }
 </script>
 
-<div id="notifications_count" class="notification-icon">
-  <span id="lecto_n_count" ><%=current_user.notifications.where(:active => true).count%></span>
-</div>
-
-<script>
-  $("#notifications_count").click(function () {
-    $.get("/home/editing_n");
-  });
-</script>
-
-<!-- tratamos las notificaciones para agregarles el css first y last-->
 <%
+  #Tratamos las notificaciones para agregarles el css first y last
   notifications = current_user.notifications.paginate(:per_page => 10, :page => 1).order('created_at DESC')
   notifications_first = notifications.shift
   notifications_last = notifications.pop 
 %>
 
-<!-- notification -->
-<div id="box-notifications" style="display:none;">
-	<div id="" class="comment-text" >
-		<div class="arrow-top"></div>
-		<div class="header">
-			<b>Notificaciones</b>  
-		</div>
-		<div class="content">
-			<ul id="notifications_list">
-				<%if notifications_first%>
-				  <% if notifications_first != notifications_last %>
-  				  	<%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>
-  				  <% end %>
-				<%end%>
+<div id="box-notifications" class="activity-dropdown-wrap dropdown-wrap">
+  <div class="activity-dropdown-pull dropdown-pull">
+    <%= icon('activity-notifications') %>
+    <% notifications_count = current_user.notifications.where(:active => true).count%>
+    <span id="lecto_n_count" style="display:<%= notifications_count > 0 ? 'block' : 'none' %>"class="activity-counter">
+      <%= notifications_count if notifications_count > 0 %>
+    </span>
+  </div>
+  <div class="activity-dropdown dropdown-v right">
+    <i class="tip"></i>
+    <div class="activity-dropdown-title">
+      <h6>Notificaciones</h6>
+    </div>
+    <div class="activity-dropdown-content">
+      <ul id="notifications_list" class="activity-feed-list">
+        
+        <% unless notifications.empty? %>
+          <% if notifications_first && notifications_first != notifications_last %>
+            <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_first, :cls => 'first'} %>
+          <% end %>
 
-				<% notifications.each do |notification|%>
-				  <% if notification != notifications_first and notification != notifications_first %>
-    		    	<%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
-    		  	  <% end %>
-				<%end%>
+          <% notifications.each do |notification|%>
+            <% if notification != notifications_first and notification != notifications_first %>
+              <%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
+            <% end %>
+          <% end %>
 
-				<%if notifications_last%>
-  			  <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %>	
-				<%end%>
-			</ul>
-		</div>
-
-		<div class="footer">
-			<b id = "load-more-notifications">
-				<%= link_to "Ver mas ...", load_more_notfications_path("page" => 2), :remote => true%>
-			</b>
-		</div>
-	</div>
+          <% if notifications_last %>
+            <%= render :partial => '/shared/notification_type', :locals => {:notification => notifications_last, :cls => 'last'} %> 
+          <% end %>
+        <% else %>
+          <div class="inner-no-content">
+            <h5>No hay notificaciones para mostrar.</h5>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+    <div class="activity-dropdown-footer">
+      <%= link_to "Ver más notificaciones", load_more_notfications_path("page" => 2), :remote => true, :id => "load-more-notifications" %>
+    </div>
+  </div>
 </div>
 
 <%= subscribe_to "/notifications/"+current_user.id.to_s %>
 
 <script>
-	me = function (type, id, kind) {
-		var noti = $("#notification-" + id);
-
-		// Redireccionamos a donde tenga que redireccionar
-		$(location).attr("href", noti.attr("redirect_to"));
-		$("#box-notifications").hide();
-	}
-	
-	// rendering notifications
+	$("#box-notifications").click(function() {
+			$.get("/home/editing_n");
+	});
+  // rendering notifications
 	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
 		function(data, channel) {
 			var params = {
 				id:data.notification.id
 			};
 			
-		  $('#notifications_count span').html(data.num * 1);
+      $('#lecto_n_count').html(data.num * 1);
+		  $('#lecto_n_count').show();
 		  $.get('/home/render_notifications', $.param(params), null, "script");
 		}
 	);
 </script>
-<%end%>

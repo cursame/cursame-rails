@@ -51,30 +51,12 @@ input:-moz-placeholder {
   border-bottom: 1px solid #ccc;
 }
 
-#box-content{
-  margin: 0 auto;
-  display: table;
-  
-  &.profile-line{
-    background: url('/assets/line-tl.png') repeat-y 285px 0px;
-  }
-}
-
-.course-line{
-	padding-top: 40px;
-}
-
 #pre-post-form-princpal{
   width: 100%;
   height: $height-post-box;
   background: url('/assets/post_user_bg_principal.png') no-repeat 20px 0px;
   margin: 25px 0 0 -25px;
   padding: 10px 0 0 30px;
-}
-
-#box-stream-post{
-  width: $width-right-bar;
-  float: left;
 }
 
 /*===== Estilos genericos para todo tipo de pulicaciones =========*/
@@ -245,37 +227,10 @@ input:-moz-placeholder {
     height: 35px;
     float: left;
   }
-  
-  .arrow-left {
-    background: url('/assets/arrow_comment.png') no-repeat;
-    width: 9px;
-    height: 14px;
-    float:left;
-    position: absolute;
-    margin: 5px 0px 0px -8px;
-  }
 }
 
 
 .tabs-style{
-  
-  .plus-courses{
-    position: absolute;
-    float: right;
-    width: 37px;
-    height: 38px;
-    text-align: right;
-    @include border-t-right-radius;
-    background: url('/assets/plus-box-icon.png') no-repeat;
-    margin-left: 79px;
-    cursor:pointer;
-    margin-top: -1px;
-    transition: ease-out all 0.2s;
-
-    &:hover{
-      background: url('/assets/plus-box-icon-hover.png') no-repeat;
-    }
-  }
 
   .element-left{
     float: left;
@@ -515,31 +470,6 @@ background-position: left center;
 
   }
 }
-#box-friends{
-  min-height: 72px;
-  float: left;
-  & .content-avtr{
-    margin-bottom: 8px;
-  }
-  & #tabs-friends-1, #tabs-friends-2{
-    padding: 8px 0px 0px 0px;
-    clear: both;
-  }
-  & .avatar-mini {
-    margin: 2px 0px 2px 4px;
-  }
-}
-
-
-#box-friends a img .toolTipUser {
-		visibility: hidden;
-		transition: all ease-in 0.4;
-}
-#box-friends a img:hover + .toolTipUser {
-		visibility: visible;
-		transition: all ease-in 0.4;
-}
-
 
 .view-all{
   clear: both;
@@ -707,50 +637,6 @@ background-position: left center;
   }
 }
 
-#box-user-credential{
-  margin-left: 55px;
-  width: 155px;
-  text-align: center;
-  position: absolute;
-
-  &.user-layout{
-    margin-top: -25px;
-  }
-
-  &.network-layout{
-    margin-top: -95px;
-  }
-
-  &.course-layout {
-    margin-top: -115px;
-  }
-  
-  & .thumbnail{
-    width: 150px;
-    height: 150px;
-    background: #4FA3E9;
-    border: 3px solid #EEE;
-    border-radius: 50%;
-    overflow: hidden;
-    text-align: center;
-    transition: ease-out all 0.4s;
-    img {
-	    width: 100%;
-	    height: 100%;
-    }
-  }
-  & .thumbnail:hover {
-	 border: 3px solid #4FA3E9;
-	 transition: ease-out all 0.4s; 
-  }
-  & .tagname{
-    font-size: 11pt;
-    line-height: 13pt;
-    font-family: helvbold;
-    margin-top: 12px;
-  }
-}
-
 .depot_button {
 	width: 150px;
 	font-size: 14px;
@@ -867,57 +753,6 @@ background-position: left center;
     padding-left: 30px;
   }
 	
-}
-
-
-.menu-course{
-	width: 100%;
-	height: 100px;
-	display: block;
-	z-index: 0;
-	list-style:none; 
-	display: inline;
-	color: rgba(0,0,0,0.5);
-	color: #444444;
-	font-family: HelvLight;
-	font-size: 12px;
-	
-}
-
-.menu-course li{
-	float: left;
-	width: 203px;
-	height: 76px;
-	display: block;
-	cursor: hand !important;
-	padding: 22px 15px 0px 15px;
-	text-align: center;
-	border-bottom: 1px solid #d5d5d5;
-	background: #ffffff /*  url('/assets/active.png') repeat */;
-
-}
-
-.menu-course .form-course .border_for_text {
-	border: solid 0px #c9d1da!important;
-}
-
-.last {
-	min-width: 206px!important;
-}
-
-.menu-course li b{
-	font-size: 15px;
-	text-align: center;
-	font-family: HelvBold;
-	margin-top: 15px;
-	
-}
-
-.menu-course li i{
-	color: #969696;
-	font-family: HelvLight;
-	font-size: 12px;
-	font-style: normal;
 }
 
 
@@ -1055,39 +890,6 @@ background-position: left center;
 	padding: 7px;
 	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
 	}
-
-.addfriend {
-	border: 2px solid #FFF;
-	position: relative;
-	display: block;
-	margin-top: 0!important;
-	border-radius: 5px;
-	width: 140px;
-	text-align: center;
-	height: 20px;
-	position: relative;
-	padding: 0px 0px 10px 0px;
-	}
-.addfriend > a:link { color: #FFF; padding: 7px 19px; display: block; }
-.addfriend > a:hover { color: #00B1C7; }
-
-.addfriend:hover { background: #FFF; color: #FFF; }
-
-.add_friend2 {
-	margin-top: 8px;
-}
-
-.imgge {
-	overflow: hidden;
-}
-
-.publication-box .comment-text .footer > a:link { position: absolute; margin-top: 5px; }
-
-.publication-box .comment-text .content {
-//background: #F6F7F9;
-padding-bottom: 20px; 
-}
-.publication-box .comment-text .content p { padding: 0 10px; }
 
 .gradientBg { 
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */

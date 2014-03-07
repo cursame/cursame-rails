@@ -1,47 +1,55 @@
-<!--
-<div id="more-comments-<%= comment.id  %>">cargas mas comentarios</div>
--->
-<div id="comment_<%= comment.id %>" class="child-comment-box">
-      <% @vote_comment = comment.votes.up.by_type(User).where(:voter_id => current_user.id)%>
-      <% @condition_comment =  @vote_comment[0]%>
-     <%if @condition_comment == nil %>
-       <div id="liked-c-<%= comment.id%>">
-       <div class="heart-icon"><%= link_to image_tag('icons/heart-icon-child-comment.png'), upvote_comment_path(comment.id), :remote => true%></div>
-       </div>
+<div id="comment_<%= comment.id %>" class="child-comment-box" data-comment-id="<%= comment.id %>">
 
-       <%else%>
-       <div id="liked-c-<%= comment.id%>">
-       <div class="heart-icon"><%= link_to image_tag('icons/heart-icon-child-comment-hover-orange.png'), downvote_comment_path(comment.id), :remote => true%></div>
-       </div>
-       <%end%>
+  <div class="comment-author">
+    
+    <%= link_to show_user_path(comment.user.personal_url) do %>
+      <span class="avatar-holder">
+        <%= avatar('user', '30', 'no', comment.user.id, 'avatar', 'no', 'no') %>
+      </span>
+    <% end %>
+    
+  </div>
 
-       <%if comment.owner?(current_role, current_user) then%>
-          <span class="deleteComment"><%= link_to image_tag('icons/trash.png'), destroy_comment_path(comment.id), :remote => true%></span>
-       <%end%>
-    <div class="avatar-child-comment id_for_avatar_c<%=comment.user.id%>" href="#">
-        <%#= debug comment.user.avatar%>
-    <% if comment.user.avatar.blank? %>
-        <%= link_to image_tag(comment.user.image_avatarxx, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url)%>
-      <%else%>
-        <%= link_to image_tag(comment.user.avatar, {:class => "avatar-mini", :style => "width:28px;"}), show_user_path(comment.user.personal_url) %>
-    <%end%>
-    </div>
-    <div class="info-comment">
-        <div class="username"><%= comment.user.name %></div>
-        <div class="date"><%= comment.created_at.strftime('%d/%m/%Y') %></div>
-        <div class="comment" style="font-weight:normal !important;"><%= comment.comment_html %></div>
-        <div  id="counter-like-c<%= comment.id%>" style="font-size:9px;"><%= comment.votes.up.size %> me gusta</div>
+    <div class="comment-main">
+      <h6><%= link_to comment.user.name, comment.user.personal_url %></h6>
+      <div class="comment" style="font-weight:normal !important;"><%= comment.comment_html %></div>
+        
+      <div class="publication-metadata">
+        <div>
+          <% @vote_comment = comment.votes.up.by_type(User).where(:voter_id => current_user.id)%>
+          <% @condition_comment =  @vote_comment[0]%>
+
+          <% if @condition_comment == nil %>
+            <div id="liked-c-<%= comment.id%>">
+              <%= link_to upvote_comment_path(comment.id), :remote => true do%>
+                <i class='i i-like-c'></i>
+              <% end %>
+            </div>
+          <%else%>
+            <div id="liked-c-<%= comment.id%>">
+              <%= link_to downvote_comment_path(comment.id), :remote => true do %>
+                <i class='i i-like-c-active'></i>
+              <% end %>
+            </div>
+          <%end%>
+        </div>
+        <span>&middot;</span>
+        <div class="meta-data">
+          <div  id="counter-like-c<%= comment.id%>"><%= comment.votes.up.size %> me gusta</div>
+        </div>
+        <span>&middot;</span>
+        <div class="meta-data">
+        <%= es_current_date("#{comment.created_at.strftime('%B')}", "#{comment.created_at.strftime('%d')}" , "#{comment.created_at.strftime('%Y')}","#{comment.created_at.strftime('%l:%M%P')}",'latin_string')%>
+        </div>
+        <%if comment.owner?(current_role, current_user) %>
+          <div class="edit-publication">
+            <span>&middot;</span>
+            <div class="meta-data">
+              <%= link_to "Borrar", destroy_comment_path(comment.id), :remote => true%>
+            </div>
+          </div>
+        <%end%>
+      </div>
     </div>
 
 </div>
-
- <script>
-       $(".id_for_avatar_c<%=comment.user.id%>").hover(
-            function () {
-              $(this).append($("<span style='z-index:100000000000;position: absolute; margin-left:30px; float:left; margin-top:-30px'><div class='tooltipr'><%=truncate("#{comment.user.name}", :omission => "...", :length => 155)  if ( !comment.user.name.blank?) %></div></span>"));
-            },
-            function () {
-              $(this).find("span:last").remove();
-            }
-          );
-</script>

@@ -1,128 +1,33 @@
-<!-- Se quitan estás opciones hasta que estén habilitadas
+<div class="section-header">
+  <div class="wrapper spaced">
 
-<div class="netWorkMenuHeader">
-<div class="currentFriends"><a href="#FDNS">amigos <span class="redPop">47</span></a></div>
-  <div class="waitS"><a href="#PNDS">solicitudes enviadas <span class="redPop">2</span></a></div>
-  <span class="name" style="float:right;height:20px;width:70px;padding-top:5px;color:#969696;">Filtrar por:</span>
+    <div class="section-header-title w-subnav">
+      <div class="section-icon">
+        <%= icon('section-courses') %>  
+      </div>
+      <div class="section-title">
+        <h1>Comunidad</h1>
+        <ul class="section-subnav">
+          <li class="active">
+            <%= link_to "Mis amigos" %>
+          </li>
+          <li>
+            <%= link_to "Miembros que no son amigos", filter_comunity_path, :remote => true %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header-actions">
+      <%= render partial: "/networks/users_search" %>
+    </div>
+
+  </div>
 </div>
 
-<span class="dividerHeader"></span>
-
--->
-
-
-
-<div style="width: 910px; display: block; padding: 30px 0 20px; height: 35px; margin: 0 auto;">
-	<h2 class="courses-title-h2">Comunidad</h2>
+<div id="accesed">
+<%= render :partial => 'networks/who_sent', :locals => {:friends => @friends} %>
 </div>
 
-<div class="fixedForm" style="width: 100%; position: absolute;">
-	<div style="width:910px; margin: 0 auto;">
 
-<% @network_users.each do |array| %>
-     <%# @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)%>
-     <%# @add_me_friend = Friendship.find_by_user_id_and_friend_id(user.id, current_user.id)%>
-  <div class="everymbrm" style="height: 203px; overflow: hidden; position: relative;">
-      <div id="imgge">
-      <span class="imgge_gradient"></span>
-             <%= link_to image_tag(array[0].avatar.profile), "users/#{(array[0].personal_url)}" if ( !array[0].avatar.blank?)%>
-             <%= link_to image_tag(array[0].image_avatarx),  "users/#{(array[0].personal_url)}"  if  (array[0].avatar.blank?)%>
-         </div><!-- ends image_access -->
-
-
- <div class="place-hldr" style="height: 30px;">
-     <!--&nbsp;<%#= array[0].email %>-->
-
-	     <h3>
-		     <% if array[0].name != nil%>
-			       <%= link_to truncate("#{array[0].name}", :omission => "...", :length => 20 ), "users/#{(array[0].personal_url)}"  %>
-		     <%end%>
-	     </h3>
-
-     
-<div class="hoverShowEdit" style="margin-top: -380px; margin-left: -85px;">
-   <center>
-     <div class="add_friend_comunity">
-         <%case array[1]%>
-            <%when  "friend_requested" %>
-                <span class="solistyle"><%= "Solicitud enviada" %></span>
-                <span style="height: 10px; display: block; position: relative;"></span>
-				<span class="addfriend" style="margin-top: 20px;">
-                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
-				</span>
-            <%when  "accept_request" %>
-            	<span style="display: block; margin-bottom: 10px;">Aceptar amistad</span>
-                <span class="addfriend"><%= link_to "Aceptar", friendships_update_friend_path(array[0].id), :remote => true  %></span>
-                <span style="height: 10px; display: block; position: relative;"></span>
-                <span class="addfriend" style="margin-top: 20px;">
-                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
-                </span>
-            <%when "friend"%>
-                <span class="addfriend" style="margin-top: 20px;">
-                	<%= link_to "Ver perfil", "users/#{(array[0].personal_url)}"  %>
-				</span>
-            <% else %>
-            <div id="add_friend<%=array[0].id%>">
-                <span class="addfriend"><%= link_to "Añadir a amigos", friendships_create_friend_path(array[0].id), :remote => true%>
-                </span>
-            </div>
-        <%end%>
-    </div><!-- ends add_friend_comunity -->
-  </center>
-</div>
-      </div><!-- ends place-hldr -->
-
-    </div><!-- ends box_comunity -->
-
-<% end %>
-
-	</div>
-</div>
-
-	<script>
-		$(".addfriend").clic( function() {
-			$(this).css({background: '#B3B3B3'});
-		});
-	</script>
-    	
-	<script>
-		$('document').ready ( function() {
-			$('.everymbrm').find('h3 > a').css({ color: "#FFF" });
-			$('.everymbrm').find('h3').css({ color: "#FFF" });
-		});
-	
-		$('.everymbrm').mouseenter( function() {
-			$(this).find('.hoverShowEdit').animate({ marginTop: '-200px' }, 200);
-		});
-		$('.everymbrm').mouseleave( function() {
-			$(this).find('.hoverShowEdit').animate({ marginTop: '-380px' }, 200);
-		});
-
-		$('.everymbrm').mouseenter( function() {
-			$(this).find('h3').css({ background: "#2E7FA6", });
-			$(this).find('#imgge').delay( 3000 ).css({ 'filter' : 'blur(5px)', '-webkit-filter' : 'blur(5px)', '-moz-filter' : 'blur(5px)',
-										 '-o-filter' : 'blur(5px)', '-ms-filter' : 'blur(5px)' });
-			$(this).find('.imgge_gradient').fadeOut(200);
-			$(this).find('h3 > a').css({ color: "#FFF" });
-		});
-		$('.everymbrm').mouseleave( function() {
-			$(this).find('h3').css({ background: "#006696", });
-			$(this).find('#imgge').delay(1800).css({ 'filter' : 'blur(0px)', '-webkit-filter' : 'blur(0px)', '-moz-filter' : 'blur(0px)',
-										 '-o-filter' : 'blur(0px)', '-ms-filter' : 'blur(0px)' });
-			$(this).find('.imgge_gradient').fadeIn(200);
-			$(this).find('h3 > a').css({ color: "#FFF" });
-		});
-		
-		// ----- hace un resize de la imagen en caso de que sea más pequeña
-		$('.everymbrm img').on('load',function(){
-		    var css;
-		    var ratio=$(this).width() / $(this).height();
-		    var pratio=$(this).parent().width() / $(this).parent().height();
-		    if (ratio<pratio) css={width:'100%', height:'auto'};
-			    else if (ratio>pratio) css={width:'auto', height:'auto'};
-		    else css={width:'100%', height:'auto'};
-		    $(this).css(css);
-		});
-		
-	</script>
 	

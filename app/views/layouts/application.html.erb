@@ -2,290 +2,148 @@
   <%= render :partial => "shared/mobile" %>
 <% else%>
 
-<!-- redirigimos a cursa.me  -->
-<!DOCTYPE html>
-<% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
-  <% url =  request.url %>
-  <% cursame = url.gsub(request.domain,"cursa.me") %>
-  <script type="text/javascript">
-    window.location.href="<%= cursame %>"  // put your correct path in a string here
-  </script>
-<% end %>
-
-<% if request.subdomain.split(".").size != 1 then %>
-	<% url = request.url %>
-    <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
-  <script type="text/javascript">
-    window.location.href="<%= new_url %>"  // put your correct path in a string here
-  </script>
-<% end %>
-<% #if request.url.split("/").last != "evaluation_download" then %>
-<html>
-<head>
-  <title>Cursame</title>
-  <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-  <%= javascript_include_tag('jquery-1.8.3.js') %>
-  <%= javascript_include_tag('jquery-ui-1.9.2.custom.js') %>
-  <%= javascript_include_tag('application.js') %>
-  <%= javascript_include_tag('application.fullcalendar') %>
-
-  <%= favicon_link_tag "favicon.png" %> 
-  
-  <% yield :javascript_includes %>
-  <%= csrf_meta_tags %>
-  <!--[if IE]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-<body >
-	    
-
-    <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
-    <style type="text/css" media="screen, projection">
-      @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
-    </style>
+  <!DOCTYPE html>
+  <% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
+    <% url =  request.url %>
+    <% cursame = url.gsub(request.domain,"cursa.me") %>
     <script type="text/javascript">
-      if (typeof(Zenbox) !== "undefined") {
-        Zenbox.init({
-          dropboxID:   "20209757",
-          url:         "https://cursame.zendesk.com",
-          tabTooltip:  "Ayuda y soporte técnico",
-          tabImageURL: "/assets/megaphone-24.png",
-          tabColor:    "#fff",
-          tabPosition: "Right"
-        });
-      }
+      window.location.href="<%= cursame %>"  // put your correct path in a string here
     </script>
-    
-    <script>
-      setInterval(function(){
-          if(navigator.onLine){
+  <% end %>
+
+
+  <% if request.subdomain.split(".").size != 1 then %>
+  	<% url = request.url %>
+      <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
+    <script type="text/javascript">
+      window.location.href="<%= new_url %>"  // put your correct path in a string here
+    </script>
+  <% end %>
+  <% if request.url.split("/").last != "evaluation_download" then %>
+
+    <html>
+      <head>
+        <title>Cúrsame</title>
+        <%= csrf_meta_tags %>
+        <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
+        <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+        <%= javascript_include_tag('jquery-1.8.3.js') %>
+        <%= javascript_include_tag('jquery-ui-1.9.2.custom.js') %>
+        <%= javascript_include_tag('application.js') %>
+        <%= javascript_include_tag('application.fullcalendar') %>
+        <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="ee2yf464dnk2rf1"></script>
+        <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
+        <link rel="stylesheet" type="text/css" href="//assets.zendesk.com/external/zenbox/v2.6/zenbox.css">
+        <%= favicon_link_tag "favicon.png"  %> 
+        <% yield :javascript_includes %>
+        <!--[if IE]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+      </head>
+      <body class="<%= yield :body_classes %>">
+
+        <% if flash[:notice] %>
+          <script>$(function() { Notice('success', '<%= notice %>'); })</script>
+        <% end %>
+
+        <div class="scarlate" id="scarlate" style="display:none;"></div>
+        <div class="expires" id="expires" style="display:none;"></div>
+
+        <%= render partial: '/shared/sidebar' %>
+        <% cache_expire %>
+        
+        <div class="wrap">
+          <%= render partial: '/shared/user_header' %>
+          <div class="main">
+            <%= yield %>
+          </div>
+        </div>
+
+
+        <div id="browsers_box" class="content_f_box" style="display: none">
+          <h3>El navegador que estas utilizando no es compatible con Cursame.</h3>
+          <p>No podrá usar la aplicación hasta haber instalado una versión compatible de su navegador, le recomendamos estos navegadores:</p>
+          <div >
+            <a href="http://www.google.com/intl/es-419/chrome/" target="_blank" style="width:350px; height:50px;float:left; margin-left:55px;">
+                <%= image_tag('chrome.png')%>
+                Descarga Google Chrome
+              </a>
+              <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;">
+                <%= image_tag('Icon_Firefox.png')%>
+                Descarga Mozila Firefox
+              </a>
+          </div>
+        </div>
+
+        <%= render :partial => '/shared/admin_messages' %>
+        <div id="scrollup"></div>
+        <div id="chat_sounds"></div>
+
+        <script>
+          window.clearInterval(GetIntevalExpire);
+
+          var IntervalFunctionForExpireSession;
+          IntervalFunctionForExpireSession = 1200000;
+
+          var GetIntevalExpire = setInterval(function() {
+            $.get('<%= expire_session_path %>');
+          }, IntervalFunctionForExpireSession);
+
+
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-41050835-1', 'cursa.me');
+          ga('send', 'pageview');
+
+          if (typeof(Zenbox) !== "undefined") {
+            Zenbox.init({
+              dropboxID:   "20290348",
+              url:         "https://cursame.zendesk.com",
+              hide_tab:   "true",
+              tabTooltip:  "Soporte",
+              tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
+              tabColor:    "black",
+              tabPosition: "Left"
+            });
+          }
+
+          setInterval(function(){
+            if( navigator.onLine ){
               $('#scarlate').hide();
               $('body').css('overflow','auto');
-          }else{
-             $('#scarlate').show(); 
-             $('#scarlate').html(' <center><p style="padding-top:5px;"> Sin connexión de red <b> :( </b>. </p></center>');
-             $('body').css('overflow','hidden'); 
-          }
-          
-      },5000);
-      
-       window.clearInterval(GetIntevalExpire);
-       var IntervalFunctionForExpireSession;
-       IntervalFunctionForExpireSession = 50000;
-       var GetIntevalExpire = setInterval(function(){ 
-           $.get('<%= expire_session_path %>');
-       },IntervalFunctionForExpireSession);
-       
-       //console.log(IntervalFunctionForExpireSession);
+            } else {
+              $('#scarlate').show(); 
+              $('#scarlate').html(' <center><p style="padding-top:5px;"> Sin connexión de red <b> :( </b>. </p></center>');
+              $('body').css('overflow','hidden'); 
+            }  
+          }, 5000);
 
-      </script>
+          setTimeout(function(){
+            var bt = '<%= browser %>';
 
-      <div class="scarlate" id="scarlate" style="display:none;"></div>
-      <div class="expires" id="expires" style="display:none;"></div>
-      
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-41050835-1', 'cursa.me');
-      ga('send', 'pageview');
-
-    </script>
-    
-<!-- header -->
-<header id="user_nav" class="topbar">
-  <div class="center-div">
-  	<div class="headFix">
-
-     <% if current_network == nil%> 
-       <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
-     <%else%>
-      <% if current_network.logo.file == nil %>
-       <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-      <%else%>
-       <%case %>
-       <% when current_network.logo_type == '128x26'%>
-       <%= link_to image_tag("#{current_network.logo.response}", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-       <% when current_network.logo_type == '26x26' %>
-       <%= link_to image_tag("#{current_network.logo.square}", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-       <%else%>
-       <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
-       
-       <%end%>
-      <%end%>
-     <%end%>
-     
-	<div class="menu-user">
-		<% if user_signed_in? %>
-			<div id="logoutHover" style="width: 20px; margin-top: -11px!important; position: relative; display: block; float: right; height: 26px!important; padding-top: 10px; padding-right: 5px; border-left: 1px solid #FFF; border-right: 1px solid #FFF; padding-left: 8px; color: #A3A9B5;">
-				<%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
-          		<div id="ShowLogout" style="display: none;">Salir</div>
-		  	</div>
-          
-        <% if current_user.avatar.blank? %>
-			<%= link_to image_tag(current_user.image_avatarxx, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-		<%else%>
-			<%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-        <%end%>
-			<span>
-				<%= link_to truncate("#{current_user.name} (#{current_role})" , :omission => "...", :length => 20), show_user_path(current_user.personal_url) %> 
-			</span>
-				<%#= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
-
-                <%#=  debug current_role %>
-				
-				<% if current_role == "admin"%>
-				<%= link_to "Administración", managers_wall_path, :style =>'', :class => "admin-access"%>
-           
-				<%end%>
-			<% else %>
-
-		<div style="float:right;">
-			<!-- 
-				<%= link_to "Logueate", new_user_session_path %>
-					<% if current_network && current_network.register_form != true%> o <%= link_to "Registrate", new_user_registration_path %>
-				<%end%>
-			-->
-		</div>
-
-		<% end %>
-
-		</div>
-		
-		<div id="message_notifications">    
-			<%= render :partial => '/shared/chat/message_notifications' %>
-		</div>
-
-		<div id="notifications">    
-			<%= render :partial => '/shared/notifications' %>
-		</div>
-	</div>
-
-</div><!-- ends headFix -->
-
-    <div id="log_loadding"style="display:none;"></div>
-	<div id="noticce"style="background:#eee; position:absolute; margin-top:0px; width:100%;">
-		<div id="notice" class="notice"></div>
-	</div>
-	</header>
-	
-	<div id="sub_nav">
-		<div class="user_subnav"></div>
-		<div class="friends_subnav"></div>
-		
-		<div class="courses_subnav"></div>
-	</div>
-	<div class="center-div">
-		<!-- content -->
-  
-<script>
-   setTimeout(function(){
-      var bt = '<%= browser %>' 
-      if(bt == 'true'){
-        //  alert('browser compatible');
-      }else{
-           $('#browsers_box').lightbox_me({
+            if ( bt == 'true' ){
+              //  alert('browser compatible');
+            } else {
+              $('#browsers_box').lightbox_me({
                 centered: true, 
                 onLoad: function() { 
-                    $('#browsers_box').find('input:first').focus()
-					}
-                });
-            $('body').css('overflow','hidden');
-		}
-   },2000)
-</script>
-  
-<script>
-	$('#logoutHover').mouseenter( function() {
-  		$(this).animate({ width: "58px" }, 200);
-  	});
-  	$('#logoutHover').mouseleave( function() {
-  		$(this).animate({ width: "20px" }, 100);
-  	});
-  	$('#logoutHover').hover( function() {
-  		$('#ShowLogout').slideToggle(100).delay(300);
-  	});
-  	
-  	
-  	$('.ZenboxTabRight').mouseenter ( function() {
-  		$(this).animate({ paddingRight: "80px" });
-	  	$(this).addClass('zenbox_tab__text');
-  	});
-  	$('.ZenboxTabRight').mouseleave ( function() {
-  		$(this).animate({ paddingRight: "0px" });
-  		$(this).removeClass('zenbox_tab__text');
-  	});
-  </script>
-  
-  <div class="container" >
-    <!-- content -->
-    <%= yield %>
-    <br>
-    <!--<img src="http://placehold.it/920x100/" alt="">  -->
-  </div>
-  
-  
-</div>
 
-<div id="browsers_box" class="content_f_box"  style="display:none">
-     <!---  <div><a id="close_x" class="close close_l" href="#" style="margin-top:-20px;"><center>x</center></a></div>-->
- 	   
-                <p style="color:#fff; font-size:17px;">Browser no compatible, no podemos garantizar el funcionamiento adecuado de la aplicación.</p></br>
-                <p style="color:#fff;" ><i>No podrá usar la aplicación hasta haber instalado una versión compatible de su navegador, le recomendamos estos navegadores:</i></p>
-        <div style="text-align:center;padding:10px; margin-top:15px;">
-          <center>
-                <a href="http://www.google.com/intl/es-419/chrome/" target="_blank" style="width:350px; height:50px;float:left; margin-left:55px;"><%= image_tag('chrome.png')%>Descarga Google Chrome</a>
-                <a href="http://www.mozilla.org/es-MX/firefox/new/" target="_blank" style="width:250px; height:50px;float:left;"><%= image_tag('Icon_Firefox.png')%>Descarga Mozila Firefox</a>
-          </center>
-        </div>
-</div>
-<div id="scrollup"></div>
-</body>
-</html>
-<% #end %>
-<% end %>
+                  $('#browsers_box').find('input:first').focus()
+                }
+              });
+              
+              $('body').css('overflow','hidden');
+            }
+          }, 2000);
 
-<%= render :partial => '/shared/admin_messages' %>
-<div id="chat_sounds"></div>
+        </script>
 
-<% if user_signed_in? %>
-<script>  
-  $(function() {
-      /**
-       * metodos para cerrar sesion con devise y detectar cuando
-       * el usuario cierra la ventana de cursame
-       */
-      // var callback = function () {
-      //   $('.logout').trigger('click');
-      // };
-      // // el valor numerico debe de ser igual al valor de devise
-      // // para expirar la session
-      // var logout_timer = new Timer(1800, callback, window);
-      // logout_timer.start();
-
-      // // restart timer if activity
-      // $(document).on('keyup keypress blur change mousemove',function(){
-      //   logout_timer.start();
-      //   window.CERRARCURSAME=false;        
-      // });
-      // $(document).on('mouseleave',function(){
-      //     window.CERRARCURSAME=true;
-      // });     
-      // $(window).on("beforeunload",function(){
-      //   if(window.CERRARCURSAME){ 
-      //     $.ajax({
-      //         type: 'POST',
-      //         async: false,
-      //         url: '/home/logout_user'
-      //     });
-      //   }
-      //   return void 0;
-      // });
-  });
-  </script>
+      </body>
+    </html>
+  <% end %>
 <% end %>
 
 

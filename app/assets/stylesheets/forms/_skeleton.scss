@@ -1,63 +1,16 @@
 
 /* Forms Skeleton
 ----------------------------------*/
+select {
+  padding: 7px 25px 8px 9px;
+}
+
 .default-form{
-  select{
-    height: 31px;
-    overflow: hidden;
-    padding-left: 5px;
-    margin: 4px 0px 0px 0px;
-    float: left;
-  }
   
-  textarea{
-    padding-left: 7px;
-    padding-right:5px;
-    margin: 4px 0px 0px 0px;
-  }
-
-  input[type=text], input[type=email], input[type=password]{
-    height: 28px;
-    padding-left: 7px;
-    margin: 4px 0px 0px 0px;
-  }
-
-  input[type=number] {
-    height: 28px;
-    padding-left: 13px;
-    padding-top: 5px;
-    margin: 4px 0px 0px 0px;
-    
-    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
-      margin: 0;
-    }
-  }
-
-  // Uploader
-  .file-input-box{
-    position: relative;
-    float: left;
-
-    .browse-button{
-      padding: 0px 9px 0px 24px;
-    }
-
-    .upload-input{
-      position:absolute;
-      top:0px;
-      left: 0px;
-      z-index:2;
-      width: 145px;
-      height: 35px;
-    }
-  }
-
+  // Uploade
   .upload-label{
-    width: 545px;
-    float: left;
     padding: 0px 5px 4px 5px;
-    margin-top: 16px;
-    display: none;
+    @include clearfix;
 
     .file-mini-upload {
       float: left;
@@ -99,24 +52,7 @@
       }
     }
   }
-
-  // Buttons
-  input[type=submit]{
-    margin: 4px 4px 2px 4px;
-    min-width: 100px;
-    height: $height-btn;
-    float:right;    
-    display:inline-block;
-    padding: 4px 7px;
-  }
-
-  button{
-    min-width: 100px;
-    height: $height-btn;
-    float:right;
-    margin: 4px 4px 2px 4px;
-  }
-
+  
   .a-btn{
     min-width: 80px;
     height: 28px;
@@ -124,86 +60,11 @@
     padding: 0px 10px;
   }
 
-  // Special Buttons
-  .evaluate-btn{
-    padding: 0px 9px 0px 24px;
-    margin: 4px 0px 0px 0px;
-    height: 28px;
-    float: left;
-  }
-
   .submit-area{
     clear: both;
     margin-top: 5px;
     float: right;
     width: 100%;
-  }
-
-  // Dropdown (Checkbox)
-  .wrapper-dropdown {
-    position: relative;
-    width: 120px;
-    height: 28px !important;
-    padding: 0px 0px 0px 30px !important;
-    float: right !important;
-
-    .box-arrow{
-      float: right !important;
-      width: 32px !important;
-      height: 29px !important;
-    }
-
-    input[type=checkbox] {
-      position: absolute !important;
-      top: -9999px !important;
-      left: -9999px !important;
-    }
-
-    &:after {
-      content: "" !important;
-      width: 0 !important;
-      height: 0 !important;
-      position: absolute !important;
-      right: 10px !important;
-      top: 50% !important;
-      margin-top: -3px !important;
-    }
-
-    .dropdown {
-      position: absolute !important;
-      top: 100% !important;
-      margin-top: 1px;
-      left: -1px !important;
-      right: -1px !important;
-
-      li {
-        position: relative !important;
-
-        label {
-          display: block !important;
-          padding: 10px 10px 10px 30px !important;
-
-          &.return-dd{
-            padding: 10px 10px 10px 60px !important;
-          }
-        }
-
-        // Checkboxes
-        input {
-          position: absolute !important;
-          display: block !important;
-          right: 10px !important;
-          top: 50% !important;
-          margin-top: -8px !important;
-        }
-      }
-    }
-
-    &.active .dropdown {
-      margin-top: 8px !important;
-      z-index: 99 !important;
-      min-width: 150px !important;
-    }
   }
 
   // Date fields
@@ -274,100 +135,10 @@
   display:inline-block;
 }
 
-// Post Form
-.profile-post-box{
-  margin: 20px 0 0px 55px;
-  width: $width-form-post;
-  float: left;
-
-  .post-btns-box {
-    display: inline;
-    float: left;
-    width: 100%;
-    height: $height-post-box;
-    margin: 7px 0 6px 10px;
-
-    a{
-      display: block;
-      height: 100%;
-      width: 145px;
-      float: left;
-    }
-
-    .icon{
-      margin: -2px 0px 0px -2px;
-    }
-
-    .border{
-      margin: 0px 0px 4px 40px;
-    }
-  }
-}
 
 .survey-form-area-style{
-  height: 190px;
-  position: relative;
-  display: none;
 
   .survey-form {
-    margin: 7px 0px 0px 0px;
-    padding: 13px 0;
-    
-    .box-question {
-      float: left;
-      width: 100%;
-    }
-
-    .question-field {
-      float: left;
-      clear: both;
-      width: 100%;
-      
-      .add-question{
-        height: 29px!important;
-        width: 548px;
-        float: left;
-        padding: 15px 0px 0px 50px;
-      }
-
-      .element{
-        float: left;
-        height: 40px;
-        width: 100%;
-        
-        .remove-icon{
-          display: none !important;
-        }
-        
-        &:hover .remove-icon {
-          display: block !important;
-          height: 27px;
-          float: left;
-          margin-top: 6px;
-          width: 45px;
-          padding-left: 27px;
-        }
-      }
-
-      .num {
-        float: left;
-        height: 41px;
-        margin: 0px 5px 0px 23px;
-      }
-
-      input[type=text]{
-        float: left;
-        width: 330px;
-      }
-
-      .add-request{
-        float: left;
-        width: 571px;
-        height: 30px;
-        margin: 0px!important;
-        padding: 9px 0px 0px 27px!important;
-      }
-    }
 
     .request-field {
       
@@ -378,28 +149,8 @@
         float: left;
       }
 
-      .element{
-        float: left;
-        height: 40px;
-        width: 100%;
-      }
-
-      .num{
-        float:left;
-        margin-left: 50px;
-      }
-
-      input[type=text]{
-        float: left;
-        width: 210px;
-      }
-
       .is-correct-label{
-        float: right;
-        width: 160px;
-        padding: 7px 29px 7px 0px;
-        margin-right: 13px;
-        margin-top: 5px;        
+        padding: 8px 29px 10px 6px;
       }
 
       .is-correct-chk{
@@ -417,53 +168,6 @@
         padding-left: 27px;
       }
     }
-
-    .title-txt-input{
-      width: 300px;
-      margin-left: 20px;
-    }
-
-    textarea{
-      float: left;
-    }
-
-    .add-response{
-      float: right;
-    }
-
-    .question-field{
-      float: left;
-    }
-
-    .request-field{
-      float: left;
-      width: 100%;
-    }
-
-    .input-button{
-      float: right;
-    }
-
-    input[type=submit]{
-      float: right;
-    }
-  }
-}
-
-.delivery-assignment-box{
-  display:none;
-  float: left;
-  padding: 0px 10px;
-
-  .assignment-delevery-form {
-    
-    input[type=submit]{
-      float: right;
-    }
-
-    .input-button{
-      float: right;
-    }
   }
 }
 
@@ -475,37 +179,7 @@
     width: 100%;
   }
 
-  .question-field{
-    clear: both;
-    width: 100%;
-
-    .element{
-      width: 100%;
-    }
-
-    .num{
-      margin: 0px 5px 0px 23px;
-    }
-  }
-
   .request-field {
-
-    .element{
-      height: 40px;
-      width: 100%;
-    }
-
-    .num{
-      margin-left: 30px;
-    }
-
-    .is-correct-label{
-      width: 160px;
-      height: 23px;
-      padding: 12px 29px 0px 0px;
-      float: right;
-      margin-right: 13px;
-    }
 
     .is-correct-chk{
       width: 10px;
@@ -517,10 +191,6 @@
     input[type=submit]{
       float: right;
     }
-
-    .input-button{
-      float: right;
-    }
   }
 }
 
@@ -528,220 +198,14 @@
   margin-right: 5px;
 }
 
-.more-comment-box{
-  clear: both;
-  float: left;
-  width: 553px;
-  margin-left: 14px;
-  position: relative;
-  height: 28px;
-
-  span{
-    width: 528px;
-    height: 100%;
-    padding: 0px 0px 0px 25px;
-    float: left;
-  }
-}
-
-.child-comment-box{
-  clear: both;
-  float: left;
-  width: 553px;
-  margin-left: 14px;
-  position: relative;
-
-  .heart-icon{
-    position: absolute;
-    right: 1px;
-    height: 23px;
-    width: 20px;
-    top: 6px;
-  }
-
-  .info-comment{
-    float: left;
-    margin: 6px 0px 10px 0px;
-    width: 512px;
-    
-    .username{
-      float: left;
-    }
-
-    .date{
-      float: left;
-      margin-left: 13px;
-    }
-
-    .comment{
-      clear: both;
-    }
-  }
-
-  .avatar-child-comment{
-    float: left;
-    margin: 6px 8px 5px 0px;
-  }
-}
-
-.deleteComment {
-  display: none;
-}
-
-.child-comment-box:hover > .deleteComment {
-  position: absolute;
-  display: inline-block;
-  margin-top: 28px;
-  margin-left: 529px;
-}
-
-.post-child-comment-box {
-  float: left;
-  margin-bottom: 12px;
-  margin-left: 56px;
-  width: 580px;
-
-  .user-post-child-comment{
-    float: left;
-    padding: 0px 14px;
-    width: 560px;
-    
-    .avatar-child-comment{
-      float: left;
-      margin: 6px 8px 5px 0px;
-    }
-    
-    form{
-      float: left;
-
-      textarea{
-        padding-left: 7px;
-        width: 543px;
-        height: 24px;
-        margin: 7px 0px 4px 0px;
-      }
-    }
-  }
-}
-
-.user-edit-form {
-  margin: 22px 25px 20px 25px;
-  position: relative;
-  float: left;
-  width: 890px;
-
-  label{
-    clear: both;
-    margin-top: 11px;
-  }
-
-  .upload-label{
-    width: 200px!important;
-  }
-
-  input[type=text], input[type=email], input[type=password] {
-      float: left;
-      clear: both;
-  }
-
-  .box-fields{
-    float: left;
-    width: 400px;
-  }
-
-  .box-cancel{
-    clear: both;
-    float: left;
-    position: absolute;
-    margin-top: 207px;
-    display: block;
-  }
-
-  .personal-url-label{
-    float: left;
-    padding: 0px 3px 0px 0px;
-  }
-
-  .personal-url{
-    clear: none !important;
-    width: 150px !important;
-    margin: 4px 0px 0px 5px !important;
-  }
-
-  .submit-btns{
-    margin-top: 17px;
-    float: left;
-  }
-
-  .a-btn{
-    margin-top: 4px;
-  }
-
-  .box-avatar{
-    float: right;
-    width: 275px;
-    padding: 20px;
-    margin-top: 31px;
-
-    .box-image{
-      margin: 0px 0px 18px 0px;
-      float: left;
-      width: 240px;
-    }
-
-    .avatar{
-      height: 50px;
-      float: left;
-    }
-
-    .avatar-label{
-      clear: both !important;
-      margin: 7px 0px 0px 6px;
-      width: 230px;
-    }
-
-    .coverphoto-label{
-      clear: both !important;
-      width: 230px;
-      margin: 7px 0px 0px 6px;
-    }
-
-    .cover{
-      height: 45px;
-      clear: both;
-      float: left;
-      width: 50px;
-    }
-  }
-}
-
 #edituserdmenu h3 {
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.fixelement .user-edit-form label {
-  float: right;
-}
-
 .img_prev_cover > img {
   width: 100%!important;
 }
-
-#user_avatar_select {
-  padding: 0;
-  position: relative;
-  margin: 0 auto;
-  display: block;
-  width: 160px;
-  height: 35px;
-
-  > input {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 
 .netWorkMenuHeader h3 {
   position: absolute;
@@ -753,36 +217,6 @@
   position: relative;
   float: right;
   margin-top: -47px;
-}
-
-.FixStylize {
-  margin: 0 auto;
-}
-
-.EditUserFix > .edituser {
-  width: 638px!important;
-}
-
-.EditUserLabel {
-  width: 300px!important;
-}
-
-.stylize {
-  width: 120px;
-  padding: 7px 20px;
-  margin-left: 10px;
-}
-
-.stylizeForm {
-  width: 113px;
-  padding: 7px 20px;
-}
-
-.fixelement {
-  margin-left: 6px;
-  position: relative;
-  margin-top: -17px;
-  display: block;
 }
 
 #edituserdmenu .box-fields label, .avatar-label, .coverphoto-label {
@@ -806,11 +240,6 @@
 
 .course-form {
   margin: 5px 0px 4px 6px;
-
-  input[type=text]{
-    width: 207px;
-    height: 28px;
-  }
 
   textarea{
     height: 70px;
@@ -859,33 +288,6 @@
 }
 
 .edit-course {
-  input {
-    clear:both;
-    float: left;
-  }
-
-  label {
-    clear: both;
-    float: left;
-  }
-
-  select {
-    clear: both;
-    float: left;
-    width: 135px;
-  }
-
-  submit {
-   clear: both;
-   float: left;
-  }
-
-  textarea {
-    clear: both;
-    float: left;
-    padding: 10px 5px;
-  }
-
   .slider-content {
     float: left;
     width: 130px !important;
@@ -934,22 +336,6 @@
   position: relative;
   top: 10px;
 }
- 
-label.error {
-  display: none!important;
-  position: absolute;
-  display: block;
-  margin-top: -24px;
-  margin-left: 7px;
-}
-
-.form_fix_title_overlay {
-  width: 526px!important;
-}
-
-.form_fix_date_overlay {
-  width: 161px!important;
-}
 
 .fixFormUser {
   width: 435px;
@@ -957,4 +343,49 @@ label.error {
 
 .fixLabeluser {
   width: 175px;
+}
+
+/* Forms Columns
+----------------------------------*/
+@for $i from 1 through 10 {
+  .f-col-#{$i} {
+    width: $i * 10%;
+  }
+}
+
+.form-group {
+  margin-bottom: 10px;
+  @include clearfix;
+
+  .form-group-label {
+    float: left;
+    padding-top: 6px;
+    width: 150px;
+  }
+
+  .form-group-main {
+    margin-left: 150px;
+    @include clearfix;
+
+    .f-col {
+      float: left;
+    }
+
+    .form-unit {
+      padding-left: 10px;
+    }
+  }
+
+  &.no-label .form-group-main {
+    margin-left: 0;
+  }
+}
+
+.input-icon {
+  display: block;
+  position: relative;
+
+  .i {
+    position: absolute;
+  }
 }

@@ -22,8 +22,7 @@ class Delivery < ActiveRecord::Base
   has_many :contents, :as => :contentye #, :dependent => :destroy
 
   belongs_to :network
-
-
+  belongs_to :wall
 
   validate :max_courses
 
@@ -254,4 +253,5 @@ class Delivery < ActiveRecord::Base
           end
         }    
   end
+
 end

@@ -1,0 +1,173 @@
+
+/* Dropdowns
+----------------------------------*/
+ .dropdown-wrap {
+  position: relative;
+
+  .dropdown-v {
+    display: none;
+    z-index: 200;
+    position: absolute;
+    top: 100%;
+    margin-top: 13px;
+    min-width: 160px;
+
+    &.left {
+      left: 0;
+
+      .tip {
+        left: 10px;
+      }
+    }
+
+    &.right {
+      right: 0;
+
+      .tip {
+        right: 10px;
+      }
+    }
+
+    &.center {
+      left: -80px;
+
+      .tip {
+        left: 50%;
+        margin-left: -10px;
+      }
+    }
+
+    .tip {
+      position: absolute;
+      top: -9px;
+      width: 20px;
+      height: 10px;
+    }
+  }
+
+  &.active > .dropdown-v {
+    display: block !important;
+  }
+}
+
+
+.dropdown-wrap .dropdown-v > ul li {
+  a, .as-link {
+    display: block;
+    padding: 8px 10px;
+  }
+}
+
+/* Public, User and Courses Dropdown
+----------------------------------*/
+.target-dropdown {
+
+  .dropdown-pull {
+    @include clearfix;
+  
+    #title-dd {
+      float: left;
+
+      .i {
+        margin-right: 3px;
+      }
+    }
+
+    .arrow {
+      float: right;
+      margin: 15px 0 0 5px;
+    }
+  }
+
+  .dropdown-v {
+    width: 180px;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .target-selector li label, .target-courses-selector li label {
+      display: block;
+      padding: 5px;
+      overflow: hidden;
+
+      .i-checked-16 {
+        display: none;
+        float: right;
+        margin: 4px 2px 0 0;
+      }
+
+      &.active .i-checked-16 {
+        display: block;
+      }
+  }
+
+  .target-selector li label {
+    padding: 8px;
+
+    .i-checked-16 {
+      margin: 0;
+    }
+  }
+
+  .return-dd {
+    padding: 8px;
+  }
+}
+
+/* Courses Actions
+----------------------------------*/
+.course-actions .dropdown-pull {
+    padding: 10px 10px 5px 10px;
+}
+
+/* Activity Dropdown
+----------------------------------*/
+.activity-dropdown-wrap {
+  position: relative;
+
+  .activity-dropdown {
+    width: 320px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
+  
+  .activity-dropdown-title {
+    padding: 5px 10px 6px 10px;
+  }
+
+  .activity-dropdown-content {
+    height: 300px;
+    overflow-y: scroll;
+  }
+
+  .activity-dropdown-footer {
+    margin-top: -1px;
+    position: relative;
+
+    > a {
+      display: block;
+      padding: 5px 10px;
+    }
+  }
+
+  .activity-feed {
+
+    > a {
+      padding: 10px;
+      display: block;
+      @include clearfix;
+    }
+
+    .activity-feed-author {
+      float: left;
+    }
+
+    .activity-feed-main {
+      margin-left: 55px;
+    }
+  }
+}

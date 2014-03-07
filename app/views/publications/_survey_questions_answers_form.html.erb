@@ -1,0 +1,47 @@
+<%= form_tag "/surveys/survey_reply", :remote => true do %>
+  <div class="overlay-content">
+    <h3><%= survey.name %></h3>
+    
+    <div class="survey-wrap">
+      <ol>
+        <% for question in survey.questions %>
+          <li>
+            <div class="survey-question">
+              <p><%= question.content%></p>
+              
+              <div class="survey-answers">
+                <ul>
+                  <% for answer in question.answers %>
+                    <li>
+                      <div class="survey-question-answer">
+                        <label>
+                          <%= answer.content %>
+                          <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id %>
+                        </label>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+
+  </div>
+
+  <% if current_user != survey.user %>
+    <div class="overlay-footer">
+      <div class="fl">
+        <span class="btn btn-medium btn-primary input-btn">
+          <%= submit_tag "Enviar cuestionario", :class=>"btn btn-medium btn-primary" %>
+        </span>
+        <%= hidden_field_tag 'survey_id', survey.id%>
+      </div>
+      <div class="fr">
+        <div id="errors"></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,83 @@
+<script>
+  var videoID = "<%= video_id %>";
+  var tag = document.createElement('script');
+
+  tag.src = "http://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video-tour-container', {
+      height: '100%',
+      width: '400',
+      videoId: videoID,
+      playerVars: {
+        controls: 0,
+        autoplay: 1,
+        showinfo: 0,
+        disablekb: 0,
+        modestbranding: 1
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerReady( event ) {
+    event.target.playVideo();
+  }
+
+  var done = false;
+  function onPlayerStateChange(event) {
+    if ( event.data == 0 ) {
+      removeModalAction( $('.overlay'), function() {
+
+        <% if tour_type == "network"  %>
+
+          <% if current_role == 'teacher' %>
+
+            createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
+
+          <% elsif current_role == 'student' %>
+          
+            createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
+
+          <% end %>
+
+          $.get("<%= tour_reciver_path %>?type_route=network");
+
+        <% elsif tour_type == "course" %>
+
+          $.get("<%= tour_reciver_path %>?type_route=course");
+
+        <% elsif tour_type == "profile" %>
+          
+          $.get("<%= tour_reciver_path %>?type_route=profile");
+                    
+        <% end %>
+
+      });
+
+    }
+  }
+
+  function stopVideo() {
+    player.stopVideo();
+  }
+</script>
+
+<div class="overlay-header">
+  <div class="overlay-title">
+    <h4>Bienvenido al nuevo Cúrsame</h4>
+    <p>Por favor de mirar el video hasta el final antes de utilizar la nueva plataforma.</p>
+  </div>
+</div>
+
+<div class="overlay-content no-padding">
+  <div id="video-tour-container">
+    Cargando video tutorial...
+  </div>
+</div>

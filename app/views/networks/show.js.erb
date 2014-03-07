@@ -1,13 +1,16 @@
-<%if @page == 1 %>
+<% if @page == 1 %>
+
 	this.pageless.opts.currentPage = 1;
 	this.pageless.opts.totalPages = <%= @wall.total_pages %>;
 	this.pageless.opts.params = {
 		search:'<%=@search%>'
 	};
 	this.pageless.opts.startListener();
+
 	$('#timeline').html('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'network'}))%>');
 	$('#timeline').append(this.pageless.opts.loader);
-<%else%>
+
+<% else %>
 	var element = '<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'network'}))%>';
-	this.pageless.opts.loader ? this.pageless.opts.loader.before(element):$('#timeline').append(element);
-<%end%>
+	this.pageless.opts.loader ? this.pageless.opts.loader.before(element) : $('#timeline').append(element);
+<% end %>

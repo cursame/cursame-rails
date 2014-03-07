@@ -1,64 +1,95 @@
 
+
 /* Courses Skeleton
 ----------------------------------*/
-.course{
-  float: left;
-  height: 250px;
-  width: 218px;
-  margin: 10px 4px;
-  float: left;
-  @include border-radius;
+.courses-list {
+  margin: 10px 0;
+  @include clearfix;
 
-  h2{
-    float: left;margin: 10px 0 5px 0px;
-  }
-
-  .thumbnail{
+  .course {
+    float: left;
+    margin: 10px;
     width: 218px;
-    overflow: hidden;
+
+    &:hover {
+      .course-actions {
+        display: block;
+      }
+    }
+  }
+
+  .course-cover {
+    margin: -1px;
+    position: relative;
+
+    .course-cover-image {
+      overflow: hidden;
+      height: 100px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &:after {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .course-actions {
+    display: none;
+    z-index: 3;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .course-user-status {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+
+    .request-sent {
+      margin-top: 35px;
+      padding: 8px;
+    }
+
+    .join-course-status {
+      margin-top: 32px;
+    }
+  }
+
+  .course-description {
+    padding: 8px 10px;
+    height: 80px;
+  }
+
+  .course-detail-list {
+    padding: 10px;
+    height: 80px;
+
+    .course-detail {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
 
-.hidden-text{  
-  white-space: nowrap;
-  width: 79%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-h4{
-  font-size:14px;
-}
-
-h3{
-  font-size:18px;  
-}
-
-.course li {
-	padding-left: 20px;
-	margin: 5px;
-}
-
-#crud{
-	position: relative;
-	top: 0px;
-	float: right;
-	margin: -130px 10px 0 0; 
-}
-
-#course-title{
-  width: 188px;
-  float: left;
-  margin: 10px 6px;
-}
-
-#course-info{
-  padding: 10px;
-}
-
-#courses-list {
-  width: 915px;
-  margin: auto;
+.profile-images {
+  .profile-image {
+    margin-bottom: 25px;
+  }    
 }
 
 .courses-title-h2{
@@ -72,37 +103,6 @@ h3{
   float: left;
   display: inline-block;
   position: relative;
-}
-
-.serch-courses{
-  width: 300px;
-  margin: 4px 0 0 0;
-  float: left;
-}
-
-.serch-courses input{
-  width: 200px;
-}
-
-.new-course {
-  float: right;
-  margin: 6px 0 0 0;
-}
-
-#header-courses{
-  width: 910px;
-  margin: auto;
-  padding: 25px 15px 15px 15px;
-}
-
-.SearchForm {
-  width: 600px;
-  margin-top: 10px;
-
-  #search {
-    width: 600px;
-    padding-top: 6px;
-  }
 }
 
 .list_alt_box {
@@ -171,16 +171,6 @@ h3{
   width:350px;
   height:350px;
   overflow:auto;
-}
-
-#notice {
-  position: absolute;
-  padding: 0px;
-  margin: 0 auto;
-  z-index: 9999;
-  width: 0px;
-  display: inline;
-  height: 0px;
 }
 
 .title_dxv{
@@ -287,27 +277,6 @@ h3{
 	position: relative;
 }
 
-.form-course {
-  display: table;
-  position: relative;
-  width: 784px;
-  margin: 0 auto;
-  padding: 20px;
-  height: 346px;
-  overflow: scroll;
-
-  p {
-    clear: both;
-    margin-top: 10px;
-    position: relative;
-    display: block;
-  }
-
-  .upload {
-    display: none;
-  }
-}
-
 #uploadthingie {
   position: relative;
 
@@ -344,40 +313,8 @@ h3{
   margin-bottom: 17px !important;
 }
 
-.act-crs {
-  margin-top: 26px!important;
-}
-
-/* Edit Course
-----------------------------------*/
-#nsdmenu {
-  margin: 17px auto 0 !important;
-  position: relative!important;
-  display: block!important;
-  width: 900px;
-  padding: 20px 10px 10px 17px;
-  
-  .reload {
-    float: right;
-    display: inline;
-    position: relative;
-    margin-top: -17px;
-
-    li {
-      display: inline-table;
-      height: 17px;
-    }
-  }
-}
-
 /* Edit Members
 ----------------------------------*/
-#imgge {
-	width:170px;
-	height:170px;
-	overflow: hidden;
-}
-
 .imgge_gradient {
 	width: 170px;
 	height: 170px;
@@ -395,54 +332,6 @@ h3{
   float: right;
 }
 
-.everymbrm {
-  width: 170px;
-  overflow: hidden;
-  padding: 3px;
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  
-  .everymbrm {
-    margin-top: -10px;
-  }
-
-  a {
-    color:#fff;
-    font-weight: 100;
-  }
-
-  h3{
-    padding: 5px;
-    display: block;
-    height: 20px;
-    position: relative;
-  }
-
-  .nameUser {
-    height: 10px;
-  }
-
-  .helptext {
-    position: relative;
-    display: block;
-  }
-
-  .dstroytxt {
-    width: 190px;
-    margin-left: -10px;
-    padding: 0;
-    margin-top: 20px;
-
-    > a {
-      display: block;
-      height: 30px;
-      position: relative;
-      padding-top: 14px;
-    }
-  }
-}
-
 .helptext {
   position: relative;
   display: block;
@@ -453,10 +342,6 @@ h3{
 	height: 200px;
 	overflow: hidden;
 	position: relative;
-
-  #imgge img {
-    width: 100%;
-  }
 }
 
 .hoverShowEdit {
@@ -504,16 +389,6 @@ h3{
 
 /* Ajax Tareas
 ----------------------------------*/
-.homeworkCalf {
-  clear: both;
-  width: 300px;
-}
-
-input.nombreCrit {
-  width: 230px;
-  padding: 10px!important;
-}
-
 .rate {
   display: inline-block;
   float: left;
@@ -576,12 +451,6 @@ input.nombreCrit {
   padding: 10px;
 }
 
-.submitCalif {
-  display: block;
-  position: relative;
-  margin-left: 180px;
-}
-
 .header_l {
   display: inline-block;
   float: right;
@@ -602,16 +471,6 @@ input.nombreCrit {
 .areaCrit {
   width: 230px;
   padding: 10px;
-}
-
-.titleCrit {
-  display: block;
-  width: 270px;
-  margin: 15px auto 4px auto;
-}
-
-.homeworkCalf .default-form select {
-  width: 200px;
 }
 
 .light_box .deliveries_list {
@@ -953,67 +812,6 @@ input.nombreCrit {
   }
 }
 
-#load-more-activities {
-	width: 390px;
-	min-height: 65px;
-	max-height: 200px;
-	margin-top: -13px;
-	display: block;
-	padding: 13px 5px;
-}
-          
-.activities_depot {
-  width:390px;
-  min-height:65px;
-  max-height: 200px;
-  margin-top:-13px;
-  display: block;
-  padding: 13px 5px;         
-  
-  .title {
-    width: 320px;
-    overflow-y: hidden;
-    float: left;
-    margin-top: 3px;
-    margin-left: 60px;
-    height: 20px;
-  }
-
-  .titleNoTwo{
-    width: 320px;
-    float: left;
-    margin-top: 3px;
-    margin-left: 60px;
-    display: block;
-  }
-
-  .reference{
-    width: 310px;
-    float:left;
-    position:absolute;
-    margin-top:30px;
-    margin-left: 60px;
-    height: 30px;
-
-    img {
-      position: relative;
-      float: right;
-    }
-  }
-         
-  .referenceNoTwo{
-    width: 310px;
-    float:left;
-    position:absolute;
-    margin-top:10px;
-    margin-left:60px;
-    height: 145px;
-    overflow: scroll;
-    position: relative;
-    display: block;
-  }
-}
-
 .activities_depot_select{
   height: 40px;
 }
@@ -1032,48 +830,10 @@ input.nombreCrit {
   }
 }
 
-.filter_acti {
-	width: 95px;
-	height: 40px;
-	display: inline-block;
-	float: right;
-	margin: -10px 0 0 0;
-}
-
-.drop_views {
-	width: 105px;
-	margin-top: 13px;
-	padding: 0px;
-	display: inline-block;
-	float: left;
-	margin-left: 0px;
-	z-index: 9;
-	position: absolute;
-
-  li {
-    position: relative;
-    padding: 8px;
-  }
-}
- 
-.membFilter {
-  float: right;
-  padding-top: 5px;
-  padding-right: 7px
-}
-
 .dropperDwn {
 	padding: 5px;
 	width: 250px;
 }
-
-.expoced{
-  position:relative;
-  float:left;
-  width: 517px;
-  margin-left:21px;
-}
-
 .user_assets{
   width:475px;
   padding: 25px 20px;
@@ -1131,18 +891,9 @@ input.nombreCrit {
 	float: right;
 
   .cogki_content_delivery {
-
-    .tabs {
-      width: 610px;
-
-      li {
-        width: 275px;
-      }
-    }
     
     #tab-1, #tab-2 {
       .coklo-title{
-        width: 610px;
         
         h1 {
           width: 570px;
@@ -1372,26 +1123,6 @@ input.nombreCrit {
 	float: left;
 }
 
-// Admit Users
-.place-hldr {
-  height: 147px;
-  display: block;
-  margin-top: -153px;
-  width: 170px;
-  overflow: hidden;
-  margin-top: 0px!important;
-  
-  .add_friend_comunity {
-    height: 30px;
-    padding-top: 5px!important;
-  }
-
-  .name {
-    display: block;
-    position: relative;
-    height: 25px;
-  }
-}
 
 .netWorkMenuHeader {
   z-index: 9;
@@ -1446,5 +1177,31 @@ input.nombreCrit {
   &:hover {
     margin-top: 30px;
     padding: 10px;
+  }
+}
+
+/* Library
+----------------------------------*/
+
+.library-terms {
+  margin-top: 20px;
+}
+
+.library-wrap {
+  margin-bottom: 20px;
+}
+
+.library-items-list {
+  .library-item {
+    padding: 15px 5px;
+    @include clearfix;
+
+    .library-item-icon {
+      float: left;
+    }
+
+    .library-item-main {
+      margin-left: 45px;
+    }
   }
 }

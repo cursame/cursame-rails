@@ -1,0 +1,39 @@
+<%= render partial: 'user-header' %>
+
+<div class="wrapper spaced">
+  <div class="sub-profile-title">
+    <h3>Información</h3>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="cols-12">
+    <div class="col col-6">
+      <div class="basic-container-style padded">
+        
+        <% if !@user_l.bios.blank? %>
+          <h5>Biografia</h5>
+          <%= @user_l.bios %>
+        <% else %>
+          <p>Este usuario no cuenta con biografia.</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col col-3">
+      <div class="basic-container-style padded course-info-blocks">
+        <div class="course-info-block">
+          <h6 class="meta-info"><%= icon('email-12') %> Correo Electronico:</h6>
+          <%= link_to @user_l.email, "mailto:#{@user_l.email}" %>
+
+        </div>
+
+        <% if !@user_l.twitter_link.blank? %>
+          <div class="course-info-block">
+            <h6 class="meta-info"><%= icon('twitter-12') %> Twitter:</h6>
+            <%= link_to @user_l.twitter_link, @user_l.twitter_link, target: '_blank' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

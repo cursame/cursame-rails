@@ -1,0 +1,24 @@
+
+/* Quiz Forms Skeleton
+----------------------------------*/
+.quiz-item {
+  padding: 15px;
+
+  .quiz-item-header {
+    margin-bottom: 10px;
+  }
+
+  .quiz-item-options {
+    .option {
+      padding-top: 6px;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &:nth-child(odd) {
+    background: #f7f7f7;
+  }
+}

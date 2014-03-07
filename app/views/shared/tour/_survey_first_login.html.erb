@@ -1,0 +1,126 @@
+  <%
+  wufoo = WuParty.new(ACCOUNT, API_KEY)
+  wufoo_form = wufoo.form( wufoo_form_id )
+  wufoo_fields = wufoo_form.fields
+%>
+
+<div class="overlay-header">
+  <div class="overlay-title">
+    <h4>Ayúdanos a mejorar</h4>
+    <% if quiz_type == "teacher" %>
+      <p>Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.</p>
+    <% elsif quiz_type == "student" %>
+      <p>Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente.</p>
+    <% end %>
+    <p>Gracias.</p>
+  </div>
+</div>
+
+<%= form_tag update_wufoo_form_path, method: :get, remote: true, id: "user-quiz-form" do %>
+  <div class="overlay-content no-padding">
+    <div class="quiz-wrap">
+      <%= hidden_field_tag "wufoo_form_id", wufoo_form_id %>
+      <% wufoo_fields.each do |field| %>
+        <% 
+          type = field['Type']
+          id = field['ID']
+        %>
+
+        <% if type == 'text' && id == 'EntryId' %>
+          <%= hidden_field_tag id, wufoo_form.entries.count %>
+        <% end %>
+
+        <% if type == 'date' && id == 'DateCreated' %>
+          <%= hidden_field_tag id, Time.now %>
+        <% end %>
+
+        <% if type == 'text' && id == 'CreatedBy' %>
+          <%= hidden_field_tag id, current_user.name %>
+        <% end %>
+
+        <% if type == 'date' && id == 'LastUpdated' %>
+          <%= hidden_field_tag id, Time.now %>
+        <% end %>
+
+        <% if type == 'text' && id == 'UpdatedBy' %>
+          <%= hidden_field_tag id, current_user.name %>
+        <% end %>
+
+        <% if id != 'EntryId' %>
+          <% if id != 'DateCreated' %>
+            <% if id != 'CreatedBy' %>
+              <% if id != 'LastUpdated' %>
+                <% if id != 'UpdatedBy' %>
+
+                  <div class="quiz-item">
+                    <div class="quiz-item-header">
+                      <%= label_tag id, "#{field['Title']} <span class='required'>*</span>".html_safe %>
+                    </div>
+                    <div class="quiz-item-options">
+                      
+                      <% if type == 'text' %>
+                        <%= text_field_tag id, "", required: "required" %>
+                      <% end %>
+
+                      <% if type == 'radio' %>
+                        <% field['Choices'].each_with_index do |choice, index| %>
+                          <% index == 0 ? options = {required: "required"} : options = {} %>
+                          <div class="option">
+                            <%= label_tag do %>
+                              <%= radio_button_tag id, choice['Label'], false, options %> <%= choice['Label'] %>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      <% end %>
+
+                      <% if type == 'checkbox' %>
+                        <% field['SubFields'].each_with_index do |subfield, index| %>
+                          <div class="option">
+                            <%= label_tag do %>
+                              <%= check_box_tag subfield['ID'], subfield['Label'], false, { class: "require-one" } %> <%= subfield['Label'] %>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      <% end %>
+
+                    </div>
+                  </div>
+                <% end %>  
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+  <div class="overlay-footer">
+    <span class="btn btn-medium btn-primary input-btn">
+      <%= submit_tag "Enviar Encuesta" %>
+    </span>
+  </div>
+<% end %>
+
+<script>
+  $(function(){
+
+    $.validator.addMethod('require-one', function(value) {
+      return $('.require-one:checked').size() > 0;
+    }, 'Selecciona al menos una opción.');
+
+    var checkboxes = $('.require-one');
+    var checkbox_names = $.map(checkboxes, function(e, i) {
+      return $(e).attr("name")
+    }).join(" ");
+
+    $('#user-quiz-form').validate({
+      groups: {
+        checks: checkbox_names
+      },
+      errorPlacement: function(error, element) {
+        $(element).closest('.quiz-item-options').append(error);
+      }
+    });
+
+  });
+</script>

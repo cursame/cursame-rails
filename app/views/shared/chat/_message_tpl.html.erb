@@ -1,35 +1,19 @@
-<% if message.user != nil%>
-<% if message.user.avatar != nil%>
-<div class="insideChat">
-	<span id ="message_<%= message.id %>" class="<%= (message.user.id != current_user.id) ? 'MsjD' : 'MsjC' %>">
-		<span class="imgChat">
-			<%=image_tag(message.user.avatar.blank? ? message.user.image_avatarx : message.user.avatar.profile ,:style => "float:left; width:30px; height:30px;")%>
-		</span><!-- ends imgChat -->
-		
-		<span class="Mensaje">&nbsp; <%= message.mesage_html %></span><!-- ends Mensaje -->
 
-			<span class="toolTipUser"><%= message.user.name %></span><!-- ends toolTipUser -->
-	</span><!-- ends message -->
-	
-</div><!-- ends insideChat -->
-
-<div id="DivIer" style="clear:both;"></div>
-
-<script>
-	$(document).ready ( function() {
-		$('p:empty').hide();
-		$('.toolTipUser').hide();
-	});
-	
-	$('.insideChat').mouseenter( function() {
-		$(this).find('.toolTipUser').fadeIn('slow');
-	});
-
-	$('.insideChat').mouseleave( function() {
-		$(this).find('.toolTipUser').fadeOut('fast');
-	});
-</script>
-
-
+<% if message.user != nil && message.user.avatar != nil%>
+	<div id ="message_<%= message.id %>" class="chat-message-item <%= (message.user.id != current_user.id) ? 'message-received' : 'message-sent' %>">
+		<% if message.user.id != current_user.id %>
+			<div class="chat-message-author">
+				<span class="avatar-holder">
+					<%= avatar('user', '30', "no", message.user.id, "avatar", "no", "no") %>
+				</span>
+			</div>
+		<% end %>
+		<div class="chat-message-main">
+			<span class="tip"></span>
+			<div class="chat-message-content">
+				<%= message.mesage_html %>
+			</div>
+		</div>
+	</div>
 <%end%>
-<%end%>
+	

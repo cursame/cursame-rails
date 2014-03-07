@@ -1,0 +1,199 @@
+<%
+  ### Variables globales de publicaciones
+  post = publication.publication
+  id = publication.id
+  publication_cls = 'delivery'
+  created_at = post.created_at
+  type = publication.publication_type
+  personal_url = post.user.personal_url if type != 'Course'
+  personal_url = post.id if type == 'Course'
+
+  if defined?(post.courses)
+    courses_ids = post.courses.map {|k| k.id }
+  end
+%>
+
+<%
+  # Variables for Comment
+  if type == "Comment"
+    name = post.user.name
+    user_name = name
+    content = post.comment_html
+    course = post.commentable if post.commentable_type == 'Course'
+    tipo = 'Comentario'
+
+    if course != nil
+      posted_in_for = course.title
+      posted_in_for_id = course.id
+    end
+  end
+%>
+
+<% 
+  # Variables for Course
+  if type == "Course"
+    name = post.title
+    content = post.silabus
+    tipo = 'Curso'
+  end
+%>
+
+<% 
+  # Variables for Discussion
+  if type == "Discussion"
+    name = post.title
+    user_name = post.user.name
+    course = post.courses
+    posted_in_for = course[0].title if ( !post.courses.blank? )
+    posted_in_for_id = course[0].id if ( !post.courses.blank? )
+    content = post.description_html
+    content_no_html = post.description
+    tipo = 'Discusión'
+  end
+%>
+
+<% 
+  # Variables for Delivery
+  if type == "Delivery"
+    cargo = post.courses[0]
+    name = post.title
+    user_name = post.user.name
+    course = post.courses
+    posted_in_for = course[0].title
+    posted_in_for_id = course[0].id
+    content = post.description_html
+    content_no_html = post.description
+    publication_cls = 'delivery'
+    tipo  = 'Tarea'
+  end
+%>
+
+<% 
+  if type == "Survey"
+    course = post.courses
+    user_name = post.user.name
+    posted_in_for = course[0].title
+    posted_in_for_id = course[0].id
+    name = post.name
+    tipo = 'Cuestionario'
+  end
+%>
+
+<% if post.state == "published" %>
+  <div class="publication-box <%= id %> <%= I18n.transliterate(tipo.to_s).downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>" data-course="<%= courses_ids[0] if !courses_ids.nil? %>">
+    <div class="publication-author">
+      <% case type %>
+        <% when 'Course' %>
+          <%= link_to course_path(post.id) do %>
+            <span class="avatar-holder">
+              <%= avatar('course', '45', 'no', post.id, 'avatar', 'no', 'no') %>
+            </span>
+          <% end %>
+        <% else %>
+          <%= link_to show_user_path(personal_url) do %>
+            <span class="avatar-holder">
+              <%= avatar('user', '45', 'no', post.user.id, 'avatar', 'no', 'no') %>
+            </span>
+          <% end %>
+      <%end%>
+    </div>
+
+    <div id = "publication-<%= id %>" class="publication-main comment-text <%= publication_cls %>" >
+      
+      <div class="publication-content">
+        <% if type == "Comment" %>
+            <h6>
+              <%= link_to user_name, show_user_path(personal_url) if ( !user_name.blank?) %>
+              <% if !posted_in_for.blank? %>
+                comentó en el curso
+                <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+              <% end %>
+                
+              <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %>
+            </h6>
+            <%= content %>
+          
+          <% else %>
+            <h6>
+              <% if type == 'Course'  %>
+                Un nuevo curso público se ha creado
+              <% else %>
+                <%= link_to user_name, show_user_path(personal_url) %>
+              <% end %>
+
+              <% case type %>
+              <% when "Discussion" %>
+                inició una discusión
+                <% if posted_in_for %>
+                  en el curso
+                  <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+                <% end %>
+
+              <% when "Delivery" %>
+                agregó una tarea en el curso
+                <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+
+              <% when "Survey" %>
+                agregó un cuestionario en el curso
+                <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+              <% end %>
+
+            </h6>
+
+            <div class="academic-content">
+              <div class="academic-action">
+                <% if type == 'Course' %>
+                  <%= link_to 'Ir al Curso', course_path(post.id), class: "btn btn-transparent btn-medium uppercase" %>
+                <% else %>
+                  <%= link_to 'Ver ' + tipo, show_template_on_modal_path(:id => publication.id, :type => 'wall'),:remote => true, class: "btn btn-transparent btn-medium uppercase", data: "modal"%>
+                  
+                <% end %>
+              </div>
+              <div class="academic-content-icon">
+                <%= icon( I18n.transliterate(tipo.to_s).downcase + '-publication') %>
+              </div>
+              <div class="academic-content-desc">
+                <h4><%= truncate( name, omission: "...", length: 50) %></h4>
+                <% if type != "Survey" %>
+                  <p><%= truncate( content_no_html, omission: "...", length: 70) %></p>
+                <% else %>
+                  <p><%= pluralize(post.questions.count, 'Pregunta', 'Preguntas') %></p>
+                <% end %>
+              </div>
+            </div>
+
+            
+
+        <% end %>
+
+        <% if type != "Comment" %>
+          <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: post, white_like_icon: true} %>
+        <% end %>
+      </div>
+      
+      <% if type == "Comment" %>
+        <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: post, white_like_icon: false} %>
+      <% end %>
+
+      <% if publication.publication.owner?(current_role, current_user) %>
+        <div id="footer-publication-<%= id %>">       
+          <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
+            <h5>Editar publicación</h5>
+            <br>
+            <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
+          </div>
+        </div>          
+      <%end%>
+      
+      <%= render partial: 'shared/publications/publication_comments', locals: { publication: publication, post: post } %>
+
+    </div>
+    <script type="text/javascript">
+      $('#more-comments-<%= publication.id %>').live('click',function(e){
+        $.getScript("<%=request.protocol + request.host_with_port%>/home/load_more_comments/<%= publication.id %>");
+
+        e.preventDefault();
+      });
+    </script>
+  </div>    
+<%end%>

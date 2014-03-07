@@ -1,0 +1,56 @@
+
+/* Buttons Skeleton
+----------------------------------*/
+.btn {
+  @include inline-block;
+  padding: 0 10px;
+  height: 33px;
+
+  &.input-btn {
+    padding: 0;
+    height: auto;
+
+    > input {
+      margin: 0;
+      padding: 0 10px;
+      height: 33px;
+    }
+  }
+
+  &.input-btn.btn-small input {
+    height: 20px;
+    padding: 0 5px;
+  }
+
+  &.input-btn.btn-medium {
+    padding: 0;
+
+    input {
+      height: 40px;
+      padding: 0 20pxpx;
+    }
+  }
+  
+  &.btn-small {
+    height: 20px;
+    padding: 0 5px;
+  }
+
+  &.btn-medium {
+    height: 38px;
+    padding: 0 20px;
+  }
+}
+
+.group-buttons {
+  @include clearfix;
+
+  .button {
+    float: left;
+    margin-left: -1px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

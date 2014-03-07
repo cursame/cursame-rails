@@ -1,8 +1,7 @@
 <div id="box-question-child" class="question-field">
   <div class="element">
       <div id="question-num" class="num">1.</div>
-      <%= f.text_field :content, :rows => 3, :placeholder=>'Ingresar pregunta' %>
-      <%#= f.text_field :value%>
+      <%= f.text_field :content, :placeholder=>'Ingresar pregunta' %>
       <%= link_to_remove_fields "Eliminar", f, {:class=>'remove-icon', :clear => 'both'}, '#box-question'  %>
   </div>
   <div id="box-request">

@@ -1,30 +1,27 @@
-<!-- imagen avatar del usuario -->
-<% random_id = "#{random}" %>
+<div class="child-comment-box add-comment">
+  <% random_id = "#{random}" %>
 
-<a id="avatar-child-<%= random_id %>" class="avatar-child-comment" href="#" style="display: none;">
-	<img src="<%= current_user.avatar%>" width ="30px">
-</a>
+  <div class="comment-author">
+    <span class="avatar-holder">
+      <%= avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no') %>
+    </span>
+  </div>
 
-<%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
-  <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required', :class => 'activable' %>
-  <%=hidden_field_tag 'commentable_id', commentable_id %>
-  <%=hidden_field_tag 'commentable_type', commentable_type %>
-  <%=hidden_field_tag 'from_enter_key', true %>
-  <%= submit_tag "Comentar",:style=>"display:none;" %>
-<% end %>
+  <div class="comment-main">  
 
-<script type="text/javascript">
-  $('#comment_for_<%=commentable_type+commentable_id.to_s%>').keypress(function(e) {
-    if(e.keyCode == 13) {
-      e.preventDefault();
+    <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :remote =>true do %>
+      <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required', :class => 'activable autogrow new-comment-textarea new-comment-trigger' %>
+      <%= hidden_field_tag 'commentable_id', commentable_id %>
+      <%= hidden_field_tag 'commentable_type', commentable_type %>
+      <%= hidden_field_tag 'from_enter_key', true %>
+      <%= submit_tag "Comentar",:style=>"display:none;" %>
       
-      if($(this).val() != "") {
-        $(this).off(e);
-        $(this).parents("form").submit();
-      }
-    }
-  }).click(function() {
-    $('#avatar-child-<%= random_id %>').show();
-    $(this).css('width','505px');
-  });
-</script>
+      <div class="new-comment-actions">
+        <span class="btn btn-primary input-btn">
+          <%= submit_tag "Comentar" %>
+        </span>
+      </div>
+    <% end %>
+    
+  </div>
+</div>

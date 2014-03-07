@@ -38,6 +38,10 @@ Cursame30Lb::Application.routes.draw do
   
   resources :discussions
 
+##### ruta para ver todas las dicusiones
+
+get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussions
+
   ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
     collection do
@@ -52,9 +56,9 @@ Cursame30Lb::Application.routes.draw do
   resources :events
 
   ########## calendar
-  get "calendar/index"
+  get "calendar", :to => 'calendar#index', :as => :calendar
   get "calendar/test_calendar"
-
+  
   ######### dropbox
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
   ######## create
@@ -78,14 +82,18 @@ Cursame30Lb::Application.routes.draw do
 
   # colocando miembros en cursos
   resources :members_in_courses
+
+  get '/update_mc', :to => 'members_in_courses#update'
   # colocando course files
-  resources :course_files , :defaults => { :format => 'js' }
+  resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
   # metodos de manejo de cursos
   get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
   post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
+
+  
 
   resources :courses do
     resources :assignments
@@ -100,17 +108,39 @@ Cursame30Lb::Application.routes.draw do
     end
   end
 
+  # metodos de filtrado en cursos
+
+  get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
+  get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
+
+  # metodos de amplio acceso al curso
+
+  get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
+
+  
+  #search ajax courses
+
+  match 'search_course', :to => "courses#courses_search_ajax", :as => :courses_search_ajax
+
 # Awaiting_confirmation
   get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
 
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
   ##### clonar curso
-  get "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course
+
+  get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
+  match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
+
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
+  
+  #### tour virtual 
+  get "tour_reciver", :to => "users#tour_reciver", :as => :tour_reciver
+  #### lista calificaciones
 
+  get "/califications", :to => "users#califications", :as =>  :califications
 
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
@@ -127,10 +157,16 @@ Cursame30Lb::Application.routes.draw do
   ##### llamada ajax para saber si la session ha expirado
 
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
+  
 
+
+  
+  ##### vista de todas mis tareas como miembro del curso #####
+
+  get "deliveries", :to => "deliveries#my_deliveries", :as => :my_deliveries
 
   #### llada de ajax de editar tarea
-
+  
   get "edit_delivery_access/:id", :to => "courses#edit_delivery_access", :as => :edit_delivery_access
 
   resources :deliveries do
@@ -140,7 +176,7 @@ Cursame30Lb::Application.routes.draw do
   end
   
   get 'assignments/delivery_responce'
-  ################ llamada para republicar tarea ################
+  ################ llamada para republicar tarea  y  cuestionario ################
   get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
   get'/publish_unpublish_survey_manualy', :to => 'surveys#publish_unpublish_survey_manualy', :as => :publish_unpublish_survey_manualy
 
@@ -172,8 +208,8 @@ Cursame30Lb::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   as :user do
-    match 'users/sign_out', :to => 'usessions/sessions#destroy', :as => :sign_out
-    match 'users/sign_in', :to =>  'usessions/sessions#new', :as => :sign_in
+    match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
+    match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
   end
 
   #### finalizador de sesiones
@@ -181,11 +217,24 @@ Cursame30Lb::Application.routes.draw do
   get '/alertmethod', :to => 'networks#alertmethod', :as => :alertmethod
   #get '/session_conserve', :to => 'networks#session_conserve', :as => :session_conserve
 
-
+  
   ###### users personal_url_validation
 
   get '/personlization_url_corroborate/:personal_url', :to => 'users#corroborate_url', :as => :corroborate_url
 
+  ###### users tabs
+
+  get '/users/:personal_url/info', :to => 'users#info', :as => :user_info 
+  get '/users/:personal_url/friends', :to => 'users#friends', :as => :user_friends
+  get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
+  get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
+  
+  ###### buscador de users
+  
+  get '/network_find_user', :to => 'networks#find_user', :as => :user_n_find
+
+
+  
   # Groups
   get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
   post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
@@ -203,6 +252,7 @@ Cursame30Lb::Application.routes.draw do
   get "managers/send_mails" => "managers#send_mails", :as => :massive_mails
   match "managers/sending" => "managers#sending", :as => "massive_sending", :via => [:post]
   post "/managers/upload_users" => "managers#upload_users", :as => :upload_users
+
   post "/user/upload_users_a" => "users#upload_users_a", :as => :upload_users_a
 
 
@@ -228,6 +278,8 @@ Cursame30Lb::Application.routes.draw do
 
   get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
   get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
+  get "community/:id/destroy", :to => "friendships#destroy", :as => :friendships_destroy_friend
+
 
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
@@ -245,8 +297,12 @@ Cursame30Lb::Application.routes.draw do
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
-  match '/comunity', :to =>  "networks#network_comunity", :as => :network_comunity
+  match '/community', :to =>  "networks#network_comunity", :as => :network_comunity
 
+  get '/filter_comunity', :to => "networks#all_user_in_network_where_not_my_friends", :as => :filter_comunity
+  # filtro del wall
+
+  get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
 
   #manejo de usuarios en las networks
   resources :networks_users do
@@ -280,6 +336,9 @@ Cursame30Lb::Application.routes.draw do
 
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
+  
+  ##### surveys vista general #####
+   get "all_surveys", :to => 'surveys#my_surveys', :as => :my_surveys
 
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
@@ -392,6 +451,8 @@ Cursame30Lb::Application.routes.draw do
   get "home/load_more_messages/:id", :to => 'home#load_more_messages', :as => :load_more_messages
   get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
+
+  get "/update_wufoo_form", :to => "home#update_wufoo_form", :as => :update_wufoo_form
   #--------------
   #NOTIFICATIONS
   #---------------
@@ -405,11 +466,20 @@ Cursame30Lb::Application.routes.draw do
 
    get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
 
+
    ###### ruta para creacion de timeline paginada
    get 'courses/:id/course_ki_line_pag', :to => 'courses#course_ki_line_pag', :as => :course_ki_line_pag
 
    ###### carga mas actividades
    get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
+
+
+   ####### tuas extras para el curso
+
+   get '/courses/:id/about', :to => 'courses#about', :as => :about_course 
+   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
+   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+
 
    ###### ruta para crear super admins
 
@@ -426,7 +496,8 @@ Cursame30Lb::Application.routes.draw do
     get "content/orkut"
 
     get "content/khanacademy"
-
+    
+    get "content/destroy/:id", :to =>  'content#destroy', :as => :destroy_content
     ##### cierra la base de datos
 
     get '/closer_db', :to => 'home#closer_db', :as => :clorse_db
@@ -440,6 +511,8 @@ Cursame30Lb::Application.routes.draw do
    # get "home/parents", :as => :parents
    # get "home/my_son", :as => :my_son
    # get "home/acces_on_course", :as => :acces_on_course
+   # 
+    get '/publications/:id/show_template_on_modal', :to => 'publications#show_template_on_modal', :as => :show_template_on_modal , :defaults => { :format => 'js' }
 
   #paginas de errores
   match '/404', :to => 'home#not_found', :as => :not_found

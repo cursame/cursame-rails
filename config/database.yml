@@ -50,11 +50,10 @@ production:
   encoding: unicode
   timeout: 7000
   pool: 5
-  
 
 cursame-test:
   adapter: postgresql
-  host: ip-10-151-14-176.ec2.internal
+  host: 10.2.54.48
   database: cursame-test
   username: cursame
   password: r8o54q58

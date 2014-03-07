@@ -1,8 +1,11 @@
 <div class="image-survey" id="open-close-<%= survey.id %>" style="height: 86px; /*margin-top: -16px;*/ position: relative; z-index: 0;">
-  <% response = UserSurvey.find_by_survey_id_and_user_id(survey.id,current_user.id) %>
-  <%  @s = Survey.find(survey.id)
-      @s.expired?
+
+  <% response = UserSurvey.find_by_survey_id_and_user_id( survey.id, current_user.id) %>
+  <% 
+    @s = Survey.find(survey.id)
+    @s.expired?
   %>
+  
   <% if response.blank? %>
       <div id="image-<%= survey.id %>" class="image-surveys">
       	<div class="response-survey">

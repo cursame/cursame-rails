@@ -1,7 +1,5 @@
 class MessagesController < ApplicationController
 
-
-
   def index
     @course = Course.find(params[:course_id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course.id)

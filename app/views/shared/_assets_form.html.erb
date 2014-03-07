@@ -1,101 +1,97 @@
 <%
-   random_id = "#{random}"
-   @asset_unique = "upload-delivery-form-#{random_id}"
-   isSingle ||= false
-   labelIdBox ||= "none"
+  random_id = "#{random}"
+  @asset_unique = "upload-delivery-form-#{random_id}"
+  isSingle ||= false
+  labelIdBox ||= "none"
 %>
 
 <% @asset = Asset.new %>
-<%= form_for @asset, :html => {:multipart => true, :class => "default-form uploader-form"} do |f| %>
+<%= form_for @asset, :html => {:multipart => true, :class => "default-form uploader-form new-publication-upload"} do |f| %>
 
-<div id="new_assets">
-  <div id="<%= @asset_unique %>" class="file-input-box">
-        <%= button_tag "Adjuntar archivo", :type => 'button', :class=>'browse-button', :id=>'hidden-btn-0' %>
+  <div id="new_assets">
+    <div id="<%= @asset_unique %>" class="file-input-box">
+
+      <%= label_tag 'asset-file-0', class: 'btn btn-secondary' do %>
+        <%= icon('upload-asset') %> Adjuntar archivo (Max. 8MB)
+      <% end %>
+
+      <div class="hide-input-file">
         <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0', multiple: true, name: "asset[file]" %>
-        <!--no colocar igual a password field-->
         <% f.password_field :encryption_code_to_access %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= hidden_field_tag :form_id, formId %>
+      </div>
+    </div>
   </div>
-</div>
-
-
 <% end %>
+
 <script src="/assets/jquery-fileupload/jquery.fileupload.js?body=1" type="text/javascript"></script>
+
 <script type="text/javascript">
+  function humanSize (size) {
+    var b = [1<<30, 1<<20, 1<<10], s = ['GB', ' MB', ' kB'];
+    for (var i in b) if (size >= b[i]) return (size/b[i]).toFixed(1) + s[i];
+  }
 
-    function humanSize (size)
-         {
-             var b = [1<<30, 1<<20, 1<<10], s = ['GB', ' MB', ' kB'];
-             for (var i in b) if (size >= b[i]) return (size/b[i]).toFixed(1) + s[i];
-         }
+  $(document).ready(function() {
+    $.ajaxSetup({ timeout: 120000 });
 
-    $(document).ready(function() {
+    $('#new_assets #<%= @asset_unique %>').click( function() {
+      
+      $('#new_assets #<%= @asset_unique %>').fileupload({
+        dataType: "script",
+        timeout:120000,
+        add: function( e,data ) {
+          var types = /(\.|\/)(jpg|jpeg|gif|ico|png|pdf|exe|ppt|txt|pptx|dmg|dwg|dwf|rar|zip|tar|iso|swf|flv|doc|docx|ade|adp|odt|rtf|sxw|sao|csv|xls)$/i;
+          var file = data.files[0];
+          
+          if( types.test(file.type) || types.test(file.name) ){
+            data.context = $( tmpl("template-upload", data.files[0]) );
+             
+            if ('<%=typeo%>'== 'delivery' || '<%=typeo%>'== 'survey') {
+            
+            $('#choser<%=typeo%>').append(data.context);
 
-    //     var uploader<%= random_id %> = new Uploader('#<%= @asset_unique %>', '#<%= @label_unique %>'<% if isSingle %>, true<% end %>);
-    //
-    $.ajaxSetup({timeout:120000});
+            }else{
 
-    $('#new_assets #<%= @asset_unique %>').click(function(){
-            $('#new_assets #<%= @asset_unique %>').fileupload({
-                dataType: "script",
-                timeout:120000,
-                add:function(e,data){
-                    var types = /(\.|\/)(jpg|jpeg|gif|ico|png|pdf|exe|ppt|txt|pptx|dmg|dwg|dwf|rar|zip|tar|xls|xlsx|xlsm|xlsb|iso|swf|flv|doc|docx|dotx|ade|adp|odt|rtf|sxw|sao|csv|xls)$/i;
-                    var file = data.files[0];
+            $('#choser<%=typeo%>_<%=formId%>').append(data.context);
 
-                    if(types.test(file.type) || types.test(file.name)){
-                        $('<%=labelIdBox%>').show();
-                        data.context = $(tmpl("template-upload",data.files[0]));
+            }
 
-                        data.context.find('.trash').click(function() {
-                            $(this).parent().remove(); //se remueve la etiqueta
-
-                            if($('<%=labelIdBox%>').children().length == 0)
-                                $('<%=labelIdBox%>').hide();
-                        });
-
-                        //console.log($('#unica').attr('id'));//.html('hola');//data.context);
-                        $('<%=labelIdBox%>').append(data.context);
-                        data.submit()
-                            .success(function (result, textStatus, jqXHR) {
-                                data.context.find('.progress-bar').hide();
-                                
-                            })
-                            .error(function (jqXHR, textStatus, errorThrown) {
-                                data.context.find('.trash').remove();
-                                data.context.find('span').css("width", "155px")
-                                        .css('line-height','27pt')
-                                        .css('font-size','9px')
-                                        .css('color','red')
-                                        .css('font-weight','bold')
-                                        .html('Error: Archivo o peso no soportado');
-                                data.context.find('.progress-bar').hide();
-                            });
-                    }
-                    else{
-                        alert(file.name+" : tipo de archivo no soportado :(");
-                    }
-                },
-                progress:function(e,data){
-                    if(data.context){
-                        progress = parseInt(data.loaded / data.total * 100,0);
-                        speed = humanSize(data.bitrate / 8) + '/s';
-                        data.context.find('.progress-add').html(speed + ' '+ progress+"%" );
-                        data.context.find('.bar').css('width',progress+ "%");
-                    }
-                }
+            data.context.find('.trash').click(function() {
+                $(this).parent().remove();
             });
-        });
 
+            data.submit()
+            .success(function (result, textStatus, jqXHR) {
+              data.context.find('.progress-bar').hide();
+            })
+            .error(function (jqXHR, textStatus, errorThrown) {
+              data.context.find('.trash').remove();
+              data.context.find('span').css('color','red').html('Error: Archivo o peso no soportado');
+              data.context.find('.progress-bar').hide();
+            });
+
+          } else {
+            alert(file.name+" : tipo de archivo no soportado :(");
+          }
+        },
+        progress: function( e, data ){
+          if(data.context){
+              progress = parseInt(data.loaded / data.total * 100,0);
+              speed = humanSize(data.bitrate / 8) + '/s';
+              data.context.find('.progress-add').html(progress+"%" );
+          }
+        }
+      });
     });
+  });
+
 </script>
 
 <script id="template-upload" type="text/x-tmpl">
-  <div class="file-mini-upload">
-    
-    <span>{%=o.name%}</span>
-    <div class="trash"></div>
-    <div class="progress-bar"><div class="bar" style="width: 0%"></div></div><div class="progress-add" style="float:left; font-size:8px; margin-top:-18px;"></div>
+  <div class="file-mini-upload publication-asset">
+    <%= icon('upload-asset-blue') %> {%= truncate( o.name, 40, '...') %} - <span class="progress-add"></span>
+    <div class="trash">Borrar</div>
   </div>
 </script>

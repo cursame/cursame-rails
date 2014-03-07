@@ -5,6 +5,26 @@ class SurveysController < ApplicationController
     # @surveys = @course.surveys
   end
 
+  def my_surveys
+    surveys = []
+      current_user.courses.each do |c|
+        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+         c.surveys.each do |s|
+           case 
+              when @member.owner
+                  if s.user_surveys.count == 0
+                       surveys.push(s.id)
+                  end
+              when (!@member.owner.nil? || !@member.owner)
+                  if s.user_surveys.count == 0
+                       surveys.push(s.id)
+                  end
+           end
+          end
+      end
+    @wall = current_network.walls.where(:publication_type => 'Survey', :publication_id => surveys ).paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+  end
+
   def show
     @survey = Survey.find(params[:id])
     puts @survey
@@ -15,7 +35,7 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(params[:survey])
+    @survey = Survey.create(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
 
@@ -34,9 +54,8 @@ class SurveysController < ApplicationController
     else
       @error = true
     end
-
     respond_to do |format|
-      format.js
+     format.js
     end
   end
 
@@ -93,7 +112,7 @@ class SurveysController < ApplicationController
             @user_response = UserSurveyResponse.new
             @user_response.user_survey_id = @user_survey.id
             @user_response.question_id = question[0]
-            @user_response.answer_id = answer[1]
+            @user_response.answer_id = answer
             @user_response.save
           end
             @az = @user_survey
@@ -103,40 +122,43 @@ class SurveysController < ApplicationController
       else
         @error = true
       end
-      # Ejemplo de como usar la evaluation de un examen
-      # evaluation(current_user,@user_survey.survey_id)
+      # Evaluation del examen
+      @user_survey.evaluation
       respond_to do |format|
-          format.js
+        format.js
+      end
+    end
+  end
+
+  def publish_unpublish_survey_manualy
+    @survey = Survey.find(params[:id])
+
+    if @survey.state == 'published'
+      @survey.state = 'unpublish'
+      @survey.end_date = Time.now
+      @message = "Se ha despublicado este cuestionario."
+      @linkik = 'Publicar'
+
+    else
+      @survey.state == 'unpublish'
+      @survey.state = 'published'
+      @survey.publish_date = Time.now
+      @survey.end_date = Time.now + 2.days
+      @message = "Se ha republicado el cuestionario agregando 2 dias desde ahora."
+      @linkik = 'Despublicar'
+
+    end
+    
+    @survey.save!
+
+    if @survey.save
+      respond_to do |format|
+        format.js
       end
     end
 
   end
-  def publish_unpublish_survey_manualy
-     @state = params[:state]
-     @id = params[:id]
-         @survey = Survey.find_by_id(@id)
-         if @survey.state == 'unpublish'
 
-          @survey.state = 'published'
-          @survey.publish_date = Time.now
-          @survey.end_date = Time.now + 2.days
-          @message = "se ha republicado agregando 2 dias desde ahora"
-
-         else
-
-           @survey.state = 'unpublish'
-           @survey.end_date = Time.now
-           @message = "se ha despublicado"
-
-
-         end
-         @survey.save!
-         if @survey.save
-           respond_to do |format|
-             format.js
-           end
-         end
-  end
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy

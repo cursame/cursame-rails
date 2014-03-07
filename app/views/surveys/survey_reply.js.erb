@@ -1,26 +1,15 @@
 if(!<%= @error %>){
-	$("#open-close-<%= @survey_id %>").show();
+
+	$("#open-close-").show();
 	$("#open-close-<%= @survey_id %>").parent().parent().show();
 	$('#entrega-<%= @survey_id %>').hide();
 	$("#open-close-<%= @survey_id %>").html("<div id='image-<%= @survey_id %>' class='image-surveys'><div class='response-survey'>Respondido!!!</div></div>");
 	$('#entrega-<%= @survey_id %>').remove();
-	$( "#notice" ).animate( { width: "100%", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
-	$('#notice').append('Se ha entregado la respuesta de un examen');
-	setTimeout(function() {
-	    $('#notice').html('');
-	    $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });    
-	}, 2500);
+	$('.overlay-wrapper').remove();
+
+	Notice('success', 'Se ha entregado la respuesta de tu cuestionario.')
+	window.location.reload();
 }
 else{
-	$('#notice').css('background','#F00');
-	$('#notice').css('color','#FFF');
-	// rgba(252,187,168,0.9);
-	$("#notice" ).animate( { width: "100%", height: "10px", padding: "20px", border: "1px solid #608847"}, { queue: false, duration: 100 });
-	$('#notice').append('No has contestado nada en tu examen');
-	setTimeout(function() {
-	    $('#notice').html('');
-	    $( "#notice" ).animate( { width: "0px", padding: "0px", border: "1px solid #608847" }, { queue: false, duration: 100 });    
-		$('#notice').css('background','#DFF0D8');
-		$('#notice').css('color','#608847');
-	}, 2500);
+	$('#errors').html('No has contestado nada en tu examen');
 }

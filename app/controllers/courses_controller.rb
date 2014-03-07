@@ -6,18 +6,86 @@ class CoursesController < ApplicationController
   filter_access_to :show
 
   def index
-    @courses = Course.where(:network_id => current_network.id, :active_status => true).search(params[:search])
+    
+    @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
+    #alfredot_rifa_free_pro_forever
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render stream: true}
       format.json { render json: @courses }
     end
 
   end
+  
+  def my_courses
+    @member = MembersInCourse.new
 
+     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def all_courses
+    @member = MembersInCourse.new
+     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true).search(params[:search])
+    respond_to do |format|
+      format.js 
+    end
+
+  end
+   
+
+  def operator_courses(typed = 'normal')
+    case 
+      when typed == 'inverse'
+          #### coloca los cursos a los que no pertenezco
+          comparative_courses = []
+          course_in_network = []
+    
+        ####### obtiene los ids de lo que pertenezco y lo que no y
+          current_user.courses.each do |c|
+            comparative_courses.push(c.id)
+          end
+    
+          current_network.courses.each do |cs|
+             course_in_network.push(cs.id)
+          end
+    
+          ids = course_in_network - comparative_courses
+
+          #puts "******************#{comparative_courses}"
+          #puts "******************#{course_in_network}"
+          #puts "#{ids}"
+       when typed == 'normal'
+          ### coloca los ids de los cursos para comparacion
+          comparative_courses = []
+          current_user.courses.each do |c|
+            comparative_courses.push(c.id)
+          end
+          ids = comparative_courses
+
+    end
+  end
+
+  def courses_search_ajax
+    @member = MembersInCourse.new
+    @search = params[:activiesearch].downcase
+    docificate_search_changes = I18n.transliterate("#{@search}")
+    @courses = Course.search(docificate_search_changes)
+
+    respond_to do |format|
+      format.js 
+    end
+  end
   # GET /courses/1
   # GET /courses/1.json
+  
+  def statistics
+    @course = Course.find(params[:id])   
+  end
   def show
   
     @course = Course.find(params[:id])
@@ -57,7 +125,7 @@ class CoursesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render stream: true}
         format.json { render json: @course }
       end
     end
@@ -99,17 +167,12 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
-    
-    
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
       if @member.owner == true || current_role == "admin"
       else
         redirect_to course_path(@course)
       end
       
-      
-      
-
   end
 
   # POST /courses
@@ -135,15 +198,28 @@ class CoursesController < ApplicationController
         @course_count = Course.count
         @ccc = current_user.courses.where(:network_id => current_network.id)
         @count_course_iam_member =  @ccc.where(:active_status => true).count
-        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true).count
+        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
+
+        if @count_course_iam_member_and_owner == 0
+           @miembro = MembersInCourse.where(course_id = @course.id).first
+           @miembro.owner == true
+           @miembro.save 
+           puts "se le ha agregado un owner al curso"
+        else
+           puts "este curso tiene owner"
+
+        end
+        format.html { redirect_to course_path(@course.id) }
+        
         #current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
-        #format.html { redirect_to courses_url }
-        format.js
+
       else
         #format.json { render json: @course.errors, status: :unprocessable_entity }
-        format.html { redirect_to courses_url }
-        format.js
+        #format.html { redirect_to courses_url }
+        #format.js
+         format.html { redirect_to :back }
+
 
       end
     end
@@ -172,7 +248,8 @@ class CoursesController < ApplicationController
         @course.init_date = @last_date
         @course.finish_date = @last_end_date
         @course.save
-        format.html { redirect_to :back }
+        flash[:notice] = "Se han guardado satisfactoriamente los cambios en el curso. "
+        format.html {redirect_to course_path(@course)}
         format.json { head :no_content }
       else
         format.html { redirect_to :back }
@@ -188,7 +265,7 @@ class CoursesController < ApplicationController
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to courses_url }
+      format.html { redirect_to courses_url, notice: 'Curso borrado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -203,11 +280,40 @@ class CoursesController < ApplicationController
     else
       if @member.owner == true || current_role == "admin"
       else
-        redirect_to course_path(@course)
       end
     end
   end
 
+  
+  def library
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @files = @course.course_files.paginate(:page => 1, :per_page => 10)
+  end
+  
+  def library_pagination
+    page = (params[:page]).to_i
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @files = @course.course_files.paginate(:page => page , :per_page => 10)
+    @next = page + 1
+    respond_to do |f|
+      f.js
+    end
+  end
+  
+  def about
+    id_for_users = []
+    @course = current_course
+    @owners = MembersInCourse.where(:course_id => @course.id, :owner => true)
+
+    @owners.each do |o|
+      id_for_users.push(o.user_id)
+    end
+    
+    @users = User.where(:id => id_for_users)
+    @member = obtainMember(@course.id,current_user.id)
+  end
 
   def evaluation
     @course = Course.find(params[:id])
@@ -261,11 +367,9 @@ class CoursesController < ApplicationController
 
   def assigment
     if params[:assignment]["id"].blank? then
-
       @assignment = Assignment.new(params[:assignment])
-
+      flash[:notice] = "Se ha entregado correctamente una tarea."
     else
-
       @id = params[:assignment].delete("id")
       @assignment = Assignment.find(@id)
       @assignment.update_attributes(params[:assignment])
@@ -277,12 +381,6 @@ class CoursesController < ApplicationController
           assets.push(Asset.find(asset_id))
         end
 
-        destroy = @assignment.assets - assets
-
-        destroy.each do |asset|
-          asset.destroy
-        end
-
         assignment_assets = @assignment.assets
 
         assets.each do |asset|
@@ -290,9 +388,9 @@ class CoursesController < ApplicationController
             @assignment.assets.push(asset)
           end
         end
+      flash[:notice] = "Se ha actualizado correctamente entrega de una tarea."
 
-      end
-
+    end
       redirect_to :back
       return
     end
@@ -394,6 +492,7 @@ class CoursesController < ApplicationController
             title: (("#{del.title}").to_s).delete("\n"),
             description: (("#{del.description}").to_s).delete("\n"),
             pertencenence_to: "tarea#{del.id}",
+            state: del.state,
             assets_integrate: assets_deliveries
           },
           assets: assets_deliveries
@@ -436,6 +535,7 @@ class CoursesController < ApplicationController
                 title: (("#{as.title}").to_s).delete("\n"),
                 description: (("#{as.brief_description}").to_s).delete("\n"),
                 pertencenence_to: "entrega_tarea#{as.id}",
+                state: "none",
                 assets_integrate: assets_assignmentss
               },
               assets: assets_assignmentss  #+ contents_assignmentss
@@ -471,6 +571,7 @@ class CoursesController < ApplicationController
             id: survey.id,
             type: 'examen',
             title: (("#{survey.name}").to_s).delete("\n"),
+            state: survey.state,
             pertencenence_to: "entrega_survey#{survey.id}"
           }          
         })
@@ -512,6 +613,8 @@ class CoursesController < ApplicationController
     page = (params[:page]).to_i
     per_page = (params[:per_page]).to_i
     @date = getActivities((page * per_page), ((page * per_page) + per_page), id)
+    puts @date
+
 
     # @date = simple
     respond_to do |format|
@@ -532,15 +635,16 @@ class CoursesController < ApplicationController
 
   def activities_depot
     @course = Course.find(params[:id])
-     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-      if current_role == 'admin' || current_role == 'superadmin'
-        @member.owner = true
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    
+    if current_role == 'admin' || current_role == 'superadmin'
+      @member.owner = true
+    else
+      if @member.owner == true || current_role == "admin"
       else
-        if @member.owner == true || current_role == "admin"
-        else
-          redirect_to course_path(@course)
-        end
+        redirect_to course_path(@course)
       end
+    end
   end
 
   def load_more_activities
@@ -596,7 +700,7 @@ class CoursesController < ApplicationController
           startDate: del.publish_date,
           endDate: del.end_date,
           headline: (("#{del.title}").to_s).delete("\n"),
-          text: (("Tarea: #{del.description}").to_s).delete("\n"),
+          text: del.description.to_s.delete("\n"),
           asset: {
             media: @avatar && @avatar,
             credit: (("#{del.user.name}").to_s).delete("\n"),
@@ -608,6 +712,7 @@ class CoursesController < ApplicationController
             title: (("#{del.title}").to_s).delete("\n"),
             description: (("#{del.description}").to_s).delete("\n"),
             pertencenence_to: "tarea#{del.id}",
+            state: del.state,
             assets_integrate: assets_deliveries
           },
           assets: assets_deliveries
@@ -650,6 +755,7 @@ class CoursesController < ApplicationController
                 title: (("#{as.title}").to_s).delete("\n"),
                 description: (("#{as.brief_description}").to_s).delete("\n"),
                 pertencenence_to: "entrega_tarea#{as.id}",
+                state: "none",
                 assets_integrate: assets_assignmentss
               },
               assets: assets_assignmentss  #+ contents_assignmentss
@@ -676,7 +782,7 @@ class CoursesController < ApplicationController
           startDate: survey.created_at,
           endDate: survey.created_at,
           headline: (("#{survey.name}").to_s).delete("\n"),
-          text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
+          text: "",
           asset: {
             media: @avatar_surveys && @avatar_surveys,
             credit: (("#{survey.user.name}").to_s).delete("\n"),
@@ -685,7 +791,9 @@ class CoursesController < ApplicationController
           compose: {
             id: survey.id,
             type: 'examen',
-            title: (("#{survey.name}").to_s).delete("\n")
+            state: survey.state,
+            title: (("#{survey.name}").to_s).delete("\n"),
+            questions_count: survey.questions.count
           }
         })
       end
@@ -741,6 +849,7 @@ class CoursesController < ApplicationController
 
   def course_assignment_notif
     @assignment = Assignment.find(params[:id])
+    
      respond_to do |format|
         #format.html
         format.js
@@ -749,8 +858,28 @@ class CoursesController < ApplicationController
   end
 
   def course_delivery_actdepot
-    @delivery = Delivery.find(params[:id])
-    @assignments = @delivery.assignments
+    @delivery     = Delivery.find(params[:id])
+    @assignments  = @delivery.assignments
+    @count        = @assignments.count
+    @deliveries   = Array.new
+    
+    @assignments.each do |assign|
+      user = User.find(assign.user_id)
+
+      @deliveries << {
+        id: assign.id,
+        title: assign.title,
+        description: assign.brief_description,
+        user_id: assign.user_id,
+        user_name: "#{user.first_name} #{user.last_name}",
+        user_avatar: avatar('user', '45', 'no',assign.user_id, 'avatar', 'no', 'no'),
+        updated_at: assign.updated_at,
+        accomplishment: assign.accomplishment,
+        type: "tarea"
+      }
+    end
+
+    puts 
     respond_to do |format|
       format.js
     end
@@ -777,19 +906,26 @@ class CoursesController < ApplicationController
     
   end
 
-  def course_survey_notif
-    @responces = UserSurvey.find(params[:id])
-
-    respond_to do |format|
-      #format.html
-      format.js
-      format.json
-    end
-  end
-
   def course_survey_actdepot
     @survey = Survey.find(params[:id])
+    puts "#{@survey.publish_date}"
+    puts "#{@survey.end_date}"
+    puts "#{@survey.state}"
+
     @responces = @survey.user_surveys
+    @survey_replies = Array.new
+    p @survey
+
+    @responces.each do |survey_reply|
+      user = User.find(survey_reply.user_id)
+
+      @survey_replies << {
+        id: survey_reply.id,
+        result: survey_reply.result,
+        user_name: "#{user.first_name} #{user.last_name}",
+        user_avatar: avatar('user', '45', 'no', survey_reply.user_id, 'avatar', 'no', 'no'),
+      }
+    end
 
     respond_to do |format|
       #format.html
@@ -851,6 +987,83 @@ class CoursesController < ApplicationController
         format.json
         format.js
       end
+  end
+
+  def clone_course_view
+    @course = Course.find(params[:id])
+    respond_to do |format|
+        format.html
+        # format.json
+        # format.js
+    end
+  end
+   
+  def clone_course
+    @course = Course.new(params[:course])
+    @course.title = "#{@course.title}(clonado)"
+    puts "#{@course.title}"
+    puts "#{@course.init_date}"
+    puts "#{@course.finish_date}"
+    @course.network = current_network
+    if @course.save!
+
+    if params[:deliveries] != nil
+      params[:deliveries].keep_if{|x| !x["id"].nil?}.each do |obj|
+        new_delivery = Delivery.find(obj["id"]).dup
+        new_delivery.state = 'unpublish'
+        new_delivery.publish_date = obj["publish_date"]
+        new_delivery.end_date = obj["end_date"]
+        new_delivery.courses.push(@course)
+        new_delivery.save!
+      end
+      end
+
+      if params[:discussions] != nil
+      params[:discussions].each do |id|
+        new_discussion = Discussion.find(id).dup
+        new_discussion.courses.push(@course)
+        new_discussion.save!
+      end
+      end
+
+      if params[:surveys] != nil
+      params[:surveys].keep_if{|x| !x["id"].nil?}.each do |obj|
+        new_survey = Survey.find(obj["id"]).dup
+        new_survey.state = 'unpublish'
+        new_survey.publish_date = obj["publish_date"]
+        new_survey.end_date = obj["end_date"]
+        new_survey.courses.push(@course)
+
+        #agregamos preguntas al survey
+        Survey.find(obj["id"]).questions.each do |question|
+          new_question = question.dup;
+          question.answers.each do |answer|
+            new_question.answers.push(answer.dup)
+          end
+          new_survey.questions.push(new_question)
+        end
+
+        new_survey.save!
+      end
+      end
+
+      if params[:course_files] != nil      
+      params[:course_files].each do |id|
+        new_course_file = CourseFile.find(id).dup
+        new_course_file.file = CourseFile.find(id).file
+        new_course_file.save!
+        new_course_id_course_file_id = CourseIdCourseFileId.new
+        new_course_id_course_file_id.course = @course
+        new_course_id_course_file_id.course_file = new_course_file
+        new_course_id_course_file_id.save!
+      end
+      end
+    end
+
+    if @course.save 
+      owner = MembersInCourse.create(:course_id => @course.id, :user_id => current_user.id, :accepted => true, :owner => true, :network_id => current_network.id )
+      redirect_to course_path(@course), :notice => "Curso clonado correctamente."
+    end
   end
 
 private 

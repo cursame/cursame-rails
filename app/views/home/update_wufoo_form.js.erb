@@ -1,0 +1,7 @@
+<% if  @error %>
+  console.log( "<%= @error %>" );
+<% else %>
+  removeModalAction( $('.overlay'), function() {
+    Notice('success', 'Gracias por usar Cúrsame.')
+  });
+<% end %>

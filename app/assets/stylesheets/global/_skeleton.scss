@@ -1,11 +1,72 @@
 
 /* Global Skeleton
 ----------------------------------*/
+html, body {
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.no-sidebar {
+  .wrap {
+    padding-left: 0;
+  }
+}
+
 .topbar {
   position: fixed;
-  height: 35px;
-  z-index: 999;
+  top: 0;
+  right: 0;
+  height: 50px;
+  z-index: 100;
   width: 100%;
+
+  .network {
+    float: left;
+    height: 44px;
+    margin-top: 3px;
+
+    .free_network {
+      display: block;
+      margin-top: 11px;
+    }
+  }
+
+  .activity-notificactions {
+    float: right;
+    @include clearfix;
+
+    .activity-block {
+      float: left;
+
+      .activity-dropdown-pull {
+        padding: 15px 15px 11px 15px;
+        
+        .activity-counter {
+          position: absolute;
+          padding: 1px 3px;
+          top: 5px;
+          right: 5px;
+        }
+      }
+    }
+
+    .support-buttton a {
+      display: block;
+      padding: 15px 10px 17px 10px;
+    }
+  }
+
+  #log_loadding {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    margin-top: 49px;
+    height: 2px;
+  }
 }
 
 .menu-user {
@@ -23,128 +84,297 @@
   }
 }
 
-.clear{
-  clear:both;
+.wrapper {
+  width: 720px;
+  margin: 0 auto;
+  @include clearfix;
+
+  &.spaced {
+    width: 700px;
+  }
 }
 
-/* Notifications and Messages
-----------------------------------*/
-#box-notifications, #box-messages-notifications{
+.full-width {
+  width: 100%;
+}
+
+.ver-spaced {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.spaced {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.wrap {
+  padding: 50px 0 0 230px;
+}
+
+.clear{
+  @include clearfix;
+}
+
+.clear-break {
   clear: both;
+}
+
+.inline-block {
+  @include inline-block;
+}
+
+.fl {
   float: left;
-  margin: 34px 0 0 10px;
-  position: absolute;
-  margin-top: 34px;
-  display: block;
-    
-  &.avatar{
-    margin-left: 3px;
+}
+
+.fr {
+  float: right;
+}
+
+.padded {
+  padding: 10px;
+}
+
+.hide-input-file {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  @include inline-block;
+}
+
+.inner-no-content {
+  padding: 30px 10px;
+}
+
+.no-content-section {
+  padding: 50px 0;
+}
+
+.no-sub-content-section {
+  padding: 20px 0;
+}
+
+/* Avatars
+----------------------------------*/
+.avatar-holder {
+  position: relative;
+  @include inline-block;
+  
+  img {
+    display: block;
+  }
+
+  &:after {
     position: absolute;
-    margin-top: 4px;
-    margin-right: 8px;
-    float: left;
-  }
-
-  &.comment-text{
-    width: 300px;
-    height: 100%;
-    float: left;
-    margin: 5px 0px 10px 11px;
-
-    &.header{
-      line-height: 23pt;
-      padding-bottom: 6px;
-
-      &.top-null-image{
-        width: 60px;
-        height: 10px;
-        float: left;
-      }
-
-      &.date{
-        float: right;
-        margin-right: 6px;
-      }
-    }
-
-    & .content{
-      padding: 6px 10px 5px 10px;
-      overflow: auto;
-      overflow-x: hidden;
-      height: 400px;
-
-      & li{
-        padding: 10px 0 10px 0;   
-        min-height: 50px;
-      }
-
-      &.avatar-notifications{
-        float: left;
-        margin-right: 10px;
-      }
-
-      &.first{
-        margin-top: -5px;
-      }
-
-      &.last{
-        border: none;
-      }
-    }
-           
-    &.video{
-      padding: 10px;
-    }
-    
-    &.title-discusion{
-      margin-bottom: 10px;
-    }
-    
-    &.text-discusion{
-      padding-left: 10px;
-    }
-    
-    &.footer{
-      height: 25px;
-      float: left;
-      width: 100%;
-      padding-top: 6px;
-
-      &.icon{
-        float: left;
-        margin: 4px 0px 0px 5px;
-      }
-
-      &.labels{
-        float: right;
-        margin: 4px 5px 0px 10px;
-      }
-    }
-  }
-
- 
-  &.header{
-    height: 25px;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+  }
+}
 
-    &.name{
-      color: #333;
+.avatar {
+
+  &.avatar-24 {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.avatar-38 {
+    width: 38px;
+    height: 38px;
+  }
+
+  &.avatar-60 {
+    width: 60px;
+    height: 60px;
+  }
+
+  &.avatar-150 {
+    width: 150px;
+    height: 150px;
+  }
+
+  &.avatar-cover-small {
+    height: 65px;
+    width: 175px;
+  }
+}
+
+/* Sidebar Global
+----------------------------------*/
+.global-sidebar {
+  width: 230px;
+  position: fixed;
+  z-index: 105;
+  left: 0;
+  height: 100%;
+  @include clearfix;
+
+  .user {
+    @include clearfix;
+    
+    img {
+      margin-right: 5px;
+    }
+
+    > a {
+      display: block;
+      padding: 13px 10px;
     }
   }
 
-  &.general-cir-discusion{
-    width: 35px;
-    height: 35px;
+  .navigation li a .i {
+    margin-right: 7px;
+  }
+
+  .side-courses li a {
+    img {
+      margin-right: 3px;
+    }
+  }
+
+  &:after {
+    content: "";
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.sidebar-section {
+  .sidebar-section-header {
+    padding: 6px 10px;
+    position: relative;
+    @include clearfix;
+  }
+}
+
+.section-list {
+  > li a {
+    padding: 5px 10px;
+    display: block;
+  }
+}
+
+.scroller {
+  overflow-y: auto; 
+}
+
+/* Chat Switch
+----------------------------------*/
+.chat-switch-wrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include clearfix;
+
+  .chat-switch {
+    float: left;
+    padding: 4px 9px 3px 9px;
+    height: 21px;
+
+    span {
+      display: none;
+    }
+
+    &:hover span { 
+      display: inline;
+    }
+  }
+}
+
+/* Footer
+----------------------------------*/
+.global-footer {
+  position: relative;
+  padding: 8px 10px 5px 10px;
+  @include clearfix;
+  
+  .footer-logo {
+    display: block;
+    width: 62px;
+    height: 20px;
+  }  
+
+  .cursame-brand {
     float: left;
   }
 
-  &.arrow-top {
-    width: 14px;
-    height: 9px;
-    position: absolute;
-    margin:-9px 0px 0px 145px;
-    z-index: 20;
+  .rights {
+    float: right;
   }
+}
+
+/* List of Buttons
+----------------------------------*/
+.list-buttons {
+  @include clearfix;
+
+  > li {
+    margin: 0 5px;
+    float: left;
+  }
+
+  &.left > li:first-child{
+    margin-left: 0;
+  }
+
+  &.right > li:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Sections Pages
+----------------------------------*/
+.section-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  .section-header-title {
+    float: left;
+
+    .section-icon {
+      float: left;
+      padding-top: 4px;
+    }
+
+    .section-title {
+      margin-left: 55px;
+      padding-top: 11px;
+    }
+
+    .section-subnav {
+      @include clearfix;
+
+      li {
+        float: left;
+        padding-right: 10px;
+      }
+    }
+
+    &.w-subnav .section-title {
+      padding-top: 0;
+    }
+
+    &.no-icon .section-title {
+      margin-left: 0;
+      padding-top: 0;
+    }
+  }
+
+  .section-header-actions {
+    float: right;
+    margin-top: 9px;
+  }
+}
+
+.sc-margined {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Menu User
@@ -192,8 +422,20 @@
 
 /* Notices
 ----------------------------------*/
-.notice {
+#noticce {
   width:100%;
+  position: absolute;
+  left: 0;
+  top: -51px;
+  @include transition (top .3s ease-in-out);
+
+  #notice {
+    padding: 14px 15px 16px 15px;;
+  }
+
+  &.active {
+    top: -1px;
+  }
 }
 
 .expires .uninstal_exit{
@@ -206,21 +448,47 @@
   }
 }
 
-/* Zenbox Tab
-----------------------------------*/
-#zenbox_tab{
-  top: 38%!important;
-  margin-right: 5px!important;
-}
-
 /* Scroll to Top Button
 ----------------------------------*/
-#scrollup{
-  width:40px;
-  height:40px;
-  opacity:0.3;
-  position:fixed;
-  bottom: 86%;
-  right: 1%;
+#scrollup {
+  width: 34px;
+  height: 34px;
+  position: fixed;
+  top: 60px;
+  right: 6px;
   display:none;
+}
+
+#pageless-loader {
+  width: 80px !important;
+  height: 80px;
+  margin: 30px auto;
+
+  img {
+    margin-top: 20px !important;
+  }
+}
+
+.search-wrap {
+  position: relative;
+  
+  .search-input {
+    padding-right: 70px;
+  }
+
+  .search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+#support-tab-sessions {
+  width: 44px;
+  height: 105px;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  margin-top: -22px;
+  z-index: 30;
 }

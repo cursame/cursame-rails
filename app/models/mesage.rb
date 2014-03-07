@@ -36,11 +36,11 @@ class Mesage < ActiveRecord::Base
                               message: self,
                               sender: self.user,
                               reciever: user,
-                              # usersIds:user_ids,
                               channel: self.channel
                               )
     else     
       users.each do |user|
+        puts user
         PrivatePub.publish_to("/messages/notifications_user_"+user.id.to_s,
                               message: self,
                               sender: self.user,
