@@ -1,8 +1,27 @@
+<div class="overlay-header">
+  <div class="overlay-title">
+    <h4>Bienvenido al nuevo Cúrsame</h4>
+    <% if tour_type == "network" %>
+      <p>Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.</p>
+    <% elsif tour_type == "profile" %>
+      <p>En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.</p>
+    <% elsif tour_type == "course" %>
+      <p>En este video de introducción te mostramos las principales secciones y características del curso.</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="overlay-content no-padding">
+  <div id="video-tour-container">
+    Cargando video tutorial...
+  </div>
+</div>
+
 <script>
   var videoID = "<%= video_id %>";
   var tag = document.createElement('script');
 
-  tag.src = "http://www.youtube.com/iframe_api";
+  tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -68,16 +87,3 @@
     player.stopVideo();
   }
 </script>
-
-<div class="overlay-header">
-  <div class="overlay-title">
-    <h4>Bienvenido al nuevo Cúrsame</h4>
-    <p>Por favor de mirar el video hasta el final antes de utilizar la nueva plataforma.</p>
-  </div>
-</div>
-
-<div class="overlay-content no-padding">
-  <div id="video-tour-container">
-    Cargando video tutorial...
-  </div>
-</div>
