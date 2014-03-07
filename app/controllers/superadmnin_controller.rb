@@ -114,31 +114,32 @@ class SuperadmninController < ApplicationController
           str = @msa.array_hash_from_sended
           eval(str)
           str = @msa.array_hash_from_sended.scan( /\d+/ ) 
+          #### usuarios antiguos
           new_array_old_things = str.map!{ |s| s.to_i }
+          #### usuarios actuales
           user_actualy =  User.all.map { |x| x.id}
       
-
+         ###### resta de usuarios
         defini = user_actualy - new_array_old_things
-         
-          puts "#{user_actualy}"
-          puts "#{new_array_old_things}"
-          puts "#{defini}"
-
+        
+        ####### busqueda de usuarios
         select_new_array = User.where(:id => defini)
-
+        ###### seleccionar primeros usuarios -n
         first_count_selected =  select_new_array.first(@msa.number_of_users)
-
+         
+        ######  detectar como enviados  
         first_count_selected.each do |sna|
           array_sended.push(sna.id)
            puts "#{@mailer}"
         end
-
+        ###### se envian los usuarios a proceso de backend
         @msa.delay.delayed_send_mailer(first_count_selected)
 
-
+        
         puts "******* Usuarios a los que se envia ********"
-
-        sended_users = first_count_selected + new_array_old_things
+        
+        ######## se suman los usuarios nuevos y los antiguos
+        sended_users = array_sended + new_array_old_things
 
         @msa.number_of_users = "#{sended_users}"
         @msa.save
