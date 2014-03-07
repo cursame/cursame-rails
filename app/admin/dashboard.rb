@@ -27,7 +27,6 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
-=end
     columns do
       column do
         panel "Cursos Recientes" do
@@ -43,6 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
           strong { link_to "Ver todos los cursos ...", admin_courses_path}
         end
       end
+=end
 
       column do
         panel "Usuarios Recientes" do
