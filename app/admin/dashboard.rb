@@ -13,7 +13,7 @@ ActiveAdmin.register_page "Dashboard" do
     # Here is an example of a simple dashboard with columns and panels.
     #
     #
-    
+=begin    
     columns do
       column do
         panel "Actividades de este mes" do
@@ -27,7 +27,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
-
+=end
     columns do
       column do
         panel "Cursos Recientes" do
