@@ -12,7 +12,7 @@ es:
   devise:
     usessions:
       user:
-        signed_in: "Welcome back"
+        signed_in: "Bienvenido de nuevo."
     failure:
       already_authenticated: 'Ya iniciaste sesión.'
       unauthenticated: 'Tienes que registrarte o iniciar sesión antes de continuar.'

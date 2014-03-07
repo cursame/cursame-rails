@@ -9,17 +9,30 @@ class UsessionsController < Devise::SessionsController
 
     # GET /resource/sign_in
     def new
+      puts params
+  
       self.resource = resource_class.new()      
       clean_up_passwords(resource)
       respond_with(resource, serialize_options(resource))      
+    
+      if params[:email] == nil
+        puts "sin email"
+      end
+
+      if params[:password] == nil
+        puts "sin password"
+      end
+
     end
 
     # POST /resource/sign_in
     def create      
+
       self.resource = warden.authenticate!(auth_options)
-     # set_flash_message(:notice, :signed_in) if is_navigational_format?
+      #set_flash_message(:notice, :signed_in) if is_navigational_format?     
       @find_user = User.find_by_email(resource.email)
-      flash[:notice] = "Hola #{ @find_user.name } bienvenido de nuevo."
+
+      flash[:notice] = "Hola #{ @find_user.name } bienvenido de nuevo." 
 
       @find_user.online = true
       @find_user.save!
@@ -57,10 +70,10 @@ class UsessionsController < Devise::SessionsController
                        puts "*************** demasiados *****************"  
                     end
                end
-        else          
+        else   
+          
          sign_in(resource_name, resource)
-
-         respond_with resource, :location => after_sign_in_path_for(resource)   
+         respond_with resource, :location => after_sign_in_path_for(resource)  
       end
    
     end
