@@ -84,6 +84,10 @@ GEM
     childprocess (0.5.1)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
     commonjs (0.2.7)
     cookiejar (0.3.1)
     crack (0.4.2)
@@ -371,6 +375,7 @@ DEPENDENCIES
   binding_of_caller
   bourbon (~> 3.1.8)
   carrierwave
+  coffee-script
   daemons
   declarative_authorization
   delayed_job_active_record

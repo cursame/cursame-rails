@@ -315,6 +315,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get "home/index"
   get "/terms-conditions", :to => "home#conditions", :as => :conditions
+  get "/privacidad", :to => "home#privacidad", :as => :privacidad
   get "/blog", :to => "home#blog", :as => :blog
   get "/help", :to => "home#help", :as => :help
   get "wall/:id/destroy_wall", :to => "home#destroy_wall", :as => :destroy_wall

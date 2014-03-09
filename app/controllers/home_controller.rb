@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help ]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad ]
   helper_method :get_commentable
 
   def index
@@ -313,7 +313,9 @@ class HomeController < ApplicationController
       format.js
     end
   end
-
+  
+  def privacidad
+  end
   private
 
   def save_comment
