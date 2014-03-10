@@ -1,26 +1,59 @@
-<% if current_network.image_front.file != nil%>
+<div class="user-sessions-wrap user-sessions-medium">
+  <div class="user-sessions-network-brand">
+    <% if current_network.free || current_network.logo.file == nil %>
+      <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
+    <% else %>
+      <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+    <% end %>
+  </div>
+  <div class="user-sessions-main">
+    <div class="user-session-content">
+      <h4>Recupera tu cotraseña</h4>
+      <p>Puedes cambiar tu contraseña después de fácilmente colocándola en los campos requeridos.</p><br>
 
-  <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>") !important; background-size: 120%;'></div>
-  <%else%>
-  <div class="signup-restore"></div>
+      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
 
-<%end%>
-	<div class="content login" id="titlheader" style="text-align:center;">
-        	<b>Cambia tu contraseña:</b>
-    		<p style="font-size: 16px; margin-top: 10px;">Puedes cambiar tu contraseña después de fácilmente colocándola en los campos requeridos</p>
- <div class="form-signin form-signup" style="height:325px;padding-top:7px;margin-top:40px;display:block;">
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+        <%= devise_error_messages! %>
 
-  <div><%= f.label :password, "Nueva contraseña" %><br />
-  <%= f.password_field :password %></div><br />
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :password, "Nueva contraseña" %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.password_field :password %>
+            </div>
+          </div>
+        </div>
 
-  <div><%= f.label :password_confirmation, "Confirmar contraseña" %><br />
-  <%= f.password_field :password_confirmation %></div><br />
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :password_confirmation, "Confirmar contraseña" %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <%= f.password_field :password_confirmation %>
+            </div>
+          </div>
+        </div>
+        
+        <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.submit "Cambiar contraseña" %></div><br />
-<% end %>
-</div>
-  <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
+        <div class="user-sessions-footer">
+          <div class="fr">
+            <span class="btn btn-primary btn-medium input-btn">
+              <%= f.submit "Cambiar contraseña" %>
+            </span>
+          </div>
+        </div>
+
+
+      <% end %>
+
+    </div>
+    
+    <div class="user-session-links">
+      <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
+    </div>
+  </div>
 </div>
