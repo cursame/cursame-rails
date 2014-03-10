@@ -47,7 +47,7 @@ class Survey < ActiveRecord::Base
   end
 
   before_create do
-    self.publish_date ||= DateTime.now
+    self.expired?
   end
 
   after_create do
@@ -69,7 +69,6 @@ class Survey < ActiveRecord::Base
       end
     end
 
-    self.expired?
 
     Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)
 
