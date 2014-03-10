@@ -136,7 +136,7 @@
               <% when "Survey" %>
                 agregó un cuestionario en el curso
                 <%= link_to posted_in_for, course_path(posted_in_for_id) %>
-                <%# post.expired?%>
+                <% post.expired?%>
               <% end %>
 
             </h6>
