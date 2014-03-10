@@ -69,6 +69,8 @@ class Survey < ActiveRecord::Base
       end
     end
 
+    self.expired?
+
     Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)
 
     users = users.reject { |user| user.id == self.user_id }
@@ -77,29 +79,30 @@ class Survey < ActiveRecord::Base
   end
 
   def expired?
-    if self.end_date < DateTime.now
-    @expired = true
-    else
-    @expired = false
-    end
-    if  @expired == true
-       self.state = 'unpublish'
+     ##### se detecta si es tiempo de estar publicado el survey ####
+       case 
+         when self.publish_date < DateTime.now
+          self.state = "published"
+         when self.publish_date == DateTime.now
+          self.state = "published"
+         when self.publish_date > DateTime.now
+          self.state = "unpublish"
+       end  
+
+        case 
+         when self.end_date < DateTime.now
+          self.state = "unpublish"
+         when self.end_date == DateTime.now
+          self.state = "unpublish"
+         when self.end_date > DateTime.now
+          self.state = "published"
+       end  
+       
        self.save!
-     end
+       puts "#{self.state}"
+   
   end
 
-   def self.publish_new_surveys  
-
-       if self.publish_date < DateTime.now
-        if self.end_date > DateTime.now
-          self.state = "published"
-          else
-          self.state = "unpublish"
-        end
-       end
-       puts "#{self.state}"
-
-   end
 
   def self.user
     User.last
