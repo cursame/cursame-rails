@@ -472,7 +472,7 @@ class ApplicationController < ActionController::Base
             object = Course.find_by_id(destinate)
             ##puts object
             #### se revisa si el objeto contiene avatar
-            if object.avatar.file != nil
+            if object.avatar.file != nil && File.exist?(object.avatar.file.file)
                #### si el objeto contiene un avatar se machan las diversas medidas 
                case 
                 when size == '10'
@@ -509,7 +509,7 @@ class ApplicationController < ActionController::Base
             object = User.find_by_id(destinate)
             ###puts object
             #### se revisa si el objeto contiene avatar
-            if object.avatar.file != nil
+            if object.avatar.file != nil && File.exist?(object.avatar.file.file)
                #### si el objeto contiene un avatar se machan las diversas medidas 
                case 
                 when size == '10'
