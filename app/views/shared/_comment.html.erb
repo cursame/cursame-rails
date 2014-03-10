@@ -11,7 +11,7 @@
   </div>
 
     <div class="comment-main">
-      <h6><%= link_to comment.user.name, comment.user.personal_url %></h6>
+      <h6><%= link_to comment.user.name, show_user_path(comment.user.personal_url) %></h6>
       <div class="comment" style="font-weight:normal !important;"><%= comment.comment_html %></div>
         
       <div class="publication-metadata">
