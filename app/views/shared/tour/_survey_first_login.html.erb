@@ -173,12 +173,9 @@
       all_checkboxes[index.toString()] = checkbox_names;
     });
 
-    console.log ( all_checkboxes );
-
     $('#user-quiz-form').validate({
       groups: all_checkboxes,
       errorPlacement: function(error, element) {
-        console.log("Error");
         $(element).closest('.quiz-item-options').append(error);
       }
     });

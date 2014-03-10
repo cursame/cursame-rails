@@ -13,11 +13,7 @@
       
       <div id="timeline" class="tim">
         <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'user'} %>
-      </div>
-      
-      <% if show_joyride(2) == '0' %>
-        <%= render :partial => '/shared/user_joyride', :locals => {:wall => @wall,:visible_for => 'network'} %>
-      <% end %>       
+      </div>   
       
       <%= will_paginate(@wall) %>
     </div>

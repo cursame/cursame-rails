@@ -42,7 +42,6 @@
 
 	if ( window.chatPanelsCount > 1) {
 		var space = 20 + sizeOfWindow + separacion;
-		console.log(space);
 
 		$("#chat-channel-<%= channel.id%>").css('right', space * (window.chatPanelsCount - 1) + 'px');
 	} else {

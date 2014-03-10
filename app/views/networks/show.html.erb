@@ -8,11 +8,7 @@
     
     <div id="timeline" class="tim">
       <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
-    </div>        
-
-    <% if show_joyride(0) == "0"%>
-      <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
-    <% end %>
+    </div>
 
     <%= will_paginate( @wall ) %>
 
@@ -33,6 +29,7 @@ $(function() {
     createModal( tourContent, "video-tutorial-overlay overlay-informative not-removable" );
 
   <% elsif current_user.form_before_tour == false  %>
+  
     <% if current_role == 'teacher' %>
 
       createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay not-removable');

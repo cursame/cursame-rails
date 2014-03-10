@@ -12,10 +12,6 @@
       <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
     </div>
 
-    <% if show_joyride(1) == '0' %>
-      <%= render :partial => '/shared/course_joyride', :locals => {:wall => @wall,:visible_for => 'network' } %>
-    <% end %>
-
     <%= will_paginate(@wall) %>
   </div>
 </div>

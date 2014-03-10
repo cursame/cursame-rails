@@ -22,5 +22,5 @@
   <div><%= f.submit "Cambiar contraseña" %></div><br />
 <% end %>
 </div>
-<%= render "devise/shared/links" %>
+  <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
 </div>

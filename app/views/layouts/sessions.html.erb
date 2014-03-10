@@ -61,8 +61,10 @@
       <%= render "devise/shared/footer-links" %>
     </div>
 
-    <% if !current_network.free && current_network.image_front != nil%>
-      <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>");'><div class="background-layer"></div></div>
+    <% if !current_network.free && current_network.image_front != nil %>
+      <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>");'>
+        <div class="background-layer"></div>
+      </div>
     <% else %>
       <div class="signup-restore">
         <div class="background-layer"></div>
