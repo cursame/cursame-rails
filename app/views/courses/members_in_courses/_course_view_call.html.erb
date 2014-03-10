@@ -97,7 +97,7 @@
           <div class="course-detail clearfix">
             <span class="meta-info"><i class="i i-profesor-12"></i> Profesor:</span>
             <% if course.members_in_courses.present? %>
-              <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name }.first %></p>
+              <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name unless !member.user }.first %></p>
             <% end %>
           </div>
         </div>
