@@ -81,7 +81,9 @@ $(document).ready(function() {
 		<% end -%>
 		<%= f.submit "Iniciar Sesión", :class =>"log-in" %>
 		
-		<div class="Confirmation_ins" style="clear: both;"><%= render "devise/shared/links" %></div>
+		<div class="Confirmation_ins" style="clear: both;">
+      <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
+    </div>
 		
 		<div class="" id="linked" style="cursor:pointer; color: #6a6a6a; font-size: 12px; margin-left: 12px; margin-top: 3px;">Soy un usuario antiguo y tengo dudas</div>
 		

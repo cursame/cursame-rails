@@ -132,7 +132,6 @@
   }
 
   function getAndRenderFeeds( url, callback ) {
-    console.log(url);
 
     $.getJSON( url, function( data ) {
       var activitiesFeeds = data.timeline.date;

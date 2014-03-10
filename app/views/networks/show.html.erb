@@ -8,11 +8,7 @@
     
     <div id="timeline" class="tim">
       <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
-    </div>        
-
-    <% if show_joyride(0) == "0"%>
-      <%= render :partial => "/shared/network_joyride", :locals => {:wall => @wall,:visible_for => "network"} %>
-    <% end %>
+    </div>
 
     <%= will_paginate( @wall ) %>
 
