@@ -13,11 +13,7 @@
       <h4>Revisa tu correo electrónico</h4>
       <p>Se han enviado las instrucciones para activar tu cuenta.</p><br>
 
-      <%= link_to "Inicia sesión",  'sign_up_path', class: "btn btn-primary btn-medium" %>
-    </div>
-    
-    <div class="user-session-links">
-      <%= render partial: 'devise/shared/links', locals: { login: false, signup: true, password: true, confirmation: true, unlock: true } %>
+      <%= link_to "Inicia sesión",  'sign_in_path', class: "btn btn-primary btn-medium" %>
     </div>
   </div>
 </div>
