@@ -1,5 +1,4 @@
 class Survey < ActiveRecord::Base
- # attr_accessible  :title, :description, :starts_at, :ends_at, :schedule_id, :schedule_type, :user_id, :network_id, :course_id, :show
 
   has_many :questions, :dependent => :destroy
   has_many :surveyings, :dependent => :destroy
@@ -47,30 +46,16 @@ class Survey < ActiveRecord::Base
   end
 
   before_create do
-    self.expired?
+    self.publish_date ||= DateTime.now
   end
 
   after_create do
-     case 
-         when self.publish_date < DateTime.now
-          statein = "published"
-         when self.publish_date == DateTime.now
-          statein = "published"
-         when self.publish_date > DateTime.now
-          statein = "unpublish"
-     end  
 
-     case 
-         when self.end_date < DateTime.now
-          statein = "unpublish"
-         when self.end_date == DateTime.now
-          statein = "unpublish"
-         when self.end_date > DateTime.now
-          statein = "published"
-     end  
-       
-    
-  Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id, :state => statein)
+    if self.publish_date <= DateTime.now then
+       self.state = "published"
+    end
+
+  Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
 
 
     users = []
@@ -83,7 +68,7 @@ class Survey < ActiveRecord::Base
       end
     end
 
-
+    self.expired?
     Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)
 
     users = users.reject { |user| user.id == self.user_id }
@@ -111,7 +96,7 @@ class Survey < ActiveRecord::Base
           self.state = "published"
        end  
        
-       self.save
+       self.save!
        puts "#{self.state}"
    
   end
