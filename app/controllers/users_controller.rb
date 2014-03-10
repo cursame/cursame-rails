@@ -117,7 +117,18 @@ class UsersController < ApplicationController
  
  def dashboard
  end
-
+ 
+ def destroy_user_with_parts
+   @u = User.find(params[:id])
+   @u.destroy
+   @uk = MembersInCourse.where(:user_id => @u.id)
+   if @uk != nil 
+     @uk.each do |uk|
+      uk.destroy
+     end
+   end
+   redirect_to root_path
+ end
  def old_courses
    @old_course_for_user = current_user.courses.where(:active_status => false)
    respond_to do |format|
