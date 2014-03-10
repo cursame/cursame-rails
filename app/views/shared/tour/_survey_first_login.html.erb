@@ -1,4 +1,4 @@
-  <%
+<%
   wufoo = WuParty.new(ACCOUNT, API_KEY)
   wufoo_form = wufoo.form( wufoo_form_id )
   wufoo_fields = wufoo_form.fields
@@ -143,9 +143,14 @@
     </div>
   </div>
   <div class="overlay-footer">
-    <span class="btn btn-medium btn-primary input-btn">
-      <%= submit_tag "Enviar Encuesta" %>
-    </span>
+    <div class="fl">
+      <span class="btn btn-medium btn-primary input-btn">
+        <%= submit_tag "Enviar Encuesta" %>
+      </span>
+    </div>
+    <div class="fr">
+      <p>Tus datos son confidenciales y serán utilizados con el fin de <br>mejorar nuestro servicio, Revisa nuestro <%= link_to "Aviso de Privacidad", privacidad_path, target: "_blank" %>.</p>
+    </div>
   </div>
 <% end %>
 
