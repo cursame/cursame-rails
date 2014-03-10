@@ -56,15 +56,12 @@
 
         <% if tour_type == "network"  %>
 
-          <% if current_role == 'teacher' %>
-
-            createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
-
-          <% elsif current_role == 'student' %>
-          
-            createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
-
-          <% end %>
+           <% case current_role %>
+            <% when 'teacher' %>
+             createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
+           <% when 'student' %>
+             createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
+           <% end %>
 
           $.get("<%= tour_reciver_path %>?type_route=network");
 
