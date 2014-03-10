@@ -190,7 +190,16 @@ class User < ActiveRecord::Base
   end
 
   def name
-     "#{first_name} #{last_name}".strip
+    case 
+     when self.first_name != nil && self.last_name == nil
+     ("#{first_name}").strip
+     when self.last_name != nil && self.first_name == nil
+     ("#{last_name}").strip
+     when self.last_name != nil && self.first_name != nil
+     ("#{first_name} #{last_name}").strip
+     else
+     ("usuario sin nombre").strip
+     end
   end
 
   #roles
