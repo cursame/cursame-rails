@@ -248,6 +248,9 @@ class NetworksController < ApplicationController
     else
       @user_inactive = user
     end
+    respond_to do |format|
+      format.html {render :layout => 'sessions'}
+    end
   end
 
   def find_user
