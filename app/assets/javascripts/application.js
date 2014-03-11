@@ -100,7 +100,7 @@ window.Notice = function(type, message)  {
       noticeWrapper = notice.parent();
 
   noticeWrapper.addClass('active');
-  notice.addClass( type ).html( message );
+  notice.removeClass('error success').addClass( type ).html( message );
 
   setTimeout(function() {
     noticeWrapper.removeClass('active');

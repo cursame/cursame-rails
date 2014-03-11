@@ -15,14 +15,14 @@
     	<h4>Recupera tu cotraseña</h4>
     	<p>Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p><br>
 
-    	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "recover-password-form" }) do |f| %>
 				<%= devise_error_messages! %>
 
 				<div class="form-group no-label">
           <div class="form-group-main">
             <span class="input-icon session-icon-input">
               <%= icon('email') %>
-              <%= f.email_field :email, :class => 'email', :placeholder =>"Correo electrónico" %>
+              <%= f.email_field :email, :placeholder =>"Correo electrónico", required: "required", autocomplete: "off" %>
             </span>
           </div>
         </div>
@@ -30,7 +30,7 @@
 				<div class="user-sessions-footer">
           <div class="fr">
             <span class="btn btn-primary btn-medium input-btn">
-              <%= f.submit "Reactivar contraseña" %>
+              <%= f.submit "Recuperar contraseña" %>
             </span>
           </div>
         </div>
@@ -44,3 +44,9 @@
 	  </div>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $('.recover-password-form').validate();
+  });
+</script>

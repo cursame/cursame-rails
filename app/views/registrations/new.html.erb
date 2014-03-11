@@ -29,7 +29,7 @@
           <div id="error_message"></div>
           
           <h4>Regístrate</h4><br>
-          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "sign-up-form" }) do |f| %>
             <%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
             <%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain%>
             <%= f.hidden_field :domain, :class => "pswdcode", :value => request.domain %>
@@ -41,7 +41,7 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
+                  <%= f.email_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.text_field :first_name, :class => "pswd",:placeholder =>"Nombre(s)" %>
+                  <%= f.text_field :first_name, placeholder: "Nombre(s)", required: "required", autocomplete: "off" %>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.text_field :last_name, :class => "pswd",:placeholder =>"Apellidos" %>
+                  <%= f.text_field :last_name, placeholder: "Apellidos", required: "required", autocomplete: "off" %>
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña" %>
+                  <%= f.password_field :password, placeholder: "Contraseña", required: "required", autocomplete: "off", minlength: "6" %>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.password_field :password_confirmation, :class => "pswd", :placeholder =>"Confirmacion de contraseña" %>
+                  <%= f.password_field :password_confirmation, placeholder: "Confirmacion de contraseña", required: "required", autocomplete: "off", minlength: "6" %>
                 </div>
               </div>
             </div>
@@ -99,15 +99,15 @@
                   <% networks = @user.permissionings.build %>
                   <%= f.fields_for :permissionings do |permissioning|%>
                     <%= permissioning.hidden_field :network_id, :value => current_network.id %>
-                    <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), :class =>"default-form dropperDwn" %>
-                  <%end%>
+                    <%= permissioning.select :role_id, options_for_select([['Soy alumno', '2'], ['Soy profesor', '3']]), required: "required", autocomplete: "off" %>
+                  <% end %>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <div class="form-group-label label-right">
-                <%= f.check_box :accepted_terms %>
+                <%= f.check_box :accepted_terms, required: "required" %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
@@ -134,234 +134,23 @@
     </div>
   </div>
 
-<%end%>
+<% end %>
 
 <script>
- 
-  $("#user_email").keyup(function () {
-      var value = $(this).val();
-      if (value ==" " || value == ""){             
-             $(this).css('border',' solid 1px #EE1D1D');
-             $('.signup-btn').attr("disabled", true);
-             $('.signup-btn').css('background', '#EE1D1D');
-             $('.signup-btn').css('cursor', 'default');
-             $('#sin_user_email').remove();
-             $('#error_message').append('<div id="sin_user_email" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de email sin llenar</div>');
-             
+  $(function() {
 
-         }else{
-             $(this).css('border',' solid 1px #c9c9c9'); 
-             $('.signup-btn').attr("disabled", false);
-             $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-             $('.signup-btn').css('cursor', 'pointer');
-             $('#sin_user_email').remove();
-             
-             
-         }
-     
+    $('.sign-up-form').validate({
+      rules: {
+        "user[password_confirmation]": {
+          equalTo: "#user_password"
+        }
+      },
+      messages: {
+        "user[password_confirmation]": {
+          equalTo: "Escribe la misma contraseña en los dos campos."
+        }
+      }
+    });
+
   });
-  $("#user_first_name").keyup(function () {
-      var value = $(this).val();
-       if (value ==" " || value == ""){             
-                $(this).css('border',' solid 1px #EE1D1D');
-                $('.signup-btn').attr("disabled", true);
-                $('.signup-btn').css('background', '#EE1D1D');
-                $('.signup-btn').css('cursor', 'default');
-                $('#sin_user_first_name').remove();
-                $('#error_message').append('<div id="sin_user_first_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de nombre sin llenar</div>');
-
-
-            }else{
-                $(this).css('border',' solid 1px #c9c9c9'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_first_name').remove();
-
-
-            }
-
-   });
-   $("#user_last_name").keyup(function () {
-         var value = $(this).val();
-          if (value ==" " || value == ""){             
-                     $(this).css('border',' solid 1px #EE1D1D');
-                     $('.signup-btn').attr("disabled", true);
-                     $('.signup-btn').css('background', '#EE1D1D');
-                     $('.signup-btn').css('cursor', 'default');
-                     $('#sin_user_last_name').remove();
-                     $('#error_message').append('<div id="sin_user_last_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de apellidos sin llenar</div>');
-
-
-                 }else{
-                     $(this).css('border',' solid 1px #c9c9c9'); 
-                     $('.signup-btn').attr("disabled", false);
-                     $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                     $('.signup-btn').css('cursor', 'pointer');
-                     $('#sin_user_last_name').remove();
-
-
-                 }
-
-    });
-   $("#user_password").keyup(function () {
-             var value = $(this).val();
-              if (value ==" " || value == ""){             
-                          $(this).css('border',' solid 1px #EE1D1D');
-                          $('.signup-btn').attr("disabled", true);
-                          $('.signup-btn').css('background', '#EE1D1D');
-                          $('.signup-btn').css('cursor', 'default');
-                          $('#sin_user_password').remove();
-                          $('#error_message').append('<div id="sin_user_password" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de contraseña sin llenar</div>');
-
-
-                      }else{
-                          $(this).css('border',' solid 1px #c9c9c9'); 
-                          $('.signup-btn').attr("disabled", false);
-                          $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                          $('.signup-btn').css('cursor', 'pointer');
-                          $('#sin_user_password').remove();
-
-
-                      }
-
-   });
-   
-   $("#user_password_confirmation").keyup(function () {
-                var value = $(this).val();
-                 if (value ==" " || value == ""){             
-                              $(this).css('border',' solid 1px #EE1D1D');
-                              $('.signup-btn').attr("disabled", true);
-                              $('.signup-btn').css('background', '#EE1D1D');
-                              $('.signup-btn').css('cursor', 'default');
-                              $('#sin_user_password_confirmation').remove();
-                              $('#error_message').append('<div id="sin_user_password_confirmation" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de confirmar contraseña sin llenar</div>');
-
-
-                          }else{
-                              $(this).css('border',' solid 1px #c9c9c9'); 
-                              $('.signup-btn').attr("disabled", false);
-                              $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                              $('.signup-btn').css('cursor', 'pointer');
-                              $('#sin_user_password_confirmation').remove();
-
-
-                          }
-
-    });
-    
-    $("#user_accepted_terms").click(function () {
-                  var value = $(this).val();
-                  var checked = $(this).attr('checked');
-                  console.log(checked);
-                  
-                  if (checked == null){             
-                      $('.terms_box').css('border',' solid 1px #EE1D1D');
-                      $('.signup-btn').attr("disabled", true);
-                        $('.signup-btn').css('background', '#EE1D1D');
-                        $('.signup-btn').css('cursor', 'default');
-                        $('#sin_user_accepted_terms').remove();
-                        $('#error_message').append('<div id="sin_user_accepted_terms" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Términos y condiciones del sitio sin llenar.</div>');
-                  }else{
-                      $('.terms_box').css('border',' solid 1px #fff'); 
-                      $('.signup-btn').attr("disabled", false);
-                      $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                      $('.signup-btn').css('cursor', 'pointer');
-                      $('#sin_user_user_accepted_terms').remove();
-                      
-                  }
-
-      });
-      
-  
-      $('#new_user').submit(function(){
-            var email = $("#user_email").val();
-            var nombre = $("#user_first_name").val();
-            var apellidos = $("#user_last_name").val();
-            var password = $("#user_password").val();
-            var confirmed_password = $("#user_password_confirmation").val();
-            var terms = $("#user_accepted_terms").attr('checked');
-            
-            if(email == " " || email == ""){
-                 $('#user_email').css('border',' solid 1px #EE1D1D');
-                 //$('.signup-btn').attr("disabled", true);
-                 $('.signup-btn').css('background', '#EE1D1D');
-                 $('#sin_user_email').remove();
-                 $('#error_message').append('<div id="sin_user_email" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de email sin llenar</div>');
-               return false;
-            }else if(nombre == " " || nombre == ""){
-                 $('#user_first_name').css('border',' solid 1px #EE1D1D');
-                 //$('.signup-btn').attr("disabled", true);
-                 $('.signup-btn').css('background', '#EE1D1D');
-                 $('#sin_user_first_name').remove();
-                 $('#error_message').append('<div id="sin_user_first_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de nombre sin llenar</div>');
-               return false;    
-            }else if(apellidos == " " || apellidos == ""){
-                  $('#user_last_name').css('border',' solid 1px #EE1D1D');
-                  //$('.signup-btn').attr("disabled", true);
-                  $('.signup-btn').css('background', '#EE1D1D');
-                  $('#sin_user_last_name').remove();
-                  $('#error_message').append('<div id="sin_user_last_name" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de apellidos sin llenar</div>');
-               return false;   
-            }else if(password == " " || password == ""){
-                  $('#user_password').css('border',' solid 1px #EE1D1D');
-                  //$('.signup-btn').attr("disabled", true);
-                  $('.signup-btn').css('background', '#EE1D1D');
-                  $('#sin_user_password').remove();
-                  $('#error_message').append('<div id="sin_user_password" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de contraseña sin llenar</div>');
-               return false;   
-            }else if(confirmed_password == " " || confirmed_password == ""){
-                  $('#user_password_confirmation').css('border',' solid 1px #EE1D1D');
-                  //$('.signup-btn').attr("disabled", true);
-                  $('.signup-btn').css('background', '#EE1D1D');
-                  $('#sin_user_password_confirmation').remove();
-                  $('#error_message').append('<div id="sin_user_password_confirmation" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Campo de confirmar contraseña sin llenar</div>');
-               return false;   
-            }else if(terms == null){
-                    $('.terms_box').css('border',' solid 1px #EE1D1D');
-                    //$('.signup-btn').attr("disabled", true);
-                    $('.signup-btn').css('background', '#EE1D1D');
-                    $('#sin_user_accepted_terms').remove();
-                    $('#error_message').append('<div id="sin_user_accepted_terms" style="color:#EE1D1D; padding:5px; margin-left:12px; font-size:12px; font-style:oblique; ">Términos y condiciones del sitio sin llenar.</div>');
-               return false;   
-            }else{
-                $('#user_email').css('border',' solid 1px #c9c9c9'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_email').remove();
-                
-                $('#user_first_name').css('border',' solid 1px #c9c9c9'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_first_name').remove();
-                
-                $('#user_last_name').css('border',' solid 1px #c9c9c9'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_last_name').remove();
-                
-                $('#user_password').css('border',' solid 1px #c9c9c9'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_password').remove();
-                
-                $('#user_password_confirmation').css('border',' solid 1px #c9c9c9'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');       
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_password_confirmation').remove();
-                
-                $('.terms_box').css('border',' solid 1px #fff'); 
-                $('.signup-btn').attr("disabled", false);
-                $('.signup-btn').css('background-image', '-webkit-linear-gradient(top, rgb(248, 96, 73), rgb(214, 67, 45))');
-                $('.signup-btn').css('cursor', 'pointer');
-                $('#sin_user_user_accepted_terms').remove();
-                
-               return true;       
-           }
-      });
 </script>

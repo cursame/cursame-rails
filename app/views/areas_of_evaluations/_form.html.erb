@@ -3,8 +3,8 @@
 
 <div class="evaluation-areas-list">
   <div id="nested_evaluation_form" class="evaluation-area">
-      <div class="fl">
-        <%= f.text_field :name, class: 'subject', placeholder: '¿Que criterio se evaluará?', style: "width: 150px;"  %>
+      <div class="fl" style="width: 150px;">
+        <%= f.text_field :name, class: 'subject', placeholder: '¿Que criterio se evaluará?', style: "width: 150px;", required: "required"  %>
       </div>
 
       <div id="content-slider-0" class="slider-content fl">
@@ -39,7 +39,7 @@
               nestedNewHomeworkSlider = new NestedSlider();
             }
 
-            var str=null;
+            var str = null;
             
             $('#nested_evaluation_form, #total_nested_evaluation').show();  //show area
             $(nestedInputs).each(function( index, value ) {                

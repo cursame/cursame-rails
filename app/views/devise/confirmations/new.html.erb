@@ -14,14 +14,14 @@
     	<h4>No has recibido confirmación</h4>
     	<p>Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p><br>
 				
-			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "new-cofirmation-mail-form" }) do |f| %>
 			  <%= devise_error_messages! %>
 
 			  <div class="form-group no-label">
           <div class="form-group-main">
             <span class="input-icon session-icon-input">
               <%= icon('email') %>
-              <%= f.email_field :email, :class => "email", :placeholder =>"Correo electrónico" %>
+              <%= f.email_field :email, :placeholder => "Correo electrónico", required: "required", autocomplete: "off" %>
             </span>
           </div>
         </div>
@@ -44,3 +44,9 @@
 
   </div>
 </div>
+
+<script>
+  $(function() {
+    $('.new-cofirmation-mail-form').validate();
+  });
+</script>

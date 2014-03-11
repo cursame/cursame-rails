@@ -9,7 +9,8 @@ $('#<%= "#{@type}_id_#{@id}"%>_contribution').html('');
 
   <% when @type == "Survey" %>
      $('#<%= "#{@type}_id_#{@id}"%>_contribution').
-     html('<%= escape_javascript(render(:partial => '/surveys/form', :locals => {:survey => @survey, :active_edit => @active_edit })) %>');
+     html('<%= escape_javascript(render(:partial => '/surveys/form', :locals => {:survey => @survey, :active_edit => @active_edit, :in_type => "survey" })) %>');
+     console.log("Edit Survey");
 
   <% when @type == "Comment"%>
     $('#<%= "#{@type}_id_#{@id}"%>_contribution').

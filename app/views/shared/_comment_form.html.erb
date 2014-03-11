@@ -1,12 +1,12 @@
+<% form_reference_id = SecureRandom.urlsafe_base64 %>
 
-
-<%= form_tag "/home/add_new_comment", :class => "default-form comment-form comment_form_top", remote: true do %>  
+<%= form_tag "/home/add_new_comment", :class => "default-form comment-form comment_form_top", id: form_reference_id, remote: true do %>  
   
   <div class="new-publication-form-content">
     <% if comment_id.nil? then %>
-      <%= text_area_tag "comment", nil, :placeholder=> message , :class => 'comment_for_wall autogrow' %>
+      <%= text_area_tag "comment", nil, :placeholder=> message , :class => 'comment_for_wall autogrow', :required => "required" %>
     <% else %>
-      <%= text_area_tag "comment", comment, :placeholder=> message, :class => 'comment_for_wall autogrow' %>
+      <%= text_area_tag "comment", comment, :placeholder=> message, :class => 'comment_for_wall autogrow', :required => "required" %>
     <% end %>
 
     <%= hidden_field_tag 'commentable_id', commentable_id %>
@@ -38,7 +38,7 @@
           </li>
         <% end %>
         <li>
-          <span class="btn btn-primary input-btn">
+          <span class="btn btn-primary input-btn activable">
             <%= submit_tag "Comentar", :class=>"activable", :id => 'comment-post-form' %>
           </span>
         </li>
@@ -58,4 +58,10 @@
   <% end %>
 
 <% end %>
+
+<script>
+  $(function() {
+    $('#<%= form_reference_id %>').validate();
+  });
+</script>
 

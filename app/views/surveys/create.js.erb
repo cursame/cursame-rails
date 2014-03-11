@@ -1,9 +1,10 @@
 <% if !@error %>
-	resetForm($('#new_survey'));
-	$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>");
-	
+
   $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
+	$('#timeline').prepend("<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication], :visible_for => 'network'}))%>");
 	Notice('success', 'Cuestionario creado correctamente.');
 
 	cancelButtonsPostMenu();
-<%end%>
+<% else %>
+  Notice('error', 'Selecciona un curso para publicar tu tarea.');
+<% end %>

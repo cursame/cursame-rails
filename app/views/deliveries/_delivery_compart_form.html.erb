@@ -10,7 +10,7 @@
 
 <% if @active_edit == false %>
   <!--	<a class="help delivery_help" id="help_delivery" style="margin-top: -25px; margin-right:565px;"><%= image_tag('help.png')%></a>-->
-<%end%>
+<% end %>
 <%= form_for(@delivery, remote: true, html: { class: "default-form delivery-form", multipart: true, id: formId}) do |f| %>
   
   <div class="new-publication-form-content">
@@ -25,7 +25,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title , placeholder: "Ejemplo: Números primos" %>
+          <%= f.text_field :title , placeholder: "Ejemplo: Números primos", required: "required" %>
         </div>
       </div>
     </div>
@@ -37,13 +37,13 @@
       <div class="form-group-main">
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :publish_date, placeholder: 'Día de publicación', class: "date-input delivery delivery_publish_date", id: 'publish_date_'+random_id, value: f.object.end_date %>
+            <%= f.text_field :publish_date, placeholder: 'Día de publicación', class: "date-input delivery delivery_publish_date", id: 'publish_date_'+random_id, value: f.object.end_date, required: "required" %>
           </div>
         </div>
 
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :end_date, placeholder: 'Fecha de entrega', class: "date-input delivery delivery_end_date", id: 'end_date_'+random_id, value: f.object.end_date  %>
+            <%= f.text_field :end_date, placeholder: 'Fecha de entrega', class: "date-input delivery delivery_end_date", id: 'end_date_'+random_id, value: f.object.end_date, required: "required"  %>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_area :description, rows: 6, placeholder: "Descripción" %>
+          <%= f.text_area :description, rows: 6, placeholder: "Descripción", required: "required" %>
         </div>
       </div>
     </div>
@@ -79,8 +79,8 @@
                 <div class="fl">
                   <div id="more_nested_evaluation_btn" class="btn btn-secondary">Agregar Criterio</div>
                 </div>
-                <div class="fr">
-                  <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación final', :class=>"percent-input" %>
+                <div class="fr" style="width: 230px;">
+                  <%= f.text_field :porcent_of_evaluation, placeholder: 'Evaluación final', required: "required" %>
                 </div>
               </div>
             </div>
@@ -138,8 +138,8 @@
           <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :in_type => in_type} %>
         </li>
         <li>
-          <span class="btn btn-primary input-btn">
-            <%= f.submit "Publicar", :id => 'comment-post-form'%>
+          <span class="btn btn-primary input-btn activable">
+            <%= f.submit "Publicar", :id => 'comment-post-form', :class => "activable"%>
           </span> 
         </li>
       </ul>
@@ -149,8 +149,8 @@
           <a class="cancel-edit-publication btn btn-secondary" href="#">Cancelar</a>
         </li>
         <li>
-          <span class="btn btn-primary input-btn">
-            <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class =>"btn activable"%>
+          <span class="btn btn-primary input-btn activable">
+            <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class => "activable"%>
           </span>
         </li>
       </ul>
@@ -167,7 +167,7 @@
 <%end%>
 
 <script type="text/javascript">
-  $(document).ready(function() {
+  $(function() {
     $( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
       inline: false,
       minDate: 0,
@@ -179,5 +179,17 @@
       monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
       dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
     });
+
+    $('#<%= formId %>').validate({
+      rules: {
+        "delivery[porcent_of_evaluation]": {
+          number: true,
+          min: 1,
+          max: 100
+        }
+      }
+    });
+
   });
+
 </script>

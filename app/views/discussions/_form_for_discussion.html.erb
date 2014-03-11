@@ -1,8 +1,10 @@
+<% form_reference_id = SecureRandom.urlsafe_base64 %>
+
 <% if @active_edit == false %>
   <% @discussion=Discussion.new %>
 <% end %>
 
-<%= form_for(@discussion, :remote => true,:html => { :class => "default-form discussion-form" }) do |f| %> 
+<%= form_for(@discussion, :remote => true,:html => { :class => "default-form discussion-form", :id => form_reference_id }) do |f| %> 
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
@@ -24,7 +26,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title, placeholder: 'Ejemplo: Números primos', minlength: 2 %>
+          <%= f.text_field :title, placeholder: 'Ejemplo: Números primos', minlength: 4, required: "required" %>
         </div>
       </div>
     </div>
@@ -35,7 +37,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_area :description, placeholder: "Descripción", rows: 6 %>
+          <%= f.text_area :description, placeholder: "Descripción", rows: 6, required: "required" %>
         </div>
       </div>
     </div>
@@ -73,8 +75,8 @@
           <%end%>
         </li>
         <li>
-          <span class="btn btn-primary input-btn">
-            <%= f.submit "Crear Discusión", :id => 'comment-post-form' %>
+          <span class="btn btn-primary input-btn activable">
+            <%= f.submit "Crear Discusión", :id => 'comment-post-form', :class => "activable" %>
           </span>
         </li>
       </ul>
@@ -84,17 +86,17 @@
           <div class="btn btn-secondary cancel-edit-publication">Cancelar</div>
         </li>
         <li>
-          <span class="btn btn-primary input-btn">
-            <%= f.submit "Guardar discussion",  :class => "btn activable" %>
+          <span class="btn btn-primary input-btn activable">
+            <%= f.submit "Guardar discussion",  :class => "activable" %>
           </span>
         </li>
       </ul>
     <%end%>
   </div>
-
-  <script>
-    $().ready(function() {
-      $('#new_discussion').validate();
-    });
-  </script>
 <% end %>
+
+<script>
+  $(function() {
+    $('#<%= form_reference_id %>').validate();
+  });
+</script>

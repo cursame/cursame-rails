@@ -1,4 +1,4 @@
-@mixin opacity($value){
+@mixin opacity($value) {
   $IEValue: $value*100;
   opacity: $value;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";

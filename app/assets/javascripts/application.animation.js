@@ -220,8 +220,6 @@ $(document).ready(function() {
                      $(".choser").html('');
                      $('.youtube_content_delivery').hide();
                      DisableBlured();
-                     
-                $('label.error').remove();
 
                 $('#post-forms').animate({
                     height: '0'
@@ -442,7 +440,8 @@ $(document).ready(function() {
     *=======================================================================================
     */
 
-    $(document).ajaxStart( function() {
+    $(document).ajaxStart( function(event) {
+        console.log( event );
         $('#log_loadding').show();
         $('.activable').attr("disabled", true);
     }).ajaxStop( function() {

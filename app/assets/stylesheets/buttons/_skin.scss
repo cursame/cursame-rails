@@ -14,6 +14,20 @@
       background: transparent;
       border: 0;
       cursor: pointer;
+
+      &:disabled {
+        opacity: .3;
+        cursor: wait;
+      }
+    }
+
+    &[disabled="disabled"] {
+      opacity: .3;
+      cursor: wait;
+
+      > input {
+        opacity: 1;
+      }
     }
   }
   
@@ -28,6 +42,11 @@
 
   &.hard-border-btn {
     border-color: #000;
+  }
+
+  &[disabled="disabled"] {
+    opacity: .3;
+    cursor: wait;
   }
 }
 
