@@ -28,7 +28,25 @@ class Mesage < ActiveRecord::Base
 
 
   after_create do
-    users =  self.channel.users.reject{ |user| user.id == self.user_id }
+    puts self.channel
+    puts self.channel.channel_name
+    
+    ###### prepramos validacion para saber de que tipo de canal se trata #####
+    
+    split_to_name_channel = self.channel.channel_name.split('/').last
+    split_type = split_to_name_channel.split('_').first
+    puts split_type
+
+    case split_type
+    when "course"
+         PrivatePub.publish_to(self.channel.channel_name,
+                              message: self,
+                              sender: self.user,
+                              reciever: user,
+                              channel: self.channel
+                              )
+    when "users"
+      users =  self.channel.users.reject{ |user| user.id == self.user_id }
     # user_ids = self.user.friends(true).map{|user| [user.id,user.online] }
 
     if users.empty? #si no hay usuarios en el canal solo le publica a el
@@ -57,6 +75,10 @@ class Mesage < ActiveRecord::Base
                               )
       end
     end
+
+
+    end
+
   end
 
   def title
