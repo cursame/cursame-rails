@@ -36,6 +36,10 @@ label.error {
   font-size: 11px;
 }
 
+.required {
+  color: red;
+}
+
 select {
   border: 1px solid #ccc;
   border-radius: $radius;

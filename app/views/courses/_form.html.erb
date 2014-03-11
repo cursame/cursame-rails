@@ -1,46 +1,34 @@
-<script>
-  function readURL(input, id, width) {
-    if (input.files && input.files[0]) {
-		  var reader = new FileReader();
-		  reader.onload = function (e) {
-		    $('#' + id)
-		    .attr('src', e.target.result)
-		  };
-		  reader.readAsDataURL(input.files[0]);
-		}
-  }
-</script>
-
-<%= form_for( @course, :html => { :class => "default-form edit-course border_for_text"}) do |f| %>
+<%= form_for( @course, :html => { :class => "default-form edit-course border_for_text", :id => "course-form" }) do |f| %>
   
   <div class="cols-12">
     <div class="col col-6">
 
       <div class="form-group">
         <div class="form-group-label">
-          <label>Nombre del <%= current_network.course_tag%></label>  
+          <%= f.label :title, "Nombre del #{current_network.course_tag.downcase} <span class='required'>*</span>".html_safe %>
+          <label></label>  
         </div>
         <div class="form-group-main">
           <div class="form-unit">
-            <%= f.text_field :title, :placeholder => 'Ejemplo: Matemáticas I' %>
+            <%= f.text_field :title, :placeholder => 'Ejemplo: Matemáticas I', :required => "required", :autocomplete => "off" %>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="form-group-label">
-          <label>Descripción del <%=  current_network.course_tag%></label>
+        <%= f.label :silabus, "Descripción del #{current_network.course_tag.downcase} <span class='required'>*</span>".html_safe %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
-            <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción' %>
+            <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :required => "required", :autocomplete => "off" %>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :public_status, 'Privacidad' %>
+          <%= f.label :public_status, "Privacidad <span class='required'>*</span>".html_safe %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
@@ -55,17 +43,17 @@
       
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :Duración %>
+          <%= f.label :init_date, "Duración <span class='required'>*</span>".html_safe %>
         </div>
         <div class="form-group-main">
           <div class="f-col f-col-5">
             <div class="form-unit">
-              <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
+              <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, :required => "required", :autocomplete => "off" %>
             </div>
           </div>
           <div class="f-col f-col-5">
             <div class="form-unit">
-              <%= f.text_field :finish_date, :placeholder => 'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
+              <%= f.text_field :finish_date, :placeholder => 'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date, :required => "required", :autocomplete => "off" %>
             </div>
           </div>
         </div>
@@ -73,17 +61,17 @@
 
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :Evaluación%>
+          <%= f.label :survey_param_evaluation, "Evaluación <span class='required'>*</span>".html_safe %>
         </div>
         <div class="form-group-main">
           <div class="f-col f-col-5">
             <div class="form-unit">
-              <%= f.number_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios", :min => '0', :max => '100', :step => "1" %>
+              <%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios", :autocomplete => "off" %>
             </div>
           </div>
           <div class="f-col f-col-5">
             <div class="form-unit">
-              <%= f.number_field :delivery_param_evaluation, :placeholder => "Valor de Tareas", :min => '0', :max => '100', :step => "1" %>
+              <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas", :autocomplete => "off" %>
             </div>
           </div>
         </div>
@@ -131,19 +119,57 @@
 
 <% end %>
 
-<script type="text/javascript">
-    $("#create_course_form").on('click',function() {});
-        $(function() {
-            $("#course_init_date, #course_finish_date" ).datepicker({
-                inline: true,
-                minDate: 0,
-                showOtherMonths: true,
-                dateFormat: 'dd/mm/yy',
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-            });
-        });
-</script>
-</div>
-</div>
 
+<script type="text/javascript">
+  $(function() {
+
+    function readURL(input, id, width) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#' + id)
+          .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#course_init_date, #course_finish_date" ).datepicker({
+        inline: true,
+        minDate: 0,
+        showOtherMonths: true,
+        dateFormat: 'dd/mm/yy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+    });
+
+    $('form#course-form').validate({
+      rules: {
+        "course[survey_param_evaluation]": {
+          required: true,
+          number: true,
+          min: 0,
+          max: 100
+        },
+        "course[delivery_param_evaluation]": {
+          required: true,
+          number: true,
+          min: 0,
+          max: 100
+        }
+      },
+      submitHandler: function( form ) {
+        var surveys_percentage  = parseInt($('#course_survey_param_evaluation').val()),
+            deliveries_percentage = parseInt($('#course_delivery_param_evaluation').val()),
+            evaluation_total  = surveys_percentage + deliveries_percentage;
+
+        if ( evaluation_total > 100 || evaluation_total <= 0 || evaluation_total < 100 ) {
+          Notice('error', 'Los porcentajes de evaluación deben sumar 100.');
+          return false;
+        } else {
+          form.submit();
+        }
+      }
+    });
+  });
+</script>
