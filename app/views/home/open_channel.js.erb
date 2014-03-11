@@ -90,10 +90,11 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 		}
 	}
 
+
+
 	/* Si esta en /home/chat
   ----------------------------------*/
 	if( $('#chat').length ) {
-	    PrivatePub.unsubscribe("<%=@channel_name%>");
 
 		append_new_message_tpl( $('#chat-messages') );
 		
