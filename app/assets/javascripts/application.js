@@ -126,6 +126,14 @@ $(function() {
      url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;    
      if (data.sender.avatar.modern.url != null){
         var avatar_modern = data.sender.avatar.modern.url;
+       
+        $.get(data.sender.avatar.modern.url)
+         .done(function() { 
+          avatar_modern;
+          //console.log(avatar_modern);
+         }).fail(function() { 
+         var avatar_modern = "/assets/imagexxx.png";
+        })
 
      }else{
         var avatar_modern = "/assets/imagexxx.png";
