@@ -16,32 +16,32 @@
     <div class="sidebar-section-main">
       <ul class="section-list navigation">
         <li>
-          <%= link_to (url_for(:controller => 'networks', :action => 'show')),:dataa => "menu" do %>
+          <%= link_to "https://#{current_network.subdomain}.#{HOST}" do %>
             <i class="i i-home-w"></i>Inicio
           <% end %>
         </li>
         <li>
-          <%= link_to my_deliveries_path, :data => "menu" do %>
+          <%= link_to my_deliveries_path do %>
             <i class="i i-homeworks-w"></i> Tareas
           <%end%>
         </li>
         <li>
-          <%= link_to "#{my_surveys_path}", :data => "menu" do %>
+          <%= link_to "#{my_surveys_path}" do %>
             <i class="i i-questionaries-w"></i>Cuestionarios
           <%end%>
         </li>
         <li>
-          <%= link_to "#{my_discussions_path}", :data => "menu" do %>
+          <%= link_to "#{my_discussions_path}" do %>
             <i class="i i-discussions-w"></i>Discusiones
           <%end%>
         </li>
         <li>
-          <%= link_to courses_path, :data => "menu" do %>
+          <%= link_to courses_path do %>
             <i class="i i-courses-w"></i>Cursos
           <% end %>
         </li>
         <li>
-          <%= link_to califications_path, :date => "menu" do %>
+          <%= link_to califications_path do %>
             <i class="i i-stats-w"></i>Calificaciones
           <%end%>
         </li>
