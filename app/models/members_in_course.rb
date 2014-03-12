@@ -36,51 +36,45 @@ class MembersInCourse < ActiveRecord::Base
 
   def evaluation_surveys(user_surveys, surveys)
     if user_surveys.any? then
+      resultado = 0
+      @count = surveys.count
       user_surveys.each_with_index.inject(0.0) { 
         |result, (user_survey,index)|
         if user_survey
-          result += user_survey.result
+          resultado = resultado+user_survey.result
         else
-          result += 0.0
+          resultado = resultado + 0.0
         end
       }.to_i
-    else ;0;end
+      result = resultado.to_f/@count.to_f
+      else ;0;end
   end
   
   # Calcula la calificacion de tareas
   def evaluation_deliveries(assignments, deliveries)
+    ###### ingresa al total del valor sobre el que se va a evaluar ######
+    value_p_o_e = 0
+    assigment_docificate = 0
+    deliveries.each do |d|
+     value_p_o_e = value_p_o_e.to_i + d.porcent_of_evaluation.to_i
+    end
+
+    ###### creamos un contador sobre las tareas ######
     if assignments.any? then
-      assignments.each_with_index.inject(0.0) { 
-        |result, (assignment,index)|
-        porcent_of_evaluation = deliveries[index].porcent_of_evaluation.to_f/100.0
-        if assignment
-          if assignment.accomplishment
-            result += assignment.accomplishment.to_f * porcent_of_evaluation
-          else
-            result += 0
-          end
-        else
-          result += 0
-        end
-      }.to_i
-    else; 0;end
+       assignments.each do |as|
+
+       individual_porcent = as.delivery.porcent_of_evaluation
+       individual_result = as.accomplishment.to_f/100
+       evalution_assigment = individual_porcent.to_f * individual_result.to_f
+       assigment_docificate = evalution_assigment.to_f + assigment_docificate.to_f 
+
+       end
+    end
+
+    result = (assigment_docificate.to_f/value_p_o_e.to_f)*100
+
   end
   
-  #
-  # table["deliveries"] => Hash con la informacion de tareas
-  #      table["deliveries"]["deliveries"] => Tareas ordenadas, es un Array
-  #      table["deliveries"]["assignments"] => Tareas entregadas, es un Array
-  #      table["deliveries"]["percent_of_deliveries"] => % de la evaluacion
-  #      table["deliveries"]["evaluation_total"] => Calificacion de las tareas
-  #
-  # table["surveys"] => Hash con la informacion de los examenes
-  #      table["surveys"]["surveys"] => Examenes ordenados, es un Array
-  #      table["surveys"]["user_surveys"] => Respuestas a examenes, es un Array
-  #      table["surveys"]["percent_of_surveys"] => % de la evaluacion
-  #      table["surveys"]["evaluation_total"] => Calificacion de los examenes
-  #      table["surveys"]["percent_of_evaluation"] => % Obtenido
-  #
-  # table["evaluation"] => Calificacion total del curso.
 
   # Si logras mejorar este metodo, por favor, deja tu nombre.
 
@@ -91,16 +85,18 @@ class MembersInCourse < ActiveRecord::Base
     deliveries_table = {}
     surveys_table = {}
     
+    survey_value = course.survey_param_evaluation
+    delivery_value = course.delivery_param_evaluation
+    
     deliveries_table["deliveries"] = course.deliveries.sort{ |x,y| x.created_at <=> y.created_at }
     deliveries_table["assignments"] = deliveries_table["deliveries"].map {
       |delivery|
       Assignment.find_by_delivery_id_and_user_id(delivery.id,self.user_id)
     }
     deliveries_table["percent_of_deliveries"] = course.delivery_param_evaluation.to_f 
-    deliveries_table["evaluation_total"] = 
-      evaluation_deliveries(deliveries_table["assignments"], deliveries_table["deliveries"])
-    
+    deliveries_table["evaluation_total"] = (evaluation_deliveries(deliveries_table["assignments"], deliveries_table["deliveries"]).to_i * delivery_value.to_i)/100
     surveys_table["surveys"] = course.surveys.sort{ |x,y| x.created_at <=> y.created_at }
+    
     surveys_table["user_surveys"] = surveys_table["surveys"].map {
       |survey|
       UserSurvey.find_by_survey_id_and_user_id(survey.id,self.user_id)
@@ -108,15 +104,15 @@ class MembersInCourse < ActiveRecord::Base
 
     #### mi nombre es JARDA #####
     surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
-    surveys_table["evaluation_total"] =  (evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]))/count_surveys if count_surveys != 0
+    surveys_table["evaluation_total"] =  evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]) if count_surveys != 0
     surveys_table["evaluation_total"] = 0 if count_surveys == 0
-    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"]/100.0)/count_surveys if count_surveys != 0
+    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"])/100 if count_surveys != 0
     surveys_table["percent_of_evaluation"] = 0 if count_surveys == 0
     
     table["deliveries"] = deliveries_table
     table["surveys"] = surveys_table 
     table["evaluation"] = deliveries_table["evaluation_total"] + 
-      surveys_table["percent_of_evaluation"]
+      surveys_table["evaluation_total"]
     
     table
   end
