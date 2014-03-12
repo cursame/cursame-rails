@@ -36,11 +36,15 @@
           <div class="course-detail-list">
             <div class="course-detail">
               <span class="meta-info"><i class="i i-calendar-12"></i> Finaliza:</span>
-              <p><%= course.finish_date.to_formatted_s(:long) unless course.finish_date.nil? %></p>
+              <% if course.finish_date.present? %>
+                <p><%= es_current_date("#{course.finish_date.strftime('%B')}", "#{course.finish_date.strftime('%d')}" , "#{course.finish_date.strftime('%Y')}", nil, format = 'latin_string') %></p>
+              <% end %>
             </div>
             <div class="course-detail clearfix">
               <span class="meta-info"><i class="i i-profesor-12"></i> Profesor:</span>
-              <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name }.first %></p>
+              <% if course.members_in_courses.present? %>
+                <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name }.first %></p>
+              <% end %>
             </div>
           </div>
 
