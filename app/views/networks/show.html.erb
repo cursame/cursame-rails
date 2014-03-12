@@ -20,7 +20,7 @@ $(function() {
   <% if !current_user.self_register && show_joyride(3) != "1" %>
     
     var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
-    createModal( content, "overlay-small overlay-informative" );
+    createModal( content, "overlay-small overlay-informative not-removable" );
 
   <% elsif current_user.tour_network == false %>
 
