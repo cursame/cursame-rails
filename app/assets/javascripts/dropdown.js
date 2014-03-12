@@ -34,15 +34,21 @@ $(function() {
   $('.tabs-buttons .tab').live('click', function() {
     var $this       = $(this),
         targetTab   = $this.attr('data-id-target'),
-        tabsHolder  = $this.closest('.tabs').find('.tabs-main');
+        tabsParent  = $this.closest('.tabs'),
+        tabsHolder  = tabsParent.find('.tabs-main');
 
     $this.siblings().removeClass('active');
     $this.addClass('active');
 
     tabsHolder.children('.tab-content').hide();
-    tabsHolder.find("#" + targetTab).show();
-  });
+    var tabContent = tabsHolder.find("#" + targetTab);
 
+    tabContent.show();
+
+    if ( tabsParent.hasClass('post-menu-tabs') ) {
+      tabContent.find(':input:enabled:visible:first').focus();
+    };
+  });
 
   /* Autoresize textareas
     ----------------------------------*/

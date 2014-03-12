@@ -16,7 +16,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <label>Titulo del cuestionario:</label>
+        <%= f.label :name, "Titulo del cuestionario" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -27,7 +27,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <label>Fechas:</label>
+        <%= f.label "", "Fechas" %>
       </div>
       <div class="form-group-main">
         <div class="f-col f-col-5">
@@ -46,7 +46,7 @@
     <% unless active_edit %> 
       <div class="form-group">
         <div class="form-group-label">
-          <label>Preguntas:</label>
+          <%= f.label "", "Preguntas" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">

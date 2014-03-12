@@ -13,6 +13,17 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  outline: none;
+  @include transition (all .05s ease);
+
+  @include placeholder {
+    color: #999;
+  }
+}
+
+#{$all-text-inputs-focus}, textarea:focus {
+  border-color: $primary-color;
+  background-color: tint($primary-color, 97%)
 }
 
 textarea {
@@ -23,11 +34,11 @@ input.red-placeholder,
 textarea.red-placeholder,
 input.error,
 textarea.error {
-  border-color: red;
-  background: #f7e7e7;
+  border-color: red !important;
+  background: #f7e7e7 !important;
 
   @include placeholder {
-    color: red;
+    color: red !important;
   }
 }
 
@@ -354,8 +365,11 @@ select {
 
 .form-group {
   .form-group-label {
+    text-align: right;
+
     label {
       font-weight: bold;
+      cursor: pointer;
     }
 
     &.label-right, &.label-right label {

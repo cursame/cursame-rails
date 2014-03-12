@@ -21,7 +21,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <label>Tema de la tarea:</label>
+        <%= f.label :title, 'Tema de la tarea'.html_safe %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -32,7 +32,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <label>Fechas:</label>
+        <%= f.label :publish_date, "Fechas" %>
       </div>
       <div class="form-group-main">
         <div class="f-col f-col-5">
@@ -51,7 +51,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-      <label>Descripción:</label>
+        <%= f.label :description, "Descripción" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -65,7 +65,7 @@
       
       <div class="form-group">
         <div class="form-group-label">
-          <label>Evaluación:</label>
+          <%= f.label :porcent_of_evaluation, "Evaluación" %>
         </div>
         <div class="form-group-main">
 
@@ -90,7 +90,7 @@
       
       <div class="form-group">
         <div class="form-group-label">
-          <label>Material de soporte</label>
+          <%= f.label "", "Material de soporte" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">

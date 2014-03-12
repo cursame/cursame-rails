@@ -27,25 +27,10 @@ $(function() {
     target2.height(availableHeight/2)
   }
 
-  function adjustUserHeader() {
-    var winWidth      = $(window).width(),
-        sidebarWidth  = sidebar.outerWidth(),
-        finalWidth    = winWidth - sidebarWidth;
-
-    if ( finalWidth > 720 ) {
-      userHeader.width( finalWidth );
-    } else {
-      userHeader.width( 720 );
-    }
-
-  }
-
   adjustSidebar();
-  adjustUserHeader();
 
   $(window).on('resize', function() {
     adjustSidebar();    
-    adjustUserHeader();
   });
 
 

@@ -9,10 +9,11 @@
 
     .publication-content {
       border-radius: $radius $radius 0 0;
- 
+
       h6 {
         color: $meta-color;
         font-weight: normal;
+        font-size: 14px;
 
         a {
           font-weight: bold;

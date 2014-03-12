@@ -24,6 +24,10 @@ html, body {
   z-index: 100;
   width: 100%;
 
+  .topbar-spacer {
+    margin-left: 230px;
+  }
+
   .network {
     float: left;
     height: 44px;
@@ -428,6 +432,10 @@ html, body {
   left: 0;
   top: -51px;
   @include transition (top .3s ease-in-out);
+  
+  .notice-spacer {
+    margin-left: 230px;
+  }
 
   #notice {
     padding: 14px 15px 16px 15px;;

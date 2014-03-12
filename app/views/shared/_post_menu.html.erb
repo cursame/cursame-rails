@@ -15,7 +15,7 @@
   <% if !@user_show %>
     <div class="new-publication-main">
       
-      <div class="tabs">
+      <div class="tabs post-menu-tabs">
         <div class="tabs-buttons">
           <% permitted_to? :create, :comments do %>
             <div class="tab active" data-id-target="comment-tab-content">
