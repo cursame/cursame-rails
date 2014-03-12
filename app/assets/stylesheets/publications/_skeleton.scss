@@ -220,14 +220,17 @@
 /* homework
 ----------------------------------*/
 .areas-of-evaluation {
-
-  .evaluation-areas-list {
-    @include clearfix;
+  .clear-break {
+    margin-bottom: 10px;
   }
 
   .evaluation-footer {
-    clear: both;
-    @include clearfix;
+    overflow: hidden;
+    clear: right;
+  }
+
+  #total_nested_evaluation {
+    margin-bottom: 10px;
   }
 }
 

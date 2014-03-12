@@ -17,9 +17,9 @@ $(function() {
 			overlay.css({
 				'left': 0,
 				'top': 0
-			})
-		}
-	}
+			});
+		};
+	};
 	
 	window.createModal = function ( content, classes ) {
 
@@ -38,21 +38,23 @@ $(function() {
 
     if ( !removable ) {
       removeModalAction( $('.overlay') );
-    }
+    };
   };
 
   window.removeModalAction = function( overlay, f ) {
+    f = f || undefined;
+
     overlay.addClass('animated bounceOut');
     overlay.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
       $('.overlay-wrapper').fadeOut(250, function() {
         $(this).remove();
         if ( f && typeof f == 'function') {
           f();
-        }
+        };
       });
       $('body').removeClass('overlay-open');
     });
-  }
+  };
 	
 	$('.overlay-screen, .close-overlay').live('click', removeModal );
 
@@ -65,7 +67,9 @@ $(function() {
     var $this = $(this);
 
     $this.closest('.delivery-overlay-content').hide();
-    $this.closest('.overlay').children('.delivery-overlay-submit-form').show();
+    var target = $this.closest('.overlay').children('.delivery-overlay-submit-form');
+
+    target.show().find(':input:enabled:visible:first').focus();
 
     overlayPositioning( $('div.overlay') );
     e.preventDefault();

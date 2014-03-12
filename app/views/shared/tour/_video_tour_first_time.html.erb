@@ -9,11 +9,12 @@
       <p>En este video de introducción te mostramos las principales secciones y características del curso.</p>
     <% end %>
   </div>
+  <div class="close-overlay" style="display: none;"><%= icon('x-close') %></div>
 </div>
 
 <div class="overlay-content no-padding">
   <div id="video-tour-container">
-    Cargando video tutorial...
+    Cargando tour...
   </div>
 </div>
 
@@ -43,15 +44,18 @@
         'onStateChange': onPlayerStateChange
       }
     });
-  }
+  };
 
   function onPlayerReady( event ) {
     event.target.playVideo();
-  }
+  };
 
   var done = false;
   function onPlayerStateChange(event) {
     if ( event.data == 0 ) {
+      $('.close-overlay').fadeIn(500);
+      $('.overlay').removeClass('not-removable');
+
       removeModalAction( $('.overlay'), function() {
 
         <% if tour_type == "network"  %>
@@ -76,11 +80,10 @@
         <% end %>
 
       });
-
-    }
-  }
+    };
+  };
 
   function stopVideo() {
     player.stopVideo();
-  }
+  };
 </script>

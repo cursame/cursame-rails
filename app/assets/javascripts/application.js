@@ -97,7 +97,7 @@ function truncate(text, maxLength, ellipseText){
 
 window.Notice = function(type, message)  {
   var notice        = $('#notice'),
-      noticeWrapper = notice.parent();
+      noticeWrapper = notice.closest('#noticce');
 
   noticeWrapper.addClass('active');
   notice.removeClass('error success').addClass( type ).html( message );
@@ -105,7 +105,7 @@ window.Notice = function(type, message)  {
   setTimeout(function() {
     noticeWrapper.removeClass('active');
   }, 3100);
-}
+};
 
 // notificaciones push usando private_pub
 $(function() {
@@ -113,7 +113,7 @@ $(function() {
 	// Se suscribe al canal para las notificaciones del chat
   if (typeof Cursame === 'undefined') {
     return;
-  }
+  };
 
 	PrivatePub.subscribe ("/messages/notifications_user_" + Cursame.userId, function(data, channel) {
 
@@ -130,14 +130,13 @@ $(function() {
         $.get(data.sender.avatar.modern.url)
          .done(function() { 
           avatar_modern;
-          //console.log(avatar_modern);
          }).fail(function() { 
          var avatar_modern = "/assets/imagexxx.png";
-        })
+        });
 
-     }else{
+     } else {
         var avatar_modern = "/assets/imagexxx.png";
-     }
+     };
          
       notification = [
           '<li class="unread">',
@@ -162,14 +161,14 @@ $(function() {
         // cuando esta collapsada, asi sabe cuando el usario tiene un msj pendiente esa ventana
         if (chatZonePosition.replace('px', '') < 200) {
             $("#chat-channel-" + data.channel.id + "span").append('*');
-        }     
+        };
   		} else {
   			numNotifications = $('#messages-notifications-count').html() * 1;
   			$('#messages-notifications-count').html(numNotifications + 1);
         $('#messages-notifications-count').show();
   			$('#messages-notifications-list').prepend(notification.join(''));
-  		}
-    }
+  		};
+    };
   });
     
   PrivatePub.subscribe("/messages/chat_notifications", function(data, channel) {
@@ -177,7 +176,7 @@ $(function() {
       $('#chat-list-user-' + data.userId).removeClass('user-offline').addClass('user-online');
     } else {
       $('#chat-list-user-' + data.userId).removeClass('user-online').addClass('user-offline');
-    }
+    };
   });
 
   // Open commentable area in publications
@@ -190,7 +189,7 @@ $(function() {
 
     if ( $('div.overlay').length ) {
       overlayPositioning( $('div.overlay') );
-    }
+    };
   });
 
   // Scroll top
@@ -199,7 +198,7 @@ $(function() {
       $('#scrollup').fadeIn();
     } else {
       $('#scrollup').fadeOut();
-    }
+    };
   });
 
   $('#scrollup').click(function() {
