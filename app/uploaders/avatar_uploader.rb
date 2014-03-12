@@ -3,11 +3,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   version :profile do
-     process :resize_to_fit => [150, 150]
+     process :resize_to_fill => [150, 150]
    end
    
    version :course_index do 
-        process :resize_to_fit => [240, 135]
+        process :resize_to_fill => [240, 135]
     end
 
    version :modern do
@@ -15,7 +15,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
    end
    
    version :head do
-     process :resize_to_fit => [30, 30]
+     process :resize_to_fill => [30, 30]
    end
    
   version :mini do
@@ -23,7 +23,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
       
    version :compress do
-     process :resize_to_fit => [10, 10]
+     process :resize_to_fill => [10, 10]
    end   
  
 
@@ -31,6 +31,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
       %w(jpg jpeg gif ico png)
    end  
    
+  
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end

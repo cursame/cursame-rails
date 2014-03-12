@@ -513,7 +513,7 @@ class ApplicationController < ActionController::Base
                #### si el objeto contiene un avatar se machan las diversas medidas 
                case 
                 when size == '10'
-                  @self_avatar = object_url+'<img  src='+"#{object.avatar.compress}"+ object_resize_to+ object_clase +'/>'+ object_url_end
+                  @self_avatar = object_url+'<img src='+"#{object.avatar.compress}"+ object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '25'
                   @self_avatar = object_url+'<img  src='+"#{object.avatar.mini}"+ object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '30'
