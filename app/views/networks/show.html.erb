@@ -17,8 +17,8 @@
 <script type="text/javascript">
 $(function() {
 
-  <% if current_network.public_register == true && show_joyride(3) != "1" %>
-
+  <% if !current_user.self_register && show_joyride(3) != "1" %>
+    
     var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
     createModal( content, "overlay-small overlay-informative" );
 
