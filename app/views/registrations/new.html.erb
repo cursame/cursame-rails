@@ -1,26 +1,11 @@
-
 <% if current_network.nil? %>
-  <div class="login">
-    <p>Lo sentimos pero la red a la que estas intentado accesar no existe, pregunta a un encargado de tu escuela él sabrá ayudarte. <br>
-    <%= link_to "Ir al inicio", "http://www.cursa.me" %></p>
-    <h5>¡Gracias!</h5>
-  </div>
+  <%= render partial: "/shared/sessions/network_not_exist" %>
 <% else %>
-  
   <div class="user-sessions-wrap user-sessions-medium">
-    <div class="user-sessions-network-brand">
-      <% if current_network.free || current_network.logo.file == nil %>
-        <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
-      <% else %>
-        <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
-      <% end %>
-      <div class="header-link">
-        <%= link_to "¿Ya eres usuario? Ingresa →", new_session_path(resource_name) %>
-      </div>
-    </div>
+    <%= render partial: "shared/sessions/network_box_head", locals: { sign_up: false, sign_in: true } %>
     <div class="user-sessions-main">
       <div class="user-session-content">
-        <% if current_network.register_form == true %>
+        <% if !current_network.nil? && current_network.register_form == true %>
           <p>Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
           <%= link_to "Ir a la página principal", "/users/sign_in" %>
         <% else %>
@@ -134,23 +119,22 @@
     </div>
   </div>
 
-<% end %>
+  <script>
+    $(function() {
 
-<script>
-  $(function() {
+      $('.sign-up-form').validate({
+        rules: {
+          "user[password_confirmation]": {
+            equalTo: "#user_password"
+          }
+        },
+        messages: {
+          "user[password_confirmation]": {
+            equalTo: "Escribe la misma contraseña en los dos campos."
+          }
+        }
+      });
 
-    $('.sign-up-form').validate({
-      rules: {
-        "user[password_confirmation]": {
-          equalTo: "#user_password"
-        }
-      },
-      messages: {
-        "user[password_confirmation]": {
-          equalTo: "Escribe la misma contraseña en los dos campos."
-        }
-      }
     });
-
-  });
-</script>
+  </script>
+<% end %>

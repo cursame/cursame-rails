@@ -20,6 +20,7 @@
     user_name = name
     content = post.comment_html
     course = post.commentable if post.commentable_type == 'Course'
+    user = post.commentable if post.commentable_type == 'User'
     tipo = 'Comentario'
 
     if course != nil
@@ -29,7 +30,7 @@
   end
 %>
 
-<% 
+<%
   # Variables for Course
   if type == "Course"
     name = post.title
@@ -107,6 +108,10 @@
               <% if !posted_in_for.blank? %>
                 comentó en el curso
                 <%= link_to posted_in_for, course_path(posted_in_for_id) %>
+              <% end %>
+              
+              <% if user && !user.nil? %>
+                comentó en el perfil de <%= link_to user.name, show_user_path(user.personal_url) %>
               <% end %>
                 
               <%= link_to "Usuario", show_user_path(personal_url) if ( user_name.blank?) %>
