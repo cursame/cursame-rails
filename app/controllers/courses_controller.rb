@@ -265,7 +265,7 @@ class CoursesController < ApplicationController
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Curso borrado exitosamente.' }
+      format.html { redirect_to courses_path, notice: 'Curso borrado exitosamente.' }
       format.json { head :no_content }
     end
   end

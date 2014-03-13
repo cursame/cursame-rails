@@ -43,13 +43,13 @@
                                     <%if assignment then%>
                             <td valign="top"><%=assignment.title%></td>
                             <td valign="top">
-                                <% assignment.response_to_the_evalutions.each do |response_to_evaluation|%>
+                              <%# assignment.response_to_the_evalution.each do |response_to_evaluation|%>
                                 <!-- El rubro del assignment -->
-                                  <%= response_to_evaluation.name%>
-                                  <%if response_to_evaluation != assignment.response_to_the_evaluations.last then%>
+                                  <%#= response_to_evaluation.name%>
+                                  <%#if response_to_evaluation != assignment.response_to_the_evaluations.last then%>
                                     </br>
-                                  <%end%>
-                                <%end%>
+                                  <%#end%>
+                                <%#end%>
                             </td>
                             <td valign="top"><%=assignment.accomplishment%></td>
                             <%else%>
