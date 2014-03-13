@@ -11,6 +11,9 @@ class HomeController < ApplicationController
   end
 
   def conditions
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
   end
 
   def blog
@@ -23,6 +26,9 @@ class HomeController < ApplicationController
   end
 
   def help
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
   end
 
   def add_new_comment
@@ -315,7 +321,11 @@ class HomeController < ApplicationController
   end
   
   def privacidad
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
   end
+  
   private
 
   def save_comment
