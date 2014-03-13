@@ -17,13 +17,13 @@
 
       &:disabled {
         opacity: .3;
-        cursor: wait;
+        cursor: not-allowed;
       }
     }
 
     &[disabled="disabled"] {
       opacity: .3;
-      cursor: wait;
+      cursor: not-allowed;
 
       > input {
         opacity: 1;
@@ -46,7 +46,7 @@
 
   &[disabled="disabled"] {
     opacity: .3;
-    cursor: wait;
+    cursor: not-allowed;
   }
 }
 

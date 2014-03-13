@@ -225,6 +225,17 @@
   }
 }
 
+/* Clone Course
+----------------------------------*/
+.clone-course-form-nav {
+  margin-top: 20px;
+  @include clearfix;
+}
+
+.single-form {
+  padding: 5px 0;
+}
+
 /* Lightbox Exam
 ----------------------------------*/
 .test_exam_list {

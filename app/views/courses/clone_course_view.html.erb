@@ -22,9 +22,9 @@ background-white
 <div class="wrapper ver-spaced">
 	<div class="cols-12">
 	  <div class="col col-8">
-	  	<%= form_for(@course, :url => clone_course_path, :method => :post, :html => { :class => "clone-course-form"}) do |f| %>
+	  	<%= form_for(@course, :url => clone_course_path, :method => :post, :html => { :class => "clone-course-form", :id => "clone-course-form" }) do |f| %>
 
-				<div id="clone-course-data" class="form-course">
+				<div id="clone-course-data" class="step">
 					<h3>Datos del curso</h3>
 					<p>Cambia la información para el nuevo curso.</p>
 					<br>
@@ -36,7 +36,7 @@ background-white
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
-		            <%= f.text_field :title, :placeholder => "Nombre" %>
+		          	<%= text_field_tag "course[title]", "#{@course.title} (clonado)", placeholder: "Ejemplo: Matemáticas I", required: "required", autocomplete: "off" %>
 		          </div>
 		        </div>
 		      </div>
@@ -47,7 +47,7 @@ background-white
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
-		            <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción' %>
+		            <%= f.text_area :silabus, rows: 7, cols: 50, placeholder: "Descripción", required: "required", autocomplete: "off" %>
 		          </div>
 		        </div>
 		      </div>
@@ -59,12 +59,12 @@ background-white
 		        <div class="form-group-main">
 		          <div class="f-col f-col-5">
 		            <div class="form-unit">
-		            	<%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios", :min => '1', :max => '100', :step => "1", :required => "required" %>
+		            	<%= f.text_field :survey_param_evaluation, placeholder: "Valor de Cuestionarios" %>
 		            </div>
 		          </div>
 		          <div class="f-col f-col-5">
 		            <div class="form-unit">
-		              <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas", :min => '1', :max => '100', :step => "1", :required => "required" %>
+		              <%= f.text_field :delivery_param_evaluation, placeholder: "Valor de Tareas" %>
 		            </div>
 		          </div>
 		        </div>
@@ -77,12 +77,12 @@ background-white
 		        <div class="form-group-main">
 		          <div class="f-col f-col-5">
 		            <div class="form-unit">
-			            <%= f.text_field :init_date, :placeholder=> 'Fecha de inicio', :value => "" %>
+			            <%= f.text_field :init_date, placeholder: 'Fecha de inicio', value: "", required: "required", autocomplete: "off" %>
 		            </div>
 		          </div>
 		          <div class="f-col f-col-5">
 		            <div class="form-unit">
-		            	<%= f.text_field :finish_date, :placeholder=> 'Fecha final', :value => "" %>
+		            	<%= f.text_field :finish_date, placeholder: 'Fecha final', value: "", required: "required", autocomplete: "off" %>
 		            </div>
 		          </div>
 		        </div>
@@ -102,32 +102,31 @@ background-white
 		          </div>
 		        </div>
 		      </div>
-					
-					<button class="btn btn-primary clone-course-btn" data="clone-course-deliveries" action="move" type="button" data-step="1" >Siguiente</button>
+				
 				</div>
 
-				<div id="clone-course-deliveries" class="form-course" style="display:none">
+				<div id="clone-course-deliveries" class="step">
 					<h3>Tareas</h3>
 					<p>Selecciona las tareas que quieres clonar para el nuevo curso.</p>
 					<br>
 					
 					<% unless @course.deliveries.empty? %>
-						<% @course.deliveries.each do |delivery|%>
+						<% @course.deliveries.each_with_index do |delivery, index|%>
 							<% delivery_id = delivery.id.to_s %>
 
 							<div class="form-group">
 				        <div class="form-group-label">
-				          <label><%= check_box_tag "deliveries[][id]", delivery_id, true, :class => 'is-correct-chk' %> <%= delivery.title %></label>
+									<label><%= check_box_tag "deliveries[#{index}][id]", delivery_id, false, class: "toggle-activable" %> <%= delivery.title %></label>
 				        </div>
 				        <div class="form-group-main">
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				            	<%= text_field_tag "deliveries[][publish_date]", Time.now.strftime('%m/%d/%Y'), :placeholder=>'Fecha de publicación', :id => "fecha_publicacion_delivery_" + delivery_id %>
+				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: 'Fecha de publicación', id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent" %>
 				            </div>
 				          </div>
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				              <%= text_field_tag "deliveries[][end_date]", (Time.now + 5.days).strftime('%m/%d/%Y') ,:placeholder=>'Fecha Entrega', :id => "fecha_entrega_delivery_" + delivery_id%>
+				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: 'Fecha Entrega', id: "fecha_entrega_delivery_" + delivery_id, class: "dependent" %>
 				            </div>
 				          </div>
 				        </div>
@@ -142,7 +141,9 @@ background-white
 			                dateFormat: 'dd/mm/yy',
 			                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 			                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-			            });
+			            }).on('change', function() {
+										$(this).valid();
+							    });
 						    });
 							</script>
 						<% end %>
@@ -151,23 +152,20 @@ background-white
 							<h4>Este curso no tiene tareas para clonar.</h4>
 						</div>
 					<% end %>
-
-					<button class="clone-course-btn btn btn-secondary" data="clone-course-data" action="move" type="button">Anterior</button>
-					<button class="clone-course-btn btn btn-primary" data="clone-course-discussions" action="move" data-step="2" type="button">Siguiente</button>
 				</div>
 
-				<div id="clone-course-discussions" class="form-course" style="display:none">
+				<div id="clone-course-discussions" class="step">
 					<h3>Discusiones</h3>
 					<p>Selecciona las discusiones que quieres clonar para el nuevo curso.</p>
 					<br>
 
 					<% unless @course.discussions.empty? %>
 						<% @course.discussions.each do |discussion|%>
-							<div>
-							<label>
-								<%= check_box_tag "discussions[]", discussion.id, true %>
-								<%= discussion.title %>
-							</label>
+							<div class="single-form">
+								<label>
+									<%= check_box_tag "discussions[]", discussion.id %>
+									<%= discussion.title %>
+								</label>
 							</div>
 						<% end %>
 					<% else %>
@@ -176,37 +174,33 @@ background-white
 						</div>
 					<% end %>
 					
-					<br>
-					<button class="clone-course-btn btn btn-secondary" data="clone-course-deliveries" action="move" type="button">Anterior</button>	
-					<button class="clone-course-btn btn btn-primary" data="clone-course-surveys" action="move" data-step="3" type="button">Siguiente</button>
-
 				</div>
 
-				<div id="clone-course-surveys" class="form-course" style="display:none">
+				<div id="clone-course-surveys" class="step">
 					<h3>Cuestionarios</h3>
 					<p>Selecciona los cuestionarios que quieres clonar para el nuevo curso.</p>
 					<br>
 					
 					<% unless @course.surveys.empty? %>
-						<% @course.surveys.each do |survey| %>
+						<% @course.surveys.each_with_index do |survey, index| %>
 							<% survey_id =  survey.id.to_s%>
 
 							<div class="form-group">
 				        <div class="form-group-label">
 				          <label>
-				          	<%= check_box_tag "surveys[][id]", survey.id, true %>
+				          	<%= check_box_tag "surveys[#{index}][id]", survey.id, false, class: "toggle-activable" %>
 				          	<%= survey.name %>
 			          	</label>
 				        </div>
 				        <div class="form-group-main">
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				            	<%= text_field_tag "surveys[][publish_date]", Time.now.strftime('%m/%d/%Y') ,:placeholder=>'Fecha publicación', :id => "fecha_publicacion_survey_" + survey_id %>
+				            	<%= text_field_tag "surveys[#{index}][publish_date]", "", placeholder: "Fecha publicación", id: "fecha_publicacion_survey_#{survey_id}", class: "dependent" %>
 				            </div>
 				          </div>
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				              <%= text_field_tag "surveys[][end_date]", (Time.now + 5.days).strftime('%m/%d/%Y') ,:placeholder=>'Fecha Entrega', :id => "fecha_entrega_survey_" + survey_id%>
+				              <%= text_field_tag "surveys[#{index}][end_date]", "", placeholder: "Fecha Entrega", id: "fecha_entrega_survey_#{survey_id}", class: "dependent" %>
 				            </div>
 				          </div>
 				        </div>
@@ -221,7 +215,9 @@ background-white
 				              dateFormat: 'dd/mm/yy',
 				              monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 				              dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-				          });
+				          }).on('change', function() {
+										$(this).valid();
+							    });
 							  });
 							</script>
 						<% end %>
@@ -231,21 +227,18 @@ background-white
 						</div>
 					<% end %>
 
-					<button class="clone-course-btn btn btn-secondary" data="clone-course-discussions" action="move" type="button">Anterior</button>
-					<button class="clone-course-btn btn btn-primary" data="clone-course-files" action="move" data-step="4" type="button">Siguiente</button>
-
 				</div>
 
-				<div id="clone-course-files" class="form-course" style="display:none">
+				<div id="clone-course-files" class="step">
 					<h3>Libreria</h3>
 					<p>Selecciona los archivos de la libreria que quieres clonar para el nuevo curso.</p>
 					<br>
 					
 					<% unless @course.course_files.empty? %>
 						<% @course.course_files.each do  |course_file|%>
-							<div>
+							<div class="single-form">
 								<label>
-									<%= check_box_tag "course_files[]", course_file.id, true %>
+									<%= check_box_tag "course_files[]", course_file.id %>
 									<%= course_file.file %>
 								</label>
 							</div>
@@ -256,12 +249,17 @@ background-white
 						</div>
 					<% end %>
 
-					<br>
-					<button class="clone-course-btn btn btn-secondary" data="clone-course-surveys" action="move" type="button">Anterior</button>
-					<span class="btn btn-primary input-btn">
-						<%= f.submit "Clonar Curso", class: "clone-course-btn", action: "submit", data: { step: "5" } %>
-					</span>
-
+				</div>
+					
+				<div class="fr clone-course-form-nav">
+					<ul class="list-buttons right">
+		        <li>
+		          <button class="navigation_button btn btn-secondary clone-course-back" id="back" type="reset">Atras</button>
+		        </li>
+		        <li>
+		        	<button class="navigation_button btn btn-primary clone-course-next" id="next" type="submit">Siguiente</button>
+		        </li>
+		      </ul>
 				</div>
 
 			<% end %>
@@ -271,91 +269,71 @@ background-white
 
 <script>
 	$(function() {
+
 		$( "#course_init_date, #course_finish_date" ).datepicker({
-		inline: true,
-		minDate: 0,
-		showOtherMonths: true,
-		dateFormat: 'dd/mm/yy',
-		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-		});
-	});
+	    inline: true,
+	    minDate: 0,
+	    showOtherMonths: true,
+	    dateFormat: 'dd/mm/yy',
+	    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+    }).on('change', function() {
+			$(this).valid();
+    });
 
-  $('.clone-course-form').validate({
-		debug: true,
-		rules: {
-			"course[title]": {
-				required: true
-			},
-			"course[silabus]": {
-				required: true
-			},
-			"course[survey_param_evaluation]": {
-				required: true,
-				number: true,
-				max: 100,
-				min: 0
-			},
-			"course[delivery_param_evaluation]": {
-				required: true,
-				number: true,
-				max: 100,
-				min: 0
-			},
-			"course[init_date]": {
-				required: true
-			},
-			"course[finish_date]": {
-				required: true
-			},
-			"deliveries[][publish_date]": {
-				required: true
-			},
-			"deliveries[][end_date]": {
-				required: true
-			}
-		},
-    submitHandler: function(form) {
-      form.submit();
-    }
-	});
-
-	$(".clone-course-btn").on('click', function () {
-		var data 		= $(this).attr( "data" ),
-				action 	= $(this).attr( "action" ),
-				step 		= $(this).data("step");
-
-		// console.log( step );
-
-		switch(step) {
-			case 1 :
-				if ( $('.clone-course-form').valid() ) {
-					var course_survey_param_evaluation = $('#course_survey_param_evaluation'),
-		      	course_delivery_param_evaluation = $('#course_delivery_param_evaluation'),
-						surveys_percentage    = parseInt(course_survey_param_evaluation.val()),
-		        deliveries_percentage = parseInt(course_delivery_param_evaluation.val()),
-		        evaluation_total      = surveys_percentage + deliveries_percentage;
-
-		      if ( evaluation_total > 100 || evaluation_total <= 0 || evaluation_total < 100 ) {
-			      Notice('error', 'Los porcentajes de evaluación deben sumar 100.');
-			      return false;
-		    	}
-
-				} else {
-					return false;
+		$('#clone-course-form').formwizard({
+			historyEnabled: true,
+			validationEnabled: true,
+			validationOptions: {
+				rules: {
+					"course[survey_param_evaluation]": {
+		        required: true,
+		        number: true,
+		        max: 100,
+		        min: 0,
+		        equalTo: 100
+		      },
+		      "course[delivery_param_evaluation]": {
+		        required: true,
+		        number: true,
+		        max: 100,
+		        min: 0,
+		        equalTo: 100
+		      }
 				}
+			},
+			focusFirstInput : true,
+			disableUIStyles : true	
+		});
 
-				break;
-			case 2 :
-				console.log("DOsss");
-				break;
-		}
+		jQuery.validator.addMethod("equalTo", function(value, element, params){
+			var surveys_percentage  = parseInt($('#course_survey_param_evaluation').val()),
+          deliveries_percentage = parseInt($('#course_delivery_param_evaluation').val()),
+          evaluation_total  = surveys_percentage + deliveries_percentage;
 
-		switch(action){
-			case 'move': 
-				$('#'+data).show();
-				$(this).parent().hide();
-				break;
-		}
+      if ( evaluation_total > 100 || evaluation_total <= 0 || evaluation_total < 100 ) {
+      	return false;
+      } else {
+      	$('#course_survey_param_evaluation, #course_delivery_param_evaluation').removeClass('error').siblings('label.error').remove();
+      	return true;
+      };
+		}, 'Los porcentajes de evaluación deben sumar 100.');
+
+		$('.toggle-activable').click(function() {
+			var $this = $(this),
+					formGroup = $this.closest('.form-group'),
+					fields = formGroup.find('.dependent'),
+					checked = $this.is(':checked');
+
+			fields.each(function(index, el) {
+				if ( checked ) {
+					$(el).attr('required', 'required');
+				} else {
+					$(el).removeAttr('required');
+					$(el).val('').valid();
+				};
+			});
+		});
+		
 	});
 </script>

@@ -2,7 +2,7 @@
  * Translated default messages for the jQuery validation plugin.
  * Locale: ES (Spanish; Español)
  */
-(function ($) {
+jQuery(function() {
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
 		remote: "Por favor, rellena este campo.",
@@ -22,4 +22,4 @@
 		max: $.validator.format("Por favor, escribe un valor menor o igual a {0}."),
 		min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}.")
 	});
-}(jQuery));
+});

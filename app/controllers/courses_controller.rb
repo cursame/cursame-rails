@@ -999,16 +999,22 @@ class CoursesController < ApplicationController
   end
    
   def clone_course
+
     @course = Course.new(params[:course])
-    @course.title = "#{@course.title}(clonado)"
-    puts "#{@course.title}"
-    puts "#{@course.init_date}"
-    puts "#{@course.finish_date}"
+    @course.title = "#{@course.title}"
     @course.network = current_network
     if @course.save!
 
     if params[:deliveries] != nil
-      params[:deliveries].keep_if{|x| !x["id"].nil?}.each do |obj|
+      deliveries_to_save = []
+
+      params[:deliveries].map do |key, value|
+        next if value["id"].blank? || value["id"].nil?
+        valid = { "id" => value["id"], "publish_date" => value["publish_date"], "end_date" => value["end_date"] }
+        deliveries_to_save.push valid
+      end
+
+      deliveries_to_save.each do |obj|
         new_delivery = Delivery.find(obj["id"]).dup
         new_delivery.state = 'unpublish'
         new_delivery.publish_date = obj["publish_date"]
@@ -1016,7 +1022,7 @@ class CoursesController < ApplicationController
         new_delivery.courses.push(@course)
         new_delivery.save!
       end
-      end
+    end
 
       if params[:discussions] != nil
       params[:discussions].each do |id|
@@ -1027,24 +1033,32 @@ class CoursesController < ApplicationController
       end
 
       if params[:surveys] != nil
-      params[:surveys].keep_if{|x| !x["id"].nil?}.each do |obj|
-        new_survey = Survey.find(obj["id"]).dup
-        new_survey.state = 'unpublish'
-        new_survey.publish_date = obj["publish_date"]
-        new_survey.end_date = obj["end_date"]
-        new_survey.courses.push(@course)
+        surveys_to_save = []
 
-        #agregamos preguntas al survey
-        Survey.find(obj["id"]).questions.each do |question|
-          new_question = question.dup;
-          question.answers.each do |answer|
-            new_question.answers.push(answer.dup)
-          end
-          new_survey.questions.push(new_question)
+        params[:surveys].map do |key, value|
+          next if value["id"].blank? || value["id"].nil? 
+          valid = { "id" => value["id"], "publish_date" => value["publish_date"], "end_date" => value["end_date"] }
+          surveys_to_save.push valid
         end
 
-        new_survey.save!
-      end
+        surveys_to_save.each do |obj|
+          new_survey = Survey.find(obj["id"]).dup
+          new_survey.state = 'unpublish'
+          new_survey.publish_date = obj["publish_date"]
+          new_survey.end_date = obj["end_date"]
+          new_survey.courses.push(@course)
+
+          #agregamos preguntas al survey
+          Survey.find(obj["id"]).questions.each do |question|
+            new_question = question.dup;
+            question.answers.each do |answer|
+              new_question.answers.push(answer.dup)
+            end
+            new_survey.questions.push(new_question)
+          end
+
+          new_survey.save!
+        end
       end
 
       if params[:course_files] != nil      
