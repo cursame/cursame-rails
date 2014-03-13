@@ -3,16 +3,16 @@
     <div class="wrapper spaced">
 
       <div class="network">
-        <% if current_network.free || current_network.logo.file == nil %>
+        <% if !current_network.nil? %>
+          <% if current_network.free || current_network.logo.file == nil %>
+            <%= link_to root_path, title: current_network.name, class: "free_network" do %>
+              <%= icon('logo-cursame') %>
+            <% end %>
 
-          <%= link_to root_path, title: current_network.name, class: "free_network" do %>
-            <%= icon('logo-cursame') %>
+          <% else %>
+            <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
           <% end %>
-
-        <% else %>
-          <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
         <% end %>
-
       </div>
       
       <% if current_user %>
