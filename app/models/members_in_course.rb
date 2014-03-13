@@ -69,9 +69,12 @@ class MembersInCourse < ActiveRecord::Base
        assigment_docificate = evalution_assigment.to_f + assigment_docificate.to_f 
 
        end
+       result = (assigment_docificate.to_f/value_p_o_e.to_f)*100
+       else
+       result = 0
     end
 
-    result = (assigment_docificate.to_f/value_p_o_e.to_f)*100
+   
 
   end
   
