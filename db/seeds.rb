@@ -41,7 +41,7 @@ u3 = User.create(:email => "salvador+1@cursa.me", :password => "mmmmmm", :first_
 
 n_last = Network.last
 
-p  = Permissioning.create(:user_id => u.id, :role_id => "2", :network_id => n_last.id )
+p  = Permissioning.create(:user_id => u.id, :role_id => "3", :network_id => n_last.id )
 p1 = Permissioning.create(:user_id => u1.id, :role_id => "2", :network_id => n_last.id )
 p2 = Permissioning.create(:user_id => u2.id, :role_id => "2", :network_id => n_last.id )
 p3 = Permissioning.create(:user_id => u3.id, :role_id => "2", :network_id => n_last.id )

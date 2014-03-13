@@ -112,7 +112,7 @@ class MembersInCourse < ActiveRecord::Base
     table["deliveries"] = deliveries_table
     table["surveys"] = surveys_table 
     table["evaluation"] = deliveries_table["evaluation_total"] + 
-      surveys_table["evaluation_total"]
+      surveys_table["percent_of_evaluation"]
     
     table
   end
