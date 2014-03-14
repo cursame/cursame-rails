@@ -70,7 +70,7 @@ class MembersInCourse < ActiveRecord::Base
        end
        if defined?(as.accomplishment) && (!as.accomplishment.nil?)
        individual_result = as.accomplishment.to_f/100 
-       end
+       else
        individual_result = 0
        end
        evalution_assigment = individual_porcent.to_f * individual_result.to_f
