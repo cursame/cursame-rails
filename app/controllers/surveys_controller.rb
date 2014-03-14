@@ -19,7 +19,7 @@ class SurveysController < ApplicationController
                   if s.user_surveys.count == 0
                        surveys.push(s.id)
                       else
-                      if s.user_suerveys.where(:user_id => current_user.id).count == 0
+                      if s.user_surveys.where(:user_id => current_user.id).count == 0
                         surveys.push(s.id)
                       end
                   end
