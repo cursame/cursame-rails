@@ -63,10 +63,14 @@ class MembersInCourse < ActiveRecord::Base
     if assignments.any? then
        assignments.each do |as|
 
-       if as.delivery
-         individual_porcent = as.delivery.porcent_of_evaluation 
+       if as.delivery == nil
+
+          individual_porcent = 0 
+
        else
-         individual_porcent = 0 
+
+          individual_porcent = as.delivery.porcent_of_evaluation 
+
        end
 
        individual_result = as.accomplishment.to_f/100
