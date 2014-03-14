@@ -63,9 +63,7 @@ class MembersInCourse < ActiveRecord::Base
     if assignments.any? then
        assignments.each do |as|
 
-       valida_delivery = Delivery.find(as.delivery_id)
-
-       if valida_delivery != nil
+       if as.delivery
          individual_porcent = as.delivery.porcent_of_evaluation 
        else
          individual_porcent = 0 
