@@ -18,6 +18,10 @@ class SurveysController < ApplicationController
               when (!@member.owner.nil? || !@member.owner)
                   if s.user_surveys.count == 0
                        surveys.push(s.id)
+                      else
+                      if s.user_suerveys.where(:user_id => current_user).count == 0
+                        surveys.push(s.id)
+                      end
                   end
            end
           end
