@@ -68,8 +68,11 @@ class MembersInCourse < ActiveRecord::Base
        else
           individual_porcent = 0 
        end
-
-       individual_result = as.accomplishment.to_f/100
+       if defined?(as.accomplishment) && (!as.accomplishment.nil?)
+       individual_result = as.accomplishment.to_f/100 
+       end
+       individual_result = 0
+       end
        evalution_assigment = individual_porcent.to_f * individual_result.to_f
        assigment_docificate = evalution_assigment.to_f + assigment_docificate.to_f 
 
