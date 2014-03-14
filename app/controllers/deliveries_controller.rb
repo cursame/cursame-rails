@@ -35,13 +35,15 @@ class DeliveriesController < ApplicationController
                   if d.assignments.count == 0
                        deliveries.push(d.id)
                   end
+                  if d.assignments.count != 0 && d.assignments.where(:user_id => current_user.id).count == 0
+                     deliveries.push(d.id)
+                  end
               when false
                   if d.assignments.count == 0
-                       deliveries.push(d.id)
-                      else
-                      if  d.assignments.where(:user_id => current_user).count == 0
-                        deliveries.push(d.id)
-                      end
+                       deliveries.push(d.id)                      
+                  end
+                  if d.assignments.count != 0 && d.assignments.where(:user_id => current_user.id).count == 0
+                     deliveries.push(d.id)
                   end
 
            end
