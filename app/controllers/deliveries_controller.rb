@@ -31,20 +31,18 @@ class DeliveriesController < ApplicationController
                   if d.assignments.count == 0
                        deliveries.push(d.id)
                   end
-              when !nil 
-                  if d.assignments.count == 0
-                       deliveries.push(d.id)
-                  end
-                  if d.assignments.count != 0 && d.assignments.where(:user_id => current_user.id).count == 0
+                  puts "owner"
+              when nil 
+                  if d.assignments.where(:user_id => current_user.id).count == 0
                      deliveries.push(d.id)
                   end
+                  puts " no owner"
               when false
-                  if d.assignments.count == 0
-                       deliveries.push(d.id)                      
-                  end
-                  if d.assignments.count != 0 && d.assignments.where(:user_id => current_user.id).count == 0
+                  if d.assignments.where(:user_id => current_user.id).count == 0
                      deliveries.push(d.id)
                   end
+                  puts " no owner"
+
 
            end
           end
