@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
-
+  skip_before_filter :authenticate_user!, :only => [:upload_users_a]
   ### manejo de que ven si son amigos 
   helper_method :filter_friendship
 
