@@ -1,5 +1,4 @@
 <% cursame_url = "http://#{@resource.devise_mailer_subdomain}.#{@resource.ubication}" %>
-<% cursame_url = "http://pruebas.lvh.me:3000" #For local testing %>
 
 <%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: false } %>
 

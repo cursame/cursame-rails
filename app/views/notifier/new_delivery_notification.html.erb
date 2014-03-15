@@ -1,5 +1,4 @@
 <% cursame_url = "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" %>
-<% cursame_url = "http://pruebas.lvh.me:3000" #For local testing %>
 
 <%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: true } %>
   <table background="<%= cursame_url %>/assets/mails/new_delivery_in_course/delivery-activity-background.jpg" style="border-top: 1px solid #658601; border-bottom: 1px solid #658601;" width="100%">
