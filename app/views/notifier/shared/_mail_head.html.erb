@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
+    h1, h2, p, span, table, td, tr, a {-webkit-font-smoothing: antialiased;}
+    p { font-weight: normal; }
+  </style>
+</head>
+<body style="padding: 0; margin: 0; font-family: 'Roboto', 'Helvetica Neue', sans-serif; background-color: #fafafa;">
+
+  <div style="<%= no_borders ? "" : "border-bottom: 3px solid #F3F3F3;" %> background: #FAFAFA;">
+    <div style=" <%= no_borders ? "" : "border-bottom: 1px solid #CFCFCF;" %>">
+      <table style="width: 540px;" align="center">
+        <tr>
+          <td style="padding: 20px 0 12px 0;">
+            <a href="<%= cursame_url %>" title="Cúrsame">
+              <img src="<%= cursame_url %>/assets/mails/logo.png" alt="Cúrsame">
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>

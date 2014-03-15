@@ -1,65 +1,33 @@
-<html>
-	<head>
-	<title>Cursame | Bienvenido</title>
-		<style type="text/css">
-			h1 { font-family: arial; font-size: 17px; font-weight: lighter; }
-			p { font-family: arial; color: #333; font-size: 14px; }
-			.viewFooter { width: 650px; text-align: center; margin-top: 20px; display: block; color: #fff; font-family: arial; font-size: 12px; }
-			.viewBrowser { width: 650px; text-align: right; margin-bottom: 10px; margin-top: 20px; display: block; color: #fff; font-family: arial; font-size: 12px; }
-			.viewBrowser > a:link { color: #ccc; } .viewBrowser > a:hover { color: #00AFC9; }
-			.buttonClick > a:link { width: 400px; background: #00B0C6; color: #fff; text-decoration: none; display: block; text-align: center; font-family: arial; height: 30px; padding-top: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
-		</style>
-	</head>
-	
-	<body background="http://<%= @resource.subdomain %>.<%=@resource.domain %>/assets/mails/utiles.jpg" style="background-position: top center;">
-		
-		<center>
-<!--	<span class="viewBrowser">Si no puedes ver este mail correctamente, haz <a href="#">click aqui</a></span>-->
-		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
-			<tr>
-				<td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @resource.subdomain %>.<%=@resource.domain %>/assets/mails/logo_welcome.png";>
-					<h1 style="color: #00B0C6;font-size: 40px;text-align: center;margin-top:130px;">Confirmación de Usuario</b></h1>
-				</td>
-			</tr>
-			<tr>
-				<td style="padding:0px 30px 20px 30px;" width="600px">
-					
-					<!--<p>Felicidades  "<%= @resource.email %>" por unirte a los miles de usuarios que est&aacute;n utilizando c&uacute;rsame como plataforma para sus actividades escolares.</p>-->
-                 <p>Estimado <%= @resource.email %>, acabamos de lanzar la nueva y mejorada versión de nuestra plataforma, misma que estamos seguros cambiará para bien la manera en la que interactúas dentro y fuera del aula de clases.
+<% cursame_url = "http://#{@resource.devise_mailer_subdomain}.#{@resource.ubication}" %>
+<% cursame_url = "http://pruebas.lvh.me:3000" #For local testing %>
 
-<p>Algunos de nuestros usuarios han experimentado problemas con la migración de su cuenta a la nueva versión por lo que estamos enviando este segundo correo para quienes detectamos tienen este problema y sea solucionado con un solo click.
+<%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: false } %>
 
-<p>En Cúrsame estamos comprometidos con mejorar la experiencia educativa de cada uno de los profesores y alumnos que usan diariamente nuestro sistema en sus instituciones y agradecemos tu preferencia.<p>
-			
-				</td>
-			</tr>
-			<tr>
-				<td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
-					<p>Para activar tu <b>c&oacute;digo</b> de alumno/maestro por favor da click en el bot&oacute;n inferior</p><br />
-				</td>
-			</tr>
-			<tr>
-				<td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
-					<center>
-						<span class="buttonClick">
-						 <%= link_to 'Quiero activar mi Cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain) %>
-						</span>
-					</center>
-				</td>
-			</tr>
-			<tr>
-				<td height="30px">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<center><img src="http://<%= @resource.subdomain %>.<%=@resource.domain %>/assets/mails/iMac_tres.jpg"></center>
-				</td>
-			</tr>
-		</table>
-		<span class="viewFooter">Pomona #7, Roma Norte, Delegaci&oacuote;n Cuauhtemoc, Ciudad de M&eacute;xico.</span>
-		</center>
-		
-	</body>
-</html>
+  <div style="background-color: #ffffff;">
+	  <table style="width: 540px;" align="center">
+	    <tr>
+	      <td>
+	      	<br>
+	      	<br>
+	      	<br>
+	        <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;"><span style="font-size: 15px; font-weight: normal;">¡Bienvenido a C&uacute;rsame!</span><br> <%= @resource.name %></h1><br>
+	        <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">Para poder utilizar tú cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo, solo has click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.</p><br/><br/>
 
+	        <%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain) do %>
+						<img src="<%= cursame_url %>/assets/mails/confirmation_instructions/confirm-button.jpg" alt="Activar cuenta">
+	        <% end %>
+	        <br>
+	        <br>
+	        <p style="font-size: 11px; color: #404040;">Si el boton superior no funciona, haz clic aquí	: <br>
+						<%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain), style: "color: #0071a2;" %></p>
+
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	      </td>
+	    </tr>
+	  </table>
+  </div>
+
+<%= render partial: "/notifier/shared/mail_footer", locals: { no_borders: false } %>

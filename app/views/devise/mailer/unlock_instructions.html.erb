@@ -1,7 +1,35 @@
-<p>Hola <%= @resource.email %>!</p>
+<% cursame_url = "http://#{@resource.devise_mailer_subdomain}.#{@resource.ubication}" %>
+<%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: false } %>
 
-<p>Tu cuenta se ha bloqueado debido a un gran número de intentos fallidos al ingresar.</p>
+  <div style="background-color: #ffffff;">
+    <table style="width: 540px;" align="center">
+      <tr>
+        <td>
+          <br>
+          <br>
+          <br>
+          <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">¡Hola <%= @resource.name %>!</h1><br>
+          <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">t</p><br/><br>
+          
+          <%= link_to unlock_url(@resource, :unlock_token => @resource.unlock_token) do %>
+            <img src="<%= cursame_url %>/assets/mails/unlock_instructions/unlock-account-button.jpg" alt="Desbloquear cuenta">
+          <% end %>
 
-<p>Da click en el siguiente enlace para desbloquear tu cuenta:</p>
+          <br>
+          <br>
+          <p style="font-size: 11px; color: #404040;">Si el boton superior no funciona, haz clic aquí : <br>
+            <%= link_to unlock_url(@resource, :unlock_token => @resource.unlock_token), unlock_url(@resource, :unlock_token => @resource.unlock_token), style: "color: #0071a2;" %></p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+          <br>
+          <br>
+          <br>
+          <br>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+<%= render partial: "/notifier/shared/mail_footer", locals: { no_borders: false } %>
+
+
+<p></p>

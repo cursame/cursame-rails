@@ -1,55 +1,57 @@
-<html>
-  <head>
-  <title>Cursame | Bienvenido</title>
-    <style type="text/css">
-      h1 { font-family: arial; font-size: 15px; font-weight: lighter; }
-      p { font-family: arial; color: #333; font-size: 14px; }
-      a:link { color: #00B1C4; }
-      .viewFooter { width: 650px; text-align: center; margin-top: 20px; display: block; color: #fff; font-family: arial; font-size: 12px; }
-      .viewBrowser { width: 650px; text-align: right; margin-bottom: 10px; margin-top: 20px; display: block; color: #fff; font-family: arial; font-size: 12px; }
-      .viewBrowser > a:link { color: #ccc; } .viewBrowser > a:hover { color: #00AFC9; }
-      .buttonClick > a:link { width: 400px; background: #00B0C6; color: #fff; text-decoration: none; display: block; text-align: center; font-family: arial; height: 30px; padding-top: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
-    </style>
-  </head>
+<% cursame_url = "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" %>
+<% cursame_url = "http://pruebas.lvh.me:3000" #For local testing %>
 
-  <body background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/utiles.jpg" style="background-position: top center;">
-
-    <center>
-    <table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
-      <tr>
-        <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/logo_welcome.png";>
-          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;">Notificación</b></h1>
+<%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: true } %>
+  <table background="<%= cursame_url %>/assets/mails/new_survey_in_course/survey-activity-background.jpg" style="border-top: 1px solid #a64608; border-bottom: 1px solid #a64608;" width="100%">
+    <tr>
+      <td>
+        <div>
+          <table style="width: 540px; backgrounnd-size: cover" align="center">
+            <tr>
+              <td style="text-align: center; padding: 0 15px;">
+                <br><br><br>
+                <img src="<%= cursame_url %>/assets/mails/new_survey_in_course/survey-activity-icon.png" alt="">
+                <br>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center; padding: 0 15px;">
+                <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;">Tarea en el curso <% @survey.courses.each do |course| %><%= course.title %><% end %></h1>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center; padding: 0 15px;">
+                <h2 style="color: #ffffff; font-size: 17px; font-weight: bold; margin: 0;"><%= @survey.title %></h2>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center; padding: 0 15px;">
+                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;">Entregar antes del <%= @survey.end_date %></p>
+                <br>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center; padding: 0 15px;">
+                <%= link_to "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" do %> 
+                  <img src="<%= cursame_url %>/assets/mails/new_survey_in_course/survey-view-button.png" alt="Ver cuestionario">
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center; padding: 0 15px;">
+                <p style="color: #ffffff">Si el botón superior no funciona, haz click aquí:<br>
+                  <%= link_to "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}", "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}", style: "color: #ffffff;" %></p>
+                <br>
+                <br>
+                <br>
+              </td>
+            </tr>
+          </table>
+        </div>
       </td>
-      </tr>
-      <tr>
-        <td style="padding:0px 30px 20px 30px;" width="600px">
-          <p>Hola  "<%= @user.email %>" hay una nuevo examen disponible <%=@survey.name%>, que comenzar&acuote; el <%=@survey.publish_date%> y terminar&acuote; el <%=@survey.end_date%> .</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:0px 30px 20px 30px;" width="600px">
+    </tr>
+  </table>
 
-        </td>
-      </tr>
-      <tr>
-        <td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
-          <center>
-            <span class="buttonClick">
-                        <%= link_to 'Ir a la red', "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" %></span>
-          </center>
-        </td>
-      </tr>
-      <tr>
-        <td height="30px">
-        </td>
-      </tr>
-      <tr>
-        <td>
-        </td>
-      </tr>
-    </table>
-    <span class="viewFooter"><%="Pomona #7, Roma Norte, Delegación Cuauhtémoc, Ciudad de México."%></span>
-    </center>
-
-  </body>
-</html>
+<%= render partial: "/notifier/shared/mail_footer", locals: { no_borders: true } %>
