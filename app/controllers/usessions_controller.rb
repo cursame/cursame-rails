@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class UsessionsController < Devise::SessionsController
     layout "sessions"
     require "devise"
@@ -14,7 +15,7 @@ class UsessionsController < Devise::SessionsController
       self.resource = resource_class.new()      
       clean_up_passwords(resource)
       respond_with(resource, serialize_options(resource))      
-    
+      
       if params[:email] == nil
         puts "sin email"
       end
@@ -22,6 +23,8 @@ class UsessionsController < Devise::SessionsController
       if params[:password] == nil
         puts "sin password"
       end
+
+      flash[:notice] = "No se ha creado correctamente la sessión ya que la contraseña o el email son invalidos."
 
     end
 
@@ -108,6 +111,7 @@ class UsessionsController < Devise::SessionsController
     
     def sign_in_params
       devise_parameter_sanitizer.sanitize(:sign_in)
+      puts "ingresa al logueo"
     end
 
     def serialize_options(resource)
