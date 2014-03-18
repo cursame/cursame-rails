@@ -441,7 +441,6 @@ $(document).ready(function() {
     */
 
     $(document).ajaxStart( function(event) {
-        console.log( event );
         $('#log_loadding').show();
         $('.activable').attr("disabled", true);
     }).ajaxStop( function() {

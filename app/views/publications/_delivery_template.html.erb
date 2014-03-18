@@ -185,3 +185,7 @@
     <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => publication, :cargo => publication.courses[0]}%>
   </div>
 </div>
+
+<script>
+  $('.assignment-delevery-form').validate();
+</script>

@@ -1,15 +1,7 @@
 if(!<%= @error %>){
-
-	$("#open-close-").show();
-	$("#open-close-<%= @survey_id %>").parent().parent().show();
-	$('#entrega-<%= @survey_id %>').hide();
-	$("#open-close-<%= @survey_id %>").html("<div id='image-<%= @survey_id %>' class='image-surveys'><div class='response-survey'>Respondido!!!</div></div>");
-	$('#entrega-<%= @survey_id %>').remove();
-	$('.overlay-wrapper').remove();
-
-	Notice('success', 'Se ha entregado la respuesta de tu cuestionario.')
+	Notice('success', 'Se ha entregado tu cuestionario correctamente.')
 	window.location.reload();
 }
 else{
-	$('#errors').html('No has contestado nada en tu examen');
+	Notice('error', 'Algo sucedio que no se pudo guardar tu cuestionario.')
 }
