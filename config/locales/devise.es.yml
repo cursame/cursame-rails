@@ -6,7 +6,7 @@ es:
       already_confirmed: "ya fue confirmada. Intenta ingresar."
       not_locked: "no ha sido bloqueada"
       not_saved:
-        one: "Ha habido 1 error:"
+        one: "No se pudo guardar debido a un error:"
         other: "Han habido %{count} errores:"
 
   devise:

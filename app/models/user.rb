@@ -67,6 +67,9 @@ class User < ActiveRecord::Base
   validates_presence_of :personal_url
   validates_presence_of :subdomain
   validates_presence_of :domain
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+
   
   # validates_format_of   :personal_url, :with => /^[\-a-z0-9]+$/
   # validates_uniqueness_of :accepted_terms
