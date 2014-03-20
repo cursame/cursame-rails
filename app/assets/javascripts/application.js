@@ -66,13 +66,9 @@ function changeNumbers(idParent, idFind){
   var count = 0;
 };
 
-function playSound(soundfile) {
-  soundfile = "./assets/sounds/new_message.mp3";
-  document.getElementById("chat_sounds").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
-
-  setTimeout(function () {
-      document.getElementById("chat_sounds").innerHTML="";
-  },1000);
+function newMessageSound() {
+  var sound = document.getElementById("new-message-sound");
+  sound.play();
 };
 
 function truncate(text, maxLength, ellipseText){
@@ -150,7 +146,7 @@ $(function() {
           '<span class="meta">' + jQuery.timeago(data.message.created_at) + '</span></div></a></div></li>'
       ];
       
-      playSound();
+      newMessageSound();
 
   		//si ya existe la conversacion no se crea la notificación
   		if( $('#chat-channel-'+data.channel.id).length ) {

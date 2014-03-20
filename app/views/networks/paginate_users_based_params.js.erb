@@ -1,2 +1,2 @@
 $('#accesed').append("<%= escape_javascript(render :partial => 'networks/who_sent', :locals => {:friends => @friends})%>");
-$('#paginate').html('<%= link_to "Ver más", paginate_users_based_params_path(:page => @new_page, :type_in_act => @type ), :remote => true %>')
+$('#paginate').html('<%= link_to "Cargar más...", paginate_users_based_params_path(:page => @new_page, :type_in_act => @type ), :remote => true, :class => "btn btn-small btn-secondary" %>')

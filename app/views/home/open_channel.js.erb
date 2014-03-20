@@ -1,39 +1,37 @@
-// si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación 
-if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
 
-	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name }))%>');
+var panelsHolder = $('.chat-panels'),
+		chatExpanded = $('#chat'),
+		chatPanel = $('.chat-panel[data-panel-id="<%= @channel.id%>"]');
 
-	if(window.chatPanelsCount == undefined) {
-		window.chatPanelsCount = 0;
-	}
+// No esta en home/chat
+if ( !chatExpanded.length && !chatPanel.length ) {
+	panelsHolder.append('<%= subscribe_to @channel_name %>');
 
-	// Si ya hay mas de 3 conversaciones
-	if( window.chatPanelsCount >= 3 ) {
-		if(window.pendingChatsCount == undefined) {
-			window.pendingChatsCount = 0;
-		}
+	if ( Chat.panelCount == 3 ) {
+		Chat.hiddenCount++;
 
-		// Se muestra el recuadro 'Ver mas' si no esta (y se guarda el canal que no se pudo abrir)
-		if($("#go-to-chats-url").length) {
-			// Si si esta, solo se guarda el canal que no se pudo abrir
+		if( $("#go-to-chats-url").length ) {
 			var pendingChats = $("#go-to-chats-url").attr('pendingChats');
 			$("#go-to-chats-url").attr('pendingChats', pendingChats + ' <%=@channel.channel_name%>');
 		} else {
-			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
-		}
-		window.pendingChatsCount++;	
-	}
-	else {
-		window.chatPanelsCount++;
-		$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+			panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+		};
+	};
 
-		var chatPanel = $('#chat-channel-<%= @channel.id%>');
+	if ( Chat.panelCount >= 0 && Chat.panelCount < 3 ) {
+		Chat.panelCount++;
+		var currPanel;
+		panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page, :receiver_user_id => @receiver_user_id }))%>');
 
-		chatPanel.find('.chat-panel-main-content').scrollTop( chatPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
-		chatPanel.find('input#mesage').focus();
+		currPanel = $('.chat-panel[data-panel-id="<%= @channel.id%>"]');
 
-	}	
-}
+		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
+		currPanel.find('input#mesage').focus();
+
+		Chat.reOrder();
+	};
+};
+
 
 // si estamos en el path del chat
 if( $('#chat').length ) {
@@ -41,8 +39,8 @@ if( $('#chat').length ) {
 
 	PrivatePub.unsubscribe("<%=@channel_name%>");
 	
-	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
-	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel}))%>');
+	panelsHolder.append('<%= subscribe_to @channel_name %>');
+	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel }))%>');
 
 	var messagesTitle     = $('.chat-converstion-title'),
       messagesContainer = $('.chat-main-container'),
@@ -51,11 +49,10 @@ if( $('#chat').length ) {
   messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
   $('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
 
-}
+};
 
 // ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
-
 PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	var chatPanel 	= $('#chat-channel-'+ data.channel.id ),
 			chatContent = chatPanel.find('.chat-panel-main-content');

@@ -1,4 +1,3 @@
-
 <div id="box-content" class="wrapper spaced">
   <div id="box-stream-post">
 
@@ -20,19 +19,19 @@ $(function() {
   <% if !current_user.self_register && show_joyride(3) != "1" %>
     
     var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
-    createModal( content, "overlay-small overlay-informative not-removable" );
+    createModal( content, "overlay-small overlay-informative" );
 
   <% elsif current_user.tour_network == false %>
 
     var tourContent = '<%= escape_javascript(render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "hRXdl0MHKoY", tour_type: "network" })) %>';
-    createModal( tourContent, "video-tutorial-overlay overlay-informative not-removable" );
+    createModal( tourContent, "video-tutorial-overlay overlay-informative" );
 
   <% elsif current_user.form_before_tour == false  %>
     <% case current_role %>
      <% when 'teacher' %>
-      createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
+      createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay');
     <% when 'student' %>
-      createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay not-removable');
+      createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay');
     <% end %>
   <% end %>
 
