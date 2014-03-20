@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user_courses
-     @ccc = current_user.courses.where(:network_id => current_network.id)
+     @ccc = current_user.courses.where(:network_id => current_network.id, :active_status => true)
   end
 
   ####### difininiendo variables de miembros de una red de forma global ########
