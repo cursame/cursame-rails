@@ -118,7 +118,7 @@
                       <%= image_tag("imagexx.png", alt: "", class: "avatar avatar-24") %>
                     <% end %>
 
-                    <%= truncate("#{user.name}", :omission => "...", :length => 26) || user.email %>
+                    <%= truncate("#{user.name}", :omission => "...", :length => 22) || user.email %>
                     <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
 
                   <% end %>

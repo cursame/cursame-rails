@@ -216,15 +216,18 @@ class HomeController < ApplicationController
   end
 
   def open_channel
+    @receiver_user_id = params[:id].to_i
+
     if params[:course]
-      @channel_name = "/messages/course_channel_"+ params[:id]
+      @course_channel = true
+      @channel_name = "/messages/course_channel_"+ @receiver_user_id.to_s
 
       users = Course.find(params[:id]).users
       ######## se agregan validadores de users para el exist #########
       users = users.keep_if{ |x| x != nil }
 
     else
-      @receiver_user_id = params[:id].to_i
+      @course_channel = false
       ids = [current_user.id, @receiver_user_id]
       @channel_name = get_unique_channel_users(ids)
       users = User.find(ids)

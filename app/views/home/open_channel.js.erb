@@ -1,34 +1,42 @@
 
 var panelsHolder = $('.chat-panels'),
 		chatExpanded = $('#chat'),
-		chatPanel = $('.chat-panel[data-panel-id="<%= @channel.id%>"]');
+		channel = "<%= @channel.channel_name %><%= @course_channel == true ? '?course=true' : ''%>",
+		channelExist = $.inArray( channel, Chat.activePanelsChannels);
 
 // No esta en home/chat
-if ( !chatExpanded.length && !chatPanel.length ) {
+if ( !chatExpanded.length && channelExist == -1 ) {
 	panelsHolder.append('<%= subscribe_to @channel_name %>');
 
-	if ( Chat.panelCount == 3 ) {
-		Chat.hiddenCount++;
-
-		if( $("#go-to-chats-url").length ) {
-			var pendingChats = $("#go-to-chats-url").attr('pendingChats');
-			$("#go-to-chats-url").attr('pendingChats', pendingChats + ' <%=@channel.channel_name%>');
-		} else {
+	if ( Chat.activePanelsCount == Chat.availableSpots ) {
+		if ( Chat.pendingPanelsCount == 0 ) {
 			panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+			Chat.moreReposition();
+		};
+
+		var pendingChannels = $.map( Chat.pendingPanelsChannels, function(item, index) {
+			return Chat.pendingPanelsChannels[index].channel;
+		});
+
+		if ( $.inArray( channel, pendingChannels) == -1 ) {
+			Chat.pendingPanelsCount++;
+			Chat.updatePendingConversations();
+			Chat.pendingPanelsChannels.push( { type: "<%= @course_channel == true ? 'course' : 'user'%>", channel: channel } );
 		};
 	};
 
-	if ( Chat.panelCount >= 0 && Chat.panelCount < 3 ) {
-		Chat.panelCount++;
+	if ( Chat.activePanelsCount < Chat.availableSpots ) {
 		var currPanel;
-		panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page, :receiver_user_id => @receiver_user_id }))%>');
+
+		panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page, :receiver_user_id => @receiver_user_id, :course_conversation => @course_channel }))%>');
 
 		currPanel = $('.chat-panel[data-panel-id="<%= @channel.id%>"]');
 
 		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
 		currPanel.find('input#mesage').focus();
 
-		Chat.reOrder();
+		Chat.activePanelsChannels.push( channel );
+		Chat.addPanel();
 	};
 };
 
@@ -86,8 +94,6 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 			}
 		}
 	}
-
-
 
 	/* Si esta en /home/chat
   ----------------------------------*/
