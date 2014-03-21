@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
 
   def index
     
-    @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
+    @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
     #alfredot_rifa_free_pro_forever
@@ -19,8 +19,7 @@ class CoursesController < ApplicationController
   end
   
   def my_courses
-    @member = MembersInCourse.new
-
+     @member = MembersInCourse.new
      @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
     respond_to do |format|
       format.js
@@ -34,7 +33,14 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.js 
     end
+  end
 
+  def my_old_courses
+   @member = MembersInCourse.new
+   @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal'), :active_status => false).search(params[:search])
+   respond_to do |format|
+      format.js 
+    end
   end
    
 

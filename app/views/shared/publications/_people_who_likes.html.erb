@@ -1,0 +1,12 @@
+  <center><h2>USUARIOS A LOS QUE LES GUSTA ESTO</h2></center>
+  <% votes = publication.publication.votes.up %>
+  <% votes.count %>
+  <% votes.each do |v| %>
+    <% user = User.find(v.voter_id) %>
+    <%= link_to show_user_path(user.personal_url) do %>
+    <li><%= avatar('user', '45', 'no', v.voter_id, "avatar", "no", "no") %>
+        <%= user.name %>
+    </li>
+    <%end%>
+  <%end%>
+ </ul>

@@ -123,6 +123,7 @@ class HomeController < ApplicationController
        end
      end
 
+
      def destroy_wall
        publication = Wall.find(params[:id])
        if !publication.nil?

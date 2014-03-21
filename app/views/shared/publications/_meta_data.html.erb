@@ -31,7 +31,27 @@
     <span>&middot;</span>
     <div class="meta-data">
       <span id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></span>
+      <% if publication.publication.votes.up.size == 0 %>
       Me gusta
+      <%else%>
+      <%= link_to "Me gusta", "", class: "counter-like-#{publication.publication.id}-triger" %>
+      <%end%>
+
+      <script>
+        $(".counter-like-<%= publication.publication.id %>-triger").click(function(){
+          var valxc = $('#counter-like-<%= publication.id%>').html();
+          var integer = valxc * 1
+          if(integer == 0){
+            return false;
+          } else { 
+          var content = '<%= escape_javascript(render( :partial => "/shared/publications/people_who_likes", :locals => {:publication => publication })) %>';
+          createModal(content, "overlay-small overlay-informative");
+          return false;
+
+          }
+      
+        });
+      </script>
     </div>
     <span>&middot;</span>
     <div class="meta-data">
