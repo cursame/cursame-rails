@@ -242,7 +242,6 @@ class HomeController < ApplicationController
   end
 
     def add_new_mesage
-      
       @message = Mesage.create!(:mesage => params[:mesage], :user_id =>current_user.id,:channel_id =>params[:channel_id])
 
       @az = @message

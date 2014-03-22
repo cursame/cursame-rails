@@ -1,6 +1,11 @@
-  <center><h2>USUARIOS A LOS QUE LES GUSTA ESTO</h2></center>
+<div class="overlay-header">
+  <div class="overlay-title">
+    <h4>Usuarios a los que les gusta esto</h4>
+  </div>
+  <div class="close-overlay"><%= icon('x-close') %></div>
+</div>
+<div class="overlay-content">
   <% votes = publication.publication.votes.up %>
-  <% votes.count %>
   <% votes.each do |v| %>
     <% user = User.find(v.voter_id) %>
     <%= link_to show_user_path(user.personal_url) do %>
@@ -9,4 +14,4 @@
     </li>
     <%end%>
   <%end%>
- </ul>
+</div>

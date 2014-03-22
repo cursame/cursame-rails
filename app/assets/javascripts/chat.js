@@ -11,7 +11,6 @@ Chat = {
     var winWidth = $(window).width() - 400,
         spots = Math.floor(winWidth / (Chat.panelWidth + Chat.panelSeparation / 2));
 
-    console.log(winWidth, spots);
     Chat.availableSpots = spots;
   },
   reOrder: function() {
@@ -19,10 +18,8 @@ Chat = {
 
     panels.each(function(index, el) {
       index++;
-      var item = $(el),
-          minimized = item.hasClass('active');
+      var item = $(el);
 
-      console.log(minimized);
       item.css('right', (Chat.panelWidth * index - Chat.panelWidth) + ( Chat.panelSeparation * index) );
     });
   },
@@ -38,11 +35,11 @@ Chat = {
 
     panel.remove();
     
-    $.each( Chat.activePanelsChannels, function(index, val) {
-      if ( val == channel ) {
-        Chat.activePanelsChannels.splice(index, 1);
-      };
-    });
+    for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
+      if ( Chat.activePanelsChannels[i].channel == channel ) {
+        Chat.activePanelsChannels.splice(i, 1);
+      };  
+    };
 
     PrivatePub.unsubscribe(channel);
     Chat.activePanelsCount--;
@@ -58,52 +55,138 @@ Chat = {
       var chanToOpen = Chat.pendingPanelsChannels[0];
 
       if ( chanToOpen.type == "course" ) {
-        //"/messages/course_channel_88?course=true"
-        var idCourse = chanToOpen.channel.split('_')[2].split('?')[0];
-        Chat.openChannel(idCourse, "course");
-      } else {
-        //"/messages/users_channel_18_29" and "/messages/users_channel_17_18"
-        var string = chanToOpen.channel,
-            a = string.split('_')[2],
-            b = string.split('_')[3];
+        var ID = Chat.parseChannelID( "course", chanToOpen.channel, currentUserID );
+        Chat.openChannel( ID, "course");
 
-        if ( a == currentUserID ) {
-          Chat.openChannel( b, "user");
-        } else {
-          Chat.openChannel( a, "user");
-        };
+      } else {
+        var ID = Chat.parseChannelID( "user", chanToOpen.channel, currentUserID );
+        Chat.openChannel( ID, "user");
       };
 
       Chat.pendingPanelsCount--;
       Chat.pendingPanelsChannels.splice(0, 1);
     };
   },
-  openChannel: function(id, type) {
+  parseChannelID: function( type, url, currentUserID ) {
+    if ( type == "course" ) {
+      //"/messages/course_channel_88?course=true"
+      return url.split('_')[2].split('?')[0];
+    } else {
+      //"/messages/users_channel_18_29" and "/messages/users_channel_17_18"
+      var a = url.split('_')[2],
+          b = url.split('_')[3];
+
+      if ( a == currentUserID ) {
+        return b;
+      } else {
+        return a;
+      };
+    };
+  },
+  openChannel: function(id, type, f) {
     var baseURL = "/home/open_channel/",
         finalURL;
+    type == "course" ? finalURL = baseURL + id + "?course=true" : finalURL = baseURL + id;
 
-    if ( type == "course" ) {
-      finalURL = baseURL + id + "?course=true";
-    } else if ( type == "user" ) {
-      finalURL = baseURL + id;
-    };
-    
-    $.get( finalURL, function(data) {
+    var def = $.getScript(finalURL);
+
+    def.done(function() {
       Chat.moreReposition();
       Chat.updatePendingConversations();
+
+      if ( typeof f === 'function' && f != undefined ) {
+        f();
+      };
     });
   },
   updatePendingConversations: function() {
     var pendingPanelsTab = $("#go-to-chats-url");
     if ( Chat.pendingPanelsCount > 0 ) {
-      pendingPanelsTab.text( Chat.pendingPanelsCount )
+      pendingPanelsTab.find('.counter').text( Chat.pendingPanelsCount )
     } else {
       pendingPanelsTab.remove();
     }
   },
   minimizePanel: function( obj ) {
     $(obj).closest('.chat-panel').toggleClass('active');
+  },
+  switchPanel: function( obj ) {
+    var $this = $(obj),
+        channel = $this.data('channel'),
+        channelType = $this.data('channel-type')
+        currentUserID = $this.data('current-user-id'),
+        chatPanels = $('.chat-panel'),
+
+        panelToBeRemoved = $(chatPanels[ chatPanels.length - 1 ]),
+        channelOnPanel = panelToBeRemoved.data('channel');
+
+    Chat.activePanelsCount--;
+
+    for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
+      if ( Chat.activePanelsChannels[i].channel == channelOnPanel ) {
+        var flyingChannel = {};
+        flyingChannel.type = Chat.activePanelsChannels[i].type;
+        flyingChannel.channel = Chat.activePanelsChannels[i].channel;
+        flyingChannel.name = Chat.activePanelsChannels[i].name;
+        Chat.activePanelsChannels.splice(i, 1);
+        console.log("Holaa", flyingChannel);
+      };
+    };
+
+    for (var i = 0; Chat.pendingPanelsChannels.length - 1 >= i; i++) {
+      if ( Chat.pendingPanelsChannels[i].channel == channel ) {
+        Chat.pendingPanelsChannels.splice(i, 1);
+      };
+    };
+
+    $this.closest('#go-to-chats-url').removeClass('active');
+    panelToBeRemoved.remove();
+
+    var ID = Chat.parseChannelID( channelType, channel, currentUserID );
+
+    Chat.openChannel( ID, channelType, function() {
+      Chat.pendingPanelsChannels.push( flyingChannel );
+      $this.replaceWith('<li class="activable" data-channel="' +flyingChannel.channel+ '" data-channel-type="' +flyingChannel.type+ '" data-current-user-id="' +currentUserID+ '" onclick="Chat.switchPanel(this)">' +flyingChannel.name+ '</li>');
+    });
+    
+  },
+  channelExistActive: function( channel ) {
+    if ( Chat.activePanelsChannels.length == 0) {
+      return false;
+    } else {
+      var check = false;
+
+      for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
+        if ( Chat.activePanelsChannels[i].channel == channel ) {
+          check = true;
+        };
+      };
+
+      return check;
+    };
+  },
+  channelExistPending: function( channel ) {
+    if ( Chat.pendingPanelsChannels.length == 0) {
+      return false;
+    } else {
+      var check = false;
+
+      for (var i = 0; Chat.pendingPanelsChannels.length - 1 >= i; i++) {
+        if ( Chat.pendingPanelsChannels[i].channel == channel ) {
+          check = true;
+        };
+      };
+
+      return check;
+    };
   }
 };
 
 Chat.assignSpots();
+
+// $(function() {
+//   $('.chat-panels').on('click', '#go-to-chats-url .counter', function(event) {
+//     event.preventDefault();
+//     $(this).parent().toggleClass('active');
+//   });
+// });

@@ -1,11 +1,17 @@
+<% if @course_channel
+	namePendingChannel = Course.find(@receiver_user_id).title
+else
+	namePendingChannel = User.find(@receiver_user_id).name
+end %>
 
 var panelsHolder = $('.chat-panels'),
 		chatExpanded = $('#chat'),
 		channel = "<%= @channel.channel_name %><%= @course_channel == true ? '?course=true' : ''%>",
-		channelExist = $.inArray( channel, Chat.activePanelsChannels);
+		typeChannel = "<%= @course_channel == true ? 'course' : 'user' %>",
+		channelExist = Chat.channelExistActive(channel);
 
 // No esta en home/chat
-if ( !chatExpanded.length && channelExist == -1 ) {
+if ( !chatExpanded.length && !channelExist ) {
 	panelsHolder.append('<%= subscribe_to @channel_name %>');
 
 	if ( Chat.activePanelsCount == Chat.availableSpots ) {
@@ -18,16 +24,18 @@ if ( !chatExpanded.length && channelExist == -1 ) {
 			return Chat.pendingPanelsChannels[index].channel;
 		});
 
-		if ( $.inArray( channel, pendingChannels) == -1 ) {
+	
+		if ( !Chat.channelExistPending(channel) ) {
 			Chat.pendingPanelsCount++;
 			Chat.updatePendingConversations();
-			Chat.pendingPanelsChannels.push( { type: "<%= @course_channel == true ? 'course' : 'user'%>", channel: channel } );
+			Chat.pendingPanelsChannels.push( { type: typeChannel, channel: channel, name: "<%= namePendingChannel %>" } );
+
+			// $('.pending-channels-list').append('<li data-channel="' +channel+ '" data-channel-type="' +typeChannel+ '" data-current-user-id="<%= current_user.id %>" onclick="Chat.switchPanel(this)"><%= namePendingChannel %></li>');
 		};
 	};
 
 	if ( Chat.activePanelsCount < Chat.availableSpots ) {
 		var currPanel;
-
 		panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page, :receiver_user_id => @receiver_user_id, :course_conversation => @course_channel }))%>');
 
 		currPanel = $('.chat-panel[data-panel-id="<%= @channel.id%>"]');
@@ -35,7 +43,7 @@ if ( !chatExpanded.length && channelExist == -1 ) {
 		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
 		currPanel.find('input#mesage').focus();
 
-		Chat.activePanelsChannels.push( channel );
+		Chat.activePanelsChannels.push( { type: typeChannel, channel: channel, name: "<%= namePendingChannel %>" } );
 		Chat.addPanel();
 	};
 };

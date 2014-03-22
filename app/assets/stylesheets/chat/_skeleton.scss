@@ -251,10 +251,31 @@ cursor: pointer;
 }
 
 #go-to-chats-url{
-	height: 19px;
 	bottom: 0px;
 	position: fixed;
-	padding: 4px 10px;
+	z-index: 30;
+
+	.counter {
+		display: block;
+		padding: 4px 10px;
+	}
+
+	.pending-dropdown {
+		position: absolute;
+		bottom: 100%;
+		right: 0;
+		margin-bottom: 5px;
+		width: 170px;
+		display: none;
+
+		.pending-channels-list li {
+			padding: 5px;
+		}
+	}
+
+	&.active .pending-dropdown {
+		display: block;
+	}
 }
 
 .imageChatDrop {
