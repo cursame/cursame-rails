@@ -13,7 +13,7 @@
 	        <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">Para poder utilizar tú cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo, solo has click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.</p><br/><br/>
 
 	        <%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain) do %>
-						<img src="https://app.cursa.me/assets/mails/confirmation_instructions/confirm-button.jpg" alt="Activar cuenta">
+						<img src="http://app.cursa.me/assets/mails/confirmation_instructions/confirm-button.jpg" alt="Activar cuenta">
 	        <% end %>
 	        <br>
 	        <br>
