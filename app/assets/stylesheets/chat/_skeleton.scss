@@ -31,9 +31,9 @@
 }
 
 .chat-panel{
+	width: 280px;
 	position: fixed;
 	bottom: 0px;
-	width: 280px;
 	z-index: 20;
 	
 	&.active {
@@ -43,9 +43,16 @@
 	}
 
 	.chat-panel-header {
-		padding: 3px 10px 5px 10px;
+		padding: 4px 10px 3px 8px;
 		margin: -1px -1px 0 -1px;
 		position: relative;
+		
+		.link-chat {
+			max-width: 220px;
+			height: 12px;
+			overflow: hidden;
+			@include inline-block;
+		}
 
 		.chat-panel-actions {
 			position: absolute;
@@ -64,7 +71,7 @@
 	}
 	
 	.chat-panel-main-content {
-		height: 250px;
+		height: 230px;
 		overflow-y: scroll;
 	}
 	.chat-messages-container {
@@ -222,54 +229,53 @@ cursor: pointer;
 // --------------------------------------------------------------- //
 ////////////////////// terminan labels de chat //////////////////////
 
-#chat-messages .insideChat p { 
-	max-width: 300px;
-	color: #000;
-	margin: -3px 12px 0 12px!important;
-	z-index: -1;
-	font-size: 14px;
-}
+#chat-messages .insideChat{
+	p { 
+		max-width: 300px;
+		color: #000;
+		margin: -3px 12px 0 12px!important;
+		z-index: -1;
+		font-size: 14px;
+	}
 
-#chat-messages .insideChat .insideChatText .imgChat img {
-	width: 30px!important;
-	height: 30px!important;
-	/*margin-top: -13px!important;*/
-	margin-top: -3px!important;
-	position: relative;
-	display: block;
-	margin-left: -7px;
-	border: 1px solid #F7F7F7;
+	.insideChatText .imgChat img {
+		width: 30px!important;
+		height: 30px!important;
+		/*margin-top: -13px!important;*/
+		margin-top: -3px!important;
+		position: relative;
+		display: block;
+		margin-left: -7px;
+		border: 1px solid #F7F7F7;
+	}
 }
 
 #go-to-chats-url{
-    width: 100px;
-    height:20px;
-    bottom: 0px;
-    right: 275px;
-    position: fixed;
-    padding: 4px 10px;
-    color: #fff;
-    background: #4497DA;
-    margin-left: 5px;
-    font-weight: 100;
-    display: block;
-    margin-right: 20px;
-    overflow: hidden;
-    -webkit-backface-visibility: hidden;
-}
+	bottom: 0px;
+	position: fixed;
+	z-index: 30;
 
-#go-to-chats-url > span {
-	width: 100px;
-	display: block;
-	margin-left: -9px;
-	padding: 6px 8px 6px 9px;
-	margin-top: -3px;
-	cursor: pointer;
-}
+	.counter {
+		display: block;
+		padding: 4px 10px;
+	}
 
-#go-to-chats-url > span a{
-	cursor: pointer !important;
-	color:#FFF;
+	.pending-dropdown {
+		position: absolute;
+		bottom: 100%;
+		right: 0;
+		margin-bottom: 5px;
+		width: 170px;
+		display: none;
+
+		.pending-channels-list li {
+			padding: 5px;
+		}
+	}
+
+	&.active .pending-dropdown {
+		display: block;
+	}
 }
 
 .imageChatDrop {

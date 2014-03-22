@@ -60,6 +60,7 @@ $(function() {
 
 	$(window).on('resize', function() {
     overlayPositioning( $('div.overlay') );
+    Chat.assignSpots();
   });
 
 	/* Show delivery submit form */

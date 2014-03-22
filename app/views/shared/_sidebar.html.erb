@@ -111,16 +111,14 @@
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>
-                  <%= link_to open_channel_path(user.id), :remote => true do %>
+                  <%= link_to open_channel_path(user.id), remote: true, class: "open-chat-panel", data: { panel_type: "user", channel_id: user.id  } do %>
                     <% if user.avatar.file != nil && File.exist?(user.avatar.file.file) %> 
                       <%= image_tag("#{user.avatar.mini}", alt: "", class: "avatar avatar-24") %>
-                    <%else%>
+                    <% else %>
                       <%= image_tag("imagexx.png", alt: "", class: "avatar avatar-24") %>
+                    <% end %>
 
-                      
-                    <%end%>
-
-                    <%= truncate("#{user.name}", :omission => "...", :length => 26) || user.email %>
+                    <%= truncate("#{user.name}", :omission => "...", :length => 22) || user.email %>
                     <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
 
                   <% end %>

@@ -1,9 +1,15 @@
-<div id="chat-channel-<%= channel.id%>" class="chat-panel active">
-	<div class="chat-panel-header">
-		<h6><%= truncate(get_chat_title(channel), :omission => "...", :length => 35) %></h6>
+<div id="chat-channel-<%= channel.id%>" class="chat-panel active chat-panel-item" data-panel-id="<%= channel.id%>" data-channel="<%= channel.channel_name %>">
+	<div class="chat-panel-header" onclick="Chat.minimizePanel(this)">
+		<% if course_conversation %>
+			<% course = Course.find receiver_user_id %>
+			<%= link_to course.title, course_path(course.id), class: "link-chat" %>
+		<% else %>
+			<% user = User.find receiver_user_id %>
+			<%= link_to user.name, show_user_path(user.personal_url), class: "link-chat" %>
+		<% end %>
 		<div class="chat-panel-actions">
 			<div class="chat-panel-action">
-				<a href="" id="close-chat-<%= channel.id%>" title="Cerrar"><%= icon('w-cross-9') %></a>
+				<a class="close-chat-panel" title="Cerrar" data-channel="<%= channel.channel_name %><%= @course_channel == true ? '?course=true' : '' %>" data-current-user-id="<%= current_user.id %>" onclick="Chat.removePanel(this)"><%= icon('w-cross-9') %></a>
 			</div>
 		</div>
 	</div>
@@ -17,109 +23,13 @@
 				<% end %>
 
 				<div class="chat-zone-messages chat-messages-container" id="chat-zone-messages-channel<%= channel.id%>">
-					<%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages, :on_panel => "hola" })%>
+					<%= render(:partial => '/shared/chat/messages', :locals => {:messages => messages, :on_panel => "hola" })%>
 				</div>
 			</div>
 			
 			<div class="chat-zone-footer">
-			<%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name =>channel.channel_name,:channel_id=>channel.id} %>
+				<%= render :partial => "shared/chat/add_message_form", :locals => { :channel_name => channel.channel_name, :channel_id => channel.id } %>
 			</div>
 		</div>
 	</div>
 </div>
-
-<script>
-	var sizeOfWindow = 255, separacion;
-
-	if(!$('#chat').length){
-		
-	}else{
-		$("#chat-zone-<%= channel.id%>").hide();
-	}
-	sizeOfWindow =  $("#chat-channel-<%= channel.id%>").outerWidth();
-	separacion = 20;
-
-
-	if ( window.chatPanelsCount > 1) {
-		var space = 20 + sizeOfWindow + separacion;
-
-		$("#chat-channel-<%= channel.id%>").css('right', space * (window.chatPanelsCount - 1) + 'px');
-	} else {
-		$("#chat-channel-<%= channel.id%>").css('right', separacion + 'px');
-	}
-
-	
-	$("#chat-channel-<%= channel.id%> .chat-panel-header").click(function () {
-		var panel = $(this).closest('.chat-panel');
-
-		panel.toggleClass('active');
-	});
-
-	// cerramos el chat
-	$("#close-chat-<%= channel.id%>").click(function (e) {
-		e.preventDefault();
-		
-		// Obtenemos la posicion del panel que se borrara
-		var lastChatLocation = $("#chat-channel-<%= channel.id%>").position();
-
-		$("#chat-channel-<%= channel.id%>").remove();
-		PrivatePub.unsubscribe("<%=channel.channel_name%>");
-		window.chatPanelsCount--;
-
-		// Se recorren los otros paneles a la derecha
-		var chatPanels = $(".chat-panel");
-		for (var i = 0; i < chatPanels.length; i++) {
-			var currChatLocation = $(chatPanels[i]).position();
-
-			// Si el panel actual esta a la derecha entonces hay que recorrerlo
-			if(currChatLocation.left < lastChatLocation.left) {
-				$(chatPanels[i]).css({
-					'left': lastChatLocation.left
-				});
-
-				lastChatLocation = currChatLocation;
-			}
-		};
-
-		// Checamos si hay canales que no se pudieron abrir
-		if($("#go-to-chats-url").length) {
-
-			// Obtenemos los canales que estaba pendientes
-			var pendingChatsIds = $("#go-to-chats-url").attr('pendingChats').split(' ');
-
-			// Abrimos el ultimo canal que no se pudo abrir
-			var pendingChatInfo = pendingChatsIds[pendingChatsIds.length - 1].split("/")[2].split("_");
-			var urlPendingChat = "/home/open_channel/" + pendingChatInfo[pendingChatInfo.length - 1];
-
-			// Si el ultimo chat es de un curso
-			if(pendingChatInfo.length == 3) {
-				urlPendingChat = urlPendingChat + "?course=true";
-			}
-
-			pendingChatsIds.pop();
-
-			var newPendingChats = '';
-			for (var i = 0; i < pendingChatsIds.length; i++) {
-				newPendingChats = newPendingChats + pendingChatsIds[i];
-			};
-			$("#go-to-chats-url").attr('pendingChats', newPendingChats);
-
-			$.get(urlPendingChat, function() {
-				window.pendingChatsCount--;
-
-				// Si ya no hay chats pendientes entonces quitamos el cuadro de 'ver mas'
-				if(window.pendingChatsCount == 0) {
-					$("#go-to-chats-url").remove();
-				}
-			});
-		}
-	});
-	
-	$('.chat-panel').mouseenter( function() {
-		$(this).find('.closeChat').show();
-	});
-	$('.chat-panel').mouseleave( function() {
-		$(this).find('.closeChat').hide();
-	});
-	
-</script>
