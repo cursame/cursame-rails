@@ -17,6 +17,7 @@ class HomeController < ApplicationController
   end
 
   def blog
+    redirect_to "http://cursame.tumblr.com/"
   end
 
   ###### destroye sesiones caducadas
