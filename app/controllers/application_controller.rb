@@ -215,7 +215,7 @@ class ApplicationController < ActionController::Base
 
     @permisos = current_user.permissionings.last
     @role = Role.where(:id => @permisos.role_id)
-    if @role.count != 0 && @role.title != nil
+    if @role.count != 0 && defined?(@role.title)
     @role.title
     else
     @role = 'student'
