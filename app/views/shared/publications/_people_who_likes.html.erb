@@ -8,7 +8,7 @@
   <% votes = publication.publication.votes.up %>
   <% votes.each do |v| %>
     <% user = User.where(:id => v.voter_id) %>
-    <% if user.size != 0 %>
+    <% if user.count != 0 %>
     <%= link_to show_user_path(user.personal_url) do %>
     <li><%= avatar('user', '45', 'no', v.voter_id, "avatar", "no", "no") %>
         <%= user.name %>
