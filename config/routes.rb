@@ -146,7 +146,6 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   
   #### destroy user
   get "users/destroy_user_with_parts/:id", :to => "users#destroy_user_with_parts", :as => :destroy_user_with_parts
-
   
 
   ##### llamadas por ayax rapidas en rails
@@ -311,7 +310,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   # filtro del wall
 
   get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
-
+  
   #manejo de usuarios en las networks
   resources :networks_users do
    collection do

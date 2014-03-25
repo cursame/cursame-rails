@@ -190,6 +190,7 @@ class User < ActiveRecord::Base
       |comment|
       comment.destroy
     end
+
   end
 
   def name
