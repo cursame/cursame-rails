@@ -1,4 +1,4 @@
-<div id="chat-channel-<%= channel.id%>" class="chat-panel active chat-panel-item" data-panel-id="<%= channel.id%>" data-channel="<%= channel.channel_name %>">
+<div id="chat-channel-<%= channel.id%>" class="chat-panel active chat-panel-item" data-panel-id="<%= channel.id%>" data-channel="<%= channel.channel_name %><%= @course_channel == true ? '?course=true' : '' %>">
 	<div class="chat-panel-header" onclick="Chat.minimizePanel(this)">
 		<% if course_conversation %>
 			<% course = Course.find receiver_user_id %>
