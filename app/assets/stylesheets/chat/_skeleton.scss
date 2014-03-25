@@ -48,7 +48,7 @@
 		position: relative;
 		
 		.link-chat {
-			max-width: 220px;
+			max-width: 210px;
 			height: 12px;
 			overflow: hidden;
 			@include inline-block;
@@ -190,7 +190,7 @@ background: #006696;
 
 	#mesage { 
 		padding: 5px;
-		width: 280px;
+		width: 250px
 	}
 }
 .chatSingle {

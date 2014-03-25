@@ -8,7 +8,7 @@ Chat = {
   panelWidth: 250,
   panelSeparation: 10,
   assignSpots: function() {
-    var winWidth = $(window).width() - 300,
+    var winWidth = $(window).width() - 400,
         spots = Math.floor(winWidth / (Chat.panelWidth + Chat.panelSeparation / 2));
 
     Chat.availableSpots = spots;
