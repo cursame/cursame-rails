@@ -7,15 +7,15 @@
 <div class="overlay-content">
   <% votes = publication.publication.votes.up %>
   <% votes.each do |v| %>
-    <% user = User.where(:id => v.voter_id) %>
-    <% if user.count != 0 %>
-    <% if defined?(user) %>
-    <%= link_to show_user_path(user.personal_url) do %>
-    <li><%= avatar('user', '45', 'no', v.voter_id, "avatar", "no", "no") %>
-        <%= user.name %>
+    <%# user = User.where(:id => v.voter_id) %>
+    <%# if user.count != 0 %>
+    <%#if defined?(user) %>
+    <%#= link_to show_user_path(user.personal_url) do %>
+    <li><%#= avatar('user', '45', 'no', v.voter_id, "avatar", "no", "no") %>
+        <%#= user.name %>
     </li>
-    <%end%>
-    <%end%>
-    <%end%>
+    <%#end%>
+    <%#end%>
+    <%#end%>
   <%end%>
 </div>
