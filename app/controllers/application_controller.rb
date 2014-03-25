@@ -215,17 +215,9 @@ class ApplicationController < ActionController::Base
 
     @permisos = current_user.permissionings.last
     @role = Role.find_by_id(@permisos.role_id)
-    @role.title
-     #case @role.title
-      # when 'admin'
-       # @role_t = "Administrador"
-       #when 'student'
-       # @role_t = "Estudiante"
-       #when 'teacher'
-        #@role_t = "Profesor"
-       #else
-        #@role.title
-     #end
+    @role.title if @role.title != nil
+    @role = 'student'
+   
   end
   ###### comandos de generación de actividades
   def activation_activity
