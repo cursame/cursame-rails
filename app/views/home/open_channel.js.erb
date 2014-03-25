@@ -23,14 +23,22 @@ if ( !chatExpanded.length && !channelExist ) {
 		var pendingChannels = $.map( Chat.pendingPanelsChannels, function(item, index) {
 			return Chat.pendingPanelsChannels[index].channel;
 		});
-
 	
 		if ( !Chat.channelExistPending(channel) ) {
 			Chat.pendingPanelsCount++;
-			Chat.updatePendingConversations();
-			Chat.pendingPanelsChannels.push( { type: typeChannel, channel: channel, name: "<%= namePendingChannel %>" } );
+			Chat.updatePendingConversations('<%= current_user.id %>');
 
-			// $('.pending-channels-list').append('<li data-channel="' +channel+ '" data-channel-type="' +typeChannel+ '" data-current-user-id="<%= current_user.id %>" onclick="Chat.switchPanel(this)"><%= namePendingChannel %></li>');
+			var dataChannel = {
+				type: typeChannel,
+				channel: channel,
+				name: "<%= namePendingChannel %>",
+				state: "pending"
+			};
+
+			Chat.pendingPanelsChannels.push( dataChannel );
+			$.cookie( dataChannel.channel, JSON.stringify(dataChannel), { expires: 1, path: '/' });
+
+			$('.pending-channels-list').append('<li data-channel="' +channel+ '" data-channel-type="' +typeChannel+ '" data-current-user-id="<%= current_user.id %>" onclick="Chat.switchPanel(this)"><%= namePendingChannel %></li>');
 		};
 	};
 
@@ -43,8 +51,15 @@ if ( !chatExpanded.length && !channelExist ) {
 		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
 		currPanel.find('input#mesage').focus();
 
-		Chat.activePanelsChannels.push( { type: typeChannel, channel: channel, name: "<%= namePendingChannel %>" } );
-		Chat.addPanel();
+		var dataChannel = {
+			type: typeChannel,
+			channel: channel,
+			name: "<%= namePendingChannel %>",
+			state: "expanded"
+		};
+		
+		Chat.activePanelsChannels.push( dataChannel );
+		Chat.addPanel( dataChannel );
 	};
 };
 
@@ -108,7 +123,6 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	if( $('#chat').length ) {
 
 		append_new_message_tpl( $('#chat-messages') );
-		
 		$('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
 	}
 
@@ -118,15 +132,6 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 		append_new_message_tpl( messagesContainer );
 		chatPanel.find('.chat-panel-main-content').scrollTop( messagesContainer.prop('scrollHeight') + 30 );
 	}
-    $('#new-chat-pannel-message')[0].reset();
-
-	// reseteamos el formulario
-	chatPanel.find('input#mesage').val('');
-
-	// reseteamos el formulario general
-	$('div.shareMSJ form input[name="mesage"]').val('');
-	// rompe el proceso para no poner repetidos
-    //this.abort();
 
 
 });

@@ -98,6 +98,9 @@ window.Notice = function(type, message)  {
 
 // notificaciones push usando private_pub
 $(function() {
+
+  Chat.recoverConversations( Cursame.userId );
+
   // data.sender.id = data.reciver.id return
 	// Se suscribe al canal para las notificaciones del chat
   if (typeof Cursame === 'undefined') {

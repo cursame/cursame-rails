@@ -106,7 +106,18 @@ $(function() {
     showOtherMonths: true,
     dateFormat: 'dd/mm/yy',
     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+    beforeShow: function(input, inst) {
+      var cal = inst.dpDiv;
+      var top  = $(this).offset().top + $(this).outerHeight();
+      var left = $(this).offset().left;
+      setTimeout(function() {
+        cal.css({
+            'top' : top,
+            'left': left
+        });
+      }, 10);
+    }
   });
 
   $('#<%= random_id %>').validate();

@@ -5,7 +5,7 @@ Chat = {
   pendingPanels: false,
   pendingPanelsCount: 0,
   pendingPanelsChannels: [],
-  panelWidth: 280,
+  panelWidth: 250,
   panelSeparation: 10,
   assignSpots: function() {
     var winWidth = $(window).width() - 400,
@@ -33,6 +33,7 @@ Chat = {
         channel = $this.data('channel'),
         currentUserID = $this.data('current-user-id');
 
+    $.removeCookie(channel, { path: '/' });
     panel.remove();
     
     for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
@@ -46,9 +47,15 @@ Chat = {
     Chat.reOrder();
     Chat.showPendingPanels( currentUserID );
   },
-  addPanel: function() {
+  addPanel: function( data ) {
+    var previousChannels = Chat.getConversationsFromCookies(),
+        add = true;
+
     Chat.activePanelsCount++;
     Chat.reOrder();
+
+    $.removeCookie(data.channel, { path: '/' });
+    $.cookie( data.channel, JSON.stringify(data), { expires: 1, path: '/' });
   },
   showPendingPanels: function( currentUserID ) {
     if ( Chat.pendingPanelsCount > 0 ) {
@@ -60,11 +67,12 @@ Chat = {
 
       } else {
         var ID = Chat.parseChannelID( "user", chanToOpen.channel, currentUserID );
-        Chat.openChannel( ID, "user");
+        Chat.openChannel( ID, "user", "", currentUserID);
       };
 
       Chat.pendingPanelsCount--;
       Chat.pendingPanelsChannels.splice(0, 1);
+      Chat.updatePendingConversations( currentUserID );
     };
   },
   parseChannelID: function( type, url, currentUserID ) {
@@ -83,7 +91,7 @@ Chat = {
       };
     };
   },
-  openChannel: function(id, type, f) {
+  openChannel: function(id, type, f, currentUserID) {
     var baseURL = "/home/open_channel/",
         finalURL;
     type == "course" ? finalURL = baseURL + id + "?course=true" : finalURL = baseURL + id;
@@ -92,23 +100,57 @@ Chat = {
 
     def.done(function() {
       Chat.moreReposition();
-      Chat.updatePendingConversations();
+      Chat.updatePendingConversations( currentUserID );
 
       if ( typeof f === 'function' && f != undefined ) {
         f();
       };
     });
   },
-  updatePendingConversations: function() {
-    var pendingPanelsTab = $("#go-to-chats-url");
+  updatePendingConversations: function( currentUserID ) {
+    var pendingPanelsTab = $("#go-to-chats-url"),
+        listPendings = pendingPanelsTab.find('.pending-channels-list');
+
     if ( Chat.pendingPanelsCount > 0 ) {
       pendingPanelsTab.find('.counter').text( Chat.pendingPanelsCount )
+      listPendings.html('');
+
+      for (var i = 0; Chat.pendingPanelsChannels.length - 1 >= i; i++) {
+        listPendings.append(' <li class="activable" data-channel="' +Chat.pendingPanelsChannels[i].channel+ '" data-channel-type="' +Chat.pendingPanelsChannels[i].type+ '" data-current-user-id="' +currentUserID+ '" onclick="Chat.switchPanel(this)">' +Chat.pendingPanelsChannels[i].name+ '</li> ')
+      };
+
     } else {
       pendingPanelsTab.remove();
     }
   },
   minimizePanel: function( obj ) {
-    $(obj).closest('.chat-panel').toggleClass('active');
+    var $this = $(obj),
+        panel = $this.closest('.chat-panel'),
+        channelOnPanel = panel.data('channel');
+
+    for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
+      if ( Chat.activePanelsChannels[i].channel == channelOnPanel ) {
+        var position = i;
+      };
+    };
+
+    var cookie = $.cookie(channelOnPanel);
+
+    if ( cookie ) {
+      var objCookie = JSON.parse(cookie);
+
+      if ( panel.hasClass('active') ) {
+        panel.removeClass('active');
+        objCookie.state = "minimized";
+        Chat.activePanelsChannels[position].state = "minimized";
+      } else {
+        panel.addClass('active');
+        objCookie.state = "expanded";
+        Chat.activePanelsChannels[position].state = "expanded";
+      };
+
+      $.cookie( objCookie.channel, JSON.stringify(objCookie), { path: '/' });
+    };
   },
   switchPanel: function( obj ) {
     var $this = $(obj),
@@ -118,18 +160,23 @@ Chat = {
         chatPanels = $('.chat-panel'),
 
         panelToBeRemoved = $(chatPanels[ chatPanels.length - 1 ]),
-        channelOnPanel = panelToBeRemoved.data('channel');
+        channelOnPanel = panelToBeRemoved.data('channel'),
+
+        activeCookie = JSON.parse($.cookie(channelOnPanel)),
+        pendingCookie = JSON.parse($.cookie(channel));
+
+    activeCookie.state = "pending";
+    pendingCookie.state = "expanded";
+
+    $.cookie( activeCookie.channel, JSON.stringify(activeCookie), { path: '/' });
+    $.cookie( pendingCookie.channel, JSON.stringify(pendingCookie), { path: '/' });
 
     Chat.activePanelsCount--;
 
     for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
       if ( Chat.activePanelsChannels[i].channel == channelOnPanel ) {
-        var flyingChannel = {};
-        flyingChannel.type = Chat.activePanelsChannels[i].type;
-        flyingChannel.channel = Chat.activePanelsChannels[i].channel;
-        flyingChannel.name = Chat.activePanelsChannels[i].name;
+        var flyingChannel = Chat.activePanelsChannels[i];
         Chat.activePanelsChannels.splice(i, 1);
-        console.log("Holaa", flyingChannel);
       };
     };
 
@@ -142,13 +189,13 @@ Chat = {
     $this.closest('#go-to-chats-url').removeClass('active');
     panelToBeRemoved.remove();
 
-    var ID = Chat.parseChannelID( channelType, channel, currentUserID );
+    PrivatePub.unsubscribe(channel);
+    PrivatePub.unsubscribe(channelOnPanel);
 
-    Chat.openChannel( ID, channelType, function() {
-      Chat.pendingPanelsChannels.push( flyingChannel );
-      $this.replaceWith('<li class="activable" data-channel="' +flyingChannel.channel+ '" data-channel-type="' +flyingChannel.type+ '" data-current-user-id="' +currentUserID+ '" onclick="Chat.switchPanel(this)">' +flyingChannel.name+ '</li>');
-    });
-    
+    var ID = Chat.parseChannelID( channelType, channel, currentUserID );
+    flyingChannel.state = "pending";
+    Chat.pendingPanelsChannels.push( flyingChannel );
+    Chat.openChannel( ID, channelType, "", currentUserID);
   },
   channelExistActive: function( channel ) {
     if ( Chat.activePanelsChannels.length == 0) {
@@ -179,14 +226,55 @@ Chat = {
 
       return check;
     };
+  },
+  recoverConversations: function( currentUserID ) {
+    var previousChannels = Chat.getConversationsFromCookies();
+
+    console.log(previousChannels);
+
+    $.each( previousChannels, function(i, item) { 
+      if ( item.state == 'expanded') {
+        console.log(item.name,":", item.state);
+        var ID = Chat.parseChannelID( item.type, item.channel, currentUserID);
+        Chat.openChannel( ID, item.type, "", currentUserID);
+      } else if ( item.state == 'minimized') {
+        console.log(item.name,":", item.state);
+        var ID = Chat.parseChannelID( item.type, item.channel, currentUserID);
+        Chat.openChannel( ID, item.type, function() {
+          $('.chat-panel[data-channel="' +item.channel+ '"] .chat-panel-header').trigger('click');
+        }, currentUserID);
+      };
+    });
+
+    $.each( previousChannels, function(i, item) { 
+      if ( item.state == 'pending') {
+        console.log(item.name,":", item.state);
+        var ID = Chat.parseChannelID( item.type, item.channel, currentUserID);
+        Chat.openChannel( ID, item.type, "", currentUserID);
+      };
+    });
+  },
+  getConversationsFromCookies: function() {
+    var cookies = $.cookie(),
+    preparedChannels = [];
+
+    $.each( cookies, function(i, item) {
+      try {
+        preparedChannels.push( JSON.parse(item) );
+      } catch(e) {
+        console.log("Parsing Error...")
+      };
+    });
+
+    return preparedChannels;
   }
 };
 
 Chat.assignSpots();
 
-// $(function() {
-//   $('.chat-panels').on('click', '#go-to-chats-url .counter', function(event) {
-//     event.preventDefault();
-//     $(this).parent().toggleClass('active');
-//   });
-// });
+$(function() {
+  $('.chat-panels').on('click', '#go-to-chats-url .counter', function(event) {
+    event.preventDefault();
+    $(this).parent().toggleClass('active');
+  });
+});
