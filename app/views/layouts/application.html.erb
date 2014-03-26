@@ -90,7 +90,7 @@
 
           window.clearTimeout(expireSession);
           var expireSession = setTimeout(function() {
-          $.get('<%= expire_session_path %>');
+            $.get('<%= expire_session_path %>');
           }, 15000000);
 
 

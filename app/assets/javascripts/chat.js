@@ -280,6 +280,12 @@ Chat = {
     };
 
     $.removeCookie(channel, { path: '/' });
+  },
+  clearChannelsCookies: function() {
+    var currentCookies = Chat.getConversationsFromCookies();
+    $.each(currentCookies, function(index, val) {
+       $.removeCookie(val.channel, { path: '/' });
+    });
   }
 };
 
