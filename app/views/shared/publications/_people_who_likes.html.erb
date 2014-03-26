@@ -6,16 +6,17 @@
 </div>
 <div class="overlay-content">
   <% votes = publication.publication.votes.up %>
-  <% votes.each do |v| %>
-    <%# user = User.where(:id => v.voter_id) %>
-    <%# if user.count != 0 %>
-    <%#if defined?(user) %>
-    <%#= link_to show_user_path(user.personal_url) do %>
-    <li><%#= avatar('user', '45', 'no', v.voter_id, "avatar", "no", "no") %>
-        <%#= user.name %>
-    </li>
-    <%#end%>
-    <%#end%>
-    <%#end%>
-  <%end%>
+    <ul>
+    <% votes.each do |v| %>
+     <% if User.exists?(v.voter_id) %>
+      <% user = User.find(v.voter_id) %>
+       <li>
+          <%= link_to show_user_path(user.personal_url) do %>
+             <%= avatar('user', '45', 'no', user.id, "avatar", "no", "no") %>
+              <%= user.name %>
+           <%end%>
+       </li>
+     <%end%>
+    <%end%>
+    </ul>
 </div>
