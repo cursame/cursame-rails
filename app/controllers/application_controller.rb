@@ -214,8 +214,8 @@ class ApplicationController < ActionController::Base
     #@permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
 
     @permisos = current_user.permissionings.last
-    @role = Role.where(:id => @permisos.role_id)
-    if @role.count != 0 && defined?(@role.title)
+    if Role.exists?(@permisos.role_id)
+    @role = Role.find(@permisos.role_id)
     @role.title
     else
     @role = 'student'
