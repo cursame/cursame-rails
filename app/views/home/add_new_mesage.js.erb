@@ -1,7 +1,6 @@
 $('div.chat-panel[data-panel-id="<%= @channel_id %>"]').find('input#mesage').val('');
 $('div.chat-messages-container[data-channel="<%= @channel_name %>"]').closest('div.chat-main').find('input#mesage').val('');
 
-console.log('<%= @channel_id %>')
 <% publish_to "/chat-joinded/#{@receiver_user_id}" do %>
   $.get('<%= open_channel_path(@emitter_user_id) %>');
 <% end %>

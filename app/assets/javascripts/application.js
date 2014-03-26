@@ -1,9 +1,10 @@
-//= require_raphael
-//= require_morris
 //= require private_pub
+//= require vendor/jquery-1.8.3
+//= require vendor/jquery-ui-1.9.2
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require handlebars.runtime
+//= require vendor/handlebars.runtime
+
 //= require_tree .
 
 // Adding and removing questions answers
@@ -99,7 +100,9 @@ window.Notice = function(type, message)  {
 // notificaciones push usando private_pub
 $(function() {
 
-  Chat.recoverConversations( Cursame.userId );
+  if ( typeof Cursame != 'undefined' ) {
+    Chat.recoverConversations( Cursame.userId );
+  };
 
   // data.sender.id = data.reciver.id return
 	// Se suscribe al canal para las notificaciones del chat
@@ -182,6 +185,15 @@ $(function() {
     if ( $('div.overlay').length ) {
       overlayPositioning( $('div.overlay') );
     };
+  });
+
+  $(document).ajaxStart( function(event) {
+    $('#log_loadding').show();
+    $('.activable').attr("disabled", true);
+  }).ajaxStop( function() {
+    $('#log_loadding').hide();
+    $('.activable').attr("disabled", false);
+    $('.autogrow').autosize();
   });
 
   // Scroll top

@@ -111,9 +111,10 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 				
 			  $('<div id ="message_'+ data.message.id +'" class="chat-message-item '+ typeMsg +'">' + avatar +
 			  	'<div class="chat-message-main">' +
-					'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div></div></div>'
+			  	'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div><span class="meta">' +moment(data.message.created_at).lang('es').format("DD [de] MMMM [del] YYYY [-] h:mm a")+ '</span></div></div>'
 			  ).appendTo( element );
 
+			  console.log(data);
 			}
 		}
 	}

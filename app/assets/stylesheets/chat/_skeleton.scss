@@ -263,13 +263,22 @@ cursor: pointer;
 	.pending-dropdown {
 		position: absolute;
 		bottom: 100%;
-		right: 0;
-		margin-bottom: 5px;
+		left: 50%;
+		margin-bottom: 13px;
+		margin-left: -85px;
 		width: 170px;
 		display: none;
 
 		.pending-channels-list li {
 			padding: 5px;
+		}
+
+		.tip-upsidedown {
+			width: 15px;
+			height: 9px;
+			position: absolute;
+			left: 50%;
+			margin-left: -7px;
 		}
 	}
 
@@ -348,7 +357,7 @@ cursor: pointer;
 		}
 
 		&.message-received {
-			padding: 0 40px 0 0;
+			padding: 0 20px 0 0;
 
 			.chat-message-author {
 				float: left;

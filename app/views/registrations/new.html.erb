@@ -121,7 +121,6 @@
 
   <script>
     $(function() {
-
       $('.sign-up-form').validate({
         rules: {
           "user[password_confirmation]": {
@@ -134,15 +133,12 @@
           }
         }
       });
-
-   });
-    
+  });  
   $(document).ready(function(){
     if($("#user_permissionings_attributes_1_network_id").length == 1) {
        $('#user_permissionings_attributes_1_network_id').remove();
        $('#user_permissionings_attributes_1_role_id').remove();
     }
   });
-
   </script>
 <% end %>
