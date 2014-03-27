@@ -145,7 +145,6 @@ class Api::ApiController < ApplicationController
 
   def users
     @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('last_name ASC')
-    
     @usuarios = []
     @users.each do |u|
       inverse_friendship = Friendship.find_by_user_id_and_friend_id(u.id, @user.id)
@@ -155,7 +154,9 @@ class Api::ApiController < ApplicationController
           url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
         },
         bios: u.bios,
-        coverphoto: u.coverphoto,
+        coverphoto: {
+          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url, 
+        },
         created_at: u.created_at,
         description: u.description,
         domain: u.domain,
@@ -603,7 +604,9 @@ class Api::ApiController < ApplicationController
         avatar: {
           url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
         }, 
-        coverphoto: u.coverphoto.url, 
+        coverphoto: {
+          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url, 
+        }, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
         bios: u.bios,
@@ -827,7 +830,7 @@ class Api::ApiController < ApplicationController
   end
 
   def friend_accept
-    friendship = Friendship.find_by_user_id_and_friend_id(@user.id, params[:id])
+    friendship = Friendship.find_by_user_id_and_friend_id(params[:id], @user.id)
     friendship.accepted = true
 
     if friendship.save
