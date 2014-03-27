@@ -61,7 +61,7 @@
 			$.get("/home/editing_n");
 	});
   // rendering notifications
-	PrivatePub.subscribe ("/notifications/<%=current_user.id%>", 
+	PrivatePub.subscribe ("/notifications/<%= current_user.id%>", 
 		function(data, channel) {
 			var params = {
 				id:data.notification.id
@@ -70,6 +70,8 @@
       $('#lecto_n_count').html(data.num * 1);
 		  $('#lecto_n_count').show();
 		  $.get('/home/render_notifications', $.param(params), null, "script");
+
+      Sounds.play("newNotification");
 		}
 	);
 </script>

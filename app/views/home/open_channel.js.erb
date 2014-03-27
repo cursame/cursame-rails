@@ -1,39 +1,68 @@
-// si no se ha agregado el panel de la conversación, se agrega el panel y se lanza la conversación 
-if(!$('#chat').length && !$('#chat-channel-<%= @channel.id%>').length) {
+<% if @course_channel
+	namePendingChannel = Course.find(@receiver_user_id).title
+else
+	namePendingChannel = User.find(@receiver_user_id).name
+end %>
 
-	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name }))%>');
+var panelsHolder = $('.chat-panels'),
+		chatExpanded = $('#chat'),
+		channel = "<%= @channel.channel_name %><%= @course_channel == true ? '?course=true' : ''%>",
+		typeChannel = "<%= @course_channel == true ? 'course' : 'user' %>",
+		channelExist = Chat.channelExistActive(channel);
 
-	if(window.chatPanelsCount == undefined) {
-		window.chatPanelsCount = 0;
-	}
+// No esta en home/chat
+if ( !chatExpanded.length && !channelExist ) {
+	panelsHolder.append('<%= subscribe_to @channel_name %>');
 
-	// Si ya hay mas de 3 conversaciones
-	if( window.chatPanelsCount >= 3 ) {
-		if(window.pendingChatsCount == undefined) {
-			window.pendingChatsCount = 0;
-		}
+	if ( Chat.activePanelsCount == Chat.availableSpots ) {
+		if ( Chat.pendingPanelsCount == 0 ) {
+			panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+			Chat.moreReposition();
+		};
 
-		// Se muestra el recuadro 'Ver mas' si no esta (y se guarda el canal que no se pudo abrir)
-		if($("#go-to-chats-url").length) {
-			// Si si esta, solo se guarda el canal que no se pudo abrir
-			var pendingChats = $("#go-to-chats-url").attr('pendingChats');
-			$("#go-to-chats-url").attr('pendingChats', pendingChats + ' <%=@channel.channel_name%>');
-		} else {
-			$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/go_to_chat', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
-		}
-		window.pendingChatsCount++;	
-	}
-	else {
-		window.chatPanelsCount++;
-		$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page}))%>');
+		var pendingChannels = $.map( Chat.pendingPanelsChannels, function(item, index) {
+			return Chat.pendingPanelsChannels[index].channel;
+		});
+	
+		if ( !Chat.channelExistPending(channel) ) {
+			Chat.pendingPanelsCount++;
+			Chat.updatePendingConversations('<%= current_user.id %>');
 
-		var chatPanel = $('#chat-channel-<%= @channel.id%>');
+			var dataChannel = {
+				type: typeChannel,
+				channel: channel,
+				name: "<%= namePendingChannel %>",
+				state: "pending"
+			};
 
-		chatPanel.find('.chat-panel-main-content').scrollTop( chatPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
-		chatPanel.find('input#mesage').focus();
+			Chat.pendingPanelsChannels.push( dataChannel );
+			$.cookie( dataChannel.channel, JSON.stringify(dataChannel), { expires: 1, path: '/' });
 
-	}	
-}
+			$('.pending-channels-list').append('<li data-channel="' +channel+ '" data-channel-type="' +typeChannel+ '" data-current-user-id="<%= current_user.id %>" onclick="Chat.switchPanel(this)"><%= namePendingChannel %></li>');
+		};
+	};
+
+	if ( Chat.activePanelsCount < Chat.availableSpots ) {
+		var currPanel;
+		panelsHolder.append('<%= escape_javascript(render(:partial => '/shared/chat/conversation', :locals => {:messages => @messages, :channel => @channel, :page => @page, :receiver_user_id => @receiver_user_id, :course_conversation => @course_channel }))%>');
+
+		currPanel = $('.chat-panel[data-panel-id="<%= @channel.id%>"]');
+
+		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
+		currPanel.find('input#mesage').focus();
+
+		var dataChannel = {
+			type: typeChannel,
+			channel: channel,
+			name: "<%= namePendingChannel %>",
+			state: "expanded"
+		};
+		
+		Chat.activePanelsChannels.push( dataChannel );
+		Chat.addPanel( dataChannel );
+	};
+};
+
 
 // si estamos en el path del chat
 if( $('#chat').length ) {
@@ -41,8 +70,8 @@ if( $('#chat').length ) {
 
 	PrivatePub.unsubscribe("<%=@channel_name%>");
 	
-	$('body').append('<%= escape_javascript(render(:partial => '/shared/chat/channel_tpl', :locals => {:channel => @channel_name}))%>');
-	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel}))%>');
+	panelsHolder.append('<%= subscribe_to @channel_name %>');
+	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel }))%>');
 
 	var messagesTitle     = $('.chat-converstion-title'),
       messagesContainer = $('.chat-main-container'),
@@ -51,11 +80,10 @@ if( $('#chat').length ) {
   messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
   $('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
 
-}
+};
 
 // ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
-
 PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	var chatPanel 	= $('#chat-channel-'+ data.channel.id ),
 			chatContent = chatPanel.find('.chat-panel-main-content');
@@ -83,21 +111,19 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 				
 			  $('<div id ="message_'+ data.message.id +'" class="chat-message-item '+ typeMsg +'">' + avatar +
 			  	'<div class="chat-message-main">' +
-					'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div></div></div>'
+			  	'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div><span class="meta">' +moment(data.message.created_at).lang('es').format("DD [de] MMMM [del] YYYY [-] h:mm a")+ '</span></div></div>'
 			  ).appendTo( element );
 
+			  console.log(data);
 			}
 		}
 	}
-
-
 
 	/* Si esta en /home/chat
   ----------------------------------*/
 	if( $('#chat').length ) {
 
 		append_new_message_tpl( $('#chat-messages') );
-		
 		$('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
 	}
 
@@ -107,15 +133,6 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 		append_new_message_tpl( messagesContainer );
 		chatPanel.find('.chat-panel-main-content').scrollTop( messagesContainer.prop('scrollHeight') + 30 );
 	}
-    $('#new-chat-pannel-message')[0].reset();
-
-	// reseteamos el formulario
-	chatPanel.find('input#mesage').val('');
-
-	// reseteamos el formulario general
-	$('div.shareMSJ form input[name="mesage"]').val('');
-	// rompe el proceso para no poner repetidos
-    //this.abort();
 
 
 });

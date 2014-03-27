@@ -19,14 +19,8 @@ background-white
 	<div class="wrapper ver-spaced">
 		<%= render partial: 'form', locals: { create: false } %>
 	</div>
-<%else%>
+<% else %>
 	<div class="wrapper ver-spaced">
 	  <h2>Usted no esta autorizado para editar este curso<h2>
   </div>
-<%end%>
-
-
-
-<script type="text/javascript">
-	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-</script>
+<% end %>

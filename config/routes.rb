@@ -112,6 +112,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
   get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
+  get'/my_old_courses', :to => 'courses#my_old_courses', :as => :my_old_courses
+
 
   # metodos de amplio acceso al curso
 
@@ -144,7 +146,6 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   
   #### destroy user
   get "users/destroy_user_with_parts/:id", :to => "users#destroy_user_with_parts", :as => :destroy_user_with_parts
-
   
 
   ##### llamadas por ayax rapidas en rails
@@ -305,10 +306,11 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   match '/community', :to =>  "networks#network_comunity", :as => :network_comunity
 
   get '/filter_comunity', :to => "networks#all_user_in_network_where_not_my_friends", :as => :filter_comunity
+  get '/paginate_comunity', :to => "networks#paginate_users_based_params", :as => :paginate_users_based_params
   # filtro del wall
 
   get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
-
+  
   #manejo de usuarios en las networks
   resources :networks_users do
    collection do

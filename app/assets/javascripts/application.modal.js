@@ -60,6 +60,8 @@ $(function() {
 
 	$(window).on('resize', function() {
     overlayPositioning( $('div.overlay') );
+    Chat.assignSpots();
+    // Chat.repositionPanelOnWidth();
   });
 
 	/* Show delivery submit form */

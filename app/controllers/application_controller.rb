@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user_courses
-     @ccc = current_user.courses.where(:network_id => current_network.id)
+     @ccc = current_user.courses.where(:network_id => current_network.id, :active_status => true)
   end
 
   ####### difininiendo variables de miembros de una red de forma global ########
@@ -214,18 +214,13 @@ class ApplicationController < ActionController::Base
     #@permisos = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
 
     @permisos = current_user.permissionings.last
-    @role = Role.find_by_id(@permisos.role_id)
+    if Role.exists?(@permisos.role_id)
+    @role = Role.find(@permisos.role_id)
     @role.title
-     #case @role.title
-      # when 'admin'
-       # @role_t = "Administrador"
-       #when 'student'
-       # @role_t = "Estudiante"
-       #when 'teacher'
-        #@role_t = "Profesor"
-       #else
-        #@role.title
-     #end
+    else
+    @role = 'student'
+    end
+   
   end
   ###### comandos de generación de actividades
   def activation_activity
@@ -668,7 +663,7 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Authorization.current_user = current_user
   end
- 
+  
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------

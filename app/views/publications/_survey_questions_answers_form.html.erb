@@ -1,4 +1,4 @@
-<%= form_tag "/surveys/survey_reply", :remote => true do %>
+<%= form_tag "/surveys/survey_reply", :remote => true, :id => "survey-form-reply" do %>
   <div class="overlay-content">
     <h3><%= survey.name %></h3>
     
@@ -16,7 +16,7 @@
                       <div class="survey-question-answer">
                         <label>
                           <%= answer.content %>
-                          <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id %>
+                          <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id, false, required: "required" %>
                         </label>
                       </div>
                     </li>
@@ -45,3 +45,13 @@
     </div>
   <% end %>
 <% end %>
+<script>
+  $(function(){ 
+    $('#survey-form-reply').validate({
+      ignore: "",
+      errorPlacement: function(error, element) {
+        $(element).closest('.survey-answers').append(error);
+      }
+    });
+  });
+</script>

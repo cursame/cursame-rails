@@ -28,7 +28,7 @@ background-white
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.text_field :first_name %>
+              <%= f.text_field :first_name, required: "required" %>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ background-white
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.text_field :last_name %> 
+              <%= f.text_field :last_name, required: "required" %>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@ background-white
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.text_area :bios, :rows => 6 %>
+              <%= f.text_area :bios, :rows => 6, required: "required" %>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ background-white
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.email_field :email %>
+              <%= f.email_field :email, required: "required" %>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ background-white
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.password_field :password, :autocomplete => "off" %>
+              <%= f.password_field :password, :autocomplete => "off", :minlength => 6 %>
             </div>
           </div>
         </div>
@@ -112,12 +112,21 @@ background-white
           </div>
           <div class="form-group-main">
             <div class="form-unit">
-              <%= f.password_field :password_confirmation  %>
+              <%= f.password_field :password_confirmation, :minlength => 6 %>
             </div>
           </div>
         </div>
-        
-        <p>¿Quieres darte de baja? <%= link_to "Cancela tu cuenta", destroy_user_with_parts_path(current_user.id) %>.</p> 
+
+        <div class="form-group">
+          <div class="form-group-label">
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <p>¿Quieres darte de baja? <%= link_to "Cancelar mi cuenta", destroy_user_with_parts_path(current_user.id), confirm: "¿Estas seguro de que quieres darte de baja de Cúrsame?" %>.</p> 
+            </div>
+          </div>
+        </div>
+      
       </div>
       
       <div class="col col-3">
@@ -162,7 +171,7 @@ background-white
     <div class="fr">
       <ul class="list-buttons right">
         <li>
-          <%= f.password_field :current_password, :placeholder => 'Escribe tu contraseña para guardar'%>
+          <%= f.password_field :current_password, placeholder: 'Escribe tu contraseña para guardar', required: "required", minlength: 6 %>
         </li>
         <li>
           <span class="btn btn-primary input-btn">
@@ -174,16 +183,7 @@ background-white
   </div>
 
 <% end %>
-
 <script>
-  $("#user_personal_url").keyup(function () {
-    var value = $(this).val();
-    $(this).val(value.replace(/[^a-z0-9]/gi,''));
-    var url = '/personlization_url_corroborate/'+value+"";
-    $.get(""+url+"");
-    
-    return
-  });
 
   function readURL(input,id) {
     if (input.files && input.files[0]) {
@@ -202,4 +202,26 @@ background-white
       reader.readAsDataURL(input.files[0]);
     }
   }
+
+  $(function() {
+
+    $("#user_personal_url").keyup(function () {
+      var value = $(this).val();
+      $(this).val(value.replace(/[^a-z0-9]/gi,''));
+      var url = '/personlization_url_corroborate/'+value+"";
+      $.get(""+url+"");
+    });
+
+    $('#edit_user').validate({
+      rules: {
+        "user[twitter_link]": {
+          url: true
+        },
+        "user[password_confirmation]": {
+          equalTo: "#user_password"
+        }
+      } 
+    });
+
+  });
 </script>

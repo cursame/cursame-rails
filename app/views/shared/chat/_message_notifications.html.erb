@@ -44,9 +44,8 @@
 	</div>
 </div>
 
-<%= subscribe_to "/messages/notifications_user_"+current_user.id.to_s %>
-<!-- para poder cambiar el estatus de los usuarios conectados -->
-<%= subscribe_to "/messages/chat_notifications"%>
+<%= subscribe_to "/messages/notifications_user_" + current_user.id.to_s %>
+<%= subscribe_to "/messages/chat_notifications" %>
 
 <script>
   $('#toggle-chat').click ( function() {

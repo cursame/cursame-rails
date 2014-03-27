@@ -5,7 +5,7 @@
 
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :title, "Nombre del #{current_network.course_tag.downcase} <span class='required'>*</span>".html_safe %>
+          <%= f.label :title, "Nombre del #{current_network.course_tag.downcase}" %>
           <label></label>  
         </div>
         <div class="form-group-main">
@@ -17,7 +17,7 @@
 
       <div class="form-group">
         <div class="form-group-label">
-        <%= f.label :silabus, "Descripción del #{current_network.course_tag.downcase} <span class='required'>*</span>".html_safe %>
+        <%= f.label :silabus, "Descripción del #{current_network.course_tag.downcase}" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
@@ -28,7 +28,7 @@
 
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :public_status, "Privacidad <span class='required'>*</span>".html_safe %>
+          <%= f.label :public_status, "Privacidad" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
@@ -43,7 +43,7 @@
       
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :init_date, "Duración <span class='required'>*</span>".html_safe %>
+          <%= f.label :init_date, "Duración" %>
         </div>
         <div class="form-group-main">
           <div class="f-col f-col-5">
@@ -61,7 +61,7 @@
 
       <div class="form-group">
         <div class="form-group-label">
-          <%= f.label :survey_param_evaluation, "Evaluación <span class='required'>*</span>".html_safe %>
+          <%= f.label :survey_param_evaluation, "Evaluación" %>
         </div>
         <div class="form-group-main">
           <div class="f-col f-col-5">

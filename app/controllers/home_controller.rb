@@ -17,6 +17,7 @@ class HomeController < ApplicationController
   end
 
   def blog
+    redirect_to "http://cursame.tumblr.com/"
   end
 
   ###### destroye sesiones caducadas
@@ -123,6 +124,7 @@ class HomeController < ApplicationController
        end
      end
 
+
      def destroy_wall
        publication = Wall.find(params[:id])
        if !publication.nil?
@@ -215,21 +217,24 @@ class HomeController < ApplicationController
   end
 
   def open_channel
+    @receiver_user_id = params[:id].to_i
+
     if params[:course]
-      @channel_name = "/messages/course_channel_"+ params[:id]
+      @course_channel = true
+      @channel_name = "/messages/course_channel_"+ @receiver_user_id.to_s
 
       users = Course.find(params[:id]).users
       ######## se agregan validadores de users para el exist #########
-      users = users.keep_if{|x| x != nil}
+      users = users.keep_if{ |x| x != nil }
 
     else
-      ids = [current_user.id, params[:id].to_i]
+      @course_channel = false
+      ids = [current_user.id, @receiver_user_id]
       @channel_name = get_unique_channel_users(ids)
       users = User.find(ids)
-
     end
     
-    @channel = find_or_insert_channel(@channel_name,users)
+    @channel = find_or_insert_channel(@channel_name, users)
     @page = 1
     @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
     respond_to do |format|
@@ -238,7 +243,7 @@ class HomeController < ApplicationController
   end
 
     def add_new_mesage
-      @message = Mesage.create!(:mesage => params[:mesage],:user_id =>current_user.id,:channel_id =>params[:channel_id])
+      @message = Mesage.create!(:mesage => params[:mesage], :user_id =>current_user.id,:channel_id =>params[:channel_id])
 
       @az = @message
       @typed = @message.class.to_s
@@ -246,7 +251,10 @@ class HomeController < ApplicationController
 
       @channel_name = params[:channel_name]
       @channel_id = params[:channel_id]
-      
+
+      @emitter_user_id = current_user.id
+      @receiver_user_id = params[:receiver_user_id]
+
       respond_to do |format|
        format.js
       end
@@ -364,20 +372,14 @@ class HomeController < ApplicationController
   def find_or_insert_channel(channel_name,users)
     channel = Channel.find_by_channel_name(channel_name)
 
-    if !channel
+    if !channel #canal nuevo
       channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
       channel.users = users
       channel.save!
-      puts "******************************"
-      puts "canal nuevo"
-      puts "******************************"
-
-    end
-      puts "******************************"
-      puts "canal existente"
-      puts "******************************"
-      return channel
+    end # el canal ya existe
+    return channel
   end
+  
   # The exception that resulted in this error action being called can be accessed from
   # the env. From there you can get a backtrace and/or message or whatever else is stored
   # in the exception object.

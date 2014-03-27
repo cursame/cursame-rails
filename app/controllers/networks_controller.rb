@@ -214,13 +214,13 @@ class NetworksController < ApplicationController
 
   def network_comunity
   @user_l= current_user
-  @friends = @user_l.friends(false) + @user_l.friends(true)
-  
+  @locals_firends = @user_l.friends(false) + @user_l.friends(true)
+  @friends = @locals_firends.paginate(:per_page => 9, :page => params[:page])
    respond_to do |f|
     f.html
    end
-
   end
+
 
   def all_user_in_network_where_not_my_friends
   @user_l= current_user
@@ -231,11 +231,35 @@ class NetworksController < ApplicationController
 
    @v = @a - @r
 
-   @friends = @v
+   @friends = @v.paginate(:per_page => 9)
   respond_to do |f|
     f.js
   end
 
+  end
+
+  def paginate_users_based_params
+    case params[:type_in_act].to_s
+      when "my_friends"
+        @user_l= current_user
+        @locals_firends = @user_l.friends(false) + @user_l.friends(true)
+        @friends = @locals_firends.paginate(:per_page => 9, :page => params[:page])
+      when "not_my_friends"
+        @user_l= current_user
+        @a = current_network.users
+        @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
+        @v = @a - @r
+        @friends = @v.paginate(:per_page => 9, :page => params[:page])
+    end
+
+    @new_page = params[:page].to_i + 1
+    @type = params[:type_in_act].to_s
+    respond_to do |f|
+        f.js
+    end
+        
+      
+    
   end
   
   def awaiting_confirmation
@@ -252,6 +276,8 @@ class NetworksController < ApplicationController
       format.html {render :layout => 'sessions'}
     end
   end
+
+
 
   def find_user
     @search_changes = params[:activiesearch].downcase

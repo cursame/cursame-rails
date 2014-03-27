@@ -14,11 +14,15 @@
           <li>
             <%= link_to "Cursos a los que no pertenezco", all_courses_path, :remote => true %>
           </li>
+          <li>
+            <%= link_to "Cursos antiguos", my_old_courses_path, :remote => true %>
+         </li>
         </ul>
       </div>
     </div>
 
     <div class="section-header-actions">
+
       <ul class="list-buttons right">
         <li>
           <%= render partial: "/courses/courses_search" %>
@@ -33,6 +37,7 @@
 
   </div>
 </div>
+<%#= render :partial => '/courses/last_courses' %>
 
 <div id="courses_content">
   <%= render partial: "/courses/members_in_courses/course_view_call", :locals => {:courses => @courses, :member => @member} %>

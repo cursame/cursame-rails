@@ -1,22 +1,10 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
-//
-
-//= require_raphael
-//= require_morris
 //= require private_pub
+//= require vendor/jquery-1.8.3
+//= require vendor/jquery-ui-1.9.2
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require handlebars.runtime
+//= require vendor/handlebars.runtime
+
 //= require_tree .
 
 // Adding and removing questions answers
@@ -66,13 +54,15 @@ function changeNumbers(idParent, idFind){
   var count = 0;
 };
 
-function playSound(soundfile) {
-  soundfile = "./assets/sounds/new_message.mp3";
-  document.getElementById("chat_sounds").innerHTML="<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
-
-  setTimeout(function () {
-      document.getElementById("chat_sounds").innerHTML="";
-  },1000);
+var Sounds = {
+  sounds: {
+    "newMessage": "new-message-sound",
+    "newNotification": "new-notification-sound"
+  },
+  play: function( id ) {
+    var sound = document.getElementById( Sounds.sounds[id] );
+    sound.play();
+  }
 };
 
 function truncate(text, maxLength, ellipseText){
@@ -109,6 +99,11 @@ window.Notice = function(type, message)  {
 
 // notificaciones push usando private_pub
 $(function() {
+
+  if ( typeof Cursame != 'undefined' ) {
+    Chat.recoverConversations( Cursame.userId );
+  };
+
   // data.sender.id = data.reciver.id return
 	// Se suscribe al canal para las notificaciones del chat
   if (typeof Cursame === 'undefined') {
@@ -150,7 +145,7 @@ $(function() {
           '<span class="meta">' + jQuery.timeago(data.message.created_at) + '</span></div></a></div></li>'
       ];
       
-      playSound();
+      Sounds.play("newMessage");
 
   		//si ya existe la conversacion no se crea la notificación
   		if( $('#chat-channel-'+data.channel.id).length ) {
@@ -190,6 +185,15 @@ $(function() {
     if ( $('div.overlay').length ) {
       overlayPositioning( $('div.overlay') );
     };
+  });
+
+  $(document).ajaxStart( function(event) {
+    $('#log_loadding').show();
+    $('.activable').attr("disabled", true);
+  }).ajaxStop( function() {
+    $('#log_loadding').hide();
+    $('.activable').attr("disabled", false);
+    $('.autogrow').autosize();
   });
 
   // Scroll top

@@ -1,1 +1,2 @@
 $('#accesed').html("<%= escape_javascript(render :partial => 'networks/who_sent', :locals => {:friends => @friends})%>");
+$('#paginate').html('<%= link_to "Cargar más...", paginate_users_based_params_path(:page => 2, :type_in_act => "not_my_friends"), :remote => true, :class => "btn btn-small btn-secondary" if(@friends.count == 9) %>');

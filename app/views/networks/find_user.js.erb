@@ -1,7 +1,9 @@
 
 <% if @search_changes != '' %>
   $('#accesed').html("<%= escape_javascript(render :partial => 'networks/who_sent', :locals => {:friends => @users})%>");
+  $('#paginate').html('');
 <% else %>
   Notice('error', 'Por favor escribe algo en el campo de busqueda.');
   $('#users-search-input').focus();
+  $('#paginate').html('');
 <% end %>
