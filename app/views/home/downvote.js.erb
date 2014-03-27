@@ -1,11 +1,16 @@
 $('#liked-<%= @publication.id%>').html('');
 $('#liked-<%= @publication.id%>').prepend("<div class='icon like'><%= escape_javascript(link_to 'Me Gusta', upvote_path(@publication.id), :remote => true) %></div>");
+
 <% if @publication.publication_type != 'Comment' %>
   $('#liked-<%= @publication.id%> a').html('').html('<i class="i i-like-c-white"> </i>')
 <% else %>
   $('#liked-<%= @publication.id%> a').html('').html('<i class="i i-like-c"> </i>')
 <% end %>
 
-$('#counter-like-<%= @publication.id%>').html('');
-$('#counter-like-<%= @publication.id%>').html("<%= @publication.publication.votes.up.size %>");
+var parent = $('#counter-like-<%= @publication.id%>').closest('.meta-data');
 
+<% if @publication.publication.votes.up.size > 0 %>
+  parent.html('<%= link_to get_votes_of_publication_path(@publication.id), remote: true do %><span id="counter-like-<%= @publication.id %>"><%= @publication.publication.votes.up.size %></span> Me gusta<% end %>')
+<% else %>
+  parent.html('<span id="counter-like-<%= @publication.id%>"><%= @publication.publication.votes.up.size %></span> Me gusta')
+<% end %>

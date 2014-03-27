@@ -124,6 +124,14 @@ class HomeController < ApplicationController
        end
      end
 
+     def get_votes_of_publication
+      @publication = Wall.find(params[:id])
+
+      respond_to do |format|
+        format.js
+      end
+     end
+
 
      def destroy_wall
        publication = Wall.find(params[:id])

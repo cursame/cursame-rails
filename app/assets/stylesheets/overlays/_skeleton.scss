@@ -192,3 +192,33 @@ first-time-survey-overlay
     border-radius: 0 0 $radius $radius;
   }
 }
+
+/* People Who Like This
+----------------------------------*/
+.people-who-like-this-list {
+  li {
+    > a {
+      padding: 10px 10px 8px 10px;
+      display: block;
+      @include clearfix;
+    }
+
+    .like-author {
+      float: left;
+    }
+
+    .like-main {
+      margin-left: 55px;
+      margin-top: 13px;
+
+      h6 {
+        width: 315px;
+        overflow: hidden;
+      }
+    }
+
+    &:first-child {
+      padding-top: 0
+    }
+  }
+}

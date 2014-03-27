@@ -338,6 +338,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   #finish tour
   match "/home/finish_tour" => "home#finish_tour", :as => "finish_tour", :via => [:get]
 
+  #quien le dio like a una publicacion del wall
+  get "home/get_votes_of_publication/:id", :to => "home#get_votes_of_publication", :as => :get_votes_of_publication
 
   #cargas mas comentarios
   match  "home/load_more_comments/:id", :to => "home#load_more_comments", :as => :load_more_comments
