@@ -221,6 +221,7 @@ html, body {
   @include clearfix;
 
   .user {
+    position: relative;
     @include clearfix;
     
     img {

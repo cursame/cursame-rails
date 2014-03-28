@@ -1,4 +1,3 @@
-
 <% unless @wall.empty? %>
   $('#timeline').html("<%= escape_javascript(render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"})%>");
 <% else %>

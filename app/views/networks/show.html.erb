@@ -1,5 +1,6 @@
 <div id="box-content" class="wrapper spaced">
   <div id="box-stream-post">
+    <%= Wall.all.count %>
 
     <div id="pk_menu">
       <%=render :partial => 'shared/post_menu' %>
@@ -48,6 +49,7 @@ $(function() {
 
   $('#timeline').pageless({
     totalPages: 10,
+    currentPage: 1,
     url: window.pagelessSettings.url,
     loader: "#loader-pagination",
     onInit:function(opts){
@@ -60,5 +62,6 @@ $(function() {
     },
     loaderImage: window.pagelessSettings.loaderImage
   });
+
 });
 </script>

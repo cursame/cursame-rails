@@ -8,7 +8,7 @@
 
 body {
   color: $global-color;
-  background: $main-background;
+  background: #E0E9EC;
   font-family: $font-cursame;
   font-size: 13px;
   font-weight: normal;
@@ -208,6 +208,7 @@ h6 {
     
     &:hover {
       background: lighten($primary-color, 2);
+      box-shadow: 0 -1px 0 rgba(255,255,255,.12), 0 1px 0 rgba(255,255,255,.12);
     }
   }
 }

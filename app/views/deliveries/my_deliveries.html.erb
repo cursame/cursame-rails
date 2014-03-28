@@ -35,10 +35,10 @@
 
 <script>
 
-
+console.log('<%= my_deliveries_path() %>');
  var p = $('#timeline').pageless({
     totalPages: <%= @wall.total_pages %>,
-    url: '<%= my_deliveries_path(current_network) %>',
+    url: '<%= my_deliveries_path() %>',
     onInit:function(opts){
       this.pageless = {
         opts : opts

@@ -4,10 +4,13 @@
 .publication-box {
   .publication-main {
     background: $white;
-    border: 1px solid #cccccc;
+    border: 1px solid #C5C5C5;
+    border-bottom-color: #BBB;
     border-radius: $radius;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
 
     .publication-content {
+      word-break: break-word;
       border-radius: $radius $radius 0 0;
 
       h6 {
@@ -44,6 +47,7 @@
   .publication-main {
     .publication-content {
       background-size: cover;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 
       h6 {
         color: $white;
@@ -125,7 +129,8 @@
   
   .new-publication-main {
     background: $white;
-    border: 1px solid #cccccc;
+    border: 1px solid #C5C5C5;
+    border-bottom-color: #BBB;
     border-radius: $radius;
 
     .new-publication-footer {

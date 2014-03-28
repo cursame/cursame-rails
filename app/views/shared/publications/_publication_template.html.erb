@@ -83,20 +83,44 @@
 <% if post.state == "published" %>
   <div class="publication-box <%= id %> <%= I18n.transliterate(tipo.to_s).downcase %> <%= "academic-publication" if type != "Comment" %>" id="deleted_id_<%= id %>" data-course="<%= courses_ids[0] if !courses_ids.nil? %>">
     <div class="publication-author">
-      <% case type %>
-        <% when 'Course' %>
-          <%= link_to course_path(post.id) do %>
+
+      <% if type == 'Course' %>
+        <%= link_to course_path(post.id) do %>
+          <span class="avatar-holder">
+            <%= avatar('course', '150', 'no', post.id, 'avatar avatar-60', 'no', 'no') %>
+          </span>
+        <% end %>
+        
+      <% elsif type == 'Survey' || type == 'Delivery' %>
+        <%= link_to course_path(posted_in_for_id) do %>
+          <span class="avatar-holder">
+            <%= avatar('course', '150', 'no', posted_in_for_id, 'avatar avatar-60', 'no', 'no') %>
+          </span>
+        <% end %>
+
+      <% elsif type == 'Discussion' %>
+        <% if posted_in_for %>
+          <%= link_to course_path(posted_in_for_id) do %>
             <span class="avatar-holder">
-              <%= avatar('course', '45', 'no', post.id, 'avatar', 'no', 'no') %>
+              <%= avatar('course', '150', 'no', posted_in_for_id, 'avatar avatar-60', 'no', 'no') %>
             </span>
           <% end %>
         <% else %>
           <%= link_to show_user_path(personal_url) do %>
             <span class="avatar-holder">
-              <%= avatar('user', '45', 'no', post.user.id, 'avatar', 'no', 'no') %>
+              <%= avatar('user', '150', 'no', post.user.id, 'avatar avatar-60', 'no', 'no') %>
             </span>
           <% end %>
-      <%end%>
+        <% end %>
+
+      <% elsif type == 'Comment' %>
+        <%= link_to show_user_path(personal_url) do %>
+          <span class="avatar-holder">
+            <%= avatar('user', '150', 'no', post.user.id, 'avatar avatar-60', 'no', 'no') %>
+          </span>
+        <% end %>
+      <% end %>
+
     </div>
 
     <div id = "publication-<%= id %>" class="publication-main comment-text <%= publication_cls %>" >

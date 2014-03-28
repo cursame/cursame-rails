@@ -14,7 +14,7 @@
   }
 
   .publication-main {
-    margin-left: 55px;
+    margin-left: 70px;
 
     > .publication-metadata {
       margin: 0 10px 10px 10px;
@@ -162,6 +162,7 @@
 
   .new-publication-main {
     margin-left: 55px;
+    margin-left: 0;
 
     .new-publication-form-content {
       padding: 10px;
@@ -190,8 +191,7 @@
           width: 19px;
           height: 7px;
           bottom: 0;
-          left: 50%;
-          margin-left: -10px;
+          left: 9px;
           display: none;
         }
 
