@@ -39,10 +39,19 @@ class Api::ApiController < ApplicationController
         @course = Course.find(params[:publicacionId])
         @publications = @course.walls.where("publication_type != ?", 'Course')
         count =  @publications.count()
-        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        if params[:filter_type].nil?
+          @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        else
+          @publications = @publications.where("publication_type = ?", params[:filter_type]).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        end
       else
         count = @network.publications(@user.id,@network.id).count()
-        @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        if params[:filter_type].nil?
+          @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        else
+          @publications = @network.publications(@user.id,@network.id).where("publication_type = ?", params[:filter_type]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        end
+        
     end
       @pubs = []
       @publications.each do |publication|
@@ -177,6 +186,8 @@ class Api::ApiController < ApplicationController
     end
 
     @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1]}
+
+    @usuarios = @usuarios.reject {|key,value| (key == "friend" && value == false)}
     #@usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
