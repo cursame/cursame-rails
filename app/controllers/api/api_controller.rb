@@ -50,8 +50,7 @@ class Api::ApiController < ApplicationController
           @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
         else
           @publications = @network.publications(@user.id,@network.id).where("publication_type = ?", params[:filter_type]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-        end
-        
+        end        
     end
       @pubs = []
       @publications.each do |publication|
@@ -72,7 +71,7 @@ class Api::ApiController < ApplicationController
               when 'User'
                 auxtext = 'en tu prefil '
             end 
-            comments = []
+            comments = publication.comments
             text = publication.user.name + ' ha comentado ' + auxtext
             avatar =  {
               url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
@@ -135,7 +134,8 @@ class Api::ApiController < ApplicationController
 
 
   def comments
-    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    order = params[:commentable_type] == 'User' ? 'created_at DESC' : 'created_at ASC';
+    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order().paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
 
     @comments.each do |comment|
       comment.likes = comment.likes.size
@@ -146,9 +146,17 @@ class Api::ApiController < ApplicationController
   def courses
     @ids = []
     # @courses = @network.courses.includes(:members_in_courses).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    @courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
-    @courses = @courses.uniq
-    @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    case params[:filter_type]
+      when 'MyCourses'
+        @courses = @user.courses.includes(:members_in_courses)
+      when 'NotMyCourses'
+        @courses = @network.courses.includes(:members_in_courses) - @user.courses.includes(:members_in_courses)
+      when 'All'
+        #@courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
+        @courses = @network.courses.includes(:members_in_courses)
+        @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    end
+    
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
@@ -182,13 +190,21 @@ class Api::ApiController < ApplicationController
         friend: @user.friends?(u),
         friendship_request: inverse_friendship.nil? ? false : true
       }
-      @usuarios.push(uu)
+
+      case params[:filter_type]
+        when 'Friends'
+          if uu[:friend] == true
+            @usuarios.push(uu)
+          end
+        when 'NotFriends'
+          if uu[:friend] == false
+            @usuarios.push(uu)
+          end
+        when 'All'
+          @usuarios.push(uu)
+      end           
     end
-
     @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1]}
-
-    @usuarios = @usuarios.reject {|key,value| (key == "friend" && value == false)}
-    #@usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
