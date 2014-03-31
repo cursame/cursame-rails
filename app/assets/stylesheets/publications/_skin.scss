@@ -6,6 +6,7 @@
     background: $white;
     border: 1px solid #C5C5C5;
     border-bottom-color: #BBB;
+    border-top-color: #D5D5D5;
     border-radius: $radius;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 
@@ -19,7 +20,7 @@
         font-size: 14px;
 
         a {
-          font-weight: bold;
+          font-weight: 500;
         }
       }
     }
@@ -131,6 +132,7 @@
     background: $white;
     border: 1px solid #C5C5C5;
     border-bottom-color: #BBB;
+    border-top-color: #D5D5D5;
     border-radius: $radius;
 
     .new-publication-footer {
