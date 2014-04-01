@@ -42,15 +42,17 @@ class DeliveriesController < ApplicationController
                      deliveries.push(d.id)
                   end
                   puts " no owner"
-
-
            end
           end
       end
-    @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+    @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
     
     respond_to do |format|
+      if params[:fo_format].nil?
       format.html
+      else
+      format.js
+      end
     end
 
   end

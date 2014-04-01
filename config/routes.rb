@@ -308,9 +308,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/filter_comunity', :to => "networks#all_user_in_network_where_not_my_friends", :as => :filter_comunity
   get '/paginate_comunity', :to => "networks#paginate_users_based_params", :as => :paginate_users_based_params
   # filtro del wall
-
   get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
-  
   #manejo de usuarios en las networks
   resources :networks_users do
    collection do

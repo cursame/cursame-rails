@@ -293,6 +293,9 @@ class NetworksController < ApplicationController
     @typeforfilter = params[:typeforfilter]
     @responds = true if  params[:responds] == "true" 
     @responds = false if  params[:responds] == "false" 
+    @fo_format = true if params[:fo_format].nil?
+    @fo_format = false if !params[:fo_format].nil?
+    @paginate = params[:paginate]
 
     p @typeforfilter
     p @responds
@@ -380,8 +383,8 @@ class NetworksController < ApplicationController
     #################### finaliza el acceso a los datos de los curos del usuario #####################
     #################### se generan las epecificaicones del wall #############################
     @operator = responds_true + responds_false
-    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{@typeforfilter}").paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
-
+    @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{@typeforfilter}").paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+    
 
     respond_to do |format|
       format.js

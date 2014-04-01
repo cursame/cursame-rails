@@ -1,9 +1,13 @@
 
-<% unless @wall.empty? %>
+<% case %>
+<% when !@wall.empty? && @fo_format == true%>
   $('#timeline').html("<%= escape_javascript(render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"})%>");
-<% else %>
+  $("#paginate_wall").html('');
+  $("#paginate_wall").attr("onclick", "PaginateINwall('<%= wall_filter_path %>', 2, <%= @wall.total_pages %>, '&typeforfilter=<%=@typeforfilter%>&user_id=<%=@responds%>' )");
+<%when !@wall.empty? && @fo_format == false %>
+  $('#timeline').append("<%= escape_javascript(render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"})%>");
+<% when @wall.empty? && @wall.total_pages == 0  %>
   var message;
-
   <% case @typeforfilter %>
     <% when !@responds && 'Survey' %>
       message = 'No tienes cuestionarios por contestar.'

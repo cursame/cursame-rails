@@ -99,6 +99,14 @@ window.Notice = function(type, message)  {
 
 // notificaciones push usando private_pub
 $(function() {
+   
+   $(window).scroll(function() {
+     if($(window).scrollTop() + $(window).height() == $(document).height()) {
+      if($("#paginate_wall" ).length == 1) {
+         $("#paginate_wall").trigger("click");
+       }
+     }
+   });
 
   if ( typeof Cursame != 'undefined' ) {
     Chat.recoverConversations( Cursame.userId );
@@ -218,4 +226,17 @@ $(function() {
     $(this).closest('.form_for_edit_wall').slideUp(300);
   });
 });
+
+function PaginateINwall(url_paginate, page, total_page, other_params){
+    $.get( url_paginate+"?page="+page+"&fo_format=remote"+other_params , function( data ) {
+      console.log(data);
+    });
+    if ((page*1) != (total_page*1) && (total_page*1) != 1){
+    $("#paginate_wall").attr("onclick","PaginateINwall("+"'"+url_paginate+"'"+","+(page*1+1)+", "+total_page+","+"'"+other_params+"'"+")");
+     }else{
+    $("#paginate_wall").attr("onclick","");
+    $("#paginate_wall").html("<center><b>Actualemte no hay mas páginas por cargar.</b></center>");
+
+    }
+}   
 

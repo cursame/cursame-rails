@@ -26,27 +26,10 @@
 
   </div>
 </div>
-
 <div id="timeline" class="tim wrapper spaced sc-margined">
   <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
 </div>
 
-<%= will_paginate(@wall) %>
-
-<script>
+<div id="paginate_wall" onclick="PaginateINwall('/deliveries',2, <%= @wall.total_pages %>)"></div>
 
 
- var p = $('#timeline').pageless({
-    totalPages: <%= @wall.total_pages %>,
-    url: '<%= my_deliveries_path(current_network) %>',
-    onInit:function(opts){
-      this.pageless = {
-        opts : opts
-      };
-    },
-    params:{
-      search:''
-    },
-    loaderImage: '<%= image_path("load.gif")%>'
-  });
-</script>
