@@ -69,9 +69,12 @@ En el año 2013 se realizo la planeación de estratégica del producto Cúrsame 
 Actualmente utilizamos 4 serividores en los cuales cada uno de los autorizados a hacer deploy puede ingresar con su SSH personalizado.
 
 Para poder compilar en los serividores de Cúrsame el proceso correcto es:
-
+   
    * Primero te colocas en la carpeta de cursame:
-   $ cd ~/cursame
+     $ cd ~/cursame
+
+   * Detener los server cursawe0 y cursaweb1
+     sudo service nginx stop
  
    * Después compilas assets con:
    $ sudo bundle exec rake assets:precompile --trace RAILS_ENV=subtest
@@ -84,6 +87,10 @@ Para poder compilar en los serividores de Cúrsame el proceso correcto es:
     $ sudo mkdir ~/cursame/tmp/
     $ sudo chmod 777 -R ~/cursame/tmp/ ~/cursame/public/uploads/ ~/cursame/public/imports/
     $ sudo chown root:developers -R ~/cursame/tmp/ ~/cursame/public/uploads/ ~/cursame/public/imports/
+  * Iniciar o reinicar el servicio
+
+    sudo service nginx start
+    sudo service nginx restart
 
 == Recomendaciones 
 
