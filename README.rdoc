@@ -87,6 +87,7 @@ Para poder compilar en los serividores de Cúrsame el proceso correcto es:
     $ sudo mkdir ~/cursame/tmp/
     $ sudo chmod 777 -R ~/cursame/tmp/ ~/cursame/public/uploads/ ~/cursame/public/imports/
     $ sudo chown root:developers -R ~/cursame/tmp/ ~/cursame/public/uploads/ ~/cursame/public/imports/
+    
   * Iniciar o reinicar el servicio
 
     sudo service nginx start
