@@ -8,23 +8,60 @@ Cúrsame esta basado en Ruby on Rails 3.2.1, utuliza algunos servicios como faye
 
 Los módulos mas importantes de cúrsame son:
 
-|_Redes
-  |_Usuarios
-  |  |_Comentarios
-  |  |_Discusiones
-  |  |_Tareas
-  |  |  |_Entregas de tareas
-  |  |  |_Evaluación de las entregas de tareas
-  |  |_Cuestionarios
-  |  |  |_Creación
-  |  |  |_Respuesta
-  |_Cursos
-  |  |_ El contenido del curso es compartido mediante el usuario
-  |_Chat
-  |  |_ De Usuario a Usuario
-  |  |_ Grupal por curso
-  |_ Notificaciones
-     |_ Por post
-     |_ Por Chat
+  |_Redes
+    |_Usuarios
+    |  |_Comentarios
+    |  |_Discusiones
+    |  |_Tareas
+    |  |  |_Entregas de tareas
+    |  |  |_Evaluación de las entregas de tareas
+    |  |_Cuestionarios
+    |  |  |_Creación
+    |  |  |_Respuesta
+    |_Cursos
+    |  |_ El contenido del curso es compartido mediante el usuario
+    |_Chat
+    |  |_ De Usuario a Usuario
+    |  |_ Grupal por curso
+    |_ Notificaciones
+       |_ Por post
+       |_ Por Chat
 
 == Route Map 2014
+
+En el año 2013 se realizo la planeación de estratégica del producto Cúrsame y se determino en el més de siciembre realizar un rediseño substancial a la aplicación.
+
+  |_Enero
+  | |_Rediseño de la aplicación
+  | |_Optimiazación y limpieza de metodos de frontend
+  |_Febrero
+  | |_Finalizar rediseño de la aplicación
+  | |_Optimizar metodos ajax y filtros
+  |_Marzo
+  | |_Solucionar y mejorar metodos que fueron creadon en el resieño solución de bugs
+  |_Abril
+  | |_Optimización de procesos de chat
+  | |_Desarrollo de pruebas en backend 
+  | |_Pruebas de stress en servidores
+  | |_Validaciones para internet explorer de versiones antiguas
+  |_Mayo
+  | |_Mejora en métodos de evaluación
+  | |_Comenzar minería de datos
+  | |_Crar panel de optmización de bugs con airbrake
+  | |_Revisión de metodos mas importantes
+  | |_Mejora de los cuestionarios
+  | |_Panel de padres de familia
+  | |_Quitar web movile y hacer todo el layout responsive  
+  |_Junio
+  | |_Limpieza y optimización de codígo en controladores (quitar métodos ya no necesarios)
+  | |_Limpieza de Modelos (revisar los metodos de crear, eliminar y columnas ya no utilizadas)
+  | |_Optimizar carga de las vistas
+  |_Julio
+  | |_Mejorar la minería de datos
+  | |_Desarrollar panel de datos para mostrar minería de datos
+  | |_Desarrollar panel de multi manager para administradores de muchas redes
+  |_Agosto
+    |_Revisión de route map
+    |_Determinación de nuevo routemap
+  
+
