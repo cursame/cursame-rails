@@ -63,5 +63,35 @@ En el año 2013 se realizo la planeación de estratégica del producto Cúrsame 
   |_Agosto
     |_Revisión de route map
     |_Determinación de nuevo routemap
+
+==Servidores
+
+Actualmente utilizamos 4 serividores en los cuales cada uno de los autorizados a hacer deploy puede ingresar con su SSH personalizado.
+
+Para poder compilar en los serividores de Cúrsame el proceso correcto es:
+
+   * Primero te colocas en la carpeta de cursame:
+   $ cd ~/cursame
+ 
+   * Después compilas assets con:
+   $ sudo bundle exec rake assets:precompile --trace RAILS_ENV=subtest
+
+  * Si todo salio bien hasta este punto, solamente resta cambiar los 
+   permisos de las carpetas ~/cursame/tmp,  ~/cursame/public/uploads
+   y ~/cursame/public/imports/
+
+    $ sudo rm -Rf ~/cursame/tmp/  
+    $ sudo mkdir ~/cursame/tmp/
+    $ sudo chmod 777 -R ~/cursame/tmp/ ~/cursame/public/uploads/ ~/cursame/public/imports/
+    $ sudo chown root:developers -R ~/cursame/tmp/ ~/cursame/public/uploads/ ~/cursame/public/imports/
+
+== Recomendaciones 
+
+  1) Ser cuidadoso durante los merge
+  2) Trabajar cuando es un modulo nuevo sobre un branch con el nombre del modulo y despues hacer merge
+  3) Los cambios directos procurar hacerlos en producción
+  4) Probar en development antes de subir a producción
+
+
   
 
