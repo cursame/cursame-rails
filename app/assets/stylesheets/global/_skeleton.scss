@@ -194,6 +194,11 @@ html, body {
     height: 38px;
   }
 
+  &.avatar-30 {
+    width: 30px;
+    height: 30px;
+  }
+
   &.avatar-60 {
     width: 60px;
     height: 60px;
@@ -221,6 +226,7 @@ html, body {
   @include clearfix;
 
   .user {
+    position: relative;
     @include clearfix;
     
     img {
@@ -229,7 +235,7 @@ html, body {
 
     > a {
       display: block;
-      padding: 13px 10px;
+      padding: 10px;
     }
   }
 

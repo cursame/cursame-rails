@@ -8,7 +8,7 @@
 
 body {
   color: $global-color;
-  background: $main-background;
+  background: #E0E9EC;
   font-family: $font-cursame;
   font-size: 13px;
   font-weight: normal;
@@ -160,7 +160,7 @@ h6 {
     border-bottom: 1px solid darken($primary-color, 5);
 
     img {
-      vertical-align: -7px;
+      vertical-align: -10px;
     }
 
     .name {
@@ -208,6 +208,7 @@ h6 {
     
     &:hover {
       background: lighten($primary-color, 2);
+      box-shadow: 0 -1px 0 rgba(255, 255, 255, .15),  0 1px 0 rgba(0, 0, 0, 0.12);
     }
   }
 }

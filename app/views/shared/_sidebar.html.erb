@@ -3,12 +3,10 @@
 <div class="global-sidebar">
   <div class="user">
     <%= link_to show_user_path(current_user.personal_url) do %>
-
-      <%= avatar('user', '25', "no", current_user.id, "avatar avatar-24", "no", "no") %>
+      <%= avatar('user', '30', "no", current_user.id, "avatar avatar-30", "no", "no") %>
       <span class="name">
-        <%= truncate("#{current_user.name}" , :omission => "...", :length => 25) %>
+        <%= truncate("#{current_user.name}" , :omission => "...", :length => 24) %>
       </span>
-
     <% end %>
   </div>
 

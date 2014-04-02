@@ -39,10 +39,18 @@ class Api::ApiController < ApplicationController
         @course = Course.find(params[:publicacionId])
         @publications = @course.walls.where("publication_type != ?", 'Course')
         count =  @publications.count()
-        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        if params[:filter_type].nil?
+          @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        else
+          @publications = @publications.where("publication_type = ?", params[:filter_type]).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        end
       else
         count = @network.publications(@user.id,@network.id).count()
-        @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        if params[:filter_type].nil?
+          @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        else
+          @publications = @network.publications(@user.id,@network.id).where("publication_type = ?", params[:filter_type]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+        end        
     end
       @pubs = []
       @publications.each do |publication|
@@ -63,7 +71,7 @@ class Api::ApiController < ApplicationController
               when 'User'
                 auxtext = 'en tu prefil '
             end 
-            comments = []
+            comments = publication.comments
             text = publication.user.name + ' ha comentado ' + auxtext
             avatar =  {
               url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
@@ -126,7 +134,8 @@ class Api::ApiController < ApplicationController
 
 
   def comments
-    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    order = params[:commentable_type] == 'User' ? 'created_at DESC' : 'created_at ASC';
+    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order().paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
 
     @comments.each do |comment|
       comment.likes = comment.likes.size
@@ -137,15 +146,22 @@ class Api::ApiController < ApplicationController
   def courses
     @ids = []
     # @courses = @network.courses.includes(:members_in_courses).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    @courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
-    @courses = @courses.uniq
-    @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    case params[:filter_type]
+      when 'MyCourses'
+        @courses = @user.courses.includes(:members_in_courses)
+      when 'NotMyCourses'
+        @courses = @network.courses.includes(:members_in_courses) - @user.courses.includes(:members_in_courses)
+      when 'All'
+        #@courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
+        @courses = @network.courses.includes(:members_in_courses)
+        @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    end
+    
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
   def users
     @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('last_name ASC')
-    
     @usuarios = []
     @users.each do |u|
       inverse_friendship = Friendship.find_by_user_id_and_friend_id(u.id, @user.id)
@@ -155,7 +171,9 @@ class Api::ApiController < ApplicationController
           url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
         },
         bios: u.bios,
-        coverphoto: u.coverphoto,
+        coverphoto: {
+          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url, 
+        },
         created_at: u.created_at,
         description: u.description,
         domain: u.domain,
@@ -172,11 +190,21 @@ class Api::ApiController < ApplicationController
         friend: @user.friends?(u),
         friendship_request: inverse_friendship.nil? ? false : true
       }
-      @usuarios.push(uu)
-    end
 
+      case params[:filter_type]
+        when 'Friends'
+          if uu[:friend] == true
+            @usuarios.push(uu)
+          end
+        when 'NotFriends'
+          if uu[:friend] == false
+            @usuarios.push(uu)
+          end
+        when 'All'
+          @usuarios.push(uu)
+      end           
+    end
     @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1]}
-    #@usuarios = @usuarios.sort { |x,y| [x[:friend] ? 0 : 1, x[:last_name]] <=> [y[:friend] ? 0 : 1, y[:last_name]]}
     render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
   end
 
@@ -603,7 +631,9 @@ class Api::ApiController < ApplicationController
         avatar: {
           url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
         }, 
-        coverphoto: u.coverphoto.url, 
+        coverphoto: {
+          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url, 
+        }, 
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
         bios: u.bios,
@@ -827,7 +857,7 @@ class Api::ApiController < ApplicationController
   end
 
   def friend_accept
-    friendship = Friendship.find_by_user_id_and_friend_id(@user.id, params[:id])
+    friendship = Friendship.find_by_user_id_and_friend_id(params[:id], @user.id)
     friendship.accepted = true
 
     if friendship.save

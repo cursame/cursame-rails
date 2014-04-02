@@ -12,7 +12,14 @@ class DiscussionsController < ApplicationController
  
  ##### coloca todas las dicusiones del alumno #####
   def my_discussions
-    @wall = current_network.walls.where(:publication_type => 'Discussion').paginate(:per_page => 15, :page => params[:page]).order('created_at DESC')
+    @wall = current_network.walls.where(:publication_type => 'Discussion').paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+    respond_to do |format|
+      if params[:fo_format].nil?
+      format.html
+      else
+      format.js
+      end
+    end
   end
 
   # GET /discussions/1

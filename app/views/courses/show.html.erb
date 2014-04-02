@@ -12,7 +12,7 @@
       <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
     </div>
 
-    <%= will_paginate(@wall) %>
+    <div id="paginate_wall" onclick="PaginateINwall('/courses/<%=@course.id%>',2, <%= @wall.total_pages %>)"></div>
   </div>
 </div>
 
@@ -42,19 +42,5 @@
     $("#banner-profile").css("height", "900px;");
   });
 
-  $(function() {
-    var p = $('#timeline').pageless({
-      totalPages: <%= @wall.total_pages %>,
-      url: '<%= course_path(@course.id) %>',
-      onInit:function(opts) {
-        this.pageless = {
-        opts : opts
-      };
-    },
-    params:{
-      search:''
-    },
-    loaderImage: '<%= image_path("load.gif")%>'
-  });
 });
 </script>

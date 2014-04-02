@@ -26,20 +26,4 @@
   <% end %>
 </div>
 
-<%= will_paginate(@wall) %>
-
-<script>
- var p = $('#timeline').pageless({
-    totalPages: <%= @wall.total_pages %>,
-    url: '<%= my_discussions_path(current_network) %>',
-    onInit:function(opts){
-      this.pageless = {
-        opts : opts
-      };
-    },
-    params:{
-      search:''
-    },
-    loaderImage: '<%= image_path("load.gif")%>'
-  });
-</script>
+<div id="paginate_wall" onclick="PaginateINwall('/all_discussions',2, <%= @wall.total_pages %>)"></div>

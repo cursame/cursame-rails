@@ -4,19 +4,25 @@
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
-<div class="overlay-content">
+<div class="overlay-content no-padding">
   <% votes = publication.publication.votes.up %>
-    <ul>
+  <ul class="people-who-like-this-list">
     <% votes.each do |v| %>
      <% if User.exists?(v.voter_id) %>
       <% user = User.find(v.voter_id) %>
        <li>
           <%= link_to show_user_path(user.personal_url) do %>
-             <%= avatar('user', '45', 'no', user.id, "avatar", "no", "no") %>
-              <%= user.name %>
-           <%end%>
+            <div class="like-author">
+              <span class="avatar-holder">
+                <%= avatar('user', '45', 'no', user.id, "avatar", "no", "no") %>
+              </span>
+            </div>
+            <div class="like-main">
+              <h6><%= user.name %></h6>
+            </div>
+           <% end %>
        </li>
      <%end%>
     <%end%>
-    </ul>
+  </ul>
 </div>

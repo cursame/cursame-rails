@@ -1,6 +1,5 @@
 <div id="box-content" class="wrapper spaced">
   <div id="box-stream-post">
-
     <div id="pk_menu">
       <%=render :partial => 'shared/post_menu' %>
     </div>
@@ -8,9 +7,7 @@
     <div id="timeline" class="tim">
       <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
     </div>
-
-    <%= will_paginate( @wall ) %>
-
+    <div id="paginate_wall" onclick="PaginateINwall('/',2, <%= @wall.total_pages %>)"></div>
   </div>
 </div>
 <script type="text/javascript">
@@ -46,19 +43,6 @@ $(function() {
     loaderImage : '<%= image_path("load.gif")%>'
   };
 
-  $('#timeline').pageless({
-    totalPages: 10,
-    url: window.pagelessSettings.url,
-    loader: "#loader-pagination",
-    onInit:function(opts){
-      this.pageless = {
-        opts : opts
-      };
-    },
-    params:{
-      search:''
-    },
-    loaderImage: window.pagelessSettings.loaderImage
-  });
+
 });
 </script>

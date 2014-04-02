@@ -133,3 +133,30 @@
     }
   }
 }
+
+/* People Who Like This
+----------------------------------*/
+.people-who-like-this-list {
+  li {
+    border-top: 1px solid #E6E6E6;
+    
+    &:first-child {
+      border-top: 0;
+    }
+
+    &:last-child > a {
+      border-radius: 0 0 $radius $radius;
+    }
+  
+    > a:hover {
+      background: #FAFAFA;
+    }
+
+    .like-main {
+      h6 {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

@@ -6,5 +6,7 @@ $('#liked-<%= @publication.id%>').prepend("<%= escape_javascript(link_to 'Me Gus
 <% else %>
   $('#liked-<%= @publication.id%> a').html('').html('<i class="i i-like-c-active"> </i>')
 <% end %>
+
 $('#counter-like-<%= @publication.id%>').html('');
-$('#counter-like-<%= @publication.id%>').html("<%= @publication.publication.votes.up.size %>");
+var parent = $('#counter-like-<%= @publication.id%>').parent();
+parent.html('<%= link_to get_votes_of_publication_path(@publication.id), remote: true do %><span id="counter-like-<%= @publication.id %>"><%= @publication.publication.votes.up.size %></span> Me gusta<% end %>')

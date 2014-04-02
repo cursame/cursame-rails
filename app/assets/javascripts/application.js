@@ -227,16 +227,25 @@ $(function() {
   });
 });
 
-function PaginateINwall(url_paginate, page, total_page, other_params){
-    $.get( url_paginate+"?page="+page+"&fo_format=remote"+other_params , function( data ) {
-      console.log(data);
-    });
-    if ((page*1) != (total_page*1) && (total_page*1) != 1){
-    $("#paginate_wall").attr("onclick","PaginateINwall("+"'"+url_paginate+"'"+","+(page*1+1)+", "+total_page+","+"'"+other_params+"'"+")");
-     }else{
-    $("#paginate_wall").attr("onclick","");
-    $("#paginate_wall").html("<center><b>Actualemte no hay mas páginas por cargar.</b></center>");
+window.paginateWorking = false;
 
+function PaginateINwall(url_paginate, page, total_page, other_params){
+  if ( !paginateWorking ) {
+    window.paginateWorking = true;
+    if ((page*1) != (total_page*1) && (total_page*1) != 1){
+        $("#paginate_wall").html("<div id='pageless-loader'><img src='/assets/load.gif'/></div>");
+        $.get( url_paginate+"?page="+page+"&fo_format=remote"+other_params , function( data ) {
+          $('#paginate_wall').html('');
+          window.paginateWorking = false;
+        });
+        $("#paginate_wall").attr("onclick","PaginateINwall("+"'"+url_paginate+"'"+","+(page*1+1)+", "+total_page+","+"'"+other_params+"'"+")");
+     }else{
+        $.get( url_paginate+"?page="+page+"&fo_format=remote"+other_params , function( data ) {
+          window.paginateWorking = false;
+        });
+        $("#paginate_wall").attr("onclick","");
+        $("#paginate_wall").html("<center><b>Actualemte no hay mas páginas por cargar.</b></center>");
     }
+  };
 }   
 

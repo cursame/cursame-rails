@@ -14,8 +14,7 @@
       <div id="timeline" class="tim">
         <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'user'} %>
       </div>   
-      
-      <%= will_paginate(@wall) %>
+      <div id="paginate_wall" onclick="PaginateINwall('/users/<%=@user_l.personal_url%>',2, <%= @wall.total_pages %>)"></div>
     </div>
   <% else %>
     <div class="no-content-section">
@@ -33,18 +32,6 @@
       createModal( tourContent, "video-tutorial-overlay overlay-informative" );
     <% end %>
 
-    var p = $('#timeline').pageless({
-      totalPages: <%= @wall.total_pages %>,
-      url: '<%= show_user_path(@user_l.personal_url) %>',
-      onInit:function(opts){
-        this.pageless = {
-          opts : opts
-        };
-      },
-      params:{
-        search:''
-      },
-      loaderImage: '<%= image_path("load.gif")%>'
-    });
+    
   });
 </script>

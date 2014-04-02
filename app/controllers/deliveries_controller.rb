@@ -20,20 +20,16 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
+  
   ##### manueja todas las tareas del usuario dentro de la red
   def my_deliveries
-      deliveries = []
-      current_user.courses.each do |c|
-        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
-         c.deliveries.each do |d|
-           case @member.owner
-              when true
-                  if d.assignments.count == 0
-                       deliveries.push(d.id)
-                  end
-                  puts "owner"
-              when nil 
-                  if d.assignments.where(:user_id => current_user.id).count == 0
+    deliveries = []
+    current_user.courses.each do |c|
+      @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+       c.deliveries.each do |d|
+         case @member.owner
+            when true
+                if d.assignments.count == 0
                      deliveries.push(d.id)
                   end
                   puts " no owner"
