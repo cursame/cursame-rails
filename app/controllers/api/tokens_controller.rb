@@ -102,7 +102,7 @@ def native_create_user
 end
 
 def destroy
-	@user=User.find_by_authentication_token(params[:id])
+	@user=User.find_by_authentication_token(params[:auth_token])
 	if @user.nil?
 		logger.info("Token not found.")
 		render :status => 404, :json => {:response =>{:message => "Invalid token", :success => false}}
