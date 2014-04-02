@@ -101,7 +101,7 @@ Para poder compilar en los serividores de Cúrsame el proceso correcto es:
   4) Probar en development antes de subir a producción
 
 
- <tt>Por: José Alfredo Reyes de Antuñano</tt>
+<tt>Por: José Alfredo Reyes de Antuñano</tt>
 
 
 
