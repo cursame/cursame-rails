@@ -4,7 +4,7 @@ Cúrsame es una red social especiañizada en educación que nacio de las ideas c
 
 == Estructura
 
-Cúrsame esta basado en Ruby on Rails 3.2.1, utuliza algunos servicios como faye ya que en esta versión del framework los web sokets todavia no han sido habilidatos.
+Cúrsame esta basado en Ruby on Rails 3.2.1, utuliza algunos servicios como faye ya que en esta versión del framework los websockets todavia no han sido habilidatos.
 
 Los módulos mas importantes de cúrsame son:
 
