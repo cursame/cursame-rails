@@ -1,0 +1,35 @@
+<div class="academic-athor">
+  <% if discussion_post[:posted_in_for] %>
+    <%= link_to course_path(discussion_post[:posted_in_for_id]) do %>
+      <%= avatar('course', '150', 'no', discussion_post[:posted_in_for_id], 'avatar avatar-60', 'no', 'no') %>
+    <% end %>
+  <% else %>
+    <%= link_to show_user_path(discussion_post[:personal_url]) do %>
+      <%= avatar('user', '150', 'no', publication.publication.user.id, 'avatar avatar-60', 'no', 'no') %>
+    <% end %>
+  <% end %>
+</div>
+<div class="academic-details">
+  <div class="academic-icon">
+    <%= icon('discusion-publication') %>
+  </div>
+  <div class="academic-intro">
+    <p>
+      Nueva discusión
+
+      <% unless discussion_post[:posted_in_for].blank? %>
+        en el curso <%= link_to discussion_post[:posted_in_for], course_path(discussion_post[:posted_in_for_id]) %></p>
+      <% end %>
+    </p>
+  </div>
+  <div class="academic-title">
+    <h3 class="title"><%= link_to discussion_post[:name], show_template_on_modal_path(:id => publication.id, :type => 'wall'), :remote => true, data: "modal"%></h3>
+  </div>
+  <div class="academic-desc">
+    <p><%= truncate( discussion_post[:content], omission: "...", length: 150) %></p>
+  </div>
+  <div class="academic-button">
+    <%= link_to 'Abrir discusion', show_template_on_modal_path(:id => publication.id, :type => 'wall'), :remote => true, class: "btn btn-transparent uppercase", data: "modal"%>
+  </div>
+</div>
+<%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: true} %>

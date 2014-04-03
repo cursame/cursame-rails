@@ -47,6 +47,7 @@ class ApplicationController < ActionController::Base
   helper_method :client_youtube
   helper_method :auth_hash
   helper_method :courses_with_permissions
+  helper_method :pretty_date_format
 
   #current_user_course_when_inscript
   helper_method :current_user_courses
@@ -576,7 +577,6 @@ class ApplicationController < ActionController::Base
   end
 
   ##### da formato a las fechas en español
-  
   def es_current_date(month = '', day = '' , year = '', hour ='',format = 'mexican')
     ##### example :    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
    
@@ -640,6 +640,10 @@ class ApplicationController < ActionController::Base
         when esday == 'Week'
         @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
     end
+  end
+
+  def pretty_date_format(date)
+    es_current_date(date.strftime('%B'), date.strftime('%d'), date.strftime('%Y'), date.strftime('%l:%M%P'), "latin_string")
   end
   
   ###### metodo para encontrar un usuario de manera facil ######

@@ -1,7 +1,6 @@
-
 <% if user_signed_in? %>
 <div class="global-sidebar">
-  <div class="user">
+  <div class="user s-unit">
     <%= link_to show_user_path(current_user.personal_url) do %>
       <%= avatar('user', '30', "no", current_user.id, "avatar avatar-30", "no", "no") %>
       <span class="name">
@@ -10,7 +9,7 @@
     <% end %>
   </div>
 
-  <div class="sidebar-section sidebar-navigation">
+  <div class="sidebar-section sidebar-navigation s-unit">
     <div class="sidebar-section-main">
       <ul class="section-list navigation">
         <li>
@@ -59,10 +58,10 @@
   </div>
   
   <div class="sidebar-section sidebar-courses">
-    <div class="sidebar-section-header">
+    <div class="sidebar-section-header s-unit">
       <h3><%= current_network.courses_tag %></h3>
     </div>
-    <div class="sidebar-section-main scroller">
+    <div class="sidebar-section-main scroller s-to-f">
       <ul class="section-list side-courses">
         <% unless current_user_courses.empty? %>
           <% current_user_courses.each do |c| %>
@@ -89,7 +88,7 @@
   </div>
   
   <div class="sidebar-section sidebar-chat tabs">
-    <div class="sidebar-section-header">
+    <div class="sidebar-section-header s-unit">
       <h3>Chat <!-- (<%= @courses_online.count + @friends_online.count %>) --></h3>
       
       <div class="chat-switch-wrap tabs-buttons">
@@ -102,7 +101,7 @@
       </div>
 
     </div>
-    <div class="sidebar-section-main scroller"> 
+    <div class="sidebar-section-main scroller s-to-f"> 
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
           <% if current_user.count_friendships != 0 %>
@@ -167,7 +166,7 @@
     </div>
   </div>
 
-  <div class="global-footer">
+  <div class="global-footer s-unit">
     <div class="cursame-brand">
       <%= link_to "Cursame", "http://cursa.me/", class: "footer-logo", target: "_blank" %>
     </div>

@@ -1,0 +1,23 @@
+<div class="academic-athor">
+  <%= link_to course_path(survey_post[:posted_in_for_id]), title: survey_post[:posted_in_for] do %>
+    <%= avatar('course', '150', 'no', survey_post[:posted_in_for_id], 'avatar avatar-60', 'no', 'no') %>
+  <% end %>
+</div>
+<div class="academic-details">
+  <div class="academic-icon">
+    <%= icon('cuestionario-publication') %>
+  </div>
+  <div class="academic-intro">
+    <p>Nuevo cuestionario para responder en el curso <%= link_to survey_post[:posted_in_for], course_path(survey_post[:posted_in_for_id]) %></p>
+  </div>
+  <div class="academic-title">
+    <h3 class="title"><%= link_to survey_post[:name], show_template_on_modal_path(:id => publication.id, :type => 'wall'), :remote => true, data: "modal"%></h3>
+  </div>
+  <div class="academic-desc">
+    <p>Responder antes del <%= pretty_date_format(publication.publication.end_date) %> &middot; <%= pluralize(publication.publication.questions.count, 'Pregunta', 'Preguntas') %></p>
+  </div>
+  <div class="academic-button">
+    <%= link_to 'Abrir cuestionario', show_template_on_modal_path(:id => publication.id, :type => 'wall'), :remote => true, class: "btn btn-transparent uppercase", data: "modal"%>
+  </div>
+</div>
+<%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: true} %>

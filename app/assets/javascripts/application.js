@@ -217,6 +217,19 @@ $(function() {
     $('html,body').animate({ scrollTop: 0 }, '1500', 'swing');
   });
 
+  /* Add active class tu subnav links*/
+  $('.section-subnav li > a').on('click', function() {
+    var $this = $(this),
+        nav   = $this.closest('.section-subnav');
+
+    nav.children('li').removeClass('active');
+    $this.parent().addClass('active');
+  });
+
+  $('.search-courses').on('submit', function() {
+    $('.section-subnav li').removeClass('active');
+  });
+
   $('.edit-publication-link').live('click', function() {
     $(this).closest('.publication-box').find('.form_for_edit_wall').slideToggle(300);
   });
@@ -244,7 +257,7 @@ function PaginateINwall(url_paginate, page, total_page, other_params){
           window.paginateWorking = false;
         });
         $("#paginate_wall").attr("onclick","");
-        $("#paginate_wall").html("<center><b>Actualemte no hay mas páginas por cargar.</b></center>");
+        $("#paginate_wall").html("<center><b>Actualemte no hay más páginas por cargar.</b></center>");
     }
   };
 }   

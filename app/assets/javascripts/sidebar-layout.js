@@ -1,50 +1,86 @@
-$(function() {
+Sidebar = {
+  init: function() {
+    this.sidebar = $('.global-sidebar');
+    this.collapsed = false;
+    this.sidebarVisible = false;
+    this.minWidth = 1125;
+    this.bindEvents();
+    this.fitCheck();
+  },
+  bindEvents: function() {
+    var self = this;
+    $(window).on('resize', function(event) {
+      self.fitCheck();
+    });
+    $('.menu-sidebar').on('click', function() {
+      if ( self.sidebarVisible ) {
+        self.hideSideBarAnimation();
+      } else {
+        self.showSideBarAnimation();
+      };
+    });
+  },
+  fitCheck: function() {
+    var winHeight = $(window).height(),
+        winWidth = $(window).width();
 
-  /* Adjuts the sidebar components depending on the window Height
-  ----------------------------------*/
-  var sidebar       = $('div.global-sidebar'),
-      user          = sidebar.find('div.user'),
-      nav           = sidebar.find('div.sidebar-navigation'),
-      courses       = sidebar.find('div.sidebar-courses'),
-      coursesHeader = courses.find('div.sidebar-section-header').outerHeight(),
-      chat          = sidebar.find('div.sidebar-chat'),
-      chatHeader    = chat.find('div.sidebar-section-header').outerHeight(),
-      footer        = sidebar.find('div.global-footer'),
-      staticHeight  = user.outerHeight() + nav.outerHeight() + footer.outerHeight(),
+    Sidebar.resizeInHeight( winHeight );
+    if ( winWidth <= this.minWidth ) {
+      if ( !this.collapsed ) {
+        this.hideSidebar();
+      };
+    } else {
+      this.restoreSidebar();
+    }
+  },
+  resizeInHeight: function( winHeight ) {
+    var items = $('.s-unit'),
+        itemsToFill = $('.s-to-f'),
+        itemsHeight = 0,
+        availableHeight = 0;
 
-      target1       = courses.find('.sidebar-section-main'),
-      target2       = chat.find('.sidebar-section-main');
+    $.each(items, function(index, item) {
+       itemsHeight += $(item).outerHeight();
+    });
 
-  var userHeader    = $('#user_nav');
+    availableHeight = winHeight - itemsHeight;
 
-  function adjustSidebar() {
-    var winHeight = $(window).height();
-
-    availableHeight = winHeight - staticHeight - coursesHeader - chatHeader;
-    sidebar.height(winHeight);
-
-    target1.height(availableHeight/2);
-    target2.height(availableHeight/2)
+    $.each(itemsToFill, function(index, item) {
+      $(item).height( availableHeight / itemsToFill.length );
+    });
+  },
+  hideSidebar: function() {
+    this.collapsed = true;
+    this.sidebarVisible = false;
+    this.sidebar.css('left', '-230px');
+    $('body').addClass('collapsed-layout no-sidebar');
+    $('.notice-spacer').css('paddingLeft', '0');
+    $('.menu-sidebar').show();
+    $('.topbar-spacer').css('paddingLeft', '0');
+  },
+  restoreSidebar: function() {
+    this.collapsed = false;
+    this.sidebarVisible = true;
+    this.sidebar.css('left', '0');
+    $('body').removeClass('collapsed-layout no-sidebar').css('paddingLeft', '0');
+    $('.notice-spacer').css('paddingLeft', '230px');
+    $('.menu-sidebar').hide().removeClass('active');
+    $('.topbar-spacer').css('paddingLeft', '230px');
+  },
+  showSideBarAnimation: function() {
+    this.sidebarVisible = true;
+    $('body, .topbar .topbar-spacer').animate({ paddingLeft: 230 }, 100);
+    $('body').css('overflow', 'hidden !important');
+    this.sidebar.animate({ left: 0 }, 100);
+  },
+  hideSideBarAnimation: function() {
+    this.sidebarVisible = false;
+    $('body, .topbar .topbar-spacer').animate({ paddingLeft: 0 }, 100);
+    $('body').css('overflow', 'auto');
+    this.sidebar.animate({ left: -230 }, 100);
   }
+};
 
-  adjustSidebar();
-
-  $(window).on('resize', function() {
-    adjustSidebar();    
-  });
-
-
-  /* Add active class tu subnav links*/
-  $('.section-subnav li > a').on('click', function() {
-    var $this = $(this),
-        nav   = $this.closest('.section-subnav');
-
-    nav.children('li').removeClass('active');
-    $this.parent().addClass('active');
-  });
-
-  $('.search-courses').on('submit', function() {
-    $('.section-subnav li').removeClass('active');
-  });
-
+$(function() {
+  Sidebar.init();
 });
