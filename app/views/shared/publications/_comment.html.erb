@@ -1,0 +1,26 @@
+<div class="publication-inner-content-author">
+  <%= link_to show_user_path(comment_post[:personal_url]) do %>
+    <span class="avatar-holder">
+      <%= avatar('user', '150', 'no', publication.publication.user.id, 'avatar avatar-60', 'no', 'no') %>
+    </span>
+  <% end %>
+</div>
+<div class="publication-inner-content-main">
+  <h6>
+    <%= link_to comment_post[:user_name], show_user_path(comment_post[:personal_url]) unless comment_post[:user_name].blank? %>
+    <%= link_to "Usuario", show_user_path(comment_post[:personal_url]) if comment_post[:user_name].blank? %>
+
+    <% unless comment_post[:posted_in_for].blank? %>
+      comentó en el curso <%= link_to comment_post[:posted_in_for], course_path(comment_post[:posted_in_for_id]) %>
+    <% end %>
+    
+    <% unless comment_post[:user].blank? %>
+      comentó en el perfil de <%= link_to comment_post[:user].name, show_user_path(comment_post[:user].personal_url) %>
+    <% end %>
+  </h6>
+  <div>
+    <%= comment_post[:content] %>
+  </div>
+
+  <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: false} %>
+</div>

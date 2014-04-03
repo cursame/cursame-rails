@@ -11,7 +11,6 @@
     </script>
   <% end %>
 
-
   <% if request.subdomain.split(".").size != 1 then %>
   	<% url = request.url %>
       <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
@@ -51,6 +50,22 @@
         
         <div class="wrap">
           <%= render partial: '/shared/user_header' %>
+          <!-- <div class="globa-message">
+            <div class="wrapper spaced">
+              <div class="close-message"><i class="i i-x-close"></i></div>
+              <h2>Bienvenido al nuevo Cúrsame</h2>
+              <p>Consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              <br>
+              <ul class="list-buttons left">
+                <li>
+                  <a href=""><strong><%= icon('play-mini') %> VER VIDEOTOUR →</strong></a>
+                </li>
+                <li>
+                  <a href=""><%= icon('survey-mini-blue') %> RESPONDER ENCUESTA →</a>
+                </li>
+              </ul>
+            </div>
+          </div> -->
           <div class="main">
             <%= yield %>
           </div>
@@ -149,5 +164,3 @@
     </html>
   <% end %>
 <% end %>
-
-

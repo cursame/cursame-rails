@@ -10,13 +10,21 @@ html, body {
   margin: 0;
 }
 
+body {
+  &.collapsed-layout {
+    .global-sidebar {
+      left: -230px;
+    }
+  }
+}
+
 .no-sidebar {
   .wrap {
     padding-left: 0;
   }
 
   .topbar .topbar-spacer {
-    margin-left: 0;
+    padding-left: 0;
   }
 }
 
@@ -29,17 +37,28 @@ html, body {
   width: 100%;
 
   .topbar-spacer {
-    margin-left: 230px;
+    padding-left: 230px;
   }
 
   .network {
     float: left;
     height: 44px;
     margin-top: 3px;
+    @include clearfix;
+    
+    > a {
+      float: left;
+    }
 
     .free_network {
       display: block;
       margin-top: 11px;
+    }
+    
+    .menu-sidebar {
+      float: left;
+      padding: 16px 15px;
+      margin: -3px 15px 0 0;
     }
   }
 
@@ -93,13 +112,25 @@ html, body {
 }
 
 .wrapper {
-  width: 720px;
+  width: 880px;
   margin: 0 auto;
   @include clearfix;
 
   &.spaced {
-    width: 700px;
+    width: 860px;
   }
+}
+
+.content-main {
+  width: 620px;
+  float: left;
+  margin: 0 10px;
+}
+
+.content-sidebar {
+  width: 220px;
+  margin: 0 10px;
+  float: left;
 }
 
 .full-width {
@@ -509,4 +540,17 @@ html, body {
   top: 30%;
   margin-top: -22px;
   z-index: 30;
+}
+
+/* Messages from Admins
+----------------------------------*/
+.globa-message {
+  position: relative;
+  padding: 30px 0;
+
+  .close-message {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 }

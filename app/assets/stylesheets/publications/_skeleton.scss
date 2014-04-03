@@ -9,25 +9,25 @@
   margin-bottom: 20px;
   @include clearfix;
 
-  .publication-author {
-    float: left;
-  }
+  .publication-content {
+    padding: 10px;
 
-  .publication-main {
-    margin-left: 70px;
-
-    > .publication-metadata {
-      margin: 0 10px 10px 10px;
-    }
-
-    &:hover > .publication-metadata .edit-publication,
+    &:hover .publication-metadata .edit-publication,
     &:hover .publication-content .edit-publication {
       @include inline-block;
     }
-  }
 
-  .publication-content {
-    padding: 10px;
+    .publication-inner-content-author {
+      float: left;
+    }
+
+    .publication-inner-content-main {
+      margin-left: 70px;
+
+      .publication-metadata {
+        margin-top: 7px;
+      }
+    }
 
     h6 {
       margin-bottom: 3px;
@@ -48,24 +48,29 @@
   .publication-content {
     position: relative;
     margin: -1px;
-    padding: 20px;
+    padding: 10px;
   }
 
-  .academic-content {
-    padding: 15px 0 19px 0;
-    @include clearfix;
-    
-    .academic-action {
-      float: right;
-    }
-    
-    .academic-content-icon {
-      float: left
+  .academic-athor {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+
+  .academic-details {
+    padding: 20px 20px;
+
+    .academic-intro {
+      margin-bottom: 10px;
     }
 
-    .academic-content-desc {
-      margin-left: 42px;
+    .academic-desc {
+      margin: 5px 0 25px 0;
     }
+  }
+
+  .publication-metadata {
+    margin-bottom: 10px;
   }
 }
 
@@ -156,13 +161,7 @@
   margin: 20px 0 20px 0;
   @include clearfix;
 
-  .new-publication-author {
-    float: left;
-  }
-
   .new-publication-main {
-    margin-left: 70px;
-
     .new-publication-form-content {
       padding: 10px;
     }
