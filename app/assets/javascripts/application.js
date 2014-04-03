@@ -257,7 +257,7 @@ function PaginateINwall(url_paginate, page, total_page, other_params){
           window.paginateWorking = false;
         });
         $("#paginate_wall").attr("onclick","");
-        $("#paginate_wall").html("<center><b>Actualemte no hay más páginas por cargar.</b></center>");
+        $("#paginate_wall").html("<div class='no-more-publicaitons-message'><h5>No hay más publicaciones por cargar.</h5></div>");
     }
   };
 }   
