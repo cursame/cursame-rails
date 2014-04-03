@@ -15,8 +15,9 @@
 
   </div>
 </div>
+<div class="wrapper spaced sc-margined">
 
-<div id="timeline" class="tim wrapper spaced sc-margined">
+<div id="timeline" class="tim">
   <% unless @wall.empty? %>
     <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
   <% else %>
@@ -27,3 +28,4 @@
 </div>
 
 <div id="paginate_wall" onclick="PaginateINwall('/all_discussions',2, <%= @wall.total_pages %>)"></div>
+</div>
