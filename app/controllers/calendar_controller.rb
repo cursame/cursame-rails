@@ -48,7 +48,7 @@ class CalendarController < ApplicationController
           c.deliveries.each do |d|
 
             case 
-              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
+              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && d.state == 'published'
                 activities.push({
                 title: d.title,
                 id: d.id,
@@ -56,7 +56,7 @@ class CalendarController < ApplicationController
                 type: "Delivery",
                 expira: "en 3 días"
                 })
-              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
+              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && d.state == 'published'
                 activities.push({
                 title: d.title,
                 id: d.id,
@@ -64,7 +64,7 @@ class CalendarController < ApplicationController
                 type: "Delivery",
                 expira: "en 2 días"
                 })
-              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
+              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && d.state == 'published'
                 activities.push({
                 title: d.title,
                 id: d.id,
@@ -72,7 +72,7 @@ class CalendarController < ApplicationController
                 type: "Delivery",
                 expira: "mañana"
                 })
-              when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
+              when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && d.state == 'published'
                 activities.push({
                 title: d.title,
                 id: d.id,
@@ -86,7 +86,7 @@ class CalendarController < ApplicationController
 
            c.surveys.each do |s|
             case 
-              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
+              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && s.state == 'published'
                 activities.push({
                 title: s.title,
                 id: s.id,
@@ -94,7 +94,7 @@ class CalendarController < ApplicationController
                 type: "Survey",
                 expira: "en 3 días"
                 })
-              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
+              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && s.state == 'published'
                 activities.push({
                 title: s.title,
                 id: s.id,
@@ -102,7 +102,7 @@ class CalendarController < ApplicationController
                 type: "Survey",
                 expira: "en 2 días"
                 })
-              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
+              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && s.state == 'published'
                 activities.push({
                 title: s.title,
                 id: s.id,
@@ -110,7 +110,7 @@ class CalendarController < ApplicationController
                 type: "Survey",
                 expira: "mañana"
                 })
-              when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
+              when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && s.state == 'published'
                 activities.push({
                 title: s.title,
                 id: s.id,
