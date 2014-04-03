@@ -3,12 +3,7 @@
 ----------------------------------*/
 .publication-box {
   .publication-main {
-    background: $white;
-    border: 1px solid #C5C5C5;
-    border-bottom-color: #BBB;
-    border-top-color: #D5D5D5;
-    border-radius: $radius;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    @extend .basic-container-style;
 
     .publication-content {
       word-break: break-word;
@@ -155,11 +150,7 @@
 .new-publication {
   
   .new-publication-main {
-    background: $white;
-    border: 1px solid #C5C5C5;
-    border-bottom-color: #BBB;
-    border-top-color: #D5D5D5;
-    border-radius: $radius;
+    @extend .basic-container-style;
 
     .new-publication-footer {
       background: #fcfcfc;

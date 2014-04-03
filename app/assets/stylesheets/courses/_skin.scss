@@ -1,12 +1,6 @@
 
 /* Courses Skin
 ----------------------------------*/
-.basic-container-style {
-  background-color: $white;
-  border-radius: $radius;
-  border: 1px solid #ccc;
-}
-
 .courses-list {
   .course {
     @extend .basic-container-style;

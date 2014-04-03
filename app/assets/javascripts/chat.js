@@ -257,8 +257,6 @@ Chat = {
     return preparedChannels;
   },
   repositionPanelOnWidth: function() {
-    // console.log(Chat.activePanelsCount, Chat.availableSpots);
-
     if (Chat.activePanelsCount > Chat.availableSpots) {
       var panels = $('.chat-panel'),
           panelToBeRemoved = panels[panels.length-1],

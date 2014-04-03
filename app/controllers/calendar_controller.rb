@@ -45,8 +45,6 @@ class CalendarController < ApplicationController
           date = Time.now + 3.days 
           time_for_expire = date.strftime('%d/%m/%Y') 
           
-
-
           c.deliveries.each do |d|
 
             case 
@@ -132,7 +130,7 @@ class CalendarController < ApplicationController
 
     respond_to do |f|
       f.html
-      f.json { render json: filter_type.paginate(:per_page => 5, :page => params[:page]) }
+      f.json { render json: filter_type.paginate(:per_page => 3, :page => params[:page]) }
     end
   end
   

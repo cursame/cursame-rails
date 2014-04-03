@@ -127,12 +127,6 @@ body {
   margin: 0 10px;
 }
 
-.content-sidebar {
-  width: 220px;
-  margin: 0 10px;
-  float: left;
-}
-
 .full-width {
   width: 100%;
 }
@@ -309,6 +303,45 @@ body {
   overflow-y: auto; 
 }
 
+/* Content Sidebar
+----------------------------------*/
+.content-sidebar {
+  width: 220px;
+  margin: 20px 10px 0 10px;
+  float: left;
+
+  .side-section {
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.side-section {
+  .side-section-header {
+    padding: 10px 10px;
+  }
+}
+
+.lastest-activities-list {
+  list-style: none;
+
+  .ajax-next-activities a {
+    display: block;
+    padding: 7px 10px;
+
+    span {
+      display: block;
+    }
+  }
+
+  .load-more-upcomming-activities {
+    padding: 5px;
+  }
+}
+
 /* Chat Switch
 ----------------------------------*/
 .chat-switch-wrap {
@@ -475,7 +508,7 @@ body {
   @include transition (top .3s ease-in-out);
   
   .notice-spacer {
-    margin-left: 230px;
+    padding-left: 230px;
   }
 
   #notice {

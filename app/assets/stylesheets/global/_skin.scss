@@ -27,6 +27,15 @@ a {
   text-decoration: none;
 }
 
+.basic-container-style {
+  background: $white;
+  border: 1px solid #C5C5C5;
+  border-bottom-color: #BBB;
+  border-top-color: #D5D5D5;
+  border-radius: $radius;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
 .topbar {
   background: $white;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0,0,0,.1);
@@ -222,6 +231,58 @@ h6 {
       background: lighten($primary-color, 2);
       box-shadow: 0 -1px 0 rgba(255, 255, 255, .15),  0 1px 0 rgba(0, 0, 0, 0.12);
     }
+  }
+}
+
+/* Content Sidebar
+----------------------------------*/
+.side-section {
+  @extend .basic-container-style;
+
+  .side-section-header {
+    background: #fcfcfc;
+    border-bottom: 1px solid #d6d6d6;
+    border-radius: $radius $radius 0 0;
+  }
+}
+
+.lastest-activities-list {
+  .ajax-next-activities {
+    border-top: 1px solid #D6D6D6;
+
+    a {
+      span {
+        text-transform: uppercase;
+        font-size: 11px;
+        color: #808080
+      }
+    }
+
+    &:first-child {
+      border-top: 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $radius $radius;
+    }
+
+    &:hover {
+      background: #fcfcfc;
+    }
+  }
+
+  .ajax-next-activities + .inner-no-content {
+    border-top: 1px solid #D6D6D6;
+  }
+
+  .load-more-upcomming-activities {
+    border-top: 1px solid #D6D6D6; 
+    text-align: center;
+    color: $primary-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    cursor: pointer;
   }
 }
 
