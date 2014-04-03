@@ -58,6 +58,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   ########## calendar
   get "calendar", :to => 'calendar#index', :as => :calendar
   get "calendar/test_calendar"
+  get "activities_for_today", :to => 'calendar#activities_for_today', :as => :activities_for_today
+
   
   ######### dropbox
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox

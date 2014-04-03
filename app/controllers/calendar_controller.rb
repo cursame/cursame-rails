@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # calendars are not (yet) a resource in the rails sense of thw word - we
 # simply have a url like calendar/index to get the one and only calendar
 # this demo serves up.
@@ -36,6 +37,103 @@ class CalendarController < ApplicationController
    @tasks = Event.where(:id => id_event)
    
    #puts @tasks
+  end
+
+  def activities_for_today
+    activities = []
+       current_user.courses.each do |c|
+          date = Time.now + 3.days 
+          time_for_expire = date.strftime('%d/%m/%Y') 
+          
+
+
+          c.deliveries.each do |d|
+
+            case 
+              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
+                activities.push({
+                title: d.title,
+                id: d.id,
+                course: c.id,
+                type: "Delivery",
+                expira: "en 3 días"
+                })
+              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
+                activities.push({
+                title: d.title,
+                id: d.id,
+                course: c.id,
+                type: "Delivery",
+                expira: "en 2 días"
+                })
+              when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
+                activities.push({
+                title: d.title,
+                id: d.id,
+                course: c.id,
+                type: "Delivery",
+                expira: "mañana"
+                })
+              when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
+                activities.push({
+                title: d.title,
+                id: d.id,
+                course: c.id,
+                type: "Delivery",
+                expira: "hoy"
+                })
+            end
+            
+          end
+
+           c.surveys.each do |s|
+            case 
+              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
+                activities.push({
+                title: s.title,
+                id: s.id,
+                course: c.id,
+                type: "Survey",
+                expira: "en 3 días"
+                })
+              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
+                activities.push({
+                title: s.title,
+                id: s.id,
+                course: c.id,
+                type: "Survey",
+                expira: "en 2 días"
+                })
+              when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
+                activities.push({
+                title: s.title,
+                id: s.id,
+                course: c.id,
+                type: "Survey",
+                expira: "mañana"
+                })
+              when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
+                activities.push({
+                title: s.title,
+                id: s.id,
+                course: c.id,
+                type: "Survey",
+                expira: "hoy"
+                })
+            end
+          end
+       end
+
+         if defined?(params[:activity_type]) && !params[:activity_type].nil?
+             filter_type = activities.keep_if {|x| x[:type] == params[:activity_type]}
+            else
+             filter_type = activities
+         end
+
+    respond_to do |f|
+      f.html
+      f.json { render json: filter_type.paginate(:per_page => 5, :page => params[:page]) }
+    end
   end
   
   def connection
