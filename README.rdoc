@@ -32,18 +32,19 @@ Los módulos mas importantes de cúrsame son:
 En el año 2013 se realizo la planeación de estratégica del producto Cúrsame y se determino en el més de siciembre realizar un rediseño substancial a la aplicación.
 
   |_Enero
-  | |_Rediseño de la aplicación
-  | |_Optimiazación y limpieza de metodos de frontend
+  | |_Rediseño de la aplicación(finish)
+  | |_Optimiazación y limpieza de metodos de frontend(finish)
   |_Febrero
-  | |_Finalizar rediseño de la aplicación
-  | |_Optimizar metodos ajax y filtros
+  | |_Finalizar rediseño de la aplicación(finish)
+  | |_Optimizar metodos ajax y filtros(finish)
   |_Marzo
-  | |_Solucionar y mejorar metodos que fueron creadon en el resieño solución de bugs
+  | |_Solucionar y mejorar metodos que fueron creadon en el resieño solución de bugs(finish)
   |_Abril
-  | |_Optimización de procesos de chat
-  | |_Desarrollo de pruebas en backend 
+  | |_Optimización de procesos de chat(finish)
+  | |_Optimización de proces faltantes del rediseño(process)
+  | |_Desarrollo de pruebas en backend
   | |_Pruebas de stress en servidores
-  | |_Validaciones para internet explorer de versiones antiguas
+  | |_Validaciones para internet explorer de versiones antiguas(process)
   |_Mayo
   | |_Mejora en métodos de evaluación
   | |_Comenzar minería de datos
@@ -51,7 +52,7 @@ En el año 2013 se realizo la planeación de estratégica del producto Cúrsame 
   | |_Revisión de metodos mas importantes
   | |_Mejora de los cuestionarios
   | |_Panel de padres de familia
-  | |_Quitar web movile y hacer todo el layout responsive  
+  | |_Quitar web movile y hacer todo el layout responsive (process) 
   |_Junio
   | |_Limpieza y optimización de codígo en controladores (quitar métodos ya no necesarios)
   | |_Limpieza de Modelos (revisar los metodos de crear, eliminar y columnas ya no utilizadas)
