@@ -46,7 +46,8 @@ class CalendarController < ApplicationController
           time_for_expire = date.strftime('%d/%m/%Y') 
           
           c.deliveries.each do |d|
-
+            @assignment = d.assignments.where(user_id: current_user.id, delivery_id: d.id ).count
+          if @assignment == 0
             case 
               when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && d.state == 'published'
                 activities.push({
@@ -81,10 +82,14 @@ class CalendarController < ApplicationController
                 expira: "hoy"
                 })
             end
+          end
             
           end
 
            c.surveys.each do |s|
+
+            @surveys = s.user_surveys.where(user_id: current_user.id, survey_id: s.id ).count
+          if @surveys == 0
             case 
               when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && s.state == 'published'
                 activities.push({
@@ -120,6 +125,7 @@ class CalendarController < ApplicationController
                 })
             end
           end
+        end
        end
 
          if defined?(params[:activity_type]) && !params[:activity_type].nil?
