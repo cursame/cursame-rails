@@ -63,26 +63,25 @@ if ( !chatExpanded.length && !channelExist ) {
 	};
 };
 
+// Si estamos en el path del chat
+if ( chatExpanded.length ) {
+	if ( Chat.expandedPanelChannel != channel ) {
+		Chat.expandedPanelChannel = channel;
+		
+		PrivatePub.unsubscribe("<%=@channel_name%>");
+		panelsHolder.append('<%= subscribe_to @channel_name %>');
+		$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel }))%>');
 
-// si estamos en el path del chat
-if( $('#chat').length ) {
-// seria apropiado ver si la conversacion existe y vloquear la coneccion
+		var messagesTitle     = $('.chat-converstion-title'),
+	      messagesContainer = $('.chat-main-container'),
+	      messagesNewContainer = $('.chat-new-message');
 
-	PrivatePub.unsubscribe("<%=@channel_name%>");
-	
-	panelsHolder.append('<%= subscribe_to @channel_name %>');
-	$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel }))%>');
-
-	var messagesTitle     = $('.chat-converstion-title'),
-      messagesContainer = $('.chat-main-container'),
-      messagesNewContainer = $('.chat-new-message');
-
-  messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
-  $('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
-
+	  messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
+	  $('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
+	};
 };
 
-// ponemos a cero los mensajes del chat
+// Ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
 PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	var chatPanel 	= $('#chat-channel-'+ data.channel.id ),
@@ -113,8 +112,6 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 			  	'<div class="chat-message-main">' +
 			  	'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div><span class="meta">' +moment(data.message.created_at).lang('es').format("DD [de] MMMM [del] YYYY [-] h:mm a")+ '</span></div></div>'
 			  ).appendTo( element );
-
-			  console.log(data);
 			}
 		}
 	}
@@ -122,17 +119,17 @@ PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
 	/* Si esta en /home/chat
   ----------------------------------*/
 	if( $('#chat').length ) {
-
-		append_new_message_tpl( $('#chat-messages') );
-		$('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
-	}
+		var exist = $('[data-channel-id="' +data.channel.id+ '"]');
+		if ( exist.length > 0 ) {
+			append_new_message_tpl( $('#chat-messages') );
+			$('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
+		};
+	};
 
 	if( $('#chat-channel-' + data.channel.id).length ) {
 		var chatPanel = $('#chat-channel-' + data.channel.id),
 	    messagesContainer = chatPanel.find('.chat-zone div.chat-zone-messages');
 		append_new_message_tpl( messagesContainer );
 		chatPanel.find('.chat-panel-main-content').scrollTop( messagesContainer.prop('scrollHeight') + 30 );
-	}
-
-
+	};
 });

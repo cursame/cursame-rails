@@ -71,13 +71,15 @@ Sidebar = {
     this.sidebarVisible = true;
     $('body, .topbar .topbar-spacer').animate({ paddingLeft: 230 }, 100);
     $('body').css('overflow', 'hidden !important');
-    this.sidebar.animate({ left: 0 }, 100);
+    $('.content-sidebar-stick').hide();
+    this.sidebar.animate({ left: 0 }, 100, function() { $('.content-sidebar-stick').show(); });
   },
   hideSideBarAnimation: function() {
     this.sidebarVisible = false;
     $('body, .topbar .topbar-spacer').animate({ paddingLeft: 0 }, 100);
     $('body').css('overflow', 'auto');
-    this.sidebar.animate({ left: -230 }, 100);
+    $('.content-sidebar-stick').hide();
+    this.sidebar.animate({ left: -230 }, 100, function() { $('.content-sidebar-stick').show(); });
   }
 };
 

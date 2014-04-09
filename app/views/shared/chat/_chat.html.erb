@@ -7,7 +7,7 @@
     <div id="load-more-messages-<%= channel.id%>" class="load-more-messages-trigger">
       <a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true">Cargar más mensajes...</a>
     </div>
-    <div id="chat-messages" class="chat-messages-container" data-channel="<%= channel.channel_name %>">
+    <div id="chat-messages" class="chat-messages-container" data-channel-id="<%= channel.id %>" data-channel="<%= channel.channel_name %>">
       <%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>    
     </div>
   </div>

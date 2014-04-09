@@ -2,9 +2,11 @@ Chat = {
   availableSpots: 3,
   activePanelsCount: 0,
   activePanelsChannels: [],
+
   pendingPanels: false,
   pendingPanelsCount: 0,
   pendingPanelsChannels: [],
+  expandedPanelChannel: '',
   panelWidth: 250,
   panelSeparation: 10,
   assignSpots: function( resize ) {
@@ -117,6 +119,30 @@ Chat = {
       pendingPanelsTab.remove();
     }
   },
+  openMinimizedPanel: function( obj ) {
+    var $this = $(obj),
+        panel = $this.closest('.chat-panel'),
+        channelOnPanel = panel.data('channel');
+
+    for (var i = 0; Chat.activePanelsChannels.length - 1 >= i; i++) {
+      if ( Chat.activePanelsChannels[i].channel == channelOnPanel ) {
+        var position = i;
+      };
+    };
+
+    var cookie = $.cookie(channelOnPanel);
+
+    if ( cookie ) {
+      var objCookie = JSON.parse(cookie);
+
+      panel.find('.chat-panel-tab').hide();
+      panel.find('.chat-panel-inner-conversation').show();
+      panel.addClass('active');
+      objCookie.state = "expanded";
+      Chat.activePanelsChannels[position].state = "expanded";
+      $.cookie( objCookie.channel, JSON.stringify(objCookie), { path: '/' });
+    };
+  },
   minimizePanel: function( obj ) {
     var $this = $(obj),
         panel = $this.closest('.chat-panel'),
@@ -133,16 +159,11 @@ Chat = {
     if ( cookie ) {
       var objCookie = JSON.parse(cookie);
 
-      if ( panel.hasClass('active') ) {
-        panel.removeClass('active');
-        objCookie.state = "minimized";
-        Chat.activePanelsChannels[position].state = "minimized";
-      } else {
-        panel.addClass('active');
-        objCookie.state = "expanded";
-        Chat.activePanelsChannels[position].state = "expanded";
-      };
-
+      panel.find('.chat-panel-tab').show();
+      panel.find('.chat-panel-inner-conversation').hide();
+      panel.removeClass('active');
+      objCookie.state = "minimized";
+      Chat.activePanelsChannels[position].state = "minimized";
       $.cookie( objCookie.channel, JSON.stringify(objCookie), { path: '/' });
     };
   },

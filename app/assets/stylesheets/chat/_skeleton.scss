@@ -41,6 +41,30 @@
 			display: block
 		}
 	}
+	
+	.chat-panel-tab {
+		display: none;
+		padding: 4px 7px;
+		margin: -1px;
+
+		.name {
+			display: block;
+			width: 210px;
+			overflow: hidden;
+		}
+
+		.close-chat-panel {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 4px 8px;
+		}
+
+		&:hover .close-chat-panel {
+			display: block;
+		}
+	}
 
 	.chat-panel-header {
 		padding: 4px 10px 3px 8px;
