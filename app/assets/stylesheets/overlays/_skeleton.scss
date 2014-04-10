@@ -50,13 +50,13 @@ first-time-survey-overlay
   }
 
   .overlay-header {
-    padding: 20px 30px;
+    padding: 25px 30px 25px 60px;
     position: relative;
     @include clearfix;
 
     .overlay-icon {
-      margin-left: -55px;
-      margin-top: -23px;
+      margin-left: -70px;
+      margin-top: -30px;
       top: 50%;
       position: absolute;
     }

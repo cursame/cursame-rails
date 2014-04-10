@@ -1,0 +1,20 @@
+<div class="content-sidebar">
+  <div class="content-sidebar-main">
+    <div class="content-sidebar-stick">
+      <% if sidebar_sections %>
+        <% sidebar_sections.each do |widget| %>
+          
+          <% case widget %>
+            <% when 'upcomming_deliveryes' %>
+              <%= render partial: 'shared/sidebar/upcomming_deliveries_widget' %>
+
+            <% when 'upcomming_surveys' %>
+              <%= render partial: 'shared/sidebar/upcomming_surveys_widget' %>
+
+          <% end %>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

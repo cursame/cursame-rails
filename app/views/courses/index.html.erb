@@ -1,40 +1,41 @@
 <div class="section-header">
   <div class="wrapper spaced">
+      <div class="section-header-content">
 
-    <div class="section-header-title w-subnav">
-      <div class="section-icon">
-        <%= icon('section-courses') %>  
+      <div class="section-header-title w-subnav">
+        <div class="section-icon">
+          <%= icon('section-courses') %>  
+        </div>
+        <div class="section-title">
+          <h1>Cursos</h1>
+          <ul class="section-subnav">
+            <li class="active">
+              <%= link_to "Mis cursos", my_courses_path, :remote => true %>
+            </li>
+            <li>
+              <%= link_to "Otros cursos", all_courses_path, :remote => true %>
+            </li>
+            <li>
+              <%= link_to "Cursos antiguos", my_old_courses_path, :remote => true %>
+           </li>
+          </ul>
+        </div>
       </div>
-      <div class="section-title">
-        <h1>Cursos</h1>
-        <ul class="section-subnav">
-          <li class="active">
-            <%= link_to "Mis cursos", my_courses_path, :remote => true %>
-          </li>
+
+      <div class="section-header-actions">
+        <ul class="list-buttons right">
           <li>
-            <%= link_to "Otros cursos", all_courses_path, :remote => true %>
+            <%= render partial: "/courses/courses_search" %>
           </li>
-          <li>
-            <%= link_to "Cursos antiguos", my_old_courses_path, :remote => true %>
-         </li>
+          <% permitted_to? :create, :courses do %>
+            <li>
+              <%= link_to icon('plus-white'), new_course_path, :title => 'Crear curso nuevo', :class=> "btn btn-primary" %>
+            </li>
+          <%end%>
         </ul>
       </div>
+
     </div>
-
-    <div class="section-header-actions">
-
-      <ul class="list-buttons right">
-        <li>
-          <%= render partial: "/courses/courses_search" %>
-        </li>
-        <% permitted_to? :create, :courses do %>
-          <li>
-            <%= link_to icon('plus-white'), new_course_path, :title => 'Crear curso nuevo', :class=> "btn btn-primary" %>
-          </li>
-        <%end%>
-      </ul>
-    </div>
-
   </div>
 </div>
 <%#= render :partial => '/courses/last_courses' %>

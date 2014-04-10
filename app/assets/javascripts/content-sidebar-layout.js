@@ -44,11 +44,22 @@ ContentSidebar = {
     };
   },
   positionAtTop: function() {
-    this.sidebar.css({
-      position: 'fixed',
-      top: this.offsetTop,
-      bottom: 'auto'
-    });
+    var winScrollTop = $(window).scrollTop(),
+        barHeight = $('#user_nav').outerHeight();
+
+    if ( winScrollTop + 20 >= this.offsetTop - barHeight) {
+      this.sidebar.css({
+        position: 'fixed',
+        top: 20 + barHeight,
+        bottom: 'auto'
+      });
+    } else {
+      this.sidebar.css({
+        position: 'relative',
+        top: 'auto',
+        bottom: 'auto'
+      });
+    }
   }
 };
 

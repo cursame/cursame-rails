@@ -216,6 +216,10 @@ h6 {
     border-top: 1px solid lighten($primary-color, 5);
     border-bottom: 1px solid darken($primary-color, 5);
 
+    .section-header-content {
+
+    }
+
     h3 {
       font-weight: bold;
       text-transform: uppercase;
@@ -344,12 +348,26 @@ h6 {
 /* Sections Pages
 ----------------------------------*/
 .section-header {
-  background-color: #fcfcfc;
-  border-bottom: 1px solid #c7cdcf;
+  .section-header-content {
+    background-color: #fcfcfc;
+    border: 1px solid #d3dadd;
+    border-bottom-color: #c6ced0;
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 $radius $radius;
+    box-shadow: 0 1px 1px rgba(0,0,0,.035);
 
-  .section-subnav > li.active > a {
-    color: $meta-color;
+    .section-subnav > li.active > a {
+      color: $meta-color;
+    }
   }
+
+  &.normal-full {
+    border-bottom: 1px solid #E7E7E7;  
+  }
+}
+
+.page-normal-header {
+  border-bottom: 1px solid #E7E7E7;
 }
 
 /* Zenbox Tab
