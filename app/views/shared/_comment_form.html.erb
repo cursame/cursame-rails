@@ -21,10 +21,6 @@
     <div class="new-publication-footer">
 
       <ul class="list-buttons right fr">
-        <li>
-        	<%= link_to "Cancelar", "#", class: 'cancel-post-form_tab btn btn-secondary' %>
-        </li>
-
         <% unless @user_show %>
           <li>
           <% if @incourse != true && comment_id == nil %>
