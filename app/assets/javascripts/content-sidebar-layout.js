@@ -47,10 +47,10 @@ ContentSidebar = {
     var winScrollTop = $(window).scrollTop(),
         barHeight = $('#user_nav').outerHeight();
 
-    if ( winScrollTop + 20 >= this.offsetTop - barHeight) {
+    if ( winScrollTop + 15 >= this.offsetTop - barHeight) {
       this.sidebar.css({
         position: 'fixed',
-        top: 20 + barHeight,
+        top: 15 + barHeight,
         bottom: 'auto'
       });
     } else {

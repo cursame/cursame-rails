@@ -1,6 +1,7 @@
 <div class="content-sidebar">
   <div class="content-sidebar-main">
     <div class="content-sidebar-stick">
+
       <% if sidebar_sections %>
         <% sidebar_sections.each do |widget| %>
           
@@ -11,10 +12,14 @@
             <% when 'upcomming_surveys' %>
               <%= render partial: 'shared/sidebar/upcomming_surveys_widget' %>
 
+            <% when 'android_app_ad' %>
+              <%= render partial: 'shared/sidebar/android_app_ad' %>
+
           <% end %>
 
         <% end %>
       <% end %>
+
     </div>
   </div>
 </div>
