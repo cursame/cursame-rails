@@ -80,7 +80,8 @@ class CoursesController < ApplicationController
     @member = MembersInCourse.new
     @search = params[:activiesearch].downcase
     docificate_search_changes = I18n.transliterate("#{@search}")
-    @courses = Course.search(docificate_search_changes)
+    #@courses = Course.search(docificate_search_changes)
+    @courses = current_network.courses.search(docificate_search_changes)
 
     respond_to do |format|
       format.js 
