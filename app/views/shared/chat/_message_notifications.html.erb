@@ -16,7 +16,7 @@
 		      <% next if last_message.nil? || last_message.user.nil? %>
 		      <% channelType = channel.channel_name.split('course_channel_') %>		       
 		      <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>		      
-		      <li>
+		      <li id="li_channel_<%= channel.id %>">
 		      	<div class="activity-feed">
 			      	<%= link_to url, :remote => true do %>
 			      		<div class="activity-feed-author">

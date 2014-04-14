@@ -119,7 +119,6 @@ $(function() {
   };
 
 	PrivatePub.subscribe ("/messages/notifications_user_" + Cursame.userId, function(data, channel) {
-
     if ( data.sender.id == Cursame.userId ){
           alert("notificación del mismo usuario" );
           return;
@@ -142,7 +141,7 @@ $(function() {
      };
          
       notification = [
-          '<li class="unread">',
+          '<li class="unread" id="li_channel_' + data.channel.id + '">',
           '<div class="activity-feed">',
           '<a title="Conversar" href="' + url + '" data-remote="true">',
           '<div class="activity-feed-author">',
@@ -159,7 +158,6 @@ $(function() {
   		if( $('#chat-channel-'+data.channel.id).length ) {
   		  var panel = $("#chat-channel-" + data.channel.id);
   	    var chatZonePosition = $(panel).css('bottom');
-
         // aqui agrego un asterisco a la ventanita
         // cuando esta collapsada, asi sabe cuando el usario tiene un msj pendiente esa ventana
         if (chatZonePosition.replace('px', '') < 200) {
@@ -169,8 +167,9 @@ $(function() {
   			numNotifications = $('#messages-notifications-count').html() * 1;
   			$('#messages-notifications-count').html(numNotifications + 1);
         $('#messages-notifications-count').show();
-  			$('#messages-notifications-list').prepend(notification.join(''));
-  		};
+        //$('#messages-notifications-list').prepend(notification.join(''));
+  		}
+      $('#li_channel_' + data.channel.id).replaceWith(notification.join(''));
     };
   });
     
