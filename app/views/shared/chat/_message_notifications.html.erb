@@ -10,31 +10,33 @@
 		</div>
 		<div class="activity-dropdown-content">
   		<ul id="messages-notifications-list" class="activity-feed-list">
-		    <% current_user.channels.last(7).reverse.each do |channel|%>
+		    <% current_user.mesages.order(created_at: :desc).group("channel_id").first(10).reverse.each do |mesages|%>
+		      <% channel = mesages.channel %>
 		      <% last_message = channel.mesages.last %>
 		      <% next if last_message.nil? || last_message.user.nil? %>
-		      <% if current_user.id != last_message.user.id %>
-		      
-		      <% channelType = channel.channel_name.split('course_channel_') %>
-		      <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>
+		      <% channelType = channel.channel_name.split('course_channel_') %>		       
+		      <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>		      
 		      <li>
 		      	<div class="activity-feed">
 			      	<%= link_to url, :remote => true do %>
 			      		<div class="activity-feed-author">
                   <span class="avatar-holder">
-				        	  <%= avatar('user', '45', "no", last_message.user.id, "avatar", "no", "no") %>
+                  			<% if channelType[1]%>
+                  				<%= avatar('course', '45', "no", channelType[1], "avatar", "no", "no") %>
+                  				<% course = Course.find(channelType[1])%>
+                  			<% else %>
+                  				<%= avatar('user', '45', "no", last_message.user.id, "avatar", "no", "no") %>	
+		      				<% end %>
                   </span>
 				        </div>
 				        <div class="activity-feed-main">
-					        <h6><span class="as-link"><%= last_message.user.name %></span></h6>
+					        <h6><span class="as-link"><%= channelType[1] ?  course.title : last_message.user.name %></span></h6>
                   <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
 					        <span class="meta"><%= es_current_date("#{last_message.created_at.strftime('%B')}", "#{last_message.created_at.strftime('%d')}", "#{last_message.created_at.strftime('%Y')}" , "#{last_message.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
 				        </div>
 			        <% end %>
 		        </div>
 		      </li>
-		      <%end%>
-
 		    <%end%>
 		  </ul>
   	</div>
