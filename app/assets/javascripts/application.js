@@ -167,7 +167,6 @@ $(function() {
   			numNotifications = $('#messages-notifications-count').html() * 1;
   			$('#messages-notifications-count').html(numNotifications + 1);
         $('#messages-notifications-count').show();
-        //$('#messages-notifications-list').prepend(notification.join(''));
   		}
       $('#li_channel_' + data.channel.id).replaceWith(notification.join(''));
     };
