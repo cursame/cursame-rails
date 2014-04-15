@@ -157,7 +157,7 @@ class SurveysController < ApplicationController
       @survey.publish_date = Time.now
       @survey.end_date = Time.now + 2.days
       @message = "Se ha republicado el cuestionario agregando 2 dias desde ahora."
-      @linkik = 'Despublicar'
+      @linkik = 'Ocultar'
 
     end
     

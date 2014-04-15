@@ -244,7 +244,7 @@ end
       @delivery.publish_date = Time.now
       @delivery.end_date = Time.now + 10.days
       @message = "Se ha republicado esta tarea agregando 10 dias desde ahora."
-      @linkik = 'Despublicar'
+      @linkik = 'Ocultar'
     end
     
     @delivery.save!

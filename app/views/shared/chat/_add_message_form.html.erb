@@ -4,3 +4,9 @@
   <%= hidden_field_tag :receiver_user_id, @receiver_user_id %>
 	<%= hidden_field_tag :channel_id, channel_id %>
 <% end %>
+<script type="text/javascript">
+	//prevenimos le doble submit del mismo mensaje
+  $('#new-chat-pannel-message').submit(function(e) {
+      $('#mesage').value('');
+  });
+</script>
