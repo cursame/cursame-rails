@@ -93,14 +93,15 @@ class CoursesController < ApplicationController
   def statistics
     @course = Course.find(params[:id])   
   end
-  def show
-  
+
+  def show  
     @course = Course.find(params[:id])
     
     @member = obtainMember(@course.id,current_user.id)
 
-    if (@member.nil?)
+    if @member.nil? || !@course.active_status
       redirect_to :back
+      return false
     end
 
     @course_member = MembersInCourse.find_by_course_id(@course.id)
