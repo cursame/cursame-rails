@@ -168,6 +168,7 @@ $(function() {
   			$('#messages-notifications-count').html(numNotifications + 1);
         $('#messages-notifications-count').show();
   		}
+      
       $('#li_channel_' + data.channel.id).replaceWith(notification.join(''));
     };
   });

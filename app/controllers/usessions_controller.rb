@@ -24,7 +24,7 @@ class UsessionsController < Devise::SessionsController
         puts "sin password"
       end
 
-      flash[:notice] = "No se ha creado correctamente la sessión ya que la contraseña o el email son invalidos."
+      flash[:notice] = "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos."
 
     end
 

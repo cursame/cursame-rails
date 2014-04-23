@@ -49,7 +49,22 @@
      <% end %>
      <div class="manager-role-user">
       <% @role = Role.find(@permisos.role_id)%>
-      <%= @role.title %>
+      <% 
+      	role_name = '';
+      	case @role.title
+          when 'student'
+            role_name = 'Estudiante'
+          when 'teacher'
+            role_name = 'Profesor'
+          when 'admin'
+            role_name = 'Administrador'
+          when 'superadmin'
+            role_name = 'Super Administrador'
+          when 'supervisor'
+            role_name = 'Supervisor'
+        end
+      %>
+      <%=  role_name %>
      </div>
      
 				<div class="actions">
@@ -159,8 +174,8 @@
 	*/
 	
 	/* ----------- validaciones color user ----------- */
-	$('.manager-role-user:contains("admin")').css({ background: "#4862A3" });
-	$('.manager-role-user:contains("student")').css({ background: "#EB9D1A" });
+	$('.manager-role-user:contains("Administrador")').css({ background: "#4862A3" });
+	$('.manager-role-user:contains("Estudiante")').css({ background: "#EB9D1A" });
 	$('#admin-sidebar li:contains("Usuarios")').css({ background: "#1B57A0" });
 	
 </script>

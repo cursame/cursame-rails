@@ -10,19 +10,18 @@
     </div>
     <div class="activity-dropdown-content">
       <ul id="messages-notifications-list" class="activity-feed-list">
-        <% current_user.channels.last(7).reverse.each do |channel|%>
-          <% last_message = channel.mesages.last %>
-          <% next if last_message.nil? || last_message.user.nil? %>
-          <% if current_user.id != last_message.user.id %>
+          <% current_user.mesages.order('created_at DESC').group("channel_id").first(10).each do |mesage|%>
+          <% last_message = mesage %>
+          <% channel = mesage.channel %>
           
           <% channelType = channel.channel_name.split('course_channel_') %>
           <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>
-          <li>
+          <li id="li_channel_<%= channel.id %>">
             <div class="activity-feed">
               <%= link_to url, :remote => true do %>
                 <div class="activity-feed-author">
                   <span class="avatar-holder">
-                    <%= avatar('user', '45', "no", last_message.user.id, "avatar", "no", "no") %>
+                    <%= avatar(channelType[1] ? 'course' : 'user', '45', "no", channelType[1] ? channelType[1] :last_message.user.id, "avatar", "no", "no") %>
                   </span>
                 </div>
                 <div class="activity-feed-main">
@@ -33,7 +32,6 @@
               <% end %>
             </div>
           </li>
-          <%end%>
 
         <%end%>
       </ul>
