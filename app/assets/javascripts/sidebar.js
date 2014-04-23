@@ -3,7 +3,7 @@ Sidebar = {
     this.sidebar = $('.global-sidebar');
     this.collapsed = false;
     this.sidebarVisible = false;
-    this.minWidth = 1125;
+    this.minWidth = 930;
     this.bindEvents();
     this.fitCheck();
   },
@@ -23,12 +23,12 @@ Sidebar = {
   fitCheck: function() {
     var winHeight = $(window).height(),
         winWidth = $(window).width();
-
+    console.log(winWidth);
     Sidebar.resizeInHeight( winHeight );
-    if ( winWidth <= this.minWidth ) {
+    if ( winWidth < this.minWidth ) {
       if ( !this.collapsed ) {
         this.hideSidebar();
-      };
+      }
     } else {
       this.restoreSidebar();
     }
@@ -52,7 +52,7 @@ Sidebar = {
   hideSidebar: function() {
     this.collapsed = true;
     this.sidebarVisible = false;
-    this.sidebar.css('left', '-230px');
+    this.sidebar.css('left', '-200px');
     $('body').addClass('collapsed-layout no-sidebar');
     $('.notice-spacer').css('paddingLeft', '0');
     $('.menu-sidebar').show();
@@ -63,13 +63,13 @@ Sidebar = {
     this.sidebarVisible = true;
     this.sidebar.css('left', '0');
     $('body').removeClass('collapsed-layout no-sidebar').css('paddingLeft', '0');
-    $('.notice-spacer').css('paddingLeft', '230px');
+    $('.notice-spacer').css('paddingLeft', '200px');
     $('.menu-sidebar').hide().removeClass('active');
-    $('.topbar-spacer').css('paddingLeft', '230px');
+    $('.topbar-spacer').css('paddingLeft', '200px');
   },
   showSideBarAnimation: function() {
     this.sidebarVisible = true;
-    $('body, .topbar .topbar-spacer').animate({ paddingLeft: 230 }, 100);
+    $('body, .topbar .topbar-spacer').animate({ paddingLeft: 200 }, 100);
     $('body').css('overflow', 'hidden !important');
     $('.content-sidebar-stick').hide();
     this.sidebar.animate({ left: 0 }, 100, function() { $('.content-sidebar-stick').show(); });
@@ -79,7 +79,7 @@ Sidebar = {
     $('body, .topbar .topbar-spacer').animate({ paddingLeft: 0 }, 100);
     $('body').css('overflow', 'auto');
     $('.content-sidebar-stick').hide();
-    this.sidebar.animate({ left: -230 }, 100, function() { $('.content-sidebar-stick').show(); });
+    this.sidebar.animate({ left: -200 }, 100, function() { $('.content-sidebar-stick').show(); });
   }
 };
 

@@ -4,7 +4,7 @@
     <%= link_to show_user_path(current_user.personal_url) do %>
       <%= avatar('user', '30', "no", current_user.id, "avatar avatar-30", "no", "no") %>
       <span class="name">
-        <%= truncate("#{current_user.name}" , :omission => "...", :length => 24) %>
+        <%= truncate("#{current_user.name}" , :omission => "...", :length => 19) %>
       </span>
     <% end %>
   </div>
@@ -115,7 +115,7 @@
                       <%= image_tag("imagexx.png", alt: "", class: "avatar avatar-24") %>
                     <% end %>
 
-                    <%= truncate("#{user.name}", :omission => "...", :length => 22) || user.email %>
+                    <%= truncate("#{user.name}", :omission => "...", :length => 20) || user.email %>
                     <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
 
                   <% end %>
@@ -139,13 +139,10 @@
                   <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
                     <% if course.avatar.file != nil &&  File.exist?(course.avatar.file.file)%> 
                         <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
-
-                    <%else%>
+                    <% else %>
                        <%= image_tag("course-avatarxx.png", alt: "", class: "avatar avatar-24") %>
-
-                    <%end%>
-
-                    <%= truncate("#{course.title}", :omission => "...", :length => 26) %>
+                    <% end %>
+                    <%= truncate("#{course.title}", :omission => "...", :length => 20) %>
                   <% end %>
                 </li>
               <% end %>

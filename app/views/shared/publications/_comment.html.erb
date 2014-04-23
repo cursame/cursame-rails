@@ -6,6 +6,7 @@
   <% end %>
 </div>
 <div class="publication-inner-content-main">
+  <%= render partial: 'shared/publications/owner_edit_publications', locals: { publication: publication } %>
   <h6>
     <%= link_to comment_post[:user_name], show_user_path(comment_post[:personal_url]) unless comment_post[:user_name].blank? %>
     <%= link_to "Usuario", show_user_path(comment_post[:personal_url]) if comment_post[:user_name].blank? %>

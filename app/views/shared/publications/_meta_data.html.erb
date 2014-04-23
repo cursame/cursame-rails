@@ -46,21 +46,4 @@
     <div class="meta-data">
       <span><%= es_current_date("#{post.created_at.strftime('%B')}", "#{post.created_at.strftime('%d')}", "#{post.created_at.strftime('%Y')}" , "#{post.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
     </div>
-
-    <% if publication.publication.owner?(current_role, current_user) %>
-      <div class="edit-publication">
-        <span>&middot;</span>
-        <div class="meta-data">
-          <%= link_to "Borrar", destroy_wall_path(publication.id), :remote=>true%>
-        </div>
-        <% if publication.publication_type != 'Course'%>
-          <span>&middot;</span>
-          <div class="meta-data">
-            <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
-              <%= link_to "Editar", edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=> true, :class => 'edit-publication-link' %>
-            </div>
-          </div>
-        <%end%>
-      </div>
-    <% end %>
 </div>

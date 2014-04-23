@@ -204,10 +204,10 @@ h6 {
     }
   }
 
-  &:after {
-    @include background(linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.15)) repeat);
-    pointer-events: none;
-  }
+  // &:after {
+  //   @include background(linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.15)) repeat);
+  //   pointer-events: none;
+  // }
 }
 
 .sidebar-section {
