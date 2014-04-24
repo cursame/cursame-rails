@@ -1,6 +1,8 @@
 <% if mobile? %>
   <%= render :partial => "shared/mobile" %>
-<% else%>
+<% elsif request.subdomain == ''%>
+  <%= render :partial => "shared/landings/landing_page" %>
+<% elsif%>
 
   <!DOCTYPE html>
   <% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
