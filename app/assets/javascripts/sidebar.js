@@ -23,7 +23,6 @@ Sidebar = {
   fitCheck: function() {
     var winHeight = $(window).height(),
         winWidth = $(window).width();
-    console.log(winWidth);
     Sidebar.resizeInHeight( winHeight );
     if ( winWidth < this.minWidth ) {
       if ( !this.collapsed ) {
