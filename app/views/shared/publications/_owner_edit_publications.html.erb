@@ -1,0 +1,22 @@
+<% if publication.publication.owner?(current_role, current_user) %>
+  <div class="edit-publication">
+    <div class="dropdown-wrap">
+      <div class="dropdown-pull activity-dropdown-pull">
+        <%= icon('arrow-down-10') %>
+      </div>
+      <div class="dropdown-v right" style="right: -6px;">
+        <i class="tip"></i>
+        <ul>
+          <li>
+            <%= link_to "Borrar", destroy_wall_path(publication.id), remote: true%>
+          </li>
+          <li>
+            <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
+              <%= link_to "Editar", edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=> true, :class => 'edit-publication-link' %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

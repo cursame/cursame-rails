@@ -3,6 +3,7 @@
     <%= avatar('course', '150', 'no', survey_post[:posted_in_for_id], 'avatar avatar-60', 'no', 'no') %>
   <% end %>
 </div>
+<%= render partial: 'shared/publications/owner_edit_publications', locals: { publication: publication } %>
 <div class="academic-details">
   <div class="academic-icon">
     <%= icon('cuestionario-publication') %>

@@ -11,10 +11,16 @@
 
   .publication-content {
     padding: 10px;
+    position: relative;
 
-    &:hover .publication-metadata .edit-publication,
-    &:hover .publication-content .edit-publication {
-      @include inline-block;
+    .edit-publication {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+
+      .dropdown-pull {
+        padding: 0 5px 2px 5px;
+      }
     }
 
     .publication-inner-content-author {
@@ -114,12 +120,6 @@
 
       .publication-metadata {
         margin-top: 4px;
-      }
-    }
-
-    &:hover {
-      .edit-publication {
-        @include inline-block;
       }
     }
   }

@@ -112,17 +112,17 @@ body {
 }
 
 .wrapper {
-  width: 880px;
+  width: 720px;
   margin: 0 auto;
   @include clearfix;
 
   &.spaced {
-    width: 860px;
+    width: 700px;
   }
 }
 
 .content-main {
-  width: 625px;
+  width: 465px;
   float: left;
   margin: 0 5px 0 10px;
 }
@@ -142,7 +142,7 @@ body {
 }
 
 .wrap {
-  padding: 50px 0 0 230px;
+  padding: 50px 0 0 200px;
 }
 
 .clear{
@@ -243,7 +243,7 @@ body {
 /* Sidebar Global
 ----------------------------------*/
 .global-sidebar {
-  width: 230px;
+  width: 200px;
   position: fixed;
   z-index: 105;
   left: 0;
@@ -274,14 +274,14 @@ body {
     }
   }
 
-  &:after {
-    content: "";
-    height: 100%;
-    width: 5px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+  // &:after {
+  //   content: "";
+  //   height: 100%;
+  //   width: 5px;
+  //   position: absolute;
+  //   right: 0;
+  //   top: 0;
+  // }
 }
 
 .sidebar-section {
