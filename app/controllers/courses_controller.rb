@@ -5,6 +5,8 @@ class CoursesController < ApplicationController
   before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   filter_access_to :show
 
+  before_filter :course_activated, :only => [:show, :about, :members, :library]
+
   def index
     
     @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
@@ -99,7 +101,7 @@ class CoursesController < ApplicationController
     
     @member = obtainMember(@course.id,current_user.id)
 
-    if @member.nil? || !@course.active_status
+    if @member.nil?
       redirect_to :back
       return false
     end
@@ -1108,4 +1110,14 @@ private
     end
     return member
   end
+
+  def course_activated
+    @course = Course.find(params[:id])
+    if !@course.active_status && !@course.members_in_courses.find_by_user_id(current_user.id).owner
+      @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
+      @member = MembersInCourse.new
+      render :index
+    end
+  end
+
 end
