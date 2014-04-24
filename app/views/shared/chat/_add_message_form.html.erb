@@ -1,14 +1,24 @@
-<%= form_tag "/home/add_new_mesage", :class => "new-chat-pannel-message", :id => 'new-chat-pannel-message',  :remote =>true do %>
-	<%= text_field_tag :mesage, nil , :required =>'required', :placeholder => 'Escribe un mensaje y presiona Enter.', :autocomplete => "off" %>
+<%= form_tag "/home/add_new_mesage", :class => "new-chat-pannel-message", :id => 'new-chat-pannel-message'+ channel_id.to_s,  :remote =>true do %>
+	<%= text_area_tag :mesage, nil ,:id => 'chat_'+ channel_id.to_s,:required =>'required', :placeholder => 'Escribe un mensaje y presiona Enter.', :autocomplete => "off" %>
 	<%= hidden_field_tag :channel_name, channel_name %>
   <%= hidden_field_tag :receiver_user_id, @receiver_user_id %>
 	<%= hidden_field_tag :channel_id, channel_id %>
 <% end %>
 <script type="text/javascript">
 	//prevenimos le doble submit del mismo mensaje
-  $('#new-chat-pannel-message').submit(function(e) {
+  $('#new-chat-pannel-message<%= channel_id.to_s %>').submit(function(e) {
       setTimeout(function () {
-      	 $('#mesage').val('');
+      	 $('#chat_<%= channel_id.to_s %>').val('');
       },100);     
   });
+  $('#chat_<%= channel_id.to_s %>').autoResize({
+    maxHeight: '100px'
+  });
+  //submit on enter
+    $('#chat_<%= channel_id.to_s %>').keydown(function(event) {
+        if (event.keyCode == 13) {
+            $(this.form).submit()
+            return false;
+         }
+    });
 </script>
