@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad ]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page ]
   helper_method :get_commentable
 
   def index
     if user_signed_in?
       redirect_to "/users/#{user_url}/dashboard"
+    elsif 
+      redirect_to landing_page_path 
     end
   end
 
@@ -27,6 +29,12 @@ class HomeController < ApplicationController
   end
 
   def help
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def landing_page
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end
