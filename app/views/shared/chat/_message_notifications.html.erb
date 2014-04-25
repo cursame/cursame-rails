@@ -10,7 +10,7 @@
     </div>
     <div class="activity-dropdown-content">
       <ul id="messages-notifications-list" class="activity-feed-list">
-          <% current_user.mesages.order('created_at DESC').group("channel_id").first(10).each do |mesage|%>
+          <% current_user.mesages.order('created_at DESC').first(10).each do |mesage|%>
           <% last_message = mesage %>
           <% channel = mesage.channel %>
           
