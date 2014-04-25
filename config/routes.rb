@@ -321,7 +321,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   # manejo de la landing page
 
   get "home/index"
-  get "/hola", :to => "home#landing_page", :as => :landing_page
+  get "/", :to => "home#landing_page", :as => :landing_page
   get "/terms-conditions", :to => "home#conditions", :as => :conditions
   get "/privacidad", :to => "home#privacidad", :as => :privacidad
   get "/blog", :to => "home#blog", :as => :blog
