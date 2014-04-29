@@ -1,7 +1,15 @@
 $('div.chat-panel[data-panel-id="<%= @channel_id %>"]').find('input#mesage').val('');
 $('div.chat-messages-container[data-channel="<%= @channel_name %>"]').closest('div.chat-main').find('input#mesage').val('');
 
-<% publish_to "/chat-joinded/#{@receiver_user_id}" do %>
-  
+
+notification = [
+          '<div class="activity-feed-main">',
+          '<span class="as-link">' + 'Obi one' + '</span>',
+          '<p>' + truncate('<%= @message.mesage %>', 88, "...") +'</p>',
+          '<span class="meta">' + jQuery.timeago(new Date) + '</span></div>'
+      ];
+$('#li_channel_<%= @channel_id %> > div.activity-feed > a > div.activity-feed-main').replaceWith(notification.join(''));
+
+<% publish_to "/chat-joinded/#{@receiver_user_id}" do %>  
   $.get('<%= open_channel_path(@emitter_user_id) %>');
 <% end %>
