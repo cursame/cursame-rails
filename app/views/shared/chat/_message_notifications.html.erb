@@ -12,7 +12,10 @@
       <ul id="messages-notifications-list" class="activity-feed-list">
           <% current_user.mesages.sort{|x,y| y.created_at<=>x.created_at}.uniq{|x| x.channel_id}.last(10).each do |mesage|%>
           <% last_message = mesage %>
-          <% channel = mesage.channel %>          
+          <% channel = mesage.channel %>
+          <% if channel.nil?
+              next
+              end   %>
           <% channelType = channel.channel_name.split('course_channel_') %>
           <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>
           <li id="li_channel_<%= channel.id %>">
