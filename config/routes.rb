@@ -331,6 +331,13 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "home/authentication", :to => "home#authentications_test",:as => :authentications
   get "edit/:id", :to => "home#edit_wall", :as => :edit_wall
 
+  get "/features", :to => "home#features", :as => :features
+  get "/press", :to => "home#press", :as => :press
+  get "/jobs", :to => "home#jobs", :as => :jobs
+  get "/contact", :to => "home#contact", :as => :contact
+  get "/apps", :to => "home#apps", :as => :apps
+  get "/request-demo", :to => "home#request_demo", :as => :request_demo
+
   root :to => 'home#index'
 
   #comentarios

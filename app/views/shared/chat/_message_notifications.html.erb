@@ -10,7 +10,13 @@
     </div>
     <div class="activity-dropdown-content">
       <ul id="messages-notifications-list" class="activity-feed-list">
-          <% current_user.mesages.sort{|x,y| y.created_at<=>x.created_at}.uniq{|x| x.channel_id}.last(10).each do |mesage|%>
+          <% messages  = []%>
+          <% current_user.channels.each do |channel| %>
+              <% if !channel.mesages.last.nil? %>
+                <% messages.push(channel.mesages.last) %>
+              <% end %>
+          <% end %>
+          <% messages.sort{|x,y| y.created_at<=>x.created_at}.uniq{|x| x.channel_id}.last(10).each do |mesage|%>
           <% last_message = mesage %>
           <% channel = mesage.channel %>
           <% if channel.nil?
