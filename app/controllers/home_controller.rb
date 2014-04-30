@@ -39,6 +39,42 @@ class HomeController < ApplicationController
       format.html {render :layout => 'static_pages'}
     end
   end
+  
+  def features
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def press
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def jobs
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def contact
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def apps
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def request_demo
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
 
   def add_new_comment
     if user_signed_in?
