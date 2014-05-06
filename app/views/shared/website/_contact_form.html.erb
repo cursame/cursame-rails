@@ -1,0 +1,79 @@
+<%= form_tag "/", class: 'contact-form' do %>
+  <%= hidden_field_tag 'contact_type', contact_type %>
+  <div class="form-group l-label">
+    <div class="form-group-label">
+    <%= label_tag 'name', 'Nombre completo <span class="required">*</span>'.html_safe %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= text_field_tag 'name', '', required: 'required', placeholder: 'Ejemplo: Juan Pérez' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group l-label">
+    <div class="form-group-label">
+    <%= label_tag 'email', 'Corre electrónico <span class="required">*</span>'.html_safe %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= email_field_tag 'email', '', required: 'required', placeholder: 'Ejemplo: tu-correo@hotmail.com' %>
+      </div>
+    </div>
+  </div>
+
+  <% if contact_type == 'demo_request' #Si el form se llama para hacer demo %>
+    <div class="form-group l-label">
+      <div class="form-group-label">
+      <%= label_tag 'phone', 'Teléfono <span class="required">*</span>'.html_safe %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= phone_field_tag 'phone', '', required: 'required', placeholder: 'Ejemplo: (55) 5555-5555' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group l-label">
+      <div class="form-group-label">
+      <%= label_tag 'position', 'Puesto <span class="required">*</span>'.html_safe %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= text_field_tag 'position', '', required: 'required', placeholder: 'Ejemplo: Director' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group l-label">
+      <div class="form-group-label">
+      <%= label_tag 'school', 'Institución <span class="required">*</span>'.html_safe %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= text_field_tag 'school', '', required: 'required', placeholder: 'Ejemplo: CECYTEM 05' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group l-label">
+    <div class="form-group-label">
+    <%= label_tag 'message', 'Mensaje <span class="required">*</span>'.html_safe %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= text_area_tag 'message', '', rows: 10, required: 'required' %>
+      </div>
+    </div>
+  </div>
+  <ul class="list-buttons right fr">
+    <li>
+      <span class="btn btn-complementary btn-large input-btn activable">
+        <%= submit_tag "Enviar Mensaje", :class => "activable"%>
+      </span>
+    </li>
+  </ul>
+<% end %>
+<script>
+  $(function() {
+    $('.contact-form').validate();
+  });
+</script>

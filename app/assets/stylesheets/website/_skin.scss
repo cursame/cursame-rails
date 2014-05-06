@@ -1,0 +1,402 @@
+
+/* Website Skeleton
+----------------------------------*/
+.website-pages {
+  body {
+    background: #ffffff;
+  }
+}
+
+.website-header {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0,0,0,.1);
+  @include linear-gradient(#ffffff, #fafafa);
+}
+
+.intro-page {
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 1px 0 rgba(0,0,0,.15);
+
+  .section-title {
+    text-align: center;
+
+    h1 {
+      @extend .white-shadowed;
+    }
+
+    h2 {
+      @extend .white-shadowed;
+    }
+
+    p {
+      @extend .white-shadowed;
+      @include text-size-large;
+    }
+  }
+
+  &.intro-main .section-title, &.intro-title-page .section-title {
+    text-align: left;
+  }
+
+  &.intro-homepage {
+    background-image: url('/images/website/intro-homepage.jpg');
+  }
+
+  &.intro-roles {
+    background-image: url('/images/website/intro-roles-homepage.jpg'); 
+  }
+  
+  &.cursame-stats {
+    background-image: url('/images/website/intro-stats.jpg'); 
+  }
+
+  &.features-title {
+    background-image: url('/images/website/features-title.jpg'); 
+  }
+
+  &.press-title {
+    background-image: url('/images/website/press-title.jpg');
+  }
+
+  &.jobs-title {
+    background-image: url('/images/website/jobs-title.jpg');
+  }
+
+  &.contact-title {
+    background-image: url('/images/website/contact-title.jpg');
+  }
+  
+  &.request-demo-title {
+    background-image: url('/images/website/request-demo-title.jpg');
+  }
+
+  &.success-stories-title {
+    background-image: url('/images/website/success-stories-title.jpg');
+  }
+
+  &.social-impact {
+    background-image: url('/images/website/social-intro.jpg');
+  }
+}
+
+.white-shadowed {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.25);
+}
+
+
+.section-title {
+  h1 {
+    font-size: 34px;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 400;
+  }
+
+  p {
+    @include text-size-large;
+  }
+}
+
+.website-separator {
+  background: #e5e5e5;
+}
+
+// Homepage
+.features-showcase {
+
+  .col {
+    text-align: center;
+  }
+
+  .view-more-features {
+    text-align: center;
+    @include text-size-regular;
+  }
+}
+
+.user-roles-types {
+  .role-box {
+    border-radius: $radius;
+    border: 2px solid #fff;
+    text-align: center;
+    background: rgba(255,255,255,.1);   
+
+    h4, p {
+      @extend .white-shadowed;
+    }
+  }
+}
+
+.cursame-stats {
+  .cursame-stat {
+    text-align: center;
+
+    h4 {
+      font-size: 62px;
+      font-weight: 100;
+      @extend .white-shadowed;
+    }
+
+    p {
+      @extend .white-shadowed;
+      @include text-size-regular;
+    }
+  }
+
+  .view-succes-stories {
+    text-align: center;
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+      @include text-size-medium;
+      @extend .white-shadowed;
+    }
+  }
+}
+
+.testimonials {
+  .section-title {
+    text-align: center;
+  }
+
+  .testimonials-content {
+    text-align: center;
+
+    p {
+      font-family: $font-serif;
+      line-height: 33px;
+      font-size: 21px;
+    }
+  }
+
+  .testimonials-nav {
+    text-align: center;
+
+    a {
+      background: url('pack.png') -41px -276px no-repeat;
+
+      &.active {
+        background-position: -60px -276px;
+      }
+    }
+  }
+}
+
+.cta {
+  text-align: center;
+
+  .line {
+    background: #e5e5e5;
+  }
+}
+
+.sponsors {
+  text-align: center;
+
+  a:hover {
+    opacity: .8;
+  }
+}
+
+.website-footer {
+  background: #566267;
+  box-shadow: inset 0 4px 7px rgba(0, 0, 0, 0.15);
+  @include linear-gradient(50deg, #535e63, #5f6e74);
+
+  .footer-metadata  span {
+    color: #AEBDC4;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    @include text-size-small;
+  }
+
+  .arrow {
+    background: url("/assets/pack.png") -9px -395px no-repeat;
+  }
+
+  h4 {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+  }
+
+  ul li a {
+    color: #AEBDC4;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    @include text-size-regular;
+  }
+}
+
+.social-impact {
+  box-shadow: none;
+
+  .section-title {
+    text-align: center;
+
+    h2, p {
+      color: #333;
+      text-shadow: none;
+    }
+
+    p {
+      @include text-size-medium;
+    }
+  }
+  
+  .social-impatc-points {
+    h4 {
+      color: $primary-color;
+    }
+
+    .list-impact {
+      list-style-image: url('/assets/bullet.png');
+      @include text-size-regular;
+    }
+  }
+}
+
+// Features
+.features-list {
+  .feature {
+    p {
+      @include text-size-regular;
+    }
+  }
+}
+
+// Press
+.press-post-list {
+  .press-item {
+    a {
+      @include text-size-medium;
+    }
+
+    span {
+      color: $meta-color;
+    }
+  }
+}
+
+// Jobs
+.job-board {
+  .jobs-positions-list {
+    border-radius: $radius;
+    border: 1px solid #e6e6e6;
+
+    ul li a {
+      border-top: 1px solid #e6e6e6;
+      @include text-size-regular;
+
+      &:hover {
+        background: #fafafa;
+      }
+
+      &.active {
+        background: #fafafa; 
+      }
+    }
+  }
+
+  .job-view {
+    h2 {
+      font-size: 24px;
+      color: $primary-color;
+      font-weight: 400;
+    }
+
+    p {
+      @include text-size-regular;
+    }
+  }
+}
+
+// Contact
+.contact-page {
+  padding: 50px 0;
+
+  .form-contact p {
+    @include text-size-regular;
+  }
+
+  .other-contact {
+    border: 1px solid #e6e6e6;
+    border-radius: $radius;
+
+    ul li {
+      border-top: 1px solid #e6e6e6;
+    }
+  }
+}
+
+// Succes Stories
+.stories-list {
+  .story {
+    border-top: 1px solid #e5e5e5;
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+
+  .story-desc p {
+    @include text-size-regular;
+  }
+
+  .story-testimonial {
+    .testi {
+      font-family: $font-serif;
+      @include text-size-regular;
+    }
+
+    span {
+      color: #999;
+      @include text-size-small;
+    }
+  }
+
+  .results-list li {
+    span {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #999;
+    }
+
+    p {
+      font-size: 32px;
+      font-weight: 300;
+      color: #0071a2;
+    }
+  }
+}
+
+// Apps
+.apps-title .section-title {
+  text-align: center;
+}
+
+.apps-pockets {
+  .phone-pocket {
+    text-align: center;
+    border: 1px solid #e3e3e3;
+    border-bottom-color: #d6d6d6;
+    background: #fcfcfc;
+    border-radius: $radius;
+
+    .phone-pocket-desc {
+      background: #fff;
+      border-radius: 0 0 $radius $radius;
+      box-shadow: 0 -1px 0 rgba(0,0,0,.1);
+    }
+
+    .upcomming {
+      background: #EBEBEB;
+      border-radius: $radius;
+    }
+  }  
+}

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories]
   helper_method :get_commentable
 
   def index
@@ -71,6 +71,12 @@ class HomeController < ApplicationController
   end
 
   def request_demo
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def success_stories
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end

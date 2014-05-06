@@ -1,1 +1,54 @@
-apps
+<div class="apps-title">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-title">
+            <h1>Descarga nuestras Apps</h1>
+            <p>No te pierdas ninguna de tus actividades escolares.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="apps-pockets">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-6">
+        <div class="col-inner">
+          <div class="phone-pocket">
+            <div class="phone-pocket-image">
+              <%= image_tag "/images/website/android.png" %>
+            </div>
+            <div class="phone-pocket-desc">
+              <h2>Android</h2>
+              <br>
+              <a href="https://play.google.com/store/apps/details?id=com.cursame" target="_blank">
+                <%= image_tag "/images/website/google-play.png" %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-6">
+        <div class="col-inner">
+          <div class="phone-pocket">
+            <div class="phone-pocket-image">
+              <%= image_tag "/images/website/iphone.png" %>
+            </div>
+            <div class="phone-pocket-desc">
+              <h2>iPhone  </h2>
+              <br>
+              <span class="upcomming">Proximamente</span>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="website-separator"></div>
+<%= render partial: "shared/website/sponsors" %>

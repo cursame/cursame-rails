@@ -1,19 +1,26 @@
 /* Grid System
 ----------------------------------*/
-$gw-column: 60px;
-$gw-gutter: 20px;
+$fg-column: 60px;             // Column Width
+$fg-gutter: 5px;             // Gutter Width
+$fg-max-columns: 12;
 
 .cols-12 {
   @include clearfix;
 
   .col {
-    float: left;  
-    margin: 0 10px;
+    float: left;
+
+    .col-inner {
+      padding: 0 7px;
+    }
   }
 }
 
 @for $i from 1 through 12 {
   .col-#{$i} {
-    width: grid-width($i);
+    width: flex-grid($i);
+    
   }
 }
+
+

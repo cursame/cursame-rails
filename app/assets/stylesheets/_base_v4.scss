@@ -1,9 +1,37 @@
 $font-cursame: "Roboto", sans-serif;
+$font-serif: "Droid Serif", Serif;
 $radius: 3px;
 $global-color: #333;
 $primary-color: #0071a2;
+$complementary-color: #8bc504;
 $white: #ffffff;
 $meta-color: #999;
 $gray-lighter: #f7f7f7;
 $main-background: #E0E9EC;
 
+
+// Mixins
+@mixin text-size-x-small () {
+  font-size: 11px;
+  line-height: 16px;
+} 
+
+@mixin text-size-small () {
+  font-size: 13px;
+  line-height: 19px;
+} 
+
+@mixin text-size-regular () {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin text-size-medium () {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin text-size-large () {
+  font-size: 18px;
+  line-height: 26px;
+}

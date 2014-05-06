@@ -1,1 +1,35 @@
-contact
+<div class="contact-title intro-title-page intro-page">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-8">
+        <div class="col-inner">
+          <div class="section-title">
+            <h1>Contáctanos</h1>
+            <p>Ofrecemos herramientas a instituciónes educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-page wrapper">
+  <div class="cols-12">
+    <div class="col col-9">
+      <div class="col-inner">
+        <div class="form-contact">
+          <p>Llena el siguiente formulario y nos pondremos en contacto contigo en menos de 48 horas. <br>Campos con asterisco (<span class="required">*</span>) son requeridos.</p>
+          <%= render partial: 'shared/website/contact_form', locals: { contact_type: 'normal_contact' } %>
+        </div>
+      </div>
+    </div>
+    <div class="col col-3">
+      <div class="col-inner">
+        <%= render partial: 'shared/website/other_contact_ways' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="website-separator"></div>
+<%= render partial: "shared/website/sponsors" %>

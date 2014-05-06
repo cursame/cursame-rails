@@ -112,12 +112,12 @@ body {
 }
 
 .wrapper {
-  width: 720px;
+  width: 960px;
   margin: 0 auto;
   @include clearfix;
 
   &.spaced {
-    width: 700px;
+    width: 940px;
   }
 }
 
@@ -155,6 +155,10 @@ body {
 
 .inline-block {
   @include inline-block;
+}
+
+p + p {
+  margin-top: 20px;
 }
 
 .fl {

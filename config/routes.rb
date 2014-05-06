@@ -337,6 +337,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/contact", :to => "home#contact", :as => :contact
   get "/apps", :to => "home#apps", :as => :apps
   get "/request-demo", :to => "home#request_demo", :as => :request_demo
+  get "/success-stories", :to => "home#success_stories", :as => :success_stories
 
   root :to => 'home#index'
 

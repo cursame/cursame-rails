@@ -376,4 +376,8 @@ select {
       text-align: right;
     }
   }
+
+  &.l-label .form-group-label {
+    text-align: left;
+  }
 }

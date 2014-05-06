@@ -4,7 +4,7 @@
 .btn {
   border-radius: $radius;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   line-height: 33px;
 
@@ -40,8 +40,17 @@
     line-height: 38px;
   }
 
+  &.btn-large {
+    font-size: 15px;
+  }
+
   &.hard-border-btn {
-    border-color: #000;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.3);
+  }
+
+  &.btn-full {
+    text-align: center;
   }
 
   &[disabled="disabled"] {
@@ -50,17 +59,25 @@
   }
 }
 
+.btn-shadow {
+  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+}
+
 .btn-primary {
   color: $white;
   background: $primary-color;
-  border: 1px solid darken($primary-color, 10);
+  border: 1px solid darken($primary-color, 10%);
+  border-bottom-color: darken($primary-color, 15%);
+  @extend .btn-shadow;
+  @include linear-gradient($primary-color, darken($primary-color, 3%));
 
   input {
     color: $white;
   }
 
   &:hover {
-    background: lighten($primary-color, 7);
+    background: lighten($primary-color, 3%);
+    @include linear-gradient(lighten($primary-color, 3.5%), $primary-color);
   }
 
   &.input-btn > input {
@@ -80,6 +97,47 @@
   input {
     color: #666;
   }
+}
+
+.btn-complementary {
+  color: #ffffff;
+  background: $complementary-color;
+  border: 1px solid darken($complementary-color, 10%);
+  border-bottom-color: darken($complementary-color, 15%);
+  @extend .btn-shadow;
+  @include linear-gradient($complementary-color, darken($complementary-color, 3.5%));
+
+  &:hover {
+    background: lighten($complementary-color, 3%);
+    @include linear-gradient(lighten($complementary-color, 3.5%), $complementary-color);
+  }
+
+  &.active {
+    background: lighten($complementary-color, 3%);
+    @include linear-gradient(lighten($complementary-color, 3.5%), $complementary-color); 
+  }
+
+  input {
+    color: #ffffff;
+  }
+}
+
+.btn-fb {
+  color: #ffffff;
+  background: #4460a2;
+  border: 1px solid #2b488b;
+  border-bottom-color: #233e7a;
+  @extend .btn-shadow;
+  @include linear-gradient(#4460a2, darken(#4460a2, 3.5%));
+}
+
+.btn-twitter {
+  color: #ffffff;
+  background: #56aaf3;
+  border: 1px solid #3d93df;
+  border-bottom-color: #3989cf;
+  @extend .btn-shadow;
+  @include linear-gradient(#56aaf3, darken(#56aaf3, 3.5%)); 
 }
 
 .btn-transparent {

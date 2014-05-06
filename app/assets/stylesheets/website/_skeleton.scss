@@ -1,0 +1,391 @@
+
+/* Website Skeleton
+----------------------------------*/
+.website-pages {
+  overflow-x: hidden;
+
+  body {
+    padding-top: 60px;
+  }
+}
+
+.website-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 100;
+  @include clearfix;
+
+  .site-nav-actions {
+    float: right;
+    margin-top: 9px;
+  }
+}
+
+.site-nav {
+  float: left;
+
+  .brand-logo {
+    float: left;
+    margin-top: 8px;
+  } 
+
+  .nav {
+    float: left;
+    margin: 7px 0 0 15px;
+
+    li {
+      float: left;
+
+      a {
+        display: block;
+        padding: 3px 10px;
+      }
+    }
+  }
+}
+
+.intro-page {
+  padding: 90px 0 100px 0;
+
+  .section-title {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &.intro-main {
+    padding: 130px 0;
+
+    .section-title {
+      width: auto;
+    }
+  }
+
+  &.intro-title-page {
+    padding: 50px 0;
+
+    .section-title {
+      width: auto;
+    }
+  }
+}
+
+.website-separator {
+  width: 100%;
+  height: 1px;
+}
+
+// Homepage
+.intro-homepage-hidden {
+  width: 100%;
+  height: 570px;
+  overflow: hidden;
+}
+
+.homepage-laptop {
+  position: relative;
+
+  img {
+    position: absolute;
+    margin-top: -65px;
+  }
+}
+
+.features-showcase {
+  padding: 70px 0;
+
+  .i {
+    margin-bottom: 15px;
+  }
+
+  .view-more-features {
+    margin-top: 35px;
+  }
+}
+
+.user-roles-types {
+  .role-box {
+    padding: 10px;
+    min-height: 210px;
+    margin-top: 110px;
+
+    .avatar-role {
+      margin-top: -90px;
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+  }
+}
+
+.cursame-stats {
+  padding: 60px 0 50px 0;
+
+  .view-succes-stories {
+    padding-top: 30px;
+  }
+}
+
+
+.testimonials {
+  padding: 60px 0 70px;
+
+  .section-title {
+    padding-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .testimonials-content {
+    width: 80%;
+    margin: 0 auto;
+
+    .testimonial {
+      display: none;
+
+      .testimonial-meta {
+        margin-top: 20px;
+      }
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .testimonials-nav {
+    margin-top: 30px;
+
+    a {
+      width: 15px;
+      height: 15px;
+      margin: 0 4px;
+      @include inline-block;
+    }
+  }
+}
+
+.cta {
+  position: relative;
+
+  .line {
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    z-index: -1;
+  }
+}
+
+.sponsors {
+  padding: 30px 0;
+
+  a {
+    padding: 0 30px;
+  }
+}
+
+.website-footer {
+  padding: 40px 0;
+  position: relative;
+
+  .arrow {
+    position: absolute;
+    width: 35px;
+    height: 10px;
+    top: 0;
+    left: 50%;
+    margin-left: -17px;
+  }
+
+  h4 {
+    margin-bottom: 15px;
+  }
+
+  ul li {
+    padding-bottom: 5px;
+  }
+}
+
+.social-impact {
+  padding: 80px 0;
+
+  .social-impatc-points {
+    margin-top: 50px;
+
+    .list-impact {
+      margin: 10px 0 0 25px;
+
+      li {
+        padding: 5px 0;
+      }
+    }
+  }
+}
+
+// Features
+.features-list {
+  padding: 20px 0 60px 0;
+
+  .feature {
+    padding: 40px 80px 20px 0;
+
+    .i {
+      float: left;
+    }
+
+    .feature-description {
+      margin-left: 75px;
+    }
+  }
+}
+
+// Press
+.press-post-list {
+  padding: 0 0 60px 0;
+
+  .press-item {
+    margin-top: 50px;
+
+    a {
+      margin: 5px 0;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// Jobs
+.job-board {
+  padding: 60px 0 45px 0;
+
+  .jobs-positions-list {
+    margin-left: 20px;
+
+    h4 {
+      margin: 10px;
+    }
+
+    ul li a {
+      display: block;
+      padding: 10px;
+
+    }
+  }
+
+  .job-view {
+    display: none;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+// Terms
+.terms-and-conditions {
+  padding: 70px 0;
+}
+
+// Contact
+.contact-page {
+  padding: 50px 0;
+
+  .form-contact {
+    form {
+      margin: 30px 0;
+    }
+
+    margin-right: 20px;
+  }
+
+  .other-contact {
+    margin-top: 70px;
+
+    h6 {
+      margin: 10px;
+    }
+
+    ul li {
+      padding: 10px;
+
+      .i {
+        float: left;
+      }
+
+      .contact-ways-desc {
+        padding-left: 23px;
+      }
+    }
+  }
+}
+
+// Succes Stories
+.stories-list {
+
+  .story {
+    padding: 80px 0;
+
+    .story-section {
+      margin: 20px 0 0 20px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .story-testimonial .testi {
+    margin: 10px 0 15px 0;
+  }
+
+  .results-list {
+    @include clearfix;
+
+    li {
+      padding-right: 30px;
+      float: left;
+    }
+  }
+}
+
+// Apps
+.apps-title .section-title {
+  padding: 70px 0;
+}
+
+.apps-pockets {
+  margin: 120px 0 50px 0;
+
+  .phone-pocket {
+    margin: 0 30px;
+
+    .phone-pocket-image {
+      height: 270px;
+
+      img {
+        max-width: 100%;
+        margin-top: -88px;
+      }
+    }
+
+    .phone-pocket-desc {
+      padding-top: 15px;
+      height: 120px;
+      position: relative;
+    }
+
+    .upcomming {
+      padding: 16px 20px;
+      @include inline-block;
+    }
+  }
+}
