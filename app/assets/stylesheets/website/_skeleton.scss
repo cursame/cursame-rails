@@ -5,7 +5,7 @@
   overflow-x: hidden;
 
   body {
-    padding-top: 60px;
+    padding-top: 70px;
   }
 }
 
@@ -14,13 +14,37 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 0;
+  padding: 15px 0;
   z-index: 100;
   @include clearfix;
 
   .site-nav-actions {
     float: right;
-    margin-top: 9px;
+    margin-top: 10px;
+    @include clearfix;
+
+    .txt {
+      margin-right: 5px;
+      float: left;
+    }
+
+    .website-login {
+      float: left;
+    }
+  }
+
+  .website-login-forms {
+    .website-login-form-content {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    .actions-l {
+      margin-top: 12px;
+    }
   }
 }
 
@@ -84,17 +108,26 @@
   overflow: hidden;
 }
 
+.landing-play-video {
+  margin-top: -2px;
+  display: block;
+}
+
 .homepage-laptop {
   position: relative;
 
   img {
     position: absolute;
-    margin-top: -65px;
+    margin-top: -90px;
   }
 }
 
 .features-showcase {
-  padding: 70px 0;
+  padding: 30px 0 60px 0;
+
+  .col {
+    margin-top: 40px;
+  }
 
   .i {
     margin-bottom: 15px;
@@ -120,7 +153,11 @@
 }
 
 .cursame-stats {
-  padding: 60px 0 50px 0;
+  padding: 10px 0 50px 0;
+
+  .cool-stats .col {
+    margin-top: 60px;
+  }
 
   .view-succes-stories {
     padding-top: 30px;
@@ -187,8 +224,12 @@
 }
 
 .website-footer {
-  padding: 40px 0;
+  padding: 20px 0 40px 0;
   position: relative;
+
+  .col {
+    margin-top: 30px;
+  }
 
   .arrow {
     position: absolute;
@@ -212,10 +253,12 @@
   padding: 80px 0;
 
   .social-impatc-points {
-    margin-top: 50px;
+    .col {
+      margin-top: 50px;
+    }
 
     .list-impact {
-      margin: 10px 0 0 25px;
+      margin: 10px 40px 0 25px;
 
       li {
         padding: 5px 0;
@@ -264,7 +307,7 @@
   padding: 60px 0 45px 0;
 
   .jobs-positions-list {
-    margin-left: 20px;
+    margin: 0 20px 40px 0;
 
     h4 {
       margin: 10px;
@@ -330,9 +373,12 @@
 
 // Succes Stories
 .stories-list {
-
   .story {
     padding: 80px 0;
+
+    img {
+      max-width: 100%;
+    }
 
     .story-section {
       margin: 20px 0 0 20px;
@@ -359,21 +405,21 @@
 
 // Apps
 .apps-title .section-title {
-  padding: 70px 0;
+  margin: 70px 0 -80px 0;
 }
 
 .apps-pockets {
-  margin: 120px 0 50px 0;
+  margin: 140px 0 50px 0;
 
   .phone-pocket {
-    margin: 0 30px;
+    margin: 100px 30px 0 30px;
 
     .phone-pocket-image {
-      height: 270px;
 
       img {
+        display: block;
         max-width: 100%;
-        margin-top: -88px;
+        margin: -70px auto;
       }
     }
 

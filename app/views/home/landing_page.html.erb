@@ -1,3 +1,8 @@
+<% 
+  set_meta_tags description: 'Plataforma educativa que conecta alumnos, profesores y directivos de una misma institución.',
+  keywords: 'escuela, linea, educacion, lms, e-learning, cursame',
+  author: 'Cúrsame'
+%>
 <div class="intro-homepage-hidden">
   <div class="intro-homepage intro-page intro-main">
     <div class="wrapper">
@@ -9,7 +14,21 @@
               <br>
               <p>Ofrecemos herramientas que les permiten interactuar social y académicamente mejorando la enseñanza y aumentando el aprendizaje. </p>
               <br>
-              <%= link_to '¡Solicitar demo en mi institución!', request_demo_path, class: 'btn btn-large btn-complementary hard-border-btn' %>
+              <div class="intro-actions">
+                 <ul class="list-buttons left">
+                  <li>
+                    <%= link_to '¡Solicitar demo en mi institución!', request_demo_path, class: 'btn btn-large btn-complementary hard-border-btn' %>
+                  </li>
+                  <li>
+                    <a  class="landing-play-video"
+                        data-modal="true"
+                        data-modal-classes="video-tutorial-overlay overlay-informative"
+                        data-modal-content="<%= render(partial: "/shared/website/video_intro").to_str %>" href="">
+                      <%= image_tag "/images/website/play.png" %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -18,6 +37,7 @@
             <div class="homepage-laptop">
               <%= image_tag "/images/website/laptop.png" %>
             </div>
+
           </div>
         </div>
       </div>
@@ -162,7 +182,7 @@
 
 <div class="cursame-stats intro-page">
   <div class="wrapper">
-    <div class="cols-12">
+    <div class="cols-12 cool-stats">
       <div class="col col-4">
         <div class="col-inner">
           <div class="cursame-stat">

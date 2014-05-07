@@ -140,3 +140,4 @@ gem 'exception_notification', '~> 3.0.1'
  # end
  
 gem "wuparty", "~> 1.2.6"
+gem 'meta-tags'

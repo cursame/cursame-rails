@@ -64,6 +64,15 @@ $(function() {
     // Chat.repositionPanelOnWidth();
   });
 
+  $('[data-modal="true"]').click(function(event) {
+    var $this = $(this),
+        classes = $this.data('modal-classes'),
+        content = $this.data('modal-content')
+    createModal(content, classes);
+    
+    event.preventDefault();
+  });
+
 	/* Show delivery submit form */
   $('.show-delivery-form').live('click', function(e) {
     var $this = $(this);

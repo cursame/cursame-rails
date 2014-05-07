@@ -45,6 +45,10 @@
     }
   }
 
+  .dropdown-content {
+    padding: 15px;
+  }
+
   &.active > .dropdown-v {
     display: block !important;
   }
@@ -169,5 +173,16 @@
     .activity-feed-main {
       margin-left: 55px;
     }
+  }
+}
+
+// Website Login Dropdown
+.website-login {
+  .dropdown-v {
+    width: 350px;
+  }
+
+  .login-footer {
+    @include clearfix;
   }
 }

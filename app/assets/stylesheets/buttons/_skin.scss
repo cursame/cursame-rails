@@ -76,6 +76,7 @@
   }
 
   &:hover {
+    color: #fff;
     background: lighten($primary-color, 3%);
     @include linear-gradient(lighten($primary-color, 3.5%), $primary-color);
   }
@@ -91,6 +92,7 @@
   border: 1px solid #d9d9d9;
 
   &:hover {
+    color: #666;
     background: lighten(#f2f2f2, 3);
   }
 
@@ -108,6 +110,7 @@
   @include linear-gradient($complementary-color, darken($complementary-color, 3.5%));
 
   &:hover {
+    color: #fff;
     background: lighten($complementary-color, 3%);
     @include linear-gradient(lighten($complementary-color, 3.5%), $complementary-color);
   }

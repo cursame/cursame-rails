@@ -25,6 +25,10 @@ ul{
 a {
   color: $primary-color;
   text-decoration: none;
+
+  &:hover {
+    color: lighten($primary-color, 10%);
+  }
 }
 
 strong {
@@ -103,6 +107,10 @@ strong {
 .as-link {
   font-weight: 500;
   color: $primary-color;
+
+  &:hover {
+    color: lighten($primary-color, 10%);
+  }
 }
 
 .triagle-8 {

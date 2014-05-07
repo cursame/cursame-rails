@@ -8,25 +8,101 @@
               <%= icon('logo-cursame') %>
             <% end %>
             <ul class="nav">
-              <li>
+              <%
+                active = "class='active'"
+                action = params[:action]
+              %>
+              <li <%= active if action == 'features' %>>
                 <%= link_to "Funciones", features_path %>
               </li>
-              <li>
+              <li <%= active if action == 'success_stories' %>>
                 <%= link_to "Casos de Éxito", success_stories_path %>
               </li>
-              <li>
+              <li <%= active if action == 'jobs' %>>
                 <%= link_to "Empleos", jobs_path %>
               </li>
-              <li>
+              <li <%= active if action == 'contact' %>>
                 <%= link_to "Contacto", contact_path %>
               </li>
             </ul>
           </div>
           <div class="site-nav-actions">
-            ¿Ya eres usuario? <%= link_to "Inicia Sesión", "/", title: "Cúrsame" %>
+            <span class="txt">¿Ya eres usuario?</span>
+            <div class="dropdown-wrap website-login">
+              <div class="dropdown-pull activity-dropdown-pull">
+                <span class="as-link">Inicia Sesión</span>
+              </div>
+              <div class="dropdown-v right">
+                <i class="tip"></i>
+                <div class="website-login-forms dropdown-content">
+                  <div id="login-w" class="website-login-form-content active">
+                    <h4>Iniciar Sesión</h4>
+                    <p>Escribe tus datos de acceso para accesar a la red de tu institución.</p><br>
+                    <%= form_tag "/", class: 'website-login-form' do %>
+                      <div class="form-group no-label">
+                        <div class="form-group-main">
+                          <span class="input-icon session-icon-input">
+                            <%= icon('email') %>
+                            <%= email_field_tag 'email', '', placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group no-label">
+                        <div class="form-group-main">
+                          <span class="input-icon session-icon-input">
+                            <%= icon('password') %>
+                            <%= password_field_tag 'password', '', placeholder: "Contraseña", required: "required", minlength: "6", autocomplete: "off" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="login-footer">
+                        <div class="fl actions-l">
+                          <a class="switch-form-website-login" data-form="recover-w" href="" title="¿Olvidaste tu contraseña?">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="fr">
+                          <span class="btn btn-primary btn-medium input-btn">
+                            <%= submit_tag "Iniciar Sesión" %>
+                          </span>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div id="recover-w" class="website-login-form-content">
+                    <h4>Recupera tu cotraseña</h4>
+                    <p>Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p><br>
+                    <%= form_tag "/", class: 'website-recover-form' do %>
+                      <div class="form-group no-label">
+                        <div class="form-group-main">
+                          <span class="input-icon session-icon-input">
+                            <%= icon('email') %>
+                            <%= email_field_tag 'email', '', placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="login-footer">
+                        <div class="fl actions-l">
+                          <a class="switch-form-website-login" data-form="login-w" href="" title="Regresar">&#8592; Regresar</a>
+                        </div>
+                        <div class="fr">
+                          <span class="btn btn-primary btn-medium input-btn">
+                            <%= submit_tag "Recuperar contraseña" %>
+                          </span>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  $(function() {
+    $('.website-login-form').validate();
+    $('.website-recover-form').validate();
+  });
+</script>
