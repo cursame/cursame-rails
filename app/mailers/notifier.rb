@@ -134,4 +134,14 @@ class Notifier < ActionMailer::Base
     mail to:@user.email, subject: "#{@message.title}"
   end
 
+  def send_contact_mail(params, to, subject, request_demo)
+    @name = params[:name]
+    @email = params[:email]
+    @phone = params[:phone]
+    @position = params[:position]
+    @school = params[:school]
+    @message = params[:message]
+    @request_demo = request_demo
+    mail to:to, subject: subject
+  end
 end

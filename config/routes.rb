@@ -339,6 +339,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/request-demo", :to => "home#request_demo", :as => :request_demo
   get "/success-stories", :to => "home#success_stories", :as => :success_stories
 
+  #para el formulario de contacto
+  match '/contact_mail', to: 'home#send_contact_mail', via: 'post', :as => :send_contact_mail, :defaults => { :format => 'js' }
+
   root :to => 'home#index'
 
   #comentarios

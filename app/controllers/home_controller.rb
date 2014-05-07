@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail]
   helper_method :get_commentable
 
   def index
@@ -73,6 +73,21 @@ class HomeController < ApplicationController
   def request_demo
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def send_contact_mail
+    subject = params[:contact_type] == 'demo_request' ? 'Solictud de demo' : 'Contacto'  
+    mail = Notifier.send_contact_mail(params, 'hola@cursa.me', subject, params[:contact_type] == 'demo_request')
+    mail.deliver
+    
+    if params[:contact_type] == 'demo_request'
+      mail = Notifier.send_contact_mail(params, 'gerardo@cursa.me', subject, true)
+      mail.deliver
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 

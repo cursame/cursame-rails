@@ -1,4 +1,4 @@
-<%= form_tag "/", class: 'contact-form' do %>
+<%= form_tag (send_contact_mail_path), class: 'contact-form', remote: true, id: 'contact-form' do %>
   <%= hidden_field_tag 'contact_type', contact_type %>
   <div class="form-group l-label">
     <div class="form-group-label">
