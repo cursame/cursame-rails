@@ -338,7 +338,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/apps", :to => "home#apps", :as => :apps
   get "/request-demo", :to => "home#request_demo", :as => :request_demo
   get "/success-stories", :to => "home#success_stories", :as => :success_stories
-
+  #para inicar sesion 
+  match '/new_sesion_from_home', to: 'home#new_sesion_from_home', via: 'post', :as => :new_sesion_from_home, :defaults => { :format => 'html' }
   #para el formulario de contacto
   match '/contact_mail', to: 'home#send_contact_mail', via: 'post', :as => :send_contact_mail, :defaults => { :format => 'js' }
 
