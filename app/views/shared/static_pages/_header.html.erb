@@ -30,15 +30,24 @@
             <span class="txt">¿Ya eres usuario?</span>
             <div class="dropdown-wrap website-login">
               <div class="dropdown-pull activity-dropdown-pull">
-                <span class="as-link">Inicia Sesión</span>
+                <!-- <span class="as-link">Inicia Sesión</span> -->
+                <span class="as-link">Encuentra tu red</span>
               </div>
               <div class="dropdown-v right">
                 <i class="tip"></i>
                 <div class="website-login-forms dropdown-content">
                   <div id="login-w" class="website-login-form-content active">
+<<<<<<< HEAD
                     <h4>Iniciar Sesión</h4>
                     <p>Escribe tus datos de acceso para ingresar a la red de tu institución.</p><br>
                     <%= form_tag "/", class: 'website-login-form' do %>
+=======
+                    <!-- <h4>Iniciar Sesión</h4>
+                    <p>Escribe tus datos de acceso para accesar a la red de tu institución.</p><br> -->
+                    <h4>Encuentra tu red</h4>
+                    <p>Escribe tus correo electrónico para accesar a la red de tu institución.</p><br>
+                    <%= form_tag new_sesion_from_home_path, class: 'website-login-form' do %>
+>>>>>>> a4c72616e40d3482eee3a5ab43c4449468825f93
                       <div class="form-group no-label">
                         <div class="form-group-main">
                           <span class="input-icon session-icon-input">
@@ -47,21 +56,22 @@
                           </span>
                         </div>
                       </div>
-                      <div class="form-group no-label">
+                      <!-- <div class="form-group no-label">
                         <div class="form-group-main">
                           <span class="input-icon session-icon-input">
                             <%= icon('password') %>
                             <%= password_field_tag 'password', '', placeholder: "Contraseña", required: "required", minlength: "6", autocomplete: "off" %>
                           </span>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="login-footer">
-                        <div class="fl actions-l">
+                        <!-- <div class="fl actions-l">
                           <a class="switch-form-website-login" data-form="recover-w" href="" title="¿Olvidaste tu contraseña?">¿Olvidaste tu contraseña?</a>
-                        </div>
+                        </div> -->
                         <div class="fr">
                           <span class="btn btn-primary btn-medium input-btn">
-                            <%= submit_tag "Iniciar Sesión" %>
+                            <!-- <%= submit_tag "Iniciar Sesión" %> -->
+                            <%= submit_tag "Buscar mi red" %>
                           </span>
                         </div>
                       </div>

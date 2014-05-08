@@ -7,9 +7,7 @@
   @include clearfix;
 
   .course {
-    float: left;
-    margin: 10px;
-    width: 271px;
+    margin-bottom: 14px;
 
     &:hover {
       .course-actions {
@@ -24,7 +22,7 @@
 
     .course-cover-image {
       overflow: hidden;
-      height: 100px;
+      height: 98px;
 
       img {
         width: 100%;

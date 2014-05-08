@@ -18,7 +18,7 @@
             <div class="form-group-main">
               <span class="input-icon session-icon-input">
                 <%= icon('email') %>
-                <%= f.email_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
+                <%= f.email_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off", value: params[:email] %>
               </span>
             </div>
           </div>

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home]
   helper_method :get_commentable
+  respond_to :html, :json, :js
 
   def index
     if user_signed_in?
@@ -89,6 +90,23 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def new_sesion_from_home
+    @user = User.find_by_email(params[:email])
+    #sign_in @user
+    #
+    if @user
+      #sign_in('User', @user)
+      #respond_with @user, :location => "http://#{@user.subdomain}.#{links}"
+      redirect_to "http://#{@user.subdomain}.#{links}"
+    else
+      redirect_to "http://#{links}"
+    end 
+    #redirect_to "http://#{@user.subdomain}.#{links}"
+    # respond_to do |format|
+    #   format.html
+    # end
   end
 
   def success_stories

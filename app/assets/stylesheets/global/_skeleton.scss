@@ -115,14 +115,18 @@ body {
   width: 1100px;
   margin: 0 auto;
   @include clearfix;
+}
+
+.app .wrapper {
+  width: 880px;
 
   &.spaced {
-    width: 940px;
+    width: 860px;
   }
 }
 
 .content-main {
-  width: 465px;
+  width: 625px;
   float: left;
   margin: 0 5px 0 10px;
 }
