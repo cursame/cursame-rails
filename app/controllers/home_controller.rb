@@ -95,11 +95,7 @@ class HomeController < ApplicationController
   end
 
   def new_sesion_from_home
-    resource = warden.authenticate!(:scope => :user)
     @user = User.find_by_email(params[:email])
-
-    #crypt = ActiveSupport::MessageEncryptor.new(Digest::SHA1.hexdigest("konami"))
-    #encrypted_data = crypt.encrypt_and_sign(params[:password])
 
     if @user
       url =  "http://#{@user.subdomain}.#{links}"
