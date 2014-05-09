@@ -345,6 +345,10 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   root :to => 'home#index'
 
+  #create modals ajax
+  match '/create_modal', to: 'home#create_modal_from_link', :as => :create_modal_from_link, :via => [:get], :defaults => { :format => 'js' }
+
+
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }
 
