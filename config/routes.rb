@@ -346,7 +346,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   root :to => 'home#index'
 
   #create modals ajax
-  match '/create_modal', to: 'home#create_modal_from_link', :as => :create_modal_from_link, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/video_modal', to: 'modal#video_modal', :as => :video_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/set_password_modal', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
 
 
   #comentarios

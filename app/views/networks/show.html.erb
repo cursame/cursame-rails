@@ -29,16 +29,16 @@
 <script type="text/javascript">
 $(function() {
 
-  <% if !current_user.self_register && show_joyride(3) != "1" %>
-    
-    var content = '<%= escape_javascript(render(:partial => "/users/set_password_form", :locals => {:user => current_user}))  %>';
-    createModal( content, "overlay-small overlay-informative" );
-
+  <% if !current_user.self_register && show_joyride(3) != "1" %>    
+    $.ajax({
+        type: "GET",
+        url: '<%= set_password_modal_path %>'
+      });
   <% elsif current_user.tour_network == false %>
-
-    var tourContent = '<%= escape_javascript(render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "hRXdl0MHKoY", tour_type: "network" })) %>';
-    createModal( tourContent, "video-tutorial-overlay overlay-informative" );
-
+     $.ajax({
+        type: "GET",
+        url: '<%= video_modal_path %>'
+      });
   <% elsif current_user.form_before_tour == false  %>
     <% case current_role %>
      <% when 'teacher' %>
