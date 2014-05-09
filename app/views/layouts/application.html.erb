@@ -55,22 +55,45 @@
         
         <div class="wrap">
           <%= render partial: '/shared/user_header' %>
-          <!-- <div class="globa-message">
-            <div class="wrapper spaced">
-              <div class="close-message"><i class="i i-x-close"></i></div>
-              <h2>Bienvenido al nuevo Cúrsame</h2>
-              <p>Consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-              <br>
-              <ul class="list-buttons left">
-                <li>
-                  <a href=""><strong><%= icon('play-mini') %> VER VIDEOTOUR →</strong></a>
-                </li>
-                <li>
-                  <a href=""><%= icon('survey-mini-blue') %> RESPONDER ENCUESTA →</a>
-                </li>
-              </ul>
+
+          <!-- <div class="global-message-wrap">
+            <div class="wrapper">
+              <div class="cols-12">
+                <div class="col col-12">
+                  <div class="col-inner">
+                    <div class="global-message">
+                      <div class="close-message">
+                        <%= icon('w-cross-9-gray') %>
+                      </div>
+                      <div class="global-message-type">
+                        <%= icon('info-b') %>
+                      </div>
+                      <div class="global-message-main">
+                        <h4>Bienvenido al nuevo Cúrsame</h4>
+                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. <br>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        <br>
+                        <ul class="list-buttons left">
+                          <li>
+                            <a class="btn btn-secondary"
+                              data-modal="true"
+                              data-modal-classes="video-tutorial-overlay overlay-informative"
+                              data-modal-content="<%= render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "hRXdl0MHKoY", tour_type: "network" }).to_str %>"
+                              href="">
+                            <strong><%= icon('play-mini') %> Video Introducción</strong>
+                          </a>
+                          </li>
+                          <li>
+                            <a class="btn btn-secondary" href=""><%= icon('survey-mini-blue') %> Responder Encuesta</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div> -->
+
           <div class="main">
             <%= yield %>
           </div>

@@ -435,14 +435,21 @@ h6 {
 
 /* Messages from Admins
 ----------------------------------*/
-.globa-message {
-  background: #f4f6f7;
-  border-bottom: 1px solid #c6ced0;
-  box-shadow: 0 1px 1px rgba(0,0,0,.02);
+.global-message-wrap {
+
+  .global-message {
+    @extend .basic-container-style;
+    background: #fafafa;
+    border-top: 0;
+    border-radius: 0 0 $radius $radius;
+  }
+
+  .global-message-main {
+    border-left: 1px solid #e1e7e8;
+  }
 
   p {
-    font-size: 14px;
-    line-height: 22px;
+    @include text-size-regular;
   }
 }
 

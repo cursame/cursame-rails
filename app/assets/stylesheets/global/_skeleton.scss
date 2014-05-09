@@ -70,7 +70,7 @@ body {
       float: left;
 
       .activity-dropdown-pull {
-        padding: 15px 15px 11px 15px;
+        padding: 15px 15px 15px 15px;
         
         .activity-counter {
           position: absolute;
@@ -596,14 +596,26 @@ body {
 
 /* Messages from Admins
 ----------------------------------*/
-.globa-message {
-  position: relative;
-  padding: 30px 0;
+.global-message-wrap {
+  .global-message {
+    position: relative;
+    @include clearfix;
+  }
 
   .close-message {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 10px;
+    top: 10px;
+  }
+
+  .global-message-type {
+    float: left;
+    padding: 25px 15px;
+  }
+
+  .global-message-main {
+    margin-left: 60px;
+    padding: 20px 25px 25px 25px;
   }
 }
 
