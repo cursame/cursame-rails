@@ -1,3 +1,5 @@
+<%= csrf_meta_tags %>
+
 <% if mobile? %>
   <%= render :partial => "shared/mobile" %>
 <% elsif request.subdomain == ''%>

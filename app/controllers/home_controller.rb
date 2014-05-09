@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
-
   skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home]
   helper_method :get_commentable
+  prepend_before_filter :require_no_authentication, :only => [:action1, :action2]
   respond_to :html, :json, :js
 
   def index
@@ -36,6 +36,8 @@ class HomeController < ApplicationController
   end
 
   def landing_page
+    resource = User.new()
+    
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end
@@ -93,20 +95,19 @@ class HomeController < ApplicationController
   end
 
   def new_sesion_from_home
+    resource = warden.authenticate!(:scope => :user)
     @user = User.find_by_email(params[:email])
-    #sign_in @user
-    #
+
+    crypt = ActiveSupport::MessageEncryptor.new(Digest::SHA1.hexdigest("konami"))
+    encrypted_data = crypt.encrypt_and_sign(params[:password])
+
     if @user
-      #sign_in('User', @user)
-      #respond_with @user, :location => "http://#{@user.subdomain}.#{links}"
-      redirect_to "http://#{@user.subdomain}.#{links}"
+      url =  "http://#{@user.subdomain}.#{links}/users/sign_in?email=#{params[:email]}&password=#{encrypted_data}"
     else
-      redirect_to "http://#{links}"
+      url = "http://#{links}?error=mail"
     end 
-    #redirect_to "http://#{@user.subdomain}.#{links}"
-    # respond_to do |format|
-    #   format.html
-    # end
+
+    redirect_to url
   end
 
   def success_stories

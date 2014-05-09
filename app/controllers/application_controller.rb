@@ -61,14 +61,18 @@ class ApplicationController < ActionController::Base
   #data of the networks you are
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
-    if !current_user.nil? then
-      if (current_user.subdomain != @current_network.subdomain) then
-        networks = current_user.networks
-        if (networks.include?(@current_network)) then
-          current_user.update_attributes(:subdomain => @current_network.subdomain)
-        end
-      end
+
+    if current_user
+      @current_network = Network.find_by_subdomain(filter_subdomain(current_user.subdomain.downcase))
     end
+    # if !current_user.nil? then
+    #   if (current_user.subdomain != @current_network.subdomain) then
+    #     networks = current_user.networks
+    #     if (networks.include?(@current_network)) then
+    #       current_user.update_attributes(:subdomain => @current_network.subdomain)
+    #     end
+    #   end
+    # end
     @current_network
   end
 
