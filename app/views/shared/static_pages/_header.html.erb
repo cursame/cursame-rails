@@ -1,3 +1,11 @@
+<% if params[:error] %>
+  <script>
+    $(function() {
+      $('.login-trigs').trigger('click');
+      $('.website-login-forms').find('.error').addClass('active');
+    });
+  </script>
+<% end %>
 <div class="website-header">
   <div class="wrapper">
     <div class="cols-12">
@@ -24,18 +32,12 @@
               <li <%= active if action == 'contact' %>>
                 <%= link_to "Contacto", contact_path %>
               </li>
-
-              <% if params[:error] %>
-                <li>
-                  No hemos podido encontrar tu Red
-                </li>
-              <% end %>
             </ul>
           </div>
           <div class="site-nav-actions">
             <span class="txt">¿Ya eres usuario?</span>
             <div class="dropdown-wrap website-login">
-              <div class="dropdown-pull activity-dropdown-pull">
+              <div class="dropdown-pull login-trigs activity-dropdown-pull">
                 <!-- <span class="as-link">Inicia Sesión</span> -->
                 <span class="as-link">Encuentra tu red</span>
               </div>
@@ -46,7 +48,9 @@
                     <!-- <h4>Iniciar Sesión</h4> -->
                     <h4>Encuentra tu red</h4>
                     <!-- <p>Escribe tus datos de acceso para accesar a la red de tu institución.</p><br> -->
-                    <p>Escribe tus correo electrónico para accesar a la red de tu institución.</p><br>
+                    <p>Escribe tus correo electrónico para accesar a la red de tu institución.</p>
+                    <p class="error">Oops! al parecer tu correo no pertenece a niguna red.</p>
+                    <br>
                     <%= form_tag new_sesion_from_home_path, class: 'website-login-form' do %>
                       <div class="form-group no-label">
                         <div class="form-group-main">

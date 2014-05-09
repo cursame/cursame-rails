@@ -49,6 +49,14 @@
     .actions-l {
       margin-top: 12px;
     }
+
+    .error {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
   }
 }
 

@@ -95,7 +95,6 @@ class HomeController < ApplicationController
   end
 
   def new_sesion_from_home
-    resource = warden.authenticate!(:scope => :user)
     @user = User.find_by_email(params[:email])
 
     #crypt = ActiveSupport::MessageEncryptor.new(Digest::SHA1.hexdigest("konami"))
