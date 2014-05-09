@@ -132,15 +132,23 @@
   border-bottom-color: #233e7a;
   @extend .btn-shadow;
   @include linear-gradient(#4460a2, darken(#4460a2, 3.5%));
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 .btn-twitter {
-  color: #ffffff;
+  color: #fff;
   background: #56aaf3;
   border: 1px solid #3d93df;
   border-bottom-color: #3989cf;
   @extend .btn-shadow;
   @include linear-gradient(#56aaf3, darken(#56aaf3, 3.5%)); 
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 .btn-transparent {
