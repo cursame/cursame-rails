@@ -4,10 +4,10 @@ $(function() {
         jobID = $this.data('job-target');
     
     $this.closest('.jobs-links').find('a').removeClass('active');
-    $this.addClass('active')
+    $this.addClass('active');
 
     $('.job-view').removeClass('active');
-    $('.job-view[data-job="'+ jobID +'"]').addClass('active')
+    $('.job-view[data-job="'+ jobID +'"]').addClass('active');
     event.preventDefault();
   });
 
@@ -30,5 +30,16 @@ $(function() {
     $('.website-login-form-content').removeClass('active');
     $('#' + idTarget).addClass('active');
     event.preventDefault();
+  });
+
+  $('.features-links li').click(function() {
+    var $this = $(this),
+        feature = $this.data('fea'),
+        target = $('.feature[data-fea-id="'+ feature +'"]');
+
+    $this.siblings().removeClass('active');
+    $this.addClass('active');
+    $('.feature').removeClass('active');
+    target.addClass('active');
   });
 });

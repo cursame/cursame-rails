@@ -1,82 +1,96 @@
-// @media only screen and (min-width: 1100px)  {
-//   .wrapper {
-//     width: 880px;
-
-//     &.spaced {
-//       width: 860px;
-//     }
-//   }
-
-//   .content-main {
-//     width: 625px; 
-//   }
-// }
+@media screen and (min-width: 960px) {
+  .wrapper {
+    width: 1100px;
+  }
+}
 
 @media screen and (max-width: 1100px) {
-  .wrapper {
-    width: 960px;
+  .website-pages {
+    .wrapper {
+      width: 960px;
+    }
+  }
+
+  .app {
+    .wrapper {
+      width: 700px;
+
+      &.spaced {
+        width: 680px;
+      }
+    }
+
+    .content-main {
+      width: 445px;
+    }
   }
 }
 
 @media screen and (max-width: 960px) {
-  .wrapper {
-    width: 740px;
+  .website-pages{
+    .wrapper {
+      width: 740px;
+    }
   }
 }
 
 @media screen and (max-width: 740px) {
-  .wrapper {
-    width: 630px;
+  .website-pages {
+    .wrapper {
+      width: 630px;
+    }
   }
 }
 
 @media screen and (max-width: 630px) {
-  .wrapper {
-    width: 90%;
-  }
-
-  ul.nav {
-    display: none;
-  }
+  .website-pages {
+    .wrapper {
+      width: 90%;
+    }
   
-  .col {
-    width: 100%;
-    clear: both;
-  }
-
-  .homepage-laptop img {
-    display: none;
-  }
-
-  .intro-homepage-hidden {
-    height: auto;
-  }
-
-  .form-group {
-    .form-group-label {
-      float: none;
-      width: auto;
+    ul.nav {
+      display: none;
     }
-
-    .form-group-main {
-      margin-left: -10px;
+    
+    .col {
+      width: 100%;
+      clear: both;
     }
-  }
-
-  .jobs-positions-list {
-    margin-right: 0;
-  }
-
-  .contact-page .form-contact {
-    margin-right: 0;
-  }
-
-  .stories-list .story {
-    img {
-      margin-bottom: 15px;
+  
+    .homepage-laptop img {
+      display: none;
     }
-    .story-section {
-      margin-left: 0;
+  
+    .intro-homepage-hidden {
+      height: auto;
+    }
+  
+    .form-group {
+      .form-group-label {
+        float: none;
+        width: auto;
+      }
+  
+      .form-group-main {
+        margin-left: -10px;
+      }
+    }
+  
+    .jobs-positions-list {
+      margin-right: 0;
+    }
+  
+    .contact-page .form-contact {
+      margin-right: 0;
+    }
+  
+    .stories-list .story {
+      img {
+        margin-bottom: 15px;
+      }
+      .story-section {
+        margin-left: 0;
+      }
     }
   }
 }
