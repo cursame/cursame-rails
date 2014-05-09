@@ -98,11 +98,11 @@ class HomeController < ApplicationController
     resource = warden.authenticate!(:scope => :user)
     @user = User.find_by_email(params[:email])
 
-    crypt = ActiveSupport::MessageEncryptor.new(Digest::SHA1.hexdigest("konami"))
-    encrypted_data = crypt.encrypt_and_sign(params[:password])
+    #crypt = ActiveSupport::MessageEncryptor.new(Digest::SHA1.hexdigest("konami"))
+    #encrypted_data = crypt.encrypt_and_sign(params[:password])
 
     if @user
-      url =  "http://#{@user.subdomain}.#{links}/users/sign_in?email=#{params[:email]}&password=#{encrypted_data}"
+      url =  "http://#{@user.subdomain}.#{links}/users/sign_in"
     else
       url = "http://#{links}?error=mail"
     end 
