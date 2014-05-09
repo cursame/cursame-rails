@@ -102,7 +102,7 @@ class HomeController < ApplicationController
     #encrypted_data = crypt.encrypt_and_sign(params[:password])
 
     if @user
-      url =  "http://#{@user.subdomain}.#{links}/users/sign_in"
+      url =  "http://#{@user.subdomain}.#{links}"
     else
       url = "http://#{links}?error=mail"
     end 
