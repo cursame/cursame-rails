@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :create_modal_from_link]
   helper_method :get_commentable
   prepend_before_filter :require_no_authentication, :only => [:action1, :action2]
   respond_to :html, :json, :js
@@ -104,6 +104,13 @@ class HomeController < ApplicationController
     end 
 
     redirect_to url
+  end
+
+  #crear modales
+  def create_modal_from_link
+    respond_to do |format|
+      format.js
+    end
   end
 
   def success_stories
@@ -420,7 +427,7 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end
-  end
+  end  
   
   private
 
