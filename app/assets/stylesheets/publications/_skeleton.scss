@@ -12,7 +12,7 @@
   .publication-content {
     padding: 10px;
     position: relative;
-
+    
     .edit-publication {
       position: absolute;
       top: 5px;
@@ -103,6 +103,10 @@
 }
 
 .post-child-comment-box {
+
+  &:hover .edit-publication {
+    display: inline;
+  }
 
   .child-comment-box {
     padding: 10px;

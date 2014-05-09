@@ -19,7 +19,241 @@
   </div>
 </div>
 
-<div class="features-list wrapper">
+<div class="features-icons">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <ul class="features-links">
+            <li class="active" data-fea="homeworks">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/homeworks.jpg" %>
+              <span>Tareas</span>
+            </li>
+            <li data-fea="surveys">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/surveys.jpg" %>
+              <span>Cuestionarios</span>
+            </li>
+            <li data-fea="discussions">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/discussions.jpg" %>
+              <span>Discusiones</span>
+            </li>
+            <li data-fea="comments">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/comments.jpg" %>
+              <span>Comentarios</span>
+            </li>
+            <li data-fea="chat">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/chat.jpg" %>
+              <span>Chat</span>
+            </li>
+            <li data-fea="network">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/network.jpg" %>
+              <span>Comunidad</span>
+            </li>
+            <li data-fea="results">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/results.jpg" %>
+              <span>Calificaciones</span>
+            </li>
+            <li data-fea="statisdics">
+              <span class="tip"></span>
+              <%= image_tag "/images/website/features-icons/statisdics.jpg" %>
+              <span>Estadisticas</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features-content">
+  <div class="wrapper">
+    <div class="feature active" data-fea-id="homeworks">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Tareas</h2>
+            <p>Permite a los profesores crear actividades académicas y a los estudiantes responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.</p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Creación a uno o varios cursos</li>
+              <li>Fecha límite y hora de entrega</li>
+              <li>Archivos adjuntos </li>
+              <li>Contenido recomendado</li>
+              <li>Rubros de evaluación </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-homeworks.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="surveys">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Cuestionarios</h2>
+            <p>A través de los cuestionarios los profesores pueden evaluar a sus alumnos de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes. </p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Creación a uno o varios cursos</li>
+              <li>Fecha y hora límite de entrega</li>
+              <li>Preguntas y respuestas ilimitadas</li>
+              <li>Autoevaluación</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-surveys.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="discussions">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Discusiones</h2>
+            <p>Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la comunidad en el aprendizaje.</p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Públicas o privadas</li>
+              <li>A uno o varios cursos</li>
+              <li>Contenido recomendado</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-discussiones.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="comments">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Comentarios</h2>
+            <p>Permite a todos los miembros de la comunidad comentarse de manera pública, grupal o personal para de esta forma interactuar social o académicamente.</p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Públicos o privados</li>
+              <li>A uno o varios cursos</li>
+              <li>Contenido enriquecido (multimedia)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-comments.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="chat">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Chat</h2>
+            <p>Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada curso tiene una sala de chat grupal para compartir contenido en tiempo real.</p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Chat individual con amigos y compañeros</li>
+              <li>Salas de chat grupal por curso</li>
+              <li>Compartir multimedia</li>
+              <li>Mensajes privados</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-chat.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="network">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Comunidad</h2>
+            <p>Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.</p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Encontrar amigos</li>
+              <li>Encontrar compañeros de clase y profesores</li>
+              <li>Solicitudes de amistad</li>
+              <li>Interacción en perfiles</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-network.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="results">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Calificaciones</h2>
+            <p>Cada usuario puede ver su avance educativo. Los profesores visualizan los resultados de todos sus alumnos de una manera muy sencilla y en tiempo real.</p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Calificaciones por curso</li>
+              <li>Calificaciones individuales</li>
+              <li>Calificaciones por actividad</li>
+              <li>Exportar a PDF</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-results.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature" data-fea-id="statisdics">
+      <div class="cols-12">
+        <div class="col col-4 feature-content-desc">
+          <div class="col-inner">
+            <h2>Estadísticas:</h2>
+            <p>Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa. </p>
+            <p>Algunas de sus características son:</p>
+            <ul>
+              <li>Uso de las herramientas de la plataforma</li>
+              <li>Ingreso al sistema</li>
+              <li>Calificaciones</li>
+              <li>Por curso</li>
+              <li>Por alumno</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-8 feature-content-image">
+          <div class="col-inner">
+            <%= image_tag "/images/website/features-icons/s-statisdics.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="features-list wrapper">
 
   <div class="cols-12">
     <div class="col col-6">
@@ -118,6 +352,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <%= render partial: "shared/website/cta_request_demo" %>
 <%= render partial: "shared/website/sponsors" %>

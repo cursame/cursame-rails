@@ -1,125 +1,122 @@
-<%= form_for( @course, :html => { :class => "default-form edit-course border_for_text", :id => "course-form" }) do |f| %>
-  
+<%= form_for( @course, :html => { :class => "default-form edit-course border_for_text", :id => "course-form" }) do |f| %>  
   <div class="cols-12">
-    <div class="col col-6">
-
-      <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label :title, "Nombre del #{current_network.course_tag.downcase}" %>
-          <label></label>  
-        </div>
-        <div class="form-group-main">
-          <div class="form-unit">
-            <%= f.text_field :title, :placeholder => 'Ejemplo: Matemáticas I', :required => "required", :autocomplete => "off" %>
+    <div class="col col-9">
+      <div class="col-inner">
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :title, "Nombre del #{current_network.course_tag.downcase}" %>
+            <label></label>  
           </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="form-group-label">
-        <%= f.label :silabus, "Descripción del #{current_network.course_tag.downcase}" %>
-        </div>
-        <div class="form-group-main">
-          <div class="form-unit">
-            <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :required => "required", :autocomplete => "off" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label :public_status, "Privacidad" %>
-        </div>
-        <div class="form-group-main">
-          <div class="form-unit">
-            <% if @course.public_status == 'public' %>
-              <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
-            <%else%>
-              <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-            <%end%>
-          </div>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label :init_date, "Duración" %>
-        </div>
-        <div class="form-group-main">
-          <div class="f-col f-col-5">
+          <div class="form-group-main">
             <div class="form-unit">
-              <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, :required => "required", :autocomplete => "off" %>
-            </div>
-          </div>
-          <div class="f-col f-col-5">
-            <div class="form-unit">
-              <%= f.text_field :finish_date, :placeholder => 'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date, :required => "required", :autocomplete => "off" %>
+              <%= f.text_field :title, :placeholder => 'Ejemplo: Matemáticas I', :required => "required", :autocomplete => "off" %>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label :survey_param_evaluation, "Evaluación" %>
-        </div>
-        <div class="form-group-main">
-          <div class="f-col f-col-5">
-            <div class="form-unit">
-              <%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios", :autocomplete => "off" %>
-            </div>
+        <div class="form-group">
+          <div class="form-group-label">
+          <%= f.label :silabus, "Descripción del #{current_network.course_tag.downcase}" %>
           </div>
-          <div class="f-col f-col-5">
+          <div class="form-group-main">
             <div class="form-unit">
-              <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas", :autocomplete => "off" %>
+              <%= f.text_area :silabus, :rows => 7, :cols => 50, :placeholder=>'Descripción', :required => "required", :autocomplete => "off" %>
             </div>
           </div>
         </div>
-      </div>
 
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :public_status, "Privacidad" %>
+          </div>
+          <div class="form-group-main">
+            <div class="form-unit">
+              <% if @course.public_status == 'public' %>
+                <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+              <%else%>
+                <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
+              <%end%>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :init_date, "Duración" %>
+          </div>
+          <div class="form-group-main">
+            <div class="f-col f-col-5">
+              <div class="form-unit">
+                <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, :required => "required", :autocomplete => "off" %>
+              </div>
+            </div>
+            <div class="f-col f-col-5">
+              <div class="form-unit">
+                <%= f.text_field :finish_date, :placeholder => 'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date, :required => "required", :autocomplete => "off" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label :survey_param_evaluation, "Evaluación" %>
+          </div>
+          <div class="form-group-main">
+            <div class="f-col f-col-5">
+              <div class="form-unit">
+                <%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios", :autocomplete => "off" %>
+              </div>
+            </div>
+            <div class="f-col f-col-5">
+              <div class="form-unit">
+                <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas", :autocomplete => "off" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
     <div class="col col-3">
-      
-      <div class="profile-images">
-        <div class="profile-image">
-          <span class="avatar-holder">
-            <%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx : @course.avatar.profile, :id =>"img_prev_course_avatar", :class => "avatar avatar-150" )%>
-          </span>  
-          <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
-            <%= create ? 'Subir' : 'Actualizar' %> imagen del curso
-            <span class="hide-input-file">
-              <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
-            </span>
-          </label>
-        </div>
+      <div class="col-inner">
+        <div class="profile-images">
+          <div class="profile-image">
+            <span class="avatar-holder">
+              <%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx : @course.avatar.profile, :id =>"img_prev_course_avatar", :class => "avatar avatar-150" )%>
+            </span>  
+            <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
+              <%= create ? 'Subir' : 'Actualizar' %> imagen del curso
+              <span class="hide-input-file">
+                <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
+              </span>
+            </label>
+          </div>
 
-        <div class="profile-image">
-          <span class="avatar-holder">
-            <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
-          </span>
-          <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
-            <%= create ? 'Subir' : 'Actualizar' %> imagen de cabecera
-            <span class="hide-input-file">
-              <%= f.file_field :coverphoto , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+          <div class="profile-image">
+            <span class="avatar-holder">
+              <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
             </span>
-          </label>
+            <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
+              <%= create ? 'Subir' : 'Actualizar' %> imagen de cabecera
+              <span class="hide-input-file">
+                <%= f.file_field :coverphoto , :onchange => "readURL(this,'img_prev_course_header',168);"%>
+              </span>
+            </label>
+          </div>
         </div>
       </div>
-      
     </div>
-
   </div>
-  
-  <div class="spaced">
-    <span class="btn btn-primary input-btn activable">
-      <%= f.submit "#{ create ? "Crear" : "Actualizar" } #{current_network.course_tag}", :class=>"act-crs activable" %>
-    </span>
+  <div class="cols-12">
+    <div class="col col-12">
+      <div class="col-inner">
+        <span class="btn btn-primary input-btn activable">
+          <%= f.submit "#{ create ? "Crear" : "Actualizar" } #{current_network.course_tag}", :class=>"act-crs activable" %>
+        </span>
+      </div>
+    </div>
   </div>
-
 <% end %>
-
-
 <script type="text/javascript">
   function readURL(input, id, width) {
     if (input.files && input.files[0]) {

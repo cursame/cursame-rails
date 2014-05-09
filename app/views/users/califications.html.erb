@@ -14,7 +14,7 @@
       <% unless @courses.empty? %>
         <div class="section-header-actions">
           <span class="meta-info">Filtrar: </span>
-          <select class="course-califications-filter">
+          <select class="course-califications-filter" style="width: 180px;">
             <option value="all">Todos los cursos</option>
             <% @courses.each do |course|%>
               <option value="<%= course.id %>"><%= course.title %></option>

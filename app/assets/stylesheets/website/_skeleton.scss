@@ -7,6 +7,10 @@
   body {
     padding-top: 70px;
   }
+
+  p + p {
+    margin-top: 20px;
+  }
 }
 
 .website-header {
@@ -77,6 +81,20 @@
   .section-title {
     width: 80%;
     margin: 0 auto;
+
+    h1 {
+      font-size: 34px;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    p {
+      @include text-size-large;
+    }
   }
 
   &.intro-main {
@@ -174,7 +192,12 @@
 
   .section-title {
     padding-top: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+
+    h2 {
+      font-size: 34px;
+      font-weight: 400;
+    }
   }
 
   .testimonials-content {
@@ -285,6 +308,79 @@
     .feature-description {
       margin-left: 75px;
     }
+  }
+}
+
+.features-icons {
+  position: relative;
+
+  ul {
+    @include clearfix;
+
+    li {
+      float: left;
+      width: 12.5%;
+      padding: 25px 0;
+      position: relative;
+
+      .tip {
+        display: block;
+        width: 35px;
+        height: 14px;
+        position: absolute;
+        bottom: -14px;
+        left: 50%;
+        margin-left: -17px;
+        display: none;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      span {
+        display: block;
+        margin: 0 auto;
+      }
+
+      &.active {
+        .tip {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.features-content {
+  margin-bottom: -23px;
+  padding: 80px 0 150px 0;
+
+  .feature {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .feature-content-desc {
+    padding-top: 30px;
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    ul {
+      margin: 5px 0 0 17px;
+
+      li {
+      }
+    }
+  }
+
+  .feature-content-image img {
+    max-width: 100%;
   }
 }
 
