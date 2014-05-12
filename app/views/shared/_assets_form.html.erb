@@ -11,12 +11,12 @@
   <div id="new_assets">
     <div id="<%= @asset_unique %>" class="file-input-box">
 
-      <%= label_tag 'asset-file-0', class: 'btn btn-secondary' do %>
-        <%= icon('upload-asset') %> Adjuntar archivo (Max. 8MB)
+      <%= label_tag 'asset-file-0' + formId, class: 'btn btn-secondary' do %>
+        <%= icon('upload-asset') %> Adjuntar archivo23234 (Max. 8MB)
       <% end %>
 
       <div class="hide-input-file">
-        <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0', multiple: true, name: "asset[file]" %>
+        <%= f.file_field :file, :class=>'upload-input', :id =>'asset-file-0' + formId, multiple: true, name: "asset[file]" %>
         <% f.password_field :encryption_code_to_access %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= hidden_field_tag :form_id, formId %>
