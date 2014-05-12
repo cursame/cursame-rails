@@ -818,7 +818,7 @@ class Api::ApiController < ApplicationController
             avatar =  {
               url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url 
             }
-            publication = publication.as_json(:include => [{:user_surveys => {:include => [:user]}}])
+            publication = publication.as_json(:include => [{:user_surveys => {:include => [:user, :user_survey_responses]}}, {:questions => {:include => [:answers]} }])
           else
             next
         end
