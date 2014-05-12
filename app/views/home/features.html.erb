@@ -1,10 +1,10 @@
 <% 
   set_meta_tags title: 'Metodología',
-                description: 'Ofrecemos herramientas a instituciónes educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.',
+                description: 'Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.',
                 keywords: 'cursame, funciones, herramientas, tareas, cuestionarios, discusiones, comentarios, chat, comunidad, calificaciones, estadísticas',
                 og: {
                   title: 'Metodología · Cúrsame',
-                  description: 'Ofrecemos herramientas a instituciónes educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.',
+                  description: 'Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.',
                   image: 'http://cursa.me/images/website/features-title.jpg',
                   url: 'http://cursa.me/features'
                 }
@@ -17,7 +17,7 @@
         <div class="col-inner">
           <div class="section-title">
             <h1>Metodología</h1>
-            <p>Ofrecemos herramientas a instituciónes educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.</p>
+            <p>Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.</p>
           </div>
         </div>
       </div>
@@ -259,105 +259,46 @@
   </div>
 </div>
 
-<!-- <div class="features-list wrapper">
+<div class="our-methods intro-page">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-title">
+            <h2>No sólo es la tecnología</h2>
+            <p>Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de alumnos, profesores y directivos. Por esta razon trabajamos mano a mano con ellos para lograr los mejores resultados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="methods-item cols-12">
+      <div class="col col-3">
+        <div class="col-inner">
+          <h3><%= icon('m-training') %> Capacitación</h3>
+          <p>Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los profesores en la adopción de las TICs.</p>
+        </div>
+      </div>
+      <div class="col col-3">
+        <div class="col-inner">
+          <h3><%= icon('m-implement') %> Implementación</h3>
+          <p>Tenemos un equipo especializado que está dedicado a visitar los planteles para enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que esta conlleva.</p>
+        </div>
+      </div>
+      <div class="col col-3">
+        <div class="col-inner">
+          <h3><%= icon('m-support') %> Soporte</h3>
+          <p>En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.</p>
+        </div>
+      </div>
+      <div class="col col-3">
+        <div class="col-inner">
+          <h3><%= icon('m-endless') %> Seguimiento</h3>
+          <p>Buscamos siempre estar cerca de nuestros  usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayo beneficio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="cols-12">
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-deliveries') %>
-          <div class="feature-description">
-            <h2>Tareas</h2>
-            <p>Crea actividades académicas para uno o varios cursos con fecha límite de entrega, archivos adjuntos, contenido recomendado y rubros de evaluación.</p>
-         </div>
-        </div>
-      </div>
-    </div>
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-surveys') %>
-          <div class="feature-description">
-            <h2>Cuestionarios</h2>
-            <p>Evalúa a uno o varios grupos de manere automática con preguntas ilimitadas y fecha límite para contestar.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cols-12">
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-discussions') %>
-          <div class="feature-description">
-            <h2>Discusiones</h2>
-            <p>Crea foros de discusión públicos o privados con contenido recomendado y promueve la participación de toda la comunidad en el aprendizaje.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-comments') %>
-          <div class="feature-description">
-            <h2>Comentarios</h2>
-            <p>Permite a todos los miembros de la comunidad comentarse de manera pública, grupal o personal con contenido enriquecido.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="cols-12">
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-chat') %>
-          <div class="feature-description">
-            <h2>Chat</h2>
-            <p>Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada curso tiene una sala de chat grupal para compartir contenido en tiempo real.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-community') %>
-          <div class="feature-description">
-            <h2>Comunidad</h2>
-            <p>Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="cols-12">
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-califications') %>
-          <div class="feature-description">
-            <h2>Calificaciones</h2>
-            <p>Cada usuario puede ver su avance educativo. Los profesores visualizan los resultados de todos sus alumnos de una manera muy sencilla.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col col-6">
-      <div class="col-inner">
-        <div class="feature">
-          <%= icon('section-statistics') %>
-          <div class="feature-description">
-            <h2>Estadísticas</h2>
-            <p>Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <%= render partial: "shared/website/cta_request_demo" %>
 <%= render partial: "shared/website/sponsors" %>

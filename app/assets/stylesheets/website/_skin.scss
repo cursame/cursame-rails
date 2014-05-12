@@ -89,6 +89,10 @@
   &.social-impact {
     background-image: url('/images/website/social-intro.jpg');
   }
+
+  &.our-methods {
+    background-image: url('/images/website/our-methods-title.jpg');
+  }
 }
 
 .white-shadowed {
@@ -282,6 +286,8 @@
   ul li {
     text-align: center;
     cursor: pointer;
+    @include opacity(.5);
+    @include transition(all .2s ease-in-out);
 
     .tip {
       background: url('pack.png') -69px -256px no-repeat;
@@ -292,6 +298,14 @@
       font-size: 11px;
       font-weight: 500;
       color: #666;
+    }
+
+    &:hover {
+      @include opacity(1);
+    }
+
+    &.active {
+      @include opacity(1);
     }
   }
 }
@@ -317,6 +331,27 @@
 
   .feature-content-image {
     text-align: center;
+  }
+}
+
+.our-methods {
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.1);
+
+  .section-title {
+    h2, p {
+      color: #333;
+      text-shadow: none;
+    }
+  }
+
+  .methods-item {
+    h3 {
+      color: #0071a2;
+    }
+
+    p {
+      @include text-size-regular;
+    }
   }
 }
 
