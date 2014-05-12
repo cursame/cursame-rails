@@ -31,21 +31,9 @@ $(function() {
 
   <% if !current_user.self_register && show_joyride(3) != "1" %>    
     $.ajax({
-        type: "GET",
-        url: '<%= set_password_modal_path %>'
-      });
-  <% elsif current_user.tour_network == false %>
-     $.ajax({
-        type: "GET",
-        url: '<%= video_modal_path %>'
-      });
-  <% elsif current_user.form_before_tour == false  %>
-    <% case current_role %>
-     <% when 'teacher' %>
-      createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay');
-    <% when 'student' %>
-      createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay');
-    <% end %>
+      type: "GET",
+      url: '<%= set_password_modal_path %>'
+    });
   <% end %>
 
   var aux = <%= (@show_course_expired) || false %>;

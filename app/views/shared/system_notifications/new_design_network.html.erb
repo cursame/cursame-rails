@@ -1,0 +1,45 @@
+<div class="global-message-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="global-message">
+            <div class="close-message"><i class="i i-x-close"></i></div>
+            <div class="global-message-type">
+              <%= icon 'info-b' %>
+            </div>
+            <div class="global-message-main">
+              <h3>Bienvenido al nuevo Cúrsame</h3>
+              <p>Consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              <br>
+              <ul class="list-buttons left">
+                <li>
+                  <%= link_to "#{icon('play-mini')} Video Introduccíon".html_safe,
+                      network_intro_video_modal_path,
+                      class: "btn btn-secondary activable",
+                      data: { modal: "true" } %>
+                </li>
+                <li>
+                  <%=
+                    case current_role
+                      when 'teacher'
+                        link_to "#{ icon('survey-mini-blue')} Responder Encuesta para Maestro".html_safe,
+                                teacher_quiz_modal_path,
+                                class: "btn btn-secondary activable",
+                                data: { modal: "true" }
+                      when 'student'
+                        link_to "#{ icon('survey-mini-blue')} Responder Encuesta para Alumno".html_safe,
+                                student_quiz_modal_path,
+                                class: "btn btn-secondary activable",
+                                data: { modal: "true" }
+                    end
+                  %>
+                </li>
+              </ul>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

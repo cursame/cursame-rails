@@ -28,8 +28,6 @@ $(function() {
 
     $('.overlay').html(content);
     overlayPositioning( $('.overlay') );
-    $('.overlay').addClass('animated pulse');
-
 	};
 
   window.removeModal = function() {
@@ -42,17 +40,11 @@ $(function() {
 
   window.removeModalAction = function( overlay, f ) {
     f = f || undefined;
-
-    overlay.addClass('animated bounceOut');
-    overlay.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-      $('.overlay-wrapper').fadeOut(250, function() {
-        $(this).remove();
-        if ( f && typeof f == 'function') {
-          f();
-        };
-      });
-      $('body').removeClass('overlay-open');
-    });
+    $('.overlay-wrapper').remove();
+    $('body').removeClass('overlay-open');
+    if ( f && typeof f == 'function') {
+      f();
+    };
   };
 	
 	$('.overlay-screen, .close-overlay').live('click', removeModal );
@@ -65,9 +57,9 @@ $(function() {
 
   $('[data-modal="true"]').click(function(event) {
     var $this = $(this),
-        classes = $this.data('modal-classes'),
-        content = $this.data('modal-content')
-    createModal(content, classes);
+        url   = $this.attr('href');
+
+    $.ajax({ type: "GET", url: url });
     event.preventDefault();
   });
 

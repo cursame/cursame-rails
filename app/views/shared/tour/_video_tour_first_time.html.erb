@@ -52,32 +52,7 @@
 
   var done = false;
   function onPlayerStateChange(event) {
-    if ( event.data == 0 ) {
-      removeModalAction( $('.overlay'), function() {
-
-        <% if tour_type == "network"  %>
-
-           <% case current_role %>
-            <% when 'teacher' %>
-             createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "mknc34l1imkqrq", quiz_type: "teacher" })) %>', 'overlay-informative first-time-survey-overlay');
-           <% when 'student' %>
-             createModal( '<%= escape_javascript(render(:partial => "/shared/tour/survey_first_login", locals: { wufoo_form_id: "z1mgiziq0ywt4x0", quiz_type: "student" })) %>', 'overlay-informative first-time-survey-overlay');
-           <% end %>
-
-          $.get("<%= tour_reciver_path %>?type_route=network");
-
-        <% elsif tour_type == "course" %>
-
-          $.get("<%= tour_reciver_path %>?type_route=course");
-
-        <% elsif tour_type == "profile" %>
-          
-          $.get("<%= tour_reciver_path %>?type_route=profile");
-                    
-        <% end %>
-
-      });
-    };
+    
   };
 
   function stopVideo() {
