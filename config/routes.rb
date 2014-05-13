@@ -350,6 +350,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/teacher_quiz', to: 'modal#teacher_quiz_modal', :as => :teacher_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/landing_intro_video', to: 'modal#landing_intro_video_modal', :as => :landing_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }

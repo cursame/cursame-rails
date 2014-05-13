@@ -26,11 +26,10 @@
                     <%= link_to '¡Solicita un demo en tu plantel!', request_demo_path, class: 'btn btn-large btn-complementary hard-border-btn' %>
                   </li>
                   <li>
-                    <a  class="landing-play-video"
-                        data-modal="true"
-                        data-modal-classes="video-tutorial-overlay overlay-informative"
-                        data-modal-content="<%= render(partial: "/shared/website/video_intro").to_str %>" href="">
-                      <%= image_tag "/images/website/play.png" %>
+                    <%= link_to image_tag('/images/website/play.png'),
+                      landing_intro_video_modal_path,
+                      class: "landing-play-video",
+                      data: { modal: "true" } %>
                     </a>
                   </li>
                 </ul>
