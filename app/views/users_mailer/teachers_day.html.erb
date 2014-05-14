@@ -1,65 +1,3 @@
-<html>
-  <head>
-  <title>Cursame | Bienvenido</title>
-    <style type="text/css">
-      h1 { font-family: arial; font-size: 15px; font-weight: lighter; }
-      p { font-family: arial; color: #333; font-size: 14px; }
-      a:link { color: #00B1C4; }
-      .viewFooter { width: 650px; text-align: center; margin-top: 20px; display: block; color: #fff; font-family: arial; font-size: 12px; }
-      .viewBrowser { width: 650px; text-align: right; margin-bottom: 10px; margin-top: 20px; display: block; color: #fff; font-family: arial; font-size: 12px; }
-      .viewBrowser > a:link { color: #ccc; } .viewBrowser > a:hover { color: #00AFC9; }
-      .buttonClick > a:link { width: 400px; background: #00B0C6; color: #fff; text-decoration: none; display: block; text-align: center; font-family: arial; height: 30px; padding-top: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
-    </style>
-  </head>
-
-
-  <body background="http://app.cursa.me/assets/mails/utiles.jpg" style="background-position: top center;">
-
-    <center>
-    <table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
-      <tr>
-        <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @user.devise_mailer_subdomain %>.<%=@user.ubication %>/assets/mails/logo_welcome.png";>
-          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;">Activado</b></h1>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:0px 30px 20px 30px;" width="600px">
-
-          <p>Hola  "<%= @user.email %>" has sido aceptado aceptado en Cúrsame.</p>
-          <p>Tu constraseña es  "<%= @password %>" puedes cambiarla al iniciar sessión.</p>
-
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:0px 30px 20px 30px;" width="600px">
-
-        </td>
-      </tr>
-      <tr>
-        <td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
-          <center>
-            <span class="buttonClick">
-              <%= link_to 'Ir a la red', "http://#{@user.subdomain}.#{@user.domain}" %>
-            </span>
-          </center>
-        </td>
-      </tr>
-      <tr>
-        <td height="30px">
-        </td>
-      </tr>
-      <tr>
-        <td>
-
-        </td>
-      </tr>
-    </table>
-    <span class="viewFooter"><%="Pomona #7, Roma Norte, Delegación Cuauhtémoc, Ciudad de México."%></span>
-    </center>
-
-  </body>
-</html>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,7 +48,9 @@
       <td>
         <br>
         <br>
-        <h3 style="font-size: 18px; font-weight: 500; color: #333;">Hola [nombre],</h3>
+        <h3 style="font-size: 18px; font-weight: 500; color: #333;">
+          Hola <%= @user.name.split.map(&:capitalize).join(' ') %>,
+        </h3>
         <p style="font-size: 16px; color: #333;">En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.</p>
         <p style="font-size: 16px; color: #333;">Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.</p>
         <p style="font-size: 16px; color: #333;">Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces! </p>

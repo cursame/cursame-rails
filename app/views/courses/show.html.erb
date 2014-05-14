@@ -26,12 +26,6 @@
   // elimina todos los p vacios  
   $(document).ready ( function() {
     $('p:empty').hide();
-    <% if current_user.tour_course == false %>
-      $.ajax({
-        type: "GET",
-        url: '<%= video_modal_path %>'
-      });
-    <% end %>
     $("#stats-area").on('show',function () {
       $("#timeline-embed").resize();
       $("#estadistic-list").css("display","block");
