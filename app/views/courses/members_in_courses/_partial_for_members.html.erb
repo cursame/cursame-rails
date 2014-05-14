@@ -1,21 +1,24 @@
-
 <div class="cards-list comunity-card-list">
-  <% @course.members_in_courses.each do |member|  %>
+  <div class="cols-12">
+    <% @course.members_in_courses.each do |member|  %>
       <% unless agil_find_user(findX="#{member.user_id}", byX='id') == "nil" %>
-
-        <div class="card">
-          <div class="card-avatar">
-            <%= link_to show_user_path( agil_find_user( findX= member.user_id, byX='id').personal_url ) do %>
-              <span class="avatar-holder">
-                <%= avatar('user', '45', "no", member.user_id.to_s, "avatar", "no", "no") %>
-              </span>
-            <% end %>
-          </div>
-          <div class="card-main">
-            <%= link_to agil_find_user( findX=member.user_id, byX='id' ).name, show_user_path(agil_find_user(findX=member.user_id, byX='id').personal_url) %>
+        <div class="col col-4">
+          <div class="col-inner">
+            <div class="card">
+              <div class="card-avatar">
+                <%= link_to show_user_path( agil_find_user( findX= member.user_id, byX='id').personal_url ) do %>
+                  <span class="avatar-holder">
+                    <%= avatar('user', '45', "no", member.user_id.to_s, "avatar", "no", "no") %>
+                  </span>
+                <% end %>
+              </div>
+              <div class="card-main">
+                <%= link_to agil_find_user( findX=member.user_id, byX='id' ).name, show_user_path(agil_find_user(findX=member.user_id, byX='id').personal_url) %>
+              </div>
+            </div>
           </div>
         </div>
-      <%end%>
-    
-  <%end%>
+      <% end %>
+    <% end %>
+  </div>
 </div>
