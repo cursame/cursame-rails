@@ -18,7 +18,7 @@ task :send_teachers_day_greeting => :environment do
 				else 
 					puts "\e[1;33m[WARNING]\e[0m unconfirmed teacher: { name: #{teacher.name}, mail: #{teacher.email} }"
 				end
-				
+
 			else
 				puts "\e[1;33m[WARNING]\e[0m teacher not found: { user_id: #{p.user_id} }"
 			end
