@@ -6,7 +6,7 @@ task :send_teachers_day_greeting => :environment do
 
 	Permissioning.find_all_by_role_id(teacher_role.id).each do |p|
 		teacher = User.find_by_id(p.user_id)
-		unless theacher.nil? then
+		unless teacher.nil? then
 			puts "sending mail to teacher: { name: #{teacher.name}, mail: #{teacher.email} }"
 			UsersMailer.teachers_day(teacher).deliver
 		end
