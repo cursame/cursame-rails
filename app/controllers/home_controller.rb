@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day]
   helper_method :get_commentable
   prepend_before_filter :require_no_authentication, :only => [:action1, :action2]
   respond_to :html, :json, :js
@@ -74,6 +74,12 @@ class HomeController < ApplicationController
   end
 
   def request_demo
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
+  def teacher_day
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end

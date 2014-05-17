@@ -23,15 +23,3 @@
     </div>
   <% end %>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-
-    <% if current_user.tour_profile == false %>
-      var tourContent = '<%= escape_javascript(render(partial: "/shared/tour/video_tour_first_time", locals: { video_id: "wtFVoBnwi9Y", tour_type: "profile" })) %>';
-      createModal( tourContent, "video-tutorial-overlay overlay-informative" );
-    <% end %>
-
-    
-  });
-</script>

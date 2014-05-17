@@ -93,6 +93,10 @@
   &.our-methods {
     background-image: url('/images/website/our-methods-title.jpg');
   }
+
+  &.teacher-day-title {
+    background-image: url('/images/website/teacher-day-title.jpg');
+  }
 }
 
 .white-shadowed {
@@ -484,4 +488,16 @@
       border-radius: $radius;
     }
   }  
+}
+
+// Teacher Day
+.teacher-day-title .section-title {
+  text-align: center !important;
+}
+.teacher-day-letter {
+  .letter-inner {
+    p {
+      @include text-size-large;
+    }
+  }
 }
