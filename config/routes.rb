@@ -345,6 +345,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   root :to => 'home#index'
 
+  match '*path' => redirect('/')
+
   #create modals ajax
   match '/modals/network_intro_video', to: 'modal#network_intro_video_modal', :as => :network_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
