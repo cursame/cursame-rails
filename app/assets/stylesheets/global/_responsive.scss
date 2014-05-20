@@ -5,7 +5,7 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .website-pages {
+  .website-pages, .mkt-langing-pages {
     .wrapper {
       width: 960px;
     }
@@ -27,7 +27,7 @@
 }
 
 @media screen and (max-width: 960px) {
-  .website-pages{
+  .website-pages, .mkt-langing-pages{
     .wrapper {
       width: 740px;
     }
@@ -35,7 +35,7 @@
 }
 
 @media screen and (max-width: 740px) {
-  .website-pages {
+  .website-pages, .mkt-langing-pages {
     .wrapper {
       width: 630px;
     }
@@ -43,7 +43,7 @@
 }
 
 @media screen and (max-width: 630px) {
-  .website-pages {
+  .website-pages, .mkt-langing-pages {
     .wrapper {
       width: 90%;
     }
@@ -55,6 +55,10 @@
     .col {
       width: 100%;
       clear: both;
+
+      .col-inner {
+        padding: 0;
+      }
     }
   
     .homepage-laptop img {

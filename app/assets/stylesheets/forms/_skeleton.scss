@@ -383,6 +383,18 @@ select {
   &.no-label .form-group-main {
     margin-left: 0;
   }
+
+  &.label-on-top {
+    .form-group-label {
+      width: auto;
+      float: none;
+      margin-bottom: 5px;
+    }
+
+    .form-group-main {
+      margin-left: -10px;
+    }
+  }
 }
 
 .input-icon {

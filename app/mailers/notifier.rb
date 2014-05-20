@@ -138,9 +138,13 @@ class Notifier < ActionMailer::Base
     @name = params[:name]
     @email = params[:email]
     @phone = params[:phone]
+    @phone_ext = params[:phone_ext]
     @position = params[:position]
     @school = params[:school]
+    @lms = params[:lms_usage]
+    @other_lms = params[:lms_other]
     @message = params[:message]
+    @mkt_langin_id = params[:mkt_langin_id]
     @request_demo = request_demo
     mail to:to, subject: subject
   end

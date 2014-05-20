@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day, :mkt]
   helper_method :get_commentable
   prepend_before_filter :require_no_authentication, :only => [:action1, :action2]
   respond_to :html, :json, :js
@@ -85,13 +85,23 @@ class HomeController < ApplicationController
     end
   end
 
+  def mkt
+    pages = ["empeno", "prestamo-internet", "prestamo-sin-aval"]
+
+    if pages.include? params[:name]
+      render "/home/mkt_pages/#{params[:name]}", :layout => 'mkt_langing_page'
+    else
+      redirect_to root_path
+    end
+  end
+
   def send_contact_mail
     subject = params[:contact_type] == 'demo_request' ? 'Solictud de demo' : 'Contacto'  
-    mail = Notifier.send_contact_mail(params, 'hola@cursa.me', subject, params[:contact_type] == 'demo_request')
+    mail = Notifier.send_contact_mail(params, 'salvador@cursa.me', subject, params[:contact_type] == 'demo_request')
     mail.deliver
     
     if params[:contact_type] == 'demo_request'
-      mail = Notifier.send_contact_mail(params, 'gerardo@cursa.me', subject, true)
+      mail = Notifier.send_contact_mail(params, 'salvador@cursa.me', subject, true)
       mail.deliver
     end
 

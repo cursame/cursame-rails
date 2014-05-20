@@ -11,8 +11,16 @@ $fg-max-columns: 12;
     float: left;
 
     .col-inner {
-      padding: 0 10px;
+      padding: 0 10px 0 10px;
     }
+
+    &.alpha .col-inner {
+      padding-left: 0;
+    }
+
+    &.omega .col-inner {
+      padding-right: 0;
+    }    
   }
 }
 

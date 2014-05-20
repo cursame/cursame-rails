@@ -111,7 +111,6 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   end
 
   # metodos de filtrado en cursos
-
   get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
   get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
   get'/my_old_courses', :to => 'courses#my_old_courses', :as => :my_old_courses
@@ -340,6 +339,8 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/success-stories", :to => "home#success_stories", :as => :success_stories
   get "/success-stories", :to => "home#success_stories", :as => :success_stories
   get "/teacher-day", :to => "home#teacher_day", :as => :teacher_day
+
+  get "/mkt/:name", :to => "home#mkt"
 
   #para inicar sesion 
   match '/new_sesion_from_home', to: 'home#new_sesion_from_home', via: 'post', :as => :new_sesion_from_home, :defaults => { :format => 'html' }
