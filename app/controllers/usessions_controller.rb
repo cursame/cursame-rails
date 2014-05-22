@@ -40,6 +40,14 @@ class UsessionsController < Devise::SessionsController
       @find_user.online = true
       @find_user.save!
 
+      mixpanel_properties = { 
+        'Network'  => current_network.name.capitalize,
+        'Browser'  => user_agent.browser,
+        'Platform' => user_agent.platform
+      }
+
+      MixpanelTrackerWorker.perform_async @find_user.id, 'Logins', mixpanel_properties
+
       # avisamos que el usuario se conecto
       PrivatePub.publish_to("/messages/chat_notifications",
                               userId: @find_user.id,

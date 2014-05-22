@@ -132,14 +132,21 @@ class HomeController < ApplicationController
   end
 
   def upvote
-      @publication = Wall.find(params[:id])
-      @publication.publication.liked_by current_user
-      
-      respond_to do |format|
-       #format.html
-       format.js
-     end
-   end
+
+    @publication = Wall.find(params[:id])
+    @publication.publication.liked_by current_user
+
+    mixpanel_properties = { 
+        'Network'  => current_network.name.capitalize,
+        'Type'     => @publication.publication.commentable_type.capitalize
+    }
+    MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
 
    def downvote
      @publication = Wall.find(params[:id])
@@ -150,14 +157,22 @@ class HomeController < ApplicationController
      end
    end
 
-   def upvote_comment
-        @publication = Comment.find(params[:id])
-        @publication.liked_by current_user
-        respond_to do |format|
-         #format.html
-         format.js
-       end
-     end
+  def upvote_comment
+
+    @publication = Comment.find(params[:id])
+    @publication.liked_by current_user
+  
+    mixpanel_properties = { 
+        'Network'  => current_network.name.capitalize,
+        'Type'     => @publication.commentable_type.capitalize
+    }
+    MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
+
+    respond_to do |format|
+      format.js
+    end
+    
+  end
 
      def downvote_comment
        @publication = Comment.find(params[:id])

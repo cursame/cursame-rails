@@ -263,6 +263,10 @@ class ApplicationController < ActionController::Base
   def compare_like
   end
 
+  def user_agent
+    user_agent = UserAgent.parse(request.env['HTTP_USER_AGENT'])
+  end
+
   #### validate brwosers
 
   def browser_active

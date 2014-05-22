@@ -84,10 +84,17 @@ class Comment < ActiveRecord::Base
   end
 
   after_create do
+
     hash = group_of_users(commentable_type)
 
     users = hash[:users]
     notification_kind = hash[:kind]
+
+    mixpanel_properties = { 
+      'Network'  => Network.find_by_id(self.network_id).name.capitalize,
+      'Type'     => self.commentable_type.capitalize,
+    }
+    MixpanelTrackerWorker.perform_async self.user_id, 'Comments', mixpanel_properties
 
     if notification_kind["network"]
       Wall.create!( :users => [self.user], :publication => self, :network => self.network, :public => true)

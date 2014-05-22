@@ -55,6 +55,14 @@ class Course < ActiveRecord::Base
 
 
   after_create do
+
+    mixpanel_properties = { 
+      'Title'    => self.title.capitalize,
+      'Type'     => self.public_status.capitalize,
+      'Network'  => Network.find(self.network_id).name.capitalize
+    }
+    MixpanelTrackerWorker.perform_async self.users.first, 'Courses', mixpanel_properties
+
     if self.public_status == 'public'
 
       users = self.network.users
