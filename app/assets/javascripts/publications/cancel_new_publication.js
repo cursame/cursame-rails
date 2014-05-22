@@ -1,5 +1,4 @@
-$(document).ready(function(){
-
+$(function() {
   $('.cancel-post-form_tab').click(function(e){
     e.preventDefault();
 
@@ -9,27 +8,23 @@ $(document).ready(function(){
     newPublicationBox.find('div.tabs-buttons .tab').removeClass('active');
     newPublicationBox.find('div.tabs-buttons .tab[data-id-target="comment-tab-content"]').addClass('active');
     
-      
-    /*comments*/
+    // Comments
     $('#comment').val('');
 
-    /*tareas*/
+    // Delivery
     $('#delivery_title').val('');
     $('.delivery_end_date').val('');
     $('.delivery_publish_date').val('');
     $('#delivery_description').val('');
     $('#delivery_porcent_of_evaluation').val('');
 
-    /*discussion*/
+    // Discussion
     $('#discussion_title').val('');
     $('#discussion_description').val('');
 
-    /*survey*/
+    // Survey
     $('#survey_name').val('');
     $('.survey_publish_date').val('');
     $('.survey_end_date').val('');
-
   });
-
-
 });

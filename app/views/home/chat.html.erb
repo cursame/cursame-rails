@@ -2,6 +2,10 @@
 background-white
 <% end %>
 
+<% content_for :javascripts do %>
+<%= javascript_include_tag 'chat/chat_expanded' %>
+<% end %>
+
 <div class="chat-wrap">
   <div class="chat-sidebar tabs">
     <div class="chat-sidebar-title">
@@ -15,7 +19,6 @@ background-white
         </div>
       </div>
     </div>
-    
     <div class="chat-sidebar-container tabs-main">
       <div id="JustFriends" class="tab-content">
         <% if current_user.count_friendships != 0 %>

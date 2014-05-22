@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  
   $.ajaxSetup({timeout:120000});
 
   function humanSize (size) {
@@ -30,7 +30,5 @@ $(document).ready(function() {
         }
       }
     });
-
   }
-  
 });

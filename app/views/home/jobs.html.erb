@@ -10,6 +10,10 @@
                   url: 'http://cursa.me/jobs'
                 }
 %>
+<% content_for :javascripts do  %>
+<%= javascript_include_tag('website/jobs') %>
+<% end %>
+
 <div class="jobs-title intro-title-page intro-page">
   <div class="wrapper">
     <div class="cols-12">
@@ -24,7 +28,6 @@
     </div>
   </div>
 </div>
-
 <div class="job-board wrapper">
   <div class="cols-12">
     <div class="col col-4">

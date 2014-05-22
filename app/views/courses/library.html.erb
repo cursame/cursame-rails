@@ -2,10 +2,12 @@
 background-white
 <% end %>
 
+<% content_for :javascripts do  %>
+<%= javascript_include_tag('courses/library') %>
+<% end %>
+
 <%= render :partial => 'course-header' %>
-
 <div class="wrapper spaced">
-
   <div class="sub-profile-title">
     <div class="fl">
       <h3>Biblioteca del Curso</h3>
@@ -30,7 +32,6 @@ background-white
       </div>
     <%end%>   
   </div>
-  
   <div id="uplok">
     <script id="template-upload-2" type="text/x-tmpl">
       <div class="upload">
@@ -43,7 +44,6 @@ background-white
       </div>
     </script>
   </div>
-
   <div class="library-wrap">
     <% if @course.course_files.any? %>
       <div class="library-items-list">
@@ -51,10 +51,8 @@ background-white
           <% @name =  "#{cf.file}" %>
           <% @sintetic_name = @name.split('/').last%>
           <% @termination = @name.split('.').last %>
-        
           <%= render :partial => "course_files/library_item", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
-
-        <%end%>
+        <% end %>
         <div id="paginate-files"></div>
         <div id="paginador_container"><%= link_to "Cargar archivos anteriores", library_in_course_pagination_path(:page => 2), :id => "paginador", :remote => true%></div>
       </div>

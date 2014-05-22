@@ -7,7 +7,7 @@ $(function() {
       fixedHeight     = userBar.outerHeight() + calendarHeader.outerHeight();
 
   function adjustCalendarTable() {
-    var winHeight       = $(window).height();
+    var winHeight = $(window).height();
 
     if ( winHeight > calendarHeight + fixedHeight ) {
       calendarTable.height( winHeight - fixedHeight );

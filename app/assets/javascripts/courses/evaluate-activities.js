@@ -7,11 +7,9 @@ $(function() {
 
   function adjustActivitiesDepot() {
     var winHeight = $(window).height();
-    
     depot.height( winHeight - availableSp - 42 );
-    
   };
-
+  
   adjustActivitiesDepot();
 
   $(window).on('resize', function() {

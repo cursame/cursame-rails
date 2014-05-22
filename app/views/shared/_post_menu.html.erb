@@ -1,7 +1,8 @@
-<div class="new-publication">
-<scrip src="/assets/pots_menu_tabs.js"></scrip>
-<scrip src="/assets/post_menu_validation_forms.js"></scrip>
+<% content_for :javascripts do %>
+<%= javascript_include_tag 'publications/cancel_new_publication' %>
+<% end %>
 
+<div class="new-publication">
   <% if !@user_show %>
     <div class="new-publication-main">
       

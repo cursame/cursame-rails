@@ -1,6 +1,5 @@
 
-/* Forms Skeleton
-----------------------------------*/
+// Forms Skeleton
 label.error {
   display: block;
 }
@@ -9,348 +8,7 @@ select {
   padding: 7px 25px 8px 9px;
 }
 
-.default-form{
-  
-  // Uploade
-  .upload-label{
-    padding: 0px 5px 4px 5px;
-    @include clearfix;
-
-    .file-mini-upload {
-      float: left;
-      width: 148px;
-      height: 32px;
-      padding: 0px 0px 0px 30px;
-      margin: 4px 0px 0px 0px;
-
-      span {
-        float: left;
-        overflow: hidden;
-        width: 118px;
-      }
-      
-      .progress-bar {
-        height: 5px;
-        width: 120px;
-        margin-top: 23px;
-
-        .bar {
-          height: 5px;
-        }
-      }
-
-      .trash{
-        display: none;
-        float: right;
-        width: 24px;
-        height: 23px;
-        margin: 5px 5px 0px 0px;
-      }
-
-      &:hover .trash{
-        display: block;
-
-        &:hover{
-          margin: 4px 4px 0px 0px;
-        }
-      }
-    }
-  }
-  
-  .a-btn{
-    min-width: 80px;
-    height: 28px;
-    float:left;
-    padding: 0px 10px;
-  }
-
-  .submit-area{
-    clear: both;
-    margin-top: 5px;
-    float: right;
-    width: 100%;
-  }
-
-  // Date fields
-  .date-input .delivery {
-    width: 130px;
-    float: right;
-    margin-left: 3px;
-  }
-
-  .percent-label{
-    padding: 0px 23px 0px 0px;
-    margin: 10px 0px 0px 0px;
-    width: 30px;
-    float: left;
-  }
-
-  // Sliders
-  #side-bar > .default-form .slider {
-    margin-left: 0px!important;
-  }
-  
-  .slider-content{
-    width: 200px;
-    position: relative;
-    height: 18px;
-  }
-
-  .slider{
-    width: 190px;
-    position: absolute;
-    margin-left: 15px;
-    height: 4px;
-  }
-
-  .ui-slider-handle {
-    position: absolute;
-    z-index: 2;
-    width: 25px;
-    height: 25px;
-    top: -6px;
-    margin-left: -12px;
-  }
-
-  .ui-slider-range {
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    height: 100%;
-  }
-}
-
-// Boton para link
-.a-button {
-  margin: 4px 4px 2px 4px;
-  min-width: 100px;
-  height: 100%;
-  float:left;
-  padding: 6px 23px;
-  display:inline-block;
-}
-
-.green-btn{
-  margin: 4px 4px 2px 4px;
-  min-width: 100px;
-  height: 100%;
-  float:left;
-  padding: 7px 12px 4px 12px;
-  display:inline-block;
-}
-
-
-.survey-form-area-style{
-
-  .survey-form {
-
-    .request-field {
-      
-      .remove-icon{
-        display: none!important;
-        height: 27px;
-        width: 77px;
-        float: left;
-      }
-
-      .is-correct-label{
-        padding: 8px 29px 10px 6px;
-      }
-
-      .is-correct-chk{
-        float: right;
-        width: 10px;
-        display: none;
-      }
-
-      &:hover .remove-icon {
-        display: block !important;
-        height: 27px;
-        float: left;
-        margin-top: 6px;
-        width: 45px;
-        padding-left: 27px;
-      }
-    }
-  }
-}
-
-.survey-assignment-box{
-  display:none;
-  margin: 7px 0px 0px 30px;
-
-  .box-question{
-    width: 100%;
-  }
-
-  .request-field {
-
-    .is-correct-chk{
-      width: 10px;
-      display: none;
-    }
-  }
-
-  .assignment-survey-form{
-    input[type=submit]{
-      float: right;
-    }
-  }
-}
-
-.ingresar_resp {
-  margin-right: 5px;
-}
-
-#edituserdmenu h3 {
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.img_prev_cover > img {
-  width: 100%!important;
-}
-
-.netWorkMenuHeader h3 {
-  position: absolute;
-}
-
-.clip {
-  width: 35px;
-  height: 91px;
-  position: relative;
-  float: right;
-  margin-top: -47px;
-}
-
-#edituserdmenu .box-fields label, .avatar-label, .coverphoto-label {
-  clear: both!important;
-  margin-top: 10px!important;
-  position: relative!important;
-  display: block!important;
-}
-
-.edituser {
-  width: 526px!important;
-}
-
-.leftlabel {
-  float: left;
-}
-
-.rightlabel {
-  float: right;
-}
-
-.course-form {
-  margin: 5px 0px 4px 6px;
-
-  textarea{
-    height: 70px;
-    width: 206px;
-  }
-  
-  select{
-    width: 217px;
-  }
-  
-  label{
-    clear: both;
-    float: left;
-  }
-
-  button {
-    margin-top: 10px !important;
-  }
-
-  input[type=submit]{
-    margin-top: 10px !important;
-  }
-  
-  .date-input{
-    width: 96px !important;
-    margin-bottom: 10px !important;
-  }
-  
-  .slider-content{
-    float: left;
-    width: 130px !important;
-    clear: both;
-    margin: 13px 0px 0px 8px;
-  }
-  
-  .slider{
-    width: 130px !important;
-    clear: both;
-  }
-  
-  .percent-input{
-    width: 48px!important;
-    float: left;
-    margin: 0px 0px 0px 14px !important;
-  }
-}
-
-.edit-course {
-  .slider-content {
-    float: left;
-    width: 130px !important;
-    clear: both;
-    margin: 8px 0px 0px 8px;
-  }
-
-  .slider {
-    clear: both;
-  }
-}
-
-.response-survey {
- position: absolute;
- left: 45%;
- top: 50%;
-}
-
-.dropperDwn #user_permissionings_attributes_0_role_id {
-  padding: 13px;
-  width: 287px; font-size: 12px;
-  margin-left: 5px;
-}
-
-.image-surveys {
-  height: 90%;
-  width: 100%;
-  position: relative;
-  top: 10px;
-  
-  .response-survey {
-    position: absolute;
-    left: 45%;
-    top: 45%;
-    display: none;
-  }
-
-  &:hover .response-survey {
-    display: block;
-  }
-}
-
-.resolve-surveys {
-  height: 75px;
-  width: 100%;
-  position: relative;
-  top: 10px;
-}
-
-.fixFormUser {
-  width: 435px;
-}
-
-.fixLabeluser {
-  width: 175px;
-}
-
-/* Forms Columns
-----------------------------------*/
+// Form Groups
 @for $i from 1 through 10 {
   .f-col-#{$i} {
     width: $i * 10%;
@@ -403,5 +61,201 @@ select {
 
   .i {
     position: absolute;
+  }
+}
+
+// Datepicker
+.ui-datepicker {
+  border-radius: $radius;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15) ,0 1px 2px rgba(0,0,0,.1);
+  font-family: $font-cursame;
+  display: none;
+  margin-top: 5px;
+
+  .ui-datepicker-header {
+    color: #333;
+    font-weight: bold;
+    line-height: 30px;
+
+    .ui-datepicker-title {
+      text-align: center;
+    }
+
+    .ui-datepicker-prev, .ui-datepicker-next {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      cursor: pointer;
+      background-image: url('/assets/components/arrow.png');
+      background-repeat: no-repeat;
+      line-height: 600%;
+      overflow: hidden;
+    }
+
+    .ui-datepicker-prev {
+      float: left;
+      background-position: center -30px;
+    }
+
+    .ui-datepicker-next {
+      float: right;
+      background-position: center 0px;
+    }
+  }
+
+  thead th {
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 5px 0;
+    color: #666666;
+    text-align: center;
+    @extend .meta-info;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #bbb;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  td {
+    padding: 0;
+  
+    span, a {
+      color: #333;
+      display: block;
+      text-align: center;
+      line-height: 35px;
+      width: 35px;
+      height: 35px;
+    }
+  
+    a {
+      background: tint($primary-color, 98%);
+    }
+  
+    .ui-state-hover {
+      background: tint($primary-color, 85%);
+    }
+  
+    .ui-state-active {
+      background: $primary-color;
+      color: #fff;
+      border: 1px solid $primary-color;
+      position: relative;
+      margin: -1px;
+    }
+  }
+}
+
+.ui-timepicker-div {
+  padding: 10px;
+  border-top: 1px solid #E3E3E3;
+}
+
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px;
+}
+
+.ui-timepicker-div dl {
+  text-align: left;
+}
+
+.ui-timepicker-div dl dt {
+  height: 25px;
+  margin-top: 8px;
+  margin-bottom: -25px;
+}
+
+.ui-timepicker-div dl dd {
+  margin: 0 10px 10px 65px;
+}
+
+.ui-timepicker-div td {
+  font-size: 90%;
+}
+
+.ui-tpicker-grid-label {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.ui-timepicker-rtl {
+  direction: rtl;
+}
+
+.ui-timepicker-rtl dl {
+  padding: 10px;
+  text-align: right;
+}
+
+.ui-timepicker-rtl dl dd {
+  margin: 0 65px 10px 10px;
+}
+
+.ui-slider {
+  position: absolute;
+  width: 240px;
+  height: 13px;
+  border-radius: 25px;
+  background: #ffffff; /* Old browsers */
+}
+
+.ui-slider .ui-slider-handle {
+  z-index: 2;
+  position: absolute;
+  top: -11px;
+  width: 25px;
+  height: 25px;
+  margin-left: -12px;
+  font-weight: bold;
+  outline: none;
+  color: #1C94C4;
+  background: url('/assets/icons/handler-hover.png') no-repeat 50% 50%;
+  cursor: pointer;
+}
+
+.ui-slider .ui-slider-handle:hover {
+  background: url('/assets/icons/handler-hover.png') no-repeat 50% 50%;
+}
+
+.ui-slider .ui-slider-range {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: 100%;
+  border: 0 solid #3c98a8;
+  border-radius: 25px;
+  background: #1C94C4; /* Old browsers */
+  //border: 1px solid #3c98a8;
+}
+
+.ui_tpicker_hour_slider {
+  width: 130px;
+}
+
+.ui_tpicker_minute_slider {
+  width: 130px;
+}
+
+.ui-datepicker-buttonpane {
+  padding: 0 10px 10px 10px;
+  margin-top: 10px;
+  @include clearfix;
+
+  .ui-priority-secondary {
+    float: left;
+    @extend .btn-small;
+  }
+  
+  .ui-priority-primary {
+    float: right;
+    @extend .btn-small;
   }
 }

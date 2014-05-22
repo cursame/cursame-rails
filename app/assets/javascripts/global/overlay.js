@@ -1,52 +1,51 @@
-$(function() {
+window.overlayPositioning = function ( overlay, f ) {
+    var winHeight     = $(window).height(),
+        winWidth      = $(window).width(),
+        overlayHeight = overlay.outerHeight(),
+        overlayWidth  = overlay.outerWidth();
 
-	window.overlayPositioning = function ( overlay, f ) {
-		var	winHeight 		= $(window).height(),
-				winWidth			= $(window).width(),
-				overlayHeight = overlay.outerHeight(),
-				overlayWidth 	= overlay.outerWidth();
-
-		if ( winHeight > overlayHeight ) {
-			overlay.removeClass('not-height')
-			overlay.css({
-				'left': winWidth/2 - overlayWidth/2,
-				'top': winHeight/2 - overlayHeight/2
-			});
-		} else {
-			overlay.addClass('not-height');
-			overlay.css({
-				'left': 0,
-				'top': 0
-			});
-		};
-	};
-	
-	window.createModal = function ( content, classes ) {
-		$('body').addClass('overlay-open').append('<div class="overlay-wrapper"></div>');
-		$('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay '+ (classes ? classes : "") +'"></div>').show();
-		$('div.overlay-wrapper').css("overflow-y", "scroll");
-
-    $('.overlay').html(content);
-    overlayPositioning( $('.overlay') );
-	};
-
-  window.removeModal = function() {
-    var removable = $('.overlay').hasClass('not-removable');
-
-    if ( !removable ) {
-      removeModalAction( $('.overlay') );
+    if ( winHeight > overlayHeight ) {
+      overlay.removeClass('not-height')
+      overlay.css({
+        'left': winWidth/2 - overlayWidth/2,
+        'top': winHeight/2 - overlayHeight/2
+      });
+    } else {
+      overlay.addClass('not-height');
+      overlay.css({
+        'left': 0,
+        'top': 0
+      });
     };
   };
 
-  window.removeModalAction = function( overlay, f ) {
-    f = f || undefined;
-    $('.overlay-wrapper').remove();
-    $('body').removeClass('overlay-open');
-    if ( f && typeof f == 'function') {
-      f();
-    };
+window.createModal = function ( content, classes ) {
+  $('body').addClass('overlay-open').append('<div class="overlay-wrapper"></div>');
+  $('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay '+ (classes ? classes : "") +'"></div>').show();
+  $('div.overlay-wrapper').css("overflow-y", "scroll");
+
+  $('.overlay').html(content);
+  overlayPositioning( $('.overlay') );
+};
+
+window.removeModal = function() {
+  var removable = $('.overlay').hasClass('not-removable');
+
+  if ( !removable ) {
+    removeModalAction( $('.overlay') );
   };
-	
+};
+
+window.removeModalAction = function( overlay, f ) {
+  f = f || undefined;
+  $('.overlay-wrapper').remove();
+  $('body').removeClass('overlay-open');
+  if ( f && typeof f == 'function') {
+    f();
+  };
+};
+
+$(function() {	
 	$('.overlay-screen, .close-overlay').live('click', removeModal );
 
 	$(window).on('resize', function() {

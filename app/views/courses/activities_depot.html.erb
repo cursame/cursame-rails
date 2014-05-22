@@ -1,3 +1,7 @@
+<% content_for :javascripts do  %>
+<%= javascript_include_tag('courses/evaluate-activities') %>
+<% end %>
+
 <div class="section-header spaced activities-depot-header">
   <div class="wrapper spaced">
     <div class="section-header-content">
@@ -26,12 +30,9 @@
       <div class="section-header-actions">
         <%=link_to "Regresar al curso", course_path(@course)%>
       </div>
-
     </div>
   </div>
 </div>
-
-
 <div class="wrapper spaced">
   <div class="activities-depot-wrap">
     <div class="activities-depot-feeds">
@@ -39,7 +40,6 @@
         <span class="meta-info">Actividades</span>
       </div>
       <div id="activites-feeds-container">
-
       </div>
       <div id="load-more-activities">
         <%= link_to "Cargar más actividades", "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 }  %>
@@ -51,7 +51,6 @@
 </div>
 
 <script>
-
   var feedsURL              = '<%= "#{course_ki_line_pag_path(@course, :per_page => 10, :page => 0) }.json" %>',
       feedsMainContainer    = $('.activities-depot-feeds'),
       feedsContainer        = $('#activites-feeds-container'),
@@ -166,7 +165,5 @@
       feedsContainer.children('.activity-depot-feed').hide();
       feedsContainer.children('[data-type="'+ filter +'"]').show();
     }
-
   });
-  
 </script>
