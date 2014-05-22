@@ -60,7 +60,7 @@
 }
 
 .btn-shadow {
-  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.01);
 }
 
 .btn-primary {
@@ -89,11 +89,16 @@
 .btn-secondary {
   color: #666;
   background: #fafafa;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #dbdbdb;
+  border-bottom-color: darken(#dbdbdb, 7%);
+  @extend .btn-shadow;
+  @include linear-gradient(#fafafa, darken(#fafafa, 1%));
+
 
   &:hover {
     color: #666;
-    background: lighten(#f2f2f2, 3);
+    background: lighten(#fafafa, 3%);
+    @include linear-gradient(lighten(#fafafa, 3.5%), #fafafa);
   }
 
   input {

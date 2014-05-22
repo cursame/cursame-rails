@@ -1,0 +1,27 @@
+<div class="mkt-main">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-6">
+        <div class="col-inner">
+          <%= link_to icon('cursame-logo-gray'), root_path %>
+          <div class="l-title">
+            <h1>¿Quieres tener Cúrsame en tu institución?</h1>
+          </div>
+          <div class="l-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-6">
+        <div class="col-inner">
+          <div class="l-form-wrap">
+            <h5>Llena el siguiente formulario y nos pondremos en contacto contigo.</h5>
+            <%= render partial: 'shared/website/contact_form', locals: { contact_type: 'demo_request', lading_page_id: 'emepeños' } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

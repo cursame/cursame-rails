@@ -1,0 +1,44 @@
+/* Grid System
+----------------------------------*/
+$fg-column: 60px;             // Column Width
+$fg-gutter: 5px;             // Gutter Width
+$fg-max-columns: 12;
+
+.cols-12 {
+  @include clearfix;
+
+  .col {
+    float: left;
+
+    .col-inner {
+      padding: 0 10px 0 10px;
+
+      @include max-screen(630px) {
+        padding: 0;
+      }
+    }
+
+    &.alpha .col-inner {
+      padding-left: 0;
+    }
+
+    &.omega .col-inner {
+      padding-right: 0;
+    }   
+
+    @include max-screen(630px) {
+      width: 100%;
+      clear: both;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: flex-grid($i);
+  }
+}
+
+.col-4 {
+  width: 33.333%;
+}

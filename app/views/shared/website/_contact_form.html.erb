@@ -1,6 +1,9 @@
 <%= form_tag (send_contact_mail_path), class: 'contact-form', remote: true, id: 'contact-form' do %>
   <%= hidden_field_tag 'contact_type', contact_type %>
-  <div class="form-group l-label">
+  <% if lading_page_id %>
+    <%= hidden_field_tag 'mkt_langin_id', lading_page_id %>
+  <% end %>
+  <div class="form-group label-on-top l-label">
     <div class="form-group-label">
     <%= label_tag 'name', 'Nombre completo <span class="required">*</span>'.html_safe %>
     </div>
@@ -10,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="form-group l-label">
+  <div class="form-group label-on-top l-label">
     <div class="form-group-label">
     <%= label_tag 'email', 'Correo electrónico <span class="required">*</span>'.html_safe %>
     </div>
@@ -22,17 +25,37 @@
   </div>
 
   <% if contact_type == 'demo_request' #Si el form se llama para hacer demo %>
-    <div class="form-group l-label">
-      <div class="form-group-label">
-      <%= label_tag 'phone', 'Teléfono <span class="required">*</span>'.html_safe %>
+    <div class="cols-12">
+      <div class="col col-6 alpha">
+        <div class="col-inner">
+          <div class="form-group label-on-top l-label">
+            <div class="form-group-label">
+            <%= label_tag 'phone', 'Teléfono <span class="required">*</span>'.html_safe %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= phone_field_tag 'phone', '', required: 'required', placeholder: 'Ejemplo: (55) 5555-5555' %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-          <%= phone_field_tag 'phone', '', required: 'required', placeholder: 'Ejemplo: (55) 5555-5555' %>
+      <div class="col col-6 omega">
+        <div class="col-inner">
+          <div class="form-group label-on-top l-label">
+            <div class="form-group-label">
+            <%= label_tag 'phone_ext', 'Extensión:' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= phone_field_tag 'phone_ext', '', placeholder: 'Ejemplo: 55' %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="form-group l-label">
+    <div class="form-group label-on-top l-label">
       <div class="form-group-label">
       <%= label_tag 'position', 'Puesto <span class="required">*</span>'.html_safe %>
       </div>
@@ -42,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group l-label">
+    <div class="form-group label-on-top l-label">
       <div class="form-group-label">
       <%= label_tag 'school', 'Institución <span class="required">*</span>'.html_safe %>
       </div>
@@ -52,15 +75,41 @@
         </div>
       </div>
     </div>
+    <div class="form-group label-on-top l-label">
+      <div class="form-group-label">
+      <%= label_tag 'lms_usage', '¿Cuenta ya con algún sistema de gestión de aprendizaje? <span class="required">*</span>'.html_safe %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <% lms_options = "<option value='0'>Selecciona una opción</option>
+                            <option value='moodle'>Moodle</option>
+                            <option value='blackboard'>Blackboard</option>
+                            <option value='aula_24_horas'>Aula 24 horas</option>
+                            <option value='none'>Ninguno</option>
+                            <option value='other'>Otro ¿Cuál?</option>"
+          %>
+          <%= select_tag 'lms_usage', lms_options.html_safe, class: 'lms-usage-select', required: 'required' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-
-  <div class="form-group l-label">
+  <div class="form-group label-on-top l-label other-lms">
+    <div class="form-group-label">
+    <%= label_tag 'lms_other', 'Nombre del sistema de gestión de aprendizaje <span class="required">*</span>'.html_safe %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= text_field_tag 'lms_other', '', required: 'required' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group label-on-top l-label">
     <div class="form-group-label">
     <%= label_tag 'message', 'Mensaje <span class="required">*</span>'.html_safe %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
-        <%= text_area_tag 'message', '', rows: 10, required: 'required' %>
+        <%= text_area_tag 'message', '', rows: 5, required: 'required' %>
       </div>
     </div>
   </div>
@@ -74,6 +123,23 @@
 <% end %>
 <script>
   $(function() {
-    $('.contact-form').validate();
+    jQuery.validator.addMethod('selectcheck', function (value) {
+        return (value != '0');
+    }, "Este campo es obligatorio.");
+
+    $('.contact-form').validate({
+      rules: {
+        lms_usage: {
+          selectcheck: true
+        }
+      }
+    });
+    $('.lms-usage-select').change(function(event) {
+      if ( $(this).val() == 'other' ) {
+        $('.other-lms').show();
+      } else {
+        $('.other-lms').hide();
+      }
+    });
   });
 </script>

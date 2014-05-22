@@ -1,3 +1,6 @@
+<% content_for :javascripts do %>
+<%= javascript_include_tag 'calendar/calendar' %>
+<% end %>
 
 <div class="calendar-wrap">
   <div class="calendar-header">
@@ -13,7 +16,6 @@
       </div>
     </div>
   </div>
-
   <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
     <%= t.head( 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado') %>
     <%= t.day(:day_method => :ends_at) do |day, tasks| %>
@@ -22,14 +24,11 @@
         <div class="calendar-day-number <%= "today" if today %>">
           <%= day.day %>
         </div>
-
         <div class="calendar-day-main">
           <% tasks.each do |task| %>
             <% if task.schedule.state == 'published'%>
-
               <% task.schedule.courses.each do |course| %>
                 <% member_in = MembersInCourse.find_by_course_id_and_user_id( course.id, current_user.id)%>
-                
                 <% if !member_in.nil? %>
                   <%= link_to show_template_on_modal_path(:id => task.id, :type => 'task'), :remote => true do %>
                     <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
@@ -39,9 +38,8 @@
                     </div>
                   <% end %>
                 <% end %>
-              <%end%>
-
-            <%end%>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       </div>

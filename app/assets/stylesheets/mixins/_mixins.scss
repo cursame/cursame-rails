@@ -1,0 +1,49 @@
+// grayscale      ex: filter: grayscale(100%);
+// sepia          ex: filter: sepia(100%);
+// saturate       ex: filter: saturate(0%);
+// hue-rotate     ex: filter: hue-rotate(45deg);
+// invert         ex: filter: invert(100%);
+// brightness     ex: filter: brightness(15%);
+// contrast       ex: filter: contrast(200%);
+// blur           ex: filter: blur(2px);
+ 
+@mixin filter($filter-type,$filter-amount) { 
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+@mixin opacity($value) {
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
+// Text Sizing
+@mixin text-size-x-small () {
+  font-size: 11px;
+  line-height: 16px;
+} 
+
+@mixin text-size-small () {
+  font-size: 13px;
+  line-height: 19px;
+} 
+
+@mixin text-size-regular () {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin text-size-medium () {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin text-size-large () {
+  font-size: 18px;
+  line-height: 26px;
+}

@@ -5,48 +5,30 @@
         <div id="pk_menu">
           <%=render :partial => 'shared/post_menu' %>
         </div>
-        
         <div id="timeline" class="tim">
           <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
         </div>
         <div id="paginate_wall" onclick="PaginateINwall('/',2, <%= @wall.total_pages %>)"></div>
-
       </div>
     </div>
   </div>
-
-  <%
-    sidebar_sections = [
-      'upcomming_deliveryes',
-      'upcomming_surveys',
-      'android_app_ad'
-    ]
-  %>
-  <%= render partial: 'shared/sidebar/sidebar', locals: { sidebar_sections: sidebar_sections } %>
-
+  <%= render partial: 'shared/sidebar/sidebar', locals: { sidebar_sections: [ 'upcomming_deliveryes', 'upcomming_surveys', 'android_app_ad' ] } %>
 </div>
-
 <script type="text/javascript">
-$(function() {
-
-  <% if !current_user.self_register && show_joyride(3) != "1" %>    
-    $.ajax({
-      type: "GET",
-      url: '<%= set_password_modal_path %>'
-    });
-  <% end %>
-
-  var aux = <%= (@show_course_expired) || false %>;
-  
-  if(aux) {
-    $('li.delivery').click();
-  }
-
-  window.pagelessSettings = {
-    url : '<%= wall_path %>',
-    loaderImage : '<%= image_path("load.gif")%>'
-  };
-
-
-});
+  $(function() {
+    <% if !current_user.self_register && show_joyride(3) != "1" %>    
+      $.ajax({
+        type: "GET",
+        url: '<%= set_password_modal_path %>'
+      });
+    <% end %>
+    var aux = <%= (@show_course_expired) || false %>;
+    if(aux) {
+      $('li.delivery').click();
+    }
+    window.pagelessSettings = {
+      url : '<%= wall_path %>',
+      loaderImage : '<%= image_path("load.gif")%>'
+    };
+  });
 </script>

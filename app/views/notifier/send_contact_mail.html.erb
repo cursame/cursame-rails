@@ -1,55 +1,43 @@
 <% cursame_url = "http://cursa.me" %>
 
-<%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: true } %>
-  <table background="http://app.cursa.me/assets/mails/new_course_member_request/new-course-member-request-background.jpg" style="border-top: 1px solid #098b8c; border-bottom: 1px solid #098b8c;" width="100%">
-    <tr>
-      <td>
-        <div>
-          <table style="width: 540px; backgrounnd-size: cover" align="center">
-            <tr>
-              <td style="text-align: center; padding: 0 15px;">
-                <br><br><br>
-                <img src="http://app.cursa.me/assets/mails/new_course_member_request/new-course-member-request-icon.png" alt="">
-                <br>
-                <br>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center; padding: 0 15px;">
-                <h1 style="color: #ffffff; font-size: 20px; font-weight: normal; margin: 0;">
-                  <strong><%= @name %></strong></h1></br>
-                  <strong><%= @email %></strong></h1></br>
-                  <strong><%= @phone %></strong></h1></br>
-                  <strong><%= @position %></strong></h1></br>
-                  <strong><%= @school %></strong></h1></br>
-                  <strong><%= @message %></strong></h1></br>
-                  <strong><%= @request_demo %></strong></h1></br>
-                </h1>
-                <br>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff; font-size: 16px; line-height: 24px; font-weight: normal; margin: 0;"></p>
-                <br>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center; padding: 0 15px;">
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff">Si el botón superior no funciona, haz click aquí:<br></p>
-                <br>
-                <br>
-                <br>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </td>
-    </tr>
-  </table>
+<%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: cursame_url, no_borders: false } %>
 
-<%= render partial: "/notifier/shared/mail_footer", locals: { no_borders: true } %>
+  <div style="background-color: #ffffff;">
+    <table style="width: 540px;" align="center">
+      <tr>
+        <td>
+          <br>
+          <br>
+          <br>
+            <% if @request_demo %>
+              <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">Solicitud de Demo</h1><br>
+              <span>Nombre: <strong><%= @name %></strong></span> <br>
+              <span>Email: <strong><%= @email %></strong></span> <br>
+              <span>Telefono: <strong><%= @phone %></strong></span> <br>
+              <span>Extensión: <strong><%= @phone_ext %></strong></span> <br>
+              <span>Posicion: <strong><%= @position %></strong></span> <br>
+              <span>Escuela: <strong><%= @school %></strong></span> <br>
+              <span>LMS: <strong><%= @lms %></strong></span> <br>
+              <span>Otro LMS: <strong><%= @other_lms %></strong></span> <br>
+              <span>Mensaje: <strong><%= @message %></strong></span> <br>
+              <% if @mkt_langin_id %>
+                <br>
+                <span>ID Marketing Landing Page: <strong><%= @mkt_langin_id %></strong></span>
+              <% end %>
+            <% else %>
+              <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">Contacto Normal</h1><br>
+              <span>Nombre: <strong><%= @name %></strong></span> <br>
+              <span>Email: <strong><%= @email %></strong></span> <br>
+              <span>Mensaje: <strong><%= @message %></strong></span>
+            <% end %>
+            
+          <br>
+          <br>
+          <br>
+          <br>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+<%= render partial: "/notifier/shared/mail_footer", locals: { no_borders: false } %>

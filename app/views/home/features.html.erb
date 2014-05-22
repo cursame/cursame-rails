@@ -9,6 +9,9 @@
                   url: 'http://cursa.me/features'
                 }
 %>
+<% content_for :javascripts do  %>
+<%= javascript_include_tag 'website/features' %>
+<% end %>
 
 <div class="features-title intro-title-page intro-page">
   <div class="wrapper">

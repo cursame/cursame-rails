@@ -1,0 +1,31 @@
+
+.mkt-langing-pages {
+
+  .mkt-main {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url("/images/website/mkt-landing-pages.jpg");
+  }
+
+  .l-title h1 {
+    font-size: 42px;
+    font-weight: 300;
+    color: #fff;
+    @extend .white-shadowed;
+  }
+
+  .l-body p {
+    color: #d2e6e8;
+    @include text-size-medium;
+    @extend .white-shadowed;
+  }
+
+  .l-form-wrap {
+    border-radius: $radius;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+  }
+}

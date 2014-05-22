@@ -16,6 +16,11 @@
   position: relative;
   z-index: 30;
 
+  @include max-screen(480px) {
+    width: 95%;
+    margin: 25px auto;
+  }
+
   .user-sessions-network-brand {
     padding: 20px;
     position: relative;
@@ -67,6 +72,10 @@
 
 .user-sessions-medium {
   width: 470px;
+
+  @include max-screen(480px) {
+    width: 95%;
+  }
 }
 
 #sub_linked {
@@ -110,6 +119,11 @@
     ul li {
       padding: 0 5px;
       @include inline-block;
+
+      @include max-screen(480px) {
+        display: block;
+        padding-top: 10px;
+      }
     }
   }
 }

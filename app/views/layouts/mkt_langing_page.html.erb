@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="mkt-langing-pages">
+  <head>
+    <%= display_meta_tags site: 'Cúrsame',
+          separator: '·'.html_safe,
+          reverse: true,
+          author: 'Cúrsame',
+          twitter: {
+            card: 'sumary',
+            site: '@cursame'
+          }
+    %>
+    <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+    <%= favicon_link_tag "favicon.png"  %>
+    <%= stylesheet_link_tag 'application', :media => 'all', :debug => true %>
+    <%= javascript_include_tag 'application.js' %>
+    <% yield :javascript_includes %>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="<%= yield :body_classes %>">
+    <% cache_expire %>
+    <%= yield %>
+    <div class="mk-landing-page-footer wrapper">
+      <div class="cols-12">
+        <div class="col-col-12">
+          <div class="col-inner">
+            <h6>Cúrsame ® <%= Time.now.year %></h6>
+            <p>Pomona #7, Roma Norte, Delegación Cuauhtémoc, Ciudad de México.</p>
+            <a href="mailto:hola@cursa.me" title="hola@cursa.me">hola@cursa.me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

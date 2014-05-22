@@ -8,7 +8,7 @@
 
 body {
   color: $global-color;
-  background: $main-background;
+  background: #edeff2;
   font-family: $font-cursame;
   font-size: 13px;
   font-weight: normal;
@@ -37,11 +37,10 @@ strong {
 
 .basic-container-style {
   background: $white;
-  border: 1px solid #C5C5C5;
-  border-bottom-color: #BBB;
-  border-top-color: #D5D5D5;
+  border: 1px solid #d6d8db;
+  border-bottom-color: #cacccf;
   border-radius: $radius;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.035);
 }
 
 .topbar {
@@ -57,15 +56,27 @@ strong {
       font-size: 13px;
       text-transform: uppercase;
       cursor: pointer;
+
+      @include max-screen(320px) {
+        border-left: 0;
+      }
     }
   }
 
   .activity-notificactions .activity-block {
     border-right: 1px solid #e6e6e6;
+
+    @include max-screen(480px) {
+      border-right: 0;
+    }
       
     .activity-dropdown-pull {
       &:hover {
         background: #FCFCFC;
+
+        @include max-screen(480px) {
+          background: none;          
+        }
       }
 
       .activity-counter {

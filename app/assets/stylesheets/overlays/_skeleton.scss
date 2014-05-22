@@ -46,6 +46,14 @@ first-time-survey-overlay
 
     &.overlay-small {
       width: 400px;
+
+      @include max-screen(630px) {
+        width: 90%;
+      }
+    }
+
+    @include max-screen(630px) {
+      width: 90%;
     }
   }
 
