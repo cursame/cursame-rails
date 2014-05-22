@@ -11,10 +11,17 @@ html, body {
 }
 
 body {
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+
   &.collapsed-layout {
     .global-sidebar {
       left: -230px;
     }
+  }
+
+  &.overlay-open {
+    overflow: hidden;
   }
 }
 
@@ -25,13 +32,25 @@ body {
 
   .topbar .topbar-spacer {
     padding-left: 0;
+
+    .wrapper {
+      @include max-screen(320px) {
+        width: 100%;
+      }
+    }
+
+    .col-inner {
+      @include max-screen(320px) {
+        padding: 0;
+      }
+    }
   }
 }
 
 .topbar {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   height: 50px;
   z-index: 100;
   width: 100%;
@@ -78,12 +97,22 @@ body {
           top: 5px;
           right: 5px;
         }
+
+        @include max-screen(480px) {
+          padding: 15px 10px;
+        }
       }
     }
 
-    .support-buttton a {
-      display: block;
-      padding: 15px 10px 17px 10px;
+    .support-buttton {
+      a {
+        display: block;
+        padding: 15px 10px 17px 10px;
+      }
+
+      @include max-screen(480px) {
+        display: none;
+      }
     }
   }
 
@@ -120,8 +149,12 @@ body {
 .app .wrapper {
   width: 880px;
 
-  &.spaced {
-    width: 860px;
+  @include max-screen(1100px) {
+    width: 700px;
+  }
+
+  @include max-screen(700px) {
+    width: 95%;
   }
 }
 
@@ -129,6 +162,15 @@ body {
   width: 625px;
   float: left;
   margin: 0 5px 0 10px;
+
+  @include max-screen(1100px) {
+    width: 445px;
+  }
+
+  @include max-screen(700px) {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .full-width {
@@ -324,6 +366,10 @@ body {
 
   .content-sidebar-stick {
     width: 220px;
+  }
+
+  @include max-screen(700px) {
+    display: none;
   }
 }
 
@@ -592,6 +638,10 @@ body {
   top: 30%;
   margin-top: -22px;
   z-index: 30;
+
+  @include max-screen(480px) {
+    display: none;
+  }
 }
 
 /* Messages from Admins

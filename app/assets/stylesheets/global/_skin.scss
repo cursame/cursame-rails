@@ -56,15 +56,27 @@ strong {
       font-size: 13px;
       text-transform: uppercase;
       cursor: pointer;
+
+      @include max-screen(320px) {
+        border-left: 0;
+      }
     }
   }
 
   .activity-notificactions .activity-block {
     border-right: 1px solid #e6e6e6;
+
+    @include max-screen(480px) {
+      border-right: 0;
+    }
       
     .activity-dropdown-pull {
       &:hover {
         background: #FCFCFC;
+
+        @include max-screen(480px) {
+          background: none;          
+        }
       }
 
       .activity-counter {

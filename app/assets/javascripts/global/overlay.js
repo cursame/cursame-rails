@@ -22,7 +22,7 @@ window.overlayPositioning = function ( overlay, f ) {
 window.createModal = function ( content, classes ) {
   $('body').addClass('overlay-open').append('<div class="overlay-wrapper"></div>');
   $('div.overlay-wrapper').append('<div class="overlay-screen"></div>').show().append('<div class="overlay '+ (classes ? classes : "") +'"></div>').show();
-  $('div.overlay-wrapper').css("overflow-y", "scroll");
+  $('div.overlay-wrapper').css("overflow-y", "scroll").css('-webkit-overflow-scrolling', 'touch');
 
   $('.overlay').html(content);
   overlayPositioning( $('.overlay') );

@@ -23,9 +23,7 @@ class UsessionsController < Devise::SessionsController
       if params[:password] == nil
         puts "sin password"
       end
-
       flash[:notice] = "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos."
-
     end
 
     # POST /resource/sign_in

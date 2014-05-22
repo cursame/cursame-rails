@@ -12,7 +12,8 @@
       <div class="user-session-content">
         <h4>Iniciar sesión</h4><br>
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "sign-in-form" } ) do |f| %>
-          <div id="error_message"> <%= flash[:notice]%></div>
+
+          <div id="class"> <%= flash[:notice]%></div>
 
           <div class="form-group no-label">
             <div class="form-group-main">

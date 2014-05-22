@@ -10,20 +10,6 @@
       width: 960px;
     }
   }
-
-  .app {
-    .wrapper {
-      width: 700px;
-
-      &.spaced {
-        width: 680px;
-      }
-    }
-
-    .content-main {
-      width: 445px;
-    }
-  }
 }
 
 @media screen and (max-width: 960px) {
@@ -52,32 +38,12 @@
       display: none;
     }
     
-    .col {
-      width: 100%;
-      clear: both;
-
-      .col-inner {
-        padding: 0;
-      }
-    }
-  
     .homepage-laptop img {
       display: none;
     }
   
     .intro-homepage-hidden {
       height: auto;
-    }
-  
-    .form-group {
-      .form-group-label {
-        float: none;
-        width: auto;
-      }
-  
-      .form-group-main {
-        margin-left: -10px;
-      }
     }
   
     .jobs-positions-list {

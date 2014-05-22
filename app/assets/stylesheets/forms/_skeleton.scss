@@ -53,6 +53,19 @@ select {
       margin-left: -10px;
     }
   }
+
+  @include max-screen(700px) {
+    .form-group-label {
+      text-align: left !important;
+      float: none;
+      width: auto;
+      margin-bottom: 5px;
+    }
+
+    .form-group-main {
+      margin-left: -10px;
+    }
+  }
 }
 
 .input-icon {

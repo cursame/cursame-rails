@@ -10,19 +10,16 @@
             site: '@cursame'
           }
     %>
-    <%= csrf_meta_tags %>
     <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
-    <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-    <%= javascript_include_tag('application.js') %>
-    <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="ee2yf464dnk2rf1"></script>
-    <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="//assets.zendesk.com/external/zenbox/v2.6/zenbox.css">
-    <%= favicon_link_tag "favicon.png"  %> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+    <%= favicon_link_tag "favicon.png"  %>
+    <%= stylesheet_link_tag 'application', :media => 'all', :debug => true %>
+    <%= javascript_include_tag 'application.js' %>
     <% yield :javascript_includes %>
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <%= csrf_meta_tags %>
   </head>
   <body class="<%= yield :body_classes %>">
     <% cache_expire %>

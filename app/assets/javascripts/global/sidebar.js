@@ -55,27 +55,28 @@ Sidebar = {
     $('body').addClass('collapsed-layout no-sidebar');
     $('.notice-spacer').css('paddingLeft', '0');
     $('.menu-sidebar').show();
-    $('.topbar-spacer').css('paddingLeft', '0');
   },
   restoreSidebar: function() {
     this.collapsed = false;
     this.sidebarVisible = true;
     this.sidebar.css('left', '0');
-    $('body').removeClass('collapsed-layout no-sidebar').css('paddingLeft', '0');
+    $('body').removeClass('collapsed-layout no-sidebar').css({paddingLeft: 0, overflow: 'auto'});
     $('.notice-spacer').css('paddingLeft', '200px');
     $('.menu-sidebar').hide().removeClass('active');
-    $('.topbar-spacer').css('paddingLeft', '200px');
+    $('.topbar').css({ left: 0 });
   },
   showSideBarAnimation: function() {
     this.sidebarVisible = true;
-    $('body, .topbar .topbar-spacer').animate({ paddingLeft: 200 }, 100);
-    $('body').css('overflow', 'hidden !important');
+    $('.topbar').animate({ left: 200 }, 100);
+    $('body').animate({ paddingLeft: 200 }, 100);
+    $('body').css('overflow', 'hidden');
     $('.content-sidebar-stick').hide();
     this.sidebar.animate({ left: 0 }, 100, function() { $('.content-sidebar-stick').show(); });
   },
   hideSideBarAnimation: function() {
     this.sidebarVisible = false;
-    $('body, .topbar .topbar-spacer').animate({ paddingLeft: 0 }, 100);
+    $('.topbar').animate({ left: 0 }, 100);
+    $('body').animate({ paddingLeft: 0 }, 100);
     $('body').css('overflow', 'auto');
     $('.content-sidebar-stick').hide();
     this.sidebar.animate({ left: -200 }, 100, function() { $('.content-sidebar-stick').show(); });
