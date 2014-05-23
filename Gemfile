@@ -36,9 +36,7 @@ group :assets do
   gem 'bourbon', "~> 3.1.8"
   gem 'handlebars_assets'
   gem 'coffee-script'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
+  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
  
 end
@@ -81,11 +79,6 @@ gem 'declarative_authorization'
 # gem 'tumble'
 
 gem 'jquery-fileupload-rails'
-# Gem for twitter bootstrap.
-gem "therubyracer"
-gem 'execjs'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-#gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
