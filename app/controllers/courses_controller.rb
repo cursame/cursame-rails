@@ -380,6 +380,13 @@ class CoursesController < ApplicationController
     if params[:assignment]["id"].blank? then
       @assignment = Assignment.new(params[:assignment])
       flash[:notice] = "Se ha entregado correctamente una tarea."
+
+      mixpanel_properties = { 
+        'Course'  => @assignment.course.title.capitalize,
+        'Network' => @assignment.course.network.name.capitalize
+      }
+      MixpanelTrackerWorker.perform_async @assignment.user_id, 'Assignments', mixpanel_properties
+
     else
       @id = params[:assignment].delete("id")
       @assignment = Assignment.find(@id)
