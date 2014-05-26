@@ -59,7 +59,7 @@ class Course < ActiveRecord::Base
     mixpanel_properties = { 
       'Title'    => self.title.capitalize,
       'Type'     => self.public_status.capitalize,
-      'Network'  => Network.find(self.network_id).name.capitalize
+      'Network'  => Network.find_by_id(self.network_id).name.capitalize
     }
     MixpanelTrackerWorker.perform_async self.users.first, 'Courses', mixpanel_properties
 
