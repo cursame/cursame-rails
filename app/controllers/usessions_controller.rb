@@ -43,9 +43,9 @@ class UsessionsController < Devise::SessionsController
       mixpanel_properties = { 
         'Network'  => current_network.name.capitalize,
         'Browser'  => user_agent.browser,
-        'Platform' => user_agent.platform
+        'Platform' => user_agent.platform,
+        'Role'     => Permissioning.find_by_id(@find_user.id).role.title.capitalize
       }
-
       MixpanelTrackerWorker.perform_async @find_user.id, 'Logins', mixpanel_properties
 
       # avisamos que el usuario se conecto
