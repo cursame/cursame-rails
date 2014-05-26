@@ -122,13 +122,19 @@ class Delivery < ActiveRecord::Base
         end
       end
     end
+    
     self.send_mail(users)
     Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')    
 
-    mixpanel_properties = { 
-      'Network'  => Network.find_by_id(self.network_id).name.capitalize
-    }
-    MixpanelTrackerWorker.perform_async self.user_id, 'Deliveries', mixpanel_properties
+    network_name = Network.find_by_id(self.network_id).name.capitalize
+
+    self.courses.each do |course|
+      mixpanel_properties = { 
+        'Network' => network_name,
+        'Course'  => course.title.capitalize
+      }
+      MixpanelTrackerWorker.perform_async self.user_id, 'Deliveries', mixpanel_properties
+    end
 
   end
 
