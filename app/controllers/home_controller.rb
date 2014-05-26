@@ -137,8 +137,9 @@ class HomeController < ApplicationController
     @publication.publication.liked_by current_user
 
     mixpanel_properties = { 
-        'Network'  => current_network.name.capitalize,
-        'Type'     => @publication.publication.commentable_type.capitalize
+        'Network' => current_network.name.capitalize,
+        'Type'    => @publication.publication.commentable_type.capitalize,
+        'Role'    => Permissioning.find_by_id(@publication.publication.user_id).role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
 
@@ -163,8 +164,9 @@ class HomeController < ApplicationController
     @publication.liked_by current_user
   
     mixpanel_properties = { 
-        'Network'  => current_network.name.capitalize,
-        'Type'     => @publication.commentable_type.capitalize
+        'Network' => current_network.name.capitalize,
+        'Type'    => @publication.commentable_type.capitalize,
+        'Role'    => Permissioning.find_by_id(@publication.user_id).role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
 
