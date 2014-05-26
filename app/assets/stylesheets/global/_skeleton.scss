@@ -328,6 +328,18 @@ body {
   //   right: 0;
   //   top: 0;
   // }
+
+  .sidebar-courses {
+    @include max-screen(480px) {
+      display: none;
+    }
+  }
+
+  .sidebar-chat {
+    @include max-screen(480px) {
+      display: none;
+    }
+  }
 }
 
 .sidebar-section {

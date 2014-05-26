@@ -172,6 +172,11 @@
         .tip {
           background: url('pack.png') -37px -60px;
         }
+
+        @include max-screen(480px) {
+          text-align: center;
+          @include text-size-x-small;
+        }
       }
     }
   }
@@ -202,6 +207,10 @@
           border-color: transparent;
           box-shadow: none;
           outline: none;
+
+          &:focus, &.error {
+            background: none !important;
+          }
         }
       }
 
