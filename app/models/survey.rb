@@ -74,11 +74,13 @@ class Survey < ActiveRecord::Base
     self.send_mail(users)
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
 
-    mixpanel_properties = { 
-      'Network' => Network.find_by_id(self.network_id).name.capitalize,
-      'Course'  => Course.find_by_id(self.course_id).title.capitalize
-    }
-    MixpanelTrackerWorker.perform_async self.user_id, 'Surveys', mixpanel_properties
+    self.courses.each do |course|
+      mixpanel_properties = { 
+        'Network' => self.network.name.capitalize,
+        'Course'  => course.title.capitalize
+      }
+      MixpanelTrackerWorker.perform_async self.user_id, 'Surveys', mixpanel_properties
+    end
 
   end
 
