@@ -47,22 +47,24 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.create(params[:survey])
+
+    @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
 
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
 
     if courses && !courses.empty?
-      courses.each do |id|
-        @survey.courses.push(Course.find(id))
-      end
+      
+      courses.each { |course_id| @survey.courses.push(Course.find_by_id(course_id)) }
+        
       if @survey.save!
         @az = @survey
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"
         activation_activity
       end
+
     else
       @error = true
     end
