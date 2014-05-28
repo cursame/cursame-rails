@@ -36,7 +36,6 @@
 }
 
 .profile-user-bar {
-  height: 49px;
 
   .profile-name-avatar {
     float: left;
@@ -56,6 +55,7 @@
         width: 100%;
         height: 100%;
       }
+
     }
 
     &.compact {
@@ -70,10 +70,19 @@
         margin-left: 40px;
       }
     }
+
+    @include max-screen(770px) {
+      padding-left: 0;
+
+      .profile-avatar {
+        display: none;
+      }
+    }
   }
 
   .profile-navigation {
     float: right;
+    @include clearfix;
 
     > ul > li {
       float: left;
@@ -82,6 +91,17 @@
         display: block;
         padding: 15px 8px 16px 8px;
       }
+    }
+  }
+
+  @include max-screen(480px) {
+    .profile-name-avatar {
+      float: none;
+    }
+
+    .profile-navigation {
+      float: none;
+      margin: 0 -2.5%;
     }
   }
 }
@@ -131,5 +151,13 @@
 
   &.url-not-available .i-red-x {
     display: block;
+  }
+}
+
+.user-friends-actions {
+  @include max-screen(480px) {
+    float: none;
+    clear: both;
+    margin-top: 10px;
   }
 }
