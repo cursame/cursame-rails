@@ -40,10 +40,14 @@
   </div>
 </div>
 
-<div id="paginate">
-  <%= link_to "Cargar más...", paginate_users_based_params_path(:page => 2, :type_in_act => "my_friends"), :remote => true, :class => "btn btn-small btn-secondary" if(@friends.count == 9) %>
+<div class="wrapper">
+  <div class="cols-12">
+    <div class="col col-12">
+      <div class="col-inner" style="text-align: center;">
+        <div id="paginate">
+          <%= link_to "Cargar más...", paginate_users_based_params_path(:page => 2, :type_in_act => "my_friends"), :remote => true, :class => "btn btn-secondary" if(@friends.count == 9) %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-	

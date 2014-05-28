@@ -531,7 +531,9 @@ body {
       padding-top: 0 !important;
       margin-left: 0;
     }
+  }
 
+  @include max-screen(768px) {
     .section-header-actions {
       display: none;
     }
