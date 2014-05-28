@@ -24,7 +24,7 @@
               end   %>
           <% channelType = channel.channel_name.split('course_channel_') %>
 		  
-		  <% user_channel = if (mesage.user == current_user || not(mesage.channel.nil?))
+		  <% user_channel = if (mesage.user == current_user || not(mesage.channel.nil?) || not(channel.users.index{|x| x.id != current_user.id}.nil?))
 			 channel.users[channel.users.index{|x| x.id != current_user.id}] 
 			 else
 			 mesage.user
