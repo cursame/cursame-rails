@@ -97,11 +97,11 @@ class HomeController < ApplicationController
 
   def send_contact_mail
     subject = params[:contact_type] == 'demo_request' ? 'Solictud de demo' : 'Contacto'  
-    mail = Notifier.send_contact_mail(params, 'salvador@cursa.me', subject, params[:contact_type] == 'demo_request')
+    mail = Notifier.send_contact_mail(params, 'hola@cursa.me', subject, params[:contact_type] == 'demo_request')
     mail.deliver
     
     if params[:contact_type] == 'demo_request'
-      mail = Notifier.send_contact_mail(params, 'salvador@cursa.me', subject, true)
+      mail = Notifier.send_contact_mail(params, 'gerardo@cursa.me', subject, true)
       mail.deliver
     end
 

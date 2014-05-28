@@ -1,6 +1,5 @@
 // Adding and removing questions answers
 function remove_fields(link, toId) {
-  
   if(toId == '#box-question') {
     $(link).closest('.question-field').remove();
     changeNumbers('#box-question', '#question-num');
@@ -8,22 +7,21 @@ function remove_fields(link, toId) {
     var grandfather = $(link).parent().parent().parent();
     $(link).parent().parent().remove();
     changeNumbers(grandfather, '#request-num');
-  }
-}
-
+  };
+};
 
 function add_fields(link, association, content, toId) {
-
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-    if(toId =='#box-question'){
-        $(toId).append(content.replace(regexp, new_id));
-        changeNumbers('#box-question', '#question-num');
-    }else if( toId =='#box-request' ){
-        $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
-        changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
-    }
-}
+
+  if ( toId =='#box-question' ) {
+    $(toId).append(content.replace(regexp, new_id));
+    changeNumbers('#box-question', '#question-num');
+  } else if ( toId =='#box-request' ) {
+    $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
+    changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
+  };
+};
 
 function changeNumbers(idParent, idFind){
   var count = 0 ;
@@ -34,13 +32,12 @@ function changeNumbers(idParent, idFind){
       $(value).find('#question-num').html(count+1+'. ');
       count ++;
     });
-
   } else if( idFind =='#request-num' ){
     $.each(idParent.children(), function(index, value) {
       $(value).find('#request-num').html(alphabet[count]+') ');
       count ++;
     });
-  }
+  };
 
   var count = 0;
 };
@@ -62,83 +59,53 @@ function truncate(text, maxLength, ellipseText){
   if (text.length < maxLength) 
     return text;
 
-  //Find the last piece of string that contain a series of not A-Za-z0-9_ followed by A-Za-z0-9_ starting from maxLength
   var m = text.substr(0, maxLength).match(/([^A-Za-z0-9_]*)[A-Za-z0-9_]*$/);
   if(!m) return ellipseText;
   
-  //Position of last output character
   var lastCharPosition = maxLength-m[0].length;
-  
-  //If it is a space or "[" or "(" or "{" then stop one before. 
-  if(/[\s\(\[\{]/.test(text[lastCharPosition])) lastCharPosition--;
-  
-  //Make sure we do not just return a letter..
+  if(/[\s\(\[\{]/.test(text[lastCharPosition])) lastCharPosition--;  
   return (lastCharPosition ? text.substr(0, lastCharPosition+1) : '') + ellipseText;
 };
 
-/*
- *==================================================
- *=================== Reset Form ===================
- *==================================================
- */
-
-//  Trigger: resetForm( '#idDoom' );
-//  Return: $('#idDoom') resetfields
-
+//Reset Form
 function resetForm(objForm){
-    objForm[0].reset();
+  objForm[0].reset();
 
-    //removing assets
-    $.each($(objForm).find('.file-master-input-box').children(), function(index, value) {
-        console.log();
-        if(!$(value).is(":visible")){
-            $(value).remove();
-        }
-    });
-    $(objForm).find('.upload-label').empty().hide();
-}
+  //removing assets
+  $.each($(objForm).find('.file-master-input-box').children(), function(index, value) {
+    if ( !$(value).is(":visible") ) {
+      $(value).remove();
+    }
+  });
+  $(objForm).find('.upload-label').empty().hide();
+};
 
-/**
- * Funcion que enmascara un div dinamicamente
- * puede tener un boton en medio
- * idOrCls el id o cls del DOM
- * msj el mensaje a mostrar
- */
-function mask(idOrCls,msj){
+function mask(idOrCls,msj) {
   $('<div class="ui-widget-overlay" id="mask"><span>'+msj+'</span></div>').appendTo(idOrCls);
   $('#mask').show();
-}
-/**
- * Funcion que quita la mascara un div dinamicamente
- * puede tener un boton en medio
- * idOrCls el id o cls del DOM
- */
-function unmask(idOrCls){
+};
+
+function unmask(idOrCls) {
   $('#mask').hide();
-}
-/**
- * modal
- * @return {} the element overlay
- */
+};
+
+// Modal
 function modal(element){
-    $('<div class="ui-widget-overlay" id="overlaymask"></div>').appendTo('body');
-    $('<div id="cursame-modal"></div>').appendTo('body');
-    $(element).appendTo('#cursame-modal');
+  $('<div class="ui-widget-overlay" id="overlaymask"></div>').appendTo('body');
+  $('<div id="cursame-modal"></div>').appendTo('body');
+  $(element).appendTo('#cursame-modal');
 
-    var contenedor = $('#cursame-modal');
+  var contenedor = $('#cursame-modal');
 
-    contenedor.css({
-        top:$(window).height()/2,
-        left:($(window).width()- $(element).width())/2
-    });
+  contenedor.css({
+    top:$(window).height()/2,
+    left:($(window).width()- $(element).width())/2
+  });
 
-    //mostramos el overlay
-    $('#overlaymask').show();
-}
-/**
- * unmodal
- * @return {} the element overlay
- */
+  $('#overlaymask').show();
+};
+
+
 function unmodal(){
     $('#overlaymask').remove();
     $('#cursame-modal').remove();
@@ -156,26 +123,23 @@ window.Notice = function(type, message)  {
   }, 3100);
 };
 
-// notificaciones push usando private_pub
 $(function() {
 
   // Textareas Autogrow
   $('.autogrow').autosize();
    
    $(window).scroll(function() {
-     if($(window).scrollTop() + $(window).height() == $(document).height()) {
-      if($("#paginate_wall" ).length == 1) {
+     if ( $(window).scrollTop() + $(window).height() == $(document).height() ) {
+      if ( $("#paginate_wall" ).length == 1 ) {
          $("#paginate_wall").trigger("click");
-       }
-     }
+      };
+     };
    });
 
   if ( typeof Cursame != 'undefined' ) {
     Chat.recoverConversations( Cursame.userId );
   };
 
-  // data.sender.id = data.reciver.id return
-  // Se suscribe al canal para las notificaciones del chat
   if (typeof Cursame === 'undefined') {
     return;
   };
