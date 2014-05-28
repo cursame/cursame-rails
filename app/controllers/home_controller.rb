@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day, :mkt]
+  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day, :mkt, :about_us]
   helper_method :get_commentable
   prepend_before_filter :require_no_authentication, :only => [:action1, :action2]
   respond_to :html, :json, :js
@@ -85,8 +85,14 @@ class HomeController < ApplicationController
     end
   end
 
+  def about_us
+    respond_to do |format|
+      format.html {render :layout => 'static_pages'}
+    end
+  end
+
   def mkt
-    pages = ["empeno", "prestamo-internet", "prestamo-sin-aval"]
+    pages = ["ad01"]
 
     if pages.include? params[:name]
       render "/home/mkt_pages/#{params[:name]}", :layout => 'mkt_langing_page'

@@ -2,7 +2,7 @@
 /* Cards Listing
 ----------------------------------*/
 .cards-list {
-  margin: 10px 0;
+  margin: 20px 0;
   @include clearfix;
 
   .card {
@@ -28,6 +28,7 @@
 .comunity-card-list .card {
   height: 100px;
   position: relative;
+  margin-bottom: 20px;
 
   .user-actions {
     position: absolute;

@@ -2,7 +2,7 @@
   <script>
     $(function() {
       $('.login-trigs').trigger('click');
-      $('.website-login-forms').find('.error').addClass('active');
+      $('.website-login-forms').find('.error-login-form').addClass('active');
     });
   </script>
 <% end %>
@@ -25,6 +25,9 @@
               </li>
               <li <%= active if action == 'success_stories' %>>
                 <%= link_to "Proyectos", success_stories_path %>
+              </li>
+              <li <%= active if action == 'about_us' %>>
+                <%= link_to "Nosotros", about_us_path %>
               </li>
               <li <%= active if action == 'jobs' %>>
                 <%= link_to "Empleos", jobs_path %>
@@ -49,7 +52,7 @@
                     <h4>Encuentra tu red</h4>
                     <!-- <p>Escribe tus datos de acceso para accesar a la red de tu institución.</p><br> -->
                     <p>Escribe tu correo electrónico para accesar a la red de tu institución.</p>
-                    <p class="error">Oops! al parecer tu correo no pertenece a niguna red.</p>
+                    <p class="error-login-form">Oops! al parecer tu correo no pertenece a niguna red.</p>
                     <br>
                     <%= form_tag new_sesion_from_home_path, class: 'website-login-form' do %>
                       <div class="form-group no-label">

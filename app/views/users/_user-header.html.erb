@@ -1,6 +1,6 @@
 <div class="profile-cover-photo" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
 
-  <div class="wrapper spaced">
+  <div class="wrapper">
     <div class="admin-buttons">
       <% if @user_l == current_user %>
         <%= link_to "Editar Perfil", edit_user_registration_path, class: 'btn btn-small btn-secondary hard-border-btn' %>
@@ -34,8 +34,7 @@
 </div>
 
 <div class="profile-user-bar">
-  <div class="wrapper spaced">
-  
+  <div class="wrapper">
     <div class="profile-name-avatar">
       <div class="profile-avatar" id="box-user-credential" >
         <%= link_to show_user_path(@user_l.personal_url) do %>

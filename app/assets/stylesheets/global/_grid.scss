@@ -1,7 +1,7 @@
 /* Grid System
 ----------------------------------*/
 $fg-column: 60px;             // Column Width
-$fg-gutter: 5px;             // Gutter Width
+$fg-gutter: 20;             // Gutter Width
 $fg-max-columns: 12;
 
 .cols-12 {
@@ -9,9 +9,11 @@ $fg-max-columns: 12;
 
   .col {
     float: left;
+    min-height: 1px;
 
     .col-inner {
       padding: 0 10px 0 10px;
+      @include clearfix;
 
       @include max-screen(630px) {
         padding: 0;

@@ -56,7 +56,7 @@ body {
   width: 100%;
 
   .topbar-spacer {
-    padding-left: 230px;
+    padding-left: 200px;
   }
 
   .network {
@@ -520,6 +520,21 @@ body {
 
   &.normal-full {
     padding: 15px 0;
+  }
+
+  @include max-screen(480px) {
+    .section-icon {
+      display: none;
+    }
+
+    .section-header-title .section-title, .section-header-title.w-subnav .section-title {
+      padding-top: 0 !important;
+      margin-left: 0;
+    }
+
+    .section-header-actions {
+      display: none;
+    }
   }
 }
 
