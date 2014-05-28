@@ -233,19 +233,13 @@
 
 /* homework
 ----------------------------------*/
-.areas-of-evaluation {
-  .clear-break {
-    margin-bottom: 10px;
-  }
+.evaluation-areas-items {
+  margin-left: 10px;
 
-  .evaluation-footer {
-    overflow: hidden;
-    clear: right;
-  }
-
-  #total_nested_evaluation {
-    margin-bottom: 10px;
-  }
+  .evaluation-area {
+    padding: 6px 10px 10px 0;
+    @include clearfix;
+  } 
 }
 
 #delivery-tab-content {

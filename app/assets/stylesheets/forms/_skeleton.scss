@@ -54,7 +54,7 @@ select {
     }
   }
 
-  @include max-screen(700px) {
+  @include max-screen(1024px) {
     .form-group-label {
       text-align: left !important;
       float: none;
