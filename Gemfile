@@ -37,9 +37,7 @@ group :assets do
   gem 'bourbon', "~> 3.1.8"
   gem 'handlebars_assets'
   gem 'coffee-script'
-  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
- 
 end
 ####### gems for debug erros
 group :development do
