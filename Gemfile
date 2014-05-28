@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
@@ -5,7 +6,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'#, :groups => [:production]
+gem 'pg', :groups => [:production]
 gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise'

@@ -4,7 +4,7 @@ $('div.chat-messages-container[data-channel="<%= @channel_name %>"]').closest('d
 
 notification = [
           '<div class="activity-feed-main">',
-          '<span class="as-link"><%= @message.user.name %></span>',
+          '<span class="as-link"><%= @user_channel.name %></span>',
           '<p>' + truncate('<%= @message.mesage %>', 88, "...") +'</p>',
           '<span class="meta">' + jQuery.timeago(new Date) + '</span></div>'
       ];
