@@ -348,6 +348,13 @@ class HomeController < ApplicationController
 
     def add_new_mesage
       @message = Mesage.create!(:mesage => params[:mesage], :user_id =>current_user.id,:channel_id =>params[:channel_id])
+      
+      @user_channel = if (@message.user == current_user || not(@message.channel.nil?)) 
+                        @message.channel.users[@message.channel.users.index{|x| x.id != current_user.id}]
+                        else
+                        @message.user
+                      end
+
 
       @az = @message
       @typed = @message.class.to_s
