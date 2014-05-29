@@ -47,6 +47,10 @@ group :development do
   gem "selenium-webdriver", "~> 2.35.0"
 end
 
+group :subtest do
+	gem 'appsignal'
+end
+
 gem 'jquery-rails'
 
 #Gem for the comments		
