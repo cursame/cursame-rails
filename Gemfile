@@ -128,10 +128,7 @@ gem 'exception_notification', '~> 3.0.1'
  
 gem "wuparty", "~> 1.2.6"
 gem 'meta-tags'
-<<<<<<< HEAD
 gem 'sidekiq'
 gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'
-=======
->>>>>>> FETCH_HEAD
