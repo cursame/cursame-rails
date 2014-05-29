@@ -1,3 +1,4 @@
+
 // Adding and removing questions answers
 function remove_fields(link, toId) {
   if(toId == '#box-question') {
@@ -124,6 +125,15 @@ window.Notice = function(type, message)  {
 };
 
 $(function() {
+
+  // Soporte para inputs dentro de labels Firefox
+  if($.browser.mozilla) {
+    $(document).on('click', 'label.btn.ff', function(e) {
+      if (e.target.nodeName == 'INPUT') return;
+      var input = $(this).find('.tobe-t');
+      input[0].click();
+    });
+  }
 
   // Textareas Autogrow
   $('.autogrow').autosize();
