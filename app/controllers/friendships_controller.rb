@@ -49,6 +49,12 @@ class FriendshipsController < ApplicationController
       format.json
     end
 
+    mixpanel_properties = { 
+      'Network'  => current_network.name.capitalize,
+      'Role'     => Permissioning.find_by_id(user.id).role.title.capitalize
+    }
+    MixpanelTrackerWorker.perform_async user.id, 'Friend Requests', mixpanel_properties
+
   end
 
   def update_friend
@@ -58,11 +64,18 @@ class FriendshipsController < ApplicationController
     @friendship.save
     @user = User.find(params[:id])
     @f = params[:id]
-    puts @f
-     respond_to do |format|
-        format.js
-        format.json
-      end
+    
+    respond_to do |format|
+      format.js
+      format.json
+    end
+
+    mixpanel_properties = { 
+      'Network'  => current_network.name.capitalize,
+      'Role'     => Permissioning.find_by_id(user.id).role.title.capitalize
+    }
+    MixpanelTrackerWorker.perform_async user.id, 'Accepted Friend Requests', mixpanel_properties
+
   end
 
 

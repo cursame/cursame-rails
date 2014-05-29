@@ -103,7 +103,6 @@ class User < ActiveRecord::Base
 
 
   after_create do
-    #
     # Si el usuario tiene rol de maestro, entonces creo sus settings.
     # Solamente el estudiante no tiene asociado ese modelo.
     teacher_roles = self.permissionings.keep_if {
@@ -114,6 +113,16 @@ class User < ActiveRecord::Base
       SettingsTeacher.create(:user_id => self.id, :limit_deliveries => 15, :count_deliveries => 0,
                       :limit_surveys => 15,:count_surveys => 0)
     end
+
+    mixpanel_properties = { 
+      '$first_name' => self.first_name, 
+      '$last_name'  => self.last_name, 
+      '$created'    => self.created_at, 
+      '$email'      => self.email 
+    }
+
+    MixpanelPeopleWorker.perform_async self.id, mixpanel_properties
+
   end
 
   def inverse_friendships
