@@ -233,13 +233,28 @@
 
 /* homework
 ----------------------------------*/
-.evaluation-areas-items {
-  margin-left: 10px;
+.areas-of-evaluation {
+  .evaluation-areas-list {
+    .evaluation-area {
+      .name-area {
+        margin-bottom: 15px;
+      }
 
-  .evaluation-area {
-    padding: 6px 10px 10px 0;
-    @include clearfix;
-  } 
+      .slider-content {
+        margin: 14px 0 0 15px;
+      }
+    } 
+  }
+
+  .evalutation-total .total {
+    margin-bottom: 10px;
+    text-align: right;
+    display: block;
+  }
+
+  .evaluation-footer {
+    overflow: hidden;
+  }
 }
 
 #delivery-tab-content {
