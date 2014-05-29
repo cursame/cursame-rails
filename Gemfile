@@ -44,7 +44,6 @@ group :assets do
 end
 ####### gems for debug erros
 group :development do
-  # gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
   
@@ -63,7 +62,6 @@ gem "auto_html"
 
 #paginacion
 gem 'will_paginate', "3.0.3"
-# gem "will_paginate", "3.0.pre2"
 
 #gems for preoces time in background
 gem 'whenever', :require => false
@@ -77,15 +75,7 @@ gem 'private_pub', :git =>'git://github.com/ryanb/private_pub.git'
 
 #roles
 gem 'declarative_authorization'
-# gem 'gemcutter'
-# gem 'tumble'
-
 gem 'jquery-fileupload-rails'
-# Gem for twitter bootstrap.
-gem "therubyracer"
-gem 'execjs'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-#gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
