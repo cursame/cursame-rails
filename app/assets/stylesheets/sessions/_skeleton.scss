@@ -91,6 +91,8 @@
   overflow: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0);
+  z-index: -1;
+  pointer-events: none;
   
   .background-layer {
     position: fixed;
@@ -107,7 +109,8 @@
     min-width: 100%;
     min-height: 100%;
     position: absolute;
-    z-index: 5;
+    z-index: -1;
+    pointer-events: none;
   }
 }
 

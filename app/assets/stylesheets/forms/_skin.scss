@@ -32,7 +32,7 @@ textarea {
 
 input.red-placeholder, textarea.red-placeholder, input.error, textarea.error {
   border-color: red ;
-  background: #f7e7e7;
+  background: #f7e7e7 !important;
 
   @include placeholder {
     color: red;

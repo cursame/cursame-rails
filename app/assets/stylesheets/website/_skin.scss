@@ -16,7 +16,7 @@
     color: #7A7A7A;
   }
 
-  .website-login-forms .error {
+  .website-login-forms .error-login-form {
     color: red;
   }
 }
@@ -96,6 +96,15 @@
 
   &.teacher-day-title {
     background-image: url('/images/website/teacher-day-title.jpg');
+  }
+
+  &.about-title {
+    background-image: url('/images/website/about-title.jpg'); 
+  }
+
+  &.our-team {
+    background-image: url('/images/website/our-team-section.jpg');
+    box-shadow: inset 0 1px 0 rgba(0,0,0,.15);
   }
 }
 
@@ -499,5 +508,41 @@
     p {
       @include text-size-large;
     }
+  }
+}
+
+// About Us
+.about-title p {
+  text-align: justify;
+}
+
+.about-txt {
+  @include text-size-medium;
+  text-align: justify;
+  border-top: 1px solid #e5e5e5;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  .list {
+    list-style: disc;
+  }
+}
+
+.our-team {
+  .section-title {
+    h2, p {
+      color: #333;
+      text-shadow: none;
+    }
+  }
+
+  .leaders .col-inner, .team-all .col-inner {
+    text-align: center;
+  }
+
+  .jobs-positions:hover {
+    opacity: .5;
   }
 }

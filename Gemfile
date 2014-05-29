@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
@@ -5,7 +6,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'#, :groups => [:production]
+gem 'pg', :groups => [:production]
 gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise'
@@ -36,11 +37,7 @@ group :assets do
   gem 'bourbon', "~> 3.1.8"
   gem 'handlebars_assets'
   gem 'coffee-script'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
- 
 end
 ####### gems for debug erros
 group :development do
@@ -131,7 +128,10 @@ gem 'exception_notification', '~> 3.0.1'
  
 gem "wuparty", "~> 1.2.6"
 gem 'meta-tags'
+<<<<<<< HEAD
 gem 'sidekiq'
 gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'
+=======
+>>>>>>> FETCH_HEAD

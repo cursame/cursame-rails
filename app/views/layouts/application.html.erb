@@ -1,4 +1,4 @@
-<% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
+<% if request.domain != "cursa.me" && request.domain != "lvh.me" && request.domain != "cursalab.com" %>
   <% url =  request.url %>
   <% cursame = url.gsub(request.domain,"cursa.me") %>
   <script type="text/javascript">
@@ -24,7 +24,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <%= favicon_link_tag "favicon.png"  %>
       <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-      <script> window.Cursame = { userId: <%= current_user.id %> }; </script>
+      <script>
+        window.Cursame = { userId: <%= current_user.id %> };
+      </script>
       <%= javascript_include_tag 'private_pub' %>
       <%= javascript_include_tag 'https://www.dropbox.com/static/api/1/dropins.js', id: 'dropboxjs', data: { app_key: 'ee2yf464dnk2rf1' } %>
       <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>

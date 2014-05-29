@@ -186,3 +186,33 @@
     @include clearfix;
   }
 }
+
+#box-messages-notifications .dropdown-v  {
+  @include max-screen(420px) {
+    width: 280px;
+    right: -60px;
+  }
+
+  .tip {
+    @include max-screen(420px) {
+      right: 75px;
+    }
+  }
+}
+
+#box-notifications .dropdown-v {
+  @include max-screen(420px) {
+    width: 280px;
+    right: -20px;
+  }
+
+  .tip {
+    @include max-screen(420px) {
+      right: 33px;
+    }
+  } 
+}
+
+.dropdown-wrap.website-login .dropdown-v {
+  right: 25px;
+}

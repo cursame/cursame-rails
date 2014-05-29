@@ -50,7 +50,7 @@
       margin-top: 12px;
     }
 
-    .error {
+    .error-login-form {
       display: none;
 
       &.active {
@@ -571,4 +571,45 @@
     width: 70%;
     margin: 0 auto;
   }
+}
+
+// About Us
+.about-txt {
+  padding: 50px 0;
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  .list {
+    padding-left: 18px;
+
+    li {
+      padding-top: 15px;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+.our-team {
+  padding-bottom: 10px;
+
+  .leaders {
+    margin: 25px 0 10px 0;
+  }
+
+  .leaders .col-inner, .team-all .col-inner {
+    margin: 5px 0 25px 0;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.about-sponsors .sponsors {
+  padding-top: 20px;
 }

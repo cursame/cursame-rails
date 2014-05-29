@@ -48,6 +48,12 @@
       }
     }
   }
+
+  @include max-screen(480px) {
+    .profile-navigation {
+      border-top: 1px solid #e6e6e6;
+    } 
+  }
 }
 
 /* Edit User Profile
