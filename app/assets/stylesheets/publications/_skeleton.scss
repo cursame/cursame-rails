@@ -15,7 +15,7 @@
     
     .edit-publication {
       position: absolute;
-      top: 5px;
+      top: 0;
       right: 0;
 
       .dropdown-pull {
@@ -29,7 +29,6 @@
 
     .publication-inner-content-main {
       margin-left: 70px;
-      padding-left: 10px;
 
       .publication-metadata {
         margin-top: 7px;
@@ -180,9 +179,8 @@
 
   .tabs {
     .tabs-buttons {
-      height: 43px;
       @include clearfix;
-
+      
       .tab {
         float: left;
         padding: 13px 10px 0px 10px;
@@ -193,8 +191,9 @@
           position: absolute;
           width: 19px;
           height: 7px;
-          bottom: 0;
-          left: 9px;
+          bottom: -1px;
+          left: 50%;
+          margin-left: -10px;
           display: none;
         }
 
@@ -202,6 +201,18 @@
           .tip {
             display: block;
           }
+        }
+
+        .i {
+          @include max-screen(480px) {
+            display: block;
+            margin: 0 auto;
+          }
+        }
+
+        @include max-screen(480px) {
+          padding: 10px 0 15px 0;
+          width: 25%;
         }
       }
     }
@@ -223,17 +234,26 @@
 /* homework
 ----------------------------------*/
 .areas-of-evaluation {
-  .clear-break {
+  .evaluation-areas-list {
+    .evaluation-area {
+      .name-area {
+        margin-bottom: 15px;
+      }
+
+      .slider-content {
+        margin: 14px 0 0 15px;
+      }
+    } 
+  }
+
+  .evalutation-total .total {
     margin-bottom: 10px;
+    text-align: right;
+    display: block;
   }
 
   .evaluation-footer {
     overflow: hidden;
-    clear: right;
-  }
-
-  #total_nested_evaluation {
-    margin-bottom: 10px;
   }
 }
 
@@ -263,7 +283,7 @@
       }
 
       .element {
-        padding: 5px 5px 5px 20px;
+        padding: 5px 40px 5px 20px;
         overflow: hidden;
         position: relative;
 
@@ -274,12 +294,15 @@
         }
 
         .question-input-field {
-          width: 400px;
+          width: 100%;
           padding: 3px;
         }
 
         .delete-question-button {
           display: none;
+          position: absolute;
+          top: 5px;
+          right: 5px;
 
           .i-x-close {
             vertical-align: -3px;
@@ -293,8 +316,14 @@
 
       .request-field {
         overflow: hidden;
-        padding: 5px 5px 5px 23px;
+        padding: 5px 145px 5px 23px;
         position: relative;
+
+        .answer-child-options {
+          position: absolute;
+          top: 7px;
+          right: 7px;
+        }
 
         .num {
           position: absolute;
@@ -304,7 +333,7 @@
 
         .answer-field-input {
           padding: 3px;
-          width: 240px;
+          width: 100%;
         }
       }
 

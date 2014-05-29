@@ -55,8 +55,7 @@ class Survey < ActiveRecord::Base
        self.state = "published"
     end
 
-  Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
-
+    Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
 
     users = []
     self.courses.each do |course|
@@ -74,6 +73,15 @@ class Survey < ActiveRecord::Base
     users = users.reject { |user| user.id == self.user_id }
     self.send_mail(users)
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
+
+    self.courses.each do |course|
+      mixpanel_properties = { 
+        'Network' => self.network.name.capitalize,
+        'Course'  => course.title.capitalize
+      }
+      MixpanelTrackerWorker.perform_async self.user_id, 'Surveys', mixpanel_properties
+    end
+
   end
 
   def expired?

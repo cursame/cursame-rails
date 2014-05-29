@@ -172,8 +172,23 @@
         .tip {
           background: url('pack.png') -37px -60px;
         }
+
+        @include max-screen(480px) {
+          text-align: center;
+          @include text-size-x-small;
+        }
       }
     }
+  }
+}
+
+/* homework
+----------------------------------*/
+.evaluation-areas-items {
+  .evaluation-area {
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    border-radius: $radius;
   }
 }
 
@@ -202,6 +217,10 @@
           border-color: transparent;
           box-shadow: none;
           outline: none;
+
+          &:focus, &.error {
+            background: none !important;
+          }
         }
       }
 
@@ -246,7 +265,7 @@
 
 .no-more-publicaitons-message {
   text-align: center;
-  background: shade($main-background, 2%);
+  background: shade(#edeff2, 2%);
   border: 1px solid shade($main-background, 12%);
   border-radius: $radius;
   box-shadow: 0 1px 0 #fff;

@@ -23,7 +23,11 @@
 }
 
 .signup-restore {
-  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 
   .background-layer {
     background: rgba(0,0,0,.3);

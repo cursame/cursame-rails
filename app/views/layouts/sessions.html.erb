@@ -1,4 +1,4 @@
-<% if request.domain != "cursa.me" && request.domain != "lvh.me" %>
+<% if request.domain != "cursa.me" && request.domain != "lvh.me" && request.domain != "cursalab.com" %>
   <% url =  request.url %>
   <% cursame = url.gsub(request.domain,"cursa.me") %>
   <script type="text/javascript">
@@ -42,14 +42,16 @@
           <div class="background-layer"></div>
         </div>
       <% else %>
-        <div class="signup-restore">
-          <div class="background-layer"></div>
-          <video class="sessions-video" poster="/videos/poster.png" autoplay loop>
-            <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="/videos/video.mp4">
-             <source type="video/ogg; codecs=&quot;theora, vorbis&quot;" src="/videos/video.ogv">
-            <source type="video/webm" src="/videos/video.webm">
-          </video>
-        </div>
+          <div class="signup-restore" style="background-image: url('/videos/poster.png')">
+            <div class="background-layer"></div>
+            <% unless mobile? %>
+              <video class="sessions-video" poster="/videos/poster.png" autoplay loop>
+                <source type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" src="/videos/video.mp4">
+                <source type="video/ogg; codecs=theora,vorbis" src="/videos/video.ogv">
+                <source type="video/webm; codecs=vp8,vorbis" src="/videos/video.webm">
+              </video>
+            <% end %>
+          </div>
       <% end %>
       <a id="support-tab-sessions" href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;">Ayuda</a>
     </body>

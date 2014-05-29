@@ -376,9 +376,17 @@ class CoursesController < ApplicationController
   end
 
   def assigment
+
     if params[:assignment]["id"].blank? then
       @assignment = Assignment.new(params[:assignment])
       flash[:notice] = "Se ha entregado correctamente una tarea."
+
+      mixpanel_properties = { 
+        'Course'  => @assignment.course.title.capitalize,
+        'Network' => @assignment.course.network.name.capitalize
+      }
+      MixpanelTrackerWorker.perform_async @assignment.user_id, 'Assignments', mixpanel_properties
+
     else
       @id = params[:assignment].delete("id")
       @assignment = Assignment.find(@id)
@@ -398,14 +406,20 @@ class CoursesController < ApplicationController
             @assignment.assets.push(asset)
           end
         end
-      flash[:notice] = "Se ha actualizado correctamente entrega de una tarea."
-
-    end
+        flash[:notice] = "Se ha actualizado correctamente entrega de una tarea."
+      end
       redirect_to :back
       return
     end
-   # @content = Content.new(params[:content])
-   #  @assignment.user_id = current_user.id
+
+    mixpanel_properties = { 
+      'Network' => Network.find_by_id(@assignment.delivery.network_id).name.capitalize,
+      'Course'  => @assignment.course.title.capitalize
+    }
+    MixpanelTrackerWorker.perform_async current_user.id, 'Assignments', mixpanel_properties
+   
+    # @content = Content.new(params[:content])
+    #  @assignment.user_id = current_user.id
     @assignment.save!
 
     if @assignment.save! and @id.nil?

@@ -16,7 +16,9 @@
     <% end %>
     
     <% unless comment_post[:user].blank? %>
-      comentó en el perfil de <%= link_to comment_post[:user].name, show_user_path(comment_post[:user].personal_url) %>
+      <% if comment_post[:user].id != current_user.id %>
+        comentó en el perfil de <%= link_to comment_post[:user].name, show_user_path(comment_post[:user].personal_url) %>
+      <% end %>
     <% end %>
   </h6>
   <div>

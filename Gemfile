@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
@@ -5,7 +6,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'#, :groups => [:production]
+gem 'pg', :groups => [:production]
 gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise'
@@ -36,19 +37,18 @@ group :assets do
   gem 'bourbon', "~> 3.1.8"
   gem 'handlebars_assets'
   gem 'coffee-script'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
- 
 end
 ####### gems for debug erros
 group :development do
-  # gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
   
   gem "selenium-webdriver", "~> 2.35.0"
+end
+
+group :subtest do
+	gem 'appsignal'
 end
 
 gem 'jquery-rails'
@@ -63,7 +63,6 @@ gem "auto_html"
 
 #paginacion
 gem 'will_paginate', "3.0.3"
-# gem "will_paginate", "3.0.pre2"
 
 #gems for preoces time in background
 gem 'whenever', :require => false
@@ -77,15 +76,7 @@ gem 'private_pub', :git =>'git://github.com/ryanb/private_pub.git'
 
 #roles
 gem 'declarative_authorization'
-# gem 'gemcutter'
-# gem 'tumble'
-
 gem 'jquery-fileupload-rails'
-# Gem for twitter bootstrap.
-gem "therubyracer"
-gem 'execjs'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-#gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -141,3 +132,7 @@ gem 'exception_notification', '~> 3.0.1'
  
 gem "wuparty", "~> 1.2.6"
 gem 'meta-tags'
+gem 'sidekiq'
+gem 'mixpanel-ruby'
+gem 'ruby_parser'
+gem 'rails_config'

@@ -41,9 +41,9 @@
     <%= form_for @member, :remote => true do |fcm| %>                           
       <%= link_to 'Eliminar', @member, confirm: '¿Estás seguro de querer eliminar este usuario del curso?', class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
 
-      <label class="btn btn-small btn-primary">
+      <label class="btn btn-small btn-primary activable ff">
         Aceptar Usuario
-          <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse("+"'"+"members_in_course_accepted_#{@member_it.id}"+"'"+","+"'"+"#{@member.id}"+"'"+","+"'"+"acceptin"+"'"+","+"'"+"#{@member_it.id}"+"'"+");", :class=> "members_in_course_accepted_#{@member_it.id}", :style => "display:none;"  %>
+          <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse("+"'"+"members_in_course_accepted_#{@member_it.id}"+"'"+","+"'"+"#{@member.id}"+"'"+","+"'"+"acceptin"+"'"+","+"'"+"#{@member_it.id}"+"'"+");", :class=> "members_in_course_accepted_#{@member_it.id} tobe-t", :style => "display:none;"  %>
       </label>
     <%end%>
 <%end%> 

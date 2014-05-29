@@ -1,11 +1,11 @@
 <div id="box-request-child" class="request-field" >
-  <div class="fl">
-    <span id="request-num" class="num">a)</span>
-    <%= f.text_field :content, :class => "answer-field-input ", :placeholder=>'Ingresar respuesta', :required => "required" %>
-  </div>
-  <div class="fr">
-    <%= f.check_box :correct, :class=> 'is-correct-chk' %>
-    <%= f.label :correct, "Correcta", :class=>'is-correct-label' %>
+  <span id="request-num" class="num">a)</span>
+  <%= f.text_field :content, :class => "answer-field-input ", :placeholder=>'Ingresar respuesta', :required => "required" %>
+  
+  <div class="answer-child-options">
+    <span class="btn btn-small btn-secondary">
+      <%= f.check_box :correct, :class=> 'is-correct-chk' %> Correcta
+    </span>
     <%= link_to_remove_fields "Eliminar", f, {:class=>'btn btn-small btn-secondary'}, '#box-request'%>
   </div>
 </div>

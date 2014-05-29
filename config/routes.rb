@@ -339,6 +339,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/success-stories", :to => "home#success_stories", :as => :success_stories
   get "/success-stories", :to => "home#success_stories", :as => :success_stories
   get "/teacher-day", :to => "home#teacher_day", :as => :teacher_day
+  get "/about", :to => "home#about_us", :as => :about_us
 
   get "/mkt/:name", :to => "home#mkt"
 

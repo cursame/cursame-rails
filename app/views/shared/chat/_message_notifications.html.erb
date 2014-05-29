@@ -16,24 +16,30 @@
                 <% messages.push(channel.mesages.last) %>
               <% end %>
           <% end %>
-          <% messages.sort{|x,y| y.created_at<=>x.created_at}.uniq{|x| x.channel_id}.last(10).each do |mesage|%>
+          <% messages.sort{|x,y| y.created_at<=> x.created_at}.uniq{|x| x.channel_id}.first(10).each do |mesage|%>
           <% last_message = mesage %>
           <% channel = mesage.channel %>
           <% if channel.nil?
               next
               end   %>
           <% channelType = channel.channel_name.split('course_channel_') %>
-          <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{last_message.user.id}" %>
+		  
+		  <% user_channel = if (mesage.user == current_user && not(mesage.channel.nil?) && not(channel.users.index{|x| x.id != current_user.id}.nil?))
+			 channel.users[channel.users.index{|x| x.id != current_user.id}] 
+			 else
+			 mesage.user
+			 end %>
+          <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{user_channel.id}" %>
           <li id="li_channel_<%= channel.id %>">
             <div class="activity-feed">
               <%= link_to url, :remote => true do %>
                 <div class="activity-feed-author">
                   <span class="avatar-holder">
-                    <%= avatar(channelType[1] ? 'course' : 'user', '45', "no", channelType[1] ? channelType[1] :last_message.user.id, "avatar", "no", "no") %>
+                    <%= avatar(channelType[1] ? 'course' : 'user', '45', "no", channelType[1] ? channelType[1] : user_channel.id, "avatar", "no", "no") %>
                   </span>
                 </div>
                 <div class="activity-feed-main">
-                  <h6><span class="as-link"><%= last_message.user.name %></span></h6>
+                  <h6><span class="as-link"><%= user_channel.name %></span></h6>
                   <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
                   <span class="meta"><%= es_current_date("#{last_message.created_at.strftime('%B')}", "#{last_message.created_at.strftime('%d')}", "#{last_message.created_at.strftime('%Y')}" , "#{last_message.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
                 </div>

@@ -63,6 +63,25 @@ class Discussion < ActiveRecord::Base
       Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
       self.send_mail(users_notifications)
     end
+
+    if !self.courses.nil? && !self.courses.empty?
+      self.courses.each do |course|
+        mixpanel_properties = { 
+          'Network' => self.network.name.capitalize,
+          'Course'  => course.title.capitalize,
+          'Role'    => Permissioning.find_by_id(self.user_id).role.title.capitalize
+        }
+        MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
+      end
+    else
+      mixpanel_properties = { 
+        'Network' => self.network.name.capitalize,
+        'Course'  => 'Public',
+        'Role'    => Permissioning.find_by_id(self.user_id).role.title.capitalize
+      }
+      MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
+    end
+    
   end
 
   after_destroy do
