@@ -196,7 +196,7 @@ class HomeController < ApplicationController
 
     mixpanel_properties = { 
         'Network' => current_network.name.capitalize,
-        'Type'    => @publication.publication.commentable_type.capitalize,
+        'Type'    => @publication.publication_type.capitalize,
         'Role'    => Permissioning.find_by_id(@publication.publication.user_id).role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
