@@ -21,15 +21,9 @@ GEM
       rack-cache (~> 1.1)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.2)
-<<<<<<< HEAD
     active_attr (0.8.3)
       activemodel (>= 3.0.2, < 4.2)
       activesupport (>= 3.0.2, < 4.2)
-=======
-    active_attr (0.8.2)
-      activemodel (>= 3.0.2, < 4.1)
-      activesupport (>= 3.0.2, < 4.1)
->>>>>>> FETCH_HEAD
     activeadmin (0.6.3)
       arbre (~> 1.0)
       bourbon (>= 1.0.0, < 4)
@@ -95,14 +89,9 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-<<<<<<< HEAD
     coffee-script-source (1.7.0)
     connection_pool (2.0.0)
     cookiejar (0.3.2)
-=======
-    coffee-script-source (1.6.3)
-    cookiejar (0.3.1)
->>>>>>> FETCH_HEAD
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     daemons (1.1.9)
@@ -280,11 +269,8 @@ GEM
       activesupport (= 3.2.1)
       bundler (~> 1.0)
       railties (= 3.2.1)
-<<<<<<< HEAD
     rails_config (0.4.2)
       activesupport (>= 3.0)
-=======
->>>>>>> FETCH_HEAD
     railties (3.2.1)
       actionpack (= 3.2.1)
       activesupport (= 3.2.1)
@@ -295,14 +281,10 @@ GEM
     rake (10.3.2)
     rdoc (3.12.2)
       json (~> 1.4)
-<<<<<<< HEAD
     redcarpet (3.1.2)
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
-=======
-    redcarpet (2.3.0)
->>>>>>> FETCH_HEAD
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
@@ -434,11 +416,8 @@ DEPENDENCIES
   pg
   private_pub!
   rails (= 3.2.1)
-<<<<<<< HEAD
   rails_config
   ruby_parser
-=======
->>>>>>> FETCH_HEAD
   sass-rails (~> 3.2.3)
   selenium-webdriver (~> 2.35.0)
   sidekiq
