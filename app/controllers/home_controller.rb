@@ -194,10 +194,11 @@ class HomeController < ApplicationController
     @publication = Wall.find(params[:id])
     @publication.publication.liked_by current_user
 
+    permissioning = Permissioning.find_by_user_id_and_network_id(@publication.publication.user_id, current_network.id)
     mixpanel_properties = { 
         'Network' => current_network.name.capitalize,
         'Type'    => @publication.publication_type.capitalize,
-        'Role'    => Permissioning.find_by_id(@publication.publication.user_id).role.title.capitalize
+        'Role'    => permissioning.role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
 
@@ -221,10 +222,11 @@ class HomeController < ApplicationController
     @publication = Comment.find(params[:id])
     @publication.liked_by current_user
   
+    permissioning = Permissioning.find_by_user_id_and_network_id(@publication.user_id, current_network.id)
     mixpanel_properties = { 
         'Network' => current_network.name.capitalize,
         'Type'    => @publication.commentable_type.capitalize,
-        'Role'    => Permissioning.find_by_id(@publication.user_id).role.title.capitalize
+        'Role'    => permissioning.role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
 

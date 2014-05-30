@@ -49,9 +49,10 @@ class FriendshipsController < ApplicationController
       format.json
     end
 
+    permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
     mixpanel_properties = { 
       'Network'  => current_network.name.capitalize,
-      'Role'     => Permissioning.find_by_id(user.id).role.title.capitalize
+      'Role'     => permissioning.role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async user.id, 'Friend Requests', mixpanel_properties
 
@@ -70,9 +71,10 @@ class FriendshipsController < ApplicationController
       format.json
     end
 
+    permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
     mixpanel_properties = { 
       'Network'  => current_network.name.capitalize,
-      'Role'     => Permissioning.find_by_id(user.id).role.title.capitalize
+      'Role'     => permissioning.role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async user.id, 'Accepted Friend Requests', mixpanel_properties
 
