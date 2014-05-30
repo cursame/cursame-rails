@@ -114,14 +114,17 @@ class User < ActiveRecord::Base
                       :limit_surveys => 15,:count_surveys => 0)
     end
 
-    mixpanel_properties = { 
-      '$first_name' => self.first_name, 
-      '$last_name'  => self.last_name, 
-      '$created'    => self.created_at, 
-      '$email'      => self.email 
-    }
-
-    MixpanelPeopleWorker.perform_async self.id, mixpanel_properties
+    begin
+      mixpanel_properties = { 
+        '$first_name' => self.first_name, 
+        '$last_name'  => self.last_name, 
+        '$created'    => self.created_at, 
+        '$email'      => self.email 
+      }
+      MixpanelPeopleWorker.perform_async self.id, mixpanel_properties
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
+    end
 
   end
 

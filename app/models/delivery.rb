@@ -128,12 +128,16 @@ class Delivery < ActiveRecord::Base
 
     network_name = Network.find_by_id(self.network_id).name.capitalize
 
-    self.courses.each do |course|
-      mixpanel_properties = { 
-        'Network' => network_name,
-        'Course'  => course.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async self.user_id, 'Deliveries', mixpanel_properties
+    begin
+      self.courses.each do |course|
+        mixpanel_properties = { 
+          'Network' => network_name,
+          'Course'  => course.title.capitalize
+        }
+        MixpanelTrackerWorker.perform_async self.user_id, 'Deliveries', mixpanel_properties
+      end
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
     end
 
   end
