@@ -44,6 +44,6 @@
     </div>
     <span>&middot;</span>
     <div class="meta-data">
-      <span><%= es_current_date("#{post.created_at.strftime('%B')}", "#{post.created_at.strftime('%d')}", "#{post.created_at.strftime('%Y')}" , "#{post.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
+      <span>Hace <%= time_ago_in_words post.created_at %> a las <%= post.created_at.strftime('%l:%M %P') %></span>
     </div>
 </div>

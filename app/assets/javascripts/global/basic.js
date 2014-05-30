@@ -175,7 +175,7 @@ $(function() {
      } else {
         var avatar_modern = "/assets/imagexxx.png";
      };
-         
+      
       notification = [
           '<li class="unread" id="li_channel_' + data.channel.id + '">',
           '<div class="activity-feed">',

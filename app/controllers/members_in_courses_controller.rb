@@ -99,11 +99,12 @@ class MembersInCoursesController < ApplicationController
       format.js
     end
 
+    permissioning = Permissioning.find_by_user_id_and_network_id(@members_in_course.user.id, current_network.id)
     mixpanel_properties = { 
       'Network' => @members_in_course.course.network.name.capitalize,
       'Title'   => @members_in_course.course.title.capitalize,
       'Type'    => @members_in_course.course.public_status.capitalize,
-      'Role'    => Permissioning.find_by_id(@members_in_course.user.id).role.title.capitalize
+      'Role'    => permissioning.role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async @members_in_course.user.id, 'Members in Courses', mixpanel_properties
 

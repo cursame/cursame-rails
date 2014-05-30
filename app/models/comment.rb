@@ -90,10 +90,13 @@ class Comment < ActiveRecord::Base
     users = hash[:users]
     notification_kind = hash[:kind]
 
+    network = Network.find_by_id(self.network_id)
+    permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, network.id)
+
     mixpanel_properties = { 
-      'Network' => Network.find_by_id(self.network_id).name.capitalize,
+      'Network' => network.name.capitalize,
       'Type'    => self.commentable_type.capitalize,
-      'Role'    => Permissioning.find_by_id(self.user_id).role.title.capitalize
+      'Role'    => permissioning.role.title.capitalize
     }
     MixpanelTrackerWorker.perform_async self.user_id, 'Comments', mixpanel_properties
 
