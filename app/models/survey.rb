@@ -74,12 +74,16 @@ class Survey < ActiveRecord::Base
     self.send_mail(users)
     Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
 
-    self.courses.each do |course|
-      mixpanel_properties = { 
-        'Network' => self.network.name.capitalize,
-        'Course'  => course.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async self.user_id, 'Surveys', mixpanel_properties
+    begin
+      self.courses.each do |course|
+        mixpanel_properties = { 
+          'Network' => self.network.name.capitalize,
+          'Course'  => course.title.capitalize
+        }
+        MixpanelTrackerWorker.perform_async self.user_id, 'Surveys', mixpanel_properties
+      end
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
     end
 
   end
