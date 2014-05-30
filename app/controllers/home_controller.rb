@@ -194,13 +194,17 @@ class HomeController < ApplicationController
     @publication = Wall.find(params[:id])
     @publication.publication.liked_by current_user
 
-    permissioning = Permissioning.find_by_user_id_and_network_id(@publication.publication.user_id, current_network.id)
-    mixpanel_properties = { 
-        'Network' => current_network.name.capitalize,
-        'Type'    => @publication.publication_type.capitalize,
-        'Role'    => permissioning.role.title.capitalize
-    }
-    MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
+    begin
+      permissioning = Permissioning.find_by_user_id_and_network_id(@publication.publication.user_id, current_network.id)
+      mixpanel_properties = { 
+          'Network' => current_network.name.capitalize,
+          'Type'    => @publication.publication_type.capitalize,
+          'Role'    => permissioning.role.title.capitalize
+      }
+      MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
+    end
 
     respond_to do |format|
       format.js
@@ -222,13 +226,17 @@ class HomeController < ApplicationController
     @publication = Comment.find(params[:id])
     @publication.liked_by current_user
   
-    permissioning = Permissioning.find_by_user_id_and_network_id(@publication.user_id, current_network.id)
-    mixpanel_properties = { 
-        'Network' => current_network.name.capitalize,
-        'Type'    => @publication.commentable_type.capitalize,
-        'Role'    => permissioning.role.title.capitalize
-    }
-    MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
+    begin
+      permissioning = Permissioning.find_by_user_id_and_network_id(@publication.user_id, current_network.id)
+      mixpanel_properties = { 
+          'Network' => current_network.name.capitalize,
+          'Type'    => @publication.commentable_type.capitalize,
+          'Role'    => permissioning.role.title.capitalize
+      }
+      MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
+    end
 
     respond_to do |format|
       format.js

@@ -38,14 +38,18 @@ class UsessionsController < Devise::SessionsController
       @find_user.online = true
       @find_user.save!
 
-      permissioning = Permissioning.find_by_user_id_and_network_id(@find_user.id, current_network.id)
-      mixpanel_properties = { 
-        'Network'  => current_network.name.capitalize,
-        'Browser'  => user_agent.browser,
-        'Platform' => user_agent.platform,
-        'Role'     => permissioning.role.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async @find_user.id, 'Logins', mixpanel_properties
+      begin
+        permissioning = Permissioning.find_by_user_id_and_network_id(@find_user.id, current_network.id)
+        mixpanel_properties = { 
+          'Network'  => current_network.name.capitalize,
+          'Browser'  => user_agent.browser,
+          'Platform' => user_agent.platform,
+          'Role'     => permissioning.role.title.capitalize
+        }
+        MixpanelTrackerWorker.perform_async @find_user.id, 'Logins', mixpanel_properties
+      rescue
+        puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
+      end
 
       # avisamos que el usuario se conecto
       PrivatePub.publish_to("/messages/chat_notifications",

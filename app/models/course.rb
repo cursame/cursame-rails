@@ -56,12 +56,16 @@ class Course < ActiveRecord::Base
 
   after_create do
 
-    mixpanel_properties = { 
-      'Title'    => self.title.capitalize,
-      'Type'     => self.public_status.capitalize,
-      'Network'  => Network.find_by_id(self.network_id).name.capitalize
-    }
-    MixpanelTrackerWorker.perform_async self.users.first, 'Courses', mixpanel_properties
+    begin
+      mixpanel_properties = { 
+        'Title'    => self.title.capitalize,
+        'Type'     => self.public_status.capitalize,
+        'Network'  => Network.find_by_id(self.network_id).name.capitalize
+      }
+      MixpanelTrackerWorker.perform_async self.users.first, 'Courses', mixpanel_properties
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
+    end
 
     if self.public_status == 'public'
 
