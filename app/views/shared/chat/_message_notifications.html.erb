@@ -35,6 +35,8 @@
           <% course = Course.find_by_id(channel.channel_name.split("/").last.split("_").last) %>
         <% end %>
 
+          <% next if course.nil? %>
+
           <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{user_channel.id}" %>
           <li class="message-notification-item" data-channel="<%= channel.channel_name %>">
             <div class="activity-feed">
