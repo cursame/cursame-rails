@@ -45,6 +45,7 @@ group :development do
   gem 'meta_request'
   
   gem "selenium-webdriver", "~> 2.35.0"
+  gem "rails_best_practices"
 end
 
 group :subtest do
