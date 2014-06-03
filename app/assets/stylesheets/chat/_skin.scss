@@ -113,6 +113,11 @@
 		}
 	}
 
+	.new-message-panel-textarea {
+		background: transparent !important;
+		border: 0 !important;
+	}
+
 	.load-more-messages a {
 		text-align: center;
 		text-transform: uppercase;
@@ -285,10 +290,10 @@ background: #006696;
 		border-top: 1px solid #B2B2B2;
 	}
 
-	#mesage { 
+	.new-message-textarea { 
 		background: transparent;
 		border: 0;
-		outline: none
+		outline: none;
 	}
 }
 .chatSingle {

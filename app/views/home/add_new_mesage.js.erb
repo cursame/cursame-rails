@@ -1,15 +1,130 @@
-$('div.chat-panel[data-panel-id="<%= @channel_id %>"]').find('input#mesage').val('');
-$('div.chat-messages-container[data-channel="<%= @channel_name %>"]').closest('div.chat-main').find('input#mesage').val('');
+var list = $('#messages-notifications-list'),
+    activityItem = list.find('li[data-channel="<%= @channel.channel_name %>"]');
 
-notification = [
-          '<div class="activity-feed-main">',
-          '<span class="as-link"><%= @user_channel.name %></span>',
-          '<p>' + truncate('<%= @message.mesage %>', 88, "...") +'</p>',
-          '<span class="meta">' + jQuery.timeago(new Date) + '</span></div>'
-      ];
+<% if @type == 'User' %>
+  var notification = {
+    channelName: "<%= @channel.channel_name %>",
+    userName: "<%= @user_channel.name %>",
+    userAvatar: "<%= avatar('user', '45', 'no', @user_channel.id, 'avatar', 'no', 'no') %>",
+    body: truncate("<%= @message.mesage %>", 45, "..."),
+    url: "<%= open_channel_path(@receiver_user_id) %>",
+    createdAt: jQuery.timeago(new Date)
+  };
 
-$('#li_channel_<%= @channel_id %> > div.activity-feed > a > div.activity-feed-main').replaceWith(notification.join(''));
+  var message = {
+    id: "<%= @message.id %>",
+    body: "<%= @message.mesage %>",
+    createdAt: jQuery.timeago(new Date)
+  }
 
-<% publish_to "/chat-joinded/#{@receiver_user_id}" do %>
-  $.get('<%= open_channel_path(@emitter_user_id) %>');
+  var panel = $('.chat-panel[data-channel="<%= @channel.channel_name %><%= @type == "Course" ? "?course=true" : "" %>"]');
+      
+  if ( panel.length ) {
+    var container = panel.find('.chat-messages-container');
+    container.append( HandlebarsTemplates['chat/message-panel-sent']( message ) );
+    scrollToBottom(container);
+  } else {
+    var container = $('#chat-messages');
+    console.log(container);
+    container.append( HandlebarsTemplates['chat/message-panel-sent']( message ) );
+    scrollToBottom(container);
+  };
+<% else %>
+  var notification = {
+    channelName: "<%= @channel.channel_name %>",
+    userName: "<%= @course.title %>",
+    userAvatar: "<%= avatar('course', '45', 'no', @course.id, 'avatar', 'no', 'no') %>",
+    body: "<%= @message.mesage %>",
+    url: "<%= open_channel_path(@course.id, 'course' => true) %>",
+    createdAt: jQuery.timeago(new Date)
+  };
+<% end %>
+
+list.prepend( HandlebarsTemplates['notifications/message-notification']( notification ) );
+activityItem.remove();
+
+<% if @type == 'User' %>
+
+
+  <% publish_to "/chat-joinded/#{@receiver_user_id}" do %>
+    var list = $('#messages-notifications-list'),
+        activityItem = list.find('li[data-channel="<%= @channel.channel_name %>"]'),
+        data = {
+          channelName: "<%= @channel.channel_name %>",
+          userName: "<%= current_user.name %>",
+          userAvatar: "<%= avatar('user', '45', 'no', current_user.id, 'avatar', 'no', 'no') %>",
+          body: "<%= @message.mesage %>",
+          url: "<%= open_channel_path(current_user) %>",
+          createdAt: jQuery.timeago(new Date)
+        };
+    activityItem.remove();
+    list.prepend( HandlebarsTemplates['notifications/message-notification']( data ) );
+
+    var panel = $('.chat-panel[data-channel="<%= @channel.channel_name %>"]'),
+        expandedChat = $('#chat-messages[data-channel="<%= @channel.channel_name %>"]'),
+        message = {
+          id: "<%= @message.id %>",
+          body: "<%= @message.mesage %>",
+          createdAt: jQuery.timeago(new Date),
+          url: "<%= show_user_path current_user.personal_url %>",
+          userAvatar: "<%= avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no') %>"
+        };
+
+    if ( panel.length ) {
+      var messagesContainer = panel.find('.chat-messages-container');
+      messagesContainer.append( HandlebarsTemplates['chat/message-panel-received']( message ) );
+      scrollToBottom(messagesContainer);
+
+    } else if ( expandedChat.length ) {
+      expandedChat.append( HandlebarsTemplates['chat/message-panel-received']( message ) );      
+      scrollToBottom(expandedChat);
+    } else {
+      $.get('<%= open_channel_path(@emitter_user_id) %>');
+    }
+
+    Sounds.play("newMessage");
+  <% end %>
+
+
+<% else %>
+  <% publish_to @channel.channel_name do %>
+    var panel = $('.chat-panel[data-channel="<%= @channel.channel_name %>?course=true"]'),
+        expandedChat = $('#chat-messages[data-channel="<%= @channel.channel_name %>"]'),
+        list = $('#messages-notifications-list'),
+        activityItem = list.find('li[data-channel="<%= @channel.channel_name %>"]'),
+        data = {
+          channelName: "<%= @channel.channel_name %>",
+          userName: "<%= @course.title %>",
+          userAvatar: "<%= avatar('course', '45', 'no', @course.id, 'avatar', 'no', 'no') %>",
+          body: "<%= @message.mesage %>",
+          url: "<%= open_channel_path(@course.id, 'course' => true) %>",
+          createdAt: jQuery.timeago(new Date)
+        },
+        message = {
+          id: "<%= @message.id %>",
+          body: "<%= @message.mesage %>",
+          createdAt: jQuery.timeago(new Date),
+          url: "<%= show_user_path current_user.personal_url %>",
+          userAvatar: "<%= avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no') %>"
+        };
+
+    activityItem.remove();
+    list.prepend( HandlebarsTemplates['notifications/message-notification']( data ) );
+
+    if ( panel.length ) {
+      var messagesContainer = panel.find('.chat-messages-container');
+      messagesContainer.append( HandlebarsTemplates['chat/message-panel-received']( message ) );
+      scrollToBottom(messagesContainer);
+
+    } else if ( expandedChat.length ) {
+      expandedChat.append( HandlebarsTemplates['chat/message-panel-received']( message ) );
+      scrollToBottom(expandedChat);
+    } else {
+      $.get('<%= open_channel_path(@course.id, "course" => true) %>');
+    }
+    var currUserID = <%= current_user.id %>;
+    if ( Cursame.userId != currUserID ) {
+      Sounds.play("newMessage");
+    };
+  <% end %>  
 <% end %>

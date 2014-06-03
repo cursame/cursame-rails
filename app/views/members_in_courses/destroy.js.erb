@@ -1,2 +1,6 @@
-$('.course#<%= @course_id %>').remove();
-Notice('success', 'Has abandonado correctamente el curso.')
+<% if !@channel.nil? %>
+  var channel = "<%= @channel.channel_name %><%= @channel.channel_type == 'Course' ? '?course=true' : '' %>";
+  console.log(channel);
+  Chat.removeActiveChannel( channel )
+<% end %>
+window.location = "<%= courses_path %>"

@@ -75,8 +75,8 @@ GEM
     bcrypt-ruby (3.0.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bourbon (3.1.8)
-      sass (>= 3.2.0)
+    bourbon (3.2.3)
+      sass (~> 3.2)
       thor
     builder (3.0.4)
     callsite (0.0.11)
@@ -387,7 +387,7 @@ DEPENDENCIES
   aws-ses (~> 0.5.0)
   bcrypt-ruby (~> 3.0.0)
   binding_of_caller
-  bourbon (~> 3.1.8)
+  bourbon (~> 3.2.3)
   carrierwave
   coffee-script
   daemons

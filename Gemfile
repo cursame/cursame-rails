@@ -34,7 +34,7 @@ gem 'omniauth-facebook'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bourbon', "~> 3.1.8"
+  gem 'bourbon', "~> 3.2.3"
   gem 'handlebars_assets'
   gem 'coffee-script'
   gem 'uglifier', '>= 1.0.3'

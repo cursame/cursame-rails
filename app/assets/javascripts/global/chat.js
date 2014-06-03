@@ -37,7 +37,6 @@ Chat = {
 
     panel.remove();
     PrivatePub.unsubscribe(channel);
-
     Chat.removeActiveChannel(channel)
     Chat.activePanelsCount--;
     Chat.reOrder();

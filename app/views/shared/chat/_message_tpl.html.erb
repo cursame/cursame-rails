@@ -1,6 +1,6 @@
-<% if message.user != nil && message.user.avatar != nil%>
-	<div id ="message_<%= message.id %>" class="chat-message-item <%= (message.user.id != current_user.id) ? 'message-received' : 'message-sent' %>">
-		<% if message.user.id != current_user.id %>
+<% if !message.user.nil? && !message.user.avatar.nil? %>
+	<div id ="message_<%= message.id %>" class="chat-message-item <%= (@is_course || !@is_course && message.user.id != current_user.id) ? 'message-received' : 'message-sent' %>">
+		<% if @is_course || !@is_course && message.user.id != current_user.id %>
 			<%= link_to show_user_path(message.user.personal_url) do %>
 				<div class="chat-message-author">
 					<span class="avatar-holder">
@@ -14,7 +14,7 @@
 			<div class="chat-message-content">
 				<%= message.mesage_html %>
 			</div>
-			<span class="meta"><%= es_current_date("#{message.created_at.strftime('%B')}", "#{message.created_at.strftime('%d')}", "#{message.created_at.strftime('%Y')}" , "#{message.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
+			<span class="meta">hace <%= time_ago_in_words message.created_at %></span>
 		</div>
 	</div>
 <%end%>

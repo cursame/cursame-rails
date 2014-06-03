@@ -12,7 +12,9 @@ var panelsHolder = $('.chat-panels'),
 
 // No esta en home/chat
 if ( !chatExpanded.length && !channelExist ) {
-	panelsHolder.append('<%= subscribe_to @channel_name %>');
+	if ( typeChannel == 'user') {
+		panelsHolder.append('<%= subscribe_to @channel_name %>');
+	}
 
 	if ( Chat.activePanelsCount == Chat.availableSpots ) {
 		if ( Chat.pendingPanelsCount == 0 ) {
@@ -68,8 +70,6 @@ if ( chatExpanded.length ) {
 	if ( Chat.expandedPanelChannel != channel ) {
 		Chat.expandedPanelChannel = channel;
 		
-		PrivatePub.unsubscribe("<%=@channel_name%>");
-		panelsHolder.append('<%= subscribe_to @channel_name %>');
 		$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel }))%>');
 
 		var messagesTitle     = $('.chat-converstion-title'),
@@ -77,59 +77,8 @@ if ( chatExpanded.length ) {
 	      messagesNewContainer = $('.chat-new-message');
 
 	  messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
-	  $('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
+	  $('.chat-main-container').scrollTop( $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() );
 	};
 };
 
-// Ponemos a cero los mensajes del chat
 $('#messages-notifications-count span').html(0);
-PrivatePub.subscribe('<%= @channel.channel_name %>', function( data ) {
-	var chatPanel 	= $('#chat-channel-'+ data.channel.id ),
-			chatContent = chatPanel.find('.chat-panel-main-content');
-
-	function append_new_message_tpl(element) {
-
-		if(data.message.user_id != undefined) {
-			if(data.sender.avatar != undefined) {
-				var typeMsg 	= '',
-						srcAvatar = '';
-
-				if( data.sender.avatar.profile.url != null ) {
-					srcAvatar = data.sender.avatar.head.url;
-				} else {
-					srcAvatar = '/assets/imagexx.png';
-				}
-
-				if(('' + <%= current_user.id %>) != ('' + data.message.user_id)) {
-					typeMsg = 'message-received';
-					avatar = '<div class="chat-message-author"><span class="avatar-holder"><img src="'+ srcAvatar +'"></span></div>';
-				} else {
-					avatar = ''
-					typeMsg = 'message-sent';
-				}
-				
-			  $('<div id ="message_'+ data.message.id +'" class="chat-message-item '+ typeMsg +'">' + avatar +
-			  	'<div class="chat-message-main">' +
-			  	'<span class="tip"></span><div class="chat-message-content">'+ data.message.mesage_html +'</div><span class="meta">' +moment(data.message.created_at).lang('es').format("DD [de] MMMM [del] YYYY [-] h:mm a")+ '</span></div></div>'
-			  ).appendTo( element );
-			}
-		}
-	}
-
-	/* Si esta en /home/chat
-  ----------------------------------*/
-	if( $('#chat').length ) {
-		var exist = $('[data-channel-id="' +data.channel.id+ '"]');
-		if ( exist.length > 0 ) {
-			append_new_message_tpl( $('#chat-messages') );
-			$('.chat-main-container').animate({ scrollTop: $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() }, 500);
-		};
-	};
-
-	if( $('#chat-channel-' + data.channel.id).length ) {
-		var chatPanel = $('#chat-channel-' + data.channel.id),
-	    messagesContainer = chatPanel.find('.chat-zone div.chat-zone-messages');
-		append_new_message_tpl( messagesContainer );
-		chatPanel.find('.chat-panel-main-content').scrollTop( messagesContainer.prop('scrollHeight') + 30 );
-	};
-});

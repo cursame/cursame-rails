@@ -360,7 +360,7 @@ class HomeController < ApplicationController
       @course_channel = true
       @channel_name = "/messages/course_channel_"+ @receiver_user_id.to_s
 
-      users = Course.find(params[:id]).users
+      users = Course.find_by_id(params[:id]).users
       ######## se agregan validadores de users para el exist #########
       users = users.keep_if{ |x| x != nil }
 
@@ -393,8 +393,15 @@ class HomeController < ApplicationController
       @typed = @message.class.to_s
       activation_activity
 
+      @channel = Channel.find_by_id(params[:channel_id])
       @channel_name = params[:channel_name]
       @channel_id = params[:channel_id]
+
+      @type = @channel_name.split("/").last["course"].nil? ? "User" : "Course"
+
+      if (@type == "Course")
+        @course = Course.find_by_id(@channel_name.split("/").last.split("_").last)
+      end
 
       @emitter_user_id = current_user.id
       @receiver_user_id = params[:receiver_user_id]
@@ -517,8 +524,9 @@ class HomeController < ApplicationController
     channel = Channel.find_by_channel_name(channel_name)
 
     if !channel #canal nuevo
-      channel = Channel.create!(:channel_name=>channel_name,:channel_type => "")
+      channel = Channel.create!(:channel_name=>channel_name, :channel_type => "#{channel_name["course"] ? "Course" : "User"}")
       channel.users = users
+      p channel.users.map{|x| x.id}
       channel.save!
     end # el canal ya existe
     return channel
