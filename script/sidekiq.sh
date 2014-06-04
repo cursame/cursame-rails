@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec chpst bundle exec sidekiq -e production -P /var/run/sidekiq/sidekiq.pid
+exec chpst bundle exec sidekiq -e subtest -P /var/run/sidekiq/sidekiq.pid
