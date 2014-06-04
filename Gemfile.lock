@@ -299,7 +299,7 @@ GEM
       sexp_processor (~> 4.1)
     rubyzip (0.9.9)
     safe_yaml (1.0.3)
-    sass (3.3.7)
+    sass (3.2.13)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -424,6 +424,7 @@ DEPENDENCIES
   rails (= 3.2.1)
   rails_config
   ruby_parser
+  sass (= 3.2.13)
   sass-rails (~> 3.2.3)
   selenium-webdriver (~> 2.35.0)
   sidekiq

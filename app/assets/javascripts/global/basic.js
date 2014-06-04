@@ -156,6 +156,8 @@ $(function() {
      };
    });
 
+   $('.scrollbar').perfectScrollbar();
+
   if ( typeof Cursame != 'undefined' ) {
     Chat.recoverConversations( Cursame.userId );
   };

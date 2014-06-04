@@ -5,10 +5,6 @@
   @include clearfix;
 
   .activities-depot-feeds {
-    width: 268px;
-    float: left;
-    overflow-y: scroll;
-    height: 100%;
     position: relative;
     margin: 20px 0;
     
@@ -38,11 +34,7 @@
   }
 
   .activities-depot-main {
-    width: 565px;
-    float: left;
-    margin: 20px 0 20px 20px;
-    overflow-y: scroll;
-    height: 100%;
+    margin: 20px 0;
 
     .activity-responds-detail {
       padding: 10px;

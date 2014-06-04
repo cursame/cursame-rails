@@ -4,13 +4,17 @@ background-white
 
 <div class="page-normal-header">
   <div class="wrapper spaced">
-
-    <div class="section-header-title no-icon">
-      <div class="section-title">
-        <h1>Editar Perfil</h1>
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-header-title no-icon">
+            <div class="section-title">
+              <h1>Editar Perfil</h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
   </div>
 </div>
 
@@ -18,167 +22,176 @@ background-white
 
   <div class="wrapper ver-spaced">
     <div class="cols-12">
-      <div class="col col-6">
+      <div class="col col-9">
+        <div class="col-inner">
+          <%= devise_error_messages! %>
 
-        <%= devise_error_messages! %>
-        
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :first_name, 'Nombre:'  %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.text_field :first_name, required: "required" %>
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :first_name, 'Nombre:'  %>
             </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :last_name, 'Apellido:' %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.text_field :last_name, required: "required" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :bios, 'Biografía:' %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.text_area :bios, :rows => 6, required: "required" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :email, 'Correo electrónico' %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.email_field :email, required: "required" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :twitter_link, 'Twitter:' %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.text_field :twitter_link, :placeholder => 'Ejemplo: https://twitter.com/cursame' %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :personal_url, 'Dirección:'%>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <div class="user-custom-url-wrap">
-                <%= icon('green-checkmark') %>
-                <%= icon('red-x') %>
-                <span>http://cursa.me/users/</span>
-                <%= f.text_field :personal_url, :class => 'personal-url' %>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.text_field :first_name, required: "required" %>
               </div>
-              <span id="url-status"></span>
-              <p>Recuerda no colocar espacios ni simbolos como (¨,:*`^;/ \) ya que no se aceptará tu url</p>
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :password, 'Nueva contraseña:' %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.password_field :password, :autocomplete => "off", :minlength => 6 %>
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :last_name, 'Apellido:' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.text_field :last_name, required: "required" %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :password_confirmation, 'Confirmar nueva contraseña:' %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.password_field :password_confirmation, :minlength => 6 %>
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :bios, 'Biografía:' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.text_area :bios, :rows => 6, required: "required" %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="form-group-label">
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <p>¿Quieres darte de baja? <%= link_to "Cancelar mi cuenta", destroy_user_with_parts_path(current_user.id), confirm: "¿Estas seguro de que quieres darte de baja de Cúrsame?" %>.</p> 
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :email, 'Correo electrónico' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.email_field :email, required: "required" %>
+              </div>
             </div>
           </div>
-        </div>
-      
+
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :twitter_link, 'Twitter:' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.text_field :twitter_link, :placeholder => 'Ejemplo: https://twitter.com/cursame' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :personal_url, 'Dirección:'%>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <div class="user-custom-url-wrap">
+                  <%= icon('green-checkmark') %>
+                  <%= icon('red-x') %>
+                  <span>http://cursa.me/users/</span>
+                  <%= f.text_field :personal_url, :class => 'personal-url' %>
+                </div>
+                <span id="url-status"></span>
+                <p>Recuerda no colocar espacios ni simbolos como (¨,:*`^;/ \) ya que no se aceptará tu url</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :password, 'Nueva contraseña:' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.password_field :password, :autocomplete => "off", :minlength => 6 %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :password_confirmation, 'Confirmar nueva contraseña:' %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.password_field :password_confirmation, :minlength => 6 %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-label">
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <p>¿Quieres darte de baja? <%= link_to "Cancelar mi cuenta", destroy_user_with_parts_path(current_user.id), confirm: "¿Estas seguro de que quieres darte de baja de Cúrsame?" %>.</p> 
+              </div>
+            </div>
+          </div>
+        </div>      
       </div>
       
       <div class="col col-3">
-        <div class="profile-images">
-          
-          <div class="profile-image">
-            <span class="avatar-holder">
-              <%= avatar('user', '150', "no", current_user.id, "avatar img_prev_user", "no", "no") %>
-            </span>
-
-            <label class="btn btn-secondary" >
-              Cambiar imagen de perfil
-              <span class="hide-input-file">
-                <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_user');" %>
+        <div class="col-inner">
+          <div class="profile-images">
+            <div class="profile-image">
+              <span class="avatar-holder">
+                <%= avatar('user', '150', "no", current_user.id, "avatar img_prev_user", "no", "no") %>
               </span>
-            </label>
-          </div>
 
-          <div class="profile-image">
-            <span class="avatar-holder">
-              <img class="avatar avatar-cover-small img_prev_cover" src="<%= current_user.coverphoto.file.nil? ? "/assets/#{current_user.cover_photox}" : current_user.coverphoto %>"/>
-            </span>
-
-            <label class="btn btn-secondary">
-              Cambiar imagen de portada
-              <span class="hide-input-file">
-                <%= f.file_field :coverphoto, :onchange => "readURL(this,'img_prev_cover');" %>
+              <label class="btn btn-secondary" >
+                Cambiar imagen de perfil
+                <span class="hide-input-file">
+                  <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_user');" %>
+                </span>
+              </label>
+            </div>
+            <div class="profile-image">
+              <span class="avatar-holder">
+                <img class="avatar avatar-cover-small img_prev_cover" src="<%= current_user.coverphoto.file.nil? ? "/assets/#{current_user.cover_photox}" : current_user.coverphoto %>"/>
               </span>
-            </label>
-          </div>
 
+              <label class="btn btn-secondary">
+                Cambiar imagen de portada
+                <span class="hide-input-file">
+                  <%= f.file_field :coverphoto, :onchange => "readURL(this,'img_prev_cover');" %>
+                </span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <div class="wrapper ver-spaced spaced clearfix">
-    <div class="fl">
-      <%= link_to "Cancelar", :back, class: 'btn btn-secondary' %>
-    </div>
-    <div class="fr">
-      <ul class="list-buttons right">
-        <li>
-          <%= f.password_field :current_password, placeholder: 'Escribe tu contraseña para guardar', required: "required", minlength: 6 %>
-        </li>
-        <li>
-          <span class="btn btn-primary input-btn">
-            <%= f.submit "Actualizar perfil" %>
-          </span>
-        </li>
-      </ul>
+  <div class="wrapper ver-spaced clearfix">
+    <div class="cols-12">
+      <div class="col col-4">
+        <div class="col-inner">
+          <div class="fl">
+            <%= link_to "Cancelar", :back, class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      </div>
+      <div class="col col-8">
+        <div class="col-inner">
+          <div class="fr">
+            <ul class="list-buttons right">
+              <li>
+                <%= f.password_field :current_password, placeholder: 'Escribe tu contraseña para guardar', required: "required", minlength: 6 %>
+              </li>
+              <li>
+                <span class="btn btn-primary input-btn">
+                  <%= f.submit "Actualizar perfil" %>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

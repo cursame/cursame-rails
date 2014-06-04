@@ -35,31 +35,37 @@
 
 <div class="profile-user-bar">
   <div class="wrapper">
-    <div class="profile-name-avatar">
-      <div class="profile-avatar" id="box-user-credential" >
-        <%= link_to show_user_path(@user_l.personal_url) do %>
-          <span class="avatar-holder">
-            <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
-          </span>
-        <% end %>
-      </div>
-      <%= link_to show_user_path(@user_l.personal_url) do %>
-        <h1><%= truncate(@user_l.name , :omission => "...", :length => 24) %></h1>
-      <% end %>
-    </div>
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="profile-name-avatar">
+            <div class="profile-avatar" id="box-user-credential" >
+              <%= link_to show_user_path(@user_l.personal_url) do %>
+                <span class="avatar-holder">
+                  <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
+                </span>
+              <% end %>
+            </div>
+            <%= link_to show_user_path(@user_l.personal_url) do %>
+              <h1><%= truncate(@user_l.name , :omission => "...", :length => 24) %></h1>
+            <% end %>
+          </div>
 
-    <div class="profile-navigation">
-      <ul>
-        <li>
-          <%= link_to 'Información', user_info_path(@user_l.personal_url) %>
-        </li>
-        <li>
-          <%= link_to 'Cursos', user_courses_path(@user_l.personal_url) %>
-        </li>
-        <li>
-          <%= link_to 'Amigos', user_friends_path(@user_l.personal_url) %>
-        </li>
-      </ul>
+          <div class="profile-navigation">
+            <ul>
+              <li>
+                <%= link_to 'Información', user_info_path(@user_l.personal_url) %>
+              </li>
+              <li>
+                <%= link_to 'Cursos', user_courses_path(@user_l.personal_url) %>
+              </li>
+              <li>
+                <%= link_to 'Amigos', user_friends_path(@user_l.personal_url) %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
