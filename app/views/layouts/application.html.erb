@@ -39,7 +39,6 @@
     </head>
     <body class="<%= yield :body_classes %>">
       <% cache_expire %>
-      <%= subscribe_to "/chat-joinded/#{current_user.id}" %>
       <%= render partial: '/shared/sidebar' %>
       <div class="wrap">
         <%= render partial: '/shared/user_header' %>
@@ -47,7 +46,14 @@
           <%= yield %>
         </div>
       </div>
-      <div class="chat-panels"></div>
+      <div class="chat-panels">
+        <%= subscribe_to "/chat-joinded/#{current_user.id}" %>
+        <% unless current_user_courses.empty? %>
+          <% @courses_online.each do |course|%>
+            <%= subscribe_to "/messages/course_channel_#{course.id}" %>
+          <% end %>
+        <% end %>
+      </div>
       <%= render :partial => '/shared/sounds' %>
       <%= render :partial => '/shared/admin_messages' %>
       <script>

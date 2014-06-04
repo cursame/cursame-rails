@@ -120,6 +120,7 @@ class MembersInCoursesController < ApplicationController
     @members_in_course = MembersInCourse.find(params[:id])
     @course_id = @members_in_course.course_id
     @members_in_course.destroy
+    @channel = Channel.find_by_channel_name("/messages/course_channel_#{@course_id}") 
 
     respond_to do |format|
       format.js

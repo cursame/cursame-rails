@@ -1,8 +1,9 @@
 <% if course_conversation %>
-	<% course = Course.find receiver_user_id %>
+	<% course = Course.find_by_id receiver_user_id %>
 <% else %>
-	<% user = User.find receiver_user_id %>
+	<% user = User.find_by_id receiver_user_id %>
 <% end %>
+
 
 <div id="chat-channel-<%= channel.id%>" class="chat-panel active chat-panel-item" data-panel-id="<%= channel.id%>" data-channel="<%= channel.channel_name %><%= @course_channel == true ? '?course=true' : '' %>">
 	<div class="chat-panel-tab" onclick="Chat.openMinimizedPanel(this)">
@@ -38,10 +39,10 @@
 					<% end %>
 
 					<div class="chat-zone-messages chat-messages-container" id="chat-zone-messages-channel<%= channel.id%>">
-						<%= render(:partial => '/shared/chat/messages', :locals => {:messages => messages, :on_panel => "hola" })%>
+						<% @is_course = course_conversation %>
+						<%= render(partial: '/shared/chat/messages', locals: { messages: messages })%>
 					</div>
 				</div>
-				
 				<div class="chat-zone-footer">
 					<%= render :partial => "shared/chat/add_message_form", :locals => { :channel_name => channel.channel_name, :channel_id => channel.id } %>
 				</div>

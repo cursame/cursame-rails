@@ -19,6 +19,25 @@ class MembersInCourse < ActiveRecord::Base
         Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
       end
     end
+
+
+    if not(accepted.nil?)
+
+      course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}") 
+      if not(course_channel.nil?)
+        audiences = course_channel.audiences
+        if (accepted)
+          index = audiences.index{|x| x.user_id == user_id}
+          if (index.nil?) 
+           Audience.create(user_id: user_id, channel_id: course_channel.id)
+          end
+        else
+          if not(index.nil?)
+           audiences[index].destroy
+          end
+        end
+      end
+    end
   end
     
   before_destroy do
@@ -30,6 +49,19 @@ class MembersInCourse < ActiveRecord::Base
         notification.destroy
       end
     end
+
+
+    course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}") 
+    if not(course_channel.nil?)
+      audiences = course_channel.audiences
+      index = audiences.index{|x| x.user_id == user_id}
+          
+      if not(index.nil?)
+        audiences[index].destroy
+      end
+    end
+
+
   end
   
   # Calcula la calificacion de examenes

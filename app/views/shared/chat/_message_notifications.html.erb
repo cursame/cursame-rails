@@ -29,8 +29,15 @@
 			 else
 			 mesage.user
 			 end %>
+
+       <% type = channel.channel_name.split("/").last["course"].nil? ? "User" : "Course" %>
+        <% if (type == "Course") %>
+          <% course = Course.find_by_id(channel.channel_name.split("/").last.split("_").last) %>
+          <% next if course.nil? %>
+        <% end %>
+
           <% url = channelType[1] ? "/home/open_channel/#{channelType[1]}?course=true" : "/home/open_channel/#{user_channel.id}" %>
-          <li id="li_channel_<%= channel.id %>">
+          <li class="message-notification-item" data-channel="<%= channel.channel_name %>">
             <div class="activity-feed">
               <%= link_to url, :remote => true do %>
                 <div class="activity-feed-author">
@@ -39,7 +46,13 @@
                   </span>
                 </div>
                 <div class="activity-feed-main">
-                  <h6><span class="as-link"><%= user_channel.name %></span></h6>
+                  <h6><span class="as-link">
+                    <% if type == 'Course' %>
+                      <%= truncate(course.title, :omission => "...", :length => 40) %>
+                    <% else %>
+                      <%= truncate(user_channel.name, :omission => "...", :length => 40) %>
+                    <% end %>
+                  </span></h6>
                   <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
                   <span class="meta">Hace <%= time_ago_in_words last_message.created_at %></span>
                 </div>
@@ -51,7 +64,7 @@
       </ul>
     </div>
     <div class="activity-dropdown-footer">
-      <%= link_to "Ver todos los mensajes",chat_path%>
+      <%= link_to "Ver todos los mensajes", chat_path %>
     </div>
   </div>
 </div>

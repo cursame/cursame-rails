@@ -1,5 +1,5 @@
 <%= form_tag "/home/add_new_mesage", :class => "new-chat-pannel-message", :id => 'new-chat-pannel-message'+ channel_id.to_s,  :remote =>true do %>
-	<%= text_area_tag :mesage, nil ,:id => 'chat_'+ channel_id.to_s,:required =>'required', :placeholder => 'Escribe un mensaje y presiona Enter.', :autocomplete => "off" %>
+	<%= text_area_tag :mesage, nil ,:id => 'chat_'+ channel_id.to_s,:required =>'required', :placeholder => 'Escribe un mensaje y presiona Enter.', :autocomplete => "off", :class => 'new-message-panel-textarea' %>
 	<%= hidden_field_tag :channel_name, channel_name %>
   <%= hidden_field_tag :receiver_user_id, @receiver_user_id %>
 	<%= hidden_field_tag :channel_id, channel_id %>

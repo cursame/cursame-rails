@@ -231,37 +231,48 @@ class ApplicationController < ActionController::Base
   end
   ###### comandos de generación de actividades
   def activation_activity
+
     @activity = Activity.new
-    @activity.title =  @az.title
-    @activity.activitye_id= @az.id
-    @activity.activitye_type =  @typed
-    @activity.ip_address = request.ip
 
-    if(request && request.location)
-      city = request.location.city
-      if city == nil
-        ct = 'Location City not Found'
-      else
-        ct = city
+    begin
+
+      @activity.title          = @az.title
+      @activity.activitye_id   = @az.id
+      @activity.activitye_type = @typed
+      @activity.ip_address     = request.ip
+
+      if (request && request.location)
+
+        city    = request.location.city
+        country = request.location.country_code
+        ip      = request.ip
+
+        if city == nil
+          ct = 'Location City not Found'
+        else
+          ct = city
+        end
+
+        if country == nil
+          cot = 'Location Country not Found'
+        else
+          cot = country
+        end
+
+        @activity.address = "#{ct} #{cot}"
+        @activity.browser = "#{browser_active}"
+        @activity.version_browser = "#{browser_version}"
+        @activity.computer_plataform = "#{computer_platform}"
+        @activity.user_id = current_user.id
+
       end
 
-      country = request.location.country_code
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error getting request location"
+    end
 
-      if country == nil
-        cot = 'Location Country not Found'
-      else
-        cot = country
-      end
+    @activity.save
 
-      ip = request.ip
-
-      @activity.address = "#{ct} #{cot}"
-      @activity.browser = "#{browser_active}"
-      @activity.version_browser ="#{browser_version}"
-      @activity.computer_plataform = "#{computer_platform}"
-      @activity.user_id = current_user.id
-      @activity.save
-    end    
   end
 
   #### like_compare

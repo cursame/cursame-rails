@@ -86,6 +86,16 @@ function mask(idOrCls,msj) {
   $('#mask').show();
 };
 
+function scrollToBottom(obj) {
+  var holder = obj.parent(),
+      childrens = holder.children(),
+      totalHeight = 0;
+  $.each(childrens, function(index, val) {
+    totalHeight += $(val).outerHeight();
+  });
+  holder.scrollTop(totalHeight);
+}
+
 function unmask(idOrCls) {
   $('#mask').hide();
 };
@@ -187,8 +197,6 @@ $(function() {
           '<p>' + truncate(data.message.mesage, 88, "...") +'</p>',
           '<span class="meta">' + jQuery.timeago(data.message.created_at) + '</span></div></a></div></li>'
       ];
-      
-      Sounds.play("newMessage");
 
       //si ya existe la conversacion no se crea la notificación
       if( $('#chat-channel-'+data.channel.id).length ) {
