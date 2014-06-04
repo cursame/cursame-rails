@@ -61,14 +61,14 @@
     <div class="sidebar-section-header s-unit">
       <h3><%= current_network.courses_tag %></h3>
     </div>
-    <div class="sidebar-section-main scroller s-to-f">
+    <div class="sidebar-section-main scroller s-to-f scrollbar">
       <ul class="section-list side-courses">
         <% unless current_user_courses.empty? %>
           <% current_user_courses.each do |c| %>
             <li>
               <%= link_to course_path(c.id) do %>
                 <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
-                <%= truncate( c.title, omission: "...", length: 28) %>
+                <%= truncate( c.title, omission: "...", length: 25) %>
               <% end %>
             </li>
           <% end %>
@@ -101,7 +101,7 @@
       </div>
 
     </div>
-    <div class="sidebar-section-main scroller s-to-f"> 
+    <div class="sidebar-section-main scroller s-to-f scrollbar"> 
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
           <% if current_user.count_friendships != 0 %>

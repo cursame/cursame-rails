@@ -33,6 +33,7 @@ gem 'mini_magick'
 gem 'omniauth-facebook'
 
 group :assets do
+  gem 'sass', '3.2.13'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bourbon', "~> 3.2.3"
   gem 'handlebars_assets'

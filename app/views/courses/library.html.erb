@@ -8,61 +8,67 @@ background-white
 
 <%= render :partial => 'course-header' %>
 <div class="wrapper">
-  <div class="sub-profile-title">
-    <div class="fl">
-      <h3>Biblioteca del Curso</h3>
-      <span class="library-count">
-        <% if @course.course_files.any? %>
-          <%= pluralize(@course.course_files.count, 'Archivo', 'Archivos') %>
-        <% end %>
-      </span>
-    </div>
-    <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
-      <div class="fr">
-        <%= form_for CourseFile.new, :html => {:multipart => true} do |f| %>
-          <label class="btn btn-primary">
-            Subir archivo
-            <span class="hide-input-file">
-              <input id="upload-files-to-course" name="course_file[file]" type="file" multiple="multiple"/>
-              <%= hidden_field_tag :course_id, @course.id %> 
-              <%= f.hidden_field :published, :value => true %>
+  <div class="cols-12">
+    <div class="col col-12">
+      <div class="col-inner">
+        <div class="sub-profile-title">
+          <div class="fl">
+            <h3>Biblioteca del Curso</h3>
+            <span class="library-count">
+              <% if @course.course_files.any? %>
+                <%= pluralize(@course.course_files.count, 'Archivo', 'Archivos') %>
+              <% end %>
             </span>
-          </label>
-        <% end %>
-      </div>
-    <%end%>   
-  </div>
-  <div id="uplok">
-    <script id="template-upload-2" type="text/x-tmpl">
-      <div class="upload">
-        <div class="deletedprogresbar">
-          {%=o.name%}<div class="progress-add"></div>
-          <div class="content_progress_bar">
-            <div class="progress_exact"></div>
+          </div>
+          <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+            <div class="fr">
+              <%= form_for CourseFile.new, :html => {:multipart => true} do |f| %>
+                <label class="btn btn-primary">
+                  Subir archivo
+                  <span class="hide-input-file">
+                    <input id="upload-files-to-course" name="course_file[file]" type="file" multiple="multiple"/>
+                    <%= hidden_field_tag :course_id, @course.id %> 
+                    <%= f.hidden_field :published, :value => true %>
+                  </span>
+                </label>
+              <% end %>
+            </div>
+          <%end%>   
+        </div>
+        <div id="uplok">
+          <script id="template-upload-2" type="text/x-tmpl">
+            <div class="upload">
+              <div class="deletedprogresbar">
+                {%=o.name%}<div class="progress-add"></div>
+                <div class="content_progress_bar">
+                  <div class="progress_exact"></div>
+                </div>
+              </div>
+            </div>
+          </script>
+        </div>
+        <div class="library-wrap">
+          <% if @course.course_files.any? %>
+            <div class="library-items-list">
+              <% @files.reverse.each do |cf|%>
+                <% @name =  "#{cf.file}" %>
+                <% @sintetic_name = @name.split('/').last%>
+                <% @termination = @name.split('.').last %>
+                <%= render :partial => "course_files/library_item", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
+              <% end %>
+              <div id="paginate-files"></div>
+              <div id="paginador_container"><%= link_to "Cargar archivos anteriores", library_in_course_pagination_path(:page => 2), :id => "paginador", :remote => true%></div>
+            </div>
+          <% else %>
+            <div class="no-content-section">
+              <h4>Este curso no tiene archivos en su librería.</h4>
+            </div>
+          <% end %>
+          <div class="library-terms">
+            <p class="small">Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo <%= mail_to "info@cursa.me", "info@cursa.me"%></p>
           </div>
         </div>
       </div>
-    </script>
-  </div>
-  <div class="library-wrap">
-    <% if @course.course_files.any? %>
-      <div class="library-items-list">
-        <% @files.reverse.each do |cf|%>
-          <% @name =  "#{cf.file}" %>
-          <% @sintetic_name = @name.split('/').last%>
-          <% @termination = @name.split('.').last %>
-          <%= render :partial => "course_files/library_item", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
-        <% end %>
-        <div id="paginate-files"></div>
-        <div id="paginador_container"><%= link_to "Cargar archivos anteriores", library_in_course_pagination_path(:page => 2), :id => "paginador", :remote => true%></div>
-      </div>
-    <% else %>
-      <div class="no-content-section">
-        <h4>Este curso no tiene archivos en su librería.</h4>
-      </div>
-    <% end %>
-    <div class="library-terms">
-      <p class="small">Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo <%= mail_to "info@cursa.me", "info@cursa.me"%></p>
     </div>
   </div>
 </div>

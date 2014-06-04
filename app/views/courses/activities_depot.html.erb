@@ -1,51 +1,65 @@
-<% content_for :javascripts do  %>
-<%= javascript_include_tag('courses/evaluate-activities') %>
-<% end %>
-
-<div class="section-header spaced activities-depot-header">
-  <div class="wrapper spaced">
-    <div class="section-header-content">
-
-      <div class="section-header-title w-subnav">
-        <div class="section-icon">
-          <span class="avatar-holder">
-            <%= avatar('course', '150', "no", @course.id, "avatar avatar-60", "no", "no") %>
-          </span>
+<div class="section-header activities-depot-header">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-header-content">
+            <div class="section-header-title w-subnav">
+              <div class="section-icon">
+                <span class="avatar-holder">
+                  <%= avatar('course', '150', "no", @course.id, "avatar avatar-60", "no", "no") %>
+                </span>
+              </div>
+              <div class="section-title">
+                <h1><%= truncate( @course.title, omission: "...", length: 55) %></h1>
+                <ul class="section-subnav">
+                  <li class="active">
+                    <a class="all_select" href="#" title="Todos" data-filter="all">Todo</a>
+                  </li>
+                  <li>
+                    <a class="homework_select" href="#"  title="Tareas" data-filter="tarea">Tareas</a>
+                  </li>
+                  <li>
+                    <a class="survey_select" href="#"  title="Cuestionarios" data-filter="examen">Cuestionarios</a>  
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="section-header-actions">
+              <%=link_to "Regresar al curso", course_path(@course)%>
+            </div>
+          </div>
         </div>
-        <div class="section-title">
-          <h1><%= @course.title %></h1>
-          <ul class="section-subnav">
-            <li class="active">
-              <a class="all_select" href="#" title="Todos" data-filter="all">Todo</a>
-            </li>
-            <li>
-              <a class="homework_select" href="#"  title="Tareas" data-filter="tarea">Tareas</a>
-            </li>
-            <li>
-              <a class="survey_select" href="#"  title="Cuestionarios" data-filter="examen">Cuestionarios</a>  
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="section-header-actions">
-        <%=link_to "Regresar al curso", course_path(@course)%>
       </div>
     </div>
   </div>
 </div>
-<div class="wrapper spaced">
+<div class="wrapper">
   <div class="activities-depot-wrap">
-    <div class="activities-depot-feeds">
-      <div class="activities-depot-feeds-title">
-        <span class="meta-info">Actividades</span>
+    <div class="cols-12">
+      <div class="col col-4">
+        <div class="col-inner">
+          <div class="activities-depot-feeds">
+            <div class="activities-depot-feeds-title">
+              <span class="meta-info">Actividades</span>
+            </div>
+            <div id="activites-feeds-container">
+            </div>
+            <div id="load-more-activities">
+              <%= link_to "Cargar más actividades", "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 }  %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="activites-feeds-container">
+      <div class="col col-8">
+        <div class="col-inner">
+          <div class="activities-depot-main">
+            <div class="inner-no-content">
+              <h5>Selecciona una actividad.</h5>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="load-more-activities">
-        <%= link_to "Cargar más actividades", "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 }  %>
-      </div>
-    </div>
-    <div class="activities-depot-main">
     </div>
   </div>
 </div>
@@ -147,7 +161,7 @@
           if (activityFeed.compose === undefined) continue;
 
           if ( activityFeed.compose && activityFeed.compose.type == "tarea" || activityFeed.compose.type == "examen") {
-              feedsContainer.append( HandlebarsTemplates['activities-depot/feeds']( activityFeed ) );
+            feedsContainer.append( HandlebarsTemplates['activities-depot/feeds']( activityFeed ) );
           }
         }
       }
