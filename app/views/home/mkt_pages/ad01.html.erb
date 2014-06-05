@@ -1,31 +1,34 @@
 <div class="mkt-main">
-  <div class="wrapper">
-    <div class="cols-12">
-      <div class="col col-7">
-        <div class="col-inner">
-          <%= link_to icon('cursame-logo-gray'), root_path %>
-          <div class="l-title">
-            <h1>Herramientas del futuro en la educación de hoy</h1>
-          </div>
-          <div class="l-body">
-            <p>Las demandas profesionales de la economía global y la sociedad de la información requieren del dominio de herramientas socioculturales para interactuar con conocimientos, tales como el lenguaje y la información; al mismo tiempo requieren de las herramientas físicas, tales como las computadoras, móviles y dispositivos con interfaces cada día más complejas. Usar las herramientas de forma interactiva requiere de algo más que el simple acceso a la herramienta y la destreza técnica requerida para manejar la situación. Los alumnos también necesitan crear y adaptar el conocimiento y las destrezas.</p>
+  <div class="mkt-page-main" style="display: block;">
+    <div class="wrapper">
+      <div class="cols-12">
+        <div class="col col-7">
+          <div class="col-inner">
+            <%= link_to icon('cursame-logo-gray'), root_path %>
+            <div class="l-title">
+              <h1>Herramientas del futuro en la educación de hoy</h1>
+            </div>
+            <div class="l-body">
+              <p>Las demandas profesionales de la economía global y la sociedad de la información requieren del dominio de herramientas socioculturales para interactuar con conocimientos, tales como el lenguaje y la información; al mismo tiempo requieren de las herramientas físicas, tales como las computadoras, móviles y dispositivos con interfaces cada día más complejas. Usar las herramientas de forma interactiva requiere de algo más que el simple acceso a la herramienta y la destreza técnica requerida para manejar la situación. Los alumnos también necesitan crear y adaptar el conocimiento y las destrezas.</p>
 
-            <p>Hoy se reconoce que las tecnologías de la información y la comunicación ofrecen muchas posibilidades para apoyar los procesos de enseñanza-aprendizaje. Favorecen la motivación, el interés por la materia, la creatividad, la imaginación y los métodos de comunicación, mejoran la capacidad para resolver problemas y el trabajo en grupo, refuerzan la autoestima y permiten mayor autonomía de aprendizaje.</p>
+              <p>Hoy se reconoce que las tecnologías de la información y la comunicación ofrecen muchas posibilidades para apoyar los procesos de enseñanza-aprendizaje. Favorecen la motivación, el interés por la materia, la creatividad, la imaginación y los métodos de comunicación, mejoran la capacidad para resolver problemas y el trabajo en grupo, refuerzan la autoestima y permiten mayor autonomía de aprendizaje.</p>
 
-            <p><strong>Cúrsame</strong> es una plataforma educativa integral que contribuye a lograr mejores resultados en el aprendizaje de los alumnos y en la inclusión digital de maestros, alumnos y miembros de su familia.</p>
+              <p><strong>Cúrsame</strong> es una plataforma educativa integral que contribuye a lograr mejores resultados en el aprendizaje de los alumnos y en la inclusión digital de maestros, alumnos y miembros de su familia.</p>
 
-            <p>Su principal característica es que retoma aspectos de los Sistemas de Gestión de Aprendizajes (Learning Activity Management System) y de las redes sociales y los integra en una sola plataforma, facilitando los flujos de información, los intercambios de conocimiento y el trabajo colaborativo a través de comunidades de aprendizaje.</p>
+              <p>Su principal característica es que retoma aspectos de los Sistemas de Gestión de Aprendizajes (Learning Activity Management System) y de las redes sociales y los integra en una sola plataforma, facilitando los flujos de información, los intercambios de conocimiento y el trabajo colaborativo a través de comunidades de aprendizaje.</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col col-5">
-        <div class="col-inner">
-          <div class="l-form-wrap">
-            <h5>Llena el siguiente formulario y nos pondremos en contacto contigo.</h5>
-            <%= render partial: 'shared/website/contact_form', locals: { contact_type: 'demo_request', lading_page_id: 'Ad01' } %>
+        <div class="col col-5">
+          <div class="col-inner">
+            <div class="l-form-wrap">
+              <h5>Llena el siguiente formulario y nos pondremos en contacto contigo.</h5>
+              <%= render partial: 'shared/website/contact_form', locals: { contact_type: 'demo_request', lading_page_id: 'Ad01' } %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <%= render partial: 'home/mkt_pages/thanks' %>
 </div>

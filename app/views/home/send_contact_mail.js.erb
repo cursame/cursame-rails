@@ -1,3 +1,9 @@
 $('#contact-form')[0].reset();
 $('.other-lms').hide();
-alert('Tu mensaje se ha enviado!');
+
+if ( $('.mkt-langing-pages').length ) {
+  $('.mkt-page-main').hide();
+  $('.thanks-message').show();
+} else {
+  alert('Tu mensaje se ha enviado!');
+};
