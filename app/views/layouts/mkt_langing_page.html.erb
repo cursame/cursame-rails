@@ -22,8 +22,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= yield :body_classes %>">
+  
     <% cache_expire %>
     <%= yield %>
+
     <div class="mk-landing-page-footer wrapper">
       <div class="cols-12">
         <div class="col-col-12">
@@ -34,26 +36,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Google Code for Registro Conversion Page -->
-    <script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 968742842;
-    var google_conversion_language = "en";
-    var google_conversion_format = "3";
-    var google_conversion_color = "ffffff";
-    var google_conversion_label = "a8tMCK6uswoQuq_3zQM";
-    var google_remarketing_only = false;
-    /* ]]> */
-    </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-    </script>
-    <noscript>
-    <div style="display:inline;">
-    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/968742842/?label=a8tMCK6uswoQuq_3zQM&amp;guid=ON&amp;script=0"/>
-    </div>
-    </noscript>
-    
+    </div>    
   </body>
 </html>

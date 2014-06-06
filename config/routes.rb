@@ -341,6 +341,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/teacher-day", :to => "home#teacher_day", :as => :teacher_day
   get "/about", :to => "home#about_us", :as => :about_us
 
+  get "/mkt/thanks", :to => "home#mkt_thanks", :as => 'mkt_thanks'
   get "/mkt/:name", :to => "home#mkt"
 
   #para inicar sesion 
