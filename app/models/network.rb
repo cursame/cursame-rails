@@ -56,8 +56,11 @@ class Network < ActiveRecord::Base
   def send_email(admin, users, subject, message)
     users.each do |user|
       if (admin != user) then
-        mail = Notifier.send_email(user,subject,message)
-        mail.deliver
+        begin
+          mail = Notifier.send_email(user,subject,message)
+          mail.deliver
+        rescue
+        end
       end
     end
   end

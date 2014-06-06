@@ -19,8 +19,11 @@ class MessagesController < ApplicationController
     message = Message.new(params[:message])
     course.members_in_courses.each do
       |member|
-      mail = Notifier.send_email_members_in_course(member,message)
-      mail.deliver
+      begin
+        mail = Notifier.send_email_members_in_course(member,message)
+        mail.deliver
+      rescue
+      end
     end
     redirect_to :back
   end

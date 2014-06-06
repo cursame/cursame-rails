@@ -54,8 +54,11 @@ class MembersInCoursesController < ApplicationController
         activation_activity
 
         if (!@members_in_course.owner and @course_find.public_status == "Private") then
-          mail = Notifier.new_member_in_course(@course_find, @members_in_course.user)
-          mail.deliver
+          begin
+            mail = Notifier.new_member_in_course(@course_find, @members_in_course.user)
+            mail.deliver
+          rescue
+          end
         end
         format.js
         format.json

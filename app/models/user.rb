@@ -576,8 +576,11 @@ class User < ActiveRecord::Base
       end
     end
     
-    mail = Notifier.send_import_users(user_admin,arrayErrores)
-    mail.deliver
+    begin
+      mail = Notifier.send_import_users(user_admin,arrayErrores)
+      mail.deliver
+    rescue
+    end
     #return arrayErrores
     return
   end
