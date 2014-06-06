@@ -29,7 +29,10 @@ class Api::TokensController < ApplicationController
      # puts '-------------------'
       # puts password
       if(@user.save)
-      	UserMailer.user_password(@user, network, password).deliver
+        begin
+          UserMailer.user_password(@user, network, password).deliver
+        rescue
+        end
       	render :status => 200, :json => {:response => {:message => "Se ha enviado tu contrasena a tu Email",:success => true}}, :callback => params[:callback]
       else
       	render :status => 200, :json => {:response => {:message => "El usuario no existe, verifica tu Email ",:success => true}}, :callback => params[:callback]

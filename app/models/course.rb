@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
 
   # mount_uploader :avatar, AvatarUploader
@@ -169,8 +170,11 @@ class Course < ActiveRecord::Base
         end
       end
     end
-    mail = Notifier.send_import_courses(user_admin,arrayErrores)
-    mail.deliver
+    begin
+      mail = Notifier.send_import_courses(user_admin,arrayErrores)
+      mail.deliver
+    rescue
+    end
   end
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}

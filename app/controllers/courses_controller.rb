@@ -155,8 +155,11 @@ class CoursesController < ApplicationController
   def sending
     @course = Course.find(params[:course_id])
     @course.members_in_courses.each do |member|
-      mail = Notifier.send_email_members_in_course(member,params[:subject],params[:message])
-      mail.deliver
+      begin
+        mail = Notifier.send_email_members_in_course(member,params[:subject],params[:message])
+        mail.deliver
+      rescue
+      end
     end
     respond_to do |format|
         format.html{redirect_to course_path(@course)}

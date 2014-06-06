@@ -10,8 +10,11 @@ class SettingsTeacher < ActiveRecord::Base
     limit = self.limit_surveys
     if (count + 1 == limit)
       self.update_attributes(:count_surveys => 0)
-      mail = Notifier.send_limit_surveys(self.user)
-      mail.deliver
+      begin
+        mail = Notifier.send_limit_surveys(self.user)
+        mail.deliver
+      rescue
+      end
     else
       self.update_attributes(:count_surveys => self.count_surveys + 1)
     end
@@ -22,8 +25,11 @@ class SettingsTeacher < ActiveRecord::Base
     limit = self.limit_deliveries
     if (count + 1 == limit)
       self.update_attributes(:count_deliveries => 0)
-      mail = Notifier.send_limit_deliveries(self.user)
-      mail.deliver
+      begin
+        mail = Notifier.send_limit_deliveries(self.user)
+        mail.deliver
+      rescue
+      end
     else
       self.update_attributes(:count_deliveries => self.count_deliveries + 1)
     end

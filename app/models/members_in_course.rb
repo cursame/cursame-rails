@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
@@ -14,8 +15,11 @@ class MembersInCourse < ActiveRecord::Base
     accepted = self.changes[:accepted]
     if (!accepted.nil?) then
       if (!accepted[0] and accepted[1]) then
-        mail = Notifier.accepted_message(self,self.course)
-        mail.deliver
+        begin
+          mail = Notifier.accepted_message(self,self.course)
+          mail.deliver
+        rescue
+        end
         Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
       end
     end
@@ -236,8 +240,11 @@ class MembersInCourse < ActiveRecord::Base
       end
     end
 
-    mail = Notifier.send_import_members(user_admin,arrayErrores,course)
-    mail.deliver
+    begin
+      mail = Notifier.send_import_members(user_admin,arrayErrores,course)
+      mail.deliver
+    rescue
+    end
   end
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
