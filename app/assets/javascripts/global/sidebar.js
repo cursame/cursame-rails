@@ -84,5 +84,7 @@ Sidebar = {
 };
 
 $(function() {
-  Sidebar.init();
+  if ( $('.global-sidebar').length ) {
+    Sidebar.init();
+  };
 });
