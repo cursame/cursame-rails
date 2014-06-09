@@ -1,5 +1,6 @@
 <% if messages && channel %>
   <div class="chat-converstion-title">
+    <a class="chat-show-contact-list" href title="Atras" onclick="Chat.showContactList(this, event)" ><i class="i i-arrow-gray-left"></i> Atras</a>
     <h1><%= truncate(get_chat_title(channel) , :omission => "...", :length => 36) %></h1>
   </div>
 

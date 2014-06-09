@@ -14,43 +14,48 @@
       <ul class="section-list navigation">
         <li>
           <%= link_to '/' do %>
-            <i class="i i-home-w"></i>Inicio
+            <%= icon 'home-w' %> Inicio
           <% end %>
         </li>
         <li>
           <%= link_to my_deliveries_path do %>
-            <i class="i i-homeworks-w"></i> Tareas
+            <%= icon 'homeworks-w' %> Tareas
           <%end%>
         </li>
         <li>
           <%= link_to "#{my_surveys_path}" do %>
-            <i class="i i-questionaries-w"></i>Cuestionarios
+            <%= icon 'questionaries-w' %> Cuestionarios
           <%end%>
         </li>
         <li>
           <%= link_to "#{my_discussions_path}" do %>
-            <i class="i i-discussions-w"></i>Discusiones
+            <%= icon 'discussions-w' %> Discusiones
           <%end%>
         </li>
         <li>
           <%= link_to courses_path do %>
-            <i class="i i-courses-w"></i>Cursos
+            <%= icon 'courses-w' %> Cursos
           <% end %>
         </li>
         <li>
           <%= link_to califications_path do %>
-            <i class="i i-stats-w"></i>Calificaciones
+            <%= icon 'stats-w' %> Calificaciones
           <%end%>
         </li>
         <li>
           <%= link_to calendar_path, :data => "menu" do %>
-            <i class="i i-calendar-w"></i>Calendario
-          <%end%>
+            <%= icon 'calendar-w' %> Calendario
+          <% end %>
           </a>
         </li>
         <li>
-        <%= link_to network_comunity_path, :data => "menu" do %>
-            <i class="i i-community-w"></i>Comunidad
+          <%= link_to network_comunity_path, :data => "menu" do %>
+            <%= icon 'community-w' %>Comunidad
+          <% end %>
+        </li>
+        <li class="chat-link">
+          <%= link_to chat_path, :data => "menu" do %>
+            <%= icon 'messages-w' %> Chat
           <% end %>
         </li>
       </ul>

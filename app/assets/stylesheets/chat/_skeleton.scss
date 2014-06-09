@@ -1,3 +1,8 @@
+.chat-panels {
+	@include max-screen(600px) {
+    display: none;
+  }
+}
 
 .visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight, #chat-panels-zone{
     position: fixed;
@@ -431,11 +436,16 @@ cursor: pointer;
 				padding: 5px 10px;
 			}
 		}
+
+		@include max-screen(680px) {
+	    width: 100%;
+	    float: none;
+	  }
 	}
 
 	.chat-main {
 		height: 100%;
-		margin-left: 300px;
+		margin-left: 301px;
 
 		.chat-main-container {
 			overflow-y: scroll
@@ -444,6 +454,11 @@ cursor: pointer;
 		.chat-messages-container {
 			padding: 10px;
 		}
+
+		@include max-screen(680px) {
+	    display: none;
+	    margin-left: 0;
+	  }
 	}
 
 	.chat-new-message {
@@ -452,6 +467,17 @@ cursor: pointer;
 
 	.chat-converstion-title {
 		padding: 10px;
+
+		.chat-show-contact-list {
+			display: none;
+			margin-bottom: 10px;
+		}
+
+		@include max-screen(680px) {
+	    .chat-show-contact-list {
+	    	display: block;
+			}
+	  }
 	}
 
 	.load-more-messages-trigger {

@@ -78,6 +78,14 @@ if ( chatExpanded.length ) {
 
 	  messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
 	  $('.chat-main-container').scrollTop( $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() );
+
+	  if ( $.browser.mobile ) {
+			$('.chat-main').show();
+			$('.chat-sidebar').hide();
+		};
+	} else if ( $.browser.mobile ) {
+		$('.chat-main').show();
+		$('.chat-sidebar').hide();
 	};
 };
 

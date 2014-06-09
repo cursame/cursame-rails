@@ -535,6 +535,17 @@ cursor: pointer;
 			background: #fff;
 			border-bottom: 1px solid #d6d6d6;
 			box-shadow: 0 2px 0px rgba(0, 0, 0, 0.03);
+
+			.chat-show-contact-list {
+	    	text-transform: uppercase;
+	    	color: #999;
+	    	font-weight: bold;
+	    	font-size: 13px;
+
+	    	.i {
+	    		vertical-align: -4px;
+	    	}
+			}
 		}
 
 		.load-more-messages-trigger {
