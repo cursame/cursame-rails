@@ -232,9 +232,9 @@ class ApplicationController < ActionController::Base
   ###### comandos de generación de actividades
   def activation_activity
 
-    @activity = Activity.new
-
     begin
+
+      @activity = Activity.new
 
       @activity.title          = @az.title
       @activity.activitye_id   = @az.id
@@ -265,13 +265,13 @@ class ApplicationController < ActionController::Base
         @activity.computer_plataform = "#{computer_platform}"
         @activity.user_id = current_user.id
 
+        @activity.save
+
       end
 
     rescue
       puts "\e[1;31m[ERROR]\e[0m error getting request location"
     end
-
-    @activity.save
 
   end
 
