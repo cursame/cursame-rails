@@ -304,6 +304,11 @@ Chat = {
     $.each(currentCookies, function(index, val) {
        $.removeCookie(val.channel, { path: '/' });
     });
+  },
+  showContactList: function( obj, e ) {
+    e.preventDefault();
+    $('.chat-main').hide();
+    $('.chat-sidebar').show();
   }
 };
 

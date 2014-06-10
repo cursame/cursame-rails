@@ -16,10 +16,10 @@ body {
   &.background-white {
     background: $white;
   }
-}
 
-.h {
-  border: 3px solid green;
+  @include max-screen(600px) {
+    font-size: 14px;
+  }
 }
 
 ul{
@@ -37,6 +37,10 @@ a {
 
 strong {
   font-weight: 500;
+}
+
+.h {
+  border: 3px solid green;
 }
 
 .basic-container-style {

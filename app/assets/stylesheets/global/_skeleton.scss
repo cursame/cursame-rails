@@ -330,14 +330,22 @@ body {
   // }
 
   .sidebar-courses {
-    @include max-screen(480px) {
+    @include max-screen(600px) {
       display: none;
     }
   }
 
   .sidebar-chat {
-    @include max-screen(480px) {
+    @include max-screen(600px) {
       display: none;
+    }
+  }
+
+  .chat-link {
+    display: none;
+
+    @include max-screen(600px) {
+      display: block;
     }
   }
 }
@@ -354,6 +362,10 @@ body {
   > li a {
     padding: 5px 20px 5px 10px;
     display: block;
+
+    @include max-screen(600px) {
+      padding: 10px;
+    }
   }
 }
 
