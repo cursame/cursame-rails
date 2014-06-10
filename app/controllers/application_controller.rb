@@ -232,9 +232,9 @@ class ApplicationController < ActionController::Base
   ###### comandos de generación de actividades
   def activation_activity
 
-    @activity = Activity.new
-
     begin
+
+      @activity = Activity.new
 
       @activity.title          = @az.title
       @activity.activitye_id   = @az.id
