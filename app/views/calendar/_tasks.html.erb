@@ -1,0 +1,20 @@
+<% tasks.each do |task| %>
+  <% if task.schedule.state == 'published'%>
+    <% task.schedule.courses.each do |course| %>
+      <% member_in = MembersInCourse.find_by_course_id_and_user_id( course.id, current_user.id)%>
+      <% if !member_in.nil? %>
+        <% if mobile?.present? && ! full_event %>
+          <span class="events-availables <%= task.schedule_type.to_s.downcase %>"></span>
+        <% else %>
+          <%= link_to show_template_on_modal_path(:id => task.id, :type => 'task'), :remote => true, :data => { :day_id => task.ends_at.strftime("%d") } do %>
+            <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
+              <h6><%= truncate( task.title, :omission => "...", :length => 20) %></h6>
+              <span><%= task.schedule.end_date.strftime("%I:%M%P") %></span>
+              <span>- <%= course.title %></span>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

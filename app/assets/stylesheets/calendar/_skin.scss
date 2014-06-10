@@ -11,6 +11,7 @@
       text-align: center;
 
       h1 {
+        text-transform: capitalize;
         line-height: 45px;
       }
     }
@@ -20,6 +21,12 @@
       font-weight: bold;
       font-size: 11px;
     }
+
+    @include max-screen(600px) {
+      .calendar-header-current-month h1 {
+        font-size: 16px;
+      }
+    }
   }
 
   table {
@@ -27,6 +34,7 @@
       background-color: #fff;
       border: 1px solid #E6E6E6;
       border-width: 0 0 1px 1px;
+      text-align: center;
       @extend .meta-info;
 
       &:first-child {
@@ -69,9 +77,9 @@
     }
 
     .calendar-day-main {
-      .calendar-day-task {
-        color: $white;
-        border-radius: $radius;
+
+      .events-availables {
+        border-radius: $radius-circle;
 
         &.delivery {
           background-color: #8bbf27;
@@ -80,11 +88,40 @@
         &.survey {
           background-color: #f06c15;
         }
-        
-        span {
-          font-size: 12px;
-        }
       }
+    }
+
+    @include max-screen(600px) {
+      text-align: center;
+    }
+  }
+}
+
+.calendar-day-task {
+  color: $white;
+  border-radius: $radius;
+
+  &.delivery {
+    background-color: #8bbf27;
+  }
+  
+  &.survey {
+    background-color: #f06c15;
+  }
+  
+  span {
+    font-size: 12px;
+  }
+}
+
+.calendar-events-wrap {
+  .calendar-events-header {
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #c7cdcf;
+    text-align: center;
+
+    .back-to-calendar {
+      border-right: 1px solid #E6E6E6;
     }
   }
 }

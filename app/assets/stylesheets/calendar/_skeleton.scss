@@ -7,7 +7,6 @@
     
     .calendar-header-current-month {
       margin: 0 auto;
-      width: 400px;
     }
 
     .calendar-header-prev-month {
@@ -26,8 +25,24 @@
       }
     }
 
-    .change-month a {
+    .icon-link {
+      display: none;
+    }
+
+    .text-link {
       display: block;
+    }
+
+    @include max-screen(600px) {
+      .icon-link {
+        display: block;
+        padding: 13px !important;
+      }
+
+      .text-link {
+        display: none;
+        padding: 13px !important;
+      }
     }
   }
 
@@ -54,12 +69,50 @@
   }
 
   .calendar-day {
-
     .calendar-day-main {
-      .calendar-day-task {
-        padding: 1px 4px;
-        margin: 2px 0px;
+      .events-availables {
+        width: 5px;
+        height: 5px;
+        margin: 5px auto 0 auto;
+        display: block;
       }
+    }
+  }
+
+  @include max-screen(600px) {
+    .calendar-header {
+      
+    }
+  }
+}
+
+.calendar-day-task {
+  padding: 1px 4px;
+  margin: 2px 0px;
+}
+
+.calendar-events-wrap {
+  display: none;
+
+  .calendar-events-header {
+    padding: 13px 10px;
+    position: relative;
+
+    .back-to-calendar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      padding: 12px 18px 12px 17px;
+    }
+  }
+
+  .calendar-events-main {
+    padding: 10px;
+
+    > a {
+      display: block;
+      margin-bottom: 10px;
     }
   }
 }

@@ -390,10 +390,10 @@ class ApplicationController < ActionController::Base
   end
 
   def mobile?
-   # request.user_agent =~ /Mobile|webOS/
+    # request.user_agent =~ /Mobile|webOS/
     # request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
     puts request.env["HTTP_USER_AGENT"]
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android|Mobile)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android|Mobile)/]
 
   end
   helper_method :mobile?
@@ -650,7 +650,7 @@ class ApplicationController < ActionController::Base
       when esday == 'Wednesday'
         @day_name = 'Miercoles'  
       when esday == 'Thursday'
-        @day_name = 'Juevez'  
+        @day_name = 'Jueves'  
       when esday == 'Friday'
         @day_name = 'Viernes'  
       when esday == 'Saturday'
