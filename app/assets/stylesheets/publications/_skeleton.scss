@@ -33,11 +33,27 @@
       .publication-metadata {
         margin-top: 7px;
       }
+
+      img {
+        max-width: 100% !important;
+        height: auto;
+      }
     }
 
     h6 {
       margin-bottom: 3px;
       margin-top: -4px;
+    }
+  }
+
+  @include max-screen(600px) {
+    .publication-inner-content-author img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .publication-inner-content-main {
+      margin-left: 40px !important;
     }
   }
 }
@@ -141,7 +157,8 @@
 
     .new-comment-textarea {
       width: 100%;
-      height: 8px;
+      padding: 5px;
+      height: 31px;
     }
 
     .new-comment-actions {

@@ -215,7 +215,9 @@ background: #006696;
 //--------------------------------------------------------------------------------------------//
 
 
-.chat-zone-footer{
+.chat-zone-footer {
+	min-height: 35px;
+	@include clearfix;
 
 	#mesage { 
 		padding: 5px;
@@ -421,10 +423,6 @@ cursor: pointer;
 			padding: 14px 10px;
 			position: relative;
 		}
-
-		.chat-sidebar-container {
-			overflow-y: scroll;
-		}
 	
 		.chat-filter {
 			position: absolute;
@@ -463,19 +461,38 @@ cursor: pointer;
 
 	.chat-new-message {
 		padding: 10px;
+
+		.new-message-panel-textarea {
+			height: 36px;
+			max-height: 80px;
+		}
 	}
 
 	.chat-converstion-title {
 		padding: 10px;
+		position: relative;
 
 		.chat-show-contact-list {
 			display: none;
-			margin-bottom: 10px;
+			padding: 13px 17px;
+			position: absolute;
+			left: 0;
+			top: 0;
 		}
 
 		@include max-screen(680px) {
+			text-align: center;
+
 	    .chat-show-contact-list {
 	    	display: block;
+			}
+
+			h1 {
+				width: 50%;
+				margin: 0 auto;
+			  white-space: nowrap;
+			  overflow: hidden;
+			  text-overflow: ellipsis;
 			}
 	  }
 	}

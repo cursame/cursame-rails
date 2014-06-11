@@ -11,7 +11,7 @@ var panelsHolder = $('.chat-panels'),
 		channelExist = Chat.channelExistActive(channel);
 
 // No esta en home/chat
-if ( !chatExpanded.length && !channelExist ) {
+if ( !chatExpanded.length && !channelExist && ! $.browser.mobile ) {
 	if ( typeChannel == 'user') {
 		panelsHolder.append('<%= subscribe_to @channel_name %>');
 	}
@@ -52,6 +52,7 @@ if ( !chatExpanded.length && !channelExist ) {
 
 		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
 		currPanel.find('input#mesage').focus();
+		Chat.bindEvents();
 
 		var dataChannel = {
 			type: typeChannel,
@@ -66,23 +67,26 @@ if ( !chatExpanded.length && !channelExist ) {
 };
 
 // Si estamos en el path del chat
-if ( chatExpanded.length ) {
+if ( chatExpanded.length || $.browser.mobile ) {
+	if ( $.browser.mobile && ! chatExpanded.length ) {
+		window.location = "<%= chat_path %>";
+	};
+
 	if ( Chat.expandedPanelChannel != channel ) {
 		Chat.expandedPanelChannel = channel;
 		
 		$('#chat').html('<%= escape_javascript(render(:partial => '/shared/chat/chat', :locals => {:messages => @messages, :channel => @channel }))%>');
 
-		var messagesTitle     = $('.chat-converstion-title'),
-	      messagesContainer = $('.chat-main-container'),
-	      messagesNewContainer = $('.chat-new-message');
-
-	  messagesContainer.height( $(window).height() - $('.topbar').outerHeight() - messagesTitle.outerHeight() - messagesNewContainer.outerHeight() );
-	  $('.chat-main-container').scrollTop( $('.load-more-messages-trigger').outerHeight() + $('#chat-messages').outerHeight() );
-
 	  if ( $.browser.mobile ) {
 			$('.chat-main').show();
 			$('.chat-sidebar').hide();
 		};
+
+		Chat.adjustExpandedChatContainer();
+		var container = $('.chat-main-container');
+		container.scrollTop( getChildrensHeight(container) );
+		Chat.bindEvents();
+
 	} else if ( $.browser.mobile ) {
 		$('.chat-main').show();
 		$('.chat-sidebar').hide();

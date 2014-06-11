@@ -31,7 +31,7 @@
 		</div>
 		<div class="chat-panel-main">
 			<div id="chat-zone-<%= channel.id%>" class="chat-zone">
-				<div class="chat-panel-main-content">
+				<div class="chat-panel-main-content scrollbar">
 					<% unless messages.empty? %>
 						<div class="load-more-messages" id="load-more-messages-<%= channel.id%>">
 							<%=render(:partial => '/shared/chat/load_more_messages', :locals => {:channel => channel, :page => page + 1})%>
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="chat-zone-footer">
-					<%= render :partial => "shared/chat/add_message_form", :locals => { :channel_name => channel.channel_name, :channel_id => channel.id } %>
+					<%= render :partial => "shared/chat/add_message_form", :locals => { :channel_name => channel.channel_name, :channel_id => channel.id, :type => "new-panel-message" } %>
 				</div>
 			</div>
 		</div>

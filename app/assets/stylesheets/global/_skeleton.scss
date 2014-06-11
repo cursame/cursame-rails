@@ -34,13 +34,13 @@ body {
     padding-left: 0;
 
     .wrapper {
-      @include max-screen(320px) {
+      @include max-screen(480px) {
         width: 100%;
       }
     }
 
     .col-inner {
-      @include max-screen(320px) {
+      @include max-screen(480px) {
         padding: 0;
       }
     }

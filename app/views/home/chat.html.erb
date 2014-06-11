@@ -1,7 +1,6 @@
 <% content_for :body_classes do %>
 background-white
 <% end %>
-
 <% content_for :javascripts do %>
 <%= javascript_include_tag 'chat/chat_expanded' %>
 <% end %>
@@ -20,7 +19,7 @@ background-white
       </div>
     </div>
     <div class="chat-sidebar-container tabs-main">
-      <div id="JustFriends" class="tab-content">
+      <div id="JustFriends" class="tab-content scrollbar">
         <% if current_user.count_friendships != 0 %>
           <ul class="chat-list">
             <% @friends_online.each do |user| %>
@@ -43,7 +42,7 @@ background-white
         <% end %>
       </div>
 
-      <div id="OnlyCourses" class="tab-content" style="display: none;">
+      <div id="OnlyCourses" class="tab-content scrollbar" style="display: none;">
         <% unless current_user.courses.empty? %>
           <ul class="chat-list" >
             <% @courses_online.each do |course| %>
