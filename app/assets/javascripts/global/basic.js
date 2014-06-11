@@ -86,14 +86,28 @@ function mask(idOrCls,msj) {
   $('#mask').show();
 };
 
-function scrollToBottom(obj) {
+
+function getChildrensHeight(obj) {
   var holder = obj.parent(),
       childrens = holder.children(),
       totalHeight = 0;
+  
   $.each(childrens, function(index, val) {
     totalHeight += $(val).outerHeight();
   });
-  holder.scrollTop(totalHeight);
+
+  return totalHeight;
+}
+
+function scrollToBottom(obj) {
+  var h = getChildrensHeight(obj),
+      parent = obj.parent();
+
+  parent.scrollTop( h );
+  
+  if ( parent.hasClass('scrollbar') ) {
+    parent.perfectScrollbar('update');
+  };
 }
 
 function unmask(idOrCls) {
@@ -146,7 +160,9 @@ $(function() {
   }
 
   // Textareas Autogrow
-  $('.autogrow').autosize();
+  $('.autogrow').live('focus', function(){
+    $(this).autosize();
+  });
    
    $(window).scroll(function() {
      if ( $(window).scrollTop() + $(window).height() == $(document).height() ) {
@@ -246,7 +262,7 @@ $(function() {
   }).ajaxStop( function() {
     $('#log_loadding').hide();
     $('.activable').attr("disabled", false);
-    $('.autogrow').autosize();
+    $('.scrollbar').perfectScrollbar();
   });
 
   // Scroll top

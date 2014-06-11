@@ -114,8 +114,12 @@
 	}
 
 	.new-message-panel-textarea {
-		background: transparent !important;
+		background: #FFF !important;
 		border: 0 !important;
+		height: 33px;
+		max-height: 80px;
+		float: left;
+		width: 100%;
 	}
 
 	.load-more-messages a {
@@ -442,6 +446,7 @@ cursor: pointer;
 			  border: 1px solid #ccc;
 			  font-size: 12px;
 				box-shadow: 0 1px 2px rgba(0,0,0,.07);
+				word-break: break-all;
 			}
 
 			.meta {
@@ -493,6 +498,10 @@ cursor: pointer;
 		border-right: 1px solid #d6d6d6;
 		background: #fff;
 
+		@include max-screen(600px) {
+			border-right: 0;
+		}
+
 		.chat-sidebar-title {
 			border-bottom: 1px solid #e1e1e1;
 		}
@@ -541,10 +550,17 @@ cursor: pointer;
 	    	color: #999;
 	    	font-weight: bold;
 	    	font-size: 13px;
+	    	border-right: 1px solid #E6E6E6;
 
 	    	.i {
 	    		vertical-align: -4px;
 	    	}
+			}
+			
+			@include max-screen(600px) {
+				h1 {
+					font-size: 17px;
+				}
 			}
 		}
 

@@ -1,10 +1,10 @@
 <% if messages && channel %>
   <div class="chat-converstion-title">
-    <a class="chat-show-contact-list" href title="Atras" onclick="Chat.showContactList(this, event)" ><i class="i i-arrow-gray-left"></i> Atras</a>
+    <a class="chat-show-contact-list" href title="Atras" onclick="Chat.showContactList(this, event)" ><i class="i i-arrow-gray-left"></i></a>
     <h1><%= truncate(get_chat_title(channel) , :omission => "...", :length => 36) %></h1>
   </div>
 
-  <div class="chat-main-container">
+  <div class="chat-main-container scrollbar">
     <div id="load-more-messages-<%= channel.id%>" class="load-more-messages-trigger">
       <a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true">Cargar más mensajes...</a>
     </div>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="chat-new-message">
-    <%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name => channel.channel_name,:channel_id=>channel.id} %>
+    <%= render :partial => "shared/chat/add_message_form", :locals => {:channel_name => channel.channel_name, :channel_id => channel.id, :type => "new-expanded-chat-message"} %>
   </div>
 <% else %>
   <div class="no-content-section">
