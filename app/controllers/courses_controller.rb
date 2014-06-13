@@ -466,10 +466,14 @@ class CoursesController < ApplicationController
       activation_activity
 
 
-      if @activity.save
-        redirect_to :back
-      else
+      begin
+        if @activity.save
+          redirect_to :back
+        end
+      rescue
+        puts "\e[1;31m[ERROR]\e[0m error getting request location"
       end
+
     end
   end
 
