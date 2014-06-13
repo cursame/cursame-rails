@@ -472,6 +472,7 @@ class CoursesController < ApplicationController
         end
       rescue
         puts "\e[1;31m[ERROR]\e[0m error getting request location"
+        redirect_to :back
       end
 
     end
