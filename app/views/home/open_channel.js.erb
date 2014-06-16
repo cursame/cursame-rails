@@ -52,7 +52,6 @@ if ( !chatExpanded.length && !channelExist && ! $.browser.mobile ) {
 
 		currPanel.find('.chat-panel-main-content').scrollTop( currPanel.find('.chat-messages-container').prop('scrollHeight') + 30 );
 		currPanel.find('input#mesage').focus();
-		Chat.bindEvents();
 
 		var dataChannel = {
 			type: typeChannel,
@@ -85,7 +84,6 @@ if ( chatExpanded.length || $.browser.mobile ) {
 		Chat.adjustExpandedChatContainer();
 		var container = $('.chat-main-container');
 		container.scrollTop( getChildrensHeight(container) );
-		Chat.bindEvents();
 
 	} else if ( $.browser.mobile ) {
 		$('.chat-main').show();
