@@ -205,7 +205,7 @@ class Api::ApiController < ApplicationController
       end           
     end
     @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1]}
-    render :json => {:users => @usuarios.as_json, :count => @usuarios.count()}, :callback => params[:callback]
+    render :json => {:users => @usuarios.as_json, :count => @users.count()}, :callback => params[:callback]
   end
 
   def notifications
