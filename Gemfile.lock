@@ -115,6 +115,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    diff-lcs (1.2.5)
     dropbox-api (0.4.2)
       hashie
       multi_json
@@ -310,6 +311,22 @@ GEM
       mime-types (>= 1.16)
     retriable (1.4.1)
     rinku (1.5.1)
+    rspec-core (3.0.1)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.1)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.0)
     ruby-progressbar (1.5.1)
     ruby_parser (3.6.1)
       sexp_processor (~> 4.1)
@@ -440,6 +457,7 @@ DEPENDENCIES
   rails (= 3.2.1)
   rails_best_practices
   rails_config
+  rspec-rails
   ruby_parser
   sass (= 3.2.13)
   sass-rails (~> 3.2.3)
