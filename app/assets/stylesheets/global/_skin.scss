@@ -379,21 +379,10 @@ h6 {
 /* Sections Pages
 ----------------------------------*/
 .section-header {
-  .section-header-content {
-    background-color: #fcfcfc;
-    border: 1px solid #d3dadd;
-    border-bottom-color: #c6ced0;
-    border-width: 0 1px 1px 1px;
-    border-radius: 0 0 $radius $radius;
-    box-shadow: 0 1px 1px rgba(0,0,0,.035);
+  @extend .section-header-top;
 
-    .section-subnav > li.active > a {
-      color: $meta-color;
-    }
-  }
-
-  &.normal-full {
-    border-bottom: 1px solid #E7E7E7;  
+  .section-title h1 {
+    color: $black;
   }
 }
 
