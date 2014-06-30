@@ -4,6 +4,8 @@ class UserSurvey < ActiveRecord::Base
   has_many :user_survey_responses, :dependent => :destroy
   has_many :activities, as: :activitye, :dependent => :destroy
 
+  has_one :evaluation, :as => :qualifying, :dependent => :destroy
+  
   accepts_nested_attributes_for :user_survey_responses, :reject_if => lambda { |a| a[:answer_id].blank? }, :allow_destroy => true
 
   after_create do

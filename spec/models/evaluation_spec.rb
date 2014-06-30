@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe Evaluation, :type => :model do
@@ -9,47 +10,55 @@ RSpec.describe Evaluation, :type => :model do
     expect(evaluation.save).to be(false)     
   end
 
-  it "Score debe ser 0 si no se le indica nada" do
+  it "Score no acepta nulos" do
 
-    evaluation = Evaluation.create
+    vars = set_enviroment_for_evaluation
+    evaluation = Evaluation.create(qualifying: vars[:user_survey])
 
-    expect(evaluation.score).to eq(0)
+    expect(evaluation.save).to eq(false)
   end
   
-  it "Score debe ser 0 si se le pasa un numero negativo" do
+  it "Score no acepta números negativos" do
 
     vars = set_enviroment_for_evaluation
-    evaluation = Evaluation.create!(qualifying: vars[:assignment], score: -1)
-
-    expect(evaluation.score).to eq(0)
+    evaluation = Evaluation.create(qualifying: vars[:user_survey], score: -1)
+    
+    expect(evaluation.save).to eq(false)
+  end
+  
+  it "Score no acepta números mayores a 100" do
+    
+    vars = set_enviroment_for_evaluation
+    evaluation = Evaluation.create(qualifying: vars[:user_survey], score: 101)
+    
+    expect(evaluation.save).to eq(false)
   end
 
-  it "Score debe ser 100 si se le pasa un numero mayor a 100" do
-
+  it "Evaluation verifica si qualifying existe" do
     vars = set_enviroment_for_evaluation
-    evaluation = Evaluation.create(qualifying: vars[:assignment], score: 101)
+    evaluation = Evaluation.create(qualifying_type: "UserSurvey", qualifying_id: (vars[:user_survey].id + 100), score: 100)
 
-    expect(evaluation.score).to eq(100)
+    expect(evaluation.save).to eq(false)
   end
-
-
-  it "Si Evaluation es destruido, su Assignment debera existir"  do
-
+  
+  
+  it "Si Evaluation es destruido, su UserSurvey debera existir"  do
+    
     vars = set_enviroment_for_evaluation
-    evaluation = Evaluation.create(qualifying: vars[:assignment], score: 101)
-
+    evaluation = Evaluation.create(qualifying: vars[:user_survey], score: 50)
+    
     evaluation.destroy
-
-    expect(Assignment.find_by_id(vars[:assignment].id)).to eq(vars[:assignment])
+    
+    expect(UserSurvey.find_by_id(vars[:user_survey].id)).to eq(vars[:user_survey])
     
   end
 
-  it "Si destruyo Assignment, Evaluation tambien debe destruirse" do
+  it "Si destruyo UserSurvey, Evaluation tambien debe destruirse" do
 
     vars = set_enviroment_for_evaluation
-    evaluation = Evaluation.create(qualifying: vars[:assignment], score: 101)
+    evaluation = Evaluation.create(qualifying: vars[:user_survey], score: 50)
 
-    vars[:assignment].destroy
+    vars[:user_survey].destroy
 
     expect(nil).to be(Evaluation.find_by_id(evaluation.id))
   end

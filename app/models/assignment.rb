@@ -7,7 +7,7 @@ class Assignment < ActiveRecord::Base
   has_many :response_to_the_evaluations, :dependent => :destroy
   has_many :activities, as: :activitye, :dependent => :destroy
   has_many :contents, :as => :contentye, :dependent => :destroy
-
+  
   has_one :evaluation, :as => :qualifying, :dependent => :destroy
   
   validates_presence_of :user

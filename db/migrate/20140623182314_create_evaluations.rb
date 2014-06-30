@@ -3,7 +3,7 @@ class CreateEvaluations < ActiveRecord::Migration
     create_table :evaluations do |t|
       t.string :qualifying_id
       t.string :qualifying_type
-      t.integer :score,               default: 0
+      t.integer :score
       t.text :feedback,               default: ""
 
       t.timestamps

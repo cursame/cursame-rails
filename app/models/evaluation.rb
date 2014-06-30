@@ -2,16 +2,9 @@ class Evaluation < ActiveRecord::Base
 
   belongs_to :qualifying, :polymorphic => true
 
-  validates :qualifying_type, presence: true
-  validates :qualifying_id, presence: true
-
-  before_create do
-    if self.score.nil?
-      self.score = 0
-    else
-      self.score = 100 if self.score > 100
-      self.score = 0 if self.score < 0
-    end
-  end
+  validates :qualifying, presence: true
+  validates :score, presence: true, numericality: { only_integer: true,
+                                                    greater_than_or_equal_to: 0,
+                                                    less_than_or_equal_to: 100 } 
   
 end

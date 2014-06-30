@@ -56,6 +56,10 @@ end
 group :development, :test do
   gem "mocha"
   gem 'rspec-rails'
+
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'

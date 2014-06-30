@@ -300,7 +300,7 @@ ActiveRecord::Schema.define(:version => 20140623182314) do
   create_table "evaluations", :force => true do |t|
     t.string   "qualifying_id"
     t.string   "qualifying_type"
-    t.integer  "score",           :default => 0
+    t.integer  "score"
     t.text     "feedback",        :default => ""
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
