@@ -28,14 +28,11 @@ class Mesage < ActiveRecord::Base
 
 
   after_create do
-    puts self.channel
-    puts self.channel.channel_name
     
     ###### prepramos validacion para saber de que tipo de canal se trata #####
     
     split_to_name_channel = self.channel.channel_name.split('/').last
     split_type = split_to_name_channel.split('_').first
-    puts split_type
 
     case split_type
     when "course"
@@ -58,7 +55,6 @@ class Mesage < ActiveRecord::Base
                               )
     else     
       users.each do |user|
-        puts user
         PrivatePub.publish_to("/messages/notifications_user_"+user.id.to_s,
                               message: self,
                               sender: self.user,

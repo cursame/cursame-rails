@@ -462,8 +462,6 @@ class HomeController < ApplicationController
     data = params.reject! do |k|
       k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action' || k == 'wufoo_form_id'
     end
-
-    puts data
     
     result = wufoo_form.submit(data)
 

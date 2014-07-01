@@ -176,43 +176,9 @@ class ApplicationController < ActionController::Base
   end
 
   def alfredot_rifa_free_pro_forever
-     puts "alfredot rifa free pro forever 2014"
-     puts "
-     _+88__________________________...
-     _+880_________________________...
-     _++88_________________________...
-     _++88_________________________...
-     __+880________________________...
-     __+888________________________...
-     __++880______________________+...
-     __++888_____+++88__________+++...
-     __++8888__+++8880++88____+++88...
-     __+++8888+++8880++8888__++888_...
-     ___++888++8888+++888888++888__...
-     ___++88++8888++8888888++888___...
-     ___++++++888888888888888888___...
-     ____++++++88888888888888888___...
-     ____++++++++000888888888888___...
-     _____+++++++000088888888888___...
-     ______+++++++00088888888888___...
-     _______+++++++088888888888____...
-     _______+++++++088888888888____...
-     ________+++++++8888888888_____...
-     ________++++++0088888888______...
-     ________+++++0008888888_______...
-     ________...............8888888... "
-     puts "casual aqui programando "
-     puts "Desarrolladores 2014:"
-     puts '**************************************'
-     puts "Alfredo Reyes de Antuñano"
-     puts "Emiliano Cabrera Blancas"
-     puts "Salvador López Mendoza"
-     puts "Armando Gonzalez López"
-     puts '**************************************'
    end
 
    def fail_in_save
-     puts "fallo al guardar en el sistema"
    end
 
 
@@ -313,51 +279,40 @@ class ApplicationController < ActionController::Base
     @version =   user_agent.version
     @version_sintetica = @version.to_s.delete(".")
     @total = "#{@browser} #{ @version}"
-    puts @total
     case
 
      when @browser == 'Chrome'
         if @version > '230127191'
-          puts "navegador no compatible"
           @compatible = false
         else
-          puts "navegador compatible"
           @compatible = true
         end
      when @browser == 'Safari'
 
         if @version && @version > '500'
-          puts "navegador no compatible"
           @compatible = false
         else
-          puts "navegador compatible"
           @compatible = true
         end
 
      when @browser == 'Firefox'
 
        if @version > '190'
-         puts "navegador no compatible"
          @compatible = false
        else
-         puts "navegador compatible"
          @compatible = true
        end
 
      when @browser == 'Internet Explorer'
 
        if @version > '80'
-         puts "navegador no compatible"
          @compatible = false
        else
-         puts "navegador compatible"
          @compatible = true
        end
      else
 
-         puts "navegador no compatible"
          @compatible = false
-
 
    end
 
@@ -392,7 +347,6 @@ class ApplicationController < ActionController::Base
   def mobile?
    # request.user_agent =~ /Mobile|webOS/
     # request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
-    puts request.env["HTTP_USER_AGENT"]
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|iPad|Android|Mobile)/]
 
   end
@@ -487,7 +441,6 @@ class ApplicationController < ActionController::Base
      when type == "course"
             #### se crea el obejto que se busca
             object = Course.find_by_id(destinate)
-            ##puts object
             #### se revisa si el objeto contiene avatar
             if object != nil && object.avatar.file != nil && File.exist?(object.avatar.file.file)
                #### si el objeto contiene un avatar se machan las diversas medidas 
@@ -524,7 +477,6 @@ class ApplicationController < ActionController::Base
      when type == "user"
             #### se crea el obejto que se busca
             object = User.find_by_id(destinate)
-            ###puts object
             #### se revisa si el objeto contiene avatar
             if object.avatar.file != nil && File.exist?(object.avatar.file.file)
                #### si el objeto contiene un avatar se machan las diversas medidas 

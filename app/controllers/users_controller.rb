@@ -184,9 +184,6 @@ end
 
   def corroborate_url
     @user = User.find_by_personal_url(params[:personal_url])
-    puts '####################'
-    puts @user
-    puts '####################'
 
      if @user == nil
         @url = true
@@ -197,13 +194,11 @@ end
   end
 
   def upload_users_a
-    puts "**************A"
     ###### cacha red y usuario para mandar mail de errores ####
     network = Network.find(params[:red])
     user_info = User.find_by_email("info@cursa.me") # Cambiar esto por info@cursa.me
     user_admin = user_info
     t_email = params[:t_email]
-    puts "**************B"
 
     ######### sube el archivo a la carpeta de importación de usuarios #####
     lastFile = Dir.glob("public/imports/import_users_*")    
@@ -227,12 +222,10 @@ end
     ####### setea las variables del dominio ########## 
       domain = params["domain"]
       subdomain = network.subdomain
-      puts "************** c"
-      puts t_email.nil?
+
       if t_email == 'confirmate'
         user_info.import(path,network,user_admin,domain,subdomain)
       else
-        puts "******************"
         user_info.import_for_admin(path,network,user_admin,domain,subdomain)
       end
 
@@ -256,7 +249,6 @@ end
   end
 
   def tour_reciver
-    puts "entrando en la ruta"
     
     case params[:type_route]
       when 'network'

@@ -127,7 +127,6 @@ class Discussion < ActiveRecord::Base
               mail = Notifier.new_discussion_notification(users,self)
               mail.deliver          
           rescue => ex
-            puts 'error al enviar mail'
           ensure
             ActiveRecord::Base.connection.close
           end

@@ -765,7 +765,6 @@ class Api::ApiController < ApplicationController
     @results = []
     user.user_surveys.each do |us|
       us.evaluation
-      puts us.to_yaml
       r = {
         result: us.result,
         name: us.survey.name,

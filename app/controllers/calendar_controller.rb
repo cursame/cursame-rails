@@ -36,7 +36,6 @@ class CalendarController < ApplicationController
    @today = Time.now
    @tasks = Event.where(:id => id_event)
    
-   #puts @tasks
   end
 
   def activities_for_today

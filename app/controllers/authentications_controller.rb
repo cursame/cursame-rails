@@ -1,3 +1,4 @@
+# coding: utf-8
 class AuthenticationsController < ApplicationController
   
   skip_before_filter :authenticate_user!, :only => [:create]
@@ -24,14 +25,12 @@ def google_calendar
     omniauth = request.env["omniauth.auth"]
     @authentication = Authentication.find_by_provider_and_uid(omniauth["provider"], omniauth["uid"]) || Authentication.create_with_omniauth(omniauth)
     if @authentication.save
-       puts @authentication.to_yaml
        @colgomorov = Authentication.find(@authentication.id)
        @colgomorov.user_id = current_user.id
        
        
         client = Google::APIClient.new
         @token = omniauth["credentials"]["token"]
-        puts omniauth["credentials"].to_yaml
          #####se crea el toquen de seción
         session[:token_calendar] = @token
         session[:refresh_token] = omniauth["credentials"]["refresh_token"]
@@ -44,8 +43,6 @@ def google_calendar
 
 
                  @calendar = @result.data
-                 puts @calendar
-             #    print @result.data.id
                  @colgomorov.save 
         #  raise  @calendar.to_yaml
                

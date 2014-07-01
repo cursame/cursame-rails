@@ -223,7 +223,6 @@ class Comment < ActiveRecord::Base
             mailer = Notifier.send_comment_on_course(self)
             mailer.deliver
           rescue => ex
-            puts 'error al enviar mail'
           ensure
             ActiveRecord::Base.connection.close
           end
