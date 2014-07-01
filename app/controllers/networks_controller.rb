@@ -1,3 +1,4 @@
+# coding: utf-8
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
@@ -39,7 +40,6 @@ class NetworksController < ApplicationController
                       ###### validando que la red no sea nula para redirigir
                    if @find_network != nil
                       ####### redirecciona la red
-                      puts "****************** se ha encontrado una red a la cual seras redirigido ************"
                        #render do |page| 
                         # page.js{alertmethod_path} 
                        #end
@@ -47,7 +47,6 @@ class NetworksController < ApplicationController
                    end
                else
                 ####### se deja abierto para los permisos que estan pendientes
-                puts "*************** demasiados *****************"  
              end
         end
       end
@@ -134,18 +133,13 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-            @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
-            puts "----------------------"
-            puts @permissioning
-            puts "----------------------"
-             @permissioning.role_id = "1"
-             @permissioning.save
-         if  @permissioning.save
-           puts "permisos guardados correctamente"
-         else
-           puts "permisos no guardados correctamente"
-         end
-
+        @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
+        @permissioning.role_id = "1"
+        @permissioning.save
+        if  @permissioning.save
+        else
+        end
+        
         format.json { render json: @network, status: :created, location: @network }
         format.js
       else
@@ -281,19 +275,15 @@ class NetworksController < ApplicationController
 ####################################### inicia filtro de survey ##############################################
     
         ##### se accesa a todos los cursos
-          #puts @member
           case 
             ###### se validan las variables que buscamos
              when @responds && @member.owner
-                #puts "owner"
                c.surveys.each do |s|
                 if s.user_surveys.count != 0
-                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
                   responds_true.push(s.id)
                 end
                end
              when @responds && (@member.owner.nil? or !@member.owner)
-              #puts "no owner"
                c.surveys.each do |s|
                  user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
                  if user_survey.count != 0
@@ -307,11 +297,9 @@ class NetworksController < ApplicationController
                     responds_false.push(s.id)
                   end
                 end
-              #puts "no owner"
              when !@responds && @member.owner
               c.surveys.each do |s|
                 if s.user_surveys.count == 0
-                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
                   responds_false.push(s.id)
                 end
              end
@@ -334,25 +322,22 @@ class NetworksController < ApplicationController
 
   # sesion expire
    def expire_session
-       puts "se ha ingresado al metodo"
-       @status = user_signed_in?
-       puts "esta logueado es #{@status}"
-       puts "se procede a candelar la session de usuario #{@status}"
-       if @status
-           current_user.online = false
-           current_user.save!
-           PrivatePub.publish_to("/messages/chat_notifications",
-                                  userId: current_user.id,
-                                  online: false
-                                )
-           sign_out(current_user) 
-       end
-       #puts @status
-        respond_to do |format|
-           format.js
-           format.json
-         end
-   end
+     @status = user_signed_in?
+     if @status
+       current_user.online = false
+       current_user.save!
+       PrivatePub.publish_to("/messages/chat_notifications",
+                             userId: current_user.id,
+                             online: false
+                            )
+       sign_out(current_user) 
+     end
 
- 
+     respond_to do |format|
+       format.js
+           format.json
+     end
+   end
+   
+   
 end

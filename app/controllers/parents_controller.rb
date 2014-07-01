@@ -36,10 +36,7 @@ class ParentsController < ApplicationController
   def inc_activity
     @type = params[:type_act]
     @id = params[:id]
-    
-    puts @id
-    puts @type
-    
+        
       open_tag = []
       network = []
       delivery_pertenence = []
@@ -222,7 +219,7 @@ class ParentsController < ApplicationController
       @find_assignment = Assignment.find_by_delivery_id_and_user_id(d.id, @user.id) 
         @totolite_d =   @totolite_d + d.porcent_of_evaluation
         @valor_eval =  (d.porcent_of_evaluation.to_f / @totolite_d.to_f)*100
-      puts @find_assignment
+
       if @find_assignment != nil
          
         @nk = "<div style='color:#098E07;'>entregada con el título #{ @find_assignment.title }</div>"
@@ -230,12 +227,12 @@ class ParentsController < ApplicationController
           if @find_assignment.accomplishment != nil
              @accd = @find_assignment.accomplishment 
               @converter_prompt = (@accd/100) * d.porcent_of_evaluation 
-             # puts  @converter_prompt
+
           #   @converter_prompt = @accd / @totolite_d.to_f
               @cal_deliveries= @converter_prompt  +  @cal_deliveries
-            #  puts = @cal_deliveries
+
                @changer =   (@cal_deliveries.to_f / @totolite_d.to_f)*100
-           #  puts  @changer
+
              else
              @accd = 0
           end
@@ -277,7 +274,7 @@ class ParentsController < ApplicationController
             @result_prom_per_course = 0
         end
       end
-     # puts @result_prom_per_course
+      
     render :json => {message:"Promedio general", tareas: d_h_course, prom_deliveries: @cal_deliveries, act_deliveries: "#{@changer}%", examenes: s_h_course, porcentaje_de_aproc_s: "#{@totalite_s}%", course_prom: "#{@result_prom_per_course}%"}, :callback => params[:callback]
     
   end

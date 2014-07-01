@@ -22,9 +22,7 @@ class PermissioningsController < ApplicationController
   def unactive_user
    @i = params[:id]
    @p = Permissioning.find_by_id(@i)
-   puts @p 
    
-   puts @p.suspended
     if  @p.suspended == true
       @p.suspended = false
     else

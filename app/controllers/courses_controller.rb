@@ -215,9 +215,7 @@ class CoursesController < ApplicationController
            @miembro = MembersInCourse.where(course_id = @course.id).first
            @miembro.owner == true
            @miembro.save 
-           puts "se le ha agregado un owner al curso"
         else
-           puts "este curso tiene owner"
 
         end
         format.html { redirect_to course_path(@course.id) }
@@ -646,7 +644,6 @@ class CoursesController < ApplicationController
     page = (params[:page]).to_i
     per_page = (params[:per_page]).to_i
     @date = getActivities((page * per_page), ((page * per_page) + per_page), id)
-    puts @date
 
 
     # @date = simple
@@ -912,7 +909,6 @@ class CoursesController < ApplicationController
       }
     end
 
-    puts 
     respond_to do |format|
       format.js
     end
@@ -941,13 +937,9 @@ class CoursesController < ApplicationController
 
   def course_survey_actdepot
     @survey = Survey.find(params[:id])
-    puts "#{@survey.publish_date}"
-    puts "#{@survey.end_date}"
-    puts "#{@survey.state}"
 
     @responces = @survey.user_surveys
     @survey_replies = Array.new
-    p @survey
 
     @responces.each do |survey_reply|
       user = User.find(survey_reply.user_id)
@@ -981,7 +973,6 @@ class CoursesController < ApplicationController
         if @course.active_status == true
              @course.active_status = 2
              @course.save
-             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
              @course.members_in_courses.each do |co|
                co.active_status = 2
                co.save
@@ -993,7 +984,6 @@ class CoursesController < ApplicationController
                 co.active_status = 1
                 co.save
               end
-             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
 
         end
 

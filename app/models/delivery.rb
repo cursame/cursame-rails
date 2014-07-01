@@ -263,7 +263,6 @@ class Delivery < ActiveRecord::Base
               mail = Notifier.new_delivery_notification(users,self)
               mail.deliver          
           rescue => ex
-            puts 'error al enviar mail'
           ensure
             ActiveRecord::Base.connection.close
           end

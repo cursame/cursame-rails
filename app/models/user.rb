@@ -162,11 +162,9 @@ class User < ActiveRecord::Base
         self.key_analytics = "#{numeric}_#{string}_#{numeric}"
         self.save
         @value = self.key_analytics
-        puts =  @value
       end
    else
       @value = self.key_analytics
-      puts =  @value
    end
   end
 
@@ -262,7 +260,6 @@ class User < ActiveRecord::Base
     if search
       # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
       query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' " 
-      #puts query
       where(query)
     else
       # find(:all, :order => :first_name)
@@ -454,24 +451,17 @@ class User < ActiveRecord::Base
   def approved_friend(another_user)
    if self.id == another_user.id
      #### este usuario eres tu mismo la amistad es necesaria para poder ver tu perfil ####
-     puts "***************************************ingresando a mi perfil*********************************************"
      @existed_friend = true
    else
     friend = Friendship.find(:all, :conditions => {:user_id => self.id, :friend_id => another_user.id, :accepted => true})
-    puts "#{friend}"
     if friend == nil || friend.empty?
-      puts "amigo nulo se procese a buscar"
       inverse_friend = Friendship.find(:all, :conditions => {:user_id => another_user.id, :friend_id => self.id, :accepted => true})
-      puts "#{inverse_friend}"
       if inverse_friend == nil || inverse_friend.empty?
-        puts "***********************************inverso nulo se procese a negar***********************************"
         @existed_friend = false
       else
-        puts "***********************************inverso verdadero se procese a afirmar***********************************"
         @existed_friend = true
       end
     else 
-      puts "***********************************se detecta que exista el friendship***********************************"
       @existed_friend = true
     end
    end
@@ -590,7 +580,6 @@ class User < ActiveRecord::Base
 
 
   def import_for_admin(path,network,user_admin, domain, subdomain)
-    puts "ingresando en el método de administrador"
     arrayErrores = Array.new
     count = 0
     

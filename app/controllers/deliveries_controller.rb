@@ -32,12 +32,10 @@ class DeliveriesController < ApplicationController
                 if d.assignments.count == 0
                      deliveries.push(d.id)
                   end
-                  puts " no owner"
               when false
                   if d.assignments.where(:user_id => current_user.id).count == 0
                      deliveries.push(d.id)
                   end
-                  puts " no owner"
            end
           end
       end
@@ -99,10 +97,6 @@ class DeliveriesController < ApplicationController
     @publication = []
     @error = false
 
-    puts '------------------------------'
-    puts params[:delivery].to_yaml
-    puts '------------------------------'
-
     if courses && !courses.empty?
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
@@ -135,8 +129,6 @@ class DeliveriesController < ApplicationController
   def update
     @delivery = Delivery.find(params[:id])
     @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
-    puts '-----------'
-    puts @publication
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
@@ -209,15 +201,11 @@ class DeliveriesController < ApplicationController
     @asset = Asset.new(params[:asset])
 
     @assignment.save!
-    puts "**************"
-    puts "assignment save "
-    puts "**************"
 
     if @assignment.save!
      @response_to_the_evaluation = ResponseToTheEvaluation.new
-     puts "**************"
+
      @delivery_from_assignment = Delivery.find(@assignment.delivery)
-     puts  @delivery_from_assignment
 
      @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
       @response_to_the_evaluation.name = generate_rubres.name

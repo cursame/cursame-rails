@@ -10,19 +10,11 @@ class UsessionsController < Devise::SessionsController
 
     # GET /resource/sign_in
     def new
-      puts params
   
       self.resource = resource_class.new()      
       clean_up_passwords(resource)
       respond_with(resource, serialize_options(resource))      
       
-      if params[:email] == nil
-        puts "sin email"
-      end
-
-      if params[:password] == nil
-        puts "sin password"
-      end
       flash[:notice] = "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos."
     end
 
@@ -59,8 +51,6 @@ class UsessionsController < Devise::SessionsController
       # limpiamos los archivos en cache en busqueda de nuevas actualizaciones
       cache_self = Rails.cache.clear
 
-      puts "#{cache_self}"
-
       find_permissionings = Permissioning.where(:user_id => @find_user.id, :network_id => current_network.id)
       
       if find_permissionings == nil
@@ -75,13 +65,11 @@ class UsessionsController < Devise::SessionsController
                              ###### validando que la red no sea nula para redirigir
                           if find_network != nil
                              ####### redirecciona la red
-                             puts "****************** se ha encontrado una red a la cual seras redirigido ************"
                              
                              redirect_to "http://#{find_network.subdomain}.#{links}"
                           end
                       else
                        ####### se deja abierto para los permisos que estan pendientes
-                       puts "*************** demasiados *****************"  
                     end
                end
         else   
@@ -96,7 +84,6 @@ class UsessionsController < Devise::SessionsController
     # DELETE /resource/sign_out
     def destroy
       
-      puts "***************************************** Destruyendo Session *********************************************"
       redirect_path = after_sign_out_path_for(resource_name)
       sign_out(current_user) 
 
@@ -122,7 +109,6 @@ class UsessionsController < Devise::SessionsController
     
     def sign_in_params
       devise_parameter_sanitizer.sanitize(:sign_in)
-      puts "ingresa al logueo"
     end
 
     def serialize_options(resource)
