@@ -20,7 +20,7 @@ class Delivery < ActiveRecord::Base
   has_many :events, as: :schedule, :dependent => :destroy
   has_many :activities, as: :activitye#, :dependent => :destroy
   has_many :contents, :as => :contentye #, :dependent => :destroy
-
+  
   belongs_to :network
   belongs_to :wall
 
