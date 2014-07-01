@@ -1,12 +1,7 @@
-var content = '<%= escape_javascript( render( partial: "users/shared/users_cards_list", locals: { users: @users_paginated } ) )%>';
+var content = '<%= escape_javascript( render( partial: "users/shared/users_cards_list", locals: { users: @community_users } ) )%>';
 $('div.cards-list .cols-12').append( content );
 
-<% # check = CARDS_PER_PAGE + (@users_paginated.count * (@next_page - 2)) %>
-<% check = CARDS_PER_PAGE * (@next_page - 2) + (@users_paginated.count ) %>
-
-console.log('<%= @users.count %>, <%= @users_paginated.count %>, <%= check %>');
-
-<% if @users.count > check %>
+<% if @community_users.current_page > @community_users.num_pages %>
 	var loadMoreContent = '<%= escape_javascript( render( partial: "community/shared/pagination_button", locals: { page: @next_page, role: @role }) )%>';
 	$('div.load-more').html( loadMoreContent );
 <% else %>

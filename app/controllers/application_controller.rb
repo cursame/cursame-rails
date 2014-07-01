@@ -54,6 +54,8 @@ class ApplicationController < ActionController::Base
   #quit cache
   helper_method :cache_expire
   
+  include CoursesUtils
+
   def cache_expire 
     cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 10.minutes)
   end

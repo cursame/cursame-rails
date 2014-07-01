@@ -12,8 +12,9 @@
 </div>
 <div class="wrapper">
   <div class="cols-12 courses-list">
-    <% @courses.each do |course| %>
-      <%= render partial: 'courses/shared/course_card', locals: { course: course, member: @member, course_card_footer: true } %>
-    <% end %>
+    <%= render partial: 'courses/index/courses_cards_list', locals: { courses: @courses, member: @member } %>
   </div>
+  <% if @courses.total_entries > COURSES_PER_PAGE %>
+    <%= render partial: 'courses/shared/courses_paginate_button', locals: { page: 2, role: 'student', state: 'not_subscribed' } %>
+  <% end %>
 </div>

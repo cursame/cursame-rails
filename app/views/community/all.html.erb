@@ -1,12 +1,12 @@
 <%= render partial: 'community/shared/community_header' %>
 <div class="wrapper">
-	<% unless @network_users_paginated.empty? %>
+	<% unless @network_users.empty? %>
 		<div class="cards-list">
 	    <div class="cols-12">
-	      <%= render partial: 'users/shared/users_cards_list', locals: { users: @network_users_paginated } %>
+	      <%= render partial: 'users/shared/users_cards_list', locals: { users: @network_users } %>
 	    </div>
 	  </div>
-	  <% if @network_users.count > CARDS_PER_PAGE %>
+	  <% if @network_users.total_entries > CARDS_PER_PAGE %>
 			<%= render partial: 'community/shared/community_paginate_button', locals: { page: 2, role: 'all' } %>
 		<% end %>
 	<% else %>

@@ -18,7 +18,6 @@
 /public/plantillas
 /public/uploads
 
-.DS_Store
 .idea/workspace.xml
 .idea/dataSources.xml
 .idea/dataSources.ids.powenv
@@ -26,3 +25,11 @@
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

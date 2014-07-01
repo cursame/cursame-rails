@@ -2,18 +2,16 @@
 class CoursesController < ApplicationController
   before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   filter_access_to :show
-
   before_filter :course_activated, :only => [:show, :about, :members, :library]
 
   def index
+    @member = MembersInCourse.new
     case current_role
       when "teacher"
-        @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('teacher') ,:active_status => true).search(params[:search])
+        @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
       when "student"
-        @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') ,:active_status => true).search(params[:search])
+        @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     end
-
-    @member = MembersInCourse.new
 
     respond_to do |format|
       format.html { render stream: true}
@@ -23,11 +21,7 @@ class CoursesController < ApplicationController
 
   def pending
     @member = MembersInCourse.new
-    members_in_courses = MembersInCourse.where(user_id: current_user.id).where("members_in_courses.accepted != ?", true)
-    members_in_courses = members_in_courses.keep_if do |member| 
-      member.course.network_id == current_network.id
-    end
-    @courses = members_in_courses.map do |member| member.course end
+    @courses = student_pending_requests.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
 
     respond_to do |format|
       format.html { render 'courses/pending/pending' }
@@ -36,9 +30,8 @@ class CoursesController < ApplicationController
 
   def all
     @member = MembersInCourse.new
-    @courses = Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true).search(params[:search])
+    @courses = network_courses_not_subscribed.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
 
-    p @courses
     respond_to do |format|
       format.html { render 'courses/all_courses' }
     end
@@ -46,65 +39,44 @@ class CoursesController < ApplicationController
 
   def unpublished
     @member = MembersInCourse.new
-    @courses = current_user.courses.keep_if do |course| 
-      course.owner?(Role.find_by_title("teacher"), current_user) and not(course.active_status) end
+    @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)    
+
     respond_to do |format|
       format.html { render 'courses/unpublished_courses' }
     end
   end
-  
-  def my_courses
-     @member = MembersInCourse.new
-     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
-    respond_to do |format|
-      format.js
-    end
 
-  end
-
-  def all_courses
+  def paginate_ajax
+    @user_role = params[:role]
+    page = params[:page]
+    @state = params[:state]
     @member = MembersInCourse.new
-     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true).search(params[:search])
-    respond_to do |format|
-      format.js 
-    end
-  end
+    @next_page = page.to_i + 1
 
-  def my_old_courses
-   @member = MembersInCourse.new
-   @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal'), :active_status => false).search(params[:search])
-   respond_to do |format|
-      format.js 
-    end
-  end
-   
-
-  def operator_courses(typed = 'normal')
-      ids =  []
-
-      case typed 
-      when 'inverse'
-          courses_ids = current_user.members_in_courses.map do |member| member.course_id end
-          ids = current_network.courses.map do |course| course.id end - courses_ids
-
-       when 'normal'
-          ### coloca los ids de los cursos para comparacion
-          comparative_courses = []
-          current_user.courses.each do |c|
-            comparative_courses.push(c.id)
-          end
-          ids = comparative_courses
-
-
-      when 'student'
-        members = current_user.members_in_courses.keep_if do |member| member.accepted end
-        ids = members.map do |member| member.course_id end
-
+    case @user_role
       when 'teacher'
-        courses = current_user.courses.keep_if do |course| course.owner?(Role.find_by_title("teacher"), current_user) end
-        ids = courses.map do |course| course.id end
+        case @state
+          when 'published'
+            courses_raw = teacher_published_courses
+          when 'unpublished'
+            courses_raw = teacher_unpublished_courses
+          end
+      when 'student'
+        case @state
+          when 'subscribed'
+            courses_raw = student_subscribed_courses
+          when 'not_subscribed'
+            courses_raw = network_courses_not_subscribed
+          when 'subscribe_requests'
+            courses_raw = student_pending_requests
+        end
     end
-    ids 
+
+    @courses = courses_raw.paginate(per_page: COURSES_PER_PAGE, page: page)
+
+    respond_to do |format|
+      format.js { render 'courses/ajax/courses_paginate_ajax' }
+    end
   end
 
   def courses_search_ajax
@@ -118,16 +90,13 @@ class CoursesController < ApplicationController
       format.js 
     end
   end
-  # GET /courses/1
-  # GET /courses/1.json
   
   def statistics
     @course = Course.find(params[:id])   
   end
 
   def show  
-    @course = Course.find(params[:id])
-    
+    @course = Course.find(params[:id])  
     @member = obtainMember(@course.id,current_user.id)
 
     if @member.nil?
@@ -395,10 +364,10 @@ class CoursesController < ApplicationController
           #   format.json { render json: @course }
           # end
         else
-         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+         redirect_to courses_path, :notice => "No has sido aceptado en este curso."
         end
       else
-          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+          redirect_to courses_path, :notice => "No has sido aceptado en este curso."
       end
     end
   end

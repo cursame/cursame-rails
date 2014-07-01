@@ -19,18 +19,15 @@ class CommunityController < ApplicationController
   end
 
   def all
-    @network_users = all_users_network
-    @network_users_paginated = @network_users.paginate(:per_page => CARDS_PER_PAGE, :page => 1)
+    @network_users = all_users_network.paginate(:per_page => CARDS_PER_PAGE, :page => 1)
   end
 
   def students
-    @students = users_by_role("student")
-    @students_paginated = @students.paginate(:per_page => CARDS_PER_PAGE, :page => 1)
+    @students = users_by_role("student").paginate(:per_page => CARDS_PER_PAGE, :page => 1)
   end
 
   def teachers
-    @teachers = users_by_role("teacher")
-    @teachers_paginated = @teachers.paginate(:per_page => CARDS_PER_PAGE, :page => 1)
+    @teachers = users_by_role("teacher").paginate(:per_page => CARDS_PER_PAGE, :page => 1)
   end
 
   def paginate_ajax
@@ -40,14 +37,14 @@ class CommunityController < ApplicationController
 
     case @role
       when 'all'
-        @users = all_users_network
+        users = all_users_network
       when 'student'
-        @users = users_by_role("student")
+        users = users_by_role("student")
       when 'teacher'
-        @users = users_by_role("teacher")
+        users = users_by_role("teacher")
     end
 
-    @users_paginated = @users.paginate(:per_page => CARDS_PER_PAGE, :page => page)
+    @community_users = users.paginate(:per_page => CARDS_PER_PAGE, :page => page)
       
     respond_to do |format|
       format.js { render 'community/ajax/paginate_ajax' }

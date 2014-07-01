@@ -100,6 +100,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
   get '/courses/all', :to => 'courses#all', :as => :courses_all
   get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
+  get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
   
   resources :courses do
     resources :assignments
@@ -114,14 +115,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
     end
   end
 
-  # metodos de filtrado en cursos
-  get'/my_courses', :to =>'courses#my_courses', :as => :my_courses
-  get'/all_courses', :to => 'courses#all_courses', :as => :all_courses
-  get'/my_old_courses', :to => 'courses#my_old_courses', :as => :my_old_courses
-
-
   # metodos de amplio acceso al curso
-
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
   

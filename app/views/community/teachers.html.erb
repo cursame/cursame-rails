@@ -1,12 +1,12 @@
 <%= render partial: 'community/shared/community_header' %>
 <div class="wrapper">
-	<% unless @teachers_paginated.empty? %>
+	<% unless @teachers.empty? %>
 	  <div class="cards-list">
 	    <div class="cols-12">
-	    	<%= render partial: 'users/shared/users_cards_list', locals: { users: @teachers_paginated } %>
+	    	<%= render partial: 'users/shared/users_cards_list', locals: { users: @teachers } %>
 	    </div>
 	  </div>
-	  <% if @teachers.count > CARDS_PER_PAGE %>
+	  <% if @teachers.total_entries > CARDS_PER_PAGE %>
 			<%= render partial: 'community/shared/community_paginate_button', locals: { page: 2, role: 'teacher' } %>
 		<% end %>
 	<% else %>
