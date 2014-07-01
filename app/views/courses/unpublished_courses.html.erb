@@ -1,0 +1,19 @@
+<div class="section-header-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <%= render partial: 'courses/index/teacher_header' if current_role === 'teacher' %>
+          <%= render partial: 'courses/index/student_header' if current_role === 'student' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="cols-12 courses-list">
+    <% @courses.each do |course| %>
+      <%= render partial: 'courses/shared/course_card', locals: { course: course, member: @member, course_card_footer: true } %>
+    <% end %>
+  </div>
+</div>

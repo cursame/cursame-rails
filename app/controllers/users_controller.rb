@@ -2,7 +2,6 @@
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
   skip_before_filter :authenticate_user!, :only => [:upload_users_a]
-  ### manejo de que ven si son amigos 
   helper_method :filter_friendship
 
   def show
@@ -84,12 +83,13 @@ class UsersController < ApplicationController
    redirect_to network_comunity_path
  end
  
- ######## se colocan todas las rutas de para las tabs de show de users #####
- def info
-   @user_l= User.find_by_personal_url(params[:personal_url])
-   permisos = Permissioning.find_by_user_id_and_network_id(@user_l.id, current_network.id)
-   @role = Role.find_by_id(permisos.role_id)
- end
+def info
+  @user_l = User.find_by_personal_url(params[:personal_url])
+  redirect_to '/404' if @user_l.nil?
+  
+  permisos = Permissioning.find_by_user_id_and_network_id(@user_l.id, current_network.id)
+  @role = Role.find_by_id(permisos.role_id)
+end
 
  def courses
   @user_l= User.find_by_personal_url(params[:personal_url])

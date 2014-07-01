@@ -34,7 +34,7 @@ body {
     padding-left: 0;
 
     .wrapper {
-      @include max-screen(320px) {
+      @include max-screen(480px) {
         width: 100%;
       }
     }
@@ -141,6 +141,7 @@ body {
 }
 
 .wrapper {
+  position: relative;
   width: 960px;
   margin: 0 auto;
   @include clearfix;
@@ -273,6 +274,11 @@ body {
   &.avatar-60 {
     width: 60px;
     height: 60px;
+  }
+
+  &.avatar-80 {
+    width: 80px;
+    height: 80px;
   }
 
   &.avatar-150 {
@@ -475,23 +481,24 @@ body {
 /* Sections Pages
 ----------------------------------*/
 .section-header {
-
-  .section-header-content {
+  margin-bottom: 20px;
+  
+  .section-header-main {
     padding: 10px;
     @include clearfix;
   }
-  
-  .section-header-title {
+
+  .section-title {
+    height: 45px;
     float: left;
 
-    .section-icon {
-      float: left;
-      padding-top: 4px;
+    .i {
+      margin-right: 5px;
     }
 
-    .section-title {
-      margin-left: 75px;
-      padding-top: 17px;
+    h1 {
+      @include inline-block;
+      vertical-align: 15px;
     }
 
     .section-subnav {
@@ -515,7 +522,7 @@ body {
 
   .section-header-actions {
     float: right;
-    margin-top: 17px;
+    margin-top: 5px;
   }
 
   &.normal-full {
@@ -537,6 +544,14 @@ body {
     .section-header-actions {
       display: none;
     }
+  }
+}
+
+.section-sub-header-wrap {
+  margin-bottom: 20px;
+
+  .sub-header {
+    padding: 10px;
   }
 }
 
@@ -718,4 +733,9 @@ body {
 .scrollbar {
   overflow: hidden !important;
   position: relative;
+}
+
+
+.load-more {
+  margin-bottom: 25px;
 }

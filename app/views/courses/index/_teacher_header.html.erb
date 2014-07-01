@@ -1,0 +1,31 @@
+<div class="section-header">
+  <div class="section-header-main">
+    <div class="section-title">
+      <%= link_to icon('section-courses'), courses_path %>
+      <%= link_to courses_path do %>
+        <h1>Cursos</h1>
+      <% end %>
+    </div>
+    <div class="section-header-actions">
+      <ul class="list-buttons right">
+        <li>
+          <%= render partial: "/courses/courses_search" %>
+        </li>
+        <li>
+          <%= link_to "#{icon('plus-white')} Nuevo".html_safe, new_course_path, :title => 'Crear curso nuevo', :class=> "btn btn-primary" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-sub-navigation">
+    <% action = params[:action] %>
+    <ul>
+      <li>
+        <%= link_to "Activos", courses_path, class: (action == 'index' ? "active" : " ") %>
+      </li>
+      <li>
+        <%= link_to "Inactivos", courses_unpublished_path, class: (action == 'unpublished' ? "active" : " ") %>
+      </li>
+    </ul>
+  </div>
+</div>

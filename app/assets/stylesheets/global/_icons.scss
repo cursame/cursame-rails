@@ -13,6 +13,7 @@
 .i-stats-w { width: 16px; height: 16px; background-position: -18px -37px; }
 .i-calendar-w { width: 16px; height: 16px; background-position: -18px -55px; }
 .i-community-w { width: 16px; height: 16px; background-position: -0px -54px; }
+.i-messages-w { width: 16px; height: 16px; background-position: -76px -33px; }
 .i-like-c { width: 12px; height: 12px; background-position: -1px -74px; vertical-align: -2px; } 
 .i-like-c-active { width: 12px; height: 12px; background-position: -18px -74px; vertical-align: -2px; }
 .i-like-c-white { width: 12px; height: 12px; background-position: -59px -69px; vertical-align: -2px; } 
@@ -38,12 +39,12 @@
 .i-course-new-publication { width: 16px; height: 16px; background-position: -104px -105px; vertical-align: -4px; }
 .i-back-blue { width: 10px; height: 8px; background-position: -58px -84px; }
 .i-checked-16 { width: 16px; height: 16px; background-position: -73px -84px; }
-.i-section-courses { width: 60px; height: 60px; background-position: -184px -409px; }
-.i-section-surveys { width: 60px; height: 60px; background-position: -62px -409px; }
-.i-section-discussions { width: 60px; height: 60px; background-position: -123px -409px; }
-.i-section-community { width: 60px; height: 60px; background-position: -62px -470px; }
-.i-section-deliveries { width: 60px; height: 60px; background-position: -1px -409px; }
-.i-section-califications { width: 60px; height: 60px; background-position: -1px -470px; }
+.i-section-courses { width: 45px; height: 45px; background-position: -133px 0; }
+.i-section-surveys { width: 45px; height: 45px; background-position: -133px -46px; }
+.i-section-discussions { width: 45px; height: 45px; background-position: -133px -92px; }
+.i-section-community { width: 45px; height: 45px; background-position: -133px -138px; }
+.i-section-deliveries { width: 45px; height: 45px; background-position: -133px -184px; }
+.i-section-califications { width: 45px; height: 45px; background-position: -133px -230px; }
 .i-section-comments { width: 60px; height: 60px; background-position: -123px -470px; }
 .i-section-chat { width: 60px; height: 60px; background-position: -184px -470px; }
 .i-section-statistics { width: 60px; height: 60px; background-position: -184px -531px; }
@@ -103,6 +104,11 @@
 .i-mision { width: 32px; height: 32px; background-position: -244px -406px; vertical-align: -9px; }
 .i-philosophy { width: 32px; height: 32px; background-position: -245px -446px; vertical-align: -9px; }
 .i-objectives { width: 32px; height: 32px; background-position: -244px -483px; vertical-align: -9px; }
+.i-sub-nav-tip { width: 21px; height: 10px; background-position: -93px -84px; }
+.i-lock { width: 12px; height: 12px; background-position: -94px -35px; }
+.i-public { width: 12px; height: 12px; background-position: -110px -35px; }
+.i-drop-arrow { width: 8px; height: 10px; background-position: -70px -38px; }
+.i-check {	width: 9px; height: 7px; background-position: -58px -40px; }
 
 /* File Types Icons */
 .i-file-type-dimension { width: 31px; height: 37px; }

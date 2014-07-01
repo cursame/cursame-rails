@@ -1,0 +1,31 @@
+<div class="col col-4">
+  <div class="col-inner">
+    <div class="course<%= " no-footer" if !course_card_footer %>" data-course-id="<%= course.id %>">
+      <div class="course-main" style="background-image: url(<%= course.coverphoto.blank? ? "/assets/#{course.image_coursex}" : course.coverphoto %>)">
+        <div class="course-main-content">
+          <%= link_to course_path(course.id) do %>
+            <h3><%= course.title %></h3>
+          <% end %>
+
+          <% if course.members_in_courses.present? %>
+            <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| link_to member.user.name, show_user_path(member.user.personal_url) unless !member.user }.first %></p>
+
+            <p><%= pluralize(course.members_in_courses.count-1, 'Miembro', 'Miembros') %></p>
+          <% end %>
+        </div>
+        <div class="course-main-cover"></div>
+      </div>
+      <% if course_card_footer %>
+        <div class="course-footer">
+          <div class="course-footer-actions">
+            <%= render partial: 'courses/shared/course_card_actions', locals: { course: course, member: member } %>
+          </div>
+          <div class="course-footer-info">
+            <%= '<i class="i i-lock" title="Curso Privado"></i>'.html_safe if course.public_status === 'Private' %>
+            <%= '<i class="i i-public" title="Curso Publico"></i>'.html_safe if course.public_status === 'public' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

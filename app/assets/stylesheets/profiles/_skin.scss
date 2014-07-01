@@ -1,58 +1,52 @@
 
 /* Courses and User Profiles
 ----------------------------------*/
-.profile-cover-photo {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-
-  &:after {
-    content: "";
-    background: rgba(0,0,0,.18);
-  }
+.section-header-top {
+  @extend .basic-container-style;
+  border-top: 0;
+  border-radius: 0 0 $radius $radius;
 }
 
-.profile-user-bar {
-  background: #fff;
-  border-bottom: 1px solid #c7cdcf;
+.profile-header {
+  @extend .basic-container-style;
+  border-top: 0;
+  border-radius: 0 0 $radius $radius;
 
-  .profile-name-avatar {
+  .profile-info h1{
+    color: $global-color;
+    @include ellipsis();
+  }
 
+  .profile-banner {
     .profile-avatar {
       background: #fff;
       border-radius: $radius;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0,0,0,.2);
-    }
-
-    h1 {
-      line-height: 46px;
-      color: $global-color;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
     }
   }
+}
 
-  .profile-navigation {
+.page-sub-navigation {
+  border-top: 1px solid $separator-color;
 
-    > ul > li {
-      border-right: 1px solid #e6e6e6;
-      
-      &:first-child {
-        border-left: 1px solid #e6e6e6;
-      }
+  ul li {
+    border-right: 1px solid $separator-color;
 
-      > a {
-        font-weight: bold;
+    a {
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
 
-        &:hover {
-          background: #f7f7f7;
-        }
+      &.active {
+        color: $meta-color;
+        background: #fafafa;
+        border-bottom-color: #0f85b9;
       }
     }
-  }
 
-  @include max-screen(480px) {
-    .profile-navigation {
-      border-top: 1px solid #e6e6e6;
-    } 
+    &:first-child a {
+      border-radius: 0 0 0 $radius;
+    }
   }
 }
 

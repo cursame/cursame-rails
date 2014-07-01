@@ -1,23 +1,56 @@
 # -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
-  # GET /courses
-  # GET /courses.json
   before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   filter_access_to :show
 
   before_filter :course_activated, :only => [:show, :about, :members, :library]
 
   def index
-    
-    @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
-    ##### creamos el registro de los usuarios de un curso ######
-    @member = MembersInCourse.new
-    #alfredot_rifa_free_pro_forever
-    respond_to do |format|
-      format.html {render stream: true}
-      format.json { render json: @courses }
+    case current_role
+      when "teacher"
+        @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('teacher') ,:active_status => true).search(params[:search])
+      when "student"
+        @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') ,:active_status => true).search(params[:search])
     end
 
+    @member = MembersInCourse.new
+
+    respond_to do |format|
+      format.html { render stream: true}
+      format.json { render json: @courses }
+    end
+  end
+
+  def pending
+    @member = MembersInCourse.new
+    members_in_courses = MembersInCourse.where(user_id: current_user.id).where("members_in_courses.accepted != ?", true)
+    members_in_courses = members_in_courses.keep_if do |member| 
+      member.course.network_id == current_network.id
+    end
+    @courses = members_in_courses.map do |member| member.course end
+
+    respond_to do |format|
+      format.html { render 'courses/pending/pending' }
+    end
+  end
+
+  def all
+    @member = MembersInCourse.new
+    @courses = Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true).search(params[:search])
+
+    p @courses
+    respond_to do |format|
+      format.html { render 'courses/all_courses' }
+    end
+  end
+
+  def unpublished
+    @member = MembersInCourse.new
+    @courses = current_user.courses.keep_if do |course| 
+      course.owner?(Role.find_by_title("teacher"), current_user) and not(course.active_status) end
+    respond_to do |format|
+      format.html { render 'courses/unpublished_courses' }
+    end
   end
   
   def my_courses
@@ -47,27 +80,14 @@ class CoursesController < ApplicationController
    
 
   def operator_courses(typed = 'normal')
-    case 
-      when typed == 'inverse'
-          #### coloca los cursos a los que no pertenezco
-          comparative_courses = []
-          course_in_network = []
-    
-        ####### obtiene los ids de lo que pertenezco y lo que no y
-          current_user.courses.each do |c|
-            comparative_courses.push(c.id)
-          end
-    
-          current_network.courses.each do |cs|
-             course_in_network.push(cs.id)
-          end
-    
-          ids = course_in_network - comparative_courses
+      ids =  []
 
-          #puts "******************#{comparative_courses}"
-          #puts "******************#{course_in_network}"
-          #puts "#{ids}"
-       when typed == 'normal'
+      case typed 
+      when 'inverse'
+          courses_ids = current_user.members_in_courses.map do |member| member.course_id end
+          ids = current_network.courses.map do |course| course.id end - courses_ids
+
+       when 'normal'
           ### coloca los ids de los cursos para comparacion
           comparative_courses = []
           current_user.courses.each do |c|
@@ -75,7 +95,16 @@ class CoursesController < ApplicationController
           end
           ids = comparative_courses
 
+
+      when 'student'
+        members = current_user.members_in_courses.keep_if do |member| member.accepted end
+        ids = members.map do |member| member.course_id end
+
+      when 'teacher'
+        courses = current_user.courses.keep_if do |course| course.owner?(Role.find_by_title("teacher"), current_user) end
+        ids = courses.map do |course| course.id end
     end
+    ids 
   end
 
   def courses_search_ajax

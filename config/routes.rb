@@ -96,7 +96,11 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
 
   
-
+  # Cursos
+  get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
+  get '/courses/all', :to => 'courses#all', :as => :courses_all
+  get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
+  
   resources :courses do
     resources :assignments
     resources :messages do
@@ -236,12 +240,6 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
   get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
   
-  ###### buscador de users
-  
-  get '/network_find_user', :to => 'networks#find_user', :as => :user_n_find
-
-
-  
   # Groups
   get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
   post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
@@ -283,14 +281,13 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   #match  "users/:user_id/waiting_friends", :to => "users#waiting_friends", :as => :user_waiting_friends
   get "users/:user_id/coverphoto", :to => "users#coverphoto", :as => "cover_photo"
 
+
   get "community/:id/new", :to => "friendships#create_friend", :as => :friendships_create_friend
   get "community/:id/update", :to => "friendships#update_friend", :as => :friendships_update_friend
   get "community/:id/destroy", :to => "friendships#destroy", :as => :friendships_destroy_friend
 
-
   #roles
   match  "/admin_roles", :to => "roles#users",  :as =>  :user_roles
-
 
   #manejo de networks
   match 'networks/networkregistration/protocol-iscander', :to => 'networks#network_mask', :as => :registration_mask
@@ -304,10 +301,14 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
-  match '/community', :to =>  "networks#network_comunity", :as => :network_comunity
 
-  get '/filter_comunity', :to => "networks#all_user_in_network_where_not_my_friends", :as => :filter_comunity
-  get '/paginate_comunity', :to => "networks#paginate_users_based_params", :as => :paginate_users_based_params
+  # Comunidad
+  get '/community', to: "community#all", as: :network_comunity
+  get '/community/students', to: "community#students", as: :community_students
+  get '/community/teachers', to: "community#teachers", as: :community_teachers
+  get '/community/search', to: "community#search", as: :community_search
+  get '/community/paginate-ajax', to: "community#paginate_ajax", as: :community_paginate_ajax
+
   # filtro del wall
   get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
   #manejo de usuarios en las networks

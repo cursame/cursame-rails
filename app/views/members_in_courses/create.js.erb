@@ -1,12 +1,10 @@
-var target        = $('#hidden-<%= @course %>'),
-    statusHolder  = target.closest('.course-user-status');
+var course = $('[data-course-id="<%= @course %>"]'),
+		footerCourse = course.find('div.course-footer div.course-footer-actions');
 
-target.remove();
-
-<% if @course_find.public_status == "Private" %>
-  statusHolder.prepend('<p class="request-sent"><i class="i i-clock-w"></i> Esperando a ser aceptado</p>');
-<%else%>
-  statusHolder.prepend('<p class="request-sent">Has ingresado a este grupo</p>'); 
+<% if @course_find.public_status === "Private" %>
+  footerCourse.html('<div class="btn btn-small btn-disabled">Solicitud enviada</div>');
+<% else %>
+	footerCourse.html('<div class="btn btn-small btn-disabled">Te has inscrito</div>');
 <%end%>
 
 

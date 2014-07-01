@@ -1,0 +1,189 @@
+
+/* Courses and User Profiles
+----------------------------------*/
+.profile-cover-photo {
+  height: 180px;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .wrapper {
+    position: relative
+  }
+
+  .admin-buttons {
+    position: absolute;
+    right: 10px;
+    top: 140px;
+  }
+
+  &:after {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+
+  .triangle-wrapper {
+    padding: 11px 2px 0 2px;
+    height: 4px;
+    overflow: hidden;
+  }
+}
+
+.profile-user-bar {
+
+  .profile-name-avatar {
+    float: left;
+    padding-left: 175px;
+    position: relative;
+
+    .profile-avatar {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      padding: 5px;
+      width: 150px;
+      height: 150px;
+
+      a, img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+    }
+
+    &.compact {
+      padding-left: 0;
+
+      .profile-avatar-compact {
+        float: left;
+        margin-top: 12px;
+      }
+
+      .profile-avatar-compact-name {
+        margin-left: 40px;
+      }
+    }
+
+    @include max-screen(770px) {
+      padding-left: 0;
+
+      .profile-avatar {
+        display: none;
+      }
+    }
+  }
+
+  .profile-navigation {
+    float: right;
+    @include clearfix;
+
+    > ul > li {
+      float: left;
+
+      a {
+        display: block;
+        padding: 15px 8px 16px 8px;
+      }
+    }
+  }
+
+  @include max-screen(480px) {
+    .profile-name-avatar {
+      float: none;
+    }
+
+    .profile-navigation {
+      float: none;
+      margin: 0 -2.5%;
+    }
+  }
+}
+
+.sub-profile-title {
+  @include clearfix;
+  margin: 20px 0;
+}
+
+.course-info-blocks {
+  .course-info-block {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.page-sub-navigation {
+  @include clearfix;
+
+  ul li {
+    float: left;
+
+    a {
+      position: relative;
+      display: block;
+      padding: 7px 10px 9px 10px;
+
+      &.active .i {
+        display: block;
+      }
+    }
+
+    .i {
+      position: absolute;
+      left: 50%;
+      margin-left: -10px;
+      bottom: -10px;
+      display: none;
+    }
+  }
+}
+
+/* Edit User Profile
+----------------------------------*/
+.user-custom-url-wrap {
+  position: relative;
+
+  .i {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    display: none;
+  }
+
+  span {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    padding: 9px 5px 9px 4px;
+  }
+
+  input[type="text"] {
+    padding-left: 135px;
+    padding-right: 30px;
+  }
+
+  &.url-available .i-green-checkmark {
+    display: block;
+  }
+
+  &.url-not-available .i-red-x {
+    display: block;
+  }
+}
+
+.user-friends-actions {
+  @include max-screen(480px) {
+    float: none;
+    clear: both;
+    margin-top: 10px;
+  }
+}

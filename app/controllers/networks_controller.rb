@@ -6,6 +6,7 @@ class NetworksController < ApplicationController
   before_filter :filter_user_network_wed
   skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create, :awaiting_confirmation, :network_search]
   helper_method :ko_net
+
   def index
     @networks = Network.all
     def network_each
@@ -18,7 +19,6 @@ class NetworksController < ApplicationController
   end
 
   def alertmethod
-    
     respond_to do |format|
       format.html
       format.json
@@ -191,73 +191,14 @@ class NetworksController < ApplicationController
   end
   
   def network_search
-   
-     @networks = Network.all
-     network = []
-     
-        @networks.each do |net|
-         @lader = I18n.transliterate("#{net.name}")
-          network.push(
-             { name: "#{net.name}",
-              subdomain: "#{net.subdomain}",
-              simplify: "#{@lader}".downcase!}
-          )
-        end
-     
-   
-     render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback]
-          
-     
-  end
-
-  def network_comunity
-  @user_l= current_user
-  @locals_firends = @user_l.friends(false) + @user_l.friends(true)
-  @friends = @locals_firends.paginate(:per_page => 9, :page => params[:page])
-   respond_to do |f|
-    f.html
-   end
-  end
-
-
-  def all_user_in_network_where_not_my_friends
-  @user_l= current_user
-
-   @a = current_network.users
-
-   @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
-
-   @v = @a - @r
-
-   @friends = @v.paginate(:per_page => 9)
-  respond_to do |f|
-    f.js
-  end
-
-  end
-
-  def paginate_users_based_params
-    case params[:type_in_act].to_s
-      when "my_friends"
-        @user_l= current_user
-        @locals_firends = @user_l.friends(false) + @user_l.friends(true)
-        @friends = @locals_firends.paginate(:per_page => 9, :page => params[:page])
-      when "not_my_friends"
-        @user_l= current_user
-        @a = current_network.users
-        @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
-        @v = @a - @r
-        @friends = @v.paginate(:per_page => 9, :page => params[:page])
+    @networks = Network.all
+    network = []
+    @networks.each do |net|
+      @lader = I18n.transliterate("#{net.name}")
+      network.push( { name: "#{net.name}", subdomain: "#{net.subdomain}", simplify: "#{@lader}".downcase!})
     end
-
-    @new_page = params[:page].to_i + 1
-    @type = params[:type_in_act].to_s
-    respond_to do |f|
-        f.js
-    end
-        
-      
     
+    render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback] 
   end
   
   def awaiting_confirmation

@@ -1,0 +1,12 @@
+<div class="wrapper" id="courses_content">
+  <% if courses.empty? %>
+    <div class="no-content-section">
+      <h4>No hay cursos.</h4>
+    </div>
+  <% end %>
+  <div class="cols-12 courses-list">
+    <% courses.each do |course| %>
+      <%= render partial: 'courses/shared/course_card', locals: { course: course, member: member, course_card_footer: true } %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<%= render partial: 'community/shared/community_header' %>
+<div class="wrapper">
+	<% unless @students_paginated.empty? %>
+	  <div class="cards-list">
+	    <div class="cols-12">
+	      <%= render partial: 'users/shared/users_cards_list', locals: { users: @students_paginated } %>
+	    </div>
+	  </div>
+	  <% if @students.count > CARDS_PER_PAGE %>
+			<%= render partial: 'community/shared/community_paginate_button', locals: { page: 2, role: 'student' } %>
+		<% end %>
+	<% else %>
+	  <div class="no-content-section">
+      <h4>Aún no hay estudiantes en tu red.</h4>
+	  </div>
+  <% end %>
+</div>
