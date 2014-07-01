@@ -49,7 +49,6 @@ class UsersController < ApplicationController
         @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
       end
 
-     ##### print assets
      @asset = Asset.new
      assets = @delivery.assets.build
 
