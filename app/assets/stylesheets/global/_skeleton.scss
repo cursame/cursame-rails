@@ -487,51 +487,31 @@ body {
 /* Sections Pages
 ----------------------------------*/
 .section-header {
-
-  .section-header-content {
+  .section-header-main {
     padding: 10px;
     @include clearfix;
   }
-  
-  .section-header-title {
+
+  .section-title {
     float: left;
 
-    .section-icon {
-      float: left;
-      padding-top: 4px;
+    .i {
+      margin-right: 10px;
     }
 
-    .section-title {
-      margin-left: 75px;
-      padding-top: 17px;
+    h1 {
+      @include inline-block;
+      vertical-align: 22px;
     }
 
-    .section-subnav {
-      @include clearfix;
-
-      li {
-        float: left;
-        padding-right: 10px;
-      }
-    }
-
-    &.w-subnav .section-title {
-      padding-top: 8px;
-    }
-
-    &.no-icon .section-title {
-      margin-left: 0;
-      padding-top: 0;
+    &.no-icon h1 {
+      vertical-align: middle;
     }
   }
-
+  
   .section-header-actions {
     float: right;
     margin-top: 17px;
-  }
-
-  &.normal-full {
-    padding: 15px 0;
   }
 
   @include max-screen(480px) {

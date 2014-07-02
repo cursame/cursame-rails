@@ -1,5 +1,4 @@
 <%= render :partial => 'course-header' %>
-
 <div class="wrapper sc-margined">
   <div class="cols-12">
     <div class="col col-12">
@@ -15,23 +14,3 @@
     </div>
   </div>
 </div>
-
-<div style="display: none">
-  <% if current_role == 'admin' || current_role == 'superadmin' %>          
-    <div class="view-all" id="members_admin"><%= link_to "Administrador de miembros", course_members_path %></div>
-  <% elsif @member.owner != nil && @member.owner == true %>
-    <div class="view-all" id="members_admin"> <%= link_to "Administrador de miembros", course_members_path %></div>
-  <%end%>
-</div>
-
-<script type="text/javascript">
-  // elimina todos los p vacios  
-  $(document).ready ( function() {
-    $('p:empty').hide();
-    $("#stats-area").on('show',function () {
-      $("#timeline-embed").resize();
-      $("#estadistic-list").css("display","block");
-      $("#banner-profile").css("height", "900px;");
-    });
-  });
-</script>

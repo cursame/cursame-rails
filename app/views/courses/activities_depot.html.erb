@@ -1,32 +1,16 @@
-<div class="section-header activities-depot-header">
+<div class="section-header-wrap">
   <div class="wrapper">
     <div class="cols-12">
       <div class="col col-12">
         <div class="col-inner">
-          <div class="section-header-content">
-            <div class="section-header-title w-subnav">
-              <div class="section-icon">
-                <span class="avatar-holder">
-                  <%= avatar('course', '150', "no", @course.id, "avatar avatar-60", "no", "no") %>
-                </span>
+          <div class="section-header">
+            <div class="section-header-main">
+              <div class="section-title no-icon">
+                <%= link_to course_path @course do %>
+                  <h1><%= @course.title %></h1>
+                  <p>Regresar al curso</p>
+                <% end %>
               </div>
-              <div class="section-title">
-                <h1><%= truncate( @course.title, omission: "...", length: 55) %></h1>
-                <ul class="section-subnav">
-                  <li class="active">
-                    <a class="all_select" href="#" title="Todos" data-filter="all">Todo</a>
-                  </li>
-                  <li>
-                    <a class="homework_select" href="#"  title="Tareas" data-filter="tarea">Tareas</a>
-                  </li>
-                  <li>
-                    <a class="survey_select" href="#"  title="Cuestionarios" data-filter="examen">Cuestionarios</a>  
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-header-actions">
-              <%=link_to "Regresar al curso", course_path(@course)%>
             </div>
           </div>
         </div>
@@ -168,16 +152,4 @@
 
     });
   }
-
-  $('.section-subnav li > a').on('click', function() {
-    var $this = $(this),
-        filter = $this.data('filter');
-    
-    if ( filter == 'all') {
-      feedsContainer.children('.activity-depot-feed').show();  
-    } else {
-      feedsContainer.children('.activity-depot-feed').hide();
-      feedsContainer.children('[data-type="'+ filter +'"]').show();
-    }
-  });
 </script>
