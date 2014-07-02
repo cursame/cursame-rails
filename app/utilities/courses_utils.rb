@@ -38,12 +38,12 @@ module CoursesUtils
       ids = current_user.courses.map {|course| course.id}
       
     when 'student'
-      members = current_user.members_in_courses.keep_if do |member| member.accepted end
-      ids = members.map do |member| member.course_id end
+      members = current_user.members_in_courses.keep_if { |member| member.accepted }
+      ids = members.map { |member| member.course_id }
       
     when 'teacher'
-      courses = current_user.courses.keep_if do |course| course.owner?(Role.find_by_title("teacher"), current_user) end
-      ids = courses.map do |course| course.id end
+      courses = current_user.courses.keep_if { |course| course.owner?(Role.find_by_title("teacher"), current_user) }
+      ids = courses.map { |course| course.id }
     end
 
     ids 
