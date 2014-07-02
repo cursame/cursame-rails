@@ -1,6 +1,6 @@
 class Evaluation < ActiveRecord::Base
 
-  belongs_to :qualifying, :polymorphic => true
+  belongs_to :qualifying, polymorphic: true
 
   validates :qualifying, presence: true
   validates :score, presence: true, numericality: { only_integer: true,
