@@ -3,11 +3,19 @@ class EvaluateController < ApplicationController
 		
 	end
 
-    def course
-      
-    end
+  def course
+    
+  end
 
-    def qualifying
-      
-    end
+  def qualifying
+    
+  end
+
+  def user_survey
+  	
+  end
+
+  def assignment
+  	
+  end
 end
