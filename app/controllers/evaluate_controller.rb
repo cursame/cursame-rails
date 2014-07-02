@@ -14,7 +14,7 @@ class EvaluateController < ApplicationController
       accu + course.surveys.where("end_date >= ?" , Date.today)
     end
     
-    activities = (deliveries + surverys).sort do 
+    activities = (deliveries + surveys).sort do 
       |x,y| y.end_date <=> x.end_date
     end
     
@@ -24,7 +24,7 @@ class EvaluateController < ApplicationController
       Date.tomorrow <=activity.end_date and activity.end_date <= (Date.tomorrow + 1.day)
     end
 
-    @rest_of_activities = take_while { |activity| activity.end_date >= (Date.tomorrow + 1.day)}     
+    @rest_of_activities = activities.take_while { |activity| activity.end_date >= (Date.tomorrow + 1.day)}     
   end
   
   def course

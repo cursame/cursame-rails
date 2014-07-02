@@ -25,8 +25,6 @@ class Survey < ActiveRecord::Base
   validates_presence_of :questions
   validates_presence_of :user
 
-
-
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
 
