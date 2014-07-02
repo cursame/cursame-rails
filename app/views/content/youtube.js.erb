@@ -1,8 +1,0 @@
-$('.content_wikipedia').hide();
-$('#box_for_loads<%=@typeo%>').show();
-$('#youtube_content_delivery<%=@typeo%>').show();
-$('.content_free<%=@typeo%>').show( );
-$('.content_free<%=@typeo%>').html('');
-$('#content_wikipedia<%=@typeo%>').html('');
-$('.content_free<%=@typeo%>').prepend("<%= escape_javascript(render(:partial => '/content/youtube', :locals => {:page => [@page], :typeo => [@typeo]}))%>");
-

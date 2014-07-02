@@ -3,12 +3,6 @@
   
     <ul class="list-buttons left">
       <li>
-        <a class="valu<%=typeo%> btn btn-secondary" href="" data-remote="true"> <%= icon('youtube-asset') %> Youtube</a>
-      </li>
-      <li>
-        <a href="" class="valw<%=typeo%> btn btn-secondary" data-remote="true"> <%= icon('wikipedia-asset') %> Wikipedia</a>      
-      </li>
-      <li>
         <%= render :partial => "content/dropbox", :locals => {:typeo => typeo}%>        
       </li>
     </ul>
@@ -40,10 +34,7 @@
          }
         
       var cleanvalue = limpiar(value)
-                  
-        $(".valu<%=typeo%>").attr("href", "/content/youtube?youtube_search="+cleanvalue.split(" ").join("+")+'&typeo=<%=typeo%>');
-        $(".valw<%=typeo%>").attr("href", "/content/wikipedia?search_wikipedia=" +cleanvalue.split(" ").join("_")+'&typeo=<%=typeo%>');
-        
+                          
     }).keyup();
     
 </script>

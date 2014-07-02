@@ -109,7 +109,6 @@ gem "mocha", :group => :test
 
 #gemas para contenido
 gem "dropbox-sdk", "~> 1.5.1"
-gem "youtube_it"
 gem "mediawiki-gateway"
 gem 'omniauth-dropbox'
 gem "dropbox-api"
