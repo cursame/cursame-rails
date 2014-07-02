@@ -7,24 +7,32 @@ class EvaluateController < ApplicationController
     
     deliveries = courses.inject([]) do
       |accu, course| 
-      accu + course.deliveries.where("end_date >= ?", Date.today)
+      accu + course.deliveries
     end
     surveys = courses.inject([]) do
       |accu, course| 
-      accu + course.surveys.where("end_date >= ?" , Date.today)
+      accu + course.surveys
     end
     
     activities = (deliveries + surveys).sort do 
       |x,y| y.end_date <=> x.end_date
     end
-    
-    @today_activities = activities.drop_while{ |activity| activity.end_date >= Date.tomorrow }
-    @tomorrow_activities = activities.keep_if do 
+        
+    @today_activities = activities.clone.keep_if do
       |activity|
-      Date.tomorrow <=activity.end_date and activity.end_date <= (Date.tomorrow + 1.day)
+      Date.today <= activity.end_date.to_date and activity.end_date.to_date <= Date.tomorrow.to_date
+    end
+    
+    @tomorrow_activities = activities.clone.keep_if do 
+      |activity|
+      Date.tomorrow <= activity.end_date.to_date and activity.end_date.to_date <= (Date.tomorrow + 1.day)
     end
 
-    @rest_of_activities = activities.take_while { |activity| activity.end_date >= (Date.tomorrow + 1.day)}     
+    @rest_of_activities = activities.clone.keep_if do
+      |activity| 
+      activity.end_date.to_date >= (Date.tomorrow + 1.day)
+    end     
+    
   end
   
   def course
