@@ -3,7 +3,15 @@ class EvaluateController < ApplicationController
 		
 	end
 
+  def inactive
+    
+  end
+
   def course
+    
+  end
+
+  def course_inactive
     
   end
 
