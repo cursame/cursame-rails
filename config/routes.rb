@@ -117,7 +117,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
+  get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
   get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
+  get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
   get '/evaluate/courses/:course_id/survey/:survey_id', :to => 'evaluate#qualifying'
   get '/evaluate/courses/:course_id/survey/:survey_id/response/:id', :to => 'evaluate#user_survey'
   get '/evaluate/courses/:course_id/delivery/:delivery_id', :to => 'evaluate#qualifying'

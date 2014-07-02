@@ -24,14 +24,21 @@ class EvaluateController < ApplicationController
       Date.tomorrow <=activity.end_date and activity.end_date <= (Date.tomorrow + 1.day)
     end
 
-    @rest_of_activities = take_while { |activity| activity.end_date >= (Date.tomorrow + 1.day)} 
-    
+    @rest_of_activities = take_while { |activity| activity.end_date >= (Date.tomorrow + 1.day)}     
   end
   
   def course
     
   end
   
+  def inactive
+    
+  end
+
+  def course_inactive
+    
+  end
+
   def qualifying
     
   end
