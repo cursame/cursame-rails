@@ -115,6 +115,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
     end
   end
 
+  #Calificar Actividades
+  get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
+
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 

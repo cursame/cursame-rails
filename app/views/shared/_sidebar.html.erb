@@ -17,7 +17,7 @@
             <%= icon 'home-w' %> Inicio
           <% end %>
         </li>
-        <% if current_role === 'student' %>
+        <% if current_role == 'student' %>
           <li>
             <%= link_to my_deliveries_path do %>
               <%= icon 'homeworks-w' %> Tareas
@@ -34,6 +34,15 @@
             <%end%>
           </li>
         <% end %>
+
+        <% if current_role == 'teacher' %>
+          <li>
+            <%= link_to evaluate_activities_path do %>
+              <%= icon 'discussions-w' %> Calificar Actividades
+            <%end%>
+          </li>
+        <% end %>
+
         <li>
           <%= link_to courses_path do %>
             <i class="i i-courses-w"></i>Cursos
