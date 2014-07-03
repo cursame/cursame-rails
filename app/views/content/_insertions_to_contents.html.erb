@@ -1,4 +1,4 @@
-<% if type.contents.count > 0 %>  
+<% if type.contents.count > 0 %>
   <div id="parcer<%=type.id%>_<%=cl%>">
     
   </div>
@@ -10,7 +10,6 @@
       
       aaaa="<%= content.content %>";
       
-      //aaaa="http://somesite.se/blah/sese";
       var matches = aaaa.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/),
           lof = matches[1];
 
@@ -18,6 +17,15 @@
       
         case 'dropbox.com': 
           $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a href="<%= content.content %>" target="_blank"><i class="i i-dropbox-asset-blue"></i> <%= content.content %></a></div>');
+          break;
+
+        case 'youtube.com':
+          $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a href="<%= content.content %>" target="_blank"><i class="i i-youtube-asset-blue"></i> <%= content.content %></a></div>');
+
+          break;
+                   
+        case 'es.wikipedia.org': 
+          $('#parcer<%=type.id%>_<%=cl%>').prepend('<div class="publication-asset"><a href="<%= content.content %>" target="_blank"><i class="i i-wikipedia-asset-blue"></i> <%= content.content %></a></div>');
           break;
           
       };
