@@ -1,1 +1,77 @@
-evaluate#qualifying
+<% if @delivery %>
+	<% course = @delivery.courses.first %>	
+	<div class="activity-view-wrap">
+		<div class="wrapper">
+			<div class="cols-12">
+				<div class="col col-12">
+					<div class="col-inner">
+						<div class="activity-view">
+
+							<div class="activity-view-header">
+								<div class="activity-extract">
+									<%= icon("activity-delivery") %>
+									<h3><%= @delivery.title %></h3>
+								</div>
+								<div class="activity-view-data">
+									<ul>
+										<li>
+											<span class="meta-info">Curso</span>
+											<p><%= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course) %></p>
+										</li>
+										<li>
+											<span class="meta-info">Entregas</span>
+											<p><%= @delivery.responses.count %> de <%= course.members_in_courses.count %></p>
+										</li>
+										<li>
+											<span class="meta-info">Fecha de publicación</span>
+											<p><%= I18n.localize(@delivery.publish_date, format: "%e de %B del %Y") %></p>
+										</li>
+										<li>
+											<span class="meta-info">Fecha para entrega</span>
+											<p><%= I18n.localize(@delivery.end_date, format: "%e de %B del %Y") %></p>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="activity-view-main">
+								<% unless @delivery.responses.empty? %>
+									<div class="activity-responses-list">
+										<% @delivery.responses.each do |response| %>
+											<%= link_to evaluate_delivery_response_path(response) do %>	
+												<div class="activity-response">
+													<div class="activity-response-avatar">
+									          <span class="avatar-holder">
+									            <%= avatar('user', '150', 'no', response.user.id, 'avatar avatar-80', 'no', 'no') %>
+									          </span>
+													</div>
+													<div class="activity-response-main">
+														<h5><%= response.user.name %></h5>
+														<% if response.accomplishment %>
+															<p><%= response.accomplishment %></p>
+														<% else %>
+															<p>Sin Calificar</p>
+														<% end %>
+													</div>
+													<%= debug response %>
+
+												</div>
+											<% end %>
+										<% end %>
+									</div>
+								<% else %>
+									<div class="no-content-section">
+								    <h5>Sin Entregas.</h5>
+								    <p>Todavia no hay ninguna entrega en esta tarea.</p>
+								  </div>
+								<% end %>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<% end %>

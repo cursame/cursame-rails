@@ -1,23 +1,9 @@
 <% activities.each do |activity| %>
   <% course = activity.courses.first %>
   <% activity_type = activity.class.to_s.downcase %>
-  <div class="activity-item">
-    <div class="activity-item-icon">
-      <%= icon("activity-#{activity_type}") %>
-    </div>
-    <div class="activity-item-desc">
-      <%= link_to '#' do %>
-        <h4><%= activity.title %></h4>
-      <% end %>
-      <div class="activity-meta-data">
-        <span>
-          <%= activity.responses.count %> de <%= course.members_in_courses.count %> <%= activity_type == "delivery" ? "Entregas" : "Contestados" %>
-        </span>
-        <span>·</span>
-        <span>
-          <%= link_to course.title, course_path(course.id) %>
-        </span>
-      </div>
-    </div>
-  </div>
+  <% if activity_type == 'survey' %>
+    <%= render partial: 'evaluate/shared/survey_activity', locals: { activity: activity, course: course } %>
+  <% else %>
+    <%= render partial: 'evaluate/shared/delivery_activity', locals: { activity: activity, course: course } %>
+  <% end %>
 <% end %>

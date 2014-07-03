@@ -162,6 +162,10 @@
 .activities-list-section {
   margin-bottom: 20px;
 
+  .activities-list-section-header {
+    padding: 15px 10px;
+  }
+
   .activity-item {
     padding: 20px 10px;
 
@@ -173,4 +177,31 @@
       margin-left: 34px;
     }
   }   
+}
+
+.activity-view {
+  .activity-extract {
+    padding: 15px 10px;
+    @include clearfix; 
+
+    .i {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+
+  .activity-view-data {
+    @include clearfix;
+
+    ul li {
+      float: left;
+      padding: 10px;
+    }
+  }
+}
+
+.activity-responses-list {
+  .activity-response {
+    padding: 10px;
+  }
 }

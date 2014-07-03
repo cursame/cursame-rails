@@ -145,6 +145,11 @@
 .activities-list-section {
   @extend .basic-container-style;
 
+  .activities-list-section-header {
+    background: $white;
+    border-radius: $radius $radius 0 ;
+  }
+
   .activity-item {
     border-top: 1px solid $separator-color;
 
@@ -154,10 +159,31 @@
 
     .activity-meta-data {
       font-size: 12px;
+      color: $gray-color;
     }
 
     &:first-child {
       border-top: 0;
+    }
+  }
+}
+
+
+.activity-view {
+  @extend .basic-container-style; 
+  background: #fafafa;
+
+  .activity-view-header {
+    background: $white;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid $separator-color;
+  }
+
+  .activity-view-data {
+    border-top: 1px solid $separator-color;
+
+    ul li {
+      border-right: 1px solid $separator-color;
     }
   }
 }
