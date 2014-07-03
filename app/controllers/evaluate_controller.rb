@@ -127,10 +127,11 @@ class EvaluateController < ApplicationController
   end
 
   def user_survey
-  	
+  	@user_survey = UserSurvey.find_by_id(params[:id])
   end
 
   def assignment
-  	
+  	@assignment = Assignment.find_by_id(params[:id])
   end
+  
 end

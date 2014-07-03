@@ -121,9 +121,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
   get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
   get '/evaluate/survey/:survey_id', :to => 'evaluate#qualifying'
-  get '/evaluate/survey/:survey_id/response/:id', :to => 'evaluate#user_survey'
+  get '/evaluate/response/:id', :to => 'evaluate#user_survey'
   get '/evaluate/delivery/:delivery_id', :to => 'evaluate#qualifying'
-  get '/evaluate/delivery/:delivery_id/assignment/:id', :to => 'evaluate#assignment'
+  get '/evaluate/assignment/:id', :to => 'evaluate#assignment'
   
   
   # metodos de amplio acceso al curso
