@@ -178,4 +178,8 @@ class Survey < ActiveRecord::Base
     }    
   end
 
+  def responses
+    user_surveys
+  end
+
 end

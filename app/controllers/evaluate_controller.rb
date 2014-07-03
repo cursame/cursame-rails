@@ -17,21 +17,25 @@ class EvaluateController < ApplicationController
     activities = (deliveries + surveys).sort do 
       |x,y| y.end_date <=> x.end_date
     end
+
+
         
     @today_activities = activities.clone.keep_if do
       |activity|
-      Date.today <= activity.end_date.to_date and activity.end_date.to_date <= Date.tomorrow.to_date
+      p activity
+      Date.today <= activity.end_date.to_datetime and activity.end_date.to_datetime <= Date.tomorrow
     end
     
     @tomorrow_activities = activities.clone.keep_if do 
       |activity|
-      Date.tomorrow <= activity.end_date.to_date and activity.end_date.to_date <= (Date.tomorrow + 1.day)
+      Date.tomorrow <= activity.end_date.to_datetime and activity.end_date.to_datetime <= (Date.tomorrow + 1.day)
     end
 
     @rest_of_activities = activities.clone.keep_if do
       |activity| 
-      activity.end_date.to_date >= (Date.tomorrow + 1.day)
-    end     
+      activity.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    end  
+
   end
   
   def course

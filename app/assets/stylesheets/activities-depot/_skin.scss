@@ -122,3 +122,42 @@
     font-size: 13px;
   }
 }
+
+.section-separator {
+  text-align: center;
+
+  .section-separator-title {
+    @extend .basic-container-style;
+
+    h6 {
+      text-transform: uppercase;
+      font-size: 11px; 
+      color: $gray-color;
+      font-weight: 600;
+    }
+  }
+
+  .tip {
+    background: url("/assets/pack.png") -79px -40px no-repeat;
+  }
+}
+
+.activities-list-section {
+  @extend .basic-container-style;
+
+  .activity-item {
+    border-top: 1px solid $separator-color;
+
+    h4 {
+      color: $global-color;
+    }
+
+    .activity-meta-data {
+      font-size: 12px;
+    }
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
