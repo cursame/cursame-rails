@@ -1,0 +1,34 @@
+<div class="section-header-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-header">
+            <div class="section-header-main">
+              <div class="section-title">
+                <%= link_to icon('section-courses'), courses_path %>
+                <%= link_to courses_path do %>
+                  <h1>Calificar Actividades</h1>
+                <% end %>
+              </div>
+              <div class="section-header-actions">
+                
+              </div>
+            </div>
+            <div class="page-sub-navigation">
+              <% action = params[:action] %>
+              <ul>
+                <li>
+                  <%= link_to "Activas", evaluate_activities_path, class: (action == 'index' ? "active" : " ") %>
+                </li>
+                <li>
+                  <%= link_to "Pasadas", evaluate_activities_inactive_path, class: (action == 'inactive' ? "active" : " ") %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

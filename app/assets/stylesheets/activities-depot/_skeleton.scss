@@ -139,3 +139,38 @@
     }
   }
 }
+
+.section-separator {
+  margin-bottom: 20px;
+
+  .section-separator-title {
+    padding: 5px 10px;
+    position: relative;
+    @include inline-block;
+  }
+
+  .tip {
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    width: 25px;
+    height: 9px;
+    margin-left: -12px;
+  }
+}
+
+.activities-list-section {
+  margin-bottom: 20px;
+
+  .activity-item {
+    padding: 20px 10px;
+
+    .activity-item-icon {
+      float: left;
+    }
+
+    .activity-item-desc {
+      margin-left: 34px;
+    }
+  }   
+}

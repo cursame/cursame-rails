@@ -269,4 +269,8 @@ class Delivery < ActiveRecord::Base
         }    
   end
 
+  def responses
+    assignments
+  end
+
 end
