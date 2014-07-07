@@ -198,10 +198,57 @@
       padding: 10px;
     }
   }
+
+  .activity-view-main-user {
+    padding: 15px 10px;
+    @include clearfix;
+
+    .avatar-holder {
+      float: left;
+    }
+
+    .activity-view-main-user-state {
+      margin-left: 55px;
+    }
+  }
+
+  .evaluate-user-response {
+    .tabs-buttons {
+      @include clearfix;
+
+      .tab {
+        margin: 0 0 -1px 10px;
+        float: left;
+        padding: 9px 19px;
+      }
+    }
+
+    .tab-content {
+      padding: 10px;
+    }
+
+    .activity-response-items {
+      .response-item {
+        margin-bottom: 15px;
+      }
+    }
+  }
 }
 
 .activity-responses-list {
   .activity-response {
     padding: 10px;
+    @include clearfix;
+
+    .activity-response-avatar {
+      float: left;
+      height: 80px;
+    }
+
+    .activity-response-main {
+      display: table;
+      height: 80px;
+      margin-left: 90px;
+    }
   }
 }

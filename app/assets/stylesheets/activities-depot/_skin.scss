@@ -186,4 +186,45 @@
       border-right: 1px solid $separator-color;
     }
   }
+
+  .evaluate-user-response {
+    .tabs-buttons {
+      @include clearfix;
+
+      .tab {
+        cursor: pointer;
+        border: 1px solid #d9dbde;
+        border-radius: $radius $radius 0 0;
+        color: $primary-color;
+        font-weight: 500;
+
+        &.active {
+          background: $white;
+          border-bottom-color: $white;
+          color: $gray-color;
+        }
+      }
+    }
+
+    .tabs-main {
+      border-top: 1px solid #d9dbde;
+      background: $white;
+      border-radius: 0 0 $radius $radius;
+    }
+  }
+}
+
+.activity-responses-list {
+  .activity-response {
+    .activity-response-main {
+      h5 {
+        color: $global-color;
+      }
+
+      p {
+        color: $gray-color;
+        font-size: 12px;
+      }
+    }
+  }
 }

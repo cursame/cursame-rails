@@ -122,15 +122,16 @@ class EvaluateController < ApplicationController
   end
 
   def qualifying
-    @suvey = Survey.find_by_id(params[:survey_id])
+    @survey = Survey.find_by_id(params[:survey_id])
     @delivery = Delivery.find_by_id(params[:delivery_id])
   end
 
   def user_survey
-  	
+  	@user_survey = UserSurvey.find_by_id(params[:id])
   end
 
   def assignment
-  	
+  	@assignment = Assignment.find_by_id(params[:id])
   end
+  
 end
