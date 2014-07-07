@@ -50,7 +50,7 @@ group :development do
 end
 
 group :subtest do
-	gem 'appsignal'
+  gem 'newrelic_rpm'
 end
 
 gem 'jquery-rails'
