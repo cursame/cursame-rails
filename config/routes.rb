@@ -35,19 +35,19 @@ Cursame30Lb::Application.routes.draw do
   get "managers/network_configuration"
   get "managers/library"
   get "managers/delete_user", :as => :delete_user
-  
+
   resources :discussions
 
-##### ruta para ver todas las dicusiones
+  ##### ruta para ver todas las dicusiones
 
-get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussions
+  get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussions
 
   ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
     collection do
       post :create
       post :new
-     end
+    end
   end
 
   resources :authentications
@@ -60,7 +60,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "calendar/test_calendar"
   get "activities_for_today", :to => 'calendar#activities_for_today', :as => :activities_for_today
 
-  
+
   ######### dropbox
   get "/connect/dropbox" => "authentications#dropbox", :as => :dropbox
   ######## create
@@ -69,7 +69,6 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   #recursos naturales de la aplicación
   resources :notifications
-  resources :compart_assets
   resources :assets
   resources :areas_of_evaluations
 
@@ -95,7 +94,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
 
-  
+
 
   resources :courses do
     resources :assignments
@@ -120,12 +119,12 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
-  
+
   #search ajax courses
 
   match 'search_course', :to => "courses#courses_search_ajax", :as => :courses_search_ajax
 
-# Awaiting_confirmation
+  # Awaiting_confirmation
   get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
 
   ##### cambiando el status de un curso
@@ -138,16 +137,16 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
   get "users/acces_courses", :to => "users#acces_courses", :as => :user_acces_courses
-  
-  #### tour virtual 
+
+  #### tour virtual
   get "tour_reciver", :to => "users#tour_reciver", :as => :tour_reciver
   #### lista calificaciones
 
   get "/califications", :to => "users#califications", :as =>  :califications
-  
+
   #### destroy user
   get "users/destroy_user_with_parts/:id", :to => "users#destroy_user_with_parts", :as => :destroy_user_with_parts
-  
+
 
   ##### llamadas por ayax rapidas en rails
   get "call_assignments_response/:id", :to => "courses#call_assignments_response", :as => :call_assignments_response
@@ -164,24 +163,24 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   ##### llamada ajax para saber si la session ha expirado
 
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
-  
 
 
-  
+
+
   ##### vista de todas mis tareas como miembro del curso #####
 
   get "deliveries", :to => "deliveries#my_deliveries", :as => :my_deliveries
 
   #### llada de ajax de editar tarea
-  
+
   get "edit_delivery_access/:id", :to => "courses#edit_delivery_access", :as => :edit_delivery_access
 
   resources :deliveries do
     collection do
       post :assigment
-     end
+    end
   end
-  
+
   get 'assignments/delivery_responce'
   ################ llamada para republicar tarea  y  cuestionario ################
   get'/publish_unpublish_delivery_manualy', :to => 'deliveries#publish_unpublish_delivery_manualy', :as => :publish_unpublish_delivery_manualy
@@ -224,24 +223,24 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get '/alertmethod', :to => 'networks#alertmethod', :as => :alertmethod
   #get '/session_conserve', :to => 'networks#session_conserve', :as => :session_conserve
 
-  
+
   ###### users personal_url_validation
 
   get '/personlization_url_corroborate/:personal_url', :to => 'users#corroborate_url', :as => :corroborate_url
 
   ###### users tabs
 
-  get '/users/:personal_url/info', :to => 'users#info', :as => :user_info 
+  get '/users/:personal_url/info', :to => 'users#info', :as => :user_info
   get '/users/:personal_url/friends', :to => 'users#friends', :as => :user_friends
   get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
   get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
-  
+
   ###### buscador de users
-  
+
   get '/network_find_user', :to => 'networks#find_user', :as => :user_n_find
 
 
-  
+
   # Groups
   get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
   post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
@@ -312,9 +311,9 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
   #manejo de usuarios en las networks
   resources :networks_users do
-   collection do
-    post :create_data
-   end
+    collection do
+      post :create_data
+    end
   end
 
   # manejo de la landing page
@@ -344,7 +343,7 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   get "/mkt/thanks", :to => "home#mkt_thanks", :as => 'mkt_thanks'
   get "/mkt/:name", :to => "home#mkt"
 
-  #para inicar sesion 
+  #para inicar sesion
   match '/new_sesion_from_home', to: 'home#new_sesion_from_home', via: 'post', :as => :new_sesion_from_home, :defaults => { :format => 'html' }
   #para el formulario de contacto
   match '/contact_mail', to: 'home#send_contact_mail', via: 'post', :as => :send_contact_mail, :defaults => { :format => 'js' }
@@ -372,14 +371,14 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   #surveys
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
-  
+
   ##### surveys vista general #####
-   get "all_surveys", :to => 'surveys#my_surveys', :as => :my_surveys
+  get "all_surveys", :to => 'surveys#my_surveys', :as => :my_surveys
 
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
   get "/permissionings/unactive_user", :to => "permissionings#unactive_user", :as => "unactive_user", :via => [:post]
-  
+
 
   #machando las relaciones de creación de eventos para delivery, survey
 
@@ -398,88 +397,88 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   #resources :permissionings
 
   resources :managers do
-     #resources :permissionings
-     resources :roles
+    #resources :permissionings
+    resources :roles
   end
 
   ####### subiendo validables with geocoder activities #########
   resources :activities
 
-   resources :surveys do
-     resources :activities
-   end
+  resources :surveys do
+    resources :activities
+  end
 
-   resources :deliveries do
-     resources :activities
-   end
+  resources :deliveries do
+    resources :activities
+  end
 
-   resources :assignments do
-      resources :activities
-   end
+  resources :assignments do
+    resources :activities
+  end
 
-   resources :comments do
-      resources :activities
-   end
+  resources :comments do
+    resources :activities
+  end
 
-   resources :discussions do
-       resources :activities
-   end
+  resources :discussions do
+    resources :activities
+  end
 
-   resources :courses do
-       resources :activities
-   end
+  resources :courses do
+    resources :activities
+  end
 
-    resources :user_surveys do
-        resources :activities
-    end
+  resources :user_surveys do
+    resources :activities
+  end
 
 
-   ######## rutas para contents
+  ######## rutas para contents
 
-   resources :contents
+  resources :contents
 
-     resources :surveys do
-       resources :contents
-     end
+  resources :surveys do
+    resources :contents
+  end
 
-     resources :deliveries do
-       resources :contents
-     end
+  resources :deliveries do
+    resources :contents
+  end
 
-     resources :assignments do
-        resources :contents
-     end
+  resources :assignments do
+    resources :contents
+  end
 
-     resources :comments do
-        resources :contents
-     end
+  resources :comments do
+    resources :contents
+  end
 
-     resources :discussions do
-         resources :contents
-     end
+  resources :discussions do
+    resources :contents
+  end
 
-     resources :courses do
-         resources :contents
-     end
+  resources :courses do
+    resources :contents
+  end
 
-      resources :user_surveys do
-          resources :contents
-      end
-   ####### rutas para like en web
+  resources :user_surveys do
+    resources :contents
+  end
+  ####### rutas para like en web
 
-   get "/upvote/:id", :to => 'home#upvote', :as => :upvote
-   get "/downvote/:id", :to => 'home#downvote', :as => :downvote
-   get "/upvote_comment/:id", :to => 'home#upvote_comment', :as => :upvote_comment
-   get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
+  get "/upvote/:id", :to => 'home#upvote', :as => :upvote
+  get "/downvote/:id", :to => 'home#downvote', :as => :downvote
+  get "/upvote_comment/:id", :to => 'home#upvote_comment', :as => :upvote_comment
+  get "/downvote_comment/:id", :to => 'home#downvote_comment', :as => :downvote_comment
 
-   ####### actualizacion de noticicacion
+  ####### actualizacion de noticicacion
 
-   get "home/editing_n", :to => "home#editing_n", :as => :not_edit
+  get "home/editing_n", :to => "home#editing_n", :as => :not_edit
 
-   get "home/render_notifications", :to => "home#render_notifications", :as => :render_notifications
+  get "home/render_notifications", :to => "home#render_notifications", :as => :render_notifications
 
-   ####### envio de mail masivo con notificaciones 
-   get "/masive_mailer", :to => "superadmnin#masive_mailer", :as => :masive_mailer, :defaults => { :format => 'js' }
+  ####### envio de mail masivo con notificaciones
+  get "/masive_mailer", :to => "superadmnin#masive_mailer", :as => :masive_mailer, :defaults => { :format => 'js' }
   # -----------------------------
   # chat behaviour of cursame
   # -----------------------------
@@ -500,63 +499,52 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   ####### ruta para creacion de timeline
 
-   get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
+  get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
 
 
-   ###### ruta para creacion de timeline paginada
-   get 'courses/:id/course_ki_line_pag', :to => 'courses#course_ki_line_pag', :as => :course_ki_line_pag
+  ###### ruta para creacion de timeline paginada
+  get 'courses/:id/course_ki_line_pag', :to => 'courses#course_ki_line_pag', :as => :course_ki_line_pag
 
-   ###### carga mas actividades
-   get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
-
-
-   ####### tuas extras para el curso
-
-   get '/courses/:id/about', :to => 'courses#about', :as => :about_course 
-   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
-   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+  ###### carga mas actividades
+  get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
 
 
-   ###### ruta para crear super admins
+  ####### tuas extras para el curso
 
-   match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
-   match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
+  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
+  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
+  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
 
-   ######## contenido
-    get "content/youtube", :as => :c_youtube
 
-    get "content/vimeo"
+  ###### ruta para crear super admins
 
-    get "content/wikipedia", :as => :c_wikipedia
+  match "canguro/admin/protocol/l4789471797l9392342lh3jijisfij3liii14adnainvftldlqnnifnai", :to => "superadmnin#create_super_admin", :as => :super_admin_create
+  match "instructions_for_super_admin", :to => "superadmnin#instructions", :as => :super_admin_instructions
 
-    get "content/orkut"
+  get "content/destroy/:id", :to =>  'content#destroy', :as => :destroy_content
+  ##### cierra la base de datos
 
-    get "content/khanacademy"
-    
-    get "content/destroy/:id", :to =>  'content#destroy', :as => :destroy_content
-    ##### cierra la base de datos
-
-    get '/closer_db', :to => 'home#closer_db', :as => :clorse_db
-    ##### obtines las bases para busqueda de networks
-    get '/network_search', :to => 'networks#network_search', :as => :network_search
+  get '/closer_db', :to => 'home#closer_db', :as => :clorse_db
+  ##### obtines las bases para busqueda de networks
+  get '/network_search', :to => 'networks#network_search', :as => :network_search
   ####### parents
-     get '/acces_t/:key_analytics', :to => 'parents#info_to_parents', :as => :info_to_parents
-     get '/inc_activity', :to => 'parents#inc_activity', :as => :inc_activity
-     get '/general_prm', :to => 'parents#general_prm', :as => :inc_activity
-     get '/acces_course_for_render', :to => 'parents#acces_course', :as => :acces_course_for_render
-   # get "home/parents", :as => :parents
-   # get "home/my_son", :as => :my_son
-   # get "home/acces_on_course", :as => :acces_on_course
-   # 
-    get '/publications/:id/show_template_on_modal', :to => 'publications#show_template_on_modal', :as => :show_template_on_modal , :defaults => { :format => 'js' }
+  get '/acces_t/:key_analytics', :to => 'parents#info_to_parents', :as => :info_to_parents
+  get '/inc_activity', :to => 'parents#inc_activity', :as => :inc_activity
+  get '/general_prm', :to => 'parents#general_prm', :as => :inc_activity
+  get '/acces_course_for_render', :to => 'parents#acces_course', :as => :acces_course_for_render
+  # get "home/parents", :as => :parents
+  # get "home/my_son", :as => :my_son
+  # get "home/acces_on_course", :as => :acces_on_course
+  #
+  get '/publications/:id/show_template_on_modal', :to => 'publications#show_template_on_modal', :as => :show_template_on_modal , :defaults => { :format => 'js' }
 
   #paginas de errores
   match '/404', :to => 'home#not_found', :as => :not_found
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
   match '/503', :to => 'home#server_error'
-   # api para la mobile
-   #this is for api for the mobile app
+  # api para la mobile
+  #this is for api for the mobile app
   namespace :api do
     resources :tokens,:only => [:create, :destroy]
   end
@@ -593,12 +581,12 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
   match '/api/api/native_add_new_message', :to => 'api/api#native_add_new_message', :as => :native_add_new_message_json
   match '/api/api/native_chat_list', :to => 'api/api#native_chat_list', :as => :native_chat_list_json
   match '/api/api/native_load_chat_messages', :to => 'api/api#native_load_chat_messages', :as => :native_load_chat_messages_json
-  
+
   match '/api/api/native_list_user_calification', :to => 'api/api#native_list_user_calification', :as => :native_list_user_calification_json
   match '/api/api/native_list_events', :to => 'api/api#native_list_events', :as => :native_list_events_json
   match '/api/api/native_list_activities_of_course', :to => 'api/api#native_list_activities_of_course', :as => :native_list_activities_of_course_json
   match '/api/api/native_list_networks', :to => 'api/api#native_list_networks', :as => :native_list_networks_json
-  
+
   # friendships
   match '/api/api/friend_request', :to => 'api/api#friend_request', :as => :friend_request_json
   match '/api/api/friend_accept', :to => 'api/api#friend_accept', :as => :friend_accept_json

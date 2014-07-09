@@ -1,14 +1,5 @@
 
 <div id="look_atemp_conteny<%=typeo%>" class="look_atemp_conteny">
-	<div  id="youtube_content_delivery<%=typeo%>" class="youtube_content_delivery" style="width: 100%; display: none;">
-    <div class="tabCalss">Contenido de recomendado para el tema
-      <div class="tabCalssClose" id="close_youtube_delivery<%=typeo%>"></div>
-    </div>
-
-		<div id="content_free_<%=typeo%>" class="content_free<%=typeo%> content_free"></div>
-		<div id="content_wikipedia<%=typeo%>" style="position: relative;" class="content_wikipedia"></div>
-         
-  </div>
 
   <div id="box_for_loads<%=typeo%>" style="width: 100%; ">
 	  <%= f.fields_for :contents do |conty| %>
@@ -18,13 +9,3 @@
   </div>
   
 </div>
-
-<script>
-   $('#close_youtube_delivery<%=typeo%>').click(function() {
-        $('#youtube_content_delivery<%=typeo%>').toggle('blind', 400);
-    });
-    $('.cancel_link').click ( function() {
-		$('.youtube_content_delivery').hide();
-    });
-</script>
-

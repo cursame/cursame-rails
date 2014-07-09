@@ -7,126 +7,126 @@ class Api::ApiController < ApplicationController
 
   def publications
     case params[:type]
-      when 'Course'
-        @course = Course.find(params[:publicacionId])
-        @publications = @course.walls.where("publication_type != ?", 'Course')
-        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-      else
-        @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    when 'Course'
+      @course = Course.find(params[:publicacionId])
+      @publications = @course.walls.where("publication_type != ?", 'Course')
+      @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    else
+      @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-      @publications.each do |publication|
-        type = publication.publication_type
-        id = publication.publication_id
-        case type
-          when 'Comment'
-            publication = Comment.find(id)
-          when 'Discussion'
-            publication = Discussion.find(id)
-          when 'Course'
-            publication = Course.find(id)
-          when 'Delivery'
-            publication = Delivery.find(id)
-        end
-        # publication.likes = publication.likes.size
+    @publications.each do |publication|
+      type = publication.publication_type
+      id = publication.publication_id
+      case type
+      when 'Comment'
+        publication = Comment.find(id)
+      when 'Discussion'
+        publication = Discussion.find(id)
+      when 'Course'
+        publication = Course.find(id)
+      when 'Delivery'
+        publication = Delivery.find(id)
       end
+      # publication.likes = publication.likes.size
+    end
     render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
   end
 
   def native_publications
     count = 0
     case params[:type]
-      when 'Course'
-        @course = Course.find(params[:publicacionId])
-        @publications = @course.walls.where("publication_type != ?", 'Course')
-        count =  @publications.count()
-        if params[:filter_type].nil?
-          @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-        else
-          @publications = @publications.where("publication_type = ?", params[:filter_type]).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-        end
+    when 'Course'
+      @course = Course.find(params[:publicacionId])
+      @publications = @course.walls.where("publication_type != ?", 'Course')
+      count =  @publications.count()
+      if params[:filter_type].nil?
+        @publications = @publications.order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       else
-        count = @network.publications(@user.id,@network.id).count()
-        if params[:filter_type].nil?
-          @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-        else
-          @publications = @network.publications(@user.id,@network.id).where("publication_type = ?", params[:filter_type]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-        end        
-    end
-      @pubs = []
-      @publications.each do |publication|
-        type = publication.publication_type
-        id = publication.publication_id
-        created_at = publication.created_at
-        
-        done = true
-        
-        case type
-          when 'Comment'
-            publication = Comment.find(id)
-            case publication.commentable_type
-              when 'Course'
-                auxtext = 'en la asignatura de ' + publication.commentable.title
-              when 'Network'
-                auxtext = 'en la red '
-              when 'User'
-                auxtext = 'en tu prefil '
-            end 
-            comments = publication.comments
-            text = publication.user.name + ' ha comentado ' + auxtext
-            avatar =  {
-              url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
-            }
-          when 'Discussion'
-            publication = Discussion.find(id)
-            comments = publication.comments
-            auxtext = publication.courses.empty? ? 'publica en tu red' : 'en la asignatura de ' + publication.courses[0].title
-            text = publication.user.name + ' ha creado un discusion ' + auxtext
-            avatar =  {
-              url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url 
-            }
-          when 'Course'
-            publication = Course.find(id)
-            comments = publication.comments
-            text = 'Nueva asignatura ' + publication.title
-            avatar =  {
-              url: publication.avatar.url.nil? ? "/assets/" + publication.course_avatarx : publication.avatar.url 
-            }
-          when 'Delivery'
-            publication = Delivery.find(id)
-            comments = publication.comments
-            done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
-            text = 'Se ha creado una tarea en la asignatura de ' + publication.courses[0].title
-            avatar =  {
-              url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url 
-            }
-            publication = publication.as_json(:include => [:areas_of_evaluations,:assets])
-          when 'Survey'
-            publication = Survey.find(id)
-            comments = publication.comments
-            done = !UserSurvey.where(:survey_id => id, :user_id => @user.id).empty?
-            text = 'Se ha creado un cuestionario en la asignatura de ' + publication.courses[0].title
-            avatar =  {
-              url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url 
-            }
-            publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
-          else
-            next
-        end
-        # publication.likes = publication.likes.size
-       
-        pub = {
-          type: type,
-          publicationId: id,
-          text: text,
-          avatar:avatar,
-          publication:publication,
-          createdAt: created_at,
-          done: done,
-          comments: comments,
-          num_comments:comments.count
-        }
-       @pubs.push(pub)
+        @publications = @publications.where("publication_type = ?", params[:filter_type]).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
       end
+    else
+      count = @network.publications(@user.id,@network.id).count()
+      if params[:filter_type].nil?
+        @publications = @network.publications(@user.id,@network.id).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      else
+        @publications = @network.publications(@user.id,@network.id).where("publication_type = ?", params[:filter_type]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+      end
+    end
+    @pubs = []
+    @publications.each do |publication|
+      type = publication.publication_type
+      id = publication.publication_id
+      created_at = publication.created_at
+
+      done = true
+
+      case type
+      when 'Comment'
+        publication = Comment.find(id)
+        case publication.commentable_type
+        when 'Course'
+          auxtext = 'en la asignatura de ' + publication.commentable.title
+        when 'Network'
+          auxtext = 'en la red '
+        when 'User'
+          auxtext = 'en tu prefil '
+        end
+        comments = publication.comments
+        text = publication.user.name + ' ha comentado ' + auxtext
+        avatar =  {
+          url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url
+        }
+      when 'Discussion'
+        publication = Discussion.find(id)
+        comments = publication.comments
+        auxtext = publication.courses.empty? ? 'publica en tu red' : 'en la asignatura de ' + publication.courses[0].title
+        text = publication.user.name + ' ha creado un discusion ' + auxtext
+        avatar =  {
+          url: publication.user.avatar.url.nil? ? "/assets/" + publication.user.image_avatarx : publication.user.avatar.url
+        }
+      when 'Course'
+        publication = Course.find(id)
+        comments = publication.comments
+        text = 'Nueva asignatura ' + publication.title
+        avatar =  {
+          url: publication.avatar.url.nil? ? "/assets/" + publication.course_avatarx : publication.avatar.url
+        }
+      when 'Delivery'
+        publication = Delivery.find(id)
+        comments = publication.comments
+        done = !Assignment.where(:delivery_id => id, :user_id => @user.id).empty?
+        text = 'Se ha creado una tarea en la asignatura de ' + publication.courses[0].title
+        avatar =  {
+          url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url
+        }
+        publication = publication.as_json(:include => [:areas_of_evaluations,:assets])
+      when 'Survey'
+        publication = Survey.find(id)
+        comments = publication.comments
+        done = !UserSurvey.where(:survey_id => id, :user_id => @user.id).empty?
+        text = 'Se ha creado un cuestionario en la asignatura de ' + publication.courses[0].title
+        avatar =  {
+          url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url
+        }
+        publication = publication.as_json(:include => [{:questions => {:include => [:answers]}}])
+      else
+        next
+      end
+      # publication.likes = publication.likes.size
+
+      pub = {
+        type: type,
+        publicationId: id,
+        text: text,
+        avatar:avatar,
+        publication:publication,
+        createdAt: created_at,
+        done: done,
+        comments: comments,
+        num_comments:comments.count
+      }
+      @pubs.push(pub)
+    end
     # render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
     # render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
     render :json => {:publications => @pubs.as_json, :count => count}, :callback => params[:callback]
@@ -147,32 +147,32 @@ class Api::ApiController < ApplicationController
     @ids = []
     # @courses = @network.courses.includes(:members_in_courses).order('created_at DESC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     case params[:filter_type]
-      when 'MyCourses'
-        @courses = @user.courses.includes(:members_in_courses)
-      when 'NotMyCourses'
-        @courses = @network.courses.includes(:members_in_courses) - @user.courses.includes(:members_in_courses)
-      when 'All'
-        #@courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
-        @courses = @network.courses.includes(:members_in_courses)
-        @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    when 'MyCourses'
+      @courses = @user.courses.includes(:members_in_courses)
+    when 'NotMyCourses'
+      @courses = @network.courses.includes(:members_in_courses) - @user.courses.includes(:members_in_courses)
+    when 'All'
+      #@courses = @user.courses.includes(:members_in_courses) + @network.courses.includes(:members_in_courses)
+      @courses = @network.courses.includes(:members_in_courses)
+      @courses = @courses.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     end
-    
+
     render :json => {:courses => @courses.as_json(:include => [:members_in_courses]), :count => @courses.count()}, :callback => params[:callback]
   end
 
   def users
-    @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('last_name ASC')
+    @users = @network.users.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('last_name ASC').reject { |user| user.id == @user.id }
     @usuarios = []
     @users.each do |u|
       inverse_friendship = Friendship.find_by_user_id_and_friend_id(u.id, @user.id)
       uu = {
         accepted_terms: u.accepted_terms,
         avatar: {
-          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url,
         },
         bios: u.bios,
         coverphoto: {
-          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url, 
+          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url,
         },
         created_at: u.created_at,
         description: u.description,
@@ -192,17 +192,17 @@ class Api::ApiController < ApplicationController
       }
 
       case params[:filter_type]
-        when 'Friends'
-          if uu[:friend] == true
-            @usuarios.push(uu)
-          end
-        when 'NotFriends'
-          if uu[:friend] == false
-            @usuarios.push(uu)
-          end
-        when 'All'
+      when 'Friends'
+        if uu[:friend] == true
           @usuarios.push(uu)
-      end           
+        end
+      when 'NotFriends'
+        if uu[:friend] == false
+          @usuarios.push(uu)
+        end
+      when 'All'
+        @usuarios.push(uu)
+      end
     end
     @usuarios = @usuarios.sort_by { |x| [x[:friend] ? 0 : 1]}
     render :json => {:users => @usuarios.as_json, :count => @users.count()}, :callback => params[:callback]
@@ -218,50 +218,50 @@ class Api::ApiController < ApplicationController
       owner = nil
       notificator = notification.notificator
       case notification.kind
-        when 'user_comment_on_network'
-          cretator = notification.notificator.user
-          owner = notification.notificator.commentable
-          text = cretator.name + ' ha comentado en la red'
-        when 'user_comment_on_course'
-          cretator = notification.notificator.user
-          owner = notification.notificator.commentable
-          course = Course.find(notification.notificator.commentable_id)
-          text = cretator.name + ' ha comentado en el curso ' + course.title
-        when 'new_delivery_on_course'
-          cretator = notification.notificator.user
-          owner = notification.notificator.courses[0]
-          course = owner
-          text = 'Se ha creado una tarea nueva en el curso ' + course.title
-        when 'new_public_course_on_network'
-          cretator = notification.notificator.user
-          text = 'Se ha creado un curso nuevo ' + course.title
+      when 'user_comment_on_network'
+        cretator = notification.notificator.user
+        owner = notification.notificator.commentable
+        text = cretator.name + ' ha comentado en la red'
+      when 'user_comment_on_course'
+        cretator = notification.notificator.user
+        owner = notification.notificator.commentable
+        course = Course.find(notification.notificator.commentable_id)
+        text = cretator.name + ' ha comentado en el curso ' + course.title
+      when 'new_delivery_on_course'
+        cretator = notification.notificator.user
+        owner = notification.notificator.courses[0]
+        course = owner
+        text = 'Se ha creado una tarea nueva en el curso ' + course.title
+      when 'new_public_course_on_network'
+        cretator = notification.notificator.user
+        text = 'Se ha creado un curso nuevo ' + course.title
         # when 'new_survey_on_course'
-        when 'user_comment_on_comment'
-          cretator = notification.notificator.user
-          owner = notification.notificator.commentable
-          text = cretator.name + ' ha comentado en tu comentario'
-        when 'user_comment_on_user'
-          cretator = notification.notificator.user
-          owner = notification.notificator.commentable
-          text = cretator.name + ' ha comentado en tu perfil'
-        when 'user_comment_on_discussion'
-          cretator = notification.notificator.user
-          owner = notification.notificator.commentable
-          text = cretator.name + ' ha comentado en tu discussion'
-        when 'user_comment_on_delivery'
-          cretator = notification.notificator.user
-          owner = notification.notificator.commentable
-          text = cretator.name + ' ha comentado en la tarea ' + owner.title
+      when 'user_comment_on_comment'
+        cretator = notification.notificator.user
+        owner = notification.notificator.commentable
+        text = cretator.name + ' ha comentado en tu comentario'
+      when 'user_comment_on_user'
+        cretator = notification.notificator.user
+        owner = notification.notificator.commentable
+        text = cretator.name + ' ha comentado en tu perfil'
+      when 'user_comment_on_discussion'
+        cretator = notification.notificator.user
+        owner = notification.notificator.commentable
+        text = cretator.name + ' ha comentado en tu discussion'
+      when 'user_comment_on_delivery'
+        cretator = notification.notificator.user
+        owner = notification.notificator.commentable
+        text = cretator.name + ' ha comentado en la tarea ' + owner.title
       end
       notification.notificator_type = {
-          :creator => cretator,
-          :course => course,
-          :notificator => notificator,
-          :user => user,
-          :owner => owner,
-          :text => text
+        :creator => cretator,
+        :course => course,
+        :notificator => notificator,
+        :user => user,
+        :owner => owner,
+        :text => text
       }
-      
+
       @user_notifications.push(notification)
       notification_to_save = Notification.find(notification.id)
       notification_to_save.active = false ##para identificar las notificaciones vistas
@@ -282,7 +282,7 @@ class Api::ApiController < ApplicationController
     else
       @comment = Comment.new
     end
-    
+
     @comment.commentable_type = params[:commentable_type]
     @comment.commentable_id = params[:commentable_id] || @user.id
     @comment.comment = params[:comment]
@@ -294,18 +294,18 @@ class Api::ApiController < ApplicationController
 
   def create_like
     case params[:type]
-      when 'Course'
-        @object = Course.find(params[:id])
-      when 'Comment'
-        @object = Comment.find(params[:id])
-      when 'Delivery'
-        @object = Delivery.find(params[:id])
-      when 'User'
-        @object = User.find(params[:id])
-      when 'Discussion'
-        @object = Discussion.find(params[:id])
-      when 'Survey'
-        @object = Survey.find(params[:id])
+    when 'Course'
+      @object = Course.find(params[:id])
+    when 'Comment'
+      @object = Comment.find(params[:id])
+    when 'Delivery'
+      @object = Delivery.find(params[:id])
+    when 'User'
+      @object = User.find(params[:id])
+    when 'Discussion'
+      @object = Discussion.find(params[:id])
+    when 'Survey'
+      @object = Survey.find(params[:id])
     end
 
     if is_liked_by_current_user(@object)
@@ -318,8 +318,8 @@ class Api::ApiController < ApplicationController
 
   def create_delivery
 
-    @delivery = Delivery.new   
-    
+    @delivery = Delivery.new
+
     @delivery.title = params[:title]
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
@@ -332,7 +332,7 @@ class Api::ApiController < ApplicationController
     @delivery.save
     render :json => {:success => true}, :callback => params[:callback]
   end
-  
+
   def native_create_delivery
     if params[:id].to_i != 0
       @delivery = Delivery.find(params[:id])
@@ -348,11 +348,11 @@ class Api::ApiController < ApplicationController
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
 
-    
+
     # agregamos los files
     files = params[:files]
     areas = params[:areas]
-    
+
     if files && files.kind_of?(Array) && !files.empty?
       files.each do |file|
         asset = Asset.new()
@@ -362,11 +362,11 @@ class Api::ApiController < ApplicationController
         @delivery.assets.push(asset)
       end
     elsif files
-        asset = Asset.new()
-        asset.file = params[:files]
-        asset.user_id = @user.id
-        asset.save
-        @delivery.assets.push(asset)
+      asset = Asset.new()
+      asset.file = params[:files]
+      asset.user_id = @user.id
+      asset.save
+      @delivery.assets.push(asset)
     end
 
     if areas && !areas.empty?
@@ -390,7 +390,7 @@ class Api::ApiController < ApplicationController
     else
       @discussion = Discussion.new
     end
-    
+
     @discussion.title = params[:title]
     @discussion.description = params[:discussion]
     @discussion.user = @user
@@ -439,11 +439,11 @@ class Api::ApiController < ApplicationController
         @assignment.assets.push(asset)
       end
     elsif files
-        asset = Asset.new()
-        asset.file = params[:files]
-        asset.user_id = @user.id
-        asset.save
-        @assignment.assets.push(asset)
+      asset = Asset.new()
+      asset.file = params[:files]
+      asset.user_id = @user.id
+      asset.save
+      @assignment.assets.push(asset)
     end
 
     @assignment.save
@@ -492,7 +492,7 @@ class Api::ApiController < ApplicationController
     twitter_link = params[:twitter_link]
     avatar = params[:avatar]
     coverphoto = params[:coverphoto]
-    
+
     if id && email && first_name && last_name
       user = User.find(id)
       user.email = email
@@ -509,7 +509,7 @@ class Api::ApiController < ApplicationController
       if coverphoto
         user.coverphoto = coverphoto
       end
-      
+
       success = user.save!
       msg = success ? "Usuario guardado!" : "Error al guardar usuario"
     else
@@ -521,10 +521,10 @@ class Api::ApiController < ApplicationController
 
   def native_create_courses
     if params[:id].to_i != 0
-      @course = Course.find(params[:id])      
+      @course = Course.find(params[:id])
       @course.update_attributes(params[:course])
       @course.network_id = @network.id
-      @course.save      
+      @course.save
     else
       @course = Course.new(params[:course])
       @course.network_id = @network.id
@@ -537,7 +537,7 @@ class Api::ApiController < ApplicationController
       @member.network_id = @network.id
       @member.title = @course.title
       @member.save
-    end 
+    end
     render :json => {:success => true}, :callback => params[:callback]
   end
   def native_answer_survey
@@ -549,13 +549,13 @@ class Api::ApiController < ApplicationController
 
     if @user_survey.save
       params[:questions].each do |question|
-          question[1].each do |answer|
-            @user_response = UserSurveyResponse.new
-            @user_response.user_survey_id = @user_survey.id
-            @user_response.question_id = question[0]
-            @user_response.answer_id = answer[1]
-            @user_response.save
-          end
+        question[1].each do |answer|
+          @user_response = UserSurveyResponse.new
+          @user_response.user_survey_id = @user_survey.id
+          @user_response.question_id = question[0]
+          @user_response.answer_id = answer[1]
+          @user_response.save
+        end
       end
     end
     render :json => {:success => true}, :callback => params[:callback]
@@ -563,56 +563,64 @@ class Api::ApiController < ApplicationController
 
   #checar la respuesta
   def native_comments
+
     @cmts = []
-    @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).order('created_at ASC').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
-    
+    if params[:commentable_type] == 'User'
+      @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).reverse_order.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    else
+      @comments = Comment.where("commentable_type" => params[:commentable_type], "commentable_id" => params[:commentable_id]).paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    end
+
+    puts "debug: #{params}"
 
     @comments.each do |comment|
       type = comment.commentable_type
       text = 'Comentario de ' + comment.user.name
       case type
-        when 'Course'
-          text =  text + ' en la asignatura ' + comment.commentable.title
-        when 'User'
-          text =  text + ' para ' + comment.commentable.name
-        when 'Comment'
-          text =  text + ' en el comentario de ' + comment.commentable.user.name
-        when 'Network'
-          text =  text + ' en la red' + comment.commentable.name
-        when 'Delivery'
-          text =  text + ' en la tarea ' + comment.commentable.title
-        when 'Group'
-          text =  text + ' en el grupo ' + comment.commentable.name
-        when 'Discussion'
-          text =  text + ' en la discusion ' + comment.commentable.title
-        when 'Survey'
-          text =  text + ' en el cuestionario ' + comment.commentable.name
+      when 'Course'
+        text =  text + ' en la asignatura ' + comment.commentable.title
+      when 'User'
+        text =  text + ' para ' + comment.commentable.name
+      when 'Comment'
+        text =  text + ' en el comentario de ' + comment.commentable.user.name
+      when 'Network'
+        text =  text + ' en la red' + comment.commentable.name
+      when 'Delivery'
+        text =  text + ' en la tarea ' + comment.commentable.title
+      when 'Group'
+        text =  text + ' en el grupo ' + comment.commentable.name
+      when 'Discussion'
+        text =  text + ' en la discusion ' + comment.commentable.title
+      when 'Survey'
+        text =  text + ' en el cuestionario ' + comment.commentable.name
       end
 
-       u = comment.user
-       cmt = {
-          id: comment.id,
-          title: comment.title,
-          comment: comment.comment,
-          commentable_id: comment.commentable_id,
-          commentable_type: comment.commentable_type,
-          user_id: comment.user_id,
-          role: comment.role,
-          created_at: comment.created_at,
-          updated_at: comment.updated_at,
-          comment_html: comment.comment_html,
-          network_id: comment.network_id,
-          num_likes: comment.likes.size,   
-          likes: comment.likes,   
-          text: text,
-          avatar: {
-            url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
-          },
-          num_comments: comment.comments.count
-        }
-      @cmts.push(cmt)     
+      u = comment.user
+      cmt = {
+        id: comment.id,
+        title: comment.title,
+        comment: comment.comment,
+        commentable_id: comment.commentable_id,
+        commentable_type: comment.commentable_type,
+        user_id: comment.user_id,
+        role: comment.role,
+        created_at: comment.created_at,
+        updated_at: comment.updated_at,
+        comment_html: comment.comment_html,
+        network_id: comment.network_id,
+        num_likes: comment.likes.size,
+        likes: comment.likes,
+        text: text,
+        avatar: {
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url,
+        },
+        num_comments: comment.comments.count
+      }
+      @cmts.push(cmt)
     end
+
     render :json => {:comments => @cmts.as_json, :count => @cmts.count()}, :callback => params[:callback]
+
   end
 
   def native_list_members_in_course
@@ -622,18 +630,18 @@ class Api::ApiController < ApplicationController
     @members.each do |m|
       u = m.user
       user = {
-        id: u.id, 
+        id: u.id,
         email: u.email,
         first_name: u.first_name,
-        last_name: u.last_name, 
-        description: u.description, 
-        personal_url: u.personal_url, 
+        last_name: u.last_name,
+        description: u.description,
+        personal_url: u.personal_url,
         avatar: {
-          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url, 
-        }, 
+          url: u.avatar.url.nil? ? "/assets/" + u.image_avatarx : u.avatar.url,
+        },
         coverphoto: {
-          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url, 
-        }, 
+          url: u.coverphoto.url.nil? ? "/assets/" + u.cover_photox : u.coverphoto.url,
+        },
         facebook_link: u.facebook_link,
         twitter_link: u.twitter_link,
         bios: u.bios,
@@ -648,46 +656,56 @@ class Api::ApiController < ApplicationController
     render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]
   end
 
-  def native_change_members_in_course_status      
-      @course =  Course.find(params[:id])
-      @requester =  User.find(params[:user_id])
-      success = false
+  def native_change_members_in_course_status
+    @course =  Course.find(params[:id])
+    @requester =  User.find(params[:user_id])
+    success = false
+    description = ""
 
-      case params[:status]
-        when 'join'
-          member = MembersInCourse.new
-          member.user_id = @requester.id
-          member.course_id =  @course.id
-          member.accepted = false
-          member.owner = (params[:owner] && params[:owner] == 'true') ? true : false 
-          member.network_id = @network.id
-          member.title = @course.title
-          success = member.save
-        when 'accept'
-          member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
-          if member
-            member.owner = (params[:owner] && params[:owner] == 'true') ? true : false 
-            member.accepted = true
-            success = member.save
-          end     
-        when 'decline'          
-          member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
-          if member
-            success = !!member.delete
-          end
-      end      
-      render :json => {:success => success}, :callback => params[:callback]
+    case params[:status]
+    when 'join'
+
+      if MembersInCourse.find_by_user_id_and_course_id(@user.id, @course.id).nil?
+        member = MembersInCourse.new
+        member.user_id = @requester.id
+        member.course_id =  @course.id
+        member.accepted = false
+        member.owner = (params[:owner] && params[:owner] == 'true') ? true : false
+        member.network_id = @network.id
+        member.title = @course.title
+        success = member.save
+        description = "Ok"
+      else
+        success = false
+        description = "User is already member of this course"
+      end
+
+    when 'accept'
+      member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
+      if member
+        member.owner = (params[:owner] && params[:owner] == 'true') ? true : false
+        member.accepted = true
+        success = member.save
+      end
+    when 'decline'
+      member = MembersInCourse.where(:user_id => @requester.id, :course_id => @course.id)[0]
+      if member
+        success = !!member.delete
+      end
+    end
+    render :json => {:success => success, :description => description}, :callback => params[:callback]
   end
-  
-  def native_add_new_message
-    @channel = Channel.find_by_channel_name(params[:channel_name])
 
-    if !@channel
+  def native_add_new_message
+
+    @channel = Channel.find_by_channel_name(params[:channel_name])
+    if @channel.nil?
       @channel = Channel.create!(:channel_name=>params[:channel_name],:channel_type => "")
     end
 
     @message = Mesage.create!(:mesage => params[:mesage],:user_id =>@user.id,:channel_id =>@channel.id)
     render :json => {:success => true}, :callback => params[:callback]
+
   end
 
   def native_chat_list
@@ -717,11 +735,11 @@ class Api::ApiController < ApplicationController
         }
       }
       @list.push(item)
-    end    
+    end
     render :json => {:users => @list.as_json, :count => @list.count()}, :callback => params[:callback]
   end
 
-  def native_load_chat_messages    
+  def native_load_chat_messages
     ids = params['channel_name'].split(/_/);
     users = []
     @messages = []
@@ -735,10 +753,10 @@ class Api::ApiController < ApplicationController
         end
       end
     end
-    
+
     channel = find_or_insert_channel(params['channel_name'],users)
     msgs = channel.mesages.paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i).order('created_at DESC')
-    
+
     msgs.each do |message|
       msg = {
         channel_id: message.channel_id,
@@ -750,11 +768,11 @@ class Api::ApiController < ApplicationController
         user_id: message.user_id,
         user: message.user,
         avatar: {
-            url: message.user.avatar.url.nil? ? "/assets/" + message.user.image_avatarx : message.user.avatar.url, 
+          url: message.user.avatar.url.nil? ? "/assets/" + message.user.image_avatarx : message.user.avatar.url,
         },
       }
       @messages.push(msg)
-    end 
+    end
 
     render :json => {:messages => @messages.as_json, :count => @messages.count()}, :callback => params[:callback]
   end
@@ -787,7 +805,7 @@ class Api::ApiController < ApplicationController
     render :json => {:results => @results.as_json, :count => @results.count()}, :callback => params[:callback]
   end
 
-  def native_list_events    
+  def native_list_events
     fecha = params[:date].split('-')
     @events = @user.events.where("extract(year from starts_at) = ? AND extract(month from starts_at) = ?", fecha[0], fecha[1]).order('created_at DESC')
     render :json => {:results => @events.as_json, :count => @events.count()}, :callback => params[:callback]
@@ -800,39 +818,39 @@ class Api::ApiController < ApplicationController
     publications = course.walls.order('created_at DESC')
 
     publications.each do |publication|
-        type = publication.publication_type
-        id = publication.publication_id
-        created_at = publication.created_at
+      type = publication.publication_type
+      id = publication.publication_id
+      created_at = publication.created_at
 
-        case type          
-          when 'Delivery'
-            publication = Delivery.find(id)
-            text = 'Se ha creado una tarea en la asignatura de ' + course.title
-            avatar =  {
-              url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url 
-            }
-            publication = publication.as_json(:include => [{:assignments => {:include => [:assets]}},:assets])
-          when 'Survey'
-            publication = Survey.find(id)
-            text = 'Se ha creado un cuestionario en la asignatura de ' + course.title
-            avatar =  {
-              url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url 
-            }
-            publication = publication.as_json(:include => [{:user_surveys => {:include => [:user, :user_survey_responses]}}, {:questions => {:include => [:answers]} }])
-          else
-            next
-        end
-       
-        pub = {
-          type: type,
-          publicationId: id,
-          text: text,
-          avatar:avatar,
-          publication:publication,
-          createdAt: created_at
+      case type
+      when 'Delivery'
+        publication = Delivery.find(id)
+        text = 'Se ha creado una tarea en la asignatura de ' + course.title
+        avatar =  {
+          url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url
         }
-       @pubs.push(pub)
-      end    
+        publication = publication.as_json(:include => [{:assignments => {:include => [:assets]}},:assets])
+      when 'Survey'
+        publication = Survey.find(id)
+        text = 'Se ha creado un cuestionario en la asignatura de ' + course.title
+        avatar =  {
+          url: course.avatar.url.nil? ? "/assets/" + course.course_avatarx : course.avatar.url
+        }
+        publication = publication.as_json(:include => [{:user_surveys => {:include => [:user, :user_survey_responses]}}, {:questions => {:include => [:answers]} }])
+      else
+        next
+      end
+
+      pub = {
+        type: type,
+        publicationId: id,
+        text: text,
+        avatar:avatar,
+        publication:publication,
+        createdAt: created_at
+      }
+      @pubs.push(pub)
+    end
     render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
   end
 
@@ -865,7 +883,7 @@ class Api::ApiController < ApplicationController
     else
       success = false
     end
-    render :json => {:success => success}, :callback => params[:callback]   
+    render :json => {:success => success}, :callback => params[:callback]
   end
 
   def friend_remove
@@ -873,7 +891,7 @@ class Api::ApiController < ApplicationController
     inverse_friendship = Friendship.find_by_user_id_and_friend_id(params[:id], @user.id)
     success = false
 
-    if friendship.nil? && inverse_friendship.nil? then      
+    if friendship.nil? && inverse_friendship.nil? then
       msg = 'No existe una amistad entre estos usuarios'
     end
 
@@ -885,7 +903,7 @@ class Api::ApiController < ApplicationController
       success = true
     end
 
-    render :json => {:success => success, :msg => msg}, :callback => params[:callback]   
+    render :json => {:success => success, :msg => msg}, :callback => params[:callback]
   end
 
   private
