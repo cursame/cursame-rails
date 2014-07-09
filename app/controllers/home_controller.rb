@@ -8,8 +8,8 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       redirect_to "/users/#{user_url}/dashboard"
-    elsif 
-      redirect_to landing_page_path 
+    elsif
+      redirect_to landing_page_path
     end
   end
 
@@ -37,12 +37,12 @@ class HomeController < ApplicationController
 
   def landing_page
     resource = User.new()
-    
+
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end
   end
-  
+
   def features
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
@@ -104,25 +104,27 @@ class HomeController < ApplicationController
   def mkt_thanks
     if params[:success].present? && params[:success] == "1"
       render "/home/mkt_pages/mkt_thanks", :layout => 'mkt_langing_page'
-    else 
+    else
       redirect_to root_url
     end
   end
 
   def send_contact_mail
-    subject = params[:contact_type] == 'demo_request' ? 'Solictud de demo' : 'Contacto'  
-    mail = Notifier.send_contact_mail(params, 'hola@cursa.me', subject, params[:contact_type] == 'demo_request')
-    mail.deliver
-    @mkt = params[:mkt_langin_id]
-    
-    if params[:contact_type] == 'demo_request'
-      mail = Notifier.send_contact_mail(params, 'gerardo@cursa.me', subject, true)
+
+    mails = ['fernanda@cursa.me', 'hola@cursa.me']
+
+    mails.each do |mail|
+      subject = params[:contact_type] == 'demo_request' ? 'Solictud de demo' : 'Contacto'
+      mail = Notifier.send_contact_mail(params, mail, subject, params[:contact_type] == 'demo_request')
       mail.deliver
     end
+
+    @mkt = params[:mkt_langin_id]
 
     respond_to do |format|
       format.js
     end
+
   end
 
   def new_sesion_from_home
@@ -132,7 +134,7 @@ class HomeController < ApplicationController
       url =  "http://#{@user.subdomain}.#{links}"
     else
       url = "http://#{links}?error=mail"
-    end 
+    end
 
     redirect_to url
   end
@@ -156,7 +158,7 @@ class HomeController < ApplicationController
           save_comment
         end
 
-      #esto es para comentarios que son publicos de la red
+        #esto es para comentarios que son publicos de la red
       elsif params[:is_user] then
         params[:commentable_type] = 'User'
         params[:commentable_id] = params[:is_user]
@@ -193,8 +195,8 @@ class HomeController < ApplicationController
     @publication = Wall.find(params[:id])
     @comments = @publication.publication.comments
     respond_to do |format|
-          format.html
-          format.js
+      format.html
+      format.js
     end
   end
 
@@ -205,10 +207,10 @@ class HomeController < ApplicationController
 
     begin
       permissioning = Permissioning.find_by_user_id_and_network_id(@publication.publication.user_id, current_network.id)
-      mixpanel_properties = { 
-          'Network' => current_network.name.capitalize,
-          'Type'    => @publication.publication_type.capitalize,
-          'Role'    => permissioning.role.title.capitalize
+      mixpanel_properties = {
+        'Network' => current_network.name.capitalize,
+        'Type'    => @publication.publication_type.capitalize,
+        'Role'    => permissioning.role.title.capitalize
       }
       MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
     rescue
@@ -221,26 +223,26 @@ class HomeController < ApplicationController
 
   end
 
-   def downvote
-     @publication = Wall.find(params[:id])
-     @publication.publication.downvote_from current_user
-     respond_to do |format|
-       #format.html
-       format.js
-     end
-   end
+  def downvote
+    @publication = Wall.find(params[:id])
+    @publication.publication.downvote_from current_user
+    respond_to do |format|
+      #format.html
+      format.js
+    end
+  end
 
   def upvote_comment
 
     @publication = Comment.find(params[:id])
     @publication.liked_by current_user
-  
+
     begin
       permissioning = Permissioning.find_by_user_id_and_network_id(@publication.user_id, current_network.id)
-      mixpanel_properties = { 
-          'Network' => current_network.name.capitalize,
-          'Type'    => @publication.commentable_type.capitalize,
-          'Role'    => permissioning.role.title.capitalize
+      mixpanel_properties = {
+        'Network' => current_network.name.capitalize,
+        'Type'    => @publication.commentable_type.capitalize,
+        'Role'    => permissioning.role.title.capitalize
       }
       MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
     rescue
@@ -250,89 +252,89 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.js
     end
-    
+
   end
 
-     def downvote_comment
-       @publication = Comment.find(params[:id])
-       @publication.downvote_from current_user
-       respond_to do |format|
-         #format.html
-         format.js
-       end
-     end
+  def downvote_comment
+    @publication = Comment.find(params[:id])
+    @publication.downvote_from current_user
+    respond_to do |format|
+      #format.html
+      format.js
+    end
+  end
 
-     def get_votes_of_publication
-      @publication = Wall.find(params[:id])
+  def get_votes_of_publication
+    @publication = Wall.find(params[:id])
 
-      respond_to do |format|
-        format.js
-      end
-     end
+    respond_to do |format|
+      format.js
+    end
+  end
 
 
-     def destroy_wall
-       publication = Wall.find(params[:id])
-       if !publication.nil?
-         publication.publication.destroy
-          @id = publication.id
-       end
-       respond_to do |format|
-         format.js
-       end
-     end
+  def destroy_wall
+    publication = Wall.find(params[:id])
+    if !publication.nil?
+      publication.publication.destroy
+      @id = publication.id
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 
-     def edit_wall
+  def edit_wall
 
-      @id = params[:id]
-      @type = params[:type]
+    @id = params[:id]
+    @type = params[:type]
 
-      case @type
-        when 'Delivery'
-          @delivery = Delivery.find(@id)
+    case @type
+    when 'Delivery'
+      @delivery = Delivery.find(@id)
 
-        when 'Survey'
-          @survey = Survey.find(@id)
+    when 'Survey'
+      @survey = Survey.find(@id)
 
-        when 'Comment'
-          @comment = Comment.find(@id)
-          @commentable_id = @comment.commentable_id
-          @commentable_type = @comment.commentable_type
+    when 'Comment'
+      @comment = Comment.find(@id)
+      @commentable_id = @comment.commentable_id
+      @commentable_type = @comment.commentable_type
 
-        when 'Discussion'
-          @discussion = Discussion.find(@id)
-      end
+    when 'Discussion'
+      @discussion = Discussion.find(@id)
+    end
 
-       respond_to do |format|
-         format.js
-       end
-     end
+    respond_to do |format|
+      format.js
+    end
+  end
 
-     def destroy_comment
-       comment = Comment.find(params[:id])
+  def destroy_comment
+    comment = Comment.find(params[:id])
 
-       if !comment.nil?
-         comment.destroy
-         @id = comment.id
-       end
-       respond_to do |format|
-         format.js
-       end
-     end
+    if !comment.nil?
+      comment.destroy
+      @id = comment.id
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 
-     def editing_n
-       @notiv = current_user.notifications.where(:active => true)
-       @notiv.each do |noti|
-         noti.active = false
-         noti.save
-       end
+  def editing_n
+    @notiv = current_user.notifications.where(:active => true)
+    @notiv.each do |noti|
+      noti.active = false
+      noti.save
+    end
 
-       @user = current_user
+    @user = current_user
 
-       respond_to do |format|
-         format.js
-       end
-     end
+    respond_to do |format|
+      format.js
+    end
+  end
 
 
   # chat behaviour of cursame
@@ -358,7 +360,7 @@ class HomeController < ApplicationController
     @show_chat_panel = false
     @page = 1
     respond_to do |format|
-        format.html
+      format.html
     end
   end
 
@@ -379,66 +381,66 @@ class HomeController < ApplicationController
       @channel_name = get_unique_channel_users(ids)
       users = User.find(ids)
     end
-    
+
     @channel = find_or_insert_channel(@channel_name, users)
     @page = 1
     @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
     respond_to do |format|
-     format.js
+      format.js
     end
   end
 
-    def add_new_mesage
-      @message = Mesage.create!(:mesage => params[:mesage], :user_id =>current_user.id,:channel_id =>params[:channel_id])
-      
-      @user_channel = if (@message.user == current_user && not(@message.channel.nil?) && not(@message.channel.users.index{|x| x.id != current_user.id}.nil?)) 
-                        @message.channel.users[@message.channel.users.index{|x| x.id != current_user.id}]
-                        else
-                        @message.user
-                      end
+  def add_new_mesage
+    @message = Mesage.create!(:mesage => params[:mesage], :user_id =>current_user.id,:channel_id =>params[:channel_id])
 
-
-      @az = @message
-      @typed = @message.class.to_s
-      activation_activity
-
-      @channel = Channel.find_by_id(params[:channel_id])
-      @channel_name = params[:channel_name]
-      @channel_id = params[:channel_id]
-
-      @type = @channel_name.split("/").last["course"].nil? ? "User" : "Course"
-
-      if (@type == "Course")
-        @course = Course.find_by_id(@channel_name.split("/").last.split("_").last)
-      end
-
-      @emitter_user_id = current_user.id
-      @receiver_user_id = params[:receiver_user_id]
-
-      respond_to do |format|
-       format.js
-      end
+    @user_channel = if (@message.user == current_user && not(@message.channel.nil?) && not(@message.channel.users.index{|x| x.id != current_user.id}.nil?))
+      @message.channel.users[@message.channel.users.index{|x| x.id != current_user.id}]
+    else
+      @message.user
     end
 
-     def load_more_messages
-        @channel = Channel.find(params[:id])
-        @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
-        @page = params[:page].to_i
-        respond_to do |format|
-         format.js
-        end
-     end
 
-     def load_more_notfications
-        @notifications = current_user.notifications.paginate(:per_page => 10, :page => params[:page]).order("created_at DESC")
-        @page = params[:page].to_i
-        respond_to do |format|
-         format.js
-        end
-     end
+    @az = @message
+    @typed = @message.class.to_s
+    activation_activity
 
-     def authentications_test
-     end
+    @channel = Channel.find_by_id(params[:channel_id])
+    @channel_name = params[:channel_name]
+    @channel_id = params[:channel_id]
+
+    @type = @channel_name.split("/").last["course"].nil? ? "User" : "Course"
+
+    if (@type == "Course")
+      @course = Course.find_by_id(@channel_name.split("/").last.split("_").last)
+    end
+
+    @emitter_user_id = current_user.id
+    @receiver_user_id = params[:receiver_user_id]
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def load_more_messages
+    @channel = Channel.find(params[:id])
+    @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
+    @page = params[:page].to_i
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def load_more_notfications
+    @notifications = current_user.notifications.paginate(:per_page => 10, :page => params[:page]).order("created_at DESC")
+    @page = params[:page].to_i
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def authentications_test
+  end
 
   # manejo de paginas de error
   def not_found
@@ -455,25 +457,25 @@ class HomeController < ApplicationController
 
   def logout_user
     PrivatePub.publish_to("/messages/chat_notifications",
-                              userId: current_user.id,
-                              online: false
-                            )
+                          userId: current_user.id,
+                          online: false
+                          )
     sign_out(current_user)
     respond_to do |format|
-       format.js
+      format.js
     end
   end
 
   def update_wufoo_form
     wufoo = WuParty.new(ACCOUNT, API_KEY)
     wufoo_form = wufoo.form( params[:wufoo_form_id] )
-    
+
     data = params.reject! do |k|
       k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action' || k == 'wufoo_form_id'
     end
 
     puts data
-    
+
     result = wufoo_form.submit(data)
 
     if result['Success'] == 0
@@ -487,13 +489,13 @@ class HomeController < ApplicationController
       format.js
     end
   end
-  
+
   def privacidad
     respond_to do |format|
       format.html {render :layout => 'static_pages'}
     end
-  end  
-  
+  end
+
   private
 
   def save_comment
@@ -540,7 +542,7 @@ class HomeController < ApplicationController
     end # el canal ya existe
     return channel
   end
-  
+
   # The exception that resulted in this error action being called can be accessed from
   # the env. From there you can get a backtrace and/or message or whatever else is stored
   # in the exception object.
