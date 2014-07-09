@@ -3,8 +3,6 @@ class Survey < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :surveyings, :dependent => :destroy
   has_many :courses, :through => :surveyings
- # has_many :compart_assets, :dependent => :destroy
-  # has_many :assets, :through => :compart_assets
   has_many :events, as: :schedule, :dependent => :destroy
   belongs_to :network
   belongs_to :poll
@@ -52,7 +50,7 @@ class Survey < ActiveRecord::Base
   after_create do
 
     if self.publish_date <= DateTime.now then
-       self.state = "published"
+      self.state = "published"
     end
 
     Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
@@ -62,7 +60,7 @@ class Survey < ActiveRecord::Base
       course.members_in_courses.each do |member|
         user = member.user
         if self.user_id != user.id then
-          users.push(user)          
+          users.push(user)
         end
       end
     end
@@ -76,7 +74,7 @@ class Survey < ActiveRecord::Base
 
     begin
       self.courses.each do |course|
-        mixpanel_properties = { 
+        mixpanel_properties = {
           'Network' => self.network.name.capitalize,
           'Course'  => course.title.capitalize
         }
@@ -89,28 +87,28 @@ class Survey < ActiveRecord::Base
   end
 
   def expired?
-     ##### se detecta si es tiempo de estar publicado el survey ####
-       case 
-         when self.publish_date < DateTime.now
-          self.state = "published"
-         when self.publish_date == DateTime.now
-          self.state = "published"
-         when self.publish_date > DateTime.now
-          self.state = "unpublish"
-       end  
+    ##### se detecta si es tiempo de estar publicado el survey ####
+    case
+    when self.publish_date < DateTime.now
+      self.state = "published"
+    when self.publish_date == DateTime.now
+      self.state = "published"
+    when self.publish_date > DateTime.now
+      self.state = "unpublish"
+    end
 
-        case 
-         when self.end_date < DateTime.now
-          self.state = "unpublish"
-         when self.end_date == DateTime.now
-          self.state = "unpublish"
-         when self.end_date > DateTime.now
-          self.state = "published"
-       end  
-       
-       self.save!
-       puts "#{self.state}"
-   
+    case
+    when self.end_date < DateTime.now
+      self.state = "unpublish"
+    when self.end_date == DateTime.now
+      self.state = "unpublish"
+    when self.end_date > DateTime.now
+      self.state = "published"
+    end
+
+    self.save!
+    puts "#{self.state}"
+
   end
 
 
@@ -119,7 +117,7 @@ class Survey < ActiveRecord::Base
   end
 
   def title
-     self.name
+    self.name
   end
 
   def owner?(role,user)
@@ -154,32 +152,32 @@ class Survey < ActiveRecord::Base
   def averageTimeToResponse
     user_surveys = self.user_surveys
     size = user_surveys.size
-    
+
     if (size == 0) then
       return 0.0
     end
-    
+
     average = 0.0
     user_surveys.each do
       |user_survey|
       average += user_survey.created_at - self.created_at
     end
-    
+
     return average/size
   end
-  
+
 
   def send_mail(users)
     Thread.new {
       begin
         mail = Notifier.new_survey_notification(users,self)
-        mail.deliver          
+        mail.deliver
       rescue => ex
         puts 'error al enviar mail'
       ensure
         ActiveRecord::Base.connection.close
       end
-    }    
+    }
   end
 
 end

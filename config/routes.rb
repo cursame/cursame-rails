@@ -69,7 +69,6 @@ Cursame30Lb::Application.routes.draw do
 
   #recursos naturales de la aplicación
   resources :notifications
-  resources :compart_assets
   resources :assets
   resources :areas_of_evaluations
 
