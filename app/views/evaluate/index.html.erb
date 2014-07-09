@@ -1,5 +1,6 @@
 <%= render partial: 'evaluate/shared/header_evaluate' %>
 
+<% unless @today_activities.empty? %>
 <div class="activities-section">
 	<div class="wrapper">
 		<div class="cols-12">
@@ -12,21 +13,16 @@
 						</div>
 					</div>
 					<div class="activities-list-section">
-						<% unless @today_activities.empty? %>
-							<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @today_activities } %>
-						<% else %>
-							<div class="no-content-section">
-				        <h4>Aún no tienes calificaciones.</h4>
-				        <p>Necesitas estar inscrito en al menos un curso para tener calificaiones.</p>
-				      </div>
-						<% end %>
+						<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @today_activities } %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<% end %>
 
+<% unless @tomorrow_activities.empty? %>
 <div class="activities-section">
 	<div class="wrapper">
 		<div class="cols-12">
@@ -39,21 +35,16 @@
 						</div>
 					</div>
 					<div class="activities-list-section">
-						<% unless @tomorrow_activities.empty? %>
-							<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @tomorrow_activities } %>
-						<% else %>
-							<div class="no-content-section">
-				        <h4>No se encontraron actividades.</h4>
-				        <p>Felicidades, no tienes activades por calificar el dia de mañana.</p>
-				      </div>
-						<% end %>
+						<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @tomorrow_activities } %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<% end %>
 
+<% unless @rest_of_activities.empty? %>
 <div class="activities-section">
 	<div class="wrapper">
 		<div class="cols-12">
@@ -66,17 +57,18 @@
 						</div>
 					</div>
 					<div class="activities-list-section">
-						<% unless @rest_of_activities.empty? %>
-							<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @rest_of_activities } %>
-						<% else %>
-							<div class="no-content-section">
-				        <h4>No se encontraron actividades.</h4>
-				        <p>Felicidades, no tienes activades por calificar el dia de mañana.</p>
-				      </div>
-						<% end %>
+						<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @rest_of_activities } %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<% end %>
+
+<% if @rest_of_activities.count + @tomorrow_activities.count + @today_activities.count == 0 %>
+	<div class="no-content-section">
+    <h4>No tienes actividades por calificar.</h4>
+    <p>Todas las actividades de tu curso estan calificadas, puedes ver <%= link_to "actividades pasas en la seccion de Pasadas", evaluate_activities_inactive_path %>.</p>
+  </div>	
+<% end %>

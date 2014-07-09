@@ -1,37 +1,16 @@
+<% course = @delivery.courses.first if @delivery.present? %>
+<% course = @survey.courses.first if @survey.present? %>
+
 <% if @delivery %>
-	<% course = @delivery.courses.first %>	
+	<%= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: @delivery, course: course, meta_data: true } %>
 	<div class="activity-view-wrap">
 		<div class="wrapper">
 			<div class="cols-12">
 				<div class="col col-12">
 					<div class="col-inner">
 						<div class="activity-view">
-
-							<div class="activity-view-header">
-								<div class="activity-extract">
-									<%= icon("activity-delivery") %>
-									<h3><%= @delivery.title %></h3>
-								</div>
-								<div class="activity-view-data">
-									<ul>
-										<li>
-											<span class="meta-info">Curso</span>
-											<p><%= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course) %></p>
-										</li>
-										<li>
-											<span class="meta-info">Entregas</span>
-											<p><%= @delivery.responses.count %> de <%= course.members_in_courses.count %></p>
-										</li>
-										<li>
-											<span class="meta-info">Fecha de publicación</span>
-											<p><%= I18n.localize(@delivery.publish_date, format: "%e de %B del %Y") %></p>
-										</li>
-										<li>
-											<span class="meta-info">Fecha para entrega</span>
-											<p><%= I18n.localize(@delivery.end_date, format: "%e de %B del %Y") %></p>
-										</li>
-									</ul>
-								</div>
+							<div class="view-header">
+								<h5>Entregas</h5>
 							</div>
 
 							<div class="activity-view-main">
@@ -76,39 +55,15 @@
 <% end %>
 
 <% if @survey %>
-	<% course = @survey.courses.first %>	
+	<%= render partial: 'evaluate/shared/header_activity_survey', locals: { survey: @survey, course: course, meta_data: true } %>
 	<div class="activity-view-wrap">
 		<div class="wrapper">
 			<div class="cols-12">
 				<div class="col col-12">
 					<div class="col-inner">
 						<div class="activity-view">
-
-							<div class="activity-view-header">
-								<div class="activity-extract">
-									<%= icon("activity-survey") %>
-									<h3><%= @survey.title %></h3>
-								</div>
-								<div class="activity-view-data">
-									<ul>
-										<li>
-											<span class="meta-info">Curso</span>
-											<p><%= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course) %></p>
-										</li>
-										<li>
-											<span class="meta-info">Entregas</span>
-											<p><%= @survey.responses.count %> de <%= course.members_in_courses.count %></p>
-										</li>
-										<li>
-											<span class="meta-info">Fecha de publicación</span>
-											<p><%= I18n.localize(@survey.publish_date, format: "%e de %B del %Y") %></p>
-										</li>
-										<li>
-											<span class="meta-info">Fecha para entrega</span>
-											<p><%= I18n.localize(@survey.end_date, format: "%e de %B del %Y") %></p>
-										</li>
-									</ul>
-								</div>
+							<div class="view-header">
+								<h5>Entregas</h5>
 							</div>
 
 							<div class="activity-view-main">
@@ -123,8 +78,10 @@
 									          </span>
 													</div>
 													<div class="activity-response-main">
-														<h5><%= response.user.name %></h5>
-														<p><%= response.result %></p>
+														<div class="va-middle">
+															<h5><%= response.user.name %></h5>
+															<p>Obtenido: <%= number_with_precision(response.result, :precision => 2) %></p>
+														</div>
 													</div>
 												</div>
 											<% end %>
@@ -133,7 +90,7 @@
 								<% else %>
 									<div class="no-content-section">
 								    <h5>Sin Entregas.</h5>
-								    <p>Todavia no hay ninguna entrega en esta tarea.</p>
+								    <p>Todavia ningun alumno a contestado este cuestionario.</p>
 								  </div>
 								<% end %>
 							</div>

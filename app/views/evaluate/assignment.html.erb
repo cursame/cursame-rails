@@ -3,21 +3,14 @@
 <% course = assignment.course %>
 <% user = assignment.user %>
 
-<br><br>
+<%= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: delivery, course: course, meta_data: true } %>
 
 <div class="activity-view-wrap">
   <div class="wrapper">
     <div class="cols-12">
-      <div class="col col-12">
+      <div class="col col-8">
         <div class="col-inner">
           <div class="activity-view">
-
-            <div class="activity-view-header">
-              <div class="activity-extract">
-                <%= icon("activity-delivery") %>
-                <h3><%= delivery.title %></h3>
-              </div>
-            </div>
 
             <div class="activity-view-main">
               <div class="activity-view-main-user">
@@ -88,19 +81,19 @@
                       <% end %>
                     </div>
                   </div>
-                  <div id="response-evaluate" class="tab-content" style="display: none;">
+                  <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
                     <div class="delivery-submited-evaluation-fields" id="accomplishment">
-                      <%= form_for assignment, remote: true   do |assigments_l |%>
+                      <%= form_for assignment do |assigments_l |%>
                         <% if assignment.response_to_the_evaluations.count != 0%>      
                           <div class="evaluation-fields-title">
-                            <h4>Criterios de calificación</h4>
-                            <p>Por favor selecciona un porcentaje de 1 a 100 para calificar esta tarea</p>
+                            <h5>Calificación por rubros</h5>
+                            <p>Evalua por los rubros de esta tarea.</p>
                           </div>
-
                           <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
                             <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
-                          <%end%>
-                        <%else%>
+                          <% end %>
+
+                        <% else %>
                           <div class="evaluation-fields-title">
                             <h5>Calificación de la tarea</h5>
                             <p>Seleccione un porcentaje de 1 a 100 para calificar esta tarea</p>
@@ -130,13 +123,6 @@
                               </li>
                             </ul>
                           </div>
-                          <div class="fr">
-                            <%if assignment.accomplishment == nil %>
-                              <h3>Calificación: <span id="i_rub_l_<%= assignment.id%>"><%= number_with_precision(assignment.response_to_the_evaluations.sum(:rub_calification), :precision => 2 )%></span></h3>
-                            <%else%>
-                              <h3>Calificación: <span id="i_rub_l_<%= assignment.id%>"><%= number_with_precision(assignment.accomplishment, :precision => 2) %>%</span></h3>
-                            <%end%>
-                          </div>
                         </div>
                       <%end%>
                     </div>
@@ -146,6 +132,34 @@
 
             </div>
 
+          </div>
+        </div>
+      </div>
+      <div class="col col-4">
+        <div class="col-inner">
+          <div class="sidebar-responses">
+            <div class="sidebar-responses-header">
+              <h6>Entregas</h6>
+            </div>
+            <div class="sidebar-responses-main">
+              <% delivery.responses.each do |response| %>
+                <%= link_to evaluate_delivery_response_path(response) do %> 
+                  <div class="sidebar-user-response<%= " active" if assignment.id == response.id %>" >
+                    <span class="avatar-holder">
+                      <%= avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no') %>
+                    </span>
+                    <div class="sidebar-user-response-main">
+                      <h6><%= response.user.name %></h6>
+                      <% if response.accomplishment %>
+                        <span>Calificación: <strong><%= response.accomplishment %></strong></span>
+                      <% else %>
+                        <span>Sin calificar</span>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

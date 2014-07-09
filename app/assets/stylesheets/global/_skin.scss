@@ -423,7 +423,7 @@ h6 {
     font-size: 15px;
     border-bottom: 1px solid transparent;
 
-    &.success {
+    &.success, &.notice {
       background: #75b70c;
       color: #fff;
       border-bottom-color: #578c03; 

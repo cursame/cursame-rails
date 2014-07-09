@@ -1,41 +1,111 @@
-<div class="delivery-submited-content">
-  <div>
-    <span class="meta-info">Alumno:</span>
-    <p><%= link_to @user_survey.user.name, show_user_path(@user_survey.user.personal_url) %></p>
-  </div>
-  <div>
-    <span class="meta-info">Resultado obtenido:</span>
-    <p><%= number_with_precision(@user_survey.evaluation, :precision => 2)%></p>
+<% survey = @user_survey %>
+<% course = survey.survey.courses.first %>
+<% user = survey.user %>
+
+<%= render partial: 'evaluate/shared/header_activity_survey', locals: { survey: survey.survey, course: course, meta_data: true } %>
+
+<div class="activity-view-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-8">
+        <div class="col-inner">
+          <div class="activity-view">
+
+            <div class="activity-view-main">
+              <div class="activity-view-main-user">
+                <span class="avatar-holder">
+                  <%= avatar('user', '45', 'no', user.id, 'avatar avatar-45', 'no', 'no') %>
+                </span>
+                <div class="activity-view-main-user-state">
+                  <h5><%= user.name %></h5>
+                  <div class="user-meta">
+                    <span>Obtenido: <%= number_with_precision(survey.evaluation, :precision => 2) %></span>
+                    <span class="mta-spcer">·</span>
+                    <span>Entregado: <%= I18n.localize(survey.created_at, format: "%e de %B del %Y") %></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="evaluate-user-response tabs">
+                <div class="tabs-buttons">
+                  <div class="tab active" data-id-target="response">Respuestas</div>
+                  <div class="tab" data-id-target="response-evaluate">Comentarios</div>
+                </div>
+                <div class="tabs-main">
+                  <div id="response" class="activity-response-items tab-content">
+										<div class="delivery-submited-evaluation-fields">
+											<ul class="survey-items-list">
+
+
+											<% survey.user_survey_responses.each do |response| %>
+												<li>
+													<div class="survey-item">
+														<div class="survey-item-question">
+															<p><%= response.question.content%></p>			
+														</div>
+														<div class="survey-item-answers">
+															<span class="meta-info">Respuesta:</span>
+										          <div class="survey-item-answer-content">
+                                <% response.question.answers.each do |answer| %>
+                                  <% if answer.id == response.answer_id %>
+                                    <% if answer.correct %>
+                                      <%= image_tag('icons/icon_true.png')%>    
+                                    <% else %>
+                                      <%= image_tag('icons/icon_false.png')%>
+                                    <% end %>
+                                    <p><%= answer.content %></p>
+                                  <% end %>
+                                <% end %>
+										          </div>
+														</div>
+													</div>
+												</li>
+											<% end %>
+
+											</ul>
+										</div>
+                  </div>
+                  <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
+                    <form action="">
+											<textarea placeholder="feedback" name="" id="" cols="30" rows="10"></textarea>
+											<input type="submit" value="Enviar">
+										</form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col col-4">
+        <div class="col-inner">
+          <div class="sidebar-responses">
+            <div class="sidebar-responses-header">
+              <h6>Entregas</h6>
+            </div>
+            <div class="sidebar-responses-main">
+
+              <% survey.survey.responses.each do |response| %>
+                <%= link_to evaluate_survey_response_path(response) do %> 
+                  <div class="sidebar-user-response<%= " active" if response.id == survey.id %>">
+                    <span class="avatar-holder">
+                      <%= avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no') %>
+                    </span>
+                    <div class="sidebar-user-response-main">
+                      <h6><%= response.user.name %></h6>
+                      <span>Obtenido: <%= number_with_precision(response.result, :precision => 2) %></span>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="delivery-submited-evaluation-fields">
-	<ul class="survey-items-list">
-	<% @user_survey.user_survey_responses.each do |r| %>
-		<% @question = Question.find(r.question_id) %>
-		<% @answer = Answer.find(r.answer_id) %>
-		<li>
-			<div class="survey-item">
-				<div class="survey-item-question">
-					<p><%= @question.content%></p>			
-				</div>
-				<div class="survey-item-answers">
-					<span class="meta-info">Respuesta:</span>
-          <div class="survey-item-answer-content">
-            <% if  @answer.correct == true %> 
-              <%= image_tag('icons/icon_true.png')%>
-            <%else%>
-              <%= image_tag('icons/icon_false.png')%>
-            <%end%>
-            <p><%= @answer.content %></p>
-          </div>
-				</div>
-			</div>
-		</li>
-	<% end %>
-	<form action="">
-		<textarea placeholder="feedback" name="" id="" cols="30" rows="10"></textarea>
-		<input type="submit" value="Enviar">
-	</form>
-	</ul>
-</div>

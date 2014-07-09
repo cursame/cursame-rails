@@ -118,6 +118,7 @@ body {
 
   #log_loadding {
     position: absolute;
+    z-index: 15;
     width: 100%;
     left: 0;
     margin-top: 0;
@@ -259,6 +260,11 @@ body {
   &.avatar-24 {
     width: 24px;
     height: 24px;
+  }
+
+  &.avatar-30 {
+    width: 30px;
+    height: 30px;
   }
 
   &.avatar-38 {
@@ -614,6 +620,7 @@ body {
   position: absolute;
   left: 0;
   top: -51px;
+  z-index: 15;
   @include transition (top .3s ease-in-out);
   
   .notice-spacer {

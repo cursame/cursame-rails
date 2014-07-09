@@ -168,15 +168,13 @@
   }
 }
 
+.activity-header {
+  @extend .basic-container-style;
+  border-top: 0;
+  border-radius: 0 0 $radius $radius;
 
-.activity-view {
-  @extend .basic-container-style; 
-  background: #fafafa;
-
-  .activity-view-header {
-    background: $white;
-    border-radius: $radius $radius 0 0;
-    border-bottom: 1px solid $separator-color;
+  h3 {
+    color: $global-color;
   }
 
   .activity-view-data {
@@ -186,9 +184,21 @@
       border-right: 1px solid $separator-color;
     }
   }
+}
+
+
+.activity-view {
+  @extend .basic-container-style;
+
+  .view-header {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid $separator-color;
+  }
 
   .evaluate-user-response {
     .tabs-buttons {
+      background: #fafafa;
       @include clearfix;
 
       .tab {
@@ -212,10 +222,22 @@
       border-radius: 0 0 $radius $radius;
     }
   }
+
+  .evaluation-area {
+    border: 1px solid $separator-color;
+    border-radius: $radius;
+  }
+
+  .activity-view-main-user {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+  }
 }
 
 .activity-responses-list {
   .activity-response {
+    border-top: 1px solid $separator-color;
+
     .activity-response-main {
       h5 {
         color: $global-color;
@@ -225,6 +247,56 @@
         color: $gray-color;
         font-size: 12px;
       }
+    }
+
+    &:hover {
+      background: #fafafa;
+    }
+  }
+
+  a:first-child .activity-response {
+    border-top: 0;
+  }
+
+  a:last-child .activity-response {
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
+.sidebar-responses {
+  @extend .basic-container-style;
+
+  .sidebar-responses-header {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid $separator-color;
+  }
+
+  .sidebar-user-response {
+    border-top: 1px solid $separator-color;
+
+    h6 {
+      color: $global-color;
+    }
+
+    span {
+      font-size: 12px;
+      color: $meta-color;
+    }
+
+    &.active {
+      background: tint($primary-color, 95%);
+      border-left: 1px solid $primary-color;
+    }
+  }
+
+  .sidebar-responses-main {
+    a:first-child .sidebar-user-response {
+      border-top: 0;
+    }
+
+    a:last-child .sidebar-user-response {
+      border-radius: 0 0 $radius $radius
     }
   }
 }

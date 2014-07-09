@@ -43,6 +43,7 @@
       <div class="wrap">
         <%= render partial: '/shared/user_header' %>
         <div class="main">
+          <%= flash[:error] %>
           <%= yield %>
         </div>
       </div>
@@ -59,7 +60,11 @@
       <script>
         $(function() {
           <% if flash[:notice] %>
-            Notice('success', '<%= notice %>');
+            Notice('notice', '<%= flash[:notice] %>');
+          <% elsif flash[:error] %>
+            Notice('error', '<%= flash[:error] %>');
+          <% elsif flash[:success] %>
+            Notice('success', '<%= flash[:success] %>');
           <% end %>
         });
 

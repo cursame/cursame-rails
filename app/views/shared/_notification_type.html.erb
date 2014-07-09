@@ -103,7 +103,7 @@
 
     <!-- Notificacion: 8 - Nueva entrega a una tarea -->
     <% when 'new_assignment_on_delivery'%>
-      <%= link_to "#{course_path(notification.notificator.course_id)}/activities_depot" do %>
+      <%= link_to evaluate_delivery_response_path(notification.notificator.delivery.responses.first) do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
@@ -116,7 +116,7 @@
             <%else%>
               Un usuario
             <%end%>
-            ha respondido a la tarea <span class="as-link"><%= notification.notificator.delivery.title %></span>.
+            ha respondido la tarea <span class="as-link"><%= notification.notificator.delivery.title %></span>.
           </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
@@ -284,8 +284,7 @@
       <% if notification.notificator != nil %>
         <% if notification.notificator.user != nil %>
           <% user = notification.notificator.user %>
-
-          <%= link_to course_activities_depot_path(notification.notificator.survey.courses.first.id) do %>
+          <%= link_to evaluate_survey_response_path(notification.notificator.survey.responses.first) do %>
             <div class="activity-feed-author">
               <span class="avatar-holder">
                 <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>

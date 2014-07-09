@@ -89,8 +89,6 @@ class AssignmentsController < ApplicationController
      end
   end
 
-  # PUT /assignments/1
-  # PUT /assignments/1.json
   def update
     @assignment = Assignment.find(params[:id])
 
@@ -122,22 +120,16 @@ class AssignmentsController < ApplicationController
       @assignment.accomplishment = @assignment.rub_calification
       @assignment.save
     end
-    
-    
-    
-    respond_to do |format|
-      if @assignment.save
-        format.js
-        format.json
-      else
-        format.js
-        format.json
-      end
+
+    url = evaluate_delivery_response_path(@assignment)
+
+    if @assignment.save
+      redirect_to url, flash: { success: "Se ha calificado correctamente la tarea." }
+    else
+      redirect_to url, flash: { error: "Ha ocurrido un error al calificar la tarea." }
     end
   end
 
-  # DELETE /assignments/1
-  # DELETE /assignments/1.json
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy

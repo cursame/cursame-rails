@@ -6,9 +6,9 @@
           <div class="section-header">
             <div class="section-header-main">
               <div class="section-title">
-                <%= link_to icon('section-evaluate'), evaluate_activities_path %>
+                <h5>Calificar Actividades</h5>
                 <%= link_to evaluate_activities_path do %>
-                  <h1>Calificar Actividades</h1>
+                  <h1><%= course.title %></h1>
                 <% end %>
               </div>
               <div class="section-header-actions">
@@ -19,10 +19,10 @@
               <% action = params[:action] %>
               <ul>
                 <li>
-                  <%= link_to "Activas", evaluate_activities_path, class: (action == 'index' ? "active" : " ") %>
+                  <%= link_to "Activas", evaluate_course_path(course), class: ((action == 'index' || action == 'qualifying') ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to "Pasadas", evaluate_activities_inactive_path, class: (action == 'inactive' ? "active" : " ") %>
+                  <%= link_to "Pasadas", evaluate_course_inactive_path(course), class: (action == 'inactive' ? "active" : " ") %>
                 </li>
               </ul>
             </div>

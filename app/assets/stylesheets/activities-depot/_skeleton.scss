@@ -179,15 +179,30 @@
   }   
 }
 
-.activity-view {
+.activity-header {
+  margin-bottom: 20px;
+
   .activity-extract {
     padding: 15px 10px;
     @include clearfix; 
+  }
+
+  .activity-title {
+    float: left;
+
+    a {
+      float: left;
+    }
 
     .i {
       float: left;
       margin-right: 10px;
     }
+  }
+
+  .activity-actions {
+    float: right;
+    margin-top: 2px;
   }
 
   .activity-view-data {
@@ -197,6 +212,13 @@
       float: left;
       padding: 10px;
     }
+  }
+}
+
+.activity-view {
+
+  .view-header {
+    padding: 10px;
   }
 
   .activity-view-main-user {
@@ -208,7 +230,11 @@
     }
 
     .activity-view-main-user-state {
-      margin-left: 55px;
+      margin: 3px 0 0 55px;
+
+      h5 {
+        @include ellipsis();
+      }
     }
   }
 
@@ -233,6 +259,25 @@
       }
     }
   }
+
+  .activity-response-evaluate {
+    .delivery-submited-evaluation-footer {
+      @include clearfix;
+    }
+  }
+
+  .evaluation-fields-title {
+    margin: 10px 0;
+  }
+
+  .evaluation-area {
+    padding: 10px;
+    margin-bottom: 10px;
+
+    .rubro h5 {
+      padding-top: 7px;
+    }
+  }
 }
 
 .activity-responses-list {
@@ -249,6 +294,40 @@
       display: table;
       height: 80px;
       margin-left: 90px;
+    }
+  }
+}
+
+.sidebar-responses {
+
+  .sidebar-responses-header {
+    padding: 5px 10px;
+  }
+
+  .sidebar-user-response {
+    padding: 10px;
+    @include clearfix;
+
+    .avatar-holder {
+      float: left;
+    }
+
+    .sidebar-user-response-main {
+      margin-left: 35px;
+      margin-top: -3px;
+    }
+
+    h6 {
+      margin-bottom: -6px;
+      @include ellipsis();
+    }
+
+    span {
+      display: block;
+    }
+
+    &.active {
+      margin-left: -1px;
     }
   }
 }
