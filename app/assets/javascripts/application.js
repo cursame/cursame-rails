@@ -6,9 +6,9 @@
 
 //= require ./vendor/jquery-1.8.3
 //= require_tree ./vendor
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+
 //= require_tree ./templates
 //= require_tree ./locale
 //= require_tree ./global
-
-//= require jquery-fileupload/basic
-//= require jquery-fileupload/vendor/tmpl

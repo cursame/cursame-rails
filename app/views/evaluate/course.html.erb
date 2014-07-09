@@ -1,4 +1,4 @@
-<%= render partial: 'evaluate/shared/header_activity', locals: { course: @course } %>
+<%= render partial: 'evaluate/shared/header_evaluate_course', locals: { course: @course } %>
 
 <% unless @today_activities.empty? %>
 <div class="activities-section">
@@ -69,6 +69,6 @@
 <% if @rest_of_activities.count + @tomorrow_activities.count + @today_activities.count == 0 %>
 	<div class="no-content-section">
     <h4>No tienes actividades por calificar.</h4>
-    <p>Todas las actividades de tu curso estan calificadas, puedes ver <%= link_to "actividades pasas en la seccion de Pasadas", evaluate_activities_inactive_path %>.</p>
+    <p>Todas las actividades de tu curso estan calificadas, puedes ver <%= link_to "actividades pasas en la seccion de Pasadas", evaluate_course_inactive_path(@course) %>.</p>
   </div>	
 <% end %>

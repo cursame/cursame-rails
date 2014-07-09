@@ -7,19 +7,19 @@
             <div class="section-header-main">
               <div class="section-title">
                 <h5>Calificar Actividades</h5>
-                <%= link_to evaluate_activities_path do %>
-                  <h1><%= course.title %></h1>
+                <%= link_to evaluate_course_path(course) do %>
+                  <h1><%= truncate(course.title, :omission => "...", :length => 30) %></h1>
                 <% end %>
               </div>
               <div class="section-header-actions">
-                
+                <%= render partial: 'evaluate/shared/evaluate_course_filter' %>
               </div>
             </div>
             <div class="page-sub-navigation">
               <% action = params[:action] %>
               <ul>
                 <li>
-                  <%= link_to "Activas", evaluate_course_path(course), class: ((action == 'index' || action == 'qualifying') ? "active" : " ") %>
+                  <%= link_to "Activas", evaluate_course_path(course), class: ((action == 'index' || action == 'course') ? "active" : " ") %>
                 </li>
                 <li>
                   <%= link_to "Pasadas", evaluate_course_inactive_path(course), class: (action == 'inactive' ? "active" : " ") %>

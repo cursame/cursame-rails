@@ -386,8 +386,14 @@ h6 {
   border-top: 0;
   border-radius: 0 0 $radius $radius;
 
-  .section-title h1 {
-    color: $global-color;
+  .section-title {
+    h5 {
+      color: $gray-color;
+    }
+
+    h1 {
+      color: $global-color;
+    }
   }
 }
 
