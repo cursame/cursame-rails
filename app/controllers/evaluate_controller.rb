@@ -60,17 +60,17 @@ class EvaluateController < ApplicationController
 
     @today_activities = activities.clone.keep_if do
       |activity|
-      Date.today <= activity.end_date.to_date and activity.end_date.to_date <= Date.tomorrow.to_date
+      Date.today <= activity.end_date.to_datetime and activity.end_date.to_datetime <= Date.tomorrow.to_date
     end
     
     @tomorrow_activities = activities.clone.keep_if do
       |activity|
-      Date.tomorrow <= activity.end_date.to_date and activity.end_date.to_date <= (Date.tomorrow + 1.day)
+      Date.tomorrow <= activity.end_date.to_datetime and activity.end_date.to_datetime <= (Date.tomorrow + 1.day)
     end
     
     @rest_of_activities = activities.clone.keep_if do
       |activity|
-      activity.end_date.to_date >= (Date.tomorrow + 1.day)
+      activity.end_date.to_datetime >= (Date.tomorrow + 1.day)
     end
   end
   
@@ -92,7 +92,7 @@ class EvaluateController < ApplicationController
 
     @activities = activities.keep_if do
       |activity|
-      activity.end_date.to_date < Date.today
+      activity.end_date.to_datetime < Date.today
     end
   end
   
@@ -117,7 +117,7 @@ class EvaluateController < ApplicationController
 
     @activities = activities.clone.keep_if do
       |activity|
-      activity.end_date.to_date < Date.today
+      activity.end_date.to_datetime < Date.today
     end
   end
 
