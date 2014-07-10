@@ -30,10 +30,10 @@ Cursame30Lb::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags
-  # config.log_tags = [ :subdomain, :uuid ]
+  config.log_tags = [ :subdomain, :uuid ]
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
@@ -70,6 +70,6 @@ Cursame30Lb::Application.configure do
   config.action_mailer.delivery_method = :ses
   config.middleware.use ExceptionNotifier,
     :sender_address => %{"notifier" <error-notifier@cursa.me>},
-    :exception_recipients => %w{notificaciones@cursa.me}
+    :exception_recipients => %w{desarrollo@cursa.me}
 
 end
