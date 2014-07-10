@@ -5,7 +5,7 @@
 
 # Example:
 #
- set :output, "log/subtest.log"
+ set :output, "log/development.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -20,7 +20,7 @@
 #every 2.minutes do
  #   runner "Delivery.active_inactive", :environment => 'development' 
 #end
-set :environment, 'subtest'
+set :environment, 'development'
 
 #every :day, :at => '12:30am' do
 every :day, :at => "11:06pm"  do

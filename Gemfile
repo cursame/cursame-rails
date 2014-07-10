@@ -49,7 +49,7 @@ group :development do
   gem "rails_best_practices"
 end
 
-group :subtest do
+group :production do
   gem 'newrelic_rpm'
 end
 
@@ -85,9 +85,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 #nifty scaffolding
 gem "nifty-generators", :group => :development
-
-#group :production, :subtest do
-  #gem 'le' 
   
 #end
 # To use Jbuilder templates for JSON
