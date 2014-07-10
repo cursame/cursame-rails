@@ -110,8 +110,6 @@ class ApplicationController < ActionController::Base
          @link = 'cursa.me'
        when Rails.env == 'test'
          @link = 'lvh.me:3001'
-       when Rails.env == 'subtest'
-         @link = 'cursa.me'
         else
           @link = 'cursa.me'
          

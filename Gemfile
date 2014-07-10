@@ -49,8 +49,8 @@ group :development do
   gem "rails_best_practices"
 end
 
-group :subtest do
-	gem 'appsignal'
+group :production do
+  gem 'newrelic_rpm'
 end
 
 group :development, :test do
@@ -94,9 +94,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 #nifty scaffolding
 gem "nifty-generators", :group => :development
-
-#group :production, :subtest do
-  #gem 'le' 
   
 #end
 # To use Jbuilder templates for JSON
@@ -116,7 +113,6 @@ gem "active_attr"
 
 #gemas para contenido
 gem "dropbox-sdk", "~> 1.5.1"
-gem "youtube_it"
 gem "mediawiki-gateway"
 gem 'omniauth-dropbox'
 gem "dropbox-api"
