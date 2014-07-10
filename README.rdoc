@@ -78,7 +78,7 @@ Para poder compilar en los serividores de Cúrsame el proceso correcto es:
      sudo service nginx stop
  
    * Después compilas assets con:
-   $ sudo bundle exec rake assets:precompile --trace RAILS_ENV=subtest
+   $ sudo bundle exec rake assets:precompile --trace RAILS_ENV=production
 
   * Si todo salio bien hasta este punto, solamente resta cambiar los 
    permisos de las carpetas ~/cursame/tmp,  ~/cursame/public/uploads
