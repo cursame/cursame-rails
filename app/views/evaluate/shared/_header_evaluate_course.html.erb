@@ -22,7 +22,7 @@
                   <%= link_to "Activas", evaluate_course_path(course), class: ((action == 'index' || action == 'course') ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to "Pasadas", evaluate_course_inactive_path(course), class: (action == 'inactive' ? "active" : " ") %>
+                  <%= link_to "Pasadas", evaluate_course_inactive_path(course), class: (action == 'course_inactive' ? "active" : " ") %>
                 </li>
               </ul>
             </div>

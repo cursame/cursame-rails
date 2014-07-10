@@ -1,1 +1,21 @@
-course_inactive
+<%= render partial: 'evaluate/shared/header_evaluate_course', locals: { course: @course } %>
+<div class="activities-section">
+	<div class="wrapper">
+		<div class="cols-12">
+			<div class="col col-12">
+				<div class="col-inner">
+					<div class="activities-list-section">
+						<% unless @activities.empty? %>
+							<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @activities } %>
+						<% else %>
+							<div class="no-content-section">
+				        <h4>Aún no tienes calificaciones.</h4>
+				        <p>Necesitas estar inscrito en al menos un curso para tener calificaiones.</p>
+				      </div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
