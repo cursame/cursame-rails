@@ -34,7 +34,7 @@ subtest:
 production:
     adapter: postgresql
     host: 50.16.197.169
-    database: cursame
+    database: cursalab
     username: cursame
     password: r8o54q58
     encoding: unicode
