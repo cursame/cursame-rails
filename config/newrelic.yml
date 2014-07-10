@@ -208,14 +208,6 @@ production:
   <<: *default_settings
   monitor_mode: true
 
-# Turn on the agent in production for 24x7 monitoring. NewRelic
-# testing shows an average performance impact of < 5 ms per
-# transaction, you can leave this on all the time without
-# incurring any user-visible performance degradation.
-subtest:
-  <<: *default_settings
-  monitor_mode: true
-
 # Many applications have a staging environment which behaves
 # identically to production. Support for that environment is provided
 # here.  By default, the staging environment has the agent turned on.
