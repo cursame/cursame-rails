@@ -40,13 +40,3 @@ production:
     encoding: unicode
     timeout: 7000
     pool: 5
-
-cursame-test:
-    adapter: postgresql
-    host: 50.16.197.169
-    database: cursame-test
-    username: cursame
-    password: r8o54q58
-    encoding: unicode
-    timeout: 107000
-    pool: 15
