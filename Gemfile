@@ -49,7 +49,7 @@ group :development do
   gem "rails_best_practices"
 end
 
-group :production do
+group :production, :staging do
   gem 'newrelic_rpm'
 end
 
