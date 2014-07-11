@@ -101,42 +101,39 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find(params[:id])
 
-
     if @assignment.response_to_the_evaluations.count != 0
       # con rubros
-
       if @assignment.update_attributes(params[:assignment])
-         @assignment.response_to_the_evaluations.each do |docificate|
-           ###### se actualiza el valor del rubro con respecto a la califiación
-              #### alfredot_rifa_free_pro_forever
-               puts docificate.rub_calification
-               @valor_total = docificate.evaluation_porcentage
-               puts   @valor_total
-               @valor_recibido = docificate.figure
-               puts    @valor_recibido
-               @division = (@valor_recibido)/100.0000
-               puts @division.to_f
-               @resultado =   @division.to_f * @valor_total.to_f
-               puts  @resultado.to_f
-               docificate.rub_calification = @resultado
-               docificate.save
-               puts (docificate.rub_calification).to_f
-         end
-          @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
-          @assignment.accomplishment =  @sum_value_to_accomplishment
-          @assignment.save
-       end
-     else
-       # sin rubros
-       puts (params[:assignment])[:rub_calification].to_f
-       @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
-       @assignment.accomplishment = @assignment.rub_calification
-       @assignment.save
-     end
+        @assignment.response_to_the_evaluations.each do |docificate|
+          ###### se actualiza el valor del rubro con respecto a la califiación
+          #### alfredot_rifa_free_pro_forever
+          @valor_total = docificate.evaluation_porcentage
+          
+          @valor_recibido = docificate.figure
 
+          @division = (@valor_recibido)/100.0000
 
+          @resultado =   @division.to_f * @valor_total.to_f
 
-      respond_to do |format|
+          docificate.rub_calification = @resultado
+          docificate.save
+
+        end
+        @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
+        @assignment.accomplishment =  @sum_value_to_accomplishment
+        @assignment.save
+      end
+    else
+      # sin rubros
+      puts (params[:assignment])[:rub_calification].to_f
+      @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
+      @assignment.accomplishment = @assignment.rub_calification
+      @assignment.save
+    end
+    
+    
+    
+    respond_to do |format|
       if @assignment.save
         format.js
         format.json

@@ -53,6 +53,15 @@ group :production do
   gem 'newrelic_rpm'
 end
 
+group :development, :test do
+  gem "mocha"
+  gem 'rspec-rails'
+
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
+
 gem 'jquery-rails'
 
 #Gem for the comments		
@@ -101,8 +110,6 @@ gem "pdfkit"
 gem "launchy", '~>2.1.2'#, "~> 2.3.0"
 # Gem to create non-persistance objects 
 gem "active_attr"
-
-gem "mocha", :group => :test
 
 #gemas para contenido
 gem "dropbox-sdk", "~> 1.5.1"

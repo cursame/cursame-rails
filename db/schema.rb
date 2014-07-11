@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20140709170238) do
 
   create_table "active_admin_comments", :force => true do |t|
@@ -291,6 +292,15 @@ ActiveRecord::Schema.define(:version => 20140709170238) do
     t.integer  "course_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "evaluations", :force => true do |t|
+    t.string   "qualifying_id"
+    t.string   "qualifying_type"
+    t.integer  "score"
+    t.text     "feedback",        :default => ""
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "events", :force => true do |t|

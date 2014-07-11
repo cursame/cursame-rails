@@ -4,9 +4,12 @@ class Question < ActiveRecord::Base
   has_many :question_assets, :dependent => :destroy
   has_many :assets, :through => :question_assets
 
+  validates :answers,  presence: true
   accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :assets
 
+  attr_accessible :answers, :survey, :content
+  
   def averageAnswer
     answers = self.answers
     size = answers.size
