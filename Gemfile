@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,7 +9,7 @@ gem 'rails', '3.2.1'
 gem 'pg', :groups => [:production]
 gem 'sqlite3'
 #gema para el manejo de las sesiones
-gem 'devise'
+gem 'devise', '2.2.8'
 gem 'json'
 
 #gema para calendario y tablas espcificas
@@ -49,8 +49,7 @@ group :development do
   gem "rails_best_practices"
 end
 
-group :production do
-  gem 'newrelic_rpm'
+group :production, :staging do
 end
 
 group :development, :test do
