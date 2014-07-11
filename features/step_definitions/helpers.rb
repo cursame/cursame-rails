@@ -297,7 +297,7 @@ module CursameHelpers
   #     student: student, course: course, survey: survey, user_survey: user_survey}
   #
   
-  def set_enviroment_for_evaluation
+  def set_enviroment_for_grade
     
     network = add_network()
 

@@ -123,6 +123,10 @@ get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussio
 
   get '/evaluate/survey/:survey_id', :to => 'evaluate#qualifying', :as => :evaluate_survey
   get '/evaluate/survey/response/:id', :to => 'evaluate#user_survey', :as => :evaluate_survey_response
+
+  # POST
+  post 'evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
+
   get '/evaluate/delivery/:delivery_id', :to => 'evaluate#qualifying', :as => :evaluate_delivery
   get '/evaluate/assignment/:id', :to => 'evaluate#assignment', :as => :evaluate_delivery_response
   

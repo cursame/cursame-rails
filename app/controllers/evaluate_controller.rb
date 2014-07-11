@@ -17,8 +17,6 @@ class EvaluateController < ApplicationController
     activities = (deliveries + surveys).sort do 
       |x,y| y.end_date <=> x.end_date
     end
-
-
         
     @today_activities = activities.clone.keep_if do
       |activity|
@@ -35,7 +33,6 @@ class EvaluateController < ApplicationController
       |activity| 
       activity.end_date.to_datetime >= (Date.tomorrow + 1.day)
     end  
-
   end
   
   def course
@@ -128,6 +125,22 @@ class EvaluateController < ApplicationController
 
   def user_survey
   	@user_survey = UserSurvey.find_by_id(params[:id])
+  end
+
+  def response_user_survey
+    feedback = params[:feedback]
+    user_survey_id = params[:id]
+    
+    user_survey = UserSurvey.find_by_id(user_survey_id)
+    
+    user_survey.grade.update_attributes(feedback: feedback)
+
+    respond_to do |format|
+      format.html {
+        redirect_to evaluate_survey_response_path(user_survey_id)
+      }
+    end
+    
   end
 
   def assignment

@@ -66,10 +66,12 @@
 										</div>
                   </div>
                   <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
-                    <form action="">
-											<textarea placeholder="feedback" name="" id="" cols="30" rows="10"></textarea>
-											<input type="submit" value="Enviar">
-										</form>
+					<%= form_tag(evaluate_survey_response_update_path(@user_survey)) do  %>
+					<%= text_field_tag(:feedback, @user_survey.grade.feedback) %>
+					<%=  hidden_field_tag(:id, @user_survey.id)%>
+					<%= submit_tag("Actualizar")%>
+					<%end%>
+					
                   </div>
                 </div>
               </div>
