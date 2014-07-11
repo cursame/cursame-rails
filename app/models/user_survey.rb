@@ -43,6 +43,10 @@ class UserSurvey < ActiveRecord::Base
       answer = Answer.find(response.answer_id)
       correct_answers += 1 if answer.correct
     end
+
+    if (self.grade.nil?)
+      self.grade = Grade.create(score: 0, qualifying: self)
+    end
     
     if (responses.size != 0) then
       evaluation = (correct_answers/responses.size)*100.to_f
