@@ -66,12 +66,16 @@
 										</div>
                   </div>
                   <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
-					<%= form_tag(evaluate_survey_response_update_path(@user_survey)) do  %>
-					<%= text_field_tag(:feedback, @user_survey.grade.feedback) %>
-					<%=  hidden_field_tag(:id, @user_survey.id)%>
-					<%= submit_tag("Actualizar")%>
-					<%end%>
-					
+                    <h5>Escribe un comentario.</h5>
+                    <p>Enviar sugerencias al alumno en como mejorar sus entregas.</p>
+                    <br>
+          					<%= form_tag evaluate_survey_response_update_path(@user_survey) do  %>
+            					<%= text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow" %>
+            					<%= hidden_field_tag :id, @user_survey.id %>
+                      <span class="btn btn-primary input-btn activable">
+                        <%= submit_tag "Enviar comentario", class: "activable"%>
+                      </span>
+          					<% end %>
                   </div>
                 </div>
               </div>

@@ -21,5 +21,10 @@
   <div class="overlay-content">
     <h3><%= survey.name %></h3>
     <p>Calificación Obtenida: <span><%= number_with_precision(response.result.to_s, :precision => 2) %></span></p>
+    <% if response.grade %>
+      <% unless response.grade.feedback.blank? %>
+        <p>Comentarios del profesor: <%= response.grade.feedback %></p>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
