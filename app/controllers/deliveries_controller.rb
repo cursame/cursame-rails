@@ -1,6 +1,4 @@
 class DeliveriesController < ApplicationController
-  # GET /deliveries
-  # GET /deliveries.json
   helper_method :condocourse
   before_filter :filter_protection, :only => [:show, :edit]
   before_filter :protection_to_index, :only => [:index]
@@ -21,7 +19,6 @@ class DeliveriesController < ApplicationController
     end
   end
   
-  ##### manueja todas las tareas del usuario dentro de la red
   def my_deliveries
     deliveries = []
     current_user.courses.each do |c|
@@ -48,7 +45,6 @@ class DeliveriesController < ApplicationController
       format.js
       end
     end
-
   end
 
   def condocourse

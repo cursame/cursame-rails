@@ -136,6 +136,16 @@ window.Notice = function(type, message)  {
 
 $(function() {
 
+  $('.page-sub-navigation a').click(function(event) {
+    var $this = $(this),
+        remote = $this.data('remote');
+
+    if (remote) {
+      $this.closest('ul').find('a').removeClass('active');
+      $this.addClass('active');
+    };
+  });
+
   // Soporte para inputs dentro de labels Firefox
   if($.browser.mozilla) {
     $(document).on('click', 'label.btn.ff', function(e) {
@@ -284,6 +294,7 @@ $(function() {
     $(this).closest('.form_for_edit_wall').slideUp(300);
   });
 });
+
 
 window.paginateWorking = false;
 

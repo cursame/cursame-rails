@@ -1,28 +1,31 @@
-<div class="section-header">
-  <div class="wrapper spaced">
-    <div class="section-header-content">
-
-      <div class="section-header-title">
-        <div class="section-icon">
-          <%= icon('section-califications') %>  
-        </div>
-        <div class="section-title">
-          <h1>Calificaciones</h1>
+<div class="section-header-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-header">
+            <div class="section-header-main">
+              <div class="section-title">
+                <%= link_to icon('section-califications'), califications_path %>
+                <%= link_to califications_path do %>
+                  <h1>Calificaciones</h1>
+                <% end %>
+              </div>
+              <% unless @courses.empty? %>
+                <div class="section-header-actions">
+                  <span class="meta-info">Filtrar: </span>
+                  <select class="course-califications-filter" style="width: 180px;">
+                    <option value="all">Todos los cursos</option>
+                    <% @courses.each do |course|%>
+                      <option value="<%= course.id %>"><%= course.title %></option>
+                    <% end %>
+                  </select>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <% unless @courses.empty? %>
-        <div class="section-header-actions">
-          <span class="meta-info">Filtrar: </span>
-          <select class="course-califications-filter" style="width: 180px;">
-            <option value="all">Todos los cursos</option>
-            <% @courses.each do |course|%>
-              <option value="<%= course.id %>"><%= course.title %></option>
-            <% end %>
-          </select>
-        </div>
-      <% end %>
-    
     </div>
   </div>
 </div>
