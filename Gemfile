@@ -50,7 +50,6 @@ group :development do
 end
 
 group :production, :staging do
-  gem 'newrelic_rpm'
 end
 
 group :development, :test do
