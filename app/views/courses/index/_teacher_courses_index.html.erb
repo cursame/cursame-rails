@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <% if courses.empty? %>
+    <div class="no-content-section">
+      <h4>No hay cursos.</h4>
+    </div>
+  <% end %>
+  <div class="cols-12 courses-list">
+    <%= render partial: 'courses/index/courses_cards_list', locals: { courses: courses, member: member } %>
+  </div>
+  <% if courses.total_entries > COURSES_PER_PAGE %>
+    <%= render partial: 'courses/shared/courses_paginate_button', locals: { page: 2, role: 'teacher', state: 'published' } %>
+  <% end %>
+</div>

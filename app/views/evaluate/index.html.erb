@@ -1,0 +1,74 @@
+<%= render partial: 'evaluate/shared/header_evaluate' %>
+
+<% unless @today_activities.empty? %>
+<div class="activities-section">
+	<div class="wrapper">
+		<div class="cols-12">
+			<div class="col col-12">
+				<div class="col-inner">
+					<div class="section-separator">
+						<div class="section-separator-title">
+							<h6>Actividades para calificar hoy</h6>
+							<i class="tip"></i>
+						</div>
+					</div>
+					<div class="activities-list-section">
+						<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @today_activities } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<% unless @tomorrow_activities.empty? %>
+<div class="activities-section">
+	<div class="wrapper">
+		<div class="cols-12">
+			<div class="col col-12">
+				<div class="col-inner">
+					<div class="section-separator">
+						<div class="section-separator-title">
+							<h6>Actividades para calificar mañana</h6>
+							<i class="tip"></i>
+						</div>
+					</div>
+					<div class="activities-list-section">
+						<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @tomorrow_activities } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<% unless @rest_of_activities.empty? %>
+<div class="activities-section">
+	<div class="wrapper">
+		<div class="cols-12">
+			<div class="col col-12">
+				<div class="col-inner">
+					<div class="section-separator">
+						<div class="section-separator-title">
+							<h6>Actividades para calificar en 3 dias o más</h6>
+							<i class="tip"></i>
+						</div>
+					</div>
+					<div class="activities-list-section">
+						<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @rest_of_activities } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<% if @rest_of_activities.count + @tomorrow_activities.count + @today_activities.count == 0 %>
+	<div class="no-content-section">
+    <h4>No tienes actividades por calificar.</h4>
+    <p>Todas las actividades de tu curso estan calificadas, puedes ver <%= link_to "actividades pasas en la seccion de Pasadas", evaluate_activities_inactive_path %>.</p>
+  </div>	
+<% end %>

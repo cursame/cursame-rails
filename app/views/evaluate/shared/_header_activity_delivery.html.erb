@@ -1,0 +1,40 @@
+<div class="wrapper">
+	<div class="cols-12">
+		<div class="col col-12">
+			<div class="col-inner">
+				<div class="activity-header">
+					<div class="activity-extract">
+						<div class="activity-title">
+							<%= icon("activity-delivery") %>
+							<%= link_to evaluate_delivery_path(delivery) do %>
+					      <h3><%= delivery.title %></h3>
+					    <% end %>
+				    </div>
+					</div>
+					<% if meta_data %>
+						<div class="activity-view-data">
+							<ul>
+								<li>
+									<span class="meta-info">Curso</span>
+									<p><%= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course) %></p>
+								</li>
+								<li>
+									<span class="meta-info">Entregas</span>
+									<p><%= delivery.responses.count %> de <%= course.members_in_courses.count - 1 %></p>
+								</li>
+								<li>
+									<span class="meta-info">Fecha de publicación</span>
+									<p><%= I18n.localize(delivery.publish_date, format: "%e de %B del %Y") %></p>
+								</li>
+								<li>
+									<span class="meta-info">Fecha para entrega</span>
+									<p><%= I18n.localize(delivery.end_date, format: "%e de %B del %Y") %></p>
+								</li>
+							</ul>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -10,25 +10,33 @@
 
   .admin-buttons {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    right: 10px;
+    bottom: 10px;
   }
 
   .profile-avatar {
+    padding: 3px;
+    position: absolute;
+    top: 20px;
+    left: 10px;
     width: 150px;
     height: 150px;
-    position: absolute;
-    left: 10px;
-    top: 20px;
-    padding: 3px;
 
-    img {
-      display: block
+    a {
+      display: block;
     }
   }
 
   .profile-info {
-    padding: 12px 10px 10px 10px;
+    padding: 10px;
+  }
+
+  &:after {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
   }
 }
 
@@ -56,19 +64,12 @@
     a {
       position: relative;
       display: block;
-      padding: 10px 10px 12px 10px;
+      padding: 11px 10px 12px 10px;
 
-      &.active .i {
-        display: block;
+      &.active {
+        padding-bottom: 13px;
+        margin-bottom: -1px;
       }
-    }
-
-    .i {
-      position: absolute;
-      left: 50%;
-      margin-left: -10px;
-      bottom: -10px;
-      display: none;
     }
   }
 }

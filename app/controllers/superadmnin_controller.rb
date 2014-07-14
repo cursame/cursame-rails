@@ -1,3 +1,4 @@
+# coding: utf-8
 class SuperadmninController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:instructions, :masive_mailer]
   #skip_before_filter :authenticate_user!, :only => [:create_super_admin]
@@ -85,7 +86,7 @@ class SuperadmninController < ApplicationController
   def masive_mailer
     @msa = MasiveMailerForSuperAdmin.find_by_key_m(params[:key])
     if @msa == nil
-       puts "no se ha encontraso el mensaje se procese a crearlo"
+
        n = (params[:number]).to_i
        array_sended = []
        @msa_create = MasiveMailerForSuperAdmin.create(key_m: "#{params[:key]}", title: "#{params[:titulo]}" , message: "#{params[:message]}", number_of_users: "#{params[:number]}", array_hash_from_sended: "#{array_sended}") 
@@ -94,21 +95,18 @@ class SuperadmninController < ApplicationController
         
        @user_to_send.each do |uts|
          array_sended.push(uts.id)
-         puts "#{@mailer}"
+
          #mail = Notifier.masive_mailer_for_super_admin(uts,  @msa_create)
          #mail.deliver
        end
         
        ##### mail para pruebas
        #@user_to_send = User.find_by_email("jose_alfredo+232@cursa.me")
-       #puts" mails para preubas #{@user_to_send}"
-       puts "se encola en el proceso de enviado del email"
+       
         @msa_create.delay.delayed_send_mailer(@user_to_send)
 
-       puts "#{array_sended}"
 
     else
-      puts "mensaje encontrado se procedea reenviar a cantidad de usuarios siguiente"
          
           array_sended = []
           str = @msa.array_hash_from_sended
@@ -130,13 +128,10 @@ class SuperadmninController < ApplicationController
         ######  detectar como enviados  
         first_count_selected.each do |sna|
           array_sended.push(sna.id)
-           puts "#{@mailer}"
         end
         ###### se envian los usuarios a proceso de backend
         @msa.delay.delayed_send_mailer(first_count_selected)
 
-        
-        puts "******* Usuarios a los que se envia ********"
         
         ######## se suman los usuarios nuevos y los antiguos
         sended_users = array_sended + new_array_old_things

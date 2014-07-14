@@ -118,6 +118,7 @@ body {
 
   #log_loadding {
     position: absolute;
+    z-index: 15;
     width: 100%;
     left: 0;
     margin-top: 0;
@@ -141,6 +142,7 @@ body {
 }
 
 .wrapper {
+  position: relative;
   width: 960px;
   margin: 0 auto;
   @include clearfix;
@@ -260,6 +262,11 @@ body {
     height: 24px;
   }
 
+  &.avatar-30 {
+    width: 30px;
+    height: 30px;
+  }
+
   &.avatar-38 {
     width: 38px;
     height: 38px;
@@ -273,6 +280,11 @@ body {
   &.avatar-60 {
     width: 60px;
     height: 60px;
+  }
+
+  &.avatar-80 {
+    width: 80px;
+    height: 80px;
   }
 
   &.avatar-150 {
@@ -487,16 +499,18 @@ body {
 /* Sections Pages
 ----------------------------------*/
 .section-header {
+
   .section-header-main {
     padding: 10px;
     @include clearfix;
   }
 
   .section-title {
+    height: 45px;
     float: left;
 
     .i {
-      margin-right: 10px;
+      margin-right: 5px;
     }
 
     h1 {
@@ -511,7 +525,7 @@ body {
   
   .section-header-actions {
     float: right;
-    margin-top: 17px;
+    margin-top: 5px;
   }
 
   @include max-screen(480px) {
@@ -529,6 +543,14 @@ body {
     .section-header-actions {
       display: none;
     }
+  }
+}
+
+.section-sub-header-wrap {
+  margin-bottom: 20px;
+
+  .sub-header {
+    padding: 10px;
   }
 }
 
@@ -591,6 +613,7 @@ body {
   position: absolute;
   left: 0;
   top: -51px;
+  z-index: 15;
   @include transition (top .3s ease-in-out);
   
   .notice-spacer {
@@ -602,7 +625,7 @@ body {
   }
 
   &.active {
-    top: -1px;
+    top: 0px;
   }
 }
 
@@ -710,4 +733,18 @@ body {
 .scrollbar {
   overflow: hidden !important;
   position: relative;
+}
+
+
+.load-more {
+  margin-bottom: 25px;
+}
+
+.va-middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.mta-spcer {
+  padding: 0px 5px;
 }

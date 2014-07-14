@@ -1,8 +1,8 @@
 <%if member.nil?%>
-  <h3>No eres parte del grupo!</h3>
-
+  <!-- <h3>No eres parte del grupo!</h3> -->
+  
 <% elsif !member.accepted %>
-  <h3>No has sido aceptado en el grupo!</h3>
+  <!-- <h3>No has sido aceptado en el grupo!</h3> -->
 
 <% elsif member.owner %>
   <% deliveries_from_course = course.deliveries.sort{ |x,y| x.created_at <=> y.created_at }%>

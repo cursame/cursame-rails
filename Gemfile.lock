@@ -179,6 +179,13 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     handlebars_assets (0.16)
       execjs (>= 1.2.9)
       multi_json
@@ -435,6 +442,7 @@ DEPENDENCIES
   exception_notification (~> 3.0.1)
   geocoder
   google-api-client
+  haml-rails (~> 0.4.0)
   handlebars_assets
   jbuilder
   jquery-fileupload-rails

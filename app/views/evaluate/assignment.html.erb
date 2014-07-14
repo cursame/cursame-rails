@@ -1,0 +1,168 @@
+<% assignment = @assignment %>
+<% delivery = assignment.delivery %>
+<% course = assignment.course %>
+<% user = assignment.user %>
+
+<%= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: delivery, course: course, meta_data: true } %>
+
+<div class="activity-view-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-8">
+        <div class="col-inner">
+          <div class="activity-view">
+
+            <div class="activity-view-main">
+              <div class="activity-view-main-user">
+                <span class="avatar-holder">
+                  <%= avatar('user', '45', 'no', user.id, 'avatar avatar-45', 'no', 'no') %>
+                </span>
+                <div class="activity-view-main-user-state">
+                  <h5><%= user.name %></h5>
+                  <div class="user-meta">
+                    <% if assignment.accomplishment.present? %>
+                      <span>Calificación: <%= assignment.accomplishment %></span>
+                    <% else %>
+                      <span>Sin Calificar</span>
+                    <% end %>
+                    <span class="mta-spcer">·</span>
+                    <span>Entregado: <%= I18n.localize(assignment.created_at, format: "%e de %B del %Y") %></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="evaluate-user-response tabs">
+                <div class="tabs-buttons">
+                  <div class="tab active" data-id-target="response">
+                    Entrega
+                  </div>
+                  <div class="tab" data-id-target="response-evaluate">
+                    Calificar
+                  </div>
+                </div>
+                <div class="tabs-main">
+                  <div id="response" class="activity-response-items tab-content">
+                    <div class="delivery-submited-content">
+                      <div class="response-item">
+                        <span class="meta-info">Alumno:</span>
+                        <p><%= link_to assignment.user.name, show_user_path(assignment.user.personal_url) %></p>
+                      </div>
+                      <div class="response-item">
+                        <span class="meta-info">Titulo:</span>
+                        <p><%= assignment.title%></p>
+                      </div>
+                      <div class="response-item">
+                        <span class="meta-info">Mensaje:</span>
+                        <p><%= assignment.brief_description%></p>
+                      </div>
+                      
+                      <% if assignment.assets.count > 0 || assignment.contents.count > 0 %>
+                        <div class="assets response-item">
+                          <span class="meta-info">Archivos adjuntos:</span>
+                          
+                          <% domain = "http://#{current_network.subdomain}.#{links}" %>
+                          <% assignment.assets.each do |aa|%>
+                            <% @file =  aa.file %>
+                            <% @string_file =  @file.to_s.split('/').last%>
+                            <div id="<%= aa.id %>_file">
+                              <%= link_to truncate( "#{domain}#{aa.file}", :omission => "...", :length => 60), "#{domain}#{aa.file}", :target => '_blank' %>
+
+                            </div>
+                         <%end%>
+                         
+                          <% assignment.contents.each do |as|%>
+                            <% @refer_content = as.content.split('/').last%>
+                            <div id="<%= as.id %>_content">
+                              <%= link_to truncate( as.content, :omission => "...", :length => 60), as.content, :target => '_blank' %>
+                            </div>
+                          <%end%>
+                        
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
+                    <div class="delivery-submited-evaluation-fields" id="accomplishment">
+                      <%= form_for assignment do |assigments_l |%>
+                        <% if assignment.response_to_the_evaluations.count != 0%>      
+                          <div class="evaluation-fields-title">
+                            <h5>Calificación por rubros</h5>
+                            <p>Evalua por los rubros de esta tarea.</p>
+                          </div>
+                          <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
+                            <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
+                          <% end %>
+
+                        <% else %>
+                          <div class="evaluation-fields-title">
+                            <h5>Calificación de la tarea</h5>
+                            <p>Seleccione un porcentaje de 1 a 100 para calificar esta tarea</p>
+                          </div>
+
+                          <div class="homeworkCalf">
+                            <div class="form-group">
+                              <div class="form-group-label">
+                                <%= assigments_l.label :Calificación  %>
+                              </div>
+                              <div class="form-group-main">
+                                <div class="form-unit">
+                                  <%= assigments_l.number_field :rub_calification %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <%end%>
+                        
+                        <div class="delivery-submited-evaluation-footer">
+                          <div class="fl">
+                            <ul class="list-buttons left">
+                              <li>
+                                <span class="btn btn-primary input-btn">
+                                  <%= assigments_l.submit "Calificar tarea"%>
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col col-4">
+        <div class="col-inner">
+          <div class="sidebar-responses">
+            <div class="sidebar-responses-header">
+              <h6>Entregas</h6>
+            </div>
+            <div class="sidebar-responses-main">
+              <% delivery.responses.each do |response| %>
+                <%= link_to evaluate_delivery_response_path(response) do %> 
+                  <div class="sidebar-user-response<%= " active" if assignment.id == response.id %>" >
+                    <span class="avatar-holder">
+                      <%= avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no') %>
+                    </span>
+                    <div class="sidebar-user-response-main">
+                      <h6><%= response.user.name %></h6>
+                      <% if response.accomplishment %>
+                        <span>Calificación: <strong><%= response.accomplishment %></strong></span>
+                      <% else %>
+                        <span>Sin calificar</span>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

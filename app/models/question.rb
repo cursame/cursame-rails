@@ -8,7 +8,7 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :assets
 
-  attr_accessible :answers, :survey, :content
+  # attr_accessible :answers, :survey, :content
   
   def averageAnswer
     answers = self.answers

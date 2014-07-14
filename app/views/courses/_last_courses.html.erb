@@ -1,6 +1,0 @@
-<h1>Últimos cursos:</h1>
-<% current_network.courses.last(3).each do |c| %>
- 	<%= c.title %>
- 	<%= avatar('course', '45', 'no', c.id, "avatar", "no", "no") %>
-<%end%>
-<p><i>Buscalos en cursos a los que no perteneces y únete</i></p>

@@ -141,7 +141,7 @@ window.Notice = function(type, message)  {
       noticeWrapper = notice.closest('#noticce');
 
   noticeWrapper.addClass('active');
-  notice.removeClass('error success').addClass( type ).html( message );
+  notice.removeClass('error success notice').addClass( type ).html( message );
 
   setTimeout(function() {
     noticeWrapper.removeClass('active');
@@ -149,6 +149,16 @@ window.Notice = function(type, message)  {
 };
 
 $(function() {
+
+  $('.page-sub-navigation a').click(function(event) {
+    var $this = $(this),
+        remote = $this.data('remote');
+
+    if (remote) {
+      $this.closest('ul').find('a').removeClass('active');
+      $this.addClass('active');
+    };
+  });
 
   // Soporte para inputs dentro de labels Firefox
   if($.browser.mozilla) {
@@ -300,6 +310,7 @@ $(function() {
     $(this).closest('.form_for_edit_wall').slideUp(300);
   });
 });
+
 
 window.paginateWorking = false;
 

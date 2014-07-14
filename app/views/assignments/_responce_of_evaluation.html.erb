@@ -1,19 +1,19 @@
-<div class="homeworkCalf">
 
+<div class="evaluation-area">
   <div class="form-group">
     <div class="form-group-label">
-      <%= f.label :nombre_del_criterio %>
+      <%= f.label "Rubro:" %> 
     </div>
-    <div class="form-group-main">
+    <div class="form-group-main rubro">
       <div class="form-unit">
-        <%= f.text_field  :name %></br>
+        <h5><%= f.object.name %></h5>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="form-group-label">
-      <%= f.label :comentarios_de_evaluación_por_rubro %>     
+      <%= f.label "Comentarios:" %>     
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -24,13 +24,12 @@
 
   <div class="form-group">
     <div class="form-group-label">
-      <%= f.label :porcentaje_asignado %>
+      <%= f.label "Porcentaje obtenido:" %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
-        <%= f.select :figure,(1..100)%>
+        <%= f.select :figure, (1..100)%>
       </div>
     </div>
   </div>
-
 </div>

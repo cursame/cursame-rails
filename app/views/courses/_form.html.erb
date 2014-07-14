@@ -85,7 +85,7 @@
               <%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx : @course.avatar.profile, :id =>"img_prev_course_avatar", :class => "avatar avatar-150" )%>
             </span>  
             <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
-              <%= create ? 'Subir' : 'Actualizar' %> imagen del curso
+              Avatar del curso
               <span class="hide-input-file">
                 <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
               </span>
@@ -97,7 +97,7 @@
               <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
             </span>
             <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
-              <%= create ? 'Subir' : 'Actualizar' %> imagen de cabecera
+              Imagen de cabecera
               <span class="hide-input-file">
                 <%= f.file_field :coverphoto , :onchange => "readURL(this,'img_prev_course_header',168);"%>
               </span>

@@ -1,0 +1,37 @@
+<div class="section-header-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="section-header">
+            <div class="section-header-main">
+              <div class="section-title">
+                <%= link_to icon('section-community'), network_comunity_path %>
+                <%= link_to network_comunity_path do %>
+                  <h1>Comunidad</h1>
+                <% end %>
+              </div>
+              <div class="section-header-actions">
+                <%= render partial: "/community/shared/users_search" %>
+              </div>
+            </div>
+            <div class="page-sub-navigation">
+              <% action = params[:action] %>
+              <ul>
+                <li>
+                  <%= link_to "Todos", network_comunity_path, class: (action == 'all' ? "active" : " ") %>
+                </li>
+                <li>
+                  <%= link_to "Estudiantes", community_students_path, class: (action == 'students' ? "active" : " ") %>
+                </li>
+                <li>
+                  <%= link_to "Profesores", community_teachers_path, class: (action == 'teachers' ? "active" : " ") %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

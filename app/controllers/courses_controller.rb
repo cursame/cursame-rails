@@ -1,80 +1,81 @@
 # -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
-  # GET /courses
-  # GET /courses.json
   before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   filter_access_to :show
-
   before_filter :course_activated, :only => [:show, :about, :members, :library]
 
   def index
-    
-    @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
-    ##### creamos el registro de los usuarios de un curso ######
     @member = MembersInCourse.new
-    #alfredot_rifa_free_pro_forever
+    case current_role
+      when "teacher"
+        @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+      when "student"
+        @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+    end
+
     respond_to do |format|
-      format.html {render stream: true}
+      format.html { render stream: true}
       format.json { render json: @courses }
     end
-
-  end
-  
-  def my_courses
-     @member = MembersInCourse.new
-     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
-    respond_to do |format|
-      format.js
-    end
-
   end
 
-  def all_courses
+  def pending
     @member = MembersInCourse.new
-     @courses = Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true).search(params[:search])
+    @courses = student_pending_requests.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+
     respond_to do |format|
-      format.js 
+      format.html { render 'courses/pending/pending' }
     end
   end
 
-  def my_old_courses
-   @member = MembersInCourse.new
-   @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal'), :active_status => false).search(params[:search])
-   respond_to do |format|
-      format.js 
+  def all
+    @member = MembersInCourse.new
+    @courses = network_courses_not_subscribed.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+
+    respond_to do |format|
+      format.html { render 'courses/all_courses' }
     end
   end
-   
 
-  def operator_courses(typed = 'normal')
-    case 
-      when typed == 'inverse'
-          #### coloca los cursos a los que no pertenezco
-          comparative_courses = []
-          course_in_network = []
-    
-        ####### obtiene los ids de lo que pertenezco y lo que no y
-          current_user.courses.each do |c|
-            comparative_courses.push(c.id)
-          end
-    
-          current_network.courses.each do |cs|
-             course_in_network.push(cs.id)
-          end
-    
-          ids = course_in_network - comparative_courses
+  def unpublished
+    @member = MembersInCourse.new
+    @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)    
 
-          #puts "******************#{comparative_courses}"
-          #puts "******************#{course_in_network}"
-          #puts "#{ids}"
-       when typed == 'normal'
-          ### coloca los ids de los cursos para comparacion
-          comparative_courses = []
-          current_user.courses.each do |c|
-            comparative_courses.push(c.id)
-          end
-          ids = comparative_courses
+    respond_to do |format|
+      format.html { render 'courses/unpublished_courses' }
+    end
+  end
 
+  def paginate_ajax
+    @user_role = params[:role]
+    page = params[:page]
+    @state = params[:state]
+    @member = MembersInCourse.new
+    @next_page = page.to_i + 1
+
+    case @user_role
+      when 'teacher'
+        case @state
+          when 'published'
+            courses_raw = teacher_published_courses
+          when 'unpublished'
+            courses_raw = teacher_unpublished_courses
+          end
+      when 'student'
+        case @state
+          when 'subscribed'
+            courses_raw = student_subscribed_courses
+          when 'not_subscribed'
+            courses_raw = network_courses_not_subscribed
+          when 'subscribe_requests'
+            courses_raw = student_pending_requests
+        end
+    end
+
+    @courses = courses_raw.paginate(per_page: COURSES_PER_PAGE, page: page)
+
+    respond_to do |format|
+      format.js { render 'courses/ajax/courses_paginate_ajax' }
     end
   end
 
@@ -89,16 +90,13 @@ class CoursesController < ApplicationController
       format.js 
     end
   end
-  # GET /courses/1
-  # GET /courses/1.json
   
   def statistics
     @course = Course.find(params[:id])   
   end
 
   def show  
-    @course = Course.find(params[:id])
-    
+    @course = Course.find(params[:id])  
     @member = obtainMember(@course.id,current_user.id)
 
     if @member.nil?
@@ -217,9 +215,7 @@ class CoursesController < ApplicationController
            @miembro = MembersInCourse.where(course_id = @course.id).first
            @miembro.owner == true
            @miembro.save 
-           puts "se le ha agregado un owner al curso"
         else
-           puts "este curso tiene owner"
 
         end
         format.html { redirect_to course_path(@course.id) }
@@ -366,10 +362,10 @@ class CoursesController < ApplicationController
           #   format.json { render json: @course }
           # end
         else
-         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+         redirect_to courses_path, :notice => "No has sido aceptado en este curso."
         end
       else
-          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+          redirect_to courses_path, :notice => "No has sido aceptado en este curso."
       end
     end
   end
@@ -653,7 +649,6 @@ class CoursesController < ApplicationController
     page = (params[:page]).to_i
     per_page = (params[:per_page]).to_i
     @date = getActivities((page * per_page), ((page * per_page) + per_page), id)
-    puts @date
 
 
     # @date = simple
@@ -919,7 +914,6 @@ class CoursesController < ApplicationController
       }
     end
 
-    puts 
     respond_to do |format|
       format.js
     end
@@ -948,13 +942,9 @@ class CoursesController < ApplicationController
 
   def course_survey_actdepot
     @survey = Survey.find(params[:id])
-    puts "#{@survey.publish_date}"
-    puts "#{@survey.end_date}"
-    puts "#{@survey.state}"
 
     @responces = @survey.user_surveys
     @survey_replies = Array.new
-    p @survey
 
     @responces.each do |survey_reply|
       user = User.find(survey_reply.user_id)
@@ -988,7 +978,6 @@ class CoursesController < ApplicationController
         if @course.active_status == true
              @course.active_status = 2
              @course.save
-             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
              @course.members_in_courses.each do |co|
                co.active_status = 2
                co.save
@@ -1000,7 +989,6 @@ class CoursesController < ApplicationController
                 co.active_status = 1
                 co.save
               end
-             puts "ha sido guardado en el sistema el estatus del curso (#{@course.active_status})"
 
         end
 

@@ -6,6 +6,7 @@
 }
 
 .i-home-w { width: 16px; height: 16px; background-position: 0 0; }
+.i-evaluate-w { width: 16px; height: 16px; background-position: -111px -68px; }
 .i-homeworks-w { width: 16px; height: 16px; background-position: 0 -15px; }
 .i-questionaries-w { width: 16px; height: 16px; background-position: 0 -34px; }
 .i-discussions-w { width: 16px; height: 16px; background-position: -17px 0; }
@@ -39,15 +40,16 @@
 .i-course-new-publication { width: 16px; height: 16px; background-position: -104px -105px; vertical-align: -4px; }
 .i-back-blue { width: 10px; height: 8px; background-position: -58px -84px; }
 .i-checked-16 { width: 16px; height: 16px; background-position: -73px -84px; }
-.i-section-courses { width: 60px; height: 60px; background-position: -184px -409px; }
-.i-section-surveys { width: 60px; height: 60px; background-position: -62px -409px; }
-.i-section-discussions { width: 60px; height: 60px; background-position: -123px -409px; }
-.i-section-community { width: 60px; height: 60px; background-position: -62px -470px; }
-.i-section-deliveries { width: 60px; height: 60px; background-position: -1px -409px; }
-.i-section-califications { width: 60px; height: 60px; background-position: -1px -470px; }
+.i-section-courses { width: 45px; height: 45px; background-position: -133px 0; }
+.i-section-surveys { width: 45px; height: 45px; background-position: -133px -46px; }
+.i-section-discussions { width: 45px; height: 45px; background-position: -133px -92px; }
+.i-section-community { width: 45px; height: 45px; background-position: -133px -138px; }
+.i-section-deliveries { width: 45px; height: 45px; background-position: -133px -184px; }
+.i-section-califications { width: 45px; height: 45px; background-position: -133px -230px; }
 .i-section-comments { width: 60px; height: 60px; background-position: -123px -470px; }
 .i-section-chat { width: 60px; height: 60px; background-position: -184px -470px; }
 .i-section-statistics { width: 60px; height: 60px; background-position: -184px -531px; }
+.i-section-evaluate { width: 45px; height: 45px; background-position: -243px -38px; }
 .i-settings { width: 16px; height: 16px; background-position: -85px -124px; } 
 .i-leave-course { width: 12px; height: 12px; background-position: -101px -3px; }
 .i-edit-12 { width: 12px; height: 12px; background-position: -117px -3px; }
@@ -105,6 +107,12 @@
 .i-philosophy { width: 32px; height: 32px; background-position: -245px -446px; vertical-align: -9px; }
 .i-objectives { width: 32px; height: 32px; background-position: -244px -483px; vertical-align: -9px; }
 .i-sub-nav-tip { width: 21px; height: 10px; background-position: -93px -84px; }
+.i-lock { width: 12px; height: 12px; background-position: -103px -92px; }
+.i-public { width: 12px; height: 12px; background-position: -118px -92px; }
+.i-drop-arrow { width: 7px; height: 10px; background-position: -70px -38px; }
+.i-check {	width: 9px; height: 7px; background-position: -58px -40px; }
+.i-activity-survey { width: 24px; height: 24px; background-position: -245px -538px; }
+.i-activity-delivery { width: 24px; height: 24px; background-position: -245px -513px; }
 
 /* File Types Icons */
 .i-file-type-dimension { width: 31px; height: 37px; }

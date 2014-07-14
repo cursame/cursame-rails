@@ -23,8 +23,6 @@ class Survey < ActiveRecord::Base
   validates_presence_of :questions
   validates_presence_of :user
 
-
-
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
 
@@ -107,7 +105,6 @@ class Survey < ActiveRecord::Base
     end
 
     self.save!
-    puts "#{self.state}"
 
   end
 
@@ -173,11 +170,14 @@ class Survey < ActiveRecord::Base
         mail = Notifier.new_survey_notification(users,self)
         mail.deliver
       rescue => ex
-        puts 'error al enviar mail'
       ensure
         ActiveRecord::Base.connection.close
       end
     }
+  end
+
+  def responses
+    user_surveys
   end
 
 end

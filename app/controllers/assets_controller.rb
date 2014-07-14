@@ -43,8 +43,6 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.new(params[:asset])
     @formId = params[:form_id]
-    puts '-------------------------------------'
-    puts @formId
     @asset.save!
     respond_to do |format|
       format.js

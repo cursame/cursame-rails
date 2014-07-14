@@ -1,0 +1,71 @@
+<% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
+<% if @correspond %>
+  <% if @correspond.accepted && @correspond.owner %>
+    <div class="dropdown-wrap">
+      <div class="dropdown-pull btn btn-secondary btn-small">
+        <%= icon 'drop-arrow' %>
+      </div>
+      <div class="dropdown-v left" style="left: -8px;">
+        <i class="tip"></i>
+        <ul>
+          <li>
+            <%= link_to edit_course_path(course) do %>
+              Editar curso
+            <% end %>
+          </li>
+          <li>
+            <div id="usk_<%=@correspond.id%>">
+              <%= link_to course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete do %>
+                Borrar curso
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <% if @correspond.accepted && ! @correspond.owner %>
+    <div class="dropdown-wrap">
+      <div class="dropdown-pull btn btn-secondary btn-small">
+        Estas inscrito <%= icon 'drop-arrow' %>
+      </div>
+      <div class="dropdown-v left">
+        <i class="tip"></i>
+        <ul>
+          <li>
+            <div id="uik_<%= @correspond.id %>"> 
+              <%= link_to @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true do %>
+                Abandonar curso
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <% if ! @correspond.accepted %>
+    <div class="btn btn-disabled btn-small">
+      Solicitud enviada
+    </div>
+  <% end %>
+<% else %>
+  <% if course.public_status == "Private" %>
+    <%= form_for( member, :remote => true ) do |f| %>
+      <%= f.hidden_field :user_id,:value => current_user.id %>
+      <%= f.hidden_field :course_id, :value => course.id %>
+      <%= f.hidden_field :accepted, :value => 0 %> 
+      <span class="btn btn-primary input-btn btn-small">
+        <%= f.submit "Enviar solicitud" %>
+      </span>
+    <% end %>
+  <% else %>
+    <%= form_for( member, :remote => true ) do |f| %>
+      <%= f.hidden_field :user_id,:value => current_user.id %>
+      <%= f.hidden_field :course_id, :value => course.id %>
+      <%= f.hidden_field :accepted, :value => 1 %>
+      <span class="btn btn-primary input-btn btn-small">
+        <%= f.submit "Inscribirse" %>
+      </span>
+    <% end %>
+  <% end %>
+<% end %>

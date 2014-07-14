@@ -139,3 +139,195 @@
     }
   }
 }
+
+.section-separator {
+  margin-bottom: 20px;
+
+  .section-separator-title {
+    padding: 5px 10px;
+    position: relative;
+    @include inline-block;
+  }
+
+  .tip {
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    width: 25px;
+    height: 9px;
+    margin-left: -12px;
+  }
+}
+
+.activities-list-section {
+  margin-bottom: 20px;
+
+  .activities-list-section-header {
+    padding: 15px 10px;
+  }
+
+  .activity-item {
+    padding: 20px 10px;
+
+    .activity-item-icon {
+      float: left;
+    }
+
+    .activity-item-desc {
+      margin-left: 34px;
+    }
+  }   
+}
+
+.activity-header {
+  margin-bottom: 20px;
+
+  .activity-extract {
+    padding: 15px 10px;
+    @include clearfix; 
+  }
+
+  .activity-title {
+    float: left;
+
+    a {
+      float: left;
+    }
+
+    .i {
+      float: left;
+      margin-right: 5px;
+    }
+  }
+
+  .activity-actions {
+    float: right;
+    margin-top: 2px;
+  }
+
+  .activity-view-data {
+    @include clearfix;
+
+    ul li {
+      float: left;
+      padding: 4px 10px 7px 10px;
+    }
+  }
+}
+
+.activity-view {
+
+  .view-header {
+    padding: 10px;
+  }
+
+  .activity-view-main-user {
+    padding: 15px 10px;
+    @include clearfix;
+
+    .avatar-holder {
+      float: left;
+    }
+
+    .activity-view-main-user-state {
+      margin: 3px 0 0 55px;
+
+      h5 {
+        @include ellipsis();
+      }
+    }
+  }
+
+  .evaluate-user-response {
+    .tabs-buttons {
+      @include clearfix;
+
+      .tab {
+        margin: 0 0 -1px 10px;
+        float: left;
+        padding: 9px 19px;
+      }
+    }
+
+    .tab-content {
+      padding: 10px;
+    }
+
+    .activity-response-items {
+      .response-item {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .activity-response-evaluate {
+    .delivery-submited-evaluation-footer {
+      @include clearfix;
+    }
+  }
+
+  .evaluation-fields-title {
+    margin: 10px 0;
+  }
+
+  .evaluation-area {
+    padding: 10px;
+    margin-bottom: 10px;
+
+    .rubro h5 {
+      padding-top: 7px;
+    }
+  }
+}
+
+.activity-responses-list {
+  .activity-response {
+    padding: 10px;
+    @include clearfix;
+
+    .activity-response-avatar {
+      float: left;
+      height: 80px;
+    }
+
+    .activity-response-main {
+      display: table;
+      height: 80px;
+      margin-left: 90px;
+    }
+  }
+}
+
+.sidebar-responses {
+
+  .sidebar-responses-header {
+    padding: 5px 10px;
+  }
+
+  .sidebar-user-response {
+    padding: 10px;
+    @include clearfix;
+
+    .avatar-holder {
+      float: left;
+    }
+
+    .sidebar-user-response-main {
+      margin-left: 35px;
+      margin-top: -3px;
+    }
+
+    h6 {
+      margin-bottom: -6px;
+      @include ellipsis();
+    }
+
+    span {
+      display: block;
+    }
+
+    &.active {
+      margin-left: -1px;
+    }
+  }
+}

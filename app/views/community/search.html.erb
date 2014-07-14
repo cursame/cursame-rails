@@ -1,0 +1,27 @@
+<%= render partial: 'community/shared/community_header' %>
+<div class="section-sub-header-wrap">
+	<div class="wrapper">
+		<div class="cols-12">
+			<div class="col col-12">
+				<div class="col-inner">
+					<div class="sub-header">
+						<h4>Busqueda: <%= @query %></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wrapper">
+	<% unless @users.empty? %>
+		<div class="cards-list">
+	    <div class="cols-12">
+	      <%= render partial: 'users/shared/users_cards_list', locals: { users: @users } %>
+	    </div>
+	  </div>
+	<% else %>
+		<div class="no-content-section">
+      <h4>No se encontraron usarios en tu red.</h4>
+	  </div>
+	<% end %>
+</div>

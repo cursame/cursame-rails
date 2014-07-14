@@ -188,7 +188,7 @@ class Delivery < ActiveRecord::Base
   end
 
 
-  def owner?(role,user)
+  def owner?(role, user)
     if role == "admin" || role == "superadmin" then
       return true
     end
@@ -263,11 +263,14 @@ class Delivery < ActiveRecord::Base
               mail = Notifier.new_delivery_notification(users,self)
               mail.deliver          
           rescue => ex
-            puts 'error al enviar mail'
           ensure
             ActiveRecord::Base.connection.close
           end
         }    
+  end
+
+  def responses
+    assignments
   end
 
 end
