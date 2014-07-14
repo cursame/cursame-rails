@@ -1,6 +1,7 @@
 class EvaluateController < ApplicationController
-
   include CoursesUtils
+  include FiltersUtils
+  before_filter :only_teachers
 
   def index
     courses = teacher_published_courses
@@ -36,8 +37,8 @@ class EvaluateController < ApplicationController
   end
   
   def course
-    
     @course = Course.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "Estas tratando de calificar un curso que no te pertenece."} unless @course.owner?(current_role, current_user) 
     
     if @course.nil?
     end
@@ -95,6 +96,7 @@ class EvaluateController < ApplicationController
   
   def course_inactive
     @course = Course.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "Estas tratando de calificar un curso que no te pertenece."} unless @course.owner?(current_role, current_user) 
     
     if @course.nil?
     end
@@ -121,10 +123,19 @@ class EvaluateController < ApplicationController
   def qualifying
     @survey = Survey.find_by_id(params[:survey_id])
     @delivery = Delivery.find_by_id(params[:delivery_id])
+
+    if @survey
+      owner = @survey.owner?(current_role, current_user)
+    elsif @delivery
+      owner = @delivery.owner?(current_role, current_user)
+    end
+    
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless owner
   end
 
   def user_survey
   	@user_survey = UserSurvey.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @user_survey.survey.owner?(current_role, current_user)
   end
 
   def response_user_survey
@@ -137,7 +148,7 @@ class EvaluateController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to evaluate_survey_response_path(user_survey_id)
+        redirect_to evaluate_survey_response_path(user_survey_id), flash: { success: "Comentario enviado correctamente."}
       }
     end
     
@@ -145,6 +156,7 @@ class EvaluateController < ApplicationController
 
   def assignment
   	@assignment = Assignment.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @assignment.delivery.owner?(current_role, current_user)
   end
   
 end

@@ -188,7 +188,7 @@ class Delivery < ActiveRecord::Base
   end
 
 
-  def owner?(role,user)
+  def owner?(role, user)
     if role == "admin" || role == "superadmin" then
       return true
     end

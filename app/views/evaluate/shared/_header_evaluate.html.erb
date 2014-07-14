@@ -12,7 +12,9 @@
                 <% end %>
               </div>
               <div class="section-header-actions">
-                <%= render partial: 'evaluate/shared/evaluate_course_filter' %>
+                <% unless current_user.courses.empty? %>
+                  <%= render partial: 'evaluate/shared/evaluate_course_filter' %>
+                <% end %>
               </div>
             </div>
             <div class="page-sub-navigation">

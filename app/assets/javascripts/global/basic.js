@@ -127,7 +127,7 @@ window.Notice = function(type, message)  {
       noticeWrapper = notice.closest('#noticce');
 
   noticeWrapper.addClass('active');
-  notice.removeClass('error success').addClass( type ).html( message );
+  notice.removeClass('error success notice').addClass( type ).html( message );
 
   setTimeout(function() {
     noticeWrapper.removeClass('active');

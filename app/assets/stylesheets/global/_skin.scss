@@ -429,10 +429,15 @@ h6 {
     font-size: 15px;
     border-bottom: 1px solid transparent;
 
-    &.success, &.notice {
+    &.success {
       background: #75b70c;
       color: #fff;
       border-bottom-color: #578c03; 
+    }
+
+    &.notice {
+      background: #fcf8e3;
+      border-bottom-color: #ddd6b2;
     }
 
     &.error {
