@@ -116,6 +116,7 @@ strong {
 
   #log_loadding {
     background: $primary-color;
+    // @include linear-gradient(50deg, transparent 0%, $primary-color 25%, $primary-color 50%, transparent 100%);
   }
 }
 

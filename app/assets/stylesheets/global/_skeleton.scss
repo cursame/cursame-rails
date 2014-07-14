@@ -121,8 +121,10 @@ body {
     z-index: 15;
     width: 100%;
     left: 0;
+    top: 48px;
     margin-top: 0;
     height: 2px;
+    display: none;
   }
 }
 
@@ -516,7 +518,7 @@ body {
 
     h1 {
       @include inline-block;
-      vertical-align: 22px;
+      vertical-align: 15px;
     }
 
     &.no-icon h1 {
