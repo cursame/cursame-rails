@@ -1,19 +1,19 @@
-<div class="activity-item">
-  <div class="activity-item-icon">
-    <%= icon("activity-survey") %>
-  </div>
-  <div class="activity-item-desc">
-    <%= link_to evaluate_survey_path(activity) do %>
+<%= link_to evaluate_survey_path(activity), class: "activity-item-wrapper" do %>
+  <div class="activity-item">
+    <div class="activity-item-icon">
+      <%= icon("activity-survey") %>
+    </div>
+    <div class="activity-item-desc">
       <h4><%= activity.title %></h4>
-    <% end %>
-    <div class="activity-meta-data">
-      <span>
-        <%= activity.responses.count %> de <%= course.members_in_courses.count %> Contestados
-      </span>
-      <span>·</span>
-      <span>
-        <%= link_to course.title, course_path(course.id) %>
-      </span>
+      <div class="activity-meta-data">
+        <span>
+          <%= activity.responses.count %> de <%= course.members_in_courses.count %> Contestados
+        </span>
+        <span>·</span>
+        <span>
+          <span class="as-link"><%= course.title %></span>
+        </span>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

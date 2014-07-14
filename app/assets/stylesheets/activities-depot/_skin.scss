@@ -150,6 +150,15 @@
     border-radius: $radius $radius 0 ;
   }
 
+  > a:first-child .activity-item {
+    border-top: 0;
+    border-radius: $radius $radius 0 0;
+  }
+
+  > a:last-child .activity-item {
+    border-radius: 0 0 $radius $radius;
+  }
+
   .activity-item {
     border-top: 1px solid $separator-color;
 
@@ -162,8 +171,8 @@
       color: $gray-color;
     }
 
-    &:first-child {
-      border-top: 0;
+    &:hover {
+      background: #fafafa;
     }
   }
 }
