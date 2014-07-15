@@ -70,9 +70,10 @@
                       <h5>Escribe un comentario.</h5>
                       <p>Envia sugerencias al alumno en como mejorar sus entregas.</p>
                       <br>
-            					<%= form_tag evaluate_survey_response_update_path(@user_survey) do  %>
-              					<%= text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow" %>
+            					<%= form_tag evaluate_survey_response_update_path(@user_survey), class: "survey-teacher-feedback-form" do  %>
+              					<%= text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow", required: "required" %>
               					<%= hidden_field_tag :id, @user_survey.id %>
+                        <br><br>
                         <span class="btn btn-primary input-btn activable">
                           <%= submit_tag "Enviar comentario", class: "activable"%>
                         </span>
@@ -119,4 +120,6 @@
     </div>
   </div>
 </div>
-
+<script>
+  $('.survey-teacher-feedback-form').validate();
+</script>
