@@ -137,6 +137,8 @@
   }
 
   .activity-feed {
+    word-break: break-all;
+
     .activity-feed-main {
       h6 {
         font-weight: normal;
