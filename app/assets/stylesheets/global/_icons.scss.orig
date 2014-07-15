@@ -1,0 +1,142 @@
+// Icons
+.i {
+  background: url("/assets/pack.png") no-repeat;
+  vertical-align: middle;
+  @include inline-block;
+}
+
+.i-home-w { width: 16px; height: 16px; background-position: 0 0; }
+.i-homeworks-w { width: 16px; height: 16px; background-position: 0 -15px; }
+.i-questionaries-w { width: 16px; height: 16px; background-position: 0 -34px; }
+.i-discussions-w { width: 16px; height: 16px; background-position: -17px 0; }
+.i-courses-w { width: 16px; height: 16px; background-position: -19px -17px; }
+.i-stats-w { width: 16px; height: 16px; background-position: -18px -37px; }
+.i-calendar-w { width: 16px; height: 16px; background-position: -18px -55px; }
+.i-community-w { width: 16px; height: 16px; background-position: -0px -54px; }
+.i-like-c { width: 12px; height: 12px; background-position: -1px -74px; vertical-align: -2px; } 
+.i-like-c-active { width: 12px; height: 12px; background-position: -18px -74px; vertical-align: -2px; }
+.i-like-c-white { width: 12px; height: 12px; background-position: -59px -69px; vertical-align: -2px; } 
+.i-like-c-white-active { width: 12px; height: 12px; background-position: -73px -69px; vertical-align: -2px; }
+.i-commet-post { width: 16px; height: 16px; background-position: 0 -88px; vertical-align: -5px; }
+.i-discussion-post { width: 16px; height: 16px; background-position: -18px -88px; vertical-align: -5px;}
+.i-delivery-post, .i-depot-tarea { width: 16px; height: 16px; background-position: -37px -89px; vertical-align: -5px; }
+.i-survey-post, .i-depot-examen { width: 16px; height: 16px; background-position: -38px -71px; vertical-align: -5px; }
+.i-comments { width: 14px; height: 14px; background-position: -37px -42px; }
+.i-discusion-publication { width: 52px; height: 52px; background-position: -59px -294px; }
+.i-tarea-publication { width: 52px; height: 52px; background-position: 0 -342px; }
+.i-cuestionario-publication { width: 52px; height: 52px; background-position: 0 -292px; }
+.i-curso-publication { width: 52px; height: 52px; background-position: -58px -350px; }
+.i-upload-asset { width: 19px; height: 16px; background-position: 0 -106px; vertical-align: -3px; }
+.i-youtube-asset { width: 19px; height: 16px; background-position: -42px -106px; vertical-align: -3px; }
+.i-wikipedia-asset { width: 19px; height: 16px; background-position: -63px -106px; vertical-align: -3px; }
+.i-dropbox-asset { width: 19px; height: 16px; background-position: -21px -106px; vertical-align: -3px; }
+.i-youtube-asset-blue { width: 19px; height: 16px; background-position: -42px -124px; vertical-align: -3px; }
+.i-dropbox-asset-blue { width: 19px; height: 16px; background-position: -21px -124px; vertical-align: -3px; }
+.i-wikipedia-asset-blue { width: 19px; height: 16px; background-position: -63px -124px; vertical-align: -3px; }
+.i-upload-asset-blue { width: 19px; height: 16px; background-position: 0 -124px; vertical-align: -3px; }
+.i-public-new-publication { width: 16px; height: 16px; background-position: -85px -105px; vertical-align: -4px; }
+.i-course-new-publication { width: 16px; height: 16px; background-position: -104px -105px; vertical-align: -4px; }
+.i-back-blue { width: 10px; height: 8px; background-position: -58px -84px; }
+.i-checked-16 { width: 16px; height: 16px; background-position: -73px -84px; }
+.i-section-courses { width: 45px; height: 45px; background-position: -133px 0; }
+.i-section-surveys { width: 45px; height: 45px; background-position: -133px -46px; }
+.i-section-discussions { width: 45px; height: 45px; background-position: -133px -92px; }
+.i-section-community { width: 45px; height: 45px; background-position: -133px -138px; }
+.i-section-deliveries { width: 45px; height: 45px; background-position: -133px -184px; }
+.i-section-califications { width: 45px; height: 45px; background-position: -133px -230px; }
+.i-section-comments { width: 60px; height: 60px; background-position: -123px -470px; }
+.i-section-chat { width: 60px; height: 60px; background-position: -184px -470px; }
+.i-section-statistics { width: 60px; height: 60px; background-position: -184px -531px; }
+.i-settings { width: 16px; height: 16px; background-position: -85px -124px; } 
+.i-leave-course { width: 12px; height: 12px; background-position: -101px -3px; }
+.i-edit-12 { width: 12px; height: 12px; background-position: -117px -3px; }
+.i-trash-12 { width: 12px; height: 12px; background-position: -101px -17px; }
+.i-clock-w { width: 12px; height: 12px; background-position: -115px -19px; vertical-align: -2px; }
+.i-calendar-12 { width: 12px; height: 12px; background-position: -107px -126px; }
+.i-profesor-12 { width: 12px; height: 12px; background-position: -106px -141px; }
+.i-activity-messages { width: 20px; height: 20px; background-position: -33px -141px; }
+.i-activity-notifications { width: 20px; height: 20px; background-position: -59px -142px;   }
+.i-friends-12 { width: 12px; height: 12px; background-position: -87px -144px; }
+.i-courses-12 { width: 12px; height: 12px; background-position: -87px -162px; }
+.i-overlay-discussions { width: 60px; height: 60px; background-position: -179px 0; }
+.i-x-close { width: 15px; height: 15px; background-position: -105px -160px; }
+.i-email-12 { width: 12px; height: 12px; background-position: -34px -167px; vertical-align: -3px; }
+.i-twitter-12 { width: 12px; height: 12px; background-position: -52px -167px; vertical-align: -3px; }
+.i-green-checkmark { width: 12px; height: 12px; background-position: -95px -179px; }
+.i-red-x { width: 12px; height: 12px; background-position: -109px -179px; }
+.i-user-settings { width: 20px; height: 20px; background-position: -2px -179px; }
+.i-arrow-gray-right { width: 11px; height: 17px; background-position: -29px -181px; }
+.i-arrow-gray-left { width: 11px; height: 17px; background-position: -42px -181px; }
+.i-logo-cursame { width: 91px; height: 28px; background-position: 0 -205px; }
+.i-w-cross-9 { width: 9px; height: 9px; background-position: -58px -185px; }
+.i-email { width: 22px; height: 22px; background-position: 0 -238px; }
+.i-password { width: 22px; height: 22px; background-position: -26px -238px; }
+.i-support { width: 17px; height: 16px; background-position: -73px -181px; }
+.i-users-gray { width: 12px; height: 12px; background-position: -52px -238px; }
+.i-courses-gray { width: 12px; height: 12px; background-position: -67px -238px; }
+.i-plus-white { width: 13px; height: 13px; background-position: -81px -237px; vertical-align: -2px; }
+.i-play-mini { width: 16px; height: 16px; background-position: -114px -235px; vertical-align: -3px; }
+.i-survey-mini-blue { width: 16px; height: 16px; background-position: -51px -255px; vertical-align: -3px; }
+.i-menu { width: 15px; height: 10px; background-position: -37px -27px; }
+.i-w-cross-9-gray { width: 9px; height: 9px; background-position: -74px -1px; }
+.i-arrow-down-10 { width: 10px; height: 6px; background-position: -57px -29px; }
+.i-stat-users { width: 35px; height: 39px; background-position: -1px -534px; }
+.i-stat-schools { width: 64px; height: 39px; background-position: -48px -534px; }
+.i-stat-states { width: 55px; height: 39px; background-position: -116px -535px; }
+.i-home-testimonials { width: 49px; height: 49px; background-position: -2px -578px; }
+.i-cursame-logo-gray { width: 120px; height: 36px; background-position: -54px -581px; }
+.i-contact-mail { width: 16px; height: 16px; background-position: -59px -50px; }
+.i-contact-phone { width: 16px; height: 16px; background-position: -76px -50px; }
+.i-contact-location { width: 16px; height: 16px; background-position: -93px -50px; }
+.i-follow-fb-white { width: 16px; height: 16px; background-position: -93px -67px; vertical-align: -3px; }
+.i-follow-twitter-white { width: 16px; height: 16px; background-position: -110px -50px; vertical-align: -3px; }
+.i-social-shield { width: 47px; height: 62px; background-position: -113px -344px; }
+.i-happy-face { width: 40px; height: 40px; background-position: -114px -301px; }
+.i-functions { width: 43px; height: 40px; background-position: -185px -593px; } 
+.i-multi-platform { width: 114px; height: 40px; background-position: -1px -633px; }
+.i-info-b { width: 32px; height: 30px; background-position: -3px -262px; }
+.i-m-training { width: 32px; height: 32px; background-position: -125px -615px; vertical-align: -7px; }
+.i-m-implement { width: 32px; height: 32px; background-position: -128px -651px; vertical-align: -7px; }
+.i-m-support { width: 32px; height: 32px; background-position: -167px -651px; vertical-align: -7px; }
+.i-m-endless { width: 32px; height: 32px; background-position: -207px -651px; vertical-align: -7px; }
+.i-vision { width: 32px; height: 32px; background-position: -236px -598px; vertical-align: -9px; }
+.i-mision { width: 32px; height: 32px; background-position: -244px -406px; vertical-align: -9px; }
+.i-philosophy { width: 32px; height: 32px; background-position: -245px -446px; vertical-align: -9px; }
+.i-objectives { width: 32px; height: 32px; background-position: -244px -483px; vertical-align: -9px; }
+.i-sub-nav-tip { width: 21px; height: 10px; background-position: -93px -84px; }
+.i-lock { width: 12px; height: 12px; background-position: -94px -35px; }
+.i-public { width: 12px; height: 12px; background-position: -110px -35px; }
+.i-drop-arrow { width: 8px; height: 10px; background-position: -58px -37px; }
+.i-check {	width: 9px; height: 7px; background-position: -122px -105px; }
+
+/* File Types Icons */
+.i-file-type-dimension { width: 31px; height: 37px; }
+@each $image-type in png, jpg, jpeg, gif, tif, bmp  {
+  .i-type-#{$image-type} {
+    @extend .i-type-image;
+  }
+}
+
+@each $image-type in avi, mp4, mov, wma, mpge, flv, m4v  {
+  .i-type-#{$image-type} {
+    @extend .i-type-video;
+  }
+}
+
+.i-type-image { @extend .i-file-type-dimension; background-position: -179px -38px; }
+.i-type-video { @extend .i-file-type-dimension; background-position: -211px -76px; }
+.i-type-pdf { @extend .i-file-type-dimension; background-position: -179px 0; }
+.i-type-psd { @extend .i-file-type-dimension; background-position: -179px -76px; }
+.i-type-xls, .i-type-xlsx { @extend .i-file-type-dimension; background-position: -179px -114px; }
+.i-type-ppt, .i-type-pptx { @extend .i-file-type-dimension; background-position: -179px -152px; }
+.i-type-txt { @extend .i-file-type-dimension; background-position: -179px -228px; }
+.i-type-doc, .i-type-docx { @extend .i-file-type-dimension; background-position: -179px -190px; }
+.i-type-odt { @extend .i-file-type-dimension; background-position: -179px -266px; }
+.i-type-adp { @extend .i-file-type-dimension; background-position: -211px 0; }
+.i-type-ade { @extend .i-file-type-dimension; background-position: -211px -38px; }
+.i-type-exe { @extend .i-file-type-dimension; background-position: -211px -152px; }
+.i-type-zip, .i-type-rar { @extend .i-file-type-dimension; background-position: -211px -114px; }
+.i-type-iso { @extend .i-file-type-dimension; background-position: -211px -190px; }
+.i-type-dmg { @extend .i-file-type-dimension; background-position: -211px -228px; }
+.i-type-cad { @extend .i-file-type-dimension; background-position: -211px -266px; }
+.i-type-default { @extend .i-file-type-dimension; background-position: -243px 0; }

@@ -2,7 +2,6 @@
 /* Cards Listing
 ----------------------------------*/
 .cards-list {
-  margin: 20px 0;
   @include clearfix;
 
   .card {
@@ -22,6 +21,44 @@
         right: 10px;
       }
     }
+  }
+}
+
+.user-card {
+  margin-bottom: 20px;
+
+  .user-card-main {
+    padding: 10px;
+    position: relative;
+    @include clearfix;
+  }
+
+  .user-card-avatar {
+    float: left;
+    margin-right: 10px;
+  }
+  
+  .user-card-name {
+    height: 80px;
+    display: table;
+    overflow: hidden;
+
+    h5 {
+      display: table-cell;
+    }
+  }
+
+  .user-card-footer {
+    padding: 10px;
+    @include clearfix;
+  }
+
+  .user-actions {
+    float: left;
+  }
+
+  .user-info {
+    float: right;
   }
 }
 

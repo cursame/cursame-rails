@@ -245,7 +245,7 @@ class Course < ActiveRecord::Base
     return owners
   end
 
-  def owner?(role,user)
+  def owner?(role,user)    
     if role == "admin" || role == "superadmin" then
       return true
     end

@@ -18,17 +18,11 @@
             <div class="page-sub-navigation">
               <% action = params[:action] %>
               <ul>
-                <li>
-                  <%= link_to wall_filter_path(:typeforfilter => 'Survey', :responds => 'false'), :remote => true, class: (action == 'my_surveys' ? "active" : " ") do %>
-                    Cuestionarios por contestar
-                    <%= icon 'sub-nav-tip' %>
-                  <% end %>
+                <li class="active">
+                  <%= link_to "Por contestar", wall_filter_path(:typeforfilter => 'Survey', :responds => 'false'), :remote => true, class: (action == 'my_surveys' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to wall_filter_path(:typeforfilter => 'Survey', :responds => 'true'), :remote => true, class: (action == 'about' ? "active" : " ") do %>
-                    Cuestionarios contestados
-                    <%= icon 'sub-nav-tip' %>
-                  <% end %>
+                  <%= link_to "Cuestionarios contestados", wall_filter_path(:typeforfilter => 'Survey', :responds => 'true'), :remote => true, class: (action == 'my_deliveries' ? "active" : " ") %>
                 </li>
               </ul>
             </div>
@@ -38,7 +32,8 @@
     </div>
   </div>
 </div>
-<div class="wrapper sc-margined">
+
+<div class="wrapper">
   <div class="cols-12">
     <div class="col col-12">
       <div class="col-inner">

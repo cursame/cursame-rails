@@ -1,0 +1,11 @@
+var content = '<%= escape_javascript( render( partial: "users/shared/users_cards_list", locals: { users: @community_users } ) )%>';
+$('div.cards-list .cols-12').append( content );
+
+<% if @community_users.current_page > @community_users.num_pages %>
+	var loadMoreContent = '<%= escape_javascript( render( partial: "community/shared/pagination_button", locals: { page: @next_page, role: @role }) )%>';
+	$('div.load-more').html( loadMoreContent );
+<% else %>
+	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: "No hay más usuarios por cargar." } ) )%>';
+	$('div.load-more div.col-inner').html( message )
+<% end %>
+

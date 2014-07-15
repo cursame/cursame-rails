@@ -1,0 +1,21 @@
+<%= render partial: 'evaluate/shared/header_evaluate' %>
+<% unless @activities.empty? %>
+	<div class="activities-section">
+		<div class="wrapper">
+			<div class="cols-12">
+				<div class="col col-12">
+					<div class="col-inner">
+						<div class="activities-list-section">
+							<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @activities } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div class="no-content-section">
+	  <h4>No tienes actividades pasadas.</h4>
+	  <p>No has creado ninguna actividad.</p>
+	</div>
+<% end %>

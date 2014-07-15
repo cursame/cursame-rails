@@ -61,6 +61,7 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
+gem "haml-rails", "~> 0.4.0"
 gem 'jquery-rails'
 
 #Gem for the comments		

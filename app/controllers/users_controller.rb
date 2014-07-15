@@ -2,7 +2,6 @@
 class UsersController < ApplicationController
   layout 'dashboardlayout', :only => [:dashboard]
   skip_before_filter :authenticate_user!, :only => [:upload_users_a]
-  ### manejo de que ven si son amigos
   helper_method :filter_friendship
 
   def show
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
-    #@user_show = !(current_user.id == @user_l.id)
     @user_show = true
     @course = Course.new
     @delivery = Delivery.new
@@ -50,7 +48,6 @@ class UsersController < ApplicationController
       @wall = @user_l.publications.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
     end
 
-    ##### print assets
     @asset = Asset.new
     assets = @delivery.assets.build
 
@@ -84,9 +81,9 @@ class UsersController < ApplicationController
     redirect_to network_comunity_path
   end
 
-  ######## se colocan todas las rutas de para las tabs de show de users #####
   def info
-    @user_l= User.find_by_personal_url(params[:personal_url])
+    @user_l = User.find_by_personal_url(params[:personal_url])
+    redirect_to '/404' if @user_l.nil?
     permisos = Permissioning.find_by_user_id_and_network_id(@user_l.id, current_network.id)
     @role = Role.find_by_id(permisos.role_id)
   end
@@ -119,17 +116,16 @@ class UsersController < ApplicationController
   end
 
   def destroy_user_with_parts
-    user = User.find_by_id params[:id]
-    if !user.nil? && current_user.id == user.id
-      members_in_course = MembersInCourse.find_all_by_user_id user.id
-      unless members_in_course.nil?
-        members_in_course.each { |member_in_course| member_in_course.destroy }
+    @u = User.find(params[:id])
+    @u.destroy
+    @uk = MembersInCourse.where(:user_id => @u.id)
+    if @uk != nil
+      @uk.each do |uk|
+        uk.destroy
       end
-      user.destroy
     end
     redirect_to root_path
   end
-
   def old_courses
     @old_course_for_user = current_user.courses.where(:active_status => false)
     respond_to do |format|
@@ -185,9 +181,6 @@ class UsersController < ApplicationController
 
   def corroborate_url
     @user = User.find_by_personal_url(params[:personal_url])
-    puts '####################'
-    puts @user
-    puts '####################'
 
     if @user == nil
       @url = true
@@ -198,13 +191,11 @@ class UsersController < ApplicationController
   end
 
   def upload_users_a
-    puts "**************A"
     ###### cacha red y usuario para mandar mail de errores ####
     network = Network.find(params[:red])
     user_info = User.find_by_email("info@cursa.me") # Cambiar esto por info@cursa.me
     user_admin = user_info
     t_email = params[:t_email]
-    puts "**************B"
 
     ######### sube el archivo a la carpeta de importación de usuarios #####
     lastFile = Dir.glob("public/imports/import_users_*")
@@ -228,22 +219,14 @@ class UsersController < ApplicationController
     ####### setea las variables del dominio ##########
     domain = params["domain"]
     subdomain = network.subdomain
-    puts "************** c"
-    puts t_email.nil?
+
     if t_email == 'confirmate'
       user_info.import(path,network,user_admin,domain,subdomain)
     else
-      puts "******************"
       user_info.import_for_admin(path,network,user_admin,domain,subdomain)
     end
 
-
-
-    #user_info.import(path,network,user_admin,domain,subdomain)
-
-    #rescue
     @noFile = true
-    #end
     @users = network.users
     respond_to do |format|
       format.html { redirect_to :back}
@@ -257,8 +240,6 @@ class UsersController < ApplicationController
   end
 
   def tour_reciver
-    puts "entrando en la ruta"
-
     case params[:type_route]
     when 'network'
       current_user.tour_network = true

@@ -1,0 +1,17 @@
+<%= render partial: 'community/shared/community_header' %>
+<div class="wrapper">
+	<% unless @network_users.empty? %>
+		<div class="cards-list">
+	    <div class="cols-12">
+	      <%= render partial: 'users/shared/users_cards_list', locals: { users: @network_users } %>
+	    </div>
+	  </div>
+	  <% if @network_users.total_entries > CARDS_PER_PAGE %>
+			<%= render partial: 'community/shared/community_paginate_button', locals: { page: 2, role: 'all' } %>
+		<% end %>
+	<% else %>
+		<div class="no-content-section">
+      <h4>No se encontraron usarios en tu red.</h4>
+	  </div>
+	<% end %>
+</div>

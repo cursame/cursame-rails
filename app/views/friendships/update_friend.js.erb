@@ -1,4 +1,2 @@
-$('#taxk_<%=@f%>').html('')
-$('#taxk_<%=@f%>').html('<%= link_to "Eliminar", friendships_destroy_friend_path(@f), class: "btn btn-small btn-primary" %>');
-
-
+$('div[data-user-id="<%= @user.id %>"]').replaceWith('<%= escape_javascript(render(:partial => "community/shared/user_card", :locals => { f: @user }))%>');
+Notice('success', 'Haz agregado un nuevo amigo.')

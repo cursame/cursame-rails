@@ -1,4 +1,4 @@
-<%= render partial: 'user-header' %>
+<%= render partial: 'users/shared/user_profile_header' %>
 <% unless @user_l.courses.empty? %>
   <div class="wrapper">
     <div class="cols-12">
@@ -15,50 +15,11 @@
     <div class="courses-list">
       <div class="cols-12">
         <% @user_l.courses.each do |course| %>
-          <div class="col col-4">
-            <div class="col-inner">
-              <div class="course">
-                <div class="course-cover">
-                  <div class="course-cover-image">
-                    <%= link_to course_path(course.id) do %>
-                      <% if course.coverphoto.file.nil? %>
-                        <%= image_tag "courses.png", alt: "corse" %>
-                      <% else %>
-                        <%= image_tag course.coverphoto.mosaic %>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-                
-                <div class="course-description">
-                  <%= link_to course_path(course.id) do %>
-                    <h6><%= truncate course.title, :omission => "...", :length => 60 %></h6>
-                  <% end %>
-                  <%= truncate course.silabus, :omission => "...", :length => 60 if course.silabus? %>
-                </div>
-                
-                <div class="course-detail-list">
-                  <div class="course-detail">
-                    <span class="meta-info"><i class="i i-calendar-12"></i> Finaliza:</span>
-                    <% if course.finish_date.present? %>
-                      <p><%= es_current_date("#{course.finish_date.strftime('%B')}", "#{course.finish_date.strftime('%d')}" , "#{course.finish_date.strftime('%Y')}", nil, format = 'latin_string') %></p>
-                    <% end %>
-                  </div>
-                  <div class="course-detail clearfix">
-                    <span class="meta-info"><i class="i i-profesor-12"></i> Profesor:</span>
-                    <% if course.members_in_courses.present? %>
-                      <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| member.user.name }.first %></p>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <%= render partial: 'courses/shared/course_card', locals: { course: course, course_card_footer: false } %>
         <% end %>
       </div>
     </div>
   </div>
-
 <% else %>
   <div class="no-content-section">
     <% if @user_l == current_user %>

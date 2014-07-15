@@ -122,3 +122,190 @@
     font-size: 13px;
   }
 }
+
+.section-separator {
+  text-align: center;
+
+  .section-separator-title {
+    @extend .basic-container-style;
+
+    h6 {
+      text-transform: uppercase;
+      font-size: 11px; 
+      color: $gray-color;
+      font-weight: 600;
+    }
+  }
+
+  .tip {
+    background: url("/assets/pack.png") -79px -40px no-repeat;
+  }
+}
+
+.activities-list-section {
+  @extend .basic-container-style;
+
+  .activities-list-section-header {
+    background: $white;
+    border-radius: $radius $radius 0 ;
+  }
+
+  > a:first-child .activity-item {
+    border-top: 0;
+    border-radius: $radius $radius 0 0;
+  }
+
+  > a:last-child .activity-item {
+    border-radius: 0 0 $radius $radius;
+  }
+
+  .activity-item {
+    border-top: 1px solid $separator-color;
+
+    h4 {
+      color: $global-color;
+    }
+
+    .activity-meta-data {
+      font-size: 12px;
+      color: $gray-color;
+    }
+
+    &:hover {
+      background: #fafafa;
+    }
+  }
+}
+
+.activity-header {
+  @extend .basic-container-style;
+  border-top: 0;
+  border-radius: 0 0 $radius $radius;
+
+  h3 {
+    color: $global-color;
+  }
+
+  .activity-view-data {
+    border-top: 1px solid $separator-color;
+
+    ul li {
+      border-right: 1px solid $separator-color;
+    }
+  }
+}
+
+
+.activity-view {
+  @extend .basic-container-style;
+
+  .view-header {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid $separator-color;
+  }
+
+  .evaluate-user-response {
+    .tabs-buttons {
+      background: #fafafa;
+      @include clearfix;
+
+      .tab {
+        cursor: pointer;
+        border: 1px solid #d9dbde;
+        border-radius: $radius $radius 0 0;
+        color: $primary-color;
+        font-weight: 500;
+
+        &.active {
+          background: $white;
+          border-bottom-color: $white;
+          color: $gray-color;
+        }
+      }
+    }
+
+    .tabs-main {
+      border-top: 1px solid #d9dbde;
+      background: $white;
+      border-radius: 0 0 $radius $radius;
+    }
+  }
+
+  .evaluation-area {
+    border: 1px solid $separator-color;
+    border-radius: $radius;
+  }
+
+  .activity-view-main-user {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+  }
+}
+
+.activity-responses-list {
+  .activity-response {
+    border-top: 1px solid $separator-color;
+
+    .activity-response-main {
+      h5 {
+        color: $global-color;
+      }
+
+      p {
+        color: $gray-color;
+        font-size: 12px;
+      }
+    }
+
+    &:hover {
+      background: #fafafa;
+    }
+  }
+
+  a:first-child .activity-response {
+    border-top: 0;
+  }
+
+  a:last-child .activity-response {
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
+.sidebar-responses {
+  @extend .basic-container-style;
+
+  .sidebar-responses-header {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid $separator-color;
+  }
+
+  .sidebar-user-response {
+    border-top: 1px solid $separator-color;
+
+    h6 {
+      color: $global-color;
+    }
+
+    span {
+      font-size: 12px;
+      color: $meta-color;
+    }
+
+    &.active {
+      background: tint($primary-color, 95%);
+      border-left: 1px solid $primary-color;
+    }
+  }
+
+  .sidebar-responses-main {
+    a:first-child .sidebar-user-response {
+      border-top: 0;
+    }
+
+    a:last-child .sidebar-user-response {
+      border-radius: 0 0 $radius $radius
+    }
+  }
+}

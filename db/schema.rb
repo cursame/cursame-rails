@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20140709170238) do
+ActiveRecord::Schema.define(:version => 20140711173745) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -169,6 +168,17 @@ ActiveRecord::Schema.define(:version => 20140709170238) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
+    t.integer  "asset_id"
+    t.integer  "delivery_id"
+    t.integer  "assignment_id"
+    t.integer  "comment_id"
+    t.integer  "question_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
     t.integer  "contentye_id"
@@ -269,13 +279,6 @@ ActiveRecord::Schema.define(:version => 20140709170238) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "discussion_assets", :force => true do |t|
-    t.integer  "asset_id"
-    t.integer  "discussion_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -292,15 +295,6 @@ ActiveRecord::Schema.define(:version => 20140709170238) do
     t.integer  "course_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "evaluations", :force => true do |t|
-    t.string   "qualifying_id"
-    t.string   "qualifying_type"
-    t.integer  "score"
-    t.text     "feedback",        :default => ""
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -334,6 +328,15 @@ ActiveRecord::Schema.define(:version => 20140709170238) do
     t.boolean  "accepted"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "grades", :force => true do |t|
+    t.integer  "qualifying_id"
+    t.string   "qualifying_type"
+    t.integer  "score"
+    t.text     "feedback",        :default => ""
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "groups", :force => true do |t|

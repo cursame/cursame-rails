@@ -67,7 +67,6 @@ class Notification < ActiveRecord::Base
                owner: owner
              )
           rescue => ex
-            puts 'error al publicar al canal ('+"/notifications/"+user.id.to_s+")"
           ensure
             ActiveRecord::Base.connection.close
           end

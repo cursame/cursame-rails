@@ -1,3 +1,4 @@
+# coding: utf-8
 class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
@@ -6,6 +7,7 @@ class NetworksController < ApplicationController
   before_filter :filter_user_network_wed
   skip_before_filter :filter_user_network_wed, :only => [:network_mask, :new, :create, :awaiting_confirmation, :network_search]
   helper_method :ko_net
+
   def index
     @networks = Network.all
     def network_each
@@ -18,7 +20,6 @@ class NetworksController < ApplicationController
   end
 
   def alertmethod
-    
     respond_to do |format|
       format.html
       format.json
@@ -39,7 +40,6 @@ class NetworksController < ApplicationController
                       ###### validando que la red no sea nula para redirigir
                    if @find_network != nil
                       ####### redirecciona la red
-                      puts "****************** se ha encontrado una red a la cual seras redirigido ************"
                        #render do |page| 
                         # page.js{alertmethod_path} 
                        #end
@@ -47,7 +47,6 @@ class NetworksController < ApplicationController
                    end
                else
                 ####### se deja abierto para los permisos que estan pendientes
-                puts "*************** demasiados *****************"  
              end
         end
       end
@@ -134,18 +133,13 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-            @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
-            puts "----------------------"
-            puts @permissioning
-            puts "----------------------"
-             @permissioning.role_id = "1"
-             @permissioning.save
-         if  @permissioning.save
-           puts "permisos guardados correctamente"
-         else
-           puts "permisos no guardados correctamente"
-         end
-
+        @permissioning = Permissioning.find_by_user_id_and_network_id(@call_user.id ,@network.id)
+        @permissioning.role_id = "1"
+        @permissioning.save
+        if  @permissioning.save
+        else
+        end
+        
         format.json { render json: @network, status: :created, location: @network }
         format.js
       else
@@ -191,73 +185,14 @@ class NetworksController < ApplicationController
   end
   
   def network_search
-   
-     @networks = Network.all
-     network = []
-     
-        @networks.each do |net|
-         @lader = I18n.transliterate("#{net.name}")
-          network.push(
-             { name: "#{net.name}",
-              subdomain: "#{net.subdomain}",
-              simplify: "#{@lader}".downcase!}
-          )
-        end
-     
-   
-     render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback]
-          
-     
-  end
-
-  def network_comunity
-  @user_l= current_user
-  @locals_firends = @user_l.friends(false) + @user_l.friends(true)
-  @friends = @locals_firends.paginate(:per_page => 9, :page => params[:page])
-   respond_to do |f|
-    f.html
-   end
-  end
-
-
-  def all_user_in_network_where_not_my_friends
-  @user_l= current_user
-
-   @a = current_network.users
-
-   @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
-
-   @v = @a - @r
-
-   @friends = @v.paginate(:per_page => 9)
-  respond_to do |f|
-    f.js
-  end
-
-  end
-
-  def paginate_users_based_params
-    case params[:type_in_act].to_s
-      when "my_friends"
-        @user_l= current_user
-        @locals_firends = @user_l.friends(false) + @user_l.friends(true)
-        @friends = @locals_firends.paginate(:per_page => 9, :page => params[:page])
-      when "not_my_friends"
-        @user_l= current_user
-        @a = current_network.users
-        @r = @user_l.friends(false) + @user_l.friends(true) + [current_user]
-        @v = @a - @r
-        @friends = @v.paginate(:per_page => 9, :page => params[:page])
+    @networks = Network.all
+    network = []
+    @networks.each do |net|
+      @lader = I18n.transliterate("#{net.name}")
+      network.push( { name: "#{net.name}", subdomain: "#{net.subdomain}", simplify: "#{@lader}".downcase!})
     end
-
-    @new_page = params[:page].to_i + 1
-    @type = params[:type_in_act].to_s
-    respond_to do |f|
-        f.js
-    end
-        
-      
     
+    render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback] 
   end
   
   def awaiting_confirmation
@@ -340,19 +275,15 @@ class NetworksController < ApplicationController
 ####################################### inicia filtro de survey ##############################################
     
         ##### se accesa a todos los cursos
-          #puts @member
           case 
             ###### se validan las variables que buscamos
              when @responds && @member.owner
-                #puts "owner"
                c.surveys.each do |s|
                 if s.user_surveys.count != 0
-                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
                   responds_true.push(s.id)
                 end
                end
              when @responds && (@member.owner.nil? or !@member.owner)
-              #puts "no owner"
                c.surveys.each do |s|
                  user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
                  if user_survey.count != 0
@@ -366,11 +297,9 @@ class NetworksController < ApplicationController
                     responds_false.push(s.id)
                   end
                 end
-              #puts "no owner"
              when !@responds && @member.owner
               c.surveys.each do |s|
                 if s.user_surveys.count == 0
-                  #puts "#{s.state} #{s.user_surveys.count} #{s.id}"
                   responds_false.push(s.id)
                 end
              end
@@ -393,25 +322,22 @@ class NetworksController < ApplicationController
 
   # sesion expire
    def expire_session
-       puts "se ha ingresado al metodo"
-       @status = user_signed_in?
-       puts "esta logueado es #{@status}"
-       puts "se procede a candelar la session de usuario #{@status}"
-       if @status
-           current_user.online = false
-           current_user.save!
-           PrivatePub.publish_to("/messages/chat_notifications",
-                                  userId: current_user.id,
-                                  online: false
-                                )
-           sign_out(current_user) 
-       end
-       #puts @status
-        respond_to do |format|
-           format.js
-           format.json
-         end
-   end
+     @status = user_signed_in?
+     if @status
+       current_user.online = false
+       current_user.save!
+       PrivatePub.publish_to("/messages/chat_notifications",
+                             userId: current_user.id,
+                             online: false
+                            )
+       sign_out(current_user) 
+     end
 
- 
+     respond_to do |format|
+       format.js
+           format.json
+     end
+   end
+   
+   
 end

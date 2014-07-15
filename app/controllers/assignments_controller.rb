@@ -51,9 +51,6 @@ class AssignmentsController < ApplicationController
     @asset = Asset.new(params[:asset])
     @asset.save!
     @assignment.save!
-      puts "**************"
-      puts "assignment save "
-      puts "**************"
 
      if @assignment.save!
 
@@ -63,11 +60,9 @@ class AssignmentsController < ApplicationController
           @delivery.assets.push(@asset)
         end
        end
-       puts "************************************************************************"
        @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
 
        @delivery_from_assignment = Delivery.find(@assignment.delivery)
-       puts  @delivery_from_assignment
 
        @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
 
@@ -77,8 +72,6 @@ class AssignmentsController < ApplicationController
         @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
-
-        puts "******** se han generado las areas de evaluacion ************"
 
       end
 
@@ -96,8 +89,6 @@ class AssignmentsController < ApplicationController
      end
   end
 
-  # PUT /assignments/1
-  # PUT /assignments/1.json
   def update
     @assignment = Assignment.find(params[:id])
 
@@ -125,27 +116,20 @@ class AssignmentsController < ApplicationController
       end
     else
       # sin rubros
-      puts (params[:assignment])[:rub_calification].to_f
       @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
       @assignment.accomplishment = @assignment.rub_calification
       @assignment.save
     end
-    
-    
-    
-    respond_to do |format|
-      if @assignment.save
-        format.js
-        format.json
-      else
-        format.js
-        format.json
-      end
+
+    url = evaluate_delivery_response_path(@assignment)
+
+    if @assignment.save
+      redirect_to url, flash: { success: "Se ha calificado correctamente la tarea." }
+    else
+      redirect_to url, flash: { error: "Ha ocurrido un error al calificar la tarea." }
     end
   end
 
-  # DELETE /assignments/1
-  # DELETE /assignments/1.json
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy

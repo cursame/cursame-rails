@@ -1,0 +1,11 @@
+var content = '<%= escape_javascript( render( partial: "courses/index/courses_cards_list", locals: { courses: @courses, member: @member } ) )%>';
+$('div.courses-list').append( content );
+
+<% if @courses.current_page < @courses.num_pages %>
+	var loadMoreContent = '<%= escape_javascript( render( partial: "courses/shared/courses_paginate_button", locals: { page: @next_page, role: @user_role, state: @state } ) )%>';
+	$('div.load-more').html( loadMoreContent );
+<% else %>
+	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: "No hay más cursos por cargar." } ) )%>';
+	$('div.load-more div.col-inner').html( message )
+<% end %>
+

@@ -6,3 +6,21 @@
     @extend .basic-container-style;
   }
 }
+
+.user-card {
+  @extend .basic-container-style;
+
+  .user-card-name h5 {
+    vertical-align: middle;
+  }
+
+  .user-card-footer {
+    border-top: 1px solid $separator-color;
+  }
+
+  .user-role {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #999;
+  }
+}
