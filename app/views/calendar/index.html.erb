@@ -19,7 +19,7 @@
               <%= link_to "Mes siguiente &#8594;".html_safe, url_next, :class => "text-link" %>
             </div>
             <div class="calendar-header-current-month">
-              <h1><%= l @date, format: '%B %Y' %></h1>
+              <h1><%= localize @date, format: '%B %Y' %></h1>
             </div>
           </div>
         </div>

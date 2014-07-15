@@ -6,10 +6,10 @@
     <% if current_user.id != @member_it.id %>
       <div id="options_to_<%@member_it.id%>" style="display:block;"> 
         <div class="dropdown-wrap">
-          <div class="dropdown-pull">
-            <span class="btn btn-small btn-secondary"> Editar </span>
+          <div class="dropdown-pull btn btn-small btn-secondary">
+            <%= icon 'drop-arrow' %>
           </div>
-          <div class="dropdown-v right">
+          <div class="dropdown-v left" style="left: -9px;">
             <i class="tip"></i>
             <ul>
               <li>
