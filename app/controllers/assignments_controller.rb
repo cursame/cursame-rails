@@ -27,9 +27,9 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @asset = Asset.new
-     1.times do
-         assets = @assignment.assets.build
-     end
+    1.times do
+      assets = @assignment.assets.build
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +43,8 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
   end
 
+  # TODO: metodo requiere refactoring
+  # TODO: verificar en donde se utiliza este metodo
   # POST /assignments
   # POST /assignments.json
   def create
@@ -50,43 +52,36 @@ class AssignmentsController < ApplicationController
     @assignment.user_id = current_user.id
     @asset = Asset.new(params[:asset])
     @asset.save!
-    @assignment.save!
 
-     if @assignment.save!
+    if @assignment.save
 
-       if(params[:files])
-         params[:files].each do |asset_id|
+      if(params[:files])
+        params[:files].each do |asset_id|
           @asset = Asset.find(asset_id)
           @delivery.assets.push(@asset)
         end
-       end
-       @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+      end
 
-       @delivery_from_assignment = Delivery.find(@assignment.delivery)
+      @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+      @delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-       @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
-
+      @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
         @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
         @response_to_the_evaluation.name = generate_rubres.name
         @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
         @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
-
       end
 
+      @typed = "Assignment"
+      @az    =  @assignment
+      activation_activity
 
-       @typed = "Assignment"
-       @az =  @assignment
-       ####### despues de guardar se crea la notificación de actividad con geo localización
-       activation_activity
-
-
-       if @activity.save
-         redirect_to :back
-       else
-       end
-     end
+      if @activity.save
+        redirect_to :back
+      end
+    end
   end
 
   def update
@@ -99,7 +94,7 @@ class AssignmentsController < ApplicationController
           ###### se actualiza el valor del rubro con respecto a la califiación
           #### alfredot_rifa_free_pro_forever
           @valor_total = docificate.evaluation_porcentage
-          
+
           @valor_recibido = docificate.figure
 
           @division = (@valor_recibido)/100.0000

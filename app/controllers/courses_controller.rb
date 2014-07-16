@@ -7,10 +7,10 @@ class CoursesController < ApplicationController
   def index
     @member = MembersInCourse.new
     case current_role
-      when "teacher"
-        @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-      when "student"
-        @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+    when "teacher"
+      @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+    when "student"
+      @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     end
 
     respond_to do |format|
@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
 
   def unpublished
     @member = MembersInCourse.new
-    @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)    
+    @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
 
     respond_to do |format|
       format.html { render 'courses/unpublished_courses' }
@@ -54,22 +54,22 @@ class CoursesController < ApplicationController
     @next_page = page.to_i + 1
 
     case @user_role
-      when 'teacher'
-        case @state
-          when 'published'
-            courses_raw = teacher_published_courses
-          when 'unpublished'
-            courses_raw = teacher_unpublished_courses
-          end
-      when 'student'
-        case @state
-          when 'subscribed'
-            courses_raw = student_subscribed_courses
-          when 'not_subscribed'
-            courses_raw = network_courses_not_subscribed
-          when 'subscribe_requests'
-            courses_raw = student_pending_requests
-        end
+    when 'teacher'
+      case @state
+      when 'published'
+        courses_raw = teacher_published_courses
+      when 'unpublished'
+        courses_raw = teacher_unpublished_courses
+      end
+    when 'student'
+      case @state
+      when 'subscribed'
+        courses_raw = student_subscribed_courses
+      when 'not_subscribed'
+        courses_raw = network_courses_not_subscribed
+      when 'subscribe_requests'
+        courses_raw = student_pending_requests
+      end
     end
 
     @courses = courses_raw.paginate(per_page: COURSES_PER_PAGE, page: page)
@@ -87,16 +87,16 @@ class CoursesController < ApplicationController
     @courses = current_network.courses.search(docificate_search_changes)
 
     respond_to do |format|
-      format.js 
+      format.js
     end
   end
-  
+
   def statistics
-    @course = Course.find(params[:id])   
+    @course = Course.find(params[:id])
   end
 
-  def show  
-    @course = Course.find(params[:id])  
+  def show
+    @course = Course.find(params[:id])
     @member = obtainMember(@course.id,current_user.id)
 
     if @member.nil?
@@ -124,7 +124,7 @@ class CoursesController < ApplicationController
     @show_accomplishment = params[:show_accom]
     @search = params[:search]
     @id_search = params[:id_search]
-    
+
     @page = params[:page].to_i
     @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, @id_search).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
     if request.xhr?
@@ -160,7 +160,7 @@ class CoursesController < ApplicationController
       end
     end
     respond_to do |format|
-        format.html{redirect_to course_path(@course)}
+      format.html{redirect_to course_path(@course)}
     end
   end
 
@@ -179,11 +179,11 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
-      if @member.owner == true || current_role == "admin"
-      else
-        redirect_to course_path(@course)
-      end
-      
+    if @member.owner == true || current_role == "admin"
+    else
+      redirect_to course_path(@course)
+    end
+
   end
 
   # POST /courses
@@ -193,17 +193,17 @@ class CoursesController < ApplicationController
     @course.network = current_network
     respond_to do |format|
       if @course.save
-            @member = MembersInCourse.new
-            @member.user_id = current_user.id
-            @member.course_id =  @course.id
-            @member.accepted = true
-            @member.owner = true
-            @member.network_id = current_network.id
-            @member.title = @course.title
-            @member.save
-            @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-            @az =  @course
-            @typed = "Course"
+        @member = MembersInCourse.new
+        @member.user_id = current_user.id
+        @member.course_id =  @course.id
+        @member.accepted = true
+        @member.owner = true
+        @member.network_id = current_network.id
+        @member.title = @course.title
+        @member.save
+        @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
+        @az =  @course
+        @typed = "Course"
         activation_activity
         @courses = current_user.members_in_courses.limit(7)
         @course_count = Course.count
@@ -212,14 +212,14 @@ class CoursesController < ApplicationController
         @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
 
         if @count_course_iam_member_and_owner == 0
-           @miembro = MembersInCourse.where(course_id = @course.id).first
-           @miembro.owner == true
-           @miembro.save 
+          @miembro = MembersInCourse.where(course_id = @course.id).first
+          @miembro.owner == true
+          @miembro.save
         else
 
         end
         format.html { redirect_to course_path(@course.id) }
-        
+
         #current_user.members_in_courses.where(:owner => true).count
         #format.json { render json: @course, status: :created, location: @course }
 
@@ -227,7 +227,7 @@ class CoursesController < ApplicationController
         #format.json { render json: @course.errors, status: :unprocessable_entity }
         #format.html { redirect_to courses_url }
         #format.js
-         format.html { redirect_to :back }
+        format.html { redirect_to :back }
 
 
       end
@@ -239,20 +239,20 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.init_date != nil
-    @idate = @course.init_date.strftime('%Y-%m-%d')     
+      @idate = @course.init_date.strftime('%Y-%m-%d')
     end
     if @course.finish_date != nil
-    @fdate = @course.finish_date.strftime('%Y-%m-%d')    
+      @fdate = @course.finish_date.strftime('%Y-%m-%d')
     end
     respond_to do |format|
       if @course.update_attributes(params[:course])
         @last_date = @course.init_date
         @last_end_date = @course.finish_date
-        if @last_date  == nil 
+        if @last_date  == nil
           @last_date =  @idate
         end
         if @last_end_date == nil
-          @last_end_date = @fdate 
+          @last_end_date = @fdate
         end
         @course.init_date = @last_date
         @course.finish_date = @last_end_date
@@ -293,13 +293,13 @@ class CoursesController < ApplicationController
     end
   end
 
-  
+
   def library
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
     @files = @course.course_files.paginate(:page => 1, :per_page => 10)
   end
-  
+
   def library_pagination
     page = (params[:page]).to_i
     @course = Course.find(params[:id])
@@ -310,7 +310,7 @@ class CoursesController < ApplicationController
       f.js
     end
   end
-  
+
   def about
     id_for_users = []
     @course = current_course
@@ -319,7 +319,7 @@ class CoursesController < ApplicationController
     @owners.each do |o|
       id_for_users.push(o.user_id)
     end
-    
+
     @users = User.where(:id => id_for_users)
     @member = obtainMember(@course.id,current_user.id)
   end
@@ -327,7 +327,7 @@ class CoursesController < ApplicationController
   def evaluation
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
-   
+
     if !@member.nil? then
       if @member.owner.nil? then
         @member.update_attributes(:owner => false)
@@ -362,10 +362,10 @@ class CoursesController < ApplicationController
           #   format.json { render json: @course }
           # end
         else
-         redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+          redirect_to courses_path, :notice => "No has sido aceptado en este curso."
         end
       else
-          redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+        redirect_to courses_path, :notice => "No has sido aceptado en este curso."
       end
     end
   end
@@ -374,14 +374,17 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
+  # TODO: metodo requiere refactoring
+  # TODO: verificar en donde se utiliza este metodo
   def assigment
 
     if params[:assignment]["id"].blank? then
+
       @assignment = Assignment.new(params[:assignment])
       flash[:notice] = "Se ha entregado correctamente una tarea."
 
       begin
-        mixpanel_properties = { 
+        mixpanel_properties = {
           'Course'  => @assignment.course.title.capitalize,
           'Network' => @assignment.course.network.name.capitalize
         }
@@ -391,6 +394,7 @@ class CoursesController < ApplicationController
       end
 
     else
+
       @id = params[:assignment].delete("id")
       @assignment = Assignment.find(@id)
       @assignment.update_attributes(params[:assignment])
@@ -416,7 +420,7 @@ class CoursesController < ApplicationController
     end
 
     begin
-      mixpanel_properties = { 
+      mixpanel_properties = {
         'Network' => Network.find_by_id(@assignment.delivery.network_id).name.capitalize,
         'Course'  => @assignment.course.title.capitalize
       }
@@ -424,29 +428,20 @@ class CoursesController < ApplicationController
     rescue
       puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
     end
-   
-    # @content = Content.new(params[:content])
-    #  @assignment.user_id = current_user.id
-    @assignment.save!
 
-    if @assignment.save! and @id.nil?
-
-      # @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+    if @assignment.save and @id.nil?
 
       @delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-
       @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
-
         @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
         @response_to_the_evaluation.name = generate_rubres.name
         @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
         @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
-
       end
-      #actualizamos los assets del assignment
+
       if(params[:files])
         params[:files].each do |asset_id|
           @asset = Asset.find(asset_id)
@@ -454,13 +449,10 @@ class CoursesController < ApplicationController
         end
       end
 
-
       @typed = "Assignment"
       @az =  @assignment
 
-      ####### despues de guardar se crea la notificación de actividad con geo localización
       activation_activity
-
 
       begin
         if @activity.save
@@ -470,7 +462,6 @@ class CoursesController < ApplicationController
         puts "\e[1;31m[ERROR]\e[0m error getting request location"
         redirect_to :back
       end
-
     end
   end
 
@@ -494,7 +485,7 @@ class CoursesController < ApplicationController
     # Tareas del curso
     @course.deliveries.each do |del|
       assets_deliveries = []
-        
+
       if del.user != nil
         del.assets.each do |b|
           @name = b.file.to_s.split('/').last
@@ -503,78 +494,78 @@ class CoursesController < ApplicationController
                                   pertencenence_to: "tarea#{del.id}" })
         end
 
-        case 
-          when del.user.avatar.blank?
-            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
-          when del.user.avatar == nil
-            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
-          else
-            @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
+        case
+        when del.user.avatar.blank?
+          @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+        when del.user.avatar == nil
+          @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+        else
+          @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
         end
 
         deliveries.push({
-          startDate: del.publish_date,
-          endDate: del.end_date,
-          headline: (("#{del.title}").to_s).delete("\n"),
-          text: (("Tarea: #{del.description}").to_s).delete("\n"),
-          asset: {
-            media: @avatar && @avatar,
-            credit: (("#{del.user.name}").to_s).delete("\n"),
-            caption: (("#{@course.title}").to_s).delete("\n")
-          },
-          compose: {
-            id: del.id,
-            type: 'tarea',
-            title: (("#{del.title}").to_s).delete("\n"),
-            description: (("#{del.description}").to_s).delete("\n"),
-            pertencenence_to: "tarea#{del.id}",
-            state: del.state,
-            assets_integrate: assets_deliveries
-          },
-          assets: assets_deliveries
+                          startDate: del.publish_date,
+                          endDate: del.end_date,
+                          headline: (("#{del.title}").to_s).delete("\n"),
+                          text: (("Tarea: #{del.description}").to_s).delete("\n"),
+                          asset: {
+                            media: @avatar && @avatar,
+                            credit: (("#{del.user.name}").to_s).delete("\n"),
+                            caption: (("#{@course.title}").to_s).delete("\n")
+                          },
+                          compose: {
+                            id: del.id,
+                            type: 'tarea',
+                            title: (("#{del.title}").to_s).delete("\n"),
+                            description: (("#{del.description}").to_s).delete("\n"),
+                            pertencenence_to: "tarea#{del.id}",
+                            state: del.state,
+                            assets_integrate: assets_deliveries
+                          },
+                          assets: assets_deliveries
         })
 
         del.assignments.each do |as|
           assets_assignmentss = []
-           
+
           if as.user != nil
             as.assets.each do |a|
               @name = a.file.to_s.split('/').last
               assets_assignmentss.push({file: a.file,
                                         name: ("#{@name}").delete("\n"),
                                         pertencenence_to: "entrega_tarea#{as.id}"
-                                      })
+                                        })
             end
 
-            case 
-              when as.user.avatar.blank?
-                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-              when as.user.avatar == nil
-                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-              else
-                @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
+            case
+            when as.user.avatar.blank?
+              @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+            when as.user.avatar == nil
+              @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+            else
+              @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
             end
-           
+
             assignmentss.push({
-              startDate: as.created_at,
-              endDate: as.created_at,
-              headline: (("#{as.title}").to_s).delete("\n"),
-              text: (("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
-              asset: {
-                media:@avatar_assignment && @avatar_assignment,
-                credit:(("#{as.user.name}").to_s).delete("\n"),
-                caption:(("#{@course.title}").to_s).delete("\n")
-              },
-              compose: {
-                id: as.id,
-                type: 'entrega_tarea',
-                title: (("#{as.title}").to_s).delete("\n"),
-                description: (("#{as.brief_description}").to_s).delete("\n"),
-                pertencenence_to: "entrega_tarea#{as.id}",
-                state: "none",
-                assets_integrate: assets_assignmentss
-              },
-              assets: assets_assignmentss  #+ contents_assignmentss
+                                startDate: as.created_at,
+                                endDate: as.created_at,
+                                headline: (("#{as.title}").to_s).delete("\n"),
+                                text: (("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
+                                asset: {
+                                  media:@avatar_assignment && @avatar_assignment,
+                                  credit:(("#{as.user.name}").to_s).delete("\n"),
+                                  caption:(("#{@course.title}").to_s).delete("\n")
+                                },
+                                compose: {
+                                  id: as.id,
+                                  type: 'entrega_tarea',
+                                  title: (("#{as.title}").to_s).delete("\n"),
+                                  description: (("#{as.brief_description}").to_s).delete("\n"),
+                                  pertencenence_to: "entrega_tarea#{as.id}",
+                                  state: "none",
+                                  assets_integrate: assets_assignmentss
+                                },
+                                assets: assets_assignmentss  #+ contents_assignmentss
             })
           end
         end
@@ -585,40 +576,40 @@ class CoursesController < ApplicationController
     @course.surveys.each do |survey|
       if survey.user != nil
         case
-          when survey.user.avatar.blank?
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
-          when survey.user.avatar == nil 
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
-          else
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
+        when survey.user.avatar.blank?
+          @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+        when survey.user.avatar == nil
+          @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+        else
+          @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
         end
-        
+
         surveyss.push({
-          startDate: survey.created_at,
-          endDate: survey.created_at,
-          headline: (("#{survey.name}").to_s).delete("\n"),
-          text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
-          asset: {
-            media: @avatar_survery && @avatar_survery,
-            credit: (("#{survey.user.name}").to_s).delete("\n"),
-            caption: (("#{@course.title}").to_s).delete("\n")
-          },
-          compose: {
-            id: survey.id,
-            type: 'examen',
-            title: (("#{survey.name}").to_s).delete("\n"),
-            state: survey.state,
-            pertencenence_to: "entrega_survey#{survey.id}"
-          }          
+                        startDate: survey.created_at,
+                        endDate: survey.created_at,
+                        headline: (("#{survey.name}").to_s).delete("\n"),
+                        text: (("Cuestionario: #{survey.state}").to_s).delete("\n"),
+                        asset: {
+                          media: @avatar_survery && @avatar_survery,
+                          credit: (("#{survey.user.name}").to_s).delete("\n"),
+                          caption: (("#{@course.title}").to_s).delete("\n")
+                        },
+                        compose: {
+                          id: survey.id,
+                          type: 'examen',
+                          title: (("#{survey.name}").to_s).delete("\n"),
+                          state: survey.state,
+                          pertencenence_to: "entrega_survey#{survey.id}"
+                        }
         })
       end
     end
 
     simple.push({
-      startDate: @course.created_at,
-      endDate: @course.created_at,
-      headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
-      text:"Curso nuevo",
+                  startDate: @course.created_at,
+                  endDate: @course.created_at,
+                  headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+                  text:"Curso nuevo",
     })
 
     if counte_fact != 0
@@ -632,15 +623,15 @@ class CoursesController < ApplicationController
       format.html
       format.json {
         render json: {
-                timeline: {
-                  headline: (("#{@course.title}").to_s).delete("\n"),
-                  type: "default",
-                  text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
-                  startDate: "#{@course.init_date}",
-                  date: @date
-                }
-              }
-            }
+          timeline: {
+            headline: (("#{@course.title}").to_s).delete("\n"),
+            type: "default",
+            text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
+            startDate: "#{@course.init_date}",
+            date: @date
+          }
+        }
+      }
     end
   end
 
@@ -656,22 +647,22 @@ class CoursesController < ApplicationController
       format.html
       format.json {
         render json: {
-                timeline: {
-                  headline: (("#{@course.title}").to_s).delete("\n"),
-                  type: "default",
-                  text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
-                  startDate: "#{@course.init_date}",
-                  date: @date
-                }
-              }
-            }
+          timeline: {
+            headline: (("#{@course.title}").to_s).delete("\n"),
+            type: "default",
+            text: (("Linea del tiempo del curso #{@course.title} ").to_s).delete("\n"),
+            startDate: "#{@course.init_date}",
+            date: @date
+          }
+        }
+      }
     end
   end
 
   def activities_depot
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-    
+
     if current_role == 'admin' || current_role == 'superadmin'
       @member.owner = true
     else
@@ -713,7 +704,7 @@ class CoursesController < ApplicationController
     # Tareas del curso
     @course.deliveries.each do |del|
       assets_deliveries = []
-        
+
       if del.user != nil
         del.assets.each do |b|
           @name = b.file.to_s.split('/').last
@@ -722,78 +713,78 @@ class CoursesController < ApplicationController
                                   pertencenence_to: "tarea#{del.id}" })
         end
 
-        case 
-          when del.user.avatar.blank?
-            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
-          when del.user.avatar == nil
-            @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
-          else
-            @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
+        case
+        when del.user.avatar.blank?
+          @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+        when del.user.avatar == nil
+          @avatar = "http://#{current_network.subdomain}.#{links}/assets/#{del.user.image_avatarx}"
+        else
+          @avatar = "http://#{current_network.subdomain}.#{links}#{del.user.avatar.profile}"
         end
 
         deliveries.push({
-          startDate: del.publish_date,
-          endDate: del.end_date,
-          headline: (("#{del.title}").to_s).delete("\n"),
-          text: del.description.to_s.delete("\n"),
-          asset: {
-            media: @avatar && @avatar,
-            credit: (("#{del.user.name}").to_s).delete("\n"),
-            caption: (("#{@course.title}").to_s).delete("\n")
-          },
-          compose: {
-            id: del.id,
-            type: 'tarea',
-            title: (("#{del.title}").to_s).delete("\n"),
-            description: (("#{del.description}").to_s).delete("\n"),
-            pertencenence_to: "tarea#{del.id}",
-            state: del.state,
-            assets_integrate: assets_deliveries
-          },
-          assets: assets_deliveries
+                          startDate: del.publish_date,
+                          endDate: del.end_date,
+                          headline: (("#{del.title}").to_s).delete("\n"),
+                          text: del.description.to_s.delete("\n"),
+                          asset: {
+                            media: @avatar && @avatar,
+                            credit: (("#{del.user.name}").to_s).delete("\n"),
+                            caption: (("#{@course.title}").to_s).delete("\n")
+                          },
+                          compose: {
+                            id: del.id,
+                            type: 'tarea',
+                            title: (("#{del.title}").to_s).delete("\n"),
+                            description: (("#{del.description}").to_s).delete("\n"),
+                            pertencenence_to: "tarea#{del.id}",
+                            state: del.state,
+                            assets_integrate: assets_deliveries
+                          },
+                          assets: assets_deliveries
         })
 
         del.assignments.each do |as|
           assets_assignmentss = []
-           
+
           if as.user != nil
             as.assets.each do |a|
               @name = a.file.to_s.split('/').last
               assets_assignmentss.push({file: a.file,
                                         name: ("#{@name}").delete("\n"),
                                         pertencenence_to: "entrega_tarea#{as.id}"
-                                      })
+                                        })
             end
 
-            case 
-              when as.user.avatar.blank?
-                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-              when as.user.avatar == nil
-                @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
-              else
-                @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
+            case
+            when as.user.avatar.blank?
+              @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+            when as.user.avatar == nil
+              @avatar_assignment = "http://#{current_network.subdomain}.#{links}/assets/#{as.user.image_avatarx}"
+            else
+              @avatar_assignment = "http://#{current_network.subdomain}.#{links}#{as.user.avatar.profile}"
             end
-           
+
             assignmentss.push({
-              startDate: as.created_at,
-              endDate: as.created_at,
-              headline: (("#{as.title}").to_s).delete("\n"),
-              text: (("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
-              asset: {
-                media:@avatar_assignment && @avatar_assignment,
-                credit:(("#{as.user.name}").to_s).delete("\n"),
-                caption:(("#{@course.title}").to_s).delete("\n")
-              },
-              compose: {
-                id: as.id,
-                type: 'entrega_tarea',
-                title: (("#{as.title}").to_s).delete("\n"),
-                description: (("#{as.brief_description}").to_s).delete("\n"),
-                pertencenence_to: "entrega_tarea#{as.id}",
-                state: "none",
-                assets_integrate: assets_assignmentss
-              },
-              assets: assets_assignmentss  #+ contents_assignmentss
+                                startDate: as.created_at,
+                                endDate: as.created_at,
+                                headline: (("#{as.title}").to_s).delete("\n"),
+                                text: (("Tarea entregada: #{as.brief_description}").to_s).delete("\n"),
+                                asset: {
+                                  media:@avatar_assignment && @avatar_assignment,
+                                  credit:(("#{as.user.name}").to_s).delete("\n"),
+                                  caption:(("#{@course.title}").to_s).delete("\n")
+                                },
+                                compose: {
+                                  id: as.id,
+                                  type: 'entrega_tarea',
+                                  title: (("#{as.title}").to_s).delete("\n"),
+                                  description: (("#{as.brief_description}").to_s).delete("\n"),
+                                  pertencenence_to: "entrega_tarea#{as.id}",
+                                  state: "none",
+                                  assets_integrate: assets_assignmentss
+                                },
+                                assets: assets_assignmentss  #+ contents_assignmentss
             })
           end
         end
@@ -805,40 +796,40 @@ class CoursesController < ApplicationController
       if survey.user != nil
 
         case
-          when survey.user.avatar.blank?
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
-          when survey.user.avatar == nil 
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
-          else
-            @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
+        when survey.user.avatar.blank?
+          @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+        when survey.user.avatar == nil
+          @avatar_surveys = "http://#{current_network.subdomain}.#{links}/assets/#{survey.user.image_avatarx}"
+        else
+          @avatar_surveys = "http://#{current_network.subdomain}.#{links}#{survey.user.avatar.profile}"
         end
 
         surveyss.push({
-          startDate: survey.created_at,
-          endDate: survey.created_at,
-          headline: (("#{survey.name}").to_s).delete("\n"),
-          text: "",
-          asset: {
-            media: @avatar_surveys && @avatar_surveys,
-            credit: (("#{survey.user.name}").to_s).delete("\n"),
-            caption: (("#{@course.title}").to_s).delete("\n")
-          },
-          compose: {
-            id: survey.id,
-            type: 'examen',
-            state: survey.state,
-            title: (("#{survey.name}").to_s).delete("\n"),
-            questions_count: survey.questions.count
-          }
+                        startDate: survey.created_at,
+                        endDate: survey.created_at,
+                        headline: (("#{survey.name}").to_s).delete("\n"),
+                        text: "",
+                        asset: {
+                          media: @avatar_surveys && @avatar_surveys,
+                          credit: (("#{survey.user.name}").to_s).delete("\n"),
+                          caption: (("#{@course.title}").to_s).delete("\n")
+                        },
+                        compose: {
+                          id: survey.id,
+                          type: 'examen',
+                          state: survey.state,
+                          title: (("#{survey.name}").to_s).delete("\n"),
+                          questions_count: survey.questions.count
+                        }
         })
       end
     end
 
     simple.push({
-      startDate: @course.created_at,
-      endDate: @course.created_at,
-      headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
-      text:"Curso nuevo",
+                  startDate: @course.created_at,
+                  endDate: @course.created_at,
+                  headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+                  text:"Curso nuevo",
     })
 
     if counte_fact != 0
@@ -875,21 +866,21 @@ class CoursesController < ApplicationController
 
   def course_assignment
     @assignment = Assignment.find(params[:id])
-     respond_to do |format|
-        #format.html
-        format.json
-        format.js
-      end
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
   end
 
   def course_assignment_notif
     @assignment = Assignment.find(params[:id])
-    
-     respond_to do |format|
-        #format.html
-        format.js
-        format.json
-      end
+
+    respond_to do |format|
+      #format.html
+      format.js
+      format.json
+    end
   end
 
   def course_delivery_actdepot
@@ -897,7 +888,7 @@ class CoursesController < ApplicationController
     @assignments  = @delivery.assignments
     @count        = @assignments.count
     @deliveries   = Array.new
-    
+
     @assignments.each do |assign|
       user = User.find(assign.user_id)
 
@@ -937,7 +928,7 @@ class CoursesController < ApplicationController
       format.js
       format.json
     end
-    
+
   end
 
   def course_survey_actdepot
@@ -973,26 +964,26 @@ class CoursesController < ApplicationController
   end
 
   def active_status
-      @course = Course.find(params[:id])
+    @course = Course.find(params[:id])
 
-        if @course.active_status == true
-             @course.active_status = 2
-             @course.save
-             @course.members_in_courses.each do |co|
-               co.active_status = 2
-               co.save
-             end
-        else
-             @course.active_status = 1
-             @course.save
-             @course.members_in_courses.each do |co|
-                co.active_status = 1
-                co.save
-              end
+    if @course.active_status == true
+      @course.active_status = 2
+      @course.save
+      @course.members_in_courses.each do |co|
+        co.active_status = 2
+        co.save
+      end
+    else
+      @course.active_status = 1
+      @course.save
+      @course.members_in_courses.each do |co|
+        co.active_status = 1
+        co.save
+      end
 
-        end
+    end
 
-     if @course.save
+    if @course.save
       # Notificando a todos los usuarios que el curso se desactivo
       @course.users.each do |member|
         Notification.create(:users => [member], :notificator => @course, :kind => 'course_deactivated')
@@ -1003,29 +994,29 @@ class CoursesController < ApplicationController
         format.json
         format.js
       end
-     end
+    end
   end
 
   def edit_delivery_access
     @delivery = Delivery.find(params[:id])
     @data = params[:data]
     @typeo = "delivery"
-     respond_to do |format|
-        #format.html
-        format.json
-        format.js
-      end
+    respond_to do |format|
+      #format.html
+      format.json
+      format.js
+    end
   end
 
   def clone_course_view
     @course = Course.find(params[:id])
     respond_to do |format|
-        format.html
-        # format.json
-        # format.js
+      format.html
+      # format.json
+      # format.js
     end
   end
-   
+
   def clone_course
 
     @course = Course.new(params[:course])
@@ -1033,38 +1024,38 @@ class CoursesController < ApplicationController
     @course.network = current_network
     if @course.save!
 
-    if params[:deliveries] != nil
-      deliveries_to_save = []
+      if params[:deliveries] != nil
+        deliveries_to_save = []
 
-      params[:deliveries].map do |key, value|
-        next if value["id"].blank? || value["id"].nil?
-        valid = { "id" => value["id"], "publish_date" => value["publish_date"], "end_date" => value["end_date"] }
-        deliveries_to_save.push valid
-      end
+        params[:deliveries].map do |key, value|
+          next if value["id"].blank? || value["id"].nil?
+          valid = { "id" => value["id"], "publish_date" => value["publish_date"], "end_date" => value["end_date"] }
+          deliveries_to_save.push valid
+        end
 
-      deliveries_to_save.each do |obj|
-        new_delivery = Delivery.find(obj["id"]).dup
-        new_delivery.state = 'unpublish'
-        new_delivery.publish_date = obj["publish_date"]
-        new_delivery.end_date = obj["end_date"]
-        new_delivery.courses.push(@course)
-        new_delivery.save!
+        deliveries_to_save.each do |obj|
+          new_delivery = Delivery.find(obj["id"]).dup
+          new_delivery.state = 'unpublish'
+          new_delivery.publish_date = obj["publish_date"]
+          new_delivery.end_date = obj["end_date"]
+          new_delivery.courses.push(@course)
+          new_delivery.save!
+        end
       end
-    end
 
       if params[:discussions] != nil
-      params[:discussions].each do |id|
-        new_discussion = Discussion.find(id).dup
-        new_discussion.courses.push(@course)
-        new_discussion.save!
-      end
+        params[:discussions].each do |id|
+          new_discussion = Discussion.find(id).dup
+          new_discussion.courses.push(@course)
+          new_discussion.save!
+        end
       end
 
       if params[:surveys] != nil
         surveys_to_save = []
 
         params[:surveys].map do |key, value|
-          next if value["id"].blank? || value["id"].nil? 
+          next if value["id"].blank? || value["id"].nil?
           valid = { "id" => value["id"], "publish_date" => value["publish_date"], "end_date" => value["end_date"] }
           surveys_to_save.push valid
         end
@@ -1089,31 +1080,31 @@ class CoursesController < ApplicationController
         end
       end
 
-      if params[:course_files] != nil      
-      params[:course_files].each do |id|
-        new_course_file = CourseFile.find(id).dup
-        new_course_file.file = CourseFile.find(id).file
-        new_course_file.save!
-        new_course_id_course_file_id = CourseIdCourseFileId.new
-        new_course_id_course_file_id.course = @course
-        new_course_id_course_file_id.course_file = new_course_file
-        new_course_id_course_file_id.save!
-      end
+      if params[:course_files] != nil
+        params[:course_files].each do |id|
+          new_course_file = CourseFile.find(id).dup
+          new_course_file.file = CourseFile.find(id).file
+          new_course_file.save!
+          new_course_id_course_file_id = CourseIdCourseFileId.new
+          new_course_id_course_file_id.course = @course
+          new_course_id_course_file_id.course_file = new_course_file
+          new_course_id_course_file_id.save!
+        end
       end
     end
 
-    if @course.save 
+    if @course.save
       owner = MembersInCourse.create(:course_id => @course.id, :user_id => current_user.id, :accepted => true, :owner => true, :network_id => current_network.id )
       redirect_to course_path(@course), :notice => "Curso clonado correctamente."
     end
   end
 
-private 
+  private
 
   def obtainMember(course_id, user_id)
     member = MembersInCourse.find_by_course_id_and_user_id(course_id,user_id)
-    
-    if (member.nil?) 
+
+    if (member.nil?)
       superadmin = current_role == "superadmin"
       admin = current_role == "admin"
       if (superadmin || admin)
@@ -1124,7 +1115,7 @@ private
         member.owner = true
         member.network_id = current_network.id
       end
-   
+
     end
     return member
   end

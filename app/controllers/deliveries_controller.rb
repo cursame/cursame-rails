@@ -18,37 +18,37 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
-  
+
   def my_deliveries
     deliveries = []
     current_user.courses.each do |c|
       @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
-       c.deliveries.each do |d|
-         case @member.owner
-            when true
-                if d.assignments.count == 0
-                     deliveries.push(d.id)
-                  end
-              when false
-                  if d.assignments.where(:user_id => current_user.id).count == 0
-                     deliveries.push(d.id)
-                  end
-           end
+      c.deliveries.each do |d|
+        case @member.owner
+        when true
+          if d.assignments.count == 0
+            deliveries.push(d.id)
           end
+        when false
+          if d.assignments.where(:user_id => current_user.id).count == 0
+            deliveries.push(d.id)
+          end
+        end
       end
+    end
     @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-    
+
     respond_to do |format|
       if params[:fo_format].nil?
-      format.html
+        format.html
       else
-      format.js
+        format.js
       end
     end
   end
 
   def condocourse
-   @course = current_course.id
+    @course = current_course.id
   end
 
   # GET /deliveries/1
@@ -60,7 +60,7 @@ class DeliveriesController < ApplicationController
     @asset = Asset.new
 
     1.times do
-        assets = @assignment.assets.build
+      assets = @assignment.assets.build
     end
 
     @validation_member = @delivery.courses
@@ -151,40 +151,15 @@ class DeliveriesController < ApplicationController
   end
 
   def protection_to_index
-       @course = Course.find(params[:id])
-       @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-      if @member
-       if @member.accepted
-          respond_to do |format|
-             format.html # show.html.erb
-             format.json { render json: @course }
-           end
-         else
-          redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+    @course = Course.find(params[:id])
+    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
+    if @member
+      if @member.accepted
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render json: @course }
         end
       else
-        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-      end
-    end
-
-    def filter_protection
-      @delivery = Delivery.find(params[:id])
-      @validation_member = @delivery.courses
-      @delivery.courses.each do |dc|
-        @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
-        if @member
-          break
-        else
-             #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-           end
-         end
-         if @member
-           if @member.accepted
-            respond_to do |format|
-           format.html # show.html.erb
-           format.json { render json: @course }
-         end
-       else
         redirect_to courses_path, :notice => "no has sido aceptado en este curso"
       end
     else
@@ -192,37 +167,62 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  def filter_protection
+    @delivery = Delivery.find(params[:id])
+    @validation_member = @delivery.courses
+    @delivery.courses.each do |dc|
+      @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
+      if @member
+        break
+      else
+        #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+      end
+    end
+    if @member
+      if @member.accepted
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render json: @course }
+        end
+      else
+        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+      end
+    else
+      redirect_to courses_path, :notice => "no has sido aceptado en este curso"
+    end
+  end
+
+
+  # TODO: metodo requiere refactoring
+  # TODO: verificar en donde se utiliza este metodo
   def assigment
     @assignment = Assignment.new(params[:assignment])
     @asset = Asset.new(params[:asset])
 
-    @assignment.save!
+    if @assignment.save
 
-    if @assignment.save!
-     @response_to_the_evaluation = ResponseToTheEvaluation.new
+      @delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-     @delivery_from_assignment = Delivery.find(@assignment.delivery)
-
-     @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
-      @response_to_the_evaluation.name = generate_rubres.name
-      @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-      @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
-      @response_to_the_evaluation.assignment_id = @assignment.id
-      @response_to_the_evaluation.create
+      @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
+        @response_to_the_evaluation = ResponseToTheEvaluation.new
+        @response_to_the_evaluation.name = generate_rubres.name
+        @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
+        @response_to_the_evaluation.assignment_id = @assignment.id
+        @response_to_the_evaluation.save
+      end
     end
-  else
   end
-end
 
   def publish_unpublish_delivery_manualy
     @delivery = Delivery.find(params[:id])
-    
+
     if @delivery.state == 'published'
       @delivery.state = 'unpublish'
       @delivery.end_date = Time.now
       @message = "Se ha despublicado esta tarea."
       @linkik = 'Publicar'
-    
+
     else
       @delivery.state = 'published'
       @delivery.publish_date = Time.now
@@ -230,14 +230,14 @@ end
       @message = "Se ha republicado esta tarea agregando 10 dias desde ahora."
       @linkik = 'Ocultar'
     end
-    
+
     @delivery.save!
 
     if @delivery.save
       respond_to do |format|
-      format.js
+        format.js
+      end
     end
-  end
 
- end
+  end
 end
