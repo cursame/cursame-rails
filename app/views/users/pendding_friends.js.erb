@@ -1,5 +1,5 @@
 <% if @friends.count != 0 %>
-  $('#accesed').html("<%= escape_javascript(render :partial => 'users/friends_tpl', :locals => {:friends => @friends})%>");
+  $('#friends-list-js').html("<%= escape_javascript(render partial: 'users/shared/users_cards_list', locals: {users: @friends})%>");
 <%else%>
-  $('#accesed').html('<div class="no-content-section"><h4>No hay solicitudes de amistad pendientes.</h4></div>')
+  $('#friends-list-js').html('<div class="no-content-section"><h4>No hay solicitudes de amistad pendientes.</h4></div>')
 <%end%>

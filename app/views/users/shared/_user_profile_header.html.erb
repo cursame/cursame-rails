@@ -55,13 +55,13 @@
                   <%= link_to 'Publicaciones', show_user_path(@user_l.personal_url), class: (action == 'show' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to 'Información', user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ") %>
-                </li>
-                <li>
                   <%= link_to 'Cursos', user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ") %>
                 </li>
                 <li>
                   <%= link_to 'Amigos', user_friends_path(@user_l.personal_url), class: (action == 'friends' ? "active" : " ") %>
+                </li>
+                <li>
+                  <%= link_to 'Información', user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ") %>
                 </li>
               </ul>
             </div>
