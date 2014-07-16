@@ -146,7 +146,7 @@ class EvaluateController < ApplicationController
     user_survey = UserSurvey.find_by_id(user_survey_id)
     user_survey.grade.update_attributes(feedback: feedback)
 
-    Notification.create(:users => [user_survey.user], :notificator => user_survey, :kind => 'feedback_on_user_survey')
+    Notification.create(:users => [user_survey.user], :notificator => user_survey.grade, :kind => 'feedback_on_user_survey')
 
     respond_to do |format|
       format.html {
