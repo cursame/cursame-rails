@@ -1,2 +1,2 @@
-$('div[data-user-id="<%= @user.id %>"]').replaceWith('<%= escape_javascript(render(:partial => "community/shared/user_card", :locals => { f: @user }))%>');
+$('div[data-user-id="<%= @user.id %>"]').replaceWith('<%= escape_javascript(render(partial: "users/shared/user_card", locals: { f: @user }))%>');
 Notice('success', 'Haz agregado un nuevo amigo.')
