@@ -168,17 +168,6 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
-  create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
-    t.integer  "asset_id"
-    t.integer  "delivery_id"
-    t.integer  "assignment_id"
-    t.integer  "comment_id"
-    t.integer  "question_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
     t.integer  "contentye_id"
