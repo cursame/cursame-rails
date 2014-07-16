@@ -4,7 +4,7 @@
 <% unless @friends.empty? %>
   <div class="wrapper">
     <div class="cards-list comunity-card-list">
-      <div class="cols-12">
+      <div id="friends-list-js" class="cols-12">
         <%= render partial: 'users/shared/users_cards_list', locals: { users: @friends } %>
       </div>
     </div>
@@ -18,4 +18,7 @@
       <h4>Este usuario no tiene amigos aún.</h4>
     <% end %>
   </div>
+<% end %>
+<% if params[:pending] %>
+<script>$('#pending-friendship-js').trigger('click');</script>
 <% end %>

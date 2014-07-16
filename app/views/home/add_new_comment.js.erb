@@ -7,7 +7,14 @@
 
   <% else #si se tiene que agregar a nivel de los coments %>
     $('div[data-commentable="<%= @publication.id %>"]').find('.publication-comments').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
-    $('div[data-commentable="<%= @publication.id %>"]').find('.new-comment-trigger').val('').height(18);
+    var inputComment = $('div[data-commentable="<%= @publication.id %>"]').find('.new-comment-trigger');
+    inputComment.val('').height(18);
+
+    commentHolder = inputComment.closest('.add-comment');
+
+    commentHolder.removeClass("active");
+    commentHolder.find('.new-comment-actions').hide();
+    commentHolder.find('.comment-author').hide();
 
     if ( $('div.overlay').length ) {
       overlayPositioning( $('div.overlay') );

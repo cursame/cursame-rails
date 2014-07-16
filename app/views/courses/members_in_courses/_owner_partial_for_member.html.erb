@@ -1,25 +1,39 @@
-<% if  current_course.members_in_courses.count > 0 %>
+<% if current_course.members_in_courses.count > 0 %>
   <div class="cards-list comunity-card-list" >
     <div class="cols-12">
       <% current_course.members_in_courses.each do |member| %>
-        <div class="col col-4">
+        <% @member_it = agil_find_user(findX="#{member.user_id}", byX='id') %>
+        <% next if @member_it == current_user %>
+
+        <div class="col col-6" data-user-id="<%= @member_it.id %>">
           <div class="col-inner">
-            <% @member_it = agil_find_user(findX="#{member.user_id}", byX='id') %>
-            <div class="card" id="card<%=member.id%>" >
-              <div class="card-avatar">
-                <%= link_to show_user_path(@member_it.personal_url) do %>
+            <div class="user-card">
+              <div class="user-card-main">
+                <%= link_to show_user_path(@member_it.personal_url), class: 'user-card-avatar' do %>
                   <span class="avatar-holder">
-                    <%= avatar('user', '45', "no", @member_it.id, "avatar", "no", "no") %>        
+                    <%= avatar('user', '150', 'no', @member_it.id, 'avatar avatar-80', 'no', 'no') %>
                   </span>
                 <% end %>
+                <div class="user-card-name">
+                  <h5>
+                    <% if @member_it.name != nil%>
+                      <%= link_to @member_it.name, show_user_path(@member_it.personal_url) %>
+                    <% end %>
+                  </h5>
+                </div>
               </div>
-
-              <div class="card-main">
-                <%= link_to truncate(@member_it.name, :omission => "...", :length => 35), show_user_path(@member_it.personal_url) %>
-                <div class="card-actions" id="member_options<%=member.id%>">
+              <div class="user-card-footer">
+                <div class="user-actions">
                   <%= render partial: '/courses/members_in_courses/permissionings_edit', :locals => {:member => member, :member_it => @member_it} %>
-
-                </div>   
+                </div>
+                <div class="user-info">
+                  <span class="user-role">
+                    <% user_role = @member_it.roles.first.title %>
+                    <%= "Profesor" if user_role === 'teacher' %>
+                    <%= "Estudiante" if user_role === 'student' %>
+                    <%= "Administrador" if user_role === 'admin' %>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

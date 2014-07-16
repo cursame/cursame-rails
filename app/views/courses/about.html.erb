@@ -26,12 +26,12 @@
         <div class="basic-container-style padded course-info-blocks">
           <div class="course-info-block">
             <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de incio:</h6>
-            <%= es_current_date("#{ @course.init_date.strftime( '%B')}", "#{@course.init_date.strftime( '%d')}", "#{@course.init_date.strftime( '%Y')}") if @course.init_date != nil  %>
+            <%= date_format @course.init_date, 'normal' if @course.init_date != nil %>
           </div>
 
           <div class="course-info-block">
             <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de finalización:</h6>
-            <%= es_current_date("#{ @course.finish_date.strftime( '%B')}", "#{@course.finish_date.strftime( '%d')}", "#{@course.finish_date.strftime( '%Y')}") if @course.finish_date != nil %>
+            <%= date_format @course.finish_date, 'normal' if @course.finish_date != nil %>
           </div>
 
           <div class="course-info-block">

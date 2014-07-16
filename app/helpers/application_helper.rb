@@ -10,4 +10,10 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \""+toId+"\")", options)
   end
+
+  def date_format(date, format)
+    case format
+    when 'normal' then localize(date, format: '%e de %B del %Y')
+    end
+  end
 end

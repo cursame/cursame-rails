@@ -254,7 +254,7 @@ $(function() {
   });
 
   // Open commentable area in publications
-  $('.new-comment-trigger').live('click', function() {
+  $('.new-comment-trigger').live('focus', function() {
     commentHolder = $(this).closest('.add-comment');
 
     commentHolder.addClass("active");
