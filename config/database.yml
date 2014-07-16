@@ -23,7 +23,7 @@ test:
 
 staging:
     adapter: postgresql
-    host: 50.16.197.169
+    host: 10.2.54.48
     database: cursame-staging
     username: cursame
     password: r8o54q58
@@ -33,7 +33,7 @@ staging:
 
 production:
     adapter: postgresql
-    host: 50.16.197.169
+    host: 10.2.54.48
     database: cursalab
     username: cursame
     password: r8o54q58
