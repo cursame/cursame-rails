@@ -52,9 +52,6 @@ Cursame30Lb::Application.routes.draw do
 
   resources :authentications
 
-  #recursos necesarios para autentificaciones de servicios externos (by alfredot)
-  resources :events
-
   ########## calendar
   get "calendar", :to => 'calendar#index', :as => :calendar
   get "calendar/test_calendar"
@@ -381,17 +378,6 @@ Cursame30Lb::Application.routes.draw do
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
   get "/permissionings/unactive_user", :to => "permissionings#unactive_user", :as => "unactive_user", :via => [:post]
 
-
-  #machando las relaciones de creación de eventos para delivery, survey
-
-  resources :surveys do
-    resources :events
-  end
-
-  resources :deliveries do
-    resources :events
-  end
-
   # subiendo permisos en manager
   #match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
   #match 'managers/permissioning_for_manager/roles/:id',:to => "managers#permissioning_for_manager", :as => :permissioning_for_manager
@@ -494,12 +480,6 @@ Cursame30Lb::Application.routes.draw do
   #NOTIFICATIONS
   #---------------
   get "home/load_more_notfications", :to => 'home#load_more_notfications', :as => :load_more_notfications
-
-  ####### rutas de estandarizacion de eventos
-
-  match 'focus/:id', :to => 'events#show', :as => :eventuable
-
-  ####### ruta para creacion de timeline
 
   get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
 
