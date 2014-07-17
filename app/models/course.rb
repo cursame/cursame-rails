@@ -181,7 +181,7 @@ class Course < ActiveRecord::Base
 
   def self.search(search)
     if search
-      @searcher = find(:all, :conditions => ['lower(title) LIKE ?', "%#{search}%"])
+      @searcher = find(:all, :conditions => ['lower(courses.title) LIKE ?', "%#{search}%"])
     else
       find(:all, :order => :title)
     end
