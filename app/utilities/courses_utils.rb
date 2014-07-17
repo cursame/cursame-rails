@@ -46,6 +46,6 @@ module CoursesUtils
       ids = courses.map { |course| course.id }
     end
 
-    ids 
+    ids
   end
 end

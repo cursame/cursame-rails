@@ -88,9 +88,12 @@ class CoursesController < ApplicationController
 
     @member = MembersInCourse.new
 
-    if current_role == 'teacher'
+    case current_role
+    when 'teacher'
+      raw_courses = teacher_published_courses + teacher_unpublished_courses
+      @courses = teacher_published_courses.search(query)
+    when 'student'
       @courses = current_network.courses.search(query)
-      #raw_courses = teacher_published_courses + teacher_unpublished_courses
     end
 
     respond_to do |format|

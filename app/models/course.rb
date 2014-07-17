@@ -373,7 +373,7 @@ class Course < ActiveRecord::Base
         @expired = false
       end
 
-      if  @expired == true
+      if @expired == true
         Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
       end
     end
