@@ -90,9 +90,7 @@ class CoursesController < ApplicationController
 
     case current_role
     when 'teacher'
-      # raw_courses = teacher_published_courses + teacher_unpublished_courses
-      # @courses = teacher_published_courses.search(query)
-      current_user.courses.find(:all, :conditions => ['lower(courses.title) LIKE ?', "%#{search}%"])
+      @courses = current_user.courses.search(query)
     when 'student'
       @courses = current_network.courses.search(query)
     end
