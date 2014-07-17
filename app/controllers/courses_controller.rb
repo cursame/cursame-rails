@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
   filter_access_to :show
   before_filter :course_activated, :only => [:show, :about, :members, :library]
+  include CoursesUtils
 
   def index
     @member = MembersInCourse.new
@@ -79,15 +80,21 @@ class CoursesController < ApplicationController
     end
   end
 
-  def courses_search_ajax
+  def search
+    raw_query = params[:query]
+    return redirect_to courses_path, flash: { error: "Escribe algo en el campo de busqueda." } unless raw_query
+
+    query = I18n.transliterate(raw_query.downcase.to_s)
+
     @member = MembersInCourse.new
-    @search = params[:activiesearch].downcase
-    docificate_search_changes = I18n.transliterate("#{@search}")
-    #@courses = Course.search(docificate_search_changes)
-    @courses = current_network.courses.search(docificate_search_changes)
+
+    if current_role == 'teacher'
+      @courses = current_network.courses.search(query)
+      #raw_courses = teacher_published_courses + teacher_unpublished_courses
+    end
 
     respond_to do |format|
-      format.js
+      format.html { render 'courses/search/courses_search_results' }
     end
   end
 

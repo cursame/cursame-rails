@@ -99,7 +99,8 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/all', :to => 'courses#all', :as => :courses_all
   get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
   get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
-  
+  match '/courses/search', :to => "courses#search", :as => :search_courses
+
   resources :courses do
     resources :assignments
     resources :messages do
@@ -131,11 +132,6 @@ Cursame30Lb::Application.routes.draw do
   
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
-
-
-  #search ajax courses
-
-  match 'search_course', :to => "courses#courses_search_ajax", :as => :courses_search_ajax
 
   # Awaiting_confirmation
   get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
@@ -310,7 +306,7 @@ Cursame30Lb::Application.routes.draw do
   get '/community', to: "community#all", as: :network_comunity
   get '/community/students', to: "community#students", as: :community_students
   get '/community/teachers', to: "community#teachers", as: :community_teachers
-  get '/community/search', to: "community#search", as: :community_search
+  post '/community/search', to: "community#search", as: :community_search
   get '/community/paginate-ajax', to: "community#paginate_ajax", as: :community_paginate_ajax
 
   # filtro del wall
