@@ -4,6 +4,11 @@ class DeliveriesController < ApplicationController
   helper_method :assigment
 
   def index
+    # /deliveries
+    # @today_deliveries 
+    # @tomorrow_deliveries 
+    # @rest_of_deliveries 
+
     deliveries = []
     current_user.courses.each do |c|
       @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
@@ -25,14 +30,24 @@ class DeliveriesController < ApplicationController
   end
 
   def delivered
-    
+    # /deliveries/delivered
+    # @deliveries Todas las tareas del usuario que ya entrego, excluyendo las que faltan por entregar
   end
 
   def deliveries_course
+    # /courses/:id/deliveries
+    # @today_deliveries 
+    # @tomorrow_deliveries 
+    # @rest_of_deliveries 
+    # Solo para este curso
+
     @course = Course.find_by_id(params[:id])
   end
 
   def deliveries_course_delivered
+    # /courses/:id/deliveries/delivered
+    # @deliveries Todas las tareas del usuario que ya entrego de un curso especifico, excluyendo las que faltan por entregar
+
     @course = Course.find_by_id(params[:id])
   end
 
