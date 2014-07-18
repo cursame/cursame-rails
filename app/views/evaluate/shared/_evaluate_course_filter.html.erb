@@ -1,15 +1,7 @@
 <span class="meta-info">Filtrar: &nbsp;</span>
-<select class="course-evaluate-filter" style="width: 180px;">
+<select class="select-redirect" style="width: 180px;">
   <option value="all">Todos los cursos</option>
   <% current_user.courses.each do |course|%>
     <option value="<%= evaluate_course_path(course.id) %>"><%= course.title %></option>
   <% end %>
 </select>
-<script>
-  $(function() {
-    $('.course-evaluate-filter').change(function(event) {
-      event.preventDefault();
-      window.location = this.value;
-    });
-  });
-</script>

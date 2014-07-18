@@ -19,7 +19,7 @@
         </li>
         <% if current_role === 'student' %>
           <li>
-            <%= link_to my_deliveries_path do %>
+            <%= link_to deliveries_path do %>
               <%= icon 'homeworks-w' %> Tareas
             <%end%>
           </li>

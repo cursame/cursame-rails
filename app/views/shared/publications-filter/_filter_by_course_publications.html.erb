@@ -1,43 +1,9 @@
 <div class="section-header-actions">
   <span class="meta-info">Filtrar: &nbsp;</span>
-  <select class="course-publications-filter" style="width: 180px;">
-    <option value="all">Todos los cursos</option>
+  <select class="select-redirect" style="width: 180px;">
+    <option>Selecciona un curso</option>
     <% current_user.courses.each do |course|%>
-      <option value="<%= course.id %>"><%= course.title %></option>
+      <option value="<%= "#{request.fullpath}/courses/#{course.id}" %>"><%= course.title %></option>
     <% end %>
   </select>
 </div>
-
-<script>
-  $('.course-publications-filter').change(function() {
-    var $this = $(this),
-        id = $this.val(),
-        timeline = $('#timeline');
-
-    if ( !timeline.find('.no-content-section').length ) {
-      timeline.append('<div class="no-content-section" style="display: none;"><h4>No hay <%= type %> hay en el curso seleccionado.</h4></div>');
-    };
-
-    if ( id == 'all') {
-      var p = timeline.find('.publication-box');
-
-      if (p.length) {
-        p.show();
-        timeline.find('.no-content-section').hide();
-      } else {
-        timeline.find('.no-content-section').show();
-      }
-
-    } else {
-      timeline.find('.publication-box').hide();
-      var publication = timeline.find('div[data-course="'+ id +'"]');
-
-      if ( publication.length ) {
-        publication.show();
-        timeline.find('.no-content-section').hide();
-      } else {
-        timeline.find('.no-content-section').show();
-      }
-    }
-  });
-</script>

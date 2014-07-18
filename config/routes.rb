@@ -98,6 +98,13 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
   match '/courses/search', :to => "courses#search", :as => :search_courses
 
+  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
+  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
+  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+  
+  get '/courses/:id/deliveries/', to: 'deliveries#deliveries_course', as: :deliveries_course
+  get "/courses/:id/deliveries/delivered", to: "deliveries#deliveries_course_delivered", as: :deliveries_course_delivered
+
   resources :courses do
     resources :assignments
     resources :messages do
@@ -116,16 +123,15 @@ Cursame30Lb::Application.routes.draw do
   get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
   get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
   get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
-
   get '/evaluate/survey/:survey_id', :to => 'evaluate#qualifying', :as => :evaluate_survey
   get '/evaluate/survey/response/:id', :to => 'evaluate#user_survey', :as => :evaluate_survey_response
-
-  # POST
-  post 'evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
-
+  post '/evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
   get '/evaluate/delivery/:delivery_id', :to => 'evaluate#qualifying', :as => :evaluate_delivery
   get '/evaluate/assignment/:id', :to => 'evaluate#assignment', :as => :evaluate_delivery_response
-  
+
+  # Tareas
+  get "/deliveries", to: "deliveries#index", as: :deliveries
+  get "/deliveries/delivered", to: "deliveries#delivered", as: :deliveries_delivered
   
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
@@ -169,9 +175,7 @@ Cursame30Lb::Application.routes.draw do
   ##### llamada ajax para saber si la session ha expirado
 
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
-  
-  # Tareas
-  get "deliveries", :to => "deliveries#my_deliveries", :as => :my_deliveries
+
 
   #### llada de ajax de editar tarea
 
@@ -194,7 +198,6 @@ Cursame30Lb::Application.routes.draw do
   match "/courses/sending" => "courses#sending", :as => "sending", :via => [:post]
   #post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
   match "courses/:id/members", :to => "courses#members", :as => :course_members
-  match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation_download", :to => "courses#evaluation_download", :as => :course_evaluation_download
@@ -489,14 +492,6 @@ Cursame30Lb::Application.routes.draw do
 
   ###### carga mas actividades
   get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
-
-
-  ####### tuas extras para el curso
-
-  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
-  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
-  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
-
 
   ###### ruta para crear super admins
 

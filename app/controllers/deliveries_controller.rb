@@ -1,25 +1,9 @@
 class DeliveriesController < ApplicationController
   helper_method :condocourse
   before_filter :filter_protection, :only => [:show, :edit]
-  before_filter :protection_to_index, :only => [:index]
   helper_method :assigment
 
   def index
-    @deliveries = Delivery.all
-    @delivery = Delivery.new
-    @course_accces = current_course
-    @areas_of_evaluation = AreasOfEvaluation.new
-    condocourse
-    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true).count
-    areas_of_evaluations = @delivery.areas_of_evaluations.build
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @deliveries }
-    end
-  end
-
-  def my_deliveries
     deliveries = []
     current_user.courses.each do |c|
       @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
@@ -37,22 +21,21 @@ class DeliveriesController < ApplicationController
       end
     end
     @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-
-    respond_to do |format|
-      if params[:fo_format].nil?
-        format.html
-      else
-        format.js
-      end
-    end
+    
   end
 
-  def condocourse
-    @course = current_course.id
+  def delivered
+    
   end
 
-  # GET /deliveries/1
-  # GET /deliveries/1.json
+  def deliveries_course
+    @course = Course.find_by_id(params[:id])
+  end
+
+  def deliveries_course_delivered
+    @course = Course.find_by_id(params[:id])
+  end
+
   def show
     @delivery = Delivery.find(params[:id])
     @assignment = Assignment.new(params[:assignment])

@@ -150,6 +150,12 @@ window.Notice = function(type, message)  {
 
 $(function() {
 
+  // Redirect Select Dropdown
+  $('.select-redirect').change(function(event) {
+    event.preventDefault();
+    window.location = this.value;
+  });
+
   $('.page-sub-navigation a').click(function(event) {
     var $this = $(this),
         remote = $this.data('remote');

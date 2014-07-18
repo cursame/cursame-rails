@@ -1,0 +1,8 @@
+= render partial: 'deliveries/shared/deliveries_header'
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        #timeline.tim
+          = render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"}
+        #paginate_wall{onclick: "PaginateINwall('/deliveries',2, #{@wall.total_pages})"}

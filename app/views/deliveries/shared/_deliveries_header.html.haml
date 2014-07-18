@@ -1,0 +1,20 @@
+.section-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .section-header
+            .section-header-main
+              .section-title
+                = link_to icon('section-deliveries'), deliveries_path
+                = link_to deliveries_path do
+                  %h1 Tareas
+              - unless current_user.courses.empty?
+                = render partial: '/deliveries/shared/deliveries_filter_course'
+            .page-sub-navigation
+              - action = params[:action]
+              %ul
+                %li
+                  = link_to "Entregar", deliveries_path, class: (action == 'index' ? "active" : " ")
+                %li
+                  = link_to "Entregadas", deliveries_delivered_path, class: (action == 'delivered' ? "active" : " ")
