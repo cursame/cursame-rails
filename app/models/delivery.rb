@@ -3,32 +3,30 @@ class Delivery < ActiveRecord::Base
   # after_commit :create_notifications, :on => :create
 
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
- :assets_attributes, :course_ids, :network_id, :areas_of_evaluations_attributes, :deliveries_courses, :courses, :areas_of_evaluations,
- :areas_of_evaluation,:contents, :contents_attributes, :expired?
+ :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
 
   scope :active_inactive
   scope :courses
   scope :contents
+
+  belongs_to :user
+
   has_many :deliveries_courses, :dependent => :destroy
   has_many :courses, :through => :deliveries_courses
-  has_many :areas_of_evaluation, :dependent => :destroy
-  has_many :areas_of_evaluations, :dependent => :destroy
   has_many :assignments, :dependent => :destroy
-  belongs_to :user
   has_many :delivery_assets, :dependent => :destroy
   has_many :assets, :through => :delivery_assets
   has_many :events, as: :schedule, :dependent => :destroy
-  has_many :activities, as: :activitye#, :dependent => :destroy
-  has_many :contents, :as => :contentye #, :dependent => :destroy
+  has_many :activities, as: :activitye
+  has_many :contents, :as => :contentye
+  has_many :evaluation_criteria, as: :evaluable, :dependent :destroy
   
   belongs_to :network
   belongs_to :wall
 
   validate :max_courses
 
-  # attr_accessible :dk_assets,  :title, :porcent_of_evaluation, :description, :publish_date, :end_date, :assets_attributes, :course_ids,  :file, :encryption_code_to_access, :user_id
-
-  accepts_nested_attributes_for :areas_of_evaluations
+  #accepts_nested_attributes_for :evaluation_criteria
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :contents
