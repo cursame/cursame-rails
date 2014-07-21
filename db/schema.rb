@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140711173745) do
+ActiveRecord::Schema.define(:version => 20140721231911) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -80,18 +80,6 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "content"
-  end
-
-  create_table "areas_of_evaluations", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "assignment_id"
-    t.integer  "evaluation_percentage"
-    t.boolean  "active"
-    t.datetime "date_of_item"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.integer  "delivery_id"
   end
 
   create_table "assets", :force => true do |t|
@@ -286,6 +274,17 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "evaluation_criteria", :force => true do |t|
+    t.string   "name"
+    t.integer  "evaluation_percentage"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "evaluable_id"
+    t.string   "evaluable_type"
+  end
+
+  add_index "evaluation_criteria", ["evaluable_id", "evaluable_type"], :name => "index_evaluation_criteria_on_evaluable_id_and_evaluable_type"
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "starts_at"
@@ -414,13 +413,6 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
-  end
-
-  create_table "p_id_to_h_ids", :force => true do |t|
-    t.integer  "p_id"
-    t.integer  "h_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "permissionings", :force => true do |t|

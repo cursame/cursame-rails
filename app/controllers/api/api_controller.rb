@@ -371,7 +371,7 @@ class Api::ApiController < ApplicationController
 
     if areas && !areas.empty?
       areas.each do |area|
-        a = AreasOfEvaluation.new()
+        a = EvaluationCriteria.new()
         a.evaluation_percentage = area[1]['percentage']
         a.name = area[1]['name']
         a.save
