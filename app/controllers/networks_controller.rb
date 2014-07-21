@@ -56,7 +56,6 @@ class NetworksController < ApplicationController
   # GET /networks/1.json
   def show
     @wall = current_network.walls.search(params[:search], params[:id]).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
-
     if request.xhr? && (params[:page].to_i > 1)
       respond_to { |format| format.js }
     else

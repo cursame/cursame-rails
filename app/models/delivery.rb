@@ -19,7 +19,9 @@ class Delivery < ActiveRecord::Base
   has_many :events, as: :schedule, :dependent => :destroy
   has_many :activities, as: :activitye
   has_many :contents, :as => :contentye
+
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
+
   belongs_to :network
   belongs_to :wall
 
