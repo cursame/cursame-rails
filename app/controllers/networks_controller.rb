@@ -61,7 +61,7 @@ class NetworksController < ApplicationController
     @show_course_expired = params[:course_expired]
 
     #==== Areas de evaluación ====#
-    @areas_of_evaluation = AreasOfEvaluation.new
+    @areas_of_evaluation = EvaluationCriteria.new
     areas_of_evaluations = @delivery.areas_of_evaluations.build
 
     #==== Assets ====#

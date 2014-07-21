@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @member =   @user_l.members_in_courses.where(:owner => true)
 
     #==== Areas de evaluación ====
-    @areas_of_evaluation = AreasOfEvaluation.new
+    @areas_of_evaluation = EvaluationCriteria.new
     areas_of_evaluations = @delivery.areas_of_evaluations.build
 
     ### publicando comentarios en el show de users
