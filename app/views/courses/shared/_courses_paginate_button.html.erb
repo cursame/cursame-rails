@@ -2,6 +2,7 @@
   <div class="cols-12">
     <div class="col col-12">
       <div class="col-inner">
+      	<div id='pageless-loader' style="display: none;"><img src='/assets/load.gif'/></div>
         <%= link_to 'Cargar más...', courses_paginate_ajax_path(page: page, role: role, state: state), remote: true, class: 'btn btn-secondary btn-full' %>
       </div>
     </div>

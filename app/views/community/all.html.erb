@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+<%= javascript_include_tag 'publications/paginator' %>
+<% end %>
+
 <%= render partial: 'community/shared/community_header' %>
 <div class="wrapper">
 	<% unless @network_users.empty? %>
@@ -8,6 +12,8 @@
 	  </div>
 	  <% if @network_users.total_entries > CARDS_PER_PAGE %>
 			<%= render partial: 'community/shared/community_paginate_button', locals: { page: 2, role: 'all' } %>
+		<% elsif @network_users.total_entries <= CARDS_PER_PAGE %>
+			<%= render partial: "shared/no_more_records_found", locals: { message: "No hay más usuarios por mostrar.." } %>
 		<% end %>
 	<% else %>
 		<div class="no-content-section">

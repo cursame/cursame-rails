@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+<%= javascript_include_tag 'publications/paginator' %>
+<% end %>
+
 <div class="section-header-wrap">
   <div class="wrapper">
     <div class="cols-12">
@@ -16,5 +20,7 @@
   </div>
   <% if @courses.total_entries > COURSES_PER_PAGE %>
     <%= render partial: 'courses/shared/courses_paginate_button', locals: { page: 2, role: 'student', state: 'subscribe_requests' } %>
+  <% elsif @courses.total_entries <= COURSES_PER_PAGE %>
+    <%= render partial: "shared/no_more_records_found", locals: { message: "No hay más solicitudes pendientes." } %>
   <% end %>
 </div>

@@ -9,5 +9,7 @@
   </div>
   <% if courses.total_entries > COURSES_PER_PAGE %>
     <%= render partial: 'courses/shared/courses_paginate_button', locals: { page: 2, role: 'teacher', state: 'published' } %>
+  <% elsif courses.total_entries <= COURSES_PER_PAGE %>
+    <%= render partial: "shared/no_more_records_found", locals: { message: "No hay más cursos para mostrar." } %>
   <% end %>
 </div>

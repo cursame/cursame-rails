@@ -104,7 +104,6 @@ class NetworksController < ApplicationController
         format.json { render json: @network }
       end
     end
-
   end
 
 

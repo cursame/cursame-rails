@@ -14,6 +14,7 @@
   </div>
   <%= render partial: 'shared/sidebar/sidebar', locals: { sidebar_sections: [ 'upcomming_deliveryes', 'upcomming_surveys', 'android_app_ad' ] } %>
 </div>
+
 <script type="text/javascript">
   $(function() {
     <% if !current_user.self_register && show_joyride(3) != "1" %>    
