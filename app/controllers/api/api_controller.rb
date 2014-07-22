@@ -854,7 +854,7 @@ class Api::ApiController < ApplicationController
   end
 
   def native_list_networks
-    @networks = Network.where("name like ?",'%' + params[:text] + '%').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
+    @networks = Network.where("lower(name) like ?",'%' + params[:text].downcase + '%').paginate(:per_page => params[:limit].to_i, :page => params[:page].to_i)
     render :json => {:networks => @networks.as_json, :count => @networks.count()}, :callback => params[:callback]
   end
 
