@@ -1,30 +1,27 @@
-<% publication = publication.publication %>
-<% delivered = current_user.assignments.where(:delivery_id => publication.id)[0] %>
-
 <div class="overlay-header">
   <div class="overlay-icon">
     <%= icon('section-deliveries') %>
   </div>
   <div class="overlay-title">
     <h6>
-      Tarea en el curso <%= link_to publication.courses[0].title, course_path(publication.courses[0].id) %>
+      Tarea en el curso <%= link_to delivery.courses.first.title, course_path(delivery.courses.first) %>
     </h6>
-    <span>Entregar antes del <%= pretty_date_format publication.end_date %></span>
+    <span>Entregar antes del <%= pretty_date_format delivery.end_date %></span>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
 
 <div class="delivery-overlay-content">
   <div class="overlay-content">
-    <h3><%= publication.title %></h3>
-    <%= publication.description_html %>
+    <h3><%= delivery.title %></h3>
+    <%= delivery.description_html %>
     
     <div class="publication-assets"> 
-      <%= render :partial => "content/insertions_to_contents", :locals => { :type => publication, :cl => "delivery"}%>
+      <%= render :partial => "content/insertions_to_contents", :locals => { :type => delivery, :cl => "delivery"}%>
 
-      <% if publication.assets.count > 0 %>
+      <% if delivery.assets.count > 0 %>
         <div class="asset-box upload-label">
-          <% publication.assets.each do |files|%>
+          <% delivery.assets.each do |files|%>
             <div class="file-mini-upload publication-asset">
               <% @string = files.file.to_s.split('/').last %>
               <%= link_to "#{files.file}" , :target => '_blank' do %> 
@@ -37,9 +34,9 @@
       <%end%>
     </div>
     
-    <% if publication.areas_of_evaluations.count > 0 %>
+    <% if delivery.areas_of_evaluations.count > 0 %>
       <div class="evaluation-box" style="height: 50px">
-        <div id="chart-delivery-<%= publication.id %>" style="height: 50px"></div>
+        <div id="chart-delivery-<%= delivery.id %>" style="height: 50px"></div>
         <script type="text/javascript">
           $(function () {
             var chart;
@@ -47,7 +44,7 @@
             $(document).ready(function () {
               chart = new Highcharts.Chart({
                   chart: {
-                      renderTo: 'chart-delivery-<%= publication.id %>',
+                      renderTo: 'chart-delivery-<%= delivery.id %>',
                       type: 'bar',
                       marginBottom: 25,
                       spacingTop: -5
@@ -116,7 +113,7 @@
                           fontSize: '10px'
                       }
                   },
-                  series: [ <% @i = 1 %> <% publication.areas_of_evaluations.each do |areas| %> {
+                  series: [ <% @i = 1 %> <% delivery.areas_of_evaluations.each do |areas| %> {
                       name: '<%= areas.name %>',
                       data: [ <%= areas.evaluation_percentage %> ],
                       index: <%= @i %>
@@ -130,13 +127,14 @@
     <%end%>
   </div>
 
-  <% publication.courses.each do |course| %>
+  <% delivery.courses.each do |course| %>
     <% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
     <% if @if_im_member != nil && @if_im_member.owner != true%>
       <div class="overlay-footer">
-        <% if publication.state == "published" && current_user.assignments.where(:delivery_id => publication.id).empty? %>
-          <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= publication.id %>">Responder tarea</a>
+        <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty? %>
+          <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>">Entregar Tarea</a>
         <% else %>
+          <% delivered = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
           <% if !delivered.nil? && !delivered.accomplishment.nil? %>
             <div class="delivery-results">
               <div class="delivery-overall-result">
@@ -168,10 +166,10 @@
   <%end%>
 </div>
 
-<div class="delivery-overlay-submit-form" id="<%= publication.id %>">
-  <div class="delivery-assignment-box" id="entrega-delivery-<%= publication.id %>">
-    <% @delivery_id = publication.id %>
-    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => publication, :cargo => publication.courses[0]}%>
+<div class="delivery-overlay-submit-form" id="<%= delivery.id %>">
+  <div class="delivery-assignment-box" id="entrega-delivery-<%= delivery.id %>">
+    <% @delivery_id = delivery.id %>
+    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => delivery.courses[0]}%>
   </div>
 </div>
 

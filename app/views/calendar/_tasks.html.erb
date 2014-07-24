@@ -6,6 +6,7 @@
         <% if mobile?.present? && ! full_event %>
           <span class="events-availables <%= task.schedule_type.to_s.downcase %>"></span>
         <% else %>
+          <%= task.id %>
           <%= link_to show_template_on_modal_path(:id => task.id, :type => 'task'), :remote => true, :data => { :day_id => task.ends_at.strftime("%d") } do %>
             <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
               <h6><%= truncate( task.title, :omission => "...", :length => 20) %></h6>

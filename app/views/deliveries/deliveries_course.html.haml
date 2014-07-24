@@ -1,1 +1,39 @@
 = render partial: 'deliveries/shared/deliveries_course_header', locals: { course: @course }
+.academic-activities-list-wrap
+	- unless @today_deliveries.empty?
+		.academic-activities-section
+			.wrapper
+				.section-separator
+					.section-separator-title
+						%h6 Tareas para entregar Hoy
+						%i.tip
+				.academic-activities-main
+					.cols-12
+						= render partial: 'deliveries/shared/deliveries_list', locals: { deliveries: @today_deliveries }
+
+	- unless @tomorrow_deliveries.empty?
+		.academic-activities-section
+			.wrapper
+				.section-separator
+					.section-separator-title
+						%h6 Tareas para entregar Mañana
+						%i.tip
+				.academic-activities-main
+					.cols-12
+						= render partial: 'deliveries/shared/deliveries_list', locals: { deliveries: @tomorrow_deliveries }
+
+	- unless @rest_of_deliveries.empty?
+		.academic-activities-section
+			.wrapper
+				.section-separator
+					.section-separator-title
+						%h6 Tareas para entregar en 3 días o más
+						%i.tip
+				.academic-activities-main
+					.cols-12
+						= render partial: 'deliveries/shared/deliveries_list', locals: { deliveries: @rest_of_deliveries }
+
+	- if @today_deliveries.count + @tomorrow_deliveries.count + @rest_of_deliveries.count == 0
+		.no-content-section
+			%h4 No tienes tareas pendientes por entregar en este curso.
+			%p Has entregado todas las tareas, puedes ver las #{link_to "tareas pasadas en la sección Pasadas", deliveries_delivered_path}

@@ -4,5 +4,3 @@
 		%option Selecciona un curso
 		- current_user.courses.each do |course|
 			%option{ value: deliveries_course_path(course) }= course.title
-
-

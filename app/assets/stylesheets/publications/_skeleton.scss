@@ -417,3 +417,65 @@
   margin-bottom: 25px;
   padding: 4px 10px;
 }
+
+
+.academic-activities-section {
+  margin-bottom: 20px;
+}
+
+// New Publications Boxes
+.post-box {
+  margin-bottom: 20px;
+
+  .post-box-main {
+    margin: -1px;
+  }
+  
+  .post-box-main-author {
+    padding: 10px;
+    position: relative;
+    @include clearfix;
+
+    .i {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      margin-top: -15px;
+    }
+
+    .post-box-avatar {
+      float: left;
+    }
+
+    .post-box-main-author-content {
+      margin: 4px 0 0 55px;
+      padding-right: 45px;
+
+      a {
+        @include ellipsis();
+      }
+
+      .timestamp {
+        display: block;
+        margin-top: -3px;
+      }
+    }
+  } 
+
+  .post-box-content {
+    padding: 10px;
+    height: 180px;
+    position: relative;
+
+    .deliver-date {
+      display: block;
+      margin: 3px 0 11px 0;
+    }
+
+    .btn {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+  }
+}

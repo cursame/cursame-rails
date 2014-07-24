@@ -1,0 +1,18 @@
+- course = delivery.courses.first
+.col.col-6
+  .col-inner
+    .post-box.delivery{id: delivery.id}
+      .post-box-main
+        .post-box-main-author
+          = icon 'delivery-card'
+          = link_to course_path(course), title: course.title, class: 'post-box-avatar' do
+            = avatar 'course', '45', 'no', course.id, 'avatar', 'no', 'no'
+          .post-box-main-author-content
+            = link_to course.title, course_path(course), title: course.title
+            %span.timestamp= time_ago_in_words delivery.created_at
+        .post-box-content
+          = link_to delivery_modal_path(delivery.id), remote: true do 
+            %h3= delivery.title
+          %span.deliver-date Entregar: #{pretty_date_format delivery.end_date}
+          - delivered = current_user.assignments.where(:delivery_id => delivery.id)
+          = link_to (delivered.empty? ? 'Entregar Tarea' : 'Ver Entrega'), delivery_modal_path(delivery.id), remote: true, class: "btn btn-transparent"

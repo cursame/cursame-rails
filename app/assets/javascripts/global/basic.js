@@ -150,6 +150,12 @@ window.Notice = function(type, message)  {
 
 $(function() {
 
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      removeModal();
+    }
+  });
+
   // Redirect Select Dropdown
   $('.select-redirect').change(function(event) {
     event.preventDefault();

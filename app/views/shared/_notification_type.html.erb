@@ -61,7 +61,7 @@
 
     <!-- Notificacion: 5 - Nueva tarea en un curso -->
     <% when 'new_delivery_on_course'%>
-      <%= link_to "#{course_path(notification.notificator.courses[0].id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+      <%= link_to delivery_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
@@ -89,7 +89,7 @@
 
     <!-- Notificacion: 7 - Nuevo cuestionario en un curso -->
     <% when 'new_survey_on_course'%>
-      <%= link_to "#{course_path(notification.notificator.courses.first.id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+      <%= link_to survey_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
@@ -126,8 +126,7 @@
 
     <!-- Notificacion: 9 - Nueva calificacion en una respuesta -->
     <% when 'new_accomplishment_on_assignment'%>
-      <%= link_to "#{course_path(notification.notificator.delivery.courses.first.id)}?search=Delivery&id_search=#{notification.notificator.delivery.id.to_s}" do %>
-
+      <%= link_to delivery_modal_path(notification.notificator.delivery.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.delivery.courses.first.id, "avatar", "no", "no") %>
@@ -327,7 +326,8 @@
         <% if notification.notificator.qualifying.user != nil %>
           <% user = notification.notificator.qualifying.user %>
           <% response = notification.notificator.qualifying.survey.responses.keep_if {|response| response.user_id == user.id } %>
-          <%= link_to "/courses/#{notification.notificator.qualifying.survey.courses[0].id}?search=Survey&id_search=#{notification.notificator.qualifying.survey.id}" do %>
+
+          <%= link_to survey_modal_path(notification.notificator.qualifying.survey.id), remote: true do %>
             <div class="activity-feed-author">
               <span class="avatar-holder">
                 <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>

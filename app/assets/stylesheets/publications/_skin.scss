@@ -270,3 +270,63 @@
   border-radius: $radius;
   box-shadow: 0 1px 0 #fff;
 }
+
+// New Publications
+.post-box {
+  @extend .basic-container-style;
+  
+  .post-box-main {
+    border-radius: $radius;
+    @extend .cover-banner;
+  }
+
+  .post-box-main-author {
+    border-bottom: 1px solid rgba(255,255,255, .1);
+
+    .post-box-main-author-content {
+      a {
+        font: {
+          size: 15px;
+          weight: 500;
+        }
+        color: $white;
+
+        &:hover {
+          @include opacity(.8);
+        }
+      }
+
+      span {
+        font-size: 12px;
+      }
+
+      a, span {
+        text-shadow: 0 1px 1px rgba(0,0,0,.3);
+      }
+    }
+  }
+
+  .post-box-content {
+    h3, .deliver-date {
+      color: $white;
+      text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    }
+
+    h3:hover {
+      @include opacity(.8);
+    }
+
+    .deliver-date {
+      @include text-size-regular;
+    }
+  }
+}
+
+.delivery .post-box-main {
+  background-color: $delivery-color;
+  @include linear-gradient(45deg, $delivery-color 0%, lighten($delivery-color, 2%) 100%);
+
+  .timestamp, .deliver-date {
+    color: lighten($delivery-color, 60%);
+  }
+}

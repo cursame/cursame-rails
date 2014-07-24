@@ -1,0 +1,5 @@
+%span.meta-info Filtrar: &nbsp;
+%select{ class: "select-redirect", style: "width: 180px;"}
+  %option Selecciona un curso
+  - current_user.courses.each do |course|
+    %option{ value: surveys_course_path(course) }= course.title

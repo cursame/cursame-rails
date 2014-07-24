@@ -1,8 +1,30 @@
 class SurveysController < ApplicationController
+
   def index
-  #  @course = Course.find()
-    @surveys = Survey.all
-    # @surveys = @course.surveys
+    # /surveys
+    # @today_surveys 
+    # @tomorrow_surveys 
+    # @rest_of_surveys
+  end
+
+  def answered
+    # /surveys/answered
+    # @surveys Todas las Surveys del usuario que ya constesto, excluyendo las que faltan por contestar
+  end
+
+  def surveys_course
+    # /courses/:id/surveys
+    # @today_surveys 
+    # @tomorrow_surveys 
+    # @rest_of_surveys 
+    # Solo para este curso
+    @course = Course.find_by_id(params[:id])
+  end
+
+  def surveys_course_answered
+    # /courses/:id/surveys/answered
+    # @surveys Todas los Surveys del usuario que ya entrego de un curso especifico, excluyendo las que faltan por contestar
+    @course = Course.find_by_id(params[:id])
   end
 
   def my_surveys

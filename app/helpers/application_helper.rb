@@ -16,4 +16,8 @@ module ApplicationHelper
     when 'normal' then localize(date, format: '%e de %B del %Y')
     end
   end
+
+  def active_class(comparator)
+    return params[:action] == comparator ? " active" : ""
+  end
 end

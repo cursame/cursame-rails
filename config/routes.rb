@@ -73,11 +73,6 @@ Cursame30Lb::Application.routes.draw do
 
   resources :assignments
 
-
-  #### surveys
-
-  resources :surveys
-
   # colocando miembros en cursos
   resources :members_in_courses
 
@@ -101,9 +96,6 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/about', :to => 'courses#about', :as => :about_course
   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
-  
-  get '/courses/:id/deliveries/', to: 'deliveries#deliveries_course', as: :deliveries_course
-  get "/courses/:id/deliveries/delivered", to: "deliveries#deliveries_course_delivered", as: :deliveries_course_delivered
 
   resources :courses do
     resources :assignments
@@ -132,6 +124,16 @@ Cursame30Lb::Application.routes.draw do
   # Tareas
   get "/deliveries", to: "deliveries#index", as: :deliveries
   get "/deliveries/delivered", to: "deliveries#delivered", as: :deliveries_delivered
+  get '/courses/:id/deliveries/', to: 'deliveries#deliveries_course', as: :deliveries_course
+  get "/courses/:id/deliveries/delivered", to: "deliveries#deliveries_course_delivered", as: :deliveries_course_delivered
+
+  # Surveys
+  get "surveys", :to => 'surveys#index', :as => :surveys
+  get "surveys/answered", :to => 'surveys#answered', :as => :surveys_answered
+  get '/courses/:id/surveys/', to: 'surveys#surveys_course', as: :surveys_course
+  get "/courses/:id/surveys/answered", to: "surveys#surveys_course_answered", as: :surveys_course_answered
+  match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
+  resources :surveys
   
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
@@ -352,12 +354,14 @@ Cursame30Lb::Application.routes.draw do
 
   root :to => 'home#index'
 
-  #create modals ajax
+  # Overlays
   match '/modals/network_intro_video', to: 'modal#network_intro_video_modal', :as => :network_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/teacher_quiz', to: 'modal#teacher_quiz_modal', :as => :teacher_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/landing_intro_video', to: 'modal#landing_intro_video_modal', :as => :landing_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }
@@ -370,12 +374,6 @@ Cursame30Lb::Application.routes.draw do
 
   #cargas mas comentarios
   match  "home/load_more_comments/:id", :to => "home#load_more_comments", :as => :load_more_comments
-
-  #surveys
-  match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
-
-  ##### surveys vista general #####
-  get "all_surveys", :to => 'surveys#my_surveys', :as => :my_surveys
 
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]

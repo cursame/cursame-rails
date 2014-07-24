@@ -1,1 +1,10 @@
 = render partial: 'deliveries/shared/deliveries_course_header', locals: { course: @course }
+- unless @deliveries.empty?
+	.academic-activities-section
+		.wrapper
+			.academic-activities-main
+				.cols-12
+					= render partial: 'deliveries/shared/deliveries_list', locals: { deliveries: @deliveries }
+- else
+	.no-content-section
+		%h4 No tienes tareas pasadas en este curso.

@@ -131,9 +131,9 @@ class DeliveriesController < ApplicationController
     end
 
     @validation_member = @delivery.courses
+    
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @delivery }
+      format.js
     end
   end
 

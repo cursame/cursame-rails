@@ -140,3 +140,11 @@ Handlebars.registerHelper("formatDate", function(datetime, format) {
 Handlebars.registerHelper("formatCalification", function( number ) {
   return parseFloat(Math.round(number * 100) / 100).toFixed(2);
 });
+
+Handlebars.registerHelper('toLowerCase', function(value) {
+    if(value) {
+        return new Handlebars.SafeString(value.toLowerCase());
+    } else {
+        return '';
+    }
+});
