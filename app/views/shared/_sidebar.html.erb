@@ -151,7 +151,7 @@
         <div id="chat-group-courses" class="tab-content" style="display: none;">
           <ul class="section-list side-courses">
             <% unless current_user_courses.empty? %>
-              <% @courses_online.each do |course|%>
+              <% courses.each do |course|%>
                 <li>
                   <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
                     <% if course.avatar.file != nil &&  File.exist?(course.avatar.file.file)%> 

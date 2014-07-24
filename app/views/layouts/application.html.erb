@@ -49,7 +49,9 @@
       <div class="chat-panels">
         <%= subscribe_to "/chat-joinded/#{current_user.id}" %>
         <% unless current_user_courses.empty? %>
-          <% @courses_online.each do |course|%>
+          <% courses = current_user_courses if is_teacher %>
+          <% courses = student_courses if is_student %>
+          <% courses.each do |course|%>
             <%= subscribe_to "/messages/course_channel_#{course.id}" %>
           <% end %>
         <% end %>

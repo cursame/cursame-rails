@@ -281,7 +281,8 @@
   }
 
   .post-box-main-author {
-    border-bottom: 1px solid rgba(255,255,255, .1);
+    border-bottom: 1px solid rgba(0,0,0, 0.05);
+    background: rgba(0,0,0,.04);
 
     .post-box-main-author-content {
       a {

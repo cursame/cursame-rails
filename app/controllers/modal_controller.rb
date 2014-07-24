@@ -47,4 +47,12 @@ class ModalController < ApplicationController
      end
   end
 
+  def discussion_modal
+    @discussion = Discussion.find_by_id(params[:id])
+
+    respond_to do |format|
+      format.js
+     end 
+  end
+
 end
