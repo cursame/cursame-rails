@@ -1,8 +1,11 @@
 class DeliveriesController < ApplicationController
   include CoursesUtils
+  include FiltersUtils
+
   helper_method :condocourse
-  before_filter :filter_protection, :only => [:show, :edit]
   helper_method :assigment
+  before_filter :filter_protection, only: [:show, :edit]
+  before_filter :only_students, only: [:index, :delivered, :deliveries_course, :deliveries_course_delivered]
 
   def index
     # /deliveries

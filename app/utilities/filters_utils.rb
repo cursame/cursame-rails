@@ -8,4 +8,10 @@ module FiltersUtils
 		end
 	end
 
+	def only_students
+		if current_role != "student"
+			redirect_to root_path, flash: { notice: "No tienes permisos para entrar en esta sección." }
+		end
+	end
+
 end

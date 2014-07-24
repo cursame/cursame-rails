@@ -79,11 +79,13 @@
     <div class="sidebar-section-main scroller s-to-f scrollbar">
       <ul class="section-list side-courses">
         <% unless current_user_courses.empty? %>
-          <% current_user_courses.each do |c| %>
+          <% courses = current_user_courses if is_teacher %>
+          <% courses = student_courses if is_student %>
+          <% courses.each do |course| %>
             <li>
-              <%= link_to course_path(c.id) do %>
-                <%= avatar('course', '25', "no", "#{c.id}", "avatar avatar-24", "no", "no") %>
-                <%= truncate( c.title, omission: "...", length: 25) %>
+              <%= link_to course_path(course.id) do %>
+                <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
+                <%= truncate(course.title, omission: "...", length: 22) %>
               <% end %>
             </li>
           <% end %>
