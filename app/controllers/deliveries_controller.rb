@@ -9,8 +9,7 @@ class DeliveriesController < ApplicationController
     # @today_deliveries 
     # @tomorrow_deliveries 
     # @rest_of_deliveries
-
-    #courses = teacher_published_courses
+    
     courses = student_subscribed_courses
 
     deliveries = courses.inject([]) do

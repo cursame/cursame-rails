@@ -5,11 +5,51 @@ class SurveysController < ApplicationController
     # @today_surveys 
     # @tomorrow_surveys 
     # @rest_of_surveys
+    courses = student_subscribed_courses
+
+    surveys = courses.inject([]) do
+      |accu, course|
+      accu + course.surveys
+    end
+
+    surveys = surveys.keep_if do |survey|
+      survey.end_date.to_datetime > Time.now.to_datetime
+    end
+
+    surveys = surveys.sort do
+      |x,y| y.end_date <=> x.end_date
+    end
+
+    @today_surveys = surveys.clone.keep_if do
+      |survey|
+      Date.today <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
+    end
+
+    @tomorrow_surveys = surveys.clone.keep_if do
+      |survey|
+      Date.tomorrow <= survey.end_date.to_datetime and survey.end_date.to_datetime <= (Date.tomorrow + 1.day)
+    end
+
+    @rest_of_surveys = surveys.clone.keep_if do
+      |survey|
+      survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    end
+
   end
 
   def answered
     # /surveys/answered
     # @surveys Todas las Surveys del usuario que ya constesto, excluyendo las que faltan por contestar
+    surveys = UserSurvey.find_all_by_user_id(current_user.id).map { |e| Survey.find_by_id(e.survey_id)}
+
+    surveys = surveys.keep_if do |survey|
+      survey.end_date.to_datetime < Time.now.to_datetime 
+    end
+
+    @surveys = surveys.sort do
+      |x,y| y.end_date <=> x.end_date
+    end    
+
   end
 
   def surveys_course
@@ -19,12 +59,50 @@ class SurveysController < ApplicationController
     # @rest_of_surveys 
     # Solo para este curso
     @course = Course.find_by_id(params[:id])
+
+    surveys = Course.find_by_id(params[:id]).surveys
+
+    surveys = surveys.keep_if do |survey|
+      survey.end_date.to_datetime > Time.now.to_datetime
+    end
+
+    surveys = surveys.sort do
+      |x,y| y.end_date <=> x.end_date
+    end
+
+    @today_surveys = surveys.clone.keep_if do
+      |survey|
+      Date.today <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
+    end
+
+    @tomorrow_surveys = surveys.clone.keep_if do
+      |survey|
+      Date.tomorrow <= survey.end_date.to_datetime and survey.end_date.to_datetime <= (Date.tomorrow + 1.day)
+    end
+
+    @rest_of_surveys = surveys.clone.keep_if do
+      |survey|
+      survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    end
+
   end
 
   def surveys_course_answered
     # /courses/:id/surveys/answered
     # @surveys Todas los Surveys del usuario que ya entrego de un curso especifico, excluyendo las que faltan por contestar
     @course = Course.find_by_id(params[:id])
+
+    surveys = Course.find_by_id(params[:id]).surveys
+
+    surveys = surveys.keep_if do |survey|
+      !UserSurvey.find_by_survey_id(survey.id).nil? and survey.end_date.to_datetime < Time.now.to_datetime
+    end
+
+    @surveys = surveys.sort do
+      |x,y| y.end_date <=> x.end_date
+    end
+
+
   end
 
   def my_surveys
