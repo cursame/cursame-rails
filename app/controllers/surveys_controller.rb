@@ -12,17 +12,13 @@ class SurveysController < ApplicationController
       accu + course.surveys
     end
 
-    surveys = surveys.keep_if do |survey|
-      survey.end_date.to_datetime > Time.now.to_datetime
-    end
-
     surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
     end
 
     @today_surveys = surveys.clone.keep_if do
       |survey|
-      Date.today <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
+      Time.now.to_datetime <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
     end
 
     @tomorrow_surveys = surveys.clone.keep_if do
@@ -40,7 +36,14 @@ class SurveysController < ApplicationController
   def answered
     # /surveys/answered
     # @surveys Todas las Surveys del usuario que ya constesto, excluyendo las que faltan por contestar
-    surveys = UserSurvey.find_all_by_user_id(current_user.id).map { |e| Survey.find_by_id(e.survey_id)}
+    
+    #surveys = UserSurvey.find_all_by_user_id(current_user.id).map { |e| Survey.find_by_id(e.survey_id)}
+    courses = student_subscribed_courses
+
+    surveys = courses.inject([]) do
+      |accu, course|
+      accu + course.surveys
+    end
 
     surveys = surveys.keep_if do |survey|
       survey.end_date.to_datetime < Time.now.to_datetime 
@@ -62,17 +65,13 @@ class SurveysController < ApplicationController
 
     surveys = Course.find_by_id(params[:id]).surveys
 
-    surveys = surveys.keep_if do |survey|
-      survey.end_date.to_datetime > Time.now.to_datetime
-    end
-
     surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
     end
 
     @today_surveys = surveys.clone.keep_if do
       |survey|
-      Date.today <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
+      Time.now.to_datetime <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
     end
 
     @tomorrow_surveys = surveys.clone.keep_if do
@@ -95,7 +94,8 @@ class SurveysController < ApplicationController
     surveys = Course.find_by_id(params[:id]).surveys
 
     surveys = surveys.keep_if do |survey|
-      !UserSurvey.find_by_survey_id(survey.id).nil? and survey.end_date.to_datetime < Time.now.to_datetime
+      #!UserSurvey.find_by_survey_id(survey.id).nil? and 
+      survey.end_date.to_datetime < Time.now.to_datetime
     end
 
     @surveys = surveys.sort do

@@ -1,18 +1,15 @@
 class DeliveriesController < ApplicationController
   include CoursesUtils
-  include FiltersUtils
-
   helper_method :condocourse
+  before_filter :filter_protection, :only => [:show, :edit]
   helper_method :assigment
-  before_filter :filter_protection, only: [:show, :edit]
-  before_filter :only_students, only: [:index, :delivered, :deliveries_course, :deliveries_course_delivered]
 
   def index
     # /deliveries
     # @today_deliveries 
     # @tomorrow_deliveries 
     # @rest_of_deliveries
-    
+
     courses = student_subscribed_courses
 
     deliveries = courses.inject([]) do
@@ -26,8 +23,7 @@ class DeliveriesController < ApplicationController
 
     @today_deliveries = deliveries.clone.keep_if do
       |delivery|
-      #p delivery
-      Date.today <= delivery.end_date.to_datetime and delivery.end_date.to_datetime <= Date.tomorrow
+      Time.now.to_datetime <= delivery.end_date.to_datetime and delivery.end_date.to_datetime <= Date.tomorrow
     end
 
     @tomorrow_deliveries = deliveries.clone.keep_if do
@@ -63,7 +59,14 @@ class DeliveriesController < ApplicationController
   def delivered
     # /deliveries/delivered
     # @deliveries Todas las tareas del usuario que ya entrego, excluyendo las que faltan por entregar
-    deliveries = Assignment.find_all_by_user_id(current_user.id).map { |e| Delivery.find_by_id(e.delivery_id)}
+    
+    #deliveries = Assignment.find_all_by_user_id(current_user.id).map { |e| Delivery.find_by_id(e.delivery_id)}
+    courses = student_subscribed_courses
+
+    deliveries = courses.inject([]) do
+      |accu, course|
+      accu + course.deliveries
+    end
 
     deliveries = deliveries.keep_if do |delivery|
       delivery.end_date.to_datetime < Time.now.to_datetime 
@@ -89,8 +92,7 @@ class DeliveriesController < ApplicationController
 
     @today_deliveries = deliveries.clone.keep_if do
       |delivery|
-      #p delivery
-      Date.today <= delivery.end_date.to_datetime and delivery.end_date.to_datetime <= Date.tomorrow
+      Time.now.to_datetime <= delivery.end_date.to_datetime and delivery.end_date.to_datetime <= Date.tomorrow
     end
 
     @tomorrow_deliveries = deliveries.clone.keep_if do
@@ -109,7 +111,9 @@ class DeliveriesController < ApplicationController
   def deliveries_course_delivered
     # /courses/:id/deliveries/delivered
     # @deliveries Todas las tareas del usuario que ya entrego de un curso especifico, excluyendo las que faltan por entregar
-    deliveries = Assignment.find_all_by_user_id_and_course_id(current_user.id,params[:id]).map { |e| Delivery.find_by_id(e.delivery_id)}
+
+    #deliveries = Assignment.find_all_by_user_id_and_course_id(current_user.id,params[:id]).map { |e| Delivery.find_by_id(e.delivery_id)}
+    deliveries = Course.find_by_id(params[:id]).deliveries
 
     deliveries = deliveries.keep_if do |delivery|
       delivery.end_date.to_datetime < Time.now.to_datetime 
