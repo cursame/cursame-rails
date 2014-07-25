@@ -1,0 +1,11 @@
+= render partial: 'surveys/shared/surveys_course_header', locals: { course: @course }
+.academic-activities-list-wrap
+	- unless @surveys.empty?
+		.academic-activities-section
+			.wrapper
+				.academic-activities-main
+					.cols-12
+						= render partial: 'surveys/shared/surveys_list_cards', locals: { surveys: @surveys }
+	- else
+		.no-content-section
+			%h4 No se encontraron cuestionarios pasados en este curso.

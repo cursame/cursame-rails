@@ -123,15 +123,15 @@ Cursame30Lb::Application.routes.draw do
 
   # Tareas
   get "/deliveries", to: "deliveries#index", as: :deliveries
-  get "/deliveries/delivered", to: "deliveries#delivered", as: :deliveries_delivered
+  get "/deliveries/lapsed", to: "deliveries#lapsed", as: :deliveries_lapsed
   get '/courses/:id/deliveries/', to: 'deliveries#deliveries_course', as: :deliveries_course
-  get "/courses/:id/deliveries/delivered", to: "deliveries#deliveries_course_delivered", as: :deliveries_course_delivered
+  get "/courses/:id/deliveries/lapsed", to: "deliveries#deliveries_course_lapsed", as: :deliveries_course_lapsed
 
   # Surveys
   get "surveys", :to => 'surveys#index', :as => :surveys
-  get "surveys/answered", :to => 'surveys#answered', :as => :surveys_answered
+  get "surveys/lapsed", :to => 'surveys#lapsed', :as => :surveys_lapsed
   get '/courses/:id/surveys/', to: 'surveys#surveys_course', as: :surveys_course
-  get "/courses/:id/surveys/answered", to: "surveys#surveys_course_answered", as: :surveys_course_answered
+  get "/courses/:id/surveys/lapsed", to: "surveys#surveys_course_lapsed", as: :surveys_course_lapsed
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
   resources :surveys
   

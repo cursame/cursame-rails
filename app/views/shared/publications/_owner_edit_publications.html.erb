@@ -8,7 +8,7 @@
         <i class="tip"></i>
         <ul>
           <li>
-            <%= link_to "Borrar", destroy_wall_path(publication.id), remote: true%>
+            <%= link_to "Borrar", destroy_wall_path(publication.id), remote: true, confirm: "¿Estas seguro de borrar esto?" %>
           </li>
           <li>
             <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">

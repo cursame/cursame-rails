@@ -15,6 +15,6 @@
               - action = params[:action]
               %ul
                 %li
-                  = link_to "Entregar", deliveries_path, class: (action == 'index' ? "active" : " ")
+                  = link_to "Entregar", deliveries_path, class: active_class('index')
                 %li
-                  = link_to "Entregadas", deliveries_delivered_path, class: (action == 'delivered' ? "active" : " ")
+                  = link_to "Pasadas", deliveries_lapsed_path, class: active_class('lapsed')

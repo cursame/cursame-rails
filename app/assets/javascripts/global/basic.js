@@ -140,11 +140,16 @@ window.Notice = function(type, message)  {
   var notice        = $('#notice'),
       noticeWrapper = notice.closest('#noticce');
 
-  noticeWrapper.addClass('active');
+  noticeWrapper.animate({
+    top: 0
+  }, 100);
+
   notice.removeClass('error success notice').addClass( type ).html( message );
 
   setTimeout(function() {
-    noticeWrapper.removeClass('active');
+    noticeWrapper.animate({
+      top: notice.outerHeight() * -1
+    }, 100);
   }, 3100);
 };
 

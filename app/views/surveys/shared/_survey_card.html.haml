@@ -1,0 +1,17 @@
+- course = survey.courses.first
+.col.col-6
+  .col-inner
+    .post-box.survey{id: survey.id}
+      .post-box-main
+        .post-box-main-author
+          = icon 'survey-card'
+          = link_to course_path(course), title: course.title, class: 'post-box-avatar' do
+            = avatar 'course', '45', 'no', course.id, 'avatar', 'no', 'no'
+          .post-box-main-author-content
+            = link_to course.title, course_path(course), title: course.title
+            %span.timestamp= time_ago_in_words survey.created_at
+        .post-box-content
+          = link_to survey_modal_path(survey), remote: true, class: 'activable' do
+            %h3= survey.title
+          %span.deliver-date Entregar: #{pretty_date_format survey.end_date}
+          = link_to 'Contestar', survey_modal_path(survey), remote: true, class: "btn btn-transparent activable"

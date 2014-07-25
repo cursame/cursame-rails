@@ -16,4 +16,4 @@
               - action = params[:action]
               %ul
                 %li= link_to "Responder", surveys_course_path(course), class: active_class('surveys_course')
-                %li= link_to "Respondidos", surveys_course_answered_path(course), class: active_class('surveys_course_answered')
+                %li= link_to "Pasados", surveys_course_lapsed_path(course), class: active_class('surveys_course_lapsed')

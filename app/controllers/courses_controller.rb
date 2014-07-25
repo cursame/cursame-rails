@@ -106,6 +106,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    puts ".-------"
+    puts @course
     @member = obtainMember(@course.id,current_user.id)
 
     if @member.nil?
@@ -136,6 +138,7 @@ class CoursesController < ApplicationController
 
     @page = params[:page].to_i
     @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, @id_search).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+
     if request.xhr?
       respond_to do |format|
         format.js

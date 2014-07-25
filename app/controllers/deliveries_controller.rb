@@ -1,15 +1,11 @@
 class DeliveriesController < ApplicationController
   include CoursesUtils
-  helper_method :condocourse
-  before_filter :filter_protection, :only => [:show, :edit]
+  include FiltersUtils
   helper_method :assigment
+  before_filter :filter_protection, :only => [:show, :edit]
+  before_filter :only_students, :only => [:index, :lapsed, :deliveries_course, :deliveries_course_lapsed]
 
   def index
-    # /deliveries
-    # @today_deliveries 
-    # @tomorrow_deliveries 
-    # @rest_of_deliveries
-
     courses = student_subscribed_courses
 
     deliveries = courses.inject([]) do
@@ -35,32 +31,9 @@ class DeliveriesController < ApplicationController
       |delivery|
       delivery.end_date.to_datetime >= (Date.tomorrow + 1.day)
     end
-
-    deliveries = []
-    current_user.courses.each do |c|
-      @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
-      c.deliveries.each do |d|
-        case @member.owner
-        when true
-          if d.assignments.count == 0
-            deliveries.push(d.id)
-          end
-        when false
-          if d.assignments.where(:user_id => current_user.id).count == 0
-            deliveries.push(d.id)
-          end
-        end
-      end
-    end
-    @wall = current_network.walls.where(:publication_type => 'Delivery', :publication_id => deliveries).paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-    
   end
 
-  def delivered
-    # /deliveries/delivered
-    # @deliveries Todas las tareas del usuario que ya entrego, excluyendo las que faltan por entregar
-    
-    #deliveries = Assignment.find_all_by_user_id(current_user.id).map { |e| Delivery.find_by_id(e.delivery_id)}
+  def lapsed
     courses = student_subscribed_courses
 
     deliveries = courses.inject([]) do
@@ -75,16 +48,11 @@ class DeliveriesController < ApplicationController
     @deliveries = deliveries.sort do
       |x,y| y.end_date <=> x.end_date
     end
-
   end
 
   def deliveries_course
-    # /courses/:id/deliveries
-    # @today_deliveries 
-    # @tomorrow_deliveries 
-    # @rest_of_deliveries 
-    # Solo para este curso
-    deliveries = Course.find_by_id(params[:id]).deliveries
+    @course = Course.find_by_id(params[:id])
+    deliveries = @course.deliveries
 
     deliveries = deliveries.sort do
       |x,y| y.end_date <=> x.end_date
@@ -104,15 +72,9 @@ class DeliveriesController < ApplicationController
       |delivery|
       delivery.end_date.to_datetime >= (Date.tomorrow + 1.day)
     end
-
-    @course = Course.find_by_id(params[:id])
   end
 
-  def deliveries_course_delivered
-    # /courses/:id/deliveries/delivered
-    # @deliveries Todas las tareas del usuario que ya entrego de un curso especifico, excluyendo las que faltan por entregar
-
-    #deliveries = Assignment.find_all_by_user_id_and_course_id(current_user.id,params[:id]).map { |e| Delivery.find_by_id(e.delivery_id)}
+  def deliveries_course_lapsed
     deliveries = Course.find_by_id(params[:id]).deliveries
 
     deliveries = deliveries.keep_if do |delivery|
@@ -143,8 +105,6 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  # GET /deliveries/new
-  # GET /deliveries/new.json
   def new
     @delivery = Delivery.new
 
@@ -154,13 +114,10 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  # GET /deliveries/1/edit
   def edit
     @delivery = Delivery.find(params[:id])
   end
 
-  # POST /deliveries
-  # POST /deliveries.json
   def create
     courses = courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
     @publication = []
@@ -193,8 +150,6 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  # PUT /deliveries/1
-  # PUT /deliveries/1.json
   def update
     @delivery = Delivery.find(params[:id])
     @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
@@ -211,8 +166,6 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  # DELETE /deliveries/1
-  # DELETE /deliveries/1.json
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
@@ -265,7 +218,6 @@ class DeliveriesController < ApplicationController
     end
   end
 
-
   # TODO: metodo requiere refactoring
   # TODO: verificar en donde se utiliza este metodo
   def assigment
@@ -311,6 +263,6 @@ class DeliveriesController < ApplicationController
         format.js
       end
     end
-
   end
+  
 end

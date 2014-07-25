@@ -15,4 +15,4 @@
               - action = params[:action]
               %ul
                 %li= link_to "Activas", deliveries_course_path(course), class: ((action == 'deliveries_course' || action == 'course') ? "active" : " ")
-                %li= link_to "Pasadas", deliveries_course_delivered_path(course), class: (action == 'deliveries_course_delivered' ? "active" : " ")
+                %li= link_to "Pasadas", deliveries_course_lapsed_path(course), class: active_class('deliveries_course_lapsed')

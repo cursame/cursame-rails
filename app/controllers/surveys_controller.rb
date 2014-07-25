@@ -1,10 +1,6 @@
 class SurveysController < ApplicationController
 
   def index
-    # /surveys
-    # @today_surveys 
-    # @tomorrow_surveys 
-    # @rest_of_surveys
     courses = student_subscribed_courses
 
     surveys = courses.inject([]) do
@@ -33,11 +29,7 @@ class SurveysController < ApplicationController
 
   end
 
-  def answered
-    # /surveys/answered
-    # @surveys Todas las Surveys del usuario que ya constesto, excluyendo las que faltan por contestar
-    
-    #surveys = UserSurvey.find_all_by_user_id(current_user.id).map { |e| Survey.find_by_id(e.survey_id)}
+  def lapsed
     courses = student_subscribed_courses
 
     surveys = courses.inject([]) do
@@ -56,14 +48,8 @@ class SurveysController < ApplicationController
   end
 
   def surveys_course
-    # /courses/:id/surveys
-    # @today_surveys 
-    # @tomorrow_surveys 
-    # @rest_of_surveys 
-    # Solo para este curso
     @course = Course.find_by_id(params[:id])
-
-    surveys = Course.find_by_id(params[:id]).surveys
+    surveys = @course.surveys
 
     surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
@@ -86,54 +72,16 @@ class SurveysController < ApplicationController
 
   end
 
-  def surveys_course_answered
-    # /courses/:id/surveys/answered
-    # @surveys Todas los Surveys del usuario que ya entrego de un curso especifico, excluyendo las que faltan por contestar
+  def surveys_course_lapsed
     @course = Course.find_by_id(params[:id])
-
-    surveys = Course.find_by_id(params[:id]).surveys
+    surveys = @course.surveys
 
     surveys = surveys.keep_if do |survey|
-      #!UserSurvey.find_by_survey_id(survey.id).nil? and 
       survey.end_date.to_datetime < Time.now.to_datetime
     end
 
     @surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
-    end
-
-
-  end
-
-  def my_surveys
-    surveys = []
-      current_user.courses.each do |c|
-        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
-         c.surveys.each do |s|
-           case 
-              when @member.owner
-                  if s.user_surveys.count == 0
-                       surveys.push(s.id)
-                  end
-              when (!@member.owner.nil? || !@member.owner)
-                  if s.user_surveys.count == 0
-                       surveys.push(s.id)
-                      else
-                      if s.user_surveys.where(:user_id => current_user.id).count == 0
-                        surveys.push(s.id)
-                      end
-                  end
-           end
-          end
-      end
-    @wall = current_network.walls.where(:publication_type => 'Survey', :publication_id => surveys ).paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-
-    respond_to do |format|
-      if params[:fo_format].nil?
-      format.html
-      else
-      format.js
-      end
     end
   end
 
@@ -146,7 +94,6 @@ class SurveysController < ApplicationController
   end
 
   def create
-
     @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network

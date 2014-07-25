@@ -331,3 +331,12 @@
     color: lighten($delivery-color, 60%);
   }
 }
+
+.survey .post-box-main {
+  background-color: $survey-color;
+  @include linear-gradient(45deg, $survey-color 0%, lighten($survey-color, 2%) 100%);
+
+  .timestamp, .deliver-date {
+    color: lighten($survey-color, 60%);
+  }
+}
