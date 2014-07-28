@@ -51,7 +51,16 @@ class DeliveriesController < ApplicationController
   end
 
   def deliveries_course
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no estas inscrito."}
+    end
+
     @course = Course.find_by_id(params[:id])
+
     deliveries = @course.deliveries
 
     deliveries = deliveries.sort do
@@ -75,7 +84,16 @@ class DeliveriesController < ApplicationController
   end
 
   def deliveries_course_lapsed
-    deliveries = Course.find_by_id(params[:id]).deliveries
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no estas inscrito."}
+    end
+    @course = Course.find_by_id(params[:id])
+
+    deliveries = @course.deliveries
 
     deliveries = deliveries.keep_if do |delivery|
       delivery.end_date.to_datetime < Time.now.to_datetime 
@@ -85,7 +103,7 @@ class DeliveriesController < ApplicationController
       |x,y| y.end_date <=> x.end_date
     end
 
-    @course = Course.find_by_id(params[:id])
+    #@course = Course.find_by_id(params[:id])
   end
 
   def show

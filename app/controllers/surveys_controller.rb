@@ -1,4 +1,7 @@
 class SurveysController < ApplicationController
+  include CoursesUtils
+  include FiltersUtils
+  before_filter :only_students, :only => [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
 
   def index
     courses = student_subscribed_courses
@@ -48,7 +51,16 @@ class SurveysController < ApplicationController
   end
 
   def surveys_course
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."}
+    end
+
     @course = Course.find_by_id(params[:id])
+
     surveys = @course.surveys
 
     surveys = surveys.sort do
@@ -73,7 +85,16 @@ class SurveysController < ApplicationController
   end
 
   def surveys_course_lapsed
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."}
+    end
+
     @course = Course.find_by_id(params[:id])
+
     surveys = @course.surveys
 
     surveys = surveys.keep_if do |survey|
