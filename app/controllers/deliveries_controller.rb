@@ -1,5 +1,6 @@
 class DeliveriesController < ApplicationController
   include CoursesUtils
+  include DeliveriesUtils
   include FiltersUtils
   helper_method :assigment
   before_filter :filter_protection, :only => [:show, :edit]
@@ -34,20 +35,7 @@ class DeliveriesController < ApplicationController
   end
 
   def lapsed
-    courses = student_subscribed_courses
-
-    deliveries = courses.inject([]) do
-      |accu, course|
-      accu + course.deliveries
-    end
-
-    deliveries = deliveries.keep_if do |delivery|
-      delivery.end_date.to_datetime < Time.now.to_datetime 
-    end
-
-    @deliveries = deliveries.sort do
-      |x,y| y.end_date <=> x.end_date
-    end
+    @deliveries = student_lapsed_deliveries.paginate(per_page: CARDS_PER_PAGE, page: 1)
   end
 
   def deliveries_course
@@ -75,17 +63,29 @@ class DeliveriesController < ApplicationController
   end
 
   def deliveries_course_lapsed
-    deliveries = Course.find_by_id(params[:id]).deliveries
-
-    deliveries = deliveries.keep_if do |delivery|
-      delivery.end_date.to_datetime < Time.now.to_datetime 
-    end
-
-    @deliveries = deliveries.sort do
-      |x,y| y.end_date <=> x.end_date
-    end
-
     @course = Course.find_by_id(params[:id])
+    @deliveries = course_lapsed_deliveries(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
+  end
+
+  def paginate_ajax
+    page = params[:page]
+    @type = params[:type]
+    @next_page = page.to_i + 1
+
+    case @type
+    when 'lapsed'
+      deliveries_raw = student_lapsed_deliveries
+      @course = nil
+    when 'course_lapsed'
+      @course = Course.find_by_id(params[:course])
+      deliveries_raw = course_lapsed_deliveries(@course)
+    end
+
+    @deliveries = deliveries_raw.paginate(per_page: CARDS_PER_PAGE, page: page)
+    
+    respond_to do |format|
+      format.js { render 'deliveries/ajax/deliveries_paginate_ajax' }
+    end
   end
 
   def show

@@ -1,18 +1,20 @@
 class DiscussionsController < ApplicationController
-  # GET /discussions
-  # GET /discussions.json
   def index
     @discussions = Discussion.all
+    @wall = current_network.walls
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @discussions }
+      format.html
     end
   end
- 
- ##### coloca todas las dicusiones del alumno #####
+
+  def discussions_course
+    @course = Course.find_by_id(params[:id])
+  end
+
   def my_discussions
     @wall = current_network.walls.where(:publication_type => 'Discussion').paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+
     respond_to do |format|
       if params[:fo_format].nil?
       format.html

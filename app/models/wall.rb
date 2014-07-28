@@ -2,11 +2,11 @@ class Wall < ActiveRecord::Base
   belongs_to :publication, :polymorphic => true
 
   #publications/walls
-    has_many :userpublicationings, :dependent => :destroy
-    has_many :users, :through => :userpublicationings
+  has_many :userpublicationings, :dependent => :destroy
+  has_many :users, :through => :userpublicationings
 
-    has_many :coursepublicationings, :dependent => :destroy
-    has_many :courses, :through => :coursepublicationings
+  has_many :coursepublicationings, :dependent => :destroy
+  has_many :courses, :through => :coursepublicationings
 
 
   belongs_to :network

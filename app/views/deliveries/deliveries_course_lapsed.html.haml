@@ -1,3 +1,6 @@
+- content_for :javascripts do
+	= javascript_include_tag 'publications/paginator'
+
 = render partial: 'deliveries/shared/deliveries_course_header', locals: { course: @course }
 - unless @deliveries.empty?
 	.academic-activities-section
@@ -5,6 +8,8 @@
 			.academic-activities-main
 				.cols-12
 					= render partial: 'deliveries/shared/deliveries_list', locals: { deliveries: @deliveries }
-- else
-	.no-content-section
-		%h4 No se encontraron tareas pasadas en este curso.
+
+			- if @deliveries.current_page < @deliveries.num_pages
+				= render partial: 'deliveries/shared/deliveries_paginate_button', locals: { page: 2, type: 'course_lapsed', course: @course }
+			- else
+				= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más tareas pasadas." }

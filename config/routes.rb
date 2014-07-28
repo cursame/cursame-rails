@@ -36,12 +36,6 @@ Cursame30Lb::Application.routes.draw do
   get "managers/library"
   get "managers/delete_user", :as => :delete_user
 
-  resources :discussions
-
-  ##### ruta para ver todas las dicusiones
-
-  get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussions
-
   ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
     collection do
@@ -85,30 +79,6 @@ Cursame30Lb::Application.routes.draw do
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
-  
-  # Cursos
-  get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
-  get '/courses/all', :to => 'courses#all', :as => :courses_all
-  get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
-  get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
-  match '/courses/search', :to => "courses#search", :as => :search_courses
-
-  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
-  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
-  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
-
-  resources :courses do
-    resources :assignments
-    resources :messages do
-      collection do
-        post :active_create
-      end
-    end
-
-    collection do
-      post :assigment
-    end
-  end
 
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
@@ -126,6 +96,7 @@ Cursame30Lb::Application.routes.draw do
   get "/deliveries/lapsed", to: "deliveries#lapsed", as: :deliveries_lapsed
   get '/courses/:id/deliveries/', to: 'deliveries#deliveries_course', as: :deliveries_course
   get "/courses/:id/deliveries/lapsed", to: "deliveries#deliveries_course_lapsed", as: :deliveries_course_lapsed
+  get '/deliveries/paginate-ajax', to: "deliveries#paginate_ajax", as: :deliveries_paginate_ajax
 
   # Surveys
   get "surveys", :to => 'surveys#index', :as => :surveys
@@ -134,6 +105,33 @@ Cursame30Lb::Application.routes.draw do
   get "/courses/:id/surveys/lapsed", to: "surveys#surveys_course_lapsed", as: :surveys_course_lapsed
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
   resources :surveys
+
+  # Discusiones
+  get '/courses/:id/discussions/', to: 'discussions#discussions_course', as: :discussions_course
+  resources :discussions
+
+  # Cursos
+  get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
+  get '/courses/all', :to => 'courses#all', :as => :courses_all
+  get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
+  get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
+  match '/courses/search', :to => "courses#search", :as => :search_courses
+  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
+  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
+  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+
+  resources :courses do
+    resources :assignments
+    resources :messages do
+      collection do
+        post :active_create
+      end
+    end
+
+    collection do
+      post :assigment
+    end
+  end
   
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
