@@ -1,4 +1,8 @@
+- content_for :javascripts do
+	= javascript_include_tag 'publications/paginator'
+	
 = render partial: 'surveys/shared/surveys_course_header', locals: { course: @course }
+
 .academic-activities-list-wrap
 	- unless @surveys.empty?
 		.academic-activities-section
@@ -6,6 +10,8 @@
 				.academic-activities-main
 					.cols-12
 						= render partial: 'surveys/shared/surveys_list_cards', locals: { surveys: @surveys }
-	- else
-		.no-content-section
-			%h4 No se encontraron cuestionarios pasados en este curso.
+
+				- if @surveys.current_page < @surveys.num_pages
+					= render partial: 'surveys/shared/surveys_paginate_button', locals: { page: 2, type: 'course_lapsed', course: @course }
+				- else
+					= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más cuestionarios pasados." }

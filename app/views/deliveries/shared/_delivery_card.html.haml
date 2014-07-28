@@ -11,8 +11,8 @@
             = link_to course.title, course_path(course), title: course.title
             %span.timestamp= time_ago_in_words delivery.created_at
         .post-box-content
-          = link_to delivery_modal_path(delivery.id), remote: true do 
+          = link_to delivery_modal_path(delivery.id), remote: true, class: 'activable' do 
             %h3= delivery.title
           %span.deliver-date Entregar: #{pretty_date_format delivery.end_date}
           - delivered = current_user.assignments.where(:delivery_id => delivery.id)
-          = link_to (delivered.empty? ? 'Entregar Tarea' : 'Ver Entrega'), delivery_modal_path(delivery.id), remote: true, class: "btn btn-transparent"
+          = link_to (delivered.empty? ? 'Entregar Tarea' : 'Ver Entrega'), delivery_modal_path(delivery.id), remote: true, class: "btn btn-transparent activable"

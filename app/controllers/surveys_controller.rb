@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   include CoursesUtils
+  include SurveysUtils
   include FiltersUtils
   before_filter :only_students, :only => [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
 
@@ -33,21 +34,7 @@ class SurveysController < ApplicationController
   end
 
   def lapsed
-    courses = student_subscribed_courses
-
-    surveys = courses.inject([]) do
-      |accu, course|
-      accu + course.surveys
-    end
-
-    surveys = surveys.keep_if do |survey|
-      survey.end_date.to_datetime < Time.now.to_datetime 
-    end
-
-    @surveys = surveys.sort do
-      |x,y| y.end_date <=> x.end_date
-    end    
-
+    @surveys = student_lapsed_surveys.paginate(per_page: CARDS_PER_PAGE, page: 1)
   end
 
   def surveys_course
@@ -86,7 +73,6 @@ class SurveysController < ApplicationController
 
   def surveys_course_lapsed
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
-
     unless member.nil?
       redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
     else
@@ -94,15 +80,27 @@ class SurveysController < ApplicationController
     end
 
     @course = Course.find_by_id(params[:id])
+    @surveys = course_lapsed_surveys(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
+  end
 
-    surveys = @course.surveys
+  def paginate_ajax
+    page = params[:page]
+    @type = params[:type]
+    @next_page = page.to_i + 1
 
-    surveys = surveys.keep_if do |survey|
-      survey.end_date.to_datetime < Time.now.to_datetime
+    case @type
+    when 'lapsed'
+      @course = nil
+      surveys_raw = student_lapsed_surveys
+    when 'course_lapsed'
+      @course = Course.find_by_id(params[:course])
+      surveys_raw = course_lapsed_surveys(@course)
     end
 
-    @surveys = surveys.sort do
-      |x,y| y.end_date <=> x.end_date
+    @surveys = surveys_raw.paginate(per_page: CARDS_PER_PAGE, page: page)
+
+    respond_to do |format|
+      format.js { render 'surveys/ajax/surveys_paginate_ajax' }
     end
   end
 

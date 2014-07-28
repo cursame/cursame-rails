@@ -104,6 +104,7 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/surveys/', to: 'surveys#surveys_course', as: :surveys_course
   get "/courses/:id/surveys/lapsed", to: "surveys#surveys_course_lapsed", as: :surveys_course_lapsed
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
+  get '/surveys/paginate-ajax', to: "surveys#paginate_ajax", as: :surveys_paginate_ajax
   resources :surveys
 
   # Discusiones

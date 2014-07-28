@@ -11,7 +11,7 @@ module DeliveriesUtils
       delivery.end_date.to_datetime < Time.now.to_datetime 
     end
 
-    deliveries.sort! do |x,y|
+    deliveries.sort do |x,y|
     	y.end_date <=> x.end_date
     end
 	end

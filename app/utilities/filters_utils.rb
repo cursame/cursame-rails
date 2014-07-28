@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 module FiltersUtils
 
 	def only_teachers
@@ -13,5 +12,5 @@ module FiltersUtils
 			redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para estudiantes." }
 		end
 	end
-
+	
 end
