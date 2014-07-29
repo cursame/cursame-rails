@@ -1,15 +1,41 @@
 class DiscussionsController < ApplicationController
-  def index
-    @discussions = Discussion.all
-    @wall = current_network.walls
+  include CoursesUtils
 
-    respond_to do |format|
-      format.html
+  def index
+    wallTypeDiscussion = Wall.find_all_by_publication_type_and_public_and_network_id('Discussion',true,current_network.id)
+    #wallTypeDiscussion = Wall.where publication_type: 'Discussion', public: true, network_id: current_network.id
+    discussionsPublic = wallTypeDiscussion.map { |e| e.publication }
+
+    courses = student_subscribed_courses
+
+    discussionsCourse = courses.inject([]) do
+      |accu, course|
+      accu + course.discussions
     end
+
+    discussions = discussionsPublic + discussionsCourse
+
+    @discussions = discussions.sort do
+      |x,y| y.created_at <=> x.created_at
+    end
+
   end
 
   def discussions_course
     @course = Course.find_by_id(params[:id])
+
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no estas inscrito."}
+    end
+
+    discussions = @course.discussions
+
+    @discussions = discussions.sort do
+      |x,y| y.created_at <=> x.created_at
+    end
   end
 
   def my_discussions
