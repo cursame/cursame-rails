@@ -169,8 +169,6 @@ class NetworksController < ApplicationController
     end
   end
 
-
-
   def find_user
     @search_changes = params[:activiesearch].downcase
     docificate_search_changes = I18n.transliterate("#{@search_changes}")

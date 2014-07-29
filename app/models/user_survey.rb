@@ -17,6 +17,10 @@ class UserSurvey < ActiveRecord::Base
         teacher_users = teachers.map { |t| t.user}
         Notification.create notificator: self, users: teacher_users, kind: "new_assignment_on_survey", active: true
       end
+
+      teacher_users = teachers.map { |t| t.user}
+
+      Notification.create(:notificator => self, :users => teacher_users, :kind => "new_assignment_on_survey", :active => true)
     end
     grade = Grade.create gradable: self, score: 0, user_id: self.user_id
     self.grade = grade
@@ -47,9 +51,11 @@ class UserSurvey < ActiveRecord::Base
       end
       return 0.0
     end
+    return 0.0
   end
 
   def title
     'respuesta ' + survey.name
   end
+
 end
