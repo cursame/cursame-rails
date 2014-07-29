@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   filter_access_to :show
   before_filter :course_activated, :only => [:show, :about, :members, :library]
   include CoursesUtils
+  include MixpanelEventTracker
 
   def index
     @member = MembersInCourse.new
