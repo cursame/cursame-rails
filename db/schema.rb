@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140721231911) do
+ActiveRecord::Schema.define(:version => 20140728185908) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -198,18 +198,16 @@ ActiveRecord::Schema.define(:version => 20140721231911) do
     t.text     "silabus"
     t.datetime "init_date"
     t.datetime "finish_date"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "public_status"
     t.string   "avatar"
     t.string   "coverphoto"
-    t.integer  "delivery_id"
-    t.integer  "survey_param_evaluation"
-    t.integer  "delivery_param_evaluation"
     t.integer  "network_id"
-    t.boolean  "active_status",             :default => true
-    t.integer  "likes"
+    t.boolean  "active_status", :default => true
   end
+
+  add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -259,12 +257,12 @@ ActiveRecord::Schema.define(:version => 20140721231911) do
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "network_id"
     t.integer  "user_id"
-    t.integer  "likes"
     t.text     "description_html"
+    t.boolean  "evaluable",        :default => false
   end
 
   create_table "discussions_courses", :force => true do |t|
@@ -388,11 +386,11 @@ ActiveRecord::Schema.define(:version => 20140721231911) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form",        :default => false
+    t.boolean  "register_form"
     t.text     "welcom_message"
-    t.string   "image_front",          :default => "background-restore.jpg"
-    t.string   "logo",                 :default => "logo.png"
-    t.string   "logo_type",            :default => "128x26"
+    t.string   "image_front"
+    t.string   "logo"
+    t.string   "logo_type"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -413,6 +411,13 @@ ActiveRecord::Schema.define(:version => 20140721231911) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
+  end
+
+  create_table "p_id_to_h_ids", :force => true do |t|
+    t.integer  "p_id"
+    t.integer  "h_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "permissionings", :force => true do |t|
