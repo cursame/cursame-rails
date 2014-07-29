@@ -5,7 +5,7 @@
     <%= render partial: "shared/sessions/network_box_head", locals: { sign_up: false, sign_in: true } %>
     <div class="user-sessions-main">
       <div class="user-session-content">
-        <% if !current_network.nil? && current_network.register_form == true %>
+        <% unless current_network.register_form %>
           <p>Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
           <%= link_to "Ir a la página principal", "/users/sign_in" %>
         <% else %>
