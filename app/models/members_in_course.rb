@@ -125,47 +125,9 @@ class MembersInCourse < ActiveRecord::Base
    
 
   end
-  
 
-  # Si logras mejorar este metodo, por favor, deja tu nombre.
-
-
-  def course_evaluation(course,deliveries, surveys)
-    count_surveys = surveys.count
-    table = {}
-    deliveries_table = {}
-    surveys_table = {}
-    
-    survey_value = course.survey_param_evaluation
-    delivery_value = course.delivery_param_evaluation
-    
-    deliveries_table["deliveries"] = course.deliveries.sort{ |x,y| x.created_at <=> y.created_at }
-    deliveries_table["assignments"] = deliveries_table["deliveries"].map {
-      |delivery|
-      Assignment.find_by_delivery_id_and_user_id(delivery.id,self.user_id)
-    }
-    deliveries_table["percent_of_deliveries"] = course.delivery_param_evaluation.to_f 
-    deliveries_table["evaluation_total"] = (evaluation_deliveries(deliveries_table["assignments"], deliveries_table["deliveries"]).to_i * delivery_value.to_i)/100
-    surveys_table["surveys"] = course.surveys.sort{ |x,y| x.created_at <=> y.created_at }
-    
-    surveys_table["user_surveys"] = surveys_table["surveys"].map {
-      |survey|
-      UserSurvey.find_by_survey_id_and_user_id(survey.id,self.user_id)
-    }
-
-    #### mi nombre es JARDA #####
-    surveys_table["percent_of_surveys"] = course.survey_param_evaluation.to_f
-    surveys_table["evaluation_total"] =  evaluation_surveys(surveys_table["user_surveys"],surveys_table["surveys"]) if count_surveys != 0
-    surveys_table["evaluation_total"] = 0 if count_surveys == 0
-    surveys_table["percent_of_evaluation"] = (surveys_table["evaluation_total"] * surveys_table["percent_of_surveys"])/100 if count_surveys != 0
-    surveys_table["percent_of_evaluation"] = 0 if count_surveys == 0
-    
-    table["deliveries"] = deliveries_table
-    table["surveys"] = surveys_table 
-    table["evaluation"] = deliveries_table["evaluation_total"] + 
-      surveys_table["percent_of_evaluation"]
-    
-    table
+  # TODO: evaluar si se requiere este metodo aqui
+  def course_evaluation(course,deliveries,surveys)
   end
 
   # obtiene si es owner del grupo mediante un delivery

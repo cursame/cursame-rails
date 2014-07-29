@@ -1,8 +1,4 @@
 class Comment < ActiveRecord::Base
-  # para agilizar la creacion de notificaciones en tareas
-  # after_commit :create_notifications, :on => :create
-
-
   include ActsAsCommentable::Comment
   #include UtilityHelper
 

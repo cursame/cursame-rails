@@ -375,7 +375,7 @@ class Api::ApiController < ApplicationController
         a.evaluation_percentage = area[1]['percentage']
         a.name = area[1]['name']
         a.save
-        @delivery.areas_of_evaluations.push(a)
+        @delivery.evaluation_criteria.push(a)
       end
     end
 

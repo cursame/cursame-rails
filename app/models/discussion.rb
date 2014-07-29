@@ -1,43 +1,44 @@
 class Discussion < ActiveRecord::Base
-   has_many :discussions_coursess, :dependent => :destroy
-   has_many :courses, :through => :discussions_coursess
-   has_many :activities, as: :activitye#, :dependent => :destroy
-   has_many :contents, :as => :contentye #, :dependent => :destroy
-   
-   belongs_to :network
-   belongs_to :user
+
+  has_many :discussions_coursess, dependent: :destroy
+  has_many :courses, through: :discussions_coursess
+  has_many :activities, as: :activitye
+  has_many :contents, as: :contentye
+  has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
+
+  attr_accessible :evaluation_criteria
+
+  belongs_to :network
+  belongs_to :user
 
   validate :max_courses
   validates_presence_of :user
-  
-   accepts_nested_attributes_for :contents
-   
-  #comentarios para las discusiones
+
+  accepts_nested_attributes_for :contents
+  accepts_nested_attributes_for :evaluation_criteria
+
   acts_as_commentable
-  #para los likes
   acts_as_votable
 
-  #autoconversion de links, links inteligentes
+  # autoconversion de links, links inteligentes
+  # this is defined in config/initializers/auto_html.rb
   auto_html_for :description do
     html_escape
     image
-    # This is defined in config/initializers/auto_html.rb
-    dailymotion :width => "100%", :height => 250
-    #flickr :width => 400, :height => 250
-    google_map :width => "100%", :height => 250
+    dailymotion  :width => "100%", :height => 250
+    google_map   :width => "100%", :height => 250
     google_video :width => "100%", :height => 250
-    metacafe :width => "100%", :height => 250
-    soundcloud :width => "100%", :height => 250
-    twitter :width => "100%", :height => 250
-    vimeo :width => "100%", :height => 250
-    youtube :width => "100%", :height => 250
+    metacafe     :width => "100%", :height => 250
+    soundcloud   :width => "100%", :height => 250
+    twitter      :width => "100%", :height => 250
+    vimeo        :width => "100%", :height => 250
+    youtube      :width => "100%", :height => 250
     slideshare_support :width => "100%"
-    ustream_support :width => "100%"
-    prezi_with_wmode :width => "100%", :height => 360
-    livestrem_support :width => "100%", :height => 360
+    ustream_support    :width => "100%"
+    prezi_with_wmode   :width => "100%", :height => 360
+    livestrem_support  :width => "100%", :height => 360
     link :target => "_blank", :rel => "nofollow"
     redcarpet
-    #sanitize
     simple_format
   end
 
@@ -70,7 +71,7 @@ class Discussion < ActiveRecord::Base
 
       if !self.courses.nil? && !self.courses.empty?
         self.courses.each do |course|
-          mixpanel_properties = { 
+          mixpanel_properties = {
             'Network' => self.network.name.capitalize,
             'Course'  => course.title.capitalize,
             'Role'    => permissioning.role.title.capitalize
@@ -78,7 +79,7 @@ class Discussion < ActiveRecord::Base
           MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
         end
       else
-        mixpanel_properties = { 
+        mixpanel_properties = {
           'Network' => self.network.name.capitalize,
           'Course'  => 'Public',
           'Role'    => permissioning.role.title.capitalize
@@ -89,7 +90,7 @@ class Discussion < ActiveRecord::Base
     rescue
       puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
     end
-    
+
   end
 
   after_destroy do
@@ -123,14 +124,14 @@ class Discussion < ActiveRecord::Base
 
   def send_mail(users)
     Thread.new {
-          begin
-              mail = Notifier.new_discussion_notification(users,self)
-              mail.deliver          
-          rescue => ex
-          ensure
-            ActiveRecord::Base.connection.close
-          end
-        }    
+      begin
+        mail = Notifier.new_discussion_notification(users,self)
+        mail.deliver
+      rescue => ex
+      ensure
+        ActiveRecord::Base.connection.close
+      end
+    }
   end
 
 end

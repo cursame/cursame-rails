@@ -29,10 +29,6 @@ class UsersController < ApplicationController
     @course_count = Course.count
     @member =   @user_l.members_in_courses.where(:owner => true)
 
-    #==== Areas de evaluación ====
-    @areas_of_evaluation = EvaluationCriteria.new
-    areas_of_evaluations = @delivery.areas_of_evaluations.build
-
     ### publicando comentarios en el show de users
     @network_comments = current_network.comments
     @comments = @network_comments.where(:user_id => @accesible_id)
