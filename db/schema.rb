@@ -417,6 +417,13 @@ ActiveRecord::Schema.define(:version => 20140729165656) do
     t.boolean  "active",           :default => true
   end
 
+  create_table "p_id_to_h_ids", :force => true do |t|
+    t.integer  "p_id"
+    t.integer  "h_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "permissionings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
