@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   filter_access_to :show
   before_filter :course_activated, :only => [:show, :about, :members, :library]
   include CoursesUtils
-  include MixpanelEventTracker
 
   def index
     @member = MembersInCourse.new
@@ -196,7 +195,6 @@ class CoursesController < ApplicationController
     else
       redirect_to course_path(@course)
     end
-
   end
 
   # POST /courses
