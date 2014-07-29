@@ -58,7 +58,7 @@
     </div>
 
     <% if @active_edit == false %>  
-      <% areas_of_evaluations = @delivery.areas_of_evaluations.build %>
+      <% evaluation_criteria = @delivery.evaluation_criteria.build %>
       
       <div class="form-group">
         <div class="form-group-label">
@@ -68,8 +68,8 @@
 
           <div class="areas-of-evaluation">
             <div class="form-unit">
-              <%= f.fields_for :areas_of_evaluations do | builder | %>
-                <%= render partial: "areas_of_evaluations/form", id: 'areas_of_evaluations', locals: { f: builder } %>
+              <%= f.fields_for :evaluation_criteria do | builder | %>
+                <%= render partial: "evaluation_criteria/form", id: 'areas_of_evaluations', locals: { f: builder } %>
               <% end %>
             
               <div class="evaluation-footer">
@@ -116,9 +116,9 @@
   
   <% if @active_edit %>
     <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
-    <% unless delivery.areas_of_evaluations.empty? %>    
+    <% unless delivery.evaluation_criteria.empty? %>    
       <h5>Criterios:</h5>
-      <% delivery.areas_of_evaluations.each do |d| %>
+      <% delivery.evaluation_criteria.each do |d| %>
         <p><%= d.name%>: <%= d.evaluation_percentage%></p>
       <%end%>
       <br>

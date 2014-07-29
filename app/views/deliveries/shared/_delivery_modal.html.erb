@@ -34,7 +34,7 @@
       <%end%>
     </div>
     
-    <% if delivery.areas_of_evaluations.count > 0 %>
+    <% if publication.evaluation_criteria.count > 0 %>
       <div class="evaluation-box" style="height: 50px">
         <div id="chart-delivery-<%= delivery.id %>" style="height: 50px"></div>
         <script type="text/javascript">
@@ -113,7 +113,7 @@
                           fontSize: '10px'
                       }
                   },
-                  series: [ <% @i = 1 %> <% delivery.areas_of_evaluations.each do |areas| %> {
+                  series: [ <% @i = 1 %> <% publication.evaluation_criteria.each do |areas| %> {
                       name: '<%= areas.name %>',
                       data: [ <%= areas.evaluation_percentage %> ],
                       index: <%= @i %>

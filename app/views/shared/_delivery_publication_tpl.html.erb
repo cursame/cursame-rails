@@ -31,7 +31,7 @@
     <%end%>
 </div>
 <%end%>
-<% if delivery.areas_of_evaluations.count > 0 %>
+<% if delivery.evaluation_criteria.count > 0 %>
 <div class="extra-label">Se evalua:</div>
 <div class="evaluation-box">
     <div id="chart-delivery-<%= delivery.id %>" style="min-width: 580px; height: 60px; margin: 0 auto"></div>
@@ -111,7 +111,7 @@
                             fontSize: '10px'
                         }
                     },
-                    series: [ <% @i = 1 %> <% delivery.areas_of_evaluations.each do |areas | %> {
+                    series: [ <% @i = 1 %> <% delivery.evaluation_criteria.each do |areas | %> {
                         name: '<%= areas.name %>',
                         data: [ <%= areas.evaluation_percentage %> ],
                         index: <%= @i %>

@@ -1,9 +1,9 @@
 class Delivery < ActiveRecord::Base
-  # para agilizar la creacion de notificaciones en tareas
-  # after_commit :create_notifications, :on => :create
 
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
- :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
+    :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
+
+  attr_accessible :evaluation_criteria
 
   scope :active_inactive
   scope :courses
@@ -19,18 +19,16 @@ class Delivery < ActiveRecord::Base
   has_many :events, as: :schedule, :dependent => :destroy
   has_many :activities, as: :activitye
   has_many :contents, :as => :contentye
-  has_many :evaluation_criteria, as: :evaluable, :dependent :destroy
-  
+  has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
   belongs_to :network
   belongs_to :wall
 
   validate :max_courses
 
-  #accepts_nested_attributes_for :evaluation_criteria
+  accepts_nested_attributes_for :evaluation_criteria
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :contents
-
 
   validates_presence_of :end_date
   validates_presence_of :publish_date
@@ -39,39 +37,34 @@ class Delivery < ActiveRecord::Base
   validates_presence_of :courses
   validates_presence_of :user
 
-
   acts_as_commentable
-  #para los likes
   acts_as_votable
 
-  #autoconversion de links, links inteligentes
+  # autoconversion de links, links inteligentes
+  # this is defined in config/initializers/auto_html.rb
   auto_html_for :description do
     html_escape
     image
-    # This is defined in config/initializers/auto_html.rb
-    dailymotion :width => "100%", :height => 250
-    #flickr :width => 400, :height => 250
-    google_map :width => "100%", :height => 250
+    dailymotion  :width => "100%", :height => 250
+    google_map   :width => "100%", :height => 250
     google_video :width => "100%", :height => 250
-    metacafe :width => "100%", :height => 250
-    soundcloud :width => "100%", :height => 250
-    twitter :width => "100%", :height => 250
-    vimeo :width => "100%", :height => 250
-    youtube :width => "100%", :height => 250
+    metacafe     :width => "100%", :height => 250
+    soundcloud   :width => "100%", :height => 250
+    twitter      :width => "100%", :height => 250
+    vimeo        :width => "100%", :height => 250
+    youtube      :width => "100%", :height => 250
     slideshare_support :width => "100%"
-    ustream_support :width => "100%"
-    prezi_with_wmode :width => "100%", :height => 360
-    livestrem_support :width => "100%", :height => 360
+    ustream_support    :width => "100%"
+    prezi_with_wmode   :width => "100%", :height => 360
+    livestrem_support  :width => "100%", :height => 360
     link :target => "_blank", :rel => "nofollow"
     redcarpet
-    #sanitize
     simple_format
   end
 
   state_machine :state, :initial => :unpublish do
     state :unpublish
     state :published
-
     event :publish do
       transition :to => :published, :from => :unpublish
     end
@@ -97,12 +90,12 @@ class Delivery < ActiveRecord::Base
 
   after_create do
     if self.publish_date <= DateTime.now
-       self.publish!
+      self.publish!
     end
 
     Event.create(:title => self.title, :description => self.description, :starts_at => self.publish_date,
-          :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id,
-          :course_id => self.course_ids, :network_id => self.network_id)
+                 :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Delivery", :user_id => self.user_id,
+                 :course_id => self.course_ids, :network_id => self.network_id)
 
     users = self.users
 
@@ -116,19 +109,19 @@ class Delivery < ActiveRecord::Base
         if user.id != self.user_id && member.accepted == true then
           users.push(user)
           # mail = Notifier.new_delivery_notification(user,self)
-          # mail.deliver        
+          # mail.deliver
         end
       end
     end
-    
+
     self.send_mail(users)
-    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')    
+    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
 
     network_name = Network.find_by_id(self.network_id).name.capitalize
 
     begin
       self.courses.each do |course|
-        mixpanel_properties = { 
+        mixpanel_properties = {
           'Network' => network_name,
           'Course'  => course.title.capitalize
         }
@@ -154,18 +147,18 @@ class Delivery < ActiveRecord::Base
 
 
   def expired?
-  @expired_in  = self.end_date
+    @expired_in  = self.end_date
 
     if @expired_in <= DateTime.now
-    @expired = true
+      @expired = true
     else
-    @expired = false
+      @expired = false
     end
 
     if  @expired == true
-       self.state = 'unpublish'
-       self.save!
-     end
+      self.state = 'unpublish'
+      self.save!
+    end
   end
 
 
@@ -173,9 +166,9 @@ class Delivery < ActiveRecord::Base
   def self.publish_new_deliveries
     Delivery.created.each do |delivery|
       if delivery.publish_date <= DateTime.now
-         if delivery.end_date >= DateTime.now
-         delivery.publish!
-         end
+        if delivery.end_date >= DateTime.now
+          delivery.publish!
+        end
       end
     end
   end
@@ -214,23 +207,23 @@ class Delivery < ActiveRecord::Base
 
   #
   # Tiempo promedio que se tarda en calificar un profesor
-  # 
+  #
   def averageTimeToRate
     assignments = self.assignments
     size = assignments.size
-    
+
     if (size == 0) then
       return 0.0
     end
-    
+
     average = 0.0
-    assignments.each do 
+    assignments.each do
       |assignment|
       if (!assignment.rate_time.nil?)
         average += assignment.rate_time - assignment.created_at
       end
     end
-    
+
     return average/size
   end
 
@@ -241,30 +234,30 @@ class Delivery < ActiveRecord::Base
   def averageTimeToResponse
     assignments = self.assignments
     size = assignments.size
-    
+
     if (size == 0) then
       return 0.0
     end
-    
+
     average = 0.0
     assignments.each do
       |assignment|
       average += assignment.created_at - self.created_at
     end
-    
+
     return average/size
   end
 
   def send_mail(users)
     Thread.new {
-          begin
-              mail = Notifier.new_delivery_notification(users,self)
-              mail.deliver          
-          rescue => ex
-          ensure
-            ActiveRecord::Base.connection.close
-          end
-        }    
+      begin
+        mail = Notifier.new_delivery_notification(users,self)
+        mail.deliver
+      rescue => ex
+      ensure
+        ActiveRecord::Base.connection.close
+      end
+    }
   end
 
   def responses

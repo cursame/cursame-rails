@@ -92,10 +92,7 @@ module CursameHelpers
     user
   end
 
-  #
-  # Valores minimos que debe recibir:
-  #         add_course(owner: user, network: network)
-  #
+  # Valores minimos que debe recibir: add_course(owner: user, network: network)
   def add_course(options={})
 
     title = options[:title] || "Test_Course"
@@ -105,8 +102,6 @@ module CursameHelpers
     public_status = options[:public_status] || "Private"
     avatar = options[:avatar]
     coverphoto = options[:coverphoto]
-    survey_param_evaluation = options[:survey_param_evaluation] || 50
-    delivery_param_evaluation = options[:delivery_param_evaluation] || 100 - survey_param_evaluation
 
     network = options[:network]
     raise "Necesito la network a la que pertence el curso." if network.nil?
@@ -118,12 +113,10 @@ module CursameHelpers
 
     course = Course.create!(title: title, silabus: silabus, init_date: init_date,
                             finish_date: finish_date, public_status: public_status,
-                            avatar: avatar, coverphoto: coverphoto, survey_param_evaluation: survey_param_evaluation,
-                            delivery_param_evaluation: delivery_param_evaluation, network_id: network.id,
+                            avatar: avatar, coverphoto: coverphoto, network_id: network.id,
                             active_status: active_status)
 
     add_members_in_course(user: owner, course: course, owner: true)
-    
     course
   end
 
