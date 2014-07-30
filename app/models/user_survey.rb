@@ -1,25 +1,31 @@
 class UserSurvey < ActiveRecord::Base
   belongs_to :survey
   belongs_to :user
-
   has_many :user_survey_responses, dependent: :destroy
   has_many :activities, as: :activitye, dependent: :destroy
 
   has_one :grade, as: :gradable, dependent: :destroy
 
-  accepts_nested_attributes_for :user_survey_responses, reject_if: lambda { |a| a[:answer_id].blank? }, :allow_destroy true
+  accepts_nested_attributes_for :user_survey_responses, :reject_if => lambda { |a| a[:answer_id].blank? }, :allow_destroy => true
 
   after_create do
-    self.survey.courses.each do |course|
-      teachers = course.members_in_courses.keep_if { |member| member.owner == true }
+    self.survey.courses.each do
+      |course|
+      teachers = course.members_in_courses.keep_if {
+        |member|
+        member.owner == true
+      }
       if !(teachers.nil?) then
-        teachers.each { |teacher| teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil? }
+        teachers.each do
+          |teacher|
+          teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil?
+        end
         teacher_users = teachers.map { |t| t.user}
-        Notification.create notificator: self, users: teacher_users, kind: "new_assignment_on_survey", active: true
+        Notification.create(:notificator => self, :users => teacher_users, :kind => "new_assignment_on_survey", :active => true)
       end
     end
-    grade = Grade.create gradable: self, score: 0, user_id: self.user_id
-    self.grade = grade
+    grade = Grade.create(qualifying: self, score: 0)
+    self.grade = grade    
   end
 
   # Calcula la calificacion de la evaluacion
