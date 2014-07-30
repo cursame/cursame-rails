@@ -5,7 +5,7 @@ class Wall < ActiveRecord::Base
   has_many :users, :through => :userpublicationings
   has_many :coursepublicationings, :dependent => :destroy
   has_many :courses, :through => :coursepublicationings
-  
+
   belongs_to :network
   belongs_to :course
 
