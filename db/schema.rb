@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140728185908) do
+ActiveRecord::Schema.define(:version => 20140729165656) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -317,13 +317,17 @@ ActiveRecord::Schema.define(:version => 20140728185908) do
   end
 
   create_table "grades", :force => true do |t|
-    t.integer  "qualifying_id"
-    t.string   "qualifying_type"
+    t.integer  "gradable_id"
+    t.string   "gradable_type"
     t.integer  "score"
-    t.text     "feedback",        :default => ""
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.text     "feedback",      :default => ""
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
   end
+
+  add_index "grades", ["gradable_id", "gradable_type"], :name => "index_grades_on_gradable_id_and_gradable_type"
+  add_index "grades", ["user_id"], :name => "index_grades_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
