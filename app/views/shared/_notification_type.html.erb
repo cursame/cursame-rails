@@ -324,10 +324,10 @@
     <!-- Notificacion: 19 - Retroalimentacion en cuestionario -->
     <% when 'feedback_on_user_survey' %>
       <% if notification.notificator != nil %>
-        <% if notification.notificator.qualifying.user != nil %>
-          <% user = notification.notificator.qualifying.user %>
-          <% response = notification.notificator.qualifying.survey.responses.keep_if {|response| response.user_id == user.id } %>
-          <%= link_to "/courses/#{notification.notificator.qualifying.survey.courses[0].id}?search=Survey&id_search=#{notification.notificator.qualifying.survey.id}" do %>
+        <% if notification.notificator.gradable.user != nil %>
+          <% user = notification.notificator.gradable.user %>
+          <% response = notification.notificator.gradable.survey.responses.keep_if {|response| response.user_id == user.id } %>
+          <%= link_to "/courses/#{notification.notificator.gradable.survey.courses[0].id}?search=Survey&id_search=#{notification.notificator.gradable.survey.id}" do %>
             <div class="activity-feed-author">
               <span class="avatar-holder">
                 <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
@@ -335,7 +335,7 @@
             </div>
             <div class="activity-feed-main">
               <h6>
-                Has recibido retroalimentación en el cuestionario <span class="as-link"><span class="as-link"><%= notification.notificator.qualifying.survey.name %></span>
+                Has recibido retroalimentación en el cuestionario <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.survey.name %></span>
               </h6>
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
