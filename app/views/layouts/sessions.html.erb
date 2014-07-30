@@ -6,7 +6,7 @@
   </script>
 <% end %>
 
-<% if request.subdomain.split(".").size != 1 %>
+<% if request.subdomain.split(".").size > 1 %>
   <% url = request.url %>
   <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
   <script type="text/javascript">

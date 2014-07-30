@@ -4,9 +4,15 @@
       <%= link_to icon('logo-cursame'), "", class: "free_network" %>
     </div>
     <div class="user-session-content">
+      <% if request.subdomain == '' %>
       <h1>¡Oops!</h1>
-      <p>Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
-      <%= link_to "Busca tu escuela aquí →", "http://www.cursa.me/browser/" %>
+        <p>No ingresaste el subdominio de la red a la que quieres acceder.</p><br>
+        <%= link_to "Busca tu escuela aquí →", "http://www.cursa.me/browser/" %>
+      <% else %>
+        <h1>¡Oops!</h1>
+        <p>Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
+        <%= link_to "Busca tu escuela aquí →", "http://www.cursa.me/browser/" %>
+      <% end %>
     </div>
   </div>
 </div>
