@@ -569,4 +569,6 @@ Cursame30Lb::Application.routes.draw do
   #logout
   match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]
 
+  match '/robots' => 'robots#robots'
+
 end
