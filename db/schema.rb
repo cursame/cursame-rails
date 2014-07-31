@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140729165656) do
+ActiveRecord::Schema.define(:version => 20140731171640) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -236,7 +236,6 @@ ActiveRecord::Schema.define(:version => 20140729165656) do
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
-    t.integer  "likes"
     t.text     "description_html"
   end
 
