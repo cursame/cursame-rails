@@ -69,7 +69,6 @@ class AssignmentsController < ApplicationController
         @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
         @response_to_the_evaluation.name = generate_rubres.name
         @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
       end
