@@ -108,7 +108,6 @@ class Survey < ActiveRecord::Base
 
   end
 
-
   def self.user
     User.last
   end
@@ -123,46 +122,6 @@ class Survey < ActiveRecord::Base
     end
     return user_id == user.id
   end
-
-  #
-  # Metodos para el analitics
-  #
-
-  def averageCalification
-    user_surveys = self.user_surveys
-    size = user_surveys.size
-    if (size == 0) then
-      return 0.0
-    end
-    average = 0.0
-    user_surveys.each do
-      |user_survey|
-      average += user_survey.result
-    end
-    return average/size
-  end
-
-
-  #
-  # Tiempo promedio que se tardan los alumnos en contestar el survey
-  #
-  def averageTimeToResponse
-    user_surveys = self.user_surveys
-    size = user_surveys.size
-
-    if (size == 0) then
-      return 0.0
-    end
-
-    average = 0.0
-    user_surveys.each do
-      |user_survey|
-      average += user_survey.created_at - self.created_at
-    end
-
-    return average/size
-  end
-
 
   def send_mail(users)
     Thread.new {
