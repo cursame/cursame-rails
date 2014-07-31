@@ -108,8 +108,6 @@ class Delivery < ActiveRecord::Base
         user = member.user
         if user.id != self.user_id && member.accepted == true then
           users.push(user)
-          # mail = Notifier.new_delivery_notification(user,self)
-          # mail.deliver
         end
       end
     end
@@ -145,7 +143,6 @@ class Delivery < ActiveRecord::Base
     return users
   end
 
-
   def expired?
     @expired_in  = self.end_date
 
@@ -161,8 +158,6 @@ class Delivery < ActiveRecord::Base
     end
   end
 
-
-
   def self.publish_new_deliveries
     Delivery.created.each do |delivery|
       if delivery.publish_date <= DateTime.now
@@ -173,79 +168,15 @@ class Delivery < ActiveRecord::Base
     end
   end
 
-
   def max_courses
     errors.add(:courses, "Solamente puede tener un curso asociado al delivery.") if courses.length >= 2
   end
-
 
   def owner?(role, user)
     if role == "admin" || role == "superadmin" then
       return true
     end
     return user_id == user.id
-  end
-
-  #
-  # Metodos para el analitics
-  #
-
-  def averageCalification
-    assignments = self.assignments
-    size = assignments.size
-    if (size == 0) then
-      return 0.0
-    end
-    average = 0.0
-    assignments.each do
-      |assignment|
-      average += assignment.accomplishment
-    end
-    return average/size
-  end
-
-
-  #
-  # Tiempo promedio que se tarda en calificar un profesor
-  #
-  def averageTimeToRate
-    assignments = self.assignments
-    size = assignments.size
-
-    if (size == 0) then
-      return 0.0
-    end
-
-    average = 0.0
-    assignments.each do
-      |assignment|
-      if (!assignment.rate_time.nil?)
-        average += assignment.rate_time - assignment.created_at
-      end
-    end
-
-    return average/size
-  end
-
-
-  #
-  # Tiempo promedio que se tardan en contestar la tarea
-  #
-  def averageTimeToResponse
-    assignments = self.assignments
-    size = assignments.size
-
-    if (size == 0) then
-      return 0.0
-    end
-
-    average = 0.0
-    assignments.each do
-      |assignment|
-      average += assignment.created_at - self.created_at
-    end
-
-    return average/size
   end
 
   def send_mail(users)
