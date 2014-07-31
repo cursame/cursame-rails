@@ -7,7 +7,6 @@
 <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
       <%= f.hidden_field :network_id, :value => current_network.id %>
       <%= f.hidden_field :user_id, :value => current_user.id %>      <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
-      <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación', :class=>"percent-input" %>
       <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
       <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
       <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>

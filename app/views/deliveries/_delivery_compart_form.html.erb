@@ -61,9 +61,7 @@
       <% evaluation_criteria = @delivery.evaluation_criteria.build %>
       
       <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label :porcent_of_evaluation, "Evaluación" %>
-        </div>
+
         <div class="form-group-main">
 
           <div class="areas-of-evaluation">
@@ -75,9 +73,6 @@
               <div class="evaluation-footer">
                 <div class="fl">
                   <div id="more_nested_evaluation_btn" class="btn btn-secondary">Agregar Criterio</div>
-                </div>
-                <div class="fr" style="width: 230px;">
-                  <%= f.text_field :porcent_of_evaluation, placeholder: 'Evaluación final', required: "required" %>
                 </div>
               </div>
             </div>
@@ -188,15 +183,6 @@
     }
     });
 
-    $('#<%= formId %>').validate({
-      rules: {
-        "delivery[porcent_of_evaluation]": {
-          number: true,
-          min: 1,
-          max: 100
-        }
-      }
-    });
 
   });
 

@@ -1,9 +1,9 @@
 class Delivery < ActiveRecord::Base
 
-  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date, :porcent_of_evaluation,
+  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date,
     :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
 
-  attr_accessible :evaluation_criteria
+  attr_accessible :evaluation_criteria, :evaluation_criteria_attributes
 
   scope :active_inactive
   scope :courses
@@ -32,7 +32,6 @@ class Delivery < ActiveRecord::Base
 
   validates_presence_of :end_date
   validates_presence_of :publish_date
-  validates_presence_of :porcent_of_evaluation
   validates_presence_of :title
   validates_presence_of :courses
   validates_presence_of :user

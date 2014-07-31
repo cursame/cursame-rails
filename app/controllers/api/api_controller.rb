@@ -324,7 +324,6 @@ class Api::ApiController < ApplicationController
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
     @delivery.end_date = params[:deliver]
-    @delivery.porcent_of_evaluation = params[:value]
     @delivery.user = @user
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
@@ -343,7 +342,6 @@ class Api::ApiController < ApplicationController
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
     @delivery.end_date = params[:deliver]
-    @delivery.porcent_of_evaluation = params[:value]
     @delivery.user = @user
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
