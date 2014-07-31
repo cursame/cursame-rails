@@ -3,7 +3,7 @@
 module FiltersUtils
 
 	def only_teachers
-		if current_role != "teacher"
+		if current_role == "student"
 			redirect_to root_path, flash: { notice: "No tienes permisos para entrar en esta sección." }
 		end
 	end
