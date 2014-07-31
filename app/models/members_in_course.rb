@@ -86,44 +86,8 @@ class MembersInCourse < ActiveRecord::Base
       else ;0;end
   end
   
-  # Calcula la calificacion de tareas
+  # TODO: evaluar si se requiere este metodo aqui
   def evaluation_deliveries(assignments, deliveries)
-    ###### ingresa al total del valor sobre el que se va a evaluar ######
-    value_p_o_e = 0
-    assigment_docificate = 0
-    deliveries.each do |d|
-     value_p_o_e = value_p_o_e.to_i + d.porcent_of_evaluation.to_i
-    end
-
-    ###### creamos un contador sobre las tareas ######
-    if assignments.any? then
-      assignments.each do |as|
-
-       if defined?(as.delivery) && (!as.delivery.nil?)
-          individual_porcent = as.delivery.porcent_of_evaluation 
-       else
-          individual_porcent = 0 
-       end
-
-       if defined?(as.accomplishment) && (!as.accomplishment.nil?)
-       individual_result = as.accomplishment.to_f/100 
-       else
-       individual_result = 0
-       end
-
-       evalution_assigment = individual_porcent.to_f * individual_result.to_f
-       assigment_docificate = evalution_assigment.to_f + assigment_docificate.to_f 
-
-      end
-
-       result = (assigment_docificate.to_f/value_p_o_e.to_f)*100
-       else
-        
-       result = 0
-    end
-
-   
-
   end
 
   # TODO: evaluar si se requiere este metodo aqui

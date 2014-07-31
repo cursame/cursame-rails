@@ -153,7 +153,6 @@ module CursameHelpers
     description = options[:description] || title
     publish_date = options[:publish_date] || DateTime.now
     end_date = options[:end_date] || publish_date + 3.days
-    porcent_of_evaluation = options[:porcent_of_evaluation] || 100
 
     user = options[:user]
     raise "Necesito un usuario" if user.nil?
@@ -162,8 +161,7 @@ module CursameHelpers
     raise "Necesito un curso" if course.nil?
 
     Delivery.create!(title: title, description: description, publish_date: publish_date, end_date: end_date,
-                     porcent_of_evaluation: porcent_of_evaluation, user_id: user.id, network_id: course.network_id,
-                     courses: [course])
+                    user_id: user.id, network_id: course.network_id, courses: [course])
   end
 
   #
