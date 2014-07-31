@@ -272,7 +272,7 @@ class HomeController < ApplicationController
     end
   end
 
-
+  # TODO: agregar validacion al destruir wall
   def destroy_wall
     publication = Wall.find(params[:id])
     if !publication.nil?

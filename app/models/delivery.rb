@@ -3,7 +3,7 @@ class Delivery < ActiveRecord::Base
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date,
     :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
 
-  attr_accessible :evaluation_criteria, :evaluation_criteria_attributes
+  attr_accessible :evaluation_criteria_attributes
 
   scope :active_inactive
   scope :courses

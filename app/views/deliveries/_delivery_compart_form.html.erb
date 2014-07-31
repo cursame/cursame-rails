@@ -112,10 +112,6 @@
   <% if @active_edit %>
     <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
     <% unless delivery.evaluation_criteria.empty? %>    
-      <h5>Criterios:</h5>
-      <% delivery.evaluation_criteria.each do |d| %>
-        <p><%= d.name%>: <%= d.evaluation_percentage%></p>
-      <%end%>
       <br>
     <% end %>
   <% end %>

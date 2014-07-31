@@ -3,7 +3,6 @@
 <div id="nested_evaluation_form">
     <%= f.text_field :name, :class => 'subject' %>
     <div id="content-slider-0" class="slider-content"><div id="slider-0" class="slider"></div></div>
-    <%= f.text_field :evaluation_percentage, :value => "" , :maxlength=> "3", :class=>"percent-input" %>
     <%= f.hidden_field :evaluable_id, :value => @delivery.id %>
     <%= f.hidden_field :evaluable_type, :value => "Delivery" %>
 </div>

@@ -115,7 +115,6 @@
                   },
                   series: [ <% @i = 1 %> <% delivery.evaluation_criteria.each do |areas| %> {
                       name: '<%= areas.name %>',
-                      data: [ <%= areas.evaluation_percentage %> ],
                       index: <%= @i %>
                   }, <% @i = @i + 1 %> <% end %> ],
                   exporting: false
