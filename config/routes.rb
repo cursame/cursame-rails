@@ -222,6 +222,7 @@ Cursame30Lb::Application.routes.draw do
   as :user do
     match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
     match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
+    match 'teachers/sign_up' => 'registrations#new' 
   end
 
   #### finalizador de sesiones
