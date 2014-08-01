@@ -1,1 +1,9 @@
-$('#deleted_id_<%= @id %>').hide();
+console.log('<%= @from %>')
+<% if @from == 'deliveries' || @from == 'discussions' || @from == 'surveys' || @from == 'comments' %>
+  window.location = '/';
+<% else %>
+  $('div[data-wall-id="<%= @id %>"]').slideUp(300, function() {
+    $(this).remove();
+  });
+  Notice('success', 'Se ha borrado correctamente la publicación.');
+<% end %>

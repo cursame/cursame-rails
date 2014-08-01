@@ -1,0 +1,6 @@
+.standalone-post
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          = render partial: 'discussions/shared/discussion_card', locals: { discussion: @discussion, card_type: :post_publication, wall: @wall }

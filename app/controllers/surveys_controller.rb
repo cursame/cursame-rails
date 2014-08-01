@@ -2,7 +2,8 @@ class SurveysController < ApplicationController
   include CoursesUtils
   include SurveysUtils
   include FiltersUtils
-  before_filter :only_students, :only => [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
+  before_filter :only_students, only: [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
+  before_filter :validations, only: :show
 
   def index
     courses = student_subscribed_courses
@@ -30,7 +31,6 @@ class SurveysController < ApplicationController
       |survey|
       survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
     end
-
   end
 
   def lapsed
@@ -68,7 +68,6 @@ class SurveysController < ApplicationController
       |survey|
       survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
     end
-
   end
 
   def surveys_course_lapsed
@@ -105,7 +104,8 @@ class SurveysController < ApplicationController
   end
 
   def show
-    @survey = Survey.find(params[:id])
+    
+    @wall = Wall.find_by_publication_type_and_publication_id( 'Survey', @survey.id )
   end
 
   def new
@@ -133,6 +133,10 @@ class SurveysController < ApplicationController
     else
       @error = true
     end
+
+    puts '-----------------'
+    puts @publication
+
     respond_to do |format|
      format.js
     end
@@ -143,7 +147,7 @@ class SurveysController < ApplicationController
   end
 
   def update
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find_by_id(params[:id])
     ids = []
 
     if !params[:delivery]
@@ -159,11 +163,11 @@ class SurveysController < ApplicationController
     if @survey.update_attributes(params[:survey])
         @survey.courses=[]
         ids.each do |id|
-          @survey.courses.push(Course.find(id))
+          @survey.courses.push(Course.find_by_id(id))
         end
       @survey.save
 
-     @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
+     @wall_publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
      respond_to do |format|
         format.js
         format.html { render action: "edit" }
@@ -239,8 +243,14 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find_by_id(params[:id])
     @survey.destroy
     redirect_to surveys_url, :notice => "Successfully destroyed survey."
+  end
+
+  def validations
+    @survey = Survey.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "El cuestionario que intentas ver no existe o ah sido borrado."} and return if @survey.nil?
+    course_member?(current_user, @survey.courses.first)
   end
 end

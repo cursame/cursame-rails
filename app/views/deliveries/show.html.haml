@@ -1,0 +1,6 @@
+.standalone-post
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          = render partial: 'deliveries/shared/delivery_card', locals: { delivery: @delivery, card_type: :post_publication, wall: @wall }

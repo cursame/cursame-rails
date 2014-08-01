@@ -1,0 +1,69 @@
+
+// Comments Skeleton
+.comments-wrap {
+
+  .comments-load-more {
+    margin: 1px 10px 0px 10px;
+    padding: 5px 0;
+
+    .i {
+      margin-right: 3px;
+    }
+  }
+
+  .comment {
+    position: relative;
+    padding: 5px 20px 5px 10px;
+    @include clearfix;
+
+    .comment-author {
+      float: left;
+      height: 30px;
+    }
+
+    .comment-main {
+      margin: -2px 0 0 40px;
+    }
+
+    .comment-meta {
+      margin-top: 2px;
+
+      .comment-meta-item {
+        padding: 0px 2px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+
+    .comment-admin-actions {
+      position: absolute;
+      right: 6px;
+      top: 0;
+      display: none;
+    }
+
+    &:hover {
+      .comment-admin-actions {
+        display: block;
+      }
+    }
+  }
+
+  .comments-new-comment {
+    .comment {
+      padding-right: 5px;
+
+      .comment-main {
+        margin-top: 0;
+      }
+    }
+
+    textarea {
+      height: 30px;
+      max-height: 120px;
+      padding: 4px 8px;
+    }
+  }
+}

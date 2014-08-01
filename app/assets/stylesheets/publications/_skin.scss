@@ -274,15 +274,30 @@
 // New Publications
 .post-box {
   @extend .basic-container-style;
+
+  &.standalone { 
+    .post-box-content {
+      border-radius: $radius $radius 0 0;
+    }
+  }
+
+  &.academic {
+    .post-box-content {
+      .post-meta-info {
+        a {
+          color: $white;
+          text-shadow: 0 1px 1px rgba(0,0,0,.3);
+        }
+      }
+    }
+  }
   
   .post-box-main {
     border-radius: $radius;
-    @extend .cover-banner;
   }
 
   .post-box-main-author {
-    border-bottom: 1px solid rgba(0,0,0, 0.05);
-    background: rgba(0,0,0,.04);
+    box-shadow: 0 1px 0 rgba(0,0,0,.2);
 
     .post-box-main-author-content {
       a {
@@ -290,53 +305,95 @@
           size: 15px;
           weight: 500;
         }
-        color: $white;
 
         &:hover {
           @include opacity(.8);
         }
       }
 
-      span {
+      .timestamp {
         font-size: 12px;
-      }
-
-      a, span {
-        text-shadow: 0 1px 1px rgba(0,0,0,.3);
+        color: $meta-color;
       }
     }
   }
 
   .post-box-content {
-    h3, .deliver-date {
+    @extend .cover-banner;
+
+    h3, .post-box-meta a, .post-box-meta, .timestamp, p {
       color: $white;
       text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    }
+
+    p {
+      @include text-size-regular;
     }
 
     h3:hover {
       @include opacity(.8);
     }
 
-    .deliver-date {
+    .timestamp {
+      font-size: 12px;
+    }
+
+    .post-box-meta, .post-box-meta a {
       @include text-size-regular;
+      @include ellipsis(90%);
+      display: block;
     }
   }
-}
 
-.delivery .post-box-main {
-  background-color: $delivery-color;
-  @include linear-gradient(45deg, $delivery-color 0%, lighten($delivery-color, 2%) 100%);
+  .post-box-under-container {
+    background: #fcfcfc;
+    border-radius: 0 0 $radius $radius;
+    border-top: 1px solid $separator-color;
 
-  .timestamp, .deliver-date {
-    color: lighten($delivery-color, 60%);
+    .post-box-likes .post-box-likes-inner {
+      border-bottom: 1px solid $separator-color;
+    }
   }
-}
 
-.survey .post-box-main {
-  background-color: $survey-color;
-  @include linear-gradient(45deg, $survey-color 0%, lighten($survey-color, 2%) 100%);
+  &.delivery .post-box-content {
+    background-color: $delivery-color;
+    @include linear-gradient(45deg, $delivery-color 0%, lighten($delivery-color, 2%) 100%);
 
-  .timestamp, .deliver-date {
-    color: lighten($survey-color, 60%);
+    .post-box-meta, .post-box-meta a, .timestamp {
+      color: lighten($delivery-color, 60%) !important;
+    }
+  }
+
+  &.survey .post-box-content {
+    background-color: $survey-color;
+    @include linear-gradient(45deg, $survey-color 0%, lighten($survey-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($survey-color, 60%) !important;
+    }
+  }
+
+  &.discussion .post-box-content {
+    background-color: $discussion-color;
+    @include linear-gradient(45deg, $discussion-color 0%, lighten($discussion-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($discussion-color, 60%) !important;
+    }
+  }
+
+  &.comment {
+    .post-box-main-author, .post-box-content {
+      box-shadow: none;
+    }
+  }
+
+  &.course .post-box-content {
+    
+
+    .cover {
+      background: $course-color;
+      @include opacity(.83);
+    }
   }
 }

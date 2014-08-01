@@ -7,10 +7,9 @@ class CoursesController < ApplicationController
 
   def index
     @member = MembersInCourse.new
-    case current_role
-    when "teacher"
+    if current_role == "teacher" || current_role == "admin"
       @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    when "student"
+    else
       @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     end
 

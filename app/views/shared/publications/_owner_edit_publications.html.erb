@@ -1,5 +1,5 @@
-<% if publication.publication.owner?(current_role, current_user) %>
-  <div class="edit-publication">
+<% if post.owner?(current_role, current_user) %>
+  <div class="post-box-main-admin-actions">
     <div class="dropdown-wrap">
       <div class="dropdown-pull activity-dropdown-pull">
         <%= icon('arrow-down-10') %>
@@ -8,12 +8,10 @@
         <i class="tip"></i>
         <ul>
           <li>
-            <%= link_to "Borrar", destroy_wall_path(publication.id), remote: true, confirm: "¿Estas seguro de borrar esto?" %>
+            <%= link_to "Borrar", destroy_wall_path(wall.id), remote: true, confirm: "¿Estas seguro de borrar esto?" %>
           </li>
           <li>
-            <div id="oppen_<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>">
-              <%= link_to "Editar", edit_wall_path(:type => publication.publication_type, :id => publication.publication_id), :remote=> true, :class => 'edit-publication-link' %>
-            </div>
+            <%= link_to "Editar", edit_wall_path(type: wall.publication_type, id: wall.publication_id), remote: true, class: 'edit-publication-link' %>
           </li>
         </ul>
       </div>

@@ -3,7 +3,7 @@ class DeliveriesController < ApplicationController
   include DeliveriesUtils
   include FiltersUtils
   helper_method :assigment
-  before_filter :filter_protection, :only => [:show, :edit]
+  before_filter :validations, only: :show
   before_filter :only_students, :only => [:index, :lapsed, :deliveries_course, :deliveries_course_lapsed]
 
   def index
@@ -39,15 +39,8 @@ class DeliveriesController < ApplicationController
   end
 
   def deliveries_course
-    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
-
-    unless member.nil?
-      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no has sido aceptado."} unless member.accepted
-    else
-      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no estas inscrito."}
-    end
-
     @course = Course.find_by_id(params[:id])
+    course_member?(current_user, @course)
 
     deliveries = @course.deliveries
 
@@ -105,19 +98,11 @@ class DeliveriesController < ApplicationController
   end
 
   def show
-    @delivery = Delivery.find(params[:id])
-    @assignment = Assignment.new(params[:assignment])
-    @assignment.save
-    @asset = Asset.new
+    @wall = Wall.find_by_publication_type_and_publication_id( 'Delivery', @delivery.id )
 
-    1.times do
-      assets = @assignment.assets.build
-    end
-
-    @validation_member = @delivery.courses
-    
     respond_to do |format|
-      format.js
+      format.html
+      format.json { render json: @course }
     end
   end
 
@@ -167,8 +152,9 @@ class DeliveriesController < ApplicationController
   end
 
   def update
-    @delivery = Delivery.find(params[:id])
-    @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
+    @delivery = Delivery.find_by_id(params[:id])
+    @wall_publication = Wall.find_by_publication_type_and_publication_id("Delivery", @delivery.id)
+    
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
@@ -183,54 +169,12 @@ class DeliveriesController < ApplicationController
   end
 
   def destroy
-    @delivery = Delivery.find(params[:id])
+    @delivery = Delivery.find_by_id(params[:id])
     @delivery.destroy
 
     respond_to do |format|
       format.html { redirect_to deliveries_url }
       format.json { head :no_content }
-    end
-  end
-
-  def protection_to_index
-    @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id,current_user.id)
-    if @member
-      if @member.accepted
-        respond_to do |format|
-          format.html # show.html.erb
-          format.json { render json: @course }
-        end
-      else
-        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-      end
-    else
-      redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-    end
-  end
-
-  def filter_protection
-    @delivery = Delivery.find(params[:id])
-    @validation_member = @delivery.courses
-    @delivery.courses.each do |dc|
-      @member = MembersInCourse.find_by_course_id_and_user_id(dc.id,current_user.id)
-      if @member
-        break
-      else
-        #    redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-      end
-    end
-    if @member
-      if @member.accepted
-        respond_to do |format|
-          format.html # show.html.erb
-          format.json { render json: @course }
-        end
-      else
-        redirect_to courses_path, :notice => "no has sido aceptado en este curso"
-      end
-    else
-      redirect_to courses_path, :notice => "no has sido aceptado en este curso"
     end
   end
 
@@ -281,4 +225,10 @@ class DeliveriesController < ApplicationController
     end
   end
   
+  def validations
+    @delivery = Delivery.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "La tarea que intentas ver no existe ah sido borrada."} and return if @delivery.nil?
+    #course_member?(current_user, @delivery.courses.first)
+  end
+
 end

@@ -1,2 +1,2 @@
 - surveys.each do |survey|
-  = render partial: 'surveys/shared/survey_card', locals: { survey: survey }
+  = render partial: 'surveys/shared/survey_card_wrapper', locals: { survey: survey, card_type: :standalone }

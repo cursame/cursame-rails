@@ -1,12 +1,7 @@
-$('#liked-<%= @publication.id%>').html('');
-$('#liked-<%= @publication.id%>').prepend("<%= escape_javascript(link_to 'Me Gusta', downvote_path(@publication.id), :remote => true) %>");
+var likeLink = $('div[data-wall-like-id="<%= @publication.id%>"] > a'),
+    peopleWhoLiked = $('[data-wall-id="<%= @publication.id%>"]').find('div.post-box-likes');
 
-<% if @publication.publication_type != 'Comment' %>
-  $('#liked-<%= @publication.id%> a').html('').html('<i class="i i-like-c-white-active"> </i>')
-<% else %>
-  $('#liked-<%= @publication.id%> a').html('').html('<i class="i i-like-c-active"> </i>')
-<% end %>
+likeLink.attr('href', '<%= escape_javascript(downvote_path(@publication.id)) %>');
+likeLink.text('Ya no me gusta');
 
-$('#counter-like-<%= @publication.id%>').html('');
-var parent = $('#counter-like-<%= @publication.id%>').parent();
-parent.html('<%= link_to get_votes_of_publication_path(@publication.id), remote: true do %><span id="counter-like-<%= @publication.id %>"><%= @publication.publication.votes.up.size %></span> Me gusta<% end %>')
+peopleWhoLiked.html('<%= escape_javascript(render(partial: "shared/posts/post_people_who_liked", locals: { wall: @publication, post: @publication.publication })) %>')

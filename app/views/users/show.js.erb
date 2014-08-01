@@ -1,1 +1,2 @@
-$('#timeline').append("<%= escape_javascript(render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"})%>");
+$('#timeline').append('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "user"} ))%>'); 
+$('.autogrow').expanding();

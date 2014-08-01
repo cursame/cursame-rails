@@ -1,0 +1,54 @@
+- course = discussion.courses.first
+- if wall
+  - data_attributes = { wall_id: wall.id }
+- else
+  - data_attributes = {}
+
+.post-box.academic.discussion{id: discussion.id, class: card_type, data: data_attributes }
+  - if wall
+    = render partial: 'shared/posts/post_admin_actions', locals: { post: discussion, wall: wall }
+  .post-box-main
+    - unless card_type == :standalone
+      .post-box-main-author
+        - if course
+          = link_to course_path(course), title: course.title, class: 'post-box-avatar' do
+            %span.avatar-holder
+              = avatar 'course', '45', 'no', course.id, 'avatar', 'no', 'no'
+        - else
+          = link_to show_user_path(discussion.user.personal_url), title: discussion.user.name, class: 'post-box-avatar' do
+            %span.avatar-holder
+              = avatar 'user', '45', 'no', discussion.user.id, 'avatar', 'no', 'no'
+        .post-box-main-author-content
+          - if course
+            = link_to course.title, course_path(course), title: course.title
+          - else
+            = link_to discussion.user.name, show_user_path(discussion.user.personal_url), title: discussion.user.name
+          %span.timestamp= time_ago_in_words discussion.created_at
+    .post-box-content
+      .icon-card
+        = icon 'discussion-card'
+      = link_to discussion_modal_path(discussion.id), remote: true, class: 'activable' do 
+        %h3= discussion.title
+      - if card_type == :standalone
+        %span.timestamp= time_ago_in_words discussion.created_at
+        - unless course.nil?
+          %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
+        - else
+          %span.post-box-meta= link_to "#{icon 'user-mini-w'} #{discussion.user.name}".html_safe, show_user_path(discussion.user.personal_url), title: discussion.user.name
+      - if card_type == :post_publication
+        %p= truncate discussion.description , omission: "...", length: 110
+        = link_to 'Ver Discussión', discussion_modal_path(discussion.id), remote: true, class: "btn btn-small btn-transparent activable"
+        = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: discussion }
+    - if card_type == :standalone
+      .post-box-footer
+        .post-box-actions
+          = link_to 'Ver Discussión', discussion_modal_path(discussion.id), remote: true, class: "btn btn-small btn-secondary activable"
+    - if card_type == :post_publication && discussion.owner?(current_role, current_user)
+      .post-box-edit
+        %h5 Editar Discusión
+        .post-edit-form-js
+    - if card_type == :post_publication
+      .post-box-under-container
+        .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: discussion, wall: wall }
+        .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
+          = render partial: 'shared/posts/post_comments_list', locals: { post: discussion }

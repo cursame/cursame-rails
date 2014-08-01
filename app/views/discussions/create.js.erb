@@ -1,4 +1,5 @@
-$('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => @publication,:visible_for => 'network'}))%>');
+$('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @publication, :visible_for => "network"} ))%>');
+
 $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
 Notice('success', 'Discusión creada correctamente.');
 cancelButtonsPostMenu();

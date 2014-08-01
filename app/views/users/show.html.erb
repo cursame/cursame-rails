@@ -9,7 +9,7 @@
               <%=render :partial => 'shared/post_menu' %>
             </div>
             <div id="timeline" class="tim">
-              <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'user'} %>
+              <%= render :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "user"} %>
             </div>   
             <div id="paginate_wall" onclick="PaginateINwall('/users/<%=@user_l.personal_url%>',2, <%= @wall.total_pages %>)"></div>
           </div>

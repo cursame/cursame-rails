@@ -154,7 +154,6 @@ window.Notice = function(type, message)  {
 };
 
 $(function() {
-
   $(document).keyup(function(e) {
     if (e.keyCode == 27) {
       removeModal();
@@ -186,10 +185,7 @@ $(function() {
     });
   }
 
-  // Textareas Autogrow
-  $('.autogrow').live('focus', function(){
-    $(this).autosize();
-  });
+  $('.autogrow').expanding();
    
    $(window).scroll(function() {
      if ( $(window).scrollTop() + $(window).height() == $(document).height() ) {
@@ -318,13 +314,20 @@ $(function() {
     $('.section-subnav li').removeClass('active');
   });
 
-  $('.edit-publication-link').live('click', function() {
-    $(this).closest('.publication-box').find('.form_for_edit_wall').slideToggle(300);
+  // Cancelar Editar Wall Publication
+  $('.cancel-edit-publication-js').live('click', function(event) {
+    event.preventDefault();
+    $(this).closest('.post-box-edit').slideUp(300);
   });
 
-  $('.cancel-edit-publication').live('click', function(event) {
-    event.preventDefault();
-    $(this).closest('.form_for_edit_wall').slideUp(300);
+  $(".swift-enter").live('keydown', function(e) {
+    if (e.keyCode == 13) {
+      if ( ! e.shiftKey ) {
+        $(this).closest('form').submit();
+        e.preventDefault();
+        $(this).val('').change();
+      }
+    }
   });
 });
 
@@ -335,7 +338,7 @@ function PaginateINwall(url_paginate, page, total_page, other_params){
   if ( !paginateWorking ) {
     window.paginateWorking = true;
     if ((page*1) != (total_page*1) && (total_page*1) != 1){
-        $("#paginate_wall").html("<div id='pageless-loader'><img src='/assets/load.gif'/></div>");
+        $("#paginate_wall").html("<div id='pageless-loader' style='opacity: 1;'><img src='/assets/load.gif'/></div>");
         $.get( url_paginate+"?page="+page+"&fo_format=remote"+other_params , function( data ) {
           $('#paginate_wall').html('');
           window.paginateWorking = false;

@@ -1,0 +1,22 @@
+- comments = post.comments
+- if comments.size > 3
+  .comments-load-more
+    = link_to load_more_comments_path(id: post.id, type: post.class), remote: true do
+      = icon('comments')
+      Comentarios anteriores
+
+.comments-list
+  - comments.last(COMMENTS_PER_PAGE).each do |comment|
+    = render partial: 'shared/posts/post_child_comment', locals: { comment: comment }
+
+.comments-new-comment
+  = form_tag "/home/add_new_comment", class: "", remote: true do
+    .comment
+      .comment-author
+        %span.avatar-holder
+          = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
+      .comment-main
+        = text_area_tag "comment", nil, placeholder: 'Escribe un comentario', required: 'required', class: 'autogrow swift-enter'
+        = hidden_field_tag 'commentable_id', post.id
+        = hidden_field_tag 'commentable_type', post.class.to_s
+        = hidden_field_tag 'from_enter_key', true
