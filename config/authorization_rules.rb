@@ -1,6 +1,6 @@
 authorization do
-  role :admin do
 
+  role :admin do
     has_permission_on [:roles], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:courses], :to => [:users,:create,:destroy,:index,:show,:edit,:members]
     has_permission_on [:deliveries], :to => [:users,:create,:destroy,:index,:show,:edit]
@@ -30,7 +30,6 @@ authorization do
     has_permission_on [:discussions], :to => [:users,:create,:destroy,:index,:show,:edit]
   end
 
-
   role :teacher do
     has_permission_on [:roles], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:courses], :to => [:users,:create,:destroy,:index,:show,:edit,:members]
@@ -45,7 +44,6 @@ authorization do
 
 
   role :superadmin do
-
     has_permission_on [:roles], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:courses], :to => [:users,:create,:destroy,:index,:show,:edit,:members]
     has_permission_on [:deliveries], :to => [:users,:create,:destroy,:index,:show,:edit]

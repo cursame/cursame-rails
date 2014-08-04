@@ -7,10 +7,10 @@
         %h6 Nuevo curso público
         %span.timestamp= time_ago_in_words course.created_at
     .post-box-content{ style: "background-image: url(#{course.coverphoto.blank? ? '/assets/#{course.image_coursex}' : course.coverphoto})" }
+      .icon-card
+        = icon 'course-card'
       .cover
       .post-box-content-inner
-        .icon-card
-          = icon 'course-card'
         = link_to course_path(course) do
           %h3= course.title
         %p= truncate course.silabus , omission: "...", length: 110
