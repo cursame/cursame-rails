@@ -91,6 +91,7 @@ class User < ActiveRecord::Base
 
   #comentarios para usuarios
   acts_as_commentable
+  acts_as_voter
 
   #notificaciones usuarios
   has_many :usernotificationings, :dependent => :destroy

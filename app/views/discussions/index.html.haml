@@ -1,2 +1,16 @@
+- content_for :javascripts do
+	= javascript_include_tag 'publications/paginator'
+	
 = render partial: 'discussions/shared/discussions_header'
-= @discussions
+
+.academic-activities-list-wrap
+	- unless @discussions.empty?
+		.academic-activities-section
+			.wrapper
+				.academic-activities-main
+					.cols-12
+						= render partial: 'discussions/shared/discussions_list', locals: { discussions: @discussions }
+				- if @discussions.current_page < @discussions.num_pages
+					= render partial: 'discussions/shared/discussions_paginate_button', locals: { page: 2, type: 'all', course: nil }
+				- else
+					= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más discusiones." }

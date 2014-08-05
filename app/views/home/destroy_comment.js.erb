@@ -1,1 +1,14 @@
-$('div.child-comment-box[data-comment-id="<%= @id %>"]').slideUp(200);
+var comment = $('div[data-child-comment-id="<%= @id %>"]'),
+    commentsWrap = comment.closest('div.comments-wrap'),
+    loadMoreLink = commentsWrap.find('div.comments-load-more > a'),
+    commentsList = commentsWrap.find('div.comments-list div.comment');
+
+comment.slideUp(200, function() {
+  comment.remove();
+  
+  console.log(loadMoreLink.attr('href'));
+
+  if ( !commentsList.length && loadMoreLink.length ) {
+    $.getScript(loadMoreLink.attr('href'));
+  };
+});

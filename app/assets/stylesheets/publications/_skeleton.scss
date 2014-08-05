@@ -422,21 +422,22 @@
 // New Publications Boxes
 .post-box {
   margin-bottom: 20px;
+  position: relative;
 
-  .post-box-main {
-    margin: -1px;
+  .post-box-main-admin-actions {
+    position: absolute;
+    top: 0;
+    right: 7px;
   }
   
   .post-box-main-author {
     padding: 10px;
-    position: relative;
     @include clearfix;
 
-    .i {
-      position: absolute;
-      top: 50%;
-      right: 15px;
-      margin-top: -15px;
+    &.as-activity {
+      .post-box-main-author-content {
+        margin: 0;
+      }
     }
 
     .post-box-avatar {
@@ -444,34 +445,121 @@
     }
 
     .post-box-main-author-content {
-      margin: 4px 0 0 55px;
+      margin: 3px 0 0 55px;
       padding-right: 45px;
-
-      a {
-        @include ellipsis();
-      }
 
       .timestamp {
         display: block;
-        margin-top: -3px;
+        margin-top: 1px;
+      }
+    }
+
+    .post-breadcrumb {
+      .i {
+        margin: 0px 4px;
       }
     }
   } 
 
   .post-box-content {
-    padding: 10px;
-    height: 180px;
+    padding: 10px 65px 10px 10px;
+    height: 160px;
     position: relative;
+    margin: -1px;
 
-    .deliver-date {
+    .icon-card {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 6;
+    }
+
+    .post-box-meta {
       display: block;
-      margin: 3px 0 11px 0;
+      margin-top: 3px;
+    }
+
+    .timestamp {
+      margin-bottom: 8px;
+      display: block;
     }
 
     .btn {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+      margin-top: 10px;
+    }
+
+    .post-meta-info {
+      margin-top: 5px;
     }
   }
+
+  .post-box-content-inner {
+    z-index: 4;
+    height: 100%;
+    position: relative;
+  }
+
+  .cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  .post-box-under-container {
+    .post-box-likes .post-box-likes-inner {
+      margin: 0 10px;
+      padding: 5px 0;
+
+      .i {
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .post-box-edit {
+    padding: 10px;
+    display: none;
+  }
+
+  .post-box-footer {
+    padding: 10px;
+    @include clearfix;
+
+    .post-box-actions {
+      float: left;
+    }
+
+    .post-box-info {
+      float: right;
+    }
+  }
+
+  &.academic {
+    .post-box-content {
+      .post-meta-info {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .post-box-content-inner {
+        .post-meta-info {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.comment .post-box-content {
+  padding: 0px 10px 10px 10px;
+  margin-top: -3px;
+  height: auto;
+}
+
+.standalone-post {
+  margin: 20px 0;
 }

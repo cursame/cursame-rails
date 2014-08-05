@@ -1,0 +1,23 @@
+- data_attributes = { wall_id: wall.id }
+
+.post-box.academic.course{ id: course.id, class: card_type, data: data_attributes }
+  .post-box-main
+    .post-box-main-author.as-activity
+      .post-box-main-author-content
+        %h6 Nuevo curso público
+        %span.timestamp= time_ago_in_words course.created_at
+    .post-box-content{ style: "background-image: url(#{course.coverphoto.blank? ? '/assets/#{course.image_coursex}' : course.coverphoto})" }
+      .icon-card
+        = icon 'course-card'
+      .cover
+      .post-box-content-inner
+        = link_to course_path(course) do
+          %h3= course.title
+        %p= truncate course.silabus , omission: "...", length: 110
+        = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: course }
+
+    .post-box-under-container
+      .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: course, wall: wall }
+      .comments-wrap.course{ data: { comments_group_id: course.id } }
+        = render partial: 'shared/posts/post_comments_list', locals: { post: course }
+

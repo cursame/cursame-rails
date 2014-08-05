@@ -73,9 +73,13 @@
 	
   <div class="new-publication-footer">
 
-    <ul class="list-buttons right fr">
+    <ul class="list-buttons right <%= 'fr' unless active_edit %>">
       <li>
-      <%= link_to "Cancelar", "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+        <% if active_edit %>
+          <%= link_to "Cancelar", "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
+        <% else %>
+          <%= link_to "Cancelar", "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+        <% end %>
       </li>
       
       <% unless active_edit %> 

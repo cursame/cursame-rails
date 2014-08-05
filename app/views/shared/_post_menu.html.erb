@@ -13,7 +13,7 @@
               <%= icon('commet-post') %> Comentario
               <span class="tip"></span>
             </div>
-          <%end%>
+          <% end %>
 
           <% permitted_to? :create, :deliveries do %>
             <div class="tab" data-id-target="delivery-tab-content">
@@ -21,6 +21,8 @@
               <span class="tip"></span>
             </div>
           <% end%>
+
+          <%= permitted_to? :create, :discussions %>
 
           <% permitted_to? :create, :discussions do %>
             <div class="tab" data-id-target="discussion-tab-content">

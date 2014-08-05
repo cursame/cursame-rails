@@ -1,3 +1,5 @@
+# coding: utf-8
+
 module CoursesUtils
 
   def teacher_published_courses
@@ -47,5 +49,18 @@ module CoursesUtils
     end
 
     ids
+  end
+
+  def course_member?(user, course)
+    member = MembersInCourse.find_by_user_id_and_course_id(user.id, course.id)
+    unless member.nil?
+      unless member.accepted 
+        redirect_to(root_path, flash: { error: "Necesitas ser aceptado en el curso para poder ver su contenido."}) and return
+      end
+    else
+      redirect_to(root_path, flash: { error: "No estas inscrito en el curso, inscribete en la sección Cursos."}) and return
+    end
+
+    return true
   end
 end

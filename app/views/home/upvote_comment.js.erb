@@ -1,5 +1,8 @@
-$('#liked-c-<%= @publication.id%>').html('');
-$('#liked-c-<%= @publication.id%>').prepend("<%= escape_javascript(link_to 'Me Gusta', downvote_comment_path(@publication.id), :remote => true) %>");
-$('#liked-c-<%= @publication.id%> a').html('<i class="i i-like-c-active"> </i>')
-$('#counter-like-c<%= @publication.id%>').html('');
-$('#counter-like-c<%= @publication.id%>').html('<%= @publication.votes.up.size %> me gusta');
+var comment = $('[data-child-comment-id="<%= @publication.id%>"]'),
+    voteLinkMeta = comment.find('a.vote-child-comment-js'),
+    votesCountMeta = comment.find('.votes-count-child-comment-js');
+
+voteLinkMeta.attr('href', '<%= escape_javascript(downvote_comment_path(@publication.id)) %>');
+voteLinkMeta.text('Ya no me gusta')
+
+votesCountMeta.html('<%= escape_javascript( render( partial: "comments/shared/child_comment_votes_count", locals: { comment: @publication } ) ) %>');

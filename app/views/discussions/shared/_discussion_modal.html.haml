@@ -1,0 +1,17 @@
+.overlay-header
+  .overlay-icon
+    = icon('section-discussions')
+  .overlay-title
+    %h6
+      = link_to discussion.user.name, show_user_path(discussion.user.personal_url)
+      ha inicidado una discusión
+      - unless discussion.courses.empty?
+        en el curso #{link_to discussion.courses[0].title, course_path(discussion.courses.first)}
+  .close-overlay= icon('x-close')
+.overlay-content
+  %h3= discussion.title
+  = discussion.description_html
+  -# = render :partial => "content/insertions_to_contents", :locals => { :type => discussion, :cl => 'discussion'}
+
+.comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
+  = render partial: 'shared/posts/post_comments_list', locals: { post: discussion }

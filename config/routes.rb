@@ -109,6 +109,7 @@ Cursame30Lb::Application.routes.draw do
 
   # Discusiones
   get '/courses/:id/discussions/', to: 'discussions#discussions_course', as: :discussions_course
+  get '/discussions/paginate-ajax', to: "discussions#paginate_ajax", as: :discussions_paginate_ajax
   resources :discussions
 
   # Cursos
