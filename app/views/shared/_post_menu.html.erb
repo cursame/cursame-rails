@@ -22,8 +22,6 @@
             </div>
           <% end%>
 
-          <%= permitted_to? :create, :discussions %>
-
           <% permitted_to? :create, :discussions do %>
             <div class="tab" data-id-target="discussion-tab-content">
               <%= icon('discussion-post') %> Discusión

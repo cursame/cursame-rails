@@ -11,7 +11,7 @@
   end
 %>
 
-<%= form_for @survey, :remote => true, :html => { :class => "default-form survey-form", :id => random_id } do |f| %>
+<%= form_for @survey, remote: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
   <div class="new-publication-form-content">
     
     <div class="form-group">
@@ -39,6 +39,25 @@
           <div class="form-unit">
             <%= f.text_field :end_date, :placeholder=>'Fecha de entrega ', :id => 'end_date_'+random_id, :class=>"date-input survey survey_end_date", :value=>f.object.end_date, :required => "required" %>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-group-label">
+        <%= f.label "", "Material de soporte" %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <ul class="list-buttons left">
+            <li>
+              <a class="btn btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+            </li>
+            <li>
+              <%= render partial: 'assets/upload_asset_button', locals: { from: 'survey-create-form' } %>
+            </li>
+          </ul>
+          <%= render partial: 'assets/support_material_container', locals: { from: 'survey-create-form-assets' } %>
         </div>
       </div>
     </div>

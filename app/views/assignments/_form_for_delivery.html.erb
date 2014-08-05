@@ -15,7 +15,7 @@
   <% @assignment_id = @assignment.id %>
 <% end %>
 
-<%= form_for( @assignment, :url => assigment_courses_path, :method => :post, :html => { :class => "default-form assignment-delevery-form", :id => formId}) do |f| %>
+<%= form_for( @assignment, :url => assigment_courses_path, :method => :post, :html => { :class => "default-form assignment-delevery-form", :id => formId, data: { post_type: 'Assignment'}}) do |f| %>
   <div class="overlay-content">
 
     <% contents = @assignment.contents.build %>
@@ -47,12 +47,21 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <label>Entrega tu tarea desde Dropbox:</label>
+        <label>Archivos de entrega:</label>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= render partial: 'content/assignments/puts', :locals => {:typeo => 'assignment', :acces_to => @assignment, :id => formId  } %>
-          <%= render :partial => "content/assignments/adding", :locals => {:f => f, :typeo => 'assignment', :acces_to => @assignment, :contents => "contents", :id => formId  }%>
+          <ul class="list-buttons left">
+            <li>
+              <a class="btn btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+            </li>
+            <li>
+              <%= render partial: 'assets/upload_asset_button', locals: { from: 'assignment-create-form' } %>
+            </li>
+          </ul>
+          <div class="support-material" id="assignment-create-form-assets">
+            <%= render :partial => "content/assignments/adding", :locals => {:f => f, :typeo => 'assignment', :acces_to => @assignment, :contents => "contents", :id => formId  }%>
+          </div>
         </div>
       </div>
     </div>
@@ -79,6 +88,3 @@
     </ul>
   </div>
 <% end %>
-<div class="add-file-delivery-submit">
-  <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+ @labelIdBoxx, :formId => formId, :typeo => "assignment" } %>
-</div>

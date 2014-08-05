@@ -8,7 +8,7 @@
   <% @delivery=Delivery.new %>
 <% end %>
 
-<%= form_for(@delivery, remote: true, html: { class: "default-form delivery-form", multipart: true, id: formId}) do |f| %>
+<%= form_for(@delivery, remote: true, html: { class: "default-form delivery-form", multipart: true, id: formId, data: { post_type: 'Delivery' } }) do |f| %>
   
   <div class="new-publication-form-content">
     
@@ -91,26 +91,19 @@
         </div>
         <div class="form-group-main">
           <div class="form-unit">
-            <%= render partial: 'content/list', :locals => {:typeo => 'delivery'} %>
-            <div>
-              <% if @active_edit == false %>
-                <%= render partial: "content/heather_contents", locals: { f: f, typeo: 'delivery', acces_to: @delivery, contents: "contents"} %>
-              <%end%>
-            </div>
+            <ul class="list-buttons left">
+              <li>
+                <a class="btn btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+              </li>
+              <li>
+                <%= render partial: 'assets/upload_asset_button', locals: { from: 'delivery-create-form' } %>
+              </li>
+            </ul>
+            <%= render partial: 'assets/support_material_container', locals: { from: 'delivery-create-form-assets' } %>
           </div>
         </div>
       </div>
-
-      <div class="form-group upload-files-group-delivery" style="display: none;">
-        <div class="form-group-label">
-          <label>Archivos adjuntos</label>
-        </div>
-        <div class="form-group-main">
-          <div class="form-unit">
-            <div id="<%=@labelIdBox%>" class="upload-label upload-form"></div>
-          </div>
-        </div>
-      </div>
+      
     <% end %>
   </div>
   
@@ -154,14 +147,7 @@
   <%end%>
   </div> 
           
-    
 <% end %>
-
-<% if @active_edit == false %>
-  <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId => formId, :typeo => 'delivery'} %>
-<%else%>
-
-<%end%>
 
 <script type="text/javascript">
   $(function() {

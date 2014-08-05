@@ -32,21 +32,18 @@
                   var link_ninamic_file = files[i].link;
                   var link = '<a id="'+dinamic_id_d+'" href="'+link_ninamic_file+'" target="_blank"><i class="i i-dropbox-asset-blue"></i> '+ truncate(link_ninamic_file, 47, '...') +'</a>';
                   
-                  $('#box_for_loads<%=@typeo%>').show();
                   
-                  $('#choser<%= @typeo %>').append("<div id='resput_dropbox"+ demagogo +"'class='publication-asset'>"+ link +"<a id='execute_dropbox"+demagogo+"' class='cancel_link'>Borrar</a></div>");
-                  $('#choser<%= @typeo %>').append('<input id='+"'"+"<%=@typeo%>_contents_attributes_"+ demagogo +"_content"+"'"+ 'name='+"<%=@typeo%>[contents_attributes]["+ demagogo +"][content]"+ " size='30'" + ' value='+ "'"+files[i].link+"'"+ " "+"type="+"'"+"hidden"+"'" +'/>');
+                  $('div.support-material#<%= typeo %>-create-form-assets').append("<div id='resput_dropbox"+ demagogo +"'class='publication-asset'>"+ link +"<a id='execute_dropbox"+demagogo+"' class='cancel_link'>Borrar</a></div>");
+                  
+                  $('div.support-material#<%= typeo %>-create-form-assets').append('<input id='+"'"+"<%=@typeo%>_contents_attributes_"+ demagogo +"_content"+"'"+ 'name='+"<%=@typeo%>[contents_attributes]["+ demagogo +"][content]"+ " size='30'" + ' value='+ "'"+files[i].link+"'"+ " "+"type="+"'"+"hidden"+"'" +'/>');
 
                 eliminarDropbox(demagogo);
-                
-                
           }
         },
         
         cancel:  function() {}
       };
 
-      //mandamos a llamar a dropbox
       Dropbox.choose(options);
     });
 </script>

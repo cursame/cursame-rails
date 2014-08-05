@@ -54,6 +54,7 @@
 	$("#box-notifications").click(function() {
 			$.get("/home/editing_n");
 	});
+  
   // rendering notifications
 	PrivatePub.subscribe ("/notifications/<%= current_user.id%>", 
 		function(data, channel) {

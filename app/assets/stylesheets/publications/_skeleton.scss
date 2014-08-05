@@ -358,40 +358,6 @@
   }
 }
 
-/* Publication Assets
-----------------------------------*/
-.look_atemp_conteny {
-  .choser {
-    margin-top: 5px;
-
-    .publication-asset {
-      padding: 3px 4px;
-      @include clearfix;
-
-      .cancel_link, .trash {
-        float: right;
-        display: none;
-      }
-
-      &:hover {
-
-        .cancel_link, .trash {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-.publication-assets {
-  margin-top: 20px;
-
-  .publication-asset {
-    padding: 3px 0;
-    @include clearfix;
-  }
-}
-
 /* Edit Publications
 ----------------------------------*/
 .form_for_edit_wall {
@@ -562,4 +528,34 @@
 
 .standalone-post {
   margin: 20px 0;
+}
+
+.support-material {
+  .support-material-item {
+    margin-top: 1px;
+    padding: 3px 50px 3px 3px;
+    height: 18px;
+    position: relative;
+
+    &:hover {
+      .item-delete {
+        display: block;
+      }
+    }
+
+    &:first-child {
+      margin-top: 10px;
+    }
+
+    .item-name {
+      @include ellipsis();
+    }
+
+    .item-delete {
+      position: absolute;
+      right: 5px;
+      top: 2px;
+      display: none;
+    }
+  } 
 }

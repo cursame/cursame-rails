@@ -120,6 +120,7 @@ class DeliveriesController < ApplicationController
   end
 
   def create
+    puts params[:asset]
     courses = courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
     @publication = []
     @error = false
