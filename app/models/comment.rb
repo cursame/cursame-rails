@@ -105,11 +105,11 @@ class Comment < ActiveRecord::Base
     elsif notification_kind["course"] || notification_kind["group"]
       course = notification_kind["course"] ? [commentable] : nil
       wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
-      users = users.reject{ |user| user.id == self.user_id }
+      users = users.reject { |user| user.id == self.user_id || MembersInCourse.find_by_user_id(user.id).accepted != true }
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["discussion"]
-      users = users.reject { |user| user.id == self.user.id }
+      users = users.reject { |user| user.id == self.user.id || MembersInCourse.find_by_user_id(user.id).accepted != true }
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
