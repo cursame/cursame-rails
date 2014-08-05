@@ -386,7 +386,6 @@ class CoursesController < ApplicationController
   end
 
   # TODO: metodo requiere refactoring
-  # TODO: verificar en donde se utiliza este metodo
   def assigment
 
     if params[:assignment]["id"].blank? then
