@@ -6,21 +6,17 @@ class Course < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :activities, as: :activitye
   has_many :assignments
-
   has_many :deliveries_courses, dependent: :destroy
   has_many :deliveries, through: :deliveries_courses, dependent: :destroy
-
   has_many :surveyings, dependent: :destroy
   has_many :surveys, through: :surveyings, dependent: :destroy
-
   has_many :discussions_coursess, dependent: :destroy
   has_many :discussions, through: :discussions_coursess, dependent: :destroy
-  
   has_many :coursepublicationings
   has_many :walls, through: :coursepublicationings
-
   has_many :course_id_course_file_id
   has_many :course_files, through: :course_id_course_file_id
+  has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
 
   belongs_to :network
 
@@ -36,6 +32,10 @@ class Course < ActiveRecord::Base
     :created_at, :updated_at, :public_status,
     :avatar, :coverphoto, :delivery_id,
     :network_id, :active_status, :course_files
+
+  attr_accessible :evaluation_criteria_attributes
+
+  accepts_nested_attributes_for :evaluation_criteria
 
   acts_as_votable
   acts_as_commentable
