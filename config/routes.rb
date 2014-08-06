@@ -138,7 +138,7 @@ Cursame30Lb::Application.routes.draw do
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
   # Awaiting_confirmation
-  get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
+  get "awaiting_confirmation/:user_id", :to => "networks#awaiting_confirmation"
 
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status

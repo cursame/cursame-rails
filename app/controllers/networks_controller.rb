@@ -155,17 +155,10 @@ class NetworksController < ApplicationController
   end
 
   def awaiting_confirmation
-    personal_url = params[:personal_url]
-    user = User.find_by_personal_url(personal_url)
-    if (user.nil?)
-      redirect_to root_path
-    elsif (user.confirmed?)
-      redirect_to root_path
-    else
-      @user_inactive = user
-    end
+    user = User.find_by_id params[:user_id]
+    return redirect_to root_path if user.nil? || user.confirmed?
     respond_to do |format|
-      format.html {render :layout => 'sessions'}
+      format.html { render :layout => 'sessions' }
     end
   end
 
