@@ -35,7 +35,7 @@ class Course < ActiveRecord::Base
 
   attr_accessible :evaluation_criteria_attributes
 
-  accepts_nested_attributes_for :evaluation_criteria
+  accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
 
   acts_as_votable
   acts_as_commentable

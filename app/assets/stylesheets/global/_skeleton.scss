@@ -566,6 +566,20 @@ body {
   padding: 30px 0;
 }
 
+.section-help {
+  padding: 10px;
+  margin-bottom: 20px;
+  @include clearfix;
+
+  .i {
+    float: left;
+  }
+
+  p {
+    padding-left: 36px;
+  }
+}
+
 /* Menu User
 ----------------------------------*/
 .menu-user{
@@ -750,3 +764,4 @@ body {
 .mta-spcer {
   padding: 0px 5px;
 }
+

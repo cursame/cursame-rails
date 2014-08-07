@@ -357,6 +357,11 @@ class CoursesController < ApplicationController
     @role = current_role
   end
 
+  def evaluation_scheme
+    @course = Course.find_by_id(params[:id])
+    @member = obtainMember(@course.id, current_user.id)
+  end
+
 
   def filter_protection
     @course = Course.find(params[:id])

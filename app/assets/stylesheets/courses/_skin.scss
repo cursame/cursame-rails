@@ -895,3 +895,33 @@ td {
     }
   }
 }
+
+// Evaluation Schema
+.course-evaluation-schema {
+  
+  .course-evaluation-schema-list {
+    @extend .basic-container-style;
+  }
+
+  .table-schema {
+    thead td {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .eva-percenage-input {
+      span {
+        color: $meta-color;
+      }
+    }
+  }
+
+  .add-new-criteria {
+    > a {
+      @extend .btn-secondary;
+      text-align: center;
+      border-width: 1px 0 0 0;
+      border-radius: 0 0 $radius $radius;
+    }
+  }
+}

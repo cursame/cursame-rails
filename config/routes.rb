@@ -120,6 +120,7 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/about', :to => 'courses#about', :as => :about_course
   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+  get '/courses/:id/evaluation-schema', :to =>  'courses#evaluation_scheme', :as => :course_evaluation_schema
 
   resources :courses do
     resources :assignments

@@ -24,6 +24,14 @@ function add_fields(link, association, content, toId) {
   };
 };
 
+function add_course_evaluation_fields(link, association, content) {
+  var new_id = new Date().getTime(),
+      regexp = new RegExp("new_" + association, "g"),
+      table = $(link).closest('.course-evaluation-schema-list').find('.table-schema tbody');
+
+  table.append(content.replace(regexp, new_id));
+};
+
 function changeNumbers(idParent, idFind){
   var count = 0 ;
   var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');

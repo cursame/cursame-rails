@@ -1181,3 +1181,59 @@
     }
   }
 }
+
+
+// Evaluation Schema
+.course-evaluation-schema {
+
+  .table-schema {
+    thead td {
+      padding: 4px 10px;
+    }
+
+    tbody td {
+      padding: 15px 10px;
+    }
+
+    tr:hover {
+      .eva-delete-criteria {
+        display: block;
+      }
+    }
+
+    .eva-percenage {
+      position: relative;
+    }
+
+    .eva-percenage-input {
+      position: relative;
+      width: 90%;
+
+      span {
+        position: absolute;
+        right: 5px;
+        top: 9px;
+      }
+    }
+
+    .eva-delete-criteria {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -10px;
+      display: none;
+    }
+  }
+
+  .add-new-criteria {
+    > a {
+      display: block;
+      padding: 13px 10px;
+    }
+  }
+
+  .course-evaluation-schema-footer {
+    margin-top: 20px;
+    @include clearfix;
+  }
+}
