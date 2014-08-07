@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
-  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
-  filter_access_to :show
-  before_filter :course_activated, :only => [:show, :about, :members, :library]
   include CoursesUtils
+  include FiltersUtils
+  before_filter :filter_protection, only: [:show, :edit, :destroy, :members]
+  before_filter :course_activated, only: [:show, :about, :members, :library]
+  before_filter :validations, only: :evaluation_schema
+  filter_access_to :show
 
   def index
     @member = MembersInCourse.new
@@ -357,11 +359,15 @@ class CoursesController < ApplicationController
     @role = current_role
   end
 
-  def evaluation_scheme
-    @course = Course.find_by_id(params[:id])
+  def evaluation_schema
+    user_is_owner?(@course, current_user, current_role)
     @member = obtainMember(@course.id, current_user.id)
   end
 
+  def validations
+    @course = Course.find_by_id(params[:id])
+    course_exist?(@course)
+  end
 
   def filter_protection
     @course = Course.find(params[:id])
