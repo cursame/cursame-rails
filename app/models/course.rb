@@ -24,7 +24,7 @@ class Course < ActiveRecord::Base
 
   validates :title, :active_status, presence: true
   validates :silabus, presence: true, allow_blank: true
-  validates :public_status, inclusion: { in: %w(Private, public) }
+  validates :public_status, inclusion: { in: %w(Private public) }
 
   validate  :finish_date_cannot_be_in_the_past, :init_date_cannot_be_greater_than_finish_date
 
