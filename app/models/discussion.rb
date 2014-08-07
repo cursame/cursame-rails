@@ -6,7 +6,7 @@ class Discussion < ActiveRecord::Base
   has_many :contents, as: :contentye
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
 
-  attr_accessible :evaluation_criteria
+  attr_accessible :evaluation_criteria, :title, :description
 
   belongs_to :network
   belongs_to :user
