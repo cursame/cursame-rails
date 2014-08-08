@@ -22,7 +22,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :title, "Tema de la discusión" %>
+        <%= f.label :title, "Tema de la discusión: " %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -33,25 +33,26 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :description, "Descripción" %>
+        <%= f.label :description, "Descripción:" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_area :description, placeholder: "Descripción", rows: 6, required: "required" %>
+          <%= f.text_area :description, placeholder: "Descripción", rows: 3, required: true, class: 'autogrow' %>
         </div>
       </div>
     </div>
     
     <% if @active_edit == false %>
-      <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label "", "Material de soporte" %>
+
+      <div class="form-group ">
+        <div class="form-group-label label-no-p">
+          <%= f.label "", "Material de soporte:" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
             <ul class="list-buttons left">
               <li>
-                <a class="btn btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+                <a class="btn btn-secondary btn-small add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
               </li>
               <li>
                 <%= render partial: 'assets/upload_asset_button', locals: { from: 'discussion-create-form' } %>
@@ -61,7 +62,62 @@
           </div>
         </div>
       </div>
-    <%end%>
+      
+      <div class="form-group">
+        <div class="form-group-main">
+          <div class="form-unit">
+            <label>
+              <input type="checkbox">
+              Calificable
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="evaluable-fields">
+
+        <div class="form-group">
+          <div class="form-group-label">
+            <%= f.label 'Date', "Fechas:" %>
+          </div>
+          <div class="form-group-main">
+            <div class="f-col f-col-5">
+              <div class="form-unit">
+                <%= f.text_field :publish_date, placeholder: 'Día de publicación', class: "datetime-picker", value: Time.now, required: true %>
+              </div>
+            </div>
+
+            <div class="f-col f-col-5">
+              <div class="form-unit">
+                <%= f.text_field :end_date, placeholder: 'Fecha de entrega', class: "datetime-picker", value: '', required: true  %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group-label label-no-p">
+            <%= f.label '', "Criterios a evaluar:" %>
+          </div>
+          <div class="form-group-main">
+            <div class="areas-of-evaluation">
+              <div class="form-unit">
+                <div class="fields-wrap">
+                  <div class="fields-group">
+                    <%= f.fields_for :evaluation_criteria do | builder | %>
+                      <%= render partial: "shared/evaluation_criteria/evaluation_criteria_fields", locals: { f: builder } %>
+                    <% end %>
+                  </div>
+                  <%= link_to_add_evaluation_criteria 'Agregar criterio', f, :evaluation_criteria %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    <% end %>
 
   </div>
 
