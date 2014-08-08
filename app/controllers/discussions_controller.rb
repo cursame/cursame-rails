@@ -62,7 +62,7 @@ class DiscussionsController < ApplicationController
 
   # POST /discussions
   # POST /discussions.json
-  def create
+  def createPast
 
     @publication = []
 
@@ -102,6 +102,47 @@ class DiscussionsController < ApplicationController
       format.js
     end
   end
+
+  def create
+    @publication = []
+    if params[:discussion]["evaluable"]
+        
+      courses = params[:delivery]["course_ids"]
+      courses.each do |courseId|
+        @discussion = Discussion.new(params[:discussion])
+        @discussion.user = current_user
+        @discussion.network = current_network
+        @discussion.courses = [Course.find(courseId)]
+
+        if @discussion.save! then
+          @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+          @az = @discussion
+          @typed = "Discussion"
+          activation_activity
+        else
+          redirect_to :back, notice: 'No se pudo crear la discusion'
+        end
+      end 
+
+    else
+      @discussion = Discussion.new(params[:discussion])
+      @discussion.user = current_user
+      @discussion.network = current_network
+
+      if @discussion.save!
+        @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+        @az = @discussion
+        @typed = "Discussion"
+        activation_activity
+      else
+        redirect_to :back, notice: 'No se pudo crear la discusion.'
+      end  
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end  
 
   # PUT /discussions/1
   # PUT /discussions/1.json

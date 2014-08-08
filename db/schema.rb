@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140731174145) do
+ActiveRecord::Schema.define(:version => 20140808220255) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -261,6 +261,8 @@ ActiveRecord::Schema.define(:version => 20140731174145) do
     t.integer  "user_id"
     t.text     "description_html"
     t.boolean  "evaluable",        :default => false
+    t.datetime "publish_date"
+    t.datetime "end_date"
   end
 
   create_table "discussions_courses", :force => true do |t|
@@ -278,8 +280,6 @@ ActiveRecord::Schema.define(:version => 20140731174145) do
     t.integer  "evaluable_id"
     t.string   "evaluable_type"
   end
-
-  add_index "evaluation_criteria", ["evaluable_id", "evaluable_type"], :name => "index_evaluation_criteria_on_evaluable_id_and_evaluable_type"
 
   create_table "events", :force => true do |t|
     t.string   "title"
