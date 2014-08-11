@@ -9,8 +9,6 @@ class Asset < ActiveRecord::Base
   has_many :assignment_assets, :dependent => :destroy
   has_many :assignments, :through => :assignment_assets
 
-
-  #uploader to upadate files
-   mount_uploader :file, FileUploader
+  mount_uploader :file, FileUploader
 
 end

@@ -1,8 +1,8 @@
 .support-material-item{ id: asset.id }
   = link_to asset.file.to_s, target: '_blank', class: 'item-name' do 
     =icon 'upload-asset-blue'
-    - unless asset.title.empty?
-      = asset.title
+    - unless asset.file.file.nil?
+      = asset.file.file.identifier
     - else
       = asset.file
   = link_to asset_path(asset), class: 'item-delete', method: 'delete', remote: true do 

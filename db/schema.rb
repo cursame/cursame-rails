@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140808220255) do
+ActiveRecord::Schema.define(:version => 20140811170407) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -83,13 +83,10 @@ ActiveRecord::Schema.define(:version => 20140808220255) do
   end
 
   create_table "assets", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
     t.string   "file"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.string   "encryption_code_to_access"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "assignment_assets", :force => true do |t|
