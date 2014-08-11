@@ -26,8 +26,6 @@ class Course < ActiveRecord::Base
   validates :silabus, presence: true, allow_blank: true
   validates :public_status, inclusion: { in: %w(Private public) }
 
-  validate  :finish_date_cannot_be_in_the_past, :init_date_cannot_be_greater_than_finish_date
-
   attr_accessible :id, :title, :silabus, :init_date, :finish_date,
     :created_at, :updated_at, :public_status,
     :avatar, :coverphoto, :delivery_id,
@@ -85,18 +83,6 @@ class Course < ActiveRecord::Base
     self.members_in_courses.each do |mic|
       notificacion = Notification.where(:notificator_type =>"MembersInCourse", :notificator_id => mic.id)
       notificacion.destroy
-    end
-  end
-
-  def finish_date_cannot_be_in_the_past
-    if finish_date.present? && finish_date < Date.today
-      errors.add(:finish_date, "can't be in the past")
-    end
-  end
-
-  def init_date_cannot_be_greater_than_finish_date
-    if init_date.present? && finish_date.present? && finish_date < init_date
-      errors.add(:init_date, "can't be grater than finish_date")
     end
   end
 
