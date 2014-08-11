@@ -105,7 +105,7 @@ class DiscussionsController < ApplicationController
 
   def create
     @publication = []
-    if params[:discussion]["evaluable"]
+    if params[:discussion]["evaluable"].to_i == 1 
         
       courses = params[:delivery]["course_ids"]
       courses.each do |courseId|
@@ -120,7 +120,7 @@ class DiscussionsController < ApplicationController
           @typed = "Discussion"
           activation_activity
         else
-          redirect_to :back, notice: 'No se pudo crear la discusion'
+          redirect_to :back, notice: 'No se pudo crear la discusión'
         end
       end 
 
@@ -135,7 +135,7 @@ class DiscussionsController < ApplicationController
         @typed = "Discussion"
         activation_activity
       else
-        redirect_to :back, notice: 'No se pudo crear la discusion.'
+        redirect_to :back, notice: 'No se pudo crear la discusión.'
       end  
     end
 
