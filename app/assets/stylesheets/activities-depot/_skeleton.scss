@@ -222,7 +222,7 @@
   }
 
   .activity-view-main-user {
-    padding: 15px 10px;
+    padding: 10px;
     @include clearfix;
 
     .avatar-holder {
@@ -298,8 +298,24 @@
   }
 }
 
-.sidebar-responses {
+.evaluate-activity-comments {
+  padding: 10px;
 
+  .activity-comment {
+    margin-top: 10px;
+    @include clearfix;
+
+    .comment-author {
+      float: left;
+    }
+
+    .comment-main {
+      margin: -2px 0 0 40px;
+    }
+  }
+}
+
+.sidebar-responses {
   .sidebar-responses-header {
     padding: 5px 10px;
   }

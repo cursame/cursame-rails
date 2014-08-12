@@ -153,6 +153,17 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
+    t.integer  "asset_id"
+    t.integer  "delivery_id"
+    t.integer  "assignment_id"
+    t.integer  "comment_id"
+    t.integer  "question_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
     t.integer  "contentye_id"
@@ -259,6 +270,7 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
   add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
   add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
 
+<<<<<<< HEAD
   create_table "discussion_courses", :force => true do |t|
     t.integer  "discussion_id"
     t.integer  "course_id"
@@ -266,6 +278,9 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
     t.datetime "updated_at",    :null => false
   end
 
+=======
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
   create_table "discussion_responses", :force => true do |t|
     t.integer  "discussion_id"
     t.integer  "user_id"
@@ -276,6 +291,11 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
   add_index "discussion_responses", ["discussion_id"], :name => "index_discussion_responses_on_discussion_id"
   add_index "discussion_responses", ["user_id"], :name => "index_discussion_responses_on_user_id"
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 1bf2a81741d7d9a251d623a99ee23b18b06de4dd
+>>>>>>> FETCH_HEAD
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -407,11 +427,11 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -576,6 +596,7 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
   create_table "user_surveys", :force => true do |t|
     t.integer  "survey_id"
     t.integer  "user_id"
+    t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

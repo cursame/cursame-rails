@@ -1,0 +1,27 @@
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .activity-header
+          .activity-extract
+            .activity-title
+              = icon("activity-discussion")
+              = link_to evaluate_discussion_path(discussion) do
+                %h3= discussion.title
+          - if meta_data
+            .activity-view-data
+              %ul
+                %li
+                  %span.meta-info Curso
+                  %p= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course)
+                %li
+                  %span.meta-info Participantes
+                  %p
+                    = discussion.comments.count
+                    de #{course.members_in_courses.count - 1}
+                %li
+                  %span.meta-info Fecha de publicación
+                  %p= I18n.localize(discussion.created_at, format: "%e de %B del %Y")
+                %li
+                  %span.meta-info Fecha limite para participar
+                  %p= I18n.localize(discussion.end_date, format: "%e de %B del %Y")

@@ -105,14 +105,13 @@ class DiscussionsController < ApplicationController
 
   def create
     @publication = []
-    if params[:discussion]["evaluable"].to_i == 1
-
+    if params[:discussion]["evaluable"].to_i == 1 
       courses = params[:delivery]["course_ids"]
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
         @discussion.user = current_user
         @discussion.network = current_network
-        @discussion.courses = [Course.find(courseId)]
+        @discussion.courses = [Course.find_by_id(courseId)]
 
         if @discussion.save
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))

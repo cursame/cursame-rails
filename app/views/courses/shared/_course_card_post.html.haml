@@ -19,5 +19,5 @@
     .post-box-under-container
       .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: course, wall: wall }
       .comments-wrap.course{ data: { comments_group_id: course.id } }
-        = render partial: 'shared/posts/post_comments_list', locals: { post: course }
+        = render partial: 'shared/posts/post_comments_list', locals: { post: course, new_comment: true }
 

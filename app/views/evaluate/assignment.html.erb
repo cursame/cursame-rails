@@ -59,26 +59,11 @@
                       <% if assignment.assets.count > 0 || assignment.contents.count > 0 %>
                         <div class="assets response-item">
                           <span class="meta-info">Archivos adjuntos:</span>
-                          
-                          <% domain = "http://#{current_network.subdomain}.#{links}" %>
-                          <% assignment.assets.each do |aa|%>
-                            <% @file =  aa.file %>
-                            <% @string_file =  @file.to_s.split('/').last%>
-                            <div id="<%= aa.id %>_file">
-                              <%= link_to truncate( "#{domain}#{aa.file}", :omission => "...", :length => 60), "#{domain}#{aa.file}", :target => '_blank' %>
-
-                            </div>
-                         <%end%>
-                         
-                          <% assignment.contents.each do |as|%>
-                            <% @refer_content = as.content.split('/').last%>
-                            <div id="<%= as.id %>_content">
-                              <%= link_to truncate( as.content, :omission => "...", :length => 60), as.content, :target => '_blank' %>
-                            </div>
-                          <%end%>
-                        
+                          <%= render partial: 'assets/assets_list', locals: { assets: assignment.assets, delete_enable: false } %>
+                          <%= render :partial => "content/insertions_to_contents", :locals => { :type => assignment, :cl => 'assignment'} %>
                         </div>
                       <% end %>
+
                     </div>
                   </div>
                   <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">

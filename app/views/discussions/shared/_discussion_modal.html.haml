@@ -11,7 +11,20 @@
 .overlay-content
   %h3= discussion.title
   = discussion.description_html
-  -# = render :partial => "content/insertions_to_contents", :locals => { :type => discussion, :cl => 'discussion'}
-
-.comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
-  = render partial: 'shared/posts/post_comments_list', locals: { post: discussion }
+  %br/
+  = render :partial => "content/insertions_to_contents", :locals => { :type => discussion, :cl => 'discussion'}
+  = render partial: 'assets/assets_list', locals: { assets: discussion.assets, delete_enable: false }
+  - if discussion.evaluable
+    - if discussion.evaluation_criteria.count > 0
+      %br/
+      %h5 Criterios a evaluar
+      %ul
+      - discussion.evaluation_criteria.each do |area|
+        %li= area.name
+.model-comments
+  .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
+    - if discussion.evaluable?
+      - past_discussion = !(Time.now > discussion.end_date)
+    - else
+      - past_discussion = true
+    = render partial: 'shared/posts/post_comments_list', locals: { post: discussion, new_comment: past_discussion }

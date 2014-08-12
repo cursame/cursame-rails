@@ -41,4 +41,4 @@
       .post-box-under-container
         .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: delivery, wall: wall }
         .comments-wrap.delivery{ data: { comments_group_id: delivery.id } }
-          = render partial: 'shared/posts/post_comments_list', locals: { post: delivery }
+          = render partial: 'shared/posts/post_comments_list', locals: { post: delivery, new_comment: true }
