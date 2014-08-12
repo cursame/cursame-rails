@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140811233250) do
+ActiveRecord::Schema.define(:version => 20140812203511) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -259,6 +259,23 @@ ActiveRecord::Schema.define(:version => 20140811233250) do
   add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
   add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
 
+  create_table "discussion_courses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "course_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "discussion_responses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "discussion_responses", ["discussion_id"], :name => "index_discussion_responses_on_discussion_id"
+  add_index "discussion_responses", ["user_id"], :name => "index_discussion_responses_on_user_id"
+
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -272,13 +289,6 @@ ActiveRecord::Schema.define(:version => 20140811233250) do
     t.datetime "end_date"
   end
 
-  create_table "discussions_courses", :force => true do |t|
-    t.integer  "discussion_id"
-    t.integer  "course_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "evaluation_criteria", :force => true do |t|
     t.string   "name"
     t.integer  "evaluation_percentage"
@@ -287,6 +297,8 @@ ActiveRecord::Schema.define(:version => 20140811233250) do
     t.integer  "evaluable_id"
     t.string   "evaluable_type"
   end
+
+  add_index "evaluation_criteria", ["evaluable_id", "evaluable_type"], :name => "index_evaluation_criteria_on_evaluable_id_and_evaluable_type"
 
   create_table "events", :force => true do |t|
     t.string   "title"
