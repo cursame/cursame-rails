@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140811170407) do
+ActiveRecord::Schema.define(:version => 20140811233250) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20140811170407) do
   end
 
   create_table "assets", :force => true do |t|
-    t.string   "file"
+    t.string   "filename"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -248,6 +248,16 @@ ActiveRecord::Schema.define(:version => 20140811170407) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "discussion_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "discussion_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
+  add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
 
   create_table "discussions", :force => true do |t|
     t.string   "title"
@@ -495,6 +505,16 @@ ActiveRecord::Schema.define(:version => 20140811170407) do
     t.integer  "user_id"
   end
 
+  create_table "survey_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "survey_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "survey_assets", ["asset_id"], :name => "index_survey_assets_on_asset_id"
+  add_index "survey_assets", ["survey_id"], :name => "index_survey_assets_on_survey_id"
+
   create_table "surveyings", :force => true do |t|
     t.integer  "course_id"
     t.integer  "survey_id"
@@ -544,7 +564,6 @@ ActiveRecord::Schema.define(:version => 20140811170407) do
   create_table "user_surveys", :force => true do |t|
     t.integer  "survey_id"
     t.integer  "user_id"
-    t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

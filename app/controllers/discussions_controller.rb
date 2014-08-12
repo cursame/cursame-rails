@@ -12,7 +12,7 @@ class DiscussionsController < ApplicationController
   def discussions_course
     @course = Course.find_by_id(params[:id])
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course)
-    
+
     unless member.nil?
       redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no has sido aceptado."} unless member.accepted
     else
@@ -105,8 +105,8 @@ class DiscussionsController < ApplicationController
 
   def create
     @publication = []
-    if params[:discussion]["evaluable"].to_i == 1 
-        
+    if params[:discussion]["evaluable"].to_i == 1
+
       courses = params[:delivery]["course_ids"]
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
@@ -114,7 +114,7 @@ class DiscussionsController < ApplicationController
         @discussion.network = current_network
         @discussion.courses = [Course.find(courseId)]
 
-        if @discussion.save! then
+        if @discussion.save
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
           @az = @discussion
           @typed = "Discussion"
@@ -122,7 +122,7 @@ class DiscussionsController < ApplicationController
         else
           redirect_to :back, notice: 'No se pudo crear la discusión'
         end
-      end 
+      end
 
     else
       @discussion = Discussion.new(params[:discussion])
@@ -136,20 +136,27 @@ class DiscussionsController < ApplicationController
         activation_activity
       else
         redirect_to :back, notice: 'No se pudo crear la discusión.'
-      end  
+      end
+    end
+
+    if params[:files]
+      params[:files].each do |asset_id|
+        @asset = Asset.find_by_id asset_id
+        @discussion.assets.push @asset unless @asset.nil?
+      end
     end
 
     respond_to do |format|
       format.js
     end
-  end  
+  end
 
   # PUT /discussions/1
   # PUT /discussions/1.json
   def update
     @discussion = Discussion.find(params[:id])
     @wall_publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
-    
+
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
         format.js

@@ -354,7 +354,7 @@ class Api::ApiController < ApplicationController
     if files && files.kind_of?(Array) && !files.empty?
       files.each do |file|
         asset = Asset.new()
-        asset.file = file[1]
+        asset.filename = file[1]
         asset.user_id = @user.id
         asset.save
         @delivery.assets.push(asset)

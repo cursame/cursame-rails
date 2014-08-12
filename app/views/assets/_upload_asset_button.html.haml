@@ -2,6 +2,6 @@
   = icon('upload-asset')
   Archivo
 .hide-input-file
-  = file_field_tag :file, id: from, class: 'upload-input', multiple: true, name: "asset[file]", data: { url: assets_path }
+  = file_field_tag :filename, id: from, class: 'upload-input', multiple: true, name: "asset[filename]", data: { url: assets_path }
   = hidden_field_tag :user_id, current_user.id
   = hidden_field_tag :from, from

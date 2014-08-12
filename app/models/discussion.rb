@@ -1,13 +1,15 @@
 class Discussion < ActiveRecord::Base
 
-  has_many :discussions_coursess, dependent: :destroy
-  has_many :courses, through: :discussions_coursess
   has_many :activities, as: :activitye
+  has_many :assets, through: :discussion_assets
   has_many :contents, as: :contentye
+  has_many :courses, through: :discussions_coursess
+  has_many :discussion_assets, dependent: :destroy
+  has_many :discussions_coursess, dependent: :destroy
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
-
-  attr_accessible :evaluation_criteria, :title, :description, :publish_date, :end_date, :evaluable #para calificable
-  attr_accessible :evaluation_criteria_attributes #para los criterios de evaluacion
+  
+  attr_accessible :evaluation_criteria, :title, :description, :publish_date, :end_date, :evaluable
+  attr_accessible :evaluation_criteria_attributes
 
   belongs_to :network
   belongs_to :user

@@ -104,7 +104,7 @@ class SurveysController < ApplicationController
   end
 
   def show
-    
+
     @wall = Wall.find_by_publication_type_and_publication_id( 'Survey', @survey.id )
   end
 
@@ -120,10 +120,18 @@ class SurveysController < ApplicationController
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
 
     if courses && !courses.empty?
-      
+
       courses.each { |course_id| @survey.courses.push(Course.find_by_id(course_id)) }
-        
-      if @survey.save!
+
+      if @survey.save
+
+        if params[:files]
+          params[:files].each do |asset_id|
+            @asset = Asset.find_by_id asset_id
+            @survey.assets.push @asset unless @asset.nil?
+          end
+        end
+
         @az = @survey
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"
@@ -138,7 +146,7 @@ class SurveysController < ApplicationController
     puts @publication
 
     respond_to do |format|
-     format.js
+      format.js
     end
   end
 
@@ -161,19 +169,19 @@ class SurveysController < ApplicationController
     end
 
     if @survey.update_attributes(params[:survey])
-        @survey.courses=[]
-        ids.each do |id|
-          @survey.courses.push(Course.find_by_id(id))
-        end
+      @survey.courses=[]
+      ids.each do |id|
+        @survey.courses.push(Course.find_by_id(id))
+      end
       @survey.save
 
-     @wall_publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
-     respond_to do |format|
+      @wall_publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
+      respond_to do |format|
         format.js
         format.html { render action: "edit" }
         format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end
-     else
+    else
       format.js
     end
   end
@@ -198,9 +206,9 @@ class SurveysController < ApplicationController
             @user_response.answer_id = answer
             @user_response.save
           end
-            @az = @user_survey
-            @typed = "User_survey"
-            activation_activity
+          @az = @user_survey
+          @typed = "User_survey"
+          activation_activity
         end
       else
         @error = true
@@ -231,7 +239,7 @@ class SurveysController < ApplicationController
       @linkik = 'Ocultar'
 
     end
-    
+
     @survey.save!
 
     if @survey.save
