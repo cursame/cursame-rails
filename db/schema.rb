@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140811233250) do
+ActiveRecord::Schema.define(:version => 20140812164832) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -270,6 +270,19 @@ ActiveRecord::Schema.define(:version => 20140811233250) do
   add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
   add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
 
+<<<<<<< HEAD
+  create_table "discussion_responses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "discussion_responses", ["discussion_id"], :name => "index_discussion_responses_on_discussion_id"
+  add_index "discussion_responses", ["user_id"], :name => "index_discussion_responses_on_user_id"
+
+=======
+>>>>>>> 1bf2a81741d7d9a251d623a99ee23b18b06de4dd
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
