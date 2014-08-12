@@ -40,14 +40,14 @@ class UserSurvey < ActiveRecord::Base
       self.grade = Grade.create score: 0, gradable: self, user_id: self.user_id
     end
     if (responses.size != 0) then
-      evaluation = (correct_answers/responses.size)*100.to_f
-      self.update_attributes result: evaluation
+      evaluation = (correct_answers/responses.size)*100
+      #self.update_attributes result: evaluation
       if evaluation.to_i != grade.score
         self.grade.update_attributes score: evaluation.to_i
       end
       return evaluation
     else
-      self.update_attributes result: 0.0
+      #self.update_attributes result: 0.0
       if grade.score != 0
         self.grade.update_attributes score: 0, gradable: self
       end

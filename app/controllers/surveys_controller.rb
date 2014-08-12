@@ -191,7 +191,7 @@ class SurveysController < ApplicationController
       @user_survey = UserSurvey.new
       @user_survey.survey_id = params[:survey_id]
       @user_survey.user = current_user
-      @user_survey.result = 0;
+      #@user_survey.result = 0;
       @survey_id = params[:survey_id]
       @error = false
 
