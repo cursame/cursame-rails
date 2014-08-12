@@ -180,27 +180,30 @@ window.Notice = function(type, message)  {
 
 $(function() {
 
-  $(".datetime-picker").datetimepicker({
-    inline: false,
-    minDate: 0,
-    hourMin: 0,
-    hourMax: 23,
-    controlType: 'select',
-    showOtherMonths: true,
-    dateFormat: 'dd/mm/yy',
-    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-    beforeShow: function(input, inst) {
-      var cal = inst.dpDiv;
-      var top  = $(this).offset().top + $(this).outerHeight();
-      var left = $(this).offset().left;
-      setTimeout(function() {
-        cal.css({
-            'top' : top,
-            'left': left
-        });
-      }, 10);
-    }
+  $(".datetime-picker").live('focus', function(event) {
+    $(this).datetimepicker({
+      inline: false,
+      minDate: 0,
+      hourMin: 0,
+      hourMax: 23,
+      controlType: 'select',
+      showOtherMonths: true,
+      dateFormat: 'dd/mm/yy',
+      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+      beforeShow: function(input, inst) {
+        var cal = inst.dpDiv;
+        var top  = $(this).offset().top + $(this).outerHeight();
+        var left = $(this).offset().left;
+        setTimeout(function() {
+          cal.css({
+              'top' : top,
+              'left': left
+          });
+        }, 10);
+      }
+    });
+
   });
 
   $(document).keyup(function(e) {
