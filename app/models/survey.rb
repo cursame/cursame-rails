@@ -1,15 +1,14 @@
 class Survey < ActiveRecord::Base
 
   has_many :activities, as: :activitye, dependent: :destroy
+  has_many :assets, through: :survey_assets
   has_many :comments, dependent: :destroy
   has_many :courses, through: :surveyings
   has_many :events, as: :schedule, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :surveyings, dependent: :destroy
   has_many :user_surveys, dependent: :destroy
-
   has_many :survey_assets, dependent: :destroy
-  has_many :assets, through: :survey_assets
 
   belongs_to :network
   belongs_to :poll

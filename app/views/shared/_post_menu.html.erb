@@ -1,5 +1,6 @@
 <% content_for :javascripts do %>
 <%= javascript_include_tag 'publications/cancel_new_publication' %>
+<%= javascript_include_tag 'publications/new_discussion' %>
 <% end %>
 
 <div class="new-publication">
@@ -41,7 +42,7 @@
 
         <div class="tabs-main">
           <% permitted_to? :create, :comments do %>
-            <div id="comment-tab-content" class="tab-content" >
+            <div id="comment-tab-content" class="tab-content" style="display: block;">
               <%= render :partial => '/shared/comment_form',:locals => {:commentable_id => current_network.id,:commentable_type => 'Network', :comment_id => nil, :message => '¿Qué estás pensando?', :active_edit => false, :in_type => 'comment'} %>
             </div>
           <% end %>
@@ -53,7 +54,7 @@
           <%end%>
 
           <% permitted_to? :create, :discussions do %>
-            <div id="discussion-tab-content" class="tab-content" style="display: block;">
+            <div id="discussion-tab-content" class="tab-content">
               <%= render :partial => "/discussions/form_for_discussion", :locals => {:active_edit => @active_edit, :in_type => 'discussion'}%>
             </div>
           <%end%>

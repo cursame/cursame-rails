@@ -1,18 +1,18 @@
-# development:
-#     adapter: sqlite3
-#     database: db/development.sqlite3
-#     pool: 5
-#     timeout: 5000
-
 development:
-    adapter: postgresql
-    host: 50.16.197.169
-    database: cursame-development
-    username: cursame
-    password: r8o54q58
-    encoding: unicode
-    timeout: 7000
+    adapter: sqlite3
+    database: db/development.sqlite3
     pool: 5
+    timeout: 5000
+
+# development:
+#     adapter: postgresql
+#     host: 50.16.197.169
+#     database: cursame-development
+#     username: cursame
+#     password: r8o54q58
+#     encoding: unicode
+#     timeout: 7000
+#     pool: 5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

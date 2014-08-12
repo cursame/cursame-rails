@@ -6,11 +6,10 @@ $(function() {
         holder   = $this.closest('.dropdown-wrap'),
         dropdown = holder.find('.dropdown-v');
 
-    // $('div.dropdown-v').parent().removeClass('active');
-
     if ( holder.hasClass('active') ) {
       holder.removeClass('active');
     } else {
+      $('div.dropdown-wrap').removeClass('active');
       holder.addClass('active');
     };
   });

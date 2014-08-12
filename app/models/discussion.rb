@@ -3,13 +3,14 @@ class Discussion < ActiveRecord::Base
   has_many :activities, as: :activitye
   has_many :assets, through: :discussion_assets
   has_many :contents, as: :contentye
-  has_many :courses, through: :discussions_coursess
+  has_many :courses, through: :discussion_course
   has_many :discussion_assets, dependent: :destroy
-  has_many :discussions_coursess, dependent: :destroy
+  has_many :discussion_course, dependent: :destroy
+  has_many :discussion_responses, dependent: :destroy
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
-  
   attr_accessible :evaluation_criteria, :title, :description, :publish_date, :end_date, :evaluable
   attr_accessible :evaluation_criteria_attributes
+  attr_accessible :contents_attributes
 
   belongs_to :network
   belongs_to :user
@@ -28,19 +29,19 @@ class Discussion < ActiveRecord::Base
   auto_html_for :description do
     html_escape
     image
-    dailymotion  :width => "100%", :height => 250
-    google_map   :width => "100%", :height => 250
-    google_video :width => "100%", :height => 250
-    metacafe     :width => "100%", :height => 250
-    soundcloud   :width => "100%", :height => 250
-    twitter      :width => "100%", :height => 250
-    vimeo        :width => "100%", :height => 250
-    youtube      :width => "100%", :height => 250
-    slideshare_support :width => "100%"
-    ustream_support    :width => "100%"
-    prezi_with_wmode   :width => "100%", :height => 360
-    livestrem_support  :width => "100%", :height => 360
-    link :target => "_blank", :rel => "nofollow"
+    dailymotion        width: "100%", height: 250
+    google_map         width: "100%", height: 250
+    google_video       width: "100%", height: 250
+    metacafe           width: "100%", height: 250
+    soundcloud         width: "100%", height: 250
+    twitter            width: "100%", height: 250
+    vimeo              width: "100%", height: 250
+    youtube            width: "100%", height: 250
+    prezi_with_wmode   width: "100%", height: 360
+    livestrem_support  width: "100%", height: 360
+    slideshare_support width: "100%"
+    ustream_support    width: "100%"
+    link               target: "_blank", rel: "nofollow"
     redcarpet
     simple_format
   end

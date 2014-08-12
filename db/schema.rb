@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140812164832) do
+ActiveRecord::Schema.define(:version => 20140812203511) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -153,6 +153,17 @@ ActiveRecord::Schema.define(:version => 20140812164832) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
+    t.integer  "asset_id"
+    t.integer  "delivery_id"
+    t.integer  "assignment_id"
+    t.integer  "comment_id"
+    t.integer  "question_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
     t.integer  "contentye_id"
@@ -259,7 +270,13 @@ ActiveRecord::Schema.define(:version => 20140812164832) do
   add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
   add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
 
-<<<<<<< HEAD
+  create_table "discussion_courses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "course_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "discussion_responses", :force => true do |t|
     t.integer  "discussion_id"
     t.integer  "user_id"
@@ -270,8 +287,6 @@ ActiveRecord::Schema.define(:version => 20140812164832) do
   add_index "discussion_responses", ["discussion_id"], :name => "index_discussion_responses_on_discussion_id"
   add_index "discussion_responses", ["user_id"], :name => "index_discussion_responses_on_user_id"
 
-=======
->>>>>>> 1bf2a81741d7d9a251d623a99ee23b18b06de4dd
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -283,13 +298,6 @@ ActiveRecord::Schema.define(:version => 20140812164832) do
     t.boolean  "evaluable",        :default => false
     t.datetime "publish_date"
     t.datetime "end_date"
-  end
-
-  create_table "discussions_courses", :force => true do |t|
-    t.integer  "discussion_id"
-    t.integer  "course_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
   create_table "evaluation_criteria", :force => true do |t|
@@ -410,11 +418,11 @@ ActiveRecord::Schema.define(:version => 20140812164832) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"

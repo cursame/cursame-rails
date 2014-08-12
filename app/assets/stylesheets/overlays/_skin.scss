@@ -49,6 +49,12 @@
     border-top: 1px solid #d6d6d6;
     border-radius: 0 0 $radius $radius;
   }
+
+  .model-comments {
+    background: #fcfcfc;
+    border-radius: 0 0 $radius $radius;
+    border-top: 1px solid $separator-color;
+  }
 }
 
 /* Delivery Overlay
