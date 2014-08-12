@@ -1,5 +1,5 @@
 var supportMaterialBox = $('div.support-material#<%= params[:from] %>-assets'),
-    content = '<%= escape_javascript(render( partial: "assets/asset_file", locals: { asset: @asset } ))%>';
+    content = '<%= escape_javascript(render( partial: "assets/asset_file", locals: { asset: @asset, delete_enable: true } ))%>';
 
 supportMaterialBox.append(content);
 

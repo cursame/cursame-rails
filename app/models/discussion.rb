@@ -7,9 +7,9 @@ class Discussion < ActiveRecord::Base
   has_many :discussion_assets, dependent: :destroy
   has_many :discussions_coursess, dependent: :destroy
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
-  
   attr_accessible :evaluation_criteria, :title, :description, :publish_date, :end_date, :evaluable
   attr_accessible :evaluation_criteria_attributes
+  attr_accessible :contents_attributes
 
   belongs_to :network
   belongs_to :user

@@ -40,4 +40,4 @@
       .post-box-under-container
         .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: survey, wall: wall }
         .comments-wrap.survey{ data: { comments_group_id: survey.id } }
-          = render partial: 'shared/posts/post_comments_list', locals: { post: survey }
+          = render partial: 'shared/posts/post_comments_list', locals: { post: survey, new_comment: true }

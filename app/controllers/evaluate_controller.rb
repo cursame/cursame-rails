@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class EvaluateController < ApplicationController
   include CoursesUtils
   include FiltersUtils
@@ -131,6 +133,21 @@ class EvaluateController < ApplicationController
     end
 
     redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless owner
+  end
+
+  def discussion
+    @discussion = Discussion.find_by_id(params[:discussion_id])
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion.owner?(current_role, current_user)
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no es calificable."} and return unless @discussion.evaluable
+
+    respond_to do |format|
+      format.html { render 'evaluate/discussion/evaluate_discussion' }
+    end
+  end
+
+  def discussion_response
+    
   end
 
   def user_survey

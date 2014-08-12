@@ -272,6 +272,18 @@
   }
 }
 
+.evaluate-activity-comments {
+  border-top: 1px solid #d9dbde;
+
+  .activity-comment {
+
+    .comment-meta-item {
+      color: $meta-color;
+      font-size: 11px;
+    }
+  }
+}
+
 .sidebar-responses {
   @extend .basic-container-style;
 
