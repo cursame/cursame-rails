@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140808220255) do
+ActiveRecord::Schema.define(:version => 20140812164832) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -83,13 +83,10 @@ ActiveRecord::Schema.define(:version => 20140808220255) do
   end
 
   create_table "assets", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "file"
+    t.string   "filename"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.string   "encryption_code_to_access"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "assignment_assets", :force => true do |t|
@@ -252,6 +249,26 @@ ActiveRecord::Schema.define(:version => 20140808220255) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "discussion_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "discussion_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
+  add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
+
+  create_table "discussion_responses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "discussion_responses", ["discussion_id"], :name => "index_discussion_responses_on_discussion_id"
+  add_index "discussion_responses", ["user_id"], :name => "index_discussion_responses_on_user_id"
+
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -280,6 +297,8 @@ ActiveRecord::Schema.define(:version => 20140808220255) do
     t.integer  "evaluable_id"
     t.string   "evaluable_type"
   end
+
+  add_index "evaluation_criteria", ["evaluable_id", "evaluable_type"], :name => "index_evaluation_criteria_on_evaluable_id_and_evaluable_type"
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -498,6 +517,16 @@ ActiveRecord::Schema.define(:version => 20140808220255) do
     t.integer  "user_id"
   end
 
+  create_table "survey_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "survey_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "survey_assets", ["asset_id"], :name => "index_survey_assets_on_asset_id"
+  add_index "survey_assets", ["survey_id"], :name => "index_survey_assets_on_survey_id"
+
   create_table "surveyings", :force => true do |t|
     t.integer  "course_id"
     t.integer  "survey_id"
@@ -547,7 +576,6 @@ ActiveRecord::Schema.define(:version => 20140808220255) do
   create_table "user_surveys", :force => true do |t|
     t.integer  "survey_id"
     t.integer  "user_id"
-    t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
