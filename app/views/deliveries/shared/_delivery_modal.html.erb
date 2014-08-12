@@ -23,8 +23,8 @@
         <div class="asset-box upload-label">
           <% delivery.assets.each do |files|%>
             <div class="file-mini-upload publication-asset">
-              <% @string = files.file.to_s.split('/').last %>
-              <%= link_to "#{files.file}" , :target => '_blank' do %> 
+              <% @string = files.filename.file.identifier %>
+              <%= link_to "#{files.filename}" , :target => '_blank' do %> 
                 <%= icon('upload-asset-blue') %>
                 <%= truncate( @string, :omission => "...", :length => 72) %>
               <% end %>

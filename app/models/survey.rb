@@ -1,31 +1,29 @@
 class Survey < ActiveRecord::Base
 
-  has_many :questions, :dependent => :destroy
-  has_many :surveyings, :dependent => :destroy
-  has_many :courses, :through => :surveyings
-  has_many :events, as: :schedule, :dependent => :destroy
+  has_many :activities, as: :activitye, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :courses, through: :surveyings
+  has_many :events, as: :schedule, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :surveyings, dependent: :destroy
+  has_many :user_surveys, dependent: :destroy
+
+  has_many :survey_assets, dependent: :destroy
+  has_many :assets, through: :survey_assets
+
   belongs_to :network
   belongs_to :poll
-  has_many :user_surveys, :dependent => :destroy
-
   belongs_to :user
-  has_many :activities, as: :activitye, :dependent => :destroy
 
-  #comentarios para las surveys
-  has_many :comments, :dependent => :destroy
-
-  acts_as_commentable
-  #para los likes
-  acts_as_votable
-
-  ###### validando la presencia de algunos rubros #######
   validates_presence_of :courses
   validates_presence_of :questions
   validates_presence_of :user
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :assets
 
-
+  acts_as_commentable
+  acts_as_votable
 
   after_destroy do
     walls = Wall.where(:publication_type => "Survey", :publication_id => self.id)
