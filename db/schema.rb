@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140812203511) do
+ActiveRecord::Schema.define(:version => 20140813160711) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -648,7 +648,7 @@ ActiveRecord::Schema.define(:version => 20140812203511) do
     t.boolean  "self_register",          :default => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email", "subdomain"], :name => "index_users_on_email_and_subdomain", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "votes", :force => true do |t|
