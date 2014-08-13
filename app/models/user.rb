@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :token_authenticatable, :lockable, :timeoutable,
-    :confirmable
+    :confirmable, :request_keys => [:subdomain]
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
@@ -801,6 +801,11 @@ class User < ActiveRecord::Base
       permissioning.save!
     end
     user
+  end
+
+  # Subdomain verification for devise
+  def self.find_for_authentication(warden_conditions)
+    where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
   end
 
 end
