@@ -231,9 +231,19 @@
 
     .activity-view-main-user-state {
       margin: 3px 0 0 55px;
+      @include clearfix;
 
       h5 {
         @include ellipsis();
+      }
+    }
+
+    .user-response-comments {
+      padding: 10px 10px 0 10px;
+      margin: 10px -10px 0 -10px;
+
+      .user-response-comment {
+        margin-top: 5px;
       }
     }
   }
@@ -277,6 +287,37 @@
     .rubro h5 {
       padding-top: 7px;
     }
+  }
+
+  .activity-set-evaluation {
+    padding: 15px 10px;
+    @include clearfix;
+
+    .evaluation-label {
+      margin-top: 5px;
+      float: left;
+    }
+
+    .evaluation-input {
+      width: 80;
+      float: right;
+    }
+  }
+
+  .activity-criteria-evaluation {
+    padding: 15px 10px;
+
+    .criteria-evaluation-item {
+      margin-top: 13px;
+
+      h5 {
+        margin-bottom: 3px;
+      }
+    }
+  }
+
+  .activity-eveluation-footer {
+    padding: 10px;
   }
 }
 

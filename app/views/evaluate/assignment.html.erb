@@ -3,7 +3,7 @@
 <% course = assignment.course %>
 <% user = assignment.user %>
 
-<%= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: delivery, course: course, meta_data: true } %>
+<%= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: delivery, course: course, meta_data: false } %>
 
 <div class="activity-view-wrap">
   <div class="wrapper">
@@ -102,9 +102,7 @@
                           <div class="fl">
                             <ul class="list-buttons left">
                               <li>
-                                <span class="btn btn-primary input-btn">
-                                  <%= assigments_l.submit "Calificar tarea"%>
-                                </span>
+                                1
                               </li>
                             </ul>
                           </div>

@@ -1,0 +1,58 @@
+- discussion = @discussion_response.discussion
+- user = discussion.user
+- course = discussion.courses.first
+= render partial: 'evaluate/discussion/evaluate_discussion_header', locals: { discussion: discussion, course: course, meta_data: true }
+
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-8
+        .col-inner
+          .activity-view
+            .activity-view-main
+              .activity-view-main-user
+                %span.avatar-holder= avatar('user', '45', 'no', user.id, 'avatar avatar-45', 'no', 'no')
+                .activity-view-main-user-state
+                  %h5= user.name
+                  .user-meta
+                    %span Sin Calificar
+                .user-response-comments
+                  %span.meta-info Comentarios
+                  - discussion.comments.each do |comment|
+                    .user-response-comment
+                      %p= comment.comment
+                      %span= time_ago_in_words comment.created_at
+              .evaluate-user-response
+                %form{action: "#", class: 'form-validate-js'}
+                  .activity-set-evaluation
+                    .evaluation-label
+                      %h4 Calificación: *
+                    .evaluation-input
+                      = text_field_tag '', '', placeholder: 'Ejemplo: 8', required: true, max: 10, min: 0
+                  - if discussion.evaluation_criteria.count > 0
+                    .activity-criteria-evaluation
+                      .criteria-evaluation-help-text
+                        %h6 Retroalimentación
+                        %p Envia comentarios en base a los criterios de evaluación de la discusión.
+                      - discussion.evaluation_criteria.each do |criteria|
+                        .criteria-evaluation-item
+                          %h5= criteria.name
+                          = text_area_tag '', '', placeholder: 'Retroalimentación', class: 'autogrow', rows: 2
+                  .activity-eveluation-footer
+                    %span.btn.btn-primary.input-btn
+                      = submit_tag "Calificar tarea"
+                        
+
+      .col.col-4
+        .col-inner
+          .sidebar-responses
+            .sidebar-responses-header
+              %h6 Participantes
+            .sidebar-responses-main
+              - discussion.discussion_responses.each do |response|
+                = link_to evaluate_discussion_response_path(response) do
+                  .sidebar-user-response
+                    %span.avatar-holder
+                      = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
+                    .sidebar-user-response-main
+                      %h6= response.user.name

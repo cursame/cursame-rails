@@ -1,4 +1,3 @@
-<% @course.expired? %>
 <% @incourse = true %>
 
 <div class="profile-header-outer">
@@ -6,7 +5,7 @@
     <div class="cols-12">
       <div class="col col-12">
         <div class="col-inner">
-          <div class="profile-header">
+          <div class="profile-header <%= header_style %>">
             <% unless header_style == :super_compact || header_style == :compact %>
               <div class="profile-banner" style="background-image: url(<%= @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>)">
                 <% permitted_to? :create, :courses do %>

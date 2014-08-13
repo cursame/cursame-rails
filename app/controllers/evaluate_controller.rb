@@ -147,7 +147,11 @@ class EvaluateController < ApplicationController
   end
 
   def discussion_response
-    
+    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+
+    respond_to do |format|
+      format.html { render 'evaluate/discussion/discussion_response' }
+    end
   end
 
   def user_survey

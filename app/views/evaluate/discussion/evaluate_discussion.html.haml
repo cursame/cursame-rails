@@ -33,6 +33,10 @@
             .sidebar-responses-header
               %h6 Participantes
             .sidebar-responses-main
-              - @discussion.comments.each do |comment|
-                = link_to evaluate_discussion_response_path(comment) do
-                  %span sasd
+              - @discussion.discussion_responses.each do |response|
+                = link_to evaluate_discussion_response_path(response) do
+                  .sidebar-user-response
+                    %span.avatar-holder
+                      = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
+                    .sidebar-user-response-main
+                      %h6= response.user.name

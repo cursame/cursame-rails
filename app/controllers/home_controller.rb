@@ -148,7 +148,7 @@ class HomeController < ApplicationController
   def add_new_comment
     if user_signed_in?
 
-      if params[:commentable_type] == "Discussion" && current_user.student?
+      if params[:commentable_type] == "Discussion" && current_user.student? && DiscussionResponse.find_by_discussion_id_and_user_id(params[:commentable_id], current_user.id).nil?
         DiscussionResponse.create discussion_id: params[:commentable_id], user_id: current_user.id
       end
 

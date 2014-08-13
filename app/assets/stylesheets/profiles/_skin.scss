@@ -12,6 +12,12 @@
   border-top: 0;
   border-radius: 0 0 $radius $radius;
 
+  &.compact, &.super_compact {
+    .profile-info h1{
+      @include ellipsis(90%);
+    }
+  }
+
   .profile-info h1{
     color: $global-color;
     @include ellipsis();
