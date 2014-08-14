@@ -69,7 +69,7 @@
                   <div id="response-evaluate" class="activity-response-evaluate tab-content" >
                     <div class="delivery-submited-evaluation-fields" id="accomplishment">
                       <%= form_for(assignment, html: { class: 'form-validate-js' }) do |f| %>
-
+                        <%= f.hidden_field :id %>
                         <div class="activity-set-evaluation">
                           <div class="evaluation-label">
                             <h4>Calificación: *</h4>
@@ -86,10 +86,11 @@
                             <div class="criteria-evaluation-help-text">
                               <h6>Retroalimentación</h6>
                               <p>Envia comentarios en base a los criterios de evaluación de la discusión.</p>
-                              <% delivery.evaluation_criteria.each do |criteria| %>
+
+                              <%= f.fields_for :response_to_the_evaluations do |builder| %>
                                 <div class="criteria-evaluation-item">
-                                  <h5><%= criteria.name %></h5>
-                                  <%= text_area_tag "feedback[#{criteria.name.downcase}]", '', rows: 3, placeholder: 'Retroalimentación' %>
+                                  <h5><%= builder.object.name %></h5>
+                                  <%= builder.text_area :comment_for_rubre, rows: 3, placeholder: 'Retroalimentación' %>
                                 </div>
                               <% end %>
                             </div>

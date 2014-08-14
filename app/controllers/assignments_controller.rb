@@ -83,49 +83,8 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # def update
-  #   @assignment = Assignment.find(params[:id])
-
-  #   if @assignment.response_to_the_evaluations.count != 0
-  #     # con rubros
-  #     if @assignment.update_attributes(params[:assignment])
-  #       @assignment.response_to_the_evaluations.each do |docificate|
-  #         ###### se actualiza el valor del rubro con respecto a la califiación
-  #         #### alfredot_rifa_free_pro_forever
-  #         @valor_total = docificate.evaluation_porcentage
-
-  #         @valor_recibido = docificate.figure
-
-  #         @division = (@valor_recibido)/100.0000
-
-  #         @resultado =   @division.to_f * @valor_total.to_f
-
-  #         docificate.rub_calification = @resultado
-  #         docificate.save
-
-  #       end
-  #       @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
-  #       @assignment.accomplishment =  @sum_value_to_accomplishment
-  #       @assignment.save
-  #     end
-  #   else
-  #     # sin rubros
-  #     @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
-  #     @assignment.accomplishment = @assignment.rub_calification
-  #     @assignment.save
-  #   end
-
-  #   url = evaluate_delivery_response_path(@assignment)
-
-  #   if @assignment.save
-  #     redirect_to url, flash: { success: "Se ha calificado correctamente la tarea." }
-  #   else
-  #     redirect_to url, flash: { error: "Ha ocurrido un error al calificar la tarea." }
-  #   end
-  # end
-
   def update
-    @assignment = Assignment.find(params[:id])
+    @assignment = Assignment.find_by_id params[:id]
 
     if Grade.find_by_gradable_id(params[:id]).nil?
       grade_assignment = Grade.new
@@ -136,11 +95,11 @@ class AssignmentsController < ApplicationController
       if grade_assignment.save
         @assignment.grade = grade_assignment
       else
-         redirect_to :back, flash: { error: "Error: No se pudo calificar correctamente la tarea" }
-      end  
+        redirect_to :back, flash: { error: "Error: No se pudo calificar correctamente la tarea" }
+      end
     end
 
-    @assignment.grade.score = params[:score]
+    @assignment.update_attributes params[:assignment]
 
     url = evaluate_delivery_response_path(@assignment)
 
@@ -160,7 +119,7 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def delivery_responce
     respond_to do |format|
       format.js

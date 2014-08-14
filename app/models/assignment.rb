@@ -25,6 +25,7 @@ class Assignment < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :response_to_the_evaluations
   accepts_nested_attributes_for :contents
+  accepts_nested_attributes_for :grade
 
   # this is defined in config/initializers/auto_html.rb
   auto_html_for :brief_description do
