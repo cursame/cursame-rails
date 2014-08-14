@@ -10,6 +10,8 @@ class Assignment < ActiveRecord::Base
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :contents, as: :contentye, dependent: :destroy
 
+  has_one :grade, as: :gradable, dependent: :destroy
+
   validates_presence_of :user
   validates_presence_of :course
   validates_presence_of :delivery
@@ -63,6 +65,9 @@ class Assignment < ActiveRecord::Base
     # Se crea la notificacion
     users = self.delivery.courses.first.owners
     notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
+
+    grade = Grade.create(gradable: self, score: 0, user_id: self.user_id)
+    self.grade = grade 
   end
 
   after_update do
