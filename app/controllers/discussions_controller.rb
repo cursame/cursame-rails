@@ -105,7 +105,8 @@ class DiscussionsController < ApplicationController
 
   def create
     @publication = []
-    if params[:discussion]["evaluable"].to_i == 1 
+
+    unless params[:delivery] == nil
       courses = params[:delivery]["course_ids"]
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
