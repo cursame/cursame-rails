@@ -41,7 +41,7 @@
                   </div>
                 </div>
                 <div class="tabs-main">
-                  <div id="response" class="activity-response-items tab-content">
+                  <div id="response" class="activity-response-items tab-content"style="display: none;">
                     <div class="delivery-submited-content">
                       <div class="response-item">
                         <span class="meta-info">Alumno:</span>
@@ -66,43 +66,43 @@
 
                     </div>
                   </div>
-                  <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
+                  <div id="response-evaluate" class="activity-response-evaluate tab-content" >
                     <div class="delivery-submited-evaluation-fields" id="accomplishment">
-                      <%= form_for assignment do |assigments_l |%>
-                        <% if assignment.response_to_the_evaluations.count != 0 %>      
-                          <div class="evaluation-fields-title">
-                            <h5>Calificación por rubros</h5>
-                            <p>Evalua por los rubros de esta tarea.</p>
-                          </div>
-                          <%= assigments_l.fields_for :response_to_the_evaluations  do |response| %>
-                            <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
-                          <% end %>
+                      <%= form_for(assignment, html: { class: 'form-validate-js' }) do |f| %>
 
-                        <% else %>
-                          <div class="evaluation-fields-title">
-                            <h5>Calificación de la tarea</h5>
-                            <p>Seleccione un porcentaje de 1 a 100 para calificar esta tarea</p>
+                        <div class="activity-set-evaluation">
+                          <div class="evaluation-label">
+                            <h4>Calificación: *</h4>
                           </div>
+                          <div class="evaluation-input">
+                            <%= f.fields_for :grade do |grade| %>
+                              <%= grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, max: 10, min: 0 %>
+                            <% end %>
+                          </div>
+                        </div>
 
-                          <div class="homeworkCalf">
-                            <div class="form-group">
-                              <div class="form-group-label">
-                                <%= assigments_l.label :Calificación  %>
-                              </div>
-                              <div class="form-group-main">
-                                <div class="form-unit">
-                                  <%= assigments_l.number_field :rub_calification %>
+                        <% if delivery.evaluation_criteria.count > 0 %>
+                          <div class="activity-criteria-evaluation">
+                            <div class="criteria-evaluation-help-text">
+                              <h6>Retroalimentación</h6>
+                              <p>Envia comentarios en base a los criterios de evaluación de la discusión.</p>
+                              <% delivery.evaluation_criteria.each do |criteria| %>
+                                <div class="criteria-evaluation-item">
+                                  <h5><%= criteria.name %></h5>
+                                  <%= text_area_tag "feedback[#{criteria.name.downcase}]", '', rows: 3, placeholder: 'Retroalimentación' %>
                                 </div>
-                              </div>
+                              <% end %>
                             </div>
                           </div>
-                        <%end%>
+                        <% end %>
                         
                         <div class="delivery-submited-evaluation-footer">
                           <div class="fl">
                             <ul class="list-buttons left">
                               <li>
-                                1
+                                <span class="btn btn-primary input-btn">
+                                  <%= f.submit "Calificar tarea"%>
+                                </span>
                               </li>
                             </ul>
                           </div>

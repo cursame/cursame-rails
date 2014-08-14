@@ -160,9 +160,7 @@ class EvaluateController < ApplicationController
   end
 
   def response_user_survey
-
     feedback = params[:feedback]
-    
     user_survey_id = params[:id]
     user_survey = UserSurvey.find_by_id(user_survey_id)
     user_survey.grade.update_attributes(feedback: feedback)
@@ -174,7 +172,6 @@ class EvaluateController < ApplicationController
         redirect_to evaluate_survey_response_path(user_survey_id), flash: { success: "Comentario enviado correctamente."}
       }
     end
-
   end
 
   def assignment

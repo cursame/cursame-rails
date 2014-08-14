@@ -124,7 +124,7 @@ class AssignmentsController < ApplicationController
   #   end
   # end
 
-  def Update
+  def update
     @assignment = Assignment.find(params[:id])
 
     if Grade.find_by_gradable_id(params[:id]).nil?

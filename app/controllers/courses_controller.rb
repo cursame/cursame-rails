@@ -456,7 +456,7 @@ class CoursesController < ApplicationController
       @delivery_from_assignment.evaluation_criteria.each_with_index do | generate_rubres, index |
         @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
         @response_to_the_evaluation.name = generate_rubres.name
-        @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+        # @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
       end
