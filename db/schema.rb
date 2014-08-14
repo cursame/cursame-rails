@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140813160711) do
+ActiveRecord::Schema.define(:version => 20140814221157) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -153,17 +153,6 @@ ActiveRecord::Schema.define(:version => 20140813160711) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
-  create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
-    t.integer  "asset_id"
-    t.integer  "delivery_id"
-    t.integer  "assignment_id"
-    t.integer  "comment_id"
-    t.integer  "question_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
     t.integer  "contentye_id"
@@ -205,7 +194,6 @@ ActiveRecord::Schema.define(:version => 20140813160711) do
     t.string   "title"
     t.text     "silabus"
     t.datetime "init_date"
-    t.datetime "finish_date"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "public_status"
@@ -418,11 +406,11 @@ ActiveRecord::Schema.define(:version => 20140813160711) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form",        :default => false
+    t.boolean  "register_form"
     t.text     "welcom_message"
-    t.string   "image_front",          :default => "background-restore.jpg"
-    t.string   "logo",                 :default => "logo.png"
-    t.string   "logo_type",            :default => "128x26"
+    t.string   "image_front"
+    t.string   "logo"
+    t.string   "logo_type"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"

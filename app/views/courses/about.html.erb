@@ -30,11 +30,6 @@
           </div>
 
           <div class="course-info-block">
-            <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de finalización:</h6>
-            <%= date_format @course.finish_date, 'normal' if @course.finish_date != nil %>
-          </div>
-
-          <div class="course-info-block">
             <h6 class="meta-info"><%= icon('profesor-12') %> Administradores del curso:</h6>
             <% @users.each do |u|%>
              <%= u.name %>

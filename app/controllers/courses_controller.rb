@@ -253,13 +253,9 @@ class CoursesController < ApplicationController
     if @course.init_date != nil
       @idate = @course.init_date.strftime('%Y-%m-%d')
     end
-    if @course.finish_date != nil
-      @fdate = @course.finish_date.strftime('%Y-%m-%d')
-    end
     respond_to do |format|
       if @course.update_attributes(params[:course])
         @last_date = @course.init_date
-        @last_end_date = @course.finish_date
         if @last_date  == nil
           @last_date =  @idate
         end
@@ -267,7 +263,6 @@ class CoursesController < ApplicationController
           @last_end_date = @fdate
         end
         @course.init_date = @last_date
-        @course.finish_date = @last_end_date
         @course.save
         flash[:notice] = "Se han guardado satisfactoriamente los cambios en el curso. "
         format.html {redirect_to course_path(@course)}

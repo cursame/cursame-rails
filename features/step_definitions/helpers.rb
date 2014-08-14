@@ -98,7 +98,6 @@ module CursameHelpers
     title = options[:title] || "Test_Course"
     silabus = options[:silabus] || title
     init_date = options[:init_date] || DateTime.now
-    finish_date = options[:finish_date] || init_date + 3.days
     public_status = options[:public_status] || "Private"
     avatar = options[:avatar]
     coverphoto = options[:coverphoto]
@@ -112,7 +111,7 @@ module CursameHelpers
     raise "Necesito saber quien sera el owner del curso." if owner.nil?
 
     course = Course.create!(title: title, silabus: silabus, init_date: init_date,
-                            finish_date: finish_date, public_status: public_status,
+                            public_status: public_status,
                             avatar: avatar, coverphoto: coverphoto, network_id: network.id,
                             active_status: active_status)
 

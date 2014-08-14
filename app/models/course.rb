@@ -26,7 +26,7 @@ class Course < ActiveRecord::Base
   validates :silabus, presence: true, allow_blank: true
   validates :public_status, inclusion: { in: %w(Private public) }
 
-  attr_accessible :id, :title, :silabus, :init_date, :finish_date,
+  attr_accessible :id, :title, :silabus, :init_date,
     :created_at, :updated_at, :public_status,
     :avatar, :coverphoto, :delivery_id,
     :network_id, :active_status, :course_files
@@ -105,7 +105,6 @@ class Course < ActiveRecord::Base
       title = hash.delete("Nombre")
       silabus = hash.delete("Descripcion")
       init_date = hash.delete("Fecha de Inicio")
-      finish_date = hash.delete("Fecha de Finalizacion")
       public_status = hash.delete("Estatus")
 
       if public_status.nil? then
@@ -130,7 +129,6 @@ class Course < ActiveRecord::Base
           course.title = title
           course.silabus = silabus
           course.init_date = init_date
-          course.finish_date = finish_date
           course.public_status = public_status
           course.save!
         rescue ActiveRecord::RecordInvalid => invalid
@@ -225,21 +223,9 @@ class Course < ActiveRecord::Base
     return users_id.include?(user.id)
   end
 
-  # Para verificar si todavía no expira
+  # Returns true if the course has expired.
   def expired?
-    if !self.finish_date.nil?
-      @expired_in  = self.finish_date
-
-      if @expired_in < DateTime.now
-        @expired = true
-      else
-        @expired = false
-      end
-
-      if @expired == true
-        Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
-      end
-    end
+    returns false
   end
 
 end

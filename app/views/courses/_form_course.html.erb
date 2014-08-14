@@ -41,11 +41,6 @@
 	</div>
 	
 	<div style="display: block; position: relative; height: 62px; clear: both;">
-	<p><%= f.label :fecha_de_finalización %></p>
-	<%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input fixLabeluser", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
-	</div>
-	
-	<div style="display: block; position: relative; height: 62px; clear: both;">
 	<p><%= f.label :public_status, 'Privacidad' %></p>
 	<% if @course.public_status == 'public' %>
       <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
@@ -86,7 +81,7 @@
 <% end %>
 <script type="text/javascript">
     $(function() {
-	    $( "#course_init_date, #course_finish_date" ).datepicker({
+	    $( "#course_init_date" ).datepicker({
 	        inline: true,
 	        minDate: 0,
 	        showOtherMonths: true,

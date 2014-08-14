@@ -3,14 +3,12 @@ ActiveAdmin.register Course do
     column :title
     column :silabus
     column :init_date
-    column :finish_date
     column :active_status
     default_actions
   end
 
   filter :title
   filter :init_date
-  filter :finish_date
   filter :active_status
 
   form do |f|
