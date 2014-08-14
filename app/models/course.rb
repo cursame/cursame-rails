@@ -10,8 +10,8 @@ class Course < ActiveRecord::Base
   has_many :deliveries, through: :deliveries_courses, dependent: :destroy
   has_many :surveyings, dependent: :destroy
   has_many :surveys, through: :surveyings, dependent: :destroy
-  has_many :discussions_courses, dependent: :destroy
-  has_many :discussions, through: :discussions_courses, dependent: :destroy
+  has_many :discussion_course, dependent: :destroy
+  has_many :discussions, through: :discussion_course, dependent: :destroy
   has_many :coursepublicationings
   has_many :walls, through: :coursepublicationings
   has_many :course_id_course_file_id
