@@ -138,4 +138,8 @@ class Discussion < ActiveRecord::Base
     }
   end
 
+  def responses
+    discussion_responses
+  end
+
 end

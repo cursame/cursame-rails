@@ -3,6 +3,7 @@
 #     database: db/development.sqlite3
 #     pool: 5
 #     timeout: 5000
+
 development:
     adapter: postgresql
     host: 50.16.197.169

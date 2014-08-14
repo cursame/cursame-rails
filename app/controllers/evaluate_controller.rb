@@ -12,12 +12,21 @@ class EvaluateController < ApplicationController
       |accu, course|
       accu + course.deliveries
     end
+
     surveys = courses.inject([]) do
       |accu, course|
       accu + course.surveys
     end
 
-    activities = (deliveries + surveys).sort do
+    discussions = courses.inject([]) do
+      |accu, course|
+      tmp_array_discussions = course.discussions.select do
+        |discussion| discussion.evaluable?
+      end
+      accu + tmp_array_discussions      
+    end
+
+    activities = (deliveries + surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 
