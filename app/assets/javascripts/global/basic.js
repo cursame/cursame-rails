@@ -180,7 +180,7 @@ window.Notice = function(type, message)  {
 
 $(function() {
 
-  $('form.validate-form-js').validate();
+  $('form.form-validate-js').validate();
 
   $(".datetime-picker").live('focus', function(event) {
     $(this).datetimepicker({

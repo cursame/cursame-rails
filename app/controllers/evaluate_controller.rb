@@ -63,7 +63,11 @@ class EvaluateController < ApplicationController
     if not(@course.owner?(permissioning.role.title, current_user))
     end
 
-    activities = (@course.deliveries + @course.surveys).sort do
+    discussions = @course.discussions.select do
+      |discussion| discussion.evaluable?
+    end
+
+    activities = (@course.deliveries + @course.surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 

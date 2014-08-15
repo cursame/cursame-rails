@@ -134,20 +134,17 @@
         <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty? %>
           <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>">Entregar Tarea</a>
         <% else %>
-          <% delivered = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
-          <% if !delivered.nil? && !delivered.accomplishment.nil? %>
+          <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
+          <% if !assignment.nil? && !assignment.grade.score.nil? %>
             <div class="delivery-results">
               <div class="delivery-overall-result">
-                <div class="result"><%= delivered.accomplishment.to_s %></div>
+                <div class="result"><%= assignment.grade.score.to_s %></div>
                 <h4>Calificación final obtenida</h4>
               </div>
-              <% unless delivered.response_to_the_evaluations.empty? %>
+              <% unless assignment.response_to_the_evaluations.empty? %>
                 <div class="delivered-delivery-rubres">
-                  <% delivered.response_to_the_evaluations.each do |delivery_rubre| %>
+                  <% assignment.response_to_the_evaluations.each do |delivery_rubre| %>
                     <div class="delivered-delivery-rubre">
-                      <div class="rubre-calification">
-                        <%= delivery_rubre.evaluation_porcentage %>
-                      </div>
                       <div class="rubre-main">
                         <h6><%= delivery_rubre.name %></h6>
                         <p><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
