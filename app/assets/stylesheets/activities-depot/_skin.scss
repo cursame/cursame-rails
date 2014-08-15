@@ -225,8 +225,11 @@
       }
     }
 
+    .activity-response-items {
+      border-top: 1px solid $separator-color;
+    }
+
     .tabs-main {
-      border-top: 1px solid #d9dbde;
       background: $white;
       border-radius: 0 0 $radius $radius;
     }

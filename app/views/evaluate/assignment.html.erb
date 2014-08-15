@@ -41,32 +41,30 @@
                   </div>
                 </div>
                 <div class="tabs-main">
-                  <div id="response" class="activity-response-items tab-content"style="display: none;">
-                    <div class="delivery-submited-content">
-                      <div class="response-item">
-                        <span class="meta-info">Alumno:</span>
-                        <p><%= link_to assignment.user.name, show_user_path(assignment.user.personal_url) %></p>
-                      </div>
-                      <div class="response-item">
-                        <span class="meta-info">Titulo:</span>
-                        <p><%= assignment.title%></p>
-                      </div>
-                      <div class="response-item">
-                        <span class="meta-info">Mensaje:</span>
-                        <p><%= assignment.brief_description%></p>
-                      </div>
-                      
-                      <% if assignment.assets.count > 0 || assignment.contents.count > 0 %>
-                        <div class="assets response-item">
-                          <span class="meta-info">Archivos adjuntos:</span>
-                          <%= render partial: 'assets/assets_list', locals: { assets: assignment.assets, delete_enable: false } %>
-                          <%= render :partial => "content/insertions_to_contents", :locals => { :type => assignment, :cl => 'assignment'} %>
-                        </div>
-                      <% end %>
-
+                  <div id="response" class="activity-response-items tab-content">
+                    <div class="response-item">
+                      <span class="meta-info">Alumno:</span>
+                      <p><%= link_to assignment.user.name, show_user_path(assignment.user.personal_url) %></p>
                     </div>
+                    <div class="response-item">
+                      <span class="meta-info">Titulo:</span>
+                      <p><%= assignment.title%></p>
+                    </div>
+                    <div class="response-item">
+                      <span class="meta-info">Mensaje:</span>
+                      <p><%= assignment.brief_description%></p>
+                    </div>
+                    
+                    <% if assignment.assets.count > 0 || assignment.contents.count > 0 %>
+                      <div class="assets response-item">
+                        <span class="meta-info">Archivos adjuntos:</span>
+                        <%= render partial: 'assets/assets_list', locals: { assets: assignment.assets, delete_enable: false } %>
+                        <%= render :partial => "content/insertions_to_contents", :locals => { :type => assignment, :cl => 'assignment'} %>
+                      </div>
+                    <% end %>
+
                   </div>
-                  <div id="response-evaluate" class="activity-response-evaluate tab-content" >
+                  <div id="response-evaluate" class="activity-response-evaluate tab-content" style="display: none;">
                     <div class="delivery-submited-evaluation-fields" id="accomplishment">
                       <%= form_for(assignment, html: { class: 'form-validate-js' }) do |f| %>
                         <%= f.hidden_field :id %>
@@ -96,18 +94,13 @@
                             </div>
                           </div>
                         <% end %>
-                        
-                        <div class="delivery-submited-evaluation-footer">
-                          <div class="fl">
-                            <ul class="list-buttons left">
-                              <li>
-                                <span class="btn btn-primary input-btn">
-                                  <%= f.submit "Calificar tarea"%>
-                                </span>
-                              </li>
-                            </ul>
-                          </div>
+
+                        <div class="activity-eveluation-footer">
+                          <span class="btn btn-primary input-btn">
+                            <%= submit_tag "Calificar tarea" %>
+                          </span>
                         </div>
+                        
                       <%end%>
                     </div>
                   </div>
