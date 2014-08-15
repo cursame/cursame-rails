@@ -223,6 +223,7 @@ class Course < ActiveRecord::Base
     return users_id.include?(user.id)
   end
 
+  # TODO: remove this method
   # Returns true if the course has expired.
   def expired?
     returns false

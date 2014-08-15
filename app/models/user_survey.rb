@@ -3,7 +3,7 @@ class UserSurvey < ActiveRecord::Base
   belongs_to :user
   has_many :user_survey_responses, dependent: :destroy
   has_many :activities, as: :activitye, dependent: :destroy
-
+  has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
   has_one :grade, as: :gradable, dependent: :destroy
 
   accepts_nested_attributes_for :user_survey_responses, :reject_if => lambda { |a| a[:answer_id].blank? }, :allow_destroy => true
@@ -25,7 +25,7 @@ class UserSurvey < ActiveRecord::Base
       end
     end
     grade = Grade.create(gradable: self, score: 0, user_id: self.user_id)
-    self.grade = grade    
+    self.grade = grade
   end
 
   # Calcula la calificacion de la evaluacion

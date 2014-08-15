@@ -7,7 +7,7 @@
 development:
     adapter: postgresql
     host: 50.16.197.169
-    database: cursame-development
+    database: cursame-babas-development
     username: cursame
     password: r8o54q58
     encoding: unicode

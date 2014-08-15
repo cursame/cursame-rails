@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140814221157) do
+ActiveRecord::Schema.define(:version => 20140815160037) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -480,16 +480,15 @@ ActiveRecord::Schema.define(:version => 20140814221157) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
-    t.string   "name"
     t.text     "comment_for_rubre"
-    t.integer  "assignment_id"
-    t.integer  "course_id"
+    t.integer  "feedbackable_id"
     t.integer  "evaluation_porcentage"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
-    t.integer  "figure"
-    t.float    "rub_calification"
+    t.string   "feedbackable_type"
   end
+
+  add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
     t.integer  "role_id"
