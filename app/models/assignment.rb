@@ -5,10 +5,10 @@ class Assignment < ActiveRecord::Base
   belongs_to :course
 
   has_many :assignment_assets, dependent: :destroy
-  has_many :response_to_the_evaluations, dependent: :destroy
   has_many :assets, through: :assignment_assets
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :contents, as: :contentye, dependent: :destroy
+  has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
 
   has_one :grade, as: :gradable, dependent: :destroy
 
@@ -31,19 +31,19 @@ class Assignment < ActiveRecord::Base
   auto_html_for :brief_description do
     html_escape
     image
-    dailymotion :width => "100%", :height => 250
-    google_map :width => "100%", :height => 250
-    google_video :width => "100%", :height => 250
-    metacafe :width => "100%", :height => 250
-    soundcloud :width => "100%", :height => 250
-    twitter :width => "100%", :height => 250
-    vimeo :width => "100%", :height => 250
-    youtube :width => "100%", :height => 250
-    slideshare_support :width => "100%"
-    ustream_support :width => "100%"
-    prezi_with_wmode :width => "100%", :height => 360
-    livestrem_support :width => "100%", :height => 360
-    link :target => "_blank", :rel => "nofollow"
+    link               target: "_blank", rel: "nofollow"
+    dailymotion        width: "100%",    height: 250
+    google_map         width: "100%",    height: 250
+    google_video       width: "100%",    height: 250
+    metacafe           width: "100%",    height: 250
+    soundcloud         width: "100%",    height: 250
+    twitter            width: "100%",    height: 250
+    vimeo              width: "100%",    height: 250
+    youtube            width: "100%",    height: 250
+    prezi_with_wmode   width: "100%",    height: 360
+    livestrem_support  width: "100%",    height: 360
+    slideshare_support width: "100%"
+    ustream_support    width: "100%"
     redcarpet
     simple_format
   end
