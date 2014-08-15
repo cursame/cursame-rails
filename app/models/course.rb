@@ -223,10 +223,13 @@ class Course < ActiveRecord::Base
     return users_id.include?(user.id)
   end
 
-  # TODO: remove this method
-  # Returns true if the course has expired.
-  def expired?
-    returns false
+  def teachers
+    self.members_in_courses.keep_if { |member| member.owner == true }
+  end
+
+  # Returns the array of students in this course
+  def students
+    self.users.keep_if { |user| user.student? }
   end
 
 end

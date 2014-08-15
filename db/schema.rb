@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140815160037) do
+ActiveRecord::Schema.define(:version => 20140815180842) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(:version => 20140815160037) do
     t.integer  "user_id"
     t.float    "rub_calification"
     t.text     "brief_description_html"
-    t.datetime "rate_time"
   end
 
   create_table "audiences", :force => true do |t|
