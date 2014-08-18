@@ -94,6 +94,8 @@ Cursame30Lb::Application.routes.draw do
 
   get '/evaluate/discussion/:discussion_id', :to => 'evaluate#discussion', :as => :evaluate_discussion
   get '/evaluate/discussion-response/:id', :to => 'evaluate#discussion_response', :as => :evaluate_discussion_response
+  match '/evaluate/discussion-rate/:id', :to => 'evaluate#discussion_rate', :as => :evaluate_discussion_rate
+
 
   # Tareas
   get "/deliveries", to: "deliveries#index", as: :deliveries
@@ -126,6 +128,7 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
   get '/courses/:id/evaluation-schema', :to =>  'courses#evaluation_schema', :as => :course_evaluation_schema
+  get '/courses/:id/closure', :to =>  'courses#closure', :as => :course_closure
 
   resources :courses do
     resources :assignments

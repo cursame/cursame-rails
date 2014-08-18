@@ -175,9 +175,19 @@ class EvaluateController < ApplicationController
   def discussion_response
     @discussion_response = DiscussionResponse.find_by_id(params[:id])
 
+    if @discussion_response.discussion.evaluation_criteria.count > 0 && @discussion_response.response_to_the_evaluations.empty?
+      @discussion_response.discussion.evaluation_criteria.count.times { @discussion_response.response_to_the_evaluations.build }
+    end
+
     respond_to do |format|
       format.html { render 'evaluate/discussion/discussion_response' }
     end
+  end
+
+  def discussion_rate
+    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+    
+    redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
   end
 
   def user_survey

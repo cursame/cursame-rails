@@ -26,6 +26,9 @@
                               <i class="tip"></i>
                               <ul>
                                 <li>
+                                  <%= link_to 'Finalizar curso', course_closure_path( @course ) %>
+                                </li>
+                                <li>
                                   <%= link_to "Forma de Evaluación", course_evaluation_schema_path( @course ) %>
                                 </li>
                                 <li>

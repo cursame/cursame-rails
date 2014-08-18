@@ -87,7 +87,7 @@
 
                               <%= f.fields_for :response_to_the_evaluations do |builder| %>
                                 <div class="criteria-evaluation-item">
-                                  <h5><%= builder.object.name %></h5>
+                                  <h5><%= builder.object %></h5>
                                   <%= builder.text_area :comment_for_rubre, rows: 3, placeholder: 'Retroalimentación' %>
                                 </div>
                               <% end %>
