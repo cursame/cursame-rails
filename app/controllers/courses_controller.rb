@@ -359,6 +359,11 @@ class CoursesController < ApplicationController
     @member = obtainMember(@course.id, current_user.id)
   end
 
+  def closure
+    @course = Course.find_by_id params[:id]
+
+  end
+
   def validations
     @course = Course.find_by_id(params[:id])
     course_exist?(@course)

@@ -5,4 +5,5 @@ class DiscussionResponse < ActiveRecord::Base
   has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
   attr_accessible :discussion_id, :user_id
 
+  accepts_nested_attributes_for :response_to_the_evaluations
 end
