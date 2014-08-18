@@ -148,51 +148,44 @@ class EvaluateController < ApplicationController
     end
   end
 
-  def qualifying
-    @survey = Survey.find_by_id(params[:survey_id])
+  def delivery
     @delivery = Delivery.find_by_id(params[:delivery_id])
-
-    if @survey
-      owner = @survey.owner?(current_role, current_user)
-    elsif @delivery
-      owner = @delivery.owner?(current_role, current_user)
-    end
-
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless owner
-  end
-
-  def discussion
-    @discussion = Discussion.find_by_id(params[:discussion_id])
-    redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion.owner?(current_role, current_user)
-    redirect_to root_path, flash: { error: "La discusión que intentas ver no es calificable."} and return unless @discussion.evaluable
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @delivery.owner?(current_role, current_user)
 
     respond_to do |format|
-      format.html { render 'evaluate/discussion/evaluate_discussion' }
+      format.html { render 'evaluate/deliveries/evaluate_deliveries' }
     end
   end
 
-  def discussion_response
-    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+  def delivery_response
+    @assignment = Assignment.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @assignment.delivery.owner?(current_role, current_user)
 
-    if @discussion_response.discussion.evaluation_criteria.count > 0 && @discussion_response.response_to_the_evaluations.empty?
-      @discussion_response.discussion.evaluation_criteria.count.times { @discussion_response.response_to_the_evaluations.build }
+    unless @assignment.grade.present?
+      @assignment.build_grade
     end
 
     respond_to do |format|
-      format.html { render 'evaluate/discussion/discussion_response' }
+      format.html { render 'evaluate/deliveries/delivery_user_response' }
     end
   end
 
-  def discussion_rate
-    @discussion_response = DiscussionResponse.find_by_id(params[:id])
-    
-    redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
+  def survey
+    @survey = Survey.find_by_id(params[:survey_id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @survey.owner?(current_role, current_user)
+
+    respond_to do |format|
+      format.html { render 'evaluate/surveys/evaluate_surveys' }
+    end
   end
 
-  def user_survey
+  def survey_response
     @user_survey = UserSurvey.find_by_id(params[:id])
     redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @user_survey.survey.owner?(current_role, current_user)
+
+    respond_to do |format|
+      format.html { render 'evaluate/surveys/survey_user_response' }
+    end
   end
 
   def response_user_survey
@@ -210,9 +203,33 @@ class EvaluateController < ApplicationController
     end
   end
 
-  def assignment
-    @assignment = Assignment.find_by_id(params[:id])
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @assignment.delivery.owner?(current_role, current_user)
+  def discussion
+    @discussion = Discussion.find_by_id(params[:discussion_id])
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion.owner?(current_role, current_user)
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no es calificable."} and return unless @discussion.evaluable
+
+    respond_to do |format|
+      format.html { render 'evaluate/discussions/evaluate_discussions' }
+    end
+  end
+
+  def discussion_response
+    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+
+    if @discussion_response.discussion.evaluation_criteria.count > 0 && @discussion_response.response_to_the_evaluations.empty?
+      @discussion_response.discussion.evaluation_criteria.count.times { @discussion_response.response_to_the_evaluations.build }
+    end
+
+    respond_to do |format|
+      format.html { render 'evaluate/discussions/discussion_user_response' }
+    end
+  end
+
+  def discussion_rate
+    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+    
+    redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
   end
 
 end

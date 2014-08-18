@@ -85,12 +85,12 @@ Cursame30Lb::Application.routes.draw do
   get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
   get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
 
-  get '/evaluate/survey/:survey_id', :to => 'evaluate#qualifying', :as => :evaluate_survey
-  get '/evaluate/survey/response/:id', :to => 'evaluate#user_survey', :as => :evaluate_survey_response
+  get '/evaluate/survey/:survey_id', :to => 'evaluate#survey', :as => :evaluate_survey
+  get '/evaluate/survey/response/:id', :to => 'evaluate#survey_response', :as => :evaluate_survey_response
   post '/evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
 
-  get '/evaluate/delivery/:delivery_id', :to => 'evaluate#qualifying', :as => :evaluate_delivery
-  get '/evaluate/assignment/:id', :to => 'evaluate#assignment', :as => :evaluate_delivery_response
+  get '/evaluate/delivery/:delivery_id', :to => 'evaluate#delivery', :as => :evaluate_delivery
+  get '/evaluate/assignment/:id', :to => 'evaluate#delivery_response', :as => :evaluate_delivery_response
 
   get '/evaluate/discussion/:discussion_id', :to => 'evaluate#discussion', :as => :evaluate_discussion
   get '/evaluate/discussion-response/:id', :to => 'evaluate#discussion_response', :as => :evaluate_discussion_response

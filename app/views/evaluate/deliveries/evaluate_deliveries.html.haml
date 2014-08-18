@@ -1,0 +1,31 @@
+- course = @delivery.courses.first
+= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: @delivery, course: course, meta_data: true }
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .activity-view
+            .view-header
+              %h5 Entregas
+            .activity-view-main
+              - unless @delivery.responses.empty?
+                .activity-responses-list
+                  - @delivery.responses.each do |response|
+                    = link_to evaluate_delivery_response_path(response) do
+                      .activity-response
+                        .activity-response-avatar
+                          %span.avatar-holder
+                            = avatar('user', '150', 'no', response.user.id, 'avatar avatar-80', 'no', 'no')
+                        .activity-response-main
+                          .va-middle
+                            %h5= response.user.name
+                            - if response.grade.present?
+                              %p
+                                Calificación: #{response.grade.score}
+                            - else
+                              %p Sin calificar
+              - else
+                .no-content-section
+                  %h5 Sin Entregas.
+                  %p Todavia no hay ninguna entrega en esta tarea.
