@@ -94,12 +94,21 @@ class EvaluateController < ApplicationController
       |accu, course|
       accu + course.deliveries
     end
+
     surveys = courses.inject([]) do
       |accu, course|
       accu + course.surveys
     end
 
-    activities = (deliveries + surveys).sort do
+    discussions = courses.inject([]) do
+      |accu, course|
+      tmp_array_discussions = course.discussions.select do
+        |discussion| discussion.evaluable?
+      end
+      accu + tmp_array_discussions      
+    end
+
+    activities = (deliveries + surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 
@@ -125,7 +134,11 @@ class EvaluateController < ApplicationController
     if not(@course.owner?(permissioning.role.title, current_user))
     end
 
-    activities = (@course.deliveries + @course.surveys).sort do
+    discussions = @course.discussions.select do
+      |discussion| discussion.evaluable?
+    end
+
+    activities = (@course.deliveries + @course.surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 

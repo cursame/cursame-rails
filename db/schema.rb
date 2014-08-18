@@ -487,13 +487,13 @@ ActiveRecord::Schema.define(:version => 20140815232151) do
   create_table "response_to_the_evaluations", :force => true do |t|
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "feedbackable_type"
-    t.integer  "evaluation_criteium_id"
+    t.integer  "evaluation_criterium"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criteium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criteium_id"
+  add_index "response_to_the_evaluations", ["evaluation_criterium"], :name => "index_response_to_the_evaluations_on_evaluation_criterium"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
