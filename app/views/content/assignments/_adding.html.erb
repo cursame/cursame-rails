@@ -1,7 +1,7 @@
 
 <% acces_to.assets.each do |asset|%>
   <div class="file-mini-upload publication-asset">
-    <%= link_to asset.file.to_s, target: "_blank", class: "fl" do %>
+    <%= link_to asset.filename.to_s, target: "_blank", class: "fl" do %>
       <%= icon('upload-asset-blue') %> <%= asset.filename.file.identifier %>
     <% end %>
     <%= link_to "Borrar","/assets/"+asset.id.to_s, :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :onclick => "$(this).parent().remove();", :class => "fr" %>
