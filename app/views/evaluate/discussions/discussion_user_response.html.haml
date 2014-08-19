@@ -1,5 +1,5 @@
 - discussion = @discussion_response.discussion
-- user = discussion.user
+- user = @discussion_response.user
 - course = discussion.courses.first
 = render partial: 'evaluate/discussions/evaluate_discussions_header', locals: { discussion: discussion, course: course, meta_data: true }
 
@@ -15,7 +15,10 @@
                 .activity-view-main-user-state
                   %h5= user.name
                   .user-meta
-                    %span Sin Calificar
+                    - unless @discussion_response.grade.present?
+                      %span Sin Calificar
+                    - else
+                      %span= @discussion_response.grade.score
                 .user-response-comments
                   %span.meta-info Comentarios
                   - discussion.comments.each do |comment|

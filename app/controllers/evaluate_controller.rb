@@ -221,6 +221,10 @@ class EvaluateController < ApplicationController
   def discussion_response
     @discussion_response = DiscussionResponse.find_by_id(params[:id])
 
+    unless @discussion_response.grade.present?
+      @discussion_response.build_grade
+    end
+
     if @discussion_response.discussion.evaluation_criteria.count > 0 && @discussion_response.response_to_the_evaluations.empty?
       @discussion_response.discussion.evaluation_criteria.count.times { @discussion_response.response_to_the_evaluations.build }
     end

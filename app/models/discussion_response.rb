@@ -6,4 +6,5 @@ class DiscussionResponse < ActiveRecord::Base
   attr_accessible :discussion_id, :user_id
 
   accepts_nested_attributes_for :response_to_the_evaluations
+  accepts_nested_attributes_for :grade
 end
