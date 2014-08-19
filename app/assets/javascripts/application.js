@@ -6,6 +6,7 @@
 
 //= require ./vendor/jquery-1.8.3
 //= require jquery-fileupload/basic
+//= require ./vendor/jquery.validate.min
 //= require_tree ./vendor
 
 //= require_tree ./templates

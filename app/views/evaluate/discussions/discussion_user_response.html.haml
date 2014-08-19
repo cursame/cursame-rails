@@ -15,13 +15,14 @@
                 .activity-view-main-user-state
                   %h5= user.name
                   .user-meta
-                    - unless @discussion_response.grade.present?
+                    - if @discussion_response.grade.score.blank?
                       %span Sin Calificar
                     - else
                       %span= @discussion_response.grade.score
                 .user-response-comments
                   %span.meta-info Comentarios
                   - discussion.comments.each do |comment|
+                    - next unless comment.user == user
                     .user-response-comment
                       %p= comment.comment
                       %span= time_ago_in_words comment.created_at
@@ -32,13 +33,13 @@
                       %h4 Calificación: *
                     .evaluation-input
                       = f.fields_for :grade do |grade|
-                        = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, max: 10, min: 0
+                        = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, number: true, max: 10, min: 0
 
                   - if discussion.evaluation_criteria.count > 0
                     .activity-criteria-evaluation
                       .criteria-evaluation-help-text
                         %h6 Retroalimentación
-                        %p Envia comentarios en base a los criterios de evaluación de la discusión.
+                        %p Envia comentarios en base a los criterios de la actividad.
                         - discussion.evaluation_criteria.each_with_index do |criterium, index|
                           = f.fields_for :response_to_the_evaluations, @discussion_response.response_to_the_evaluations[index] do |criteria_feedback|
                             = render 'evaluate/shared/evaluation_criterium_feedback', f: criteria_feedback, criterium: criterium
@@ -50,14 +51,4 @@
 
       .col.col-4
         .col-inner
-          .sidebar-responses
-            .sidebar-responses-header
-              %h6 Calificar participantes
-            .sidebar-responses-main
-              - discussion.discussion_responses.each do |response|
-                = link_to evaluate_discussion_response_path(response) do
-                  .sidebar-user-response
-                    %span.avatar-holder
-                      = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
-                    .sidebar-user-response-main
-                      %h6= response.user.name
+          = render partial: 'evaluate/shared/discussions_sidebar_responses', locals: { responses: discussion.discussion_responses, current_response: @discussion_response.id }
