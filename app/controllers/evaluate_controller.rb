@@ -236,8 +236,13 @@ class EvaluateController < ApplicationController
 
   def discussion_rate
     @discussion_response = DiscussionResponse.find_by_id(params[:id])
-    
-    redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
+
+    if  @discussion_response.update_attributes params[:discussion_response]
+      #notificacion
+      redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
+    else
+      redirect_to evaluate_discussion_response_path(@discussion_response), flash: { error: 'Ha ocurrido un error al calificar la discusión.' }
+    end  
   end
 
 end

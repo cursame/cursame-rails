@@ -86,18 +86,18 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find_by_id params[:id]
 
-    if Grade.find_by_gradable_id(params[:id]).nil?
-      grade_assignment = Grade.new
-      grade_assignment.gradable_id = params[:id]
-      grade_assignment.gradable_type = 'Delivery'
-      grade_assignment.user_id = @assignment.user_id
-      grade_assignment.score = 0
-      if grade_assignment.save
-        @assignment.grade = grade_assignment
-      else
-        redirect_to :back, flash: { error: "Error: No se pudo calificar correctamente la tarea" }
-      end
-    end
+    # if Grade.find_by_gradable_id(params[:id]).nil?
+    #   grade_assignment = Grade.new
+    #   grade_assignment.gradable_id = params[:id]
+    #   grade_assignment.gradable_type = 'Delivery'
+    #   grade_assignment.user_id = @assignment.user_id
+    #   grade_assignment.score = 0
+    #   if grade_assignment.save
+    #     @assignment.grade = grade_assignment
+    #   else
+    #     redirect_to :back, flash: { error: "Error: No se pudo calificar correctamente la tarea" }
+    #   end
+    # end
 
     @assignment.update_attributes params[:assignment]
 
