@@ -56,16 +56,16 @@
                             %h4 Calificación: *
                           .evaluation-input
                             = f.fields_for :grade do |grade|
-                              = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, max: 10, min: 0
+                              = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, number: true, max: 10, min: 0
                         - if delivery.evaluation_criteria.count > 0
                           .activity-criteria-evaluation
                             .criteria-evaluation-help-text
                               %h6 Retroalimentación
                               %p Envia comentarios en base a los criterios de evaluación de la discusión.
-                              = f.fields_for :response_to_the_evaluations do |builder|
-                                .criteria-evaluation-item
-                                  %h5= builder.object
-                                  = builder.text_area :comment_for_rubre, rows: 3, placeholder: 'Retroalimentación'
+                              - delivery.evaluation_criteria.each_with_index do |criterium, index|
+                                = f.fields_for :response_to_the_evaluations, @assignment.response_to_the_evaluations[index] do |criteria_feedback|
+                                  = render 'evaluate/shared/evaluation_criterium_feedback', f: criteria_feedback, criterium: criterium
+                                  
                         .activity-eveluation-footer
                           %span.btn.btn-primary.input-btn
                             = submit_tag "Calificar tarea"

@@ -165,6 +165,10 @@ class EvaluateController < ApplicationController
       @assignment.build_grade
     end
 
+    if @assignment.delivery.evaluation_criteria.count > 0 && @assignment.response_to_the_evaluations.empty?
+      @assignment.delivery.evaluation_criteria.count.times { @assignment.response_to_the_evaluations.build }
+    end
+
     respond_to do |format|
       format.html { render 'evaluate/deliveries/delivery_user_response' }
     end

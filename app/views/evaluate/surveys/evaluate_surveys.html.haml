@@ -21,7 +21,7 @@
                           .va-middle
                             %h5= response.user.name
                             %p
-                              Obtenido: #{number_with_precision(response.result, :precision => 2)}
+                              Obtenido: #{number_with_precision(response.evaluation, precision: 1)}
               - else
                 .no-content-section
                   %h5 Sin Entregas.
