@@ -54,9 +54,6 @@ class Assignment < ActiveRecord::Base
 
     users = self.delivery.courses.first.owners
     notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
-
-    grade = Grade.create(gradable: self, score: nil, user_id: self.user_id)
-    self.grade = grade 
   end
 
   # TODO: pasar notifficacion al controlador
