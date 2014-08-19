@@ -24,7 +24,7 @@
               .evaluate-user-response.tabs
                 .tabs-buttons
                   .tab.active{"data-id-target" => "response"} Respuestas
-                  .tab{"data-id-target" => "response-evaluate"} Comentarios
+                  .tab{"data-id-target" => "response-evaluate"} Retroalimentación
                 .tabs-main
                   #response.activity-response-items.tab-content
                     .delivery-submited-evaluation-fields
@@ -45,20 +45,17 @@
                                         = image_tag('icons/icon_false.png')
                                       %p= answer.content
                   #response-evaluate.activity-response-evaluate.tab-content{:style => "display: none;"}
-                    - if @user_survey.grade.feedback.blank?
-                      %h5 Escribe un comentario.
-                      %p Envia sugerencias al alumno en como mejorar sus entregas.
-                      %br/
-                      = form_tag evaluate_survey_response_update_path(@user_survey), class: "survey-teacher-feedback-form" do
-                        = text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow", required: "required"
-                        = hidden_field_tag :id, @user_survey.id
-                        %br/
-                        %br/
+                    = form_tag evaluate_survey_response_update_path(@user_survey), class: "survey-teacher-feedback-form" do
+                      .activity-criteria-evaluation
+                        .criteria-evaluation-help-text
+                          %h6 Retroalimentación
+                          %p Envia comentarios al alumno.
+                          %br/
+                          = text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow", required: true, rows: 3, placeholder: 'Retroalimentación'
+                          = hidden_field_tag :id, @user_survey.id
+                      .activity-eveluation-footer
                         %span.btn.btn-primary.input-btn.activable
                           = submit_tag "Enviar comentario", class: "activable"
-                    - else
-                      %h5 Comentario enviado:
-                      %p= @user_survey.grade.feedback
       .col.col-4
         .col-inner
           .sidebar-responses

@@ -17,11 +17,11 @@
                 .activity-view-main-user-state
                   %h5= user.name
                   .user-meta
-                    - if assignment.grade.present?
+                    - if assignment.grade.score.blank?
+                      %span Sin Calificar
+                    - else
                       %span
                         Calificación: #{assignment.grade.score}
-                    - else
-                      %span Sin Calificar
                     %span.mta-spcer ·
                     %span
                       Entregado: #{I18n.localize(assignment.created_at, format: "%e de %B del %Y")}
@@ -61,7 +61,7 @@
                           .activity-criteria-evaluation
                             .criteria-evaluation-help-text
                               %h6 Retroalimentación
-                              %p Envia comentarios en base a los criterios de evaluación de la discusión.
+                              %p Envia comentarios en base a los criterios de la actividad.
                               - delivery.evaluation_criteria.each_with_index do |criterium, index|
                                 = f.fields_for :response_to_the_evaluations, @assignment.response_to_the_evaluations[index] do |criteria_feedback|
                                   = render 'evaluate/shared/evaluation_criterium_feedback', f: criteria_feedback, criterium: criterium

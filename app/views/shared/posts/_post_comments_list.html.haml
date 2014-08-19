@@ -17,7 +17,7 @@
           %span.avatar-holder
             = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
         .comment-main
-          = text_area_tag "comment", nil, placeholder: 'Escribe un comentario', required: 'required', class: 'autogrow swift-enter'
+          = text_area_tag "comment", nil, placeholder: 'Escribe un comentario', required: true, class: 'autogrow swift-enter'
           = hidden_field_tag 'commentable_id', post.id
           = hidden_field_tag 'commentable_type', post.class.to_s
           = hidden_field_tag 'from_enter_key', true

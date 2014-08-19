@@ -318,7 +318,7 @@
         <% if notification.notificator.gradable.user != nil %>
           <% user = notification.notificator.gradable.user %>
           <% response = notification.notificator.gradable.survey.responses.keep_if {|response| response.user_id == user.id } %>
-          <%= link_to "/courses/#{notification.notificator.gradable.survey.courses[0].id}?search=Survey&id_search=#{notification.notificator.gradable.survey.id}" do %>
+          <%= link_to survey_modal_path(notification.notificator.gradable.survey), remote: true do %>
             <div class="activity-feed-author">
               <span class="avatar-holder">
                 <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
