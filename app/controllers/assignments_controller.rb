@@ -104,6 +104,8 @@ class AssignmentsController < ApplicationController
     url = evaluate_delivery_response_path(@assignment)
 
     if @assignment.grade.save
+      Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_accomplishment_on_assignment'
+
       redirect_to url, flash: { success: "Se ha calificado correctamente la tarea." }
     else
       redirect_to url, flash: { error: "Ha ocurrido un error al calificar la tarea." }
