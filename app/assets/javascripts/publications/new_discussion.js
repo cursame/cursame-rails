@@ -5,12 +5,19 @@ $(function() {
         form = $this.closest('form'),
         containerFields = form.find('div.evaluable-fields-js');
 
+    var publish_date = form.find('#discussion_publish_date')[0],
+        end_date = form.find('#discussion_end_date')[0];
+
     if ( $this.hasClass('active') ) {
       $this.removeClass('active');
-      containerFields.hide();  
+      containerFields.hide();
+      publish_date.required = false;
+      end_date.required = false;
     } else {
       $this.addClass('active');
       containerFields.show();
+      publish_date.required = true;
+      end_date.required = true;
     };
   });
 
@@ -22,7 +29,6 @@ $(function() {
 
       if ( evaluable.is(':checked') ) {
         var is_public = $form.find('input[name=is_public]');
-
         if ( is_public.val() == 1 ) {
           error = 1;
         }

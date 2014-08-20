@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140815184000) do
+ActiveRecord::Schema.define(:version => 20140815232151) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -150,6 +150,17 @@ ActiveRecord::Schema.define(:version => 20140815184000) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
+    t.integer  "asset_id"
+    t.integer  "delivery_id"
+    t.integer  "assignment_id"
+    t.integer  "comment_id"
+    t.integer  "question_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
@@ -411,11 +422,11 @@ ActiveRecord::Schema.define(:version => 20140815184000) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -485,17 +496,15 @@ ActiveRecord::Schema.define(:version => 20140815184000) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
-    t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
-    t.integer  "evaluation_porcentage"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "feedbackable_type"
-    t.integer  "evaluation_criterium_id"
+    t.integer  "evaluation_criterium"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criterium_id"
+  add_index "response_to_the_evaluations", ["evaluation_criterium"], :name => "index_response_to_the_evaluations_on_evaluation_criterium"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
