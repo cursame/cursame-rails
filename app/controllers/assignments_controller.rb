@@ -86,28 +86,16 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find_by_id params[:id]
 
-    if Grade.find_by_gradable_id(params[:id]).nil?
-      grade_assignment = Grade.new
-      grade_assignment.gradable_id = params[:id]
-      grade_assignment.gradable_type = 'Delivery'
-      grade_assignment.user_id = @assignment.user_id
-      grade_assignment.score = 0
-      if grade_assignment.save
-        @assignment.grade = grade_assignment
-      else
-        redirect_to :back, flash: { error: "Error: No se pudo calificar correctamente la tarea" }
-      end
-    end
-
     @assignment.update_attributes params[:assignment]
 
-    url = evaluate_delivery_response_path(@assignment)
-
-    if @assignment.grade.save
-      redirect_to url, flash: { success: "Se ha calificado correctamente la tarea." }
+    if @assignment.update_attributes params[:assignment]
+      Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_accomplishment_on_assignment'
+      the_flash = { success: "Se ha calificado correctamente la tarea." }
     else
-      redirect_to url, flash: { error: "Ha ocurrido un error al calificar la tarea." }
+      the_flash = { error: "Ha ocurrido un error al calificar la tarea." }
     end
+
+    redirect_to evaluate_delivery_response_path(@assignment), flash: the_flash
   end
 
   def destroy

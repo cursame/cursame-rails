@@ -359,6 +359,11 @@ class CoursesController < ApplicationController
     @member = obtainMember(@course.id, current_user.id)
   end
 
+  def closure
+    @course = Course.find_by_id params[:id]
+
+  end
+
   def validations
     @course = Course.find_by_id(params[:id])
     course_exist?(@course)
@@ -446,15 +451,15 @@ class CoursesController < ApplicationController
 
     if @assignment.save and @id.nil?
 
-      @delivery_from_assignment = Delivery.find(@assignment.delivery)
+      #@delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-      @delivery_from_assignment.evaluation_criteria.each_with_index do | generate_rubres, index |
-        @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
-        @response_to_the_evaluation.name = generate_rubres.name
-        # @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-        @response_to_the_evaluation.assignment_id = @assignment.id
-        @response_to_the_evaluation.save
-      end
+      # @delivery_from_assignment.evaluation_criteria.each_with_index do | generate_rubres, index |
+      #   @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+      #   @response_to_the_evaluation.name = generate_rubres.name
+      #   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+      #   @response_to_the_evaluation.feedbackable_id = @assignment.id
+      #   @response_to_the_evaluation.save
+      # end
 
       if(params[:files])
         params[:files].each do |asset_id|

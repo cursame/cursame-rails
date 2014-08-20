@@ -1,0 +1,90 @@
+- assignment = @assignment
+- delivery = assignment.delivery
+- course = assignment.course
+- user = assignment.user
+
+= render partial: 'evaluate/shared/header_activity_delivery', locals: { delivery: delivery, course: course, meta_data: false }
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-8
+        .col-inner
+          .activity-view
+            .activity-view-main
+              .activity-view-main-user
+                %span.avatar-holder
+                  = avatar('user', '45', 'no', user.id, 'avatar avatar-45', 'no', 'no')
+                .activity-view-main-user-state
+                  %h5= user.name
+                  .user-meta
+                    - if assignment.grade.score.blank?
+                      %span Sin Calificar
+                    - else
+                      %span
+                        Calificación: #{assignment.grade.score}
+                    %span.mta-spcer ·
+                    %span
+                      Entregado: #{I18n.localize(assignment.created_at, format: "%e de %B del %Y")}
+              .evaluate-user-response.tabs
+                .tabs-buttons
+                  .tab.active{"data-id-target" => "response"}
+                    Entrega
+                  .tab{"data-id-target" => "response-evaluate"}
+                    Calificar
+                .tabs-main
+                  #response.activity-response-items.tab-content
+                    .response-item
+                      %span.meta-info Alumno:
+                      %p= link_to assignment.user.name, show_user_path(assignment.user.personal_url)
+                    .response-item
+                      %span.meta-info Titulo:
+                      %p= assignment.title
+                    .response-item
+                      %span.meta-info Mensaje:
+                      %p= assignment.brief_description
+                    - if assignment.assets.count > 0 || assignment.contents.count > 0
+                      .assets.response-item
+                        %span.meta-info Archivos adjuntos:
+                        = render partial: 'assets/assets_list', locals: { assets: assignment.assets, delete_enable: false }
+                        = render :partial => "content/insertions_to_contents", :locals => { :type => assignment, :cl => 'assignment'}
+                  #response-evaluate.activity-response-evaluate.tab-content{:style => "display: none;"}
+                    #accomplishment.delivery-submited-evaluation-fields
+                      = form_for(assignment, html: { class: 'form-validate-js' }) do |f|
+                        = f.hidden_field :id
+                        .activity-set-evaluation
+                          .evaluation-label
+                            %h4 Calificación: *
+                          .evaluation-input
+                            = f.fields_for :grade do |grade|
+                              = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, number: true, max: 10, min: 0
+                        - if delivery.evaluation_criteria.count > 0
+                          .activity-criteria-evaluation
+                            .criteria-evaluation-help-text
+                              %h6 Retroalimentación
+                              %p Envia comentarios en base a los criterios de la actividad.
+                              - delivery.evaluation_criteria.each_with_index do |criterium, index|
+                                = f.fields_for :response_to_the_evaluations, @assignment.response_to_the_evaluations[index] do |criteria_feedback|
+                                  = render 'evaluate/shared/evaluation_criterium_feedback', f: criteria_feedback, criterium: criterium
+                                  
+                        .activity-eveluation-footer
+                          %span.btn.btn-primary.input-btn
+                            = submit_tag "Calificar tarea"
+      .col.col-4
+        .col-inner
+          .sidebar-responses
+            .sidebar-responses-header
+              %h6 Entregas
+            .sidebar-responses-main
+              - delivery.responses.each do |response|
+                = link_to evaluate_delivery_response_path(response) do
+                  %div{:class => "sidebar-user-response#{" active" if assignment.id == response.id}"}
+                    %span.avatar-holder
+                      = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
+                    .sidebar-user-response-main
+                      %h6= response.user.name
+                      - if response.grade.present?
+                        %span
+                          Calificación:
+                          %strong= response.grade.score
+                      - else
+                        %span Sin calificar

@@ -1,0 +1,28 @@
+- course = @survey.courses.first
+= render partial: 'evaluate/shared/header_activity_survey', locals: { survey: @survey, course: course, meta_data: true }
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .activity-view
+            .view-header
+              %h5 Entregas
+            .activity-view-main
+              - unless @survey.responses.empty?
+                .activity-responses-list
+                  - @survey.responses.each do |response|
+                    = link_to evaluate_survey_response_path(response) do
+                      .activity-response
+                        .activity-response-avatar
+                          %span.avatar-holder
+                            = avatar('user', '150', 'no', response.user.id, 'avatar avatar-80', 'no', 'no')
+                        .activity-response-main
+                          .va-middle
+                            %h5= response.user.name
+                            %p
+                              Obtenido: #{number_with_precision(response.evaluation, precision: 1)}
+              - else
+                .no-content-section
+                  %h5 Sin Entregas.
+                  %p Todavia ningun alumno a contestado este cuestionario.

@@ -1,5 +1,6 @@
 - course = @discussion.courses.first
-= render partial: 'evaluate/discussion/evaluate_discussion_header', locals: { discussion: @discussion, course: course, meta_data: true }
+
+= render partial: 'evaluate/discussions/evaluate_discussions_header', locals: { discussion: @discussion, course: course, meta_data: true }
 .activity-view-wrap
   .wrapper
     .cols-12
@@ -29,14 +30,4 @@
 
       .col.col-4
         .col-inner
-          .sidebar-responses
-            .sidebar-responses-header
-              %h6 Participantes
-            .sidebar-responses-main
-              - @discussion.discussion_responses.each do |response|
-                = link_to evaluate_discussion_response_path(response) do
-                  .sidebar-user-response
-                    %span.avatar-holder
-                      = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
-                    .sidebar-user-response-main
-                      %h6= response.user.name
+          = render partial: 'evaluate/shared/discussions_sidebar_responses', locals: { responses: @discussion.discussion_responses, current_response: false }

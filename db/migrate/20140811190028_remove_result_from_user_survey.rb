@@ -1,10 +1,11 @@
 class RemoveResultFromUserSurvey < ActiveRecord::Migration
 	def change
 
+		# TODO: eliminar este bloque despues de terminar la migración
 		UserSurvey.select('survey_id, user_id, count(*)').group(:survey_id, :user_id).order("count DESC").each do |user_survey|
 			if user_survey.count.to_i > 1
 				UserSurvey.where(user_id: user_survey.user_id, survey_id: user_survey.survey_id).each_with_index do |user_survey, index|
-					user_survey.destroy unless index == 1
+					user_survey.delete unless index == 1
 				end
 			end
 		end

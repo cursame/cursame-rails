@@ -1,0 +1,15 @@
+.sidebar-responses
+  .sidebar-responses-header
+    %h6 Participantes
+  .sidebar-responses-main
+    - responses.each do |response|
+      = link_to evaluate_discussion_response_path(response) do
+        %div{:class => "sidebar-user-response#{" active" if current_response == response.id}"}
+          %span.avatar-holder
+            = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
+          .sidebar-user-response-main
+            %h6= response.user.name
+            - unless response.grade.present?
+              %span Sin Calificar
+            - else
+              %span= @discussion_response.grade.score

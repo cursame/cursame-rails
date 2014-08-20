@@ -135,15 +135,15 @@
           <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>">Entregar Tarea</a>
         <% else %>
           <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
-          <% if !assignment.nil? && !assignment.grade.score.nil? %>
+          <% if !assignment.nil? && !assignment.grade.nil? %>
             <div class="delivery-results">
               <div class="delivery-overall-result">
-                <div class="result"><%= assignment.grade.score.to_s %></div>
+                <div class="result"><%= assignment.grade.score %></div>
                 <h4>Calificación final obtenida</h4>
               </div>
               <% unless assignment.response_to_the_evaluations.empty? %>
                 <div class="delivered-delivery-rubres">
-                  <% assignment.response_to_the_evaluations.each do |delivery_rubre| %>
+                  <% assignment.response_to_the_evaluations.each_with_index do |delivery_rubre, index| %>
                     <div class="delivered-delivery-rubre">
                       <div class="rubre-main">
                         <p><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
@@ -165,7 +165,7 @@
 <div class="delivery-overlay-submit-form" id="<%= delivery.id %>">
   <div class="delivery-assignment-box" id="entrega-delivery-<%= delivery.id %>">
     <% @delivery_id = delivery.id %>
-    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => delivery.courses[0]}%>
+    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => delivery.courses[0]} %>
   </div>
 </div>
 
