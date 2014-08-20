@@ -146,8 +146,7 @@
                   <% assignment.response_to_the_evaluations.each_with_index do |delivery_rubre, index| %>
                     <div class="delivered-delivery-rubre">
                       <div class="rubre-main">
-                        <h6><%= delivery.evaluation_criteria[index].name %></h6>
-                        <p><%= delivery_rubre.comment_for_rubre == "" ? "Sin comentarios" : delivery_rubre.comment_for_rubre %></p>
+                        <p><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
                       </div>
                     </div>
                   <% end %>
