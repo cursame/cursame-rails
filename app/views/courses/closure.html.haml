@@ -1,1 +1,62 @@
 = render :partial => 'courses/show/course-header', locals: { header_style: :super_compact }
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .section-help
+          = icon 'wizard'
+          .section-help-content
+            %h5 Finalizar curso
+            %p
+              Califica a los miembros del curso para finalizar el curso.
+              %br/
+              La calificación de Cúrsame es generada automaticamente.
+
+        - user = @course.users.last
+        - member_course = MembersInCourse.find_by_user_id_and_course_id(user, @course)
+        .closure-course-members-list
+          .member-item
+            .member-item-header
+              = link_to show_user_path(user.personal_url), class: 'member-avatar' do
+                %span.avatar-holder
+                  = avatar('user', '30', 'no', user.id, 'avatar', 'no', 'no')
+              = link_to show_user_path(user.personal_url), class: 'member-name' do
+                %h6= user.name
+            .member-item-main
+              %table.member-evaluation-table
+                %thead
+                  %tr
+                    %th Criterio
+                    %th Calificación Obtenida
+                %tbody
+                  %tr
+                    %td
+                      %h4 Cursame
+                      .complementary-activities
+                        %span.meta-info Tareas:
+                        %p
+                          Entrego #{ "21" } de #{@course.deliveries.count}
+                          Calificación
+                          %strong #{ member_course.deliveries_average }
+
+                      .complementary-activities
+                        %span.meta-info Cuestionarios:
+                        %p Contesto 21 de 31  ·  Calificación 5
+                      .complementary-activities
+                        %span.meta-info Discusiones:
+                        %p Participo en 21 de 31  ·  Calificación 5
+                    %td
+                      %span.score 7.8
+                  %tr
+                    %td.middle
+                      %h4 Asistencia
+                    %td
+                      .score-field= text_field_tag 'score', '', placeholder: 'Ejemplo: 8'
+                  %tr.final-score
+                    %td
+                      %h4 Calificación Final
+                    %td
+                      %span.score 7.6
+            .member-item-footer
+              %span.btn.btn-primary.input-btn.fr
+                = submit_tag 'Calificar alumno'

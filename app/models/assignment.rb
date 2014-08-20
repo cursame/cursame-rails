@@ -48,9 +48,10 @@ class Assignment < ActiveRecord::Base
 
   after_create do
 
-    self.delivery.courses.each do |course|
-      course.teachers.each { |teacher| teacher.user.settings_teacher.increment_deliveries if !teacher.user.settings_teacher.nil? }
-    end
+    # TODO: Corrige esta mamada Babas!
+    # self.delivery.courses.each do |course|
+    #   course.teachers.each { |teacher| teacher.user.settings_teacher.increment_deliveries if !teacher.user.settings_teacher.nil? }
+    # end
 
     users = self.delivery.courses.first.owners
     notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')

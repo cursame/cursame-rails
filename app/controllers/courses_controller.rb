@@ -361,7 +361,6 @@ class CoursesController < ApplicationController
 
   def closure
     @course = Course.find_by_id params[:id]
-
   end
 
   def validations

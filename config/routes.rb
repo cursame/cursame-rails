@@ -66,10 +66,12 @@ Cursame30Lb::Application.routes.draw do
 
   resources :assignments
 
-  # colocando miembros en cursos
+  # Members In Course
   resources :members_in_courses
-
   get '/update_mc', :to => 'members_in_courses#update'
+  match '/courses/:course_id/closure/:user_id', :to => 'members_in_courses#course_user_rate', :as => :course_user_rate
+
+
   # colocando course files
   resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
   # metodos de manejo de cursos
