@@ -3,6 +3,14 @@ class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
 
+  has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
+  has_one :grade, as: :gradable, dependent: :destroy
+
+  attr_accessible :grade_attributes, :response_to_the_evaluations_attributes
+
+  accepts_nested_attributes_for :response_to_the_evaluations
+  accepts_nested_attributes_for :grade
+
   after_create do
     if (!self.owner) then
       if(!self.accepted) then

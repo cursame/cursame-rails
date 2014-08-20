@@ -24,8 +24,6 @@ class UserSurvey < ActiveRecord::Base
         Notification.create(:notificator => self, :users => teacher_users, :kind => "new_assignment_on_survey", :active => true)
       end
     end
-    grade = Grade.create(gradable: self, score: 0, user_id: self.user_id)
-    self.grade = grade
   end
 
   # Calcula la calificacion de la evaluacion
