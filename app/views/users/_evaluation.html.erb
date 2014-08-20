@@ -1,14 +1,24 @@
-<%if member.nil?%>
-  <!-- <h3>No eres parte del grupo!</h3> -->
-  
-<% elsif !member.accepted %>
-  <!-- <h3>No has sido aceptado en el grupo!</h3> -->
-
-<% elsif member.owner %>
-  <% deliveries_from_course = course.deliveries.sort{ |x,y| x.created_at <=> y.created_at }%>
-  <% surveys_from_course = course.surveys.sort{ |x,y| x.created_at <=> y.created_at  }%>
-  
-  <div id="<%= course.id %>" class="course-califications-wrap">
+<div id="<%= course.id %>" class="course-califications-wrap">
+  <% if current_user.student? %>
+    <% course.members_in_courses.reject { |member| member.user_id != current_user.id }.each do |member| %>
+      <div class="course-califications-header">
+        <div class="course-califications-header-avatar">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", member.course.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="course-califications-header-main">
+          <h3><%= member.course.title %></h3>
+          <span>Calificacion: <%= member.course_average %></span>
+        </div>
+      </div>
+      <div class="course-califications-main">
+        <%= render partial: 'users/califications/deliveries_table',  locals: { member: member } %>
+        <%= render partial: 'users/califications/surveys_table',     locals: { member: member } %>
+        <%= render partial: 'users/califications/discussions_table', locals: { member: member } %>
+      </div>
+    <% end %>
+  <% else %>
     <div class="course-califications-header">
       <div class="course-califications-header-avatar">
         <span class="avatar-holder">
@@ -17,38 +27,26 @@
       </div>
       <div class="course-califications-header-main">
         <h4><%= course.title %></h4>
-        <%#= link_to "Descargar PDF", course_evaluation_download_path(course, :format => "pdf"), class: 'btn btn-secondary' %>
       </div>
     </div>
     <div class="course-califications-main">
-      <% if course.members_in_courses.count > 1 %>
-        <% course.members_in_courses.each do |member| %>
-          <% user = member.user %>
-          <% if !member.owner %>
-            <% table = member.course_evaluation(course,deliveries_from_course, surveys_from_course)%>
-            
-            <% unless table["deliveries"]["deliveries"].empty? && table["surveys"]["surveys"].empty? %>
-              <div class="user-califications-wrap">
-                <div class="user-califications-header">
-                  <%= avatar('user', '30', "no", user.id, "avatar", "no", "no") %>
-                  <div class="user-califications-header-title">
-                    <h6><%=user.name%></h6>
-                    <span>Calificacion: <%=table["evaluation"]%></span>
-                    <span class="arrow-down triagle-8"></span>
-                  </div>
-                </div>
-                <div class="user-califications-main">
-                  <%= render partial: 'users/califications/deliveries_table', locals: { table: table } %>
-                  <%= render partial: 'users/califications/surveys_table', locals: { table: table } %>
-                </div>
+      <% unless course.empty? %>
+        <% course.evaluable_members.each do |member| %>
+          <div class="user-califications-wrap">
+            <div class="user-califications-header">
+              <%= avatar('user', '30', "no", member.user.id, "avatar", "no", "no") %>
+              <div class="user-califications-header-title">
+                <h6><%= member.user.name%></h6>
+                <span>Calificacion: <%= member.course_average %></span>
+                <span class="arrow-down triagle-8"></span>
               </div>
-            <% else %>
-              <div class="no-sub-content-section">
-                <h6>No hay actividades en este curso para evaluar</h6>
-              </div>
-            <% end %>
-
-          <% end %>
+            </div>
+            <div class="user-califications-main">
+              <%= render partial: 'users/califications/deliveries_table',  locals: { member: member } %>
+              <%= render partial: 'users/califications/surveys_table',     locals: { member: member } %>
+              <%= render partial: 'users/califications/discussions_table', locals: { member: member } %>
+            </div>
+          </div>
         <%end%>
       <% else %>
         <div class="no-sub-content-section">
@@ -56,39 +54,5 @@
         </div>
       <% end %>
     </div>
-  </div>
-
-<% else %>
-
-  <% user = current_user %>
-  <% deliveries_from_course = course.deliveries.sort{ |x,y| x.created_at <=> y.created_at } %>
-  <% surveys_from_course = course.surveys.sort{|x,y| x.created_at <=> y.created_at } %>
-  <% table = member.course_evaluation(course, deliveries_from_course, surveys_from_course) %>
-  
-  <div id="<%= course.id %>" class="course-califications-wrap">
-    <div class="course-califications-header">
-      <div class="course-califications-header-avatar">
-        <span class="avatar-holder">
-          <%= avatar('course', '45', "no", course.id, "avatar", "no", "no") %>
-        </span>
-      </div>
-      <div class="course-califications-header-main">
-        <h3><%= course.title %></h3>
-        <span>Calificacion: <%=table["evaluation"]%></span>
-        <%#= link_to "Descargar PDF", course_evaluation_download_path(course, :format => "pdf"), class: 'btn btn-secondary' %>
-      </div>
-    </div>
-    <div class="course-califications-main">
-      <% unless table["deliveries"]["deliveries"].empty? && table["surveys"]["surveys"].empty? %>
-        <%= render partial: 'users/califications/deliveries_table', locals: { table: table } %>
-        <%= render partial: 'users/califications/surveys_table', locals: { table: table } %>
-      <% else %>
-        <div class="no-sub-content-section">
-          <h6>No hay actividades en este curso para evaluar</h6>
-        </div>
-      <% end %>
-
-    </div>
-  </div>
-
-<%end%>
+  <% end %>
+</div>

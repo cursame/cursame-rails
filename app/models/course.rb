@@ -223,13 +223,28 @@ class Course < ActiveRecord::Base
     return users_id.include?(user.id)
   end
 
+  # Returns the array of teachers in this course
   def teachers
-    self.members_in_courses.keep_if { |member| member.owner == true }
+    self.users.keep_if { |user| user.teacher? }
   end
 
   # Returns the array of students in this course
   def students
     self.users.keep_if { |user| user.student? }
+  end
+
+  # Returns true if there is any evaluable member
+  def empty?
+    self.members_in_courses.reject { |member| !member.has_evaluation? }.empty?
+  end
+
+  # Returns the array of evaluable members of this course
+  def evaluable_members
+    self.members_in_courses.reject { |member| !member.has_evaluation? }
+  end  
+
+  def evaluables
+    evaluables = self.surveys + self.discussions + sel
   end
 
 end
