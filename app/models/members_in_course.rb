@@ -2,7 +2,7 @@
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
-  
+
   after_create do
     if (!self.owner) then
       if(!self.accepted) then
@@ -10,7 +10,7 @@ class MembersInCourse < ActiveRecord::Base
       end
     end
   end
-  
+
   after_update do
     accepted = self.changes[:accepted]
     if (!accepted.nil?) then
@@ -27,26 +27,26 @@ class MembersInCourse < ActiveRecord::Base
 
     if not(accepted.nil?)
 
-      course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}") 
+      course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}")
       if not(course_channel.nil?)
         audiences = course_channel.audiences
         if (accepted)
           index = audiences.index{|x| x.user_id == user_id}
-          if (index.nil?) 
-           Audience.create(user_id: user_id, channel_id: course_channel.id)
+          if (index.nil?)
+            Audience.create(user_id: user_id, channel_id: course_channel.id)
           end
         else
           if not(index.nil?)
-           audiences[index].destroy
+            audiences[index].destroy
           end
         end
       end
     end
   end
-    
+
   before_destroy do
     notifications = Notification.where(:notificator_id => self.course_id,:notificator_type => "Course",:kind => 'user_accepted_in_course')
-    
+
     notifications.each do
       |notification|
       if notification.users.include?(self.user) then
@@ -54,55 +54,83 @@ class MembersInCourse < ActiveRecord::Base
       end
     end
 
-
-    course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}") 
+    course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}")
     if not(course_channel.nil?)
       audiences = course_channel.audiences
       index = audiences.index{|x| x.user_id == user_id}
-          
+
       if not(index.nil?)
         audiences[index].destroy
       end
     end
-
-
-  end
-  
-  # Calcula la calificacion de examenes
-
-  def evaluation_surveys(user_surveys, surveys)
-    if user_surveys.any? then
-      resultado = 0
-      @count = surveys.count
-      user_surveys.each_with_index.inject(0.0) { 
-        |result, (user_survey,index)|
-        if user_survey
-          resultado = resultado+user_survey.result
-        else
-          resultado = resultado + 0.0
-        end
-      }.to_i
-      result = resultado.to_f/@count.to_f
-      else ;0;end
-  end
-  
-  # TODO: evaluar si se requiere este metodo aqui
-  def evaluation_deliveries(assignments, deliveries)
   end
 
-  # TODO: evaluar si se requiere este metodo aqui
-  def course_evaluation(course,deliveries,surveys)
-  end
-
-  # obtiene si es owner del grupo mediante un delivery
-  def self.is_owner_by_delivery_and_user_id(delivery,user)
-    delivery.courses.each do |course|
-      owner = self.find_by_course_id_and_user_id_and_owner(course.id,user.id,true)
-      if owner
-        return true
-      end
+  # Returns an array of hashes, containing all surveys of the course and the surveys responses.
+  # ie: [{ survey: ..., survey_response: ... }]
+  def surveys_evaluation
+    self.course.surveys.map do |survey| 
+      { survey: survey, user_survey: UserSurvey.find_by_survey_id_and_user_id(survey.id, self.user.id) }
     end
-    return false
+  end
+
+  # Returns an array of hashes, containing all deliveries of the course and the assignments.
+  # ie: [{ delivery: ..., assignment: ... }]
+  def deliveries_evaluation
+    self.course.deliveries.map do |delivery| 
+      { delivery: delivery, assignment: Assignment.find_by_delivery_id_and_user_id(delivery.id, self.user.id) }
+    end
+  end
+
+  # Returns an array of hashes, containing all disucussions of the course and the discussion responses.
+  # ie: [{ discussion: ..., discussion_response: ... }]
+  def discussions_evaluation
+    self.course.discussions.where(evaluable: true).map do |discussion| 
+      { discussion: discussion, discussion_response: DiscussionResponse.find_by_discussion_id_and_user_id(discussion.id, self.user.id) }
+    end
+  end
+
+  # Returns the array of the course grades
+  def course_scores
+    surveys_scores + discussions_scores + deliveries_scores
+  end
+
+  # Returns the array of the surveys scores
+  def surveys_scores
+    surveys_evaluation.map { |evaluation| (evaluation[:user_survey].nil? || evaluation[:user_survey].grade.nil?) ? 0 : evaluation[:user_survey].grade.score.to_f }
+  end
+
+  # Returns the array of discussions scores
+  def discussions_scores
+    discussions_evaluation.map { |evaluation| (evaluation[:discussion_response].nil? || evaluation[:discussion_response].grade.nil?) ? 0 : evaluation[:discussion_response].grade.score.to_f }
+  end
+
+  # Returns the array of the deliveries scores
+  def deliveries_scores
+    deliveries_evaluation.map { |evaluation| (evaluation[:assignment].nil? || evaluation[:assignment].grade.nil?) ? 0 : evaluation[:assignment].grade.score.to_f }
+  end
+
+  # Returns the average grade of the course.
+  def course_average
+    (course_scores.empty?) ? 10 : "%.2g" % (course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size) 
+  end
+
+  # Returns the average grade for surveys.
+  def surveys_average
+    (surveys_scores.empty?) ? 0 : "%.2g" % (surveys_scores.inject { |sum, element| sum + element }.to_f / surveys_scores.size) 
+  end
+
+  # Returns the average grade for deliveries.
+  def deliveries_average
+    (deliveries_scores.empty?) ? 0 : "%.2g" % (deliveries_scores.inject { |sum, element| sum + element }.to_f / deliveries_scores.size)
+  end
+
+  # Returns the average grade for discussions.
+  def discussions_average
+    (discussions_scores.empty?) ? 0 : "%.2g" % (discussions_scores.inject { |sum, element| sum + element }.to_f / discussions_scores.size)
+  end
+
+  def has_evaluation?
+    self.accepted? && !self.owner
   end
 
   def import(path,network,course,user_admin)
@@ -142,7 +170,7 @@ class MembersInCourse < ActiveRecord::Base
         arrayErrores.push({:line => count,:message => "No se especifico si es propietario o no del curso" })
         errors = true
       elsif owner == "0" then
-          owner = true
+        owner = true
       else
         owner = nil
       end

@@ -86,11 +86,14 @@ class UsersController < ApplicationController
 
   def courses
     @user_l= User.find_by_personal_url(params[:personal_url])
-
   end
 
   def califications
-    @courses = current_user.courses
+    if current_user.student?
+      @courses = MembersInCourse.where(user_id: current_user.id, accepted: true).map { |member_in_course| member_in_course.course }
+    else
+      @courses = (current_user.teacher?) ? current_user.courses : current_network.courses
+    end
   end
 
   def friends
