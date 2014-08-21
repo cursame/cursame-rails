@@ -6,8 +6,9 @@ function totalEvaluation(form) {
     var input = $(field).find('input.course-evaluation-item-value-js');
 
     if ( input.is(":visible") ) {
-      console.log(parseInt(input.val()))
-      total += parseInt(input.val());
+      if ( ! input.val() == "" ) {
+        total += parseInt(input.val());
+      }
     };
   });
 
@@ -51,7 +52,7 @@ $(function() {
         userSelectionTotal = totalEvaluation(form),
         cursameValue = 100 - userSelectionTotal;
 
-    if ( userSelectionTotal <= 100 && userSelectionTotal > 0 ) {
+    if ( userSelectionTotal <= 100 && userSelectionTotal >= 0 ) {
       $(form).find('h5.cursame-evaluation-percentage span').text(cursameValue);
     } else {
       Notice('error', 'Por favor verifica que el porcentaje total sea 100%.');
