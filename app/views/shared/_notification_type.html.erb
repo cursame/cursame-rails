@@ -353,6 +353,28 @@
         <% end %>
       <% end %>
 
+    <% when 'new_score_on_discussion_response' %>
+      <% if notification.notificator != nil %>
+        <% if notification.notificator.gradable.user != nil %>
+          <% user = notification.notificator.gradable.user %>
+          <% # response = notification.notificator.gradable.survey.responses.keep_if {|response| response.user_id == user.id } %>
+          <%= link_to discussion_modal_path(notification.notificator.gradable.discussion), remote: true do %>
+            <div class="activity-feed-author">
+              <span class="avatar-holder">
+                <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+              </span>
+            </div>
+            <div class="activity-feed-main">
+              <h6>
+                Han calificado tu participacion en la discusión <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.discussion.title %></span>
+              </h6>
+              <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+            </div>
+          <% end %>
+          
+        <%end%>
+      <%end%>
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>

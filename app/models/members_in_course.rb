@@ -3,12 +3,12 @@ class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
 
-  has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
+  #has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
   has_one :grade, as: :gradable, dependent: :destroy
 
-  attr_accessible :grade_attributes, :response_to_the_evaluations_attributes
+  attr_accessible :grade_attributes#, :response_to_the_evaluations_attributes
 
-  accepts_nested_attributes_for :response_to_the_evaluations
+  #accepts_nested_attributes_for :response_to_the_evaluations
   accepts_nested_attributes_for :grade
 
   after_create do
@@ -16,7 +16,7 @@ class MembersInCourse < ActiveRecord::Base
       if(!self.accepted) then
         Notification.create(:notificator => self, :users => self.course.owners, :kind => "user_request_membership_in_course", :active => true)
       end
-    end
+    end 
   end
 
   after_update do
@@ -104,55 +104,39 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the array of the surveys scores
   def surveys_scores
-    surveys_evaluation.map { |evaluation| (evaluation[:user_survey].nil? || evaluation[:user_survey].grade.nil?) ? 0 : evaluation[:user_survey].grade.score }
+    surveys_evaluation.map { |evaluation| (evaluation[:user_survey].nil? || evaluation[:user_survey].grade.nil?) ? 0 : evaluation[:user_survey].grade.score.to_f }
   end
 
   # Returns the array of discussions scores
   def discussions_scores
-    discussions_evaluation.map { |evaluation| (evaluation[:discussion_response].nil? || evaluation[:discussion_response].grade.nil?) ? 0 : evaluation[:discussion_response].grade.score }
+    discussions_evaluation.map { |evaluation| (evaluation[:discussion_response].nil? || evaluation[:discussion_response].grade.nil?) ? 0 : evaluation[:discussion_response].grade.score.to_f }
   end
 
   # Returns the array of the deliveries scores
   def deliveries_scores
-    deliveries_evaluation.map { |evaluation| (evaluation[:assignment].nil? || evaluation[:assignment].grade.nil?) ? 0 : evaluation[:assignment].grade.score }
+    deliveries_evaluation.map { |evaluation| (evaluation[:assignment].nil? || evaluation[:assignment].grade.nil?) ? 0 : evaluation[:assignment].grade.score.to_f }
   end
 
   # Returns the average grade of the course.
   def course_average
-    (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+    (course_scores.empty?) ? 10 : "%.2g" % (course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size) 
   end
 
   # Returns the average grade for surveys.
   def surveys_average
-    (surveys_scores.empty?) ? 0 : surveys_scores.inject { |sum, element| sum + element }.to_f / surveys_scores.size
+    (surveys_scores.empty?) ? 0 : "%.2g" % (surveys_scores.inject { |sum, element| sum + element }.to_f / surveys_scores.size) 
   end
 
   # Returns the average grade for deliveries.
   def deliveries_average
-    (deliveries_scores.empty?) ? 0 : deliveries_scores.inject { |sum, element| sum + element }.to_f / deliveries_scores.size
+    (deliveries_scores.empty?) ? 0 : "%.2g" % (deliveries_scores.inject { |sum, element| sum + element }.to_f / deliveries_scores.size)
   end
 
   # Returns the average grade for discussions.
   def discussions_average
-    (discussions_scores.empty?) ? 0 : discussions_scores.inject { |sum, element| sum + element }.to_f / discussions_scores.size
+    (discussions_scores.empty?) ? 0 : "%.2g" % (discussions_scores.inject { |sum, element| sum + element }.to_f / discussions_scores.size)
   end
 
-  # Returns the number of Assigments.
-  def count_deliveries_responses
-    deliveries_evaluation.inject(0) { |count, element| count + ( element[:assignment].nil? ? 0 : 1 ) }
-  end
-
-  # Returns the number of DiscussionResponses.
-  def count_discussions_responses
-    discussions_evaluation.inject(0) { |count, element| count + ( element[:discussion_response].nil? ? 0 : 1 ) }
-  end
-
-  # Returns the number of UserSurveys.
-  def count_surveys_responses
-    surveys_evaluation.inject(0) { |count, element| count + ( element[:usery_survey].nil? ? 0 : 1 ) }
-  end
-
-  # Returns true if the MemberInCourse can be evaluated.
   def has_evaluation?
     self.accepted? && !self.owner
   end

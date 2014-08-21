@@ -1,3 +1,4 @@
+- response = DiscussionResponse.find_by_discussion_id_and_user_id( discussion.id, current_user.id)
 .overlay-header
   .overlay-icon
     = icon('section-discussions')
@@ -21,10 +22,21 @@
       %ul
       - discussion.evaluation_criteria.each do |area|
         %li= area.name
-.model-comments
-  .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
-    - if discussion.evaluable?
-      - past_discussion = !(Time.now > discussion.end_date)
-    - else
-      - past_discussion = true
-    = render partial: 'shared/posts/post_comments_list', locals: { post: discussion, new_comment: past_discussion }
+- if response.blank?        
+  .model-comments
+    .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
+      - if discussion.evaluable?
+        - past_discussion = !(Time.now > discussion.end_date)
+      - else
+        - past_discussion = true
+      = render partial: 'shared/posts/post_comments_list', locals: { post: discussion, new_comment: past_discussion }
+- else
+  .model-comments
+    - grade_score = response.grade.score
+    %p 
+      Calificación Obtenida: 
+      %span= number_with_precision(grade_score.to_s, :precision => 1)
+    - if response.grade
+      - response_evaluations = response.response_to_the_evaluations
+      - unless response_evaluations.nil?
+        - response_evaluations.each

@@ -238,7 +238,7 @@ class EvaluateController < ApplicationController
     @discussion_response = DiscussionResponse.find_by_id(params[:id])
 
     if  @discussion_response.update_attributes params[:discussion_response]
-      #notificacion
+      Notification.create users: [@discussion_response.user], notificator: @discussion_response.grade, kind: 'new_score_on_discussion_response'
       redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
     else
       redirect_to evaluate_discussion_response_path(@discussion_response), flash: { error: 'Ha ocurrido un error al calificar la discusión.' }
