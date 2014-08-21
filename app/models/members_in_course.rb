@@ -3,7 +3,8 @@ class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
 
-  #has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
+  has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
+  has_many :members_in_course_criteria
   has_one :grade, as: :gradable, dependent: :destroy
 
   attr_accessible :grade_attributes#, :response_to_the_evaluations_attributes

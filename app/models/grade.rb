@@ -1,5 +1,5 @@
 class Grade < ActiveRecord::Base
-  belongs_to :gradable, polymorphic: true
+  belongs_to :gradable, polymorphic: true, dependent: :destroy
   belongs_to :user
   validates_associated :user
   validates :gradable, presence: true
