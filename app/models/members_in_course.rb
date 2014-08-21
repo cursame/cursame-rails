@@ -138,6 +138,22 @@ class MembersInCourse < ActiveRecord::Base
     (discussions_scores.empty?) ? 0 : discussions_scores.inject { |sum, element| sum + element }.to_f / discussions_scores.size
   end
 
+  # Returns the number of Assigments.
+  def count_deliveries_responses
+    deliveries_evaluation.inject(0) { |count, element| count + ( element[:assignment].nil? ? 0 : 1 ) }
+  end
+
+  # Returns the number of DiscussionResponses.
+  def count_discussions_responses
+    discussions_evaluation.inject(0) { |count, element| count + ( element[:discussion_response].nil? ? 0 : 1 ) }
+  end
+
+  # Returns the number of UserSurveys.
+  def count_surveys_responses
+    surveys_evaluation.inject(0) { |count, element| count + ( element[:usery_survey].nil? ? 0 : 1 ) }
+  end
+
+  # Returns true if the MemberInCourse can be evaluated.
   def has_evaluation?
     self.accepted? && !self.owner
   end

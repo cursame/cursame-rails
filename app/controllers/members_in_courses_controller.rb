@@ -114,8 +114,7 @@ class MembersInCoursesController < ApplicationController
     rescue
       puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
     end
-
- end
+  end
 
   # DELETE /members_in_courses/1
   # DELETE /members_in_courses/1.json
@@ -129,5 +128,9 @@ class MembersInCoursesController < ApplicationController
       format.js
       format.json
     end
+  end
+
+  def rate_user
+    
   end
 end

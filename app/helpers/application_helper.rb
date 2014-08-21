@@ -20,4 +20,8 @@ module ApplicationHelper
   def active_class(comparator)
     return params[:action] == comparator ? " active" : ""
   end
+
+  def evaluation_score(score)
+    number_with_precision(score, precision: 1, strip_insignificant_zeros: true)
+  end
 end

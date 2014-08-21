@@ -491,8 +491,8 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "feedbackable_type"
     t.integer  "evaluation_criterium_id"
   end

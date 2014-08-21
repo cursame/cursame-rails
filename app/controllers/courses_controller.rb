@@ -360,8 +360,8 @@ class CoursesController < ApplicationController
   end
 
   def closure
+    # TODO: Filtro si no ha calificado alguna actividad, mostrar mensaje con actividades que falten por calificar.
     @course = Course.find_by_id params[:id]
-
   end
 
   def validations

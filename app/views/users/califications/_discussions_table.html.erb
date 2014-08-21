@@ -22,7 +22,7 @@
               <% elsif discussion_evaluation[:discussion_response].grade.nil? %>
                 No calificada
               <% else %>
-                <span class="number"><%= discussion_evaluation[:discussion_response].grade.score %></span>
+                <span class="number"><%= evaluation_score discussion_evaluation[:discussion_response].grade.score %></span>
               <% end %>
             </td>
           </tr>
@@ -32,7 +32,7 @@
     <div class="course-califications-section-footer">
       <div class="cali-section">
         <h5>Calificación promedio en discusiones:</h5>
-        <span class="number"><%= member.discussions_average %></span>
+        <span class="number"><%= evaluation_score member.discussions_average %></span>
       </div>
     </div>
   <% else %>
