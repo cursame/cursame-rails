@@ -174,13 +174,6 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "course_grades", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "course_id_course_file_ids", :force => true do |t|
     t.integer  "course_id"
     t.integer  "course_file_id"
@@ -340,7 +333,7 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
   create_table "grades", :force => true do |t|
     t.integer  "gradable_id"
     t.string   "gradable_type"
-    t.integer  "score"
+    t.float    "score"
     t.text     "feedback",      :default => ""
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -368,22 +361,15 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.datetime "updated_at",             :null => false
   end
 
-  create_table "member_in_course_criterium", :force => true do |t|
-    t.integer  "members_in_course_id"
-    t.integer  "evaluation_criterium_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-  end
-
-  add_index "member_in_course_criterium", ["evaluation_criterium_id"], :name => "index_member_in_course_criterium_on_evaluation_criterium_id"
-  add_index "member_in_course_criterium", ["members_in_course_id"], :name => "index_member_in_course_criterium_on_members_in_course_id"
-
   create_table "members_in_course_criteria", :force => true do |t|
     t.integer  "members_in_course_id"
     t.integer  "evaluation_criterium_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
+
+  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "index_members_in_course_criteria_on_evaluation_criterium_id"
+  add_index "members_in_course_criteria", ["members_in_course_id"], :name => "index_members_in_course_criteria_on_members_in_course_id"
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
@@ -502,6 +488,7 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
+    t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
     t.datetime "created_at",              :null => false
@@ -510,7 +497,7 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.integer  "evaluation_criterium_id"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criteium_id"
+  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criterium_id"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
