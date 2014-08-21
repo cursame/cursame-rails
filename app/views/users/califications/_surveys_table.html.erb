@@ -18,7 +18,7 @@
             </td>
             <td>
               <% unless survey_evaluation[:user_survey].nil? || survey_evaluation[:user_survey].grade.nil? %>
-                <span class="number"><%= survey_evaluation[:user_survey].grade.score %> </span>
+                <span class="number"><%= evaluation_score survey_evaluation[:user_survey].grade.score %> </span>
               <% else %>
                 No resuelto
               <% end %>
@@ -30,7 +30,7 @@
     <div class="course-califications-section-footer">
       <div class="cali-section">
         <h5>Calificación promedio en cuestionarios:</h5>
-        <span class="number"><%= member.surveys_average %></span>
+        <span class="number"><%= evaluation_score member.surveys_average %></span>
       </div>
     </div>
   <% else %>

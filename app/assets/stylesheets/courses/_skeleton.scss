@@ -133,6 +133,8 @@
 // Closure
 .closure-course-members-list {
   .member-item {
+    margin-bottom: 20px;
+
     .member-item-header {
       @include clearfix;
       padding: $space;

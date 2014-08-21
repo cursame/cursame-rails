@@ -22,7 +22,7 @@
               <% elsif delivery_evaluation[:assignment].grade.nil? %>
                 No calificada
               <% else %>
-                <span class="number"><%= delivery_evaluation[:assignment].grade.score %></span>
+                <span class="number"><%= evaluation_score delivery_evaluation[:assignment].grade.score %></span>
               <% end %>
             </td>
           </tr>
@@ -32,7 +32,7 @@
     <div class="course-califications-section-footer">
       <div class="cali-section">
         <h5>Calificación promedio en tareas:</h5>
-        <span class="number"><%= member.deliveries_average %></span>
+        <span class="number"><%= evaluation_score member.deliveries_average %></span>
       </div>
     </div>
   <% else %>

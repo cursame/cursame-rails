@@ -241,10 +241,10 @@ class Course < ActiveRecord::Base
   # Returns the array of evaluable members of this course
   def evaluable_members
     self.members_in_courses.reject { |member| !member.has_evaluation? }
-  end  
+  end
 
-  def evaluables
-    evaluables = self.surveys + self.discussions + sel
+  def evaluables_discussiones
+    self.discussions.reject { |discussion| not discussion.evaluable? }
   end
 
 end

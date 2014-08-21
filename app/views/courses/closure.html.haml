@@ -12,51 +12,60 @@
               %br/
               La calificación de Cúrsame es generada automaticamente.
 
-        - user = @course.users.last
-        - member_course = MembersInCourse.find_by_user_id_and_course_id(user, @course)
-        .closure-course-members-list
-          .member-item
-            .member-item-header
-              = link_to show_user_path(user.personal_url), class: 'member-avatar' do
-                %span.avatar-holder
-                  = avatar('user', '30', 'no', user.id, 'avatar', 'no', 'no')
-              = link_to show_user_path(user.personal_url), class: 'member-name' do
-                %h6= user.name
-            .member-item-main
-              %table.member-evaluation-table
-                %thead
-                  %tr
-                    %th Criterio
-                    %th Calificación Obtenida
-                %tbody
-                  %tr
-                    %td
-                      %h4 Cursame
-                      .complementary-activities
-                        %span.meta-info Tareas:
-                        %p
-                          Entrego #{ "21" } de #{@course.deliveries.count}
-                          Calificación
-                          %strong #{ member_course.deliveries_average }
+        - @course.evaluable_members.each do |member_course|
+          - user = member_course.user
+          
+          .closure-course-members-list
+            .member-item
+              .member-item-header
+                = link_to show_user_path(user.personal_url), class: 'member-avatar' do
+                  %span.avatar-holder
+                    = avatar('user', '30', 'no', user.id, 'avatar', 'no', 'no')
+                = link_to show_user_path(user.personal_url), class: 'member-name' do
+                  %h6= user.name
+              .member-item-main
+                %table.member-evaluation-table
+                  %thead
+                    %tr
+                      %th Criterio
+                      %th Calificación Obtenida
+                  %tbody
+                    %tr
+                      %td
+                        %h4 Cursame
+                        .complementary-activities
+                          %span.meta-info Tareas:
+                          - unless @course.deliveries.empty?
+                            %p= "Entrego #{ member_course.count_deliveries_responses } de #{ @course.deliveries.count }  ·  Calificación: #{ evaluation_score member_course.deliveries_average }"
+                          - else
+                            %p No hay tareas en este curso.
 
-                      .complementary-activities
-                        %span.meta-info Cuestionarios:
-                        %p Contesto 21 de 31  ·  Calificación 5
-                      .complementary-activities
-                        %span.meta-info Discusiones:
-                        %p Participo en 21 de 31  ·  Calificación 5
-                    %td
-                      %span.score 7.8
-                  %tr
-                    %td.middle
-                      %h4 Asistencia
-                    %td
-                      .score-field= text_field_tag 'score', '', placeholder: 'Ejemplo: 8'
-                  %tr.final-score
-                    %td
-                      %h4 Calificación Final
-                    %td
-                      %span.score 7.6
-            .member-item-footer
-              %span.btn.btn-primary.input-btn.fr
-                = submit_tag 'Calificar alumno'
+                        .complementary-activities
+                          %span.meta-info Cuestionarios:
+                          - unless @course.surveys.empty?
+                            %p= "Contesto #{ member_course.count_surveys_responses } de #{ @course.surveys.count }  ·  Calificación #{ evaluation_score member_course.surveys_average }"
+                          - else
+                            %p No hay cuestionarios en este curso.
+
+                        .complementary-activities
+                          %span.meta-info Discusiones:
+                          - unless @course.discussions.empty?
+                            %p= "Participo en #{ member_course.count_discussions_responses } de #{ @course.evaluables_discussiones.count }  ·  Calificación #{ evaluation_score member_course.discussions_average }"
+                          - else
+                            %p No hay discusiones en este curso.
+
+                      %td
+                        %span.score= evaluation_score member_course.course_average
+                    %tr
+                      %td.middle
+                        %h4 Asistencia
+                      %td
+                        .score-field= text_field_tag 'score', '', placeholder: 'Ejemplo: 8'
+                    %tr.final-score
+                      %td
+                        %h4 Calificación Final
+                      %td
+                        %span.score 7.6
+              .member-item-footer
+                %span.btn.btn-primary.input-btn.fr
+                  = submit_tag 'Calificar alumno'
