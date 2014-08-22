@@ -68,33 +68,6 @@ class Discussion < ActiveRecord::Base
       Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
       self.send_mail(users_notifications)
     end
-
-    begin
-
-      permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, self.network.id)
-
-      if !self.courses.nil? && !self.courses.empty?
-        self.courses.each do |course|
-          mixpanel_properties = {
-            'Network' => self.network.name.capitalize,
-            'Course'  => course.title.capitalize,
-            'Role'    => permissioning.role.title.capitalize
-          }
-          MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
-        end
-      else
-        mixpanel_properties = {
-          'Network' => self.network.name.capitalize,
-          'Course'  => 'Public',
-          'Role'    => permissioning.role.title.capitalize
-        }
-        MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
-      end
-
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
   end
 
   after_destroy do

@@ -37,7 +37,7 @@
               <%= avatar('user', '30', "no", member.user.id, "avatar", "no", "no") %>
               <div class="user-califications-header-title">
                 <h6><%= member.user.name%></h6>
-                <span>Calificacion: <%= member.course_average %></span>
+                <span>Calificacion: <%= evaluation_score member.course_average %></span>
                 <span class="arrow-down triagle-8"></span>
               </div>
             </div>

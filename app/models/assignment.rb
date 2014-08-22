@@ -47,21 +47,11 @@ class Assignment < ActiveRecord::Base
   end
 
   after_create do
-
-    # TODO: Corrige esta mamada Babas!
-    # self.delivery.courses.each do |course|
-    #   course.teachers.each { |teacher| teacher.user.settings_teacher.increment_deliveries if !teacher.user.settings_teacher.nil? }
-    # end
-
+    self.delivery.courses.each do |course|
+      course.teachers.each { |teacher| teacher.settings_teacher.increment_deliveries if !teacher.user.settings_teacher.nil? }
+    end
     users = self.delivery.courses.first.owners
     notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
   end
-
-  # TODO: pasar notifficacion al controlador
-  # after_update do
-  #   unless self.grade.nil?
-  #     Notification.create users: [self.user], notificator: self, kind: 'new_accomplishment_on_assignment'
-  #   end
-  # end
 
 end

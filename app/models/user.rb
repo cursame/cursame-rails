@@ -31,37 +31,32 @@ class User < ActiveRecord::Base
   # se agregan las relaciones para hijos no es necesaria esta relacion
   #has_many :p_id_to_h_ids, :uniq => true, :dependent => :destroy
 
-  has_many :permissionings, :dependent => :destroy
-  has_many :networks, :through => :permissionings
-  has_many :members_in_courses, :dependent => :destroy
-  # Miembros de grupos
-  has_many :members_in_groups, :dependent => :destroy
-  has_many :groups, :dependent => :destroy
-  #eventos
-  has_many :events, :dependent => :destroy
-  has_many :mesages, :dependent => :destroy
-
-  has_many :courses, :through => :members_in_courses
-  has_many :user_surveys, :dependent => :destroy
-  has_many :assets, :dependent => :destroy
-  has_many :assignments, :dependent => :destroy
-  has_many :discussions, :dependent => :destroy
-  has_many :deliveries, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
-  has_many :authentications, :dependent => :destroy
-  has_many :surveys, :dependent => :destroy
-  has_many :activities#, :dependent => :destroy
-  #publications/walls
-  has_many :userpublicationings, :dependent => :destroy
-  has_many :walls, :through => :userpublicationings
-  # archivos en cursos
+  has_many :permissionings, dependent: :destroy
+  has_many :networks, through: :permissionings
+  has_many :members_in_courses, dependent: :destroy
+  has_many :members_in_groups, dependent: :destroy
+  has_many :groups, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :mesages, dependent: :destroy
+  has_many :courses, through: :members_in_courses
+  has_many :user_surveys, dependent: :destroy
+  has_many :assets, dependent: :destroy
+  has_many :assignments, dependent: :destroy
+  has_many :discussions, dependent: :destroy
+  has_many :deliveries, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :authentications, dependent: :destroy
+  has_many :surveys, dependent: :destroy
+  has_many :activities
+  has_many :userpublicationings, dependent: :destroy
+  has_many :walls, through: :userpublicationings
   has_many :course_file_id_user_id
-  has_many :course_files, :through => :course_file_id_user_id
-  #channels for chat
-  has_many :audiences, :dependent => :destroy
-  has_many :channels, :through => :audiences
+  has_many :course_files, through: :course_file_id_user_id
+  has_many :audiences, dependent: :destroy
+  has_many :channels, through: :audiences
+  has_many :grades, dependent: :destroy
 
-  has_one :settings_teacher, :dependent => :destroy
+  has_one :settings_teacher, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url

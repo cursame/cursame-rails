@@ -49,7 +49,7 @@ class DiscussionsController < ApplicationController
 
   def new
     @discussion = Discussion.new
-
+    permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, self.network.id)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @discussion }
@@ -113,6 +113,25 @@ class DiscussionsController < ApplicationController
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find_by_id(courseId)]
+
+        # unless @discussion.courses.nil? || @discussion.courses.empty?
+        #   @discussion.courses.each do |course|
+        #     mixpanel_properties = {
+        #       'Network'   => current_network.name.capitalize,
+        #       'Course'    => course.title.capitalize,
+        #       'Role'      => permissioning.role.title.capitalize,
+        #       'Evaluable' => @discussion.evaluable?
+        #     }
+        #   end
+        # else
+        #   mixpanel_properties = {
+        #     'Network' => current_network.name.capitalize,
+        #     'Course'  => 'Public',
+        #     'Role'    => permissioning.role.title.capitalize,
+        #     'Evaluable' => @discussion.evaluable?
+        #   }
+        # end
+        # track_event current_user.id, 'Discussions', mixpanel_properties
 
         if @discussion.save
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
