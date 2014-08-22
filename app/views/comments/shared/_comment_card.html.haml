@@ -23,7 +23,7 @@
               %span= link_to commentable.title, course_path(commentable), title: commentable.title
         %span.timestamp= time_ago_in_words post_comment.created_at
     .post-box-content
-      = post_comment.comment
+      = post_comment.comment_html
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: post_comment }
 
     - if post_comment.owner?(current_role, current_user)

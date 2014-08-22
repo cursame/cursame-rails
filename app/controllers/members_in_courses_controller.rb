@@ -130,7 +130,9 @@ class MembersInCoursesController < ApplicationController
     end
   end
 
-  def rate_user
-    
+  def rate_course_user
+    puts params
+
+    redirect_to closure_user_overview_path(params[:course_id], params[:member_id]), flash: { success: 'Alumno se ha calificado correctamente.' }
   end
 end

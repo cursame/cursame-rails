@@ -69,7 +69,7 @@ Cursame30Lb::Application.routes.draw do
   # Members In Course
   resources :members_in_courses
   get '/update_mc', :to => 'members_in_courses#update'
-  match '/courses/:course_id/closure/:user_id', :to => 'members_in_courses#course_user_rate', :as => :course_user_rate
+  post '/courses/:course_id/closure/:member_id', :to => 'members_in_courses#rate_course_user', :as => :rate_course_user
 
 
   # colocando course files
@@ -131,6 +131,7 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
   get '/courses/:id/evaluation-schema', :to =>  'courses#evaluation_schema', :as => :course_evaluation_schema
   get '/courses/:id/closure', :to =>  'courses#closure', :as => :course_closure
+  get '/courses/:course_id/closure/:member_id', :to => 'courses#closure_user_overview', :as => :closure_user_overview
 
   resources :courses do
     resources :assignments
