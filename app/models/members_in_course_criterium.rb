@@ -9,4 +9,6 @@ class MembersInCourseCriterium < ActiveRecord::Base
   belongs_to :evaluation_criterium
   validates  :evaluation_criterium, presence: true
 
+  accepts_nested_attributes_for :grade
+
 end

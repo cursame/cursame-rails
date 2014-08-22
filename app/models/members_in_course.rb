@@ -9,6 +9,7 @@ class MembersInCourse < ActiveRecord::Base
 
   attr_accessible :grade_attributes, :user_id, :course_id, :accepted
   accepts_nested_attributes_for :grade
+  accepts_nested_attributes_for :members_in_course_criteria
 
   after_create do
     unless self.owner? && self.accepted?

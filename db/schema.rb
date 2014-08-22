@@ -151,6 +151,17 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "compart_assets", :force => true do |t|
+    t.string   "asset"
+    t.integer  "asset_id"
+    t.integer  "delivery_id"
+    t.integer  "assignment_id"
+    t.integer  "comment_id"
+    t.integer  "question_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
     t.integer  "contentye_id"
@@ -170,6 +181,13 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
   create_table "course_files", :force => true do |t|
     t.string   "file"
     t.boolean  "published"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "course_grades", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -414,11 +432,11 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -488,7 +506,6 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
-    t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
     t.datetime "created_at",              :null => false
