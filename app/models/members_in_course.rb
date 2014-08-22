@@ -7,17 +7,13 @@ class MembersInCourse < ActiveRecord::Base
   has_many :members_in_course_criteria
   has_one :grade, as: :gradable, dependent: :destroy
 
-  attr_accessible :grade_attributes#, :response_to_the_evaluations_attributes
-
-  #accepts_nested_attributes_for :response_to_the_evaluations
+  attr_accessible :grade_attributes, :user_id, :course_id, :accepted
   accepts_nested_attributes_for :grade
 
   after_create do
-    if (!self.owner) then
-      if(!self.accepted) then
-        Notification.create(:notificator => self, :users => self.course.owners, :kind => "user_request_membership_in_course", :active => true)
-      end
-    end 
+    unless self.owner? && self.accepted?
+      Notification.create notificator: self, users: self.course.owners, kind: "user_request_membership_in_course", active: true
+    end
   end
 
   after_update do
@@ -77,7 +73,7 @@ class MembersInCourse < ActiveRecord::Base
   # Returns an array of hashes, containing all surveys of the course and the surveys responses.
   # ie: [{ survey: ..., survey_response: ... }]
   def surveys_evaluation
-    self.course.surveys.map do |survey| 
+    self.course.surveys.map do |survey|
       { survey: survey, user_survey: UserSurvey.find_by_survey_id_and_user_id(survey.id, self.user.id) }
     end
   end
@@ -85,7 +81,7 @@ class MembersInCourse < ActiveRecord::Base
   # Returns an array of hashes, containing all deliveries of the course and the assignments.
   # ie: [{ delivery: ..., assignment: ... }]
   def deliveries_evaluation
-    self.course.deliveries.map do |delivery| 
+    self.course.deliveries.map do |delivery|
       { delivery: delivery, assignment: Assignment.find_by_delivery_id_and_user_id(delivery.id, self.user.id) }
     end
   end
@@ -93,7 +89,7 @@ class MembersInCourse < ActiveRecord::Base
   # Returns an array of hashes, containing all disucussions of the course and the discussion responses.
   # ie: [{ discussion: ..., discussion_response: ... }]
   def discussions_evaluation
-    self.course.discussions.where(evaluable: true).map do |discussion| 
+    self.course.discussions.where(evaluable: true).map do |discussion|
       { discussion: discussion, discussion_response: DiscussionResponse.find_by_discussion_id_and_user_id(discussion.id, self.user.id) }
     end
   end
@@ -105,39 +101,55 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the array of the surveys scores
   def surveys_scores
-    surveys_evaluation.map { |evaluation| (evaluation[:user_survey].nil? || evaluation[:user_survey].grade.nil?) ? 0 : evaluation[:user_survey].grade.score.to_f }
+    surveys_evaluation.map { |evaluation| (evaluation[:user_survey].nil? || evaluation[:user_survey].grade.nil?) ? 0 : evaluation[:user_survey].grade.score }
   end
 
   # Returns the array of discussions scores
   def discussions_scores
-    discussions_evaluation.map { |evaluation| (evaluation[:discussion_response].nil? || evaluation[:discussion_response].grade.nil?) ? 0 : evaluation[:discussion_response].grade.score.to_f }
+    discussions_evaluation.map { |evaluation| (evaluation[:discussion_response].nil? || evaluation[:discussion_response].grade.nil?) ? 0 : evaluation[:discussion_response].grade.score }
   end
 
   # Returns the array of the deliveries scores
   def deliveries_scores
-    deliveries_evaluation.map { |evaluation| (evaluation[:assignment].nil? || evaluation[:assignment].grade.nil?) ? 0 : evaluation[:assignment].grade.score.to_f }
+    deliveries_evaluation.map { |evaluation| (evaluation[:assignment].nil? || evaluation[:assignment].grade.nil?) ? 0 : evaluation[:assignment].grade.score }
   end
 
   # Returns the average grade of the course.
   def course_average
-    (course_scores.empty?) ? 10 : "%.2g" % (course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size) 
+    (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
   end
 
   # Returns the average grade for surveys.
   def surveys_average
-    (surveys_scores.empty?) ? 0 : "%.2g" % (surveys_scores.inject { |sum, element| sum + element }.to_f / surveys_scores.size) 
+    (surveys_scores.empty?) ? 0 : surveys_scores.inject { |sum, element| sum + element }.to_f / surveys_scores.size
   end
 
   # Returns the average grade for deliveries.
   def deliveries_average
-    (deliveries_scores.empty?) ? 0 : "%.2g" % (deliveries_scores.inject { |sum, element| sum + element }.to_f / deliveries_scores.size)
+    (deliveries_scores.empty?) ? 0 : deliveries_scores.inject { |sum, element| sum + element }.to_f / deliveries_scores.size
   end
 
   # Returns the average grade for discussions.
   def discussions_average
-    (discussions_scores.empty?) ? 0 : "%.2g" % (discussions_scores.inject { |sum, element| sum + element }.to_f / discussions_scores.size)
+    (discussions_scores.empty?) ? 0 : discussions_scores.inject { |sum, element| sum + element }.to_f / discussions_scores.size
   end
 
+  # Returns the number of Assigments.
+  def count_deliveries_responses
+    deliveries_evaluation.inject(0) { |count, element| count + ( element[:assignment].nil? ? 0 : 1 ) }
+  end
+
+  # Returns the number of DiscussionResponses.
+  def count_discussions_responses
+    discussions_evaluation.inject(0) { |count, element| count + ( element[:discussion_response].nil? ? 0 : 1 ) }
+  end
+
+  # Returns the number of UserSurveys.
+  def count_surveys_responses
+    surveys_evaluation.inject(0) { |count, element| count + ( element[:usery_survey].nil? ? 0 : 1 ) }
+  end
+
+  # Returns true if the MemberInCourse can be evaluated.
   def has_evaluation?
     self.accepted? && !self.owner
   end
