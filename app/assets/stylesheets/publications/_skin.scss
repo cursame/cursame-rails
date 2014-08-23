@@ -367,12 +367,15 @@
   &.comment {
     .post-box-main-author, .post-box-content {
       box-shadow: none;
+
+      p {
+        text-shadow: none;
+        color: $global-color;
+      }
     }
   }
 
   &.course .post-box-content {
-    
-
     .cover {
       background: $course-color;
       @include opacity(.83);
