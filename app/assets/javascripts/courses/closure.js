@@ -6,16 +6,19 @@ $(function() {
         inputs = form.find('input.criterium-score-js'),
         finalScore = form.find('.final-score-js'),
         finalScoreDiv = form.find('.final-score-js'),
-        criteriaScore = 0;
+        criteriaScore = 0,
+
+        cursameCriteriumPercentage = 0;
 
     inputs.each(function(index, input) {
+      var percentage = parseFloat($(input).data('criterium-percentage'))
+
       if ( ! input.value == "") {
-        criteriaScore += parseFloat(input.value);
+        criteriaScore += (percentage / 100) * parseFloat(input.value);
       };
     });
 
-    var subTotalScore = criteriaScore + parseFloat(cursameScore.text()),
-        finalScore = parseFloat((subTotalScore/ (inputs.length + 1)).toFixed(1));
+    var finalScore = (criteriaScore + parseFloat(cursameScore.text())).toFixed(2);
 
     if ( finalScore > 10 || finalScore < 0 ) {
       Notice('error', 'La calificación final no puede ser superior a 10 o menor a 0.')

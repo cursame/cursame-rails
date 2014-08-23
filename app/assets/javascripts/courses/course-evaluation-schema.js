@@ -50,12 +50,10 @@ $(function() {
   $('form.evaluation-form-js').on('blur', 'input.course-evaluation-item-value-js', function(e) {
     var form =  e.delegateTarget,
         userSelectionTotal = totalEvaluation(form),
-        cursameValue = 100 - userSelectionTotal,
-        cursameInput = $(form).find('input.cursame-score-js');
+        cursameValue = 100 - userSelectionTotal;
 
     if ( userSelectionTotal <= 100 && userSelectionTotal >= 0 ) {
       $(form).find('h5.cursame-evaluation-percentage span').text(cursameValue);
-      cursameInput.val(cursameValue)
     } else {
       Notice('error', 'Por favor verifica que el porcentaje total sea 100%.');
     };

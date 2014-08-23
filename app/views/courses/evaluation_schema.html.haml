@@ -26,7 +26,6 @@
                     %h5.cursame-evaluation-percentage
                       %span= 100 - course_current_evaluation
                       = "%"
-                      = hidden_field_tag 'cursame_score', 100 - course_current_evaluation, class: 'cursame-score-js'
                 = f.fields_for :evaluation_criteria do |builder|
                   = render 'courses/shared/course_evaluation_schema_fields', f: builder
 

@@ -58,6 +58,7 @@
                       %tr
                         %td.middle
                           %h4= course_criterium.name
+                          %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
                         %td
                           = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
                             = ff.fields_for :grade do |score_fields|
