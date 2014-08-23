@@ -7,7 +7,7 @@ class MembersInCourse < ActiveRecord::Base
   has_many :members_in_course_criteria, dependent: :destroy
   has_one :grade, as: :gradable, dependent: :destroy
 
-  attr_accessible :grade_attributes, :user_id, :course_id, :accepted
+  attr_accessible :grade_attributes, :user_id, :course_id, :accepted, :members_in_course_criteria_attributes
   accepts_nested_attributes_for :grade
   accepts_nested_attributes_for :members_in_course_criteria
 

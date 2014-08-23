@@ -47,9 +47,10 @@
                       %td
                         %span.score= evaluation_score @user_course.course_average
 
-                    - @course.evaluation_criteria.count.times do
-                      - criteria = @user_course.members_in_course_criteria.build
-                      - criteria.build_grade
+                    - if @user_course.members_in_course_criteria.empty?
+                      - @course.evaluation_criteria.count.times do
+                        - criteria = @user_course.members_in_course_criteria.build
+                        - criteria.build_grade
 
                     - @course.evaluation_criteria.each_with_index do |course_criterium, index|
                       %tr
@@ -57,14 +58,16 @@
                           %h4= course_criterium.name
                         %td
                           = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
+                            = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
+                            = ff.hidden_field :members_in_course_id, value: @user_course.id
                             = ff.fields_for :grade do |score_fields|
                               .score-field= score_fields.text_field :score, placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10
-                          
+                              = score_fields.hidden_field :user_id, value: user.id
                     %tr.final-score
                       %td
                         %h4 Calificación Final
                       %td
-                        %span.score= @user_course.grade.present? ? evaluation_score(@user_course.grade.score) : evaluation_score(@user_course.course_average)
+                        %span.score= evaluation_score @user_course.grade.present? ? @user_course.grade.score : @user_course.course_average
               .member-item-footer
                 %span.btn.btn-primary.input-btn.fr
                   = submit_tag 'Calificar alumno'

@@ -1,14 +1,33 @@
 class MembersInCourseCriterium < ActiveRecord::Base
-  attr_accessible :evaluation_criterium_id, :members_in_course_id
+	attr_accessible :evaluation_criterium_id, :members_in_course_id, :grade_attributes
 
-  has_one :grade, as: :gradable, dependent: :destroy
+	has_one :grade, as: :gradable, dependent: :destroy
 
-  belongs_to :members_in_course
-  validates  :members_in_course, presence: true
+	belongs_to :members_in_course
+	validates  :members_in_course, presence: true
 
-  belongs_to :evaluation_criterium
-  validates  :evaluation_criterium, presence: true
+	belongs_to :evaluation_criterium
+	validates  :evaluation_criterium, presence: true
 
-  accepts_nested_attributes_for :grade
+	accepts_nested_attributes_for :grade
+
+	after_create do
+		cursame_grade
+	end
+
+	after_update do
+		cursame_grade
+	end
+
+	def cursame_grade
+		cursame_percentage = self.members_in_course.course.evaluation_criteria.inject(100) do |score,element|
+		 score - element.evaluation_percentage
+		end
+		final_score = self.members_in_course.members_in_course_criteria.inject(0) do |score, element|
+			score + (element.grade.score * (element.evaluation_criterium.evaluation_percentage/100.0))
+		end
+		final_score += self.members_in_course.course_average * (cursame_percentage/100.0)
+		Grade.create gradable: self.members_in_course, score: final_score, user: self.members_in_course.user
+	end
 
 end
