@@ -114,25 +114,6 @@ class DiscussionsController < ApplicationController
         @discussion.network = current_network
         @discussion.courses = [Course.find_by_id(courseId)]
 
-        # unless @discussion.courses.nil? || @discussion.courses.empty?
-        #   @discussion.courses.each do |course|
-        #     mixpanel_properties = {
-        #       'Network'   => current_network.name.capitalize,
-        #       'Course'    => course.title.capitalize,
-        #       'Role'      => permissioning.role.title.capitalize,
-        #       'Evaluable' => @discussion.evaluable?
-        #     }
-        #   end
-        # else
-        #   mixpanel_properties = {
-        #     'Network' => current_network.name.capitalize,
-        #     'Course'  => 'Public',
-        #     'Role'    => permissioning.role.title.capitalize,
-        #     'Evaluable' => @discussion.evaluable?
-        #   }
-        # end
-        # track_event current_user.id, 'Discussions', mixpanel_properties
-
         if @discussion.save
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
           @az = @discussion
@@ -206,4 +187,23 @@ class DiscussionsController < ApplicationController
     redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
     course_member?(current_user, @discussion.courses.first)
   end
+
+  private
+  def track_discussion(discussion)
+    permissioning = Permissioning.find_by_user_id_and_network_id current_user.id, current_network.id
+    unless discussion.courses.nil? || discussion.courses.empty?
+      discussion.courses.each do |course|
+        mixpanel_properties = { 'Network' => current_network.name.capitalize, 'Course' => course.title.capitalize, 'Role' => permissioning.role.title.capitalize, 'Evaluable' => discussion.evaluable? }
+      end
+    else
+      mixpanel_properties = {
+        'Network' => current_network.name.capitalize,
+        'Course'  => 'Public',
+        'Role'    => permissioning.role.title.capitalize,
+        'Evaluable' => @discussion.evaluable?
+      }
+    end
+    track_event current_user.id, 'Discussions', mixpanel_properties
+  end
+
 end

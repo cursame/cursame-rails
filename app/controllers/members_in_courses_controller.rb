@@ -131,8 +131,48 @@ class MembersInCoursesController < ApplicationController
   end
 
   def rate_course_user
-    puts params
+    members_in_course = MembersInCourse.find_by_id params[:member_id]
+    members_in_course.update_attributes params[:members_in_course]
 
     redirect_to closure_user_overview_path(params[:course_id], params[:member_id]), flash: { success: 'Alumno se ha calificado correctamente.' }
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

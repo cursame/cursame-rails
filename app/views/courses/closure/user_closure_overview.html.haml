@@ -50,9 +50,10 @@
                       %td
                         %span.score.cursame-score-js= evaluation_score @user_course.course_average
 
-                    - @course.evaluation_criteria.count.times do
-                      - criteria = @user_course.members_in_course_criteria.build
-                      - criteria.build_grade
+                    - if @user_course.members_in_course_criteria.empty?
+                      - @course.evaluation_criteria.count.times do
+                        - criteria = @user_course.members_in_course_criteria.build
+                        - criteria.build_grade
 
                     - @course.evaluation_criteria.each_with_index do |course_criterium, index|
                       %tr
@@ -61,9 +62,10 @@
                           %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
                         %td
                           = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
+                            = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
+                            = ff.hidden_field :members_in_course_id, value: @user_course.id
                             = ff.fields_for :grade do |score_fields|
                               .score-field= score_fields.text_field :score, placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
-                          
                     %tr.final-score
                       %td
                         %h4 Calificación Final
