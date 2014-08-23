@@ -33,7 +33,7 @@
                             %h5= member_course.user.name
                             - if member_course.grade.present?
                               %p
-                                Calificación: #{member_course.grade.score}
+                                Calificación: #{ evaluation_score member_course.grade.score}
                             - else
                               %p Sin calificar
               - else

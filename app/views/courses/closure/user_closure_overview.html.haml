@@ -90,6 +90,6 @@
                     - if member_course.grade.present?
                       %span
                         Calificación:
-                        %strong= member_course.grade.score
+                        %strong= evaluation_score member_course.grade.score
                     - else
                       %span Sin calificar
