@@ -1,6 +1,6 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon('depot-examen') %> Cuestionarios</h4>
+    <h4><%= icon 'activity-survey' %> Cuestionarios</h4>
   </div>
   <% unless member.surveys_evaluation.nil? || member.surveys_evaluation.empty? %>
     <table border="1" cellpadding="3" cellspacing="3">
@@ -16,7 +16,7 @@
             <td colspan="2">
               <%= link_to survey_evaluation[:survey].name, survey_modal_path(survey_evaluation[:survey].id), remote: true %>
             </td>
-            <td>
+            <td style="width: 120px;">
               <% unless survey_evaluation[:user_survey].nil? || survey_evaluation[:user_survey].grade.nil? %>
                 <span class="number"><%= evaluation_score survey_evaluation[:user_survey].grade.score %> </span>
               <% else %>
@@ -28,10 +28,12 @@
       </tbody>
     </table>
     <div class="course-califications-section-footer">
-      <div class="cali-section">
+      <div class="title">
         <h5>Calificación promedio en cuestionarios:</h5>
-        <span class="number"><%= evaluation_score member.surveys_average %></span>
       </div>
+      <span class="score">
+        <%= evaluation_score member.surveys_average %>
+      </span>
     </div>
   <% else %>
     <div class="no-califications">

@@ -1,0 +1,32 @@
+= render partial: 'califications/shared/califications_course_header', locals: { course: @course }
+.califications
+  .wrapper
+    .cols-12
+      .col.col-8
+        .col-inner
+          .member-score-overview
+            .member-score-overview-user
+              %span.avatar-holder
+                = avatar('user', '45', "no", @member.user.id, "avatar", "no", "no")
+              .member-score-overview-user-main
+                = link_to show_user_path @member.user.personal_url do
+                  %h5= @member.user.name
+                %p= "Calificación Cúrsame: #{ evaluation_score @member.course_average }  ·  Calificación final: #{ evaluation_score @member.grade.present? ? @member.grade.score : 'Sin Calificar' }"
+            .member-score-overview-main
+              = render partial: 'users/califications/deliveries_table',  locals: { member: @member }
+              = render partial: 'users/califications/surveys_table',     locals: { member: @member }
+              = render partial: 'users/califications/discussions_table', locals: { member: @member }
+      .col.col-4
+        .col-inner
+          .sidebar-responses
+            .sidebar-responses-header
+              %h6 Miembros
+            .sidebar-responses-main
+              = @course.evaluable_members
+              - @course.evaluable_members.each do |member_course|
+                = link_to califications_member_path(@course, member_course) do
+                  %div{:class => "one-p sidebar-user-response#{" active" if @member.id == member_course.id}"}
+                    %span.avatar-holder
+                      = avatar('user', '30', 'no', member_course.user.id, 'avatar avatar-30', 'no', 'no')
+                    .sidebar-user-response-main
+                      %h6= member_course.user.name

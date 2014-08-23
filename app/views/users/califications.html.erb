@@ -11,17 +11,6 @@
                   <h1>Calificaciones</h1>
                 <% end %>
               </div>
-              <% unless @courses.nil? || @courses.empty? %>
-                <div class="section-header-actions">
-                  <span class="meta-info">Filtrar: </span>
-                  <select class="course-califications-filter" style="width: 180px;">
-                    <option value="all">Todos los cursos</option>
-                    <% @courses.each do |course| %>
-                      <option value="<%= course.id %>"><%= course.title %></option>
-                    <% end %>
-                  </select>
-                </div>
-              <% end %>
             </div>
           </div>
         </div>
