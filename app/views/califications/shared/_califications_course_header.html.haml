@@ -1,0 +1,11 @@
+.sections-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .section-header
+            .section-header-main
+              .section-title
+                %h5 Calificaciones
+                = link_to califications_course_path(course) do
+                  %h1= truncate(course.title, :omission => "...", :length => 30)

@@ -7,7 +7,7 @@ function totalEvaluation(form) {
 
     if ( input.is(":visible") ) {
       if ( ! input.val() == "" ) {
-        total += parseInt(input.val());
+        total += parseFloat(input.val());
       }
     };
   });
@@ -50,10 +50,12 @@ $(function() {
   $('form.evaluation-form-js').on('blur', 'input.course-evaluation-item-value-js', function(e) {
     var form =  e.delegateTarget,
         userSelectionTotal = totalEvaluation(form),
-        cursameValue = 100 - userSelectionTotal;
+        cursameValue = 100 - userSelectionTotal,
+        cursameInput = $(form).find('input.cursame-score-js');
 
     if ( userSelectionTotal <= 100 && userSelectionTotal >= 0 ) {
       $(form).find('h5.cursame-evaluation-percentage span').text(cursameValue);
+      cursameInput.val(cursameValue)
     } else {
       Notice('error', 'Por favor verifica que el porcentaje total sea 100%.');
     };

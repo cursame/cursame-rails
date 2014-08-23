@@ -1,0 +1,57 @@
+= render partial: 'califications/shared/califications_course_header', locals: { course: @course }
+.califications
+  .wrapper
+    .cols-12
+      .col{ class: current_user.student? ? "col-8" : "col-12" }
+        .col-inner
+          - unless current_user.student?
+            - unless @course.evaluable_members.empty?
+              .califications-course-members
+                - @course.evaluable_members.each do |member|
+                  = link_to califications_member_path(@course, member) do
+                    .member-calification
+                      %span.avatar-holder
+                        = avatar('user', '45', "no", member.user.id, "avatar", "no", "no")
+                      .member-calification-main
+                        %h5= member.user.name
+                        %span.member-score Calificacion: #{evaluation_score member.course_average}
+            - else
+              .no-content-section
+                %h6 Este curso no tiene miembros
+
+          - if current_user.student?
+            - member = MembersInCourse.find_by_user_id_and_course_id current_user, @course
+            .standalone-member-calification
+              = render partial: 'users/califications/deliveries_table',  locals: { member: member }
+              = render partial: 'users/califications/surveys_table',     locals: { member: member }
+              = render partial: 'users/califications/discussions_table', locals: { member: member }
+      - if current_user.student?
+        .col.col-4
+          .col-inner
+            .sidebar-responses
+              .sidebar-responses-header
+                %h6 Cursos
+              .sidebar-responses-main
+                - student_courses.each do |course|
+                  = link_to califications_course_path(course) do
+                    %div{:class => "one-p sidebar-user-response#{" active" if @course.id == course.id}"}
+                      %span.avatar-holder
+                        = avatar('course', '30', 'no', course.id, 'avatar avatar-30', 'no', 'no')
+                      .sidebar-user-response-main
+                        %h6= course.title
+
+:javascript
+  $(function () {
+    $('.user-califications-header').click(function () {
+      $(this).toggleClass('active').parent().children('.user-califications-main').slideToggle(400);
+    });
+    $('.course-califications-filter').change(function () {
+      var id = $(this).val();
+      if (id == 'all') {
+        $('.course-califications-wrap').show();
+      } else {
+        $('.course-califications-wrap').hide();
+        $('.califications-section-main').find('div#' + id).show();
+      }
+    });
+  });

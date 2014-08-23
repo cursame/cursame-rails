@@ -1,3 +1,6 @@
+- content_for :javascripts do
+  = javascript_include_tag 'courses/closure'
+
 = render :partial => 'courses/show/course-header', locals: { header_style: :super_compact }
 .wrapper
   .cols-12
@@ -45,7 +48,7 @@
                             %p No hay discusiones en este curso.
 
                       %td
-                        %span.score= evaluation_score @user_course.course_average
+                        %span.score.cursame-score-js= evaluation_score @user_course.course_average
 
                     - if @user_course.members_in_course_criteria.empty?
                       - @course.evaluation_criteria.count.times do
@@ -61,13 +64,12 @@
                             = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
                             = ff.hidden_field :members_in_course_id, value: @user_course.id
                             = ff.fields_for :grade do |score_fields|
-                              .score-field= score_fields.text_field :score, placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10
-                              = score_fields.hidden_field :user_id, value: user.id
+                              .score-field= score_fields.text_field :score, placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
                     %tr.final-score
                       %td
                         %h4 Calificación Final
                       %td
-                        %span.score= evaluation_score @user_course.grade.present? ? @user_course.grade.score : @user_course.course_average
+                        %span.score.final-score-js= @user_course.grade.present? ? evaluation_score(@user_course.grade.score) : evaluation_score(@user_course.course_average)
               .member-item-footer
                 %span.btn.btn-primary.input-btn.fr
                   = submit_tag 'Calificar alumno'

@@ -1,6 +1,6 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon('depot-tarea') %> Tareas</h4>
+    <h4><%= icon 'activity-delivery' %> Tareas</h4>
   </div>
   <% unless member.deliveries_evaluation.nil? || member.deliveries_evaluation.empty? %>
     <table border="1" cellpadding="3" cellspacing="3">
@@ -16,7 +16,7 @@
             <td colspan="2">
               <%= link_to delivery_evaluation[:delivery].title, delivery_modal_path(delivery_evaluation[:delivery].id), remote: true %>
             </td>
-            <td>
+            <td style="width: 120px;">
               <% if delivery_evaluation[:assignment].nil? %>
                 No entregada
               <% elsif delivery_evaluation[:assignment].grade.nil? %>
@@ -30,10 +30,12 @@
       </tbody>
     </table>
     <div class="course-califications-section-footer">
-      <div class="cali-section">
+      <div class="title">
         <h5>Calificación promedio en tareas:</h5>
-        <span class="number"><%= evaluation_score member.deliveries_average %></span>
       </div>
+      <span class="score">
+        <%= evaluation_score member.deliveries_average %>
+      </span>
     </div>
   <% else %>
     <div class="no-califications">

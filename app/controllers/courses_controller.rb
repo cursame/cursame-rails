@@ -238,7 +238,7 @@ class CoursesController < ApplicationController
           @miembro.save
         end
 
-        format.html { redirect_to course_path(@course.id) }
+        redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
         
       else
         format.html { redirect_to :back }

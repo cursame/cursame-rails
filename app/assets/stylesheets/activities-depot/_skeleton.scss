@@ -363,6 +363,10 @@
     padding: 10px;
     @include clearfix;
 
+    &.one-p .sidebar-user-response-main {
+      margin-top: 5px;
+    }
+
     .avatar-holder {
       float: left;
     }
