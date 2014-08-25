@@ -20,10 +20,8 @@
     <h3><%= survey.name %></h3>
     <% grade_score = response.grade.score %>
     <p>Calificación Obtenida: <span><%= number_with_precision(grade_score.to_s, :precision => 1) %></span></p>
-    <% if response.grade %>
-      <% unless response.grade.feedback.blank? %>
-        <p>Retroalimentación: <%= response.grade.feedback %></p>
-      <% end %>
+    <% unless response.grade.feedback.blank? %>
+      <p>Retroalimentación: <%= response.grade.feedback %></p>
     <% end %>
   </div>
 <% end %>
