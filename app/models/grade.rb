@@ -1,5 +1,5 @@
 class Grade < ActiveRecord::Base
-	attr_accessible :user_id, :score, :gradable, :user
+	attr_accessible :user_id, :score, :gradable, :user, :feedback
 	belongs_to :gradable, polymorphic: true
 	belongs_to :user
 
