@@ -16,12 +16,29 @@ function cleanPublicationForm () {
   $('.delivery_publish_date').val('');
   $('#delivery_description').val('');
   $('#delivery_porcent_of_evaluation').val('');
+  $('[id^=delivery_evaluation_criteria_attributes]').parent().remove();
 
   // Discussion
   $('#discussion_title').val('');
   $('#discussion_description').val('');
+  $('#discussion_evaluable').prop('checked',false);
+  $('#discussion_evaluable').change();
+  $('#discussion_publish_date').val('');
+  $('#discussion_end_date').val('');
+  $('[id^=discussion_evaluation_criteria_attributes]').parent().remove();
 
   // Survey
+  var question_child = $('#survey-tab-content').find('[id="box-question-child"]');
+  // var question_input_field = $('#survey-tab-content').find('.question-input-field').parent();
+  var request_fields = $('#survey-tab-content').find('.request-field');
+  // var add_request = $('#survey-tab-content').find('.add-request');
+  question_child.slice(1).remove();
+  // question_input_field.slice(1).remove();
+  request_fields.slice(1).remove();
+  // add_request.slice(1).remove();
+  request_fields.first().find('#survey_questions_attributes_0_answers_attributes_0_content').val('');
+  request_fields.first().find('#survey_questions_attributes_0_answers_attributes_0_correct').prop('checked',false)
+  $('#survey_questions_attributes_0_content').val('');
   $('#survey_name').val('');
   $('.survey_publish_date').val('');
   $('.survey_end_date').val('');

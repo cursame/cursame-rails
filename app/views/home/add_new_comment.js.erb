@@ -19,6 +19,7 @@
   <% end %>
 
   Notice('success', 'Se ha creado un comentario');
+  cleanPublicationForm();
 
   <% if @comment.commentable_type == 'User' %>
   <%  @user_show = true 

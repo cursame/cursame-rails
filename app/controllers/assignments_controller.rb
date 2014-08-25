@@ -48,12 +48,16 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   # POST /assignments.json
   def create
+    ## ALERT!! Esto no se está utilizando al parecer, el assignment se crea en 'courses_controller#assignment'
     @assignment = Assignment.new(params[:assignment])
     @assignment.user_id = current_user.id
     @asset = Asset.new(params[:asset])
     @asset.save!
 
     if @assignment.save
+      # users = self.delivery.courses.first.owners
+      # notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
+      # Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_assignment_on_delivery'
 
       if(params[:files])
         params[:files].each do |asset_id|

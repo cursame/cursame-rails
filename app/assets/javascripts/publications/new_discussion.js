@@ -1,14 +1,17 @@
 $(function() {
 
-  $('.evaluable-fields-trigger-js').live('click', function(event) {
+  $('#discussion_evaluable').on('change', function(event) {
+    console.log('cambió');
     var $this = $(this),
         form = $this.closest('form'),
         containerFields = form.find('div.evaluable-fields-js');
 
+    var checked = $this.prop('checked');
+
     var publish_date = form.find('#discussion_publish_date')[0],
         end_date = form.find('#discussion_end_date')[0];
 
-    if ( $this.hasClass('active') ) {
+    if ( !checked ) {
       $this.removeClass('active');
       containerFields.hide();
       publish_date.required = false;
