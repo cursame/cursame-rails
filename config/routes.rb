@@ -149,6 +149,7 @@ Cursame30Lb::Application.routes.draw do
 
   # Calificaciones
   get "/califications", :to => "califications#index", :as =>  :califications
+  get "/califications/closed", :to => "califications#closed", :as =>  :closed_califications
   get "/courses/:id/califications", :to => "califications#course", :as =>  :califications_course
   get "/courses/:course_id/califications/:member_id", :to => "califications#member", :as =>  :califications_member
   

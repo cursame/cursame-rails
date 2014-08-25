@@ -1,12 +1,18 @@
 # coding: utf-8
 
 class CalificationsController < ApplicationController
+  include CoursesUtils
+  
   def index
     if current_user.student?
-      @courses = MembersInCourse.where(user_id: current_user.id, accepted: true).map { |member_in_course| member_in_course.course }
+      @courses = student_subscribed_courses
     else
-      @courses = (current_user.teacher?) ? current_user.courses : current_network.courses
+      @courses = (current_user.teacher?) ? teacher_published_courses : current_network.courses
     end
+  end
+
+  def closed
+    
   end
 
   # TODO: Agregar validacion si es teacher que no pueda ver los que son de el, y si es student que sea un curso donde este inscrito

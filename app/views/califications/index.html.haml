@@ -1,15 +1,4 @@
-.section-header-wrap
-  .wrapper
-    .cols-12
-      .col.col-12
-        .col-inner
-          .section-header
-            .section-header-main
-              .section-title
-                = link_to icon('section-califications'), califications_path
-                = link_to califications_path do
-                  %h1 Calificaciones
-                  
+= render partial: 'califications/shared/califications_header'
 .activity-view-wrap.califications
   .wrapper
     .cols-12
@@ -30,7 +19,8 @@
                         .activity-response-main
                           .va-middle
                             %h5= course.title
-                            %p= pluralize(course.evaluable_members.count, 'Miembro', 'Miembros')
+                            - unless current_user.student?
+                              %p= pluralize(course.evaluable_members.count, 'Miembro', 'Miembros')
               - else
                 .no-content-section
                   %h5 No hay cursos para ver calificaciones.
