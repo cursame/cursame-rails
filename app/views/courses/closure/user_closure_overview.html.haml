@@ -65,7 +65,7 @@
                             = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
                             = ff.hidden_field :members_in_course_id, value: @user_course.id
                             = ff.fields_for :grade do |score_fields|
-                              .score-field= score_fields.text_field :score, placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                              .score= score_fields.text_field :score, placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
                     %tr.final-score
                       %td
                         %h4 Calificación Final
