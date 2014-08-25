@@ -97,17 +97,6 @@ class User < ActiveRecord::Base
 
 
   after_create do
-    # Si el usuario tiene rol de maestro, entonces creo sus settings.
-    # Solamente el estudiante no tiene asociado ese modelo.
-    teacher_roles = self.permissionings.keep_if {
-      |permissioning|
-      permissioning.role_id != 2
-    }
-    if (teacher_roles.length != 0) then
-      SettingsTeacher.create(:user_id => self.id, :limit_deliveries => 15, :count_deliveries => 0,
-                             :limit_surveys => 15,:count_surveys => 0)
-    end
-
     begin
       mixpanel_properties = {
         '$first_name' => self.first_name,
