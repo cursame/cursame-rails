@@ -13,7 +13,11 @@ module CoursesUtils
   end
   
   def student_subscribed_courses
-    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') ,:active_status => true)
+    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => true)
+  end
+
+  def student_closed_courses
+    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => false)
   end
   
   def student_pending_requests

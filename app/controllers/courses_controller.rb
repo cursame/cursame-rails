@@ -107,8 +107,6 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    puts ".-------"
-    puts @course
     @member = obtainMember(@course.id,current_user.id)
 
     if @member.nil?

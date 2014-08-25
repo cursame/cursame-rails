@@ -1,0 +1,25 @@
+.activity-view-wrap.califications
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .activity-view
+            .view-header
+              %h5 Selecciona un curso
+            .activity-view-main
+              - unless courses.empty?
+                .activity-responses-list
+                  - courses.each do |course|
+                    = link_to califications_course_path(course) do
+                      .activity-response
+                        .activity-response-avatar
+                          %span.avatar-holder
+                            = avatar('course', '150', 'no', course.id, 'avatar avatar-80', 'no', 'no')
+                        .activity-response-main
+                          .va-middle
+                            %h5= course.title
+                            - unless current_user.student?
+                              %p= pluralize(course.evaluable_members.count, 'Miembro', 'Miembros')
+              - else
+                .no-content-section
+                  %h5 No hay cursos para ver calificaciones.
