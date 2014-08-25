@@ -375,6 +375,23 @@
         <%end%>
       <%end%>
 
+    <% when 'course_grade' %>
+      <% unless notification.notificator.nil? || notification.notificator.gradable.user.nil? || notification.notificator.gradable.course.nil? %>
+        <%= link_to califications_course_path(notification.notificator.gradable.course) do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", notification.notificator.gradable.user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6>
+              Se ha calificado el curso <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.course.title %></span>
+            </h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>  
+      <%end%>
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>

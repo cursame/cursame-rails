@@ -22,9 +22,10 @@ class Course < ActiveRecord::Base
 
   validates_associated :network
 
-  validates :title, :active_status, presence: true
+  validates :title, presence: true
   validates :silabus, presence: true, allow_blank: true
   validates :public_status, inclusion: { in: %w(Private public) }
+  validates :active_status, inclusion: { in: [true, false] }
 
   attr_accessible :id, :title, :silabus, :init_date,
     :created_at, :updated_at, :public_status,

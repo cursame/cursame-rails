@@ -12,16 +12,16 @@ class MembersInCourseCriterium < ActiveRecord::Base
 	accepts_nested_attributes_for :grade
 
 	after_create do
-		cursame_grade
+		update_grade
 	end
 
 	after_update do
-		cursame_grade
+		update_grade
 	end
 
-	def cursame_grade
+	def update_grade
 		cursame_percentage = self.members_in_course.course.evaluation_criteria.inject(100) do |score,element|
-		 score - element.evaluation_percentage
+			score - element.evaluation_percentage
 		end
 		final_score = self.members_in_course.members_in_course_criteria.inject(0) do |score, element|
 			score + (element.grade.score * (element.evaluation_criterium.evaluation_percentage/100.0))

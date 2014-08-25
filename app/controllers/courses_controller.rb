@@ -362,6 +362,10 @@ class CoursesController < ApplicationController
   def closure
     # TODO: Filtro si no ha calificado alguna actividad, mostrar mensaje con actividades que falten por calificar.
     @course = Course.find_by_id params[:id]
+    if @course.active_status
+      @course.active_status = false
+      @course.save
+    end
 
     respond_to do |format|
       format.html { render 'courses/closure/closure_members' }
