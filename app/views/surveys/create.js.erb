@@ -1,12 +1,13 @@
 <% if !@error %>
 
-  $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
+  // $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu')) %>');
 
   $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => [@publication], :visible_for => "network"} ))%>');
 
-	Notice('success', 'Cuestionario creado correctamente.');
+  Notice('success', 'Cuestionario creado correctamente.');
 
-	cancelButtonsPostMenu();
+  cleanPublicationForm();
+	// cancelButtonsPostMenu();
 <% else %>
   Notice('error', 'Selecciona un curso para publicar tu tarea.');
 <% end %>
