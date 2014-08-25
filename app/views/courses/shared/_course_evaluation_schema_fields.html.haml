@@ -1,0 +1,13 @@
+%tr.course-evaluation-item-js
+  %td
+    = f.text_field :name, placeholder: '¿Que criterio se evaluará?', autocomplete: 'off', required: true
+    = f.hidden_field :id
+  %td.eva-percenage
+    .eva-percenage-input
+      %span %
+      = f.text_field :evaluation_percentage, placeholder: 'Porcetaje a dar', autocomplete: 'off', required: true, digits: true, min: 0, max: 100, class: 'course-evaluation-item-value-js'
+    = f.hidden_field :evaluable_id, :value => @course.id
+    = f.hidden_field :evaluable_type, :value => "Course"
+    = f.hidden_field :_destroy, class: '_destroy'
+    .eva-delete-criteria
+      = link_to icon('w-cross-9-gray'), '#', class: "delete-eva-criteria"

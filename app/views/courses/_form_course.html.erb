@@ -36,23 +36,8 @@
 	<div class="UpdateBox">
 
 	<div style="display: block; position: relative; height: 62px; clear: both;">
-	<p><%= f.label :Valor_de_examenes%></p>
-	<%= f.text_field :survey_param_evaluation, :class=>"custom-size-form fixLabeluser" %>
-	</div>
-
-	<div style="display: block; position: relative; height: 62px; clear: both;">
-	<p><%= f.label :Valor_de_tareas_o_entregas %></p>
-	<%= f.text_field :delivery_param_evaluation, :class=>"custom-size-form fixLabeluser" %>
-	</div>
-
-	<div style="display: block; position: relative; height: 62px; clear: both;">
 	<p><%= f.label :fecha_de_inicio %></p>
 	 <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input fixLabeluser", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
-	</div>
-	
-	<div style="display: block; position: relative; height: 62px; clear: both;">
-	<p><%= f.label :fecha_de_finalización %></p>
-	<%= f.text_field :finish_date, :placeholder=>'Fecha final', :class=>"date-input fixLabeluser", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date  %>
 	</div>
 	
 	<div style="display: block; position: relative; height: 62px; clear: both;">
@@ -93,32 +78,18 @@
 	
 </div>
 
-
-    
- <!--  <div id="content-slider-course-2" class="slider-content"><div id="slider-course-2" class="slider"></div></div> -->
-    <%#= f.text_field :delivery_param_evaluation , :class=> 'percent-input' %>
-    
-
 <% end %>
 <script type="text/javascript">
-    $("#create_course_form").on('click',function(){
-       //$(".ui-widget-overlay").css('display','block');
+    $(function() {
+	    $( "#course_init_date" ).datepicker({
+	        inline: true,
+	        minDate: 0,
+	        showOtherMonths: true,
+	        dateFormat: 'dd/mm/yy',
+	        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	        dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+	    });
     });
-
-        $(function() {
-            $( "#course_init_date, #course_finish_date" ).datepicker({
-                inline: true,
-                minDate: 0,
-                showOtherMonths: true,
-                dateFormat: 'dd/mm/yy',
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-            });
-
-        /*    var nestedNewCourseSlider = new NestedSlider(false);
-            nestedNewCourseSlider.initSlider ( $('#slider-course-1'), $('#course_survey_param_evaluation'), $('#course_survey_param_evaluation') );
-            nestedNewCourseSlider.initSlider ( $('#slider-course-2'), $('#course_delivery_param_evaluation'), $('#course_delivery_param_evaluation') ); */
-        });
 </script>
 </div>
 </div>

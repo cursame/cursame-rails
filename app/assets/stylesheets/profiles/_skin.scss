@@ -1,6 +1,5 @@
 
-/* Courses and User Profiles
-----------------------------------*/
+// Courses and User Profiles
 .section-header-top {
   @extend .basic-container-style;
   border-top: 0;
@@ -11,6 +10,12 @@
   @extend .basic-container-style;
   border-top: 0;
   border-radius: 0 0 $radius $radius;
+
+  &.compact, &.super_compact {
+    .profile-info h1{
+      @include ellipsis(90%);
+    }
+  }
 
   .profile-info h1{
     color: $global-color;
@@ -52,8 +57,7 @@
   }
 }
 
-/* Edit User Profile
-----------------------------------*/
+// Edit User Profile
 .user-custom-url-wrap {
 
   span {

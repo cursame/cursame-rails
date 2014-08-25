@@ -93,7 +93,7 @@ def native_create_user
       user.confirmed_at = Time.now
       user.permissionings.push(permissioning)
 
-      success = user.save!
+      success = user.save
       msg = success ? "Usuario registrado!" : "Error al guardar usuario"
     else
       success= false

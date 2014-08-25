@@ -222,7 +222,7 @@
   }
 
   .activity-view-main-user {
-    padding: 15px 10px;
+    padding: 10px;
     @include clearfix;
 
     .avatar-holder {
@@ -230,10 +230,20 @@
     }
 
     .activity-view-main-user-state {
-      margin: 3px 0 0 55px;
+      margin: 1px 0 0 55px;
+      @include clearfix;
 
       h5 {
         @include ellipsis();
+      }
+    }
+
+    .user-response-comments {
+      padding: 10px 10px 0 10px;
+      margin: 10px -10px 0 -10px;
+
+      .user-response-comment {
+        margin-top: 5px;
       }
     }
   }
@@ -249,11 +259,9 @@
       }
     }
 
-    .tab-content {
-      padding: 10px;
-    }
-
     .activity-response-items {
+      padding: 10px;
+      
       .response-item {
         margin-bottom: 15px;
       }
@@ -278,6 +286,37 @@
       padding-top: 7px;
     }
   }
+
+  .activity-set-evaluation {
+    padding: 15px 10px;
+    @include clearfix;
+
+    .evaluation-label {
+      margin-top: 5px;
+      float: left;
+    }
+
+    .evaluation-input {
+      width: 140px;
+      float: right;
+    }
+  }
+
+  .activity-criteria-evaluation {
+    padding: 15px 10px;
+
+    .criteria-evaluation-item {
+      margin-top: 13px;
+
+      h5 {
+        margin-bottom: 3px;
+      }
+    }
+  }
+
+  .activity-eveluation-footer {
+    padding: 10px;
+  }
 }
 
 .activity-responses-list {
@@ -298,8 +337,24 @@
   }
 }
 
-.sidebar-responses {
+.evaluate-activity-comments {
+  padding: 10px;
 
+  .activity-comment {
+    margin-top: 10px;
+    @include clearfix;
+
+    .comment-author {
+      float: left;
+    }
+
+    .comment-main {
+      margin: -2px 0 0 40px;
+    }
+  }
+}
+
+.sidebar-responses {
   .sidebar-responses-header {
     padding: 5px 10px;
   }
@@ -307,6 +362,10 @@
   .sidebar-user-response {
     padding: 10px;
     @include clearfix;
+
+    &.one-p .sidebar-user-response-main {
+      margin-top: 5px;
+    }
 
     .avatar-holder {
       float: left;

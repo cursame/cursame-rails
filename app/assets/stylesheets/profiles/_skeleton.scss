@@ -1,11 +1,25 @@
 
-/* Courses and User Profiles
-----------------------------------*/
+// Profile Headers
 .profile-header {
+  margin-bottom: 20px;
+  
   .profile-banner {
     height: 197px;
     position: relative;
     margin: 0px -1px;
+
+    .profile-avatar {
+      padding: 3px;
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      width: 150px;
+      height: 150px;
+
+      a {
+        display: block;
+      }
+    }
   }
 
   .admin-buttons {
@@ -14,21 +28,14 @@
     bottom: 10px;
   }
 
-  .profile-avatar {
-    padding: 3px;
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    width: 150px;
-    height: 150px;
-
-    a {
-      display: block;
-    }
-  }
-
   .profile-info {
     padding: 10px;
+    @include clearfix;
+
+    .profile-avatar {
+      float: left;
+      margin-right: 10px;
+    }
   }
 
   &:after {
@@ -74,8 +81,7 @@
   }
 }
 
-/* Edit User Profile
-----------------------------------*/
+// Edit User Profile
 .user-custom-url-wrap {
   position: relative;
 

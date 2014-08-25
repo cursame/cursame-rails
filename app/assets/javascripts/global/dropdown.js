@@ -1,25 +1,22 @@
-$(function() {
+$(function () {
 
   // Dropdowns
-  $('div.dropdown-pull').live( 'click', function() {
-    var $this    = $(this),
-        holder   = $this.closest('.dropdown-wrap'),
-        dropdown = holder.find('.dropdown-v');
+  $('div.dropdown-pull').live('click', function () {
+    var $this = $(this), holder = $this.closest('.dropdown-wrap');
 
     var active = holder.hasClass('active');
 
     $('div.dropdown-wrap').removeClass('active');
 
-    if ( !active ) {
+    if (!active) {
       holder.addClass('active');
-    };
+    }
   });
 
-  $('html').click(function(e) {
-    var holder = $(e.target).closest( "div.dropdown-wrap" );
-
+  $('html').click(function (e) {
+    var holder = $(e.target).closest("div.dropdown-wrap");
     // si no estamos sobre un dropdown
-    if ( !holder.length ) {
+    if (!holder.length) {
       $('div.dropdown-wrap').removeClass('active');
     } else {
       holder.find('.activity-counter').html(0);

@@ -1,54 +1,41 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon('depot-tarea') %> Tareas</h4>
+    <h4><%= icon 'activity-delivery' %> Tareas</h4>
   </div>
-  <% unless table["deliveries"]["deliveries"].empty? %>
-    <table>
+  <% unless member.deliveries_evaluation.nil? || member.deliveries_evaluation.empty? %>
+    <table border="1" cellpadding="3" cellspacing="3">
       <thead>
         <tr>
-          <th>Tarea</th>
-          <th>Entrega</th>
-          <th>Rubros</th>
+          <th colspan="2">Tarea</th>
           <th>Calificación</th>
         </tr>
       </thead>
       <tbody>
-        <% table["deliveries"]["deliveries"].each_with_index do |delivery,index| %>
-          <% assignment = table["deliveries"]["assignments"][index]%>
+        <% member.deliveries_evaluation.each_with_index do |delivery_evaluation, index| %>
           <tr <%= "class='even'" if !index.odd? %>>
-            <td>
-              <h6><%=delivery.title%></h6>
+            <td colspan="2">
+              <%= link_to delivery_evaluation[:delivery].title, delivery_modal_path(delivery_evaluation[:delivery].id), remote: true %>
             </td>
-            <% if assignment %>
-              <td>
-                <%= assignment.title %>
-              </td>
-              <td>
-                <% assignment.response_to_the_evaluations.each do |response_to_evaluation|%>
-                  <p><%= response_to_evaluation.name %></p>
-                <%end%>
-              </td>
-              <td>
-                <%= assignment.accomplishment %>
-              </td>
-            <%else%>
-              <td>&ndash;</td>
-              <td>&ndash;</td>
-              <td>&ndash;</td>
-            <%end%>
+            <td style="width: 120px;">
+              <% if delivery_evaluation[:assignment].nil? %>
+                No entregada
+              <% elsif delivery_evaluation[:assignment].grade.nil? %>
+                No calificada
+              <% else %>
+                <span class="number"><%= evaluation_score delivery_evaluation[:assignment].grade.score %></span>
+              <% end %>
+            </td>
           </tr>
-        <%end%>
+        <% end %>
       </tbody>
-    </table>              
+    </table>
     <div class="course-califications-section-footer">
-      <div class="cali-section">
-        <h5>% de la Evaluación</h5>
-        <span class="number"><%=table["deliveries"]["percent_of_deliveries"]%></span>
+      <div class="title">
+        <h5>Calificación promedio en tareas:</h5>
       </div>
-      <div class="cali-section">
-        <h5>% Obtenido</h5>
-        <span class="number"><%=table["deliveries"]["evaluation_total"]%></span>
-      </div>
+      <span class="score">
+        <%= evaluation_score member.deliveries_average %>
+      </span>
     </div>
   <% else %>
     <div class="no-califications">

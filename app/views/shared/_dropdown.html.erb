@@ -106,7 +106,7 @@
 
         dropdown.find('#icon-dd-public').click(function() {
 
-            dropdown.find('input:checkbox').removeAttr('checked');
+            dropdown.find('input:checkbox').val(1);
             dropdown.find('label').removeClass('active');
             $(this).addClass('active');
 
@@ -138,8 +138,10 @@
 
         dropdown.find('.target-courses-selector > li label').click(function(e) {
           var $this     = $(this),
-              checkbox  = $this.find('input[type="checkbox"]');
+              checkbox  = $this.find('input[type="checkbox"]'),
+              isPublicCheckbox = dropdown.find('.target-selector input[name=is_public]');
 
+          isPublicCheckbox.val(0);
 
           if ( checkbox.is(':checked') ) {
             checkbox.attr('checked', false);

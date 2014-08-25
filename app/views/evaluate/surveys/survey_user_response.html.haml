@@ -1,0 +1,75 @@
+- survey = @user_survey
+- course = survey.survey.courses.first
+- user = survey.user
+
+= render partial: 'evaluate/shared/header_activity_survey', locals: { survey: survey.survey, course: course, meta_data: true }
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-8
+        .col-inner
+          .activity-view
+            .activity-view-main
+              .activity-view-main-user
+                %span.avatar-holder
+                  = avatar('user', '45', 'no', user.id, 'avatar avatar-45', 'no', 'no')
+                .activity-view-main-user-state
+                  %h5= user.name
+                  .user-meta
+                    %span
+                      Obtenido: #{number_with_precision(survey.evaluation, precision: 1)}
+                    %span.mta-spcer ·
+                    %span
+                      Entregado: #{I18n.localize(survey.created_at, format: "%e de %B del %Y")}
+              .evaluate-user-response.tabs
+                .tabs-buttons
+                  .tab.active{"data-id-target" => "response"} Respuestas
+                  .tab{"data-id-target" => "response-evaluate"} Retroalimentación
+                .tabs-main
+                  #response.activity-response-items.tab-content
+                    .delivery-submited-evaluation-fields
+                      %ul.survey-items-list
+                        - survey.user_survey_responses.each do |response|
+                          %li
+                            .survey-item
+                              .survey-item-question
+                                %p= response.question.content
+                              .survey-item-answers
+                                %span.meta-info Respuesta:
+                                .survey-item-answer-content
+                                  - response.question.answers.each do |answer|
+                                    - if answer.id == response.answer_id
+                                      - if answer.correct
+                                        = image_tag('icons/icon_true.png')
+                                      - else
+                                        = image_tag('icons/icon_false.png')
+                                      %p= answer.content
+                  #response-evaluate.activity-response-evaluate.tab-content{:style => "display: none;"}
+                    = form_tag evaluate_survey_response_update_path(@user_survey), class: "survey-teacher-feedback-form" do
+                      .activity-criteria-evaluation
+                        .criteria-evaluation-help-text
+                          %h6 Retroalimentación
+                          %p Envia comentarios al alumno.
+                          %br/
+                          = text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow", required: true, rows: 3, placeholder: 'Retroalimentación'
+                          = hidden_field_tag :id, @user_survey.id
+                      .activity-eveluation-footer
+                        %span.btn.btn-primary.input-btn.activable
+                          = submit_tag "Enviar comentario", class: "activable"
+      .col.col-4
+        .col-inner
+          .sidebar-responses
+            .sidebar-responses-header
+              %h6 Entregas
+            .sidebar-responses-main
+              - survey.survey.responses.each do |response|
+                = link_to evaluate_survey_response_path(response) do
+                  %div{:class => "sidebar-user-response#{" active" if response.id == survey.id}"}
+                    %span.avatar-holder
+                      = avatar('user', '30', 'no', response.user.id, 'avatar avatar-30', 'no', 'no')
+                    .sidebar-user-response-main
+                      %h6= response.user.name
+                      %span
+                        Obtenido: #{number_with_precision(response.evaluation, precision: 1)}
+:javascript
+  $('.survey-teacher-feedback-form').validate();

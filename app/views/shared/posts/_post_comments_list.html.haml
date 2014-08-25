@@ -8,15 +8,19 @@
 .comments-list
   - comments.last(COMMENTS_PER_PAGE).each do |comment|
     = render partial: 'shared/posts/post_child_comment', locals: { comment: comment }
-
-.comments-new-comment
-  = form_tag "/home/add_new_comment", class: "", remote: true do
-    .comment
-      .comment-author
-        %span.avatar-holder
-          = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
-      .comment-main
-        = text_area_tag "comment", nil, placeholder: 'Escribe un comentario', required: 'required', class: 'autogrow swift-enter'
-        = hidden_field_tag 'commentable_id', post.id
-        = hidden_field_tag 'commentable_type', post.class.to_s
-        = hidden_field_tag 'from_enter_key', true
+    
+- if new_comment
+  .comments-new-comment
+    = form_tag "/home/add_new_comment", class: "", remote: true do
+      .comment
+        .comment-author
+          %span.avatar-holder
+            = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
+        .comment-main
+          = text_area_tag "comment", nil, placeholder: 'Escribe un comentario', required: true, class: 'autogrow swift-enter'
+          = hidden_field_tag 'commentable_id', post.id
+          = hidden_field_tag 'commentable_type', post.class.to_s
+          = hidden_field_tag 'from_enter_key', true
+- else
+  .comments-not-allowed
+    %span Esta publicación ya no se puede comentar.

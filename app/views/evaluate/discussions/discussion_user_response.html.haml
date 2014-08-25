@@ -1,0 +1,54 @@
+- discussion = @discussion_response.discussion
+- user = @discussion_response.user
+- course = discussion.courses.first
+= render partial: 'evaluate/discussions/evaluate_discussions_header', locals: { discussion: discussion, course: course, meta_data: true }
+
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-8
+        .col-inner
+          .activity-view
+            .activity-view-main
+              .activity-view-main-user
+                %span.avatar-holder= avatar('user', '45', 'no', user.id, 'avatar avatar-45', 'no', 'no')
+                .activity-view-main-user-state
+                  %h5= user.name
+                  .user-meta
+                    - if @discussion_response.grade.score.blank?
+                      %span Sin Calificar
+                    - else
+                      %span= @discussion_response.grade.score
+                .user-response-comments
+                  %span.meta-info Comentarios
+                  - discussion.comments.each do |comment|
+                    - next unless comment.user == user
+                    .user-response-comment
+                      %p= comment.comment
+                      %span= time_ago_in_words comment.created_at
+              .evaluate-user-response
+                = form_for @discussion_response, url: evaluate_discussion_rate_path(@discussion_response) do |f|
+                  .activity-set-evaluation
+                    .evaluation-label
+                      %h4 Calificación: *
+                    .evaluation-input
+                      = f.fields_for :grade do |grade|
+                        = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, number: true, max: 10, min: 0
+
+                  - if discussion.evaluation_criteria.count > 0
+                    .activity-criteria-evaluation
+                      .criteria-evaluation-help-text
+                        %h6 Retroalimentación
+                        %p Envia comentarios en base a los criterios de la actividad.
+                        - discussion.evaluation_criteria.each_with_index do |criterium, index|
+                          = f.fields_for :response_to_the_evaluations, @discussion_response.response_to_the_evaluations[index] do |criteria_feedback|
+                            = render 'evaluate/shared/evaluation_criterium_feedback', f: criteria_feedback, criterium: criterium
+
+                  .activity-eveluation-footer
+                    %span.btn.btn-primary.input-btn
+                      = f.submit "Calificar alumno"
+                        
+
+      .col.col-4
+        .col-inner
+          = render partial: 'evaluate/shared/discussions_sidebar_responses', locals: { responses: discussion.discussion_responses, current_response: @discussion_response.id }

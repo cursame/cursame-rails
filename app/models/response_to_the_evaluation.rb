@@ -1,4 +1,5 @@
 class ResponseToTheEvaluation < ActiveRecord::Base
-  belongs_to :assignment
-  belongs_to :course
+  belongs_to :feedbackable, polymorphic: true
+  belongs_to :evaluation_criterium
+  
 end

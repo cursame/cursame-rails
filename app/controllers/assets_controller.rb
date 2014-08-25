@@ -43,9 +43,7 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.new(params[:asset])
     @asset.user_id = params[:user_id]
-    @asset.title = params[:asset][:file].original_filename
     @asset.save!
-
     respond_to do |format|
       format.js
     end

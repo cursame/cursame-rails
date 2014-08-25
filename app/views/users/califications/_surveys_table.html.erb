@@ -1,9 +1,8 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon('depot-examen') %> Cuestionarios</h4>
+    <h4><%= icon 'activity-survey' %> Cuestionarios</h4>
   </div>
-
-  <% unless table["surveys"]["surveys"].empty? %>
+  <% unless member.surveys_evaluation.nil? || member.surveys_evaluation.empty? %>
     <table border="1" cellpadding="3" cellspacing="3">
       <thead>
         <tr>
@@ -12,16 +11,16 @@
         </tr>
       </thead>
       <tbody>
-        <% table["surveys"]["surveys"].each_with_index do |survey,index| %>
+        <% member.surveys_evaluation.each_with_index do |survey_evaluation, index| %>
           <tr <%= "class='even'" if !index.odd? %>>
             <td colspan="2">
-              <%=survey.name%>
+              <%= link_to survey_evaluation[:survey].name, survey_modal_path(survey_evaluation[:survey].id), remote: true %>
             </td>
-            <td>
-              <% if table["surveys"]["user_surveys"][index] %>
-                <span class="number"><%= table["surveys"]["user_surveys"][index].result%></span>
+            <td style="width: 120px;">
+              <% unless survey_evaluation[:user_survey].nil? || survey_evaluation[:user_survey].grade.nil? %>
+                <span class="number"><%= evaluation_score survey_evaluation[:user_survey].grade.score %> </span>
               <% else %>
-                Sin resolver
+                No resuelto
               <% end %>
             </td>
           </tr>
@@ -29,18 +28,12 @@
       </tbody>
     </table>
     <div class="course-califications-section-footer">
-      <div class="cali-section">
-        <h5>% Obtenido:</h5>
-        <span class="number"><%=table["surveys"]["percent_of_evaluation"]%></span>
-      </div>
-      <div class="cali-section">
-        <h5>% de la Evaluación:</h5>
-        <span class="number"><%=table["surveys"]["percent_of_surveys"]%></span>
-      </div>
-      <div class="cali-section">
+      <div class="title">
         <h5>Calificación promedio en cuestionarios:</h5>
-        <span class="number"><%=table["surveys"]["evaluation_total"]%></span>
       </div>
+      <span class="score">
+        <%= evaluation_score member.surveys_average %>
+      </span>
     </div>
   <% else %>
     <div class="no-califications">

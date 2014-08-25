@@ -1,0 +1,33 @@
+- course = @discussion.courses.first
+
+= render partial: 'evaluate/discussions/evaluate_discussions_header', locals: { discussion: @discussion, course: course, meta_data: true }
+.activity-view-wrap
+  .wrapper
+    .cols-12
+      .col.col-8
+        .col-inner
+          .activity-view
+            .activity-view-main
+              .activity-view-main-user
+                %span.meta-info Discusión:
+                %p= @discussion.description
+              .evaluate-user-response
+                - unless @discussion.comments.count == 0
+                  .evaluate-activity-comments
+                    %h6= pluralize @discussion.comments.count, 'Comentario', 'Comentarios'
+                    - @discussion.comments.each do |comment|
+                      .activity-comment
+                        .comment-author
+                          %span.avatar-holder
+                            = avatar('user', '30', 'no', comment.user.id, 'avatar', 'no', 'no')
+                        .comment-main
+                          = comment.comment
+                          .comment-meta
+                            %span.comment-meta-item= time_ago_in_words comment.created_at
+                - else
+                  .inner-no-content
+                    %h5 Nadie a participado en esta discusión.
+
+      .col.col-4
+        .col-inner
+          = render partial: 'evaluate/shared/discussions_sidebar_responses', locals: { responses: @discussion.discussion_responses, current_response: false }

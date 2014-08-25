@@ -28,12 +28,17 @@ table {
 }
 
 .course-califications-section {
+  background: $white;
   border-radius: $radius;
   
   .course-califications-section-title {
     border-radius: $radius $radius 0 0;
     border: 1px solid #e3e3e3;
     border-bottom: 0;
+
+    .i {
+      vertical-align: -6px;
+    }
   }
 
   table {
@@ -49,19 +54,13 @@ table {
 
   .course-califications-section-footer {
     border: 1px solid #e3e3e3;
-    border-width: 1px 1px 0 0;
+    border-radius: 0 0 $radius $radius;
 
-    .cali-section {
-      border: 1px solid #e3e3e3;        
-      border-width: 0 0 1px 1px;
-
-      &:first-child {
-        border-radius: 0 0 $radius 0; 
-      }
-
-      &:last-child {
-       border-radius: 0 0 0 $radius;
-      }
+    .score {
+      border-left: 1px solid #e3e3e3;
+      font-size: 16px;
+      font-weight: bold;
+      color: $primary-color;
     }
   }
 }
@@ -97,4 +96,55 @@ table {
   font-size: 16px;
   font-weight: bold;
   color: $primary-color;
+}
+
+.califications-course-members {
+  @extend .basic-container-style;
+
+  > a:first-child .member-calification {
+    border-radius: $radius $radius 0 0;
+    border-top: 0;
+  }
+
+  > a:last-child .member-calification {
+    border-radius: 0 0 $radius $radius;
+  }
+
+  .member-calification {
+    border-top: 1px solid $separator-color;
+
+    &:hover {
+      background: #fafafa;
+    }
+
+    .member-score {
+      color: $meta-color;
+    }
+  }
+}
+
+.standalone-member-calification {
+  .course-califications-section {
+    @extend .basic-container-style;
+
+    table {
+      border: 0;
+    }
+    
+    .course-califications-section-title {
+      border: 0;
+    }
+    
+    .course-califications-section-footer {
+      border-width: 1px 0 0 0;
+    }
+
+    .no-califications {
+      border: 0;
+    }
+  }
+}
+
+.member-score-overview {
+  @extend .basic-container-style;
 }

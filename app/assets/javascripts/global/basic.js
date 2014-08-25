@@ -1,3 +1,31 @@
+function cleanPublicationForm () {
+  // e.preventDefault();
+
+  var newPublicationBox = $('.new-publication');
+  newPublicationBox.find('div.tab-content').hide()
+  newPublicationBox.find('div#comment-tab-content').show();
+  newPublicationBox.find('div.tabs-buttons .tab').removeClass('active');
+  newPublicationBox.find('div.tabs-buttons .tab[data-id-target="comment-tab-content"]').addClass('active');
+  
+  // Comments
+  $('#comment').val('');
+
+  // Delivery
+  $('#delivery_title').val('');
+  $('.delivery_end_date').val('');
+  $('.delivery_publish_date').val('');
+  $('#delivery_description').val('');
+  $('#delivery_porcent_of_evaluation').val('');
+
+  // Discussion
+  $('#discussion_title').val('');
+  $('#discussion_description').val('');
+
+  // Survey
+  $('#survey_name').val('');
+  $('.survey_publish_date').val('');
+  $('.survey_end_date').val('');
+}
 
 // Adding and removing questions answers
 function remove_fields(link, toId) {
@@ -22,6 +50,31 @@ function add_fields(link, association, content, toId) {
     $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
     changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
   };
+};
+
+function add_course_evaluation_fields(link, association, content) {
+  var new_id = new Date().getTime(),
+      regexp = new RegExp("new_" + association, "g"),
+      table = $(link).closest('.course-evaluation-schema-list').find('.table-schema tbody');
+
+  table.append(content.replace(regexp, new_id));
+};
+
+
+// Agregar y Borrar campos a Evaluation Criteria
+function add_evaluation_criteria_fields(link, association, content) {
+  var new_id = new Date().getTime(),
+      regexp = new RegExp("new_" + association, "g"),
+      fieldsContainer = $(link).closest('div.fields-wrap').find('div.fields-group');
+
+  fieldsContainer.append(content.replace(regexp, new_id));
+};
+
+function remove_evaluation_criteria_field(link) {
+  var $link = $(link);
+
+  $link.siblings('input._destroy').val(1);
+  $link.closest('div.field-item').hide();
 };
 
 function changeNumbers(idParent, idFind){
@@ -154,6 +207,35 @@ window.Notice = function(type, message)  {
 };
 
 $(function() {
+
+  $('form.form-validate-js').validate();
+
+  $(".datetime-picker").live('focus', function(event) {
+    $(this).datetimepicker({
+      inline: false,
+      minDate: 0,
+      hourMin: 0,
+      hourMax: 23,
+      controlType: 'select',
+      showOtherMonths: true,
+      dateFormat: 'dd/mm/yy',
+      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+      beforeShow: function(input, inst) {
+        var cal = inst.dpDiv;
+        var top  = $(this).offset().top + $(this).outerHeight();
+        var left = $(this).offset().left;
+        setTimeout(function() {
+          cal.css({
+              'top' : top,
+              'left': left
+          });
+        }, 10);
+      }
+    });
+
+  });
+
   $(document).keyup(function(e) {
     if (e.keyCode == 27) {
       removeModal();

@@ -1,82 +1,54 @@
 # -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
 
-  # mount_uploader :avatar, AvatarUploader
-  # mount_uploader :coverphoto, CoverphotoUploader
-  has_many :members_in_courses, :dependent => :destroy
-  has_many :definer_users#, :dependent => :destroy
-  has_many :users, :through => :definer_users
-  has_many :deliveries_courses, :dependent => :destroy
-  has_many :deliveries, :through => :deliveries_courses, :dependent => :destroy
-  has_many :assignments#, :dependent => :destroy
-  has_many :surveyings, :dependent => :destroy
-  has_many :surveys, :through => :surveyings, :dependent => :destroy
-  has_many :response_to_the_evaluations, :dependent => :destroy
-  has_many :discussions_coursess, :dependent => :destroy
-  has_many :discussions, :through => :discussions_coursess, :dependent => :destroy
-  belongs_to :network
-  has_many :comments, :dependent => :destroy
-
-  has_many :activities, as: :activitye#, :dependent => :destroy
-
-  #publications/walls
+  has_many :members_in_courses, dependent: :destroy
+  has_many :response_to_the_evaluations, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :activities, as: :activitye
+  has_many :assignments
+  has_many :deliveries_courses, dependent: :destroy
+  has_many :deliveries, through: :deliveries_courses, dependent: :destroy
+  has_many :surveyings, dependent: :destroy
+  has_many :surveys, through: :surveyings, dependent: :destroy
+  has_many :discussion_course, dependent: :destroy
+  has_many :discussions, through: :discussion_course, dependent: :destroy
   has_many :coursepublicationings
-  has_many :walls, :through => :coursepublicationings
+  has_many :walls, through: :coursepublicationings
   has_many :course_id_course_file_id
-  has_many :course_files, :through => :course_id_course_file_id
-  #se declara la presencia de los campos que deben ser llenados en el modelo de curso
+  has_many :course_files, through: :course_id_course_file_id
+  has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
 
-  validates_presence_of :title
-  validates_presence_of :silabus
-  #validates_presence_of :init_date
-  #validates_presence_of :finish_date
-  # validates_presence_of :survey_param_evaluation
-  # validates_presence_of :delivery_param_evaluation
-  #validates_presence_of :network_id
+  belongs_to :network
 
-  #accepts_nested_attributes_for :course_files
-  
+  validates_associated :network
 
-  attr_accessible :id, :title, :silabus, :init_date, :finish_date,
-  :created_at, :updated_at, :public_status,
-  :avatar, :coverphoto, :delivery_id,
-  :survey_param_evaluation, :delivery_param_evaluation,
-  :network_id, :active_status, :course_files
+  validates :title, presence: true
+  validates :silabus, presence: true, allow_blank: true
+  validates :public_status, inclusion: { in: %w(Private public) }
+  validates :active_status, inclusion: { in: [true, false] }
 
+  attr_accessible :id, :title, :silabus, :init_date,
+    :created_at, :updated_at, :public_status,
+    :avatar, :coverphoto, :delivery_id,
+    :network_id, :active_status, :course_files
 
-  #para los likes
+  attr_accessible :evaluation_criteria_attributes
+
+  accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
+
   acts_as_votable
-
-  #comentarios para los cursos
   acts_as_commentable
 
-  #avatar
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
 
-
   after_create do
-
-    begin
-      mixpanel_properties = { 
-        'Title'    => self.title.capitalize,
-        'Type'     => self.public_status.capitalize,
-        'Network'  => Network.find_by_id(self.network_id).name.capitalize
-      }
-      MixpanelTrackerWorker.perform_async self.users.first, 'Courses', mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
     if self.public_status == 'public'
-
-      users = self.network.users
+      users  = self.network.users
       owners = self.members_in_courses
-      owners = owners.reject{ |member| member.owner != true }
-      users = users - owners
-
-      Wall.create(:users => self.users, :publication => self, :network => self.network, :courses => [self], :public =>true)
-
+      owners = owners.reject { |member| member.owner != true }
+      users  = users - owners
+      Wall.create users: self.users, publication: self, network: self.network, courses: [self], public: true
     end
   end
 
@@ -96,7 +68,6 @@ class Course < ActiveRecord::Base
     end
   end
 
-
   after_destroy do
     walls = Wall.where(:publication_type => "Course", :publication_id => id)
 
@@ -109,7 +80,7 @@ class Course < ActiveRecord::Base
     notifications.each do |notification|
       notification.destroy
     end
-    
+
     self.members_in_courses.each do |mic|
       notificacion = Notification.where(:notificator_type =>"MembersInCourse", :notificator_id => mic.id)
       notificacion.destroy
@@ -135,7 +106,6 @@ class Course < ActiveRecord::Base
       title = hash.delete("Nombre")
       silabus = hash.delete("Descripcion")
       init_date = hash.delete("Fecha de Inicio")
-      finish_date = hash.delete("Fecha de Finalizacion")
       public_status = hash.delete("Estatus")
 
       if public_status.nil? then
@@ -160,7 +130,6 @@ class Course < ActiveRecord::Base
           course.title = title
           course.silabus = silabus
           course.init_date = init_date
-          course.finish_date = finish_date
           course.public_status = public_status
           course.save!
         rescue ActiveRecord::RecordInvalid => invalid
@@ -245,7 +214,7 @@ class Course < ActiveRecord::Base
     return owners
   end
 
-  def owner?(role,user)    
+  def owner?(role,user)
     if role == "admin" || role == "superadmin" then
       return true
     end
@@ -255,128 +224,28 @@ class Course < ActiveRecord::Base
     return users_id.include?(user.id)
   end
 
-  #
-  # Metodos para el analitics
-  #
-
-  def averageCalification
-    members = self.members_in_courses
-    average = 0.0
-    members.each do
-      |member|
-      average += member.evaluation
-    end
-    size = members.size
-    
-    return 0.0 if size == 0
-    return average/size
+  # Returns the array of teachers in this course
+  def teachers
+    self.users.keep_if { |user| user.teacher? }
   end
 
-  def averageSurveys
-    members = self.members_in_courses
-    average = 0.0
-    members.each do
-      |member|
-      average += member.evaluationSurveys
-    end
-    size = members.size
-    return 0.0 if size == 0
-    return average/size
+  # Returns the array of students in this course
+  def students
+    self.users.keep_if { |user| user.student? }
   end
 
-  def averageDeliveries
-    members = self.members_in_courses
-    average = 0.0
-    members.each do
-      |member|
-      average += member.evaluationDeliverys
-    end
-    size = members.size
-    return 0.0 if size == 0
-    return average/size
-  end
-  
-  #
-  # Tiempo promedio que se tardan en calificar las tareas de un curso
-  #
-  def averageTimeToRateDeliveries
-    deliveries = self.deliveries
-    
-    size = deliveries.size
-    
-    if (size == 0) then
-      return 0.0
-    end
-    
-    average = 0.0
-    deliveries.each do |delivery|
-      average += delivery.averageTimeToRate
-    end
-    
-    return average/size
-
+  # Returns true if there is any evaluable member
+  def empty?
+    self.members_in_courses.reject { |member| !member.has_evaluation? }.empty?
   end
 
-  #
-  # Tiempo promedio que se tardan en contestar las tareas de un curso
-  #
-  def averageTimeToResponseDeliveries
-    deliveries = self.deliveries
-    
-    size = deliveries.size
-    
-    if (size == 0) then
-      return 0.0
-    end
-    
-    average = 0.0
-    deliveries.each do |delivery|
-      average += delivery.averageTimeToResponse
-    end
-    
-    return average/size
-    
-  end
-  
-  #
-  # Tiempo promedio que se tardan en contestar las tareas de un curso
-  #
-  def averageTimeToResponseSurveys
-    
-    surveys = self.surveys
-    
-    size = surveys.size
-    
-    if (size == 0) then
-      return 0.0
-    end
-    
-    average = 0.0
-    surveys.each do |survey|
-      average += survey.averageTimeToResponse
-    end
-    
-    return average/size
-    
+  # Returns the array of evaluable members of this course
+  def evaluable_members
+    self.members_in_courses.reject { |member| !member.has_evaluation? }
   end
 
-  ############
-  # Para verificar si todavía no expira
-  ############
-  def expired?
-    if !self.finish_date.nil?
-      @expired_in  = self.finish_date
-
-      if @expired_in < DateTime.now
-        @expired = true
-      else
-        @expired = false
-      end
-
-      if @expired == true
-        Notification.create(:users => self.owners, :notificator => self, :kind => 'course_expired')
-      end
-    end
+  def evaluables_discussiones
+    self.discussions.reject { |discussion| not discussion.evaluable? }
   end
 
 end

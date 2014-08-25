@@ -412,6 +412,10 @@ h6 {
   }
 }
 
+.section-help {
+  @extend .basic-container-style;
+}
+
 /* Zenbox Tab
 ----------------------------------*/
 #zenbox_tab{

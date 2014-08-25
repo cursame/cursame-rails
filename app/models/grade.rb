@@ -1,9 +1,9 @@
 class Grade < ActiveRecord::Base
+	attr_accessible :user_id, :score, :gradable, :user
+	belongs_to :gradable, polymorphic: true
+	belongs_to :user
 
-  belongs_to :qualifying, polymorphic: true
+	validates_associated :user
+	validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
 
-  validates :qualifying, presence: true
-  validates :score, presence: true, numericality: { only_integer: true,
-                                                    greater_than_or_equal_to: 0,
-                                                    less_than_or_equal_to: 100 }
 end

@@ -1,10 +1,8 @@
 .support-material-item{ id: asset.id }
-  = link_to asset.file.to_s, target: '_blank', class: 'item-name' do 
+  = link_to asset.filename.to_s, target: '_blank', class: 'item-name' do 
     =icon 'upload-asset-blue'
-    - unless asset.title.empty?
-      = asset.title
-    - else
-      = asset.file
-  = link_to asset_path(asset), class: 'item-delete', method: 'delete', remote: true do 
-    Borrar
-  = hidden_field_tag 'files[]', asset.id
+    = asset.filename.file.identifier
+  - if delete_enable
+    = link_to asset_path(asset), class: 'item-delete', method: 'delete', remote: true do 
+      Borrar
+    = hidden_field_tag 'files[]', asset.id

@@ -324,7 +324,6 @@ class Api::ApiController < ApplicationController
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
     @delivery.end_date = params[:deliver]
-    @delivery.porcent_of_evaluation = params[:value]
     @delivery.user = @user
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
@@ -343,7 +342,6 @@ class Api::ApiController < ApplicationController
     @delivery.description = params[:description]
     @delivery.publish_date = params[:publication]
     @delivery.end_date = params[:deliver]
-    @delivery.porcent_of_evaluation = params[:value]
     @delivery.user = @user
     @delivery.network = @network
     @delivery.courses.push(Course.find(params[:courseId]))
@@ -356,7 +354,7 @@ class Api::ApiController < ApplicationController
     if files && files.kind_of?(Array) && !files.empty?
       files.each do |file|
         asset = Asset.new()
-        asset.file = file[1]
+        asset.filename = file[1]
         asset.user_id = @user.id
         asset.save
         @delivery.assets.push(asset)
@@ -371,11 +369,10 @@ class Api::ApiController < ApplicationController
 
     if areas && !areas.empty?
       areas.each do |area|
-        a = AreasOfEvaluation.new()
-        a.evaluation_percentage = area[1]['percentage']
+        a = EvaluationCriteria.new()
         a.name = area[1]['name']
         a.save
-        @delivery.areas_of_evaluations.push(a)
+        @delivery.evaluation_criteria.push(a)
       end
     end
 

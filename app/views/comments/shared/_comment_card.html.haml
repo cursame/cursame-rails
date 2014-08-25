@@ -23,7 +23,7 @@
               %span= link_to commentable.title, course_path(commentable), title: commentable.title
         %span.timestamp= time_ago_in_words post_comment.created_at
     .post-box-content
-      = post_comment.comment
+      = post_comment.comment_html
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: post_comment }
 
     - if post_comment.owner?(current_role, current_user)
@@ -33,5 +33,5 @@
     .post-box-under-container
       .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: post_comment, wall: wall }
       .comments-wrap.comment{ data: { comments_group_id: post_comment.id } }
-        = render partial: 'shared/posts/post_comments_list', locals: { post: post_comment }
+        = render partial: 'shared/posts/post_comments_list', locals: { post: post_comment, new_comment: true }
 

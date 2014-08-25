@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140711173745) do
+ActiveRecord::Schema.define(:version => 20140821152451) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -82,26 +82,11 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.text     "content"
   end
 
-  create_table "areas_of_evaluations", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "assignment_id"
-    t.integer  "evaluation_percentage"
-    t.boolean  "active"
-    t.datetime "date_of_item"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.integer  "delivery_id"
-  end
-
   create_table "assets", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "file"
+    t.string   "filename"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.string   "encryption_code_to_access"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "assignment_assets", :force => true do |t|
@@ -115,14 +100,12 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.string   "title"
     t.text     "brief_description"
     t.integer  "delivery_id"
-    t.integer  "accomplishment"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.integer  "course_id"
     t.integer  "user_id"
     t.float    "rub_calification"
     t.text     "brief_description_html"
-    t.datetime "rate_time"
   end
 
   create_table "audiences", :force => true do |t|
@@ -191,6 +174,13 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "course_grades", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "course_id_course_file_ids", :force => true do |t|
     t.integer  "course_id"
     t.integer  "course_file_id"
@@ -209,19 +199,16 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.string   "title"
     t.text     "silabus"
     t.datetime "init_date"
-    t.datetime "finish_date"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "public_status"
     t.string   "avatar"
     t.string   "coverphoto"
-    t.integer  "delivery_id"
-    t.integer  "survey_param_evaluation"
-    t.integer  "delivery_param_evaluation"
     t.integer  "network_id"
-    t.boolean  "active_status",             :default => true
-    t.integer  "likes"
+    t.boolean  "active_status", :default => true
   end
+
+  add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -244,13 +231,11 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.text     "description"
     t.datetime "publish_date"
     t.datetime "end_date"
-    t.integer  "porcent_of_evaluation"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
-    t.integer  "likes"
     t.text     "description_html"
   end
 
@@ -268,23 +253,56 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "discussions", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "network_id"
-    t.integer  "user_id"
-    t.integer  "likes"
-    t.text     "description_html"
+  create_table "discussion_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "discussion_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  create_table "discussions_courses", :force => true do |t|
+  add_index "discussion_assets", ["asset_id"], :name => "index_discussion_assets_on_asset_id"
+  add_index "discussion_assets", ["discussion_id"], :name => "index_discussion_assets_on_discussion_id"
+
+  create_table "discussion_courses", :force => true do |t|
     t.integer  "discussion_id"
     t.integer  "course_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "discussion_responses", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "discussion_responses", ["discussion_id"], :name => "index_discussion_responses_on_discussion_id"
+  add_index "discussion_responses", ["user_id"], :name => "index_discussion_responses_on_user_id"
+
+  create_table "discussions", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.integer  "network_id"
+    t.integer  "user_id"
+    t.text     "description_html"
+    t.boolean  "evaluable",        :default => false
+    t.datetime "publish_date"
+    t.datetime "end_date"
+  end
+
+  create_table "evaluation_criteria", :force => true do |t|
+    t.string   "name"
+    t.integer  "evaluation_percentage"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "evaluable_id"
+    t.string   "evaluable_type"
+  end
+
+  add_index "evaluation_criteria", ["evaluable_id", "evaluable_type"], :name => "index_evaluation_criteria_on_evaluable_id_and_evaluable_type"
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -320,13 +338,17 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
   end
 
   create_table "grades", :force => true do |t|
-    t.integer  "qualifying_id"
-    t.string   "qualifying_type"
-    t.integer  "score"
-    t.text     "feedback",        :default => ""
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.integer  "gradable_id"
+    t.string   "gradable_type"
+    t.float    "score"
+    t.text     "feedback",      :default => ""
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
   end
+
+  add_index "grades", ["gradable_id", "gradable_type"], :name => "index_grades_on_gradable_id_and_gradable_type"
+  add_index "grades", ["user_id"], :name => "index_grades_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.integer  "user_id"
@@ -345,6 +367,16 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
   end
+
+  create_table "members_in_course_criteria", :force => true do |t|
+    t.integer  "members_in_course_id"
+    t.integer  "evaluation_criterium_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "index_members_in_course_criteria_on_evaluation_criterium_id"
+  add_index "members_in_course_criteria", ["members_in_course_id"], :name => "index_members_in_course_criteria_on_members_in_course_id"
 
   create_table "members_in_courses", :force => true do |t|
     t.integer  "user_id"
@@ -463,16 +495,16 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
-    t.string   "name"
     t.text     "comment_for_rubre"
-    t.integer  "assignment_id"
-    t.integer  "course_id"
-    t.integer  "evaluation_porcentage"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.integer  "figure"
-    t.float    "rub_calification"
+    t.integer  "feedbackable_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "feedbackable_type"
+    t.integer  "evaluation_criterium"
   end
+
+  add_index "response_to_the_evaluations", ["evaluation_criterium"], :name => "index_response_to_the_evaluations_on_evaluation_criterium"
+  add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
     t.integer  "role_id"
@@ -498,6 +530,16 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.datetime "updated_at",       :null => false
     t.integer  "user_id"
   end
+
+  create_table "survey_assets", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "survey_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "survey_assets", ["asset_id"], :name => "index_survey_assets_on_asset_id"
+  add_index "survey_assets", ["survey_id"], :name => "index_survey_assets_on_survey_id"
 
   create_table "surveyings", :force => true do |t|
     t.integer  "course_id"
@@ -548,7 +590,6 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
   create_table "user_surveys", :force => true do |t|
     t.integer  "survey_id"
     t.integer  "user_id"
-    t.float    "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -610,7 +651,7 @@ ActiveRecord::Schema.define(:version => 20140711173745) do
     t.boolean  "self_register",          :default => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email", "subdomain"], :name => "index_users_on_email_and_subdomain", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "votes", :force => true do |t|

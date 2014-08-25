@@ -225,8 +225,11 @@
       }
     }
 
+    .activity-response-items {
+      border-top: 1px solid $separator-color;
+    }
+
     .tabs-main {
-      border-top: 1px solid #d9dbde;
       background: $white;
       border-radius: 0 0 $radius $radius;
     }
@@ -240,6 +243,38 @@
   .activity-view-main-user {
     background: #fafafa;
     border-radius: $radius $radius 0 0;
+  }
+
+  .user-response-comments {
+    border-top: 1px solid $separator-color;
+
+    .user-response-comment {
+      span {
+        color: $meta-color;
+        @include text-size-x-small; 
+      }
+    }
+  }
+
+  .activity-set-evaluation {
+    border-top: 1px solid $separator-color;
+  }
+
+  .activity-criteria-evaluation {
+    border-top: 1px solid $separator-color;
+
+    .criteria-evaluation-help-text {
+      p {
+        font-size: 12px;
+        color: $meta-color;
+      }
+    }
+  }
+
+  .activity-eveluation-footer {
+    background: #fafafa;
+    border-radius: 0 0 $radius $radius;
+    border-top: 1px solid $separator-color;
   }
 }
 
@@ -269,6 +304,18 @@
 
   a:last-child .activity-response {
     border-radius: 0 0 $radius $radius;
+  }
+}
+
+.evaluate-activity-comments {
+  border-top: 1px solid #d9dbde;
+
+  .activity-comment {
+
+    .comment-meta-item {
+      color: $meta-color;
+      font-size: 11px;
+    }
   }
 }
 

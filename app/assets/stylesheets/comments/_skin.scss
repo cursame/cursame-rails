@@ -28,4 +28,11 @@
       font-weight: 500;
     }
   }
+
+  .comments-not-allowed {
+    span {
+      font-size: 12px;
+      color: $meta-color;
+    }
+  }
 }

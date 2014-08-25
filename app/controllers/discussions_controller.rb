@@ -12,7 +12,7 @@ class DiscussionsController < ApplicationController
   def discussions_course
     @course = Course.find_by_id(params[:id])
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course)
-    
+
     unless member.nil?
       redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no has sido aceptado."} unless member.accepted
     else
@@ -49,7 +49,7 @@ class DiscussionsController < ApplicationController
 
   def new
     @discussion = Discussion.new
-
+    permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, self.network.id)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @discussion }
@@ -62,7 +62,7 @@ class DiscussionsController < ApplicationController
 
   # POST /discussions
   # POST /discussions.json
-  def create
+  def createPast
 
     @publication = []
 
@@ -103,12 +103,60 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def create
+    @publication = []
+
+    unless params[:delivery] == nil
+      courses = params[:delivery]["course_ids"]
+      courses.each do |courseId|
+        @discussion = Discussion.new(params[:discussion])
+        @discussion.user = current_user
+        @discussion.network = current_network
+        @discussion.courses = [Course.find_by_id(courseId)]
+
+        if @discussion.save
+          @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+          @az = @discussion
+          @typed = "Discussion"
+          activation_activity
+        else
+          redirect_to :back, notice: 'No se pudo crear la discusión'
+        end
+      end
+
+    else
+      @discussion = Discussion.new(params[:discussion])
+      @discussion.user = current_user
+      @discussion.network = current_network
+
+      if @discussion.save!
+        @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+        @az = @discussion
+        @typed = "Discussion"
+        activation_activity
+      else
+        redirect_to :back, notice: 'No se pudo crear la discusión.'
+      end
+    end
+
+    if params[:files]
+      params[:files].each do |asset_id|
+        @asset = Asset.find_by_id asset_id
+        @discussion.assets.push @asset unless @asset.nil?
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # PUT /discussions/1
   # PUT /discussions/1.json
   def update
     @discussion = Discussion.find(params[:id])
     @wall_publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
-    
+
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
         format.js
@@ -139,4 +187,23 @@ class DiscussionsController < ApplicationController
     redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
     course_member?(current_user, @discussion.courses.first)
   end
+
+  private
+  def track_discussion(discussion)
+    permissioning = Permissioning.find_by_user_id_and_network_id current_user.id, current_network.id
+    unless discussion.courses.nil? || discussion.courses.empty?
+      discussion.courses.each do |course|
+        mixpanel_properties = { 'Network' => current_network.name.capitalize, 'Course' => course.title.capitalize, 'Role' => permissioning.role.title.capitalize, 'Evaluable' => discussion.evaluable? }
+      end
+    else
+      mixpanel_properties = {
+        'Network' => current_network.name.capitalize,
+        'Course'  => 'Public',
+        'Role'    => permissioning.role.title.capitalize,
+        'Evaluable' => @discussion.evaluable?
+      }
+    end
+    track_event current_user.id, 'Discussions', mixpanel_properties
+  end
+
 end

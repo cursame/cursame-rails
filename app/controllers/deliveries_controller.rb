@@ -134,7 +134,6 @@ class DeliveriesController < ApplicationController
           @az = @delivery
           @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))
           activation_activity
-          #actualizamos los assets del delivery
           if(params[:files])
             params[:files].each do |asset_id|
               @asset = Asset.find(asset_id)
@@ -146,7 +145,6 @@ class DeliveriesController < ApplicationController
     else
       @error = true
     end
-
     respond_to do |format|
       format.js
     end
@@ -189,11 +187,10 @@ class DeliveriesController < ApplicationController
 
       @delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-      @delivery_from_assignment.areas_of_evaluations.each do |generate_rubres|
+      @delivery_from_assignment.evaluation_criteria.each do |generate_rubres|
         @response_to_the_evaluation = ResponseToTheEvaluation.new
         @response_to_the_evaluation.name = generate_rubres.name
         @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
       end

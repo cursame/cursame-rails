@@ -1,13 +1,6 @@
 # -*- coding: utf-8 -*-
+
 Cursame30Lb::Application.routes.draw do
-
-  get "load_layout/load_wall"
-
-  get "load_layout/load_post_menu"
-
-  get "load_layout/load_sidebar"
-
-  get "load_layout/load_chat"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -61,16 +54,17 @@ Cursame30Lb::Application.routes.draw do
   #recursos naturales de la aplicación
   resources :notifications
   resources :assets
-  resources :areas_of_evaluations
 
   #### manejo de assignments
 
   resources :assignments
 
-  # colocando miembros en cursos
+  # Members In Course
   resources :members_in_courses
-
   get '/update_mc', :to => 'members_in_courses#update'
+  post '/courses/:course_id/closure/:member_id', :to => 'members_in_courses#rate_course_user', :as => :rate_course_user
+
+
   # colocando course files
   resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
   # metodos de manejo de cursos
@@ -85,11 +79,17 @@ Cursame30Lb::Application.routes.draw do
   get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
   get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
   get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
-  get '/evaluate/survey/:survey_id', :to => 'evaluate#qualifying', :as => :evaluate_survey
-  get '/evaluate/survey/response/:id', :to => 'evaluate#user_survey', :as => :evaluate_survey_response
+
+  get '/evaluate/survey/:survey_id', :to => 'evaluate#survey', :as => :evaluate_survey
+  get '/evaluate/survey/response/:id', :to => 'evaluate#survey_response', :as => :evaluate_survey_response
   post '/evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
-  get '/evaluate/delivery/:delivery_id', :to => 'evaluate#qualifying', :as => :evaluate_delivery
-  get '/evaluate/assignment/:id', :to => 'evaluate#assignment', :as => :evaluate_delivery_response
+
+  get '/evaluate/delivery/:delivery_id', :to => 'evaluate#delivery', :as => :evaluate_delivery
+  get '/evaluate/assignment/:id', :to => 'evaluate#delivery_response', :as => :evaluate_delivery_response
+
+  get '/evaluate/discussion/:discussion_id', :to => 'evaluate#discussion', :as => :evaluate_discussion
+  get '/evaluate/discussion-response/:id', :to => 'evaluate#discussion_response', :as => :evaluate_discussion_response
+  match '/evaluate/discussion-rate/:id', :to => 'evaluate#discussion_rate', :as => :evaluate_discussion_rate
 
   # Tareas
   get "/deliveries", to: "deliveries#index", as: :deliveries
@@ -121,6 +121,9 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/about', :to => 'courses#about', :as => :about_course
   get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
   get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+  get '/courses/:id/evaluation-schema', :to =>  'courses#evaluation_schema', :as => :course_evaluation_schema
+  get '/courses/:id/closure', :to =>  'courses#closure', :as => :course_closure
+  get '/courses/:course_id/closure/:member_id', :to => 'courses#closure_user_overview', :as => :closure_user_overview
 
   resources :courses do
     resources :assignments
@@ -134,12 +137,27 @@ Cursame30Lb::Application.routes.draw do
       post :assigment
     end
   end
+
+  # Modals
+  match '/modals/network_intro_video', to: 'modal#network_intro_video_modal', :as => :network_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/teacher_quiz', to: 'modal#teacher_quiz_modal', :as => :teacher_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/landing_intro_video', to: 'modal#landing_intro_video_modal', :as => :landing_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
+
+  # Calificaciones
+  get "/califications", :to => "califications#index", :as =>  :califications
+  get "/courses/:id/califications", :to => "califications#course", :as =>  :califications_course
+  get "/courses/:course_id/califications/:member_id", :to => "califications#member", :as =>  :califications_member
   
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
   # Awaiting_confirmation
-  get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
+  get "awaiting_confirmation/:user_id", :to => "networks#awaiting_confirmation"
 
   ##### cambiando el status de un curso
   get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
@@ -154,9 +172,6 @@ Cursame30Lb::Application.routes.draw do
 
   #### tour virtual
   get "tour_reciver", :to => "users#tour_reciver", :as => :tour_reciver
-  #### lista calificaciones
-
-  get "/califications", :to => "users#califications", :as =>  :califications
 
   #### destroy user
   get "users/destroy_user_with_parts/:id", :to => "users#destroy_user_with_parts", :as => :destroy_user_with_parts
@@ -223,6 +238,7 @@ Cursame30Lb::Application.routes.draw do
   as :user do
     match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
     match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
+    match 'teachers/sign_up' => 'registrations#new' 
   end
 
   #### finalizador de sesiones
@@ -351,18 +367,6 @@ Cursame30Lb::Application.routes.draw do
   match '/new_sesion_from_home', to: 'home#new_sesion_from_home', via: 'post', :as => :new_sesion_from_home, :defaults => { :format => 'html' }
   #para el formulario de contacto
   match '/contact_mail', to: 'home#send_contact_mail', via: 'post', :as => :send_contact_mail, :defaults => { :format => 'js' }
-
-  root :to => 'home#index'
-
-  # Overlays
-  match '/modals/network_intro_video', to: 'modal#network_intro_video_modal', :as => :network_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/teacher_quiz', to: 'modal#teacher_quiz_modal', :as => :teacher_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/landing_intro_video', to: 'modal#landing_intro_video_modal', :as => :landing_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
 
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }
@@ -570,5 +574,9 @@ Cursame30Lb::Application.routes.draw do
 
   #logout
   match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]
+
+  match '/robots' => 'robots#robots'
+
+  root :to => 'home#index'
 
 end

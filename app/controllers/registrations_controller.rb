@@ -34,7 +34,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_inactive_sign_up_path_for(resource)
-    return "/awaiting_confirmation/#{resource.personal_url}"
+    return "/awaiting_confirmation/#{resource.id}"
   end
 
   def after_update_path_for(resource)

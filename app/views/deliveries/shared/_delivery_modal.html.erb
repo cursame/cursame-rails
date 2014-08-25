@@ -23,18 +23,19 @@
         <div class="asset-box upload-label">
           <% delivery.assets.each do |files|%>
             <div class="file-mini-upload publication-asset">
-              <% @string = files.file.to_s.split('/').last %>
-              <%= link_to "#{files.file}" , :target => '_blank' do %> 
+              <% @string = files.filename.file.identifier %>
+              <%= link_to "#{files.filename}" , :target => '_blank' do %> 
                 <%= icon('upload-asset-blue') %>
                 <%= truncate( @string, :omission => "...", :length => 72) %>
               <% end %>
             </div>
           <%end%>
         </div>
-      <%end%>
+      <% end %>
+
     </div>
     
-    <% if delivery.areas_of_evaluations.count > 0 %>
+    <% if delivery.evaluation_criteria.count > 0 %>
       <div class="evaluation-box" style="height: 50px">
         <div id="chart-delivery-<%= delivery.id %>" style="height: 50px"></div>
         <script type="text/javascript">
@@ -113,9 +114,8 @@
                           fontSize: '10px'
                       }
                   },
-                  series: [ <% @i = 1 %> <% delivery.areas_of_evaluations.each do |areas| %> {
+                  series: [ <% @i = 1 %> <% delivery.evaluation_criteria.each do |areas| %> {
                       name: '<%= areas.name %>',
-                      data: [ <%= areas.evaluation_percentage %> ],
                       index: <%= @i %>
                   }, <% @i = @i + 1 %> <% end %> ],
                   exporting: false
@@ -134,22 +134,18 @@
         <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty? %>
           <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>">Entregar Tarea</a>
         <% else %>
-          <% delivered = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
-          <% if !delivered.nil? && !delivered.accomplishment.nil? %>
+          <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
+          <% if !assignment.nil? && !assignment.grade.nil? %>
             <div class="delivery-results">
               <div class="delivery-overall-result">
-                <div class="result"><%= delivered.accomplishment.to_s %></div>
+                <div class="result"><%= assignment.grade.score %></div>
                 <h4>Calificación final obtenida</h4>
               </div>
-              <% unless delivered.response_to_the_evaluations.empty? %>
+              <% unless assignment.response_to_the_evaluations.empty? %>
                 <div class="delivered-delivery-rubres">
-                  <% delivered.response_to_the_evaluations.each do |delivery_rubre| %>
+                  <% assignment.response_to_the_evaluations.each_with_index do |delivery_rubre, index| %>
                     <div class="delivered-delivery-rubre">
-                      <div class="rubre-calification">
-                        <%= delivery_rubre.evaluation_porcentage %>
-                      </div>
                       <div class="rubre-main">
-                        <h6><%= delivery_rubre.name %></h6>
                         <p><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
                       </div>
                     </div>
@@ -169,7 +165,7 @@
 <div class="delivery-overlay-submit-form" id="<%= delivery.id %>">
   <div class="delivery-assignment-box" id="entrega-delivery-<%= delivery.id %>">
     <% @delivery_id = delivery.id %>
-    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => delivery.courses[0]}%>
+    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => delivery.courses[0]} %>
   </div>
 </div>
 

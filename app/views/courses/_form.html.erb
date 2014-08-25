@@ -51,30 +51,10 @@
               </div>
             </div>
             <div class="f-col f-col-5">
-              <div class="form-unit">
-                <%= f.text_field :finish_date, :placeholder => 'Fecha final', :class=>"date-input", :value => (f.object.finish_date)?f.object.finish_date.strftime('%m/%d/%Y'):f.object.finish_date, :required => "required", :autocomplete => "off" %>
-              </div>
             </div>
           </div>
         </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :survey_param_evaluation, "Evaluación" %>
-          </div>
-          <div class="form-group-main">
-            <div class="f-col f-col-5">
-              <div class="form-unit">
-                <%= f.text_field :survey_param_evaluation, :placeholder => "Valor de Cuestionarios", :autocomplete => "off" %>
-              </div>
-            </div>
-            <div class="f-col f-col-5">
-              <div class="form-unit">
-                <%= f.text_field :delivery_param_evaluation, :placeholder => "Valor de Tareas", :autocomplete => "off" %>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
     <div class="col col-3">
@@ -130,7 +110,7 @@
   }
     
   $(function() {
-    $("#course_init_date, #course_finish_date" ).datepicker({
+    $("#course_init_date" ).datepicker({
         inline: true,
         minDate: 0,
         showOtherMonths: true,
@@ -139,33 +119,5 @@
         dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
     });
 
-    $('form#course-form').validate({
-      rules: {
-        "course[survey_param_evaluation]": {
-          required: true,
-          number: true,
-          min: 0,
-          max: 100
-        },
-        "course[delivery_param_evaluation]": {
-          required: true,
-          number: true,
-          min: 0,
-          max: 100
-        }
-      },
-      submitHandler: function( form ) {
-        var surveys_percentage  = parseInt($('#course_survey_param_evaluation').val()),
-            deliveries_percentage = parseInt($('#course_delivery_param_evaluation').val()),
-            evaluation_total  = surveys_percentage + deliveries_percentage;
-
-        if ( evaluation_total > 100 || evaluation_total <= 0 || evaluation_total < 100 ) {
-          Notice('error', 'Los porcentajes de evaluación deben sumar 100.');
-          return false;
-        } else {
-          form.submit();
-        }
-      }
-    });
   });
 </script>

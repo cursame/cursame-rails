@@ -92,21 +92,15 @@ module CursameHelpers
     user
   end
 
-  #
-  # Valores minimos que debe recibir:
-  #         add_course(owner: user, network: network)
-  #
+  # Valores minimos que debe recibir: add_course(owner: user, network: network)
   def add_course(options={})
 
     title = options[:title] || "Test_Course"
     silabus = options[:silabus] || title
     init_date = options[:init_date] || DateTime.now
-    finish_date = options[:finish_date] || init_date + 3.days
     public_status = options[:public_status] || "Private"
     avatar = options[:avatar]
     coverphoto = options[:coverphoto]
-    survey_param_evaluation = options[:survey_param_evaluation] || 50
-    delivery_param_evaluation = options[:delivery_param_evaluation] || 100 - survey_param_evaluation
 
     network = options[:network]
     raise "Necesito la network a la que pertence el curso." if network.nil?
@@ -117,13 +111,11 @@ module CursameHelpers
     raise "Necesito saber quien sera el owner del curso." if owner.nil?
 
     course = Course.create!(title: title, silabus: silabus, init_date: init_date,
-                            finish_date: finish_date, public_status: public_status,
-                            avatar: avatar, coverphoto: coverphoto, survey_param_evaluation: survey_param_evaluation,
-                            delivery_param_evaluation: delivery_param_evaluation, network_id: network.id,
+                            public_status: public_status,
+                            avatar: avatar, coverphoto: coverphoto, network_id: network.id,
                             active_status: active_status)
 
     add_members_in_course(user: owner, course: course, owner: true)
-    
     course
   end
 
@@ -160,7 +152,6 @@ module CursameHelpers
     description = options[:description] || title
     publish_date = options[:publish_date] || DateTime.now
     end_date = options[:end_date] || publish_date + 3.days
-    porcent_of_evaluation = options[:porcent_of_evaluation] || 100
 
     user = options[:user]
     raise "Necesito un usuario" if user.nil?
@@ -169,8 +160,7 @@ module CursameHelpers
     raise "Necesito un curso" if course.nil?
 
     Delivery.create!(title: title, description: description, publish_date: publish_date, end_date: end_date,
-                     porcent_of_evaluation: porcent_of_evaluation, user_id: user.id, network_id: course.network_id,
-                     courses: [course])
+                    user_id: user.id, network_id: course.network_id, courses: [course])
   end
 
   #

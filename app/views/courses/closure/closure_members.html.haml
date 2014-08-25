@@ -1,0 +1,42 @@
+= render :partial => 'courses/show/course-header', locals: { header_style: :super_compact }
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .section-help
+          = icon 'wizard'
+          .section-help-content
+            %h5 Finalizar curso
+            %p
+              Califica a los miembros del curso para finalizar el curso.
+              %br/
+              La calificación de Cúrsame es generada automaticamente.
+.activity-view-wrap.closure-course-members
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .activity-view
+            .view-header
+              %h5 Miembros
+            .activity-view-main
+              - unless @course.evaluable_members.empty?
+                .activity-responses-list
+                  - @course.evaluable_members.each do |member_course|
+                    = link_to closure_user_overview_path(@course, member_course) do
+                      .activity-response
+                        .activity-response-avatar
+                          %span.avatar-holder
+                            = avatar('user', '150', 'no', member_course.user.id, 'avatar avatar-80', 'no', 'no')
+                        .activity-response-main
+                          .va-middle
+                            %h5= member_course.user.name
+                            - if member_course.grade.present?
+                              %p
+                                Calificación: #{ evaluation_score member_course.grade.score}
+                            - else
+                              %p Sin calificar
+              - else
+                .no-content-section
+                  %h5 No hay miembros en el curso.
+                  %p Invita a tus alumnos que se unan a tu curso.

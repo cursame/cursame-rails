@@ -559,3 +559,30 @@
     }
   } 
 }
+
+
+.fields-wrap {
+  .field-item {
+    position: relative;
+    margin-bottom: 10px;
+
+    &:hover {
+      padding-right: 20px;
+
+      .delete-field-item {
+        display: block;
+      }      
+    }
+
+    .delete-field-item {
+      position: absolute;
+      right: 0;
+      top: 8px;
+      display: none;
+    }
+  }  
+}
+
+.evaluable-fields-js {
+  display: none;
+}
