@@ -1,20 +1,23 @@
 <% tasks.each do |task| %>
-  <% if task.schedule.state == 'published'%>
-    <% task.schedule.courses.each do |course| %>
-      <% member_in = MembersInCourse.find_by_course_id_and_user_id( course.id, current_user.id)%>
-      <% if !member_in.nil? %>
-        <% if mobile?.present? && ! full_event %>
-          <span class="events-availables <%= task.schedule_type.to_s.downcase %>"></span>
-        <% else %>
-          <%= task.id %>
-          <%= link_to show_template_on_modal_path(:id => task.id, :type => 'task'), :remote => true, :data => { :day_id => task.ends_at.strftime("%d") } do %>
-            <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
-              <h6><%= truncate( task.title, :omission => "...", :length => 20) %></h6>
-              <span><%= task.schedule.end_date.strftime("%I:%M%P") %></span>
-              <span>- <%= course.title %></span>
-            </div>
-          <% end %>
-        <% end %>
+  <% if task.schedule.state == 'published' %>
+    <% if mobile?.present? && ! full_event %>
+      <span class="events-availables <%= task.schedule_type.to_s.downcase %>"></span>
+    <% else %>
+      <!-- TODO: agregar helper para obtener el link de forma generica -->
+      <% case task.schedule_type %>
+      <% when 'Delivery' %>
+        <% link = delivery_modal_path(task.schedule.id) %>
+      <% when 'Survey' %>
+        <% link = survey_modal_path(task.schedule.id) %>
+      <% when 'Discussion' %>
+        <% link = discussion_modal_path(task.schedule.id) %>
+      <% end %>
+      <%= link_to link, :remote => true, :data => { :day_id => task.ends_at.strftime("%d") } do %>
+        <div class="calendar-day-task <%= task.schedule_type.to_s.downcase %>">
+          <h6><%= truncate( task.title, :omission => "...", :length => 20) %></h6>
+          <span><%= task.schedule.end_date.strftime("%I:%M%P") %></span>
+          <span>- <%= task.schedule.courses[0].title %></span>
+        </div>
       <% end %>
     <% end %>
   <% end %>

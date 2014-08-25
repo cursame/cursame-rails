@@ -48,7 +48,7 @@ class Survey < ActiveRecord::Base
       self.state = "published"
     end
 
-    Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
+    Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
 
     users = []
     self.courses.each do |course|

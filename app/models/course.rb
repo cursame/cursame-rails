@@ -248,4 +248,23 @@ class Course < ActiveRecord::Base
     self.discussions.reject { |discussion| not discussion.evaluable? }
   end
 
+  def course_events
+    surveys_events + deliveries_events + discussions_events
+  end
+
+  # Returns the array of surveys events for this course
+  def surveys_events
+    self.surveys.each.map { |survey| survey.events }.flatten
+  end
+
+  # Returns the array of deliveries events for this course
+  def deliveries_events
+    self.deliveries.each.map { |deliveries| deliveries.events }.flatten
+  end
+
+  # Returns the array of discussions events for this course
+  def discussions_events
+    self.discussions.each.map { |discussions| discussions.events }.flatten
+  end
+
 end

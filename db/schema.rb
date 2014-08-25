@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140821152451) do
+ActiveRecord::Schema.define(:version => 20140825210410) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -174,13 +174,6 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "course_grades", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "course_id_course_file_ids", :force => true do |t|
     t.integer  "course_id"
     t.integer  "course_file_id"
@@ -308,16 +301,13 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.string   "title"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.boolean  "all_day"
     t.text     "description"
     t.integer  "user_id"
     t.integer  "network_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "etag"
     t.integer  "schedule_id"
     t.string   "schedule_type"
-    t.integer  "course_id"
   end
 
   add_index "events", ["schedule_id", "schedule_type"], :name => "index_events_on_schedule_id_and_schedule_type"
@@ -421,11 +411,11 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form",        :default => false
+    t.boolean  "register_form"
     t.text     "welcom_message"
-    t.string   "image_front",          :default => "background-restore.jpg"
-    t.string   "logo",                 :default => "logo.png"
-    t.string   "logo_type",            :default => "128x26"
+    t.string   "image_front"
+    t.string   "logo"
+    t.string   "logo_type"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -495,15 +485,16 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
+    t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "feedbackable_type"
-    t.integer  "evaluation_criterium"
+    t.integer  "evaluation_criterium_id"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium"], :name => "index_response_to_the_evaluations_on_evaluation_criterium"
+  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criterium_id"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
@@ -519,16 +510,6 @@ ActiveRecord::Schema.define(:version => 20140821152451) do
     t.date     "created"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "settings_teachers", :force => true do |t|
-    t.integer  "limit_deliveries"
-    t.integer  "count_deliveries"
-    t.integer  "limit_surveys"
-    t.integer  "count_surveys"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "user_id"
   end
 
   create_table "survey_assets", :force => true do |t|

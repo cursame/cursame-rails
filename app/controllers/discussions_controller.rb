@@ -139,6 +139,10 @@ class DiscussionsController < ApplicationController
       end
     end
 
+    if @discussion.evaluable?
+      Event.create title: @discussion.title, starts_at: @discussion.publish_date, ends_at: @discussion.end_date, schedule_id: @discussion.id, schedule_type: "Discussion", network_id: current_network.id
+    end
+
     if params[:files]
       params[:files].each do |asset_id|
         @asset = Asset.find_by_id asset_id

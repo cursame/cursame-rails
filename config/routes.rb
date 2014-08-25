@@ -511,11 +511,6 @@ Cursame30Lb::Application.routes.draw do
   get '/inc_activity', :to => 'parents#inc_activity', :as => :inc_activity
   get '/general_prm', :to => 'parents#general_prm', :as => :inc_activity
   get '/acces_course_for_render', :to => 'parents#acces_course', :as => :acces_course_for_render
-  # get "home/parents", :as => :parents
-  # get "home/my_son", :as => :my_son
-  # get "home/acces_on_course", :as => :acces_on_course
-  #
-  get '/publications/:id/show_template_on_modal', :to => 'publications#show_template_on_modal', :as => :show_template_on_modal , :defaults => { :format => 'js' }
 
   #paginas de errores
   match '/404', :to => 'home#not_found', :as => :not_found
