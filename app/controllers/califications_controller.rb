@@ -2,7 +2,7 @@
 
 class CalificationsController < ApplicationController
   include CoursesUtils
-  
+
   def index
     if current_user.student?
       @courses = student_subscribed_courses
@@ -12,7 +12,11 @@ class CalificationsController < ApplicationController
   end
 
   def closed
-    
+    if current_user.student?
+      @courses = student_closed_courses
+    else
+      @courses = teacher_unpublished_courses
+    end
   end
 
   # TODO: Agregar validacion si es teacher que no pueda ver los que son de el, y si es student que sea un curso donde este inscrito
