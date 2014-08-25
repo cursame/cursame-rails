@@ -16,10 +16,6 @@ class UserSurvey < ActiveRecord::Base
         member.owner == true
       }
       if !(teachers.nil?) then
-        teachers.each do
-          |teacher|
-          teacher.user.settings_teacher.increment_surveys if !teacher.user.settings_teacher.nil?
-        end
         teacher_users = teachers.map { |t| t.user}
         Notification.create(:notificator => self, :users => teacher_users, :kind => "new_assignment_on_survey", :active => true)
       end

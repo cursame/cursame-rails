@@ -47,11 +47,6 @@ class Assignment < ActiveRecord::Base
   end
 
   after_create do
-    ## No se para que sea este código si un día lo averiguan me dicen, al parecer no es necesario
-    # self.delivery.courses.each do |course|
-    #   course.teachers.each { |teacher| teacher.settings_teacher.increment_deliveries if !teacher.settings_teacher.nil? }
-    # end
-    ## Estas notificaciones se pasaron al controlador
     users = self.delivery.courses.first.owners
     notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
   end

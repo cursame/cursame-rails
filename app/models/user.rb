@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     :remember_me, :first_name, :last_name, :name, :id, :personal_url,
     :avatar, :networks_users, :coverphoto, :facebook_link,
     :twitter_link, :update, :comments, :networks, :assets,
-    :settings_teacher, :friendships, :friends, :registerable, :image_avatarx,
+    :friendships, :friends, :registerable, :image_avatarx,
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
     :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register
 
@@ -55,8 +55,6 @@ class User < ActiveRecord::Base
   has_many :audiences, dependent: :destroy
   has_many :channels, through: :audiences
   has_many :grades, dependent: :destroy
-
-  has_one :settings_teacher, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
