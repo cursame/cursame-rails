@@ -21,6 +21,40 @@
 
           - if current_user.student?
             - member = MembersInCourse.find_by_user_id_and_course_id current_user, @course
+            .closure-course-members-list
+              .member-item
+                .member-item-header
+                  %h6 Calificación final
+                .member-item-main
+                  - if member.grade
+                    - user = member.user
+                    %table.member-evaluation-table
+                      %thead
+                        %tr
+                          %th Criterio
+                          %th Calificación Obtenida
+                      %tbody
+                        %tr
+                          %td
+                            %h4 Cursame
+                          %td
+                            %span.score.cursame-score-js= evaluation_score member.course_average
+                        - unless member.members_in_course_criteria.blank?
+                          - member.members_in_course_criteria.each do |criterium|
+                            %tr
+                              %td
+                                %h4= criterium.evaluation_criterium.name
+                              %td
+                                %span.score= criterium.grade.score
+                        %tr.final-score
+                          %td
+                            %h4 Calificación Final
+                          %td
+                            %span.score= evaluation_score member.grade.score
+                  - else
+                    .no-content-section
+                      %h5 Aun no tienes calificación final.
+                      %p Tu profesor todavia te ha dado calificación final.
             .standalone-member-calification
               = render partial: 'users/califications/deliveries_table',  locals: { member: member }
               = render partial: 'users/califications/surveys_table',     locals: { member: member }

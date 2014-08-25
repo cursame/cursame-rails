@@ -8,7 +8,7 @@
     .comment-content
       %p
         = link_to comment.user.name, show_user_path(comment.user.personal_url), class: 'child-comment-author'
-        = comment.comment
+        = comment.comment_html
     .comment-meta
       %span.comment-meta-item
         - unless current_user.voted_up_on? comment

@@ -22,7 +22,6 @@
             .sidebar-responses-header
               %h6 Miembros
             .sidebar-responses-main
-              = @course.evaluable_members
               - @course.evaluable_members.each do |member_course|
                 = link_to califications_member_path(@course, member_course) do
                   %div{:class => "one-p sidebar-user-response#{" active" if @member.id == member_course.id}"}
