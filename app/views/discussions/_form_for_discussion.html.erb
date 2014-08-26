@@ -5,6 +5,7 @@
 <% end %>
 
 <%= form_for(@discussion, remote: true, html: { class: "discussion-form-js", id: form_reference_id, data: { post_type: 'Discussion' } }) do |f| %> 
+  <%= hidden_field_tag 'in_form', in_form%>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
@@ -128,7 +129,7 @@
           <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", onClick: 'removeSliderEvaluation();' %>
         </li>
         <li>
-          <% if @incourse != true%>
+          <% if in_form != 'course'%>
             <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
           <%else%>
             <% courses = @discussion.courses.build %>

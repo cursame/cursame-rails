@@ -4,7 +4,7 @@
     <div id="box-content">
       <div id="box-stream-post">
         <div id="pk_menu">
-          <%=render :partial => 'shared/post_menu' %>
+          <%=render :partial => 'shared/post_menu', :locals => { :in_form => 'network' }%>
         </div>
         <div id="timeline" class="tim">
           <%= render :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "network"} %>

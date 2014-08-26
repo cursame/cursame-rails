@@ -9,6 +9,7 @@
 <% end %>
 
 <%= form_for(@delivery, remote: true, html: { class: "default-form delivery-form", multipart: true, id: formId, data: { post_type: 'Delivery' } }) do |f| %>
+  <%= hidden_field_tag 'in_form', in_form%>
   <div class="new-publication-form-content">
     <% contents = @delivery.contents.build %>
     <%= f.hidden_field :network_id, value: current_network.id %>

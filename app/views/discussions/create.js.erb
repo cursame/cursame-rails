@@ -1,4 +1,4 @@
 $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @publication, :visible_for => "network"} ))%>');
 Notice('success', 'Discusión creada correctamente.');
-
-cleanPublicationForm();
+$('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu', :locals => {:in_form => params[:in_form]})) %>');
+// cleanPublicationForm();
