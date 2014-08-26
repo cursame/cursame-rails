@@ -22,19 +22,20 @@
     }
   }
 
-  .admin-buttons {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-
   .profile-info {
     padding: 10px;
+    position: relative;
     @include clearfix;
 
     .profile-avatar {
       float: left;
       margin-right: 10px;
+    }
+
+    .admin-buttons {
+      position: absolute;
+      right: 10px;
+      bottom: 9px;
     }
   }
 
