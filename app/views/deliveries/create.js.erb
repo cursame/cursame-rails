@@ -2,8 +2,8 @@
 
   $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @publication, :visible_for => "network"} ))%>');
 
-  // $('#pk_menu').html('<%= escape_javascript(render(:partial => "shared/post_menu")) %>');
-  cleanPublicationForm();
+  $('#pk_menu').html('<%= escape_javascript(render(:partial => "shared/post_menu", :locals => {:in_form => params[:in_form]})) %>');
+  // cleanPublicationForm();
 
   Notice('success', 'Tarea creada correctamente.');
   // cancelButtonsPostMenu();  

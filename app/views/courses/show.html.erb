@@ -5,7 +5,7 @@
       <div class="col-inner">
 
         <div id="pk_menu">
-          <%=render :partial => 'shared/post_menu' %>
+          <%=render :partial => 'shared/post_menu', :locals => { :in_form => 'course' } %>
         </div>
         <div id="timeline" class="tim">
           <%= render :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "course"} %>

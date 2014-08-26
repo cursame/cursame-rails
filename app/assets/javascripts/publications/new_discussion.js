@@ -1,7 +1,6 @@
 $(function() {
 
-  $('#discussion_evaluable').on('change', function(event) {
-    console.log('cambió');
+  $('#pk_menu').on('change', '#discussion_evaluable', function(event) {
     var $this = $(this),
         form = $this.closest('form'),
         containerFields = form.find('div.evaluable-fields-js');

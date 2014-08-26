@@ -12,6 +12,7 @@
 %>
 
 <%= form_for @survey, remote: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
+  <%= hidden_field_tag 'in_form', in_form%>
   <div class="new-publication-form-content">
     
     <div class="form-group">

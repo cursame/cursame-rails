@@ -106,7 +106,12 @@ class DiscussionsController < ApplicationController
   def create
     @publication = []
 
+    puts "Entra en el sistema de creacion de la discusion"
+    puts params
+
+
     unless params[:delivery] == nil
+      puts "Entró en cuando params deliveri no es nulo"
       courses = params[:delivery]["course_ids"]
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
@@ -115,6 +120,7 @@ class DiscussionsController < ApplicationController
         @discussion.courses = [Course.find_by_id(courseId)]
 
         if @discussion.save
+          puts "se pudo guardar la discusión"
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
           @az = @discussion
           @typed = "Discussion"
@@ -125,11 +131,13 @@ class DiscussionsController < ApplicationController
       end
 
     else
+      puts "Entró en cuando params deliver es nulo"
       @discussion = Discussion.new(params[:discussion])
       @discussion.user = current_user
       @discussion.network = current_network
 
       if @discussion.save!
+        puts "Se guardo la discusion en el otro"
         @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
         @az = @discussion
         @typed = "Discussion"
@@ -138,6 +146,9 @@ class DiscussionsController < ApplicationController
         redirect_to :back, notice: 'No se pudo crear la discusión.'
       end
     end
+
+    puts "La discusion es"
+    puts @discussion
 
     if @discussion.evaluable?
       Event.create title: @discussion.title, starts_at: @discussion.publish_date, ends_at: @discussion.end_date, schedule_id: @discussion.id, schedule_type: "Discussion", network_id: current_network.id
