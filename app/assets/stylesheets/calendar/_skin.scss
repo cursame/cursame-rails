@@ -102,11 +102,15 @@
   border-radius: $radius;
 
   &.delivery {
-    background-color: #8bbf27;
+    background-color: $delivery-color;
   }
   
   &.survey {
-    background-color: #f06c15;
+    background-color: $survey-color;
+  }
+
+  &.discussion {
+    background-color: $discussion-color;
   }
   
   span {
