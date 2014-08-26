@@ -4,9 +4,7 @@ class EvaluationCriterium < ActiveRecord::Base
 	validates :name, presence: true
 
 	after_update do
-		if self.evaluable_type == 'Course' && !self.evaluable.active_status?
-			self.members_in_course_criteria.each { |course_criteria| course_criteria.update_grade }
-		end
+		self.evaluable.members_in_courses.each { |member| member.evaluate! } if self.evaluable_type == 'Course'
 	end
 
 end

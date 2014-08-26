@@ -267,4 +267,11 @@ class Course < ActiveRecord::Base
     self.discussions.each.map { |discussions| discussions.events }.flatten
   end
 
+  # Evaluates the 
+  def evaluate_members!
+    self.members_in_courses do |member|
+      meber.evaluate!
+    end
+  end
+
 end

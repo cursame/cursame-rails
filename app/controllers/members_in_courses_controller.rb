@@ -125,11 +125,8 @@ class MembersInCoursesController < ApplicationController
 
   def rate_course_user
     members_in_course = MembersInCourse.find_by_id params[:member_id]
-    if members_in_course.course.evaluation_criteria.blank?
-      Grade.create gradable: members_in_course, score: members_in_course.course_average, user: members_in_course.user
-    else
-      members_in_course.update_attributes params[:members_in_course]
-    end
+    members_in_course.update_attributes params[:members_in_course]
+    members_in_course.evaluate!
     # TODO: enviar correo al usuario
     Notification.create users: [members_in_course.user], notificator: members_in_course.grade, kind: 'course_grade'
     redirect_to closure_user_ovMerview_path(params[:course_id], params[:member_id]), flash: { success: 'Alumno se ha calificado correctamente.' }

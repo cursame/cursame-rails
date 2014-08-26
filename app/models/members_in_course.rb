@@ -225,8 +225,35 @@ class MembersInCourse < ActiveRecord::Base
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
-  def title
-    return ""
+  def evaluate!
+    if self.members_in_course_criteria.count < update_members_in_course_criteria.count
+      self.members_in_course_criteria = update_members_in_course_criteria
+      self.grade = nil
+    else
+      self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
+    end
+    self.save!
+  end
+
+  private
+  def update_members_in_course_criteria
+    self.course.evaluation_criteria.map do |criteria|
+      member = MembersInCourseCriterium.where(members_in_course_id: self, evaluation_criterium_id: criteria).first
+      member ||= MembersInCourseCriterium.new members_in_course: self, evaluation_criterium: criteria
+    end
+  end
+
+  private
+  def course_final_score
+    cursame_final_score + criteria_final_score
+  end
+
+  def cursame_final_score
+    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
+  end
+
+  def criteria_final_score
+    self.members_in_course_criteria.inject(0) { |score, criteria| score + criteria.grade.score * (criteria.evaluation_criterium.evaluation_percentage/100.0) }
   end
 
 end
