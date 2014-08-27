@@ -227,7 +227,7 @@ class MembersInCourse < ActiveRecord::Base
 
   # Generates the final grade in the course for this user, this method modifies this member in course.
   def evaluate!
-    if needs_grade?
+    if needs_grade? && !self.course.evaluation_criteria.blank?
       self.grade.destroy unless self.grade.nil?
     else
       self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
