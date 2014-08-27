@@ -71,7 +71,7 @@
               </span>
             </label>
           </div>
-
+          <br>
           <div class="profile-image">
             <span class="avatar-holder">
               <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
@@ -83,6 +83,10 @@
               </span>
             </label>
           </div>
+          <% unless create %>
+            <br>
+            <%= link_to "Eliminar curso permanente.", @course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
+          <% end %>
         </div>
       </div>
     </div>

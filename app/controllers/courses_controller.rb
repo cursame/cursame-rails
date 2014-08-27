@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   include CoursesUtils
   include FiltersUtils
   before_filter :filter_protection, only: [:show, :edit, :destroy, :members]
-  before_filter :course_activated, only: [:show, :about, :members, :library]
+  before_filter :course_activated, only: [:show, :about, :members, :library, :closure, :evaluation_schema]
   before_filter :validations, only: :evaluation_schema
   filter_access_to :show
 
@@ -272,16 +272,11 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
-    @course = Course.find(params[:id])
+    @course = Course.find_by_id(params[:id])
     @course.destroy
 
-    respond_to do |format|
-      format.html { redirect_to courses_path, notice: 'Curso borrado exitosamente.' }
-      format.json { head :no_content }
-    end
+    redirect_to courses_path, flash: { notice: 'Curso eliminado correctamente.' }
   end
 
   def members
@@ -297,7 +292,6 @@ class CoursesController < ApplicationController
       end
     end
   end
-
 
   def library
     @course = Course.find(params[:id])
@@ -381,23 +375,17 @@ class CoursesController < ApplicationController
   end
 
   def filter_protection
-    @course = Course.find(params[:id])
+    @course = Course.find_by_id(params[:id])
     @member = obtainMember(@course.id,current_user.id)
 
     if current_role == "admin" || current_role == "superadmin"
     else
       if @member
-        if @member.accepted
-          # respond_to do |format|
-          #   format.js
-          #   format.html # show.html.erb
-          #   format.json { render json: @course }
-          # end
-        else
-          redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+        unless @member.accepted
+          redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
         end
       else
-        redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+        redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
       end
     end
   end
@@ -1019,10 +1007,10 @@ class CoursesController < ApplicationController
         Notification.create(:users => [member], :notificator => @course, :kind => 'course_deactivated')
       end
 
-      respond_to do |format|
-        #format.html
-        format.json
-        format.js
+      if @course.active_status
+        redirect_to(course_path(@course), flash: { success: "Tu curso #{@course.title} se activo correctamente." }) and return
+      else
+        redirect_to(courses_unpublished_path, flash: { notice: "Tu curso #{@course.title} se finalizo correctamente." }) and return
       end
     end
   end
@@ -1151,11 +1139,14 @@ class CoursesController < ApplicationController
   end
 
   def course_activated
-    @course = Course.find(params[:id])
-    if !@course.active_status && !@course.members_in_courses.find_by_user_id(current_user.id).owner
-      @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
-      @member = MembersInCourse.new
-      render :index
+    @course = Course.find_by_id(params[:id])
+
+    unless current_user.admin?
+      if ! @course.active_status && @course.owner?(current_role, current_user)
+        redirect_to(courses_unpublished_path, flash: { notice: "#{@course.title} ha finalizado, lo puedes activar en el menu de opciones del curso." }) and return
+      elsif ! @course.active_status && current_user.student?
+        redirect_to(courses_all_path, flash: { notice: "El curso #{@course.title} ha finalizado, contacta al profesor para más información." }) and return
+      end
     end
   end
 

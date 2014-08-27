@@ -8,6 +8,12 @@
     position: relative;
     margin: 0px -1px;
 
+    .admin-buttons {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
     .profile-avatar {
       padding: 3px;
       position: absolute;

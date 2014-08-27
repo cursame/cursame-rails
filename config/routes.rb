@@ -123,6 +123,9 @@ Cursame30Lb::Application.routes.draw do
   get '/courses/:id/evaluation-schema', :to =>  'courses#evaluation_schema', :as => :course_evaluation_schema
   get '/courses/:id/closure', :to =>  'courses#closure', :as => :course_closure
   get '/courses/:course_id/closure/:member_id', :to => 'courses#closure_user_overview', :as => :closure_user_overview
+  get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
+  get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
+  match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
 
   resources :courses do
     resources :assignments
@@ -158,13 +161,6 @@ Cursame30Lb::Application.routes.draw do
 
   # Awaiting_confirmation
   get "awaiting_confirmation/:user_id", :to => "networks#awaiting_confirmation"
-
-  ##### cambiando el status de un curso
-  get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
-  ##### clonar curso
-
-  get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
-  match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
 
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses

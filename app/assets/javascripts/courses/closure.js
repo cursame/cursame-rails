@@ -19,10 +19,9 @@ $(function() {
       };
     });
 
+    console.log(cursamePercentage);
     var cursameScore = (cursamePercentage / 100.0 ) * parseFloat(cursameScore.text()),
         finalScore = criteriaScore + cursameScore;
-
-    console.log(cursameScore, criteriaScore, finalScore);
 
     if ( finalScore > 10 || finalScore < 0 || criteriaScore < 0 || criteriaScore > 10 ) {
       Notice('error', 'La calificación final no puede ser superior a 10 o menor a 0.')

@@ -69,7 +69,7 @@ module CoursesUtils
   end
 
   def course_exist?(course)
-    return redirect_to root_path, flash: { error: "El curso que estas intentando ver no existe o fue borrado."} if course.nil?
+    redirect_to(root_path, flash: { error: "El curso que estas intentando ver no existe o fue borrado."}) and return if course.nil?
   end
 
   def user_is_owner?(course, user, role)

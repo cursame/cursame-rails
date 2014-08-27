@@ -129,6 +129,6 @@ class MembersInCoursesController < ApplicationController
     members_in_course.evaluate!
     # TODO: enviar correo al usuario
     Notification.create users: [members_in_course.user], notificator: members_in_course.grade, kind: 'course_grade'
-    redirect_to closure_user_ovMerview_path(params[:course_id], params[:member_id]), flash: { success: 'Alumno se ha calificado correctamente.' }
+    redirect_to closure_user_overview_path(params[:course_id], params[:member_id]), flash: { success: 'Alumno se ha calificado correctamente.' }
   end
 end

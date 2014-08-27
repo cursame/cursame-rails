@@ -169,6 +169,10 @@
     tbody td {
       padding: 20px 10px;
 
+      &.criterium {
+        width: 70%;
+      }
+
       .score-field {
         width: 150px;
         max-width: 150px;
