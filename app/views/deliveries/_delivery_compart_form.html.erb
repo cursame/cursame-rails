@@ -117,7 +117,7 @@
         </li> -->
         <li>
           <% if in_form != 'course'%>
-            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false, :hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :in_type => in_type } %>
           <% else %>
             <%# courses = @discussion.courses.build %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
