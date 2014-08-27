@@ -104,7 +104,15 @@
       
       <% unless active_edit %> 
       <li>
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :extra_style => 'margin-top:4px', :in_type => in_type } %>
+        <% if in_form != 'course' %>
+          <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true, :defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
+        <%else%>
+
+          <%#= hidden_field_tag "commentable_type", 'Course'%>
+          <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
+
+        <%end%>
+        <%#= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :extra_style => 'margin-top:4px', :in_type => in_type } %>
       </li>
       <% end %>
       
