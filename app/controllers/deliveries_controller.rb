@@ -122,11 +122,11 @@ class DeliveriesController < ApplicationController
   def create
     puts params[:asset]
     courses = courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
-    @course = Course.find_by_id(courses[0])
     @publication = []
     @error = false
 
     if courses && !courses.empty?
+      @course = Course.find_by_id(courses[0])
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
         @delivery.courses = [Course.find_by_id(course)]

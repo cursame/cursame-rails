@@ -118,10 +118,9 @@ class SurveysController < ApplicationController
     @survey.network = current_network
 
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
-    @course = Course.find_by_id(courses[0])
 
     if courses && !courses.empty?
-
+      @course = Course.find_by_id(courses[0])
       courses.each { |course_id| @survey.courses.push(Course.find_by_id(course_id)) }
 
       if @survey.save
