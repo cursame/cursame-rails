@@ -225,10 +225,10 @@ class MembersInCourse < ActiveRecord::Base
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
+  # Generates the final grade in the course for this user, this method modifies this member in course.
   def evaluate!
-    if self.members_in_course_criteria.count < update_members_in_course_criteria.count
-      self.members_in_course_criteria = update_members_in_course_criteria
-      self.grade = nil
+    if needs_grade? && !self.course.evaluation_criteria.blank?
+      self.grade.destroy unless self.grade.nil?
     else
       self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
     end
@@ -236,22 +236,22 @@ class MembersInCourse < ActiveRecord::Base
   end
 
   private
-  def update_members_in_course_criteria
-    self.course.evaluation_criteria.map do |criteria|
-      member = MembersInCourseCriterium.where(members_in_course_id: self, evaluation_criterium_id: criteria).first
-      member ||= MembersInCourseCriterium.new members_in_course: self, evaluation_criterium: criteria
-    end
+  # Returns true if grade for this member in course needs to be recalculated.
+  def needs_grade?
+    self.course.evaluation_criteria.inject(false) { |needs_grade,criteria| needs_grade || MembersInCourseCriterium.find_by_members_in_course_id_and_evaluation_criterium_id(self,criteria).nil? }
   end
 
-  private
+  # Returns the final score of the course for this user.
   def course_final_score
     cursame_final_score + criteria_final_score
   end
 
+  # Returns the cursame final score.
   def cursame_final_score
     self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
   end
 
+  # Returns the criteria final score.
   def criteria_final_score
     self.members_in_course_criteria.inject(0) { |score, criteria| score + criteria.grade.score * (criteria.evaluation_criterium.evaluation_percentage/100.0) }
   end
