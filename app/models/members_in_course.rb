@@ -238,7 +238,7 @@ class MembersInCourse < ActiveRecord::Base
   private
   # Returns true if grade for this member in course needs to be recalculated.
   def needs_grade?
-    self.members_in_course_criteria.inject(false) { |grade, criteria| grade || criteria.grade.nil? || criteria.grade.score.blank? }
+    self.course.evaluation_criteria.inject(false) { |needs_grade,criteria| needs_grade || MembersInCourseCriterium.find_by_members_in_course_id_and_evaluation_criterium_id(member, criteria).nil? }
   end
 
   # Returns the final score of the course for this user.

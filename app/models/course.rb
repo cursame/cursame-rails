@@ -2,7 +2,6 @@
 class Course < ActiveRecord::Base
 
   has_many :members_in_courses, dependent: :destroy
-  has_many :response_to_the_evaluations, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :activities, as: :activitye
   has_many :assignments
