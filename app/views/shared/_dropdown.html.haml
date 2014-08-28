@@ -31,7 +31,7 @@
               %li
                 %label
                   = avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no")
-                  = check_box_tag 'delivery[course_ids][]', course.id, false, class: 'course-selector-js'
+                  = check_box_tag 'delivery[course_ids][]', course.id, false, class: 'course-selector-js', style: 'display: block;'
                   = truncate( course.title, omission: "...", length: 17)
                   = icon('checked-16')
           - else
@@ -54,20 +54,13 @@
           titleDropdown = dropdown.find('#title-dd');2
 
       dropdown.find('#icon-dd-public').click(function() {
-        dropdown.find('input:checkbox').val(1);
-        dropdown.find('label').removeClass('active');
+        cleanCoursesSelectorDropdown(dropdown);
         $(this).addClass('active');
-
+        $(this).find('#is_public').prop('checked', true);
         titleDropdown.text('Público').prepend($('<i class="i i-public-new-publication"></i>'));
       });
 
-      dropdown.find('#icon-dd-user').click(function() {
-        dropdown.find('input:checkbox').removeAttr('checked');
-        titleDropdown.html( $(this).text() );
-      });
-
       dropdown.find('#icon-dd-course').click(function() {
-        dropdown.find('label').removeClass('active');
         dropdown.find('#box-selector-dd').hide();
         dropdown.find('#box-course-dd').show();
       });
@@ -83,6 +76,7 @@
             checkbox  = $this.find('input[type="checkbox"]'),
             isPublicCheckbox = dropdown.find('.target-selector input[name=is_public]');
         
+        dropdown.find('#icon-dd-public').removeClass('active');
         isPublicCheckbox.val(0);
         titleDropdown.text('Cursos').prepend( $('<i class="i i-course-new-publication"></i>') );
 
