@@ -12,14 +12,14 @@ class MembersInCourseCriterium < ActiveRecord::Base
 	accepts_nested_attributes_for :grade
 
 	after_create do
-		update_grade
+		evaluate_member!
 	end
 
 	after_update do
-		update_grade
+		evaluate_member!
 	end
 
-	def update_grade
+	def evaluate_member!
 		self.members_in_course.evaluate!
 	end
 

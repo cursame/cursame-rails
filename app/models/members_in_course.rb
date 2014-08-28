@@ -225,39 +225,17 @@ class MembersInCourse < ActiveRecord::Base
 
   handle_asynchronously :import, :priority => 20, :run_at => Proc.new{Time.zone.now}
 
-  # Generates the final grade in the course for this user, this method modifies this member in course.
-  # def evaluate!
-  #   puts "MembersInCourse : evaluate!"
-  #   if self.course.evaluation_criteria.blank? || needs_new_grade?
-  #     self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
-  #   elsif grades_are_missing?
-  #     self.grade.destroy unless self.grade.nil?
-  #   else
-  #     self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
-  #   end
-  #   self.save!
-  # end
+  def destroy_grades
+    self.members_in_course_criteria.each { |criteria|criteria.destroy }
+    self.grade.destroy unless self.grade.nil?
+  end
 
   def evaluate!
-    puts "MembersInCourse : evaluate!"
-    if grades_are_missing?
-      self.grade.destroy unless self.grade.nil?
-    else
-      self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
-    end
+    self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
     self.save!
   end
 
   private
-  # Returns true if grade for this member in course needs to be recalculated.
-  # def needs_new_grade?
-  #   self.grade.nil? || self.grade.score != course_final_score
-  # end
-
-  def grades_are_missing?
-    self.course.evaluation_criteria.inject(false) { |needs_grade,criteria| needs_grade || MembersInCourseCriterium.find_by_members_in_course_id_and_evaluation_criterium_id(self,criteria).nil? }
-  end
-
   # Returns the final score of the course for this user.
   def course_final_score
     cursame_final_score + criteria_final_score
