@@ -4,7 +4,7 @@
   <% @discussion=Discussion.new %>
 <% end %>
 
-<%= form_for(@discussion, remote: true, html: { class: "discussion-form-js", id: form_reference_id, data: { post_type: 'Discussion' } }) do |f| %> 
+<%= form_for(@discussion, remote: true, html: { class: "new-discussion-form discussion-form-js", id: form_reference_id, data: { post_type: 'Discussion' } }) do |f| %> 
   <%= hidden_field_tag 'in_form', in_form%>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
@@ -27,7 +27,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title, placeholder: 'Ejemplo: Números primos', minlength: 4, required: "required" %>
+          <%= f.text_field :title, placeholder: 'Ejemplo: Números primos', required: "required" %>
         </div>
       </div>
     </div>
@@ -126,11 +126,11 @@
     <% if @active_edit == false %>
       <ul class="list-buttons right fr">
         <li>
-          <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", onClick: 'removeSliderEvaluation();' %>
+          <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab" %>
         </li>
         <li>
           <% if in_form != 'course'%>
-            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :hasGroups => true, :hasUser => true,:defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
           <% else %>
             <% courses = @discussion.courses.build %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
@@ -156,3 +156,54 @@
     <%end%>
   </div>
 <% end %>
+
+<script>
+  $(function() {
+
+    $('#pk_menu').on('change', '#discussion_evaluable', function(event) {
+      var $this = $(this),
+          form = $this.closest('form'),
+          containerFields = form.find('div.evaluable-fields-js');
+
+      var checked = $this.prop('checked');
+
+      var publish_date = form.find('#discussion_publish_date')[0],
+          end_date = form.find('#discussion_end_date')[0];
+
+      if ( !checked ) {
+        $this.removeClass('active');
+        containerFields.hide();
+        publish_date.required = false;
+        end_date.required = false;
+      } else {
+        $this.addClass('active');
+        containerFields.show();
+        publish_date.required = true;
+        end_date.required = true;
+      };
+    });
+
+    $('form.discussion-form-js').validate({
+      submitHandler: function(form) {
+        var $form = $(form),
+            evaluable = $form.find('input.evaluable-fields-trigger-js'),
+            error = 0;
+
+        if ( evaluable.is(':checked') ) {
+          var is_public = $form.find('input[name=is_public]');
+          if ( is_public.val() == 1 ) {
+            error = 1;
+          }
+        }
+
+        if ( ! error ) {
+          $form.ajaxSubmit();
+        } else {
+          Notice('error', 'No puedes crear una discusión calificable sin un curso.');
+          return false;
+        };
+      }
+    });
+
+  });
+</script>

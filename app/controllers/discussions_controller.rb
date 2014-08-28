@@ -116,7 +116,6 @@ class DiscussionsController < ApplicationController
         @discussion.courses = [Course.find_by_id(courseId)]
 
         if @discussion.save
-          puts @discussion.id
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
           @az = @discussion
           @typed = "Discussion"

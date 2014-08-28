@@ -1,58 +1,21 @@
-function cleanPublicationForm () {
-  // e.preventDefault();
-
-  var newPublicationBox = $('.new-publication');
-  newPublicationBox.find('div.tab-content').hide()
-  newPublicationBox.find('div#comment-tab-content').show();
-  newPublicationBox.find('div.tabs-buttons .tab').removeClass('active');
-  newPublicationBox.find('div.tabs-buttons .tab[data-id-target="comment-tab-content"]').addClass('active');
-  
-  // Comments
-  $('#comment').val('');
-
-  // Delivery
-  $('#delivery_title').val('');
-  $('.delivery_end_date').val('');
-  $('.delivery_publish_date').val('');
-  $('#delivery_description').val('');
-  $('#delivery_porcent_of_evaluation').val('');
-  $('[id^=delivery_evaluation_criteria_attributes]').parent().remove();
-
-  // Discussion
-  $('#discussion_title').val('');
-  $('#discussion_description').val('');
-  $('#discussion_evaluable').prop('checked',false);
-  $('#discussion_evaluable').change();
-  $('#discussion_publish_date').val('');
-  $('#discussion_end_date').val('');
-  $('[id^=discussion_evaluation_criteria_attributes]').parent().remove();
-
-  // Survey
-  var question_child = $('#survey-tab-content').find('[id="box-question-child"]');
-  // var question_input_field = $('#survey-tab-content').find('.question-input-field').parent();
-  var request_fields = $('#survey-tab-content').find('.request-field');
-  // var add_request = $('#survey-tab-content').find('.add-request');
-  question_child.slice(1).remove();
-  // question_input_field.slice(1).remove();
-  request_fields.slice(1).remove();
-  // add_request.slice(1).remove();
-  request_fields.first().find('#survey_questions_attributes_0_answers_attributes_0_content').val('');
-  request_fields.first().find('#survey_questions_attributes_0_answers_attributes_0_correct').prop('checked',false)
-  $('#survey_questions_attributes_0_content').val('');
-  $('#survey_name').val('');
-  $('.survey_publish_date').val('');
-  $('.survey_end_date').val('');
-}
 
 // Adding and removing questions answers
 function remove_fields(link, toId) {
   if(toId == '#box-question') {
-    $(link).closest('.question-field').remove();
-    changeNumbers('#box-question', '#question-num');
+
+    if ( $(link).closest('.question-field').siblings().length > 0 ) {
+      $(link).closest('.question-field').remove();
+      changeNumbers('#box-question', '#question-num');
+    } else {
+      Notice('error', 'Los custionarios deben de tener como minimo una pregunta.')
+    };
+
   } else if( toId =='#box-request' ) {
+
     var grandfather = $(link).parent().parent().parent();
     $(link).parent().parent().remove();
     changeNumbers(grandfather, '#request-num');
+
   };
 };
 

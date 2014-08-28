@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
-    @user_show = true
     @course = Course.new
     @delivery = Delivery.new
     @survey = Survey.new

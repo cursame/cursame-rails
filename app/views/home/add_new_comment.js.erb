@@ -2,9 +2,7 @@
 
   <% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
 
-    // $('#comment').val('');
     $('#timeline').prepend('<%= escape_javascript(render( partial: "comments/shared/comment_card", locals: { post_comment: @comment, card_type: :post_publication, wall: @publication } ))%>');
-    $('#pk_menu').html('<%= escape_javascript(render(:partial => 'shared/post_menu', :locals => {:in_form => params[:in_form]})) %>');
 
   <% else #si se tiene que agregar a nivel de los coments %>
 
@@ -19,14 +17,17 @@
     
   <% end %>
 
-  Notice('success', 'Se ha creado un comentario');
-  // cleanPublicationForm();
-
-
   <% if @comment.commentable_type == 'User' %>
-  <%  @user_show = true 
-      @user_l = @comment.commentable %>
+
+    <%
+      @user_show = true 
+      @user_l = @comment.commentable
+    %>
+
   <% end %>
+
+  Notice('success', 'Se ha creado un comentario');
+  newPublicationCleaner();
 
 <% else # Es editar %>
   var postBox = $('div[data-wall-id="<%= @publication.id %>"]'),

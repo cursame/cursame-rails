@@ -137,13 +137,9 @@ class SurveysController < ApplicationController
         @typed = "Survey"
         activation_activity
       end
-
     else
       @error = true
     end
-
-    puts '-----------------'
-    puts @publication
 
     respond_to do |format|
       format.js
