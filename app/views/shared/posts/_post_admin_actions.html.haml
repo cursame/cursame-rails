@@ -1,3 +1,4 @@
+= "#{params[:controller]}-#{params[:action]}"
 - if post.owner?(current_role, current_user)
   .post-box-main-admin-actions
     .dropdown-wrap
@@ -7,6 +8,6 @@
         %i.tip
         %ul
           %li
-            = link_to "Borrar", destroy_wall_path(wall.id, from: params[:controller]), remote: true, confirm: "¿Estas seguro de borrar esto?"
+            = link_to "Borrar", destroy_wall_path(wall.id, deleted_from: "#{params[:controller]}-#{params[:action]}"), remote: true, confirm: "¿Estas seguro de borrar esto?"
           %li
             = link_to "Editar", edit_wall_path(type: wall.publication_type, id: wall.publication_id), remote: true, class: 'edit-publication-link'

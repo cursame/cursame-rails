@@ -1,9 +1,10 @@
-console.log('<%= @from %>')
-<% if @from == 'deliveries' || @from == 'discussions' || @from == 'surveys' || @from == 'comments' %>
+
+<% if @deleted_from == 'discussions-show' || @deleted_from == 'deliveries-show' || @deleted_from == 'surveys-show' || @deleted_from == 'comments-show' %>
+  <% flash.keep %>
   window.location = '/';
 <% else %>
-  $('div[data-wall-id="<%= @id %>"]').slideUp(300, function() {
+  $('div[data-wall-id=<%= @id %>]').slideUp(300, function() {
     $(this).remove();
   });
-  Notice('success', 'Se ha borrado correctamente la publicación.');
+  Notice('success', '<%= flash[:success] %>');
 <% end %>

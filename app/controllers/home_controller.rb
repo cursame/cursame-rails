@@ -290,14 +290,16 @@ class HomeController < ApplicationController
   end
 
   def destroy_wall
-    @from = params[:from]
     publication = Wall.find_by_id(params[:id])
+    @deleted_from = params[:deleted_from]
 
     if !publication.nil?
       publication.publication.destroy
       @id = publication.id
     end
 
+    flash.now[:success] = "Se ha borrado correctamente la publicación."
+    
     respond_to do |format|
       format.js
     end

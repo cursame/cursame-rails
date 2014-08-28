@@ -77,3 +77,10 @@ function cleanCoursesSelectorDropdown(dropdown) {
     $(checkbox).prop('checked', false).parent('label').removeClass('active');
   });
 };
+
+$(function() {
+  $('.cancel-post-form_tab').click(function(event) {
+    event.preventDefault();
+    newPublicationCleaner();
+  });
+});
