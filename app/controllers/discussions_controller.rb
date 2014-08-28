@@ -190,7 +190,9 @@ class DiscussionsController < ApplicationController
   def validations
     @discussion = Discussion.find_by_id(params[:id])
     redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
-    course_member?(current_user, @discussion.courses.first)
+    unless @discussion.courses.empty?
+      course_member?(current_user, @discussion.courses.first)
+    end
   end
 
   private
