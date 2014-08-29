@@ -1,0 +1,5 @@
+<% unless @discussion.nil? %>
+  createModal('<%= escape_javascript(render(partial: "discussions/shared/discussion_modal", locals: { discussion: @discussion }))%>');
+<% else %>
+  Notice('error', 'La discusión que tratas de ver ya no existe, ponte en contacto con el profesor del curso.')
+<% end %>

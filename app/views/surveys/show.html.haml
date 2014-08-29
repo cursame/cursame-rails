@@ -1,0 +1,6 @@
+.standalone-post.post-show-js
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          = render partial: 'surveys/shared/survey_card', locals: { survey: @survey, card_type: :post_publication, wall: @wall }

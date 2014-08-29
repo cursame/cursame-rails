@@ -1,30 +1,20 @@
 
-<div class="content-in-assignment">
-  <div id="box_for_loads<%=typeo%>" >
-    <div id="content_killer<%=typeo%>_<%= id %>" class="content_killer">
-    
-    </div>
-    <div id="choser<%=typeo%>_<%= id %>" class="choser publication-assets">
-      <% acces_to.assets.each do |asset|%>
-        <div class="file-mini-upload publication-asset">
-          <%= link_to asset.file.to_s, target: "_blank", class: "fl" do %>
-            <%= icon('upload-asset-blue') %> <%= truncate((asset.file).to_s.split('/').last, :omission => "...", :length => 50) %>
-          <% end %>
-          <%= link_to "Borrar","/assets/"+asset.id.to_s, :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :onclick => "$(this).parent().remove();", :class => "fr" %>
-        </div>
-      <% end %>
-
-      <% acces_to.contents.each do |content|%>
-        <% unless content.id.nil? %>
-          <div class="file-mini-upload publication-asset publication-content" id="<%= content.id %>">
-            <%= link_to content.content, target: "_blank", class: "fl" do %>
-              <%= icon('dropbox-asset-blue') %> <%= truncate(content.content, :omission => "...", :length => 50) %>
-            <% end %>
-            <%= link_to "Borrar", destroy_content_path( content.id ), :confirm => '¿Eliminar contenido?', :remote => true, :class => "fr" %>
-          </div>
-        <% end %>
-      <% end %>
-
-    </div>
+<% acces_to.assets.each do |asset|%>
+  <div class="file-mini-upload publication-asset">
+    <%= link_to asset.filename.file.identifier, target: "_blank", class: "fl" do %>
+      <%= icon('upload-asset-blue') %> <%= asset.filename.file.identifier %>
+    <% end %>
+    <%= link_to "Borrar","/assets/"+asset.id.to_s, :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :onclick => "$(this).parent().remove();", :class => "fr" %>
   </div>
-</div>
+<% end %>
+
+<% acces_to.contents.each do |content|%>
+  <% unless content.id.nil? %>
+    <div class="file-mini-upload publication-asset publication-content" id="<%= content.id %>">
+      <%= link_to content.content, target: "_blank", class: "fl" do %>
+        <%= icon('dropbox-asset-blue') %> <%= truncate(content.content, :omission => "...", :length => 50) %>
+      <% end %>
+      <%= link_to "Borrar", destroy_content_path( content.id ), :confirm => '¿Eliminar contenido?', :remote => true, :class => "fr" %>
+    </div>
+  <% end %>
+<% end %>

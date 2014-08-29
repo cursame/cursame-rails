@@ -18,5 +18,4 @@ class FileUploader < CarrierWave::Uploader::Base
       true
   end
 
- 
 end

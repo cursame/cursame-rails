@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     #helper methods in aplication controller
     pertenence!
     links
-    @user_show = true
     @course = Course.new
     @delivery = Delivery.new
     @survey = Survey.new
@@ -28,10 +27,6 @@ class UsersController < ApplicationController
 
     @course_count = Course.count
     @member =   @user_l.members_in_courses.where(:owner => true)
-
-    #==== Areas de evaluación ====
-    @areas_of_evaluation = AreasOfEvaluation.new
-    areas_of_evaluations = @delivery.areas_of_evaluations.build
 
     ### publicando comentarios en el show de users
     @network_comments = current_network.comments
@@ -90,11 +85,6 @@ class UsersController < ApplicationController
 
   def courses
     @user_l= User.find_by_personal_url(params[:personal_url])
-
-  end
-
-  def califications
-    @courses = current_user.courses
   end
 
   def friends

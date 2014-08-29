@@ -119,11 +119,12 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1.json
   def destroy
     @friendship = Friendship.find_by_user_id_and_friend_id(params[:id],current_user.id)
-    if @friendship.nil? then
-      @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
+    @friendship ||= Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
+    unless @friendship.nil?
+      @friendship.destroy
+      redirect_to :back, flash: { success: "Se ha eliminado al usuario de tus amigos" }
+    else
+      redirect_to :back, flash: { error: "Error al eliminar al usuario de tus amigos" }
     end
-    
-    @friendship.destroy
-    redirect_to :back
   end
 end

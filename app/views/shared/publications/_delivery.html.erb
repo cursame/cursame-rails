@@ -12,13 +12,13 @@
     <p>Nueva tarea para entregar en el curso <%= link_to delivery_post[:posted_in_for], course_path(delivery_post[:posted_in_for_id]) %></p>
   </div>
   <div class="academic-title">
-    <h3 class="title"><%= link_to delivery_post[:name], show_template_on_modal_path(:id => publication.id, :type => 'wall'), :remote => true, data: "modal"%></h3>
+    <h3 class="title"><%= link_to delivery_post[:name], delivery_modal_path(publication.publication.id), :remote => true %></h3>
   </div>
   <div class="academic-desc">
     <p>Entregar antes del <%= pretty_date_format(publication.publication.end_date) %></p>
   </div>
   <div class="academic-button">
-    <%= link_to 'Abrir tarea', show_template_on_modal_path(:id => publication.id, :type => 'wall'), :remote => true, class: "btn btn-transparent uppercase", data: "modal"%>
+    <%= link_to 'Abrir tarea', delivery_modal_path(publication.publication.id), :remote => true, class: "btn btn-transparent uppercase" %>
   </div>
 </div>
 <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: true} %>

@@ -48,12 +48,16 @@ class AssignmentsController < ApplicationController
   # POST /assignments
   # POST /assignments.json
   def create
+    ## ALERT!! Esto no se está utilizando al parecer, el assignment se crea en 'courses_controller#assignment'
     @assignment = Assignment.new(params[:assignment])
     @assignment.user_id = current_user.id
     @asset = Asset.new(params[:asset])
     @asset.save!
 
     if @assignment.save
+      # users = self.delivery.courses.first.owners
+      # notification = Notification.create(:notificator => self, :users => users, :kind => 'new_assignment_on_delivery')
+      # Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_assignment_on_delivery'
 
       if(params[:files])
         params[:files].each do |asset_id|
@@ -65,11 +69,10 @@ class AssignmentsController < ApplicationController
       @publication = Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id)
       @delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-      @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
+      @delivery_from_assignment.evaluation_criteria.each_with_index do | generate_rubres, index |
         @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
         @response_to_the_evaluation.name = generate_rubres.name
         @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
         @response_to_the_evaluation.assignment_id = @assignment.id
         @response_to_the_evaluation.save
       end
@@ -85,44 +88,18 @@ class AssignmentsController < ApplicationController
   end
 
   def update
-    @assignment = Assignment.find(params[:id])
+    @assignment = Assignment.find_by_id params[:id]
 
-    if @assignment.response_to_the_evaluations.count != 0
-      # con rubros
-      if @assignment.update_attributes(params[:assignment])
-        @assignment.response_to_the_evaluations.each do |docificate|
-          ###### se actualiza el valor del rubro con respecto a la califiación
-          #### alfredot_rifa_free_pro_forever
-          @valor_total = docificate.evaluation_porcentage
+    @assignment.update_attributes params[:assignment]
 
-          @valor_recibido = docificate.figure
-
-          @division = (@valor_recibido)/100.0000
-
-          @resultado =   @division.to_f * @valor_total.to_f
-
-          docificate.rub_calification = @resultado
-          docificate.save
-
-        end
-        @sum_value_to_accomplishment =  @assignment.response_to_the_evaluations.sum(:rub_calification)
-        @assignment.accomplishment =  @sum_value_to_accomplishment
-        @assignment.save
-      end
+    if @assignment.update_attributes params[:assignment]
+      Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_accomplishment_on_assignment'
+      the_flash = { success: "Se ha calificado correctamente la tarea." }
     else
-      # sin rubros
-      @assignment.rub_calification = (params[:assignment])[:rub_calification].to_f
-      @assignment.accomplishment = @assignment.rub_calification
-      @assignment.save
+      the_flash = { error: "Ha ocurrido un error al calificar la tarea." }
     end
 
-    url = evaluate_delivery_response_path(@assignment)
-
-    if @assignment.save
-      redirect_to url, flash: { success: "Se ha calificado correctamente la tarea." }
-    else
-      redirect_to url, flash: { error: "Ha ocurrido un error al calificar la tarea." }
-    end
+    redirect_to evaluate_delivery_response_path(@assignment), flash: the_flash
   end
 
   def destroy
@@ -134,7 +111,7 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def delivery_responce
     respond_to do |format|
       format.js

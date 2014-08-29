@@ -8,9 +8,8 @@
   </div>
 
   <div class="comment-main">  
-
     <%= form_tag "/home/add_new_comment", :class => "default-form comment-form", :id => random_id, :remote =>true do %>
-      <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required', :class => 'activable autogrow new-comment-textarea new-comment-trigger' %>
+      <%= text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :id => "comment_for_"+commentable_type+commentable_id.to_s, :required => 'required', :class => 'autogrow new-comment-textarea new-comment-trigger' %>
       <%= hidden_field_tag 'commentable_id', commentable_id %>
       <%= hidden_field_tag 'commentable_type', commentable_type %>
       <%= hidden_field_tag 'from_enter_key', true %>

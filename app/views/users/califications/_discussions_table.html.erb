@@ -1,0 +1,47 @@
+<div class="course-califications-section">
+  <div class="course-califications-section-title">
+    <h4><%= icon 'activity-discussion' %> Discusiones</h4>
+  </div>
+  <% unless member.discussions_evaluation.nil? || member.discussions_evaluation.empty? %>
+    <table border="1" cellpadding="3" cellspacing="3">
+      <thead>
+        <tr>
+          <th colspan="2">Discusión</th>
+          <th>Calificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% member.discussions_evaluation.each_with_index do |discussion_evaluation, index| %>
+          <tr <%= "class='even'" if !index.odd? %>>
+            <td colspan="2">
+              <%= link_to discussion_evaluation[:discussion].title, discussion_modal_path(discussion_evaluation[:discussion].id), remote: true %>
+            </td>
+            <td style="width: 120px;">
+              <% if discussion_evaluation[:discussion_response].nil? %>
+                Sin participación
+              <% elsif discussion_evaluation[:discussion_response].grade.nil? %>
+                No calificada
+              <% else %>
+                <span class="number"><%= evaluation_score discussion_evaluation[:discussion_response].grade.score %></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="course-califications-section-footer">
+      <div class="cali-section">
+        <div class="title">
+          <h5>Calificación promedio en discusiones:</h5>
+        </div>
+        <span class="score">
+          <%= evaluation_score member.discussions_average %>
+        </span>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-califications">
+      <h6>Aún no hay discusiones evaluables en este curso.</h6>
+    </div>
+  <% end %>
+</div>

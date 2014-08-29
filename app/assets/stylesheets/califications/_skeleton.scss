@@ -32,7 +32,6 @@
 }
 
 .course-califications-section {
-  margin-top: 10px;
   
   .no-califications {
     padding: 40px 0;
@@ -43,16 +42,22 @@
 
   .course-califications-section-footer {
     @include clearfix;
+    
+    .title {
+      float: left;
+      padding: 15px 10px;
+    }
 
-    .cali-section {
+    .score {
       float: right;
-      padding: 10px;
-    } 
+      width: 120px;
+      padding: 14px 10px;
+    }
   }
 }
 
 .user-califications-wrap {
-  margin-top: 10px;
+  margin-bottom: 10px;
 
   .user-califications-header {
     padding: 10px;
@@ -96,4 +101,70 @@ table {
   tbody tr td {
     padding: 8px 10px;
   }
+}
+
+.califications-courses {
+  margin-bottom: 20px;
+}
+
+.califications-course-members {
+  .member-calification {
+    padding: 15px 10px;
+
+    .avatar-holder {
+      float: left;
+    }
+
+    .member-calification-main {
+      margin: 3px 0 0 55px;
+    }
+  }
+
+  a {
+    display: block;
+    @include clearfix;
+  }
+}
+
+.member-score-overview {
+  padding: 10px;
+  margin-bottom: 20px;
+  @extend .basic-container-style;
+
+  .member-score-overview-user {
+    margin-bottom: 10px;
+    @include clearfix;
+
+    .avatar-holder {
+      float: left;
+    }
+
+    .member-score-overview-user-main {
+      margin: 2px 0 0 55px;
+    }
+  }
+
+  .member-score-overview-main {
+    .course-califications-section {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.standalone-member-calification {
+  .course-califications-section {
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.califications {
+  margin-bottom: 20px;
 }

@@ -1,0 +1,174 @@
+<div class="overlay-header">
+  <div class="overlay-icon">
+    <%= icon('section-deliveries') %>
+  </div>
+  <div class="overlay-title">
+    <h6>
+      Tarea en el curso <%= link_to delivery.courses.first.title, course_path(delivery.courses.first) %>
+    </h6>
+    <span>Entregar antes del <%= pretty_date_format delivery.end_date %></span>
+  </div>
+  <div class="close-overlay"><%= icon('x-close') %></div>
+</div>
+
+<div class="delivery-overlay-content">
+  <div class="overlay-content">
+    <h3><%= delivery.title %></h3>
+    <%= delivery.description_html %>
+    
+    <div class="publication-assets"> 
+      <%= render :partial => "content/insertions_to_contents", :locals => { :type => delivery, :cl => "delivery"}%>
+
+      <% if delivery.assets.count > 0 %>
+        <div class="asset-box upload-label">
+          <% delivery.assets.each do |files|%>
+            <div class="file-mini-upload publication-asset">
+              <% @string = files.filename.file.identifier %>
+              <%= link_to "#{files.filename}" , :target => '_blank' do %> 
+                <%= icon('upload-asset-blue') %>
+                <%= truncate( @string, :omission => "...", :length => 72) %>
+              <% end %>
+            </div>
+          <%end%>
+        </div>
+      <% end %>
+
+    </div>
+    
+    <% if delivery.evaluation_criteria.count > 0 %>
+      <div class="evaluation-box" style="height: 50px">
+        <div id="chart-delivery-<%= delivery.id %>" style="height: 50px"></div>
+        <script type="text/javascript">
+          $(function () {
+            var chart;
+
+            $(document).ready(function () {
+              chart = new Highcharts.Chart({
+                  chart: {
+                      renderTo: 'chart-delivery-<%= delivery.id %>',
+                      type: 'bar',
+                      marginBottom: 25,
+                      spacingTop: -5
+                  },
+                  credits: {
+                      enabled: false
+                  },
+                  title: {
+                      text: ''
+                  },
+                  xAxis: {
+                      lineWidth: 0,
+                      minorGridLineWidth: 0,
+                      lineColor: 'transparent',
+                      labels: {
+                          enabled: false
+                      },
+                      minorTickLength: 0,
+                      tickLength: 0
+                  },
+                  yAxis: {
+                      min: 0,
+                      labels: {
+                          enabled: false
+                      },
+                      gridLineWidth: 0,
+                      reversed: true,
+                      title: {
+                          text: ''
+                      }
+                  },
+                  tooltip: {
+                      formatter: function () {
+                          return '' + this.series.name + ': ' + this.y + ' (' + Math.round(this.percentage) + '%)';
+                      }
+                  },
+                  plotOptions: {
+                      series: {
+                          stacking: 'percent'
+                      }
+                  },
+                  legend: {
+                      reversed: false,
+                      style: {
+                          fontFamily: 'monospace',
+                          color: "#fff"
+                      },
+                      backgroundColor: '#f7f7f9',
+                      layout: 'horizontal',
+                      floating: true,
+                      align: 'center',
+                      verticalAlign: 'bottom',
+                      y: 10,
+                      shadow: false,
+                      border: 0,
+                      borderRadius: 3,
+                      borderWidth: 1,
+                      lineHeight: 10,
+                      borderColor: '#bbbbd4',
+                      itemStyle: {
+                          fontSize: '10px',
+                          color: '#9696ac'
+                      },
+                      itemHoverStyle: {
+                          color: '#72728e',
+                          fontSize: '10px'
+                      }
+                  },
+                  series: [ <% @i = 1 %> <% delivery.evaluation_criteria.each do |areas| %> {
+                      name: '<%= areas.name %>',
+                      index: <%= @i %>
+                  }, <% @i = @i + 1 %> <% end %> ],
+                  exporting: false
+              });
+            });
+          });
+        </script>
+      </div>
+    <%end%>
+  </div>
+
+  <% delivery.courses.each do |course| %>
+    <% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
+    <% if @if_im_member != nil && @if_im_member.owner != true%>
+      <div class="overlay-footer">
+        <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty? %>
+          <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>">Entregar Tarea</a>
+        <% else %>
+          <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
+          <% if !assignment.nil? && !assignment.grade.nil? %>
+            <div class="delivery-results">
+              <div class="delivery-overall-result">
+                <div class="result"><%= assignment.grade.score %></div>
+                <h4>Calificación final obtenida</h4>
+              </div>
+              <% unless assignment.response_to_the_evaluations.empty? %>
+                <div class="delivered-delivery-rubres">
+                  <% assignment.response_to_the_evaluations.each_with_index do |delivery_rubre, index| %>
+                    <div class="delivered-delivery-rubre">
+                      <div class="rubre-main">
+                        <p><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <a href="#" class="show-delivery-form btn btn-medium btn-primary">Editar Entrega</a>
+          <%end%>                
+        <%end%>
+      </div>
+    <%end%>
+  <%end%>
+</div>
+
+<div class="delivery-overlay-submit-form" id="<%= delivery.id %>">
+  <div class="delivery-assignment-box" id="entrega-delivery-<%= delivery.id %>">
+    <% @delivery_id = delivery.id %>
+    <%= render :partial => "/assignments/form_for_delivery", :locals => {:delivery => delivery, :cargo => delivery.courses[0]} %>
+  </div>
+</div>
+
+<script>
+  $('.assignment-delevery-form').validate();
+</script>

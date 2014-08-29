@@ -1,23 +1,20 @@
-<% @active_edit = true %>
+var postBox = $('div[data-wall-id="<%= @wall_publication.id %>"]'),
+    postBoxEditDiv = postBox.find('div.post-box-edit'),
+    postBoxEditForm = postBoxEditDiv.find('div.post-edit-form-js');
+console.log(postBox);
 
-$('#<%= "#{@type}_id_#{@id}"%>_contribution').html('');
+<% case @type %>
+<% when "Delivery" %>
+  postBoxEditForm.html('<%= escape_javascript(render(:partial => "/deliveries/delivery_compart_form", :locals => {:delivery => @delivery, :active_edit => true })) %>');
 
-<% case %>
-  <% when @type == "Delivery" %>   
-    $('#<%= "#{@type}_id_#{@id}"%>_contribution').
-    html('<%= escape_javascript(render(:partial => '/deliveries/delivery_compart_form', :locals => {:delivery => @delivery, :active_edit => @active_edit })) %>');
+<% when "Survey" %>
+  postBoxEditForm.html('<%= escape_javascript(render(:partial => "/surveys/form", :locals => {:survey => @survey, :active_edit => true, :in_type => "survey" })) %>');
 
-  <% when @type == "Survey" %>
-     $('#<%= "#{@type}_id_#{@id}"%>_contribution').
-     html('<%= escape_javascript(render(:partial => '/surveys/form', :locals => {:survey => @survey, :active_edit => @active_edit, :in_type => "survey" })) %>');
-     console.log("Edit Survey");
+<% when "Comment"%>
+  postBoxEditForm.html('<%= escape_javascript(render(:partial => "shared/comment_form", :locals => {:commentable_id => @commentable_id, :commentable_type => @commentable_type, :comment_id => @comment.id, :comment => @comment.comment, :message => '', :active_edit => true})) %>');
 
-  <% when @type == "Comment"%>
-    $('#<%= "#{@type}_id_#{@id}"%>_contribution').
-    html('<%= escape_javascript(render(:partial => 'shared/comment_form', :locals => {:commentable_id => @commentable_id, :commentable_type => @commentable_type, :comment_id => @comment.id, :comment => @comment.comment, :message => '', :active_edit => @active_edit})) %>');
+<% when "Discussion" %>
+   postBoxEditForm.html('<%= escape_javascript(render(:partial => "discussions/form_for_discussion", :locals => {:discussion => @discussion, :active_edit => true })) %>');
+<% end %>
 
-  <% when @type == "Discussion"%>
-     $('#<%= "#{@type}_id_#{@id}"%>_contribution').
-     html('<%= escape_javascript(render(:partial => 'discussions/form_for_discussion', :locals => {:discussion => @discussion, :active_edit => @active_edit })) %>');
-<%end%>
-
+postBoxEditDiv.slideDown();

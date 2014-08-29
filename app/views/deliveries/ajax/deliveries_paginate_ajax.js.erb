@@ -1,0 +1,10 @@
+var content = '<%= escape_javascript( render( partial: "deliveries/shared/deliveries_list", locals: { deliveries: @deliveries } ) )%>';
+$('div.academic-activities-main .cols-12').append( content );
+
+<% if @deliveries.current_page < @deliveries.num_pages %>
+	var loadMoreContent = '<%= escape_javascript( render( partial: "deliveries/shared/deliveries_paginate_button", locals: { page: @next_page, type: @type, course: @course }) )%>';
+	$('div.load-more').html( loadMoreContent );
+<% else %>
+	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: "No se encontraron tareas pasadas." } ) )%>';
+	$('div.load-more div.col-inner').html( message )
+<% end %>

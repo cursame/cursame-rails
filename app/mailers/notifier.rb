@@ -52,24 +52,12 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: subject
   end
 
-  def send_limit_surveys(user)
-    @user = user
-    count = user.settings_teacher.limit_surveys
-    mail to: @user.email, subject: "You have " + count.to_s + " User_Surveys"
-  end
-
   def send_email(user,subject,message)
     user_mail = user.email
     @subdomain = user.subdomain
     @domain = user.domain
     @content = message
     mail to: user_mail, subject: subject
-  end
-
-  def send_limit_deliveries(user)
-    @user = user
-    count = user.settings_teacher.limit_deliveries
-    mail to: @user.email, subject: "You have "+ count.to_s + " Assignments"
   end
 
   def send_import_users(user,arrayErrores)

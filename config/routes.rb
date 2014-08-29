@@ -1,13 +1,6 @@
 # -*- coding: utf-8 -*-
+
 Cursame30Lb::Application.routes.draw do
-
-  get "load_layout/load_wall"
-
-  get "load_layout/load_post_menu"
-
-  get "load_layout/load_sidebar"
-
-  get "load_layout/load_chat"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -16,7 +9,6 @@ Cursame30Lb::Application.routes.draw do
   resources :members_in_groups
   resources :groups
   resources :libraries
-  resources :settings_teachers
   resources :polls
   resources :messages
 
@@ -36,12 +28,6 @@ Cursame30Lb::Application.routes.draw do
   get "managers/library"
   get "managers/delete_user", :as => :delete_user
 
-  resources :discussions
-
-  ##### ruta para ver todas las dicusiones
-
-  get 'all_discussions', :to => 'discussions#my_discussions', :as => :my_discussions
-
   ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
     collection do
@@ -51,9 +37,6 @@ Cursame30Lb::Application.routes.draw do
   end
 
   resources :authentications
-
-  #recursos necesarios para autentificaciones de servicios externos (by alfredot)
-  resources :events
 
   ########## calendar
   get "calendar", :to => 'calendar#index', :as => :calendar
@@ -70,21 +53,17 @@ Cursame30Lb::Application.routes.draw do
   #recursos naturales de la aplicación
   resources :notifications
   resources :assets
-  resources :areas_of_evaluations
 
   #### manejo de assignments
 
   resources :assignments
 
-
-  #### surveys
-
-  resources :surveys
-
-  # colocando miembros en cursos
+  # Members In Course
   resources :members_in_courses
-
   get '/update_mc', :to => 'members_in_courses#update'
+  post '/courses/:course_id/closure/:member_id', :to => 'members_in_courses#rate_course_user', :as => :rate_course_user
+
+
   # colocando course files
   resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
   # metodos de manejo de cursos
@@ -93,13 +72,61 @@ Cursame30Lb::Application.routes.draw do
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
-  
+
+  #Calificar Actividades
+  get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
+  get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
+  get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
+  get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
+
+  get '/evaluate/survey/:survey_id', :to => 'evaluate#survey', :as => :evaluate_survey
+  get '/evaluate/survey/response/:id', :to => 'evaluate#survey_response', :as => :evaluate_survey_response
+  post '/evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
+
+  get '/evaluate/delivery/:delivery_id', :to => 'evaluate#delivery', :as => :evaluate_delivery
+  get '/evaluate/assignment/:id', :to => 'evaluate#delivery_response', :as => :evaluate_delivery_response
+
+  get '/evaluate/discussion/:discussion_id', :to => 'evaluate#discussion', :as => :evaluate_discussion
+  get '/evaluate/discussion-response/:id', :to => 'evaluate#discussion_response', :as => :evaluate_discussion_response
+  match '/evaluate/discussion-rate/:id', :to => 'evaluate#discussion_rate', :as => :evaluate_discussion_rate
+
+  # Tareas
+  get "/deliveries", to: "deliveries#index", as: :deliveries
+  get "/deliveries/lapsed", to: "deliveries#lapsed", as: :deliveries_lapsed
+  get '/courses/:id/deliveries/', to: 'deliveries#deliveries_course', as: :deliveries_course
+  get "/courses/:id/deliveries/lapsed", to: "deliveries#deliveries_course_lapsed", as: :deliveries_course_lapsed
+  get '/deliveries/paginate-ajax', to: "deliveries#paginate_ajax", as: :deliveries_paginate_ajax
+
+  # Surveys
+  get "surveys", :to => 'surveys#index', :as => :surveys
+  get "surveys/lapsed", :to => 'surveys#lapsed', :as => :surveys_lapsed
+  get '/courses/:id/surveys/', to: 'surveys#surveys_course', as: :surveys_course
+  get "/courses/:id/surveys/lapsed", to: "surveys#surveys_course_lapsed", as: :surveys_course_lapsed
+  match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
+  get '/surveys/paginate-ajax', to: "surveys#paginate_ajax", as: :surveys_paginate_ajax
+  resources :surveys
+
+  # Discusiones
+  get '/courses/:id/discussions/', to: 'discussions#discussions_course', as: :discussions_course
+  get '/discussions/paginate-ajax', to: "discussions#paginate_ajax", as: :discussions_paginate_ajax
+  resources :discussions
+
   # Cursos
   get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
   get '/courses/all', :to => 'courses#all', :as => :courses_all
   get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
   get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
-  
+  match '/courses/search', :to => "courses#search", :as => :search_courses
+  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
+  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
+  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
+  get '/courses/:id/evaluation-schema', :to =>  'courses#evaluation_schema', :as => :course_evaluation_schema
+  get '/courses/:id/closure', :to =>  'courses#closure', :as => :course_closure
+  get '/courses/:course_id/closure/:member_id', :to => 'courses#closure_user_overview', :as => :closure_user_overview
+  get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
+  get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
+  match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
+
   resources :courses do
     resources :assignments
     resources :messages do
@@ -113,39 +140,27 @@ Cursame30Lb::Application.routes.draw do
     end
   end
 
-  #Calificar Actividades
-  get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
-  get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
-  get '/evaluate/courses/:id', :to => 'evaluate#course', :as => :evaluate_course
-  get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
+  # Modals
+  match '/modals/network_intro_video', to: 'modal#network_intro_video_modal', :as => :network_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/teacher_quiz', to: 'modal#teacher_quiz_modal', :as => :teacher_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/landing_intro_video', to: 'modal#landing_intro_video_modal', :as => :landing_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
 
-  get '/evaluate/survey/:survey_id', :to => 'evaluate#qualifying', :as => :evaluate_survey
-  get '/evaluate/survey/response/:id', :to => 'evaluate#user_survey', :as => :evaluate_survey_response
-
-  # POST
-  post 'evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
-
-  get '/evaluate/delivery/:delivery_id', :to => 'evaluate#qualifying', :as => :evaluate_delivery
-  get '/evaluate/assignment/:id', :to => 'evaluate#assignment', :as => :evaluate_delivery_response
-  
+  # Calificaciones
+  get "/califications", :to => "califications#index", :as =>  :califications
+  get "/califications/closed", :to => "califications#closed", :as =>  :closed_califications
+  get "/courses/:id/califications", :to => "califications#course", :as =>  :califications_course
+  get "/courses/:course_id/califications/:member_id", :to => "califications#member", :as =>  :califications_member
   
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
-
-  #search ajax courses
-
-  match 'search_course', :to => "courses#courses_search_ajax", :as => :courses_search_ajax
-
   # Awaiting_confirmation
-  get "awaiting_confirmation/:personal_url", :to => "networks#awaiting_confirmation"
-
-  ##### cambiando el status de un curso
-  get "courses/:id/active_status", :to => "courses#active_status", :as =>  :active_status
-  ##### clonar curso
-
-  get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
-  match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
+  get "awaiting_confirmation/:user_id", :to => "networks#awaiting_confirmation"
 
   ##### listar estatus de los cursos viejos
   get "users/old_courses", :to => "users#old_courses", :as => :user_old_courses
@@ -153,9 +168,6 @@ Cursame30Lb::Application.routes.draw do
 
   #### tour virtual
   get "tour_reciver", :to => "users#tour_reciver", :as => :tour_reciver
-  #### lista calificaciones
-
-  get "/califications", :to => "users#califications", :as =>  :califications
 
   #### destroy user
   get "users/destroy_user_with_parts/:id", :to => "users#destroy_user_with_parts", :as => :destroy_user_with_parts
@@ -176,9 +188,7 @@ Cursame30Lb::Application.routes.draw do
   ##### llamada ajax para saber si la session ha expirado
 
   get "expire_session", :to => "networks#expire_session", :as => :expire_session
-  
-  # Tareas
-  get "deliveries", :to => "deliveries#my_deliveries", :as => :my_deliveries
+
 
   #### llada de ajax de editar tarea
 
@@ -201,7 +211,6 @@ Cursame30Lb::Application.routes.draw do
   match "/courses/sending" => "courses#sending", :as => "sending", :via => [:post]
   #post "courses/:id/send_mails", :to => "courses#send" , :as => :course_send
   match "courses/:id/members", :to => "courses#members", :as => :course_members
-  match "courses/:id/deliveries", :to => "deliveries#index", :as => :course_deliveries
   match "courses/:id/deliveries/new", :to => "deliveries#new", :as => :new_course_delivery
   match "courses/:id/dashboard_deliver", :to => "courses#dashboard_deliver"
   match "courses/:id/evaluation_download", :to => "courses#evaluation_download", :as => :course_evaluation_download
@@ -225,6 +234,7 @@ Cursame30Lb::Application.routes.draw do
   as :user do
     match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
     match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
+    match 'teachers/sign_up' => 'registrations#new' 
   end
 
   #### finalizador de sesiones
@@ -310,7 +320,7 @@ Cursame30Lb::Application.routes.draw do
   get '/community', to: "community#all", as: :network_comunity
   get '/community/students', to: "community#students", as: :community_students
   get '/community/teachers', to: "community#teachers", as: :community_teachers
-  get '/community/search', to: "community#search", as: :community_search
+  post '/community/search', to: "community#search", as: :community_search
   get '/community/paginate-ajax', to: "community#paginate_ajax", as: :community_paginate_ajax
 
   # filtro del wall
@@ -354,15 +364,6 @@ Cursame30Lb::Application.routes.draw do
   #para el formulario de contacto
   match '/contact_mail', to: 'home#send_contact_mail', via: 'post', :as => :send_contact_mail, :defaults => { :format => 'js' }
 
-  root :to => 'home#index'
-
-  #create modals ajax
-  match '/modals/network_intro_video', to: 'modal#network_intro_video_modal', :as => :network_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/set_password', to: 'modal#set_password_modal', :as => :set_password_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/teacher_quiz', to: 'modal#teacher_quiz_modal', :as => :teacher_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/landing_intro_video', to: 'modal#landing_intro_video_modal', :as => :landing_intro_video_modal, :via => [:get], :defaults => { :format => 'js' }
-
   #comentarios
   match "/home/add_new_comment" => "home#add_new_comment", :as => "add_new_comment", :via => [:post], :defaults => { :format => 'js' }
 
@@ -375,26 +376,9 @@ Cursame30Lb::Application.routes.draw do
   #cargas mas comentarios
   match  "home/load_more_comments/:id", :to => "home#load_more_comments", :as => :load_more_comments
 
-  #surveys
-  match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
-
-  ##### surveys vista general #####
-  get "all_surveys", :to => 'surveys#my_surveys', :as => :my_surveys
-
   #permisioning
   match "/permissionings/update", :to => "permissionings#update", :as => "permisioning", :via => [:post]
   get "/permissionings/unactive_user", :to => "permissionings#unactive_user", :as => "unactive_user", :via => [:post]
-
-
-  #machando las relaciones de creación de eventos para delivery, survey
-
-  resources :surveys do
-    resources :events
-  end
-
-  resources :deliveries do
-    resources :events
-  end
 
   # subiendo permisos en manager
   #match 'managers/permissioning/:id',  :to =>"managers#permissioning", :as => :permissioning
@@ -499,12 +483,6 @@ Cursame30Lb::Application.routes.draw do
   #---------------
   get "home/load_more_notfications", :to => 'home#load_more_notfications', :as => :load_more_notfications
 
-  ####### rutas de estandarizacion de eventos
-
-  match 'focus/:id', :to => 'events#show', :as => :eventuable
-
-  ####### ruta para creacion de timeline
-
   get 'courses/:id/course_ki_line', :to => 'courses#course_ki_line', :as => :course_ki_line
 
 
@@ -513,14 +491,6 @@ Cursame30Lb::Application.routes.draw do
 
   ###### carga mas actividades
   get "courses/:id/load_more_activities", :to => 'courses#load_more_activities', :as => :load_more_activities
-
-
-  ####### tuas extras para el curso
-
-  get '/courses/:id/about', :to => 'courses#about', :as => :about_course
-  get '/courses/:id/library', :to =>  'courses#library', :as => :library_in_course
-  get '/courses/:id/library_pagination', :to =>  'courses#library_pagination', :as => :library_in_course_pagination
-
 
   ###### ruta para crear super admins
 
@@ -538,11 +508,6 @@ Cursame30Lb::Application.routes.draw do
   get '/inc_activity', :to => 'parents#inc_activity', :as => :inc_activity
   get '/general_prm', :to => 'parents#general_prm', :as => :inc_activity
   get '/acces_course_for_render', :to => 'parents#acces_course', :as => :acces_course_for_render
-  # get "home/parents", :as => :parents
-  # get "home/my_son", :as => :my_son
-  # get "home/acces_on_course", :as => :acces_on_course
-  #
-  get '/publications/:id/show_template_on_modal', :to => 'publications#show_template_on_modal', :as => :show_template_on_modal , :defaults => { :format => 'js' }
 
   #paginas de errores
   match '/404', :to => 'home#not_found', :as => :not_found
@@ -600,5 +565,9 @@ Cursame30Lb::Application.routes.draw do
 
   #logout
   match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]
+
+  match '/robots' => 'robots#robots'
+
+  root :to => 'home#index'
 
 end

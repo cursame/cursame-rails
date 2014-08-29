@@ -1,0 +1,5 @@
+- unless post.votes.up.size == 0
+  .post-box-likes-inner
+    %span
+      = icon('like-c')
+      A #{ link_to pluralize(post.votes.up.size, 'persona', 'personas'), get_votes_of_publication_path(wall.id), remote: true } les gusta esto

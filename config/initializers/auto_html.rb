@@ -208,14 +208,12 @@ AutoHtml.add_filter(:ustream_support).with(:width => 400) do |text, options|
     channel = $2
     url = URI.parse("http://api.ustream.tv/json/channel/#{channel}/getCustomEmbedTag?key=31FDCB7300AAE3F5AD7E4302B4FE1E0C&params=autoplay:false;mute:false;width:#{options[:width]}")
     req = Net::HTTP::Get.new(url.request_uri)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-      http.request(req)
-    }
+    res = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
     case res
-      when Net::HTTPSuccess, Net::HTTPRedirection
-        html = JSON.parse(res.body)["results"]
-      else
-        html = text
+    when Net::HTTPSuccess, Net::HTTPRedirection
+      html = JSON.parse(res.body)["results"]
+    else
+      html = text
     end
     %{#{html}}
   end
@@ -223,11 +221,9 @@ end
   
 AutoHtml.add_filter(:slideshare_support).with(:width => 400) do |text, options|
   text.gsub(/https?:\/\/(www\.|)slideshare\.net\/(.+)\/(.+)/) do
-    url = URI.parse("http://www.slideshare.net/api/oembed/2?url=#{text}&format=json&maxwidth=#{options[:width]}")
+    url = URI.join("http://www.slideshare.net/api/oembed/2?", URI.encode_www_form(url: URI.extract(text).last, format: "json", maxwidth: options[:width]))
     req = Net::HTTP::Get.new(url.request_uri)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-      http.request(req)
-    }
+    res = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
     case res
       when Net::HTTPSuccess, Net::HTTPRedirection
         html = JSON.parse(res.body)["html"]
@@ -240,8 +236,6 @@ end
 
 AutoHtml.add_filter(:prezi_with_wmode).with(:width => 400, :height => 360) do |text, options|
   text.gsub(/https?:\/\/(www\.|)prezi\.com\/(.+)\/(.+)/) do
-    puts "#{text}"
-    puts "#{options}"
     user = $2
      %{<iframe src= "https://prezi.com/embed/#{user}/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="#{options[:width]}" height="#{options[:height]}" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowfullscreen></iframe>}
   end

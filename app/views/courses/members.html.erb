@@ -1,4 +1,4 @@
-<%= render :partial => 'courses/show/course-header' %>
+<%= render :partial => 'courses/show/course-header', locals: { header_style: :compact } %>
 <scirpt src="/assets/course_members.js" ></scirpt>
 
 <% unless @course.members_in_courses.count - 1 == 0 %>

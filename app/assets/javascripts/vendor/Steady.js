@@ -11,17 +11,17 @@ function Steady(opts) {
   this.success   = false;
   this.throttleVal = opts.throttle || 100;
   this.processing = false;
+  this.stopped = false;
 
 
   this._parse();
 
-  if ( this.scrollElement.hasOwnProperty('scrollY') ) {
+  if ( 'pageYOffset' in this.scrollElement ) {
     this._addBottom();
-    this._addScrollX();
-    this._addScrollY();
+    this._addTop();
   } else {
     this._addBottomEl();
-    this._addScrollTop();
+    this._addTopEl();
     this._addScrollLeft();
   }
 
@@ -35,23 +35,16 @@ Steady.prototype.addCondition = function(name, value) {
   this.conditions[name] = value;
   this._parse();
 };
+Steady.prototype.removeCondition = function(name) {
+  delete this.conditions[name];
+  this._parse();
+};
 Steady.prototype.addTracker  = function(name, fn) {
   this.tracked[name] = { cb: fn, name: name};
 };
 
-Steady.prototype._addScrollX = function() {
-  this.addTracker('scrollX', function(window) {
-    return window.scrollX;
-  });
-};
-Steady.prototype._addScrollY = function() {
-  this.addTracker('scrollY', function(window) {
-    return window.scrollY;
-  });
-};
-
 Steady.prototype._addBottom = function() {
-  this.addTracker('bottom', function(window) {
+  this.addTracker('bottom', function(scrollable) {
     var height = Math.max(
       document.body.scrollHeight,
       document.body.offsetHeight, 
@@ -59,38 +52,43 @@ Steady.prototype._addBottom = function() {
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight
     );
-    return height - (window.scrollY + window.innerHeight);
+    return height - (scrollable.pageYOffset + scrollable.innerHeight);
+  });
+};
+
+Steady.prototype._addTop = function() {
+  this.addTracker('top', function(scrollable) {
+    return scrollable.pageYOffset;
   });
 };
 
 Steady.prototype._addBottomEl = function() {
   var self = this;
-  this.addTracker('bottom', function(window) {
+  this.addTracker('bottom', function(scrollable) {
     var height = Math.max(
-      self.scrollElement.scrollHeight,
-      self.scrollElement.offsetHeight
+      scrollable.scrollHeight,
+      scrollable.offsetHeight
     );
-    return height - ( self.scrollElement.scrollTop + self.scrollElement.offsetHeight);
+    return height - ( scrollable.scrollTop + scrollable.offsetHeight);
   });
 };
 
-Steady.prototype._addScrollTop = function() {
-  var self = this;
-  this.addTracker('scrollTop', function(window) {
-    return self.scrollElement.scrollTop;
+Steady.prototype._addTopEl = function() {
+  this.addTracker('top', function(scrollable) {
+    return scrollable.scrollTop;
   });
 };
 
 Steady.prototype._addScrollLeft = function() {
   var self = this;
-  this.addTracker('scrollLeft', function(window) {
-    return self.scrollElement.scrollLeft;
+  this.addTracker('scrollLeft', function(scrollable) {
+    return scrollable.scrollLeft;
   });
 };
 
 Steady.prototype._addWidth = function() {
-  this.addTracker('width', function(window) {
-    return window.innerWidth;
+  this.addTracker('width', function(scrollable) {
+    return scrollable.innerWidth;
   });
 };
 
@@ -152,10 +150,13 @@ Steady.prototype._done = function() {
 };
 
 Steady.prototype._onScroll = function() {
-  var self = this;
-  
+  this._onScrollHandler = this._throttledHandler();
+  this.scrollElement.addEventListener('scroll', this._onScrollHandler, false);
+};
 
-  this.scrollElement.onscroll = this.throttle(function(e) {
+Steady.prototype._throttledHandler = function() {
+  var self = this;
+  return this.throttle(function(e) {
 
     if ( !self._wantedTrackers.length || self.processing ) return;
     
@@ -163,12 +164,24 @@ Steady.prototype._onScroll = function() {
 
       if ( !self.tracked[self._wantedTrackers[i]] ) continue;
 
-      self.values[self._wantedTrackers[i]] = self.tracked[self._wantedTrackers[i]].cb(window);
+      self.values[self._wantedTrackers[i]] = self.tracked[self._wantedTrackers[i]].cb(self.scrollElement || window);
     }
     
     window.requestAnimationFrame(self._check.bind(self));
   }, this.throttleVal);
+};
 
+Steady.prototype.stop = function() {
+  if ( ! this.stopped  ) {
+    this.scrollElement.removeEventListener('scroll', this._onScrollHandler, false);
+    this.stopped = true;
+  }
+};
+
+Steady.prototype.resume = function() {
+  if ( this.stopped  ) 
+    this._onScroll();
+    this.stopped = false;
 };
 
 

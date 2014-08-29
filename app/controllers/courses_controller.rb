@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
-  before_filter :filter_protection, :only => [:show, :edit, :destroy, :members]
+  include CoursesUtils
+  include FiltersUtils
+  before_filter :filter_protection, only: [:show, :edit, :destroy, :members]
+  before_filter :course_activated, only: [:show, :about, :members, :library, :closure, :evaluation_schema]
+  before_filter :validations, only: :evaluation_schema
   filter_access_to :show
-  before_filter :course_activated, :only => [:show, :about, :members, :library]
 
   def index
     @member = MembersInCourse.new
@@ -79,15 +82,23 @@ class CoursesController < ApplicationController
     end
   end
 
-  def courses_search_ajax
+  def search
+    raw_query = params[:query]
+    return redirect_to courses_path, flash: { error: "Escribe algo en el campo de busqueda." } unless raw_query
+
+    query = I18n.transliterate(raw_query.downcase.to_s)
+
     @member = MembersInCourse.new
-    @search = params[:activiesearch].downcase
-    docificate_search_changes = I18n.transliterate("#{@search}")
-    #@courses = Course.search(docificate_search_changes)
-    @courses = current_network.courses.search(docificate_search_changes)
+
+    case current_role
+    when 'teacher'
+      @courses = current_user.courses.search(query)
+    when 'student'
+      @courses = current_network.courses.search(query)
+    end
 
     respond_to do |format|
-      format.js
+      format.html { render 'courses/search/courses_search_results' }
     end
   end
 
@@ -97,7 +108,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @member = obtainMember(@course.id,current_user.id)
+    @member = obtainMember(@course.id, current_user.id)
 
     if @member.nil?
       redirect_to :back
@@ -127,6 +138,7 @@ class CoursesController < ApplicationController
 
     @page = params[:page].to_i
     @wall = @course.walls.where("publication_type != ?", 'Course').search(@search, @id_search).order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
+
     if request.xhr?
       respond_to do |format|
         format.js
@@ -170,7 +182,7 @@ class CoursesController < ApplicationController
     @course = Course.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @course }
     end
   end
@@ -183,7 +195,6 @@ class CoursesController < ApplicationController
     else
       redirect_to course_path(@course)
     end
-
   end
 
   # POST /courses
@@ -193,14 +204,23 @@ class CoursesController < ApplicationController
     @course.network = current_network
     respond_to do |format|
       if @course.save
+
+        event_data = {
+          'Title'   => @course.title.capitalize,
+          'Type'    => @course.public_status.capitalize,
+          'Network' => current_network.name.capitalize
+        }
+        track_event current_user.id, 'Courses', event_data
+
         @member = MembersInCourse.new
-        @member.user_id = current_user.id
-        @member.course_id =  @course.id
-        @member.accepted = true
-        @member.owner = true
+        @member.user_id    = current_user.id
+        @member.course_id  =  @course.id
+        @member.accepted   = true
+        @member.owner      = true
         @member.network_id = current_network.id
-        @member.title = @course.title
+        @member.title      = @course.title
         @member.save
+
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         @az =  @course
         @typed = "Course"
@@ -208,28 +228,19 @@ class CoursesController < ApplicationController
         @courses = current_user.members_in_courses.limit(7)
         @course_count = Course.count
         @ccc = current_user.courses.where(:network_id => current_network.id)
-        @count_course_iam_member =  @ccc.where(:active_status => true).count
+        @count_course_iam_member = @ccc.where(:active_status => true).count
         @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
 
         if @count_course_iam_member_and_owner == 0
           @miembro = MembersInCourse.where(course_id = @course.id).first
           @miembro.owner == true
           @miembro.save
-        else
-
         end
-        format.html { redirect_to course_path(@course.id) }
 
-        #current_user.members_in_courses.where(:owner => true).count
-        #format.json { render json: @course, status: :created, location: @course }
-
+        redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
+        
       else
-        #format.json { render json: @course.errors, status: :unprocessable_entity }
-        #format.html { redirect_to courses_url }
-        #format.js
         format.html { redirect_to :back }
-
-
       end
     end
   end
@@ -241,13 +252,9 @@ class CoursesController < ApplicationController
     if @course.init_date != nil
       @idate = @course.init_date.strftime('%Y-%m-%d')
     end
-    if @course.finish_date != nil
-      @fdate = @course.finish_date.strftime('%Y-%m-%d')
-    end
     respond_to do |format|
       if @course.update_attributes(params[:course])
         @last_date = @course.init_date
-        @last_end_date = @course.finish_date
         if @last_date  == nil
           @last_date =  @idate
         end
@@ -255,7 +262,6 @@ class CoursesController < ApplicationController
           @last_end_date = @fdate
         end
         @course.init_date = @last_date
-        @course.finish_date = @last_end_date
         @course.save
         flash[:notice] = "Se han guardado satisfactoriamente los cambios en el curso. "
         format.html {redirect_to course_path(@course)}
@@ -267,16 +273,11 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
-    @course = Course.find(params[:id])
+    @course = Course.find_by_id(params[:id])
     @course.destroy
 
-    respond_to do |format|
-      format.html { redirect_to courses_path, notice: 'Curso borrado exitosamente.' }
-      format.json { head :no_content }
-    end
+    redirect_to courses_path, flash: { notice: 'Curso eliminado correctamente.' }
   end
 
   def members
@@ -292,7 +293,6 @@ class CoursesController < ApplicationController
       end
     end
   end
-
 
   def library
     @course = Course.find(params[:id])
@@ -347,25 +347,46 @@ class CoursesController < ApplicationController
     @role = current_role
   end
 
+  def evaluation_schema
+    user_is_owner?(@course, current_user, current_role)
+    @member = obtainMember(@course.id, current_user.id)
+  end
+
+  def closure
+    # TODO: Filtro si no ha calificado alguna actividad, mostrar mensaje con actividades que falten por calificar.
+    @course = Course.find_by_id params[:id]
+
+    respond_to do |format|
+      format.html { render 'courses/closure/closure_members' }
+    end
+  end
+
+  def closure_user_overview
+    @course = Course.find_by_id params[:course_id]
+    @user_course = MembersInCourse.find_by_id params[:member_id]
+
+    respond_to do |format|
+      format.html { render 'courses/closure/user_closure_overview' }
+    end
+  end
+
+  def validations
+    @course = Course.find_by_id(params[:id])
+    course_exist?(@course)
+  end
 
   def filter_protection
-    @course = Course.find(params[:id])
+    @course = Course.find_by_id(params[:id])
     @member = obtainMember(@course.id,current_user.id)
 
     if current_role == "admin" || current_role == "superadmin"
     else
       if @member
-        if @member.accepted
-          # respond_to do |format|
-          #   format.js
-          #   format.html # show.html.erb
-          #   format.json { render json: @course }
-          # end
-        else
-          redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+        unless @member.accepted
+          redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
         end
       else
-        redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+        redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
       end
     end
   end
@@ -375,7 +396,6 @@ class CoursesController < ApplicationController
   end
 
   # TODO: metodo requiere refactoring
-  # TODO: verificar en donde se utiliza este metodo
   def assigment
 
     if params[:assignment]["id"].blank? then
@@ -431,16 +451,15 @@ class CoursesController < ApplicationController
 
     if @assignment.save and @id.nil?
 
-      @delivery_from_assignment = Delivery.find(@assignment.delivery)
+      #@delivery_from_assignment = Delivery.find(@assignment.delivery)
 
-      @delivery_from_assignment.areas_of_evaluations.each_with_index do | generate_rubres, index |
-        @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
-        @response_to_the_evaluation.name = generate_rubres.name
-        @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-        @response_to_the_evaluation.evaluation_porcentage = generate_rubres.evaluation_percentage
-        @response_to_the_evaluation.assignment_id = @assignment.id
-        @response_to_the_evaluation.save
-      end
+      # @delivery_from_assignment.evaluation_criteria.each_with_index do | generate_rubres, index |
+      #   @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
+      #   @response_to_the_evaluation.name = generate_rubres.name
+      #   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
+      #   @response_to_the_evaluation.feedbackable_id = @assignment.id
+      #   @response_to_the_evaluation.save
+      # end
 
       if(params[:files])
         params[:files].each do |asset_id|
@@ -989,10 +1008,10 @@ class CoursesController < ApplicationController
         Notification.create(:users => [member], :notificator => @course, :kind => 'course_deactivated')
       end
 
-      respond_to do |format|
-        #format.html
-        format.json
-        format.js
+      if @course.active_status
+        redirect_to(course_path(@course), flash: { success: "Tu curso #{@course.title} se activo correctamente." }) and return
+      else
+        redirect_to(courses_unpublished_path, flash: { notice: "Tu curso #{@course.title} se finalizo correctamente." }) and return
       end
     end
   end
@@ -1121,11 +1140,14 @@ class CoursesController < ApplicationController
   end
 
   def course_activated
-    @course = Course.find(params[:id])
-    if !@course.active_status && !@course.members_in_courses.find_by_user_id(current_user.id).owner
-      @courses = current_user.courses.where(:network_id => current_network.id, :id => operator_courses('normal') ,:active_status => true).search(params[:search])
-      @member = MembersInCourse.new
-      render :index
+    @course = Course.find_by_id(params[:id])
+
+    unless current_user.admin?
+      if ! @course.active_status && @course.owner?(current_role, current_user)
+        redirect_to(courses_unpublished_path, flash: { notice: "#{@course.title} ha finalizado, lo puedes activar en el menu de opciones del curso." }) and return
+      elsif ! @course.active_status && current_user.student?
+        redirect_to(courses_all_path, flash: { notice: "El curso #{@course.title} ha finalizado, contacta al profesor para más información." }) and return
+      end
     end
   end
 

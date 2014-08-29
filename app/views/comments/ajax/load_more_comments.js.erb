@@ -1,0 +1,10 @@
+var commentsBox = $('div.comments-wrap.<%= @type_context %>[data-comments-group-id="<%= @id %>"]'),
+    commentsList = commentsBox.find('div.comments-list'),
+    commentsLoadMore = commentsBox.find('div.comments-load-more');
+
+commentsLoadMore.remove();
+commentsList.html('');
+
+<% @comments.each do |comment| %>
+  commentsList.append('<%= escape_javascript( render(partial: "shared/posts/post_child_comment", locals: { comment: comment }) )%>');
+<%end%>

@@ -58,12 +58,12 @@ first-time-survey-overlay
   }
 
   .overlay-header {
-    padding: 25px 30px 25px 60px;
+    padding: 25px 30px 25px 50px;
     position: relative;
     @include clearfix;
 
     .overlay-icon {
-      margin-left: -70px;
+      margin-left: -60px;
       margin-top: -25px;
       top: 50%;
       position: absolute;
@@ -88,6 +88,10 @@ first-time-survey-overlay
   .overlay-footer {
     padding: 20px 30px;
     @include clearfix;
+  }
+
+  .model-comments {
+    padding: 0px 20px;
   }
 }
 

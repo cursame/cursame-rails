@@ -11,7 +11,8 @@
   end
 %>
 
-<%= form_for @survey, :remote => true, :html => { :class => "default-form survey-form", :id => random_id } do |f| %>
+<%= form_for @survey, remote: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
+  <%= hidden_field_tag 'in_form', in_form%>
   <div class="new-publication-form-content">
     
     <div class="form-group">
@@ -32,17 +33,17 @@
       <div class="form-group-main">
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :id => 'publish_date_'+random_id, :class=>"date-input survey survey_publish_date", :value=>f.object.publish_date, :required => "required" %>
+            <%= f.text_field :publish_date, placeholder: 'Día de pubicación', id: 'publish_date_'+random_id, class: "date-input survey survey_publish_date", value: f.object.publish_date, required: "required" %>
           </div>      
         </div>
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :end_date, :placeholder=>'Fecha de entrega ', :id => 'end_date_'+random_id, :class=>"date-input survey survey_end_date", :value=>f.object.end_date, :required => "required" %>
+            <%= f.text_field :end_date, placeholder: 'Fecha de entrega ', id: 'end_date_'+random_id, class: "date-input survey survey_end_date", value: f.object.end_date, required: "required" %>
           </div>
         </div>
       </div>
     </div>
-  	
+    
     <% unless active_edit %> 
       <div class="form-group">
         <div class="form-group-label">
@@ -54,40 +55,70 @@
               <div class="box-question">
                 <div id="box-question"  class="box-question">
                   <%= f.fields_for :questions do |builder| %>
-                      <%= render "/surveys/question_fields", :f => builder%>
+                    <%= render "/surveys/question_fields", f: builder%>
                   <% end %>
                 </div>
               </div>
 
               <div class="box-question">
                 <div class="question-field">
-                  <%= link_to_add_fields "Agregar Pregunta", f, :questions, {:class=>'btn btn-secondary'}, '#box-question' %>
+                  <%= link_to_add_fields "Agregar Pregunta", f, :questions, {class: 'btn btn-secondary'}, '#box-question' %>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="form-group">
+        <div class="form-group-label label-no-p">
+          <%= f.label "", "Material de soporte" %>
+        </div>
+        <div class="form-group-main">
+          <div class="form-unit">
+            <ul class="list-buttons left">
+              <li>
+                <a class="btn btn-small btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+              </li>
+              <li>
+                <%= render partial: 'assets/upload_asset_button', locals: { from: 'survey-create-form' } %>
+              </li>
+            </ul>
+            <%= render partial: 'assets/support_material_container', locals: { from: 'survey-create-form-assets' } %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-	
+  
   <div class="new-publication-footer">
 
-    <ul class="list-buttons right fr">
+    <ul class="list-buttons right <%= 'fr' unless active_edit %>">
       <li>
-      <%= link_to "Cancelar", "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+        <% if active_edit %>
+          <%= link_to "Cancelar", "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
+        <% else %>
+          <%= link_to "Cancelar", "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+        <% end %>
       </li>
       
       <% unless active_edit %> 
       <li>
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :extra_style => 'margin-top:4px', :in_type => in_type } %>
+        <% if in_form != 'course' %>
+          <%= render partial: "shared/dropdown", locals: { hasPublic: false, hasCourses: true, defaultText: 'Cursos', default_icon: 'course-new-publication', in_type: in_type } %>
+        <%else%>
+
+          <%= hidden_field_tag "commentable_type", 'Course'%>
+          <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
+
+        <%end%>
       </li>
       <% end %>
       
       <li>
 
         <span class="btn btn-primary input-btn activable">
-          <%= f.submit (active_edit ? "Guardar Cuestionario":"Crear Cuestionario"), :id => 'comment-post-form', :class => "activable" %>
+          <%= f.submit (active_edit ? "Guardar Cuestionario":"Crear Cuestionario"), id: 'comment-post-form', class: "activable" %>
         </span>
       </li>
     </ul>

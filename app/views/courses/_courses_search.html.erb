@@ -1,6 +1,6 @@
-<%= form_tag(courses_search_ajax_path, :method => 'get', :remote => true, :class => "search-courses") do %>
+<%= form_tag(search_courses_path, :class => "search-courses") do %>
   <div class="search-wrap">
-    <%= text_field_tag 'activiesearch', '' , :placeholder =>'Buscar curso...', :class => 'search-input', :id => 'search-courses' %>
+    <%= text_field_tag 'query', '', placeholder: 'Buscar curso...', class: 'search-input', id: 'search-courses' %>
     <div class="search-button">
       <span class="btn btn-secondary input-btn">
         <%= submit_tag 'Buscar' %>
@@ -8,3 +8,13 @@
     </div>
   </div>
 <% end %>
+<script>
+	$('.search-courses').submit(function(event) {
+		var input = $('#search-courses');
+		if( input.val().trim() == "" ) {
+			Notice('error', 'Escribe en el campo de busqueda.');
+			input.focus();
+			return false;
+		}
+	});
+</script>

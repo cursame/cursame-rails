@@ -1,44 +1,111 @@
 class SurveysController < ApplicationController
+  include CoursesUtils
+  include SurveysUtils
+  include FiltersUtils
+  before_filter :only_students, only: [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
+  before_filter :validations, only: :show
+
   def index
-  #  @course = Course.find()
-    @surveys = Survey.all
-    # @surveys = @course.surveys
+    courses = student_subscribed_courses
+
+    surveys = courses.inject([]) do
+      |accu, course|
+      accu + course.surveys
+    end
+
+    surveys = surveys.sort do
+      |x,y| y.end_date <=> x.end_date
+    end
+
+    @today_surveys = surveys.clone.keep_if do
+      |survey|
+      Time.now.to_datetime <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
+    end
+
+    @tomorrow_surveys = surveys.clone.keep_if do
+      |survey|
+      Date.tomorrow <= survey.end_date.to_datetime and survey.end_date.to_datetime <= (Date.tomorrow + 1.day)
+    end
+
+    @rest_of_surveys = surveys.clone.keep_if do
+      |survey|
+      survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    end
   end
 
-  def my_surveys
-    surveys = []
-      current_user.courses.each do |c|
-        @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
-         c.surveys.each do |s|
-           case 
-              when @member.owner
-                  if s.user_surveys.count == 0
-                       surveys.push(s.id)
-                  end
-              when (!@member.owner.nil? || !@member.owner)
-                  if s.user_surveys.count == 0
-                       surveys.push(s.id)
-                      else
-                      if s.user_surveys.where(:user_id => current_user.id).count == 0
-                        surveys.push(s.id)
-                      end
-                  end
-           end
-          end
-      end
-    @wall = current_network.walls.where(:publication_type => 'Survey', :publication_id => surveys ).paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+  def lapsed
+    @surveys = student_lapsed_surveys.paginate(per_page: CARDS_PER_PAGE, page: 1)
+  end
+
+  def surveys_course
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."}
+    end
+
+    @course = Course.find_by_id(params[:id])
+
+    surveys = @course.surveys
+
+    surveys = surveys.sort do
+      |x,y| y.end_date <=> x.end_date
+    end
+
+    @today_surveys = surveys.clone.keep_if do
+      |survey|
+      Time.now.to_datetime <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
+    end
+
+    @tomorrow_surveys = surveys.clone.keep_if do
+      |survey|
+      Date.tomorrow <= survey.end_date.to_datetime and survey.end_date.to_datetime <= (Date.tomorrow + 1.day)
+    end
+
+    @rest_of_surveys = surveys.clone.keep_if do
+      |survey|
+      survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    end
+  end
+
+  def surveys_course_lapsed
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."}
+    end
+
+    @course = Course.find_by_id(params[:id])
+    @surveys = course_lapsed_surveys(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
+  end
+
+  def paginate_ajax
+    page = params[:page]
+    @type = params[:type]
+    @next_page = page.to_i + 1
+
+    case @type
+    when 'lapsed'
+      @course = nil
+      surveys_raw = student_lapsed_surveys
+    when 'course_lapsed'
+      @course = Course.find_by_id(params[:course])
+      surveys_raw = course_lapsed_surveys(@course)
+    end
+
+    @surveys = surveys_raw.paginate(per_page: CARDS_PER_PAGE, page: page)
 
     respond_to do |format|
-      if params[:fo_format].nil?
-      format.html
-      else
-      format.js
-      end
+      format.js { render 'surveys/ajax/surveys_paginate_ajax' }
     end
   end
 
   def show
-    @survey = Survey.find(params[:id])
+
+    @wall = Wall.find_by_publication_type_and_publication_id( 'Survey', @survey.id )
   end
 
   def new
@@ -46,7 +113,6 @@ class SurveysController < ApplicationController
   end
 
   def create
-
     @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
@@ -54,21 +120,29 @@ class SurveysController < ApplicationController
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
 
     if courses && !courses.empty?
-      
+      @course = Course.find_by_id(courses[0])
       courses.each { |course_id| @survey.courses.push(Course.find_by_id(course_id)) }
-        
-      if @survey.save!
+
+      if @survey.save
+
+        if params[:files]
+          params[:files].each do |asset_id|
+            @asset = Asset.find_by_id asset_id
+            @survey.assets.push @asset unless @asset.nil?
+          end
+        end
+
         @az = @survey
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"
         activation_activity
       end
-
     else
       @error = true
     end
+
     respond_to do |format|
-     format.js
+      format.js
     end
   end
 
@@ -77,7 +151,7 @@ class SurveysController < ApplicationController
   end
 
   def update
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find_by_id(params[:id])
     ids = []
 
     if !params[:delivery]
@@ -91,19 +165,19 @@ class SurveysController < ApplicationController
     end
 
     if @survey.update_attributes(params[:survey])
-        @survey.courses=[]
-        ids.each do |id|
-          @survey.courses.push(Course.find(id))
-        end
+      @survey.courses=[]
+      ids.each do |id|
+        @survey.courses.push(Course.find_by_id(id))
+      end
       @survey.save
 
-     @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
-     respond_to do |format|
+      @wall_publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
+      respond_to do |format|
         format.js
         format.html { render action: "edit" }
         format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end
-     else
+    else
       format.js
     end
   end
@@ -113,7 +187,7 @@ class SurveysController < ApplicationController
       @user_survey = UserSurvey.new
       @user_survey.survey_id = params[:survey_id]
       @user_survey.user = current_user
-      @user_survey.result = 0;
+      #@user_survey.result = 0;
       @survey_id = params[:survey_id]
       @error = false
 
@@ -128,9 +202,9 @@ class SurveysController < ApplicationController
             @user_response.answer_id = answer
             @user_response.save
           end
-            @az = @user_survey
-            @typed = "User_survey"
-            activation_activity
+          @az = @user_survey
+          @typed = "User_survey"
+          activation_activity
         end
       else
         @error = true
@@ -161,7 +235,7 @@ class SurveysController < ApplicationController
       @linkik = 'Ocultar'
 
     end
-    
+
     @survey.save!
 
     if @survey.save
@@ -173,8 +247,14 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find_by_id(params[:id])
     @survey.destroy
     redirect_to surveys_url, :notice => "Successfully destroyed survey."
+  end
+
+  def validations
+    @survey = Survey.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "El cuestionario que intentas ver no existe o ah sido borrado."} and return if @survey.nil?
+    course_member?(current_user, @survey.courses.first)
   end
 end

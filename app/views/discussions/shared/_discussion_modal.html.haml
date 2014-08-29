@@ -1,0 +1,42 @@
+- response = DiscussionResponse.find_by_discussion_id_and_user_id discussion.id, current_user.id
+.overlay-header
+  .overlay-icon
+    = icon('section-discussions')
+  .overlay-title
+    %h6
+      = link_to discussion.user.name, show_user_path(discussion.user.personal_url)
+      ha inicidado una discusión
+      - unless discussion.courses.empty?
+        en el curso #{link_to discussion.courses[0].title, course_path(discussion.courses.first)}
+  .close-overlay= icon('x-close')
+.overlay-content
+  %h3= discussion.title
+  = discussion.description_html
+  %br/
+  = render :partial => "content/insertions_to_contents", :locals => { :type => discussion, :cl => 'discussion'}
+  = render partial: 'assets/assets_list', locals: { assets: discussion.assets, delete_enable: false }
+  - if discussion.evaluable
+    - if discussion.evaluation_criteria.count > 0
+      %br/
+      %h5 Criterios a evaluar
+      %ul
+      - discussion.evaluation_criteria.each do |area|
+        %li= area.name
+- if response.nil? || response.grade.blank?
+  .model-comments
+    .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
+      - if discussion.evaluable?
+        - past_discussion = !(Time.now > discussion.end_date)
+      - else
+        - past_discussion = true
+      = render partial: 'shared/posts/post_comments_list', locals: { post: discussion, new_comment: past_discussion }
+- else
+  .model-comments
+    - grade_score = response.grade.score
+    %p 
+      Calificación Obtenida: 
+      %span= number_with_precision(grade_score.to_s, :precision => 1)
+    - if response.grade
+      - response_evaluations = response.response_to_the_evaluations
+      - unless response_evaluations.nil?
+        - response_evaluations.each

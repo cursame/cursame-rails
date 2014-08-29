@@ -1,6 +1,6 @@
 {{#each this}}
   <div class="ajax-next-activities">
-    <a href="/courses/{{course}}?search={{type}}&id_search={{id}}" title="" data-activity-id="{{id}}">
+    <a href="/modals/{{toLowerCase type}}/{{id}}" title="" data-activity-id="{{id}}" data-remote="true">
       {{title}}
       <span>{{expira}}</span>
     </a>

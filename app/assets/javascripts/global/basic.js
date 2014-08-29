@@ -2,12 +2,20 @@
 // Adding and removing questions answers
 function remove_fields(link, toId) {
   if(toId == '#box-question') {
-    $(link).closest('.question-field').remove();
-    changeNumbers('#box-question', '#question-num');
+
+    if ( $(link).closest('.question-field').siblings().length > 0 ) {
+      $(link).closest('.question-field').remove();
+      changeNumbers('#box-question', '#question-num');
+    } else {
+      Notice('error', 'Los custionarios deben de tener como minimo una pregunta.')
+    };
+
   } else if( toId =='#box-request' ) {
+
     var grandfather = $(link).parent().parent().parent();
     $(link).parent().parent().remove();
     changeNumbers(grandfather, '#request-num');
+
   };
 };
 
@@ -22,6 +30,31 @@ function add_fields(link, association, content, toId) {
     $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
     changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
   };
+};
+
+function add_course_evaluation_fields(link, association, content) {
+  var new_id = new Date().getTime(),
+      regexp = new RegExp("new_" + association, "g"),
+      table = $(link).closest('.course-evaluation-schema-list').find('.table-schema tbody');
+
+  table.append(content.replace(regexp, new_id));
+};
+
+
+// Agregar y Borrar campos a Evaluation Criteria
+function add_evaluation_criteria_fields(link, association, content) {
+  var new_id = new Date().getTime(),
+      regexp = new RegExp("new_" + association, "g"),
+      fieldsContainer = $(link).closest('div.fields-wrap').find('div.fields-group');
+
+  fieldsContainer.append(content.replace(regexp, new_id));
+};
+
+function remove_evaluation_criteria_field(link) {
+  var $link = $(link);
+
+  $link.siblings('input._destroy').val(1);
+  $link.closest('div.field-item').hide();
 };
 
 function changeNumbers(idParent, idFind){
@@ -140,15 +173,60 @@ window.Notice = function(type, message)  {
   var notice        = $('#notice'),
       noticeWrapper = notice.closest('#noticce');
 
-  noticeWrapper.addClass('active');
+  noticeWrapper.animate({
+    top: 0
+  }, 100);
+
   notice.removeClass('error success notice').addClass( type ).html( message );
 
   setTimeout(function() {
-    noticeWrapper.removeClass('active');
+    noticeWrapper.animate({
+      top: notice.outerHeight() * -1
+    }, 100);
   }, 3100);
 };
 
 $(function() {
+
+  $('form.form-validate-js').validate();
+
+  $(".datetime-picker").live('focus', function(event) {
+    $(this).datetimepicker({
+      inline: false,
+      minDate: 0,
+      hourMin: 0,
+      hourMax: 23,
+      controlType: 'select',
+      showOtherMonths: true,
+      dateFormat: 'dd/mm/yy',
+      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+      beforeShow: function(input, inst) {
+        var cal = inst.dpDiv;
+        var top  = $(this).offset().top + $(this).outerHeight();
+        var left = $(this).offset().left;
+        setTimeout(function() {
+          cal.css({
+              'top' : top,
+              'left': left
+          });
+        }, 10);
+      }
+    });
+
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      removeModal();
+    }
+  });
+
+  // Redirect Select Dropdown
+  $('.select-redirect').change(function(event) {
+    event.preventDefault();
+    window.location = this.value;
+  });
 
   $('.page-sub-navigation a').click(function(event) {
     var $this = $(this),
@@ -169,10 +247,7 @@ $(function() {
     });
   }
 
-  // Textareas Autogrow
-  $('.autogrow').live('focus', function(){
-    $(this).autosize();
-  });
+  $('.autogrow').expanding();
    
    $(window).scroll(function() {
      if ( $(window).scrollTop() + $(window).height() == $(document).height() ) {
@@ -301,13 +376,20 @@ $(function() {
     $('.section-subnav li').removeClass('active');
   });
 
-  $('.edit-publication-link').live('click', function() {
-    $(this).closest('.publication-box').find('.form_for_edit_wall').slideToggle(300);
+  // Cancelar Editar Wall Publication
+  $('.cancel-edit-publication-js').live('click', function(event) {
+    event.preventDefault();
+    $(this).closest('.post-box-edit').slideUp(300);
   });
 
-  $('.cancel-edit-publication').live('click', function(event) {
-    event.preventDefault();
-    $(this).closest('.form_for_edit_wall').slideUp(300);
+  $(".swift-enter").live('keydown', function(e) {
+    if (e.keyCode == 13) {
+      if ( ! e.shiftKey ) {
+        $(this).closest('form').submit();
+        e.preventDefault();
+        $(this).val('').change();
+      }
+    }
   });
 });
 
@@ -318,7 +400,7 @@ function PaginateINwall(url_paginate, page, total_page, other_params){
   if ( !paginateWorking ) {
     window.paginateWorking = true;
     if ((page*1) != (total_page*1) && (total_page*1) != 1){
-        $("#paginate_wall").html("<div id='pageless-loader'><img src='/assets/load.gif'/></div>");
+        $("#paginate_wall").html("<div id='pageless-loader' style='opacity: 1;'><img src='/assets/load.gif'/></div>");
         $.get( url_paginate+"?page="+page+"&fo_format=remote"+other_params , function( data ) {
           $('#paginate_wall').html('');
           window.paginateWorking = false;

@@ -2,22 +2,17 @@
    random_id = "#{random}"
    @labelIdBox = "upload-labels-#{random_id}"
    formId= "form-upload-assignments-#{random_id}"
-
 %>
 
 <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
       <%= f.hidden_field :network_id, :value => current_network.id %>
       <%= f.hidden_field :user_id, :value => current_user.id %>      <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
-      <%= f.number_field :porcent_of_evaluation, :placeholder=>'Evaluación', :class=>"percent-input" %>
       <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
       <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
       <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
-                 <!--    <%#= f.collection_select :course_id, @member, :course_id, :title,  :placeholder => :user_id ,:class => "input-xlarge" %>-->
 
-      <%= f.fields_for :areas_of_evaluations do |build| %>
-
-            <%= render :partial => "areas_of_evaluations/form_course", :locals => { :f => build} %>
-
+      <%= f.fields_for :evaluation_criteria do |build| %>
+        <%= render :partial => "evaluation_criteria/form_course", :locals => { :f => build} %>
       <% end %>
 
 
@@ -37,9 +32,5 @@
           monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
           dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
         });
-
-        // $("#create_delivery_form").on('click',function(){
-        //   mask('#new_delivery_form','Cargando ...');
-        // });
       });
       </script>

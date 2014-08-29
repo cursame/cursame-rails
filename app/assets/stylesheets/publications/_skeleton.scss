@@ -90,10 +90,6 @@
       margin: 5px 0 25px 0;
     }
   }
-
-  .publication-metadata {
-    margin-bottom: 10px;
-  }
 }
 
 .publication-metadata {
@@ -362,40 +358,6 @@
   }
 }
 
-/* Publication Assets
-----------------------------------*/
-.look_atemp_conteny {
-  .choser {
-    margin-top: 5px;
-
-    .publication-asset {
-      padding: 3px 4px;
-      @include clearfix;
-
-      .cancel_link, .trash {
-        float: right;
-        display: none;
-      }
-
-      &:hover {
-
-        .cancel_link, .trash {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-.publication-assets {
-  margin-top: 20px;
-
-  .publication-asset {
-    padding: 3px 0;
-    @include clearfix;
-  }
-}
-
 /* Edit Publications
 ----------------------------------*/
 .form_for_edit_wall {
@@ -414,6 +376,213 @@
 
 
 .no-more-publicaitons-message {
-  padding: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  padding: 4px 10px;
+}
+
+
+.academic-activities-section {
+  margin-bottom: 20px;
+}
+
+// New Publications Boxes
+.post-box {
+  margin-bottom: 20px;
+  position: relative;
+
+  .post-box-main-admin-actions {
+    position: absolute;
+    top: 0;
+    right: 7px;
+  }
+  
+  .post-box-main-author {
+    padding: 10px;
+    @include clearfix;
+
+    &.as-activity {
+      .post-box-main-author-content {
+        margin: 0;
+      }
+    }
+
+    .post-box-avatar {
+      float: left;
+    }
+
+    .post-box-main-author-content {
+      margin: 3px 0 0 55px;
+      padding-right: 45px;
+
+      .timestamp {
+        display: block;
+        margin-top: 1px;
+      }
+    }
+
+    .post-breadcrumb {
+      .i {
+        margin: 0px 4px;
+      }
+    }
+  } 
+
+  .post-box-content {
+    padding: 10px 65px 10px 10px;
+    height: 160px;
+    position: relative;
+    margin: -1px;
+
+    .icon-card {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 6;
+    }
+
+    .post-box-meta {
+      display: block;
+      margin-top: 3px;
+    }
+
+    .timestamp {
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .btn {
+      margin-top: 10px;
+    }
+
+    .post-meta-info {
+      margin-top: 5px;
+    }
+  }
+
+  .post-box-content-inner {
+    z-index: 4;
+    height: 100%;
+    position: relative;
+  }
+
+  .cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  .post-box-under-container {
+    .post-box-likes .post-box-likes-inner {
+      margin: 0 10px;
+      padding: 5px 0;
+
+      .i {
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .post-box-edit {
+    padding: 10px;
+    display: none;
+  }
+
+  .post-box-footer {
+    padding: 10px;
+    @include clearfix;
+
+    .post-box-actions {
+      float: left;
+    }
+
+    .post-box-info {
+      float: right;
+    }
+  }
+
+  &.academic {
+    .post-box-content {
+      .post-meta-info {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .post-box-content-inner {
+        .post-meta-info {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.comment .post-box-content {
+  padding: 0px 10px 10px 10px;
+  margin-top: -3px;
+  height: auto;
+}
+
+.standalone-post {
+  margin: 20px 0;
+}
+
+.support-material {
+  .support-material-item {
+    margin-top: 1px;
+    padding: 3px 50px 3px 3px;
+    height: 18px;
+    position: relative;
+
+    &:hover {
+      .item-delete {
+        display: block;
+      }
+    }
+
+    &:first-child {
+      margin-top: 10px;
+    }
+
+    .item-name {
+      @include ellipsis();
+    }
+
+    .item-delete {
+      position: absolute;
+      right: 5px;
+      top: 2px;
+      display: none;
+    }
+  } 
+}
+
+
+.fields-wrap {
+  .field-item {
+    position: relative;
+    margin-bottom: 10px;
+
+    &:hover {
+      padding-right: 20px;
+
+      .delete-field-item {
+        display: block;
+      }      
+    }
+
+    .delete-field-item {
+      position: absolute;
+      right: 0;
+      top: 8px;
+      display: none;
+    }
+  }  
+}
+
+.evaluable-fields-js {
+  display: none;
 }

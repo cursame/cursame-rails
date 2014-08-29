@@ -1,0 +1,13 @@
+.sections-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .section-header
+            .section-header-main
+              .section-title
+                %h5 Discusiones
+                = link_to discussions_course_path(course) do
+                  %h1= truncate(course.title, :omission => "...", :length => 30)
+              - unless current_user.courses.empty?
+                = render partial: 'discussions/shared/discussions_filter_course'

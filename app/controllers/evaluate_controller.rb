@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class EvaluateController < ApplicationController
   include CoursesUtils
   include FiltersUtils
@@ -10,12 +12,21 @@ class EvaluateController < ApplicationController
       |accu, course|
       accu + course.deliveries
     end
+
     surveys = courses.inject([]) do
       |accu, course|
       accu + course.surveys
     end
 
-    activities = (deliveries + surveys).sort do
+    discussions = courses.inject([]) do
+      |accu, course|
+      tmp_array_discussions = course.discussions.select do
+        |discussion| discussion.evaluable?
+      end
+      accu + tmp_array_discussions      
+    end
+
+    activities = (deliveries + surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 
@@ -52,7 +63,11 @@ class EvaluateController < ApplicationController
     if not(@course.owner?(permissioning.role.title, current_user))
     end
 
-    activities = (@course.deliveries + @course.surveys).sort do
+    discussions = @course.discussions.select do
+      |discussion| discussion.evaluable?
+    end
+
+    activities = (@course.deliveries + @course.surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 
@@ -79,12 +94,21 @@ class EvaluateController < ApplicationController
       |accu, course|
       accu + course.deliveries
     end
+
     surveys = courses.inject([]) do
       |accu, course|
       accu + course.surveys
     end
 
-    activities = (deliveries + surveys).sort do
+    discussions = courses.inject([]) do
+      |accu, course|
+      tmp_array_discussions = course.discussions.select do
+        |discussion| discussion.evaluable?
+      end
+      accu + tmp_array_discussions      
+    end
+
+    activities = (deliveries + surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 
@@ -110,7 +134,11 @@ class EvaluateController < ApplicationController
     if not(@course.owner?(permissioning.role.title, current_user))
     end
 
-    activities = (@course.deliveries + @course.surveys).sort do
+    discussions = @course.discussions.select do
+      |discussion| discussion.evaluable?
+    end
+
+    activities = (@course.deliveries + @course.surveys + discussions).sort do
       |x,y| y.end_date <=> x.end_date
     end
 
@@ -120,28 +148,52 @@ class EvaluateController < ApplicationController
     end
   end
 
-  def qualifying
-    @survey = Survey.find_by_id(params[:survey_id])
+  def delivery
     @delivery = Delivery.find_by_id(params[:delivery_id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @delivery.owner?(current_role, current_user)
 
-    if @survey
-      owner = @survey.owner?(current_role, current_user)
-    elsif @delivery
-      owner = @delivery.owner?(current_role, current_user)
+    respond_to do |format|
+      format.html { render 'evaluate/deliveries/evaluate_deliveries' }
     end
-
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless owner
   end
 
-  def user_survey
+  def delivery_response
+    @assignment = Assignment.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @assignment.delivery.owner?(current_role, current_user)
+
+    unless @assignment.grade.present?
+      @assignment.build_grade
+    end
+
+    if @assignment.delivery.evaluation_criteria.count > 0 && @assignment.response_to_the_evaluations.empty?
+      @assignment.delivery.evaluation_criteria.count.times { @assignment.response_to_the_evaluations.build }
+    end
+
+    respond_to do |format|
+      format.html { render 'evaluate/deliveries/delivery_user_response' }
+    end
+  end
+
+  def survey
+    @survey = Survey.find_by_id(params[:survey_id])
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @survey.owner?(current_role, current_user)
+
+    respond_to do |format|
+      format.html { render 'evaluate/surveys/evaluate_surveys' }
+    end
+  end
+
+  def survey_response
     @user_survey = UserSurvey.find_by_id(params[:id])
     redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @user_survey.survey.owner?(current_role, current_user)
+
+    respond_to do |format|
+      format.html { render 'evaluate/surveys/survey_user_response' }
+    end
   end
 
   def response_user_survey
-
     feedback = params[:feedback]
-    
     user_survey_id = params[:id]
     user_survey = UserSurvey.find_by_id(user_survey_id)
     user_survey.grade.update_attributes(feedback: feedback)
@@ -153,12 +205,44 @@ class EvaluateController < ApplicationController
         redirect_to evaluate_survey_response_path(user_survey_id), flash: { success: "Comentario enviado correctamente."}
       }
     end
-
   end
 
-  def assignment
-    @assignment = Assignment.find_by_id(params[:id])
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @assignment.delivery.owner?(current_role, current_user)
+  def discussion
+    @discussion = Discussion.find_by_id(params[:discussion_id])
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion.owner?(current_role, current_user)
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no es calificable."} and return unless @discussion.evaluable
+
+    respond_to do |format|
+      format.html { render 'evaluate/discussions/evaluate_discussions' }
+    end
+  end
+
+  def discussion_response
+    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+
+    unless @discussion_response.grade.present?
+      @discussion_response.build_grade
+    end
+
+    if @discussion_response.discussion.evaluation_criteria.count > 0 && @discussion_response.response_to_the_evaluations.empty?
+      @discussion_response.discussion.evaluation_criteria.count.times { @discussion_response.response_to_the_evaluations.build }
+    end
+
+    respond_to do |format|
+      format.html { render 'evaluate/discussions/discussion_user_response' }
+    end
+  end
+
+  def discussion_rate
+    @discussion_response = DiscussionResponse.find_by_id(params[:id])
+
+    if  @discussion_response.update_attributes params[:discussion_response]
+      Notification.create users: [@discussion_response.user], notificator: @discussion_response.grade, kind: 'new_score_on_discussion_response'
+      redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: 'Calificación asignada correctamente.' }
+    else
+      redirect_to evaluate_discussion_response_path(@discussion_response), flash: { error: 'Ha ocurrido un error al calificar la discusión.' }
+    end  
   end
 
 end

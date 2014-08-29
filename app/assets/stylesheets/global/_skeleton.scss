@@ -566,6 +566,21 @@ body {
   padding: 30px 0;
 }
 
+.section-help {
+  padding: 10px;
+  margin-bottom: 20px;
+  @include clearfix;
+
+  .i {
+    float: left;
+    margin-top: 5px;
+  }
+
+  .section-help-content {
+    padding-left: 30px;
+  }
+}
+
 /* Menu User
 ----------------------------------*/
 .menu-user{
@@ -626,10 +641,6 @@ body {
   #notice {
     padding: 14px 15px 16px 15px;;
   }
-
-  &.active {
-    top: 0px;
-  }
 }
 
 .expires .uninstal_exit{
@@ -656,7 +667,8 @@ body {
 #pageless-loader {
   width: 80px !important;
   height: 80px;
-  margin: 30px auto;
+  margin: 0 auto;
+  @include opacity(0);
 
   img {
     margin-top: 20px !important;
@@ -740,7 +752,9 @@ body {
 
 
 .load-more {
-  margin-bottom: 25px;
+  a {
+    display: none !important;
+  }
 }
 
 .va-middle {
@@ -751,3 +765,4 @@ body {
 .mta-spcer {
   padding: 0px 5px;
 }
+

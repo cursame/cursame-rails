@@ -1,31 +1,28 @@
 class Survey < ActiveRecord::Base
 
-  has_many :questions, :dependent => :destroy
-  has_many :surveyings, :dependent => :destroy
-  has_many :courses, :through => :surveyings
-  has_many :events, as: :schedule, :dependent => :destroy
+  has_many :activities, as: :activitye, dependent: :destroy
+  has_many :assets, through: :survey_assets
+  has_many :comments, dependent: :destroy
+  has_many :courses, through: :surveyings
+  has_many :events, as: :schedule, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :surveyings, dependent: :destroy
+  has_many :user_surveys, dependent: :destroy
+  has_many :survey_assets, dependent: :destroy
+
   belongs_to :network
   belongs_to :poll
-  has_many :user_surveys, :dependent => :destroy
-
   belongs_to :user
-  has_many :activities, as: :activitye, :dependent => :destroy
 
-  #comentarios para las surveys
-  has_many :comments, :dependent => :destroy
-
-  acts_as_commentable
-  #para los likes
-  acts_as_votable
-
-  ###### validando la presencia de algunos rubros #######
   validates_presence_of :courses
   validates_presence_of :questions
   validates_presence_of :user
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :assets
 
-
+  acts_as_commentable
+  acts_as_votable
 
   after_destroy do
     walls = Wall.where(:publication_type => "Survey", :publication_id => self.id)
@@ -51,7 +48,7 @@ class Survey < ActiveRecord::Base
       self.state = "published"
     end
 
-    Event.create(:title => self.name, :starts_at => self.publish_date, :ends_at => self.end_date, :schedule_id => self.id, :schedule_type => "Survey", :user_id => self.user_id, :network_id => self.network_id)
+    Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
 
     users = []
     self.courses.each do |course|
@@ -108,7 +105,6 @@ class Survey < ActiveRecord::Base
 
   end
 
-
   def self.user
     User.last
   end
@@ -123,46 +119,6 @@ class Survey < ActiveRecord::Base
     end
     return user_id == user.id
   end
-
-  #
-  # Metodos para el analitics
-  #
-
-  def averageCalification
-    user_surveys = self.user_surveys
-    size = user_surveys.size
-    if (size == 0) then
-      return 0.0
-    end
-    average = 0.0
-    user_surveys.each do
-      |user_survey|
-      average += user_survey.result
-    end
-    return average/size
-  end
-
-
-  #
-  # Tiempo promedio que se tardan los alumnos en contestar el survey
-  #
-  def averageTimeToResponse
-    user_surveys = self.user_surveys
-    size = user_surveys.size
-
-    if (size == 0) then
-      return 0.0
-    end
-
-    average = 0.0
-    user_surveys.each do
-      |user_survey|
-      average += user_survey.created_at - self.created_at
-    end
-
-    return average/size
-  end
-
 
   def send_mail(users)
     Thread.new {

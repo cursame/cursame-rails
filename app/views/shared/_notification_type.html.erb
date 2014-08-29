@@ -26,7 +26,7 @@
     <% when 'user_comment_on_course'%>
       <% user = notification.notificator.user%>
       
-      <%= link_to course_path(notification.notificator.commentable.id) do %>
+      <%= link_to comment_path(notification.notificator) do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
@@ -61,7 +61,7 @@
 
     <!-- Notificacion: 5 - Nueva tarea en un curso -->
     <% when 'new_delivery_on_course'%>
-      <%= link_to "#{course_path(notification.notificator.courses[0].id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+      <%= link_to delivery_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
@@ -75,7 +75,7 @@
 
     <!-- Notificacion: 6 - Nueva discusion en un curso -->
     <% when 'new_discussion_on_course' %>
-      <%= link_to "#{course_path(notification.notificator.courses[0].id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+      <%= link_to discussion_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
@@ -89,7 +89,7 @@
 
     <!-- Notificacion: 7 - Nuevo cuestionario en un curso -->
     <% when 'new_survey_on_course'%>
-      <%= link_to "#{course_path(notification.notificator.courses.first.id)}?search=#{notification.notificator_type}&id_search=#{notification.notificator_id.to_s}" do %>
+      <%= link_to survey_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
@@ -126,8 +126,7 @@
 
     <!-- Notificacion: 9 - Nueva calificacion en una respuesta -->
     <% when 'new_accomplishment_on_assignment'%>
-      <%= link_to "#{course_path(notification.notificator.delivery.courses.first.id)}?search=Delivery&id_search=#{notification.notificator.delivery.id.to_s}" do %>
-
+      <%= link_to delivery_modal_path(notification.notificator.delivery.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.delivery.courses.first.id, "avatar", "no", "no") %>
@@ -181,22 +180,14 @@
     <!-- Notificacion: 12 - Usuario comento en una discusion -->
     <% when 'user_comment_on_discussion'%>
       <% user = notification.notificator.user %>
-
-      <%
-        if notification.notificator.commentable.courses.first.nil?
-          notificationURL = "/?search=#{notification.notificator.commentable_type}&id_search=#{notification.notificator.commentable_id.to_s}"
-        else
-          notificationURL = "#{course_path(notification.notificator.commentable.courses.first.id)}?search=#{notification.notificator.commentable_type}&id_search=#{notification.notificator.commentable_id.to_s}"
-        end
-      %>
-      <%= link_to notificationURL do %>
+      <%= link_to discussion_path(notification.notificator.commentable) do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6><span class="as-link"><%= user.name %></span> comentó en tu discusión <span class="as-link"><%=  %></span></h6>
+          <h6><span class="as-link"><%= user.name %></span> comentó en tu discusión <span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -212,7 +203,7 @@
           <% url = "/?search=Comment&id_search=#{notification.notificator.commentable_id}" %>
         <% end %>
 
-        <%= link_to url do %>
+        <%= link_to comment_path(notification.notificator.commentable) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
@@ -247,7 +238,7 @@
     <% when 'user_comment_on_delivery'%>
        <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
-        <%= link_to "#{course_path(notification.notificator.commentable.courses.first.id)}?search=Delivery&id_search=#{notification.notificator.commentable_id}" do %>
+        <%= link_to delivery_path(notification.notificator.commentable) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
@@ -324,10 +315,10 @@
     <!-- Notificacion: 19 - Retroalimentacion en cuestionario -->
     <% when 'feedback_on_user_survey' %>
       <% if notification.notificator != nil %>
-        <% if notification.notificator.qualifying.user != nil %>
-          <% user = notification.notificator.qualifying.user %>
-          <% response = notification.notificator.qualifying.survey.responses.keep_if {|response| response.user_id == user.id } %>
-          <%= link_to "/courses/#{notification.notificator.qualifying.survey.courses[0].id}?search=Survey&id_search=#{notification.notificator.qualifying.survey.id}" do %>
+        <% if notification.notificator.gradable.user != nil %>
+          <% user = notification.notificator.gradable.user %>
+          <% response = notification.notificator.gradable.survey.responses.keep_if {|response| response.user_id == user.id } %>
+          <%= link_to survey_modal_path(notification.notificator.gradable.survey), remote: true do %>
             <div class="activity-feed-author">
               <span class="avatar-holder">
                 <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
@@ -335,7 +326,7 @@
             </div>
             <div class="activity-feed-main">
               <h6>
-                Has recibido retroalimentación en el cuestionario <span class="as-link"><span class="as-link"><%= notification.notificator.qualifying.survey.name %></span>
+                Has recibido retroalimentación en el cuestionario <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.survey.name %></span>
               </h6>
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
@@ -355,12 +346,51 @@
           <div class="activity-feed-main">
             <h6>
               El curso <span class="as-link"><%= notification.notificator.title %></span> ha sido
-              <%= notification.notificator.active_status ? "activado" : "desactivado" %>.
+              <%= notification.notificator.active_status ? "activado" : "finalizado" %>.
             </h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
       <% end %>
+
+    <% when 'new_score_on_discussion_response' %>
+      <% if notification.notificator != nil %>
+        <% if notification.notificator.gradable.user != nil %>
+          <% user = notification.notificator.gradable.user %>
+          <% # response = notification.notificator.gradable.survey.responses.keep_if {|response| response.user_id == user.id } %>
+          <%= link_to discussion_modal_path(notification.notificator.gradable.discussion), remote: true do %>
+            <div class="activity-feed-author">
+              <span class="avatar-holder">
+                <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
+              </span>
+            </div>
+            <div class="activity-feed-main">
+              <h6>
+                Han calificado tu participacion en la discusión <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.discussion.title %></span>
+              </h6>
+              <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+            </div>
+          <% end %>
+          
+        <%end%>
+      <%end%>
+
+    <% when 'course_grade' %>
+      <% unless notification.notificator.nil? || notification.notificator.gradable.user.nil? || notification.notificator.gradable.course.nil? %>
+        <%= link_to califications_course_path(notification.notificator.gradable.course) do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", notification.notificator.gradable.user.id, "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6>
+              Se ha calificado el curso <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.course.title %></span>
+            </h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>  
+      <%end%>
 
     <%else%>
       <%= notification.kind %>

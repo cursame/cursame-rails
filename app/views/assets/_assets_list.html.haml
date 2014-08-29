@@ -1,0 +1,3 @@
+- if assets.count > 0
+  - assets.each do |asset|
+    = render partial: 'assets/asset_file', locals: { asset: asset, delete_enable: delete_enable }

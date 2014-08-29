@@ -1,3 +1,5 @@
+# coding: utf-8
+
 module CoursesUtils
 
   def teacher_published_courses
@@ -11,7 +13,11 @@ module CoursesUtils
   end
   
   def student_subscribed_courses
-    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') ,:active_status => true)
+    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => true)
+  end
+
+  def student_closed_courses
+    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => false)
   end
   
   def student_pending_requests
@@ -46,6 +52,28 @@ module CoursesUtils
       ids = courses.map { |course| course.id }
     end
 
-    ids 
+    ids
   end
+
+  def course_member?(user, course)
+    member = MembersInCourse.find_by_user_id_and_course_id(user.id, course.id)
+    unless member.nil?
+      unless member.accepted 
+        redirect_to(root_path, flash: { error: "Necesitas ser aceptado en el curso para poder ver su contenido."}) and return
+      end
+    else
+      redirect_to(root_path, flash: { error: "No estas inscrito en el curso, inscribete en la sección Cursos."}) and return
+    end
+
+    return true
+  end
+
+  def course_exist?(course)
+    redirect_to(root_path, flash: { error: "El curso que estas intentando ver no existe o fue borrado."}) and return if course.nil?
+  end
+
+  def user_is_owner?(course, user, role)
+    redirect_to root_path, flash: { error: "Estas tratando de editar un curso que no te pertenece."} and return unless course.owner?(role, user)
+  end
+
 end

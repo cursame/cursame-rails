@@ -1,0 +1,19 @@
+.section-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .section-header
+            .section-header-main
+              .section-title
+                = link_to icon('section-califications'), califications_path
+                = link_to califications_path do
+                  %h1 Calificaciones
+            - unless current_user.admin?
+              .page-sub-navigation
+                - action = params[:action]
+                %ul
+                  %li
+                    = link_to "Cursos activos", califications_path, class: active_class('index')
+                  %li
+                    = link_to "Cursos finalizados", closed_califications_path, class: active_class('closed')

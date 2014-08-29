@@ -1,9 +1,12 @@
 <% activities.each do |activity| %>
   <% course = activity.courses.first %>
   <% activity_type = activity.class.to_s.downcase %>
-  <% if activity_type == 'survey' %>
+  <% case activity_type %>
+  <% when 'survey' %>
     <%= render partial: 'evaluate/shared/survey_activity', locals: { activity: activity, course: course } %>
-  <% else %>
+  <% when 'delivery' %>
     <%= render partial: 'evaluate/shared/delivery_activity', locals: { activity: activity, course: course } %>
+  <% when 'discussion' %>
+    <%= render partial: 'evaluate/shared/discussion_activity', locals: { activity: activity, course: course } %>
   <% end %>
 <% end %>

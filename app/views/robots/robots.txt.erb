@@ -1,0 +1,6 @@
+<% if request.subdomain.empty? || request.subdomain == 'www' %>
+Disallow: 
+<% else %>
+Disallow: /
+<% end %>
+Crawl-delay: 5

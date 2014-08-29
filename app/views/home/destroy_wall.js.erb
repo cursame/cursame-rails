@@ -1,1 +1,10 @@
-$('#deleted_id_<%= @id %>').hide();
+
+<% if @deleted_from == 'discussions-show' || @deleted_from == 'deliveries-show' || @deleted_from == 'surveys-show' || @deleted_from == 'comments-show' %>
+  <% flash.keep %>
+  window.location = '/';
+<% else %>
+  $('div[data-wall-id=<%= @id %>]').slideUp(300, function() {
+    $(this).remove();
+  });
+  Notice('success', '<%= flash[:success] %>');
+<% end %>

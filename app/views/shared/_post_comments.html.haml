@@ -1,0 +1,65 @@
+- unique_id = post.id.to_s + '-' + post.class.to_s.downcase
+
+.post-child-comment-box{"data-commentable" => unique_id, id: "commentable-area-#{unique_id}"}
+
+  .publication-comments{id: "comments-publication-#{unique_id}", style: "display: block;"}
+    - if post.comments.count > 3
+      .more-comment-box{id: "more-comments-#{unique_id}"}
+        = icon('comments')
+        Ver comentarios anteriores
+
+    - post.comments.last(3).each do |comment|
+      .child-comment-box{"data-comment-id" => comment.id, id: "comment_#{comment.id}"}
+        .comment-author
+          = link_to show_user_path(comment.user.personal_url) do
+            %span.avatar-holder
+              = avatar('user', '30', 'no', comment.user.id, 'avatar', 'no', 'no')
+        .comment-main
+          %h6= link_to comment.user.name, show_user_path(comment.user.personal_url)
+          .comment{style: "font-weight:normal !important;"}= comment.comment_html
+          .publication-metadata
+            %div
+              - @vote_comment = comment.votes.up.by_type(User).where(:voter_id => current_user.id)
+              - @condition_comment =  @vote_comment[0]
+              - if @condition_comment == nil
+                %div{id: "liked-c-#{comment.id}"}
+                  = link_to upvote_comment_path(comment.id), :remote => true do
+                    %i.i.i-like-c
+              - else
+                %div{id: "liked-c-#{comment.id}"}
+                  = link_to downvote_comment_path(comment.id), :remote => true do
+                    %i.i.i-like-c-active
+            %span ·
+            .meta-data
+              %div{id: "counter-like-c#{comment.id}"}
+                = comment.votes.up.size
+                me gusta
+            %span ·
+            .meta-data
+              = es_current_date("#{comment.created_at.strftime('%B')}", "#{comment.created_at.strftime('%d')}" , "#{comment.created_at.strftime('%Y')}","#{comment.created_at.strftime('%l:%M%P')}",'latin_string')
+            - if comment.owner?(current_role, current_user)
+              .edit-publication
+                %span ·
+                .meta-data
+                  = link_to "Borrar", destroy_comment_path(comment.id), :remote => true
+
+  .child-comment-box.add-comment
+    .comment-author
+      %span.avatar-holder
+        = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
+    .comment-main
+      = post.class
+      = form_tag "/home/add_new_comment", :class => "default-form comment-form", :id => unique_id, :remote =>true do
+        = text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :required => 'required', :class => 'autogrow new-comment-textarea new-comment-trigger'
+        = hidden_field_tag 'commentable_id', post.id
+        = hidden_field_tag 'commentable_type', post.class
+        = hidden_field_tag 'from_enter_key', true
+        = submit_tag "Comentar",:style=>"display:none;"
+        .new-comment-actions
+          %span.btn.btn-primary.input-btn.activable
+            = submit_tag "Comentar", class: "activable"
+
+  :javascript
+    $(function() {
+      $('form#{unique_id}').validate();
+    });

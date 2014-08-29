@@ -1,0 +1,95 @@
+- content_for :javascripts do
+  = javascript_include_tag 'courses/closure'
+
+= render :partial => 'courses/show/course-header', locals: { header_style: :super_compact }
+.wrapper
+  .cols-12
+    .col.col-8
+      .col-inner
+        .closure-course-members-list
+          - user = @user_course.user
+          .member-item
+            = form_for @user_course, url: rate_course_user_path(@course, @user_course), method: 'post', html: { class: 'form-validate-js' } do |f|
+              .member-item-header
+                = link_to show_user_path(user.personal_url), class: 'member-avatar' do
+                  %span.avatar-holder
+                    = avatar('user', '30', 'no', user.id, 'avatar', 'no', 'no')
+                = link_to show_user_path(user.personal_url), class: 'member-name' do
+                  %h6= user.name
+              .member-item-main
+                %table.member-evaluation-table
+                  %thead
+                    %tr
+                      %th Criterio
+                      %th Calificación Obtenida
+                  %tbody
+                    %tr
+                      %td.criterium
+                        %h4 Cursame
+                        .complementary-activities
+                          %span.meta-info Tareas:
+                          - unless @course.deliveries.empty?
+                            %p= "Entrego #{ @user_course.count_deliveries_responses } de #{ @course.deliveries.count }  ·  Calificación: #{ evaluation_score @user_course.deliveries_average }"
+                          - else
+                            %p No hay tareas en este curso.
+
+                        .complementary-activities
+                          %span.meta-info Cuestionarios:
+                          - unless @course.surveys.empty?
+                            %p= "Contesto #{ @user_course.count_surveys_responses } de #{ @course.surveys.count }  ·  Calificación #{ evaluation_score @user_course.surveys_average }"
+                          - else
+                            %p No hay cuestionarios en este curso.
+
+                        .complementary-activities
+                          %span.meta-info Discusiones:
+                          - unless @course.discussions.empty?
+                            %p= "Participo en #{ @user_course.count_discussions_responses } de #{ @course.evaluables_discussiones.count }  ·  Calificación #{ evaluation_score @user_course.discussions_average }"
+                          - else
+                            %p No hay discusiones en este curso.
+
+                      %td
+                        %span.score.cursame-score-js= evaluation_score @user_course.course_average
+
+                    - if @user_course.members_in_course_criteria.empty?
+                      - @course.evaluation_criteria.count.times do
+                        - criteria = @user_course.members_in_course_criteria.build
+                        - criteria.build_grade
+
+                    - @course.evaluation_criteria.each_with_index do |course_criterium, index|
+                      %tr
+                        %td.middle.criterium
+                          %h4= course_criterium.name
+                          %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                        %td
+                          = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
+                            = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
+                            = ff.hidden_field :members_in_course_id, value: @user_course.id
+                            = ff.fields_for :grade do |score_fields|
+                              .score= score_fields.text_field :score, value: evaluation_score(score_fields.object.score), placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                    %tr.final-score
+                      %td
+                        %h4 Calificación Final
+                      %td
+                        %span.score.final-score-js= @user_course.grade.present? ? evaluation_score(@user_course.grade.score) : evaluation_score(@user_course.course_average)
+              .member-item-footer
+                %span.btn.btn-primary.input-btn.fr
+                  = submit_tag 'Calificar alumno'
+    .col.col-4
+      .col-inner
+        .sidebar-responses
+          .sidebar-responses-header
+            %h6 Miembros
+          .sidebar-responses-main
+            - @course.evaluable_members.each do |member_course|
+              = link_to closure_user_overview_path(@course, member_course) do
+                %div{:class => "sidebar-user-response#{" active" if @user_course.id == member_course.id}"}
+                  %span.avatar-holder
+                    = avatar('user', '30', 'no', member_course.user.id, 'avatar avatar-30', 'no', 'no')
+                  .sidebar-user-response-main
+                    %h6= member_course.user.name
+                    - if member_course.grade.present?
+                      %span
+                        Calificación:
+                        %strong= evaluation_score member_course.grade.score
+                    - else
+                      %span Sin calificar

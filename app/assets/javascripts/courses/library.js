@@ -13,9 +13,7 @@ $(document).ready(function() {
       dataType: "script",
       timeout:  120000,
       add:      function(e,data) {
-          data.context = $(tmpl("template-upload-2", data.files[0]));
-          $('#uplok').append(data.context);
-          data.submit().error(function (jqXHR, textStatus, errorThrown) {});
+        data.submit();
       },
       progress:function(e,data) {
         if( data.context ) {

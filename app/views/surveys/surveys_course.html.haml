@@ -1,0 +1,39 @@
+= render partial: 'surveys/shared/surveys_course_header', locals: { course: @course }
+.academic-activities-list-wrap
+	- unless @today_surveys.empty?
+		.academic-activities-section
+			.wrapper
+				.section-separator
+					.section-separator-title
+						%h6 Cuestionarios para responder Hoy
+						%i.tip
+				.academic-activities-main
+					.cols-12
+						= render partial: 'surveys/shared/surveys_list_cards', locals: { surveys: @today_surveys }
+	
+	- unless @tomorrow_surveys.empty?
+		.academic-activities-section
+			.wrapper
+				.section-separator
+					.section-separator-title
+						%h6 Cuestionarios para responder Mañana
+						%i.tip
+				.academic-activities-main
+					.cols-12
+						= render partial: 'surveys/shared/surveys_list_cards', locals: { surveys: @tomorrow_surveys }
+	
+	- unless @rest_of_surveys.empty?
+		.academic-activities-section
+			.wrapper
+				.section-separator
+					.section-separator-title
+						%h6 Cuestionarios para responder en 3 días o más
+						%i.tip
+				.academic-activities-main
+					.cols-12
+						= render partial: 'surveys/shared/surveys_list_cards', locals: { surveys: @rest_of_surveys }
+
+	- if @today_surveys.count + @tomorrow_surveys.count + @rest_of_surveys.count == 0
+		.no-content-section
+			%h4 No tienes cuestionarios pendientes por contestar en este curso.
+			%p Puedes ver antiguos cuestionarios en la #{link_to "sección de cuestionarios Pasados", surveys_course_lapsed_path(@course)}

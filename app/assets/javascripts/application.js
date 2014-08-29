@@ -5,9 +5,9 @@
 //  \____/\__,_/_/  /____/\__,_/_/ /_/ /_/\___/            \____//____/  ® 2014
 
 //= require ./vendor/jquery-1.8.3
-//= require_tree ./vendor
 //= require jquery-fileupload/basic
-//= require jquery-fileupload/vendor/tmpl
+//= require ./vendor/jquery.validate.min
+//= require_tree ./vendor
 
 //= require_tree ./templates
 //= require_tree ./global

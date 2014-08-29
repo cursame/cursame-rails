@@ -1,43 +1,49 @@
 class Discussion < ActiveRecord::Base
-   has_many :discussions_coursess, :dependent => :destroy
-   has_many :courses, :through => :discussions_coursess
-   has_many :activities, as: :activitye#, :dependent => :destroy
-   has_many :contents, :as => :contentye #, :dependent => :destroy
-   
-   belongs_to :network
-   belongs_to :user
+
+  has_many :activities, as: :activitye
+  has_many :assets, through: :discussion_assets
+  has_many :contents, as: :contentye
+  has_many :courses, through: :discussion_course
+  has_many :discussion_assets, dependent: :destroy
+  has_many :discussion_course, dependent: :destroy
+  has_many :discussion_responses, dependent: :destroy
+  has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
+  has_many :events, as: :schedule, dependent: :destroy
+  attr_accessible :evaluation_criteria, :title, :description, :publish_date, :end_date, :evaluable
+  attr_accessible :evaluation_criteria_attributes
+  attr_accessible :contents_attributes
+
+  belongs_to :network
+  belongs_to :user
 
   validate :max_courses
   validates_presence_of :user
-  
-   accepts_nested_attributes_for :contents
-   
-  #comentarios para las discusiones
+
+  accepts_nested_attributes_for :contents
+  accepts_nested_attributes_for :evaluation_criteria
+
   acts_as_commentable
-  #para los likes
   acts_as_votable
 
-  #autoconversion de links, links inteligentes
+  # autoconversion de links, links inteligentes
+  # this is defined in config/initializers/auto_html.rb
   auto_html_for :description do
     html_escape
     image
-    # This is defined in config/initializers/auto_html.rb
-    dailymotion :width => "100%", :height => 250
-    #flickr :width => 400, :height => 250
-    google_map :width => "100%", :height => 250
-    google_video :width => "100%", :height => 250
-    metacafe :width => "100%", :height => 250
-    soundcloud :width => "100%", :height => 250
-    twitter :width => "100%", :height => 250
-    vimeo :width => "100%", :height => 250
-    youtube :width => "100%", :height => 250
-    slideshare_support :width => "100%"
-    ustream_support :width => "100%"
-    prezi_with_wmode :width => "100%", :height => 360
-    livestrem_support :width => "100%", :height => 360
-    link :target => "_blank", :rel => "nofollow"
+    dailymotion        width: "100%", height: 250
+    google_map         width: "100%", height: 250
+    google_video       width: "100%", height: 250
+    metacafe           width: "100%", height: 250
+    soundcloud         width: "100%", height: 250
+    twitter            width: "100%", height: 250
+    vimeo              width: "100%", height: 250
+    youtube            width: "100%", height: 250
+    prezi_with_wmode   width: "100%", height: 360
+    livestrem_support  width: "100%", height: 360
+    slideshare_support width: "100%"
+    ustream_support    width: "100%"
+    link               target: "_blank", rel: "nofollow"
     redcarpet
-    #sanitize
     simple_format
   end
 
@@ -63,33 +69,6 @@ class Discussion < ActiveRecord::Base
       Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
       self.send_mail(users_notifications)
     end
-
-    begin
-
-      permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, self.network.id)
-
-      if !self.courses.nil? && !self.courses.empty?
-        self.courses.each do |course|
-          mixpanel_properties = { 
-            'Network' => self.network.name.capitalize,
-            'Course'  => course.title.capitalize,
-            'Role'    => permissioning.role.title.capitalize
-          }
-          MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
-        end
-      else
-        mixpanel_properties = { 
-          'Network' => self.network.name.capitalize,
-          'Course'  => 'Public',
-          'Role'    => permissioning.role.title.capitalize
-        }
-        MixpanelTrackerWorker.perform_async self.user_id, 'Discussions', mixpanel_properties
-      end
-
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-    
   end
 
   after_destroy do
@@ -123,14 +102,18 @@ class Discussion < ActiveRecord::Base
 
   def send_mail(users)
     Thread.new {
-          begin
-              mail = Notifier.new_discussion_notification(users,self)
-              mail.deliver          
-          rescue => ex
-          ensure
-            ActiveRecord::Base.connection.close
-          end
-        }    
+      begin
+        mail = Notifier.new_discussion_notification(users,self)
+        mail.deliver
+      rescue => ex
+      ensure
+        ActiveRecord::Base.connection.close
+      end
+    }
+  end
+
+  def responses
+    discussion_responses
   end
 
 end

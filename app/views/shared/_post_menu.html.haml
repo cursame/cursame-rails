@@ -1,0 +1,52 @@
+.new-publication
+  - unless in_form == 'user'
+    .new-publication-main
+      .tabs.post-menu-tabs
+        .tabs-buttons
+          - permitted_to? :create, :comments do
+            .tab.active{"data-id-target" => "comment-tab-content"}
+              = icon('commet-post')
+              Comentario
+              %span.tip
+          - permitted_to? :create, :deliveries do
+            .tab{"data-id-target" => "delivery-tab-content"}
+              = icon('delivery-post')
+              Tarea
+              %span.tip
+          - permitted_to? :create, :discussions do
+            .tab{"data-id-target" => "discussion-tab-content"}
+              = icon('discussion-post')
+              Discusión
+              %span.tip
+          - permitted_to? :create, :surveys do
+            .tab{"data-id-target" => "survey-tab-content"}
+              = icon('survey-post')
+              Cuestionario
+              %span.tip
+        - @active_edit = false
+        .tabs-main
+          - permitted_to? :create, :comments do
+            #comment-tab-content.tab-content{style: "display: block;"}
+              = render partial: '/shared/comment_form',locals: {commentable_id: current_network.id, commentable_type: 'Network', comment_id: nil, message: '¿Qué estás pensando?', active_edit: false, in_type: 'comment', in_form: in_form}
+          - permitted_to? :create, :deliveries do
+            #delivery-tab-content.tab-content
+              = render partial: '/deliveries/delivery_compart_form', locals: {active_edit: @active_edit, in_type: 'delivery', in_form: in_form}
+          - permitted_to? :create, :discussions do
+            #discussion-tab-content.tab-content
+              = render partial: "/discussions/form_for_discussion", locals: {active_edit: @active_edit, in_type: 'discussion', in_form: in_form}
+          - permitted_to? :create, :surveys do
+            #survey-tab-content.survey-form-area-style.tab-content
+              = render partial: '/surveys/form', locals: {active_edit: @active_edit, in_type: 'survey', in_form: in_form}
+  - else
+    .new-publication-main
+      .tabs
+        .tabs-buttons
+          - permitted_to? :create, :comments do
+            .tab.active{"data-id-target" => "comment-tab-content"}
+              = icon('commet-post')
+              Comentario
+              %span.tip
+        .tabs-main
+          - permitted_to? :create, :comments do
+            #comment-tab-content.tab-content{style: "display: block;"}
+              = render partial: '/shared/comment_form',locals: { commentable_id: @user_l.id, commentable_type: 'User', comment_id: nil, message: 'Deja un comentario.', active_edit: false, in_type: 'comment', in_form: in_form}

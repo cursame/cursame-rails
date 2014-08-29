@@ -42,7 +42,7 @@ class AssetsController < ApplicationController
   #public
   def create
     @asset = Asset.new(params[:asset])
-    @formId = params[:form_id]
+    @asset.user_id = params[:user_id]
     @asset.save!
     respond_to do |format|
       format.js
@@ -65,11 +65,15 @@ class AssetsController < ApplicationController
     end
   end
 
-  # DELETE /assets/1
-  # DELETE /assets/1.json
   def destroy
-    @asset = Asset.find(params[:id])
-    @asset.destroy
+    asset = Asset.find_by_id(params[:id])
+    if asset.user == current_user
+      @asset_id = asset.id
+      asset.destroy
+      @error = false
+    else
+      @error = true
+    end
 
     respond_to do |format|
       format.js

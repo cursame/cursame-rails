@@ -19,6 +19,8 @@
 /public/uploads
 
 .DS_Store
+config/database.yml
+config/database.yml.tmp
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml

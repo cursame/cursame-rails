@@ -1,4 +1,4 @@
-<%= render :partial => 'courses/show/course-header' %>
+<%= render :partial => 'courses/show/course-header', locals: { header_style: :compact } %>
 <div class="wrapper">
   <div class="cols-12">
     <div class="col col-12">
@@ -27,11 +27,6 @@
           <div class="course-info-block">
             <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de incio:</h6>
             <%= date_format @course.init_date, 'normal' if @course.init_date != nil %>
-          </div>
-
-          <div class="course-info-block">
-            <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de finalización:</h6>
-            <%= date_format @course.finish_date, 'normal' if @course.finish_date != nil %>
           </div>
 
           <div class="course-info-block">

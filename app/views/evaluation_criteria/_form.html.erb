@@ -1,0 +1,56 @@
+<div class="evaluation-areas-list">
+  <div id="nested_evaluation_form" class="evaluation-area">
+      <div class="name-area fl" style="width: 170px;">
+        <%= f.text_field :name, class: 'subject', placeholder: '¿Que criterio se evaluará?', style: "width: 170px;", required: "required"  %>
+      </div>
+      <div id="content-slider-0" class="slider-content fl">
+        <div id="slider-0" class="slider" style="width: 150px;"></div>
+      </div>
+      <label id="label-nested-form-0" class="fr"></label>
+      <%= f.hidden_field :evaluable_id, :value => @delivery.id %>
+      <%= f.hidden_field :evaluable_type, :value => "Delivery" %>
+      <br>
+      <div class="clear-break"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+    var nestedInputs = $('#nested_evaluation_form').html();
+    $('#nested_evaluation_form').empty();
+    $('#nested_evaluation_form, #total_nested_evaluation').hide();   //hide show area
+
+    var controlNestedHomework=0;
+
+    $(document).ready(function() {
+        $('#more_nested_evaluation_btn').click(function(){            
+            var str = null;
+            $('#nested_evaluation_form, #total_nested_evaluation').show();  //show area
+            $(nestedInputs).each(function( index, value ) {                
+                changeAttr($(value).clone(),'id','name');
+            });
+            controlNestedHomework++;
+        });
+    });
+
+    // Change the properties: ID and Name from elements
+    function changeAttr(value, id_value, id_name){
+        //Si contiene un objeto hijo entra   (para el caso del slider)
+        if ( $(value).children().length > 0 ) {
+            var child_id = $(value).children().attr(id_value);
+            var child_name = $(value).children().attr(id_name);
+                child_id = (child_id!=undefined)? child_id.replace('0',controlNestedHomework) : undefined;
+                child_name = (child_name!=undefined)?child_name.replace('0',controlNestedHomework):undefined;
+                $(value).children().attr(id_value, child_id);
+                $(value).children().attr(id_name, child_name);
+        }
+        var str_id = $(value).attr(id_value);
+        str_id = (str_id!=undefined)? str_id.replace('0',controlNestedHomework) : undefined;
+        $(value).attr(id_value,str_id);
+        var str_name = $(value).attr(id_name);
+        str_name = (str_name!=undefined)?str_name.replace('0',controlNestedHomework):undefined;
+        $(value).attr(id_name,str_name);
+        $('#nested_evaluation_form').append($(value));
+    }
+    
+</script> 

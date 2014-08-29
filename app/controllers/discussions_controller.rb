@@ -1,57 +1,68 @@
+# coding: utf-8
+
 class DiscussionsController < ApplicationController
-  # GET /discussions
-  # GET /discussions.json
+  include CoursesUtils
+  include DiscussionsUtils
+  before_filter :validations, only: :show
+
   def index
-    @discussions = Discussion.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @discussions }
-    end
-  end
- 
- ##### coloca todas las dicusiones del alumno #####
-  def my_discussions
-    @wall = current_network.walls.where(:publication_type => 'Discussion').paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-    respond_to do |format|
-      if params[:fo_format].nil?
-      format.html
-      else
-      format.js
-      end
-    end
+    @discussions = student_discussions.paginate(per_page: CARDS_PER_PAGE, page: 1)
   end
 
-  # GET /discussions/1
-  # GET /discussions/1.json
+  def discussions_course
+    @course = Course.find_by_id(params[:id])
+    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course)
+
+    unless member.nil?
+      redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no has sido aceptado."} unless member.accepted
+    else
+      redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no estas inscrito."}
+    end
+
+    @discussions = course_discussions(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
+  end
+
+  def paginate_ajax
+    page = params[:page]
+    @type = params[:type]
+    @next_page = page.to_i + 1
+
+    case @type
+    when 'all'
+      @course = nil
+      discussions_raw = student_discussions
+    when 'course'
+      @course = Course.find_by_id(params[:course])
+      discussions_raw = course_discussions(@course)
+    end
+
+    @discussions = discussions_raw.paginate(per_page: CARDS_PER_PAGE, page: page)
+
+    respond_to do |format|
+      format.js { render 'discussions/ajax/discussions_paginate_ajax' }
+    end
+  end
+
   def show
-    @discussion = Discussion.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @discussion }
-    end
+    @wall = Wall.find_by_publication_type_and_publication_id('Discussion', @discussion.id)
   end
 
-  # GET /discussions/new
-  # GET /discussions/new.json
   def new
     @discussion = Discussion.new
-
+    permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, self.network.id)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @discussion }
     end
   end
 
-  # GET /discussions/1/edit
   def edit
     @discussion = Discussion.find(params[:id])
   end
 
   # POST /discussions
   # POST /discussions.json
-  def create
+  def createPast
 
     @publication = []
 
@@ -92,12 +103,65 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def create
+    @publication = []
+
+    unless params[:delivery] == nil
+      courses = params[:delivery]["course_ids"]
+      @course = Course.find_by_id(courses[0])
+      courses.each do |courseId|
+        @discussion = Discussion.new(params[:discussion])
+        @discussion.user = current_user
+        @discussion.network = current_network
+        @discussion.courses = [Course.find_by_id(courseId)]
+
+        if @discussion.save
+          @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+          @az = @discussion
+          @typed = "Discussion"
+          activation_activity
+        else
+          redirect_to :back, notice: 'No se pudo crear la discusión'
+        end
+      end
+
+    else
+      @discussion = Discussion.new(params[:discussion])
+      @discussion.user = current_user
+      @discussion.network = current_network
+
+      if @discussion.save!
+        @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
+        @az = @discussion
+        @typed = "Discussion"
+        activation_activity
+      else
+        redirect_to :back, notice: 'No se pudo crear la discusión.'
+      end
+    end
+
+    if @discussion.evaluable?
+      Event.create title: @discussion.title, starts_at: @discussion.publish_date, ends_at: @discussion.end_date, schedule_id: @discussion.id, schedule_type: "Discussion", network_id: current_network.id
+    end
+
+    if params[:files]
+      params[:files].each do |asset_id|
+        @asset = Asset.find_by_id asset_id
+        @discussion.assets.push @asset unless @asset.nil?
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # PUT /discussions/1
   # PUT /discussions/1.json
   def update
     @discussion = Discussion.find(params[:id])
-    @publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
-    
+    @wall_publication = Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id)
+
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
         format.js
@@ -122,4 +186,31 @@ class DiscussionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def validations
+    @discussion = Discussion.find_by_id(params[:id])
+    redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
+    unless @discussion.courses.empty?
+      course_member?(current_user, @discussion.courses.first)
+    end
+  end
+
+  private
+  def track_discussion(discussion)
+    permissioning = Permissioning.find_by_user_id_and_network_id current_user.id, current_network.id
+    unless discussion.courses.nil? || discussion.courses.empty?
+      discussion.courses.each do |course|
+        mixpanel_properties = { 'Network' => current_network.name.capitalize, 'Course' => course.title.capitalize, 'Role' => permissioning.role.title.capitalize, 'Evaluable' => discussion.evaluable? }
+      end
+    else
+      mixpanel_properties = {
+        'Network' => current_network.name.capitalize,
+        'Course'  => 'Public',
+        'Role'    => permissioning.role.title.capitalize,
+        'Evaluable' => @discussion.evaluable?
+      }
+    end
+    track_event current_user.id, 'Discussions', mixpanel_properties
+  end
+
 end

@@ -1,0 +1,6 @@
+.section-header-actions
+	%span.meta-info Filtrar: &nbsp;
+	%select{ class: "select-redirect", style: "width: 180px;"}
+		%option Selecciona un curso
+		- student_courses.each do |course|
+			%option{ value: deliveries_course_path(course) }= course.title

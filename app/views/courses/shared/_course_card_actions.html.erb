@@ -8,17 +8,25 @@
       <div class="dropdown-v left" style="left: -8px;">
         <i class="tip"></i>
         <ul>
+          <% if course.active_status %>
+            <li>
+              <%= link_to 'Calificaciones finales', course_closure_path(course) %>
+            </li>
+            <li>
+              <%= link_to "Calificar actividades", evaluate_course_path(course) %>
+            </li>
+            <li>
+              <%= link_to "Forma de evaluación", course_evaluation_schema_path( course ) %>
+            </li>
+          <% end %>
           <li>
-            <%= link_to edit_course_path(course) do %>
-              Editar curso
-            <% end %>
+            <%= link_to "Editar", edit_course_path( course.id ) %>
           </li>
           <li>
-            <div id="usk_<%=@correspond.id%>">
-              <%= link_to course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete do %>
-                Borrar curso
-              <% end %>
-            </div>
+            <%= link_to "Clonar", clone_course_view_path(course) %>
+          </li>
+          <li>
+            <%= link_to course.active_status? ? "Finalizar" : "Activar",  active_status_path(course) %>
           </li>
         </ul>
       </div>

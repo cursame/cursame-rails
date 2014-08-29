@@ -11,11 +11,11 @@ class NetworksController < ApplicationController
   def index
     @networks = Network.all
     def network_each
-     @networks.each do |network|
+      @networks.each do |network|
         network.name
         network.subdomain
-     end
-   end
+      end
+    end
 
   end
 
@@ -25,86 +25,45 @@ class NetworksController < ApplicationController
       format.json
     end
   end
-  
-  
+
+
   def ko_net
-     if network_member == nil
-     permissions = Permissioning.where(:user_id => current_user.id)
-     ############## encontrando permissionings
-        if permissions != nil
-             ############ validando contador de permissionings
-             if permissions.count == 1
-                @permission = permissions.first
-                   ####### encontrando redes
-                   @find_network = Network.find(@permission.network_id)
-                      ###### validando que la red no sea nula para redirigir
-                   if @find_network != nil
-                      ####### redirecciona la red
-                       #render do |page| 
-                        # page.js{alertmethod_path} 
-                       #end
-                      @net = @find_network
-                   end
-               else
-                ####### se deja abierto para los permisos que estan pendientes
-             end
+    if network_member == nil
+      permissions = Permissioning.where(:user_id => current_user.id)
+      ############## encontrando permissionings
+      if permissions != nil
+        ############ validando contador de permissionings
+        if permissions.count == 1
+          @permission = permissions.first
+          ####### encontrando redes
+          @find_network = Network.find(@permission.network_id)
+          ###### validando que la red no sea nula para redirigir
+          if @find_network != nil
+            ####### redirecciona la red
+            #render do |page|
+            # page.js{alertmethod_path}
+            #end
+            @net = @find_network
+          end
+        else
+          ####### se deja abierto para los permisos que estan pendientes
         end
       end
+    end
   end
- 
+
   # GET /networks/1
   # GET /networks/1.json
   def show
-    @user = current_user
-    @course = Course.new
-    @delivery = Delivery.new
-    @show_course_expired = params[:course_expired]
-
-    #==== Areas de evaluación ====#
-    @areas_of_evaluation = AreasOfEvaluation.new
-    areas_of_evaluations = @delivery.areas_of_evaluations.build
-
-    #==== Assets ====#
-    @asset = Asset.new
-    assets = @delivery.assets.build
-
-
-    @course_count = Course.count
-    @courses = current_user.members_in_courses.limit(7)
-    @ccc = current_user.courses.where(:network_id => current_network.id)
-    @count_course_iam_member =  MembersInCourse.where(:user_id => current_user.id, :accepted => true, :active_status => true).count
-
-    @count_course_iam_member_and_owner = current_user.members_in_courses.where(:owner => true, :network_id => current_network.id, :active_status => true).count
-
-    # @network = Network.find_by_subdomain(request.subdomain)
-    # if @network.nil? then
-    #   @network = Network.find_by_subdomain!(request.subdomain.split(".").last)
-    # end
-
-    @network=current_network
-    @search = params[:search]
-    @id = params[:id]
-    id_search = params[:id_search]
-    @page = params[:page].to_i
-
-    if id_search.nil?
-      @wall = current_network.walls.search(@search, @id).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
-    else
-      @wall = current_network.walls.search(@search, id_search).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')   
-    end
-
-    # if request.xhr?
-    if request.xhr? && @page > 1
-      respond_to do |format|
-        format.js
-      end
+    @wall = current_network.walls.search(params[:search], params[:id]).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
+    if request.xhr? && (params[:page].to_i > 1)
+      respond_to { |format| format.js }
     else
       respond_to do |format|
-        format.html {render stream: true}
+        format.html { render stream: true }
         format.json { render json: @network }
       end
     end
-
   end
 
 
@@ -139,7 +98,7 @@ class NetworksController < ApplicationController
         if  @permissioning.save
         else
         end
-        
+
         format.json { render json: @network, status: :created, location: @network }
         format.js
       else
@@ -183,7 +142,7 @@ class NetworksController < ApplicationController
 
   def network_mask
   end
-  
+
   def network_search
     @networks = Network.all
     network = []
@@ -191,26 +150,17 @@ class NetworksController < ApplicationController
       @lader = I18n.transliterate("#{net.name}")
       network.push( { name: "#{net.name}", subdomain: "#{net.subdomain}", simplify: "#{@lader}".downcase!})
     end
-    
-    render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback] 
+
+    render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback]
   end
-  
+
   def awaiting_confirmation
-    personal_url = params[:personal_url]
-    user = User.find_by_personal_url(personal_url)
-    if (user.nil?)
-      redirect_to root_path
-    elsif (user.confirmed?)
-      redirect_to root_path
-    else
-      @user_inactive = user
-    end
+    user = User.find_by_id params[:user_id]
+    return redirect_to root_path if user.nil? || user.confirmed?
     respond_to do |format|
-      format.html {render :layout => 'sessions'}
+      format.html { render :layout => 'sessions' }
     end
   end
-
-
 
   def find_user
     @search_changes = params[:activiesearch].downcase
@@ -220,12 +170,12 @@ class NetworksController < ApplicationController
       format.js
     end
   end
-  
+
   def wall_filter
     ##### detecta los tipos de publicación para procesarlos mediante un filtro ######
     @typeforfilter = params[:typeforfilter]
-    @responds = true if  params[:responds] == "true" 
-    @responds = false if  params[:responds] == "false" 
+    @responds = true if  params[:responds] == "true"
+    @responds = false if  params[:responds] == "false"
     @fo_format = true if params[:fo_format].nil?
     @fo_format = false if !params[:fo_format].nil?
     @paginate = params[:paginate]
@@ -237,81 +187,81 @@ class NetworksController < ApplicationController
 
     ######## inicia el acceso a los cursos del usuario #######
     current_user.courses.each do |c|
-    @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
-    p @member.owner
-    case 
+      @member = MembersInCourse.find_by_course_id_and_user_id(c.id,current_user.id)
+      p @member.owner
+      case
       when @typeforfilter == 'Delivery'
-####################################### inicia el filtro de deliveries ########################################
-        case 
-          when @responds && @member.owner
-            c.deliveries.each do |d|
-             if d.assignments.count != 0
-             responds_true.push(d.id)
-             end
-            end    
-          when @responds && (@member.owner.nil? or !@member.owner)
-            c.deliveries.each do |d|
-              user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
-              if user_delivery.count != 0
-                 responds_false.push(d.id)
-              end
+        ####################################### inicia el filtro de deliveries ########################################
+        case
+        when @responds && @member.owner
+          c.deliveries.each do |d|
+            if d.assignments.count != 0
+              responds_true.push(d.id)
             end
-          when !@responds  && @member.owner
-            c.deliveries.each do |d|
-             if d.assignments.count == 0
+          end
+        when @responds && (@member.owner.nil? or !@member.owner)
+          c.deliveries.each do |d|
+            user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
+            if user_delivery.count != 0
               responds_false.push(d.id)
-             end            
-            end    
-          when !@responds  && (@member.owner.nil? or !@member.owner)
-            c.deliveries.each do |d|
-              user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
-              if user_delivery.count == 0
-                 responds_false.push(d.id)
-              end
             end
+          end
+        when !@responds  && @member.owner
+          c.deliveries.each do |d|
+            if d.assignments.count == 0
+              responds_false.push(d.id)
+            end
+          end
+        when !@responds  && (@member.owner.nil? or !@member.owner)
+          c.deliveries.each do |d|
+            user_delivery = Assignment.where(:user_id => current_user.id, :delivery_id => d.id)
+            if user_delivery.count == 0
+              responds_false.push(d.id)
+            end
+          end
         end
-####################################### finaliza el filtro de delivereis ######################################
+        ####################################### finaliza el filtro de delivereis ######################################
       when @typeforfilter == 'Survey'
-####################################### inicia filtro de survey ##############################################
-    
+        ####################################### inicia filtro de survey ##############################################
+
         ##### se accesa a todos los cursos
-          case 
-            ###### se validan las variables que buscamos
-             when @responds && @member.owner
-               c.surveys.each do |s|
-                if s.user_surveys.count != 0
-                  responds_true.push(s.id)
-                end
-               end
-             when @responds && (@member.owner.nil? or !@member.owner)
-               c.surveys.each do |s|
-                 user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
-                 if user_survey.count != 0
-                    responds_true.push(s.id)
-                 end
-               end
-             when !@responds && (@member.owner.nil? or !@member.owner)
-                c.surveys.each do |s|
-                 user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
-                  if user_survey.count == 0
-                    responds_false.push(s.id)
-                  end
-                end
-             when !@responds && @member.owner
-              c.surveys.each do |s|
-                if s.user_surveys.count == 0
-                  responds_false.push(s.id)
-                end
-             end
-           end
-    end
+        case
+        ###### se validan las variables que buscamos
+        when @responds && @member.owner
+          c.surveys.each do |s|
+            if s.user_surveys.count != 0
+              responds_true.push(s.id)
+            end
+          end
+        when @responds && (@member.owner.nil? or !@member.owner)
+          c.surveys.each do |s|
+            user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
+            if user_survey.count != 0
+              responds_true.push(s.id)
+            end
+          end
+        when !@responds && (@member.owner.nil? or !@member.owner)
+          c.surveys.each do |s|
+            user_survey= UserSurvey.where(:survey_id => s.id, :user_id => current_user.id)
+            if user_survey.count == 0
+              responds_false.push(s.id)
+            end
+          end
+        when !@responds && @member.owner
+          c.surveys.each do |s|
+            if s.user_surveys.count == 0
+              responds_false.push(s.id)
+            end
+          end
+        end
+      end
       ##################################### finaliza filtro de survey ##########################################
     end
     #################### finaliza el acceso a los datos de los curos del usuario #####################
     #################### se generan las epecificaicones del wall #############################
     @operator = responds_true + responds_false
     @wall = Wall.where(:publication_id=>@operator, :publication_type => "#{@typeforfilter}").paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
-    
+
 
     respond_to do |format|
       format.js
@@ -321,23 +271,23 @@ class NetworksController < ApplicationController
 
 
   # sesion expire
-   def expire_session
-     @status = user_signed_in?
-     if @status
-       current_user.online = false
-       current_user.save!
-       PrivatePub.publish_to("/messages/chat_notifications",
-                             userId: current_user.id,
-                             online: false
+  def expire_session
+    @status = user_signed_in?
+    if @status
+      current_user.online = false
+      current_user.save!
+      PrivatePub.publish_to("/messages/chat_notifications",
+                            userId: current_user.id,
+                            online: false
                             )
-       sign_out(current_user) 
-     end
+      sign_out(current_user)
+    end
 
-     respond_to do |format|
-       format.js
-           format.json
-     end
-   end
-   
-   
+    respond_to do |format|
+      format.js
+      format.json
+    end
+  end
+
+
 end

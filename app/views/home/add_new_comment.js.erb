@@ -1,37 +1,39 @@
 <% if !@editar %>
 
   <% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
-    $('#comment').val('');
-    $('#timeline').prepend('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication],:visible_for => 'network'}))%>');
-    $('#comment_<%= @comment.id %>').effect("highlight", {}, 1000);
+
+    $('#timeline').prepend('<%= escape_javascript(render( partial: "comments/shared/comment_card", locals: { post_comment: @comment, card_type: :post_publication, wall: @publication } ))%>');
 
   <% else #si se tiene que agregar a nivel de los coments %>
-    $('div[data-commentable="<%= @publication.id %>"]').find('.publication-comments').append('<%= escape_javascript(render(:partial => 'shared/comment', :locals => {:comment => @comment}))%>');
-    var inputComment = $('div[data-commentable="<%= @publication.id %>"]').find('.new-comment-trigger');
-    inputComment.val('').height(18);
 
-    commentHolder = inputComment.closest('.add-comment');
+    var commentsBox = $('div.comments-wrap.<%= @publication.publication.class.to_s.downcase %>[data-comments-group-id="<%= @publication.publication.id %>"]'),
+        commentsList = commentsBox.find('div.comments-list');
 
-    commentHolder.removeClass("active");
-    commentHolder.find('.new-comment-actions').hide();
-    commentHolder.find('.comment-author').hide();
+    commentsList.append('<%= escape_javascript(render( partial: "shared/posts/post_child_comment", locals: { comment: @comment } ))%>');
 
     if ( $('div.overlay').length ) {
       overlayPositioning( $('div.overlay') );
-    }
+    };
+    
+  <% end %>
+
+  <% if @comment.commentable_type == 'User' %>
+
+    <%
+      @user_show = true 
+      @user_l = @comment.commentable
+    %>
+
   <% end %>
 
   Notice('success', 'Se ha creado un comentario');
-
-  <% if @comment.commentable_type == 'User' %>
-    <%  @user_show = true 
-        @user_l = @comment.commentable %>
-  <% end %>
-        
-  cancelButtonsPostMenu();
+  newPublicationCleaner();
 
 <% else # Es editar %>
-  $('.form_for_edit_wall').hide();
-  $('#deleted_id_<%=@publication.id%>').replaceWith('<%= escape_javascript(render(:partial => '/shared/publications', :locals => {:wall => [@publication], :visible_for => 'network'}))%>');
-  Notice('success', 'Comentario editado correctamente.');
+  var postBox = $('div[data-wall-id="<%= @publication.id %>"]'),
+    newPostBoxContent = '<%= escape_javascript(render( partial: "comments/shared/comment_card", locals: { post_comment: @publication.publication, card_type: :post_publication, wall: @publication } ))%>';
+
+  postBox.replaceWith(newPostBoxContent);
+  Notice('success', 'Tarea editada correctamente.');
+
 <% end %>

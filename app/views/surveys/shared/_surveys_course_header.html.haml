@@ -1,0 +1,19 @@
+.sections-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .section-header
+            .section-header-main
+              .section-title
+                %h5 Cuestionarios
+                = link_to deliveries_course_path(course) do
+                  %h1= truncate(course.title, :omission => "...", :length => 30)
+              - unless current_user.courses.empty?
+                .section-header-actions
+                  = render partial: 'surveys/shared/surveys_courses_filter'
+            .page-sub-navigation
+              - action = params[:action]
+              %ul
+                %li= link_to "Responder", surveys_course_path(course), class: active_class('surveys_course')
+                %li= link_to "Pasados", surveys_course_lapsed_path(course), class: active_class('surveys_course_lapsed')

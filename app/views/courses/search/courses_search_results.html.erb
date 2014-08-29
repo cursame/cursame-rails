@@ -1,0 +1,37 @@
+<div class="section-header-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <%= render partial: 'courses/index/teacher_header' if current_role === 'teacher' %>
+          <%= render partial: 'courses/index/student_header' if current_role === 'student' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-sub-header-wrap">
+  <div class="wrapper">
+    <div class="cols-12">
+      <div class="col col-12">
+        <div class="col-inner">
+          <div class="sub-header">
+            <h4>Busqueda: <%= params[:query] %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="search-results">
+  <div class="wrapper">
+    <% if @courses.empty? %>
+      <div class="no-content-section">
+        <h4>No se encontraron cursos con el criterio de busqueda.</h4>
+      </div>
+    <% end %>
+    <div class="cols-12 courses-list">
+      <%= render partial: 'courses/index/courses_cards_list', locals: { courses: @courses, member: @member } %>
+    </div>
+  </div>
+</div>

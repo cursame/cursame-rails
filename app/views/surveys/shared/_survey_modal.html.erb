@@ -1,0 +1,27 @@
+<% response = UserSurvey.find_by_survey_id_and_user_id( survey.id, current_user.id) %>
+
+<div class="overlay-header">
+  <div class="overlay-icon">
+    <%= icon('section-surveys') %>
+  </div>
+  <div class="overlay-title">
+    <h6>
+      Cuestionario en el curso <%= link_to survey.courses[0].title, course_path(survey.courses[0].id) %>
+    </h6>
+    <span>Responder antes del <%= es_current_date("#{survey.end_date.strftime('%B')}", "#{survey.end_date.strftime('%d')}", "#{survey.end_date.strftime('%Y')}" , "#{survey.end_date.strftime('%l:%M%P')}", format = 'latin_string') %></span>
+  </div>
+  <div class="close-overlay"><%= icon('x-close') %></div>
+</div>
+
+<% if response.blank?  %>
+  <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %>
+<% else %>
+  <div class="overlay-content">
+    <h3><%= survey.name %></h3>
+    <% grade_score = response.grade.score %>
+    <p>Calificación Obtenida: <span><%= number_with_precision(grade_score.to_s, :precision => 1) %></span></p>
+    <% unless response.grade.feedback.blank? %>
+      <p>Retroalimentación: <%= response.grade.feedback %></p>
+    <% end %>
+  </div>
+<% end %>

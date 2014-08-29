@@ -23,6 +23,10 @@ select {
     float: left;
     padding-top: 8px;
     width: 150px;
+
+    &.label-no-p {
+      padding-top: 1px;
+    }
   }
 
   .form-group-main {

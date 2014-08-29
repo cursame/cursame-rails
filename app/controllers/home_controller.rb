@@ -147,6 +147,11 @@ class HomeController < ApplicationController
 
   def add_new_comment
     if user_signed_in?
+
+      if params[:commentable_type] == "Discussion" && current_user.student? && DiscussionResponse.find_by_discussion_id_and_user_id(params[:commentable_id], current_user.id).nil?
+        DiscussionResponse.create discussion_id: params[:commentable_id], user_id: current_user.id
+      end
+
       @from_enter_key = params[:from_enter_key] == 'true' ? true : false
 
       # esto es para clonar los comentarios de el grupo
@@ -192,18 +197,31 @@ class HomeController < ApplicationController
   end
 
   def load_more_comments
-    @publication = Wall.find(params[:id])
-    @comments = @publication.publication.comments
+    @id = params[:id]
+    @type_context = params[:type].downcase
+
+    case @type_context
+    when 'discussion'
+      context = Discussion.find_by_id(@id)
+    when 'comment'
+      context = Comment.find_by_id(@id)
+    when 'survey'
+      context = Survey.find_by_id(@id)
+    when 'delivery'
+      context = Delivery.find_by_id(@id)
+    when 'course'
+      
+    end
+    @comments = context.comments
+
     respond_to do |format|
-      format.html
-      format.js
+      format.js { render 'comments/ajax/load_more_comments' }
     end
   end
 
   def upvote
-
-    @publication = Wall.find(params[:id])
-    @publication.publication.liked_by current_user
+    @publication = Wall.find_by_id(params[:id])
+    @publication.publication.liked_by(current_user)
 
     begin
       permissioning = Permissioning.find_by_user_id_and_network_id(@publication.publication.user_id, current_network.id)
@@ -224,17 +242,16 @@ class HomeController < ApplicationController
   end
 
   def downvote
-    @publication = Wall.find(params[:id])
+    @publication = Wall.find_by_id(params[:id])
     @publication.publication.downvote_from current_user
+
     respond_to do |format|
-      #format.html
       format.js
     end
   end
 
   def upvote_comment
-
-    @publication = Comment.find(params[:id])
+    @publication = Comment.find_by_id(params[:id])
     @publication.liked_by current_user
 
     begin
@@ -258,8 +275,8 @@ class HomeController < ApplicationController
   def downvote_comment
     @publication = Comment.find(params[:id])
     @publication.downvote_from current_user
+    
     respond_to do |format|
-      #format.html
       format.js
     end
   end
@@ -272,32 +289,36 @@ class HomeController < ApplicationController
     end
   end
 
-
   def destroy_wall
-    publication = Wall.find(params[:id])
+    publication = Wall.find_by_id(params[:id])
+    @deleted_from = params[:deleted_from]
+
     if !publication.nil?
       publication.publication.destroy
       @id = publication.id
     end
+
+    flash.now[:success] = "Se ha borrado correctamente la publicación."
+    
     respond_to do |format|
       format.js
     end
   end
 
   def edit_wall
-
     @id = params[:id]
     @type = params[:type]
+    @wall_publication = Wall.find_by_publication_type_and_publication_id(@type, @id)
 
     case @type
     when 'Delivery'
-      @delivery = Delivery.find(@id)
+      @delivery = Delivery.find_by_id(@id)
 
     when 'Survey'
-      @survey = Survey.find(@id)
+      @survey = Survey.find_by_id(@id)
 
     when 'Comment'
-      @comment = Comment.find(@id)
+      @comment = Comment.find_by_id(@id)
       @commentable_id = @comment.commentable_id
       @commentable_type = @comment.commentable_type
 

@@ -63,8 +63,8 @@ class MembersInCoursesController < ApplicationController
         format.js
         format.json
       else
-       format.js
-       format.json
+        format.js
+        format.json
       end
     end
   end
@@ -74,48 +74,40 @@ class MembersInCoursesController < ApplicationController
   def update
     @id = params[:id_member]
     @members_in_course = MembersInCourse.find(@id)
-      c = params[:checked]
-      t = params[:type_update]
-      @member_it = User.find_by_id(params[:member_it])
+    c = params[:checked]
+    t = params[:type_update]
+    @member_it = User.find_by_id(params[:member_it])
+    case
+    when t == 'acceptin'
       case
-        when t == 'acceptin' 
-             case 
-               when c == 'checked'
-                 @members_in_course.accepted = true
-               when c == 'undefined'
-                 @members_in_course.accepted = false
-                 @members_in_course.owner = false
-
-              end
-        when t == 'ownerin' 
-              case 
-               when c == 'checked'
-                 @members_in_course.owner = true
-               when c == 'undefined'
-                 @members_in_course.owner = false
-              end
+      when c == 'checked'
+        @members_in_course.accepted = true
+      when c == 'undefined'
+        @members_in_course.accepted = false
+        @members_in_course.owner = false
       end
+    when t == 'ownerin'
+      case
+      when c == 'checked'
+        @members_in_course.owner = true
+      when c == 'undefined'
+        @members_in_course.owner = false
+      end
+    end
 
-      @members_in_course.save
+    if @members_in_course.save
+      mixpanel_properties = {
+        'Network' => @members_in_course.course.network.name.capitalize,
+        'Title'   => @members_in_course.course.title.capitalize,
+        'Type'    => @members_in_course.course.public_status.capitalize
+      }
+      track_event current_user.id, 'Members in Courses', mixpanel_properties
+    end
 
     respond_to do |format|
       format.js
     end
-
-    begin
-      permissioning = Permissioning.find_by_user_id_and_network_id(@members_in_course.user.id, current_network.id)
-      mixpanel_properties = { 
-        'Network' => @members_in_course.course.network.name.capitalize,
-        'Title'   => @members_in_course.course.title.capitalize,
-        'Type'    => @members_in_course.course.public_status.capitalize,
-        'Role'    => permissioning.role.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async @members_in_course.user.id, 'Members in Courses', mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
- end
+  end
 
   # DELETE /members_in_courses/1
   # DELETE /members_in_courses/1.json
@@ -123,11 +115,20 @@ class MembersInCoursesController < ApplicationController
     @members_in_course = MembersInCourse.find(params[:id])
     @course_id = @members_in_course.course_id
     @members_in_course.destroy
-    @channel = Channel.find_by_channel_name("/messages/course_channel_#{@course_id}") 
+    @channel = Channel.find_by_channel_name("/messages/course_channel_#{@course_id}")
 
     respond_to do |format|
       format.js
       format.json
     end
+  end
+
+  def rate_course_user
+    members_in_course = MembersInCourse.find_by_id params[:member_id]
+    members_in_course.update_attributes params[:members_in_course]
+    members_in_course.evaluate!
+    # TODO: enviar correo al usuario
+    Notification.create users: [members_in_course.user], notificator: members_in_course.grade, kind: 'course_grade'
+    redirect_to closure_user_overview_path(params[:course_id], params[:member_id]), flash: { success: 'Alumno se ha calificado correctamente.' }
   end
 end

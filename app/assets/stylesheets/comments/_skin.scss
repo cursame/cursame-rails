@@ -1,0 +1,38 @@
+
+// Comments Skin
+.comments-wrap {
+
+  .comments-load-more {
+    .i {
+      vertical-align: -3px;
+    }
+  }
+
+  .comment {
+    word-break: break-word;
+
+    .comment-content {
+      line-height: 16px;
+    }
+
+    .comment-meta {
+      font-size: 12px;
+      color: $meta-color;
+
+      a {
+        font-size: 12px;
+      }
+    }
+
+    .child-comment-author {
+      font-weight: 500;
+    }
+  }
+
+  .comments-not-allowed {
+    span {
+      font-size: 12px;
+      color: $meta-color;
+    }
+  }
+}

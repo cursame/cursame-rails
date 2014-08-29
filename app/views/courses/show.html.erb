@@ -1,15 +1,17 @@
-<%= render :partial => 'courses/show/course-header' %>
-<div class="wrapper sc-margined">
+<%= render :partial => 'courses/show/course-header', locals: { header_style: :full } %>
+<div class="wrapper">
   <div class="cols-12">
     <div class="col col-12">
       <div class="col-inner">
+
         <div id="pk_menu">
-          <%=render :partial => 'shared/post_menu' %>
+          <%=render :partial => 'shared/post_menu', :locals => { :in_form => 'course' } %>
         </div>
         <div id="timeline" class="tim">
-          <%= render :partial => '/shared/publications', :locals => {:wall => @wall, :visible_for => 'course'} %>
+          <%= render :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "course"} %>
         </div>
         <div id="paginate_wall" onclick="PaginateINwall('/courses/<%=@course.id%>',2, <%= @wall.total_pages %>)"></div>
+
       </div>
     </div>
   </div>

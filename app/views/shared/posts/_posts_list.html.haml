@@ -1,0 +1,21 @@
+- wall.each do |publication|
+- next if publication.publication.user == nil
+  - if visible_for == 'user' && !publication.courses.empty?
+    - next
+  - if visible_for == 'network' && !publication.courses.empty? && !(current_user.roles.last.id == 1 || current_user.roles.last.id == 4)
+    - if !publication.courses[0].members_in_courses.where(:user_id =>current_user.id, :accepted => true )[0]
+      - next
+  - post = publication.publication
+  - post_type = post.class.to_s
+
+  - case post_type
+  - when 'Discussion'
+    = render partial: 'discussions/shared/discussion_card', locals: { discussion: post, card_type: :post_publication, wall: publication }
+  - when 'Delivery'
+    = render partial: 'deliveries/shared/delivery_card', locals: { delivery: post, card_type: :post_publication, wall: publication }
+  - when 'Survey'
+    = render partial: 'surveys/shared/survey_card', locals: { survey: post, card_type: :post_publication, wall: publication }
+  - when 'Comment'
+    = render partial: 'comments/shared/comment_card', locals: { post_comment: post, card_type: :post_publication, wall: publication }
+  - when 'Course'
+    = render partial: 'courses/shared/course_card_post', locals: { course: post, card_type: :post_publication, wall: publication }

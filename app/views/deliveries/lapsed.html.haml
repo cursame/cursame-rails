@@ -1,0 +1,15 @@
+- content_for :javascripts do
+	= javascript_include_tag 'publications/paginator'
+
+= render partial: 'deliveries/shared/deliveries_header'
+.academic-activities-list-wrap
+	- unless @deliveries.empty?
+		.academic-activities-section
+			.wrapper
+				.academic-activities-main
+					.cols-12
+						= render partial: 'deliveries/shared/deliveries_list', locals: { deliveries: @deliveries }
+				- if @deliveries.current_page < @deliveries.num_pages
+					= render partial: 'deliveries/shared/deliveries_paginate_button', locals: { page: 2, type: 'lapsed', course: nil }
+				- else
+					= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más tareas pasadas." }

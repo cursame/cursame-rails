@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   #protect_from_forgery
   #skip_before_filter  :verify_authenticity_token
+  before_filter :set_locale
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
   helper_method :network_member
@@ -639,10 +640,6 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Authorization.current_user = current_user
   end
-  
-  # -----------------------------
-  # chat behaviour of cursame
-  # -----------------------------
 
   def chat_online_users
     if current_user
@@ -651,4 +648,24 @@ class ApplicationController < ActionController::Base
       @show_chat_panel = true
     end
   end
+
+  def track_event(user_id, event_name, event_data)
+    begin
+      MixpanelTrackerWorker.perform_async user_id, event_name, event_data
+      puts "\e[1;32m[INFO]\e[0m mixpanel event: { user_id: #{user_id}, event_name: #{event_name}, event_data: #{event_data} }"
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error tracking mixpanel event: { user_id: #{user_id}, event_name: #{event_name}, event_data: #{event_data} }"
+    end
+  end
+
+  # This are methods for the localization configuration
+  def set_locale
+    I18n.locale = params[:locale] || :es
+  end
+
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    { locale: I18n.locale }
+  end
+
 end

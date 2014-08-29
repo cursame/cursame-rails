@@ -1,0 +1,44 @@
+- course = delivery.courses.first
+- delivered = current_user.assignments.where(:delivery_id => delivery.id)
+- if wall
+  - data_attributes = { wall_id: wall.id }
+- else
+  - data_attributes = {}
+
+.post-box.academic.delivery{id: delivery.id, class: card_type, data: data_attributes }
+  - if wall
+    = render partial: 'shared/posts/post_admin_actions', locals: { post: delivery, wall: wall }
+  .post-box-main
+    - unless card_type == :standalone
+      .post-box-main-author
+        = link_to course_path(course), title: course.title, class: 'post-box-avatar' do
+          %span.avatar-holder
+            = avatar 'course', '45', 'no', course.id, 'avatar', 'no', 'no'
+        .post-box-main-author-content
+          = link_to course.title, course_path(course), title: course.title
+          %span.timestamp= time_ago_in_words delivery.created_at
+    .post-box-content
+      .icon-card
+        = icon 'delivery-card'
+      = link_to delivery_modal_path(delivery.id), remote: true, class: 'activable' do 
+        %h3= delivery.title
+      - if card_type == :standalone
+        %span.timestamp= time_ago_in_words delivery.created_at
+        %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
+      %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format delivery.end_date}".html_safe
+      - unless card_type == :standalone
+        = link_to 'Ver Tarea', delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-transparent activable"
+        = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: delivery }
+    - if card_type == :standalone
+      .post-box-footer
+        .post-box-actions
+          = link_to 'Ver Tarea', delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-secondary activable #{}"
+    - if card_type == :post_publication && delivery.owner?(current_role, current_user)
+      .post-box-edit
+        %h5 Editar Tarea
+        .post-edit-form-js
+    - if card_type == :post_publication
+      .post-box-under-container
+        .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: delivery, wall: wall }
+        .comments-wrap.delivery{ data: { comments_group_id: delivery.id } }
+          = render partial: 'shared/posts/post_comments_list', locals: { post: delivery, new_comment: true }

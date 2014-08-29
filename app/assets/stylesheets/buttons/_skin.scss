@@ -38,6 +38,7 @@
 
   &.btn-medium {
     line-height: 38px;
+    font-size: 14px;
   }
 
   &.btn-large {
@@ -158,12 +159,12 @@
 
 .btn-transparent {
   color: #fff;
-  background: rgba(255,255,255,.3);
-  border: 1px solid $white;
+  background: rgba(255,255,255,.2);
+  border: 2px solid $white;
 
   &:hover {
     color: #fff;
-    background: rgba(255,255,255,.6);
+    background: rgba(255,255,255,.4);
   }
 }
 

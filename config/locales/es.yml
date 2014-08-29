@@ -55,7 +55,7 @@ es:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: cerca de 1 hora
+        one: "cerca de 1 hora"
         other: cerca de %{count} horas
       about_x_months:
         one: cerca de 1 mes
@@ -211,3 +211,5 @@ es:
     email: Email 
     bios: Bioagrafía
     personal_url: Dirección de usuario personalizada   
+  easy_to_use: Fácil de usar
+  interactua_social_y: Interactúa social y académicamente mejorandolos procesos de aprendizaje y la calidad educativa
