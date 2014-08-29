@@ -21,12 +21,24 @@ Cursame30Lb::Application.routes.draw do
   get "superadmnin/courses_sintetic_view_and_edit"
   get "superadmnin/publicity_modul_controller"
 
-  ###### configuración de managers de la red
+  # Network Manager
   get "managers/wall"
   get "managers/members"
   get "managers/network_configuration"
   get "managers/library"
   get "managers/delete_user", :as => :delete_user
+  get "managers/import_users" => "managers#import_users", :as => :managers_import_users
+  get "managers/send_mails" => "managers#send_mails", :as => :massive_mails
+  match "managers/sending" => "managers#sending", :as => "massive_sending", :via => [:post]
+  post "/managers/upload_users" => "managers#upload_users", :as => :upload_users
+  get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
+  post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
+  get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
+  post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
+
+  resources :managers do
+    resources :roles
+  end
 
   ##### respuestas a la evaluaciones
   resources :response_to_the_evaluations do
@@ -66,12 +78,6 @@ Cursame30Lb::Application.routes.draw do
 
   # colocando course files
   resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
-  # metodos de manejo de cursos
-  get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
-  post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
-
-  get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
-  post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
 
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
@@ -266,12 +272,6 @@ Cursame30Lb::Application.routes.draw do
   post "user/:personal_url/groups/add_member" => "members_in_groups#create", :as => :add_member_in_group
   delete "user/:personal_url/groups/delete_member" => "members_in_groups#destroy", :as => :delete_member_in_group
 
-  # import csv de usuarios
-  get "managers/import_users" => "managers#import_users", :as => :managers_import_users
-  get "managers/send_mails" => "managers#send_mails", :as => :massive_mails
-  match "managers/sending" => "managers#sending", :as => "massive_sending", :via => [:post]
-  post "/managers/upload_users" => "managers#upload_users", :as => :upload_users
-
   post "/user/upload_users_a" => "users#upload_users_a", :as => :upload_users_a
 
 
@@ -385,11 +385,6 @@ Cursame30Lb::Application.routes.draw do
   #match 'managers/permissioning_for_manager/roles/:id',:to => "managers#permissioning_for_manager", :as => :permissioning_for_manager
 
   #resources :permissionings
-
-  resources :managers do
-    #resources :permissionings
-    resources :roles
-  end
 
   ####### subiendo validables with geocoder activities #########
   resources :activities

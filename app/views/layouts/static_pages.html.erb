@@ -35,56 +35,82 @@
         <div class="wrapper">
           <div class="cols-12">
             <div class="col col-3">
-              <h4><%= t('.first_column.title1') %></h4>
-              <ul>
-                <li><%= link_to t('.first_column.title2'), features_path %></li>
-                <li><%= link_to t('.first_column.title3'), success_stories_path %></li>
-                <li><%= link_to t('.first_column.title4'), about_us_path %></li>
-                <li><%= link_to t('.first_column.title5'), press_path %></li>
-                <li><%= link_to t('.first_column.title6'), jobs_path %></li>
-                <li><%= link_to t('.first_column.title7'), contact_path %></li>
-                <li><%= link_to t('.first_column.title8'), request_demo_path %></li>
-                <li><%= link_to t('.first_column.title9'), apps_path %></li>
-                <li><%= link_to t('.first_column.title10'), "http://cursame.tumblr.com/", target: "_blank" %></li>
-              </ul>
+              <div class="col-inner">
+                <h4><%= t('.first_column.title1') %></h4>
+                <ul class="footer-links">
+                  <li><%= link_to t('.first_column.title2'), features_path %></li>
+                  <li><%= link_to t('.first_column.title3'), success_stories_path %></li>
+                  <li><%= link_to t('.first_column.title4'), about_us_path %></li>
+                  <li><%= link_to t('.first_column.title5'), press_path %></li>
+                  <li><%= link_to t('.first_column.title6'), jobs_path %></li>
+                  <li><%= link_to t('.first_column.title7'), contact_path %></li>
+                  <li><%= link_to t('.first_column.title8'), request_demo_path %></li>
+                  <li><%= link_to t('.first_column.title9'), apps_path %></li>
+                  <li><%= link_to t('.first_column.title10'), "http://cursame.tumblr.com/", target: "_blank" %></li>
+                </ul>
+              </div>
             </div>
             <div class="col col-3">
-              <h4><%= t('.second_column.title1') %></h4>
-              <ul>
-                <li><%= link_to t('.second_column.title2'), "https://cursame.zendesk.com/hc/es", target: "_blank" %></li>
-                <li><%= link_to t('.second_column.title3'), privacidad_path %></li>
-                <li><%= link_to t('.second_column.title4'), conditions_path %></li>
-              </ul>
+              <div class="col-inner">
+                <h4><%= t('.second_column.title1') %></h4>
+                <ul class="footer-links">
+                  <li><%= link_to t('.second_column.title2'), "https://cursame.zendesk.com/hc/es", target: "_blank" %></li>
+                  <li><%= link_to t('.second_column.title3'), privacidad_path %></li>
+                  <li><%= link_to t('.second_column.title4'), conditions_path %></li>
+                </ul>
+              </div>
             </div>
             <div class="col col-3">
-              <h4><%= t('.third_column.title1') %></h4>
-              <ul>
-                <li>
-                  <a href="https://www.facebook.com/Cursameoficial" title="Facebook" target="_blank">
-                    <%= icon('follow-fb-white') %> Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/cursame" title="Twitter"  target="_blank">
-                    <%= icon('follow-twitter-white') %> Twitter
-                  </a>
-                </li>
-              </ul>
+              <div class="col-inner">
+                <h4><%= t('.third_column.title1') %></h4>
+                <ul class="footer-links">
+                  <li>
+                    <a href="https://www.facebook.com/Cursameoficial" title="Facebook" target="_blank">
+                      <%= icon('follow-fb-white') %> Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/cursame" title="Twitter"  target="_blank">
+                      <%= icon('follow-twitter-white') %> Twitter
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="col col-3 footer-metadata">
-              
               <%= link_to "/" do %>
                 <%= icon('cursame-logo-gray') %>
               <% end %>
               <br>
-              <!-- <span>Derechos reservados © <%= Time.now.year %> Cúrsame</span> -->
               <span><%= t('.fourth_column.title1') %></span>
+              <div class="lang-changer">
+
+                <div class="dropdown-wrap">
+                  <div class="dropdown-pull">
+                    <h5>
+                      <% if I18n.locale == :es %>
+                        <%= icon 'mx-flag-mini' %> Español
+                      <% else %>
+                        <%= icon 'usa-fag-mini' %> English
+                      <% end %>
+                      <%= icon 'drop-arrow-white' %>
+                    </h5>
+                  </div>
+                  <div class="dropdown-v right">
+                    <i class="tip"></i>
+                    <ul>
+                      <li>
+                        <%= link_to "English", params.merge(:locale => :en) %>
+                      </li>
+                      <li>
+                        <%= link_to "Español", params.merge(:locale => :es) %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
             </div>
-            <% if I18n.locale == :es %>
-                <a><%= link_to "Ver la página en ingles", params.merge(:locale => :en) %></a>
-              <% else %>
-                <a><%= link_to "See the page in spanish", params.merge(:locale => :es) %></a>
-              <% end %>
           </div>
         </div>
       </div>

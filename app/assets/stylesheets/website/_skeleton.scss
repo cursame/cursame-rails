@@ -279,7 +279,7 @@
     margin-bottom: 15px;
   }
 
-  ul li {
+  .footer-links > li {
     padding-bottom: 5px;
   }
 }
@@ -612,4 +612,29 @@
 
 .about-sponsors .sponsors {
   padding-top: 20px;
+}
+
+// Language Changer
+.lang-changer {
+  width: 120px;
+  margin-top: 10px;
+
+  .dropdown-pull {
+    position: relative;
+    padding: 10px;
+    
+    .i-drop-arrow-white {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+    }
+
+    .i {
+      margin-right: 3px;
+    }
+
+    h5 {
+      margin: 0;
+    }
+  }
 }
