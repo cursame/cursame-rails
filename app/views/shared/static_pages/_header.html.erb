@@ -21,28 +21,28 @@
                 action = params[:action]
               %>
               <li <%= active if action == 'features' %>>
-                <%= link_to t('.header.metodologia'), features_path %>
+                <%= link_to t('.title1'), features_path %>
               </li>
               <li <%= active if action == 'success_stories' %>>
-                <%= link_to t('views.shared.header.proyectos'), success_stories_path %>
+                <%= link_to t('.title2'), success_stories_path %>
               </li>
               <li <%= active if action == 'about_us' %>>
-                <%= link_to "Nosotros", about_us_path %>
+                <%= link_to t('.title3'), about_us_path %>
               </li>
               <li <%= active if action == 'jobs' %>>
-                <%= link_to "Empleos", jobs_path %>
+                <%= link_to t('.title4'), jobs_path %>
               </li>
               <li <%= active if action == 'contact' %>>
-                <%= link_to "Contacto", contact_path %>
+                <%= link_to t('.title5'), contact_path %>
               </li>
             </ul>
           </div>
           <div class="site-nav-actions">
-            <span class="txt">¿Ya eres usuario?</span>
+            <span class="txt"><%= t('.text1') %></span>
             <div class="dropdown-wrap website-login">
               <div class="dropdown-pull login-trigs activity-dropdown-pull">
                 <!-- <span class="as-link">Inicia Sesión</span> -->
-                <span class="as-link">Encuentra tu red</span>
+                <span class="as-link"><%= t('.text2') %></span>
               </div>
               <div class="dropdown-v right">
                 <i class="tip"></i>
