@@ -72,12 +72,18 @@
               </ul>
             </div>
             <div class="col col-3 footer-metadata">
+              
               <%= link_to "/" do %>
                 <%= icon('cursame-logo-gray') %>
               <% end %>
               <br>
               <span>Derechos reservados © <%= Time.now.year %> Cúrsame</span>
             </div>
+            <% if I18n.locale == :es %>
+                <a><%= link_to "Ver la página en ingles", params.merge(:locale => :en) %></a>
+              <% else %>
+                <a><%= link_to "See the page in spanish", params.merge(:locale => :es) %></a>
+              <% end %>
           </div>
         </div>
       </div>
