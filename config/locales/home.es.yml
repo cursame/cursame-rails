@@ -1,11 +1,17 @@
 es:
   home:
     landing_page:
-      mensaje: Hola mundooo!!!
-      header:
-        metodologia: Metodología
-        proyectos: Proyectos
-        nosotros: Nosotros
-        empleos: Empleos
-        contacto: Contacto
-      interactua_social_y: Cosas sociales
+      intro_homepage_hidden:
+        title1: Interactúa social y académicamente mejorando los procesos de aprendizaje y pla calidad educativa
+        text1: 'Cúrsame es una plataforma que conecta profesores, alumnos y directivos de una misma instutución.'
+      feature_showcase:
+        title1: Fácil de usar
+        text1: Es muy fácil y rápido aprender a utilizar Cúrsame. Gracias a su diseño y funciones fomenta la adopción por parte de los usuarios.
+        title2: Funciones simples y poderosas
+        text2: 'Nuestras Herramientas aumentan la productividad y reducen la carga de trabajo para profesores, alumnos y directivos.'
+        title3: Multiplataforma
+        text3: 'Cúrsame puede utilizarse desde cualquier computadora o dispositivo móvil, esto permite crear y consultar contenido a cualquier hora y lugar.'
+    features:
+      features_title:
+        title1: Metodología
+        text1: 'Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.'
