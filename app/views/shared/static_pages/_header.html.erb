@@ -21,10 +21,10 @@
                 action = params[:action]
               %>
               <li <%= active if action == 'features' %>>
-                <%= link_to "Metodología", features_path %>
+                <%= link_to t('.header.metodologia'), features_path %>
               </li>
               <li <%= active if action == 'success_stories' %>>
-                <%= link_to "Proyectos", success_stories_path %>
+                <%= link_to t('views.shared.header.proyectos'), success_stories_path %>
               </li>
               <li <%= active if action == 'about_us' %>>
                 <%= link_to "Nosotros", about_us_path %>

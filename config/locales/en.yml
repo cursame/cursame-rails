@@ -4,4 +4,14 @@
 en:
   hello: "Hello world"
   easy_to_use: Easy to use
-  interactua_social_y: Make things social and academical improving the proccesses of learning and education quality
+  views:
+    shared:
+      header:
+        metodologia: Metodology
+        proyectos: Proyects
+        nosotros: About
+        empleos: Jobs
+        contacto: Contact
+    home:
+      header:
+        cosa: hi!!
