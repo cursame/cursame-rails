@@ -5,7 +5,7 @@
   %td.eva-percenage
     .eva-percenage-input
       %span %
-      = f.text_field :evaluation_percentage, placeholder: 'Porcetaje a dar', autocomplete: 'off', required: true, digits: true, min: 0, max: 100, class: 'course-evaluation-item-value-js'
+      = f.text_field :evaluation_percentage, placeholder: 'Porcentaje asignado', autocomplete: 'off', required: true, digits: true, min: 0, max: 100, class: 'course-evaluation-item-value-js'
     = f.hidden_field :evaluable_id, :value => @course.id
     = f.hidden_field :evaluable_type, :value => "Course"
     = f.hidden_field :_destroy, class: '_destroy'
