@@ -1,0 +1,11 @@
+es:
+  shared:
+    static_pages:
+      header:
+        title1: Metodologías
+        title2: Proyectos
+        title3: Nosotros
+        title4: Empleos
+        title5: Contacto
+        text1: ¿Ya eres usuario?
+        text2: Encuentra tu red

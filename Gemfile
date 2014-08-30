@@ -128,12 +128,12 @@ gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
 gem 'exception_notification', '~> 3.0.1'
 
 #active_admin
- gem 'activeadmin'
- gem "meta_search",    '>= 1.1.0.pre'
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
 
- # group :development, :test do
- #  gem 'rails-dev-tweaks', '~> 0.6.1' 
- # end
+# group :development, :test do
+#  gem 'rails-dev-tweaks', '~> 0.6.1' 
+# end
  
 gem "wuparty", "~> 1.2.6"
 gem 'meta-tags'

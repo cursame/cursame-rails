@@ -239,7 +239,7 @@ class Api::ApiController < ApplicationController
       when 'user_comment_on_comment'
         cretator = notification.notificator.user
         owner = notification.notificator.commentable
-        text = cretator.name + ' ha comentado en tu comentario'
+        text = cretator.name + ' ha comentado en tu publicación'
       when 'user_comment_on_user'
         cretator = notification.notificator.user
         owner = notification.notificator.commentable

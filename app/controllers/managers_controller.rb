@@ -10,10 +10,7 @@ class ManagersController < ApplicationController
     @diision =  @member.count
     @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
     # @network_users = User.where(:network => current_network)
-
-
-
-
+    
     #### for courses counters
     @courses = current_network.courses
     @public_courses = @courses.where(:public_status => 'public')
