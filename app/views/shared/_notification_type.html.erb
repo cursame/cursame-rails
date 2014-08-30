@@ -144,7 +144,7 @@
     <% when 'user_request_friendship'%>
       <% if notification.notificator != nil && notification.notificator.user != nil %>
         <% user = notification.notificator.user %>
-        <%= link_to "#{user_friends_path(notification.notificator.friend.personal_url)}?pending=true" do %>
+        <%= link_to "#{user_friends_path(notification.notificator.friend.personal_url, pending: true)}" do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", "#{notification.notificator.user_id}", "avatar", "no", "no") %>
