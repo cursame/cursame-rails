@@ -100,7 +100,7 @@ class Api::ApiController < ApplicationController
         avatar =  {
           url: publication.courses[0].avatar.url.nil? ? "/assets/" + publication.courses[0].course_avatarx : publication.courses[0].avatar.url
         }
-        publication = publication.as_json(:include => [:areas_of_evaluations,:assets])
+        publication = publication.as_json(:include => [:evaluation_criteria,:assets])
       when 'Survey'
         publication = Survey.find(id)
         comments = publication.comments
@@ -113,7 +113,6 @@ class Api::ApiController < ApplicationController
       else
         next
       end
-      # publication.likes = publication.likes.size
 
       pub = {
         type: type,
@@ -128,8 +127,6 @@ class Api::ApiController < ApplicationController
       }
       @pubs.push(pub)
     end
-    # render :json => {:publications => @publications.as_json(:include => [{:publication => {:include => [:comments, :user]}}, :users, :courses, :network]), :count => @publications.count()}, :callback => params[:callback]
-    # render :json => {:publications => @pubs.as_json, :count => @pubs.count()}, :callback => params[:callback]
     render :json => {:publications => @pubs.as_json, :count => count}, :callback => params[:callback]
   end
 
