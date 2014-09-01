@@ -5,16 +5,16 @@ console.log(postBox);
 
 <% case @type %>
 <% when "Delivery" %>
-  postBoxEditForm.html('<%= escape_javascript(render(:partial => "/deliveries/delivery_compart_form", :locals => {:delivery => @delivery, :active_edit => true })) %>');
+  postBoxEditForm.html('<%= escape_javascript(render(:partial => "/deliveries/delivery_compart_form", :locals => {:delivery => @delivery, :active_edit => true, :in_form => "edit-delivery" })) %>');
 
 <% when "Survey" %>
-  postBoxEditForm.html('<%= escape_javascript(render(:partial => "/surveys/form", :locals => {:survey => @survey, :active_edit => true, :in_type => "survey" })) %>');
+  postBoxEditForm.html('<%= escape_javascript(render(:partial => "/surveys/form", :locals => {:survey => @survey, :active_edit => true, :in_type => "survey", :in_form => "edit-survey" })) %>');
 
 <% when "Comment"%>
-  postBoxEditForm.html('<%= escape_javascript(render(:partial => "shared/comment_form", :locals => {:commentable_id => @commentable_id, :commentable_type => @commentable_type, :comment_id => @comment.id, :comment => @comment.comment, :message => '', :active_edit => true})) %>');
+  postBoxEditForm.html('<%= escape_javascript(render(:partial => "shared/comment_form", :locals => {:commentable_id => @commentable_id, :commentable_type => @commentable_type, :comment_id => @comment.id, :comment => @comment.comment, :message => '', :active_edit => true, :in_form => "edit-comment"})) %>');
 
 <% when "Discussion" %>
-   postBoxEditForm.html('<%= escape_javascript(render(:partial => "discussions/form_for_discussion", :locals => {:discussion => @discussion, :active_edit => true })) %>');
+   postBoxEditForm.html('<%= escape_javascript(render(:partial => "discussions/form_for_discussion", :locals => {:discussion => @discussion, :active_edit => true, :in_form => "edit-discussion" })) %>');
 <% end %>
 
 postBoxEditDiv.slideDown();
