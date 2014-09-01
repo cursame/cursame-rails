@@ -4,14 +4,135 @@ en:
       intro_homepage_hidden:
         title1: Make things social and academical improving the processes of learning and education quality
         text1: 'Cursame is a plataform that connects teachers, students and directives of the same institution'
-      feature_showcase:
+        request_demo: ¡Ask for a demo!
+      features_showcase:
         title1: Easy to use
-        text1: It is very easy
+        text1: Es muy fácil y rápido aprender a utilizar Cúrsame. Gracias a su diseño y funciones fomenta la adopción por parte de los usuarios.
         title2: Funciones simples y poderosas
         text2: 'Nuestras Herramientas aumentan la productividad y reducen la carga de trabajo para profesores, alumnos y directivos.'
         title3: Multiplataforma
         text3: 'Cúrsame puede utilizarse desde cualquier computadora o dispositivo móvil, esto permite crear y consultar contenido a cualquier hora y lugar.'
+        features_path: Knows our features
+      user_roles_types:
+        header: Toda tu institución en un sólo lugar
+        description: 'Pensamos y diseñamos herramientas para los maestros, alumnos, directivos y padres de familia de tu comunidad escolar.'
+        title1: Directivos
+        text1: Toma el control de tu institución con estadísticas en tiempo real y sistemas de comunicación.
+        title2: Maestros
+        text2: 'Convierte tus clases en una comunidad de aprendizaje, ahorra tiempo y potencia tus capacidades de enseñanza de una forma social.'
+        title3: Alumnos
+        text3: 'Interactúa con tus compañeros y profesores. Resuelve tus dudas, aprende y haz tus entregas en cualquier hora y lugar.'
+        title4: Padres
+        text4: Mantente al día de las actividades y avances escolares de cada uno de tus hijos en tiempo real.
+      social_impact:
+        header: Compromiso e impacto social
+        description: 'Buscamos generar un impacto positivo en la sociedad a través de mejorar la calidad educativa, reducir la brecha digital y detectar oportunamente los focos rojos en comunidades estudiantiles.'
+        title1: Mejora la calidad educativa
+        text1_1: Seguimiento personalizado del avance educativo de los estudiantes.
+        text2_1: Entrega contenido especializado de acuerdo a las necesidades individuales.
+        text3_1: Aumenta la productividad y permite potenciar la enseñanza y mejorar el aprendizaje.
+        title2: Reduce la brecha digital
+        text1_2: Con apoyo de nuestros aliados llevamos servidores y tabletas a las escuelas que más lo necesitan.
+        text2_2: Apoyamos a los profesores con capacitación y asesoría tecnológica.
+        text3_2: La plataforma promueve el intercambio digital de contenido educativo.
+        title3: Detección oportuna de focos rojos
+        text1_3: 'A través de diversos indicadores apoyamos en la detección de: Riesgo de deserción escolar.'
+        text2_3: Consumo de sustancias.
+        text3_3: '"Bullying” escolar.'
+      cursame_stats:
+        title1: Usuarios beneficiados
+        title2: Instituciones usando Cúrsame
+        title3: Actividades en toda la República Mexicana
+        success_stories_path: Success stories
+      testimonials:
+        header: testimonials
+        description1: 'Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio.'
+        name1: Lic. Francisco Fabián Brizuela
+        title1: Director del Centro de Innovación Tecnológica Educativa Secundarias Técnicas Distrito Federal
+        description2: 'He utilizado un sin número de LMS’s, y Cúrsame es la plataforma educativa que mejor se ha adaptado al entorno académico real. Su facilidad de uso y factor social ha provocado que nuestros maestros lo adopten y usen en su trabajo escolar diario beneﬁciando a miles de alumnos.'
+        name2: Lic. Alejandro Caballero
+        title2: Subdirector Académico Universidad Tecnológica Emiliano Zapata
+        description3: 'La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.'
+        name3: Lic. Katia Águila
+        title3: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior           
     features:
       features_title:
-        title1: Metodologiesss
-        text1: We offer things that you will love bitch
+        title1: feactures
+        text1: 'Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.'
+      features_icons:
+        homeworks: Homeworks
+        surveys: Surveys
+        discussions: Discussions
+        comments: comments
+        chat: Chat
+        network: Network
+        results: Results
+        statisdics: Statisdics
+      features_content: 
+        homeworks: Deliveries
+        description_homework: Permite a los profesores crear actividades académicas y a los estudiantes responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.
+        characteristic_homework: 'Algunas de sus características son:'
+        feature1_homework: Creación a uno o varios cursos
+        feature2_homework: Fecha límite y hora de entrega
+        feature3_homework: Archivos adjuntos
+        feature4_homework: Contenido recomendado
+        feature5_homework: Rubros de evaluación
+        surveys: Surveys
+        description_survey: A través de los cuestionarios los profesores pueden evaluar a sus alumnos de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes.
+        characteristic_survey: 'Algunas de sus características son:'
+        feature1_survey: Creación en uno o varios cursos
+        feature2_survey: Fecha y hora límite de entrega
+        feature3_survey: Preguntas y respuestas ilimitadas
+        feature4_survey: Autoevaluación
+        discussions: Discussions
+        description_discussion: Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la comunidad en el aprendizaje.
+        characteristic_discussion: 'Algunas de sus características son:'
+        feature1_discussion: Públicas o privadas
+        feature2_discussion: A uno o varios cursos
+        feature3_discussion: Contenido recomendado
+        comments: Comments
+        description_comment: 'Permite a todos los miembros de la comunidad comentarse de manera pública, grupal o personal para de esta forma interactuar social o académicamente.'
+        characteristic_comment: 'Algunas de sus características son:'
+        feature1_comment: Públicos o privados
+        feature2_comment: A uno o varios cursos
+        feature3_comment: 'Contenido enriquecido (multimedia)'
+        chat: Chat
+        description_chat: Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada curso tiene una sala de chat grupal para compartir contenido en tiempo real.
+        characteristic_chat: 'Algunas de sus características son:'
+        feature1_chat: Chat individual con amigos y compañeros
+        feature2_chat: Salas de chat grupal por curso
+        feature3_chat: Compartir multimedia
+        feature4_chat: Mensajes privados
+        network: Network
+        description_network: Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.
+        characteristic_network: 'Algunas de sus características son:'
+        feature1_network: Encontrar amigos
+        feature2_network: Encontrar compañeros de clase y profesores
+        feature3_network: Solicitudes de amistad
+        feature4_network: Interacción en perfiles
+        results: Results
+        description_result: Cada usuario puede ver su avance educativo. Los profesores visualizan los resultados de todos sus alumnos de una manera muy sencilla y en tiempo real.
+        characteristic_result: 'Algunas de sus características son:'
+        feature1_result: Calificaciones por curso
+        feature2_result: Calificaciones individuales
+        feature3_result: Calificaciones por actividad
+        feature4_result: Exportar a PDF
+        statisdics: 'Statisdics:'
+        description_statisdic: 'Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.'
+        characteristic_statisdic: 'Algunas de sus características son:'
+        feature1_statisdic: Uso de las herramientas de la plataforma
+        feature2_statisdic: Ingreso al sistema
+        feature3_statisdic: Calificaciones
+        feature4_statisdic: Por curso
+        feature5_statisdic: Por alumno
+      our_methods:
+        title: 'No sólo es la tecnología'
+        description_title: 'Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de alumnos, profesores y directivos. Por esta razón trabajamos mano a mano con ellos para lograr los mejores resultados.'
+        training: Training
+        description_training: 'Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los profesores en la adopción de las TICs.'
+        implement: Implement
+        description_implement: Tenemos un equipo especializado que está dedicado a visitar los planteles para enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que esta conlleva.
+        support: support
+        description_support: 'En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.'
+        endless: Endless
+        description_endless: 'Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.'

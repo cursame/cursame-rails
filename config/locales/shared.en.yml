@@ -9,3 +9,7 @@ en:
         title5: Contact
         text1: Are you already a user?
         text2: Find your network
+    website:
+      cta_request_demo:
+        request_demo: ¡Request your demo!
+        
