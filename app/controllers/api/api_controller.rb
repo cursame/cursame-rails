@@ -790,7 +790,7 @@ class Api::ApiController < ApplicationController
         next
       end
       r = {
-        result: as.accomplishment,
+        result: as.grade.score,
         name: as.delivery.title,
         type: 'Delivery'
       }

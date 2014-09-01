@@ -18,10 +18,12 @@
 <% else %>
   <div class="overlay-content">
     <h3><%= survey.name %></h3>
-    <% grade_score = response.grade.score %>
-    <p>Calificación Obtenida: <span><%= number_with_precision(grade_score.to_s, :precision => 1) %></span></p>
-    <% unless response.grade.feedback.blank? %>
-      <p>Retroalimentación: <%= response.grade.feedback %></p>
+    <% unless response.grade.nil? %>
+      <% grade_score = response.grade.score %>
+      <p>Calificación Obtenida: <span><%= number_with_precision(grade_score.to_s, :precision => 1) %></span></p>
+      <% unless response.grade.feedback.blank? %>
+        <p>Retroalimentación: <%= response.grade.feedback %></p>
+      <% end %>
     <% end %>
   </div>
 <% end %>
