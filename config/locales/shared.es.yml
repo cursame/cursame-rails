@@ -9,3 +9,6 @@ es:
         title5: Contacto
         text1: ¿Ya eres usuario?
         text2: Encuentra tu red
+    website:
+      cta_request_demo:
+        request_demo: ¡Solicita un demo en tu plantel!      
