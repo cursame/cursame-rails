@@ -181,8 +181,31 @@ es:
       our_team: 
         title: Nuestro equipo
         description: 'Cúrsame está conformado por un grupo apasionado de emprendedores, tenemos como meta común generar un impacto positivo en la sociedad a través de la educación y la tecnología.'
-
-
-
+    jobs:
+      jobs_title:
+        title: Empleos
+        text1: Estamos Transformando la Educación en México.
+        text2: ¿Te gustaría trabajar con nosotros?
+      job_board:
+        vacancies: Vacantes
+        implementation: Implementación
+        responsabilities: 'Responsabilidades:'
+        requeriments: 'Requerimientos:'
+        we_offer: 'Ofrecemos:'
+        apply_for_job: '¡Aplicar para esta vacante!'
+        description1_senior_developer: 'Para poder seguir ofreciendo la mejor plataforma educativa del mercado a nuestros usuarios e impactar positivamente en la calidad educativa de nuestro país, buscamos tener siempre el mejor equipo de desarrollo.'
+        description2_senior_developer: Buscamos un perfil con experiencia en manejo de equipos de desarrollo.
+        responsibility1_senior_developer: + Planeación y ejecución del Road Map de desarrollo de la plataforma y nuevos productos.
+        responsibility2_senior_developer: + Establecer metodologías de trabajo ágiles para el equipo de desarrollo.
+        responsibility3_senior_developer: + Organización de los roles trabajo de los miembros del equipo para cubrir las áreas de necesidad.
+        responsibility4_senior_developer: + Participar en la creación de código para el back end de la plataforma.
+        requeriment1_senior_developer: + Al menos 3 años de experiencia en desarrollo de software as a service.
+        requeriment2_senior_developer: '+ Al menos 2 años de experiencia desarrollando en Ruby, RoR, Phyton o Meteor JS.'
+        requeriment3_senior_developer: + Ganas de cambiar el mundo.
+        offer1_senior_developer: '+ Sueldo competitivo con el mercado (a negociar).'
+        offer2_senior_developer: + Prestaciones de Ley.
+        offer3_senior_developer: + Gran ambiente de trabajo.
+        offer4_senior_developer: + Bonos conforme a resultados.
+        offer5_senior_developer: + Oportunidad de trabajar en una empresa con un potencial de crecimiento enorme y de cambiar la vida de millones de personas.
 
 
