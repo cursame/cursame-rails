@@ -19,9 +19,7 @@
       <%=link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if (!notification.notificator.user.name.blank?)%>
       <%=link_to " Ver usuario ", show_user_path(notification.notificator.user.personal_url) if (notification.notificator.user.name.blank?)%>
       comentó en la red <%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
-      
-      <!-- /?search=<%= notification.notificator_type %>&id_search=<%=notification.notificator_id.to_s%>") -->
-      
+            
     <!-- Notificacion: 2 - Usuario comento en un curso -->
     <% when 'user_comment_on_course'%>
       <% user = notification.notificator.user%>
@@ -196,13 +194,6 @@
     <% when 'user_comment_on_comment'%>    
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
-
-        <% if notification.notificator.commentable.commentable_type == "Course" %>
-          <% url = "/courses/#{notification.notificator.commentable.commentable_id}?search=Comment&id_search=#{notification.notificator.commentable_id}" %>
-        <% else %>
-          <% url = "/?search=Comment&id_search=#{notification.notificator.commentable_id}" %>
-        <% end %>
-
         <%= link_to comment_path(notification.notificator.commentable) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
@@ -221,7 +212,7 @@
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
         
-        <%= link_to "#{show_user_path(notification.notificator.commentable.personal_url)}?search=Comment&id_search=#{notification.notificator_id}" do %>
+        <%= link_to show_user_path(notification.notificator.commentable.personal_url, search: 'Comment', id_search: notification.notificator_id) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>

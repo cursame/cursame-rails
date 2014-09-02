@@ -122,7 +122,7 @@ es:
         description_statisdic: 'Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.'
         characteristic_statisdic: 'Algunas de sus características son:'
         feature1_statisdic: Uso de las herramientas de la plataforma
-        feature2_statissic: Ingreso al sistema
+        feature2_statisdic: Ingreso al sistema
         feature3_statisdic: Calificaciones
         feature4_statisdic: Por curso
         feature5_statisdic: Por alumno
@@ -137,5 +137,96 @@ es:
         description_support: 'En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.'
         endless: Seguimiento
         description_endless: 'Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.'
+    success_stories:
+      success_stories_title:
+        success_stories: Proyectos
+        description_success_stories: 'Trabajamos con una gran cantidad de instituciones educativas, aquí mostramos algunos de los casos más relevantes.'
+      stories_list:
+        schools: 'Planteles:'
+        teachers: 'profesores:'
+        students: 'Alumnos:'
+        testimonial: Testimonio
+        cobaem: COBAEM
+        description_cobaem: 'Tras un piloto con 6 planteles del Colegio de Bachilleres de Estado de México, nos encontramos en etapa de expansión y serán 48 planteles en más de 40 municipios de la entidad y 50 mil usuarios los beneficiados por Cúrsame.'
+        tecnica_df: Secundarias Técnicas del DF
+        description_tecnica_df: Trabajamos con un piloto de 6 planteles tras el cual estamos en proceso de expansión con un universo de 120 planteles  en todo el Distrito Federal.
+        testimonial_tecnica_df: '"Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio."'
+        testimonial_tecnica_df_name: Lic. Francisco Fabián Brizuela
+        testimonial_tecnica_df_title: Director del Centro de Innovación Tecnológica Educativa Secundarias Técnicas Distrito Federal
+        emprendedores: Modelo de Emprendedores de Educación Media Superior
+        description_emprendedores: 'Proyecto en conjunto con la Subsecretaría de Educación Media Superior, Angel Ventures y Ashoka. A través de Cúrsame se imparte educación para emprendedores en 100 planteles de preparatoria de todo el país y actualmente en expansión para llegar a 1000 planteles en 2014.'
+        testimonial_emprendedores: '“La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.”'
+        testimonial_emprendedores_name: Lic. Katia Águila
+        testimonial_emprendedores_title: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior
+        pilot_tablets: Piloto Federal educación con tabletas
+        description_pilot_tablets: 'Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).'
+    about_us:
+      about_title:
+        title: Acerca de Nosotros
+        text1: 'Cúrsame es una plataforma educativa  fundada en México a finales de 2011 por un grupo de estudiantes de diversas universidades del país con el objetivo de mejorar la calidad educativa y reducir la brecha digital a través de la tecnología. Durante este periodo hemos logrado beneficiar a más de 100 mil estudiantes, profesores y directivos tanto de escuelas públicas como privadas en México, con visión de impactar en toda la región y demás países emergentes.'
+        text2: 'Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.'
+      vision: 'Visión:'
+      description_vision: Ser una plataforma líder en el ámbito educativo que  permita a la población mexicana insertarse con éxito en la sociedad de la información y el conocimiento.
+      mission: 'Misión:'
+      description1_mission: Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita  a la comunidad educativa redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.
+      description2_mission: Democratizar el acceso a tecnología educativa de calidad y generar un cambio en la vida diaria y profesional de alumnos y profesores al acercarlos a la tecnología y sus beneficios.
+      philosophy: 'Filosofía:'
+      description1_philosophy: 'En Cúrsame partimos de la concepción de que el aprendizaje  no sólo es construido dentro y por la propia persona, sino que  tiene que ver con aspectos más sociales dentro de comunidades de enseñanza.'
+      description2_philosophy: Para nosotros la posibilidad de interactuar con otros con un fin educativo a través de herramientas tecnológicas es una forma muy eficaz de favorecer los espacios de encuentro efectivo y positivo en el proceso de enseñanza-aprendizaje.
+      objectives: 'Objetivos:'
+      description1_objetives: 'Contribuir a lograr mejores resultados en el aprendizaje de los alumnos y en la inclusión digital de maestros, alumnos y miembros de su familia en México.'
+      description2_objetives: Promover intercambios de conocimiento  en comunidades de aprendizaje a través de la diversificación de canales de comunicación que facilitan el flujo de información desde el enfoque por competencias.
+      description3_objetives: Mejorar los tiempos efectivos de clase haciendo más eficiente la gestión  y el seguimiento de actividades educativas.
+      description4_objetives: 'Permitir el acceso a educación de calidad y tecnología educativa a todos las instituciones educativas, sus profesores y alumnos sin importar su situación económica y social.'
+      our_team: 
+        title: Nuestro equipo
+        description: 'Cúrsame está conformado por un grupo apasionado de emprendedores, tenemos como meta común generar un impacto positivo en la sociedad a través de la educación y la tecnología.'
+    jobs:
+      jobs_title:
+        title: Empleos
+        text1: Estamos Transformando la Educación en México.
+        text2: ¿Te gustaría trabajar con nosotros?
+      job_board:
+        vacancies: Vacantes
+        implementation: Implementación
+        responsabilities: 'Responsabilidades:'
+        requeriments: 'Requerimientos:'
+        we_offer: 'Ofrecemos:'
+        apply_for_job: '¡Aplicar para esta vacante!'
+        description1_senior_developer: 'Para poder seguir ofreciendo la mejor plataforma educativa del mercado a nuestros usuarios e impactar positivamente en la calidad educativa de nuestro país, buscamos tener siempre el mejor equipo de desarrollo.'
+        description2_senior_developer: Buscamos un perfil con experiencia en manejo de equipos de desarrollo.
+        responsibility1_senior_developer: + Planeación y ejecución del Road Map de desarrollo de la plataforma y nuevos productos.
+        responsibility2_senior_developer: + Establecer metodologías de trabajo ágiles para el equipo de desarrollo.
+        responsibility3_senior_developer: + Organización de los roles trabajo de los miembros del equipo para cubrir las áreas de necesidad.
+        responsibility4_senior_developer: + Participar en la creación de código para el back end de la plataforma.
+        requeriment1_senior_developer: + Al menos 3 años de experiencia en desarrollo de software as a service.
+        requeriment2_senior_developer: '+ Al menos 2 años de experiencia desarrollando en Ruby, RoR, Phyton o Meteor JS.'
+        requeriment3_senior_developer: + Ganas de cambiar el mundo.
+        offer1_senior_developer: '+ Sueldo competitivo con el mercado (a negociar).'
+        offer2_senior_developer: + Prestaciones de Ley.
+        offer3_senior_developer: + Gran ambiente de trabajo.
+        offer4_senior_developer: + Bonos conforme a resultados.
+        offer5_senior_developer: + Oportunidad de trabajar en una empresa con un potencial de crecimiento enorme y de cambiar la vida de millones de personas.
+    contact:
+      contact_title:
+        title: Contáctanos
+        description: '¿Tienes alguna sugerencia, te gustaría unirte a nuestro equipo o simplemente quieres decir hola? Nos encantaría escucharte.'
+      contact_page:
+        text1: Llena el siguiente formulario y nos pondremos en contacto contigo en menos de 48 horas.
+        text2: Campos con asterisco
+        text3: son requeridos.
+    request_demo:
+      title: Solicitar Demo
+      text1: Un asesor especializado visitará tu plantel para demostrar la plataforma y resolver todas tus dudas.
+      text2: Llena el siguiente formulario y nos pondremos en contacto contigo en menos de 48 horas.
+      text3: Campos con asterisco
+      text4: son requeridos.
+    apps:
+      text1: Descarga nuestras Apps
+      text2: No te pierdas ninguna de tus actividades escolares.
+      text3: Próximamente
+    press:
+      text1: Prensa
+      text2: Lo que se dice en medios sobre Cúrsame.
 
 

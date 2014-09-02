@@ -20,8 +20,8 @@
       <div class="col col-8">
         <div class="col-inner">
           <div class="section-title">
-            <h1>Empleos</h1>
-            <p>Estamos Transformando la Educación en México. <br>¿Te gustaría trabajar con nosotros?</p>
+            <h1><%= t('.jobs_title.title') %></h1>
+            <p><%= t('.jobs_title.text1') %> <br><%= t('.jobs_title.text2') %></p>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="col col-4">
       <div class="col-inner">
         <div class="jobs-positions-list">
-          <h4>Vacantes</h4>
+          <h4><%= t('.job_board.vacancies') %></h4>
           <ul class="jobs-links">
             <li>
               <a data-job-target="senior-ror" href="">Senior Developer</a>
@@ -51,7 +51,7 @@
               <a href="" data-job-target="ios-dev">iOS Developer</a>
             </li>
             <li>
-              <a href="" data-job-target="implement">Implementación</a>
+              <a href="" data-job-target="implement"><%= t('.job_board.implementation') %></a>
             </li>
             <!-- <li>
               <a href="" data-job-target="sales">Ventas</a>
@@ -64,27 +64,27 @@
       <div class="col-inner">
         <div class="job-view active" data-job="senior-ror">
           <h2>Senior Developer</h2>        
-          <p>Para poder seguir ofreciendo la mejor plataforma educativa del mercado a nuestros usuarios e impactar positivamente en la calidad educativa de nuestro país, buscamos tener siempre el mejor equipo de desarrollo. </p>
+          <p><%= t('.job_board.description1_senior_developer') %></p>
 
-          <p>Buscamos un perfil con experiencia en manejo de equipos de desarrollo.</p>
+          <p><%= t('.job_board.description2_senior_developer') %></p>
 
-          <p><strong>Responsabilidades:</strong><br>
-          + Planeación y ejecución del Road Map de desarrollo de la plataforma y nuevos productos.<br>
-          + Establecer metodologías de trabajo ágiles para el equipo de desarrollo.<br>
-          + Organización de los roles trabajo de los miembros del equipo para cubrir las áreas de necesidad.<br>
-          + Participar en la creación de código para el back end de la plataforma.</p>
+          <p><strong><%= t('.job_board.responsabilities') %></strong><br>
+          <%= t('.job_board.responsibility1_senior_developer') %><br>
+          <%= t('.job_board.responsibility2_senior_developer') %><br>
+          <%= t('.job_board.responsibility3_senior_developer') %><br>
+          <%= t('.job_board.responsibility4_senior_developer') %></p>
 
-          <p><strong>Requerimientos:</strong><br>
-          + Al menos 3 años de experiencia en desarrollo de software as a service. <br>
-          + Al menos 2 años de experiencia desarrollando en Ruby, RoR, Phyton o Meteor JS. <br>
-          + Ganas de cambiar el mundo.</p>
+          <p><strong><%= t('.job_board.requeriments') %></strong><br>
+          <%= t('.job_board.requeriment1_senior_developer') %><br>
+          <%= t('.job_board.requeriment2_senior_developer') %><br>
+          <%= t('.job_board.requeriment3_senior_developer') %></p>
 
-          <p><strong>Ofrecemos:</strong><br>
-          + Sueldo competitivo con el mercado (a negociar).<br>
-          + Prestaciones de Ley.<br>
-          + Gran ambiente de trabajo.<br>
-          + Bonos conforme a resultados.<br>
-          + Oportunidad de trabajar en una empresa con un potencial de crecimiento enorme y de cambiar la vida de millones de personas.</p>
+          <p><strong><%= t('.job_board.we_offer') %></strong><br>
+          <%= t('.job_board.offer1_senior_developer') %><br>
+          <%= t('.job_board.offer2_senior_developer') %><br>
+          <%= t('.job_board.offer3_senior_developer') %><br>
+          <%= t('.job_board.offer4_senior_developer') %><br>
+          <%= t('.job_board.offer5_senior_developer') %></p>
         </div>
 
         <div class="job-view" data-job="js-dev">
@@ -232,7 +232,7 @@
         </div> -->
 
         <br><br>
-        <%= link_to '¡Aplicar para esta vacante!', contact_path, class: 'btn btn-large btn-primary' %>
+        <%= link_to t('.job_board.apply_for_job'), contact_path, class: 'btn btn-large btn-primary' %>
       </div>
     </div>
   </div>

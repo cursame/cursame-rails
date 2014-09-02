@@ -2,17 +2,17 @@ en:
   home:
     landing_page:
       intro_homepage_hidden:
-        title1: Make things social and academical improving the processes of learning and education quality
-        text1: 'Cursame is a plataform that connects teachers, students and directives of the same institution'
-        request_demo: ¡Ask for a demo!
+        title1: Be able to socially and academically interact while improving your learning process
+        text1: 'Cúrsame is a platform that connects with teachers, students and directives from the same institution.'
+        request_demo: Request a demo for your campus!
       features_showcase:
         title1: Easy to use
-        text1: Es muy fácil y rápido aprender a utilizar Cúrsame. Gracias a su diseño y funciones fomenta la adopción por parte de los usuarios.
-        title2: Funciones simples y poderosas
-        text2: 'Nuestras Herramientas aumentan la productividad y reducen la carga de trabajo para profesores, alumnos y directivos.'
-        title3: Multiplataforma
-        text3: 'Cúrsame puede utilizarse desde cualquier computadora o dispositivo móvil, esto permite crear y consultar contenido a cualquier hora y lugar.'
-        features_path: Knows our features
+        text1: 'It’s really easy and quick to learn how to use Cúrsame, its design and functions make users very simple to adopt it.'
+        title2: Simple and powerful functions
+        text2: 'Our tools improve the productivity and reduce the work load for teachers, students and directives.'
+        title3: Multiplatform
+        text3: 'Cúrsame can be used from any computer or mobile device, this allows users to create and consult contents regardless of the time or place.'
+        features_path: Get to Know our methodology
       user_roles_types:
         header: Toda tu institución en un sólo lugar
         description: 'Pensamos y diseñamos herramientas para los maestros, alumnos, directivos y padres de familia de tu comunidad escolar.'
@@ -43,7 +43,7 @@ en:
         title1: Usuarios beneficiados
         title2: Instituciones usando Cúrsame
         title3: Actividades en toda la República Mexicana
-        success_stories_path: Success stories
+        success_stories_path: Proyects
       testimonials:
         header: testimonials
         description1: 'Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio.'
@@ -57,27 +57,27 @@ en:
         title3: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior           
     features:
       features_title:
-        title1: feactures
-        text1: 'Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.'
+        title1: Method
+        text1: 'We offer tools, training and monitoring educational institutions to improve interaction in the process of teaching and learning.'
       features_icons:
         homeworks: Homeworks
-        surveys: Surveys
+        surveys: Pop quizzes
         discussions: Discussions
         comments: comments
         chat: Chat
-        network: Network
-        results: Results
-        statisdics: Statisdics
+        network: Community
+        results: Clasifications
+        statisdics: Stadistics
       features_content: 
-        homeworks: Deliveries
-        description_homework: Permite a los profesores crear actividades académicas y a los estudiantes responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.
-        characteristic_homework: 'Algunas de sus características son:'
-        feature1_homework: Creación a uno o varios cursos
-        feature2_homework: Fecha límite y hora de entrega
-        feature3_homework: Archivos adjuntos
-        feature4_homework: Contenido recomendado
-        feature5_homework: Rubros de evaluación
-        surveys: Surveys
+        homeworks: Homework
+        description_homework: It allows teachers to create academic activities for students to respond to from any place without the need of paper and boosting their productivity.
+        characteristic_homework: 'Some of these characteristics are:'
+        feature1_homework: Course creation
+        feature2_homework: Deadlines
+        feature3_homework: Attachments
+        feature4_homework: Recomended content
+        feature5_homework: Evaluation
+        surveys: Pop quizzes
         description_survey: A través de los cuestionarios los profesores pueden evaluar a sus alumnos de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes.
         characteristic_survey: 'Algunas de sus características son:'
         feature1_survey: Creación en uno o varios cursos
@@ -103,21 +103,21 @@ en:
         feature2_chat: Salas de chat grupal por curso
         feature3_chat: Compartir multimedia
         feature4_chat: Mensajes privados
-        network: Network
+        network: Community
         description_network: Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.
         characteristic_network: 'Algunas de sus características son:'
         feature1_network: Encontrar amigos
         feature2_network: Encontrar compañeros de clase y profesores
         feature3_network: Solicitudes de amistad
         feature4_network: Interacción en perfiles
-        results: Results
+        results: Clasifications
         description_result: Cada usuario puede ver su avance educativo. Los profesores visualizan los resultados de todos sus alumnos de una manera muy sencilla y en tiempo real.
         characteristic_result: 'Algunas de sus características son:'
         feature1_result: Calificaciones por curso
         feature2_result: Calificaciones individuales
         feature3_result: Calificaciones por actividad
         feature4_result: Exportar a PDF
-        statisdics: 'Statisdics:'
+        statisdics: 'Stadistics:'
         description_statisdic: 'Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.'
         characteristic_statisdic: 'Algunas de sus características son:'
         feature1_statisdic: Uso de las herramientas de la plataforma
@@ -126,13 +126,105 @@ en:
         feature4_statisdic: Por curso
         feature5_statisdic: Por alumno
       our_methods:
-        title: 'No sólo es la tecnología'
-        description_title: 'Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de alumnos, profesores y directivos. Por esta razón trabajamos mano a mano con ellos para lograr los mejores resultados.'
+        title: 'It’s not just about technology'
+        description_title: 'Our method takes into account that a technological platform by itself is not enough to satisfy the needs of students, teachers and directives. For this reason, we work hand in hand with them to achieve greater results. '
         training: Training
-        description_training: 'Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los profesores en la adopción de las TICs.'
-        implement: Implement
-        description_implement: Tenemos un equipo especializado que está dedicado a visitar los planteles para enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que esta conlleva.
+        description_training: 'Before they start to use Cúrsame, all institutions that require technological training are trained by our experts. This way, we fight the digital gap and support teachers to adopt TICs. '
+        implement: Implementation
+        description_implement: We have a specialized team that is dedicated to visit each campus and show teachers and directives how the platform works and the benefits it brings.
         support: support
-        description_support: 'En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.'
-        endless: Endless
-        description_endless: 'Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.'
+        description_support: 'In Cúrsame, we keep close to the platform’s users in case they need help or orientation. Our support can be found on chat, tickets and tutorials that can be used at any time.'
+        endless: Follow up
+        description_endless: 'We want to keep in touch with our users so we can improve the platform together, we are constantly asking for feedback in order to know the user’s needs and satisfy them at our best.'
+    success_stories:
+      success_stories_title:
+        success_stories: Projects
+        description_success_stories: 'We work along with a great amount of educational institutions, here we show the most relevant cases:'
+      stories_list:
+        schools: 'Campuses:'
+        teachers: 'Teachers:'
+        students: 'Students:'
+        testimonial: Testimony
+        cobaem: COBAEM
+        description_cobaem: 'After showing a pilot to 6 of the Colegio de Bachilleres de Estado de México, campuses we found ourselves in need of expansion and now it will be 48 campuses in more than 40 municipalities and more than 50 thousand users benefited by Cúrsame.'
+        tecnica_df: Secundarias Técnicas del DF
+        description_tecnica_df: We worked with a pilot of 6 campuses and will now expand to a universe of 120 campuses all over Mexico City.
+        testimonial_tecnica_df: '“Cúrsame  has been a fundamental development tool. It compliments day by day classwork and increases the effective time inside the classroom. Also, it allows us save paper by uploading our readings, which is a great benefit."'
+        testimonial_tecnica_df_name: Lic. Francisco Fabián Brizuela
+        testimonial_tecnica_df_title: Director del Centro de Innovación Tecnológica Educativa Secundarias Técnicas Distrito Federal
+        emprendedores: Higher Secondary Education Enterpreneurs 
+        description_emprendedores: 'This project was created along with the Subsecretary of Higher Secondary Education, Angel Ventures and Ashoka. Cúrsame gives education to enterpreneurs in over 100 high-school campuses throughout the country. It is currently in an expansion process and is willing to reach 1000 campuses in 2014.'
+        testimonial_emprendedores: '“It is the best tool for education. In our experience with higher education, we have tried to implement technology to teaching without having much success until we started working with Cúrsame, we are very pleased with the results.”'
+        testimonial_emprendedores_name: Lic. Katia Águila
+        testimonial_emprendedores_title: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior
+        pilot_tablets: Federal pilot with tablets
+        description_pilot_tablets: 'We are participating on a Federal pilot that will take place in Morelos, Guanajuato, and Querétaro. Our aim is to get education through tablets in Mexico’s primary schools. We are the second place of the 5 final proposals. (IUSA y HP).'
+    about_us:
+      about_title:
+        title: About Us
+        text1: 'Cúrsame is a platform founded in Mexico towards the end of the year 2011 by a group of students from different universities throughout Mexico with the aim of improving the education quality and reduce the digital gap through technology. During this period we have succeeded in benefiting more than 100 thousand students, teachers and directives in both private and public schools throughout the country. We want to make an impact on the whole region as well as developing countries. '
+        text2: 'We have received 3 rounds of private investment from avowed foundations, and have been granted a great deal of awards and prices. More importantly, we have managed to link high impact projects to government allowing us to rapidly grow and create a social impact.'
+      vision: 'Vision:'
+      description_vision: To become a leading platform in the educational scope allowing the Mexican population to become successfully inserted in the information and knowledge society.
+      mission: 'Mission:'
+      description1_mission: To improve the quality of Mexican education through an efficient technological tool that allows the educational community to redefine and improve its teaching-learning strategies.
+      description2_mission: 'To democratize the access to a quality technological education, creating a change in the every day and professional lives of students and teachers by bringing the close to technology and its benefits.'
+      philosophy: 'Philosophy:'
+      description1_philosophy: 'In Cúrsame we believe that the learning conception is constructed is not only constructed by one’s own being, but that it deals with more social aspects inside learning communities.'
+      description2_philosophy: 'To us, the possibility of interaction with others with an educational purpose through technology tools, becomes a very efficient way to favor a possitive and effective educational encounter.' 
+      objectives: 'Objectives:'
+      description1_objetives: 'To achieve better learning results in the student’s learning while bringing digital inclusion to teachers, students and family members.'
+      description2_objetives: To promote knowledge exchange in learning communities through diverse communication channels that facilitate the information flow. 
+      description3_objetives: Improve time class by making its management more efficient and giving follow up to all activities.
+      description4_objetives: 'Allowing access to a technological quality education to all schools, regardless of their economic or social situation. '
+      our_team: 
+        title: Cúrsame
+        description: 'Cúrsame is made up of a passionate group of entrepreneurs, our goal is to generate a positive impact in society through education and technology.'
+    jobs:
+      jobs_title:
+        title: Jobs
+        text1: We are working to transform education in Mexico
+        text2: Do you want to join our team?
+      job_board:
+        vacancies: Vacancies
+        implementation: Implementation
+        responsabilities: 'Responsabilities:'
+        requeriments: 'Requeriments:'
+        we_offer: 'We offer:'
+        apply_for_job: 'Apply for job!'
+        description1_senior_developer: We are looking to have the best team to offer our users the best educational platform on the market and create a possitive impact in the educational quality of our country. 
+        description2_senior_developer: We are looking for a someone that has experience in system management and development.   
+        responsibility1_senior_developer: + Planning and managing the Road Map Development of the platform and int new products.
+        responsibility2_senior_developer: + Establish agile work methods for our team.
+        responsibility3_senior_developer: + Organization in the work roles of every team memeber to cover the areas needed.
+        responsibility4_senior_developer: + To participate in the code  creation for a back end in the platform.
+        requeriment1_senior_developer: + At least 3 years of experience in creating softwere as a service.
+        requeriment2_senior_developer: '+ At least 2 years of experience development in Ruby, RoR, Phyton or Meteor JS. '
+        requeriment3_senior_developer: + Wants to change the world.
+        offer1_senior_developer: '+ Good, negotiable payment'
+        offer2_senior_developer: + Law benifits
+        offer3_senior_developer: + Great work environment
+        offer4_senior_developer: + Bonus according to results.
+        offer5_senior_developer: + Opportunity to work in a company with a great growth potential and the capacity to change the lives of millions of people.
+    contact:
+      contact_title:
+        title: Contact
+        description: 'Would you like to suggest anything to our team, or simply say hello? We’d love to hear from you!'
+      contact_page:
+        text1: Fill in the following format and we will get in touch with you in less than 48 hours.
+        text2: fields with
+        text3: required fields.
+    request_demo:
+      title: Ask for a demo
+      text1: A specialist will visit your campus to show the platform and anwser all of you questions.
+      text2: Fill in the following format and we will get in touch with you in less than 48 hours.
+      text3: fields with
+      text4: required fields.
+    apps:
+      text1: Download our apps
+      text2: Don’t miss out any of your school activities
+      text3: Coming soon
+    press:
+      text1: Press
+      text2: What the press says about Cúrsame.
+
