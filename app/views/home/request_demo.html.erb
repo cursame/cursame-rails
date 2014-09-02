@@ -15,8 +15,8 @@
       <div class="col col-8">
         <div class="col-inner">
           <div class="section-title">
-            <h1>Solicitar Demo</h1>
-            <p>Un asesor especializado visitará tu plantel para demostrar la plataforma y resolver todas tus dudas.</p>
+            <h1><%= t('.title') %></h1>
+            <p><%= t('.text1') %></p>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="col col-9">
       <div class="col-inner">
         <div class="form-contact">
-          <p>Llena el siguiente formulario y nos pondremos en contacto contigo en menos de 48 horas. <br>Campos con asterisco (<span class="required">*</span>) son requeridos.</p>
+          <p><%= t('.text2') %> <br><%= t('.text3') %> (<span class="required">*</span>) <%= t('.text4') %></p>
           <%= render partial: 'shared/website/contact_form', locals: { contact_type: 'demo_request', lading_page_id: false } %>
 
         </div>

@@ -43,7 +43,7 @@ en:
         title1: Usuarios beneficiados
         title2: Instituciones usando Cúrsame
         title3: Actividades en toda la República Mexicana
-        success_stories_path: Success stories
+        success_stories_path: Proyects
       testimonials:
         header: testimonials
         description1: 'Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio.'
@@ -58,7 +58,7 @@ en:
     features:
       features_title:
         title1: Method
-        text1: 'Ofrecemos herramientas, capacitación y seguimiento a instituciones educativas para mejorar la interacción en el proceso de enseñanza y aprendizaje.'
+        text1: 'We offer tools, training and monitoring educational institutions to improve interaction in the process of teaching and learning.'
       features_icons:
         homeworks: Homeworks
         surveys: Pop quizzes
@@ -77,7 +77,7 @@ en:
         feature3_homework: Attachments
         feature4_homework: Recomended content
         feature5_homework: Evaluation
-        surveys: Surveys
+        surveys: Pop quizzes
         description_survey: A través de los cuestionarios los profesores pueden evaluar a sus alumnos de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes.
         characteristic_survey: 'Algunas de sus características son:'
         feature1_survey: Creación en uno o varios cursos
@@ -103,21 +103,21 @@ en:
         feature2_chat: Salas de chat grupal por curso
         feature3_chat: Compartir multimedia
         feature4_chat: Mensajes privados
-        network: Network
+        network: Community
         description_network: Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.
         characteristic_network: 'Algunas de sus características son:'
         feature1_network: Encontrar amigos
         feature2_network: Encontrar compañeros de clase y profesores
         feature3_network: Solicitudes de amistad
         feature4_network: Interacción en perfiles
-        results: Results
+        results: Clasifications
         description_result: Cada usuario puede ver su avance educativo. Los profesores visualizan los resultados de todos sus alumnos de una manera muy sencilla y en tiempo real.
         characteristic_result: 'Algunas de sus características son:'
         feature1_result: Calificaciones por curso
         feature2_result: Calificaciones individuales
         feature3_result: Calificaciones por actividad
         feature4_result: Exportar a PDF
-        statisdics: 'Statisdics:'
+        statisdics: 'Stadistics:'
         description_statisdic: 'Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.'
         characteristic_statisdic: 'Algunas de sus características son:'
         feature1_statisdic: Uso de las herramientas de la plataforma
@@ -206,3 +206,25 @@ en:
         offer3_senior_developer: + Great work environment
         offer4_senior_developer: + Bonus according to results.
         offer5_senior_developer: + Opportunity to work in a company with a great growth potential and the capacity to change the lives of millions of people.
+    contact:
+      contact_title:
+        title: Contact
+        description: 'Would you like to suggest anything to our team, or simply say hello? We’d love to hear from you!'
+      contact_page:
+        text1: Fill in the following format and we will get in touch with you in less than 48 hours.
+        text2: fields with
+        text3: required fields.
+    request_demo:
+      title: Ask for a demo
+      text1: A specialist will visit your campus to show the platform and anwser all of you questions.
+      text2: Fill in the following format and we will get in touch with you in less than 48 hours.
+      text3: fields with
+      text4: required fields.
+    apps:
+      text1: Download our apps
+      text2: Don’t miss out any of your school activities
+      text3: Coming soon
+    press:
+      text1: Press
+      text2: What the press says about Cúrsame.
+

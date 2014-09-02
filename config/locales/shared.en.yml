@@ -12,4 +12,7 @@ en:
     website:
       cta_request_demo:
         request_demo: Request a demo for your campus!
-        
+      other_contact_ways: 
+        text1: Other ways to contact us
+        follow_us_on_twitter: Follow us on Twitter
+        follow_us_on_facebook: Follow us on Faceook

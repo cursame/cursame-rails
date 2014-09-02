@@ -207,5 +207,26 @@ es:
         offer3_senior_developer: + Gran ambiente de trabajo.
         offer4_senior_developer: + Bonos conforme a resultados.
         offer5_senior_developer: + Oportunidad de trabajar en una empresa con un potencial de crecimiento enorme y de cambiar la vida de millones de personas.
+    contact:
+      contact_title:
+        title: Contáctanos
+        description: '¿Tienes alguna sugerencia, te gustaría unirte a nuestro equipo o simplemente quieres decir hola? Nos encantaría escucharte.'
+      contact_page:
+        text1: Llena el siguiente formulario y nos pondremos en contacto contigo en menos de 48 horas.
+        text2: Campos con asterisco
+        text3: son requeridos.
+    request_demo:
+      title: Solicitar Demo
+      text1: Un asesor especializado visitará tu plantel para demostrar la plataforma y resolver todas tus dudas.
+      text2: Llena el siguiente formulario y nos pondremos en contacto contigo en menos de 48 horas.
+      text3: Campos con asterisco
+      text4: son requeridos.
+    apps:
+      text1: Descarga nuestras Apps
+      text2: No te pierdas ninguna de tus actividades escolares.
+      text3: Próximamente
+    press:
+      text1: Prensa
+      text2: Lo que se dice en medios sobre Cúrsame.
 
 

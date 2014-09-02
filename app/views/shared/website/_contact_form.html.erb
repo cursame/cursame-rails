@@ -5,21 +5,29 @@
   <% end %>
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-    <%= label_tag 'name', 'Nombre completo <span class="required">*</span>'.html_safe %>
+    <%if I18n.locale == :en %>
+      <%= label_tag 'name', 'Full name <span class="required">*</span>'.html_safe %>
+    <% else %>
+      <%= label_tag 'name', 'Nombre completo <span class="required">*</span>'.html_safe %>
+    <% end %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
-        <%= text_field_tag 'name', '', required: 'required', placeholder: 'Ejemplo: Juan Pérez' %>
+        <%= text_field_tag 'name', '', required: 'required', placeholder: (I18n.locale == :en ? 'Example' : 'Ejemplo') << ': Juan Pérez' %>
       </div>
     </div>
   </div>
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-    <%= label_tag 'email', 'Correo electrónico <span class="required">*</span>'.html_safe %>
+    <%if I18n.locale == :en %>
+      <%= label_tag 'email', 'Email <span class="required">*</span>'.html_safe %>
+    <% else %>
+      <%= label_tag 'email', 'Correo electrónico <span class="required">*</span>'.html_safe %>
+    <% end %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
-        <%= email_field_tag 'email', '', required: 'required', placeholder: 'Ejemplo: tu-correo@hotmail.com' %>
+        <%= email_field_tag 'email', '', required: 'required', placeholder: (I18n.locale == :en ? 'Example' : 'Ejemplo') << ': tu-correo@hotmail.com' %>
       </div>
     </div>
   </div>
@@ -30,11 +38,15 @@
         <div class="col-inner">
           <div class="form-group label-on-top l-label">
             <div class="form-group-label">
-            <%= label_tag 'phone', 'Teléfono <span class="required">*</span>'.html_safe %>
+            <%if I18n.locale == :en %>
+              <%= label_tag 'phone', 'Phone number <span class="required">*</span>'.html_safe %>
+            <% else %>
+              <%= label_tag 'phone', 'Teléfono <span class="required">*</span>'.html_safe %>
+            <% end %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
-                <%= phone_field_tag 'phone', '', required: 'required', placeholder: 'Ejemplo: (55) 5555-5555' %>
+                <%= phone_field_tag 'phone', '', required: 'required', placeholder: (I18n.locale == :en ? 'Example' : 'Ejemplo') << ': (55) 5555-5555' %>
               </div>
             </div>
           </div>
@@ -44,11 +56,15 @@
         <div class="col-inner">
           <div class="form-group label-on-top l-label">
             <div class="form-group-label">
-            <%= label_tag 'phone_ext', 'Extensión:' %>
+            <%if I18n.locale == :en %>
+              <%= label_tag 'phone_ext', 'Extension number:' %>
+            <% else %>
+              <%= label_tag 'phone_ext', 'Extensión:' %>
+            <% end %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
-                <%= phone_field_tag 'phone_ext', '', placeholder: 'Ejemplo: 55' %>
+                <%= phone_field_tag 'phone_ext', '', placeholder: (I18n.locale == :en ? 'Example' : 'Ejemplo') << ': 55' %>
               </div>
             </div>
           </div>
@@ -57,37 +73,59 @@
     </div>
     <div class="form-group label-on-top l-label">
       <div class="form-group-label">
-      <%= label_tag 'position', 'Puesto <span class="required">*</span>'.html_safe %>
+      <%if I18n.locale == :en %>
+        <%= label_tag 'position', 'Position <span class="required">*</span>'.html_safe %>
+      <% else %>
+        <%= label_tag 'position', 'Puesto <span class="required">*</span>'.html_safe %>
+      <% end %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= text_field_tag 'position', '', required: 'required', placeholder: 'Ejemplo: Director' %>
+          <%= text_field_tag 'position', '', required: 'required', placeholder: (I18n.locale == :en ? 'Example' : 'Ejemplo') << ': Director' %>
         </div>
       </div>
     </div>
     <div class="form-group label-on-top l-label">
       <div class="form-group-label">
-      <%= label_tag 'school', 'Institución <span class="required">*</span>'.html_safe %>
+      <%if I18n.locale == :en %>
+        <%= label_tag 'school', 'Institution <span class="required">*</span>'.html_safe %>
+      <% else %>
+        <%= label_tag 'school', 'Institución <span class="required">*</span>'.html_safe %>
+      <% end %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= text_field_tag 'school', '', required: 'required', placeholder: 'Ejemplo: CECYTEM 05' %>
+          <%= text_field_tag 'school', '', required: 'required', placeholder: (I18n.locale == :en ? 'Example' : 'Ejemplo') << ': CECYTEM 05' %>
         </div>
       </div>
     </div>
     <div class="form-group label-on-top l-label">
       <div class="form-group-label">
-      <%= label_tag 'lms_usage', '¿Cuenta ya con algún sistema de gestión de aprendizaje? <span class="required">*</span>'.html_safe %>
+      <%if I18n.locale == :en %>
+        <%= label_tag 'lms_usage', 'Do you already have a learning system? <span class="required">*</span>'.html_safe %>
+      <% else %>
+        <%= label_tag 'lms_usage', '¿Cuenta ya con algún sistema de gestión de aprendizaje? <span class="required">*</span>'.html_safe %>
+      <% end %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <% lms_options = "<option value='0'>Selecciona una opción</option>
-                            <option value='moodle'>Moodle</option>
-                            <option value='blackboard'>Blackboard</option>
-                            <option value='aula_24_horas'>Aula 24 horas</option>
-                            <option value='none'>Ninguno</option>
-                            <option value='other'>Otro ¿Cuál?</option>"
-          %>
+          <% if I18n.locale == :en %>
+            <% lms_options = "<option value='0'>Select an option</option>
+                              <option value='moodle'>Moodle</option>
+                              <option value='blackboard'>Blackboard</option>
+                              <option value='aula_24_horas'>Aula 24 horas</option>
+                              <option value='none'>None</option>
+                              <option value='other'>Other</option>"
+            %>
+          <% else %>
+            <% lms_options = "<option value='0'>Selecciona una opción</option>
+                              <option value='moodle'>Moodle</option>
+                              <option value='blackboard'>Blackboard</option>
+                              <option value='aula_24_horas'>Aula 24 horas</option>
+                              <option value='none'>Ninguno</option>
+                              <option value='other'>Otro ¿Cuál?</option>"
+            %>
+          <% end %>
           <%= select_tag 'lms_usage', lms_options.html_safe, class: 'lms-usage-select', required: 'required' %>
         </div>
       </div>
@@ -105,7 +143,11 @@
   </div>
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-    <%= label_tag 'message', 'Mensaje <span class="required">*</span>'.html_safe %>
+    <%if I18n.locale == :en %>
+      <%= label_tag 'message', 'Message <span class="required">*</span>'.html_safe %>
+    <% else %>
+      <%= label_tag 'message', 'Mensaje <span class="required">*</span>'.html_safe %>
+    <% end %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -116,7 +158,11 @@
   <ul class="list-buttons right fr">
     <li>
       <span class="btn btn-complementary btn-large input-btn activable">
-        <%= submit_tag "Enviar Mensaje", :class => "activable"%>
+        <%if I18n.locale == :en %>
+          <%= submit_tag "Send message", :class => "activable"%>
+        <% else %>
+          <%= submit_tag "Enviar Mensaje", :class => "activable"%>
+        <% end %>
       </span>
     </li>
   </ul>

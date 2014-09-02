@@ -11,4 +11,8 @@ es:
         text2: Encuentra tu red
     website:
       cta_request_demo:
-        request_demo: ¡Solicita un demo en tu plantel!      
+        request_demo: ¡Solicita un demo en tu plantel!
+      other_contact_ways: 
+        text1: Otras formas de contacto
+        follow_us_on_twitter: Síguenos en Twitter
+        follow_us_on_facebook: Síguenos en Facebook
