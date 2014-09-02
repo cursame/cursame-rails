@@ -122,7 +122,7 @@ es:
         description_statisdic: 'Los administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.'
         characteristic_statisdic: 'Algunas de sus características son:'
         feature1_statisdic: Uso de las herramientas de la plataforma
-        feature2_statissic: Ingreso al sistema
+        feature2_statisdic: Ingreso al sistema
         feature3_statisdic: Calificaciones
         feature4_statisdic: Por curso
         feature5_statisdic: Por alumno
@@ -137,5 +137,30 @@ es:
         description_support: 'En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.'
         endless: Seguimiento
         description_endless: 'Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.'
+    success_stories:
+      success_stories_title:
+        success_stories: Proyectos
+        description_success_stories: 'Trabajamos con una gran cantidad de instituciones educativas, aquí mostramos algunos de los casos más relevantes.'
+      stories_list:
+        schools: 'Planteles:'
+        teachers: 'profesores:'
+        students: 'Alumnos:'
+        testimonial: Testimonio
+        cobaem: COBAEM
+        description_cobaem: 'Tras un piloto con 6 planteles del Colegio de Bachilleres de Estado de México, nos encontramos en etapa de expansión y serán 48 planteles en más de 40 municipios de la entidad y 50 mil usuarios los beneficiados por Cúrsame.'
+        tecnica_df: Secundarias Técnicas del DF
+        description_tecnica_df: Trabajamos con un piloto de 6 planteles tras el cual estamos en proceso de expansión con un universo de 120 planteles  en todo el Distrito Federal.
+        testimonial_tecnica_df: '"Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio."'
+        testimonial_tecnica_df_name: Lic. Francisco Fabián Brizuela
+        testimonial_tecnica_df_title: Director del Centro de Innovación Tecnológica Educativa Secundarias Técnicas Distrito Federal
+        emprendedores: Modelo de Emprendedores de Educación Media Superior
+        description_emprendedores: 'Proyecto en conjunto con la Subsecretaría de Educación Media Superior, Angel Ventures y Ashoka. A través de Cúrsame se imparte educación para emprendedores en 100 planteles de preparatoria de todo el país y actualmente en expansión para llegar a 1000 planteles en 2014.'
+        testimonial_emprendedores: '“La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.”'
+        testimonial_emprendedores_name: Lic. Katia Águila
+        testimonial_emprendedores_title: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior
+        pilot_tablets: Piloto Federal educación con tabletas
+        description_pilot_tablets: 'Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).'
+
+
 
 
