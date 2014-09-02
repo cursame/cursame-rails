@@ -159,3 +159,24 @@ en:
         testimonial_emprendedores_title: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior
         pilot_tablets: Piloto Federal educación con tabletas
         description_pilot_tablets: 'Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).'
+    about_us:
+      about_title:
+        title: About Us
+        text1: 'Cúrsame es una plataforma educativa  fundada en México a finales de 2011 por un grupo de estudiantes de diversas universidades del país con el objetivo de mejorar la calidad educativa y reducir la brecha digital a través de la tecnología. Durante este periodo hemos logrado beneficiar a más de 100 mil estudiantes, profesores y directivos tanto de escuelas públicas como privadas en México, con visión de impactar en toda la región y demás países emergentes.'
+        text2: 'Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.'
+      vision: 'Vision:'
+      description_vision: Ser una plataforma líder en el ámbito educativo que  permita a la población mexicana insertarse con éxito en la sociedad de la información y el conocimiento.
+      mission: 'Mission:'
+      description1_mission: Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita  a la comunidad educativa redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.
+      description2_mission: Democratizar el acceso a tecnología educativa de calidad y generar un cambio en la vida diaria y profesional de alumnos y profesores al acercarlos a la tecnología y sus beneficios.
+      philosophy: 'Filosofía:'
+      description1_philosophy: 'En Cúrsame partimos de la concepción de que el aprendizaje  no sólo es construido dentro y por la propia persona, sino que  tiene que ver con aspectos más sociales dentro de comunidades de enseñanza.'
+      description2_philosophy: Para nosotros la posibilidad de interactuar con otros con un fin educativo a través de herramientas tecnológicas es una forma muy eficaz de favorecer los espacios de encuentro efectivo y positivo en el proceso de enseñanza-aprendizaje.
+      objectives: 'Objetivos:'
+      description1_objetives: 'Contribuir a lograr mejores resultados en el aprendizaje de los alumnos y en la inclusión digital de maestros, alumnos y miembros de su familia en México.'
+      description2_objetives: Promover intercambios de conocimiento  en comunidades de aprendizaje a través de la diversificación de canales de comunicación que facilitan el flujo de información desde el enfoque por competencias.
+      description3_objetives: Mejorar los tiempos efectivos de clase haciendo más eficiente la gestión  y el seguimiento de actividades educativas.
+      description4_objetives: 'Permitir el acceso a educación de calidad y tecnología educativa a todos las instituciones educativas, sus profesores y alumnos sin importar su situación económica y social.'
+      our_team: 
+        title: Our Team
+        description: 'Cúrsame está conformado por un grupo apasionado de emprendedores, tenemos como meta común generar un impacto positivo en la sociedad a través de la educación y la tecnología.'
