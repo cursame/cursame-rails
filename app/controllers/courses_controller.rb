@@ -378,7 +378,7 @@ class CoursesController < ApplicationController
     @course = Course.find_by_id params[:id]
     @member = @course.nil? ? nil : obtainMember(@course.id, current_user.id)
     unless current_role == "admin" || current_role == "superadmin" || @member.nil? || @member.accepted?
-      return redirect_to courses_path, :notice => "No has sido aceptado en este curso."
+      redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
     end
   end
 
@@ -1132,7 +1132,7 @@ class CoursesController < ApplicationController
 
   def course_activated
     @course = Course.find_by_id(params[:id])
-
+    redirect_to(root_path, flash: { error: "El curso al que intentas accesar, no existe o ha sido borrado." }) and return if @course.nil?
     unless current_user.admin?
       if ! @course.active_status && @course.owner?(current_role, current_user)
         redirect_to(courses_unpublished_path, flash: { notice: "#{@course.title} ha finalizado, lo puedes activar en el menu de opciones del curso." }) and return
