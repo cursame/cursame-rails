@@ -22,7 +22,7 @@ Cursame30Lb::Application.routes.draw do
   get "superadmnin/publicity_modul_controller"
 
   # Network Manager
-  get "managers/wall"
+  get "managers" => "managers#wall", :as => :managers
   get "managers/members"
   get "managers/network_configuration"
   get "managers/library"
