@@ -10,11 +10,14 @@
 
   - case post_type
   - when 'Discussion'
-    = render partial: 'discussions/shared/discussion_card', locals: { discussion: post, card_type: :post_publication, wall: publication }
+    - unless post.publish_date > DateTime.now
+      = render partial: 'discussions/shared/discussion_card', locals: { discussion: post, card_type: :post_publication, wall: publication }
   - when 'Delivery'
-    = render partial: 'deliveries/shared/delivery_card', locals: { delivery: post, card_type: :post_publication, wall: publication }
+    - unless post.publish_date > DateTime.now
+      = render partial: 'deliveries/shared/delivery_card', locals: { delivery: post, card_type: :post_publication, wall: publication }
   - when 'Survey'
-    = render partial: 'surveys/shared/survey_card', locals: { survey: post, card_type: :post_publication, wall: publication }
+    - unless post.publish_date > DateTime.now
+      = render partial: 'surveys/shared/survey_card', locals: { survey: post, card_type: :post_publication, wall: publication }
   - when 'Comment'
     = render partial: 'comments/shared/comment_card', locals: { post_comment: post, card_type: :post_publication, wall: publication }
   - when 'Course'
