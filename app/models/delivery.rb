@@ -93,8 +93,6 @@ class Delivery < ActiveRecord::Base
       self.publish!
     end
 
-    Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Delivery", network_id: self.network_id
-
     users = self.users
 
     Wall.create! :users => users, :publication => self, :network => self.network, :courses => self.courses
@@ -110,8 +108,11 @@ class Delivery < ActiveRecord::Base
       end
     end
 
-    self.send_mail(users)
-    Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+    unless self.publish_date > DateTime.now
+      Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+      Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Delivery", network_id: self.network_id
+      self.send_mail users
+    end
 
     network_name = Network.find_by_id(self.network_id).name.capitalize
 
