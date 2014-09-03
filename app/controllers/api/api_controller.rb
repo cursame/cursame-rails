@@ -540,7 +540,6 @@ class Api::ApiController < ApplicationController
     @user_survey = UserSurvey.new
     @user_survey.survey_id = params[:survey_id]
     @user_survey.user = @user
-    @user_survey.result = 0;
 
     if @user_survey.save
       params[:questions].each do |question|
