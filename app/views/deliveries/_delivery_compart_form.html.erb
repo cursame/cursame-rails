@@ -4,8 +4,10 @@
   formId= "form-upload-delivery-#{random_id}"
 %>
 
-<% if !@active_edit %>
-  <% @delivery=Delivery.new %>
+<% unless active_edit %>
+  <% @delivery = Delivery.new %>
+<% else %>
+  <% @delivery = delivery %>
 <% end %>
 
 <%= form_for(@delivery, remote: true, html: { class: "default-form delivery-form", multipart: true, id: formId, data: { post_type: 'Delivery' } }) do |f| %>
@@ -56,7 +58,7 @@
       </div>
     </div>
 
-    <% if @active_edit == false %>  
+    <% if active_edit == false %>  
       <div class="form-group">
         <div class="form-group-label label-no-p">
           <%= f.label '', "Criterios a evaluar:" %>
@@ -99,7 +101,7 @@
     <% end %>
   </div>
   
-  <% if @active_edit %>
+  <% if active_edit %>
     <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
     <% unless delivery.evaluation_criteria.empty? %>    
       <br>
@@ -107,7 +109,7 @@
   <% end %>
 
   <div class="new-publication-footer">
-    <% if @active_edit == false %>
+    <% if active_edit == false %>
       <ul class="list-buttons right fr">
         <li>
           <%= link_to "Cancelar", "", :class=>'btn btn-secondary cancel-post-form_tab', :id => 'cancel-post-form_tab' %>

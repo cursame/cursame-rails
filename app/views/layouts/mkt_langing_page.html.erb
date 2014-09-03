@@ -12,7 +12,7 @@
     %>
     <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
-    <link rel="icon" type="image/png" href="favicon.png">
+    <%= favicon_link_tag '/favicon.ico' %>
     <%= stylesheet_link_tag 'application', :media => 'all', :debug => true %>
     <%= javascript_include_tag 'application.js' %>
     <% yield :javascript_includes %>

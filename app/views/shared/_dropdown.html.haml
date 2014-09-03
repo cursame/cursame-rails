@@ -31,7 +31,7 @@
               %li
                 %label
                   = avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no")
-                  = check_box_tag 'delivery[course_ids][]', course.id, false, class: 'course-selector-js', style: 'display: block;'
+                  = check_box_tag 'delivery[course_ids][]', course.id, false, class: 'course-selector-js'
                   = truncate( course.title, omission: "...", length: 17)
                   = icon('checked-16')
           - else

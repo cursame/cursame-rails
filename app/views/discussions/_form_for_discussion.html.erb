@@ -1,6 +1,6 @@
 <% form_reference_id = SecureRandom.urlsafe_base64 %>
 
-<% if @active_edit == false %>
+<% if active_edit == false %>
   <% @discussion=Discussion.new %>
 <% end %>
 
@@ -43,7 +43,7 @@
       </div>
     </div>
     
-    <% if @active_edit == false %>
+    <% if active_edit == false %>
 
       <div class="form-group ">
         <div class="form-group-label label-no-p">
@@ -123,7 +123,7 @@
   </div>
 
   <div class="new-publication-footer">
-    <% if @active_edit == false %>
+    <% if active_edit == false %>
       <ul class="list-buttons right fr">
         <li>
           <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab" %>
