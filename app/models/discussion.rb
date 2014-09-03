@@ -66,9 +66,8 @@ class Discussion < ActiveRecord::Base
       end
 
       Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
-
-      unless self.publish_date > DateTime.now
-        Notification.create(:users => users_notifications, :notificator => self, :kind => 'new_discussion_on_course')
+      if self.publish_date.nil? && self.publish_date < DateTime.now
+        Notification.create users: users_notifications, notificator: self, kind: 'new_discussion_on_course'
         self.send_mail(users_notifications)
       end
     end

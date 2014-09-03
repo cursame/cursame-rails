@@ -35,7 +35,6 @@ Cursame30Lb::Application.configure do
   # Prepend all log lines with the following tags
   config.log_tags = [ :subdomain, lambda { |r| "#{r.cookie_jar.signed["_cursame-3.0-LB_session"]["session_id"]}" } ]
 
-
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
