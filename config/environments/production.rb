@@ -33,7 +33,7 @@ Cursame30Lb::Application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags
-  config.log_tags = [ :subdomain, lambda { |r| "#{r.cookie_jar.signed["_session_id"]["session_id"]}" } ]
+  config.log_tags = [ :subdomain, lambda { |r| "#{r.cookie_jar.signed["_cursame-3.0-LB_session"]["session_id"]}" } ]
 
 
   # Use a different logger for distributed setups
