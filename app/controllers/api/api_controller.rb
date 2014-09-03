@@ -779,7 +779,7 @@ class Api::ApiController < ApplicationController
     user.user_surveys.each do |us|
       us.evaluation
       r = {
-        result: us.grade.score,
+        result: us.grade.nil? ? 0 : us.grade.score,
         name: us.survey.name,
         type: 'Survey'
       }
@@ -790,7 +790,7 @@ class Api::ApiController < ApplicationController
         next
       end
       r = {
-        result: as.grade.score,
+        result: as.grade.nil? ? 0 : as.grade.score,
         name: as.delivery.title,
         type: 'Delivery'
       }
