@@ -376,18 +376,10 @@ class CoursesController < ApplicationController
   end
 
   def filter_protection
-    @course = Course.find_by_id(params[:id])
-    @member = obtainMember(@course.id,current_user.id)
-
-    if current_role == "admin" || current_role == "superadmin"
-    else
-      if @member
-        unless @member.accepted
-          redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
-        end
-      else
-        redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
-      end
+    @course = Course.find_by_id params[:id]
+    @member = @course.nil? ? nil : obtainMember(@course.id, current_user.id)
+    unless current_role == "admin" || current_role == "superadmin" || @member.nil? || @member.accepted?
+      return redirect_to courses_path, :notice => "No has sido aceptado en este curso."
     end
   end
 
