@@ -9,6 +9,8 @@ es:
         title5: Contacto
         text1: ¿Ya eres usuario?
         text2: Encuentra tu red
+        text3: Escribe tu correo electrónico para accesar a la red de tu institución.
+        search_network: Busca tu red
     website:
       cta_request_demo:
         request_demo: ¡Solicita un demo en tu plantel!
