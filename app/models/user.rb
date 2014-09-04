@@ -63,7 +63,6 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-
   # validates_format_of   :personal_url, :with => /^[\-a-z0-9]+$/
   # validates_uniqueness_of :accepted_terms
 
@@ -788,6 +787,22 @@ class User < ActiveRecord::Base
   # Subdomain verification for devise
   def self.find_for_authentication(warden_conditions)
     where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
+  end
+
+  # An overwrite for the function setter for the :subdomain property because we need to not onlu
+  # update de :subdomain but also the permitions thing
+  def subdomain=(value)
+    network = Network.find_by_subdomain(value)
+
+    unless network == nil
+      write_attribute(:subdomain, value)
+      permissionings = Permissioning.find_all_by_user_id(self.id)
+      permissionings.each do |permissioning|
+        permissioning.update_attributes :network_id => network.id
+      end
+    else
+      puts "No existe la red con ese subdominio"
+    end
   end
 
 end
