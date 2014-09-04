@@ -1,6 +1,10 @@
 development:
-    adapter: sqlite3
-    database: db/development.sqlite3
+    adapter: postgresql
+    host: localhost
+    database: mydb
+    username: manvoid
+    password: lart.80.
+    encoding: unicode
     pool: 5
     timeout: 5000
 
