@@ -8,7 +8,9 @@ en:
         title4: Jobs
         title5: Contact
         text1: Already a user?
-        text2: Find your network!
+        text2: Find your network
+        text3: Log-in with your email to access your school network.
+        search_network: Search
     website:
       cta_request_demo:
         request_demo: Request a demo for your campus!

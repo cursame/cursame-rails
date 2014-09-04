@@ -2,7 +2,7 @@ es:
   home:
     landing_page:
       intro_homepage_hidden:
-        title1: Interactúa social y académicamente mejorando los procesos de aprendizaje y pla calidad educativa
+        title1: Interactúa social y académicamente mejorando los procesos de aprendizaje y la calidad educativa
         text1: 'Cúrsame es una plataforma que conecta profesores, alumnos y directivos de una misma instutución.'
         request_demo: ¡Solicita un demo en tu plantel!
       features_showcase:
@@ -228,5 +228,12 @@ es:
     press:
       text1: Prensa
       text2: Lo que se dice en medios sobre Cúrsame.
+    privacidad:
+      title: AVISO DE PRIVACIDAD
+      who_are_we: ¿Quiénes somos?
+      description1_who_are_we: 'Redes Sociales de Aprendizaje SAPI de CV, mejor conocido como Cúrsame'
+      description2_who_are_we: ', con domicilio en'
+      description3_who_are_we: 'calle Pomona 7, colonia Roma Norte, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06100, en la entidad de México DF, país México , y portal de internet'
+      description4_who_are_we: 'es el responsable del uso y protección de sus datos personales, y al respecto le informamos lo siguiente:'
 
 
