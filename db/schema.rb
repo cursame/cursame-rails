@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140825210410) do
+ActiveRecord::Schema.define(:version => 20140903221234) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -170,6 +170,13 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
   create_table "course_files", :force => true do |t|
     t.string   "file"
     t.boolean  "published"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "course_grades", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -396,11 +403,12 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
     t.text     "mesage_html"
   end
 
-  create_table "network_templates", :force => true do |t|
+  create_table "network_settings", :force => true do |t|
     t.integer  "network_id"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "property"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "networks", :force => true do |t|
@@ -411,11 +419,11 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -485,16 +493,15 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
-    t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "feedbackable_type"
-    t.integer  "evaluation_criterium_id"
+    t.integer  "evaluation_criterium"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criterium_id"
+  add_index "response_to_the_evaluations", ["evaluation_criterium"], :name => "index_response_to_the_evaluations_on_evaluation_criterium"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
