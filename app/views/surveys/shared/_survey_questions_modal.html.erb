@@ -29,6 +29,26 @@
       </ol>
     </div>
 
+    <% unless survey.contents.empty? && survey.assets.empty? %>
+      <br><br>
+      <div class="publication-assets"> 
+        <%= render :partial => "content/insertions_to_contents", :locals => { :type => survey, :cl => "survey"}%>
+        <% if survey.assets.count > 0 %>
+          <div class="asset-box upload-label">
+            <% survey.assets.each do |files|%>
+              <div class="file-mini-upload publication-asset">
+                <% @string = files.filename.file.identifier %>
+                <%= link_to "#{files.filename}" , :target => '_blank' do %> 
+                  <%= icon('upload-asset-blue') %>
+                  <%= truncate( @string, :omission => "...", :length => 72) %>
+                <% end %>
+              </div>
+            <%end%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
   </div>
 
   <% if current_user != survey.user %>

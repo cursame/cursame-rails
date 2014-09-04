@@ -14,7 +14,7 @@
 </div>
 
 <% if response.blank?  %>
-  <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %>
+  <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %>  
 <% else %>
   <div class="overlay-content">
     <h3><%= survey.name %></h3>

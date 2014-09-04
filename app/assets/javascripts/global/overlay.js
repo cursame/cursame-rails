@@ -46,7 +46,7 @@ window.removeModalAction = function( overlay, f ) {
 };
 
 $(function() {	
-	$('.overlay-screen, .close-overlay').live('click', removeModal );
+	$('.overlay-screen, .close-overlay').live('tap', removeModal );
 
 	$(window).on('resize', function() {
     overlayPositioning( $('div.overlay') );
@@ -54,7 +54,7 @@ $(function() {
     // Chat.repositionPanelOnWidth();
   });
 
-  $('[data-modal="true"]').click(function(event) {
+  $('[data-modal="true"]').on('tap', function(event) {
     var $this = $(this),
         url   = $this.attr('href');
 
@@ -63,7 +63,7 @@ $(function() {
   });
 
 	/* Show delivery submit form */
-  $('.show-delivery-form').live('click', function(e) {
+  $('.show-delivery-form').live('tap', function(e) {
     var $this = $(this);
 
     $this.closest('.delivery-overlay-content').hide();
