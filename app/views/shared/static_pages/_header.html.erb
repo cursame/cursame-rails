@@ -49,9 +49,9 @@
                 <div class="website-login-forms dropdown-content">
                   <div id="login-w" class="website-login-form-content active">
                     <!-- <h4>Iniciar Sesión</h4> -->
-                    <h4>Encuentra tu red</h4>
+                    <h4><%= t('.text2') %></h4>
                     <!-- <p>Escribe tus datos de acceso para accesar a la red de tu institución.</p><br> -->
-                    <p>Escribe tu correo electrónico para accesar a la red de tu institución.</p>
+                    <p><%= t('.text3') %></p>
                     <p class="error-login-form">Oops! al parecer tu correo no pertenece a niguna red.</p>
                     <br>
                     <%= form_tag new_sesion_from_home_path, class: 'website-login-form' do %>
@@ -59,7 +59,7 @@
                         <div class="form-group-main">
                           <span class="input-icon session-icon-input">
                             <%= icon('email') %>
-                            <%= email_field_tag 'email', '', placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
+                            <%= email_field_tag 'email', '', placeholder: (I18n.locale == :en ? 'Email' : 'Correo electrónico'), required: "required", autocomplete: "off" %>
                           </span>
                         </div>
                       </div>
@@ -77,7 +77,7 @@
                         </div> -->
                         <div class="fr">
                           <span class="btn btn-primary btn-medium input-btn">
-                            <%= submit_tag "Busca tu red" %>
+                            <%= submit_tag t('.search_network') %>
                           </span>
                         </div>
                       </div>
