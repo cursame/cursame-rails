@@ -1,11 +1,10 @@
 ActiveAdmin.register User do
 
+  # actions :all, :except => [:destroy]
 
-
- index do
+  index do
     panel "Importar Usuarios" do
-          render('/admin/form_for_import_users_to_network')
-
+      render('/admin/form_for_import_users_to_network')
     end
     column :email do |user|
       link_to truncate("#{user.email}", :omission => "...", :length => 27), admin_user_path(user)
@@ -15,7 +14,6 @@ ActiveAdmin.register User do
     end
     column :last_name do |user|
       link_to truncate("#{user.last_name}", :omission => "...", :length => 35), admin_user_path(user)
-      
     end
     column :subdomain do |user|
       link_to truncate("#{ user.permissionings[0].network.name}", :omission => "...", :length => 35), admin_network_path("#{user.permissionings[0].network.id}")
@@ -28,16 +26,9 @@ ActiveAdmin.register User do
     default_actions
   end
 
-
-
-
-  
- 
   filter :email
   filter :first_name
   filter :last_name
-
- 
 
   form do |f|
     f.inputs "Course Details" do
@@ -51,11 +42,11 @@ ActiveAdmin.register User do
       f.input :accepted_terms
       f.input :confirmed_at, :as => :date_select, :label => "Confirmado", :required => false
       
-       if f.object.new_record? == true
-       f.object.permissionings.build
+      if f.object.new_record? == true
+        f.object.permissionings.build
      
-       f.inputs "Agregar primer permiso" do 
-       f.semantic_fields_for :permissionings do |p|
+        f.inputs "Agregar primer permiso" do 
+          f.semantic_fields_for :permissionings do |p|
             p.inputs do
               p.input :role_id, :as => :select, :collection => Hash[Role.all.map{|b| [b.title,b.id]}]
             end
@@ -63,10 +54,9 @@ ActiveAdmin.register User do
             p.inputs  do
            	  p.input :network_id, :as => :select, :collection => Hash[Network.all.map{|b| [b.name,b.id]}]
           	end
-       end
-       end
-       
-        else
+          end
+        end
+      else
           
        #f.inputs "Permisos actuales" do 
        
@@ -83,7 +73,7 @@ ActiveAdmin.register User do
            # end
        #end 
        #end   
-       end        
+      end        
     end
     f.actions
   end
