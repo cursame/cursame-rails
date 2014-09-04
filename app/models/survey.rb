@@ -9,6 +9,7 @@ class Survey < ActiveRecord::Base
   has_many :surveyings, dependent: :destroy
   has_many :user_surveys, dependent: :destroy
   has_many :survey_assets, dependent: :destroy
+  has_many :contents, as: :contentye
 
   belongs_to :network
   belongs_to :poll
@@ -20,6 +21,7 @@ class Survey < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :assets
+  accepts_nested_attributes_for :contents
 
   acts_as_commentable
   acts_as_votable
