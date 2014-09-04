@@ -87,6 +87,10 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def publish_date
+    read_attribute(:publish_date) || self.created_at
+  end
+
   def state
     @state = "published"
   end
