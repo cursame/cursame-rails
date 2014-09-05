@@ -114,8 +114,9 @@ class UsersController < ApplicationController
         uk.destroy
       end
     end
-    redirect_to root_path
+    # redirect_to root_path
   end
+  
   def old_courses
     @old_course_for_user = current_user.courses.where(:active_status => false)
     respond_to do |format|
