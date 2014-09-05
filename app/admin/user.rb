@@ -1,7 +1,5 @@
 ActiveAdmin.register User do
 
-  # actions :all, :except => [:destroy]
-
   index do
     panel "Importar Usuarios" do
       render('/admin/form_for_import_users_to_network')
@@ -16,14 +14,19 @@ ActiveAdmin.register User do
       link_to truncate("#{user.last_name}", :omission => "...", :length => 35), admin_user_path(user)
     end
     column :subdomain do |user|
-      link_to truncate("#{ user.permissionings[0].network.name}", :omission => "...", :length => 35), admin_network_path("#{user.permissionings[0].network.id}")
+      network = user.permissionings[0].network
+      unless network.nil?
+        link_to truncate("#{ user.permissionings[0].network.name}", :omission => "...", :length => 35), admin_network_path("#{user.permissionings[0].network.id}")
+      else
+        "No existe la red"
+      end
     end
     column :permissionings do |user|
       link_to  "#{user.permissionings[0].role.title}", admin_permissioning_path("#{user.permissionings[0].id}")
     end
     column :accepted_terms
     column :online
-    default_actions
+    actions
   end
 
   filter :email
@@ -76,6 +79,14 @@ ActiveAdmin.register User do
       end        
     end
     f.actions
+  end
+
+  controller do
+    def showsmthg
+      @user = User.find_by_id(params[:id])
+      puts "Este mensaje viene desde el controlador"
+      puts user.first_name
+    end
   end
 
 end
