@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 ActiveAdmin.register User do
 
   index do
@@ -26,6 +28,9 @@ ActiveAdmin.register User do
     end
     column :accepted_terms
     column :online
+    # column "Contraseña" do |user|
+    #   link_to "Cambiar", admin_user_path(user)
+    # end
     actions
   end
 
@@ -82,10 +87,15 @@ ActiveAdmin.register User do
   end
 
   controller do
-    def showsmthg
-      @user = User.find_by_id(params[:id])
-      puts "Este mensaje viene desde el controlador"
-      puts user.first_name
+
+    def update
+      user = params["user"]
+
+      if user && (user["password"] == nil || user["password"].empty?)
+        user.delete("password")
+      end
+
+      update!
     end
   end
 
