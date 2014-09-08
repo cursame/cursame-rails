@@ -484,6 +484,7 @@ class User < ActiveRecord::Base
       if !role_id.nil? then
 
         role_id = role_id.downcase.strip
+        role_id = 1 if role_id == "admin" || role_id == "1"
         role_id = 2 if role_id == "estudiante" || role_id == "2"
         role_id = 3 if role_id == "maestro" || role_id == "3"
       else
@@ -594,6 +595,7 @@ class User < ActiveRecord::Base
       if !role_id.nil? then
 
         role_id = role_id.downcase.strip
+        role_id = 1 if role_id == "admin" || role_id == "1"
         role_id = 2 if role_id == "estudiante" || role_id == "2"
         role_id = 3 if role_id == "maestro" || role_id == "3"
       else
