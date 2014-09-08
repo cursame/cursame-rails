@@ -660,7 +660,12 @@ class ApplicationController < ActionController::Base
 
   # This are methods for the localization configuration
   def set_locale
-    I18n.locale = (params[:locale].blank?) ? :es : params[:locale]
+    locale = (params[:locale].blank?) ? :es : params[:locale].to_sym
+    if I18n.available_locales.include? locale then
+      I18n.locale = locale
+    else
+      I18n.locale = :es
+    end
   end
 
   def default_url_options(options={})
