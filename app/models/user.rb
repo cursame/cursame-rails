@@ -477,15 +477,15 @@ class User < ActiveRecord::Base
 
       hash = row.to_hash
       network_id = network.id
-      role_id = hash.delete("Role")
+      role_id = hash.delete("Rol")
 
       errors = false
 
       if !role_id.nil? then
 
         role_id = role_id.downcase.strip
-        role_id = 2 if role_id == "estudiante"
-        role_id = 3 if role_id == "maestro"
+        role_id = 2 if role_id == "estudiante" || role_id == "2"
+        role_id = 3 if role_id == "maestro" || role_id == "3"
       else
         arrayErrores.push({ :line => count,:message => "No se especifico un role"})
         errors = true
@@ -501,7 +501,7 @@ class User < ActiveRecord::Base
       user.domain = domain
       user.subdomain = subdomain
 
-      user.email = hash.delete("Email")
+      user.email = hash.delete("Correo")
 
       if !user.email.nil? then
         user.email = user.email.downcase
@@ -587,15 +587,15 @@ class User < ActiveRecord::Base
 
       hash = row.to_hash
       network_id = network.id
-      role_id = hash.delete("Role")
+      role_id = hash.delete("Rol")
 
       errors = false
 
       if !role_id.nil? then
 
         role_id = role_id.downcase.strip
-        role_id = 2 if role_id == "estudiante"
-        role_id = 3 if role_id == "maestro"
+        role_id = 2 if role_id == "estudiante" || role_id == "2"
+        role_id = 3 if role_id == "maestro" || role_id == "3"
       else
         arrayErrores.push({ :line => count,:message => "No se especifico un role"})
         errors = true
@@ -611,7 +611,7 @@ class User < ActiveRecord::Base
       user.domain = domain
       user.subdomain = subdomain
 
-      user.email = hash.delete("Email")
+      user.email = hash.delete("Correo")
 
       if !user.email.nil? then
         user.email = user.email.downcase
