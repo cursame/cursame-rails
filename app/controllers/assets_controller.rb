@@ -66,17 +66,16 @@ class AssetsController < ApplicationController
   end
 
   def destroy
-    asset = Asset.find_by_id(params[:id])
-    if asset.user == current_user
-      @asset_id = asset.id
-      asset.destroy
-      @error = false
+    @asset = Asset.find_by_id params[:id]
+    if @asset.nil?
+      @flash =  { type: 'error', message: 'assets.messages.delete.non_existent' }
+    elsif @asset.user == current_user
+      @asset.destroy
+      @flash = (@asset.destroyed?) ? { type: 'success', message: 'assets.messages.delete.success' } : { type: 'error', message: 'assets.messages.delete.error' }
     else
-      @error = true
+      @flash = { type: 'error', message: 'assets.messages.delete.not_an_owner' }
     end
-
-    respond_to do |format|
-      format.js
-    end
+    respond_to { |format| format.js }
   end
+
 end

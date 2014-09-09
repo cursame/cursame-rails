@@ -1,8 +1,7 @@
-<% if @error %>
-  Notice('error', 'Estas intentando borrar un archivo que no es tuyo');
-<% else %>
-  var fileBox = $('div.support-material-item#<%= @asset_id %>');
-  fileBox.slideUp(200, function() {
+Notice('<%= @flash[:type] %>', '<%= t @flash[:message] %>');
+<% if @flash[:type] == 'success' %>
+  var fileBox = $('div.support-material-item#<%= @asset.id %>');
+  fileBox.slideUp(200, function () {
     $(this).remove();
   });
 <% end %>
