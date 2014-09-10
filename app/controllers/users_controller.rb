@@ -7,9 +7,8 @@ class UsersController < ApplicationController
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
 
-    if @user_l.nil? then
-      redirect_to not_found_path
-      return
+    if @user_l.nil? 
+      redirect_to courses_path and return
     end
 
     #helper methods in aplication controller
