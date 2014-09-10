@@ -63,7 +63,6 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-
   # validates_format_of   :personal_url, :with => /^[\-a-z0-9]+$/
   # validates_uniqueness_of :accepted_terms
 
@@ -478,15 +477,16 @@ class User < ActiveRecord::Base
 
       hash = row.to_hash
       network_id = network.id
-      role_id = hash.delete("Role")
+      role_id = hash.delete("Rol")
 
       errors = false
 
       if !role_id.nil? then
 
         role_id = role_id.downcase.strip
-        role_id = 2 if role_id == "estudiante"
-        role_id = 3 if role_id == "maestro"
+        role_id = 1 if role_id == "admin" || role_id == "1"
+        role_id = 2 if role_id == "estudiante" || role_id == "2"
+        role_id = 3 if role_id == "maestro" || role_id == "3"
       else
         arrayErrores.push({ :line => count,:message => "No se especifico un role"})
         errors = true
@@ -502,7 +502,7 @@ class User < ActiveRecord::Base
       user.domain = domain
       user.subdomain = subdomain
 
-      user.email = hash.delete("Email")
+      user.email = hash.delete("Correo")
 
       if !user.email.nil? then
         user.email = user.email.downcase
@@ -588,15 +588,16 @@ class User < ActiveRecord::Base
 
       hash = row.to_hash
       network_id = network.id
-      role_id = hash.delete("Role")
+      role_id = hash.delete("Rol")
 
       errors = false
 
       if !role_id.nil? then
 
         role_id = role_id.downcase.strip
-        role_id = 2 if role_id == "estudiante"
-        role_id = 3 if role_id == "maestro"
+        role_id = 1 if role_id == "admin" || role_id == "1"
+        role_id = 2 if role_id == "estudiante" || role_id == "2"
+        role_id = 3 if role_id == "maestro" || role_id == "3"
       else
         arrayErrores.push({ :line => count,:message => "No se especifico un role"})
         errors = true
@@ -612,7 +613,7 @@ class User < ActiveRecord::Base
       user.domain = domain
       user.subdomain = subdomain
 
-      user.email = hash.delete("Email")
+      user.email = hash.delete("Correo")
 
       if !user.email.nil? then
         user.email = user.email.downcase
@@ -788,6 +789,22 @@ class User < ActiveRecord::Base
   # Subdomain verification for devise
   def self.find_for_authentication(warden_conditions)
     where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
+  end
+
+  # An overwrite for the function setter for the :subdomain property because we need to not onlu
+  # update de :subdomain but also the permitions thing
+  def subdomain=(value)
+    network = Network.find_by_subdomain(value)
+
+    unless network == nil
+      write_attribute(:subdomain, value)
+      permissionings = Permissioning.find_all_by_user_id(self.id)
+      permissionings.each do |permissioning|
+        permissioning.update_attributes :network_id => network.id
+      end
+    else
+      puts "No existe la red con ese subdominio"
+    end
   end
 
 end

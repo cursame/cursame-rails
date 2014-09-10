@@ -238,7 +238,7 @@ class CoursesController < ApplicationController
         end
 
         redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
-        
+
       else
         format.html { redirect_to :back }
       end
@@ -387,93 +387,25 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  # TODO: metodo requiere refactoring
   def assigment
-
-    if params[:assignment]["id"].blank? then
-
-      @assignment = Assignment.new(params[:assignment])
-      flash[:notice] = "Se ha entregado correctamente una tarea."
-
-      begin
-        mixpanel_properties = {
-          'Course'  => @assignment.course.title.capitalize,
-          'Network' => @assignment.course.network.name.capitalize
-        }
-        MixpanelTrackerWorker.perform_async @assignment.user_id, 'Assignments', mixpanel_properties
-      rescue
-        puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-      end
-
-    else
-
-      @id = params[:assignment].delete("id")
-      @assignment = Assignment.find(@id)
-      @assignment.update_attributes(params[:assignment])
-
-      if params[:files] then
-
-        assets = Array.new
-        params[:files].each do |asset_id|
-          assets.push(Asset.find(asset_id))
-        end
-
-        assignment_assets = @assignment.assets
-
-        assets.each do |asset|
-          if !assignment_assets.include?(asset) then
-            @assignment.assets.push(asset)
-          end
-        end
-        flash[:notice] = "Se ha actualizado correctamente entrega de una tarea."
-      end
-      redirect_to :back
-      return
-    end
-
-    begin
+    if params[:assignment][:id].blank?
+      assignment = Assignment.create params[:assignment]
+      flash[:success] = assignment.valid? ? t("assignments.messages.create.success") : t("assignments.messages.create.error")
       mixpanel_properties = {
-        'Network' => Network.find_by_id(@assignment.delivery.network_id).name.capitalize,
-        'Course'  => @assignment.course.title.capitalize
+        'Network' => assignment.course.network.name.capitalize,
+        'Course'  => assignment.course.title.capitalize
       }
-      MixpanelTrackerWorker.perform_async current_user.id, 'Assignments', mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
+      track_event current_user.id, 'Assignments', mixpanel_properties
+    else
+      assignment = Assignment.find_by_id params[:assignment][:id]
+      assignment.update_attributes params[:assignment]
+      flash[:success] = assignment.valid? ? t("assignments.messages.update.success") : t("assignments.messages.update.error")
     end
-
-    if @assignment.save and @id.nil?
-
-      #@delivery_from_assignment = Delivery.find(@assignment.delivery)
-
-      # @delivery_from_assignment.evaluation_criteria.each_with_index do | generate_rubres, index |
-      #   @response_to_the_evaluation = ResponseToTheEvaluation.new(params[:response_to_the_evaluation])
-      #   @response_to_the_evaluation.name = generate_rubres.name
-      #   @response_to_the_evaluation.comment_for_rubre = generate_rubres.description
-      #   @response_to_the_evaluation.feedbackable_id = @assignment.id
-      #   @response_to_the_evaluation.save
-      # end
-
-      if(params[:files])
-        params[:files].each do |asset_id|
-          @asset = Asset.find(asset_id)
-          @assignment.assets.push(@asset)
-        end
-      end
-
-      @typed = "Assignment"
-      @az =  @assignment
-
-      activation_activity
-
-      begin
-        if @activity.save
-          redirect_to :back
-        end
-      rescue
-        puts "\e[1;31m[ERROR]\e[0m error getting request location"
-        redirect_to :back
-      end
+    params[:files].to_a.each do |asset_id|
+      asset = Asset.find_by_id asset_id
+      assignment.assets.push asset unless assignment.assets.include? asset
     end
+    redirect_to :back and return
   end
 
   def dashboard_deliver

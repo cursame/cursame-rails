@@ -7,9 +7,8 @@ class UsersController < ApplicationController
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
 
-    if @user_l.nil? then
-      redirect_to not_found_path
-      return
+    if @user_l.nil? 
+      redirect_to courses_path and return
     end
 
     #helper methods in aplication controller
@@ -114,8 +113,9 @@ class UsersController < ApplicationController
         uk.destroy
       end
     end
-    redirect_to root_path
+    # redirect_to root_path
   end
+  
   def old_courses
     @old_course_for_user = current_user.courses.where(:active_status => false)
     respond_to do |format|
