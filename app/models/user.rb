@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :token_authenticatable, :lockable, :timeoutable,
-    :confirmable, :request_keys => [:subdomain]
+    :confirmable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
@@ -787,9 +787,9 @@ class User < ActiveRecord::Base
   end
 
   # Subdomain verification for devise
-  def self.find_for_authentication(warden_conditions)
-    where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
-  end
+  # def self.find_for_authentication(warden_conditions)
+  #   where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
+  # end
 
   # An overwrite for the function setter for the :subdomain property because we need to not onlu
   # update de :subdomain but also the permitions thing
