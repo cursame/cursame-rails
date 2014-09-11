@@ -81,6 +81,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def network_settings
+    return current_network.network_settings
+  end
+
   def current_network?
       if current_network != nil
            u_u = "#{current_network.subdomain}.#{links}"
