@@ -307,6 +307,7 @@ class User < ActiveRecord::Base
       |x,y|
       x.to_s <=> y.to_s
     }
+    
     return ordered_friends.compact
   end
   ######## cikica todos lo amigos #########
