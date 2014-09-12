@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     network_user_l = @user_l.permissionings.first.network_id
     network_current_user = current_user.permissionings.first.network_id
 
-    if @user_l.nil?  then
+    if @user_l.nil? or ( network_user_l != network_current_user ) then
       redirect_to root_path, flash: { error: "El usuario que intentas ver no existe o ha sido borrado."}
       return
     end
