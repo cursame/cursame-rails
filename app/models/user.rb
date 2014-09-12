@@ -94,22 +94,6 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
 
-
-  after_create do
-    begin
-      mixpanel_properties = {
-        '$first_name' => self.first_name,
-        '$last_name'  => self.last_name,
-        '$created'    => self.created_at,
-        '$email'      => self.email
-      }
-      MixpanelPeopleWorker.perform_async self.id, mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
-  end
-
   def inverse_friendships
     return Friendship.where(:friend_id => self.id)
   end
