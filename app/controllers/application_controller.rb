@@ -643,7 +643,12 @@ class ApplicationController < ActionController::Base
 
   def chat_online_users
     if current_user
-      @friends_online = current_user.friends(true)
+      role_id = current_user.permissionings.first.role_id
+      if role_id == 1 || role_id == 4
+        @friends_online = current_user.permissionings.first.network.users.compact
+      else
+        @friends_online = current_user.friends(true)
+      end
       @courses_online = current_user.courses
       @show_chat_panel = true
     end
