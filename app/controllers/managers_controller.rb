@@ -32,11 +32,25 @@ class ManagersController < ApplicationController
     @user = current_user
   end
 
-  def mailer_deliver
-    users = current_network.users
-    if !users.nil? then
-      if users.size != 0 then
-        current_network.delay.send_email(current_user,users,params[:subject],params[:message])
+  def upload_users
+
+    network = current_network
+    user_admin = current_user
+
+    user_info = User.find_by_email("info@cursa.me") # Cambiar esto por info@cursa.me
+
+    lastFile = Dir.glob("public/imports/import_users_*")    
+    lastFile = lastFile.sort.map{|x| x.gsub(/[^0-9]/, '')}.map{|x| x.to_i}.sort.last
+    if lastFile.nil? then
+      name = "import_users_1.csv"
+    else
+      name = "import_users_" + lastFile.succ.to_s + ".csv"
+    end
+
+    text = ""
+    begin
+      File.open(params[:file].path,"r:ISO-8859-1").each do |line|
+        text += line
       end
     end
     redirect_to managers_mailer_path, flash: { success: 'Su correo se ha puesto en cola para enviar.' }
