@@ -11,9 +11,10 @@ authorization do
     has_permission_on [:discussions], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:surveys], :to => [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:events], :to => [:users,:create,:destroy,:index,:show,:edit]
-    has_permission_on [:managers], :to => [:users,:create,:destroy,:index,:show,:edit,
-      :wall,:members, :network_configuration, :library, :import_courses, :upload_courses,
-      :import_users, :upload_users, :import_members, :upload_members,:send_mails, :sending]
+
+    has_permission_on [:managers], :to => [:settings, :create, :destroy, :index, :show, :edit, :wall, :members, :library, :import_courses, :upload_courses, :import_users, :upload_users, :import_members, :upload_members,:send_mails, :sending]
+    has_permission_on [:managers_users], :to => [:index, :show, :new, :import]
+    has_permission_on [:managers_courses], :to => [:index, :show, :new ]
   end
 
   role :student do

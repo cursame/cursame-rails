@@ -503,3 +503,22 @@ h6 {
     font-size: 11px;
   }
 }
+
+// Table for data
+.data-table {
+  thead th {
+    background: #f5f6f6;
+    border-bottom: 1px solid #e2e2e2;
+    color: #666;
+    font-size: 11px;
+  }
+  
+  tbody td {
+    vertical-align: middle;
+    border-width: 0 0 1px 0;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+}

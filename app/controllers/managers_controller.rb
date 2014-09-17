@@ -1,40 +1,28 @@
 class ManagersController < ApplicationController
   filter_access_to :all
   skip_before_filter :filter_access_filter, :only => :upload_users_a
+  layout 'managers'
 
-  def wall
-    ##### for users bar
+  def index
     @member = current_network.permissionings
     @member_count = @member.count
     @network_population = current_network.population
     @diision =  @member.count
     @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
-    # @network_users = User.where(:network => current_network)
-    
-    #### for courses counters
     @courses = current_network.courses
     @public_courses = @courses.where(:public_status => 'public')
     @publico = @public_courses.count
     @private_courses = @courses.where(:public_status => 'Private')
     @privado =  @private_courses.count
-
-    #### deliveries for courses
-
     @deliveries = current_network.deliveries
     @total_deliveries =  @deliveries.count
     @open_deliveries =  @deliveries.where(:state => 'published')
     @close_deliveries =  @deliveries.where(:state => 'unpublish')
     @published_deliveries_count =  @open_deliveries.count
     @unpublished_deliveries_count =  @close_deliveries.count
-
-
   end
 
-  def members
-    @users = current_network.users.search(params[:search]).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
-  end
-
-  def network_configuration
+  def settings
     @network= current_network
   end
 
@@ -45,11 +33,6 @@ class ManagersController < ApplicationController
   
   redirect_to '/managers/wall'
 
-  end
-
-  
-  def import_users
-    @users = current_network.users
   end
 
   def upload_users

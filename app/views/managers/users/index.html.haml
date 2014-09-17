@@ -1,0 +1,36 @@
+= render partial: 'managers/users/shared/managers_users_subnav'
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Usuarios
+          .actions
+            = link_to 'Crear usuario', new_managers_user_path, class: 'btn btn-complementary'
+        %table.data-table
+          %thead
+            %tr
+              %th Nombre
+              %th Correo electrónico
+              %th Fecha de registro
+              %th Tipo de usuario
+              %th 
+          %tbody
+            - @users.each do |user| 
+              - permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
+              - role = Role.find(permissioning.role_id)
+              - case role.title
+              - when 'student' then role_name = 'Estudiante'
+              - when 'teacher' then role_name = 'Profesor'
+              - when 'admin' then role_name = 'Administrador'
+              - when 'superadmin' then role_name = 'Super Administrador'
+              - when 'supervisor' then role_name = 'Supervisor'
+              %tr
+                %td
+                  = avatar('user', '30', "no", user.id, "avatar avatar-30", "no", "no")
+                  = link_to user.name, managers_user_path(user)
+                %td= user.email
+                %td= user.created_at
+                %td= role_name
+                %td Editar

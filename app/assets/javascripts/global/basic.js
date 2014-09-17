@@ -183,7 +183,7 @@ window.Notice = function(type, message)  {
     noticeWrapper.animate({
       top: notice.outerHeight() * -1
     }, 100);
-  }, 3100);
+  }, 4000);
 };
 
 $(function() {

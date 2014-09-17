@@ -1,6 +1,72 @@
 
 /* Managers Admin Skin
 ----------------------------------*/
+.managers {
+  body {
+    background: $white;
+  } 
+
+  h1 {
+    font-size: 28px;
+    font-weight: normal;
+  }
+}
+
+.managers-header {
+  background: $primary-color;
+  box-shadow: 0 1px 1px rgba(0,0,0,.3);
+  @include clearfix;
+
+  .managers-nav li {
+    border-right: 1px solid #3591c0;
+
+    &:first-child {
+      border-left: 1px solid #3591c0;      
+    }
+
+    a {
+      color: $white;
+      font-size: 14px;
+
+      &.active {
+        background: darken($primary-color, 10%);
+        color: tint($primary-color, 70%);
+      }
+    }
+  }
+
+  .manager-header-actions {
+    float: right;
+
+    > ul > li {
+      border-right: 1px solid #3591c0;
+
+      &:first-child {
+        border-left: 1px solid #3591c0;      
+      }
+
+      > a {
+        color: $white;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.managers-sub-navigation {
+  background: darken($primary-color, 10%);
+
+  ul li a {
+    color: $white;
+
+    &.active {
+      color: tint($primary-color, 70%);
+    }
+  }
+}
+
+//--------------------------------
+
 #admin-sidebar {
 	background: #1A83D5;
 	color: #FFF;
