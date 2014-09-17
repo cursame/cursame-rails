@@ -17,8 +17,14 @@ module ApplicationHelper
     end
   end
 
-  def active_class(comparator)
-    return params[:action] == comparator ? " active" : ""
+  def active_class(comparator, controller=nil)
+    if comparator.class == String
+      return params[:action] == comparator ? " active" : ""
+    else
+      if comparator.include?(params[:action]) && controller == params[:controller]
+        return " active"
+      end
+    end
   end
 
   def evaluation_score(score)

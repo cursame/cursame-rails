@@ -20,7 +20,7 @@
           <% end %>
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "sign-up-form" }) do |f| %>
             <%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>
-            <%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain%>
+            <%= f.hidden_field :subdomain, :class => "pswdcode", :value => current_network.subdomain %>
             <%= f.hidden_field :domain, :class => "pswdcode", :value => request.domain %>
             <%= f.hidden_field :avatar, :class => "psdcode", :value => '/assets/imagex.png'%>
 
@@ -78,7 +78,7 @@
                 </div>
               </div>
             </div>
-                 <%= f.hidden_field :self_register, value: true %>
+            <%= f.hidden_field :self_register, value: true %>
             <div class="form-group">
               <div class="form-group-label" style="display: none;">
                 <%= f.label :role_id, 'Tipo de usuario:' %>

@@ -1,11 +1,7 @@
 <header id="user_nav" class="topbar">
   <div class="topbar-spacer">
     <div id="log_loadding"></div>
-    <div id="noticce">
-      <div class="notice-spacer">
-        <div id="notice" class="notice"></div>
-      </div>
-    </div>
+    <%= render partial: 'shared/flash', locals: { full: false } %>
     <div class="wrapper">
       <div class="cols-12">
         <div class="col col-12">
@@ -58,7 +54,7 @@
                         <%= link_to "Editar perfil", edit_user_registration_path %>
                       </li>
                       <li>
-                        <%= link_to "Salir", sign_out_path, method: :delete %>
+                        <%= link_to "Cerrar sesión", sign_out_path, method: :delete %>
                       </li>
                     </ul>
                   </div>
