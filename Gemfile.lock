@@ -90,6 +90,7 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    charlock_holmes (0.7.3)
     childprocess (0.5.3)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -429,6 +430,7 @@ DEPENDENCIES
   binding_of_caller
   bourbon (~> 3.2.3)
   carrierwave
+  charlock_holmes
   coffee-script
   cucumber-rails
   daemons
