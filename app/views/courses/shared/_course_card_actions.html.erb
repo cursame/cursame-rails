@@ -71,9 +71,11 @@
       <%= f.hidden_field :user_id,:value => current_user.id %>
       <%= f.hidden_field :course_id, :value => course.id %>
       <%= f.hidden_field :accepted, :value => 1 %>
-      <span class="btn btn-primary input-btn btn-small">
-        <%= f.submit "Inscribirse" %>
-      </span>
+      <% unless current_user.admin? %>
+        <span class="btn btn-primary input-btn btn-small">
+          <%= f.submit "Inscribirse" %>
+        </span>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

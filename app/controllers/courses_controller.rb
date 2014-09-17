@@ -9,9 +9,18 @@ class CoursesController < ApplicationController
 
   def index
     @member = MembersInCourse.new
-    if current_role == "teacher" || current_role == "admin"
+    # if current_role == "teacher" || current_role == "admin"
+    #   @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+    # else
+    #   @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+    # end
+
+    case current_role
+    when 'admin'
+      @courses = Course.where(:network_id => current_user.networks.first.id).paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+    when 'teacher'
       @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    else
+    else # 'student'
       @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     end
 
