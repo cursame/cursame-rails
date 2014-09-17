@@ -1,0 +1,29 @@
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Cursos
+          .actions
+            = link_to 'Crear curso', '', class: 'btn btn-complementary'
+        %table.data-table
+          %thead
+            %tr
+              %th Nombre
+              %th Administradores
+              %th Miembros
+              %th Fecha de creación
+              %th 
+          %tbody
+            - @courses.each do |course|
+              %tr
+                %td
+                  = avatar('course', '30', "no", course.id, "avatar avatar-30", "no", "no")
+                  = link_to course.title, managers_course_path(course)
+                %td
+                  - course.owners.each do |user|
+                    %p= user.name
+                %td= course.users.count
+                %td= course.created_at
+                %td Editar

@@ -1,28 +1,10 @@
-<div id="fix_admin" style="width: 980px; margin: 0 auto;">
-<div id="admin-sidebar">
-  <h5>Administracion</h5>
-  <ul>
-    <%= render :partial => "managers/menu"%>
-  </ul>
-</div>
-<div id="admin-content">
 
-	<!--
-	<div id="header-users"> Maestros | Estudiantes | Adminsitradores _______ Nuevo Usuario <br /><br />
-	-->
-
-	<h2 class="admin-title">Lista de usuarios</h2>
-	
 	<%= form_tag managers_members_path, :method => 'get' do %>
-
-		<span class="manager_search_user" style="">
-			<%= text_field_tag :search, params[:search], :placeholder =>'Búscar Usuarios' %><!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
-		</span>
-	
+		<%= text_field_tag :search, params[:search], :placeholder =>'Búscar Usuarios' %>
+    <%= submit_tag "Buscar" %>
 	<% end %>
 
 <% @users.each do |user|%>
-
 	<div class="the-list">
 		<ul class="list">
 			<li class="user-list">
