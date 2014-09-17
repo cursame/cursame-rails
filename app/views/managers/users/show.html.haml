@@ -1,0 +1,60 @@
+= render partial: 'managers/users/shared/managers_users_subnav'
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .managers-section-header
+          .title
+            %h1
+              = avatar('user', '30', "no", @user.id, "avatar", "no", "no")
+              = @user.name
+          .actions
+            = link_to 'Editar', '#', class: 'btn btn-complementary'
+            = link_to 'Borrar', '#', class: 'btn btn-complementary'
+  .cols-12
+    .col.col-6
+      .col-inner
+        %span.meta-info Correo electrónico
+        %p= @user.email
+
+        - permissioning = Permissioning.find_by_user_id_and_network_id(@user.id, current_network.id)
+        - role = Role.find(permissioning.role_id)
+        - case role.title
+        - when 'student' then role_name = 'Estudiante'
+        - when 'teacher' then role_name = 'Profesor'
+        - when 'admin' then role_name = 'Administrador'
+        - when 'superadmin' then role_name = 'Super Administrador'
+        - when 'supervisor' then role_name = 'Supervisor'
+
+        %br/
+        %span.meta-info Tipo de usuario
+        %p= role_name
+
+        %br/
+        %span.meta-info Biografia
+        %p= @user.description? ? @user.description : "Si información"
+
+        %br/
+        %span.meta-info Facebook
+        %p= @user.facebook_link? ? @user.facebook_link : "Si información"
+
+        %br/
+        %span.meta-info Twitter
+        %p= @user.twitter_link? ? @user.twitter_link : "Si información"
+
+        %br/
+        %span.meta-info Ultimo inicio de sesión
+        %p= @user.last_sign_in_at
+
+        %br/
+        
+        - if @user.student?
+          %span.meta-info Tareas entregadas
+          %p= @user.assignments.count
+
+          %br/
+          %span.meta-info Cuestionarios contestados
+          %p= @user.user_surveys.count
+
+          %br/
+          %span.meta-info Participación en discusiones evaluables

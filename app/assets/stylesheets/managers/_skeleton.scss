@@ -1,6 +1,69 @@
 
 /* Managers Admin Skeleton
 ----------------------------------*/
+.managers-header {
+  .managers-nav {
+    float: left;
+
+    li {
+      float: left;
+
+      a {
+        display: block;
+        padding: 16px 13px;
+      }
+    }
+  }
+
+  .manager-header-actions {
+    float: right;
+
+    > ul > li {
+      float: left;
+
+      > a {
+        display: block;
+        padding: 16px 13px;
+      }
+
+      .dropdown-pull {
+        padding: 18px 20px 13px 20px;
+      }
+    }
+  }
+}
+
+.managers-sub-navigation {
+  @include clearfix;
+  
+  ul li {
+    float: left;
+
+    &:first-child a {
+      padding-left: 0;
+    }
+
+    a {
+      display: block;
+
+      padding: 9px;
+    }
+  }
+}
+
+.managers-section-header {
+  margin: 25px 0;
+  @include clearfix;
+
+  .title {
+    float: left;
+  }
+
+  .actions {
+    float: right;
+  } 
+}
+
 #admin-sidebar {
 	width: 250px;
 	float: left;

@@ -1,0 +1,99 @@
+= render partial: 'managers/users/shared/managers_users_subnav'
+
+#fix_admin{:style => "width: 980px; margin: 0 auto;"}
+  #admin-content{:style => "width: 700px;"}
+    .header-for-content
+      %h8.h8{:style => "float:left;"} Importar usuarios
+      %p{:style => "font-style:oblique; float:left;"} Importa los usuarios de tu comunidad desde una base de datos.
+    %div{:style => "margin-top:30px; margin-bottom:30px; margin-left: 85px; float:left;"}
+      %a.button_button{:href => "/plantillas/usuarios_plantilla.csv"}
+        / <img src="/assets/icons_for_admin/download.png" class="icon margin-right10x class_image2525">
+        Descargar archivo de usuarios
+        / usuarios_plantilla.csv
+    .form-for-admin{:style => "float: left; margin-left: 40px; margin-top: 10px;"}
+      = form_tag upload_users_path, multipart: true do
+        %label.fileContainer
+          = file_field_tag :file
+        %p
+          = hidden_field_tag 'domain', request.domain
+        %div{:style => "margin-top:30px;"}
+          = submit_tag "Importar archivo de usuarios"
+    / ends admin-content
+    .instructions
+      %p.manager_notice Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.
+      %p.manager_notice
+        • El role puede ser estudiante o maestro.
+        %br/
+        • El email debe de ser el email del usuario.
+    = "NO SE ENCONTRO UN ARCHIVO" if @noFile
+    %p{:style => "font-size: 18px; font-weight: 100; padding:10px;"} Lista de usuarios
+    %table.striped
+      %tr
+        %th Id
+        %th Email
+        %th Nombre
+        /
+          <th>Encrypted_password</th>
+          <th>Reset_password_token</th>
+          <th>Reset_password_sent_at</th>
+          <th>Remember_created_at</th>
+          <th>Sign_in_count</th>
+          <th>Current_sign_in_at</th>
+          <th>Last_sign_in_at</th>
+          <th>Current_sign_in_ip</th>
+          <th>Last_sign_in_ip</th>
+          <th>Created_at</th>
+          <th>Updated_at</th>
+          <th>First_name</th>
+          <th>Last_name</th>
+          <th>Description</th>
+          <th>Personal_url</th>
+          <th>Avatar</th>
+          <th>Coverphoto</th>
+          <th>Facebook_link</th>
+          <th>Twitter_link</th>
+          <th>Bios</th>
+          <th>Confirmation_token</th>
+          <th>Confirmed_at</th>
+          <th>Confirmation_sent_at</th>
+          <th>Unconfirmed_email</th>
+          <th>Failed_attempts</th>
+          <th>Unlock_token</th>
+          <th>Locked_at</th>
+          <th>Authentication_token</th>
+      - @users.each do |user|
+        %tr
+          %td= user.id
+          %td= user.email
+          %td= user.name
+          /
+            <td><haml_loud> user.encrypted_password </haml_loud></td>
+            <td><haml_loud> user.reset_password_token </haml_loud></td>
+            <td><haml_loud> user.reset_password_sent_at </haml_loud></td>
+            <td><haml_loud> user.remember_created_at </haml_loud></td>
+            <td><haml_loud> user.sign_in_count </haml_loud></td>
+            <td><haml_loud> user.current_sign_in_at </haml_loud></td>
+            <td><haml_loud> user.last_sign_in_at </haml_loud></td>
+            <td><haml_loud> user.current_sign_in_ip </haml_loud></td>
+            <td><haml_loud> user.last_sign_in_ip </haml_loud></td>
+            <td><haml_loud> user.created_at </haml_loud></td>
+            <td><haml_loud> user.updated_at </haml_loud></td>
+            <td><haml_loud> user.first_name </haml_loud></td>
+            <td><haml_loud> user.last_name </haml_loud></td>
+            <td><haml_loud> user.description </haml_loud></td>
+            <td><haml_loud> user.personal_url </haml_loud></td>
+            <td><haml_loud> user.avatar </haml_loud></td>
+            <td><haml_loud> user.coverphoto </haml_loud></td>
+            <td><haml_loud> user.facebook_link </haml_loud></td>
+            <td><haml_loud> user.twitter_link </haml_loud></td>
+            <td><haml_loud> user.bios </haml_loud></td>
+            <td><haml_loud> user.confirmation_token </haml_loud></td>
+            <td><haml_loud> user.confirmed_at </haml_loud></td>
+            <td><haml_loud> user.confirmation_sent_at </haml_loud></td>
+            <td><haml_loud> user.unconfirmed_email </haml_loud></td>
+            <td><haml_loud> user.failed_attempts </haml_loud></td>
+            <td><haml_loud> user.unlock_token </haml_loud></td>
+            <td><haml_loud> user.locked_at </haml_loud></td>
+            <td><haml_loud> user.authentication_token </haml_loud></td>
+      :javascript
+        $('#admin-sidebar li:contains("Importar usuarios")').css({ background: "#1B57A0" });

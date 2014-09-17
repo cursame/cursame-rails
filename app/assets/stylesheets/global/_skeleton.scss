@@ -641,6 +641,10 @@ body {
   #notice {
     padding: 14px 15px 16px 15px;;
   }
+
+  &.full .notice-spacer {
+    padding-left: 0;
+  }
 }
 
 .expires .uninstal_exit{
@@ -766,3 +770,17 @@ body {
   padding: 0px 5px;
 }
 
+// Table for data
+.data-table {
+  thead th {
+    padding: 7px 13px;
+  }
+
+  tbody td {
+    padding: 13px;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}
