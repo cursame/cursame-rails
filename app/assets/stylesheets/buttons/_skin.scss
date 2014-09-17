@@ -110,8 +110,8 @@
 .btn-complementary {
   color: #ffffff;
   background: $complementary-color;
-  border: 1px solid darken($complementary-color, 10%);
-  border-bottom-color: darken($complementary-color, 15%);
+  border: 1px solid darken($complementary-color, 7%);
+  border-bottom-color: darken($complementary-color, 12%);
   @extend .btn-shadow;
   @include linear-gradient($complementary-color, darken($complementary-color, 3.5%));
 
