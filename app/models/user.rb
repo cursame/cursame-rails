@@ -197,6 +197,11 @@ class User < ActiveRecord::Base
     return self.roles.include? Role.find_by_title 'teacher'
   end
 
+  # Returns true if the user has superadmin role.
+  def superadmin?
+    return self.roles.include? Role.find_by_title 'superadmin'
+  end
+
   #roles
   def role_symbols
     superadmin = Role.find_by_title("superadmin")

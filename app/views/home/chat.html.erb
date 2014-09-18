@@ -20,7 +20,7 @@ background-white
     </div>
     <div class="chat-sidebar-container tabs-main">
       <div id="JustFriends" class="tab-content scrollbar">
-        <% if current_user.count_friendships != 0 %>
+        <% if current_user.count_friendships != 0 || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
           <ul class="chat-list">
             <% @friends_online.each do |user| %>
               <li>
@@ -43,7 +43,7 @@ background-white
       </div>
 
       <div id="OnlyCourses" class="tab-content scrollbar" style="display: none;">
-        <% unless current_user.courses.empty? %>
+        <% if !current_user.courses.empty? || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
           <ul class="chat-list" >
             <% @courses_online.each do |course| %>
               <li>
