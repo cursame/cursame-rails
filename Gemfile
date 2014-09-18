@@ -144,4 +144,4 @@ gem 'sidekiq', "~> 3.1.2"
 gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
