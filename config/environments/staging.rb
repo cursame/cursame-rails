@@ -69,19 +69,8 @@ Cursame30Lb::Application.configure do
   HOST = "cursa.me"
   config.action_mailer.default_url_options = { :host => 'cursa.me' }
   config.action_mailer.delivery_method = :ses
-  # config.middleware.use ExceptionNotifier,
-  #   :email => {
-  #     :email_prefix => "[staging] ",
-  #     :sender_address => %{"notifier" <error-notifier@cursa.me>},
-  #     :exception_recipients => %w{desarrollo+staging@cursa.me}
-  #   },
-  #   :slack => {
-  #     :team => "Cúrsame",
-  #     :token => "xoxp-2355045044-2354326359-2677014128-25dc3b",
-  #     :channel => "#exceptions",
-  #     :additional_parameters => {
-  #       :icon_url => "http://www.troll.me/images/admiral-ackbar-relationship-expert/its-a-bug.jpg"
-  #     }
-  #   }
+  config.middleware.use ExceptionNotifier,
+    :sender_address => %{"notifier" <error-notifier@cursa.me>},
+    :exception_recipients => %w{desarrollo+staging@cursa.me}
 
 end

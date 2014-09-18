@@ -146,6 +146,8 @@ GEM
       eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    exception_notification (3.0.1)
+      actionmailer (>= 3.0.4)
     execjs (2.2.1)
     extlib (0.9.16)
     faraday (0.9.0)
@@ -336,12 +338,12 @@ GEM
       netrc (~> 0.7)
     retriable (1.4.1)
     rinku (1.5.1)
-    rspec-core (3.1.3)
+    rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.1.0)
-    rspec-mocks (3.1.0)
+    rspec-mocks (3.1.1)
       rspec-support (~> 3.1.0)
     rspec-rails (3.1.0)
       actionpack (>= 3.0)
@@ -444,6 +446,7 @@ DEPENDENCIES
   devise (= 2.2.8)
   dropbox-api
   dropbox-sdk (~> 1.5.1)
+  exception_notification (~> 3.0.1)
   geocoder
   google-api-client
   haml-rails (~> 0.4.0)
