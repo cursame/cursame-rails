@@ -1,22 +1,15 @@
-
 require 'devise/strategies/authenticatable'
-
 module Devise
   module Strategies
     class Subdomain < Base
       def valid?
         params['user'].blank? ? false : true
       end
-
       def authenticate!
-        user = User.find_by_email(params['user']['email'])
-        unless user.blank?
-          if user.permissionings.first.role_id == 4
-            success!(user)
-          else
-            subdomain = user.permissionings.first.network.subdomain
-            subdomain == request.subdomain.downcase ? success!(user) : fail!("No pertenece a esta red")
-          end 
+        user = User.find_by_email params['user']['email']
+        if !user.nil? && user.valid_password?(params['user']['password'])
+          subdomains = user.permissionings.map { |p| p.network.subdomain.downcase unless p.network.nil? }
+          (subdomains.include?(request.subdomain) || user.superadmin?) ? success!(user) : fail!("No existe el usuario")
         else
           fail!("No existe el usuario")
         end
