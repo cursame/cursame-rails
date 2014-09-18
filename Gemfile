@@ -127,8 +127,8 @@ gem "daemons"
 gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
 
 # Exception Notifier Plugin for Rails
-#gem 'exception_notification', '~> 3.0.1'
-#gem 'slack-notifier'
+gem 'exception_notification', '~> 3.0.1'
+gem 'slack-notifier'
 
 #active_admin
 gem 'activeadmin'
@@ -144,4 +144,3 @@ gem 'sidekiq', "~> 3.1.2"
 gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'
-#gem 'newrelic_rpm'
