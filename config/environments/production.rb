@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Cursame30Lb::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -70,7 +71,18 @@ Cursame30Lb::Application.configure do
   config.action_mailer.default_url_options = { :host => 'cursa.me' }
   config.action_mailer.delivery_method = :ses
   config.middleware.use ExceptionNotifier,
-    :sender_address => %{"notifier" <error-notifier@cursa.me>},
-    :exception_recipients => %w{desarrollo+production@cursa.me}
+    :email => {
+      :email_prefix => "[production] ",
+      :sender_address => %{"notifier" <error-notifier@cursa.me>},
+      :exception_recipients => %w{desarrollo+production@cursa.me}
+    },
+    :slack => {
+      :team => "Cúrsame",
+      :token => "xoxp-2355045044-2354326359-2677014128-25dc3b",
+      :channel => "#exceptions",
+      :additional_parameters => {
+        :icon_url => "http://www.troll.me/images/admiral-ackbar-relationship-expert/its-a-bug.jpg"
+      }
+    }
 
 end

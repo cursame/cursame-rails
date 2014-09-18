@@ -644,12 +644,16 @@ class ApplicationController < ActionController::Base
   def chat_online_users
     if current_user
       role_id = current_user.permissionings.first.role_id
-      if role_id == 1 || role_id == 4
+      if role_id == 1
         @friends_online = current_user.permissionings.first.network.users.compact
+        @courses_online = Course.where(:network_id => current_user.permissionings.first.network.id)
+      elsif role_id == 4
+        @friends_online = current_network.users.compact
+        @courses_online = Course.where(:network_id => current_network.id)
       else
         @friends_online = current_user.friends(true)
+        @courses_online = current_user.courses
       end
-      @courses_online = current_user.courses
       @show_chat_panel = true
     end
   end

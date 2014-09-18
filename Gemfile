@@ -128,6 +128,7 @@ gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
 
 # Exception Notifier Plugin for Rails
 gem 'exception_notification', '~> 3.0.1'
+gem 'slack-notifier'
 
 #active_admin
 gem 'activeadmin'
@@ -139,7 +140,7 @@ gem "meta_search",    '>= 1.1.0.pre'
  
 gem "wuparty", "~> 1.2.6"
 gem 'meta-tags'
-gem 'sidekiq'
+gem 'sidekiq', "~> 3.1.2"
 gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'
