@@ -682,4 +682,13 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
+  # TODO: Es preferible utilizar este método en lugar de redirect_to :back,
+  # podría ser buena idea cambar todos por este
+  # Metodo auxiliar para utilizar redirect_to :back de una manera más segura
+  def redirect_to_back_or_default(default = root_path, *options)
+    tag_options = {}
+    options.first.each { |k,v| tag_options[k] = v } unless options.empty?
+    redirect_to (request.referer.present? ? :back : default), tag_options
+  end
+
 end
