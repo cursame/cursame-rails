@@ -23,6 +23,10 @@ class Managers::CoursesController < Managers::BaseController
     redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' }
   end
 
+  def destroy
+    redirect_to managers_courses_path, flash: { success: 'Curso borrado correctamente.' }
+  end
+
   def import
     @courses = current_network.courses
   end
