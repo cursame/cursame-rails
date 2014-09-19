@@ -4,10 +4,23 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def show
-    @course = User.find_by_id params[:id]
+    @course = Course.find_by_id params[:id]
   end
 
   def new
+    @course = Course.new
+  end
+
+  def create
+    redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' }
+  end
+
+  def edit
+    @course = Course.find_by_id params[:id]
+  end
+
+  def update
+    redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' }
   end
 
   def import

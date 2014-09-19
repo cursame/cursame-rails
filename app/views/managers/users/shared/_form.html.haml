@@ -33,5 +33,8 @@
           = permissioning.select :role_id, options_for_select([['Alumno', '2'], ['Profesor', '3']]), required: "required", autocomplete: "off"
   %br/
   %br/
-  %span.btn.btn-primary.input-btn.btn-medium.activable
-    = f.submit ( user.new_record? ? 'Crear Usuario' : 'Guardar cambios')
+  %ul.list-buttons.left
+    %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
+    %li
+      %span.btn.btn-primary.input-btn.btn-medium.activable
+        = f.submit ( user.new_record? ? 'Crear Usuario' : 'Guardar cambios')
