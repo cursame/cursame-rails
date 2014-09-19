@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :token_authenticatable, :lockable, :timeoutable,
-    :confirmable, :request_keys => [:subdomain]
+    :confirmable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
@@ -93,22 +93,6 @@ class User < ActiveRecord::Base
   #avatar
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
-
-
-  after_create do
-    begin
-      mixpanel_properties = {
-        '$first_name' => self.first_name,
-        '$last_name'  => self.last_name,
-        '$created'    => self.created_at,
-        '$email'      => self.email
-      }
-      MixpanelPeopleWorker.perform_async self.id, mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
-  end
 
   def inverse_friendships
     return Friendship.where(:friend_id => self.id)
@@ -213,6 +197,11 @@ class User < ActiveRecord::Base
     return self.roles.include? Role.find_by_title 'teacher'
   end
 
+  # Returns true if the user has superadmin role.
+  def superadmin?
+    return self.roles.include? Role.find_by_title 'superadmin'
+  end
+
   #roles
   def role_symbols
     superadmin = Role.find_by_title("superadmin")
@@ -307,6 +296,7 @@ class User < ActiveRecord::Base
       |x,y|
       x.to_s <=> y.to_s
     }
+    
     return ordered_friends.compact
   end
   ######## cikica todos lo amigos #########
@@ -787,9 +777,9 @@ class User < ActiveRecord::Base
   end
 
   # Subdomain verification for devise
-  def self.find_for_authentication(warden_conditions)
-    where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
-  end
+  # def self.find_for_authentication(warden_conditions)
+  #   where(:email => warden_conditions[:email], :subdomain => warden_conditions[:subdomain]).first
+  # end
 
   # An overwrite for the function setter for the :subdomain property because we need to not onlu
   # update de :subdomain but also the permitions thing

@@ -81,6 +81,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def network_settings
+    return current_network.network_settings
+  end
+
   def current_network?
       if current_network != nil
            u_u = "#{current_network.subdomain}.#{links}"
@@ -643,8 +647,17 @@ class ApplicationController < ActionController::Base
 
   def chat_online_users
     if current_user
-      @friends_online = current_user.friends(true)
-      @courses_online = current_user.courses
+      role_id = current_user.permissionings.first.role_id
+      if role_id == 1
+        @friends_online = current_user.permissionings.first.network.users.compact
+        @courses_online = Course.where(:network_id => current_user.permissionings.first.network.id)
+      elsif role_id == 4
+        @friends_online = current_network.users.compact
+        @courses_online = Course.where(:network_id => current_network.id)
+      else
+        @friends_online = current_user.friends(true)
+        @courses_online = current_user.courses
+      end
       @show_chat_panel = true
     end
   end
@@ -671,6 +684,15 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { locale: I18n.locale }
+  end
+
+  # TODO: Es preferible utilizar este método en lugar de redirect_to :back,
+  # podría ser buena idea cambar todos por este
+  # Metodo auxiliar para utilizar redirect_to :back de una manera más segura
+  def redirect_to_back_or_default(default = root_path, *options)
+    tag_options = {}
+    options.first.each { |k,v| tag_options[k] = v } unless options.empty?
+    redirect_to (request.referer.present? ? :back : default), tag_options
   end
 
 end

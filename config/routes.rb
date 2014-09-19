@@ -47,9 +47,11 @@ Cursame30Lb::Application.routes.draw do
   resources :notifications
   resources :assets
 
-  #### manejo de assignments
-
-  resources :assignments
+  ### TODO:
+  ### Por el momento no se utiliza ningún método del controlador de assignments
+  ### tal vez sea recomendable cambiar el comportamiento al controlador, hay que
+  ### evaluarlo
+  # resources :assignments
 
   # Members In Course
   resources :members_in_courses

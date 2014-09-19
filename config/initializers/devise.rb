@@ -232,4 +232,11 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
+  # Custom strategies
+
+  config.warden do |manager|
+    manager.strategies.add(:subdomain, Devise::Strategies::Subdomain)
+    manager.default_strategies(:scope => :user).unshift :subdomain
+  end
+
 end

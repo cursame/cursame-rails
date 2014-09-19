@@ -121,7 +121,7 @@
     <div class="sidebar-section-main scroller s-to-f scrollbar"> 
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
-          <% if current_user.count_friendships != 0 %>
+          <% if current_user.count_friendships != 0 || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>
@@ -150,8 +150,8 @@
         
         <div id="chat-group-courses" class="tab-content" style="display: none;">
           <ul class="section-list side-courses">
-            <% unless current_user_courses.empty? %>
-              <% courses.each do |course|%>
+            <% if !current_user_courses.empty? || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
+              <% @courses_online.each do |course|%>
                 <li>
                   <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
                     <% if course.avatar.file != nil &&  File.exist?(course.avatar.file.file)%> 

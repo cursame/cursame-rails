@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140825210410) do
+ActiveRecord::Schema.define(:version => 20140903221234) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -396,11 +396,12 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
     t.text     "mesage_html"
   end
 
-  create_table "network_templates", :force => true do |t|
+  create_table "network_settings", :force => true do |t|
     t.integer  "network_id"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "property"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "networks", :force => true do |t|
@@ -411,11 +412,11 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -436,13 +437,6 @@ ActiveRecord::Schema.define(:version => 20140825210410) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
-  end
-
-  create_table "p_id_to_h_ids", :force => true do |t|
-    t.integer  "p_id"
-    t.integer  "h_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "permissionings", :force => true do |t|

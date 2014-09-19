@@ -11,6 +11,8 @@ gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise', '2.2.8'
 gem 'json'
+#gema para la detección de codificación en  los archivos
+gem 'charlock_holmes'
 
 #gema para calendario y tablas espcificas
 gem "watu_table_builder", :require => "table_builder"
@@ -137,7 +139,7 @@ gem "meta_search",    '>= 1.1.0.pre'
  
 gem "wuparty", "~> 1.2.6"
 gem 'meta-tags'
-gem 'sidekiq'
+gem 'sidekiq', "~> 3.1.2"
 gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'

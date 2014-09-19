@@ -8,8 +8,6 @@ class UsessionsController < Devise::SessionsController
 
     before_filter :set_offline, :only => :destroy
 
-    before_filter :verify_admin_subdomain
-
     # GET /resource/sign_in
     def new
   
@@ -23,17 +21,18 @@ class UsessionsController < Devise::SessionsController
     # POST /resource/sign_in
     def create
 
-      unless params["user"]["email"].blank?
-        user_tmp = User.find_by_email(params["user"]["email"])
-        unless user_tmp.blank?
-          if user_tmp.permissionings.first.role_id == 4
-          # if user_tmp.id == 32514
-            user_tmp.update_attributes :subdomain => request.subdomain.downcase
-          end
-        end
-      end
+      # unless params["user"]["email"].blank?
+      #   user_tmp = User.find_by_email(params["user"]["email"])
+      #   unless user_tmp.blank?
+      #     if user_tmp.permissionings.first.role_id == 4
+      #     # if user_tmp.id == 32514
+      #       user_tmp.update_attributes :subdomain => request.subdomain.downcase
+      #     end
+      #   end
+      # end
 
       self.resource = warden.authenticate!(auth_options)
+      # self.resource = warden.authenticate!(params)
 
       #set_flash_message(:notice, :signed_in) if is_navigational_format?     
       @find_user = User.find_by_email(resource.email)
@@ -147,9 +146,5 @@ class UsessionsController < Devise::SessionsController
                               online: false
                             )
       end     
-    end
-
-    def verify_admin_subdomain
-      puts "hol a mundodddd"
     end
 end

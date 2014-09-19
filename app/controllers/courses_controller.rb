@@ -110,7 +110,8 @@ class CoursesController < ApplicationController
     @member = obtainMember(@course.id, current_user.id)
 
     if @member.nil?
-      redirect_to :back
+      # redirect_to :back
+      redirect_to_back_or_default
       return false
     end
 

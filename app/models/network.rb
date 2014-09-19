@@ -14,6 +14,7 @@ class Network < ActiveRecord::Base
   # Error por que la variable no fue inicializada al usar destroy
   has_many :libraries#, :dependent => :destroy
   #se declara la presencia y la dependencia de como deve leer el formato de subdominio asi como que el subdominio e único
+  has_many :network_settings
 
   validates_presence_of   :name, :subdomain, :population
   validates_uniqueness_of :subdomain
