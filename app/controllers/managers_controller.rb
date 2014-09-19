@@ -151,5 +151,4 @@ class ManagersController < ApplicationController
     redirect_to :managers_import_users_path
   end
   
-  
 end
