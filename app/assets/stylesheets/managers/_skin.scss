@@ -14,22 +14,19 @@
 
 .managers-header {
   background: $primary-color;
+  border-bottom: 1px solid darken($primary-color, 5%);
   box-shadow: 0 1px 1px rgba(0,0,0,.3);
   @include clearfix;
 
   .managers-nav li {
-    border-right: 1px solid #3591c0;
-
-    &:first-child {
-      border-left: 1px solid #3591c0;      
-    }
 
     a {
       color: $white;
       font-size: 14px;
 
       &.active {
-        background: darken($primary-color, 10%);
+        background: darken($primary-color, 5%);
+        box-shadow: inset 0 1px 2px darken($primary-color, 10%);
         color: tint($primary-color, 70%);
       }
     }
@@ -39,12 +36,6 @@
     float: right;
 
     > ul > li {
-      border-right: 1px solid #3591c0;
-
-      &:first-child {
-        border-left: 1px solid #3591c0;      
-      }
-
       > a {
         color: $white;
         font-size: 14px;
@@ -54,13 +45,14 @@
 }
 
 .managers-sub-navigation {
-  background: darken($primary-color, 10%);
+  background: #f5f5f5;
+  border-bottom: 1px solid #d5d5d5;
 
   ul li a {
-    color: $white;
+    color: $gray-color;
 
     &.active {
-      color: tint($primary-color, 70%);
+      color: tint($gray-color, 55%);
     }
   }
 }
