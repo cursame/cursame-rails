@@ -19,11 +19,6 @@
   @include clearfix;
 
   .managers-nav li {
-    border-right: 1px solid #3591c0;
-
-    &:first-child {
-      border-left: 1px solid #3591c0;      
-    }
 
     a {
       color: $white;
