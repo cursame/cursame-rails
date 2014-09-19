@@ -200,10 +200,9 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
-    if @member.owner == true || current_role == "admin"
-    else
-      redirect_to course_path(@course)
-    end
+    unless current_user.admin?
+      (@member.nil? || !@member.owner?) ? (redirect_to course_path(@course), flash: { error: "Usted no está autorizado para editar este curso."}) : nil
+    end 
   end
 
   # POST /courses
