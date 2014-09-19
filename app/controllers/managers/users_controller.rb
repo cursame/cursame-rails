@@ -23,6 +23,10 @@ class Managers::UsersController < Managers::BaseController
     redirect_to managers_users_path, flash: { success: 'Usuario actualizado correctamente.' }
   end
 
+  def destroy
+    redirect_to managers_users_path, flash: { success: 'Usuario borrado correctamente.' }
+  end
+
   def import
     @users = current_network.users
   end
