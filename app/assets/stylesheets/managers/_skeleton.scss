@@ -8,6 +8,10 @@
     li {
       float: left;
 
+      &:first-child {
+        margin-left: - 13px;
+      }
+
       a {
         display: block;
         padding: 16px 13px;
