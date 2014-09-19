@@ -1,4 +1,4 @@
-<%= form_for(@network, :remote => true) do |f| %>
+<%= form_for(@network) do |f| %>
 
   <% if @network.errors.any? %>
     <div id="error_explanation">
@@ -111,7 +111,7 @@
       <div class="form-unit">
         <%= f.label :register_form do %>
           <%= f.check_box :register_form %>
-          Formulario de registro bloqueado
+          Habilitar formulario de registro publico.
         <% end %>
       </div>
     </div>
