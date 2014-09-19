@@ -5,6 +5,6 @@
         .col-inner
           %ul
             %li
-              = link_to "Cursos", managers_courses_path, class: active_class('index')
+              = link_to "Listado de Cursos", managers_courses_path, class: active_class(['index', 'show', 'edit'], 'managers/courses')
             %li
               = link_to "Importar Cursos", import_managers_courses_path, class: active_class('import')

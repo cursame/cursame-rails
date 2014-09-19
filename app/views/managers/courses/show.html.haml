@@ -1,5 +1,13 @@
 = render partial: 'managers/courses/shared/managers_courses_subnav'
 .wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to '&#8592; Regresar'.html_safe, managers_courses_path, class: 'btn btn-secondary'
+            %li= link_to 'Editar', edit_managers_course_path(@course), class: 'btn btn-primary'
+            %li= link_to 'Borrar', managers_course_path(@course), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este curso.'
   .cols-12
     .col.col-12
       .col-inner
@@ -9,8 +17,8 @@
               = avatar('course', '30', "no", @course.id, "avatar", "no", "no")
               = @course.title
           .actions
-            = link_to 'Editar', edit_managers_course_path(@course), class: 'btn btn-complementary'
-            = link_to 'Borrar', managers_course_path(@course), class: 'btn btn-complementary', method: :delete
+            
+            
 
   .cols-12
     .col.col-6

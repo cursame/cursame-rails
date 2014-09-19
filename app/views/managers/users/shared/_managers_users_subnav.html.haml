@@ -5,6 +5,6 @@
         .col-inner
           %ul
             %li
-              = link_to "Usuarios Registrados", managers_users_path, class: active_class('index')
+              = link_to "Listado de Usuarios", managers_users_path, class: active_class(['index', 'show', 'edit'], 'managers/users')
             %li
               = link_to "Importar Usuarios", import_managers_users_path, class: active_class('import')
