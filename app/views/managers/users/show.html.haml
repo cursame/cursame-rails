@@ -16,9 +16,6 @@
             %h1
               = avatar('user', '30', "no", @user.id, "avatar", "no", "no")
               = @user.name
-          .actions
-            = link_to 'Editar', edit_managers_user_path(@user), class: 'btn btn-complementary'
-            = link_to 'Borrar', managers_user_path(@user), class: 'btn btn-complementary', method: :delete
   .cols-12
     .col.col-6
       .col-inner
