@@ -65,23 +65,25 @@ Cursame30Lb::Application.routes.draw do
     resources :users do
       collection do
         get 'import'
+        post 'import_receiver'
       end
     end
 
-    resources :courses
+    resources :courses do
+      collection do
+        get 'import'
+        post 'import_receiver'
+      end
+    end
+
     get 'settings'
+    get 'mailer'
+    post "mailer_deliver"
   end
 
-  get "managers/network_configuration"
-  get "managers/library"
-  get "managers/delete_user", :as => :delete_user
-  get "managers/send_mails" => "managers#send_mails", :as => :massive_mails
-  match "managers/sending" => "managers#sending", :as => "massive_sending", :via => [:post]
-  post "/managers/upload_users" => "managers#upload_users", :as => :upload_users
-  get "managers/import_courses", :to => "managers#import_courses", :as => :managers_import_courses
-  post "managers/import_courses", :to => "managers#upload_courses", :as => :upload_courses
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
+
 
   resources :managers do
     resources :roles
