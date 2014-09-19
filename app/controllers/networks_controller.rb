@@ -115,7 +115,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.update_attributes(params[:network])
-        format.html { redirect_to :back, notice: 'Network was successfully updated.' }
+        format.html { redirect_to :back, flash: { success: 'Configuración guardada correctamente.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

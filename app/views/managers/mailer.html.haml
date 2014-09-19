@@ -1,0 +1,25 @@
+.wrapper
+  .cols-12
+    .col.col-6
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Mail Masivo
+            %p Envía un mail a todos los miembros de tu comunidad.
+        = form_tag managers_mailer_deliver_path, class: 'form-validate-js' do
+          .form-group.label-on-top.l-label
+            .form-group-label
+              = label :subject, 'Asunto:'
+            .form-group-main
+              .form-unit
+                = text_field_tag :subject, '', placeholder: 'Ejemplo: Ceremonia de clausura', required: true
+
+          .form-group.label-on-top.l-label
+            .form-group-label
+              = label :message, 'Mensaje:'
+            .form-group-main
+              .form-unit
+                = text_area_tag :message, '', placeholder: 'Mensaje', rows: 8, required: true
+
+          %span.btn.btn-primary.input-btn.btn-medium.activable
+            = submit_tag "Enviar"
