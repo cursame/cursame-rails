@@ -34,4 +34,6 @@
                 %td= user.email
                 %td= user.created_at
                 %td= role_name
-                %td= link_to 'Editar', edit_managers_user_path(user)
+                %td
+                  = link_to 'Ver', managers_user_path(user), class: 'btn btn-small btn-secondary'
+                  = link_to 'Editar', edit_managers_user_path(user), class: 'btn btn-small btn-secondary'
