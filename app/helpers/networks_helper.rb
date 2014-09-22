@@ -25,18 +25,6 @@ module NetworksHelper
     params.delete(:token)
     
     # Generate the query and return the URL
-    "http://vlex.com/session/remote_auth?#{params.to_query}"
-  end
-
-  def get_network_students
-    return network_students
-  end
-
-  def get_network_teachers
-    return network_teachers
-  end
-
-  def get_network_managers
-    return network_managers
+    "#{vlex_remote_auth_url}?#{params.to_query}"
   end
 end
