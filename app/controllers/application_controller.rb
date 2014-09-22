@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
 
     if current_user
 
-      permissioning = Permissioning.find_by_user_id current_user .id
+      permissioning = Permissioning.find_by_user_id current_user.id
 
       if !permissioning.nil? && permissioning.role.title == "superadmin"
         @current_network = Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase)) 
