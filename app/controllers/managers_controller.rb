@@ -22,6 +22,12 @@ class ManagersController < ApplicationController
     @unpublished_deliveries_count =  @close_deliveries.count
   end
 
+  def publications
+    respond_to do |format|
+      format.html { render 'managers/publications/index' }
+    end
+  end
+
   def mailer
     @user = current_user
   end
