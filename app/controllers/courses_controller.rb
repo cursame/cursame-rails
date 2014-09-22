@@ -103,7 +103,7 @@ class CoursesController < ApplicationController
       @courses = current_user.courses.search(query)
     when 'student'
       @courses = current_network.courses.search(query)
-    when 'admin'
+    when 'admin' || 'superadmin'
       @courses = current_network.courses.search(query)
     end
 
