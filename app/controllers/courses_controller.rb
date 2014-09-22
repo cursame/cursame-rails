@@ -103,6 +103,8 @@ class CoursesController < ApplicationController
       @courses = current_user.courses.search(query)
     when 'student'
       @courses = current_network.courses.search(query)
+    when 'admin'
+      @courses = current_network.courses.search(query)
     end
 
     respond_to do |format|
