@@ -193,10 +193,10 @@ class ApplicationController < ActionController::Base
 
     @permisos = current_user.permissionings.last
     if Role.exists?(@permisos.role_id)
-    @role = Role.find(@permisos.role_id)
-    @role.title
+      @role = Role.find(@permisos.role_id)
+      @role.title
     else
-    @role = 'student'
+      @role = 'student'
     end
    
   end

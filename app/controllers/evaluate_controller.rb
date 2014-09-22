@@ -6,7 +6,16 @@ class EvaluateController < ApplicationController
   before_filter :only_teachers
 
   def index
-    courses = teacher_published_courses
+
+    case current_role
+    when 'teacher' 
+      courses = teacher_published_courses
+    when 'admin' || 'superadmin'
+      courses = current_network.courses
+    else
+      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." }
+    end
+
 
     deliveries = courses.inject([]) do
       |accu, course|
