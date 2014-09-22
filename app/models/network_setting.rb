@@ -1,11 +1,9 @@
 class NetworkSetting < ActiveRecord::Base
-  attr_accessible :network_id, :property_field, :value
-
   belongs_to :network
+  validates_associated :network
+  validates :property, presence: true
+  validates :value, presence: true
 
-  @@property = {:hasCourse => 'curso', :hasGroup => 'false'}
+  PROPERTY = { hide_course_publications_in_main_wall: 'hide_course_publications_in_main_wall' }
 
-  def self.getProperty
-  	@@property
-  end
 end
