@@ -63,6 +63,9 @@
             <%= icon 'community-w' %>Comunidad
           <% end %>
         </li>
+        <li>
+          <%= link_to "v|Lex", vlex_remote_auth({ account_id: "1152222777", name: "Hola Corporativo Académico CADE", token: "TQQimLpq9pNovANMUcVUSCeS2GVUiOC71Wgc2zIAr3aJH37k", email: "info@cade.edu.mx" }), target: '_blank' %>
+        </li>
         <li class="chat-link">
           <%= link_to chat_path, :data => "menu" do %>
             <%= icon 'messages-w' %> Chat
