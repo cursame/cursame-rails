@@ -661,6 +661,10 @@ class ApplicationController < ActionController::Base
       end
       @show_chat_panel = true
 
+      @friends_online.reject! do |user|
+        user == current_user
+      end
+      
       @friends_online.sort_by! do 
         |user| [user.online ? 0 : 1, user.first_name.downcase]
       end
