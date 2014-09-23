@@ -41,16 +41,4 @@ module NetworksHelper
   def get_network_managers
     return network_managers
   end
-
-  def get_network_students
-    return network_students
-  end
-
-  def get_network_teachers
-    return network_teachers
-  end
-
-  def get_network_managers
-    return network_managers
-  end
 end
