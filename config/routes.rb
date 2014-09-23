@@ -80,7 +80,6 @@ Cursame30Lb::Application.routes.draw do
     
     resources :deliveries
 
-    get 'publications'
     get 'settings'
     get 'mailer'
     post "mailer_deliver"
