@@ -86,6 +86,7 @@ Cursame30Lb::Application.routes.draw do
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
 
+
   resources :managers do
     resources :roles
   end
