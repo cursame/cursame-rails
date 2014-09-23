@@ -1,11 +1,13 @@
 module NetworksHelper
-  include NetworksUtils
+  def vlex_remote_auth
 
-  # Example:
-  # data = {:account_id => "1234", :name => "tester", :token => "TOKEN", :email => "test@vlex.com"}
-  # puts vlex_remote_auth data
-  def vlex_remote_auth(params)
-    vlex_remote_auth_url = "http://vlex.com/session/remote_auth"
+    params = { 
+      account_id: current_network.find_setting(:vlex_account_id).value, 
+      name: current_network.find_setting(:vlex_name).value, 
+      token: current_network.find_setting(:vlex_token).value, 
+      email: current_network.find_setting(:vlex_email).value
+    }
+    
     # Add timestamp
     params = params.clone # so that the delete at the end doesn't update the params hash
     params[:timestamp] = Time.now.to_i
@@ -23,7 +25,7 @@ module NetworksHelper
     params.delete(:token)
     
     # Generate the query and return the URL
-    "#{vlex_remote_auth_url}?#{params.to_query}"
+    "http://vlex.com/session/remote_auth?#{params.to_query}"
   end
 
   def get_network_students
