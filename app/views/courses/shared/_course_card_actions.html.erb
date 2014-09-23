@@ -31,7 +31,7 @@
         </ul>
       </div>
     </div>
-  <% elsif @correspond.accepted && ! @correspond.owner %>
+  <% elsif @correspond.accepted && ! @correspond.owner and course.public_status === 'public'%>
     <div class="dropdown-wrap">
       <div class="dropdown-pull btn btn-secondary btn-small">
         Estás inscrito <%= icon 'drop-arrow' %>
