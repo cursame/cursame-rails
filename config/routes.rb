@@ -77,8 +77,9 @@ Cursame30Lb::Application.routes.draw do
         post 'import_receiver'
       end
     end
+    
+    resources :deliveries
 
-    get 'publications'
     get 'settings'
     get 'mailer'
     post "mailer_deliver"
