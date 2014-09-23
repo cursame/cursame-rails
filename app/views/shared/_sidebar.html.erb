@@ -63,17 +63,11 @@
             <%= icon 'community-w' %>Comunidad
           <% end %>
         </li>
-<<<<<<< HEAD
         <% if !current_network.find_setting(:vlex_sso).nil? && current_network.find_setting(:vlex_sso).value == 't' %>
           <li>
             <%= link_to "vLex", vlex_remote_auth, target: '_blank' %>
           </li>
         <% end %>
-=======
-        <li>
-          <%= link_to "v|Lex", vlex_remote_auth({ account_id: "1152222777", name: "Hola Corporativo Académico CADE", token: "TQQimLpq9pNovANMUcVUSCeS2GVUiOC71Wgc2zIAr3aJH37k", email: "info@cade.edu.mx" }), target: '_blank' %>
-        </li>
->>>>>>> se agrega SSO a vLEX
         <li class="chat-link">
           <%= link_to chat_path, :data => "menu" do %>
             <%= icon 'messages-w' %> Chat
