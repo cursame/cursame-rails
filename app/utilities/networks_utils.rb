@@ -1,17 +1,26 @@
 # coding: utf-8
 
-module NetworksUtils
-  
-  def network_students
-  	return network_students = current_network.users.keep_if {|user| user.student?}
-    #return "Network Students"
+  def network_students(flag)
+  	if flag
+    	current_network.users.keep_if {|user| user.student?}
+    else
+    	current_network.users.keep_if {|user| user.student? and current_user != user}
+    end
   end
 
-  def network_teachers
-  	return network_students = current_network.users.keep_if {|user| user.teacher?}
+  def network_teachers(flag)
+  	if flag
+  		current_network.users.keep_if {|user| user.teacher?}
+  	else
+  		current_network.users.keep_if {|user| user.teacher? and current_user != user}
+  	end
   end
 
-  def network_managers
-    return network_students = current_network.users.keep_if {|user| user.admin?}
+  def network_managers(flag)
+  	if flag
+    	current_network.users.keep_if {|user| user.admin?}
+    else
+    	current_network.users.keep_if {|user| user.admin? and current_user != user}
+    end
   end
 end
