@@ -14,6 +14,21 @@
       .form-unit
         = f.text_area :silabus, placeholder: "Descripción", required: true, autocomplete: "off", rows: 7
 
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :admins, 'Administradores:'
+    .form-group-main
+      .form-unit
+
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :members, 'Miembros:'
+    .form-group-main
+      .form-unit
+        = get_network_students
+        = get_network_teachers
+        = get_network_managers
+
   %br/
   %br/
   %ul.list-buttons.left
