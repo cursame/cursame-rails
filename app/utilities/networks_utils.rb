@@ -1,7 +1,6 @@
 # coding: utf-8
-
 module NetworksUtils
-  
+
   def network_students(flag)
   	if flag
     	current_network.users.keep_if {|user| user.student?}
