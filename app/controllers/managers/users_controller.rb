@@ -24,7 +24,9 @@ class Managers::UsersController < Managers::BaseController
   end
 
   def destroy
-    redirect_to managers_users_path, flash: { success: 'Usuario borrado correctamente.' }
+    user = User.find_by_id params[:id]
+    user.destroy if !user.nil? && user.permissionings.first.network == current_network
+    redirect_to managers_users_path, User.exists?(user) ? { error: 'Usuario borrado correctamente' } : { success: 'Usuario borrado correctamente' }
   end
 
   def import
