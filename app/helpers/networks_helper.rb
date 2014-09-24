@@ -2,17 +2,13 @@ module NetworksHelper
   include NetworksUtils
 
   def vlex_remote_auth
-
     params = { 
       account_id: current_network.find_setting(:vlex_account_id).value, 
       name: current_network.find_setting(:vlex_name).value, 
       token: current_network.find_setting(:vlex_token).value, 
-      email: current_network.find_setting(:vlex_email).value
+      email: current_network.find_setting(:vlex_email).value,
+      timestamp: Time.now.to_i
     }
-    
-    # Add timestamp
-    params = params.clone # so that the delete at the end doesn't update the params hash
-    params[:timestamp] = Time.now.to_i
 
     # Check that required parameters are present and concatenate them
     seed = ""
