@@ -30,7 +30,7 @@
           - networks = user.permissionings.build
         = f.fields_for :permissionings do |permissioning|
           = permissioning.hidden_field :network_id, :value => current_network.id
-          = permissioning.select :role_id, options_for_select([['Alumno', '2'], ['Profesor', '3']]), required: "required", autocomplete: "off"
+          = permissioning.select :role_id, options_for_select([['Administrador', '1'], ['Alumno', '2'], ['Profesor', '3']], user.permissionings.first.role_id), required: "required", autocomplete: "off"
   %br/
   %br/
   %ul.list-buttons.left
