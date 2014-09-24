@@ -1,4 +1,4 @@
-= form_for [:managers, delivery] do |f|
+= form_for [:managers, delivery], html: { class: 'form-validate-js' } do |f|
   .form-group.abel-on-top.l-label
     .form-group-label
       = f.label :title, 'Tema de la tarea:'

@@ -1,5 +1,4 @@
- 
-= form_for [:managers, course] do |f|
+ = form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
   .form-group.abel-on-top.l-label
     .form-group-label
       = f.label :title, 'Nombre:'
@@ -25,9 +24,11 @@
       = f.label :members, 'Miembros:'
     .form-group-main
       .form-unit
-        = get_network_students
-        = get_network_teachers
-        = get_network_managers
+        - get_network_students.each do |user|
+          
+        = f.fields_for :members_in_courses do |members|
+          = "1"
+
 
   %br/
   %br/
