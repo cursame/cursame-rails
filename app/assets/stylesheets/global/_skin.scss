@@ -513,12 +513,19 @@ h6 {
     font-size: 11px;
   }
   
-  tbody td {
-    vertical-align: middle;
-    border-width: 0 0 1px 0;
+  tbody {
 
-    img {
+    tr:nth-child(even) {
+      background: tint($separator-color, 90%);
+    }
+
+    td {
       vertical-align: middle;
+      border-width: 0 0 1px 0;
+  
+      img {
+        vertical-align: middle;
+      }
     }
   }
 }
