@@ -15,7 +15,8 @@ authorization do
     has_permission_on [:managers], :to => [ :index, :publications, :settings, :import_members, :upload_members, :mailer, :mailer_deliver ]
     has_permission_on [:managers_users], :to => [ :index, :show, :new, :create, :edit, :update, :destroy, :import, :import_receiver ]
     has_permission_on [:managers_courses], :to => [ :index, :show, :new, :create, :update, :edit, :destroy, :import, :import_receiver ]
-    has_permission_on [:managers_deliveries], :to => [ :index, :show, :new, :create, :edit, :update, :destroy ]
+    has_permission_on [:managers_deliveries], :to => [ :index, :show, :destroy ]
+    has_permission_on [:managers_surveys], :to => [ :index, :show, :destroy ]
   end
 
   role :student do

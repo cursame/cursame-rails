@@ -5,8 +5,6 @@
         .managers-section-header
           .title
             %h1 Tareas
-          .actions
-            = link_to 'Crear tarea', new_managers_delivery_path, class: 'btn btn-complementary'
         %table.data-table
           %thead
             %tr
@@ -28,5 +26,4 @@
                 %td= link_to delivery.user, managers_user_path(delivery.user)
                 %td
                   = link_to 'Ver', managers_delivery_path(delivery), class: 'btn btn-small btn-secondary'
-                  = link_to 'Editar', edit_managers_delivery_path(delivery), class: 'btn btn-small btn-secondary'
                   = link_to 'Borrar', managers_delivery_path(delivery), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar esta tarea.'

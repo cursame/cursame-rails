@@ -78,7 +78,8 @@ Cursame30Lb::Application.routes.draw do
       end
     end
     
-    resources :deliveries
+    resources :deliveries, only: [ :index, :show, :destroy ]
+    resources :surveys, only: [ :index, :show, :destroy ]
 
     get 'settings'
     get 'mailer'
