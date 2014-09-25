@@ -24,11 +24,9 @@
       = f.label :members, 'Miembros:'
     .form-group-main
       .form-unit
-        - get_network_students.each do |user|
-          
-        = f.fields_for :members_in_courses do |members|
-          = "1"
-
+        = get_network_students
+        = get_network_teachers
+        = get_network_managers
 
   %br/
   %br/
