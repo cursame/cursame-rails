@@ -1,7 +1,7 @@
 # coding: utf-8
 module NetworksUtils
 
-  def network_students(flag)
+  def network_students(flag=false)
   	if flag
     	current_network.users.keep_if {|user| user.student?}
     else
@@ -9,7 +9,7 @@ module NetworksUtils
     end
   end
 
-  def network_teachers(flag)
+  def network_teachers(flag=false)
   	if flag
   		current_network.users.keep_if {|user| user.teacher?}
   	else
@@ -17,7 +17,7 @@ module NetworksUtils
   	end
   end
 
-  def network_managers(flag)
+  def network_managers(flag=false)
   	if flag
     	current_network.users.keep_if {|user| user.admin?}
     else
