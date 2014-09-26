@@ -1,7 +1,7 @@
 <span class="meta-info">Filtrar: &nbsp;</span>
 <select class="select-redirect" style="width: 180px;">
   <option value="all">Todos los cursos</option>
-  <% courses = (current_user.admin? ? current_network.courses : teacher_courses ) %>
+  <% courses = (current_user.admin? ? published_courses : teacher_courses ) %>
   <% courses.each do |course|%>
     <option value="<%= evaluate_course_path(course.id) %>"><%= course.title %></option>
   <% end %>

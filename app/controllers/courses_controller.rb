@@ -15,13 +15,11 @@ class CoursesController < ApplicationController
     #   @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     # end
 
-    puts "DEBUG: #{current_role}"
-
     case current_role
     when 'superadmin'
-      @courses = Course.where(:network_id => current_network.id).paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+      @courses = published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     when 'admin'
-      @courses = Course.where(:network_id => current_user.networks.first.id).paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+      @courses = published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     when 'teacher'
       @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     else # 'student'
@@ -55,6 +53,8 @@ class CoursesController < ApplicationController
   def unpublished
     @member = MembersInCourse.new
     @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+
+    @courses = unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1) if current_user.admin?
 
     respond_to do |format|
       format.html { render 'courses/unpublished_courses' }
@@ -946,10 +946,18 @@ class CoursesController < ApplicationController
         Notification.create(:users => [member], :notificator => @course, :kind => 'course_deactivated')
       end
 
-      if @course.active_status
-        redirect_to(course_path(@course), flash: { success: "Tu curso #{@course.title} se activo correctamente." }) and return
+      if current_user.admin?
+        message_active_status_true = "El curso #{@course.title} se activo correctamente."
+        message_active_status_false = "El curso #{@course.title} se finalizo correctamente."
       else
-        redirect_to(courses_unpublished_path, flash: { notice: "Tu curso #{@course.title} se finalizo correctamente." }) and return
+        message_active_status_true = "Tu curso #{@course.title} se activo correctamente."
+        message_active_status_false = "Tu curso #{@course.title} se finalizo correctamente."
+      end
+
+      if @course.active_status
+        redirect_to(course_path(@course), flash: { success: message_active_status_true }) and return
+      else
+        redirect_to(courses_unpublished_path, flash: { notice: message_active_status_false }) and return
       end
     end
   end
