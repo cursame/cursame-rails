@@ -273,4 +273,36 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def update_members (users, owner=false)
+
+    current_members = MembersInCourse.find_all_by_course_id (self.id)
+    current_members.reject! do |member|
+      member.owner != owner
+    end
+
+    current_members.each do |member|
+      unless users.include? member.user
+        member.accepted = false
+        member.save!
+      end
+    end
+
+    users.each do |user|
+      member = MembersInCourse.find_by_user_id_and_course_id(user.id,self.id)
+      if member.nil?
+        member = MembersInCourse.new
+        member.owner = owner
+        member.course = self
+        member.user = user
+        member.network_id = self.network_id
+        member.accepted = true
+        member.save!
+      else
+        member.accepted = true
+        member.save!
+      end
+    end
+
+  end
+
 end
