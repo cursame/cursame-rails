@@ -60,12 +60,14 @@
         </li>
         <li>
           <%= link_to network_comunity_path, :data => "menu" do %>
-            <%= icon 'community-w' %>Comunidad
+            <%= icon 'community-w' %> Comunidad
           <% end %>
         </li>
         <% if !current_network.find_setting(:vlex_sso).nil? && current_network.find_setting(:vlex_sso).value == 't' %>
           <li>
-            <%= link_to "vLex", vlex_remote_auth, target: '_blank' %>
+            <%= link_to vlex_remote_auth, target: '_blank' do %>
+              <%= icon 'vlex' %> vLex
+            <% end %>
           </li>
         <% end %>
         <li class="chat-link">

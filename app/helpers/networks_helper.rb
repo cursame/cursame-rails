@@ -26,15 +26,15 @@ module NetworksHelper
     "http://vlex.com/session/remote_auth?#{params.to_query}"
   end
 
-  def get_network_students
-    return network_students
+  def get_network_students (flag=false)
+    return network_students (flag)
   end
 
-  def get_network_teachers
-    return network_teachers
+  def get_network_teachers (flag=false)
+    return network_teachers (flag)
   end
 
-  def get_network_managers
-    return network_managers
+  def get_network_managers (flag=false)
+    return network_managers (flag)
   end
 end

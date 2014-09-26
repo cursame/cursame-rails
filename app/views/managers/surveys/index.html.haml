@@ -1,0 +1,29 @@
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Cuestionarios
+        %table.data-table
+          %thead
+            %tr
+              %th Nombre
+              %th Estado
+              %th Fecha de creación
+              %th Fecha de finalización
+              %th Curso
+              %th Usuario
+              %th 
+          %tbody
+            - @surveys.each do |survey| 
+              %tr
+                %td= link_to survey.title, managers_survey_path(survey)
+                %td= survey.state == "published" ? "Publicada" : "Sin Publicar"
+                %td= survey.created_at
+                %td= survey.end_date
+                %td= link_to survey.courses.first.title, managers_course_path(survey.courses.first)
+                %td= link_to survey.user, managers_user_path(survey.user)
+                %td
+                  = link_to 'Ver', managers_survey_path(survey), class: 'btn btn-small btn-secondary'
+                  = link_to 'Borrar', managers_survey_path(survey), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar este cuestionario.'

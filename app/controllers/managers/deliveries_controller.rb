@@ -3,7 +3,11 @@ class Managers::DeliveriesController < Managers::BaseController
     @deliveries = Delivery.all
   end
 
-  def new
-    @delivery = Delivery.new
+  def show
+    @delivery = Delivery.find_by_id params[:id]
+  end
+
+  def destroy
+    redirect_to managers_deliveries_path, flash: { success: 'Tarea borrada correctamente.' }
   end
 end
