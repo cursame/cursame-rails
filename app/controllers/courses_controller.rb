@@ -124,6 +124,8 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
 
+    redirect_to root_path, flash: { error: "El curso que intentas ver no existe o ha sido borrado"} and return if current_network.id != @course.network_id 
+
     if @member.nil?
       # redirect_to :back
       redirect_to_back_or_default
@@ -565,7 +567,7 @@ class CoursesController < ApplicationController
     simple.push({
                   startDate: @course.created_at,
                   endDate: @course.created_at,
-                  headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+                  headline:("Has agregado el curso #{@course.title} al panel de cursos").delete("\n"),
                   text:"Curso nuevo",
     })
 
