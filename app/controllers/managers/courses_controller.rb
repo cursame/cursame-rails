@@ -14,6 +14,7 @@ class Managers::CoursesController < Managers::BaseController
   def create
     @course = Course.new(params[:course])
     @course.network = current_network
+
     respond_to do |format|
       if @course.save
         event_data = {
@@ -23,33 +24,17 @@ class Managers::CoursesController < Managers::BaseController
         }
         track_event current_user.id, 'Courses', event_data
 
-        teachers = params["teachers"]
-        unless teachers.nil? then 
-          teachers.each do |teacher|
-            @member = MembersInCourse.new
-            @member.user_id = teacher.first.to_i
-            @member.course_id  =  @course.id
-            @member.accepted   = true
-            @member.owner      = true
-            @member.network_id = current_network.id
-            @member.title      = @course.title
-            @member.save
-          end
+        teachers = []
+        params["teachers"].each do |teacher|
+          teachers.push User.find (teacher.first.to_i)
         end
+        @course.update_members teachers, true
 
-        students = params["students"]
-        unless students.nil? then 
-          students.each do |student|
-            @member = MembersInCourse.new
-            @member.user_id    = student.first.to_i
-            @member.course_id  =  @course.id
-            @member.accepted   = true
-            @member.owner      = false
-            @member.network_id = current_network.id
-            @member.title      = @course.title
-            @member.save
-          end
+        students = []
+        params["students"].each do |student|
+          students.push User.find (student.first.to_i)
         end
+        @course.update_members students, false
 
         # @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         # @az =  @course
@@ -68,7 +53,7 @@ class Managers::CoursesController < Managers::BaseController
         # end
 
         # redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
-        redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' }
+        redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' } and return
       else
         format.html { redirect_to :back }
       end
@@ -81,7 +66,37 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def update
-    redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' }
+    @course = Course.find(params[:id])
+    @course.network = current_network
+    respond_to do |format|
+      if @course.update_attributes(params[:course])
+        teachers = []
+        params["teachers"].each do |teacher|
+          teachers.push User.find (teacher.first.to_i)
+        end
+        @course.update_members teachers, true
+
+        students = []
+        params["students"].each do |student|
+          students.push User.find (student.first.to_i)
+        end
+        @course.update_members students, false
+        
+        @last_date = @course.init_date
+        if @last_date  == nil
+          @last_date =  @idate
+        end
+        if @last_end_date == nil
+          @last_end_date = @fdate
+        end
+        @course.init_date = @last_date
+        @course.save
+        redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' } and return
+      else
+        format.html { redirect_to :back }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

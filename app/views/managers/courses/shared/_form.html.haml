@@ -1,5 +1,3 @@
-- unless @course.nil? then members = MembersInCourse.find_all_by_course_id(@course.id) end
-
 = form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
   .form-group.label-on-top.l-label
     .form-group-label
@@ -35,7 +33,8 @@
     .form-group-main
       .form-unit
         - get_network_teachers(true).each do |teacher|
-          = check_box_tag("teachers["+teacher.id.to_s+"]")
+          - member = MembersInCourse.find_by_user_id_and_course_id(teacher.id, @course.id) unless @course.nil?
+          = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
           = label_tag("teacher", teacher.last_name + " " + teacher.first_name)
           %br
 
@@ -45,7 +44,8 @@
     .form-group-main
       .form-unit
         - get_network_students.each do |student|
-          = check_box_tag("students["+student.id.to_s+"]")
+          - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) unless @course.nil?
+          = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
           = label_tag("student", student.last_name + " " + student.first_name)
           %br
 
