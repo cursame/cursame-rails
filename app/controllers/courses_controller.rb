@@ -15,7 +15,11 @@ class CoursesController < ApplicationController
     #   @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     # end
 
+    puts "DEBUG: #{current_role}"
+
     case current_role
+    when 'superadmin'
+      @courses = Course.where(:network_id => current_network.id).paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     when 'admin'
       @courses = Course.where(:network_id => current_user.networks.first.id).paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     when 'teacher'

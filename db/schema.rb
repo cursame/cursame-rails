@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140903221234) do
+ActiveRecord::Schema.define(:version => 20140910205133) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -150,17 +150,6 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
-  create_table "compart_assets", :force => true do |t|
-    t.string   "asset"
-    t.integer  "asset_id"
-    t.integer  "delivery_id"
-    t.integer  "assignment_id"
-    t.integer  "comment_id"
-    t.integer  "question_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
 
   create_table "contents", :force => true do |t|
     t.string   "contentye_type"
@@ -414,12 +403,18 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.text     "mesage_html"
   end
 
-  create_table "network_settings", :force => true do |t|
-    t.integer  "network_id"
-    t.string   "property"
-    t.string   "value"
+  create_table "network_properties", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "network_settings", :force => true do |t|
+    t.integer  "network_id"
+    t.string   "value"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "property_field"
   end
 
   create_table "networks", :force => true do |t|

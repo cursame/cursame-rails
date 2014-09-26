@@ -7,7 +7,7 @@
     <div class="cols-12">
       <div class="col col-12">
         <div class="col-inner">
-          <%= render partial: 'courses/index/teacher_header' if (current_role === 'teacher' || current_role === 'admin') %>
+          <%= render partial: 'courses/index/teacher_header' if (current_role === 'teacher' || current_role === 'admin' || current_role === 'superadmin') %>
           <%= render partial: 'courses/index/student_header' if current_role === 'student' %>
         </div>
       </div>
@@ -15,5 +15,5 @@
   </div>
 </div>
 
-<%= render partial: 'courses/index/teacher_courses_index', locals: { courses: @courses, member: @member } if (current_role === 'teacher' || current_role === 'admin') %>
+<%= render partial: 'courses/index/teacher_courses_index', locals: { courses: @courses, member: @member } if (current_role === 'teacher' || current_role === 'admin' || current_role === 'superadmin') %>
 <%= render partial: 'courses/index/student_courses_index', locals: { courses: @courses, member: @member } if current_role === 'student' %>
