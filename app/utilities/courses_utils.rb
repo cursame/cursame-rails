@@ -37,7 +37,8 @@ module CoursesUtils
   end
 
   def network_courses_not_subscribed
-    Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true)
+    # Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true)
+    Course.where(:network_id => current_network.id, :public_status => "public",:id => operator_courses('inverse') ,:active_status => true)
   end
 
   def operator_courses(typed = 'normal')
