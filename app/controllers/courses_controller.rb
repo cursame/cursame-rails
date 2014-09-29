@@ -237,6 +237,14 @@ class CoursesController < ApplicationController
         @member.title      = @course.title
         @member.save
 
+        students = []
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members students, false
+
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         @az =  @course
         @typed = "Course"
@@ -270,6 +278,15 @@ class CoursesController < ApplicationController
     end
     respond_to do |format|
       if @course.update_attributes(params[:course])
+
+        students = []
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members students, false
+
         @last_date = @course.init_date
         if @last_date  == nil
           @last_date =  @idate

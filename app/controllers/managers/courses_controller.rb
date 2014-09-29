@@ -25,14 +25,18 @@ class Managers::CoursesController < Managers::BaseController
         track_event current_user.id, 'Courses', event_data
 
         teachers = []
-        params["teachers"].each do |teacher|
-          teachers.push User.find (teacher.first.to_i)
+        unless params["teachers"].nil? 
+          params["teachers"].each do |teacher|
+            teachers.push User.find (teacher.first.to_i)
+          end
         end
         @course.update_members teachers, true
 
         students = []
-        params["students"].each do |student|
-          students.push User.find (student.first.to_i)
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
         end
         @course.update_members students, false
 
@@ -70,18 +74,23 @@ class Managers::CoursesController < Managers::BaseController
     @course.network = current_network
     respond_to do |format|
       if @course.update_attributes(params[:course])
+
         teachers = []
-        params["teachers"].each do |teacher|
-          teachers.push User.find (teacher.first.to_i)
+        unless params["teachers"].nil? 
+          params["teachers"].each do |teacher|
+            teachers.push User.find (teacher.first.to_i)
+          end
         end
         @course.update_members teachers, true
 
         students = []
-        params["students"].each do |student|
-          students.push User.find (student.first.to_i)
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
         end
         @course.update_members students, false
-        
+
         @last_date = @course.init_date
         if @last_date  == nil
           @last_date =  @idate
@@ -100,6 +109,9 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def destroy
+    @course = Course.find_by_id(params[:id])
+    @course.destroy
+
     redirect_to managers_courses_path, flash: { success: 'Curso borrado correctamente.' }
   end
 

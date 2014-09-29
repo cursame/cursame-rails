@@ -1,12 +1,11 @@
-- if post.owner?(current_role, current_user)
-  .post-box-main-admin-actions
-    .dropdown-wrap
-      .dropdown-pull.activity-dropdown-pull
-        = icon('arrow-down-10')
-      .dropdown-v.right{style: "right: -12px;"}
-        %i.tip
-        %ul
-          %li
-            = link_to "Borrar", destroy_wall_path(wall.id, deleted_from: "#{params[:controller]}-#{params[:action]}"), remote: true, confirm: "¿Estas seguro de borrar esto?"
-          %li
-            = link_to "Editar", edit_wall_path(type: wall.publication_type, id: wall.publication_id), remote: true, class: 'edit-publication-link'
+.post-box-main-admin-actions
+  .dropdown-wrap
+    .dropdown-pull.activity-dropdown-pull
+      = icon('arrow-down-10')
+    .dropdown-v.right{style: "right: -12px;"}
+      %i.tip
+      %ul
+        %li
+          = link_to "Borrar", destroy_wall_path(wall.id, deleted_from: "#{params[:controller]}-#{params[:action]}"), remote: true, confirm: "¿Estas seguro de borrar esto?"
+        %li
+          = link_to "Editar", edit_wall_path(type: wall.publication_type, id: wall.publication_id), remote: true, class: 'edit-publication-link'
