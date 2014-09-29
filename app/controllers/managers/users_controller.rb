@@ -12,7 +12,11 @@ class Managers::UsersController < Managers::BaseController
   end
 
   def create
-    redirect_to managers_users_path, flash: { success: 'Usuario creado correctamente.' }
+    params[:user][:subdomain] = current_network.subdomain
+    params[:user][:domain] = request.domain
+    params[:user][:personal_url] = SecureRandom.uuid
+    user = User.new params[:user]
+    redirect_to managers_users_path, flash: user.save ? { success: 'Usuario creado correctamente.' } : { error: 'Ocurrio un error al crear el usuario' }
   end
 
   def edit
@@ -20,13 +24,15 @@ class Managers::UsersController < Managers::BaseController
   end
 
   def update
-    redirect_to managers_users_path, flash: { success: 'Usuario actualizado correctamente.' }
+    user = User.find_by_id params[:user][:id]
+    user.update_attributes params[:user] if !user.nil? && user.permissionings.first.network == current_network
+    redirect_to managers_users_path, flash: User.exists?(user) ? { error: 'Error al borrar el usuario' } : { success: 'Usuario borrado correctamente' }
   end
 
   def destroy
     user = User.find_by_id params[:id]
-    user.destroy if !user.nil? && user.permissionings.first.network == current_network
-    redirect_to managers_users_path, User.exists?(user) ? { error: 'Usuario borrado correctamente' } : { success: 'Usuario borrado correctamente' }
+    user.destroy if !user.nil? && user.permissionings.first.network == current_network && user != current_user
+    redirect_to managers_users_path, flash: User.exists?(user) ? { error: 'Error al borrar el usuario' } : { success: 'Usuario borrado correctamente' }
   end
 
   def import

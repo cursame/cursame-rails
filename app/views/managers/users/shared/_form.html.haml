@@ -20,6 +20,12 @@
     .form-group-main
       .form-unit
         = f.text_field :last_name, placeholder: "Apellidos", required: "required", autocomplete: "off"
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :password, 'Contraseña:'
+    .form-group-main
+      .form-unit
+        = f.password_field :password, placeholder: "Contraseña", required: "required", autocomplete: "off"
 
   .form-group.abel-on-top.l-label
     .form-group-label
