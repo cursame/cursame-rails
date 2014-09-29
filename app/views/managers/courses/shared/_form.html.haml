@@ -1,37 +1,37 @@
- = form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
-  .form-group.abel-on-top.l-label
-    .form-group-label
-      = f.label :title, 'Nombre:'
-    .form-group-main
-      .form-unit
-        = f.text_field :title, placeholder: "Ejemplo: Matemáticas I", required: true, autocomplete: "off"
+   = form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
+    .form-group.abel-on-top.l-label
+      .form-group-label
+        = f.label :title, 'Nombre:'
+      .form-group-main
+        .form-unit
+          = f.text_field :title, placeholder: "Ejemplo: Matemáticas I", required: true, autocomplete: "off"
 
-  .form-group.abel-on-top.l-label
-    .form-group-label
-      = f.label :silabus, 'Descripción:'
-    .form-group-main
-      .form-unit
-        = f.text_area :silabus, placeholder: "Descripción", required: true, autocomplete: "off", rows: 7
+    .form-group.abel-on-top.l-label
+      .form-group-label
+        = f.label :silabus, 'Descripción:'
+      .form-group-main
+        .form-unit
+          = f.text_area :silabus, placeholder: "Descripción", required: true, autocomplete: "off", rows: 7
 
-  .form-group.abel-on-top.l-label
-    .form-group-label
-      = f.label :admins, 'Administradores:'
-    .form-group-main
-      .form-unit
+    .form-group.abel-on-top.l-label
+      .form-group-label
+        = f.label :admins, 'Administradores:'
+      .form-group-main
+        .form-unit
 
-  .form-group.abel-on-top.l-label
-    .form-group-label
-      = f.label :members, 'Miembros:'
-    .form-group-main
-      .form-unit
-        = get_network_students
-        = get_network_teachers
-        = get_network_managers
+    .form-group.abel-on-top.l-label
+      .form-group-label
+        = f.label :members, 'Miembros:'
+      .form-group-main
+        .form-unit
+          = get_network_students
+          = get_network_teachers
+          = get_network_managers
 
-  %br/
-  %br/
-  %ul.list-buttons.left
-    %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
-    %li
-      %span.btn.btn-primary.input-btn.btn-medium.activable
-        = f.submit ( course.new_record? ? 'Crear Curso' : 'Guardar cambios')
+    %br/
+    %br/
+    %ul.list-buttons.left
+      %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
+      %li
+        %span.btn.btn-primary.input-btn.btn-medium.activable
+          = f.submit ( course.new_record? ? 'Crear Curso' : 'Guardar cambios')
