@@ -16,8 +16,10 @@ class CoursesController < ApplicationController
     # end
 
     case current_role
+    when 'superadmin'
+      @courses = published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     when 'admin'
-      @courses = Course.where(:network_id => current_user.networks.first.id).paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+      @courses = published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     when 'teacher'
       @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     else # 'student'
@@ -51,6 +53,8 @@ class CoursesController < ApplicationController
   def unpublished
     @member = MembersInCourse.new
     @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
+
+    @courses = unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1) if current_user.admin?
 
     respond_to do |format|
       format.html { render 'courses/unpublished_courses' }
@@ -119,6 +123,8 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
+
+    redirect_to root_path, flash: { error: "El curso que intentas ver no existe o ha sido borrado"} and return if current_network.id != @course.network_id 
 
     if @member.nil?
       # redirect_to :back
@@ -231,6 +237,14 @@ class CoursesController < ApplicationController
         @member.title      = @course.title
         @member.save
 
+        students = []
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members students, false
+
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         @az =  @course
         @typed = "Course"
@@ -264,6 +278,15 @@ class CoursesController < ApplicationController
     end
     respond_to do |format|
       if @course.update_attributes(params[:course])
+
+        students = []
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members students, false
+
         @last_date = @course.init_date
         if @last_date  == nil
           @last_date =  @idate
@@ -561,7 +584,7 @@ class CoursesController < ApplicationController
     simple.push({
                   startDate: @course.created_at,
                   endDate: @course.created_at,
-                  headline:("Has a gregado el curso #{@course.title} al panel de cursos").delete("\n"),
+                  headline:("Has agregado el curso #{@course.title} al panel de cursos").delete("\n"),
                   text:"Curso nuevo",
     })
 
@@ -942,10 +965,18 @@ class CoursesController < ApplicationController
         Notification.create(:users => [member], :notificator => @course, :kind => 'course_deactivated')
       end
 
-      if @course.active_status
-        redirect_to(course_path(@course), flash: { success: "Tu curso #{@course.title} se activo correctamente." }) and return
+      if current_user.admin?
+        message_active_status_true = "El curso #{@course.title} se activo correctamente."
+        message_active_status_false = "El curso #{@course.title} se finalizo correctamente."
       else
-        redirect_to(courses_unpublished_path, flash: { notice: "Tu curso #{@course.title} se finalizo correctamente." }) and return
+        message_active_status_true = "Tu curso #{@course.title} se activo correctamente."
+        message_active_status_false = "Tu curso #{@course.title} se finalizo correctamente."
+      end
+
+      if @course.active_status
+        redirect_to(course_path(@course), flash: { success: message_active_status_true }) and return
+      else
+        redirect_to(courses_unpublished_path, flash: { notice: message_active_status_false }) and return
       end
     end
   end

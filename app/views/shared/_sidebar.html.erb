@@ -35,7 +35,7 @@
           </li>
         <% end %>
 
-        <% if current_role == 'teacher' || current_role == 'admin' %>
+        <% if current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin' %>
           <li>
             <%= link_to evaluate_activities_path do %>
               <%= icon 'evaluate-w' %> Actividades

@@ -12,7 +12,57 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def create
-    redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' }
+    @course = Course.new(params[:course])
+    @course.network = current_network
+
+    respond_to do |format|
+      if @course.save
+        event_data = {
+          'Title'   => @course.title.capitalize,
+          'Type'    => @course.public_status.capitalize,
+          'Network' => current_network.name.capitalize
+        }
+        track_event current_user.id, 'Courses', event_data
+
+        teachers = []
+        unless params["teachers"].nil? 
+          params["teachers"].each do |teacher|
+            teachers.push User.find (teacher.first.to_i)
+          end
+        end
+        @course.update_members teachers, true
+
+        students = []
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members students, false
+
+        # @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
+        # @az =  @course
+        # @typed = "Course"
+        # activation_activity
+        # @courses = current_user.members_in_courses.limit(7)
+        # @course_count = Course.count
+        # @ccc = current_user.courses.where(:network_id => current_network.id)
+        # @count_course_iam_member = @ccc.where(:active_status => true).count
+        # @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
+
+        # if @count_course_iam_member_and_owner == 0
+        #   @miembro = MembersInCourse.where(course_id = @course.id).first
+        #   @miembro.owner == true
+        #   @miembro.save
+        # end
+
+        # redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
+        redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' } and return
+      else
+        format.html { redirect_to :back }
+      end
+    end
+    # redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' }
   end
 
   def edit
@@ -20,10 +70,48 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def update
-    redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' }
+    @course = Course.find(params[:id])
+    @course.network = current_network
+    respond_to do |format|
+      if @course.update_attributes(params[:course])
+
+        teachers = []
+        unless params["teachers"].nil? 
+          params["teachers"].each do |teacher|
+            teachers.push User.find (teacher.first.to_i)
+          end
+        end
+        @course.update_members teachers, true
+
+        students = []
+        unless params["students"].nil? 
+          params["students"].each do |student|
+            students.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members students, false
+
+        @last_date = @course.init_date
+        if @last_date  == nil
+          @last_date =  @idate
+        end
+        if @last_end_date == nil
+          @last_end_date = @fdate
+        end
+        @course.init_date = @last_date
+        @course.save
+        redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' } and return
+      else
+        format.html { redirect_to :back }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
+    @course = Course.find_by_id(params[:id])
+    @course.destroy
+
     redirect_to managers_courses_path, flash: { success: 'Curso borrado correctamente.' }
   end
 

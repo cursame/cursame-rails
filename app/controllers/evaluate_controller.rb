@@ -10,10 +10,12 @@ class EvaluateController < ApplicationController
     case current_role
     when 'teacher' 
       courses = teacher_published_courses
-    when 'admin' || 'superadmin'
+    when 'admin'
+      courses = current_network.courses
+    when 'superadmin'
       courses = current_network.courses
     else
-      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." }
+      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." } and return
     end
 
 
@@ -97,13 +99,16 @@ class EvaluateController < ApplicationController
   end
 
   def inactive
+
     case current_role
     when 'teacher' 
       courses = teacher_published_courses
-    when 'admin' || 'superadmin'
+    when 'admin'
+      courses = current_network.courses
+    when 'superadmin'
       courses = current_network.courses
     else
-      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." }
+      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." } and return
     end
 
     deliveries = courses.inject([]) do

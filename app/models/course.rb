@@ -273,4 +273,36 @@ class Course < ActiveRecord::Base
     end
   end
 
+  # Agrega al curso los usuarios pasados en el arreglo de "users", quita los que no están en ese arreglo, el segundo argumento indica si los users
+  # se agregan como propietarios del curso o solo como alumnos
+  def update_members (users, owner=false)
+
+    current_members = MembersInCourse.find_all_by_course_id (self.id)
+    current_members.reject! do |member|
+      member.owner != owner
+    end
+
+    current_members.each do |member|
+      unless users.include? member.user
+        member.destroy
+      end
+    end
+
+    users.each do |user|
+      member = MembersInCourse.find_by_user_id_and_course_id(user.id,self.id)
+      if member.nil?
+        member = MembersInCourse.new
+        member.owner = owner
+        member.course = self
+        member.user = user
+        member.network_id = self.network_id
+        member.accepted = true
+        member.save!
+      else
+        member.update_attribute :accepted, true
+      end
+    end
+
+  end
+
 end

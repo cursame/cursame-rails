@@ -26,15 +26,27 @@ module NetworksHelper
     "http://vlex.com/session/remote_auth?#{params.to_query}"
   end
 
-  def get_network_students
-    return network_students
+  def get_network_students (flag=false)
+    students = network_students (flag)
+    students.sort_by! do |user| 
+      user.last_name.downcase
+    end
+    return students
   end
 
-  def get_network_teachers
-    return network_teachers
+  def get_network_teachers (flag=false)
+    teachers = network_teachers (flag)
+    teachers.sort_by! do |user| 
+      user.last_name.downcase
+    end
+    return teachers
   end
 
-  def get_network_managers
-    return network_managers
+  def get_network_managers (flag=false)
+    managers = network_managers (flag)
+    managers.sort_by! do |user| 
+      user.last_name.downcase
+    end
+    return managers
   end
 end

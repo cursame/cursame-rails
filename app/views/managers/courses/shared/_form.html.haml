@@ -1,37 +1,71 @@
-   = form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
-    .form-group.abel-on-top.l-label
-      .form-group-label
-        = f.label :title, 'Nombre:'
-      .form-group-main
-        .form-unit
-          = f.text_field :title, placeholder: "Ejemplo: Matemáticas I", required: true, autocomplete: "off"
+= form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :title, 'Nombre:'
+    .form-group-main
+      .form-unit
+        = f.text_field :title, placeholder: "Ejemplo: Matemáticas I", required: true, autocomplete: "off"
 
-    .form-group.abel-on-top.l-label
-      .form-group-label
-        = f.label :silabus, 'Descripción:'
-      .form-group-main
-        .form-unit
-          = f.text_area :silabus, placeholder: "Descripción", required: true, autocomplete: "off", rows: 7
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :silabus, 'Descripción:'
+    .form-group-main
+      .form-unit
+        = f.text_area :silabus, placeholder: "Descripción", required: true, autocomplete: "off", rows: 7
 
-    .form-group.abel-on-top.l-label
-      .form-group-label
-        = f.label :admins, 'Administradores:'
-      .form-group-main
-        .form-unit
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :public_status, "Privacidad"
+    .form-group-main
+      .form-unit
+        = f.select :public_status, options_for_select([['Público','public'],['Privado','Private']])
 
-    .form-group.abel-on-top.l-label
-      .form-group-label
-        = f.label :members, 'Miembros:'
-      .form-group-main
-        .form-unit
-          = get_network_students
-          = get_network_teachers
-          = get_network_managers
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :init_date, "Fecha de Inicio"
+    .form-group-main
+      .form-unit
+        = f.text_field :init_date, :placeholder => 'Fecha inicio', :class => "date-input", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, :required => "required", :autocomplete => "off"
 
-    %br/
-    %br/
-    %ul.list-buttons.left
-      %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
-      %li
-        %span.btn.btn-primary.input-btn.btn-medium.activable
-          = f.submit ( course.new_record? ? 'Crear Curso' : 'Guardar cambios')
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :admins, 'Profesores:'
+    .form-group-main
+      .form-unit
+        - get_network_teachers(true).each do |teacher|
+          - member = MembersInCourse.find_by_user_id_and_course_id(teacher.id, @course.id) unless @course.nil?
+          = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
+          = label_tag("teacher", teacher.last_name + " " + teacher.first_name)
+          %br
+
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :members, 'Alumnos:'
+    .form-group-main
+      .form-unit
+        - get_network_students.each do |student|
+          - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) unless @course.nil?
+          = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
+          = label_tag("student", student.last_name + " " + student.first_name)
+          %br
+
+  %br/
+  %br/
+  %ul.list-buttons.left
+    %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
+    %li
+      %span.btn.btn-primary.input-btn.btn-medium.activable
+        = f.submit ( course.new_record? ? 'Crear Curso' : 'Guardar cambios')
+
+:javascript
+  $(function() {
+    $("#course_init_date" ).datepicker({
+        inline: true,
+        minDate: 0,
+        showOtherMonths: true,
+        dateFormat: 'dd/mm/yy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+    });
+
+  });
