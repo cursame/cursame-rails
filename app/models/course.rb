@@ -297,7 +297,7 @@ class Course < ActiveRecord::Base
         member.user = user
         member.network_id = self.network_id
         member.accepted = true
-        member.save!
+        member.save
       else
         member.update_attribute :accepted, true
       end

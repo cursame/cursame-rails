@@ -60,12 +60,13 @@
           </div>
           <div class="form-group-main">
             <div class="form-unit">
+              <%= hidden_field_tag "check_members", true %>
               <% get_network_students.each do |student| %>
-              <% member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) %>
-              <%= check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted) %>
-              <%= label_tag("student", student.last_name + " " +student.first_name) %>
-              <br>
-            <% end %>
+                <% member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) %>
+                <%= check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted) %>
+                <%= label_tag("student", student.last_name + " " +student.first_name) %>
+                <br>
+              <% end %>
             </div>
           </div>
         </div>

@@ -81,7 +81,7 @@ class Managers::CoursesController < Managers::BaseController
             teachers.push User.find (teacher.first.to_i)
           end
         end
-        @course.update_members teachers, true
+        @course.update_members(teachers, true) unless params["check_members"].nil?
 
         students = []
         unless params["students"].nil? 
@@ -89,7 +89,7 @@ class Managers::CoursesController < Managers::BaseController
             students.push User.find (student.first.to_i)
           end
         end
-        @course.update_members students, false
+        @course.update_members(students, false) unless params["check_members"].nil?
 
         @last_date = @course.init_date
         if @last_date  == nil
