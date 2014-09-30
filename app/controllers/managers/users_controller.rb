@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Managers::UsersController < Managers::BaseController
 
   def index
@@ -41,8 +42,13 @@ class Managers::UsersController < Managers::BaseController
   end
 
   def import_receiver
-    UserCsvWorker.perform_async(params[:file].path, current_network.subdomain)
-    redirect_to import_managers_users_path
+    logger.info "content_type: #{params[:file].content_type}"
+    if params[:file].content_type == "text/csv"
+      UserCsvWorker.perform_async(params[:file].path, current_network.subdomain, current_user.email)
+      redirect_to managers_users_path, flash: { success: 'Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación' }
+    else
+      redirect_to managers_users_path, flash: { error: 'Tipo de archivo no soportado' }
+    end
   end
 
 end
