@@ -23,7 +23,10 @@
                 %td= delivery.created_at
                 %td= delivery.end_date
                 %td= link_to delivery.courses.first.title, managers_course_path(delivery.courses.first)
-                %td= link_to delivery.user, managers_user_path(delivery.user)
+                - unless delivery.user.nil?
+                  %td= link_to delivery.user, managers_user_path(delivery.user)
+                - else
+                  %td= "No tiene usuario"
                 %td
                   = link_to 'Ver', managers_delivery_path(delivery), class: 'btn btn-small btn-secondary'
                   = link_to 'Borrar', managers_delivery_path(delivery), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar esta tarea.'
