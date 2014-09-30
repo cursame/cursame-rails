@@ -124,7 +124,7 @@ class Survey < ActiveRecord::Base
     if role == "admin" || role == "superadmin" then
       return true
     end
-    return user_id == user.id
+    return (user_id == user.id or self.courses.first.owner?(role,user))
   end
 
   def send_mail(users)
