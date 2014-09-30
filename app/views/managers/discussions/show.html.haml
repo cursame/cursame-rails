@@ -1,0 +1,46 @@
+.wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to '&#8592; Regresar'.html_safe, managers_discussions_path, class: 'btn btn-secondary'
+            %li= link_to 'Borrar', managers_discussion_path(@discussion), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar esta discusión.'
+  .cols-12
+    .col.col-12
+      .col-inner
+        .managers-section-header
+          .title
+            %h1
+              = @discussion.title
+
+  .cols-12
+    .col.col-6
+      .col-inner
+
+        %span.meta-info Fecha de Creacíon
+        %p= @discussion.created_at
+        
+        %br/
+        %span.meta-info Estado
+        %p= @discussion.state == "published" ? "Publicada" : "Sin Publicar"
+
+        %br/
+        %span.meta-info Tipo
+        %p= @discussion.evaluable ? "Evaluable" : "No Evaluable"
+
+        %br/
+        %span.meta-info Descripción
+        %p= @discussion.description
+
+        %br/
+        %span.meta-info Curso
+        %p
+          - unless @discussion.courses.empty?
+            = link_to @discussion.courses.first.title, managers_course_path(@discussion.courses.first)
+          - else
+            Publica
+
+        %br/
+        %span.meta-info Maestro
+        %p= @discussion.user
