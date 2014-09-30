@@ -20,7 +20,10 @@
                 %td
                   = link_to comment.id, managers_comment_path(comment)
                 %td
-                  = link_to comment.user.name, managers_user_path(comment.user)
+                  - unless comment.user.nil?
+                    = link_to comment.user.name, managers_user_path(comment.user)
+                  - else
+                    = "No tiene usuario"
                   %p= comment.comment
                 %td
                   - case comment.commentable_type

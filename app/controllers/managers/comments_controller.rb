@@ -1,6 +1,6 @@
 class Managers::CommentsController < Managers::BaseController
   def index
-    @comments = Comment.all
+    @comments = Comment.all.paginate(:per_page => 30, :page => 1)
   end
 
   def show
@@ -8,6 +8,9 @@ class Managers::CommentsController < Managers::BaseController
   end
 
   def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy
+
     redirect_to managers_comments_path, flash: { success: 'Comentario borrado correctamente.' }
   end
 end

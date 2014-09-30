@@ -29,7 +29,11 @@
                     = link_to discussion.courses.first.title, managers_course_path(discussion.courses.first)
                   - else
                     Publica
-                %td= link_to discussion.user, managers_user_path(discussion.user)
+                %td
+                  - unless discussion.user.nil?
+                    = link_to discussion.user, managers_user_path(discussion.user)
+                  - else
+                    = "No tiene usuario"
                 %td
                   = link_to 'Ver', managers_discussion_path(discussion), class: 'btn btn-small btn-secondary'
                   = link_to 'Borrar', managers_discussion_path(discussion), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar esta discusión.'
