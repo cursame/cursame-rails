@@ -1,0 +1,51 @@
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Comentarios
+        %table.data-table
+          %thead
+            %tr
+              %th ID
+              %th Comentario
+              %th Comentario en
+              %th Me gusta
+              %th Fecha de creación
+              %th 
+          %tbody
+            - @comments.each do |comment|
+              %tr
+                %td
+                  = link_to comment.id, managers_comment_path(comment)
+                %td
+                  - unless comment.user.nil?
+                    = link_to comment.user.name, managers_user_path(comment.user)
+                  - else
+                    = "No tiene usuario"
+                  %p= comment.comment
+                %td
+                  - case comment.commentable_type
+                    - when 'Network'
+                      Publico
+                    - when 'User'
+                      Usuario
+                    - when 'Course'
+                      Curso
+                    - when 'Comment'
+                      Comentario
+                    - when 'Discussion'
+                      Discusión
+                    - when 'Survey'
+                      Cuestionario
+                    - when 'Delivery'
+                      Tarea
+                %td= comment.likes.count
+                %td= comment.created_at
+
+                -# %td= link_to comment.courses.first.title, managers_course_path(comment.courses.first)
+                -# %td= link_to comment.user, managers_user_path(comment.user)
+                %td
+                  = link_to 'Ver', managers_comment_path(comment), class: 'btn btn-small btn-secondary'
+                  = link_to 'Borrar', managers_comment_path(comment), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar este comentario.'

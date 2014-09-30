@@ -5,7 +5,7 @@
 
 .post-box.comment{ id: post_comment.id, class: card_type, data: data_attributes }
   - if comment_type == 'Course'
-    - if commentable.owner?(current_role, current_user)
+    - if commentable.owner?(current_role, current_user) or post_comment.owner?(current_role, current_user)
       = render partial: 'shared/posts/post_admin_actions', locals: { post: post_comment, wall: wall }
   - else
     - if post_comment.owner?(current_role, current_user)

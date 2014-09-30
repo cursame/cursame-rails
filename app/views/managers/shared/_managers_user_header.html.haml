@@ -12,7 +12,13 @@
               %li
                 = link_to "Cursos", managers_courses_path, class: active_class(['index', 'import'], 'managers/courses')
               %li
-                = link_to "Publicaciones", 'managers_publications_path'
+                = link_to "Tareas", managers_deliveries_path
+              %li
+                = link_to "Cuestionarios", managers_surveys_path
+              %li
+                = link_to "Discusiones", managers_discussions_path
+              %li
+                = link_to "Comentarios", managers_comments_path
               %li
                 = link_to "Correo Masivo", managers_mailer_path
               %li

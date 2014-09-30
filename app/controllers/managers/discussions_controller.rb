@@ -10,6 +10,9 @@ class Managers::DiscussionsController < Managers::BaseController
   end
 
   def destroy
+    @discussion = Discussion.find params[:id]
+    @discussion.destroy
+    
     redirect_to managers_discussions_path, flash: { success: 'Discusión borrada correctamente.' }
   end
 end

@@ -240,10 +240,10 @@ class CoursesController < ApplicationController
         students = []
         unless params["students"].nil? 
           params["students"].each do |student|
-            students.push User.find (student.first.to_i)
+            students.push User.find(student.first.to_i)
           end
         end
-        @course.update_members students, false
+        @course.update_members(students, false) unless params["check_members"].nil?
 
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         @az =  @course
@@ -285,7 +285,8 @@ class CoursesController < ApplicationController
             students.push User.find (student.first.to_i)
           end
         end
-        @course.update_members students, false
+        @course.update_members(students, false) unless params["check_members"].nil?
+
 
         @last_date = @course.init_date
         if @last_date  == nil
