@@ -33,12 +33,8 @@ class ManagersController < ApplicationController
   end
 
   def mailer_deliver
-    users = current_network.users
-    if !users.nil? then
-      if users.size != 0 then
-        current_network.delay.send_email(current_user,users,params[:subject],params[:message])
-      end
-    end
+    confirmed_users = current_network.users.keep_if { |user| user.confirmed?}
+    current_network.delay.send_email(current_user,confirmed_users,params[:subject],params[:message]) if confirmed_users.size > 0
     redirect_to managers_mailer_path, flash: { success: 'Su correo se ha puesto en cola para enviar.' }
   end
 
