@@ -1,38 +1,37 @@
-.wrapper
-  .managers-top-actions
-    .cols-12
-      .col.col-12
-        .col-inner
-          %ul.list-buttons.left
-            %li= link_to '&#8592; Regresar'.html_safe, managers_surveys_path, class: 'btn btn-secondary'
-            %li= link_to 'Borrar', managers_survey_path(@survey), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar esta tarea.'
+.managers-top-actions
   .cols-12
-    .col.col-12
+    .col.col-12.alpha.omega
       .col-inner
-        .managers-section-header
-          .title
-            %h1
-              = @survey.title
+        %ul.list-buttons.left
+          %li= link_to '&#8592; Regresar'.html_safe, managers_surveys_path, class: 'btn btn-secondary'
+          %li= link_to 'Borrar', managers_survey_path(@survey), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar esta tarea.'
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1
+            = @survey.title
 
-  .cols-12
-    .col.col-6
-      .col-inner
+.cols-12
+  .col.col-6.alpha.omega
+    .col-inner
 
-        %span.meta-info Fecha de Creacíon
-        %p= @survey.created_at
+      %span.meta-info Fecha de Creacíon
+      %p= @survey.created_at
 
-        %br/
-        %span.meta-info Fecha de finalización
-        %p= @survey.end_date
+      %br/
+      %span.meta-info Fecha de finalización
+      %p= @survey.end_date
 
-        %br/
-        %span.meta-info Estado
-        %p= @survey.state == "published" ? "Publicada" : "Sin Publicar"
+      %br/
+      %span.meta-info Estado
+      %p= @survey.state == "published" ? "Publicada" : "Sin Publicar"
 
-        %br/
-        %span.meta-info Curso
-        %p= @survey.courses.first.title
+      %br/
+      %span.meta-info Curso
+      %p= @survey.courses.first.title
 
-        %br/
-        %span.meta-info Maestro
-        %p= @survey.user
+      %br/
+      %span.meta-info Maestro
+      %p= @survey.user

@@ -1,8 +1,4 @@
 .managers-sub-navigation
-  .wrapper
-    .cols-12
-      .col.col-12
-        .col-inner
-          %ul
-            %li
-              = link_to "Listado de Cursos", managers_courses_path, class: active_class(['index', 'show', 'edit'], 'managers/courses')
+  %ul
+    %li
+      = link_to "Listado", managers_courses_path, class: active_class(['index', 'show', 'edit'], 'managers/courses')

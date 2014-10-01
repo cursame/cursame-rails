@@ -1,8 +1,7 @@
-= render partial: 'managers/courses/shared/managers_courses_subnav'
 .wrapper
   .managers-top-actions
     .cols-12
-      .col.col-12
+      .col.col-12.alpha.omega
         .col-inner
           %ul.list-buttons.left
             %li= link_to '&#8592; Regresar'.html_safe, managers_courses_path, class: 'btn btn-secondary'
@@ -10,7 +9,7 @@
             %li= link_to 'Borrar', managers_course_path(@course), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este curso.'
 
   .cols-12
-    .col.col-6
+    .col.col-8.alpha.omega
       .col-inner
 
         %span.meta-info Fecha de Creacíon

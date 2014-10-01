@@ -2,14 +2,14 @@
 .wrapper
   .managers-top-actions
     .cols-12
-      .col.col-12
+      .col.col-12.alpha.omega
         .col-inner
           %ul.list-buttons.left
             %li= link_to '&#8592; Regresar'.html_safe, managers_users_path, class: 'btn btn-secondary'
             %li= link_to 'Editar', edit_managers_user_path(@user), class: 'btn btn-primary'
             %li= link_to 'Borrar', managers_user_path(@user), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este usuario.'
   .cols-12
-    .col.col-12
+    .col.col-12.alpha.omega
       .col-inner
         .managers-section-header
           .title
@@ -17,7 +17,7 @@
               = avatar('user', '30', "no", @user.id, "avatar", "no", "no")
               = @user.name
   .cols-12
-    .col.col-6
+    .col.col-8.alpha.omega
       .col-inner
         %span.meta-info Correo electrónico
         %p= @user.email

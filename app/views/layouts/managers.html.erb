@@ -42,7 +42,20 @@
       <% cache_expire %>
       <%= render partial: 'shared/flash', locals: { full: true } %>
       <%= render partial: 'managers/shared/managers_user_header' %>
-      <%= yield %>
+      <div class="wrapper">
+        <div class="cols-12">
+          <div class="col col-10">
+            <div class="col-inner">
+              <%= yield %>
+            </div>
+          </div>
+          <div class="col col-2">
+            <div class="col-inner">
+              <%= render partial: 'managers/shared/managers_sidebar' %>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <script>
         $(function() {

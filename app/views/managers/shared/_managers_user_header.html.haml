@@ -3,26 +3,11 @@
     .cols-12
       .col.col-12
         .col-inner
-          .managers-nav
-            %ul
-              %li
-                = link_to "Estadisticas", managers_path, class: active_class(['index'], 'managers')
-              %li
-                = link_to "Usuarios", managers_users_path, class: active_class(['index', 'import', 'show', 'edit', 'new'], 'managers/users')
-              %li
-                = link_to "Cursos", managers_courses_path, class: active_class(['index', 'import'], 'managers/courses')
-              %li
-                = link_to "Tareas", managers_deliveries_path
-              %li
-                = link_to "Cuestionarios", managers_surveys_path
-              %li
-                = link_to "Discusiones", managers_discussions_path
-              %li
-                = link_to "Comentarios", managers_comments_path
-              %li
-                = link_to "Correo Masivo", managers_mailer_path
-              %li
-                = link_to "Configuración", managers_settings_path, class: active_class('settings')
+          .managers-brand
+            = link_to managers_path do
+              = icon 'cursame-logo-white'
+          .manager-label
+            %span Administrador
           .manager-header-actions
             %ul
               %li

@@ -1,0 +1,21 @@
+.managers-sidebar
+  .shade
+  %ul.managers-nav
+    %li
+      = link_to "Estadisticas", managers_path, class: active_class(['index'], 'managers')
+    %li
+      = link_to "Usuarios", managers_users_path, class: active_class(['index', 'import', 'show', 'edit', 'new'], 'managers/users')
+    %li
+      = link_to "Cursos", managers_courses_path, class: active_class(['index', 'import'], 'managers/courses')
+    %li
+      = link_to "Tareas", managers_deliveries_path, class: active_class(['index', 'show'], 'managers/deliveries')
+    %li
+      = link_to "Cuestionarios", managers_surveys_path, class: active_class(['index', 'show'], 'managers/surveys')
+    %li
+      = link_to "Discusiones", managers_discussions_path, class: active_class(['index', 'show'], 'managers/discussions')
+    %li
+      = link_to "Comentarios", managers_comments_path, class: active_class(['index', 'show'], 'managers/comments')
+    %li
+      = link_to "Correo Masivo", managers_mailer_path, class: active_class(['mailer'], 'managers')
+    %li
+      = link_to "Configuración", managers_settings_path, class: active_class('settings')
