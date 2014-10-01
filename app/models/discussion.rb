@@ -103,7 +103,14 @@ class Discussion < ActiveRecord::Base
     if role == "admin" || role == "superadmin" then
       return true
     end
-    return user_id == user.id
+
+    if self.courses.count > 0
+      course_owner_discussion = self.courses.first.owner?(role,user)
+    else
+      course_owner_discussion = false
+    end
+
+    return (user_id == user.id or course_owner_discussion)
   end
 
   def send_mail(users)
