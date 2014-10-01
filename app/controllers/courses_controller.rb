@@ -220,14 +220,6 @@ class CoursesController < ApplicationController
     @course.network = current_network
     respond_to do |format|
       if @course.save
-
-        event_data = {
-          'Title'   => @course.title.capitalize,
-          'Type'    => @course.public_status.capitalize,
-          'Network' => current_network.name.capitalize
-        }
-        track_event current_user.id, 'Courses', event_data
-
         @member = MembersInCourse.new
         @member.user_id    = current_user.id
         @member.course_id  =  @course.id

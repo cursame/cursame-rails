@@ -12,57 +12,18 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def create
-    @course = Course.new(params[:course])
-    @course.network = current_network
+    course = Course.new(params[:course])
+    course.network = current_network
 
-    respond_to do |format|
-      if @course.save
-        event_data = {
-          'Title'   => @course.title.capitalize,
-          'Type'    => @course.public_status.capitalize,
-          'Network' => current_network.name.capitalize
-        }
-        track_event current_user.id, 'Courses', event_data
+    students = params[:students] || {}
+    teachers = params[:teachers] || {}
 
-        teachers = []
-        unless params["teachers"].nil? 
-          params["teachers"].each do |teacher|
-            teachers.push User.find (teacher.first.to_i)
-          end
-        end
-        @course.update_members teachers, true
-
-        students = []
-        unless params["students"].nil? 
-          params["students"].each do |student|
-            students.push User.find (student.first.to_i)
-          end
-        end
-        @course.update_members students, false
-
-        # @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-        # @az =  @course
-        # @typed = "Course"
-        # activation_activity
-        # @courses = current_user.members_in_courses.limit(7)
-        # @course_count = Course.count
-        # @ccc = current_user.courses.where(:network_id => current_network.id)
-        # @count_course_iam_member = @ccc.where(:active_status => true).count
-        # @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
-
-        # if @count_course_iam_member_and_owner == 0
-        #   @miembro = MembersInCourse.where(course_id = @course.id).first
-        #   @miembro.owner == true
-        #   @miembro.save
-        # end
-
-        # redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
-        redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' } and return
-      else
-        format.html { redirect_to :back }
-      end
+    user_ids = students.merge(teachers).map{|key, value| key}
+    course.members_in_courses = user_ids.map do |user_id|
+      member = User.find_by_id user_id
+      MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
     end
-    # redirect_to managers_courses_path, flash: { success: 'Curso creado correctamente.' }
+    redirect_to managers_courses_path, flash: course.save ? { success: 'Curso editado correctamente' } : { success: 'Ocurrio un error al editar el curso' }
   end
 
   def edit
@@ -70,95 +31,24 @@ class Managers::CoursesController < Managers::BaseController
   end
 
   def update
-    @course = Course.find(params[:id])
-    @course.network = current_network
-    respond_to do |format|
-      if @course.update_attributes(params[:course])
+    course = Course.find_by_id params[:id]
+    course.assign_attributes params[:course] if !course.nil? && course.network == current_network
 
-        teachers = []
-        unless params["teachers"].nil? 
-          params["teachers"].each do |teacher|
-            teachers.push User.find (teacher.first.to_i)
-          end
-        end
-        @course.update_members(teachers, true) unless params["check_members"].nil?
+    students = params[:students] || {}
+    teachers = params[:teachers] || {}
 
-        students = []
-        unless params["students"].nil? 
-          params["students"].each do |student|
-            students.push User.find (student.first.to_i)
-          end
-        end
-        @course.update_members(students, false) unless params["check_members"].nil?
-
-        @last_date = @course.init_date
-        if @last_date  == nil
-          @last_date =  @idate
-        end
-        if @last_end_date == nil
-          @last_end_date = @fdate
-        end
-        @course.init_date = @last_date
-        @course.save
-        redirect_to managers_courses_path, flash: { success: 'Curso editado correctamente.' } and return
-      else
-        format.html { redirect_to :back }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+    user_ids = students.merge(teachers).map{|key, value| key}
+    course.members_in_courses = user_ids.map do |user_id|
+      member = User.find_by_id user_id
+      MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
     end
+    redirect_to managers_courses_path, flash: course.save ? { success: 'Curso editado correctamente' } : { success: 'Ocurrio un error al editar el curso' }
   end
 
   def destroy
-    @course = Course.find_by_id(params[:id])
-    @course.destroy
-
-    redirect_to managers_courses_path, flash: { success: 'Curso borrado correctamente.' }
-  end
-
-  def import
-    @courses = current_network.courses
-  end
-
-  def import_receiver
-    network = current_network
-    user_admin = current_user
-
-    if Course.find_by_title_and_silabus("1","1").nil? then
-      course = Course.new(:title => "1", :silabus => "1")
-      course.save!
-    else
-      course = Course.find_by_title_and_silabus("1","1")
-    end
-
-    lastFile = Dir.glob("public/imports/import_courses_*").sort.last
-    if lastFile.nil? then
-      name = "import_courses_1.csv"
-    else
-      lastFile = lastFile.split("/").last
-      nameFile = lastFile[0...-4]
-      name = nameFile.succ + ".csv"
-    end
-
-    text = ""
-    begin
-      File.open(params[:file].path,'r').each do |line|
-        text += line
-      end
-
-
-      path = "public/imports/" + name
-      f = File.open(path,'w+')
-      f.write(text)
-      f.close
-
-      course.delay.import(path,network,user_admin)
-    rescue
-      @noFile = true
-    end
-
-    @courses = network.courses
-    
-    redirect_to import_managers_courses_path
+    course = Course.find_by_id(params[:id])
+    course.destroy if !course.nil? && course.network == current_network
+    redirect_to managers_courses_path, flash: Course.exists?(course) ? { error: 'Ocurrio un error al borrar el curso' } : { success: 'Curso borrado correctamente.' }
   end
 
 end

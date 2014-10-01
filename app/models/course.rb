@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
+  include TrackMixpanelEventModule
 
   has_many :members_in_courses, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -42,6 +43,7 @@ class Course < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
 
   after_create do
+    mixpanel_track_event
     if self.public_status == 'public'
       users  = self.network.users
       owners = self.members_in_courses
@@ -266,7 +268,7 @@ class Course < ActiveRecord::Base
     self.discussions.each.map { |discussions| discussions.events }.flatten
   end
 
-  # Evaluates the 
+  # Evaluates the
   def evaluate_members!
     self.members_in_courses do |member|
       meber.evaluate!
@@ -303,6 +305,15 @@ class Course < ActiveRecord::Base
       end
     end
 
+  end
+
+  private
+  def mixpanel_track_event
+    event_data = {
+      'Type'    => self.public_status.capitalize,
+      'Network' => self.network.name.capitalize
+    }
+    track_event self.id, 'Courses', event_data
   end
 
 end

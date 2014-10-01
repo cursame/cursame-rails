@@ -71,13 +71,7 @@ Cursame30Lb::Application.routes.draw do
       end
     end
 
-    resources :courses do
-      collection do
-        get 'import'
-        post 'import_receiver'
-      end
-    end
-    
+    resources :courses
     resources :deliveries, only: [ :index, :show, :destroy ]
     resources :surveys, only: [ :index, :show, :destroy ]
     resources :discussions, only: [ :index, :show, :destroy ]
