@@ -26,8 +26,8 @@
           %p= user.name
 
         %br/
-        %span.meta-info Alumnos - #{@course.users.count}
-        - @course.users.each do |member|
+        %span.meta-info Alumnos - #{@course.students.count}
+        - @course.students.each do |member|
           %p= member.name
 
         %br/
