@@ -55,25 +55,14 @@
     </div>
   <% end %>
 <% else %>
-  <% if course.public_status == "Private" %>
-    <%= form_for( member, :remote => true ) do |f| %>
-      <%= f.hidden_field :user_id,:value => current_user.id %>
-      <%= f.hidden_field :course_id, :value => course.id %>
-      <%= f.hidden_field :accepted, :value => 0 %> 
+  <%= form_for( member, :remote => true ) do |f| %>
+    <%= f.hidden_field :user_id,:value => current_user.id %>
+    <%= f.hidden_field :course_id, :value => course.id %>
+    <%= f.hidden_field :accepted, :value => 0 %> 
+    <% unless current_user.admin? %>
       <span class="btn btn-primary input-btn btn-small">
         <%= f.submit "Enviar solicitud" %>
       </span>
-    <% end %>
-  <% else %>
-    <%= form_for( member, :remote => true ) do |f| %>
-      <%= f.hidden_field :user_id,:value => current_user.id %>
-      <%= f.hidden_field :course_id, :value => course.id %>
-      <%= f.hidden_field :accepted, :value => 1 %>
-      <% unless current_user.admin? %>
-        <span class="btn btn-primary input-btn btn-small">
-          <%= f.submit "Inscribirse" %>
-        </span>
-      <% end %>
     <% end %>
   <% end %>
 <% end %>

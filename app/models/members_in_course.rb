@@ -12,9 +12,9 @@ class MembersInCourse < ActiveRecord::Base
   accepts_nested_attributes_for :members_in_course_criteria
 
   after_create do
-    # unless self.owner? && self.accepted?
-    #   Notification.create notificator: self, users: self.course.owners, kind: "user_request_membership_in_course", active: true
-    # end
+    unless self.owner? && self.accepted?
+      Notification.create notificator: self, users: self.course.owners, kind: "user_request_membership_in_course", active: true
+    end
   end
 
   after_update do
