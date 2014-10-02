@@ -1,6 +1,6 @@
 class Managers::DeliveriesController < Managers::BaseController
   def index
-    @deliveries = Delivery.all
+    @deliveries = current_network.deliveries
   end
 
   def show

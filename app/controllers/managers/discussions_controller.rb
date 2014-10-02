@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Managers::DiscussionsController < Managers::BaseController
   def index
-    @discussions = Discussion.all
+    @discussions = current_network.discussions
   end
 
   def show

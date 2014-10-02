@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Managers::SurveysController < Managers::BaseController
   def index
-    @surveys = Survey.all
+    @surveys = current_network.surveys
   end
 
   def show
