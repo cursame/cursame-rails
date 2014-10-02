@@ -35,7 +35,7 @@
           </li>
         <% end %>
 
-        <% if current_role == 'teacher' || current_role == 'admin' %>
+        <% if current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin' %>
           <li>
             <%= link_to evaluate_activities_path do %>
               <%= icon 'evaluate-w' %> Actividades
@@ -60,9 +60,16 @@
         </li>
         <li>
           <%= link_to network_comunity_path, :data => "menu" do %>
-            <%= icon 'community-w' %>Comunidad
+            <%= icon 'community-w' %> Comunidad
           <% end %>
         </li>
+        <% if !current_network.find_setting(:vlex_sso).nil? && current_network.find_setting(:vlex_sso).value == 't' %>
+          <li>
+            <%= link_to vlex_remote_auth, target: '_blank' do %>
+              <%= icon 'vlex' %> vLex
+            <% end %>
+          </li>
+        <% end %>
         <li class="chat-link">
           <%= link_to chat_path, :data => "menu" do %>
             <%= icon 'messages-w' %> Chat
@@ -121,7 +128,7 @@
     <div class="sidebar-section-main scroller s-to-f scrollbar"> 
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
-          <% if current_user.count_friendships != 0 || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
+          <% if current_user.count_friendships != 0 || current_user.admin? %>
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>

@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
 
     if current_user
 
-      permissioning = Permissioning.find_by_user_id current_user .id
+      permissioning = Permissioning.find_by_user_id current_user.id
 
       if !permissioning.nil? && permissioning.role.title == "superadmin"
         @current_network = Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase)) 
@@ -79,6 +79,10 @@ class ApplicationController < ActionController::Base
 
    return @current_network
 
+  end
+
+  def network_settings
+    return current_network.network_settings
   end
 
   def current_network?
@@ -189,10 +193,10 @@ class ApplicationController < ActionController::Base
 
     @permisos = current_user.permissionings.last
     if Role.exists?(@permisos.role_id)
-    @role = Role.find(@permisos.role_id)
-    @role.title
+      @role = Role.find(@permisos.role_id)
+      @role.title
     else
-    @role = 'student'
+      @role = 'student'
     end
    
   end
@@ -643,11 +647,12 @@ class ApplicationController < ActionController::Base
 
   def chat_online_users
     if current_user
-      role_id = current_user.permissionings.first.role_id
-      if role_id == 1
+      # role_id = current_user.permissionings.first.role_id
+      case current_role
+      when 'admin'
         @friends_online = current_user.permissionings.first.network.users.compact
         @courses_online = Course.where(:network_id => current_user.permissionings.first.network.id)
-      elsif role_id == 4
+      when 'superadmin'
         @friends_online = current_network.users.compact
         @courses_online = Course.where(:network_id => current_network.id)
       else
@@ -655,6 +660,14 @@ class ApplicationController < ActionController::Base
         @courses_online = current_user.courses
       end
       @show_chat_panel = true
+
+      @friends_online.reject! do |user|
+        user == current_user
+      end
+      
+      @friends_online.sort_by! do 
+        |user| [user.online ? 0 : 1, user.first_name.downcase]
+      end
     end
   end
 
@@ -680,6 +693,15 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { locale: I18n.locale }
+  end
+
+  # TODO: Es preferible utilizar este método en lugar de redirect_to :back,
+  # podría ser buena idea cambar todos por este
+  # Metodo auxiliar para utilizar redirect_to :back de una manera más segura
+  def redirect_to_back_or_default(default = root_path, *options)
+    tag_options = {}
+    options.first.each { |k,v| tag_options[k] = v } unless options.empty?
+    redirect_to (request.referer.present? ? :back : default), tag_options
   end
 
 end

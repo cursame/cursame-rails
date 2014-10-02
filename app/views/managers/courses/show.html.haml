@@ -1,0 +1,47 @@
+.wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12.alpha.omega
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to '&#8592; Regresar'.html_safe, managers_courses_path, class: 'btn btn-secondary'
+            %li= link_to 'Editar', edit_managers_course_path(@course), class: 'btn btn-primary'
+            %li= link_to 'Borrar', managers_course_path(@course), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este curso.'
+
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+
+        %span.meta-info Fecha de Creacíon
+        %p= @course.created_at
+
+        %br/
+        %span.meta-info Descripción
+        %p= @course.silabus
+
+        %br/
+        %span.meta-info Administradores
+        - @course.owners.each do |user|
+          %p= user.name
+
+        %br/
+        %span.meta-info Alumnos - #{@course.students.count}
+        - @course.students.each do |member|
+          %p= member.name
+
+        %br/
+        %span.meta-info Comentarios
+        %p= @course.comments.count
+
+        %br/
+        %span.meta-info Tareas
+        %p= @course.deliveries.count
+
+        %br/
+        %span.meta-info Cuestionarios
+        %p= @course.surveys.count
+
+        %br/
+        %span.meta-info Archivos
+        - @course.course_files.each do |file|
+          %p= file.attributes['file']

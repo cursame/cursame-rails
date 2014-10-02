@@ -4,7 +4,7 @@
   <div class="cols-12">
     <div class="col col-12">
       <div class="col-inner">        
-        <% if filter_friendship %>
+        <% if filter_friendship or current_user.admin? %>
           <div id="box-stream-post">
             <div id="pk_menu">
               <%=render :partial => 'shared/post_menu', :locals => { :in_form => 'user' } %>

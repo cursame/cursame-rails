@@ -1,0 +1,65 @@
+= render partial: 'managers/users/shared/managers_users_subnav'
+.wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12.alpha.omega
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to '&#8592; Regresar'.html_safe, managers_users_path, class: 'btn btn-secondary'
+            %li= link_to 'Editar', edit_managers_user_path(@user), class: 'btn btn-primary'
+            %li= link_to 'Borrar', managers_user_path(@user), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este usuario.'
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1
+              = avatar('user', '30', "no", @user.id, "avatar", "no", "no")
+              = @user.name
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        %span.meta-info Correo electrónico
+        %p= @user.email
+
+        - permissioning = Permissioning.find_by_user_id_and_network_id(@user.id, current_network.id)
+        - role = Role.find(permissioning.role_id)
+        - case role.title
+        - when 'student' then role_name = 'Estudiante'
+        - when 'teacher' then role_name = 'Profesor'
+        - when 'admin' then role_name = 'Administrador'
+        - when 'superadmin' then role_name = 'Super Administrador'
+        - when 'supervisor' then role_name = 'Supervisor'
+
+        %br/
+        %span.meta-info Tipo de usuario
+        %p= role_name
+
+        %br/
+        %span.meta-info Biografia
+        %p= @user.description? ? @user.description : "Si información"
+
+        %br/
+        %span.meta-info Facebook
+        %p= @user.facebook_link? ? @user.facebook_link : "Si información"
+
+        %br/
+        %span.meta-info Twitter
+        %p= @user.twitter_link? ? @user.twitter_link : "Si información"
+
+        %br/
+        %span.meta-info Ultimo inicio de sesión
+        %p= @user.last_sign_in_at
+
+        %br/
+        
+        - if @user.student?
+          %span.meta-info Tareas entregadas
+          %p= @user.assignments.count
+
+          %br/
+          %span.meta-info Cuestionarios contestados
+          %p= @user.user_surveys.count
+
+          %br/
+          %span.meta-info Participación en discusiones evaluables

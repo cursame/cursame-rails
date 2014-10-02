@@ -6,7 +6,18 @@ class EvaluateController < ApplicationController
   before_filter :only_teachers
 
   def index
-    courses = teacher_published_courses
+
+    case current_role
+    when 'teacher' 
+      courses = teacher_published_courses
+    when 'admin'
+      courses = current_network.courses
+    when 'superadmin'
+      courses = current_network.courses
+    else
+      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." } and return
+    end
+
 
     deliveries = courses.inject([]) do
       |accu, course|
@@ -88,7 +99,17 @@ class EvaluateController < ApplicationController
   end
 
   def inactive
-    courses = teacher_published_courses
+
+    case current_role
+    when 'teacher' 
+      courses = teacher_published_courses
+    when 'admin'
+      courses = current_network.courses
+    when 'superadmin'
+      courses = current_network.courses
+    else
+      redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." } and return
+    end
 
     deliveries = courses.inject([]) do
       |accu, course|
@@ -150,7 +171,12 @@ class EvaluateController < ApplicationController
 
   def delivery
     @delivery = Delivery.find_by_id(params[:delivery_id])
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @delivery.owner?(current_role, current_user)
+
+    user_delivery = @delivery.user
+    course_delivery = @delivery.courses.first
+    unless user_delivery.admin? and course_delivery.owner?(current_role, current_user)
+      redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @delivery.owner?(current_role, current_user)
+    end
 
     respond_to do |format|
       format.html { render 'evaluate/deliveries/evaluate_deliveries' }
@@ -159,7 +185,12 @@ class EvaluateController < ApplicationController
 
   def delivery_response
     @assignment = Assignment.find_by_id(params[:id])
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @assignment.delivery.owner?(current_role, current_user)
+
+    user_delivery = @assignment.delivery.user
+    course_delivery = @assignment.delivery.courses.first
+    unless user_delivery.admin? and course_delivery.owner?(current_role, current_user)
+    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @assignment.delivery.owner?(current_role, current_user)
+    end
 
     unless @assignment.grade.present?
       @assignment.build_grade
@@ -176,7 +207,12 @@ class EvaluateController < ApplicationController
 
   def survey
     @survey = Survey.find_by_id(params[:survey_id])
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @survey.owner?(current_role, current_user)
+
+    user_survey = @survey.user
+    course_survey = @survey.courses.first
+    unless user_survey.admin? and course_survey.owner?(current_role, current_user)
+      redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @survey.owner?(current_role, current_user)
+    end
 
     respond_to do |format|
       format.html { render 'evaluate/surveys/evaluate_surveys' }
@@ -185,7 +221,12 @@ class EvaluateController < ApplicationController
 
   def survey_response
     @user_survey = UserSurvey.find_by_id(params[:id])
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} unless @user_survey.survey.owner?(current_role, current_user)
+
+    user_survey = @user_survey.survey.user
+    course_survey = @user_survey.survey.courses.first
+    unless user_survey.admin? and course_survey.owner?(current_role, current_user)
+      redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @user_survey.survey.owner?(current_role, current_user)
+    end
 
     respond_to do |format|
       format.html { render 'evaluate/surveys/survey_user_response' }
@@ -210,7 +251,13 @@ class EvaluateController < ApplicationController
   def discussion
     @discussion = Discussion.find_by_id(params[:discussion_id])
     redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
-    redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion.owner?(current_role, current_user)
+
+    user_discussion = @discussion.user
+    course_discussion = @discussion.courses.first    
+    unless user_discussion.admin? and course_discussion.owner?(current_role, current_user) #profesor puede ver discusiones creadas por el admin de red
+      redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion.owner?(current_role, current_user)
+    end
+
     redirect_to root_path, flash: { error: "La discusión que intentas ver no es calificable."} and return unless @discussion.evaluable
 
     respond_to do |format|
@@ -220,6 +267,12 @@ class EvaluateController < ApplicationController
 
   def discussion_response
     @discussion_response = DiscussionResponse.find_by_id(params[:id])
+
+    user_discussion = @discussion_response.discussion.user
+    course_discussion = @discussion_response.discussion.courses.first
+    unless user_discussion.admin? and course_discussion.owner?(current_role, current_user) #profesor puede ver discussion-response de discusiones creadas por el admin de red
+      redirect_to root_path, flash: { error: "Estas tratando de ver una actividad que no te pertenece."} and return unless @discussion_response.discussion.owner?(current_role, current_user)
+    end
 
     unless @discussion_response.grade.present?
       @discussion_response.build_grade

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
+  include TrackMixpanelEventModule
 
   has_many :members_in_courses, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -42,6 +43,7 @@ class Course < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
 
   after_create do
+    mixpanel_track_event
     if self.public_status == 'public'
       users  = self.network.users
       owners = self.members_in_courses
@@ -266,11 +268,52 @@ class Course < ActiveRecord::Base
     self.discussions.each.map { |discussions| discussions.events }.flatten
   end
 
-  # Evaluates the 
+  # Evaluates the
   def evaluate_members!
     self.members_in_courses do |member|
       meber.evaluate!
     end
+  end
+
+  # Agrega al curso los usuarios pasados en el arreglo de "users", quita los que no están en ese arreglo, el segundo argumento indica si los users
+  # se agregan como propietarios del curso o solo como alumnos
+  def update_members (users, owner=false)
+
+    current_members = MembersInCourse.find_all_by_course_id (self.id)
+    current_members.reject! do |member|
+      member.owner != owner
+    end
+
+    current_members.each do |member|
+      unless users.include? member.user
+        member.destroy
+      end
+    end
+
+    users.each do |user|
+      member = MembersInCourse.find_by_user_id_and_course_id(user.id,self.id)
+      if member.nil?
+        member = MembersInCourse.new
+        member.owner = owner
+        member.course = self
+        member.user = user
+        member.network_id = self.network_id
+        member.accepted = true
+        member.save
+      else
+        member.update_attribute :accepted, true
+      end
+    end
+
+  end
+
+  private
+  def mixpanel_track_event
+    event_data = {
+      'Type'    => self.public_status.capitalize,
+      'Network' => self.network.name.capitalize
+    }
+    track_event self.id, 'Courses', event_data
   end
 
 end

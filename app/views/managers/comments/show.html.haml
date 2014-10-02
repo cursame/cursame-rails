@@ -1,0 +1,49 @@
+.managers-top-actions
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        %ul.list-buttons.left
+          %li= link_to '&#8592; Regresar'.html_safe, managers_comments_path, class: 'btn btn-secondary'
+          %li= link_to 'Borrar', managers_comment_path(@comment), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este comentario.'
+
+.cols-12
+  .col.col-8.alpha.omega
+    .col-inner
+
+      %span.meta-info ID
+      %p= @comment.id
+
+      %br/
+      %span.meta-info Autor
+      %p= link_to @comment.user.name, managers_user_path(@comment.user)
+
+      %br/
+      %span.meta-info Fecha de Creacíon
+      %p= @comment.created_at
+
+      %br/
+      %span.meta-info Comentario
+      %p= @comment.comment
+
+      %br/
+      %span.meta-info Comentario en
+      %p
+        - case @comment.commentable_type
+          - when 'Network'
+            Publico
+          - when 'User'
+            Usuario
+          - when 'Course'
+            Curso
+          - when 'Comment'
+            Comentario
+          - when 'Discussion'
+            Discusión
+          - when 'Survey'
+            Cuestionario
+          - when 'Delivery'
+            Tarea
+
+      %br/
+      %span.meta-info Me Gusta
+      %p= @comment.likes.count

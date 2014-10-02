@@ -204,6 +204,14 @@ class Comment < ActiveRecord::Base
       return true if user_id == user.id
       return false
     end
+
+    if commentable_type == 'Discussion' and commentable.courses.count > 0
+      return (commentable.courses.first.owner?(role,user) or commentable.owner?(role,user))
+    end
+    if commentable_type == 'Delivery' or commentable_type == 'Survey'
+      return (commentable.courses.first.owner?(role,user) or commentable.owner?(role,user))
+    end
+
     return commentable.owner?(role,user)
   end
 

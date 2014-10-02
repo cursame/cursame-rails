@@ -90,8 +90,6 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find_by_id params[:id]
 
-    @assignment.update_attributes params[:assignment]
-
     if @assignment.update_attributes params[:assignment]
       Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_accomplishment_on_assignment'
       the_flash = { success: "Se ha calificado correctamente la tarea." }

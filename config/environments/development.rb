@@ -43,7 +43,6 @@ Cursame30Lb::Application.configure do
   config.action_mailer.delivery_method = :sendmail
   #roles
   config.gem "declarative_authorization", :source => "http://gemcutter.org"
-
   config.action_mailer.delivery_method = :ses
 
 end

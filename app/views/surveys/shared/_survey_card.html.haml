@@ -6,7 +6,8 @@
 
 .post-box.survey.academic{ id: survey.id, class: card_type, data: data_attributes }
   - if wall
-    = render partial: 'shared/posts/post_admin_actions', locals: { post: survey, wall: wall }
+    - if survey.owner?(current_role, current_user) or survey.courses.first.owner?(current_role, current_user)
+      = render partial: 'shared/posts/post_admin_actions', locals: { post: survey, wall: wall }
   .post-box-main
     - unless card_type == :standalone
       .post-box-main-author

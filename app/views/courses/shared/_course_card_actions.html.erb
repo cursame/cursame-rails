@@ -1,6 +1,6 @@
 <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
-<% if @correspond %>
-  <% if @correspond.accepted && @correspond.owner %>
+<% if current_user.admin? || @correspond %>
+  <% if current_user.admin? || (@correspond.accepted && @correspond.owner) %>
     <div class="dropdown-wrap">
       <div class="dropdown-pull btn btn-secondary btn-small">
         <%= icon 'drop-arrow' %>
@@ -31,8 +31,7 @@
         </ul>
       </div>
     </div>
-  <% end %>
-  <% if @correspond.accepted && ! @correspond.owner %>
+  <% elsif @correspond.accepted && ! @correspond.owner and course.public_status === 'public'%>
     <div class="dropdown-wrap">
       <div class="dropdown-pull btn btn-secondary btn-small">
         Estás inscrito <%= icon 'drop-arrow' %>
@@ -50,29 +49,19 @@
         </ul>
       </div>
     </div>
-  <% end %>
-  <% if ! @correspond.accepted %>
+  <% elsif ! @correspond.accepted %>
     <div class="btn btn-disabled btn-small">
       Solicitud enviada
     </div>
   <% end %>
 <% else %>
-  <% if course.public_status == "Private" %>
-    <%= form_for( member, :remote => true ) do |f| %>
-      <%= f.hidden_field :user_id,:value => current_user.id %>
-      <%= f.hidden_field :course_id, :value => course.id %>
-      <%= f.hidden_field :accepted, :value => 0 %> 
+  <%= form_for( member, :remote => true ) do |f| %>
+    <%= f.hidden_field :user_id,:value => current_user.id %>
+    <%= f.hidden_field :course_id, :value => course.id %>
+    <%= f.hidden_field :accepted, :value => 0 %> 
+    <% unless current_user.admin? %>
       <span class="btn btn-primary input-btn btn-small">
         <%= f.submit "Enviar solicitud" %>
-      </span>
-    <% end %>
-  <% else %>
-    <%= form_for( member, :remote => true ) do |f| %>
-      <%= f.hidden_field :user_id,:value => current_user.id %>
-      <%= f.hidden_field :course_id, :value => course.id %>
-      <%= f.hidden_field :accepted, :value => 1 %>
-      <span class="btn btn-primary input-btn btn-small">
-        <%= f.submit "Inscribirse" %>
       </span>
     <% end %>
   <% end %>

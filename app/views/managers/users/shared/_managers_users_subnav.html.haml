@@ -1,0 +1,6 @@
+.managers-sub-navigation
+  %ul
+    %li
+      = link_to "Listado", managers_users_path, class: active_class(['index', 'show', 'edit'], 'managers/users')
+    %li
+      = link_to "Importar", import_managers_users_path, class: active_class('import')

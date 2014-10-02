@@ -7,7 +7,7 @@
 <% end %>
 
 <% if request.subdomain.split(".").size != 1 %>
-	<% url = request.url %>
+  <% url = request.url %>
   <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
   <script type="text/javascript">
     window.location.href="<%= new_url %>"  // put your correct path in a string here

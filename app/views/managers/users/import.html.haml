@@ -1,0 +1,23 @@
+= render partial: 'managers/users/shared/managers_users_subnav'
+.wrapper
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Importar Usuarios
+            %p Importa los usuarios de tu comunidad desde una base de datos.
+        %p Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios. 
+        %ul
+          %li • El role puede ser estudiante o maestro.
+          %li • El email debe de ser el email del usuario.
+        %a{:href => "/plantillas/usuarios_plantilla.csv"} Descargar archivo de usuarios
+        = "NO SE ENCONTRO UN ARCHIVO" if @noFile
+        %br/
+        %br/
+        
+        = form_tag import_receiver_managers_users_path, multipart: true do
+          %label.fileContainer
+            = file_field_tag :file
+            = hidden_field_tag 'domain', request.domain
+            = submit_tag "Importar archivo de usuarios"

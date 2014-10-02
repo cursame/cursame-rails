@@ -1,0 +1,11 @@
+.wrapper
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1 Crear Curso
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        = render partial: 'managers/courses/shared/form', locals: { course: @course }

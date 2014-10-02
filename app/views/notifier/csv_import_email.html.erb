@@ -1,0 +1,39 @@
+<%= render partial: "/notifier/shared/mail_head", locals: { cursame_url: "http://#{@user.subdomain}.#{@user.domain}", no_borders: false } %>
+
+<div style="background-color: #ffffff;">
+  <table style="width: 540px;" align="center">
+    <tr>
+      <td>
+        <br>
+        <br>
+        <br>
+        <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">
+          <span style="font-size: 15px; font-weight: normal;">¡Hola <%= @user.first_name %>!</span>
+        </h1>
+        <br>
+        <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">
+          Te anexamos los resultados de la importación de usuarios:
+        </p>
+        <br/>
+        <br/>
+        <% @new_users.each do |user| %>
+          <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">
+            <% if user.errors.messages.count == 0 %>
+              <span style="color:green">Exito</span> - <span style="font-weight: bold;"><%= user.name %></span>, <span style="font-style: italic;"><%= user.email %></span>
+            <% else %>
+              <span style="color:red">¡Error!</span> - <span style="font-weight: bold;"><%= user.name %></span>, <span style="font-style: italic;"><%= user.email %></span>
+            <% end %>
+          </p>
+        <% end %>
+        <p style="font-size: 11px; color: #404040;"><br>
+        </p>
+        <br>
+        <br>
+        <br>
+        <br>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<%= render partial: "/notifier/shared/mail_footer", locals: { no_borders: false } %>

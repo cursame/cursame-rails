@@ -211,8 +211,7 @@
     <% when 'user_comment_on_user'%>
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
-        
-        <%= link_to show_user_path(notification.notificator.commentable.personal_url, search: 'Comment', id_search: notification.notificator_id) do %>
+        <%= link_to comment_path(notification.notificator) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
               <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>

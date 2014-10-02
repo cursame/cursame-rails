@@ -1,7 +1,6 @@
+# encoding: UTF-8
 class Notifier < ActionMailer::Base
-  default from: "cursa.me@cursa.me",
-          domain: "cursa.me",
-          user_name: "cursa.me"
+  default from: 'hola@cursa.me'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -136,4 +135,11 @@ class Notifier < ActionMailer::Base
     @request_demo = request_demo
     mail to:to, subject: subject
   end
+
+  def csv_import_email(email, new_users)
+    @new_users = new_users
+    @user = User.find_by_email(email)
+    mail(to: email, subject: 'Alta de usuarios')
+  end
+
 end

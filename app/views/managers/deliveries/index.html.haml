@@ -1,0 +1,31 @@
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1 Tareas
+      %table.data-table
+        %thead
+          %tr
+            %th Nombre
+            %th Estado
+            %th Fecha de creación
+            %th Fecha de finalización
+            %th Curso
+            %th Usuario
+            %th 
+        %tbody
+          - @deliveries.each do |delivery| 
+            %tr
+              %td= link_to delivery.title, managers_delivery_path(delivery)
+              %td= delivery.state == "published" ? "Publicada" : "Sin Publicar"
+              %td= delivery.created_at
+              %td= delivery.end_date
+              %td= link_to delivery.courses.first.title, managers_course_path(delivery.courses.first)
+              - unless delivery.user.nil?
+                %td= link_to delivery.user, managers_user_path(delivery.user)
+              - else
+                %td= "No tiene usuario"
+              %td
+                = link_to 'Ver', managers_delivery_path(delivery), class: 'btn btn-small btn-secondary'
+                = link_to 'Borrar', managers_delivery_path(delivery), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar esta tarea.'

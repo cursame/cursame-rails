@@ -19,12 +19,6 @@ background-white
   </div>
 </div>
 
-<% if @member.owner %>
-	<div class="wrapper ver-spaced">
-		<%= render partial: 'form', locals: { create: false } %>
-	</div>
-<% else %>
-	<div class="wrapper ver-spaced">
-	  <h2>Usted no esta autorizado para editar este curso<h2>
-  </div>
-<% end %>
+<div class="wrapper ver-spaced">
+	<%= render partial: 'form', locals: { create: false } %>
+</div>

@@ -12,7 +12,7 @@
                 <% end %>
               </div>
               <div class="section-header-actions">
-                <% unless current_user.courses.empty? %>
+                <% if !current_user.courses.empty? or current_user.admin? %>
                   <%= render partial: 'evaluate/shared/evaluate_course_filter' %>
                 <% end %>
               </div>

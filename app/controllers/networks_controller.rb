@@ -55,7 +55,13 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
-    @wall = current_network.walls.search(params[:search], params[:id]).paginate(:per_page => 10, :page => params[:page]).order('walls.created_at DESC')
+    hide_course_publications = current_network.find_setting(:hide_course_publications_in_timeline)
+    if !hide_course_publications.nil? && hide_course_publications.value = 't'
+      @wall = current_network.walls.where(public: true).paginate(per_page: 20, page: params[:page]).order('walls.created_at DESC')
+    else
+      @wall = current_network.walls.search(params[:search], params[:id]).paginate(:per_page => 20, :page => params[:page]).order('walls.created_at DESC')
+    end
+
     if request.xhr? && (params[:page].to_i > 1)
       respond_to { |format| format.js }
     else
@@ -115,7 +121,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.update_attributes(params[:network])
-        format.html { redirect_to :back, notice: 'Network was successfully updated.' }
+        format.html { redirect_to :back, flash: { success: 'Configuración guardada correctamente.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

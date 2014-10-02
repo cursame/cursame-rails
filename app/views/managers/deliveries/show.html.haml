@@ -1,0 +1,41 @@
+.managers-top-actions
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        %ul.list-buttons.left
+          %li= link_to '&#8592; Regresar'.html_safe, managers_deliveries_path, class: 'btn btn-secondary'
+          %li= link_to 'Borrar', managers_delivery_path(@delivery), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este cuestionario.'
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1
+            = @delivery.title
+
+.cols-12
+  .col.col-8.alpha.omega
+    .col-inner
+
+      %span.meta-info Fecha de Creacíon
+      %p= @delivery.created_at
+
+      %br/
+      %span.meta-info Fecha de finalización
+      %p= @delivery.end_date
+
+      %br/
+      %span.meta-info Estado
+      %p= @delivery.state == "published" ? "Publicada" : "Sin Publicar"
+
+      %br/
+      %span.meta-info Descripción
+      %p= @delivery.description
+
+      %br/
+      %span.meta-info Curso
+      %p= @delivery.courses.first.title
+
+      %br/
+      %span.meta-info Maestro
+      %p= @delivery.user

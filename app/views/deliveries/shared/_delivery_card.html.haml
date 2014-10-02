@@ -7,7 +7,8 @@
 
 .post-box.academic.delivery{id: delivery.id, class: card_type, data: data_attributes }
   - if wall
-    = render partial: 'shared/posts/post_admin_actions', locals: { post: delivery, wall: wall }
+    - if delivery.owner?(current_role, current_user) or delivery.courses.first.owner?(current_role, current_user)
+      = render partial: 'shared/posts/post_admin_actions', locals: { post: delivery, wall: wall }
   .post-box-main
     - unless card_type == :standalone
       .post-box-main-author

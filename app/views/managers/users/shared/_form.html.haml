@@ -1,0 +1,46 @@
+ 
+= form_for [:managers, user], html: { class: 'form-validate-js' } do |f|
+  = f.hidden_field :self_register, value: false
+
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :email, 'Correo electrónico:'
+    .form-group-main
+      .form-unit
+        = f.text_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off"
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :first_name, 'Nombre(s):'
+    .form-group-main
+      .form-unit
+        = f.text_field :first_name, placeholder: "Nombre(s)", required: "required", autocomplete: "off"
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :last_name, 'Apellidos:'
+    .form-group-main
+      .form-unit
+        = f.text_field :last_name, placeholder: "Apellidos", required: "required", autocomplete: "off"
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :password, 'Contraseña:'
+    .form-group-main
+      .form-unit
+        = f.password_field :password, placeholder: "Contraseña", required: "required", autocomplete: "off"
+
+  .form-group.abel-on-top.l-label
+    .form-group-label
+      = f.label :role_id, 'Tipo de usuario:'
+    .form-group-main
+      .form-unit
+        - if user.new_record?
+          - networks = user.permissionings.build
+        = f.fields_for :permissionings do |permissioning|
+          = permissioning.hidden_field :network_id, :value => current_network.id
+          = permissioning.select :role_id, options_for_select([['Administrador', '1'], ['Alumno', '2'], ['Profesor', '3']], user.permissionings.first.role_id), required: "required", autocomplete: "off"
+  %br/
+  %br/
+  %ul.list-buttons.left
+    %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
+    %li
+      %span.btn.btn-primary.input-btn.btn-medium.activable
+        = f.submit ( user.new_record? ? 'Crear Usuario' : 'Guardar cambios')
