@@ -42,7 +42,7 @@
                   <div class="dropdown-v right">
                     <i class="tip"></i>
                     <ul>
-                      <% if current_role == "admin" %>
+                      <% if current_role == "admin" || current_role == "superadmin" %>
                         <li>
                           <%= link_to "Administración", managers_path %>
                         </li>
