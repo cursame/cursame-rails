@@ -2,7 +2,7 @@
 class Managers::UsersController < Managers::BaseController
 
   def index
-    @users = current_network.users.search(params[:search]).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
+    @users = current_network.users.paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show

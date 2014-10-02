@@ -42,9 +42,8 @@
                     Tarea
               %td= comment.likes.count
               %td= comment.created_at
-
-              -# %td= link_to comment.courses.first.title, managers_course_path(comment.courses.first)
-              -# %td= link_to comment.user, managers_user_path(comment.user)
               %td
                 = link_to 'Ver', managers_comment_path(comment), class: 'btn btn-small btn-secondary'
                 = link_to 'Borrar', managers_comment_path(comment), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar este comentario.'
+      .digg_pagination.paginator
+        = will_paginate @users

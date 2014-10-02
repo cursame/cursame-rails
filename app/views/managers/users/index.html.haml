@@ -36,3 +36,5 @@
                 = link_to 'Ver', managers_user_path(user), class: 'btn btn-small btn-secondary'
                 = link_to 'Editar', edit_managers_user_path(user), class: 'btn btn-small btn-secondary'
                 = link_to 'Borrar', managers_user_path(user), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar este usuario.'
+      .digg_pagination.paginator
+        = will_paginate @users
