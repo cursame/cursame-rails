@@ -1,12 +1,11 @@
 = render partial: 'managers/users/shared/managers_users_subnav'
-.wrapper
-  .cols-12
-    .col.col-12.alpha.omega
-      .col-inner
-        .managers-section-header
-          .title
-            %h1 Editar Usuario
-  .cols-12
-    .col.col-8.alpha.omega
-      .col-inner
-        = render partial: 'managers/users/shared/form', locals: { user: @user }
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1 Editar Usuario
+.cols-12
+  .col.col-8.alpha.omega
+    .col-inner
+      = render partial: 'managers/users/shared/form', locals: { user: @user }

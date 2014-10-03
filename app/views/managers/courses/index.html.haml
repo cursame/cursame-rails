@@ -13,7 +13,7 @@
             %th Administradores
             %th Miembros
             %th Fecha de creación
-            %th 
+            %th Acciones
         %tbody
           - @courses.each do |course|
             %tr
@@ -26,8 +26,13 @@
               %td= course.users.count
               %td= course.created_at
               %td
-                = link_to 'Ver', managers_course_path(course), class: 'btn btn-small btn-secondary'
-                = link_to 'Editar', edit_managers_course_path(course), class: 'btn btn-small btn-secondary'
-                = link_to 'Borrar', managers_course_path(course), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar este curso.'
+                .dropdown-wrap.actions
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+                      %li= link_to 'Editar', edit_managers_course_path(course)
+                      %li= link_to 'Borrar', managers_course_path(course), method: :delete, confirm: 'Estas seguro de borrar este curso.'
       .digg_pagination.paginator
         = will_paginate @courses
