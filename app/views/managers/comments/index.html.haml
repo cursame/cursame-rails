@@ -12,7 +12,7 @@
             %th Comentario en
             %th Me gusta
             %th Fecha de creación
-            %th 
+            %th Acciones
         %tbody
           - @comments.each do |comment|
             %tr
@@ -43,7 +43,14 @@
               %td= comment.likes.count
               %td= comment.created_at
               %td
-                = link_to 'Ver', managers_comment_path(comment), class: 'btn btn-small btn-secondary'
-                = link_to 'Borrar', managers_comment_path(comment), class: 'btn btn-small btn-secondary', method: :delete, confirm: 'Estas seguro de borrar este comentario.'
+                .dropdown-wrap.actions
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+                      %li= link_to 'Ver', managers_comment_path(comment)
+                      %li= link_to 'Borrar', managers_comment_path(comment), method: :delete, confirm: 'Estas seguro de borrar este comentario.'
+                      
       .digg_pagination.paginator
         = will_paginate @users
