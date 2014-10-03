@@ -114,15 +114,20 @@ class UsersController < ApplicationController
   end
 
   def destroy_user_with_parts
-    @u = User.find(params[:id])
-    @u.destroy
-    @uk = MembersInCourse.where(:user_id => @u.id)
-    if @uk != nil
-      @uk.each do |uk|
-        uk.destroy
+    @user = User.find_by_id(params[:id])
+    unless @user.nil?
+      network_user = @user.networks.first
+      if current_user.id == params[:id] or (current_user.admin? and current_network == network_user)
+        @user.destroy
+        the_flash = { success: "Usuario fue borrado correctamente" } #mensaje para el admin
+      else
+        the_flash = { error: "No puedes borrar este usuario." }
       end
+    else
+      the_flash = { error: "El Usuario ya fue borrado" }
     end
-    # redirect_to root_path
+    
+    redirect_to root_path, flash: the_flash
   end
   
   def old_courses
