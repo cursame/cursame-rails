@@ -105,7 +105,7 @@ class Comment < ActiveRecord::Base
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["discussion"]
-      users = users.reject { |user| user.id == self.user.id || MembersInCourse.find_by_user_id(user.id).accepted != true }
+      users = users.reject { |user| user.id == self.user.id }
       Notification.create(:users => users, :kind => notification_kind, :notificator => self)
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]

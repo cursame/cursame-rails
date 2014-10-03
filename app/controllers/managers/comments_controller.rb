@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Managers::CommentsController < Managers::BaseController
   def index
-    @comments = current_network.comments.paginate(:per_page => 30, :page => 1)
+    @comments = current_network.comments.paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show

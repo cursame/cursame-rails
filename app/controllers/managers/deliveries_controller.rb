@@ -1,6 +1,6 @@
 class Managers::DeliveriesController < Managers::BaseController
   def index
-    @deliveries = current_network.deliveries
+    @deliveries = current_network.deliveries.paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show

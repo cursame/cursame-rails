@@ -1,6 +1,6 @@
 class Managers::CoursesController < Managers::BaseController
   def index
-    @courses = Course.where(:network_id => current_network.id)
+    @courses = Course.where(:network_id => current_network.id).paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Managers::SurveysController < Managers::BaseController
   def index
-    @surveys = current_network.surveys
+    @surveys = current_network.surveys.paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show

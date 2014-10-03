@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Managers::DiscussionsController < Managers::BaseController
   def index
-    @discussions = current_network.discussions
+    @discussions = current_network.discussions.paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show
