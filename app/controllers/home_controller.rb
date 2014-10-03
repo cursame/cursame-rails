@@ -210,7 +210,7 @@ class HomeController < ApplicationController
     when 'delivery'
       context = Delivery.find_by_id(@id)
     when 'course'
-      
+      context = Course.find_by_id(@id)
     end
     @comments = context.comments
 
