@@ -10,14 +10,10 @@ class UsersController < ApplicationController
 
   def show
     @user_l= User.find_by_personal_url(params[:personal_url])
-
-
-    network_user_l = @user_l.permissionings.first.network_id
     network_current_user = current_user.permissionings.first.network_id
 
-    if @user_l.nil? or ( network_user_l != network_current_user ) then
-      redirect_to root_path, flash: { error: "El usuario que intentas ver no existe o ha sido borrado."}
-      return
+    if @user_l.nil? or ( @user_l.permissionings.first.network_id != network_current_user )
+      redirect_to root_path, flash: { error: "El usuario que intentas ver no existe o ha sido borrado."} and return
     end
 
     #helper methods in aplication controller
@@ -98,7 +94,7 @@ class UsersController < ApplicationController
   def friends
     @user_l = User.find_by_personal_url(params[:personal_url])
     @pending = params[:pending]
-    @friends = @user_l.friends(true).reject { |u| u.roles.length == 0 }
+    @friends = @user_l.friends(true)
   end
 
   def pendding_friends
