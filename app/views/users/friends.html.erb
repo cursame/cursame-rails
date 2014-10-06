@@ -1,24 +1,25 @@
 <%= render partial: 'users/shared/user_profile_header' %>
 <%= render partial: 'users/friends/friends_subtitle', locals: { user_l: @user_l } %>
 
-<% unless @friends.empty? %>
   <div class="wrapper">
     <div class="cards-list comunity-card-list">
       <div id="friends-list-js" class="cols-12">
-        <%= render partial: 'users/shared/users_cards_list', locals: { users: @friends } %>
+        <% unless @friends.blank? %>
+          <%= render partial: 'users/shared/users_cards_list', locals: { users: @friends } %>
+        <% else %>
+          <div class="no-content-section">
+            <% if @user_l == current_user %>
+              <h4>Aún no tienes amigos.</h4>
+              <p>Busca a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path %>.</p>
+            <% else %>
+              <h4>Este usuario no tiene amigos aún.</h4>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-<% else %>
-  <div class="no-content-section">
-    <% if @user_l == current_user %>
-      <h4>Aún no tienes amigos.</h4>
-      <p>Busca a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path %>.</p>
-    <% else %>
-      <h4>Este usuario no tiene amigos aún.</h4>
-    <% end %>
-  </div>
-<% end %>
+
 <% if params[:pending] %>
 <script>$('#pending-friendship-js').trigger('click');</script>
 <% end %>
