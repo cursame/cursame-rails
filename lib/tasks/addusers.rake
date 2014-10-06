@@ -7,7 +7,7 @@ namespace :addusers do
 
     begin
       line = 0
-      CSV.foreach(ARGV[1], encoding: 'windows-1252:utf-8') do |row|
+      CSV.foreach(ARGV[1]) do |row|
         new_user = {
           :email      => row[0],
           :role       => row[1],
@@ -15,7 +15,7 @@ namespace :addusers do
           :last_name  => row[3].split.map(&:capitalize).join(' '),
           :subdomain  => row[4].downcase
         }
-        puts "e[1;32minfo:\e[0m parsing row #{new_user}"
+        puts "\e[1;32minfo:\e[0m parsing row #{new_user}"
         line += 1
         new_users << new_user
       end
@@ -45,18 +45,17 @@ namespace :addusers do
       if new_user.nil?
         puts "\e[1;32minfo:\e[0m creating user #{user_info}"
         new_user = User.create user_info
+
+        permission_info = {
+          :user_id => new_user.id,
+          :role_id => user[:role],
+          :network_id => network.id
+        }
+        puts "\e[1;32minfo:\e[0m creating permissioning #{permission_info}"
+        Permissioning.create(permission_info)
+      else
+        puts "\e[1;32minfo:\e[0m user exists: #{user_info}"
       end
-
-      permission_info = {
-        :user_id => new_user.id,
-        :role_id => user[:role],
-        :network_id => network.id
-      }
-      puts "\e[1;32minfo:\e[0m creating permissioning #{permission_info}"
-      Permissioning.create(permission_info)
-
     end
-
   end
-
 end
