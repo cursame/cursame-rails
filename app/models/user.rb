@@ -201,6 +201,10 @@ class User < ActiveRecord::Base
     return false
   end
 
+  def role_title
+    self.roles.first.title
+  end
+
   # Returns true if the user has student role.
   def student?
     return self.roles.include? Role.find_by_title 'student'

@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
+  include TrackMixpanelEventModule
 
   has_many :activities, as: :activitye
   has_many :assets, through: :discussion_assets
@@ -71,6 +72,7 @@ class Discussion < ActiveRecord::Base
         self.send_mail(users_notifications)
       end
     end
+    track_mixpanel_discussion
   end
 
   after_destroy do
@@ -127,6 +129,18 @@ class Discussion < ActiveRecord::Base
 
   def responses
     discussion_responses
+  end
+
+  private
+  def track_mixpanel_discussion
+    public_discussion = self.courses.blank?
+    event_data = {
+      'Subdomain' => self.network.subdomain,
+      'Role'      => self.user.role_title.capitalize,
+      'Course'    => public_discussion ? 'Public' : self.courses.first.title.capitalize,
+      'Evaluable' => self.evaluable? ? 'Evaluable' : 'Non-evaluable' 
+    }
+    track_event self.user.id, 'Discussion', event_data
   end
 
 end
