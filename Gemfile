@@ -78,7 +78,6 @@ gem "auto_html"
 gem 'will_paginate', "3.0.3"
 
 #gems for preoces time in background
-gem 'whenever', :require => false
 gem 'state_machine'
 
 # para notifications push

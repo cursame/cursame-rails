@@ -1,7 +1,7 @@
 class AddEvaluationCriteriumIdToResponseToEvaluation < ActiveRecord::Migration
   def change
     add_column :response_to_the_evaluations, :evaluation_criterium_id, :integer
-    add_index :response_to_the_evaluations, :evaluation_criterium_id
+    add_index :response_to_the_evaluations, :evaluation_criterium_id, name: 'criterium_index'
 
     ResponseToTheEvaluation.all.each do |response|
       assignment = Assignment.find_by_id response.feedbackable_id

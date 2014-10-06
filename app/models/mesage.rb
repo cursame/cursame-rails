@@ -1,4 +1,6 @@
 class Mesage < ActiveRecord::Base
+  include TrackMixpanelEventModule
+  
   belongs_to :user
   belongs_to :channel
 
@@ -28,56 +30,67 @@ class Mesage < ActiveRecord::Base
 
 
   after_create do
-    
+
     ###### prepramos validacion para saber de que tipo de canal se trata #####
-    
+
     split_to_name_channel = self.channel.channel_name.split('/').last
     split_type = split_to_name_channel.split('_').first
 
     case split_type
     when "course"
-         PrivatePub.publish_to(self.channel.channel_name,
-                              message: self,
-                              sender: self.user,
-                              reciever: user,
-                              channel: self.channel
-                              )
+      PrivatePub.publish_to(self.channel.channel_name,
+                            message: self,
+                            sender: self.user,
+                            reciever: user,
+                            channel: self.channel
+                            )
     when "users"
       users =  self.channel.users.reject{ |user| user.id == self.user_id }
-    # user_ids = self.user.friends(true).map{|user| [user.id,user.online] }
+      # user_ids = self.user.friends(true).map{|user| [user.id,user.online] }
 
-    if users.empty? #si no hay usuarios en el canal solo le publica a el
-      PrivatePub.publish_to(self.channel.channel_name,
-                              message: self,
-                              sender: self.user,
-                              reciever: user,
-                              channel: self.channel
-                              )
-    else     
-      users.each do |user|
-        PrivatePub.publish_to("/messages/notifications_user_"+user.id.to_s,
-                              message: self,
-                              sender: self.user,
-                              reciever: user,                              
-                              channel: self.channel
-                              )
-
+      if users.empty? #si no hay usuarios en el canal solo le publica a el
         PrivatePub.publish_to(self.channel.channel_name,
                               message: self,
                               sender: self.user,
                               reciever: user,
-                              # usersIds:user_ids,
                               channel: self.channel
                               )
+      else
+        users.each do |user|
+          PrivatePub.publish_to("/messages/notifications_user_"+user.id.to_s,
+                                message: self,
+                                sender: self.user,
+                                reciever: user,
+                                channel: self.channel
+                                )
+
+          PrivatePub.publish_to(self.channel.channel_name,
+                                message: self,
+                                sender: self.user,
+                                reciever: user,
+                                # usersIds:user_ids,
+                                channel: self.channel
+                                )
+        end
       end
-    end
 
 
     end
-
+    track_mixpanel_message
   end
 
   def title
     return ""
   end
+
+  private
+  def track_mixpanel_message
+    event_data = {
+      'Subdomain' => self.user.networks.first.subdomain,
+      'Role'      => self.user.role_title.capitalize,
+      'Type'      => self.channel.channel_type
+    }
+    track_event self.user.id, 'Message', event_data
+  end
+
 end
