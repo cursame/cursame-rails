@@ -7,6 +7,6 @@ class CreateMembersInCourseCriteria < ActiveRecord::Migration
       t.timestamps
     end
     add_index :members_in_course_criteria, :members_in_course_id
-    add_index :members_in_course_criteria, :evaluation_criterium_id
+    add_index :members_in_course_criteria, :evaluation_criterium_id, name: 'member_criterium_i'
   end
 end

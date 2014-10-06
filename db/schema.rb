@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140910205133) do
+ActiveRecord::Schema.define(:version => 20140903221234) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -170,13 +170,6 @@ ActiveRecord::Schema.define(:version => 20140910205133) do
   create_table "course_files", :force => true do |t|
     t.string   "file"
     t.boolean  "published"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "course_grades", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -372,7 +365,7 @@ ActiveRecord::Schema.define(:version => 20140910205133) do
     t.datetime "updated_at",              :null => false
   end
 
-  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "index_members_in_course_criteria_on_evaluation_criterium_id"
+  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "member_criterium_i"
   add_index "members_in_course_criteria", ["members_in_course_id"], :name => "index_members_in_course_criteria_on_members_in_course_id"
 
   create_table "members_in_courses", :force => true do |t|
@@ -403,18 +396,12 @@ ActiveRecord::Schema.define(:version => 20140910205133) do
     t.text     "mesage_html"
   end
 
-  create_table "network_properties", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "network_settings", :force => true do |t|
     t.integer  "network_id"
+    t.string   "property"
     t.string   "value"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "property_field"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "networks", :force => true do |t|
@@ -450,13 +437,6 @@ ActiveRecord::Schema.define(:version => 20140910205133) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
-  end
-
-  create_table "p_id_to_h_ids", :force => true do |t|
-    t.integer  "p_id"
-    t.integer  "h_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "permissionings", :force => true do |t|
@@ -499,15 +479,16 @@ ActiveRecord::Schema.define(:version => 20140910205133) do
   end
 
   create_table "response_to_the_evaluations", :force => true do |t|
+    t.string   "name"
     t.text     "comment_for_rubre"
     t.integer  "feedbackable_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "feedbackable_type"
-    t.integer  "evaluation_criterium"
+    t.integer  "evaluation_criterium_id"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium"], :name => "index_response_to_the_evaluations_on_evaluation_criterium"
+  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "criterium_index"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
