@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
+  include TrackMixpanelEventModule
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -134,6 +135,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  after_create do
+    track_mixpanel_user
+  end
 
   before_destroy do
     #antes de destruir un usuario borra las relaciones de padres
@@ -813,6 +817,15 @@ class User < ActiveRecord::Base
     else
       puts "No existe la red con ese subdominio"
     end
+  end
+
+  private
+  def track_mixpanel_user
+    event_data = {
+      'Subdomain' => self.networks.first.subdomain,
+      'Role'      => self.role_title.capitalize
+    }
+    track_event self.id, 'User', event_data
   end
 
 end
