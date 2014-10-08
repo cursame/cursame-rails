@@ -99,7 +99,7 @@ class UsersController < ApplicationController
 
   def pendding_friends
     @user_l = current_user
-    @friends = @user_l.friends(false)
+    @friends = @user_l.friends(false).reject { |u| u.roles.length == 0 }
 
     respond_to do |format|
       format.js

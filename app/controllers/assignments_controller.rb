@@ -11,17 +11,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # GET /assignments/1
-  # GET /assignments/1.json
-  def show
-    @assignment = Assignment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @assignment }
-    end
-  end
-
   # GET /assignments/new
   # GET /assignments/new.json
   def new
