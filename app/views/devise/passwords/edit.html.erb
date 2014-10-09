@@ -1,54 +1,58 @@
-<div class="user-sessions-wrap user-sessions-medium">
-  
-  <%= render partial: "shared/sessions/network_box_head", locals: { sign_up: false, sign_in: false } %>
-  
-  <div class="user-sessions-main">
-    <div class="user-session-content">
-      <h4>Cambia tu contraseña</h4><br>
-
-      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-
-        <%= devise_error_messages! %>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :password, "Nueva contraseña" %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.password_field :password %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-group-label">
-            <%= f.label :password_confirmation, "Confirmar contraseña" %>
-          </div>
-          <div class="form-group-main">
-            <div class="form-unit">
-              <%= f.password_field :password_confirmation %>
-            </div>
-          </div>
-        </div>
-        
-        <%= f.hidden_field :reset_password_token %>
-
-        <div class="user-sessions-footer">
-          <div class="fr">
-            <span class="btn btn-primary btn-medium input-btn">
-              <%= f.submit "Cambiar contraseña" %>
-            </span>
-          </div>
-        </div>
-
-
-      <% end %>
-
-    </div>
+<% if current_network.nil? %>
+  <%= render partial: "/shared/sessions/network_not_exist" %>
+<% else %>  
+  <div class="user-sessions-wrap user-sessions-medium">
     
-    <div class="user-session-links">
-      <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
+    <%= render partial: "shared/sessions/network_box_head", locals: { sign_up: false, sign_in: false } %>
+    
+    <div class="user-sessions-main">
+      <div class="user-session-content">
+        <h4>Cambia tu contraseña</h4><br>
+
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+
+          <%= devise_error_messages! %>
+
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :password, "Nueva contraseña" %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.password_field :password %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :password_confirmation, "Confirmar contraseña" %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.password_field :password_confirmation %>
+              </div>
+            </div>
+          </div>
+          
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="user-sessions-footer">
+            <div class="fr">
+              <span class="btn btn-primary btn-medium input-btn">
+                <%= f.submit "Cambiar contraseña" %>
+              </span>
+            </div>
+          </div>
+
+
+        <% end %>
+
+      </div>
+      
+      <div class="user-session-links">
+        <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
