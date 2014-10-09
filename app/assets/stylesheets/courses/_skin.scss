@@ -39,17 +39,25 @@
 }
 
 // Library
-.library-items-list {
-  .library-item {
-    border-bottom: 1px solid #e3e3e3;
+.library-wrap {
+  .library-items-list {
 
-    &:first-child {
+    .library-item {
       border-top: 1px solid #e3e3e3;
-    }
 
-    &:hover {
-      background: #f7f7f7;
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:hover {
+        background: #f7f7f7;
+      }
     }
+  }
+
+  .library-paginator {
+    text-align: center;
+    border-top: 1px solid #e3e3e3;
   }
 }
 
