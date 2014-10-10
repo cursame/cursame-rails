@@ -23,6 +23,7 @@ class Managers::UsersController < Managers::BaseController
 
   def edit
     @user = User.find_by_id params[:id]
+    redirect_to root_path, flash: { error: 'No puedes editar ese usuario.' } unless current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == @user.networks.last)
   end
 
   def update
