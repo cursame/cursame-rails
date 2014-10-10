@@ -1,7 +1,6 @@
-
 <% if @course_files.count == 0 %>
   $('.library-count').html('')
-  $('.library-wrap').prepend('<div class="no-content-section"><h4>Este curso no tiene archivos en su libreria.</h4></div>');
+  $('.library-wrap .body').html('<div class="no-content-section"><h4>Este curso no tiene archivos en su libreria.</h4></div>');
 <% else %>
   $('.library-count').html("<%= pluralize(@course_files.count, 'Archivo', 'Archivos') %>")
 <% end %>

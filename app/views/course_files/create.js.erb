@@ -2,7 +2,7 @@
   var libraryWrap = $('.library-wrap');
 
   libraryWrap.find('.no-content-section').remove();
-  libraryWrap.prepend('<div class="library-items-list"></div>');
+  libraryWrap.find('.body').prepend('<div class="library-items-list"></div>');
 <% end %>
 
 $('.library-count').html("<%= pluralize(@course_files.count, 'Archivo', 'Archivos') %>")

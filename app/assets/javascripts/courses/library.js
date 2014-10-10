@@ -11,8 +11,8 @@ $(document).ready(function() {
 
     $('#upload-files-to-course').fileupload({
       dataType: "script",
-      timeout:  120000,
-      add:      function(e,data) {
+      timeout: 120000,
+      add: function(e,data) {
         data.submit();
       },
       progress:function(e,data) {

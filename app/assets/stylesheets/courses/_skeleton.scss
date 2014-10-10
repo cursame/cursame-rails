@@ -51,26 +51,31 @@
 }
 
 // Library
-.library-terms {
-  margin-top: 20px;
-}
-
 .library-wrap {
   margin-bottom: 20px;
-}
 
-.library-items-list {
-  .library-item {
-    padding: 15px 5px;
-    @include clearfix;
+  .library-items-list {
+    .library-item {
+      padding: 15px 10px;
+      @include clearfix;
 
-    .library-item-icon {
-      float: left;
+      .library-item-icon {
+        float: left;
+      }
+
+      .library-item-main {
+        margin-left: 45px;
+      }
     }
+  }
 
-    .library-item-main {
-      margin-left: 45px;
-    }
+  .library-paginator {
+    padding: 8px;
+    background: #fafafa;
+  }
+
+  .library-terms {
+    margin-top: 20px;
   }
 }
 
