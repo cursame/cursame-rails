@@ -26,9 +26,12 @@ class Managers::UsersController < Managers::BaseController
   end
 
   def update
-    user = User.find_by_id params[:user][:id]
-    user.update_attributes params[:user] if !user.nil? && user.permissionings.first.network == current_network
-    redirect_to managers_users_path, flash: User.exists?(user) ? { error: 'Error al borrar el usuario' } : { success: 'Usuario borrado correctamente' }
+    user = User.find_by_id params[:user][:permissionings_attributes][:'0'][:id]
+    the_flash = { error: 'Error al editar el usuario' }
+    if !user.nil? && user.permissionings.first.network == current_network
+      the_flash = { success: 'Usuario editado correctamente' } if user.update_attributes params[:user]
+    end
+    redirect_to managers_users_path, flash: the_flash
   end
 
   def destroy
