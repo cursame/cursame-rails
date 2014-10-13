@@ -19,6 +19,7 @@ gem "watu_table_builder", :require => "table_builder"
 
 #gemas para uso de gestion de archivos
 gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
+gem 'fog'
 gem 'mime-types'
 gem 'mini_magick'
 # Gems used only for assets and not required

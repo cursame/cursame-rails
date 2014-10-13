@@ -147,6 +147,7 @@ GEM
     eventmachine (1.0.3)
     exception_notification (3.0.1)
       actionmailer (>= 3.0.4)
+    excon (0.40.0)
     execjs (2.1.0)
     extlib (0.9.16)
     faraday (0.9.0)
@@ -163,6 +164,42 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
     ffi (1.9.3)
+    fog (1.24.0)
+      fog-brightbox
+      fog-core (~> 1.23)
+      fog-json
+      fog-radosgw (>= 0.0.2)
+      fog-sakuracloud (>= 0.0.4)
+      fog-softlayer
+      ipaddress (~> 0.5)
+      nokogiri (~> 1.5, >= 1.5.11)
+    fog-brightbox (0.5.1)
+      fog-core (~> 1.22)
+      fog-json
+      inflecto
+    fog-core (1.24.0)
+      builder
+      excon (~> 0.38)
+      formatador (~> 0.2)
+      mime-types
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+    fog-json (1.0.0)
+      multi_json (~> 1.0)
+    fog-radosgw (0.0.3)
+      fog-core (>= 1.21.0)
+      fog-json
+      fog-xml (>= 0.0.1)
+    fog-sakuracloud (0.1.1)
+      fog-core
+      fog-json
+    fog-softlayer (0.3.20)
+      fog-core
+      fog-json
+    fog-xml (0.1.0)
+      fog-core
+      nokogiri (~> 1.5, >= 1.5.11)
+    formatador (0.2.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     geocoder (1.2.1)
@@ -201,9 +238,11 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.11)
+    inflecto (0.0.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    ipaddress (0.8.0)
     jbuilder (2.0.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -249,6 +288,9 @@ GEM
     multi_test (0.1.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
     nifty-generators (0.4.6)
     nokogiri (1.5.11)
     oauth (0.4.7)
@@ -437,6 +479,7 @@ DEPENDENCIES
   dropbox-api
   dropbox-sdk (~> 1.5.1)
   exception_notification (~> 3.0.1)
+  fog
   geocoder
   google-api-client
   haml-rails (~> 0.4.0)
