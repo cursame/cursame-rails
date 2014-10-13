@@ -37,8 +37,11 @@ class Managers::UsersController < Managers::BaseController
 
   def destroy
     user = User.find_by_id params[:id]
-    user.destroy if !user.nil? && user.permissionings.first.network == current_network && user != current_user
-    redirect_to managers_users_path, flash: User.exists?(user) ? { error: 'Error al borrar el usuario' } : { success: 'Usuario borrado correctamente' }
+    if current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == user.networks.last)
+      user.destroy if !user.nil? && user.permissionings.first.network == current_network && user != current_user
+      redirect_to managers_users_path, flash: User.exists?(user) ? { error: 'Error al borrar el usuario' } : { success: 'Usuario borrado correctamente' } and return    
+    end
+    redirect_to root_path, flash: { error: 'No puedes borrar este usuario.' }
   end
 
   def import
