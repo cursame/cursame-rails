@@ -1,0 +1,9 @@
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider               => 'AWS',
+    :aws_access_key_id      => 'AKIAJONIDQSVOL2ZCIVA',
+    :aws_secret_access_key  => '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'
+  }
+  config.fog_directory = 'cursame'
+  config.fog_public    = true
+end
