@@ -55,7 +55,7 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.json
   def show
-    hide_course_publications = current_network.find_setting(:hide_course_publications_in_timeline)
+    hide_course_publications = current_network.find_setting(:hide_course_publications_in_main_wall)
     if !hide_course_publications.nil? && hide_course_publications.value = 't'
       @wall = current_network.walls.where(public: true).paginate(per_page: 20, page: params[:page]).order('walls.created_at DESC')
     else
