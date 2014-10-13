@@ -1,6 +1,6 @@
 # encoding: UTF-8
 namespace :addusers do
-
+  
   task :csv => :environment do
 
     new_users = []
@@ -43,19 +43,19 @@ namespace :addusers do
 
       new_user = User.find_by_email(user[:email])
       if new_user.nil?
-        puts "\e[1;32minfo:\e[0m creating user #{user_info}"
-        new_user = User.create user_info
-
-        permission_info = {
-          :user_id => new_user.id,
-          :role_id => user[:role],
-          :network_id => network.id
-        }
-        puts "\e[1;32minfo:\e[0m creating permissioning #{permission_info}"
-        Permissioning.create(permission_info)
+        new_user = User.new(user_info)
+        permission_info = { user_id: new_user.id, role_id: user[:role], network_id: network.id }
+        new_user.permissionings.push(Permissioning.new permission_info)
+        if new_user.save
+          puts "\e[1;32minfo:\e[0m creating user #{user_info}"
+          puts "\e[1;32minfo:\e[0m creating permissioning #{permission_info}"
+        else
+          puts "\e[1;31merror:\e[0m error creating user #{user_info}"
+        end
       else
-        puts "\e[1;32minfo:\e[0m user exists: #{user_info}"
+        puts "\e[1;31merror:\e[0m user exists: #{user_info}"
       end
     end
   end
+
 end
