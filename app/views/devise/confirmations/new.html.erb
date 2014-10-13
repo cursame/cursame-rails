@@ -9,7 +9,12 @@
       	<p>Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p><br>
   				
   			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "new-cofirmation-mail-form" }) do |f| %>
-  			  <%= devise_error_messages! %>
+        
+  			  <% unless devise_error_messages!.blank? %>
+            <div class="user-session-errors">
+              <%= devise_error_messages! %>
+            </div>
+          <% end %>
 
   			  <div class="form-group no-label">
             <div class="form-group-main">

@@ -30,43 +30,41 @@
                 <%= link_to course_path(@course.id) do %>
                   <h1><%= @course.title %></h1>
                 <% end %>
-
-                <% unless header_style == :super_compact || header_style == :compact %>
-                  <% permitted_to? :create, :courses do %>
-                    <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
-                      <div class="admin-buttons">
-                        <div class="dropdown-wrap">
-                          <div class="dropdown-pull">
-                            <span class="btn btn-secondary">
-                              <%= icon 'settings-g-16' %> <%= icon 'drop-arrow' %>
-                            </span>
-                          </div>
-                          <div class="dropdown-v right">
-                            <i class="tip"></i>
-                            <ul>
-                              <li>
-                                <%= link_to 'Calificaciones finales', course_closure_path( @course ) %>
-                              </li>
-                              <li>
-                                <%= link_to "Calificar actividades", evaluate_course_path(@course) %>
-                              </li>
-                              <li>
-                                <%= link_to "Forma de evaluación", course_evaluation_schema_path( @course ) %>
-                              </li>
-                              <li>
-                                <%= link_to "Editar", edit_course_path( @course.id ) %>
-                              </li>
-                              <li>
-                                <%= link_to "Clonar", clone_course_view_path( @course ) %>
-                              </li>
-                              <li>
-                                <%= link_to @course.active_status? ? "Finalizar" : "Activar",  active_status_path(@course) %>
-                              </li>
-                            </ul>
-                          </div>
+                
+                <% permitted_to? :create, :courses do %>
+                  <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                    <div class="admin-buttons">
+                      <div class="dropdown-wrap">
+                        <div class="dropdown-pull">
+                          <span class="btn btn-secondary">
+                            <%= icon 'settings-g-16' %> <%= icon 'drop-arrow' %>
+                          </span>
+                        </div>
+                        <div class="dropdown-v right">
+                          <i class="tip"></i>
+                          <ul>
+                            <li>
+                              <%= link_to 'Calificaciones finales', course_closure_path( @course ) %>
+                            </li>
+                            <li>
+                              <%= link_to "Calificar actividades", evaluate_course_path(@course) %>
+                            </li>
+                            <li>
+                              <%= link_to "Forma de evaluación", course_evaluation_schema_path( @course ) %>
+                            </li>
+                            <li>
+                              <%= link_to "Editar", edit_course_path( @course.id ) %>
+                            </li>
+                            <li>
+                              <%= link_to "Clonar", clone_course_view_path( @course ) %>
+                            </li>
+                            <li>
+                              <%= link_to @course.active_status? ? "Finalizar" : "Activar",  active_status_path(@course) %>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                    <% end %>
+                    </div>
                   <% end %>
                 <% end %>
 

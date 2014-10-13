@@ -9,14 +9,16 @@
           <p>Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
           <%= link_to "Ir a la página principal", "/users/sign_in" %>
         <% else %>
-
-          <%= devise_error_messages! %>
-          <div id="error_message"></div>
           
           <% if request.env['PATH_INFO'] == '/teachers/sign_up' %>
             <h4>Regístrate Profesor</h4><br>
           <% else %>
             <h4>Regístrate Alumno</h4><br>
+          <% end %>
+          <% unless devise_error_messages!.blank? %>
+            <div class="user-session-errors">
+              <%= devise_error_messages! %>
+            </div>
           <% end %>
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "sign-up-form" }) do |f| %>
             <%= f.hidden_field :personal_url, :class => "pswdcode", :value => random_string_for_user_url %>

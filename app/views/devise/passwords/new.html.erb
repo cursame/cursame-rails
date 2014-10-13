@@ -9,7 +9,11 @@
     	<p>Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p><br>
 
     	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "recover-password-form" }) do |f| %>
-  			<%= devise_error_messages! %>
+        <% unless devise_error_messages!.blank? %>
+          <div class="user-session-errors">
+            <%= devise_error_messages! %>
+          </div>
+        <% end %>
 
   			<div class="form-group no-label">
           <div class="form-group-main">
