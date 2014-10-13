@@ -446,7 +446,7 @@ class ApplicationController < ActionController::Base
             #### se crea el obejto que se busca
             object = Course.find_by_id(destinate)
             #### se revisa si el objeto contiene avatar
-            if object != nil && object.avatar.file != nil && File.exist?(object.avatar.file.url)
+            if object != nil && object.avatar.file != nil
                #### si el objeto contiene un avatar se machan las diversas medidas 
                case 
                 when size == '10'
