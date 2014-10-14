@@ -37,7 +37,7 @@
           <div class="asset-box upload-label">
             <% survey.assets.each do |files|%>
               <div class="file-mini-upload publication-asset">
-                <% @string = files.filename.file.identifier %>
+                <% @string = files.filename.file.filename %>
                 <%= link_to "#{files.filename}" , :target => '_blank' do %> 
                   <%= icon('upload-asset-blue') %>
                   <%= truncate( @string, :omission => "...", :length => 72) %>
