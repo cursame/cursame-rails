@@ -1,8 +1,6 @@
 class CoverphotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :fog
-
   version :expanded do
     process :resize_to_fill => [937, 270]
   end

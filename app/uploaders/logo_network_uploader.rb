@@ -1,8 +1,6 @@
 class LogoNetworkUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :fog
-
   version :response do
     process :resize_to_fill => [44, 44]
   end

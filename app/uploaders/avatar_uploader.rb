@@ -1,8 +1,6 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :fog
-
   version :profile do
     process :resize_to_fill => [150, 150]
   end
@@ -26,7 +24,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :compress do
     process :resize_to_fill => [10, 10]
   end
-
 
   def extension_white_list
     %w(jpg jpeg gif ico png)
