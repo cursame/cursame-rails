@@ -4,7 +4,7 @@
   margin-bottom: 20px;
   
   .profile-banner {
-    height: 197px;
+    height: 250px;
     position: relative;
     margin: 0px -1px;
 
@@ -14,16 +14,75 @@
       bottom: 10px;
     }
 
+    .profile-cover-loading {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+
+      canvas {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -16px;
+        margin-top: -16px;
+      }
+    }
+
+    .update-cover-pic {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+
+      .profile-cover-upload {
+        display: block;
+        padding: 2px 6px 1px 6px;
+      }
+    }
+
     .profile-avatar {
       padding: 3px;
       position: absolute;
-      top: 20px;
+      bottom: 10px;
       left: 10px;
       width: 150px;
       height: 150px;
 
       a {
         display: block;
+        width: 150px;
+        height: 150px;
+      }
+
+      .profile-avatar-upload {
+        position: absolute; 
+        bottom: 3px;
+        left: 3px;
+        z-index: 5;
+        width: 140px;
+        padding: 5px 5px 3px 5px;
+      }
+
+      .profile-avatar-loading {
+        display: none;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        z-index: 5;
+        left: 3px;
+        top: 3px;
+        width: 150px;
+        height: 150px;
+
+        canvas {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -16px;
+          margin-top: -16px;
+        }
       }
     }
   }

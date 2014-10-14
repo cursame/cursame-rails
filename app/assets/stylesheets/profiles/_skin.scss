@@ -25,10 +25,92 @@
   .profile-banner {
     @extend .cover-banner;
 
+    .profile-cover-loading {
+      background: rgba(0,0,0,.5);
+    }
+
+    .update-cover-pic {
+      .profile-cover-upload {
+        border-radius: $radius $radius;
+        cursor: pointer;
+        border: 1px solid transparent;
+        @include transition (opacity .4s ease-in-out);
+
+        .i {
+          vertical-align: -9px;
+          @include transition (all .1s ease-in-out);
+          @include transform-origin(center center);
+        }
+
+        span {
+          color: $white;
+          font-weight: 500;
+          text-shadow: 0 1px 1px rgba(0,0,0,.5);
+          opacity: 0;
+          @include transition (opacity .1s ease-in-out);
+        }
+      }
+
+      &:hover .profile-cover-upload {
+        background: rgba(0,0,0,.6) !important;
+        border-color: $white;
+        box-shadow: 0 1px 3px rgba(0,0,0,.2);
+
+        .i {
+          @include transform(scale(.78, .78));
+        }
+
+        span {
+          opacity: 1;
+        }
+      }
+    }
+
     .profile-avatar {
       background: #fff;
-      border-radius: $radius;
+      border-radius: $radius - 1px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.18);
+
+      .profile-avatar-upload {
+        border-radius: 0 0 $radius $radius;
+        cursor: pointer;
+        @include transition (background .1s ease-in-out);
+        
+        span {
+          color: $white;
+          font-weight: 500;
+          text-shadow: 0 1px 1px rgba(0,0,0,.5);
+          opacity: 0;
+          @include transition (opacity .1s ease-in-out);
+        }
+
+        .i {
+          vertical-align: -9px;
+          @include transition (all .1s ease-in-out);
+          @include transform-origin(center center);
+        }
+
+        &:hover {
+          background: rgba(0,0,0,.8) !important;
+
+          .i {
+            @include transform(scale(.78, .78));
+          }
+        }
+      }
+
+      .profile-avatar-loading {
+        border-radius: $radius;
+        background: rgba(0,0,0,.5);
+      }
+
+      &:hover .profile-avatar-upload {
+        background: rgba(0,0,0,.5);
+
+        span {
+          opacity: 1;
+        }
+      }
     }
   }
 }

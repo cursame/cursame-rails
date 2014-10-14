@@ -84,13 +84,13 @@
       <h3><%= current_network.courses_tag %></h3>
     </div>
     <div class="sidebar-section-main scroller s-to-f scrollbar">
-      <ul class="section-list side-courses">
+      <ul class="section-list side-courses user-courses-js">
         <% unless current_user_courses.empty? %>
           <% courses = current_user_courses if is_teacher %>
           <% courses = student_courses if is_student %>
           <% courses.each do |course| %>
             <li>
-              <%= link_to course_path(course.id) do %>
+              <%= link_to course_path(course.id), id: course.id do %>
                 <%= avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no") %>
                 <%= truncate(course.title, omission: "...", length: 22) %>
               <% end %>
@@ -156,11 +156,11 @@
         </div>
         
         <div id="chat-group-courses" class="tab-content" style="display: none;">
-          <ul class="section-list side-courses">
+          <ul class="section-list side-courses courses-online-js">
             <% if !current_user_courses.empty? || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
               <% @courses_online.each do |course|%>
                 <li>
-                  <%= link_to open_channel_path(course.id,"course" => true), :remote => true do %>
+                  <%= link_to open_channel_path(course.id,"course" => true), :remote => true, id: course.id do %>
                     <% if !course.avatar.file.nil? %> 
                         <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
                     <% else %>
