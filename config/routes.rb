@@ -29,6 +29,12 @@ Cursame30Lb::Application.routes.draw do
     end
   end
 
+  # AJAX Calls
+  post 'ajax/update-user-profile-pic', to: 'ajax#update_user_profile_pic', as: :update_user_profile_pic
+  post 'ajax/update-user-cover-pic', to: 'ajax#update_user_cover_pic', as: :update_user_cover_pic
+  post 'ajax/update-course-profile-pic', to: 'ajax#update_course_profile_pic', as: :update_course_profile_pic
+  post 'ajax/update-course-cover-pic', to: 'ajax#update_course_cover_pic', as: :update_course_cover_pic
+
   resources :authentications
 
   ########## calendar

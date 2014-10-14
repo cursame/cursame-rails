@@ -1,3 +1,7 @@
+<% content_for :javascripts do  %>
+<%= javascript_include_tag('users/update_profile_pics') %>
+<% end %>
+
 <div class="profile-header-outer">
   <div class="wrapper">
     <div class="cols-12">
@@ -5,6 +9,20 @@
         <div class="col-inner">
           <div class="profile-header">
             <div class="profile-banner" style="background-image: url(<%= @user_l.coverphoto.blank? ? '/assets/portada.png' : @user_l.coverphoto %>);">
+
+              <div class="profile-cover-loading spinner"></div>
+              <div class="update-cover-pic">
+                <%= form_tag update_user_cover_pic_path, multipart: true, remote: true do %>
+                  <%= hidden_field_tag 'user', @user_l.id %>
+                  <%= label_tag 'user-cover-pic-input', class: 'profile-cover-upload' do %>
+                    <%= icon 'white-cam' %> <span>Actualizar portada</span>
+                    <div class="hide-input-file">
+                      <%= file_field_tag 'file', onchange: 'updateCoverPic(this);', accept: 'image/*', id: 'user-cover-pic-input' %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+
               <div class="admin-buttons">
                 <% if @user_l == current_user %>
                   <%= link_to "Editar Perfil", edit_user_registration_path, class: 'btn btn-small btn-secondary hard-border-btn' %>
@@ -34,6 +52,16 @@
                 </div>
               </div>
               <div class="profile-avatar">
+                <%= form_tag update_user_profile_pic_path, multipart: true, remote: true do %>
+                  <%= hidden_field_tag 'user', @user_l.id %>
+                  <div class="profile-avatar-loading spinner"></div>
+                  <%= label_tag 'user-profile-pic-input', class: 'profile-avatar-upload' do %>
+                    <%= icon 'white-cam' %> <span>Actualizar foto</span>
+                    <div class="hide-input-file">
+                      <%= file_field_tag 'file', onchange: 'updateProfilePic(this, "user");', accept: 'image/*', id: 'user-profile-pic-input' %>
+                    </div>
+                  <% end %>
+                <% end %>
                 <%= link_to show_user_path(@user_l.personal_url) do %>
                   <span class="avatar-holder">
                     <%= avatar('user', '150', 'no', @user_l.id, "avatar", "no", "no") %>
