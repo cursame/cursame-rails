@@ -22,7 +22,7 @@ background-white
 
   <div class="wrapper ver-spaced">
     <div class="cols-12">
-      <div class="col col-9">
+      <div class="col col-12">
         <div class="col-inner">
         
           <%= devise_error_messages! %>
@@ -133,38 +133,6 @@ background-white
           </div>
         </div>      
       </div>
-      
-      <div class="col col-3">
-        <div class="col-inner">
-          <div class="profile-images">
-            <div class="profile-image">
-              <span class="avatar-holder">
-                <%= avatar('user', '150', "no", current_user.id, "avatar img_prev_user", "no", "no") %>
-              </span>
-
-              <label class="btn btn-secondary" >
-                Cambiar imagen de perfil
-                <span class="hide-input-file">
-                  <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_user');" %>
-                </span>
-              </label>
-            </div>
-            <div class="profile-image">
-              <span class="avatar-holder">
-                <img class="avatar avatar-cover-small img_prev_cover" src="<%= current_user.coverphoto.file.nil? ? "/assets/#{current_user.cover_photox}" : current_user.coverphoto %>"/>
-              </span>
-
-              <label class="btn btn-secondary">
-                Cambiar imagen de portada
-                <span class="hide-input-file">
-                  <%= f.file_field :coverphoto, :onchange => "readURL(this,'img_prev_cover');" %>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
