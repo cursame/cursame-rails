@@ -1,6 +1,6 @@
 <%= form_for( @course, :html => { :class => "default-form edit-course border_for_text", :id => "course-form" }) do |f| %>  
   <div class="cols-12">
-    <div class="col col-9">
+    <div class="col col-12">
       <div class="col-inner">
         <div class="form-group">
           <div class="form-group-label">
@@ -70,39 +70,18 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col col-3">
-      <div class="col-inner">
-        <div class="profile-images">
-          <div class="profile-image">
-            <span class="avatar-holder">
-              <%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx : @course.avatar.profile, :id =>"img_prev_course_avatar", :class => "avatar avatar-150" )%>
-            </span>  
-            <label for="course_avatar" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
-              Avatar del curso
-              <span class="hide-input-file">
-                <%= f.file_field :avatar, :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
-              </span>
-            </label>
+        <% unless create %>
+          <div class="form-group">
+            <div class="form-group-label">
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= link_to "Eliminar curso permanente.", @course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
+              </div>
+            </div>
           </div>
           <br>
-          <div class="profile-image">
-            <span class="avatar-holder">
-              <%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex : @course.coverphoto, :id =>"img_prev_course_header", :class => 'avatar avatar-cover-small')%>
-            </span>
-            <label for="course_coverphoto" onchange="readURL(this,'img_prev_user');" name="user[avatar]" id="user_avatar_select" class="btn btn-secondary">
-              Imagen de cabecera
-              <span class="hide-input-file">
-                <%= f.file_field :coverphoto , :onchange => "readURL(this,'img_prev_course_header',168);"%>
-              </span>
-            </label>
-          </div>
-          <% unless create %>
-            <br>
-            <%= link_to "Eliminar curso permanente.", @course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete %>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
