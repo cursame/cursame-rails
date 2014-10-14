@@ -1,6 +1,4 @@
 class FileUploader < CarrierWave::Uploader::Base
-  
-  storage :fog
 
   def store_dir
     "uploads/asset/#{model.id}"
