@@ -9,7 +9,12 @@
       	<p>Ingresa tu correo en el campo inferior para dar seguimiento a tu solicitud</p><br>
 
       	<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post, :class => "unlock-mail-form" }) do |f| %>
-  				<%= devise_error_messages! %>
+        
+  				<% unless devise_error_messages!.blank? %>
+            <div class="user-session-errors">
+              <%= devise_error_messages! %>
+            </div>
+          <% end %>
 
   				<div class="form-group no-label">
   	        <div class="form-group-main">
