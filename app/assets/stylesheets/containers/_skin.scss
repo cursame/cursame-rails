@@ -1,0 +1,88 @@
+// Table for data
+.data-table {
+  thead th {
+    background: #f5f6f6;
+    border-bottom: 1px solid #e2e2e2;
+    color: #666;
+    font-size: 11px;
+  }
+  
+  tbody {
+
+    tr:nth-child(even) {
+      background: tint($separator-color, 90%);
+    }
+
+    td {
+      vertical-align: middle;
+      border-width: 0 0 1px 0;
+  
+      img {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+// Container
+.container {
+  @extend .basic-container-style;
+
+  .header {
+    background: #fafafa;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid $separator-color;
+  }
+
+  .footer {
+    border-radius: 0 0 $radius $radius;
+    background-color: #fafafa;
+    border-top: 1px solid $separator-color;
+  }
+}
+
+.table-box {
+  border: 1px solid #d2d2d2;
+  border-radius: $radius;
+  background-color: darken(#fcfcfc, 5%);
+
+  .table-box-header {
+    background-color: $white;
+    border-radius: $radius $radius 0 0;
+    border-bottom: 1px solid #d2d2d2;
+    box-shadow: 0 1px 1px rgba(0,0,0,.08);
+  } 
+
+  .table-box-unit {
+    float: left;
+  }
+
+  .table-box-unit-inner {
+    background-color: $white;
+    border-radius: $radius;
+    border: 1px solid $separator-color;
+    cursor: pointer;
+
+    span {
+      @include ellipsis(50%);
+    }
+
+    img {
+      vertical-align: -6px;
+    }
+
+    input[type=checkbox] {
+      visibility: hidden;
+    }
+
+    &:hover {
+      background-color: shade($white, 3%);
+      border-color: shade($separator-color, 3%);
+    }
+
+    &.active {
+      border-color: tint($primary-color, 50%);
+      background-color: tint($primary-color, 95%);
+    }
+  }
+}

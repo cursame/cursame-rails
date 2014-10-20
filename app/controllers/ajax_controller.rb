@@ -66,4 +66,12 @@ class AjaxController < ApplicationController
       format.json { render json: response }
     end
   end
+
+  def network_students
+    
+
+    respond_to do |format|
+      format.json { render json: current_network.users }
+    end
+  end
 end

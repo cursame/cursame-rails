@@ -391,6 +391,11 @@ $(function() {
       }
     }
   });
+
+  // Toggle .active class
+  $('.toggle-label-js').live('click', function(event) {
+    $(this).closest('label').toggleClass('active');
+  });
 });
 
 

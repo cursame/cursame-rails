@@ -1,0 +1,12 @@
+<div class="table-box-unit" data-user-id="{{ item.id }}">
+  <label class="table-box-unit-inner active">
+    {{#if item.avatar.head.url }}
+      <img src="{{ item.avatar.head.url }}" alt="" class="avatar">
+    {{else}}
+      <img src="/assets/imagexxxx.png" alt="" class="avatar">
+    {{/if}}
+    <span>{{ item.last_name }} {{ item.first_name }}</span>
+    <i class="i i-checked-16"></i>
+    <input checked="checked" class="toggle-label-js" id="students_{{ item.id }}" name="students[{{ item.id }}]" type="checkbox" value="{{ item.id }}">
+  </label>
+</div>
