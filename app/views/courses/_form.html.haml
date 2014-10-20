@@ -14,7 +14,7 @@
         = f.label :silabus, "Descripción del #{current_network.course_tag.downcase}"
       .form-group-main
         .form-unit
-          = f.text_area :silabus, rows: 7, cols: 50, placeholder: 'Descripción', required: "required", autocomplete: "off"
+          = f.text_area :silabus, rows: 4, placeholder: 'Descripción', required: "required", autocomplete: "off"
 
     .form-group
       .form-group-label
@@ -37,14 +37,14 @@
 
     .form-group
       .form-group-label
-        = f.label :members, "Estudiantes:"
+        = f.label 'students-search', "Estudiantes:", for: 'students-search-input'
       .form-group-main
         .form-unit
           = hidden_field_tag "check_members", true
           .table-box#autocomplete-users-box
             .table-box-header
               %p Busca por nombre estudiantes que deseas inscribir a este curso.
-              = text_field_tag 'members', '', id: 'auto', placeholder: 'Escribe un nombre o apellido.'
+              = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.'
             .table-box-body.scrollbar
               .users-list
                 - unless @course.new_record?
@@ -94,8 +94,12 @@
         dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
     });
 
-    $( "#auto" ).autocomplete({
+    $( "#students-search-input" ).autocomplete({
       source: '#{ network_students_path }',
+       messages: {
+        noResults: '',
+        results: function() {}
+      },
       select: function (event, user) {
         var usersList = $('#autocomplete-users-box'),
             userContainer = usersList.find('div.users-list'),
