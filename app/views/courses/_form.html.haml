@@ -97,8 +97,10 @@
     $( "#students-search-input" ).autocomplete({
       source: '#{ network_students_path }',
        messages: {
-        noResults: '',
-        results: function() {}
+        noResults: 'No se encontro nigun estudiante.',
+        results: function(count) {
+          return "";
+        }
       },
       select: function (event, user) {
         var usersList = $('#autocomplete-users-box'),

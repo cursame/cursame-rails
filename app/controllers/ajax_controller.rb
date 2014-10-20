@@ -71,7 +71,7 @@ class AjaxController < ApplicationController
     
 
     respond_to do |format|
-      format.json { render json: current_network.users }
+      format.json { render json: current_network.users.search(params[:term]) }
     end
   end
 end
