@@ -35,6 +35,7 @@ Cursame30Lb::Application.routes.draw do
   post 'ajax/update-course-profile-pic', to: 'ajax#update_course_profile_pic', as: :update_course_profile_pic
   post 'ajax/update-course-cover-pic', to: 'ajax#update_course_cover_pic', as: :update_course_cover_pic
   get 'ajax/network-students', to: 'ajax#network_students', as: :network_students
+  get 'ajax/network-teachers', to: 'ajax#network_teachers', as: :network_teachers
 
   resources :authentications
 

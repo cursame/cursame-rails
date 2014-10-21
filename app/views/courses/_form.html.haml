@@ -1,3 +1,6 @@
+- content_for :javascripts do
+  = javascript_include_tag 'courses/form'
+
 = form_for( @course, html: { class: "default-form edit-course border_for_text", id: "course-form" }) do |f|
   .body.padded
 
@@ -30,10 +33,9 @@
       .form-group-label
         = f.label :init_date, "Fecha de inicio"
       .form-group-main
-        .f-col.f-col-5
+        .f-col.f-col-7
           .form-unit
-            = f.text_field :init_date, placeholder: 'Fecha inicio', class: "date-input", value: (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, required: "required", autocomplete: "off"
-        .f-col.f-col-5
+            = f.text_field :init_date, placeholder: 'Fecha inicio', class: "date-picker", value: (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, required: "required", autocomplete: "off"
 
     .form-group
       .form-group-label
@@ -43,7 +45,6 @@
           = hidden_field_tag "check_members", true
           .table-box#autocomplete-users-box
             .table-box-header
-              %p Busca por nombre estudiantes que deseas inscribir a este curso.
               = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.'
             .table-box-body.scrollbar
               .users-list
@@ -70,74 +71,3 @@
     .fr
       - unless @course.new_record?
         = link_to "Eliminar curso permanente.", @course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete, style: 'line-height: 32px;'
-
-
-:javascript
-  function readURL(input, id, width) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#' + id)
-        .attr('src', e.target.result)
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-    
-  $(function() {
-    $("#course_init_date" ).datepicker({
-        inline: true,
-        minDate: 0,
-        showOtherMonths: true,
-        dateFormat: 'dd/mm/yy',
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-    });
-
-    $( "#students-search-input" ).autocomplete({
-      source: '#{ network_students_path }',
-       messages: {
-        noResults: 'No se encontro nigun estudiante.',
-        results: function(count) {
-          return "";
-        }
-      },
-      select: function (event, user) {
-        var usersList = $('#autocomplete-users-box'),
-            userContainer = usersList.find('div.users-list'),
-            noContent = usersList.find('div.inner-no-content'),
-            users = usersList.find('div.table-box-unit'),
-            already = false;
-
-        if ( noContent.length ) {
-          noContent.remove();
-        };
-
-        if ( users.length ) {
-          $.each(users, function(index, member) {
-            if ( $(member).data('user-id') == user.item.id ) {
-              already = true;
-              return false;
-            };
-          });
-        };
-
-        if ( already ) {
-          Notice('error', 'El estudiante que seleccionaste ya es miembro.')
-        } else {
-          userContainer.append( HandlebarsTemplates['users/autocomplete-user-unit']( user ) );
-        };
-      }
-    }).data( "autocomplete" )._renderItem = function( ul, item ) {
-      var avatarURL;
-
-      if ( item.avatar.head.url ) {
-        avatarURL = item.avatar.head.url;
-      } else {
-        avatarURL = "/assets/imagexxxx.png"
-      };
-
-      return $( "<li>" ).append( "<a> <img class='avatar' src='" + avatarURL + "' alt=''/>" + item.last_name + " "+ item.first_name + "</a>" ).appendTo( ul );
-    };
-
-  });

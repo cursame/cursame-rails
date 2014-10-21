@@ -68,8 +68,12 @@ class AjaxController < ApplicationController
   end
 
   def network_students
-    
+    respond_to do |format|
+      format.json { render json: current_network.users.search(params[:term]) }
+    end
+  end
 
+  def network_teachers
     respond_to do |format|
       format.json { render json: current_network.users.search(params[:term]) }
     end

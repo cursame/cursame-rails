@@ -190,6 +190,15 @@ $(function() {
 
   $('form.form-validate-js').validate();
 
+  $(".date-picker" ).datepicker({
+    inline: true,
+    minDate: 0,
+    showOtherMonths: true,
+    dateFormat: 'dd/mm/yy',
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+  });
+
   $(".datetime-picker").live('focus', function(event) {
     $(this).datetimepicker({
       inline: false,
@@ -213,7 +222,6 @@ $(function() {
         }, 10);
       }
     });
-
   });
 
   $(document).keyup(function(e) {
