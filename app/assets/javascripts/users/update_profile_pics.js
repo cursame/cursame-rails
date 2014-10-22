@@ -9,9 +9,11 @@ function updateProfilePic (input, type) {
       $form    = $input.closest('form'),
       $label   = $form.find('.profile-avatar-upload'),
       $loading = $form.find('.profile-avatar-loading'),
-      $globalSidebar = $('div.global-sidebar');
+      $globalSidebar = $('div.global-sidebar'),
+      $changeCoverButton = $('.update-cover-pic');
 
   $label.hide();
+  $changeCoverButton.hide();
   $loading.fadeIn(100);
 
   $form.ajaxSubmit({
@@ -26,13 +28,13 @@ function updateProfilePic (input, type) {
         if ( type == 'user' ) {
           $globalSidebar.find('div.user img').attr('src', data.avatar.head);
         } else {
-          console.log(data.course_id);
           $globalSidebar.find('.user-courses-js').find('a#' + data.course_id).find('img').attr('src', data.avatar.head);
           $globalSidebar.find('.courses-online-js').find('a#' + data.course_id).find('img').attr('src', data.avatar.head);
         }
       };
 
       $label.show();
+      $changeCoverButton.show();
       $loading.fadeOut(100);
     }
   });
