@@ -1,3 +1,6 @@
+- content_for :javascripts do
+  = javascript_include_tag 'courses/users-autocomplete'
+
 = form_for [:managers, course], html: { class: 'form-validate-js' } do |f|
   .form-group.label-on-top.l-label
     .form-group-label
@@ -33,19 +36,25 @@
     .form-group-main
       .form-unit
 
-        .table-box#autocomplete-users-box
+        .table-box
           .table-box-header
-            = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.'
+            = text_field_tag 'teachers-search', '', id: 'teachers-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'teachers' }
           .table-box-body.scrollbar
             .users-list
-              - get_network_teachers(true).each do |teacher|
-                .table-box-unit{ data: { user_id: teacher.id } }
-                  - member = MembersInCourse.find_by_user_id_and_course_id(teacher.id, @course.id) unless @course.nil?
-                  %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
-                    = avatar('user', '30', "no", teacher.id, "avatar", "no", "no")
-                    %span= teacher.last_name + " " + teacher.first_name
-                    = icon('checked-16')
-                    = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted, class: 'toggle-label-js')
+              - unless course.new_record?
+                - unless @course.teachers.blank?
+                  - get_network_teachers(true).each do |teacher|
+                    .table-box-unit{ data: { user_id: teacher.id } }
+                      - member = MembersInCourse.find_by_user_id_and_course_id(teacher.id, @course.id) unless @course.nil?
+                      %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
+                        = avatar('user', '30', "no", teacher.id, "avatar", "no", "no")
+                        %span= teacher.last_name + " " + teacher.first_name
+                        = icon('checked-16')
+                        = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted, class: 'toggle-label-js')
+              - if course.new_record? || course.students.blank?
+                .inner-no-content
+                  %h5 Agrega profesores al curso.
+                  %p Busca profesores para administrar el curso.
 
   .form-group.label-on-top.l-label
     .form-group-label
@@ -53,11 +62,26 @@
     .form-group-main
       .form-unit
         = hidden_field_tag "check_members", true
-        - get_network_students.each do |student|
-          - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) unless @course.nil?
-          = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
-          = label_tag("student", student.last_name + " " + student.first_name)
-          %br
+
+        .table-box
+          .table-box-header
+            = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'students' }
+          .table-box-body.scrollbar
+            .users-list
+              - unless course.new_record?
+                - unless @course.students.blank?
+                  - get_network_students.each do |student|
+                    .table-box-unit{ data: { user_id: student.id } }
+                      - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) unless @course.nil?
+                      %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
+                        = avatar('user', '30', "no", student.id, "avatar", "no", "no")
+                        %span= student.last_name + " " + student.first_name
+                        = icon('checked-16')
+                        = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted, class: 'toggle-label-js')
+              - if course.new_record? || course.students.blank?
+                .inner-no-content
+                  %h5 Inscribe estudiantes a tu curso.
+                  %p Busca estudiantes para unirlos automaticamente al curso.
 
   %br/
   %br/

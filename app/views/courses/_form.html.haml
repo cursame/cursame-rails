@@ -1,5 +1,6 @@
 - content_for :javascripts do
   = javascript_include_tag 'courses/form'
+  = javascript_include_tag 'courses/users-autocomplete'
 
 = form_for( @course, html: { class: "default-form edit-course border_for_text", id: "course-form" }) do |f|
   .body.padded

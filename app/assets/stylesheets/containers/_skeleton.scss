@@ -50,6 +50,8 @@
 
   .table-box-header {
     padding: 10px;
+    position: relative;
+    z-index: 1;
   }
 
   .table-box-body {
