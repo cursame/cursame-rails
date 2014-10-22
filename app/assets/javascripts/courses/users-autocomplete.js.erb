@@ -48,15 +48,44 @@ function renderSelectedUser(event, user) {
 
 $(function() {
 
-  var messages = { noResults: 'No se encontro nigun estudiante.', results: function() { return ""; } }
+  $('.table-box-unit .delete').live('click', function(event) {
+    var $self = $(this),
+        userUnit = $self.closest('.table-box-unit'),
+        userRole = userUnit.data('user-role'),
+        usersList = userUnit.closest('.users-list'),
+        messages = {
+          students: {
+            title: "Inscribe estudiantes a tu curso.",
+            message: "Busca estudiantes para unirlos automaticamente al curso."
+          },
+          teachers: {
+            title: "Agrega profesores al curso.",
+            message: "Busca profesores para administrar el curso."
+          }
+        };
 
-  $(  "#students-search-input" ).autocomplete({
+    userUnit.remove();
+
+    var usersRemain = usersList.find('.table-box-unit');
+
+    if ( ! usersRemain.length ) {
+      if ( userRole == "students" ) {
+        usersList.html( HandlebarsTemplates['users/autocomplete-no-users']( messages.students ) );
+      } else {
+        usersList.html( HandlebarsTemplates['users/autocomplete-no-users']( messages.teachers ) );
+      };
+    };
+  });
+
+  var messages = { noResults: 'No se encontro nigun usuario.', results: function() { return ""; } }
+
+  $( "#students-search-input" ).autocomplete({
     source: '<%= Rails.application.routes.url_helpers.network_students_path %>',
     messages: messages,
     select: renderSelectedUser
   }).data( "autocomplete" )._renderItem = renderListItem;
 
-  $(  "#teachers-search-input" ).autocomplete({
+  $( "#teachers-search-input" ).autocomplete({
     source: '<%= Rails.application.routes.url_helpers.network_teachers_path %>',
     messages: messages,
     select: renderSelectedUser

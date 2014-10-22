@@ -61,7 +61,6 @@
     background-color: $white;
     border-radius: $radius;
     border: 1px solid $separator-color;
-    cursor: pointer;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 
     span {
@@ -74,6 +73,10 @@
 
     input[type=checkbox] {
       visibility: hidden;
+    }
+
+    .delete {
+      cursor: pointer;
     }
 
     &:hover {

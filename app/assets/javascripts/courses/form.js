@@ -9,3 +9,20 @@ function readURL(input, id, width) {
   }
 }
 
+$('#create-course-form').validate({
+  submitHandler: function(form) {
+    var teachersList = $('#course-teachers-list'),
+        empty = false;
+
+    if ( teachersList.length && !teachersList.find('.table-box-unit').length ) {
+      empty = true;
+    };
+
+    if ( empty ) {
+      Notice('error', 'No puedes crear un curso sin profesores.')
+      return false;
+    } else {
+      form.submit();
+    };
+  }
+});

@@ -2,7 +2,7 @@
   = javascript_include_tag 'courses/form'
   = javascript_include_tag 'courses/users-autocomplete'
 
-= form_for( @course, html: { class: "default-form edit-course border_for_text", id: "course-form" }) do |f|
+= form_for @course, html: { id: 'create-course-form' } do |f|
   .body.padded
 
     .form-group
@@ -53,12 +53,12 @@
                   - unless @course.students.blank?
                     - @course.students.each do |student|
                       - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id)
-                      .table-box-unit{ data: { user_id: student.id } }
+                      .table-box-unit{ data: { user_id: student.id, user_role: 'students' } }
                         %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
                           = avatar('user', '30', "no", student.id, "avatar", "no", "no")
                           %span= student.last_name + " " +student.first_name
-                          = icon('checked-16')
-                          = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted, class: 'toggle-label-js')
+                          .delete= icon('w-cross-9-gray')
+                          = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
                 - if @course.new_record? || @course.students.blank?
                   .inner-no-content
                     %h5 Inscribe estudiantes a tu curso.
@@ -68,7 +68,7 @@
   .footer
     .fl
       %span.btn.btn-primary.input-btn.activable
-        = f.submit "#{ @course.new_record? ? "Crear" : "Actualizar" } #{current_network.course_tag}", class: "activable"
+        = f.submit "#{ @course.new_record? ? "Crear #{current_network.course_tag.downcase}" : "Guardar cambios" }", class: "activable"
     .fr
       - unless @course.new_record?
         = link_to "Eliminar curso permanente.", @course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete, style: 'line-height: 32px;'
