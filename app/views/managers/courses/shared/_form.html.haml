@@ -70,7 +70,7 @@
             .users-list
               - unless course.new_record?
                 - unless @course.students.blank?
-                  - get_network_students.each do |student|
+                  - @course.students.each do |student|
                     .table-box-unit{ data: { user_id: student.id } }
                       - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id) unless @course.nil?
                       %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
