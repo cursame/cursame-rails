@@ -322,7 +322,7 @@ class CoursesController < ApplicationController
 
   def library
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id) 
     @files = @course.course_files.paginate(:page => 1, :per_page => 10)
   end
 

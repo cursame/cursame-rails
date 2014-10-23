@@ -64,7 +64,7 @@
                 <% end %>
                 
                 <% permitted_to? :create, :courses do %>
-                  <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                  <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
                     <div class="admin-buttons">
                       <div class="dropdown-wrap">
                         <div class="dropdown-pull">
