@@ -533,6 +533,10 @@ Cursame30Lb::Application.routes.draw do
   namespace :api do
     resources :tokens,:only => [:create, :destroy]
   end
+
+  match '/api/user/teachers', to: 'api/user/users#teachers'
+  match '/api/network/', to: 'api/network/networks#index'
+
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/tokens/destroy', :to => 'api/tokens#destroy', :as => :logout
   match '/api/tokens/native_create_user', :to => 'api/tokens#native_create_user', :as => :native_create_user_json
