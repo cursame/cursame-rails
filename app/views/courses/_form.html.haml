@@ -47,6 +47,7 @@
           .table-box#autocomplete-users-box
             .table-box-header
               = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'students' }
+              .spinner-dark
             .table-box-body.scrollbar
               .users-list
                 - unless @course.new_record?

@@ -14,8 +14,11 @@ function newPublicationCleaner() {
 }
 
 function newCommentFormCleaner(form) {
-  form.find('#comment').val('');
-  
+  var commentInput = form.find('#comment');
+  commentInput.val('');
+  commentInput.expanding('destroy');
+  commentInput.expanding();
+
   var courseSelector = form.find('.target-dropdown');
   cleanCoursesSelectorDropdown(courseSelector);
   
