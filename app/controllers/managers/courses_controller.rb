@@ -23,7 +23,7 @@ class Managers::CoursesController < Managers::BaseController
       member = User.find_by_id user_id
       MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
     end
-    redirect_to managers_courses_path, flash: course.save ? { success: 'Curso editado correctamente' } : { success: 'Ocurrio un error al editar el curso' }
+    redirect_to managers_courses_path, flash: course.save ? { success: 'Curso creado correctamente' } : { success: 'Ocurrio un error al editar el curso' }
   end
 
   def edit

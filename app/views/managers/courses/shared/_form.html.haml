@@ -40,6 +40,7 @@
         .table-box#course-teachers-list
           .table-box-header
             = text_field_tag 'teachers-search', '', id: 'teachers-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'teachers' }
+            .spinner-dark
           .table-box-body.scrollbar
             .users-list
               - unless course.new_record?
@@ -67,6 +68,7 @@
         .table-box#course-students-list
           .table-box-header
             = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'students' }
+            .spinner-dark
           .table-box-body.scrollbar
             .users-list
               - unless course.new_record?

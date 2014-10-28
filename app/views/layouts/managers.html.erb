@@ -39,7 +39,6 @@
     </head>
     <body class="<%= yield :body_classes %>">
       <% cache_expire %>
-      <%= render partial: 'shared/flash', locals: { full: true } %>
       <%= render partial: 'managers/shared/managers_user_header' %>
       <div class="wrapper">
         <div class="cols-12">

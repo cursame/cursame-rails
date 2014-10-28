@@ -404,6 +404,12 @@ $(function() {
       }
     }
   });
+
+  Spinners.create('.spinner-dark', {
+    width: 2,
+    height: 5,
+    color: '#000000'
+  }).play();
 });
 
 

@@ -52,6 +52,13 @@
     padding: 10px;
     position: relative;
     z-index: 1;
+
+    .spinner-dark {
+      display: none;
+      position: absolute;
+      top: 14px;
+      right: 15px;
+    }
   }
 
   .table-box-body {
