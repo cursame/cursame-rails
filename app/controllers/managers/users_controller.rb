@@ -50,11 +50,11 @@ class Managers::UsersController < Managers::BaseController
 
   def import_receiver
     logger.info "content_type: #{params[:file].content_type}"
-    if params[:file].content_type == "text/csv"
+    if ['text/csv', 'text/plain'].include?(params[:file].content_type)
       UserCsvWorker.perform_async(params[:file].path, current_network.subdomain, current_user.email)
-      redirect_to managers_users_path, flash: { success: 'Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación' }
+      redirect_to(managers_users_path, flash: { success: 'Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación' }) and return
     else
-      redirect_to managers_users_path, flash: { error: 'Tipo de archivo no soportado' }
+      redirect_to(managers_users_path, flash: { error: 'Tipo de archivo no soportado' })
     end
   end
 
