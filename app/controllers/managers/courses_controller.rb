@@ -15,15 +15,19 @@ class Managers::CoursesController < Managers::BaseController
     course = Course.new(params[:course])
     course.network = current_network
 
+    redirect_to managers_courses_path, flash: { error: 'Ocurrio un error al crear el curso' } and return unless course.save
+
     students = params[:students] || {}
     teachers = params[:teachers] || {}
 
     user_ids = students.merge(teachers).map{|key, value| key}
-    course.members_in_courses = user_ids.map do |user_id|
+    flag = false
+    user_ids.map do |user_id|
       member = User.find_by_id user_id
-      MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
+      member_course = MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
+      flag = member_course.save
     end
-    redirect_to managers_courses_path, flash: course.save ? { success: 'Curso creado correctamente' } : { success: 'Ocurrio un error al editar el curso' }
+    redirect_to managers_courses_path, flash: flag ? { success: 'Curso creado correctamente' } : { error: 'Ocurrio un error al crear el curso' }
   end
 
   def edit
