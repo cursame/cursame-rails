@@ -16,7 +16,7 @@ class Api::Users::UsersController < ApplicationController
         networks: {
           only: [ :id, :subdomain, :name, :created_at ]
         }
-      }, only:  [ :id, :first_name, :last_name, :email, :created_at, :sign_in_count ]
+      }, only:  [ :id, :first_name, :last_name, :email, :created_at, :sign_in_count, :last_sign_in_at ]
     )
     render json: { pages: teachers.total_pages, teachers: teachers_array }, status: 200
   end
@@ -25,8 +25,8 @@ class Api::Users::UsersController < ApplicationController
     total  = []
     1.month.ago.to_date.upto(Date.today) do |date|
       total << {
-        date: date,
-        total: User.where('users.created_at < ?', date).count,
+        date:   date,
+        total:  User.where('users.created_at < ?', date).count,
         signed: User.where('users.created_at < ? AND users.sign_in_count = 0', date).count
       }
     end
