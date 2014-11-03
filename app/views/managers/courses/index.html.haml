@@ -23,7 +23,7 @@
               %td
                 - course.owners.each do |user|
                   %p= user.name
-              %td= course.users.count
+              %td= course.users.count - course.teachers.count
               %td= course.created_at
               %td
                 .dropdown-wrap.actions
