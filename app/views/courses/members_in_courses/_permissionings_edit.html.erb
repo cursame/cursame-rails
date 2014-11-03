@@ -13,22 +13,6 @@
             <i class="tip"></i>
             <ul>
               <li>
-                <%= form_for @member, :remote => true do |fcm| %>                           
-                  <label class="as-link">
-                    <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse('members_in_course_accepted_#{@member_it.id}', '#{@member.id}','acceptin', '#{@member_it.id}');"  %>
-                    ¿Miembro aceptado en el grupo?
-                  </label>
-                <%end%>
-              </li>
-              <li>
-                <%= form_for @member, :remote => true do |owner|%>
-                  <label class="as-link">
-                    <%= owner.check_box :owner, :onclick => "ValidateMemberInCourse('owner_in_course#{@member_it.id}', '#{@member.id}','ownerin', '#{@member_it.id}');", :class=> "owner_in_course#{@member_it.id}"  %>
-                    Administrador
-                  </label>
-                <%end%>
-              </li>
-              <li>
                 <%= link_to 'Eliminar del grupo', @member, confirm: '¿Estás seguro de querer eliminar este usuario del curso?', method: :delete, :remote => true %>
               </li>
             </ul>
