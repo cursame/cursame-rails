@@ -66,4 +66,21 @@ class AjaxController < ApplicationController
       format.json { render json: response }
     end
   end
+
+  def network_students
+    query = I18n.transliterate(params[:term].downcase.to_s)
+    users = User.includes(:permissionings).where('permissionings.role_id = 2 AND permissionings.network_id = ?', current_network.id).search(params[:term])
+
+    respond_to do |format|
+      format.json { render json: users }
+    end
+  end
+
+  def network_teachers
+    users = User.includes(:permissionings).where('permissionings.role_id = 3 AND permissionings.network_id = ?', current_network.id).search(params[:term])
+
+    respond_to do |format|
+      format.json { render json: users }
+    end
+  end
 end

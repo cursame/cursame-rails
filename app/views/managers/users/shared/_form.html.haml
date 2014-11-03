@@ -2,32 +2,32 @@
 = form_for [:managers, user], html: { class: 'form-validate-js' } do |f|
   = f.hidden_field :self_register, value: false
 
-  .form-group.abel-on-top.l-label
+  .form-group.label-on-top.l-label
     .form-group-label
       = f.label :email, 'Correo electrónico:'
     .form-group-main
       .form-unit
         = f.text_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off"
-  .form-group.abel-on-top.l-label
+  .form-group.label-on-top.l-label
     .form-group-label
       = f.label :first_name, 'Nombre(s):'
     .form-group-main
       .form-unit
         = f.text_field :first_name, placeholder: "Nombre(s)", required: "required", autocomplete: "off"
-  .form-group.abel-on-top.l-label
+  .form-group.label-on-top.l-label
     .form-group-label
       = f.label :last_name, 'Apellidos:'
     .form-group-main
       .form-unit
         = f.text_field :last_name, placeholder: "Apellidos", required: "required", autocomplete: "off"
-  .form-group.abel-on-top.l-label
+  .form-group.label-on-top.l-label
     .form-group-label
       = f.label :password, 'Contraseña:'
     .form-group-main
       .form-unit
         = f.password_field :password, placeholder: "Contraseña", required: "required", autocomplete: "off"
 
-  .form-group.abel-on-top.l-label
+  .form-group.label-on-top.l-label
     .form-group-label
       = f.label :role_id, 'Tipo de usuario:'
     .form-group-main

@@ -1,8 +1,17 @@
 
 /* Managers Admin Skeleton
 ----------------------------------*/
+
+.managers {
+  padding-top: 51px;
+  padding-bottom: 50px;
+}
+
 .managers-header {
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
   z-index: 10;
 
   .managers-brand {

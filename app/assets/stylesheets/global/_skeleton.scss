@@ -1,10 +1,6 @@
 
 /* Global Skeleton
 ----------------------------------*/
-html, body {
-  height: 100%;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -770,38 +766,22 @@ body {
   padding: 0px 5px;
 }
 
-// Table for data
-.data-table {
-  thead th {
-    padding: 7px 13px;
-  }
+.ui-autocomplete {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  height: 230px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
-  tbody td {
-    padding: 13px;
+  li {
+    a {
+      display: block;
+      padding: 5px;
+    }
 
     img {
-      margin-right: 10px;
+      margin-right: 8px;
     }
   }
-}
-
-.paginator {
-  margin-top: 25px;
-}
-
-// Container
-.container {
-  .header {
-    @include clearfix;
-
-    .left {
-      padding: 10px;
-      float: left;
-    }
-
-    .right {
-      padding: 10px;
-      float: right;
-    }
-  } 
 }

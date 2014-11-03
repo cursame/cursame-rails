@@ -1,0 +1,75 @@
+- content_for :javascripts do
+  = javascript_include_tag 'courses/form'
+  = javascript_include_tag 'courses/users-autocomplete'
+
+= form_for @course, html: { id: 'create-course-form' } do |f|
+  .body.padded
+
+    .form-group
+      .form-group-label
+        = f.label :title, "Nombre del #{current_network.course_tag.downcase}"
+        %label
+      .form-group-main
+        .form-unit
+          = f.text_field :title, placeholder: 'Ejemplo: Matemáticas I', required: "required", autocomplete: "off"
+
+    .form-group
+      .form-group-label
+        = f.label :silabus, "Descripción del #{current_network.course_tag.downcase}"
+      .form-group-main
+        .form-unit
+          = f.text_area :silabus, rows: 4, placeholder: 'Descripción', required: "required", autocomplete: "off"
+
+    .form-group
+      .form-group-label
+        = f.label :public_status, "Privacidad"
+      .form-group-main
+        .form-unit
+          - if @course.public_status == 'public'
+            = f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])
+          - else
+            = f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])
+
+    .form-group
+      .form-group-label
+        = f.label :init_date, "Fecha de inicio"
+      .form-group-main
+        .f-col.f-col-7
+          .form-unit
+            = f.text_field :init_date, placeholder: 'Fecha inicio', class: "date-picker", value: (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, required: "required", autocomplete: "off"
+
+    .form-group
+      .form-group-label
+        = f.label 'students-search', "Estudiantes:", for: 'students-search-input'
+      .form-group-main
+        .form-unit
+          = hidden_field_tag "check_members", true
+          .table-box#autocomplete-users-box
+            .table-box-header
+              = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'students' }
+              .spinner-dark
+            .table-box-body.scrollbar
+              .users-list
+                - unless @course.new_record?
+                  - unless @course.students.blank?
+                    - @course.students.each do |student|
+                      - member = MembersInCourse.find_by_user_id_and_course_id(student.id, @course.id)
+                      .table-box-unit{ data: { user_id: student.id, user_role: 'students' } }
+                        %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
+                          = avatar('user', '30', "no", student.id, "avatar", "no", "no")
+                          %span= student.last_name + " " +student.first_name
+                          .delete= icon('w-cross-9-gray')
+                          = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
+                - if @course.new_record? || @course.students.blank?
+                  .inner-no-content
+                    %h5 Inscribe estudiantes a tu curso.
+                    %p Busca estudiantes para unirlos automaticamente al curso.
+
+
+  .footer
+    .fl
+      %span.btn.btn-primary.input-btn.activable
+        = f.submit "#{ @course.new_record? ? "Crear #{current_network.course_tag.downcase}" : "Guardar cambios" }", class: "activable"
+    .fr
+      - unless @course.new_record?
+        = link_to "Eliminar curso permanente.", @course, confirm: '¿Esta seguro que desea eliminar este curso?', method: :delete, style: 'line-height: 32px;'
