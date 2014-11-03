@@ -8,17 +8,13 @@
 
 body {
   color: $global-color;
-  background: #edeff2;
+  background: darken(#edeff2, 1%);
   font-family: $font-cursame;
   font-size: 13px;
   font-weight: normal;
 
   &.background-white {
     background: $white;
-  }
-
-  @include max-screen(600px) {
-    font-size: 14px;
   }
 }
 
@@ -504,39 +500,36 @@ h6 {
   }
 }
 
-// Table for data
-.data-table {
-  thead th {
-    background: #f5f6f6;
-    border-bottom: 1px solid #e2e2e2;
-    color: #666;
-    font-size: 11px;
-  }
-  
-  tbody {
+.ui-autocomplete {
+  border-radius: $radius;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 1px 7px rgba(0, 0, 0, 0.35);
 
-    tr:nth-child(even) {
-      background: tint($separator-color, 90%);
+  li {
+    border-top: 1px solid #d9d9d9;
+
+    &:first-child {
+      border-top: 0;
     }
 
-    td {
-      vertical-align: middle;
-      border-width: 0 0 1px 0;
-  
-      img {
-        vertical-align: middle;
+    a {
+      cursor: pointer;
+
+      &.ui-state-hover, &.ui-state-focus, &.ui-state-active {
+        background-color: #f2f2f2;
       }
     }
-  }
-}
 
-// Container
-.container {
-  @extend .basic-container-style;
+    &:first-child a {
+      border-radius: $radius $radius 0 0;
+    }
 
-  .header {
-    background: #fafafa;
-    border-radius: $radius $radius 0 0;
-    border-bottom: 1px solid $separator-color;
+    &:last-child a {
+      border-radius: 0 0 3px 3px;
+    }
+
+    img {
+      vertical-align: -10px;
+    }
   }
 }

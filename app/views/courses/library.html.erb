@@ -19,7 +19,7 @@
               </span>  
             </div>
             <div class="right">
-              <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+              <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
                 <%= form_for CourseFile.new, :html => { :multipart => true } do |f| %>
                   <label class="btn btn-primary activable">
                     Subir archivo

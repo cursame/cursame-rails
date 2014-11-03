@@ -24,6 +24,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <%= favicon_link_tag '/favicon.ico' %>
       <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+      
       <script>
         window.Cursame = { userId: <%= current_user.id %> };
       </script>
@@ -31,7 +32,9 @@
       <%= javascript_include_tag 'https://www.dropbox.com/static/api/1/dropins.js', id: 'dropboxjs', data: { app_key: 'ee2yf464dnk2rf1' } %>
       <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
       <%= javascript_include_tag 'application.js' %>
-      <%= yield :javascripts %>
+      <!--[if lt IE 9]>
+        <%= javascript_include_tag 'excanvas.js' %>
+      <![endif]-->
       <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
       <![endif]-->
@@ -93,6 +96,8 @@
         ga('create', 'UA-27929430-2', 'cursa.me');
         ga('send', 'pageview');
       </script>
+
+      <%= yield :javascripts %>
     </body>
   </html>
 <% end %>

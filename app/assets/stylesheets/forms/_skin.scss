@@ -83,4 +83,8 @@ select {
   &.l-label .form-group-label {
     text-align: left;
   }
+
+  .support-text {
+    @include text-size-x-small;
+  }
 }

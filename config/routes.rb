@@ -29,6 +29,14 @@ Cursame30Lb::Application.routes.draw do
     end
   end
 
+  # AJAX Calls
+  post 'ajax/update-user-profile-pic', to: 'ajax#update_user_profile_pic', as: :update_user_profile_pic
+  post 'ajax/update-user-cover-pic', to: 'ajax#update_user_cover_pic', as: :update_user_cover_pic
+  post 'ajax/update-course-profile-pic', to: 'ajax#update_course_profile_pic', as: :update_course_profile_pic
+  post 'ajax/update-course-cover-pic', to: 'ajax#update_course_cover_pic', as: :update_course_cover_pic
+  get 'ajax/network-students', to: 'ajax#network_students', as: :network_students
+  get 'ajax/network-teachers', to: 'ajax#network_teachers', as: :network_teachers
+
   resources :authentications
 
   ########## calendar
@@ -525,6 +533,12 @@ Cursame30Lb::Application.routes.draw do
   namespace :api do
     resources :tokens,:only => [:create, :destroy]
   end
+
+  match '/api/users/teachers', to: 'api/users/users#teachers'
+  match '/api/users/total',    to: 'api/users/users#total'
+  match '/api/networks/',      to: 'api/networks/networks#index'
+  
+
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/tokens/destroy', :to => 'api/tokens#destroy', :as => :logout
   match '/api/tokens/native_create_user', :to => 'api/tokens#native_create_user', :as => :native_create_user_json

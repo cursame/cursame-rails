@@ -1,0 +1,102 @@
+// Table for data
+.data-table {
+  thead th {
+    padding: 7px 13px;
+  }
+
+  tbody td {
+    padding: 13px;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+.paginator {
+  margin-top: 25px;
+}
+
+// Container
+.container {
+  .header {
+    @include clearfix;
+
+    .left {
+      padding: 10px;
+      float: left;
+    }
+
+    .right {
+      padding: 10px;
+      float: right;
+    }
+  } 
+
+  .body {
+    &.padded {
+      padding: 10px;
+    }
+  }
+
+  .footer {
+    padding: 10px;
+    @include clearfix;
+  }
+}
+
+.table-box {
+  @include clearfix;
+
+  .table-box-header {
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+
+    .spinner-dark {
+      display: none;
+      position: absolute;
+      top: 14px;
+      right: 15px;
+    }
+  }
+
+  .table-box-body {
+    height: 230px;
+    @include clearfix; 
+  }
+
+  .users-list {
+    padding: 5px;
+    @include clearfix; 
+  }
+
+  .table-box-unit {
+    float: left;
+    width: 50%;
+  }
+
+  .table-box-unit-inner {
+    display: block;
+    margin: 5px;
+    padding: 8px;
+    position: relative;
+
+    img {
+      margin-right: 3px;
+    }
+
+    input[type=checkbox] {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .delete {
+      padding: 0px 5px;
+      position: absolute;
+      right: 5px;
+      top: 14px;
+    }
+  }
+}

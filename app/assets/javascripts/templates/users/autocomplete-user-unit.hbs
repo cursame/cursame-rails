@@ -1,0 +1,12 @@
+<div class="table-box-unit" data-user-id="{{ user.item.id }}" data-user-role="{{ role }}">
+  <label class="table-box-unit-inner active">
+    {{#if user.item.avatar.head.url }}
+      <img src="{{ user.item.avatar.head.url }}" alt="" class="avatar">
+    {{else}}
+      <img src="/assets/imagexxxx.png" alt="" class="avatar">
+    {{/if}}
+    <span>{{ user.item.last_name }} {{ user.item.first_name }}</span>
+    <div class="delete"><i class="i i-w-cross-9-gray"></i></div>
+    <input checked="checked" id="{{ role }}_{{ user.item.id }}" name="{{ role }}[{{ user.item.id }}]" type="checkbox" value="{{ user.item.id }}">
+  </label>
+</div>

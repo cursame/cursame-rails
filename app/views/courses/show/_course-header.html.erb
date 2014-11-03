@@ -1,3 +1,7 @@
+<% content_for :javascripts do  %>
+<%= javascript_include_tag('users/update_profile_pics') %>
+<% end %>
+
 <div class="profile-header-outer">
   <div class="wrapper">
     <div class="cols-12">
@@ -6,7 +10,35 @@
           <div class="profile-header <%= header_style %>">
             <% unless header_style == :super_compact || header_style == :compact %>
               <div class="profile-banner" style="background-image: url(<%= @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>)">
+                <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                  <div class="profile-cover-loading spinner"></div>
+                  <div class="update-cover-pic">
+                    <%= form_tag update_course_cover_pic_path, multipart: true, remote: true do %>
+                      <%= hidden_field_tag 'course', @course.id %>
+                      <%= label_tag 'user-cover-pic-input', class: 'profile-cover-upload' do %>
+                        <%= icon 'white-cam' %> <span>Actualizar portada</span>
+                        <div class="hide-input-file">
+                          <%= file_field_tag 'file', onchange: 'updateCoverPic(this);', accept: 'image/*', id: 'user-cover-pic-input' %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
+
                 <div class="profile-avatar">
+                  <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                    <%= form_tag update_course_profile_pic_path, multipart: true, remote: true do %>
+                      <%= hidden_field_tag 'course', @course.id %>
+                      <div class="profile-avatar-loading spinner"></div>
+                      <%= label_tag 'user-profile-pic-input', class: 'profile-avatar-upload' do %>
+                        <%= icon 'white-cam' %> <span>Actualizar foto</span>
+                        <div class="hide-input-file">
+                          <%= file_field_tag 'file', onchange: 'updateProfilePic(this, "course");', accept: 'image/*', id: 'user-profile-pic-input' %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+
                   <%= link_to course_path(@course.id) do %>
                     <span class="avatar-holder">
                       <%= avatar('course', '150', 'no', @course.id, "avatar", "no", "no") %>
@@ -32,7 +64,7 @@
                 <% end %>
                 
                 <% permitted_to? :create, :courses do %>
-                  <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                  <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
                     <div class="admin-buttons">
                       <div class="dropdown-wrap">
                         <div class="dropdown-pull">

@@ -2,6 +2,7 @@
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
+  belongs_to :network
 
   has_many :response_to_the_evaluations, as: :feedbackable, dependent: :destroy
   has_many :members_in_course_criteria, dependent: :destroy

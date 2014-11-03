@@ -32,7 +32,6 @@
       <%= javascript_include_tag 'https://www.dropbox.com/static/api/1/dropins.js', id: 'dropboxjs', data: { app_key: 'ee2yf464dnk2rf1' } %>
       <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
       <%= javascript_include_tag 'application.js' %>
-      <%= yield :javascripts %>
       <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
       <![endif]-->
@@ -40,7 +39,6 @@
     </head>
     <body class="<%= yield :body_classes %>">
       <% cache_expire %>
-      <%= render partial: 'shared/flash', locals: { full: true } %>
       <%= render partial: 'managers/shared/managers_user_header' %>
       <div class="wrapper">
         <div class="cols-12">
@@ -85,6 +83,7 @@
           });
         };
       </script>
+      <%= yield :javascripts %>
     </body>
   </html>
 <% end %>

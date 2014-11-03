@@ -188,21 +188,7 @@ class User < ActiveRecord::Base
 
   # Returns true if the user has admin role.
   def admin?
-    # permissionings = self.permissionings.reject do |permissioning|
-    #   permissioning.network != current_network
-    # end
-
-    # roles = permissionings.map do |permissioning|
-    #   permissioning.role
-    # end
-
-    if self.roles.include? Role.find_by_title 'admin'
-      return true
-    elsif self.roles.include? Role.find_by_title 'superadmin' 
-      return true
-    end
-
-    return false
+    self.roles.include? Role.find_by_title 'admin' || self.superadmin?
   end
 
   def role_title
@@ -211,17 +197,17 @@ class User < ActiveRecord::Base
 
   # Returns true if the user has student role.
   def student?
-    return self.roles.include? Role.find_by_title 'student'
+    self.roles.include? Role.find_by_title 'student'
   end
 
   # Returns true if the user has teacher role.
   def teacher?
-    return self.roles.include? Role.find_by_title 'teacher'
+    self.roles.include? Role.find_by_title 'teacher'
   end
 
   # Returns true if the user has superadmin role.
   def superadmin?
-    return self.roles.include? Role.find_by_title 'superadmin'
+    self.roles.include? Role.find_by_title 'superadmin'
   end
 
   #roles
