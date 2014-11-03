@@ -534,10 +534,10 @@ Cursame30Lb::Application.routes.draw do
     resources :tokens,:only => [:create, :destroy]
   end
 
+  match '/api/courses',        to: 'api/courses/courses#list'
   match '/api/users/teachers', to: 'api/users/users#teachers'
   match '/api/users/total',    to: 'api/users/users#total'
   match '/api/networks/',      to: 'api/networks/networks#index'
-  
 
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/tokens/destroy', :to => 'api/tokens#destroy', :as => :logout
