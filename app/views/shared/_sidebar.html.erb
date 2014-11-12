@@ -128,7 +128,7 @@
     <div class="sidebar-section-main scroller s-to-f scrollbar"> 
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
-          <% if current_user.count_friendships != 0 || current_user.admin? %>
+          <% if current_user.count_friendships != 0 || current_user.admin? || current_user.superadmin? %>
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>
