@@ -62,33 +62,22 @@ class CoursesController < ApplicationController
   end
 
   def paginate_ajax
-    @user_role = params[:role]
     page = params[:page]
-    @state = params[:state]
     @member = MembersInCourse.new
     @next_page = page.to_i + 1
 
-    case @user_role
+    case current_role
+    when 'admin', 'superadmin'
+      @courses = published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
     when 'teacher'
-      case @state
-      when 'published'
-        courses_raw = teacher_published_courses
-      when 'unpublished'
-        courses_raw = teacher_unpublished_courses
-      end
+      @courses = teacher_published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
     when 'student'
-      case @state
-      when 'subscribed'
-        courses_raw = student_subscribed_courses
-      when 'not_subscribed'
-        courses_raw = network_courses_not_subscribed
-      when 'subscribe_requests'
-        courses_raw = student_pending_requests
+      if params[:state] == 'not_subscribed'
+        @courses = network_courses_not_subscribed.paginate(per_page: COURSES_PER_PAGE, page: page)
+      elsif params[:state] == 'subscribed'
+        @courses = student_subscribed_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
       end
     end
-
-    @courses = courses_raw.paginate(per_page: COURSES_PER_PAGE, page: page)
-
     respond_to do |format|
       format.js { render 'courses/ajax/courses_paginate_ajax' }
     end
