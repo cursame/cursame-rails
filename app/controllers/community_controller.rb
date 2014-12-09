@@ -1,50 +1,30 @@
 class CommunityController < ApplicationController
 
-  def users_by_role(role)
-    requested_role = Role.find_by_title(role)
-    permissionings = Permissioning.where(network_id: current_network.id, role_id: requested_role.id)
-    users = permissionings.map do |permissioning|
-      permissioning.user
-    end
-    users.keep_if do |user|
-      user != current_user and not(user.nil?)
-    end
-  end
-
-  def all_users_network
-    users = current_network.users.compact
-    users.keep_if do |user|
-      user != current_user and not(user.nil?)
-    end
-  end
-
   def all
-    @network_users = all_users_network.paginate(:per_page => CARDS_PER_PAGE, :page => 1)
+    @network_users = network_users
   end
 
   def students
-    @students = users_by_role("student").paginate(:per_page => CARDS_PER_PAGE, :page => 1)
+    @students = network_students
   end
 
   def teachers
-    @teachers = users_by_role("teacher").paginate(:per_page => CARDS_PER_PAGE, :page => 1)
+    @teachers = network_teachers
   end
 
   def paginate_ajax
-    page = params[:page].to_i
+    page  = params[:page].to_i
     @role = params[:role]
     @next_page = page + 1
 
-    case @role
+    @community_users = case @role
       when 'all'
-        users = all_users_network
+        network_users(page)
       when 'student'
-        users = users_by_role("student")
+        network_students(page)
       when 'teacher'
-        users = users_by_role("teacher")
+        network_teachers(page)
     end
-
-    @community_users = users.paginate(:per_page => CARDS_PER_PAGE, :page => page)
       
     respond_to do |format|
       format.js { render 'community/ajax/paginate_ajax' }
@@ -55,6 +35,25 @@ class CommunityController < ApplicationController
     @query = params[:query]
     @search_changes = params[:query].downcase
     docificate_search_changes = I18n.transliterate("#{@search_changes}")
-    @users = current_network.users.search(docificate_search_changes).paginate(:per_page => 50, :page => params[:page]).order('users.first_name')
+    @users = current_network.users.search(docificate_search_changes).paginate(per_page: 50, page: params[:page]).order('users.first_name')
   end
+
+  private
+
+  def network_users(page = 1)
+    current_network.users.where('users.confirmed_at IS NOT NULL').paginate(per_page: CARDS_PER_PAGE, page: page)
+  end
+
+  def network_teachers(page = 1)
+    current_network.users.joins(:permissionings)
+      .where('permissionings.network_id = ? AND permissionings.role_id = 3 AND users.confirmed_at IS NOT NULL', current_network.id)
+      .paginate(per_page: CARDS_PER_PAGE, page: page)
+  end
+
+  def network_students(page = 1)
+    current_network.users.joins(:permissionings)
+      .where('permissionings.network_id = ? AND permissionings.role_id = 2 AND users.confirmed_at IS NOT NULL', current_network.id)
+      .paginate(per_page: CARDS_PER_PAGE, page: page)
+  end
+
 end
