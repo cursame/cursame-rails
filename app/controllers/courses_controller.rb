@@ -71,9 +71,21 @@ class CoursesController < ApplicationController
       @courses = published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
     when 'teacher'
       @courses = teacher_published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
+      #puts 'Aqui el error'
+      #puts @courses.total_entries
+      #puts '@courses.current_page'
+      #puts @courses.current_page
+      #puts '@courses.num_pages'
+      #puts @courses.num_pages
     else 'student'
       if params[:state] == 'not_subscribed'
         @courses = network_courses_not_subscribed.paginate(per_page: COURSES_PER_PAGE, page: page)
+        #puts 'Aqui el error'
+        #puts @courses.total_entries
+        #puts '@courses.current_page'
+        #puts @courses.current_page
+        #puts '@courses.num_pages'
+        #puts @courses.num_pages
       elsif params[:state] == 'subscribed'
         @courses = student_subscribed_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
       end
