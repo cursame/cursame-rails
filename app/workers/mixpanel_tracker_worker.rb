@@ -10,11 +10,9 @@ class MixpanelTrackerWorker
   # A call to track is a report that an event has occurred
   # http://mixpanel.github.io/mixpanel-ruby/Mixpanel/Tracker.html#method-i-track
   def perform(distinct_id, event, properties={})
-    if !properties['Network'].nil? && properties['Network'] == "Galatea UACM"
-      tracker = mixpanel Settings.mixpanel.galateauacm   
-      tracker.track distinct_id, event, properties
-    end
-    tracker = mixpanel(Settings.mixpanel.token)
+    puts 'Entro a perform'
+    network_id = Network.find_by_subdomain(properties['Subdomain']).id
+    tracker = mixpanel(NetworkSetting.find_by_network_id(network_id).value) #aqui pasa el token guardado en la tabla NetworkSetting
     tracker.track distinct_id, event, properties
   end
 
