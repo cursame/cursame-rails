@@ -1,4 +1,4 @@
- class DiscussionResponse < ActiveRecord::Base
+class DiscussionResponse < ActiveRecord::Base
   belongs_to :discussion
   belongs_to :user
   has_one :grade, as: :gradable, dependent: :destroy
