@@ -36,9 +36,11 @@ class Course < ActiveRecord::Base
 
   accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
 
+#gemas
   acts_as_votable
   acts_as_commentable
 
+#gemas
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
 

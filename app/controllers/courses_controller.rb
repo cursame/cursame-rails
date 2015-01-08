@@ -71,7 +71,7 @@ class CoursesController < ApplicationController
       @courses = published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
     when 'teacher'
       @courses = teacher_published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
-    when 'student'
+    else 'student'
       if params[:state] == 'not_subscribed'
         @courses = network_courses_not_subscribed.paginate(per_page: COURSES_PER_PAGE, page: page)
       elsif params[:state] == 'subscribed'
