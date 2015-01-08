@@ -173,11 +173,8 @@ class Network < ActiveRecord::Base
       @self_defter = @defter.split(':').last
   end
 
-  def has_token?
-    self.network_settings.blank? ? false : true
+  def mixpanel_token?
+    !self.find_setting(:mixpanel_token).nil?
   end
-
-
-  
 
 end

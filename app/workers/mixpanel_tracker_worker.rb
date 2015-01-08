@@ -13,8 +13,9 @@ class MixpanelTrackerWorker
     tracker = mixpanel(Settings.mixpanel.token)
     tracker.track distinct_id, event, properties
 
-    if Network.find_by_subdomain(properties['Subdomain']).has_token? 
-      tracker = mixpanel(Network.find_by_subdomain(properties['Subdomain']).network_settings[0].value)
+    network = Network.find_by_subdomain(properties['Subdomain'])
+    if network.mixpanel_token?
+      tracker = mixpanel(network.find_setting(:mixpanel_token).value)
       tracker.track distinct_id, event, properties
     end
   end
