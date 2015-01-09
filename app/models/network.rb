@@ -171,7 +171,10 @@ class Network < ActiveRecord::Base
   def comunity_tag
       @defter = (self.titles).to_s.split(',')[8]
       @self_defter = @defter.split(':').last
-   end
-  
+  end
+
+  def mixpanel_token?
+    !self.find_setting(:mixpanel_token).nil?
+  end
 
 end

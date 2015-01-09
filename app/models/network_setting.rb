@@ -13,7 +13,8 @@ class NetworkSetting < ActiveRecord::Base
     vlex_account_id: 'vlex_account_id',
     vlex_name: 'vlex_name',
     vlex_token: 'vlex_token',
-    vlex_email: 'vlex_email'
+    vlex_email: 'vlex_email',
+    mixpanel_token: 'mixpanel_token'
   }
 
 end
