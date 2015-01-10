@@ -148,7 +148,7 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the number of UserSurveys.
   def count_surveys_responses
-    surveys_evaluation.inject(0) { |count, element| count + ( element[:usery_survey].nil? ? 0 : 1 ) }
+    surveys_evaluation.inject(0) { |count, element| count + ( element[:user_survey].nil? ? 0 : 1 ) }
   end
 
   # Returns true if the MemberInCourse can be evaluated.
@@ -244,7 +244,12 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the cursame final score.
   def cursame_final_score
-    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
+    percentages = self.course.cursame_evaluation
+    if percentages.nil?
+      self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
+    else
+      ((self.deliveries_average * (percentages.delivery_percentages/100)) + (self.surveys_average * (percentages.survey_percentages/100)) + (self.discussions_average * (percentages.discussion_percentages/100))) * (discussion_percentages.cursame_percentages/100)
+    end
   end
 
   # Returns the criteria final score.
