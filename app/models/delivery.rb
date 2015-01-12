@@ -114,13 +114,12 @@ class Delivery < ActiveRecord::Base
       self.send_mail users
     end
 
-    network_name = Network.find_by_id(self.network_id).name.capitalize
-
     begin
       self.courses.each do |course|
         mixpanel_properties = {
-          'Network' => network_name,
-          'Course'  => course.title.capitalize
+          'Network'   => self.network.name.capitalize,
+          'Subdomain' => self.network.subdomain,
+          'Course'    => course.title.capitalize
         }
         MixpanelTrackerWorker.perform_async self.user_id, 'Deliveries', mixpanel_properties
       end

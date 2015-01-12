@@ -808,6 +808,7 @@ class User < ActiveRecord::Base
   private
   def track_mixpanel_user
     event_data = {
+      'Network'   => self.networks.first.name.capitalize,
       'Subdomain' => self.networks.first.subdomain,
       'Role'      => self.role_title.capitalize
     }

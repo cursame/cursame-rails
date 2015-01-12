@@ -98,6 +98,7 @@ class MembersInCoursesController < ApplicationController
     if @members_in_course.save
       mixpanel_properties = {
         'Network' => @members_in_course.course.network.name.capitalize,
+        'Subdomain' => @members_in_course.course.network.subdomain,
         'Title'   => @members_in_course.course.title.capitalize,
         'Type'    => @members_in_course.course.public_status.capitalize
       }

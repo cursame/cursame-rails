@@ -85,9 +85,10 @@ class Comment < ActiveRecord::Base
 
     begin
       mixpanel_properties = { 
-        'Network' => network.name.capitalize,
-        'Type'    => self.commentable_type.capitalize,
-        'Role'    => permissioning.role.title.capitalize
+        'Network'   => network.name.capitalize,
+        'Subdomain' => network.subdomain,
+        'Type'      => self.commentable_type.capitalize,
+        'Role'      => permissioning.role.title.capitalize
       }
       MixpanelTrackerWorker.perform_async self.user_id, 'Comments', mixpanel_properties
     rescue

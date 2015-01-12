@@ -135,10 +135,11 @@ class Discussion < ActiveRecord::Base
   def track_mixpanel_discussion
     public_discussion = self.courses.blank?
     event_data = {
+      'Network'   => self.network.name.capitalize,
       'Subdomain' => self.network.subdomain,
       'Role'      => self.user.role_title.capitalize,
       'Course'    => public_discussion ? 'Public' : self.courses.first.title.capitalize,
-      'Evaluable' => self.evaluable? ? 'Evaluable' : 'Non-evaluable' 
+      'Evaluable' => self.evaluable? ? 'Evaluable' : 'Non-evaluable'
     }
     track_event self.user.id, 'Discussion', event_data
   end

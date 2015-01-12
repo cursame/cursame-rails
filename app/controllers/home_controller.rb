@@ -226,9 +226,10 @@ class HomeController < ApplicationController
     begin
       permissioning = Permissioning.find_by_user_id_and_network_id(@publication.publication.user_id, current_network.id)
       mixpanel_properties = {
-        'Network' => current_network.name.capitalize,
-        'Type'    => @publication.publication_type.capitalize,
-        'Role'    => permissioning.role.title.capitalize
+        'Network'   => current_network.name.capitalize,
+        'Subdomain' => current_network.subdomain,
+        'Type'      => @publication.publication_type.capitalize,
+        'Role'      => permissioning.role.title.capitalize
       }
       MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
     rescue
@@ -257,9 +258,10 @@ class HomeController < ApplicationController
     begin
       permissioning = Permissioning.find_by_user_id_and_network_id(@publication.user_id, current_network.id)
       mixpanel_properties = {
-        'Network' => current_network.name.capitalize,
-        'Type'    => @publication.commentable_type.capitalize,
-        'Role'    => permissioning.role.title.capitalize
+        'Network'   => current_network.name.capitalize,
+        'Subdomain' => current_network.subdomain,
+        'Type'      => @publication.commentable_type.capitalize,
+        'Role'      => permissioning.role.title.capitalize
       }
       MixpanelTrackerWorker.perform_async current_user.id, 'Likes', mixpanel_properties
     rescue

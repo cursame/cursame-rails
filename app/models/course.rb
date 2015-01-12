@@ -313,7 +313,8 @@ class Course < ActiveRecord::Base
   def mixpanel_track_event
     event_data = {
       'Type'    => self.public_status.capitalize,
-      'Network' => self.network.name.capitalize
+      'Network' => self.network.name.capitalize,
+      'Subdomain' => self.network.subdomain
     }
     track_event self.id, 'Courses', event_data
   end

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 class CoursesController < ApplicationController
   include CoursesUtils
   include FiltersUtils
@@ -407,8 +407,9 @@ class CoursesController < ApplicationController
       assignment = Assignment.create params[:assignment]
       flash[:success] = assignment.valid? ? t("assignments.messages.create.success") : t("assignments.messages.create.error")
       mixpanel_properties = {
-        'Network' => assignment.course.network.name.capitalize,
-        'Course'  => assignment.course.title.capitalize
+        'Network'   => assignment.course.network.name.capitalize,
+        'Subdomain' => assignment.course.network.subdomain,
+        'Course'    => assignment.course.title.capitalize
       }
       track_event current_user.id, 'Assignments', mixpanel_properties
     else

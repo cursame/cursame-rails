@@ -77,8 +77,9 @@ class Survey < ActiveRecord::Base
     begin
       self.courses.each do |course|
         mixpanel_properties = {
-          'Network' => self.network.name.capitalize,
-          'Course'  => course.title.capitalize
+          'Network'   => self.network.name.capitalize,
+          'Subdomain' => self.network.subdomain,
+          'Course'    => course.title.capitalize
         }
         MixpanelTrackerWorker.perform_async self.user_id, 'Surveys', mixpanel_properties
       end
