@@ -17,7 +17,7 @@ class Course < ActiveRecord::Base
   has_many :course_id_course_file_id
   has_many :course_files, through: :course_id_course_file_id
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
-  has_one :cursame_evaluation, dependent: :destroy
+  has_one :cursame_percentage, dependent: :destroy
 
   belongs_to :network
 

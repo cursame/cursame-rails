@@ -118,7 +118,12 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the average grade of the course.
   def course_average
-    (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+    percentages = self.course.cursame_percentage
+    if percentages.nil?
+      (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+    else
+     (surveys_average * percentages.surveys/100.0) + (deliveries_average * percentages.deliveries/100.0) + (discussions_average * percentages.discussions/100.0)
+    end
   end
 
   # Returns the average grade for surveys.
@@ -232,8 +237,12 @@ class MembersInCourse < ActiveRecord::Base
   end
 
   def evaluate!
-    self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
-    self.save!
+    if self.grade.blank?
+      self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
+      self.save!
+    else
+      self.grade.update_attributes(:gradable => self, :score => course_final_score, :user => self.user)
+    end
   end
 
   private
@@ -244,12 +253,7 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the cursame final score.
   def cursame_final_score
-    percentages = self.course.cursame_evaluation
-    if percentages.nil?
-      self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
-    else
-      ((self.deliveries_average * (percentages.delivery_percentages/100)) + (self.surveys_average * (percentages.survey_percentages/100)) + (self.discussions_average * (percentages.discussion_percentages/100))) * (discussion_percentages.cursame_percentages/100)
-    end
+    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
   end
 
   # Returns the criteria final score.
