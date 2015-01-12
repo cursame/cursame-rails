@@ -86,7 +86,7 @@ class Mesage < ActiveRecord::Base
   private
   def track_mixpanel_message
     event_data = {
-      'Network'   => self.user.networks.first.name,capitalize,
+      'Network'   => self.user.networks.first.name.capitalize,
       'Subdomain' => self.user.networks.first.subdomain,
       'Role'      => self.user.role_title.capitalize,
       'Type'      => self.channel.channel_type
