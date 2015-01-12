@@ -150,6 +150,11 @@ GEM
     excon (0.40.0)
     execjs (2.1.0)
     extlib (0.9.16)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     faye (1.0.1)
@@ -277,13 +282,10 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
-    metaclass (0.0.4)
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
     mixpanel-ruby (1.4.0)
-    mocha (1.1.0)
-      metaclass (~> 0.0.1)
     multi_json (1.10.1)
     multi_test (0.1.1)
     multi_xml (0.5.5)
@@ -374,22 +376,6 @@ GEM
       mime-types (>= 1.16)
     retriable (1.4.1)
     rinku (1.5.1)
-    rspec-core (3.0.1)
-      rspec-support (~> 3.0.0)
-    rspec-expectations (3.0.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.0.0)
-    rspec-mocks (3.0.1)
-      rspec-support (~> 3.0.0)
-    rspec-rails (3.0.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.0.0)
-      rspec-expectations (~> 3.0.0)
-      rspec-mocks (~> 3.0.0)
-      rspec-support (~> 3.0.0)
-    rspec-support (3.0.0)
     ruby-progressbar (1.5.1)
     ruby_parser (3.6.1)
       sexp_processor (~> 4.1)
@@ -479,6 +465,7 @@ DEPENDENCIES
   dropbox-api
   dropbox-sdk (~> 1.5.1)
   exception_notification (~> 3.0.1)
+  factory_girl_rails
   fog
   geocoder
   google-api-client
@@ -496,7 +483,6 @@ DEPENDENCIES
   mime-types
   mini_magick
   mixpanel-ruby
-  mocha
   nifty-generators
   omniauth
   omniauth-dropbox
@@ -508,7 +494,6 @@ DEPENDENCIES
   rails (= 3.2.19)
   rails_best_practices
   rails_config
-  rspec-rails
   ruby_parser
   sass (= 3.2.13)
   sass-rails (~> 3.2.3)

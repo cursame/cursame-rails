@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# gem 'rails', git: 'git://github.com/rails/rails.git'
 
-gem 'pg', :groups => [:production]
+gem 'pg', groups: [:production]
 gem 'sqlite3'
 #gema para el manejo de las sesiones
 gem 'devise', '2.2.8'
@@ -15,10 +15,10 @@ gem 'json'
 gem 'charlock_holmes'
 
 #gema para calendario y tablas espcificas
-gem "watu_table_builder", :require => "table_builder"
+gem "watu_table_builder", require: "table_builder"
 
 #gemas para uso de gestion de archivos
-gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
+gem 'carrierwave', require: ["carrierwave", "carrierwave/processing/mime_types"]
 gem 'fog'
 gem 'mime-types'
 gem 'mini_magick'
@@ -30,7 +30,7 @@ gem 'mini_magick'
  
 #gemas para conección con otros servicios
  gem 'omniauth'
- gem 'google-api-client', :require => 'google/api_client'
+ gem 'google-api-client', require: 'google/api_client'
  gem 'omniauth-google-oauth2'
 #facebookconnect
 gem 'omniauth-facebook'
@@ -47,7 +47,6 @@ end
 group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
-  
   gem "selenium-webdriver", "~> 2.35.0"
   gem "rails_best_practices"
 end
@@ -55,19 +54,16 @@ end
 group :production, :staging do
 end
 
-group :development, :test do
-  gem "mocha"
-  gem 'rspec-rails'
-
-  gem 'cucumber-rails', :require => false
-  # database_cleaner is not required, but highly recommended
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
 
 gem "haml-rails", "~> 0.4.0"
 gem 'jquery-rails'
 
-#Gem for the comments		
+#Gem for the comments   
 gem 'acts_as_commentable'
 #Gem para likes
 gem 'acts_as_votable', '~> 0.5.0'
@@ -84,7 +80,7 @@ gem 'state_machine'
 # para notifications push
 gem 'thin'
 #gem 'hooves', require: 'hooves/default'
-gem 'private_pub', :git =>'git://github.com/ryanb/private_pub.git'
+gem 'private_pub', git: 'git://github.com/ryanb/private_pub.git'
 #gem 'unicorn'
 
 #roles
@@ -95,7 +91,7 @@ gem 'jquery-fileupload-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 #nifty scaffolding
-gem "nifty-generators", :group => :development
+gem "nifty-generators", group: :development
   
 #end
 # To use Jbuilder templates for JSON
@@ -124,7 +120,7 @@ gem 'delayed_job_active_record'
 gem "daemons"
 
 # Amazon SES
-gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
+gem "aws-ses", "~> 0.5.0", require: 'aws/ses'
 
 # Exception Notifier Plugin for Rails
 gem 'exception_notification', '~> 3.0.1'

@@ -32,6 +32,14 @@ class Network < ActiveRecord::Base
   mount_uploader :logo, LogoNetworkUploader
   
 
+  def radar_token?
+    !find_setting(:radar_token).nil?
+  end
+
+  def radar_token
+    radar_token? ? find_setting(:radar_token).value : ""
+  end
+
   def find_setting(property)
     self.network_settings.find { |s| s.property == property.to_s }
   end

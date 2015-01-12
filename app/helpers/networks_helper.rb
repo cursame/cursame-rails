@@ -1,6 +1,10 @@
 module NetworksHelper
   include NetworksUtils
 
+  def radar_path
+    "http://radarescolar.com/alert_point?institution=#{current_network.radar_token}"
+  end
+
   def vlex_remote_auth
     params = { 
       account_id: current_network.find_setting(:vlex_account_id).value, 
