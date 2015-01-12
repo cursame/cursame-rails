@@ -63,6 +63,13 @@
             <%= icon 'community-w' %> Comunidad
           <% end %>
         </li>
+        <% if current_network.radar_token? %>
+          <li>
+            <%= link_to radar_path, target: '_blank' do %>
+              <%= icon 'radar' %> Radar
+            <% end %>
+          </li>
+        <% end %>
         <% if !current_network.find_setting(:vlex_sso).nil? && current_network.find_setting(:vlex_sso).value == 't' %>
           <li>
             <%= link_to vlex_remote_auth, target: '_blank' do %>
