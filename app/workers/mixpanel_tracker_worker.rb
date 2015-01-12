@@ -12,9 +12,8 @@ class MixpanelTrackerWorker
   def perform(distinct_id, event, properties={})
     tracker = mixpanel(Settings.mixpanel.token)
     tracker.track distinct_id, event, properties
-
     network = Network.find_by_subdomain(properties['Subdomain'])
-    if network.mixpanel_token?
+    if !network.nil? && network.mixpanel_token?
       tracker = mixpanel(network.find_setting(:mixpanel_token).value)
       tracker.track distinct_id, event, properties
     end
