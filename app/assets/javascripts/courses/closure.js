@@ -2,12 +2,12 @@ $(function() {
   $('input.criterium-score-js').change(function(event) {
     var $this = $(this),
         form = $this.closest('form'),
-        cursameScore = form.find('.cursame-score-js'),
+        // cursameScore = form.find('.cursame-score-js'),
         inputs = form.find('input.criterium-score-js'),
         finalScore = form.find('.final-score-js'),
         finalScoreDiv = form.find('.final-score-js'),
         criteriaScore = 0,
-        cursameCriteriumPercentage = 0,
+        // cursameCriteriumPercentage = 0,
         cursamePercentage = 100.0;
 
     inputs.each(function(index, input) {
@@ -20,13 +20,13 @@ $(function() {
     });
 
     console.log(cursamePercentage);
-    var cursameScore = (cursamePercentage / 100.0 ) * parseFloat(cursameScore.text()),
-        finalScore = criteriaScore + cursameScore;
+    // var cursameScore = (cursamePercentage / 100.0 ) * parseFloat(cursameScore.text()),
+    //     finalScore = criteriaScore + cursameScore;
 
-    if ( finalScore > 10 || finalScore < 0 || criteriaScore < 0 || criteriaScore > 10 ) {
+    if (criteriaScore < 0 || criteriaScore > 10 ) {
       Notice('error', 'La calificación final no puede ser superior a 10 o menor a 0.')
     } else {
-      finalScoreDiv.text( finalScore.toFixed(1) );
+      finalScoreDiv.text( criteriaScore.toFixed(2) );
     };
   });
 });

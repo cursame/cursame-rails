@@ -16,17 +16,55 @@ function totalEvaluation(form) {
   return total;
 }
 
+function validateNameEval(form) {
+  var fields = $(form).find('tr.course-evaluation-item-js');
+  var flag = true;
+
+  $.each(fields, function(index, field) {
+    var input = $(field).find('input.course-evaluation-item-name-js');
+    var inputDestroy = $(field).find('input._destroy');
+
+    if ( input.val() === "cursame_deliveries" ) {
+      if ( inputDestroy.val() == 'false' ) {
+        Notice('error', 'Tu criterio no puede llamarse cursame_deliveries.');
+        flag = false;
+      }
+    }
+
+    if ( input.val() === "cursame_surveys" ) {
+      if ( inputDestroy.val() == 'false' ) {
+        Notice('error', 'Tu criterio no puede llamarse cursame_surveys.');
+        flag = false;
+      }
+    }
+
+    if ( input.val() === "cursame_discussions" ) {
+      if ( inputDestroy.val() == 'false' ) {
+        Notice('error', 'Tu criterio no puede llamarse cursame_discussions.');
+        flag = false;
+      }
+    }
+
+  });
+
+    return flag;
+}
+
 $(function() {
 
   $('form.evaluation-form-js').validate({
     submitHandler: function(form) {
       var userSelectionTotal = totalEvaluation(form);
+      var validateName = validateNameEval(form);
 
-      if ( userSelectionTotal <= 100 && userSelectionTotal >= 0  ) {
-        form.submit();
+      if ( userSelectionTotal == 100 ) {
+        if ( validateName ) {
+          form.submit();
+        }
+        // form.submit();
       } else {
         Notice('error', 'Por favor verifica que el porcentaje total sea 100%.');
-        return false;
+          return false;
       }
     }
   });

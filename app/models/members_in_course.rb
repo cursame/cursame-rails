@@ -118,12 +118,18 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the average grade of the course.
   def course_average
-    percentages = self.course.cursame_percentage
-    if percentages.nil?
-      (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
-    else
-     (surveys_average * percentages.surveys/100.0) + (deliveries_average * percentages.deliveries/100.0) + (discussions_average * percentages.discussions/100.0)
-    end
+    criterium_deliveries = self.course.evaluation_criteria.find_by_name('cursame_deliveries')
+    deliveries_percentage = criterium_deliveries.nil? ? 0 : criterium_deliveries.evaluation_percentage.to_f
+
+    criterium_surveys = self.course.evaluation_criteria.find_by_name('cursame_surveys')
+    surveys_percentage = criterium_surveys.nil? ? 0 : criterium_surveys.evaluation_percentage.to_f
+
+    criterium_discussions = self.course.evaluation_criteria.find_by_name('cursame_discussions')
+    discussions_percentage = criterium_discussions.nil? ? 0 : criterium_discussions.evaluation_percentage.to_f
+
+
+    # (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+    result = (surveys_average * surveys_percentage/100) + (deliveries_average * deliveries_percentage/100) + (discussions_average * discussions_percentage/100)
   end
 
   # Returns the average grade for surveys.
