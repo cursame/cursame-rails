@@ -807,12 +807,16 @@ class User < ActiveRecord::Base
 
   private
   def track_mixpanel_user
-    event_data = {
-      'Network'   => self.networks.first.name.capitalize,
-      'Subdomain' => self.networks.first.subdomain,
-      'Role'      => self.role_title.capitalize
-    }
-    track_event self.id, 'User', event_data
+    unless self.permissionings.blank?
+      permissioning = self.permissionings.first
+      event_data = {
+        'Network' => permissioning.network.name.capitalize,
+        'Subdomain' => permissioning.network.subdomain,
+        'Role' => permissioning.role.title.capitalize
+      }
+      track_event(self.id, 'User', event_data)
+    end
+  end
   end
 
 end
