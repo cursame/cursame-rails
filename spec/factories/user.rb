@@ -14,5 +14,17 @@ FactoryGirl.define do
         user.permissionings << FactoryGirl.create(:permissioning_with_student_role, user: user, network: Network.last)
       end
     end
+
+    factory :user_with_teacher_role do
+      after(:build) do |user| 
+        user.permissionings << FactoryGirl.create(:permissioning_with_teacher_role, user: user, network: Network.last)
+      end
+    end
+
+    factory :user_with_admin_role do
+      after(:build) do |user| 
+        user.permissionings << FactoryGirl.create(:permissioning_with_admin_role, user: user, network: Network.last)
+      end
+    end
   end
 end
