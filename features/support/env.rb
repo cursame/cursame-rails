@@ -13,6 +13,7 @@ Before do
   ['admin','student','teacher','superadmin'].each do |role|
     Role.create(title: role)
   end
+  Sidekiq::Worker.clear_all
 end
 
 # Capybara defaults to CSS3 selectors rather than XPath.
