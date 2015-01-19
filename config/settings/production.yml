@@ -6,4 +6,4 @@ gospel:
   port: 80
   path:
     create_user: create_user
-    
+    create_network: create_network
