@@ -167,6 +167,21 @@ class MembersInCourse < ActiveRecord::Base
     self.accepted? && !self.owner
   end
 
+  def cursame_deliveries_percentage
+    cursame_deliveries_criterium = self.course.evaluation_criteria.find_by_name('cursame_deliveries')
+    cursame_deliveries_criterium.nil? ? 0 : cursame_deliveries_criterium.evaluation_percentage 
+  end
+
+  def cursame_surveys_percentage
+    cursame_surveys_criterium = self.course.evaluation_criteria.find_by_name('cursame_surveys')
+    cursame_surveys_criterium.nil? ? 0 : cursame_surveys_criterium.evaluation_percentage 
+  end
+
+  def cursame_discussions_percentage
+    cursame_discussions_criterium = self.course.evaluation_criteria.find_by_name('cursame_discussions')
+    cursame_discussions_criterium.nil? ? 0 : cursame_discussions_criterium.evaluation_percentage 
+  end
+
   def import(path,network,course,user_admin)
     arrayErrores = Array.new
     count = 1
