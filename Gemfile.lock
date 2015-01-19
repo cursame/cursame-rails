@@ -471,6 +471,7 @@ DEPENDENCIES
   google-api-client
   haml-rails (~> 0.4.0)
   handlebars_assets
+  httparty
   jbuilder
   jquery-fileupload-rails
   jquery-rails
