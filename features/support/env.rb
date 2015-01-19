@@ -6,6 +6,15 @@
 
 require 'cucumber/rails'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
+Before do
+  ['admin','student','teacher','superadmin'].each do |role|
+    Role.create(title: role)
+  end
+end
+
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -47,7 +56,7 @@ end
 # See the DatabaseCleaner documentation for details. Example:
 #
 #   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
-#     # { :except => [:widgets] } may not do what you expect here
+#     # { except: [:widgets] } may not do what you expect here
 #     # as Cucumber::Rails::Database.javascript_strategy overrides
 #     # this setting.
 #     DatabaseCleaner.strategy = :truncation
