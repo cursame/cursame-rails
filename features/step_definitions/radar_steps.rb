@@ -1,6 +1,6 @@
 Given(/^a network$/) do
-  @radar_network = create(:radar_network).network
-  @network = build(:network, subdomain: 'test')
+  @radar_network = create(:network_with_radar, subdomain: 'radar')
+  @network = create(:network)
 end
 
 Then(/^check if it has a radar token$/) do
