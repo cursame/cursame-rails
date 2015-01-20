@@ -539,6 +539,8 @@ Cursame30Lb::Application.routes.draw do
   match '/api/users/total',    to: 'api/users/users#total'
   match '/api/networks/',      to: 'api/networks/networks#index'
 
+  match '/api/sessions/create',to: 'api/sessions/sessions#create'
+
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/tokens/destroy', :to => 'api/tokens#destroy', :as => :logout
   match '/api/tokens/native_create_user', :to => 'api/tokens#native_create_user', :as => :native_create_user_json
