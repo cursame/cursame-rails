@@ -2,8 +2,9 @@ mixpanel:
   token: d464856986d17876b15d31a6700fb620
 gospel:
   token: 938592hhhf4hui23ui2bfbu5i5y
-  host: http://cursame-gospel.herokuapp.com
+  host: cursame-gospel.herokuapp.com
   port: 80
   path:
     create_user: create_user
     create_network: create_network
+    register_session: register_session
