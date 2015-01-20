@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*-   coding: utf-8 -*-
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
@@ -269,12 +269,13 @@ class MembersInCourse < ActiveRecord::Base
   private
   # Returns the final score of the course for this user.
   def course_final_score
-    cursame_final_score + criteria_final_score
+    # cursame_final_score + criteria_final_score
+    criteria_final_score 
   end
 
   # Returns the cursame final score.
   def cursame_final_score
-    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
+    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0) 
   end
 
   # Returns the criteria final score.
