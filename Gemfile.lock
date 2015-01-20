@@ -471,6 +471,7 @@ DEPENDENCIES
   google-api-client
   haml-rails (~> 0.4.0)
   handlebars_assets
+  httparty
   jbuilder
   jquery-fileupload-rails
   jquery-rails
@@ -491,6 +492,7 @@ DEPENDENCIES
   pdfkit
   pg
   private_pub!
+  rack-test
   rails (= 3.2.19)
   rails_best_practices
   rails_config

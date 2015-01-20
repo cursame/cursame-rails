@@ -12,7 +12,7 @@ class Api::TokensController < ApplicationController
 			render :status=>200, :json => {:response => {:message => "The request must be json.",:success => false}}, :callback => params[:callback]
 			return
 		end
-
+    
 		if email and recover
 			@user = User.find_by_email(email.downcase)
 			if @user.nil?
