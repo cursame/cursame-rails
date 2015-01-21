@@ -135,8 +135,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  after_create do
+  after_save do
     track_mixpanel_user
+    gospel_add_user
   end
 
   before_destroy do
@@ -807,12 +808,22 @@ class User < ActiveRecord::Base
 
   private
   def track_mixpanel_user
-    event_data = {
-      'Network'   => self.networks.first.name.capitalize,
-      'Subdomain' => self.networks.first.subdomain,
-      'Role'      => self.role_title.capitalize
-    }
-    track_event self.id, 'User', event_data
+    unless self.permissionings.blank?
+      permissioning = self.permissionings.first
+      event_data = {
+        'Network' => permissioning.network.name.capitalize,
+        'Subdomain' => permissioning.network.subdomain,
+        'Role' => permissioning.role.title.capitalize
+      }
+      track_event(self.id, 'User', event_data)
+    end
+  end
+
+  def gospel_add_user
+    unless self.permissionings.blank?
+      permissioning = self.permissionings.first
+      Gospel::UsersWorker.perform_async(self.email, permissioning.role.title, permissioning.network.subdomain)
+    end
   end
 
 end

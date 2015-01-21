@@ -31,6 +31,9 @@ class Network < ActiveRecord::Base
   mount_uploader :image_front, BackendFromNetworkUploader
   mount_uploader :logo, LogoNetworkUploader
   
+  after_save do
+    gospel_add_network
+  end
 
   def radar_token?
     !find_setting(:radar_token).nil?
@@ -183,6 +186,11 @@ class Network < ActiveRecord::Base
 
   def mixpanel_token?
     !self.find_setting(:mixpanel_token).nil?
+  end
+
+  private
+  def gospel_add_network
+    Gospel::NetworksWorker.perform_async(self.name, self.subdomain)
   end
 
 end
