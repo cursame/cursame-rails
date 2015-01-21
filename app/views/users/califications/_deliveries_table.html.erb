@@ -1,6 +1,11 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
     <h4><%= icon 'activity-delivery' %> Tareas</h4>
+    <% if member.course.cursame_criteria %>
+      <span class="meta-info"> 
+        <%= "Porcentaje: #{ member.cursame_deliveries_percentage } %" %>
+      </span>
+    <% end %>
   </div>
   <% unless member.deliveries_evaluation.nil? || member.deliveries_evaluation.empty? %>
     <table border="1" cellpadding="3" cellspacing="3">

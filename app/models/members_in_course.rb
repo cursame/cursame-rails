@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*-   coding: utf-8 -*-
 class MembersInCourse < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
@@ -117,8 +117,24 @@ class MembersInCourse < ActiveRecord::Base
   end
 
   # Returns the average grade of the course.
-  def course_average
+  def course_average_old
     (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+  end
+
+  # Returns the average grade of the course with evaluation criteria deliveries, surveys discussions cursame.
+  def course_average
+    criterium_deliveries = self.course.evaluation_criteria.find_by_name('cursame_deliveries')
+    deliveries_percentage = criterium_deliveries.nil? ? 0 : criterium_deliveries.evaluation_percentage.to_f
+
+    criterium_surveys = self.course.evaluation_criteria.find_by_name('cursame_surveys')
+    surveys_percentage = criterium_surveys.nil? ? 0 : criterium_surveys.evaluation_percentage.to_f
+
+    criterium_discussions = self.course.evaluation_criteria.find_by_name('cursame_discussions')
+    discussions_percentage = criterium_discussions.nil? ? 0 : criterium_discussions.evaluation_percentage.to_f
+
+
+    # (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+    result = (surveys_average * surveys_percentage/100) + (deliveries_average * deliveries_percentage/100) + (discussions_average * discussions_percentage/100)
   end
 
   # Returns the average grade for surveys.
@@ -148,12 +164,27 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the number of UserSurveys.
   def count_surveys_responses
-    surveys_evaluation.inject(0) { |count, element| count + ( element[:usery_survey].nil? ? 0 : 1 ) }
+    surveys_evaluation.inject(0) { |count, element| count + ( element[:user_survey].nil? ? 0 : 1 ) }
   end
 
   # Returns true if the MemberInCourse can be evaluated.
   def has_evaluation?
     self.accepted? && !self.owner
+  end
+
+  def cursame_deliveries_percentage
+    cursame_deliveries_criterium = self.course.evaluation_criteria.find_by_name('cursame_deliveries')
+    cursame_deliveries_criterium.nil? ? 0 : cursame_deliveries_criterium.evaluation_percentage 
+  end
+
+  def cursame_surveys_percentage
+    cursame_surveys_criterium = self.course.evaluation_criteria.find_by_name('cursame_surveys')
+    cursame_surveys_criterium.nil? ? 0 : cursame_surveys_criterium.evaluation_percentage 
+  end
+
+  def cursame_discussions_percentage
+    cursame_discussions_criterium = self.course.evaluation_criteria.find_by_name('cursame_discussions')
+    cursame_discussions_criterium.nil? ? 0 : cursame_discussions_criterium.evaluation_percentage 
   end
 
   def import(path,network,course,user_admin)
@@ -232,19 +263,27 @@ class MembersInCourse < ActiveRecord::Base
   end
 
   def evaluate!
-    self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
-    self.save!
+    if self.grade.blank?
+      self.grade = Grade.new gradable: self, score: course_final_score, user: self.user
+      self.save!
+    else
+      self.grade.update_attributes(:gradable => self, :score => course_final_score, :user => self.user)
+    end
   end
 
   private
   # Returns the final score of the course for this user.
   def course_final_score
-    cursame_final_score + criteria_final_score
+    if self.course.cursame_criteria
+      criteria_final_score
+    else
+      cursame_final_score + criteria_final_score
+    end
   end
 
   # Returns the cursame final score.
   def cursame_final_score
-    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0)
+    self.course_average_old * (self.members_in_course_criteria.inject(100) { |score, criteria| score - criteria.evaluation_criterium.evaluation_percentage } / 100.0) 
   end
 
   # Returns the criteria final score.
