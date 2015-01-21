@@ -136,8 +136,11 @@ class User < ActiveRecord::Base
   end
 
   after_save do
+    gospel_add_user unless self.sign_in_count?
+  end
+
+  after_create do
     track_mixpanel_user
-    gospel_add_user
   end
 
   before_destroy do
