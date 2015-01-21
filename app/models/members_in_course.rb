@@ -117,6 +117,11 @@ class MembersInCourse < ActiveRecord::Base
   end
 
   # Returns the average grade of the course.
+  def course_average_old
+    (course_scores.empty?) ? 10 : course_scores.inject { |sum, element| sum + element }.to_f / course_scores.size
+  end
+
+  # Returns the average grade of the course with evaluation criteria deliveries, surveys discussions cursame.
   def course_average
     criterium_deliveries = self.course.evaluation_criteria.find_by_name('cursame_deliveries')
     deliveries_percentage = criterium_deliveries.nil? ? 0 : criterium_deliveries.evaluation_percentage.to_f
@@ -269,13 +274,16 @@ class MembersInCourse < ActiveRecord::Base
   private
   # Returns the final score of the course for this user.
   def course_final_score
-    # cursame_final_score + criteria_final_score
-    criteria_final_score 
+    if self.course.cursame_criteria
+      criteria_final_score
+    else
+      cursame_final_score + criteria_final_score
+    end
   end
 
   # Returns the cursame final score.
   def cursame_final_score
-    self.course_average * (self.course.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage } / 100.0) 
+    self.course_average_old * (self.members_in_course_criteria.inject(100) { |score, criteria| score - criteria.evaluation_criterium.evaluation_percentage } / 100.0) 
   end
 
   # Returns the criteria final score.

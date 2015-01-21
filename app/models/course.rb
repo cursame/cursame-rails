@@ -309,6 +309,14 @@ class Course < ActiveRecord::Base
 
   end
 
+  def cursame_criteria
+    !self.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }.blank?  
+  end
+
+  def cursame_percentage_old
+    self.evaluation_criteria.inject(100) { |score, criteria| score - criteria.evaluation_percentage }
+  end
+
   private
   def mixpanel_track_event
     event_data = {

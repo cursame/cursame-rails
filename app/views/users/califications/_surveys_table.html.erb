@@ -1,9 +1,11 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
     <h4><%= icon 'activity-survey' %> Cuestionarios</h4>
-    <span class="meta-info"> 
-      <%= "Porcentaje: #{ member.cursame_surveys_percentage } %" %>
-    </span>
+    <% if member.course.cursame_criteria %>
+      <span class="meta-info"> 
+        <%= "Porcentaje: #{ member.cursame_surveys_percentage } %" %>
+      </span>
+    <% end %>
   </div>
   <% unless member.surveys_evaluation.nil? || member.surveys_evaluation.empty? %>
     <table border="1" cellpadding="3" cellspacing="3">
