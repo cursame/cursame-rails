@@ -5,6 +5,6 @@ gospel:
   host: cursame-gospel.herokuapp.com
   port: 80
   path:
-    create_user: create_user
-    create_network: create_network
-    register_session: register_session
+    create_user: /create_user
+    create_network: /create_network
+    register_session: /register_session
