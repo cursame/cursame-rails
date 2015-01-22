@@ -287,6 +287,8 @@ GEM
       subexec (~> 0.2.1)
     mixpanel-ruby (1.4.0)
     multi_json (1.10.1)
+    multi_logger (0.1.0)
+      railties
     multi_test (0.1.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -508,6 +510,7 @@ DEPENDENCIES
   mime-types
   mini_magick
   mixpanel-ruby
+  multi_logger
   nifty-generators
   omniauth
   omniauth-dropbox
