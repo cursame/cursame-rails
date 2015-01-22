@@ -1,11 +1,21 @@
 class Gospel::NetworksWorker
   include Sidekiq::Worker
+
   def perform(name, subdomain)
-    response = HTTParty.get(URI::HTTP.build({ 
+    uri = build_uri(name, subdomain)
+    response = nil
+    realtime = Benchmark.realtime { response = HTTParty.get(uri) }
+    Rails.logger.gospel.info "{ 'request' : '#{uri}', 'response' : '#{response.nil? ? response : response.body}', 'time' : '#{realtime}' }"
+  end
+
+  private
+
+  def build_uri(name, subdomain)
+    URI::HTTP.build({ 
       host: Settings.gospel.host,
       port: Settings.gospel.port,
       path: Settings.gospel.path.create_network,
-      query: "name=#{name}&subdomain=#{subdomain}&token_secure=#{Settings.gospel.token}"
-    }))
+      query: URI.escape("name=#{name}&subdomain=#{subdomain}&token_secure=#{Settings.gospel.token}")
+    })
   end
 end

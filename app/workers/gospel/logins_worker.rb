@@ -1,11 +1,21 @@
 class Gospel::LoginsWorker
   include Sidekiq::Worker
+
   def perform(email)
-    response = HTTParty.get(URI::HTTP.build({ 
+    uri = build_uri(email)
+    response = nil
+    realtime = Benchmark.realtime { response = HTTParty.get(uri) }
+    Rails.logger.gospel.info "{ 'request' : '#{uri}', 'response' : '#{response.nil? ? response : response.body}', 'time' : '#{realtime}' }"
+  end
+
+  private
+
+  def build_uri(email)
+    URI::HTTP.build({ 
       host: Settings.gospel.host,
       port: Settings.gospel.port,
       path: Settings.gospel.path.register_session,
-      query: "email=#{email}&token_secure=#{Settings.gospel.token}"
-    }))
+      query: URI.escape("email=#{email}&token_secure=#{Settings.gospel.token}")
+    })
   end
 end
