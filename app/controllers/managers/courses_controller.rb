@@ -27,6 +27,11 @@ class Managers::CoursesController < Managers::BaseController
       member_course = MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
       flag = member_course.save
     end
+
+    EvaluationCriterium.create(name: 'cursame_deliveries', evaluable: course, evaluation_percentage: 34)
+    EvaluationCriterium.create(name: 'cursame_surveys', evaluable: course, evaluation_percentage: 33)
+    EvaluationCriterium.create(name: 'cursame_discussions', evaluable: course, evaluation_percentage: 33)
+
     redirect_to managers_courses_path, flash: flag ? { success: 'Curso creado correctamente' } : { error: 'Ocurrio un error al crear el curso' }
   end
 

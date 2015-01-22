@@ -1066,6 +1066,11 @@ class CoursesController < ApplicationController
 
     if @course.save
       owner = MembersInCourse.create(:course_id => @course.id, :user_id => current_user.id, :accepted => true, :owner => true, :network_id => current_network.id )
+      
+      EvaluationCriterium.create(name: 'cursame_deliveries', evaluable: @course, evaluation_percentage: 34)
+      EvaluationCriterium.create(name: 'cursame_surveys', evaluable: @course, evaluation_percentage: 33)
+      EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course, evaluation_percentage: 33)
+
       redirect_to course_path(@course), :notice => "Curso clonado correctamente."
     end
   end
