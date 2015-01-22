@@ -5,7 +5,7 @@ class Gospel::UsersWorker
     uri = build_uri(email, role, subdomain)
     response = nil
     realtime = Benchmark.realtime { response = HTTParty.get(uri) }
-    Rails.logger.gospel.info "{ 'request' : '#{uri}', 'response' : '#{response.nil? ? response : response.body}', 'time' : '#{realtime}' }"
+    Rails.logger.gospel.info "{ 'request' : '#{uri}', 'response' : '#{response.nil? ? response : response.body}', 'time' : '#{(realtime*1000).round} ms' }"
   end
 
   private
