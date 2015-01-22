@@ -30,4 +30,9 @@ module ApplicationHelper
   def evaluation_score(score)
     number_with_precision(score, precision: 1, strip_insignificant_zeros: true)
   end
+
+  def cursame_percentage(course)
+    cursame_criteria = course.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }
+    cursame_criteria.inject(0) { |sum, criterium| sum + criterium.evaluation_percentage}
+  end
 end

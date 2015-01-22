@@ -6,4 +6,10 @@ class Grade < ActiveRecord::Base
 	validates_associated :user
 	validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
 
+  after_update do
+    if self.gradable_type == 'MembersInCourseCriterium'
+      self.gradable.evaluate_member!
+    end
+  end
+
 end

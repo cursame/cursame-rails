@@ -31,7 +31,7 @@ class Network < ActiveRecord::Base
   mount_uploader :image_front, BackendFromNetworkUploader
   mount_uploader :logo, LogoNetworkUploader
   
-  after_save do
+  after_create do
     gospel_add_network
   end
 

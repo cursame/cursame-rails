@@ -14,7 +14,7 @@
                         = avatar('user', '45', "no", member.user.id, "avatar", "no", "no")
                       .member-calification-main
                         %h5= member.user.name
-                        %span.member-score Calificacion: #{evaluation_score member.course_average}
+                        %span.member-score Calificacion: #{evaluation_score (@course.cursame_criteria ? member.course_average : member.course_average_old)}
             - else
               .no-content-section
                 %h6 Este curso no tiene miembros
@@ -36,16 +36,19 @@
                       %tbody
                         %tr
                           %td
-                            %h4 Cursame
+                            %h4 Cúrsame
+                            %span.meta-info Porcentaje: #{ @course.cursame_criteria ? cursame_percentage(member.course) : member.course.cursame_percentage_old }
                           %td
-                            %span.score.cursame-score-js= evaluation_score member.course_average
+                            %span.score.cursame-score-js= evaluation_score (@course.cursame_criteria ? member.course_average : (member.course_average_old * (member.course.cursame_percentage_old/100.0)))
                         - unless member.members_in_course_criteria.blank?
-                          - member.members_in_course_criteria.each do |criterium|
+                          - criteria_course = member.members_in_course_criteria.reject {|criterium_course| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium_course.evaluation_criterium.name }
+                          - criteria_course.each do |criterium|
                             %tr
                               %td
                                 %h4= criterium.evaluation_criterium.name
+                                %span.meta-info Porcentaje: #{ criterium.evaluation_criterium.evaluation_percentage } · Calificación: #{ evaluation_score criterium.grade.score } 
                               %td
-                                %span.score= criterium.grade.score
+                                %span.score= evaluation_score (criterium.grade.score * criterium.evaluation_criterium.evaluation_percentage/100.0)
                         %tr.final-score
                           %td
                             %h4 Calificación Final

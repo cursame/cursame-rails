@@ -242,6 +242,10 @@ class CoursesController < ApplicationController
           @miembro.save
         end
 
+        EvaluationCriterium.create(name: 'cursame_deliveries', evaluable: @course)
+        EvaluationCriterium.create(name: 'cursame_surveys', evaluable: @course)
+        EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course)
+
         redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
 
       else

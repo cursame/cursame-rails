@@ -23,32 +23,32 @@
                       %th Criterio
                       %th Calificación Obtenida
                   %tbody
-                    %tr
-                      %td.criterium
-                        %h4 Cursame
-                        .complementary-activities
-                          %span.meta-info Tareas:
-                          - unless @course.deliveries.empty?
-                            %p= "Entrego #{ @user_course.count_deliveries_responses } de #{ @course.deliveries.count }  ·  Calificación: #{ evaluation_score @user_course.deliveries_average }"
-                          - else
-                            %p No hay tareas en este curso.
+                    / %tr
+                    /   %td.criterium
+                    /     %h4 Cursame
+                    /     .complementary-activities
+                    /       %span.meta-info Tareas:
+                    /       - unless @course.deliveries.empty?
+                    /         %p= "Entrego #{ @user_course.count_deliveries_responses } de #{ @course.deliveries.count }  ·  Calificación: #{ evaluation_score @user_course.deliveries_average }"
+                    /       - else
+                    /         %p No hay tareas en este curso.
 
-                        .complementary-activities
-                          %span.meta-info Cuestionarios:
-                          - unless @course.surveys.empty?
-                            %p= "Contesto #{ @user_course.count_surveys_responses } de #{ @course.surveys.count }  ·  Calificación #{ evaluation_score @user_course.surveys_average }"
-                          - else
-                            %p No hay cuestionarios en este curso.
+                    /     .complementary-activities
+                    /       %span.meta-info Cuestionarios:
+                    /       - unless @course.surveys.empty?
+                    /         %p= "Contesto #{ @user_course.count_surveys_responses } de #{ @course.surveys.count }  ·  Calificación #{ evaluation_score @user_course.surveys_average }"
+                    /       - else
+                    /         %p No hay cuestionarios en este curso.
 
-                        .complementary-activities
-                          %span.meta-info Discusiones:
-                          - unless @course.discussions.empty?
-                            %p= "Participo en #{ @user_course.count_discussions_responses } de #{ @course.evaluables_discussiones.count }  ·  Calificación #{ evaluation_score @user_course.discussions_average }"
-                          - else
-                            %p No hay discusiones en este curso.
+                    /     .complementary-activities
+                    /       %span.meta-info Discusiones:
+                    /       - unless @course.discussions.empty?
+                    /         %p= "Participo en #{ @user_course.count_discussions_responses } de #{ @course.evaluables_discussiones.count }  ·  Calificación #{ evaluation_score @user_course.discussions_average }"
+                    /       - else
+                    /         %p No hay discusiones en este curso.
 
-                      %td
-                        %span.score.cursame-score-js= evaluation_score @user_course.course_average
+                    /   %td
+                    /     %span.score.cursame-score-js= evaluation_score @user_course.course_average
 
                     - if @user_course.members_in_course_criteria.empty?
                       - @course.evaluation_criteria.count.times do
@@ -58,14 +58,43 @@
                     - @course.evaluation_criteria.each_with_index do |course_criterium, index|
                       %tr
                         %td.middle.criterium
-                          %h4= course_criterium.name
-                          %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                          - if course_criterium.name == 'cursame_deliveries'
+                            %h2
+                              %span= icon 'activity-delivery'
+                              Tareas
+                            %p= "Entrego #{ @user_course.count_deliveries_responses } de #{ @course.deliveries.count }"
+                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                          - elsif course_criterium.name == 'cursame_surveys'
+                            %h2
+                              %span= icon 'activity-survey'
+                              Cuestionarios
+                            %p= "Contesto #{ @user_course.count_surveys_responses } de #{ @course.surveys.count }"
+                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                          - elsif course_criterium.name == 'cursame_discussions'
+                            %h2
+                              %span= icon 'activity-discussion'
+                              Discusiones
+                            %p= "Participo en #{ @user_course.count_discussions_responses } de #{ @course.evaluables_discussiones.count }"
+                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                          - else
+                            %h4= course_criterium.name
+                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
                         %td
                           = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
                             = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
                             = ff.hidden_field :members_in_course_id, value: @user_course.id
                             = ff.fields_for :grade do |score_fields|
-                              .score= score_fields.text_field :score, value: evaluation_score(score_fields.object.score), placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                              -if course_criterium.name == 'cursame_deliveries'
+                                %span.score.cursame-score-js= evaluation_score @user_course.deliveries_average
+                                =score_fields.hidden_field :score, value: evaluation_score(@user_course.deliveries_average), class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                              -elsif course_criterium.name == 'cursame_surveys'
+                                %span.score.cursame-score-js= evaluation_score @user_course.surveys_average
+                                =score_fields.hidden_field :score, value: evaluation_score(@user_course.surveys_average), class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                              -elsif course_criterium.name == 'cursame_discussions'
+                                %span.score.cursame-score-js= evaluation_score @user_course.discussions_average
+                                =score_fields.hidden_field :score, value: evaluation_score(@user_course.discussions_average),class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                              -else
+                                .score= score_fields.text_field :score, value: evaluation_score(score_fields.object.score), placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
                     %tr.final-score
                       %td
                         %h4 Calificación Final
