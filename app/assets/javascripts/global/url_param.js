@@ -13,9 +13,9 @@ $URL.param = function(name) {
 }
 
 $(function(){
-  var notice = $URL.param("notice"), 
+  var alert = $URL.param("alert"), 
       message = $URL.param("message");
-  if (notice != null && message != null) {
-    Notice(notice, message);
+  if (alert != null && message != null) {
+    Notice(alert, message);
   }
 });
