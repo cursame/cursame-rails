@@ -65,7 +65,6 @@ end
 group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'selenium-webdriver', '~> 2.35.0'
   gem 'rails_best_practices'
 end
 
@@ -77,4 +76,6 @@ group :test do
   gem 'rspec-expectations'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'selenium-webdriver', '~> 2.44.0'
+  gem 'capybara-webkit'
 end
