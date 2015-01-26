@@ -52,7 +52,7 @@ Feature: Authentication token integration
     }
 
   	"""
-    
+
 
   Scenario: Appears email, not password
     Given a JSON request with nil or empty params like:
@@ -85,3 +85,16 @@ Feature: Authentication token integration
     }
 
   	"""
+
+  Scenario: Request haven't CONTENT_TYPE equal to application/json
+    Given a request with URL params.
+    Then the JSON request shouldn't pass to process the data, and response should be like:
+    """
+    {
+      "status" : "ERROR",
+      "description" : "The request must be JSON",
+      "response" : {}
+    }
+
+    """
+
