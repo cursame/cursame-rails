@@ -4,7 +4,6 @@ class Api::Sessions::SessionsController < ApplicationController
   respond_to :json
 
   def create
-    #puts "Hola #{request.headers["CONTENT_TYPE"] == 'application/json'}"
     if request.headers["CONTENT_TYPE"] != 'application/json'
       render status => 400, :json => {:status => "ERROR", :description => "The request must be JSON" ,:response => {}}, :callback => params[:callback]
       return
