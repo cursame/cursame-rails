@@ -1,5 +1,13 @@
+def create_user
+  @user = create(:user)
+end
+
+Given(/^a User$/) do
+  create_user
+end
+
 Given(/^a JSON request with email and password are correct like:$/) do |string|
-  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'isaac+student@cursa.me','password' => 'cursame7'}.to_json, :headers => {'Content-Type' => 'application/json'})
+  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me','password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
 Then(/^respond a JSON with token and subdomain like:$/) do |string|
@@ -7,7 +15,7 @@ Then(/^respond a JSON with token and subdomain like:$/) do |string|
 end
 
 Given(/^a JSON request with email correct and password incorrect like:$/) do |string|
-  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'isaac+student@cursa.me','password' => 'cursame'}.to_json, :headers => {'Content-Type' => 'application/json'})
+  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me','password' => 'cursame'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
 Then(/^respond a JSON response would have to be with 'Password incorrect' description:$/) do |string|
@@ -15,7 +23,7 @@ Then(/^respond a JSON response would have to be with 'Password incorrect' descri
 end
 
 Given(/^a JSON request with email incorrect and password correct like:$/) do |string|
-  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'isaac+studen@cursa.me','password' => 'cursame7'}.to_json, :headers => {'Content-Type' => 'application/json'})
+  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factor@cursa.me','password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
 Then(/^the JSON response would have to be with 'Email incorrect' description:$/) do |string|
@@ -23,8 +31,8 @@ Then(/^the JSON response would have to be with 'Email incorrect' description:$/)
 end
 
 Given(/^a JSON request with nil or empty params like:$/) do |string|
-  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'isaac+student@cursa.me'}.to_json, :headers => {'Content-Type' => 'application/json'})
-  @req_w_p = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'password' => 'cursame'}.to_json, :headers => {'Content-Type' => 'application/json'})
+  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me'}.to_json, :headers => {'Content-Type' => 'application/json'})
+  @req_w_p = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
 Then(/^the JSON response would have to be with 'Need password to process de request' description:$/) do |string|
