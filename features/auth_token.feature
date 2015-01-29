@@ -4,11 +4,7 @@ Feature: Authentication token integration
 
   Scenario: Email and password are correct
     Given a User
-    Given a JSON request with email and password are correct like:
-  	"""
-  	{"email" : "isaac@cursa.me", "password": "pinocho"}
-
-  	"""
+    Given a JSON request with email and password are correct
   	Then respond a JSON with token and subdomain like:
   	"""
   	{
@@ -24,11 +20,7 @@ Feature: Authentication token integration
 
   Scenario: Email correct, password incorrect
     Given a User
-    Given a JSON request with email correct and password incorrect like:
-  	"""
-  	{"email" : "isaac@cursa.me", "password": "pinochos"}
-
-  	"""
+    Given a JSON request with email correct and password incorrect
   	Then respond a JSON response would have to be with 'Password incorrect' description:
   	"""
   	{
@@ -41,11 +33,7 @@ Feature: Authentication token integration
 
   Scenario: Email incorrect, password correct
     Given a User
-    Given a JSON request with email incorrect and password correct like:
-  	"""
-  	{"email" : "isaacs@cursa.me", "password": "pinocho"}
-
-  	"""
+    Given a JSON request with email incorrect and password correct
   	Then the JSON response would have to be with 'Email incorrect' description:
   	"""
   	{
@@ -59,11 +47,7 @@ Feature: Authentication token integration
 
   Scenario: Appears email, not password
     Given a User
-    Given a JSON request with nil or empty params like:
-  	"""
-  	{"email" : "isaac@cursa.me"}
-
-  	"""
+    Given a JSON request with nil or empty params
   	Then the JSON response would have to be with 'Need password to process de request' description:
   	"""
   	{
@@ -76,11 +60,7 @@ Feature: Authentication token integration
 
   Scenario: Email does not appear, password appear
     Given a User
-    Given a JSON request with nil or empty params like:
-  	"""
-  	{"password": "pinocho"}
-
-  	"""
+    Given a JSON request with nil or empty params
   	Then the JSON response would have to be with 'Need email to process de request' description:
   	"""
   	{

@@ -6,7 +6,7 @@ Given(/^a User$/) do
   create_user
 end
 
-Given(/^a JSON request with email and password are correct like:$/) do |string|
+Given(/^a JSON request with email and password are correct$/) do
   @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me','password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
@@ -14,7 +14,7 @@ Then(/^respond a JSON with token and subdomain like:$/) do |string|
   JSON.parse(@req_c.body) == JSON.parse(string)
 end
 
-Given(/^a JSON request with email correct and password incorrect like:$/) do |string|
+Given(/^a JSON request with email correct and password incorrect$/) do
   @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me','password' => 'cursame'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
@@ -22,7 +22,7 @@ Then(/^respond a JSON response would have to be with 'Password incorrect' descri
   assert_equal(JSON.parse(string),JSON.parse(@req_c.body))
 end
 
-Given(/^a JSON request with email incorrect and password correct like:$/) do |string|
+Given(/^a JSON request with email incorrect and password correct$/) do
   @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factor@cursa.me','password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
@@ -30,7 +30,7 @@ Then(/^the JSON response would have to be with 'Email incorrect' description:$/)
   assert_equal(JSON.parse(string),JSON.parse(@req_c.body))
 end
 
-Given(/^a JSON request with nil or empty params like:$/) do |string|
+Given(/^a JSON request with nil or empty params$/) do
   @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me'}.to_json, :headers => {'Content-Type' => 'application/json'})
   @req_w_p = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
