@@ -10,8 +10,14 @@ Given(/^a JSON request with email and password are correct$/) do
   @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create', :body => {'email' => 'desarrollo+factory@cursa.me','password' => 'cursameFactory'}.to_json, :headers => {'Content-Type' => 'application/json'})
 end
 
-Then(/^respond a JSON with token and subdomain like:$/) do |string|
-  JSON.parse(@req_c.body) == JSON.parse(string)
+Then(/^respond a JSON with token and subdomain$/) do
+  json = JSON.parse(@req_c.body)
+  refute_nil json['status']
+  refute_nil json['description']
+  refute_nil json['response']
+  refute_nil json['response']['token']
+  refute_nil json['response']['subdomain']
+  assert_equal json['response']['subdomain'], "factory"
 end
 
 Given(/^a JSON request with email correct and password incorrect$/) do
@@ -19,7 +25,7 @@ Given(/^a JSON request with email correct and password incorrect$/) do
 end
 
 Then(/^respond a JSON response would have to be with 'Password incorrect' description:$/) do |string|
-  assert_equal(JSON.parse(string),JSON.parse(@req_c.body))
+  assert_equal(JSON.parse(string), JSON.parse(@req_c.body))
 end
 
 Given(/^a JSON request with email incorrect and password correct$/) do

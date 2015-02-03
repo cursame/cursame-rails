@@ -5,18 +5,7 @@ Feature: Authentication token integration
   Scenario: Email and password are correct
     Given a User
     Given a JSON request with email and password are correct
-  	Then respond a JSON with token and subdomain like:
-  	"""
-  	{
-      "status" : "OK",
-      "description" : "The request has succeeded",
-      "response" : {
-        "token" : "token_aqui",
-        "subdomain" : "version4"
-      }
-    }
-
-  	"""
+  	Then respond a JSON with token and subdomain
 
   Scenario: Email correct, password incorrect
     Given a User
