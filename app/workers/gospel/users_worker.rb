@@ -10,12 +10,12 @@ class Gospel::UsersWorker
 
   private
 
-  def build_uri(email, role, subdomain)
+  def build_uri(email, role, network_name, subdomain)
     URI::HTTP.build({ 
       host: Settings.gospel.host,
       port: Settings.gospel.port,
       path: Settings.gospel.path.create_user,
-      query: URI.escape("email=#{email}&role=#{role}&network_name=#{subdomain}&type_network=free&token_secure=#{Settings.gospel.token}")
+      query: URI.escape("email=#{email}&role=#{role}&network_name=#{network_name}&subdomain=#{subdomain}&type_network=pro&token_secure=#{Settings.gospel.token}")
     })
   end
 end

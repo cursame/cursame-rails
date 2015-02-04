@@ -825,7 +825,7 @@ class User < ActiveRecord::Base
   def gospel_add_user
     unless self.permissionings.blank?
       permissioning = self.permissionings.first
-      Gospel::UsersWorker.perform_async(self.email, permissioning.role.title, permissioning.network.subdomain)
+      Gospel::UsersWorker.perform_async(self.email, permissioning.role.title, permissioning.network.name, permissioning.network.subdomain)
     end
   end
 
