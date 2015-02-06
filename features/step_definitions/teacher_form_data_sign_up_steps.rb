@@ -6,6 +6,6 @@ When(/^we test the "(.*?)" Model$/) do |model_name|
   @test_model = Object.const_get(model_name).new
 end
 
-Then(/^the Test Model should have atrribute "(.*?)"$/) do |attribute|
+Then(/^the Test Model should have attribute "(.*?)"$/) do |attribute|
   assert_equal(true, @test_model.has_attribute?(attribute))
 end
