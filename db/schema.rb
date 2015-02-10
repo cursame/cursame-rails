@@ -632,7 +632,7 @@ ActiveRecord::Schema.define(:version => 20150210201438) do
     t.boolean  "tour_course",                           :default => false
     t.boolean  "form_before_tour",                      :default => false
     t.boolean  "self_register",                         :default => false
-    t.integer  "gender",                 :limit => 255
+    t.integer  "gender",                 :limit => 255, :default => 0,     :null => false
     t.date     "birthday"
   end
 
