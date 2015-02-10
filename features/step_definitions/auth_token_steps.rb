@@ -49,11 +49,6 @@ Then(/^the JSON response would have to be with 'Need email to process de request
   assert_equal(JSON.parse(string),JSON.parse(@req_w_p.body))
 end
 
-
-Given(/^a request with URL params\.$/) do
-  @req_c = HTTParty.post('http://pruebas.lvh.me:3000/api/sessions/create?email=isaac@cursa.me&password=cursame7')
-end
-
 Then(/^the JSON request shouldn't pass to process the data, and response should be like:$/) do |string|
   assert_equal(JSON.parse(string),JSON.parse(@req_c.body))
 end
