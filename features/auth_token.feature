@@ -17,7 +17,6 @@ Feature: Authentication token integration
       "description" : "Password incorrect",
       "response" : {}
     }
-
   	"""
 
   Scenario: Email incorrect, password correct
@@ -30,9 +29,7 @@ Feature: Authentication token integration
       "description" : "Email incorrect",
       "response" : {}
     }
-
   	"""
-
 
   Scenario: Appears email, not password
     Given a User
@@ -44,7 +41,6 @@ Feature: Authentication token integration
       "description" : "Need password to process de request",
       "response" : {}
     }
-
   	"""
 
   Scenario: Email does not appear, password appear
@@ -57,18 +53,4 @@ Feature: Authentication token integration
       "description" : "Need email to process de request",
       "response" : {}
     }
-
   	"""
-
-  Scenario: Request haven't CONTENT_TYPE equal to application/json
-    Given a request with URL params.
-    Then the JSON request shouldn't pass to process the data, and response should be like:
-    """
-    {
-      "status" : "ERROR",
-      "description" : "The request must be JSON",
-      "response" : {}
-    }
-
-    """
-

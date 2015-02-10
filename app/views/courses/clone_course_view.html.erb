@@ -97,17 +97,17 @@ background-white
 
 							<div class="form-group">
 				        <div class="form-group-label">
-									<label><%= check_box_tag "deliveries[#{index}][id]", delivery_id, false, class: "toggle-activable" %> <%= delivery.title %></label>
+									<label><%= check_box_tag "deliveries[#{index}][id]", delivery_id, true, class: "toggle-activable", :style => 'visibility: hidden' %> <%= delivery.title %></label>
 				        </div>
 				        <div class="form-group-main">
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: 'Fecha de publicación', id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent" %>
+				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: 'Fecha de publicación', id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent required" %>
 				            </div>
 				          </div>
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: 'Fecha Entrega', id: "fecha_entrega_delivery_" + delivery_id, class: "dependent" %>
+				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: 'Fecha Entrega', id: "fecha_entrega_delivery_" + delivery_id, class: "dependent required" %>
 				            </div>
 				          </div>
 				        </div>
@@ -169,19 +169,19 @@ background-white
 							<div class="form-group">
 				        <div class="form-group-label">
 				          <label>
-				          	<%= check_box_tag "surveys[#{index}][id]", survey.id, false, class: "toggle-activable" %>
+				          	<%= check_box_tag "surveys[#{index}][id]", survey.id, true, class: "toggle-activable", :style => 'visibility: hidden' %>
 				          	<%= survey.name %>
 			          	</label>
 				        </div>
 				        <div class="form-group-main">
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				            	<%= text_field_tag "surveys[#{index}][publish_date]", "", placeholder: "Fecha publicación", id: "fecha_publicacion_survey_#{survey_id}", class: "dependent" %>
+				            	<%= text_field_tag "surveys[#{index}][publish_date]", "", placeholder: "Fecha publicación", id: "fecha_publicacion_survey_#{survey_id}", class: "required dependent" %>
 				            </div>
 				          </div>
 				          <div class="f-col f-col-5">
 				            <div class="form-unit">
-				              <%= text_field_tag "surveys[#{index}][end_date]", "", placeholder: "Fecha Entrega", id: "fecha_entrega_survey_#{survey_id}", class: "dependent" %>
+				              <%= text_field_tag "surveys[#{index}][end_date]", "", placeholder: "Fecha Entrega", id: "fecha_entrega_survey_#{survey_id}", class: "required dependent" %>
 				            </div>
 				          </div>
 				        </div>
