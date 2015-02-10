@@ -46,21 +46,21 @@ Feature: Admin and Teacher users share wufoo forms with other users
      Then the signed in user should be able to share a wufoo form with the students and teachers in the course
 
   @student_signed_in
-  Scenario: A student responds a network wufoo form
+  Scenario: A student submits a network wufoo form
     Given a network wufoo form
      Then the signed in user answers the wuffo form
 
   @teacher_signed_in
-  Scenario: A teacher responds a network wufoo form
+  Scenario: A teacher submits a network wufoo form
     Given a network wufoo form
      Then the signed in user answers the wuffo form
 
   @student_signed_in
-  Scenario: A student responds a course wufoo form
+  Scenario: A student submits a course wufoo form
     Given a course wufoo form
      Then the signed in user answers the wuffo form
 
   @teacher_signed_in
-  Scenario: A teacher responds a course wufoo form
+  Scenario: A teacher submits a course wufoo form
     Given a course wufoo form
      Then the signed in user answers the wuffo form
