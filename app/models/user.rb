@@ -810,6 +810,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def gender?
+    if self.gender == 0
+      return "No se sabe"
+    elsif self.gender == 1
+      return "Hombre"
+    elsif self.gender == 2
+      return "Mujer"
+    else
+      return "No aplicable"
+    end
+  end
+
   private
   def track_mixpanel_user
     unless self.permissionings.blank?
