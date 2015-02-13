@@ -61,6 +61,17 @@
 
             <div class="form-group">
               <div class="form-group-label">
+                <%= f.label :birthday, 'Fecha de nacimiento:' %>
+              </div>
+              <div class="form-group-main">
+                <div class="form-unit">
+                  <%= f.text_field :birthday, :placeholder=>'Día/Mes/Año', :as => :datepicker, required: "required", value: "" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-group-label">
                 <%= f.label :gender, 'Género:' %>
               </div>
               <div class="form-group-main">
@@ -155,7 +166,19 @@
           }
         }
       });
-  });  
+    });
+
+    $(function() {
+      $( "#user_birthday" ).datepicker({
+          inline: true,
+          maxDate: new Date(),
+          showOtherMonths: true,
+          dateFormat: 'dd/mm/yy',
+          monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+          dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+      });
+    });
+
   $(document).ready(function(){
     if($("#user_permissionings_attributes_1_network_id").length == 1) {
        $('#user_permissionings_attributes_1_network_id').remove();
