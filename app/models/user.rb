@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     :twitter_link, :update, :comments, :networks, :assets,
     :friendships, :friends, :registerable, :image_avatarx,
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
-    :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register, :gender
+    :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register, :gender, :birthday
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
