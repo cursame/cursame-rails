@@ -592,8 +592,8 @@ ActiveRecord::Schema.define(:version => 20150210201438) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",                    :default => "",    :null => false
+    t.string   "email",                                 :default => "",           :null => false
+    t.string   "encrypted_password",                    :default => "",           :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -602,8 +602,8 @@ ActiveRecord::Schema.define(:version => 20150210201438) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "description"
@@ -632,8 +632,8 @@ ActiveRecord::Schema.define(:version => 20150210201438) do
     t.boolean  "tour_course",                           :default => false
     t.boolean  "form_before_tour",                      :default => false
     t.boolean  "self_register",                         :default => false
-    t.integer  "gender",                 :limit => 255, :default => 0,     :null => false
-    t.date     "birthday"
+    t.integer  "gender",                 :limit => 255, :default => 0,            :null => false
+    t.date     "birthday",                              :default => '2015-02-12', :null => false
   end
 
   add_index "users", ["email", "subdomain"], :name => "index_users_on_email_and_subdomain", :unique => true
