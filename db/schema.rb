@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150205183720) do
+ActiveRecord::Schema.define(:version => 20150216170536) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -675,6 +675,8 @@ ActiveRecord::Schema.define(:version => 20150205183720) do
     t.integer  "form_id"
     t.integer  "showable_id"
     t.string   "showable_type"
+    t.datetime "init_date"
+    t.datetime "term_date"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -690,5 +692,15 @@ ActiveRecord::Schema.define(:version => 20150205183720) do
 
   add_index "wufoo_responses", ["user_id"], :name => "index_wufoo_responses_on_user_id"
   add_index "wufoo_responses", ["wufoo_form_id"], :name => "index_wufoo_responses_on_wufoo_form_id"
+
+  create_table "wufoo_settings", :force => true do |t|
+    t.integer  "network_id"
+    t.string   "api_key"
+    t.string   "acount_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "wufoo_settings", ["network_id"], :name => "index_wufoo_settings_on_network_id"
 
 end
