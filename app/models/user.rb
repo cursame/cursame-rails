@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
   # roles
   has_many :permissionings, :dependent => :destroy
   has_many :roles, :through => :permissionings
+  has_many :user_properties, :dependent => :destroy
 
   #nested atributes for forms asets
 
