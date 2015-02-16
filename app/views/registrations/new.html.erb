@@ -66,12 +66,12 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.text_field :last_name, placeholder: "Número de estudiantes que atiende", required: "required", autocomplete: "off" %>
+                  <%= f.number_field :last_name, placeholder: "Número de estudiantes que atiende", required: "required", autocomplete: "off", min: 1 %>
                 </div>
               </div>
             </div>
-            <% else %>
-            <% end %>
+          <% else %>
+          <% end %>
 
             <div class="form-group">
               <div class="form-group-label">
