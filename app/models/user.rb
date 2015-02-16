@@ -823,6 +823,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def find_property(property)
+    self.user_properties.find { |s| s.property == property.to_s }
+  end
+
   private
   def track_mixpanel_user
     unless self.permissionings.blank?
