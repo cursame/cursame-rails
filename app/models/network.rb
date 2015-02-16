@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 class Network < ActiveRecord::Base
   has_one :network_template#, :dependent => :destroy
+  has_one :wufoo_setting, dependent: :destroy
+
   has_many :permissionings, :dependent => :destroy
   has_many :users, :through => :permissionings
   has_many :discussions, :dependent => :destroy
@@ -26,7 +28,8 @@ class Network < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
-  
+  accepts_nested_attributes_for :wufoo_setting
+
   #uploader de imagenes de fondo de redes
   
   mount_uploader :image_front, BackendFromNetworkUploader
