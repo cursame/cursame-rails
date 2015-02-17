@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
     :twitter_link, :update, :comments, :networks, :assets,
     :friendships, :friends, :registerable, :image_avatarx,
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
-    :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register, :gender, :birthday
+    :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids,
+    :self_register, :gender, :birthday, :user_properties_attributes
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -56,7 +57,7 @@ class User < ActiveRecord::Base
   has_many :audiences, dependent: :destroy
   has_many :channels, through: :audiences
   has_many :grades, dependent: :destroy
-  has_many :user_properties
+  has_many :user_properties, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
@@ -78,6 +79,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :networks
+  accepts_nested_attributes_for :user_properties
   # accepts_nested_attributes_for :course_files
 
 
