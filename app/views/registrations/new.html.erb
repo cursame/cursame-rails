@@ -59,19 +59,23 @@
               </div>
             </div>
 
-          <% if request.env['PATH_INFO'] == '/teachers/sign_up' %>
-            <div class="form-group">
-              <div class="form-group-label">
-                <%= f.label :num_of_students, 'Número de alumnos que atiende:' %>
-              </div>
-              <div class="form-group-main">
-                <div class="form-unit">
-                  <%= f.number_field :last_name, placeholder: "Número de estudiantes que atiende", required: "required", autocomplete: "off", min: 1 %>
+            <% if request.env['PATH_INFO'] == '/teachers/sign_up' %>
+              <div class="form-group">
+                <div class="form-group-label">
+                  <%= f.label :num_of_students, 'Número de alumnos que atiende:' %>
+                </div>
+                <div class="form-group-main">
+                  <div class="form-unit">
+                    <% usr_properties = @user.user_properties.build %>
+                    <%= f.fields_for :user_properties do |user_p|%>
+                      <%= user_p.hidden_field :property, value: 'number_of_students'%>
+                      <%= user_p.number_field :value, placeholder: "Número de estudiantes que atiende", required: "required", autocomplete: "off", min: 1 %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% else %>
-          <% end %>
+            <% else %>
+            <% end %>
 
             <div class="form-group">
               <div class="form-group-label">
