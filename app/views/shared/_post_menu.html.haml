@@ -23,7 +23,7 @@
               = icon('survey-post')
               Cuestionario
               %span.tip
-          - permitted_to? :create, :forms do
+          - current_network.wufoo_settings? and permitted_to? :create, :forms do
             .tab{"data-id-target" => "wufoo-tab-content"}
               = icon('wufoo-post')
               Formulario
@@ -42,7 +42,7 @@
           - permitted_to? :create, :surveys do
             #survey-tab-content.survey-form-area-style.tab-content
               = render partial: '/surveys/form', locals: {active_edit: @active_edit, in_type: 'survey', in_form: in_form}
-          - permitted_to? :create, :forms do
+          - current_network.wufoo_settings? and permitted_to? :create, :forms do
             #wufoo-tab-content.tab-content
               = render partial: '/forms/create'
   - else

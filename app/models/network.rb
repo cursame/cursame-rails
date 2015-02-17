@@ -192,9 +192,25 @@ class Network < ActiveRecord::Base
     !self.find_setting(:mixpanel_token).nil?
   end
 
+  def wufoo_settings?
+    !self.wufoo_setting.nil? && !self.wufoo_setting.acount_name.blank? && !self.wufoo_setting.api_key.blank?
+  end
+
+  def wufoo_forms
+    begin
+      wufoo.forms
+    rescue Errors::MissingWufooSettingsError, SocketError
+      []
+    end
+  end
+
   private
   def gospel_add_network
     Gospel::NetworksWorker.perform_async(self.name, self.subdomain)
   end
 
+  def wufoo
+    raise Errors::MissingWufooSettingsError unless wufoo_settings?
+    WuParty.new self.wufoo_setting.acount_name, self.wufoo_setting.api_key
+  end
 end
