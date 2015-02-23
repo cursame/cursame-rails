@@ -3,7 +3,7 @@ class CreateWufooSettings < ActiveRecord::Migration
     create_table :wufoo_settings do |t|
       t.integer :network_id
       t.string :api_key
-      t.string :acount_name
+      t.string :subdomain
 
       t.timestamps
     end
