@@ -1,7 +1,7 @@
 class CreateWufooForms < ActiveRecord::Migration
   def change
     create_table :wufoo_forms do |t|
-      t.integer :form_id
+      t.string :identifier
       t.references :showable, polymorphic: true, index: true
       t.datetime :init_date
       t.datetime :term_date

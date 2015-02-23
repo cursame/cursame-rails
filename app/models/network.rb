@@ -193,7 +193,7 @@ class Network < ActiveRecord::Base
   end
 
   def wufoo_settings?
-    !self.wufoo_setting.nil? && !self.wufoo_setting.acount_name.blank? && !self.wufoo_setting.api_key.blank?
+    !self.wufoo_setting.nil? && !self.wufoo_setting.subdomain.blank? && !self.wufoo_setting.api_key.blank?
   end
 
   def wufoo_forms
@@ -211,6 +211,6 @@ class Network < ActiveRecord::Base
 
   def wufoo
     raise Errors::MissingWufooSettingsError unless wufoo_settings?
-    WuParty.new self.wufoo_setting.acount_name, self.wufoo_setting.api_key
+    WuParty.new self.wufoo_setting.subdomain, self.wufoo_setting.api_key
   end
 end

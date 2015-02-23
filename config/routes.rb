@@ -11,7 +11,7 @@ Cursame30Lb::Application.routes.draw do
   resources :libraries
   resources :polls
   resources :messages
-  resources :wufoo_forms
+  resources :wufoo_forms, path: '/forms'
 
   get "superadmnin/statistics"
   get "superadmnin/networks"

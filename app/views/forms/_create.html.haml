@@ -1,13 +1,12 @@
 / _create.html.haml
-- @form = WufooForm.new
 = form_for(@form, remote: true, html: { class: "default-form", multipart: true }) do |f|
   .new-publication-form-content
     .form-group
       .form-group-label
-        = f.label :form_id, "URL del formulario"
+        = f.label :identifier, "Formulario: "
       .form-group-main
         .form-unit
-          = f.text_field :form_id , placeholder: "Ejemplo: https://cursame.wufoo.com/forms/zrtncqv1asynnu/", required: "required"
+          = f.select(:identifier, current_network.wufoo_forms.collect{ |f| [f['Name'], f['Hash']]}, { include_blank: 'Selecciona un formulario' }, class: "fill-container")
     .form-group
       .form-group-label
         = f.label :init_date, "Fechas:"
@@ -20,10 +19,16 @@
             = f.text_field :term_date, placeholder: 'Fecha de entrega', class: "date-input delivery delivery_end_date", id: 'form_term_date', value: f.object.term_date, required: "required"
     .form-group
       .form-group-label
-        = f.label :form_id, "Hash del formulario"
+        = f.label :wufoo_roles, "Roles: "
       .form-group-main
-        .form-unit
-          = f.text_field :form_id , placeholder: "Ejemplo: zrtncqv1asynnu", required: "required", readonly: true
+        .f-col.f-col-2
+          .form-unit
+            = check_box_tag "wufoo_form[role_ids][]", Role.find_by_title('teacher').id
+            Maestro
+        .f-col.f-col-2
+          .form-unit
+            = check_box_tag "wufoo_form[role_ids][]", Role.find_by_title('student').id
+            Alumno
   .new-publication-footer
     %ul.list-buttons.right.fr
       %li
@@ -34,7 +39,7 @@
         %span.btn.btn-primary.input-btn.activable
           = f.submit "Publicar", id: "wufoo-post-form", class: "activable"
 = content_for :javascripts do
-  :javascript  
+  :javascript
     $(function () {
       $("#form_init_date, #form_term_date").datetimepicker({
         inline: false,

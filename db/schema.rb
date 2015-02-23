@@ -661,18 +661,18 @@ ActiveRecord::Schema.define(:version => 20150216170536) do
     t.boolean  "public",           :default => false
   end
 
-  create_table "wufoo_form_rules", :force => true do |t|
+  create_table "wufoo_form_roles", :force => true do |t|
     t.integer  "wufoo_form_id"
     t.integer  "role_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "wufoo_form_rules", ["role_id"], :name => "index_wufoo_form_rules_on_role_id"
-  add_index "wufoo_form_rules", ["wufoo_form_id"], :name => "index_wufoo_form_rules_on_wufoo_form_id"
+  add_index "wufoo_form_roles", ["role_id"], :name => "index_wufoo_form_roles_on_role_id"
+  add_index "wufoo_form_roles", ["wufoo_form_id"], :name => "index_wufoo_form_roles_on_wufoo_form_id"
 
   create_table "wufoo_forms", :force => true do |t|
-    t.integer  "form_id"
+    t.string   "identifier"
     t.integer  "showable_id"
     t.string   "showable_type"
     t.datetime "init_date"
@@ -696,9 +696,9 @@ ActiveRecord::Schema.define(:version => 20150216170536) do
   create_table "wufoo_settings", :force => true do |t|
     t.integer  "network_id"
     t.string   "api_key"
-    t.string   "acount_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "subdomain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "wufoo_settings", ["network_id"], :name => "index_wufoo_settings_on_network_id"
