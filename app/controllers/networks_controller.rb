@@ -40,9 +40,6 @@ class NetworksController < ApplicationController
           ###### validando que la red no sea nula para redirigir
           if @find_network != nil
             ####### redirecciona la red
-            #render do |page|
-            # page.js{alertmethod_path}
-            #end
             @net = @find_network
           end
         else
@@ -294,6 +291,4 @@ class NetworksController < ApplicationController
       format.json
     end
   end
-
-
 end
