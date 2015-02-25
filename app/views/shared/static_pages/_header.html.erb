@@ -41,16 +41,13 @@
             <span class="txt"><%= t('.text1') %></span>
             <div class="dropdown-wrap website-login">
               <div class="dropdown-pull login-trigs activity-dropdown-pull">
-                <!-- <span class="as-link">Inicia Sesión</span> -->
                 <span class="as-link"><%= t('.text2') %></span>
               </div>
               <div class="dropdown-v right">
                 <i class="tip"></i>
                 <div class="website-login-forms dropdown-content">
                   <div id="login-w" class="website-login-form-content active">
-                    <!-- <h4>Iniciar Sesión</h4> -->
                     <h4><%= t('.text2') %></h4>
-                    <!-- <p>Escribe tus datos de acceso para accesar a la red de tu institución.</p><br> -->
                     <p><%= t('.text3') %></p>
                     <p class="error-login-form">Oops! al parecer tu correo no pertenece a niguna red.</p>
                     <br>
@@ -63,18 +60,7 @@
                           </span>
                         </div>
                       </div>
-                      <!-- <div class="form-group no-label">
-                        <div class="form-group-main">
-                          <span class="input-icon session-icon-input">
-                            <%= icon('password') %>
-                            <%= password_field_tag 'password', '', placeholder: "Contraseña", required: "required", minlength: "6", autocomplete: "off" %>
-                          </span>
-                        </div>
-                      </div> -->
                       <div class="login-footer">
-                        <!-- <div class="fl actions-l">
-                          <a class="switch-form-website-login" data-form="recover-w" href="" title="¿Olvidaste tu contraseña?">¿Olvidaste tu contraseña?</a>
-                        </div> -->
                         <div class="fr">
                           <span class="btn btn-primary btn-medium input-btn">
                             <%= submit_tag t('.search_network') %>
@@ -83,30 +69,6 @@
                       </div>
                     <% end %>
                   </div>
-                  <!-- <div id="recover-w" class="website-login-form-content">
-                    <h4>Recupera tu cotraseña</h4>
-                    <p>Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".</p><br>
-                    <%= form_tag "/", class: 'website-recover-form' do %>
-                      <div class="form-group no-label">
-                        <div class="form-group-main">
-                          <span class="input-icon session-icon-input">
-                            <%= icon('email') %>
-                            <%= email_field_tag 'email', '', placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="login-footer">
-                        <div class="fl actions-l">
-                          <a class="switch-form-website-login" data-form="login-w" href="" title="Regresar">&#8592; Regresar</a>
-                        </div>
-                        <div class="fr">
-                          <span class="btn btn-primary btn-medium input-btn">
-                            <%= submit_tag "Recuperar contraseña" %>
-                          </span>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div> -->
                 </div>
               </div>
             </div>
