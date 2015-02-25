@@ -1,9 +1,0 @@
-# assets.en.yml
-en:
-  assets:
-    messages:
-      delete:
-        non_existent: "The file you are trying to delete does not exist"
-        not_an_owner: "You don't have permission to delete this file"
-        success: "The file has been successfully deleted"
-        error: "An error occurred while deleting the file"
