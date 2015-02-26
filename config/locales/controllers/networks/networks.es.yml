@@ -1,7 +1,7 @@
 es:
-	networks:
-		messages:
-			update:
-				success: 'Configuración guardada correctamente.'
-			search:
-				network: 'Buscador de Redes'
+  networks:
+    messages:
+      update:
+        success: 'Configuración guardada correctamente.'
+      search:
+        network: 'Buscador de Redes'
