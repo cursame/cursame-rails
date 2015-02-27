@@ -6,22 +6,22 @@
           - permitted_to? :create, :comments do
             .tab.active{"data-id-target" => "comment-tab-content"}
               = icon('commet-post')
-              Comentario
+              = t('.comment')
               %span.tip
           - permitted_to? :create, :deliveries do
             .tab{"data-id-target" => "delivery-tab-content"}
               = icon('delivery-post')
-              Tarea
+              = t('.homework')
               %span.tip
           - permitted_to? :create, :discussions do
             .tab{"data-id-target" => "discussion-tab-content"}
               = icon('discussion-post')
-              Discusión
+              = t('.discussion')
               %span.tip
           - permitted_to? :create, :surveys do
             .tab{"data-id-target" => "survey-tab-content"}
               = icon('survey-post')
-              Cuestionario
+              = t('.questionnaire')
               %span.tip
         - @active_edit = false
         .tabs-main
@@ -44,7 +44,7 @@
           - permitted_to? :create, :comments do
             .tab.active{"data-id-target" => "comment-tab-content"}
               = icon('commet-post')
-              Comentario
+              = t('.comment')
               %span.tip
         .tabs-main
           - permitted_to? :create, :comments do

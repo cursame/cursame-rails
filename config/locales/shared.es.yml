@@ -18,3 +18,8 @@ es:
         text1: Otras formas de contacto
         follow_us_on_twitter: Síguenos en Twitter
         follow_us_on_facebook: Síguenos en Facebook
+    post_menu:
+      comment: Comentario
+      homework: Tarea
+      discussion: Discusión
+      questionnaire: Cuestionario
