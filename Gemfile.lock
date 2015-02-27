@@ -266,6 +266,7 @@ GEM
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.9.3)
     launchy (2.1.2)
       addressable (~> 2.3)
     mail (2.5.4)
@@ -367,6 +368,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+    raindrops (0.13.0)
     rake (10.3.2)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -452,6 +454,10 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     useragent (0.10.0)
     uuidtools (2.1.4)
     warden (1.2.3)
@@ -523,7 +529,6 @@ DEPENDENCIES
   pdfkit
   pg
   private_pub!
-  rack-test
   rails (= 3.2.19)
   rails_best_practices
   rails_config
@@ -539,6 +544,7 @@ DEPENDENCIES
   state_machine
   thin
   uglifier (>= 1.0.3)
+  unicorn
   useragent
   watu_table_builder
   will_paginate (= 3.0.3)
