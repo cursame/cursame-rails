@@ -27,7 +27,7 @@
         .tabs-main
           - permitted_to? :create, :comments do
             #comment-tab-content.tab-content{style: "display: block;"}
-              = render partial: '/shared/comment_form',locals: {commentable_id: current_network.id, commentable_type: 'Network', comment_id: nil, message: '¿Qué estás pensando?', active_edit: false, in_type: 'comment', in_form: in_form}
+              = render partial: '/shared/comment_form',locals: {commentable_id: current_network.id, commentable_type: 'Network', comment_id: nil, message: t('.what_are_y_think'), active_edit: false, in_type: 'comment', in_form: in_form}
           - permitted_to? :create, :deliveries do
             #delivery-tab-content.tab-content
               = render partial: '/deliveries/delivery_compart_form', locals: {active_edit: @active_edit, in_type: 'delivery', in_form: in_form}
@@ -49,4 +49,4 @@
         .tabs-main
           - permitted_to? :create, :comments do
             #comment-tab-content.tab-content{style: "display: block;"}
-              = render partial: '/shared/comment_form',locals: { commentable_id: @user_l.id, commentable_type: 'User', comment_id: nil, message: 'Deja un comentario.', active_edit: false, in_type: 'comment', in_form: in_form}
+              = render partial: '/shared/comment_form',locals: { commentable_id: @user_l.id, commentable_type: 'User', comment_id: nil, message: t('.post_comment'), active_edit: false, in_type: 'comment', in_form: in_form}

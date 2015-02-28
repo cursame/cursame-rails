@@ -23,3 +23,9 @@ es:
       homework: Tarea
       discussion: Discusión
       questionnaire: Cuestionario
+      post_comment: Deja un comentario.
+      what_are_y_think: ¿Qué estás pensando?
+    dropdown:
+      dropdown_v:
+        public: Público
+        courses: Cursos
