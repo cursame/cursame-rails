@@ -106,7 +106,7 @@
         <% else %>
           <div class="inner-no-content">
             <% if current_role == 'student' %>
-              <h5>No eres miembro de ningún curso.</h5>
+              <h5><%= t('.sidebar_section.no_member')%></h5>
               <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
             <% else %>
               <h5>No has creado ningún curso.</h5>
@@ -180,7 +180,7 @@
             <% else %>
               <div class="inner-no-content">
                 <% if current_role == 'student' %>
-                  <h5>No eres miembro de ningún curso.</h5>
+                  <h5><%= t('.sidebar_section.no_member')%></h5>
                   <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
                 <% else %>
                   <h5>No has creado ningún curso.</h5>

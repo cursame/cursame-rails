@@ -29,3 +29,7 @@ es:
       dropdown_v:
         public: Público
         courses: Cursos
+        no_member: No eres miembro de ningún curso.
+    sidebar:
+      sidebar_section:
+        no_member: No eres miembro de ningún curso.
