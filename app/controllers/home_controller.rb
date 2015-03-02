@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day, :mkt, :about_us, :mkt_thanks]
+  skip_before_filter :authenticate_user!, only: [:index, :conditions, :blog, :help, :privacidad, :landing_page, :features, :press, :jobs, :contact, :apps, :request_demo, :success_stories, :send_contact_mail, :new_sesion_from_home, :teacher_day, :mkt, :about_us, :mkt_thanks]
   helper_method :get_commentable
-  prepend_before_filter :require_no_authentication, :only => [:action1, :action2]
+  prepend_before_filter :require_no_authentication, only: [:action1, :action2]
   respond_to :html, :json, :js
 
   def index
@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 
   def conditions
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
@@ -31,7 +31,7 @@ class HomeController < ApplicationController
 
   def help
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
@@ -39,55 +39,55 @@ class HomeController < ApplicationController
     resource = User.new()
 
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def features
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def press
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def jobs
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def contact
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def apps
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def request_demo
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def teacher_day
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
   def about_us
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
@@ -95,7 +95,7 @@ class HomeController < ApplicationController
     pages = ["ad01"]
 
     if pages.include? params[:name]
-      render "/home/mkt_pages/#{params[:name]}", :layout => 'mkt_langing_page'
+      render "/home/mkt_pages/#{params[:name]}", layout: 'mkt_langing_page'
     else
       redirect_to root_path
     end
@@ -103,7 +103,7 @@ class HomeController < ApplicationController
 
   def mkt_thanks
     if params[:success].present? && params[:success] == "1"
-      render "/home/mkt_pages/mkt_thanks", :layout => 'mkt_langing_page'
+      render "/home/mkt_pages/mkt_thanks", layout: 'mkt_langing_page'
     else
       redirect_to root_url
     end
@@ -141,7 +141,7 @@ class HomeController < ApplicationController
 
   def success_stories
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
@@ -277,7 +277,7 @@ class HomeController < ApplicationController
   def downvote_comment
     @publication = Comment.find(params[:id])
     @publication.downvote_from current_user
-    
+
     respond_to do |format|
       format.js
     end
@@ -301,7 +301,7 @@ class HomeController < ApplicationController
     end
 
     flash.now[:success] = "Se ha borrado correctamente la publicación."
-    
+
     respond_to do |format|
       format.js
     end
@@ -346,7 +346,7 @@ class HomeController < ApplicationController
   end
 
   def editing_n
-    @notiv = current_user.notifications.where(:active => true)
+    @notiv = current_user.notifications.where(active: true)
     @notiv.each do |noti|
       noti.active = false
       noti.save
@@ -379,7 +379,7 @@ class HomeController < ApplicationController
   # chat behaviour of cursame
   # -----------------------------
   def chat
-    @messages = [] # @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at ASC')
+    @messages = [] # @channel.mesages.paginate(per_page: 10, page: @page).order('created_at ASC')
     @show_chat_panel = false
     @page = 1
     respond_to do |format|
@@ -407,14 +407,14 @@ class HomeController < ApplicationController
 
     @channel = find_or_insert_channel(@channel_name, users)
     @page = 1
-    @messages = @channel.mesages.paginate(:per_page => 10, :page => @page).order('created_at DESC')
+    @messages = @channel.mesages.paginate(per_page: 10, page: @page).order('created_at DESC')
     respond_to do |format|
       format.js
     end
   end
 
   def add_new_mesage
-    @message = Mesage.create!(:mesage => params[:mesage], :user_id =>current_user.id,:channel_id =>params[:channel_id])
+    @message = Mesage.create!(mesage: params[:mesage], user_id: current_user.id,channel_id: params[:channel_id])
 
     @user_channel = if (@message.user == current_user && not(@message.channel.nil?) && not(@message.channel.users.index{|x| x.id != current_user.id}.nil?))
       @message.channel.users[@message.channel.users.index{|x| x.id != current_user.id}]
@@ -447,7 +447,7 @@ class HomeController < ApplicationController
 
   def load_more_messages
     @channel = Channel.find(params[:id])
-    @messages = @channel.mesages.paginate(:per_page => 10, :page => params[:page]).order('created_at DESC')
+    @messages = @channel.mesages.paginate(per_page: 10, page: params[:page]).order('created_at DESC')
     @page = params[:page].to_i
     respond_to do |format|
       format.js
@@ -455,7 +455,7 @@ class HomeController < ApplicationController
   end
 
   def load_more_notfications
-    @notifications = current_user.notifications.paginate(:per_page => 10, :page => params[:page]).order("created_at DESC")
+    @notifications = current_user.notifications.paginate(per_page: 10, page: params[:page]).order("created_at DESC")
     @page = params[:page].to_i
     respond_to do |format|
       format.js
@@ -467,11 +467,11 @@ class HomeController < ApplicationController
 
   # manejo de paginas de error
   def not_found
-    render :status => 404, :formats => [:html]
+    render status: 404, formats: [:html]
   end
 
   def server_error
-    render :status => 500, :formats => [:html]
+    render status: 500, formats: [:html]
   end
 
   def parents
@@ -513,7 +513,7 @@ class HomeController < ApplicationController
 
   def privacidad
     respond_to do |format|
-      format.html {render :layout => 'static_pages'}
+      format.html {render layout: 'static_pages'}
     end
   end
 
@@ -522,7 +522,7 @@ class HomeController < ApplicationController
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
     if params[:comment_id].blank? then
-      @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
+      @comment = commentable.comments.create!(title: 'cursame', comment: params[:comment], user_id: current_user.id, network_id: current_network.id)
 
       # activity
       @az = @comment
@@ -530,7 +530,7 @@ class HomeController < ApplicationController
       activation_activity
     else
       @comment = Comment.find(params[:comment_id])
-      @comment.update_attributes(:comment => params[:comment])
+      @comment.update_attributes(comment: params[:comment])
     end
   end
 
@@ -544,7 +544,7 @@ class HomeController < ApplicationController
     channel = Channel.find_by_channel_name(channel_name)
 
     if !channel #canal nuevo
-      channel = Channel.create!(:channel_name=>channel_name, :channel_type => "#{channel_name["course"] ? "Course" : "User"}")
+      channel = Channel.create!(channel_name: channel_name, channel_type: "#{channel_name["course"] ? "Course" : "User"}")
       channel.users = users
       p channel.users.map{|x| x.id}
       channel.save!
