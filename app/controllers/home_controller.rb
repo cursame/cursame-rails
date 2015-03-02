@@ -520,7 +520,6 @@ class HomeController < ApplicationController
   private
 
   def save_comment
-    puts "save_comment params : #{params}"
     commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
     if params[:comment_id].blank? then
       @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
