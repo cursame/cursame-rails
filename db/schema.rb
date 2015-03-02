@@ -675,6 +675,7 @@ ActiveRecord::Schema.define(:version => 20150216170536) do
     t.string   "identifier"
     t.integer  "showable_id"
     t.string   "showable_type"
+    t.integer  "user_id"
     t.datetime "init_date"
     t.datetime "term_date"
     t.datetime "created_at",    :null => false
@@ -682,6 +683,7 @@ ActiveRecord::Schema.define(:version => 20150216170536) do
   end
 
   add_index "wufoo_forms", ["showable_id", "showable_type"], :name => "index_wufoo_forms_on_showable_id_and_showable_type"
+  add_index "wufoo_forms", ["user_id"], :name => "index_wufoo_forms_on_user_id"
 
   create_table "wufoo_responses", :force => true do |t|
     t.integer  "user_id"
