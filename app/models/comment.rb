@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
   #attr_accessible :commentable_type
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, polymorphic: true
 
   default_scope -> { order('created_at ASC') }
 
@@ -18,7 +18,7 @@ class Comment < ActiveRecord::Base
   #course belongnings
   belongs_to :network
   belongs_to :course
-  has_many :activities, as: :activitye#, :dependent => :destroy
+  has_many :activities, as: :activitye#, dependent: :destroy
 
   validates_presence_of :user
 
@@ -34,20 +34,20 @@ class Comment < ActiveRecord::Base
     html_escape
     image
     # This is defined in config/initializers/auto_html.rb
-    dailymotion :width => "100%", :height => 250
-    #flickr :width => 400, :height => 250
-    google_map :width => "100%", :height => 250
-    google_video :width => "100%", :height => 250
-    metacafe :width => "100%", :height => 250
-    soundcloud :width => "100%", :height => 250
-    twitter :width => "100%", :height => 250
-    vimeo :width => "100%", :height => 250
-    youtube :width => "100%", :height => 250
-    slideshare_support :width => "100%"
-    ustream_support :width => "100%"
-    prezi_with_wmode :width => "100%", :height => 360
-    livestrem_support :width => "100%", :height => 360
-    link :target => "_blank", :rel => "nofollow"
+    dailymotion width: "100%", height: 250
+    #flickr width: 400, height: 250
+    google_map width: "100%", height: 250
+    google_video width: "100%", height: 250
+    metacafe width: "100%", height: 250
+    soundcloud width: "100%", height: 250
+    twitter width: "100%", height: 250
+    vimeo width: "100%", height: 250
+    youtube width: "100%", height: 250
+    slideshare_support width: "100%"
+    ustream_support width: "100%"
+    prezi_with_wmode width: "100%", height: 360
+    livestrem_support width: "100%", height: 360
+    link target: "_blank", rel: "nofollow"
     redcarpet
     #sanitize
     simple_format
@@ -61,13 +61,13 @@ class Comment < ActiveRecord::Base
 
   after_destroy do
 
-    walls = Wall.where(:publication_type => "Comment", :publication_id => id)
+    walls = Wall.where(publication_type: "Comment", publication_id: id)
 
     walls.each do |wall|
       wall.destroy
     end
 
-    notifications = Notification.where(:notificator_type => "Comment", :notificator_id => self.id)
+    notifications = Notification.where(notificator_type: "Comment", notificator_id: self.id)
     notifications.each do |notification|
       notification.destroy
     end
@@ -96,26 +96,26 @@ class Comment < ActiveRecord::Base
     end
 
     if notification_kind["network"]
-      Wall.create!( :users => [self.user], :publication => self, :network => self.network, :public => true)
+      Wall.create!( users: [self.user], publication: self, network: self.network, public: true)
       users = users.reject{ |user| user.id == self.user_id }
       return
     elsif notification_kind["course"] || notification_kind["group"]
       course = notification_kind["course"] ? [commentable] : nil
-      wall = Wall.create(:publication => self, :network => self.network, :users => users,:public => false, :courses => course)
+      wall = Wall.create(publication: self, network: self.network, users: users,public: false, courses: course)
       users = users.reject { |user| user.id == self.user_id || MembersInCourse.find_by_user_id(user.id).accepted != true }
-      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+      Notification.create(users: users, kind: notification_kind, notificator: self)
       return
     elsif notification_kind["discussion"]
       users = users.reject { |user| user.id == self.user.id }
-      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+      Notification.create(users: users, kind: notification_kind, notificator: self)
       return
     elsif notification_kind["delivery"] || notification_kind["on_comment"]
       users = users.reject { |user| user.id == self.user.id }
-      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+      Notification.create(users: users, kind: notification_kind, notificator: self)
     elsif notification_kind["on_user"]
-      Wall.create(:publication => self, :network => self.network, :users => users, :public => false)
+      Wall.create(publication: self, network: self.network, users: users, public: false)
       users = users.reject { |user| user.id == self.user.id }
-      Notification.create(:users => users, :kind => notification_kind, :notificator => self)
+      Notification.create(users: users, kind: notification_kind, notificator: self)
       return
     else
     end
@@ -126,7 +126,7 @@ class Comment < ActiveRecord::Base
     case comment_type
     when "Network", "Course", "Group", "Delivery"
       users = commentable.users
-      hash = {:users => users,:kind => 'user_comment_on_' + comment_type.downcase}
+      hash = {users: users,kind: 'user_comment_on_' + comment_type.downcase}
 
       if comment_type == "Course"
         self.send_mail
@@ -135,22 +135,22 @@ class Comment < ActiveRecord::Base
 
     when "User"
       users = [commentable]
-      hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+      hash = {users: users, kind: 'user_comment_on_' + comment_type.downcase }
       return hash
 
     when "Comment"
       if commentable.commentable_type == "User"
         users = [commentable.commentable]
-        hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+        hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase}
         return hash
       elsif commentable.commentable_type == "Network"
         users = [commentable.user]
-        hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+        hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase}
         return hash
       else
         users = commentable.commentable.users
         users = users.reject { |user| user.id == self.user.id }
-        hash = { :users => users, :kind => 'user_comment_on_' + comment_type.downcase}
+        hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase}
 
         if commentable.commentable_type == "Course"
           self.send_mail
@@ -160,7 +160,7 @@ class Comment < ActiveRecord::Base
 
     when "Discussion"
       if commentable.courses.size == 0 then
-        hash = {:users => [commentable.user] , :kind => 'user_comment_on_' + comment_type.downcase }
+        hash = {users: [commentable.user] , kind: 'user_comment_on_' + comment_type.downcase }
       else
         courses = commentable.courses
         users = []
@@ -169,13 +169,13 @@ class Comment < ActiveRecord::Base
         end
         users.uniq!
         users = users.reject { |user| user.id == self.user.id }
-        hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+        hash = {users: users, kind: 'user_comment_on_' + comment_type.downcase }
       end
       return hash
 
     when 'Survey'
       if commentable.courses.size == 0 then
-        hash = {:users => [] , :kind => 'user_comment_on_' + comment_type.downcase }
+        hash = {users: [] , kind: 'user_comment_on_' + comment_type.downcase }
       else
         courses = commentable.courses
         users = []
@@ -184,7 +184,7 @@ class Comment < ActiveRecord::Base
         end
         users.uniq!
         users = users.reject { |user| user.id == self.user.id }
-        hash = {:users => users, :kind => 'user_comment_on_' + comment_type.downcase }
+        hash = {users: users, kind: 'user_comment_on_' + comment_type.downcase }
       end
     else
       raise "Grupo de usuarios no definido para " + comment_type
