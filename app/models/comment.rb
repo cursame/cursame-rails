@@ -84,7 +84,7 @@ class Comment < ActiveRecord::Base
     permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, network.id)
 
     begin
-      mixpanel_properties = { 
+      mixpanel_properties = {
         'Network'   => network.name.capitalize,
         'Subdomain' => network.subdomain,
         'Type'      => self.commentable_type.capitalize,
@@ -218,14 +218,14 @@ class Comment < ActiveRecord::Base
 
   def send_mail
     Thread.new {
-          begin
-            mailer = Notifier.send_comment_on_course(self)
-            mailer.deliver
-          rescue => ex
-          ensure
-            ActiveRecord::Base.connection.close
-          end
-        }
+      begin
+        mailer = Notifier.send_comment_on_course(self)
+        mailer.deliver
+      rescue => ex
+      ensure
+        ActiveRecord::Base.connection.close
+      end
+    }
   end
 
   def title
