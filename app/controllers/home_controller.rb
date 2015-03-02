@@ -520,6 +520,7 @@ class HomeController < ApplicationController
   private
 
   def save_comment
+    puts "save_comment params : #{params}"
     commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
     if params[:comment_id].blank? then
       @comment = commentable.comments.create!(:title=>'cursame', :comment => params[:comment], :user_id =>current_user.id, :network_id => current_network.id)
@@ -528,18 +529,6 @@ class HomeController < ApplicationController
       @az = @comment
       @typed = @comment.class.to_s
       activation_activity
-
-      if (@comment.commentable_type == 'Course')
-        # mailer = Notifier.send_comment_on_course(@comment)
-        # mailer.deliver
-      end
-
-      if (@comment.commentable_type == 'Comment')
-        if (@comment.commentable.commentable_type == 'Course')
-          # mailer = Notifier.send_comment_on_course(@comment)
-          # mailer.deliver
-        end
-      end
     else
       @comment = Comment.find(params[:comment_id])
       @comment.update_attributes(:comment => params[:comment])
