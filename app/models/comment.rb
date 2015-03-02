@@ -186,6 +186,9 @@ class Comment < ActiveRecord::Base
         users = users.reject { |user| user.id == self.user.id }
         hash = {users: users, kind: 'user_comment_on_' + comment_type.downcase }
       end
+    when 'WufooForm'
+      users = commentable.showable.users
+      hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase }
     else
       raise "Grupo de usuarios no definido para " + comment_type
     end
