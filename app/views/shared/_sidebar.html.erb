@@ -14,23 +14,23 @@
       <ul class="section-list navigation">
         <li>
           <%= link_to '/' do %>
-            <%= icon 'home-w' %> Inicio
+            <%= icon 'home-w' %><%= t('.sidebar_section.initiation')%>
           <% end %>
         </li>
         <% if current_role == 'student' %>
           <li>
             <%= link_to deliveries_path do %>
-              <%= icon 'homeworks-w' %> Tareas
+              <%= icon 'homeworks-w' %><%= t('.sidebar_section.homework')%>
             <%end%>
           </li>
           <li>
             <%= link_to surveys_path do %>
-              <%= icon 'questionaries-w' %> Cuestionarios
+              <%= icon 'questionaries-w' %><%= t('.sidebar_section.questionnaire')%>
             <%end%>
           </li>
           <li>
             <%= link_to discussions_path do %>
-              <%= icon 'discussions-w' %> Discusiones
+              <%= icon 'discussions-w' %><%= t('.sidebar_section.discussion')%>
             <%end%>
           </li>
         <% end %>
@@ -38,48 +38,48 @@
         <% if current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin' %>
           <li>
             <%= link_to evaluate_activities_path do %>
-              <%= icon 'evaluate-w' %> Actividades
+              <%= icon 'evaluate-w' %><%= t('.sidebar_section.activities')%>
             <%end%>
           </li>
         <% end %>
         <li>
           <%= link_to courses_path do %>
-            <%= icon 'courses-w' %> Cursos
+            <%= icon 'courses-w' %><%= t('.sidebar_section.courses')%>
           <% end %>
         </li>
         <li>
           <%= link_to califications_path do %>
-            <%= icon 'stats-w' %> Calificaciones
+            <%= icon 'stats-w' %><%= t('.sidebar_section.ratings')%>
           <%end%>
         </li>
         <li>
           <%= link_to calendar_path, :data => "menu" do %>
-            <%= icon 'calendar-w' %> Calendario
+            <%= icon 'calendar-w' %><%= t('.sidebar_section.calendar')%>
           <% end %>
           </a>
         </li>
         <li>
           <%= link_to network_comunity_path, :data => "menu" do %>
-            <%= icon 'community-w' %> Comunidad
+            <%= icon 'community-w' %><%= t('.sidebar_section.community')%>
           <% end %>
         </li>
         <% if current_network.radar_token? %>
           <li>
             <%= link_to(radar_path, target: '_blank', id: 'radar_link') do %>
-              <%= icon 'radar' %> Radar
+              <%= icon 'radar' %><%= t('.sidebar_section.radar')%>
             <% end %>
           </li>
         <% end %>
         <% if !current_network.find_setting(:vlex_sso).nil? && current_network.find_setting(:vlex_sso).value == 't' %>
           <li>
             <%= link_to vlex_remote_auth, target: '_blank' do %>
-              <%= icon 'vlex' %> vLex
+              <%= icon 'vlex' %><%= t('.sidebar_section.vLex')%>
             <% end %>
           </li>
         <% end %>
         <li class="chat-link">
           <%= link_to chat_path, :data => "menu" do %>
-            <%= icon 'messages-w' %> Chat
+            <%= icon 'messages-w' %><%= t('.sidebar_section.chat')%>
           <% end %>
         </li>
       </ul>
@@ -107,7 +107,7 @@
           <div class="inner-no-content">
             <% if current_role == 'student' %>
               <h5><%= t('.sidebar_section.no_member')%></h5>
-              <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+              <p><%= t( '.sidebar_section.goto_section')%> <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
             <% else %>
               <h5>No has creado ningún curso.</h5>
               <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
@@ -181,9 +181,9 @@
               <div class="inner-no-content">
                 <% if current_role == 'student' %>
                   <h5><%= t('.sidebar_section.no_member')%></h5>
-                  <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+                  <p><%= t('.sidebar_section.goto_section')%> <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
                 <% else %>
-                  <h5>No has creado ningún curso.</h5>
+                  <h5><%= t('.sidebar_section.nocourse')%></h5>
                   <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
                 <% end %>
               </div>

@@ -30,6 +30,21 @@ es:
         public: Público
         courses: Cursos
         no_member: No eres miembro de ningún curso.
+        goto_section: Únete a uno en la sección de
     sidebar:
       sidebar_section:
+        initiation: Inicios
+        homework: Tareas
+        questionnaire: Cuestionarios
+        discussion: Discusiones
+        activities: Actividades
+        courses: Cursos
+        ratings: Calificaciones
+        calendar: Calendario
+        community: Comunidad
+        radar: Radar
+        vLex: vLex
+        chat: Chat
         no_member: No eres miembro de ningún curso.
+        goto_section: Únete a uno en la sección de
+        no_course: No has creado ningún curso.

@@ -40,7 +40,8 @@
                 %h5
                   = t('.dropdown_v.no_member')
                 %p
-                  Únete a uno en la sección de #{link_to 'Cursos', courses_path}
+                  = t('.dropdown_v.goto_section') 
+                  #{link_to 'Cursos', courses_path}
               - else
                 %h5 No has creado ningún curso todavia.
                 %p= link_to 'Crear curso ahora →', new_course_path
