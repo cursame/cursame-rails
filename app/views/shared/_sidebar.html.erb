@@ -107,7 +107,7 @@
           <div class="inner-no-content">
             <% if current_role == 'student' %>
               <h5><%= t('.sidebar_section.no_member')%></h5>
-              <p><%= t( '.sidebar_section.goto_section')%> <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+              <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
             <% else %>
               <h5>No has creado ningún curso.</h5>
               <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
@@ -181,7 +181,7 @@
               <div class="inner-no-content">
                 <% if current_role == 'student' %>
                   <h5><%= t('.sidebar_section.no_member')%></h5>
-                  <p><%= t('.sidebar_section.goto_section')%> <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+                  <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
                 <% else %>
                   <h5><%= t('.sidebar_section.nocourse')%></h5>
                   <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
