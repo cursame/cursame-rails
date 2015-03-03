@@ -29,3 +29,4 @@ config/environments/*.local.yml
 .Trashes
 ehthumbs.db
 Thumbs.db
+.ruby-version
