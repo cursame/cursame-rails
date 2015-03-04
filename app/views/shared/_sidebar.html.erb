@@ -109,8 +109,8 @@
               <h5><%= t('.sidebar_section.no_member')%></h5>
               <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
             <% else %>
-              <h5>No has creado ningún curso.</h5>
-              <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
+              <h5><%= t('.sidebar_section.no_course')%></h5>
+              <p><%= link_to(t('.sidebar_section.no_course_href'), new_course_path, class: 'underline') %></p>
             <% end %>
           </div>
         <% end %>
@@ -120,14 +120,14 @@
   
   <div class="sidebar-section sidebar-chat tabs">
     <div class="sidebar-section-header s-unit">
-      <h3>Chat <!-- (<%= @courses_online.count + @friends_online.count %>) --></h3>
+      <h3><%= t('.sidebar_section.chat')%></h3>
       
       <div class="chat-switch-wrap tabs-buttons">
         <div class="chat-switch tab active" data-id-target="chat-group-friends">
-          <%= icon('friends-12') %> <span>Amigos</span>
+          <%= icon('friends-12') %> <span><%= t('.sidebar_section.friends')%></span>
         </div>
         <div class="chat-switch tab" data-id-target="chat-group-courses">
-          <%= icon('courses-12') %> <span>Cursos</span>
+          <%= icon('courses-12') %> <span><%= t('.sidebar_section.courses')%></span>
         </div>
       </div>
 
@@ -155,8 +155,8 @@
             </ul>
           <% else %>
             <div class="inner-no-content">
-              <h5>No tienes amigos.</h5>
-              <p>Agrega a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path, class: 'underline' %></p>
+              <h5><%= t('.sidebar_section.no_friends')%></h5>
+              <p><%= t('.sidebar_section.add_friends')%> <%= link_to( t('.sidebar_section.community_href'), network_comunity_path, class: 'underline') %></p>
             </div>
           <% end %>
 
@@ -183,8 +183,8 @@
                   <h5><%= t('.sidebar_section.no_member')%></h5>
                   <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
                 <% else %>
-                  <h5><%= t('.sidebar_section.nocourse')%></h5>
-                  <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
+                  <h5><%= t('.sidebar_section.no_course')%></h5>
+                  <p><%= link_to(t('.sidebar_section.no'), new_course_path, class: 'underline') %></p>
                 <% end %>
               </div>
             <% end %>

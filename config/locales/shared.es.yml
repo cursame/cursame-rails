@@ -44,9 +44,14 @@ es:
         community: Comunidad
         radar: Radar
         vLex: vLex
+        friends: Amigos
         chat: Chat
         no_member: No eres miembro de ningún curso.
         goto_section: Únete a uno en la sección de
         course_message: Únete a uno en la sección de
         course_href: Cursos
         no_course: No has creado ningún curso.
+        no_course_href: Crear curso ahora →
+        no_friends: No tienes amigos.
+        add_friends: Agrega a tus amigos en la sección de
+        community_href: Comunidad
