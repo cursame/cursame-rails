@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
     :twitter_link, :update, :comments, :networks, :assets,
     :friendships, :friends, :registerable, :image_avatarx,
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
-    :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register
+    :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids,
+    :self_register, :gender, :birthday, :user_properties_attributes
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -56,6 +57,7 @@ class User < ActiveRecord::Base
   has_many :audiences, dependent: :destroy
   has_many :channels, through: :audiences
   has_many :grades, dependent: :destroy
+  has_many :user_properties, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
@@ -70,12 +72,14 @@ class User < ActiveRecord::Base
   # roles
   has_many :permissionings, :dependent => :destroy
   has_many :roles, :through => :permissionings
+  has_many :user_properties, :dependent => :destroy
 
   #nested atributes for forms asets
 
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :networks
+  accepts_nested_attributes_for :user_properties
   # accepts_nested_attributes_for :course_files
 
 
@@ -807,6 +811,22 @@ class User < ActiveRecord::Base
     else
       puts "No existe la red con ese subdominio"
     end
+  end
+
+  def gender?
+    if self.gender == 0
+      return "No se sabe"
+    elsif self.gender == 1
+      return "Hombre"
+    elsif self.gender == 2
+      return "Mujer"
+    else
+      return "No aplicable"
+    end
+  end
+
+  def find_property(property)
+    self.user_properties.find { |s| s.property == property.to_s }
   end
 
   private

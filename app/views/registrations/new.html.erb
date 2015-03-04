@@ -59,6 +59,47 @@
               </div>
             </div>
 
+            <% if request.env['PATH_INFO'] == '/teachers/sign_up' %>
+              <div class="form-group">
+                <div class="form-group-label">
+                  <%= f.label :num_of_students, 'Número de alumnos que atiende:' %>
+                </div>
+                <div class="form-group-main">
+                  <div class="form-unit">
+                    <% usr_properties = @user.user_properties.build %>
+                    <%= f.fields_for :user_properties do |user_p|%>
+                      <%= user_p.hidden_field :property, value: 'number_of_students'%>
+                      <%= user_p.number_field :value, placeholder: "Número de estudiantes que atiende", required: "required", autocomplete: "off", min: 1 %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+            <% end %>
+
+            <div class="form-group">
+              <div class="form-group-label">
+                <%= f.label :birthday, 'Fecha de nacimiento:' %>
+              </div>
+              <div class="form-group-main">
+                <div class="form-unit">
+                  <%= f.text_field :birthday, placeholder: "Día/Mes/Año", :as => :datepicker, required: "required", value: "", type: "date" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-group-label">
+                <%= f.label :gender, 'Género:' %>
+              </div>
+              <div class="form-group-main">
+                <div class="form-unit">
+                  <label class="lblclass"><%= f.radio_button :gender, 1 %> Masculino</label>
+                  <label class="lblclass"><%= f.radio_button :gender, 2, checked: true %> Femenino</label>
+                </div>
+              </div>
+            </div>
+
             <div class="form-group">
               <div class="form-group-label">
                 <%= f.label :password, 'Contraseña:' %>
@@ -143,7 +184,19 @@
           }
         }
       });
-  });  
+    });
+
+    $(function() {
+      $( "#user_birthday" ).datepicker({
+          inline: true,
+          maxDate: new Date(),
+          showOtherMonths: true,
+          dateFormat: 'dd/mm/yy',
+          monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+          dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+      });
+    });
+
   $(document).ready(function(){
     if($("#user_permissionings_attributes_1_network_id").length == 1) {
        $('#user_permissionings_attributes_1_network_id').remove();
