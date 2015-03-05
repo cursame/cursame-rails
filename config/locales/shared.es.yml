@@ -55,3 +55,7 @@ es:
         no_friends: No tienes amigos.
         add_friends: Agrega a tus amigos en la sección de
         community_href: Comunidad
+      upcomming_deliveries_widget:
+        side_section:
+          pending_homeworks: Tareas próximas
+
