@@ -74,4 +74,8 @@ es:
         comment: Comentar
         cancel: Cancelar
         save: Guardar
+    posts:
+      post_admin_actions:
+        delete: Borrar
+        edit: Editar
 
