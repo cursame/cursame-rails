@@ -58,4 +58,15 @@ es:
       upcomming_deliveries_widget:
         side_section:
           pending_homeworks: Tareas próximas
+      upcomming_surveys_widget:
+        side_section:
+          next_questionnaires: Cuestionarios próximos
+    user_header:
+      activity_notifications:
+        help: Ayuda
+      activity_block:
+        admin_href: Administración
+        profile_href: Ir a mi perfil
+        edit_profile_href: Editar perfil
+        sign_out_href: Cerrar sesión
 

@@ -23,7 +23,7 @@
             </div>
             <div class="activity-notificactions">
               <div class="activity-block support-buttton">
-                <a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> Ayuda</a>
+                <a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> <%= t('.activity_notifications.help')%></a>
               </div>
               
               <div id="message_notifications" class="activity-block">
@@ -44,17 +44,17 @@
                     <ul>
                       <% if current_role == "admin" || current_role == "superadmin" %>
                         <li>
-                          <%= link_to "Administración", managers_path %>
+                          <%= link_to(t('.activity_block.admin_href'), managers_path) %>
                         </li>
                       <% end %>
                       <li>
-                        <%= link_to "Ir a mi perfil", show_user_path(current_user.personal_url) %>
+                        <%= link_to(t('.activity_block.profile_href'), show_user_path(current_user.personal_url)) %>
                       </li>
                       <li>
-                        <%= link_to "Editar perfil", edit_user_registration_path %>
+                        <%= link_to(t('.activity_block.edit_profile_href'), edit_user_registration_path) %>
                       </li>
                       <li>
-                        <%= link_to "Cerrar sesión", sign_out_path, method: :delete %>
+                        <%= link_to(t('.activity_block.sign_out_href'), sign_out_path, method: :delete) %>
                       </li>
                     </ul>
                   </div>
