@@ -33,7 +33,7 @@ es:
         goto_section: Únete a uno en la sección de
     sidebar:
       sidebar_section:
-        initiation: Inicios
+        initiation: Inicio
         homework: Tareas
         questionnaire: Cuestionarios
         discussion: Discusiones
@@ -69,4 +69,9 @@ es:
         profile_href: Ir a mi perfil
         edit_profile_href: Editar perfil
         sign_out_href: Cerrar sesión
+    comment_form:
+      new_publication:
+        comment: Comentar
+        cancel: Cancelar
+        save: Guardar
 

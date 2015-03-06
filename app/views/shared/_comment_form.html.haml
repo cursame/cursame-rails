@@ -25,14 +25,15 @@
               = hidden_field_tag "delivery[course_ids][]", @course.id
         %li
           %span.btn.btn-primary.input-btn.activable
-            = submit_tag "Comentar", class: "activable", id: 'comment-post-form'
+            = submit_tag t('.new_publication.comment'), class: "activable", id: 'comment-post-form'
   - else
     %ul.list-buttons.left
       %li
-        %a.btn.btn-secondary.cancel-edit-publication-js{href: "#"} Cancelar
+        %a.btn.btn-secondary.cancel-edit-publication-js{href: "#"}
+          = t('.new_publication.cancel')
       %li
         %span.btn.btn-primary.input-btn
-          = submit_tag "Guardar", class: "activable", id: "comment-post-form"
+          = submit_tag t('.new_publication.save'), class: "activable", id: "comment-post-form"
 
 :javascript
   $(function() {
