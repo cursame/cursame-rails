@@ -78,4 +78,10 @@ es:
       post_admin_actions:
         delete: Borrar
         edit: Editar
+        confirm_delete: ¿Estás seguro de borrar esto?
+      post_meta_data:
+        like: Me gusta
+        not_like: Ya no me gusta
+
+
 
