@@ -171,12 +171,28 @@ class SurveysController < ApplicationController
       end
       @survey.save
 
+      if params[:files]
+        params[:files].each do |asset_id|
+          flag = true
+          @survey.assets.each do |asset_survey|
+            flag = false if asset_id.to_i == asset_survey.id
+          end
+          if flag
+            @asset = Asset.find_by_id asset_id
+            @survey.assets.push @asset unless @asset.nil?
+          end
+        end
+      end
+
       @wall_publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
       respond_to do |format|
         format.js
         format.html { render action: "edit" }
         format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end
+
+      @survey.after_update_survey
+
     else
       format.js
     end

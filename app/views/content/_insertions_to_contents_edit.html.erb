@@ -1,0 +1,16 @@
+<% if type.contents.count > 0 %>
+  <% type.contents.each do |content|%>
+ 
+    <script> 
+      var content ="<%= content.content %>";
+      
+      var matches = content.match(/:\/\/(?:www\.)?(.[^/]+)(.*)/),
+          lof = matches[1];
+
+      if (lof == 'dropbox.com') {
+        $('div.support-material#<%=cl%>').prepend('<div class="support-material-item"><a href="<%= content.content %>" class="item-name" target="_blank"><i class="i i-dropbox-asset-blue"></i> <%= content.content %></a></div>');
+      };
+    </script>
+
+  <%end%>
+<%end%>

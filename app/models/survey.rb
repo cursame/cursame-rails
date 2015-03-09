@@ -47,7 +47,7 @@ class Survey < ActiveRecord::Base
   after_create do
 
     if self.publish_date <= DateTime.now then
-      self.state = "published"
+      self.state = "published"                
     end
 
 
@@ -87,6 +87,23 @@ class Survey < ActiveRecord::Base
       puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
     end
 
+  end
+
+  def after_update_survey
+    self.user_surveys.each {|user_survey| user_survey.destroy }
+ 
+    event = Event.find_by_schedule_id_and_schedule_type(self.id, self.class.name)
+    event.update_attributes(title: self.name, starts_at: self.publish_date, ends_at: self.end_date)
+
+    users = []
+    self.courses.each do |course|
+      course.members_in_courses.each do |member|
+        user = member.user
+        users.push(user) if self.user_id != user.id
+      end
+    end
+
+    Notification.create(:users => users, :notificator => self, :kind => "edit_survey_on_course")
   end
 
   def expired?

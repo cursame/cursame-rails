@@ -3,9 +3,19 @@
 function remove_fields(link, toId) {
   if(toId == '#box-question') {
 
-    if ( $(link).closest('.question-field').siblings().length > 0 ) {
-      $(link).closest('.question-field').remove();
-      changeNumbers('#box-question', '#question-num');
+    var questions =0;
+    var question_fields = $(link).closest('.box-question').children('.question-field')
+    $.each($(question_fields), function(index, val) {
+      if ($(val).find('input._destroy').val() == 'false') {
+        questions++;
+      }
+    });
+
+    if ( questions > 1 ) {
+      $(link).closest('.question-field').find('input._destroy').val(1);
+      $(link).closest('.question-field').hide();
+      var grandfather = $(link).parent().parent().parent().parent().parent();
+      changeNumbers(grandfather, '#question-num');
     } else {
       Notice('error', 'Los custionarios deben de tener como minimo una pregunta.')
     };
@@ -13,22 +23,23 @@ function remove_fields(link, toId) {
   } else if( toId =='#box-request' ) {
 
     var grandfather = $(link).parent().parent().parent();
-    $(link).parent().parent().remove();
+    $(link).parent().find('input._destroy').val(1);
+    $(link).parent().parent().hide();
     changeNumbers(grandfather, '#request-num');
 
   };
 };
 
-function add_fields(link, association, content, toId) {
+function add_fields(link, association, content, toId, id) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
 
   if ( toId =='#box-question' ) {
-    $(toId).append(content.replace(regexp, new_id));
-    changeNumbers('#box-question', '#question-num');
+    $(toId+'-'+id).append(content.replace(regexp, new_id));
+    changeNumbers('#box-question-'+id, '#question-num');
   } else if ( toId =='#box-request' ) {
-    $(link).parent().parent().find('#box-request').append(content.replace(regexp, new_id));
-    changeNumbers($(link).parent().parent().find('#box-request'), '#request-num');
+    $(link).parent().parent().find('#box-request-'+id).append(content.replace(regexp, new_id));
+    changeNumbers($(link).parent().parent().find('#box-request-'+id), '#request-num');
   };
 };
 
@@ -62,15 +73,28 @@ function changeNumbers(idParent, idFind){
   var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
 
   if ( idFind == '#question-num' ) {
-    $.each($(idParent).children(), function(index, value) {
-      $(value).find('#question-num').html(count+1+'. ');
-      count ++;
+    $.each($(idParent).find('.question-field'), function(index, value) {
+      if ($(value).find('input._destroy').val() == 'false') {
+        $(value).find('#question-num').html(count+1+'. ');
+        count ++;
+      }
     });
   } else if( idFind =='#request-num' ){
-    $.each(idParent.children(), function(index, value) {
-      $(value).find('#request-num').html(alphabet[count]+') ');
-      count ++;
-    });
+    if ( idParent.find('#request-num').length > 1 ){
+      $.each(idParent.find('#request-num'), function(index, value) {
+        if ( $(value).parent().find('input._destroy').val() == 'false' ) {
+          $(value).html(alphabet[count]+') ');
+          count ++;
+        }
+      });
+    }else{
+      $.each(idParent.children(), function(index, value) {
+        if ( $(value).find('#request-num').parent().find('input._destroy').val() == 'false' ) {
+          $(value).find('#request-num').html(alphabet[count]+') ');
+          count ++;
+        };
+      });
+    }
   };
 
   var count = 0;
