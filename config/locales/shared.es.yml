@@ -82,6 +82,9 @@ es:
       post_meta_data:
         like: Me gusta
         not_like: Ya no me gusta
+    assets_for_assignments:
+      new_assets:
+        attach_file: Adjuntar archivo
 
 
 
