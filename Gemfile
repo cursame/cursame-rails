@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.19'
 gem 'pg', groups: [:production]
-gem 'sqlite3'
 gem 'devise', '2.2.8'
 gem 'json'
 gem 'charlock_holmes'
@@ -67,6 +66,7 @@ group :development do
   gem 'meta_request'
   gem 'rails_best_practices'
   gem 'unicorn'
+  gem 'sqlite3'
 end
 
 group :test do

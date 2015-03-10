@@ -30,3 +30,4 @@ config/environments/*.local.yml
 ehthumbs.db
 Thumbs.db
 .env
+.ruby-version
