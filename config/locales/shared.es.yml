@@ -96,6 +96,27 @@ es:
       publication_box:
         twty_comments: 20 Comentarios
         more_comments: cargas mas comentarios
+        twlv_likes: 12 Likes
+    course_joyride:
+      joyRideTipContent:
+        welcome: Bienvenido al perfil de curso
+        subtitle: En este lugar podrás ver todo lo que pasa en el curso.
+        notif: Notificaciones
+        notif_area: Esta es el área de notificaciones.
+        profile: Perfil
+        sub_profile: Este es el perfil del curso.
+        edit_course: Editar el curso
+        ed_course: Aquí puedes editar el curso.
+        descrip: Descripción
+        course_descrip: Aquí va la descripción del curso.
+        course_edit: Editar el curso
+        text_edit_course: Aqui puedes editar el curso.
+        friends: Amigos
+        friends_list: Aquí encontrarás un listado de tus amigos
+        create_content: Creación de contenido
+        content_area: Esta es el área de creación de contenido.
+        publications: Publicaciones
+        pub_area: Aquí encontrarás todas las publicaciones de la red.
 
 
 
