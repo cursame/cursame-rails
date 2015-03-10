@@ -88,6 +88,9 @@ es:
     assets_form:
       new_assets:
         file: Archivo
+    comment:
+      comment_main:
+        like: me gusta
 
 
 
