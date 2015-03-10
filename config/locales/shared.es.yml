@@ -117,6 +117,17 @@ es:
         content_area: Esta es el área de creación de contenido.
         publications: Publicaciones
         pub_area: Aquí encontrarás todas las publicaciones de la red.
+    delivery_publication_tpl:
+      end_delivery: Entregar antes de:
+      files: Archivos:
+      evaluates: Se evalua:
+      reply: Responder
+      edit_delivery: Editar Entrega
+      no_evaluation: A esta tarea no se le han asignado áreas de evaluación
+      category: rubro
+      final_eval: Evaluación final
+      view_delivery: Ver entrega de tarea
+      no_reply: No se han encontrado respuestas a esta tarea
 
 
 
