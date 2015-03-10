@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   has_many :channels, through: :audiences
   has_many :grades, dependent: :destroy
   has_many :wufoo_responses, dependent: :destroy
+  has_many :wufoo_forms, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
@@ -808,6 +809,10 @@ class User < ActiveRecord::Base
     else
       puts "No existe la red con ese subdominio"
     end
+  end
+
+  def role
+    roles.first
   end
 
   private

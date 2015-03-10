@@ -6,9 +6,7 @@
     - if !publication.courses[0].members_in_courses.where(:user_id =>current_user.id, :accepted => true )[0]
       - next
   - post = publication.publication
-  - post_type = post.class.to_s
-
-  - case post_type
+  - case post.class.name
   - when 'Discussion'
     - unless post.publish_date > DateTime.now
       = render partial: 'discussions/shared/discussion_card', locals: { discussion: post, card_type: :post_publication, wall: publication }
@@ -22,3 +20,6 @@
     = render partial: 'comments/shared/comment_card', locals: { post_comment: post, card_type: :post_publication, wall: publication }
   - when 'Course'
     = render partial: 'courses/shared/course_card_post', locals: { course: post, card_type: :post_publication, wall: publication }
+  - when 'WufooForm'
+    - unless post.init_date > DateTime.now
+      = render partial: 'wufoo_forms/shared/wufoo_form_card', locals: { wufoo_form: post, card_type: :post_publication, wall: publication }

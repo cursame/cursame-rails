@@ -51,4 +51,8 @@ class ModalController < ApplicationController
       format.js
     end
   end
+
+  def wufoo_form_modal
+    @form = WufooForm.find_by_id(params[:id])
+  end
 end

@@ -175,6 +175,8 @@ Cursame30Lb::Application.routes.draw do
   match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/wufoo_form/:id', to: 'modal#wufoo_form_modal', :as => :wufoo_form_modal, :via => [:get], :defaults => { :format => 'js' }
 
   # Calificaciones
   get "/califications", :to => "califications#index", :as =>  :califications
@@ -493,6 +495,8 @@ Cursame30Lb::Application.routes.draw do
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
 
   get "/update_wufoo_form", :to => "home#update_wufoo_form", :as => :update_wufoo_form
+  get "/wufoo_forms/:id/entry", to: 'wufoo_forms#entry', :as => :wufoo_form_entry
+
   #--------------
   #NOTIFICATIONS
   #---------------
