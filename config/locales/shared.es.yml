@@ -85,6 +85,9 @@ es:
     assets_for_assignments:
       new_assets:
         attach_file: Adjuntar archivo
+    assets_form:
+      new_assets:
+        file: Archivo
 
 
 
