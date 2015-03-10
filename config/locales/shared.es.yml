@@ -92,6 +92,10 @@ es:
     comment:
       comment_main:
         like: me gusta
+    comments:
+      publication_box:
+        twty_comments: 20 Comentarios
+        more_comments: cargas mas comentarios
 
 
 
