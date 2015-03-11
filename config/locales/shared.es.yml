@@ -135,6 +135,28 @@ es:
       write_comment: Escribe un comentario
       comment: Comentar
       comment_2: Comentar
+    network_joyride:
+      joyride_tip_content:
+        welcome: Bienvenido a Cúrsame
+        description: En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.
+        courses: Creación de cursos
+        description_courses: Al dar click en el bootón Crear (+) aparecera el formulario de creación para los cursos que impartes.
+        menu: Menú de creación
+        menu_description: 'En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.'
+        text1: Público o a tus cursos
+        text2: Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus cursos.
+        text3: Uno o varios cursos
+        text4: '!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .'
+        text5: Muro principal
+        text6: En el muro principal aparecerán todas las publicaciones de tus cursos y amigos.
+        text7: Filtrado de publiciones
+        text8: Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.
+        text9: Amigos
+        text10: 'En esta sección podrás ver a tus amigos, o ingresar a la "Comunidad" para agregarlos'
+        text11: Menú interactivo
+        text12: Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.
+        text13: Video tutoriales de ayuda
+        text14: 'En cada sección donde veas un signo de interrogación "?", al dar click en el podras ver un video sobre como usar dicha función.'
 
 
 
