@@ -131,6 +131,10 @@ es:
       final_eval: Evaluación final
       view_delivery: Ver entrega de tarea
       no_reply: No se han encontrado respuestas a esta tarea
+    form_commentable:
+      write_comment: Escribe un comentario
+      comment: Comentar
+      comment_2: Comentar
 
 
 
