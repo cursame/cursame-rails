@@ -315,17 +315,16 @@ class HomeController < ApplicationController
     case @type
     when 'Delivery'
       @delivery = Delivery.find_by_id(@id)
-
     when 'Survey'
       @survey = Survey.find_by_id(@id)
-
     when 'Comment'
       @comment = Comment.find_by_id(@id)
       @commentable_id = @comment.commentable_id
       @commentable_type = @comment.commentable_type
-
     when 'Discussion'
       @discussion = Discussion.find(@id)
+    when 'WufooForm'
+      @wufoo_form = WufooForm.find_by_id @id
     end
 
     respond_to do |format|

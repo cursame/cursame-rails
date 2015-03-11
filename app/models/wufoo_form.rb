@@ -26,6 +26,14 @@ class WufooForm < ActiveRecord::Base
     end
   end
 
+  def for_teachers?
+    roles.include? Role::TEACHER
+  end
+
+  def for_students?
+    roles.include? Role::STUDENT
+  end
+
   private
   def create_walls
     Wall.create publication: self, network: network, courses: course, users: users

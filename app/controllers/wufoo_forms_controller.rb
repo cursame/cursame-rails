@@ -3,6 +3,11 @@ class WufooFormsController < ApplicationController
     @publication = walls create_forms(params)
   end
 
+  def update
+    @wufoo_form = WufooForm.find_by_id(params[:id])
+    @wufoo_form.update_attributes(params[:wufoo_form])
+  end
+
   def entry
     wufoo_form = WufooForm.find_by_id params[:id]
     wufoo_params = wufoo_form_params(params)
