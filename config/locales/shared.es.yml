@@ -31,6 +31,8 @@ es:
         courses: Cursos
         no_member: No eres miembro de ningún curso.
         goto_section: Únete a uno en la sección de
+        no_course: No has creado ningún curso todavia.
+        new_course: Crear curso ahora →
     sidebar:
       sidebar_section:
         initiation: Inicio
@@ -55,6 +57,7 @@ es:
         no_friends: No tienes amigos.
         add_friends: Agrega a tus amigos en la sección de
         community_href: Comunidad
+        return: volver
       upcomming_deliveries_widget:
         side_section:
           pending_homeworks: Tareas próximas
