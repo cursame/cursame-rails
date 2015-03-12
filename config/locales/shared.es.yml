@@ -210,6 +210,23 @@ es:
       comment1: Comentar
     survey_publication_tpl:
       respond_quest: Cuestionario respondido
+    user_joyride:
+      welcome_prof: Bienvenido a tu perfil
+      text_prof: En este lugar podrás ver todo lo que pasa en tu red cursame.
+      notif: Notificaciones
+      text_notif: Esta es el area de notificaciones.
+      prof: Perfil
+      prof_photo: Aqui ver la foto de tu perfil.
+      edit_prof: Editar perfil
+      text_edit_prof: Aqui puedes editar tu perfil.
+      courses: Cursos
+      courses_area: Esta es el area de tus cursos.
+      friends: Amigos
+      friends_list: Aqui encontraras un listado de tus amigos
+      content: Creación de contenido
+      content_area: Esta es el area de creación de contenido.
+      publ: Publiciones
+      publ_area: Aqui encontraras todas las publicaciones de la red.
 
 
 
