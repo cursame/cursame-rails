@@ -147,7 +147,7 @@
                     <% end %>
 
                     <%= truncate("#{user.name}", :omission => "...", :length => 20) || user.email %>
-                    <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? 'Usuario conectado': 'Usuario desconectado' %>"></div>
+                    <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? t('.sidebar_section.disp_usr'): t('.sidebar_section.no_disp_usr')%>"></div>
 
                   <% end %>
                 </li>
