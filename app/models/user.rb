@@ -815,6 +815,10 @@ class User < ActiveRecord::Base
     roles.first
   end
 
+  def to_csv
+    "#{name},#{email},#{role_title},#{created_at}\n"
+  end
+
   private
   def track_mixpanel_user
     unless self.permissionings.blank?
