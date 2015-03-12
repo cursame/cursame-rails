@@ -157,6 +157,43 @@ es:
         text12: Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.
         text13: Video tutoriales de ayuda
         text14: 'En cada sección donde veas un signo de interrogación "?", al dar click en el podras ver un video sobre como usar dicha función.'
+    notification_type:
+      activity_feed:
+        lookup_usr: Ver usuario
+        comment_net: comentó en la red
+        comment_course: comentó en el curso
+        new_course: Nuevo curso
+        in_network: en tu red
+        accept_course: Has sido aceptado en el curso
+        new_homework: Nueva tarea
+        in_course: en tu curso
+        new_discus: Nueva discusion
+        in_course1: en tu curso
+        new_question: Nuevo cuestionario
+        in_course2: en tu curso
+        one_usr: Un usuario
+        response_homework: ha respondido la tarea
+        homework_calif: Han calificado tu tarea
+        coursework: del curso
+        friend_notif: ha solicitado ser su amigo
+        friend_req: ha aceptado su solicitud de amistad.
+        discuss_comment: comentó en tu discusión
+        comment_to_comment: ha comentado en un comentario que hiciste.
+        comment_profile: ha comentado en tu perfil.
+        comment_to_homework: ha comentado en la tarea
+        add_to_course: ha solicitado entrar al curso
+        quest_response: ha respondido el cuestionario
+        the_course: El curso
+        course_expired: ha llegado a su fecha final. Por favor desactívalo.
+        quest_feedback: Has recibido retroalimentación en el cuestionario
+        text15: El curso
+        text16: ha sido
+        active: activado
+        ended: finalizado
+        text17: Han calificado tu participacion en la discusión
+        course_calif: Se ha calificado el curso
+        activities_p_user: Una actividad por
+        view_usr: Ver usuario
 
 
 
