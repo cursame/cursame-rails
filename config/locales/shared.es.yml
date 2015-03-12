@@ -208,6 +208,8 @@ es:
       write_comment: Escribe un comentario
       comment: Comentar
       comment1: Comentar
+    survey_publication_tpl:
+      respond_quest: Cuestionario respondido
 
 
 
