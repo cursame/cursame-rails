@@ -194,6 +194,11 @@ es:
         course_calif: Se ha calificado el curso
         activities_p_user: Una actividad por
         view_usr: Ver usuario
+    notifications:
+      box_notifications:
+        notif: Notificaciones
+        no_notif: No hay notificaciones para mostrar.
+        more_notif: Ver más notificaciones
 
 
 
