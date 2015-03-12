@@ -227,6 +227,13 @@ es:
       content_area: Esta es el area de creación de contenido.
       publ: Publiciones
       publ_area: Aqui encontraras todas las publicaciones de la red.
+    wall_filters:
+      all: Todos
+      discuss: Discusiones
+      courses: Cursos
+      comments: Comentarios
+      homework: Tareas
+      quest: Cuestionarios
 
 
 
