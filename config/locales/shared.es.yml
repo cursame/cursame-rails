@@ -6,6 +6,17 @@ es:
       chat:
         more_msg: Cargar más mensajes...
         select: Selecciona a un amigo o curso para enviar mensaje.
+      load_more_messages:
+        more_msg: Cargar más mensajes...
+      message_notifications:
+        msg: Mensajes
+        ago: Hace
+        all_msg: Ver todos los mensajes
+      message_tpl:
+        ago: hace
+    evaluation_criteria:
+      evaluation_criteria_fields:
+        criteria_name: Nombre del criterio a evaluar
     static_pages:
       header:
         title1: Metodologías
