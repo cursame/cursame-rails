@@ -6,7 +6,7 @@
     - if post.comments.count > 3
       .more-comment-box{id: "more-comments-#{unique_id}"}
         = icon('comments')
-        Ver comentarios anteriores
+        = t('.view_comments')
 
     - post.comments.last(3).each do |comment|
       .child-comment-box{"data-comment-id" => comment.id, id: "comment_#{comment.id}"}
@@ -33,7 +33,7 @@
             .meta-data
               %div{id: "counter-like-c#{comment.id}"}
                 = comment.votes.up.size
-                me gusta
+                = t('.like')
             %span ·
             .meta-data
               = es_current_date("#{comment.created_at.strftime('%B')}", "#{comment.created_at.strftime('%d')}" , "#{comment.created_at.strftime('%Y')}","#{comment.created_at.strftime('%l:%M%P')}",'latin_string')
@@ -41,7 +41,7 @@
               .edit-publication
                 %span ·
                 .meta-data
-                  = link_to "Borrar", destroy_comment_path(comment.id), :remote => true
+                  = link_to(t('.delete'), destroy_comment_path(comment.id), :remote => true)
 
   .child-comment-box.add-comment
     .comment-author
@@ -49,14 +49,14 @@
         = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
     .comment-main
       = form_tag "/home/add_new_comment", :class => "default-form comment-form", :id => unique_id, :remote =>true do
-        = text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>'Escribe un comentario', :required => 'required', :class => 'autogrow new-comment-textarea new-comment-trigger'
+        = text_area_tag "comment", nil, :rows => 2, :cols => 40, :placeholder=>t('.write_comment'), :required => 'required', :class => 'autogrow new-comment-textarea new-comment-trigger'
         = hidden_field_tag 'commentable_id', post.id
         = hidden_field_tag 'commentable_type', post.class
         = hidden_field_tag 'from_enter_key', true
-        = submit_tag "Comentar",:style=>"display:none;"
+        = submit_tag t('.comment'),:style=>"display:none;"
         .new-comment-actions
           %span.btn.btn-primary.input-btn.activable
-            = submit_tag "Comentar", class: "activable"
+            = submit_tag t('.comment'), class: "activable"
 
   :javascript
     $(function() {

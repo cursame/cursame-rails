@@ -102,6 +102,19 @@ es:
         delete: Borrar
         edit: Editar
         confirm_delete: ¿Estás seguro de borrar esto?
+      post_child_comment:
+        like: Me gusta
+        not_like: Ya no me gusta
+      post_comments:
+        view_comments: Ver comentarios anteriores
+        like: me gusta
+        delete: Borrar
+        write_comment: Escribe un comentario
+        comment: Comentar
+      post_comments_list:
+        prev_comments: Comentarios anteriores
+        write_comment: Escribe un comentario
+        non_commentable: Esta publicación ya no se puede comentar.
       post_meta_data:
         like: Me gusta
         not_like: Ya no me gusta
