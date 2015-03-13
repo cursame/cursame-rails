@@ -1,5 +1,11 @@
 es:
   shared:
+    chat:
+      add_message_form:
+        msg: Escribe un mensaje y presiona Enter.
+      chat:
+        more_msg: Cargar más mensajes...
+        select: Selecciona a un amigo o curso para enviar mensaje.
     static_pages:
       header:
         title1: Metodologías

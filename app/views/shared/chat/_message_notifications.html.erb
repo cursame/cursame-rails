@@ -6,7 +6,7 @@
   <div class="activity-dropdown dropdown-v right">
     <i class="tip"></i>
     <div class="activity-dropdown-title">
-      <h6>Mensajes</h6>
+      <h6><%= t('.msg')%></h6>
     </div>
     <div class="activity-dropdown-content scrollbar">
       <ul id="messages-notifications-list" class="activity-feed-list">
@@ -54,7 +54,7 @@
                     <% end %>
                   </span></h6>
                   <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
-                  <span class="meta">Hace <%= time_ago_in_words last_message.created_at %></span>
+                  <span class="meta"><%= t('.ago')%><%= time_ago_in_words last_message.created_at %></span>
                 </div>
               <% end %>
             </div>
@@ -64,7 +64,7 @@
       </ul>
     </div>
     <div class="activity-dropdown-footer">
-      <%= link_to "Ver todos los mensajes", chat_path %>
+      <%= link_to(t('.all_msg'), chat_path) %>
     </div>
   </div>
 </div>
