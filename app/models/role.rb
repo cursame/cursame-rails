@@ -8,4 +8,5 @@ class Role < ActiveRecord::Base
   ADMIN   = Role.find(1)
   STUDENT = Role.find(2)
   TEACHER = Role.find(3)
+  SUPERADMIN = Role.find(4)
 end
