@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 class Network < ActiveRecord::Base
   has_one :network_template#, :dependent => :destroy
+  has_one :wufoo_setting, dependent: :destroy
+
   has_many :permissionings, :dependent => :destroy
   has_many :users, :through => :permissionings
   has_many :discussions, :dependent => :destroy
@@ -13,6 +15,7 @@ class Network < ActiveRecord::Base
   #library
   has_many :libraries#, :dependent => :destroy
   has_many :network_settings
+  has_many :wufoo_forms, as: :showable, dependent: :destroy
 
   validates_presence_of   :name, :subdomain, :population
   validates_uniqueness_of :subdomain
@@ -25,7 +28,8 @@ class Network < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
-  
+  accepts_nested_attributes_for :wufoo_setting
+
   #uploader de imagenes de fondo de redes
   
   mount_uploader :image_front, BackendFromNetworkUploader
@@ -188,9 +192,25 @@ class Network < ActiveRecord::Base
     !self.find_setting(:mixpanel_token).nil?
   end
 
+  def wufoo_settings?
+    !self.wufoo_setting.nil? && !self.wufoo_setting.subdomain.blank? && !self.wufoo_setting.api_key.blank?
+  end
+
+  def wufoo_forms
+    begin
+      wufoo.forms
+    rescue Errors::MissingWufooSettingsError, SocketError
+      []
+    end
+  end
+
   private
   def gospel_add_network
     Gospel::NetworksWorker.perform_async(self.name, self.subdomain)
   end
 
+  def wufoo
+    raise Errors::MissingWufooSettingsError unless wufoo_settings?
+    WuParty.new self.wufoo_setting.subdomain, self.wufoo_setting.api_key
+  end
 end

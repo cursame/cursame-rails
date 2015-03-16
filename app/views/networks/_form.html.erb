@@ -55,34 +55,32 @@
     </div>
   </div>
 
-  <% unless @network.free %>
-    <div class="form-group label-on-top l-label">
-      <div class="form-group-label">
-        <%= f.label :image_front, 'Imagen de inicio de sesión:' %>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-          <%= image_tag(current_network.image_front, :style => "width:120px; height:80px;") %>
-          <%= (current_network.image_front).to_s.split('/').last%>
-          <%= f.file_field :image_front %>
-        </div>
+  <div class="form-group label-on-top l-label">
+    <div class="form-group-label">
+      <%= f.label :image_front, 'Imagen de inicio de sesión:' %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= image_tag(current_network.image_front, :style => "width:120px; height:80px;") %>
+        <%= (current_network.image_front).to_s.split('/').last%>
+        <%= f.file_field :image_front %>
       </div>
     </div>
+  </div>
 
-    <div class="form-group label-on-top l-label">
-      <div class="form-group-label">
-        <%= f.label :logo, 'Logo de la institución:' %>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-          <%= image_tag(current_network.logo, :style => "width:120px; height:80px;") %>
-          <%= (current_network.logo.response).to_s.split('/').last %>
-          <%= f.file_field :logo %>
-          <%= f.hidden_field :logo_type, :value => "26x26"  %>
-        </div>
+  <div class="form-group label-on-top l-label">
+    <div class="form-group-label">
+      <%= f.label :logo, 'Logo de la institución:' %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= image_tag(current_network.logo, :style => "width:120px; height:80px;") %>
+        <%= (current_network.logo.response).to_s.split('/').last %>
+        <%= f.file_field :logo %>
+        <%= f.hidden_field :logo_type, :value => "26x26"  %>
       </div>
     </div>
-  <% end %>
+  </div>
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
@@ -116,6 +114,31 @@
       </div>
     </div>
   </div>
+
+  <h2>Wufoo</h2>
+
+  <%= f.fields_for :wufoo_setting do |setting| %>
+    <div class="form-group label-on-top l-label">
+      <div class="form-group label-on-top l-label">
+      <div class="form-group-label">
+        <%= setting.label :subdomain, "Subdominio de la Cuenta:" %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+           <%= setting.text_field :subdomain, placeholder: 'Ejemplo: cursame' %>
+        </div>
+      </div>
+    </div>
+      <div class="form-group-label">
+        <%= setting.label :api_key, "API Key:" %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+           <%= setting.text_field :api_key, placeholder: 'Ejemplo: KNAF-0000-YMV9-G9H2' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <span class="btn btn-primary input-btn btn-medium activable">
     <%= f.submit 'Guardar cambios' %>

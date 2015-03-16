@@ -27,7 +27,7 @@
           <% end %>
 
           <% notifications.each do |notification|%>
-            <% if notification != notifications_first and notification != notifications_first %>
+            <% if notification != notifications_first %>
               <%= render :partial => '/shared/notification_type', :locals => {:notification => notification, :cls => ''} %>
             <% end %>
           <% end %>

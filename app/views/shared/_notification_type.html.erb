@@ -1,8 +1,4 @@
-<% if current_role == "superadmin"%>
-<% else %>
-
 <li id="notification-<%=notification.id.to_s%>" class="<%= cls %>" >
-  
   <div class="activity-feed">  
   <% if notification.notificator != nil%>
     
@@ -382,7 +378,36 @@
         <% end %>  
       <%end%>
 
-    <%else%>
+    <% when 'network_wufoo_form' %>
+      <%= link_to wufoo_form_modal_path(notification.notificator), remote: true do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            <span class="as-link"><%= notification.notificator.user.name %></span> ha compartido un formulario publico.
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
+    <% when 'course_wufoo_form' %>
+      <%= link_to wufoo_form_modal_path(notification.notificator), remote: true do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.showable.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            <span class="as-link"><%= notification.notificator.user.name %></span> ha compartido un formulario en el curso <span class="as-link"><%= notification.notificator.showable.title %></span>.
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
+    <% else %>
+
       <%= notification.kind %>
       <% @array = notification.notificator.user %>
       <% if @array.class == Array %>
@@ -402,5 +427,4 @@
 
     </div>
   </li>
-  <%end%>
 <%end%>
