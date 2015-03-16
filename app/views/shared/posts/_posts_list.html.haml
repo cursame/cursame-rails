@@ -21,5 +21,5 @@
   - when 'Course'
     = render partial: 'courses/shared/course_card_post', locals: { course: post, card_type: :post_publication, wall: publication }
   - when 'WufooForm'
-    - if post.init_date < DateTime.now && post.for_user?(current_user)
+    - if post.init_date < DateTime.now && post.for_user?(current_user) && current_network.wufoo_settings?
       = render partial: 'wufoo_forms/shared/wufoo_form_card', locals: { wufoo_form: post, card_type: :post_publication, wall: publication }
