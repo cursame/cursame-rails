@@ -26,6 +26,23 @@ class WufooForm < ActiveRecord::Base
     end
   end
 
+  def for_user?(user)
+    case user.role
+    when Role::TEACHER
+      for_teachers?
+    when Role::STUDENT
+      for_students?
+    when Role::ADMIN, Role::SUPERADMIN
+      true
+    else
+      false
+    end
+  end
+
+  def entry_for?(user)
+    WufooResponse.exists?(wufoo_form_id: self, user_id: user)
+  end
+
   def for_teachers?
     roles.include? Role::TEACHER
   end
