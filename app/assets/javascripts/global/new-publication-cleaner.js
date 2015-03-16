@@ -60,13 +60,13 @@ function newSurveyFormCleaner(form) {
   form.find('.support-material').html('');
   cleanCoursesSelectorDropdown(form.find('.target-dropdown'));
 
-  var questionsBox = $('.new-survey-questions #box-question'), 
+  var questionsBox = $('.new-survey-questions #box-question-'), 
       questionClone = questionsBox.find('.question-field:first-child').clone(true);
 
   questionsBox.html('').append(questionClone);
   questionsBox.find('.question-field .question-input-field').val('');
 
-  var answersBox = questionsBox.find('.question-field #box-request'),
+  var answersBox = questionsBox.find('.question-field #box-request-'),
       answerClone = answersBox.find('.request-field:first-child');
 
   answersBox.html('').append(answerClone);

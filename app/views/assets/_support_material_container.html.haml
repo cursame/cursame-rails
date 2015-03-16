@@ -1,1 +1,9 @@
 .support-material{ id: from }
+  - unless object.id.nil?
+    - object_type = object.class.name
+    - case object_type
+      - when 'Survey'
+        - unless object.assets.blank?
+          - object.assets.each do |asset|
+            = render partial: "assets/asset_file", locals: { asset: asset, delete_enable: true }
+        = render :partial => "content/insertions_to_contents_edit", :locals => { :type => object, :cl => from}

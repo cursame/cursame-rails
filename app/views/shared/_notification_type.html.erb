@@ -95,6 +95,20 @@
         </div>
       <% end %>
 
+    <!-- Notificacion: 7.1 - Cuestionario editado en un curso -->
+    <% when 'edit_survey_on_course'%>
+      <%= link_to survey_modal_path(notification.notificator.id), remote: true do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>El cuestionario <span class="as-link"><%= notification.notificator.name %></span> de tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span> ha sido editado </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
+
     <!-- Notificacion: 8 - Nueva entrega a una tarea -->
     <% when 'new_assignment_on_delivery'%>
       <% response = notification.notificator.delivery.responses.keep_if {|response| response.user_id == notification.notificator.user.id } %>

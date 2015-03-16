@@ -43,52 +43,52 @@
         </div>
       </div>
     </div>
-    
-    <% unless active_edit %> 
-      <div class="form-group">
-        <div class="form-group-label">
-          <%= f.label "", "Preguntas" %>
-        </div>
-        <div class="form-group-main">
-          <div class="form-unit">
-            <div class="new-survey-questions">
-              <div class="box-question">
-                <div id="box-question"  class="box-question">
-                  <%= f.fields_for :questions do |builder| %>
-                    <%= render "/surveys/question_fields", f: builder%>
-                  <% end %>
-                </div>
-              </div>
 
-              <div class="box-question">
-                <div class="question-field">
-                  <%= link_to_add_fields "Agregar Pregunta", f, :questions, {class: 'btn btn-secondary'}, '#box-question' %>
-                </div>
+    <div class="form-group">
+      <div class="form-group-label">
+        <%= f.label "", "Preguntas" %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <div class="new-survey-questions">
+            <div class="box-question">
+              <div id="box-question-<%=@survey.id%>"  class="box-question">
+                <%= f.fields_for :questions do |builder| %>
+                  <%= render "/surveys/question_fields", f: builder %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="add-question">
+              <div class="question-field">
+                <%= link_to_add_fields "Agregar Pregunta", f, :questions, {class: 'btn btn-secondary'}, '#box-question', "#{@survey.id}" %>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <div class="form-group-label label-no-p">
-          <%= f.label "", "Material de soporte" %>
-        </div>
-        <div class="form-group-main">
-          <div class="form-unit">
-            <ul class="list-buttons left">
-              <li>
-                <a class="btn btn-small btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
-              </li>
-              <li>
-                <%= render partial: 'assets/upload_asset_button', locals: { from: 'survey-create-form' } %>
-              </li>
-            </ul>
-            <%= render partial: 'assets/support_material_container', locals: { from: 'survey-create-form-assets' } %>
-          </div>
+    <div class="form-group">
+      <div class="form-group-label label-no-p">
+        <%= f.label "", "Material de soporte" %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <ul class="list-buttons left">
+            <li>
+              <a class="btn btn-small btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+            </li>
+            <li>
+              <% unless active_edit %>
+                <%= render partial: 'assets/upload_asset_button', locals: { from: 'survey-create-form' }%>
+              <% end %>
+            </li>
+          </ul>
+          <%= render partial: 'assets/support_material_container', locals: { from: "#{@survey.id.nil? ? '' : @survey.id}"+'survey-create-form-assets', object: @survey } %>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
   
   <div class="new-publication-footer">
@@ -118,7 +118,8 @@
       <li>
 
         <span class="btn btn-primary input-btn activable">
-          <%= f.submit (active_edit ? "Guardar Cuestionario":"Crear Cuestionario"), id: 'comment-post-form', class: "activable" %>
+          <%= f.submit "Crear Cuestionario", id: 'comment-post-form', class: "activable" unless active_edit %>
+          <%= f.submit "Guardar Cuestionario", id: 'comment-post-form', class: "activable", confirm: "Estás seguro de editar este cuestionario?\nLas entregas de tus alumnos serán eliminadas." if active_edit %>
         </span>
       </li>
     </ul>
@@ -128,6 +129,12 @@
 
 <script type="text/javascript">
 $(function() {
+
+  var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+  $("#box-question-<%=@survey.id%>").find(".question-field").each(function(index, value){
+      $(value).find('#question-num').html(index+1+'. ');
+  });
+
   $( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
     inline: false,
     minDate: 0,
