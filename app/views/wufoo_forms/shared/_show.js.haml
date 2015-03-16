@@ -58,4 +58,7 @@
                               %br= n
     .overlay-footer
       .fl
-        %span.btn.btn-medium.btn-primary.input-btn= submit_tag "Enviar Formulario"
+        - if wufoo_form.entry_for?(current_user)
+          %h4="Este formulario ya ha sido enviado"
+        - else
+          %span.btn.btn-medium.btn-primary.input-btn= submit_tag "Enviar Formulario"
