@@ -28,6 +28,7 @@ es:
         text2: Encuentra tu red
         text3: Escribe tu correo electrónico para accesar a la red de tu institución.
         search_network: Busca tu red
+        notif: Oops! al parecer tu correo no pertenece a niguna red.
     website:
       cta_request_demo:
         request_demo: ¡Solicita un demo en tu plantel!

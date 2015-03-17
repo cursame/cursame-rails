@@ -49,7 +49,7 @@
                   <div id="login-w" class="website-login-form-content active">
                     <h4><%= t('.text2') %></h4>
                     <p><%= t('.text3') %></p>
-                    <p class="error-login-form">Oops! al parecer tu correo no pertenece a niguna red.</p>
+                    <p class="error-login-form"><%=t('.notif')%></p>
                     <br>
                     <%= form_tag new_sesion_from_home_path, class: 'website-login-form' do %>
                       <div class="form-group no-label">
