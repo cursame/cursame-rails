@@ -162,6 +162,15 @@ es:
       filter_by_course_publications:
         filtrate: Filtrar:
         select_course: Selecciona un curso
+    sessions:
+      network_box_head:
+        sign_in: Registrarme →
+        log_in: ¿Ya eres usuario? Ingresa →
+      network_not_exist:
+        ops: ¡Oops!
+        no_network: No ingresaste el subdominio de la red a la que quieres acceder.
+        search_school: Busca tu escuela aquí →
+        no_net_exists: Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.
     assets_for_assignments:
       new_assets:
         attach_file: Adjuntar archivo

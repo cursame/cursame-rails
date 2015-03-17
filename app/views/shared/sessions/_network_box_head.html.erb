@@ -8,14 +8,14 @@
   <% if sign_up %>
     <div class="header-link">
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Registrarme →", new_user_registration_path %><br />
+        <%= link_to (t('.sign_in'), new_user_registration_path) %><br />
       <% end -%>
     </div>
   <% end %>
 
   <% if sign_in %>
     <div class="header-link">
-      <%= link_to "¿Ya eres usuario? Ingresa →", new_session_path(resource_name) %>
+      <%= link_to (t('.log_in'), new_session_path(resource_name)) %>
     </div>
   <% end %>
 

@@ -5,13 +5,13 @@
     </div>
     <div class="user-session-content">
       <% if request.subdomain == '' %>
-      <h1>¡Oops!</h1>
-        <p>No ingresaste el subdominio de la red a la que quieres acceder.</p><br>
-        <%= link_to "Busca tu escuela aquí →", "http://www.cursa.me/browser/" %>
+      <h1><%=t('.ops')%></h1>
+        <p><%=t('.no_network')%></p><br>
+        <%= link_to (t('.search_school'), "http://www.cursa.me/browser/") %>
       <% else %>
-        <h1>¡Oops!</h1>
-        <p>Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
-        <%= link_to "Busca tu escuela aquí →", "http://www.cursa.me/browser/" %>
+        <h1><%=t('.ops')%></h1>
+        <p><%=t('.no_net_exists')%></p><br>
+        <%= link_to (t('.search_school'), "http://www.cursa.me/browser/") %>
       <% end %>
     </div>
   </div>
