@@ -120,7 +120,7 @@
       <% if publication.publication.owner?(current_role, current_user) %>
         <div id="footer-publication-<%= id %>">       
           <div class="form_for_edit_wall" id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>" style="display:none;">
-            <h5>Editar publicación</h5>
+            <h5><%=t('.edit_publ')%></h5>
             <br>
             <div id="<%= "#{publication.publication_type}_id_#{publication.publication_id}"%>_contribution"></div>
           </div>

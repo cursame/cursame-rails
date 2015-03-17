@@ -31,10 +31,10 @@
     <span>&middot;</span>
     <div class="meta-data">
       <% if publication.publication.votes.up.size == 0 %>
-        <span id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></span> Me gusta
+        <span id="counter-like-<%= publication.id%>"><%= publication.publication.votes.up.size %></span> <%=t('.like')%>
       <% else %>
         <%= link_to get_votes_of_publication_path(publication.id), remote: true do %>
-          <span id="counter-like-<%= publication.id %>"><%= publication.publication.votes.up.size %></span> Me gusta
+          <span id="counter-like-<%= publication.id %>"><%= publication.publication.votes.up.size %></span> <%=t('.like')%>
         <% end %>
       <% end %>
     </div>
@@ -44,6 +44,6 @@
     </div>
     <span>&middot;</span>
     <div class="meta-data">
-      <span>Hace <%= time_ago_in_words post.created_at %> a las <%= post.created_at.strftime('%l:%M %P') %></span>
+      <span><%=t('.ago')%><%= time_ago_in_words post.created_at %><%=t('.at')%><%= post.created_at.strftime('%l:%M %P') %></span>
     </div>
 </div>

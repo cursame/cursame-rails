@@ -16,10 +16,10 @@
   </div>
   <div class="academic-intro">
     <p>
-      Nueva discusión
+      <%=t('.new')%>Nueva discusión
 
       <% unless discussion_post[:posted_in_for].blank? %>
-        en el curso <%= link_to discussion_post[:posted_in_for], course_path(discussion_post[:posted_in_for_id]) %></p>
+        <%=t('.in_course')%> <%= link_to discussion_post[:posted_in_for], course_path(discussion_post[:posted_in_for_id]) %></p>
       <% end %>
     </p>
   </div>
@@ -30,7 +30,7 @@
     <p><%= truncate( discussion_post[:content], omission: "...", length: 150) %></p>
   </div>
   <div class="academic-button">
-    <%= link_to 'Abrir discusion', discussion_modal_path(publication.id), :remote => true, class: "btn btn-transparent uppercase", data: "modal"%>
+    <%= link_to(t('.open_discuss'), discussion_modal_path(publication.id), :remote => true, class: "btn btn-transparent uppercase", data: "modal")%>
   </div>
 </div>
 <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: true} %>

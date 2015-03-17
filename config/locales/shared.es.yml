@@ -121,6 +121,43 @@ es:
       post_people_who_liked:
         ed: A
         liked: les gusta esto
+    publications:
+      comment:
+        usr: Usuario
+        course_comment: comentó en el curso
+        profile_comment: comentó en el perfil de
+      course:
+        new_course: Nuevo curso público
+        go_course: Ir al curso
+      delivery:
+        new_homework: Nueva tarea para entregar en el curso
+        delivery_txt: Entregar antes del
+        open_hmwk: Abrir tarea
+      discussion:
+        new: Nueva discusión
+        in_course: en el curso
+        open_discuss: Abrir discusion
+      meta_data:
+        like: Me gusta
+        comments: Comentarios
+        ago: Hace
+        at: a las
+      owner_edit_publications:
+        delete: Borrar
+        confirm: ¿Estas seguro de borrar esto?
+        edit: Editar
+      people_who_likes:
+        users: Usuarios a los que les gusta esto
+      publication_comments:
+        prev_comments: Ver comentarios anteriores
+      publication_template:
+        edit_publ: Editar publicación
+      survey:
+        new_quest: Nuevo cuestionario para responder en el curso
+        response_before: Responder antes del
+        question: Pregunta
+        questions: Preguntas
+        open_quest: Abrir cuestionario
     assets_for_assignments:
       new_assets:
         attach_file: Adjuntar archivo

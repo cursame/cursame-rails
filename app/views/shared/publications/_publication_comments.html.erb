@@ -2,7 +2,7 @@
   <div id="comments-publication-<%= publication.id %>" style="display: block;" class="publication-comments">
     <% if post.comments.count > 3 %>
       <div id="more-comments-<%= publication.id  %>" class="more-comment-box">
-        <%= icon('comments') %> Ver comentarios anteriores
+        <%= icon('comments') %><%=t('.prev_comments')%>
       </div>
     <%end%>
     <% post.comments.last(3).each do |commentt| %>
