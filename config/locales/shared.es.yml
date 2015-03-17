@@ -158,6 +158,10 @@ es:
         question: Pregunta
         questions: Preguntas
         open_quest: Abrir cuestionario
+    publications_filter:
+      filter_by_course_publications:
+        filtrate: Filtrar:
+        select_course: Selecciona un curso
     assets_for_assignments:
       new_assets:
         attach_file: Adjuntar archivo
