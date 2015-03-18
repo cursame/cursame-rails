@@ -1,7 +1,8 @@
 es:
   admin:
-    change_password:
-      new_pwd: Nueva contraseña:
+    users:
+      change_password:
+        new_pwd: Nueva contraseña:
     form_for_import_users_to_network:
       import: Importar archivo de usuarios
     masive_mailer:
