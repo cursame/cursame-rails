@@ -1,25 +1,25 @@
 <%= form_tag  masive_mailer_path, :remote => true, :method => :get do %>
- <%= label_tag 'title' %></br>
- <%= text_field_tag 'titulo'%></br>
- <%= label_tag 'message' %></br>
- <%= text_area_tag 'message', nil, rows: 20, cols: 25%></br>
- <%= label_tag 'number of users when yo want send' %></br>
- <%= number_field_tag "number", 4 %></br>
- <%= label_tag 'Esta es la clave asignada al mensaje' %></br>
- <%= text_field_tag 'key', random_string_for_user_url%></br></br>
- <%= submit_tag "Enviar mensajes" %>
+ <%= label_tag t('.text1') %></br>
+ <%= text_field_tag t('.text2')%></br>
+ <%= label_tag t('.text3') %></br>
+ <%= text_area_tag t('.text3'), nil, rows: 20, cols: 25%></br>
+ <%= label_tag t('.text4') %></br>
+ <%= number_field_tag t('.text5'), 4 %></br>
+ <%= label_tag t('.text6') %></br>
+ <%= text_field_tag t('.')'key', random_string_for_user_url%></br></br>
+ <%= submit_tag t('.send_msg') %>
 <%end%>
 </br></br></br>
 
 <% if MasiveMailerForSuperAdmin.count != 0 %>
 <% @masive = MasiveMailerForSuperAdmin.last %>
 <%= form_tag masive_mailer_path, :remote => true, :method => :get do %>
- <%= label_tag 'Reenviar el mensaje a la siguiente cantidad de usuarios con la clave de mensaje' %></br>
+ <%= label_tag t('.forward')%></br>
  <% if @masive.key_m != nil %>
  <%= text_field_tag 'key', @masive.key_m %></br></br>
  <%end%>
- <%= submit_tag "Enviar mensajes masivos a los siguientes usuaris" %>
+ <%= submit_tag t('.massive_email') %>
 <%end%>
 <%else%>
-<p>Se activará el formulario de reenvio cuando la cuenta de mailers masivos se mayor a 0</p>
+<p><%=t('.mail')%></p>
 <%end%>
