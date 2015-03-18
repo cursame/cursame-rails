@@ -1,34 +1,34 @@
 <div style="float:left; color:#fff; height:500px; margin-left:10px; margin-top:25px; padding:5px; background-color:#000;">
- Título:<p><%= @activity.title %></p></br>
- Tipo de Actividad: <%=   @activity.activitye_type %></br>
+ <%=t('.title')%><p><%= @activity.title %></p></br>
+ <%=t('.title_act')%><%=   @activity.activitye_type %></br>
  <% if  @activity.activitye_type =="Delivery" %>
- Promedio:<% @actividad =  @activity.activitye %>
+ <%=t('.avg')%><% @actividad =  @activity.activitye %>
              <% if @actividad != nil  %>
                  <% @assignments =  @actividad.assignments %>
                  <%= ((@assignments.sum(:accomplishment)).to_f/(@assignments.count).to_f).to_f %> <%"(#{@assignments.count})"%></br>
             <%else%>
-                 <%= "sin actividades"%></br>
+                 <%= t('.without_act')%></br>
             <%end%>
  <%end%>
  
  <% if  @activity.activitye_type == "Survey" %>
-  Promedio:<% @actividad =  @activity.activitye %>
+  <%=t('.avg')%><% @actividad =  @activity.activitye %>
               <% if @actividad != nil %>
                   <% @surveys =  @actividad.user_surveys %>
                   <%= ((@surveys.sum(:result)).to_f/(@surveys.count).to_f).to_f %><%"(#{@surveys.count})"%></br>
              <%else%>
-                  <%= "sin actividades"%></br>
+                  <%= t('.without_act')%></br>
              <%end%>
   <%end%>
  Ip: <%=  @activity.ip_address%></br>
- Lugar: <%=  @activity.address%></br>
- Longitud: <%=  @activity.latitude %></br>
- Latitud: <%=  @activity.longitude %></br>
- geocode: <%=  @activity.geocode %></br>
+ <%=t('.place')%><%=  @activity.address%></br>
+ <%=t('.long')%><%=  @activity.latitude %></br>
+ <%=t('.lat')%><%=  @activity.longitude %></br>
+ <%=t('.geo_c')%><%=  @activity.geocode %></br>
  Brwoser: <%=  @activity.browser %></br>
- Versión: <%=  @activity.version_browser %></br>
- Sistema operativo: <%=  @activity.computer_plataform %></br>
- Red: <%=  @activity.network_id %></br>
+ <%=t('.ver')%><%=  @activity.version_browser %></br>
+ <%=t('.os')%><%=  @activity.computer_plataform %></br>
+ <%=t('.net')%><%=  @activity.network_id %></br>
  <% @user =  @activity.user %>
 <%= link_to "#{@user.name} ir al usuario", activity_path(@activity.id)  %></br>
 <%= link_to image_tag(@user.avatar.profile), activity_path(@activity.id) if (!@user.avatar.blank?) %></br>
@@ -41,7 +41,7 @@
 <% if @activity.activitye_type =="Delivery" %>
  <% if @actividad != nil %>
    <div style="float:left; color:#fff; height:500px; margin-left:10px; margin-top:25px; padding:5px; background-color:#000;">
-        <b>Entregas(<%= @assignments.count %>)</b></br>
+        <b><%=t('.deliveries')%>(<%= @assignments.count %>)</b></br>
      <% @assignments.each do |assignment|%>
          <% activd = assignment.activities.last %>
         <%= link_to "#{assignment.title}", activity_path(activd.id) %></br>
