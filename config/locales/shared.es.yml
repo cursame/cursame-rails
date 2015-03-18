@@ -172,6 +172,22 @@ es:
         no_network: No ingresaste el subdominio de la red a la que quieres acceder.
         search_school: Busca tu escuela aquí →
         no_net_exists: Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.
+    tour:
+      survey_first_login:
+        title: Ayúdanos a mejorar
+        title2: 'Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.'
+        title3: 'Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente.'
+        thnx: Gracias.
+        quest: Enviar Encuesta
+        text4: Tus datos son confidenciales y serán utilizados con el fin de 
+        text5: 'mejorar nuestro servicio, Revisa nuestro'
+        priv: Aviso de Privacidad
+      video_tour_first_time:
+        welcome: Bienvenido al nuevo Cúrsame
+        wel_text: Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.
+        wel_text1: En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.
+        wel_text2: En este video de introducción te mostramos las principales secciones y características del curso.
+        loading_tour: Cargando tour...
     assets_for_assignments:
       new_assets:
         attach_file: Adjuntar archivo

@@ -1,21 +1,19 @@
 <div class="overlay-header">
   <div class="overlay-title">
-    <h4>Bienvenido al nuevo Cúrsame</h4>
+    <h4><%=t('.welcome')%></h4>
     <% if tour_type == "network" %>
-      <p>Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.</p>
+      <p><%=t('.wel_text')%></p>
     <% elsif tour_type == "profile" %>
-      <p>En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.</p>
+      <p><%=t('.wel_text1')%></p>
     <% elsif tour_type == "course" %>
-      <p>En este video de introducción te mostramos las principales secciones y características del curso.</p>
+      <p><%=t('.wel_text2')%></p>
     <% end %>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
 
 <div class="overlay-content no-padding">
-  <div id="video-tour-container">
-    Cargando tour...
-  </div>
+  <div id="video-tour-container"><%=t('.loading_tour')%></div>
 </div>
 
 <script>
