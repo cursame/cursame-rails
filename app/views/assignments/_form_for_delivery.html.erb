@@ -47,7 +47,7 @@
 
     <div class="form-group">
       <div class="form-group-label label-no-p">
-        <label>Archivos de entrega:</label>
+        <label><%=t('.file_dlvry')%></label>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -78,11 +78,11 @@
   <div class="overlay-footer">
     <ul class="list-buttons left fr">
       <li>
-        <a href="" class="cancel-delivery-submit btn btn-medium btn-secondary" title="Cancelar">Cancelar</a>
+        <a href="" class="cancel-delivery-submit btn btn-medium btn-secondary" title="Cancelar"><%=t('.cancel')%></a>
       </li>
       <li>
         <span class="btn btn-medium btn-primary input-btn activable">
-          <%= f.submit already_delivered ? "Guardar nueva entrega" : "Entregar Tarea", :class => 'activable' %>
+          <%= f.submit already_delivered ? t('.save_dlvry') : t('.dlvry'), :class => 'activable' %>
         </span>
       </li>
     </ul>

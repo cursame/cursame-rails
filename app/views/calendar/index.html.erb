@@ -28,9 +28,9 @@
   </div>
   <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
     <% if mobile?.present? %>
-      <%= t.head( 'D', 'L', 'M', 'M', 'J', 'V', 'S' ) %>
+      <%= t.head( t('.day1'), t('.day2'), t('.day3'), t('.day4'), t('.day5'), t('.day6'), t('.day7') ) %>
     <% else %>
-      <%= t.head( 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado' ) %>
+      <%= t.head( t('.sunday'), t('.monday'), t('.tuesday'), t('.wednesday'), t('.thursday'), t('.friday'), t('.saturday') ) %>
     <% end %>
     <%= t.day(:day_method => :ends_at) do |day, tasks| %>
       <div class="calendar-day">
