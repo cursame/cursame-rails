@@ -1,0 +1,29 @@
+es:
+  califications:
+    shared:
+      califications_course_header:
+        califications: Calificaciones
+      califications_courses_list:
+        select_course: Selecciona un curso
+        member: Miembro
+        members: Miembros
+        no_courses: No hay cursos para ver calificaciones.
+      califications_header:
+        califications: Calificaciones
+        active_courses: Cursos activos
+        closed_courses: Cursos finalizados
+    course:
+      calification: Calificación
+      no_members: Este curso no tiene miembros
+      final_score: Calificación final
+      criterion: Criterio
+      score: Calificación Obtenida
+      percent: Porcentaje:
+      no_score: Aún no tienes calificación final.
+      no_printable_score: Tu profesor todavia no te ha dado calificación final.
+      active_courses: Cursos activos
+    member:
+      score: Calificación Cúrsame:
+      final_score: Calificación final:
+      no_score: Sin Calificar
+      members: Miembros
