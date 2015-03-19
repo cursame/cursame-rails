@@ -1,0 +1,8 @@
+es:
+  comments:
+    shared:
+      comment_admin_actions:
+        delete: Borrar
+        confirm: ¿Estas seguro de borrar este comentario?
+      comment_card:
+        edit_comment: Editar Comentario
