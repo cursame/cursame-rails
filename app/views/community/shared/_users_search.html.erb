@@ -1,9 +1,9 @@
 <%= form_tag(community_search_path, class: "search-courses") do %>
   <div class="search-wrap">
-    <%= text_field_tag 'query', '' , placeholder: 'Buscar usuarios...', class: 'search-input', id: "users-search-input" %>
+    <%= text_field_tag 'query', '' , placeholder: t('.search_users'), class: 'search-input', id: "users-search-input" %>
     <div class="search-button">
       <span class="btn btn-secondary input-btn">
-        <%= submit_tag 'Buscar' %>
+        <%= submit_tag t('.find') %>
       </span>
     </div>
   </div>
