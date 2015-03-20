@@ -390,6 +390,12 @@
   margin-bottom: 20px;
   position: relative;
 
+  .post-box-main-user-actions {
+    position: absolute;
+    top: 0;
+    right: 7px;
+  }
+
   .post-box-main-admin-actions {
     position: absolute;
     top: 0;

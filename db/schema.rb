@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140903221234) do
+ActiveRecord::Schema.define(:version => 20150311185956) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -477,6 +477,20 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.integer  "value"
     t.text     "content"
   end
+
+  create_table "reported_contents", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "network_id"
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.text     "description",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "reported_contents", ["network_id"], :name => "index_reported_contents_on_network_id"
+  add_index "reported_contents", ["reportable_id", "reportable_type"], :name => "index_reported_contents_on_reportable_id_and_reportable_type"
+  add_index "reported_contents", ["user_id"], :name => "index_reported_contents_on_user_id"
 
   create_table "response_to_the_evaluations", :force => true do |t|
     t.string   "name"

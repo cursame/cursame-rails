@@ -13,6 +13,7 @@ class Network < ActiveRecord::Base
   #library
   has_many :libraries#, :dependent => :destroy
   has_many :network_settings
+  has_many :reported_contents, dependent: :destroy
 
   validates_presence_of   :name, :subdomain, :population
   validates_uniqueness_of :subdomain

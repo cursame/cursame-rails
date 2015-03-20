@@ -523,7 +523,6 @@ DEPENDENCIES
   pdfkit
   pg
   private_pub!
-  rack-test
   rails (= 3.2.19)
   rails_best_practices
   rails_config

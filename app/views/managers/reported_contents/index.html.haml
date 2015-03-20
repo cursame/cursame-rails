@@ -1,0 +1,33 @@
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1 Contenidos Reportados
+      %table.data-table
+        %thead
+          %tr
+            %th Usuario
+            %th Fecha de reporte
+            %th Autor
+            %th Acciones
+        %tbody
+          - @reported_contents.each do |reported_content| 
+            %tr
+              %td= link_to reported_content.user.name, managers_user_path(reported_content.user)
+              %td= reported_content.created_at
+              - content_owner = reported_content.reportable.user
+              %td= link_to content_owner.name, managers_user_path(content_owner)
+              %td
+                .dropdown-wrap.actions
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+                      %li= link_to 'Ver', managers_reported_content_path(reported_content)
+                      %li= link_to 'Borrar Contenido', managers_destroy_content_path(reported_content), class: 'btn btn-small btn-secondary', confirm: '¿Está seguro de borrar este contenido?'
+                      %li= link_to 'Borrar Reporte', managers_reported_content_path(reported_content), class: 'btn btn-small btn-secondary', method: :delete, confirm: '¿Está seguro de borrar este reporte?, el contenido no será borrado.'
+                      
+      .digg_pagination.paginator
+        = will_paginate @reported_contents

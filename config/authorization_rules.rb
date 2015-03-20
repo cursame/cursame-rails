@@ -19,6 +19,7 @@ authorization do
     has_permission_on [:managers_surveys], :to => [ :index, :show, :destroy ]
     has_permission_on [:managers_discussions], :to => [ :index, :show, :destroy ]
     has_permission_on [:managers_comments], :to => [ :index, :show, :destroy ]
+    has_permission_on [:managers_reported_contents], :to => [ :index, :show, :destroy, :destroy_content ]
   end
 
   role :student do

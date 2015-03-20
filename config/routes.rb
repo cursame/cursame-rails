@@ -5,6 +5,11 @@ Cursame30Lb::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  match '/managers/reported_content/destroy_content/:id', to: 'managers/reported_contents#destroy_content', as: :managers_destroy_content
+  namespace :managers do
+    resources :reported_contents
+  end
+
   resources :usernotificationings
   resources :members_in_groups
   resources :groups
@@ -174,6 +179,7 @@ Cursame30Lb::Application.routes.draw do
   match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/reported_content/:id', to: 'modal#reported_content_modal', :as => :reported_content_modal, :via => [:get], :defaults => { :format => 'js' }
 
   # Calificaciones
   get "/califications", :to => "califications#index", :as =>  :califications
@@ -591,5 +597,9 @@ Cursame30Lb::Application.routes.draw do
   match '/robots' => 'robots#robots'
 
   root :to => 'home#index'
+
+  #create reported_content
+  # match "/reported_contents/create" => "reported_contents#create", :as => "reported_content_create", :via => [:post], :defaults => { :format => 'js' }
+  resources :reported_contents
 
 end

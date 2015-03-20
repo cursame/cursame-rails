@@ -18,7 +18,9 @@ class Comment < ActiveRecord::Base
   #course belongnings
   belongs_to :network
   belongs_to :course
+
   has_many :activities, as: :activitye#, :dependent => :destroy
+  has_many :reported_contents, as: :reportable, dependent: :destroy
 
   validates_presence_of :user
 

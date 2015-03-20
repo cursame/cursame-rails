@@ -55,4 +55,16 @@ class ModalController < ApplicationController
      end 
   end
 
+  def reported_content_modal
+    @type = params[:type]
+    if params[:type] == 'wall'
+      @content = Wall.find_by_id(params[:id])
+    elsif params[:type] == 'comment'
+      @content = Comment.find_by_id(params[:id])
+    end
+    respond_to do |format|
+      format.js
+    end 
+  end
+
 end

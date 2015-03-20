@@ -382,6 +382,24 @@
         <% end %>  
       <%end%>
 
+    <!-- Notificacion: 10 - Solicitud de amistad -->
+    <% when 'new_reported_content'%>
+      <% if notification.notificator != nil && notification.notificator.user != nil %>
+        <% user = notification.notificator.user %>
+        <%= link_to "#{managers_reported_content_path(notification.notificator)}" do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", "#{notification.notificator.user_id}", "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= notification.notificator.user.name %></span> ha denunciado una publicación</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
+
+      <%end%>
+
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>
