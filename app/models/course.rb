@@ -49,6 +49,7 @@ class Course < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
 
   after_create do
+    create_library
     mixpanel_track_event
     if self.public_status == 'public'
       users  = self.network.users
@@ -331,4 +332,7 @@ class Course < ActiveRecord::Base
     track_event self.id, 'Courses', event_data
   end
 
+  def create_library
+    Library.create(storable: self, network: network)
+  end
 end

@@ -34,6 +34,7 @@ class Network < ActiveRecord::Base
 
   after_create do
     gospel_add_network
+    create_library
   end
 
   def radar_token?
@@ -201,5 +202,9 @@ class Network < ActiveRecord::Base
   def wufoo
     raise Errors::MissingWufooSettingsError unless wufoo_settings?
     WuParty.new self.wufoo_setting.subdomain, self.wufoo_setting.api_key
+  end
+
+  def create_library
+    Library.create(storable: self, network: self)
   end
 end
