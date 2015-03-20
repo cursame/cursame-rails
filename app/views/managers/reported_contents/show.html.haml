@@ -1,0 +1,46 @@
+.managers-top-actions
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        %ul.list-buttons.left
+          %li= link_to '&#8592; Regresar'.html_safe, managers_reported_contents_path, class: 'btn btn-secondary'
+          %li= link_to 'Borrar Contenido', managers_destroy_content_path(@reported_content), class: 'btn btn-primary', confirm: '¿Está seguro de borrar este contenido?'
+          %li= link_to 'Borrar Reporte', managers_reported_content_path(@reported_content), class: 'btn btn-primary', method: :delete, confirm: '¿Está seguro de borrar este reporte?, el contenido no será borrado.'
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1
+            Contenido Reportado
+
+.cols-12
+  .col.col-8.alpha.omega
+    .col-inner
+
+      %span.meta-info Fecha de Creacíon
+      %p= @reported_content.created_at
+
+      %br/
+      %span.meta-info Contenido
+      - title = @reported_content.reportable.class.name == 'Survey' ? @reported_content.reportable.name : @reported_content.reportable.title
+      - case @reported_content.reportable.class.name
+      - when 'Discussion'
+        %p= link_to title, discussion_modal_path(@reported_content.reportable.id), remote: true
+      - when 'Delivery'
+        %p= link_to title, delivery_modal_path(@reported_content.reportable.id), remote: true
+      - when 'Survey'
+        %p= link_to title, survey_modal_path(@reported_content.reportable.id), remote: true
+      - when 'Comment'
+        %span.meta-info  (Comentario)
+        %p= @reported_content.reportable.comment
+      - else
+        %p Contenido no identificado
+
+      %br/
+      %span.meta-info Estado
+      %p= @reported_content.reportable.state == "published" ? "Publicada" : "Sin Publicar"
+
+      %br/
+      %span.meta-info Descripción
+      %p= @reported_content.description

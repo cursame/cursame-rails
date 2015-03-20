@@ -10,6 +10,7 @@ class Survey < ActiveRecord::Base
   has_many :user_surveys, dependent: :destroy
   has_many :survey_assets, dependent: :destroy
   has_many :contents, as: :contentye
+  has_many :reported_contents, as: :reportable, dependent: :destroy
 
   belongs_to :network
   belongs_to :poll

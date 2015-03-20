@@ -1,0 +1,8 @@
+if(<%= @success %>){
+  window.location.reload();
+  Notice('success', 'Tu denuncia ha sido realizada con exito.')
+}
+else{
+  window.location.reload();
+  Notice('error', 'Algo sucedio que no se pudo guardar tu denuncia.')
+}
