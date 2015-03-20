@@ -61,7 +61,6 @@ class Network < ActiveRecord::Base
       (members_in_courses.accepted = ? AND members_in_courses.user_id = ? AND walls.publication_type != 'Comment') ",network_id,user_id,true,true, user_id]).order('walls.created_at DESC')
   end
 
-
   def send_email(admin, users, subject, message)
     users.each do |user|
       if (admin != user) then
