@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150311185956) do
+ActiveRecord::Schema.define(:version => 20150320195515) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -341,12 +341,26 @@ ActiveRecord::Schema.define(:version => 20150311185956) do
   add_index "grades", ["user_id"], :name => "index_grades_on_user_id"
 
   create_table "groups", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
+    t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "init_date"
+    t.integer  "network_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "active",      :default => true
   end
+
+  add_index "groups", ["network_id"], :name => "index_groups_on_network_id"
+
+  create_table "libraries", :force => true do |t|
+    t.integer  "storable_id"
+    t.string   "storable_type"
+    t.integer  "network_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "libraries", ["network_id"], :name => "index_libraries_on_network_id"
 
   create_table "masive_mailer_for_super_admins", :force => true do |t|
     t.string   "key_m"
@@ -381,11 +395,15 @@ ActiveRecord::Schema.define(:version => 20150311185956) do
   end
 
   create_table "members_in_groups", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.boolean  "accepted",   :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
+
+  add_index "members_in_groups", ["group_id"], :name => "index_members_in_groups_on_group_id"
+  add_index "members_in_groups", ["user_id"], :name => "index_members_in_groups_on_user_id"
 
   create_table "mesages", :force => true do |t|
     t.text     "mesage"
