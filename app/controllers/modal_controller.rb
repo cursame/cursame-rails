@@ -68,3 +68,4 @@ class ModalController < ApplicationController
     end 
   end
 end
+
