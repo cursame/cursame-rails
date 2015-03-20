@@ -1,8 +1,9 @@
-.comment-admin-actions
+.post-box-main-user-actions
   .dropdown-wrap
     .dropdown-pull.activity-dropdown-pull
       = icon('arrow-down-10')
     .dropdown-v.right{style: "right: -12px;"}
       %i.tip
       %ul
-        %li= link_to "Borrar", destroy_comment_path(comment.id), remote: true, confirm: '¿Está seguro de borrar este comentario?'
+        %li
+          = link_to 'Denunciar publicación', reported_content_modal_path(id: wall.id, type: 'wall'), remote: true

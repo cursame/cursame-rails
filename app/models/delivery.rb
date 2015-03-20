@@ -20,6 +20,7 @@ class Delivery < ActiveRecord::Base
   has_many :activities, as: :activitye
   has_many :contents, :as => :contentye
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
+  has_many :reported_contents, as: :reportable, dependent: :destroy
 
   belongs_to :network
   belongs_to :wall

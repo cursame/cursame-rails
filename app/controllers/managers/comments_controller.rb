@@ -2,6 +2,7 @@
 class Managers::CommentsController < Managers::BaseController
   def index
     @comments = current_network.comments.paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
+    # @comments = Comment.find_all_by_network_id(current_network.id).paginate(per_page: MANAGERS_RECORDS_PER_PAGE, page: params[:page])
   end
 
   def show

@@ -1,0 +1,30 @@
+-if type == 'comment'
+  - reported_content_user = ReportedContent.find_by_user_id_and_reportable_id_and_reportable_type(current_user.id, content.id, content.class.name)
+  - reportable_type = content.class.name
+  - reportable_id = content.id
+-else
+  - reported_content_user = ReportedContent.find_by_user_id_and_reportable_id_and_reportable_type(current_user.id, content.publication.id, content.publication.class.name)
+  - reportable_type = content.publication.class.name
+  - reportable_id = content.publication.id
+.overlay-header
+  .overlay-title
+    %h4
+      Ayúdanos a entender qué sucede
+  .close-overlay 
+    = icon('x-close')
+- unless reported_content_user.nil?
+  .overlay-content
+    %h5 Ya has reportado este contenido, el administrador de la red tomara acciones.
+- else
+  .overlay-content
+    %h5 ¿Por qué no quieres ver este contenido?
+  - @reported_content = ReportedContent.new
+  = form_for @reported_content, remote: true do |f|
+    .report-content
+      = f.text_area :description, placeholder: 'Escribe un comentario', required: true
+      = f.hidden_field :reportable_id, value: reportable_id
+      = f.hidden_field :reportable_type, value: reportable_type
+      = f.hidden_field :user_id, value: current_user.id
+      = f.hidden_field :network_id, value: current_network.id
+    .btn-report-content
+      = f.submit "Enviar", :class=>"btn btn-medium btn-primary"
