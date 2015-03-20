@@ -3,6 +3,7 @@ class Network < ActiveRecord::Base
 
   has_one :network_template
   has_one :wufoo_setting, dependent: :destroy
+  has_one :library, as: :storable, dependent: :destroy
 
   has_many :permissionings, dependent: :destroy
   has_many :users, through: :permissionings
@@ -16,6 +17,7 @@ class Network < ActiveRecord::Base
   has_many :network_settings
   has_many :wufoo_forms, as: :showable, dependent: :destroy
   has_many :reported_contents, dependent: :destroy
+  has_many :files, class_name: 'LibraryFile', through: :library
 
   validates_presence_of   :name, :subdomain, :population
   validates_uniqueness_of :subdomain
