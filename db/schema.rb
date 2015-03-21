@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150320200956) do
+ActiveRecord::Schema.define(:version => 20150321193302) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -367,6 +367,7 @@ ActiveRecord::Schema.define(:version => 20150320200956) do
     t.string   "file"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   add_index "library_files", ["library_id"], :name => "index_library_files_on_library_id"
