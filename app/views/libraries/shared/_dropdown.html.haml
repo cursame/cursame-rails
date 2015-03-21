@@ -1,0 +1,80 @@
+- dropdown_id = "dropdown_#{random}" 
+- library_id  = "library_#{random}"
+= form.hidden_field :library_id, value: "#{current_network.library.id}", id: "library_id"
+.inline-block
+  .dropdown-wrap.target-dropdown{ id: dropdown_id }
+    .dropdown-pull.btn.btn-secondary
+      %span#title-dd
+        = icon('public-new-publication')
+        = "Público"
+      %span.arrow
+    .dropdown-v.right
+      %i.tip
+      %ul#box-selector-dd.dropdown.target-selector{style: "display: block;"}
+        %li
+          %label#icon-dd-public.world-dd.active
+            = icon('public-new-publication')
+            Público
+            \#{icon('checked-16')}
+        %li
+          %label#icon-dd-course.course-dd
+            = icon('course-new-publication')
+            Cursos
+      %ul#box-course-dd.dropdown.target-courses-selector{style: "display: none;"}
+        - unless current_user.courses.empty?
+          - courses = teacher_courses if is_teacher
+          - courses = student_courses if is_student
+          - courses.each do |course|
+            %li
+              %label{id: "#{course.library.id}"}
+                = avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no")
+                = truncate( course.title, omission: "...", length: 17)
+                = icon('checked-16')
+        - else
+          .inner-no-content
+            - if is_student
+              %h5 No eres miembro de ningún curso.
+              %p
+                Únete a uno en la sección de #{link_to 'Cursos', courses_path}
+            - else
+              %h5 No has creado ningún curso todavia.
+              %p= link_to 'Crear curso ahora →', new_course_path
+        %li
+          #box-return-dd.return-dd
+            = icon('back-blue')
+            Volver
+:javascript
+  $(document).ready(function() {
+    var dropdown = $('##{dropdown_id}'),
+        titleDropdown = dropdown.find('#title-dd');
+
+    dropdown.find('#icon-dd-public').click(function() {
+      cleanCoursesSelectorDropdown(dropdown);
+      $(".target-selector > li label").removeClass("active");
+      $(".target-courses-selector > li label").removeClass("active");
+      $(this).addClass('active');
+      $(this).find('#is_public').prop('checked', true);
+      titleDropdown.text('Público').prepend($('<i class="i i-public-new-publication"></i>'));
+      $("#library_id").val('#{current_network.library.id}')
+    });
+
+      dropdown.find('#icon-dd-course').click(function() {
+        dropdown.find('#box-selector-dd').hide();
+        dropdown.find('#box-course-dd').show();
+      });
+
+      dropdown.find('#box-return-dd').click(function(e) {
+        dropdown.find('#box-selector-dd').show();
+        dropdown.find('#box-course-dd').hide();
+        e.preventDefault();
+      });
+
+      dropdown.find('.target-courses-selector > li label').click(function(e) {
+        $(".target-courses-selector > li label").removeClass("active");
+        $(this).addClass('active');
+        $("#library_id").val(this.id)
+
+        e.preventDefault();
+        e.stopPropagation();
+      });
+  });

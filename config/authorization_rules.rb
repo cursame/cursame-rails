@@ -7,11 +7,12 @@ authorization do
     has_permission_on [:comments], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:users], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:calendar], to: [:users,:create,:destroy,:index,:show,:edit]
-    has_permission_on [:assets], to: [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:assets], to: [:users,:crea_e,:destroy,:index,:show,:edit]
     has_permission_on [:discussions], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:surveys], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:forms], to: [:create]
     has_permission_on [:events], to: [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:library_files], to: [:create]
 
     has_permission_on [:managers], :to => [ :index, :publications, :settings, :import_members, :upload_members, :mailer, :mailer_deliver ]
     has_permission_on [:managers_users], :to => [ :index, :show, :new, :create, :edit, :update, :destroy, :import, :import_receiver ]
@@ -35,6 +36,7 @@ authorization do
     has_permission_on [:discussions], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:events], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:discussions], to: [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:library_files], to: [:create]
   end
 
   role :teacher do
@@ -48,6 +50,7 @@ authorization do
     has_permission_on [:discussions], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:forms], to: [:create]
     has_permission_on [:surveys], to: [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:library_files], to: [:create]
   end
 
 
@@ -63,6 +66,7 @@ authorization do
     has_permission_on [:surveys], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:forms], to: [:create]
     has_permission_on [:events], to: [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:library_files], to: [:create]
 
     has_permission_on [:managers], to: [ :index, :publications, :settings, :import_members, :upload_members, :mailer, :mailer_deliver ]
     has_permission_on [:managers_users], to: [ :index, :show, :new, :create, :edit, :update, :destroy, :import, :import_receiver ]
