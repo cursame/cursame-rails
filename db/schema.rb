@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150321200026) do
+ActiveRecord::Schema.define(:version => 20150321232201) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -369,9 +369,11 @@ ActiveRecord::Schema.define(:version => 20150321200026) do
     t.datetime "updated_at",  :null => false
     t.string   "name"
     t.string   "description"
+    t.integer  "user_id"
   end
 
   add_index "library_files", ["library_id"], :name => "index_library_files_on_library_id"
+  add_index "library_files", ["user_id"], :name => "index_library_files_on_user_id"
 
   create_table "masive_mailer_for_super_admins", :force => true do |t|
     t.string   "key_m"
