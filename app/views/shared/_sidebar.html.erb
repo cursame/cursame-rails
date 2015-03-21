@@ -18,16 +18,18 @@
           <% end %>
         </li>
         <% if current_role == 'student' %>
-          <li>
-            <%= link_to deliveries_path do %>
-              <%= icon 'homeworks-w' %> Tareas
-            <%end%>
-          </li>
-          <li>
-            <%= link_to surveys_path do %>
-              <%= icon 'questionaries-w' %> Cuestionarios
-            <%end%>
-          </li>
+          <% if current_network.has_evaluable %>
+            <li>
+              <%= link_to deliveries_path do %>
+                <%= icon 'homeworks-w' %> Tareas
+              <%end%>
+            </li>
+            <li>
+              <%= link_to surveys_path do %>
+                <%= icon 'questionaries-w' %> Cuestionarios
+              <%end%>
+            </li>
+          <%end%>
           <li>
             <%= link_to discussions_path do %>
               <%= icon 'discussions-w' %> Discusiones
@@ -35,7 +37,7 @@
           </li>
         <% end %>
 
-        <% if current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin' %>
+        <% if ((current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin') and current_network.has_evaluable) %>
           <li>
             <%= link_to evaluate_activities_path do %>
               <%= icon 'evaluate-w' %> Actividades
@@ -47,11 +49,13 @@
             <%= icon 'courses-w' %> Cursos
           <% end %>
         </li>
-        <li>
-          <%= link_to califications_path do %>
-            <%= icon 'stats-w' %> Calificaciones
-          <%end%>
-        </li>
+        <% if current_network.has_evaluable %>
+          <li>
+            <%= link_to califications_path do %>
+              <%= icon 'stats-w' %> Calificaciones
+            <%end%>
+          </li>
+        <% end %>
         <li>
           <%= link_to calendar_path, :data => "menu" do %>
             <%= icon 'calendar-w' %> Calendario
