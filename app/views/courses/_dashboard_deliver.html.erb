@@ -4,7 +4,7 @@
 <div class="title_dxv" style="margin-bottom:80px;">
           <div id="configurationing">
             <div class="header">
-                <h1 style="margin-left:10px; padding:2px;"> Acceso rápido de administración de cursos    
+                <h1 style="margin-left:10px; padding:2px;"> <%=t('.access')%>    
                 </h1>
             </div>
           </div>
@@ -17,16 +17,16 @@
 	        <div class="status">
 	            <%if  course.active_status == true%>
 	             <span class="course_status">
-	             	<%= link_to "Desactivar", active_status_path(course.id), :remote => true %>
+	             	<%= link_to t('.desactivate'), active_status_path(course.id), :remote => true %>
 	             </span>
 	            <%else%>
-	              Inactivo <%= link_to "activar curso", active_status_path(course.id), :remote => true %>
+	              <%=t('.inactive')%> <%= link_to t('.activate'), active_status_path(course.id), :remote => true %>
 	            <%end%>
 	        </div>
 	    </div>
 	    
 	    <div class="top-header-delivery-box">
-	      <%= link_to "Monitor de actividades", course_activities_depot_path(course.id) %>
+	      <%= link_to t('.monitor'), course_activities_depot_path(course.id) %>
 	    </div>
 	   
 	</div>
@@ -42,7 +42,7 @@
 	<div class="light_box" id="delivery_list_<%= course.id %>"  style="display:none" >	
 	
 		<div id="headerBar">
-			<h1>Tareas en el curso<pre style="display:inline;">               </pre>Calificaciones</h1>
+			<h1><%=t('.hmwrks_course')%><pre style="display:inline;">               </pre><%=t('.calif')%></h1>
 		</div>
 	    <div><a id="close_x" class="close CloseWinWd" href="#"><center>x</center></a></div>
 
@@ -86,7 +86,7 @@
 	        <% course.surveys.each do |survey|%>
 				  
 				<div class="" style="border-bottom: 1px solid #EEEEEE; padding: 10px 20px;">
-				Contador de examenes respondidos   <%= survey.user_surveys.count%>
+				<%=t('.count_test')%>   <%= survey.user_surveys.count%>
 	               <div id="title_from_delivery<%=survey.id%>">
 	                   <b><%= survey.name %></b>
 	                   <% survey.user_surveys.each do |user_survey|%>

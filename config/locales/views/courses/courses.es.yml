@@ -1,0 +1,153 @@
+es:
+  courses:
+    closure:
+      closure_members:
+        final_scores: Calificaciones finales
+        send_scores: Envia la calificación final a los estudiantes del grupo.
+        members: Miembros
+        score: Calificación:
+        no_score: Sin calificar
+        no_members: No hay miembros en el curso.
+        invite: Invita a tus alumnos que se unan a tu curso.
+      user_closure_overview:
+        criterium: Criterio
+        score: Calificación Obtenida
+        hmwrk: Tareas
+        send: Entrego
+        of: de
+        percent: Porcentaje:
+        quest: Cuestionarios
+        respond: Contesto
+        discuss: Discusiones
+        participate: Participo en
+        example8: Ejemplo: 8
+        final_score: Calificación Final
+        rate_student: Calificar alumno
+        members: Miembros
+        calif: Calificación:
+        no_rate: Sin calificar
+    index:
+      student_courses_index:
+        no_courses: No hay cursos.
+        no_show: No hay más cursos para mostrar.
+      student_header:
+        courses: Cursos
+        course: Cursando
+        regist: Inscríbete
+        request: Solicitudes
+      teacher_courses_index:
+        no_courses: No hay cursos.
+        no_show: No hay más cursos para mostrar.
+      teacher_header:
+        courses: Cursos
+        create_course: Crear curso nuevo
+        new: Nuevo
+        active: Activos
+        finalize: Finalizados
+    members_in_courses:
+      course_view_call:
+        no_courses: No hay cursos.
+      owner_partial_for_member:
+        teacher: Profesor
+        student: Estudiante
+        admin: Administrador
+      permissionings_edit:
+        delete_group: Eliminar del grupo
+        confirm: ¿Estás seguro de querer eliminar este usuario del curso?
+        delete: Eliminar
+        usr_accept: Aceptar Usuario
+    pending:
+      pending:
+        no_request: No hay más solicitudes pendientes.
+    search:
+      courses_search_results:
+        search: Busqueda:
+        no_records: No se encontraron cursos con el criterio de busqueda.
+    shared:
+      course_card:
+        member: Miembro
+        members: Miembros
+      course_card_actions:
+        final_score: Calificaciones finales
+        activities_score: Calificar actividades
+        eval_form: Forma de evaluación
+        edit: Editar
+        clone: Clonar
+        finalize: Finalizar
+        active: Activar
+        enroll: Estás inscrito
+        confirm: ¿Esta seguro de querer abandonar este curso?
+        leave: Abandonar curso
+        request_send: Solicitud enviada
+        send_request: Enviar solicitud
+      course_card_post:
+        new_course: Nuevo curso público
+      course_evaluation_schema_fields:
+        hmwrks: Tareas
+        quest: Cuestionarios
+        discuss: Discusiones
+        criterium: ¿Que criterio se evaluará?
+        percent: Porcentaje asignado
+      courses_paginate_button:
+        load_more: Cargar más...
+      course_header: 
+        update: Actualizar portada
+        update_photo: Actualizar foto
+        final_score: Calificaciones finales
+        activities_score: Calificar actividades
+        eval_form: Forma de evaluación
+        edit: Editar
+        clone: Clonar
+        final: Finalizar
+        active: Activar
+        publ: Publicaciones
+        info: Información
+        members: Miembros
+        library: Biblioteca
+    courses_search:
+      courses_search: Buscar curso...
+      search: Buscar
+    dashboard_deliver:
+      access: Acceso rápido de administración de cursos
+      desactivate: Desactivar
+      activate: activar curso
+      inactive: Inactivo
+      monitor: Monitor de actividades
+      hmwrks_course: Tareas en el curso
+      calif: Calificaciones
+      count_test: Contador de examenes respondidos
+    edit_delivery_access:
+      hmwrk_title: Titulo de la tarea
+      descrip: Descripción
+      publish_date: Día de pubicación
+      delivery_day: Ultimo día de entrega
+      courses: Cursos
+      publish: Publicar
+    evaluation:
+      no_group: No eres parte del grupo!
+      no_member: No has sido aceptado en el grupo!
+      course_score: Calificaciones del curso
+      pdf: Descargar (PDF)
+      score: Calificacion
+      student: Alumno
+      deliver: Entrega
+      items: Rubros
+      calif: Calificación
+      eval: % de la Evaluación
+      final: % Final
+      no_deliver: Sin entregar
+      exam: Examen
+      total_score: Calificación Total
+      obtained: Obtenido
+      unresolved: Sin resolver
+      course_score: Calificación del curso
+      student: Alumno:
+      percent_obtain: % obtenido
+      percent_obtain1: % Obtenido
+      hmwrk: Tarea
+    
+
+
+
+
+

@@ -16,7 +16,7 @@
       <div class="col col-12">
         <div class="col-inner">
           <div class="sub-header">
-            <h4>Busqueda: <%= params[:query] %></h4>
+            <h4><%=t('.search')%> <%= params[:query] %></h4>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
   <div class="wrapper">
     <% if @courses.blank? %>
       <div class="no-content-section">
-        <h4>No se encontraron cursos con el criterio de busqueda.</h4>
+        <h4><%=t('.no_records')%></h4>
       </div>
     <% end %>
     <div class="cols-12 courses-list">

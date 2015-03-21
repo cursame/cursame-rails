@@ -16,7 +16,7 @@
                     <%= form_tag update_course_cover_pic_path, multipart: true, remote: true do %>
                       <%= hidden_field_tag 'course', @course.id %>
                       <%= label_tag 'user-cover-pic-input', class: 'profile-cover-upload' do %>
-                        <%= icon 'white-cam' %> <span>Actualizar portada</span>
+                        <%= icon 'white-cam' %> <span><%=t('.update')%></span>
                         <div class="hide-input-file">
                           <%= file_field_tag 'file', onchange: 'updateCoverPic(this);', accept: 'image/*', id: 'user-cover-pic-input' %>
                         </div>
@@ -31,7 +31,7 @@
                       <%= hidden_field_tag 'course', @course.id %>
                       <div class="profile-avatar-loading spinner"></div>
                       <%= label_tag 'user-profile-pic-input', class: 'profile-avatar-upload' do %>
-                        <%= icon 'white-cam' %> <span>Actualizar foto</span>
+                        <%= icon 'white-cam' %> <span><%=t('.update_photo')%></span>
                         <div class="hide-input-file">
                           <%= file_field_tag 'file', onchange: 'updateProfilePic(this, "course");', accept: 'image/*', id: 'user-profile-pic-input' %>
                         </div>
@@ -76,22 +76,22 @@
                           <i class="tip"></i>
                           <ul>
                             <li>
-                              <%= link_to 'Calificaciones finales', course_closure_path( @course ) %>
+                              <%= link_to (t('.final_score'), course_closure_path( @course )) %>
                             </li>
                             <li>
-                              <%= link_to "Calificar actividades", evaluate_course_path(@course) %>
+                              <%= link_to (t('.activities_score'), evaluate_course_path(@course)) %>
                             </li>
                             <li>
-                              <%= link_to "Forma de evaluación", course_evaluation_schema_path( @course ) %>
+                              <%= link_to (t('.eval_form'), course_evaluation_schema_path( @course )) %>
                             </li>
                             <li>
-                              <%= link_to "Editar", edit_course_path( @course.id ) %>
+                              <%= link_to (t('.edit'), edit_course_path( @course.id )) %>
                             </li>
                             <li>
-                              <%= link_to "Clonar", clone_course_view_path( @course ) %>
+                              <%= link_to (t('.clone'), clone_course_view_path( @course )) %>
                             </li>
                             <li>
-                              <%= link_to @course.active_status? ? "Finalizar" : "Activar",  active_status_path(@course) %>
+                              <%= link_to @course.active_status? ? t('.final') : t('.active'),  active_status_path(@course) %>
                             </li>
                           </ul>
                         </div>
@@ -107,16 +107,16 @@
                 <% action = params[:action] %>
                 <ul>
                   <li>
-                    <%= link_to "Publicaciones", course_path(@course), class: (action == 'show' ? "active" : " ") %>
+                    <%= link_to (t('.publ'), course_path(@course), class: (action == 'show' ? "active" : " ")) %>
                   </li>
                   <li>
-                    <%= link_to "Información", about_course_path, class: (action == 'about' ? "active" : " ") %>
+                    <%= link_to (t('.info'), about_course_path, class: (action == 'about' ? "active" : " ")) %>
                   </li>
                   <li>
-                    <%= link_to "Miembros", course_members_path, class: (action == 'members' ? "active" : " ") %>
+                    <%= link_to (t('.members'), course_members_path, class: (action == 'members' ? "active" : " ")) %>
                   </li>
                   <li>
-                    <%= link_to "Biblioteca", library_in_course_path, class: (action == 'library' ? "active" : " ") %>
+                    <%= link_to (t('.library'), library_in_course_path, class: (action == 'library' ? "active" : " ")) %>
                   </li>
                 </ul>
               </div>

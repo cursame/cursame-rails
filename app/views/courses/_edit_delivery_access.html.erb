@@ -6,19 +6,19 @@
 
 <%= form_for(@delivery = Delivery.new, :remote => true ,:html => { :class => "default-form delivery-form", :multipart => true, :id => "new_delivery_form"}) do |f| %>
       <%= f.hidden_field :network_id, :value => current_network.id %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>      <%= f.text_field :title , :placeholder=>'Titulo de la tarea' %>
-      <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>'Descripción' %>
-      <%= f.text_field :publish_date, :placeholder=>'Día de pubicación', :class=>"date-input" %>
-      <%= f.text_field :end_date, :placeholder=>'Ultimo día de entrega', :class=>"date-input" %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>      <%= f.text_field :title , :placeholder=>t('.hmwrk_title') %>
+      <%= f.text_area :description , :rows => 4, :cols => 76 , :placeholder=>t('.descrip') %>
+      <%= f.text_field :publish_date, :placeholder=>t('.publish_date'), :class=>"date-input" %>
+      <%= f.text_field :end_date, :placeholder=>t('.delivery_day'), :class=>"date-input" %>
 
       <%= f.fields_for :evaluation_criteria do |build| %>
         <%= render :partial => "evaluation_criteria/form_course", :locals => { :f => build} %>
       <% end %>
 
 
-        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => 'Cursos', :defaultClass => 'course-dd' } %>
+        <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :hasGroups => false,:hasUser => false, :defaultText => t('.courses'), :defaultClass => 'course-dd' } %>
 
-      <%= f.submit "Publicar"%>
+      <%= f.submit t('.publish')%>
 <% end %>
 
       <%= render :partial => "shared/assets_form", :locals =>{:labelIdBox=>'#'+@labelIdBox, :formId =>formId } %>

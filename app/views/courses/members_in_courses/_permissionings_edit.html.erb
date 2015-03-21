@@ -13,7 +13,7 @@
             <i class="tip"></i>
             <ul>
               <li>
-                <%= link_to 'Eliminar del grupo', @member, confirm: '¿Estás seguro de querer eliminar este usuario del curso?', method: :delete, :remote => true %>
+                <%= link_to (t('.delete_group'), @member, confirm: t('.confirm'), method: :delete, :remote => true) %>
               </li>
             </ul>
           </div>
@@ -23,10 +23,10 @@
   
   <% when false %>
     <%= form_for @member, :remote => true do |fcm| %>                           
-      <%= link_to 'Eliminar', @member, confirm: '¿Estás seguro de querer eliminar este usuario del curso?', class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
+      <%= link_to (t('.delete'), @member, confirm: t('.confirm'), class: 'btn btn-small btn-secondary', method: :delete, :remote => true) %>
 
       <label class="btn btn-small btn-primary activable ff">
-        Aceptar Usuario
+        <%=t('.usr_accept')%>
           <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse("+"'"+"members_in_course_accepted_#{@member_it.id}"+"'"+","+"'"+"#{@member.id}"+"'"+","+"'"+"acceptin"+"'"+","+"'"+"#{@member_it.id}"+"'"+");", :class=> "members_in_course_accepted_#{@member_it.id} tobe-t", :style => "display:none;"  %>
       </label>
     <%end%>

@@ -4,7 +4,7 @@
   .post-box-main
     .post-box-main-author.as-activity
       .post-box-main-author-content
-        %h6 Nuevo curso público
+        %h6= t('.new_course')
         %span.timestamp= time_ago_in_words course.created_at
     .post-box-content{ style: "background-image: url(#{course.coverphoto.blank? ? '/assets/#{course.image_coursex}' : course.coverphoto})" }
       .icon-card

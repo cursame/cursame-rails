@@ -10,7 +10,7 @@
           <% if course.members_in_courses.present? %>
             <p><%= course.members_in_courses.keep_if{ |member| member.owner }.map{ |member| link_to member.user.name, show_user_path(member.user.personal_url) unless !member.user }.first %></p>
 
-            <p><%= pluralize(course.members_in_courses.count-1, 'Miembro', 'Miembros') %></p>
+            <p><%= pluralize(course.members_in_courses.count-1, t('.member'), t('.members')) %></p>
           <% end %>
         </div>
         <div class="course-main-cover"></div>
