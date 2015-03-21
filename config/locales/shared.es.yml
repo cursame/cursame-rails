@@ -161,7 +161,7 @@ es:
         open_quest: Abrir cuestionario
     publications_filter:
       filter_by_course_publications:
-        filtrate: Filtrar:
+        filtrate: Filtrar
         select_course: Selecciona un curso
     sessions:
       network_box_head:
@@ -223,9 +223,9 @@ es:
         publications: Publicaciones
         pub_area: Aquí encontrarás todas las publicaciones de la red.
     delivery_publication_tpl:
-      end_delivery: Entregar antes de:
-      files: Archivos:
-      evaluates: Se evalua:
+      end_delivery: Entregar antes de
+      files: Archivos
+      evaluates: Se evalua
       reply: Responder
       edit_delivery: Editar Entrega
       no_evaluation: A esta tarea no se le han asignado áreas de evaluación
@@ -334,6 +334,7 @@ es:
       comments: Comentarios
       homework: Tareas
       quest: Cuestionarios
+
 
 
 
