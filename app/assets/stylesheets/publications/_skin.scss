@@ -364,6 +364,15 @@
     }
   }
 
+  &.library .post-box-content {
+    background-color: $library-color;
+    @include linear-gradient(45deg, $library-color 0%, lighten($library-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($library-color, 60%) !important;
+    }
+  }
+
   &.discussion .post-box-content {
     background-color: $discussion-color;
     @include linear-gradient(45deg, $discussion-color 0%, lighten($discussion-color, 2%) 100%);

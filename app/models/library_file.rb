@@ -1,4 +1,31 @@
 class LibraryFile < ActiveRecord::Base
+  has_one :wall, as: :publication, dependent: :destroy
   belongs_to :library
+  belongs_to :user
+
   mount_uploader :file, LibraryFileUploader
+  acts_as_commentable
+  acts_as_votable
+
+  after_create do
+    create_wall
+  end
+
+  private
+  def create_wall
+    case library.storable
+    when Network
+      create_wall_for_network
+    when Course
+      create_wall_for_course
+    end
+  end
+
+  def create_wall_for_network
+    Wall.create publication: self, network: library.network, users: library.storable.users
+  end
+
+  def create_wall_for_course
+    Wall.create publication: self, network: library.network, courses: [ library.storable ], users: library.storable.users
+  end
 end
