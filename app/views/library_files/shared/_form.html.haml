@@ -21,7 +21,7 @@
       %li
         = link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", id: "cancel-post-form_tab"
       %li
-        = render partial: "libraries/shared/dropdown", locals: { form: form }
+        = render partial: "library_files/shared/dropdown", locals: { form: form }
       %li
         %span.btn.btn-primary.input-btn.activable
           = form.submit "Publicar", id: "wufoo-post-form", class: "activable"
