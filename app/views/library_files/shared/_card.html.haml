@@ -1,16 +1,14 @@
 .post-box.form.academic.library{ 'data-wall-id' => wall.id, class: card_type, data: {} }
   .post-box-main
     .post-box-main-author
-      - case library_file.library.storable
-      - when Network
-        = link_to show_user_path(library_file.user.personal_url), title: library_file.user.name, class: 'post-box-avatar' do
-          %span.avatar-holder
-            = avatar 'user', '45', 'no', library_file.user.id, 'avatar', 'no', 'no'
-        .post-box-main-author-content
-          .post-breadcrumb
-            %span
-              = link_to library_file.user.name, show_user_path(library_file.user.personal_url), title: library_file.user.name
-              %span.timestamp= time_ago_in_words library_file.created_at
+      = link_to show_user_path(library_file.user.personal_url), title: library_file.user.name, class: 'post-box-avatar' do
+        %span.avatar-holder
+          = avatar 'user', '45', 'no', library_file.user.id, 'avatar', 'no', 'no'
+      .post-box-main-author-content
+        .post-breadcrumb
+          %span
+            = link_to library_file.user.name, show_user_path(library_file.user.personal_url), title: library_file.user.name
+            %span.timestamp= time_ago_in_words library_file.created_at
     .post-box-content
       .icon-card
         = icon 'library-file-card'
