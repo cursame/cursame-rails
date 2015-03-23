@@ -8,7 +8,7 @@
       <div class="dropdown-v left" style="left: -8px;">
         <i class="tip"></i>
         <ul>
-          <% if course.active_status %>
+          <% if course.active_status and current_network.evaluable? %>
             <li>
               <%= link_to 'Calificaciones finales', course_closure_path(course) %>
             </li>

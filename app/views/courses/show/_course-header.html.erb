@@ -75,15 +75,17 @@
                         <div class="dropdown-v right">
                           <i class="tip"></i>
                           <ul>
-                            <li>
-                              <%= link_to 'Calificaciones finales', course_closure_path( @course ) %>
-                            </li>
-                            <li>
-                              <%= link_to "Calificar actividades", evaluate_course_path(@course) %>
-                            </li>
-                            <li>
-                              <%= link_to "Forma de evaluación", course_evaluation_schema_path( @course ) %>
-                            </li>
+                            <% if current_network.evaluable? %>
+                              <li>
+                                <%= link_to 'Calificaciones finales', course_closure_path( @course ) %>
+                              </li>
+                              <li>
+                                <%= link_to "Calificar actividades", evaluate_course_path(@course) %>
+                              </li>
+                              <li>
+                                <%= link_to "Forma de evaluación", course_evaluation_schema_path( @course ) %>
+                              </li>
+                            <%end%>
                             <li>
                               <%= link_to "Editar", edit_course_path( @course.id ) %>
                             </li>

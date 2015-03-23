@@ -8,7 +8,7 @@
               = icon('commet-post')
               Comentario
               %span.tip
-          - current_network.has_evaluable and permitted_to? :create, :deliveries do
+          - current_network.evaluable? and permitted_to? :create, :deliveries do
             .tab{"data-id-target" => "delivery-tab-content"}
               = icon('delivery-post')
               Tarea
@@ -18,7 +18,7 @@
               = icon('discussion-post')
               Discusión
               %span.tip
-          - current_network.has_evaluable and permitted_to? :create, :surveys do
+          - current_network.evaluable? and permitted_to? :create, :surveys do
             .tab{"data-id-target" => "survey-tab-content"}
               = icon('survey-post')
               Cuestionario

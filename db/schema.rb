@@ -460,7 +460,7 @@ ActiveRecord::Schema.define(:version => 20150324042649) do
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
-    t.boolean  "has_evaluable",        :default => true
+    t.boolean  "evaluable",            :default => true
   end
 
   create_table "networks_users", :force => true do |t|
