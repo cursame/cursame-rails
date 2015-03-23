@@ -9,6 +9,7 @@ class LibraryFile < ActiveRecord::Base
 
   after_create do
     create_wall
+    create_notification
   end
 
   private
@@ -27,5 +28,9 @@ class LibraryFile < ActiveRecord::Base
 
   def create_wall_for_course
     Wall.create publication: self, network: library.network, courses: [ library.storable ], users: library.storable.users
+  end
+
+  def create_notification
+    Notification.create users: library.storable.users, notificator: self, kind: 'new_library_file'
   end
 end

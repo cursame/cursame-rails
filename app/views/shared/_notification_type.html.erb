@@ -438,7 +438,20 @@
         <% end %>
 
       <%end%>
-
+    <% when 'new_library_file' %>
+      <%= link_to notification.notificator.file.url, target: "_blank" do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6> 
+            <%= library_file_notification_message(notification) %>
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>

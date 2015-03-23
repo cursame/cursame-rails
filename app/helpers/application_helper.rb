@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module ApplicationHelper
   def link_to_remove_fields(name, f, options, toId)
     f.hidden_field(:_destroy, class: '_destroy') + link_to_function(name, "remove_fields(this, \""+toId+"\")", options)
@@ -34,5 +35,17 @@ module ApplicationHelper
   def cursame_percentage(course)
     cursame_criteria = course.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }
     cursame_criteria.inject(0) { |sum, criterium| sum + criterium.evaluation_percentage}
+  end
+
+  def library_file_notification_message(notification)
+    library_type = notification.notificator.library.storable
+    case library_type
+    when Network
+      "<span class='as-link'> #{notification.notificator.user.name}</span> 
+      ha compartido un archivo en la <span class='as-link'>Biblioteca Pública<span class='as-link'>".html_safe
+    when Course
+      "<span class='as-link'> #{notification.notificator.user.name}</span> 
+      ha compartido un archivo en <span class='as-link'>#{library_type.title}<span class='as-link'>".html_safe
+    end
   end
 end
