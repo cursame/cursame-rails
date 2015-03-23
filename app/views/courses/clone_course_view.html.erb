@@ -86,54 +86,56 @@ background-white
 				
 				</div>
 
-				<div id="clone-course-deliveries" class="step">
-					<h3>Tareas</h3>
-					<p>Selecciona las tareas que quieres clonar para el nuevo curso.</p>
-					<br>
-					
-					<% unless @course.deliveries.empty? %>
-						<% @course.deliveries.each_with_index do |delivery, index|%>
-							<% delivery_id = delivery.id.to_s %>
+				<% if current_network.evaluable? %>
+          <div id="clone-course-deliveries" class="step">
+  					<h3>Tareas</h3>
+  					<p>Selecciona las tareas que quieres clonar para el nuevo curso.</p>
+  					<br>
+  					
+  					<% unless @course.deliveries.empty? %>
+  						<% @course.deliveries.each_with_index do |delivery, index|%>
+  							<% delivery_id = delivery.id.to_s %>
 
-							<div class="form-group">
-				        <div class="form-group-label">
-									<label><%= check_box_tag "deliveries[#{index}][id]", delivery_id, true, class: "toggle-activable", :style => 'visibility: hidden' %> <%= delivery.title %></label>
-				        </div>
-				        <div class="form-group-main">
-				          <div class="f-col f-col-5">
-				            <div class="form-unit">
-				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: 'Fecha de publicación', id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent required" %>
-				            </div>
-				          </div>
-				          <div class="f-col f-col-5">
-				            <div class="form-unit">
-				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: 'Fecha Entrega', id: "fecha_entrega_delivery_" + delivery_id, class: "dependent required" %>
-				            </div>
-				          </div>
-				        </div>
-				      </div>
+  							<div class="form-group">
+  				        <div class="form-group-label">
+  									<label><%= check_box_tag "deliveries[#{index}][id]", delivery_id, true, class: "toggle-activable", :style => 'visibility: hidden' %> <%= delivery.title %></label>
+  				        </div>
+  				        <div class="form-group-main">
+  				          <div class="f-col f-col-5">
+  				            <div class="form-unit">
+  				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: 'Fecha de publicación', id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent required" %>
+  				            </div>
+  				          </div>
+  				          <div class="f-col f-col-5">
+  				            <div class="form-unit">
+  				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: 'Fecha Entrega', id: "fecha_entrega_delivery_" + delivery_id, class: "dependent required" %>
+  				            </div>
+  				          </div>
+  				        </div>
+  				      </div>
 
-							<script>
-								$(function() {
-			            $( "#fecha_entrega_delivery_<%=delivery_id%>, #fecha_publicacion_delivery_<%=delivery_id%>" ).datepicker({
-			                inline: true,
-			                minDate: 0,
-			                showOtherMonths: true,
-			                dateFormat: 'dd/mm/yy',
-			                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-			                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-			            }).on('change', function() {
-										$(this).valid();
-							    });
-						    });
-							</script>
-						<% end %>
-					<% else %>
-						<div class="no-content-section">
-							<h4>Este curso no tiene tareas para clonar.</h4>
-						</div>
-					<% end %>
-				</div>
+  							<script>
+  								$(function() {
+  			            $( "#fecha_entrega_delivery_<%=delivery_id%>, #fecha_publicacion_delivery_<%=delivery_id%>" ).datepicker({
+  			                inline: true,
+  			                minDate: 0,
+  			                showOtherMonths: true,
+  			                dateFormat: 'dd/mm/yy',
+  			                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+  			                dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+  			            }).on('change', function() {
+  										$(this).valid();
+  							    });
+  						    });
+  							</script>
+  						<% end %>
+  					<% else %>
+  						<div class="no-content-section">
+  							<h4>Este curso no tiene tareas para clonar.</h4>
+  						</div>
+  					<% end %>
+  				</div>
+        <%end%>
 
 				<div id="clone-course-discussions" class="step">
 					<h3>Discusiones</h3>
@@ -157,58 +159,60 @@ background-white
 					
 				</div>
 
-				<div id="clone-course-surveys" class="step">
-					<h3>Cuestionarios</h3>
-					<p>Selecciona los cuestionarios que quieres clonar para el nuevo curso.</p>
-					<br>
-					
-					<% unless @course.surveys.empty? %>
-						<% @course.surveys.each_with_index do |survey, index| %>
-							<% survey_id =  survey.id.to_s%>
+				<% if current_network.evaluable? %>
+          <div id="clone-course-surveys" class="step">
+  					<h3>Cuestionarios</h3>
+  					<p>Selecciona los cuestionarios que quieres clonar para el nuevo curso.</p>
+  					<br>
+  					
+  					<% unless @course.surveys.empty? %>
+  						<% @course.surveys.each_with_index do |survey, index| %>
+  							<% survey_id =  survey.id.to_s%>
 
-							<div class="form-group">
-				        <div class="form-group-label">
-				          <label>
-				          	<%= check_box_tag "surveys[#{index}][id]", survey.id, true, class: "toggle-activable", :style => 'visibility: hidden' %>
-				          	<%= survey.name %>
-			          	</label>
-				        </div>
-				        <div class="form-group-main">
-				          <div class="f-col f-col-5">
-				            <div class="form-unit">
-				            	<%= text_field_tag "surveys[#{index}][publish_date]", "", placeholder: "Fecha publicación", id: "fecha_publicacion_survey_#{survey_id}", class: "required dependent" %>
-				            </div>
-				          </div>
-				          <div class="f-col f-col-5">
-				            <div class="form-unit">
-				              <%= text_field_tag "surveys[#{index}][end_date]", "", placeholder: "Fecha Entrega", id: "fecha_entrega_survey_#{survey_id}", class: "required dependent" %>
-				            </div>
-				          </div>
-				        </div>
-				      </div>
+  							<div class="form-group">
+  				        <div class="form-group-label">
+  				          <label>
+  				          	<%= check_box_tag "surveys[#{index}][id]", survey.id, true, class: "toggle-activable", :style => 'visibility: hidden' %>
+  				          	<%= survey.name %>
+  			          	</label>
+  				        </div>
+  				        <div class="form-group-main">
+  				          <div class="f-col f-col-5">
+  				            <div class="form-unit">
+  				            	<%= text_field_tag "surveys[#{index}][publish_date]", "", placeholder: "Fecha publicación", id: "fecha_publicacion_survey_#{survey_id}", class: "required dependent" %>
+  				            </div>
+  				          </div>
+  				          <div class="f-col f-col-5">
+  				            <div class="form-unit">
+  				              <%= text_field_tag "surveys[#{index}][end_date]", "", placeholder: "Fecha Entrega", id: "fecha_entrega_survey_#{survey_id}", class: "required dependent" %>
+  				            </div>
+  				          </div>
+  				        </div>
+  				      </div>
 
-							<script>
-								$(function() {
-				          $("#fecha_entrega_survey_<%=survey_id%>, #fecha_publicacion_survey_<%=survey_id%>" ).datepicker({
-				              inline: true,
-				              minDate: 0,
-				              showOtherMonths: true,
-				              dateFormat: 'dd/mm/yy',
-				              monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-				              dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-				          }).on('change', function() {
-										$(this).valid();
-							    });
-							  });
-							</script>
-						<% end %>
-					<% else %>
-						<div class="no-content-section">
-							<h4>Este curso no tiene cuestionarios para clonar.</h4>
-						</div>
-					<% end %>
+  							<script>
+  								$(function() {
+  				          $("#fecha_entrega_survey_<%=survey_id%>, #fecha_publicacion_survey_<%=survey_id%>" ).datepicker({
+  				              inline: true,
+  				              minDate: 0,
+  				              showOtherMonths: true,
+  				              dateFormat: 'dd/mm/yy',
+  				              monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+  				              dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+  				          }).on('change', function() {
+  										$(this).valid();
+  							    });
+  							  });
+  							</script>
+  						<% end %>
+  					<% else %>
+  						<div class="no-content-section">
+  							<h4>Este curso no tiene cuestionarios para clonar.</h4>
+  						</div>
+  					<% end %>
 
-				</div>
+  				</div>
+        <%end%>
 
 				<div id="clone-course-files" class="step">
 					<h3>Libreria</h3>

@@ -7,7 +7,7 @@
       = link_to "Usuarios", managers_users_path, class: active_class(['index', 'import', 'show', 'edit', 'new'], 'managers/users')
     %li
       = link_to "Cursos", managers_courses_path, class: active_class(['index', 'show', 'edit', 'new', 'import'], 'managers/courses')
-    -if current_network.has_evaluable
+    -if current_network.evaluable?
       %li
         = link_to "Tareas", managers_deliveries_path, class: active_class(['index', 'show'], 'managers/deliveries')
       %li

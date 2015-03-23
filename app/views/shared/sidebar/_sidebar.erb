@@ -7,10 +7,10 @@
           
           <% case widget %>
             <% when 'upcomming_deliveryes' %>
-              <%= render partial: 'shared/sidebar/upcomming_deliveries_widget' if current_network.has_evaluable %>
+              <%= render partial: 'shared/sidebar/upcomming_deliveries_widget' if current_network.evaluable? %>
 
             <% when 'upcomming_surveys' %>
-              <%= render partial: 'shared/sidebar/upcomming_surveys_widget' if current_network.has_evaluable %>
+              <%= render partial: 'shared/sidebar/upcomming_surveys_widget' if current_network.evaluable? %>
 
             <% when 'android_app_ad' %>
               <%= render partial: 'shared/sidebar/android_app_ad' %>

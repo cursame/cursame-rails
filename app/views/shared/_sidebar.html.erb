@@ -18,7 +18,7 @@
           <% end %>
         </li>
         <% if current_role == 'student' %>
-          <% if current_network.has_evaluable %>
+          <% if current_network.evaluable? %>
             <li>
               <%= link_to deliveries_path do %>
                 <%= icon 'homeworks-w' %> Tareas
@@ -37,7 +37,7 @@
           </li>
         <% end %>
 
-        <% if ((current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin') and current_network.has_evaluable) %>
+        <% if ((current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin') and current_network.evaluable?) %>
           <li>
             <%= link_to evaluate_activities_path do %>
               <%= icon 'evaluate-w' %> Actividades
@@ -49,7 +49,7 @@
             <%= icon 'courses-w' %> Cursos
           <% end %>
         </li>
-        <% if current_network.has_evaluable %>
+        <% if current_network.evaluable? %>
           <li>
             <%= link_to califications_path do %>
               <%= icon 'stats-w' %> Calificaciones
