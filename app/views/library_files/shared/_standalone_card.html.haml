@@ -1,0 +1,12 @@
+.col.col-6
+  .col-inner
+    .post-box.form.academic.library_file{ 'data-file-id' => file.id, class: :standalone }
+      .post-box-main
+        .post-box-content
+          .icon-card
+            = icon 'library-file-card'
+          = link_to file.file.url, download: true, class: 'activable' do
+            %h3= file.name
+            %p= file.description
+          %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format file.created_at}".html_safe
+          = link_to 'Descargar Archivo', file.file.url, download: true, class: "btn btn-small btn-transparent activable"

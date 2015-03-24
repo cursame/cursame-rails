@@ -28,6 +28,11 @@
               = icon('wufoo-post')
               Formulario
               %span.tip
+          - permitted_to? :create, :library_files do
+            .tab{"data-id-target" => "library-tab-content"}
+              = icon('library-file')
+              Biblioteca
+              %span.tip
         - @active_edit = false
         .tabs-main
           - permitted_to? :create, :comments do
@@ -45,6 +50,9 @@
           - current_network.wufoo_settings? and permitted_to? :create, :forms do
             #wufoo-tab-content.tab-content
               = render partial: '/forms/create'
+          - permitted_to? :create, :library_files do
+            #library-tab-content.tab-content
+              = render partial: '/library_files/shared/form'
   - else
     .new-publication-main
       .tabs

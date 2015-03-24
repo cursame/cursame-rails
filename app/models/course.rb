@@ -2,6 +2,8 @@
 class Course < ActiveRecord::Base
   include TrackMixpanelEventModule
 
+  has_one :library, as: :storable, dependent: :destroy
+
   has_many :members_in_courses, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :activities, as: :activitye
@@ -18,6 +20,7 @@ class Course < ActiveRecord::Base
   has_many :course_files, through: :course_id_course_file_id
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
   has_many :wufoo_forms, as: :showable, dependent: :destroy
+  has_many :files, class_name: 'LibraryFile', through: :library
 
   belongs_to :network
 
@@ -46,6 +49,7 @@ class Course < ActiveRecord::Base
   mount_uploader :coverphoto, CoverphotoUploader
 
   after_create do
+    create_library
     mixpanel_track_event
     if self.public_status == 'public'
       users  = self.network.users
@@ -328,4 +332,7 @@ class Course < ActiveRecord::Base
     track_event self.id, 'Courses', event_data
   end
 
+  def create_library
+    Library.create(title: title, description: silabus, storable: self, network: network)
+  end
 end

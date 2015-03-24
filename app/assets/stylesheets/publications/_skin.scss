@@ -364,6 +364,24 @@
     }
   }
 
+  &.library_file .post-box-content {
+    background-color: $library-file-color;
+    @include linear-gradient(45deg, $library-file-color 0%, lighten($library-file-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($library-file-color, 60%) !important;
+    }
+  }
+
+  &.library .post-box-content {
+    background-color: $library-color;
+    @include linear-gradient(45deg, $library-color 0%, lighten($library-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($library-color, 60%) !important;
+    }
+  }
+
   &.discussion .post-box-content {
     background-color: $discussion-color;
     @include linear-gradient(45deg, $discussion-color 0%, lighten($discussion-color, 2%) 100%);
