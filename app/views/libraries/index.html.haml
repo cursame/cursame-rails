@@ -4,4 +4,5 @@
       .col.col-12
         .col-inner
           = render partial: 'libraries/shared/header'
-= render partial: 'libraries/shared/library_files'
+
+= render partial: 'libraries/shared/library_files', locals: { libraries: @libraries, files: @files }
