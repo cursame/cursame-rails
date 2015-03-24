@@ -5,7 +5,7 @@
         .post-box-content
           .icon-card
             = icon 'library-card'
-          = link_to library_path(library), remote: true, class: 'activable' do
+          = link_to library_path(library), class: 'activable' do
             %h3= library.storable.title
             %p="#{library.files.count} Archivos"
             .btn.btn-small.btn-transparent.activable
