@@ -9,15 +9,15 @@
 	      	<br>
 	      	<br>
 	      	<br>
-	        <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;"><span style="font-size: 15px; font-weight: normal;">¡Bienvenido a C&uacute;rsame!</span><br> <%= @resource.name %></h1><br>
-	        <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">Para poder utilizar tú cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo, solo has click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.</p><br/><br/>
+	        <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;"><span style="font-size: 15px; font-weight: normal;"><%=t('.welcome')%></span><br> <%= @resource.name %></h1><br>
+	        <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;"><%=t('.usage')%></p><br/><br/>
 
 	        <%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain) do %>
 						<img src="http://app.cursa.me/assets/mails/confirmation_instructions/confirm-button.jpg" alt="Activar cuenta">
 	        <% end %>
 	        <br>
 	        <br>
-	        <p style="font-size: 11px; color: #404040;">Si el boton superior no funciona, haz clic aquí	: <br>
+	        <p style="font-size: 11px; color: #404040;"><%=t('.push_here')%>	: <br>
 						<%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain), style: "color: #0071a2;" %></p>
 
 	        <br>

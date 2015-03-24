@@ -5,8 +5,8 @@
     <%= render partial: "shared/sessions/network_box_head", locals: { sign_up: false, sign_in: false } %>	
     <div class="user-sessions-main">
       <div class="user-session-content">
-      	<h4>No has recibido instrucciones de desbloqueo</h4>
-      	<p>Ingresa tu correo en el campo inferior para dar seguimiento a tu solicitud</p><br>
+      	<h4><%=t('.instruc')%></h4>
+      	<p><%=t('.email_req')%></p><br>
 
       	<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post, :class => "unlock-mail-form" }) do |f| %>
         
@@ -20,7 +20,7 @@
   	        <div class="form-group-main">
   	          <span class="input-icon session-icon-input">
   	            <%= icon('email') %>
-  	            <%= f.email_field :email, :placeholder =>"Correo electrónico", required: "required", autocomplete: "off" %>
+  	            <%= f.email_field :email, :placeholder =>t('.email'), required: "required", autocomplete: "off" %>
   	          </span>
   	        </div>
   	      </div>
@@ -28,7 +28,7 @@
   	      <div class="user-sessions-footer">
   	        <div class="fr">
   	          <span class="btn btn-primary btn-medium input-btn">
-  	            <%= f.submit "Reenviar instrucciones" %>
+  	            <%= f.submit t('.forward') %>
   	          </span>
   	        </div>
   	      </div>

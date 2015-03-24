@@ -8,7 +8,7 @@
           <br>
           <br>
           <br>
-          <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">¡Hola <%= @resource.name %>!</h1><br>
+          <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;"><%=t('.hello')%> <%= @resource.name %>!</h1><br>
           <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">t</p><br/><br>
           
           <%= link_to unlock_url(@resource, :unlock_token => @resource.unlock_token) do %>
@@ -17,7 +17,7 @@
 
           <br>
           <br>
-          <p style="font-size: 11px; color: #404040;">Si el boton superior no funciona, haz clic aquí : <br>
+          <p style="font-size: 11px; color: #404040;"><%=t('.button')%> : <br>
             <%= link_to unlock_url(@resource, :unlock_token => @resource.unlock_token), unlock_url(@resource, :unlock_token => @resource.unlock_token), style: "color: #0071a2;" %></p>
 
           <br>

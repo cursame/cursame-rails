@@ -5,8 +5,8 @@
     <%= render partial: "shared/sessions/network_box_head", locals: { sign_up: false, sign_in: false } %>
     <div class="user-sessions-main">
       <div class="user-session-content">
-      	<h4>No has recibido confirmación</h4>
-      	<p>Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud</p><br>
+      	<h4><%t('.no_confirmation')%></h4>
+      	<p><%t('.email_field')%></p><br>
   				
   			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "new-cofirmation-mail-form" }) do |f| %>
         
@@ -20,7 +20,7 @@
             <div class="form-group-main">
               <span class="input-icon session-icon-input">
                 <%= icon('email') %>
-                <%= f.email_field :email, :placeholder => "Correo electrónico", required: "required", autocomplete: "off" %>
+                <%= f.email_field :email, :placeholder => t('.email'), required: "required", autocomplete: "off" %>
               </span>
             </div>
           </div>
@@ -28,7 +28,7 @@
           <div class="user-sessions-footer">
             <div class="fr">
               <span class="btn btn-primary btn-medium input-btn">
-                <%= f.submit "Reenviar instrucciones" %>
+                <%= f.submit t('.forward') %>
               </span>
             </div>
           </div>
