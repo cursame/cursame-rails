@@ -365,8 +365,8 @@ ActiveRecord::Schema.define(:version => 20150324042649) do
     t.integer  "network_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "name"
-    t.string   "description"
+    t.string   "title"
+    t.text     "description"
   end
 
   add_index "libraries", ["network_id"], :name => "index_libraries_on_network_id"
