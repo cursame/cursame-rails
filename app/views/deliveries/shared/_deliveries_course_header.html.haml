@@ -6,7 +6,7 @@
           .section-header
             .section-header-main
               .section-title
-                %h5 Tareas
+                %h5= t('.hmwrks')
                 = link_to deliveries_course_path(course) do
                   %h1= truncate(course.title, :omission => "...", :length => 30)
               - unless current_user.courses.empty?
@@ -14,5 +14,5 @@
             .page-sub-navigation
               - action = params[:action]
               %ul
-                %li= link_to "Activas", deliveries_course_path(course), class: ((action == 'deliveries_course' || action == 'course') ? "active" : " ")
-                %li= link_to "Pasadas", deliveries_course_lapsed_path(course), class: active_class('deliveries_course_lapsed')
+                %li= link_to t('.active'), deliveries_course_path(course), class: ((action == 'deliveries_course' || action == 'course') ? "active" : " ")
+                %li= link_to t('.last'), deliveries_course_lapsed_path(course), class: active_class('deliveries_course_lapsed')

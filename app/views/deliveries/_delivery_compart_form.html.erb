@@ -19,29 +19,29 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :title, 'Tema de la tarea:'.html_safe %>
+        <%= f.label :title, t('.hmwrk_theme')':'.html_safe %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title , placeholder: "Ejemplo: Números primos", required: "required" %>
+          <%= f.text_field :title , placeholder: t('.example'), required: "required" %>
         </div>
       </div>
     </div>
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :publish_date, "Fechas:" %>
+        <%= f.label :publish_date, t('.dates')":" %>
       </div>
       <div class="form-group-main">
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :publish_date, placeholder: 'Día de publicación', class: "date-input delivery delivery_publish_date", id: 'publish_date_'+random_id, value: f.object.publish_date, required: "required" %>
+            <%= f.text_field :publish_date, placeholder: t('.publish_date'), class: "date-input delivery delivery_publish_date", id: 'publish_date_'+random_id, value: f.object.publish_date, required: "required" %>
           </div>
         </div>
 
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :end_date, placeholder: 'Fecha de entrega', class: "date-input delivery delivery_end_date", id: 'end_date_'+random_id, value: f.object.end_date, required: "required"  %>
+            <%= f.text_field :end_date, placeholder: t('.deliver_date'), class: "date-input delivery delivery_end_date", id: 'end_date_'+random_id, value: f.object.end_date, required: "required"  %>
           </div>
         </div>
       </div>
@@ -49,11 +49,11 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :description, "Descripción:" %>
+        <%= f.label :description, t('.descrip')":" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_area :description, rows: 3, placeholder: "Descripción", required: true, class: 'autogrow' %>
+          <%= f.text_area :description, rows: 3, placeholder: t('.descrip'), required: true, class: 'autogrow' %>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
     <% if active_edit == false %>  
       <div class="form-group">
         <div class="form-group-label label-no-p">
-          <%= f.label '', "Criterios a evaluar:" %>
+          <%= f.label '', t('.criterium')":" %>
         </div>
         <div class="form-group-main">
           <div class="areas-of-evaluation">
@@ -72,7 +72,7 @@
                     <%= render partial: "shared/evaluation_criteria/evaluation_criteria_fields", locals: { f: builder, base_model: @delivery } %>
                   <% end %>
                 </div>
-                <%= link_to_add_evaluation_criteria 'Agregar criterio', f, :evaluation_criteria %>
+                <%= link_to_add_evaluation_criteria t('.add_criterium'), f, :evaluation_criteria %>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@
       
       <div class="form-group">
         <div class="form-group-label label-no-p">
-          <%= f.label "", "Material de soporte" %>
+          <%= f.label "", t('.support') %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
@@ -102,7 +102,7 @@
   </div>
   
   <% if active_edit %>
-    <p>Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla. </p></br>
+    <p><%=t('.integrity')%> </p></br>
     <% unless delivery.evaluation_criteria.empty? %>    
       <br>
     <% end %>
@@ -112,11 +112,11 @@
     <% if active_edit == false %>
       <ul class="list-buttons right fr">
         <li>
-          <%= link_to "Cancelar", "", :class=>'btn btn-secondary cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
+          <%= link_to t('.cancel'), "", :class=>'btn btn-secondary cancel-post-form_tab', :id => 'cancel-post-form_tab' %>
         </li>
         <li>
           <% if in_form != 'course'%>
-            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => 'Cursos', :default_icon => 'course-new-publication', :in_type => in_type } %>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => t('.courses'), :default_icon => 'course-new-publication', :in_type => in_type } %>
           <% else %>
             <%# courses = @discussion.courses.build %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
@@ -124,18 +124,18 @@
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
-            <%= f.submit "Publicar", :id => 'comment-post-form', :class => "activable"%>
+            <%= f.submit t('.publish'), :id => 'comment-post-form', :class => "activable"%>
           </span> 
         </li>
       </ul>
     <% else %>
       <ul class="list-buttons left">
         <li>
-          <a class="cancel-edit-publication-js btn btn-secondary" href="#">Cancelar</a>
+          <a class="cancel-edit-publication-js btn btn-secondary" href="#"><%=t('.cancel')%></a>
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
-            <%= f.submit "Guardar Tarea", :id => 'comment-post-form', :class => "activable"%>
+            <%= f.submit t('.save'), :id => 'comment-post-form', :class => "activable"%>
           </span>
         </li>
       </ul>

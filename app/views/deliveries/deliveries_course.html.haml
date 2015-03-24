@@ -5,7 +5,7 @@
 			.wrapper
 				.section-separator
 					.section-separator-title
-						%h6 Tareas para entregar Hoy
+						%h6= t('.today_hmwrk')
 						%i.tip
 				.academic-activities-main
 					.cols-12
@@ -16,7 +16,7 @@
 			.wrapper
 				.section-separator
 					.section-separator-title
-						%h6 Tareas para entregar Mañana
+						%h6= t('.tomorrow_hmwrks')
 						%i.tip
 				.academic-activities-main
 					.cols-12
@@ -27,7 +27,7 @@
 			.wrapper
 				.section-separator
 					.section-separator-title
-						%h6 Tareas para entregar en 3 días o más
+						%h6= t('.hmwrks')
 						%i.tip
 				.academic-activities-main
 					.cols-12
@@ -35,5 +35,5 @@
 
 	- if @today_deliveries.count + @tomorrow_deliveries.count + @rest_of_deliveries.count == 0
 		.no-content-section
-			%h4 No tienes tareas pendientes por entregar en este curso.
-			%p Has entregado todas las tareas, puedes ver las #{link_to "tareas pasadas en la sección Pasadas", deliveries_course_lapsed_path(@course)}
+			%h4= t('.no_hmwrks')
+			%p= t('.no_deliver') + link_to t('.hmwrks_last'), deliveries_course_lapsed_path(@course)

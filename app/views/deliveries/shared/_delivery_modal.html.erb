@@ -4,9 +4,9 @@
   </div>
   <div class="overlay-title">
     <h6>
-      Tarea en el curso <%= link_to delivery.courses.first.title, course_path(delivery.courses.first) %>
+      <%=t('.hmwrk')%> <%= link_to delivery.courses.first.title, course_path(delivery.courses.first) %>
     </h6>
-    <span>Entregar antes del <%= pretty_date_format delivery.end_date %></span>
+    <span><%=t('.deliver')%> <%= pretty_date_format delivery.end_date %></span>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
@@ -132,21 +132,21 @@
     <% if @if_im_member != nil && @if_im_member.owner != true%>
       <div class="overlay-footer">
         <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty? %>
-          <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>">Entregar Tarea</a>
+          <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>"><%=t('.deliver_hmwrk')%></a>
         <% else %>
           <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
           <% if !assignment.nil? && !assignment.grade.nil? %>
             <div class="delivery-results">
               <div class="delivery-overall-result">
                 <div class="result"><%= assignment.grade.score %></div>
-                <h4>Calificación final obtenida</h4>
+                <h4><%=t('.final_score')%></h4>
               </div>
               <% unless assignment.response_to_the_evaluations.empty? %>
                 <div class="delivered-delivery-rubres">
                   <% assignment.response_to_the_evaluations.each_with_index do |delivery_rubre, index| %>
                     <div class="delivered-delivery-rubre">
                       <div class="rubre-main">
-                        <p><span><%= "#{delivery_rubre.evaluation_criterium.name}: " unless delivery_rubre.evaluation_criterium.nil? %></span><%= delivery_rubre.comment_for_rubre == "" ? "Rubro sin comentarios" : delivery_rubre.comment_for_rubre %></p>
+                        <p><span><%= "#{delivery_rubre.evaluation_criterium.name}: " unless delivery_rubre.evaluation_criterium.nil? %></span><%= delivery_rubre.comment_for_rubre == "" ? t('.rubre') : delivery_rubre.comment_for_rubre %></p>
                       </div>
                     </div>
                   <% end %>
@@ -154,7 +154,7 @@
               <% end %>
             </div>
           <% else %>
-            <a href="#" class="show-delivery-form btn btn-medium btn-primary">Editar Entrega</a>
+            <a href="#" class="show-delivery-form btn btn-medium btn-primary"><%=t('.edit')%></a>
           <%end%>                
         <%end%>
       </div>
