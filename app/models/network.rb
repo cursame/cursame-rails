@@ -205,6 +205,6 @@ class Network < ActiveRecord::Base
   end
 
   def create_library
-    Library.create(storable: self, network: self)
+    Library.create(name: name, description: '', storable: self, network: self)
   end
 end
