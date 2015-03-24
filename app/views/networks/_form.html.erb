@@ -13,22 +13,23 @@
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :name, 'Nombre:' %>
+      <%= f.label :subdomain, 'Subdominio:' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
-        <%= f.text_field :name, required: true %>
+        <%="#{@network.subdomain}"%>
+        <%= f.hidden_field :subdomain, value: @network.subdomain %>
       </div>
     </div>
   </div>
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :subdomain, 'Subdominio:' %>
+      <%= f.label :name, 'Nombre:' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
-        <%= f.text_field :subdomain, required: true %>
+        <%= f.text_field :name, required: true %>
       </div>
     </div>
   </div>
@@ -110,6 +111,17 @@
         <%= f.label :register_form do %>
           <%= f.check_box :register_form %>
           Habilitar formulario de registro publico.
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group label-on-top no-label">
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= f.label :evaluable do %>
+          <%= f.check_box :evaluable %>
+          Habilitar evaluables de la red. (Tareas, Cuestionarios y Discusiones evaluables)
         <% end %>
       </div>
     </div>

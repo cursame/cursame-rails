@@ -72,16 +72,15 @@
   <div class="col col-4 omega">
     <div class="col-inner">
       <div class="admin-chart">
-        <h5>Tareas</h5>
-        <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
+        <h5>Discusiones</h5>
+        <% @discussions = current_network.discussions.count %>
+        <div id="discussion_graph" style="height:227px; weight:279px;" ></div>
 
         <script class="text/javascript">
           Morris.Donut({
-            element: 'deliveries_graph',
+            element: 'discussion_graph',
             data: [
-             {label: "Tareas", value: <%=@total_deliveries %> },
-             {label: "En curso", value:<%= @published_deliveries_count  %>},
-             {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
+             {label: "Discusiones", value: <%=@discussions %> }
             ]
           });
         </script>
@@ -109,47 +108,49 @@
     </div>
   </div>
 
-  <div class="col col-4">
-    <div class="col-inner">
-      <div class="admin-chart">
-        <% @surveys = current_network.surveys.count %>
-        <% @surveys_publish = current_network.surveys.where(:state => 'published').count%>
-        <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%>
-        
-        <h5>Examenes</h5>
-        <div id="surveys_graph" style="height:227px; weight:279px;" ></div>
+  <% if current_network.evaluable? %>
+    <div class="col col-4">
+      <div class="col-inner">
+        <div class="admin-chart">
+          <% @surveys = current_network.surveys.count %>
+          <% @surveys_publish = current_network.surveys.where(:state => 'published').count%>
+          <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%>
+          
+          <h5>Examenes</h5>
+          <div id="surveys_graph" style="height:227px; weight:279px;" ></div>
 
-        <script class="text/javascript">
-          Morris.Donut({
-             element: 'surveys_graph',
-             data: [
-               {label: "Examenes", value: <%=@surveys %> },
-               {label: "Examenes en curso", value: <%=@surveys_publish %> },
-               {label: "Examenes sin publicar", value: <%=@surveys_unpublished %> },
-             ]
-           });
-        </script>
+          <script class="text/javascript">
+            Morris.Donut({
+               element: 'surveys_graph',
+               data: [
+                 {label: "Examenes", value: <%=@surveys %> },
+                 {label: "Examenes en curso", value: <%=@surveys_publish %> },
+                 {label: "Examenes sin publicar", value: <%=@surveys_unpublished %> },
+               ]
+             });
+          </script>
+        </div>
       </div>
     </div>
-  </div>
 
+    <div class="col col-4 omega">
+      <div class="col-inner">
+        <div class="admin-chart">
+          <h5>Tareas</h5>
+          <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
 
-  <div class="col col-4 omega">
-    <div class="col-inner">
-      <div class="admin-chart">
-        <h5>Discusiones</h5>
-        <% @discussions = current_network.discussions.count %>
-        <div id="discussion_graph" style="height:227px; weight:279px;" ></div>
-
-        <script class="text/javascript">
-          Morris.Donut({
-            element: 'discussion_graph',
-            data: [
-             {label: "Discusiones", value: <%=@discussions %> }
-            ]
-          });
-        </script>
+          <script class="text/javascript">
+            Morris.Donut({
+              element: 'deliveries_graph',
+              data: [
+               {label: "Tareas", value: <%=@total_deliveries %> },
+               {label: "En curso", value:<%= @published_deliveries_count  %>},
+               {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
+              ]
+            });
+          </script>
+        </div>
       </div>
     </div>
-  </div>
+  <%end%>
 </div>

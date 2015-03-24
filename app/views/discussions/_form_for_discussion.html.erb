@@ -64,7 +64,7 @@
         </div>
       </div>
       
-      <% unless current_role == 'student' %>
+      <% if (current_role != 'student' and current_network.evaluable?) %>
         <div class="form-group">
           <div class="form-group-main">
             <div class="form-unit">
