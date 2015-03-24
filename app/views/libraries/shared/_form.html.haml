@@ -1,0 +1,20 @@
+= form_for(@library, html: { class: "default-form", id: "library_form", multipart: true }) do |form|
+  .body.padded
+    .form-group
+      .form-group-label
+        = form.label :title, "Nombre: "
+      .form-group-main
+        .form-unit
+          = form.text_field :title, placeholder: 'Titulo de la biblioteca', required: "required"
+    .form-group
+      .form-group-label
+        = form.label :description, "Descripción: "
+      .form-group-main
+        .form-unit
+          = form.text_field :description, placeholder: 'Descripción de la biblioteca', required: "required"
+  .footer
+    .fl
+      %span.btn.btn-primary.input-btn.activable
+        = form.submit "Enviar", id: "wufoo-post-form", class: "activable"
+:javascript
+  $("#library_form").validate();

@@ -19,17 +19,26 @@
         %li
           %label#icon-dd-course.course-dd
             = icon('course-new-publication')
-            Cursos
+            Bibliotecas
       %ul#box-course-dd.dropdown.target-courses-selector{style: "display: none;"}
         - unless current_user.courses.empty?
-          - courses = teacher_courses if is_teacher
-          - courses = student_courses if is_student
-          - courses.each do |course|
-            %li
-              %label{id: "#{course.library.id}"}
-                = avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no")
-                = truncate( course.title, omission: "...", length: 17)
-                = icon('checked-16')
+          - current_network.libraries.each do |library|
+            - case library.storable
+            - when Course
+              - if library.storable.users.include?(current_user)
+                %li
+                  %label{id: "#{library.id}"}
+                    = icon('course-new-publication')
+                    = truncate(library.title, omission: "...", length: 17)
+                    = icon('checked-16')
+            - when Library
+              %li
+                %label{id: "#{library.id}"}
+                  = icon('course-new-publication')
+                  = truncate(library.title, omission: "...", length: 17)
+                  = icon('checked-16')
+            - when Network
+              - next
         - else
           .inner-no-content
             - if is_student

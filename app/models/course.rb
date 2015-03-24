@@ -333,6 +333,6 @@ class Course < ActiveRecord::Base
   end
 
   def create_library
-    Library.create(name: title, description: silabus, storable: self, network: network)
+    Library.create(title: title, description: silabus, storable: self, network: network)
   end
 end

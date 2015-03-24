@@ -1,4 +1,4 @@
-= form_for(LibraryFile.new, remote: true, html: { class: "default-form", id: "new_library_file_form", multipart: true }) do |form|
+= form_for(LibraryFile.new, remote: true, html: { class: "default-form", id: "library_file_form", multipart: true }) do |form|
   .new-publication-form-content
     .form-group
       .form-group-label
@@ -26,4 +26,4 @@
         %span.btn.btn-primary.input-btn.activable
           = form.submit "Publicar", id: "wufoo-post-form", class: "activable"
 :javascript
-  $("#new_library_file_form").validate();
+  $("#library_file_form").validate();

@@ -6,3 +6,5 @@
         %h1="Biblioteca"
     .section-header-actions
       %ul.list-buttons.right
+        %li
+          = link_to "#{icon('plus-white')} Nueva Biblioteca".html_safe, new_library_path, title: 'Crear nueva Biblioteca', class: "btn btn-primary"

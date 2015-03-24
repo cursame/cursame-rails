@@ -439,7 +439,7 @@
 
       <%end%>
     <% when 'new_library_file' %>
-      <%= link_to notification.notificator.file.url, target: "_blank" do %>
+      <%= link_to notification.notificator.file.url, download: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>

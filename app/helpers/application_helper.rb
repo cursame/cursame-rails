@@ -46,6 +46,9 @@ module ApplicationHelper
     when Course
       "<span class='as-link'> #{notification.notificator.user.name}</span> 
       ha compartido un archivo en <span class='as-link'>#{library_type.title}<span class='as-link'>".html_safe
+    when Library
+      "<span class='as-link'> #{notification.notificator.user.name}</span> 
+      ha compartido un archivo en <span class='as-link'>#{notification.notificator.library.title}<span class='as-link'>".html_safe
     end
   end
 end

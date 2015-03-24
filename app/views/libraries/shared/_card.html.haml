@@ -6,7 +6,7 @@
           .icon-card
             = icon 'library-card'
           = link_to library_path(library), class: 'activable' do
-            %h3= library.storable.title
+            %h3= library.title
             %p="#{library.files.count} Archivos"
             .btn.btn-small.btn-transparent.activable
               = 'Ver Archivos'

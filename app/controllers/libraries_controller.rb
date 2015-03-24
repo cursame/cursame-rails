@@ -8,4 +8,16 @@ class LibrariesController < ApplicationController
     library = Library.find params[:id]
     @files = library.files
   end
+
+  def new
+    @library = Library.new
+  end
+
+  def create
+    Library.create(params[:library]) do |library|
+      library.network  = current_network
+      library.storable = current_network.library
+    end
+    redirect_to libraries_path
+  end
 end
