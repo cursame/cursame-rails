@@ -8,7 +8,7 @@
               <div class="section-title no-icon">
                 <%= link_to course_path @course do %>
                   <h1><%= @course.title %></h1>
-                  <p>Regresar al curso</p>
+                  <p><%=t('.back_to')%></p>
                 <% end %>
               </div>
             </div>
@@ -25,12 +25,12 @@
         <div class="col-inner">
           <div class="activities-depot-feeds">
             <div class="activities-depot-feeds-title">
-              <span class="meta-info">Actividades</span>
+              <span class="meta-info"><%=t('.act')%></span>
             </div>
             <div id="activites-feeds-container">
             </div>
             <div id="load-more-activities">
-              <%= link_to "Cargar más actividades", "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 }  %>
+              <%= link_to (t('.more_act'), "", class: 'load-more-activities-feeds', data: { perpage: 10, page: 1 })  %>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="col-inner">
           <div class="activities-depot-main">
             <div class="inner-no-content">
-              <h5>Selecciona una actividad.</h5>
+              <h5><%=t('.select_act')%></h5>
             </div>
           </div>
         </div>
