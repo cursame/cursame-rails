@@ -1,21 +1,21 @@
-= form_for(LibraryFile.new, remote: true, html: { class: "default-form", multipart: true }) do |form|
+= form_for(LibraryFile.new, remote: true, html: { class: "default-form", id: "new_library_file_form", multipart: true }) do |form|
   .new-publication-form-content
     .form-group
       .form-group-label
         = form.label :name, "Titulo del Archivo: "
       .form-group-main
         .form-unit
-          = form.text_field :name, placeholder: 'Titulo del Archivo'
+          = form.text_field :name, placeholder: 'Titulo del Archivo', required: "required"
     .form-group
       .form-group-label
         = form.label :description, "Descripción: "
       .form-group-main
         .form-unit
-          = form.text_field :description, placeholder: 'Descripción del Archivo'
+          = form.text_field :description, placeholder: 'Descripción del Archivo', required: "required"
     .form-group
       .form-group-main
         .form-unit
-          = form.file_field :file, placeholder: 'Archivo'
+          = form.file_field :file, placeholder: 'Archivo', required: "required"
   .new-publication-footer
     %ul.list-buttons.right.fr
       %li
@@ -25,3 +25,5 @@
       %li
         %span.btn.btn-primary.input-btn.activable
           = form.submit "Publicar", id: "wufoo-post-form", class: "activable"
+:javascript
+  $("#new_library_file_form").validate();
