@@ -1,0 +1,7 @@
+.wrapper
+  - if @libraries.blank? && @files.blank?
+    .no-content-section
+      %h4="No hay cursos."
+  - else
+    .cols-12.courses-list
+      = render partial: 'libraries/shared/card_list', locals: { libraries: @libraries }
