@@ -8,6 +8,6 @@
               .section-title
                 = link_to icon('section-discussions'), discussions_path
                 = link_to discussions_path do
-                  %h1 Discusiones
+                  %h1= t('.discuss')
               - unless current_user.courses.empty?
                 = render partial: 'discussions/shared/discussions_filter_course'
