@@ -13,6 +13,15 @@ class LibraryFile < ActiveRecord::Base
     create_notification
   end
 
+  def library
+    case location
+    when Library
+      location
+    when Directory
+      location.library
+    end
+  end
+
   private
   def create_wall
     case location.storable

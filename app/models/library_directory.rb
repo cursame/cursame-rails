@@ -4,4 +4,13 @@ class LibraryDirectory < ActiveRecord::Base
 
   belongs_to :location, polymorphic: true
   attr_accessible :location_id, :location_type
+
+  def library
+    case object
+    when Library
+      location
+    when LibraryDirectory
+      location.library
+    end    
+  end  
 end
