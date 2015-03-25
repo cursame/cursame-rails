@@ -17,9 +17,15 @@ Cursame30Lb::Application.routes.draw do
   resources :polls
   resources :messages
   resources :wufoo_forms, path: '/forms'
-  resources :libraries
   resources :library_files
-  resources :library_directories
+
+  resources :libraries do
+    resources :library_directories
+  end
+
+  resources :library_directories do
+    resources :library_directories
+  end
 
   get "superadmnin/statistics"
   get "superadmnin/networks"
