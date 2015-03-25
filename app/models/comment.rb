@@ -225,6 +225,10 @@ class Comment < ActiveRecord::Base
       return (commentable.courses.first.owner?(role,user) or commentable.owner?(role,user))
     end
 
+    if commentable_type == 'LibraryFile'
+      return true
+    end
+
     return commentable.owner?(role,user)
   end
 
