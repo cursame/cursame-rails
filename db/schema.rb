@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150325024839) do
+ActiveRecord::Schema.define(:version => 20150325095941) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -352,17 +352,29 @@ ActiveRecord::Schema.define(:version => 20150325024839) do
 
   add_index "libraries", ["network_id"], :name => "index_libraries_on_network_id"
 
+  create_table "library_directories", :force => true do |t|
+    t.integer  "location_id"
+    t.string   "location_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name"
+    t.text     "description"
+  end
+
+  add_index "library_directories", ["location_id", "location_type"], :name => "index_library_directories_on_location_id_and_location_type"
+
   create_table "library_files", :force => true do |t|
-    t.integer  "library_id"
     t.string   "file"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
+    t.integer  "location_id"
+    t.string   "location_type"
   end
 
-  add_index "library_files", ["library_id"], :name => "index_library_files_on_library_id"
+  add_index "library_files", ["location_id", "location_type"], :name => "index_library_files_on_location_id_and_location_type"
   add_index "library_files", ["user_id"], :name => "index_library_files_on_user_id"
 
   create_table "masive_mailer_for_super_admins", :force => true do |t|

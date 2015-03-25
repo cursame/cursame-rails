@@ -1,6 +1,7 @@
 - dropdown_id = "dropdown_#{random}" 
 - library_id  = "library_#{random}"
-= form.hidden_field :library_id, value: "#{current_network.library.id}", id: "library_id"
+= form.hidden_field :location_id,   value: "#{current_network.library.id}", id: "library_id"
+= form.hidden_field :location_type, value: "Library"
 .inline-block
   .dropdown-wrap.target-dropdown{ id: dropdown_id }
     .dropdown-pull.btn.btn-secondary

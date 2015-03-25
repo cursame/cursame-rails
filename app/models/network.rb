@@ -17,7 +17,8 @@ class Network < ActiveRecord::Base
   has_many :network_settings
   has_many :wufoo_forms, as: :showable, dependent: :destroy
   has_many :reported_contents, dependent: :destroy
-  has_many :files, class_name: 'LibraryFile', through: :library
+  has_many :library_files, through: :library
+  has_many :library_directories, through: :library
 
   validates_presence_of   :name, :subdomain, :population
   validates_uniqueness_of :subdomain
