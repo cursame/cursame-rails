@@ -5,7 +5,7 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    library = Library.find params[:id]
-    @files = library.library_files
+    @library = Library.find params[:id]
+    @files = @library.library_files
   end
 end
