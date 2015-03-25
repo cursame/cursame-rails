@@ -5,3 +5,5 @@
       = link_to libraries_path do
         %h1="Biblioteca"
     .section-header-actions
+      %ul.list-buttons.right
+        %li= link_to "#{icon('plus-white')} Crear Carpeta".html_safe, new_library_library_directory_path(@library), title: "Crear Directorio", class: "btn btn-primary"

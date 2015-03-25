@@ -3,7 +3,7 @@ class LibraryDirectory < ActiveRecord::Base
   has_many :library_files, as: :location, dependent: :destroy
 
   belongs_to :location, polymorphic: true
-  attr_accessible :location_id, :location_type
+  attr_accessible :name, :description
 
   def library
     case object
