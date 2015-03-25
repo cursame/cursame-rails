@@ -17,14 +17,16 @@
                   %h5= user.name
                   .user-meta
                     %span
-                      Obtenido: #{number_with_precision(survey.evaluation, precision: 1)}
+                      = t('.obtain') + ':' + number_with_precision(survey.evaluation, precision: 1)
                     %span.mta-spcer ·
                     %span
-                      Entregado: #{I18n.localize(survey.created_at, format: "%e de %B del %Y")}
+                      = t('.delivery') + ':' + I18n.localize(survey.created_at, format: "%e de %B del %Y")
               .evaluate-user-response.tabs
                 .tabs-buttons
-                  .tab.active{"data-id-target" => "response"} Respuestas
-                  .tab{"data-id-target" => "response-evaluate"} Retroalimentación
+                  .tab.active{"data-id-target" => "response"} 
+                    = t('.answers')
+                  .tab{"data-id-target" => "response-evaluate"} 
+                    = t('.feedback')
                 .tabs-main
                   #response.activity-response-items.tab-content
                     .delivery-submited-evaluation-fields
@@ -35,7 +37,7 @@
                               .survey-item-question
                                 %p= response.question.content
                               .survey-item-answers
-                                %span.meta-info Respuesta:
+                                %span.meta-info= t('.reply') + ':'
                                 .survey-item-answer-content
                                   - response.question.answers.each do |answer|
                                     - if answer.id == response.answer_id
@@ -48,19 +50,19 @@
                     = form_tag evaluate_survey_response_update_path(@user_survey), class: "survey-teacher-feedback-form" do
                       .activity-criteria-evaluation
                         .criteria-evaluation-help-text
-                          %h6 Retroalimentación
-                          %p Envia comentarios al alumno.
+                          %h6= t('.feedback')
+                          %p= t('.comments')
                           %br/
-                          = text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow", required: true, rows: 3, placeholder: 'Retroalimentación'
+                          = text_area_tag :feedback, @user_survey.grade.feedback, class: "autogrow", required: true, rows: 3, placeholder: t('.feedback')
                           = hidden_field_tag :id, @user_survey.id
                       .activity-eveluation-footer
                         %span.btn.btn-primary.input-btn.activable
-                          = submit_tag "Enviar comentario", class: "activable"
+                          = submit_tag t('.send'), class: "activable"
       .col.col-4
         .col-inner
           .sidebar-responses
             .sidebar-responses-header
-              %h6 Entregas
+              %h6= t('.delivery')
             .sidebar-responses-main
               - survey.survey.responses.each do |response|
                 = link_to evaluate_survey_response_path(response) do
@@ -70,6 +72,6 @@
                     .sidebar-user-response-main
                       %h6= response.user.name
                       %span
-                        Obtenido: #{number_with_precision(response.evaluation, precision: 1)}
+                        = t('.obtain') + ':' + number_with_precision(response.evaluation, precision: 1)
 :javascript
   $('.survey-teacher-feedback-form').validate();

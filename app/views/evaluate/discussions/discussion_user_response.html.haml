@@ -16,11 +16,11 @@
                   %h5= user.name
                   .user-meta
                     - if @discussion_response.grade.score.blank?
-                      %span Sin Calificar
+                      %span= t('.no_score')
                     - else
                       %span= @discussion_response.grade.score
                 .user-response-comments
-                  %span.meta-info Comentarios
+                  %span.meta-info= t('.comments')
                   - discussion.comments.each do |comment|
                     - next unless comment.user == user
                     .user-response-comment
@@ -30,23 +30,23 @@
                 = form_for @discussion_response, url: evaluate_discussion_rate_path(@discussion_response) do |f|
                   .activity-set-evaluation
                     .evaluation-label
-                      %h4 Calificación: *
+                      %h4= t('.score') + ':' + '*'
                     .evaluation-input
                       = f.fields_for :grade do |grade|
-                        = grade.text_field :score, placeholder: 'Ejemplo: 8', required: true, number: true, max: 10, min: 0
+                        = grade.text_field :score, placeholder: t('.example') + ': 8', required: true, number: true, max: 10, min: 0
 
                   - if discussion.evaluation_criteria.count > 0
                     .activity-criteria-evaluation
                       .criteria-evaluation-help-text
-                        %h6 Retroalimentación
-                        %p Envia comentarios en base a los criterios de la actividad.
+                        %h6= t('.feedback')
+                        %p= t('.send')
                         - discussion.evaluation_criteria.each_with_index do |criterium, index|
                           = f.fields_for :response_to_the_evaluations, @discussion_response.response_to_the_evaluations[index] do |criteria_feedback|
                             = render 'evaluate/shared/evaluation_criterium_feedback', f: criteria_feedback, criterium: criterium
 
                   .activity-eveluation-footer
                     %span.btn.btn-primary.input-btn
-                      = f.submit "Calificar alumno"
+                      = f.submit t('.rate_student')
                         
 
       .col.col-4

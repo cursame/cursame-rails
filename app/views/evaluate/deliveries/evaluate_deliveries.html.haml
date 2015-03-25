@@ -7,7 +7,7 @@
         .col-inner
           .activity-view
             .view-header
-              %h5 Entregas
+              %h5= t('.deliveries')
             .activity-view-main
               - unless @delivery.responses.empty?
                 .activity-responses-list
@@ -22,10 +22,10 @@
                             %h5= response.user.name
                             - if response.grade.present?
                               %p
-                                Calificación: #{response.grade.score}
+                                = t('.score') + ':' + response.grade.score
                             - else
-                              %p Sin calificar
+                              %p= t('.no_score')
               - else
                 .no-content-section
-                  %h5 Sin Entregas.
-                  %p Todavia no hay ninguna entrega en esta tarea.
+                  %h5= t('.no_deliveries')
+                  %p= t('.no_deliveries_record')T

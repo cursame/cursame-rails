@@ -8,7 +8,7 @@
 				<div class="col-inner">
 					<div class="section-separator">
 						<div class="section-separator-title">
-							<h6>Actividades para calificar hoy</h6>
+							<h6><%=t('.today')%></h6>
 							<i class="tip"></i>
 						</div>
 					</div>
@@ -30,7 +30,7 @@
 				<div class="col-inner">
 					<div class="section-separator">
 						<div class="section-separator-title">
-							<h6>Actividades para calificar mañana</h6>
+							<h6><%=t('.tomorrow')%></h6>
 							<i class="tip"></i>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 				<div class="col-inner">
 					<div class="section-separator">
 						<div class="section-separator-title">
-							<h6>Actividades para calificar en 3 días o más</h6>
+							<h6><%=t('.someday')%></h6>
 							<i class="tip"></i>
 						</div>
 					</div>
@@ -68,7 +68,7 @@
 
 <% if @rest_of_activities.count + @tomorrow_activities.count + @today_activities.count == 0 %>
 	<div class="no-content-section">
-    <h4>No tienes actividades por calificar.</h4>
-    <p>Todas las actividades de tu curso están calificadas, puedes ver <%= link_to "actividades pasadas en la sección de Pasadas", evaluate_activities_inactive_path %>.</p>
+    <h4><%=t('.no_score')%></h4>
+    <p><%=t('.all')%> <%= link_to t('.past'), evaluate_activities_inactive_path %>.</p>
   </div>
 <% end %>

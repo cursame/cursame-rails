@@ -6,7 +6,7 @@
     <div class="activity-item-desc">
       <h4 class="as-link"><%= activity.title %></h4>
       <div class="activity-meta-data">
-        <span><%= activity.responses.count %> de <%= course.members_in_courses.count - 1 %> Participantes</span>
+        <span><%= activity.responses.count %><%=t('.of')%> <%= course.members_in_courses.count - 1 %> <%=t('.members')%></span>
         <span>·</span>
         <strong><%= course.title%></strong>
       </div>

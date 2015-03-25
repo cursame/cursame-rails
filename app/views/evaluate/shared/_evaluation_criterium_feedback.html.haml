@@ -1,4 +1,4 @@
 .criteria-evaluation-item
   %h5= criterium.name
-  = f.text_area :comment_for_rubre, rows: 3, placeholder: 'Retroalimentación', class: 'autogrow'
+  = f.text_area :comment_for_rubre, rows: 3, placeholder: t('.feedback'), class: 'autogrow'
   = f.hidden_field :evaluation_criterium_id, :value => criterium.id

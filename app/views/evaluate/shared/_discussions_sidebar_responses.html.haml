@@ -1,6 +1,6 @@
 .sidebar-responses
   .sidebar-responses-header
-    %h6 Participantes
+    %h6= t('.members')
   .sidebar-responses-main
     - responses.each do |response|
       = link_to evaluate_discussion_response_path(response) do
@@ -10,6 +10,6 @@
           .sidebar-user-response-main
             %h6= response.user.name
             - unless response.grade.present?
-              %span Sin Calificar
+              %span= t('.no_score')
             - else
               %span= response.grade.score

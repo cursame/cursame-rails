@@ -12,16 +12,16 @@
             .activity-view-data
               %ul
                 %li
-                  %span.meta-info Curso
+                  %span.meta-info= t('.course')
                   %p= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course)
                 %li
-                  %span.meta-info Participantes
+                  %span.meta-info= t('.members')
                   %p
                     = discussion.responses.count
                     de #{course.members_in_courses.count - 1}
                 %li
-                  %span.meta-info Fecha de publicación
+                  %span.meta-info= t('.publish_date')
                   %p= I18n.localize(discussion.created_at, format: "%e de %B del %Y")
                 %li
-                  %span.meta-info Fecha limite para participar
+                  %span.meta-info= t('.limit_publish_date')
                   %p= I18n.localize(discussion.end_date, format: "%e de %B del %Y")

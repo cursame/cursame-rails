@@ -8,7 +8,7 @@
               <div class="section-title">
                 <%= link_to icon('section-evaluate'), evaluate_activities_path %>
                 <%= link_to evaluate_activities_path do %>
-                  <h1>Calificar Actividades</h1>
+                  <h1><%=t('.evaluate')%></h1>
                 <% end %>
               </div>
               <div class="section-header-actions">
@@ -21,10 +21,10 @@
               <% action = params[:action] %>
               <ul>
                 <li>
-                  <%= link_to "Activas", evaluate_activities_path, class: (action == 'index' ? "active" : " ") %>
+                  <%= link_to (t('.active'), evaluate_activities_path, class: (action == 'index' ? "active" : " ")) %>
                 </li>
                 <li>
-                  <%= link_to "Pasadas", evaluate_activities_inactive_path, class: (action == 'inactive' ? "active" : " ") %>
+                  <%= link_to (t('.past'), evaluate_activities_inactive_path, class: (action == 'inactive' ? "active" : " ")) %>
                 </li>
               </ul>
             </div>
