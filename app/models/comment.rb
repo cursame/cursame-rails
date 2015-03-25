@@ -192,7 +192,11 @@ class Comment < ActiveRecord::Base
       users = commentable.showable.users
       hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase }
     when 'LibraryFile'
-      users = commentable.library.storable.users
+      if commentable.location.storable.kind_of? Library
+        users = commentable.location.storable.storable.users
+      else
+        users = commentable.location.storable.users
+      end
       hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase }
     else
       raise "Grupo de usuarios no definido para " + comment_type
