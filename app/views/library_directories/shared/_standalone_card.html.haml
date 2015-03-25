@@ -1,1 +1,12 @@
-= debug directory
+.col.col-6
+  .col-inner
+    .post-box.academic.library{ id: directory.id, class: :standalone }
+      .post-box-main
+        .post-box-content
+          .icon-card
+            = icon 'library-card'
+          = link_to library_directory_path(directory), class: 'activable' do
+            %h3= directory.name
+            %p= directory.description
+            .btn.btn-small.btn-transparent.activable
+              = 'Abrir Carpeta'

@@ -5,8 +5,10 @@
         .post-box-content
           .icon-card
             = icon 'library-file-card'
+          .file-type
+            = ".#{file.file.file.extension.upcase}"
           = link_to file.file.url, download: true, class: 'activable' do
             %h3= file.name
             %p= file.description
           %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format file.created_at}".html_safe
-          = link_to 'Descargar Archivo', file.file.url, download: true, class: "btn btn-small btn-transparent activable"
+          = link_to "Descargar Archivo", file.file.url, download: true, class: "btn btn-small btn-transparent activable"            
