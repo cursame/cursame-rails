@@ -46,7 +46,7 @@
         <% end %>
         <li>
           <%= link_to courses_path do %>
-            <%= icon 'courses-w' %> Cursos
+            <%= icon 'courses-w' %> <%= current_network.courses_tag %>
           <% end %>
         </li>
         <% if current_network.evaluable? %>
@@ -115,11 +115,11 @@
         <% else %>
           <div class="inner-no-content">
             <% if current_role == 'student' %>
-              <h5>No eres miembro de ningún curso.</h5>
-              <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+              <h5>No eres miembro de ningún <%= current_network.course_tag %>.</h5>
+              <p>Únete a uno en la sección de <%= link_to "#{ current_network.courses_tag }", courses_path, class: 'underline' %></p>
             <% else %>
-              <h5>No has creado ningún curso.</h5>
-              <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
+              <h5>No has creado ningún <%= current_network.course_tag %>.</h5>
+              <p><%= link_to "Crear #{current_network.course_tag} ahora →", new_course_path, class: 'underline' %></p>
             <% end %>
           </div>
         <% end %>
@@ -136,7 +136,7 @@
           <%= icon('friends-12') %> <span>Amigos</span>
         </div>
         <div class="chat-switch tab" data-id-target="chat-group-courses">
-          <%= icon('courses-12') %> <span>Cursos</span>
+          <%= icon('courses-12') %> <span"#{ current_network.courses_tag }"/span>
         </div>
       </div>
 
@@ -189,11 +189,11 @@
             <% else %>
               <div class="inner-no-content">
                 <% if current_role == 'student' %>
-                  <h5>No eres miembro de ningún curso.</h5>
-                  <p>Únete a uno en la sección de <%= link_to 'Cursos', courses_path, class: 'underline' %></p>
+                  <h5>No eres miembro de ningún <%= current_network.course_tag %>.</h5>
+                  <p>Únete a uno en la sección de <%= link_to "#{ current_network.courses_tag }", courses_path, class: 'underline' %></p>
                 <% else %>
-                  <h5>No has creado ningún curso.</h5>
-                  <p><%= link_to 'Crear curso ahora →', new_course_path, class: 'underline' %></p>
+                  <h5>No has creado ningún <%= current_network.course_tag %>.</h5>
+                  <p><%= link_to "Crear #{ current_network.course_tag } ahora →", new_course_path, class: 'underline' %></p>
                 <% end %>
               </div>
             <% end %>
