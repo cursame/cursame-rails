@@ -1,0 +1,9 @@
+es:
+  groups:
+    edit:
+      name: Nombre
+      update: Actualizar
+    new:
+      name: Nombre
+      create: Crear
+      
