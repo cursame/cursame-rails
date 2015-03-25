@@ -56,12 +56,14 @@
             <%end%>
           </li>
         <% end %>
-        <li>
-          <%= link_to calendar_path, :data => "menu" do %>
-            <%= icon 'calendar-w' %> Calendario
-          <% end %>
-          </a>
-        </li>
+        <% if current_network.evaluable? %>
+          <li>
+            <%= link_to calendar_path, :data => "menu" do %>
+              <%= icon 'calendar-w' %> Calendario
+            <% end %>
+            </a>
+          </li>
+        <% end %>
         <li>
           <%= link_to libraries_path, :data => "menu" do %>
             <%= icon 'library-w' %> Biblioteca
