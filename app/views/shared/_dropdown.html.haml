@@ -21,7 +21,7 @@
           %li
             %label#icon-dd-course.course-dd
               = icon('course-new-publication')
-              Cursos
+              #{ current_network.courses_tag }
       - if hasCourses
         %ul#box-course-dd.dropdown.target-courses-selector{style: ("display: none;" if hasPublic)}
           - unless current_user.courses.empty?
@@ -37,12 +37,12 @@
           - else
             .inner-no-content
               - if is_student
-                %h5 No eres miembro de ningún curso.
+                %h5 No eres miembro de ningún #{ current_network.course_tag }.
                 %p
-                  Únete a uno en la sección de #{link_to 'Cursos', courses_path}
+                  Únete a uno en la sección de #{link_to "#{ current_network.courses_tag }", courses_path}
               - else
-                %h5 No has creado ningún curso todavia.
-                %p= link_to 'Crear curso ahora →', new_course_path
+                %h5 No has creado ningún #{ current_network.course_tag } todavia.
+                %p= link_to "Crear un #{ current_network.course_tag } ahora →", new_course_path
           - if hasCourses && hasPublic
             %li
               #box-return-dd.return-dd

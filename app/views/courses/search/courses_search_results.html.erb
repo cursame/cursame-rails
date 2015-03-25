@@ -27,7 +27,7 @@
   <div class="wrapper">
     <% if @courses.blank? %>
       <div class="no-content-section">
-        <h4>No se encontraron cursos con el criterio de busqueda.</h4>
+        <h4>No se encontraron <%= current_network.courses_tag %> con el criterio de busqueda.</h4>
       </div>
     <% end %>
     <div class="cols-12 courses-list">

@@ -22,10 +22,10 @@
                   <%= link_to "Todos", network_comunity_path, class: (action == 'all' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to "Estudiantes", community_students_path, class: (action == 'students' ? "active" : " ") %>
+                  <%= link_to "#{ current_network.students_tag }", community_students_path, class: (action == 'students' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to "Profesores", community_teachers_path, class: (action == 'teachers' ? "active" : " ") %>
+                  <%= link_to "#{ current_network.professors_tag }", community_teachers_path, class: (action == 'teachers' ? "active" : " ") %>
                 </li>
               </ul>
             </div>

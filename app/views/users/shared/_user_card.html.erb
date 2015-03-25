@@ -84,9 +84,9 @@
         <div class="user-info">
           <span class="user-role">
             <% user_role = f.roles.first.title %>
-            <%= "Profesor" if user_role === 'teacher' %>
-            <%= "Estudiante" if user_role === 'student' %>
-            <%= "Administrador" if user_role === 'admin' %>
+            <%= "#{ current_network.profesor_tag }" if user_role === 'teacher' %>
+            <%= "#{ current_network.student_tag }" if user_role === 'student' %>
+            <%= "#{ current_network.admin_tag }" if user_role === 'admin' %>
           </span>
         </div>
       </div>

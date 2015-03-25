@@ -4,7 +4,7 @@
     <div class="col col-12">
       <div class="col-inner">
         <div class="sub-profile-title">
-          <h3>Información del Curso</h3>
+          <h3>Información del <%= current_network.course_tag %></h3>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           </div>
 
           <div class="course-info-block">
-            <h6 class="meta-info"><%= icon('profesor-12') %> Administradores del curso:</h6>
+            <h6 class="meta-info"><%= icon('profesor-12') %> Administradores del <%= current_network.course_tag %>:</h6>
             <% @users.each do |u|%>
              <%= u.name %>
             <%end%>

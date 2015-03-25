@@ -178,6 +178,16 @@ class Network < ActiveRecord::Base
     @self_defter = @defter.split(':').last
   end
 
+  def students_tag
+    @defter = (self.titles).to_s.split(',')[9]
+    @self_defter = @defter.split(':').last
+  end
+
+  def professors_tag
+    @defter = (self.titles).to_s.split(',')[10]
+    @self_defter = @defter.split(':').last
+  end
+
   def mixpanel_token?
     !self.find_setting(:mixpanel_token).nil?
   end

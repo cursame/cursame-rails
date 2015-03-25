@@ -3,7 +3,7 @@
     <div class="section-title">
       <%= link_to icon('section-courses'), courses_path %>
       <%= link_to courses_path do %>
-        <h1>Cursos</h1>
+        <h1><%= current_network.courses_tag %></h1>
       <% end %>
     </div>
     <div class="section-header-actions">
@@ -12,7 +12,7 @@
           <%= render partial: "/courses/courses_search" %>
         </li>
         <li>
-          <%= link_to "#{icon('plus-white')} Nuevo".html_safe, new_course_path, :title => 'Crear curso nuevo', :class=> "btn btn-primary" %>
+          <%= link_to "#{icon('plus-white')} Nuevo".html_safe, new_course_path, :title => "Crear #{current_network.course_tag} nuevo", :class=> "btn btn-primary" %>
         </li>
       </ul>
     </div>
