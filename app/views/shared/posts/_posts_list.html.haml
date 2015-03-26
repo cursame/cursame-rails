@@ -23,5 +23,3 @@
   - when 'WufooForm'
     - if post.init_date < DateTime.now && post.for_user?(current_user) && current_network.wufoo_settings?
       = render partial: 'wufoo_forms/shared/wufoo_form_card', locals: { wufoo_form: post, card_type: :post_publication, wall: publication }
-  - when 'LibraryFile'
-    = render partial: 'library_files/shared/card', locals: { library_file: post, wall: publication, card_type: :post_publication }

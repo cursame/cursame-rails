@@ -1,9 +1,10 @@
 .section-header
   .section-header-main
     .section-title
-      = link_to icon('section-library'), libraries_path
-      = link_to libraries_path do
+      = link_to icon('section-library'), library_path(current_network.library)
+      = link_to library_path(current_network.library) do
         %h1="Biblioteca"
     .section-header-actions
       %ul.list-buttons.right
-        %li= link_to "#{icon('plus-white')} Crear Carpeta".html_safe, new_library_library_directory_path(@library), title: "Crear Directorio", class: "btn btn-primary"
+        %li= link_to "#{icon('plus-white')} Crear Carpeta".html_safe, new_library_library_directory_path(@library), title: "Crear Carpeta", class: "btn btn-primary"
+        %li= link_to "#{icon('plus-white')} Subir Archivo".html_safe, new_library_library_file_path(@library), title: "Subir Archivo", class: "btn btn-primary"

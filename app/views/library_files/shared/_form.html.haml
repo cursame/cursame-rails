@@ -1,5 +1,5 @@
-= form_for(LibraryFile.new, remote: true, html: { class: "default-form", id: "library_file_form", multipart: true }) do |form|
-  .new-publication-form-content
+= form_for([@parent_model, @file], html: { class: "default-form", id: "library_file_form", multipart: true }) do |form|
+  .body.padded
     .form-group
       .form-group-label
         = form.label :name, "Titulo del Archivo: "
@@ -16,14 +16,11 @@
       .form-group-main
         .form-unit
           = form.file_field :file, placeholder: 'Archivo', required: "required"
-  .new-publication-footer
-    %ul.list-buttons.right.fr
-      %li
-        = link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", id: "cancel-post-form_tab"
-      %li
-        = render partial: "library_files/shared/dropdown", locals: { form: form }
-      %li
-        %span.btn.btn-primary.input-btn.activable
-          = form.submit "Publicar", id: "wufoo-post-form", class: "activable"
+  .footer
+    .fr
+      %span.btn.btn-primary.input-btn.activable
+        = form.submit "Enviar", id: "wufoo-post-form", class: "activable"
 :javascript
-  $("#library_file_form").validate();
+  $(new function() {
+    $("#library_file_form").validate();
+  });
