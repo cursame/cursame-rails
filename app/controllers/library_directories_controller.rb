@@ -33,6 +33,7 @@ class LibraryDirectoriesController < ApplicationController
   def create_directory_for_library
     library = Library.find(params[:library_id])
     directory = library.library_directories.build(params[:library_directory])
+    directory.user = current_user
     directory.save
     redirect_to library_path(library)
   end
@@ -40,6 +41,7 @@ class LibraryDirectoriesController < ApplicationController
   def create_directory_for_directory
     parent_directory = LibraryDirectory.find(params[:library_directory_id])
     directory = parent_directory.library_directories.build(params[:library_directory])
+    directory.user = current_user
     directory.save
     redirect_to library_directory_path(parent_directory)
   end

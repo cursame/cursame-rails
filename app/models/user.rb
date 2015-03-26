@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
   has_many :grades, dependent: :destroy
   has_many :wufoo_responses, dependent: :destroy
   has_many :wufoo_forms, dependent: :destroy
+  has_many :library_directories, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
