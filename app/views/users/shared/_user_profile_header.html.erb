@@ -86,7 +86,7 @@
                   <%= link_to 'Publicaciones', show_user_path(@user_l.personal_url), class: (action == 'show' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to 'Cursos', user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ") %>
+                  <%= link_to "#{current_network.courses_tag}", user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ") %>
                 </li>
                 <li>
                   <%= link_to 'Amigos', user_friends_path(@user_l.personal_url), class: (action == 'friends' ? "active" : " ") %>
