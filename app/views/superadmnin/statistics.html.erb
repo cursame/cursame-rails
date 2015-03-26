@@ -1,7 +1,7 @@
-<div class="super-admin-header">Estadísticas del sistema</div>
- <div class="super-admin-descriptions">Estadísticas del sistema</div></br>
+<div class="super-admin-header"><%=t('.statics1')%></div>
+ <div class="super-admin-descriptions"><%=t('.statics1')%></div></br>
  
- <div class="super-admin-header">Actividades <%= @activities.count %></div>
+ <div class="super-admin-header"><%=t('.activities')%> <%= @activities.count %></div>
  <div id="activity_chart" style="height: 250px;"></div>
  
 <script>var data_activity = []; </script>
@@ -31,7 +31,7 @@
    labels: ["date",'suma']
  });
  </script>
- <div class="super-admin-header">Tareas <%= @deliverys.count %></div>
+ <div class="super-admin-header"><%=t('.hmwrks')%> <%= @deliverys.count %></div>
  <div id="delivery_chart" style="height: 250px;"></div>
  
  <script>var data_deliveries = []; </script>
@@ -62,7 +62,7 @@
   });
   </script>
   
-  <div class="super-admin-header">Entrega de tareas <%= @assignments.count %></div>
+  <div class="super-admin-header"><%=t('.hmwrks_delivery')%> <%= @assignments.count %></div>
    <div id="assignmet_chart" style="height: 250px;"></div>
 
    <script>var data_assignment = []; </script>
@@ -93,7 +93,7 @@
     });
     </script>
     
-    <div class="super-admin-header">Examenes <%= @survey.count %></div>
+    <div class="super-admin-header"><%=t('.exam')%> <%= @survey.count %></div>
        <div id="survey_chart" style="height: 250px;"></div>
 
        <script>var data_survey = []; </script>
@@ -124,7 +124,7 @@
         });
         </script>
         
-        <div class="super-admin-header">Entrega de examenes <%= @user_survey_response.count %></div>
+        <div class="super-admin-header"><%=t('.exam_delivery')%> <%= @user_survey_response.count %></div>
            <div id="survey_charts" style="height: 250px;"></div>
 
            <script>var data_surveys = []; </script>
@@ -154,7 +154,7 @@
               labels: ["date",'suma']
             });
             </script>
-        <div class="super-admin-header">Eventos <%= @events.count %></div>
+        <div class="super-admin-header"><%=t('.events')%> <%= @events.count %></div>
             <div id="events_charts" style="height: 250px;"></div>
 
                    <script>var data_events = []; </script>

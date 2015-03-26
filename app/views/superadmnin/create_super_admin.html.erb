@@ -1,5 +1,5 @@
-<h1>Super administrador Cúrsame</h1>
-<p>Puedes ver las instrucciones de creación de super admin accediendo al código qr</p>
+<h1><%=t('.superuser')%></h1>
+<p><%=t('.img')%></p>
 <div style="float:left; padding:5px; margin:10px;">
 <% if Rails.env == "development"%>
 <%= image_tag('ins_s.png')%>
@@ -47,7 +47,7 @@
      <%end%> 
      </div>
      
-     <%= f.submit "Registrar usuario" %>
+     <%= f.submit t('.enroll') %>
      
      
 <%end%>

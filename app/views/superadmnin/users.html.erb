@@ -1,9 +1,9 @@
-<div class="super-admin-header">Manejador de datos de usuario
+<div class="super-admin-header"><%=t('.usr')%>
 </div>
 <%= form_tag superadmnin_users_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search], :placeholder =>'Buscar Usuario' %>
-   <!--  <%= submit_tag "Buscar Curso", :title => nil %> -->
+    <%= text_field_tag :search, params[:search], :placeholder =>t('.find_usr') %>
+   
   </p>
 <% end %>
 <div>
@@ -16,9 +16,9 @@
                 <%= user.name %>
             </div>
          <div class=" link ">
-            <a id="activities_d<%= user.id %>" >Mostrar actividades</a>|
-            <a id="user_edit<%= user.id%>">Editar usuario</a>|
-            <a id="statics<%= user.id%>">Estadísticas</a>
+            <a id="activities_d<%= user.id %>" ><%=t('.show1')%></a>|
+            <a id="user_edit<%= user.id%>"><%=t('.edit1')%></a>|
+            <a id="statics<%= user.id%>"><%=t('.statics')%></a>
         </div>
           </div>
             <script>
@@ -40,7 +40,7 @@
                 });
             </script>
           <div  class="container_activity<%=user.id%>  container_activity"style="display: none">
-              <h3>Manejador de actividades</h3>
+              <h3><%=t('.activities')%></h3>
           <div class="plastic_t">
             <% user.activities.each do |activity|%>
                 <div class="joko_orange">
@@ -52,11 +52,11 @@
 
          <div class="container_statics<%=user.id%> container_activity" style="display: none">
      <div class="lop_container">
-         <div class="joko_orange"> Tareas:   <%= user.activities.where(:activitye_type => "Delivery").count %> </div>
-         <div class="joko_orange"> Examenes:     <%= user.activities.where(:activitye_type => "Survey").count %></div>
-        <div class="joko_orange">  Respuestas de tareas:     <%= user.activities.where(:activitye_type => "Assignment").count %></div>
-        <div class="joko_orange">  Respuestas de examen:     <%= user.activities.where(:activitye_type => "User_survey").count %></div>
-        <div class="joko_orange">  Discusiones:   <%= user.activities.where(:activitye_type => "Discussion").count %></div>
+         <div class="joko_orange"> <%=t('.hmwrks')%>:   <%= user.activities.where(:activitye_type => "Delivery").count %> </div>
+         <div class="joko_orange"> <%=t('.exam')%>:     <%= user.activities.where(:activitye_type => "Survey").count %></div>
+        <div class="joko_orange">  <%=t('.response')%>:     <%= user.activities.where(:activitye_type => "Assignment").count %></div>
+        <div class="joko_orange">  <%=t('.response2')%>:     <%= user.activities.where(:activitye_type => "User_survey").count %></div>
+        <div class="joko_orange">  <%=t('.discuss')%>:   <%= user.activities.where(:activitye_type => "Discussion").count %></div>
     </div>
          </div>
 
