@@ -9,7 +9,7 @@ background-white
         <div class="col-inner">
           <div class="section-header-title no-icon">
             <div class="section-title">
-              <h1>Editar Perfil</h1>
+              <h1><%=t('.edit')%></h1>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :first_name, 'Nombre:'  %>
+              <%= f.label :first_name, t('.name') + ':'  %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -40,7 +40,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :last_name, 'Apellido:' %>
+              <%= f.label :last_name, t('.last_name') + ':' %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -51,7 +51,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :bios, 'Biografía:' %>
+              <%= f.label :bios, t('.bios') + ':' %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -62,7 +62,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :email, 'Correo electrónico' %>
+              <%= f.label :email, t('.email') %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -77,14 +77,14 @@ background-white
             </div>
             <div class="form-group-main">
               <div class="form-unit">
-                <%= f.text_field :twitter_link, :placeholder => 'Ejemplo: https://twitter.com/cursame' %>
+                <%= f.text_field :twitter_link, :placeholder => t('.example')': https://twitter.com/cursame' %>
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :personal_url, 'Dirección:'%>
+              <%= f.label :personal_url, t('.dir') + ':'%>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -95,14 +95,14 @@ background-white
                   <%= f.text_field :personal_url, :class => 'personal-url' %>
                 </div>
                 <span id="url-status"></span>
-                <p>Recuerda no colocar espacios ni simbolos como (¨,:*`^;/ \) ya que no se aceptará tu url</p>
+                <p><%=t('.text1')%>  (¨,:*`^;/ \) <%=t('.text2')%></p>
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :password, 'Nueva contraseña:' %>
+              <%= f.label :password, t('.pwd') + ':' %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -113,7 +113,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :password_confirmation, 'Confirmar nueva contraseña:' %>
+              <%= f.label :password_confirmation, t('.confirm') + ':' %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -127,7 +127,7 @@ background-white
             </div>
             <div class="form-group-main">
               <div class="form-unit">
-                <p>¿Quieres darte de baja? <%= link_to "Cancelar mi cuenta", destroy_user_with_parts_path(current_user.id), confirm: "¿Estas seguro de que quieres darte de baja de Cúrsame?" %>.</p> 
+                <p><%=t('.down')%> <%= link_to (t('.cancel'), destroy_user_with_parts_path(current_user.id), confirm: t('.confirm')) %>.</p> 
               </div>
             </div>
           </div>
@@ -141,7 +141,7 @@ background-white
       <div class="col col-4">
         <div class="col-inner">
           <div class="fl">
-            <%= link_to "Cancelar", :back, class: 'btn btn-secondary' %>
+            <%= link_to t('.cancel2'), :back, class: 'btn btn-secondary' %>
           </div>
         </div>
       </div>
@@ -150,11 +150,11 @@ background-white
           <div class="fr">
             <ul class="list-buttons right">
               <li>
-                <%= f.password_field :current_password, placeholder: 'Escribe tu contraseña para guardar', required: "required", minlength: 6 %>
+                <%= f.password_field :current_password, placeholder: t('.pwd'), required: "required", minlength: 6 %>
               </li>
               <li>
                 <span class="btn btn-primary input-btn">
-                  <%= f.submit "Actualizar perfil" %>
+                  <%= f.submit t('.update') %>
                 </span>
               </li>
             </ul>
