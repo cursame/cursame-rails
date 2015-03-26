@@ -34,6 +34,6 @@
     newPostBoxContent = '<%= escape_javascript(render( partial: "comments/shared/comment_card", locals: { post_comment: @publication.publication, card_type: :post_publication, wall: @publication } ))%>';
 
   postBox.replaceWith(newPostBoxContent);
-  Notice('success', 'Tarea editada correctamente.');
+  Notice('success', 'Comentario editado correctamente.');
 
 <% end %>

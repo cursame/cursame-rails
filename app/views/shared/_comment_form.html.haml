@@ -26,6 +26,13 @@
         %li
           %span.btn.btn-primary.input-btn.activable
             = submit_tag "Comentar", class: "activable", id: 'comment-post-form'
+        %li
+          = label_tag "upload-asset", class: 'btn btn-secondary' do
+            = icon('upload-asset')
+            Archivo
+          .hide-input-file
+            = file_field_tag :filename, id: "upload-asset", class: 'upload-input', multiple: false, name: "asset[filename]"
+            = hidden_field_tag :user_id, current_user.id
   - else
     %ul.list-buttons.left
       %li
