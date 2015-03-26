@@ -148,6 +148,13 @@ class HomeController < ApplicationController
   def add_new_comment
     if user_signed_in?
 
+      if params[:asset]
+        asset = Asset.new(params[:asset])
+        asset.user_id = params[:user_id]
+        asset.save!
+        params[:comment] = asset.filename.to_s
+      end
+
       if params[:commentable_type] == "Discussion" && current_user.student? && DiscussionResponse.find_by_discussion_id_and_user_id(params[:commentable_id], current_user.id).nil?
         DiscussionResponse.create discussion_id: params[:commentable_id], user_id: current_user.id
       end
