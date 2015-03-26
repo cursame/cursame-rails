@@ -20,14 +20,14 @@
       .form-group-label
         = f.label :wufoo_roles, "Roles: "
       .form-group-main
-        .f-col.f-col-2
+        .f-col.f-col-3
           .form-unit
             = check_box_tag "wufoo_form[role_ids][]", Role.find_by_title('teacher').id
-            Maestro
-        .f-col.f-col-2
+            #{current_network.profesor_tag}
+        .f-col.f-col-3
           .form-unit
             = check_box_tag "wufoo_form[role_ids][]", Role.find_by_title('student').id
-            Alumno
+            #{current_network.student_tag}
   .new-publication-footer
     %ul.list-buttons.right.fr
       %li

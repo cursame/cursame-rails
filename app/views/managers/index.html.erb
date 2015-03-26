@@ -39,9 +39,9 @@
           Morris.Donut({
             element: 'profiles_graph',
             data: [
-              {label: "Estudiantes", value:<%= @counter_students %> },
-              {label: "Profesores", value:<%= @counter_teachers %>},
-              {label: "Administradores", value:<%= @counter_admins %> }
+              {label: "<%= current_network.students_tag %>", value:<%= @counter_students %> },
+              {label: "<%= current_network.professors_tag %>", value:<%= @counter_teachers %>},
+              {label: "<%= current_network.admin_tag %>", value:<%= @counter_admins %> }
             ]
           });
         </script>
@@ -52,14 +52,14 @@
   <div class="col col-4">
     <div class="col-inner">
       <div class="admin-chart">
-        <h5>Cursos</h5>
+        <h5><%= current_network.courses_tag %></h5>
         <div id="courses_graph" style="height:227px; weight:279px;" ></div>
 
         <script class="text/javascript">
           Morris.Donut({
             element: 'courses_graph',
             data: [
-              {label: "Cursos", value: <%= @courses.count %> },
+              {label: "<%= current_network.students_tag %>", value: <%= @courses.count %> },
               {label: "Públicos", value:<%= @publico %>},
               {label: "Privados", value:<%= @privado%> }
             ]

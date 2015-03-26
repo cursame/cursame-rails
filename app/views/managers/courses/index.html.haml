@@ -3,15 +3,15 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 Cursos
+          %h1 #{current_network.courses_tag}
         .actions
-          = link_to 'Crear curso', new_managers_course_path, class: 'btn btn-complementary'
+          = link_to "Crear #{current_network.course_tag}", new_managers_course_path, class: 'btn btn-complementary'
       %table.data-table
         %thead
           %tr
             %th Nombre
-            %th Profesores
-            %th Estudiantes
+            %th #{current_network.professors_tag}
+            %th #{current_network.students_tag}
             %th Fecha de creación
             %th Acciones
         %tbody
