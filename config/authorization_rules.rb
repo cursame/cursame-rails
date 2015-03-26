@@ -79,5 +79,6 @@ authorization do
     has_permission_on [:superadmnin], to: [:statistics, :networks, :users, :activities,
       :roles, :create_super_admin, :courses_sintetic_view_and_edit, :publicity_modul_controller,
       :instructions]
+    has_permission_on [:managers_reported_contents], :to => [ :index, :show, :destroy, :destroy_content ]
   end
 end
