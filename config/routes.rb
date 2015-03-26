@@ -21,10 +21,12 @@ Cursame30Lb::Application.routes.draw do
 
   resources :libraries do
     resources :library_directories
+    resources :library_files
   end
 
   resources :library_directories do
     resources :library_directories
+    resources :library_files
   end
 
   get "superadmnin/statistics"
