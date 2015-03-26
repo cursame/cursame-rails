@@ -14,8 +14,8 @@ $(function() {
 
     tabContent.show();
 
-    if ( tabsParent.hasClass('post-menu-tabs') ) {
-      tabContent.find(':input:enabled:visible:first').focus();
-    };
+    // if ( tabsParent.hasClass('post-menu-tabs') ) {
+    //   tabContent.find(':input:enabled:visible:first').focus();
+    // };
   });
 });
