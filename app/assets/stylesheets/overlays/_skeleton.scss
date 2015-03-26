@@ -217,6 +217,10 @@ first-time-survey-overlay
   .overlay-content {
     border-radius: 0 0 $radius $radius;
   }
+
+  @include max-screen(630px) {
+    width: 90%;
+  }
 }
 
 /* People Who Like This

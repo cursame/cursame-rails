@@ -26,6 +26,12 @@
       padding-right: 40px;
     }
 
+    .comment-content {
+      img {
+        max-width: 100% !important;
+      }
+    }
+
     .comment-upload-asset{
       position: absolute;
       top: 9px;
