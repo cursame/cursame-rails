@@ -1,5 +1,5 @@
-<h1>Ingresar a la plataforma</h1>
-<p>Acepto las normas y condiciones de esta plataforma</p></br></br>
+<h1><%=t('.sign_in')%></h1>
+<p><%=t('.accept')%></p></br></br>
 
 <center>
 <%= form_for (@NetworksUsers = NetworksUser.new), :url => create_data_networks_users_path, remote: true do |form| %>
@@ -7,8 +7,8 @@
    <%= form.hidden_field :network_id, :value => current_network.id %> 
 <div style="background-color:#eee; border-radius:15px; width:300px; height:150px;">
   <div style="padding:30px;">
-   <%= form.collection_select  :role_id, Role.find(:all), :id, :title, {:prompt => 'Selecciona un rol'}%> </br>
-   <%= form.submit "suscribirme a la red", :class => "btn"%>
+   <%= form.collection_select  :role_id, Role.find(:all), :id, :title, {:prompt => t('.select')}%> </br>
+   <%= form.submit t('.suscribe'), :class => "btn"%>
    </div>
 </div>
 <%end%>
