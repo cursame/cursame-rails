@@ -10,25 +10,25 @@
           <br>
           <br>
             <% if @request_demo %>
-              <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">Solicitud de Demo</h1><br>
-              <span>Nombre: <strong><%= @name %></strong></span> <br>
+              <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;"><%=t('.demo')%></h1><br>
+              <span><%=t('.name')%>: <strong><%= @name %></strong></span> <br>
               <span>Email: <strong><%= @email %></strong></span> <br>
-              <span>Telefono: <strong><%= @phone %></strong></span> <br>
-              <span>Extensión: <strong><%= @phone_ext %></strong></span> <br>
-              <span>Posicion: <strong><%= @position %></strong></span> <br>
-              <span>Escuela: <strong><%= @school %></strong></span> <br>
+              <span><%=t('.tel')%>: <strong><%= @phone %></strong></span> <br>
+              <span><%=t('.ext')%>: <strong><%= @phone_ext %></strong></span> <br>
+              <span><%=t('.pos')%>: <strong><%= @position %></strong></span> <br>
+              <span><%=t('.school')%>: <strong><%= @school %></strong></span> <br>
               <span>LMS: <strong><%= @lms %></strong></span> <br>
-              <span>Otro LMS: <strong><%= @other_lms %></strong></span> <br>
-              <span>Mensaje: <strong><%= @message %></strong></span> <br>
+              <span><%=t('.other')%> LMS: <strong><%= @other_lms %></strong></span> <br>
+              <span><%=t('.msg')%>: <strong><%= @message %></strong></span> <br>
               <% if @mkt_langin_id %>
                 <br>
                 <span>ID Marketing Landing Page: <strong><%= @mkt_langin_id %></strong></span>
               <% end %>
             <% else %>
-              <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">Contacto Normal</h1><br>
-              <span>Nombre: <strong><%= @name %></strong></span> <br>
+              <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;"><%=t('.contact')%></h1><br>
+              <span><%=t('.name')%>: <strong><%= @name %></strong></span> <br>
               <span>Email: <strong><%= @email %></strong></span> <br>
-              <span>Mensaje: <strong><%= @message %></strong></span>
+              <span><%=t('.msg')%>: <strong><%= @message %></strong></span>
             <% end %>
             
           <br>

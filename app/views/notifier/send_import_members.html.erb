@@ -1,4 +1,4 @@
-<h2> Curso: <%= @course.title%></h2>
+<h2> <%=t('.course')%>: <%= @course.title%></h2>
 
 <% if @errores.size != 0 then%>
    <h2>List of Errors </h2>
@@ -6,8 +6,8 @@
   </p>
   <table id ="errores">
   <tr>
-    <th>Linea</th>
-    <th>Error</th>
+    <th><%=t('.line')%></th>
+    <th><%=t('.error')%></th>
   </tr>
 
   <%@errores.each do |hash|%>
@@ -19,5 +19,5 @@
   </table>
 
 <%else%>
- No hubo errores
+ <%=t('.no_error')%>
 <%end%>
