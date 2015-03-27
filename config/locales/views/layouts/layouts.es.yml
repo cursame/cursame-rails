@@ -25,6 +25,7 @@ es:
     sessions:
       help: Ayuda
     super_admin:
+      hello: hola
       admin: administración
       activities: Actividades
       admin_net: Administrar redes
