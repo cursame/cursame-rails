@@ -1,7 +1,7 @@
 <div id="box-request-child" class="request-field" >
   <div id="request-num" class="num">a)</div>
-  <%= f.text_field :content, :placeholder=>'Ingresar respuesta', :required => "required" %>
+  <%= f.text_field :content, :placeholder=>t('.answer'), :required => "required" %>
   <%= f.check_box :correct, :class=> 'is-correct-chk' %>
-  <%= f.label :correct, "¿Es la respuesta correcta?", :class=>'is-correct-label' %>
-  <%= link_to_remove_fields "Eliminar", f, {:class=>'remove-icon'}, '#box-request'%>
+  <%= f.label :correct, t('.correct'), :class=>'is-correct-label' %>
+  <%= link_to_remove_fields t('.delete'), f, {:class=>'remove-icon'}, '#box-request'%>
 </div>
