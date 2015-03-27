@@ -26,13 +26,13 @@
     <div class="menu-user">
       <% if user_signed_in? %>
       	
-          hola<%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
+          <%=t('.hello')%><%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
           
           <span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
           <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
                  <%#=  debug current_role %>
           <% if current_role == "admin"%>
-             <%= link_to "administración", managers_wall_path%>
+             <%= link_to (t('.admin'), managers_wall_path)%>
            <%end%>
       <% else %>
           <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>
@@ -52,12 +52,12 @@
   <div class="container">
       <div class="super-admin-menu">
           <ul>
-             <li class="super-admin-list"> <%= link_to "Actividades", superadmnin_activities_path %></li>
-             <li class="super-admin-list"> <%= link_to "Administrar reders", superadmnin_networks_path%></li>
-             <li class="super-admin-list"> <%= link_to "Super admins", super_admin_create_path%></li>
-             <li class="super-admin-list"> <%= link_to "Administrador de cursos", superadmnin_courses_sintetic_view_and_edit_path%></li>
-             <li class="super-admin-list"> <%= link_to "Estadísticas", superadmnin_statistics_path%></li>
-             <li class="super-admin-list"> <%= link_to "Usuarios", superadmnin_users_path%></li>
+             <li class="super-admin-list"> <%= link_to t('.activities'), superadmnin_activities_path %></li>
+             <li class="super-admin-list"> <%= link_to t('.admin_net'), superadmnin_networks_path%></li>
+             <li class="super-admin-list"> <%= link_to t('.super_adm'), super_admin_create_path%></li>
+             <li class="super-admin-list"> <%= link_to t('.course_admin'), superadmnin_courses_sintetic_view_and_edit_path%></li>
+             <li class="super-admin-list"> <%= link_to t('.statics'), superadmnin_statistics_path%></li>
+             <li class="super-admin-list"> <%= link_to t('.usr'), superadmnin_users_path%></li>
              
           </ul>
       </div>

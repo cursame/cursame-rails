@@ -22,3 +22,13 @@ es:
       fourth_column:
         title1: Derechos reservados © 2014 Cúrsame
         title2: Ver la página en ingles
+    sessions:
+      help: Ayuda
+    super_admin:
+      admin: administración
+      activities: Actividades
+      admin_net: Administrar redes
+      super_adm: Super admins
+      course_admin: Administrador de cursos
+      statics: Estadísticas
+      usr: Usuarios
