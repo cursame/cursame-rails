@@ -6,8 +6,8 @@ $('.container').css('background','#fff');
 </script>
 <center>
 <div class="alert_method">
-     <p>Se ha encontrado que usted no es miembro de la red a al que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá loguearse.</p></br></br>
-     <%= link_to 'Ir a la red a la que pertenezco', "http://#{current_user.subdomain}.#{links}", :class => 'network_button_aler_method', :id => 'kokola'%>
+     <p><%=t('.text1')%></p></br></br>
+     <%= link_to t('.net'), "http://#{current_user.subdomain}.#{links}", :class => 'network_button_aler_method', :id => 'kokola'%>
 </div>
 </center>
 

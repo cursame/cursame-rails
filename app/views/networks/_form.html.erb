@@ -13,7 +13,7 @@
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :name, 'Nombre:' %>
+      <%= f.label :name, t('.name') + ':' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -24,7 +24,7 @@
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :subdomain, 'Subdominio:' %>
+      <%= f.label :subdomain, t('.subdomain') + ':' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -35,7 +35,7 @@
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :population, 'Población:' %>
+      <%= f.label :population, t('.pop') + ':' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -46,7 +46,7 @@
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :welcom_message, 'Mensaje de bienvenida:' %>
+      <%= f.label :welcom_message, t('.msg') + ':' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -58,7 +58,7 @@
   <% unless @network.free %>
     <div class="form-group label-on-top l-label">
       <div class="form-group-label">
-        <%= f.label :image_front, 'Imagen de inicio de sesión:' %>
+        <%= f.label :image_front, t('.icon') + ':' %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -71,7 +71,7 @@
 
     <div class="form-group label-on-top l-label">
       <div class="form-group-label">
-        <%= f.label :logo, 'Logo de la institución:' %>
+        <%= f.label :logo, t('.icon2') + ':' %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -86,7 +86,7 @@
 
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
-      <%= f.label :titles, 'Etiquetas:' %>
+      <%= f.label :titles, t('.label') + ':' %>
     </div>
     <div class="form-group-main">
       <div class="form-unit">
@@ -100,7 +100,7 @@
       <div class="form-unit">
         <%= f.label :public_register do %>
           <%= f.check_box :public_register %>
-          Reestablecer contraseña al importar los usuarios
+          <%=t('.pwd')%>
         <% end %>
       </div>
     </div>
@@ -111,14 +111,14 @@
       <div class="form-unit">
         <%= f.label :register_form do %>
           <%= f.check_box :register_form %>
-          Habilitar formulario de registro publico.
+          <%=t('.form')%>
         <% end %>
       </div>
     </div>
   </div>
 
   <span class="btn btn-primary input-btn btn-medium activable">
-    <%= f.submit 'Guardar cambios' %>
+    <%= f.submit t('.save') %>
   </span>
 
 <% end %>
