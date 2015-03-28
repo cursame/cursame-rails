@@ -1,6 +1,6 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon 'activity-discussion' %> Discusiones</h4>
+    <h4><%= icon 'activity-discussion' %> <%=t('.discuss')%></h4>
     <% if member.course.cursame_criteria %>
       <span class="meta-info"> 
         <%= "Porcentaje: #{ member.cursame_discussions_percentage } %" %>
@@ -11,8 +11,8 @@
     <table border="1" cellpadding="3" cellspacing="3">
       <thead>
         <tr>
-          <th colspan="2">Discusión</th>
-          <th>Calificación</th>
+          <th colspan="2"><%=t('.discuss2')%></th>
+          <th><%=t('.score')%>Calificación</th>
         </tr>
       </thead>
       <tbody>
@@ -23,9 +23,9 @@
             </td>
             <td style="width: 120px;">
               <% if discussion_evaluation[:discussion_response].nil? %>
-                Sin participación
+                <%=t('.no_part')%>
               <% elsif discussion_evaluation[:discussion_response].grade.nil? %>
-                No calificada
+                <%=t('.no_score')%>
               <% else %>
                 <span class="number"><%= evaluation_score discussion_evaluation[:discussion_response].grade.score %></span>
               <% end %>
@@ -37,7 +37,7 @@
     <div class="course-califications-section-footer">
       <div class="cali-section">
         <div class="title">
-          <h5>Calificación promedio en discusiones:</h5>
+          <h5><%=t('.avg_score')%>:</h5>
         </div>
         <span class="score">
           <%= evaluation_score member.discussions_average %>
@@ -46,7 +46,7 @@
     </div>
   <% else %>
     <div class="no-califications">
-      <h6>Aún no hay discusiones evaluables en este curso.</h6>
+      <h6><%=t('.no_discuss')%></h6>
     </div>
   <% end %>
 </div>

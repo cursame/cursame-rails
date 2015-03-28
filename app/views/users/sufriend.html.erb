@@ -1,11 +1,11 @@
 <% if @friend.status_friendship == "2"%>
 <%else%>
-<%= image_tag(@user.avatar.mini)%> Nombre:<%= @user.name %> Email:<%= @user.email %>
+<%= image_tag(@user.avatar.mini)%> <%=t('.name')%>:<%= @user.name %> Email:<%= @user.email %>
 <div id="add_friend"></div>
 <div id= 'form-add-user-friend-new'>
 <%= form_for @friend, :url => update_user_friends_path, :remote => true do |rone| %>
     <%= rone.hidden_field :status_friendship, :value => "2"%>
-   <%= rone.submit "Aceptar como amigo", :class => "btn"%>
+   <%= rone.submit t('.accept'), :class => "btn"%>
 <%end%>
 </div>
 <%end%>

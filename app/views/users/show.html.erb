@@ -16,8 +16,8 @@
           </div>
         <% else %>
           <div class="no-content-section">
-            <h4>No eres amigo del usuario <%= @user_l.name%></h4>
-            <p>Agrégalo para poder postear en su muro.</p>
+            <h4><%=t('.no_friend')%> <%= @user_l.name%></h4>
+            <p><%=t('.add')%></p>
           </div>
         <% end %>
       </div>

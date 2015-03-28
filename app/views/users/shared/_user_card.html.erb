@@ -23,13 +23,13 @@
                 <% if f.friends?(current_user) %>
                   <div class="dropdown-wrap">
                     <div class="dropdown-pull btn btn-secondary btn-small">
-                      <%= icon 'check' %> Amigos
+                      <%= icon 'check' %> <%=t('.friends')%>
                     </div>
                     <div class="dropdown-v left" style="left: -5px;">
                       <i class="tip"></i>
                       <ul>
                         <li>
-                          <%= link_to "Eliminar de mis amigos", friendships_destroy_friend_path(f.id) %>
+                          <%= link_to (t('.delete'), friendships_destroy_friend_path(f.id)) %>
                         </li>
                       </ul>
                     </div>
@@ -40,13 +40,13 @@
                     <% when current_user #El usuario envio la solicitud %> 
                       <div class="dropdown-wrap">
                         <div class="dropdown-pull btn btn-secondary btn-small">
-                          Solicitud enviada <%= icon 'drop-arrow' %>
+                          <%=t('.send_request')%> <%= icon 'drop-arrow' %>
                         </div>
                         <div class="dropdown-v left" style="left: -5px;">
                           <i class="tip"></i>
                           <ul>
                             <li>
-                              <%= link_to "Cancelar solicitud de amistad", friendships_destroy_friend_path(f.id) %>
+                              <%= link_to (t('.cancel'), friendships_destroy_friend_path(f.id)) %>
                             </li>
                           </ul>
                         </div>
@@ -55,16 +55,16 @@
                     <% when f #Tiene una solicitud pendiente a responder %>
                       <div class="dropdown-wrap">
                         <div class="dropdown-pull btn btn-secondary btn-small">
-                          Responder solicitud de amistad <%= icon 'drop-arrow' %>
+                          <%=t('.respond')%> <%= icon 'drop-arrow' %>
                         </div>
                         <div class="dropdown-v left" style="left: -5px;">
                           <i class="tip"></i>
                           <ul>
                             <li>
-                              <%= link_to "Confirmar solicitud de amistad", friendships_update_friend_path(f.id), remote: true %>
+                              <%= link_to (t('.confirm'), friendships_update_friend_path(f.id), remote: true) %>
                             </li>
                             <li>
-                              <%= link_to "Eliminar solicitud de amistad", friendships_destroy_friend_path(f.id) %>
+                              <%= link_to (t('.delete2'), friendships_destroy_friend_path(f.id)) %>
                             </li>
                           </ul>
                         </div>
@@ -74,7 +74,7 @@
                 <%end%>
               <% else %>
                 <div id="add_friend<%=f.id%>">
-                 <%= link_to "Agregar a mis amigos", friendships_create_friend_path(f.id), class: "btn btn-small btn-primary ", remote: true %>
+                 <%= link_to (t('.add_friends'), friendships_create_friend_path(f.id), class: "btn btn-small btn-primary ", remote: true) %>
                 </div>
               <% end %>
             </div>
@@ -84,9 +84,9 @@
         <div class="user-info">
           <span class="user-role">
             <% user_role = f.roles.first.title %>
-            <%= "Profesor" if user_role === 'teacher' %>
-            <%= "Estudiante" if user_role === 'student' %>
-            <%= "Administrador" if user_role === 'admin' %>
+            <%= t('.teacher') if user_role === 'teacher' %>
+            <%= t('.student') if user_role === 'student' %>
+            <%= t('.admin') if user_role === 'admin' %>
           </span>
         </div>
       </div>

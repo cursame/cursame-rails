@@ -1,9 +1,9 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon 'activity-survey' %> Cuestionarios</h4>
+    <h4><%= icon 'activity-survey' %> <%=t('.quest')%></h4>
     <% if member.course.cursame_criteria %>
       <span class="meta-info"> 
-        <%= "Porcentaje: #{ member.cursame_surveys_percentage } %" %>
+        <%= t('.avg') + ':' + member.cursame_surveys_percentage + '%' %>
       </span>
     <% end %>
   </div>
@@ -11,8 +11,8 @@
     <table border="1" cellpadding="3" cellspacing="3">
       <thead>
         <tr>
-          <th colspan="2">Examen</th>
-          <th>Calificación</th>
+          <th colspan="2"><%=t('.exam')%></th>
+          <th><%=t('.score')%></th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,7 @@
               <% unless survey_evaluation[:user_survey].nil? || survey_evaluation[:user_survey].grade.nil? %>
                 <span class="number"><%= evaluation_score survey_evaluation[:user_survey].grade.score %> </span>
               <% else %>
-                No resuelto
+                <%=t('.no_answered')%>
               <% end %>
             </td>
           </tr>
@@ -34,7 +34,7 @@
     </table>
     <div class="course-califications-section-footer">
       <div class="title">
-        <h5>Calificación promedio en cuestionarios:</h5>
+        <h5><%=t('.quest2')%>:</h5>
       </div>
       <span class="score">
         <%= evaluation_score member.surveys_average %>
@@ -42,7 +42,7 @@
     </div>
   <% else %>
     <div class="no-califications">
-      <h6>Aún no hay cuestionarios en este curso.</h6>
+      <h6><%=t('.quest3')%></h6>
     </div>
   <% end %>
 </div>

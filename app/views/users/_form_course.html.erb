@@ -1,16 +1,16 @@
 <div id="return-course" class="return-course-icon"></div>
-<div class="title">Crear nuevo <%= current_network.course_tag %></div>
-<div class="ui-widget-overlay">Cargando ...</div>
+<div class="title"><%=t('.create')%> <%= current_network.course_tag %></div>
+<div class="ui-widget-overlay"><%=t('.load')%></div>
 <%= javascript_include_tag('courses_validate_form.js') %>
 
 <%= form_for(Course.new, :remote => true, :html => { :class => "default-form course-form"}) do |f|  %>
     <%= f.hidden_field :network_id, :value => current_network.id%>
-    <%= f.text_field :title, :placeholder=>'Nombre' %>
-    <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>'Descripción ', :class => 'border_for_text' %>
-    <%= f.text_field :init_date, :placeholder=>'Fecha inicio', :class=>"date-input" %>
-    <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
-    <%= f.submit "Crear" , :class=>'input-button active', :id => 'create_course_form'%>
-    <%= button_tag "Cancel", :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
+    <%= f.text_field :title, :placeholder=>t('.name') %>
+    <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>t('.descrip'), :class => 'border_for_text' %>
+    <%= f.text_field :init_date, :placeholder=>t('.init_date'), :class=>"date-input" %>
+    <%= f.select :public_status, options_for_select([[t('.private'), 'Private'],[t('.public'), 'public']])%>
+    <%= f.submit t('.create2') , :class=>'input-button active', :id => 'create_course_form'%>
+    <%= button_tag t('.cancel'), :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
     <div style="clear: both"></div>
 <% end %>
 

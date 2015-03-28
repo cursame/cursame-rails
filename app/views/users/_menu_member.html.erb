@@ -1,14 +1,14 @@
 
-<b><%= 'mis redes'%></b></br>
+<b><%= t('.net')%></b></br>
 <% if @n == "nil"%>
 <%= link_to "#{@n.name}", "http://#{@n.subdomain}.#{links}/"%>
 </br>
 <%else%>
-<%= @notice %> <%= link_to "inscribirse a una red", networks_path %> </br>
+<%= @notice %> <%= link_to t('.enroll'), networks_path %> </br>
 <%end%>
 <% if @user == "nil" %>
 <%else%>
-<b><%= 'mis amigos'%></b> </br>
+<b><%= t('.friends')%></b> </br>
 <%case%>
        <%when @pending_relarionships_user_two != nil && @pending_relarionships_user_two.friend_two  == @user.id  %>
              <%= link_to image_tag(@user_one_two.avatar.mini), show_user_path(@user_one_two.personal_url)%> </br>
