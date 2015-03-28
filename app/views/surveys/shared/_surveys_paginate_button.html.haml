@@ -4,4 +4,4 @@
       .col-inner
         #pageless-loader
           %img{src: "/assets/load.gif"}/
-        = link_to 'Cargar más...', surveys_paginate_ajax_path(page: page, type: type, course: course), remote: true, class: 'btn btn-secondary btn-full'
+        = link_to t('.load'), surveys_paginate_ajax_path(page: page, type: type, course: course), remote: true, class: 'btn btn-secondary btn-full'

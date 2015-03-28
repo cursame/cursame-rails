@@ -6,6 +6,6 @@
       <%# @questions = @survey.questions %>
       <%= render :partial => "/surveys/response_fields_tpl", :locals => { :questions =>  survey.questions} %>
     </div>
-    <%= button_tag "Cancelar", :type => 'button', :class => 'input-button', :id => 'cancel-post-form' %>
-    <%= f.submit "Contestar", :class => "btn btn-primary", :id => 'survey' %>
+    <%= button_tag t('.cancel'), :type => 'button', :class => 'input-button', :id => 'cancel-post-form' %>
+    <%= f.submit t('.answer'), :class => "btn btn-primary", :id => 'survey' %>
 <% end %>

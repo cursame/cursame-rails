@@ -27,15 +27,15 @@
         %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
       %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format survey.end_date}".html_safe
       - unless card_type == :standalone
-        = link_to 'Ver Cuestionario', survey_modal_path(survey), remote: true, class: "btn btn-small btn-transparent activable"
+        = link_to (t('.quest'), survey_modal_path(survey), remote: true, class: "btn btn-small btn-transparent activable")
         = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: survey }
     - if card_type == :standalone
       .post-box-footer
         .post-box-actions
-          = link_to 'Ver Cuestionario', survey_modal_path(survey), remote: true, class: "btn btn-small btn-secondary activable"
+          = link_to (t('.quest'), survey_modal_path(survey), remote: true, class: "btn btn-small btn-secondary activable")
     - if card_type == :post_publication && survey.owner?(current_role, current_user)
       .post-box-edit
-        %h5 Editar Cuestionario
+        %h5= t('.edit')
         .post-edit-form-js
     - if card_type == :post_publication
       .post-box-under-container

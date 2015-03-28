@@ -6,7 +6,7 @@
           .section-header
             .section-header-main
               .section-title
-                %h5 Cuestionarios
+                %h5= t('.quest')
                 = link_to deliveries_course_path(course) do
                   %h1= truncate(course.title, :omission => "...", :length => 30)
               - unless current_user.courses.empty?
@@ -15,5 +15,5 @@
             .page-sub-navigation
               - action = params[:action]
               %ul
-                %li= link_to "Responder", surveys_course_path(course), class: active_class('surveys_course')
-                %li= link_to "Pasados", surveys_course_lapsed_path(course), class: active_class('surveys_course_lapsed')
+                %li= link_to t('.response'), surveys_course_path(course), class: active_class('surveys_course')
+                %li= link_to t('.past'), surveys_course_lapsed_path(course), class: active_class('surveys_course_lapsed')

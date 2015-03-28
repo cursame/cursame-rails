@@ -9,7 +9,7 @@
             <%= render :partial => "/shared/publications", :locals => {:wall => @wall, :visible_for => "network"} %>
           <% else %>
             <div class="no-content-section">
-              <h4>No tienes cuestionarios por contestar.</h4>
+              <h4><%=t('.no_quest')%></h4>
             </div>
           <% end %>
         </div>

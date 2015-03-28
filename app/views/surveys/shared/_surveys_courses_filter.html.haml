@@ -1,5 +1,5 @@
-%span.meta-info Filtrar: &nbsp;
+%span.meta-info= t('.filter') + ':' + '&nbsp;'
 %select{ class: "select-redirect", style: "width: 180px;"}
-  %option Selecciona un curso
+  %option= t('.select')
   - student_courses.each do |course|
     %option{ value: surveys_course_path(course) }= course.title
