@@ -4,17 +4,17 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 Usuarios
+          %h1= t('.usr')
         .actions
-          = link_to 'Crear usuario', new_managers_user_path, class: 'btn btn-complementary'
+          = link_to t('.create'), new_managers_user_path, class: 'btn btn-complementary'
       %table.data-table
         %thead
           %tr
-            %th Nombre
-            %th Correo electrónico
-            %th Fecha de registro
-            %th Tipo de usuario
-            %th Acciones
+            %th= t('.name')
+            %th= t('.email')
+            %th= t('.enroll')
+            %th= t('.type')
+            %th= t('.actions')
         %tbody
           - @users.each do |user| 
             - permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
@@ -39,8 +39,8 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
-                      %li= link_to 'Ver', managers_user_path(user)
-                      %li= link_to 'Editar', edit_managers_user_path(user)
-                      %li= link_to 'Borrar', managers_user_path(user), method: :delete, confirm: 'Estas seguro de borrar este usuario.'
+                      %li= link_to (t('.view'), managers_user_path(user))
+                      %li= link_to (t('.edit'), edit_managers_user_path(user))
+                      %li= link_to (t('.delete'), managers_user_path(user), method: :delete, confirm: t('.sure'))
       .digg_pagination.paginator
         = will_paginate @users

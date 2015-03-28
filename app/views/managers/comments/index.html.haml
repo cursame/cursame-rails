@@ -3,16 +3,16 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 Comentarios
+          %h1= t('.comments1')
       %table.data-table
         %thead
           %tr
             %th ID
-            %th Comentario
-            %th Comentario en
-            %th Me gusta
-            %th Fecha de creación
-            %th Acciones
+            %th= t('.comment')
+            %th= t('.comment_in')
+            %th= t('.like')
+            %th= t('.create_date')
+            %th= t('.actions')
         %tbody
           - @comments.each do |comment|
             %tr
@@ -22,24 +22,24 @@
                 - unless comment.user.nil?
                   = link_to comment.user.name, managers_user_path(comment.user)
                 - else
-                  = "No tiene usuario"
+                  = t('.no_user')
                 %p= comment.comment
               %td
                 - case comment.commentable_type
                   - when 'Network'
-                    Publico
+                    = t('.public')
                   - when 'User'
-                    Usuario
+                    = t('.user')
                   - when 'Course'
-                    Curso
+                    = t('.course')
                   - when 'Comment'
-                    Comentario
+                    = t('.comment')
                   - when 'Discussion'
-                    Discusión
+                    = t('.discuss')
                   - when 'Survey'
-                    Cuestionario
+                    = t('.quest')
                   - when 'Delivery'
-                    Tarea
+                    = t('.hmwrk')
               %td= comment.likes.count
               %td= comment.created_at
               %td
@@ -49,8 +49,8 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
-                      %li= link_to 'Ver', managers_comment_path(comment)
-                      %li= link_to 'Borrar', managers_comment_path(comment), method: :delete, confirm: 'Estas seguro de borrar este comentario.'
+                      %li= link_to (t('.view'), managers_comment_path(comment))
+                      %li= link_to (t('.delete'), managers_comment_path(comment), method: :delete, confirm: t('.confirm'))
                       
       .digg_pagination.paginator
         = will_paginate @users

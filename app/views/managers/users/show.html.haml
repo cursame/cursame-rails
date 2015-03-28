@@ -5,9 +5,9 @@
       .col.col-12.alpha.omega
         .col-inner
           %ul.list-buttons.left
-            %li= link_to '&#8592; Regresar'.html_safe, managers_users_path, class: 'btn btn-secondary'
-            %li= link_to 'Editar', edit_managers_user_path(@user), class: 'btn btn-primary'
-            %li= link_to 'Borrar', managers_user_path(@user), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este usuario.'
+            %li= link_to (t('.return').html_safe, managers_users_path, class: 'btn btn-secondary')
+            %li= link_to (t('.edit'), edit_managers_user_path(@user), class: 'btn btn-primary')
+            %li= link_to (t('.delete'), managers_user_path(@user), class: 'btn btn-primary', method: :delete, confirm: t('.sure'))
   .cols-12
     .col.col-12.alpha.omega
       .col-inner
@@ -19,7 +19,7 @@
   .cols-12
     .col.col-8.alpha.omega
       .col-inner
-        %span.meta-info Correo electrónico
+        %span.meta-info= t('.email')
         %p= @user.email
 
         - permissioning = Permissioning.find_by_user_id_and_network_id(@user.id, current_network.id)
@@ -32,34 +32,34 @@
         - when 'supervisor' then role_name = 'Supervisor'
 
         %br/
-        %span.meta-info Tipo de usuario
+        %span.meta-info= t('.type')
         %p= role_name
 
         %br/
-        %span.meta-info Biografia
-        %p= @user.description? ? @user.description : "Si información"
+        %span.meta-info= t('.bio')
+        %p= @user.description? ? @user.description : t('.info')
 
         %br/
         %span.meta-info Facebook
-        %p= @user.facebook_link? ? @user.facebook_link : "Si información"
+        %p= @user.facebook_link? ? @user.facebook_link : t('.info')
 
         %br/
         %span.meta-info Twitter
-        %p= @user.twitter_link? ? @user.twitter_link : "Si información"
+        %p= @user.twitter_link? ? @user.twitter_link : t('.info')
 
         %br/
-        %span.meta-info Ultimo inicio de sesión
+        %span.meta-info= t('.last')
         %p= @user.last_sign_in_at
 
         %br/
         
         - if @user.student?
-          %span.meta-info Tareas entregadas
+          %span.meta-info= t('.deliveries') Tareas entregadas
           %p= @user.assignments.count
 
           %br/
-          %span.meta-info Cuestionarios contestados
+          %span.meta-info= t('.quest') Cuestionarios contestados
           %p= @user.user_surveys.count
 
           %br/
-          %span.meta-info Participación en discusiones evaluables
+          %span.meta-info= t('.eval')Participación en discusiones evaluables

@@ -5,14 +5,15 @@
       .col-inner
         .managers-section-header
           .title
-            %h1 Importar Usuarios
-            %p Importa los usuarios de tu comunidad desde una base de datos.
-        %p Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios. 
+            %h1= t('.import2')
+            %p= t('.import3')
+        %p= t('.import4') 
         %ul
-          %li • El role puede ser estudiante o maestro.
-          %li • El email debe de ser el email del usuario.
-        %a{:href => "/plantillas/usuarios_plantilla.csv"} Descargar archivo de usuarios
-        = "NO SE ENCONTRO UN ARCHIVO" if @noFile
+          %li= '•' + t('.text1')
+          %li= '•' + t('.text2')
+        %a{:href => "/plantillas/usuarios_plantilla.csv"} 
+          = t('.download')
+        = t('.no_find') if @noFile
         %br/
         %br/
         
@@ -20,4 +21,4 @@
           %label.fileContainer
             = file_field_tag :file
             = hidden_field_tag 'domain', request.domain
-            = submit_tag "Importar archivo de usuarios"
+            = submit_tag t('.import5')

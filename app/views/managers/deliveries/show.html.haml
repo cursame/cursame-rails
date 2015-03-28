@@ -3,8 +3,8 @@
     .col.col-12.alpha.omega
       .col-inner
         %ul.list-buttons.left
-          %li= link_to '&#8592; Regresar'.html_safe, managers_deliveries_path, class: 'btn btn-secondary'
-          %li= link_to 'Borrar', managers_delivery_path(@delivery), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este cuestionario.'
+          %li= link_to (t('.return').html_safe, managers_deliveries_path, class: 'btn btn-secondary')
+          %li= link_to (t('.delete'), managers_delivery_path(@delivery), class: 'btn btn-primary', method: :delete, confirm: t('.sure'))
 .cols-12
   .col.col-12.alpha.omega
     .col-inner
@@ -17,25 +17,25 @@
   .col.col-8.alpha.omega
     .col-inner
 
-      %span.meta-info Fecha de Creacíon
+      %span.meta-info= t('.init_date')
       %p= @delivery.created_at
 
       %br/
-      %span.meta-info Fecha de finalización
+      %span.meta-info= t('.end_date')
       %p= @delivery.end_date
 
       %br/
-      %span.meta-info Estado
-      %p= @delivery.state == "published" ? "Publicada" : "Sin Publicar"
+      %span.meta-info= t('.state')
+      %p= @delivery.state == "published" ? t('.published') : t('.unpublished')
 
       %br/
-      %span.meta-info Descripción
+      %span.meta-info= t('.descrip')
       %p= @delivery.description
 
       %br/
-      %span.meta-info Curso
+      %span.meta-info= t('.course')
       %p= @delivery.courses.first.title
 
       %br/
-      %span.meta-info Maestro
+      %span.meta-info= t('.teacher')
       %p= @delivery.user

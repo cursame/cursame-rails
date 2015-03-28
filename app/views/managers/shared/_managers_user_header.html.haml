@@ -8,11 +8,12 @@
             = link_to managers_path do
               = icon 'cursame-logo-white'
           .manager-label
-            %span Administrador
+            %span= t('.admin')
           .manager-header-actions
             %ul
               %li
-                %a{:href => "http://myaccount.zendesk.com/account/dropboxes/2830039812", :onclick => "script: Zenbox.show(); return false;"} Ayuda
+                %a{:href => "http://myaccount.zendesk.com/account/dropboxes/2830039812", :onclick => "script: Zenbox.show(); return false;"} 
+                  = t('.help')
               %li
                 .dropdown-wrap
                   .dropdown-pull
@@ -21,8 +22,8 @@
                     %i.tip
                     %ul
                       %li
-                        = link_to "Salir del aministrador", show_user_path(current_user.personal_url)
+                        = link_to (t('.exit'), show_user_path(current_user.personal_url))
                       %li
-                        = link_to "Editar perfil", edit_user_registration_path
+                        = link_to (t('.edit'), edit_user_registration_path)
                       %li
-                        = link_to "Cerrar sesión", sign_out_path, method: :delete
+                        = link_to (t('.log_out'), sign_out_path, method: :delete)

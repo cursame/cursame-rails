@@ -5,41 +5,41 @@
 = form_for [:managers, course], html: { id: 'create-course-form' } do |f|
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :title, 'Nombre:'
+      = f.label :title, t('.name') + ':'
     .form-group-main
       .form-unit
-        = f.text_field :title, placeholder: "Ejemplo: Matemáticas I", required: true, autocomplete: "off"
+        = f.text_field :title, placeholder: t('.example') + ": " + t('.example2'), required: true, autocomplete: "off"
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :silabus, 'Descripción:'
+      = f.label :silabus, t('.descrip') + ':'
     .form-group-main
       .form-unit
-        = f.text_area :silabus, placeholder: "Descripción", required: true, autocomplete: "off", rows: 7
+        = f.text_area :silabus, placeholder: t('.descrip'), required: true, autocomplete: "off", rows: 7
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :public_status, "Privacidad"
+      = f.label :public_status, t('.privacy')
     .form-group-main
       .form-unit
-        = f.select :public_status, options_for_select([['Público','public'],['Privado','Private']])
+        = f.select :public_status, options_for_select([[t('.public'),'public'],[t('.private'),'Private']])
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :init_date, "Fecha de Inicio"
+      = f.label :init_date, t('.init_date')
     .form-group-main
       .form-unit
-        = f.text_field :init_date, :placeholder => 'Fecha inicio', :class => "date-picker", :value => (f.object.init_date ? f.object.init_date.strftime('%m/%d/%Y') : f.object.init_date), :required => "required", :autocomplete => "off"
+        = f.text_field :init_date, :placeholder => t('.init_date2'), :class => "date-picker", :value => (f.object.init_date ? f.object.init_date.strftime('%m/%d/%Y') : f.object.init_date), :required => "required", :autocomplete => "off"
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :admins, 'Profesores:'
+      = f.label :admins, t('.teachers') + ':'
     .form-group-main
       .form-unit
 
         .table-box#course-teachers-list
           .table-box-header
-            = text_field_tag 'teachers-search', '', id: 'teachers-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'teachers' }
+            = text_field_tag 'teachers-search', '', id: 'teachers-search-input', placeholder: t('.last_name'), data: { role: 'teachers' }
             .spinner-dark
           .table-box-body.scrollbar
             .users-list
@@ -55,19 +55,19 @@
                         = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
               - if course.new_record? || course.teachers.blank?
                 .inner-no-content
-                  %h5 Agrega profesores al curso.
-                  %p Busca profesores para administrar el curso.
+                  %h5= t('.add')
+                  %p= t('.find')
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :members, 'Alumnos:'
+      = f.label :members, t('.students') + ':'
     .form-group-main
       .form-unit
         = hidden_field_tag "check_members", true
 
         .table-box#course-students-list
           .table-box-header
-            = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: 'Escribe un nombre o apellido.', data: { role: 'students' }
+            = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: t('.write_name'), data: { role: 'students' }
             .spinner-dark
           .table-box-body.scrollbar
             .users-list
@@ -83,13 +83,13 @@
                         = check_box_tag("students["+student.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
               - if course.new_record? || course.students.blank?
                 .inner-no-content
-                  %h5 Inscribe estudiantes a tu curso.
-                  %p Busca estudiantes para unirlos automaticamente al curso.
+                  %h5= t('.enroll')
+                  %p= t('.find2')
 
   %br/
   %br/
   %ul.list-buttons.left
-    %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
+    %li= link_to t('.cancel'), :back, class: 'btn btn-medium btn-secondary'
     %li
       %span.btn.btn-primary.input-btn.btn-medium.activable
-        = f.submit ( course.new_record? ? 'Crear Curso' : 'Guardar cambios')
+        = f.submit ( course.new_record? ? t('.create') : t('.save'))

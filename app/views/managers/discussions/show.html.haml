@@ -3,8 +3,8 @@
     .col.col-12.alpha.omega
       .col-inner
         %ul.list-buttons.left
-          %li= link_to '&#8592; Regresar'.html_safe, managers_discussions_path, class: 'btn btn-secondary'
-          %li= link_to 'Borrar', managers_discussion_path(@discussion), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar esta discusión.'
+          %li= link_to (t('.return').html_safe, managers_discussions_path, class: 'btn btn-secondary')
+          %li= link_to (t('.delete'), managers_discussion_path(@discussion), class: 'btn btn-primary', method: :delete, confirm: t('.sure'))
 .cols-12
   .col.col-12.alpha.omega
     .col-inner
@@ -17,29 +17,29 @@
   .col.col-6.alpha.omega
     .col-inner
 
-      %span.meta-info Fecha de Creacíon
+      %span.meta-info= t('.init_date')
       %p= @discussion.created_at
       
       %br/
-      %span.meta-info Estado
-      %p= @discussion.state == "published" ? "Publicada" : "Sin Publicar"
+      %span.meta-info= t('.state')
+      %p= @discussion.state == "published" ? t('.published') : t('.unpublished')
 
       %br/
-      %span.meta-info Tipo
-      %p= @discussion.evaluable ? "Evaluable" : "No Evaluable"
+      %span.meta-info= t('.type')
+      %p= @discussion.evaluable ? t('.eval') : t('.non_eval')
 
       %br/
-      %span.meta-info Descripción
+      %span.meta-info= t('.descrip')
       %p= @discussion.description
 
       %br/
-      %span.meta-info Curso
+      %span.meta-info= t('.course')
       %p
         - unless @discussion.courses.empty?
           = link_to @discussion.courses.first.title, managers_course_path(@discussion.courses.first)
         - else
-          Publica
+          = t('.public')
 
       %br/
-      %span.meta-info Maestro
+      %span.meta-info= t('.teacher')
       %p= @discussion.user
