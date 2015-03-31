@@ -527,7 +527,7 @@ body {
     margin-top: 5px;
   }
 
-  @include max-screen(480px) {
+  @include max-screen(630px) {
     .section-icon {
       display: none;
     }
@@ -535,12 +535,6 @@ body {
     .section-header-title .section-title, .section-header-title.w-subnav .section-title {
       padding-top: 0 !important;
       margin-left: 0;
-    }
-  }
-
-  @include max-screen(768px) {
-    .section-header-actions {
-      display: none;
     }
   }
 }

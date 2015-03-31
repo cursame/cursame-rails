@@ -5,12 +5,29 @@ Cursame30Lb::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  match '/managers/reported_content/destroy_content/:id', to: 'managers/reported_contents#destroy_content', as: :managers_destroy_content
+  namespace :managers do
+    resources :reported_contents
+  end
+
   resources :usernotificationings
   resources :members_in_groups
   resources :groups
   resources :libraries
   resources :polls
   resources :messages
+  resources :wufoo_forms, path: '/forms'
+  resources :library_files
+
+  resources :libraries do
+    resources :library_directories
+    resources :library_files
+  end
+
+  resources :library_directories do
+    resources :library_directories
+    resources :library_files
+  end
 
   get "superadmnin/statistics"
   get "superadmnin/networks"
@@ -174,6 +191,9 @@ Cursame30Lb::Application.routes.draw do
   match '/modals/delivery/:id', to: 'modal#delivery_modal', :as => :delivery_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/wufoo_form/:id', to: 'modal#wufoo_form_modal', :as => :wufoo_form_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/reported_content/:id', to: 'modal#reported_content_modal', :as => :reported_content_modal, :via => [:get], :defaults => { :format => 'js' }
 
   # Calificaciones
   get "/califications", :to => "califications#index", :as =>  :califications
@@ -492,6 +512,8 @@ Cursame30Lb::Application.routes.draw do
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
 
   get "/update_wufoo_form", :to => "home#update_wufoo_form", :as => :update_wufoo_form
+  get "/wufoo_forms/:id/entry", to: 'wufoo_forms#entry', :as => :wufoo_form_entry
+
   #--------------
   #NOTIFICATIONS
   #---------------
@@ -591,5 +613,9 @@ Cursame30Lb::Application.routes.draw do
   match '/robots' => 'robots#robots'
 
   root :to => 'home#index'
+
+  #create reported_content
+  # match "/reported_contents/create" => "reported_contents#create", :as => "reported_content_create", :via => [:post], :defaults => { :format => 'js' }
+  resources :reported_contents
 
 end

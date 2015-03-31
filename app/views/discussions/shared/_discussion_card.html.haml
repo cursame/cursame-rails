@@ -6,12 +6,11 @@
 
 .post-box.academic.discussion{id: discussion.id, class: card_type, data: data_attributes }
   - if wall
-    - if discussion.courses.count > 0
-      - if discussion.courses.first.owner?(current_role, current_user) or discussion.owner?(current_role, current_user)
-        = render partial: 'shared/posts/post_admin_actions', locals: { post: discussion, wall: wall }
+    - course_owner = discussion.courses.count > 0 ? discussion.courses.first.owner?(current_role, current_user) : false
+    - if course_owner or discussion.owner?(current_role, current_user)
+      = render partial: 'shared/posts/post_admin_actions', locals: { post: discussion, wall: wall }
     - else
-      - if discussion.owner?(current_role, current_user)
-        = render partial: 'shared/posts/post_admin_actions', locals: { post: discussion, wall: wall }
+      = render partial: 'shared/posts/post_user_actions', locals: { post: discussion, wall: wall }
   .post-box-main
     - unless card_type == :standalone
       .post-box-main-author

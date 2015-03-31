@@ -1,0 +1,8 @@
+.section-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          = render partial: 'library_directories/shared/header'
+
+= render partial: 'library_directories/shared/list', locals: { files: @directory.library_files, directories: @directory.library_directories }

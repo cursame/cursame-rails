@@ -18,16 +18,18 @@
           <% end %>
         </li>
         <% if current_role == 'student' %>
-          <li>
-            <%= link_to deliveries_path do %>
-              <%= icon 'homeworks-w' %><%= t('.sidebar_section.homework')%>
-            <%end%>
-          </li>
-          <li>
-            <%= link_to surveys_path do %>
-              <%= icon 'questionaries-w' %><%= t('.sidebar_section.questionnaire')%>
-            <%end%>
-          </li>
+          <% if current_network.evaluable? %>
+            <li>
+              <%= link_to deliveries_path do %>
+                <%= icon 'homeworks-w' %><%= t('.sidebar_section.homework')%>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to surveys_path do %>
+                <%= icon 'questionaries-w' %><%= t('.sidebar_section.questionnaire')%>
+              <%end%>
+            </li>
+          <% end %>
           <li>
             <%= link_to discussions_path do %>
               <%= icon 'discussions-w' %><%= t('.sidebar_section.discussion')%>
@@ -35,7 +37,7 @@
           </li>
         <% end %>
 
-        <% if current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin' %>
+        <% if ((current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin') and current_network.evaluable?) %>
           <li>
             <%= link_to evaluate_activities_path do %>
               <%= icon 'evaluate-w' %><%= t('.sidebar_section.activities')%>
@@ -47,6 +49,21 @@
             <%= icon 'courses-w' %><%= t('.sidebar_section.courses')%>
           <% end %>
         </li>
+        <% if current_network.evaluable? %>
+          <li>
+            <%= link_to califications_path do %>
+              <%= icon 'stats-w' %> Calificaciones
+            <%end%>
+          </li>
+        <% end %>
+        <% if current_network.evaluable? %>
+          <li>
+            <%= link_to calendar_path, :data => "menu" do %>
+              <%= icon 'calendar-w' %> Calendario
+            <% end %>
+            </a>
+          </li>
+        <% end %>
         <li>
           <%= link_to califications_path do %>
             <%= icon 'stats-w' %><%= t('.sidebar_section.ratings')%>
@@ -56,7 +73,11 @@
           <%= link_to calendar_path, :data => "menu" do %>
             <%= icon 'calendar-w' %><%= t('.sidebar_section.calendar')%>
           <% end %>
-          </a>
+        </li>
+        <li>
+          <%= link_to library_path(current_network.library), :data => "menu" do %>
+            <%= icon 'library-w' %> Biblioteca
+          <% end %>
         </li>
         <li>
           <%= link_to network_comunity_path, :data => "menu" do %>

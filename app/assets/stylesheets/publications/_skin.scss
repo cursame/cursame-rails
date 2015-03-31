@@ -197,7 +197,7 @@
 .new-survey-questions {
   @include clearfix;
 
-  #box-question {
+  .box-question {
     .question-field {
       border: 1px solid #ccc;
       background: #f7f7f7;
@@ -352,6 +352,33 @@
 
     .deliver-date {
       color: lighten($survey-color, 60%) !important;
+    }
+  }
+
+  &.form .post-box-content {
+    background-color: $survey-color;
+    @include linear-gradient(45deg, $form-color 0%, lighten($form-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($form-color, 60%) !important;
+    }
+  }
+
+  &.library_file .post-box-content {
+    background-color: $library-file-color;
+    @include linear-gradient(45deg, $library-file-color 0%, lighten($library-file-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($library-file-color, 60%) !important;
+    }
+  }
+
+  &.library .post-box-content {
+    background-color: $library-color;
+    @include linear-gradient(45deg, $library-color 0%, lighten($library-color, 2%) 100%);
+
+    .deliver-date {
+      color: lighten($library-color, 60%) !important;
     }
   }
 

@@ -110,6 +110,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @form = WufooForm.new
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
 
@@ -226,6 +227,14 @@ class CoursesController < ApplicationController
         end
         @course.update_members(students, false) unless params["check_members"].nil?
 
+        teachers = []
+        unless params["teachers"].nil? 
+          params["teachers"].each do |student|
+            teachers.push User.find(student.first.to_i)
+          end
+        end
+        @course.update_members(teachers, false) unless params["check_members"].nil?
+
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         @az =  @course
         @typed = "Course"
@@ -237,7 +246,7 @@ class CoursesController < ApplicationController
         @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
 
         if @count_course_iam_member_and_owner == 0
-          @miembro = MembersInCourse.where(course_id = @course.id).first
+          @miembro = MembersInCourse.where("course_id = ?", @course.id).first
           @miembro.owner == true
           @miembro.save
         end
@@ -246,7 +255,11 @@ class CoursesController < ApplicationController
         EvaluationCriterium.create(name: 'cursame_surveys', evaluable: @course)
         EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course)
 
-        redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
+        if current_network.evaluable?
+          redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
+        else
+          redirect_to course_path(@course), flash: { success: "Se ha creado correctamente"} and return
+        end
 
       else
         format.html { redirect_to :back }
@@ -271,6 +284,14 @@ class CoursesController < ApplicationController
           end
         end
         @course.update_members(students, false) unless params["check_members"].nil?
+
+        teachers = []
+        unless params["teachers"].nil? 
+          params["teachers"].each do |student|
+            teachers.push User.find (student.first.to_i)
+          end
+        end
+        @course.update_members(teachers, false) unless params["check_members"].nil?
 
 
         @last_date = @course.init_date

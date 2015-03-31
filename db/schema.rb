@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140903221234) do
+ActiveRecord::Schema.define(:version => 20150326021129) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -340,13 +340,44 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
   add_index "grades", ["gradable_id", "gradable_type"], :name => "index_grades_on_gradable_id_and_gradable_type"
   add_index "grades", ["user_id"], :name => "index_grades_on_user_id"
 
-  create_table "groups", :force => true do |t|
-    t.integer  "user_id"
+  create_table "libraries", :force => true do |t|
+    t.integer  "storable_id"
+    t.string   "storable_type"
+    t.integer  "network_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "libraries", ["network_id"], :name => "index_libraries_on_network_id"
+
+  create_table "library_directories", :force => true do |t|
+    t.integer  "location_id"
+    t.string   "location_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
+
+  add_index "library_directories", ["location_id", "location_type"], :name => "index_library_directories_on_location_id_and_location_type"
+  add_index "library_directories", ["user_id"], :name => "index_library_directories_on_user_id"
+
+  create_table "library_files", :force => true do |t|
+    t.string   "file"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.string   "location_type"
+  end
+
+  add_index "library_files", ["location_id", "location_type"], :name => "index_library_files_on_location_id_and_location_type"
+  add_index "library_files", ["user_id"], :name => "index_library_files_on_user_id"
 
   create_table "masive_mailer_for_super_admins", :force => true do |t|
     t.string   "key_m"
@@ -365,7 +396,7 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.datetime "updated_at",              :null => false
   end
 
-  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "member_criterium_i"
+  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "index_members_in_course_criteria_on_evaluation_criterium_id"
   add_index "members_in_course_criteria", ["members_in_course_id"], :name => "index_members_in_course_criteria_on_members_in_course_id"
 
   create_table "members_in_courses", :force => true do |t|
@@ -378,13 +409,6 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.string   "title",         :default => "curso"
     t.integer  "network_id"
     t.boolean  "active_status", :default => true
-  end
-
-  create_table "members_in_groups", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "mesages", :force => true do |t|
@@ -407,19 +431,20 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.datetime "created_at",                                                                                                                                                                                       :null => false
-    t.datetime "updated_at",                                                                                                                                                                                       :null => false
+    t.datetime "created_at",                                                                                                                                                                                                                                      :null => false
+    t.datetime "updated_at",                                                                                                                                                                                                                                      :null => false
     t.integer  "population"
     t.boolean  "public_register",      :default => true
     t.boolean  "free",                 :default => true
-    t.boolean  "register_form",        :default => false
+    t.boolean  "register_form"
     t.text     "welcom_message"
-    t.string   "image_front",          :default => "background-restore.jpg"
-    t.string   "logo",                 :default => "logo.png"
-    t.string   "logo_type",            :default => "128x26"
-    t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad"
+    t.string   "image_front"
+    t.string   "logo"
+    t.string   "logo_type"
+    t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad, students: Estudiantes, profesores: Profesores"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
+    t.boolean  "evaluable",            :default => true
   end
 
   create_table "networks_users", :force => true do |t|
@@ -437,6 +462,13 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
+  end
+
+  create_table "p_id_to_h_ids", :force => true do |t|
+    t.integer  "p_id"
+    t.integer  "h_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "permissionings", :force => true do |t|
@@ -478,6 +510,20 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.text     "content"
   end
 
+  create_table "reported_contents", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "network_id"
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.text     "description",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "reported_contents", ["network_id"], :name => "index_reported_contents_on_network_id"
+  add_index "reported_contents", ["reportable_id", "reportable_type"], :name => "index_reported_contents_on_reportable_id_and_reportable_type"
+  add_index "reported_contents", ["user_id"], :name => "index_reported_contents_on_user_id"
+
   create_table "response_to_the_evaluations", :force => true do |t|
     t.string   "name"
     t.text     "comment_for_rubre"
@@ -488,7 +534,7 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.integer  "evaluation_criterium_id"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "criterium_index"
+  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criterium_id"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|
@@ -653,5 +699,49 @@ ActiveRecord::Schema.define(:version => 20140903221234) do
     t.integer  "network_id"
     t.boolean  "public",           :default => false
   end
+
+  create_table "wufoo_form_roles", :force => true do |t|
+    t.integer  "wufoo_form_id"
+    t.integer  "role_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "wufoo_form_roles", ["role_id"], :name => "index_wufoo_form_roles_on_role_id"
+  add_index "wufoo_form_roles", ["wufoo_form_id"], :name => "index_wufoo_form_roles_on_wufoo_form_id"
+
+  create_table "wufoo_forms", :force => true do |t|
+    t.string   "identifier"
+    t.integer  "showable_id"
+    t.string   "showable_type"
+    t.integer  "user_id"
+    t.datetime "init_date"
+    t.datetime "term_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "wufoo_forms", ["showable_id", "showable_type"], :name => "index_wufoo_forms_on_showable_id_and_showable_type"
+  add_index "wufoo_forms", ["user_id"], :name => "index_wufoo_forms_on_user_id"
+
+  create_table "wufoo_responses", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "wufoo_form_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "wufoo_responses", ["user_id"], :name => "index_wufoo_responses_on_user_id"
+  add_index "wufoo_responses", ["wufoo_form_id"], :name => "index_wufoo_responses_on_wufoo_form_id"
+
+  create_table "wufoo_settings", :force => true do |t|
+    t.integer  "network_id"
+    t.string   "api_key"
+    t.string   "subdomain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "wufoo_settings", ["network_id"], :name => "index_wufoo_settings_on_network_id"
 
 end

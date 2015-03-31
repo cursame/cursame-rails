@@ -287,7 +287,7 @@
 .new-survey-questions {
   @include clearfix;
 
-  #box-question {
+  .box-question {
     .question-field {
       margin-bottom: 10px;
       
@@ -390,6 +390,12 @@
   margin-bottom: 20px;
   position: relative;
 
+  .post-box-main-user-actions {
+    position: absolute;
+    top: 0;
+    right: 7px;
+  }
+
   .post-box-main-admin-actions {
     position: absolute;
     top: 0;
@@ -438,6 +444,17 @@
       top: 15px;
       right: 15px;
       z-index: 6;
+    }
+
+    .file-type {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 6;
+      color: #fff;
+      opacity: 0.5;
+      font-size: 30px;
+      font-weight: 400;
     }
 
     .post-box-meta {

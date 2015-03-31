@@ -1,14 +1,15 @@
+# encoding: UTF-8
 module ApplicationHelper
   def link_to_remove_fields(name, f, options, toId)
-    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this, \""+toId+"\")", options)
+    f.hidden_field(:_destroy, class: '_destroy') + link_to_function(name, "remove_fields(this, \""+toId+"\")", options)
   end
   
-  def link_to_add_fields(name, f, association, options, toId)
+  def link_to_add_fields(name, f, association, options, toId, id)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render('/surveys/'+association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \""+toId+"\")", options)
+    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \""+toId+"\", \""+id+"\")", options)
   end
 
   def date_format(date, format)
@@ -34,5 +35,20 @@ module ApplicationHelper
   def cursame_percentage(course)
     cursame_criteria = course.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }
     cursame_criteria.inject(0) { |sum, criterium| sum + criterium.evaluation_percentage}
+  end
+
+  def library_file_notification_message(notification)
+    library_type = notification.notificator.location.storable
+    case library_type
+    when Network
+      "<span class='as-link'> #{notification.notificator.user.name}</span> 
+      ha compartido un archivo en la <span class='as-link'>Biblioteca Pública<span class='as-link'>".html_safe
+    when Course
+      "<span class='as-link'> #{notification.notificator.user.name}</span> 
+      ha compartido un archivo en <span class='as-link'>#{library_type.title}<span class='as-link'>".html_safe
+    when Library
+      "<span class='as-link'> #{notification.notificator.user.name}</span> 
+      ha compartido un archivo en <span class='as-link'>#{notification.notificator.location.title}<span class='as-link'>".html_safe
+    end
   end
 end

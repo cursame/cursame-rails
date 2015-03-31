@@ -51,7 +51,7 @@
 
   </div>
 
-  <% if current_user != survey.user %>
+  <% unless survey.owner?(current_role, current_user) %>
     <div class="overlay-footer">
       <div class="fl">
         <span class="btn btn-medium btn-primary input-btn">

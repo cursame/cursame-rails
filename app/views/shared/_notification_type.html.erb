@@ -1,8 +1,4 @@
-<% if current_role == "superadmin"%>
-<% else %>
-
 <li id="notification-<%=notification.id.to_s%>" class="<%= cls %>" >
-  
   <div class="activity-feed">  
   <% if notification.notificator != nil%>
     
@@ -95,6 +91,20 @@
         </div>
         <div class="activity-feed-main">
           <h6><%=t('.activity_feed.new_question')%>Nuevo cuestionario <span class="as-link"><%= notification.notificator.name %></span> <%=t('.activity_feed.in_course2')%><span class="as-link"><%= notification.notificator.courses[0].title %></span> </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
+
+    <!-- Notificacion: 7.1 - Cuestionario editado en un curso -->
+    <% when 'edit_survey_on_course'%>
+      <%= link_to survey_modal_path(notification.notificator.id), remote: true do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.courses.first.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>El cuestionario <span class="as-link"><%= notification.notificator.name %></span> de tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span> ha sido editado </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -382,6 +392,66 @@
         <% end %>  
       <%end%>
 
+    <% when 'network_wufoo_form' %>
+      <%= link_to wufoo_form_modal_path(notification.notificator), remote: true do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            <span class="as-link"><%= notification.notificator.user.name %></span> ha compartido un formulario publico.
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
+    <% when 'course_wufoo_form' %>
+      <%= link_to wufoo_form_modal_path(notification.notificator), remote: true do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('course', '45', "no", notification.notificator.showable.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6>
+            <span class="as-link"><%= notification.notificator.user.name %></span> ha compartido un formulario en el curso <span class="as-link"><%= notification.notificator.showable.title %></span>.
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
+
+    <!-- Notificacion: 10 - Solicitud de amistad -->
+    <% when 'new_reported_content'%>
+      <% if notification.notificator != nil && notification.notificator.user != nil %>
+        <% user = notification.notificator.user %>
+        <%= link_to "#{managers_reported_content_path(notification.notificator)}" do %>
+          <div class="activity-feed-author">
+            <span class="avatar-holder">
+              <%= avatar('user', '45', "no", "#{notification.notificator.user_id}", "avatar", "no", "no") %>
+            </span>
+          </div>
+          <div class="activity-feed-main">
+            <h6><span class="as-link"><%= notification.notificator.user.name %></span> ha denunciado una publicación</h6>
+            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+          </div>
+        <% end %>
+
+      <%end%>
+    <% when 'new_library_file' %>
+      <%= link_to library_path(notification.notificator.library) do %>
+        <div class="activity-feed-author">
+          <span class="avatar-holder">
+            <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
+          </span>
+        </div>
+        <div class="activity-feed-main">
+          <h6> 
+            <%= library_file_notification_message(notification) %>
+          </h6>
+          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
+        </div>
+      <% end %>
     <%else%>
       <%= notification.kind %>
       <% @array = notification.notificator.user %>
@@ -402,5 +472,4 @@
 
     </div>
   </li>
-  <%end%>
 <%end%>

@@ -80,7 +80,7 @@ class NoParagraphRenderer < ::Redcarpet::Render::XHTML
   end    
 end
 
-AutoHtml.add_filter(:image).with({:alt => 'Image', :style =>"max-width:440px;"}) do |text, options|
+AutoHtml.add_filter(:image).with({:alt => 'Image', :style =>"max-width:100%;"}) do |text, options|
   r = Redcarpet::Markdown.new(NoParagraphRenderer)
   alt = options[:alt]
   style= options[:style]

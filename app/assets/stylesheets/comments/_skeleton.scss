@@ -23,6 +23,19 @@
 
     .comment-main {
       margin: -2px 0 0 40px;
+      padding-right: 40px;
+    }
+
+    .comment-content {
+      img {
+        max-width: 100% !important;
+      }
+    }
+
+    .comment-upload-asset{
+      position: absolute;
+      top: 9px;
+      right: 2px;
     }
 
     .comment-meta {

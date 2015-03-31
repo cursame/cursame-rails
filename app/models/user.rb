@@ -56,6 +56,9 @@ class User < ActiveRecord::Base
   has_many :audiences, dependent: :destroy
   has_many :channels, through: :audiences
   has_many :grades, dependent: :destroy
+  has_many :wufoo_responses, dependent: :destroy
+  has_many :wufoo_forms, dependent: :destroy
+  has_many :library_directories, dependent: :destroy
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
@@ -807,6 +810,14 @@ class User < ActiveRecord::Base
     else
       puts "No existe la red con ese subdominio"
     end
+  end
+
+  def role
+    roles.first
+  end
+
+  def to_csv
+    "#{name},#{email},#{role_title},#{created_at}\n"
   end
 
   private

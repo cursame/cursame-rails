@@ -93,6 +93,20 @@ first-time-survey-overlay
   .model-comments {
     padding: 0px 20px;
   }
+
+  .report-content {
+    padding: 0 30px;
+
+    textarea {
+      height: 105px;
+    }
+  }
+
+  .btn-report-content {
+    padding-left: 30px;
+    margin: 15px 0 20px 0;
+  }
+
 }
 
 /* Delivery Overlay
@@ -202,6 +216,10 @@ first-time-survey-overlay
 
   .overlay-content {
     border-radius: 0 0 $radius $radius;
+  }
+
+  @include max-screen(630px) {
+    width: 90%;
   }
 }
 

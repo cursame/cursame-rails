@@ -59,12 +59,12 @@
                 <%= render partial: 'assets/upload_asset_button', locals: { from: 'discussion-create-form' } %>
               </li>
             </ul>
-            <%= render partial: 'assets/support_material_container', locals: { from: 'discussion-create-form-assets' } %>
+            <%= render partial: 'assets/support_material_container', locals: { from: 'discussion-create-form-assets' , object: @discussion} %>
           </div>
         </div>
       </div>
       
-      <% unless current_role == 'student' %>
+      <% if (current_role != 'student' and current_network.evaluable?) %>
         <div class="form-group">
           <div class="form-group-main">
             <div class="form-unit">

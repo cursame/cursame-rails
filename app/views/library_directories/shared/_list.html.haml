@@ -1,0 +1,10 @@
+.wrapper
+  - if directories.blank? && files.blank?
+    .no-content-section
+      %h4="No hay documentos."
+  - else
+    .cols-12
+      - directories.each do |directory|
+        = render partial: 'library_directories/shared/standalone_card', locals: { directory: directory }
+      - files.each do |file|
+        = render partial: 'library_files/shared/standalone_card', locals: { file: file }

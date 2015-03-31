@@ -1,0 +1,12 @@
+.cols-12
+  - libraries.each do |library|
+    - case library.storable
+    - when Course
+      - if library.storable.users.include?(current_user)
+        = render partial: 'libraries/shared/card', locals: { library: library }
+    - else
+      = render partial: 'libraries/shared/card', locals: { library: library }
+  - directories.each do |directory|
+    = render partial: 'library_directories/shared/standalone_card', locals: { directory: directory }
+  - files.each do |file|
+    = render partial: 'library_files/shared/standalone_card', locals: { file: file }

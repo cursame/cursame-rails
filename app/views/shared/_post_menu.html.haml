@@ -8,7 +8,7 @@
               = icon('commet-post')
               = t('.comment')
               %span.tip
-          - permitted_to? :create, :deliveries do
+          - current_network.evaluable? and permitted_to? :create, :deliveries do
             .tab{"data-id-target" => "delivery-tab-content"}
               = icon('delivery-post')
               = t('.homework')
@@ -18,10 +18,15 @@
               = icon('discussion-post')
               = t('.discussion')
               %span.tip
-          - permitted_to? :create, :surveys do
+          - current_network.evaluable? and permitted_to? :create, :surveys do
             .tab{"data-id-target" => "survey-tab-content"}
               = icon('survey-post')
               = t('.questionnaire')
+              %span.tip
+          - current_network.wufoo_settings? and permitted_to? :create, :forms do
+            .tab{"data-id-target" => "wufoo-tab-content"}
+              = icon('wufoo-post')
+              Formulario
               %span.tip
         - @active_edit = false
         .tabs-main
@@ -37,6 +42,9 @@
           - permitted_to? :create, :surveys do
             #survey-tab-content.survey-form-area-style.tab-content
               = render partial: '/surveys/form', locals: {active_edit: @active_edit, in_type: 'survey', in_form: in_form}
+          - current_network.wufoo_settings? and permitted_to? :create, :forms do
+            #wufoo-tab-content.tab-content
+              = render partial: '/forms/create'
   - else
     .new-publication-main
       .tabs

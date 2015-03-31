@@ -1,6 +1,8 @@
 .comment{ data: { child_comment_id: comment.id }}
   - if comment.owner?(current_role, current_user)
     = render partial: 'comments/shared/comment_admin_actions', locals: { comment: comment }
+  - else
+    = render partial: 'comments/shared/comment_user_actions', locals: { comment: comment }
   .comment-author
     %span.avatar-holder
       = avatar('user', '30', 'no', comment.user.id, 'avatar', 'no', 'no')

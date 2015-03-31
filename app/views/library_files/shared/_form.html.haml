@@ -1,0 +1,26 @@
+= form_for([@parent_model, @file], html: { class: "default-form", id: "library_file_form", multipart: true }) do |form|
+  .body.padded
+    .form-group
+      .form-group-label
+        = form.label :name, "Titulo del Archivo: "
+      .form-group-main
+        .form-unit
+          = form.text_field :name, placeholder: 'Titulo del Archivo', required: "required"
+    .form-group
+      .form-group-label
+        = form.label :description, "Descripción: "
+      .form-group-main
+        .form-unit
+          = form.text_field :description, placeholder: 'Descripción del Archivo', required: "required"
+    .form-group
+      .form-group-main
+        .form-unit
+          = form.file_field :file, placeholder: 'Archivo', required: "required"
+  .footer
+    .fr
+      %span.btn.btn-primary.input-btn.activable
+        = form.submit "Enviar", id: "wufoo-post-form", class: "activable"
+:javascript
+  $(new function() {
+    $("#library_file_form").validate();
+  });
