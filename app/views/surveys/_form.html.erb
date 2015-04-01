@@ -17,28 +17,28 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :name, "Titulo del cuestionario" %>
+        <%= f.label :name, t('.title') %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :name, placeholder: "Ejemplo: Números primos", required: "required" %>
+          <%= f.text_field :name, placeholder: t('.example') + ": " + t('.text1'), required: "required" %>
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label "", "Fechas" %>
+        <%= f.label "", t('.dates') %>
       </div>
       <div class="form-group-main">
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :publish_date, placeholder: 'Día de pubicación', id: 'publish_date_'+random_id, class: "date-input survey survey_publish_date", value: f.object.publish_date, required: "required" %>
+            <%= f.text_field :publish_date, placeholder: t('.publish_date'), id: 'publish_date_'+random_id, class: "date-input survey survey_publish_date", value: f.object.publish_date, required: "required" %>
           </div>      
         </div>
         <div class="f-col f-col-5">
           <div class="form-unit">
-            <%= f.text_field :end_date, placeholder: 'Fecha de entrega ', id: 'end_date_'+random_id, class: "date-input survey survey_end_date", value: f.object.end_date, required: "required" %>
+            <%= f.text_field :end_date, placeholder: t('.deliver_date'), id: 'end_date_'+random_id, class: "date-input survey survey_end_date", value: f.object.end_date, required: "required" %>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label "", "Preguntas" %>
+        <%= f.label "", t('.quest') %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -61,7 +61,7 @@
 
             <div class="add-question">
               <div class="question-field">
-                <%= link_to_add_fields "Agregar Pregunta", f, :questions, {class: 'btn btn-secondary'}, '#box-question', "#{@survey.id}" %>
+                <%= link_to_add_fields t('.add_quest'), f, :questions, {class: 'btn btn-secondary'}, '#box-question', "#{@survey.id}" %>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
 
     <div class="form-group">
       <div class="form-group-label label-no-p">
-        <%= f.label "", "Material de soporte" %>
+        <%= f.label "", t('.support') %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -96,16 +96,16 @@
     <ul class="list-buttons right <%= 'fr' unless active_edit %>">
       <li>
         <% if active_edit %>
-          <%= link_to "Cancelar", "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
+          <%= link_to (t('.cancel'), "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab') %>
         <% else %>
-          <%= link_to "Cancelar", "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+          <%= link_to (t('.cancel'), "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab') %>
         <% end %>
       </li>
       
       <% unless active_edit %> 
       <li>
         <% if in_form != 'course' %>
-          <%= render partial: "shared/dropdown", locals: { hasPublic: false, hasCourses: true, defaultText: 'Cursos', default_icon: 'course-new-publication', in_type: in_type } %>
+          <%= render partial: "shared/dropdown", locals: { hasPublic: false, hasCourses: true, defaultText: t('.courses'), default_icon: 'course-new-publication', in_type: in_type } %>
         <%else%>
 
           <%= hidden_field_tag "commentable_type", 'Course'%>

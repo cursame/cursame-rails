@@ -2,23 +2,22 @@
   .shade
   %ul.managers-nav
     %li
-      = link_to "Estadisticas", managers_path, class: active_class(['index'], 'managers')
+      = link_to (t('.stat'), managers_path, class: active_class(['index'], 'managers'))
     %li
-      = link_to "Usuarios", managers_users_path, class: active_class(['index', 'import', 'show', 'edit', 'new'], 'managers/users')
+      = link_to (t('.usr'), managers_users_path, class: active_class(['index', 'import', 'show', 'edit', 'new'], 'managers/users'))
     %li
-      = link_to "#{current_network.courses_tag}", managers_courses_path, class: active_class(['index', 'show', 'edit', 'new', 'import'], 'managers/courses')
-    -if current_network.evaluable?
-      %li
-        = link_to "Tareas", managers_deliveries_path, class: active_class(['index', 'show'], 'managers/deliveries')
-      %li
-        = link_to "Cuestionarios", managers_surveys_path, class: active_class(['index', 'show'], 'managers/surveys')
+      = link_to (t('.courses'), managers_courses_path, class: active_class(['index', 'show', 'edit', 'new', 'import'], 'managers/courses'))
     %li
-      = link_to "Discusiones", managers_discussions_path, class: active_class(['index', 'show'], 'managers/discussions')
+      = link_to (t('.hmwrk'), managers_deliveries_path, class: active_class(['index', 'show'], 'managers/deliveries'))
     %li
-      = link_to "Comentarios", managers_comments_path, class: active_class(['index', 'show'], 'managers/comments')
+      = link_to (t('.quest'), managers_surveys_path, class: active_class(['index', 'show'], 'managers/surveys'))
     %li
-      = link_to "Correo Masivo", managers_mailer_path, class: active_class(['mailer'], 'managers')
+      = link_to (t('.discuss'), managers_discussions_path, class: active_class(['index', 'show'], 'managers/discussions'))
     %li
-      = link_to "Configuración", managers_settings_path, class: active_class('settings')
+      = link_to (t('.comments'), managers_comments_path, class: active_class(['index', 'show'], 'managers/comments'))
+    %li
+      = link_to (t('.masive'), managers_mailer_path, class: active_class(['mailer'], 'managers'))
+    %li
+      = link_to (t('.config'), managers_settings_path, class: active_class('settings'))
     %li
       = link_to "Contenido Reportado", managers_reported_contents_path, class: active_class(['index'], 'managers/reported_contents')

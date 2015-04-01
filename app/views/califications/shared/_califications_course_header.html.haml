@@ -6,6 +6,7 @@
           .section-header
             .section-header-main
               .section-title
-                %h5 Calificaciones
+                %h5 
+                = t('.califications')
                 = link_to califications_course_path(course) do
                   %h1= truncate(course.title, :omission => "...", :length => 30)

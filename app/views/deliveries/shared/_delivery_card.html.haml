@@ -30,15 +30,15 @@
         %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
       %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format delivery.end_date}".html_safe
       - unless card_type == :standalone
-        = link_to 'Ver Tarea', delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-transparent activable"
+        = link_to t('.hmwrk'), delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-transparent activable"
         = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: delivery }
     - if card_type == :standalone
       .post-box-footer
         .post-box-actions
-          = link_to 'Ver Tarea', delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-secondary activable #{}"
+          = link_to t('.hmwrk'), delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-secondary activable #{}"
     - if card_type == :post_publication && delivery.owner?(current_role, current_user)
       .post-box-edit
-        %h5 Editar Tarea
+        %h5= t('.edit_hmwrk')
         .post-edit-form-js
     - if card_type == :post_publication
       .post-box-under-container

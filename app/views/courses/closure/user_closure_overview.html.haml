@@ -20,8 +20,8 @@
                 %table.member-evaluation-table
                   %thead
                     %tr
-                      %th Criterio
-                      %th Calificación Obtenida
+                      %th= t('.criterium')
+                      %th= t('.score')
                   %tbody
                     / %tr
                     /   %td.criterium
@@ -61,24 +61,24 @@
                           - if course_criterium.name == 'cursame_deliveries'
                             %h2
                               %span= icon 'activity-delivery'
-                              Tareas
-                            %p= "Entrego #{ @user_course.count_deliveries_responses } de #{ @course.deliveries.count }"
-                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                              = t('.hmwrk')
+                            %p= "#{t('.send') @user_course.count_deliveries_responses  t('.of')} #{ @course.deliveries.count }"
+                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
                           - elsif course_criterium.name == 'cursame_surveys'
                             %h2
                               %span= icon 'activity-survey'
-                              Cuestionarios
-                            %p= "Contesto #{ @user_course.count_surveys_responses } de #{ @course.surveys.count }"
-                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                              = t('.')Cuestionarios
+                            %p= "#{t('.respond')  @user_course.count_surveys_responses t('.of')} #{ @course.surveys.count }"
+                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
                           - elsif course_criterium.name == 'cursame_discussions'
                             %h2
                               %span= icon 'activity-discussion'
-                              Discusiones
-                            %p= "Participo en #{ @user_course.count_discussions_responses } de #{ @course.evaluables_discussiones.count }"
-                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                              = t('.discuss')
+                            %p= "#{t('.participate') @user_course.count_discussions_responses t('.of')} #{ @course.evaluables_discussiones.count }"
+                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
                           - else
                             %h4= course_criterium.name
-                            %span.meta-info Porcentaje: #{ course_criterium.evaluation_percentage }
+                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
                         %td
                           = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
                             = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
@@ -94,20 +94,20 @@
                                 %span.score.cursame-score-js= evaluation_score @user_course.discussions_average
                                 =score_fields.hidden_field :score, value: evaluation_score(@user_course.discussions_average),class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
                               -else
-                                .score= score_fields.text_field :score, value: evaluation_score(score_fields.object.score), placeholder: 'Ejemplo: 8', required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
+                                .score= score_fields.text_field :score, value: evaluation_score(score_fields.object.score), placeholder: t('.example8'), required: true, min: 0, max: 10, class: 'criterium-score-js', data: { criterium_percentage: course_criterium.evaluation_percentage }
                     %tr.final-score
                       %td
-                        %h4 Calificación Final
+                        %h4= t('.final_score')
                       %td
                         %span.score.final-score-js= @user_course.grade.present? ? evaluation_score(@user_course.grade.score) : evaluation_score(@user_course.course_average)
               .member-item-footer
                 %span.btn.btn-primary.input-btn.fr
-                  = submit_tag 'Calificar alumno'
+                  = submit_tag t('.rate_student')
     .col.col-4
       .col-inner
         .sidebar-responses
           .sidebar-responses-header
-            %h6 Miembros
+            %h6= t('.members')
           .sidebar-responses-main
             - @course.evaluable_members.each do |member_course|
               = link_to closure_user_overview_path(@course, member_course) do
@@ -118,7 +118,7 @@
                     %h6= member_course.user.name
                     - if member_course.grade.present?
                       %span
-                        Calificación:
+                        = t('.calif')
                         %strong= evaluation_score member_course.grade.score
                     - else
-                      %span Sin calificar
+                      %span= t('.no_rate')

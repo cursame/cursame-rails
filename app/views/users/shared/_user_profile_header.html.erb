@@ -15,7 +15,7 @@
                   <%= form_tag update_user_cover_pic_path, multipart: true, remote: true do %>
                     <%= hidden_field_tag 'user', @user_l.id %>
                     <%= label_tag 'user-cover-pic-input', class: 'profile-cover-upload' do %>
-                      <%= icon 'white-cam' %> <span>Actualizar portada</span>
+                      <%= icon 'white-cam' %> <span><%=%><%=t('.update')%></span>
                       <div class="hide-input-file">
                         <%= file_field_tag 'file', onchange: 'updateCoverPic(this);', accept: 'image/*', id: 'user-cover-pic-input' %>
                       </div>
@@ -26,7 +26,7 @@
 
               <div class="admin-buttons">
                 <% if @user_l == current_user %>
-                  <%= link_to "Editar Perfil", edit_user_registration_path, class: 'btn btn-small btn-secondary hard-border-btn' %>
+                  <%= link_to t('.edit'), edit_user_registration_path, class: 'btn btn-small btn-secondary hard-border-btn' %>
                 <% end %>
 
                 <div id="taxk_<%=@user_l.id%>">
@@ -35,17 +35,17 @@
                       <% if @user_l.have_a_friendship(current_user) %>
                         <% case current_user.who_sent?(@user_l) %>
                           <% when current_user %>
-                            <%= link_to "Cancelar solictud de amistad", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
-                            <span class="btn btn-small btn-disabled">Solicitud enviada</span>
+                            <%= link_to t('.cancel'), friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
+                            <span class="btn btn-small btn-disabled"><%=t('.send')%></span>
                           <% when @user_l %>
-                            <%= link_to "Ignorar", friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
-                            <%= link_to "Aceptar solicitud de amistad", friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true%>
+                            <%= link_to (t('.ignore'), friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn") %>
+                            <%= link_to (t('.accept'), friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true)%>
                           <% else %>
-                            <%= link_to "Añadir a mis amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn", remote: true %>
+                            <%= link_to (t('.add_friends'), friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn", remote: true) %>
                         <% end %>
                       <% else %>
                         <div id="add_friend<%=@user_l.id%>">
-                          <%= link_to "Añadir a mis amigos", friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true %>
+                          <%= link_to (t('.add_friends'), friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true) %>
                         </div>
                       <% end %>
                     <%end%>
@@ -58,7 +58,7 @@
                     <%= hidden_field_tag 'user', @user_l.id %>
                     <div class="profile-avatar-loading spinner"></div>
                     <%= label_tag 'user-profile-pic-input', class: 'profile-avatar-upload' do %>
-                      <%= icon 'white-cam' %> <span>Actualizar foto</span>
+                      <%= icon 'white-cam' %> <span><%=t('.update_photo')%></span>
                       <div class="hide-input-file">
                         <%= file_field_tag 'file', onchange: 'updateProfilePic(this, "user");', accept: 'image/*', id: 'user-profile-pic-input' %>
                       </div>
@@ -83,16 +83,16 @@
               <% action = params[:action] %>
               <ul>
                 <li>
-                  <%= link_to 'Publicaciones', show_user_path(@user_l.personal_url), class: (action == 'show' ? "active" : " ") %>
+                  <%= link_to (t('.publications'), show_user_path(@user_l.personal_url), class: (action == 'show' ? "active" : " ")) %>
                 </li>
                 <li>
-                  <%= link_to "#{current_network.courses_tag}", user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ") %>
+                  <%= link_to (t('.courses'), user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ")) %>
                 </li>
                 <li>
-                  <%= link_to 'Amigos', user_friends_path(@user_l.personal_url), class: (action == 'friends' ? "active" : " ") %>
+                  <%= link_to (t('.friends'), user_friends_path(@user_l.personal_url), class: (action == 'friends' ? "active" : " ")) %>
                 </li>
                 <li>
-                  <%= link_to 'Información', user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ") %>
+                  <%= link_to (t('.info'), user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ")) %>
                 </li>
               </ul>
             </div>

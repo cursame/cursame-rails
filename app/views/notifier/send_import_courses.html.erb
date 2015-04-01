@@ -4,8 +4,8 @@
   </p>
   <table id ="errores">
   <tr>
-    <th>Linea</th>
-    <th>Error</th>
+    <th><%=t('.line')%></th>
+    <th><%=t('.error')%></th>
   </tr>
 
   <%@errores.each do |hash|%>
@@ -17,5 +17,5 @@
   </table>
 
 <%else%>
- No hubo errores
+ <%=t('.no_error')%>
 <%end%>

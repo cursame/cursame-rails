@@ -1,0 +1,6 @@
+es:
+  assets:
+    asset_file:
+      delete: Borrar
+    upload_asset_button:
+      file: Archivo

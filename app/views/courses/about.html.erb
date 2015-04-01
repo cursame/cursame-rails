@@ -4,7 +4,7 @@
     <div class="col col-12">
       <div class="col-inner">
         <div class="sub-profile-title">
-          <h3>Información del <%= current_network.course_tag %></h3>
+          <h3><%=t('.course_info')%></h3>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="col col-7">
       <div class="col-inner">
         <div class="basic-container-style padded">
-          <h5>Información.</h5>
+          <h5><%=t('.info')%></h5>
           <%= @course.silabus %>
         </div>
       </div>
@@ -25,12 +25,12 @@
       <div class="col-inner">
         <div class="basic-container-style padded course-info-blocks">
           <div class="course-info-block">
-            <h6 class="meta-info"><%= icon('calendar-12') %> Fecha de incio:</h6>
+            <h6 class="meta-info"><%= icon('calendar-12') %> <%=t('.init_date')%>:</h6>
             <%= date_format @course.init_date, 'normal' if @course.init_date != nil %>
           </div>
 
           <div class="course-info-block">
-            <h6 class="meta-info"><%= icon('profesor-12') %> Administradores del <%= current_network.course_tag %>:</h6>
+            <h6 class="meta-info"><%= icon('profesor-12') %> <%=t('.admins')%>:</h6>
             <% @users.each do |u|%>
              <%= u.name %>
             <%end%>

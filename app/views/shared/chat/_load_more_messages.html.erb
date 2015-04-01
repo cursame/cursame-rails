@@ -1,1 +1,1 @@
-<%= link_to "Cargar más mensajes...", load_more_messages_path(channel.id,"page" => page), :remote => true %>
+<%= link_to(t('.more_msg'), load_more_messages_path(channel.id,"page" => page), :remote => true) %>

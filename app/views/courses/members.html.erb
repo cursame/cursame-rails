@@ -7,7 +7,7 @@
       <div class="col col-12">
         <div class="col-inner">
           <div class="sub-profile-title">
-            <h3>Miembros - <%= @course.members_in_courses.count - 1 %></h3>
+            <h3><%=t('.mem')%> - <%= @course.members_in_courses.count - 1 %></h3>
           </div>
         </div>
       </div>
@@ -42,8 +42,8 @@
 <% else %>
   
   <div class="no-content-section">
-    <h4><%= current_network.course_tag %> sin miembros.</h4>
-    <p>Este <%= current_network.course_tag %> todavia no tiene miembros en el.</p>
+    <h4><%=t('.no_members')%></h4>
+    <p><%=t('.no_records')%></p>
   </div> 
 
 <% end %>

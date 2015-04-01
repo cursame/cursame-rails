@@ -6,7 +6,7 @@
           .section-header
             .section-header-main
               .section-title
-                %h5 Discusiones
+                %h5= t('.discuss')
                 = link_to discussions_course_path(course) do
                   %h1= truncate(course.title, :omission => "...", :length => 30)
               - unless current_user.courses.empty?

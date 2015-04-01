@@ -5,7 +5,7 @@
 			<div class="col col-12">
 				<div class="col-inner">
 					<div class="sub-header">
-						<h4>Busqueda: <%= @query %></h4>
+						<h4><%=t('.search')%> <%= @query %></h4>
 					</div>
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 	  </div>
 	<% else %>
 		<div class="no-content-section">
-      <h4>No se encontraron usarios en tu red.</h4>
+      <h4><%=t('.no_usr')%></h4>
 	  </div>
 	<% end %>
 </div>

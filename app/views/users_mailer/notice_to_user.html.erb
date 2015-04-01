@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>Cursame | Bienvenido</title>
+  <title>Cursame | <%=t('.')%>Bienvenido</title>
     <style type="text/css">
       h1 { font-family: arial; font-size: 15px; font-weight: lighter; }
       p { font-family: arial; color: #333; font-size: 14px; }
@@ -18,12 +18,12 @@
     <table border="0" cellpadding="0" cellspacing="0" bgcolor="#fff" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0px 3px 10px #000;">
       <tr>
         <td width="650px" height="200px" style="text-align:center;" valign="top" background="http://<%= @resource.devise_mailer_subdomain %>.<%=@resource.ubication %>/assets/mails/logo_welcome.png";>
-          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;"><b>Tiene 5 notificaciones activas</b></h1>
+          <h1 style="color: #00B0C6;font-size: 23px;text-align: center;margin-top:142px;"><b><%=t('.activitys')%></b></h1>
         </td>
       </tr>
       <tr>
         <td style="padding:0px 30px 20px 30px;" width="600px">
-          <p>Hola  "<%= @resource.email %>" tiene 5 nuevas actividades en la plataforma.</p>
+          <p><%=t('.hello')%>  "<%= @resource.email %>" <%=t('.activity')%></p>
         </td>
       </tr>
       <tr>
@@ -35,7 +35,7 @@
         <td width="600px" style="padding-left: 30px; margin-bottom: 30px; display: block;">
           <center>
             <span class="buttonClick">
-                        <%= link_to 'Ir a actividades', "http://#{ @resource.devise_mailer_subdomain} .#{@resource.ubication}" %></span>
+                        <%= link_to (t('.goto'), "http://#{ @resource.devise_mailer_subdomain} .#{@resource.ubication}") %></span>
           </center>
         </td>
       </tr>

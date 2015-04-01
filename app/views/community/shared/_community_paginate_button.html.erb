@@ -3,7 +3,7 @@
 		<div class="col col-12">
 			<div class="col-inner">
 				<div id='pageless-loader'><img src='/assets/load.gif'/></div>
-				<%= link_to 'Cargar más...', community_paginate_ajax_path(page: page, role: role), remote: true, class: 'btn btn-secondary btn-full' %>
+				<%= link_to (t('.load_more'), community_paginate_ajax_path(page: page, role: role), remote: true, class: 'btn btn-secondary btn-full') %>
 			</div>
 		</div>
 	</div>

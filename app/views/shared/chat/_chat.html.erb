@@ -6,7 +6,7 @@
 
   <div class="chat-main-container scrollbar">
     <div id="load-more-messages-<%= channel.id%>" class="load-more-messages-trigger">
-      <a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true">Cargar más mensajes...</a>
+      <a href="/home/load_more_messages/<%= channel.id%>?page=<%= @page + 1 %>" data-remote="true"><%=t('.more_msg')%></a>
     </div>
     <div id="chat-messages" class="chat-messages-container" data-channel-id="<%= channel.id %>" data-channel="<%= channel.channel_name %>">
       <%=render(:partial => '/shared/chat/messages', :locals => {:messages => messages})%>    
@@ -18,6 +18,6 @@
   </div>
 <% else %>
   <div class="no-content-section">
-    <h4>Selecciona a un amigo o curso para enviar mensaje.</h4>
+    <h4><%=t('.select')%></h4>
   </div>
 <% end %>

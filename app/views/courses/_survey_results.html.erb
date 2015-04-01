@@ -2,17 +2,17 @@
   <div class="back-to-activity">
     <a class="show-activity-feed" href="" title="Atras" data-type="survey" data-id="<%= responces.survey_id %>">
     	<%= icon('arrow-gray-left') %>
-    	Atras
+    	<%=t('.back')%>
     </a>
   </div>
 	
 	<div class="delivery-submited-content">
     <div>
-      <span class="meta-info">Alumno:</span>
+      <span class="meta-info"><%=t('.student')%>:</span>
       <p><%= link_to responces.user.name, show_user_path(responces.user.personal_url) %></p>
     </div>
     <div>
-      <span class="meta-info">Resultado obtenido:</span>
+      <span class="meta-info"><%=t('.result')%>:</span>
       <p><%= number_with_precision(responces.evaluation, :precision => 2)%></p>
     </div>
   </div>
@@ -28,7 +28,7 @@
 						<p><%= @question.content%></p>			
 					</div>
 					<div class="survey-item-answers">
-						<span class="meta-info">Respuesta:</span>
+						<span class="meta-info"><%=t('.respose')%>:</span>
             <div class="survey-item-answer-content">
               <% if  @answer.correct == true %> 
                 <%= image_tag('icons/icon_true.png')%>

@@ -6,8 +6,8 @@
         .section-help
           = icon 'wizard'
           .section-help-content
-            %h5 Calificaciones finales
-            %p Envia la calificación final a los estudiantes del grupo.
+            %h5= t('.final_scores')
+            %p= t('.send_scores')
 .activity-view-wrap.closure-course-members
   .wrapper
     .cols-12
@@ -15,7 +15,7 @@
         .col-inner
           .activity-view
             .view-header
-              %h5 Miembros
+              %h5= t('.members')
             .activity-view-main
               - unless @course.evaluable_members.empty?
                 .activity-responses-list
@@ -30,10 +30,10 @@
                             %h5= member_course.user.name
                             - if member_course.grade.present?
                               %p
-                                Calificación: #{ evaluation_score member_course.grade.score}
+                                #{t('.score') evaluation_score member_course.grade.score}
                             - else
-                              %p Sin calificar
+                              %p= t('.no_score')
               - else
                 .no-content-section
-                  %h5 No hay miembros en el curso.
-                  %p Invita a tus alumnos que se unan a tu curso.
+                  %h5= t('.no_members')
+                  %p= t('.invite')

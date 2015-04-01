@@ -5,4 +5,4 @@
     .dropdown-v.right{style: "right: -12px;"}
       %i.tip
       %ul
-        %li= link_to "Borrar", destroy_comment_path(comment.id), remote: true, confirm: '¿Está seguro de borrar este comentario?'
+        %li= link_to (t('.delete'), destroy_comment_path(comment.id), remote: true, confirm: t('.confirm'))

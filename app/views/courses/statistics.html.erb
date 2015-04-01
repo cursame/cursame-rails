@@ -6,10 +6,10 @@
 <% @survey = current_course.surveys.count %>
 <% @activity = @comments + @survey + @deliveries  %>
 
-<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b> ACTIVIDADES <br><i>Se han generado</i></li>
-<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b> TAREAS ACTIVAS <br><i>   <%= current_course.deliveries.count %>totales</i></li>
-<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b>DISCUSIONES<br> <i> En el curso </i></li>
-<li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b>CUESTIONARIO<br><i><%= current_course.surveys.count %> totales</i></li>
+<li class="sandwich active" ><img src="/assets/icons/home.png"> <br> <b> <%= @activity %> </b><%=t('.activity')%> <br><i><%=t('.generate')%></i></li>
+<li class="sandwich"><img src="/assets/icons/homework.png"> <br> <b><%= current_course.deliveries.where(:state => 'published').count %> </b><%=t('.active_hmwrk')%> <br><i>   <%= current_course.deliveries.count %><%=t('.total')%></i></li>
+<li class="sandwich"> <img src="/assets/icons/discus.png"> <br> <b> <%= current_course.discussions.count %> </b><%=t('.discuss')%><br> <i><%=t('.in_course')%> </i></li>
+<li class="sandwich last"><img src="/assets/icons/test.png"> <br> <b> <%= current_course.surveys.where(:state => 'published').count %>  </b><%=t('.quest')%><br><i><%= current_course.surveys.count %> <%=t('.total')%></i></li>
 <%end%>
 </ul>
 

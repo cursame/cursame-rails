@@ -8,7 +8,7 @@
               <div class="section-title">
                 <%= link_to icon('section-califications'), califications_path %>
                 <%= link_to califications_path do %>
-                  <h1>Calificaciones</h1>
+                  <h1><%=t('.ratings')%></h1>
                 <% end %>
               </div>
             </div>
@@ -26,8 +26,8 @@
         <div class="col-inner">
           <% if @courses.empty? %>
             <div class="no-content-section">
-              <h4>Aún no tienes calificaciones.</h4>
-              <p>Necesitas estar inscrito en al menos un curso para tener calificaiones.</p>
+              <h4><%=t('.no_score')%></h4>
+              <p><%=t('.enroll')%></p>
             </div>
           <% else %>
             <% @courses.each do |course| %>

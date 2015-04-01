@@ -20,7 +20,7 @@
     <br>
     <span class="meta-info"><%= es_current_date("#{cf.created_at.strftime('%B')}", "#{cf.created_at.strftime('%d')}", "#{cf.created_at.strftime('%Y')}" , "#{cf.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
     <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
-      <%= link_to "Borrar", course_file_path(cf.id, course: course.id), confirm: '¿Estas seguro de querer eliminar este archivo?', method: :delete, :remote => true %>
+      <%= link_to (t('.delete'), course_file_path(cf.id, course: course.id), confirm: t('.confirm'), method: :delete, :remote => true) %>
     <% end %>
   </div>
 </div>

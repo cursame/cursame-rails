@@ -4,7 +4,7 @@
     <div class="col col-12">
       <div class="col-inner">
         <div class="sub-profile-title">
-          <h3>Información</h3>
+          <h3><%=t('.info2')%></h3>
         </div>
       </div>
     </div>
@@ -17,10 +17,10 @@
       <div class="col-inner">
         <div class="basic-container-style padded">
           <% if !@user_l.bios.blank? %>
-            <h5>Biografia</h5>
+            <h5><%=t('.bio')%></h5>
             <%= @user_l.bios %>
           <% else %>
-            <p>Este usuario no cuenta con biografia.</p>
+            <p><%=t('.no_bio')%></p>
           <% end %>
         </div>
       </div>
@@ -29,7 +29,7 @@
       <div class="col-inner">
         <div class="basic-container-style padded course-info-blocks">
           <div class="course-info-block">
-            <h6 class="meta-info"><%= icon('email-12') %> Correo Electronico:</h6>
+            <h6 class="meta-info"><%= icon('email-12') %> <%=t('.email')%>:</h6>
             <%= link_to @user_l.email, "mailto:#{@user_l.email}" %>
 
           </div>

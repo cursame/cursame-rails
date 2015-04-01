@@ -3,22 +3,22 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 Mail Masivo
-          %p Envía un mail a todos los miembros de tu comunidad.
+          %h1= t('.masive')
+          %p= t('.masive2')
       = form_tag managers_mailer_deliver_path, class: 'form-validate-js' do
         .form-group.label-on-top.l-label
           .form-group-label
-            = label :subject, 'Asunto:'
+            = label :subject, t('.subject') + ':'
           .form-group-main
             .form-unit
-              = text_field_tag :subject, '', placeholder: 'Ejemplo: Ceremonia de clausura', required: true
+              = text_field_tag :subject, '', placeholder: t('.example') + ': ' + t('.example2'), required: true
 
         .form-group.label-on-top.l-label
           .form-group-label
-            = label :message, 'Mensaje:'
+            = label :message, t('.msg') + ':'
           .form-group-main
             .form-unit
-              = text_area_tag :message, '', placeholder: 'Mensaje', rows: 8, required: true
+              = text_area_tag :message, '', placeholder: t('.msg'), rows: 8, required: true
 
         %span.btn.btn-primary.input-btn.btn-medium.activable
-          = submit_tag "Enviar"
+          = submit_tag t('.send')

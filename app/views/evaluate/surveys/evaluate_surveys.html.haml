@@ -7,7 +7,7 @@
         .col-inner
           .activity-view
             .view-header
-              %h5 Entregas
+              %h5= t('.delivery')
             .activity-view-main
               - unless @survey.responses.empty?
                 .activity-responses-list
@@ -21,8 +21,8 @@
                           .va-middle
                             %h5= response.user.name
                             %p
-                              Obtenido: #{number_with_precision(response.evaluation, precision: 1)}
+                              = t('.obtain') + ':' + number_with_precision(response.evaluation, precision: 1)
               - else
                 .no-content-section
-                  %h5 Sin Entregas.
-                  %p Todavia ningún alumno ha contestado este cuestionario.
+                  %h5= t('.no_deliveries')
+                  %p= t('.no_answer')

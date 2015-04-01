@@ -5,9 +5,9 @@
   .overlay-title
     %h6
       = link_to discussion.user.name, show_user_path(discussion.user.personal_url)
-      ha inicidado una discusión
+      = t('.init_discuss')
       - unless discussion.courses.empty?
-        en el curso #{link_to discussion.courses[0].title, course_path(discussion.courses.first)}
+        = t('.in_course') + link_to discussion.courses[0].title, course_path(discussion.courses.first)
   .close-overlay= icon('x-close')
 .overlay-content
   %h3= discussion.title
@@ -18,7 +18,7 @@
   - if discussion.evaluable
     - if discussion.evaluation_criteria.count > 0
       %br/
-      %h5 Criterios a evaluar
+      %h5= t('.criterium')
       %ul
       - discussion.evaluation_criteria.each do |area|
         %li= area.name
@@ -34,7 +34,7 @@
   .model-comments
     - grade_score = response.grade.score
     %p 
-      Calificación Obtenida: 
+      = t('.grade'): 
       %span= number_with_precision(grade_score.to_s, :precision => 1)
     - if response.grade
       - response_evaluations = response.response_to_the_evaluations

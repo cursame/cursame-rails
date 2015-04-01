@@ -12,4 +12,4 @@
 				- if @surveys.current_page < @surveys.num_pages
 					= render partial: 'surveys/shared/surveys_paginate_button', locals: { page: 2, type: 'lapsed', course: nil }
 				- else
-					= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más cuestionarios pasados." }
+					= render partial: "shared/no_more_records_found", locals: { message: t('.no_quest') }

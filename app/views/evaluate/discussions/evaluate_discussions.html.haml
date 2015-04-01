@@ -9,12 +9,12 @@
           .activity-view
             .activity-view-main
               .activity-view-main-user
-                %span.meta-info Discusión:
+                %span.meta-info= t('.discuss') + ':'
                 %p= @discussion.description
               .evaluate-user-response
                 - unless @discussion.comments.count == 0
                   .evaluate-activity-comments
-                    %h6= pluralize @discussion.comments.count, 'Comentario', 'Comentarios'
+                    %h6= pluralize @discussion.comments.count, t('.comment'), t('.comments')
                     - @discussion.comments.each do |comment|
                       .activity-comment
                         .comment-author
@@ -26,7 +26,7 @@
                             %span.comment-meta-item= time_ago_in_words comment.created_at
                 - else
                   .inner-no-content
-                    %h5 Nadie a participado en esta discusión.
+                    %h5= t('.nothing')
 
       .col.col-4
         .col-inner

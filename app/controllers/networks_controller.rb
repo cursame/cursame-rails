@@ -40,9 +40,6 @@ class NetworksController < ApplicationController
           ###### validando que la red no sea nula para redirigir
           if @find_network != nil
             ####### redirecciona la red
-            #render do |page|
-            # page.js{alertmethod_path}
-            #end
             @net = @find_network
           end
         else
@@ -122,7 +119,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.update_attributes(params[:network])
-        format.html { redirect_to :back, flash: { success: 'Configuración guardada correctamente.' } }
+        format.html { redirect_to :back, flash: { success: 'networks.messages.update.success' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -158,7 +155,7 @@ class NetworksController < ApplicationController
       network.push( { name: "#{net.name}", subdomain: "#{net.subdomain}", simplify: "#{@lader}".downcase!})
     end
 
-    render :json => {message:"Buscador de Redes", network: network}, :callback => params[:callback]
+    render :json => { message: 'networks.messages.search.network', network: network}, :callback => params[:callback]
   end
 
   def awaiting_confirmation
@@ -295,6 +292,4 @@ class NetworksController < ApplicationController
       format.json
     end
   end
-
-
 end

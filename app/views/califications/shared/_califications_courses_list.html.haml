@@ -5,7 +5,7 @@
         .col-inner
           .activity-view
             .view-header
-              %h5 Selecciona un curso
+              %h5= t('.select_course')
             .activity-view-main
               - unless courses.empty?
                 .activity-responses-list
@@ -19,7 +19,7 @@
                           .va-middle
                             %h5= course.title
                             - unless current_user.student?
-                              %p= pluralize(course.evaluable_members.count, 'Miembro', 'Miembros')
+                              %p= pluralize(course.evaluable_members.count, t('.member'), t('.members'))
               - else
                 .no-content-section
-                  %h5 No hay cursos para ver calificaciones.
+                  %h5= t('.no_courses')

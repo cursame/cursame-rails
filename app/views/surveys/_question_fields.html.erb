@@ -1,7 +1,7 @@
 <div id="box-question-child" class="question-field">
   <div class="element">
     <span id="question-num" class="num">1.</span>
-    <%= f.text_field :content, rows: 1, placeholder: 'Ingresar pregunta', class: 'question-input-field', required: "required" %>
+    <%= f.text_field :content, rows: 1, placeholder: t('.quest1'), class: 'question-input-field', required: "required" %>
     <div class="delete-question-button">
       <%= link_to_remove_fields icon('x-close'), f, {:class=>'btn btn-small btn-secondary', :clear => 'both'}, '#box-question'  %>
     </div>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="add-aswer">
-    <%= link_to_add_fields "Agregar Respuesta", f, :answers, {:class=>'add-request'}, '#box-request', "#{@survey.id}" %>
+    <%= link_to_add_fields t('.add_answer'), f, :answers, {:class=>'add-request'}, '#box-request' %>
   </div>
 </div>
 

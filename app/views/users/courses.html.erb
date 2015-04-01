@@ -5,7 +5,7 @@
       <div class="col col-12">
         <div class="col-inner">
           <div class="sub-profile-title">
-            <h3>Cursos</h3>
+            <h3><%=t('.courses2')%></h3>
           </div>
         </div>
       </div>
@@ -23,10 +23,10 @@
 <% else %>
   <div class="no-content-section">
     <% if @user_l == current_user %>
-      <h4>Aún no estas inscrito en ningún curso.</h4>
-      <p>Busca cursos en la sección de <%= link_to 'Cursos', courses_path %>.</p>
+      <h4><%=t('.no_registered')%></h4>
+      <p><%=t('.find')%> <%= link_to (t('.courses2'), courses_path) %>.</p>
     <% else %>
-      <h4>Este usuario no esta inscrito en ningún curso.</h4>
+      <h4><%=t('.no_members')%></h4>
     <% end %>
   </div>
 <% end %>

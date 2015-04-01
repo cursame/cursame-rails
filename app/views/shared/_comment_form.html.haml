@@ -19,7 +19,7 @@
         - unless in_form == 'user'
           %li
             - if in_form != 'course' && comment_id == nil
-              = render partial: "shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: 'Público', default_icon: 'public-new-publication', in_type: in_type }
+              = render partial: "shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: t('.new_publication.public'), default_icon: 'public-new-publication', in_type: in_type }
             - else
               = hidden_field_tag "commentable_type", 'Course'
               = hidden_field_tag "delivery[course_ids][]", @course.id
@@ -32,14 +32,15 @@
             = hidden_field_tag :user_id, current_user.id
         %li
           %span.btn.btn-primary.input-btn.activable
-            = submit_tag "Comentar", class: "activable", id: 'comment-post-form'
+            = submit_tag t('.new_publication.comment'), class: "activable", id: 'comment-post-form'
   - else
     %ul.list-buttons.left
       %li
-        %a.btn.btn-secondary.cancel-edit-publication-js{href: "#"} Cancelar
+        %a.btn.btn-secondary.cancel-edit-publication-js{href: "#"}
+          = t('.new_publication.cancel')
       %li
         %span.btn.btn-primary.input-btn
-          = submit_tag "Guardar", class: "activable", id: "comment-post-form"
+          = submit_tag t('.new_publication.save'), class: "activable", id: "comment-post-form"
 
 :javascript
   $(function() {

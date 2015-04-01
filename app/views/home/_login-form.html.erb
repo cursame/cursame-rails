@@ -5,12 +5,12 @@
   
 
     <label class="checkbox remember">
-    <input type="checkbox" name="user[remember_me]" value="remember-me"> Recordarme    
+    <input type="checkbox" name="user[remember_me]" value="remember-me"> <%=t('.remember')%>    
   </label></br>
 
   
-  <button class="log-in" type="submit">Iniciar Sesi&oacute;n</button>
+  <button class="log-in" type="submit"><%=t('.log_in')%></button>
 
   
-    <%=link_to "Olvidé mi contraseña", new_user_password_path,:class =>"forgot"%>
+    <%=link_to (t('.pwd'), new_user_password_path,:class =>"forgot")%>
 </form>

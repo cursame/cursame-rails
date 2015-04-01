@@ -1,9 +1,9 @@
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <div style="overflow:auto!important;height:500px;">
   <%if @member.nil?%>
-    <h3>No eres parte del grupo!</h3>
+    <h3><%t('.no_part')%></h3>
   <%elsif !@member.accepted%>
-    <h3>No has sido aceptado en el grupo!</h3>
+    <h3><%t('.no_accept')%></h3>
   <%elsif @member.owner%>
 
    <div class="form-course fixform" style="padding: 0 0 41px !important; width: 823px!important; overflow:auto;">
@@ -17,24 +17,18 @@
                         <%table = member.course_evaluation(@course,deliveries_from_course,surveys_from_course)%>
 
                         <div class="" style="width: 823px; background: #000; margin-top: -15px;;">
-                        <span class="califHeader">Calificacion: <%=table["evaluation"]%></span>
-                        <span class="AlumHeader">Alumno: <%=user.name%></span>
+                        <span class="califHeader"><%t('.calif')%>: <%=table["evaluation"]%></span>
+                        <span class="AlumHeader"><%t('.student')%>: <%=user.name%></span>
                         </div>
-
-                                <!--
-                        <h4 style="margin-top: 22px; background: #38CDE2; color: #fff; height: 30px; padding-top: 14px; margin-left: -20px; width: 824px; text-align: center; font-weight: lighter;">Alumno: <%=user.name%></h4>
-                        -->
-
-
 
                         <table border="1" cellpadding="3" cellspacing="3" id="calificacionesSpan" width="823px">
                           <tr>
-                            <td width="205px"><p style="color: #258593;">Tarea</p></td>
-                            <td><p style="color: #258593;">Entrega</p></td>
-                            <td><p style="color: #258593;">Rubros</p></td>
-                            <td><p style="color: #258593;">Calificación</p></td>
-                            <td width="80px"><p style="color: #258593;">% de la Evaluación<p></td>
-                                <td width="60px"><p style="color: #258593;">% Final</p></td>
+                            <td width="205px"><p style="color: #258593;"><%=t('.hmwrk')%></p></td>
+                            <td><p style="color: #258593;"><%t('.deliver')%>Entrega</p></td>
+                            <td><p style="color: #258593;"><%t('.ruber')%>Rubros</p></td>
+                            <td><p style="color: #258593;"><%t('.calif')%>Calificación</p></td>
+                            <td width="80px"><p style="color: #258593;">% <%t('.eval_percent')%><p></td>
+                                <td width="60px"><p style="color: #258593;">% <%t('.final')%></p></td>
                           </tr>
                                 <%table["deliveries"]["deliveries"].each_with_index do |delivery,index|%>
                                 <%assignment = table["deliveries"]["assignments"][index]%>
@@ -53,7 +47,7 @@
                             </td>
                             <td valign="top"><%=assignment.accomplishment%></td>
                             <%else%>
-                                        <td valig="top">Sin entregar</td>
+                                        <td valig="top"><%t('.undelivered')%></td>
                                         <td valig="top"></td>
                                         <td valig="top"></td>
                             <%end%>
@@ -72,11 +66,11 @@
 
                       <table border="1" width="823px" cellpadding="3" cellspacing="3" style="margin-top:20px; margin-bottom: 45px;">
                       <tr>
-                        <td width="205px"><p style="color: #258593;">Examen</p></td>
-                        <td><p style="color: #258593;">Calificacion</p></td>
-                        <td><p style="color: #258593;">Calificación Total</p></td>
-                        <td><p style="color: #258593;">% de la Evaluación</p></td>
-                        <td><p style="color: #258593;">% Obtenido</p></td>
+                        <td width="205px"><p style="color: #258593;"><%t('.exam')%></p></td>
+                        <td><p style="color: #258593;"><%t('.calif')%></p></td>
+                        <td><p style="color: #258593;"><%t('.total_score')%></p></td>
+                        <td><p style="color: #258593;">% <%t('.eval_percent')%></p></td>
+                        <td><p style="color: #258593;">% <%t('.obtain_percent')%></p></td>
                       </tr>
                         <%table["surveys"]["surveys"].each_with_index do |survey,index|%>
                           <tr>
@@ -85,7 +79,7 @@
                             <% if table["surveys"]["user_surveys"][index] then%>
                             <%= table["surveys"]["user_surveys"][index].result%>
                                         <%else%>
-                                        Sin resolver
+                                        <%t('.not_resolved')%>
                             <%end%>
                           </td>
 
@@ -110,17 +104,17 @@
                   <%surveys_from_course = @course.surveys.sort{|x,y| x.created_at <=> y.created_at}%>
                     <%table = @member.course_evaluation(@course,deliveries_from_course,surveys_from_course)%>
 
-                            <span class="califHeader" style="margin-top:-20px;">Calificacion: <%=table["evaluation"]%></span>
-                        <h4 style="margin-top: 45px;">Alumno: <%=user.name%></h4>
+                            <span class="califHeader" style="margin-top:-20px;"><%t('.calif')%>: <%=table["evaluation"]%></span>
+                        <h4 style="margin-top: 45px;"><%t('.student')%>: <%=user.name%></h4>
                     </br>
                     <table border="1" width="750" cellpadding="3" cellspacing="3">
                     <tr>
-                      <td><p>Tarea</p></td>
-                      <td><p>Entrega</p></td>
-                      <td><p>Rubros</p></td>
-                      <td><p>Calificación</p></td>
-                      <td><p>% de la Evaluación</p></td>
-                      <td><p>% obtenido</p></td>
+                      <td><p><%t('.hmwrk')%></p></td>
+                      <td><p><%t('.deliver')%></p></td>
+                      <td><p><%t('.ruber')%></p></td>
+                      <td><p><%t('.calif')%></p></td>
+                      <td><p>% <%t('.eval_percent')%></p></td>
+                      <td><p>% <%t('.obtain_percent')%></p></td>
                     </tr>
                       <%table["deliveries"]["deliveries"].each_with_index do |delivery,index|%>
                       <%assignment = table["deliveries"]["assignments"][index]%>
@@ -139,7 +133,7 @@
                     </td>
                     <td valign="top"><%=assignment.accomplishment%></td>
                   <%else%>
-                          <td valig="top">Sin entregar</td>
+                          <td valig="top"><%t('.undelivered')%></td>
                   <td valig="top"></td>
                           <td valig="top"></td>
                   <%end%>
@@ -151,11 +145,11 @@
 
                     <table border="1" width="750" cellpadding="3" cellspacing="3">
                     <tr>
-                      <td><p>Examen</p></td>
-                      <td><p>Calificación</p></td>
-                          <td><p>Calificación Total</p></td>
-                      <td><p>% de la Evaluación</p></td>
-                      <td><p>% Obtenido</p></td>
+                      <td><p><%t('.exam')%></p></td>
+                      <td><p><%t('.calif')%></p></td>
+                          <td><p><%t('.total_score')%></p></td>
+                      <td><p>% <%t('.eval_percent')%></p></td>
+                      <td><p>% <%t('.obtain_percent')%></p></td>
                     </tr>
                       <%table["surveys"]["surveys"].each_with_index do |survey,index|%>
                     <tr>
@@ -164,7 +158,7 @@
                                   <% if table["surveys"]["user_surveys"][index] then%>
                                   <%= table["surveys"]["user_surveys"][index].result%>
                                   <%else%>
-                                  Sin resolver
+                                  <%t('.not_resolved')%>
                                   <%end%>
                                 </td>
                                 </tr>

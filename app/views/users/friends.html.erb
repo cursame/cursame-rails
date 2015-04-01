@@ -9,10 +9,10 @@
         <% else %>
           <div class="no-content-section">
             <% if @user_l == current_user %>
-              <h4>Aún no tienes amigos.</h4>
-              <p>Busca a tus amigos en la sección de <%= link_to 'Comunidad', network_comunity_path %>.</p>
+              <h4><%=t('.no_friends')%></h4>
+              <p><%=t('.find')%> <%= link_to (t('.comunity'), network_comunity_path) %>.</p>
             <% else %>
-              <h4>Este usuario no tiene amigos aún.</h4>
+              <h4><%=t('.no_friends2')%></h4>
             <% end %>
           </div>
         <% end %>

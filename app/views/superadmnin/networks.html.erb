@@ -1,6 +1,6 @@
 <div id="notice"></div>
-<h1 class="super-admin-header2">Administrar networks</h1>
-<div class="ko_btn" id="lp_lk"><div class=" button"><center>Crear Red ++</center></div></div>
+<h1 class="super-admin-header2"><%=t('.admin')%></h1>
+<div class="ko_btn" id="lp_lk"><div class=" button"><center><%=t('.create')%> ++</center></div></div>
   
   <script>
          $('#lp_lk').click(function() {
@@ -12,7 +12,7 @@
   
 <div id="lok_n" style="display:none;">
    
-<p>Creando networks</p>
+<p><%=t('.create_net')%></p>
 <%= form_for(@network = Network.new(params[:network]), remote: true) do |f|%>
 
 <div class="field">
@@ -62,12 +62,12 @@
      <% @networks = Network.all %>
      <% @networks.each do |n| %>
     <div class="n_n">
-       <h3> Red: <%= n.name %> </h3>
-       <p>  Subdominio: <%= n.subdomain %>  </p>
+       <h3> <%=t('.net')%>: <%= n.name %> </h3>
+       <p>  <%=t('.subdomain')%>: <%= n.subdomain %>  </p>
        <p>  Population: <%= n.population %>  </p>
        <p>  Free: <%= n.free %>  </p>
            
-       <div class="button" id="g_<%=n.id%>"><center>Editar</center></div>
+       <div class="button" id="g_<%=n.id%>"><center><%=t('.edit')%></center></div>
     </div>
     <script>
         $('#g_<%=n.id%>').click(function() {

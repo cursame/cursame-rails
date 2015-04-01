@@ -23,22 +23,22 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :title, "Tema de la discusión: " %>
+        <%= f.label :title, t('.discuss')": " %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_field :title, placeholder: 'Ejemplo: Números primos', required: "required" %>
+          <%= f.text_field :title, placeholder: t('.example'), required: "required" %>
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :description, "Descripción:" %>
+        <%= f.label :description, t('.descrip')":" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= f.text_area :description, placeholder: "Descripción", rows: 3, required: true, class: 'autogrow' %>
+          <%= f.text_area :description, placeholder: t('.descrip'), rows: 3, required: true, class: 'autogrow' %>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
 
       <div class="form-group ">
         <div class="form-group-label label-no-p">
-          <%= f.label "", "Material de soporte:" %>
+          <%= f.label "", t('.support')":" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
@@ -70,7 +70,7 @@
             <div class="form-unit">
               <label>
                 <%= f.check_box :evaluable, class: 'evaluable-fields-trigger-js' %> 
-                Calificable
+                <%=t('.calif')%>
               </label>
             </div>
           </div>
@@ -79,18 +79,18 @@
         <div class="evaluable-fields-js">
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label 'Date', "Fechas:" %>
+              <%= f.label 'Date', t('.dates')":" %>
             </div>
             <div class="form-group-main">
               <div class="f-col f-col-5">
                 <div class="form-unit">
-                  <%= f.text_field :publish_date, placeholder: 'Día de publicación', class: "datetime-picker", value: '' %>
+                  <%= f.text_field :publish_date, placeholder: t('.publish_date'), class: "datetime-picker", value: '' %>
                 </div>
               </div>
 
               <div class="f-col f-col-5">
                 <div class="form-unit">
-                  <%= f.text_field :end_date, placeholder: 'Fecha de entrega', class: "datetime-picker", value: '' %>
+                  <%= f.text_field :end_date, placeholder: t('.deliver_date'), class: "datetime-picker", value: '' %>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
 
           <div class="form-group">
             <div class="form-group-label label-no-p">
-              <%= f.label '', "Criterios a evaluar:" %>
+              <%= f.label '', t('.criterium')":" %>
             </div>
             <div class="form-group-main">
               <div class="areas-of-evaluation">
@@ -109,7 +109,7 @@
                         <%= render partial: "shared/evaluation_criteria/evaluation_criteria_fields", locals: { f: builder, base_model: @discussion } %>
                       <% end %>
                     </div>
-                    <%= link_to_add_evaluation_criteria 'Agregar criterio', f, :evaluation_criteria %>
+                    <%= link_to_add_evaluation_criteria t('.add_comment'), f, :evaluation_criteria %>
                   </div>
                 </div>
               </div>
@@ -126,11 +126,11 @@
     <% if active_edit == false %>
       <ul class="list-buttons right fr">
         <li>
-          <%= link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab" %>
+          <%= link_to t('.cancel'), "", class: "btn btn-secondary cancel-post-form_tab" %>
         </li>
         <li>
           <% if in_form != 'course'%>
-            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => 'Público', :default_icon => 'public-new-publication', :in_type => in_type } %>
+            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => t('.public'), :default_icon => 'public-new-publication', :in_type => in_type } %>
           <% else %>
             <% courses = @discussion.courses.build %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
@@ -138,18 +138,18 @@
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
-            <%= f.submit "Crear Discusión", :id => 'comment-post-form', :class => "activable" %>
+            <%= f.submit (t('.create_discuss'), :id => 'comment-post-form', :class => "activable") %>
           </span>
         </li>
       </ul>
     <% else %>
       <ul class="list-buttons right">
         <li>
-          <div class="btn btn-secondary cancel-edit-publication-js">Cancelar</div>
+          <div class="btn btn-secondary cancel-edit-publication-js"><%=t('.cancel')%></div>
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
-            <%= f.submit "Guardar discusión",  :class => "activable" %>
+            <%= f.submit (t('.save_discuss'),  :class => "activable") %>
           </span>
         </li>
       </ul>

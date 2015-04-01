@@ -20,9 +20,9 @@
                   <strong><%= @user.name %></strong>
                   <% case @comment.commentable_type %>
                     <% when "Comment" %>
-                      comentó en un comentario en el curso
+                      <%=t('.comment')%>
                     <% when "Course" %>
-                      comentó en el curso
+                      <%=t('.comment2')%>
                   <% end %>
                   <strong><%= @course.title %></strong>
                 </h1>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff">Si el botón superior no funciona, haz click aquí:<br>
+                <p style="color: #ffffff"><%=t('.button')%>:<br>
                   <%= link_to "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}", "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}", style: "color: #ffffff;" %></p>
                 <br>
                 <br>

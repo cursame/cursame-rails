@@ -10,23 +10,23 @@
         <ul>
           <% if course.active_status and current_network.evaluable? %>
             <li>
-              <%= link_to 'Calificaciones finales', course_closure_path(course) %>
+              <%= link_to (t('.final_score'), course_closure_path(course)) %>
             </li>
             <li>
-              <%= link_to "Calificar actividades", evaluate_course_path(course) %>
+              <%= link_to (t('.activities_score'), evaluate_course_path(course)) %>
             </li>
             <li>
-              <%= link_to "Forma de evaluación", course_evaluation_schema_path( course ) %>
+              <%= link_to (t('.eval_form'), course_evaluation_schema_path( course )) %>
             </li>
           <% end %>
           <li>
-            <%= link_to "Editar", edit_course_path( course.id ) %>
+            <%= link_to (t('.edit'), edit_course_path( course.id )) %>
           </li>
           <li>
-            <%= link_to "Clonar", clone_course_view_path(course) %>
+            <%= link_to (t('.clone'), clone_course_view_path(course)) %>
           </li>
           <li>
-            <%= link_to course.active_status? ? "Finalizar" : "Activar",  active_status_path(course) %>
+            <%= link_to course.active_status? ? t('.finalize') : t('.active'),  active_status_path(course) %>
           </li>
         </ul>
       </div>
@@ -34,15 +34,15 @@
   <% elsif @correspond.accepted && ! @correspond.owner and course.public_status === 'public'%>
     <div class="dropdown-wrap">
       <div class="dropdown-pull btn btn-secondary btn-small">
-        Estás inscrito <%= icon 'drop-arrow' %>
+        <%=t('.enroll')%> <%= icon 'drop-arrow' %>
       </div>
       <div class="dropdown-v left">
         <i class="tip"></i>
         <ul>
           <li>
             <div id="uik_<%= @correspond.id %>"> 
-              <%= link_to @correspond , confirm: '¿Esta seguro de querer abandonar este curso?', method: :delete, :remote => true do %>
-                Abandonar curso
+              <%= link_to (@correspond , confirm: t('.confirm'), method: :delete, :remote => true do) %>
+                <%=t('.leave')%>
               <% end %>
             </div>
           </li>
@@ -51,7 +51,7 @@
     </div>
   <% elsif ! @correspond.accepted %>
     <div class="btn btn-disabled btn-small">
-      Solicitud enviada
+      <%=t('.request_send')%>
     </div>
   <% end %>
 <% else %>
@@ -61,7 +61,7 @@
     <%= f.hidden_field :accepted, :value => 0 %> 
     <% unless current_user.admin? %>
       <span class="btn btn-primary input-btn btn-small">
-        <%= f.submit "Enviar solicitud" %>
+        <%= f.submit t('.send_request') %>
       </span>
     <% end %>
   <% end %>

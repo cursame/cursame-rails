@@ -16,7 +16,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;">Tarea en el curso <% @delivery.courses.each do |course| %><%= course.title %><% end %></h1>
+                <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;"><%=t('.course_notif')%> <% @delivery.courses.each do |course| %><%= course.title %><% end %></h1>
                 <br>
               </td>
             </tr>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;">Entregar antes del <%= @delivery.end_date %></p>
+                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;"><%=t('.deliver')%> <%= @delivery.end_date %></p>
                 <br>
               </td>
             </tr>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff">Si el botón superior no funciona, haz click aquí:<br>
+                <p style="color: #ffffff"><%=t('.button')%>:<br>
                   <%= link_to "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}", "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}", style: "color: #ffffff;" %></p>
                 <br>
                 <br>

@@ -4,6 +4,6 @@
  <%= hidden_field_tag 'domain', request.domain %></br>
  <%= select_tag "t_email", options_for_select( [["Mail confirmación", "confirmate"],["Mail password", "pass"]]) %>
 
- <%= submit_tag "Importar archivo de usuarios" %>
+ <%= submit_tag t('.import') %>
 
 <%end%>

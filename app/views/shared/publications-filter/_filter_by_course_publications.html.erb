@@ -1,7 +1,7 @@
 <div class="section-header-actions">
-  <span class="meta-info">Filtrar: &nbsp;</span>
+  <span class="meta-info"><%=t('.filtrate')%> &nbsp;</span>
   <select class="select-redirect" style="width: 180px;">
-    <option>Selecciona un curso</option>
+    <option><%=t('.select_course')%></option>
     <% current_user.courses.each do |course|%>
       <option value="<%= "#{request.fullpath}/courses/#{course.id}" %>"><%= course.title %></option>
     <% end %>

@@ -1,9 +1,9 @@
 <h1>New group:</h1>
 <%= form_tag create_group_path do %>
-  Nombre:<p><%= text_field_tag(:name) %>
+  <%=t('.name')%>:<p><%= text_field_tag(:name) %>
   <p>
   Description:<p><%= text_area_tag(:description) %>
-  <p><%= submit_tag("Crear") %>
+  <p><%= submit_tag(t('.create')) %>
 <% end %>
 </p>
 

@@ -32,7 +32,7 @@
 
     - if post_comment.owner?(current_role, current_user)
       .post-box-edit
-        %h5 Editar Comentario
+        %h5= t('.edit_comment')
         .post-edit-form-js
     .post-box-under-container
       .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: post_comment, wall: wall }

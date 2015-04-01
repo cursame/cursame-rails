@@ -3,8 +3,8 @@ Dear <%= @user.name%>:
   <h2>List of Errors</h2>
   <table id = "errores">
   <tr>
-    <th> Linea </th>
-    <th> Error </th>
+    <th> <%=t('.line')%> </th>
+    <th> <%=t('.error')%> </th>
   </tr>
   <% @errores.each do |hash| %>
     <tr>

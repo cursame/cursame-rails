@@ -13,4 +13,4 @@
 				- if @discussions.current_page < @discussions.num_pages
 					= render partial: 'discussions/shared/discussions_paginate_button', locals: { page: 2, type: 'all', course: nil }
 				- else
-					= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más discusiones." }
+					= render partial: "shared/no_more_records_found", locals: { message: t('.no_discuss') }

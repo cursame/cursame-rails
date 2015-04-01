@@ -4,43 +4,43 @@
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :email, 'Correo electrónico:'
+      = f.label :email, t('.email') + ':'
     .form-group-main
       .form-unit
-        = f.text_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off"
+        = f.text_field :email, placeholder: t('.')"Correo electrónico", required: "required", autocomplete: "off"
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :first_name, 'Nombre(s):'
+      = f.label :first_name, t('.name') + ':'
     .form-group-main
       .form-unit
-        = f.text_field :first_name, placeholder: "Nombre(s)", required: "required", autocomplete: "off"
+        = f.text_field :first_name, placeholder: t('.name'), required: "required", autocomplete: "off"
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :last_name, 'Apellidos:'
+      = f.label :last_name, t('.last_names') + ':'
     .form-group-main
       .form-unit
-        = f.text_field :last_name, placeholder: "Apellidos", required: "required", autocomplete: "off"
+        = f.text_field :last_name, placeholder: t('.last_names'), required: "required", autocomplete: "off"
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :password, 'Contraseña:'
+      = f.label :password, t('.pwd') + ':'
     .form-group-main
       .form-unit
-        = f.password_field :password, placeholder: "Contraseña", required: "required", autocomplete: "off"
+        = f.password_field :password, placeholder: t('.pwd'), required: "required", autocomplete: "off"
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :role_id, 'Tipo de usuario:'
+      = f.label :role_id, t('.type') + ':'
     .form-group-main
       .form-unit
         - if user.new_record?
           - networks = user.permissionings.build
         = f.fields_for :permissionings do |permissioning|
           = permissioning.hidden_field :network_id, :value => current_network.id
-          = permissioning.select :role_id, options_for_select([['Administrador', '1'], ['Alumno', '2'], ['Profesor', '3']], user.permissionings.first.role_id), required: "required", autocomplete: "off"
+          = permissioning.select :role_id, options_for_select([[t('.admin'), '1'], [t('.student'), '2'], [t('.teacher'), '3']], user.permissionings.first.role_id), required: "required", autocomplete: "off"
   %br/
   %br/
   %ul.list-buttons.left
-    %li= link_to 'Cancelar', :back, class: 'btn btn-medium btn-secondary'
+    %li= link_to (t('.cancel'), :back, class: 'btn btn-medium btn-secondary')
     %li
       %span.btn.btn-primary.input-btn.btn-medium.activable
-        = f.submit ( user.new_record? ? 'Crear Usuario' : 'Guardar cambios')
+        = f.submit ( user.new_record? ? t('.create') : t('.save'))

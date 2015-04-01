@@ -15,20 +15,20 @@
             <div class="activity-view-data">
               <ul>
                 <li>
-                  <span class="meta-info">Curso</span>
+                  <span class="meta-info"><%=t('.course')%></span>
                   <p><%= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course) %></p>
                 </li>
                 <li>
-                  <span class="meta-info">Contestados</span>
-                  <p><%= survey.responses.count %> de <%= course.members_in_courses.count - 1 %></p>
+                  <span class="meta-info"><%=t('.answered')%></span>
+                  <p><%= survey.responses.count %> <%=t('.of')%> <%= course.members_in_courses.count - 1 %></p>
                 </li>
                 <li>
-                  <span class="meta-info">Fecha de publicación</span>
-                  <p><%= I18n.localize(survey.publish_date, format: "%e de %B del %Y") %></p>
+                  <span class="meta-info"><%=t('.publish_date')%></span>
+                  <p><%= I18n.localize(survey.publish_date, format: "%e t('.of')de %B t('.the') %Y") %></p>
                 </li>
                 <li>
-                  <span class="meta-info">Fecha para entrega</span>
-                  <p><%= I18n.localize(survey.end_date, format: "%e de %B del %Y") %></p>
+                  <span class="meta-info"><%=t('.deliver_date')%></span>
+                  <p><%= I18n.localize(survey.end_date, format: "%e t('.of') %B t('.the') %Y") %></p>
                 </li>
               </ul>
             </div>

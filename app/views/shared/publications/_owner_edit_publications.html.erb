@@ -8,10 +8,10 @@
         <i class="tip"></i>
         <ul>
           <li>
-            <%= link_to "Borrar", destroy_wall_path(wall.id), remote: true, confirm: "¿Estas seguro de borrar esto?" %>
+            <%= link_to (t('.delete'), destroy_wall_path(wall.id), remote: true, confirm: t('.confirm')) %>
           </li>
           <li>
-            <%= link_to "Editar", edit_wall_path(type: wall.publication_type, id: wall.publication_id), remote: true, class: 'edit-publication-link' %>
+            <%= link_to(t('.edit'), edit_wall_path(type: wall.publication_type, id: wall.publication_id), remote: true, class: 'edit-publication-link') %>
           </li>
         </ul>
       </div>

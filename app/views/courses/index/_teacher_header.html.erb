@@ -3,7 +3,7 @@
     <div class="section-title">
       <%= link_to icon('section-courses'), courses_path %>
       <%= link_to courses_path do %>
-        <h1><%= current_network.courses_tag %></h1>
+        <h1><%=t('.courses')%></h1>
       <% end %>
     </div>
     <div class="section-header-actions">
@@ -12,7 +12,7 @@
           <%= render partial: "/courses/courses_search" %>
         </li>
         <li>
-          <%= link_to "#{icon('plus-white')} Nuevo".html_safe, new_course_path, :title => "Crear #{current_network.course_tag} nuevo", :class=> "btn btn-primary" %>
+          <%= link_to "#{icon('plus-white') t('.new')}".html_safe, new_course_path, :title => t('.create_course'), :class=> "btn btn-primary" %>
         </li>
       </ul>
     </div>
@@ -21,10 +21,10 @@
     <% action = params[:action] %>
     <ul>
       <li>
-        <%= link_to "Activos", courses_path, class: (action == 'index' ? "active" : " ") %>
+        <%= link_to (t('.active'), courses_path, class: (action == 'index' ? "active" : " ")) %>
       </li>
       <li>
-        <%= link_to "Finalizados", courses_unpublished_path, class: (action == 'unpublished' ? "active" : " ") %>
+        <%= link_to (t('.finalize'), courses_unpublished_path, class: (action == 'unpublished' ? "active" : " ")) %>
       </li>
     </ul>
   </div>

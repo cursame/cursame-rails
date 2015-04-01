@@ -1,0 +1,71 @@
+es:
+  surveys:
+    shared:
+      survey_card:
+        quest: Ver Cuestionario
+        edit: Editar Cuestionario
+      survey_modal:
+        quest: Cuestionario en el curso
+        response: Responder antes del
+        calif: Calificación Obtenida
+        feedback: Retroalimentación
+      survey_questions_modal:
+        quest: Enviar cuestionario
+      surveys_course_header:
+        quest: Cuestionarios
+        response: Responder
+        past: Pasados
+      surveys_courses_filter:
+        filter: Filtrar
+        select: Selecciona un curso
+      surveys_header:
+        quest: Cuestionarios
+        response: Responder
+        past: Pasados
+      surveys_paginate_button:
+        load: Cargar más...
+    answer_fields:
+      response: Ingresar respuesta
+      correct: Correcta
+      delete: Eliminar
+    form:
+      title: Titulo del cuestionario
+      example: Ejemplo
+      text1: Números primos
+      dates: Fechas
+      publish_date: Día de pubicación
+      deliver_date: Fecha de entrega 
+      quest: Preguntas
+      add_quest: Agregar Pregunta
+      support: Material de soporte
+      cancel: Cancelar
+      courses: Cursos
+      save: Guardar Cuestionario
+      create: Crear Cuestionario
+    question_fields:
+      quest1: Ingresar pregunta
+      add_answer: Agregar Respuesta
+    survey_response_tpl:
+      cancel: Cancelar
+      answer: Contestar
+    index:
+      today: Cuestionarios para responder Hoy
+      tomorrow: Cuestionarios para responder Mañana
+      more_days: Cuestionarios para responder en 3 días o más
+      no_quest: No tienes cuestionarios pendientes por contestar.
+      see: Puedes ver antiguos cuestionarios en la
+      section: sección de cuestionarios Pasados
+    lapsed:
+      no_quest: No se encontraron más cuestionarios pasados.
+    my_surveys:
+      no_quest: No tienes cuestionarios por contestar.
+    surveys_course:
+      to_day: Cuestionarios para responder Hoy
+      tomorrow: Cuestionarios para responder Mañana
+      more_days: Cuestionarios para responder en 3 días o más
+      no_quest: No tienes cuestionarios pendientes por contestar en este curso.
+      see: Puedes ver antiguos cuestionarios en la
+      past: sección de cuestionarios Pasados
+    surveys_course_lapsed:
+      quest: No se encontraron más cuestionarios pasados.
+

@@ -1,14 +1,14 @@
-<div class="super-admin-header">Visor de cursos</div>
-<div class="super-admin-descriptions">Muestra los cursos de las redes, sus miembros y sus actividades</div></br></br>
+<div class="super-admin-header"><%=t('.courses')%></div>
+<div class="super-admin-descriptions"><%=t('.show')%></div></br></br>
 
 <% @courses.each do |course|%>
  <div class="holder_admin">
  <div class="course_container">
  <div class="heder_courses"><%= course.title %></div>
  <div class="body_course"><%= course.silabus%></div>
- <a id="<%= course.id %>tareas-super-admin">Mostrar tareas</a></br>
- <a id="<%= course.id %>cuestionarios-super-admin">Mostrar cuestionarios</a></br>
- <a id="<%= course.id %>estaditicas-super-admin">Mostrar estadísticas del surso</a></br>
+ <a id="<%= course.id %>tareas-super-admin"><%=t('.show2')%></a></br>
+ <a id="<%= course.id %>cuestionarios-super-admin"><%=t('.show3')%></a></br>
+ <a id="<%= course.id %>estaditicas-super-admin"><%=t('.show4')%></a></br>
  
 
  </div>
@@ -35,20 +35,20 @@
     </script>
  <!--comienzan views de tareas-->  
      <div class="tareas_super_admin" id="<%= course.id %>tareas-super-admin-lop">
-          <div  class="secon_title_super_admin">Tareas</div>
+          <div  class="secon_title_super_admin"><%=t('.hmwrks')%></div>
          <% course.deliveries.each do |delivery|%>
          <div class="delivery_course_admin">
          
           <div class="title_delivery_admin"> <%= delivery.title %> </div>
           <div class="descrition_delivery_admin"> <%= delivery.description%>
              
-              <a class="float_right" id="<%=delivery.id%>-delivery">Ver entregas</a>
+              <a class="float_right" id="<%=delivery.id%>-delivery"><%=t('.show5')%></a>
          
           </div>
           
           </div>
            <div class="surveys_super_admin" id="<%=delivery.id%>-delivery-lop">
-               <div  class="secon_title_super_admin">Entregas de tarea</div>
+               <div  class="secon_title_super_admin"><%=t('.hmwrks_delivery')%></div>
            
            <% delivery.assignments.each do |assignment|%>
                 <div class="red_line_container">
@@ -75,7 +75,7 @@
     
     <!--comienzan cuestionarios-->  
 <div class="survey_super_admin" id ="<%= course.id%>cuestionarios-super-admin-lop">
-    <div  class="secon_title_super_admin">Cuestionarios</div>
+    <div  class="secon_title_super_admin"><%=t('.quest')%></div>
     <% course.surveys.each do |survey|%>
      <div class="delivery_course_admin">
      
@@ -88,9 +88,9 @@
     <!--finaliza cuestionarios-->  
 <!--comienzan estadísticas--> 
 <div class="survey_super_admin" id ="<%= course.id%>estaditicas-super-admin-lop">
-    <div  class="secon_title_super_admin">Estadísticas</div>
-   <div class="super-admin-header"> Cuestionarios  <div class="counter-marquer"><center><%= course.surveys.count %> </center></div></div></br>
- <div class="super-admin-header">  Tareas  <div class="counter-marquer"><center>  <%= course.deliveries.count %></center></div></div></br>
+    <div  class="secon_title_super_admin"><%=t('.stat')%></div>
+   <div class="super-admin-header"> <%=t('.quest')%>  <div class="counter-marquer"><center><%= course.surveys.count %> </center></div></div></br>
+ <div class="super-admin-header">  <%=t('.hmwrks')%>  <div class="counter-marquer"><center>  <%= course.deliveries.count %></center></div></div></br>
   
 </div>
 <!--finaliza estadísticas--> 

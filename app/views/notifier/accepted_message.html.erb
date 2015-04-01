@@ -16,12 +16,12 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;">¡Hola <%= @user.name %>!</h1>
+                <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;"><%=t('.hello')%> <%= @user.name %>!</h1>
               </td>
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;">Has sido aceptado en el curso <strong><%= @course.title %></strong></p>
+                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;"><%=t('.accept')%> <strong><%= @course.title %></strong></p>
                 <br>
               </td>
             </tr>
@@ -34,7 +34,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff">Si el botón superior no funciona, haz click aquí:<br>
+                <p style="color: #ffffff"><%=t('.button')%>:<br>
                   <%= link_to "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}/courses/#{@course.id}", "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}/courses/#{@course.id}", style: "color: #ffffff;" %></p>
                 <br>
                 <br>

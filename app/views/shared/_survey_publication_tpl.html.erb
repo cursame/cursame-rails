@@ -20,7 +20,7 @@
 
       <div id="image-<%= survey.id %>" class="resolve-surveys">
 		  	<div class="response-survey" style="margin-top: -6px; font-size: 18px; font-weight: 100; width: 470px; margin-left: -210px;">
-				<p style="float: left;">Cuestionario respondido</p>
+				<p style="float: left;"><%=t('.respond_quest')%></p>
 				<span style="float: right"><%= number_with_precision(response.result.to_s, :precision => 2) %></span>
 			</div>
 	  </div>

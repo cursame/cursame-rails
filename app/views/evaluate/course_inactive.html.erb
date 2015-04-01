@@ -9,8 +9,8 @@
 							<%= render partial: 'evaluate/shared/activities_list', locals: { activities: @activities } %>
 						<% else %>
 							<div class="no-content-section">
-				        <h4>Aún no tienes calificaciones.</h4>
-				        <p>Necesitas estar inscrito en al menos un curso para tener calificaiones.</p>
+				        <h4><%=t('.no_score')%></h4>
+				        <p><%=t('.enrollment')%></p>
 				      </div>
 						<% end %>
 					</div>

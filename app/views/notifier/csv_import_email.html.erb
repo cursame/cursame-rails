@@ -8,20 +8,20 @@
         <br>
         <br>
         <h1 style="font-size: 20px; font-weight: 400; margin: 0; color: #333;">
-          <span style="font-size: 15px; font-weight: normal;">¡Hola <%= @user.first_name %>!</span>
+          <span style="font-size: 15px; font-weight: normal;"><%=t('.hello')%> <%= @user.first_name %>!</span>
         </h1>
         <br>
         <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">
-          Te anexamos los resultados de la importación de usuarios:
+          <%=t('.results')%>:
         </p>
         <br/>
         <br/>
         <% @new_users.each do |user| %>
           <p style="font-size: 15px; color: #404040; font-weight: 300; line-height: 25px; margin: 0;">
             <% if user.errors.messages.count == 0 %>
-              <span style="color:green">Exito</span> - <span style="font-weight: bold;"><%= user.name %></span>, <span style="font-style: italic;"><%= user.email %></span>
+              <span style="color:green"><%=t('.success')%></span> - <span style="font-weight: bold;"><%= user.name %></span>, <span style="font-style: italic;"><%= user.email %></span>
             <% else %>
-              <span style="color:red">¡Error!</span> - <span style="font-weight: bold;"><%= user.name %></span>, <span style="font-style: italic;"><%= user.email %></span>
+              <span style="color:red"><%=t('.error')%></span> - <span style="font-weight: bold;"><%= user.name %></span>, <span style="font-style: italic;"><%= user.email %></span>
             <% end %>
           </p>
         <% end %>

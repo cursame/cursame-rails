@@ -3,17 +3,17 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 #{current_network.courses_tag}
+          %h1= t('.courses')
         .actions
-          = link_to "Crear #{current_network.course_tag}", new_managers_course_path, class: 'btn btn-complementary'
+          = link_to t('.create'), new_managers_course_path, class: 'btn btn-complementary'
       %table.data-table
         %thead
           %tr
-            %th Nombre
-            %th #{current_network.professors_tag}
-            %th #{current_network.students_tag}
-            %th Fecha de creación
-            %th Acciones
+            %th= t('.name')
+            %th= t('.teachers')
+            %th= t('.students')
+            %th= t('.inte_date')
+            %th= t('.actions')
         %tbody
           - @courses.each do |course|
             %tr
@@ -32,7 +32,7 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
-                      %li= link_to 'Editar', edit_managers_course_path(course)
-                      %li= link_to 'Borrar', managers_course_path(course), method: :delete, confirm: 'Estas seguro de borrar este curso.'
+                      %li= link_to (t('.edit'), edit_managers_course_path(course))
+                      %li= link_to (t('.delete'), managers_course_path(course), method: :delete, confirm: t('.sure'))
       .digg_pagination.paginator
         = will_paginate @courses

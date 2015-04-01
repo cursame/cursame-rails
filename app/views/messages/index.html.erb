@@ -1,8 +1,8 @@
 <!-- se hace un retiro de código del código anterior ya que users esta mas definido -->
 <%if @member.nil?%>
-  <h3>No eres parte del grupo!</h3>
+  <h3><%=t('.no_member')%></h3>
 <%elsif @member.owner%>
-  <h1>Enviar Mensaje:</h1>
+  <h1><%=t('.send')%>:</h1>
 
   <%= form_for @message, :url => active_create_course_messages_path, :method => :post do |f| %>
     <% if @message.errors.any? %>
@@ -24,6 +24,6 @@
     <%= f.text_area :content, :rows => 5 %>
   </div>
 
-  <div class="actions"><%= f.submit "Enviar Mensaje" %></div>
+  <div class="actions"><%= f.submit t('.send') %></div>
   <% end %>
 <% end %>

@@ -9,17 +9,17 @@ $(document).ready(function() {
 
 <div class="content login confirmationIndexHeader" id="titlheader" style="text-align:center; margin-top: 50px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding-top: 40px; padding-bottom: 1px; padding-left: 20px; padding-right: 20px;">
 			<b style="font-size: 35px!important; line-height: 30px;">
-			Lo sentimos
+			<%=t('.sorry')%>
     		</b>
     		<br /><br />
 			<span style="width: 250px;!important">
-    La red a la que estas intentado accesar no existe
-    pregunta a un encargado de tu escuela él sabrá ayudarte.
+    <%=t('.net')%>
+    <%=t('.net2')%>
     		</span>
  
     <center>
        <span class="confirm-btn" style="width: 140px; height: 22px; color: #FFF; padding: 10px 30px; color: #FFF!important; margin-top: 30px; display: block; position: relative;">
-       	<%= link_to "Ir al inicio", "http://www.cursa.me/browser/" %>
+       	<%= link_to (t('.init'), "http://www.cursa.me/browser/") %>
        </span>   
     </center>    
     </p>
@@ -33,14 +33,14 @@ $(document).ready(function() {
 
 <% if !@user_inactive.nil? then %>
   <div class="user-inactive">
-    Se ha enviado un correo a  <%= @user_inactive.email %>. <p>
-    Esperando confirmación
+    <%=t('.send')%>  <%= @user_inactive.email %>. <p>
+    <%=t('.confirm')%>
   </div>
 <% end %>
 
 <div class="login">    
     <p>
-    <b>Clases, Actividades, Red Social.</b><br />C&uacute;rsame conecta a directivos, profesores y alumnos<br>permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
+    <b><%=t('.s_net')%></b><br /><%=t('.s_net2')%><br><%=t('.s_net3')%>
     </p>
     <br><br>
 
@@ -49,11 +49,11 @@ $(document).ready(function() {
     
     <div class="register_class" style="float: left; width: 333px; height: auto; padding: 27px;">
     
-    	C&uacute;rsame conecta a directivos, profesores y alumnos permiti&eacute;ndoles interactuar social y acad&eacute;micamente.
+    	<%=t('.s_netn')%>
 		<br />
 		
 		<center>
-    		<%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path ,:class=>"btn large primary"%>
+    		<%= link_to t('.sign_in'), new_user_registration_path ,:class=>"btn large primary"%>
     	</center>
     </div>
     
@@ -61,15 +61,15 @@ $(document).ready(function() {
     <div class="sign-in-class" style="width: 310px; height: 400px; display: block; float: right; background: #FFF;">
     
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class => "form-signin" ) do |f| %>
-		<div class="login-heading">Inicia sesión</div>
+		<div class="login-heading"><%=t('.session')%></div>
 		
 		<%= devise_error_messages! %>
 		
-		<%= f.email_field :email, :class => "email",:placeholder =>"Correo electrónico" %>
-		<%= f.password_field :password, :class => "pswd",:placeholder =>"Contraseña"%>
+		<%= f.email_field :email, :class => "email",:placeholder =>t('.email') %>
+		<%= f.password_field :password, :class => "pswd",:placeholder =>t('.pwd')%>
 		<% if devise_mapping.rememberable? -%>
 		<label class="checkbox remember" style="margin-left: 11px;">
-		  <%= f.check_box :remember_me %> <label>&nbsp;&nbsp;Recordarme</label>
+		  <%= f.check_box :remember_me %> <label>&nbsp;&nbsp;<%=t('.remember')%></label>
 		</label>
 		
 		<!--
@@ -79,13 +79,13 @@ $(document).ready(function() {
 		-->
 		
 		<% end -%>
-		<%= f.submit "Iniciar Sesión", :class =>"log-in" %>
+		<%= f.submit t('.log_in'), :class =>"log-in" %>
 		
 		<div class="Confirmation_ins" style="clear: both;">
       <%= render partial: 'devise/shared/links', locals: { login: true, signup: true, password: false, confirmation: true, unlock: true } %>
     </div>
 		
-		<div class="" id="linked" style="cursor:pointer; color: #6a6a6a; font-size: 12px; margin-left: 12px; margin-top: 3px;">Soy un usuario antiguo y tengo dudas</div>
+		<div class="" id="linked" style="cursor:pointer; color: #6a6a6a; font-size: 12px; margin-left: 12px; margin-top: 3px;"><%=t('.antique_usr')%></div>
 		
 		<% end %>
 	
@@ -93,28 +93,28 @@ $(document).ready(function() {
 	
 	    <div id="sub_linked" style=" width: 640px; height: 340px; font-size: 14px; background-color: rgba(245,245,245,1); padding: 30px; text-align: left; color: rgb(128, 125, 119); z-index: 999; position: absolute; margin-top: 400px; ">
 
-<center><div id="Closelinked" style="cursor: pointer; background: #000; color: #FFF; width: 60px; padding: 8px 20px; margin-bottom: 28px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; text-align: center;">Cerrar</div></center>
+<center><div id="Closelinked" style="cursor: pointer; background: #000; color: #FFF; width: 60px; padding: 8px 20px; margin-bottom: 28px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; text-align: center;"><%=t('.close')%></div></center>
 
 	    
         <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
-			<b style="font-size:15px; color:#000; clear: both;">¿Soy usuario?:</b><br /><br />
-			"Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."
+			<b style="font-size:15px; color:#000; clear: both;"><%=t('.user')%>:</b><br /><br />
+			<%=t('.last_user')%>
         </div>
         
         <div style="width: 315px; height: 120px; text-shadow:none; float: right;">
-            <b style="font-size:15px; color:#000; clear: both;">¿Mi clave sigue siendo la misma?:</b></br></br>
-            Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
-             te pedirá que cambies tu contraseña.
+            <b style="font-size:15px; color:#000; clear: both;"><%=t('.key')%>:</b></br></br>
+            <%=t('.new_pwd')%>
+             <%=t('.change_pwd')%>
         </div>
         
         <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
-           <b style="font-size:15px; color:#000; clear: both;">No me ha llegado el mail de confirmación:</b></br></br>
-            Da click en el link <b style="font-size: 14px;"><%= link_to "Confirma tu cuenta", new_unlock_path(resource_name) %></b> te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.
+           <b style="font-size:15px; color:#000; clear: both;"><%=t('.confirm2')%>:</b></br></br>
+            <%=t('.link')%> <b style="font-size: 14px;"><%= link_to (t('.acount'), new_unlock_path(resource_name)) %></b><%=t('.account_window')%> 
         </div>
             
 		<div style="width: 315px; height: 120px; text-shadow:none; float: right;">
-           <b style="font-size:15px; color:#000; clear: both;">Confirmé mi email pero olvide cambiar mi contraseña:</b></br></br>
-            Cualquier problema con la contraseña puedes resolverlo dando click en <%=link_to "Olvidé mi contraseña", new_user_password_path %> donde se te enviará un mail para que puedas cambiar tu contraseña.
+           <b style="font-size:15px; color:#000; clear: both;"><%=t('.confirm3')%>:</b></br></br>
+            <%=t('.pwd_problem')%> <%=link_to t('.forgot_pwd'), new_user_password_path %> <%=t('.send_pwd')%>
         </div>
             
     </div>

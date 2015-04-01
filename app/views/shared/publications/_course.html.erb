@@ -8,7 +8,7 @@
     <%= icon('curso-publication') %>
   </div>
   <div class="academic-intro">
-    <p>Nuevo curso público</p>
+    <p><%=t('.new_course')%></p>
   </div>
   <div class="academic-title">
     <h3 class="title"><%= link_to course_post[:name], course_path(publication.publication.id) %></h3>
@@ -17,7 +17,7 @@
     <p><%= truncate( course_post[:content], omission: "...", length: 150) %></p>
   </div>
   <div class="academic-button">
-    <%= link_to 'Ir al curso', course_path(publication.publication.id), class: "btn btn-transparent uppercase" %>
+    <%= link_to(t('.go_course'), course_path(publication.publication.id), class: "btn btn-transparent uppercase") %>
   </div>
 </div>
 <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: true} %>

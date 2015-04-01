@@ -1,6 +1,6 @@
 = label_tag from, class: 'btn btn-small btn-secondary' do
   = icon('upload-asset')
-  Archivo
+  = t('.file')
 .hide-input-file
   = file_field_tag :filename, id: from, class: 'upload-input', multiple: true, name: "asset[filename]", data: { url: assets_path }
   = hidden_field_tag :user_id, current_user.id

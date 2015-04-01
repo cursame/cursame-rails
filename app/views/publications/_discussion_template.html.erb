@@ -7,10 +7,10 @@
   </div>
   <div class="overlay-title">
     <h6>
-      <%= link_to publication.user.name, show_user_path(publication.user.personal_url) %> ha inicidado una discusión
+      <%= link_to publication.user.name, show_user_path(publication.user.personal_url) %> <%=t('.discuss')%>
 
       <% unless publication.courses.empty? %>
-        en el curso <%= link_to publication.courses[0].title, course_path(publication.courses[0].id) %>
+        <%=t('.in_course')%> <%= link_to publication.courses[0].title, course_path(publication.courses[0].id) %>
       <% end %>
     </h6>
   </div>

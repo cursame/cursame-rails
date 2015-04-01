@@ -4,7 +4,7 @@
     <%= link_to asset.filename.to_s, target: "_blank", class: "fl" do %>
       <%= icon('upload-asset-blue') %> <%= asset.filename.file.filename %>
     <% end %>
-    <%= link_to "Borrar","/assets/"+asset.id.to_s, :confirm => '¿Eliminar archivo?', :method => :delete ,:remote => true, :onclick => "$(this).parent().remove();", :class => "fr" %>
+    <%= link_to t('.delete'),"/assets/"+asset.id.to_s, :confirm => t('.confirm'), :method => :delete ,:remote => true, :onclick => "$(this).parent().remove();", :class => "fr" %>
   </div>
 <% end %>
 
@@ -14,7 +14,7 @@
       <%= link_to content.content, target: "_blank", class: "fl" do %>
         <%= icon('dropbox-asset-blue') %> <%= truncate(content.content, :omission => "...", :length => 50) %>
       <% end %>
-      <%= link_to "Borrar", destroy_content_path( content.id ), :confirm => '¿Eliminar contenido?', :remote => true, :class => "fr" %>
+      <%= link_to t('.delete'), destroy_content_path( content.id ), :confirm => t('.confirm1'), :remote => true, :class => "fr" %>
     </div>
   <% end %>
 <% end %>

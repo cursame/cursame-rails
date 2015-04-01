@@ -7,7 +7,7 @@
     <p class="title-discusion" style="width:150px; float:left; margin-left:-60px; "><%= truncate("#{delivery.title}", :omission => "...", :length => 35) %></p>
 
 <div class="end-date-box">
-    <div class="end-date-label">Entregar antes de:</div>
+    <div class="end-date-label"><%= t('.end_delivery')%></div>
     <div class="end-date">
         <%= delivery.end_date.strftime( '%d-%h-%Y %l:%M%P') %>
     </div>
@@ -17,11 +17,11 @@
 </div>
 
 
-<!--este script sirve para incertar los contenidos por typo en cada uno de los genericos-->
+<!--este script sirve para insertar los contenidos por typo en cada uno de los genericos-->
 <%= render :partial => "content/insertions_to_contents", :locals => { :type => delivery, :cl => "delivery"}%>
 
 <% if delivery.assets.count > 0 %>
-<div class="extra-label">Archivos:</div>
+<div class="extra-label"><%= t('.files')%></div>
 <div class="asset-box upload-label">
     <% delivery.assets.each do |files|%>
         <div class="file-mini-upload">
@@ -32,7 +32,7 @@
 </div>
 <%end%>
 <% if delivery.evaluation_criteria.count > 0 %>
-<div class="extra-label">Se evalua:</div>
+<div class="extra-label"><%= t('.evaluates')%></div>
 <div class="evaluation-box">
     <div id="chart-delivery-<%= delivery.id %>" style="min-width: 580px; height: 60px; margin: 0 auto"></div>
     <script type="text/javascript">
@@ -143,7 +143,7 @@
         <div class="labels">
             <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty?%>
             <div id="open-close-delivery<%= delivery.id %>">
-                <a>Responder</a>
+                <a><%= t('.reply')%></a>
             </div>            
             <%else%>
                 <% accomplishment = current_user.assignments.where(:delivery_id => delivery.id)[0].accomplishment%>
@@ -153,7 +153,7 @@
                     </div>
                 <%else%>
                     <div id="open-close-delivery<%= delivery.id%>">
-                       <a>Editar Entrega</a>
+                       <a><%= t('.edit_delivery')%></a>
                     </div>
                 <%end%>                
             <%end%>
@@ -188,7 +188,7 @@
 
                 <% if @count_deliveries_areas_of_evaluation > 0%>
                 <%else%>
-                  <b>A esta tarea no se le han asignado áreas de evaluación </b></br>
+                  <b><%= t('.no_evaluation')%></b></br>
                 <%end%>
                 <% if @count_deliveries_assignments > 0%>
                     <% delivery.assignments.each do |assignment| %>
@@ -197,17 +197,17 @@
                           <%= form_for assignment do |assignment_form|%>
 
                                <%= assignment_form.fields_for :response_to_the_evaluations do |response| %>
-                                     <b>rubro</b></br>
+                                     <b><%= t('.category')%></b></br>
                                       <%= render :partial => "assignments/responce_of_evaluation", :locals => { :f => response }%>
                                <%end%>
-                                    <b>Evaluación final</b>
+                                    <b><%= t('.final_eval')%></b>
                                    <%= assignment_form.text_field :accomplishment %></br>
                                <%= assignment_form.submit%></br>
 
                           <%end%>
-                       <%= link_to "Ver entrega de tarea", "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}"%>
+                       <%= link_to(t('.view_delivey'), "http://#{current_network.subdomain}.#{links}/assignments/#{assignment.id}")%>
                     <%end%>
                   <% else %>
-                    <b>No se han encontrado respuestas a esta tarea</b>
+                    <b><%= t('.no_reply')%></b>
                 <% end %>
 </div>

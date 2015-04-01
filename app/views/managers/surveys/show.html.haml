@@ -3,8 +3,8 @@
     .col.col-12.alpha.omega
       .col-inner
         %ul.list-buttons.left
-          %li= link_to '&#8592; Regresar'.html_safe, managers_surveys_path, class: 'btn btn-secondary'
-          %li= link_to 'Borrar', managers_survey_path(@survey), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar esta tarea.'
+          %li= link_to (t('.return').html_safe, managers_surveys_path, class: 'btn btn-secondary')
+          %li= link_to (t('.delete'), managers_survey_path(@survey), class: 'btn btn-primary', method: :delete, confirm: t('.sure'))
 .cols-12
   .col.col-12.alpha.omega
     .col-inner
@@ -17,21 +17,21 @@
   .col.col-6.alpha.omega
     .col-inner
 
-      %span.meta-info Fecha de Creacíon
+      %span.meta-info= t('.init_date')
       %p= @survey.created_at
 
       %br/
-      %span.meta-info Fecha de finalización
+      %span.meta-info= t('.end_date')
       %p= @survey.end_date
 
       %br/
-      %span.meta-info Estado
+      %span.meta-info= t('.state')
       %p= @survey.state == "published" ? "Publicada" : "Sin Publicar"
 
       %br/
-      %span.meta-info Curso
+      %span.meta-info= t('.course')
       %p= @survey.courses.first.title
 
       %br/
-      %span.meta-info Maestro
+      %span.meta-info= t('.teacher')
       %p= @survey.user

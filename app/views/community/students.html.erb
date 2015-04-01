@@ -13,11 +13,11 @@
 	  <% if @students.total_entries > CARDS_PER_PAGE %>
 			<%= render partial: 'community/shared/community_paginate_button', locals: { page: 2, role: 'student' } %>
 		<% elsif @students.total_entries <= CARDS_PER_PAGE %>
-			<%= render partial: "shared/no_more_records_found", locals: { message: "No hay más usuarios por mostrar.." } %>
+			<%= render partial: "shared/no_more_records_found", locals: { message: t('.no_more_usr') } %>
 		<% end %>
 	<% else %>
 	  <div class="no-content-section">
-      <h4>Aún no hay estudiantes en tu red.</h4>
+      <h4><%=t('.no_students')%></h4>
 	  </div>
   <% end %>
 </div>

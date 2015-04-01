@@ -9,7 +9,7 @@
         </div>
         <div class="course-califications-header-main">
           <h3><%= member.course.title %></h3>
-          <span>Calificacion: <%= evaluation_score member.course_average %></span>
+          <span><%=t('.score')%>: <%= evaluation_score member.course_average %></span>
         </div>
       </div>
       <div class="course-califications-main">
@@ -37,7 +37,7 @@
               <%= avatar('user', '30', "no", member.user.id, "avatar", "no", "no") %>
               <div class="user-califications-header-title">
                 <h6><%= member.user.name%></h6>
-                <span>Calificacion: <%= evaluation_score member.course_average %></span>
+                <span><%=t('.score')%>: <%= evaluation_score member.course_average %></span>
                 <span class="arrow-down triagle-8"></span>
               </div>
             </div>
@@ -50,7 +50,7 @@
         <%end%>
       <% else %>
         <div class="no-sub-content-section">
-          <h6>Este curso no tiene miembros</h6>
+          <h6><%=t('.no_members')%></h6>
         </div>
       <% end %>
     </div>

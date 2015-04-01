@@ -7,5 +7,5 @@ $('div.cards-list .cols-12').append( content );
 <% else %>
 	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: "No hay más usuarios por mostrar." } ) )%>';
 	$('div.load-more div.col-inner').html( message )
-<% end %>
+<% end %
 

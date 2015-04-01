@@ -1,0 +1,18 @@
+es:
+  calendar:
+    index:
+      day1: D
+      day2: L
+      day3: M
+      day4: M
+      day5: J
+      day6: V
+      day7: S
+      sunday: Domingo
+      monday: Lunes
+      tuesday: Martes
+      wednesday: Miercoles
+      thursday: Jueves
+      friday: Viernes
+      saturday: Sabado
+

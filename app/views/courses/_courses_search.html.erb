@@ -1,9 +1,9 @@
 <%= form_tag(search_courses_path, :class => "search-courses") do %>
   <div class="search-wrap">
-    <%= text_field_tag 'query', '', placeholder: "Buscar #{ current_network.course_tag }...", class: 'search-input', id: 'search-courses' %>
+    <%= text_field_tag 'query', '', placeholder: t('.courses_search'), class: 'search-input', id: 'search-courses' %>
     <div class="search-button">
       <span class="btn btn-secondary input-btn">
-        <%= submit_tag 'Buscar' %>
+        <%= submit_tag t('.search') %>
       </span>
     </div>
   </div>

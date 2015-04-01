@@ -17,7 +17,7 @@ background-white
         <% end %>
       </div>
       <div class="section-title">
-        <h1>Clonar curso</h1>
+        <h1><%=t('.clone')%></h1>
       </div>
     </div>
   </div>
@@ -29,18 +29,18 @@ background-white
 	  	<%= form_for(@course, :url => clone_course_path, :method => :post, :html => { :class => "clone-course-form", :id => "clone-course-form" }) do |f| %>
 
 				<div id="clone-course-data" class="step">
-					<h3>Datos del curso</h3>
-					<p>Cambia la información para el nuevo curso.</p>
+					<h3><%=t('.data_course')%></h3>
+					<p><%=t('.info_new_course')%></p>
 					<br>
 
 					<div class="form-group">
 		        <div class="form-group-label">
-		        	<%= f.label :title, "Nombre del #{current_network.course_tag}:" %>
+		        	<%= f.label :title, "#{ t('.name') current_network.course_tag}:" %>
 		          <label></label>  
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
-		          	<%= text_field_tag "course[title]", "#{@course.title} (clonado)", placeholder: "Ejemplo: Matemáticas I", required: "required", autocomplete: "off" %>
+		          	<%= text_field_tag "course[title]", "#{@course.title} (clonado)", placeholder: t('.example'), required: "required", autocomplete: "off" %>
 		          </div>
 		        </div>
 		      </div>
@@ -51,19 +51,19 @@ background-white
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
-		            <%= f.text_area :silabus, rows: 7, cols: 50, placeholder: "Descripción", required: "required", autocomplete: "off" %>
+		            <%= f.text_area :silabus, rows: 7, cols: 50, placeholder: t('.descrip'), required: "required", autocomplete: "off" %>
 		          </div>
 		        </div>
 		      </div>
 
 		      <div class="form-group">
 		        <div class="form-group-label">
-		          <%= f.label :init_date, "Fechas:"%>
+		          <%= f.label :init_date, t('.dates')%>
 		        </div>
 		        <div class="form-group-main">
 		          <div class="f-col f-col-5">
 		            <div class="form-unit">
-			            <%= f.text_field :init_date, placeholder: 'Fecha de inicio', value: "", required: "required", autocomplete: "off" %>
+			            <%= f.text_field :init_date, placeholder: t('.init_date'), value: "", required: "required", autocomplete: "off" %>
 		            </div>
 		          </div>
 		        </div>
@@ -71,14 +71,14 @@ background-white
 
 		      <div class="form-group">
 		        <div class="form-group-label">
-		          <%= f.label :public_status, 'Privacidad:' %>
+		          <%= f.label :public_status, t('.privacy')':' %>
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
 		            <% if @course.public_status == 'public' %>
-						      <%= f.select :public_status, options_for_select([['Público', 'public'],['Privado', 'Private']])%>
+						      <%= f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']])%>
 						     <%else%>
-						      <%= f.select :public_status, options_for_select([['Privado', 'Private'],['Público', 'public']])%>
+						      <%= f.select :public_status, options_for_select([[t('.private'), 'Private'],[t('.public'), 'public']])%>
 						     <%end%>
 		          </div>
 		        </div>
@@ -86,10 +86,10 @@ background-white
 				
 				</div>
 
-				<% if current_network.evaluable? %>
-          <div id="clone-course-deliveries" class="step">
-  					<h3>Tareas</h3>
-  					<p>Selecciona las tareas que quieres clonar para el nuevo curso.</p>
+        <% if current_network.evaluable? %>
+  				<div id="clone-course-deliveries" class="step">
+  					<h3><%=t('.hmwrks')%></h3>
+  					<p><%=t('.clone_hmwrks')%></p>
   					<br>
   					
   					<% unless @course.deliveries.empty? %>
@@ -103,12 +103,12 @@ background-white
   				        <div class="form-group-main">
   				          <div class="f-col f-col-5">
   				            <div class="form-unit">
-  				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: 'Fecha de publicación', id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent required" %>
+  				            	<%= text_field_tag "deliveries[#{index}][publish_date]", "", placeholder: t('.publish_date'), id: "fecha_publicacion_delivery_" + delivery_id, class: "dependent required" %>
   				            </div>
   				          </div>
   				          <div class="f-col f-col-5">
   				            <div class="form-unit">
-  				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: 'Fecha Entrega', id: "fecha_entrega_delivery_" + delivery_id, class: "dependent required" %>
+  				              <%= text_field_tag "deliveries[#{index}][end_date]", "" , placeholder: t('.delivery_date'), id: "fecha_entrega_delivery_" + delivery_id, class: "dependent required" %>
   				            </div>
   				          </div>
   				        </div>
@@ -135,7 +135,7 @@ background-white
   						</div>
   					<% end %>
   				</div>
-        <%end%>
+        <% end %>
 
 				<div id="clone-course-discussions" class="step">
 					<h3>Discusiones</h3>

@@ -4,44 +4,44 @@
       .col.col-12.alpha.omega
         .col-inner
           %ul.list-buttons.left
-            %li= link_to '&#8592; Regresar'.html_safe, managers_courses_path, class: 'btn btn-secondary'
-            %li= link_to 'Editar', edit_managers_course_path(@course), class: 'btn btn-primary'
-            %li= link_to 'Borrar', managers_course_path(@course), class: 'btn btn-primary', method: :delete, confirm: 'Estas seguro de borrar este curso.'
+            %li= link_to (t('.return').html_safe, managers_courses_path, class: 'btn btn-secondary')
+            %li= link_to (t('.edit'), edit_managers_course_path(@course), class: 'btn btn-primary')
+            %li= link_to (t('.delete'), managers_course_path(@course), class: 'btn btn-primary', method: :delete, confirm: t('.sure'))
 
   .cols-12
     .col.col-8.alpha.omega
       .col-inner
 
-        %span.meta-info Fecha de Creacíon
+        %span.meta-info= t('.create_date')
         %p= @course.created_at
 
         %br/
-        %span.meta-info Descripción
+        %span.meta-info= t('.descrip')
         %p= @course.silabus
 
         %br/
-        %span.meta-info Administradores
+        %span.meta-info= t('.admin')
         - @course.owners.each do |user|
           %p= user.name
 
         %br/
-        %span.meta-info Alumnos - #{@course.students.count}
+        %span.meta-info= t('.students') + '-' + @course.students.count
         - @course.students.each do |member|
           %p= member.name
 
         %br/
-        %span.meta-info Comentarios
+        %span.meta-info= t('.comments')
         %p= @course.comments.count
 
         %br/
-        %span.meta-info Tareas
+        %span.meta-info= t('.hmwrks')
         %p= @course.deliveries.count
 
         %br/
-        %span.meta-info Cuestionarios
+        %span.meta-info= t('.quest')
         %p= @course.surveys.count
 
         %br/
-        %span.meta-info Archivos
+        %span.meta-info= t('.files')
         - @course.course_files.each do |file|
           %p= file.attributes['file']

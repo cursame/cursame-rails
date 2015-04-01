@@ -12,4 +12,4 @@
 			- if @deliveries.current_page < @deliveries.num_pages
 				= render partial: 'deliveries/shared/deliveries_paginate_button', locals: { page: 2, type: 'course_lapsed', course: @course }
 			- else
-				= render partial: "shared/no_more_records_found", locals: { message: "No se encontraron más tareas pasadas." }
+				= render partial: "shared/no_more_records_found", locals: { message: t('.last_hmwrks') }

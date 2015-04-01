@@ -3,29 +3,29 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 Cuestionarios
+          %h1= t('.quest')
       %table.data-table
         %thead
           %tr
-            %th Nombre
-            %th Estado
-            %th Fecha de creación
-            %th Fecha de finalización
-            %th Curso
-            %th Usuario
-            %th Acciones
+            %th= t('.name')
+            %th= t('.state')
+            %th= t('.init_date')
+            %th= t('.end_date')
+            %th= t('.course')
+            %th= t('.user')
+            %th= t('.actions')
         %tbody
           - @surveys.each do |survey| 
             %tr
               %td= link_to survey.title, managers_survey_path(survey)
-              %td= survey.state == "published" ? "Publicada" : "Sin Publicar"
+              %td= survey.state == "published" ? t('.published') : t('.unpublished')
               %td= survey.created_at
               %td= survey.end_date
               %td= link_to survey.courses.first.title, managers_course_path(survey.courses.first)
               - unless survey.user.nil?
                 %td= link_to survey.user, managers_user_path(survey.user)
               - else
-                %td= "No tiene usuario"
+                %td= t('.no_user')
               %td
                 .dropdown-wrap.actions
                   .dropdown-pull.btn.btn-secondary.btn-small
@@ -33,7 +33,7 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
-                      %li= link_to 'Ver', managers_survey_path(survey)
-                      %li= link_to 'Borrar', managers_survey_path(survey), method: :delete, confirm: 'Estas seguro de borrar este cuestionario.'
+                      %li= link_to t('.view'), managers_survey_path(survey)
+                      %li= link_to t('.delete'), managers_survey_path(survey), method: :delete, confirm: t('.sure')
       .digg_pagination.paginator
         = will_paginate @surveys

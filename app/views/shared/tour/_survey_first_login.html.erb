@@ -6,13 +6,13 @@
 
 <div class="overlay-header">
   <div class="overlay-title">
-    <h4>Ayúdanos a mejorar</h4>
+    <h4><%=t('.title')%></h4>
     <% if quiz_type == "teacher" %>
-      <p>Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.</p>
+      <p><%=t('.title2')%></p>
     <% elsif quiz_type == "student" %>
-      <p>Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente.</p>
+      <p><%=t('.title3')%></p>
     <% end %>
-    <p>Gracias.</p>
+    <p><%=t('.thnx')%></p>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
@@ -146,11 +146,11 @@
   <div class="overlay-footer">
     <div class="fl">
       <span class="btn btn-medium btn-primary input-btn">
-        <%= submit_tag "Enviar Encuesta" %>
+        <%= submit_tag t('.quest') %>
       </span>
     </div>
     <div class="fr">
-      <p>Tus datos son confidenciales y serán utilizados con el fin de <br>mejorar nuestro servicio, Revisa nuestro <%= link_to "Aviso de Privacidad", privacidad_path, target: "_blank" %>.</p>
+      <p><%=t('.text4')%><br><%=t('.text5')%><%= link_to (t('.priv'), privacidad_path, target: "_blank") %>.</p>
     </div>
   </div>
 <% end %>

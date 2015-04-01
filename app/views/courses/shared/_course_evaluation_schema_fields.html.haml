@@ -2,23 +2,23 @@
   %td
     - if f.object.name == 'cursame_deliveries'
       %span= icon 'activity-delivery'
-      Tareas
+      = t('.hmwrks')
       = f.hidden_field :id
     -elsif f.object.name == 'cursame_surveys'
       %span= icon 'activity-survey'
-      Cuestionarios
+      = t('.quest')
       = f.hidden_field :id
     -elsif f.object.name == 'cursame_discussions'
       %span= icon 'activity-discussion'
-      Discusiones
+      = t('.discuss')
       = f.hidden_field :id
     - else
-      = f.text_field :name, placeholder: '¿Que criterio se evaluará?', autocomplete: 'off', required: true, class: 'course-evaluation-item-name-js'
+      = f.text_field :name, placeholder: t('.criterium'), autocomplete: 'off', required: true, class: 'course-evaluation-item-name-js'
       = f.hidden_field :id
   %td.eva-percenage
     .eva-percenage-input
       %span %
-      = f.text_field :evaluation_percentage, placeholder: 'Porcentaje asignado', autocomplete: 'off', required: true, digits: true, min: 0, max: 100, class: 'course-evaluation-item-value-js'
+      = f.text_field :evaluation_percentage, placeholder: t('.percent'), autocomplete: 'off', required: true, digits: true, min: 0, max: 100, class: 'course-evaluation-item-value-js'
     = f.hidden_field :evaluable_id, :value => @course.id
     = f.hidden_field :evaluable_type, :value => "Course"
     = f.hidden_field :_destroy, class: '_destroy'

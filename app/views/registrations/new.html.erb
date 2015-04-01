@@ -6,14 +6,14 @@
     <div class="user-sessions-main">
       <div class="user-session-content">
         <% unless current_network.register_form %>
-          <p>Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.</p><br>
-          <%= link_to "Ir a la página principal", "/users/sign_in" %>
+          <p><%=t('.text1')%></p><br>
+          <%= link_to (t('.text2'), "/users/sign_in") %>
         <% else %>
           
           <% if request.env['PATH_INFO'] == '/teachers/sign_up' %>
-            <h4>Regístrate Profesor</h4><br>
+            <h4><%=t('.teacher')%>Regístrate Profesor</h4><br>
           <% else %>
-            <h4>Regístrate Alumno</h4><br>
+            <h4><%=t('.student')%>Regístrate Alumno</h4><br>
           <% end %>
           <% unless devise_error_messages!.blank? %>
             <div class="user-session-errors">
@@ -28,62 +28,62 @@
 
             <div class="form-group">
               <div class="form-group-label">
-                <%= f.label :email, 'Correo electrónico:' %>
+                <%= f.label :email, t('.email') + ':' %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.email_field :email, placeholder: "Correo electrónico", required: "required", autocomplete: "off" %>
+                  <%= f.email_field :email, placeholder: t('.email'), required: "required", autocomplete: "off" %>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <div class="form-group-label">
-                <%= f.label :first_name, 'Nombre(s):' %>
+                <%= f.label :first_name, t('.name') + ':' %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.text_field :first_name, placeholder: "Nombre(s)", required: "required", autocomplete: "off" %>
+                  <%= f.text_field :first_name, placeholder: t('.name'), required: "required", autocomplete: "off" %>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <div class="form-group-label">
-                <%= f.label :last_name, 'Apellidos:' %>
+                <%= f.label :last_name, t('.')'Apellidos:' %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.text_field :last_name, placeholder: "Apellidos", required: "required", autocomplete: "off" %>
+                  <%= f.text_field :last_name, placeholder: t('.last_name'), required: "required", autocomplete: "off" %>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <div class="form-group-label">
-                <%= f.label :password, 'Contraseña:' %>
+                <%= f.label :password, t('.pwd') + ':' %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.password_field :password, placeholder: "Contraseña", required: "required", autocomplete: "off", minlength: "6" %>
+                  <%= f.password_field :password, placeholder: t('.pwd'), required: "required", autocomplete: "off", minlength: "6" %>
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <div class="form-group-label">
-                <%= f.label :password_confirmation, 'Confirmar contraseña:' %>
+                <%= f.label :password_confirmation, t('.confirm_pwd') + ':' %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <%= f.password_field :password_confirmation, placeholder: "Confirmacion de contraseña", required: "required", autocomplete: "off", minlength: "6" %>
+                  <%= f.password_field :password_confirmation, placeholder: t('.confirm_pwd2'), required: "required", autocomplete: "off", minlength: "6" %>
                 </div>
               </div>
             </div>
             <%= f.hidden_field :self_register, value: true %>
             <div class="form-group">
               <div class="form-group-label" style="display: none;">
-                <%= f.label :role_id, 'Tipo de usuario:' %>
+                <%= f.label :role_id, t('.type') + ':' %>
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
@@ -106,7 +106,7 @@
               </div>
               <div class="form-group-main">
                 <div class="form-unit">
-                  <label for="user_accepted_terms" style="display: block; padding-top: 6px;">Acepto los <%= link_to "Términos y Condiciones", conditions_path, target: '_blank' %>.</label>
+                  <label for="user_accepted_terms" style="display: block; padding-top: 6px;"><%=t('.accept')%> <%= link_to (t('.terms'), conditions_path, target: '_blank') %>.</label>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@
             <div class="user-sessions-footer">
               <div class="fr">
                 <span class="btn btn-primary btn-medium input-btn">
-                  <%= f.submit "Registrarme" %>
+                  <%= f.submit t('.sign_in') %>
                 </span>
               </div>
             </div>

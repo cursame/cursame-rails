@@ -21,7 +21,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;">Desea formar parte de tú curso <strong><%= @course.title %></strong></p>
+                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;"><%=t('.course')%> <strong><%= @course.title %></strong></p>
                 <br>
               </td>
             </tr>
@@ -34,7 +34,7 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff">Si el botón superior no funciona, haz click aquí:<br>
+                <p style="color: #ffffff"><%=t('.button')%>:<br>
                   <%= link_to "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}/members", "http://#{@course.network.subdomain}.#{@user.ubication}/courses/#{@course.id}/members", style: "color: #ffffff;" %></p>
                 <br>
                 <br>

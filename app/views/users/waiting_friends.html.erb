@@ -1,10 +1,10 @@
 
-<h1>Amigos en espera</h1>
+<h1><%=t('.friends')%></h1>
 <% if @user_two != nil %>
-<p>Esperando aceptación de:<%= image_tag(@user_two.avatar.mini)%> <b><%= link_to "#{@user_two.name} #{@user_two.email}", show_user_path(@user_two.personal_url) %></b></p>
+<p><%=t('.waiting_friends')%>:<%= image_tag(@user_two.avatar.mini)%> <b><%= link_to "#{@user_two.name} #{@user_two.email}", show_user_path(@user_two.personal_url) %></b></p>
 
 <%end%>
 <% if @user_one_two != nil%>
-<p>Este usuario te ha solicitado amistad:<%= image_tag(@user_one_two.avatar.mini)%> <b><%= link_to "#{@user_one_two.name} #{@user_one_two.email}", "/users/#{current_user.personal_url}/waiting_friends/#{@relation_two.id}" %></b></p>
+<p><%=t('.request')%>:<%= image_tag(@user_one_two.avatar.mini)%> <b><%= link_to "#{@user_one_two.name} #{@user_one_two.email}", "/users/#{current_user.personal_url}/waiting_friends/#{@relation_two.id}" %></b></p>
    
 <%end%>

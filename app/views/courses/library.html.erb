@@ -11,10 +11,10 @@
         <div class="library-wrap container">
           <div class="header">
             <div class="left">
-              <h3>Biblioteca</h3>
+              <h3><%=t('.biblio')%></h3>
               <span class="library-count">
                 <% if @course.course_files.any? %>
-                  <%= pluralize(@course.course_files.count, 'Archivo', 'Archivos') %>
+                  <%= pluralize(@course.course_files.count, t('.file'), t('.files')) %>
                 <% end %>
               </span>  
             </div>
@@ -22,7 +22,7 @@
               <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
                 <%= form_for CourseFile.new, :html => { :multipart => true } do |f| %>
                   <label class="btn btn-primary activable">
-                    Subir archivo
+                    <%=t('.upload')%>
                     <span class="hide-input-file">
                       <input id="upload-files-to-course" name="course_file[file]" type="file" multiple="multiple"/>
                       <%= hidden_field_tag :course_id, @course.id %> 
@@ -45,19 +45,19 @@
               </div>
               <% if @files.num_pages > @files.current_page %>
                 <div class="library-paginator">
-                  <%= link_to "Cargar más archivos", library_in_course_pagination_path(page: @files.next_page), id: "paginador", remote: true%>
+                  <%= link_to (t('.load'), library_in_course_pagination_path(page: @files.next_page), id: "paginador", remote: true)%>
                 </div>
               <% end %>
             <% else %>
               <div class="no-content-section">
-                <h4>Este curso no tiene archivos en su librería.</h4>
+                <h4><%=t('.no_files')%></h4>
               </div>
             <% end %>
           </div>
         </div>
 
         <div class="library-terms">
-          <p class="small">Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo <%= mail_to "info@cursa.me", "info@cursa.me"%></p>
+          <p class="small"><%=t('.text2')%> <%= mail_to "info@cursa.me", "info@cursa.me"%></p>
         </div>
 
         <div id="uplok">

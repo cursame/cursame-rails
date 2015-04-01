@@ -8,13 +8,13 @@
               .section-title
                 = link_to icon('section-deliveries'), deliveries_path
                 = link_to deliveries_path do
-                  %h1 Tareas
+                  %h1= t('.hmwrks')
               - unless current_user.courses.empty?
                 = render partial: '/deliveries/shared/deliveries_filter_course'
             .page-sub-navigation
               - action = params[:action]
               %ul
                 %li
-                  = link_to "Entregar", deliveries_path, class: active_class('index')
+                  = link_to (t('.deliver'), deliveries_path, class: active_class('index'))
                 %li
-                  = link_to "Pasadas", deliveries_lapsed_path, class: active_class('lapsed')
+                  = link_to (t('.past'), deliveries_lapsed_path, class: active_class('lapsed'))

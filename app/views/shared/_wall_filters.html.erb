@@ -8,12 +8,12 @@
 			<% if id %>
 				<%= hidden_field_tag :id, id %>
 			<%end%>
-            <li><label class="lblclass"><%= radio_button_tag 'search', 'Todos' %>Todos</label></li>
-			<li><label class="lblclass"><%= radio_button_tag 'search', 'Discussion' %>Discusiones</label></li>
-			<li><label class="lblclass"><%= radio_button_tag 'search', 'Course' %>Cursos</label></li>
-			<li><label class="lblclass"><%= radio_button_tag 'search', 'Comment' %>Comentarios</label></li>
-			<li><label class="lblclass"><%= radio_button_tag 'search', 'Delivery' %>Tareas</label></li>
-			<li><label class="lblclass"><%= radio_button_tag 'search', 'Survey' %>Cuestionarios</label></li>
+            <li><label class="lblclass"><%= radio_button_tag 'search', 'Todos' %><%=t('.all')%></label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Discussion' %><%=t('.discuss')%></label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Course' %><%=t('.courses')%></label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Comment' %><%=t('.comments')%></label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Delivery' %><%=t('.homework')%></label></li>
+			<li><label class="lblclass"><%= radio_button_tag 'search', 'Survey' %><%=t('.quest')%></label></li>
         </ul>
     </li>
 </ul><!-- </nav> -->

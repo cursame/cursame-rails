@@ -3,7 +3,7 @@
   .comments-load-more
     = link_to load_more_comments_path(id: post.id, type: post.class), remote: true do
       = icon('comments')
-      Comentarios anteriores
+      = t('.prev_comments')
 
 .comments-list
   - comments.last(COMMENTS_PER_PAGE).each do |comment|
@@ -17,7 +17,7 @@
           %span.avatar-holder
             = avatar('user', '30', 'no', current_user.id, 'avatar', 'no', 'no')
         .comment-main
-          = text_area_tag "comment", nil, placeholder: 'Escribe un comentario', required: true, class: 'autogrow swift-enter'
+          = text_area_tag "comment", nil, placeholder: t('.write_comment'), required: true, class: 'autogrow swift-enter'
           = hidden_field_tag 'commentable_id', post.id
           = hidden_field_tag 'commentable_type', post.class.to_s
           = hidden_field_tag 'from_enter_key', true
@@ -29,4 +29,5 @@
             = hidden_field_tag :user_id, current_user.id
 - else
   .comments-not-allowed
-    %span Esta publicación ya no se puede comentar.
+    %span 
+      = t('.non_commentable')
