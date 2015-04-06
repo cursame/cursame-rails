@@ -5,7 +5,7 @@ es:
         final_scores: Calificaciones finales
         send_scores: Envia la calificación final a los estudiantes del grupo.
         members: Miembros
-        score: Calificación:
+        score: "Calificación:"
         no_score: Sin calificar
         no_members: No hay miembros en el curso.
         invite: Invita a tus alumnos que se unan a tu curso.
@@ -15,16 +15,16 @@ es:
         hmwrk: Tareas
         send: Entrego
         of: de
-        percent: Porcentaje:
+        percent: "Porcentaje:"
         quest: Cuestionarios
         respond: Contesto
         discuss: Discusiones
         participate: Participo en
-        example8: Ejemplo: 8
+        example8: "Ejemplo: 8"
         final_score: Calificación Final
         rate_student: Calificar alumno
         members: Miembros
-        calif: Calificación:
+        calif: "Calificación:"
         no_rate: Sin calificar
     index:
       student_courses_index:
@@ -61,7 +61,7 @@ es:
         no_request: No hay más solicitudes pendientes.
     search:
       courses_search_results:
-        search: Busqueda:
+        search: "Busqueda:"
         no_records: No se encontraron cursos con el criterio de busqueda.
     shared:
       course_card:
@@ -133,17 +133,17 @@ es:
       deliver: Entrega
       items: Rubros
       calif: Calificación
-      eval: % de la Evaluación
-      final: % Final
+      eval: "% de la Evaluación"
+      final: "% Final"
       no_deliver: Sin entregar
       exam: Examen
       total_score: Calificación Total
       obtained: Obtenido
       unresolved: Sin resolver
       course_score: Calificación del curso
-      student: Alumno:
-      percent_obtain: % obtenido
-      percent_obtain1: % Obtenido
+      student: "Alumno:"
+      percent_obtain: "% obtenido"
+      percent_obtain1: "% Obtenido"
       hmwrk: Tarea
     form:
       name: Nombre del

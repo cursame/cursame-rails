@@ -15,7 +15,7 @@ es:
       no_records: No hay más usuarios por mostrar...
       no_usr: No se encontraron usarios en tu red.
     search:
-      search: Búsqueda:
+      search: "Búsqueda:"
       no_usr: No se encontraron usarios en tu red.
     students:
       no_more_usr: No hay más usuarios por mostrar...

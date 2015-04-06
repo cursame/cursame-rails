@@ -18,12 +18,12 @@ es:
       final_score: Calificación final
       criterion: Criterio
       score: Calificación Obtenida
-      percent: Porcentaje:
+      percent: "Porcentaje:"
       no_score: Aún no tienes calificación final.
       no_printable_score: Tu profesor todavia no te ha dado calificación final.
       active_courses: Cursos activos
     member:
-      score: Calificación Cúrsame:
-      final_score: Calificación final:
+      score: "Calificación Cúrsame:"
+      final_score: "Calificación final:"
       no_score: Sin Calificar
       members: Miembros
