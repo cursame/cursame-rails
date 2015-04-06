@@ -23,7 +23,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :title, t('.discuss')": " %>
+        <%= f.label :title, "#{t('.discuss')}: " %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -34,7 +34,7 @@
 
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :description, t('.descrip')":" %>
+        <%= f.label :description, "#{t('.descrip')}:" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -47,7 +47,7 @@
 
       <div class="form-group ">
         <div class="form-group-label label-no-p">
-          <%= f.label "", t('.support')":" %>
+          <%= f.label "", "#{t('.support')}:" %>
         </div>
         <div class="form-group-main">
           <div class="form-unit">
@@ -79,7 +79,7 @@
         <div class="evaluable-fields-js">
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label 'Date', t('.dates')":" %>
+              <%= f.label 'Date', "#{t('.dates')}:" %>
             </div>
             <div class="form-group-main">
               <div class="f-col f-col-5">
@@ -98,7 +98,7 @@
 
           <div class="form-group">
             <div class="form-group-label label-no-p">
-              <%= f.label '', t('.criterium')":" %>
+              <%= f.label '', "#{t('.criterium')}:" %>
             </div>
             <div class="form-group-main">
               <div class="areas-of-evaluation">
@@ -138,7 +138,7 @@
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
-            <%= f.submit (t('.create_discuss'), :id => 'comment-post-form', :class => "activable") %>
+            <%= f.submit t('.create_discuss'), :id => 'comment-post-form', :class => "activable" %>
           </span>
         </li>
       </ul>
@@ -149,7 +149,7 @@
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
-            <%= f.submit (t('.save_discuss'),  :class => "activable") %>
+            <%= f.submit t('.save_discuss'), :class => "activable" %>
           </span>
         </li>
       </ul>

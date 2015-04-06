@@ -14,7 +14,7 @@
     .comment-meta
       %span.comment-meta-item
         - unless current_user.voted_up_on? comment
-          = link_to(t('.like'), upvote_comment_path(comment.id), remote: true, class: 'vote-child-comment-js'
+          = link_to t('.like'), upvote_comment_path(comment.id), remote: true, class: 'vote-child-comment-js'
         - else 
           = link_to(t('.not_like'), downvote_comment_path(comment.id), remote: true, class: 'vote-child-comment-js')
       %span.comment-meta-item= time_ago_in_words comment.created_at

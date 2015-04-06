@@ -10,6 +10,6 @@
       <% end %>
   </div>
   <div class="request-field" style="height: 40px;">
-    <%= link_to_add_fields "+ " + t('.add'), f, :answers, {:class=>'add-request'}, '#box-request' %>
+    <%= link_to_add_fields t('.add'), f, :answers, {:class=>'add-request'}, '#box-request', @survey.id %>
   </div>
 </div>

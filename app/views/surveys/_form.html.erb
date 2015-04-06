@@ -96,9 +96,9 @@
     <ul class="list-buttons right <%= 'fr' unless active_edit %>">
       <li>
         <% if active_edit %>
-          <%= link_to (t('.cancel'), "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab') %>
+          <%= link_to t('.cancel'), "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
         <% else %>
-          <%= link_to (t('.cancel'), "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab') %>
+          <%= link_to t('.cancel'), "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
         <% end %>
       </li>
       

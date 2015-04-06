@@ -19,7 +19,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :title, t('.hmwrk_theme')':'.html_safe %>
+        <%= f.label :title, "#{t('.hmwrk_theme')}:".html_safe %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -30,7 +30,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :publish_date, t('.dates')":" %>
+        <%= f.label :publish_date, "#{t('.dates')}:" %>
       </div>
       <div class="form-group-main">
         <div class="f-col f-col-5">
@@ -49,7 +49,7 @@
     
     <div class="form-group">
       <div class="form-group-label">
-        <%= f.label :description, t('.descrip')":" %>
+        <%= f.label :description, "#{t('.descrip')}:" %>
       </div>
       <div class="form-group-main">
         <div class="form-unit">
@@ -61,7 +61,7 @@
     <% if active_edit == false %>  
       <div class="form-group">
         <div class="form-group-label label-no-p">
-          <%= f.label '', t('.criterium')":" %>
+          <%= f.label '', "#{t('.criterium')}:" %>
         </div>
         <div class="form-group-main">
           <div class="areas-of-evaluation">

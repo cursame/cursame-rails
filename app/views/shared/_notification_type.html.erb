@@ -13,7 +13,7 @@
       <% end%>
       
       <%=link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if (!notification.notificator.user.name.blank?)%>
-      <%=link_to((t('.activity_feed.lookup_usr'), show_user_path(notification.notificator.user.personal_url) if (notification.notificator.user.name.blank?)%>
+      <%=link_to t('.activity_feed.lookup_usr'), show_user_path(notification.notificator.user.personal_url) if (notification.notificator.user.name.blank?) %>
       <%=t('.activity_feed.comment_net')%><%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
             
     <!-- Notificacion: 2 - Usuario comento en un curso -->
@@ -457,7 +457,11 @@
       <% @array = notification.notificator.user %>
       <% if @array.class == Array %>
         <% user =  @array.first %>
-        <%= image_tag(user.avatar.modern,{:class => "avatar-notifications avatar-mini"}) if ( !user.avatar.blank?) %><%= image_tag(user.image_avatarxxx,{:class => "avatar-notifications avatar-mini"}) if ( user.avatar.blank?) %><%=t('.activity_feed.activities_p_user')%><%=link_to "#{user.name} ",show_user_path(user.personal_url) if ( !user.name.blank?)%><%=link_to(t('.activity_feed.view_usr'),show_user_path(user.personal_url) if (user.name.blank?))%>
+        <%= image_tag(user.avatar.modern, {:class => "avatar-notifications avatar-mini"}) if (!user.avatar.blank?) %>
+        <%= image_tag(user.image_avatarxxx, {:class => "avatar-notifications avatar-mini"}) if ( user.avatar.blank?) %>
+        <%= t('.activity_feed.activities_p_user') %>
+        <%= link_to "#{user.name} ", show_user_path(user.personal_url) if (!user.name.blank?) %>
+        <%= link_to t('.activity_feed.view_usr'), show_user_path(user.personal_url) if (user.name.blank?) %>
       <%else%>
         <% if notification.notificator.user  != nil %>
           <% if  notification.notificator.user.avatar != nil %>
@@ -465,7 +469,7 @@
             <%= image_tag(notification.notificator.user.image_avatarxxx, {:class => "avatar-notifications avatar-mini"}) if ( notification.notificator.user.avatar.blank?) %>
           <%end%>
           <%=t('.activity_feed.activities_p_user')%><%=link_to "#{notification.notificator.user.name} ", show_user_path(notification.notificator.user.personal_url) if ( !notification.notificator.user.name.blank?)%>
-          <%=link_to(t('.activity_feed.view_usr'), show_user_path(notification.notificator.user.personal_url) if ( notification.notificator.user.name.blank?))%>
+          <%= link_to t('.activity_feed.view_usr'), show_user_path(notification.notificator.user.personal_url) if (notification.notificator.user.name.blank?) %>
         <%end%>
       <%end%>
     <%end%>

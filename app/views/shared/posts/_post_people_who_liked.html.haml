@@ -2,4 +2,6 @@
   .post-box-likes-inner
     %span
       = icon('like-c')
-      = t('.ed') link_to (pluralize(post.votes.up.size, 'persona', 'personas'), get_votes_of_publication_path(wall.id), remote: true) t('.liked')
+      = t('.ed')
+      = link_to pluralize(post.votes.up.size, 'persona', 'personas'), get_votes_of_publication_path(wall.id), remote: true
+      = t('.liked')
