@@ -13,7 +13,7 @@ es:
         active_courses: Cursos activos
         closed_courses: Cursos finalizados
     course:
-      calification: Calificación
+      calification: "Calificación:"
       no_members: Este curso no tiene miembros
       final_score: Calificación final
       criterion: Criterio

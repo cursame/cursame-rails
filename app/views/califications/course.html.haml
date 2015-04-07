@@ -14,7 +14,7 @@
                         = avatar('user', '45', "no", member.user.id, "avatar", "no", "no")
                       .member-calification-main
                         %h5= member.user.name
-                        %span.member-score #{t('.calification') evaluation_score (@course.cursame_criteria ? member.course_average : member.course_average_old)}
+                        %span.member-score= t('.calification') + "#{evaluation_score (@course.cursame_criteria ? member.course_average : member.course_average_old)}"
             - else
               .no-content-section
                 %h6= t('.no_members')
@@ -37,7 +37,7 @@
                         %tr
                           %td
                             %h4 Cúrsame
-                            %span.meta-info #{t('.percent')  @course.cursame_criteria ? cursame_percentage(member.course) : member.course.cursame_percentage_old }
+                            %span.meta-info= t('.percent') + "#{@course.cursame_criteria ? cursame_percentage(member.course) : member.course.cursame_percentage_old }"
                           %td
                             %span.score.cursame-score-js= evaluation_score (@course.cursame_criteria ? member.course_average : (member.course_average_old * (member.course.cursame_percentage_old/100.0)))
                         - unless member.members_in_course_criteria.blank?
@@ -46,7 +46,7 @@
                             %tr
                               %td
                                 %h4= criterium.evaluation_criterium.name
-                                %span.meta-info #{t('.percent')  criterium.evaluation_criterium.evaluation_percentage } · Calificación: #{ evaluation_score criterium.grade.score } 
+                                %span.meta-info= t('.percent') + "#{criterium.evaluation_criterium.evaluation_percentage}" + ' · ' + t('.calification') + "#{evaluation_score criterium.grade.score}"
                               %td
                                 %span.score= evaluation_score (criterium.grade.score * criterium.evaluation_criterium.evaluation_percentage/100.0)
                         %tr.final-score
