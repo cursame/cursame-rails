@@ -36,4 +36,5 @@
 	- if @today_deliveries.count + @tomorrow_deliveries.count + @rest_of_deliveries.count == 0
 		.no-content-section
 			%h4= t('.no_hmwrks')
-			%p= t('.no_deliver') + link_to t('.hmwrks_last'), deliveries_course_lapsed_path(@course)
+			%p= t('.no_deliver')
+			= link_to t('.hmwrks_last'), deliveries_course_lapsed_path(@course)
