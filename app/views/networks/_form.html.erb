@@ -126,32 +126,7 @@
       </div>
     </div>
   </div>
-
-  <h2>Wufoo</h2>
-
-  <%= f.fields_for :wufoo_setting do |setting| %>
-    <div class="form-group label-on-top l-label">
-      <div class="form-group label-on-top l-label">
-      <div class="form-group-label">
-        <%= setting.label :subdomain, "Subdominio de la Cuenta:" %>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-           <%= setting.text_field :subdomain, placeholder: 'Ejemplo: cursame' %>
-        </div>
-      </div>
-    </div>
-      <div class="form-group-label">
-        <%= setting.label :api_key, "API Key:" %>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-           <%= setting.text_field :api_key, placeholder: 'Ejemplo: KNAF-0000-YMV9-G9H2' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
+  
   <span class="btn btn-primary input-btn btn-medium activable">
     <%= f.submit t('.save') %>
   </span>

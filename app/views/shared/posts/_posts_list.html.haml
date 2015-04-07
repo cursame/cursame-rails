@@ -6,20 +6,20 @@
     - if !publication.courses[0].members_in_courses.where(:user_id =>current_user.id, :accepted => true )[0]
       - next
   - post = publication.publication
-  - case post.class.name
-  - when 'Discussion'
+  - case post
+  - when Discussion
     - unless post.publish_date > DateTime.now
       = render partial: 'discussions/shared/discussion_card', locals: { discussion: post, card_type: :post_publication, wall: publication }
-  - when 'Delivery'
+  - when Delivery
     - unless post.publish_date > DateTime.now
       = render partial: 'deliveries/shared/delivery_card', locals: { delivery: post, card_type: :post_publication, wall: publication }
   - when 'Survey'
     - unless post.publish_date > DateTime.now
       = render partial: 'surveys/shared/survey_card', locals: { survey: post, card_type: :post_publication, wall: publication }
-  - when 'Comment'
+  - when Comment
     = render partial: 'comments/shared/comment_card', locals: { post_comment: post, card_type: :post_publication, wall: publication }
-  - when 'Course'
+  - when Course
     = render partial: 'courses/shared/course_card_post', locals: { course: post, card_type: :post_publication, wall: publication }
-  - when 'WufooForm'
-    - if post.init_date < DateTime.now && post.for_user?(current_user) && current_network.wufoo_settings?
-      = render partial: 'wufoo_forms/shared/wufoo_form_card', locals: { wufoo_form: post, card_type: :post_publication, wall: publication }
+  - when GoogleForm
+    - if post.init_date < DateTime.now && post.for_user?(current_user)
+      = render partial: 'google_forms/shared/card', locals: { google_form: post, card_type: :post_publication, wall: publication }

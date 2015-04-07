@@ -188,8 +188,8 @@ class Comment < ActiveRecord::Base
         users = users.reject { |user| user.id == self.user.id }
         hash = {users: users, kind: 'user_comment_on_' + comment_type.downcase }
       end
-    when 'WufooForm'
-      users = commentable.showable.users
+    when 'GoogleForm'
+      users = commentable.pollable.users
       hash = { users: users, kind: 'user_comment_on_' + comment_type.downcase }
     when 'LibraryFile'
       if commentable.location.storable.kind_of? Library
@@ -226,7 +226,11 @@ class Comment < ActiveRecord::Base
     end
 
     if commentable_type == 'LibraryFile'
-      return true
+      return false
+    end
+
+    if commentable_type == 'GoogleForm'
+      return false
     end
 
     return commentable.owner?(role,user)

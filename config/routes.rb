@@ -16,7 +16,7 @@ Cursame30Lb::Application.routes.draw do
   resources :libraries
   resources :polls
   resources :messages
-  resources :wufoo_forms, path: '/forms'
+  resources :google_forms
   resources :library_files
 
   resources :libraries do
