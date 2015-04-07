@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150326021129) do
+ActiveRecord::Schema.define(:version => 20150407134859) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -326,6 +326,32 @@ ActiveRecord::Schema.define(:version => 20150326021129) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "google_form_roles", :force => true do |t|
+    t.integer  "google_form_id"
+    t.integer  "role_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "google_form_roles", ["google_form_id"], :name => "index_google_form_roles_on_google_form_id"
+  add_index "google_form_roles", ["role_id"], :name => "index_google_form_roles_on_role_id"
+
+  create_table "google_forms", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "url"
+    t.integer  "pollable_id"
+    t.string   "pollable_type"
+    t.integer  "user_id"
+    t.datetime "init_date"
+    t.datetime "term_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "google_forms", ["pollable_id", "pollable_type"], :name => "index_google_forms_on_pollable_id_and_pollable_type"
+  add_index "google_forms", ["user_id"], :name => "index_google_forms_on_user_id"
 
   create_table "grades", :force => true do |t|
     t.integer  "gradable_id"
