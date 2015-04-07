@@ -7,7 +7,7 @@
 
     .form-group
       .form-group-label
-        = f.label :title, "#{ t('.name') current_network.course_tag.downcase}"
+        = f.label :title, t('.name') + "#{current_network.course_tag.downcase}"
         %label
       .form-group-main
         .form-unit
@@ -15,7 +15,7 @@
 
     .form-group
       .form-group-label
-        = f.label :silabus, "#{ t('.descrip') current_network.course_tag.downcase}"
+        = f.label :silabus, t('.descrip') + "#{current_network.course_tag.downcase}"
       .form-group-main
         .form-unit
           = f.text_area :silabus, rows: 4, placeholder: t('.descrip2'), required: "required", autocomplete: "off"
@@ -40,7 +40,7 @@
 
     .form-group
       .form-group-label
-        = f.label 'students-search', t('.students')":", for: 'students-search-input'
+        = f.label 'students-search', t('.students') + ":", for: 'students-search-input'
       .form-group-main
         .form-unit
           = hidden_field_tag "check_members", true
@@ -67,7 +67,7 @@
   .footer
     .fl
       %span.btn.btn-primary.input-btn.activable
-        = f.submit "#{ @course.new_record? ? "#{ t('.create') current_network.course_tag.downcase}" : t('.save') }", class: "activable"
+        = f.submit "#{ @course.new_record? ? "#{t('.create')} #{current_network.course_tag.downcase}" : "#{t('.save')}" }", class: "activable"
     .fr
       - unless @course.new_record?
         = link_to t('.delete'), @course, confirm: t('.confirm'), method: :delete, style: 'line-height: 32px;'
