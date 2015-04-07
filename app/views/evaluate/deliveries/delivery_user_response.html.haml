@@ -21,7 +21,8 @@
                       %span= t('.no_score')
                     - else
                       %span
-                        = t('.score') + ':' + assignment.grade.score
+                        = t('.score')
+                        = assignment.grade.score
                     %span.mta-spcer ·
                     %span
                       = t('.delivery') + ':' + I18n.localize(assignment.created_at, format: "%e de %B del %Y")

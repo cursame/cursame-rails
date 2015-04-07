@@ -18,7 +18,7 @@ es:
         deliveries: Entregas
       evaluate_deliveries:
         deliveries: Entregas
-        score: Calificación
+        score: "Calificación:"
         no_score: Sin calificar
         no_deliveries: Sin Entregas.
         no_deliveries_record: Todavia no hay ninguna entrega en esta tarea.
