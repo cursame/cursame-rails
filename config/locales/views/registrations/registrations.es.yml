@@ -31,7 +31,7 @@ es:
       student: Regístrate Alumno
       email: Correo electrónico
       name: Nombre(s)
-      last_name: Apellidos
+      last_name: "Apellidos:"
       pwd: Contraseña
       confirm_pwd: Confirmar contraseña
       confirm_pwd2: Confirmacion de contraseña
