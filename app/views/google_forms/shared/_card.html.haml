@@ -1,0 +1,39 @@
+.post-box.form.academic.wufoo_form{ 'data-wall-id' => wall.id, class: card_type, data: {} }
+  - if wall && (google_form.user == current_user || current_user.admin?)
+    = render partial: 'shared/posts/post_admin_actions', locals: { post: google_form, wall: wall }
+  .post-box-main
+    .post-box-main-author
+      - case google_form.pollable
+      - when Course
+        = link_to course_path(google_form.pollable), title: google_form.pollable.title, class: 'post-box-avatar' do
+          %span.avatar-holder
+            = avatar 'course', '45', 'no', google_form.pollable.id, 'avatar', 'no', 'no'
+        .post-box-main-author-content
+          = link_to google_form.pollable.title, course_path(google_form.pollable), title: google_form.pollable.title
+          %span.timestamp= time_ago_in_words google_form.init_date
+      - when "Network"
+        = link_to show_user_path(google_form.user.personal_url), title: google_form.user.name, class: 'post-box-avatar' do
+          %span.avatar-holder
+            = avatar 'user', '45', 'no', google_form.user.id, 'avatar', 'no', 'no'
+        .post-box-main-author-content
+          .post-breadcrumb
+            %span
+              = link_to google_form.user.name, show_user_path(google_form.user.personal_url), title: google_form.user.name
+            %span.timestamp= time_ago_in_words google_form.init_date
+    .post-box-content
+      .icon-card
+        = icon 'wufoo-post-card'
+      = link_to google_form.url, class: 'activable', target: "_blank" do
+        %h3= google_form.title
+        %p= google_form.description
+      %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format google_form.term_date}".html_safe
+      = link_to 'Ver Formulario', google_form.url, target: "_blank", class: "btn btn-small btn-transparent activable"
+      = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: google_form }
+    - if card_type == :post_publication
+      .post-box-edit
+        %h5 Editar Formulario
+        .post-edit-form-js
+    .post-box-under-container
+      .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: google_form, wall: wall }
+      .comments-wrap.googleform{ data: { comments_group_id: google_form.id } }
+        = render partial: 'shared/posts/post_comments_list', locals: { post: google_form, new_comment: true }
