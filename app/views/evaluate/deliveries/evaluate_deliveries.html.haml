@@ -22,7 +22,8 @@
                             %h5= response.user.name
                             - if response.grade.present?
                               %p
-                                = t('.score') + ':' + response.grade.score
+                                = t('.score')
+                                = response.grade.score
                             - else
                               %p= t('.no_score')
               - else

@@ -3,7 +3,7 @@ es:
     deliveries:
       delivery_user_response:
         no_score: Sin Calificar
-        score: Calificación
+        score: "Calificación:"
         delivery: Entregado
         deliver: Entrega
         scored: Calificar
