@@ -110,9 +110,11 @@ class Delivery < ActiveRecord::Base
     end
 
     unless self.publish_date > DateTime.now
-      Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
+      # Notification.create(:users => users, :notificator => self, :kind => 'new_delivery_on_course')
       Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Delivery", network_id: self.network_id
       self.send_mail users
+    else
+      Notification::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_delivery_on_course')
     end
 
     begin
