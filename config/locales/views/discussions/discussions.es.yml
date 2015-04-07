@@ -12,7 +12,7 @@ es:
       discussions_course_header:
         discuss: Discusiones
       discussions_filter_course:
-        filter: Filtrar
+        filter: "Filtrar:"
         select: Selecciona un curso
       discussions_header:
         discuss: Discusiones
