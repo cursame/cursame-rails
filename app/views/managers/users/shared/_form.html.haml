@@ -40,7 +40,7 @@
   %br/
   %br/
   %ul.list-buttons.left
-    %li= link_to (t('.cancel'), :back, class: 'btn btn-medium btn-secondary')
+    %li= link_to t('.cancel'), :back, class: 'btn btn-medium btn-secondary'
     %li
       %span.btn.btn-primary.input-btn.btn-medium.activable
         = f.submit ( user.new_record? ? t('.create') : t('.save'))

@@ -8,7 +8,7 @@
 </center>
 <div class="user_networks_show">
 <% if current_role == "superadmin"%>
-<%= link_to (t('.goto') + " >>", superadmnin_activities_path)%></br>
+<%= link_to t('.goto') + " >>", superadmnin_activities_path %></br>
 <% @network = Network.all%>
 <% @network.each do |network|%>
  <center>

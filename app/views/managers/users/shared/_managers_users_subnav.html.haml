@@ -1,6 +1,6 @@
 .managers-sub-navigation
   %ul
     %li
-      = link_to (t('.list'), managers_users_path, class: active_class(['index', 'show', 'edit'], 'managers/users'))
+      = link_to t('.list'), managers_users_path, class: active_class(['index', 'show', 'edit'], 'managers/users')
     %li
-      = link_to (t('.import'), import_managers_users_path, class: active_class('import'))
+      = link_to t('.import'), import_managers_users_path, class: active_class('import')

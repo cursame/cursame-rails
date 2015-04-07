@@ -24,7 +24,7 @@
   <div class="no-content-section">
     <% if @user_l == current_user %>
       <h4><%=t('.no_registered')%></h4>
-      <p><%=t('.find')%> <%= link_to (t('.courses2'), courses_path) %>.</p>
+      <p><%=t('.find')%> <%= link_to t('.courses2'), courses_path %>.</p>
     <% else %>
       <h4><%=t('.no_members')%></h4>
     <% end %>

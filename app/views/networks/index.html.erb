@@ -1,4 +1,4 @@
-<h1>Listing networks</h1><%= link_to (t('.new'), new_network_path, :class => "btn pull-right") %></br></br>
+<h1>Listing networks</h1><%= link_to t('.new'), new_network_path, :class => "btn pull-right" %></br></br>
 
 <% @networks.each do |n| %>
     <%= link_to "#{n.name}", "http://#{n.subdomain}.#{links}/"%></br>

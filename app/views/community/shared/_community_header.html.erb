@@ -19,13 +19,13 @@
               <% action = params[:action] %>
               <ul>
                 <li>
-                  <%= link_to (t('.all'), network_comunity_path, class: (action == 'all' ? "active" : " ")) %>
+                  <%= link_to t('.all'), network_comunity_path, class: (action == 'all' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to (t('.students'), community_students_path, class: (action == 'students' ? "active" : " ")) %>
+                  <%= link_to t('.students'), community_students_path, class: (action == 'students' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to (t('.teacher'), community_teachers_path, class: (action == 'teachers' ? "active" : " ")) %>
+                  <%= link_to t('.teacher'), community_teachers_path, class: (action == 'teachers' ? "active" : " ") %>
                 </li>
               </ul>
             </div>

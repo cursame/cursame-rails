@@ -22,8 +22,8 @@
                     %i.tip
                     %ul
                       %li
-                        = link_to (t('.exit'), show_user_path(current_user.personal_url))
+                        = link_to t('.exit'), show_user_path(current_user.personal_url)
                       %li
-                        = link_to (t('.edit'), edit_user_registration_path)
+                        = link_to t('.edit'), edit_user_registration_path
                       %li
-                        = link_to (t('.log_out'), sign_out_path, method: :delete)
+                        = link_to t('.log_out'), sign_out_path, method: :delete

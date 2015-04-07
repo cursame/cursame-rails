@@ -45,7 +45,7 @@
               </div>
               <% if @files.num_pages > @files.current_page %>
                 <div class="library-paginator">
-                  <%= link_to (t('.load'), library_in_course_pagination_path(page: @files.next_page), id: "paginador", remote: true)%>
+                  <%= link_to t('.load'), library_in_course_pagination_path(page: @files.next_page), id: "paginador", remote: true %>
                 </div>
               <% end %>
             <% else %>

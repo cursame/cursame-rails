@@ -10,20 +10,20 @@
         <ul>
           <% if course.active_status and current_network.evaluable? %>
             <li>
-              <%= link_to (t('.final_score'), course_closure_path(course)) %>
+              <%= link_to t('.final_score'), course_closure_path(course) %>
             </li>
             <li>
-              <%= link_to (t('.activities_score'), evaluate_course_path(course)) %>
+              <%= link_to t('.activities_score'), evaluate_course_path(course) %>
             </li>
             <li>
-              <%= link_to (t('.eval_form'), course_evaluation_schema_path( course )) %>
+              <%= link_to t('.eval_form'), course_evaluation_schema_path( course ) %>
             </li>
           <% end %>
           <li>
-            <%= link_to (t('.edit'), edit_course_path( course.id )) %>
+            <%= link_to t('.edit'), edit_course_path( course.id ) %>
           </li>
           <li>
-            <%= link_to (t('.clone'), clone_course_view_path(course)) %>
+            <%= link_to t('.clone'), clone_course_view_path(course) %>
           </li>
           <li>
             <%= link_to course.active_status? ? t('.finalize') : t('.active'),  active_status_path(course) %>
@@ -41,7 +41,7 @@
         <ul>
           <li>
             <div id="uik_<%= @correspond.id %>"> 
-              <%= link_to (@correspond , confirm: t('.confirm'), method: :delete, :remote => true do) %>
+              <%= link_to @correspond , confirm: t('.confirm'), method: :delete, :remote => true do %>
                 <%=t('.leave')%>
               <% end %>
             </div>

@@ -15,9 +15,9 @@
                     	<h1><%= course.title %></h1>
                     <div class="status">
                         <%if  course.active_status == true%>
-                          Activo <%= link_to (t('.deactivate'), active_status_path(course.id), :remote => true) %>
+                          Activo <%= link_to t('.deactivate'), active_status_path(course.id), :remote => true %>
                         <%else%>
-                          <span class="course_status"><%= link_to (t('.activate'), active_status_path(course.id), :remote => true) %></span>
+                          <span class="course_status"><%= link_to t('.activate'), active_status_path(course.id), :remote => true %></span>
                         <%end%>
                     </div>
                 </div>

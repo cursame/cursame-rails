@@ -36,4 +36,4 @@
 	- if @today_surveys.count + @tomorrow_surveys.count + @rest_of_surveys.count == 0
 		.no-content-section
 			%h4= t('.no_quest')
-			%p= t('.see') + link_to (t('.section'), surveys_lapsed_path)
+			%p= t('.see') + link_to t('.section'), surveys_lapsed_path

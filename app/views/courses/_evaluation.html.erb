@@ -104,7 +104,7 @@
 
   <div id="configurationing">
 	  	<h1 style="margin-left:10px; padding:2px;"><%=t('.course_score')%></h1>
-	  	<p id="pdf_link"><%= link_to (t('.pdf'), course_evaluation_download_path(@course, :format => "pdf")) %>
+	  	<p id="pdf_link"><%= link_to t('.pdf'), course_evaluation_download_path(@course, :format => "pdf") %>
    </div>
    <div class="form-course fixform" style="padding:20px 20px 41px 20px!important;">
 		  <%user = current_user%>

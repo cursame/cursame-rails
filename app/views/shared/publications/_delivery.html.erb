@@ -18,7 +18,7 @@
     <p><%=t('.delivery_txt')%><%= pretty_date_format(publication.publication.end_date) %></p>
   </div>
   <div class="academic-button">
-    <%= link_to (t('.open_hmwk'), delivery_modal_path(publication.publication.id), :remote => true, class: "btn btn-transparent uppercase")%>
+    <%= link_to t('.open_hmwk'), delivery_modal_path(publication.publication.id), :remote => true, class: "btn btn-transparent uppercase"%>
   </div>
 </div>
 <%= render partial: 'shared/publications/meta_data', locals: { publication: publication, post: publication.publication, white_like_icon: true} %>

@@ -15,6 +15,6 @@
               - action = params[:action]
               %ul
                 %li
-                  = link_to (t('.deliver'), deliveries_path, class: active_class('index'))
+                  = link_to t('.deliver'), deliveries_path, class: active_class('index')
                 %li
-                  = link_to (t('.past'), deliveries_lapsed_path, class: active_class('lapsed'))
+                  = link_to t('.past'), deliveries_lapsed_path, class: active_class('lapsed')

@@ -44,7 +44,7 @@
           </table>
       </div>
       <div class="box-cancel">
-        <p><%=t('.down')%> <%= link_to (t('.cancel'), registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete) %>.</p>
+        <p><%=t('.down')%> <%= link_to t('.cancel'), registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
       </div>
     </div><!-- ends box-image -->
 
@@ -91,7 +91,7 @@
   </div><!-- ends box-fields -->
 
   <div class="submit-area"></div>
-  <div class="submit-btns" style="margin-top:0px!important;float:right!important;"><%= f.submit t('.update') %><%= link_to (t('.back'), :back, :class => "a-btn") %></div>
+  <div class="submit-btns" style="margin-top:0px!important;float:right!important;"><%= f.submit t('.update') %><%= link_to t('.back'), :back, :class => "a-btn" %></div>
 
   </div><!-- ends edituserdmenu -->
 <% end %>

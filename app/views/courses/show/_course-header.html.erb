@@ -77,20 +77,20 @@
                           <ul>
                             <% if current_network.evaluable? %>
                               <li>
-                                <%= link_to (t('.final_score'), course_closure_path( @course )) %>
+                                <%= link_to t('.final_score'), course_closure_path( @course ) %>
                               </li>
                               <li>
-                                <%= link_to (t('.activities_score'), evaluate_course_path(@course)) %>
+                                <%= link_to t('.activities_score'), evaluate_course_path(@course) %>
                               </li>
                               <li>
-                                <%= link_to (t('.eval_form'), course_evaluation_schema_path( @course )) %>
+                                <%= link_to t('.eval_form'), course_evaluation_schema_path( @course ) %>
                               </li>
                             <% end %>
                             <li>
-                              <%= link_to (t('.edit'), edit_course_path( @course.id )) %>
+                              <%= link_to t('.edit'), edit_course_path( @course.id ) %>
                             </li>
                             <li>
-                              <%= link_to (t('.clone'), clone_course_view_path( @course )) %>
+                              <%= link_to t('.clone'), clone_course_view_path( @course ) %>
                             </li>
                             <li>
                               <%= link_to @course.active_status? ? t('.final') : t('.active'),  active_status_path(@course) %>
@@ -109,16 +109,16 @@
                 <% action = params[:action] %>
                 <ul>
                   <li>
-                    <%= link_to (t('.publ'), course_path(@course), class: (action == 'show' ? "active" : " ")) %>
+                    <%= link_to t('.publ'), course_path(@course), class: (action == 'show' ? "active" : " ") %>
                   </li>
                   <li>
-                    <%= link_to (t('.info'), about_course_path, class: (action == 'about' ? "active" : " ")) %>
+                    <%= link_to t('.info'), about_course_path, class: (action == 'about' ? "active" : " ") %>
                   </li>
                   <li>
-                    <%= link_to (t('.members'), course_members_path, class: (action == 'members' ? "active" : " ")) %>
+                    <%= link_to t('.members'), course_members_path, class: (action == 'members' ? "active" : " ") %>
                   </li>
                   <li>
-                    <%= link_to (t('.library'), library_in_course_path, class: (action == 'library' ? "active" : " ")) %>
+                    <%= link_to t('.library'), library_in_course_path, class: (action == 'library' ? "active" : " ") %>
                   </li>
                 </ul>
               </div>

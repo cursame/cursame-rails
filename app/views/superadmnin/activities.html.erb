@@ -56,8 +56,8 @@
  <%=t('.net')%>: <%= activity.network_id %></br>
  
  <% @user = User.find(activity.user_id)%>
-<%= link_to (t('.activity') + " #{@user.name}", activity_path(activity.id))  %></br>
-<%= link_to (t('.goto'), activity_path(activity.id))%>
+<%= link_to t('.activity') + " #{@user.name}", activity_path(activity.id)  %></br>
+<%= link_to t('.goto'), activity_path(activity.id)%>
  </div>
  <div style="float:left; height:230px; margin-left:5px; margin-top:25px;">
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x200&sensor=true&zoom=16&markers=#{activity.latitude}%2C#{activity.longitude}" %>

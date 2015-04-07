@@ -70,11 +70,11 @@ $(document).ready(function() {
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to (t('.no_confirmation'), new_confirmation_path(resource_name)) %><br />
+  <%= link_to t('.no_confirmation'), new_confirmation_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to (t('.no_blocked'), new_unlock_path(resource_name)) %><br />
+  <%= link_to t('.no_blocked'), new_unlock_path(resource_name) %><br />
 <% end -%>
 </div>
 

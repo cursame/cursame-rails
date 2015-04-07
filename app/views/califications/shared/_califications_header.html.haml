@@ -8,12 +8,12 @@
               .section-title
                 = link_to icon('section-califications'), califications_path
                 = link_to califications_path do
-                  %h1= Calificaciones
+                  %h1= "Calificaciones"
             - unless current_user.admin?
               .page-sub-navigation
                 - action = params[:action]
                 %ul
                   %li
-                    = link_to (t('.active_courses'), califications_path, class: active_class('index'))
+                    = link_to t('.active_courses'), califications_path, class: active_class('index')
                   %li
-                    = link_to (t('.closed_courses'), closed_califications_path, class: active_class('closed'))
+                    = link_to t('.closed_courses'), closed_califications_path, class: active_class('closed')

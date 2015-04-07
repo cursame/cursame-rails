@@ -18,13 +18,13 @@
     <% action = params[:action] %>
     <ul>
       <li>
-        <%= link_to (t('.course'), courses_path, class: (action == 'index' ? "active" : " ")) %>
+        <%= link_to t('.course'), courses_path, class: (action == 'index' ? "active" : " ") %>
       </li>
       <li>
-        <%= link_to (t('.regist'), courses_all_path, class: (action == 'all' ? "active" : " ")) %>
+        <%= link_to t('.regist'), courses_all_path, class: (action == 'all' ? "active" : " ") %>
       </li>
       <li>
-        <%= link_to (t('.request'), courses_pending_path, class: (action == 'pending' ? "active" : " ")) %>
+        <%= link_to t('.request'), courses_pending_path, class: (action == 'pending' ? "active" : " ") %>
       </li>
     </ul>
   </div>

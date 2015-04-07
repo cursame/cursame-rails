@@ -3,8 +3,8 @@
     .col.col-12.alpha.omega
       .col-inner
         %ul.list-buttons.left
-          %li= link_to (t('.back').html_safe, managers_comments_path, class: 'btn btn-secondary')
-          %li= link_to (t('.delete'), managers_comment_path(@comment), class: 'btn btn-primary', method: :delete, confirm: t('.confirm'))
+          %li= link_to t('.back').html_safe, managers_comments_path, class: 'btn btn-secondary'
+          %li= link_to t('.delete'), managers_comment_path(@comment), class: 'btn btn-primary', method: :delete, confirm: t('.confirm')
 
 .cols-12
   .col.col-8.alpha.omega

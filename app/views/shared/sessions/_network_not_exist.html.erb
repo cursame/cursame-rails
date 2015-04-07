@@ -7,11 +7,11 @@
       <% if request.subdomain == '' %>
       <h1><%=t('.ops')%></h1>
         <p><%=t('.no_network')%></p><br>
-        <%= link_to (t('.search_school'), "http://www.cursa.me/browser/") %>
+        <%= link_to t('.search_school'), "http://www.cursa.me/browser/" %>
       <% else %>
         <h1><%=t('.ops')%></h1>
         <p><%=t('.no_net_exists')%></p><br>
-        <%= link_to (t('.search_school'), "http://www.cursa.me/browser/") %>
+        <%= link_to t('.search_school'), "http://www.cursa.me/browser/" %>
       <% end %>
     </div>
   </div>

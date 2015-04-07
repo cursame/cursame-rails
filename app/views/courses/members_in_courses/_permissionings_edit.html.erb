@@ -13,7 +13,7 @@
             <i class="tip"></i>
             <ul>
               <li>
-                <%= link_to (t('.delete_group'), @member, confirm: t('.confirm'), method: :delete, :remote => true) %>
+                <%= link_to t('.delete_group'), @member, confirm: t('.confirm'), method: :delete, :remote => true %>
               </li>
             </ul>
           </div>
@@ -23,7 +23,7 @@
   
   <% when false %>
     <%= form_for @member, :remote => true do |fcm| %>                           
-      <%= link_to (t('.delete'), @member, confirm: t('.confirm'), class: 'btn btn-small btn-secondary', method: :delete, :remote => true) %>
+      <%= link_to t('.delete'), @member, confirm: t('.confirm'), class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
 
       <label class="btn btn-small btn-primary activable ff">
         <%=t('.usr_accept')%>

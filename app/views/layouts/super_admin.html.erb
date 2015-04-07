@@ -32,7 +32,7 @@
           <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
                  <%#=  debug current_role %>
           <% if current_role == "admin"%>
-             <%= link_to (t('.admin'), managers_wall_path)%>
+             <%= link_to t('.admin'), managers_wall_path %>
            <%end%>
       <% else %>
           <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>

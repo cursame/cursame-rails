@@ -12,7 +12,7 @@
           <%= render partial: "/courses/courses_search" %>
         </li>
         <li>
-          <%= link_to "#{icon('plus-white') t('.new')}".html_safe, new_course_path, :title => t('.create_course'), :class=> "btn btn-primary" %>
+          <%= link_to "#{icon('plus-white')} #{t('.new')}".html_safe, new_course_path, :title => t('.create_course'), :class=> "btn btn-primary" %>
         </li>
       </ul>
     </div>
@@ -21,10 +21,10 @@
     <% action = params[:action] %>
     <ul>
       <li>
-        <%= link_to (t('.active'), courses_path, class: (action == 'index' ? "active" : " ")) %>
+        <%= link_to t('.active'), courses_path, class: (action == 'index' ? "active" : " ") %>
       </li>
       <li>
-        <%= link_to (t('.finalize'), courses_unpublished_path, class: (action == 'unpublished' ? "active" : " ")) %>
+        <%= link_to t('.finalize'), courses_unpublished_path, class: (action == 'unpublished' ? "active" : " ") %>
       </li>
     </ul>
   </div>

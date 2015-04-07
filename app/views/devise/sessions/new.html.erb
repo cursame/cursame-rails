@@ -19,7 +19,7 @@ $(document).ready(function() {
  
     <center>
        <span class="confirm-btn" style="width: 140px; height: 22px; color: #FFF; padding: 10px 30px; color: #FFF!important; margin-top: 30px; display: block; position: relative;">
-       	<%= link_to (t('.init'), "http://www.cursa.me/browser/") %>
+       	<%= link_to t('.init'), "http://www.cursa.me/browser/" %>
        </span>   
     </center>    
     </p>
@@ -109,7 +109,7 @@ $(document).ready(function() {
         
         <div style="width: 300px; height: 120px; margin-right: 20px; text-shadow:none; float: left;">
            <b style="font-size:15px; color:#000; clear: both;"><%=t('.confirm2')%>:</b></br></br>
-            <%=t('.link')%> <b style="font-size: 14px;"><%= link_to (t('.acount'), new_unlock_path(resource_name)) %></b><%=t('.account_window')%> 
+            <%=t('.link')%> <b style="font-size: 14px;"><%= link_to t('.acount'), new_unlock_path(resource_name) %></b><%=t('.account_window')%> 
         </div>
             
 		<div style="width: 315px; height: 120px; text-shadow:none; float: right;">

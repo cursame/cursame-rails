@@ -15,5 +15,5 @@
             .page-sub-navigation
               - action = params[:action]
               %ul
-                %li= link_to (t('.response'), surveys_path, class: active_class('index'))
-                %li= link_to (t('.past'), surveys_lapsed_path, class: active_class('lapsed'))
+                %li= link_to t('.response'), surveys_path, class: active_class('index')
+                %li= link_to t('.past'), surveys_lapsed_path, class: active_class('lapsed')

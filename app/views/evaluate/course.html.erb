@@ -69,6 +69,6 @@
 <% if @rest_of_activities.count + @tomorrow_activities.count + @today_activities.count == 0 %>
 	<div class="no-content-section">
     <h4><%=t('.no_activity')%></h4>
-    <p><%=t('.all')%> <%= link_to (t('.past_activity'), evaluate_course_inactive_path(@course)) %>.</p>
+    <p><%=t('.all')%> <%= link_to t('.past_activity'), evaluate_course_inactive_path(@course) %>.</p>
   </div>	
 <% end %>

@@ -32,8 +32,8 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
-                      %li= link_to (t('.view'), managers_discussion_path(discussion))
-                      %li= link_to (t('.delete'), managers_discussion_path(discussion), class: 'btn btn-small btn-secondary', method: :delete, confirm: t('.sure'))
+                      %li= link_to t('.view'), managers_discussion_path(discussion)
+                      %li= link_to t('.delete'), managers_discussion_path(discussion), class: 'btn btn-small btn-secondary', method: :delete, confirm: t('.sure')
                       
       .digg_pagination.paginator
         = will_paginate @discussions

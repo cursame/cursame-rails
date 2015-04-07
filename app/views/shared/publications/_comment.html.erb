@@ -9,7 +9,7 @@
   <%= render partial: 'shared/publications/owner_edit_publications', locals: { publication: publication } %>
   <h6>
     <%= link_to comment_post[:user_name], show_user_path(comment_post[:personal_url]) unless comment_post[:user_name].blank? %>
-    <%= link_to (t('.usr'), show_user_path(comment_post[:personal_url]) if comment_post[:user_name].blank?) %>
+    <%= link_to t('.usr'), show_user_path(comment_post[:personal_url]) if comment_post[:user_name].blank? %>
 
     <% unless comment_post[:posted_in_for].blank? %>
       <%=t('.course_comment')%><%= link_to comment_post[:posted_in_for], course_path(comment_post[:posted_in_for_id]) %>

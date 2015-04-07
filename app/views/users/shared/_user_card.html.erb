@@ -29,7 +29,7 @@
                       <i class="tip"></i>
                       <ul>
                         <li>
-                          <%= link_to (t('.delete'), friendships_destroy_friend_path(f.id)) %>
+                          <%= link_to t('.delete'), friendships_destroy_friend_path(f.id) %>
                         </li>
                       </ul>
                     </div>
@@ -46,7 +46,7 @@
                           <i class="tip"></i>
                           <ul>
                             <li>
-                              <%= link_to (t('.cancel'), friendships_destroy_friend_path(f.id)) %>
+                              <%= link_to t('.cancel'), friendships_destroy_friend_path(f.id) %>
                             </li>
                           </ul>
                         </div>
@@ -61,10 +61,10 @@
                           <i class="tip"></i>
                           <ul>
                             <li>
-                              <%= link_to (t('.confirm'), friendships_update_friend_path(f.id), remote: true) %>
+                              <%= link_to t('.confirm'), friendships_update_friend_path(f.id), remote: true %>
                             </li>
                             <li>
-                              <%= link_to (t('.delete2'), friendships_destroy_friend_path(f.id)) %>
+                              <%= link_to t('.delete2'), friendships_destroy_friend_path(f.id) %>
                             </li>
                           </ul>
                         </div>
@@ -74,7 +74,7 @@
                 <%end%>
               <% else %>
                 <div id="add_friend<%=f.id%>">
-                 <%= link_to (t('.add_friends'), friendships_create_friend_path(f.id), class: "btn btn-small btn-primary ", remote: true) %>
+                 <%= link_to t('.add_friends'), friendships_create_friend_path(f.id), class: "btn btn-small btn-primary ", remote: true %>
                 </div>
               <% end %>
             </div>

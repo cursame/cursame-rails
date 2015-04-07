@@ -38,14 +38,14 @@
                             <%= link_to t('.cancel'), friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
                             <span class="btn btn-small btn-disabled"><%=t('.send')%></span>
                           <% when @user_l %>
-                            <%= link_to (t('.ignore'), friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn") %>
-                            <%= link_to (t('.accept'), friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true)%>
+                            <%= link_to t('.ignore'), friendships_destroy_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn" %>
+                            <%= link_to t('.accept'), friendships_update_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true%>
                           <% else %>
-                            <%= link_to (t('.add_friends'), friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn", remote: true) %>
+                            <%= link_to t('.add_friends'), friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-secondary hard-border-btn", remote: true %>
                         <% end %>
                       <% else %>
                         <div id="add_friend<%=@user_l.id%>">
-                          <%= link_to (t('.add_friends'), friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true) %>
+                          <%= link_to t('.add_friends'), friendships_create_friend_path(@user_l.id), class: "btn btn-small btn-primary hard-border-btn", remote: true %>
                         </div>
                       <% end %>
                     <%end%>
@@ -83,16 +83,16 @@
               <% action = params[:action] %>
               <ul>
                 <li>
-                  <%= link_to (t('.publications'), show_user_path(@user_l.personal_url), class: (action == 'show' ? "active" : " ")) %>
+                  <%= link_to t('.publications'), show_user_path(@user_l.personal_url), class: (action == 'show' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to (t('.courses'), user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ")) %>
+                  <%= link_to t('.courses'), user_courses_path(@user_l.personal_url), class: (action == 'courses' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to (t('.friends'), user_friends_path(@user_l.personal_url), class: (action == 'friends' ? "active" : " ")) %>
+                  <%= link_to t('.friends'), user_friends_path(@user_l.personal_url), class: (action == 'friends' ? "active" : " ") %>
                 </li>
                 <li>
-                  <%= link_to (t('.info'), user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ")) %>
+                  <%= link_to t('.info'), user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ") %>
                 </li>
               </ul>
             </div>

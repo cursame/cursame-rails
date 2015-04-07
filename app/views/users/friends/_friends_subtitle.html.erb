@@ -9,8 +9,8 @@
           </div>
           <% if user_l == current_user %>
             <div class="fr user-friends-actions">
-              <%= link_to (t('.all_friends'), user_friends_path) %> ·
-              <%= link_to (t('.request'), pendding_friends_path( user_l.personal_url ), :remote => true, :id => "pending-friendship-js") %>
+              <%= link_to t('.all_friends'), user_friends_path %> ·
+              <%= link_to t('.request'), pendding_friends_path( user_l.personal_url ), :remote => true, :id => "pending-friendship-js" %>
             </div>
           <% end %> 
         </div>
