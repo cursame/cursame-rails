@@ -5,8 +5,8 @@ es:
         hmwrks: Tareas
         active: Activas
         last: Pasadas
-      deliveries_filter_course_header:
-        filter: Filtrar
+      deliveries_filter_course:
+        filter: "Filtrar: "
         select: Selecciona un curso
       deliveries_header:
         hmwrks: Tareas
