@@ -4,5 +4,5 @@
     = asset.filename.file.filename
   - if delete_enable
     = link_to asset_path(asset), class: 'item-delete', method: 'delete', remote: true do 
-    = t('.delete')
+      = t('.delete')
     = hidden_field_tag 'files[]', asset.id
