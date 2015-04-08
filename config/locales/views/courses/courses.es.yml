@@ -147,7 +147,7 @@ es:
       hmwrk: Tarea
     form:
       name: Nombre del
-      example: Ejemplo. Matemáticas I
+      example: "Ejemplo: Matemáticas I"
       descrip: Descripción del
       descrip2: Descripción
       privacy: Privacidad
@@ -208,7 +208,7 @@ es:
       data_course: Datos del curso
       info_new_course: Cambia la información para el nuevo curso.
       name: Nombre del
-      example: Ejemplo. Matemáticas I
+      example: "Ejemplo: Matemáticas I"
       descrip: Descripción
       dates: Fechas
       init_date: Fecha de inicio
