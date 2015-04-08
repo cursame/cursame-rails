@@ -51,6 +51,7 @@ es:
         goto_section: Únete a uno en la sección de
         no_course: No has creado ningún curso todavia.
         new_course: Crear curso ahora →
+        return: Volver
     sidebar:
       sidebar_section:
         initiation: Inicio
