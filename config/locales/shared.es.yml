@@ -52,6 +52,7 @@ es:
         no_course: No has creado ningún curso todavia.
         new_course: Crear curso ahora →
         return: Volver
+      return: Volver
     sidebar:
       sidebar_section:
         initiation: Inicio
