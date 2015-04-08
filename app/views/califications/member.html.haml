@@ -11,7 +11,6 @@
               .member-score-overview-user-main
                 = link_to show_user_path @member.user.personal_url do
                   %h5= @member.user.name
-                / %p= "#{t('.score')  evaluation_score (@course.cursame_criteria ? @member.course_average : @member.course_average_old) }  ·  t('.final_score') #{ evaluation_score @member.grade.present? ? @member.grade.score : t('.no_score') }"
                 %p= t('.score') + " #{evaluation_score (@course.cursame_criteria ? @member.course_average : @member.course_average_old)} · " + t('.final_score') + "#{evaluation_score @member.grade.present? ? @member.grade.score : t('.no_score')}"
             .member-score-overview-main
               = render partial: 'users/califications/deliveries_table',  locals: { member: @member }
