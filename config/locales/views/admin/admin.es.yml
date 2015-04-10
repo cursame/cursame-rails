@@ -14,5 +14,5 @@ es:
       text6: Esta es la clave asignada al mensaje
       send_msg: Enviar mensajes
       forward: Reenviar el mensaje a la siguiente cantidad de usuarios con la clave de mensaje
-      massive_email: Enviar mensajes masivos a los siguientes usuaris
+      massive_email: Enviar mensajes masivos a los siguientes usuarios
       mail: Se activará el formulario de reenvio cuando la cuenta de mailers masivos se mayor a 0
