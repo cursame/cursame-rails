@@ -1,5 +1,6 @@
 class Discussion < ActiveRecord::Base
   include TrackMixpanelEventModule
+  include NotificationUsersModule
 
   has_many :activities, as: :activitye
   has_many :assets, through: :discussion_assets
@@ -133,7 +134,7 @@ class Discussion < ActiveRecord::Base
   def responses
     discussion_responses
   end
-
+  
   private
   def track_mixpanel_discussion
     public_discussion = self.courses.blank?
