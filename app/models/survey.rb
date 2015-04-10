@@ -1,5 +1,7 @@
 class Survey < ActiveRecord::Base
 
+  include NotificationUsersModule
+
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :assets, through: :survey_assets
   has_many :comments, dependent: :destroy
@@ -70,10 +72,14 @@ class Survey < ActiveRecord::Base
 
 
     unless self.publish_date > DateTime.now
-      Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
+      # Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
       Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
       self.send_mail users
+    else
+      Notification::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_survey_on_course')
     end
+
+    Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
 
     begin
       self.courses.each do |course|
@@ -161,5 +167,4 @@ class Survey < ActiveRecord::Base
   def responses
     user_surveys
   end
-
 end
