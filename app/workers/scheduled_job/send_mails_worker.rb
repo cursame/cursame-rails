@@ -20,16 +20,16 @@ class ScheduledJob::SendMailsWorker
 
   def send_mails_delivery(id)
     @delivery = Delivery.find_by_id(id)
-    @delivery.send_mail(@delivery.accepted_users)
+    @delivery.send_mail(@delivery.accepted_users) unless @delivery.nil?
   end
 
   def send_mails_survey(id)
     @survey = Survey.find_by_id(id)
-    @survey.send_mail(@survey.accepted_users)
+    @survey.send_mail(@survey.accepted_users) unless @survey.nil?
   end
 
   def send_mails_discussion(id)
     @discussion = Discussion.find_by_id(id)
-    @discussion.send_mail(@discussion.accepted_users)
+    @discussion.send_mail(@discussion.accepted_users) unless @discussion.nil?
   end
 end
