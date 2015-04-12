@@ -1,7 +1,4 @@
 class Delivery < ActiveRecord::Base
-
-  include NotificationUsersModule
-
   attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date,
     :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
 
@@ -96,30 +93,16 @@ class Delivery < ActiveRecord::Base
       self.publish!
     end
 
-    users = self.users
-
-    Wall.create! :users => users, :publication => self, :network => self.network, :courses => self.courses
-
-    # users = []
-
-    # self.courses.each do |course|
-    #   course.members_in_courses.each do |member|
-    #     user = member.user
-    #     if user.id != self.user_id && member.accepted == true then
-    #       users.push(user)
-    #     end
-    #   end
-    # end
-
-    unless self.publish_date > DateTime.now
-      Notification.create(:users => self.notification_users, :notificator => self, :kind => 'new_delivery_on_course')
-      # Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Delivery", network_id: self.network_id
-      self.send_mail self.notification_users
-    else
-      Notification::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_delivery_on_course')
-    end
-
+    Wall.create! :users => self.users, :publication => self, :network => self.network, :courses => self.courses
     Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Delivery", network_id: self.network_id
+    
+    if self.publish_date > DateTime.now
+      ScheduledJob::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_delivery_on_course')
+      ScheduledJob::SendMailsWorker.perform_at(self.publish_date, self.id, self.class.name)
+    else
+      Notification.create(users: self.accepted_users, notificator: self, kind: 'new_delivery_on_course')
+      self.send_mail(self.accepted_users)
+    end
 
     begin
       self.courses.each do |course|
@@ -144,6 +127,17 @@ class Delivery < ActiveRecord::Base
     users = []
     courses.each do |course|
       users = users.concat(course.users)
+    end
+    return users
+  end
+
+  def accepted_users
+    users = []
+    self.courses.each do |course|
+      course.members_in_courses.each do |member|
+        user = member.user
+        users.push(user) if user.id != self.user_id && member.accepted?
+      end
     end
     return users
   end
