@@ -14,6 +14,8 @@ class DeliveriesController < ApplicationController
       accu + course.deliveries
     end
 
+    deliveries = deliveries.reject {|delivery| delivery.unpublish? }
+
     deliveries = deliveries.sort do
       |x,y| y.end_date <=> x.end_date
     end
