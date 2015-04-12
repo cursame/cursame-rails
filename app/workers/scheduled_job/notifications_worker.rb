@@ -9,8 +9,8 @@ class ScheduledJob::NotificationsWorker
       notification_survey(notificator_id, kind)
     when 'Discussion'
       notification_discussion(notificator_id, kind)
-    # when 'wufoo_form'
-    # when 'Course'
+    when 'GoogleForm'
+      notification_google_form(notificator_id, kind)
     else
     end
         
@@ -34,5 +34,10 @@ class ScheduledJob::NotificationsWorker
   def notification_discussion(id, kind)
     @discussion = Discussion.find_by_id(id)
     Notification.create(users: @discussion.accepted_users, notificator: @discussion, kind: kind)
+  end
+
+  def notification_google_form(id, kind)
+    @google_form = GoogleForm.find_by_id(id)
+    Notification.create(users: @google_form.users, notificator: @google_form, kind: kind)
   end
 end
