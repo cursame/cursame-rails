@@ -1,1 +1,9 @@
-en:  groups:    edit:      name: Name      update: Update    new:      name: Name       create: Create      
+en:
+  groups:
+    edit:
+      name: Name
+      update: Update
+    new:
+      name: Name 
+      create: Create
+      
