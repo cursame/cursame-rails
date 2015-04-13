@@ -1,5 +1,4 @@
 class Survey < ActiveRecord::Base
-
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :assets, through: :survey_assets
   has_many :comments, dependent: :destroy
@@ -47,32 +46,17 @@ class Survey < ActiveRecord::Base
 
   after_create do
 
-    if self.publish_date <= DateTime.now then
-      self.state = "published"                
-    end
-
-
-
-    users = []
-    self.courses.each do |course|
-      course.members_in_courses.each do |member|
-        user = member.user
-        if self.user_id != user.id then
-          users.push(user)
-        end
-      end
-    end
-
     self.expired?
-    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => users)
 
-    users = users.reject { |user| user.id == self.user_id }
+    Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => self.users)
+    Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
 
-
-    unless self.publish_date > DateTime.now
-      Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
-      Notification.create(:users => users, :notificator => self, :kind => "new_survey_on_course")
-      self.send_mail users
+    if self.publish_date > DateTime.now
+      ScheduledJob::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_survey_on_course')
+      ScheduledJob::SendMailsWorker.perform_at(self.publish_date, self.id, self.class.name)
+    else
+      Notification.create(:users => self.accepted_users, :notificator => self, :kind => "new_survey_on_course")
+      self.send_mail self.accepted_users
     end
 
     begin
@@ -96,39 +80,17 @@ class Survey < ActiveRecord::Base
     event = Event.find_by_schedule_id_and_schedule_type(self.id, self.class.name)
     event.update_attributes(title: self.name, starts_at: self.publish_date, ends_at: self.end_date)
 
-    users = []
-    self.courses.each do |course|
-      course.members_in_courses.each do |member|
-        user = member.user
-        users.push(user) if self.user_id != user.id
-      end
-    end
-
-    Notification.create(:users => users, :notificator => self, :kind => "edit_survey_on_course")
+    Notification.create(:users => self.accepted_users, :notificator => self, :kind => "edit_survey_on_course") if self.publish_date < DateTime.now
   end
 
   def expired?
     ##### se detecta si es tiempo de estar publicado el survey ####
-    case
-    when self.publish_date < DateTime.now
-      self.state = "published"
-    when self.publish_date == DateTime.now
-      self.state = "published"
-    when self.publish_date > DateTime.now
-      self.state = "unpublish"
+    if self.publish_date <= DateTime.now and self.end_date > DateTime.now
+      self.state = 'published'
+    else
+      self.state = 'unpublish'
     end
-
-    case
-    when self.end_date < DateTime.now
-      self.state = "unpublish"
-    when self.end_date == DateTime.now
-      self.state = "unpublish"
-    when self.end_date > DateTime.now
-      self.state = "published"
-    end
-
     self.save!
-
   end
 
   def self.user
@@ -162,4 +124,25 @@ class Survey < ActiveRecord::Base
     user_surveys
   end
 
+  def users
+    users = []
+    self.courses.each do |course|
+      course.members_in_courses.each do |member|
+        user = member.user
+        users.push(user) if member.accepted?
+      end
+    end
+    return users
+  end
+
+  def accepted_users
+    users = []
+    self.courses.each do |course|
+      course.members_in_courses.each do |member|
+        user = member.user
+        users.push(user) if user.id != self.user_id && member.accepted?
+      end
+    end
+    return users
+  end
 end

@@ -56,23 +56,15 @@ class Discussion < ActiveRecord::Base
     if self.courses.count == 0 # si es publica @todo aqui hay volverla publica
       Wall.create( :publication => self, :network => self.network, :public => true)
     else
-      users = []
-      users_notifications = []
-      course = self.courses.first
-      course.members_in_courses.each do |member|
-        if member.accepted == true then
-          user = member.user
-          if user.id != self.user_id then
-            users_notifications.push(user)
-          end
-          users += [user]
-        end
-      end
+      Wall.create :users => self.users, :publication => self, :network => self.network, :courses => self.courses
+      Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Discussion", network_id: self.network.id if self.evaluable?
 
-      Wall.create :users => users, :publication => self, :network => self.network, :courses => self.courses
-      if self.publish_date.nil? && self.publish_date < DateTime.now
-        Notification.create users: users_notifications, notificator: self, kind: 'new_discussion_on_course'
-        self.send_mail(users_notifications)
+      if self.publish_date > DateTime.now
+        ScheduledJob::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_discussion_on_course')
+        ScheduledJob::SendMailsWorker.perform_at(self.publish_date, self.id, self.class.name)
+      else
+        Notification.create users: self.accepted_users, notificator: self, kind: 'new_discussion_on_course'
+        self.send_mail(self.accepted_users)
       end
     end
     track_mixpanel_discussion
@@ -97,7 +89,11 @@ class Discussion < ActiveRecord::Base
   end
 
   def state
-    @state = "published"
+    if self.publish_date <= DateTime.now and self.end_date > DateTime.now
+      @state = "published"
+    else
+      @state = "unpublish"
+    end
   end
 
   def max_courses
@@ -134,6 +130,28 @@ class Discussion < ActiveRecord::Base
     discussion_responses
   end
 
+  def users
+    users = []
+    self.courses.each do |course|
+      course.members_in_courses.each do |member|
+        user = member.user
+        users.push(user) if member.accepted?
+      end
+    end
+    return users
+  end
+
+  def accepted_users
+    users = []
+    self.courses.each do |course|
+      course.members_in_courses.each do |member|
+        user = member.user
+        users.push(user) if user.id != self.user_id && member.accepted?
+      end
+    end
+    return users
+  end
+  
   private
   def track_mixpanel_discussion
     public_discussion = self.courses.blank?
