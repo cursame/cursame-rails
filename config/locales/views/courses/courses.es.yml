@@ -241,7 +241,7 @@ es:
     evaluation_schema:
       text1: 'Especifica como quieres evaluar este curso, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame.'
       criterium: Criterio
-      percent: Porcetaje
+      percent: Porcentaje
       add_criterium: Agregar criterio de evaluación
       cancel: Cancelar
       save: Guardar
