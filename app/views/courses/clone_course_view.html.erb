@@ -35,7 +35,7 @@ background-white
 
 					<div class="form-group">
 		        <div class="form-group-label">
-		        	<%= f.label :title, "#{ t('.name') current_network.course_tag}:" %>
+		        	<%= f.label :title, t('.name') + "#{current_network.course_tag}: " %>
 		          <label></label>  
 		        </div>
 		        <div class="form-group-main">
@@ -71,7 +71,7 @@ background-white
 
 		      <div class="form-group">
 		        <div class="form-group-label">
-		          <%= f.label :public_status, t('.privacy')':' %>
+		          <%= f.label :public_status, t('.privacy') + ':' %>
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
