@@ -219,6 +219,7 @@ en:
       clone_hmwrks: Select the homework you want to clone for the new course. 
       publish_date: Published on
       delivery_date: Due date
+      clone2: "(clone)"
     edit:
       edit: Edit course
     evaluation_download:

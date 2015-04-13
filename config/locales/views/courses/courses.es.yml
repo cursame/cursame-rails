@@ -219,6 +219,7 @@ es:
       clone_hmwrks: Selecciona las tareas que quieres clonar para el nuevo curso.
       publish_date: Fecha de publicación
       delivery_date: Fecha Entrega
+      clone2: "(clonado)"
     edit:
       edit: Editar curso
     evaluation_download:
