@@ -8,7 +8,7 @@
               .section-title
                 = link_to icon('section-califications'), califications_path
                 = link_to califications_path do
-                  %h1= "Calificaciones"
+                  %h1= t('.grades')
             - unless current_user.admin?
               .page-sub-navigation
                 - action = params[:action]

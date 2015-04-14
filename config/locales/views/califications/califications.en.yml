@@ -12,6 +12,7 @@ en:
         califications: Grades
         active_courses: Ongoing Courses
         closed_courses: Finished Courses
+        grades: "Grades"
     course:
       calification: "Grade:"
       no_members: This course has no members
