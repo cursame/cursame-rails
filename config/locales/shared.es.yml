@@ -100,6 +100,7 @@ es:
         cancel: Cancelar
         save: Guardar
         public: Público
+        file: Archivo
     posts:
       post_admin_actions:
         delete: Borrar
