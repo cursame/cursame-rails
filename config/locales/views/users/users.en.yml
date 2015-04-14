@@ -26,11 +26,6 @@ en:
         no_answered: Not answers
         quest2: Average percentage in grades
         quest3: There are still not tests for this course
-    friends:
-      friends_subtitle:
-        friends1: Friends
-        all_friends: All friends
-        request: Pending requests
     shared:
       user_card:
         friends: Friends
@@ -104,6 +99,10 @@ en:
       comunity: Community
       no_friends2: This user has still no friends
       all: All users
+      friends_subtitle:
+        friends1: Friends
+        all_friends: All friends
+        request: Pending requests
     info:
       info2: Information
       bio: Bio
