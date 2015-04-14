@@ -1,8 +1,0 @@
-<h1>User: <%= @user.to_s %><h1>
-<h1>Editing group: <%= @group.name%> </h1>
-<%= form_tag update_group_path(@user.personal_url,@group) do %>
-  <%=t('.name')%>:<p> <%= text_field_tag(:name, @group.name)%>
-  <p>
-  Description:<p> <%= text_area_tag(:description, @group.description)%>
-  <p><%= submit_tag(t('.update'))%>
-<%end%>
