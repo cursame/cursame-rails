@@ -11,6 +11,7 @@ en:
       pwd: Confirm password to import users
       form: Enable public record form.
       save: Save changes
+      net_evaluable: "Enable network measurables. (Homework, quizzes and measurable discussions)"
     network_mask:
       enroll: Register user
     alertmethod:

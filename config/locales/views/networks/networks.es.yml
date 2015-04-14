@@ -11,6 +11,7 @@ es:
       pwd: Reestablecer contraseña al importar los usuarios
       form: Habilitar formulario de registro publico.
       save: Guardar cambios
+      net_evaluable: "Habilitar evaluables de la red. (Tareas, Cuestionarios y Discusiones evaluables)"
     network_mask:
       enroll: Registrar usuario
     alertmethod:
