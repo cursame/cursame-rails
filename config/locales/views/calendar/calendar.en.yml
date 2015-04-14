@@ -15,3 +15,5 @@ en:
       thursday: Friday
       friday: Saturday
       saturday: Sunday
+      back_month: ← Last Month
+      next_month: Next Month →
