@@ -11,8 +11,6 @@ Cursame30Lb::Application.routes.draw do
   end
 
   resources :usernotificationings
-  resources :members_in_groups
-  resources :groups
   resources :libraries
   resources :polls
   resources :messages
@@ -298,18 +296,6 @@ Cursame30Lb::Application.routes.draw do
   get '/users/:personal_url/friends', :to => 'users#friends', :as => :user_friends
   get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
   get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
-  
-  # Groups
-  get "users/:personal_url/groups/" => "groups#show", :as => :show_groups
-  post "users/:personal_url/groups/create" => "groups#create", :as => :create_group
-  get "users/:personal_url/groups/new" => "groups#new", :as => :new_group
-  get "users/:personal_url/groups/:id/edit" => "groups#edit", :as => :edit_group
-  post "user/:personal_url/groups/:id/update" => "groups#update", :as => :update_group
-  delete "user/:personal_url/groups/destroy" => "groups#destroy", :as => :delete_group
-
-  #Member_in_groups
-  post "user/:personal_url/groups/add_member" => "members_in_groups#create", :as => :add_member_in_group
-  delete "user/:personal_url/groups/delete_member" => "members_in_groups#destroy", :as => :delete_member_in_group
 
   post "/user/upload_users_a" => "users#upload_users_a", :as => :upload_users_a
 
