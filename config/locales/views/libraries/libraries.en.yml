@@ -1,8 +1,12 @@
 en:
   libraries:
     shared:
+      card:
+        view_files: "View files"
       header:
-        create_folder: "MISSING TRANSLATION"
-        upload_file: "MISSING TRANSLATION"
+        create_folder: "Create folder"
+        upload_file: "Upload file"
       library_files:
-        no_documents: "MISSING TRANSLATION"
+        no_documents: "There are no documents."
+    new:
+      new_library: "New library"

@@ -3,8 +3,8 @@
     .section-title
       = link_to icon('section-library'), library_path(current_network.library)
       = link_to library_path(current_network.library) do
-        %h1="Biblioteca"
+        %h1= t('.library')
     .section-header-actions
       %ul.list-buttons.right
-        %li= link_to "#{icon('plus-white')} Crear Carpeta".html_safe, new_library_library_directory_path(@library), title: "Crear Carpeta", class: "btn btn-primary"
-        %li= link_to "#{icon('plus-white')} Subir Archivo".html_safe, new_library_library_file_path(@library), title: "Subir Archivo", class: "btn btn-primary"
+        %li= link_to t('.create_folder').html_safe, new_library_library_directory_path(@library), title: "Crear Carpeta", class: "btn btn-primary"
+        %li= link_to t('.upload_file').html_safe, new_library_library_file_path(@library), title: "Subir Archivo", class: "btn btn-primary"
