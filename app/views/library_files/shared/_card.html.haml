@@ -16,7 +16,7 @@
         %h3= library_file.name
         %p= library_file.description
       %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format library_file.created_at}".html_safe
-      = link_to 'Descargar Archivo', library_file.file.url, download: true, class: "btn btn-small btn-transparent activable"
+      = link_to t('.download_file'), library_file.file.url, download: true, class: "btn btn-small btn-transparent activable"
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: library_file }
     .post-box-under-container
       .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: library_file, wall: wall }
