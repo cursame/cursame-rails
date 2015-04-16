@@ -2,20 +2,20 @@
   .body.padded
     .form-group
       .form-group-label
-        = form.label :name, "Nombre: "
+        = form.label :name, t('.name')
       .form-group-main
         .form-unit
-          = form.text_field :name, placeholder: 'Titulo de la biblioteca', required: "required"
+          = form.text_field :name, placeholder: t('.lib_name'), required: "required"
     .form-group
       .form-group-label
-        = form.label :description, "Descripción: "
+        = form.label :description, t('.descrip')
       .form-group-main
         .form-unit
-          = form.text_field :description, placeholder: 'Descripción de la biblioteca', required: "required"
+          = form.text_field :description, placeholder: t('.lib_descrip'), required: "required"
   .footer
     .fr
       %span.btn.btn-primary.input-btn.activable
-        = form.submit "Enviar", id: "wufoo-post-form", class: "activable"
+        = form.submit t('.send'), id: "wufoo-post-form", class: "activable"
 
 :javascript
   $(new function() {

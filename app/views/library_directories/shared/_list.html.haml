@@ -1,7 +1,7 @@
 .wrapper
   - if directories.blank? && files.blank?
     .no-content-section
-      %h4="No hay documentos."
+      %h4= t('.no_documents')
   - else
     .cols-12
       - directories.each do |directory|
