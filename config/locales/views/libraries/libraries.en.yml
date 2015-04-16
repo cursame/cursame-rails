@@ -1,0 +1,8 @@
+en:
+  libraries:
+    shared:
+      header:
+        create_folder: "MISSING TRANSLATION"
+        upload_file: "MISSING TRANSLATION"
+      library_files:
+        no_documents: "MISSING TRANSLATION"

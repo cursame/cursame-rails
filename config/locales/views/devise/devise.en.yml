@@ -86,7 +86,7 @@ en:
         forgot_pwd: I forgot my password
         send_pwd: You will receive an email where you will be able to change your password
     shared:
-      footer_links:
+      footer-links:
         help: Help
         terms: Terms and conditions
         privacy: Privacy
