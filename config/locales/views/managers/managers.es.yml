@@ -156,6 +156,7 @@ es:
         comments: Comentarios
         masive: Correo Masivo
         config: Configuración
+        report_content: "Contenido Reportado"
       managers_user_header:
         admin: Administrador
         help: Ayuda
@@ -282,17 +283,15 @@ es:
       send: Enviar
     settings:
       config: Configuración
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    reported_contents:
+      index:
+        report_content: "Contenidos Reportados"
+        usr: "Usuario"
+        report_date: "Fecha de reporte"
+        author: "Autor"
+        actions: "Acciones"
+        view: "Ver"
+        delete_content: "Borrar Contenido"
+        sure: "¿Está seguro de borrar este contenido?"
+        delete_report: "Borrar Reporte"
+        sure2: "¿Está seguro de borrar este reporte?, el contenido no será borrado."

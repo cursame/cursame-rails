@@ -156,6 +156,7 @@ en:
         comments: Comments
         masive: Massive email
         config: Configuration
+        report_content: "Content reported"
       managers_user_header:
         admin: Admin
         help: Help
@@ -282,3 +283,16 @@ en:
       send: Send
     settings:
       config: Configuration
+    reported_contents:
+      index:
+        report_content: "Content reported"
+        usr: "User"
+        report_date: "Report date"
+        author: "Author"
+        actions: "Actions"
+        view: "View"
+        delete_content: "Delete content"
+        sure: "¿Are you sure you want to delete this content?"
+        delete_report: "delete report"
+        sure2: "¿Are you sure you want to delete this report?, The content will not be deleted."
+        
