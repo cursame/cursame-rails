@@ -25,3 +25,7 @@ en:
       new: New network
     new:
       new_net: Create network
+    messages:
+      update:
+        success: "Settings successfully saved"
+

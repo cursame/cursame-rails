@@ -25,4 +25,7 @@ es:
       new: Nueva red
     new:
       new_net: Crear nueva red
-      
+    messages:
+      update:
+        success: "Configuración guardada correctamente."
+        
