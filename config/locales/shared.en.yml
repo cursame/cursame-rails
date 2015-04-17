@@ -41,6 +41,7 @@ en:
       homework: Homework
       discussion: Discussion
       questionnaire: Test
+      form: Form
       post_comment: Leave comment.
       what_are_y_think: "What's on your mind?"
     dropdown:
@@ -63,6 +64,7 @@ en:
         courses: Courses
         ratings: Grades
         calendar: Calendar
+        library: "Library"
         community: Community
         radar: Radar
         vLex: vLex
@@ -95,6 +97,7 @@ en:
         edit_profile_href: Edit profile
         sign_out_href: Log out
     comment_form:
+      file: "File"
       new_publication:
         comment: Comment
         cancel: Cancel
@@ -336,4 +339,4 @@ en:
       courses: Courses
       comments: Comments
       homework: Homework
-      quest: testsq
+      quest: tests
