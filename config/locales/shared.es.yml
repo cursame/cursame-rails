@@ -97,6 +97,7 @@ es:
         edit_profile_href: Editar perfil
         sign_out_href: Cerrar sesión
     comment_form:
+      file: "Archivo"
       new_publication:
         comment: Comentar
         cancel: Cancelar
