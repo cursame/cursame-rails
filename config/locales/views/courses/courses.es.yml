@@ -270,3 +270,18 @@ es:
       in_course: En el curso
     unpublished_courses:
       no_courses: No hay más cursos para mostrar.
+    show:
+      course-header:
+        update: "Actualizar portada"
+        update_photo: "Actualizar foto"
+        final_score: "Calificaciones finales"
+        activities_score: "Calificar actividades"
+        eval_form: "Forma de evaluación"
+        edit: "Editar"
+        clone: "Clonar"
+        final: "Finalizar"
+        active: "Activar"
+        publ: "Publicaciones"
+        info: "Información"
+        members: "Miembros"
+        library: "Biblioteca"

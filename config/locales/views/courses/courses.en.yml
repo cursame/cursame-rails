@@ -270,3 +270,18 @@ en:
       in_course: in the course
     unpublished_courses:
       no_courses: No more courses to show.
+    show:
+      course-header:
+        update: "Update photo"
+        update_photo: "Update photo"
+        final_score: "Final grades"
+        activities_score: "Grade activities"
+        eval_form: "Evaluation form"
+        edit: "Edit"
+        clone: "Clone"
+        final: "Finish"
+        active: "Activate"
+        publ: "Publications"
+        info: "Information"
+        members: "Members"
+        library: "Library"
