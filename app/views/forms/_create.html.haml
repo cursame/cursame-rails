@@ -33,7 +33,7 @@
       %li
         = link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", id: "cancel-post-form_tab"
       %li
-        = render partial: "shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: 'Público', default_icon: 'public-new-publication' }
+        = render partial: "shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: t('.public'), default_icon: 'public-new-publication' }
       %li
         %span.btn.btn-primary.input-btn.activable
           = f.submit "Publicar", id: "wufoo-post-form", class: "activable"

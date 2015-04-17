@@ -16,12 +16,12 @@
             %label#icon-dd-public.world-dd.active
               = icon('public-new-publication')
               %input#is_public{:name => "is_public", :type => "checkbox", :value => "1"}/
-              = t('.dropdown_v.public')
+              = t('.public')
               \#{icon('checked-16')}
           %li
             %label#icon-dd-course.course-dd
               = icon('course-new-publication')
-              = t('.dropdown_v.courses')
+              = t('.courses')
       - if hasCourses
         %ul#box-course-dd.dropdown.target-courses-selector{style: ("display: none;" if hasPublic)}
           - unless current_user.courses.empty?
@@ -38,14 +38,14 @@
             .inner-no-content
               - if is_student
                 %h5
-                  = t('.dropdown_v.no_member')
+                  = t('.no_member')
                 %p
                   = t('.dropdown_v.goto_section') 
                   #{link_to 'Cursos', courses_path}
               - else
                 %h5 
                   = t('.dropdown_v.no_course')
-                %p= link_to t('.dropdown_v.return'), new_course_path
+                %p= link_to t('.return'), new_course_path
           - if hasCourses && hasPublic
             %li
               #box-return-dd.return-dd

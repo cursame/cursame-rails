@@ -2,35 +2,35 @@
   .new-publication-form-content
     .form-group
       .form-group-label
-        = f.label :title, "Titulo: "
+        = f.label :title, t('.title')
       .form-group-main
         .form-unit
-          = f.text_field :title, placeholder: 'Titulo del formulario', required: "required"
+          = f.text_field :title, placeholder: t('.title2'), required: "required"
     .form-group
       .form-group-label
-        = f.label :description, "Descripción: "
+        = f.label :description, t('.descrip')
       .form-group-main
         .form-unit
-          = f.text_field :description, placeholder: 'Descripción del formulario', required: "required"
+          = f.text_field :description, placeholder: t('.form_descrip'), required: "required"
     .form-group
       .form-group-label
         = f.label :description, "URL: "
       .form-group-main
         .form-unit
-          = f.text_field :url, placeholder: 'URL del formulario', required: "required"
+          = f.text_field :url, placeholder: t('.form_url'), required: "required"
     .form-group
       .form-group-label
-        = f.label :init_date, "Fechas:"
+        = f.label :init_date, t('.dates')
       .form-group-main
         .f-col.f-col-5
           .form-unit
-            = f.text_field :init_date, placeholder: 'Día de publicación', class: "date-input delivery delivery_publish_date", id: 'form_init_date', value: f.object.init_date, required: "required"
+            = f.text_field :init_date, placeholder: t('.publish_date'), class: "date-input delivery delivery_publish_date", id: 'form_init_date', value: f.object.init_date, required: "required"
         .f-col.f-col-5
           .form-unit
-            = f.text_field :term_date, placeholder: 'Fecha de entrega', class: "date-input delivery delivery_end_date", id: 'form_term_date', value: f.object.term_date, required: "required"
+            = f.text_field :term_date, placeholder: t('.deliver_day'), class: "date-input delivery delivery_end_date", id: 'form_term_date', value: f.object.term_date, required: "required"
     .form-group
       .form-group-label
-        = f.label :wufoo_roles, "Roles: "
+        = f.label :wufoo_roles, t('.roles')
       .form-group-main
         .f-col.f-col-3
           .form-unit
@@ -43,12 +43,12 @@
   .new-publication-footer
     %ul.list-buttons.right.fr
       %li
-        = link_to "Cancelar", "", class: "btn btn-secondary cancel-post-form_tab", id: "cancel-post-form_tab"
+        = link_to t('.cancel'), "", class: "btn btn-secondary cancel-post-form_tab", id: "cancel-post-form_tab"
       %li
-        = render partial: "/google_forms/shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: 'Público', default_icon: 'public-new-publication' }
+        = render partial: "/google_forms/shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: t('.public'), default_icon: 'public-new-publication' }
       %li
         %span.btn.btn-primary.input-btn.activable
-          = f.submit "Publicar", id: "wufoo-post-form", class: "activable"
+          = f.submit t('.publish'), id: "wufoo-post-form", class: "activable"
 = content_for :javascripts do
   :javascript
     $(function () {
