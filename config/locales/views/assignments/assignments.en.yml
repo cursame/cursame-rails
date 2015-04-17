@@ -5,6 +5,8 @@ en:
       cancel: Cancel
       save_dlvry: Save New Delivery
       dlvry: Deliver Homework
+      title: "Title:"
+      descrip: "Description:"
     responce_of_evaluation:
       comments: Comments
       entry: Entry
