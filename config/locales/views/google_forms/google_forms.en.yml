@@ -2,21 +2,21 @@ en:
   google_forms:
     shared:
       card:
-        view_form: "Ver Formulario"
-        edit_form: "Editar Formulario"
+        view_form: "View Form"
+        edit_form: "Edit Form"
       form:
-        title: "Titulo: "
-        title2: "Titulo del formulario"
-        descrip: "Descripción: "
-        form_descrip: "Descripción del formulario"
-        form_url: "URL del formulario"
-        dates: "Fechas:"
-        publish_date: "Día de publicación"
-        deliver_day: "Fecha de entrega"
+        title: "Title: "
+        title2: "Title of Form"
+        descrip: "Description: "
+        form_descrip: "Description of form"
+        form_url: "URL of form"
+        dates: "Dates:"
+        publish_date: "Publish date"
+        deliver_day: "Delivery date"
         roles: "Roles: "
         cancel: "Cancel"
-        public: "Público"
-        publish: "Publicar"
+        public: "Public"
+        publish: "Publish"
       dropdown:
         courses: "Courses"
         public: "Public"
