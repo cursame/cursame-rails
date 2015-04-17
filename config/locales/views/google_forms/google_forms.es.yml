@@ -1,0 +1,23 @@
+es:
+  google_forms:
+    shared:
+      card:
+        view_form: "Ver Formulario"
+        edit_form: "Editar Formulario"
+      form:
+        title: "Título: "
+        title2: "Titulo del formulario"
+        descrip: "Descripción: "
+        form_descrip: "Descripción del formulario"
+        form_url: "URL del formulario"
+        dates: "Fechas:"
+        publish_date: "Día de publicación"
+        deliver_day: "Fecha de entrega"
+        roles: "Roles: "
+        cancel: "Cancelar"
+        public: "Público"
+        publish: "Publicar"
+      dropdown:
+        courses: "Cursos"
+        public: "Público"
+
