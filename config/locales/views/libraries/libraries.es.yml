@@ -6,6 +6,7 @@ es:
       header:
         create_folder: "Crear Carpeta"
         upload_file: "Subir Archivo"
+        library: "Biblioteca"
       library_files:
         no_documents: "No hay documentos."
     new:
