@@ -257,14 +257,15 @@ class User < ActiveRecord::Base
   ####### busqueda por nombre de usario ######
   def self.search(search)
     if search
-      # @searcher = find(:all, :conditions => ['(first_name || last_name) LIKE ?', "%#{search}%"])
-      query = "lower(first_name) LIKE '%"+search+"%' OR lower(last_name) LIKE '%"+search+"%' "
+      query =  "(lower(unaccent(first_name)) || ' ' || lower(unaccent(last_name)))  LIKE ? OR (lower(unaccent(first_name)) LIKE ?) OR  (lower(unaccent(last_name)) LIKE ?) ", "%#{search}%", "%#{search}%", "%#{search}%"
       where(query)
     else
       # find(:all, :order => :first_name)
       scoped
     end
   end
+
+
 
   def image_avatarx
     'imagex.png'
