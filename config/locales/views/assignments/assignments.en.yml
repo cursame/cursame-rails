@@ -10,4 +10,6 @@ en:
     responce_of_evaluation:
       comments: Comments
       entry: Entry
-
+    messages:
+      create:
+        success: "Your homework has been delivered"

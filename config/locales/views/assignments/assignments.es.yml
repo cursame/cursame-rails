@@ -10,3 +10,6 @@ es:
     responce_of_evaluation:
       comments: Comentarios
       entry: Rubro
+    messages:
+      create:
+        success: "Se ha entregado tu tarea"
