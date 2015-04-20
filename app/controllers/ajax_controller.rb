@@ -68,10 +68,7 @@ class AjaxController < ApplicationController
   end
 
   def network_students
-    down = I18n.transliterate(params[:term].downcase.to_s)
-    users = User.includes(:permissionings).where("permissionings.role_id = 2 AND permissionings.network_id = ?", current_network.id).search(down)
-
-    active_search(2, params[:term])
+    users = active_search(2, params[:term])
 
     respond_to do |format|
       format.json { render json: users }
@@ -79,13 +76,16 @@ class AjaxController < ApplicationController
   end
 
   def network_teachers
-    down = I18n.transliterate(params[:term].downcase.to_s)
-    users = User.includes(:permissionings).where("permissionings.role_id = 3 AND permissionings.network_id = ?", current_network.id).search(down)
-
+    users = active_search(3, params[:term])
 
     respond_to do |format|
       format.json { render json: users }
     end
   end
 
+  def active_search(roleid, term)
+    down = I18n.transliterate(params[:term].downcase.to_s)
+    validation = "permissionings.role_id = #{roleid} AND permissionings.network_id = ?"
+    us =  User.includes(:permissionings).where(validation, current_network.id).search(down)
+  end
 end
