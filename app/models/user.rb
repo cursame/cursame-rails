@@ -256,13 +256,8 @@ class User < ActiveRecord::Base
 
   ####### busqueda por nombre de usario ######
   def self.search(search)
-    if search
-      query =  "(lower(unaccent(first_name)) || ' ' || lower(unaccent(last_name)))  LIKE ? OR (lower(unaccent(first_name)) LIKE ?) OR  (lower(unaccent(last_name)) LIKE ?) ", "%#{search}%", "%#{search}%", "%#{search}%"
-      where(query)
-    else
-      # find(:all, :order => :first_name)
-      scoped
-    end
+        query =  "(lower(unaccent(first_name)) || ' ' || lower(unaccent(last_name)))  LIKE ? OR (lower(unaccent(last_name)) || ' ' || lower(unaccent(first_name)) )  LIKE ? OR (lower(unaccent(first_name)) LIKE ?) OR  (lower(unaccent(last_name)) LIKE ?)", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"
+        us = where(query)
   end
 
 
