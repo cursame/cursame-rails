@@ -307,7 +307,7 @@ class HomeController < ApplicationController
       @id = publication.id
     end
 
-    flash.now[:success] = "Se ha borrado correctamente la publicación."
+    flash.now[:success] = t('.home.delete_publication')
 
     respond_to do |format|
       format.js
