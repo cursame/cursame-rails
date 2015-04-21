@@ -62,23 +62,22 @@
                             %h2
                               %span= icon 'activity-delivery'
                               = t('.hmwrk')
-                            %p= "#{t('.send') @user_course.count_deliveries_responses  t('.of')} #{ @course.deliveries.count }"
-                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
+                            %p= t('.send') + "#{@user_course.count_deliveries_responses}" +  t('.of') + "#{ @course.deliveries.count }"
+                            %span.meta-info= t('.percent') + "#{course_criterium.evaluation_percentage }"
                           - elsif course_criterium.name == 'cursame_surveys'
                             %h2
                               %span= icon 'activity-survey'
-                              = t('.')Cuestionarios
-                            %p= "#{t('.respond')  @user_course.count_surveys_responses t('.of')} #{ @course.surveys.count }"
-                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
+                              = t('.quest')                            %p= t('.respond') + "#{@user_course.count_surveys_responses}" + t('.of') + "#{ @course.surveys.count }"
+                            %span.meta-info= t('.percent') + "#{course_criterium.evaluation_percentage }"
                           - elsif course_criterium.name == 'cursame_discussions'
                             %h2
                               %span= icon 'activity-discussion'
                               = t('.discuss')
-                            %p= "#{t('.participate') @user_course.count_discussions_responses t('.of')} #{ @course.evaluables_discussiones.count }"
-                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
+                            %p= t('.participate') + "#{@user_course.count_discussions_responses}" + t('.of') + "#{ @course.evaluables_discussiones.count }"
+                            %span.meta-info= t('.percent') + "#{course_criterium.evaluation_percentage }"
                           - else
                             %h4= course_criterium.name
-                            %span.meta-info #{t('.percent') course_criterium.evaluation_percentage }
+                            %span.meta-info= t('.percent') + "#{course_criterium.evaluation_percentage }"
                         %td
                           = f.fields_for :members_in_course_criteria, @user_course.members_in_course_criteria[index] do |ff|
                             = ff.hidden_field :evaluation_criterium_id, value: course_criterium.id
