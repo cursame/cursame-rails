@@ -620,6 +620,7 @@ class ApplicationController < ActionController::Base
   end
 
   def pretty_date_format(date)
+    date ||= Date.today
     es_current_date(date.strftime('%B'), date.strftime('%d'), date.strftime('%Y'), date.strftime('%l:%M%P'), "latin_string")
   end
   
