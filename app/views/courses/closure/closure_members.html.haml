@@ -30,7 +30,7 @@
                             %h5= member_course.user.name
                             - if member_course.grade.present?
                               %p
-                                #{t('.score') evaluation_score member_course.grade.score}
+                                = t('.score') + "#{evaluation_score member_course.grade.score}"
                             - else
                               %p= t('.no_score')
               - else
