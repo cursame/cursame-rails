@@ -54,12 +54,12 @@
         %br/
         
         - if @user.student?
-          %span.meta-info= t('.deliveries') Tareas entregadas
+          %span.meta-info= t('.deliveries')
           %p= @user.assignments.count
 
           %br/
-          %span.meta-info= t('.quest') Cuestionarios contestados
+          %span.meta-info= t('.quest')
           %p= @user.user_surveys.count
 
           %br/
-          %span.meta-info= t('.eval')Participación en discusiones evaluables
+          %span.meta-info= t('.eval')
