@@ -119,7 +119,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.update_attributes(params[:network])
-        format.html { redirect_to :back, flash: { success: 'networks.messages.update.success' } }
+        format.html { redirect_to :back, flash: { success: t('.networks.messages.update.success') } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
