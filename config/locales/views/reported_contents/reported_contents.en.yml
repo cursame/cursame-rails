@@ -1,0 +1,10 @@
+en:
+  reported_contents:
+    shared:
+      reported_content_modal:
+        help_us: "Help us to understand what's going on"
+        reported_content: "You have already reported this content, the network administrator will take actions."
+        why_no_content: "Why don't you want to see this content?"
+        comment: "Write a comment"
+        send: "Send"
+        

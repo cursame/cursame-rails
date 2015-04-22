@@ -9,22 +9,22 @@
 .overlay-header
   .overlay-title
     %h4
-      Ayúdanos a entender qué sucede
+      = t('.help_us')
   .close-overlay 
     = icon('x-close')
 - unless reported_content_user.nil?
   .overlay-content
-    %h5 Ya has reportado este contenido, el administrador de la red tomara acciones.
+    %h5= t('.reported_content')
 - else
   .overlay-content
-    %h5 ¿Por qué no quieres ver este contenido?
+    %h5= t('.why_no_content')
   - @reported_content = ReportedContent.new
   = form_for @reported_content, remote: true do |f|
     .report-content
-      = f.text_area :description, placeholder: 'Escribe un comentario', required: true
+      = f.text_area :description, placeholder: t('.comment'), required: true
       = f.hidden_field :reportable_id, value: reportable_id
       = f.hidden_field :reportable_type, value: reportable_type
       = f.hidden_field :user_id, value: current_user.id
       = f.hidden_field :network_id, value: current_network.id
     .btn-report-content
-      = f.submit "Enviar", :class=>"btn btn-medium btn-primary"
+      = f.submit t('.send'), :class=>"btn btn-medium btn-primary"
