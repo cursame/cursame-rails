@@ -1,0 +1,4 @@
+es:
+  ajax_controller:
+    error1: "Ocurrio un error, porfavor intentalo de nuevo."
+    
