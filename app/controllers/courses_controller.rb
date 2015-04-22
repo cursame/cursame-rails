@@ -977,8 +977,8 @@ class CoursesController < ApplicationController
         message_active_status_true = t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.active')
         message_active_status_false = t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.ended')
       else
-        message_active_status_true = t('.courses_controller.your_course') "#{@course.title}" t('.courses_controller.active')
-        message_active_status_false = t('.courses_controller.your_course') "#{@course.title}" t('.courses_controller.ended')
+        message_active_status_true = t('.courses_controller.your_course') + "#{@course.title}" + t('.courses_controller.active')
+        message_active_status_false = t('.courses_controller.your_course') + "#{@course.title}" + t('.courses_controller.ended')
       end
 
       if @course.active_status
