@@ -1,0 +1,5 @@
+es:
+  managers:
+    delete_error: "Ocurrió un error al borrar el comentario'"
+    correct_deleted: "Comentario borrado correctamente"
+    
