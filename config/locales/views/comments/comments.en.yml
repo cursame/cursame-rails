@@ -6,3 +6,5 @@ en:
         confirm: Are yo sure you want to delete comment?
       comment_card:
         edit_comment: Edit Comment
+      comment_user_actions:
+        denounce_comment: "Report comment"
