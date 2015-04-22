@@ -45,7 +45,7 @@ en:
       hmwrks: Homework that must be turned in in three days or more
       no_hmwrks: No pending homework for this course
       no_deliver: "You have turned in all your pending homework, you can see previous homework in the previous homework section."
-      hmwrks_last: "MISSING TRANSLATION"
+      hmwrks_last: "past homeworks in the Past section"
     deliveries_courses_lapsed:
       last_hmwrks: We could not find any previous homework.
     index:
@@ -54,6 +54,6 @@ en:
       deliver_hmwrks: Homework that must be turned in in three days or more
       no_hmwrks: You have no pending homework to turn in.
       no_deliver: "You have turned in all your pending homework, you can see previous homework in the previous homework section."
-      past_hmwrks: "MISSING TRANSLATION"
+      past_hmwrks: "past homeworks in the Past section"
     lapsed:
       no_hmwrks: We could not find any previous homework.
