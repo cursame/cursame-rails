@@ -81,9 +81,9 @@ class AssignmentsController < ApplicationController
 
     if @assignment.update_attributes params[:assignment]
       Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_accomplishment_on_assignment'
-      the_flash = { success: "Se ha calificado correctamente la tarea." }
+      the_flash = { success: t('.assignments.correct') }
     else
-      the_flash = { error: "Ha ocurrido un error al calificar la tarea." }
+      the_flash = { error: t('.assignments.error') }
     end
 
     redirect_to evaluate_delivery_response_path(@assignment), flash: the_flash
