@@ -11,6 +11,6 @@ class Managers::DiscussionsController < Managers::BaseController
   def destroy
     discussion = Discussion.find_by_id(params[:id])
     discussion.destroy
-    redirect_to managers_discussions_path, flash: { success: 'Discusión borrada correctamente.' }
+    redirect_to managers_discussions_path, flash: { success: t('managers.delete_discuss') }
   end
 end

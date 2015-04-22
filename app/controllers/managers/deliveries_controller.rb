@@ -11,6 +11,6 @@ class Managers::DeliveriesController < Managers::BaseController
     @delivery = Delivery.find_by_id params[:id]
     @delivery.destroy
     
-    redirect_to managers_deliveries_path, flash: { success: 'Tarea borrada correctamente.' }
+    redirect_to managers_deliveries_path, flash: { success: t('.managers.hmwrk_delete') }
   end
 end
