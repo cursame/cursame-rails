@@ -1,0 +1,4 @@
+es:
+  managers_controller:
+    in_stack: "Su correo se ha puesto en cola para enviar."
+    
