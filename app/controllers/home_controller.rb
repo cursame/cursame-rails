@@ -114,7 +114,7 @@ class HomeController < ApplicationController
     mails = ['fernanda@cursa.me', 'hola@cursa.me']
 
     mails.each do |mail|
-      subject = params[:contact_type] == 'demo_request' ? 'Solictud de demo' : 'Contacto'
+      subject = params[:contact_type] == 'demo_request' ? t('.home.demo') : t('.home.contact')
       mail = Notifier.send_contact_mail(params, mail, subject, params[:contact_type] == 'demo_request')
       mail.deliver
     end
