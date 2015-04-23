@@ -219,21 +219,16 @@ class CoursesController < ApplicationController
         @member.title      = @course.title
         @member.save
 
-        students = []
-        unless params["students"].nil? 
-          params["students"].each do |student|
-            students.push User.find(student.first.to_i)
-          end
-        end
-        @course.update_members(students, false) unless params["check_members"].nil?
+        students = params[:students] || {}
+        teachers = params[:teachers] || {}
+        user_ids = students.merge(teachers).map{|key, value| key}
 
-        teachers = []
-        unless params["teachers"].nil? 
-          params["teachers"].each do |student|
-            teachers.push User.find(student.first.to_i)
-          end
+        users = []
+        user_ids.each do |user_id|
+          users.push User.find_by_id user_id
         end
-        @course.update_members(teachers, false) unless params["check_members"].nil?
+        @course.update_members(users, false) unless params["check_members"].nil?
+
 
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
         @az =  @course
@@ -276,22 +271,15 @@ class CoursesController < ApplicationController
     end
     respond_to do |format|
       if @course.update_attributes(params[:course])
+        students = params[:students] || {}
+        teachers = params[:teachers] || {}
+        user_ids = students.merge(teachers).map{|key, value| key}
 
-        students = []
-        unless params["students"].nil? 
-          params["students"].each do |student|
-            students.push User.find (student.first.to_i)
-          end
+        users = []
+        user_ids.each do |user_id|
+          users.push User.find_by_id user_id
         end
-        @course.update_members(students, false) unless params["check_members"].nil?
-
-        teachers = []
-        unless params["teachers"].nil? 
-          params["teachers"].each do |student|
-            teachers.push User.find (student.first.to_i)
-          end
-        end
-        @course.update_members(teachers, false) unless params["check_members"].nil?
+        @course.update_members(users, false) unless params["check_members"].nil?
 
 
         @last_date = @course.init_date
