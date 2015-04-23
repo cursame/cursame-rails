@@ -1,0 +1,5 @@
+es:
+  deliveries_controller:
+    access_denied: "Estas tratando de ver Tareas de un curso donde no has sido aceptado."
+    register: "Estas tratando de ver Tareas de un curso donde no estas inscrito."
+    
