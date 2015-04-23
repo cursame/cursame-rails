@@ -13,7 +13,7 @@
   - when Delivery
     - unless post.publish_date > DateTime.now
       = render partial: 'deliveries/shared/delivery_card', locals: { delivery: post, card_type: :post_publication, wall: publication }
-  - when 'Survey'
+  - when Survey
     - unless post.publish_date > DateTime.now
       = render partial: 'surveys/shared/survey_card', locals: { survey: post, card_type: :post_publication, wall: publication }
   - when Comment

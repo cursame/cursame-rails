@@ -14,7 +14,11 @@ class GoogleForm < ActiveRecord::Base
 
   after_create do
     create_walls
-    create_notifications
+    if self.init_date > DateTime.now
+      ScheduledJob::NotificationsWorker.perform_at(self.init_date, self.id, self.class.name, notification_type)
+    else
+      create_notifications
+    end
   end
 
   def for_teachers?
@@ -36,6 +40,10 @@ class GoogleForm < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def users
+    pollable.users.keep_if { |user| roles.include?(user.role) }
   end
 
   private
@@ -63,10 +71,6 @@ class GoogleForm < ActiveRecord::Base
     else
       []
     end
-  end
-
-  def users
-    pollable.users.keep_if { |user| roles.include?(user.role) }
   end
 
   def notification_type

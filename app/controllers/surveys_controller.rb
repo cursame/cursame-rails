@@ -13,6 +13,8 @@ class SurveysController < ApplicationController
       accu + course.surveys
     end
 
+    surveys = surveys.keep_if {|survey| survey.state == 'published'}
+
     surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
     end

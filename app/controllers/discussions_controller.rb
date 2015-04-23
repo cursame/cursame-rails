@@ -6,7 +6,8 @@ class DiscussionsController < ApplicationController
   before_filter :validations, only: :show
 
   def index
-    @discussions = student_discussions.paginate(per_page: CARDS_PER_PAGE, page: 1)
+    discussions = student_discussions.paginate(per_page: CARDS_PER_PAGE, page: 1)
+    @discussions = discussions.keep_if {|discussion| discussion.publish_date < DateTime.now}
   end
 
   def discussions_course
@@ -19,7 +20,8 @@ class DiscussionsController < ApplicationController
       redirect_to root_path, flash: { error: t('.discussions_controller.no_register')}
     end
 
-    @discussions = course_discussions(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
+    discussions = course_discussions(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
+    @discussions = discussions.keep_if {|discussion| discussion.publish_date < DateTime.now}
   end
 
   def paginate_ajax
@@ -138,10 +140,6 @@ class DiscussionsController < ApplicationController
       else
         redirect_to :back, notice: t('.discussions_controller.no_discussion')
       end
-    end
-
-    if @discussion.evaluable?
-      Event.create title: @discussion.title, starts_at: @discussion.publish_date, ends_at: @discussion.end_date, schedule_id: @discussion.id, schedule_type: "Discussion", network_id: current_network.id
     end
 
     if params[:files]
