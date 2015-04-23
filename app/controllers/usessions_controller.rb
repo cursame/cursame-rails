@@ -15,7 +15,7 @@ class UsessionsController < Devise::SessionsController
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource))
 
-    flash[:notice] = "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos."
+    flash[:notice] = t('.usessions_controller.invalid')
   end
 
   # POST /resource/sign_in
@@ -37,7 +37,7 @@ class UsessionsController < Devise::SessionsController
     #set_flash_message(:notice, :signed_in) if is_navigational_format?
     @find_user = User.find_by_email(resource.email)
 
-    flash[:notice] = "Hola #{ @find_user.name } bienvenido de nuevo."
+    flash[:notice] = t('.usessions_controller.hello') + "#{ @find_user.name }" + t('.usessions_controller.welcome')
 
     @find_user.online = true
     @find_user.save!
