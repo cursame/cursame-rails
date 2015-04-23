@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
       end
     end
     if current_role == "student" then
-      redict_to courses_path, :notice => "No puedes enviar correo a los estudiantes del curso"
+      redict_to courses_path, :notice => t('.messages_controller.no_send')
     end
   end
 

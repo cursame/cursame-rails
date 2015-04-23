@@ -1,0 +1,4 @@
+es:
+  messages_controller:
+    no_send: "No puedes enviar correo a los estudiantes del curso"
+    
