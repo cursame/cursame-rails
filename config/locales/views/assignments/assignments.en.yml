@@ -1,0 +1,15 @@
+en:
+  assignments:
+    form_for_delivery:
+      file_dlvry: "Delivery Files:"
+      cancel: Cancel
+      save_dlvry: Save New Delivery
+      dlvry: Deliver Homework
+      title: "Title:"
+      descrip: "Description:"
+    responce_of_evaluation:
+      comments: Comments
+      entry: Entry
+    messages:
+      create:
+        success: "Your homework has been delivered"

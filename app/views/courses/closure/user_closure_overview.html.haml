@@ -62,12 +62,13 @@
                             %h2
                               %span= icon 'activity-delivery'
                               = t('.hmwrk')
-                            %p= t('.send') + "#{@user_course.count_deliveries_responses}" +  t('.of') + "#{ @course.deliveries.count }"
+                            %p= t('.send') + "#{@user_course.count_deliveries_responses}" + t('.of') + "#{ @course.deliveries.count }"
                             %span.meta-info= t('.percent') + "#{course_criterium.evaluation_percentage }"
                           - elsif course_criterium.name == 'cursame_surveys'
                             %h2
                               %span= icon 'activity-survey'
-                              = t('.quest')                            %p= t('.respond') + "#{@user_course.count_surveys_responses}" + t('.of') + "#{ @course.surveys.count }"
+                              = t('.quest')
+                            %p= t('.respond') + "#{@user_course.count_surveys_responses}" + t('.of') + "#{ @course.surveys.count }"
                             %span.meta-info= t('.percent') + "#{course_criterium.evaluation_percentage }"
                           - elsif course_criterium.name == 'cursame_discussions'
                             %h2

@@ -35,12 +35,12 @@ background-white
 
 					<div class="form-group">
 		        <div class="form-group-label">
-		        	<%= f.label :title, t('.name') + "#{current_network.course_tag}: " %>
-		          <label></label>  
+              <%= f.label :title, t('.name') + "#{current_network.course_tag}: " %>
+              <label></label>
 		        </div>
 		        <div class="form-group-main">
 		          <div class="form-unit">
-		          	<%= text_field_tag "course[title]", "#{@course.title} (clonado)", placeholder: t('.example'), required: "required", autocomplete: "off" %>
+		          	<%= text_field_tag "course[title]", "#{@course.title} " + t('.clone2'), placeholder: t('.example'), required: "required", autocomplete: "off" %>
 		          </div>
 		        </div>
 		      </div>

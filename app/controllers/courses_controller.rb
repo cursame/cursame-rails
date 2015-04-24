@@ -85,7 +85,7 @@ class CoursesController < ApplicationController
 
   def search
     raw_query = params[:query]
-    return redirect_to courses_path, flash: { error: "Escribe algo en el campo de busqueda." } unless raw_query
+    return redirect_to courses_path, flash: { error: t('.courses_controller.search') } unless raw_query
 
     query = I18n.transliterate(raw_query.downcase.to_s)
 
@@ -114,7 +114,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
 
-    redirect_to root_path, flash: { error: "El curso que intentas ver no existe o ha sido borrado"} and return if current_network.id != @course.network_id 
+    redirect_to root_path, flash: { error: t('.courses_controller.no_exist')} and return if current_network.id != @course.network_id 
 
     if @member.nil?
       # redirect_to :back
@@ -199,7 +199,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
     unless current_user.admin?
-      (@member.nil? || !@member.owner?) ? (redirect_to course_path(@course), flash: { error: "Usted no está autorizado para editar este curso."}) : nil
+      (@member.nil? || !@member.owner?) ? (redirect_to course_path(@course), flash: { error: t('.courses_controller.no_authorized')}) : nil
     end 
   end
 
@@ -256,9 +256,9 @@ class CoursesController < ApplicationController
         EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course)
 
         if current_network.evaluable?
-          redirect_to course_evaluation_schema_path(@course.id), flash: { success: "Se ha creado correctamente tu curso, edita tu forma de evaluación."} and return
+          redirect_to course_evaluation_schema_path(@course.id), flash: { success: t('.courses_controller.create')} and return
         else
-          redirect_to course_path(@course), flash: { success: "Se ha creado correctamente"} and return
+          redirect_to course_path(@course), flash: { success: t('.courses_controller.success')} and return
         end
 
       else
@@ -303,7 +303,7 @@ class CoursesController < ApplicationController
         end
         @course.init_date = @last_date
         @course.save
-        flash[:notice] = "Se han guardado satisfactoriamente los cambios en el curso. "
+        flash[:notice] = t('.courses_controller.save')
         format.html {redirect_to course_path(@course)}
         format.json { head :no_content }
       else
@@ -317,7 +317,7 @@ class CoursesController < ApplicationController
     @course = Course.find_by_id(params[:id])
     @course.destroy
 
-    redirect_to courses_path, flash: { notice: 'Curso eliminado correctamente.' }
+    redirect_to courses_path, flash: { notice: t('.courses_controller.delete') }
   end
 
   def members
@@ -419,7 +419,7 @@ class CoursesController < ApplicationController
     @course = Course.find_by_id params[:id]
     @member = @course.nil? ? nil : obtainMember(@course.id, current_user.id)
     unless current_role == "admin" || current_role == "superadmin" || @member.nil? || @member.accepted?
-      redirect_to courses_path, :notice => "No has sido aceptado en este curso." and return
+      redirect_to courses_path, :notice => t('.courses_controller.no_accepted') and return
     end
   end
 
@@ -430,7 +430,7 @@ class CoursesController < ApplicationController
   def assigment
     if params[:assignment][:id].blank?
       assignment = Assignment.create params[:assignment]
-      flash[:success] = assignment.valid? ? t("assignments.messages.create.success") : t("assignments.messages.create.error")
+      flash[:success] = assignment.valid? ? t(".assignments.messages.create.success") : t(".assignments.messages.create.error")
       mixpanel_properties = {
         'Network'   => assignment.course.network.name.capitalize,
         'Subdomain' => assignment.course.network.subdomain,
@@ -440,7 +440,7 @@ class CoursesController < ApplicationController
     else
       assignment = Assignment.find_by_id params[:assignment][:id]
       assignment.update_attributes params[:assignment]
-      flash[:success] = assignment.valid? ? t("assignments.messages.update.success") : t("assignments.messages.update.error")
+      flash[:success] = assignment.valid? ? t(".assignments.messages.update.success") : t(".assignments.messages.update.error")
     end
     params[:files].to_a.each do |asset_id|
       asset = Asset.find_by_id asset_id
@@ -974,11 +974,11 @@ class CoursesController < ApplicationController
       end
 
       if current_user.admin?
-        message_active_status_true = "El curso #{@course.title} se activo correctamente."
-        message_active_status_false = "El curso #{@course.title} se finalizo correctamente."
+        message_active_status_true = t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.active')
+        message_active_status_false = t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.ended')
       else
-        message_active_status_true = "Tu curso #{@course.title} se activo correctamente."
-        message_active_status_false = "Tu curso #{@course.title} se finalizo correctamente."
+        message_active_status_true = t('.courses_controller.your_course') + "#{@course.title}" + t('.courses_controller.active')
+        message_active_status_false = t('.courses_controller.your_course') + "#{@course.title}" + t('.courses_controller.ended')
       end
 
       if @course.active_status
@@ -1092,7 +1092,7 @@ class CoursesController < ApplicationController
       EvaluationCriterium.create(name: 'cursame_surveys', evaluable: @course, evaluation_percentage: 33)
       EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course, evaluation_percentage: 33)
 
-      redirect_to course_path(@course), :notice => "Curso clonado correctamente."
+      redirect_to course_path(@course), :notice => t('.courses_controller.clone_correct')
     end
   end
 
@@ -1119,12 +1119,12 @@ class CoursesController < ApplicationController
 
   def course_activated
     @course = Course.find_by_id(params[:id])
-    redirect_to(root_path, flash: { error: "El curso al que intentas accesar, no existe o ha sido borrado." }) and return if @course.nil?
+    redirect_to(root_path, flash: { error: t('.courses_controller.no_access') }) and return if @course.nil?
     unless current_user.admin?
       if ! @course.active_status && @course.owner?(current_role, current_user)
-        redirect_to(courses_unpublished_path, flash: { notice: "#{@course.title} ha finalizado, lo puedes activar en el menu de opciones del curso." }) and return
+        redirect_to(courses_unpublished_path, flash: { notice: "#{@course.title}" + t('.courses_controller.has_ended') }) and return
       elsif ! @course.active_status && current_user.student?
-        redirect_to(courses_all_path, flash: { notice: "El curso #{@course.title} ha finalizado, contacta al profesor para más información." }) and return
+        redirect_to(courses_all_path, flash: { notice: t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.contact') }) and return
       end
     end
   end

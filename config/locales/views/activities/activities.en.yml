@@ -1,0 +1,15 @@
+en:
+  activities:
+    show:
+      title: "Title:"
+      title_act: "Type of Activity:"
+      avg: "Average:"
+      without_act: No Activities
+      place: "Place:"
+      long: "Length:"
+      lat: "Lattitue:"
+      geo_c: "geocode:"
+      ver: "Version:"
+      os: "Operating System:"
+      net: "Network:"
+      deliveries: Deliveries

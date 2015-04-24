@@ -11,7 +11,7 @@
         .post-box-main-author-content
           = link_to google_form.pollable.title, course_path(google_form.pollable), title: google_form.pollable.title
           %span.timestamp= time_ago_in_words google_form.init_date
-      - when "Network"
+      - when Network
         = link_to show_user_path(google_form.user.personal_url), title: google_form.user.name, class: 'post-box-avatar' do
           %span.avatar-holder
             = avatar 'user', '45', 'no', google_form.user.id, 'avatar', 'no', 'no'
@@ -27,11 +27,11 @@
         %h3= google_form.title
         %p= google_form.description
       %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format google_form.term_date}".html_safe
-      = link_to 'Ver Formulario', google_form.url, target: "_blank", class: "btn btn-small btn-transparent activable"
+      = link_to t('.view_form'), google_form.url, target: "_blank", class: "btn btn-small btn-transparent activable"
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: google_form }
     - if card_type == :post_publication
       .post-box-edit
-        %h5 Editar Formulario
+        %h5= t('.edit_form')
         .post-edit-form-js
     .post-box-under-container
       .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: google_form, wall: wall }

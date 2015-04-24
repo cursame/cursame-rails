@@ -1,0 +1,298 @@
+en:
+  managers:
+    comments:
+      index:
+        comments1: Comments
+        comment: Comment
+        comment_in: Comment in
+        like: Like
+        create_date: "Created on:"
+        actions: Actions
+        no_user: No user
+        public: Publish
+        user: User
+        course: Course
+        discuss: Discussion
+        quest: Test
+        hmwrk: Homework
+        view: See
+        delete: Delete
+        confirm: Are you sure you want to delete this comment?.
+      show:
+        back: Back
+        delete: delete
+        confirm: Are you sure you want to delete this comment?.
+        author: Author
+        create_date: Created on
+        comment: Comment
+        comment_in: Comment in
+        public: Public
+        user: User
+        course: Course
+        discuss: Discussion
+        hmwrk: Homework
+        quest: Test
+        like: Like
+    courses:
+      shared:
+        form:
+          name: Name
+          example: Example
+          example2: Mathematics I
+          descrip: Description
+          privacy: Privacy
+          public: Public
+          private: Private
+          init_date: Start date
+          init_date2: Start date
+          teachers: Teachers
+          last_name: Write down your name or last name.
+          add: Add teachers to this course
+          find: Find teachers to be admins for this course.
+          students: Students
+          write_name: Write a name or last name.
+          enroll: Subscribe students to this course.
+          find2: Find students to automatically join the course.
+          cancel: Cancel
+          create: Create course
+          save: Save changes
+        managers_courses_subnav:
+          list: List
+      edit:
+        edit1: Edit course
+      index:
+        courses: Courses
+        create: Create course
+        name: Name
+        teachers: Teachers
+        students: Students
+        inte_date: Created on
+        actions: Actions
+        edit: Edit
+        delete: Delete
+        sure: Are you sure you want to delete this course.
+      new:
+        create_course: Create course
+      show:
+        return: Back
+        edit: Edit
+        delete: Delete
+        sure: Are you sure you want to delete this course.
+        create_date: "Created on:"
+        descrip: description
+        admin: Admins
+        students: Students
+        comments: Comments
+        hmwrks: Homework
+        quest: Tests
+        files: Files
+    deliveries:
+      index:
+        hmwrks: Homework
+        name: Name
+        state: State
+        init_date: Created on
+        end_date: Finished on
+        course: Course
+        user: User
+        actions: Actions
+        published: Published
+        unpublished: Unpublished
+        no_user: No user
+        view: View
+        delete: Delete
+        sure: "Are you sure you want to delete this homework?"
+      show:
+        return: Back
+        delete: Delete
+        sure: Are you sure you want to delete this test.
+        init_date: Created on
+        end_date: Deadline
+        state: State
+        published: Published
+        unpublished: Unpublished
+        descrip: Description
+        course: Course
+        teacher: Teacher
+    discussions:
+      index:
+        discuss: Discussions
+        name: Name
+        course: Course
+        state: State
+        type: Type
+        init_date: Created on
+        actions: Actions
+        published: Published
+        unpublished: Unpublished
+        eval: Gradable
+        non_eval: Ungradable
+        view: view
+        delete: Delete
+        sure: Are you sure you want to delete this discussion
+      show:
+        return: Back
+        delete: Delete
+        sure: Are you sure you want to delete this discussion
+        init_date: Created on
+        state: State
+        published: Published
+        unpublished: Unpublished
+        type: Type
+        eval: Gradable
+        non_eval: Ungradable
+        descrip: Description
+        course: Course
+        public: Public
+        teacher: Teacher
+    shared:
+      managers_sidebar:
+        stat: Statistics
+        usr: Users
+        courses: Courses
+        hmwrk: Homework
+        quest: Tests
+        discuss: Discussions
+        comments: Comments
+        masive: Massive email
+        config: Configuration
+        report_content: "Content reported"
+      managers_user_header:
+        admin: Admin
+        help: Help
+        exit: Log out of admin page
+        edit: Edit profile
+        log_out: Log out
+    surveys:
+      index:
+        quest: Tests
+        name: Name
+        state: State
+        init_date: Created on
+        end_date: Finished on
+        course: Course
+        user: User
+        actions: Actions
+        published: Published
+        unpublished: Unpublished
+        no_user: No user
+        view: View
+        delete: Delete
+        sure: Are you sure you want to delete this test?
+      show:
+        return: Back
+        delete: Delete
+        sure: Are you sure you want to delete this homework.
+        init_date: Created on
+        end_date: Finished on
+        state: State
+        course: Course
+        teacher: Teacher
+    users:
+      shared:
+        form:
+          email: email
+          name: name
+          last_names: last name
+          pwd: password
+          type: type of user
+          admin: Admin
+          student: Student
+          teacher: Teacher
+          cancel: Cancel
+          create: Create user
+          save: Save
+        managers_users_subnav:
+          list: List
+          import: Import
+      edit:
+        edit1: Edit user
+      import:
+        import2: Import users
+        import3: Import users from your community from a data base.
+        import4: It is important to take into account that the fileÕs format is fundamental to import users correctly.
+        text1: The role can be a student or teacher.
+        text2: The email must be the userÕs email.
+        download: Download user file
+        no_find: FILE NOT FOUND
+        import5: Import user file
+      index:
+        usr: Users
+        create: Create user
+        name: Name
+        email: Email
+        enroll: "Registered on:"
+        type: Type of user
+        actions: Actions
+        view: View
+        edit: Edit
+        delete:  Delete
+        sure: Are you sure you want to delete this user?.
+      new: 
+        create: Create user
+      show:
+        return: Back
+        edit: Edit
+        delete: Delete
+        sure: Are you sure you want to delete this user?.
+        email: email
+        type: Type of user
+        bio: Bio
+        last: Last logged in
+        deliveries: Homework turned in
+        quest: Answered tests
+        eval: Participation in graded discussions
+        info: Information
+    menu:
+      admin: Admin
+      usr: Users
+      config: Configuration
+      masive: Massive mail
+      import_usr: Import users
+      import_cur: Import courses
+      import_std: Import students in course
+    import_members:
+      import1: Importar members
+      import2: Import course members from data base 
+      download: Download course file 
+      import3: Import user list
+      text1: It is important to take into account that the files format is fundamental to import the courses correctly.
+      text2: "The owner may be o to 1, 0 for the owners of courses, and 1 to specify that he is just another member of the course. "
+      text3: The email must be associated to the user 
+      no_file: FILE NOT FOUND
+      list: Import list.
+      course: Course
+      import4: Import?
+    index:
+      stat: Statistics
+      pop: Expectation number
+      actual: Current
+      usr: Users
+      courses: Courses
+      hmwrks: Homework
+      comments: Comment
+      exams: Exams
+      discuss: Discussions
+    mailer:
+      masive: Massive mail
+      masive2: Send an email to the members of your community
+      subject: Subject
+      example: Example
+      example2: Farewell party
+      msg: Message
+      send: Send
+    settings:
+      config: Configuration
+    reported_contents:
+      index:
+        report_content: "Content reported"
+        usr: "User"
+        report_date: "Report date"
+        author: "Author"
+        actions: "Actions"
+        view: "View"
+        delete_content: "Delete content"
+        sure: "¿Are you sure you want to delete this content?"
+        delete_report: "delete report"
+        sure2: "¿Are you sure you want to delete this report?, The content will not be deleted."
+        

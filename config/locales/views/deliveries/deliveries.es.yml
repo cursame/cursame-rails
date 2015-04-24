@@ -26,7 +26,7 @@ es:
         edit: Editar Entrega
     delivery_compart_form:
       hmwrk_theme: Tema de la tarea
-      example: Ejemplo. Números primos
+      example: "Ejemplo: Números primos"
       dates: Fechas
       publish_date: Día de publicación
       deliver_date: Fecha de entrega
@@ -57,6 +57,3 @@ es:
       past_hmwrks: tareas pasadas en la sección Pasadas
     lapsed:
       no_hmwrks: No se encontraron más tareas pasadas.
-
-
-

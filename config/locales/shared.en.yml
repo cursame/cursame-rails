@@ -1,20 +1,342 @@
 en:
   shared:
+    chat:
+      add_message_form:
+        msg: Type message and press enter.
+      chat:
+        more_msg: Upload more messages...
+        select: Select a friend or course to send a message to.
+      load_more_messages:
+        more_msg: Upload more messages...
+      message_notifications:
+        msg: Menssages
+        ago: Ago
+        all_msg: See all messages
+      message_tpl:
+        ago: ago
+    evaluation_criteria:
+      evaluation_criteria_fields:
+        criteria_name: Name of criterion to evaluate
     static_pages:
       header:
-        title1: Method
-        title2: Proyects
+        title1: Methodology
+        title2: Projects
         title3: Us
         title4: Jobs
         title5: Contact
         text1: Already a user?
         text2: Find your network
-        text3: Log-in with your email to access your school network.
-        search_network: Search
+        text3: Type your email to access your school network.
+        search_network: Search network
+        notif: "Oops! It seems your email doesn't match any network."
     website:
       cta_request_demo:
         request_demo: Request a demo for your campus!
       other_contact_ways: 
         text1: Other ways to contact us
         follow_us_on_twitter: Follow us on Twitter
-        follow_us_on_facebook: Follow us on Faceook
+        follow_us_on_facebook: Follow us on Facebook
+    post_menu:
+      comment: Comment
+      homework: Homework
+      discussion: Discussion
+      questionnaire: Test
+      form: Form
+      post_comment: Leave comment.
+      what_are_y_think: "What's on your mind?"
+    dropdown:
+      dropdown_v:
+        public: Public
+        courses: Courses
+        no_member: You are not a member of any course.
+        goto_section: Become a part of the
+        no_course: You have not created a course yet.
+        new_course: Create a course now
+        return: Back
+      return: Back
+    sidebar:
+      sidebar_section:
+        initiation: Home
+        homework: Homework
+        questionnaire: Tests
+        discussion: Discussions
+        activities: Activities
+        courses: Courses
+        ratings: Grades
+        calendar: Calendar
+        library: "Library"
+        community: Community
+        radar: Radar
+        vLex: vLex
+        friends: Friends
+        chat: Chat
+        no_member: You are not a member of any course.
+        goto_section: Become a part of the
+        course_message: Become a part of the
+        course_href: Courses
+        no_course: You have not created a course
+        no_course_href: Create a course now
+        no_friends: You have no friends.
+        add_friends: Add friends to the
+        community_href: Community
+        return: back
+        disp_usr: user online
+        no_disp_usr: user offline
+      upcomming_deliveries_widget:
+        side_section:
+          pending_homeworks: Upcoming homework
+      upcomming_surveys_widget:
+        side_section:
+          next_questionnaires: Upcoming tests
+    user_header:
+      activity_notifications:
+        help: Help
+      activity_block:
+        admin_href: Admin
+        profile_href: Go to profile
+        edit_profile_href: Edit profile
+        sign_out_href: Log out
+    comment_form:
+      file: "File"
+      new_publication:
+        comment: Comment
+        cancel: Cancel
+        save: Save
+        public: Public
+        file: File
+    posts:
+      post_admin_actions:
+        delete: Delete
+        edit: Edit
+        confirm_delete: Are you sure you want to delete this?
+      post_child_comment:
+        like: Like
+        not_like: Unlike
+      post_comments:
+        view_comments: See previous comments
+        like: like
+        delete: delete
+        write_comment: Write comment
+        comment: Comentar
+      post_comments_list:
+        prev_comments: Precious comments
+        write_comment: Write comment
+        non_commentable: You can no longer comment on this publication.
+      post_meta_data:
+        like: Like
+        not_like: Unlike
+      post_people_who_liked:
+        ed: A
+        liked: like this
+    publications:
+      comment:
+        usr: User
+        course_comment: comment on course
+        profile_comment: comment on courses profile
+      course:
+        new_course: New public course
+        go_course: Go to course
+      delivery:
+        new_homework: New homework to turn 
+        delivery_txt: Turn in before
+        open_hmwk: Open homework
+      discussion:
+        new: New discussion
+        in_course: in the course
+        open_discuss: Open discussion
+      meta_data:
+        like: Like
+        comments: Comments
+        ago: ago
+        at: at
+      owner_edit_publications:
+        delete: delete
+        confirm: Are you sure you want to delete this?
+        edit: Editar
+      people_who_likes:
+        users: Users who like this
+      publication_comments:
+        prev_comments: See previous comments
+      publication_template:
+        edit_publ: Edit publication
+      survey:
+        new_quest: New test
+        response_before: Answer before
+        question: Question
+        questions: Questions
+        open_quest: Open test
+    publications_filter:
+      filter_by_course_publications:
+        filtrate: Filter
+        select_course: Select course
+    sessions:
+      network_box_head:
+        sign_in: Register
+        log_in: Already a user? Log in!
+      network_not_exist:
+        ops: Oops!
+        no_network: The network you are trying to acces was not typed correctly.
+        search_school: Find your school here
+        no_net_exists: It seems the school you are trying to access does not existe. Find the person in charge at your school to help you out.
+    tour:
+      survey_first_login:
+        title: Help us improve
+        title2: "In Cúrsame, your participation is of most importance. Here you will find a few questions that will allow us to improve and offer the best possible tools to fit your needs." 
+        title3: "In Cúrsame, your participation is of most importance. Here you will find a few questions that will allow us to get to know you better. Your answers are confidential and will be used to continuously improve."
+        thnx: Thanks.
+        quest: Send survey
+        text4: Your data is confidential and will only be used
+        text5: "to improve our service. Read our"
+        priv: Privacy policy
+      video_tour_first_time:
+        welcome: Welcome to Cúrsame
+        wel_text: Get to know the sections of our platform through this virtual tour.
+        wel_text1: In this small introduction video we will show the main sections of your profile.
+        wel_text2: In this introduction video we will show you the main sections and characteristics of the course.
+        loading_tour: Uploading tour...
+    assets_for_assignments:
+      new_assets:
+        attach_file: Attach file
+    assets_form:
+      new_assets:
+        file: File
+    comment:
+      comment_main:
+        like: like
+    comments:
+      publication_box:
+        twty_comments: 20 Comments
+        more_comments: Upload more comments
+        twlv_likes: 12 Likes
+    course_joyride:
+      joyRideTipContent:
+        welcome: Welcome to the courses profile
+        subtitle: Here you will find everything related to the course.
+        notif: Notifications
+        notif_area: This is the notifications area.
+        profile: Profile
+        sub_profile: This is the courses profile.
+        edit_course: Edit course
+        ed_course: Here you may edit the course.
+        descrip: description
+        course_descrip: Here you will find the courses description.
+        course_edit: Edit course
+        text_edit_course: Here you will be able to edit the course.
+        friends: Friends
+        friends_list: Here you will find you list of friends
+        create_content: Content creation
+        content_area: This is the area of content creation.
+        publications: Publications
+        pub_area: Here you will find all of the networks publications.
+    delivery_publication_tpl:
+      end_delivery: Deadline
+      files: File
+      evaluates: evaluation
+      reply: Anwser
+      edit_delivery: Edit turn in
+      no_evaluation: This homework will not be graded A 
+      category: category
+      final_eval: Final evaluation
+      view_delivery: See homework
+      no_reply: The answers for this homework have not been found
+    form_commentable:
+      write_comment: Write comment
+      comment: Comment
+      comment_2: Comment
+    network_joyride:
+      joyride_tip_content:
+        welcome: "Welcome to Cúrsame"
+        description: In this tour we will show you the new design and tools you will now be able to use in our platform.
+        courses: Course creation
+        description_courses: When you click on the create button (+) the creation form will appear for you give. 
+        menu: Menu
+        menu_description: 'You can create comments, homework, discussions and tests in one single place.'
+        text1: Publish your courses
+        text2: "You can choose if your publications are either public for everyone to see, or only for a few users."
+        text3: One or many courses
+        text4: "You will be able to belong to one, two or many courses!."
+        text5: Main wall
+        text6: Most of your courses publications will appear in your main wall.
+        text7: Publication filter
+        text8: With the publication filter your may choose the type of publication you would like to see on your wall.
+        text9: Friends
+        text10: 'In this section you will be able to see your friends or log into a "community" to add them'
+        text11: Interactive menu
+        text12: "Depending on the section you find yourself in, this meny will show different tools."
+        text13: Help video
+        text14: 'If you find a question mark in a section and click on it, you will be able to watch a video showing how to use that function.'
+    notification_type:
+      activity_feed:
+        lookup_usr: See user
+        comment_net: comment in your network
+        comment_course: comment in your course
+        new_course: New course
+        in_network: in your network
+        accept_course: You have been accepted to the course
+        new_homework: New homework
+        in_course: in your course
+        new_discus: New discussion
+        in_course1: in your course
+        new_question: New test
+        in_course2: in your course
+        one_usr: a user
+        response_homework: you have done your homework
+        homework_calif: Your homework has been graded
+        coursework: from course
+        friend_notif: has sent you a friend request
+        friend_req: has accepted your friend request.
+        discuss_comment: Comment in your discussion
+        comment_to_comment: You have commented on what you have done.
+        comment_profile: You have commented on your profile.
+        comment_to_homework: You have commented on the homework
+        add_to_course: You have requested to enter the course
+        quest_response: You have answered the test
+        the_course: The course
+        course_expired: "The course has finished, please deactivate it."
+        quest_feedback: You have received feedback from your test
+        text15: The course
+        text16: has been
+        active: active
+        ended: Ended
+        text17: Your participation in the discussion has been graded
+        course_calif: The course has been graded
+        activities_p_user: An activity for
+        view_usr: View user
+    notifications:
+      box_notifications:
+        notif: Notifications
+        no_notif: No more modifications to show.
+        more_notif: See more modifications
+    post_comments:
+      last_comments: Read previous comments
+      like: like
+      delte: Delete
+      write_comment: Write comment
+      comment: Comment
+      comment1: Comment
+    survey_publication_tpl:
+      respond_quest: Answered test
+    user_joyride:
+      welcome_prof: Welcome to your profile
+      text_prof: Here you will be able to see everything that happens in your Cúrsame network.
+      notif: Notifications
+      text_notif: This is your notification area.
+      prof: Profile
+      prof_photo: Profile picture.
+      edit_prof: Edit profile
+      text_edit_prof: Here you will be able to edit your profile.
+      courses: Courses
+      courses_area: This is your course area.
+      friends: Friends
+      friends_list: Here you will find a list of your friends
+      content: Content creation
+      content_area: This is the area of content creation.
+      publ: Publications
+      publ_area: Here you will find all of the networks publications
+    wall_filters:
+      all: All
+      discuss: Discussions
+      courses: Courses
+      comments: Comments
+      homework: Homework
+      quest: tests

@@ -1,0 +1,14 @@
+en:
+  polls:
+    answer_fields:
+      answer: Type anwser
+      correct: Is this the right anwser?
+      delete: Delete
+    question_fields:
+      quest: Type question
+      delete: Delete
+      add: Add answer
+    edit:
+      edit: Editing survey
+    index:
+      list: List of surveys

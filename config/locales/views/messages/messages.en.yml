@@ -1,0 +1,5 @@
+en:
+  messages:
+    index:
+      no_member: You are not a part of the group!
+      send: Send message

@@ -1,0 +1,13 @@
+en:
+  libraries:
+    shared:
+      card:
+        view_files: "View files"
+      header:
+        create_folder: "Create folder"
+        upload_file: "Upload file"
+        library: "Library"
+      library_files:
+        no_documents: "There are no documents."
+    new:
+      new_library: "New library"

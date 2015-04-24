@@ -12,6 +12,7 @@ es:
         califications: Calificaciones
         active_courses: Cursos activos
         closed_courses: Cursos finalizados
+        grades: "Calificaciones"
     course:
       calification: "Calificación:"
       no_members: Este curso no tiene miembros
@@ -27,3 +28,4 @@ es:
       final_score: "Calificación final:"
       no_score: ' Sin Calificar'
       members: Miembros
+      

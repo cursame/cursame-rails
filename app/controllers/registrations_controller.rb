@@ -15,13 +15,13 @@ class RegistrationsController < Devise::RegistrationsController
       
 
       if @user.update_attributes(params[:user])
-        flash[:notice] = "Se a actualizado correctamente tu perfil"
+        flash[:notice] = t('.registrations_controller.update')
         # Sign in the user bypassing validation in case his password changed
         if (user.id == @user.id)
           sign_in @user, :bypass => true
         end
       else
-        flash[:notice] = "El perfil no pudo actualizarce correctamente"
+        flash[:notice] = t('.registrations_controller.error')
         render "edit"
       end
       

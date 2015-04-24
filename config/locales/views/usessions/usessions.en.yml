@@ -1,0 +1,9 @@
+en:
+  usessions:
+    new:
+      send: An email has been sent to
+      confirm: Waiting for confirmation
+      init_session: Log in
+      email: email
+      pwd: password
+      remember: Remember me

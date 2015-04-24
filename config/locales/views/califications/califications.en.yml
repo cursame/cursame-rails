@@ -1,0 +1,30 @@
+en:
+  califications:
+    shared:
+      califications_course_header:
+        califications: Grades
+      califications_courses_list:
+        select_course: Select Course
+        member: Member
+        members: Members
+        no_courses: Not enough courses to see grades.
+      califications_header:
+        califications: Grades
+        active_courses: Ongoing Courses
+        closed_courses: Finished Courses
+        grades: "Grades"
+    course:
+      calification: "Grade:"
+      no_members: This course has no members
+      final_score: Final Grade
+      criterion: Criterion
+      score: Score
+      percent: "Percentage:"
+      no_score: You still donÕt have a final grade.
+      no_printable_score: Your teacher has not yet given a final grade.
+      active_courses: Active Courses
+    member:
+      score: "Cúrsame grade:"
+      final_score: "Final grade:"
+      no_score: No grade
+      members: Members

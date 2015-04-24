@@ -1,0 +1,31 @@
+en:
+  networks:
+    form:
+      name: Name
+      subdomain: Subdomain
+      pop: Population
+      msg: Welcome message
+      icon: Log in image
+      icon2: School logo
+      label: Labels
+      pwd: Confirm password to import users
+      form: Enable public record form.
+      save: Save changes
+      net_evaluable: "Enable network measurables. (Homework, quizzes and measurable discussions)"
+    network_mask:
+      enroll: Register user
+    alertmethod:
+      text1: 'You are not a member of the network you are trying to access, we will send you to your correct network so you can log in'
+      net: Go to my network
+    awaiting_confirmation:
+      email: Check email
+      send: We have sent to the instructions to activate your account.
+      log_in: Log in
+    index:
+      new: New network
+    new:
+      new_net: Create network
+    messages:
+      update:
+        success: "Settings successfully saved"
+

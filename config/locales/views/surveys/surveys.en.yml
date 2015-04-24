@@ -1,0 +1,70 @@
+en:
+  surveys:
+    shared:
+      survey_card:
+        quest: See test
+        edit: Edit test
+      survey_modal:
+        quest: Course test
+        response: Answer before
+        calif: Grade
+        feedback: Feedback
+      survey_questions_modal:
+        quest: Send test
+      surveys_course_header:
+        quest: Test
+        response: anwser
+        past: past
+      surveys_courses_filter:
+        filter: Filter
+        select: Select course
+      surveys_header:
+        quest: Test
+        response: Answer
+        past: Previous
+      surveys_paginate_button:
+        load: Upload 
+    answer_fields:
+      response: Type answer
+      correct: Correct
+      delete: Delete
+    form:
+      title: Title
+      example: Example
+      text1: Prime numbers
+      dates: Dates
+      publish_date: Published on
+      deliver_date: Deadline 
+      quest: Questions
+      add_quest: Add question
+      support: Support material
+      cancel: Cancel
+      courses: Courses
+      save: Save test
+      create: Create test
+    question_fields:
+      quest1: Add question
+      add_answer: Add anwser
+    survey_response_tpl:
+      cancel: Cancel
+      answer: Answer
+    index:
+      today: Tests to answer today
+      tomorrow: Tests to answer tomorrow
+      more_days: Tests to answer in three days or more
+      no_quest: You have no pending tests to anwser.
+      see: See past tests in the
+      section: past tests section
+    lapsed:
+      no_quest: No past tests found.
+    my_surveys:
+      no_quest: You have no tests to anwser.
+    surveys_course:
+      to_day: Tests to answer today
+      tomorrow: Tests to answer tomorrow
+      more_days: Tests to answer in three days or more
+      no_quest: You have no pending tests to answer for this course.
+      see: You may see past tests in the 
+      past: past tests section
+    surveys_course_lapsed:
+      quest: No past tests found.

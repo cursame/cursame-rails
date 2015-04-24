@@ -15,7 +15,7 @@ class Managers::CoursesController < Managers::BaseController
     course = Course.new(params[:course])
     course.network = current_network
 
-    redirect_to managers_courses_path, flash: { error: 'Ocurrio un error al crear el curso' } and return unless course.save
+    redirect_to managers_courses_path, flash: { error: t('.managers.course_error1') } and return unless course.save
 
     students = params[:students] || {}
     teachers = params[:teachers] || {}
@@ -32,7 +32,7 @@ class Managers::CoursesController < Managers::BaseController
     EvaluationCriterium.create(name: 'cursame_surveys', evaluable: course, evaluation_percentage: 33)
     EvaluationCriterium.create(name: 'cursame_discussions', evaluable: course, evaluation_percentage: 33)
 
-    redirect_to managers_courses_path, flash: flag ? { success: 'Curso creado correctamente' } : { error: 'Ocurrio un error al crear el curso' }
+    redirect_to managers_courses_path, flash: flag ? { success: t('.managers.correct_course') } : { error: t('.managers.course_error2') }
   end
 
   def edit
@@ -51,13 +51,13 @@ class Managers::CoursesController < Managers::BaseController
       member = User.find_by_id user_id
       MembersInCourse.new(user: member, course: course, accepted: true, owner: member.student? ? false : true)
     end
-    redirect_to managers_courses_path, flash: course.save ? { success: 'Curso editado correctamente' } : { success: 'Ocurrio un error al editar el curso' }
+    redirect_to managers_courses_path, flash: course.save ? { success: t('.managers.edit_correct') } : { success: t('.managers.course_error3') }
   end
 
   def destroy
     course = Course.find_by_id(params[:id])
     course.destroy if !course.nil? && course.network == current_network
-    redirect_to managers_courses_path, flash: Course.exists?(course) ? { error: 'Ocurrio un error al borrar el curso' } : { success: 'Curso borrado correctamente.' }
+    redirect_to managers_courses_path, flash: Course.exists?(course) ? { error: t('.managers.course_error4') } : { success: t('.managers.course_delete') }
   end
 
 end

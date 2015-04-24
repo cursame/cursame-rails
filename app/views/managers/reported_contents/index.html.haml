@@ -3,14 +3,14 @@
     .col-inner
       .managers-section-header
         .title
-          %h1 Contenidos Reportados
+          %h1= t('.report_content')
       %table.data-table
         %thead
           %tr
-            %th Usuario
-            %th Fecha de reporte
-            %th Autor
-            %th Acciones
+            %th= t('.usr')
+            %th= t('.report_date')
+            %th= t('.author')
+            %th= t('.actions')
         %tbody
           - @reported_contents.each do |reported_content| 
             %tr
@@ -25,9 +25,9 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
-                      %li= link_to 'Ver', managers_reported_content_path(reported_content)
-                      %li= link_to 'Borrar Contenido', managers_destroy_content_path(reported_content), class: 'btn btn-small btn-secondary', confirm: '¿Está seguro de borrar este contenido?'
-                      %li= link_to 'Borrar Reporte', managers_reported_content_path(reported_content), class: 'btn btn-small btn-secondary', method: :delete, confirm: '¿Está seguro de borrar este reporte?, el contenido no será borrado.'
+                      %li= link_to t('.view'), managers_reported_content_path(reported_content)
+                      %li= link_to t('.delete_content'), managers_destroy_content_path(reported_content), class: 'btn btn-small btn-secondary', confirm: t('.sure')
+                      %li= link_to t('.delete_report'), managers_reported_content_path(reported_content), class: 'btn btn-small btn-secondary', method: :delete, confirm: t('.sure2')
                       
       .digg_pagination.paginator
         = will_paginate @reported_contents

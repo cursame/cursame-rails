@@ -41,6 +41,7 @@ es:
       homework: Tarea
       discussion: Discusión
       questionnaire: Cuestionario
+      form: Formulario
       post_comment: Deja un comentario.
       what_are_y_think: ¿Qué estás pensando?
     dropdown:
@@ -51,6 +52,8 @@ es:
         goto_section: Únete a uno en la sección de
         no_course: No has creado ningún curso todavia.
         new_course: Crear curso ahora →
+        return: Volver
+      return: Volver
     sidebar:
       sidebar_section:
         initiation: Inicio
@@ -61,6 +64,7 @@ es:
         courses: Cursos
         ratings: Calificaciones
         calendar: Calendario
+        library: "Biblioteca"
         community: Comunidad
         radar: Radar
         vLex: vLex
@@ -93,11 +97,13 @@ es:
         edit_profile_href: Editar perfil
         sign_out_href: Cerrar sesión
     comment_form:
+      file: "Archivo"
       new_publication:
         comment: Comentar
         cancel: Cancelar
         save: Guardar
         public: Público
+        file: Archivo
     posts:
       post_admin_actions:
         delete: Borrar
@@ -334,9 +340,3 @@ es:
       comments: Comentarios
       homework: Tareas
       quest: Cuestionarios
-
-
-
-
-
-

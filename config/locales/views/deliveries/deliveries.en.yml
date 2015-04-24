@@ -1,0 +1,59 @@
+en:
+  deliveries:
+    shared:
+      deliveries_course_header:
+        hmwrks: Homework
+        active: Active
+        last: Previous
+      deliveries_filter_course_header:
+        filter: Filter
+        select: Select course
+      deliveries_header:
+        hmwrks: Homework
+        deliver: Turn in
+        past: Past
+      deliveries_paginate_button:
+        load: Upload more
+      delivery_card:
+        hmwrk: See homework
+        edit_hmwrk: Edit homework
+      delivery_modal:
+        hmwrk: Homework
+        deliver: deadline
+        deliver_hmwrk: Turn in homework
+        final_score: Final grade
+        rubre: No comments on this item
+        edit: Edit
+    delivery_compart_form:
+      hmwrk_theme: Subject
+      example: "Example: Prime numbers"
+      dates: Dates
+      publish_date: Date
+      deliver_date: Due date
+      descrip: Description
+      criterium: Evaluation Criterion
+      add_criterium: Add criterion
+      support: Support materia
+      integrity: 'For the integrity of this activity, you are not allowed to modify files, content and criterion after they have been created. For this reason, if you request any modification we kindly ask you to delete the activity and upload it again. '
+      cancel: Cancel
+      courses: Courses
+      publish: Publish
+      save: Save Homework
+    deliveries_course:
+      today_hmwrk: Homework that must be turned in today 
+      tomorrow_hmwrks: Homework that must be turned in tomorrow
+      hmwrks: Homework that must be turned in in three days or more
+      no_hmwrks: No pending homework for this course
+      no_deliver: "You have turned in all your pending homework, you can see previous homework in the previous homework section."
+      hmwrks_last: "past homeworks in the Past section"
+    deliveries_courses_lapsed:
+      last_hmwrks: We could not find any previous homework.
+    index:
+      hmwrks: Homework that must be turned in today
+      tomorrow_hmwrks: Homework that must be turned in tomorrow
+      deliver_hmwrks: Homework that must be turned in in three days or more
+      no_hmwrks: You have no pending homework to turn in.
+      no_deliver: "You have turned in all your pending homework, you can see previous homework in the previous homework section."
+      past_hmwrks: "past homeworks in the Past section"
+    lapsed:
+      no_hmwrks: We could not find any previous homework.

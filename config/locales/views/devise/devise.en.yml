@@ -1,0 +1,104 @@
+en:
+  devise:
+    confirmations:
+      new:
+        no_confirmation: You have not received a confirmation
+        email_field: "Please enter your email in the field below to continue with you application"
+        email: Email
+        forward: Forward instructions
+    mailer:
+      confirmation_instructions:
+        welcome: Welcome to Cúrsame!
+        usage: "To start using your account we need you to confirm you email address. It's very simple! Just click on the next button and you will be ready to use your new learning platform."
+        push_here: "If the button doesn't work click here"
+      reset_password_instructions:
+        reset_pwd: Reset password
+        reset_password: 'To reset your password click on the button below and follow the instructions.'
+        pwd: "If you didn't request to change your password please let us know"
+        button: "If the button below doesn't work click here"
+      unlock_instructions:
+        hello: Hello!
+        button: "If the button below doesn't work click here"
+    passwords:
+      edit:
+        change_pwd: Change password
+        new_pwd: New password
+        confirm_pwd: Confirm password
+        ch_pwd: Change password
+      new:
+        recover_pwd: Get your password back
+        email: Write down the email address you provided and click on reactivate password
+        email_field: Email
+        res_pwd: Get password
+    registrations:
+      edit:
+        edit_usr: Edit user
+        down: Do you want to cancel your account?
+        cancel_acount: Cancel account
+        pwd: Password
+        update: Update
+        back: Back
+      new:
+        access: "We are sorry, the network you are trying to access does not exist"
+        question: "ask someone at your school who is in charge, they will know what to do."
+        thnx: Thank you!
+        email: email
+        name: name
+        last_name: last name
+        pwd: password
+        confirm_pwd: confirm password
+        accept: Y accept the terms and conditions
+        registry: Log in
+        sign_in: Already a user? Log in!
+        no_confirmation: "Didn't get the confirmation instructions?"
+        no_blocked: "Didn't get the unblock instructions?"
+    sessions:
+      new:
+        sorry: We are sorry
+        net: The network you are trying to access does not exist
+        net2: "ask someone at your school who is in charge, they will know what to do."
+        init: Home
+        send: You have sent an email to
+        confirm: Waiting for confirmation
+        s_net: 'Classes, activities, social networks'
+        s_net2: "Cúrsame connects head teachers, teachers and students"
+        s_net3: 'allowing them to interact socially and academically.'
+        s_netn: "Cúrsame connects head teachers, teachers and students allowing them to interact socially and academically"
+        sign_in: New user? Sign in!
+        session: Log in
+        email: email
+        pwd: password
+        remember: Remember
+        log_in: sign in
+        antique_usr: "I'm already a user and have some questions"
+        close: Close
+        user: Am I a user?
+        last_user: "If you used to be a user at the previous platform you are a user of Cúrsame."
+        key: Is my password still the same?
+        new_pwd: "We will provide new passwords, when you confirm your email address with the email we sent." 
+        change_pwd: Please change your password
+        confirm2: "I still haven't received a confirmation email" 
+        link: click on link
+        acount: Confirm account
+        account_window: It will lead you to a new window chat will ask for your email so wan can send you the confirmation details.
+        confirm3: I have confirmed my email but forgot to change my password
+        pwd_problem: Any problems relating to password can be resolved by clicking in
+        forgot_pwd: I forgot my password
+        send_pwd: You will receive an email where you will be able to change your password
+    shared:
+      footer-links:
+        help: Help
+        terms: Terms and conditions
+        privacy: Privacy
+      links:
+        log_in: Already a user? Log in!
+        sign_in: Not registered? Sign in!
+        pwd: Forgot password?
+        confirm: "Didn't receive confirmation instructions?"
+        blocked: "Didn't receive unlock instructions?"
+    unlocks:
+      new:
+        instruc: "Didn't receive unlock instructions?"
+        email_req: Type your email in the field below so we can follow up your request 
+        email: email
+        forward: forward instructions

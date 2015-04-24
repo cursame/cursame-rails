@@ -5,4 +5,5 @@
     .dropdown-v.right{style: "right: -12px;"}
       %i.tip
       %ul
-        %li= link_to 'Denunciar comentario', reported_content_modal_path(id: comment.id, type: 'comment'), remote: true
+        %li= link_to t('.denounce_comment'), reported_content_modal_path(id: comment.id, type: 'comment'), remote: true
+        

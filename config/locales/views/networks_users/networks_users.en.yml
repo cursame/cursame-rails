@@ -1,0 +1,11 @@
+en:
+  networks_users:
+    index:
+      records: Registered users in the system
+      no_members: No members in this network
+    new:
+      sign_in: Sign in
+      accept: I accept the terms and conditions of this platform
+      select: Select a role
+      suscribe: Subscribe to network
+      

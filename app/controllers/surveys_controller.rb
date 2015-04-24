@@ -43,9 +43,9 @@ class SurveysController < ApplicationController
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
 
     unless member.nil?
-      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
+      redirect_to root_path, flash: { error: t('.surveys_controller.no_accept')} unless member.accepted
     else
-      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."}
+      redirect_to root_path, flash: { error: t('.surveys_controller.no_register')}
     end
 
     @course = Course.find_by_id(params[:id])
@@ -75,9 +75,9 @@ class SurveysController < ApplicationController
   def surveys_course_lapsed
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
     unless member.nil?
-      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."} unless member.accepted
+      redirect_to root_path, flash: { error: t('.surveys_controller.no_quest_accept')} unless member.accepted
     else
-      redirect_to root_path, flash: { error: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."}
+      redirect_to root_path, flash: { error: t('.surveys_controller.no_quest_register')}
     end
 
     @course = Course.find_by_id(params[:id])
@@ -272,7 +272,7 @@ class SurveysController < ApplicationController
 
   def validations
     @survey = Survey.find_by_id(params[:id])
-    redirect_to root_path, flash: { error: "El cuestionario que intentas ver no existe o ah sido borrado."} and return if @survey.nil?
+    redirect_to root_path, flash: { error: t('.surveys_controller.no_exist')} and return if @survey.nil?
     course_member?(current_user, @survey.courses.first)
   end
 end

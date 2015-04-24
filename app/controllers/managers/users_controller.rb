@@ -18,19 +18,19 @@ class Managers::UsersController < Managers::BaseController
     params[:user][:domain] = request.domain
     params[:user][:personal_url] = SecureRandom.uuid
     user = User.new params[:user]
-    redirect_to managers_users_path, flash: user.save ? { success: 'Usuario creado correctamente.' } : { error: 'Ocurrio un error al crear el usuario' }
+    redirect_to managers_users_path, flash: user.save ? { success: t('.managers.create') } : { error: t('.managers.error_user') }
   end
 
   def edit
     @user = User.find_by_id params[:id]
-    redirect_to root_path, flash: { error: 'No puedes editar ese usuario.' } unless current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == @user.networks.last)
+    redirect_to root_path, flash: { error: t('.managers.no_edit') } unless current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == @user.networks.last)
   end
 
   def update
     user = User.find_by_id params[:user][:permissionings_attributes][:'0'][:id]
-    the_flash = { error: 'Error al editar el usuario' }
+    the_flash = { error: t('.managers.edit_error') }
     if !user.nil? && user.permissionings.first.network == current_network
-      the_flash = { success: 'Usuario editado correctamente' } if user.update_attributes params[:user]
+      the_flash = { success: t('.managers.success_usr') } if user.update_attributes params[:user]
     end
     redirect_to managers_users_path, flash: the_flash
   end
@@ -39,9 +39,9 @@ class Managers::UsersController < Managers::BaseController
     user = User.find_by_id params[:id]
     if current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == user.networks.last)
       user.destroy if !user.nil? && user.permissionings.first.network == current_network && user != current_user
-      redirect_to managers_users_path, flash: User.exists?(user) ? { error: 'Error al borrar el usuario' } : { success: 'Usuario borrado correctamente' } and return    
+      redirect_to managers_users_path, flash: User.exists?(user) ? { error: t('.managers.error_delete_user') } : { success: t('.managers.delete_success_usr') } and return    
     end
-    redirect_to root_path, flash: { error: 'No puedes borrar este usuario.' }
+    redirect_to root_path, flash: { error: t('.managers.no_delete') }
   end
 
   def import
@@ -52,9 +52,9 @@ class Managers::UsersController < Managers::BaseController
     logger.info "content_type: #{params[:file].content_type}"
     if ['text/csv', 'text/plain'].include?(params[:file].content_type)
       UserCsvWorker.perform_async(params[:file].path, current_network.subdomain, current_user.email)
-      redirect_to(managers_users_path, flash: { success: 'Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación' }) and return
+      redirect_to(managers_users_path, flash: { success: t('.managers.proc_file') }) and return
     else
-      redirect_to(managers_users_path, flash: { error: 'Tipo de archivo no soportado' })
+      redirect_to(managers_users_path, flash: { error: t('.managers.file') })
     end
   end
 

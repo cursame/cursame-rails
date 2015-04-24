@@ -25,7 +25,7 @@
           %p= user.name
 
         %br/
-        %span.meta-info= t('.students') + "-#{@course.students.count}"
+        %span.meta-info= t('.students') + '-' + "#{@course.students.count}"
         - @course.students.each do |member|
           %p= member.name
 

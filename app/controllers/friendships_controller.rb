@@ -124,9 +124,9 @@ class FriendshipsController < ApplicationController
     @friendship ||= Friendship.find_by_user_id_and_friend_id(current_user.id,params[:id])
     unless @friendship.nil?
       @friendship.destroy
-      redirect_to :back, flash: { success: "Se ha eliminado al usuario de tus amigos" }
+      redirect_to :back, flash: { success: t('.friendships_controller.delete_usr') }
     else
-      redirect_to :back, flash: { error: "Error al eliminar al usuario de tus amigos" }
+      redirect_to :back, flash: { error: t('.friendships_controller.error_usr') }
     end
   end
 end

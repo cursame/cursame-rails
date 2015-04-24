@@ -15,4 +15,6 @@ es:
       thursday: Jueves
       friday: Viernes
       saturday: Sabado
-
+      back_month: ← Mes anterior
+      next_month: Mes siguiente →
+      

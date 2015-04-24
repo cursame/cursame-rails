@@ -15,9 +15,9 @@ class DiscussionsController < ApplicationController
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, @course)
 
     unless member.nil?
-      redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no has sido aceptado."} unless member.accepted
+      redirect_to root_path, flash: { error: t('.discussions_controller.no_accepted')} unless member.accepted
     else
-      redirect_to root_path, flash: { error: "Estas tratando de ver Discusiones de un curso donde no estas inscrito."}
+      redirect_to root_path, flash: { error: t('.discussions_controller.no_register')}
     end
 
     discussions = course_discussions(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
@@ -138,7 +138,7 @@ class DiscussionsController < ApplicationController
         @typed = "Discussion"
         activation_activity
       else
-        redirect_to :back, notice: 'No se pudo crear la discusión.'
+        redirect_to :back, notice: t('.discussions_controller.no_discussion')
       end
     end
 
@@ -187,7 +187,7 @@ class DiscussionsController < ApplicationController
 
   def validations
     @discussion = Discussion.find_by_id(params[:id])
-    redirect_to root_path, flash: { error: "La discusión que intentas ver no existe o ah sido borrada."} and return if @discussion.nil?
+    redirect_to root_path, flash: { error: t('.discussions_controller.delete')} and return if @discussion.nil?
     unless @discussion.courses.empty?
       course_member?(current_user, @discussion.courses.first)
     end

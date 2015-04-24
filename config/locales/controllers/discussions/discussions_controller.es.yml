@@ -1,0 +1,7 @@
+es:
+  discussions_controller:
+    no_accepted: "Estas tratando de ver Discusiones de un curso donde no has sido aceptado."
+    no_register: "Estas tratando de ver Discusiones de un curso donde no estas inscrito."
+    no_discussion: "No se pudo crear la discusión."
+    delete: "La discusión que intentas ver no existe o ah sido borrada."
+    

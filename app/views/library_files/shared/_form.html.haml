@@ -2,24 +2,24 @@
   .body.padded
     .form-group
       .form-group-label
-        = form.label :name, "Titulo del Archivo: "
+        = form.label :name, t('.file_name')
       .form-group-main
         .form-unit
-          = form.text_field :name, placeholder: 'Titulo del Archivo', required: "required"
+          = form.text_field :name, placeholder: t('.file_name2'), required: "required"
     .form-group
       .form-group-label
-        = form.label :description, "Descripción: "
+        = form.label :description, t('.descrip')
       .form-group-main
         .form-unit
-          = form.text_field :description, placeholder: 'Descripción del Archivo', required: "required"
+          = form.text_field :description, placeholder: t('.descrip_file'), required: "required"
     .form-group
       .form-group-main
         .form-unit
-          = form.file_field :file, placeholder: 'Archivo', required: "required"
+          = form.file_field :file, placeholder: t('.file'), required: "required"
   .footer
     .fr
       %span.btn.btn-primary.input-btn.activable
-        = form.submit "Enviar", id: "wufoo-post-form", class: "activable"
+        = form.submit t('.send'), id: "wufoo-post-form", class: "activable"
 :javascript
   $(new function() {
     $("#library_file_form").validate();

@@ -11,6 +11,6 @@ class Managers::SurveysController < Managers::BaseController
   def destroy
     survey = Survey.find_by_id(params[:id])
     survey.destroy
-    redirect_to managers_surveys_path, flash: { success: 'Cuestionario borrado correctamente.' }
+    redirect_to managers_surveys_path, flash: { success: t('.managers.delete_test') }
   end
 end

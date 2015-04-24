@@ -5,6 +5,11 @@ es:
       cancel: Cancelar
       save_dlvry: Guardar nueva entrega
       dlvry: Entregar Tarea
+      title: "Título:"
+      descrip: "Descripción:"
     responce_of_evaluation:
       comments: Comentarios
       entry: Rubro
+    messages:
+      create:
+        success: "Se ha entregado tu tarea"

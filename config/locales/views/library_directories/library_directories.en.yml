@@ -1,0 +1,15 @@
+en:
+  library_directories:
+    shared:
+      form:
+        name: "Name: "
+        lib_name: "Title of the library"
+        descrip: "Description: "
+        lib_descrip: "Description of the library"
+        send: "Send"
+      header:
+        library: "Library"
+        create_folder: "Create folder"
+        upload_file: "Upload file"
+      list:
+        no_documents: "There are no documents."

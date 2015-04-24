@@ -1,0 +1,18 @@
+en:
+  admin:
+    users:
+      change_password:
+        new_pwd: "New Password:"
+    form_for_import_users_to_network:
+      import: Import File
+    masive_mailer:
+      text1: title
+      text2: title
+      text3: message
+      text4: number of users you want to send message to
+      text5: number
+      text6: Assigned Password for Message 
+      send_msg: Send Message
+      forward: Forward message to the following number of users 
+      massive_email: Send massive message to the following users 
+      mail: The forward form will activate when the massive mailer account is larger than 0. 

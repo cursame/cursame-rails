@@ -7,10 +7,10 @@ class AjaxController < ApplicationController
       if @user.save
         response = { avatar: { profile: @user.avatar.profile.to_s, head: @user.avatar.head.to_s }, error: 0, message: "Success!!" }
       else
-        response = { avatar: nil, error: 1, message: "Ocurrio un error, porfavor intentalo de nuevo." }
+        response = { avatar: nil, error: 1, message: t('.ajax_controller.error1') }
       end
     else
-      response = { avatar: nil, error: 1, message: "Ocurrio un error, porfavor intentalo de nuevo." }
+      response = { avatar: nil, error: 1, message: t('.ajax_controller.error1') }
     end
 
     respond_to do |format|
@@ -26,10 +26,10 @@ class AjaxController < ApplicationController
       if @user.save
         response = { cover: @user.coverphoto.to_s, error: 0, message: "Success!!" }
       else
-        response = { avatar: nil, error: 1, message: "Ocurrio un error, porfavor intentalo de nuevo." }
+        response = { avatar: nil, error: 1, message: t('.ajax_controller.error1') }
       end
     else
-      response = { avatar: nil, error: 1, message: "Ocurrio un error, porfavor intentalo de nuevo." }
+      response = { avatar: nil, error: 1, message: t('.ajax_controller.error1') }
     end
 
     respond_to do |format|
@@ -44,7 +44,7 @@ class AjaxController < ApplicationController
     if @course.save
       response = { cover: @course.coverphoto.to_s, error: 0, message: "Success!!" }
     else
-      response = { avatar: nil, error: 1, message: "Ocurrio un error, porfavor intentalo de nuevo." }
+      response = { avatar: nil, error: 1, message: t('.ajax_controller.error1') }
     end
 
     respond_to do |format|
@@ -59,7 +59,7 @@ class AjaxController < ApplicationController
     if @course.save
       response = { avatar: { profile: @course.avatar.profile.to_s, head: @course.avatar.head.to_s }, course_id: @course.id, error: 0, message: "Success!!" }
     else
-      response = { avatar: nil, course_id: @course.id, error: 1, message: "Ocurrio un error, porfavor intentalo de nuevo." }
+      response = { avatar: nil, course_id: @course.id, error: 1, message: t('.ajax_controller.error1') }
     end
 
     respond_to do |format|

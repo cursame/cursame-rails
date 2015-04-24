@@ -5,11 +5,11 @@ en:
         title1: Cúrsame
         title2: Method
         title3: Proyects
-        title4: About
+        title4: About us
         title5: Press
         title6: Jobs
         title7: Contact
-        title8: Ask for a demo
+        title8: Get demo
         title9: Applications
         title10: Blog
       second_column:
@@ -20,5 +20,16 @@ en:
       third_column:
         title1: Follow us on
       fourth_column:
-        title1: Rights reserved © 2014 Cúrsame
+        title1: All rights reserved © 2014 Cúrsame
         title2: See the page in spanish
+    sessions:
+      help: Help
+    super_admin:
+      hello: Hello
+      admin: Admin
+      activities: Activities
+      admin_net: Networks
+      super_adm: Super admins
+      course_admin: Course admin
+      statics: Statistics
+      usr: Users

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     network_current_user = current_user.permissionings.first.network_id
 
     if @user_l.nil? or ( @user_l.permissionings.first.network_id != network_current_user )
-      redirect_to root_path, flash: { error: "El usuario que intentas ver no existe o ha sido borrado."} and return
+      redirect_to root_path, flash: { error: t('.users_controller.no_exist')} and return
     end
 
     #helper methods in aplication controller
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
         @network = Network.find_by_id(@networks_petenence_user)
         @n = @network
       else
-        @notice = "no estas inscrito en ninguna red"
+        @notice = t('.users_controller.no_register')
       end
     end
   end
@@ -115,12 +115,12 @@ class UsersController < ApplicationController
       network_user = @user.networks.first
       if current_user.id == params[:id] or (current_user.admin? and current_network == network_user)
         @user.destroy
-        the_flash = { success: "Usuario fue borrado correctamente" } #mensaje para el admin
+        the_flash = { success: t('.users_controller.correct_delete') } #mensaje para el admin
       else
-        the_flash = { error: "No puedes borrar este usuario." }
+        the_flash = { error: t('.users_controller.canot_delete') }
       end
     else
-      the_flash = { error: "El Usuario ya fue borrado" }
+      the_flash = { error: t('.users_controller.deleted_usr') }
     end
     
     redirect_to root_path, flash: the_flash
@@ -175,7 +175,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json
       format.js
-      format.html{redirect_to root_path, :notice => "Se ha guardado tu contraseña correctamente."}
+      format.html{redirect_to root_path, :notice => t('.users_controller.save_pwd')}
     end
   end
 

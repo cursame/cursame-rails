@@ -147,7 +147,7 @@ es:
       hmwrk: Tarea
     form:
       name: Nombre del
-      example: Ejemplo. Matemáticas I
+      example: "Ejemplo: Matemáticas I"
       descrip: Descripción del
       descrip2: Descripción
       privacy: Privacidad
@@ -208,7 +208,7 @@ es:
       data_course: Datos del curso
       info_new_course: Cambia la información para el nuevo curso.
       name: Nombre del
-      example: Ejemplo. Matemáticas I
+      example: "Ejemplo: Matemáticas I"
       descrip: Descripción
       dates: Fechas
       init_date: Fecha de inicio
@@ -219,6 +219,7 @@ es:
       clone_hmwrks: Selecciona las tareas que quieres clonar para el nuevo curso.
       publish_date: Fecha de publicación
       delivery_date: Fecha Entrega
+      clone2: "(clonado)"
     edit:
       edit: Editar curso
     evaluation_download:
@@ -241,7 +242,7 @@ es:
     evaluation_schema:
       text1: 'Especifica como quieres evaluar este curso, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame.'
       criterium: Criterio
-      percent: Porcetaje
+      percent: Porcentaje
       add_criterium: Agregar criterio de evaluación
       cancel: Cancelar
       save: Guardar
@@ -269,13 +270,18 @@ es:
       in_course: En el curso
     unpublished_courses:
       no_courses: No hay más cursos para mostrar.
-
-
-
-
-
-
-
-
-
-
+    show:
+      course-header:
+        update: "Actualizar portada"
+        update_photo: "Actualizar foto"
+        final_score: "Calificaciones finales"
+        activities_score: "Calificar actividades"
+        eval_form: "Forma de evaluación"
+        edit: "Editar"
+        clone: "Clonar"
+        final: "Finalizar"
+        active: "Activar"
+        publ: "Publicaciones"
+        info: "Información"
+        members: "Miembros"
+        library: "Biblioteca"

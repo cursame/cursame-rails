@@ -1,0 +1,16 @@
+es:
+  library_directories:
+    shared:
+      form:
+        name: "Nombre: "
+        lib_name: "Titulo de la biblioteca"
+        descrip: "Descripción: "
+        lib_descrip: "Descripción de la biblioteca"
+        send: "Enviar"
+      header:
+        library: "Biblioteca"
+        create_folder: "Crear Carpeta"
+        upload_file: "Subir Archivo"
+      list:
+        no_documents: "No hay documentos."
+

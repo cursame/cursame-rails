@@ -96,12 +96,8 @@ class SuperadmninController < ApplicationController
        @user_to_send.each do |uts|
          array_sended.push(uts.id)
 
-         #mail = Notifier.masive_mailer_for_super_admin(uts,  @msa_create)
-         #mail.deliver
        end
         
-       ##### mail para pruebas
-       #@user_to_send = User.find_by_email("jose_alfredo+232@cursa.me")
        
         @msa_create.delay.delayed_send_mailer(@user_to_send)
 

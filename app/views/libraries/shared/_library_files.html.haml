@@ -1,7 +1,7 @@
 .wrapper
   - if libraries.blank? && files.blank? && directories.blank?
     .no-content-section
-      %h4="No hay documentos."
+      %h4= t('.no_documents')
   - else
     .cols-12.courses-list
       = render partial: 'libraries/shared/card_list', locals: { libraries: libraries, files: files, directories: directories }

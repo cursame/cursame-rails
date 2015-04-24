@@ -86,7 +86,7 @@ es:
         forgot_pwd: Olvidé mi contraseña
         send_pwd: donde se te enviará un mail para que puedas cambiar tu contraseña.
     shared:
-      footer_links:
+      footer-links:
         help: Centro de ayuda
         terms: Términos y Condiciones
         privacy: Aviso de privacidad
@@ -102,4 +102,3 @@ es:
         email_req: Ingresa tu correo en el campo inferior para dar seguimiento a tu solicitud
         email: Correo electrónico
         forward: Reenviar instrucciones
-

@@ -1,0 +1,6 @@
+en:
+  evaluation_criteria:
+    form:
+      eval: With what criterion will this be evaluated?
+    form_course:
+      eval: What will be evaluated?

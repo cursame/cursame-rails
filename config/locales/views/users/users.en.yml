@@ -1,0 +1,120 @@
+en:
+  users:
+    califications:
+      deliveries_table:
+        hmwrk: Homework
+        percent: Percentage
+        hmwrks: Homework
+        score: Grade
+        no_deliver: Not turned in
+        no_score: Nor graded
+        avg: Average grade for homework
+        no_hmwrks: There is still no homework for this course.
+      discussions_table:
+        discuss: Discussions
+        discuss2: Discussions
+        score: Grade
+        no_part: No participation
+        no_score: Not graded
+        avg_score: Average discussion grade
+        no_discuss: There are still no gradable discussion in this course.
+      surveys_table:
+        quest: Tests
+        avg: Percentage
+        exam: Exams
+        score: Grade
+        no_answered: Not answers
+        quest2: Average percentage in grades
+        quest3: There are still not tests for this course
+    shared:
+      user_card:
+        friends: Friends
+        delete: Delete friends
+        send_request: Request sent
+        cancel: Cancel friend request
+        respond: answer friend request
+        confirm: confirm friend request
+        delete2: delete friend request
+        add_friends: Add friends
+        teacher: teacher
+        student: Student
+        admin: Admin
+      user_profile_header:
+        update: Update
+        edit: Edit profile
+        cancel: Cancel friend request
+        send: Request sent
+        ignore: Ignore
+        accept: Accept friend request
+        add_friends: Add friends
+        update_photo: Update photo
+        publications: Publications
+        courses: Course
+        friends: Friends
+        info: Information
+    evaluation:
+      score: Grade
+      no_members: This course has no members
+    form_course:
+      create: Create new
+      load: Loading
+      name: Name
+      descrip: Description
+      init_date: Start date
+      private: Private
+      public: Public
+      create2: Create
+      cancel: Cancel
+    friends_first_user:
+      friend_req: Friend request
+      pendent: Pending requests
+      friends: Friends
+      send: Friend request sent
+    menu_member:
+      net: my networks
+      enroll: Subscribe to a network
+      friends: My friends
+    set_password_form:
+      set_pwd: Reset password
+      welcome: 'Welcome to Cursame, you must reset your password to finish the sign in process.'
+      pwd: Type password
+      save: Save password
+    califications:
+      ratings: Grades
+      no_score: You still have no grades.
+      enroll: You need to be enrolled in this course to get graded.
+    courses:
+      courses2: Courses
+      no_registered: You are not subscribed to this course.
+      find: Finsh courses for this section
+      no_members: This user is not subscribed to any course.
+    dashboard:
+      select: Select networks
+      goto: Go to super admin
+      text1: When you select network you must log in in the network directed by an independent system. 
+      log_out: Log out
+    friends:
+      no_friends: You still have no friends.
+      find: Find friends in section
+      comunity: Community
+      no_friends2: This user has still no friends
+      all: All users
+      friends_subtitle:
+        friends1: Friends
+        all_friends: All friends
+        request: Pending requests
+    info:
+      info2: Information
+      bio: Bio
+      no_bio: This user has no bio.
+      email: Email
+    show:
+      no_friend: You are not friends with user
+      add: Add friend to write on his wall.
+    sufriend:
+      accept: Accept friend
+      name: Name
+    waiting_friends:
+      friends: Friends waiting
+      waiting_friends: Waiting to accept your request
+      request: This user has sent you a friend request

@@ -52,31 +52,21 @@
         <% if current_network.evaluable? %>
           <li>
             <%= link_to califications_path do %>
-              <%= icon 'stats-w' %> Calificaciones
+              <%= icon 'stats-w' %> <%= t('.sidebar_section.ratings')%>
             <%end%>
           </li>
         <% end %>
         <% if current_network.evaluable? %>
           <li>
             <%= link_to calendar_path, :data => "menu" do %>
-              <%= icon 'calendar-w' %> Calendario
+              <%= icon 'calendar-w' %> <%= t('.sidebar_section.calendar')%>
             <% end %>
             </a>
           </li>
         <% end %>
         <li>
-          <%= link_to califications_path do %>
-            <%= icon 'stats-w' %><%= t('.sidebar_section.ratings')%>
-          <%end%>
-        </li>
-        <li>
-          <%= link_to calendar_path, :data => "menu" do %>
-            <%= icon 'calendar-w' %><%= t('.sidebar_section.calendar')%>
-          <% end %>
-        </li>
-        <li>
           <%= link_to library_path(current_network.library), :data => "menu" do %>
-            <%= icon 'library-w' %> Biblioteca
+            <%= icon 'library-w' %><%=t('.sidebar_section.library')%>
           <% end %>
         </li>
         <li>

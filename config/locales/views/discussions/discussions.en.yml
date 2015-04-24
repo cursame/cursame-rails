@@ -1,0 +1,40 @@
+en:
+  discussions:
+    shared:
+      discussion_card:
+        view_discuss: See Discussion
+        edit_discuss: Edit Discussion
+      discussion_modal:
+        init_discuss: You have began a discussion
+        in_course: in the course
+        criterium: Evaluation criterion
+        grade: Grade
+      discussions_course_header:
+        discuss: Discussions
+      discussions_filter_course:
+        filter: "Filter:"
+        select: Select course
+      discussions_header:
+        discuss: Discussions
+      discussions_paginate_button:
+        load: Upload more
+    form_for_discussion:
+      discuss: Subject of discussion
+      example: "Example: Prime Numbers"
+      descrip: Description
+      support: Support material
+      calif: Grade
+      dates: Date
+      publish_date: "Published on:"
+      deliver_date: Due date
+      criterium: Evaluation criterion
+      add_comment: Add criterion
+      cancel: Cancel
+      public: Publish
+      create_discuss: Create discussion
+      save_discuss: Save discussion
+    discussions_course:
+      no_discuss: No more discussions to show.
+    index:
+      no_discuss: No more discussions to show.
+

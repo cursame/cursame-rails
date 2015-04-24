@@ -3,3 +3,4 @@ es:
     library_item:
       delete: Borrar
       confirm: ¿Estas seguro de querer eliminar este archivo?
+      

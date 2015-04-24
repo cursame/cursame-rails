@@ -1,0 +1,44 @@
+en:
+  registrations:
+    edit_user:
+      edit: Edit User
+      down: Do you want to unsubscribe?
+      cancel: Cancel your account
+      update: Update
+      back: Back
+    edit:
+      edit: Edit Profile
+      bios: Biography
+      name: Name
+      last_name: Last name
+      email: Email
+      example: Example
+      dir: Address
+      text1: Remember not to use symbols such as
+      text2: these will not be accepted in your url
+      pwd: New Password
+      confirm: Confirm new password
+      down: Do you want to unsubscribe?
+
+      cancel: Cancel your account
+      confirm: Do you want to unsubscribe Cœrsame?
+      cancel2: Cancel
+      pwd: Type your password
+      update: Update profile
+    new:
+      text1: "We are sorry, the network you are trying does not allow public register. Ask the person in charge at your school to help you."
+      text2: Home
+      teacher: Register as a teacher
+      student: Register as a student
+      email: Email
+      name: Name
+      last_name: Last name
+      pwd: Passsword
+      confirm_pwd: Confirm password
+      confirm_pwd2: Confirm password
+      type: Type of user
+      accept: Accept
+      terms: Terms and conditions
+      sign_in: Sign in
+    send_confirmation:
+      send_confirmation: The confirmation was sent

@@ -1,0 +1,8 @@
+es:
+  users_controller:
+    no_exist: "El usuario que intentas ver no existe o ha sido borrado."
+    canot_delete: "No puedes borrar este usuario."
+    correct_delete: "Usuario fue borrado correctamente"
+    deleted_usr: "El Usuario ya fue borrado"
+    save_pwd: "Se ha guardado tu contraseña correctamente."
+    no_register: "no estas inscrito en ninguna red"

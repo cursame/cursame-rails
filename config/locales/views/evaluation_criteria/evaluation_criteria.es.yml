@@ -3,4 +3,5 @@ es:
     form:
       eval: ¿Que criterio se evaluará?
     form_course:
-      eval: Que se va evaluar?
+      eval: ¿Qué se va evaluar?
+      

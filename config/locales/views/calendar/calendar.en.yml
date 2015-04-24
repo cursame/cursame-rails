@@ -1,0 +1,19 @@
+en:
+  calendar:
+    index:
+      day1: S
+      day2: M
+      day3: T
+      day4: W
+      day5: T
+      day6: F
+      day7: S
+      sunday: Sunday
+      monday: Monday
+      tuesday: Tuesday
+      wednesday: Wednesday
+      thursday: Friday
+      friday: Saturday
+      saturday: Sunday
+      back_month: ← Last Month
+      next_month: Next Month →

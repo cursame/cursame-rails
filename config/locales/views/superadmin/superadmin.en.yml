@@ -1,0 +1,72 @@
+en:
+  superadmin:
+    activities:
+      sys: System activities
+      hmwrks: Homework
+      hmwrks_delivery: Turn in homework
+      exam: Tests
+      exam_delivery: Turn in exams
+      courses: Courses
+      comments: Comments
+      avg: Average grade for homework
+      avg2: Average grade for survey
+      avg3: Average grade for user
+      find: Look for activities by user or title
+      activities: The activities of this system are geolocalized
+      title: Title
+      type: Type of activity
+      no_act: no activities
+      avg4: Average
+      place: Place
+      long: Length
+      lat: Latitude
+      ver: Version
+      os: Opperating sustem
+      net: Network
+      activity: Activity by
+      goto: Go to activity
+    courses_sintetic_view_and_edit:
+      courses: Courses
+      show: 'Show courses in networks, members and activities'
+      show2: Show homework
+      show3: Show tests
+      show4: Show course statistics
+      hmwrks: Homework
+      hmwrks_delivery: Homework turn in
+      show5: See turn ins
+      quest: Tests
+      stat: Statistics
+    create_super_admin:
+      superuser: Cursame super admin
+      img: Read the instructions to become a super admin accessing code 
+      enroll: Register user
+    instructions:
+      create: Instructions to create a super admin account
+      link: "Type your name, last name, email and password. Click on continue and you are good to go!"
+    networks:
+      admin: Network administration
+      create: Create network
+      create_net: Creating networks
+      net: Networks
+      subdomain: Subdomain
+      edit: Edit
+    statics:
+      statics1: System statistics
+      activities: Activities
+      hmwrks: Homework
+      hmwrks_delivery: Turn in homework
+      exam: Examenes
+      exam_delivery: Turn in exams
+      events: Events
+    users:
+      usr: User data
+      show1: Show activities
+      edit1: Edit user
+      statics: Statistics
+      activities: Activity manager
+      hmwrks: Homework
+      exam: Exams
+      find_usr: Find user
+      response: Homework answers
+      response2: Exam answers
+      discuss: Discussions

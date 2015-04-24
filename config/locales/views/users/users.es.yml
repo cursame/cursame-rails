@@ -26,11 +26,6 @@ es:
         no_answered: No resuelto
         quest2: Calificación promedio en cuestionarios
         quest3: Aún no hay cuestionarios en este curso.
-    friends:
-      friends_subtitle:
-        friends1: Amigos
-        all_friends: Todos mis amigos
-        request: Solicitudes pendientes
     shared:
       user_card:
         friends: Amigos
@@ -103,6 +98,10 @@ es:
       find: Busca a tus amigos en la sección de
       comunity: Comunidad
       no_friends2: Este usuario no tiene amigos aún.
+      friends_subtitle:
+        friends1: Amigos
+        all_friends: Todos mis amigos
+        request: Solicitudes pendientes
     index:
       all: Todos los usuarios
     info:
@@ -120,14 +119,3 @@ es:
       friends: Amigos en espera
       waiting_friends: Esperando aceptación de
       request: Este usuario te ha solicitado amistad
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,5 @@
+es:
+  friendships_controller:
+    delete_usr: "Se ha eliminado al usuario de tus amigos"
+    error_usr: "Error al eliminar al usuario de tus amigos"
+    

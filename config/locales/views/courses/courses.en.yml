@@ -1,0 +1,287 @@
+en:
+  courses:
+    closure:
+      closure_members:
+        final_scores: Final grades
+        send_scores: Send final grades to the students of this group.
+        members: Members
+        score: "Grades:"
+        no_score: Ungraded
+        no_members: There are no members in this course.
+        invite: Invite students to join your course.
+      user_closure_overview:
+        criterium: Criterium
+        score: Grade
+        hmwrk: Homework
+        send: delivered
+        of: from
+        percent: "Percentage:"
+        quest: Test
+        respond: Answered
+        discuss: Discussions
+        participate: Participated in
+        example8: "Example: 8"
+        final_score: Final grade
+        rate_student: Grade students
+        members: Members
+        calif: "Grade:"
+        no_rate: Ungraded
+    index:
+      student_courses_index:
+        no_courses: No courses.
+        no_show: No more courses to show.
+      student_header:
+        courses: Courses
+        course: Ongoing
+        regist: Subscribe
+        request: Applications
+      teacher_courses_index:
+        no_courses: No courses.
+        no_show: No more courses to show.
+      teacher_header:
+        courses: Courses
+        create_course: Create a new course
+        new: New
+        active: Active
+        finalize: Finished
+    members_in_courses:
+      course_view_call:
+        no_courses: No courses.
+      owner_partial_for_member:
+        teacher: Teacher
+        student: Student
+        admin: Admin
+      permissionings_edit:
+        delete_group: Delete group
+        confirm: Are you sure you want to remove this user from the group?
+        delete: Delete
+        usr_accept: Accept User
+    pending:
+      pending:
+        no_request: No more requests to show.
+    search:
+      courses_search_results:
+        search: "Search:"
+        no_records: No courses were found under the criterion of this search.
+    shared:
+      course_card:
+        member: Member
+        members: Member
+      course_card_actions:
+        final_score: Final grades
+        activities_score: Grade activities
+        eval_form: Evaluation form
+        edit: Edit
+        clone: Clone
+        finalize: Finish
+        active: Activate
+        enroll: You are now enrolled
+        confirm: Are you sure you want to leave this course?
+        leave: Leave course
+        request_send: Request sent
+        send_request: Send Request
+      course_card_post:
+        new_course: New course
+      course_evaluation_schema_fields:
+        hmwrks: Homework
+        quest: Tests
+        discuss: Discussions
+        criterium: Under what criterion will this be graded?
+        percent: Assigned percentage
+      courses_paginate_button:
+        load_more: Upload more...
+      course_header: 
+        update: Update photo
+        update_photo: Update photo
+        final_score: Final grades
+        activities_score: Grade activities
+        eval_form: Evaluation form
+        edit: Edit
+        clone: Clone
+        final: Finish
+        active: Activate
+        publ: Publications
+        info: Information
+        members: Members
+        library: Library
+    courses_search:
+      courses_search: Search course…
+      search: Search
+    dashboard_deliver:
+      access: Quick Access to course administration
+      desactivate: Deactivate
+      activate: Activate course
+      inactive: Inactive
+      monitor: Activity monitor
+      hmwrks_course: Homework in progress
+      calif: Grades
+      count_test: Number of exams answered
+    edit_delivery_access:
+      hmwrk_title: Homework title
+      descrip: Description 
+      publish_date: Published date
+      delivery_day: Due Date
+      courses: Courses
+      publish: Publish
+    evaluation:
+      no_group: You are not part of the group!
+      no_member: You have been accepted in this group!
+      course_score: Course grades
+      pdf: Download (PDF)
+      score: Grade
+      student: Student
+      deliver: Turned in
+      items: Items
+      calif: Grades
+      eval: Evaluation %
+      final: Final %
+      no_deliver: Not turned in
+      exam: Exam
+      total_score: Grade
+      obtained: Obtained
+      unresolved: Unresolved
+      course_score: Course grade
+      student: "Student:"
+      percent_obtain: "% obtained"
+      percent_obtain1: "% Obtained"
+      hmwrk: Homework
+    form:
+      name: Name
+      example: "Example: Mathematics I"
+      descrip: Description
+      descrip2: Description
+      privacy: Privacy
+      public: Public
+      private: Private
+      init_date: Start Date
+      students: Students
+      first_name: Write your name or last name.
+      add_students: Subscribe students to this course.
+      find_students: Find students to automatically join course      
+      create: Create
+      save: Save changes
+      delete: Delete permanent course.
+      confirm: Are you sure you want to delete this course?
+    form_course:
+      update: Update
+      return: Go back to
+      name: Name of
+      descrip: Description
+      init_date: Start date
+      privacy: Privacy
+      public: Public
+      private: Private
+    light_box_dashboard_delivery:
+      student: Student
+      title: Title
+      descrip: Description
+      files: Files
+      criterium: Grading criterion
+      percent: Please select a percentage from 1 to a 100 to grade this homework. 
+      hmwrk_score: Homework grade
+      eval: Please select a percentage from 1 to a 100 to grade this homework. 
+      eval_hmwrk: Grade homework
+      score: Grade
+    old_course:
+      antique: Previous courses
+      deactivate: Deactivate course
+      activate: Activate course
+    survey_results:
+      back: Back
+      student: Student
+      result: Result
+      respose: Anwser
+    about:
+      course_info: Course Information
+      info: Information
+      init_date: Start Date
+      admins: Admins
+    activities_depot:
+      back_to: Back to course
+      act: Activities
+      more_act: Upload more activities
+      select_act: Select activity.
+    all_courses:
+      no_records: No more courses to show.
+    clone_course_view:
+      clone: Clone
+      data_course: Course data
+      info_new_course: Change information for new course. 
+      name: Name
+      example: "Example: Mathematics I"
+      descrip: Description
+      dates: Dates
+      init_date: Start
+      privacy: Privacy
+      public: Public
+      private: Private
+      hmwrks: Homework
+      clone_hmwrks: Select the homework you want to clone for the new course. 
+      publish_date: Published on
+      delivery_date: Due date
+      clone2: "(clone)"
+    edit:
+      edit: Edit course
+    evaluation_download:
+      no_part: You are not part of the group!
+      no_accept: You have been accepted to the group!
+      exam: Exam
+      calif: Grade
+      student: Student
+      hmwrk: Homework
+      deliver: Turned in
+      ruber: Items
+      eval: Evaluation
+      final: Final
+      undelivered: Not turned in
+      total_score: Grade
+      eval_percent: Evaluation percentage
+      obtain_percent: Obtained
+      not_resolved: Unresolved
+      obtain_percent2: obtained
+    evaluation_schema:
+      text1: "Please specify how you want this course to be evaluated, you may include new evaluation criterion or leave Cúrsame's." 
+      criterium: Criterion
+      percent: Percentage
+      add_criterium: Add evaluation criterion
+      cancel: Cancel
+      save: Save
+    library:
+      biblio: Library
+      file: File
+      files: Files
+      upload: Upload file
+      load: Upload more files
+      no_files: This course has no files in your library
+      text2: "Cúrsame will not be made responsible for the content submitted by users, or any copyright infractions. Each user is 100% responsible for his content. If you have any problem of this kind please be dure to report it"    
+    members:
+      mem: Members
+      no_members: No members in this course.
+      no_records: This course has no members yet.
+    new:
+      new_course: New Course
+    statics:
+      activity: Activities
+      generate: created
+      active_hmwrk: ACTIVE HOMEWORKS
+      total: total
+      discuss: DISCUSSIONS
+      quest: TEST
+      in_course: in the course
+    unpublished_courses:
+      no_courses: No more courses to show.
+    show:
+      course-header:
+        update: "Update photo"
+        update_photo: "Update photo"
+        final_score: "Final grades"
+        activities_score: "Grade activities"
+        eval_form: "Evaluation form"
+        edit: "Edit"
+        clone: "Clone"
+        final: "Finish"
+        active: "Activate"
+        publ: "Publications"
+        info: "Information"
+        members: "Members"
+        library: "Library"

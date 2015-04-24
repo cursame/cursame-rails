@@ -1,0 +1,111 @@
+en:
+  evaluate:
+    deliveries:
+      delivery_user_response:
+        no_score: Ungraded
+        score: "Grade:"
+        delivery: Turned in
+        deliver: Turn in
+        scored: Grade
+        student: Student
+        title: Title
+        message: Message
+        attachments: Attachments
+        example: Example
+        feedback: Feedback
+        comments: Send comments according to the evaluation criterion for this activity.
+        check_hmwrk: Grade homework
+        deliveries: Future deadlines
+      evaluate_deliveries:
+        deliveries: Future deadlines
+        score: Grade
+        no_score: Ungraded
+        no_deliveries: No deadlines.
+        no_deliveries_record: There is still no deadline for this homework.
+    discussions:
+      evaluate_discussions_header:
+        course: Course
+        members: Members
+        publish_date: "Published on:"
+        limit_publish_date: Deadline to participate
+      discussion_user_response:
+        no_score: Ungraded
+        comments: Comments
+        score: Grade
+        example: Example
+        feedback: Feedback
+        send: Send comments according to the evaluation criterion for this activity.
+        rate_student: Grade student
+      evaluate_discussions:
+        discuss: Discussion
+        comment: Comment
+        comments: Comments
+        nothing: No one has participated in the discussion.
+    shared:
+      delivery_activity:
+        of: de
+        delivery: Deadline
+      discussion_activity:
+        members: Members
+        of: of
+      discussions_sidebar_responses:
+        members: Members
+        no_score: Ungraded
+      evaluate_course_filter:
+        all: All courses
+      evaluation_criterium_feedback:
+        feedback: Feedback
+      header_activity_delivery:
+        course: Course
+        delivery: Deadline
+        publish_date: Published on
+        publish_date_of: Deadline
+      header_activity_survey:
+        course: Course
+        answered: Answered
+        publish_date: Published on
+        deliver_date: Deadline
+        of: of
+        the: the
+      header_evaluate:
+        evaluate: Grade activities
+        active: Active
+        past: Previous
+      survey_activity:
+        answered: Answered
+    surveys:
+      evaluate_surveys:
+        delivery: Deadlines
+        obtain: Obtained
+        no_deliveries: No deadlines.
+        no_answer: This test has not been answered by any student yet.
+      survey_user_response:
+        obtain: Obtained
+        delivery: Turn in
+        answers: Answers
+        feedback: Feedback
+        reply: Answer
+        comments: Send comments.
+        send: send
+        delivery: deadlines
+        obtain: obtained
+    course:
+      activity: Activities to grade today
+      activity_for_tmrw: Activities to grade tomorrow
+      activity_for_days: Activities to grade in three days or more
+      no_activity: You have no activities to grade
+      all: "All activities in this course have been graded, you can see them in" 
+      past_activity: the past activities section
+    course_inactive:
+      no_score: You still have no grade.
+      enrollment: "You must subscribe to at least one course to get graded,"
+    inactive:
+      no_activity: No past activities.
+      no_act: You have not created an activity.
+    index:
+      today: Activities to grade today
+      tomorrow: Activities to grade tomorrow
+      someday: Activities to grade in three days or more
+      no_score: You have no activities to grade.
+      all: "All activities in this course have been graded, you can see them in "
+      past: the past activities section

@@ -11,12 +11,12 @@
             <div class="calendar-header-prev-month change-month">
               <% url_previous = calendar_path( :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") ) %>
               <%= link_to icon('arrow-gray-left'), url_previous, :class => "icon-link" %>
-              <%= link_to "&#8592; Mes anterior".html_safe, url_previous, :class => "text-link" %>
+              <%= link_to t('.back_month').html_safe, url_previous, :class => "text-link" %>
             </div>
             <div class="calendar-header-next-month change-month">
               <% url_next = calendar_path( :month => (@date.end_of_month+1).strftime("%Y-%m-01") ) %>
               <%= link_to icon('arrow-gray-right'), url_next, :class => "icon-link"  %>
-              <%= link_to "Mes siguiente &#8594;".html_safe, url_next, :class => "text-link" %>
+              <%= link_to t('.next_month').html_safe, url_next, :class => "text-link" %>
             </div>
             <div class="calendar-header-current-month">
               <h1><%= localize @date, format: '%B %Y' %></h1>

@@ -1,0 +1,73 @@
+en:
+  notifier:
+    accepted_message:
+      hello: ¬Hello
+      accept: You have been accepted to the course
+      button: "If the button below doesn’t work click here"
+    csv_import_email:
+      hello: Hello
+      results: We have annexed the results of the users import 
+      success: Success
+      error: Erros
+    masive_mailer_for_super_admin:
+      user: Dear Cursame Users
+    new_delivey_notification:
+      course_notif: Current homework
+      deliver: Deadline
+      button: "If the button below doesn’t work click here"    
+    new_discussion_notification:
+      discuss: Course discussion
+      button: "If the button above doesn’t work click here"
+    new_member_in_course:
+      course: Wants to be part of your course
+      button: "If the button above doesn’t work click here"
+    new_survey_notification:
+      hmwrk: Current homework
+      deliver: Deadline
+      button: "If the button above doesn’t work click here"
+    send_comment_on_course:
+      comment: Comment
+      comment2: Comment of the course
+      button: "If the button above doesn’t work click here"
+    send_contact_mail:
+      demo: Request demo
+      name: Name
+      tel: Phone number
+      ext: Extension
+      pos: Position
+      school: School
+      other: Other
+      msg: Message
+      contact: Contact
+    send_email:
+      msg: Mail from network admin
+      net: Go to network
+    send_email_members_in_course:
+      notif: Notifications
+      net: Go to network
+    send_import_courses:
+      line: Line
+      error: Error
+      no_error: No errors found
+    send_import_members:
+      course: Course
+      line: Line
+      error: Error
+      no_error: No errors found
+    send_import_users:
+      line: Line
+      error: Error
+    user_mailer_with_password:
+      welcome: Welcome
+      active: Active
+      hello: Hello
+      accept: You have been accepted to Cúrsame.
+      your_pwd: Your password is
+      text1: You can change your password when you log in
+      net: Go to network
+      text2: 'If you cannot see this email'
+      text3: click here
+      text4: "Happy teacher’s day!"
+      text5: 'In Cúrsame we are very proud of you and the important job you do to improve the education in Mexico, it is a great responsibility to give guidance to the future leaders and citizens of our country'
+      text6: 'I would personally like to congratulate you and reiterate our committment with you. The work we do aims to facilitate and strengthen your your teaching capacity. You are a fundamental piece for our platform development, therefore we will continue to improve Cúrsame.'
+      text7: "Your permanent dedication, efforts, perseverance during difficult times and desire of making a better world through education: Happy Teachers Day from the entire Cúrsame team! You deserve it!"

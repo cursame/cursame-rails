@@ -69,9 +69,9 @@ class DeliveriesController < ApplicationController
   def deliveries_course_lapsed
     member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, params[:id])
     unless member.nil?
-      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no has sido aceptado."} unless member.accepted
+      redirect_to root_path, flash: { error: t('.deliveries_controller.access_denied')} unless member.accepted
     else
-      redirect_to root_path, flash: { error: "Estas tratando de ver Tareas de un curso donde no estas inscrito."}
+      redirect_to root_path, flash: { error: t('.deliveries_controller.register')}
     end
 
     @course = Course.find_by_id(params[:id])

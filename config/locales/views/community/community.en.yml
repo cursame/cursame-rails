@@ -1,0 +1,25 @@
+en:
+  community:
+    shared:
+      community_header:
+        community: Community
+        all: All
+        students: Students
+        teacher: Teachers
+      community_paginate_button:
+        load_more: Upload more
+      users_search:
+        search_users: Search Users...
+        find: Find
+    all:
+      no_records: No more users to show...
+      no_usr: No users not found in this network.
+    search:
+      search: "Search:"
+      no_usr: No users found in your network.
+    students:
+      no_more_usr: No more users to show...
+      no_students: There are still no students in your network.
+    teachers:
+      no_more_usr: No more users to show...
+      no_students: There are still no teachers in your network.

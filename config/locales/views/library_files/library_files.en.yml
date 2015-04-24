@@ -1,0 +1,16 @@
+en:
+  library_files:
+    shared:
+      card:
+        download_file: "Download file"
+      form:
+        file_name: "File name: "
+        file_name2: "File name"
+        descrip: "Description: "
+        descrip_file: "File description"
+        file: "File"
+        send: "Send"
+      standalone_card:
+        download_file: "Download file"
+    new:
+      upload_file: "Upload file"

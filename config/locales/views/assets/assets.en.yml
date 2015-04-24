@@ -1,0 +1,6 @@
+en:
+  assets:
+    asset_file:
+      delete: Delete 
+    upload_asset_button:
+      file: File

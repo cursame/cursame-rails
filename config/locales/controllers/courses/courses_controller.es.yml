@@ -1,0 +1,19 @@
+es:
+  courses_controller:
+    create: "Se ha creado correctamente tu curso, edita tu forma de evaluación."
+    search: "Escribe algo en el campo de busqueda."
+    no_exist: "El curso que intentas ver no existe o ha sido borrado"
+    no_authorized: "Usted no está autorizado para editar este curso."
+    success: "Se ha creado correctamente"
+    save: "Se han guardado satisfactoriamente los cambios en el curso. "
+    delete: "Curso eliminado correctamente."
+    no_accepted: "No has sido aceptado en este curso."
+    the_course: "El curso"
+    active: "se activo correctamente."
+    ended: "se finalizo correctamente."
+    your_course: "Tu curso"
+    no_access: "El curso al que intentas accesar, no existe o ha sido borrado."
+    has_ended: "ha finalizado, lo puedes activar en el menu de opciones del curso."
+    contact: "ha finalizado, contacta al profesor para más información."
+    clone_correct: "Curso clonado correctamente."
+    

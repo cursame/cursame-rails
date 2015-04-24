@@ -20,7 +20,7 @@ es:
         load: Cargar más...
     form_for_discussion:
       discuss: Tema de la discusión
-      example: Ejemplo. Números primos
+      example: "Ejemplo: Números primos"
       descrip: Descripción
       support: Material de soporte
       calif: Calificable
