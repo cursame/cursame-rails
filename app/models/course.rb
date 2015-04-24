@@ -300,18 +300,11 @@ class Course < ActiveRecord::Base
     users.each do |user|
       member = MembersInCourse.find_by_user_id_and_course_id(user.id,self.id)
       if member.nil?
-        member = MembersInCourse.new
-        member.owner = owner
-        member.course = self
-        member.user = user
-        member.network_id = self.network_id
-        member.accepted = true
-        member.save
+        MembersInCourse.create(owner: owner, course: self, user: user, network_id: self.network_id, accepted: true)
       else
         member.update_attribute :accepted, true
       end
     end
-
   end
 
   def cursame_criteria
