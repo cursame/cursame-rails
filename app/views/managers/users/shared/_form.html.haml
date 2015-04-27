@@ -20,6 +20,14 @@
     .form-group-main
       .form-unit
         = f.text_field :last_name, placeholder: t('.last_names'), required: "required", autocomplete: "off"
+  .form-group.label-on-top.l-label
+    .form-group-label
+    -if pass
+      = f.label :password, t('.pwd') + ':'
+    .form-group-main
+    -if pass
+      .form-unit
+        = f.password_field :password, placeholder: t('.pwd'), required: "required", autocomplete: "off"
 
   .form-group.label-on-top.l-label
     .form-group-label
