@@ -12,13 +12,18 @@ class Managers::UsersController < Managers::BaseController
   def new
     @user = User.new
   end
-
+  
   def create
     params[:user][:subdomain] = current_network.subdomain
     params[:user][:domain] = request.domain
     params[:user][:personal_url] = SecureRandom.uuid
     user = User.new params[:user]
     redirect_to managers_users_path, flash: user.save ? { success: t('.managers.create') } : { error: t('.managers.error_user') }
+  end
+
+  def change_password
+    @user = User.find_by_id params[:id]
+    redirect_to root_path, flash: { error: t('.managers.no_edit') } unless current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == @user.networks.last)
   end
 
   def edit

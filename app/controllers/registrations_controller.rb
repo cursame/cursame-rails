@@ -11,9 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
       @user = User.find(params[:user][:user_id])
       user = User.find(current_user.id)
       params[:user].delete("user_id")
-
       
-
       if @user.update_attributes(params[:user])
         flash[:notice] = t('.registrations_controller.update')
         # Sign in the user bypassing validation in case his password changed

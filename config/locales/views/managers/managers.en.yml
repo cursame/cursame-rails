@@ -205,6 +205,9 @@ en:
         managers_users_subnav:
           list: List
           import: Import
+        form_password:
+          save: Save password
+          pwd: New password
       edit:
         edit1: Edit user
       import:
@@ -243,6 +246,8 @@ en:
         quest: Answered tests
         eval: Participation in graded discussions
         info: Information
+      change_password:
+        title: Edit password
     menu:
       admin: Admin
       usr: Users

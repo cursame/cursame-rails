@@ -205,6 +205,9 @@ es:
         managers_users_subnav:
           list: Listado
           import: Importar
+        form_password:
+          save: Guardar contraseña
+          pwd: Nueva contraseña
       edit:
         edit1: Editar Usuario
       import:
@@ -233,6 +236,7 @@ es:
       show:
         return: ← Regresar
         edit: Editar
+        password_update: Cambio de contraseña
         delete: Borrar
         sure: Estas seguro de borrar este usuario.
         email: Correo electrónico
@@ -243,6 +247,8 @@ es:
         quest: Cuestionarios contestados
         eval: Participación en discusiones evaluables
         info: Si información
+      change_password:
+        title: Editar contraseña
     menu:
       admin: Administración
       usr: Usuarios
