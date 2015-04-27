@@ -9,7 +9,7 @@ es:
     mailer:
       confirmation_instructions:
         welcome: ¡Bienvenido a Cúrsame!
-        usage: 'Para poder utilizar tú cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo, solo has click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.'
+        usage: 'Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.'
         push_here: 'Si el boton superior no funciona, haz clic aquí'
       reset_password_instructions:
         reset_pwd: Restaurar contraseña
