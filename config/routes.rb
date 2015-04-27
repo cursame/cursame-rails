@@ -536,62 +536,12 @@ Cursame30Lb::Application.routes.draw do
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
   match '/503', :to => 'home#server_error'
-  # api para la mobile
-  #this is for api for the mobile app
-  namespace :api do
-    resources :tokens,:only => [:create, :destroy]
-  end
-
+  #api 
   match '/api/courses',        to: 'api/courses/courses#list'
   match '/api/users/teachers', to: 'api/users/users#teachers'
   match '/api/users/total',    to: 'api/users/users#total'
   match '/api/networks/',      to: 'api/networks/networks#index'
-
   match '/api/sessions/create',to: 'api/sessions/sessions#create'
-
-  match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
-  match '/api/tokens/destroy', :to => 'api/tokens#destroy', :as => :logout
-  match '/api/tokens/native_create_user', :to => 'api/tokens#native_create_user', :as => :native_create_user_json
-
-  match '/api/api/publications', :to => 'api/api#publications', :as => :publicationsjson
-  match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
-  match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
-  match '/api/api/users', :to => 'api/api#users', :as => :usersjson
-  match '/api/api/notifications', :to => 'api/api#notifications', :as => :notificationsjson
-  match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
-  match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
-  match '/api/api/create_delivery', :to => 'api/api#create_delivery', :as => :create_delivery
-  match '/api/api/create_discussion', :to => 'api/api#create_discussion', :as => :create_discussion
-  match '/api/api/delete', :to => 'api/api#delete', :as => :delete
-  match '/api/api/assignments', :to => 'api/api#assignments', :as => :assignments
-  match '/api/api/assigment_delivery', :to => 'api/api#assigment_delivery', :as => :assigment_delivery
-  match '/api/api/qualify_assignment', :to => 'api/api#qualify_assignment', :as => :qualify_assignment
-
-  # api para nativa
-  match '/api/api/native_publications', :to => 'api/api#native_publications', :as => :native_publications_json
-  match '/api/api/native_create_delivery', :to => 'api/api#native_create_delivery', :as => :native_create_delivery_json
-  match '/api/api/native_assigment_delivery', :to => 'api/api#native_assigment_delivery', :as => :native_assigment_delivery_json
-  match '/api/api/native_create_survey', :to => 'api/api#native_create_survey', :as => :native_create_survey_json
-  match '/api/api/native_change_notification_status', :to => 'api/api#native_change_notification_status', :as => :native_change_notification_status_json
-  match '/api/api/native_update_user_profile', :to => 'api/api#native_update_user_profile', :as => :native_update_user_profile_json
-  match '/api/api/native_create_courses', :to => 'api/api#native_create_courses', :as => :native_create_courses_json
-  match '/api/api/native_answer_survey', :to => 'api/api#native_answer_survey', :as => :native_answer_survey_json
-  match '/api/api/native_comments', :to => 'api/api#native_comments', :as => :native_comments_json
-  match '/api/api/native_list_members_in_course', :to => 'api/api#native_list_members_in_course', :as => :native_list_members_in_course_json
-  match '/api/api/native_change_members_in_course_status', :to => 'api/api#native_change_members_in_course_status', :as => :native_change_members_in_course_status_json
-  match '/api/api/native_add_new_message', :to => 'api/api#native_add_new_message', :as => :native_add_new_message_json
-  match '/api/api/native_chat_list', :to => 'api/api#native_chat_list', :as => :native_chat_list_json
-  match '/api/api/native_load_chat_messages', :to => 'api/api#native_load_chat_messages', :as => :native_load_chat_messages_json
-
-  match '/api/api/native_list_user_calification', :to => 'api/api#native_list_user_calification', :as => :native_list_user_calification_json
-  match '/api/api/native_list_events', :to => 'api/api#native_list_events', :as => :native_list_events_json
-  match '/api/api/native_list_activities_of_course', :to => 'api/api#native_list_activities_of_course', :as => :native_list_activities_of_course_json
-  match '/api/api/native_list_networks', :to => 'api/api#native_list_networks', :as => :native_list_networks_json
-
-  # friendships
-  match '/api/api/friend_request', :to => 'api/api#friend_request', :as => :friend_request_json
-  match '/api/api/friend_accept', :to => 'api/api#friend_accept', :as => :friend_accept_json
-  match '/api/api/friend_remove', :to => 'api/api#friend_remove', :as => :friend_remove_json
 
   #logout
   match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]
