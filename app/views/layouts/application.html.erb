@@ -1,103 +1,85 @@
-<% if request.domain != "cursa.me" && request.domain != "lvh.me" && request.domain != "cursalab.com" %>
-  <% url =  request.url %>
-  <% cursame = url.gsub(request.domain,"cursa.me") %>
-  <script type="text/javascript">
-    window.location.href="<%= cursame %>"  // put your correct path in a string here
-  </script>
-<% end %>
-
-<% if request.subdomain.split(".").size != 1 %>
-  <% url = request.url %>
-  <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
-  <script type="text/javascript">
-    window.location.href="<%= new_url %>"  // put your correct path in a string here
-  </script>
-<% end %>
-
-<% if request.url.split("/").last != "evaluation_download" %>
-  <!DOCTYPE html>
-  <html class="app">
-    <head>
-      <title>Cúrsame</title>
-      <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
-      <meta name="robots" content="noindex">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      <%= favicon_link_tag '/favicon.ico' %>
-      <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-      
-      <script>
-        window.Cursame = { userId: <%= current_user.id %> };
-      </script>
-      <%= javascript_include_tag 'private_pub' %>
-      <%= javascript_include_tag 'https://www.dropbox.com/static/api/1/dropins.js', id: 'dropboxjs', data: { app_key: 'ee2yf464dnk2rf1' } %>
-      <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
-      <%= javascript_include_tag 'application.js' %>
-      <!--[if lt IE 9]>
-        <%= javascript_include_tag 'excanvas.js' %>
-      <![endif]-->
-      <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
-      <%= csrf_meta_tags %>
-    </head>
-    <body class="<%= yield :body_classes %>">
-      <% cache_expire %>
-      <%= render partial: '/shared/sidebar' %>
-      <div class="wrap">
-        <%= render partial: '/shared/user_header' %>
-        <div class="main">
-          <%= yield %>
-        </div>
+<!DOCTYPE html>
+<html class="app">
+  <head>
+    <title>Cúrsame</title>
+    <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+    
+    <script>
+      window.Cursame = { userId: <%= current_user.id %> };
+    </script>
+    <%= javascript_include_tag 'private_pub' %>
+    <%= javascript_include_tag 'https://www.dropbox.com/static/api/1/dropins.js', id: 'dropboxjs', data: { app_key: 'ee2yf464dnk2rf1' } %>
+    <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
+    <%= javascript_include_tag 'application.js' %>
+    <!--[if lt IE 9]>
+      <%= javascript_include_tag 'excanvas.js' %>
+    <![endif]-->
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="<%= yield :body_classes %>">
+    <% cache_expire %>
+    <%= render partial: '/shared/sidebar' %>
+    <div class="wrap">
+      <%= render partial: '/shared/user_header' %>
+      <div class="main">
+        <%= yield %>
       </div>
-      <div class="chat-panels">
-        <%= subscribe_to "/chat-joinded/#{current_user.id}" %>
-        <% unless current_user_courses.empty? %>
-          <% courses = current_user_courses if is_teacher %>
-          <% courses = student_courses if is_student %>
-          <% courses.each do |course|%>
-            <%= subscribe_to "/messages/course_channel_#{course.id}" %>
-          <% end %>
+    </div>
+    <div class="chat-panels">
+      <%= subscribe_to "/chat-joinded/#{current_user.id}" %>
+      <% unless current_user_courses.empty? %>
+        <% courses = current_user_courses if is_teacher %>
+        <% courses = student_courses if is_student %>
+        <% courses.each do |course|%>
+          <%= subscribe_to "/messages/course_channel_#{course.id}" %>
         <% end %>
-      </div>
-      <%= render :partial => '/shared/sounds' %>
-      <%= render :partial => '/shared/admin_messages' %>
-      <script>
-        $(function() {
-          <% if flash[:notice] %>
-            Notice('notice', '<%= flash[:notice] %>');
-          <% elsif flash[:error] %>
-            Notice('error', '<%= flash[:error] %>');
-          <% elsif flash[:success] %>
-            Notice('success', '<%= flash[:success] %>');
-          <% end %>
+      <% end %>
+    </div>
+    <%= render :partial => '/shared/sounds' %>
+    <%= render :partial => '/shared/admin_messages' %>
+    <script>
+      $(function() {
+        <% if flash[:notice] %>
+          Notice('notice', '<%= flash[:notice] %>');
+        <% elsif flash[:error] %>
+          Notice('error', '<%= flash[:error] %>');
+        <% elsif flash[:success] %>
+          Notice('success', '<%= flash[:success] %>');
+        <% end %>
+      });
+
+      window.clearTimeout(expireSession);
+      var expireSession = setTimeout(function() {
+        $.get('<%= expire_session_path %>');
+      }, 15000000);
+
+      if (typeof(Zenbox) !== "undefined") {
+        Zenbox.init({
+          dropboxID:   "20290348",
+          url:         "https://cursame.zendesk.com",
+          hide_tab:   "true",
+          tabTooltip:  "Soporte",
+          tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
+          tabColor:    "black",
+          tabPosition: "Left"
         });
+      };
+      
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-27929430-2', 'cursa.me');
+      ga('send', 'pageview');
+    </script>
 
-        window.clearTimeout(expireSession);
-        var expireSession = setTimeout(function() {
-          $.get('<%= expire_session_path %>');
-        }, 15000000);
-
-        if (typeof(Zenbox) !== "undefined") {
-          Zenbox.init({
-            dropboxID:   "20290348",
-            url:         "https://cursame.zendesk.com",
-            hide_tab:   "true",
-            tabTooltip:  "Soporte",
-            tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
-            tabColor:    "black",
-            tabPosition: "Left"
-          });
-        };
-        
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-27929430-2', 'cursa.me');
-        ga('send', 'pageview');
-      </script>
-
-      <%= yield :javascripts %>
-    </body>
-  </html>
-<% end %>
+    <%= yield :javascripts %>
+  </body>
+</html>
