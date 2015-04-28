@@ -307,6 +307,22 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def add_students users
+    students = []
+    users.each do |user|
+      students.push MembersInCourse.new(owner: false, course: self, user: user, network_id: self.network, accepted: true) unless user.nil?
+    end
+    return students
+  end
+
+  def add_teachers users
+    teachers = []
+    users.each do |user|
+      teachers.push MembersInCourse.new(owner: true, course: self, user: user, network_id: self.network, accepted: true) unless user.nil?
+    end
+    return teachers
+  end
+
   def cursame_criteria
     !self.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }.blank?  
   end
