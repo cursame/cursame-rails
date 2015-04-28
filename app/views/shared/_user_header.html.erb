@@ -10,15 +10,12 @@
               <div class="menu-sidebar">
                 <%= icon('menu') %> <!-- Menú -->
               </div>
-              <% if !current_network.nil? %>
-                <% if current_network.free || current_network.logo.file == nil %>
-                  <%= link_to root_path, title: current_network.name, class: "free_network" do %>
-                    <%= icon('logo-cursame') %>
-                  <% end %>
-
-                <% else %>
-                  <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
+              <% if current_network.logo.file.nil? %>
+                <%= link_to root_path, title: current_network.name, class: "free_network" do %>
+                  <%= icon('logo-cursame') %>
                 <% end %>
+              <% else %>
+                <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
               <% end %>
             </div>
             <div class="activity-notificactions">
