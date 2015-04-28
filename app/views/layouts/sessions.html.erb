@@ -1,85 +1,65 @@
-<% if request.domain != "cursa.me" && request.domain != "lvh.me" && request.domain != "cursalab.com" %>
-  <% url =  request.url %>
-  <% cursame = url.gsub(request.domain,"cursa.me") %>
-  <script type="text/javascript">
-    window.location.href="<%= cursame %>"  // put your correct path in a string here
-  </script>
-<% end %>
-
-<% if request.subdomain.split(".").size > 1 %>
-  <% url = request.url %>
-  <% new_url = url.gsub(request.subdomain, request.subdomain.split(".").last) %>
-  <script type="text/javascript">
-    window.location.href="<%= new_url %>"  // put your correct path in a string here
-  </script>
-<% end %>
-
-<% if request.url.split("/").last != "evaluation_download" %>
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <title>Cúrsame</title>
-      <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
-      <meta name="robots" content="noindex">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      <%= favicon_link_tag '/favicon.ico' %>
-      <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
-      <%= javascript_include_tag 'application.js' %>
-      <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
-      <%= yield :javascripts %>
-      <!--[if IE]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
-      <%= csrf_meta_tags %>
-    </head>
-    <body>
-      <div class="sessions-wrap">
-        <%= yield %>
-        <%= render "devise/shared/footer-links" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cúrsame</title>
+    <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+    <%= javascript_include_tag 'application.js' %>
+    <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
+    <%= yield :javascripts %>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="sessions-wrap">
+      <%= yield %>
+      <%= render "devise/shared/footer-links" %>
+    </div>
+    <% if !current_network.nil? && !current_network.free && !current_network.image_front.nil? && !current_network.image_front.file.nil? %>
+      <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>");'>
+        <div class="background-layer"></div>
       </div>
-      <% if !current_network.nil? && !current_network.free && !current_network.image_front.nil? && !current_network.image_front.file.nil? %>
-        <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>");'>
+    <% else %>
+        <div class="signup-restore" style="background-image: url('/videos/poster.png')">
           <div class="background-layer"></div>
+          <% unless mobile? %>
+            <video class="sessions-video" poster="/videos/poster.png" autoplay loop>
+              <source type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" src="/videos/video.mp4">
+              <source type="video/ogg; codecs=theora,vorbis" src="/videos/video.ogv">
+              <source type="video/webm; codecs=vp8,vorbis" src="/videos/video.webm">
+            </video>
+          <% end %>
         </div>
-      <% else %>
-          <div class="signup-restore" style="background-image: url('/videos/poster.png')">
-            <div class="background-layer"></div>
-            <% unless mobile? %>
-              <video class="sessions-video" poster="/videos/poster.png" autoplay loop>
-                <source type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" src="/videos/video.mp4">
-                <source type="video/ogg; codecs=theora,vorbis" src="/videos/video.ogv">
-                <source type="video/webm; codecs=vp8,vorbis" src="/videos/video.webm">
-              </video>
-            <% end %>
-          </div>
-      <% end %>
-      <a id="support-tab-sessions" href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%=t('.help')%></a>
-    </body>
-    <script>
-      Chat.clearChannelsCookies();
+    <% end %>
+    <a id="support-tab-sessions" href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%=t('.help')%></a>
+  </body>
+  <script>
+    Chat.clearChannelsCookies();
 
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-41050835-1', 'cursa.me');
-      ga('send', 'pageview');
+    ga('create', 'UA-41050835-1', 'cursa.me');
+    ga('send', 'pageview');
 
-      if (typeof(Zenbox) !== "undefined") {
-        Zenbox.init({
-          dropboxID:   "20290348",
-          url:         "https://cursame.zendesk.com",
-          hide_tab:   "true",
-          tabTooltip:  "Soporte",
-          tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
-          tabColor:    "black",
-          tabPosition: "Left"
-        });
-      }
+    if (typeof(Zenbox) !== "undefined") {
+      Zenbox.init({
+        dropboxID:   "20290348",
+        url:         "https://cursame.zendesk.com",
+        hide_tab:   "true",
+        tabTooltip:  "Soporte",
+        tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
+        tabColor:    "black",
+        tabPosition: "Left"
+      });
+    }
 
-    </script>
-  </html>
-<% end %>
-
-
+  </script>
+</html>
