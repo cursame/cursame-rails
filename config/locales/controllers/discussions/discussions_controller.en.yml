@@ -1,0 +1,7 @@
+en:
+  discussions_controller:
+    no_accepted: "you are trying to view discussions of a course where you have not been accepted."
+    no_register: "you are trying to view discussions of a course where you are not registered."
+    no_discussion: "Failed to create the discussion." 
+    delete: "The argument that you are trying to view does not exist or has been deleted."
+    
