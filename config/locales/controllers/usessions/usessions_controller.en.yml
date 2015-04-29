@@ -1,4 +1,6 @@
 en:
   usessions_controller:
-    hello: "MISSINGTR "
-    welcome: " MISSINGTR"
+    invalid: "The session has not been successfully created due to a wrong email or password."
+    hello: "Hello "
+    welcome: " welcome again."
+    

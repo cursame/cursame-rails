@@ -1,0 +1,7 @@
+en:
+  networks:
+    messages:
+      update:
+        success: 'Settings saved successfully.'
+      search:
+        network: 'Network Searcher'

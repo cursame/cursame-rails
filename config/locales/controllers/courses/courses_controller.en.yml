@@ -1,0 +1,18 @@
+en:
+  courses_controller:
+    create: "You have successfully created your course, edit your evaluation form."
+    search: "Write something in the search field."
+    no_exist: "The course you are trying to view does not exist or has been deleted"
+    no_authorized: "You are not authorized to edit this course."
+    success: "It has been created successfully"
+    save: "The changes in the course have been successfully saved."
+    delete: "Course deleted successfully."
+    no_accepted: "you have not been accepted into this course."
+    the_course: "The course"
+    active: "was activated correctly."
+    ended: "was finalized properly."
+    your_course: "Your course"
+    no_access: "The course you are trying to access does not exist or has been deleted."
+    has_ended: "has ended, you can enable it again in the options menu of the course."
+    contact: "has ended, contact the teacher for more information."
+    clone_correct: "Course cloned successfully."

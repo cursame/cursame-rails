@@ -1,0 +1,4 @@
+en:
+  registrations_controller:
+    update: "Your profile has been successfully updated"
+    error: "The profile couldn't be successfully updated"

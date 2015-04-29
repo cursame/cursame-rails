@@ -1,0 +1,5 @@
+es:
+  assignments:
+    correct: "The homework has been successfully qualified."
+    error: "An error ocurred while qualifying the homwork."
+    

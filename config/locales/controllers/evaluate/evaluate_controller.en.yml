@@ -1,0 +1,11 @@
+en:
+  evaluate_controller:
+    correct: "Grade assigned correctly."
+    only_teachers: "You're trying to get into a section just for teachers."
+    no_evaluate: "You're trying to qualify a course that is not yours."
+    no_activity: "You are trying to view an activity that is not yours."
+    send_comment: "Commentary submitted."
+    no_exist: "The discussion that you are trying to view does not exist or has been deleted."
+    no_calificable: "The discussion that you are trying to view is not qualifiable."
+    error: "Failed to qualify the discussion."
+    
