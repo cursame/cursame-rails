@@ -1,6 +1,6 @@
 es:
   managers:
-    delete_error: "Ocurrió un error al borrar el comentario'"
+    delete_error: "Ocurrió un error al borrar el comentario"
     correct_deleted: "Comentario borrado correctamente"
     course_error1: "Ocurrio un error al crear el curso"
     correct_course: "Curso creado correctamente"

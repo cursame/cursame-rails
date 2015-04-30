@@ -1,0 +1,9 @@
+en:
+  users_controller:
+    no_exist: "The use you are trying to view does not exist or has been deleted."
+    canot_delete: "You can not delete this user."
+    correct_delete: "The user has been successfully deleted"
+    deleted_usr: "The user has already been deleted"
+    save_pwd: "Your password has been saved properly."
+    no_register: "You are no enrolled in any network"
+    

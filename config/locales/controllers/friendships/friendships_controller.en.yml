@@ -1,0 +1,5 @@
+en:
+  friendships_controller:
+    delete_usr: "The user has been deleted from your friends"
+    error_usr: "Failed to delete the user from your friends"
+    

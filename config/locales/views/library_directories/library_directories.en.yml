@@ -13,3 +13,5 @@ en:
         upload_file: "Upload file"
       list:
         no_documents: "There are no documents."
+      standalone_card:
+        open_folder: "Open Folder"

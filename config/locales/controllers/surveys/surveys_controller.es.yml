@@ -4,5 +4,5 @@ es:
     no_register: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."
     no_quest_accept: "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado."
     no_quest_register: "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."
-    no_exist: "El cuestionario que intentas ver no existe o ah sido borrado."
+    no_exist: "El cuestionario que intentas ver no existe o ha sido borrado."
     
