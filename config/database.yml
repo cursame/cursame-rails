@@ -1,8 +1,11 @@
 development:
-    adapter: sqlite3
-    database: db/development.sqlite3
+    adapter: postgresql
+    database: postgres
+    username: macdejarda
+    password: 
+    encoding: unicode
+    timeout: 7000
     pool: 5
-    timeout: 5000
 
 
 # Warning: The database defined as "test" will be erased and

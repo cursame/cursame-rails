@@ -33,6 +33,8 @@ en:
       example: Example
       text1: Prime numbers
       dates: Dates
+      timer: Time
+      attempts: Attempts
       publish_date: Published on
       deliver_date: Deadline 
       quest: Questions

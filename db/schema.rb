@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150407134859) do
+ActiveRecord::Schema.define(:version => 20150429203346) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -606,8 +606,8 @@ ActiveRecord::Schema.define(:version => 20150407134859) do
   create_table "surveys", :force => true do |t|
     t.string   "name"
     t.integer  "course_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "network_id"
@@ -616,6 +616,17 @@ ActiveRecord::Schema.define(:version => 20150407134859) do
     t.string   "state"
     t.boolean  "publish"
     t.integer  "likes"
+    t.integer  "timer",        :default => 60
+    t.integer  "attempts",     :default => 1
+  end
+
+  create_table "time_trying_surveys", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.datetime "open_at"
+    t.datetime "send_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_friends", :force => true do |t|
