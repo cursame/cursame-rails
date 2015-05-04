@@ -12,7 +12,7 @@ end
 <%= form_for @survey, remote: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
 <%= hidden_field_tag 'in_form', in_form%>
 <div class="new-publication-form-content">
-  
+
   <div class="form-group">
     <div class="form-group-label">
       <%= f.label :name, t('.title') %>
@@ -105,7 +105,7 @@ end
       <%= link_to t('.cancel'), "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
       <% end %>
     </li>
-    
+
     <% unless active_edit %>
     <li>
       <% if in_form != 'course' %>
@@ -116,7 +116,7 @@ end
       <%end%>
     </li>
     <% end %>
-    
+
     <li>
       <span class="btn btn-primary input-btn activable">
         <%= f.submit "Crear Cuestionario", id: 'comment-post-form', class: "activable" unless active_edit %>

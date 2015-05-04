@@ -628,6 +628,15 @@ ActiveRecord::Schema.define(:version => 20150429203346) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "time_trying_surveys", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.datetime "open_at"
+    t.datetime "send_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   add_index "time_trying_surveys", ["survey_id"], :name => "index_time_trying_surveys_on_survey_id"
   add_index "time_trying_surveys", ["user_id"], :name => "index_time_trying_surveys_on_user_id"
 
