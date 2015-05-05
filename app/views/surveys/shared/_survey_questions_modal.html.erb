@@ -1,7 +1,9 @@
 <%= form_tag "/surveys/survey_reply", :remote => true, :id => "survey-form-reply" do %>
   <div class="overlay-content">
-    <h3><%= survey.name %></h3>
-    
+  <% if survey.timer != 0 %>
+  <div id="surveyclock" class="clock" data-expire="<%= (Time.now + survey.timer.minutes).strftime("%H:%M:%S") %>"></div>
+  <%end%>
+  <h3><%= survey.name %></h3>
     <div class="survey-wrap">
       <ol>
         <% for question in survey.questions %>
@@ -28,7 +30,6 @@
         <% end %>
       </ol>
     </div>
-
     <% unless survey.contents.empty? && survey.assets.empty? %>
       <br><br>
       <div class="publication-assets"> 
@@ -48,13 +49,11 @@
         <% end %>
       </div>
     <% end %>
-
   </div>
-
   <% unless survey.owner?(current_role, current_user) %>
     <div class="overlay-footer">
       <div class="fl">
-        <span class="btn btn-medium btn-primary input-btn">
+        <span id="survey-submit" class="btn btn-medium btn-primary input-btn">
           <%= submit_tag t('.quest'), :class=>"btn btn-medium btn-primary" %>
         </span>
         <%= hidden_field_tag 'survey_id', survey.id%>
@@ -73,5 +72,8 @@
         $(element).closest('.survey-answers').append(error);
       }
     });
+    if ($('#surveyclock').length){
+      startTimeSurvey('surveyclock');
+    }
   });
 </script>

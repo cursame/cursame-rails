@@ -14,7 +14,11 @@
 </div>
 
 <% if response.blank?  %>
-  <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %>  
+  <% if count_tryings == 1 %>
+    <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %> 
+    <% else %>
+    <div class="no_attemps"><%= t('.fail_attemps')%> </div>
+  <%end%>
 <% else %>
   <div class="overlay-content">
     <h3><%= survey.name %></h3>

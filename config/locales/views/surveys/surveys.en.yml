@@ -4,11 +4,14 @@ en:
       survey_card:
         quest: See test
         edit: Edit test
+        solve_time: Minits
+        no_limit_time: Sin límite de tiempo
       survey_modal:
         quest: Course test
         response: Answer before
         calif: Grade
         feedback: Feedback
+        fail_attemps: You don´t have more attemps
       survey_questions_modal:
         quest: Send test
       surveys_course_header:
@@ -44,6 +47,7 @@ en:
       courses: Courses
       save: Save test
       create: Create test
+      non_mins: No time
     question_fields:
       quest1: Add question
       add_answer: Add anwser

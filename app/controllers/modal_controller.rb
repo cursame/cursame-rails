@@ -40,6 +40,13 @@ class ModalController < ApplicationController
 
   def survey_modal
     @survey = Survey.find_by_id(params[:id])
+    if current_user.student?
+      c = @survey.time_trying_surveys.where(user_id: current_user.id).count
+      if c  == 0
+       @time_trying_survey = TimeTryingSurvey.create(survey_id: @survey.id, user_id: current_user.id, open_at: Time.now)
+      end
+      @count_tryings = c + 1
+    end
     respond_to do |format|
       format.js
     end
