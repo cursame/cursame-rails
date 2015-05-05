@@ -10,7 +10,7 @@
           <li>
             <div class="survey-question">
               <p><%= question.content%></p>
-              
+
               <div class="survey-answers">
                 <ul>
                   <% for answer in question.answers %>
@@ -32,14 +32,14 @@
     </div>
     <% unless survey.contents.empty? && survey.assets.empty? %>
       <br><br>
-      <div class="publication-assets"> 
+      <div class="publication-assets">
         <%= render :partial => "content/insertions_to_contents", :locals => { :type => survey, :cl => "survey"}%>
         <% if survey.assets.count > 0 %>
           <div class="asset-box upload-label">
             <% survey.assets.each do |files|%>
               <div class="file-mini-upload publication-asset">
                 <% @string = files.filename.file.filename %>
-                <%= link_to "#{files.filename}" , :target => '_blank' do %> 
+                <%= link_to "#{files.filename}" , :target => '_blank' do %>
                   <%= icon('upload-asset-blue') %>
                   <%= truncate( @string, :omission => "...", :length => 72) %>
                 <% end %>
@@ -65,7 +65,7 @@
   <% end %>
 <% end %>
 <script>
-  $(function(){ 
+  $(function(){
     $('#survey-form-reply').validate({
       ignore: "",
       errorPlacement: function(error, element) {

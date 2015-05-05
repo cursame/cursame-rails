@@ -6,14 +6,14 @@ es:
         edit: Editar Cuestionario
         solve_time: Minutos
         no_limit_time: Sin límite de tiempo
-        notice_helper: Este cuestionario te dará 
+        notice_helper: Este cuestionario te dará
         notice_helper2: minutos para responderlo
       survey_modal:
         quest: Cuestionario en el curso
         response: Responder antes del
         calif: Calificación Obtenida
         feedback: Retroalimentación
-        fail_attemps: No tienes más intentos 
+        fail_attemps: No tienes más intentos
       survey_questions_modal:
         quest: Enviar cuestionario
       surveys_course_header:
@@ -41,7 +41,7 @@ es:
       timer: Tiempo para resolución del cuesitonario
       attempts: Intentos
       publish_date: Día de pubicación
-      deliver_date: Fecha de entrega 
+      deliver_date: Fecha de entrega
       quest: Preguntas
       add_quest: Agregar Pregunta
       support: Material de soporte
@@ -49,7 +49,11 @@ es:
       courses: Cursos
       save: Guardar Cuestionario
       create: Crear Cuestionario
+<<<<<<< HEAD
       non_mins: Sin límite de tiempo
+=======
+      non_mins: Sin líminte de tiempo
+>>>>>>> timer en cuestionarios parte visual
     question_fields:
       quest1: Ingresar pregunta
       add_answer: Agregar Respuesta

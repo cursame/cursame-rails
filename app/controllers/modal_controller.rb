@@ -52,7 +52,7 @@ class ModalController < ApplicationController
       format.js
     end
   end
-  
+
   def wufoo_form_modal
     @form = WufooForm.find_by_id(params[:id])
   end
@@ -66,11 +66,11 @@ class ModalController < ApplicationController
     end
     respond_to do |format|
       format.js
-    end 
+    end
   end
 
 protected
- 
+
   def time_trying_validate(survey)
     time_trying_user_count = survey.time_trying_surveys.where(user_id: current_user.id).count
     if current_user.student?

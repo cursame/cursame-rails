@@ -34,7 +34,7 @@
           - if survey.timer == 0
             = "#{t('.no_limit_time')}"
           - else
-            = "#{survey.timer } #{t('.solve_time')} "          
+            = "#{survey.timer } #{t('.solve_time')} "
         = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: survey }
     - if card_type == :standalone
       .post-box-footer
