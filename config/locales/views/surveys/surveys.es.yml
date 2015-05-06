@@ -47,7 +47,7 @@ es:
       courses: Cursos
       save: Guardar Cuestionario
       create: Crear Cuestionario
-      non_mins: Sin líminte de tiempo
+      non_mins: Sin límite de tiempo
     question_fields:
       quest1: Ingresar pregunta
       add_answer: Agregar Respuesta

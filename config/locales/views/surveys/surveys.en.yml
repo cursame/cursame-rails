@@ -5,7 +5,7 @@ en:
         quest: See test
         edit: Edit test
         solve_time: Minits
-        no_limit_time: Sin límite de tiempo
+        no_limit_time: You not have more time to answer
       survey_modal:
         quest: Course test
         response: Answer before
