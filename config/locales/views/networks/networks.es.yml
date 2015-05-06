@@ -12,6 +12,9 @@ es:
       form: Habilitar formulario de registro publico.
       save: Guardar cambios
       net_evaluable: "Habilitar evaluables de la red. (Tareas, Cuestionarios y Discusiones evaluables)"
+      authorization_keyword: "Palabra clave"
+      api_key: "API Key:"
+      example: "Ejemplo: "
     network_mask:
       enroll: Registrar usuario
     alertmethod:
