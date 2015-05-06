@@ -112,7 +112,7 @@
           <%= f.check_box :register_form %>
           <%=t('.form')%>
         <% end %>
-      </div>
+      </div>  
     </div>
   </div>
 
@@ -126,6 +126,29 @@
       </div>
     </div>
   </div>
+
+<h2>Bit</h2>
+
+  <%= f.fields_for :bit_settings do |setting| %>
+    <div class="form-group label-on-top l-label">
+      <div class="form-group-label">
+        <%= setting.label :authorization_keyword, t('.authorization_keyword')%>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= setting.text_field :authorization_keyword, required: true, placeholder: t('.example') + 'Bearer' %>
+        </div>
+      </div>
+      <div class="form-group-label">
+        <%= setting.label :api_key, t('.api_key') %>
+      </div>
+      <div class="form-group-main">
+        <div class="form-unit">
+          <%= setting.text_field :api_key, required: true, placeholder: t('.example') + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
   
   <span class="btn btn-primary input-btn btn-medium activable">
     <%= f.submit t('.save') %>
