@@ -4,6 +4,7 @@ class Network < ActiveRecord::Base
   has_one :network_template
   has_one :wufoo_setting, dependent: :destroy
   has_one :library, as: :storable, dependent: :destroy
+  has_one :bit_setting, dependent: :destroy
 
   has_many :permissionings, dependent: :destroy
   has_many :users, through: :permissionings
@@ -29,6 +30,7 @@ class Network < ActiveRecord::Base
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :wufoo_setting
+  accepts_nested_attributes_for :bit_setting
 
   mount_uploader :image_front, BackendFromNetworkUploader
   mount_uploader :logo, LogoNetworkUploader

@@ -125,6 +125,16 @@ ActiveRecord::Schema.define(:version => 20150515152820) do
     t.string   "client_secret"
   end
 
+  create_table "bit_settings", :force => true do |t|
+    t.integer  "network_id",            :null => false
+    t.string   "authorization_keyword", :null => false
+    t.string   "api_key",               :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "bit_settings", ["network_id"], :name => "index_bit_settings_on_network_id"
+
   create_table "channels", :force => true do |t|
     t.string   "channel_type"
     t.string   "channel_name"
