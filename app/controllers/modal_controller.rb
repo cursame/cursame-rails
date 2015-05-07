@@ -40,13 +40,7 @@ class ModalController < ApplicationController
 
   def survey_modal
     @survey = Survey.find_by_id(params[:id])
-    if current_user.student?
-      c = @survey.time_trying_surveys.where(user_id: current_user.id).count
-      if c  == 0
-       @time_trying_survey = TimeTryingSurvey.create(survey_id: @survey.id, user_id: current_user.id, open_at: Time.now)
-      end
-      @count_tryings = c + 1
-    end
+    time_trying_validate(@survey)
     respond_to do |format|
       format.js
     end
@@ -74,5 +68,19 @@ class ModalController < ApplicationController
       format.js
     end 
   end
+
+protected
+ 
+  ########## this function call calculate the attem and the times (extract function) ######## 
+  def time_trying_validate(survey)
+   if current_user.student?
+      time_trying_user_count = survey.time_trying_surveys.where(user_id: current_user.id).count
+      if time_trying_user_count  == 0
+       @time_trying_survey = TimeTryingSurvey.create(survey_id: survey.id, user_id: current_user.id, open_at: Time.now)
+      end
+      @count_tryings = time_trying_user_count + 1
+    end
+  end
+
 end
 
