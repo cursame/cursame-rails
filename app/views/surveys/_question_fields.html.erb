@@ -4,25 +4,34 @@
     <%= f.text_field :content, rows: 1, placeholder: t('.quest1'), class: 'question-input-field', required: "required" %>
     <div class="delete-question-button">
       <%= link_to_remove_fields icon('x-close'), f, {:class=>'btn btn-small btn-secondary', :clear => 'both'}, '#box-question'  %>
+     
     </div>
+    <%#= f.fields_for : %>
+      <div class="delete-question-button" style="margin-right:32px; margin-top:3px">
+        <div style="display:none" >
+          <%= file_field_tag 'attachment'%>
+        </div>
+        <a  onclick='surveyOpenFileCall("attachment", "survey-target", "oppen_target")'><%=  icon('upload-asset') %></a>
+      </div>
+       <div style="width:100%; height:120px; padding:5px; border-top:solid 1px #eee; display:none;" id="oppen_target">
+        <img id="survey-target" width="120px" height="120px" />
+      </div>
+    <%# end %>
   </div>
-
   <div id="box-request-<%=@survey.id%>">
     <%= f.fields_for :answers do |builder| %>
-      <%= render '/surveys/answer_fields', :f => builder %>
+    <%= render '/surveys/answer_fields', :f => builder %>
     <% end %>
   </div>
-
   <div class="add-aswer">
     <%= link_to_add_fields t('.add_answer'), f, :answers, {:class=>'add-request'}, '#box-request', "#{@survey.id}"%>
   </div>
 </div>
-
 <script>
-  $(function(){
-    var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-    $("#box-request-<%=@survey.id%>").find(".request-field").each(function(index, value){
-      $(value).find('#request-num').html(alphabet[index]+') ');
-    });
-  });
+$(function(){
+var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+$("#box-request-<%=@survey.id%>").find(".request-field").each(function(index, value){
+$(value).find('#request-num').html(alphabet[index]+') ');
+});
+});
 </script>
