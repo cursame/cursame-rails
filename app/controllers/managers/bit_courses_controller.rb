@@ -1,10 +1,7 @@
 class Managers::BitCoursesController < Managers::BaseController
   def index
-    unless bit_courses.nil?
-      @bit_courses = bit_courses
-    else
-      redirect_to managers_courses_path, flash: { error: 'Ocurrio un error, no se pudo acceder a los grupos de Bit.'}
-    end
+    @bit_courses = bit_courses
+    redirect_to managers_courses_path, flash: { error: 'Ocurrio un error, no se pudo acceder a los grupos de Bit.'} if @bit_courses.nil?
   end
 
   def show
@@ -44,9 +41,34 @@ class Managers::BitCoursesController < Managers::BaseController
 
   private
 
+  def build_uri_groups
+    URI::HTTP.build({
+      host: Settings.bit.host,
+      port: Settings.bit.port,
+      path: Settings.bit.path.groups
+    })
+  end
+
+  def build_uri_group_teachers
+    URI::HTTP.build({
+      host: Settings.bit.host,
+      port: Settings.bit.port,
+      path: Settings.bit.path.group_teachers
+    })
+  end
+
+  def build_uri_group_students
+    URI::HTTP.build({
+      host: Settings.bit.host,
+      port: Settings.bit.port,
+      path: Settings.bit.path.group_students
+    })
+  end
+
   def bit_courses
+    uri = build_uri_groups
     begin
-      response = HTTParty.get('http://api.academic.mx:80/v1/grupos', headers: { "Authorization" => BIT_API_KEY}, timeout: 180)
+      response = HTTParty.get(uri, headers: { "Authorization" => BIT_API_KEY}, timeout: 180)
       courses = response.code == 200 ? response : nil
     rescue Exception => e
       puts e.message
@@ -54,9 +76,9 @@ class Managers::BitCoursesController < Managers::BaseController
   end
 
   def bit_students(folio)
-    url = 'http://api.academic.mx:80/v1/alumnos/' + folio
+    uri = build_uri_group_students + folio
     begin
-      response = HTTParty.get(url, headers: {"Authorization" => BIT_API_KEY}, timeout: 180)
+      response = HTTParty.get(uri, headers: {"Authorization" => BIT_API_KEY}, timeout: 180)
       students = response.code == 200 ? response : nil
     rescue Exception => e
       puts e.message
@@ -64,9 +86,9 @@ class Managers::BitCoursesController < Managers::BaseController
   end
 
   def bit_teachers(folio)
-    url = 'http://api.academic.mx:80/v1/profesores/' + folio
+    uri = build_uri_group_teachers + folio
     begin
-      response = HTTParty.get(url, headers: {"Authorization" => BIT_API_KEY}, timeout: 180)
+      response = HTTParty.get(uri, headers: {"Authorization" => BIT_API_KEY}, timeout: 180)
       teachers = response.code == 200 ? response : nil
     rescue Exception => e
       puts e.message
@@ -74,9 +96,9 @@ class Managers::BitCoursesController < Managers::BaseController
   end
 
   def link_course_to_group(id, folio)
-    url = "http://api.academic.mx:80/v1/grupos"
+    uri = build_uri_groups
     begin
-      response = HTTParty.post(url, headers: { "Authorization" => BIT_API_KEY}, body: {"grupos" => [{'grupo' => folio, 'idExterno' => id}]}, timeout: 180)
+      response = HTTParty.post(uri, headers: { "Authorization" => BIT_API_KEY}, body: {"grupos" => [{'grupo' => folio, 'idExterno' => id}]}, timeout: 180)
       success = response.code == 200
     rescue Exception => e
       puts e.message
