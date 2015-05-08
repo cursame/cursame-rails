@@ -67,6 +67,7 @@ group :development do
   gem 'rails_best_practices'
   gem 'unicorn'
   gem 'sqlite3'
+  gem 'rubocop'
 end
 
 group :test do
