@@ -1,7 +1,7 @@
 class Managers::BitCoursesController < Managers::BaseController
   def index
     @bit_courses = bit_courses
-    redirect_to managers_courses_path, flash: { error: 'Ocurrio un error, no se pudo acceder a los grupos de Bit.'} if @bit_courses.nil?
+    redirect_to managers_courses_path, flash: { error: t('.managers.bit_messages.error_getting_groups')} if @bit_courses.nil?
   end
 
   def show
@@ -9,7 +9,7 @@ class Managers::BitCoursesController < Managers::BaseController
     @course = bit_course(folio)
     @students = bit_students(folio)
     @teachers = bit_teachers(folio)
-    redirect_to index_managers_bit_courses_path, flash: { error: 'Ocurrio un error, no se pudo acceder a el grupo de Bit'} if @course.nil? or @students.nil? or @teachers.nil?
+    redirect_to index_managers_bit_courses_path, flash: { error: t('.managers.bit_messages.error_getting_group')} if @course.nil? or @students.nil? or @teachers.nil?
   end
   
   def import
@@ -26,16 +26,16 @@ class Managers::BitCoursesController < Managers::BaseController
       if @course_cursame.save
         success_link = link_course_to_group(@course_cursame.id, folio)
         if success_link
-          the_flash = { success: 'Grupo importado correctamente, Se ha creado el curso.' }
+          the_flash = { success: t('.managers.bit_messages.success_importing_group')}
         else
-          the_flash = { error: 'Ocurrio un error, no se pudo enlazar el curso con Bit.'}
+          the_flash = { error: t('.managers.bit_messages.error_linking_course')}
           @course_cursame.destroy
         end
       else
-        the_flash = { error: 'Ocurrio un error al crear el curso.' }
+        the_flash = { error: t('.managers.bit_messages.error_creating_course') }
       end
     else
-      the_flash = { error: 'Ocurrio un error al importar los datos del curso'}
+      the_flash = { error: t('.managers.bit_messages.error_importing_group')}
     end
     redirect_to managers_courses_path, flash: the_flash
   end
