@@ -9,6 +9,7 @@ class Managers::BitCoursesController < Managers::BaseController
     @course = bit_course(folio)
     @students = bit_students(folio)
     @teachers = bit_teachers(folio)
+    redirect_to index_managers_bit_courses_path, flash: { error: 'Ocurrio un error, no se pudo acceder a el grupo de Bit'} if @course.nil? or @students.nil? or @teachers.nil?
   end
   
   def import
@@ -74,8 +75,8 @@ class Managers::BitCoursesController < Managers::BaseController
     begin
       response = HTTParty.get(uri, headers: { "Authorization" => authorization}, timeout: 180)
       courses = response.code == 200 ? response : nil
-    rescue Exception => e
-      puts e.message
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error getting groups of bit: { network_id: #{current_network.id}, network_name: #{current_network.name} }"
     end
   end
 
@@ -84,8 +85,8 @@ class Managers::BitCoursesController < Managers::BaseController
     begin
       response = HTTParty.get(uri, headers: {"Authorization" => authorization}, timeout: 180)
       students = response.code == 200 ? response : nil
-    rescue Exception => e
-      puts e.message
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error getting students of bit: { network_id: #{current_network.id}, network_name: #{current_network.name} }"
     end
   end
 
@@ -94,8 +95,8 @@ class Managers::BitCoursesController < Managers::BaseController
     begin
       response = HTTParty.get(uri, headers: {"Authorization" => authorization}, timeout: 180)
       teachers = response.code == 200 ? response : nil
-    rescue Exception => e
-      puts e.message
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error getting teachers of bit: { network_id: #{current_network.id}, network_name: #{current_network.name} }"
     end
   end
 
@@ -104,8 +105,8 @@ class Managers::BitCoursesController < Managers::BaseController
     begin
       response = HTTParty.post(uri, headers: { "Authorization" => authorization}, body: {"grupos" => [{'grupo' => folio, 'idExterno' => id}]}, timeout: 180)
       success = response.code == 200
-    rescue Exception => e
-      puts e.message
+    rescue
+      puts "\e[1;31m[ERROR]\e[0m error linking cursame course to group of bit: { network_id: #{current_network.id}, network_name: #{current_network.name}, course_id: #{id}, group_folio: #{folio} }"
       false
     end
   end
