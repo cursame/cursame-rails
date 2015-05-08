@@ -1,36 +1,29 @@
 development:
-    adapter: sqlite3
-    database: db/development.sqlite3
-    pool: 5
-    timeout: 5000
+  adapter: postgresql
+  database: cursame_development
+  encoding: utf8
+  host: localhost
+  pool: 5
+  timeout: 5000
 
+<<<<<<< HEAD
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+=======
+>>>>>>> Changing database settings
 test:
-    adapter: sqlite3
-    encoding: utf8
-    database: db/test.sqlite3
-    pool: 1
-    timeout: 7000
-    username: 
-    password:
-
-staging:
-    adapter: postgresql
-    host: 10.2.54.48
-    database: cursame-staging
-    username: cursame
-    password: r8o54q58
-    encoding: unicode
-    timeout: 7000
-    pool: 5
+  adapter: postgresql
+  database: cursame_test
+  encoding: utf8
+  pool: 5
+  timeout: 5000
 
 production:
-    adapter: postgresql
-    encoding: utf8
-    database: cursame_production
-    pool: 10
-    username: cursamedba
-    password: d3ow908pq
-    host: cursame-db.cp0a8vgyht2r.us-east-1.rds.amazonaws.com
+  adapter: postgresql
+  encoding: utf8
+  pool: 10
+  database: <%= ENV['CURSAME_DATABASE_NAME'] %>
+  username: <%= ENV['CURSAME_DATABASE_USERNAME'] %>
+  password: <%= ENV['CURSAME_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CURSAME_DATABASE_HOST'] %>
