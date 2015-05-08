@@ -3,7 +3,7 @@ class CreateBitSettings < ActiveRecord::Migration
     create_table :bit_settings do |t|
       t.integer :network_id,            null: false
       t.string :authorization_keyword,  null: false
-      t.string :api_key,                null: false
+      t.text :api_key,                null: false
 
       t.timestamps
     end

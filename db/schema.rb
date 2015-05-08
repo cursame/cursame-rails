@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20150515152820) do
   create_table "bit_settings", :force => true do |t|
     t.integer  "network_id",            :null => false
     t.string   "authorization_keyword", :null => false
-    t.string   "api_key",               :null => false
+    t.text     "api_key",               :null => false
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end

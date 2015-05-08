@@ -65,10 +65,14 @@ class Managers::BitCoursesController < Managers::BaseController
     })
   end
 
+  def authorization
+    current_network.bit_setting.authorization_keyword + ' ' + current_network.bit_setting.api_key
+  end
+
   def bit_courses
     uri = build_uri_groups
     begin
-      response = HTTParty.get(uri, headers: { "Authorization" => BIT_API_KEY}, timeout: 180)
+      response = HTTParty.get(uri, headers: { "Authorization" => authorization}, timeout: 180)
       courses = response.code == 200 ? response : nil
     rescue Exception => e
       puts e.message
@@ -78,7 +82,7 @@ class Managers::BitCoursesController < Managers::BaseController
   def bit_students(folio)
     uri = build_uri_group_students + folio
     begin
-      response = HTTParty.get(uri, headers: {"Authorization" => BIT_API_KEY}, timeout: 180)
+      response = HTTParty.get(uri, headers: {"Authorization" => authorization}, timeout: 180)
       students = response.code == 200 ? response : nil
     rescue Exception => e
       puts e.message
@@ -88,7 +92,7 @@ class Managers::BitCoursesController < Managers::BaseController
   def bit_teachers(folio)
     uri = build_uri_group_teachers + folio
     begin
-      response = HTTParty.get(uri, headers: {"Authorization" => BIT_API_KEY}, timeout: 180)
+      response = HTTParty.get(uri, headers: {"Authorization" => authorization}, timeout: 180)
       teachers = response.code == 200 ? response : nil
     rescue Exception => e
       puts e.message
@@ -98,7 +102,7 @@ class Managers::BitCoursesController < Managers::BaseController
   def link_course_to_group(id, folio)
     uri = build_uri_groups
     begin
-      response = HTTParty.post(uri, headers: { "Authorization" => BIT_API_KEY}, body: {"grupos" => [{'grupo' => folio, 'idExterno' => id}]}, timeout: 180)
+      response = HTTParty.post(uri, headers: { "Authorization" => authorization}, body: {"grupos" => [{'grupo' => folio, 'idExterno' => id}]}, timeout: 180)
       success = response.code == 200
     rescue Exception => e
       puts e.message
