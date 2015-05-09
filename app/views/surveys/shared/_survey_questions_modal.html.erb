@@ -1,6 +1,6 @@
 <%= form_tag "/surveys/survey_reply", :remote => true, :id => "survey-form-reply" do %>
   <div class="overlay-content">
-  <% if survey.timer != 0 %>
+  <% if survey.timer != 0 && current_user.student? %>
   <div id="surveyclock" class="clock" data-expire="<%= (Time.now + survey.timer.minutes).strftime("%H:%M:%S") %>"></div>
   <%end%>
   <h3><%= survey.name %></h3>
