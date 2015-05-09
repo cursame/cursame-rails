@@ -1,22 +1,24 @@
 class Managers::BitCoursesController < Managers::BaseController
+
   def index
     @bit_courses = bit_courses
-    redirect_to managers_courses_path, flash: { error: t('.managers.bit_messages.error_getting_groups') } if @bit_courses.nil?
+    info_flash = { error: t('.managers.bit_messages.error_getting_groups') }
+    redirect_to managers_courses_path, flash: info_flash if @bit_courses.nil?
   end
 
   def show
-    folio = params[:folio]
-    @course = bit_course(folio)
-    @students = bit_students(folio)
-    @teachers = bit_teachers(folio)
-    redirect_to index_managers_bit_courses_path, flash: { error: t('.managers.bit_messages.error_getting_group') } if @course.nil? || @students.nil? || @teachers.nil?
+    @course = bit_course
+    @students = bit_students
+    @teachers = bit_teachers
+    error = @course.nil? || @students.nil? || @teachers.nil?
+    info_flash = { error: t('.managers.bit_messages.error_getting_group') }
+    redirect_to index_managers_bit_courses_path, flash: info_flash if error
   end
   
   def import
-    folio = params[:folio]
-    group_students = bit_students(folio)
-    group_teachers = bit_teachers(folio)
-    group = bit_course(folio)
+    group_students = bit_students
+    group_teachers = bit_teachers
+    group = bit_course
 
     unless group_teachers.nil? || group_students.nil? || group.nil?
       @course_cursame = Course.new(title: group['asignatura'], silabus: group['nombreCompletoGrupo'], init_date: group['fechaInicialCiclo'].to_datetime, public_status: 'Private', network_id: current_network.id)
@@ -24,7 +26,7 @@ class Managers::BitCoursesController < Managers::BaseController
       cursame_teachers = cursame_teachers(group_teachers)
       @course_cursame.members_in_courses = @course_cursame.add_teachers(cursame_teachers) + @course_cursame.add_students(cursame_students)
       if @course_cursame.save
-        success_link = link_course_to_group(@course_cursame.id, folio)
+        success_link = link_course_to_group(@course_cursame.id, params[:folio])
         if success_link
           the_flash = { success: t('.managers.bit_messages.success_importing_group') }
         else
@@ -43,31 +45,33 @@ class Managers::BitCoursesController < Managers::BaseController
   private
 
   def build_uri_groups
-    URI::HTTP.build({
+    URI::HTTP.build(
       host: Settings.bit.host,
       port: Settings.bit.port,
       path: Settings.bit.path.groups
-    })
+    )
   end
 
   def build_uri_group_teachers
-    URI::HTTP.build({
+    URI::HTTP.build(
       host: Settings.bit.host,
       port: Settings.bit.port,
       path: Settings.bit.path.group_teachers
-    })
+    )
   end
 
   def build_uri_group_students
-    URI::HTTP.build({
+    URI::HTTP.build(
       host: Settings.bit.host,
       port: Settings.bit.port,
       path: Settings.bit.path.group_students
-    })
+    )
   end
 
   def authorization
-    current_network.bit_setting.authorization_keyword + ' ' + current_network.bit_setting.api_key
+    authorization_keyword = current_network.bit_setting.authorization_keyword
+    api_key = current_network.bit_setting.api_key
+    authorization_keyword + ' ' + api_key
   end
 
   def bit_courses
@@ -80,8 +84,8 @@ class Managers::BitCoursesController < Managers::BaseController
     end
   end
 
-  def bit_students(folio)
-    uri = build_uri_group_students + folio
+  def bit_students
+    uri = build_uri_group_students + params[:folio]
     begin
       response = HTTParty.get(uri, headers: { 'Authorization' => authorization }, timeout: 180)
       students = response.code == 200 ? response : nil
@@ -90,8 +94,8 @@ class Managers::BitCoursesController < Managers::BaseController
     end
   end
 
-  def bit_teachers(folio)
-    uri = build_uri_group_teachers + folio
+  def bit_teachers
+    uri = build_uri_group_teachers + params[:folio]
     begin
       response = HTTParty.get(uri, headers: { 'Authorization' => authorization }, timeout: 180)
       teachers = response.code == 200 ? response : nil
@@ -111,7 +115,7 @@ class Managers::BitCoursesController < Managers::BaseController
     end
   end
 
-  def bit_course(folio)
+  def bit_course
     if bit_courses.nil?
       bit_courses
     else
