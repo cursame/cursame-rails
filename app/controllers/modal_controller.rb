@@ -71,15 +71,14 @@ class ModalController < ApplicationController
 
 protected
  
-  ########## this function call calculate the attem and the times (extract function) ######## 
   def time_trying_validate(survey)
-   time_trying_user_count = survey.time_trying_surveys.where(user_id: current_user.id).count
+    time_trying_user_count = survey.time_trying_surveys.where(user_id: current_user.id).count
     if current_user.student?
-        if time_trying_user_count  == 0
-         count_tryings = time_trying_user_count + 1
-         @time_trying_survey = TimeTryingSurvey.create(survey_id: survey.id, user_id: current_user.id, open_at: Time.now)
-        end
-      else
+      if time_trying_user_count  == 0
+        count_tryings = time_trying_user_count + 1
+        @time_trying_survey = TimeTryingSurvey.create(survey_id: survey.id, user_id: current_user.id, open_at: Time.now)
+      end
+    else
       count_tryings = time_trying_user_count + 1
     end
     count_tryings

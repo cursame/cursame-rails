@@ -29,7 +29,7 @@
         %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
       %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format survey.end_date}".html_safe
       - unless card_type == :standalone
-        = link_to t('.quest'), survey_modal_path(survey), remote: true, class: "btn btn-small btn-transparent activable", id: "survey_btn_#{survey.id}"
+        = link_to t('.quest'), survey_modal_path(survey), remote: true, class: "btn btn-small btn-transparent activable", id: "survey_btn_#{survey.id}", :confirm => survey_notice(survey.timer)
         %span.post-box-meta
           - if survey.timer == 0
             = "#{t('.no_limit_time')}"

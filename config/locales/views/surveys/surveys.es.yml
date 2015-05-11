@@ -6,6 +6,8 @@ es:
         edit: Editar Cuestionario
         solve_time: Minutos
         no_limit_time: Sin límite de tiempo
+        notice_helper: Este cuestionario te dará 
+        notice_helper2: minutos para responderlo
       survey_modal:
         quest: Cuestionario en el curso
         response: Responder antes del
