@@ -91,6 +91,7 @@ Cursame30Lb::Application.routes.draw do
       collection do
         get 'import'
         post 'import_receiver'
+        get 'change_password'
       end
     end
 
