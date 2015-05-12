@@ -25,9 +25,6 @@ es:
     proc_file: "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación"
     file: "Tipo de archivo no soportado"
     bit_messages:
-        error_getting_groups: 'Ocurrio un error, no se pudo acceder a los grupos de Bit.'
-        error_getting_group: 'Ocurrio un error, no se pudo acceder a el grupo de Bit'
         success_importing_group: 'Grupo importado correctamente, Se ha creado el curso.'
-        error_linking_course: 'Ocurrio un error, no se pudo enlazar el curso con Bit.'
         error_creating_course: 'Ocurrio un error al crear el curso.'
-        error_importing_group: 'Ocurrio un error al importar los datos del grupo de bit'
+        error_connection: "Ocurrio un error, no se pudo acceder a la información de bit"
