@@ -1,48 +1,49 @@
 class Managers::BitCoursesController < Managers::BaseController
+  rescue_from Timeout::Error, with: :error_connection
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+  rescue_from ActiveRecord::RecordInvalid, with: :error_creating_course
 
   def index
     @bit_courses = bit_courses
-    info_flash = { error: t('.managers.bit_messages.error_getting_groups') }
-    redirect_to managers_courses_path, flash: info_flash if @bit_courses.nil?
   end
 
   def show
     @course = bit_course
     @students = bit_students
     @teachers = bit_teachers
-    error = @course.nil? || @students.nil? || @teachers.nil?
-    info_flash = { error: t('.managers.bit_messages.error_getting_group') }
-    redirect_to index_managers_bit_courses_path, flash: info_flash if error
   end
-  
-  def import
-    group_students = bit_students
-    group_teachers = bit_teachers
-    group = bit_course
 
-    unless group_teachers.nil? || group_students.nil? || group.nil?
-      @course_cursame = Course.new(title: group['asignatura'], silabus: group['nombreCompletoGrupo'], init_date: group['fechaInicialCiclo'].to_datetime, public_status: 'Private', network_id: current_network.id)
-      cursame_students = cursame_students(group_students)
-      cursame_teachers = cursame_teachers(group_teachers)
-      @course_cursame.members_in_courses = @course_cursame.add_teachers(cursame_teachers) + @course_cursame.add_students(cursame_students)
-      if @course_cursame.save
-        success_link = link_course_to_group(@course_cursame.id, params[:folio])
-        if success_link
-          the_flash = { success: t('.managers.bit_messages.success_importing_group') }
-        else
-          the_flash = { error: t('.managers.bit_messages.error_linking_course') }
-          @course_cursame.destroy
-        end
-      else
-        the_flash = { error: t('.managers.bit_messages.error_creating_course') }
-      end
-    else
-      the_flash = { error: t('.managers.bit_messages.error_importing_group') }
-    end
-    redirect_to managers_courses_path, flash: the_flash
+  def import
+    group = bit_course
+    @course = create_course(group)
+    students = cursame_students(bit_students)
+    teachers = cursame_teachers(bit_teachers)
+    @course.members_in_courses =
+      @course.add_teachers(teachers) + @course.add_students(students)
+    link_course_to_group(@course.id, params[:folio]) if @course.save!
+    inf_flash = { success: t('.managers.bit_messages.success_importing_group') }
+    redirect_to index_managers_bit_courses_path, flash: inf_flash
   end
 
   private
+
+  def error_connection
+    info_flash = { error: t('.managers.bit_messages.error_connection') }
+    redirect_to :back, flash: info_flash
+  end
+
+  def error_creating_course
+    info_flash = { error: t('.managers.bit_messages.error_creating_course') }
+    redirect_to :back, flash: info_flash
+  end
+
+  def raise_error_response(uri, response, message)
+    code = response.code
+    mes = response.message
+    info = "{ uri: #{uri}, message: #{mes}, code: #{code}"
+    puts "\e[1;31m[ERROR]\e[0m" + message + info
+    fail Errors::ErrorResponseAppBit
+  end
 
   def build_uri_groups
     URI::HTTP.build(
@@ -76,51 +77,57 @@ class Managers::BitCoursesController < Managers::BaseController
 
   def bit_courses
     uri = build_uri_groups
-    begin
-      response = HTTParty.get(uri, headers: { 'Authorization' => authorization }, timeout: 180)
-      courses = response.code == 200 ? response : nil
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error getting groups of bit: { network_id: #{current_network.id}, network_name: #{current_network.name} }"
-    end
+    response = HTTParty.get(
+      uri,
+      headers: { 'Authorization' => authorization },
+      timeout: 180)
+    mess = 'Error getting groups from bit: '
+    response.code == 200 ? response : raise_error_response(uri, response, mess)
   end
 
   def bit_students
     uri = build_uri_group_students + params[:folio]
-    begin
-      response = HTTParty.get(uri, headers: { 'Authorization' => authorization }, timeout: 180)
-      students = response.code == 200 ? response : nil
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error getting students of bit: { network_id: #{current_network.id}, network_name: #{current_network.name} }"
-    end
+    response = HTTParty.get(
+      uri,
+      headers: { 'Authorization' => authorization },
+      timeout: 180)
+    mess = 'Error getting group students from bit: '
+    response.code == 200 ? response : raise_error_response(uri, response, mess)
   end
 
   def bit_teachers
     uri = build_uri_group_teachers + params[:folio]
-    begin
-      response = HTTParty.get(uri, headers: { 'Authorization' => authorization }, timeout: 180)
-      teachers = response.code == 200 ? response : nil
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error getting teachers of bit: { network_id: #{current_network.id}, network_name: #{current_network.name} }"
-    end
+    response = HTTParty.get(
+      uri,
+      headers: { 'Authorization' => authorization },
+      timeout: 180)
+    mess = 'Error getting group teachers from bit: '
+    response.code == 200 ? response : raise_error_response(uri, response, mess)
   end
 
   def link_course_to_group(id, folio)
     uri = build_uri_groups
-    begin
-      response = HTTParty.post(uri, headers: { 'Authorization' => authorization }, body: { 'grupos' => [{ 'grupo' => folio, 'idExterno' => id }] }, timeout: 180)
-      success = response.code == 200
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error linking cursame course to group of bit: { network_id: #{current_network.id}, network_name: #{current_network.name}, course_id: #{id}, group_folio: #{folio} }"
-      false
-    end
+    response = HTTParty.post(
+      uri,
+      headers: { 'Authorization' => authorization },
+      body: { 'grupos' => [{ 'grupo' => folio, 'idExterno' => id }] },
+      timeout: 180)
+    mess = 'Error linking cursame course with bit group: '
+    response.code == 200 ? response : raise_error_response(uri, response, mess)
+  end
+
+  def create_course(group)
+    Course.new(
+      title: group['asignatura'],
+      silabus: group['nombreCompletoGrupo'],
+      init_date: group['fechaInicialCiclo'].to_datetime,
+      public_status: 'Private',
+      network_id: current_network.id
+    )
   end
 
   def bit_course
-    if bit_courses.nil?
-      bit_courses
-    else
-      bit_courses.select { |course| course['folio'] == params[:folio] }.first
-    end
+    bit_courses.select { |course| course['folio'] == params[:folio] }.first
   end
 
   def cursame_students(bit_students)
