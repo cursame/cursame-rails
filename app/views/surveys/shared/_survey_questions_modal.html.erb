@@ -1,14 +1,16 @@
 <%= form_tag "/surveys/survey_reply", :remote => true, :id => "survey-form-reply" do %>
   <div class="overlay-content">
-    <h3><%= survey.name %></h3>
-    
+  <% if survey.timer != 0 && current_user.student? %>
+  <div id="surveyclock" class="clock" data-expire="<%= (Time.now + survey.timer.minutes).strftime("%H:%M:%S") %>"></div>
+  <%end%>
+  <h3><%= survey.name %></h3>
     <div class="survey-wrap">
       <ol>
         <% for question in survey.questions %>
           <li>
             <div class="survey-question">
               <p><%= question.content%></p>
-              
+
               <div class="survey-answers">
                 <ul>
                   <% for answer in question.answers %>
@@ -28,17 +30,16 @@
         <% end %>
       </ol>
     </div>
-
     <% unless survey.contents.empty? && survey.assets.empty? %>
       <br><br>
-      <div class="publication-assets"> 
+      <div class="publication-assets">
         <%= render :partial => "content/insertions_to_contents", :locals => { :type => survey, :cl => "survey"}%>
         <% if survey.assets.count > 0 %>
           <div class="asset-box upload-label">
             <% survey.assets.each do |files|%>
               <div class="file-mini-upload publication-asset">
                 <% @string = files.filename.file.filename %>
-                <%= link_to "#{files.filename}" , :target => '_blank' do %> 
+                <%= link_to "#{files.filename}" , :target => '_blank' do %>
                   <%= icon('upload-asset-blue') %>
                   <%= truncate( @string, :omission => "...", :length => 72) %>
                 <% end %>
@@ -48,13 +49,11 @@
         <% end %>
       </div>
     <% end %>
-
   </div>
-
   <% unless survey.owner?(current_role, current_user) %>
     <div class="overlay-footer">
       <div class="fl">
-        <span class="btn btn-medium btn-primary input-btn">
+        <span id="survey-submit" class="btn btn-medium btn-primary input-btn">
           <%= submit_tag t('.quest'), :class=>"btn btn-medium btn-primary" %>
         </span>
         <%= hidden_field_tag 'survey_id', survey.id%>
@@ -66,12 +65,15 @@
   <% end %>
 <% end %>
 <script>
-  $(function(){ 
+  $(function(){
     $('#survey-form-reply').validate({
       ignore: "",
       errorPlacement: function(error, element) {
         $(element).closest('.survey-answers').append(error);
       }
     });
+    if ($('#surveyclock').length){
+      startTimeSurvey('surveyclock');
+    }
   });
 </script>

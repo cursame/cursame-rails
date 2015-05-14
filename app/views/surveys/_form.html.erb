@@ -1,164 +1,159 @@
 <%
-  random_id = "#{random}"
-  
-  #inicializamos el cuestionario
-  if !active_edit
-    @survey = Survey.new
-    1.times do
-      questions = @survey.questions.build
-      1.times { questions.answers.build}
-    end
-  end
+random_id = "#{random}"
+#inicializamos el cuestionario
+if !active_edit
+@survey = Survey.new
+1.times do
+questions = @survey.questions.build
+1.times { questions.answers.build}
+end
+end
 %>
-
 <%= form_for @survey, remote: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
-  <%= hidden_field_tag 'in_form', in_form%>
-  <div class="new-publication-form-content">
-    
-    <div class="form-group">
-      <div class="form-group-label">
-        <%= f.label :name, t('.title') %>
+<%= hidden_field_tag 'in_form', in_form%>
+<div class="new-publication-form-content">
+
+  <div class="form-group">
+    <div class="form-group-label">
+      <%= f.label :name, t('.title') %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= f.text_field :name, placeholder: t('.example') + ": " + t('.text1'), required: "required" %>
       </div>
-      <div class="form-group-main">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-group-label">
+      <%= f.label "", t('.dates') %>
+    </div>
+    <div class="form-group-main">
+      <div class="f-col f-col-5">
         <div class="form-unit">
-          <%= f.text_field :name, placeholder: t('.example') + ": " + t('.text1'), required: "required" %>
+          <%= f.text_field :publish_date, placeholder: t('.publish_date'), id: 'publish_date_'+random_id, class: "date-input survey survey_publish_date", value: f.object.publish_date, required: "required" %>
+        </div>
+      </div>
+      <div class="f-col f-col-5">
+        <div class="form-unit">
+          <%= f.text_field :end_date, placeholder: t('.deliver_date'), id: 'end_date_'+random_id, class: "date-input survey survey_end_date", value: f.object.end_date, required: "required" %>
         </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <div class="form-group-label">
-        <%= f.label "", t('.dates') %>
-      </div>
-      <div class="form-group-main">
-        <div class="f-col f-col-5">
-          <div class="form-unit">
-            <%= f.text_field :publish_date, placeholder: t('.publish_date'), id: 'publish_date_'+random_id, class: "date-input survey survey_publish_date", value: f.object.publish_date, required: "required" %>
-          </div>      
-        </div>
-        <div class="f-col f-col-5">
-          <div class="form-unit">
-            <%= f.text_field :end_date, placeholder: t('.deliver_date'), id: 'end_date_'+random_id, class: "date-input survey survey_end_date", value: f.object.end_date, required: "required" %>
-          </div>
-        </div>
-      </div>
+  </div>
+  <div class="form-group">
+    <div class="form-group-label">
+      <%= f.label "", t('.quest') %>
     </div>
-
-    <div class="form-group">
-      <div class="form-group-label">
-        <%= f.label "", t('.quest') %>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-          <div class="new-survey-questions">
-            <div class="box-question">
-              <div id="box-question-<%=@survey.id%>"  class="box-question">
-                <%= f.fields_for :questions do |builder| %>
-                  <%= render "/surveys/question_fields", f: builder %>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="add-question">
-              <div class="question-field">
-                <%= link_to_add_fields t('.add_quest'), f, :questions, {class: 'btn btn-secondary'}, '#box-question', "#{@survey.id}" %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="form-group-label label-no-p">
-        <%= f.label "", t('.support') %>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-          <ul class="list-buttons left">
-            <li>
-              <a class="btn btn-small btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
-            </li>
-            <li>
-              <% unless active_edit %>
-                <%= render partial: 'assets/upload_asset_button', locals: { from: 'survey-create-form' }%>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <div class="new-survey-questions">
+          <div class="box-question">
+            <div id="box-question-<%=@survey.id%>"  class="box-question">
+              <%= f.fields_for :questions do |builder| %>
+              <%= render "/surveys/question_fields", f: builder %>
               <% end %>
-            </li>
-          </ul>
-          <%= render partial: 'assets/support_material_container', locals: { from: "#{@survey.id.nil? ? '' : @survey.id}"+'survey-create-form-assets', object: @survey } %>
+            </div>
+          </div>
+          <div class="add-question">
+            <div class="question-field">
+              <%= link_to_add_fields t('.add_quest'), f, :questions, {class: 'btn btn-secondary'}, '#box-question', "#{@survey.id}" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="new-publication-footer">
-
-    <ul class="list-buttons right <%= 'fr' unless active_edit %>">
-      <li>
-        <% if active_edit %>
-          <%= link_to t('.cancel'), "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
-        <% else %>
-          <%= link_to t('.cancel'), "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
-        <% end %>
-      </li>
-      
-      <% unless active_edit %> 
-      <li>
-        <% if in_form != 'course' %>
-          <%= render partial: "shared/dropdown", locals: { hasPublic: false, hasCourses: true, defaultText: t('.courses'), default_icon: 'course-new-publication', in_type: in_type } %>
-        <%else%>
-
-          <%= hidden_field_tag "commentable_type", 'Course'%>
-          <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
-
-        <%end%>
-      </li>
-      <% end %>
-      
-      <li>
-
-        <span class="btn btn-primary input-btn activable">
-          <%= f.submit "Crear Cuestionario", id: 'comment-post-form', class: "activable" unless active_edit %>
-          <%= f.submit "Guardar Cuestionario", id: 'comment-post-form', class: "activable", confirm: "Estás seguro de editar este cuestionario?\nLas entregas de tus alumnos serán eliminadas." if active_edit %>
-        </span>
-      </li>
-    </ul>
+  <div class="form-group">
+    <div class="form-group-label">
+      <%= f.label "", t('.timer') %>
+    </div>
+    <div class="form-group-main">
+      <div class="f-col f-col-5">
+        <div class="form-unit">
+          <%= f.select :timer, options_for_select([[t('.non_mins'), 0],["180 min", 180],["120 min", 120],["80 min", 80], ["60 min", 60], ["50 min", 50], ["40 min", 40], ["30 min", 30], ["20 min", 20], ["10 min", 10], ["5 min", 5], ["1 min", 1]], selected: [t('.non_mins'), 0]) %>
+        </div>
+      </div>
+    </div>
   </div>
-    
-<% end %>
+  <div class="form-group">
+    <div class="form-group-label label-no-p">
+      <%= f.label "", t('.support') %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <ul class="list-buttons left">
+          <li>
+            <a class="btn btn-small btn-secondary add-dropbox-content-js"><%= icon('dropbox-asset') %> Dropbox</a>
+          </li>
+          <li>
+            <% unless active_edit %>
+            <%= render partial: 'assets/upload_asset_button', locals: { from: 'survey-create-form' }%>
+            <% end %>
+          </li>
+        </ul>
+        <%= render partial: 'assets/support_material_container', locals: { from: "#{@survey.id.nil? ? '' : @survey.id}"+'survey-create-form-assets', object: @survey } %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="new-publication-footer">
+  <ul class="list-buttons right <%= 'fr' unless active_edit %>">
+    <li>
+      <% if active_edit %>
+      <%= link_to t('.cancel'), "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
+      <% else %>
+      <%= link_to t('.cancel'), "", class: 'input-button cancel-post-form_tab btn btn-secondary', id: 'cancel-post-form_tab' %>
+      <% end %>
+    </li>
 
+    <% unless active_edit %>
+    <li>
+      <% if in_form != 'course' %>
+      <%= render partial: "shared/dropdown", locals: { hasPublic: false, hasCourses: true, defaultText: t('.courses'), default_icon: 'course-new-publication', in_type: in_type } %>
+      <%else%>
+      <%= hidden_field_tag "commentable_type", 'Course'%>
+      <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
+      <%end%>
+    </li>
+    <% end %>
+
+    <li>
+      <span class="btn btn-primary input-btn activable">
+        <%= f.submit "Crear Cuestionario", id: 'comment-post-form', class: "activable" unless active_edit %>
+        <%= f.submit "Guardar Cuestionario", id: 'comment-post-form', class: "activable", confirm: "Estás seguro de editar este cuestionario?\nLas entregas de tus alumnos serán eliminadas." if active_edit %>
+      </span>
+    </li>
+  </ul>
+</div>
+<% end %>
 <script type="text/javascript">
 $(function() {
-
-  var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-  $("#box-question-<%=@survey.id%>").find(".question-field").each(function(index, value){
-      $(value).find('#question-num').html(index+1+'. ');
-  });
-
-  $( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
-    inline: false,
-    minDate: 0,
-    hourMin: 0,
-    hourMax: 23,
-    controlType: 'select',
-    showOtherMonths: true,
-    dateFormat: 'dd/mm/yy',
-    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-    beforeShow: function(input, inst) {
-      var cal = inst.dpDiv;
-      var top  = $(this).offset().top + $(this).outerHeight();
-      var left = $(this).offset().left;
-      setTimeout(function() {
-        cal.css({
-            'top' : top,
-            'left': left
-        });
-      }, 10);
-    }
-  });
-
-  $('#<%= random_id %>').validate();
-
+var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+$("#box-question-<%=@survey.id%>").find(".question-field").each(function(index, value){
+$(value).find('#question-num').html(index+1+'. ');
+});
+$( "#publish_date_<%=random_id %>, #end_date_<%=random_id%>" ).datetimepicker({
+inline: false,
+minDate: 0,
+hourMin: 0,
+hourMax: 23,
+controlType: 'select',
+showOtherMonths: true,
+dateFormat: 'dd/mm/yy',
+monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+beforeShow: function(input, inst) {
+var cal = inst.dpDiv;
+var top  = $(this).offset().top + $(this).outerHeight();
+var left = $(this).offset().left;
+setTimeout(function() {
+cal.css({
+'top' : top,
+'left': left
+});
+}, 10);
+}
+});
+$('#<%= random_id %>').validate();
 });
 </script>

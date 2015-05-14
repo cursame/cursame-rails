@@ -88,3 +88,29 @@ select {
     @include text-size-x-small;
   }
 }
+
+.clock{
+  font-size: 20px;
+  padding: 1px;
+  color: #01DF74;
+  float:right;
+  width: 30%;
+  margin-top:-5px;
+  text-align: right;
+}
+.clock-end{
+  font-size: 20px;
+  padding: 1px;
+  color: #DF0101;
+  float:right;
+  width: 30%;
+  margin-top:-5px;
+  text-align: right;
+}
+.no_attemps{
+  font-size: 20px;
+  padding: 1px;
+  color: #DF0101;
+  text-align: center;
+  padding: 30px;
+}

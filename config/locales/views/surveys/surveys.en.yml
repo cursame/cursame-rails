@@ -4,11 +4,14 @@ en:
       survey_card:
         quest: See test
         edit: Edit test
+        solve_time: Minits
+        no_limit_time: You not have more time to answer
       survey_modal:
         quest: Course test
         response: Answer before
         calif: Grade
         feedback: Feedback
+        fail_attemps: You don´t have more attemps
       survey_questions_modal:
         quest: Send test
       surveys_course_header:
@@ -23,7 +26,7 @@ en:
         response: Answer
         past: Previous
       surveys_paginate_button:
-        load: Upload 
+        load: Upload
     answer_fields:
       response: Type answer
       correct: Correct
@@ -33,8 +36,10 @@ en:
       example: Example
       text1: Prime numbers
       dates: Dates
+      timer: Time
+      attempts: Attempts
       publish_date: Published on
-      deliver_date: Deadline 
+      deliver_date: Deadline
       quest: Questions
       add_quest: Add question
       support: Support material
@@ -42,6 +47,7 @@ en:
       courses: Courses
       save: Save test
       create: Create test
+      non_mins: No time
     question_fields:
       quest1: Add question
       add_answer: Add anwser
@@ -64,7 +70,7 @@ en:
       tomorrow: Tests to answer tomorrow
       more_days: Tests to answer in three days or more
       no_quest: You have no pending tests to answer for this course.
-      see: You may see past tests in the 
+      see: You may see past tests in the
       past: past tests section
     surveys_course_lapsed:
       quest: No past tests found.

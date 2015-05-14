@@ -6,23 +6,20 @@
       <%= link_to_remove_fields icon('x-close'), f, {:class=>'btn btn-small btn-secondary', :clear => 'both'}, '#box-question'  %>
     </div>
   </div>
-
   <div id="box-request-<%=@survey.id%>">
     <%= f.fields_for :answers do |builder| %>
-      <%= render '/surveys/answer_fields', :f => builder %>
+    <%= render '/surveys/answer_fields', :f => builder %>
     <% end %>
   </div>
-
   <div class="add-aswer">
     <%= link_to_add_fields t('.add_answer'), f, :answers, {:class=>'add-request'}, '#box-request', "#{@survey.id}"%>
   </div>
 </div>
-
 <script>
-  $(function(){
-    var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-    $("#box-request-<%=@survey.id%>").find(".request-field").each(function(index, value){
-      $(value).find('#request-num').html(alphabet[index]+') ');
-    });
-  });
+$(function(){
+var alphabet= new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+$("#box-request-<%=@survey.id%>").find(".request-field").each(function(index, value){
+$(value).find('#request-num').html(alphabet[index]+') ');
+});
+});
 </script>

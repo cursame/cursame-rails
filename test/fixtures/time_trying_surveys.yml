@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  survey_id: 1
+  open_at: 2015-04-29 15:33:46
+  send_at: 2015-04-29 15:33:46
+
+two:
+  user_id: 1
+  survey_id: 1
+  open_at: 2015-04-29 15:33:46
+  send_at: 2015-04-29 15:33:46
