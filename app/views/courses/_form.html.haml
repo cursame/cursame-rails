@@ -37,7 +37,8 @@
         .f-col.f-col-7
           .form-unit
             = f.text_field :init_date, placeholder: t('.init_date'), class: "date-picker", value: (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, required: "required", autocomplete: "off"
-
+    - if current_network.subdomain == "meems"
+      = render partial: 'courses/shared/cct_form', locals: { f: f }
     .form-group
       .form-group-label
         = f.label 'students-search', t('.students') + ":", for: 'students-search-input'

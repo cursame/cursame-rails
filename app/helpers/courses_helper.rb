@@ -8,7 +8,7 @@ module CoursesHelper
     end
     link_to_function(name, "add_course_evaluation_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
-	
+
 	def student_courses
 		student_subscribed_courses
 	end
@@ -16,4 +16,8 @@ module CoursesHelper
 	def teacher_courses
 		teacher_published_courses
 	end
+
+  def school_entitites
+    School.all.map { |s| [s.entity_name, s.entity_id ] }.uniq
+  end
 end
