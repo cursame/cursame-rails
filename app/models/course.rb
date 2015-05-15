@@ -23,6 +23,7 @@ class Course < ActiveRecord::Base
   has_many :files, class_name: 'LibraryFile', through: :library
 
   belongs_to :network
+  belongs_to :school
 
   validates_associated :network
 
@@ -34,7 +35,7 @@ class Course < ActiveRecord::Base
   attr_accessible :id, :title, :silabus, :init_date,
     :created_at, :updated_at, :public_status,
     :avatar, :coverphoto, :delivery_id,
-    :network_id, :active_status, :course_files
+    :network_id, :active_status, :course_files, :school_id
 
   attr_accessible :evaluation_criteria_attributes
 
@@ -308,7 +309,7 @@ class Course < ActiveRecord::Base
   end
 
   def cursame_criteria
-    !self.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }.blank?  
+    !self.evaluation_criteria.keep_if { |criterium| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium.name }.blank?
   end
 
   def cursame_percentage_old
