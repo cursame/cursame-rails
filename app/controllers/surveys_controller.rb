@@ -264,6 +264,22 @@ class SurveysController < ApplicationController
 
   end
 
+  def survey_add_attemp
+    @user_survey = UserSurvey.find_by_user_id_and_survey_id(params[:user], params[:survey])
+    @attemp = TimeTryingSurvey.find_by_user_id_and_survey_id(params[:user], params[:survey])
+    if @user_survey
+      @user_survey.destroy
+    end
+    if @attemp
+      @attemp.destroy
+    end
+    @uid = params[:user]
+
+    respond_to do |format|
+        format.js
+      end
+  end
+
   def destroy
     @survey = Survey.find_by_id(params[:id])
     @survey.destroy
