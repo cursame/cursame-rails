@@ -1,7 +1,7 @@
 class Managers::BitCoursesController < Managers::BaseController
   rescue_from Timeout::Error, with: :error_connection
   rescue_from Errors::ErrorResponseAppBit, with: :error_connection
-  rescue_from ActiveRecord::RecordInvalid, with: :error_create
+  rescue_from ActiveRecord::RecordInvalid, with: :error_save
 
   def index
     @bit_courses = bit_courses
@@ -33,16 +33,49 @@ class Managers::BitCoursesController < Managers::BaseController
     redirect_to :back, flash: info_flash
   end
 
-  def error_create
-    info_flash = { error: 'Error, no se pudo crear el objeto' }
-    redirect_to :back, flash: info_flash
+  def error_save(exception)
+    case exception.record.class.name
+    when 'User' then error_save_user(exception)
+    when 'Course' then error_save_course(exception)
+    else 'Error, no se pudo crear el objeto'
+    end
+  end
+
+  def error_save_user(exception)
+    info = "#{exception.class}: #{exception.message}: #{exception.record.email}"
+    Rails.logger.error "\e[1;31m[ERROR]\e[0m " + info
+    the_flash = 'No se pudo guardar el usuario: ' + "#{exception.record.name}"
+    redirect_to :back, flash: { error: the_flash }
+  end
+
+  def error_save_course(exception)
+    info = "#{exception.class}: #{exception.message}"
+    Rails.logger.error "\e[1;31m[ERROR]\e[0m Exception " + info
+    the_flash = 'No se pudo guardar el curso: ' + "#{exception.record.title}"
+    redirect_to :back, flash: { error: the_flash }
   end
 
   def raise_error_response(uri, response, message)
-    code = response.code
-    mes = response.message
-    info = "{ uri: #{uri}, message: #{mes}, code: #{code}"
-    puts "\e[1;31m[ERROR]\e[0m" + message + info
+    log = "{uri: #{uri}, message: #{response.message}, code: #{response.code}}"
+    Rails.logger.error "\e[1;31m[ERROR]\e[0m" + message + log
+    fail Errors::ErrorResponseAppBit
+  end
+
+  def raise_error_link_course(uri, response, id)
+    course = Course.find_by_id id
+    course.destroy
+    message = 'Error linking cursame course with bit group: '
+    log = "{uri: #{uri}, message: #{response.message}, code: #{response.code}}"
+    Rails.logger.error "\e[1;31m[ERROR]\e[0m" + message + log
+    fail Errors::ErrorResponseAppBit
+  end
+
+  def raise_error_link_user(uri, response, id)
+    user = user.find_by_id id
+    user.destroy
+    message = 'Error linking cursame user with bit user: '
+    log = "{uri: #{uri}, message: #{response.message}, code: #{response.code}}"
+    Rails.logger.error "\e[1;31m[ERROR]\e[0m" + message + log
     fail Errors::ErrorResponseAppBit
   end
 
@@ -115,8 +148,7 @@ class Managers::BitCoursesController < Managers::BaseController
       headers: { 'Authorization' => authorization },
       body: { 'grupos' => [{ 'grupo' => folio, 'idExterno' => id }] },
       timeout: 180)
-    mess = 'Error linking cursame course with bit group: '
-    response.code == 200 ? response : raise_error_response(uri, response, mess)
+    response.code == 200 ? response : raise_error_link_course(uri, response, id)
   end
 
   def new_course(group)
@@ -194,8 +226,7 @@ class Managers::BitCoursesController < Managers::BaseController
       headers: { 'Authorization' => authorization },
       body: { 'alumnos' => [{ 'idAlumno' => bit_id, 'idExterno' => id }] },
       timeout: 180)
-    mess = 'Error linking cursame user with bit user student: '
-    raise_error_response(uri, response, mess) unless response.code == 200
+    raise_error_link_user(uri, response, id) unless response.code == 200
   end
 
   def link_teacher(id, bit_id)
@@ -205,8 +236,7 @@ class Managers::BitCoursesController < Managers::BaseController
       headers: { 'Authorization' => authorization },
       body: { 'profesores' => [{ 'idProfesor' => bit_id, 'idExterno' => id }] },
       timeout: 180)
-    mess = 'Error linking cursame user with bit user teacher: '
-    raise_error_response(uri, response, mess) unless response.code == 200
+    raise_error_link_user(uri, response, id) unless response.code == 200
   end
 
   def bit_course
