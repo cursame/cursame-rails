@@ -198,7 +198,7 @@ Cursame30Lb::Application.routes.draw do
   get "/califications/closed", :to => "califications#closed", :as =>  :closed_califications
   get "/courses/:id/califications", :to => "califications#course", :as =>  :califications_course
   get "/courses/:course_id/califications/:member_id", :to => "califications#member", :as =>  :califications_member
-  
+
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
@@ -277,7 +277,7 @@ Cursame30Lb::Application.routes.draw do
   as :user do
     match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
     match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
-    match 'teachers/sign_up' => 'registrations#new' 
+    match 'teachers/sign_up' => 'registrations#new'
   end
 
   #### finalizador de sesiones
@@ -536,12 +536,17 @@ Cursame30Lb::Application.routes.draw do
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
   match '/503', :to => 'home#server_error'
-  #api 
+  #api
   match '/api/courses',        to: 'api/courses/courses#list'
   match '/api/users/teachers', to: 'api/users/users#teachers'
   match '/api/users/total',    to: 'api/users/users#total'
   match '/api/networks/',      to: 'api/networks/networks#index'
   match '/api/sessions/create',to: 'api/sessions/sessions#create'
+
+  # CCT API
+  match '/api/municipalities', to: 'api/cct#municipalities'
+  match '/api/subsystems',     to: 'api/cct#subsystems'
+  match '/api/schools',        to: 'api/cct#schools'
 
   #logout
   match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]
