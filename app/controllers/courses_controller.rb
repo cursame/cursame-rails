@@ -114,7 +114,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
 
-    redirect_to root_path, flash: { error: t('.courses_controller.no_exist')} and return if current_network.id != @course.network_id 
+    redirect_to root_path, flash: { error: t('.courses_controller.no_exist')} and return if current_network.id != @course.network_id
 
     if @member.nil?
       # redirect_to :back
@@ -200,7 +200,7 @@ class CoursesController < ApplicationController
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
     unless current_user.admin?
       (@member.nil? || !@member.owner?) ? (redirect_to course_path(@course), flash: { error: t('.courses_controller.no_authorized')}) : nil
-    end 
+    end
   end
 
   # POST /courses
@@ -227,7 +227,7 @@ class CoursesController < ApplicationController
         user_ids.each do |user_id|
           users.push User.find_by_id user_id
         end
-        @course.update_members(users, false) unless params["check_members"].nil?
+        @course.update_members(users, current_user) unless params["check_members"].nil?
 
 
         @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
@@ -279,7 +279,7 @@ class CoursesController < ApplicationController
         user_ids.each do |user_id|
           users.push User.find_by_id user_id
         end
-        @course.update_members(users, false) unless params["check_members"].nil?
+        @course.update_members(users, current_user) unless params["check_members"].nil?
 
 
         @last_date = @course.init_date
@@ -324,7 +324,7 @@ class CoursesController < ApplicationController
 
   def library
     @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id) 
+    @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
     @files = @course.course_files.paginate(:page => 1, :per_page => 10)
   end
 
@@ -1075,7 +1075,7 @@ class CoursesController < ApplicationController
 
     if @course.save
       owner = MembersInCourse.create(:course_id => @course.id, :user_id => current_user.id, :accepted => true, :owner => true, :network_id => current_network.id )
-      
+
       EvaluationCriterium.create(name: 'cursame_deliveries', evaluable: @course, evaluation_percentage: 34)
       EvaluationCriterium.create(name: 'cursame_surveys', evaluable: @course, evaluation_percentage: 33)
       EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course, evaluation_percentage: 33)
