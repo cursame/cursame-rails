@@ -90,7 +90,7 @@ es:
         percent: Porcentaje asignado
       courses_paginate_button:
         load_more: Cargar más...
-      course_header: 
+      course_header:
         update: Actualizar portada
         update_photo: Actualizar foto
         final_score: Calificaciones finales
@@ -154,6 +154,7 @@ es:
       public: Público
       private: Privado
       init_date: Fecha de inicio
+      teachers: Profesor
       students: Estudiantes
       first_name: Escribe un nombre o apellido.
       add_students: Inscribe estudiantes a tu curso.
