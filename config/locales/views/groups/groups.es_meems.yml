@@ -1,0 +1,9 @@
+es_meems:
+  groups:
+    edit:
+      name: Nombre
+      update: Actualizar
+    new:
+      name: Nombre
+      create: Crear
+

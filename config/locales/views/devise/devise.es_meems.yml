@@ -1,0 +1,104 @@
+es_meems:
+  devise:
+    confirmations:
+      new:
+        no_confirmation: No has recibido confirmación
+        email_field: 'Por favor, ingresa tu correo en el campo de abajo para dar seguimiento a tu solicitud'
+        email: Correo electrónico
+        forward: Reenviar instrucciones
+    mailer:
+      confirmation_instructions:
+        welcome: ¡Bienvenido a Cúrsame!
+        usage: 'Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.'
+        push_here: 'Si el boton superior no funciona, haz clic aquí'
+      reset_password_instructions:
+        reset_pwd: Restaurar contraseña
+        reset_password: 'Nos has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.'
+        pwd: En caso que no hayas solicitado la restauración de tu contraseña por favor comunicalo a
+        button: 'Si el boton superior no funciona, haz clic aquí'
+      unlock_instructions:
+        hello: ¡Hola!
+        button: 'Si el boton superior no funciona, haz clic aquí'
+    passwords:
+      edit:
+        change_pwd: Cambia tu contraseña
+        new_pwd: Nueva contraseña
+        confirm_pwd: Confirmar contraseña
+        ch_pwd: Cambiar contraseña
+      new:
+        recover_pwd: Recupera tu contraseña
+        email: Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".
+        email_field: Correo electrónico
+        res_pwd: Recuperar contraseña
+    registrations:
+      edit:
+        edit_usr: Editar Usuario
+        down: ¿Quieres darte de baja?
+        cancel_acount: Cancela tu cuenta
+        pwd: Contraseña
+        update: Actualizar
+        back: Regresar
+      new:
+        access: Lo sentimos pero la red a la que estas intentado accesar no existe
+        question: pregunta a un encargado de tu escuela él sabrá ayudarte.
+        thnx: ¡Gracias!
+        email: Correo electrónico
+        name: Nombre(s)
+        last_name: Apellidos
+        pwd: Contraseña
+        confirm_pwd: Confirmacion de contraseña
+        accept: Acepto los términos y condiciones
+        registry: Registrarme
+        sign_in: ¿Ya eres usuario? Ingresa
+        no_confirmation: ¿No recibiste las instrucciones de confirmación?
+        no_blocked: ¿No recibiste las instrucciones de desbloqueo?
+    sessions:
+      new:
+        sorry: Lo sentimos
+        net: La red a la que estas intentado accesar no existe
+        net2: pregunta a un encargado de tu escuela él sabrá ayudarte.
+        init: Ir al inicio
+        send: Se ha enviado un correo a
+        confirm: Esperando confirmación
+        s_net: 'Clases, Actividades, Red Social.'
+        s_net2: 'Cúrsame conecta a directivos, Líderes multiplicadores y emprendedores'
+        s_net3: 'permitiéndoles interactuar social y académicamente.'
+        s_netn: 'Cúrsame conecta a directivos, Líderes multiplicadores y emprendedores permitiéndoles interactuar social y académicamente'
+        sign_in: ¿Eres nuevo? Regístrate
+        session: Inicia sesión
+        email: Correo electrónico
+        pwd: Contraseña
+        remember: Recordarme
+        log_in: Iniciar Sesión
+        antique_usr: Soy un usuario antiguo y tengo dudas
+        close: Cerrar
+        user: ¿Soy usuario?
+        last_user: "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."
+        key: ¿Mi clave sigue siendo la misma?
+        new_pwd: Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
+        change_pwd: te pedirá que cambies tu contraseña.
+        confirm2: No me ha llegado el mail de confirmación
+        link: Da click en el link
+        acount: Confirma tu cuenta
+        account_window: te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.
+        confirm3: Confirmé mi email pero olvide cambiar mi contraseña
+        pwd_problem: Cualquier problema con la contraseña puedes resolverlo dando click en
+        forgot_pwd: Olvidé mi contraseña
+        send_pwd: donde se te enviará un mail para que puedas cambiar tu contraseña.
+    shared:
+      footer-links:
+        help: Centro de ayuda
+        terms: Términos y Condiciones
+        privacy: Aviso de privacidad
+      links:
+        log_in: ¿Ya eres usuario? Ingresa
+        sign_in: ¿No estas registrado? Registrate
+        pwd: ¿Olvidaste tu contraseña?
+        confirm: ¿No recibiste las instrucciones de confirmación?
+        blocked: ¿No recibiste las instrucciones de desbloqueo?
+    unlocks:
+      new:
+        instruc: No has recibido instrucciones de desbloqueo
+        email_req: Ingresa tu correo en el campo inferior para dar seguimiento a tu solicitud
+        email: Correo electrónico
+        forward: Reenviar instrucciones
