@@ -1,0 +1,121 @@
+es_meems:
+  users:
+    califications:
+      deliveries_table:
+        hmwrk: Tareas
+        percent: Porcentaje
+        hmwrks: Tarea
+        score: Calificación
+        no_deliver: No entregada
+        no_score: No calificada
+        avg: Calificación promedio en tareas
+        no_hmwrks: Aún no hay tareas en este Centros Emprendedor.
+      discussions_table:
+        discuss: Discusiones
+        discuss2: Discusión
+        score: Calificación
+        no_part: Sin participación
+        no_score: No calificada
+        avg_score: Calificación promedio en discusiones
+        no_discuss: Aún no hay discusiones evaluables en este Centros Emprendedor.
+      surveys_table:
+        quest: Cuestionarios
+        avg: Porcentaje
+        exam: Examen
+        score: Calificación
+        no_answered: No resuelto
+        quest2: Calificación promedio en cuestionarios
+        quest3: Aún no hay cuestionarios en este Centros Emprendedor.
+    shared:
+      user_card:
+        friends: Amigos
+        delete: Eliminar de mis amigos
+        send_request: Solicitud enviada
+        cancel: Cancelar solicitud de amistad
+        respond: Responder solicitud de amistad
+        confirm: Confirmar solicitud de amistad
+        delete2: Eliminar solicitud de amistad
+        add_friends: Agregar a mis amigos
+        teacher: Líder multiplicador
+        student: Estudiante
+        admin: MEEMS
+      user_profile_header:
+        update: Actualizar portada
+        edit: Editar Perfil
+        cancel: Cancelar solictud de amistad
+        send: Solicitud enviada
+        ignore: Ignorar
+        accept: Aceptar solicitud de amistad
+        add_friends: Añadir a mis amigos
+        update_photo: Actualizar foto
+        publications: Publicaciones
+        courses: Centros Emprendedores
+        friends: Amigos
+        info: Información
+    evaluation:
+      score: Calificacion
+      no_members: Este Centros Emprendedor no tiene miembros
+    form_course:
+      create: Crear nuevo
+      load: Cargando ...
+      name: Nombre
+      descrip: Descripción
+      init_date: Fecha inicio
+      private: Privado
+      public: Público
+      create2: Crear
+      cancel: Cancel
+    friends_first_user:
+      friend_req: Solicitud de amistad
+      pendent: Solicitudes pendientes
+      friends: Amigos
+      send: Solicitud de amistad enviada
+    menu_member:
+      net: mis redes
+      enroll: inscribirse a una red
+      friends: mis amigos
+    set_password_form:
+      set_pwd: Establece tu contraseña
+      welcome: 'Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro.'
+      pwd: Ingresa una contraseña.
+      save: Guardar contraseña
+    califications:
+      ratings: Calificaciones
+      no_score: Aún no tienes calificaciones.
+      enroll: Necesitas estar inscrito en al menos un Centros Emprendedor para tener calificaciones.
+    courses:
+      courses2: Centros Emprendedores
+      no_registered: Aún no estas inscrito en ningún Centros Emprendedor.
+      find: Busca Centros Emprendedores en la sección de
+      no_members: Este usuario no esta inscrito en ningún Centros Emprendedor.
+    dashboard:
+      select: Seleccionador de redes
+      goto: Ir al super MEEMS
+      text1: Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema
+      log_out: Salir de mi sesión
+    friends:
+      no_friends: Aún no tienes amigos.
+      find: Busca a tus amigos en la sección de
+      comunity: Red de Emprendedores
+      no_friends2: Este usuario no tiene amigos aún.
+      friends_subtitle:
+        friends1: Amigos
+        all_friends: Todos mis amigos
+        request: Solicitudes pendientes
+    index:
+      all: Todos los usuarios
+    info:
+      info2: Información
+      bio: Biografia
+      no_bio: Este usuario no cuenta con biografia.
+      email: Correo Electronico
+    show:
+      no_friend: No eres amigo del usuario
+      add: Agrégalo para poder postear en su muro.
+    sufriend:
+      accept: Aceptar como amigo
+      name: Nombre
+    waiting_friends:
+      friends: Amigos en espera
+      waiting_friends: Esperando aceptación de
+      request: Este usuario te ha solicitado amistad

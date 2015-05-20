@@ -1,0 +1,342 @@
+es_meems:
+  shared:
+    chat:
+      add_message_form:
+        msg: Escribe un mensaje y presiona Enter.
+      chat:
+        more_msg: Cargar más mensajes...
+        select: Selecciona a un amigo o Centro Emprendedor para enviar mensaje.
+      load_more_messages:
+        more_msg: Cargar más mensajes...
+      message_notifications:
+        msg: Mensajes
+        ago: Hace
+        all_msg: Ver todos los mensajes
+      message_tpl:
+        ago: hace
+    evaluation_criteria:
+      evaluation_criteria_fields:
+        criteria_name: Nombre del criterio a evaluar
+    static_pages:
+      header:
+        title1: Metodologías
+        title2: Proyectos
+        title3: Nosotros
+        title4: Empleos
+        title5: Contacto
+        text1: ¿Ya eres usuario?
+        text2: Encuentra tu red
+        text3: Escribe tu correo electrónico para accesar a la red de tu institución.
+        search_network: Busca tu red
+        notif: Oops! al parecer tu correo no pertenece a niguna red.
+    website:
+      cta_request_demo:
+        request_demo: ¡Solicita un demo en tu plantel!
+      other_contact_ways:
+        text1: Otras formas de contacto
+        follow_us_on_twitter: Síguenos en Twitter
+        follow_us_on_facebook: Síguenos en Facebook
+    post_menu:
+      comment: Comentario
+      homework: Tarea
+      discussion: Discusión
+      questionnaire: Cuestionario
+      form: Formulario
+      post_comment: Deja un comentario.
+      what_are_y_think: ¿Qué estás pensando?
+    dropdown:
+      dropdown_v:
+        public: Público
+        courses: Centros Emprendedores
+        no_member: No eres miembro de ningún Centro Emprendedor.
+        goto_section: Únete a uno en la sección de
+        no_course: No has creado ningún Centro Emprendedor todavia.
+        new_course: Crear Centro Emprendedor ahora →
+        return: Volver
+      return: Volver
+    sidebar:
+      sidebar_section:
+        initiation: Inicio
+        homework: Tareas
+        questionnaire: Cuestionarios
+        discussion: Discusiones
+        activities: Actividades
+        courses: Centros Emprendedores
+        ratings: Calificaciones
+        calendar: Calendario
+        library: "Biblioteca"
+        community: Red de Emprendedores
+        radar: Radar
+        vLex: vLex
+        friends: Amigos
+        chat: Chat
+        no_member: No eres miembro de ningún Centro Emprendedor.
+        goto_section: Únete a uno en la sección de
+        course_message: Únete a uno en la sección de
+        course_href: Centros Emprendedores
+        no_course: No has creado ningún Centro Emprendedor.
+        no_course_href: Crear Centro Emprendedor ahora →
+        no_friends: No tienes amigos.
+        add_friends: Agrega a tus amigos en la sección de
+        community_href: Red de Emprendedores
+        return: volver
+        disp_usr: Usuario conectado
+        no_disp_usr: Usuario desconectado
+      upcomming_deliveries_widget:
+        side_section:
+          pending_homeworks: Tareas próximas
+      upcomming_surveys_widget:
+        side_section:
+          next_questionnaires: Cuestionarios próximos
+    user_header:
+      activity_notifications:
+        help: Ayuda
+      activity_block:
+        admin_href: Administración
+        profile_href: Ir a mi perfil
+        edit_profile_href: Editar perfil
+        sign_out_href: Cerrar sesión
+    comment_form:
+      file: "Archivo"
+      new_publication:
+        comment: Comentar
+        cancel: Cancelar
+        save: Guardar
+        public: Público
+        file: Archivo
+    posts:
+      post_admin_actions:
+        delete: Borrar
+        edit: Editar
+        confirm_delete: ¿Estás seguro de borrar esto?
+      post_child_comment:
+        like: Me gusta
+        not_like: Ya no me gusta
+      post_comments:
+        view_comments: Ver comentarios anteriores
+        like: me gusta
+        delete: Borrar
+        write_comment: Escribe un comentario
+        comment: Comentar
+      post_comments_list:
+        prev_comments: Comentarios anteriores
+        write_comment: Escribe un comentario
+        non_commentable: Esta publicación ya no se puede comentar.
+      post_meta_data:
+        like: Me gusta
+        not_like: Ya no me gusta
+      post_people_who_liked:
+        ed: A
+        liked: les gusta esto
+    publications:
+      comment:
+        usr: Usuario
+        course_comment: comentó en el Centro Emprendedor
+        profile_comment: comentó en el perfil de
+      course:
+        new_course: Nuevo Centro Emprendedor público
+        go_course: Ir al Centro Emprendedor
+      delivery:
+        new_homework: Nueva tarea para entregar en el Centro Emprendedor
+        delivery_txt: Entregar antes del
+        open_hmwk: Abrir tarea
+      discussion:
+        new: Nueva discusión
+        in_course: en el Centro Emprendedor
+        open_discuss: Abrir discusion
+      meta_data:
+        like: Me gusta
+        comments: Comentarios
+        ago: Hace
+        at: a las
+      owner_edit_publications:
+        delete: Borrar
+        confirm: ¿Estas seguro de borrar esto?
+        edit: Editar
+      people_who_likes:
+        users: Usuarios a los que les gusta esto
+      publication_comments:
+        prev_comments: Ver comentarios anteriores
+      publication_template:
+        edit_publ: Editar publicación
+      survey:
+        new_quest: Nuevo cuestionario para responder en el Centro Emprendedor
+        response_before: Responder antes del
+        question: Pregunta
+        questions: Preguntas
+        open_quest: Abrir cuestionario
+    publications_filter:
+      filter_by_course_publications:
+        filtrate: Filtrar
+        select_course: Selecciona un Centro Emprendedor
+    sessions:
+      network_box_head:
+        sign_in: Registrarme →
+        log_in: ¿Ya eres usuario? Ingresa →
+      network_not_exist:
+        ops: ¡Oops!
+        no_network: No ingresaste el subdominio de la red a la que quieres acceder.
+        search_school: Busca tu escuela aquí →
+        no_net_exists: Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.
+    tour:
+      survey_first_login:
+        title: Ayúdanos a mejorar
+        title2: 'Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.'
+        title3: 'Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente.'
+        thnx: Gracias.
+        quest: Enviar Encuesta
+        text4: Tus datos son confidenciales y serán utilizados con el fin de
+        text5: 'mejorar nuestro servicio, Revisa nuestro'
+        priv: Aviso de Privacidad
+      video_tour_first_time:
+        welcome: Bienvenido al nuevo Cúrsame
+        wel_text: Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.
+        wel_text1: En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.
+        wel_text2: En este video de introducción te mostramos las principales secciones y características del Centro Emprendedor.
+        loading_tour: Cargando tour...
+    assets_for_assignments:
+      new_assets:
+        attach_file: Adjuntar archivo
+    assets_form:
+      new_assets:
+        file: Archivo
+    comment:
+      comment_main:
+        like: me gusta
+    comments:
+      publication_box:
+        twty_comments: 20 Comentarios
+        more_comments: cargas mas comentarios
+        twlv_likes: 12 Likes
+    course_joyride:
+      joyRideTipContent:
+        welcome: Bienvenido al perfil de Centro Emprendedor
+        subtitle: En este lugar podrás ver todo lo que pasa en el Centro Emprendedor.
+        notif: Notificaciones
+        notif_area: Esta es el área de notificaciones.
+        profile: Perfil
+        sub_profile: Este es el perfil del Centro Emprendedor.
+        edit_course: Editar el Centro Emprendedor
+        ed_course: Aquí puedes editar el Centro Emprendedor.
+        descrip: Descripción
+        course_descrip: Aquí va la descripción del Centro Emprendedor.
+        course_edit: Editar el Centro Emprendedor
+        text_edit_course: Aqui puedes editar el Centro Emprendedor.
+        friends: Amigos
+        friends_list: Aquí encontrarás un listado de tus amigos
+        create_content: Creación de contenido
+        content_area: Esta es el área de creación de contenido.
+        publications: Publicaciones
+        pub_area: Aquí encontrarás todas las publicaciones de la red.
+    delivery_publication_tpl:
+      end_delivery: Entregar antes de
+      files: Archivos
+      evaluates: Se evalua
+      reply: Responder
+      edit_delivery: Editar Entrega
+      no_evaluation: A esta tarea no se le han asignado áreas de evaluación
+      category: rubro
+      final_eval: Evaluación final
+      view_delivery: Ver entrega de tarea
+      no_reply: No se han encontrado respuestas a esta tarea
+    form_commentable:
+      write_comment: Escribe un comentario
+      comment: Comentar
+      comment_2: Comentar
+    network_joyride:
+      joyride_tip_content:
+        welcome: Bienvenido a Cúrsame
+        description: En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.
+        courses: Creación de Centros Emprendedores
+        description_courses: Al dar click en el bootón Crear (+) aparecera el formulario de creación para los Centros Emprendedores que impartes.
+        menu: Menú de creación
+        menu_description: 'En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.'
+        text1: Público o a tus Centros Emprendedores
+        text2: Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus Centros Emprendedores.
+        text3: Uno o varios Centros Emprendedores
+        text4: '!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los Centros Emprendedores! .'
+        text5: Muro principal
+        text6: En el muro principal aparecerán todas las publicaciones de tus Centros Emprendedores y amigos.
+        text7: Filtrado de publiciones
+        text8: Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.
+        text9: Amigos
+        text10: 'En esta sección podrás ver a tus amigos, o ingresar a la "Red de Emprendedores" para agregarlos'
+        text11: Menú interactivo
+        text12: Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.
+        text13: Video tutoriales de ayuda
+        text14: 'En cada sección donde veas un signo de interrogación "?", al dar click en el podras ver un video sobre como usar dicha función.'
+    notification_type:
+      activity_feed:
+        lookup_usr: Ver usuario
+        comment_net: comentó en la red
+        comment_course: comentó en el Centro Emprendedor
+        new_course: Nuevo Centro Emprendedor
+        in_network: en tu red
+        accept_course: Has sido aceptado en el Centro Emprendedor
+        new_homework: Nueva tarea
+        in_course: en tu Centro Emprendedor
+        new_discus: Nueva discusion
+        in_course1: en tu Centro Emprendedor
+        new_question: Nuevo cuestionario
+        in_course2: en tu Centro Emprendedor
+        one_usr: Un usuario
+        response_homework: ha respondido la tarea
+        homework_calif: Han calificado tu tarea
+        coursework: del Centro Emprendedor
+        friend_notif: ha solicitado ser su amigo
+        friend_req: ha aceptado su solicitud de amistad.
+        discuss_comment: comentó en tu discusión
+        comment_to_comment: ha comentado en un comentario que hiciste.
+        comment_profile: ha comentado en tu perfil.
+        comment_to_homework: ha comentado en la tarea
+        add_to_course: ha solicitado entrar al Centro Emprendedor
+        quest_response: ha respondido el cuestionario
+        the_course: El Centro Emprendedor
+        course_expired: ha llegado a su fecha final. Por favor desactívalo.
+        quest_feedback: Has recibido retroalimentación en el cuestionario
+        text15: El Centro Emprendedor
+        text16: ha sido
+        active: activado
+        ended: finalizado
+        text17: Han calificado tu participacion en la discusión
+        course_calif: Se ha calificado el Centro Emprendedor
+        activities_p_user: Una actividad por
+        view_usr: Ver usuario
+    notifications:
+      box_notifications:
+        notif: Notificaciones
+        no_notif: No hay notificaciones para mostrar.
+        more_notif: Ver más notificaciones
+    post_comments:
+      last_comments: Ver comentarios anteriores
+      like: me gusta
+      delte: Borrar
+      write_comment: Escribe un comentario
+      comment: Comentar
+      comment1: Comentar
+    survey_publication_tpl:
+      respond_quest: Cuestionario respondido
+    user_joyride:
+      welcome_prof: Bienvenido a tu perfil
+      text_prof: En este lugar podrás ver todo lo que pasa en tu red cursame.
+      notif: Notificaciones
+      text_notif: Esta es el area de notificaciones.
+      prof: Perfil
+      prof_photo: Aqui ver la foto de tu perfil.
+      edit_prof: Editar perfil
+      text_edit_prof: Aqui puedes editar tu perfil.
+      courses: Centros Emprendedores
+      courses_area: Esta es el area de tus Centros Emprendedores.
+      friends: Amigos
+      friends_list: Aqui encontraras un listado de tus amigos
+      content: Creación de contenido
+      content_area: Esta es el area de creación de contenido.
+      publ: Publiciones
+      publ_area: Aqui encontraras todas las publicaciones de la red.
+    wall_filters:
+      all: Todos
+      discuss: Discusiones
+      courses: Centros Emprendedores
+      comments: Comentarios
+      homework: Tareas
+      quest: Cuestionarios

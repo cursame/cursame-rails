@@ -1,0 +1,5 @@
+es_meems:
+  home:
+    delete_publication: "Se ha borrado correctamente la publicación."
+    demo: "Solictud de demo"
+    contact: "Contacto"

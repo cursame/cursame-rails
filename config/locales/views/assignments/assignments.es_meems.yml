@@ -1,0 +1,15 @@
+es_meems:
+  assignments:
+    form_for_delivery:
+      file_dlvry: "Archivos de entrega:"
+      cancel: Cancelar
+      save_dlvry: Guardar nueva entrega
+      dlvry: Entregar Tarea
+      title: "Título:"
+      descrip: "Descripción:"
+    responce_of_evaluation:
+      comments: Comentarios
+      entry: Rubro
+    messages:
+      create:
+        success: "Se ha entregado tu tarea"
