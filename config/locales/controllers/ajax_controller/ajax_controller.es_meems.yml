@@ -1,0 +1,4 @@
+es_meems:
+  ajax_controller:
+    error1: "Ocurrió un error, porfavor inténtalo de nuevo."
+

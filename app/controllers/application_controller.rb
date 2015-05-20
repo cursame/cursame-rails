@@ -680,14 +680,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # This are methods for the localization configuration
   def set_locale
+    case current_network.subdomain
+    when "meems"
+      meems_locale
+    else
+      default_locale
+    end
+  end
+
+  def default_locale
     locale = (params[:locale].blank?) ? :es : params[:locale].to_sym
     if I18n.available_locales.include? locale then
       I18n.locale = locale
     else
       I18n.locale = :es
     end
+  end
+
+  def meems_locale
+    I18n.locale = :es_meems
   end
 
   def default_url_options(options={})

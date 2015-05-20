@@ -1,0 +1,25 @@
+es_meems:
+  community:
+    shared:
+      community_header:
+        community: Red de Emprendedores
+        all: Todos
+        students: emprendedores
+        teacher: Líder multiplicadores
+      community_paginate_button:
+        load_more: Cargar más...
+      users_search:
+        search_users: Buscar usuarios...
+        find: Buscar
+    all:
+      no_records: No hay más usuarios por mostrar...
+      no_usr: No se encontraron usarios en tu red.
+    search:
+      search: "Búsqueda:"
+      no_usr: No se encontraron usarios en tu red.
+    students:
+      no_more_usr: No hay más usuarios por mostrar...
+      no_students: Aún no hay emprendedores en tu red.
+    teachers:
+      no_more_usr: No hay más usuarios por mostrar...
+      no_students: Aún no hay Líderes multiplicadores en tu red.

@@ -1,0 +1,18 @@
+es_meems:
+  users_mailer:
+    notice_to_user:
+      welcome: Bienvenido
+      notif: Tiene 5 notificaciones activas
+      hello: Hola
+      activity: tiene 5 nuevas actividades en la plataforma.
+      activitys: Tiene 5 nuevas actividades en la plataforma.
+      goto: Ir a actividades
+    teachers_day:
+      mail: Si no puedes ver este mail
+      click: haz click aquí.
+      happy: ¡Feliz día del Líder multiplicador!
+      text1: 'En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.'
+      text2: 'Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.'
+      text3: 'Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Líder multiplicador ¡Te lo mereces!'
+      teacher: Líder multiplicador(a)
+      hello: Hola

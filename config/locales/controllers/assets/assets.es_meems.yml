@@ -1,0 +1,9 @@
+# assets.es.yml
+es_meems:
+  assets:
+    messages:
+      delete:
+        non_existent: "El archivo que intentas borrar no existe."
+        not_an_owner: "No tienes permisos para eliminar este archivo."
+        success: "Se ha eliminado el archivo."
+        error: "Ha ocurrido un error al eliminar el archivo."

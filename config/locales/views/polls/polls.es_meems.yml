@@ -1,0 +1,15 @@
+es_meems:
+  polls:
+    answer_fields:
+      answer: Ingresar respuesta
+      correct: ¿Es la respuesta correcta?
+      delete: Eliminar
+    question_fields:
+      quest: Ingresar pregunta
+      delete: Eliminar
+      add: Agregar Respuesta
+    edit:
+      edit: Editando Encuesta
+    index:
+      list: Lista de Encuestas
+

@@ -1,0 +1,13 @@
+es_meems:
+  libraries:
+    shared:
+      card:
+        view_files: "Ver Archivos"
+      header:
+        create_folder: "Crear Carpeta"
+        upload_file: "Subir Archivo"
+        library: "Biblioteca"
+      library_files:
+        no_documents: "No hay documentos."
+    new:
+      new_library: "Nueva Biblioteca"
