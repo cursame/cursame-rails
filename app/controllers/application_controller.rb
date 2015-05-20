@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   #metodo de acceso a los avatares
   helper_method :avatar
   helper_method :agil_find_user
-  # helper methos de fechas 
+  # helper methos de fechas
 
   helper_method :es_month
   helper_method :es_day
@@ -54,10 +54,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_courses
   #quit cache
   helper_method :cache_expire
-  
+
   include CoursesUtils
 
-  def cache_expire 
+  def cache_expire
     cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 10.minutes)
   end
 
@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
       permissioning = Permissioning.find_by_user_id current_user.id
 
       if !permissioning.nil? && permissioning.role.title == "superadmin"
-        @current_network = Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase)) 
+        @current_network = Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
       else
         @current_network = Network.find_by_subdomain(filter_subdomain(current_user.subdomain.downcase))
       end
@@ -119,7 +119,7 @@ class ApplicationController < ActionController::Base
          @link = 'lvh.me:3001'
         else
           @link = 'cursa.me'
-         
+
      end
   end
   #determinate the first redirection url before loggin
@@ -135,7 +135,7 @@ class ApplicationController < ActionController::Base
   def current_course
     @course = Course.find(params[:id])
   end
-  
+
   def current_user_courses
      @ccc = current_user.courses.where(:network_id => current_network.id, :active_status => true)
   end
@@ -198,7 +198,7 @@ class ApplicationController < ActionController::Base
     else
       @role = 'student'
     end
-   
+
   end
   ###### comandos de generación de actividades
   def activation_activity
@@ -401,10 +401,10 @@ class ApplicationController < ActionController::Base
   end
 
   ###### validadores de avatars dentro de la aplicación ######
-  
+
   def avatar(type, size, url, destinate, clase, identificador, resize_to)
-    
-    
+
+
     ##### casos para la url
     case
       when url == 'no'
@@ -414,7 +414,7 @@ class ApplicationController < ActionController::Base
         object_url = '<a'+ ' href='+ "#{url}" +'>'
         object_url_end = '</a>'
     end
-        
+
     #### casos para resize_to
 
     case
@@ -423,8 +423,8 @@ class ApplicationController < ActionController::Base
       when resize_to != 'no'
         object_resize_to = " width="+"'"+"#{resize_to}px"+"'" + " height=" +"'"+ "#{resize_to}px"+"'"
     end
-    
-     
+
+
     ### coloca una clase en la imagen
     case
       when clase == 'no'
@@ -447,8 +447,8 @@ class ApplicationController < ActionController::Base
             object = Course.find_by_id(destinate)
             #### se revisa si el objeto contiene avatar
             if object != nil && object.avatar.file != nil
-               #### si el objeto contiene un avatar se machan las diversas medidas 
-               case 
+               #### si el objeto contiene un avatar se machan las diversas medidas
+               case
                 when size == '10'
                   @self_avatar = object_url+'<img  src='+"#{object.avatar.compress}"+ object_resize_to+ "object_clase" + object_identificador +'>'+ object_url_end
                 when size == '25'
@@ -459,10 +459,10 @@ class ApplicationController < ActionController::Base
                   @self_avatar = object_url+'<img src='+"#{object.avatar.modern}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 when size == '150'
                   @self_avatar = object_url+'<img src='+"#{object.avatar.profile}"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
-                               
+
                end
             else
-               case 
+               case
                 when size == '10'
                   @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxxx.png'"+ object_resize_to+ object_clase + object_identificador +'>'+ object_url_end
                 when size == '25'
@@ -476,15 +476,15 @@ class ApplicationController < ActionController::Base
                 end
 
             end
-            
+
 
      when type == "user"
             #### se crea el obejto que se busca
             object = User.find_by_id(destinate)
             #### se revisa si el objeto contiene avatar
             if !object.avatar.file.nil?
-               #### si el objeto contiene un avatar se machan las diversas medidas 
-               case 
+               #### si el objeto contiene un avatar se machan las diversas medidas
+               case
                 when size == '10'
                   @self_avatar = object_url+'<img src='+"#{object.avatar.compress}"+ object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '25'
@@ -495,10 +495,10 @@ class ApplicationController < ActionController::Base
                   @self_avatar = object_url+'<img src='+"#{object.avatar.modern}"+ object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '150'
                   @self_avatar = object_url+'<img src='+"#{object.avatar.profile}"+ object_resize_to+ object_clase +'/>'+ object_url_end
-                               
+
                end
             else
-               case 
+               case
                 when size == '10'
                   @self_avatar = object_url+'<img src='+"'/assets/course-avatarxxxx.png'"+' '+object_resize_to+ object_clase +'/>'+ object_url_end
                 when size == '25'
@@ -512,11 +512,11 @@ class ApplicationController < ActionController::Base
                 end
 
             end
-            
+
     end
-    
-    ##### esta parte del metodo lee en html el helper #####  
-    @self_avatar.html_safe  
+
+    ##### esta parte del metodo lee en html el helper #####
+    @self_avatar.html_safe
 
   end
 
@@ -556,16 +556,16 @@ class ApplicationController < ActionController::Base
   ##### da formato a las fechas en español
   def es_current_date(month = '', day = '' , year = '', hour ='',format = 'mexican')
     ##### example :    <%= h  es_current_date("#{@date.strftime( '%B')}","", "#{@date.strftime( '%Y')}")  %>
-   
+
     if hour == nil
        hour_mesage = ""
       else
        hour_mesage = "-#{hour}"
     end
 
-    case 
+    case
       when format == 'american'
-      case 
+      case
         when month != '' && day != '' && year != ''
         @date = "#{es_month(month)} / #{day} / #{year} #{hour_mesage}"
         when month != '' && day != ''
@@ -574,7 +574,7 @@ class ApplicationController < ActionController::Base
         @date = "#{es_month(month)} / #{year} #{hour_mesage}"
       end
     when format == 'mexican'
-       case 
+       case
         when month != '' && day != '' && year != ''
         @date = "#{day} / #{es_month(month)} / #{year} #{hour_mesage}"
         when month != '' && day != ''
@@ -583,7 +583,7 @@ class ApplicationController < ActionController::Base
         @date = "#{es_month(month)} / #{year} #{hour_mesage}"
       end
     when format == 'latin_string'
-      case 
+      case
         when month != '' && day != '' && year != ''
         @date = "#{day} de #{es_month(month)} del #{year} #{hour_mesage}"
         when month != '' && day != ''
@@ -591,28 +591,28 @@ class ApplicationController < ActionController::Base
         when month != '' && year != ''
         @date = "#{es_month(month)} del #{year} #{hour_mesage}"
       end
-    end 
+    end
   end
-  
+
   ###### da formato a los días de la semana en español
   def es_day(esday)
-    case 
+    case
       when esday != 'Week'
-      case 
+      case
       when esday == 'Monday'
         @day_name = 'Lunes'
       when esday == 'Tuesday'
-        @day_name = 'Martes'  
+        @day_name = 'Martes'
       when esday == 'Wednesday'
-        @day_name = 'Miercoles'  
+        @day_name = 'Miercoles'
       when esday == 'Thursday'
-        @day_name = 'Jueves'  
+        @day_name = 'Jueves'
       when esday == 'Friday'
-        @day_name = 'Viernes'  
+        @day_name = 'Viernes'
       when esday == 'Saturday'
         @day_name = 'Sabado'
       when esday == 'Sunday'
-        @day_name = 'Domingo' 
+        @day_name = 'Domingo'
       end
         when esday == 'Week'
         @week = ('Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo').to_s
@@ -623,11 +623,11 @@ class ApplicationController < ActionController::Base
     date ||= Date.today
     es_current_date(date.strftime('%B'), date.strftime('%d'), date.strftime('%Y'), date.strftime('%l:%M%P'), "latin_string")
   end
-  
+
   ###### metodo para encontrar un usuario de manera facil ######
   def agil_find_user(findX, byX='id')
-    case 
-      when byX == 'id'  
+    case
+      when byX == 'id'
        @user = User.find_by_id("#{findX}")
       when byx == 'personal_url'
        @user = User.find_by_perosnal_url("#{findX}")
@@ -665,8 +665,8 @@ class ApplicationController < ActionController::Base
       @friends_online.reject! do |user|
         user == current_user
       end
-      
-      @friends_online.sort_by! do 
+
+      @friends_online.sort_by! do
         |user| [user.online ? 0 : 1, user.first_name.downcase]
       end
     end
@@ -681,6 +681,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
+    return if current_network.nil?
     case current_network.subdomain
     when "meems"
       meems_locale
