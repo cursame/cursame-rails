@@ -1,0 +1,39 @@
+es_meems:
+  discussions:
+    shared:
+      discussion_card:
+        view_discuss: Ver Discusión
+        edit_discuss: Editar Discusión
+      discussion_modal:
+        init_discuss: ha inicidado una discusión
+        in_course: en el Centros Emprendedor
+        criterium: Criterios a evaluar
+        grade: Calificación Obtenida
+      discussions_course_header:
+        discuss: Discusiones
+      discussions_filter_course:
+        filter: "Filtrar:"
+        select: Selecciona un Centros Emprendedor
+      discussions_header:
+        discuss: Discusiones
+      discussions_paginate_button:
+        load: Cargar más...
+    form_for_discussion:
+      discuss: Tema de la discusión
+      example: "Ejemplo: Números primos"
+      descrip: Descripción
+      support: Material de soporte
+      calif: Calificable
+      dates: Fechas
+      publish_date: Día de publicación
+      deliver_date: Fecha de entrega
+      criterium: Criterios a evaluar
+      add_comment: Agregar criterio
+      cancel: Cancelar
+      public: Público
+      create_discuss: Crear Discusión
+      save_discuss: Guardar discusión
+    discussions_course:
+      no_discuss: No se encontraron más discusiones.
+    index:
+      no_discuss: No se encontraron más discusiones.

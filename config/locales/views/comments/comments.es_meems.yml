@@ -1,0 +1,11 @@
+es_meems:
+  comments:
+    shared:
+      comment_admin_actions:
+        delete: Borrar
+        confirm: ¿Estas seguro de borrar este comentario?
+      comment_card:
+        edit_comment: Editar Comentario
+      comment_user_actions:
+        denounce_comment: "Denunciar comentario"
+

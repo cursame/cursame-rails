@@ -1,0 +1,59 @@
+es_meems:
+  deliveries:
+    shared:
+      deliveries_course_header:
+        hmwrks: Tareas
+        active: Activas
+        last: Pasadas
+      deliveries_filter_course:
+        filter: "Filtrar: "
+        select: Selecciona un Centros Emprendedor
+      deliveries_header:
+        hmwrks: Tareas
+        deliver: Entregar
+        past: Pasadas
+      deliveries_paginate_button:
+        load: Cargar más...
+      delivery_card:
+        hmwrk: Ver Tarea
+        edit_hmwrk: Editar Tarea
+      delivery_modal:
+        hmwrk: Tarea en el Centros Emprendedor
+        deliver: Entregar antes del
+        deliver_hmwrk: Entregar Tarea
+        final_score: Calificación final obtenida
+        rubre: Rubro sin comentarios
+        edit: Editar Entrega
+    delivery_compart_form:
+      hmwrk_theme: Tema de la tarea
+      example: "Ejemplo: Números primos"
+      dates: Fechas
+      publish_date: Día de publicación
+      deliver_date: Fecha de entrega
+      descrip: Descripción
+      criterium: Criterios a evaluar
+      add_criterium: Agregar criterio
+      support: Material de soporte
+      integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.'
+      cancel: Cancelar
+      courses: Centros Emprendedores
+      publish: Publicar
+      save: Guardar Tarea
+    deliveries_course:
+      today_hmwrk: Tareas para entregar Hoy
+      tomorrow_hmwrks: Tareas para entregar Mañana
+      hmwrks: Tareas para entregar en 3 días o más
+      no_hmwrks: No tienes tareas pendientes por entregar en este Centros Emprendedor.
+      no_deliver: 'Has entregado todas las tareas, puedes ver las'
+      hmwrks_last: tareas pasadas en la sección Pasadas
+    deliveries_courses_lapsed:
+      last_hmwrks: No se encontraron más tareas pasadas.
+    index:
+      hmwrks: Tareas para entregar Hoy
+      tomorrow_hmwrks: Tareas para entregar Mañana
+      deliver_hmwrks: Tareas para entregar en 3 días o más
+      no_hmwrks: No tienes tarean pendientes por entregar.
+      no_deliver: 'Has entregado todas las tareas, puedes ver las'
+      past_hmwrks: tareas pasadas en la sección Pasadas
+    lapsed:
+      no_hmwrks: No se encontraron más tareas pasadas.

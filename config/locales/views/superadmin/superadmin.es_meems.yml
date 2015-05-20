@@ -1,0 +1,72 @@
+es_meems:
+  superadmin:
+    activities:
+      sys: Actividades del sistema
+      hmwrks: Tareas
+      hmwrks_delivery: Entregas de tareas
+      exam: Exámenes
+      exam_delivery: Entregas de examenes
+      courses: Centros Emprendedores
+      comments: Comentarios
+      avg: Promedio de calificación por tareas
+      avg2: Promedio de calificación por survey
+      avg3: Promedio de calificación por usuario
+      find: Buscar Actividades por usuario o titulo
+      activities: Las actividades del sistema están geo localizadas
+      title: Título
+      type: Tipo de Actividad
+      no_act: sin actividades
+      avg4: Promedio
+      place: Lugar
+      long: Longitud
+      lat: Latitud
+      ver: Versión
+      os: Sistema operativo
+      net: Red
+      activity: Actividad por
+      goto: Ir a la actividad
+    courses_sintetic_view_and_edit:
+      courses: Visor de Centros Emprendedores
+      show: 'Muestra los Centros Emprendedores de las redes, sus miembros y sus actividades'
+      show2: Mostrar tareas
+      show3: Mostrar cuestionarios
+      show4: Mostrar estadísticas del Centros Emprendedor
+      hmwrks: Tareas
+      hmwrks_delivery: Entregas de tarea
+      show5: Ver entregas
+      quest: Cuestionarios
+      stat: Estadísticas
+    create_super_admin:
+      superuser: Super MEEMS Cúrsame
+      img: Puedes ver las instrucciones de creación de super admin accediendo al código qr
+      enroll: Registrar usuario
+    instructions:
+      create: Instrucciones para creación de súper MEEMS
+      link: 'Crea coloca tu nombre, apellido, email y contraseña, da click en continuar y listo'
+    networks:
+      admin: Administrar networks
+      create: Crear Red
+      create_net: Creando networks
+      net: Red
+      subdomain: Subdominio
+      edit: Editar
+    statics:
+      statics1: Estadísticas del sistema
+      activities: Actividades
+      hmwrks: Tareas
+      hmwrks_delivery: Entrega de tareas
+      exam: Examenes
+      exam_delivery: Entrega de examenes
+      events: Eventos
+    users:
+      usr: Manejador de datos de usuario
+      show1: Mostrar actividades
+      edit1: Editar usuario
+      statics: Estadísticas
+      activities: Manejador de actividades
+      hmwrks: Tareas
+      exam: Examenes
+      find_usr: Buscar Usuario
+      response: Respuestas de tareas
+      response2: Respuestas de examen
+      discuss: Discusiones
