@@ -1,4 +1,3 @@
-<% if user_signed_in? %>
 <div class="global-sidebar">
   <div class="user s-unit">
     <%= link_to show_user_path(current_user.personal_url) do %>
@@ -46,7 +45,7 @@
         <% end %>
         <li>
           <%= link_to courses_path do %>
-            <%= icon 'courses-w' %><%= t('.sidebar_section.courses')%>
+            <%= icon 'courses-w' %><%= t('.sidebar_section.courses', locale: locale)%>
           <% end %>
         </li>
         <% if current_network.evaluable? %>
@@ -71,7 +70,7 @@
         </li>
         <li>
           <%= link_to network_comunity_path, :data => "menu" do %>
-            <%= icon 'community-w' %><%= t('.sidebar_section.community')%>
+            <%= icon 'community-w' %><%= t('.sidebar_section.community', locale: locale)%>
           <% end %>
         </li>
         <% if current_network.radar_token? %>
@@ -120,30 +119,30 @@
               <h5><%= t('.sidebar_section.no_member')%></h5>
               <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
             <% else %>
-              <h5><%= t('.sidebar_section.no_course')%></h5>
-              <p><%= link_to(t('.sidebar_section.no_course_href'), new_course_path, class: 'underline') %></p>
+              <h5><%= t('.sidebar_section.no_course', locale: locale)%></h5>
+              <p><%= link_to(t('.sidebar_section.no_course_href', locale: locale), new_course_path, class: 'underline') %></p>
             <% end %>
           </div>
         <% end %>
       </ul>
     </div>
   </div>
-  
+
   <div class="sidebar-section sidebar-chat tabs">
     <div class="sidebar-section-header s-unit">
       <h3><%= t('.sidebar_section.chat')%></h3>
-      
+
       <div class="chat-switch-wrap tabs-buttons">
         <div class="chat-switch tab active" data-id-target="chat-group-friends">
           <%= icon('friends-12') %> <span><%= t('.sidebar_section.friends')%></span>
         </div>
         <div class="chat-switch tab" data-id-target="chat-group-courses">
-          <%= icon('courses-12') %> <span><%= t('.sidebar_section.courses')%></span>
+          <%= icon('courses-12') %> <span><%= t('.sidebar_section.courses', locale: locale)%></span>
         </div>
       </div>
 
     </div>
-    <div class="sidebar-section-main scroller s-to-f scrollbar"> 
+    <div class="sidebar-section-main scroller s-to-f scrollbar">
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
           <% if current_user.count_friendships != 0 || current_user.admin? || current_user.superadmin? %>
@@ -151,7 +150,7 @@
               <% @friends_online.each do |user|%>
                 <li>
                   <%= link_to open_channel_path(user.id), remote: true, class: "open-chat-panel", data: { panel_type: "user", channel_id: user.id  } do %>
-                    <% if user.avatar.file != nil %> 
+                    <% if user.avatar.file != nil %>
                       <%= image_tag("#{user.avatar.mini}", alt: "", class: "avatar avatar-24") %>
                     <% else %>
                       <%= image_tag("imagexx.png", alt: "", class: "avatar avatar-24") %>
@@ -172,14 +171,14 @@
           <% end %>
 
         </div>
-        
+
         <div id="chat-group-courses" class="tab-content" style="display: none;">
           <ul class="section-list side-courses courses-online-js">
             <% if !current_user_courses.empty? || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
               <% @courses_online.each do |course|%>
                 <li>
                   <%= link_to open_channel_path(course.id,"course" => true), :remote => true, id: course.id do %>
-                    <% if !course.avatar.file.nil? %> 
+                    <% if !course.avatar.file.nil? %>
                         <%= image_tag("#{course.avatar.mini}", alt: "", class: "avatar avatar-24") %>
                     <% else %>
                        <%= image_tag("course-avatarxx.png", alt: "", class: "avatar avatar-24") %>
@@ -191,11 +190,11 @@
             <% else %>
               <div class="inner-no-content">
                 <% if current_role == 'student' %>
-                  <h5><%= t('.sidebar_section.no_member')%></h5>
-                  <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
+                  <h5><%= t('.sidebar_section.no_member', locale: locale)%></h5>
+                  <p><%= t('.sidebar_section.course_message', locale: locale) %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
                 <% else %>
-                  <h5><%= t('.sidebar_section.no_course')%></h5>
-                  <p><%= link_to(t('.sidebar_section.no'), new_course_path, class: 'underline') %></p>
+                  <h5><%= t('.sidebar_section.no_course', locale: locale)%></h5>
+                  <p><%= link_to(t('.sidebar_section.no', locale: locale), new_course_path, class: 'underline') %></p>
                 <% end %>
               </div>
             <% end %>
@@ -215,7 +214,6 @@
   </div>
 
 </div>
-<% end %>
 <% content_for :javascripts do %>
   <script type="text/javascript">
     $(function() {
