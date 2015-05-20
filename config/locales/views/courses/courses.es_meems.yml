@@ -49,7 +49,7 @@ es_meems:
         no_courses: No hay Centros Emprendedores.
       owner_partial_for_member:
         teacher: Líder multiplicador
-        student: Estudiante
+        student: Emprendedor
         admin: MEEMS
       permissionings_edit:
         delete_group: Eliminar del grupo

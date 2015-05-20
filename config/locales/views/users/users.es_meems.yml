@@ -37,7 +37,7 @@ es_meems:
         delete2: Eliminar solicitud de amistad
         add_friends: Agregar a mis amigos
         teacher: Líder multiplicador
-        student: Estudiante
+        student: Emprendedor
         admin: MEEMS
       user_profile_header:
         update: Actualizar portada
