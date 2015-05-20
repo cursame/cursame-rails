@@ -90,7 +90,7 @@ en:
         percent: Assigned percentage
       courses_paginate_button:
         load_more: Upload more...
-      course_header: 
+      course_header:
         update: Update photo
         update_photo: Update photo
         final_score: Final grades
@@ -118,7 +118,7 @@ en:
       count_test: Number of exams answered
     edit_delivery_access:
       hmwrk_title: Homework title
-      descrip: Description 
+      descrip: Description
       publish_date: Published date
       delivery_day: Due Date
       courses: Courses
@@ -154,10 +154,11 @@ en:
       public: Public
       private: Private
       init_date: Start Date
+      teachers: Teachers
       students: Students
       first_name: Write your name or last name.
       add_students: Subscribe students to this course.
-      find_students: Find students to automatically join course      
+      find_students: Find students to automatically join course
       create: Create
       save: Save changes
       delete: Delete permanent course.
@@ -177,9 +178,9 @@ en:
       descrip: Description
       files: Files
       criterium: Grading criterion
-      percent: Please select a percentage from 1 to a 100 to grade this homework. 
+      percent: Please select a percentage from 1 to a 100 to grade this homework.
       hmwrk_score: Homework grade
-      eval: Please select a percentage from 1 to a 100 to grade this homework. 
+      eval: Please select a percentage from 1 to a 100 to grade this homework.
       eval_hmwrk: Grade homework
       score: Grade
     old_course:
@@ -206,7 +207,7 @@ en:
     clone_course_view:
       clone: Clone
       data_course: Course data
-      info_new_course: Change information for new course. 
+      info_new_course: Change information for new course.
       name: Name
       example: "Example: Mathematics I"
       descrip: Description
@@ -216,7 +217,7 @@ en:
       public: Public
       private: Private
       hmwrks: Homework
-      clone_hmwrks: Select the homework you want to clone for the new course. 
+      clone_hmwrks: Select the homework you want to clone for the new course.
       publish_date: Published on
       delivery_date: Due date
       clone2: "(clone)"
@@ -240,7 +241,7 @@ en:
       not_resolved: Unresolved
       obtain_percent2: obtained
     evaluation_schema:
-      text1: "Please specify how you want this course to be evaluated, you may include new evaluation criterion or leave Cúrsame's." 
+      text1: "Please specify how you want this course to be evaluated, you may include new evaluation criterion or leave Cúrsame's."
       criterium: Criterion
       percent: Percentage
       add_criterium: Add evaluation criterion
@@ -253,7 +254,7 @@ en:
       upload: Upload file
       load: Upload more files
       no_files: This course has no files in your library
-      text2: "Cúrsame will not be made responsible for the content submitted by users, or any copyright infractions. Each user is 100% responsible for his content. If you have any problem of this kind please be dure to report it"    
+      text2: "Cúrsame will not be made responsible for the content submitted by users, or any copyright infractions. Each user is 100% responsible for his content. If you have any problem of this kind please be dure to report it"
     members:
       mem: Members
       no_members: No members in this course.

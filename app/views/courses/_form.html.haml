@@ -39,6 +39,32 @@
             = f.text_field :init_date, placeholder: t('.init_date'), class: "date-picker", value: (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date, required: "required", autocomplete: "off"
     - if current_network.subdomain == "meems" && @course.school_id.nil?
       = render partial: 'courses/shared/cct_form', locals: { f: f }
+
+    .form-group
+      .form-group-label
+        =f.label 'admins', t('.teachers')
+      .form-group-main
+        .form-unit
+          .table-box#course-teachers-list
+            .table-box-header
+              = text_field_tag 'teachers-search', '', id: 'teachers-search-input', placeholder: t('.first_name'), data: { role: 'teachers' }
+              .spinner-dark
+            .table-box-body.scrollbar
+              .users-list
+                - unless @course.new_record?
+                  - unless @course.teachers.blank?
+                    - @course.teachers.each do |teacher|
+                      .table-box-unit{ data: { user_id: teacher.id, user_role: "teachers" } }
+                        - member = MembersInCourse.find_by_user_id_and_course_id(teacher.id, @course.id) unless @course.nil?
+                        %label{class: "table-box-unit-inner#{member.nil? ? "" : " active"}"}
+                          = avatar('user', '30', "no", teacher.id, "avatar", "no", "no")
+                          %span= teacher.last_name + " " + teacher.first_name
+                          .delete= icon('w-cross-9-gray')
+                          = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
+                - if @course.new_record? || @course.teachers.blank?
+                  .inner-no-content
+                    %h5 Agrega #{ current_network.professors_tag } al #{ current_network.course_tag }.
+                    %p Busca #{ current_network.professors_tag } para administrar el #{ current_network.course_tag }.
     .form-group
       .form-group-label
         = f.label 'students-search', t('.students') + ":", for: 'students-search-input'
