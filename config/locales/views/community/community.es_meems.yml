@@ -4,7 +4,7 @@ es_meems:
       community_header:
         community: Red de Emprendedores
         all: Todos
-        students: emprendedores
+        students: Emprendedores
         teacher: Líder multiplicadores
       community_paginate_button:
         load_more: Cargar más...

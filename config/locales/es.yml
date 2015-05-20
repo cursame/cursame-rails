@@ -13,7 +13,7 @@ es:
     - vie
     - sáb
     abbr_month_names:
-    - 
+    -
     - ene
     - feb
     - mar
@@ -39,7 +39,7 @@ es:
       long: ! '%A, %d de %B de %Y'
       short: ! '%d de %b'
     month_names:
-    - 
+    -
     - enero
     - febrero
     - marzo
@@ -213,6 +213,6 @@ es:
     current_password: Contraseña actual
     first_name: Nombre
     last_name: Apellido
-    email: Email 
-    bios: Bioagrafía
-    personal_url: Dirección de usuario personalizada   
+    email: Email
+    bios: Biografía
+    personal_url: Dirección de usuario personalizada

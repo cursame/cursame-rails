@@ -214,5 +214,5 @@ es_meems:
     first_name: Nombre
     last_name: Apellido
     email: Email
-    bios: Bioagrafía
+    bios: Biografía
     personal_url: Dirección de usuario personalizada
