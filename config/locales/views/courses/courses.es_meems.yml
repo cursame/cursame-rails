@@ -154,7 +154,8 @@ es_meems:
       public: Público
       private: Privado
       init_date: Fecha de inicio
-      students: emprendedores
+      teachers: Líderes Multiplicadores
+      students: Emprendedores
       first_name: Escribe un nombre o apellido.
       add_students: Inscribe emprendedores a tu Centros Emprendedor.
       find_students: Busca emprendedores para unirlos automaticamente al Centros Emprendedor.
