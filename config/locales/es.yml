@@ -102,6 +102,7 @@ es:
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
+      not_found: " no encontrado."
       accepted: debe ser aceptado
       blank: no puede estar en blanco
       confirmation: no coincide con la confirmación
@@ -213,6 +214,7 @@ es:
     current_password: Contraseña actual
     first_name: Nombre
     last_name: Apellido
-    email: Email
+    email: "Correo electrónico"
     bios: Biografía
     personal_url: Dirección de usuario personalizada
+    confirmation_token: "El correo electrónico de confirmación"
