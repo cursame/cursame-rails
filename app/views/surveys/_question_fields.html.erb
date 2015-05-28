@@ -2,10 +2,14 @@
   <div class="element">
     <span id="question-num" class="num">1.</span>
     <%= f.text_field :content, rows: 1, placeholder: t('.quest1'), class: 'question-input-field', required: "required" %>
+    <%= f.fields_for :question_files, f.object.question_files.build do |build| %>
+      <%= render '/surveys/files/question_file_form', :f => build %>
+    <%end%>
     <div class="delete-question-button">
       <%= link_to_remove_fields icon('x-close'), f, {:class=>'btn btn-small btn-secondary', :clear => 'both'}, '#box-question'  %>
     </div>
   </div>
+
   <div id="box-request-<%=@survey.id%>">
     <%= f.fields_for :answers do |builder| %>
     <%= render '/surveys/answer_fields', :f => builder %>

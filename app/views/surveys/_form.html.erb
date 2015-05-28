@@ -9,7 +9,7 @@ questions = @survey.questions.build
 end
 end
 %>
-<%= form_for @survey, remote: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
+<%= form_for @survey, remote: true, multipart: true, html: { class: "default-form survey-form", id: random_id, data: { post_type: 'Survey' } } do |f| %>
 <%= hidden_field_tag 'in_form', in_form%>
 <div class="new-publication-form-content">
 
@@ -99,6 +99,9 @@ end
 <div class="new-publication-footer">
   <ul class="list-buttons right <%= 'fr' unless active_edit %>">
     <li>
+      <%= image_tag('loader_img.GIF', widht: '30px', height: '30px', style: 'margin-right:220px; display:none;', id: 'loader_img_survey')%>
+    </li>
+    <li>
       <% if active_edit %>
       <%= link_to t('.cancel'), "", class: 'btn btn-secondary cancel-edit-publication-js', id: 'cancel-post-form_tab' %>
       <% else %>
@@ -155,5 +158,6 @@ cal.css({
 }
 });
 $('#<%= random_id %>').validate();
+sendSurveyByAjax("<%= random_id %>");
 });
 </script>

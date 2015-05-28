@@ -10,6 +10,9 @@
           <li>
             <div class="survey-question">
               <p><%= question.content%></p>
+              <% question.question_files.each do |file|%>
+               <%=  image_tag(file.file.preview, style: "height: 150px;") %>
+              <%end%>
 
               <div class="survey-answers">
                 <ul>
@@ -21,6 +24,9 @@
                           <%= check_box_tag "questions["+question.id.to_s+"][]", answer.id, false, required: "required" %>
                         </label>
                       </div>
+                      <% answer.answer_files.each do |file|%>
+                      <%=  image_tag(file.file.preview, style: "height: 100px; margin:10px;") %>
+                      <%end%>
                     </li>
                   <% end %>
                 </ul>

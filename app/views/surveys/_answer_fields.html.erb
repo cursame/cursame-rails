@@ -1,11 +1,21 @@
 <div id="box-request-child" class="request-field" >
   <span id="request-num" class="num">a)</span>
   <%= f.text_field :content, :class => "answer-field-input ", :placeholder=>t('.response'), :required => "required" %>
-  
   <div class="answer-child-options">
+    <%= f.fields_for :answer_files, f.object.answer_files.build do |builder| %>
+    <a  class="button_answer_field" id="button_answer_img"><%=  icon('upload-asset') %>
+      <%= builder.file_field :file, class: 'prev_input_answer', :style => 'display:none;' %>
+    </a>
+    <% end %>
     <span class="btn btn-small btn-secondary">
       <%= f.check_box :correct, :class=> 'is-correct-chk' %> <%=t('.correct')%>
     </span>
     <%= link_to_remove_fields t('.delete'), f, {:class=>'btn btn-small btn-secondary'}, '#box-request'%>
   </div>
+  <div class="select_viwver_answer"  id="oppen_target-img"  style=" display:none;" id="oppen_target_answer">
+    <img id="survey-target-answer"  height="100px" class="img_viewver_answer" />
+  </div>
 </div>
+<script type="text/javascript">
+RemachForLazyLoadAnswer();
+</script>

@@ -1,0 +1,12 @@
+<div class="delete-question-button" style="margin-right:32px; margin-top:3px">
+  <a  class="button_question_field" id="button_question_img" data-divop="" data-divimg=""><%=  icon('upload-asset') %>
+    <%= f.file_field :file, class: 'prev_input', style: 'display:none;' %>
+  </a>
+</div>
+<div class="select_viwver_question" style="display:none;" id="oppen_target_">
+  <img id="survey-target-" width="120px" class="img_viewver_question" />
+</div>
+
+<script type="text/javascript">
+    RemachForLazyLoadQuestion();
+</script>

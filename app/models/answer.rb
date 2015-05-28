@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
-  attr_accessible :content, :correct, :question
+  has_many :answer_files, :dependent => :destroy
+  accepts_nested_attributes_for :answer_files
 end
