@@ -22,14 +22,14 @@ class Managers::BitCoursesController < Managers::BaseController
       @course.add_teachers(teachers) + @course.add_students(students)
     @course.save!
     link_course_to_group(@course.id, params[:folio])
-    inf_flash = { success: t('.managers.bit_messages.success_importing_group') }
+    inf_flash = { success: t('.managers.bit.success_importing_group') }
     redirect_to index_managers_bit_courses_path, flash: inf_flash
   end
 
   private
 
   def error_connection
-    info_flash = { error: t('.managers.bit_messages.error_connection') }
+    info_flash = { error: t('.managers.bit.error_connection') }
     redirect_to :back, flash: info_flash
   end
 
@@ -37,27 +37,29 @@ class Managers::BitCoursesController < Managers::BaseController
     case exception.record.class.name
     when 'User' then error_save_user(exception)
     when 'Course' then error_save_course(exception)
-    else 'Error, no se pudo crear el objeto'
+    else
+      flash = t('.managers.bit.error_course')
+      redirect_to :back, flash: { error: flash }
     end
   end
 
   def error_save_user(exception)
     info = "#{exception.class}: #{exception.message}: #{exception.record.email}"
     Rails.logger.error "\e[1;31m[ERROR]\e[0m " + info
-    the_flash = 'No se pudo guardar el usuario: ' + "#{exception.record.name}"
-    redirect_to :back, flash: { error: the_flash }
+    flash = t('.managers.bit.error_user') + "#{exception.record.name}"
+    redirect_to :back, flash: { error: flash }
   end
 
   def error_save_course(exception)
     info = "#{exception.class}: #{exception.message}"
     Rails.logger.error "\e[1;31m[ERROR]\e[0m Exception " + info
-    the_flash = 'No se pudo guardar el curso: ' + "#{exception.record.title}"
-    redirect_to :back, flash: { error: the_flash }
+    flash = t('.managers.bit.error_course') + "#{exception.record.title}"
+    redirect_to :back, flash: { error: flash }
   end
 
   def raise_error_response(uri, response, message)
     log = "{uri: #{uri}, message: #{response.message}, code: #{response.code}}"
-    Rails.logger.error "\e[1;31m[ERROR]\e[0m" + message + log
+    Rails.logger.error "\e[1;31m[ERROR]\e[0m " + message + log
     fail Errors::ErrorResponseAppBit
   end
 
@@ -165,7 +167,7 @@ class Managers::BitCoursesController < Managers::BaseController
     last_name = bit_user['apellidoPaterno'] + ' ' + bit_user['apellidoMaterno']
     User.new(
       email: bit_user['correo'],
-      password: 'cursame_bit',
+      password: Devise.friendly_token,
       first_name: bit_user['nombre'],
       last_name: last_name,
       personal_url: SecureRandom.uuid,
@@ -178,7 +180,7 @@ class Managers::BitCoursesController < Managers::BaseController
     last_name = bit_user['apellidoPaterno'] + ' ' + bit_user['apellidoMaterno']
     User.new(
       email: bit_user['sCorreo'],
-      password: 'cursame_bit',
+      password: Devise.friendly_token,
       first_name: bit_user['nombre'],
       last_name: last_name,
       personal_url: SecureRandom.uuid,
