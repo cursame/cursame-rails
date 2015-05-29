@@ -15,3 +15,6 @@ en:
     home:
       header:
         cosa: hi!!
+  attributes:
+    email: "Email"
+    confirmation_token: "Confirmation email"
