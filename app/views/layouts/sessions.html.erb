@@ -20,7 +20,7 @@
       <%= yield %>
       <%= render "devise/shared/footer-links" %>
     </div>
-    <% if !current_network.image_front.nil? && !current_network.image_front.file.nil? %>
+    <% if !current_network.nil? && !current_network.image_front.nil? && !current_network.image_front.file.nil? %>
       <div class="signup-restore" style='background-image:url("<%= current_network.image_front %>");'>
         <div class="background-layer"></div>
       </div>
