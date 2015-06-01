@@ -24,4 +24,8 @@ es:
     no_delete: "No puedes borrar este usuario."
     proc_file: "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación"
     file: "Tipo de archivo no soportado"
-    
+    bit:
+      success_importing_group: 'Grupo importado correctamente, Se ha creado el curso.'
+      error_course: 'Ocurrio un error al crear el curso.'
+      error_connection: "Ocurrio un error, no se pudo acceder a la información de bit"
+      error_user: 'No se pudo guardar a el usuario: '
