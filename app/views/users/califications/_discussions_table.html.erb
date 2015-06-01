@@ -3,7 +3,7 @@
     <h4><%= icon 'activity-discussion' %> <%=t('.discuss')%></h4>
     <% if member.course.cursame_criteria %>
       <span class="meta-info">
-        <%= t('.percent') + ':' + member.cursame_discussions_percentage.to_s + '%' %>
+        <%= t('.percent', number: member.cursame_discussions_percentage) %>
       </span>
     <% end %>
   </div>

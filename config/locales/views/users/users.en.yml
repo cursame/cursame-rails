@@ -6,7 +6,7 @@ en:
       enroll: "You need to be enrolled in this course to get graded."
       deliveries_table:
         hmwrk: Homework
-        percent: Percentage
+        percent: 'Percentage: %{number}%'
         hmwrks: Homework
         score: Grade
         no_deliver: Not turned in
@@ -21,10 +21,10 @@ en:
         no_score: Not graded
         avg_score: Average discussion grade
         no_discuss: There are still no gradable discussion in this course.
-        percent: "Percentage"
+        percent: 'Percentage: %{number}%'
       surveys_table:
         quest: Tests
-        avg: Percentage
+        avg: 'Percentage: %{number}%'
         exam: Exams
         score: Grade
         no_answered: Not answers

@@ -6,7 +6,7 @@ es_meems:
       enroll: "Necesitas estar inscrito en al menos un Centros Emprendedor para tener calificaciones."
       deliveries_table:
         hmwrk: Tareas
-        percent: Porcentaje
+        percent: 'Porcentaje: %{number}%'
         hmwrks: Tarea
         score: Calificación
         no_deliver: No entregada
@@ -21,10 +21,10 @@ es_meems:
         no_score: No calificada
         avg_score: Calificación promedio en discusiones
         no_discuss: Aún no hay discusiones evaluables en este Centros Emprendedor.
-        percent: "Porcentaje"
+        percent: 'Porcentaje: %{number}%'
       surveys_table:
         quest: Cuestionarios
-        avg: Porcentaje
+        avg: 'Porcentaje: %{number}%'
         exam: Examen
         score: Calificación
         no_answered: No resuelto

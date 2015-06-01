@@ -3,7 +3,7 @@
     <h4><%= icon 'activity-delivery' %> <%=t('.hmwrk')%></h4>
     <% if member.course.cursame_criteria %>
       <span class="meta-info">
-        <%= t('.percent') + ':' + member.cursame_deliveries_percentage.to_s + '%' %>
+        <%= t('.percent', number: member.cursame_deliveries_percentage) %>
       </span>
     <% end %>
   </div>
