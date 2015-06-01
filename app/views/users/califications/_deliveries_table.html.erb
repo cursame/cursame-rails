@@ -1,9 +1,9 @@
 <div class="course-califications-section">
   <div class="course-califications-section-title">
-    <h4><%= icon 'activity-delivery' %> <%=t('.hmwrk')%>Tareas</h4>
+    <h4><%= icon 'activity-delivery' %> <%=t('.hmwrk')%></h4>
     <% if member.course.cursame_criteria %>
-      <span class="meta-info"> 
-        <%= t('.percent') + ':' + member.cursame_deliveries_percentage + '%' %>
+      <span class="meta-info">
+        <%= t('.percent') + ':' + member.cursame_deliveries_percentage.to_s + '%' %>
       </span>
     <% end %>
   </div>

@@ -2,8 +2,8 @@
   <div class="course-califications-section-title">
     <h4><%= icon 'activity-discussion' %> <%=t('.discuss')%></h4>
     <% if member.course.cursame_criteria %>
-      <span class="meta-info"> 
-        <%= "Porcentaje: #{ member.cursame_discussions_percentage } %" %>
+      <span class="meta-info">
+        <%= t('.percent') + ':' + member.cursame_discussions_percentage.to_s + '%' %>
       </span>
     <% end %>
   </div>
@@ -12,7 +12,7 @@
       <thead>
         <tr>
           <th colspan="2"><%=t('.discuss2')%></th>
-          <th><%=t('.score')%>Calificación</th>
+          <th><%=t('.score')%></th>
         </tr>
       </thead>
       <tbody>

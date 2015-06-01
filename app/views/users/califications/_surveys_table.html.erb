@@ -2,8 +2,8 @@
   <div class="course-califications-section-title">
     <h4><%= icon 'activity-survey' %> <%=t('.quest')%></h4>
     <% if member.course.cursame_criteria %>
-      <span class="meta-info"> 
-        <%= t('.avg') + ':' + member.cursame_surveys_percentage + '%' %>
+      <span class="meta-info">
+        <%= t('.avg') + ':' + member.cursame_surveys_percentage.to_s + '%' %>
       </span>
     <% end %>
   </div>
