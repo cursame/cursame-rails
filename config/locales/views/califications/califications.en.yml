@@ -20,7 +20,7 @@ en:
       criterion: Criterion
       score: Score
       percent: "Percentage:"
-      no_score: You still donÕt have a final grade.
+      no_score: "You still don't have a final grade."
       no_printable_score: Your teacher has not yet given a final grade.
       active_courses: Active Courses
     member:

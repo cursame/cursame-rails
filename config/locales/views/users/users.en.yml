@@ -1,9 +1,12 @@
 en:
   users:
     califications:
+      ratings: "Grades"
+      no_score: "You still have no grades."
+      enroll: "You need to be enrolled in this course to get graded."
       deliveries_table:
         hmwrk: Homework
-        percent: Percentage
+        percent: 'Percentage: %{number}%'
         hmwrks: Homework
         score: Grade
         no_deliver: Not turned in
@@ -18,9 +21,10 @@ en:
         no_score: Not graded
         avg_score: Average discussion grade
         no_discuss: There are still no gradable discussion in this course.
+        percent: 'Percentage: %{number}%'
       surveys_table:
         quest: Tests
-        avg: Percentage
+        avg: 'Percentage: %{number}%'
         exam: Exams
         score: Grade
         no_answered: Not answers
@@ -79,10 +83,6 @@ en:
       welcome: 'Welcome to Cursame, you must reset your password to finish the sign in process.'
       pwd: Type password
       save: Save password
-    califications:
-      ratings: Grades
-      no_score: You still have no grades.
-      enroll: You need to be enrolled in this course to get graded.
     courses:
       courses2: Courses
       no_registered: You are not subscribed to this course.
@@ -91,7 +91,7 @@ en:
     dashboard:
       select: Select networks
       goto: Go to super admin
-      text1: When you select network you must log in in the network directed by an independent system. 
+      text1: When you select network you must log in in the network directed by an independent system.
       log_out: Log out
     friends:
       no_friends: You still have no friends.

@@ -1,9 +1,12 @@
 es:
   users:
     califications:
+      ratings: "Calificaciones"
+      no_score: "Aún no tienes calificaciones."
+      enroll: "Necesitas estar inscrito en al menos un curso para tener calificaciones."
       deliveries_table:
         hmwrk: Tareas
-        percent: Porcentaje
+        percent: 'Porcentaje: %{number}%'
         hmwrks: Tarea
         score: Calificación
         no_deliver: No entregada
@@ -18,9 +21,10 @@ es:
         no_score: No calificada
         avg_score: Calificación promedio en discusiones
         no_discuss: Aún no hay discusiones evaluables en este curso.
+        percent: 'Porcentaje: %{number}%'
       surveys_table:
         quest: Cuestionarios
-        avg: Porcentaje
+        avg: 'Porcentaje: %{number}%'
         exam: Examen
         score: Calificación
         no_answered: No resuelto
@@ -79,10 +83,6 @@ es:
       welcome: 'Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro.'
       pwd: Ingresa una contraseña.
       save: Guardar contraseña
-    califications:
-      ratings: Calificaciones
-      no_score: Aún no tienes calificaciones.
-      enroll: Necesitas estar inscrito en al menos un curso para tener calificaciones.
     courses:
       courses2: Cursos
       no_registered: Aún no estas inscrito en ningún curso.
