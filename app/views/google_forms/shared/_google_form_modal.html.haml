@@ -1,0 +1,10 @@
+.overlay-header
+  .overlay-icon
+    = icon('wufoo-post-card')
+  .overlay-title
+    %h3
+      = link_to google_form.title, google_form.url, target: "_blank"
+  .close-overlay= icon('x-close')
+.overlay-content
+  %h6= google_form.description
+  %br/

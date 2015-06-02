@@ -194,7 +194,10 @@ Cursame30Lb::Application.routes.draw do
   match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/wufoo_form/:id', to: 'modal#wufoo_form_modal', :as => :wufoo_form_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/google_form/:id', to: 'modal#google_form_modal',
+                                   as: :google_form_modal,
+                                  via: [:get],
+                             defaults: { format: 'js' }
   match '/modals/reported_content/:id', to: 'modal#reported_content_modal', :as => :reported_content_modal, :via => [:get], :defaults => { :format => 'js' }
 
   # Calificaciones

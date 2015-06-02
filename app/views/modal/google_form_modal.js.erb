@@ -1,0 +1,5 @@
+<% unless @form.nil? %>
+  createModal( '<%= escape_javascript(render(partial: "/google_forms/shared/google_form_modal", locals: { google_form: @form })) %>', 'overlay-informative first-time-survey-overlay');
+<% else %>
+  Notice('error', 'El formulario que tratas de ver ya no existe, ponte en contacto con el profesor del curso.')
+<% end %>
