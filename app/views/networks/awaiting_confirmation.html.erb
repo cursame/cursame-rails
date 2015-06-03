@@ -1,6 +1,6 @@
 <div class="user-sessions-wrap user-sessions-medium">
   <div class="user-sessions-network-brand">
-    <% if current_network.free || current_network.logo.file == nil %>
+    <% if current_network.logo.file.nil? %>
       <%= link_to icon('logo-cursame'), root_path, title: current_network.name, class: "free_network" %>
     <% else %>
       <%= link_to image_tag("#{current_network.logo.square}"), "http://#{current_network.subdomain}.#{links}/"%>
