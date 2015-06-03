@@ -407,7 +407,7 @@
         </div>
       <% end %>
     <% when 'course_google_form' %>
-      <%= link_to notification.notificator.url, remote: true do %>
+      <%= link_to google_form_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.pollable.id, "avatar", "no", "no") %>

@@ -78,7 +78,7 @@ class GoogleForm < ActiveRecord::Base
     when Network
       "network_google_form"
     when Course
-      "course_wufoo_form"
+      "course_google_form"
     else
       "undefined"
     end
