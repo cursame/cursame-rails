@@ -80,7 +80,7 @@ en:
         sure: Are you sure you want to delete this course.
         create_date: "Created on:"
         descrip: description
-        admin: Admins
+        teachers: Teachers
         students: Students
         comments: Comments
         hmwrks: Homework
@@ -228,7 +228,7 @@ en:
         edit: Edit
         delete:  Delete
         sure: Are you sure you want to delete this user?.
-      new: 
+      new:
         create: Create user
       show:
         return: Back
@@ -253,12 +253,12 @@ en:
       import_std: Import students in course
     import_members:
       import1: Importar members
-      import2: Import course members from data base 
-      download: Download course file 
+      import2: Import course members from data base
+      download: Download course file
       import3: Import user list
       text1: It is important to take into account that the files format is fundamental to import the courses correctly.
       text2: "The owner may be o to 1, 0 for the owners of courses, and 1 to specify that he is just another member of the course. "
-      text3: The email must be associated to the user 
+      text3: The email must be associated to the user
       no_file: FILE NOT FOUND
       list: Import list.
       course: Course
@@ -295,4 +295,4 @@ en:
         sure: "¿Are you sure you want to delete this content?"
         delete_report: "delete report"
         sure2: "¿Are you sure you want to delete this report?, The content will not be deleted."
-        
+

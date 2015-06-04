@@ -80,7 +80,7 @@ es_meems:
         sure: Estas seguro de borrar este Centros Emprendedor.
         create_date: Fecha de Creación
         descrip: Descripción
-        admin: MEEMS
+        teachers: Líderes Multiplicadores
         students: Emprendedores
         comments: Comentarios
         hmwrks: Tareas

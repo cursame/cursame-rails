@@ -37,7 +37,7 @@ es:
       shared:
         form:
           name: Nombre
-          example: Ejemplo 
+          example: Ejemplo
           example2: Matemáticas I
           descrip: Descripción
           privacy: Privacidad
@@ -80,7 +80,7 @@ es:
         sure: Estas seguro de borrar este curso.
         create_date: Fecha de Creación
         descrip: Descripción
-        admin: Administradores
+        teachers: Maestros
         students: Alumnos
         comments: Comentarios
         hmwrks: Tareas
@@ -228,7 +228,7 @@ es:
         edit: Editar
         delete: Borrar
         sure: Estas seguro de borrar este usuario.
-      new: 
+      new:
         create: Crear Usuario
       show:
         return: ← Regresar
