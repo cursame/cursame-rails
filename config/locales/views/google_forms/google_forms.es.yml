@@ -24,3 +24,4 @@ es:
         the_form: 'El formulario '
         was_created: ' fue creado por'
         in_the_course: ' en el curso'
+    success_form: 'Formulario creado exitosamente'
