@@ -20,4 +20,4 @@ es:
       dropdown:
         courses: "Cursos"
         public: "Público"
-
+    success_form: 'Formulario creado exitosamente'

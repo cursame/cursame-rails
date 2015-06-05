@@ -20,3 +20,4 @@ en:
       dropdown:
         courses: "Courses"
         public: "Public"
+    success_form: 'Form created successfully'
