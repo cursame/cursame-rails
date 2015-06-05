@@ -41,7 +41,7 @@ gem 'dropbox-api'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'aws-ses', '~> 0.5.0', require: 'aws/ses'
-gem 'exception_notification', '~> 3.0.1' 
+gem 'exception_notification', '~> 3.0.1'
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 gem 'wuparty', '~> 1.2.6'
@@ -68,6 +68,7 @@ group :development do
   gem 'unicorn'
   gem 'sqlite3'
   gem 'rubocop'
+  gem "i18n-js", ">= 3.0.0.rc8"
 end
 
 group :test do
