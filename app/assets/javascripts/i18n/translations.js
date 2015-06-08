@@ -3191,6 +3191,7 @@ I18n.translations["en"] = {
       "delete": "Delete",
       "response": "Type answer"
     },
+    "correct_edit": "not PASS.",
     "form": {
       "add_quest": "Add question",
       "attempts": "Attempts",
@@ -3389,6 +3390,9 @@ I18n.translations["en"] = {
       "enroll": "Subscribe to a network",
       "friends": "My friends",
       "net": "my networks"
+    },
+    "pendding_friends": {
+      "no_request": "not PASS"
     },
     "set_password_form": {
       "pwd": "Type password",
@@ -6588,6 +6592,7 @@ I18n.translations["es"] = {
       "delete": "Eliminar",
       "response": "Ingresar respuesta"
     },
+    "correct_edit": "Cuestionario editado correctamente.",
     "form": {
       "add_quest": "Agregar Pregunta",
       "attempts": "Intentos",
@@ -6785,6 +6790,9 @@ I18n.translations["es"] = {
       "enroll": "inscribirse a una red",
       "friends": "mis amigos",
       "net": "mis redes"
+    },
+    "pendding_friends": {
+      "no_request": "No hay solicitudes de amistad pendientes."
     },
     "set_password_form": {
       "pwd": "Ingresa una contraseña.",
@@ -8257,7 +8265,8 @@ I18n.translations["es_meems"] = {
         "roles": "Roles: ",
         "title": "Título: ",
         "title2": "Titulo del formulario"
-      }
+      },
+      "success_form": "Formulario creado exitosamente"
     },
     "success_form": "Formulario creado exitosamente"
   },
@@ -9957,6 +9966,7 @@ I18n.translations["es_meems"] = {
       "delete": "Eliminar",
       "response": "Ingresar respuesta"
     },
+    "correct_edit": "Cuestionario editado correctamente.",
     "form": {
       "add_quest": "Agregar Pregunta",
       "attempts": "Intentos",
@@ -10154,6 +10164,9 @@ I18n.translations["es_meems"] = {
       "enroll": "inscribirse a una red",
       "friends": "mis amigos",
       "net": "mis redes"
+    },
+    "pendding_friends": {
+      "no_request": "No hay solicitudes de amistad pendientes."
     },
     "set_password_form": {
       "pwd": "Ingresa una contraseña.",
@@ -13325,6 +13338,7 @@ I18n.translations["devise"] = {
       "delete": "Eliminar",
       "response": "Ingresar respuesta"
     },
+    "correct_edit": "Cuestionario editado correctamente.",
     "form": {
       "add_quest": "Agregar Pregunta",
       "attempts": "Intentos",
@@ -13522,6 +13536,9 @@ I18n.translations["devise"] = {
       "enroll": "inscribirse a una red",
       "friends": "mis amigos",
       "net": "mis redes"
+    },
+    "pendding_friends": {
+      "no_request": "No hay solicitudes de amistad pendientes."
     },
     "set_password_form": {
       "pwd": "Ingresa una contraseña.",
