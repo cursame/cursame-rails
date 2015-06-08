@@ -19,7 +19,7 @@
       <%= render :partial => "managers/charts/users"%>
 
     </div>
-  </div>    
+  </div>
 </div>
 
 <div class="cols-12">
@@ -78,9 +78,11 @@
 
         <script class="text/javascript">
           Morris.Donut({
-            element: 'discussion_graph',
+            element: 'deliveries_graph',
             data: [
-             {label: "Discusiones", value: <%=@discussions %> }
+             {label: "Tareas", value: <%=@total_deliveries %> },
+             {label: "En curso", value:<%= @published_deliveries_count  %>},
+             {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
             ]
           });
         </script>
@@ -115,7 +117,7 @@
           <% @surveys = current_network.surveys.count %>
           <% @surveys_publish = current_network.surveys.where(:state => 'published').count%>
           <% @surveys_unpublished =  current_network.surveys.where(:state => 'unpublish').count%>
-          
+
           <h5><%=t('.exams')%></h5>
           <div id="surveys_graph" style="height:227px; weight:279px;" ></div>
 
@@ -133,7 +135,6 @@
       </div>
     </div>
 
-
     <div class="col col-4 omega">
       <div class="col-inner">
         <div class="admin-chart">
@@ -141,19 +142,11 @@
           <% @discussions = current_network.discussions.count %>
           <div id="discussion_graph" style="height:227px; weight:279px;" ></div>
 
-    <div class="col col-4 omega">
-      <div class="col-inner">
-        <div class="admin-chart">
-          <h5>Tareas</h5>
-          <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
-
           <script class="text/javascript">
             Morris.Donut({
-              element: 'deliveries_graph',
+              element: 'discussion_graph',
               data: [
-               {label: "Tareas", value: <%=@total_deliveries %> },
-               {label: "En curso", value:<%= @published_deliveries_count  %>},
-               {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
+               {label: "Discusiones", value: <%=@discussions %> }
               ]
             });
           </script>
