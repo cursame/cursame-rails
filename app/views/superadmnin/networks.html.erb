@@ -1,7 +1,7 @@
 <div id="notice"></div>
 <h1 class="super-admin-header2"><%=t('.admin')%></h1>
 <div class="ko_btn" id="lp_lk"><div class=" button"><center><%=t('.create')%> ++</center></div></div>
-  
+
   <script>
          $('#lp_lk').click(function() {
            $('#lok_n').slideToggle('slow', function() {
@@ -9,9 +9,9 @@
            });
          });
      </script>
-  
+
 <div id="lok_n" style="display:none;">
-   
+
 <p><%=t('.create_net')%></p>
 <%= form_for(@network = Network.new(params[:network]), remote: true) do |f|%>
 
@@ -28,15 +28,11 @@
     <%= f.text_field :population %>
   </div>
   <div class="field">
-      <%= f.label :es_free %><br />
-      <%= f.check_box :free %>
-    </div>
-  <div class="field">
         <%= f.label :registro_publico %><br />
         <%= f.check_box :public_register %>
   </div>
   <% 1.times do networks = @network.users.build end %>
-  
+
    <%= f.fields_for :users do |user|%>
      <%= f.label :email %><br />
      <%= user.email_field :email %><br />
@@ -47,11 +43,11 @@
      <%= f.label :personal_url %></br>
      <%= user.text_field :personal_url   %></br>
      <%= f.label :acepta_terminos_del_servicio %>
-     <%= user.check_box :accepted_terms, :value => true %>     
+     <%= user.check_box :accepted_terms, :value => true %>
    <%end%>
-   
 
-       
+
+
  <div class="actions">
    <%= f.submit %>
  </div>
@@ -65,8 +61,7 @@
        <h3> <%=t('.net')%>: <%= n.name %> </h3>
        <p>  <%=t('.subdomain')%>: <%= n.subdomain %>  </p>
        <p>  Population: <%= n.population %>  </p>
-       <p>  Free: <%= n.free %>  </p>
-           
+
        <div class="button" id="g_<%=n.id%>"><center><%=t('.edit')%></center></div>
     </div>
     <script>
@@ -76,7 +71,7 @@
           });
         });
     </script>
-    <div class="l_tunder"id="l_<%=n.id%>" style="display:none;">        
+    <div class="l_tunder"id="l_<%=n.id%>" style="display:none;">
               <%= form_for(n, :remote => true) do |f| %>
                    <div class="field">
                       <%= f.label :name %><br />
@@ -91,18 +86,14 @@
                        <%= f.text_field :population %>
                      </div>
                      <div class="field">
-                         <%= f.label :es_free %><br />
-                         <%= f.check_box :free %>
-                       </div>
-                     <div class="field">
                            <%= f.label :registro_publico %><br />
                            <%= f.check_box :public_register %>
                      </div>
                       <%= f.submit %>
-                      
+
               <%end %>
       </div>
-           
+
      <% end %>
 </div>
 </div>
