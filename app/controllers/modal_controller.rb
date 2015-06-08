@@ -57,6 +57,13 @@ class ModalController < ApplicationController
     @form = WufooForm.find_by_id(params[:id])
   end
 
+  def google_form_modal
+    @form = GoogleForm.find_by_id(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def reported_content_modal
     @type = params[:type]
     if params[:type] == 'wall'

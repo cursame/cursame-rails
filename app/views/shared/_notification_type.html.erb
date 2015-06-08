@@ -1,25 +1,25 @@
 <li id="notification-<%=notification.id.to_s%>" class="<%= cls %>" >
-  <div class="activity-feed">  
+  <div class="activity-feed">
   <% if notification.notificator != nil%>
-    
+
     <% case notification.kind %>
-    <% when 'user_comment_on_network'%> 
+    <% when 'user_comment_on_network'%>
       <!-- Notificacion: 1 - Usuario comento en una red *** esta no sucede por que son muchos usuarios-->
       <% if current_user && current_user.avatar != nil%>
         <% user = notification.notificator.user%>
-        
+
         <%= link_to image_tag(user.avatar.modern, {:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( !user.avatar.blank? )%>
         <%= link_to image_tag(user.image_avatarxxx, {:class => "avatar-notifications avatar-mini"}), show_user_path(user.personal_url) if ( user.avatar.blank? )%>
       <% end%>
-      
+
       <%=link_to "#{notification.notificator.user.name}", show_user_path(notification.notificator.user.personal_url) if (!notification.notificator.user.name.blank?)%>
       <%=link_to t('.activity_feed.lookup_usr'), show_user_path(notification.notificator.user.personal_url) if (notification.notificator.user.name.blank?) %>
       <%=t('.activity_feed.comment_net')%><%= link_to "#{notification.notificator.commentable.name}", network_path(notification.notificator.commentable.subdomain) %>
-            
+
     <!-- Notificacion: 2 - Usuario comento en un curso -->
     <% when 'user_comment_on_course'%>
       <% user = notification.notificator.user%>
-      
+
       <%= link_to comment_path(notification.notificator) do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
@@ -31,14 +31,14 @@
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
-      
+
     <!-- Notificacion: 3 - Curso publico nuevo en una red -->
     <% when 'new_public_course_on_network'%>
       <img src="/assets/group-avatar-mini.png" class="avatar-notifications avatar-mini">
       <%=t('.activity_feed.new_course')%>
       <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b><%=t('.activity_feed.in_network')%><b><%= notification.notificator.network.name %></b>
       <!-- #notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses") -->
-    
+
     <!-- Notificacion: 4 - Usuario aceptado en un curso -->
     <% when 'user_accepted_in_course'%>
       <%= link_to course_path(notification.notificator.id) do %>
@@ -112,7 +112,7 @@
     <!-- Notificacion: 8 - Nueva entrega a una tarea -->
     <% when 'new_assignment_on_delivery'%>
       <% response = notification.notificator.delivery.responses.keep_if {|response| response.user_id == notification.notificator.user.id } %>
-      
+
       <%= link_to evaluate_delivery_response_path(response) do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
@@ -165,12 +165,12 @@
         <% end %>
 
       <%end%>
-    
+
     <!-- Notificacion: 11 - Usuario acepto amistad -->
     <% when 'user_accepted_friendship'%>
       <% if notification.notificator != nil && notification.notificator.friend != nil %>
           <% user = notification.notificator.friend %>
-          
+
           <%= link_to show_user_path(user.personal_url) do %>
             <div class="activity-feed-author">
               <span class="avatar-holder">
@@ -184,7 +184,7 @@
           <% end %>
 
       <%end%>
-      
+
     <!-- Notificacion: 12 - Usuario comento en una discusion -->
     <% when 'user_comment_on_discussion'%>
       <% user = notification.notificator.user %>
@@ -199,9 +199,9 @@
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
-      
+
     <!-- Notificacion: 13 - Usuario comento en un comentario -->
-    <% when 'user_comment_on_comment'%>    
+    <% when 'user_comment_on_comment'%>
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
         <%= link_to comment_path(notification.notificator.commentable) do %>
@@ -216,8 +216,8 @@
           </div>
         <% end %>
       <% end %>
-    
-    <!-- Notificacion: 14 - Usuario comento en un usuario -->      
+
+    <!-- Notificacion: 14 - Usuario comento en un usuario -->
     <% when 'user_comment_on_user'%>
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
@@ -232,9 +232,9 @@
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
-      <% end %> 
-    
-    <!-- Notificacion: 15 - Usuario comento en una tarea --> 
+      <% end %>
+
+    <!-- Notificacion: 15 - Usuario comento en una tarea -->
     <% when 'user_comment_on_delivery'%>
        <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
@@ -257,7 +257,7 @@
     <% when 'user_request_membership_in_course' %>
       <% if notification.notificator != nil %>
         <% user = notification.notificator.user %>
-        
+
         <%= link_to course_members_path(notification.notificator.course.id) do %>
           <div class="activity-feed-author">
             <span class="avatar-holder">
@@ -291,7 +291,7 @@
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
           <% end %>
-          
+
         <%end%>
       <%end%>
 
@@ -305,7 +305,7 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6><%=t('.activity_feed.the_course')%><span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.course_expired')%></h6>          
+            <h6><%=t('.activity_feed.the_course')%><span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.course_expired')%></h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
 
           </div>
@@ -331,7 +331,7 @@
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
           <% end %>
-          
+
         <%end%>
       <%end%>
 
@@ -371,7 +371,7 @@
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
           <% end %>
-          
+
         <%end%>
       <%end%>
 
@@ -389,11 +389,11 @@
             </h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
-        <% end %>  
+        <% end %>
       <%end%>
 
     <% when 'network_google_form' %>
-      <%= link_to wufoo_form_modal_path(notification.notificator), remote: true do %>
+      <%= link_to google_form_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('user', '45', "no", notification.notificator.user.id, "avatar", "no", "no") %>
@@ -407,7 +407,7 @@
         </div>
       <% end %>
     <% when 'course_google_form' %>
-      <%= link_to notification.notificator.url, remote: true do %>
+      <%= link_to google_form_modal_path(notification.notificator.id), remote: true do %>
         <div class="activity-feed-author">
           <span class="avatar-holder">
             <%= avatar('course', '45', "no", notification.notificator.pollable.id, "avatar", "no", "no") %>
@@ -446,7 +446,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6> 
+          <h6>
             <%= library_file_notification_message(notification) %>
           </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
