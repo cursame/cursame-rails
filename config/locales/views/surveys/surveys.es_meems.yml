@@ -76,3 +76,4 @@ es_meems:
       past: sección de cuestionarios Pasados
     surveys_course_lapsed:
       quest: No se encontraron más cuestionarios pasados.
+    correct_edit: 'Cuestionario editado correctamente.'
