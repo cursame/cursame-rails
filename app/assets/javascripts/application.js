@@ -12,4 +12,6 @@
 //= require_tree ./templates
 //= require_tree ./global
 
+//= require i18n
+
 //= require i18n/translations
