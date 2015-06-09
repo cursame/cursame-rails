@@ -79,3 +79,6 @@ es_meems:
     correct_edit: 'Cuestionario editado correctamente.'
     correct_create: 'Cuestionario creado correctamente.'
     select_course: 'Selecciona un Centro Emprendedor para publicar tu cuestionario.'
+    ajax:
+      surveys_paginate_ajax:
+        no_more_quest: 'No se encontraron más cuestionarios pasados.'
