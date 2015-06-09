@@ -5,10 +5,10 @@ function startTimeSurvey(div) {
   var s = today.getSeconds();
   m = checkTime(m);
   s = checkTime(s);
-  var OmGTimer = h+":"+m+":"+s;
-  var PmGStopTimer = $('#'+div).data('expire');
-  if (OmGTimer == PmGStopTimer){
-    $('#'+div).html(PmGStopTimer);
+  var TimerInExec = h+":"+m+":"+s;
+  var DateStopTimer = $('#'+div).data('expire');
+  if (TimerInExec === DateStopTimer){
+    $('#'+div).html(DateStopTimer);
     $('#'+div).removeClass('clock');
     $('#'+div).addClass('clock-end');
     $('#survey-submit').remove();
