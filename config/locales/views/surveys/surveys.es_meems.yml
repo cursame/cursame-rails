@@ -77,3 +77,5 @@ es_meems:
     surveys_course_lapsed:
       quest: No se encontraron más cuestionarios pasados.
     correct_edit: 'Cuestionario editado correctamente.'
+    correct_create: 'Cuestionario creado correctamente.'
+    select_course: 'Selecciona un Centro Emprendedor para publicar tu cuestionario.'

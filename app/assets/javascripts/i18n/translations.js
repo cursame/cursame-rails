@@ -3191,6 +3191,7 @@ I18n.translations["en"] = {
       "delete": "Delete",
       "response": "Type answer"
     },
+    "correct_create": "not PASS.",
     "correct_edit": "not PASS.",
     "form": {
       "add_quest": "Add question",
@@ -3228,6 +3229,7 @@ I18n.translations["en"] = {
       "add_answer": "Add anwser",
       "quest1": "Add question"
     },
+    "select_course": "not PASS.",
     "shared": {
       "survey_card": {
         "edit": "Edit test",
@@ -6592,6 +6594,7 @@ I18n.translations["es"] = {
       "delete": "Eliminar",
       "response": "Ingresar respuesta"
     },
+    "correct_create": "Cuestionario creado correctamente.",
     "correct_edit": "Cuestionario editado correctamente.",
     "form": {
       "add_quest": "Agregar Pregunta",
@@ -6629,6 +6632,7 @@ I18n.translations["es"] = {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
+    "select_course": "Selecciona un curso para publicar tu cuestionario.",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
@@ -9966,6 +9970,7 @@ I18n.translations["es_meems"] = {
       "delete": "Eliminar",
       "response": "Ingresar respuesta"
     },
+    "correct_create": "Cuestionario creado correctamente.",
     "correct_edit": "Cuestionario editado correctamente.",
     "form": {
       "add_quest": "Agregar Pregunta",
@@ -10003,6 +10008,7 @@ I18n.translations["es_meems"] = {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
+    "select_course": "Selecciona un Centro Emprendedor para publicar tu cuestionario.",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
@@ -13338,6 +13344,7 @@ I18n.translations["devise"] = {
       "delete": "Eliminar",
       "response": "Ingresar respuesta"
     },
+    "correct_create": "Cuestionario creado correctamente.",
     "correct_edit": "Cuestionario editado correctamente.",
     "form": {
       "add_quest": "Agregar Pregunta",
@@ -13375,6 +13382,7 @@ I18n.translations["devise"] = {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
+    "select_course": "Selecciona un curso para publicar tu cuestionario.",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
