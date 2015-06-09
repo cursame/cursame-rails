@@ -1,9 +1,9 @@
 <% if !@error %>
 
   $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => [@publication], :visible_for => "network"} ))%>');
-  Notice('success', 'Cuestionario creado correctamente.');
+  Notice('success', I18n.t("surveys.correct_create", {locale: "<%= I18n.locale %>" }));
   newPublicationCleaner();
 
 <% else %>
-  Notice('error', 'Selecciona un curso para publicar tu tarea.');
+  Notice('error', I18n.t("surveys.select_course", {locale: "<%= I18n.locale %>"}));
 <% end %>
