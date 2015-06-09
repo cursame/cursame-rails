@@ -7,7 +7,7 @@ function startTimeSurvey(div) {
   s = checkTime(s);
   var OmGTimer = h+":"+m+":"+s;
   var PmGStopTimer = $('#'+div).data('expire');
-  if (OmGTimer == PmGStopTimer){
+  if (OmGTimer === PmGStopTimer){
     $('#'+div).html(PmGStopTimer);
     $('#'+div).removeClass('clock');
     $('#'+div).addClass('clock-end');
