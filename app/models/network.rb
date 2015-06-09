@@ -30,7 +30,7 @@ class Network < ActiveRecord::Base
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :wufoo_setting
-  accepts_nested_attributes_for :bit_setting
+  accepts_nested_attributes_for :bit_setting, reject_if: lambda { |attributes| attributes['api_key'].blank? }
 
   mount_uploader :image_front, BackendFromNetworkUploader
   mount_uploader :logo, LogoNetworkUploader
