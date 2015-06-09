@@ -131,14 +131,7 @@
 
   <%= f.fields_for :bit_setting do |setting| %>
     <div class="form-group label-on-top l-label">
-      <div class="form-group-label">
-        <%= setting.label :authorization_keyword, t('.authorization_keyword')%>
-      </div>
-      <div class="form-group-main">
-        <div class="form-unit">
-          <%= setting.text_field :authorization_keyword, placeholder: t('.example') + 'Bearer' %>
-        </div>
-      </div>
+      <%= setting.hidden_field :authorization_keyword, value: 'Bearer' %>
       <div class="form-group-label">
         <%= setting.label :api_key, t('.api_key') %>
       </div>
