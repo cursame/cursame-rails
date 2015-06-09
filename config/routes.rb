@@ -124,6 +124,7 @@ Cursame30Lb::Application.routes.draw do
   get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
 
   get '/evaluate/survey/:survey_id', :to => 'evaluate#survey', :as => :evaluate_survey
+  get '/evaluate/survey_attemps/:survey_id', :to => 'evaluate#survey_attemps', :as => :evaluate_survey_attemps
   get '/evaluate/survey/response/:id', :to => 'evaluate#survey_response', :as => :evaluate_survey_response
   post '/evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
 
@@ -148,6 +149,7 @@ Cursame30Lb::Application.routes.draw do
   get "/courses/:id/surveys/lapsed", to: "surveys#surveys_course_lapsed", as: :surveys_course_lapsed
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
   get '/surveys/paginate-ajax', to: "surveys#paginate_ajax", as: :surveys_paginate_ajax
+  get '/surveys/survey_add_attemp', as: :survey_add_attemp, :via => [:post]
   resources :surveys
 
   # Discusiones

@@ -8,7 +8,7 @@ class EvaluateController < ApplicationController
   def index
 
     case current_role
-    when 'teacher' 
+    when 'teacher'
       courses = teacher_published_courses
     when 'admin'
       courses = current_network.courses
@@ -34,7 +34,7 @@ class EvaluateController < ApplicationController
       tmp_array_discussions = course.discussions.select do
         |discussion| discussion.evaluable?
       end
-      accu + tmp_array_discussions      
+      accu + tmp_array_discussions
     end
 
     activities = (deliveries + surveys + discussions).sort do
@@ -101,7 +101,7 @@ class EvaluateController < ApplicationController
   def inactive
 
     case current_role
-    when 'teacher' 
+    when 'teacher'
       courses = teacher_published_courses
     when 'admin'
       courses = current_network.courses
@@ -126,7 +126,7 @@ class EvaluateController < ApplicationController
       tmp_array_discussions = course.discussions.select do
         |discussion| discussion.evaluable?
       end
-      accu + tmp_array_discussions      
+      accu + tmp_array_discussions
     end
 
     activities = (deliveries + surveys + discussions).sort do
@@ -219,6 +219,10 @@ class EvaluateController < ApplicationController
     end
   end
 
+  def survey_attemps
+    @survey = Survey.find(params[:survey_id])
+  end
+
   def survey_response
     @user_survey = UserSurvey.find_by_id(params[:id])
 
@@ -253,7 +257,7 @@ class EvaluateController < ApplicationController
     redirect_to root_path, flash: { error: t('.evaluate_controller.no_exist')} and return if @discussion.nil?
 
     user_discussion = @discussion.user
-    course_discussion = @discussion.courses.first    
+    course_discussion = @discussion.courses.first
     unless user_discussion.admin? and course_discussion.owner?(current_role, current_user) #profesor puede ver discusiones creadas por el admin de red
       redirect_to root_path, flash: { error: t('.evaluate_controller.no_activity')} and return unless @discussion.owner?(current_role, current_user)
     end
@@ -295,7 +299,7 @@ class EvaluateController < ApplicationController
       redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: t('.evaluate_controller.correct') }
     else
       redirect_to evaluate_discussion_response_path(@discussion_response), flash: { error: t('.evaluate_controller.error') }
-    end  
+    end
   end
 
 end

@@ -1,0 +1,29 @@
+.main
+  .wrapper
+    .cols-12
+      .activity-header
+        .activity-extract
+          .activity-title
+            %h4= link_to "#{@survey.title}", evaluate_survey_path(@survey)
+.activity-view-wrap
+  .wrapper
+    .activity-view
+      .cols-12
+        .col.col-12
+          .activity-view
+            .col-inner
+              .view-header
+                %h5= t('.attemps')
+              .activity-view-data
+                .activity-responses-list
+                  - @survey.time_trying_surveys.each do |times|
+                    .activity-response{id: "attemp-for-user-#{times.user.id}"}
+                      .activity-response-avatar
+                        %span.avatar-holder
+                          = avatar 'user', '150', 'no', times.user.id, 'avatar avatar-80', 'no', 'no'
+                      .activity-response-main
+                        %h5.va-middle
+                          = times.user.name
+                          %span
+                            = link_to t('.new_attemp'), survey_add_attemp_path(survey: @survey, user: times.user.id), remote: true, :confirm => t('.new_attemp_notice'), class: 'btn btn-secondary'
+

@@ -50,7 +50,7 @@ authorization do
     has_permission_on [:assets], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:discussions], to: [:users,:create,:destroy,:index,:show,:edit]
     has_permission_on [:forms], to: [:create]
-    has_permission_on [:surveys], to: [:users,:create,:destroy,:index,:show,:edit]
+    has_permission_on [:surveys], to: [:users,:create,:destroy,:index,:show,:edit, :survey_add_attemp]
     has_permission_on [:library_files], to: [:create]
   end
 

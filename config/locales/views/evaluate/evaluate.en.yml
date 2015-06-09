@@ -65,6 +65,7 @@ en:
         answered: Answered
         publish_date: Published on
         deliver_date: Deadline
+        attemps: Attemps
         of: of
         the: the
       header_evaluate:
@@ -89,12 +90,16 @@ en:
         send: send
         delivery: deadlines
         obtain: obtained
+    survey_attemps:
+      attemps: Attemps
+      new_attemp: New attemp
+      new_attemp_notice: Adding this you eliminated the previous qualifying attempt questionnaire.
     course:
       activity: Activities to grade today
       activity_for_tmrw: Activities to grade tomorrow
       activity_for_days: Activities to grade in three days or more
       no_activity: You have no activities to grade
-      all: "All activities in this course have been graded, you can see them in" 
+      all: "All activities in this course have been graded, you can see them in"
       past_activity: the past activities section
     course_inactive:
       no_score: You still have no grade.
