@@ -1,0 +1,16 @@
+.overlay-header
+  .overlay-icon
+    = icon('wufoo-post-card')
+  .overlay-title
+    %h3
+      = t('.the_form')
+      = link_to google_form.title, google_form.url, target: "_blank"
+      = t('.was_created')
+      = link_to google_form.user.name, show_user_path(google_form.user.personal_url)
+      - unless google_form.pollable.class == Network
+        = t('.in_the_course')
+        = link_to google_form.pollable.title, course_path(google_form.pollable)
+  .close-overlay= icon('x-close')
+.overlay-content
+  %h6= google_form.description
+  %br/

@@ -5,5 +5,5 @@ es:
         success: "Se ha entregado tu tarea"
         error: "Ha ocurrido un error al entregar tu tarea"
       update:
-        success: "Se ha actualizado tu tarea" 
+        success: "Se ha actualizado tu tarea"
         error: "Ha ocurrido un error al actualizar tu tarea"

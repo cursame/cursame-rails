@@ -1,0 +1,28 @@
+.cols-12
+  .col.col-12.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.courses')
+      %table.data-table
+        %thead
+          %tr
+            %th Asignatura
+            %th Plan de estudios
+            %th Nombre Completo
+            %th= t('.actions')
+        %tbody
+          - @bit_courses.each do |course|
+            %tr
+              %td= course['asignatura']
+              %td= course['planEstudios']
+              %td= course['nombreCompletoGrupo']
+              %td
+                .dropdown-wrap.actions
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+                      %li= link_to t('.show'), show_managers_bit_course_path(course['folio'])
+                      %li= link_to t('.import'), import_managers_bit_course_path(course['folio'])

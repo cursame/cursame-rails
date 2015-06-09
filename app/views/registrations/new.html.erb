@@ -9,11 +9,11 @@
           <p><%=t('.text1')%></p><br>
           <%= link_to t('.text2'), "/users/sign_in" %>
         <% else %>
-          
+
           <% if request.env['PATH_INFO'] == '/teachers/sign_up' %>
-            <h4><%=t('.teacher')%>Regístrate Profesor</h4><br>
+            <h4><%=t('.teacher')%></h4><br>
           <% else %>
-            <h4><%=t('.student')%>Regístrate Alumno</h4><br>
+            <h4><%=t('.student')%></h4><br>
           <% end %>
           <% unless devise_error_messages!.blank? %>
             <div class="user-session-errors">
@@ -94,7 +94,7 @@
                       <%= permissioning.hidden_field :role_id, :value => '3' %>
                     <% else %>
                       <%= permissioning.hidden_field :role_id, :value => '2' %>
-                    <% end %> 
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -118,7 +118,7 @@
                 </span>
               </div>
             </div>
-            
+
           <% end %>
         <% end %>
       </div>
@@ -143,7 +143,7 @@
           }
         }
       });
-  });  
+  });
   $(document).ready(function(){
     if($("#user_permissionings_attributes_1_network_id").length == 1) {
        $('#user_permissionings_attributes_1_network_id').remove();

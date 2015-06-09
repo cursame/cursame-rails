@@ -1,0 +1,6 @@
+es_meems:
+  assets:
+    asset_file:
+      delete: Borrar
+    upload_asset_button:
+      file: Archivo

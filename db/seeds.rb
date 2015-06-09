@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-new_network = Network.create(name: 'pruebas', subdomain: 'pruebas', population: '300', public_register: true , free: true, register_form: true, welcom_message: 'Hola')
+new_network = Network.create(name: 'pruebas', subdomain: 'pruebas', population: '300', public_register: true , register_form: true, welcom_message: 'Hola')
 
 admin      = User.create(:email => "salvador+admin@cursa.me",      :password => "cursame", :first_name => "Salvador", :last_name => "Admin",      :confirmed_at => Time.now, :personal_url => 'chava_admin',      :domain => 'cursa.me', :subdomain => 'pruebas')
 student    = User.create(:email => "salvador+student@cursa.me",    :password => "cursame", :first_name => "Salvador", :last_name => "Student",    :confirmed_at => Time.now, :personal_url => 'chava_student',    :domain => 'cursa.me', :subdomain => 'pruebas')

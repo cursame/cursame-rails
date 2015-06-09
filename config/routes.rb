@@ -5,6 +5,10 @@ Cursame30Lb::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  match '/managers/bit_courses', to: 'managers/bit_courses#index', as: :index_managers_bit_courses
+  match '/managers/bit_courses/:folio', to: 'managers/bit_courses#show', as: :show_managers_bit_course
+  match '/managers/bit_courses/import/:folio', to: 'managers/bit_courses#import', as: :import_managers_bit_course
+
   match '/managers/reported_content/destroy_content/:id', to: 'managers/reported_contents#destroy_content', as: :managers_destroy_content
   namespace :managers do
     resources :reported_contents
@@ -120,6 +124,7 @@ Cursame30Lb::Application.routes.draw do
   get '/evaluate/courses/:id/inactive', :to => 'evaluate#course_inactive', :as => :evaluate_course_inactive
 
   get '/evaluate/survey/:survey_id', :to => 'evaluate#survey', :as => :evaluate_survey
+  get '/evaluate/survey_attemps/:survey_id', :to => 'evaluate#survey_attemps', :as => :evaluate_survey_attemps
   get '/evaluate/survey/response/:id', :to => 'evaluate#survey_response', :as => :evaluate_survey_response
   post '/evaluate/survey/response/:id/update', :to => 'evaluate#response_user_survey', :as => :evaluate_survey_response_update
 
@@ -144,6 +149,7 @@ Cursame30Lb::Application.routes.draw do
   get "/courses/:id/surveys/lapsed", to: "surveys#surveys_course_lapsed", as: :surveys_course_lapsed
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
   get '/surveys/paginate-ajax', to: "surveys#paginate_ajax", as: :surveys_paginate_ajax
+  get '/surveys/survey_add_attemp', as: :survey_add_attemp, :via => [:post]
   resources :surveys
 
   # Discusiones
@@ -190,7 +196,10 @@ Cursame30Lb::Application.routes.draw do
   match '/modals/survey/:id', to: 'modal#survey_modal', :as => :survey_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/discussion/:id', to: 'modal#discussion_modal', :as => :discussion_modal, :via => [:get], :defaults => { :format => 'js' }
   match '/modals/student_quiz', to: 'modal#student_quiz_modal', :as => :student_quiz_modal, :via => [:get], :defaults => { :format => 'js' }
-  match '/modals/wufoo_form/:id', to: 'modal#wufoo_form_modal', :as => :wufoo_form_modal, :via => [:get], :defaults => { :format => 'js' }
+  match '/modals/google_form/:id', to: 'modal#google_form_modal',
+                                   as: :google_form_modal,
+                                  via: [:get],
+                             defaults: { format: 'js' }
   match '/modals/reported_content/:id', to: 'modal#reported_content_modal', :as => :reported_content_modal, :via => [:get], :defaults => { :format => 'js' }
 
   # Calificaciones
@@ -198,7 +207,7 @@ Cursame30Lb::Application.routes.draw do
   get "/califications/closed", :to => "califications#closed", :as =>  :closed_califications
   get "/courses/:id/califications", :to => "califications#course", :as =>  :califications_course
   get "/courses/:course_id/califications/:member_id", :to => "califications#member", :as =>  :califications_member
-  
+
   # metodos de amplio acceso al curso
   get 'courses/:id/statistics', :to => 'courses#statistics', :as => :statistics_in_course
 
@@ -277,7 +286,7 @@ Cursame30Lb::Application.routes.draw do
   as :user do
     match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
     match 'users/sign_in', :to =>  'usessions#new', :as => :sign_in
-    match 'teachers/sign_up' => 'registrations#new' 
+    match 'teachers/sign_up' => 'registrations#new'
   end
 
   #### finalizador de sesiones
@@ -536,12 +545,17 @@ Cursame30Lb::Application.routes.draw do
   match '/422', :to => 'home#server_error'
   match '/500', :to => 'home#server_error'
   match '/503', :to => 'home#server_error'
-  #api 
+  #api
   match '/api/courses',        to: 'api/courses/courses#list'
   match '/api/users/teachers', to: 'api/users/users#teachers'
   match '/api/users/total',    to: 'api/users/users#total'
   match '/api/networks/',      to: 'api/networks/networks#index'
   match '/api/sessions/create',to: 'api/sessions/sessions#create'
+
+  # CCT API
+  match '/api/municipalities', to: 'api/cct#municipalities'
+  match '/api/subsystems',     to: 'api/cct#subsystems'
+  match '/api/schools',        to: 'api/cct#schools'
 
   #logout
   match "/home/logout_user" => "home#logout_user", :as => "logout_user", :via => [:post]

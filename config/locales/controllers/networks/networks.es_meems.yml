@@ -1,0 +1,8 @@
+es_meems:
+  networks:
+    messages:
+      update:
+        success: 'Configuración guardada correctamente.'
+      search:
+        network: 'Buscador de Redes'
+

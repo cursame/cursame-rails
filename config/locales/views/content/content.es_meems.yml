@@ -1,0 +1,7 @@
+es_meems:
+  content:
+    assignments:
+      adding:
+        delete: Borrar
+        confirm: ¿Eliminar archivo?
+        confirm1: ¿Eliminar contenido?

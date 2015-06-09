@@ -76,9 +76,9 @@ class GoogleForm < ActiveRecord::Base
   def notification_type
     case pollable
     when Network
-      "network_wufoo_form"
+      "network_google_form"
     when Course
-      "course_wufoo_form"
+      "course_google_form"
     else
       "undefined"
     end

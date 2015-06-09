@@ -1,0 +1,10 @@
+es_meems:
+  reported_contents:
+    shared:
+      reported_content_modal:
+        help_us: "Ayúdanos a entender qué sucede"
+        reported_content: "Ya has reportado este contenido, el MEEMS de la red tomará acciones."
+        why_no_content: "¿Por qué no quieres ver este contenido?"
+        comment: "Escribe un comentario"
+        send: "Enviar"
+

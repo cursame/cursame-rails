@@ -65,6 +65,7 @@ es:
         answered: Contestados
         publish_date: Fecha de publicación
         deliver_date: Fecha para entrega
+        attemps: Ver los intentos
         of: de
         the: del
       header_evaluate:
@@ -89,6 +90,10 @@ es:
         send: Enviar comentario
         delivery: Entregas
         obtain: Obtenido
+    survey_attemps:
+      attemps: Registro de intentos
+      new_attemp: Generar nuevo intento
+      new_attemp_notice: Al agregar este intento eliminaras la calificación anterior del cuestionario.
     course:
       activity: Actividades para calificar hoy
       activity_for_tmrw: Actividades para calificar mañana
@@ -109,4 +114,4 @@ es:
       no_score: No tienes actividades por calificar.
       all: 'Todas las actividades de tu curso están calificadas, puedes ver'
       past: actividades pasadas en la sección de Pasadas
-      
+

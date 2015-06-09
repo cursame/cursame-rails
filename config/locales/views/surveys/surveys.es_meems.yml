@@ -1,0 +1,78 @@
+es_meems:
+  surveys:
+    shared:
+      survey_card:
+        quest: Ver Cuestionario
+        edit: Editar Cuestionario
+        solve_time: Minutos
+        no_limit_time: Sin límite de tiempo
+        notice_helper: Este cuestionario te dará
+        notice_helper2: minutos para responderlo
+      survey_modal:
+        quest: Cuestionario en el Centros Emprendedor
+        response: Responder antes del
+        calif: Calificación Obtenida
+        feedback: Retroalimentación
+        fail_attemps: No tienes más intentos
+      survey_questions_modal:
+        quest: Enviar cuestionario
+      surveys_course_header:
+        quest: Cuestionarios
+        response: Responder
+        past: Pasados
+      surveys_courses_filter:
+        filter: Filtrar
+        select: Selecciona un Centros Emprendedor
+      surveys_header:
+        quest: Cuestionarios
+        response: Responder
+        past: Pasados
+      surveys_paginate_button:
+        load: Cargar más...
+    answer_fields:
+      response: Ingresar respuesta
+      correct: Correcta
+      delete: Eliminar
+    form:
+      title: Titulo del cuestionario
+      example: Ejemplo
+      text1: Números primos
+      dates: Fechas
+      timer: Tiempo para resolución del cuesitonario
+      attempts: Intentos
+      publish_date: Día de pubicación
+      deliver_date: Fecha de entrega
+      quest: Preguntas
+      add_quest: Agregar Pregunta
+      support: Material de soporte
+      cancel: Cancelar
+      courses: Centros Emprendedores
+      save: Guardar Cuestionario
+      create: Crear Cuestionario
+      non_mins: Sin límite de tiempo
+    question_fields:
+      quest1: Ingresar pregunta
+      add_answer: Agregar Respuesta
+    survey_response_tpl:
+      cancel: Cancelar
+      answer: Contestar
+    index:
+      today: Cuestionarios para responder Hoy
+      tomorrow: Cuestionarios para responder Mañana
+      more_days: Cuestionarios para responder en 3 días o más
+      no_quest: No tienes cuestionarios pendientes por contestar.
+      see: Puedes ver antiguos cuestionarios en la
+      section: sección de cuestionarios Pasados
+    lapsed:
+      no_quest: No se encontraron más cuestionarios pasados.
+    my_surveys:
+      no_quest: No tienes cuestionarios por contestar.
+    surveys_course:
+      to_day: Cuestionarios para responder Hoy
+      tomorrow: Cuestionarios para responder Mañana
+      more_days: Cuestionarios para responder en 3 días o más
+      no_quest: No tienes cuestionarios pendientes por contestar en este Centros Emprendedor.
+      see: Puedes ver antiguos cuestionarios en la
+      past: sección de cuestionarios Pasados
+    surveys_course_lapsed:
+      quest: No se encontraron más cuestionarios pasados.

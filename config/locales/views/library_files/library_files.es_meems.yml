@@ -1,0 +1,16 @@
+es_meems:
+  library_files:
+    shared:
+      card:
+        download_file: "Descargar Archivo"
+      form:
+        file_name: "Titulo del Archivo: "
+        file_name2: "Titulo del Archivo"
+        descrip: "Descripción: "
+        descrip_file: "Descripción del Archivo"
+        file: "Archivo"
+        send: "Enviar"
+      standalone_card:
+        download_file: "Descargar Archivo"
+    new:
+      upload_file: "Subir Archivo"

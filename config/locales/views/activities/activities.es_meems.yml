@@ -1,0 +1,15 @@
+es_meems:
+  activities:
+    show:
+      title: "Título:"
+      title_act: "Tipo de Actividad:"
+      avg: "Promedio:"
+      without_act: sin actividades
+      place: "Lugar:"
+      long: "Longitud:"
+      lat: "Latitud:"
+      geo_c: "geocode:"
+      ver: "Versión:"
+      os: "Sistema operativo:"
+      net: "Red:"
+      deliveries: Entregas

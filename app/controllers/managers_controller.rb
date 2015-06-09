@@ -40,7 +40,7 @@ class ManagersController < ApplicationController
 
   def settings
     @network = current_network
-    @network.build_wufoo_setting if @network.wufoo_setting.nil?
+    @network.build_bit_setting if @network.bit_setting.nil?
   end
 
   def upload_users_a

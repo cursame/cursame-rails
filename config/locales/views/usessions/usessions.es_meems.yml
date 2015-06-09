@@ -1,0 +1,10 @@
+es_meems:
+  usessions:
+    new:
+      send: Se ha enviado un correo a
+      confirm: Esperando confirmación
+      init_session: Iniciar sesión
+      email: Correo electrónico
+      pwd: Contraseña
+      remember: Recordarme
+

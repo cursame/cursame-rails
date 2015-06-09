@@ -1,0 +1,73 @@
+es_meems:
+  notifier:
+    accepted_message:
+      hello: ¡Hola
+      accept: Has sido aceptado en el Centros Emprendedor
+      button: 'Si el botón superior no funciona, haz click aquí'
+    csv_import_email:
+      hello: ¡Hola
+      results: Te anexamos los resultados de la importación de usuarios
+      success: Exito
+      error: ¡Error!
+    masive_mailer_for_super_admin:
+      user: Estimados usuarios de Cúrsame
+    new_delivey_notification:
+      course_notif: Tarea en el Centros Emprendedor
+      deliver: Entregar antes del
+      button: 'Si el botón superior no funciona, haz click aquí'
+    new_discussion_notification:
+      discuss: Discusión en el Centros Emprendedor
+      button: 'Si el botón superior no funciona, haz click aquí'
+    new_member_in_course:
+      course: Desea formar parte de tú Centros Emprendedor
+      button: 'Si el botón superior no funciona, haz click aquí'
+    new_survey_notification:
+      hmwrk: Tarea en el Centros Emprendedor
+      deliver: Entregar antes del
+      button: 'Si el botón superior no funciona, haz click aquí'
+    send_comment_on_course:
+      comment: comentó en un comentario en el Centros Emprendedor
+      comment2: comentó en el Centros Emprendedor
+      button: 'Si el botón superior no funciona, haz click aquí'
+    send_contact_mail:
+      demo: Solicitud de Demo
+      name: Nombre
+      tel: Telefono
+      ext: Extensión
+      pos: Posicion
+      school: Escuela
+      other: Otro
+      msg: Mensaje
+      contact: Contacto Normal
+    send_email:
+      msg: Mensaje del MEEMS de la red
+      net: Ir a la red
+    send_email_members_in_course:
+      notif: Notificación
+      net: Ir a la red
+    send_import_courses:
+      line: Linea
+      error: Error
+      no_error: No hubo errores
+    send_import_members:
+      course: Centro Emprendedor
+      line: Linea
+      error: Error
+      no_error: No hubo errores
+    send_import_users:
+      line: Linea
+      error: Error
+    user_mailer_with_password:
+      welcome: Bienvenido
+      active: Activado
+      hello: Hola
+      accept: has sido aceptado aceptado en Cúrsame.
+      your_pwd: Tu constraseña es
+      text1: puedes cambiarla al iniciar sessión.
+      net: Ir a la red
+      text2: 'Si no puedes ver este mail,'
+      text3: haz click aquí.
+      text4: ¡Feliz día del Líder multiplicador!
+      text5: 'En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.'
+      text6: 'Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.'
+      text7: 'Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Líder multiplicador ¡Te lo mereces!'

@@ -8,3 +8,10 @@ gospel:
     create_user: /create_user
     create_network: /create_network
     register_session: /register_session
+bit:
+  host: api.academic.mx
+  port: 80
+  path:
+    groups: /v1/grupos
+    group_students: /v1/alumnos
+    group_teachers: /v1/profesores

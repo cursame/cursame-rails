@@ -1,0 +1,7 @@
+es_meems:
+  evaluation_criteria:
+    form:
+      eval: ¿Que criterio se evaluará?
+    form_course:
+      eval: ¿Qué se va evaluar?
+

@@ -30,6 +30,9 @@
                   <span class="meta-info"><%=t('.deliver_date')%></span>
                   <p><%= I18n.localize(survey.end_date, format: "%e t('.of') %B t('.the') %Y") %></p>
                 </li>
+                <li>
+                 <%= link_to t('.attemps'), evaluate_survey_attemps_path(survey.id), class: 'btn'%>
+                </li>
               </ul>
             </div>
           </div>
