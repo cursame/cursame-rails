@@ -112,7 +112,7 @@
           <%= f.check_box :register_form %>
           <%=t('.form')%>
         <% end %>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -136,7 +136,7 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= setting.text_field :authorization_keyword, required: true, placeholder: t('.example') + 'Bearer' %>
+          <%= setting.text_field :authorization_keyword, placeholder: t('.example') + 'Bearer' %>
         </div>
       </div>
       <div class="form-group-label">
@@ -144,12 +144,12 @@
       </div>
       <div class="form-group-main">
         <div class="form-unit">
-          <%= setting.text_field :api_key, required: true, placeholder: t('.example') + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9' %>
+          <%= setting.text_field :api_key, placeholder: t('.example') + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9' %>
         </div>
       </div>
     </div>
   <% end %>
-  
+
   <span class="btn btn-primary input-btn btn-medium activable">
     <%= f.submit t('.save') %>
   </span>
