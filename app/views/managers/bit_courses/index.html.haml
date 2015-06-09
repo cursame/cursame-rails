@@ -4,16 +4,12 @@
       .managers-section-header
         .title
           %h1= t('.courses')
-        / .actions
-        /   = link_to t('.create'), new_managers_course_path, class: 'btn btn-complementary'
-        /   = link_to 'Importar Curso Bit', new_managers_course_path, class: 'btn btn-complementary'
       %table.data-table
         %thead
           %tr
             %th Asignatura
             %th Plan de estudios
             %th Nombre Completo
-            %th Escuela
             %th= t('.actions')
         %tbody
           - @bit_courses.each do |course|
@@ -21,7 +17,6 @@
               %td= course['asignatura']
               %td= course['planEstudios']
               %td= course['nombreCompletoGrupo']
-              %td= course['escuela']
               %td
                 .dropdown-wrap.actions
                   .dropdown-pull.btn.btn-secondary.btn-small
@@ -31,5 +26,3 @@
                     %ul
                       %li= link_to t('.show'), show_managers_bit_course_path(course['folio'])
                       %li= link_to t('.import'), import_managers_bit_course_path(course['folio'])
-      / .digg_pagination.paginator
-      /   = will_paginate @courses
