@@ -1,8 +1,8 @@
 if(<%= @success %>){
   window.location.reload();
-  Notice('success', 'Tu denuncia ha sido realizada con exito.')
+  Notice('success', I18n.t("reported_contents.denounce_success", {locale: "<%= I18n.locale %>"}))
 }
 else{
   window.location.reload();
-  Notice('error', 'Algo sucedio que no se pudo guardar tu denuncia.')
+  Notice('error', I18n.t("reported_contents.denounce_fail", {locale: "<%= I18n.locale %>"}))
 }

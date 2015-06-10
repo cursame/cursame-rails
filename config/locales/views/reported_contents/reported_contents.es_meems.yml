@@ -7,4 +7,5 @@ es_meems:
         why_no_content: "¿Por qué no quieres ver este contenido?"
         comment: "Escribe un comentario"
         send: "Enviar"
-
+    denounce_success: 'Tu denuncia ha sido realizada con éxito.'
+    denounce_fail: 'Algo sucedió que no se pudo guardar tu denuncia.'

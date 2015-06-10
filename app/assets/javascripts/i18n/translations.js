@@ -1347,6 +1347,7 @@ I18n.translations["en"] = {
       },
       "header_activity_survey": {
         "answered": "Answered",
+        "attemps": "Attemps",
         "course": "Course",
         "deliver_date": "Deadline",
         "of": "of",
@@ -1361,6 +1362,11 @@ I18n.translations["en"] = {
       "survey_activity": {
         "answered": "Answered"
       }
+    },
+    "survey_attemps": {
+      "attemps": "Attemps",
+      "new_attemp": "New attemp",
+      "new_attemp_notice": "Adding this you eliminated the previous qualifying attempt questionnaire."
     },
     "surveys": {
       "evaluate_surveys": {
@@ -1449,6 +1455,11 @@ I18n.translations["en"] = {
         "roles": "Roles: ",
         "title": "Title: ",
         "title2": "Title of Form"
+      },
+      "google_form_modal": {
+        "in_the_course": " in the course",
+        "the_form": "The form ",
+        "was_created": " was created by"
       }
     },
     "success_form": "Form created successfully"
@@ -2086,7 +2097,6 @@ I18n.translations["en"] = {
         }
       },
       "show": {
-        "admin": "Admins",
         "comments": "Comments",
         "create_date": "Created on:",
         "delete": "Delete",
@@ -2097,7 +2107,8 @@ I18n.translations["en"] = {
         "quest": "Tests",
         "return": "Back",
         "students": "Students",
-        "sure": "Are you sure you want to delete this course."
+        "sure": "Are you sure you want to delete this course.",
+        "teachers": "Teachers"
       }
     },
     "create": "User created successfully.",
@@ -2672,6 +2683,8 @@ I18n.translations["en"] = {
     "update": "Your profile has been successfully updated"
   },
   "reported_contents": {
+    "denounce_fail": "not PASS.",
+    "denounce_success": "not PASS.",
     "shared": {
       "reported_content_modal": {
         "comment": "Write a comment",
@@ -3186,6 +3199,11 @@ I18n.translations["en"] = {
     }
   },
   "surveys": {
+    "ajax": {
+      "surveys_paginate_ajax": {
+        "no_more_quest": "not PASS."
+      }
+    },
     "answer_fields": {
       "correct": "Correct",
       "delete": "Delete",
@@ -4807,6 +4825,7 @@ I18n.translations["es"] = {
       },
       "header_activity_survey": {
         "answered": "Contestados",
+        "attemps": "Ver los intentos",
         "course": "Curso",
         "deliver_date": "Fecha para entrega",
         "of": "de",
@@ -4821,6 +4840,11 @@ I18n.translations["es"] = {
       "survey_activity": {
         "answered": "Contestados"
       }
+    },
+    "survey_attemps": {
+      "attemps": "Registro de intentos",
+      "new_attemp": "Generar nuevo intento",
+      "new_attemp_notice": "Al agregar este intento eliminaras la calificación anterior del cuestionario."
     },
     "surveys": {
       "evaluate_surveys": {
@@ -4895,6 +4919,11 @@ I18n.translations["es"] = {
         "roles": "Roles: ",
         "title": "Título: ",
         "title2": "Titulo del formulario"
+      },
+      "google_form_modal": {
+        "in_the_course": " en el curso",
+        "the_form": "El formulario ",
+        "was_created": " fue creado por"
       }
     },
     "success_form": "Formulario creado exitosamente"
@@ -5514,7 +5543,6 @@ I18n.translations["es"] = {
         }
       },
       "show": {
-        "admin": "Administradores",
         "comments": "Comentarios",
         "create_date": "Fecha de Creación",
         "delete": "Borrar",
@@ -5525,7 +5553,8 @@ I18n.translations["es"] = {
         "quest": "Cuestionarios",
         "return": "← Regresar",
         "students": "Alumnos",
-        "sure": "Estas seguro de borrar este curso."
+        "sure": "Estas seguro de borrar este curso.",
+        "teachers": "Maestros"
       }
     },
     "create": "Usuario creado correctamente.",
@@ -6075,6 +6104,8 @@ I18n.translations["es"] = {
     "update": "Se a actualizado correctamente tu perfil"
   },
   "reported_contents": {
+    "denounce_fail": "Algo sucedió que no se pudo guardar tu denuncia.",
+    "denounce_success": "Tu denuncia ha sido realizada con éxito.",
     "shared": {
       "reported_content_modal": {
         "comment": "Escribe un comentario",
@@ -6589,6 +6620,11 @@ I18n.translations["es"] = {
     }
   },
   "surveys": {
+    "ajax": {
+      "surveys_paginate_ajax": {
+        "no_more_quest": "No se encontraron más cuestionarios pasados."
+      }
+    },
     "answer_fields": {
       "correct": "Correcta",
       "delete": "Eliminar",
@@ -8181,6 +8217,7 @@ I18n.translations["es_meems"] = {
       },
       "header_activity_survey": {
         "answered": "Contestados",
+        "attemps": "Ver los intentos",
         "course": "Centro Emprendedor",
         "deliver_date": "Fecha para entrega",
         "of": "de",
@@ -8195,6 +8232,11 @@ I18n.translations["es_meems"] = {
       "survey_activity": {
         "answered": "Contestados"
       }
+    },
+    "survey_attemps": {
+      "attemps": "Registro de intentos",
+      "new_attemp": "Generar nuevo intento",
+      "new_attemp_notice": "Al agregar este intento eliminaras la calificación anterior del cuestionario."
     },
     "surveys": {
       "evaluate_surveys": {
@@ -8270,7 +8312,11 @@ I18n.translations["es_meems"] = {
         "title": "Título: ",
         "title2": "Titulo del formulario"
       },
-      "success_form": "Formulario creado exitosamente"
+      "google_form_modal": {
+        "in_the_course": " en el curso",
+        "the_form": "El formulario ",
+        "was_created": " fue creado por"
+      }
     },
     "success_form": "Formulario creado exitosamente"
   },
@@ -8890,7 +8936,6 @@ I18n.translations["es_meems"] = {
         }
       },
       "show": {
-        "admin": "MEEMS",
         "comments": "Comentarios",
         "create_date": "Fecha de Creación",
         "delete": "Borrar",
@@ -8901,7 +8946,8 @@ I18n.translations["es_meems"] = {
         "quest": "Cuestionarios",
         "return": "← Regresar",
         "students": "Emprendedores",
-        "sure": "Estas seguro de borrar este Centros Emprendedor."
+        "sure": "Estas seguro de borrar este Centros Emprendedor.",
+        "teachers": "Líderes Multiplicadores"
       }
     },
     "create": "Usuario creado correctamente.",
@@ -9451,6 +9497,8 @@ I18n.translations["es_meems"] = {
     "update": "Se a actualizado correctamente tu perfil"
   },
   "reported_contents": {
+    "denounce_fail": "Algo sucedió que no se pudo guardar tu denuncia.",
+    "denounce_success": "Tu denuncia ha sido realizada con éxito.",
     "shared": {
       "reported_content_modal": {
         "comment": "Escribe un comentario",
@@ -9965,6 +10013,11 @@ I18n.translations["es_meems"] = {
     }
   },
   "surveys": {
+    "ajax": {
+      "surveys_paginate_ajax": {
+        "no_more_quest": "No se encontraron más cuestionarios pasados."
+      }
+    },
     "answer_fields": {
       "correct": "Correcta",
       "delete": "Eliminar",
@@ -11557,6 +11610,7 @@ I18n.translations["devise"] = {
       },
       "header_activity_survey": {
         "answered": "Contestados",
+        "attemps": "Ver los intentos",
         "course": "Curso",
         "deliver_date": "Fecha para entrega",
         "of": "de",
@@ -11571,6 +11625,11 @@ I18n.translations["devise"] = {
       "survey_activity": {
         "answered": "Contestados"
       }
+    },
+    "survey_attemps": {
+      "attemps": "Registro de intentos",
+      "new_attemp": "Generar nuevo intento",
+      "new_attemp_notice": "Al agregar este intento eliminaras la calificación anterior del cuestionario."
     },
     "surveys": {
       "evaluate_surveys": {
@@ -11645,6 +11704,11 @@ I18n.translations["devise"] = {
         "roles": "Roles: ",
         "title": "Título: ",
         "title2": "Titulo del formulario"
+      },
+      "google_form_modal": {
+        "in_the_course": " en el curso",
+        "the_form": "El formulario ",
+        "was_created": " fue creado por"
       }
     },
     "success_form": "Formulario creado exitosamente"
@@ -12264,7 +12328,6 @@ I18n.translations["devise"] = {
         }
       },
       "show": {
-        "admin": "Administradores",
         "comments": "Comentarios",
         "create_date": "Fecha de Creación",
         "delete": "Borrar",
@@ -12275,7 +12338,8 @@ I18n.translations["devise"] = {
         "quest": "Cuestionarios",
         "return": "← Regresar",
         "students": "Alumnos",
-        "sure": "Estas seguro de borrar este curso."
+        "sure": "Estas seguro de borrar este curso.",
+        "teachers": "Maestros"
       }
     },
     "create": "Usuario creado correctamente.",
@@ -12825,6 +12889,8 @@ I18n.translations["devise"] = {
     "update": "Se a actualizado correctamente tu perfil"
   },
   "reported_contents": {
+    "denounce_fail": "Algo sucedió que no se pudo guardar tu denuncia.",
+    "denounce_success": "Tu denuncia ha sido realizada con éxito.",
     "shared": {
       "reported_content_modal": {
         "comment": "Escribe un comentario",
@@ -13339,6 +13405,11 @@ I18n.translations["devise"] = {
     }
   },
   "surveys": {
+    "ajax": {
+      "surveys_paginate_ajax": {
+        "no_more_quest": "No se encontraron más cuestionarios pasados."
+      }
+    },
     "answer_fields": {
       "correct": "Correcta",
       "delete": "Eliminar",
