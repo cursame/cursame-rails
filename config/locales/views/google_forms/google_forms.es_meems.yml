@@ -20,8 +20,12 @@ es_meems:
       dropdown:
         courses: "Centros Emprendedores"
         public: "Público"
+<<<<<<< HEAD
       google_form_modal:
         the_form: 'El formulario '
         was_created: ' fue creado por'
         in_the_course: ' en el curso'
     success_form: 'Formulario creado exitosamente'
+=======
+      success_form: 'Formulario creado exitosamente'
+>>>>>>> e1e9c2c77fee0a50de3321296143081d99e13894
