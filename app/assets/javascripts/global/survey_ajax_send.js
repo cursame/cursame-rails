@@ -29,6 +29,8 @@ function submitImage(url, formData, callback) {
         callback(data, null);
         $('.img_viewver_question').attr('src', '');
         $('.select_viwver_question').hide();
+        $('.img_viewver_answer').attr('src', '');
+        $('.select_viwver_answer').hide();
     },
     error: function(err) {
         callback(null, err);

@@ -5,15 +5,15 @@ function startTimeSurvey(div) {
   var s = today.getSeconds();
   m = checkTime(m);
   s = checkTime(s);
-  var OmGTimer = h+":"+m+":"+s;
-  var PmGStopTimer = $('#'+div).data('expire');
-  if (OmGTimer == PmGStopTimer){
-    $('#'+div).html(PmGStopTimer);
+  var timerInExec = h+":"+m+":"+s;
+  var dateStopTimer = $('#'+div).data('expire');
+  if (timerInExec === dateStopTimer){
+    $('#'+div).html(dateStopTimer);
     $('#'+div).removeClass('clock');
     $('#'+div).addClass('clock-end');
     $('#survey-submit').remove();
   }else{
-    $('#'+div).html(OmGTimer);
+    $('#'+div).html(timerInExec);
     var t = setTimeout(function(){startTimeSurvey(div)},500);
   }
 }
