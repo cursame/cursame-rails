@@ -3,3 +3,6 @@ es_meems:
     survey_modal:
       no_modal_found: 'El cuestionario que tratas de ver ya no existe,
                    ponte en contacto con el profesor del curso.'
+    reported_content_modal:
+      publ_not_found: 'La publicación que tratas de denunciar ya no
+                   existe.'

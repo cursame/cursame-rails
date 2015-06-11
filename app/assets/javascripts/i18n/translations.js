@@ -2404,6 +2404,9 @@ I18n.translations["en"] = {
     }
   },
   "modal": {
+    "reported_content_modal": {
+      "publ_not_found": "not PASS."
+    },
     "survey_modal": {
       "no_modal_found": "not PASS."
     }
@@ -5831,6 +5834,9 @@ I18n.translations["es"] = {
     "no_send": "No puedes enviar correo a los estudiantes del curso"
   },
   "modal": {
+    "reported_content_modal": {
+      "publ_not_found": "La publicación que tratas de denunciar ya no existe."
+    },
     "survey_modal": {
       "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     }
@@ -9230,6 +9236,9 @@ I18n.translations["es_meems"] = {
     "no_send": "No puedes enviar correo a los emprendedores del Centros Emprendedor"
   },
   "modal": {
+    "reported_content_modal": {
+      "publ_not_found": "La publicación que tratas de denunciar ya no existe."
+    },
     "survey_modal": {
       "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     }
@@ -12628,6 +12637,9 @@ I18n.translations["devise"] = {
     "no_send": "No puedes enviar correo a los estudiantes del curso"
   },
   "modal": {
+    "reported_content_modal": {
+      "publ_not_found": "La publicación que tratas de denunciar ya no existe."
+    },
     "survey_modal": {
       "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     }

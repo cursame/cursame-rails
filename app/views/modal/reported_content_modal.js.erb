@@ -1,5 +1,5 @@
 <% unless @content.nil? %>
   createModal('<%= escape_javascript(render(partial: "reported_contents/shared/reported_content_modal", locals: { content: @content, type: @type }))%>');
 <% else %>
-  Notice('error', 'La publicación que tratas de denunciar ya no existe.')
+  Notice('error', I18n.t("modal.reported_content_modal.publ_not_found", {locale: "<%= I18n.locale %>"}));
 <% end %>
