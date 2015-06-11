@@ -1,0 +1,5 @@
+es_meems:
+  modal:
+    survey_modal:
+      no_modal_found: 'El cuestionario que tratas de ver ya no existe,
+                   ponte en contacto con el profesor del curso.'

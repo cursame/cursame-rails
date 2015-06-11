@@ -1,5 +1,5 @@
 <% unless @survey.nil? %>
 	createModal('<%= escape_javascript(render(partial: "surveys/shared/survey_modal", locals: { survey: @survey, count_tryings: @count_tryings}))%>');
 <% else %>
-	Notice('error', 'El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso.')
+	Notice('error', I18n.t("modal.survey_modal.no_modal_found", {locale: "<%= I18n.locale %>"}));
 <% end %>

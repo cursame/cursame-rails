@@ -2403,6 +2403,11 @@ I18n.translations["en"] = {
       "starts_with": "%{attribute} starts with"
     }
   },
+  "modal": {
+    "survey_modal": {
+      "no_modal_found": "not PASS."
+    }
+  },
   "networks": {
     "alertmethod": {
       "net": "Go to my network",
@@ -5825,6 +5830,11 @@ I18n.translations["es"] = {
   "messages_controller": {
     "no_send": "No puedes enviar correo a los estudiantes del curso"
   },
+  "modal": {
+    "survey_modal": {
+      "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+    }
+  },
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
@@ -9219,6 +9229,11 @@ I18n.translations["es_meems"] = {
   "messages_controller": {
     "no_send": "No puedes enviar correo a los emprendedores del Centros Emprendedor"
   },
+  "modal": {
+    "survey_modal": {
+      "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+    }
+  },
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
@@ -12611,6 +12626,11 @@ I18n.translations["devise"] = {
   },
   "messages_controller": {
     "no_send": "No puedes enviar correo a los estudiantes del curso"
+  },
+  "modal": {
+    "survey_modal": {
+      "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+    }
   },
   "networks": {
     "alertmethod": {
