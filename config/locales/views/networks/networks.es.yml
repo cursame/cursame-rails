@@ -31,4 +31,4 @@ es:
     messages:
       update:
         success: "Configuración guardada correctamente."
-        
+    create: 'Se ha creado una red.'

@@ -2413,6 +2413,7 @@ I18n.translations["en"] = {
       "log_in": "Log in",
       "send": "We have sent to the instructions to activate your account."
     },
+    "create": "not PASS.",
     "form": {
       "api_key": "API Key:",
       "authorization_keyword": "Authorization Keyword",
@@ -5834,6 +5835,7 @@ I18n.translations["es"] = {
       "log_in": "Inicia sesión",
       "send": "Se han enviado las instrucciones para activar tu cuenta."
     },
+    "create": "Se ha creado una red.",
     "form": {
       "api_key": "API Key:",
       "authorization_keyword": "Palabra clave",
@@ -9227,6 +9229,7 @@ I18n.translations["es_meems"] = {
       "log_in": "Inicia sesión",
       "send": "Se han enviado las instrucciones para activar tu cuenta."
     },
+    "create": "Se ha creado una red.",
     "form": {
       "api_key": "API Key:",
       "authorization_keyword": "Palabra clave",
@@ -12619,6 +12622,7 @@ I18n.translations["devise"] = {
       "log_in": "Inicia sesión",
       "send": "Se han enviado las instrucciones para activar tu cuenta."
     },
+    "create": "Se ha creado una red.",
     "form": {
       "api_key": "API Key:",
       "authorization_keyword": "Palabra clave",

@@ -28,4 +28,4 @@ es_meems:
     messages:
       update:
         success: "Configuración guardada correctamente."
-
+    create: 'Se ha creado una red.'

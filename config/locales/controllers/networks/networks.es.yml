@@ -5,4 +5,4 @@ es:
         success: 'Configuración guardada correctamente.'
       search:
         network: 'Buscador de Redes'
-        
+    create: 'Se ha creado una red'
