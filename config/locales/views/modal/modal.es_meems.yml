@@ -9,3 +9,7 @@ es_meems:
     google_form_modal:
       form_not_found: 'El formulario que tratas de ver ya no existe,
                    ponte en contacto con el profesor del curso.'
+    discussion_modal:
+      discussion_not_found: 'La discusión que tratas de ver ya no
+                         existe, ponte en contacto con el profesor
+                         del curso.'
