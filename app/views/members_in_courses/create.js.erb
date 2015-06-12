@@ -2,9 +2,9 @@ var course = $('[data-course-id="<%= @course %>"]'),
 		footerCourse = course.find('div.course-footer div.course-footer-actions');
 
 <% if @course_find.public_status === "Private" %>
-  footerCourse.html('<div class="btn btn-small btn-disabled">Solicitud enviada</div>');
+  footerCourse.html('<div class="btn btn-small btn-disabled"><%= t('.request_send') %></div>');
 <% else %>
-	footerCourse.html('<div class="btn btn-small btn-disabled">Te has inscrito</div>');
+	footerCourse.html('<div class="btn btn-small btn-disabled"><%= t('.enrolled') %></div>');
 <%end%>
 
 
