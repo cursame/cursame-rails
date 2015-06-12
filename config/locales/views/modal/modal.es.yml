@@ -6,4 +6,7 @@ es:
     reported_content_modal:
       publ_not_found: 'La publicación que tratas de denunciar ya no
                    existe.'
+    google_form_modal:
+      form_not_found: 'El formulario que tratas de ver ya no existe,
+                   ponte en contacto con el profesor del curso.'
 
