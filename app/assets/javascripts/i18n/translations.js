@@ -2404,6 +2404,9 @@ I18n.translations["en"] = {
     }
   },
   "modal": {
+    "delivery_modal": {
+      "hmwrk_not_found": "not PASS."
+    },
     "discussion_modal": {
       "discussion_not_found": "not PASS."
     },
@@ -5840,6 +5843,9 @@ I18n.translations["es"] = {
     "no_send": "No puedes enviar correo a los estudiantes del curso"
   },
   "modal": {
+    "delivery_modal": {
+      "hmwrk_not_found": "La tarea que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+    },
     "discussion_modal": {
       "discussion_not_found": "La discusión que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     },
@@ -9248,17 +9254,20 @@ I18n.translations["es_meems"] = {
     "no_send": "No puedes enviar correo a los emprendedores del Centros Emprendedor"
   },
   "modal": {
+    "delivery_modal": {
+      "hmwrk_not_found": "La tarea que tratas de ver ya no existe, ponte en contacto con el Operador de los Centros de Emprendedores."
+    },
     "discussion_modal": {
-      "discussion_not_found": "La discusión que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+      "discussion_not_found": "La discusión que tratas de ver ya no existe, ponte en contacto con el Operador de los Centros de Emprendedores."
     },
     "google_form_modal": {
-      "form_not_found": "El formulario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+      "form_not_found": "El formulario que tratas de ver ya no existe, ponte en contacto con el Operador de los Centros de Emprendedores."
     },
     "reported_content_modal": {
       "publ_not_found": "La publicación que tratas de denunciar ya no existe."
     },
     "survey_modal": {
-      "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+      "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el Operador de los Centros de Emprendedores."
     }
   },
   "networks": {
@@ -12655,6 +12664,9 @@ I18n.translations["devise"] = {
     "no_send": "No puedes enviar correo a los estudiantes del curso"
   },
   "modal": {
+    "delivery_modal": {
+      "hmwrk_not_found": "La tarea que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
+    },
     "discussion_modal": {
       "discussion_not_found": "La discusión que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     },

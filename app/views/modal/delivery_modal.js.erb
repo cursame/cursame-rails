@@ -1,5 +1,5 @@
 <% unless @delivery.nil? %>
 	createModal('<%= escape_javascript(render(partial: "deliveries/shared/delivery_modal", locals: { delivery: @delivery }))%>');
 <% else %>
-	Notice('error', 'La tarea que tratas de ver ya no existe, ponte en contacto con el profesor del curso.')
+	Notice('error', I18n.t("modal.delivery_modal.hmwrk_not_found", {locale: "<%= I18n.locale %>"}));
 <% end %>

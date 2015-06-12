@@ -13,4 +13,7 @@ es:
       discussion_not_found: 'La discusión que tratas de ver ya no
                          existe, ponte en contacto con el profesor
                          del curso.'
+    delivery_modal:
+      hmwrk_not_found: 'La tarea que tratas de ver ya no existe,
+                    ponte en contacto con el profesor del curso.'
 
