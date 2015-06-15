@@ -6,7 +6,7 @@ es_meems:
       hmwrks_delivery: Entregas de tareas
       exam: Exámenes
       exam_delivery: Entregas de examenes
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       comments: Comentarios
       avg: Promedio de calificación por tareas
       avg2: Promedio de calificación por survey
@@ -26,8 +26,8 @@ es_meems:
       activity: Actividad por
       goto: Ir a la actividad
     courses_sintetic_view_and_edit:
-      courses: Visor de Centros Emprendedores
-      show: 'Muestra los Centros Emprendedores de las redes, sus miembros y sus actividades'
+      courses: Visor de Centros de Emprendedores
+      show: 'Muestra los Centros de Emprendedores de las redes, sus miembros y sus actividades'
       show2: Mostrar tareas
       show3: Mostrar cuestionarios
       show4: Mostrar estadísticas del Centros Emprendedor

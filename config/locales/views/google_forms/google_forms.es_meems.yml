@@ -18,7 +18,7 @@ es_meems:
         public: "Público"
         publish: "Publicar"
       dropdown:
-        courses: "Centros Emprendedores"
+        courses: "Centros de Emprendedores"
         public: "Público"
       google_form_modal:
         the_form: 'El formulario '

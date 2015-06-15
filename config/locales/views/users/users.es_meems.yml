@@ -53,12 +53,12 @@ es_meems:
         add_friends: Añadir a mis amigos
         update_photo: Actualizar foto
         publications: Publicaciones
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         friends: Amigos
         info: Información
     evaluation:
       score: Calificacion
-      no_members: Este Centros Emprendedor no tiene miembros
+      no_members: Este Centro Emprendedor no tiene miembros
     form_course:
       create: Crear nuevo
       load: Cargando ...
@@ -84,10 +84,10 @@ es_meems:
       pwd: Ingresa una contraseña.
       save: Guardar contraseña
     courses:
-      courses2: Centros Emprendedores
-      no_registered: Aún no estas inscrito en ningún Centros Emprendedor.
-      find: Busca Centros Emprendedores en la sección de
-      no_members: Este usuario no esta inscrito en ningún Centros Emprendedor.
+      courses2: Centros de Emprendedores
+      no_registered: Aún no estas inscrito en ningún Centro Emprendedor.
+      find: Busca Centros de Emprendedores en la sección de
+      no_members: Este usuario no esta inscrito en ningún Centro Emprendedor.
     dashboard:
       select: Seleccionador de redes
       goto: Ir al super MEEMS
@@ -96,7 +96,7 @@ es_meems:
     friends:
       no_friends: Aún no tienes amigos.
       find: Busca a tus amigos en la sección de
-      comunity: Red de Emprendedores
+      comunity: Miembros
       no_friends2: Este usuario no tiene amigos aún.
       friends_subtitle:
         friends1: Amigos

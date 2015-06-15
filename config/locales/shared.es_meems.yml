@@ -47,7 +47,7 @@ es_meems:
     dropdown:
       dropdown_v:
         public: Público
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         no_member: No eres miembro de ningún Centro Emprendedor.
         goto_section: Únete a uno en la sección de
         no_course: No has creado ningún Centro Emprendedor todavia.
@@ -61,11 +61,11 @@ es_meems:
         questionnaire: Cuestionarios
         discussion: Discusiones
         activities: Actividades
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         ratings: Calificaciones
         calendar: Calendario
         library: "Biblioteca"
-        community: Red de Emprendedores
+        community: Miembros
         radar: Radar
         vLex: vLex
         friends: Amigos
@@ -73,12 +73,12 @@ es_meems:
         no_member: No eres miembro de ningún Centro Emprendedor.
         goto_section: Únete a uno en la sección de
         course_message: Únete a uno en la sección de
-        course_href: Centros Emprendedores
+        course_href: Centros de Emprendedores
         no_course: No has creado ningún Centro Emprendedor.
         no_course_href: Crear Centro Emprendedor ahora →
         no_friends: No tienes amigos.
         add_friends: Agrega a tus amigos en la sección de
-        community_href: Red de Emprendedores
+        community_href: Miembros
         return: volver
         disp_usr: Usuario conectado
         no_disp_usr: Usuario desconectado
@@ -247,20 +247,20 @@ es_meems:
       joyride_tip_content:
         welcome: Bienvenido a Cúrsame
         description: En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.
-        courses: Creación de Centros Emprendedores
-        description_courses: Al dar click en el botón Crear (+) aparecera el formulario de creación para los Centros Emprendedores que impartes.
+        courses: Creación de Centros de Emprendedores
+        description_courses: Al dar click en el botón Crear (+) aparecera el formulario de creación para los Centros de Emprendedores que impartes.
         menu: Menú de creación
         menu_description: 'En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.'
-        text1: Público o a tus Centros Emprendedores
-        text2: Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus Centros Emprendedores.
-        text3: Uno o varios Centros Emprendedores
-        text4: '!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los Centros Emprendedores! .'
+        text1: Público o a tus Centros de Emprendedores
+        text2: Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus Centros de Emprendedores.
+        text3: Uno o varios Centros de Emprendedores
+        text4: '!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los Centros de Emprendedores! .'
         text5: Muro principal
-        text6: En el muro principal aparecerán todas las publicaciones de tus Centros Emprendedores y amigos.
+        text6: En el muro principal aparecerán todas las publicaciones de tus Centros de Emprendedores y amigos.
         text7: Filtrado de publiciones
         text8: Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.
         text9: Amigos
-        text10: 'En esta sección podrás ver a tus amigos, o ingresar a la "Red de Emprendedores" para agregarlos'
+        text10: 'En esta sección podrás ver a tus amigos'
         text11: Menú interactivo
         text12: Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.
         text13: Video tutoriales de ayuda
@@ -325,8 +325,8 @@ es_meems:
       prof_photo: Aqui ver la foto de tu perfil.
       edit_prof: Editar perfil
       text_edit_prof: Aqui puedes editar tu perfil.
-      courses: Centros Emprendedores
-      courses_area: Esta es el area de tus Centros Emprendedores.
+      courses: Centros de Emprendedores
+      courses_area: Esta es el area de tus Centros de Emprendedores.
       friends: Amigos
       friends_list: Aqui encontraras un listado de tus amigos
       content: Creación de contenido
@@ -336,7 +336,7 @@ es_meems:
     wall_filters:
       all: Todos
       discuss: Discusiones
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       comments: Comentarios
       homework: Tareas
       quest: Cuestionarios

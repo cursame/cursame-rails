@@ -36,7 +36,7 @@ es_meems:
       support: Material de soporte
       integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.'
       cancel: Cancelar
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       publish: Publicar
       save: Guardar Tarea
     deliveries_course:

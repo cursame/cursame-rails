@@ -65,8 +65,8 @@ es_meems:
       terms73: 'Se prohíben estrictamente las violaciones o intentos de violaciones de los sistemas de Cúrsame, o la interrupción de sus servicios. Dicha violación puede resultar en responsabilidad civil y penal. Sin limitación, los ejemplos de violaciones del sistema incluyen'
       terms73x: 'Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame'
       terms73x1: 'El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del "software" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.'
-      terms75: 'Mal uso de los reCentros Emprendedores del sistema'
-      terms75f: 'El Cliente no deberá hacer mal uso de los reCentros Emprendedores, que incluyan pero que no se limiten a, empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.'
+      terms75: 'Mal uso de los Centros de Emprendedores del sistema'
+      terms75f: 'El Cliente no deberá hacer mal uso de los Centros de Emprendedores, que incluyan pero que no se limiten a, empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.'
       terms76: 'Otras actividades'
       terms76f: 'Ya sea lícito o ilícito, Cúrsame se reserva el derecho a determinar qué es perjudicial para sus Clientes, operaciones o reputación, incluyendo actividades que restrinjan o inhiban a algún otro usuario del uso o placer de disfrutar el Servicio o Internet.'
       terms76x: 'Por favor, sea consciente que Cúrsame se reserva el derecho de supervisar, suspender, restringir, suprimir, modificar, o terminar cualquier contenido o transmisión de la cuenta que se considere viola cualquiera de las políticas anteriormente dichas. Si se da el caso, Cúrsame formulará las denuncias pertinentes a las autoridades responsables de la aplicación de la ley, y en tal caso, Cúrsame ayudará activamente a las entidades responsables de aplicar la ley y con la investigación y el proceso de cualquier actividad, incluyendo la entrega de las cuentas de los clientes y de sus datos personales.'
@@ -81,15 +81,15 @@ es_meems:
       comment: Comentar
     chat:
       friends: Amigos
-      Centros Emprendedores: Centros Emprendedores
+      Centros de Emprendedores: Centros de Emprendedores
       online_usr: Usuario conectado
       offline_usr: Usuario desconectado
       no_friends: No tienes amigos.
       add_friends: Agrega a tus amigos en la sección de
-      community: Red de Emprendedores
+      community: Miembros
       no_member: No eres miembro de ningún Centros Emprendedor.
       section: Únete a uno en la sección de
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       no_create: No has creado ningún Centros Emprendedor todavia.
       create: Crear Centros Emprendedor ahora →
     help:
@@ -110,11 +110,11 @@ es_meems:
         features_path: Conoce nuestra metodología
       user_roles_types:
         header: Toda tu institución en un sólo lugar
-        description: 'Pensamos y diseñamos herramientas para los líderes multiplicadores, emprendedores, directivos y padres de familia de tu red de emprendedores escolar.'
+        description: 'Pensamos y diseñamos herramientas para los líderes multiplicadores, emprendedores, directivos y padres de familia de tu red escolar.'
         title1: Directivos
         text1: Toma el control de tu institución con estadísticas en tiempo real y sistemas de comunicación.
         title2: Líderes multiplicadores
-        text2: 'Convierte tus clases en una red de emprendedores de aprendizaje, ahorra tiempo y potencia tus capacidades de enseñanza de una forma social.'
+        text2: 'Convierte tus clases en una red de aprendizaje, ahorra tiempo y potencia tus capacidades de enseñanza de una forma social.'
         title3: Emprendedores
         text3: 'Interactúa con tus compañeros y Líderes multiplicadores. Resuelve tus dudas, aprende y haz tus entregas en cualquier hora y lugar.'
         title4: Padres
@@ -161,14 +161,14 @@ es_meems:
         discussions: Discusiones
         comments: Comentarios
         chat: Chat
-        network: Red de Emprendedores
+        network: Miembros
         results: Calificaciones
         statisdics: Estadisticas
       features_content:
         homeworks: Tareas
         description_homework: Permite a los Líderes multiplicadores crear actividades académicas y a los emprendedores responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.
         characteristic_homework: 'Algunas de sus características son:'
-        feature1_homework: Creación a uno o varios Centros Emprendedores
+        feature1_homework: Creación a uno o varios Centros de Emprendedores
         feature2_homework: Fecha límite y hora de entrega
         feature3_homework: Archivos adjuntos
         feature4_homework: Contenido recomendado
@@ -176,21 +176,21 @@ es_meems:
         surveys: Cuestionarios
         description_survey: A través de los cuestionarios los Líderes multiplicadores pueden evaluar a sus emprendedores de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes.
         characteristic_survey: 'Algunas de sus características son:'
-        feature1_survey: Creación en uno o varios Centros Emprendedores
+        feature1_survey: Creación en uno o varios Centros de Emprendedores
         feature2_survey: Fecha y hora límite de entrega
         feature3_survey: Preguntas y respuestas ilimitadas
         feature4_survey: Autoevaluación
         discussions: Discusiones
-        description_discussion: Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la red de emprendedores en el aprendizaje.
+        description_discussion: Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de todas los miembros en el aprendizaje.
         characteristic_discussion: 'Algunas de sus características son:'
         feature1_discussion: Públicas o privadas
-        feature2_discussion: A uno o varios Centros Emprendedores
+        feature2_discussion: A uno o varios Centros de Emprendedores
         feature3_discussion: Contenido recomendado
         comments: Comentarios
-        description_comment: 'Permite a todos los miembros de la red de emprendedores comentarse de manera pública, grupal o personal para de esta forma interactuar social o académicamente.'
+        description_comment: 'Permite a todos los miembros comentar de manera pública, grupal o personal para de esta forma interactuar social o académicamente.'
         characteristic_comment: 'Algunas de sus características son:'
         feature1_comment: Públicos o privados
-        feature2_comment: A uno o varios Centros Emprendedores
+        feature2_comment: A uno o varios Centros de Emprendedores
         feature3_comment: 'Contenido enriquecido (multimedia)'
         chat: Chat
         description_chat: Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada Centros Emprendedor tiene una sala de chat grupal para compartir contenido en tiempo real.
@@ -199,7 +199,7 @@ es_meems:
         feature2_chat: Salas de chat grupal por Centros Emprendedor
         feature3_chat: Compartir multimedia
         feature4_chat: Mensajes privados
-        network: Red de Emprendedores
+        network: Miembros
         description_network: Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.
         characteristic_network: 'Algunas de sus características son:'
         feature1_network: Encontrar amigos
@@ -263,7 +263,7 @@ es_meems:
       vision: 'Visión:'
       description_vision: Ser una plataforma líder en el ámbito educativo que  permita a la población mexicana insertarse con éxito en la sociedad de la información y el conocimiento.
       mission: 'Misión:'
-      description1_mission: Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita  a la red de emprendedores educativa redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.
+      description1_mission: Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita a los miembros redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.
       description2_mission: Democratizar el acceso a tecnología educativa de calidad y generar un cambio en la vida diaria y profesional de emprendedores y Líderes multiplicadores al acercarlos a la tecnología y sus beneficios.
       philosophy: 'Filosofía:'
       description1_philosophy: 'En Cúrsame partimos de la concepción de que el aprendizaje  no sólo es construido dentro y por la propia persona, sino que  tiene que ver con aspectos más sociales dentro de Redes de Emprendedores de enseñanza.'
