@@ -266,9 +266,6 @@ class CoursesController < ApplicationController
   # PUT /courses/1.json
   def update
     @course = Course.find(params[:id])
-    if @course.init_date != nil
-      @idate = @course.init_date.strftime('%Y-%m-%d')
-    end
     respond_to do |format|
       if @course.update_attributes(params[:course])
         students = params[:students] || {}
@@ -280,17 +277,10 @@ class CoursesController < ApplicationController
           users.push User.find_by_id user_id
         end
         @course.update_members(users, current_user) unless params["check_members"].nil?
-
-
-        @last_date = @course.init_date
-        if @last_date  == nil
-          @last_date =  @idate
+        if @course.init_date.nil?
+          missing_date = Date.strptime params[:course][:init_date], '%m/%d/%Y'
+          @course.update_attribute(:init_date, missing_date)
         end
-        if @last_end_date == nil
-          @last_end_date = @fdate
-        end
-        @course.init_date = @last_date
-        @course.save
         flash[:notice] = t('.courses_controller.save')
         format.html {redirect_to course_path(@course)}
         format.json { head :no_content }
