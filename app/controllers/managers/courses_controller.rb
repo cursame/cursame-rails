@@ -41,8 +41,12 @@ class Managers::CoursesController < Managers::BaseController
 
   def update
     course = Course.find_by_id params[:id]
-    course.assign_attributes params[:course] if !course.nil? && course.network == current_network
 
+    course.assign_attributes params[:course] if !course.nil? && course.network == current_network
+    if course.init_date.nil?
+      missing_date = Date.strptime params[:course][:init_date], '%m/%d/%Y'
+      course.update_attribute(:init_date, missing_date)
+    end
     students = params[:students] || {}
     teachers = params[:teachers] || {}
 
