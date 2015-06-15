@@ -20,6 +20,10 @@ es:
       dropdown:
         courses: "Cursos"
         public: "Público"
+        return: 'Regresar'
+        create_course: 'Crear curso'
+        dropdown_v:
+          no_course: 'No has creado ningún curso'
       google_form_modal:
         the_form: 'El formulario '
         was_created: ' fue creado por'
