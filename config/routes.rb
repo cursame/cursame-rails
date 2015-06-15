@@ -5,6 +5,10 @@ Cursame30Lb::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
+
   match '/managers/bit_courses', to: 'managers/bit_courses#index', as: :index_managers_bit_courses
   match '/managers/bit_courses/:folio', to: 'managers/bit_courses#show', as: :show_managers_bit_course
   match '/managers/bit_courses/import/:folio', to: 'managers/bit_courses#import', as: :import_managers_bit_course
