@@ -160,7 +160,7 @@ es:
       managers_user_header:
         admin: Administrador
         help: Ayuda
-        exit: Salir del aministrador
+        exit: Salir del administrador
         edit: Editar perfil
         log_out: Cerrar sesión
     surveys:
