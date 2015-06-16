@@ -1,0 +1,16 @@
+en:
+  modal:
+    survey_modal:
+      no_modal_found: 'The survey you are trying to view no longer exists'
+    reported_content_modal:
+      publ_not_found: 'The post you are trying to denounce no longer
+                   exists'
+    google_form_modal:
+      form_not_found: 'The form you are trying to view no longer exists,
+                   contact the course teacher'
+    discussion_modal:
+      discussion_not_found: 'The discussion you are trying to view no longer
+                         exists, contact the teacher course'
+    delivery_modal:
+      hmwrk_not_found: 'The homework you are trying to view no longer exists,
+                    contact the course teacher'
