@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    :css
+      @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
+      h1, h2, p, span, table, td, tr, a {-webkit-font-smoothing: antialiased;}
+      p { font-weight: normal; }
+  %body{ style: "padding: 0; margin: 0; font-family: 'Roboto', 'Helvetica Neue', sans-serif; background-color: #ffffff;" }
+    = yield
